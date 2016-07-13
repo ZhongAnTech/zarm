@@ -1,0 +1,27 @@
+ 
+@keyframes door-enter {
+  from {
+    transform: scale3d(0, 1, 1);
+  }
+  to {
+    transform: scale3d(1, 1, .1);
+  }
+}
+.door-enter {
+  animation: door-enter both cubic-bezier(0.4, 0, 0, 1.5);
+}
+
+@keyframes door-leave {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  60% {
+    transform: scale3d(.01, 1, 1);
+  }
+  to {
+    transform: scale3d(0, 1, .1);
+  }
+}
+.door-leave {
+  animation: door-leave both;
+}
