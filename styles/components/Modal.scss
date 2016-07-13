@@ -1,0 +1,40 @@
+.ui-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  overflow: auto;
+  z-index: 1100;
+
+  &.radius {
+    .ui-modal-dialog {
+      border-radius: $modal-radius;
+    }
+  }
+
+  &.round {
+    .ui-modal-dialog {
+      border-radius: $modal-round;
+    }
+  }
+
+  > .ui-modal-wrapper {
+    width: 100%;
+    margin: auto 0;
+  
+    > .ui-modal-dialog {
+      position: relative;
+      margin: 60px auto;
+      background: #fff;
+      overflow: hidden;
+      z-index: 1101;
+    }
+  }
+}

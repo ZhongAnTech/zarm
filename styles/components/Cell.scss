@@ -1,0 +1,34 @@
+
+.ui-cell {
+  position: relative;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+
+  &:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #d7d7d7;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+    left: 15px;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: #d9d9d9;
+  }
+
+  > .title {
+    
+  }
+}

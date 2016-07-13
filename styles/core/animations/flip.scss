@@ -1,0 +1,31 @@
+@keyframes flip-enter {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
+  }
+  70% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -15deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+.flip-enter {
+  animation: flip-enter both ease-in;
+  backface-visibility: visible !important;
+}
+
+@keyframes flip-leave {
+  from {
+    transform: perspective(400px);
+  }
+  30% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -15deg);
+  }
+  to {
+    transform: perspective(400px) rotate3d(1, 0, 0, 45deg);
+  }
+}
+.flip-leave {
+  animation: flip-leave both;
+  backface-visibility: visible !important;
+}

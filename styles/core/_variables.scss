@@ -1,0 +1,49 @@
+
+$browser-default-font-size: 14;
+$browser-default-font-size-px: 14px !default;
+
+$theme-default:   #e6e6e6 !default;
+$theme-primary:   #0e90d2 !default;
+$theme-success:   #5cb85c !default;
+$theme-info:      #5bc0de !default;
+$theme-warning:   #f0ad4e !default;
+$theme-danger:    #d9534f !default;
+
+$radius-xl:       .25rem !default;
+$radius-lg:       .25rem !default;
+$radius:          .2rem !default;
+$radius-sm:       .2rem !default;
+$radius-xs:       .2rem !default;
+
+$line-height-xl:         1.5 !default;
+$line-height-lg:         (4 / 3) !default;
+$line-height:            1.5 !default;
+$line-height-sm:         1.5 !default;
+$line-height-xs:         1.5 !default;
+
+$btn-default-color:              #444 !default;
+$btn-default-bg:                 $theme-default !default;
+$btn-default-border:             $btn-default-bg !default;
+
+$btn-primary-color:              #fff !default;
+$btn-primary-bg:                 $theme-primary !default;
+$btn-primary-border:             $btn-primary-bg !default;
+
+$btn-info-color:                 #fff !default;
+$btn-info-bg:                    $theme-info !default;
+$btn-info-border:                $btn-info-bg !default;
+
+$btn-success-color:              #fff !default;
+$btn-success-bg:                 $theme-success !default;
+$btn-success-border:             $btn-success-bg !default;
+
+$btn-warning-color:              #fff !default;
+$btn-warning-bg:                 $theme-warning !default;
+$btn-warning-border:             $btn-warning-bg !default;
+
+$btn-danger-color:               #fff !default;
+$btn-danger-bg:                  $theme-danger !default;
+$btn-danger-border:              $btn-danger-bg !default;
+
+$modal-radius:    .3rem !default;
+$modal-round:     1rem !default;

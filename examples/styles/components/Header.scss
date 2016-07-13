@@ -1,0 +1,14 @@
+
+.Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: #f1f1f1;
+  color: #000;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  z-index: 1000;
+}
