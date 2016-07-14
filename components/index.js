@@ -1,11 +1,10 @@
-
+export Button from './Button';
+export Form from './Form';
+export Icon from './Icon';
 export Mask from './Mask';
 export Modal from './Modal';
-export Confirm from './Confirm';
-export Alert from './Alert';
 export Toast from './Toast';
 export Loading from './Loading';
-export Button from './Button';
 export Swipe from './Swipe';
 export Cell from './Cell';
 export Picker from './Picker';

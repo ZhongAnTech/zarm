@@ -39,6 +39,8 @@
   
   &.disabled,
   &:disabled {
+    cursor: not-allowed;
+    
     &:focus,
     &.focus {
       background-color: $background;
@@ -49,39 +51,77 @@
           border-color: $border;
     }
   }
+
+  &.bordered {
+    background-color: #fff;
+    color: $background;
+
+    &:hover {
+      border-color: $active-border;
+    }
+
+    &:active,
+    &.active {
+      background-color: #fff;
+      border-color: $active-border;
+
+      &:hover,
+      &:focus,
+      &.focus {
+        border-color: darken($border, 20%);
+        color: darken($background, 10%);
+      }
+    }
+  }
 }
 
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-  padding: $padding-y $padding-x;
+@mixin button-size($height, $padding, $font-size, $border-radius) {
+  padding: $padding;
   font-size: $font-size;
-  padding: $padding-y $padding-x;
-  font-size: $font-size;
-  line-height: $line-height;
+  height: $height;
+  /*line-height: $height;*/
 
   &.radius {
     border-radius: $border-radius;
   }
   
   &.round {
-    border-radius: 1000px;
+    border-radius: r(1000);
+    padding-left: $height / 2;
+    padding-right: $height / 2;
+  }
+
+  &.circle {
+    width: $height;
+    height: $height;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .ui-icon + span,
+  span + .ui-icon {
+    margin-left: $height / 10;
   }
 }
 
-.ui-btn {
+.ui-button {
   display: inline-block;
   margin-bottom: 0;
-  @include button-size(r(6), r(14), r(16), $line-height, $radius);
-  font-weight: 400;
+  @include button-size($base-height, 0 r(15), $base-fontSize, $base-radius);
+  font-weight: normal;
   text-align: center;
+  vertical-align: middle;
   white-space: nowrap;
   background-image: none;
   border: 1px solid transparent;
+  /*border-width: 0;*/
   cursor: pointer;
   outline: 0;
   -webkit-appearance: none;
   user-select: none;
   transition: background-color 300ms ease-out, border-color 300ms ease-out;
   
+  /* disabled Button */
   &.disabled,
   &:disabled {
     cursor: not-allowed;
@@ -89,58 +129,41 @@
     box-shadow: none;
   }
 
-  //
-  // Block Button
-  //
+  /* block Button */
   &.block {
     width: 100%;
     display: block;
   }
 
-  //
-  // Button Sizes
-  //
+  /* Button sizes */
   &.size-xl {
-    @include button-size(r(10), r(20), r(20), $line-height-xl, $radius-xl);
+    @include button-size($base-height-xl, 0 r(20), $base-fontSize-xl, $base-radius-xl);
   }
-
   &.size-lg {
-    @include button-size(r(8), r(18), r(18), $line-height-lg, $radius-lg);
+    @include button-size($base-height-lg, 0 r(18), $base-fontSize-lg, $base-radius-lg);
   }
-
   &.size-sm {
-    @include button-size(r(5), r(12), r(14), $line-height-sm, $radius-sm);
+    @include button-size($base-height-sm, 0 r(12), $base-fontSize-sm, $base-radius-sm);
   }
-
   &.size-xs {
-    @include button-size(r(4), r(10), r(12), $line-height-xs, $radius-xs);
+    @include button-size($base-height-xs, 0 r(8), $base-fontSize-xs, $base-radius-xs);
   }
 
-  //
-  // Button Themes
-  //
+  /* Button themes */
   &.theme-default {
-    @include button-theme($btn-default-color, $btn-default-bg, $btn-default-border);
+    @include button-theme($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
   }
-
-  &.theme-primary {
-    @include button-theme($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-  }
-
   &.theme-info {
-    @include button-theme($btn-info-color, $btn-info-bg, $btn-info-border);
+    @include button-theme($base-btn-info-color, $base-btn-info-bg, $base-btn-info-border);
   }
-
   &.theme-success {
-    @include button-theme($btn-success-color, $btn-success-bg, $btn-success-border);
+    @include button-theme($base-btn-success-color, $base-btn-success-bg, $base-btn-success-border);
   }
-
   &.theme-warning {
-    @include button-theme($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+    @include button-theme($base-btn-warning-color, $base-btn-warning-bg, $base-btn-warning-border);
   }
-
-  &.theme-danger {
-    @include button-theme($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  &.theme-error {
+    @include button-theme($base-btn-error-color, $base-btn-error-bg, $base-btn-error-border);
   }
 
 }
