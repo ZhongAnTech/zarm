@@ -49,7 +49,7 @@ class FormItem extends Component {
                : null;
 
     return ('label' in props) ? (
-      <label className={labelCls} htmlFor={id || this._getId()}>
+      <label className={labelCls} htmlFor={id}>
         {star}{label}
       </label>
     ) : null;

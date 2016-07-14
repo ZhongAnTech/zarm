@@ -1,11 +1,16 @@
 
 import React, { Component, PropTypes } from 'react';
-import '../styles/pages/App.scss';
+import Events from '../utils/events'
 
+import '../styles/pages/App.scss';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 class App extends Component {
+
+  componentDidMount() {
+    Events.on(window, 'resize', window.__setFontSize__)
+  }
 
   render() {
     return (
@@ -14,9 +19,6 @@ class App extends Component {
         <div className="App-container">
           {this.props.children}
         </div>
-        {
-          /* <Footer /> */
-        }
       </div>
     );
   }
