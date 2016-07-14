@@ -1,12 +1,28 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory, browserHistory, Router } from 'react-router';
+import { browserHistory, Router } from 'react-router';
 
 const rootRoute = {
   path: '/',
   component: require('./pages/App'),
   childRoutes: [
+    {
+      path: 'index',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/Index'));
+        }, 'Index');
+      }
+    },
+    {
+      path: 'cell',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/CellPage'));
+        }, 'CellPage');
+      }
+    },
     {
       path: 'page1',
       getComponent(location, cb) {
@@ -35,13 +51,13 @@ const rootRoute = {
   indexRoute: {
     getComponent(location, cb) {
       require.ensure([], (require) => {
-        cb(null, require('./pages/Page1'));
-      }, 'Page1');
+        cb(null, require('./pages/Index'));
+      }, 'Index');
     }
   }
 }
 
 ReactDOM.render(
-  <Router routes={rootRoute} history={hashHistory} />,
+  <Router routes={rootRoute} history={browserHistory} />,
   document.getElementById('app')
 );

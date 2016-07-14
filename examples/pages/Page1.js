@@ -169,14 +169,11 @@ class Page1 extends Component {
         </Swipe>
 
         <Form>
-          <Form.Item
-            label="icon图标" 
-            labelCol="col-sm-2"
-            controlCol="col-sm-10">
-            111
+          <Form.Item>
+            icon图标
           </Form.Item>
         </Form>
-        
+
         <Form type="horizontal">
           <Form.Item
             label="icon图标" 
