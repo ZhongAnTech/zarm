@@ -4,13 +4,15 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 
 import {
+  Button,
+  Form,
+  Icon,
   Mask,
   Modal,
   Alert,
   Confirm,
   Toast,
   Loading,
-  Button,
   Swipe,
   Cell,
   Picker,
@@ -166,21 +168,83 @@ class Page1 extends Component {
           </div>
         </Swipe>
 
+        <Form>
+          <Form.Item
+            label="icon图标" 
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            111
+          </Form.Item>
+        </Form>
+        
+        <Form type="horizontal">
+          <Form.Item
+            label="icon图标" 
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            <Icon type="check" theme="success" style={{fontSize: 30}} />
+            <Icon type="check-round" theme="success" style={{fontSize: 30}} />
+            <Icon type="check-round-fill" theme="success" style={{fontSize: 30}} />
+            <Icon type="close" theme="error" style={{fontSize: 30}} />
+            <Icon type="close-round" theme="error" style={{fontSize: 30}} />
+            <Icon type="close-round-fill" theme="error" style={{fontSize: 30}} />
+            <Icon type="info-round" theme="info" style={{fontSize: 30}} />
+            <Icon type="info-round-fill" theme="info" style={{fontSize: 30}} />
+            <Icon type="question-round" style={{fontSize: 30}} />
+            <Icon type="question-round-fill" style={{fontSize: 30}} />
+            <Icon type="warning-round" theme="warning" style={{fontSize: 30}} />
+            <Icon type="warning-round-fill" theme="warning" style={{fontSize: 30}} />
+            <Icon type="arrow-left" style={{fontSize: 30}} />
+            <Icon type="arrow-right" style={{fontSize: 30}} />
+            <Icon type="arrow-top" style={{fontSize: 30}} />
+            <Icon type="arrow-bottom" style={{fontSize: 30}} />
+            <Icon type="add" style={{fontSize: 30}} />
+            <Icon type="minus" style={{fontSize: 30}} />
+            <Icon type="date" style={{fontSize: 30}} />
+            <Icon type="loading" style={{fontSize: 30}} />
+          </Form.Item>
+
+          <Form.Item
+            label="图标按钮"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            <Button size="xl" circle><Icon type="check" /></Button>
+            <Button size="lg" circle><Icon type="check" /></Button>
+            <Button circle><Icon type="check" /></Button>
+            <Button size="sm" circle><Icon type="check" /></Button>
+            <Button size="xs" circle><Icon type="check" /></Button>
+          </Form.Item>
+
+          <Form.Item
+            label="文字按钮"
+            labelCol="col-sm-2"
+            controlCol="col-sm-10">
+            <Button size="xl">特大号按钮</Button>
+            <Button size="lg" theme="info">大号按钮</Button>
+            <Button theme="success">普通按钮</Button>
+            <Button size="sm" theme="warning">小号按钮</Button>
+            <Button size="xs" theme="error">特小号按钮</Button>
+            <Button>直角按钮</Button>
+            <Button radius>圆角按钮</Button>
+            <Button round>椭圆角按钮</Button>
+            <Button bordered theme="info">边框按钮</Button>
+            <Button><Icon type="check" loading /> 带图标的按钮</Button>
+            <Button disabled>禁用状态</Button>
+            <Button disabled loading>加载中的按钮</Button>
+            <Button active>激活状态</Button>
+          </Form.Item>
+
+        </Form>
+
         <Switch onChange={(data) => {
           console.log(data)
         }}></Switch>
 
-        <p>province: {this.state.province}</p>
-        <p>city: {this.state.city}</p>
-        <p>country: {this.state.country}</p>
-
         <p className="buttons">
           <Button size="xl" onClick={() => this._onClickOpen('mask')}>遮罩层</Button>
-          <Button theme="primary" size="lg" onClick={() => this._onClickOpen('modal')}>模态框</Button>
-          <Button theme="info" onClick={() => this._onClickOpen('confirm')}>确认框</Button>
-          <Button theme="success" size="sm" onClick={() => this._onClickOpen('alert')}>警告框</Button>
+          <Button size="lg" onClick={() => this._onClickOpen('modal')}>弹出框</Button>
           <Button theme="warning" size="xs" onClick={() => this._onClickOpen('loading')}>加载中</Button>
-          <Button theme="danger" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
+          <Button theme="error" onClick={() => this._onClickOpen('toast')}>提示信息</Button>
           <Button onClick={() => this._onClickOpen('selector')}>城市选择器</Button>
         </p>
 
@@ -210,22 +274,10 @@ class Page1 extends Component {
             我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮我是对话框，禁止遮罩层关闭窗口，不显示右上角关闭按钮
           </Modal.Body>
           <Modal.Footer>
-            <button type="button" onClick={() => this._onClickClose('modal')}>取消</button>
-            <button type="button" onClick={() => this._onClickOpen('alert')}>选项一</button>
-            <button type="button" onClick={() => { alert('你点击了确定') }}>确定</button>
+            <Button radius block bordered onClick={() => this._onClickClose('modal')}>取消</Button>
+            <Button radius block theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
           </Modal.Footer>
         </Modal>
-
-        <Confirm
-          visible={this.state.confirm}
-          message="确定要删除吗？"
-          onOk={() => this._onClickOpen('alert')}
-          onCancel={() => this._onClickClose('confirm')} />
-
-        <Alert
-          visible={this.state.alert}
-          message="这是一个警告框！"
-          onClose={() => this._onClickClose('alert')} />
         
         { this.state.toast ?
           <Toast
@@ -241,6 +293,13 @@ class Page1 extends Component {
         <Mask
           visible={this.state.mask}
           onClose={() => this._onClickClose('mask')} />
+
+        {
+          // <p>province: {this.state.province}</p>
+          // <p>city: {this.state.city}</p>
+          // <p>country: {this.state.country}</p>
+        }
+        
 
       </div>
     );

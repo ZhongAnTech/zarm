@@ -29,7 +29,7 @@ Mask.propTypes = {
 Mask.defaultProps = {
   visible : false,
   type    : 'normal',
-  onClose : function () {},
+  onClose : () => {},
 };
 
 export default Mask;

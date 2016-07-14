@@ -1,12 +1,13 @@
 
 import React, { Component, PropTypes } from 'react';
+import Icon from '../Icon';
 
 class ModalHeader extends Component {
 
   render () { 
     const { title, onClose, ...others } = this.props;
     const btnClose = onClose
-                   ? <div className="ui-modal-close" onClick={onClose}></div>
+                   ? <div className="ui-modal-close" onClick={onClose}><Icon type="close" /></div>
                    : null;
 
     return (

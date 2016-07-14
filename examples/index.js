@@ -24,22 +24,6 @@ const rootRoute = {
       }
     },
     {
-      path: 'button',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/ButtonPage'));
-        }, 'ButtonPage');
-      }
-    },
-    {
-      path: 'modal',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/ModalPage'));
-        }, 'ModalPage');
-      }
-    },
-    {
       path: '*',
       getComponent(location, cb) {
         require.ensure([], (require) => {
