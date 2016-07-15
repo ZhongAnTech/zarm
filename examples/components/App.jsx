@@ -1,10 +1,10 @@
 
 import React, { Component, PropTypes } from 'react';
 import Events from '../utils/events'
+import Header from './Header';
 
-import '../styles/pages/App.scss';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import '../../styles/index.scss';
+import '../styles/components/App.scss';
 
 class App extends Component {
 
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className="App-container">
+        <div className="app-container">
           {this.props.children}
         </div>
       </div>

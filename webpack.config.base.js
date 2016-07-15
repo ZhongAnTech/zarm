@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+// var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 
 module.exports = {
@@ -14,12 +14,14 @@ module.exports = {
   module: {
     loaders: [
       { 
-        test: /\.scss$/, 
-        loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer!sass?sourceMap")
+        test: /\.scss$/,
+        loader: 'style-loader!css?sourceMap&-minimize!autoprefixer!sass?sourceMap'
+        // loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer!sass?sourceMap")
       },
       { 
-        test: /\.css$/, 
-        loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer")
+        test: /\.css$/,
+        loader: 'style-loader!css?sourceMap&-minimize!autoprefixer'
+        // loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer")
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
@@ -43,7 +45,7 @@ module.exports = {
 
   
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.scss']
   }
 
 };

@@ -1,0 +1,17 @@
+@import "../core/index";
+
+.app-container {
+  position: relative;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0px auto;
+  margin-top: r(50);
+  overflow: hidden;
+}
+
+@media screen and (min-width: 600px) {
+  .app-container {
+    max-width: 1000px;
+  }
+}

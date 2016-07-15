@@ -6,7 +6,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="Header">Header</div>
+      <div className="Header">Dragon Mobile UI</div>
     );
   }
 }

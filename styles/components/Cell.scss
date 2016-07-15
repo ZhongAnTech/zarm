@@ -3,25 +3,27 @@
   display: flex;
   align-items: center;
   position: relative;
+  background: #fff;
   padding: r(8) r(15);
   font-size: r(15);
   min-height: r(45);
 
-  &:before {
-    content: " ";
-    position: absolute;
-    left: r(15);
-    right: 0;
-    top: 0;
-    height: 1px;
-    border-top: 1px solid #d7d7d7;
-    transform-origin: 0 0;
-    transform: scaleY(0.5);
+  & + & {
+    &:before {
+      content: '';
+      position: absolute;
+      left: r(15);
+      right: 0;
+      top: 0;
+      height: 1px;
+      border-top: 1px solid #ddd;
+      transform-origin: 0 0;
+      transform: scaleY(0.5);
+    }
   }
 
   a,
   a:hover {
-    color: #333;
     text-decoration: none;
   }
 }
@@ -36,9 +38,9 @@
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
+  
   &:active {
-    background-color: #eee;
+    background-color: #d9d9d9;
   }
 
   .ui-cell-title {
@@ -61,6 +63,7 @@
 
 .ui-cell-title {
   overflow: hidden;
+  color: #333;
 }
 
 .ui-cell-icon {
@@ -82,5 +85,5 @@
 
 .ui-cell-footer {
   text-align: right;
-  color: #888;
+  color: #ff8100;
 }
