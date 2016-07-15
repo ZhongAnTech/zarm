@@ -3,11 +3,12 @@
 .modal-page {
 
   .ui-panel-body {
-    padding: r(10);
+    padding: 0 0 r(10) r(10);
     background: #fff;
   }
 
-  .ui-button + .ui-button {
-    margin-left: r(10);
+  .ui-button {
+    margin-top: r(10);
+    margin-right: r(10);
   }
 }

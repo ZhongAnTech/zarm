@@ -61,9 +61,14 @@
   }
 }
 
-.ui-cell-title {
-  overflow: hidden;
-  color: #333;
+.ui-cell-body {
+  display: flex;
+  flex: 1;
+}
+
+.ui-cell-footer {
+  text-align: right;
+  color: #ff8100;
 }
 
 .ui-cell-icon {
@@ -74,16 +79,12 @@
   }
 }
 
+.ui-cell-title {
+  overflow: hidden;
+  color: #333;
+}
+
 .ui-cell-content {
   flex: 1;
   overflow: hidden;
-}
-
-.ui-cell-body {
-  flex: 1;
-}
-
-.ui-cell-footer {
-  text-align: right;
-  color: #ff8100;
 }

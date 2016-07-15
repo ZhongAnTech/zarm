@@ -3,11 +3,14 @@ import React, { Component } from 'react';
 import { Link, browserHistory } from 'react-router';
 import { Panel, Icon, Cell } from '../../components';
 
+import '../styles/pages/IndexPage';
+
 class Index extends Component {
 
   render() {
     return (
-      <div>
+      <div className="index-page">
+        <img className="logo" src="../images/logo.jpg" />
         <Panel>
           <Panel.Body>
             <Cell type="link" title="Icon" icon={<img src="https://weui.io/images/icon_nav_msg.png" />} onClick={() => browserHistory.push('/icon')} />

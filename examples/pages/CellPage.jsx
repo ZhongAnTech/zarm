@@ -12,7 +12,7 @@ class CellPage extends Component {
             <Panel.Title>普通列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Cell title="标题文字" />
+            <Cell title="标题文字">11</Cell>
           </Panel.Body>
         </Panel>
 
