@@ -1,0 +1,18 @@
+@import "../core/_func";
+
+.icon-page {
+
+  .ui-panel-body {
+    padding: r(10);
+    background: #fff;
+  }
+
+  .ui-icon {
+    display: inline-block;
+    font-size: r(30);
+  }
+
+  .ui-icon + .ui-icon {
+    margin-left: r(10);
+  }
+}

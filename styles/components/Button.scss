@@ -53,7 +53,10 @@
   }
 
   &.bordered {
-    background-color: #fff;
+    $active-background: darken($background, 5%);
+    $active-border: darken($border, 5%);
+
+    background-color: transparent;
     color: $background;
 
     &:hover {
@@ -62,13 +65,12 @@
 
     &:active,
     &.active {
-      background-color: #fff;
+      background-color: transparent;
       border-color: $active-border;
 
       &:hover,
       &:focus,
       &.focus {
-        border-color: darken($border, 20%);
         color: darken($background, 10%);
       }
     }
@@ -87,8 +89,8 @@
   
   &.round {
     border-radius: r(1000);
-    padding-left: $height / 2;
-    padding-right: $height / 2;
+/*    padding-left: $height / 2;
+    padding-right: $height / 2;*/
   }
 
   &.circle {

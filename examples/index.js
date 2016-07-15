@@ -5,7 +5,7 @@ import { browserHistory, Router } from 'react-router';
 
 const rootRoute = {
   path: '/',
-  component: require('./pages/App'),
+  component: require('./components/App'),
   childRoutes: [
     {
       path: 'index',
@@ -16,11 +16,35 @@ const rootRoute = {
       }
     },
     {
+      path: 'icon',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/IconPage'));
+        }, 'IconPage');
+      }
+    },
+    {
+      path: 'button',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ButtonPage'));
+        }, 'ButtonPage');
+      }
+    },
+    {
       path: 'cell',
       getComponent(location, cb) {
         require.ensure([], (require) => {
           cb(null, require('./pages/CellPage'));
         }, 'CellPage');
+      }
+    },
+    {
+      path: 'modal',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ModalPage'));
+        }, 'ModalPage');
       }
     },
     {
