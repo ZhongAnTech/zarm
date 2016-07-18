@@ -7,7 +7,6 @@ $base-theme-success:       #00b15b !default;
 $base-theme-info:          #2db7f5 !default;
 $base-theme-warning:       #f0ad4e !default;
 $base-theme-error:         #f50 !default;
-/*$base-theme-error:         #d9534f !default;*/
 
 $base-radius-xl:           r(6) !default;
 $base-radius-lg:           r(5) !default;
@@ -15,7 +14,7 @@ $base-radius:              r(4) !default;
 $base-radius-sm:           r(4) !default;
 $base-radius-xs:           r(4) !default;
 
-$base-height-xl:           r(60) !default;
+$base-height-xl:           r(55) !default;
 $base-height-lg:           r(50) !default;
 $base-height:              r(45) !default;
 $base-height-sm:           r(40) !default;
@@ -80,10 +79,10 @@ $base-zindex-loading:      1200 !default;
 $base-zindex-message:      1300 !default;
 
 
-$base-modal-radius:        6px !default;
-$base-modal-round:         20px !default;
+$base-modal-radius:        r(6) !default;
+$base-modal-round:         r(20) !default;
 
-$base-icon-url:            'http://at.alicdn.com/t/font_1468394229_7144294';
+$base-icon-url:            'https://at.alicdn.com/t/font_1468814303_1641629';
 
 $screen-xs:                 480px !default;
 

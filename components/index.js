@@ -1,5 +1,4 @@
 export Button from './Button';
-export Form from './Form';
 export Icon from './Icon';
 export Mask from './Mask';
 export Modal from './Modal';

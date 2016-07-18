@@ -1,3 +1,30 @@
+@mixin button-bordered($color, $background, $border) {
+  $active-background: darken($background, 10%);
+  $active-border: darken($border, 12%);
+  $active-color: darken($color, 10%);
+
+  &.bordered {
+    border-color: $border;
+    background-color: transparent;
+    color: $color;
+
+    &:hover {
+      border-color: $active-border;
+    }
+
+    &:active,
+    &.active {
+      background-color: transparent;
+      border-color: $active-border;
+
+      &:hover,
+      &:focus,
+      &.focus {
+        color: $active-color;
+      }
+    }
+  }
+}
 
 @mixin button-theme($color, $background, $border) {
   $active-background: darken($background, 10%);
@@ -6,7 +33,7 @@
   background-color: $background;
   border-color: $border;
   color: $color;
-  
+
   &:hover {
     background-color: $active-background;
         border-color: $active-border;
@@ -52,29 +79,6 @@
     }
   }
 
-  &.bordered {
-    $active-background: darken($background, 5%);
-    $active-border: darken($border, 5%);
-
-    background-color: transparent;
-    color: $background;
-
-    &:hover {
-      border-color: $active-border;
-    }
-
-    &:active,
-    &.active {
-      background-color: transparent;
-      border-color: $active-border;
-
-      &:hover,
-      &:focus,
-      &.focus {
-        color: darken($background, 10%);
-      }
-    }
-  }
 }
 
 @mixin button-size($height, $padding, $font-size, $border-radius) {
@@ -110,6 +114,8 @@
   display: inline-block;
   margin-bottom: 0;
   @include button-size($base-height, 0 r(15), $base-fontSize, $base-radius);
+  @include button-theme($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
+  @include button-bordered(#9b9b9b, $base-btn-default-bg, $base-btn-default-border);
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
@@ -152,20 +158,21 @@
   }
 
   /* Button themes */
-  &.theme-default {
-    @include button-theme($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
-  }
   &.theme-info {
     @include button-theme($base-btn-info-color, $base-btn-info-bg, $base-btn-info-border);
+    @include button-bordered($base-btn-info-border, $base-btn-info-bg, $base-btn-info-border);
   }
   &.theme-success {
     @include button-theme($base-btn-success-color, $base-btn-success-bg, $base-btn-success-border);
+    @include button-bordered($base-btn-success-border, $base-btn-success-bg, $base-btn-success-border);
   }
   &.theme-warning {
     @include button-theme($base-btn-warning-color, $base-btn-warning-bg, $base-btn-warning-border);
+    @include button-bordered($base-btn-warning-border, $base-btn-warning-bg, $base-btn-warning-border);
   }
   &.theme-error {
     @include button-theme($base-btn-error-color, $base-btn-error-bg, $base-btn-error-border);
+    @include button-bordered($base-btn-error-border, $base-btn-error-bg, $base-btn-error-border);
   }
 
 }
