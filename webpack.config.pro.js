@@ -1,11 +1,10 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = require('./webpack.config.base');
-var path = require('path');
 
 config.entry = {
   index: [
-    './examples/index.html',
     './examples/index.js'
   ]
 };
@@ -39,5 +38,16 @@ config.plugins.push(new webpack.optimize.UglifyJsPlugin({
     comments: false,
   }
 }));
+
+for (var key in config.entry) {
+  if (key == 'vendors') {
+    continue;
+  }
+  config.plugins.push(new HtmlWebpackPlugin({
+    template: './examples/' + key + '.html',
+    filename: key + '.html',
+    chunks: ['vendors', key]
+  }));
+}
 
 module.exports = config;

@@ -6,7 +6,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'assets'),
-    filename: 'js/[name].min.js',
+    filename: 'js/[name].[hash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].min.js',
     publicPath: '/'
   },
@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(html)$/,
-        loader: 'file-loader?name=[name].[ext]'
+        loader: 'html'
       }
     ]
   },
