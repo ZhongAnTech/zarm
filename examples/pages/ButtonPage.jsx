@@ -11,7 +11,7 @@ class ButtonPage extends Component {
       <div className="button-page">
         <Panel>
           <Panel.Header>
-            <Panel.Title>普通按钮</Panel.Title>
+            <Panel.Title>按钮主题</Panel.Title>
           </Panel.Header>
           <Panel.Body>
             <Button>按钮</Button>
@@ -19,19 +19,6 @@ class ButtonPage extends Component {
             <Button theme="success">按钮</Button>
             <Button theme="warning">按钮</Button>
             <Button theme="error">按钮</Button>
-          </Panel.Body>
-        </Panel>
-
-        <Panel>
-          <Panel.Header>
-            <Panel.Title>按钮大小</Panel.Title>
-          </Panel.Header>
-          <Panel.Body>
-            <Button size="xl">按钮</Button>
-            <Button theme="info" size="lg">按钮</Button>
-            <Button theme="success">按钮</Button>
-            <Button theme="warning" size="sm">按钮</Button>
-            <Button theme="error" size="xs">按钮</Button>
           </Panel.Body>
         </Panel>
 
@@ -45,6 +32,19 @@ class ButtonPage extends Component {
             <Button bordered theme="success">按钮</Button>
             <Button bordered theme="warning">按钮</Button>
             <Button bordered theme="error">按钮</Button>
+          </Panel.Body>
+        </Panel>
+
+        <Panel>
+          <Panel.Header>
+            <Panel.Title>按钮大小</Panel.Title>
+          </Panel.Header>
+          <Panel.Body>
+            <Button size="xl">按钮</Button>
+            <Button size="lg">按钮</Button>
+            <Button>按钮</Button>
+            <Button size="sm">按钮</Button>
+            <Button size="xs">按钮</Button>
           </Panel.Body>
         </Panel>
 
@@ -73,9 +73,9 @@ class ButtonPage extends Component {
             <Panel.Title>带icon的按钮</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button radius theme="success"><Icon type="check-round" />正确</Button>
-            <Button radius theme="error"><Icon type="close-round" />错误</Button>
-            <Button radius disabled loading>加载中的按钮</Button>
+            <Button theme="success"><Icon type="check-round" />正确</Button>
+            <Button theme="error"><Icon type="close-round" />错误</Button>
+            <Button disabled loading>加载中的按钮</Button>
           </Panel.Body>
         </Panel>
 
