@@ -1,6 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
-import Mask from './Mask';
+import Mask from '../Mask';
 
 class Toast extends Component {
 
@@ -12,14 +12,14 @@ class Toast extends Component {
   }
 
   componentDidMount() {
-    var timer = setTimeout(() => {
-      this.props.onClose();
-      this.props.onMaskClick();
-    }, 3000);
+    // var timer = setTimeout(() => {
+    //   this.props.onClose();
+    //   this.props.onMaskClick();
+    // }, 3000);
     
-    this.setState({
-      timer : timer
-    });
+    // this.setState({
+    //   timer : timer
+    // });
   }
 
   componentWillUnmount() {
@@ -31,35 +31,28 @@ class Toast extends Component {
   }
 
   render () {
-    const { visible, message, width, onMaskClick, ...others } = this.props;
-    const containerStyle = {
-      'width' : width,
-    };
+    const { visible, children, onMaskClick, ...others } = this.props;
 
-    return visible ? (
-      <div className="ui-toast" {...others}>
-        <div className="ui-toast-wrapper" style={containerStyle} onClick={this._onContainerClick}>
-          <div className="ui-toast-container">
-            {message}
-          </div>
+    return (
+      <div {...others} className="ui-toast" style={{display: (visible) ? 'flex' : 'none'}}>
+        <div className="ui-toast-container">
+          {children}
         </div>
         <Mask visible={visible} type="transparent" onClose={onMaskClick} />
       </div>
-    ) : null;
+    )
   }
 
 }
 
 Toast.propTypes = {
   visible     : PropTypes.bool,
-  width       : PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]),
   onClose     : PropTypes.func,
   onMaskClick : PropTypes.func,
 };
 
 Toast.defaultProps = {
   visible     : false,
-  width       : '100%',
   onClose     : function () {},
   onMaskClick : function () {},
 };

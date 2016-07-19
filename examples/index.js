@@ -48,6 +48,14 @@ const rootRoute = {
       }
     },
     {
+      path: 'toast',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ToastPage'));
+        }, 'ToastPage');
+      }
+    },
+    {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure([], (require) => {
