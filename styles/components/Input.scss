@@ -1,0 +1,73 @@
+@mixin input-size($height, $padding, $font-size, $border-radius) {
+  /*height: $height;*/
+  line-height: 1.5;
+  padding: $padding;
+  font-size: $font-size;
+
+  &.radius {
+    border-radius: $border-radius;
+  }
+}
+
+.ui-input {
+  @include input-size($base-height, 0 0, $base-fontSize, $base-radius);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  color: #636363;
+  background-color: #fff;
+  background-image: none;
+  border-width: 0;
+  outline: 0;
+  appearance: none;
+
+  &[type="date"] {
+    height: r(21);
+  }
+
+  &:focus {
+    border-color: #57c5f7;
+    outline: 0;
+  }
+
+  &:hover {
+    border-color: #57c5f7;
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #f3f5f7;
+    
+    &:focus,
+    &.focus {
+      border-color: #ccc;
+    }
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+
+  /* Input sizes */
+  &.size-xl {
+    @include input-size($base-height-xl, 4px 14px, $base-fontSize-xl, $base-radius-xl);
+  }
+  &.size-lg {
+    @include input-size($base-height-lg, 4px 11px, $base-fontSize-lg, $base-radius-lg);
+  }
+  &.size-sm {
+    @include input-size($base-height-sm, 4px 7px, $base-fontSize-sm, $base-radius-sm);
+  }
+  &.size-xs {
+    @include input-size($base-height-xs, 4px 4px, $base-fontSize-xs, $base-radius-xs);
+  }
+}
+
+textarea {
+  &.ui-input {
+    max-width: 100%;
+    height: auto !important;
+    line-height: 1.5;
+    vertical-align: bottom;
+  }
+}

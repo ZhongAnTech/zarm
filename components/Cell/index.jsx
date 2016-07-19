@@ -30,6 +30,7 @@ class Cell extends Component {
         </div>
         <div className="ui-cell-body">
           <div className="ui-cell-title">{title}</div>
+          {contentRender}
         </div>
         <div className="ui-cell-footer">
           {description}
