@@ -9,3 +9,14 @@ $ratio: 750/640;
     @return 0;
   }
 }
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}

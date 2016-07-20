@@ -1,29 +1,35 @@
 
 import React, { Component, PropTypes } from 'react';
-import Toast from '../Toast';
+import Mask from '../Mask';
 
 class Loading extends Component {
-
   render () {
-    const { ...others } = this.props;
+    const { visible, children, ...others } = this.props;
+
+    let items = [];
+    for (var i = 0; i < 12; i++) {
+      items.push(<div key={i} className="ui-loading-item"></div>);
+    }
 
     return (
-      <Toast {...others}>
-        <div className="loading-leaf loading-leaf-0"></div>
-        <div className="loading-leaf loading-leaf-1"></div>
-        <div className="loading-leaf loading-leaf-2"></div>
-        <div className="loading-leaf loading-leaf-3"></div>
-        <div className="loading-leaf loading-leaf-4"></div>
-        <div className="loading-leaf loading-leaf-5"></div>
-        <div className="loading-leaf loading-leaf-6"></div>
-        <div className="loading-leaf loading-leaf-7"></div>
-        <div className="loading-leaf loading-leaf-8"></div>
-        <div className="loading-leaf loading-leaf-9"></div>
-        <div className="loading-leaf loading-leaf-10"></div>
-        <div className="loading-leaf loading-leaf-11"></div>
-      </Toast>
-    );
+      <div {...others} className="ui-loading" style={{display: (visible) ? 'flex' : 'none'}}>
+        <div className="ui-loading-container">
+          <div className="ui-loading-items">
+            {items}
+          </div>
+        </div>
+        <Mask visible={visible} type="transparent" />
+      </div>
+    )
   }
 }
+
+Loading.propTypes = {
+  visible     : PropTypes.bool,
+};
+
+Loading.defaultProps = {
+  visible     : false,
+};
 
 export default Loading;

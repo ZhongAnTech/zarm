@@ -1,0 +1,13 @@
+@import "../core/_func";
+
+.tab-page {
+
+  .ui-panel-body {
+    padding: r(10);
+    background: #fff;
+  }
+
+  .ui-tab + .ui-tab {
+    margin-top: r(10);
+  }
+}

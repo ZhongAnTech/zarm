@@ -56,6 +56,14 @@ const rootRoute = {
       }
     },
     {
+      path: 'tab',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/TabPage'));
+        }, 'TabPage');
+      }
+    },
+    {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure([], (require) => {

@@ -25,7 +25,7 @@ class ButtonPage extends Component {
       <div className="toast-page">
         <Panel>
           <Panel.Header>
-            <Panel.Title>按钮主题</Panel.Title>
+            <Panel.Title>Toast 和 Loading</Panel.Title>
           </Panel.Header>
           <Panel.Body>
             <Button onClick={() => this.toggle('toast')}>Toast</Button>
@@ -36,14 +36,12 @@ class ButtonPage extends Component {
         <Toast
           visible={this.state.toast}
           onMaskClick={() => this.toggle('toast')}>
-          <Icon type="check-round" style={{ fontSize: '4rem' }} />
+          <Icon type="check-round" style={{ fontSize: '3rem' }} />
           <p>预约成功</p>
           <p>预约时间为2016.06.06</p>
         </Toast>
 
-        <Loading visible={this.state.loading}>
-          加载中
-        </Loading>
+        <Loading visible={this.state.loading} />
       </div>
     );
   }

@@ -1,0 +1,83 @@
+@mixin tab-theme($color) {
+  .ui-tab-header-item {
+    &.active {
+      color: $color;
+      border-bottom: r(3) solid $color;
+    }
+  }
+}
+
+.ui-tab {
+  @include tab-theme(#9b9b9b);
+
+  &.theme-info {
+    @include tab-theme($base-theme-info);
+  }
+  &.theme-success {
+    @include tab-theme($base-theme-success);
+  }
+  &.theme-warning {
+    @include tab-theme($base-theme-warning);
+  }
+  &.theme-error {
+    @include tab-theme($base-theme-error);
+  }
+}
+
+.ui-tab-header {
+  @include clearfix;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: r(45);
+  line-height: r(45);
+  border-top: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.ui-tab-header-item {
+  flex: 1;
+  margin-bottom: -1px;
+  text-align: center;
+  font-size: r(15);
+  color: #000;
+  cursor: pointer;
+  
+  &:nth-of-type(n+2) {
+    position: relative;
+
+    &:after {
+      display: inline-block;
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 1px;
+      height: r(14);
+      margin-top: r(-7);
+      background: #e9e9e9;
+    }
+  }
+
+  &.active {
+    color: $base-theme-success;
+    border-bottom: r(3) solid $base-theme-success;
+  }
+}
+
+.ui-tab-body {
+  @include clearfix;
+  position: relative;
+  -webkit-transition: height .3s;
+  transition: height .3s;
+}
+
+.ui-tab-body-item {
+  display: none;
+  line-height: normal;
+  
+  &.ui-tab-body-item-active {
+    display: block;
+  }
+}

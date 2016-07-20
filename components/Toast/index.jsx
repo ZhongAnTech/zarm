@@ -11,23 +11,16 @@ class Toast extends Component {
     };
   }
 
-  componentDidMount() {
-    // var timer = setTimeout(() => {
-    //   this.props.onClose();
-    //   this.props.onMaskClick();
-    // }, 3000);
-    
-    // this.setState({
-    //   timer : timer
-    // });
+  componentWillReceiveProps (nextProps) {
+    clearTimeout(this.state.timer);
+
+    if (nextProps.visible) {
+      this.enter();
+    }
   }
 
   componentWillUnmount() {
     clearTimeout(this.state.timer);
-  }
-
-  _onContainerClick(e) {
-    e.stopPropagation();
   }
 
   render () {
@@ -43,17 +36,25 @@ class Toast extends Component {
     )
   }
 
+  enter() {
+    const { duration, onMaskClick, } = this.props;
+
+    this.state.timer = setTimeout(() => {
+      onMaskClick();
+      clearTimeout(this.state.timer);
+    }, duration);
+  }
 }
 
 Toast.propTypes = {
   visible     : PropTypes.bool,
-  onClose     : PropTypes.func,
+  duration    : PropTypes.number,
   onMaskClick : PropTypes.func,
 };
 
 Toast.defaultProps = {
   visible     : false,
-  onClose     : function () {},
+  duration    : 3000,
   onMaskClick : function () {},
 };
 
