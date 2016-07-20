@@ -5,9 +5,7 @@
 .ui-panel-header,
 .ui-panel-footer {
   position: relative;
-  height: r(40);
-  line-height: r(40);
-  padding: 0 r(15);
+  padding: r(10) r(15);
 }
 
 .ui-panel-body {
@@ -15,7 +13,14 @@
   border-bottom: 1px solid #ddd;
 }
 
+.ui-panel-footer {
+  margin-bottom: r(10);
+  color: #636363;
+  font-size: r(13);
+}
+
 .ui-panel-title {
+  line-height: 1.5;
   font-size: r(15);
   color: #636363;
 }

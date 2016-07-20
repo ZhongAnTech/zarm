@@ -18,6 +18,7 @@ class Index extends Component {
             <Cell type="link" title="Cell" icon={<img src="https://weui.io/images/icon_nav_cell.png" />} onClick={() => hashHistory.push('/cell')} />
             <Cell type="link" title="Modal" icon={<img src="https://weui.io/images/icon_nav_dialog.png" />} onClick={() => hashHistory.push('/modal')} />
             <Cell type="link" title="Toast" icon={<img src="https://weui.io/images/icon_nav_toast.png" />} onClick={() => hashHistory.push('/toast')} />
+            <Cell type="link" title="Tab" icon={<img src="https://weui.io/images/icon_nav_tab.png" />} onClick={() => hashHistory.push('/tab')} />
           </Panel.Body>
         </Panel>
       </div>
