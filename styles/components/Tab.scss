@@ -25,7 +25,6 @@
 }
 
 .ui-tab-header {
-  @include clearfix;
   display: flex;
   list-style: none;
   margin: 0;
@@ -67,7 +66,6 @@
 }
 
 .ui-tab-body {
-  @include clearfix;
   position: relative;
   -webkit-transition: height .3s;
   transition: height .3s;

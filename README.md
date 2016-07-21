@@ -11,8 +11,11 @@
 - Button 按钮
 - Cell 列表项
 - Icon 字体图标
+- Input 输入框/文本域
+- Mask 遮罩层
 - Modal 模态框
 - Panel 面版
+- Tab 选项卡
 
 ## 待开发组件
 

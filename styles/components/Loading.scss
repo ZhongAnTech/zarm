@@ -46,95 +46,95 @@
   &:before {
     content: '';
     position: absolute;
-    width: 8.14px;
-    height: 3.08px;
+    width: r(8.14);
+    height: r(3.08);
     background: rgb(209, 209, 213);
-    box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.0980392) 0 0 1px;
     border-radius: 1px;
-    transform-origin: left 50% 0px;
+    transform-origin: left 50% 0;
   }
 
   &:nth-of-type(1) {
     animation: opacity-60-25-0-12 1.25s linear infinite;
     &:before {
-      transform: rotate(0deg) translate(7.92px, 0px);
+      transform: rotate(0deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(2) {
     animation: opacity-60-25-1-12 1.25s linear infinite;
     &:before {
-      transform: rotate(30deg) translate(7.92px, 0px);
+      transform: rotate(30deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(3) {
     animation: opacity-60-25-2-12 1.25s linear infinite;
     &:before {
-        transform: rotate(60deg) translate(7.92px, 0px);
+        transform: rotate(60deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(4) {
     animation: opacity-60-25-3-12 1.25s linear infinite;
     &:before {
-      transform: rotate(90deg) translate(7.92px, 0px);
+      transform: rotate(90deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(5) {
     animation: opacity-60-25-4-12 1.25s linear infinite;
     &:before {
-        transform: rotate(120deg) translate(7.92px, 0px);
+        transform: rotate(120deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(6) {
     animation: opacity-60-25-5-12 1.25s linear infinite;
     &:before {
-      transform: rotate(150deg) translate(7.92px, 0px);
+      transform: rotate(150deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(7) {
     animation: opacity-60-25-6-12 1.25s linear infinite;
     &:before {
-      transform: rotate(180deg) translate(7.92px, 0px);
+      transform: rotate(180deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(8) {
     animation: opacity-60-25-7-12 1.25s linear infinite;
     &:before {
-      transform: rotate(210deg) translate(7.92px, 0px);
+      transform: rotate(210deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(9) {
     animation: opacity-60-25-8-12 1.25s linear infinite;
     &:before {
-      transform: rotate(240deg) translate(7.92px, 0px);
+      transform: rotate(240deg) translate(r(7.92), 0);
     }
   }
 
   &:nth-of-type(10) {
       animation: opacity-60-25-9-12 1.25s linear infinite;
       &:before{
-          transform: rotate(270deg) translate(7.92px, 0px);
+          transform: rotate(270deg) translate(r(7.92), 0);
       }
   }
 
   &:nth-of-type(11) {
       animation: opacity-60-25-10-12 1.25s linear infinite;
       &:before{
-          transform: rotate(300deg) translate(7.92px, 0px);
+          transform: rotate(300deg) translate(r(7.92), 0);
       }
   }
 
   &:nth-of-type(12) {
     animation: opacity-60-25-11-12 1.25s linear infinite;
     &:before {
-      transform: rotate(330deg) translate(7.92px, 0px);
+      transform: rotate(330deg) translate(r(7.92), 0);
     }
   }
 }
