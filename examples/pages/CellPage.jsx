@@ -87,19 +87,15 @@ class CellPage extends Component {
             <Cell title="姓名">
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
-            <Cell title="出生日期">
+            <Cell title="出生日期" type="select">
               <Input type="date" placeholder="请选择出生日期" />
             </Cell>
-            <Cell title="选择">
-              <Input type="text" placeholder="请选择日期" readOnly onClick={() => this.toggle('select')} />
+            <Cell title="选择" type="select">
               <Select
-                visible={this.state.select}
                 title="选择日期"
-                onMaskClick={() => this.toggle('select')}
-                onCancel={() => this.toggle('select')}
+                placeholder="请选择日期"
                 onOk={(data) => {
                   alert('你选择了确定')
-                  this.toggle('select')
                 }}>
               </Select>
             </Cell>
