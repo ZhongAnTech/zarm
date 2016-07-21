@@ -3,6 +3,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var config = require('./webpack.config.base');
 
+config.devtool = 'cheap-module-eval-source-map';
 config.entry = {
   index: [
     'webpack-dev-server/client?http://127.0.0.1:3000',
@@ -10,7 +11,6 @@ config.entry = {
     './examples/index.js'
   ]
 };
-
 config.plugins.push(new ExtractTextPlugin('stylesheet/[name].css', {
   allChunks: true
 }));
@@ -29,8 +29,6 @@ config.plugins.push(new webpack.DefinePlugin({
   },
   __DEBUG__: true
 }));
-
-config.devtool = 'source-map';
 
 for (var key in config.entry) {
   if (key == 'vendors') {

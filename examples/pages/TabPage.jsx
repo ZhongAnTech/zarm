@@ -21,9 +21,6 @@ class TabPage extends Component {
               <Tab title="选项卡2">
                 这是选项卡2的文字
               </Tab>
-              <Tab title="选项卡3">
-                这是选项卡3的文字
-              </Tab>
             </Tab.Group>
           </Panel.Body>
         </Panel>
