@@ -25,11 +25,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
-        loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
+        loader: 'url-loader?limit=8192&name=images/[name].[hash:8].[ext]'
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)$/,
-        loader: 'file-loader?name=fonts/[name].[ext]'
+        loader: 'file-loader?name=fonts/[name].[hash:8].[ext]'
       },
       {
         test: /\.(html)$/,

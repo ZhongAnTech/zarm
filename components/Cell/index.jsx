@@ -41,12 +41,12 @@ class Cell extends Component {
 }
 
 Cell.propTypes = {
-  type      : PropTypes.oneOf(['form', 'link']),
+  type      : PropTypes.oneOf(['normal', 'link', 'select']),
   className : PropTypes.string,
 };
 
 Cell.defaultProps = {
-  type      : 'form',
+  type      : 'normal',
   className : null,
 };
 

@@ -28,9 +28,25 @@
   }
 }
 
-.ui-cell-form {
+.ui-cell-normal,
+.ui-cell-select {
   .ui-cell-title {
     width: r(100);
+  }
+}
+
+.ui-cell-select {
+  .ui-cell-footer {
+    &:after {
+      display: inline-block;
+      margin-left: r(5);
+      content: '';
+      border-right: r(2) solid #c7c7cc;
+      border-top: r(2) solid #c7c7cc;
+      width: r(10);
+      height: r(10);
+      transform: rotate(45deg);
+    }
   }
 }
 
