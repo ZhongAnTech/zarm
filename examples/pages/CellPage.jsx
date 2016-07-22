@@ -1,13 +1,92 @@
 
 import React, { Component } from 'react';
-import { Button, Panel, Icon, Input, Cell, Select } from '../../components';
+import { Button, Panel, Icon, Input, Cell, Select, Selector } from '../../components';
+
+const addressData = [
+  { 
+    value: 'bj',
+    name : '北京',
+    children: [
+      {
+        value: 'bjs',
+        name: '北京市',
+        children: [
+          {
+            value: 'hdq',
+            name: '海淀区',
+          },
+          {
+            value: 'xcq',
+            name: '西城区',
+          },
+          {
+            value: 'cwq',
+            name: '崇文区',
+          },
+          {
+            value: 'dcq',
+            name: '东城区',
+          },
+          {
+            value: 'cyq',
+            name: '朝阳区',
+          }
+        ]
+      }
+    ]
+  },
+  { 
+    value: 'fj',
+    name : '福建省',
+    children: [
+      {
+        value: 'sms',
+        name: '三明市',
+        children: [
+          {
+            value: 'sx',
+            name: '沙县',
+          },
+          {
+            value: 'nh',
+            name: '宁化县',
+          },
+          {
+            value: 'tn',
+            name: '泰宁县',
+          }
+        ]
+      },
+      {
+        value: 'fzs',
+        name: '福州市',
+        children: [
+          {
+            value: 'fdx',
+            name: '福鼎县',
+          },
+          {
+            value: 'clx',
+            name: '长乐县',
+          }
+        ]
+      }
+    ]
+  }
+];
 
 class CellPage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      select: false
+      select       : false,
+      province     : '',
+      city         : '',
+      country      : '',
+      provinceData : addressData,
+      cityData     : addressData[0].children,
+      countryData  : addressData[0].children[0].children,
     }
   }
 
@@ -83,21 +162,47 @@ class CellPage extends Component {
           <Panel.Header>
             <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
           </Panel.Header>
-          <Panel.Body>
+          <Panel.Body>  
             <Cell title="姓名">
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
             <Cell title="出生日期" type="select">
-              <Input type="date" placeholder="请选择出生日期" />
+              <Input type="date" placeholder="请选择出生日期" defaultValue="2016-01-11" />
+            </Cell>
+            <Cell title="性别" type="select">
+              <Select placeholder="请选择出生日期" onChange={(e) => {
+                console.log(e.target.value)
+              }}>
+                <Select.Option value="M">男</Select.Option>
+                <Select.Option value="F" checked>女</Select.Option>
+              </Select>
             </Cell>
             <Cell title="选择" type="select">
-              <Select
+              <Selector
                 title="选择日期"
                 placeholder="请选择日期"
                 onOk={(data) => {
                   alert('你选择了确定')
                 }}>
-              </Select>
+                <Selector.Option dataSource={this.state.provinceData} defaultValue={this.state.province} onChange={(data) => {
+                  this.setState({
+                    province   : data.value,
+                    cityData   : this.state.provinceData[data.index].children,
+                    countryData: this.state.provinceData[data.index].children[0].children
+                  });
+                }} />
+                <Selector.Option dataSource={this.state.cityData} defaultValue={this.state.city} onChange={(data) => {
+                  this.setState({
+                    city       : data.value,
+                    countryData: this.state.cityData[data.index].children
+                  });
+                }} />
+                <Selector.Option dataSource={this.state.countryData} defaultValue={this.state.country} onChange={(data) => {
+                  this.setState({
+                    country    : data.value,
+                  });
+                }} />
+              </Selector>
             </Cell>
           </Panel.Body>
         </Panel>

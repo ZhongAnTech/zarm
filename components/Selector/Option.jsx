@@ -1,7 +1,7 @@
 
 import React, { Component, PropTypes } from 'react';
 
-class SelectorGroup extends Component {
+class Option extends Component {
 
   constructor(props) {
     super(props);
@@ -17,11 +17,11 @@ class SelectorGroup extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.data !== this.props.data) {
+    if (nextProps.dataSource !== this.props.dataSource) {
       this._onMoveTo(0, 300);
-      const value = nextProps.data[0];
+      const value = nextProps.dataSource[0];
       value.index = 0;
-      this.props.onChange && this.props.onChange(value);
+      // this.props.onChange && this.props.onChange(value);
     }
   }
 
@@ -37,7 +37,7 @@ class SelectorGroup extends Component {
     }
 
     const moveY = index * itemHeight,
-          value = this.props.data[Math.abs(index)];
+          value = this.props.dataSource[Math.abs(index)];
 
     this._doTransition(moveY, speed);
     value.index = Math.abs(index);
@@ -103,14 +103,14 @@ class SelectorGroup extends Component {
   }
 
   render () {
-    const { name, data, ...others } = this.props;
+    const { name, dataSource, ...others } = this.props;
 
-    const options = data.map((result, index) => {
+    const options = dataSource.map((result, index) => {
       return <li key={index}>{result.name}</li>;
     });
 
     return (
-      <div className="ui-selector-group"
+      <div className="ui-selector-option"
         onTouchStart={(event) => this._onTouchStart(event)}
         onTouchMove={(event) => this._onTouchMove(event)}
         onTouchEnd={(event) => this._onTouchEnd(event)}>
@@ -123,12 +123,12 @@ class SelectorGroup extends Component {
 
 }
 
-SelectorGroup.propTypes = { 
+Option.propTypes = { 
   name : PropTypes.string,
 };
 
-// SelectorGroup.defaultProps = {
+// Option.defaultProps = {
 // };
 
-export default SelectorGroup;
+export default Option;
 

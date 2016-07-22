@@ -1,43 +1,52 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 import Input from '../Input';
-import SelectContainer from './SelectContainer';
 
 class Select extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      isShow: false
+      value: props.value || props.defaultValue || this.getCheckedValue(props.children)
     };
   }
 
-  toggle() {
-    this.setState({
-      isShow: !this.state.isShow
-    });
-  }
-
   render () {
-    const { placeholder, onOk, ...others } = this.props;
+    const { placeholder, onChange, children, ...others } = this.props;
+
+    let valueText = <div className="ui-select-placeholder">{placeholder}</div>;
+
+    React.Children.map(children, (option, index) => {
+      if (this.state.value == option.props.value) {
+        valueText = option.props.children;
+        return;
+      }
+    });
 
     return (
       <div className="ui-select">
-        <Input type="text" placeholder={placeholder} readOnly onClick={() => this.toggle()} />
-        <SelectContainer {...others}
-          visible={this.state.isShow}
-          onMaskClick={() => this.toggle()}
-          onCancel={() => this.toggle()}
-          onOk={(data) => {
-            onOk();
-            this.toggle();
-          }}>
-          <option>1111</option>
-        </SelectContainer>
+        {valueText}
+        <select {...others} defaultValue={this.state.value} value={this.state.value} onChange={(e) => {
+          const value = e.target.value;
+          this.setState({ value }, onChange(e));
+        }}>
+          {children}
+        </select>
       </div>
     );
   }
+
+  getCheckedValue(children) {
+    let checkedValue = null;
+    React.Children.forEach(children, (option) => {
+      if (option.props && option.props.checked) {
+        checkedValue = option.props.value;
+      }
+    });
+    return checkedValue;
+  }
+
 }
 
 Select.propTypes = { 

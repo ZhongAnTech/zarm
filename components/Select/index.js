@@ -1,9 +1,7 @@
 
 import Select from './Select';
-import Container from './SelectContainer';
-// import Option from './Option';
+import Option from './Option';
 
-// Select.Option = Option;
-Select.Container = Container;
+Select.Option = Option;
 
 export default Select;
