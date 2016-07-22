@@ -1,7 +1,9 @@
 
 import Selector from './Selector';
-import SelectorGroup from './SelectorGroup';
+import Container from './SelectorContainer';
+import Option from './Option';
 
-Selector.Group = SelectorGroup;
+Selector.Container = Container;
+Selector.Option = Option;
 
 export default Selector;

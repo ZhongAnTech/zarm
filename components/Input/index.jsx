@@ -6,7 +6,7 @@ class Input extends Component {
 
   render () { 
     const props = this.props;
-    const { type, isRadius, isDisabled, size, defaultValue, className, ...others } = props;
+    const { placeholder, type, isRadius, isDisabled, size, defaultValue, className, ...others } = props;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
 
@@ -19,8 +19,12 @@ class Input extends Component {
     });
 
     const input = (type == 'textarea')
-               ? <textarea className={cls} {...others} disabled={disabled}>{defaultValue}</textarea>
-               : <input type={type} defaultValue={defaultValue} className={cls} {...others} disabled={disabled} />;
+               ? <textarea {...others} className={cls} placeholder={placeholder} disabled={disabled}>{defaultValue}</textarea>
+               : <input {...others} type={type} className={cls} placeholder={placeholder} defaultValue={defaultValue} disabled={disabled} />;
+
+    // const valueText = (type == 'date')
+    //                 ? <div className="ui-select-placeholder">{placeholder}</div>
+    //                 : null;
 
     return (
       <span>
