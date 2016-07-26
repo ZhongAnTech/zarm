@@ -3,8 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import Events from '../utils/events'
 import Header from './Header';
 
-import '../../styles/index.scss';
-import '../styles/components/App.scss';
+import '../../styles/index';
+import '../styles/components/App';
 
 class App extends Component {
 

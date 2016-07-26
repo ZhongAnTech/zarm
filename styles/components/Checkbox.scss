@@ -1,0 +1,85 @@
+
+.ui-checkbox-group {
+  display: inline-block;
+
+  label {
+    margin-right: r(16);
+  }
+}
+
+/* 一般状态 */
+.ui-checkbox {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+
+  /* 选中状态 */
+  &.checked {
+    
+    .ui-checkbox-inner {
+      border-color: $base-theme-info;
+      background-color: #fff;
+
+      &:after {
+        transform: rotate(45deg) scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  &.disabled {
+
+    .ui-checkbox-inner {
+      border-color: #d9d9d9;
+      background-color: #f3f3f3;
+      cursor: not-allowed;
+
+      &:after {
+        border-color: #ccc;
+      }
+    }
+  }
+
+  .ui-checkbox-inner {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: r(15);
+    height: r(15);
+    border: 1px solid $base-theme-info;
+    border-radius: r(3);
+    background-color: #fff;
+    transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
+
+    &:after {
+      transform: rotate(45deg) scale(0);
+      position: absolute;
+      left: r(4.5);
+      top: r(1.5);
+      display: table;
+      width: r(5);
+      height: r(9);
+      border: r(2) solid $base-theme-info;
+      border-top: 0;
+      border-left: 0;
+      content: ' ';
+      transition: all .1s cubic-bezier(.71, -0.46, .88, .6);
+    }
+  }
+
+  .ui-checkbox-input {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+  }
+
+  & + span {
+    margin-left: r(5);
+  }
+}
