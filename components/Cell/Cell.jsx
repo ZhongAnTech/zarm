@@ -1,13 +1,12 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import Icon from '../Icon';
 
 class Cell extends Component {
 
   render () {
     const props = this.props;
-    const { type, icon, title, description, children, className, ...others } = props;
+    const { type, icon, title, description, help, children, className, ...others } = props;
 
     const cls = classnames({
       'ui-cell'          : true,
@@ -23,18 +22,28 @@ class Cell extends Component {
                         ? <div className="ui-cell-content">{children}</div>
                         : null;
 
+    const helpRender = help
+                     ? (
+                        <div className="ui-cell-explain">
+                          <div className="ui-cell-explain-text">{help}</div>
+                        </div>
+                      )
+                     : null;
     return (
       <div className={cls} {...others}>
-        <div className="ui-cell-header">
-          {iconRender}
+        <div className="ui-cell-inner">
+          <div className="ui-cell-header">
+            {iconRender}
+          </div>
+          <div className="ui-cell-body">
+            <div className="ui-cell-title">{title}</div>
+            {contentRender}
+          </div>
+          <div className="ui-cell-footer">
+            {description}
+          </div>
         </div>
-        <div className="ui-cell-body">
-          <div className="ui-cell-title">{title}</div>
-          {contentRender}
-        </div>
-        <div className="ui-cell-footer">
-          {description}
-        </div>
+        {helpRender}
       </div>
     );
   }

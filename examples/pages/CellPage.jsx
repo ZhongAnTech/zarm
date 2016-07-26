@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Button, Panel, Icon, Input, Cell, Select, Selector } from '../../components';
+import { Button, Panel, Icon, Input, Cell, Select, Selector, Checkbox } from '../../components';
 
 const addressData = [
   { 
@@ -163,24 +163,24 @@ class CellPage extends Component {
             <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>  
-            <Cell title="姓名">
+            <Cell title="姓名" help="姓名不能为空">
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
             <Cell title="出生日期" type="select">
               <Input type="date" placeholder="请选择出生日期" defaultValue="2016-01-11" />
             </Cell>
             <Cell title="性别" type="select">
-              <Select placeholder="请选择出生日期" onChange={(e) => {
+              <Select placeholder="请选择性别" onChange={(e) => {
                 console.log(e.target.value)
               }}>
                 <Select.Option value="M">男</Select.Option>
-                <Select.Option value="F" checked>女</Select.Option>
+                <Select.Option value="F">女</Select.Option>
               </Select>
             </Cell>
-            <Cell title="选择" type="select">
+            <Cell title="所在城市" type="select">
               <Selector
-                title="选择日期"
-                placeholder="请选择日期"
+                title="选择城市"
+                placeholder="请选择城市"
                 onOk={(data) => {
                   alert('你选择了确定')
                 }}>
@@ -204,9 +204,13 @@ class CellPage extends Component {
                 }} />
               </Selector>
             </Cell>
+            <Cell>
+              <Checkbox onChange={(e) => {
+                console.log(e.target.checked);
+              }}>Checkbox</Checkbox>
+            </Cell>
           </Panel.Body>
         </Panel>
-
       </div>
     );
   }

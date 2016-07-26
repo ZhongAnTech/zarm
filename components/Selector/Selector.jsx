@@ -24,7 +24,7 @@ class Selector extends Component {
 
     return (
       <div className="ui-selector" onClick={() => this.toggle()}>
-        <span>{placeholder}</span>
+        <div className="ui-select-placeholder">{placeholder}</div>
         <SelectorContainer {...others}
           visible={this.state.isShow}
           onMaskClick={() => this.toggle()}

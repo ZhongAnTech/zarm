@@ -32,6 +32,8 @@ class IconPage extends Component {
             <Icon type="arrow-bottom" />
             <Icon type="add" />
             <Icon type="minus" />
+            <Icon type="minus-round" />
+            <Icon type="minus-round-fill" />
             <Icon type="date" />
             <Icon type="loading" />
           </Panel.Body>

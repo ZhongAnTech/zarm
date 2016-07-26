@@ -1,6 +1,8 @@
 var webpack = require('webpack');
-// var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
+
+// var extractCSS = new ExtractTextPlugin('stylesheet/[name].[chunkhash:8].css');
 
 module.exports = {
 
@@ -16,12 +18,12 @@ module.exports = {
       { 
         test: /\.scss$/,
         loader: 'style-loader!css?sourceMap&-minimize!autoprefixer!sass?sourceMap'
-        // loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer!sass?sourceMap")
+        // loader: extractCSS.extract("style", "css?sourceMap&-minimize!autoprefixer!sass?sourceMap")
       },
       { 
         test: /\.css$/,
         loader: 'style-loader!css?sourceMap&-minimize!autoprefixer'
-        // loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap&-minimize!autoprefixer")
+        // loader: extractCSS.extract("style", "css?sourceMap&-minimize!autoprefixer")
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
@@ -39,6 +41,7 @@ module.exports = {
   },
 
   plugins: [
+    // extractCSS,
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
