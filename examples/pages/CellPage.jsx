@@ -110,7 +110,7 @@ class CellPage extends Component {
 
         <Panel>
           <Panel.Header>
-            <Panel.Title>带描述的列表项</Panel.Title>
+            <Panel.Title><Icon type="check" />带描述的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
             <Cell title="标题文字" description="描述文字" />
