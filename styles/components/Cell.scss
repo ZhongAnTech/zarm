@@ -109,25 +109,12 @@
 .ui-cell-explain {
   display: flex;
   align-items: center;
-  justify-content: center;
   position: relative;
   min-height: r(30);
   background: #ffdad9;
-  color: #ff0c1c;
+  color: #e93a3a;
   padding: r(5) r(15);
-  font-size: r(14);
-
-  &:before {
-    position: absolute;
-    top: r(-6);
-    left: r(40);
-    display: inline-block;
-    content: '';
-    background-color: #ffdad9;
-    width: r(12);
-    height: r(12);
-    transform: rotate(45deg);
-  }
+  font-size: r(13);
 }
 
 .ui-cell-explain-text {
@@ -135,14 +122,16 @@
 
   &:before {
     display: inline-block;
+    margin-top: r(-3);
     vertical-align: middle;
     content: 'i';
     width: r(13);
     height: r(13);
+    line-height: r(13);
     margin-right: r(6);
-    border-radius: r(3);
-    background-color: #ff0c1c;
-    color: #fff;
+    border-radius: r(13);
+    border: 1px solid #e93a3a;
+    color: #e93a3a;
     font-size: r(10);
     font-weight: bold;
   }

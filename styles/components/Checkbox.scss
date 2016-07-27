@@ -22,7 +22,7 @@
     
     .ui-checkbox-inner {
       border-color: $base-theme-info;
-      background-color: #fff;
+      background-color: $base-theme-info;
 
       &:after {
         transform: rotate(45deg) scale(1);
@@ -50,9 +50,9 @@
     top: 0;
     left: 0;
     display: inline-block;
-    width: r(15);
-    height: r(15);
-    border: 1px solid $base-theme-info;
+    width: r(14);
+    height: r(14);
+    border: 1px solid #d9d9d9;
     border-radius: r(3);
     background-color: #fff;
     transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
@@ -60,12 +60,12 @@
     &:after {
       transform: rotate(45deg) scale(0);
       position: absolute;
-      left: r(4.5);
-      top: r(1.5);
+      left: r(4);
+      top: r(1, true);
       display: table;
-      width: r(5);
+      width: r(5.5);
       height: r(9);
-      border: r(2) solid $base-theme-info;
+      border: r(2) solid #fff;
       border-top: 0;
       border-left: 0;
       content: ' ';
