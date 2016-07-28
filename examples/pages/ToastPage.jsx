@@ -52,7 +52,7 @@ class ButtonPage extends Component {
         <Toast
           visible={this.state.toast2}
           onMaskClick={() => this.toggle('toast2')}>
-          <Icon type="check-round" style={{ fontSize: '3rem' }} />
+          <Icon type="right-round-fill" style={{ fontSize: '3rem' }} />
           <p>预约成功</p>
         </Toast>
 

@@ -110,11 +110,11 @@ class CellPage extends Component {
 
         <Panel>
           <Panel.Header>
-            <Panel.Title><Icon type="check" />带描述的列表项</Panel.Title>
+            <Panel.Title>带描述的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
             <Cell title="标题文字" description="描述文字" />
-            <Cell title="标题文字" description={<Icon type="check" />}></Cell>
+            <Cell title="标题文字" description={<Icon type="right" />}></Cell>
           </Panel.Body>
         </Panel>
 
@@ -123,7 +123,7 @@ class CellPage extends Component {
             <Panel.Title>带图标、描述的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Cell title="标题文字" description="描述文字" icon={<Icon type="check" />}></Cell>
+            <Cell title="标题文字" description="描述文字" icon={<Icon type="right" />}></Cell>
             <Cell title="标题文字" description="描述文字" icon={<img src="https://weui.io/images/icon_nav_toast.png" />}></Cell>
           </Panel.Body>
         </Panel>
@@ -153,7 +153,7 @@ class CellPage extends Component {
             <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Cell type="link" title="标题文字" description="描述文字" icon={<Icon type="check" />}></Cell>
+            <Cell type="link" title="标题文字" description="描述文字" icon={<Icon type="right" />}></Cell>
             <Cell type="link" title="标题文字" description="描述文字" icon={<img src="https://weui.io/images/icon_nav_toast.png" />}></Cell>
           </Panel.Body>
         </Panel>
@@ -163,7 +163,7 @@ class CellPage extends Component {
             <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>  
-            <Cell title="姓名" help="姓名不能为空">
+            <Cell title="姓名" help={<span><Icon type="info-round" /> 姓名不能为空</span>}>
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
             <Cell title="出生日期" type="select">
