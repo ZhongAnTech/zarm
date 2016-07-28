@@ -2,8 +2,11 @@
   .ui-tab-header-item {
     &.active {
       color: $color;
-      border-bottom: r(3) solid $color;
     }
+  }
+
+  .ui-tab-header-line {
+    background: $color;
   }
 }
 
@@ -25,14 +28,27 @@
 }
 
 .ui-tab-header {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: r(45);
-  line-height: r(45);
-  border-top: 1px solid #e3e3e3;
-  border-bottom: 1px solid #e3e3e3;
+  position: relative;
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: r(45);
+    line-height: r(45);
+    border-top: 1px solid #e3e3e3;
+    border-bottom: 1px solid #e3e3e3;
+  }
+}
+
+.ui-tab-header-line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  height: r(3);
+  transition: left .3s ease-out;
 }
 
 .ui-tab-header-item {
@@ -61,7 +77,6 @@
 
   &.active {
     color: $base-theme-success;
-    border-bottom: r(3) solid $base-theme-success;
   }
 }
 

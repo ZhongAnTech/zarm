@@ -14,12 +14,12 @@ class IconPage extends Component {
             <Panel.Title>Icon图标</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Icon type="check" theme="success" />
-            <Icon type="check-round" theme="success" />
-            <Icon type="check-round-fill" theme="success" />
-            <Icon type="close" theme="error" />
-            <Icon type="close-round" theme="error" />
-            <Icon type="close-round-fill" theme="error" />
+            <Icon type="right" theme="success" />
+            <Icon type="right-round" theme="success" />
+            <Icon type="right-round-fill" theme="success" />
+            <Icon type="wrong" theme="error" />
+            <Icon type="wrong-round" theme="error" />
+            <Icon type="wrong-round-fill" theme="error" />
             <Icon type="info-round" theme="info" />
             <Icon type="info-round-fill" theme="info" />
             <Icon type="question-round" />
@@ -31,6 +31,8 @@ class IconPage extends Component {
             <Icon type="arrow-top" />
             <Icon type="arrow-bottom" />
             <Icon type="add" />
+            <Icon type="add-round" />
+            <Icon type="add-round-fill" />
             <Icon type="minus" />
             <Icon type="minus-round" />
             <Icon type="minus-round-fill" />

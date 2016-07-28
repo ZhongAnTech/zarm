@@ -53,7 +53,7 @@ class TabGroup extends Component {
       [className]       : !!className
     });
 
-    let items = React.Children.map(children, (item, $index) => {
+    const items = React.Children.map(children, (item, $index) => {
       return (
         <li key={$index} className={this.getTitleItemCls($index)} onClick={() => {
           this.setState(
@@ -64,7 +64,7 @@ class TabGroup extends Component {
       );
     });
 
-    let content = React.Children.map(children, (item, $index) => {
+    const content = React.Children.map(children, (item, $index) => {
       return (
         <Tab {...item.props} selected={!!(this.state.value === $index)}>
           {item.props.children}
@@ -72,11 +72,17 @@ class TabGroup extends Component {
       );
     });
 
+    console.log(`${100 / items.length}%`)
+    const lineStyle = {
+      width: `${100 / items.length}%`,
+      left : `${100 * this.state.value / items.length}%`,
+    }
     return (
       <div {...others} className={cls}>
-        <ul className="ui-tab-header">
-          {items}
-        </ul>
+        <div className="ui-tab-header">
+          <ul>{items}</ul>
+          <div className="ui-tab-header-line" style={lineStyle}></div>
+        </div>
         <div className="ui-tab-body">
           {content}
         </div>

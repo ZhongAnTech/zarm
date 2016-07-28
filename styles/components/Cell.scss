@@ -116,23 +116,3 @@
   padding: r(5) r(15);
   font-size: r(13);
 }
-
-.ui-cell-explain-text {
-  text-align: center;
-
-  &:before {
-    display: inline-block;
-    margin-top: r(-3);
-    vertical-align: middle;
-    content: 'i';
-    width: r(13);
-    height: r(13);
-    line-height: r(13);
-    margin-right: r(6);
-    border-radius: r(13);
-    border: 1px solid #e93a3a;
-    color: #e93a3a;
-    font-size: r(10);
-    font-weight: bold;
-  }
-}
