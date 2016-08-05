@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
 import { Panel, Icon, Button } from '../../components';
 
 import '../styles/pages/ButtonPage';
