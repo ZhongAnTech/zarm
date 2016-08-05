@@ -55,7 +55,7 @@ Toast.propTypes = {
 Toast.defaultProps = {
   visible     : false,
   duration    : 3000,
-  onMaskClick : function () {},
+  onMaskClick : () => {},
 };
 
 export default Toast;

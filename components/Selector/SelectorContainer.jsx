@@ -52,7 +52,7 @@ SelectorContainer.defaultProps = {
   visible     : false,
   cancelText  : '取消',
   okText      : '确定',
-  onMaskClick : function () {},
+  onMaskClick : () => {},
 };
 
 export default SelectorContainer;

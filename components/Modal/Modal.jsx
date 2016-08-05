@@ -9,7 +9,7 @@ class Modal extends Component {
     this.state = {
       isShow         : false,
       isPending      : false,
-      animationState : 'leave',
+      animationState : 'enter',
     };
 
     this.resolveAnimationFrame = this.resolveAnimationFrame.bind(this);
