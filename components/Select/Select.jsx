@@ -12,6 +12,14 @@ class Select extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps || this.getCheckedValue(nextProps.children)) {
+      this.setState({
+        value: nextProps.value || this.getCheckedValue(nextProps.children)
+      });
+    }
+  }
+  
   render () {
     const { placeholder, onChange, children, ...others } = this.props;
 

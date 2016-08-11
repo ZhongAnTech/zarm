@@ -87,6 +87,7 @@ class CellPage extends Component {
       provinceData : addressData,
       cityData     : addressData[0].children,
       countryData  : addressData[0].children[0].children,
+      sex: ''
     }
   }
 
@@ -94,6 +95,12 @@ class CellPage extends Component {
     this.setState({
       [`${ key }`]: !this.state[key]
     });
+  }
+
+  componentDidMount() {
+    this.setState({
+      sex: 'F'
+    })
   }
 
   render() {
@@ -170,9 +177,12 @@ class CellPage extends Component {
               <Input type="date" placeholder="请选择出生日期" defaultValue="2016-01-11" />
             </Cell>
             <Cell title="性别" type="select">
-              <Select placeholder="请选择性别" onChange={(e) => {
-                console.log(e.target.value)
-              }}>
+              <Select
+                placeholder="请选择性别" 
+                value={this.state.sex}
+                onChange={(e) => {
+                  console.log(e.target.value)
+                }}>
                 <Select.Option value="M">男</Select.Option>
                 <Select.Option value="F">女</Select.Option>
               </Select>

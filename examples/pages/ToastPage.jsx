@@ -4,13 +4,19 @@ import { Panel, Toast, Loading, Button, Icon } from '../../components';
 
 import '../styles/pages/ToastPage';
 
-class ButtonPage extends Component {
+class ToastPage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      toast1: false,
-      toast2: false,
+      toast: {
+        visible: false,
+        onMaskClick: () => {
+          let toast = this.state.toast
+          toast.visible = false
+          this.setState({toast})
+        }
+      },
       loading: false
     }
   }
@@ -22,6 +28,7 @@ class ButtonPage extends Component {
   }
 
   render() {
+    let { toast } = this.state
     return (
       <div className="toast-page">
         <Panel>
@@ -29,8 +36,29 @@ class ButtonPage extends Component {
             <Panel.Title>提示信息</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button onClick={() => this.toggle('toast1')}>错误提示</Button>
-            <Button onClick={() => this.toggle('toast2')}>成功提示</Button>
+            <Button onClick={() => {
+              toast.visible = true
+              toast.children = '手机号码不能为空'
+              toast.onMaskClick = () => {
+                toast.visible = false
+                this.setState({toast})
+              }
+              this.setState({toast})
+            }}>错误提示</Button>
+            <Button onClick={() => {
+              toast.visible = true
+              toast.children = (
+                <div>
+                  <Icon type="right-round-fill" style={{ fontSize: '3rem' }} />
+                  <p>预约成功</p>
+                </div>
+              )
+              toast.onMaskClick = () => {
+                toast.visible = false
+                this.setState({toast})
+              }
+              this.setState({toast})
+            }}>成功提示</Button>
           </Panel.Body>
         </Panel>
 
@@ -43,18 +71,7 @@ class ButtonPage extends Component {
           </Panel.Body>
         </Panel>
 
-        <Toast
-          visible={this.state.toast1}
-          onMaskClick={() => this.toggle('toast1')}>
-          手机号码不能为空
-        </Toast>
-
-        <Toast
-          visible={this.state.toast2}
-          onMaskClick={() => this.toggle('toast2')}>
-          <Icon type="right-round-fill" style={{ fontSize: '3rem' }} />
-          <p>预约成功</p>
-        </Toast>
+        <Toast {...this.state.toast} />
 
         <Loading visible={this.state.loading} />
       </div>
@@ -62,4 +79,4 @@ class ButtonPage extends Component {
   }
 }
 
-export default ButtonPage;
+export default ToastPage;
