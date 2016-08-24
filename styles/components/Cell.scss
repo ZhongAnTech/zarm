@@ -1,5 +1,25 @@
+@mixin cell-theme($color) {
+  .ui-cell-footer {
+    color: $color
+  }
+}
+
 .ui-cell {
   position: relative;
+  @include cell-theme($base-theme-default);
+
+  &.theme-info {
+    @include cell-theme($base-theme-info);
+  }
+  &.theme-success {
+    @include cell-theme($base-theme-success);
+  }
+  &.theme-warning {
+    @include cell-theme($base-theme-warning);
+  }
+  &.theme-error {
+    @include cell-theme($base-theme-error);
+  }
 
   & + & {
     &:before {
@@ -86,7 +106,6 @@
 
 .ui-cell-footer {
   text-align: right;
-  color: #ff8100;
 }
 
 .ui-cell-icon {

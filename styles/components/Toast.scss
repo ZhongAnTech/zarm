@@ -1,5 +1,6 @@
 
 .ui-toast {
+  display: none;
   position: fixed;
   left: 0px;
   top: 0px;
@@ -7,10 +8,13 @@
   height: 100%;
   overflow: auto;
   user-select: none;
+  z-index: 1300;
+}
+
+.ui-toast-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1300;
 }
 
 .ui-toast-container {

@@ -6,11 +6,12 @@ class Cell extends Component {
 
   render () {
     const props = this.props;
-    const { type, icon, title, description, help, children, className, ...others } = props;
+    const { type, theme, icon, title, description, help, children, className, ...others } = props;
 
     const cls = classnames({
       'ui-cell'          : true,
       [`ui-cell-${type}`]: true,
+      [`theme-${theme}`] : !!theme,
       [className]        : !!className,
     });
  

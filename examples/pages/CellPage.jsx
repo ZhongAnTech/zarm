@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Button, Panel, Icon, Input, Cell, Select, Selector, Checkbox } from '../../components';
+import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Selector, Checkbox } from '../../components';
 
 const addressData = [
   { 
@@ -87,7 +87,8 @@ class CellPage extends Component {
       provinceData : addressData,
       cityData     : addressData[0].children,
       countryData  : addressData[0].children[0].children,
-      sex: ''
+      sex: '',
+      number: 0
     }
   }
 
@@ -130,7 +131,7 @@ class CellPage extends Component {
             <Panel.Title>带图标、描述的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Cell title="标题文字" description="描述文字" icon={<Icon type="right" />}></Cell>
+            <Cell title="标题文字1" description="描述文字" icon={<Icon type="right" />}></Cell>
             <Cell title="标题文字" description="描述文字" icon={<img src="https://weui.io/images/icon_nav_toast.png" />}></Cell>
           </Panel.Body>
         </Panel>
@@ -175,6 +176,15 @@ class CellPage extends Component {
             </Cell>
             <Cell title="出生日期" type="select">
               <Input type="date" placeholder="请选择出生日期" defaultValue="2016-01-11" />
+            </Cell>
+            <Cell title="份数" description={<span style={{ marginLeft: 10 }}>份</span>}>
+              <InputNumber radius theme="info" min={-3} max={3} step={1} style={{float: 'right'}} value={this.state.number} 
+              onChange={(value) => {
+                console.log(value)
+                this.setState({
+                  number: value
+                })
+              }} /> {this.state.number}
             </Cell>
             <Cell title="性别" type="select">
               <Select
