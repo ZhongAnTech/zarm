@@ -1,0 +1,81 @@
+@mixin input-number-theme($color) {
+  .ui-input-number-body {
+    color: $color
+  }
+}
+
+.ui-input-number {
+  @include input-number-theme($base-theme-default);
+  user-select: none;
+
+  &.disabled {
+    .ui-input-number-sub,
+    .ui-input-number-plus {
+      color: #e2e2e2;
+    }
+  }
+
+  &.radius {
+    .ui-input-number-sub {
+      border-radius: $base-radius 0 0 $base-radius;
+    }
+
+    .ui-input-number-plus {
+      border-radius: 0 $base-radius $base-radius 0;
+    }
+  }
+
+  &.theme-info {
+    @include input-number-theme($base-theme-info);
+  }
+  &.theme-success {
+    @include input-number-theme($base-theme-success);
+  }
+  &.theme-warning {
+    @include input-number-theme($base-theme-warning);
+  }
+  &.theme-error {
+    @include input-number-theme($base-theme-error);
+  }
+}
+
+.ui-input-number-sub,
+.ui-input-number-plus {
+  float: left;
+  display: inline-block;
+  border: 1px solid #ddd;
+  width: r(30);
+  height: r(30);
+  line-height: r(28);
+  text-align: center;
+  font-size: r(16);
+  font-weight: bold;
+  cursor: pointer;
+  color: #a6a6a6;
+
+  &.disabled {
+    color: #e2e2e2;
+    cursor: not-allowed;
+  }
+}
+
+.ui-input-number-sub {
+  border-right: none;
+}
+
+.ui-input-number-plus {
+  border-left: none;
+}
+
+.ui-input-number-body {
+  float: left;
+  display: inline-block;
+  width: r(80);
+  padding: 0 r(10);
+  height: r(30);
+  border: 1px solid #ddd;
+  border-radius: 0;
+  text-align: center;
+  outline: 0;
+  appearance: none;
+}

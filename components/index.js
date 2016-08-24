@@ -3,6 +3,7 @@ export Cell from './Cell';
 export Checkbox from './Checkbox';
 export Icon from './Icon';
 export Input from './Input';
+export InputNumber from './InputNumber';
 export Loading from './Loading';
 export Mask from './Mask';
 export Modal from './Modal';
