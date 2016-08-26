@@ -22,7 +22,7 @@ class InputNumber extends Component {
 
   render () { 
     const props = this.props;
-    const { theme, isRadius, isDisabled, size, min, max, className, ...others } = props;
+    const { theme, isRadius, isDisabled, size, min, max, className, onChange, ...others } = props;
     const { value } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
@@ -52,7 +52,7 @@ class InputNumber extends Component {
     return (
       <span {...others} className={cls}>
         <span className={subCls} onClick={() => !subDisabled && this.onSubClick()}><Icon type="minus" /></span>
-        <input type="text" className="ui-input-number-body" value={this.state.value} />
+        <input type="text" className="ui-input-number-body" value={this.state.value} onChange={(e) => onChange(e.target.value)} />
         <span className={plusCls} onClick={() => !plusDisabled && this.onPlusClick()}><Icon type="add" /></span>
       </span>
     );
@@ -62,7 +62,7 @@ class InputNumber extends Component {
     const { step, onChange } = this.props,
           value = this.state.value - step;
 
-    this.setState({ value });
+    // this.setState({ value });
     !!onChange && onChange(value)
   }
 
@@ -70,7 +70,7 @@ class InputNumber extends Component {
     const { step, onChange } = this.props,
           value = this.state.value + step;
           
-    this.setState({ value });
+    // this.setState({ value });
     !!onChange && onChange(value)
   }
 }
