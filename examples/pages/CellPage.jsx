@@ -171,21 +171,29 @@ class CellPage extends Component {
             <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
           </Panel.Header>
           <Panel.Body>  
+
             <Cell title="姓名" help={<span><Icon type="info-round" /> 姓名不能为空</span>}>
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
+
             <Cell title="出生日期" type="select">
               <Input type="date" placeholder="请选择出生日期" defaultValue="2016-01-11" />
             </Cell>
+
             <Cell title="份数" description={<span style={{ marginLeft: 10 }}>份</span>}>
-              <InputNumber radius theme="info" min={-3} max={3} step={1} style={{float: 'right'}} value={this.state.number} 
+              <InputNumber radius theme="info" defaultValue={1} min={-3} max={3} step={1} style={{float: 'right'}} value={this.state.number} 
               onChange={(value) => {
                 console.log(value)
+                if (isNaN(value)) {
+                  return
+                }
+
                 this.setState({
                   number: value
                 })
               }} /> {this.state.number}
             </Cell>
+
             <Cell title="性别" type="select">
               <Select
                 placeholder="请选择性别" 
@@ -197,6 +205,7 @@ class CellPage extends Component {
                 <Select.Option value="F">女</Select.Option>
               </Select>
             </Cell>
+
             <Cell title="所在城市" type="select">
               <Selector
                 title="选择城市"
@@ -224,6 +233,7 @@ class CellPage extends Component {
                 }} />
               </Selector>
             </Cell>
+
             <Cell>
               <Checkbox onChange={(e) => {
                 console.log(e.target.checked);
