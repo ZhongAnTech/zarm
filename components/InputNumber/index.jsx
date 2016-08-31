@@ -50,9 +50,9 @@ class InputNumber extends Component {
     });
 
     return (
-      <span {...others} className={cls}>
+      <span className={cls}>
         <span className={subCls} onClick={() => !subDisabled && this.onSubClick()}><Icon type="minus" /></span>
-        <input type="text" className="ui-input-number-body" value={this.state.value} onChange={(e) => onChange(e.target.value)} />
+        <input {...others} className="ui-input-number-body" value={this.state.value} onChange={(e) => onChange(e.target.value)} />
         <span className={plusCls} onClick={() => !plusDisabled && this.onPlusClick()}><Icon type="add" /></span>
       </span>
     );

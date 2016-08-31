@@ -19,6 +19,10 @@ class Cell extends Component {
                      ? <div className="ui-cell-icon">{icon}</div>
                      : null;
 
+    const titleRender = title
+                     ? <div className="ui-cell-title">{title}</div>
+                     : null;
+
     const contentRender = children
                         ? <div className="ui-cell-content">{children}</div>
                         : null;
@@ -37,7 +41,7 @@ class Cell extends Component {
             {iconRender}
           </div>
           <div className="ui-cell-body">
-            <div className="ui-cell-title">{title}</div>
+            {titleRender}
             {contentRender}
           </div>
           <div className="ui-cell-footer">
