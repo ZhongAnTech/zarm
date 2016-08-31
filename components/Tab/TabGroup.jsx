@@ -72,11 +72,11 @@ class TabGroup extends Component {
       );
     });
 
-    console.log(`${100 / items.length}%`)
     const lineStyle = {
       width: `${100 / items.length}%`,
       left : `${100 * this.state.value / items.length}%`,
     }
+    
     return (
       <div {...others} className={cls}>
         <div className="ui-tab-header">

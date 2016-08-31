@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 import Checkbox from './Checkbox';
 
@@ -23,13 +23,21 @@ class CheckboxGroup extends Component {
   render () {
     const props = this.props;
 
-    let children = React.Children.map(props.children, (checkbox) => {
-      return (
-        <Checkbox {...checkbox.props}
-          onChange={(e) => this.onCheckboxChange(e)}
-          checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)} />
-      );
+    const children = React.Children.map(props.children, (element, index) => {
+      return cloneElement(element, {
+        key: index,
+        onChange: (e) => this.onCheckboxChange(e),
+        checked: !!(this.state.value.indexOf(checkbox.props.value) > -1)
+      });
     });
+
+    // let children = React.Children.map(props.children, (checkbox) => {
+    //   return (
+    //     <Checkbox {...checkbox.props}
+    //       onChange={(e) => this.onCheckboxChange(e)}
+    //       checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)} />
+    //   );
+    // });
 
     return (
       <div className="ui-checkbox-group">
