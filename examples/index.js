@@ -40,6 +40,14 @@ const rootRoute = {
       }
     },
     {
+      path: 'radio',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/RadioPage'));
+        }, 'RadioPage');
+      }
+    },
+    {
       path: 'modal',
       getComponent(location, cb) {
         require.ensure([], (require) => {

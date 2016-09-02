@@ -1,0 +1,159 @@
+@mixin radio-theme($background) {
+  &.checked {
+    .ui-radio-inner {
+      &:after {
+        background: $background;
+      }
+    }
+  }
+}
+
+.ui-radio-group {
+  &.block {
+    width: 100%;
+    display: flex;
+
+    .ui-radio,
+    .ui-radio-button {
+      flex: 1;
+    }
+  }
+
+  &.radius {
+    .ui-radio-button {
+      &:first-child {
+        border-radius: r(6) 0 0 r(6);
+      }
+
+      &:last-child {
+        border-radius: 0 r(6) r(6) 0;
+      }
+    }
+  }
+}
+
+.ui-radio {
+  margin-right: r(16);
+  @include radio-theme($base-theme-info);
+
+  &.theme-info {
+    @include radio-theme($base-theme-info);
+  }
+  &.theme-success {
+    @include radio-theme($base-theme-success);
+  }
+  &.theme-warning {
+    @include radio-theme($base-theme-warning);
+  }
+  &.theme-error {
+    @include radio-theme($base-theme-error);
+  }
+
+  .ui-radio-inner {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: r(14);
+    height: r(14);
+    border: 1px solid #d9d9d9;
+    border-radius: r(14);
+    background-color: #fff;
+    transition: border-color .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
+
+    &:after {
+      position: absolute;
+      width: r(6);
+      height: r(6);
+      left: r(3);
+      top: r(3);
+      border-radius: r(6);
+      display: table;
+      border-top: 0;
+      border-left: 0;
+      content: ' ';
+      opacity: 0;
+      transform: scale(0);
+      transition: transform .3s cubic-bezier(.78, .14, .15, .86), opacity .3s cubic-bezier(.78, .14, .15, .86), background-color .3s cubic-bezier(.78, .14, .15, .86);
+    }
+  }
+
+  .ui-radio-input {
+    margin-right: r(5);
+  }
+
+  /* 选中状态 */
+  &.checked {
+    .ui-radio-inner {
+      border-color: #d9d9d9;
+
+      &:after {
+        transform: scale(1);
+        opacity: 1;
+        transition: transform .3s cubic-bezier(.12, .4, .29, 1.46),opacity .3s cubic-bezier(.78, .14, .15, .86),background-color .3s cubic-bezier(.78, .14, .15, .86);
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  &.disabled {
+    .ui-radio-inner {
+      border-color: #d9d9d9;
+      background-color: #f3f3f3;
+      cursor: not-allowed;
+
+      &:after {
+        background-color: #ccc;
+      }
+    }
+  }
+}
+
+.ui-radio-input {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    display: none;
+  }
+}
+
+.ui-radio-button {
+  height: r(30);
+  line-height: r(30);
+  display: inline-block;
+  transition: all .3s ease;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-left-width: 0;
+  border-color: $base-theme-info;
+  color: $base-theme-info;
+  background: #fff;
+  padding: 0 r(16);
+  font-size: r(14);
+  text-align: center;
+
+  &:first-child {
+    border-left-width: 1px;
+  }
+
+  &.checked {
+    background: $base-theme-info;
+    color: #fff;
+  }
+
+  &.disabled {
+    background-color: #f3f3f3;
+    color: #ccc;
+    cursor: not-allowed;
+  }
+}
