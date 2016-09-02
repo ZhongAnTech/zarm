@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-class Checkbox extends Component {
+class Radio extends Component {
 
   constructor(props) {
     super(props);
@@ -21,27 +21,27 @@ class Checkbox extends Component {
 
   render () {
     const props = this.props;
-    const { value, isDisabled, className, children, onChange, ...others } = props;
-    const disabled = 'disabled' in props || isDisabled;
+    const { type, value, checked, disabled, isDisabled, className, children, onChange, ...others } = props;
+    const disabledFlag = 'disabled' in props || isDisabled;
 
     const cls = classnames({
-      'ui-checkbox': true,
-      'checked'    : this.state.checked,
-      'disabled'   : disabled,
-      [className]  : !!className,
+      'ui-radio'        : (type == 'default'),
+      'ui-radio-button' : (type == 'button'),
+      'checked'         : this.state.checked,
+      'disabled'        : disabledFlag,
+      [className]       : !!className,
     });
 
     return (
-      <label {...others}>
-        <span className={cls}>
+      <label {...others} className={cls}>
+        <span className="ui-radio-input">
+          <span className="ui-radio-inner"></span>
           <input
-            className="ui-checkbox-input"
-            type="checkbox"
+            type="radio"
             value={value}
             checked={this.state.checked}
-            disabled={disabled}
+            disabled={disabledFlag}
             onChange={(e) => this._onClick(e)} />
-          <span className="ui-checkbox-inner"></span>
         </span>
         {children}
       </label>
@@ -49,24 +49,25 @@ class Checkbox extends Component {
   }
 
   _onClick(e) {
-    const checked = this.state.checked;
     this.setState({
-      checked: !checked
+      checked: true
     });
     this.props.onChange(e);
   }
 }
 
-Checkbox.propTypes = {
+Radio.propTypes = {
+  type          : PropTypes.oneOf(['default', 'button']),
   defaultChecked: PropTypes.bool,
   isDisabled    : PropTypes.bool,
   onChange      : PropTypes.func,
 };
 
-Checkbox.defaultProps = {
+Radio.defaultProps = {
+  type          : 'default',
   defaultChecked: false,
   isDisabled    : false,
   onChange      : () => {},
 };
 
-export default Checkbox;
+export default Radio;
