@@ -21,27 +21,21 @@ class Radio extends Component {
 
   render () {
     const props = this.props;
-    const { type, value, checked, disabled, isDisabled, className, children, onChange, ...others } = props;
-    const disabledFlag = 'disabled' in props || isDisabled;
+    const { type, value, checked, isDisabled, className, children, onChange, ...others } = props;
+    const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
       'ui-radio'        : (type == 'default'),
       'ui-radio-button' : (type == 'button'),
       'checked'         : this.state.checked,
-      'disabled'        : disabledFlag,
+      'disabled'        : disabled,
       [className]       : !!className,
     });
 
     return (
-      <label {...others} className={cls}>
+      <label {...others} className={cls} onClick={() => !disabled && this._onClick()}>
         <span className="ui-radio-input">
           <span className="ui-radio-inner"></span>
-          <input
-            type="radio"
-            value={value}
-            checked={this.state.checked}
-            disabled={disabledFlag}
-            onChange={(e) => this._onClick(e)} />
         </span>
         {children}
       </label>
@@ -49,10 +43,9 @@ class Radio extends Component {
   }
 
   _onClick(e) {
-    this.setState({
-      checked: true
-    });
-    this.props.onChange(e);
+    const checked = true;
+    this.setState({ checked });
+    this.props.onChange(checked);
   }
 }
 

@@ -7,7 +7,7 @@ class Checkbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked,
+      checked: props.checked || props.defaultChecked || false,
     };
   }
 
@@ -32,15 +32,8 @@ class Checkbox extends Component {
     });
 
     return (
-      <label {...others}>
+      <label {...others} onClick={() => !disabled && this._onClick()}>
         <span className={cls}>
-          <input
-            className="ui-checkbox-input"
-            type="checkbox"
-            value={value}
-            checked={this.state.checked}
-            disabled={disabled}
-            onChange={(e) => this._onClick(e)} />
           <span className="ui-checkbox-inner"></span>
         </span>
         {children}
@@ -48,12 +41,10 @@ class Checkbox extends Component {
     );
   }
 
-  _onClick(e) {
-    const checked = this.state.checked;
-    this.setState({
-      checked: !checked
-    });
-    this.props.onChange(e);
+  _onClick() {
+    const checked = !this.state.checked;
+    this.setState({ checked });
+    this.props.onChange(checked);
   }
 }
 
