@@ -21,10 +21,11 @@ class Select extends Component {
   }
   
   render () {
-    const { placeholder, onChange, children, ...others } = this.props;
+    const props = this.props;
+    const { placeholder, isDisabled, onChange, children, ...others } = props;
+    const disabled = 'disabled' in props || isDisabled;
 
     let valueText = <div className="ui-select-placeholder">{placeholder}</div>;
-
     React.Children.map(children, (option, index) => {
       if (this.state.value == option.props.value) {
         valueText = option.props.children;
@@ -32,12 +33,18 @@ class Select extends Component {
       }
     });
 
+    const cls = classnames({
+      'ui-select': true,
+      'disabled' : disabled,
+    });
+
     return (
-      <div className="ui-select">
+      <div className={cls}>
         {valueText}
         <select {...others} defaultValue={this.state.value} value={this.state.value} onChange={(e) => {
           const value = e.target.value;
-          this.setState({ value }, onChange(e));
+          this.setState({ value });
+          onChange(e)
         }}>
           {children}
         </select>

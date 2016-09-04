@@ -2,6 +2,15 @@
   position: relative;
   color: #636363;
   
+  &.disabled {
+    cursor: not-allowed;
+    color: #a9a9a9;
+    
+    select {
+      cursor: not-allowed;
+    }
+  }
+
   .ui-select-placeholder {
     color: #a9a9a9;
   }

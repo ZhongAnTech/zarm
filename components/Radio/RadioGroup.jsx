@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 import Radio from './Radio';
 
@@ -22,16 +22,15 @@ class RadioGroup extends Component {
 
   render() {    
     const props = this.props;
-    const { type, disabled, isBlock, isRadius, isDisabled, theme, size, className, children } = this.props
+    const { type, disabled, isBlock, isRadius, isDisabled, theme, size, className, children } = props;
 
-    let items = React.Children.map(children, (radio) => {
-      return (
-        <Radio {...radio.props}
-          type={type}
-          onChange={(e) => this.onRadioChange(e)}
-          checked={this.state.value === radio.props.value}>
-        </Radio>
-      );
+    const items = React.Children.map(children, (element, index) => {
+      return cloneElement(element, {
+        key: index,
+        type: type,
+        onChange: () => this.onRadioChange(element.props.value),
+        checked: (this.state.value === element.props.value)
+      });
     });
 
     const cls = classnames({
@@ -61,11 +60,9 @@ class RadioGroup extends Component {
     return checkedValue;
   }
 
-  onRadioChange(e) {
-    this.setState({
-      value: e.target.value
-    });
-    this.props.onChange(e);
+  onRadioChange(value) {
+    this.setState({ value });
+    this.props.onChange(value);
   }
 }
 

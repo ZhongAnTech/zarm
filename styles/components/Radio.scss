@@ -127,9 +127,9 @@
 }
 
 .ui-radio-button {
-  height: r(30);
-  line-height: r(30);
   display: inline-block;
+  padding: r(5) r(15);
+  vertical-align: middle;
   transition: all .3s ease;
   cursor: pointer;
   border-style: solid;
@@ -138,7 +138,6 @@
   border-color: $base-theme-info;
   color: $base-theme-info;
   background: #fff;
-  padding: 0 r(16);
   font-size: r(14);
   text-align: center;
 

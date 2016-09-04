@@ -180,7 +180,7 @@ class CellPage extends Component {
               <Input type="date" placeholder="请选择出生日期" defaultValue="2016-01-11" />
             </Cell>
 
-            <Cell title="份数" description={<InputNumber radius theme="info" defaultValue={1} min={-3} max={3} step={1} value={this.state.number} 
+            <Cell title="份数" description={<InputNumber radius type="tel" theme="info" defaultValue={1} min={-3} max={3} step={1} value={this.state.number} 
               onChange={(value) => {
                 console.log(value)
                 if (isNaN(value)) {
@@ -238,6 +238,18 @@ class CellPage extends Component {
                 console.log(value);
               }} />
             </Cell>
+
+            <Cell>
+              <Checkbox.Group onChange={(values) => {
+                  console.log('Checkbox to ' + values);
+                }}>
+                <Checkbox value="a">A</Checkbox>
+                <Checkbox value="b" disabled>B</Checkbox>
+                <Checkbox value="c">C</Checkbox>
+                <Checkbox value="d">D</Checkbox>
+              </Checkbox.Group>
+            </Cell>
+
           </Panel.Body>
         </Panel>
       </div>

@@ -23,25 +23,17 @@ class CheckboxGroup extends Component {
   render () {
     const props = this.props;
 
-    const children = React.Children.map(props.children, (element, index) => {
+    const items = React.Children.map(props.children, (element, index) => {
       return cloneElement(element, {
         key: index,
-        onChange: (e) => this.onCheckboxChange(e),
-        checked: !!(this.state.value.indexOf(checkbox.props.value) > -1)
+        onChange: () => this.onCheckboxChange(element.props.value),
+        checked: !!(this.state.value.indexOf(element.props.value) > -1)
       });
     });
 
-    // let children = React.Children.map(props.children, (checkbox) => {
-    //   return (
-    //     <Checkbox {...checkbox.props}
-    //       onChange={(e) => this.onCheckboxChange(e)}
-    //       checked={!!(this.state.value.indexOf(checkbox.props.value) > -1)} />
-    //   );
-    // });
-
     return (
       <div className="ui-checkbox-group">
-        {children}
+        {items}
       </div>
     );
   }
@@ -56,20 +48,20 @@ class CheckboxGroup extends Component {
     return checkedValue;
   }
 
-  onCheckboxChange(e) {
-    let value = this.state.value,
-        index = value.indexOf(e.target.value);
+  onCheckboxChange(value) {
+    let values = this.state.value,
+        index = values.indexOf(value);
 
     if (index < 0) {
-      value.push(e.target.value);
+      values.push(value);
     } else {
-      value.splice(index, 1);
+      values.splice(index, 1);
     }
 
     this.setState({
-      value: value
+      value: values
     });
-    this.props.onChange(value);
+    this.props.onChange(values);
   }
 }
 

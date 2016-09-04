@@ -22,8 +22,8 @@ class RadioPage extends Component {
             <Panel.Title>基本样式</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Radio.Group value={this.state.radio} onChange={(e) => {
-                console.log('radio to ' + e.target.value);
+            <Radio.Group value={this.state.radio} onChange={(value) => {
+                console.log('radio to ' + value);
               }}>
               <Radio value="a">A</Radio>
               <Radio value="b">B</Radio>
@@ -38,8 +38,8 @@ class RadioPage extends Component {
             <Panel.Title>指定选中项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Radio.Group defaultValue="c" onChange={(e) => {
-                console.log('radio to ' + e.target.value);
+            <Radio.Group defaultValue="c" onChange={(value) => {
+                console.log('radio to ' + value);
               }}>
               <Radio value="a">A</Radio>
               <Radio value="b">B</Radio>
@@ -54,8 +54,8 @@ class RadioPage extends Component {
             <Panel.Title>禁用指定项</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Radio.Group value={this.state.radio} onChange={(e) => {
-                console.log('radio to ' + e.target.value);
+            <Radio.Group value={this.state.radio} onChange={(value) => {
+                console.log('radio to ' + value);
               }}>
               <Radio value="a">A</Radio>
               <Radio value="b">B</Radio>
@@ -70,8 +70,8 @@ class RadioPage extends Component {
             <Panel.Title>按钮样式</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Radio.Group type="button" value={this.state.radio} onChange={(e) => {
-                console.log('radio to ' + e.target.value);
+            <Radio.Group type="button" value={this.state.radio} onChange={(value) => {
+                console.log('radio to ' + value);
               }}>
               <Radio value="a">A</Radio>
               <Radio value="b">B</Radio>
@@ -86,8 +86,8 @@ class RadioPage extends Component {
             <Panel.Title>圆角按钮样式</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Radio.Group radius type="button" value={this.state.radio} onChange={(e) => {
-                console.log('radio to ' + e.target.value);
+            <Radio.Group radius type="button" value={this.state.radio} onChange={(value) => {
+                console.log('radio to ' + value);
               }}>
               <Radio value="a">A</Radio>
               <Radio value="b">B</Radio>
@@ -102,8 +102,8 @@ class RadioPage extends Component {
             <Panel.Title>通栏样式</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Radio.Group radius block type="button" value={this.state.radio} onChange={(e) => {
-                console.log('radio to ' + e.target.value);
+            <Radio.Group radius block type="button" value={this.state.radio} onChange={(value) => {
+                console.log('radio to ' + value);
               }}>
               <Radio value="a">AAAAA</Radio>
               <Radio value="b">BBBBB</Radio>
