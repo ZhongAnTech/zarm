@@ -22,12 +22,13 @@ class Input extends Component {
                ? <textarea {...others} className={cls} placeholder={placeholder} disabled={disabled}>{defaultValue}</textarea>
                : <input {...others} type={type} className={cls} placeholder={placeholder} defaultValue={defaultValue} disabled={disabled} />;
 
-    // const valueText = (type == 'date')
-    //                 ? <div className="ui-select-placeholder">{placeholder}</div>
-    //                 : null;
+    const valueText = (type == 'date')
+                    ? <div className="ui-select-placeholder">{placeholder}</div>
+                    : null;
 
     return (
       <span>
+        {valueText}
         {input}
       </span>
     );

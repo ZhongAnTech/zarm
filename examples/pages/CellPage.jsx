@@ -234,7 +234,7 @@ class CellPage extends Component {
             </Cell>
 
             <Cell>
-              <Checkbox onChange={(value) => {
+              <Checkbox defaultChecked={true} onChange={(value) => {
                 console.log(value);
               }} />
             </Cell>
