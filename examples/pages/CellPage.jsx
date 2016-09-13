@@ -177,7 +177,7 @@ class CellPage extends Component {
             </Cell>
 
             <Cell title="出生日期" type="select">
-              <Input type="date" placeholder="请选择出生日期" defaultValue="2016-01-11" />
+              <Input type="date" placeholder="请选择出生日期" />
             </Cell>
 
             <Cell title="份数" description={<InputNumber radius type="tel" theme="info" defaultValue={1} min={-3} max={3} step={1} value={this.state.number} 

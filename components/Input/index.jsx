@@ -23,11 +23,11 @@ class Input extends Component {
                : <input {...others} type={type} className={cls} placeholder={placeholder} defaultValue={defaultValue} disabled={disabled} />;
 
     const valueText = (type == 'date')
-                    ? <div className="ui-select-placeholder">{placeholder}</div>
+                    ? <div className="ui-input-placeholder">{placeholder}</div>
                     : null;
 
     return (
-      <span>
+      <span className={cls}>
         {valueText}
         {input}
       </span>
