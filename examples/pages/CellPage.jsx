@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Selector, Checkbox } from '../../components';
-
+import Area from './area'
 const addressData = [
   { 
     value: 'bj',
@@ -81,12 +81,12 @@ class CellPage extends Component {
     super(props);
     this.state = {
       select       : false,
-      province     : '',
-      city         : '',
-      country      : '',
-      provinceData : addressData,
-      cityData     : addressData[0].children,
-      countryData  : addressData[0].children[0].children,
+      province     : 110000,
+      city         : 110100,
+      country      : 110101,
+      provinceData : Area.province,
+      cityData     : Area.city[110000],
+      countryData  : Area.country[110100],
       sex: '',
       number: 0
     }
@@ -172,6 +172,34 @@ class CellPage extends Component {
           </Panel.Header>
           <Panel.Body>  
 
+            <Cell title="所在城市" type="select">
+              <Selector
+                title="选择城市"
+                placeholder="请选择城市"
+                onOk={(data) => {
+                  alert('你选择了确定')
+                }}>
+                <Selector.Option dataSource={this.state.provinceData} defaultValue={this.state.province} onChange={(data) => {
+                  this.setState({
+                    province   : data.value,
+                    cityData   : Area.city[data.value],
+                    countryData: Area.country[Area.city[data.value][0].value]
+                  });
+                }} />
+                <Selector.Option dataSource={this.state.cityData} defaultValue={this.state.city} onChange={(data) => {
+                  this.setState({
+                    city       : data.value,
+                    countryData: Area.country[data.value]
+                  });
+                }} />
+                <Selector.Option dataSource={this.state.countryData} defaultValue={this.state.country} onChange={(data) => {
+                  this.setState({
+                    country    : data.value,
+                  });
+                }} />
+              </Selector>
+            </Cell>
+
             <Cell title="姓名" help={<span><Icon type="info-round" /> 姓名不能为空</span>}>
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
@@ -203,34 +231,6 @@ class CellPage extends Component {
                 <Select.Option value="M">男</Select.Option>
                 <Select.Option value="F">女</Select.Option>
               </Select>
-            </Cell>
-
-            <Cell title="所在城市" type="select">
-              <Selector
-                title="选择城市"
-                placeholder="请选择城市"
-                onOk={(data) => {
-                  alert('你选择了确定')
-                }}>
-                <Selector.Option dataSource={this.state.provinceData} defaultValue={this.state.province} onChange={(data) => {
-                  this.setState({
-                    province   : data.value,
-                    cityData   : this.state.provinceData[data.index].children,
-                    countryData: this.state.provinceData[data.index].children[0].children
-                  });
-                }} />
-                <Selector.Option dataSource={this.state.cityData} defaultValue={this.state.city} onChange={(data) => {
-                  this.setState({
-                    city       : data.value,
-                    countryData: this.state.cityData[data.index].children
-                  });
-                }} />
-                <Selector.Option dataSource={this.state.countryData} defaultValue={this.state.country} onChange={(data) => {
-                  this.setState({
-                    country    : data.value,
-                  });
-                }} />
-              </Selector>
             </Cell>
 
             <Cell>
