@@ -21,7 +21,7 @@ class Option extends Component {
       this._onMoveTo(0, 300);
       const value = nextProps.dataSource[0];
       value.index = 0;
-      // this.props.onChange && this.props.onChange(value);
+      this.props.onChange && this.props.onChange(value);
     }
   }
 
@@ -106,7 +106,7 @@ class Option extends Component {
     const { name, dataSource, ...others } = this.props;
 
     const options = dataSource.map((result, index) => {
-      return <li key={index}>{result.name}</li>;
+      return <li key={index}>{result.text}</li>;
     });
 
     return (
