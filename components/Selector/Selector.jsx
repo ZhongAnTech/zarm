@@ -1,49 +1,194 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
-import Input from '../Input';
-import SelectorContainer from './SelectorContainer';
+import Option from './Option';
 
 class Selector extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isShow: false
+    this.state = {  
+      translateY : 0,
+      pointStart : 0,
+      pointEnd   : 0,
+      value      : props.value || props.defaultValue,
     };
   }
 
-  toggle() {
+  componentDidMount() {
+    this.onValueChange(this.state.value, 0)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps)
+    if ('value' in nextProps) {
+      this.setState({
+        value: nextProps.value
+      });
+      this.onValueChange(nextProps.value, 300)
+    }
+  }
+
+  // 选中指定值
+  onValueChange(value, speed) {
+    const { dataSource, valueMember } = this.props;
+    let index = 0;
+    for (var i = 0; i < dataSource.length; i++) {
+      if (dataSource[i][valueMember] == value) {
+        index = i
+        break;
+      }
+    }
+    this.onMoveTo(index, speed)
+    // this.props.onChange && this.props.onChange(value)
+  }
+
+  // 移动到指定编号
+  onMoveTo(index, speed) {  
+    const itemHeight = this.getItemHeight();
+    if (itemHeight == 0) {
+      return;
+    }
+
+    const offset = - index * itemHeight;
+
+    this.doTransition(offset, speed);
     this.setState({
-      isShow: !this.state.isShow
+      translateY  : offset,
     });
   }
 
+  // 执行过渡动画
+  doTransition(offset, duration) {
+    const style = this.refs.selector.style;
+    style.webkitTransitionDuration = duration + "ms";
+    style.mozTransitionDuration = duration + "ms";
+    style.oTransitionDuration = duration + "ms";
+    style.transitionDuration = duration + "ms";
+    style.webkitTransform = "translate3d(0, " + offset + "px, 0)";
+    style.mozTransform = "translate3d(0, " + offset + "px, 0)";
+    style.oTransform = "translate3d(0, " + offset + "px, 0)";
+    style.transform = "translate3d(0, " + offset + "px, 0)";
+  }
+
+  onTouchStart(event) {
+    const pointY = this.getPoint(event).y;
+    this.setState({ 
+      pointStart : pointY,
+    });
+  }
+
+  onTouchMove(event) {
+    event.preventDefault();
+
+    const pointY = this.getPoint(event).y,
+          offset = this.state.translateY + (pointY - this.state.pointStart);
+
+    this.doTransition(offset, 0);
+    this.setState({
+      pointEnd: pointY,
+    });
+  }
+
+  onTouchEnd(event) {
+    let offset = (this.state.pointEnd !== 0)
+                 ? this.state.translateY + (this.state.pointEnd - this.state.pointStart)
+                 : 0,
+        items = this.refs.selector.children,
+        itemHeight = items[0] && items[0].offsetHeight,
+        maxIndex = Math.abs(items.length - 1);
+
+
+    let index = Math.round(offset / itemHeight);
+
+    if (index > 0) {
+      index = 0;
+    } else {
+      index = (Math.abs(offset) >= maxIndex * itemHeight)
+            ? maxIndex
+            : Math.abs(index)
+    }
+
+    this.onMoveTo(index, 300);
+
+    const { dataSource, valueMember, onChange } = this.props,
+          value = dataSource[index][valueMember];
+
+    this.setState({
+      value
+    })
+    onChange && onChange(value);
+  }
+
+  getItemHeight() {
+    const items = this.refs.selector.children,
+          itemHeight = 0;
+
+    if (!items || items.length == 0) {
+      return 0;
+    }
+    return items[0].offsetHeight;
+  }
+
+  // 获取触摸点的当前坐标
+  getPoint(event) {
+    const touch = event.touches[0];
+    return { 
+      x: touch.pageX,
+      y: touch.pageY,
+    }
+  }
+
   render () {
-    const { placeholder, onOk, children, ...others } = this.props;
+    const props = this.props;
+    const { height, isDisabled, isRadius, valueMember, displayMember, dataSource, ...others } = this.props;
+    const options = dataSource.map((item, index) => {
+      return <Option key={index} value={item[valueMember]}>{item[displayMember]}</Option>
+    });
+
+    const cls = classnames({
+      'ui-selector' : true,
+      'disabled'    : 'disabled' in props || isDisabled
+    });
 
     return (
-      <div className="ui-selector" onClick={() => this.toggle()}>
-        <div className="ui-select-placeholder">{placeholder}</div>
-        <SelectorContainer {...others}
-          visible={this.state.isShow}
-          onMaskClick={() => this.toggle()}
-          onCancel={() => this.toggle()}
-          onOk={(data) => {
-            onOk();
-            this.toggle();
-          }}>
-          {children}
-        </SelectorContainer>
+      <div className={cls}
+        style={{height: height}}
+        onTouchStart={(event) => this.onTouchStart(event)}
+        onTouchMove={(event) => this.onTouchMove(event)}
+        onTouchEnd={(event) => this.onTouchEnd(event)}
+        >
+        <ul ref="selector">
+          {options}
+        </ul>
       </div>
     );
+  }
+
+  onOptionChange(props, index) {
+    // if ('disabled' in props || props.isDisabled) {
+    //   return;
+    // }
+
+    // this.setState({
+    //   value      : props.value,
+    // });
+    // this.props.onChange(props.value)
   }
 }
 
 Selector.propTypes = { 
+  onChange      : PropTypes.func,
+  dataSource    : PropTypes.array,
+  valueMember   : PropTypes.string,
+  displayMember : PropTypes.string,
 };
 
 Selector.defaultProps = {
+  onChange      : () => {},
+  dataSource    : [],
+  valueMember   : 'value',
+  displayMember : 'label',
 };
 
 export default Selector;

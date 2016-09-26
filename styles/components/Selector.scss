@@ -1,9 +1,9 @@
 
-.ui-select-placeholder {
+.ui-selector-placeholder {
   color: #a9a9a9;
 }
   
-.ui-selector-container {
+.ui-selector-group {
   z-index: 1500;
 }
 
@@ -58,7 +58,7 @@
   }
 
   .ui-selector-cancel {
-    color: #333;
+    color: #a9a9a9;
   }
   
   .ui-selector-submit {
@@ -96,10 +96,13 @@
   border-right: none;
 }
 
-.ui-selector-option {
+.ui-selector {
   flex: 1;
   position: relative;
-  top: 0;
+  overflow: hidden;
+  max-height: 100%;
+  height: r(200);
+  text-align: center;
   
   .ui-selector-mask-top,
   .ui-selector-mask-bottom {
@@ -130,6 +133,7 @@
     padding: 0;
 
     li {
+      width: 100%;
       height: r(30);
       line-height: r(30);
       font-size: r(20);
