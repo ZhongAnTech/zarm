@@ -1,92 +1,15 @@
 
 import React, { Component } from 'react';
 import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Selector, Checkbox } from '../../components';
-import Area from './area'
-const addressData = [
-  { 
-    value: 'bj',
-    name : '北京',
-    children: [
-      {
-        value: 'bjs',
-        name: '北京市',
-        children: [
-          {
-            value: 'hdq',
-            name: '海淀区',
-          },
-          {
-            value: 'xcq',
-            name: '西城区',
-          },
-          {
-            value: 'cwq',
-            name: '崇文区',
-          },
-          {
-            value: 'dcq',
-            name: '东城区',
-          },
-          {
-            value: 'cyq',
-            name: '朝阳区',
-          }
-        ]
-      }
-    ]
-  },
-  { 
-    value: 'fj',
-    name : '福建省',
-    children: [
-      {
-        value: 'sms',
-        name: '三明市',
-        children: [
-          {
-            value: 'sx',
-            name: '沙县',
-          },
-          {
-            value: 'nh',
-            name: '宁化县',
-          },
-          {
-            value: 'tn',
-            name: '泰宁县',
-          }
-        ]
-      },
-      {
-        value: 'fzs',
-        name: '福州市',
-        children: [
-          {
-            value: 'fdx',
-            name: '福鼎县',
-          },
-          {
-            value: 'clx',
-            name: '长乐县',
-          }
-        ]
-      }
-    ]
-  }
-];
+import District from './district'
 
 class CellPage extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      select       : false,
-      province     : 110000,
-      city         : 110100,
-      country      : 110101,
-      provinceData : Area.province,
-      cityData     : Area.city[110000],
-      countryData  : Area.country[110100],
+      selector: false,
+      selectorValue: [undefined, undefined, undefined],
       sex: '',
       number: 0
     }
@@ -172,34 +95,6 @@ class CellPage extends Component {
           </Panel.Header>
           <Panel.Body>  
 
-            <Cell title="所在城市" type="select">
-              <Selector
-                title="选择城市"
-                placeholder="请选择城市"
-                onOk={(data) => {
-                  alert('你选择了确定')
-                }}>
-                <Selector.Option dataSource={this.state.provinceData} defaultValue={this.state.province} onChange={(data) => {
-                  this.setState({
-                    province   : data.value,
-                    cityData   : Area.city[data.value],
-                    countryData: Area.country[Area.city[data.value][0].value]
-                  });
-                }} />
-                <Selector.Option dataSource={this.state.cityData} defaultValue={this.state.city} onChange={(data) => {
-                  this.setState({
-                    city       : data.value,
-                    countryData: Area.country[data.value]
-                  });
-                }} />
-                <Selector.Option dataSource={this.state.countryData} defaultValue={this.state.country} onChange={(data) => {
-                  this.setState({
-                    country    : data.value,
-                  });
-                }} />
-              </Selector>
-            </Cell>
-
             <Cell title="姓名" help={<span><Icon type="info-round" /> 姓名不能为空</span>}>
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
@@ -231,6 +126,44 @@ class CellPage extends Component {
                 <Select.Option value="M">男</Select.Option>
                 <Select.Option value="F">女</Select.Option>
               </Select>
+            </Cell>
+
+            <Cell title="省份" type="select">
+              <Selector
+                placeholder="选择省份"
+                dataSource={District}
+                value={'520000'}
+                onChange={(value) => {
+                  console.log(value)
+                }} />
+            </Cell>
+
+            <Cell title="所在城市" type="select">
+              <Selector.Group
+                visible={this.state.selector}
+                title="选择城市"
+                placeholder="请选择城市"
+                dataSource={District}
+                value={this.state.selectorValue}
+                valueMember="label"
+                displayMember="label"
+                format=""
+                onChange={(values, selected) => {
+                  console.log(values, selected)
+                }}
+                onOk={(value) => {
+                  console.log('你选择了确定', value)
+                  this.setState({
+                    selector     : false,
+                    selectorValue: value
+                  })
+                }}
+                onCancel={() => {
+                  this.setState({ selector: false })
+                }}
+                onMaskClick={() => {
+                  this.setState({ selector: false })
+                }} />
             </Cell>
 
             <Cell>
