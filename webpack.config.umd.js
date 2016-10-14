@@ -4,14 +4,14 @@ var config = require('./webpack.config.base');
 var path = require('path');
 
 config.entry = {
-  'dragon-ui': [
+  'dragon-mobile-ui': [
     './components/index.js',
     './styles/index.scss'
   ]
 };
 
 config.output = {
-  library: 'DragonUI',
+  library: 'DragonMobileUI',
   libraryTarget: 'umd',
   path: path.join(process.cwd(), 'dist'),
   filename: '[name].js',
