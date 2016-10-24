@@ -7,7 +7,7 @@ class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShow         : false,
+      isShow         : props.visible || false,
       isPending      : false,
       animationState : 'enter',
     };
@@ -75,7 +75,7 @@ class Modal extends Component {
     return (
       <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
         <div className="ui-modal-wrapper">
-          <div {...others} className={classes.dialog} ref="dialog" style={style.dialog} onClick={(e) => this.onContainerClick(e)}>
+          <div {...others} className={classes.dialog} style={style.dialog} onClick={(e) => this.onContainerClick(e)}>
             {children}
           </div>
         </div>
