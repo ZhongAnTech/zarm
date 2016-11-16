@@ -1,4 +1,4 @@
-@mixin cell-theme($color) {
+@mixin cell-theme($color, $border) {
   .ui-cell-footer {
     color: $color
   }
@@ -6,19 +6,19 @@
 
 .ui-cell {
   position: relative;
-  @include cell-theme($base-theme-default);
+  @include cell-theme(base-btn-default-bg, $base-btn-default-border);
 
   &.theme-info {
-    @include cell-theme($base-theme-info);
+    @include cell-theme($base-btn-info-bg, $base-btn-info-border);
   }
   &.theme-success {
-    @include cell-theme($base-theme-success);
+    @include cell-theme($base-btn-success-bg, $base-btn-success-border);
   }
   &.theme-warning {
-    @include cell-theme($base-theme-warning);
+    @include cell-theme($base-btn-warning-bg, $base-btn-warning-border);
   }
   &.theme-error {
-    @include cell-theme($base-theme-error);
+    @include cell-theme($base-btn-error-bg, $base-btn-error-border);
   }
 
   & + & {
@@ -39,8 +39,8 @@
 .ui-cell-inner {
   display: flex;
   align-items: center;
-  background: #fff;
   padding: r(8) r(15);
+  background: #fff;
   font-size: r(15);
   min-height: r(45);
 
@@ -133,8 +133,15 @@
   align-items: center;
   position: relative;
   min-height: r(30);
-  background: #ffdad9;
-  color: #e93a3a;
-  padding: r(5) r(15);
+  background: #fff;
+  padding: 0 r(15) r(9) r(15);
   font-size: r(13);
+}
+
+.ui-cell-explain-text {
+  width: 100%;
+  background: #fff6e2;
+  color: #feaa00;
+  border: 1px solid #feeebd;
+  padding: r(5) r(8);
 }
