@@ -17,12 +17,12 @@ module.exports = {
     loaders: [
       { 
         test: /\.scss$/,
-        loader: 'style-loader!css?sourceMap&-minimize!autoprefixer?{browsers:["last 2 version", "> 1%", "iOS 7"]}!sass?sourceMap'
+        loader: 'style-loader!css?-minimize!autoprefixer?{browsers:["last 2 version", "> 1%", "iOS 7"]}!sass?sourceMap'
         // loader: extractCSS.extract("style", "css?sourceMap&-minimize!autoprefixer!sass?sourceMap")
       },
       { 
         test: /\.css$/,
-        loader: 'style-loader!css?sourceMap&-minimize!autoprefixer'
+        loader: 'style-loader!css?-minimize!autoprefixer?{browsers:["last 2 version", "> 1%", "iOS 7"]}'
         // loader: extractCSS.extract("style", "css?sourceMap&-minimize!autoprefixer")
       },
       {
