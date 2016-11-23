@@ -14,6 +14,7 @@ export Selector from './Selector';
 export Tab from './Tab';
 export Toast from './Toast';
 export Picker from './Picker';
+export Lottery from './Lottery';
 
 
 
