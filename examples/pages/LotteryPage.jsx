@@ -21,12 +21,12 @@ class LotteryPage extends Component {
       option: [
         {id: 1, name: "小米手环", src: item1}, 
         {id: 2, name: "感谢参与", src: item2}, 
-        {id: 3, name: "众安住院医疗险", src: item3},
+        {id: 3, name: "住院医疗险", src: item3},
         {id: 4, name: "爱奇艺会员", src: item4},
         {id: 5, name: "乐动力10元优惠券", src: item5},
         {id: 6, name: "再抽一次", src: item6},
         {id: 7, name: "小米体重秤", src: item7},
-        {id: 8, name: "众安综合意外险", src: item8}
+        {id: 8, name: "综合意外险", src: item8}
       ]
     }
   }
