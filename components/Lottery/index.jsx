@@ -83,7 +83,7 @@ class Lottery extends Component {
 
     let rotateItem = [];
     for (let i = 1; i <= 8; i++) {
-      rotateItem.push(<div key={i} style={{ backgroundImage: `url(${this.props.option[i-1].src})` }} className={`award-item award-item${i}`}></div>);
+      rotateItem.push(<div key={i} style={{ backgroundImage: `url(${this.props.option[i-1].image})` }} className={`award-item award-item${i}`}></div>);
     }
 
     return (
