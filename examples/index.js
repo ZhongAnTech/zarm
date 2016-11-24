@@ -72,6 +72,14 @@ const rootRoute = {
       }
     },
     {
+      path: 'lottery',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/LotteryPage'));
+        }, 'LotteryPage');
+      }
+    },
+    {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure([], (require) => {
