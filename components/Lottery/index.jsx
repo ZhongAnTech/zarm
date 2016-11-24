@@ -8,7 +8,8 @@ const randomNum = function (smin, smax) {// 获取2个值之间的随机数
 };
 
 let finished = true,
-    angle = 0;
+    angle = 0,
+    error = false;
 
 class Lottery extends Component {
   
@@ -24,15 +25,21 @@ class Lottery extends Component {
       this.refs.rotateArea.style.transform = `rotate(${angle % 360}deg)`;
       this.refs.rotateArea.style.transition = "0s"; 
       finished = true;
-      this.props.end(this.state.gift);
+      error ? this.props.error() : this.props.end(this.state.gift) 
     })
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.value);
     var res = this.findIndexOfArr(nextProps.value);
+    if(res.length == 0) {
+      error = true;
+      this.runLottery(0.5);
+      return ;
+    }
+    
     this.props.option.forEach((item, index) => {
       if(item.id == res[0].id) {
+        error = false;
         this.setState({
           gift: res[0].name
         })
@@ -89,7 +96,6 @@ class Lottery extends Component {
           onClick={
             () => {
               this.props.start();
-              
             }
           }
 
