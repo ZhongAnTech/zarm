@@ -17,7 +17,6 @@ class LotteryPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 1,
       option: [
         {id: 1, name: "小米手环", src: item1}, 
         {id: 2, name: "感谢参与", src: item2}, 
@@ -43,11 +42,14 @@ class LotteryPage extends Component {
           value = {this.state.id}
           start = {() => {
             this.setState({
-              id: this.getRandom(1,8)
+              id: this.getRandom(1, 8)
             })
           }}
           end = {(name) => {
-            alert(name);
+            console.log(name);
+          }}
+          error = {() => {
+            console.log('程序报错');
           }}
         />
       </div>
