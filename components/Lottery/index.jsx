@@ -36,7 +36,7 @@ class Lottery extends Component {
       this.runLottery(0.5);
       return ;
     }
-    
+
     this.props.option.forEach((item, index) => {
       if(item.id == res[0].id) {
         error = false;
@@ -83,16 +83,17 @@ class Lottery extends Component {
 
     let rotateItem = [];
     for (let i = 1; i <= 8; i++) {
-      rotateItem.push(<div key={i} style={{ backgroundImage: `url(${this.props.option[i-1].src})` }} className={`award-item award-item${i}`}></div>);
+      rotateItem.push(<div key={i} style={{ backgroundImage: `url(${this.props.option[i-1].image})` }} className={`award-item award-item${i}`}></div>);
     }
 
     return (
       <div className="lottery-area">
-        <div className={cls} ref="rotateArea">
+        <div className={cls} ref="rotateArea" style={{ backgroundImage: `url(${this.props.bgUrl})` }}>
           {rotateItem}
         </div>  
         <div 
           className="lottery-btn" 
+          style={{ backgroundImage: `url(${this.props.btnUrl})` }}
           onClick={
             () => {
               this.props.start();
