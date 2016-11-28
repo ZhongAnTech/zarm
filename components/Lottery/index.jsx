@@ -16,12 +16,12 @@ class Lottery extends Component {
   }
 
   componentDidMount() {
-    this.refs.rotateArea.addEventListener('transitionend', () => {
-      this.refs.rotateArea.style.transform = `rotate(${angle % 360}deg)`;
-      this.refs.rotateArea.style.transition = "0s"; 
-      finished = true;
-      error ? this.onError()
-            : this.onComplete(this.state.gift)
+    this.refs.rotateArea.addEventListener('webkitTransitionEnd', () => {
+      this._transitionend()
+    })
+
+    this.refs.rotateArea.addEventListener('transitionEnd', () => {
+      this._transitionend()
     })
   }
 
@@ -54,6 +54,16 @@ class Lottery extends Component {
     this.refs.rotateArea.style.transition = `${this.props.duration}s`;
   }
 
+  // 监听动画执行完成
+  _transitionend() {
+    this.refs.rotateArea.style.transform = `rotate(${angle % 360}deg)`;
+    this.refs.rotateArea.style.transition = "0s"; 
+    finished = true;
+    error ? this.onError()
+          : this.onComplete(this.state.gift)
+  }
+
+  // 开始
   onStart(value) {
     this.setState({ isStart: true })
 
@@ -75,11 +85,13 @@ class Lottery extends Component {
     })
   }
 
+  // 出错
   onError() {
     this.setState({ isStart: false })
     this.props.onError()
   }
 
+  // 完成
   onComplete(name) {
     this.setState({ isStart: false })
     this.props.onComplete(name)
