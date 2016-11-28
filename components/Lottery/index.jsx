@@ -30,6 +30,10 @@ class Lottery extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if(nextProps.value == null) {
+      return;
+    }
+
     var res = this.findIndexOfArr(nextProps.value);
     if(res.length == 0) {
       error = true;
@@ -59,6 +63,7 @@ class Lottery extends Component {
   }
 
   runLottery(index) {
+
     if(!finished) {
       return false;
     }
@@ -117,7 +122,6 @@ Lottery.propTypes = {
 
 Lottery.defaultProps = {
   duration: 2,
-  id: 0,
   start: () => {},
   end: () => {}
 };

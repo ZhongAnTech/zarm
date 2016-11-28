@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
-import { Lottery } from '../../components';
+import { Lottery, Toast } from '../../components';
 
 class LotteryPage extends Component {
   constructor(props) {
@@ -15,8 +15,17 @@ class LotteryPage extends Component {
         {id: 6, name: "再抽一次", image: require('../images/lottery/item6.png')},
         {id: 7, name: "小米体重秤", image: require('../images/lottery/item7.png')},
         {id: 8, name: "综合意外险", image: require('../images/lottery/item8.png')}
-      ]
+      ],
+      toast: {
+        visible: false,
+        onMaskClick: () => {
+          let toast = this.state.toast
+          toast.visible = false
+          this.setState({toast})
+        }
+      }
     }
+    this.count = 2;
   }
 
   getRandom(min,max){  //参数min为随机数最小值 max为随机数最大值 得到的随机数范围为[min,max]
@@ -24,6 +33,7 @@ class LotteryPage extends Component {
   }
 
   render() {
+    let { toast } = this.state;
     return (
       <div className="lottery-wrapper">
         <Lottery 
@@ -32,17 +42,30 @@ class LotteryPage extends Component {
           option={this.state.option}
           value={this.state.id}
           start={() => {
-            this.setState({
-              id: this.getRandom(1, 8)
-            })
+            if(this.count < 1) {
+              toast.visible = true
+              toast.children = '次数到了'
+              this.setState({toast, id: null})
+            }
+            else{
+              this.setState({
+                id: this.getRandom(1, 8)
+              })
+              this.count--;
+            }
           }}
           end={(name) => {
-            console.log(name);
+            toast.visible = true
+            toast.children = name
+            this.setState({toast, id: null})
           }}
           error={() => {
             console.log('程序报错');
+            
           }}
         />
+
+        <Toast {...this.state.toast} />
       </div>
     )
   }
