@@ -16,7 +16,6 @@ class LotteryPage extends Component {
         {id: 7, name: "小米体重秤", image: require('../images/lottery/item7.png')},
         {id: 8, name: "综合意外险", image: require('../images/lottery/item8.png')}
       ],
-      startFlag: 0,
       toast: {
         visible: false,
         onMaskClick: () => {
@@ -55,7 +54,6 @@ class LotteryPage extends Component {
               this.count--;
             }
           }}
-          startFlag = {this.state.startFlag}
           end={(name) => {
             toast.visible = true
             toast.children = name

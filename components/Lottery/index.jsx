@@ -9,8 +9,7 @@ const randomNum = function (smin, smax) {// 获取2个值之间的随机数
 
 let finished = true,
     angle = 0,
-    error = false,
-    startFlag = 0;
+    error = false;
 
 class Lottery extends Component {
   
@@ -31,14 +30,10 @@ class Lottery extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if(this.startFlag == nextProps.startFlag) {
-    //   return;
-    // }
-    // this.startFlag = nextProps.startFlag;
     if(nextProps.value == null) {
       return;
     }
-    
+
     var res = this.findIndexOfArr(nextProps.value);
     if(res.length == 0) {
       error = true;
