@@ -1,12 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-const randomNum = function (smin, smax) {// 获取2个值之间的随机数
-  var Range = smax - smin;
-  var Rand = Math.random();
-  return (smin + Math.round(Rand * Range));
-};
-
 let finished = true,
     angle = 0,
     error = false;
@@ -16,7 +10,8 @@ class Lottery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gift: ''
+      gift: '',
+      isStart: props.isStart || false
     }
   }
 
@@ -25,19 +20,47 @@ class Lottery extends Component {
       this.refs.rotateArea.style.transform = `rotate(${angle % 360}deg)`;
       this.refs.rotateArea.style.transition = "0s"; 
       finished = true;
-      error ? this.props.error() : this.props.end(this.state.gift) 
+      error ? this.onError()
+            : this.onComplete(this.state.gift)
     })
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.value == null) {
+    if (!nextProps.isStart) {
       return;
     }
+    this.onStart(nextProps.value)
+  }
 
-    var res = this.findIndexOfArr(nextProps.value);
+  _findIndexOfArr(id) {
+    return this.props.option.filter((obj) => {
+        return obj.id == id
+      })
+  }
+
+  _getRandom(min,max){  //参数min为随机数最小值 max为随机数最大值 得到的随机数范围为[min,max]
+    return Math.floor(Math.random()*(max+1-min)+min)
+  }
+
+  _runLottery(index) {
+    if(!finished) {
+      return false;
+    }
+    finished = false;
+    angle = this._getRandom(4,6)*360-360/8*`${index - 0.5}`;
+    this.refs.rotateArea.style.webkitTransform = `rotate(${angle}deg)`;
+    this.refs.rotateArea.style.webkitTransition = `${this.props.duration}s`;
+    this.refs.rotateArea.style.transform = `rotate(${angle}deg)`;
+    this.refs.rotateArea.style.transition = `${this.props.duration}s`;
+  }
+
+  onStart(value) {
+    this.setState({ isStart: true })
+
+    var res = this._findIndexOfArr(value);
     if(res.length == 0) {
       error = true;
-      this.runLottery(0.5);
+      this._runLottery(0.5);
       return ;
     }
 
@@ -47,37 +70,19 @@ class Lottery extends Component {
         this.setState({
           gift: res[0].name
         })
-        this.runLottery(index+1);
+        this._runLottery(index+1);
       }
     })
   }
 
-  findIndexOfArr(id) {
-    return this.props.option.filter((obj) => {
-        return obj.id == id
-      })
+  onError() {
+    this.setState({ isStart: false })
+    this.props.onError()
   }
 
-  getRandom(min,max){  //参数min为随机数最小值 max为随机数最大值 得到的随机数范围为[min,max]
-    return Math.floor(Math.random()*(max+1-min)+min)
-  }
-
-  runLottery(index) {
-
-    if(!finished) {
-      return false;
-    }
-    finished = false;
-
-    angle = this.getRandom(4,6)*360-360/8*`${index - 0.5}`;
-
-    this.refs.rotateArea.style.transform = `rotate(${angle}deg)`;
-    this.refs.rotateArea.style.transition = `${this.props.duration}s`;
-
-  }
-
-  stopLottery(index) {
-    this.props.end();
+  onComplete(name) {
+    this.setState({ isStart: false })
+    this.props.onComplete(name)
   }
 
   render() {
@@ -101,7 +106,10 @@ class Lottery extends Component {
           style={{ backgroundImage: `url(${this.props.btnUrl})` }}
           onClick={
             () => {
-              this.props.start();
+              if (this.state.isStart) {
+                return;
+              }
+              this.props.onStart();
             }
           }
 
@@ -116,14 +124,14 @@ Lottery.propTypes = {
   option: PropTypes.array,
   duration: PropTypes.number,
   id: PropTypes.number,
-  start: PropTypes.func,
-  end: PropTypes.func,
+  onStart: PropTypes.func,
+  onComplete: PropTypes.func,
 };
 
 Lottery.defaultProps = {
   duration: 2,
-  start: () => {},
-  end: () => {}
+  onStart: () => {},
+  onComplete: () => {}
 };
 
 
