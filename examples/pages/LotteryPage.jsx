@@ -6,6 +6,7 @@ class LotteryPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isStart: false,
       option: [
         {id: 1, name: "小米手环", image: require('../images/lottery/item1.png')}, 
         {id: 2, name: "感谢参与", image: require('../images/lottery/item2.png')}, 
@@ -41,25 +42,30 @@ class LotteryPage extends Component {
           btnUrl={require('../images/lottery/pointer.png')}
           option={this.state.option}
           value={this.state.id}
-          start={() => {
+          isStart={this.state.isStart}
+          onStart={() => {
             if(this.count < 1) {
               toast.visible = true
               toast.children = '次数到了'
-              this.setState({toast, id: null})
+              this.setState({toast, isStart: false})
             }
             else{
               this.setState({
-                id: this.getRandom(1, 8)
+                id: this.getRandom(1, 8),
+                isStart: true
               })
               this.count--;
             }
           }}
-          end={(name) => {
+          onComplete={(name) => {
             toast.visible = true
             toast.children = name
-            this.setState({toast, id: null})
+            this.setState({
+              isStart: false,
+              toast
+            })
           }}
-          error={() => {
+          onError={() => {
             console.log('程序报错');
             
           }}
