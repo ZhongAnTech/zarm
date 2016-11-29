@@ -15,7 +15,7 @@ class TabGroup extends Component {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || this.getSelectIndex(nextProps.children)) {
       this.setState({
-        value: nextProps.value || this.getSelectIndex(nextProps.children)
+        value: nextProps.value
       });
     }
   }

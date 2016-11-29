@@ -10,12 +10,21 @@
 ## 已完成组件
 - Button 按钮
 - Cell 列表项
+- Checkbox 复选框
 - Icon 字体图标
 - Input 输入框/文本域
+- InputNumber 数字选择框
+- Loading 加载中
+- Lottery 大转盘
 - Mask 遮罩层
 - Modal 模态框
 - Panel 面版
+- Radio 单选框
+- Select 选择项
 - Tab 选项卡
+- Toast 消息提示
 
-## 待开发组件
+## 版本更新日志
+- 0.0.26
+  1.修复Tab组件接受新value为0时，不切换的bug
 
