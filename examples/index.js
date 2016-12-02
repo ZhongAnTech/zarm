@@ -80,6 +80,14 @@ const rootRoute = {
       }
     },
     {
+      path: 'swipe',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/SwipePage'));
+        }, 'SwipePage');
+      }
+    },
+    {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure([], (require) => {
