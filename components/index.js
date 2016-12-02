@@ -11,6 +11,7 @@ export Panel from './Panel';
 export Radio from './Radio';
 export Select from './Select';
 export Selector from './Selector';
+export Swipe from './Swipe';
 export Tab from './Tab';
 export Toast from './Toast';
 export Picker from './Picker';
