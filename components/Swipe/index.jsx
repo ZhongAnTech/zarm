@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes, Children } from 'react';
+import React, { Component, PropTypes, cloneElement, Children } from 'react';
 import classnames from 'classnames';
 // import addEndEventListener from '../utils/transitionEvents';
 
@@ -7,9 +7,10 @@ class Swipe extends Component {
 
   constructor(props) {
     super(props);
+    this.moveInterval = null
     this.state = {
       items        : [],
-      activeIndex  : this.props.activeIndex,
+      activeIndex  : props.activeIndex,
       translateX   : 0,
       pointStart   : 0,
       pointEnd     : 0,
@@ -18,16 +19,7 @@ class Swipe extends Component {
   }
 
   componentWillMount() {
-    // 增加头尾拼接节点
-    let items = [].concat(this.props.children),
-        firstItem = items[0],
-        lastItem = items[items.length - 1];
-    items.push(firstItem);
-    items.unshift(lastItem);
-
-    this.setState({
-      items : items,
-    });
+    this.parseItem(this.props.children);
   }
 
   componentDidMount() {
@@ -37,8 +29,12 @@ class Swipe extends Component {
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
-    // 自动轮播开始
-    this.startAutoPlay();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ('children' in nextProps) {
+      this.parseItem(nextProps.children)
+    }
   }
 
   componentWillUpdate() {
@@ -109,6 +105,33 @@ class Swipe extends Component {
   // 静默跳到指定编号
   onJumpTo(index) {
     this._onMoveTo(index, 0);
+  }
+
+  parseItem(children) {    
+    if (children.length == 0) {
+      return;
+    }
+
+    // 增加头尾拼接节点
+    let items = [].concat(children),
+        firstItem = items[0],
+        lastItem = items[items.length - 1];
+    items.push(firstItem);
+    items.unshift(lastItem);
+
+    // 节点追加后重排key
+    const newItems = React.Children.map(items, (element, index) => {
+      return cloneElement(element, {
+        key: index
+      });
+    });
+
+    this.setState({
+      items : newItems,
+    });
+
+    // 自动轮播开始
+    !this.moveInterval && this.startAutoPlay();
   }
 
   // 自动轮播开始

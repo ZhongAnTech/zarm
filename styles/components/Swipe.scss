@@ -24,8 +24,8 @@
 
       .ui-swipe-info {
         position: absolute;
-        left: 20px;
-        bottom: 30px;
+        left: r(20);
+        bottom: r(30);
 
         .ui-swipe-title {
           color: #fff;
@@ -37,8 +37,8 @@
 
   .ui-swipe-pagination {
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: r(10);
+    bottom: r(10);
 
     ul {
       list-style: none;
@@ -46,17 +46,17 @@
       padding: 0;
       
       li {
-        margin: 1px;
-        width: 8px;
-        height: 8px;
+        margin: r(1);
+        width: r(8);
+        height: r(8);
         border-radius: 50%;
-        border: 1px solid #fff;
+        border: r(1) solid #fff;
         cursor: pointer;
         
         &.active {
           margin: 0;
-          width: 10px;
-          height: 10px;
+          width: r(10);
+          height: r(10);
           background: #fff;
         }
       }
