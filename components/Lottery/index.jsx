@@ -3,7 +3,8 @@ import classnames from 'classnames';
 
 let finished = true,
     angle = 0,
-    error = false;
+    error = false,
+    flag = true;
 
 class Lottery extends Component {
   
@@ -16,19 +17,24 @@ class Lottery extends Component {
   }
 
   componentDidMount() {
-    this.refs.rotateArea.addEventListener('webkitTransitionEnd', () => {
+    this._addListenerMulti(this.refs.rotateArea, 'webkitTransitionEnd transitionend', () => {
       this._transitionend()
-    })
+    });
+  }
 
-    this.refs.rotateArea.addEventListener('transitionEnd', () => {
-      this._transitionend()
-    })
+  _addListenerMulti(el, s, fn) {
+    var evts = s.split(' ');
+    for (var i=0, iLen=evts.length; i<iLen; i++) {
+      el.addEventListener(evts[i], fn, false);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.isStart) {
+      flag = true;
       return;
     }
+
     this.onStart(nextProps.value)
   }
 
@@ -59,6 +65,7 @@ class Lottery extends Component {
     this.refs.rotateArea.style.transform = `rotate(${angle % 360}deg)`;
     this.refs.rotateArea.style.transition = "0s"; 
     finished = true;
+    flag = true;
     error ? this.onError()
           : this.onComplete(this.state.gift)
   }
@@ -118,9 +125,9 @@ class Lottery extends Component {
           style={{ backgroundImage: `url(${this.props.btnUrl})` }}
           onClick={
             () => {
-              if (this.state.isStart) {
-                return;
-              }
+              if(!flag) return;
+                  flag = false;
+              
               this.props.onStart();
             }
           }
