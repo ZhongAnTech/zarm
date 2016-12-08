@@ -3,7 +3,7 @@ import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 import Option from './Option';
 
-class Selector extends Component {
+class Picker extends Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +20,6 @@ class Selector extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps)
     if ('value' in nextProps) {
       this.setState({
         value: nextProps.value
@@ -40,7 +39,6 @@ class Selector extends Component {
       }
     }
     this.onMoveTo(index, speed)
-    // this.props.onChange && this.props.onChange(value)
   }
 
   // 移动到指定编号
@@ -60,7 +58,7 @@ class Selector extends Component {
 
   // 执行过渡动画
   doTransition(offset, duration) {
-    const style = this.refs.selector.style;
+    const style = this.refs.picker.style;
     style.webkitTransitionDuration = duration + "ms";
     style.mozTransitionDuration = duration + "ms";
     style.oTransitionDuration = duration + "ms";
@@ -94,7 +92,7 @@ class Selector extends Component {
     let offset = (this.state.pointEnd !== 0)
                  ? this.state.translateY + (this.state.pointEnd - this.state.pointStart)
                  : 0,
-        items = this.refs.selector.children,
+        items = this.refs.picker.children,
         itemHeight = items[0] && items[0].offsetHeight,
         maxIndex = Math.abs(items.length - 1);
 
@@ -121,7 +119,7 @@ class Selector extends Component {
   }
 
   getItemHeight() {
-    const items = this.refs.selector.children,
+    const items = this.refs.picker.children,
           itemHeight = 0;
 
     if (!items || items.length == 0) {
@@ -147,7 +145,7 @@ class Selector extends Component {
     });
 
     const cls = classnames({
-      'ui-selector' : true,
+      'ui-picker' : true,
       'disabled'    : 'disabled' in props || isDisabled
     });
 
@@ -158,38 +156,27 @@ class Selector extends Component {
         onTouchMove={(event) => this.onTouchMove(event)}
         onTouchEnd={(event) => this.onTouchEnd(event)}
         >
-        <ul ref="selector">
+        <ul ref="picker">
           {options}
         </ul>
       </div>
     );
   }
-
-  onOptionChange(props, index) {
-    // if ('disabled' in props || props.isDisabled) {
-    //   return;
-    // }
-
-    // this.setState({
-    //   value      : props.value,
-    // });
-    // this.props.onChange(props.value)
-  }
 }
 
-Selector.propTypes = { 
+Picker.propTypes = { 
   onChange      : PropTypes.func,
   dataSource    : PropTypes.array,
   valueMember   : PropTypes.string,
   displayMember : PropTypes.string,
 };
 
-Selector.defaultProps = {
+Picker.defaultProps = {
   onChange      : () => {},
   dataSource    : [],
   valueMember   : 'value',
   displayMember : 'label',
 };
 
-export default Selector;
+export default Picker;
 

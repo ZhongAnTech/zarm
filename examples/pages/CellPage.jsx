@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Selector, Checkbox } from '../../components';
+import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox } from '../../components';
 import District from './district'
 
 class CellPage extends Component {
@@ -8,8 +8,8 @@ class CellPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selector: false,
-      selectorValue: [undefined, undefined, undefined],
+      picker: false,
+      pickerValue: [undefined, undefined, undefined],
       sex: '',
       number: 0
     }
@@ -129,7 +129,7 @@ class CellPage extends Component {
             </Cell>
 
             <Cell title="省份" type="select">
-              <Selector
+              <Picker
                 placeholder="选择省份"
                 dataSource={District}
                 value={'520000'}
@@ -139,12 +139,12 @@ class CellPage extends Component {
             </Cell>
 
             <Cell title="所在城市" type="select">
-              <Selector.Group
-                visible={this.state.selector}
+              <Picker.Group
+                visible={this.state.picker}
                 title="选择城市"
                 placeholder="请选择城市"
                 dataSource={District}
-                value={this.state.selectorValue}
+                value={this.state.pickerValue}
                 valueMember="label"
                 displayMember="label"
                 format=""
@@ -154,18 +154,18 @@ class CellPage extends Component {
                 onOk={(value) => {
                   console.log('你选择了确定', value)
                   this.setState({
-                    selector     : false,
-                    selectorValue: value
+                    picker     : false,
+                    pickerValue: value
                   })
                 }}
                 onCancel={() => {
-                  this.setState({ selector: false })
+                  this.setState({ picker: false })
                 }}
                 onMaskClick={() => {
-                  this.setState({ selector: false })
+                  this.setState({ picker: false })
                 }} />
             </Cell>
-
+            
             <Cell>
               <Checkbox defaultChecked={true} onChange={(value) => {
                 console.log(value);
