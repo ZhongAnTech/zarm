@@ -8,13 +8,12 @@ export Loading from './Loading';
 export Mask from './Mask';
 export Modal from './Modal';
 export Panel from './Panel';
+export Picker from './Picker';
 export Radio from './Radio';
 export Select from './Select';
-export Selector from './Selector';
 export Swipe from './Swipe';
 export Tab from './Tab';
 export Toast from './Toast';
-export Picker from './Picker';
 export Lottery from './Lottery';
 
 

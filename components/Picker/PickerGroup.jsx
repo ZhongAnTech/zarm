@@ -1,10 +1,10 @@
 
 import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
-import Selector from './Selector';
+import Picker from './Picker';
 import Option from './Option';
 
-class SelectorGroup extends Component {
+class PickerGroup extends Component {
 
   constructor(props) {
     super(props);
@@ -23,34 +23,33 @@ class SelectorGroup extends Component {
 
   render () {
     const { visible, dataSource, value, format, valueMember, placeholder, className, title, cancelText, okText, onMaskClick, onCancel, onOk, onClick, children, ...others } = this.props;
-    const selectors = this.getOptions(dataSource, 0);
-
+    const pickers = this.getOptions(dataSource, 0);
     const classes = classnames({
-      'ui-selector-container' : true,
-      'ui-selector-hidden'    : !this.state.visible,
+      'ui-picker-container' : true,
+      'ui-picker-hidden'    : !this.state.visible,
       [className]             : !!className,
     });
 
     const inputCls = classnames({
-      'ui-selector-placeholder': !value.join(format)
+      'ui-picker-placeholder': !value.join(format)
     });
 
     return (
-      <div className="ui-selector-group" onClick={() => this.toggle()}>
+      <div className="ui-picker-group" onClick={() => this.toggle()}>
         <div className={inputCls}>{value.join(format) || placeholder}</div>
         <div {...others} className={classes} onClick={(e) => this.onContainerClick(e)}>
-          <div className="ui-selector-mask" onClick={onMaskClick}></div>
-          <div className="ui-selector-inner">
-            <div className="ui-selector-header">
-              <div className="ui-selector-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
-              <div className="ui-selector-title">{title}</div>
-              <div className="ui-selector-submit" onClick={() => this.onOk()}>{okText}</div>
+          <div className="ui-picker-mask" onClick={onMaskClick}></div>
+          <div className="ui-picker-inner">
+            <div className="ui-picker-header">
+              <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
+              <div className="ui-picker-title">{title}</div>
+              <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
             </div>
-            <div className="ui-selector-mask-top">
-              <div className="ui-selector-mask-bottom">
-                <div className="ui-selector-body">
-                  <div className="ui-selector-selected"></div>
-                  {selectors}
+            <div className="ui-picker-mask-top">
+              <div className="ui-picker-mask-bottom">
+                <div className="ui-picker-body">
+                  <div className="ui-picker-selected"></div>
+                  {pickers}
                 </div>
               </div>
             </div>
@@ -76,22 +75,22 @@ class SelectorGroup extends Component {
   getOptions(dataSource, level) {
     const { valueMember, displayMember } = this.props;
 
-    let selectors = this.selectors || [],
+    let pickers = this.pickers || [],
         selected = dataSource.filter(item => item[valueMember] == this.state.value[level])[0] || dataSource[0] || {};
 
     if (selected.children && selected.children.length > 0) {
-      selectors = this.getOptions(selected.children, level + 1);
+      pickers = this.getOptions(selected.children, level + 1);
     }
 
-    selectors.unshift(<Selector key={level} valueMember={valueMember} displayMember={displayMember} dataSource={dataSource} value={selected[valueMember]} onChange={(value) => {
-      this.onSelectorChange(dataSource, level, value);
+    pickers.unshift(<Picker key={level} valueMember={valueMember} displayMember={displayMember} dataSource={dataSource} value={selected[valueMember]} onChange={(value) => {
+      this.onpickerChange(dataSource, level, value);
     }} />);
 
-    return selectors;
+    return pickers;
   }
 
   // 选择器选值
-  onSelectorChange(dataSource, level, value) {
+  onpickerChange(dataSource, level, value) {
     const { valueMember } = this.props;
 
     let values = this.state.value.concat(),
@@ -136,7 +135,7 @@ class SelectorGroup extends Component {
   }
 }
 
-SelectorGroup.propTypes = { 
+PickerGroup.propTypes = { 
   visible       : PropTypes.bool,
   title         : PropTypes.string,
   cancelText    : PropTypes.string,
@@ -146,7 +145,7 @@ SelectorGroup.propTypes = {
   displayMember : PropTypes.string,
 };
 
-SelectorGroup.defaultProps = {
+PickerGroup.defaultProps = {
   visible       : false,
   cancelText    : '取消',
   okText        : '确定',
@@ -155,5 +154,5 @@ SelectorGroup.defaultProps = {
   displayMember : 'label',
 };
 
-export default SelectorGroup;
+export default PickerGroup;
 
