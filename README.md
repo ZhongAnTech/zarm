@@ -25,14 +25,16 @@
 - Toast 消息提示
 
 ## 版本更新日志
+- 0.0.32
+  修复Modal.Header组件onClose时关闭按钮icon的错误
 
 - 0.0.31
-  1.原Selector组件更名为Picker，并修复遮罩层z-index不够的bug
+  原Selector组件更名为Picker，并修复遮罩层z-index不够的bug
 
 - 0.0.30
-  1.修复Swipe组件动态获取节点不更新的bug
-  2.修复Lottery组件可快速多次点击转盘转动的问题
+  修复Swipe组件动态获取节点不更新的bug
+  修复Lottery组件可快速多次点击转盘转动的问题
   
 - 0.0.26
-  1.修复Tab组件接受新value为0时，不切换的bug
+  修复Tab组件接受新value为0时，不切换的bug
 
