@@ -38,6 +38,11 @@ class Lottery extends Component {
     this.onStart(nextProps.value)
   }
 
+  componentWillUnmount(){
+    finished = true;
+    flag = true;
+  }
+
   _findIndexOfArr(id) {
     return this.props.option.filter((obj) => {
         return obj.id == id
