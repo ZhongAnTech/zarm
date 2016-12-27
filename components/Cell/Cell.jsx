@@ -14,7 +14,7 @@ class Cell extends Component {
       [`theme-${theme}`] : !!theme,
       [className]        : !!className,
     });
- 
+
     const iconRender = icon
                      ? <div className="ui-cell-icon">{icon}</div>
                      : null;

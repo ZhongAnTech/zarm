@@ -19,12 +19,17 @@
 - Mask 遮罩层
 - Modal 模态框
 - Panel 面版
+- Picker 选择器
 - Radio 单选框
 - Select 选择项
+- Swipe 走马灯
 - Tab 选项卡
 - Toast 消息提示
 
 ## 版本更新日志
+- 0.0.33
+  优化Swipe组件，增加属性isLoop(是否循环)、onChangeEnd(滑块切换结束回调事件)
+
 - 0.0.32
   修复Modal.Header组件onClose时关闭按钮icon的错误
 
