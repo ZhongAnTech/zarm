@@ -1,6 +1,6 @@
 {
   "name": "dragon-mobile-ui",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run deploy && npm run dev",
@@ -8,7 +8,7 @@
     "dev": "node devServer.js",
     "pro": "rm -rf assets && webpack --config webpack.config.pro.js",
     "deploy": "rm -rf node_modules && npm install && npm run build",
-    "lint": "./node_modules/.bin/eslint components examples --ext '.js,.jsx'",
+    "lint": "./node_modules/.bin/eslint components --ext '.js,.jsx'",
     "build:lib": "babel components --out-dir lib",
     "build:umd": "webpack --config webpack.config.umd.js",
     "build:umd:min": "webpack -p --config webpack.config.umd.min.js",

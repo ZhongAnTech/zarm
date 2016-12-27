@@ -1,7 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import { rAF, cAF } from '../utils/rAF'
 
 class Modal extends Component {
 
