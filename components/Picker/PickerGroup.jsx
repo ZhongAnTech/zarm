@@ -24,10 +24,11 @@ class PickerGroup extends Component {
   render () {
     const { visible, dataSource, value, format, valueMember, placeholder, className, title, cancelText, okText, onMaskClick, onCancel, onOk, onClick, children, ...others } = this.props;
     const pickers = this.getOptions(dataSource, 0);
+
     const classes = classnames({
       'ui-picker-container' : true,
       'ui-picker-hidden'    : !this.state.visible,
-      [className]             : !!className,
+      [className]           : !!className,
     });
 
     const inputCls = classnames({
@@ -81,11 +82,12 @@ class PickerGroup extends Component {
     if (selected.children && selected.children.length > 0) {
       pickers = this.getOptions(selected.children, level + 1);
     }
-
+    
     pickers.unshift(<Picker key={level} valueMember={valueMember} displayMember={displayMember} dataSource={dataSource} value={selected[valueMember]} onChange={(value) => {
       this.onpickerChange(dataSource, level, value);
     }} />);
 
+    // console.log('pickers', pickers, ' pickers.length', pickers.length);
     return pickers;
   }
 
@@ -96,9 +98,14 @@ class PickerGroup extends Component {
     let values = this.state.value.concat(),
         item
 
+    console.log('dataSource: ', dataSource, ' level: ', level, ' value: ', value);
+
     for (var i = level; i < values.length; i++) {
       item = dataSource.filter(item => item[valueMember] == value)[0]
+
+      console.log('item: ', item);
       values[i] = item && item[valueMember]
+
       dataSource = item
                  ? item.children
                  : []
@@ -112,10 +119,10 @@ class PickerGroup extends Component {
     });
   }
 
-  getSelected(d, val) {
-    let children = d.filter(item => item[this.props.valueMember] == val)[0].children;
-    return children && children[0]
-  }
+  // getSelected(d, val) {
+  //   let children = d.filter(item => item[this.props.valueMember] == val)[0].children;
+  //   return children && children[0]
+  // }
 
   // 取消
   onCancel() {
