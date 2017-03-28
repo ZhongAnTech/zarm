@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox } from '../../components';
+import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, DatePicker } from '../../components';
 import District from './district'
 
 class CellPage extends Component {
@@ -9,8 +9,11 @@ class CellPage extends Component {
     super(props);
     this.state = {
       picker: false,
+      datePicker: false,
+      date: '2010-04-05',
       pickerValue: [undefined, undefined, undefined],
       sex: '',
+      timer: 0,
       number: 0
     }
   }
@@ -25,6 +28,13 @@ class CellPage extends Component {
     this.setState({
       sex: 'F'
     })
+
+    // setInterval(() => {
+    //   let timer = this.state.timer ;
+    //   this.setState({
+    //     timer: ++timer
+    //   })
+    // }, 1000)
   }
 
   render() {
@@ -163,7 +173,34 @@ class CellPage extends Component {
                 }}
                 onMaskClick={() => {
                   this.setState({ picker: false })
-                }} />
+                }} >
+
+              </Picker.Group>
+            </Cell>
+
+            <Cell title="日期选择器" type="select">
+              <DatePicker
+                visible={this.state.datePicker}
+                title="选择日期"
+                placeholder="请选择日期"
+                mode='date'
+                format='YYYY.MM.DD'
+                date={this.state.date}
+                defaultDate={this.state.date}
+                onChange={(value) => {
+                  this.setState({
+                    date: value
+                  })
+                }}
+                onOk={(value) => {
+                  this.setState({
+                    date: value
+                  })
+                }}
+                onCancel={() => {
+                  
+                }} >
+              </DatePicker>
             </Cell>
             
             <Cell>

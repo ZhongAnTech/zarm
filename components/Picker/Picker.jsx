@@ -77,7 +77,10 @@ class Picker extends Component {
   }
 
   onTouchMove(event) {
-    event.preventDefault();
+    // event.preventDefault();
+    // document.body.addEventListener('touchmove', function(event) { 
+    //   event.preventDefault(); 
+    // }, {passive: true});
 
     const pointY = this.getPoint(event).y,
           offset = this.state.translateY + (pointY - this.state.pointStart);
@@ -112,6 +115,7 @@ class Picker extends Component {
     const { dataSource, valueMember, onChange } = this.props,
           value = dataSource[index][valueMember];
 
+    console.log('value: ', value);
     this.setState({
       value
     })
