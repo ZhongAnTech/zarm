@@ -62,7 +62,6 @@ class Picker extends Component {
   }
 
   scrollTo(top) {
-
     this.zscroller.scroller.scrollTo(0, top);
   }
 
@@ -78,7 +77,6 @@ class Picker extends Component {
   }
 
   scrollingComplete() {
-
     const { top } = this.zscroller.scroller.getValues();
     if (top >= 0) {
       this.doScrollingComplete(top);
@@ -141,6 +139,7 @@ class Picker extends Component {
       className, itemStyle,
       indicatorStyle,
     } = this.props;
+
     const { selectedValue } = this.state;
     const itemClassName = `${prefixCls}-item`;
     const selectedItemClassName = `${itemClassName} ${prefixCls}-item-selected`;
@@ -179,6 +178,6 @@ Picker.defaultProps = {
   pure: true,
   onValueChange() {
   },
-}
+};
 
 export default Picker;

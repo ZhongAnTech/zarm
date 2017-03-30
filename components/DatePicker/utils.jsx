@@ -2,8 +2,12 @@ import moment from 'moment';
 
 function getFormatter(type) {
   let formatter;
-  if(type === 'time') {
-    formatter = ('HH:mm');
+  if(type === 'year'){
+    formatter = ('YYYY[年]')
+  }else if(type === 'month') {
+    formatter = ('YYYY-MM')
+  }else if(type === 'time') {
+    formatter = ('HH:mm')
   }else if(type === 'datetime') {
     formatter = ('YYYY-MM-DD HH:mm');
   }else {
