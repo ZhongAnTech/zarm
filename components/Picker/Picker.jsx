@@ -7,7 +7,7 @@ class Picker extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {  
+    this.state = {
       translateY : 0,
       pointStart : 0,
       pointEnd   : 0,
@@ -16,7 +16,7 @@ class Picker extends Component {
   }
 
   componentDidMount() {
-    this.onValueChange(this.state.value, 0)
+    this.onValueChange(this.state.value, 0);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,7 +24,7 @@ class Picker extends Component {
       this.setState({
         value: nextProps.value
       });
-      this.onValueChange(nextProps.value, 300)
+      this.onValueChange(nextProps.value, 300);
     }
   }
 
@@ -32,19 +32,19 @@ class Picker extends Component {
   onValueChange(value, speed) {
     const { dataSource, valueMember } = this.props;
     let index = 0;
-    for (var i = 0; i < dataSource.length; i++) {
-      if (dataSource[i][valueMember] == value) {
-        index = i
+    for (let i = 0; i < dataSource.length; i++) {
+      if (dataSource[i][valueMember] === value) {
+        index = i;
         break;
       }
     }
-    this.onMoveTo(index, speed)
+    this.onMoveTo(index, speed);
   }
 
   // 移动到指定编号
-  onMoveTo(index, speed) {  
+  onMoveTo(index, speed) {
     const itemHeight = this.getItemHeight();
-    if (itemHeight == 0) {
+    if (itemHeight === 0) {
       return;
     }
 
@@ -78,12 +78,12 @@ class Picker extends Component {
 
   onTouchMove(event) {
     // event.preventDefault();
-    // document.body.addEventListener('touchmove', function(event) { 
-    //   event.preventDefault(); 
+    // document.body.addEventListener('touchmove', function(event) {
+    //   event.preventDefault();
     // }, {passive: true});
 
-    const pointY = this.getPoint(event).y,
-          offset = this.state.translateY + (pointY - this.state.pointStart);
+    const pointY = this.getPoint(event).y;
+    const offset = this.state.translateY + (pointY - this.state.pointStart);
 
     this.doTransition(offset, 0);
     this.setState({
@@ -94,12 +94,10 @@ class Picker extends Component {
   onTouchEnd(event) {
     let offset = (this.state.pointEnd !== 0)
                  ? this.state.translateY + (this.state.pointEnd - this.state.pointStart)
-                 : 0,
-        items = this.refs.picker.children,
-        itemHeight = items[0] && items[0].offsetHeight,
-        maxIndex = Math.abs(items.length - 1);
-
-
+                 : 0;
+    let items = this.refs.picker.children;
+    let itemHeight = items[0] && items[0].offsetHeight;
+    let maxIndex = Math.abs(items.length - 1);
     let index = Math.round(offset / itemHeight);
 
     if (index > 0) {
@@ -107,26 +105,25 @@ class Picker extends Component {
     } else {
       index = (Math.abs(offset) >= maxIndex * itemHeight)
             ? maxIndex
-            : Math.abs(index)
+            : Math.abs(index);
     }
 
     this.onMoveTo(index, 300);
 
-    const { dataSource, valueMember, onChange } = this.props,
-          value = dataSource[index][valueMember];
+    const { dataSource, valueMember, onChange } = this.props;
+    const value = dataSource[index][valueMember];
 
     console.log('value: ', value);
     this.setState({
       value
-    })
+    });
     onChange && onChange(value);
   }
 
   getItemHeight() {
-    const items = this.refs.picker.children,
-          itemHeight = 0;
+    const items = this.refs.picker.children;
 
-    if (!items || items.length == 0) {
+    if (!items || items.length === 0) {
       return 0;
     }
     return items[0].offsetHeight;
@@ -135,17 +132,17 @@ class Picker extends Component {
   // 获取触摸点的当前坐标
   getPoint(event) {
     const touch = event.touches[0];
-    return { 
+    return {
       x: touch.pageX,
       y: touch.pageY,
-    }
+    };
   }
 
   render () {
     const props = this.props;
-    const { height, isDisabled, isRadius, valueMember, displayMember, dataSource, ...others } = this.props;
+    const { height, isDisabled, valueMember, displayMember, dataSource, ...others } = this.props;
     const options = dataSource.map((item, index) => {
-      return <Option key={index} value={item[valueMember]}>{item[displayMember]}</Option>
+      return <Option key={index} value={item[valueMember]}>{item[displayMember]}</Option>;
     });
 
     const cls = classnames({
@@ -159,6 +156,7 @@ class Picker extends Component {
         onTouchStart={(event) => this.onTouchStart(event)}
         onTouchMove={(event) => this.onTouchMove(event)}
         onTouchEnd={(event) => this.onTouchEnd(event)}
+        {...others}
         >
         <ul ref="picker">
           {options}
@@ -168,7 +166,7 @@ class Picker extends Component {
   }
 }
 
-Picker.propTypes = { 
+Picker.propTypes = {
   onChange      : PropTypes.func,
   dataSource    : PropTypes.array,
   valueMember   : PropTypes.string,

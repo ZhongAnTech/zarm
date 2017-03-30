@@ -1,6 +1,6 @@
 $pickerPrefixCls: 'rmc-picker';
 $multiPickerPrefixCls: 'rmc-multi-picker';
-$picker-item-height: 34px;
+$picker-item-height: r(30);
 
 .rmc-picker {
   display: block;
@@ -29,13 +29,13 @@ $picker-item-height: 34px;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
     linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
     background-position: top, bottom;
-    background-size: 100% 102px;
+    background-size: 100% r(90);
     background-repeat: no-repeat;
   }
 
   &-item {
     text-align: center;
-    font-size: 16px;
+    font-size: r(16);
     line-height: $picker-item-height;
     height: $picker-item-height;
     color: #000;
@@ -66,7 +66,6 @@ $picker-item-height: 34px;
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 10px 0;
 
   &-item {
     flex: 1;

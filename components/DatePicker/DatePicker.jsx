@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import MultiPicker from './MultiPicker';
 import moment from 'moment';
@@ -20,7 +20,7 @@ const MONTH = 'month';
 const YEAR = 'year';
 
 function isExtendMoment(date) {
-  return date instanceof moment ? date : moment(date)
+  return date instanceof moment ? date : moment(date);
 }
 
 class DatePicker extends Component {
@@ -28,8 +28,8 @@ class DatePicker extends Component {
   constructor(props) {
     super(props);
 
-    let date = props.date && isExtendMoment(props.date),
-        defaultDate = props.defaultDate && isExtendMoment(props.defaultDate);
+    let date = props.date && isExtendMoment(props.date);
+    let defaultDate = props.defaultDate && isExtendMoment(props.defaultDate);
 
     this.initDate = isExtendMoment(props.date);
 
@@ -37,13 +37,11 @@ class DatePicker extends Component {
       visible: props.visible || false,
       date: date || defaultDate,
     };
-
-
   }
 
   componentWillReceiveProps(nextProps) {
-    let date = nextProps.date && isExtendMoment(nextProps.date),
-        defaultDate = nextProps.defaultDate && isExtendMoment(nextProps.defaultDate);
+    let date = nextProps.date && isExtendMoment(nextProps.date);
+    let defaultDate = nextProps.defaultDate && isExtendMoment(nextProps.defaultDate);
 
     this.setState({
       date: date || defaultDate
@@ -51,12 +49,12 @@ class DatePicker extends Component {
   }
 
   onMaskClick() {
-    this.setState({ visible: false })
+    this.setState({ visible: false });
   }
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { mode, prefixCls, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, date, placeholder } = this.props;
+    const { mode, prefixCls, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, placeholder } = this.props;
 
     const classes = classnames({
       'ui-picker-container' : true,
@@ -100,9 +98,7 @@ class DatePicker extends Component {
             </div>
           </div>
         </div>
-      </div>
-      
-    )
+      </div> );
   }
 
   //  获取
@@ -201,11 +197,14 @@ class DatePicker extends Component {
   }
 
   getMinDate() {
-    return this.props.minDate || this.getDefaultMinDate();
+    let minDate = isExtendMoment(this.props.minDate);
+    return minDate || this.getDefaultMinDate();
   }
 
   getMaxDate() {
-    return this.props.maxDate || this.getDefaultMaxDate();
+    let maxDate = isExtendMoment(this.props.maxDate);
+
+    return maxDate || this.getDefaultMaxDate();
   }
 
   getDateData() {
