@@ -9,6 +9,7 @@ export Mask from './Mask';
 export Modal from './Modal';
 export Panel from './Panel';
 export Picker from './Picker';
+export DatePicker from './DatePicker';
 export Radio from './Radio';
 export Select from './Select';
 export Swipe from './Swipe';

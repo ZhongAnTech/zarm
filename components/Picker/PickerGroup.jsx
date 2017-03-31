@@ -2,7 +2,6 @@
 import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 import Picker from './Picker';
-import Option from './Option';
 
 class PickerGroup extends Component {
 
@@ -22,12 +21,13 @@ class PickerGroup extends Component {
   }
 
   render () {
-    const { visible, dataSource, value, format, valueMember, placeholder, className, title, cancelText, okText, onMaskClick, onCancel, onOk, onClick, children, ...others } = this.props;
+    const { dataSource, value, format, valueMember, placeholder, className, title, cancelText, okText, onMaskClick, onCancel, onOk, onClick, children, ...others } = this.props;
     const pickers = this.getOptions(dataSource, 0);
+
     const classes = classnames({
       'ui-picker-container' : true,
       'ui-picker-hidden'    : !this.state.visible,
-      [className]             : !!className,
+      [className]           : !!className,
     });
 
     const inputCls = classnames({
@@ -75,8 +75,8 @@ class PickerGroup extends Component {
   getOptions(dataSource, level) {
     const { valueMember, displayMember } = this.props;
 
-    let pickers = this.pickers || [],
-        selected = dataSource.filter(item => item[valueMember] == this.state.value[level])[0] || dataSource[0] || {};
+    let pickers = this.pickers || [];
+    let selected = dataSource.filter(item => item[valueMember] === this.state.value[level])[0] || dataSource[0] || {};
 
     if (selected.children && selected.children.length > 0) {
       pickers = this.getOptions(selected.children, level + 1);
@@ -86,6 +86,7 @@ class PickerGroup extends Component {
       this.onpickerChange(dataSource, level, value);
     }} />);
 
+    // console.log('pickers', pickers, ' pickers.length', pickers.length);
     return pickers;
   }
 
@@ -93,18 +94,23 @@ class PickerGroup extends Component {
   onpickerChange(dataSource, level, value) {
     const { valueMember } = this.props;
 
-    let values = this.state.value.concat(),
-        item
+    let values = this.state.value.concat();
+    let item = null;
 
-    for (var i = level; i < values.length; i++) {
-      item = dataSource.filter(item => item[valueMember] == value)[0]
-      values[i] = item && item[valueMember]
+    console.log('dataSource: ', dataSource, ' level: ', level, ' value: ', value);
+
+    for (let i = level; i < values.length; i++) {
+      item = dataSource.filter(item => item[valueMember] === value)[0]
+
+      console.log('item: ', item);
+      values[i] = item && item[valueMember];
+
       dataSource = item
                  ? item.children
-                 : []
+                 : [];
       value = dataSource[0]
             ? dataSource[0][valueMember]
-            : undefined
+            : undefined;
     }
 
     this.setState({
@@ -112,10 +118,10 @@ class PickerGroup extends Component {
     });
   }
 
-  getSelected(d, val) {
-    let children = d.filter(item => item[this.props.valueMember] == val)[0].children;
-    return children && children[0]
-  }
+  // getSelected(d, val) {
+  //   let children = d.filter(item => item[this.props.valueMember] == val)[0].children;
+  //   return children && children[0]
+  // }
 
   // 取消
   onCancel() {
@@ -135,7 +141,7 @@ class PickerGroup extends Component {
   }
 }
 
-PickerGroup.propTypes = { 
+PickerGroup.propTypes = {
   visible       : PropTypes.bool,
   title         : PropTypes.string,
   cancelText    : PropTypes.string,
@@ -152,6 +158,7 @@ PickerGroup.defaultProps = {
   onMaskClick   : () => {},
   valueMember   : 'value',
   displayMember : 'label',
+  cascade       : true
 };
 
 export default PickerGroup;
