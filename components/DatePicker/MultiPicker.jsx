@@ -72,8 +72,8 @@ class MultiPicker extends Component {
 }
 
 MultiPicker.defaultProps = {
-  prefixCls: 'rmc-multi-picker',
-  pickerPrefixCls: 'rmc-picker',
+  prefixCls: 'ui-multi-picker',
+  pickerPrefixCls: 'ui-datepicker',
   onValueChange() {
   },
   disabled: false,

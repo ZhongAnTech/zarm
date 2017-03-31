@@ -81,19 +81,17 @@ class DatePicker extends Component {
             </div>
             <div className="ui-picker-mask-top">
               <div className="ui-picker-mask-bottom">
-                <div className="ui-picker-body">
-                  <MultiPicker
-                    rootNativeProps={rootNativeProps}
-                    className={className}
-                    prefixCls={prefixCls}
-                    pickerPrefixCls={pickerPrefixCls}
-                    pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
-                    selectedValue={value}
-                    onValueChange={this.onValueChange.bind(this)}
-                  >
-                    {cols}
-                  </MultiPicker>
-                </div>
+              <MultiPicker
+                rootNativeProps={rootNativeProps}
+                className={className}
+                prefixCls={prefixCls}
+                pickerPrefixCls={pickerPrefixCls}
+                pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
+                selectedValue={value}
+                onValueChange={this.onValueChange.bind(this)}
+              >
+                {cols}
+              </MultiPicker>
               </div>
             </div>
           </div>
@@ -399,10 +397,10 @@ class DatePicker extends Component {
 
     // ???
     if (!('date' in props)) {
-    }
       this.setState({
         date: newValue,
       });
+    }
 
     props.onChange(newValue);
   }
@@ -452,6 +450,7 @@ class DatePicker extends Component {
     this.setState({
       visible: !this.state.visible
     });
+
   }
 
   onCancel() {
@@ -474,23 +473,28 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
-  visible       : PropTypes.bool,
-  title         : PropTypes.string,
-  cancelText    : PropTypes.string,
-  okText        : PropTypes.string,
-  mode          : PropTypes.string,
-  onMaskClick   : PropTypes.func,
+  visible         : PropTypes.bool,
+  title           : PropTypes.string,
+  cancelText      : PropTypes.string,
+  okText          : PropTypes.string,
+  mode            : PropTypes.string,
+  onMaskClick     : PropTypes.func,
+  prefixCls       : PropTypes.string,
+  pickerPrefixCls : PropTypes.string
+
 };
 
 DatePicker.defaultProps = {
-  visible       : false,
-  cancelText    : '取消',
-  okText        : '确定',
-  mode          : DATE,
-  onMaskClick   : () => {},
-  locale        : defaultLocale,
-  minuteStep    : 1
-}
+  visible         : false,
+  cancelText      : '取消',
+  okText          : '确定',
+  mode            : DATE,
+  onMaskClick     : () => {},
+  locale          : defaultLocale,
+  minuteStep      : 1,
+  prefixCls       : 'ui-multi-picker',
+  pickerPrefixCls : 'ui-datepicker',
+};
 
 
 export default DatePicker;
