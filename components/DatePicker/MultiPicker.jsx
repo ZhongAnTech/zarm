@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import Picker from './Picker';
 
@@ -77,6 +77,6 @@ MultiPicker.defaultProps = {
   onValueChange() {
   },
   disabled: false,
-}
+};
 
 export default MultiPicker;
