@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
-import { Button, Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox } from '../../components';
-import District from './district'
+import { Switch, Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox } from '../../components';
+import District from './district';
 
 class CellPage extends Component {
 
@@ -91,7 +91,7 @@ class CellPage extends Component {
 
         <Panel>
           <Panel.Header>
-            <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
+            <Panel.Title>表单组件</Panel.Title>
           </Panel.Header>
           <Panel.Body>  
 
@@ -115,6 +115,8 @@ class CellPage extends Component {
                 })
               }} />}>
             </Cell>
+
+            <Cell title="开关" description={<Switch theme="success" />} />
 
             <Cell title="性别" type="select">
               <Select
