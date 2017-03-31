@@ -12,6 +12,7 @@ export Picker from './Picker';
 export Radio from './Radio';
 export Select from './Select';
 export Swipe from './Swipe';
+export Switch from './Switch';
 export Tab from './Tab';
 export Toast from './Toast';
 export Lottery from './Lottery';

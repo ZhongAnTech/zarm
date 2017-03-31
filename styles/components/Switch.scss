@@ -1,49 +1,86 @@
 
 .ui-switch {
   position: relative;
-  width: r(52);
-  height: r(32);
-  border: 1px solid #DFDFDF;
-  outline: 0;
-  border-radius: r(16);
-  background: #DFDFDF;
-  appearance: none;
-
-  &:before {
-    content: " ";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: r(50);
-    height: r(30);
-    border-radius: r(15);
-    background-color: #FDFDFD;
-    transition: transform .3s;
-  }
+  display: inline-block;
+  width: r(44);
+  height: r(22);
+  line-height: r(20);
+  vertical-align: middle;
+  border-radius: r(20);
+  border: 1px solid #ccc;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: left .3s cubic-bezier(.78, .14, .15, .86);
+  user-select: none;
 
   &:after {
-    content: " ";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: r(30);
-    height: r(30);
-    border-radius: r(15);
-    background-color: #FFFFFF;
-    box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
-    transition: transform .3s;
+    width: r(18);
+    height: r(18);
+    left: r(2);
+    top: r(1);
+    border-radius: 100%;
+    background-color: #fff;
+    content: " ";
+    cursor: pointer;
+    transition: left .3s cubic-bezier(.78, .14, .15, .86);
   }
 
-  &.active {
-    border-color: #04BE02;
-    background-color: #04BE02;
-
-    &:before {
-      transform: scale(0);
-    }
+  &.checked {
+    border: 1px solid $base-theme-info;
+    background-color: $base-theme-info;
 
     &:after {
-      transform: translateX(r(20));
+      left: r(22);
+    }
+
+    .ui-switch-inner {
+      left: r(6);
     }
   }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:after {
+      cursor: not-allowed;
+    }
+  }
+  
+  &.size-sm {
+    height: r(14);
+    line-height: r(12);
+    width: r(28);
+
+    &:after {
+      width: r(12);
+      height: r(12);
+      top: 0;
+      left: 0;
+    }
+
+    &.checked {
+      &:after {
+        left: r(14);
+      }
+
+      .ui-switch-inner {
+        left: r(3);
+      }
+    }
+
+    .ui-switch-inner {
+      left: r(13);
+      font-size: r(10);
+    }
+  }
+
+  .ui-switch-inner {
+    position: absolute;
+    left: r(24);
+    color: #fff;
+    font-size: r(12);
+  }
+  
 }
