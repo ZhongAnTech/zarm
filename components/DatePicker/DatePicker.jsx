@@ -31,7 +31,7 @@ class DatePicker extends Component {
     let date = props.date && isExtendMoment(props.date);
     let defaultDate = props.defaultDate && isExtendMoment(props.defaultDate);
 
-    this.initDate = isExtendMoment(props.date);
+    this.initDate = props.date && isExtendMoment(props.date);
 
     this.state = {
       visible: props.visible || false,
