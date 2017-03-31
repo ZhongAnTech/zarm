@@ -194,16 +194,6 @@ class CellPage extends Component {
                 }} />
             </Cell>
 
-            <Cell title="选择器2" type="select">
-              <Picker.Cascader
-                visible={this.state.cascaderVisible}
-                placeholder="请选择"
-                dataSource={District}
-                title="选择地区"
-                value={this.state.pickerValue}
-              />
-            </Cell>
-              
             <Cell>
               <Checkbox defaultChecked={true} onChange={(value) => {
                 console.log(value);

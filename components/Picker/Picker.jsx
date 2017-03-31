@@ -71,16 +71,16 @@ class Picker extends Component {
 
   onTouchStart(event) {
     const pointY = this.getPoint(event).y;
-    this.setState({ 
+    this.setState({
       pointStart : pointY,
     });
   }
 
   onTouchMove(event) {
-    // event.preventDefault();
-    // document.body.addEventListener('touchmove', function(event) {
-    //   event.preventDefault();
-    // }, {passive: true});
+    event.preventDefault();
+    document.body.addEventListener('touchmove', function(event) {
+
+    }, {passive: true});
 
     const pointY = this.getPoint(event).y;
     const offset = this.state.translateY + (pointY - this.state.pointStart);

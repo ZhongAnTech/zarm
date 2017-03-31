@@ -1,19 +1,18 @@
-$pickerPrefixCls: 'rmc-picker';
-$multiPickerPrefixCls: 'rmc-multi-picker';
-$picker-item-height: r(30);
+$picker-item-height: 34px;
 
-.rmc-picker {
+.ui-datepicker {
   display: block;
   position: relative;
   overflow: hidden;
   height: 7*$picker-item-height;
+  width: 100%;
+
 
   &-content {
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
-    z-index: 1;
     padding: 3*$picker-item-height 0;
   }
 
@@ -23,19 +22,22 @@ $picker-item-height: r(30);
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 3;
+    z-index: 100;
+    height: 100%;
+    width: 100%;
+    // background-color: #ccc;
     background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
     -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
     linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
     background-position: top, bottom;
-    background-size: 100% r(90);
+    background-size: 100% 102px;
     background-repeat: no-repeat;
   }
 
   &-item {
     text-align: center;
-    font-size: r(16);
+    font-size: 16px;
     line-height: $picker-item-height;
     height: $picker-item-height;
     color: #000;
@@ -62,10 +64,11 @@ $picker-item-height: r(30);
   }
 }
 
-.rmc-multi-picker {
+.ui-multi-picker {
   display: flex;
-  width: 100%;
+  // width: 100%;
   align-items: center;
+  // padding: 10px 0;
 
   &-item {
     flex: 1;

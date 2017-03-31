@@ -36,6 +36,7 @@ class Picker extends Component {
     this.zscroller.setDisabled(this.props.disabled);
     this.zscroller.scroller.setSnapSize(0, this.itemHeight);
     this.select(this.state.selectedValue);
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -45,6 +46,7 @@ class Picker extends Component {
       });
     }
     this.zscroller.setDisabled(nextProps.disabled);
+
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -158,11 +160,12 @@ class Picker extends Component {
       [className]: !!className,
       [prefixCls]: true,
     };
+
     return (
       <div
         className={classNames(pickerCls)}
       >
-        <div className={`${prefixCls}-mask`}/>
+        {/*<div className={`${prefixCls}-mask`} ref="mask"/>*/}
         <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle}/>
         <div className={`${prefixCls}-content`} ref="content">
           {items}
@@ -174,7 +177,7 @@ class Picker extends Component {
 }
 
 Picker.defaultProps = {
-  prefixCls: 'rmc-picker',
+  prefixCls: 'ui-datepicker',
   pure: true,
   onValueChange() {
   },
