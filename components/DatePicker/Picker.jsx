@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import ZScroller from 'zscroller';
 import isChildrenEqual from './isChildrenEqual';
@@ -28,7 +28,7 @@ class Picker extends Component {
     this.zscroller = new ZScroller(this.refs.content, {
       scrollingX: false,
       snapping: true,
-      penetrationDeceleration: .1,
+      penetrationDeceleration: 0.1,
       minVelocityToKeepDecelerating: 0.5,
       scrollingComplete: this.scrollingComplete.bind(this),
     });
@@ -36,7 +36,6 @@ class Picker extends Component {
     this.zscroller.setDisabled(this.props.disabled);
     this.zscroller.scroller.setSnapSize(0, this.itemHeight);
     this.select(this.state.selectedValue);
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,7 +45,6 @@ class Picker extends Component {
       });
     }
     this.zscroller.setDisabled(nextProps.disabled);
-
   }
 
   shouldComponentUpdate(nextProps, nextState) {
