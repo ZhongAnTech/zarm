@@ -457,7 +457,6 @@ class DatePicker extends Component {
     this.setState({
       visible: !this.state.visible
     });
-
   }
 
   onCancel() {
@@ -465,7 +464,7 @@ class DatePicker extends Component {
     this.toggle();
     this.setState({
       date: this.initDate
-    })
+    });
     onCancel && onCancel();
   }
 
@@ -502,6 +501,5 @@ DatePicker.defaultProps = {
   prefixCls       : 'ui-multi-picker',
   pickerPrefixCls : 'ui-datepicker',
 };
-
 
 export default DatePicker;

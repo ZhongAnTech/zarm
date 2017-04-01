@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, DatePicker } from '../../components';
+import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker } from '../../components';
 import District from './district';
 
 class CellPage extends Component {
@@ -97,7 +97,7 @@ class CellPage extends Component {
 
         <Panel>
           <Panel.Header>
-            <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
+            <Panel.Title>表单组件</Panel.Title>
           </Panel.Header>
           <Panel.Body>
             <Cell title="姓名" help={<span><Icon type="info-round" /> 姓名不能为空</span>}>
@@ -117,6 +117,8 @@ class CellPage extends Component {
                   number: value
                 });
               }} />} />
+
+            <Cell title="开关" description={<Switch theme="success" />} />
 
             <Cell title="性别" type="select">
               <Select
