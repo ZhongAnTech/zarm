@@ -177,9 +177,9 @@ class CellPage extends Component {
                 visible={this.state.datePicker}
                 title="选择日期"
                 placeholder="请选择日期"
-                mode="date"
-                minDate="2007-01-01"
-                maxDate="2017-12-31"
+                mode="datetime"
+                minDate="2017-01-01 01:00"
+                maxDate="2017-05-15 05:00"
                 date={this.state.date}
                 defaultDate={this.state.date}
                 onChange={(value) => {
