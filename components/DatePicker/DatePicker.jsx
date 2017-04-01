@@ -19,19 +19,16 @@ const TIME = 'time';
 const MONTH = 'month';
 const YEAR = 'year';
 
-function isExtendMoment(date) {
-  return date instanceof moment ? date : moment(date);
-}
 
 class DatePicker extends Component {
 
   constructor(props) {
     super(props);
 
-    let date = props.date && isExtendMoment(props.date);
-    let defaultDate = props.defaultDate && isExtendMoment(props.defaultDate);
+    let date = props.date && this.isExtendMoment(props.date);
+    let defaultDate = props.defaultDate && this.isExtendMoment(props.defaultDate);
 
-    this.initDate = props.date && isExtendMoment(props.date);
+    this.initDate = props.date && this.isExtendMoment(props.date);
 
     this.state = {
       visible: props.visible || false,
@@ -40,12 +37,21 @@ class DatePicker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let date = nextProps.date && isExtendMoment(nextProps.date);
-    let defaultDate = nextProps.defaultDate && isExtendMoment(nextProps.defaultDate);
+    let date = nextProps.date && this.isExtendMoment(nextProps.date);
+    let defaultDate = nextProps.defaultDate && this.isExtendMoment(nextProps.defaultDate);
 
     this.setState({
       date: date || defaultDate
     });
+  }
+
+  isExtendMoment(date) {
+    const { mode } = this.props;
+    if (date instanceof moment) {
+      return date;
+    } else {
+      return mode === TIME ? moment(date, 'HH:mm Z') : moment(date, 'YYYY-MM-DD HH:mm Z');
+    }
   }
 
   onMaskClick() {
@@ -130,6 +136,7 @@ class DatePicker extends Component {
       cols = cols.concat(this.getTimeData());
       value = value.concat([date.hour() + '', date.minute() + '']);
     }
+
     return {
       value,
       cols,
@@ -155,6 +162,7 @@ class DatePicker extends Component {
   }
 
   getMinYear() {
+
     return this.getMinDate().year();
   }
 
@@ -195,13 +203,13 @@ class DatePicker extends Component {
   }
 
   getMinDate() {
-    let minDate = isExtendMoment(this.props.minDate);
+    let minDate = this.props.minDate && this.isExtendMoment(this.props.minDate);
     return minDate || this.getDefaultMinDate();
   }
 
-  getMaxDate() {
-    let maxDate = isExtendMoment(this.props.maxDate);
 
+  getMaxDate() {
+    let maxDate = this.props.maxDate && this.isExtendMoment(this.props.maxDate);
     return maxDate || this.getDefaultMaxDate();
   }
 
