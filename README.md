@@ -11,6 +11,7 @@
 - Button 按钮
 - Cell 列表项
 - Checkbox 复选框
+- DatePicker 日期选择器
 - Icon 字体图标
 - Input 输入框/文本域
 - InputNumber 数字选择框
@@ -23,10 +24,14 @@
 - Radio 单选框
 - Select 选择项
 - Swipe 走马灯
+- Switch 开关
 - Tab 选项卡
 - Toast 消息提示
 
 ## 版本更新日志
+- 0.0.34
+  新增日期选择器(DatePicker) 和 开关组件(Switch)
+
 - 0.0.33
   优化Swipe组件，增加属性isLoop(是否循环)、onChangeEnd(滑块切换结束回调事件)
 
