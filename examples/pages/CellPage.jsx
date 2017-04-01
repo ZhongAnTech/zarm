@@ -1,7 +1,31 @@
 
 import React, { Component } from 'react';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker } from '../../components';
-import District from './district';
+import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker, CascaderPicker } from '../../components';
+import District from './district'
+
+const seasons = [
+  [
+    {
+      label: '2013',
+      value: '2013',
+    },
+    {
+      label: '2014',
+      value: '2014',
+    },
+  ],
+  [
+    {
+      label: '春',
+      value: '春',
+    },
+    {
+      label: '夏',
+      value: '夏',
+    },
+  ],
+];
+
 
 class CellPage extends Component {
 
@@ -10,6 +34,8 @@ class CellPage extends Component {
     this.state = {
       picker: false,
       datePicker: false,
+      CascaderPicker: false,
+      sValue: [undefined, undefined],
       date: '',
       pickerValue: [undefined, undefined, undefined],
       sex: '',
@@ -197,6 +223,19 @@ class CellPage extends Component {
                 }} />
             </Cell>
 
+            <Cell title="多级选择器" type="select">
+              <CascaderPicker 
+                visible={this.state.CascaderPicker}
+                title="请选择"
+                placeholder="请选择"
+                cascade={false}
+                data={seasons}
+                format="-"
+                value={this.state.sValue}
+                onChange={v => this.setState({ sValue: v })}
+              />  
+            </Cell>
+            
             <Cell>
               <Checkbox defaultChecked={true} onChange={(value) => {
                 console.log(value);

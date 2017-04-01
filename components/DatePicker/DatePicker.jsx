@@ -470,7 +470,7 @@ class DatePicker extends Component {
 
   onOk() {
     const { onOk } = this.props;
-    const value = this.state.date;
+    const value = this.getDate();
     this.initDate = value;
     this.toggle();
     onOk && onOk(value);
