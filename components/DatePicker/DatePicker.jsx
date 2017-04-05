@@ -32,7 +32,7 @@ class DatePicker extends Component {
 
     this.state = {
       visible: props.visible || false,
-      date: date || defaultDate,
+      date: date || defaultDate
     };
   }
 
@@ -50,7 +50,15 @@ class DatePicker extends Component {
     if (date instanceof moment) {
       return date;
     } else {
-      return mode === TIME ? moment(date, 'HH:mm Z') : moment(date, 'YYYY-MM-DD HH:mm Z');
+      if(!date){
+        return '';
+      }
+      if(mode === TIME) {
+        // 如果传递参数不合法，默认转换为时：分
+        return moment(date).isValid() ? moment(date, 'YYYY-MM-DD HH:mm') : moment(date, 'HH:mm');
+      } else{
+        return moment(date, 'YYYY-MM-DD HH:mm');
+      }
     }
   }
 
@@ -157,12 +165,12 @@ class DatePicker extends Component {
     return this.defaultMaxDate;
   }
 
+  //  hmget
   getDate() {
-    return this.state.date || moment(new Date());
+    return this.state.date || this.getMinDate() || moment(new Date());
   }
 
   getMinYear() {
-
     return this.getMinDate().year();
   }
 
@@ -203,13 +211,13 @@ class DatePicker extends Component {
   }
 
   getMinDate() {
-    let minDate = this.props.minDate && this.isExtendMoment(this.props.minDate);
+    let minDate = this.isExtendMoment(this.props.min);
     return minDate || this.getDefaultMinDate();
   }
 
 
   getMaxDate() {
-    let maxDate = this.props.maxDate && this.isExtendMoment(this.props.maxDate);
+    let maxDate = this.isExtendMoment(this.props.max);
     return maxDate || this.getDefaultMaxDate();
   }
 
@@ -270,6 +278,7 @@ class DatePicker extends Component {
     if (maxDateYear === selYear && maxDateMonth === selMonth) {
       maxDay = maxDateDay;
     }
+
     for (let i = minDay; i <= maxDay; i++) {
       const label = formatDay ? formatDay(i, date) : (i + locale.day + '');
       days.push({
@@ -291,6 +300,7 @@ class DatePicker extends Component {
     let maxMinute = 59;
     const { mode, locale, minuteStep } = this.props;
     const date = this.getDate();
+
     const minDateMinute = this.getMinMinute();
     const maxDateMinute = this.getMaxMinute();
     const minDateHour = this.getMinHour();
@@ -302,6 +312,7 @@ class DatePicker extends Component {
       const year = date.year();
       const month = date.month();
       const day = date.date();
+
       const minDateYear = this.getMinYear();
       const maxDateYear = this.getMaxYear();
       const minDateMonth = this.getMinMonth();
@@ -342,7 +353,6 @@ class DatePicker extends Component {
 
     const minutes = [];
 
-
     for (let i = minMinute; i <= maxMinute; i += minuteStep) {
       minutes.push({
         value: i + '',
@@ -369,34 +379,34 @@ class DatePicker extends Component {
 
     if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
       switch (index) {
-        case 0:
-          newValue.year(value);
-          break;
-        case 1:
-          newValue.month(value);
-          break;
-        case 2:
-          newValue.date(value);
-          break;
-        case 3:
-          newValue.hour(value);
-          break;
-        case 4:
-          newValue.minute(value);
-          break;
-        default:
-          break;
+      case 0:
+        newValue.year(value);
+        break;
+      case 1:
+        newValue.month(value);
+        break;
+      case 2:
+        newValue.date(value);
+        break;
+      case 3:
+        newValue.hour(value);
+        break;
+      case 4:
+        newValue.minute(value);
+        break;
+      default:
+        break;
       }
     } else {
       switch (index) {
-        case 0:
-          newValue.hour(value);
-          break;
-        case 1:
-          newValue.minute(value);
-          break;
-        default:
-          break;
+      case 0:
+        newValue.hour(value);
+        break;
+      case 1:
+        newValue.minute(value);
+        break;
+      default:
+        break;
       }
     }
 
@@ -483,18 +493,17 @@ DatePicker.propTypes = {
   title           : PropTypes.string,
   cancelText      : PropTypes.string,
   okText          : PropTypes.string,
-  mode            : PropTypes.string,
+  mode            : React.PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
   onMaskClick     : PropTypes.func,
   prefixCls       : PropTypes.string,
   pickerPrefixCls : PropTypes.string
-
 };
 
 DatePicker.defaultProps = {
   visible         : false,
   cancelText      : '取消',
   okText          : '确定',
-  mode            : DATE,
+  mode            : 'date',
   onMaskClick     : () => {},
   locale          : defaultLocale,
   minuteStep      : 1,

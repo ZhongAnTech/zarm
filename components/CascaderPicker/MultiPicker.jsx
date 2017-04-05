@@ -78,6 +78,6 @@ MultiPicker.defaultProps = {
   onValueChange() {
   },
   disabled: false,
-}
+};
 
 export default MultiPicker;

@@ -69,7 +69,7 @@ class CascaderPicker extends Component {
     console.log(value);
     this.props.onChange(value);
 
-  }
+  };
 
   // 阻止选择器区域的默认事件
   onContainerClick(e) {
@@ -97,7 +97,7 @@ class CascaderPicker extends Component {
 
 
   onMaskClick() {
-    this.setState({ visible: false })
+    this.setState({ visible: false });
   }
 }
 
