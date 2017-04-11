@@ -12,10 +12,10 @@ class MultiPicker extends Component {
     };
   }
 
-  onValueChange(i, v) {
-    const value = this.getValue().concat();
-    value[i] = v;
-    this.props.onValueChange(value, i);
+  onValueChange(index, value) {
+    const values = this.getValue().concat();
+    values[index] = value;
+    this.props.onValueChange(values, index);
   }
 
   getValue() {
@@ -37,11 +37,15 @@ class MultiPicker extends Component {
   render() {
     const props = this.props;
     const {
-      prefixCls, pickerPrefixCls,
-      className, rootNativeProps,
-      disabled, pickerItemStyle,
+      prefixCls,
+      pickerPrefixCls,
+      className,
+      rootNativeProps,
+      disabled,
+      pickerItemStyle,
       indicatorStyle,
-      pure, children,
+      pure,
+      children,
     } = props;
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
