@@ -144,15 +144,28 @@ class CellPage extends Component {
               <Input type="date" placeholder="请选择出生日期" />
             </Cell>
 
-            <Cell title="份数" description={<InputNumber radius type="tel" theme="info" defaultValue={1} min={-3} max={3} step={1} value={this.state.number}
-              onChange={(value) => {
-                if (isNaN(value)) {
-                  return;
-                }
-                this.setState({
-                  number: value
-                });
-              }} />} />
+            <Cell
+              title="份数"
+              description={
+                <InputNumber
+                  radius
+                  type="tel"
+                  theme="info"
+                  defaultValue={1}
+                  min={-3}
+                  max={3}
+                  step={1}
+                  value={this.state.number}
+                  onChange={(value) => {
+                    if (isNaN(value)) {
+                      return;
+                    }
+                    this.setState({
+                      number: value,
+                    });
+                  }}
+                  />}
+              />
 
             <Cell title="开关" description={<Switch theme="success" />} />
 
@@ -220,12 +233,12 @@ class CellPage extends Component {
                 defaultDate={this.state.date}
                 onChange={(value) => {
                   this.setState({
-                    date: value
+                    date: value,
                   });
                 }}
                 onOk={(value) => {
                   this.setState({
-                    date: value
+                    date: value,
                   });
                 }}
                 onCancel={() => {
@@ -248,15 +261,19 @@ class CellPage extends Component {
             </Cell>
 
             <Cell>
-              <Checkbox defaultChecked={true} onChange={(value) => {
-                console.log(value);
-              }} />
+              <Checkbox
+                defaultChecked
+                onChange={(value) => {
+                  console.log(value);
+                }}
+                />
             </Cell>
 
             <Cell>
-              <Checkbox.Group onChange={(values) => {
-                console.log('Checkbox to ' + values);
-              }}>
+              <Checkbox.Group
+                onChange={(values) => {
+                  console.log('Checkbox to ' + values);
+                }}>
                 <Checkbox value="a">A</Checkbox>
                 <Checkbox value="b" disabled>B</Checkbox>
                 <Checkbox value="c">C</Checkbox>

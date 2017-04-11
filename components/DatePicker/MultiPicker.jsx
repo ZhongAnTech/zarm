@@ -12,14 +12,40 @@ class MultiPicker extends Component {
     };
   }
 
+  onValueChange(index, value) {
+    const values = this.getValue().concat();
+    values[index] = value;
+    this.props.onValueChange(values, index);
+  }
+
+  getValue() {
+    const { children, selectedValue } = this.props;
+    if (selectedValue && selectedValue.length) {
+      return selectedValue;
+    }
+
+    if (!children) {
+      return [];
+    }
+
+    return children.map((c) => {
+      const cc = c.props.children;
+      return cc && cc[0] && cc[0].value;
+    });
+  }
+
   render() {
     const props = this.props;
     const {
-      prefixCls, pickerPrefixCls,
-      className, rootNativeProps,
-      disabled, pickerItemStyle,
+      prefixCls,
+      pickerPrefixCls,
+      className,
+      rootNativeProps,
+      disabled,
+      pickerItemStyle,
       indicatorStyle,
-      pure, children,
+      pure,
+      children,
     } = props;
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
@@ -32,9 +58,9 @@ class MultiPicker extends Component {
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
             selectedValue={selectedValue[i]}
-            onValueChange={this.onValueChange.bind(this, i)}
+            onValueChange={value => this.onValueChange(i, value)}
             {...col.props}
-          />
+            />
         </div>
       );
     });
@@ -45,37 +71,12 @@ class MultiPicker extends Component {
       </div>
     );
   }
-
-  getValue() {
-    const { children, selectedValue } = this.props;
-    if (selectedValue && selectedValue.length) {
-      return selectedValue;
-    } else {
-      if (!children) {
-        return [];
-      }
-      return children.map(c => {
-        const cc = c.props.children;
-        return cc && cc[0] && cc[0].value;
-      });
-    }
-  }
-
-  onValueChange(i, v) {
-    const value = this.getValue().concat();
-
-    value[i] = v;
-
-    this.props.onValueChange(value, i);
-  }
-
 }
 
 MultiPicker.defaultProps = {
   prefixCls: 'ui-multi-picker',
   pickerPrefixCls: 'ui-datepicker',
-  onValueChange() {
-  },
+  onValueChange: () => {},
   disabled: false,
 };
 
