@@ -1,18 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classNames from 'classnames';
 import ZScroller from 'zscroller';
 import isChildrenEqual from './isChildrenEqual';
 
-function getChildMember(child, m) {
-  return child[m];
-}
-
-function toChildrenArray(children) {
-  return children;
-}
-
 class Picker extends Component {
-
   constructor(props) {
     super(props);
     let selectedValueState;
@@ -37,7 +28,7 @@ class Picker extends Component {
     this.zscroller = new ZScroller(this.refs.content, {
       scrollingX: false,
       snapping: true,
-      penetrationDeceleration: 0.1,
+      penetrationDeceleration: .1,
       minVelocityToKeepDecelerating: 0.5,
       scrollingComplete: this.scrollingComplete.bind(this),
     });
@@ -70,11 +61,8 @@ class Picker extends Component {
     this.zscroller.destroy();
   }
 
-  getValue() {
-    return this.props.selectedValue || (this.props.children && this.props.children[0] && this.props.children[0].value);
-  }
-
   scrollTo(top) {
+
     this.zscroller.scroller.scrollTo(0, top);
   }
 
@@ -90,16 +78,29 @@ class Picker extends Component {
   }
 
   scrollingComplete() {
+
     const { top } = this.zscroller.scroller.getValues();
     if (top >= 0) {
       this.doScrollingComplete(top);
     }
   }
 
+  getChildMember(child, m) {
+    return child[m];
+  }
+
+  getValue() {
+    return this.props.selectedValue || this.props.children && this.props.children[0] && this.props.children[0].value;
+  }
+
+  toChildrenArray(children) {
+    return children;
+  }
+
   select(value) {
-    const children = toChildrenArray(this.props.children);
-    for (let i = 0, len = children.length; i < len; i += 1) {
-      if (getChildMember(children[i], 'value') === value) {
+    const children = this.toChildrenArray(this.props.children);
+    for (let i = 0, len = children.length; i < len; i++) {
+      if (this.getChildMember(children[i], 'value') === value) {
         this.selectByIndex(i);
         return;
       }
@@ -108,7 +109,7 @@ class Picker extends Component {
   }
 
   selectByIndex(index) {
-    if (index < 0 || index >= toChildrenArray(this.props.children).length || !this.itemHeight) {
+    if (index < 0 || index >= this.toChildrenArray(this.props.children).length || !this.itemHeight) {
       return;
     }
     this.scrollTo(index * this.itemHeight);
@@ -123,12 +124,12 @@ class Picker extends Component {
       index = floor;
     }
 
-    const children = toChildrenArray(this.props.children);
+    const children = this.toChildrenArray(this.props.children);
 
     index = Math.min(index, children.length - 1);
     const child = children[index];
     if (child) {
-      this.fireValueChange(getChildMember(child, 'value'));
+      this.fireValueChange(this.getChildMember(child, 'value'));
     } else if (console.warn) {
       console.warn('child not found', children, index);
     }
@@ -149,7 +150,8 @@ class Picker extends Component {
         <div
           style={itemStyle}
           className={selectedValue === item.value ? selectedItemClassName : itemClassName}
-          key={item.value}>
+          key={item.value}
+        >
           {item.label}
         </div>
       );
@@ -158,22 +160,26 @@ class Picker extends Component {
       [className]: !!className,
       [prefixCls]: true,
     };
-
     return (
-      <div className={classNames(pickerCls)}>
-        <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle} />
+      <div
+        className={classNames(pickerCls)}
+      >
+        <div className={`${prefixCls}-mask`}/>
+        <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle}/>
         <div className={`${prefixCls}-content`} ref="content">
           {items}
         </div>
       </div>
     );
   }
+
 }
 
 Picker.defaultProps = {
-  prefixCls: 'ui-datepicker',
+  prefixCls: 'rmc-picker',
   pure: true,
-  onValueChange: () => {},
-};
+  onValueChange() {
+  },
+}
 
 export default Picker;
