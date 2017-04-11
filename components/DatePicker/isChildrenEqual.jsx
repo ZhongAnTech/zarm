@@ -13,7 +13,7 @@ export default function isChildrenEqual(c1, c2, pure) {
     return false;
   }
   const len = c1.length;
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len; i += 1) {
     if (c1[i].value !== c2[i].value || c1[i].label !== c2[i].label) {
       return false;
     }

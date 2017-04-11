@@ -12,6 +12,28 @@ class MultiPicker extends Component {
     };
   }
 
+  onValueChange(i, v) {
+    const value = this.getValue().concat();
+    value[i] = v;
+    this.props.onValueChange(value, i);
+  }
+
+  getValue() {
+    const { children, selectedValue } = this.props;
+    if (selectedValue && selectedValue.length) {
+      return selectedValue;
+    }
+
+    if (!children) {
+      return [];
+    }
+
+    return children.map((c) => {
+      const cc = c.props.children;
+      return cc && cc[0] && cc[0].value;
+    });
+  }
+
   render() {
     const props = this.props;
     const {
@@ -32,9 +54,9 @@ class MultiPicker extends Component {
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
             selectedValue={selectedValue[i]}
-            onValueChange={this.onValueChange.bind(this, i)}
+            onValueChange={value => this.onValueChange(i, value)}
             {...col.props}
-          />
+            />
         </div>
       );
     });
@@ -45,37 +67,12 @@ class MultiPicker extends Component {
       </div>
     );
   }
-
-  getValue() {
-    const { children, selectedValue } = this.props;
-    if (selectedValue && selectedValue.length) {
-      return selectedValue;
-    } else {
-      if (!children) {
-        return [];
-      }
-      return children.map(c => {
-        const cc = c.props.children;
-        return cc && cc[0] && cc[0].value;
-      });
-    }
-  }
-
-  onValueChange(i, v) {
-    const value = this.getValue().concat();
-
-    value[i] = v;
-
-    this.props.onValueChange(value, i);
-  }
-
 }
 
 MultiPicker.defaultProps = {
   prefixCls: 'ui-multi-picker',
   pickerPrefixCls: 'ui-datepicker',
-  onValueChange() {
-  },
+  onValueChange: () => {},
   disabled: false,
 };
 
