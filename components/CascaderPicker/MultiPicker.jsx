@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
 import Picker from './Picker';
 
@@ -12,28 +12,6 @@ class MultiPicker extends Component {
     };
   }
 
-  onValueChange(i, v) {
-    const value = this.getValue().concat();
-    value[i] = v;
-    this.props.onValueChange(value, i);
-  }
-
-  getValue() {
-    const { children, selectedValue } = this.props;
-    if (selectedValue && selectedValue.length) {
-      return selectedValue;
-    }
-
-    if (!children) {
-      return [];
-    }
-
-    return children.map((c) => {
-      const cc = c.props.children;
-      return cc && cc[0] && cc[0].value;
-    });
-  }
-
   render() {
     const props = this.props;
     const {
@@ -43,6 +21,7 @@ class MultiPicker extends Component {
       indicatorStyle,
       pure, children,
     } = props;
+
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
       return (
@@ -54,9 +33,9 @@ class MultiPicker extends Component {
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
             selectedValue={selectedValue[i]}
-            onValueChange={value => this.onValueChange(i, value)}
+            onValueChange={this.onValueChange.bind(this, i)}
             {...col.props}
-            />
+          />
         </div>
       );
     });
@@ -67,12 +46,37 @@ class MultiPicker extends Component {
       </div>
     );
   }
+
+  getValue() {
+    const { children, selectedValue } = this.props;
+    if (selectedValue && selectedValue.length) {
+      return selectedValue;
+    } else {
+      if (!children) {
+        return [];
+      }
+      return children.map(c => {
+        const cc = c.props.children;
+        return cc && cc[0] && cc[0].value;
+      });
+    }
+  }
+
+  onValueChange(i, v) {
+    const value = this.getValue().concat();
+
+    value[i] = v;
+
+    this.props.onValueChange(value, i);
+  }
+
 }
 
 MultiPicker.defaultProps = {
-  prefixCls: 'ui-multi-picker',
-  pickerPrefixCls: 'ui-datepicker',
-  onValueChange: () => {},
+  prefixCls: 'rmc-multi-picker',
+  pickerPrefixCls: 'rmc-picker',
+  onValueChange() {
+  },
   disabled: false,
 };
 

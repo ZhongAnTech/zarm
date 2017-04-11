@@ -1,7 +1,31 @@
 
 import React, { Component } from 'react';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker } from '../../components';
-import District from './district';
+import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker, CascaderPicker } from '../../components';
+import District from './district'
+
+const seasons = [
+  [
+    {
+      label: '2013',
+      value: '2013',
+    },
+    {
+      label: '2014',
+      value: '2014',
+    },
+  ],
+  [
+    {
+      label: '春',
+      value: '春',
+    },
+    {
+      label: '夏',
+      value: '夏',
+    },
+  ],
+];
+
 
 class CellPage extends Component {
 
@@ -10,6 +34,8 @@ class CellPage extends Component {
     this.state = {
       picker: false,
       datePicker: false,
+      CascaderPicker: false,
+      sValue: [undefined, undefined],
       date: '',
       pickerValue: [undefined, undefined, undefined],
       sex: '',
@@ -108,15 +134,28 @@ class CellPage extends Component {
               <Input type="date" placeholder="请选择出生日期" />
             </Cell>
 
-            <Cell title="份数" description={<InputNumber radius type="tel" theme="info" defaultValue={1} min={-3} max={3} step={1} value={this.state.number}
-              onChange={(value) => {
-                if (isNaN(value)) {
-                  return;
-                }
-                this.setState({
-                  number: value
-                });
-              }} />} />
+            <Cell
+              title="份数"
+              description={
+                <InputNumber
+                  radius
+                  type="tel"
+                  theme="info"
+                  defaultValue={1}
+                  min={-3}
+                  max={3}
+                  step={1}
+                  value={this.state.number}
+                  onChange={(value) => {
+                    if (isNaN(value)) {
+                      return;
+                    }
+                    this.setState({
+                      number: value,
+                    });
+                  }}
+                  />}
+              />
 
             <Cell title="开关" description={<Switch theme="success" />} />
 
@@ -177,35 +216,40 @@ class CellPage extends Component {
                 visible={this.state.datePicker}
                 title="选择日期"
                 placeholder="请选择日期"
-                mode="datetime"
-                minDate="2017-01-01 01:00"
-                maxDate="2017-05-15 05:00"
+                mode="date"
+                min="2017-01-04"
+                max="2018-03-02"
                 date={this.state.date}
                 defaultDate={this.state.date}
                 onChange={(value) => {
                   this.setState({
-                    date: value
+                    date: value,
                   });
                 }}
                 onOk={(value) => {
                   this.setState({
-                    date: value
+                    date: value,
                   });
                 }}
                 onCancel={() => {
-                }} />
+                }}
+                />
             </Cell>
 
             <Cell>
-              <Checkbox defaultChecked={true} onChange={(value) => {
-                console.log(value);
-              }} />
+              <Checkbox
+                defaultChecked
+                onChange={(value) => {
+                  console.log(value);
+                }}
+                />
             </Cell>
 
             <Cell>
-              <Checkbox.Group onChange={(values) => {
-                console.log('Checkbox to ' + values);
-              }}>
+              <Checkbox.Group
+                onChange={(values) => {
+                  console.log('Checkbox to ' + values);
+                }}>
                 <Checkbox value="a">A</Checkbox>
                 <Checkbox value="b" disabled>B</Checkbox>
                 <Checkbox value="c">C</Checkbox>
