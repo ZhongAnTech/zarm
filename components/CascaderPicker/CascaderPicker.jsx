@@ -1,5 +1,7 @@
 import React, { Component, PropTypes, cloneElement } from 'react';
+import arrayTreeFilter from './array-tree-filter';
 import MultiPicker from './MultiPicker';
+import Cascader from './Cascader';
 import classnames from 'classnames';
 
 class CascaderPicker extends Component {
@@ -11,8 +13,34 @@ class CascaderPicker extends Component {
     };
   }
 
+  getValue() {
+    const value = this.props.value || [];
+    let treeChildren;
+
+    if(this.props.cascade) {
+      if(this.props.value){
+        treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
+          return c.value === value[level];
+        });
+      } else {
+        treeChildren = this.props.data;
+      }
+
+      console.log("treeChildren =>", treeChildren);
+    }else{
+      return value.join(format) || placeholder
+    }
+
+    return treeChildren.map((v) => {
+      console.log(v);
+        return v.label;
+    });
+
+  }
+
   render() {
-    const { value, prefixCls, format, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, data, placeholder } = this.props;
+    const { value, prefixCls, format, pickerPrefixCls, cascade, className, cancelText, okText, title, data, placeholder } = this.props;
+    let Picker = null;
 
     const classes = classnames({
       'ui-picker-container' : true,
@@ -28,10 +56,53 @@ class CascaderPicker extends Component {
       return { props: { children: d } };
     });
 
+    if(cascade) {
+      Picker = (
+        <Cascader
+          prefixCls={prefixCls}
+          pickerPrefixCls={pickerPrefixCls}
+          data={data}
+          cols={this.props.cols}
+          onChange={this.onValueChange.bind(this)}
+          displayMember="label"
+        />
+      );
+    } else{
+      Picker = (
+        <MultiPicker
+          className={className}
+          prefixCls={prefixCls}
+          pickerPrefixCls={pickerPrefixCls}
+          selectedValue={value}
+          onValueChange={this.onValueChange.bind(this)}
+        >
+          {cols}
+        </MultiPicker>
+      )
+    }
+
+    let display = () => {
+      if(value[0] != undefined) {
+        let treeChildren;
+
+        treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
+          return c.value === value[level];
+        });
+
+        return treeChildren.map((v) => {
+            return v.label;
+        }).join(format);
+
+      }else{
+        return value.join(format) || placeholder
+      }
+    }
+
+
     return (
       <div className="ui-picker-group" onClick={() => this.toggle()}>
         <div className={inputCls}>
-          {value.join(format) || placeholder}
+          {display()}
         </div>
         <div className={classes} onClick={(e) => this.onContainerClick(e)}>
           <div className="ui-picker-mask" onClick={this.onMaskClick.bind(this)}></div>
@@ -43,18 +114,7 @@ class CascaderPicker extends Component {
             </div>
             <div className="ui-picker-mask-top">
               <div className="ui-picker-mask-bottom">
-                <div className="ui-picker-body">
-                  <MultiPicker
-                    rootNativeProps={rootNativeProps}
-                    className={className}
-                    prefixCls={prefixCls}
-                    pickerPrefixCls={pickerPrefixCls}
-                    selectedValue={value}
-                    onValueChange={this.onValueChange.bind(this)}
-                  >
-                    {cols}
-                  </MultiPicker>
-                </div>
+                {Picker}
               </div>
             </div>
           </div>
@@ -66,7 +126,6 @@ class CascaderPicker extends Component {
 
   onValueChange(value, index) {
 
-    console.log(value);
     this.props.onChange(value);
 
   };
@@ -94,7 +153,6 @@ class CascaderPicker extends Component {
     this.toggle();
     onOk && onOk(value);
   }
-
 
   onMaskClick() {
     this.setState({ visible: false });

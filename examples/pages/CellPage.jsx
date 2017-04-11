@@ -24,6 +24,16 @@ const seasons = [
       value: '夏',
     },
   ],
+  [
+    {
+      label: '上午',
+      value: '上午',
+    },
+    {
+      label: '下午',
+      value: '下午',
+    },
+  ],
 ];
 
 
@@ -35,7 +45,7 @@ class CellPage extends Component {
       picker: false,
       datePicker: false,
       CascaderPicker: false,
-      sValue: [undefined, undefined],
+      sValue: [],
       date: '',
       pickerValue: [undefined, undefined, undefined],
       sex: '',
@@ -219,22 +229,24 @@ class CellPage extends Component {
                   });
                 }}
                 onCancel={() => {
-                }} />
+                }} 
+              />
             </Cell>
 
             <Cell title="多级选择器" type="select">
-              <CascaderPicker 
+              <CascaderPicker
                 visible={this.state.CascaderPicker}
                 title="请选择"
                 placeholder="请选择"
+                format="-"
                 cascade={false}
                 data={seasons}
-                format="-"
+                cols={3}
                 value={this.state.sValue}
                 onChange={v => this.setState({ sValue: v })}
-              />  
+              />
             </Cell>
-            
+
             <Cell>
               <Checkbox defaultChecked={true} onChange={(value) => {
                 console.log(value);
