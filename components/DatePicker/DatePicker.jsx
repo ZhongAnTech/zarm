@@ -1,17 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import MultiPicker from './MultiPicker';
 import moment from 'moment';
-import { formatFn } from './utils';
+import MultiPicker from './MultiPicker';
+import formatFn from './utils';
 import defaultLocale from './locale/zh_CN';
-
-function getDaysInMonth(now) {
-  return now.clone().endOf('month').date();
-}
-
-function pad(n) {
-  return n < 10 ? `0${n}` : n + '';
-}
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -19,153 +11,141 @@ const TIME = 'time';
 const MONTH = 'month';
 const YEAR = 'year';
 
+// 获取当月天数
+function getDaysInMonth(now) {
+  return now.clone().endOf('month').date();
+}
+
+// 补齐格式
+function pad(n) {
+  return n < 10 ? `0${n}` : `${n}`;
+}
+
+// 阻止选择器区域的默认事件
+function stopClick(e) {
+  e.stopPropagation();
+}
+
+// 转成moment格式
+function getGregorianCalendar(arg) {
+  return moment(arg);
+}
 
 class DatePicker extends Component {
-
   constructor(props) {
     super(props);
 
-    let date = props.date && this.isExtendMoment(props.date);
-    let defaultDate = props.defaultDate && this.isExtendMoment(props.defaultDate);
+    const date = props.date && this.isExtendMoment(props.date);
+    const defaultDate = props.defaultDate && this.isExtendMoment(props.defaultDate);
 
     this.initDate = props.date && this.isExtendMoment(props.date);
 
     this.state = {
       visible: props.visible || false,
-      date: date || defaultDate
+      date: date || defaultDate,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    let date = nextProps.date && this.isExtendMoment(nextProps.date);
-    let defaultDate = nextProps.defaultDate && this.isExtendMoment(nextProps.defaultDate);
+    const date = nextProps.date && this.isExtendMoment(nextProps.date);
+    const defaultDate = nextProps.defaultDate && this.isExtendMoment(nextProps.defaultDate);
 
     this.setState({
-      date: date || defaultDate
+      date: date || defaultDate,
     });
   }
 
-  isExtendMoment(date) {
-    const { mode } = this.props;
-    if (date instanceof moment) {
-      return date;
-    } else {
-      if(!date){
-        return '';
-      }
-      if(mode === TIME) {
-        // 如果传递参数不合法，默认转换为时：分
-        return moment(date).isValid() ? moment(date, 'YYYY-MM-DD HH:mm') : moment(date, 'HH:mm');
-      } else{
-        return moment(date, 'YYYY-MM-DD HH:mm');
-      }
-    }
-  }
-
+  // 点击遮罩层
   onMaskClick() {
-    this.setState({ visible: false });
+    const { onMaskClick } = this.props;
+    this.onCancel();
+    onMaskClick && onMaskClick();
   }
 
-  render() {
-    const { value, cols } = this.getValueCols();
-    const { mode, prefixCls, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, placeholder } = this.props;
-
-    const classes = classnames({
-      'ui-picker-container' : true,
-      'ui-picker-hidden'    : !this.state.visible,
-      [className]           : !!className,
+  // 点击取消
+  onCancel() {
+    const { onCancel } = this.props;
+    this.toggle();
+    this.setState({
+      date: this.initDate,
     });
-
-    const inputCls = classnames({
-      'ui-picker-placeholder': !this.state.date
-    });
-
-    return (
-      <div className="ui-picker-group" onClick={() => this.toggle()}>
-        <div className={inputCls}>
-          {this.state.date ? formatFn(this, this.state.date) : placeholder}
-        </div>
-        <div className={classes} onClick={(e) => this.onContainerClick(e)}>
-          <div className="ui-picker-mask" onClick={this.onMaskClick.bind(this)}></div>
-          <div className="ui-picker-inner">
-            <div className="ui-picker-header">
-              <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
-              <div className="ui-picker-title">{title}</div>
-              <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
-            </div>
-            <div className="ui-picker-mask-top">
-              <div className="ui-picker-mask-bottom">
-              <MultiPicker
-                rootNativeProps={rootNativeProps}
-                className={className}
-                prefixCls={prefixCls}
-                pickerPrefixCls={pickerPrefixCls}
-                pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
-                selectedValue={value}
-                onValueChange={this.onValueChange.bind(this)}
-              >
-                {cols}
-              </MultiPicker>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> );
+    onCancel && onCancel();
   }
 
-  //  获取
-  getValueCols() {
-    const { mode } = this.props;
-    const date = this.getDate();
+  // 点击确定
+  onOk() {
+    const { onOk } = this.props;
+    const value = this.getDate();
+    this.initDate = value;
+    this.toggle();
+    onOk && onOk(value);
+  }
 
-    let cols = [];
-    let value = [];
+  onValueChange(values, index) {
+    const value = parseInt(values[index], 10);
 
-    if (mode === YEAR) {
-      return {
-        cols: this.getDateData(),
-        value: [date.year() + ''],
-      };
+    const props = this.props;
+    const { mode } = props;
+    let newValue = this.getDate().clone();
+
+    if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
+      switch (index) {
+        case 0:
+          newValue.year(value);
+          break;
+        case 1:
+          newValue.month(value);
+          break;
+        case 2:
+          newValue.date(value);
+          break;
+        case 3:
+          newValue.hour(value);
+          break;
+        case 4:
+          newValue.minute(value);
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (index) {
+        case 0:
+          newValue.hour(value);
+          break;
+        case 1:
+          newValue.minute(value);
+          break;
+        default:
+          break;
+      }
     }
 
-    if (mode === MONTH) {
-      return {
-        cols: this.getDateData(),
-        value: [date.year() + '', date.month() + ''],
-      };
+    newValue = this.clipDate(newValue);
+
+    if (!('date' in props)) {
+      this.setState({
+        date: newValue,
+      });
     }
 
-    if (mode === DATETIME || mode === DATE) {
-      cols = this.getDateData();
-      value = [date.year() + '', date.month() + '', date.date() + ''];
-    }
-
-    if (mode === DATETIME || mode === TIME) {
-      cols = cols.concat(this.getTimeData());
-      value = value.concat([date.hour() + '', date.minute() + '']);
-    }
-
-    return {
-      value,
-      cols,
-    };
+    props.onChange(newValue);
   }
 
   getDefaultMinDate() {
     if (!this.defaultMinDate) {
-      this.defaultMinDate = this.getGregorianCalendar([2000, 0, 1, 0, 0, 0]);
+      this.defaultMinDate = getGregorianCalendar([2000, 0, 1, 0, 0, 0]);
     }
     return this.defaultMinDate;
   }
 
   getDefaultMaxDate() {
     if (!this.defaultMaxDate) {
-      this.defaultMaxDate = this.getGregorianCalendar([2030, 1, 1, 23, 59, 59]);
+      this.defaultMaxDate = getGregorianCalendar([2030, 1, 1, 23, 59, 59]);
     }
     return this.defaultMaxDate;
   }
 
-  //  hmget
   getDate() {
     return this.state.date || this.getMinDate() || moment(new Date());
   }
@@ -211,13 +191,12 @@ class DatePicker extends Component {
   }
 
   getMinDate() {
-    let minDate = this.isExtendMoment(this.props.min);
+    const minDate = this.isExtendMoment(this.props.min);
     return minDate || this.getDefaultMinDate();
   }
 
-
   getMaxDate() {
-    let maxDate = this.isExtendMoment(this.props.max);
+    const maxDate = this.isExtendMoment(this.props.max);
     return maxDate || this.getDefaultMaxDate();
   }
 
@@ -235,31 +214,32 @@ class DatePicker extends Component {
     const maxDateDay = this.getMaxDay();
     const years = [];
 
-    for (let i = minDateYear; i <= maxDateYear; i++) {
+    for (let i = minDateYear; i <= maxDateYear; i += 1) {
       years.push({
-        value: i + '',
-        label: i + locale.year + '',
+        value: `${i}`,
+        label: `${i + locale.year}`,
       });
     }
 
     const yearCol = { key: 'year', props: { children: years } };
     if (mode === YEAR) {
-      return [ yearCol ];
+      return [yearCol];
     }
 
     const months = [];
     let minMonth = 0;
     let maxMonth = 11;
+
     if (minDateYear === selYear) {
       minMonth = minDateMonth;
     }
     if (maxDateYear === selYear) {
       maxMonth = maxDateMonth;
     }
-    for (let i = minMonth; i <= maxMonth; i++) {
-      const label = formatMonth ? formatMonth(i, date) : (i + 1 + locale.month + '');
+    for (let i = minMonth; i <= maxMonth; i += 1) {
+      const label = formatMonth ? formatMonth(i, date) : `${i + 1 + locale.month}`;
       months.push({
-        value: i + '',
+        value: `${i}`,
         label,
       });
     }
@@ -279,10 +259,10 @@ class DatePicker extends Component {
       maxDay = maxDateDay;
     }
 
-    for (let i = minDay; i <= maxDay; i++) {
-      const label = formatDay ? formatDay(i, date) : (i + locale.day + '');
+    for (let i = minDay; i <= maxDay; i += 1) {
+      const label = formatDay ? formatDay(i, date) : `${i + locale.day}`;
       days.push({
-        value: i + '',
+        value: `${i}`,
         label,
       });
     }
@@ -306,7 +286,6 @@ class DatePicker extends Component {
     const minDateHour = this.getMinHour();
     const maxDateHour = this.getMaxHour();
     const hour = date.hour();
-
 
     if (mode === DATETIME) {
       const year = date.year();
@@ -344,10 +323,10 @@ class DatePicker extends Component {
     }
 
     const hours = [];
-    for (let i = minHour; i <= maxHour; i++) {
+    for (let i = minHour; i <= maxHour; i += 1) {
       hours.push({
-        value: i + '',
-        label: locale.hour ? i + locale.hour + '' : pad(i),
+        value: `${i}`,
+        label: locale.hour ? `${i + locale.hour}` : pad(i),
       });
     }
 
@@ -355,8 +334,8 @@ class DatePicker extends Component {
 
     for (let i = minMinute; i <= maxMinute; i += minuteStep) {
       minutes.push({
-        value: i + '',
-        label: locale.minute ? i + locale.minute + '' : pad(i),
+        value: `${i}`,
+        label: locale.minute ? `${i + locale.minute}` : pad(i),
       });
     }
 
@@ -366,60 +345,42 @@ class DatePicker extends Component {
     ];
   }
 
-  getGregorianCalendar(arg) {
-    return moment(arg);
-  }
+  // 获取
+  getValueCols() {
+    const { mode } = this.props;
+    const date = this.getDate();
 
-  onValueChange(values, index) {
-    const value = parseInt(values[index], 10);
+    let cols = [];
+    let value = [];
 
-    const props = this.props;
-    const { mode } = props;
-    let newValue = this.getDate().clone();
-
-    if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
-      switch (index) {
-      case 0:
-        newValue.year(value);
-        break;
-      case 1:
-        newValue.month(value);
-        break;
-      case 2:
-        newValue.date(value);
-        break;
-      case 3:
-        newValue.hour(value);
-        break;
-      case 4:
-        newValue.minute(value);
-        break;
-      default:
-        break;
-      }
-    } else {
-      switch (index) {
-      case 0:
-        newValue.hour(value);
-        break;
-      case 1:
-        newValue.minute(value);
-        break;
-      default:
-        break;
-      }
+    if (mode === YEAR) {
+      return {
+        cols: this.getDateData(),
+        value: [`${date.year()}`],
+      };
     }
 
-    newValue = this.clipDate(newValue);
-
-    // ???
-    if (!('date' in props)) {
-      this.setState({
-        date: newValue,
-      });
+    if (mode === MONTH) {
+      return {
+        cols: this.getDateData(),
+        value: [`${date.year()}`, `${date.month()}`],
+      };
     }
 
-    props.onChange(newValue);
+    if (mode === DATETIME || mode === DATE) {
+      cols = this.getDateData();
+      value = [`${date.year()}`, `${date.month()}`, `${date.date()}`];
+    }
+
+    if (mode === DATETIME || mode === TIME) {
+      cols = cols.concat(this.getTimeData());
+      value = value.concat([`${date.hour()}`, `${date.minute()}`]);
+    }
+
+    return {
+      value,
+      cols,
+    };
   }
 
   clipDate(date) {
@@ -447,68 +408,110 @@ class DatePicker extends Component {
       const minMinutes = minDate.minute();
       const hour = date.hour();
       const minutes = date.minute();
-      if (hour < minHour || hour === minHour && minutes < minMinutes) {
+      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
         return minDate.clone();
       }
-      if (hour > maxHour || hour === maxHour && minutes > maxMinutes) {
+      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
         return maxDate.clone();
       }
     }
     return date;
   }
 
-  // 阻止选择器区域的默认事件
-  onContainerClick(e) {
-    e.stopPropagation();
+  isExtendMoment(date) {
+    const { mode } = this.props;
+    if (date instanceof moment) {
+      return date;
+    }
+
+    if (!date) {
+      return '';
+    }
+
+    if (mode === TIME) {
+      // 如果传递参数不合法，默认转换为时：分
+      return moment(date).isValid() ? moment(date, 'YYYY-MM-DD HH:mm') : moment(date, 'HH:mm');
+    }
+    return moment(date, 'YYYY-MM-DD HH:mm');
   }
 
   // 切换显示状态
   toggle() {
     this.setState({
-      visible: !this.state.visible
+      visible: !this.state.visible,
     });
   }
 
-  onCancel() {
-    const { onCancel } = this.props;
-    this.toggle();
-    this.setState({
-      date: this.initDate
+  render() {
+    const { value, cols } = this.getValueCols();
+    const { prefixCls, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, placeholder } = this.props;
+
+    const classes = classnames({
+      'ui-picker-container': true,
+      'ui-picker-hidden': !this.state.visible,
+      [className]: !!className,
     });
-    onCancel && onCancel();
-  }
 
-  onOk() {
-    const { onOk } = this.props;
-    const value = this.getDate();
-    this.initDate = value;
-    this.toggle();
-    onOk && onOk(value);
-  }
+    const inputCls = classnames({
+      'ui-picker-placeholder': !this.state.date,
+    });
 
+    return (
+      <div className="ui-picker-group" onClick={() => this.toggle()}>
+        <div className={inputCls}>
+          {this.state.date ? formatFn(this, this.state.date) : placeholder}
+        </div>
+        <div className={classes} onClick={e => stopClick(e)}>
+          <div className="ui-picker-mask" onClick={() => this.onMaskClick()} />
+          <div className="ui-picker-inner">
+            <div className="ui-picker-header">
+              <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
+              <div className="ui-picker-title">{title}</div>
+              <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
+            </div>
+            <div className="ui-picker-mask-top">
+              <div className="ui-picker-mask-bottom">
+                <MultiPicker
+                  rootNativeProps={rootNativeProps}
+                  className={className}
+                  prefixCls={prefixCls}
+                  pickerPrefixCls={pickerPrefixCls}
+                  // pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
+                  selectedValue={value}
+                  onValueChange={(values, index) => this.onValueChange(values, index)}>
+                  {cols}
+                </MultiPicker>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 DatePicker.propTypes = {
-  visible         : PropTypes.bool,
-  title           : PropTypes.string,
-  cancelText      : PropTypes.string,
-  okText          : PropTypes.string,
-  mode            : React.PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
-  onMaskClick     : PropTypes.func,
-  prefixCls       : PropTypes.string,
-  pickerPrefixCls : PropTypes.string
+  visible: PropTypes.bool,
+  title: PropTypes.string,
+  cancelText: PropTypes.string,
+  okText: PropTypes.string,
+  mode: React.PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
+  onMaskClick: PropTypes.func,
+  minuteStep: PropTypes.number,
+  prefixCls: PropTypes.string,
+  pickerPrefixCls: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
-  visible         : false,
-  cancelText      : '取消',
-  okText          : '确定',
-  mode            : 'date',
-  onMaskClick     : () => {},
-  locale          : defaultLocale,
-  minuteStep      : 1,
-  prefixCls       : 'ui-multi-picker',
-  pickerPrefixCls : 'ui-datepicker',
+  visible: false,
+  cancelText: '取消',
+  okText: '确定',
+  mode: DATE,
+  onMaskClick: () => {},
+  locale: defaultLocale,
+  minuteStep: 1,
+  prefixCls: 'ui-multi-picker',
+  pickerPrefixCls: 'ui-datepicker',
 };
 
 export default DatePicker;

@@ -3,7 +3,16 @@ import classNames from 'classnames';
 import ZScroller from 'zscroller';
 import isChildrenEqual from './isChildrenEqual';
 
+function getChildMember(child, m) {
+  return child[m];
+}
+
+function toChildrenArray(children) {
+  return children;
+}
+
 class Picker extends Component {
+
   constructor(props) {
     super(props);
     let selectedValueState;
@@ -61,6 +70,10 @@ class Picker extends Component {
     this.zscroller.destroy();
   }
 
+  getValue() {
+    return this.props.selectedValue || (this.props.children && this.props.children[0] && this.props.children[0].value);
+  }
+
   scrollTo(top) {
     this.zscroller.scroller.scrollTo(0, top);
   }
@@ -83,22 +96,10 @@ class Picker extends Component {
     }
   }
 
-  getChildMember(child, m) {
-    return child[m];
-  }
-
-  getValue() {
-    return this.props.selectedValue || this.props.children && this.props.children[0] && this.props.children[0].value;
-  }
-
-  toChildrenArray(children) {
-    return children;
-  }
-
   select(value) {
-    const children = this.toChildrenArray(this.props.children);
-    for (let i = 0, len = children.length; i < len; i++) {
-      if (this.getChildMember(children[i], 'value') === value) {
+    const children = toChildrenArray(this.props.children);
+    for (let i = 0, len = children.length; i < len; i += 1) {
+      if (getChildMember(children[i], 'value') === value) {
         this.selectByIndex(i);
         return;
       }
@@ -107,7 +108,7 @@ class Picker extends Component {
   }
 
   selectByIndex(index) {
-    if (index < 0 || index >= this.toChildrenArray(this.props.children).length || !this.itemHeight) {
+    if (index < 0 || index >= toChildrenArray(this.props.children).length || !this.itemHeight) {
       return;
     }
     this.scrollTo(index * this.itemHeight);
@@ -122,12 +123,12 @@ class Picker extends Component {
       index = floor;
     }
 
-    const children = this.toChildrenArray(this.props.children);
+    const children = toChildrenArray(this.props.children);
 
     index = Math.min(index, children.length - 1);
     const child = children[index];
     if (child) {
-      this.fireValueChange(this.getChildMember(child, 'value'));
+      this.fireValueChange(getChildMember(child, 'value'));
     } else if (console.warn) {
       console.warn('child not found', children, index);
     }
@@ -148,8 +149,7 @@ class Picker extends Component {
         <div
           style={itemStyle}
           className={selectedValue === item.value ? selectedItemClassName : itemClassName}
-          key={item.value}
-        >
+          key={item.value}>
           {item.label}
         </div>
       );
@@ -160,25 +160,20 @@ class Picker extends Component {
     };
 
     return (
-      <div
-        className={classNames(pickerCls)}
-      >
-        {/*<div className={`${prefixCls}-mask`} ref="mask"/>*/}
-        <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle}/>
+      <div className={classNames(pickerCls)}>
+        <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle} />
         <div className={`${prefixCls}-content`} ref="content">
           {items}
         </div>
       </div>
     );
   }
-
 }
 
 Picker.defaultProps = {
   prefixCls: 'ui-datepicker',
   pure: true,
-  onValueChange() {
-  },
+  onValueChange: () => {},
 };
 
 export default Picker;
