@@ -12,23 +12,24 @@ class ToastPage extends Component {
       toast: {
         visible: false,
         onMaskClick: () => {
-          let toast = this.state.toast
-          toast.visible = false
-          this.setState({toast})
-        }
+          const toast = this.state.toast;
+          toast.visible = false;
+          this.setState({ toast });
+        },
       },
-      loading: false
-    }
+      loading: false,
+    };
   }
 
   toggle(key) {
     this.setState({
-      [`${ key }`]: !this.state[key]
+      [`${key}`]: !this.state[key],
     });
   }
 
   render() {
-    let { toast } = this.state
+    const { toast } = this.state;
+
     return (
       <div className="toast-page">
         <Panel>
@@ -36,29 +37,31 @@ class ToastPage extends Component {
             <Panel.Title>提示信息</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button onClick={() => {
-              toast.visible = true
-              toast.children = '手机号码不能为空'
-              toast.onMaskClick = () => {
-                toast.visible = false
-                this.setState({toast})
-              }
-              this.setState({toast})
-            }}>错误提示</Button>
-            <Button onClick={() => {
-              toast.visible = true
-              toast.children = (
-                <div>
-                  <Icon type="right-round-fill" style={{ fontSize: '3rem' }} />
-                  <p>预约成功</p>
-                </div>
-              )
-              toast.onMaskClick = () => {
-                toast.visible = false
-                this.setState({toast})
-              }
-              this.setState({toast})
-            }}>成功提示</Button>
+            <Button
+              onClick={() => {
+                toast.visible = true;
+                toast.children = '手机号码不能为空';
+                toast.onMaskClick = () => {
+                  toast.visible = false;
+                  this.setState({ toast });
+                };
+                this.setState({ toast });
+              }}>错误提示</Button>
+            <Button
+              onClick={() => {
+                toast.visible = true;
+                toast.children = (
+                  <div>
+                    <Icon type="right-round-fill" style={{ fontSize: '3rem' }} />
+                    <p>预约成功</p>
+                  </div>
+                );
+                toast.onMaskClick = () => {
+                  toast.visible = false;
+                  this.setState({ toast });
+                };
+                this.setState({ toast });
+              }}>成功提示</Button>
           </Panel.Body>
         </Panel>
 

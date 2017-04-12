@@ -40,6 +40,10 @@ class Toast extends Component {
       isShow: true,
     });
 
+    if (duration === 0) {
+      return;
+    }
+
     this.state.timer = setTimeout(() => {
       onMaskClick();
       clearTimeout(this.state.timer);
@@ -53,7 +57,7 @@ class Toast extends Component {
   }
 
   render() {
-    const { visible, children, onMaskClick, className, ...others } = this.props;
+    const { visible, children, onMaskClick, className } = this.props;
 
     const cls = classnames({
       'ui-toast': true,
@@ -62,7 +66,7 @@ class Toast extends Component {
     });
 
     return (
-      <div {...others} className={cls}>
+      <div className={cls}>
         <div className="ui-toast-container">
           {children}
         </div>
@@ -70,6 +74,7 @@ class Toast extends Component {
       </div>
     );
   }
+
 }
 
 Toast.propTypes = {
