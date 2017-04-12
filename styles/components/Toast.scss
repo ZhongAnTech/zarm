@@ -9,33 +9,33 @@
   overflow: auto;
   user-select: none;
   z-index: 1300;
-}
 
-.ui-toast-open {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ui-toast-container {
-  position: relative;
-  max-width: 70%;
-  min-width: r(120);
-  padding: r(20);
-  border-radius: r(6);
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  text-align: center;
-  font-size: r(15);
-
-  .ui-icon {
-    font-size: r(40);
+  &-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  p {
-    margin: 0;
-    padding: 0;
-    line-height: 1.5;
-    overflow: hidden;
+  &-container {
+    position: relative;
+    max-width: 70%;
+    min-width: r(120);
+    padding: r(20);
+    border-radius: r(6);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    font-size: r(15);
+
+    .ui-icon {
+      font-size: r(40);
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      overflow: hidden;
+    }
   }
 }
