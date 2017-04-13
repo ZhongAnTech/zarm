@@ -9,7 +9,7 @@ class Toast extends Component {
     super(props);
     this.state = {
       isShow: false,
-      timer: undefined
+      timer: undefined,
     };
   }
 
@@ -19,12 +19,12 @@ class Toast extends Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     clearTimeout(this.state.timer);
 
-    if (!this.props.visible && nextProps.visible) {
+    if (nextProps.visible) {
       this.enter();
-    } else if (this.props.visible && !nextProps.visible) {
+    } else {
       this.leave();
     }
   }
@@ -33,31 +33,16 @@ class Toast extends Component {
     clearTimeout(this.state.timer);
   }
 
-  render () {
-    const { visible, children, onMaskClick, className, ...others } = this.props;
-
-    const cls = classnames({
-      'ui-toast'      : true,
-      'ui-toast-open' : this.state.isShow,
-      [className]     : !!className,
-    });
-
-    return (
-      <div {...others} className={cls}>
-        <div className="ui-toast-container">
-          {children}
-        </div>
-        <Mask visible={visible} type="transparent" onClose={onMaskClick} />
-      </div>
-    )
-  }
-
   enter() {
     const { duration, onMaskClick } = this.props;
 
     this.setState({
-      isShow: true
+      isShow: true,
     });
+
+    if (duration === 0) {
+      return;
+    }
 
     this.state.timer = setTimeout(() => {
       onMaskClick();
@@ -67,22 +52,41 @@ class Toast extends Component {
 
   leave() {
     this.setState({
-      isShow: false
+      isShow: false,
     });
   }
+
+  render() {
+    const { visible, children, onMaskClick, className } = this.props;
+
+    const cls = classnames({
+      'ui-toast': true,
+      'ui-toast-open': this.state.isShow,
+      [className]: !!className,
+    });
+
+    return (
+      <div className={cls}>
+        <div className="ui-toast-container">
+          {children}
+        </div>
+        <Mask visible={visible} type="transparent" onClose={onMaskClick} />
+      </div>
+    );
+  }
+
 }
 
 Toast.propTypes = {
-  visible     : PropTypes.bool,
-  duration    : PropTypes.number,
-  onMaskClick : PropTypes.func,
+  visible: PropTypes.bool,
+  duration: PropTypes.number,
+  onMaskClick: PropTypes.func,
 };
 
 Toast.defaultProps = {
-  visible     : false,
-  duration    : 3000,
-  onMaskClick : () => {},
+  visible: false,
+  duration: 3000,
+  onMaskClick: () => {},
 };
 
 export default Toast;
-
