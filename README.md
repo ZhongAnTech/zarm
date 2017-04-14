@@ -29,6 +29,10 @@
 - Toast 消息提示
 
 ## 版本更新日志
+
+- 0.0.35
+  修复日期时间选择器(DatePicker) 部分bug
+
 - 0.0.34
   新增日期时间选择器(DatePicker) 和 开关组件(Switch)
 
