@@ -28,11 +28,11 @@ class ButtonPage extends Component {
             <Panel.Title>幽灵按钮</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button bordered>按钮</Button>
-            <Button bordered theme="info">按钮</Button>
-            <Button bordered theme="success">按钮</Button>
-            <Button bordered theme="warning">按钮</Button>
-            <Button bordered theme="error">按钮</Button>
+            <Button radius bordered>按钮</Button>
+            <Button radius bordered theme="info">按钮</Button>
+            <Button radius bordered theme="success">按钮</Button>
+            <Button radius bordered theme="warning">按钮</Button>
+            <Button radius bordered theme="error">按钮</Button>
           </Panel.Body>
         </Panel>
 
@@ -41,11 +41,11 @@ class ButtonPage extends Component {
             <Panel.Title>按钮大小</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button size="xl">按钮</Button>
-            <Button size="lg">按钮</Button>
-            <Button>按钮</Button>
-            <Button size="sm">按钮</Button>
-            <Button size="xs">按钮</Button>
+            <Button size="xl" radius>按钮</Button>
+            <Button size="lg" radius theme="info">按钮</Button>
+            <Button radius theme="success">按钮</Button>
+            <Button size="sm" radius theme="warning">按钮</Button>
+            <Button size="xs" radius theme="error">按钮</Button>
           </Panel.Body>
         </Panel>
 
@@ -54,7 +54,7 @@ class ButtonPage extends Component {
             <Panel.Title>块级按钮</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button block theme="info">按钮</Button>
+            <Button block radius theme="info">按钮</Button>
           </Panel.Body>
         </Panel>
 
@@ -65,7 +65,7 @@ class ButtonPage extends Component {
           <Panel.Body>
             <Button radius>圆角按钮</Button>
             <Button round theme="info">椭圆角按钮</Button>
-            <Button circle theme="error"><Icon type="wrong" /></Button>
+            <Button circle bordered><Icon type="right" /></Button>
           </Panel.Body>
         </Panel>
 
@@ -74,9 +74,10 @@ class ButtonPage extends Component {
             <Panel.Title>带icon的按钮</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button theme="success"><Icon type="right-round" />正确</Button>
-            <Button theme="error"><Icon type="wrong-round" />错误</Button>
-            <Button disabled loading>加载中的按钮</Button>
+            <span className="rotate-enter">111</span>
+            <Button radius bordered><Icon type="right-round" theme="success" />正确</Button>
+            <Button radius bordered><Icon type="wrong-round" theme="error" />错误</Button>
+            <Button radius disabled bordered loading>加载中的按钮</Button>
           </Panel.Body>
         </Panel>
 
@@ -85,8 +86,8 @@ class ButtonPage extends Component {
             <Panel.Title>禁用状态的按钮</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button disabled>按钮</Button>
-            <Button disabled theme="info">按钮</Button>
+            <Button radius disabled>按钮</Button>
+            <Button radius disabled theme="info">按钮</Button>
           </Panel.Body>
         </Panel>
 
@@ -95,8 +96,8 @@ class ButtonPage extends Component {
             <Panel.Title>激活状态的按钮</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button active>按钮</Button>
-            <Button active theme="info">按钮</Button>
+            <Button radius active>按钮</Button>
+            <Button radius active theme="info">按钮</Button>
           </Panel.Body>
         </Panel>
 
