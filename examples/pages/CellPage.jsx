@@ -45,7 +45,7 @@ class CellPage extends Component {
       picker: false,
       datePicker: false,
       CascaderPicker: false,
-      sValue: [],
+      sValue: ['2014', '春', '上午'],
       date: '',
       pickerValue: [undefined, undefined, undefined],
       sex: '',
@@ -229,6 +229,7 @@ class CellPage extends Component {
                 mode="date"
                 min="2017-01-04"
                 max="2018-03-02"
+                disabled={true}
                 date={this.state.date}
                 defaultDate={this.state.date}
                 onChange={(value) => {
@@ -253,6 +254,7 @@ class CellPage extends Component {
                 placeholder="请选择"
                 format="-"
                 cascade={false}
+                disabled={true}
                 data={seasons}
                 cols={3}
                 value={this.state.sValue}

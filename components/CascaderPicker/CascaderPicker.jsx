@@ -82,7 +82,8 @@ class CascaderPicker extends Component {
     }
 
     let display = () => {
-      if(value[0] != undefined) {
+
+      if(cascade) {
         let treeChildren;
 
         treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
@@ -137,6 +138,9 @@ class CascaderPicker extends Component {
 
   // 切换显示状态
   toggle() {
+    if(this.props.disabled) {
+      return;
+    }
     this.setState({
       visible: !this.state.visible
     });

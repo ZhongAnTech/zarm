@@ -444,7 +444,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, placeholder } = this.props;
+    const { prefixCls, pickerPrefixCls, rootNativeProps, className, disabled, cancelText, okText, title, placeholder } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -476,6 +476,7 @@ class DatePicker extends Component {
                   className={className}
                   prefixCls={prefixCls}
                   pickerPrefixCls={pickerPrefixCls}
+                  disabled={disabled}
                   // pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
                   selectedValue={value}
                   onValueChange={(values, index) => this.onValueChange(values, index)}>
