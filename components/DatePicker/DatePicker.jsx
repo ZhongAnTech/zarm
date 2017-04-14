@@ -441,7 +441,7 @@ class DatePicker extends Component {
     if(this.props.disabled) {
       return;
     }
-    
+
     this.setState({
       visible: !this.state.visible,
     });
@@ -449,7 +449,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, pickerPrefixCls, rootNativeProps, className, disabled, cancelText, okText, title, placeholder } = this.props;
+    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -459,6 +459,7 @@ class DatePicker extends Component {
 
     const inputCls = classnames({
       'ui-picker-placeholder': !this.state.date,
+      'ui-picker-disabled': !!disabled
     });
 
     return (
@@ -477,7 +478,6 @@ class DatePicker extends Component {
             <div className="ui-picker-mask-top">
               <div className="ui-picker-mask-bottom">
                 <MultiPicker
-                  rootNativeProps={rootNativeProps}
                   className={className}
                   prefixCls={prefixCls}
                   pickerPrefixCls={pickerPrefixCls}
