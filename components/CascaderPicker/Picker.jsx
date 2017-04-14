@@ -62,7 +62,6 @@ class Picker extends Component {
   }
 
   scrollTo(top) {
-
     this.zscroller.scroller.scrollTo(0, top);
   }
 
@@ -164,7 +163,6 @@ class Picker extends Component {
       <div
         className={classNames(pickerCls)}
       >
-        <div className={`${prefixCls}-mask`}/>
         <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle}/>
         <div className={`${prefixCls}-content`} ref="content">
           {items}
@@ -176,7 +174,7 @@ class Picker extends Component {
 }
 
 Picker.defaultProps = {
-  prefixCls: 'rmc-picker',
+  prefixCls: 'ui-cascaderpicker',
   pure: true,
   onValueChange() {
   },

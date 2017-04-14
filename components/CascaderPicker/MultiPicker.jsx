@@ -16,9 +16,7 @@ class MultiPicker extends Component {
     const props = this.props;
     const {
       prefixCls, pickerPrefixCls,
-      className, rootNativeProps,
-      disabled, pickerItemStyle,
-      indicatorStyle,
+      className, indicatorStyle,
       pure, children,
     } = props;
 
@@ -27,8 +25,6 @@ class MultiPicker extends Component {
       return (
         <div key={col.key || i} className={`${prefixCls}-item`}>
           <Picker
-            itemStyle={pickerItemStyle}
-            disabled={disabled}
             pure={pure}
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
@@ -41,7 +37,7 @@ class MultiPicker extends Component {
     });
 
     return (
-      <div {...rootNativeProps} className={classnames(className, prefixCls)}>
+      <div className={classnames(className, prefixCls)}>
         {colElements}
       </div>
     );
@@ -49,6 +45,7 @@ class MultiPicker extends Component {
 
   getValue() {
     const { children, selectedValue } = this.props;
+
     if (selectedValue && selectedValue.length) {
       return selectedValue;
     } else {
@@ -73,8 +70,8 @@ class MultiPicker extends Component {
 }
 
 MultiPicker.defaultProps = {
-  prefixCls: 'rmc-multi-picker',
-  pickerPrefixCls: 'rmc-picker',
+  prefixCls: 'ui-multi-picker',
+  pickerPrefixCls: 'ui-cascaderpicker',
   onValueChange() {
   },
   disabled: false,
