@@ -39,7 +39,7 @@ class CascaderPicker extends Component {
   }
 
   render() {
-    const { value, prefixCls, format, pickerPrefixCls, cascade, className, cancelText, okText, title, data, placeholder } = this.props;
+    const { value, prefixCls, format, disabled, pickerPrefixCls, cascade, className, cancelText, okText, title, data, placeholder } = this.props;
     let Picker = null;
 
     const classes = classnames({
@@ -49,7 +49,8 @@ class CascaderPicker extends Component {
     });
 
     const inputCls = classnames({
-      'ui-picker-placeholder': !value.join(format)
+      'ui-picker-placeholder': !value.join(format),
+      'ui-picker-disabled': !!disabled
     });
 
     const cols = data.map(d => {
@@ -98,7 +99,6 @@ class CascaderPicker extends Component {
         return value.join(format) || placeholder
       }
     }
-
 
     return (
       <div className="ui-picker-group" onClick={() => this.toggle()}>
