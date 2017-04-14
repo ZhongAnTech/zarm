@@ -29,14 +29,14 @@ class Button extends Component {
                       ? <span><Icon type="loading" className="rotate360" /> {children}</span>
                       : children;
     return (
-      <button {...others} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>{textContent}</button>
+      <button onTouchStart={() => {}} {...others} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>{textContent}</button>
     );
   }
 }
 
 Button.propTypes = {
   type: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['brand', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   isBlock: PropTypes.bool,
   isRadius: PropTypes.bool,
@@ -53,7 +53,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'button',
-  theme: 'default',
+  theme: null,
   size: null,
   isBlock: false,
   isRadius: false,

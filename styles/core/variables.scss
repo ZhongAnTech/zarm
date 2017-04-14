@@ -2,35 +2,36 @@
 $browser-default-font-size: 14;
 $browser-default-font-size-px: 14px !default;
 
-$base-theme-default:       #dadada !default;
-$base-theme-success:       #00b15b !default;
-$base-theme-info:          #2db7f5 !default;
-$base-theme-warning:       #ffba34 !default;
-$base-theme-error:         #e93a3a !default;
+$base-theme-brand  : #dadada !default;
+$base-theme-default: #dadada !default;
+$base-theme-success: #00b15b !default;
+$base-theme-info   : #2db7f5 !default;
+$base-theme-warning: #ffba34 !default;
+$base-theme-error  : #e93a3a !default;
 
-$base-radius-xl:           r(6) !default;
-$base-radius-lg:           r(5) !default;
-$base-radius:              r(4) !default;
-$base-radius-sm:           r(4) !default;
-$base-radius-xs:           r(4) !default;
+$base-radius-xl: r(4) !default;
+$base-radius-lg: r(4) !default;
+$base-radius   : r(4) !default;
+$base-radius-sm: r(4) !default;
+$base-radius-xs: r(4) !default;
 
-$base-height-xl:           r(55) !default;
-$base-height-lg:           r(50) !default;
-$base-height:              r(45) !default;
-$base-height-sm:           r(40) !default;
-$base-height-xs:           r(30) !default;
+$base-height-xl: r(50) !default;
+$base-height-lg: r(45) !default;
+$base-height   : r(40) !default;
+$base-height-sm: r(35) !default;
+$base-height-xs: r(30) !default;
 
-$base-padding-xl:          r(14) !default;
-$base-padding-lg:          r(12) !default;
-$base-padding:             r(10) !default;
-$base-padding-sm:          r(8) !default;
-$base-padding-xs:          r(4) !default;
+$base-padding-xl: r(25) !default;
+$base-padding-lg: r(20) !default;
+$base-padding   : r(16) !default;
+$base-padding-sm: r(15) !default;
+$base-padding-xs: r(10) !default;
 
-$base-fontSize-xl:         r(18) !default;
-$base-fontSize-lg:         r(16) !default;
-$base-fontSize:            r(15) !default;
-$base-fontSize-sm:         r(14) !default;
-$base-fontSize-xs:         r(12) !default;
+$base-fontSize-xl: r(18) !default;
+$base-fontSize-lg: r(16) !default;
+$base-fontSize   : r(16) !default;
+$base-fontSize-sm: r(14) !default;
+$base-fontSize-xs: r(14) !default;
 
 $base-line-height:         1.5 !default;
 
