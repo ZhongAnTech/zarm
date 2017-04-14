@@ -66,6 +66,7 @@ class DatePicker extends Component {
   onCancel() {
     const { onCancel } = this.props;
     this.toggle();
+
     this.setState({
       date: this.initDate,
     });
@@ -437,6 +438,10 @@ class DatePicker extends Component {
 
   // 切换显示状态
   toggle() {
+    if(this.props.disabled) {
+      return;
+    }
+    
     this.setState({
       visible: !this.state.visible,
     });
