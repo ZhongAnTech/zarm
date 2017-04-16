@@ -1,14 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import arrayTreeFilter from './array-tree-filter';
 import MultiPicker from './MultiPicker';
-import classnames from 'classnames';
 
 class Cascader extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      value: this.getValue(this.props.data, this.props.defaultValue || this.props.value)
+      value: this.getValue(this.props.data, this.props.defaultValue || this.props.value),
     };
   }
 
@@ -18,25 +17,6 @@ class Cascader extends Component {
         value: this.getValue(nextProps.data, nextProps.value),
       });
     }
-  }
-
-  getCols() {
-    const { data, cols } = this.props;
-    const value = this.state.value;
-    const childrenTree = arrayTreeFilter(data, (c, level) => {
-      return c.value === value[level];
-    }).map(c => c.children);
-    childrenTree.length = cols - 1;
-    childrenTree.unshift(data);
-
-    
-    return childrenTree.map(children => {
-      return {
-        props: {
-          children: children || [],
-        },
-      };
-    });
   }
 
   onValueChange(value, index) {
@@ -56,6 +36,24 @@ class Cascader extends Component {
       });
     }
     this.props.onChange(value);
+  }
+
+  getCols() {
+    const { data, cols } = this.props;
+    const value = this.state.value;
+    const childrenTree = arrayTreeFilter(data, (c, level) => {
+      return c.value === value[level];
+    }).map(c => c.children);
+    childrenTree.length = cols - 1;
+    childrenTree.unshift(data);
+
+    return childrenTree.map((children) => {
+      return {
+        props: {
+          children: children || [],
+        },
+      };
+    });
   }
 
   getValue(d, val) {
@@ -89,8 +87,7 @@ class Cascader extends Component {
         className={className}
         selectedValue={this.state.value}
         pickerItemStyle={pickerItemStyle}
-        onValueChange={this.onValueChange.bind(this)}
-      >
+        onValueChange={() => this.onValueChange()} >
         {this.getCols()}
       </MultiPicker>
     );

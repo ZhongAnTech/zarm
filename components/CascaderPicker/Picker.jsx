@@ -28,7 +28,7 @@ class Picker extends Component {
     this.zscroller = new ZScroller(this.refs.content, {
       scrollingX: false,
       snapping: true,
-      penetrationDeceleration: .1,
+      penetrationDeceleration: 0.1,
       minVelocityToKeepDecelerating: 0.5,
       scrollingComplete: this.scrollingComplete.bind(this),
     });
@@ -61,8 +61,19 @@ class Picker extends Component {
     this.zscroller.destroy();
   }
 
-  scrollTo(top) {
-    this.zscroller.scroller.scrollTo(0, top);
+  getChildMember(child, m) {
+    return child[m];
+  }
+
+  getValue() {
+    return this.props.selectedValue || this.props.children && this.props.children[0] && this.props.children[0].value;
+  }
+
+  scrollingComplete() {
+    const { top } = this.zscroller.scroller.getValues();
+    if (top >= 0) {
+      this.doScrollingComplete(top);
+    }
   }
 
   fireValueChange(selectedValue) {
@@ -76,20 +87,8 @@ class Picker extends Component {
     }
   }
 
-  scrollingComplete() {
-
-    const { top } = this.zscroller.scroller.getValues();
-    if (top >= 0) {
-      this.doScrollingComplete(top);
-    }
-  }
-
-  getChildMember(child, m) {
-    return child[m];
-  }
-
-  getValue() {
-    return this.props.selectedValue || this.props.children && this.props.children[0] && this.props.children[0].value;
+  scrollTo(top) {
+    this.zscroller.scroller.scrollTo(0, top);
   }
 
   toChildrenArray(children) {
@@ -149,8 +148,7 @@ class Picker extends Component {
         <div
           style={itemStyle}
           className={selectedValue === item.value ? selectedItemClassName : itemClassName}
-          key={item.value}
-        >
+          key={item.value} >
           {item.label}
         </div>
       );
@@ -161,8 +159,7 @@ class Picker extends Component {
     };
     return (
       <div
-        className={classNames(pickerCls)}
-      >
+        className={classNames(pickerCls)} >
         <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle}/>
         <div className={`${prefixCls}-content`} ref="content">
           {items}
@@ -178,6 +175,6 @@ Picker.defaultProps = {
   pure: true,
   onValueChange() {
   },
-}
+};
 
 export default Picker;

@@ -508,7 +508,7 @@ DatePicker.propTypes = {
   pickerPrefixCls: PropTypes.string,
 };
 
-DatePicker.defaultProps = {
+DatePicker.defaultProps = {  
   visible: false,
   cancelText: '取消',
   okText: '确定',
