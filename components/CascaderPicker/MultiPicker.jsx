@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import Picker from './Picker';
 
@@ -10,6 +10,29 @@ class MultiPicker extends Component {
       visible: props.visible || false,
       date: props.date || props.defaultDate || [],
     };
+  }
+
+  onValueChange(i, v) {
+    const value = this.getValue().concat();
+
+    value[i] = v;
+
+    this.props.onValueChange(value, i);
+  }
+
+  getValue() {
+    const { children, selectedValue } = this.props;
+
+    if (selectedValue && selectedValue.length) {
+      return selectedValue;
+    }
+    if (!children) {
+      return [];
+    }
+    return children.map((c) => {
+      const cc = c.props.children;
+      return cc && cc[0] && cc[0].value;
+    });
   }
 
   render() {
@@ -29,9 +52,9 @@ class MultiPicker extends Component {
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
             selectedValue={selectedValue[i]}
-            onValueChange={this.onValueChange.bind(this, i)}
+            onValueChange={() => this.onValueChange(i)}
             {...col.props}
-          />
+            />
         </div>
       );
     });
@@ -41,30 +64,6 @@ class MultiPicker extends Component {
         {colElements}
       </div>
     );
-  }
-
-  getValue() {
-    const { children, selectedValue } = this.props;
-
-    if (selectedValue && selectedValue.length) {
-      return selectedValue;
-    } else {
-      if (!children) {
-        return [];
-      }
-      return children.map(c => {
-        const cc = c.props.children;
-        return cc && cc[0] && cc[0].value;
-      });
-    }
-  }
-
-  onValueChange(i, v) {
-    const value = this.getValue().concat();
-
-    value[i] = v;
-
-    this.props.onValueChange(value, i);
   }
 
 }
