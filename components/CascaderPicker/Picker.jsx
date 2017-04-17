@@ -83,6 +83,7 @@ class Picker extends Component {
           selectedValue,
         });
       }
+
       this.props.onValueChange(selectedValue);
     }
   }

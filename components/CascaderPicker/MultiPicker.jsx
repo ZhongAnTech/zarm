@@ -12,7 +12,7 @@ class MultiPicker extends Component {
     };
   }
 
-  onValueChange(i, v) {
+  onValueChange(v, i) {
     const value = this.getValue().concat();
 
     value[i] = v;
@@ -52,7 +52,7 @@ class MultiPicker extends Component {
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
             selectedValue={selectedValue[i]}
-            onValueChange={() => this.onValueChange(i)}
+            onValueChange={(value) => this.onValueChange(value, i)}
             {...col.props}
             />
         </div>
