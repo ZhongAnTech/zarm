@@ -29,10 +29,9 @@ class CascaderPicker extends Component {
   }
 
   onOk() {
-    const { onOk } = this.props;
-    const { value } = this.state;
+    const { onOk, value } = this.props;
     this.toggle();
-    onOk && onOk(value);
+    onOk && onOk();
   }
 
   onMaskClick() {
@@ -97,8 +96,7 @@ class CascaderPicker extends Component {
           pickerPrefixCls={pickerPrefixCls}
           data={data}
           cols={this.props.cols}
-          onChange={() => this.onValueChange()}
-          displayMember="label"
+          onChange={v => this.onValueChange(v)}
           />
       );
     } else {
@@ -108,7 +106,7 @@ class CascaderPicker extends Component {
           prefixCls={prefixCls}
           pickerPrefixCls={pickerPrefixCls}
           selectedValue={value}
-          onValueChange={() => this.onValueChange()} >
+          onValueChange={v => this.onValueChange(v)} >
           {cols}
         </MultiPicker>
       );
@@ -116,13 +114,16 @@ class CascaderPicker extends Component {
 
     const display = () => {
       if (cascade) {
-        const treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
-          return c.value === value[level];
-        });
+        if (value.length) {
+          const treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
+            return c.value === value[level];
+          });
 
-        return treeChildren.map((v) => {
-          return v.label;
-        }).join(format);
+          return treeChildren.map((v) => {
+            return v.label;
+          }).join(format);
+        }
+        return value.join(format) || placeholder;
       }
       return value.join(format) || placeholder;
     };
@@ -132,7 +133,7 @@ class CascaderPicker extends Component {
         <div className={inputCls}>
           {display()}
         </div>
-        <div className={classes} onClick={() => this.onContainerClick()}>
+        <div className={classes} onClick={e => this.onContainerClick(e)}>
           <div className="ui-picker-mask" onClick={() => this.onMaskClick()} />
           <div className="ui-picker-inner">
             <div className="ui-picker-header">

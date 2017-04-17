@@ -87,7 +87,7 @@ class Cascader extends Component {
         className={className}
         selectedValue={this.state.value}
         pickerItemStyle={pickerItemStyle}
-        onValueChange={() => this.onValueChange()} >
+        onValueChange={(value, index) => this.onValueChange(value, index)} >
         {this.getCols()}
       </MultiPicker>
     );
