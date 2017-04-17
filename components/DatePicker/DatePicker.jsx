@@ -66,6 +66,7 @@ class DatePicker extends Component {
   onCancel() {
     const { onCancel } = this.props;
     this.toggle();
+
     this.setState({
       date: this.initDate,
     });
@@ -437,6 +438,10 @@ class DatePicker extends Component {
 
   // 切换显示状态
   toggle() {
+    if(this.props.disabled) {
+      return;
+    }
+
     this.setState({
       visible: !this.state.visible,
     });
@@ -444,7 +449,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, placeholder } = this.props;
+    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -454,6 +459,7 @@ class DatePicker extends Component {
 
     const inputCls = classnames({
       'ui-picker-placeholder': !this.state.date,
+      'ui-picker-disabled': !!disabled
     });
 
     return (
@@ -472,10 +478,10 @@ class DatePicker extends Component {
             <div className="ui-picker-mask-top">
               <div className="ui-picker-mask-bottom">
                 <MultiPicker
-                  rootNativeProps={rootNativeProps}
                   className={className}
                   prefixCls={prefixCls}
                   pickerPrefixCls={pickerPrefixCls}
+                  disabled={disabled}
                   // pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
                   selectedValue={value}
                   onValueChange={(values, index) => this.onValueChange(values, index)}>
@@ -502,7 +508,7 @@ DatePicker.propTypes = {
   pickerPrefixCls: PropTypes.string,
 };
 
-DatePicker.defaultProps = {
+DatePicker.defaultProps = {  
   visible: false,
   cancelText: '取消',
   okText: '确定',

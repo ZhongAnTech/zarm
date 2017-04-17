@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker, CascaderPicker } from '../../components';
-import District from './district'
+import District from './district';
 
 const seasons = [
   [
@@ -24,6 +24,16 @@ const seasons = [
       value: '夏',
     },
   ],
+  [
+    {
+      label: '上午',
+      value: '上午',
+    },
+    {
+      label: '下午',
+      value: '下午',
+    },
+  ],
 ];
 
 
@@ -35,19 +45,13 @@ class CellPage extends Component {
       picker: false,
       datePicker: false,
       CascaderPicker: false,
-      sValue: [undefined, undefined],
+      sValue: [],
       date: '',
       pickerValue: [undefined, undefined, undefined],
       sex: '',
       timer: 0,
-      number: 0
+      number: 0,
     };
-  }
-
-  toggle(key) {
-    this.setState({
-      [`${ key }`]: !this.state[key]
-    });
   }
 
   componentDidMount() {
@@ -57,6 +61,12 @@ class CellPage extends Component {
     //     timer: ++timer
     //   })
     // }, 1000)
+  }
+
+  toggle(key) {
+    this.setState({
+      [`${key}`]: !this.state[key],
+    });
   }
 
   render() {
@@ -87,7 +97,7 @@ class CellPage extends Component {
           </Panel.Header>
           <Panel.Body>
             <Cell title="标题文字1" description="描述文字" icon={<Icon type="right" />} />
-            <Cell title="标题文字" description="描述文字" icon={<img src="https://weui.io/images/icon_nav_toast.png" />} />
+            <Cell title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
           </Panel.Body>
         </Panel>
 
@@ -117,7 +127,7 @@ class CellPage extends Component {
           </Panel.Header>
           <Panel.Body>
             <Cell type="link" title="标题文字" description="描述文字" icon={<Icon type="right" />} />
-            <Cell type="link" title="标题文字" description="描述文字" icon={<img src="https://weui.io/images/icon_nav_toast.png" />} />
+            <Cell type="link" title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
           </Panel.Body>
         </Panel>
 
@@ -178,7 +188,8 @@ class CellPage extends Component {
                 value={'520000'}
                 onChange={(value) => {
                   console.log(value);
-                }} />
+                }}
+                />
             </Cell>
 
             <Cell title="所在城市" type="select">
@@ -197,8 +208,8 @@ class CellPage extends Component {
                 onOk={(value) => {
                   console.log('你选择了确定', value);
                   this.setState({
-                    picker     : false,
-                    pickerValue: value
+                    picker: false,
+                    pickerValue: value,
                   });
                 }}
                 onCancel={() => {
@@ -206,9 +217,8 @@ class CellPage extends Component {
                 }}
                 onMaskClick={() => {
                   this.setState({ picker: false });
-                }} >
-
-              </Picker.Group>
+                }}
+                />
             </Cell>
 
             <Cell title="日期选择器" type="select">
@@ -219,6 +229,7 @@ class CellPage extends Component {
                 mode="date"
                 min="2017-01-04"
                 max="2018-03-02"
+                disabled={false}
                 date={this.state.date}
                 defaultDate={this.state.date}
                 onChange={(value) => {
@@ -236,6 +247,21 @@ class CellPage extends Component {
                 />
             </Cell>
 
+            <Cell title="多级选择器" type="select">
+              <CascaderPicker
+                visible={this.state.CascaderPicker}
+                title="请选择"
+                placeholder="请选择"
+                format="-"
+                cascade={false}
+                disabled={false}
+                data={seasons}
+                cols={3}
+                value={this.state.sValue}
+                onChange={v => this.setState({ sValue: v })}
+                />
+            </Cell>
+
             <Cell>
               <Checkbox
                 defaultChecked
@@ -248,7 +274,7 @@ class CellPage extends Component {
             <Cell>
               <Checkbox.Group
                 onChange={(values) => {
-                  console.log('Checkbox to ' + values);
+                  console.log(`Checkbox to ${values}`);
                 }}>
                 <Checkbox value="a">A</Checkbox>
                 <Checkbox value="b" disabled>B</Checkbox>
