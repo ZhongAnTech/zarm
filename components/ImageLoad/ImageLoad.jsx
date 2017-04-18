@@ -28,7 +28,8 @@ function _loadImg() {
     return null;
   }
 
-  const { scrollTop = 0, clientHeight = 0 } = document.body;
+  const { scrollTop = 0 } = document.body;
+  const clientHeight = window.screen.availHeight;
 
   imgs = imgs.filter((img) => {
     const ele = findDOMNode(img);

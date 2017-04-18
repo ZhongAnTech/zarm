@@ -1,7 +1,6 @@
 import ValidForm from './ValidForm';
 import ValidInput from './ValidInput';
 
-export {
-  ValidForm,
-  ValidInput,
-};
+ValidForm.ValidInput = ValidInput
+
+export default ValidForm;

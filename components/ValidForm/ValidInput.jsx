@@ -70,7 +70,7 @@ class ValidInput extends Component {
     const { initResult, name } = this.props;
     const { value = '' } = this.state;
 
-    initResult(value, this._validate(value), name);
+    initResult && initResult(value, this._validate(value), name);
   }
 
   _validate(value) {

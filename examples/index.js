@@ -88,6 +88,22 @@ const rootRoute = {
       }
     },
     {
+      path: 'validform',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ValidFormPage'));
+        }, 'ValidForm');
+      }
+    },
+    {
+      path: 'imageload',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ImageLoadPage'));
+        }, 'ImageLoad');
+      }
+    },
+    {
       path: 'page1',
       getComponent(location, cb) {
         require.ensure([], (require) => {
