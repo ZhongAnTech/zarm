@@ -80,13 +80,9 @@ class ValidForm extends Component {
   // 子组件传入修改之后的回调
   getChildren() {
     const { setResult, initResult } = this;
-    let { children } = this.props;
+    const { children } = this.props;
 
-    if (!(children instanceof Array)) {
-      children = [children];
-    }
-
-    return children.map((child, index) => {
+    return React.Children.map(children, (child, index) => {
       return cloneElement(child, {
         setResult,
         initResult,
