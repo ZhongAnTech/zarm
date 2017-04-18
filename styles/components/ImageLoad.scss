@@ -1,0 +1,26 @@
+.loading-img{
+  position: relative;
+  overflow: hidden;
+
+  &:not(.loaded) {
+    background-image: none !important;
+  }
+
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(white, .8);
+    transition: .5s;
+  }
+
+  &.loaded{
+    &:before{
+      background-color: transparent;
+    }
+  }
+}
