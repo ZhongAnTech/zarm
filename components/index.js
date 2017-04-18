@@ -18,6 +18,6 @@ export Switch from './Switch';
 export Tab from './Tab';
 export Toast from './Toast';
 export Lottery from './Lottery';
-
-
+export ValidForm from './ValidForm';
+export ImageLoad from './ImageLoad';
 
