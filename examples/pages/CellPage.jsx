@@ -227,8 +227,6 @@ class CellPage extends Component {
                 title="选择日期"
                 placeholder="请选择日期"
                 mode="date"
-                min="2017-01-04"
-                max="2018-03-02"
                 disabled={false}
                 date={this.state.date}
                 defaultDate={this.state.date}
@@ -253,12 +251,18 @@ class CellPage extends Component {
                 title="请选择"
                 placeholder="请选择"
                 format="-"
-                cascade={false}
+                cascade={true}
                 disabled={false}
-                data={seasons}
+                data={District}
                 cols={3}
                 value={this.state.sValue}
                 onChange={v => this.setState({ sValue: v })}
+                onOk={v => {
+                  console.log(v);
+                  this.setState({
+                    sValue: v,
+                  });
+                }}
                 />
             </Cell>
 

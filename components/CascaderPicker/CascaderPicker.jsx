@@ -29,13 +29,45 @@ class CascaderPicker extends Component {
   }
 
   onOk() {
-    const { onOk, value } = this.props;
+    const { onOk } = this.props;
+    const value = this.getInitValue();
+    console.log("value--->", value);
     this.toggle();
-    onOk && onOk();
+    onOk && onOk(value);
   }
 
   onMaskClick() {
     this.setState({ visible: false });
+  }
+
+  getInitValue() {
+    const value = this.props.value || [];
+    const { format, placeholder } = this.props;
+    let { data } = this.props;
+
+    if (value.length === 0) {
+      if (this.props.cascade) {
+        let index = 0;
+
+        while (data[index].children) {
+          value.push(data[index].label);
+          if (data[index].children.length && data[index].children) {
+            data = data[index].children;
+          } else {
+            break;
+          }
+          index++;
+        }
+
+        return value;
+      } else {
+        data.forEach((d) => {
+          value.push(d[0].value);
+        });
+        return value;
+      }
+    }
+    return this.getValue();
   }
 
   getValue() {
@@ -113,18 +145,19 @@ class CascaderPicker extends Component {
     }
 
     const display = () => {
-      if (cascade) {
-        if (value.length) {
-          const treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
-            return c.value === value[level];
-          });
+      // if (cascade) {
+      //   if (value.length) {
+      //     const treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
+      //       return c.value === value[level];
+      //     });
 
-          return treeChildren.map((v) => {
-            return v.label;
-          }).join(format);
-        }
-        return value.join(format) || placeholder;
-      }
+      //     return treeChildren.map((v) => {
+      //       return v.label;
+      //     }).join(format);
+      //   }
+
+      //   return value.join(format) || placeholder;
+      // }
       return value.join(format) || placeholder;
     };
 
