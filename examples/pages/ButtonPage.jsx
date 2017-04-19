@@ -74,7 +74,6 @@ class ButtonPage extends Component {
             <Panel.Title>带icon的按钮</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <span className="rotate-enter">111</span>
             <Button radius bordered><Icon type="right-round" theme="success" />正确</Button>
             <Button radius bordered><Icon type="wrong-round" theme="error" />错误</Button>
             <Button radius disabled bordered loading>加载中的按钮</Button>
