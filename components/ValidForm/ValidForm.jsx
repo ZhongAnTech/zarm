@@ -1,4 +1,4 @@
-import React, { Component, cloneElement } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 
 class ValidForm extends Component {
   constructor(props) {
@@ -15,15 +15,6 @@ class ValidForm extends Component {
 
     result = result || this._getResult();
     this.props.onChange(result.res, result.validate);
-  }
-
-  onBlur(result) {
-    if (!this.props.onBlur) {
-      return null;
-    }
-
-    result = result || this._getResult();
-    this.props.onBlur(result.res, result.validate);
   }
 
   _getResult() {
@@ -55,7 +46,6 @@ class ValidForm extends Component {
 
     const result = this._getResult();
     this.onChange(result);
-    this.onBlur(result);
   }
 
   setResult(value, validate, key) {
@@ -87,7 +77,7 @@ class ValidForm extends Component {
         setResult,
         initResult,
         key: index,
-      });
+      }, child.props.children);
     });
   }
 
@@ -99,5 +89,13 @@ class ValidForm extends Component {
     );
   }
 }
+
+ValidForm.propTypes = {
+  onChange: PropTypes.func,
+};
+
+ValidForm.defaultProps = {
+  onChange: () => {},
+};
 
 export default ValidForm;

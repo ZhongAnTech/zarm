@@ -1,12 +1,12 @@
-import React, { Component, cloneElement } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 
 import * as validateFuncs from './validate';
 
 const typeValidateAttrs = {
-  number: ['min', 'max', 'required'],
-  bool: ['required'],
-  string: ['minLength', 'maxLength', 'pattern', 'required'],
-  all: ['min', 'max', 'minLength', 'maxLength', 'pattern', 'required'],
+  number: ['min', 'max', 'required', 'func'],
+  bool: ['required', 'func'],
+  string: ['minLength', 'maxLength', 'pattern', 'required', 'func'],
+  all: ['min', 'max', 'minLength', 'maxLength', 'pattern', 'required', 'func'],
 };
 
 class ValidInput extends Component {
@@ -14,7 +14,7 @@ class ValidInput extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { value: props.value || this._getDefaultValue()};
+    this.state = { value: props.value || this._getDefaultValue() };
     this.onChange = this.onChange.bind(this);
     this.onBlur = this.onBlur.bind(this);
 
@@ -44,6 +44,13 @@ class ValidInput extends Component {
     setResult && setResult(value, res, name);
   }
 
+  _initResult() {
+    const { initResult, name } = this.props;
+    const { value = '' } = this.state;
+
+    initResult && initResult(value, this._validate(value), name);
+  }
+
   _getDefaultValue() {
     const { type } = this.props;
 
@@ -66,13 +73,6 @@ class ValidInput extends Component {
     return '';
   }
 
-  _initResult() {
-    const { initResult, name } = this.props;
-    const { value = '' } = this.state;
-
-    initResult && initResult(value, this._validate(value), name);
-  }
-
   _validate(value) {
     const { type = 'all', func } = this.props;
     const attrs = typeValidateAttrs[type] || [];
@@ -85,10 +85,6 @@ class ValidInput extends Component {
       if (!validateFunc(value)) {
         return false;
       }
-    }
-
-    if (func !== undefined) {
-      return func(value);
     }
 
     return true;
@@ -112,7 +108,7 @@ class ValidInput extends Component {
         onChange,
         onBlur,
         value,
-      }, child.children);
+      }, child.props.children);
     });
   }
 
@@ -124,5 +120,26 @@ class ValidInput extends Component {
     );
   }
 }
+
+ValidInput.propTypes = {
+  max: PropTypes.number,
+  min: PropTypes.number,
+  maxLength: PropTypes.number,
+  minLength: PropTypes.number,
+  required: PropTypes.bool,
+  func: PropTypes.func,
+  // pattern: 正则表达式
+
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+
+  setResult: PropTypes.func, // 获取value和验证结果
+  initResult: PropTypes.func, // 初始化value和验证结果
+};
+
+ValidInput.defaultProps = {
+  onChange: () => {},
+  onBlur: () => {},
+};
 
 export default ValidInput;
