@@ -2,7 +2,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Cell from '../Cell';
-import ValidForm from '../ValidForm';
 
 class CellForm extends Component {
   constructor(props) {
@@ -85,9 +84,9 @@ class CellForm extends Component {
 
     return (
       <Cell className={cls} help={this.helpRender()} {...CellConfig}>
-        <ValidForm.ValidInput setResult={this.setResult} initResult={this.initResult} {...ValidInputConfig}>
+        <Cell.Validate setResult={this.setResult} initResult={this.initResult} {...ValidInputConfig}>
           {children}
-        </ValidForm.ValidInput>
+        </Cell.Validate>
       </Cell>
     );
   }
