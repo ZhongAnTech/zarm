@@ -3,6 +3,7 @@ import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 
 let imgs = [];
+let cusLoadFunc;
 
 function _addImg(img) {
   imgs.push(img);
@@ -28,6 +29,10 @@ function _loadImg() {
     return null;
   }
 
+  if (cusLoadFunc && typeof cusLoadFunc === 'function') {
+    return cusLoadFunc(imgs);
+  }
+
   const { scrollTop = 0 } = document.body;
   const clientHeight = window.screen.availHeight;
 
@@ -44,7 +49,14 @@ function _loadImg() {
   });
 }
 
+function _setLoadFunc(func) {
+  cusLoadFunc = func;
+}
+
 document.addEventListener('scroll', _loadImg);
+
+// 设置懒加载的触发的函数，适用于IScroll;
+export { _setLoadFunc as setLoadFunc };
 
 class Picture extends Component {
   constructor(props) {
