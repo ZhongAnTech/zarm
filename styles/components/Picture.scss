@@ -17,7 +17,7 @@ $loadingAfterBg: rgba(0,0,0, .15);
     right: 0;
     bottom: 0;
     background-color: rgba(white, .8);
-    transition: .5s;
+    transition: .8s;
   }
 
   &:after{
@@ -48,14 +48,17 @@ $loadingAfterBg: rgba(0,0,0, .15);
       opacity: 0;
     }
   }
+
+  .img-ele{
+    &:not(.show){
+      display: none;
+    }
+  }
 }
 
 @keyframes loadingAfterRotate{
   0% {
-    transform: translate(-50%, -50%);
-  }
-  50% {
-    transform: translate(-50%, -50%) rotate(180deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
     transform: translate(-50%, -50%) rotate(360deg);

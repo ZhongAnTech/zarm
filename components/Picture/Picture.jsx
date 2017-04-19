@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 
@@ -46,7 +46,7 @@ function _loadImg() {
 
 document.addEventListener('scroll', _loadImg);
 
-class ImageLoad extends Component {
+class Picture extends Component {
   constructor(props) {
     super(props);
 
@@ -56,6 +56,10 @@ class ImageLoad extends Component {
   }
 
   componentDidMount() {
+    if (!this.props.async) {
+      return;
+    }
+
     _addImg(this);
     _loadImg();
   }
@@ -78,23 +82,45 @@ class ImageLoad extends Component {
   }
 
   render() {
-    const { src = '', className, children, ...others } = this.props;
+    const { src = '', className, children, width, height, async, img, ...others } = this.props;
     const { href = '' } = others;
-
-    const cls = classnames({
-      'loading-img': true,
-      'loaded': this.state.loaded,
-      [className]: !!className,
-    });
+    const { loaded } = this.state;
 
     const Ele = href ? 'a' : 'div';
 
+    const eleCls = classnames({
+      'loading-img': true,
+      'loaded': loaded || !async,
+      [className]: !!className,
+    });
+
+    const imgCls = classnames({
+      'img-ele': true,
+      'show': !!img,
+    });
+
+    const style = {};
+    !img && (style.backgroundImage = `url(${src})`);
+    width && (style.width = `${width}px`);
+    height && (style.height = `${height}px`);
+
     return (
-      <Ele className={cls} style={{ backgroundImage: `url(${src})` }} {...others}>
+      <Ele className={eleCls} style={style}>
+        {loaded ? <img className={imgCls} src={src} width={width} height={height} {...others} /> : null}
         {children}
       </Ele>
     );
   }
 }
 
-export default ImageLoad;
+Picture.propTypes = {
+  img: PropTypes.bool, // 是否使用Img标签
+  async: PropTypes.bool, // 是否懒加载
+};
+
+Picture.defaultProps = {
+  img: false,
+  async: true,
+};
+
+export default Picture;

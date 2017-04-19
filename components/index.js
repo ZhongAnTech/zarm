@@ -18,5 +18,5 @@ export Switch from './Switch';
 export Tab from './Tab';
 export Toast from './Toast';
 export Lottery from './Lottery';
-export ImageLoad from './ImageLoad';
+export Picture from './Picture';
 
