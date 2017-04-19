@@ -1,3 +1,5 @@
+$loadingAfterBg: #dedede;
+
 .loading-img{
   position: relative;
   overflow: hidden;
@@ -18,9 +20,56 @@
     transition: .5s;
   }
 
+  &:after{
+    content: '';
+    background-color: rgba(0, 0, 0, 0);
+    width: 2px;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    animation: loadingAfterRotate 1.5s infinite;
+    animation-timing-function: linear;
+  }
+
   &.loaded{
     &:before{
       background-color: transparent;
     }
+
+    &:after{
+      animation: none;
+      opacity: 0;
+    }
   }
 }
+
+@keyframes loadingAfterRotate{
+  0% {
+    opacity: .2;
+    box-shadow: -4px 0px 0px 2px $loadingAfterBg, 4px 0px 0px 2px $loadingAfterBg;
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    opacity: 1;
+    box-shadow: -7px 0px 0px 2px $loadingAfterBg, 7px 0px 0px 2px $loadingAfterBg;
+    transform: translate(-50%, -50%) rotate(35deg);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: -7px 0px 0px 2px $loadingAfterBg, 7px 0px 0px 2px $loadingAfterBg;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  75% {
+    opacity: 1;
+    box-shadow: -7px 0px 0px 2px $loadingAfterBg, 7px 0px 0px 2px $loadingAfterBg;
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+  100% {
+    opacity: .2;
+    box-shadow: -4px 0px 0px 2px $loadingAfterBg, 4px 0px 0px 2px $loadingAfterBg;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+} 
