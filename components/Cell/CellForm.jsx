@@ -14,6 +14,15 @@ class CellForm extends Component {
       dirty: false,
     };
     this.setResult = this.setResult.bind(this);
+    this.initResult = this.initResult.bind(this);
+  }
+
+  initResult(value, validate) {
+    this.setState({
+      value,
+      validate,
+      dirty: false,
+    });
   }
 
   setResult(value, validate) {
@@ -44,7 +53,7 @@ class CellForm extends Component {
     // cell
     const { type, theme, icon, title, description, help, ...others } = otherOpts;
     // validInput
-    const { max, min, maxLength, minLength, required, func, pattern, onChange, onBlur, ...rest } = others;
+    const { max, min, maxLength, minLength, required, func, pattern, onChange, onBlur, value, ...rest } = others;
 
     const cls = classnames({
       'ui-cell-form': true,
@@ -70,12 +79,13 @@ class CellForm extends Component {
       pattern,
       onChange,
       onBlur,
+      value,
       ...rest,
     };
 
     return (
       <Cell className={cls} help={this.helpRender()} {...CellConfig}>
-        <ValidForm.ValidInput setResult={this.setResult} {...ValidInputConfig}>
+        <ValidForm.ValidInput setResult={this.setResult} initResult={this.initResult} {...ValidInputConfig}>
           {children}
         </ValidForm.ValidInput>
       </Cell>

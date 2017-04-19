@@ -17,7 +17,9 @@ class ValidInput extends Component {
     this.state = { value: props.value || this._getDefaultValue() };
     this.onChange = this.onChange.bind(this);
     this.onBlur = this.onBlur.bind(this);
+  }
 
+  componentDidMount() {
     this._initResult();
   }
 
