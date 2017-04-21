@@ -24,33 +24,38 @@ class ValidInput extends Component {
   }
 
   onChange(e) {
-    const { onChange, setResult, name } = this.props;
-    const value = this._getValue(e);
-    const res = this._validate(value);
-
-    onChange && onChange(value, res);
-    setResult && setResult(value, res, name);
+    this._setResult({
+      e,
+      type: 'change',
+      cb: this.props.onChange,
+    });
   }
 
   onBlur(e) {
-    const { onBlur, setResult, name } = this.props;
-    const value = this._getValue(e);
-
-    if (!onBlur) {
-      return null;
-    }
-
-    const res = this._validate(value);
-
-    onBlur && onBlur(value, res);
-    setResult && setResult(value, res, name);
+    this._setResult({
+      e,
+      type: 'blur',
+      cb: this.props.onBlur,
+    });
   }
 
   _initResult() {
-    const { initResult, name } = this.props;
-    const { value = '' } = this.state;
+    this._setResult({
+      type: 'init',
+    });
+  }
 
-    initResult && initResult(value, this._validate(value), name);
+  _setResult({ e, type, cb } = {}) {
+    const { name, setResult } = this.props;
+    const value = e ? this._getValue(e) : this.state.value;
+    const res = this._validate(value);
+    const opts = {
+      type,
+      name,
+    };
+
+    cb && cb(value, res);
+    setResult && setResult(value, res, opts);
   }
 
   _getDefaultValue() {
@@ -136,12 +141,13 @@ ValidInput.propTypes = {
   onBlur: PropTypes.func,
 
   setResult: PropTypes.func, // 获取value和验证结果
-  initResult: PropTypes.func, // 初始化value和验证结果
+  resultId: PropTypes.string, // 结果储存在内存的Id
 };
 
 ValidInput.defaultProps = {
   onChange: () => {},
   onBlur: () => {},
+  resultId: '',
 };
 
 export default ValidInput;

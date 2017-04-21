@@ -9,39 +9,36 @@ class CellForm extends Component {
 
     this.state = {
       value: '',
+      type: '',
       validate: false,
       dirty: false,
     };
     this.setResult = this.setResult.bind(this);
-    this.initResult = this.initResult.bind(this);
   }
 
-  initResult(value, validate) {
+  setResult(value, validate, { type } = {}) {
     this.setState({
       value,
       validate,
-      dirty: false,
-    });
-  }
-
-  setResult(value, validate) {
-    this.setState({
-      value,
-      validate,
-      dirty: true,
+      type,
+      dirty: type !== 'init',
     });
   }
 
   helpRender() {
-    const { validate, dirty } = this.state;
+    const { validate, dirty, type } = this.state;
     const { showHelp, help = null } = this.props;
 
-    if (showHelp) {
+    if (showHelp === 'always') {
       return help;
     }
 
     if (!validate && dirty) {
-      return help;
+      if (showHelp === 'change') {
+        return help;
+      } else if (showHelp === type) {
+        return help;
+      }
     }
 
     return null;
@@ -84,7 +81,7 @@ class CellForm extends Component {
 
     return (
       <Cell className={cls} help={this.helpRender()} {...CellConfig}>
-        <Cell.Validate setResult={this.setResult} initResult={this.initResult} {...ValidInputConfig}>
+        <Cell.Validate setResult={this.setResult} {...ValidInputConfig}>
           {children}
         </Cell.Validate>
       </Cell>
@@ -95,13 +92,13 @@ class CellForm extends Component {
 CellForm.propTypes = {
   type: PropTypes.oneOf(['normal', 'link', 'select']),
   className: PropTypes.string,
-  showHelp: PropTypes.bool,
+  showHelp: PropTypes.oneOf(['always', 'change', 'blur']), // 显示help的时间点，always(一直显示)，change(修改就显示)，blur(失去焦点显示)
 };
 
 CellForm.defaultProps = {
   type: 'normal',
   className: null,
-  showHelp: false,
+  showHelp: 'change',
 };
 
 export default CellForm;

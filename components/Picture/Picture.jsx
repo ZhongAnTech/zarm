@@ -9,6 +9,12 @@ function _addImg(img) {
   imgs.push(img);
 }
 
+function _removeImg(res) {
+  imgs = imgs.filter((img) => {
+    return img !== res;
+  });
+}
+
 function _offset(ele) {
   let top = 0;
   let left = 0;
@@ -74,6 +80,10 @@ class Picture extends Component {
 
     _addImg(this);
     _loadImg();
+  }
+
+  componentWillUnmount() {
+    _removeImg(this);
   }
 
   loadImg() {

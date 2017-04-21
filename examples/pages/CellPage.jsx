@@ -126,7 +126,9 @@ class CellPage extends Component {
             <Panel.Title>表单组件(添加ValidInput验证)</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Cell.Form title="姓名" maxLength={10} minLength={2} help={<span><Icon type="info-round" />长度2-10</span>}>
+            <Cell.Form title="姓名" resultId="test" name="username" maxLength={10} minLength={2} 
+              help={<span><Icon type="info-round" />长度2-10</span>}>
+
               <Input type="text" placeholder="请输入姓名(长度2-10)" />
             </Cell.Form>
           </Panel.Body>
