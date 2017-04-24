@@ -30,6 +30,9 @@
 
 ## 版本更新日志
 
+- 0.0.36
+  修复moment、zscroller依赖错误
+
 - 0.0.35
   修复日期时间选择器(DatePicker) 部分bug
 
