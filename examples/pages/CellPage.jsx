@@ -46,11 +46,12 @@ class CellPage extends Component {
       datePicker: false,
       CascaderPicker: false,
       sValue: [],
+      dataSource: [],
       date: '',
-      pickerValue: [undefined, undefined, undefined],
       sex: '',
       timer: 0,
       number: 0,
+      disabled: true,
     };
   }
 
@@ -61,6 +62,12 @@ class CellPage extends Component {
     //     timer: ++timer
     //   })
     // }, 1000)
+    setTimeout(() => {
+      this.setState({
+        dataSource: District,
+        disabled: false,
+      });
+    }, 3000);
   }
 
   toggle(key) {
@@ -181,7 +188,7 @@ class CellPage extends Component {
               </Select>
             </Cell>
 
-            <Cell title="省份" type="select">
+            {/*<Cell title="省份" type="select">
               <Picker
                 placeholder="选择省份"
                 dataSource={District}
@@ -219,17 +226,19 @@ class CellPage extends Component {
                   this.setState({ picker: false });
                 }}
                 />
-            </Cell>
+            </Cell>*/}
 
             <Cell title="日期选择器" type="select">
-              <DatePicker
+              <Picker.Date
                 visible={this.state.datePicker}
                 title="选择日期"
                 placeholder="请选择日期"
                 mode="date"
+                format="YYYY-MM-DD"
                 disabled={false}
-                date={this.state.date}
+                value={this.state.date}
                 defaultDate={this.state.date}
+                onClick={() => {alert(123);}}
                 onChange={(value) => {
                   this.setState({
                     date: value,
@@ -246,22 +255,23 @@ class CellPage extends Component {
             </Cell>
 
             <Cell title="多级选择器" type="select">
-              <CascaderPicker
+              <Picker
                 visible={this.state.CascaderPicker}
                 title="请选择"
                 placeholder="请选择"
                 format="-"
-                cascade={true}
                 disabled={false}
-                data={District}
+                dataSource={District}
                 cols={3}
                 value={this.state.sValue}
                 onChange={v => this.setState({ sValue: v })}
-                onOk={v => {
+                onOk={(v) => {
                   console.log(v);
                   this.setState({
                     sValue: v,
                   });
+                }}
+                onCancel={() => {
                 }}
                 />
             </Cell>
