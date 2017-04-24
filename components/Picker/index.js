@@ -1,9 +1,6 @@
+import Picker from './CascaderPicker';
+import Date from './DatePicker';
 
-import Picker from './Picker';
-import Group from './PickerGroup';
-import Option from './Option';
-
-Picker.Group = Group;
-Picker.Option = Option;
+Picker.Date = Date;
 
 export default Picker;
