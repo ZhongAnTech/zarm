@@ -4,92 +4,83 @@ import arrayTreeFilter from './array-tree-filter';
 import MultiPicker from './MultiPicker';
 import Cascader from './Cascader';
 
+// 阻止选择器区域的默认事件
+function onContainerClick(e) {
+  e.stopPropagation();
+}
+
 class CascaderPicker extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       visible: props.visible || false,
+      value: props.value,
+      data: props.data,
+      cascade: Object.prototype.toString.call(props.data[0]) !== '[object Array]',
     };
+
+    this.tempValue = props.value;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps) {
+      this.setState({
+        value: nextProps.value,
+        data: nextProps.data,
+        cascade: Object.prototype.toString.call(nextProps.data[0]) !== '[object Array]',
+      });
+    }
   }
 
   onValueChange(value) {
     this.props.onChange(value);
   }
 
-  // 阻止选择器区域的默认事件
-  onContainerClick(e) {
-    e.stopPropagation();
-  }
-
   onCancel() {
     const { onCancel } = this.props;
     this.toggle();
+    this.setState({
+      value: this.tempValue,
+    });
     onCancel && onCancel();
   }
 
   onOk() {
     const { onOk } = this.props;
     const value = this.getInitValue();
-    console.log("value--->", value);
+    this.tempValue = value;
     this.toggle();
     onOk && onOk(value);
   }
 
   onMaskClick() {
-    this.setState({ visible: false });
+    const { onMaskClick } = this.props;
+    this.onCancel();
+    onMaskClick && onMaskClick();
   }
 
   getInitValue() {
-    const value = this.props.value || [];
-    const { format, placeholder } = this.props;
-    let { data } = this.props;
+    let data = this.state.data;
 
-    if (value.length === 0) {
-      if (this.props.cascade) {
-        let index = 0;
+    const value = this.state.value;
 
-        while (data[index].children) {
-          value.push(data[index].label);
-          if (data[index].children.length && data[index].children) {
-            data = data[index].children;
-          } else {
-            break;
+    if (!value || !value.length) {
+      // 判断数据是否为级联，简单判断数据第一个元素是否为数组
+      if (this.state.cascade) {
+        for (let i = 0; i < this.props.cols; i += 1) {
+          if (data && data.length) {
+            value[i] = data[0].value;
+            data = data[0].children;
           }
-          index++;
         }
-
-        return value;
       } else {
         data.forEach((d) => {
           value.push(d[0].value);
         });
-        return value;
       }
     }
-    return this.getValue();
-  }
-
-  getValue() {
-    const value = this.props.value || [];
-    const { format, placeholder } = this.props;
-    let treeChildren;
-
-    if (this.props.cascade) {
-      if (this.props.value) {
-        treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
-          return c.value === value[level];
-        });
-      } else {
-        treeChildren = this.props.data;
-      }
-    } else {
-      return value.join(format) || placeholder;
-    }
-
-    return treeChildren.map((v) => {
-      return v.label;
-    });
+    return value;
   }
 
   // 切换显示状态
@@ -103,7 +94,9 @@ class CascaderPicker extends Component {
   }
 
   render() {
-    const { value, prefixCls, format, disabled, pickerPrefixCls, cascade, className, cancelText, okText, title, data, placeholder } = this.props;
+    const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder } = this.props;
+    const { data, value } = this.state;
+
     let Picker = null;
 
     const classes = classnames({
@@ -121,12 +114,13 @@ class CascaderPicker extends Component {
       return { props: { children: d } };
     });
 
-    if (cascade) {
+    if (this.state.cascade) {
       Picker = (
         <Cascader
           prefixCls={prefixCls}
           pickerPrefixCls={pickerPrefixCls}
           data={data}
+          value={this.state.value}
           cols={this.props.cols}
           onChange={v => this.onValueChange(v)}
           />
@@ -145,19 +139,19 @@ class CascaderPicker extends Component {
     }
 
     const display = () => {
-      // if (cascade) {
-      //   if (value.length) {
-      //     const treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
-      //       return c.value === value[level];
-      //     });
+      if (this.state.cascade) {
+        if (value.length) {
+          const treeChildren = arrayTreeFilter(this.props.data, (c, level) => {
+            return c.value === value[level];
+          });
 
-      //     return treeChildren.map((v) => {
-      //       return v.label;
-      //     }).join(format);
-      //   }
+          return treeChildren.map((v) => {
+            return v.label;
+          }).join(format);
+        }
 
-      //   return value.join(format) || placeholder;
-      // }
+        return value.join(format) || placeholder;
+      }
       return value.join(format) || placeholder;
     };
 
@@ -166,7 +160,7 @@ class CascaderPicker extends Component {
         <div className={inputCls}>
           {display()}
         </div>
-        <div className={classes} onClick={e => this.onContainerClick(e)}>
+        <div className={classes} onClick={e => onContainerClick(e)}>
           <div className="ui-picker-mask" onClick={() => this.onMaskClick()} />
           <div className="ui-picker-inner">
             <div className="ui-picker-header">
@@ -198,7 +192,6 @@ CascaderPicker.defaultProps = {
   cancelText: '取消',
   okText: '确定',
   cols: 3,
-  cascade: true,
   value: [],
 };
 

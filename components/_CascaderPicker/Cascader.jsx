@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import arrayTreeFilter from './array-tree-filter';
+import { arrayTreeFilter } from './array-tree-filter';
 import MultiPicker from './MultiPicker';
 
 class Cascader extends Component {
@@ -25,11 +25,12 @@ class Cascader extends Component {
     });
     let data = children[index];
     let i;
-    for (i = index + 1; data && data.children && data.children.length && i < this.props.cols; i++) {
+    for (i = index + 1; data && data.children && data.children.length && i < this.props.cols; i += 1) {
       data = data.children[0];
       value[i] = data.value;
     }
     value.length = i;
+
     if (!('value' in this.props)) {
       this.setState({
         value,
@@ -61,7 +62,7 @@ class Cascader extends Component {
     let value = val || this.props.value || this.props.defaultValue;
     if (!value || !value.length) {
       value = [];
-      for (let i = 0; i < this.props.cols; i++) {
+      for (let i = 0; i < this.props.cols; i += 1) {
         if (data && data.length) {
           value[i] = data[0].value;
           data = data[0].children;

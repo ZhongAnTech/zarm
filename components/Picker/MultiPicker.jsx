@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Picker from './Picker';
+import Picker from './PickerCols';
 
 class MultiPicker extends Component {
 
@@ -16,7 +16,6 @@ class MultiPicker extends Component {
     const value = this.getValue().concat();
 
     value[i] = v;
-
     this.props.onValueChange(value, i);
   }
 
@@ -52,7 +51,7 @@ class MultiPicker extends Component {
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
             selectedValue={selectedValue[i]}
-            onValueChange={(value) => this.onValueChange(value, i)}
+            onValueChange={value => this.onValueChange(value, i)}
             {...col.props}
             />
         </div>
@@ -69,8 +68,8 @@ class MultiPicker extends Component {
 }
 
 MultiPicker.defaultProps = {
-  prefixCls: 'ui-multi-picker',
-  pickerPrefixCls: 'ui-cascaderpicker',
+  prefixCls: '',
+  pickerPrefixCls: '',
   onValueChange() {
   },
   disabled: false,

@@ -1,7 +1,7 @@
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import ZScroller from 'zscroller';
-import isChildrenEqual from './isChildrenEqual';
+import { isChildrenEqual } from './utils';
 
 class Picker extends Component {
   constructor(props) {
@@ -98,7 +98,7 @@ class Picker extends Component {
 
   select(value) {
     const children = this.toChildrenArray(this.props.children);
-    for (let i = 0, len = children.length; i < len; i++) {
+    for (let i = 0, len = children.length; i < len; i += 1) {
       if (this.getChildMember(children[i], 'value') === value) {
         this.selectByIndex(i);
         return;

@@ -35,10 +35,10 @@ class DatePicker extends Component {
   constructor(props) {
     super(props);
 
-    const date = props.date && this.isExtendMoment(props.date);
+    const date = props.value && this.isExtendMoment(props.value);
     const defaultDate = props.defaultDate && this.isExtendMoment(props.defaultDate);
 
-    this.initDate = props.date && this.isExtendMoment(props.date);
+    this.initDate = props.value && this.isExtendMoment(props.value);
 
     this.state = {
       visible: props.visible || false,
@@ -47,8 +47,8 @@ class DatePicker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const date = nextProps.date && this.isExtendMoment(nextProps.date);
-    const defaultDate = nextProps.defaultDate && this.isExtendMoment(nextProps.defaultDate);
+    const date = nextProps.value && this.isExtendMoment(nextProps.value);
+    const defaultDate = nextProps.defaultValue && this.isExtendMoment(nextProps.defaultValue);
 
     this.setState({
       date: date || defaultDate,
@@ -124,11 +124,11 @@ class DatePicker extends Component {
 
     newValue = this.clipDate(newValue);
 
-    if (!('date' in props)) {
-      this.setState({
-        date: newValue,
-      });
-    }
+    // if (!('date' in props)) {
+    //   this.setState({
+    //     date: newValue,
+    //   });
+    // }
 
     props.onChange(newValue);
   }
@@ -438,7 +438,7 @@ class DatePicker extends Component {
 
   // 切换显示状态
   toggle() {
-    if(this.props.disabled) {
+    if (this.props.disabled) {
       return;
     }
 
@@ -459,7 +459,7 @@ class DatePicker extends Component {
 
     const inputCls = classnames({
       'ui-picker-placeholder': !this.state.date,
-      'ui-picker-disabled': !!disabled
+      'ui-picker-disabled': !!disabled,
     });
 
     return (
@@ -501,6 +501,10 @@ DatePicker.propTypes = {
   title: PropTypes.string,
   cancelText: PropTypes.string,
   okText: PropTypes.string,
+  format: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.func,
+  ]),
   mode: React.PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
   onMaskClick: PropTypes.func,
   minuteStep: PropTypes.number,
@@ -508,7 +512,7 @@ DatePicker.propTypes = {
   pickerPrefixCls: PropTypes.string,
 };
 
-DatePicker.defaultProps = {  
+DatePicker.defaultProps = {
   visible: false,
   cancelText: '取消',
   okText: '确定',
