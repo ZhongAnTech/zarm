@@ -1,12 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
-class Button extends Component {
+class Button extends PureComponent {
 
   render() {
     const props = this.props;
-    const { theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isBordered, isDisabled, isLoading, className, onClick, children, ...others } = this.props;
+    const { theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isBordered, isDisabled, isLoading, className, onClick, children } = this.props;
     const disabled = ('disabled' in props || isDisabled);
     const loading = ('loading' in props || isLoading);
 
@@ -29,14 +30,13 @@ class Button extends Component {
                       ? <span><Icon type="loading" className="rotate360" /> {children}</span>
                       : children;
     return (
-      <button onTouchStart={() => {}} {...others} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>{textContent}</button>
+      <button onTouchStart={() => {}} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>{textContent}</button>
     );
   }
 }
 
 Button.propTypes = {
-  type: PropTypes.string,
-  theme: PropTypes.oneOf(['brand', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['brand', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   isBlock: PropTypes.bool,
   isRadius: PropTypes.bool,
@@ -52,7 +52,6 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  type: 'button',
   theme: null,
   size: null,
   isBlock: false,

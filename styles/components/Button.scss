@@ -70,7 +70,7 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  /*line-height: $height;*/
+  line-height: $height - r(2);
 
   &.radius {
     border-radius: $border-radius;
@@ -101,7 +101,7 @@
   vertical-align: middle;
   white-space: nowrap;
   background-image: none;
-  border: 1px solid transparent;
+  border: r(1) solid transparent;
   cursor: pointer;
   outline: 0;
   -webkit-appearance: none;
@@ -126,7 +126,7 @@
   & {
     @include button-size($base-height, $base-padding, $base-fontSize, $base-radius, r(5));
     @include button-theme($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
-    @include button-bordered(#333, $base-btn-default-bg, $base-btn-default-border);
+    @include button-bordered($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
   }
   &.size-xl {
     @include button-size($base-height-xl, $base-padding-xl, $base-fontSize-xl, $base-radius-xl, r(8));
@@ -142,9 +142,9 @@
   }
 
   /* Button themes */
-  &.theme-info {
-    @include button-theme($base-btn-info-color, $base-btn-info-bg, $base-btn-info-border);
-    @include button-bordered($base-btn-info-border, $base-btn-info-bg, $base-btn-info-border);
+  &.theme-brand {
+    @include button-theme($base-btn-brand-color, $base-btn-brand-bg, $base-btn-brand-border);
+    @include button-bordered($base-btn-brand-border, $base-btn-brand-bg, $base-btn-brand-border);
   }
   &.theme-success {
     @include button-theme($base-btn-success-color, $base-btn-success-bg, $base-btn-success-border);
