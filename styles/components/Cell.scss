@@ -8,8 +8,8 @@
   position: relative;
   @include cell-theme(base-btn-default-bg, $base-btn-default-border);
 
-  &.theme-info {
-    @include cell-theme($base-btn-info-bg, $base-btn-info-border);
+  &.theme-brand {
+    @include cell-theme($base-btn-brand-bg, $base-btn-brand-border);
   }
   &.theme-success {
     @include cell-theme($base-btn-success-bg, $base-btn-success-border);

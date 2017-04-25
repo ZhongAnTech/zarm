@@ -11,3 +11,13 @@ $browser-default-font-size-px: 14px !default;
     @return 0;
   }
 }
+
+/*@function r($px, $isFixed:true) {
+  @if $px != 0 {
+    @return $px * 2 / 75 * 1rem;
+  } 
+  @else
+  {
+    @return 0;
+  }
+}*/

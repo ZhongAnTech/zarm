@@ -2,12 +2,12 @@
 $browser-default-font-size: 14;
 $browser-default-font-size-px: 14px !default;
 
-$base-theme-brand  : #dadada !default;
-$base-theme-default: #dadada !default;
-$base-theme-success: #00b15b !default;
+$base-theme-brand  : #00aff9 !default;
+$base-theme-default: #dddddd !default;
+$base-theme-success: #50c44a !default;
 $base-theme-info   : #2db7f5 !default;
 $base-theme-warning: #ffba34 !default;
-$base-theme-error  : #e93a3a !default;
+$base-theme-error  : #f03a3a !default;
 
 $base-radius-xl: r(4) !default;
 $base-radius-lg: r(4) !default;
@@ -35,13 +35,13 @@ $base-fontSize-xs: r(14) !default;
 
 $base-line-height:         1.5 !default;
 
-$base-btn-default-color:   #333 !default;
+$base-btn-default-color:   #4e4e4e !default;
 $base-btn-default-bg:      $base-theme-default !default;
 $base-btn-default-border:  $base-btn-default-bg !default;
 
-$base-btn-info-color:      #fff !default;
-$base-btn-info-bg:         $base-theme-info !default;
-$base-btn-info-border:     $base-btn-info-bg !default;
+$base-btn-brand-color:      #fff !default;
+$base-btn-brand-bg:         $base-theme-brand !default;
+$base-btn-brand-border:     $base-btn-brand-bg !default;
 
 $base-btn-success-color:   #fff !default;
 $base-btn-success-bg:      $base-theme-success !default;
