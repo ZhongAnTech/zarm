@@ -75,6 +75,10 @@
   }
 }
 
+.ui-input-box {
+  padding: 5px 0;
+}
+
 .ui-input-placeholder {
   position: absolute;
   color: #c1c1c1;
@@ -89,10 +93,16 @@ textarea {
   }
 }
 
+input[type="text"] {
+  &.ui-input {
+    transition: padding-right 0.1s;
+  }
+}
+
 //clear btn
 
 //留出右边距 但是没啥用
-.ui-input[type='text']{
+.ui-input.show-btn[type='text'] {
   padding-right: 1.8rem;
 }
 

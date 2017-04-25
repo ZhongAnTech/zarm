@@ -6,22 +6,17 @@ import { Icon } from '../../components';
 class Input extends Component {
   constructor(props) {
     super(props);
-
-    const { placeholder, type, isRadius, isDisabled, size, defaultValue, className, ...others } = props;
-
-    const disabled = 'disabled' in props || isDisabled;
-    const radius = 'radius' in props || isRadius;
-
     this.state = {
-      value: defaultValue,
+      value: props.defaultValue,
       showClearBtn: false,
       counter: 0,
     };
+  }
 
-        // 绑定函数的this
-    ['handleBlur', 'handleFocus', 'handleChange', 'clearInputText'].forEach((elem) => {
-      this[elem] = this[elem].bind(this);
-    });
+  getInput(props) {
+    const { placeholder, type, isRadius, isDisabled, size, defaultValue, className, ...others } = props;
+    const disabled = 'disabled' in props || isDisabled;
+    const radius = 'radius' in props || isRadius;
 
     const cls = this.cls = classnames({
       'ui-input': true,
@@ -31,43 +26,49 @@ class Input extends Component {
       [className]: !!className,
     });
 
-        // valueText?
-    this.valueText = (type === 'date') ? <div className="ui-input-placeholder">{placeholder}</div> : null;
-
-        // 输入框
-    this.input = function getInput() {
-      return (type === 'textarea')
-                ? <textarea
-                  {...others}
-                  className={cls}
-                  placeholder={placeholder}
-                  disabled={disabled}>{defaultValue}</textarea>
-                : <input
-                  {...others}
-                  type={type}
-                  className={cls}
-                  placeholder={placeholder}
-                  defaultValue={defaultValue}
-                  value={this.state.value}
-                  disabled={disabled}
-                  onFocus={this.handleFocus}
-                  onBlur={this.handleBlur}
-                  onChange={this.handleChange}
-                  />;
-    };
-
-        // 只有text || textarea 类型下才出现Icon
+        // 只有text类型下才出现Icon
         // 使用onMouseDown处理 click点击之前就失去焦点的问题
-    this.clearBtn = type === 'text' ?
-            (<Icon
+    this.clearBtn = type === 'text'
+            ? (<Icon
               className="clear-input-btn"
               type="wrong-round-fill"
-              onMouseDown={this.clearInputText}
-              onTouchStart={this.clearInputText}
+              onMouseDown={e => this.clearInputText(e)}
+              onTouchStart={e => this.clearInputText(e)}
               theme="error"
-              />) : null;
-  }
+              />)
+            : null;
 
+        // valueText?
+    const valueText = (type === 'date') ? <div className="ui-input-placeholder">{placeholder}</div> : null;
+
+        // 计算需不需要添加paddingRight;
+    const inputRightPading = this.state.showClearBtn ? ' show-btn' : '';
+
+    const input = (type === 'textarea')
+            ? (<textarea
+              {...others}
+              className={cls}
+              placeholder={placeholder}
+              disabled={disabled}>{defaultValue}
+            </textarea>)
+            : (<input
+              {...others}
+              type={type}
+              className={cls + inputRightPading}
+              placeholder={placeholder}
+              defaultValue={defaultValue}
+              value={this.state.value}
+              disabled={disabled}
+              onFocus={e => this.handleFocus(e)}
+              onBlur={e => this.handleBlur(e)}
+              onChange={e => this.handleChange(e)}
+              />);
+
+    return {
+      input,
+      valueText,
+    };
+  }
 
     // 获取焦点
   handleFocus(e) {
@@ -89,7 +90,7 @@ class Input extends Component {
       showClearBtn: false,
     });
 
-  // 处理外部props的事件
+        // 处理外部props的事件
     typeof this.props.onBlur === 'function' && this.props.onBlur.apply(this, arguments);
   }
 
@@ -97,7 +98,6 @@ class Input extends Component {
     // 处理输入事件
   handleChange(e) {
     const { value } = e.currentTarget;
-
     const stateTemp = {
       value,
     };
@@ -123,18 +123,15 @@ class Input extends Component {
   }
 
   render() {
+    const { input, valueText } = this.getInput(this.props);
     return (
-      <span
-        className={this.cls} style={{
-          padding: '5px 0',
-        }}>
-        {this.valueText}
-        {this.input()}
+      <span className={`${this.cls} ui-input-box`}>
+        {valueText}
+        {input}
         {this.state.showClearBtn ? this.clearBtn : null}
       </span>
     );
   }
-
 }
 
 Input.propTypes = {
