@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker, CascaderPicker } from '../../components';
-import District from './district'
+import District from './district';
 
 const seasons = [
   [
@@ -35,19 +35,14 @@ class CellPage extends Component {
       picker: false,
       datePicker: false,
       CascaderPicker: false,
-      sValue: [undefined, undefined],
+      sValue: [],
+      dataSource: [],
       date: '',
-      pickerValue: [undefined, undefined, undefined],
       sex: '',
       timer: 0,
-      number: 0
+      number: 0,
+      disabled: true,
     };
-  }
-
-  toggle(key) {
-    this.setState({
-      [`${ key }`]: !this.state[key]
-    });
   }
 
   componentDidMount() {
@@ -57,6 +52,18 @@ class CellPage extends Component {
     //     timer: ++timer
     //   })
     // }, 1000)
+    setTimeout(() => {
+      this.setState({
+        dataSource: District,
+        disabled: false,
+      });
+    }, 3000);
+  }
+
+  toggle(key) {
+    this.setState({
+      [`${key}`]: !this.state[key],
+    });
   }
 
   render() {
@@ -87,7 +94,7 @@ class CellPage extends Component {
           </Panel.Header>
           <Panel.Body>
             <Cell title="标题文字1" description="描述文字" icon={<Icon type="right" />} />
-            <Cell title="标题文字" description="描述文字" icon={<img src="https://weui.io/images/icon_nav_toast.png" />} />
+            <Cell title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
           </Panel.Body>
         </Panel>
 
@@ -117,7 +124,7 @@ class CellPage extends Component {
           </Panel.Header>
           <Panel.Body>
             <Cell type="link" title="标题文字" description="描述文字" icon={<Icon type="right" />} />
-            <Cell type="link" title="标题文字" description="描述文字" icon={<img src="https://weui.io/images/icon_nav_toast.png" />} />
+            <Cell type="link" title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
           </Panel.Body>
         </Panel>
 
@@ -171,14 +178,15 @@ class CellPage extends Component {
               </Select>
             </Cell>
 
-            <Cell title="省份" type="select">
+            {/*<Cell title="省份" type="select">
               <Picker
                 placeholder="选择省份"
                 dataSource={District}
                 value={'520000'}
                 onChange={(value) => {
                   console.log(value);
-                }} />
+                }}
+                />
             </Cell>
 
             <Cell title="所在城市" type="select">
@@ -197,8 +205,8 @@ class CellPage extends Component {
                 onOk={(value) => {
                   console.log('你选择了确定', value);
                   this.setState({
-                    picker     : false,
-                    pickerValue: value
+                    picker: false,
+                    pickerValue: value,
                   });
                 }}
                 onCancel={() => {
@@ -206,21 +214,21 @@ class CellPage extends Component {
                 }}
                 onMaskClick={() => {
                   this.setState({ picker: false });
-                }} >
-
-              </Picker.Group>
-            </Cell>
+                }}
+                />
+            </Cell>*/}
 
             <Cell title="日期选择器" type="select">
-              <DatePicker
+              <Picker.Date
                 visible={this.state.datePicker}
                 title="选择日期"
                 placeholder="请选择日期"
                 mode="date"
-                min="2017-01-04"
-                max="2018-03-02"
-                date={this.state.date}
+                format="YYYY-MM-DD"
+                disabled={false}
+                value={this.state.date}
                 defaultDate={this.state.date}
+                onClick={() => {alert(123);}}
                 onChange={(value) => {
                   this.setState({
                     date: value,
@@ -229,6 +237,28 @@ class CellPage extends Component {
                 onOk={(value) => {
                   this.setState({
                     date: value,
+                  });
+                }}
+                onCancel={() => {
+                }}
+                />
+            </Cell>
+
+            <Cell title="多级选择器" type="select">
+              <Picker
+                visible={this.state.CascaderPicker}
+                title="请选择"
+                placeholder="请选择"
+                format="-"
+                disabled={false}
+                dataSource={District}
+                cols={3}
+                value={this.state.sValue}
+                onChange={v => this.setState({ sValue: v })}
+                onOk={(v) => {
+                  console.log(v);
+                  this.setState({
+                    sValue: v,
                   });
                 }}
                 onCancel={() => {
@@ -248,7 +278,7 @@ class CellPage extends Component {
             <Cell>
               <Checkbox.Group
                 onChange={(values) => {
-                  console.log('Checkbox to ' + values);
+                  console.log(`Checkbox to ${values}`);
                 }}>
                 <Checkbox value="a">A</Checkbox>
                 <Checkbox value="b" disabled>B</Checkbox>

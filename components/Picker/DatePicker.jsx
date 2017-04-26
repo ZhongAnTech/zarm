@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import moment from 'moment';
 import MultiPicker from './MultiPicker';
-import formatFn from './utils';
+import { formatFn } from './utils';
 import defaultLocale from './locale/zh_CN';
 
 const DATETIME = 'datetime';
@@ -35,10 +35,10 @@ class DatePicker extends Component {
   constructor(props) {
     super(props);
 
-    const date = props.date && this.isExtendMoment(props.date);
-    const defaultDate = props.defaultDate && this.isExtendMoment(props.defaultDate);
+    const date = props.value && this.isExtendMoment(props.value);
+    const defaultDate = props.defaultValue && this.isExtendMoment(props.defaultValue);
 
-    this.initDate = props.date && this.isExtendMoment(props.date);
+    this.initDate = props.value && this.isExtendMoment(props.value);
 
     this.state = {
       visible: props.visible || false,
@@ -47,8 +47,8 @@ class DatePicker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const date = nextProps.date && this.isExtendMoment(nextProps.date);
-    const defaultDate = nextProps.defaultDate && this.isExtendMoment(nextProps.defaultDate);
+    const date = nextProps.value && this.isExtendMoment(nextProps.value);
+    const defaultDate = nextProps.defaultValue && this.isExtendMoment(nextProps.defaultValue);
 
     this.setState({
       date: date || defaultDate,
@@ -66,6 +66,7 @@ class DatePicker extends Component {
   onCancel() {
     const { onCancel } = this.props;
     this.toggle();
+
     this.setState({
       date: this.initDate,
     });
@@ -123,11 +124,11 @@ class DatePicker extends Component {
 
     newValue = this.clipDate(newValue);
 
-    if (!('date' in props)) {
-      this.setState({
-        date: newValue,
-      });
-    }
+    // if (!('date' in props)) {
+    //   this.setState({
+    //     date: newValue,
+    //   });
+    // }
 
     props.onChange(newValue);
   }
@@ -444,7 +445,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, pickerPrefixCls, rootNativeProps, className, cancelText, okText, title, placeholder } = this.props;
+    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, onClick } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -454,10 +455,19 @@ class DatePicker extends Component {
 
     const inputCls = classnames({
       'ui-picker-placeholder': !this.state.date,
+      'ui-picker-disabled': !!disabled,
     });
 
     return (
-      <div className="ui-picker-group" onClick={() => this.toggle()}>
+      <div
+        className="ui-picker-group"
+        onClick={() => {
+          if (disabled) {
+            onClick && onClick();
+            return;
+          }
+          this.toggle();
+        }}>
         <div className={inputCls}>
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
         </div>
@@ -472,10 +482,10 @@ class DatePicker extends Component {
             <div className="ui-picker-mask-top">
               <div className="ui-picker-mask-bottom">
                 <MultiPicker
-                  rootNativeProps={rootNativeProps}
                   className={className}
                   prefixCls={prefixCls}
                   pickerPrefixCls={pickerPrefixCls}
+                  disabled={disabled}
                   // pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
                   selectedValue={value}
                   onValueChange={(values, index) => this.onValueChange(values, index)}>
@@ -492,10 +502,22 @@ class DatePicker extends Component {
 
 DatePicker.propTypes = {
   visible: PropTypes.bool,
+  placeholder: PropTypes.string,
   title: PropTypes.string,
   cancelText: PropTypes.string,
   okText: PropTypes.string,
-  mode: React.PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
+  mode: PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
+  disabled: PropTypes.bool,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
+  onOk: PropTypes.func,
+  onCancel: PropTypes.func,
   onMaskClick: PropTypes.func,
   minuteStep: PropTypes.number,
   prefixCls: PropTypes.string,
@@ -504,9 +526,18 @@ DatePicker.propTypes = {
 
 DatePicker.defaultProps = {
   visible: false,
+  placeholder: '请选择日期',
+  title: '请选择日期',
   cancelText: '取消',
   okText: '确定',
   mode: DATE,
+  format: 'YYYY-MM-DD',
+  disabled: false,
+  value: '',
+  defaultValue: '',
+  onChange: () => {},
+  onOk: () => {},
+  onCancel: () => {},
   onMaskClick: () => {},
   locale: defaultLocale,
   minuteStep: 1,
