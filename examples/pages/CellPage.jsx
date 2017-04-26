@@ -24,16 +24,6 @@ const seasons = [
       value: '夏',
     },
   ],
-  [
-    {
-      label: '上午',
-      value: '上午',
-    },
-    {
-      label: '下午',
-      value: '下午',
-    },
-  ],
 ];
 
 
