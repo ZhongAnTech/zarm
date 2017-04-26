@@ -1,4 +1,4 @@
-$picker-item-height: 30px;
+$picker-item-height: r(30);
 
 .ui-cascaderpicker {
   display: block;
@@ -36,7 +36,7 @@ $picker-item-height: 30px;
 
   &-item {
     text-align: center;
-    font-size: 16px;
+    font-size: r(16);
     line-height: $picker-item-height;
     height: $picker-item-height;
     color: #000;

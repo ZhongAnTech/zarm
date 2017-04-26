@@ -3,6 +3,14 @@ import classNames from 'classnames';
 import ZScroller from 'zscroller';
 import { isChildrenEqual } from './utils';
 
+function getChildMember(child, m) {
+  return child[m];
+}
+
+function toChildrenArray(children) {
+  return children;
+}
+
 class Picker extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +30,10 @@ class Picker extends Component {
   }
 
   componentDidMount() {
-    this.itemHeight = this.refs.indicator.offsetHeight;
+    this.itemHeight = this.indicator.offsetHeight;
     // compact
-    this.refs.content.style.padding = `${this.itemHeight * 3}px 0`;
-    this.zscroller = new ZScroller(this.refs.content, {
+    this.content.style.padding = `${this.itemHeight * 3}px 0`;
+    this.zscroller = new ZScroller(this.content, {
       scrollingX: false,
       snapping: true,
       penetrationDeceleration: 0.1,
@@ -61,12 +69,9 @@ class Picker extends Component {
     this.zscroller.destroy();
   }
 
-  getChildMember(child, m) {
-    return child[m];
-  }
-
   getValue() {
-    return this.props.selectedValue || this.props.children && this.props.children[0] && this.props.children[0].value;
+    return this.props.selectedValue ? this.props.selectedValue
+      : this.props.children && this.props.children[0] && this.props.children[0].value;
   }
 
   scrollingComplete() {
@@ -92,14 +97,10 @@ class Picker extends Component {
     this.zscroller.scroller.scrollTo(0, top);
   }
 
-  toChildrenArray(children) {
-    return children;
-  }
-
   select(value) {
-    const children = this.toChildrenArray(this.props.children);
+    const children = toChildrenArray(this.props.children);
     for (let i = 0, len = children.length; i < len; i += 1) {
-      if (this.getChildMember(children[i], 'value') === value) {
+      if (getChildMember(children[i], 'value') === value) {
         this.selectByIndex(i);
         return;
       }
@@ -108,7 +109,7 @@ class Picker extends Component {
   }
 
   selectByIndex(index) {
-    if (index < 0 || index >= this.toChildrenArray(this.props.children).length || !this.itemHeight) {
+    if (index < 0 || index >= toChildrenArray(this.props.children).length || !this.itemHeight) {
       return;
     }
     this.scrollTo(index * this.itemHeight);
@@ -123,12 +124,12 @@ class Picker extends Component {
       index = floor;
     }
 
-    const children = this.toChildrenArray(this.props.children);
+    const children = toChildrenArray(this.props.children);
 
     index = Math.min(index, children.length - 1);
     const child = children[index];
     if (child) {
-      this.fireValueChange(this.getChildMember(child, 'value'));
+      this.fireValueChange(getChildMember(child, 'value'));
     } else if (console.warn) {
       console.warn('child not found', children, index);
     }
@@ -161,8 +162,8 @@ class Picker extends Component {
     return (
       <div
         className={classNames(pickerCls)} >
-        <div className={`${prefixCls}-indicator`} ref="indicator" style={indicatorStyle}/>
-        <div className={`${prefixCls}-content`} ref="content">
+        <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} style={indicatorStyle} />
+        <div className={`${prefixCls}-content`} ref={(content) => { this.content = content; }}>
           {items}
         </div>
       </div>

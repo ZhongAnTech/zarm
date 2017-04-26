@@ -445,7 +445,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, onClick, ...others } = this.props;
+    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, onClick } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -512,15 +512,10 @@ DatePicker.propTypes = {
     PropTypes.string,
     PropTypes.object,
   ]),
-  format: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.func,
-  ]),
   defaultValue: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
   ]),
-  onChange: PropTypes.func,
   onOk: PropTypes.func,
   onCancel: PropTypes.func,
   onMaskClick: PropTypes.func,

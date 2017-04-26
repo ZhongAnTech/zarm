@@ -94,7 +94,7 @@ class CascaderPicker extends Component {
   }
 
   render() {
-    const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder, ...others } = this.props;
+    const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder } = this.props;
     const { data, value } = this.state;
 
     let Picker = null;
@@ -188,7 +188,7 @@ CascaderPicker.propTypes = {
   okText: PropTypes.string,
   format: PropTypes.string,
   disabled: PropTypes.bool,
-  dataSource: PropTypes.arrayOf(PropTypes.object).isRequired,
+  dataSource: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.array])).isRequired,
   cols: PropTypes.number,
   onOk: PropTypes.func.isRequired,
   onCancel: PropTypes.func,

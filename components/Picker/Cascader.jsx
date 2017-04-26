@@ -74,12 +74,10 @@ class Cascader extends Component {
   }
 
   render() {
-    const props = this.props;
-
     const {
       prefixCls, pickerPrefixCls,
-      className, pickerItemStyle,
-    } = props;
+      className,
+    } = this.props;
 
     return (
       <MultiPicker
@@ -87,7 +85,6 @@ class Cascader extends Component {
         pickerPrefixCls={pickerPrefixCls}
         className={className}
         selectedValue={this.state.value}
-        pickerItemStyle={pickerItemStyle}
         onValueChange={(value, index) => this.onValueChange(value, index)} >
         {this.getCols()}
       </MultiPicker>
@@ -96,18 +93,6 @@ class Cascader extends Component {
 }
 
 Cascader.propTypes = {
-  visible: PropTypes.bool,
-  placeholder: PropTypes.string,
-  title: PropTypes.string,
-  cancelText: PropTypes.string,
-  okText: PropTypes.string,
-  format: PropTypes.string,
-  disabled: PropTypes.bool,
-  dataSource: PropTypes.node,
-  onOk: PropTypes.func,
-  onCancel: PropTypes.func,
-  onMaskClick: PropTypes.func,
-  minuteStep: PropTypes.number,
   prefixCls: PropTypes.string,
   pickerPrefixCls: PropTypes.string,
 };
