@@ -25,7 +25,7 @@ class Swipe extends Component {
 
   componentDidMount() {
     // 监听窗口变化
-    window.addEventListener("resize", () => this._updateResize());
+    window.addEventListener("resize", this._updateResize);
     this.refs.swipeItems.addEventListener("webkitTransitionEnd", () => this._transitionEnd());
     this.refs.swipeItems.addEventListener("transitionend", () => this._transitionEnd());
 
@@ -43,7 +43,7 @@ class Swipe extends Component {
     // 自动轮播结束
     this.pauseAutoPlay();
     // 移除监听窗口变化
-    window.removeEventListener("resize", () => this._updateResize());
+    window.removeEventListener("resize", this._updateResize);
     this.refs.swipeItems.removeEventListener("webkitTransitionEnd", () => this._transitionEnd());
     this.refs.swipeItems.removeEventListener("transitionend", () => this._transitionEnd());
 
@@ -175,8 +175,12 @@ class Swipe extends Component {
 
   // 移动到指定编号
   _onMoveTo(index, speed) {
-    const dom = this.refs.swipeItems,
-          px = (this._isDirectionX())
+    const dom = this.refs.swipeItems;
+    if (!dom) {
+      return;
+    }
+
+    const px = (this._isDirectionX())
              ? -dom.offsetWidth * (index + this.props.isLoop)
              : -dom.offsetHeight * (index + this.props.isLoop);
 
