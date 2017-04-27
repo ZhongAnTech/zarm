@@ -41,7 +41,7 @@ class CellPage extends Component {
       sex: '',
       timer: 0,
       number: 0,
-      disabled: true,
+      disabled: false,
     };
   }
 
@@ -225,10 +225,9 @@ class CellPage extends Component {
                 placeholder="请选择日期"
                 mode="date"
                 format="YYYY-MM-DD"
-                disabled={false}
+                disabled={this.state.disabled}
                 value={this.state.date}
-                defaultDate={this.state.date}
-                onClick={() => {alert(123);}}
+                defaultValue={this.state.date}
                 onChange={(value) => {
                   this.setState({
                     date: value,
@@ -250,7 +249,7 @@ class CellPage extends Component {
                 title="请选择"
                 placeholder="请选择"
                 format="-"
-                disabled={false}
+                disabled={this.state.disabled}
                 dataSource={District}
                 cols={3}
                 value={this.state.sValue}
