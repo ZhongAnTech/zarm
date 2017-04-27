@@ -30,6 +30,9 @@
 
 ## 版本更新日志
 
+- 0.0.37
+  DatePicker合并到Picker中，合并后通过Picker.Date调用
+
 - 0.0.36
   修复moment、zscroller依赖错误
 
