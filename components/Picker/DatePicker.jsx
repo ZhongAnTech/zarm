@@ -443,6 +443,11 @@ class DatePicker extends Component {
     });
   }
 
+  handleClick() {
+    this.props.onClick();
+    !this.props.disabled && this.toggle();
+  }
+
   render() {
     const { value, cols } = this.getValueCols();
     const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, onClick } = this.props;
@@ -461,13 +466,7 @@ class DatePicker extends Component {
     return (
       <div
         className="ui-picker-group"
-        onClick={() => {
-          if (disabled) {
-            onClick && onClick();
-            return;
-          }
-          this.toggle();
-        }}>
+        onClick={() => this.handleClick()}>
         <div className={inputCls}>
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
         </div>
@@ -535,6 +534,7 @@ DatePicker.defaultProps = {
   disabled: false,
   value: '',
   defaultValue: '',
+  onClick: () => {},
   onChange: () => {},
   onOk: () => {},
   onCancel: () => {},

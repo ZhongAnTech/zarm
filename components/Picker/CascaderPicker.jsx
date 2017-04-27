@@ -93,6 +93,11 @@ class CascaderPicker extends Component {
     });
   }
 
+  handleClick() {
+    this.props.onClick();
+    !this.props.disabled && this.toggle();
+  }
+
   render() {
     const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder } = this.props;
     const { data, value } = this.state;
@@ -156,7 +161,7 @@ class CascaderPicker extends Component {
     };
 
     return (
-      <div className="ui-picker-group" onClick={() => this.toggle()}>
+      <div className="ui-picker-group" onClick={() => this.handleClick()}>
         <div className={inputCls}>
           {display()}
         </div>
@@ -208,6 +213,7 @@ CascaderPicker.defaultProps = {
   dataSource: [],
   cols: 3,
   value: [],
+  onClick: () => {},
   onChange: () => {},
   onOk: () => {},
   onCancel: () => {},
