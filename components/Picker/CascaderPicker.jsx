@@ -208,7 +208,7 @@ CascaderPicker.defaultProps = {
   title: '请选择',
   cancelText: '取消',
   okText: '确定',
-  format: '-',
+  format: '',
   disabled: false,
   dataSource: [],
   cols: 3,
