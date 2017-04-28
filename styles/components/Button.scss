@@ -70,7 +70,8 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height - r(2);
+  line-height: $height;
+  /*line-height: $height - r(2);*/
 
   &.radius {
     border-radius: $border-radius;

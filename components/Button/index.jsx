@@ -36,7 +36,7 @@ class Button extends PureComponent {
 }
 
 Button.propTypes = {
-  theme: PropTypes.oneOf(['brand', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['brand', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   isBlock: PropTypes.bool,
   isRadius: PropTypes.bool,
