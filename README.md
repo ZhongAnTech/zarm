@@ -29,6 +29,19 @@
 - Toast 消息提示
 
 ## 版本更新日志
+
+- 0.0.38
+  修复Swipe组件销毁后没有把resize事件移除的bug
+
+- 0.0.37
+  DatePicker合并到Picker中，合并后通过Picker.Date调用
+
+- 0.0.36
+  修复moment、zscroller依赖错误
+
+- 0.0.35
+  修复日期时间选择器(DatePicker) 部分bug
+
 - 0.0.34
   新增日期时间选择器(DatePicker) 和 开关组件(Switch)
 

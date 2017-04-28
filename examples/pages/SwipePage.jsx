@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { Swipe } from '../../components';
+import { hashHistory } from 'react-router';
 
 // import '../styles/pages/SwipePage';
 
@@ -70,6 +71,9 @@ class SwipePage extends Component {
     return (
       <div className="swipe-page">
         {this.renderSwipe()}
+        <button onClick={() => {
+          hashHistory.push('/');
+        }}>go</button>
       </div>
     );
   }
