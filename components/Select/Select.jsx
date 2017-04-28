@@ -1,5 +1,5 @@
 
-import React, { Component, PropTypes, cloneElement } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import Input from '../Input';
 
@@ -63,12 +63,6 @@ class Select extends Component {
   }
 
 }
-
-Select.propTypes = { 
-};
-
-Select.defaultProps = {
-};
 
 export default Select;
 

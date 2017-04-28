@@ -1,7 +1,6 @@
 
-import React, { Component, PropTypes, cloneElement } from 'react';
-import classnames from 'classnames';
-import Checkbox from './Checkbox';
+import React, { Component, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 
 class CheckboxGroup extends Component {
 
