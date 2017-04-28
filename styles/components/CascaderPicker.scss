@@ -1,12 +1,11 @@
 $picker-item-height: r(30);
 
-.ui-datepicker {
+.ui-cascaderpicker {
   display: block;
   position: relative;
   overflow: hidden;
   height: 7*$picker-item-height;
   width: 100%;
-
 
   &-content {
     position: absolute;
@@ -31,7 +30,7 @@ $picker-item-height: r(30);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
     linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
     background-position: top, bottom;
-    background-size: 100% r(102);
+    background-size: 100% 102px;
     background-repeat: no-repeat;
   }
 
