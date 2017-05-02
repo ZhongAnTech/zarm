@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Picker from './PickerCols';
+import Column from './Column';
 
-class MultiPicker extends Component {
+class ColumnGroup extends Component {
 
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ class MultiPicker extends Component {
     }
     return children.map((c) => {
       const cc = c.props.children;
-      return cc && cc[0] && cc[0].value;
+      return cc && cc[0] && cc[0][this.props.valueMember];
     });
   }
 
@@ -39,18 +39,20 @@ class MultiPicker extends Component {
     const {
       prefixCls, pickerPrefixCls,
       className, indicatorStyle,
-      pure, children,
+      pure, children, displayMember, valueMember,
     } = props;
 
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
       return (
         <div key={col.key || i} className={`${prefixCls}-item`}>
-          <Picker
+          <Column
             pure={pure}
             indicatorStyle={indicatorStyle}
             prefixCls={pickerPrefixCls}
             selectedValue={selectedValue[i]}
+            displayMember={displayMember}
+            valueMember={valueMember}
             onValueChange={value => this.onValueChange(value, i)}
             {...col.props}
             />
@@ -67,7 +69,7 @@ class MultiPicker extends Component {
 
 }
 
-MultiPicker.defaultProps = {
+ColumnGroup.defaultProps = {
   prefixCls: '',
   pickerPrefixCls: '',
   onValueChange() {
@@ -75,4 +77,4 @@ MultiPicker.defaultProps = {
   disabled: false,
 };
 
-export default MultiPicker;
+export default ColumnGroup;
