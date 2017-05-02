@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import { arrayTreeFilter } from './utils';
-import MultiPicker from './MultiPicker';
+import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
 
 // 阻止选择器区域的默认事件
@@ -9,7 +9,7 @@ function onContainerClick(e) {
   e.stopPropagation();
 }
 
-class CascaderPicker extends Component {
+class Picker extends Component {
   constructor(props) {
     super(props);
 
@@ -99,10 +99,10 @@ class CascaderPicker extends Component {
   }
 
   render() {
-    const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder } = this.props;
+    const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
     const { data, value } = this.state;
 
-    let Picker = null;
+    let PickerCol = null;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -120,38 +120,42 @@ class CascaderPicker extends Component {
     });
 
     if (this.state.cascade) {
-      Picker = (
+      PickerCol = (
         <Cascader
           prefixCls={prefixCls}
           pickerPrefixCls={pickerPrefixCls}
           data={data}
           value={this.state.value}
           cols={this.props.cols}
+          displayMember={displayMember}
+          valueMember={valueMember}
           onChange={v => this.onValueChange(v)}
           />
       );
     } else {
-      Picker = (
-        <MultiPicker
+      PickerCol = (
+        <ColumnGroup
           className={className}
           prefixCls={prefixCls}
           pickerPrefixCls={pickerPrefixCls}
+          displayMember={displayMember}
+          valueMember={valueMember}
           selectedValue={value}
           onValueChange={v => this.onValueChange(v)} >
           {cols}
-        </MultiPicker>
+        </ColumnGroup>
       );
     }
 
     const display = () => {
       if (this.state.cascade) {
         if (value.length) {
-          const treeChildren = arrayTreeFilter(this.props.dataSource, (c, level) => {
-            return c.value === value[level];
+          const treeChildren = arrayTreeFilter(this.props.dataSource, (item, level) => {
+            return item[valueMember] === value[level];
           });
 
           return treeChildren.map((v) => {
-            return v.label;
+            return v[displayMember];
           }).join(format);
         }
 
@@ -161,7 +165,7 @@ class CascaderPicker extends Component {
     };
 
     return (
-      <div className="ui-picker-group" onClick={() => this.handleClick()}>
+      <div className="ui-picker" onClick={() => this.handleClick()}>
         <div className={inputCls}>
           {display()}
         </div>
@@ -175,7 +179,7 @@ class CascaderPicker extends Component {
             </div>
             <div className="ui-picker-mask-top">
               <div className="ui-picker-mask-bottom">
-                {Picker}
+                {PickerCol}
               </div>
             </div>
           </div>
@@ -185,7 +189,7 @@ class CascaderPicker extends Component {
   }
 }
 
-CascaderPicker.propTypes = {
+Picker.propTypes = {
   visible: PropTypes.bool,
   placeholder: PropTypes.string,
   title: PropTypes.string,
@@ -200,9 +204,11 @@ CascaderPicker.propTypes = {
   onMaskClick: PropTypes.func,
   prefixCls: PropTypes.string,
   pickerPrefixCls: PropTypes.string,
+  displayMember: PropTypes.string,
+  valueMember: PropTypes.string,
 };
 
-CascaderPicker.defaultProps = {
+Picker.defaultProps = {
   visible: false,
   placeholder: '请选择',
   title: '请选择',
@@ -218,8 +224,10 @@ CascaderPicker.defaultProps = {
   onOk: () => {},
   onCancel: () => {},
   onMaskClick: () => {},
-  prefixCls: 'ui-multi-picker',
+  prefixCls: 'ui-picker-column-group',
   pickerPrefixCls: 'ui-cascaderpicker',
+  displayMember: 'label',
+  valueMember: 'value',
 };
 
-export default CascaderPicker;
+export default Picker;

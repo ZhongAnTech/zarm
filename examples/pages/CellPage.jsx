@@ -156,7 +156,7 @@ class CellPage extends Component {
                   onChange={(value) => {
                     if (isNaN(value)) {
                       return;
-                    }
+                    } 
                     this.setState({
                       number: value,
                     });
@@ -250,15 +250,17 @@ class CellPage extends Component {
                 placeholder="请选择"
                 format="-"
                 disabled={this.state.disabled}
-                dataSource={District}
+                dataSource={seasons}
                 cols={3}
+                displayMember="label"
+                valueMember="value"
                 value={this.state.sValue}
                 onChange={v => this.setState({ sValue: v })}
                 onOk={(v) => {
                   console.log(v);
-                  this.setState({
-                    sValue: v,
-                  });
+                  // this.setState({
+                  //   sValue: v,
+                  // });
                 }}
                 onCancel={() => {
                 }}
