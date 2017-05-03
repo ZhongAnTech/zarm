@@ -7,7 +7,7 @@ class Button extends PureComponent {
 
   render() {
     const props = this.props;
-    const { theme, size, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isBordered, isDisabled, isLoading, className, onClick, children } = this.props;
+    const { theme, size, icon, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isBordered, isDisabled, isLoading, className, onClick, children } = this.props;
     const disabled = ('disabled' in props || isDisabled);
     const loading = ('loading' in props || isLoading);
 
@@ -26,11 +26,16 @@ class Button extends PureComponent {
       [className]: !!className,
     });
 
-    const textContent = loading
-                      ? <span><Icon type="loading" className="rotate360" /> {children}</span>
-                      : children;
+    const iconContent = loading
+                      ? <Icon type="loading" className="rotate360" />
+                      : icon;
     return (
-      <button onTouchStart={() => {}} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>{textContent}</button>
+      <button onTouchStart={() => {}} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>
+        <div className="ui-button-content">
+          {(!!icon || loading) && iconContent}
+          <span>{children}</span>
+        </div>
+      </button>
     );
   }
 }
