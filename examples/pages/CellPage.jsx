@@ -156,7 +156,7 @@ class CellPage extends Component {
                   onChange={(value) => {
                     if (isNaN(value)) {
                       return;
-                    } 
+                    }
                     this.setState({
                       number: value,
                     });
@@ -178,7 +178,7 @@ class CellPage extends Component {
               </Select>
             </Cell>
 
-            {/*<Cell title="省份" type="select">
+            {/* <Cell title="省份" type="select">
               <Picker
                 placeholder="选择省份"
                 dataSource={District}
@@ -250,10 +250,10 @@ class CellPage extends Component {
                 placeholder="请选择"
                 format="-"
                 disabled={this.state.disabled}
-                dataSource={seasons}
+                dataSource={District}
                 cols={3}
                 displayMember="label"
-                valueMember="value"
+                valueMember="label"
                 value={this.state.sValue}
                 onChange={v => this.setState({ sValue: v })}
                 onOk={(v) => {
