@@ -31,6 +31,7 @@
 ## 版本更新日志
 
 - 0.0.39  
+  构建工具改为webpack2  
   优化Picker的取值，可以通过自定义valueMember和displayMember属性来设置值和显示。  
   修复大转盘组件Lottery的bug，可以适用自定义奖项数量。
 
