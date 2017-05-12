@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import moment from 'moment';
-import MultiPicker from './MultiPicker';
+import ColumnGroup from './ColumnGroup';
 import { formatFn } from './utils';
 import defaultLocale from './locale/zh_CN';
 
@@ -450,7 +450,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, onClick } = this.props;
+    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, onClick, displayMember, valueMember } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -465,7 +465,7 @@ class DatePicker extends Component {
 
     return (
       <div
-        className="ui-picker-group"
+        className="ui-picker"
         onClick={() => this.handleClick()}>
         <div className={inputCls}>
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
@@ -480,16 +480,17 @@ class DatePicker extends Component {
             </div>
             <div className="ui-picker-mask-top">
               <div className="ui-picker-mask-bottom">
-                <MultiPicker
+                <ColumnGroup
                   className={className}
                   prefixCls={prefixCls}
                   pickerPrefixCls={pickerPrefixCls}
                   disabled={disabled}
-                  // pickerItemStyle={typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined}
+                  displayMember={displayMember}
+                  valueMember={valueMember}
                   selectedValue={value}
                   onValueChange={(values, index) => this.onValueChange(values, index)}>
                   {cols}
-                </MultiPicker>
+                </ColumnGroup>
               </div>
             </div>
           </div>
@@ -541,8 +542,10 @@ DatePicker.defaultProps = {
   onMaskClick: () => {},
   locale: defaultLocale,
   minuteStep: 1,
-  prefixCls: 'ui-multi-picker',
-  pickerPrefixCls: 'ui-datepicker',
+  prefixCls: 'ui-picker-column-group',
+  pickerPrefixCls: 'ui-cascaderpicker',
+  displayMember: 'value',
+  valueMember: 'value',
 };
 
 export default DatePicker;

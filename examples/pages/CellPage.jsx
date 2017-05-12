@@ -178,7 +178,7 @@ class CellPage extends Component {
               </Select>
             </Cell>
 
-            {/*<Cell title="省份" type="select">
+            {/* <Cell title="省份" type="select">
               <Picker
                 placeholder="选择省份"
                 dataSource={District}
@@ -252,13 +252,15 @@ class CellPage extends Component {
                 disabled={this.state.disabled}
                 dataSource={District}
                 cols={3}
+                displayMember="label"
+                valueMember="label"
                 value={this.state.sValue}
                 onChange={v => this.setState({ sValue: v })}
                 onOk={(v) => {
                   console.log(v);
-                  this.setState({
-                    sValue: v,
-                  });
+                  // this.setState({
+                  //   sValue: v,
+                  // });
                 }}
                 onCancel={() => {
                 }}
