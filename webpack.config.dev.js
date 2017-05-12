@@ -13,17 +13,16 @@ config.entry = {
   ],
 };
 
-config.plugins.push(new ExtractTextPlugin('stylesheet/[name].css', {
+config.plugins.push(new ExtractTextPlugin({
+  filename: 'stylesheet/[name].css',
+  disable: false,
   allChunks: true,
 }));
+
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
   name: 'vendors',
 }));
-config.module.rules.loaders.push({
-  test: /\.(js|jsx)$/,
-  loader: 'react-hot!babel',
-  exclude: /node_modules/,
-});
+
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.plugins.push(new webpack.DefinePlugin({
   'process.env': {
@@ -32,15 +31,15 @@ config.plugins.push(new webpack.DefinePlugin({
   __DEBUG__: true,
 }));
 
-for (let key in config.entry) {
-  if (key === 'vendors') {
-    continue;
+Object.keys(config.entry).map((item) => {
+  if (item !== 'vendors') {
+    config.plugins.push(new HtmlWebpackPlugin({
+      template: `./examples/${item}.html`,
+      filename: `${item}.html`,
+      chunks: ['vendors', item],
+    }));
   }
-  config.plugins.push(new HtmlWebpackPlugin({
-    template: './examples/' + key + '.html',
-    filename: key + '.html',
-    chunks: ['vendors', key]
-  }));
-}
+  return false;
+});
 
 module.exports = config;
