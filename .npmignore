@@ -1,6 +1,5 @@
 .DS_Store
 *.log
 node_modules
-components
 assets
 webpack.config.*.js
