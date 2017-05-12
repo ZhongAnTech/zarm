@@ -22,7 +22,7 @@ class Picker extends Component {
     } else if (defaultSelectedValue !== undefined) {
       selectedValueState = defaultSelectedValue;
     } else if (children && children.length) {
-      selectedValueState = children[0].value;
+      selectedValueState = children[0][this.props.valueMember];
     }
     this.state = {
       selectedValue: selectedValueState,
@@ -71,7 +71,7 @@ class Picker extends Component {
 
   getValue() {
     return this.props.selectedValue ? this.props.selectedValue
-      : this.props.children && this.props.children[0] && this.props.children[0].value;
+      : this.props.children && this.props.children[0] && this.props.children[0][this.props.valueMember];
   }
 
   scrollingComplete() {
@@ -100,7 +100,7 @@ class Picker extends Component {
   select(value) {
     const children = toChildrenArray(this.props.children);
     for (let i = 0, len = children.length; i < len; i += 1) {
-      if (getChildMember(children[i], 'value') === value) {
+      if (getChildMember(children[i], this.props.valueMember) === value) {
         this.selectByIndex(i);
         return;
       }
@@ -129,7 +129,7 @@ class Picker extends Component {
     index = Math.min(index, children.length - 1);
     const child = children[index];
     if (child) {
-      this.fireValueChange(getChildMember(child, 'value'));
+      this.fireValueChange(getChildMember(child, this.props.valueMember));
     } else if (console.warn) {
       console.warn('child not found', children, index);
     }
@@ -149,7 +149,7 @@ class Picker extends Component {
       return (
         <div
           style={itemStyle}
-          className={selectedValue === item.value ? selectedItemClassName : itemClassName}
+          className={selectedValue === item[this.props.valueMember] ? selectedItemClassName : itemClassName}
           key={item.value} >
           {item.label}
         </div>
@@ -175,8 +175,7 @@ class Picker extends Component {
 Picker.defaultProps = {
   prefixCls: 'ui-cascaderpicker',
   pure: true,
-  onValueChange() {
-  },
+  onValueChange: () => {},
 };
 
 export default Picker;
