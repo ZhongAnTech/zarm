@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { arrayTreeFilter } from './utils';
-import MultiPicker from './MultiPicker';
+import ColumnGroup from './ColumnGroup';
 
 class Cascader extends Component {
   constructor(props) {
@@ -21,14 +21,14 @@ class Cascader extends Component {
   }
 
   onValueChange(value, index) {
-    const children = arrayTreeFilter(this.props.data, (c, level) => {
-      return level <= index && c.value === value[level];
+    const children = arrayTreeFilter(this.props.data, (item, level) => {
+      return level <= index && item[this.props.valueMember] === value[level];
     });
     let data = children[index];
     let i;
     for (i = index + 1; data && data.children && data.children.length && i < this.props.cols; i += 1) {
       data = data.children[0];
-      value[i] = data.value;
+      value[i] = data[this.props.valueMember];
     }
     value.length = i;
 
@@ -43,8 +43,8 @@ class Cascader extends Component {
   getCols() {
     const { data, cols } = this.props;
     const value = this.state.value;
-    const childrenTree = arrayTreeFilter(data, (c, level) => {
-      return c.value === value[level];
+    const childrenTree = arrayTreeFilter(data, (item, level) => {
+      return item[this.props.valueMember] === value[level];
     }).map(c => c.children);
     childrenTree.length = cols - 1;
     childrenTree.unshift(data);
@@ -65,7 +65,7 @@ class Cascader extends Component {
       value = [];
       for (let i = 0; i < this.props.cols; i += 1) {
         if (data && data.length) {
-          value[i] = data[0].value;
+          value[i] = data[0][this.props.valueMember];
           data = data[0].children;
         }
       }
@@ -77,18 +77,21 @@ class Cascader extends Component {
   render() {
     const {
       prefixCls, pickerPrefixCls,
-      className,
+      className, displayMember,
+      valueMember,
     } = this.props;
 
     return (
-      <MultiPicker
+      <ColumnGroup
         prefixCls={prefixCls}
         pickerPrefixCls={pickerPrefixCls}
         className={className}
+        displayMember={displayMember}
+        valueMember={valueMember}
         selectedValue={this.state.value}
         onValueChange={(value, index) => this.onValueChange(value, index)} >
         {this.getCols()}
-      </MultiPicker>
+      </ColumnGroup>
     );
   }
 }
