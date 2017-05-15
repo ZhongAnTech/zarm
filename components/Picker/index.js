@@ -1,4 +1,4 @@
-import Picker from './CascaderPicker';
+import Picker from './Picker';
 import Date from './DatePicker';
 
 Picker.Date = Date;
