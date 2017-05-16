@@ -158,7 +158,7 @@ export default class Slider extends Component {
               mark_arr.push(marks_elem_arr[k]);
             }
           }
-          marks_elem_arr.sort((a, b) => {
+          mark_arr.sort((a, b) => {
             return a - b;
           });
         }
@@ -168,14 +168,10 @@ export default class Slider extends Component {
         if (!marks.step) {
           marks.step = 1;
         }
-        if (marks.step === step) {
-          marks_elem_arr = mark_arr;
-        } else {
-          marks_elem_arr = filterByStep(mark_arr, marks.step, false);
-        }
+        marks_elem_arr = filterByStep(mark_arr, marks.step, false);
       }
 
-      // 若开启了只能拖动到点上 则可用数组只能为data里面的数组
+            // 若开启了只能拖动到点上 则可用数组只能为data里面的数组
       if (this.props.dots) {
         mark_arr = marks_elem_arr;
       }
@@ -196,16 +192,11 @@ export default class Slider extends Component {
             }}>
             <div className="marks" />
             {
-                            (marks.showLabel || marks.format) ?
-                              <div className="marks-label">
-                                {
-                                        typeof marks.format === 'function'
-                                            ? marks.format(elem)
-                                            : elem
-                                    }
-                              </div> : null
-
-                        }
+                (marks.showLabel || marks.format) ?
+                  <div className="marks-label">
+                    {typeof marks.format === 'function' ? marks.format(elem) : elem}
+                  </div> : null
+             }
           </div>
         );
       });

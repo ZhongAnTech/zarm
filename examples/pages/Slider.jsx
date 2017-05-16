@@ -19,7 +19,7 @@ export default class fff extends Component {
           defaultValue={0}
 
                     // 每次的步长
-          step={2}
+          step={3}
 
                     // 是否开启双滑块区间
           range
@@ -40,7 +40,7 @@ export default class fff extends Component {
           }}
 
                     // 是否开启只能移动到标尺的点上
-          dots
+          // dots
 
                     // 标尺 有showLabel 则显示 底部的数值
                     // step 当标尺显示过于密集的时候 可以设置多少间隔显示一个标尺 当开启了data以后 此属性无效 默认值为5
