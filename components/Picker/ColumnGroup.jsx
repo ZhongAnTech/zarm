@@ -72,8 +72,7 @@ class ColumnGroup extends Component {
 ColumnGroup.defaultProps = {
   prefixCls: '',
   pickerPrefixCls: '',
-  onValueChange() {
-  },
+  onValueChange: () => {},
   disabled: false,
 };
 

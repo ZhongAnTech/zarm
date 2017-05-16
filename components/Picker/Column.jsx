@@ -175,8 +175,7 @@ class Picker extends Component {
 Picker.defaultProps = {
   prefixCls: 'ui-cascaderpicker',
   pure: true,
-  onValueChange() {
-  },
+  onValueChange: () => {},
 };
 
 export default Picker;
