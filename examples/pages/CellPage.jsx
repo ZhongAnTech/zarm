@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker, CascaderPicker } from '../../components';
+import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, SwipeAction } from '../../components';
 import District from './district';
 
 const seasons = [
@@ -266,6 +266,16 @@ class CellPage extends Component {
                 }}
                 />
             </Cell>
+
+            <SwipeAction
+              prefixCls="ui-swipeAction"
+              right={<div className="del">删除</div>} >
+              <Panel>
+                <Panel.Body>
+                  <Cell title="标题文字" />
+                </Panel.Body>
+              </Panel>
+            </SwipeAction>
 
             <Cell>
               <Checkbox
