@@ -163,10 +163,10 @@ export default class Slider extends Component {
           });
         }
       } else {
-                // 若没有data数据 则自己构建
-                // 默认按照step为基准显示标尺 但是由于step可能很短 会导致挤压 所以可以设定 多少step显示一个标尺
+        // 若没有data数据 则自己构建
+        // 默认按照step为基准显示标尺 但是由于step可能很短 会导致挤压 所以可以设定 多少step显示一个标尺
         if (!marks.step) {
-          marks.step = 5;
+          marks.step = 1;
         }
         if (marks.step === step) {
           marks_elem_arr = mark_arr;
@@ -175,7 +175,7 @@ export default class Slider extends Component {
         }
       }
 
-            // 若开启了只能拖动到点上 则可用数组只能为data里面的数组
+      // 若开启了只能拖动到点上 则可用数组只能为data里面的数组
       if (this.props.dots) {
         mark_arr = marks_elem_arr;
       }
