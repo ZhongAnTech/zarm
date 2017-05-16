@@ -1,16 +1,16 @@
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config.dev');
-var dir = __dirname + '/examples';
+const path = require('path');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config.dev');
 
 new WebpackDevServer(webpack(config), {
-  contentBase: dir,
+  contentBase: path.join(__dirname, 'examples'),
   publicPath: config.output.publicPath,
   hot: true,
   inline: true,
-  noInfo: false,
-  historyApiFallback: true
-}).listen(3000, function (err, result) {
+  noInfo: true,
+  historyApiFallback: true,
+}).listen(3000, (err) => {
   if (err) {
     console.log(err);
   }
