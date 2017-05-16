@@ -1,0 +1,13 @@
+.ui-swipeAction-wrap{
+  position: relative;
+  .ui-swipeAction-btn-wrap{
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background: red;
+    padding: 0 r(10);
+    z-index: -1;
+  }
+  
+}
