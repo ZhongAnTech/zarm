@@ -2,10 +2,20 @@
   基于ReactJS的移动端UI库
   
 ## 安装
-  npm install dragon-mobile-ui
-  
+```
+npm install dragon-mobile-ui
+```
 ## 使用
-  import { Button, Cell } from dragon-mobile-ui;
+```
+import { Button, Cell } from 'dragon-mobile-ui';
+import 'dragon-mobile-ui/styles/index.scss'
+
+or
+
+import Button from 'dragon-mobile-ui/lib/Button';
+import 'dragon-mobile-ui/styles/core/index.scss'
+import 'dragon-mobile-ui/styles/components/Button.scss'
+```
 
 ## 已完成组件
 - Button 按钮
