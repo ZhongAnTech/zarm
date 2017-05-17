@@ -223,20 +223,18 @@ class CellPage extends Component {
                 visible={this.state.datePicker}
                 title="选择日期"
                 placeholder="请选择日期"
-                mode="date"
-                format="YYYY-MM-DD"
+                mode="time"
                 disabled={this.state.disabled}
                 value={this.state.date}
                 defaultValue={this.state.date}
                 onChange={(value) => {
+                  console.log("外部change value ->", value);
                   this.setState({
                     date: value,
                   });
                 }}
                 onOk={(value) => {
-                  this.setState({
-                    date: value,
-                  });
+                  console.log("外部ok value ->", value);
                 }}
                 onCancel={() => {
                 }}
@@ -258,9 +256,6 @@ class CellPage extends Component {
                 onChange={v => this.setState({ sValue: v })}
                 onOk={(v) => {
                   console.log(v);
-                  // this.setState({
-                  //   sValue: v,
-                  // });
                 }}
                 onCancel={() => {
                 }}

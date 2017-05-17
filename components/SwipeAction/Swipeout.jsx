@@ -61,10 +61,10 @@ class Swipeout extends Component {
 
     const pointX = _getCurrentPoint(e);
     const px = pointX - this.pointStart;
-    const currentX = e.touches[0].clientX;
+    // const currentX = e.touches[0].clientX;
 
-    this.direction = currentX > this.lastX ? 'right' : 'left';
-    this.lastX = currentX;
+    // this.direction = currentX > this.lastX ? 'right' : 'left';
+    // this.lastX = currentX;
 
     if (px > 0) {
       return;
