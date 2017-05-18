@@ -5,9 +5,33 @@
     height: 100%;
     right: 0;
     top: 0;
-    background: red;
-    padding: 0 r(10);
     z-index: -1;
+
   }
-  
+  .full-mask{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    background: #fff;
+    opacity: 0.2;
+  }
+}
+.demo-btn-wrap{
+  height: 100%;
+}
+.demo-del{
+  display: inline-block;
+  width: r(80);
+  text-align: center;
+  &.del1{
+    background: #1AAD19;
+    height: 100%;
+  }
+  &.del2{
+    background: #E64340;
+    height: 100%;
+  }
 }

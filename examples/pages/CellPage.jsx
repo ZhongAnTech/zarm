@@ -52,12 +52,12 @@ class CellPage extends Component {
     //     timer: ++timer
     //   })
     // }, 1000)
-    setTimeout(() => {
-      this.setState({
-        dataSource: District,
-        disabled: false,
-      });
-    }, 3000);
+    // setTimeout(() => {
+    //   this.setState({
+    //     dataSource: District,
+    //     disabled: false,
+    //   });
+    // }, 3000);
   }
 
   toggle(key) {
@@ -223,15 +223,15 @@ class CellPage extends Component {
                 visible={this.state.datePicker}
                 title="选择日期"
                 placeholder="请选择日期"
-                mode="time"
+                mode="date"
                 disabled={this.state.disabled}
                 value={this.state.date}
                 defaultValue={this.state.date}
                 onChange={(value) => {
                   console.log("外部change value ->", value);
-                  this.setState({
-                    date: value,
-                  });
+                  // this.setState({
+                  //   date: value,
+                  // });
                 }}
                 onOk={(value) => {
                   console.log("外部ok value ->", value);
@@ -253,9 +253,12 @@ class CellPage extends Component {
                 displayMember="label"
                 valueMember="label"
                 value={this.state.sValue}
-                onChange={v => this.setState({ sValue: v })}
-                onOk={(v) => {
-                  console.log(v);
+                onChange={(value) => {
+                  console.log('外部change value ->', value);
+                  this.setState({ sValue: value });
+                }}
+                onOk={(value) => {
+                  console.log(value);
                 }}
                 onCancel={() => {
                 }}
@@ -264,7 +267,12 @@ class CellPage extends Component {
 
             <SwipeAction
               prefixCls="ui-swipeAction"
-              right={<div className="del">删除</div>} >
+              right={
+                <div className="demo-btn-wrap">
+                  <div className="demo-del del1">删除1</div>
+                  <div className="demo-del del2">删除2</div>
+                </div>
+              }>
               <Panel>
                 <Panel.Body>
                   <Cell title="标题文字" />

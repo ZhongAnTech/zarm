@@ -6,15 +6,25 @@ function _getCurrentPoint(e) {
   return e.touches[0].pageX;
 }
 
+function _addListenerMulti(el, s, fn) {
+  const evts = s.split(' ');
+  for (let i = 0, iLen = evts.length; i < iLen; i += 1) {
+    el.addEventListener(evts[i], fn, false);
+  }
+}
+
 class Swipeout extends Component {
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      showMask: false
+    }
     this.lastX = 0;
     this.direction = 'left';
     this.openedLeft = false;
     this.openedRight = false;
+
   }
 
   componentDidMount() {
@@ -44,8 +54,18 @@ class Swipeout extends Component {
     if (this.props.disabled) {
       return;
     }
+
+    console.log("touchstart openedRight ->", this.openedRight);
     this.pointStart = _getCurrentPoint(e);
-    this.lastX = this.pointStart;
+    this.pointEnd = _getCurrentPoint(e);
+    if (this.openedRight) {
+      this.close(300);
+      // this.setState({
+      //   showMask: true
+      // })
+      return;
+    }
+    // this.lastX = this.pointStart;
     this.timeStart = new Date();
   }
 
@@ -55,16 +75,12 @@ class Swipeout extends Component {
       return;
     }
 
-    // if (this.openedLeft || this.openedRight) {
-    //   return;
-    // }
+    if (this.openedRight) {
+      return;
+    }
 
     const pointX = _getCurrentPoint(e);
     const px = pointX - this.pointStart;
-    // const currentX = e.touches[0].clientX;
-
-    // this.direction = currentX > this.lastX ? 'right' : 'left';
-    // this.lastX = currentX;
 
     if (px > 0) {
       return;
@@ -79,16 +95,22 @@ class Swipeout extends Component {
       return;
     }
 
+    const dom = this.btnWrap;
+    const px = (this.pointEnd !== 0) ? this.pointEnd - this.pointStart : 0;
+
     const timeSpan = new Date().getTime() - this.timeStart.getTime();
 
-    if (timeSpan <= this.props.moveTimeDur) {
-      this.open(0, 300, false, false);
+    if (px !== 0 && (
+        // 滑动距离和父容器长度之比超过moveDistanceRatio
+        Math.abs(px / dom.offsetWidth) >= this.props.moveDistanceRatio
+        ||
+        // 滑动释放时间差低于moveTimeDur
+        timeSpan <= this.props.moveTimeDur
+      )
+    ) {
+      this.open(-this.btnWrapWidth, 300, false, true);
     } else {
-      if (this.direction === 'left') {
-        this.open(-this.btnWrapWidth, 300, false, true);
-      } else {
-        this.close();
-      }
+      this.close(300);
     }
   }
 
@@ -119,17 +141,25 @@ class Swipeout extends Component {
     this._doTransition(value, duration);
   }
 
-  close() {
+  close(duration = 100) {
+    const dom = this.content;
+
     if (this.openedLeft || this.openedRight) {
       this.props.onClose();
     }
-    this._doTransition(0, 100);
-    this.openedLeft = false;
-    this.openedRight = false;
+    this._doTransition(0, duration);
+
+    _addListenerMulti(dom, 'webkitTransitionEnd transitionend', () => {
+      this.openedLeft = false;
+      this.openedRight = false;
+    });
   }
 
   render() {
     const { className, right, children, prefixCls } = this.props;
+    const { showMask } = this.state;
+    const mask = showMask ? <div className="full-mask" /> : null;
+
     return (
       <div className={`${prefixCls}-wrap`}>
         <div
@@ -145,6 +175,7 @@ class Swipeout extends Component {
           ref={(btnWrap) => { this.btnWrap = btnWrap; }}>
           {right}
         </div>
+        {mask}
       </div>
     );
   }
@@ -153,6 +184,7 @@ class Swipeout extends Component {
 
 Swipeout.defaultProps = {
   moveTimeDur: 300,
+  moveDistanceRatio: 0.5,
   onOpen: () => {},
   onClose: () => {},
 };
