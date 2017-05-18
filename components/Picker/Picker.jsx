@@ -34,6 +34,9 @@ class Picker extends Component {
   }
 
   onValueChange(value) {
+    this.setState({
+      value,
+    });
     this.props.onChange(value);
   }
 
