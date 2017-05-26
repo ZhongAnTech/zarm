@@ -1,10 +1,9 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Mask from '../Mask';
 
-class Toast extends Component {
+class Toast extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -58,17 +57,17 @@ class Toast extends Component {
   }
 
   render() {
-    const { visible, children, onMaskClick, className } = this.props;
+    const { prefixCls, visible, children, onMaskClick, className } = this.props;
 
     const cls = classnames({
-      'ui-toast': true,
-      'ui-toast-open': this.state.isShow,
+      [`${prefixCls}`]: true,
+      [`${prefixCls}-open`]: this.state.isShow,
       [className]: !!className,
     });
 
     return (
       <div className={cls}>
-        <div className="ui-toast-container">
+        <div className={`${prefixCls}-container`}>
           {children}
         </div>
         <Mask visible={visible} type="transparent" onClose={onMaskClick} />
@@ -79,12 +78,14 @@ class Toast extends Component {
 }
 
 Toast.propTypes = {
+  prefixCls: PropTypes.string,
   visible: PropTypes.bool,
   duration: PropTypes.number,
   onMaskClick: PropTypes.func,
 };
 
 Toast.defaultProps = {
+  prefixCls: 'ui-toast',
   visible: false,
   duration: 3000,
   onMaskClick: () => {},

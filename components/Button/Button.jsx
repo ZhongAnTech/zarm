@@ -7,12 +7,12 @@ class Button extends PureComponent {
 
   render() {
     const props = this.props;
-    const { theme, size, icon, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isBordered, isDisabled, isLoading, className, onClick, children } = this.props;
+    const { prefixCls, theme, size, icon, isBlock, isRadius, isRound, isCircle, isActive, isFocus, isBordered, isDisabled, isLoading, className, onClick, children } = this.props;
     const disabled = ('disabled' in props || isDisabled);
     const loading = ('loading' in props || isLoading);
 
     const classes = classnames({
-      'ui-button': true,
+      [`${prefixCls}`]: true,
       block: ('block' in props || isBlock),
       radius: ('radius' in props || isRadius),
       round: ('round' in props || isRound),
@@ -27,11 +27,12 @@ class Button extends PureComponent {
     });
 
     const iconContent = loading
-                      ? <Icon type="loading" className="rotate360" />
-                      : icon;
+      ? <Icon type="loading" className="rotate360" />
+      : icon;
+
     return (
       <button onTouchStart={() => {}} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>
-        <div className="ui-button-content">
+        <div className={`${prefixCls}-content`}>
           {(!!icon || loading) && iconContent}
           <span>{children}</span>
         </div>
@@ -41,7 +42,8 @@ class Button extends PureComponent {
 }
 
 Button.propTypes = {
-  theme: PropTypes.oneOf(['brand', 'info', 'success', 'warning', 'error']),
+  prefixCls: PropTypes.string,
+  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   isBlock: PropTypes.bool,
   isRadius: PropTypes.bool,
@@ -57,6 +59,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  prefixCls: 'ui-button',
   theme: null,
   size: null,
   isBlock: false,

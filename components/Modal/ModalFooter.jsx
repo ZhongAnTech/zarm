@@ -1,19 +1,35 @@
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-import React, { Component } from 'react';
+class ModalFooter extends PureComponent {
 
-class ModalFooter extends Component {
+  render() {
+    const { prefixCls, className, children, ...others } = this.props;
 
-  render () { 
-    const { children, ...others } = this.props; 
-    
+    const cls = classnames({
+      [`${prefixCls}`]: true,
+      [className]: !!className,
+    });
+
     return (
-      <div className="ui-modal-footer" {...others}>
+      <div className={cls} {...others}>
         {children}
       </div>
     );
   }
 
 }
+
+ModalFooter.propTypes = {
+  prefixCls: PropTypes.string,
+  className: PropTypes.string,
+};
+
+ModalFooter.defaultProps = {
+  prefixCls: 'ui-modal-footer',
+  className: null,
+};
 
 export default ModalFooter;
 

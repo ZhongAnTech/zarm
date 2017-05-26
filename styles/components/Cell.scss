@@ -6,19 +6,19 @@
 
 .ui-cell {
   position: relative;
-  @include cell-theme(base-btn-default-bg, $base-btn-default-border);
+  @include cell-theme(btn-default-bg, $btn-default-border);
 
-  &.theme-brand {
-    @include cell-theme($base-btn-brand-bg, $base-btn-brand-border);
+  &.theme-info {
+    @include cell-theme($btn-info-bg, $btn-info-border);
   }
   &.theme-success {
-    @include cell-theme($base-btn-success-bg, $base-btn-success-border);
+    @include cell-theme($btn-success-bg, $btn-success-border);
   }
   &.theme-warning {
-    @include cell-theme($base-btn-warning-bg, $base-btn-warning-border);
+    @include cell-theme($btn-warning-bg, $btn-warning-border);
   }
   &.theme-error {
-    @include cell-theme($base-btn-error-bg, $base-btn-error-border);
+    @include cell-theme($btn-error-bg, $btn-error-border);
   }
 
   & + & {

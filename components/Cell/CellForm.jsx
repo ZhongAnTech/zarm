@@ -1,24 +1,23 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Cell from '../Cell';
 
-class CellForm extends Component {
+class CellForm extends PureComponent {
 
-  render () {
-    const { className, help, ...others } = this.props;
+  render() {
+    const { prefixCls, className, help, ...others } = this.props;
 
     const cls = classnames({
-      'ui-cell-form': true,
-      [className]   : !!className,
+      [`${prefixCls}-form`]: true,
+      [className]: !!className,
     });
 
     return (
       <div className={cls} {...others}>
         <Cell {...others} />
-        <div className="ui-cell-explain">
-          <div className="ui-cell-explain-text">{help}</div>
+        <div className={`${prefixCls}-explain`}>
+          <div className={`${prefixCls}-text`}>{help}</div>
         </div>
       </div>
     );
@@ -26,13 +25,15 @@ class CellForm extends Component {
 }
 
 CellForm.propTypes = {
-  type      : PropTypes.oneOf(['normal', 'link', 'select']),
-  className : PropTypes.string,
+  prefixCls: PropTypes.string,
+  type: PropTypes.oneOf(['normal', 'link', 'select']),
+  className: PropTypes.string,
 };
 
 CellForm.defaultProps = {
-  type      : 'normal',
-  className : null,
+  prefixCls: 'ui-cell',
+  type: 'normal',
+  className: null,
 };
 
 export default CellForm;

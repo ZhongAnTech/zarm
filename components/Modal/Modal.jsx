@@ -1,23 +1,18 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class Modal extends Component {
+class Modal extends PureComponent {
 
   constructor(props) {
     super(props);
     this.state = {
-      isShow         : props.visible || false,
-      isPending      : false,
-      animationState : 'enter',
+      isShow: props.visible || false,
+      isPending: false,
+      animationState: 'enter',
     };
 
     this.resolveAnimationFrame = this.resolveAnimationFrame.bind(this);
-  }
-
-  componentWillUpdate() {
-    setTimeout(this.resolveAnimationFrame, this.props.animationDuration);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,56 +27,8 @@ class Modal extends Component {
     return !!(this.state.isShow || nextState.isShow);
   }
 
-  render () {
-    const { animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children, ...others } = this.props;
-    const { isShow, isPending, animationState } = this.state;
-
-    const classes = {
-      modal:  classnames({
-                'ui-modal'                : true,
-                'radius'                  : ('radius' in this.props || isRadius),
-                'round'                   : ('round' in this.props || isRound),
-                [`fade-${animationState}`]: isPending,
-                [className]               : !!className,
-              }),
-      dialog: classnames({
-                'ui-modal-dialog'                     : true,
-                [`${animationType}-${animationState}`]: true,
-              })
-    }
-
-    const style = {
-      modal: {
-        WebkitAnimationDuration : `${animationDuration}ms`,
-        MozAnimationDuration    : `${animationDuration}ms`,
-        msAnimationDuration     : `${animationDuration}ms`,
-        OAnimationDuration      : `${animationDuration}ms`,
-        animationDuration       : `${animationDuration}ms`,
-      },
-      dialog: {
-        width                   : width,
-        minWidth                : minWidth,
-        WebkitAnimationDuration : `${animationDuration}ms`,
-        MozAnimationDuration    : `${animationDuration}ms`,
-        msAnimationDuration     : `${animationDuration}ms`,
-        OAnimationDuration      : `${animationDuration}ms`,
-        animationDuration       : `${animationDuration}ms`,
-      }
-    };
-
-    if (!isShow) {
-      style.modal.display = 'none';
-    }
-
-    return (
-      <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
-        <div className="ui-modal-wrapper">
-          <div {...others} className={classes.dialog} style={style.dialog} onClick={(e) => this.onContainerClick(e)}>
-            {children}
-          </div>
-        </div>
-      </div>
-    );
+  componentWillUpdate() {
+    setTimeout(this.resolveAnimationFrame, this.props.animationDuration);
   }
 
   resolveAnimationFrame() {
@@ -93,12 +40,12 @@ class Modal extends Component {
     if (this.state.animationState === 'leave') {
       this.setState({
         isShow: false,
-        isPending: false
+        isPending: false,
       });
     } else {
       this.setState({
         isShow: true,
-        isPending: false
+        isPending: false,
       });
     }
   }
@@ -119,35 +66,86 @@ class Modal extends Component {
     });
   }
 
-  onContainerClick(e) {
-    e.stopPropagation();
+  render() {
+    console.log(1)
+    const { prefixCls, animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children } = this.props;
+    const { isShow, isPending, animationState } = this.state;
+
+    const classes = {
+      modal: classnames({
+        [`${prefixCls}`]: true,
+        radius: ('radius' in this.props || isRadius),
+        round: ('round' in this.props || isRound),
+        [`fade-${animationState}`]: isPending,
+        [className]: !!className,
+      }),
+      dialog: classnames({
+        [`${prefixCls}-dialog`]: true,
+        [`${animationType}-${animationState}`]: true,
+      }),
+    };
+
+    const style = {
+      modal: {
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      },
+      dialog: {
+        width,
+        minWidth,
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      },
+    };
+
+    if (!isShow) {
+      style.modal.display = 'none';
+    }
+
+    return (
+      <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
+        <div className={`${prefixCls}-wrapper`}>
+          <div className={classes.dialog} style={style.dialog} onClick={e => e.stopPropagation()}>
+            {children}
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
-Modal.propTypes = { 
-  visible           : PropTypes.bool,
-  animationType     : PropTypes.oneOf([
-                        'fade', 'door', 'flip', 'rotate', 'zoom',
-                        'moveUp','moveDown', 'moveLeft', 'moveRight',
-                        'slideUp', 'slideDown', 'slideLeft', 'slideRight'
-                      ]),
-  animationDuration : PropTypes.number,
-  width             : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  minWidth          : PropTypes.number,
-  isRadius          : PropTypes.bool,
-  isRound           : PropTypes.bool,
-  onMaskClick       : PropTypes.func,
+Modal.propTypes = {
+  prefixCls: PropTypes.string,
+  visible: PropTypes.bool,
+  animationType: PropTypes.oneOf([
+    'fade', 'door', 'flip', 'rotate', 'zoom',
+    'moveUp', 'moveDown', 'moveLeft', 'moveRight',
+    'slideUp', 'slideDown', 'slideLeft', 'slideRight',
+  ]),
+  animationDuration: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  minWidth: PropTypes.number,
+  isRadius: PropTypes.bool,
+  isRound: PropTypes.bool,
+  onMaskClick: PropTypes.func,
 };
 
 Modal.defaultProps = {
-  visible           : false,
-  animationType     : 'zoom',
-  animationDuration : 300,
-  width             : '70%',
-  minWidth          : 270,
-  isRadius          : false,
-  isRound           : false,
-  onMaskClick       : function () {},
+  prefixCls: 'ui-modal',
+  visible: false,
+  animationType: 'zoom',
+  animationDuration: 200,
+  width: '70%',
+  minWidth: 270,
+  isRadius: false,
+  isRound: false,
+  onMaskClick: () => {},
 };
 
 export default Modal;

@@ -1,19 +1,25 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Icon from '../Icon';
 
-class ModalHeader extends Component {
+class ModalHeader extends PureComponent {
 
-  render () { 
-    const { title, onClose, ...others } = this.props;
+  render() {
+    const { prefixCls, className, title, onClose, ...others } = this.props;
+
+    const cls = classnames({
+      [`${prefixCls}`]: true,
+      [className]: !!className,
+    });
+
     const btnClose = onClose
-                   ? <div className="ui-modal-close" onClick={onClose}><Icon type="wrong" /></div>
+                   ? <div className={`${prefixCls}-close`} onClick={onClose}><Icon type="wrong" /></div>
                    : null;
 
     return (
-      <div className="ui-modal-header" {...others}>
-        <div className="ui-modal-title">{title}</div>
+      <div className={cls} {...others}>
+        <div className={`${prefixCls}-title`}>{title}</div>
         {btnClose}
       </div>
     );
@@ -21,13 +27,16 @@ class ModalHeader extends Component {
 
 }
 
-ModalHeader.propTypes = { 
-  title   : PropTypes.string,
-  onClose : PropTypes.func,
+ModalHeader.propTypes = {
+  prefixCls: PropTypes.string,
+  title: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
 ModalHeader.defaultProps = {
-  title   : '',
+  prefixCls: 'ui-modal-header',
+  title: '',
+  onClose: null,
 };
 
 export default ModalHeader;
