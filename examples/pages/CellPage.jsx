@@ -258,9 +258,9 @@ class CellPage extends Component {
                 onChange={v => this.setState({ sValue: v })}
                 onOk={(v) => {
                   console.log(v);
-                  // this.setState({
-                  //   sValue: v,
-                  // });
+                  this.setState({
+                    sValue: v,
+                  });
                 }}
                 onCancel={() => {
                 }}
