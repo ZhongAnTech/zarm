@@ -235,6 +235,9 @@ class CellPage extends Component {
                 }}
                 onOk={(value) => {
                   console.log("外部ok value ->", value);
+                  this.setState({
+                    date: value,
+                  });
                 }}
                 onCancel={() => {
                 }}
