@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Panel, Button, Modal } from '../../components';
+import { Panel, Button, Modal, Confirm } from '../../components';
 
 import '../styles/pages/ModalPage';
 
@@ -9,10 +9,10 @@ class ModalPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      props  : {},
-      modal  : false,
-      dialog : false,
-      alert  : false,
+      props: {},
+      modal: false,
+      dialog: false,
+      alert: false,
       confirm: false,
     };
   }
@@ -20,7 +20,7 @@ class ModalPage extends Component {
   open(key, props) {
     this.setState({
       [`${key}`]: true,
-      props
+      props,
     });
   }
 
@@ -31,7 +31,6 @@ class ModalPage extends Component {
   }
 
   render() {
-
     return (
       <div className="modal-page">
 
@@ -49,9 +48,11 @@ class ModalPage extends Component {
             <Panel.Title>点击遮罩层可以关闭的模态框</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button radius onClick={() => this.open('modal', {
-              onMaskClick: () => this.close('modal')
-            })}>打开</Button>
+            <Button
+              radius
+              onClick={() => this.open('modal', {
+                onMaskClick: () => this.close('modal'),
+              })}>打开</Button>
           </Panel.Body>
         </Panel>
 
@@ -60,9 +61,11 @@ class ModalPage extends Component {
             <Panel.Title>Dialog、Alert、Confirm模式的模态框</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Button radius onClick={() => this.open('dialog', {
-              onMaskClick: () => this.close('dialog')
-            })}>Dialog</Button>
+            <Button
+              radius
+              onClick={() => this.open('dialog', {
+                onMaskClick: () => this.close('dialog'),
+              })}>Dialog</Button>
             <Button radius theme="info" onClick={() => this.open('alert', {})}>Alert</Button>
             <Button radius theme="warning" onClick={() => this.open('confirm', {})}>Confirm</Button>
           </Panel.Body>
@@ -78,18 +81,14 @@ class ModalPage extends Component {
         </Panel>
 
         <Modal {...this.state.props} visible={this.state.modal}>
-          <Modal.Header title="标题" onClose={() => this.close('modal')}></Modal.Header>
+          <Modal.Header title="标题" onClose={() => this.close('modal')} />
           <Modal.Body>
             模态框内容
           </Modal.Body>
-          <Modal.Footer>
-            <Button radius block bordered size="sm" onClick={() => this.close('modal')}>取消</Button>
-            <Button radius block size="sm" theme="success" onClick={() => { alert('你点击了确定') }}>确定</Button>
-          </Modal.Footer>
         </Modal>
 
         <Modal {...this.state.props} visible={this.state.dialog}>
-          <Modal.Header title="标题" onClose={() => this.close('dialog')}></Modal.Header>
+          <Modal.Header title="标题" onClose={() => this.close('dialog')} />
           <Modal.Body>
             模态框内容
           </Modal.Body>
@@ -104,16 +103,14 @@ class ModalPage extends Component {
           </Modal.Footer>
         </Modal>
 
-        <Modal {...this.state.props} visible={this.state.confirm}>
-          <Modal.Body>
-            你确定要删除吗？
-          </Modal.Body>
-          <Modal.Footer>
-            <Button radius block bordered size="sm" onClick={() => this.close('confirm')}>取消</Button>
-            <Button radius block size="sm" theme="error" onClick={() => { alert('你点击了确定') }}>确定</Button>
-          </Modal.Footer>
-        </Modal>
-
+        <Confirm
+          radius
+          title="多个按钮情况"
+          visible={this.state.confirm}
+          message="这里有好多个按钮, 你试试"
+          onOk={() => alert('click ok')}
+          onCancel={() => this.close('confirm')}
+          />
       </div>
     );
   }

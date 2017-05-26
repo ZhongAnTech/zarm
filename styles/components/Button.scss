@@ -1,5 +1,6 @@
-@mixin button-bordered($color, $background, $border) {
-  $active-background: lighten($background, 35%);
+@mixin button-bordered($color, $background, $active-percent, $border) {
+  /*$active-background: lighten($background, 10%);*/
+  $active-background: lighten($background, $active-percent);
   $active-border: $border;
   $active-color: $color;
 
@@ -11,7 +12,7 @@
     &:active,
     &.active {
       background-color: $active-background;
-      border-color: $active-border;
+      /*border-color: $active-border;*/
       color: $active-color;
     }
 
@@ -33,7 +34,7 @@
 
 @mixin button-theme($color, $background, $border) {
   $active-background: darken($background, 10%);
-  $active-border: darken($border, 15%);
+  $active-border: darken($border, 10%);
   $active-color: lighten($color, 10%);
 
   background-color: $background;
@@ -43,10 +44,10 @@
   &:active,
   &.active {
     background-color: $active-background;
-        border-color: $active-border;
-               color: $active-color;
+    border-color: $active-border;
+    color: $active-color;
     background-image: none;
-    box-shadow: inset 0 r(3) r(5) rgba(0, 0, 0,.125);
+    /*box-shadow: inset 0 r(3) r(5) rgba(0, 0, 0,.125);*/
   }
   
   &.disabled,
@@ -110,12 +111,15 @@
   vertical-align: middle;
   white-space: nowrap;
   background-image: none;
-  border: r(1) solid transparent;
+  border: 1px solid transparent;
   cursor: pointer;
   outline: 0;
   -webkit-appearance: none;
   user-select: none;
   /*transition: background-color 300ms ease-out, border-color 300ms ease-out;*/
+  @include button-size($height-md, $padding-md, $font-size-md, $radius-md, r(18), r(5));
+  @include button-theme($btn-default-color, $btn-default-bg, $btn-default-border);
+  @include button-bordered($btn-default-color, $btn-default-bg, 10%, $btn-default-border);
   
   /* disabled Button */
   &.disabled,
@@ -132,40 +136,35 @@
   }
 
   /* Button sizes */
-  & {
-    @include button-size($base-height, $base-padding, $base-fontSize, $base-radius, r(18), r(5));
-    @include button-theme($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
-    @include button-bordered($base-btn-default-color, $base-btn-default-bg, $base-btn-default-border);
-  }
   &.size-xl {
-    @include button-size($base-height-xl, $base-padding-xl, $base-fontSize-xl, $base-radius-xl, r(20), r(8));
+    @include button-size($height-xl, $padding-xl, $font-size-xl, $radius-xl, r(20), r(8));
   }
   &.size-lg {
-    @include button-size($base-height-lg, $base-padding-lg, $base-fontSize-lg, $base-radius-lg, r(19), r(6));
+    @include button-size($height-lg, $padding-lg, $font-size-lg, $radius-lg, r(19), r(6));
   }
   &.size-sm {
-    @include button-size($base-height-sm, $base-padding-sm, $base-fontSize-sm, $base-radius-sm, r(17), r(5));
+    @include button-size($height-sm, $padding-sm, $font-size-sm, $radius-sm, r(17), r(5));
   }
   &.size-xs {
-    @include button-size($base-height-xs, $base-padding-xs, $base-fontSize-xs, $base-radius-xs, r(15), r(5));
+    @include button-size($height-xs, $padding-xs, $font-size-xs, $radius-xs, r(15), r(5));
   }
 
   /* Button themes */
-  &.theme-brand {
-    @include button-theme($base-btn-brand-color, $base-btn-brand-bg, $base-btn-brand-border);
-    @include button-bordered($base-btn-brand-border, $base-btn-brand-bg, $base-btn-brand-border);
+  &.theme-info {
+    @include button-theme($btn-info-color, $btn-info-bg, $btn-info-border);
+    @include button-bordered($btn-info-border, $btn-info-bg, 35%, $btn-info-border);
   }
   &.theme-success {
-    @include button-theme($base-btn-success-color, $base-btn-success-bg, $base-btn-success-border);
-    @include button-bordered($base-btn-success-border, $base-btn-success-bg, $base-btn-success-border);
+    @include button-theme($btn-success-color, $btn-success-bg, $btn-success-border);
+    @include button-bordered($btn-success-border, $btn-success-bg, 35%, $btn-success-border);
   }
   &.theme-warning {
-    @include button-theme($base-btn-warning-color, $base-btn-warning-bg, $base-btn-warning-border);
-    @include button-bordered($base-btn-warning-border, $base-btn-warning-bg, $base-btn-warning-border);
+    @include button-theme($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+    @include button-bordered($btn-warning-border, $btn-warning-bg, 35%, $btn-warning-border);
   }
   &.theme-error {
-    @include button-theme($base-btn-error-color, $base-btn-error-bg, $base-btn-error-border);
-    @include button-bordered($base-btn-error-border, $base-btn-error-bg, $base-btn-error-border);
+    @include button-theme($btn-error-color, $btn-error-bg, $btn-error-border);
+    @include button-bordered($btn-error-border, $btn-error-bg, 35%, $btn-error-border);
   }
 
 }

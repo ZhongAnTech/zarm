@@ -1,21 +1,28 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class PanelTitle extends Component {
+class PanelTitle extends PureComponent {
 
-  render () { 
-    const { className, children, ...others } = this.props;
+  render() {
+    const { prefixCls, className, children, ...others } = this.props;
 
     const cls = classnames({
-      'ui-panel-title': true,
-      [className]     : !!className
+      [`${prefixCls}-title`]: true,
+      [className]: !!className,
     });
-    
+
     return <div {...others} className={cls}>{children}</div>;
   }
 
 }
+
+PanelTitle.propTypes = {
+  prefixCls: PropTypes.string,
+};
+
+PanelTitle.defaultProps = {
+  prefixCls: 'ui-panel',
+};
 
 export default PanelTitle;

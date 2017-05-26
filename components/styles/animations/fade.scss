@@ -1,0 +1,24 @@
+
+@keyframes fade-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-enter {
+  animation: fade-enter both ease-in;
+}
+
+@keyframes fade-leave {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0
+  }
+}
+.fade-leave {
+  animation: fade-leave both ease-out;
+}

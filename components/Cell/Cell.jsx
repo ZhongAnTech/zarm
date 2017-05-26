@@ -1,51 +1,50 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class Cell extends Component {
+class Cell extends PureComponent {
 
-  render () {
-    const props = this.props;
-    const { type, theme, icon, title, description, help, children, className, ...others } = props;
+  render() {
+    const { prefixCls, type, theme, icon, title, description, help, children, className, ...others } = this.props;
 
     const cls = classnames({
-      'ui-cell'          : true,
-      [`ui-cell-${type}`]: true,
-      [`theme-${theme}`] : !!theme,
-      [className]        : !!className,
+      [`${prefixCls}`]: true,
+      [`${prefixCls}-${type}`]: true,
+      [`theme-${theme}`]: !!theme,
+      [className]: !!className,
     });
 
     const iconRender = icon
-                     ? <div className="ui-cell-icon">{icon}</div>
-                     : null;
+      ? <div className={`${prefixCls}-icon`}>{icon}</div>
+      : null;
 
     const titleRender = title
-                     ? <div className="ui-cell-title">{title}</div>
-                     : null;
+      ? <div className={`${prefixCls}-title`}>{title}</div>
+      : null;
 
     const contentRender = children
-                        ? <div className="ui-cell-content">{children}</div>
-                        : null;
+      ? <div className={`${prefixCls}-content`}>{children}</div>
+      : null;
 
     const helpRender = help
-                     ? (
-                        <div className="ui-cell-explain">
-                          <div className="ui-cell-explain-text">{help}</div>
-                        </div>
-                      )
-                     : null;
+      ? (
+        <div className={`${prefixCls}-explain`}>
+          <div className={`${prefixCls}-explain-text`}>{help}</div>
+        </div>
+      )
+      : null;
+
     return (
       <div className={cls} {...others}>
-        <div className="ui-cell-inner">
-          <div className="ui-cell-header">
+        <div className={`${prefixCls}-inner`}>
+          <div className={`${prefixCls}-header`}>
             {iconRender}
           </div>
-          <div className="ui-cell-body">
+          <div className={`${prefixCls}-body`}>
             {titleRender}
             {contentRender}
           </div>
-          <div className="ui-cell-footer">
+          <div className={`${prefixCls}-footer`}>
             {description}
           </div>
         </div>
@@ -56,13 +55,15 @@ class Cell extends Component {
 }
 
 Cell.propTypes = {
-  type      : PropTypes.oneOf(['normal', 'link', 'select']),
-  className : PropTypes.string,
+  prefixCls: PropTypes.string,
+  type: PropTypes.oneOf(['normal', 'link', 'select']),
+  className: PropTypes.string,
 };
 
 Cell.defaultProps = {
-  type      : 'normal',
-  className : null,
+  prefixCls: 'ui-cell',
+  type: 'normal',
+  className: null,
 };
 
 export default Cell;

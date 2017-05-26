@@ -1,4 +1,3 @@
-
 import Cell from './Cell';
 import Form from './CellForm';
 

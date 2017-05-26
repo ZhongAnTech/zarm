@@ -1,19 +1,18 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class Icon extends Component {
+class Icon extends PureComponent {
 
-  render () { 
-    const { type, theme, className, ...others } = this.props;
+  render() {
+    const { prefixCls, type, theme, className, ...others } = this.props;
     const cls = classnames({
-      'ui-icon'          : true,
-      [`ui-icon-${type}`]: !!type,
-      [`theme-${theme}`] : !!theme,
-      [className]        : !!className
+      [`${prefixCls}`]: true,
+      [`${prefixCls}-${type}`]: !!type,
+      [`theme-${theme}`]: !!theme,
+      [className]: !!className,
     });
-    
+
     return (
       <i className={cls} {...others} />
     );
@@ -22,13 +21,15 @@ class Icon extends Component {
 }
 
 Icon.propTypes = {
-  type : PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  prefixCls: PropTypes.string,
+  type: PropTypes.string,
+  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
 };
 
 Icon.defaultProps = {
-  type : '',
-  theme: 'default',
+  prefixCls: 'ui-icon',
+  type: '',
+  theme: null,
 };
 
 export default Icon;

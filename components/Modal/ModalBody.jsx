@@ -1,17 +1,23 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-class ModalBody extends Component {
+class ModalBody extends PureComponent {
 
-  render () {
-    const { height, children, ...others } = this.props;
+  render() {
+    const { prefixCls, className, height, children, ...others } = this.props;
+
+    const cls = classnames({
+      [`${prefixCls}`]: true,
+      [className]: !!className,
+    });
+
     const bodyStyle = {
-      'height' : height,
-    }
+      height,
+    };
 
     return (
-      <div className="ui-modal-body" style={bodyStyle} {...others}>
+      <div className={cls} style={bodyStyle} {...others}>
         {children}
       </div>
     );
@@ -19,12 +25,15 @@ class ModalBody extends Component {
 
 }
 
-ModalBody.propTypes = { 
-  height : PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+ModalBody.propTypes = {
+  prefixCls: PropTypes.string,
+  className: PropTypes.string,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 ModalBody.defaultProps = {
-  
+  prefixCls: 'ui-modal-body',
+  className: null,
 };
 
 export default ModalBody;
