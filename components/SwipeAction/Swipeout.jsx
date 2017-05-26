@@ -17,14 +17,9 @@ class Swipeout extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      showMask: false
-    }
-    this.lastX = 0;
-    this.direction = 'left';
+
     this.openedLeft = false;
     this.openedRight = false;
-
   }
 
   componentDidMount() {
@@ -35,9 +30,9 @@ class Swipeout extends Component {
 
   onCloseSwipe(ev) {
     if (this.openedLeft || this.openedRight) {
-      const pNode = (node => {
+      const pNode = ((node) => {
         while (node.parentNode && node.parentNode !== document.body) {
-          if (node.className.indexOf(`${this.props.prefixCls}-content`) > -1) {
+          if (node.className.indexOf(`${this.props.prefixCls}-wrap`) > -1) {
             return node;
           }
           node = node.parentNode;
@@ -60,22 +55,14 @@ class Swipeout extends Component {
     this.pointEnd = _getCurrentPoint(e);
     if (this.openedRight) {
       this.close(300);
-      // this.setState({
-      //   showMask: true
-      // })
       return;
     }
-    // this.lastX = this.pointStart;
     this.timeStart = new Date();
   }
 
   _onTouchMove(e) {
     e.preventDefault();
     if (this.props.disabled) {
-      return;
-    }
-
-    if (this.openedRight) {
       return;
     }
 
@@ -150,15 +137,13 @@ class Swipeout extends Component {
     this._doTransition(0, duration);
 
     _addListenerMulti(dom, 'webkitTransitionEnd transitionend', () => {
-      this.openedLeft = false;
-      this.openedRight = false;
+      this.openedLeft = !this.openedLeft;
+      this.openedRight = !this.openedRight;
     });
   }
 
   render() {
     const { className, right, children, prefixCls } = this.props;
-    const { showMask } = this.state;
-    const mask = showMask ? <div className="full-mask" /> : null;
 
     return (
       <div className={`${prefixCls}-wrap`}>
@@ -175,7 +160,6 @@ class Swipeout extends Component {
           ref={(btnWrap) => { this.btnWrap = btnWrap; }}>
           {right}
         </div>
-        {mask}
       </div>
     );
   }
