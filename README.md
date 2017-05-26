@@ -38,3 +38,6 @@ import 'dragon-mobile-ui/styles/components/Button.scss'
 - Tab 选项卡
 - Toast 消息提示
 
+## 更新日志
+[CHANGELOG.md](https://github.com/JeromeLin/dragon-mobile-ui/blob/master/CHANGELOG.md)
+
