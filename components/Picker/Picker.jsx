@@ -34,6 +34,9 @@ class Picker extends Component {
   }
 
   onValueChange(value) {
+    this.setState({
+      value,
+    });
     this.props.onChange(value);
   }
 
@@ -62,6 +65,8 @@ class Picker extends Component {
 
   getInitValue() {
     let data = this.state.data;
+    const { displayMember } = this.props;
+
 
     const value = this.state.value;
 
@@ -70,13 +75,13 @@ class Picker extends Component {
       if (this.state.cascade) {
         for (let i = 0; i < this.props.cols; i += 1) {
           if (data && data.length) {
-            value[i] = data[0].value;
+            value[i] = data[0][displayMember];
             data = data[0].children;
           }
         }
       } else {
         data.forEach((d) => {
-          value.push(d[0].value);
+          value.push(d[0][displayMember]);
         });
       }
     }
