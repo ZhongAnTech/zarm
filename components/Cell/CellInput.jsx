@@ -81,8 +81,12 @@ class CellInput extends Component {
   }
 
   _validate(value) {
-    const { type = 'all', func } = this.props;
+    const { type = 'all' } = this.props;
     const attrs = typeValidateAttrs[type] || [];
+
+    if (!required && (value === '' || value === undefined)) {
+      return true;
+    }
 
     for (let v = 0; v < attrs.length; v++) {
       const attr = attrs[v];
