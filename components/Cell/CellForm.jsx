@@ -10,7 +10,7 @@ class CellForm extends Component {
       data: {},
     };
 
-    this.getResult = this.getResult.bind(this);
+    this.setResult = this.setResult.bind(this);
   }
 
   onInit() {
@@ -42,7 +42,7 @@ class CellForm extends Component {
     this.props.onBlur(this.getData());
   }
 
-  getResult(value, validate, opts) {
+  setResult(value, validate, opts) {
     const { data = {} } = this.state;
     const { type = '', name = '' } = opts;
     const res = {
@@ -104,7 +104,7 @@ class CellForm extends Component {
       const { props } = child;
 
       return cloneElement(child, {
-        getResult: this.getResult,
+        setResult: this.setResult,
         ...props,
       });
     });

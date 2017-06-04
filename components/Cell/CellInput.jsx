@@ -81,7 +81,7 @@ class CellInput extends Component {
   }
 
   _validate(value) {
-    const { type = 'all' } = this.props;
+    const { type = 'all', required } = this.props;
     const attrs = typeValidateAttrs[type] || [];
 
     if (!required && (value === '' || value === undefined)) {
@@ -125,7 +125,7 @@ class CellInput extends Component {
 
   render() {
     return (
-      <span>
+      <span className={this.props.className}>
         {this.getChildren()}
       </span>
     );

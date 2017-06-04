@@ -18,7 +18,7 @@ class CellBody extends Component {
   }
 
   setResult(value, validate, opts) {
-    const { getResult } = this.props;
+    const { setResult } = this.props;
     const { type } = opts;
 
     this.setState({
@@ -27,7 +27,7 @@ class CellBody extends Component {
       type,
       dirty: type !== 'init',
     }, () => {
-      getResult && getResult(value, validate, opts);
+      setResult && setResult(value, validate, opts);
     });
   }
 
@@ -51,7 +51,7 @@ class CellBody extends Component {
   }
 
   render() {
-    const { children, className, showHelp, getResult, ...otherOpts } = this.props;
+    const { children, className, showHelp, setResult, ...otherOpts } = this.props;
     // cell
     const { type, theme, icon, title, description, help, ...others } = otherOpts;
     // validInput

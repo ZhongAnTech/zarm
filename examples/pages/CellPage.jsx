@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker, CascaderPicker } from '../../components';
 import District from './district'
 
+import '../styles/pages/CellPage';
+
 const seasons = [
   [
     {
@@ -138,6 +140,10 @@ class CellPage extends Component {
 
                 <Input type="text" placeholder="请输入手机号(长度11位)" />
               </Cell.Body>
+
+              <Cell.Input className="ui-hide" name="test" minLength={2}> 
+                <Input type="text" placeholder="test" />
+              </Cell.Input>
             </Cell.Form>
           </Panel.Body>
         </Panel>
