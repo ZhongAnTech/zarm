@@ -9,7 +9,7 @@ const typeValidateAttrs = {
   all: ['min', 'max', 'minLength', 'maxLength', 'pattern', 'required', 'func'],
 };
 
-class ValidInput extends Component {
+class CellInput extends Component {
 
   constructor(props) {
     super(props);
@@ -128,7 +128,7 @@ class ValidInput extends Component {
   }
 }
 
-ValidInput.propTypes = {
+CellInput.propTypes = {
   max: PropTypes.number,
   min: PropTypes.number,
   maxLength: PropTypes.number,
@@ -144,10 +144,10 @@ ValidInput.propTypes = {
   resultId: PropTypes.string, // 结果储存在内存的Id
 };
 
-ValidInput.defaultProps = {
+CellInput.defaultProps = {
   onChange: () => {},
   onBlur: () => {},
   resultId: '',
 };
 
-export default ValidInput;
+export default CellInput;

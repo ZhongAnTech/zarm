@@ -126,10 +126,18 @@ class CellPage extends Component {
             <Panel.Title>表单组件(添加ValidInput验证)</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Cell.Form title="姓名" resultId="test" name="username" maxLength={10} minLength={2} 
-              help={<span><Icon type="info-round" />长度2-10</span>}>
+            <Cell.Form onInit={(res) => { console.log(res) }} onChange={(res) => { console.log(res) }} onBlur={(res) => { console.log(res) }}>
+              <Cell.Body title="姓名" name="username" maxLength={10} minLength={2} 
+                help={<span><Icon type="info-round" />长度2-10</span>}>
 
-              <Input type="text" placeholder="请输入姓名(长度2-10)" />
+                <Input type="text" placeholder="请输入姓名(长度2-10)" />
+              </Cell.Body>
+
+              <Cell.Body title="手机" name="mobile" maxLength={11} minLength={11} 
+                help={<span><Icon type="info-round" />手机号长度11位</span>}>
+
+                <Input type="text" placeholder="请输入手机号(长度11位)" />
+              </Cell.Body>
             </Cell.Form>
           </Panel.Body>
         </Panel>

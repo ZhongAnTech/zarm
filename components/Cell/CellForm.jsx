@@ -1,104 +1,132 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
-import Cell from '../Cell';
 
 class CellForm extends Component {
   constructor(props) {
     super(props);
 
+    this.initing = true;
     this.state = {
-      value: '',
-      type: '',
-      validate: false,
-      dirty: false,
+      data: {},
     };
-    this.setResult = this.setResult.bind(this);
+
+    this.getResult = this.getResult.bind(this);
   }
 
-  setResult(value, validate, { type } = {}) {
-    this.setState({
+  onInit() {
+    if (!this.initing) {
+      return null;
+    }
+
+    let { total } = this.props;
+    const { children, onInit } = this.props;
+    const { data } = this.state;
+
+    const keys = Object.keys(data);
+
+    total = total === undefined ? children.length : total;
+
+    if (keys.length < total) {
+      return null;
+    }
+
+    this.initing = false;
+    return onInit(this.getData());
+  }
+
+  onChange() {
+    this.props.onChange(this.getData());
+  }
+
+  onBlur() {
+    this.props.onBlur(this.getData());
+  }
+
+  getResult(value, validate, opts) {
+    const { data = {} } = this.state;
+    const { type = '', name = '' } = opts;
+    const res = {
       value,
       validate,
-      type,
-      dirty: type !== 'init',
+    };
+
+    data[name] = res;
+    this.setState({ data }, () => {
+      switch (type) {
+        case 'init':
+          this.onInit();
+          break;
+        case 'change':
+          this.onChange();
+          break;
+        case 'blur':
+          this.onBlur();
+          break;
+      }
     });
   }
 
-  helpRender() {
-    const { validate, dirty, type } = this.state;
-    const { showHelp, help = null } = this.props;
+  getData() {
+    return {
+      data: this._data(),
+      validate: this._validate(),
+    };
+  }
 
-    if (showHelp === 'always') {
-      return help;
-    }
+  _data() {
+    const { data } = this.state;
 
-    if (!validate && dirty) {
-      if (showHelp === 'change') {
-        return help;
-      } else if (showHelp === type) {
-        return help;
-      }
-    }
+    const keys = Object.keys(data);
 
-    return null;
+    return keys.reduce((res, key) => {
+      res[key] = data[key].value;
+      return res;
+    }, {});
+  }
+
+  _validate() {
+    const { data = {} } = this.state;
+    const keys = Object.keys(data);
+
+    const res = keys.some(key => !data[key].validate);
+    return !res;
   }
 
   render() {
-    const { children, className, showHelp, ...otherOpts } = this.props;
-    // cell
-    const { type, theme, icon, title, description, help, ...others } = otherOpts;
-    // validInput
-    const { max, min, maxLength, minLength, required, func, pattern, onChange, onBlur, value, ...rest } = others;
+    const { className, onInit, onChange, onBlur, children, total, ...others } = this.props;
 
     const cls = classnames({
       'ui-cell-form': true,
       [className]: !!className,
     });
 
-    const CellConfig = {
-      type,
-      theme,
-      icon,
-      title,
-      description,
-      ...rest,
-    };
+    const newChildren = React.Children.map(children, (child) => {
+      const { props } = child;
 
-    const ValidInputConfig = {
-      max,
-      min,
-      maxLength,
-      minLength,
-      required,
-      func,
-      pattern,
-      onChange,
-      onBlur,
-      value,
-      ...rest,
-    };
+      return cloneElement(child, {
+        getResult: this.getResult,
+        ...props,
+      });
+    });
 
     return (
-      <Cell className={cls} help={this.helpRender()} {...CellConfig}>
-        <Cell.Validate setResult={this.setResult} {...ValidInputConfig}>
-          {children}
-        </Cell.Validate>
-      </Cell>
+      <span className={cls} {...others}>
+        { newChildren }
+      </span>
     );
   }
 }
 
 CellForm.propTypes = {
-  type: PropTypes.oneOf(['normal', 'link', 'select']),
-  className: PropTypes.string,
-  showHelp: PropTypes.oneOf(['always', 'change', 'blur']), // 显示help的时间点，always(一直显示)，change(修改就显示)，blur(失去焦点显示)
+  onInit: PropTypes.func,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 CellForm.defaultProps = {
-  type: 'normal',
-  className: null,
-  showHelp: 'change',
+  onInit: () => {},
+  onChange: () => {},
+  onBlur: () => {},
 };
 
 export default CellForm;
