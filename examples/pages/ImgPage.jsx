@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Picture } from '../../components';
+import { Img } from '../../components';
 
-import '../styles/pages/PicturePage';
+import '../styles/pages/ImgPage';
 
 const src = "http://oi9dcgq2m.bkt.clouddn.com/img/bg.jpg";
 
@@ -12,7 +12,7 @@ class ValidFormPage extends Component {
 
     for(let v = 0; v < src.length; v++) {
       res.push(
-        <Picture className="img" key={v} src={`${src}?index=${v}`}/>
+        <Img className="img" key={v} src={`${src}?index=${v}`}/>
       );
     }
 

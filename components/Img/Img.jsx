@@ -64,7 +64,7 @@ document.addEventListener('scroll', _loadImg);
 // 设置懒加载的触发的函数，适用于IScroll;
 export { _setLoadFunc as setLoadFunc };
 
-class Picture extends Component {
+class Img extends Component {
   constructor(props) {
     super(props);
 
@@ -111,13 +111,13 @@ class Picture extends Component {
     const Ele = href ? 'a' : 'div';
 
     const eleCls = classnames({
-      'loading-img': true,
+      'ui-loading-img': true,
       'loaded': loaded || !async,
       [className]: !!className,
     });
 
     const imgCls = classnames({
-      'img-ele': true,
+      'ui-img-ele': true,
       'show': !!img,
     });
 
@@ -135,14 +135,14 @@ class Picture extends Component {
   }
 }
 
-Picture.propTypes = {
+Img.propTypes = {
   img: PropTypes.bool, // 是否使用Img标签
   async: PropTypes.bool, // 是否懒加载
 };
 
-Picture.defaultProps = {
+Img.defaultProps = {
   img: false,
   async: true,
 };
 
-export default Picture;
+export default Img;

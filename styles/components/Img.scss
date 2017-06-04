@@ -1,6 +1,6 @@
 $loadingAfterBg: rgba(0,0,0, .15);
 
-.loading-img{
+.ui-loading-img{
   position: relative;
   overflow: hidden;
 
@@ -49,7 +49,7 @@ $loadingAfterBg: rgba(0,0,0, .15);
     }
   }
 
-  .img-ele{
+  .ui-img-ele{
     &:not(.show){
       display: none;
     }

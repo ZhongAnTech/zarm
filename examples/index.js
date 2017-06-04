@@ -88,11 +88,11 @@ const rootRoute = {
       }
     },
     {
-      path: 'picture',
+      path: 'img',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./pages/PicturePage'));
-        }, 'Picture');
+          cb(null, require('./pages/ImgPage'));
+        }, 'Img');
       }
     },
     {
