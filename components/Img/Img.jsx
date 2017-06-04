@@ -1,92 +1,31 @@
 import React, { Component, PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 
-let imgs = [];
-let cusLoadFunc;
-
-function _addImg(img) {
-  imgs.push(img);
-}
-
-function _removeImg(res) {
-  imgs = imgs.filter((img) => {
-    return img !== res;
-  });
-}
-
-function _offset(ele) {
-  let top = 0;
-  let left = 0;
-  do {
-    top += ele.offsetTop || 0;
-    left += ele.offsetLeft || 0;
-    ele = ele.offsetParent;
-  } while (ele);
-
-  return {
-    top,
-    left,
-  };
-}
-
-function _loadImg() {
-  if (!imgs.length) {
-    return null;
-  }
-
-  if (cusLoadFunc && typeof cusLoadFunc === 'function') {
-    return cusLoadFunc(imgs);
-  }
-
-  const { scrollTop = 0 } = document.body;
-  const clientHeight = window.screen.availHeight;
-
-  imgs = imgs.filter((img) => {
-    const ele = findDOMNode(img);
-    const top = _offset(ele).top;
-
-    if (top <= scrollTop + clientHeight) {
-      img.loadImg();
-      return false;
-    }
-
-    return true;
-  });
-}
-
-function _setLoadFunc(func) {
-  cusLoadFunc = func;
-}
-
-document.addEventListener('scroll', _loadImg);
-
-// 设置懒加载的触发的函数，适用于IScroll;
-export { _setLoadFunc as setLoadFunc };
+import { addStack, removeStack, isLazyLoad } from '../utils/lazyload';
 
 class Img extends Component {
   constructor(props) {
     super(props);
 
+    this._lazyId = '';
     this.state = {
       loaded: false,
     };
   }
 
   componentDidMount() {
-    if (!this.props.async) {
-      return;
+    if (!isLazyLoad(this.props)) {
+      return null;
     }
 
-    _addImg(this);
-    _loadImg();
+    this._lazyId = addStack(this);
   }
 
   componentWillUnmount() {
-    _removeImg(this);
+    removeStack(this._lazyId);
   }
 
-  loadImg() {
+  markToRender() {
     const img = new Image();
     img.src = this.props.src;
 
@@ -104,7 +43,7 @@ class Img extends Component {
   }
 
   render() {
-    const { src = '', className, children, width, height, async, img, ...others } = this.props;
+    const { src = '', className, children, width, height, img, ...others } = this.props;
     const { href = '' } = others;
     const { loaded } = this.state;
 
@@ -112,7 +51,7 @@ class Img extends Component {
 
     const eleCls = classnames({
       'ui-loading-img': true,
-      'loaded': loaded || !async,
+      'loaded': loaded || !isLazyLoad(this.props),
       [className]: !!className,
     });
 
@@ -137,12 +76,14 @@ class Img extends Component {
 
 Img.propTypes = {
   img: PropTypes.bool, // 是否使用Img标签
-  async: PropTypes.bool, // 是否懒加载
+  lazy: PropTypes.bool, // 是否懒加载
+  isLazy: PropTypes.bool, // 是否懒加载
 };
 
 Img.defaultProps = {
   img: false,
-  async: true,
+  lazy: true,
+  isLazy: true, // 是否懒加载
 };
 
 export default Img;

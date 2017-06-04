@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Img } from '../../components';
+import { Img, Lazy } from '../../components';
 
 import '../styles/pages/ImgPage';
 

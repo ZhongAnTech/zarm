@@ -19,4 +19,5 @@ export Tab from './Tab';
 export Toast from './Toast';
 export Lottery from './Lottery';
 export Img from './Img';
+export Lazy from './Lazy';
 
