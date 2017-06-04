@@ -9,11 +9,22 @@ class ValidFormPage extends Component {
 
   render() {
     const res = [];
+    const { length } = src;
 
-    for(let v = 0; v < src.length; v++) {
-      res.push(
-        <Img className="img" key={v} src={`${src}?index=${v}`}/>
-      );
+    for(let v = 0; v < length; v++) {
+      let ele;
+
+      if (v < length / 2) {
+        ele = (<Img className="img" key={v} src={`${src}?index=${v}`}/>);
+      } else {
+        ele = (
+          <Lazy key={v}>
+            <Img className="img" src={`${src}?index=${v}`}/>
+          </Lazy>
+        );
+      }
+      
+      res.push(ele);
     }
 
     return (
