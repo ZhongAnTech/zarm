@@ -14,10 +14,8 @@ class ValidFormPage extends Component {
     for (let v = 0; v < length; v++) {
       let ele;
 
-      if (v < length / 3) {
+      if (v < length / 2) {
         ele = (<Img className="img" key={v} src={`${src}?index=${v}`} />);
-      } else if (v < length / 1.5) {
-        ele = (<Img.Lazy className="img" src={`${src}?index=${v}`} />);
       } else {
         ele = (
           <Lazy key={v}>

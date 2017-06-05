@@ -16,12 +16,6 @@ const _isOutView = (comp) => {
   return rect.bottom < 0 || rect.top > winHeight;
 };
 
-export function isLazyLoad(props) {
-  const { isLazy } = props;
-
-  return 'lazy' in props || isLazy;
-}
-
 export function addStack(comp) {
   if (_isOutView(comp)) {
     const uId = _getId();

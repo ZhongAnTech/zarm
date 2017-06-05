@@ -1,7 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-import { addStack, removeStack, isLazyLoad } from '../utils/lazyload';
+import { addStack, removeStack } from './lazyload';
+
+const _isLazyload = (props) => {
+  const { isLazy } = props;
+
+  return 'lazy' in props || isLazy;
+};
 
 class Lazy extends Component {
   constructor(props) {
@@ -14,8 +20,8 @@ class Lazy extends Component {
   }
 
   componentDidMount() {
-    if (!isLazyLoad(this.props)) {
-      return null;
+    if (!_isLazyload(this.props)) {
+      return this.markToRender();
     }
 
     this._lazyId = addStack(this);
@@ -37,7 +43,7 @@ class Lazy extends Component {
 
     const cls = classnames({
       'ui-lazy': true,
-      'loaded': loaded || !isLazyLoad(this.props),
+      'loaded': loaded || !_isLazyload(this.props),
       [className]: !!className,
     });
 
@@ -61,7 +67,6 @@ Lazy.propTypes = {
 
 Lazy.defaultProps = {
 	placeholder: defaultPlaceholder,
-  lazy: true,
   isLazy: true, // 是否懒加载
 };
 

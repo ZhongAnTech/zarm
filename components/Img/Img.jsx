@@ -1,19 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 
-class Img extends Component {
-  constructor(props) {
-    super(props);
+import Lazy from '../Lazy';
 
-    this.state = {
-      loaded: false,
-    };
-  }
-
-  componentDidMount() {
-    this.markToRender();
-  }
-
+class Img extends Lazy {
   markToRender() {
     const img = new Image();
     img.src = this.props.src;
@@ -32,7 +22,7 @@ class Img extends Component {
   }
 
   render() {
-    const { src = '', className, children, width, height, img, ...others } = this.props;
+    const { src = '', className, children, width, height, img, isLazy, ...others } = this.props;
     const { href = '' } = others;
     const { loaded } = this.state;
 
@@ -40,7 +30,7 @@ class Img extends Component {
 
     const eleCls = classnames({
       'ui-loading-img': true,
-      'loaded': loaded,
+      'loaded': loaded || !('lazy' in this.props || isLazy),
       [className]: !!className,
     });
 
@@ -66,11 +56,14 @@ class Img extends Component {
 Img.propTypes = {
   img: PropTypes.bool, // 是否使用Img标签
   src: PropTypes.string, // 图片链接
+  lazy: PropTypes.bool, // 是否懒加载
+  isLazy: PropTypes.bool, // 是否懒加载
 };
 
 Img.defaultProps = {
   img: false,
   src: '',
+  isLazy: true, // 是否懒加载
 };
 
 export default Img;
