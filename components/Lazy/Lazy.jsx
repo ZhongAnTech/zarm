@@ -32,7 +32,7 @@ class Lazy extends Component {
   }
 
   render() {
-  	const { className, placeholder, children } = this.props;
+    const { className, placeholder, children } = this.props;
     const { loaded } = this.state;
 
     const cls = classnames({
@@ -42,22 +42,22 @@ class Lazy extends Component {
     });
 
     return (
-    	<span className={cls}>
-    		{ loaded ? children : placeholder }
-    	</span>
+      <span className={cls}>
+        { loaded ? children : placeholder }
+      </span>
     );
   }
 }
 
 const style = {
-	display: 'block',
-	textAlign: 'center',
-	height: '200px',
-	lineHeight: '200px',
+  display: 'block',
+  textAlign: 'center',
+  height: '200px',
+  lineHeight: '200px',
 };
 
 const defaultPlaceholder = (
-	<span style={style}>加载中...</span>
+  <span style={style}>加载中...</span>
 );
 
 Lazy.propTypes = {
