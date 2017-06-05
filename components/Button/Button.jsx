@@ -26,14 +26,14 @@ class Button extends PureComponent {
       [className]: !!className,
     });
 
-    const iconContent = loading
+    const iconRender = loading
       ? <Icon type="loading" className="rotate360" />
       : icon;
 
     return (
-      <a onTouchStart={() => {}} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>
-        {(!!icon || loading) && iconContent}
-        <span>{children}</span>
+      <a role="button" aria-disabled={disabled} className={classes} onTouchStart={() => {}} onClick={e => !disabled && onClick(e)}>
+        {(!!icon || loading) && iconRender}
+        {!!children && <span>{children}</span>}
       </a>
     );
   }
