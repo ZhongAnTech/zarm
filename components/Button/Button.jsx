@@ -31,12 +31,10 @@ class Button extends PureComponent {
       : icon;
 
     return (
-      <button onTouchStart={() => {}} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>
-        <div className={`${prefixCls}-content`}>
-          {(!!icon || loading) && iconContent}
-          <span>{children}</span>
-        </div>
-      </button>
+      <a onTouchStart={() => {}} className={classes} disabled={disabled} onClick={e => !disabled && onClick(e)}>
+        {(!!icon || loading) && iconContent}
+        <span>{children}</span>
+      </a>
     );
   }
 }
