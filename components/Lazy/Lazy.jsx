@@ -49,15 +49,8 @@ class Lazy extends Component {
   }
 }
 
-const style = {
-  display: 'block',
-  textAlign: 'center',
-  height: '200px',
-  lineHeight: '200px',
-};
-
 const defaultPlaceholder = (
-  <span style={style}>加载中...</span>
+  <span className="ui-lazy-placeholder">加载中...</span>
 );
 
 Lazy.propTypes = {

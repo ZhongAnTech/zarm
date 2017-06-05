@@ -1,28 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-import { addStack, removeStack, isLazyLoad } from '../utils/lazyload';
-
 class Img extends Component {
   constructor(props) {
     super(props);
 
-    this._lazyId = '';
     this.state = {
       loaded: false,
     };
   }
 
   componentDidMount() {
-    if (!isLazyLoad(this.props)) {
-      return null;
-    }
-
-    this._lazyId = addStack(this);
-  }
-
-  componentWillUnmount() {
-    removeStack(this._lazyId);
+    this.markToRender();
   }
 
   markToRender() {
@@ -51,7 +40,7 @@ class Img extends Component {
 
     const eleCls = classnames({
       'ui-loading-img': true,
-      'loaded': loaded || !isLazyLoad(this.props),
+      'loaded': loaded,
       [className]: !!className,
     });
 
@@ -76,14 +65,12 @@ class Img extends Component {
 
 Img.propTypes = {
   img: PropTypes.bool, // 是否使用Img标签
-  lazy: PropTypes.bool, // 是否懒加载
-  isLazy: PropTypes.bool, // 是否懒加载
+  src: PropTypes.string, // 图片链接
 };
 
 Img.defaultProps = {
   img: false,
-  lazy: true,
-  isLazy: true, // 是否懒加载
+  src: '',
 };
 
 export default Img;
