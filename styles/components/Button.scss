@@ -70,8 +70,7 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  /*line-height: $height;*/
-  /*line-height: $height - r(2);*/
+  line-height: $height;
 
   &.radius {
     border-radius: $border-radius;
@@ -86,12 +85,6 @@
     height: $height;
     padding: 0;
     border-radius: 50%;
-  }
-
-  .ui-button-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .ui-icon {
@@ -113,7 +106,7 @@
   background-image: none;
   border: 1px solid transparent;
   cursor: pointer;
-  outline: 0;
+  outline: 0 none;
   -webkit-appearance: none;
   user-select: none;
   /*transition: background-color 300ms ease-out, border-color 300ms ease-out;*/
