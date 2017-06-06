@@ -31,15 +31,15 @@ class CellForm extends Component {
     }
 
     this.initing = false;
-    return onInit(this.getData());
+    this._callback(onInit);
   }
 
   onChange() {
-    this.props.onChange(this.getData());
+    this._callback(this.props.onChange);
   }
 
   onBlur() {
-    this.props.onBlur(this.getData());
+    this._callback(this.props.onBlur);
   }
 
   setResult(value, validate, opts) {
@@ -66,11 +66,11 @@ class CellForm extends Component {
     });
   }
 
-  getData() {
-    return {
-      data: this._data(),
-      validate: this._validate(),
-    };
+  _callback(cb) {
+    const data = this._data();
+    const validate = this._validate();
+
+    cb && cb(data, validate);
   }
 
   _data() {

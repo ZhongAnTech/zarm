@@ -128,22 +128,21 @@ class CellPage extends Component {
             <Panel.Title>表单组件(添加ValidInput验证)</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Cell.Form onInit={(res) => { console.log(res) }} onChange={(res) => { console.log(res) }} onBlur={(res) => { console.log(res) }}>
-              <Cell.Body title="姓名" name="username" maxLength={10} minLength={2} 
-                help={<span><Icon type="info-round" />长度2-10</span>}>
+            <Cell.Form
+              onInit={(data, validate) => { console.log(data, validate); }}
+              onChange={(data, validate) => { console.log(data, validate); }}
+              onBlur={(data, validate) => { console.log(data, validate); }}>
+                <Cell.Validate title="姓名" name="username" maxLength={10} minLength={2} showHelp="hide">
+                  <Input type="text" placeholder="请输入姓名(长度2-10)" />
+                </Cell.Validate>
 
-                <Input type="text" placeholder="请输入姓名(长度2-10)" />
-              </Cell.Body>
+                <Cell.Validate title="手机" name="mobile" maxLength={11} minLength={11} showHelp="always">
+                  <Input type="text" placeholder="请输入手机号(长度11位)" />
+                </Cell.Validate>
 
-              <Cell.Body title="手机" name="mobile" maxLength={11} minLength={11} 
-                help={<span><Icon type="info-round" />手机号长度11位</span>}>
-
-                <Input type="text" placeholder="请输入手机号(长度11位)" />
-              </Cell.Body>
-
-              <Cell.Input className="ui-hide" name="test" minLength={2}> 
-                <Input type="text" placeholder="test" />
-              </Cell.Input>
+                <Cell.Input className="ui-hide" name="test" minLength={2}>
+                  <Input type="text" placeholder="test" />
+                </Cell.Input>
             </Cell.Form>
           </Panel.Body>
         </Panel>

@@ -1,8 +1,10 @@
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, isValidElement } from 'react';
 import classnames from 'classnames';
 
 import Cell from '../Cell';
+import Icon from '../Icon';
+import { errors, getMsg } from './validate';
 
 class CellBody extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class CellBody extends Component {
     this.state = {
       value: '',
       type: '',
+      error: '',
       validate: false,
       dirty: false,
     };
@@ -19,31 +22,93 @@ class CellBody extends Component {
 
   setResult(value, validate, opts) {
     const { setResult } = this.props;
-    const { type } = opts;
+    const { type, error } = opts;
 
     this.setState({
       value,
       validate,
       type,
+      error,
       dirty: type !== 'init',
     }, () => {
       setResult && setResult(value, validate, opts);
     });
   }
 
+  getHelpByObj(obj = {}) {
+    const error = this.state.error || 'default';
+    const curr = Object.assign({}, errors, obj);
+
+    const func = curr[error];
+    const res = getMsg(func, this.getOpts());
+
+    return this.getHelp(res);
+  }
+
+  getOpts() {
+    const { error, validate, value } = this.state;
+    const { title } = this.props;
+
+    return {
+      title,
+      validate,
+      value,
+      rule: this.props[error],
+    };
+  }
+
+  getHelp(help) {
+    help = help || this.props.help || null;
+
+    let ele = null;
+    const { value, validate, error } = this.state;
+
+    if (isValidElement(help)) {
+      return help;
+    }
+
+    switch (typeof help) {
+      case 'string': {
+        ele = (
+          <span>
+            <Icon type="info-round" />
+            { help }
+          </span>
+        );
+        break;
+      }
+
+      case 'function': {
+        ele = help(value, validate, error);
+        break;
+      }
+
+      case 'obejct': {
+        ele = this.getHelpByObj(help);
+        break;
+      }
+
+      default: {
+        ele = this.getHelpByObj();
+      }
+    }
+
+    return ele;
+  }
+
   helpRender() {
     const { validate, dirty, type } = this.state;
-    const { showHelp, help = null } = this.props;
+    const { showHelp } = this.props;
 
     if (showHelp === 'always') {
-      return help;
+      return this.getHelp();
     }
 
     if (!validate && dirty) {
       if (showHelp === 'change') {
-        return help;
+        return this.getHelp();
       } else if (showHelp === type) {
-        return help;
+        return this.getHelp();
       }
     }
 
@@ -98,7 +163,7 @@ class CellBody extends Component {
 CellBody.propTypes = {
   type: PropTypes.oneOf(['normal', 'link', 'select']),
   className: PropTypes.string,
-  showHelp: PropTypes.oneOf(['always', 'change', 'blur']), // 显示help的时间点，always(一直显示)，change(修改就显示)，blur(失去焦点显示)
+  showHelp: PropTypes.oneOf(['always', 'change', 'blur', 'hide']), // 显示help的时间点，always(一直显示)，change(修改就显示)，blur(失去焦点显示)，hide(一直隐藏)
 };
 
 CellBody.defaultProps = {

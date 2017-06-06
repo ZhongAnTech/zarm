@@ -9,6 +9,16 @@ const typeValidateAttrs = {
   all: ['min', 'max', 'minLength', 'maxLength', 'pattern', 'required', 'func'],
 };
 
+const _getValidate = (attr) => {
+  return attr ? {
+    validate: false,
+    error: attr,
+  } : {
+    validate: true,
+    error: '',
+  };
+};
+
 class CellInput extends Component {
 
   constructor(props) {
@@ -49,13 +59,16 @@ class CellInput extends Component {
     const { name, setResult } = this.props;
     const value = e ? this._getValue(e) : this.state.value;
     const res = this._validate(value);
+    const { validate, error } = res;
+
     const opts = {
       type,
       name,
+      error,
     };
 
-    cb && cb(value, res);
-    setResult && setResult(value, res, opts);
+    cb && cb(value, validate);
+    setResult && setResult(value, validate, opts);
   }
 
   _getDefaultValue() {
@@ -85,7 +98,7 @@ class CellInput extends Component {
     const attrs = typeValidateAttrs[type] || [];
 
     if (!required && (value === '' || value === undefined)) {
-      return true;
+      return _getValidate();
     }
 
     for (let v = 0; v < attrs.length; v++) {
@@ -94,11 +107,11 @@ class CellInput extends Component {
       const validateFunc = validateFuncs[attr](args);
 
       if (!validateFunc(value)) {
-        return false;
+        return _getValidate(attr);
       }
     }
 
-    return true;
+    return _getValidate();
   }
 
   _getValue(e) {

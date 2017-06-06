@@ -1,11 +1,11 @@
 
 import Cell from './Cell';
-import Body from './CellBody';
+import Validate from './CellValidate';
 import Form from './CellForm';
-import Input, { getResult } from './CellInput';
+import Input from './CellInput';
 
 Cell.Form = Form;
-Cell.Body = Body;
+Cell.Validate = Validate;
 Cell.Input = Input;
 
 export default Cell;
