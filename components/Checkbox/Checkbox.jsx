@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -15,7 +14,7 @@ class Checkbox extends Component {
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
-        checked: !!nextProps.checked
+        checked: !!nextProps.checked,
       });
     }
   }

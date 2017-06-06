@@ -1,5 +1,6 @@
+$buttonPrefixCls: ui-button;
+
 @mixin button-bordered($color, $background, $active-percent, $border) {
-  /*$active-background: lighten($background, 10%);*/
   $active-background: lighten($background, $active-percent);
   $active-border: $border;
   $active-color: $color;
@@ -97,20 +98,18 @@
   }
 }
 
-.ui-button {
+.#{$buttonPrefixCls} {
   display: inline-block;
+  padding: 0;
   font-weight: normal;
   text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  background-image: none;
   border: 1px solid transparent;
   cursor: pointer;
   outline: 0 none;
   -webkit-appearance: none;
   user-select: none;
   /*transition: background-color 300ms ease-out, border-color 300ms ease-out;*/
-  @include button-size($height-md, $padding-md, $font-size-md, $radius-md, r(18), r(5));
+  @include button-size($height-md, $padding-md, $font-size-md, $radius-md, r(22), r(5));
   @include button-theme($btn-default-color, $btn-default-bg, $btn-default-border);
   @include button-bordered($btn-default-color, $btn-default-bg, 10%, $btn-default-border);
   
@@ -130,16 +129,16 @@
 
   /* Button sizes */
   &.size-xl {
-    @include button-size($height-xl, $padding-xl, $font-size-xl, $radius-xl, r(20), r(8));
+    @include button-size($height-xl, $padding-xl, $font-size-xl, $radius-xl, r(26), r(8));
   }
   &.size-lg {
-    @include button-size($height-lg, $padding-lg, $font-size-lg, $radius-lg, r(19), r(6));
+    @include button-size($height-lg, $padding-lg, $font-size-lg, $radius-lg, r(24), r(6));
   }
   &.size-sm {
-    @include button-size($height-sm, $padding-sm, $font-size-sm, $radius-sm, r(17), r(5));
+    @include button-size($height-sm, $padding-sm, $font-size-sm, $radius-sm, r(20), r(5));
   }
   &.size-xs {
-    @include button-size($height-xs, $padding-xs, $font-size-xs, $radius-xs, r(15), r(5));
+    @include button-size($height-xs, $padding-xs, $font-size-xs, $radius-xs, r(18), r(5));
   }
 
   /* Button themes */
