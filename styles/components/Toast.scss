@@ -8,7 +8,7 @@
   height: 100%;
   overflow: auto;
   user-select: none;
-  z-index: 1300;
+  z-index: $zindex-toast;
 
   &-open {
     display: flex;
@@ -19,8 +19,8 @@
   &-container {
     position: relative;
     max-width: 70%;
-    min-width: r(120);
-    padding: r(20);
+    min-width: r(100);
+    padding: r(15) r(20);
     border-radius: r(6);
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
@@ -29,6 +29,7 @@
 
     .ui-icon {
       font-size: r(40);
+      margin-bottom: r(5);
     }
 
     p {

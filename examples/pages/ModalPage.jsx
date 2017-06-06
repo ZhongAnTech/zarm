@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Panel, Button, Modal, Confirm } from '../../components';
+import { Panel, Button, Modal, Confirm, Toast } from '../../components';
 
 import '../styles/pages/ModalPage';
 
@@ -83,7 +83,7 @@ class ModalPage extends Component {
         <Modal {...this.state.props} visible={this.state.modal}>
           <Modal.Header title="标题" onClose={() => this.close('modal')} />
           <Modal.Body>
-            模态框内容
+            模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容
           </Modal.Body>
         </Modal>
 
@@ -99,14 +99,14 @@ class ModalPage extends Component {
             这是一个警告提示框
           </Modal.Body>
           <Modal.Footer>
-            <Button radius block bordered size="sm" onClick={() => this.close('alert')}>关闭</Button>
+            <Button bordered onClick={() => this.close('alert')}>关闭</Button>
           </Modal.Footer>
         </Modal>
 
         <Confirm
           radius
-          title="多个按钮情况"
           visible={this.state.confirm}
+          title="多个按钮情况"
           message="这里有好多个按钮, 你试试"
           onOk={() => alert('click ok')}
           onCancel={() => this.close('confirm')}

@@ -11,8 +11,6 @@ class Modal extends PureComponent {
       isPending: false,
       animationState: 'enter',
     };
-
-    this.resolveAnimationFrame = this.resolveAnimationFrame.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,20 +21,12 @@ class Modal extends PureComponent {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return !!(this.state.isShow || nextState.isShow);
-  }
-
   componentWillUpdate() {
-    setTimeout(this.resolveAnimationFrame, this.props.animationDuration);
+    this.modal.addEventListener('webkitAnimationEnd', () => this.animationEnd());
+    this.modal.addEventListener('animationEnd', () => this.animationEnd());
   }
 
-  resolveAnimationFrame() {
-    // let node = this.refs.dialog;
-    // if (e && e.target !== node) {
-    //   return;
-    // }
-
+  animationEnd() {
     if (this.state.animationState === 'leave') {
       this.setState({
         isShow: false,
@@ -67,21 +57,19 @@ class Modal extends PureComponent {
   }
 
   render() {
-    console.log(1)
-    const { prefixCls, animationType, animationDuration, width, minWidth, isRadius, isRound, className, onMaskClick, children } = this.props;
+    const { prefixCls, animationType, animationDuration, width, minWidth, isRadius, className, onMaskClick, children } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
     const classes = {
       modal: classnames({
         [`${prefixCls}`]: true,
         radius: ('radius' in this.props || isRadius),
-        round: ('round' in this.props || isRound),
         [`fade-${animationState}`]: isPending,
         [className]: !!className,
       }),
       dialog: classnames({
         [`${prefixCls}-dialog`]: true,
-        [`${animationType}-${animationState}`]: true,
+        [`${animationType}-${animationState}`]: isPending,
       }),
     };
 
@@ -109,7 +97,7 @@ class Modal extends PureComponent {
     }
 
     return (
-      <div className={classes.modal} style={style.modal} onClick={onMaskClick}>
+      <div className={classes.modal} style={style.modal} onClick={onMaskClick} ref={(modal) => { this.modal = modal; }}>
         <div className={`${prefixCls}-wrapper`}>
           <div className={classes.dialog} style={style.dialog} onClick={e => e.stopPropagation()}>
             {children}
@@ -132,7 +120,6 @@ Modal.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   minWidth: PropTypes.number,
   isRadius: PropTypes.bool,
-  isRound: PropTypes.bool,
   onMaskClick: PropTypes.func,
 };
 
@@ -144,7 +131,6 @@ Modal.defaultProps = {
   width: '70%',
   minWidth: 270,
   isRadius: false,
-  isRound: false,
   onMaskClick: () => {},
 };
 
