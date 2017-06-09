@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
 function _getCurrentPoint(e) {
@@ -20,19 +21,24 @@ class Swipeout extends Component {
 
     this.openedLeft = false;
     this.openedRight = false;
+    this.touchEnd = true;
   }
 
   componentDidMount() {
-    this.btnWrapWidth = this.btnWrap.offsetWidth;
+    // _addListenerMulti(dom, 'webkitTransitionEnd transitionend', () => {
+    //   
+    // });
 
     document.body.addEventListener('touchstart', this.onCloseSwipe.bind(this), true);
   }
+
+
 
   onCloseSwipe(ev) {
     if (this.openedLeft || this.openedRight) {
       const pNode = ((node) => {
         while (node.parentNode && node.parentNode !== document.body) {
-          if (node.className.indexOf(`${this.props.prefixCls}-wrap`) > -1) {
+          if (node === this.wrap) {
             return node;
           }
           node = node.parentNode;
@@ -40,21 +46,24 @@ class Swipeout extends Component {
       })(ev.target);
       if (!pNode) {
         ev.preventDefault();
-        this.close();
+        if (this.openedLeft || this.openedRight) {
+          this.close();
+          this.touchEnd = true;
+        }
       }
     }
   }
 
   _onTouchStart(e) {
+    e.preventDefault();
     if (this.props.disabled) {
       return;
     }
-
-    console.log("touchstart openedRight ->", this.openedRight);
     this.pointStart = _getCurrentPoint(e);
     this.pointEnd = _getCurrentPoint(e);
-    if (this.openedRight) {
-      this.close(300);
+    if (this.openedLeft || this.openedRight) {
+      this.touchEnd = false;
+      this.close();
       return;
     }
     this.timeStart = new Date();
@@ -62,43 +71,64 @@ class Swipeout extends Component {
 
   _onTouchMove(e) {
     e.preventDefault();
+
     if (this.props.disabled) {
       return;
     }
 
-    const pointX = _getCurrentPoint(e);
-    const px = pointX - this.pointStart;
-
-    if (px > 0) {
+    if (!this.touchEnd) {
       return;
     }
+    const { left = [], right = [], offset } = this.props;
 
-    this._doTransition(px, 0);
+    const pointX = _getCurrentPoint(e);
+    const posX = pointX - this.pointStart;
+    const btnsLeftWidth = this.left && this.left.offsetWidth;
+    const btnsRightWidth = this.right.offsetWidth;
+
+    if (posX < 0 && right.length) {
+      if (posX < -btnsRightWidth - offset) {
+        return;
+      }
+      this._doTransition(Math.min(posX, 0), 0);
+    } else if (posX > 0 && left.length) {
+      if (posX > btnsLeftWidth + offset) {
+        return;
+      }
+      this._doTransition(Math.max(posX, 0), 0);
+    }
+
     this.pointEnd = pointX;
   }
 
   _onTouchEnd(e) {
+    e.preventDefault();
     if (this.props.disabled) {
       return;
     }
+    const { left = [], right = [] } = this.props;
 
-    const dom = this.btnWrap;
-    const px = (this.pointEnd !== 0) ? this.pointEnd - this.pointStart : 0;
-
+    const posX = (this.pointEnd !== 0) ? this.pointEnd - this.pointStart : 0;
     const timeSpan = new Date().getTime() - this.timeStart.getTime();
 
-    if (px !== 0 && (
-        // 滑动距离和父容器长度之比超过moveDistanceRatio
-        Math.abs(px / dom.offsetWidth) >= this.props.moveDistanceRatio
-        ||
-        // 滑动释放时间差低于moveTimeDur
-        timeSpan <= this.props.moveTimeDur
-      )
-    ) {
-      this.open(-this.btnWrapWidth, 300, false, true);
+    const btnsLeftWidth = this.left && this.left.offsetWidth;
+    const btnsRightWidth = this.right.offsetWidth;
+
+    const leftOpenX = btnsLeftWidth * this.props.moveDistanceRatio;
+    const rightOpenX = btnsRightWidth * this.props.moveDistanceRatio;
+
+    const openLeft = posX > leftOpenX;
+    const openRight = posX < -rightOpenX;
+
+    if (openRight && posX < 0 && right.length) {
+      this.open(-btnsRightWidth, 300, false, true);
+    } else if (openLeft && posX > 0 && left.length) {
+      this.open(btnsLeftWidth, 300, true, false);
     } else {
-      this.close(300);
+      this.close();
     }
+
+    this.touchEnd = true;
   }
 
   // 执行过渡动画
@@ -128,25 +158,56 @@ class Swipeout extends Component {
     this._doTransition(value, duration);
   }
 
-  close(duration = 100) {
-    const dom = this.content;
-
+  close(duration = 300) {
     if (this.openedLeft || this.openedRight) {
       this.props.onClose();
     }
+    this.openedLeft = false;
+    this.openedRight = false;
     this._doTransition(0, duration);
+  }
 
-    _addListenerMulti(dom, 'webkitTransitionEnd transitionend', () => {
-      this.openedLeft = !this.openedLeft;
-      this.openedRight = !this.openedRight;
-    });
+  onBtnClick(e, btn) {
+    const onClick = btn.onClick;
+    console.log("this.props ->", this.props);
+    if (onClick) {
+      onClick(e);
+    }
+
+    if (this.props.autoClose) {
+      this.close();
+    }
+  }
+
+  renderButtons(buttons, ref) {
+    const prefixCls = this.props.prefixCls;
+
+    return (buttons && buttons.length) ? (
+      <div
+        className={`${prefixCls}-${ref}-btn-wrap`}
+        ref={(el) => this[ref] = ReactDOM.findDOMNode(el)}>
+        <div className={`${prefixCls}-btn-wrap`}>
+          {
+            buttons.map((btn, i) => (
+              <div
+                className={`${prefixCls}-btn ${btn.hasOwnProperty('className') ? btn.className : ''}`}
+                style={btn.style}
+                onClick={(e) => this.onBtnClick(e, btn)}>
+                <div className={`${prefixCls}-text`}>{btn.text || `${ref}${i}`}</div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    ) : null;
   }
 
   render() {
-    const { className, right, children, prefixCls } = this.props;
-
-    return (
-      <div className={`${prefixCls}-wrap`}>
+    const { left = [], right = [], children, prefixCls } = this.props;
+    return (left.length || right.length) ? (
+      <div
+        className={`${prefixCls}-wrap`}
+        ref={(wrap) => { this.wrap = wrap; }}>
         <div
           className={`${prefixCls}-content`}
           ref={(content) => { this.content = content; }}
@@ -155,10 +216,14 @@ class Swipeout extends Component {
           onTouchEnd={e => this._onTouchEnd(e)}>
           {children}
         </div>
-        <div
-          className={`${prefixCls}-btn-wrap`}
-          ref={(btnWrap) => { this.btnWrap = btnWrap; }}>
-          {right}
+        { this.renderButtons(left, 'left') }
+        { this.renderButtons(right, 'right') }
+      </div>
+    ) : (
+      <div
+        className={`${prefixCls}-wrap`}>
+        <div className={`${prefixCls}-content`}>
+          {children}
         </div>
       </div>
     );
@@ -169,6 +234,7 @@ class Swipeout extends Component {
 Swipeout.defaultProps = {
   moveTimeDur: 300,
   moveDistanceRatio: 0.5,
+  offset: 10,
   onOpen: () => {},
   onClose: () => {},
 };

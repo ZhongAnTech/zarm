@@ -270,17 +270,19 @@ class CellPage extends Component {
 
             <SwipeAction
               prefixCls="ui-swipeAction"
-              right={
-                <div className="demo-btn-wrap">
-                  <div className="demo-del del1">删除1</div>
-                  <div className="demo-del del2">删除2</div>
-                </div>
-              }>
-              <Panel>
-                <Panel.Body>
-                  <Cell title="标题文字" />
-                </Panel.Body>
-              </Panel>
+              right={[
+                { text: '右按钮1',
+                  onClick: () => console.log('右按钮1'),
+                  style: { backgroundColor: 'orange', color: 'white' },
+                },
+                { text: '右按钮2',
+                  onClick: () => console.log('右按钮2'),
+                  style: { backgroundColor: 'red', color: 'white' },
+                },
+              ]}
+              autoClose
+              >
+              <Cell title="右侧按钮（自动关闭）" />
             </SwipeAction>
 
             <Cell>
