@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -26,23 +25,23 @@ class Loading extends Component {
   }
 
   render() {
-    const { visible, className } = this.props;
+    const { prefixCls, visible, className } = this.props;
 
     const items = [];
     for (let i = 0; i < 12; i += 1) {
-      items.push(<div key={i} className="ui-loading-item" />);
+      items.push(<div key={i} className={`${prefixCls}-item`} />);
     }
 
     const cls = classnames({
-      'ui-loading': true,
-      'ui-loading-open': this.state.isShow,
+      [`${prefixCls}`]: true,
+      [`${prefixCls}-open`]: this.state.isShow,
       [className]: !!className,
     });
 
     return (
       <div className={cls}>
-        <div className="ui-loading-container">
-          <div className="ui-loading-items">
+        <div className={`${prefixCls}-container`}>
+          <div className={`${prefixCls}-items`}>
             {items}
           </div>
         </div>
@@ -53,10 +52,12 @@ class Loading extends Component {
 }
 
 Loading.propTypes = {
+  prefixCls: PropTypes.string,
   visible: PropTypes.bool,
 };
 
 Loading.defaultProps = {
+  prefixCls: 'ui-loading',
   visible: false,
 };
 

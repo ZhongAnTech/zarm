@@ -21,8 +21,8 @@
   &.checked {
     
     .ui-checkbox-inner {
-      border-color: $base-theme-info;
-      background-color: $base-theme-info;
+      border-color: $theme-info;
+      background-color: $theme-info;
 
       &:after {
         transform: rotate(45deg) scale(1);

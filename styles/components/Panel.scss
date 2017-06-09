@@ -9,8 +9,8 @@
 }
 
 .ui-panel-body {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  position: relative;
+  @include onepx(top bottom);
 }
 
 .ui-panel-footer {

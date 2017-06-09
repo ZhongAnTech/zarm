@@ -2,7 +2,7 @@
 $font-size-base: 14;
 $font-size-base-px: 14px;
 
-$theme-default: #ddd;
+$theme-default: #383838;
 $theme-info: #00aff9;
 $theme-success: #50c44a;
 $theme-warning: #ffba34;
@@ -27,23 +27,24 @@ $padding-md: r(16);
 $padding-sm: r(15);
 $padding-xs: r(10);
 
-$font-size-xl: r(18);
-$font-size-lg: r(16);
-$font-size-md: r(16);
-$font-size-sm: r(14);
-$font-size-xs: r(14);
+$fontSize-xl: r(18);
+$fontSize-lg: r(16);
+$fontSize-md: r(16);
+$fontSize-sm: r(14);
+$fontSize-xs: r(14);
 
-$zindex-mask: 1000 !default;
-$zindex-modal: 1100 !default;
-$zindex-toast: 1300 !default;
-$zindex-loading: 1300 !default;
+$zIndex-mask: 1000 !default;
+$zIndex-modal: 1100 !default;
+$zIndex-toast: 1300 !default;
+$zIndex-loading: 1300 !default;
 
-$line-height:         1.5 !default;
-
+/*$line-height:         1.5 !default;*/
+$disabled-opacity: .5;
+$placeholder-color: #a9a9a9;
 $icon-url:            '//at.alicdn.com/t/font_1rke47h9f6r';
 
 $btn-default-color:   #4e4e4e !default;
-$btn-default-bg:      $theme-default !default;
+$btn-default-bg:      #ddd !default;
 $btn-default-border:  $btn-default-bg !default;
 
 $btn-info-color:      #fff !default;

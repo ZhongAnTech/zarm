@@ -34,19 +34,19 @@
 
 .ui-radio {
   margin-right: r(16);
-  @include radio-theme($base-theme-info);
+  @include radio-theme($theme-info);
 
   &.theme-info {
-    @include radio-theme($base-theme-info);
+    @include radio-theme($theme-info);
   }
   &.theme-success {
-    @include radio-theme($base-theme-success);
+    @include radio-theme($theme-success);
   }
   &.theme-warning {
-    @include radio-theme($base-theme-warning);
+    @include radio-theme($theme-warning);
   }
   &.theme-error {
-    @include radio-theme($base-theme-error);
+    @include radio-theme($theme-error);
   }
 
   .ui-radio-inner {
@@ -135,8 +135,8 @@
   border-style: solid;
   border-width: 1px;
   border-left-width: 0;
-  border-color: $base-theme-info;
-  color: $base-theme-info;
+  border-color: $theme-info;
+  color: $theme-info;
   background: #fff;
   padding: 0 r(16);
   font-size: r(14);
@@ -147,7 +147,7 @@
   }
 
   &.checked {
-    background: $base-theme-info;
+    background: $theme-info;
     color: #fff;
   }
 

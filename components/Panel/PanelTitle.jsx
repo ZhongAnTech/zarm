@@ -8,7 +8,7 @@ class PanelTitle extends PureComponent {
     const { prefixCls, className, children, ...others } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}-title`]: true,
+      [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
@@ -22,7 +22,7 @@ PanelTitle.propTypes = {
 };
 
 PanelTitle.defaultProps = {
-  prefixCls: 'ui-panel',
+  prefixCls: 'ui-panel-title',
 };
 
 export default PanelTitle;

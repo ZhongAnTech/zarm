@@ -1,9 +1,6 @@
 
 import React, { Component } from 'react';
 import { Swipe } from '../../components';
-import { hashHistory } from 'react-router';
-
-// import '../styles/pages/SwipePage';
 
 class SwipePage extends Component {
   constructor(props) {
@@ -19,22 +16,22 @@ class SwipePage extends Component {
         items: [
           {
             title: '百度',
-            url: 'javascript:;',
-            img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E4%BD%B3%E4%B9%90%E9%94%AD.png'
+            url: '#',
+            img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E4%BD%B3%E4%B9%90%E9%94%AD.png',
           },
           {
             title: '淘宝',
-            url: 'javascript:;',
-            img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E8%96%AF%E7%89%87-0.png'
+            url: '#',
+            img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E8%96%AF%E7%89%87-0.png',
           },
           {
             title: '腾讯',
-            url: 'javascript:;',
-            img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E9%BB%84%E6%B2%B9%E8%96%AF%E7%89%87-0.png'
-          }
-        ]
-      })
-    }, 3000)
+            url: '#',
+            img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E9%BB%84%E6%B2%B9%E8%96%AF%E7%89%87-0.png',
+          },
+        ],
+      });
+    }, 0);
   }
 
   renderSwipe() {
@@ -45,7 +42,7 @@ class SwipePage extends Component {
         // isLoop={false}
         // height={617}
         onChangeEnd={(index) => {
-          console.log(index)
+          console.log(index);
         }}>
         {
           (this.state.items || []).map((item, i) => {
@@ -53,27 +50,24 @@ class SwipePage extends Component {
               <div className="ui-swipe-item" key={i}>
                 <div className="ui-swipe-pic">
                   <a href={item.url}>
-                    <img src={item.img} />
+                    <img src={item.img} alt={item.title} />
                   </a>
                 </div>
                 <div className="ui-swipe-info">
                   <div className="ui-swipe-title">{item.title}</div>
                 </div>
               </div>
-            )
+            );
           })
         }
       </Swipe>
-    )
+    );
   }
 
   render() {
     return (
       <div className="swipe-page">
         {this.renderSwipe()}
-        <button onClick={() => {
-          hashHistory.push('/');
-        }}>go</button>
       </div>
     );
   }

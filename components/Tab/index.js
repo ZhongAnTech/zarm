@@ -1,7 +1,7 @@
 
 import Tab from './Tab';
-import TabGroup from './TabGroup';
+import TabItem from './TabContainer';
 
-Tab.Group = TabGroup;
+Tab.Item = TabItem;
 
 export default Tab;

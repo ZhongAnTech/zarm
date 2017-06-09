@@ -8,7 +8,7 @@ class PanelBody extends PureComponent {
     const { prefixCls, className, children, ...others } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}-body`]: true,
+      [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
@@ -22,7 +22,7 @@ PanelBody.propTypes = {
 };
 
 PanelBody.defaultProps = {
-  prefixCls: 'ui-panel',
+  prefixCls: 'ui-panel-body',
 };
 
 export default PanelBody;

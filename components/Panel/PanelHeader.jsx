@@ -8,7 +8,7 @@ class PanelHeader extends PureComponent {
     const { prefixCls, className, children, ...others } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}-header`]: true,
+      [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
@@ -22,7 +22,7 @@ PanelHeader.propTypes = {
 };
 
 PanelHeader.defaultProps = {
-  prefixCls: 'ui-panel',
+  prefixCls: 'ui-panel-header',
 };
 
 export default PanelHeader;

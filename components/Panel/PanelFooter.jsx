@@ -8,7 +8,7 @@ class PanelFooter extends Component {
     const { prefixCls, className, children, ...others } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}-footer`]: true,
+      [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
@@ -22,7 +22,7 @@ PanelFooter.propTypes = {
 };
 
 PanelFooter.defaultProps = {
-  prefixCls: 'ui-panel',
+  prefixCls: 'ui-panel-footer',
 };
 
 export default PanelFooter;

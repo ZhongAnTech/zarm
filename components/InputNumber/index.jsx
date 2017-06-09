@@ -9,93 +9,123 @@ class InputNumber extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue,
+      value: props.value,
+      lastValue: props.value,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: Number(nextProps.value)
+        value: Number(nextProps.value),
+        lastValue: Number(nextProps.value),
       });
     }
   }
 
-  render () { 
+  onInputChange(value) {
+    const { onChange } = this.props;
+    this.setState({
+      value,
+    });
+    typeof onChange === 'function' && onChange(value);
+  }
+
+  onInputBlur(value) {
+    const { min, max, onBlur } = this.props;
+    if (value === '' || isNaN(value)) {
+      value = this.state.lastValue;
+    }
+    if (min && value < min) {
+      value = min;
+    }
+    if (max && value > max) {
+      value = max;
+    }
+    this.setState({
+      value,
+      lastValue: value,
+    });
+    typeof onBlur === 'function' && onBlur(value);
+  }
+
+  onSubClick() {
+    const { step } = this.props;
+    const value = this.state.value - step;
+    this.onInputChange(value);
+  }
+
+  onPlusClick() {
+    const { step } = this.props;
+    const value = this.state.value + step;
+    this.onInputChange(value);
+  }
+
+  render() {
     const props = this.props;
-    const { theme, isRadius, isDisabled, size, min, max, className, onChange, ...others } = props;
+    const { prefixCls, theme, isRadius, isRound, isDisabled, size, min, max, className, onChange } = this.props;
     const { value } = this.state;
     const disabled = 'disabled' in props || isDisabled;
     const radius = 'radius' in props || isRadius;
+    const round = 'round' in props || isRound;
 
     const cls = classnames({
-      'ui-input-number' : true,
-      'disabled'        : disabled,
-      'radius'          : radius,
+      [`${prefixCls}`]: true,
+      disabled,
+      radius,
+      round,
       [`theme-${theme}`]: !!theme,
-      ['size-' + size]  : size,
-      [className]       : !!className,
+      [`size-${size}`]: !!size,
+      [className]: !!className,
     });
 
-    const subDisabled = !!(min && value <= min),
-          plusDisabled = !!(max && value >= max)
+    const subDisabled = !!(min && value <= min) || disabled;
+    const plusDisabled = !!(max && value >= max) || disabled;
 
     const subCls = classnames({
-      'ui-input-number-sub' : true,
-      'disabled'            : subDisabled
+      [`${prefixCls}-sub`]: true,
+      disabled: subDisabled,
     });
 
     const plusCls = classnames({
-      'ui-input-number-plus' : true,
-      'disabled'             : plusDisabled
+      [`${prefixCls}-plus`]: true,
+      disabled: plusDisabled,
     });
 
     return (
       <span className={cls}>
         <span className={subCls} onClick={() => !subDisabled && this.onSubClick()}><Icon type="minus" /></span>
-        <input {...others} className="ui-input-number-body" value={this.state.value} onChange={(e) => onChange(e.target.value)} />
+        <input className={`${prefixCls}-body`} value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} />
         <span className={plusCls} onClick={() => !plusDisabled && this.onPlusClick()}><Icon type="add" /></span>
       </span>
     );
   }
-
-  onSubClick() {
-    const { step, onChange } = this.props,
-          value = this.state.value - step;
-
-    // this.setState({ value });
-    !!onChange && onChange(value)
-  }
-
-  onPlusClick() {
-    const { step, onChange } = this.props,
-          value = this.state.value + step;
-          
-    // this.setState({ value });
-    !!onChange && onChange(value)
-  }
 }
 
 InputNumber.propTypes = {
-  size         : PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
-  isRadius     : PropTypes.bool,
-  isDisabled   : PropTypes.bool,
-  defaultValue : PropTypes.number,
-  step         : PropTypes.number,
-  min          : PropTypes.number,
-  max          : PropTypes.number,
-  className    : PropTypes.string,
+  prefixCls: PropTypes.string,
+  size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
+  isRadius: PropTypes.bool,
+  isRound: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  value: PropTypes.number,
+  step: PropTypes.number,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  className: PropTypes.string,
 };
 
 InputNumber.defaultProps = {
-  size        : null,
-  isRadius    : false,
-  isDisabled  : false,
-  defaultValue: 0,
-  step        : 1,
-  min         : null,
-  max         : null,
-  className   : null,
+  prefixCls: 'ui-input-number',
+  size: null,
+  isRadius: false,
+  isRound: false,
+  isDisabled: false,
+  value: 0,
+  step: 1,
+  min: null,
+  max: null,
+  className: null,
 };
 
 export default InputNumber;

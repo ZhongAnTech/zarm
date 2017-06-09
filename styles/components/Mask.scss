@@ -7,7 +7,7 @@
   height: 100%;
   animation: fade-enter .3s ease-out;
   background-color: rgba(0, 0, 0, .4);
-  z-index: $zindex-mask;
+  z-index: $zIndex-mask;
 
   &.light {
     background-color: rgba(255, 255, 255, .3);

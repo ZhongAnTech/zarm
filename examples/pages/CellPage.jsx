@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, DatePicker, CascaderPicker } from '../../components';
+import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, SwipeAction } from '../../components';
 import District from './district';
 
 const seasons = [
@@ -38,9 +38,9 @@ class CellPage extends Component {
       sValue: [],
       dataSource: [],
       date: '',
-      sex: '',
+      sex: 0,
       timer: 0,
-      number: 0,
+      number: 2,
       disabled: false,
     };
   }
@@ -52,12 +52,12 @@ class CellPage extends Component {
     //     timer: ++timer
     //   })
     // }, 1000)
-    setTimeout(() => {
-      this.setState({
-        dataSource: District,
-        disabled: false,
-      });
-    }, 3000);
+    // setTimeout(() => {
+    //   this.setState({
+    //     dataSource: District,
+    //     disabled: false,
+    //   });
+    // }, 3000);
   }
 
   toggle(key) {
@@ -148,17 +148,16 @@ class CellPage extends Component {
                   radius
                   type="tel"
                   theme="info"
-                  defaultValue={1}
                   min={-3}
                   max={3}
                   step={1}
                   value={this.state.number}
                   onChange={(value) => {
-                    if (isNaN(value)) {
+                    if (value === '' || isNaN(value)) {
                       return;
                     }
                     this.setState({
-                      number: value,
+                      number: Number(value),
                     });
                   }}
                   />}
@@ -173,12 +172,14 @@ class CellPage extends Component {
                 onChange={(e) => {
                   console.log(e.target.value);
                 }}>
-                <Select.Option value="M">男</Select.Option>
-                <Select.Option value="F">女</Select.Option>
+                <Select.Option value="">请选择性别</Select.Option>
+                <Select.Option value={0}>男</Select.Option>
+                <Select.Option value={1}>女</Select.Option>
               </Select>
             </Cell>
 
-            {/* <Cell title="省份" type="select">
+            {/*
+            <Cell title="省份" type="select">
               <Picker
                 placeholder="选择省份"
                 dataSource={District}
@@ -224,16 +225,17 @@ class CellPage extends Component {
                 title="选择日期"
                 placeholder="请选择日期"
                 mode="date"
-                format="YYYY-MM-DD"
                 disabled={this.state.disabled}
                 value={this.state.date}
                 defaultValue={this.state.date}
                 onChange={(value) => {
-                  this.setState({
-                    date: value,
-                  });
+                  console.log("外部change value ->", value);
+                  // this.setState({
+                  //   date: value,
+                  // });
                 }}
                 onOk={(value) => {
+                  console.log("外部ok value ->", value);
                   this.setState({
                     date: value,
                   });
@@ -255,17 +257,32 @@ class CellPage extends Component {
                 displayMember="label"
                 valueMember="label"
                 value={this.state.sValue}
-                onChange={v => this.setState({ sValue: v })}
-                onOk={(v) => {
-                  console.log(v);
-                  // this.setState({
-                  //   sValue: v,
-                  // });
+                onChange={(value) => {
+                  console.log('外部change value ->', value);
+                  this.setState({ sValue: value });
+                }}
+                onOk={(value) => {
+                  console.log(value);
                 }}
                 onCancel={() => {
                 }}
                 />
             </Cell>
+
+            <SwipeAction
+              prefixCls="ui-swipeAction"
+              right={
+                <div className="demo-btn-wrap">
+                  <div className="demo-del del1">删除1</div>
+                  <div className="demo-del del2">删除2</div>
+                </div>
+              }>
+              <Panel>
+                <Panel.Body>
+                  <Cell title="标题文字" />
+                </Panel.Body>
+              </Panel>
+            </SwipeAction>
 
             <Cell>
               <Checkbox

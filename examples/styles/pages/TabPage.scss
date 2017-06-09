@@ -3,11 +3,18 @@
 .tab-page {
 
   .ui-panel-body {
-    padding: r(10);
     background: #fff;
   }
 
   .ui-tab + .ui-tab {
     margin-top: r(10);
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: r(10);
+    height: r(100);
   }
 }
