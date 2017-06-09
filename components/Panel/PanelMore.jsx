@@ -8,7 +8,7 @@ class PanelMore extends PureComponent {
     const { prefixCls, className, children, ...others } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}-more`]: true,
+      [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
@@ -22,7 +22,7 @@ PanelMore.propTypes = {
 };
 
 PanelMore.defaultProps = {
-  prefixCls: 'ui-panel',
+  prefixCls: 'ui-panel-more',
 };
 
 export default PanelMore;

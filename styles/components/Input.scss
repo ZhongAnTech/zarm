@@ -3,7 +3,6 @@
     /*height: $height;*/
     line-height: 1.5;
     padding: $padding;
-    font-size: $font-size;
 
     &.radius {
       border-radius: $border-radius;
@@ -13,13 +12,12 @@
 
 .ui-input {
   position: relative;
-  @include input-size($base-height, 0 0, $base-fontSize, $base-radius);
+  @include input-size($height-md, 0 0, $fontSize-md, $radius-md);
 
   input, textarea {
     position: relative;
     display: inline-block;
     width: 100%;
-    color: #636363;
     background-color: #fff;
     background-image: none;
     border-width: 0;
@@ -29,6 +27,15 @@
 
     &[type="date"] {
       height: r(21);
+    }
+  
+    &[type="date"],
+    &[type="text"] {
+      height: r(21);
+    }
+
+    &::-webkit-input-placeholder {
+      color: $placeholder-color;
     }
 
     &:focus {
@@ -43,6 +50,7 @@
     &.disabled,
     &:disabled {
       cursor: not-allowed;
+      opacity: $disabled-opacity;
       /*background-color: #f3f5f7;*/
       
       &:focus,
@@ -57,16 +65,16 @@
 
   /* Input sizes */
   &.size-xl {
-    @include input-size($base-height-xl, 4px 14px, $base-fontSize-xl, $base-radius-xl);
+    @include input-size($height-xl, 4px 14px, $fontSize-xl, $radius-xl);
   }
   &.size-lg {
-    @include input-size($base-height-lg, 4px 11px, $base-fontSize-lg, $base-radius-lg);
+    @include input-size($height-lg, 4px 11px, $fontSize-lg, $radius-lg);
   }
   &.size-sm {
-    @include input-size($base-height-sm, 4px 7px, $base-fontSize-sm, $base-radius-sm);
+    @include input-size($height-sm, 4px 7px, $fontSize-sm, $radius-sm);
   }
   &.size-xs {
-    @include input-size($base-height-xs, 4px 4px, $base-fontSize-xs, $base-radius-xs);
+    @include input-size($height-xs, 4px 4px, $fontSize-xs, $radius-xs);
   }
 }
 

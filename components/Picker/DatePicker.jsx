@@ -80,7 +80,7 @@ class DatePicker extends Component {
     const value = this.getDate();
     this.initDate = value;
     this.toggle();
-    onOk && onOk(value);
+    onOk && onOk(formatFn(this, value));
   }
 
   onValueChange(values, index) {
@@ -125,13 +125,12 @@ class DatePicker extends Component {
 
     newValue = this.clipDate(newValue);
 
-    // if (!('date' in props)) {
-    //   this.setState({
-    //     date: newValue,
-    //   });
-    // }
-
-    props.onChange(newValue);
+    if (!('date' in props)) {
+      this.setState({
+        date: newValue,
+      });
+    }
+    props.onChange(formatFn(this, newValue));
   }
 
   getDefaultMinDate() {
@@ -532,7 +531,6 @@ DatePicker.defaultProps = {
   cancelText: '取消',
   okText: '确定',
   mode: DATE,
-  format: 'YYYY-MM-DD',
   disabled: false,
   value: '',
   defaultValue: '',

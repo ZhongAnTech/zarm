@@ -1,9 +1,8 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class Radio extends Component {
+class Radio extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -15,53 +14,55 @@ class Radio extends Component {
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
-        checked: !!nextProps.checked
+        checked: !!nextProps.checked,
       });
     }
   }
 
-  render () {
-    const props = this.props;
-    const { type, value, checked, isDisabled, className, children, onChange, ...others } = props;
-    const disabled = 'disabled' in props || isDisabled;
-
-    const cls = classnames({
-      'ui-radio'        : (type == 'default'),
-      'ui-radio-button' : (type == 'button'),
-      'checked'         : this.state.checked,
-      'disabled'        : disabled,
-      [className]       : !!className,
-    });
-
-    return (
-      <label {...others} className={cls} onClick={() => !disabled && this._onClick()}>
-        <span className="ui-radio-input">
-          <span className="ui-radio-inner"></span>
-        </span>
-        {children}
-      </label>
-    );
-  }
-
-  _onClick(e) {
+  _onClick() {
     const checked = true;
     this.setState({ checked });
     this.props.onChange(checked);
   }
+
+  render() {
+    const props = this.props;
+    const { prefixCls, type, value, checked, isDisabled, className, children, onChange, ...others } = this.props;
+    const disabled = 'disabled' in props || isDisabled;
+
+    const cls = classnames({
+      [`${prefixCls}`]: (type === 'default'),
+      [`${prefixCls}-button`]: (type === 'button'),
+      checked: this.state.checked,
+      disabled,
+      [className]: !!className,
+    });
+
+    return (
+      <span {...others} className={cls} onClick={() => !disabled && this._onClick()}>
+        <span className="ui-radio-input">
+          <span className="ui-radio-inner" />
+        </span>
+        {children}
+      </span>
+    );
+  }
 }
 
 Radio.propTypes = {
-  type          : PropTypes.oneOf(['default', 'button']),
+  prefixCls: PropTypes.string,
+  type: PropTypes.oneOf(['default', 'button']),
   defaultChecked: PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  onChange      : PropTypes.func,
+  isDisabled: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 Radio.defaultProps = {
-  type          : 'default',
+  prefixCls: 'ui-radio',
+  type: 'default',
   defaultChecked: false,
-  isDisabled    : false,
-  onChange      : () => {},
+  isDisabled: false,
+  onChange: () => {},
 };
 
 export default Radio;

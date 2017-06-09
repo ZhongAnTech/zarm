@@ -7,7 +7,7 @@
   height: 100%;
   overflow: auto;
   user-select: none;
-  z-index: $zindex-loading;
+  z-index: $zIndex-loading;
 
   &-open {
     display: flex;

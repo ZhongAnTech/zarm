@@ -1,11 +1,11 @@
 .ui-select {
   position: relative;
-  color: #636363;
+  /*color: #636363;*/
   
   &.disabled {
     cursor: not-allowed;
-    color: #a9a9a9;
-    
+    opacity: $disabled-opacity;
+
     select {
       cursor: not-allowed;
     }

@@ -27,8 +27,8 @@
   }
 
   &.checked {
-    border: 1px solid $base-theme-info;
-    background-color: $base-theme-info;
+    border: 1px solid $theme-info;
+    background-color: $theme-info;
 
     &:after {
       left: r(22);

@@ -1,0 +1,25 @@
+@mixin onepx($positions: top right bottom left, $border-color: #ddd, $radius: 0) {
+  &:after {
+    content: '';
+    pointer-events: none;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: $radius;
+    border: 1px solid $border-color;
+    border-width: 0;
+    @each $position in $positions {
+      border-#{$position}-width: 1px;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}

@@ -1,12 +1,21 @@
 
 import React, { Component } from 'react';
-import { Panel, Icon, Tab, Button } from '../../components';
+import { Panel, Tab } from '../../components';
 
 import '../styles/pages/TabPage';
 
 class TabPage extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeIndex: 0,
+    };
+  }
+
   render() {
+    const { Item } = Tab;
+
     return (
       <div className="tab-page">
         <Panel>
@@ -14,45 +23,64 @@ class TabPage extends Component {
             <Panel.Title>标签页</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Tab.Group onChange={(i) => console.log(i)}>
-              <Tab title="选项卡1">
-                这是选项卡1的文字
-              </Tab>
-              <Tab title="选项卡2">
-                这是选项卡2的文字
-              </Tab>
-            </Tab.Group>
+            <Tab onChange={(i) => console.log(i)}>
+              <Item title="选项卡1">
+                <div className="content">选项卡1内容</div>
+              </Item>
+              <Item title="选项卡2">
+                <div className="content">选项卡2内容</div>
+              </Item>
+            </Tab>
           </Panel.Body>
         </Panel>
 
         <Panel>
           <Panel.Header>
-            <Panel.Title>标签页主题</Panel.Title>
+            <Panel.Title>不同主题的标签页</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Tab.Group theme="success" onChange={(i) => console.log(i)}>
-              <Tab title="选项卡1"></Tab>
-              <Tab title="选项卡2"></Tab>
-              <Tab title="选项卡3"></Tab>
-            </Tab.Group>
+            <Tab theme="success">
+              <Item title="选项卡1">
+                <div className="content">选项卡1内容</div>
+              </Item>
+              <Item title="选项卡2">
+                <div className="content">选项卡2内容</div>
+              </Item>
+              <Item title="选项卡3">
+                <div className="content">选项卡3内容</div>
+              </Item>
+            </Tab>
+          </Panel.Body>
+        </Panel>
 
-            <Tab.Group theme="info" onChange={(i) => console.log(i)}>
-              <Tab title="选项卡1"></Tab>
-              <Tab title="选项卡2"></Tab>
-              <Tab title="选项卡3"></Tab>
-            </Tab.Group>
+        <Panel>
+          <Panel.Header>
+            <Panel.Title>联动的标签页</Panel.Title>
+          </Panel.Header>
+          <Panel.Body>
+            <Tab
+              lineWidth="auto"
+              onChange={(i) => {
+                this.setState({
+                  activeIndex: i,
+                });
+              }}>
+              <Item title="选项卡1" />
+              <Item title="选项卡2" />
+              <Item title="选项卡3" />
+            </Tab>
 
-            <Tab.Group theme="warning" onChange={(i) => console.log(i)}>
-              <Tab title="选项卡1"></Tab>
-              <Tab title="选项卡2"></Tab>
-              <Tab title="选项卡3"></Tab>
-            </Tab.Group>
-
-            <Tab.Group theme="error" onChange={(i) => console.log(i)}>
-              <Tab title="选项卡1"></Tab>
-              <Tab title="选项卡2"></Tab>
-              <Tab title="选项卡3"></Tab>
-            </Tab.Group>
+            <Tab theme="error" value={this.state.activeIndex} onChange={(i) => console.log(i)}>
+              <Item title="选项卡1">
+                <div className="content">选项卡1内容</div>
+              </Item>
+              <Item title="选项卡2">
+                <div className="content">选项卡2内容</div>
+              </Item>
+              <Item title="选项卡3">
+                <div className="content">选项卡3内容</div>
+              </Item>
+            </Tab>
           </Panel.Body>
         </Panel>
 
@@ -61,11 +89,55 @@ class TabPage extends Component {
             <Panel.Title>默认选项的标签页</Panel.Title>
           </Panel.Header>
           <Panel.Body>
-            <Tab.Group theme="success" defaultValue={1} onChange={(i) => console.log(i)}>
-              <Tab title="选项卡1"></Tab>
-              <Tab title="选项卡2"></Tab>
-              <Tab title="选项卡3"></Tab>
-            </Tab.Group>
+            <Tab defaultValue={1}>
+              <Item title="选项卡1">
+                <div className="content">选项卡1内容</div>
+              </Item>
+              <Item title="选项卡2">
+                <div className="content">选项卡2内容</div>
+              </Item>
+              <Item title="选项卡3">
+                <div className="content">选项卡3内容</div>
+              </Item>
+            </Tab>
+          </Panel.Body>
+        </Panel>
+
+        <Panel>
+          <Panel.Header>
+            <Panel.Title>指定线条宽度的标签页</Panel.Title>
+          </Panel.Header>
+          <Panel.Body>
+            <Tab lineWidth={60}>
+              <Item title="选项卡1">
+                <div className="content">选项卡1内容</div>
+              </Item>
+              <Item title="选项卡2">
+                <div className="content">选项卡2内容</div>
+              </Item>
+              <Item title="选项卡3">
+                <div className="content">选项卡3内容</div>
+              </Item>
+            </Tab>
+          </Panel.Body>
+        </Panel>
+
+        <Panel>
+          <Panel.Header>
+            <Panel.Title>禁用选项的标签页</Panel.Title>
+          </Panel.Header>
+          <Panel.Body>
+            <Tab>
+              <Item title="选项卡1">
+                <div className="content">选项卡1内容</div>
+              </Item>
+              <Item title="选项卡2" disabled>
+                <div className="content">选项卡2内容</div>
+              </Item>
+              <Item title="选项卡3">
+                <div className="content">选项卡3内容</div>
+              </Item>
+            </Tab>
           </Panel.Body>
         </Panel>
       </div>

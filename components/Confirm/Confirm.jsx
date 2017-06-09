@@ -6,13 +6,13 @@ import Button from '../Button';
 class Confirm extends PureComponent {
 
   render() {
-    const { title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
+    const { prefixCls, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
 
     return (
       <Modal {...others}>
         <Modal.Header title={title} />
         <Modal.Body>
-          <div className="ui-confirm">
+          <div className={prefixCls}>
             {message}
           </div>
         </Modal.Body>
@@ -26,6 +26,7 @@ class Confirm extends PureComponent {
 }
 
 Confirm.propTypes = {
+  prefixCls: PropTypes.string,
   message: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   okText: PropTypes.string,
@@ -35,6 +36,7 @@ Confirm.propTypes = {
 };
 
 Confirm.defaultProps = {
+  prefixCls: 'ui-confirm',
   message: '',
   width: '70%',
   okText: '确定',

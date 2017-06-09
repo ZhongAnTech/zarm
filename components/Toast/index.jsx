@@ -59,14 +59,14 @@ class Toast extends PureComponent {
   render() {
     const { prefixCls, visible, children, onMaskClick, className } = this.props;
 
-    const cls = classnames({
+    const classes = classnames({
       [`${prefixCls}`]: true,
       [`${prefixCls}-open`]: this.state.isShow,
       [className]: !!className,
     });
 
     return (
-      <div className={cls}>
+      <div className={classes}>
         <div className={`${prefixCls}-container`}>
           {children}
         </div>

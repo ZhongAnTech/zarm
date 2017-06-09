@@ -22,16 +22,9 @@
   }
 
   & + & {
-    &:before {
-      content: '';
-      position: absolute;
+    @include onepx(top);
+    &:after {
       left: r(15);
-      right: 0;
-      top: 0;
-      height: 1px;
-      border-top: 1px solid #ddd;
-      transform-origin: 0 0;
-      transform: scaleY(0.5);
     }
   }
 }
