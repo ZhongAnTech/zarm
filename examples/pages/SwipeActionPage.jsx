@@ -12,11 +12,9 @@ class SwipeActionPage extends Component {
           right={[
             { text: '右按钮1',
               onClick: () => console.log('右按钮1'),
-              style: { backgroundColor: 'orange', color: 'white' },
             },
             { text: '右按钮2',
               onClick: () => console.log('右按钮2'),
-              style: { backgroundColor: 'red', color: 'white' },
             },
           ]}
           autoClose
@@ -29,11 +27,9 @@ class SwipeActionPage extends Component {
           left={[
             { text: '左按钮1',
               onClick: () => console.log('左按钮1'),
-              style: { backgroundColor: 'orange', color: 'white' },
             },
             { text: '左按钮2',
               onClick: () => console.log('左按钮2'),
-              style: { backgroundColor: 'red', color: 'white' },
             },
           ]}>
           <Cell title="左侧按钮" />
@@ -44,21 +40,17 @@ class SwipeActionPage extends Component {
           left={[
             { text: '左按钮1',
               onClick: () => console.log('左按钮1'),
-              style: { backgroundColor: 'orange', color: 'white' },
             },
             { text: '左按钮2',
               onClick: () => console.log('左按钮2'),
-              style: { backgroundColor: 'red', color: 'white' },
             },
           ]}
           right={[
             { text: '右按钮1',
               onClick: () => console.log('右按钮1'),
-              style: { backgroundColor: 'orange', color: 'white' },
             },
             { text: '右按钮2',
               onClick: () => console.log('右按钮2'),
-              style: { backgroundColor: 'red', color: 'white' },
             },
           ]}>
           <Cell title="双侧按钮" />
