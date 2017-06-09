@@ -1,12 +1,22 @@
 .ui-swipeAction-wrap{
   position: relative;
-  .ui-swipeAction-btn-wrap{
+  .ui-swipeAction-content{
+    position: relative;
+    z-index: 10;
+  }
+  .ui-swipeAction-right-btn-wrap{
     position: absolute;
     height: 100%;
     right: 0;
     top: 0;
-    z-index: -1;
-
+    // z-index: -1;
+  }
+  .ui-swipeAction-left-btn-wrap{
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    // z-index: -1;
   }
   .full-mask{
     position: fixed;
@@ -18,20 +28,36 @@
     background: #fff;
     opacity: 0.2;
   }
-}
-.demo-btn-wrap{
-  height: 100%;
-}
-.demo-del{
-  display: inline-block;
-  width: r(80);
-  text-align: center;
-  &.del1{
-    background: #1AAD19;
+  
+  .ui-swipeAction-btn-wrap{
     height: 100%;
+    display: flex;
   }
-  &.del2{
-    background: #E64340;
-    height: 100%;
+  .ui-swipeAction-btn{
+    display: flex;
+    width: r(80);
+    justify-content: center;
+    align-items: center;
+    font-size: r(14);
+  }
+  .ui-cell-normal .ui-cell-title{
+    width: auto;
   }
 }
+
+// .demo-del{
+//   display: flex;
+//   width: r(80);
+//   justify-content: center;
+//   align-items: center;
+//   color: #fff;
+//   &.del1{
+//     background: #1AAD19;
+//     height: 100%;
+
+//   }
+//   &.del2{
+//     background: #E64340;
+//     height: 100%;
+//   }
+// }
