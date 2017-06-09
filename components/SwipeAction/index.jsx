@@ -33,7 +33,6 @@ class SwipeAction extends Component {
   }
 
 
-
   onCloseSwipe(ev) {
     if (this.openedLeft || this.openedRight) {
       const pNode = ((node) => {
@@ -191,7 +190,6 @@ class SwipeAction extends Component {
             buttons.map((btn, i) => (
               <div
                 className={`${prefixCls}-btn ${btn.hasOwnProperty('className') ? btn.className : ''}`}
-                style={btn.style}
                 onClick={(e) => this.onBtnClick(e, btn)}>
                 <div className={`${prefixCls}-text`}>{btn.text || `${ref}${i}`}</div>
               </div>

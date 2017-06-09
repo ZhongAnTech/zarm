@@ -273,11 +273,9 @@ class CellPage extends Component {
               right={[
                 { text: '右按钮1',
                   onClick: () => console.log('右按钮1'),
-                  style: { backgroundColor: 'orange', color: 'white' },
                 },
                 { text: '右按钮2',
                   onClick: () => console.log('右按钮2'),
-                  style: { backgroundColor: 'red', color: 'white' },
                 },
               ]}
               autoClose
