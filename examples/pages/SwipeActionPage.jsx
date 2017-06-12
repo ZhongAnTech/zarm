@@ -8,52 +8,72 @@ class SwipeActionPage extends Component {
     return (
       <div className="swipeAction-page">
         <SwipeAction
-          prefixCls="ui-swipeAction"
           right={[
-            { text: '右按钮1',
+            { text: '右按钮1自定义class',
               onClick: () => console.log('右按钮1'),
+              theme: 'error',
+              className: 'custom-btn',
             },
             { text: '右按钮2',
               onClick: () => console.log('右按钮2'),
+              theme: 'success',
             },
           ]}
           autoClose
           >
-          <Cell title="右侧按钮（自动关闭）" />
+          <Cell>右侧按钮（自动关闭）</Cell>
         </SwipeAction>
 
         <SwipeAction
-          prefixCls="ui-swipeAction"
           left={[
             { text: '左按钮1',
               onClick: () => console.log('左按钮1'),
+              theme: 'info',
             },
             { text: '左按钮2',
               onClick: () => console.log('左按钮2'),
+              theme: 'warning',
             },
           ]}>
-          <Cell title="左侧按钮" />
+          <Cell>左侧按钮</Cell>
         </SwipeAction>
 
         <SwipeAction
-          prefixCls="ui-swipeAction"
           left={[
             { text: '左按钮1',
               onClick: () => console.log('左按钮1'),
+              theme: 'info',
             },
             { text: '左按钮2',
               onClick: () => console.log('左按钮2'),
+              theme: 'warning',
             },
           ]}
           right={[
             { text: '右按钮1',
               onClick: () => console.log('右按钮1'),
+              theme: 'error',
             },
             { text: '右按钮2',
               onClick: () => console.log('右按钮2'),
+              theme: 'success',
             },
           ]}>
-          <Cell title="双侧按钮" />
+          <Cell>双侧按钮</Cell>
+        </SwipeAction>
+        <br />
+        <SwipeAction
+          left={[
+            { text: '左按钮1',
+              onClick: () => console.log('左按钮1'),
+              theme: 'info',
+            },
+            { text: '左按钮2',
+              onClick: () => console.log('左按钮2'),
+              theme: 'warning',
+            },
+          ]}>
+          <div className="cell">左侧按钮(div)</div>
         </SwipeAction>
       </div>
     );

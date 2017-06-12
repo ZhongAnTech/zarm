@@ -189,8 +189,9 @@ class SwipeAction extends Component {
           {
             buttons.map((btn, i) => (
               <div
-                className={`${prefixCls}-btn ${btn.hasOwnProperty('className') ? btn.className : ''}`}
-                onClick={(e) => this.onBtnClick(e, btn)}>
+                className={`${prefixCls}-btn theme-${btn.theme} ${btn.hasOwnProperty('className') ? btn.className : ''}`}
+                onClick={(e) => this.onBtnClick(e, btn)}
+                >
                 <div className={`${prefixCls}-text`}>{btn.text || `${ref}${i}`}</div>
               </div>
             ))
@@ -229,10 +230,16 @@ class SwipeAction extends Component {
 
 }
 
+SwipeAction.propTypes = {
+  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+};
+
 SwipeAction.defaultProps = {
+  prefixCls: 'ui-swipeAction',
   moveTimeDur: 300,
   moveDistanceRatio: 0.5,
   offset: 10,
+  theme: 'default',
   onOpen: () => {},
   onClose: () => {},
 };
