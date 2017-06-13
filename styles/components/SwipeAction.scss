@@ -1,37 +1,68 @@
-.ui-swipeAction-wrap{
-  position: relative;
-  .ui-swipeAction-btn-wrap{
+.ui-swipeAction{
+  &-wrap{
+    position: relative;  
+  }
+  &-content{
+    position: relative;
+    z-index: 10;
+  }
+  &-right-btn-wrap{
     position: absolute;
     height: 100%;
     right: 0;
     top: 0;
-    z-index: -1;
-
+    // z-index: -1;
   }
-  .full-mask{
-    position: fixed;
+  &-left-btn-wrap{
+    position: absolute;
+    height: 100%;
     left: 0;
     top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 100;
-    background: #fff;
-    opacity: 0.2;
+    // z-index: -1;
   }
-}
-.demo-btn-wrap{
-  height: 100%;
-}
-.demo-del{
-  display: inline-block;
-  width: r(80);
-  text-align: center;
-  &.del1{
-    background: #1AAD19;
+  
+  &-btn-wrap{
     height: 100%;
+    display: flex;
   }
-  &.del2{
-    background: #E64340;
-    height: 100%;
+  &-btn{
+    display: flex;
+    width: r(80);
+    justify-content: center;
+    align-items: center;
+    font-size: r(14);
+    &.theme-info {
+      @include button-theme($base-btn-info-color, $base-btn-info-bg, $base-btn-info-border);
+      @include button-bordered($base-btn-info-border, $base-btn-info-bg, $base-btn-info-border);
+    }
+    &.theme-success {
+      @include button-theme($base-btn-success-color, $base-btn-success-bg, $base-btn-success-border);
+      @include button-bordered($base-btn-success-border, $base-btn-success-bg, $base-btn-success-border);
+    }
+    &.theme-warning {
+      @include button-theme($base-btn-warning-color, $base-btn-warning-bg, $base-btn-warning-border);
+      @include button-bordered($base-btn-warning-border, $base-btn-warning-bg, $base-btn-warning-border);
+    }
+    &.theme-error {
+      @include button-theme($base-btn-error-color, $base-btn-error-bg, $base-btn-error-border);
+      @include button-bordered($base-btn-error-border, $base-btn-error-bg, $base-btn-error-border);
+    }
   }
 }
+
+// .demo-del{
+//   display: flex;
+//   width: r(80);
+//   justify-content: center;
+//   align-items: center;
+//   color: #fff;
+//   &.del1{
+//     background: #1AAD19;
+//     height: 100%;
+
+//   }
+//   &.del2{
+//     background: #E64340;
+//     height: 100%;
+//   }
+// }
