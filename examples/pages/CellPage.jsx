@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, SwipeAction } from '../../components';
+import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch } from '../../components';
 import District from './district';
 
 const seasons = [
@@ -26,7 +26,6 @@ const seasons = [
   ],
 ];
 
-
 class CellPage extends Component {
 
   constructor(props) {
@@ -34,7 +33,6 @@ class CellPage extends Component {
     this.state = {
       picker: false,
       datePicker: false,
-      CascaderPicker: false,
       sValue: [],
       dataSource: [],
       date: '',
@@ -137,10 +135,6 @@ class CellPage extends Component {
               <Input type="text" placeholder="请输入姓名" />
             </Cell>
 
-            <Cell title="出生日期" type="select">
-              <Input type="date" placeholder="请选择出生日期" />
-            </Cell>
-
             <Cell
               title="份数"
               description={
@@ -178,47 +172,6 @@ class CellPage extends Component {
               </Select>
             </Cell>
 
-            {/*
-            <Cell title="省份" type="select">
-              <Picker
-                placeholder="选择省份"
-                dataSource={District}
-                value={'520000'}
-                onChange={(value) => {
-                  console.log(value);
-                }}
-                />
-            </Cell>
-
-            <Cell title="所在城市" type="select">
-              <Picker.Group
-                visible={this.state.picker}
-                title="选择城市"
-                placeholder="请选择城市"
-                dataSource={District}
-                value={this.state.pickerValue}
-                valueMember="label"
-                displayMember="label"
-                format=""
-                onChange={(values, selected) => {
-                  console.log(values, selected);
-                }}
-                onOk={(value) => {
-                  console.log('你选择了确定', value);
-                  this.setState({
-                    picker: false,
-                    pickerValue: value,
-                  });
-                }}
-                onCancel={() => {
-                  this.setState({ picker: false });
-                }}
-                onMaskClick={() => {
-                  this.setState({ picker: false });
-                }}
-                />
-            </Cell>*/}
-
             <Cell title="日期选择器" type="select">
               <Picker.Date
                 visible={this.state.datePicker}
@@ -229,13 +182,13 @@ class CellPage extends Component {
                 value={this.state.date}
                 defaultValue={this.state.date}
                 onChange={(value) => {
-                  console.log("外部change value ->", value);
+                  console.log('外部change value ->', value);
                   // this.setState({
                   //   date: value,
                   // });
                 }}
                 onOk={(value) => {
-                  console.log("外部ok value ->", value);
+                  console.log('外部ok value ->', value);
                   this.setState({
                     date: value,
                   });
@@ -247,7 +200,7 @@ class CellPage extends Component {
 
             <Cell title="多级选择器" type="select">
               <Picker
-                visible={this.state.CascaderPicker}
+                visible={this.state.picker}
                 title="请选择"
                 placeholder="请选择"
                 format="-"
@@ -268,21 +221,6 @@ class CellPage extends Component {
                 }}
                 />
             </Cell>
-
-            <SwipeAction
-              prefixCls="ui-swipeAction"
-              right={
-                <div className="demo-btn-wrap">
-                  <div className="demo-del del1">删除1</div>
-                  <div className="demo-del del2">删除2</div>
-                </div>
-              }>
-              <Panel>
-                <Panel.Body>
-                  <Cell title="标题文字" />
-                </Panel.Body>
-              </Panel>
-            </SwipeAction>
 
             <Cell>
               <Checkbox
