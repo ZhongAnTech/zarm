@@ -20,7 +20,6 @@ $prefixCls: ui-tab;
 
 .#{$prefixCls} {
   @include tab-theme($theme-info);
-  background: #fff;
 
   &.theme-info {
     @include tab-theme($theme-info);
@@ -56,7 +55,7 @@ $prefixCls: ui-tab;
       color: #000;
       cursor: pointer;
       
-    /*  &:nth-of-type(n+2) {
+      /*&:nth-of-type(n+2) {
         position: relative;
 
         &:after {
@@ -77,7 +76,7 @@ $prefixCls: ui-tab;
       }
 
       &.disabled {
-        opacity: $disabled-opacity;
+        color: $disabled-color;
         cursor: not-allowed;
       }
     }
@@ -100,12 +99,10 @@ $prefixCls: ui-tab;
 
   &-container {
     position: relative;
-    -webkit-transition: height .3s;
     transition: height .3s;
 
     &-item {
       display: none;
-      line-height: normal;
       
       &.active {
         display: block;
