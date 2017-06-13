@@ -207,6 +207,8 @@ class SwipeAction extends Component {
       <div
         className={`${prefixCls}-wrap`}
         ref={(wrap) => { this.wrap = wrap; }}>
+        {this.renderButtons(left, 'left')}
+        {this.renderButtons(right, 'right')}
         <div
           className={`${prefixCls}-content`}
           ref={(content) => { this.content = content; }}
@@ -215,8 +217,6 @@ class SwipeAction extends Component {
           onTouchEnd={e => this._onTouchEnd(e)}>
           {children}
         </div>
-        { this.renderButtons(left, 'left') }
-        { this.renderButtons(right, 'right') }
       </div>
     ) : (
       <div
