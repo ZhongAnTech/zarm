@@ -1,6 +1,6 @@
-$modalPrefixCls: ui-modal;
+$prefixCls: ui-modal;
 
-.#{$modalPrefixCls} {
+.#{$prefixCls} {
   position: fixed;
   left: 0;
   top: 0;
@@ -16,7 +16,7 @@ $modalPrefixCls: ui-modal;
   z-index: $zIndex-modal;
 
   &.radius {
-    .#{$modalPrefixCls}-dialog {
+    .#{$prefixCls}-dialog {
       border-radius: $radius-md;
     }
   }
