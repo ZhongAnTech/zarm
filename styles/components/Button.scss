@@ -18,17 +18,10 @@ $prefixCls: ui-button;
     }
 
     &.disabled,
-    &:disabled {
-      cursor: not-allowed;
-      
-      &:active,
-      &.active,
-      &:focus,
-      &.focus {
-        background-color: #fff;
-        border-color: $border;
-        color: $color;
-      }
+    &:disabled {      
+      background-color: $disabled-background;
+      border-color: $disabled-background;
+      color: $disabled-color;
     }
   }
 }
@@ -60,9 +53,12 @@ $prefixCls: ui-button;
   
   &.disabled,
   &:disabled {
-    cursor: not-allowed;
+    background-color: $disabled-background;
+    border-color: $disabled-background;
+    color: $disabled-color;
+    /*cursor: not-allowed;*/
     
-    &:active,
+    /*&:active,
     &.active,
     &:focus,
     &.focus,
@@ -71,7 +67,7 @@ $prefixCls: ui-button;
       background-color: $background;
       border-color: $border;
       box-shadow: none;
-    }
+    }*/
   }
 
 }

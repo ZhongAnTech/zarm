@@ -3,11 +3,13 @@
 .button-page {
 
   .ui-panel-body {
-    padding: r(10);
+    padding: r(10) r(10) 0 r(10);
     background: #fff;
+    overflow: hidden;
   }
 
-  .ui-button + .ui-button {
-    margin-left: r(5);
+  .ui-button {
+    margin-bottom: r(10);
+    margin-right: r(10);
   }
 }
