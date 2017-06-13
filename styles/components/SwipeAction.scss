@@ -1,37 +1,55 @@
-.ui-swipeAction-wrap{
-  position: relative;
-  .ui-swipeAction-btn-wrap{
+.ui-swipeAction {
+
+  &-wrap {
+    position: relative;  
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-right-btn-wrap {
     position: absolute;
     height: 100%;
     right: 0;
     top: 0;
-    z-index: -1;
-
   }
-  .full-mask{
-    position: fixed;
+
+  &-left-btn-wrap {
+    position: absolute;
+    height: 100%;
     left: 0;
     top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 100;
-    background: #fff;
-    opacity: 0.2;
   }
-}
-.demo-btn-wrap{
-  height: 100%;
-}
-.demo-del{
-  display: inline-block;
-  width: r(80);
-  text-align: center;
-  &.del1{
-    background: #1AAD19;
+  
+  &-btn-wrap {
     height: 100%;
+    display: flex;
   }
-  &.del2{
-    background: #E64340;
-    height: 100%;
+
+  &-btn {
+    display: flex;
+    width: r(80);
+    justify-content: center;
+    align-items: center;
+    font-size: r(14);
+
+    /* Button themes */
+    &.theme-info {
+      @include button-theme($btn-info-color, $btn-info-bg, $btn-info-border);
+      @include button-bordered($btn-info-border, $btn-info-bg, 35%, $btn-info-border);
+    }
+    &.theme-success {
+      @include button-theme($btn-success-color, $btn-success-bg, $btn-success-border);
+      @include button-bordered($btn-success-border, $btn-success-bg, 35%, $btn-success-border);
+    }
+    &.theme-warning {
+      @include button-theme($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+      @include button-bordered($btn-warning-border, $btn-warning-bg, 35%, $btn-warning-border);
+    }
+    &.theme-error {
+      @include button-theme($btn-error-color, $btn-error-bg, $btn-error-border);
+      @include button-bordered($btn-error-border, $btn-error-bg, 35%, $btn-error-border);
+    }
   }
 }

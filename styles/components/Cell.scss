@@ -21,13 +21,6 @@
     @include cell-theme($btn-error-bg, $btn-error-border);
   }
 
-  /*& + & {
-    @include onepx(top);
-    &:after {
-      left: r(15);
-    }
-  }*/
-
   @include onepx(top);
   &:after {
     left: r(15);
