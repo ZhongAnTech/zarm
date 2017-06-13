@@ -22,6 +22,7 @@ class Index extends Component {
             <Cell type="link" title="Radio" icon={<img src="https://weui.io/images/icon_nav_radio.png" alt="" />} onClick={() => hashHistory.push('/radio')} />
             <Cell type="link" title="lottery" onClick={() => hashHistory.push('/lottery')} />
             <Cell type="link" title="swipe" onClick={() => hashHistory.push('/swipe')} />
+            <Cell type="link" title="swipeAction" onClick={() => hashHistory.push('/swipeAction')} />
           </Panel.Body>
         </Panel>
       </div>
