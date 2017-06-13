@@ -94,7 +94,8 @@ class ModalPage extends Component {
           </Modal.Body>
         </Modal>
 
-        <Modal {...this.state.props} visible={this.state.alert}>
+        <Modal radius {...this.state.props} visible={this.state.alert}>
+          <Modal.Header title="警告" />
           <Modal.Body>
             这是一个警告提示框
           </Modal.Body>

@@ -13,7 +13,6 @@ $radius-lg: r(4);
 $radius-md: r(4);
 $radius-sm: r(4);
 $radius-xs: r(4);
-$modal-radius: r(6) !default;
 
 $height-xl: r(50);
 $height-lg: r(45);
@@ -40,6 +39,8 @@ $zIndex-loading: 1300 !default;
 
 /*$line-height:         1.5 !default;*/
 $disabled-opacity: .5;
+$disabled-background: #ddd;
+$disabled-color: #bbb;
 $placeholder-color: #a9a9a9;
 $icon-url:            '//at.alicdn.com/t/font_1rke47h9f6r';
 

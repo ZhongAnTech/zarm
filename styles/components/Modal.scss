@@ -17,7 +17,7 @@ $modalPrefixCls: ui-modal;
 
   &.radius {
     .#{$modalPrefixCls}-dialog {
-      border-radius: $modal-radius;
+      border-radius: $radius-md;
     }
   }
 
