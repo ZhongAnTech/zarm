@@ -6,6 +6,7 @@
 
 .ui-cell {
   position: relative;
+  overflow: hidden;
   @include cell-theme(btn-default-bg, $btn-default-border);
 
   &.theme-info {
@@ -30,10 +31,15 @@
 .ui-cell-inner {
   display: flex;
   align-items: center;
-  padding: r(8) r(15);
+  padding: 0 r(15);
   background: #fff;
   font-size: r(15);
   min-height: r(45);
+/*  background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 0);
+  background-size: 120% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-origin: content-box;*/
 
   a,
   a:hover {
