@@ -38,7 +38,7 @@ class Page extends PureComponent {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>按钮主题</Panel.Title>
+              <Panel.Title>多主题</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Button>default</Button>

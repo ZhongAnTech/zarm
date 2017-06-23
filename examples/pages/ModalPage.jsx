@@ -8,12 +8,19 @@ class Page extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      modal: {
-        visible: false,
-        children: 'aaa',
-      },
-    };
+    this.state = {};
+  }
+
+  open(key) {
+    this.setState({
+      [`${key}`]: true,
+    });
+  }
+
+  close(key) {
+    this.setState({
+      [`${key}`]: false,
+    });
   }
 
   render() {
@@ -32,80 +39,105 @@ class Page extends Component {
                 description={
                   <Button
                     size="xs"
-                    onClick={() => {
-                      modal.visible = true;
-                      this.setState({ modal });
-                    }}>开启</Button>
-                }>默认关</Cell>
+                    onClick={() => this.open('modal1')}>开启</Button>
+                }>普通</Cell>
 
               <Cell
                 description={
-                  <Switch
-                    checked={this.state.modal.visible}
-                    onChange={() => this.open('modal2', {
-                      onMaskClick: () => this.close('modal2'),
-                    })}
-                    />
+                  <Button
+                    size="xs"
+                    onClick={() => this.open('modal3')}>开启</Button>
                 }>
-                点击遮罩层可以关闭的模态框
+                圆角
+              </Cell>
+
+              <Cell
+                description={
+                  <Button
+                    size="xs"
+                    onClick={() => this.open('modal2')}>开启</Button>
+                }>
+                遮罩层可关闭
+              </Cell>
+
+              <Cell
+                description={
+                  <Button
+                    size="xs"
+                    onClick={() => this.open('modal4')}>开启</Button>
+                }>无头部</Cell>
+
+              <Cell
+                description={
+                  <Button
+                    size="xs"
+                    onClick={() => this.open('modal5')}>开启</Button>
+                }>动画效果</Cell>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>特定场景</Panel.Title>
+            </Panel.Header>
+            <Panel.Body>
+              <Cell
+                description={
+                  <Button
+                    size="xs"
+                    theme="warning"
+                    onClick={() => this.open('alert')}>开启</Button>
+                }>
+                警告框 Alert
+              </Cell>
+
+              <Cell
+                description={
+                  <Button
+                    size="xs"
+                    theme="warning"
+                    onClick={() => this.open('confirm')}>开启</Button>
+                }>
+                确认框 Confirm
               </Cell>
             </Panel.Body>
           </Panel>
 
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>点击遮罩层可以关闭的模态框</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
-              <Button
-                radius
-                onClick={() => this.open('modal', {
-                  onMaskClick: () => this.close('modal'),
-                })}>打开</Button>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>Dialog、Alert、Confirm模式的模态框</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
-              <Button
-                radius
-                onClick={() => this.open('dialog', {
-                  onMaskClick: () => this.close('dialog'),
-                })}>Dialog</Button>
-              <Button radius theme="info" onClick={() => this.open('alert', {})}>Alert</Button>
-              <Button radius theme="warning" onClick={() => this.open('confirm', {})}>Confirm</Button>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>圆角模态框</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
-              <Button radius onClick={() => this.open('modal', { isRadius: true })}>打开</Button>
-            </Panel.Body>
-          </Panel>
-
-          <ModalDemo {...this.state.modal} />
-
-          <Modal {...this.state.props} visible={this.state.modal1}>
+          <Modal visible={this.state.modal1}>
             <Modal.Header title="标题" onClose={() => this.close('modal1')} />
-            <Modal.Body>
-              模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容模态框内容
-            </Modal.Body>
-          </Modal>
-
-          <Modal {...this.state.props} visible={this.state.dialog}>
-            <Modal.Header title="标题" onClose={() => this.close('dialog')} />
             <Modal.Body>
               模态框内容
             </Modal.Body>
           </Modal>
 
-          <Modal radius {...this.state.props} visible={this.state.alert}>
+          <Modal visible={this.state.modal2} onMaskClick={() => this.close('modal2')}>
+            <Modal.Header title="标题" />
+            <Modal.Body>
+              点击遮罩层关闭
+            </Modal.Body>
+          </Modal>
+
+          <Modal radius visible={this.state.modal3}>
+            <Modal.Header title="标题" onClose={() => this.close('modal3')} />
+            <Modal.Body>
+              模态框内容
+            </Modal.Body>
+          </Modal>
+
+          <Modal visible={this.state.modal4} onMaskClick={() => this.close('modal4')}>
+            <Modal.Body>
+              无头部
+            </Modal.Body>
+          </Modal>
+
+          <Modal visible={this.state.modal5} animationType="rotate" onMaskClick={() => this.close('modal5')}>
+            <Modal.Body>
+              支持多种动画效果。<br />
+              当前使用的是rotate旋转效果。
+            </Modal.Body>
+          </Modal>
+
+          <Modal radius visible={this.state.alert}>
             <Modal.Header title="警告" />
             <Modal.Body>
               这是一个警告提示框
