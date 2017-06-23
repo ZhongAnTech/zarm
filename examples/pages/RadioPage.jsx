@@ -20,7 +20,7 @@ class Page extends PureComponent {
         <main>
           <Panel>
             <Panel.Header>
-              <Panel.Title>基本样式</Panel.Title>
+              <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Radio.Group

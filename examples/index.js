@@ -39,6 +39,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'picker',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/PickerPage'));
+        });
+      },
+    },
+    {
       path: 'radio',
       getComponent(location, cb) {
         require.ensure([], (require) => {

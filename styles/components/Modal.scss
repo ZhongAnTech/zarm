@@ -76,18 +76,12 @@ $prefixCls: ui-modal;
   &-footer {
     display: flex;
     width: 100%;
-    border-top: 1px solid #ddd;
 
     &.block {
       display: block;
 
       .ui-button {
-        border-top: 1px solid #ddd;
-        border-left-width: 0;
-
-        &:first-of-type {
-          border-top-width: 0;
-        }
+        @include onepx(top);
       }
     }
 
@@ -97,19 +91,21 @@ $prefixCls: ui-modal;
       line-height: r(50);
       font-size: r(16);
       border-width: 0;
-      border-left-width: 1px;
-      border-color: #ddd !important;
-      /*background: #fff;*/
-      /*color: #333;*/
+      /*border-left-width: 1px;
+      border-color: #ddd !important;*/
+
+      /* 1px line*/
+      position: relative;
+      @include onepx(top);
 
       &:active {
-        border-color: #ddd;
         background: #f1f1f1 !important;
       }
 
-      &:first-of-type {
+      &:not(:first-of-type) {
         /*color: #333;*/
-        border-left-width: 0;
+        /*border-left-width: 0;*/
+        @include onepx(left top);
       }
     }
   }

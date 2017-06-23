@@ -12,7 +12,7 @@ class Page extends Component {
         <main>
           <Panel>
             <Panel.Header>
-              <Panel.Title>Icon图标</Panel.Title>
+              <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Icon type="right" theme="success" />
