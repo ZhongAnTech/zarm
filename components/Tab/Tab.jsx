@@ -40,6 +40,7 @@ class TabGroup extends PureComponent {
 
   render() {
     const { prefixCls, lineWidth, theme, className, children, onChange } = this.props;
+
     const classes = classnames({
       [`${prefixCls}`]: true,
       [`theme-${theme}`]: !!theme,

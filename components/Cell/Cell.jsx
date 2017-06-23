@@ -35,7 +35,7 @@ class Cell extends PureComponent {
       : null;
 
     return (
-      <div className={cls} {...others}>
+      <div onTouchStart={() => {}} className={cls} {...others}>
         <div className={`${prefixCls}-inner`}>
           <div className={`${prefixCls}-header`}>
             {iconRender}
@@ -56,14 +56,14 @@ class Cell extends PureComponent {
 
 Cell.propTypes = {
   prefixCls: PropTypes.string,
-  type: PropTypes.oneOf(['normal', 'link', 'select']),
   className: PropTypes.string,
+  type: PropTypes.oneOf(['normal', 'link', 'select']),
 };
 
 Cell.defaultProps = {
   prefixCls: 'ui-cell',
-  type: 'normal',
   className: null,
+  type: 'normal',
 };
 
 export default Cell;

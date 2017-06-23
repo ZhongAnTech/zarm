@@ -135,12 +135,12 @@ class Lottery extends Component {
     }
 
     return (
-      <div className="lottery-area">
+      <div className="ui-lottery">
         <div className={cls} ref={(rotateArea) => { this.rotateArea = rotateArea; }} style={{ backgroundImage: `url(${this.props.bgUrl})` }}>
           {rotateItem}
         </div>
         <div
-          className="lottery-btn"
+          className="ui-lottery-btn"
           style={{ backgroundImage: `url(${this.props.btnUrl})` }}
           onClick={
             () => {

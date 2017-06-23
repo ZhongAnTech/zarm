@@ -1,33 +1,36 @@
-$PrefixCls: ui-input-number;
+$prefixCls: ui-input-number;
 
 @mixin input-number-theme($color) {
-  .ui-input-number-body {
-    color: $color
+  .#{$prefixCls} {
+    &-body,
+    &-sub,
+    &-plus {
+      color: $color
+    }
   }
 }
 
-.#{$PrefixCls} {
+.#{$prefixCls} {
   display: flex;
   user-select: none;
-  @include input-number-theme($theme-default);
+  @include input-number-theme($theme-info);
 
   &.disabled {
-    .#{$PrefixCls}-body {
+    .#{$prefixCls}-body {
       opacity: $disabled-opacity;
       cursor: not-allowed;
     }
   }
 
-  &.radius {
-    .#{$PrefixCls}-sub,
-    .#{$PrefixCls}-plus {
+  &.shape-radius {
+    .#{$prefixCls}-sub,
+    .#{$prefixCls}-plus {
       border-radius: $radius-md;
     }
   }
-
-  &.round {
-    .#{$PrefixCls}-sub,
-    .#{$PrefixCls}-plus {
+  &.shape-circle {
+    .#{$prefixCls}-sub,
+    .#{$prefixCls}-plus {
       border-radius: 50%;
     }
   }
@@ -77,7 +80,6 @@ $PrefixCls: ui-input-number;
     width: r(60);
     padding: 0 r(10);
     height: r(30);
-    /*border: 1px solid #ddd;*/
     border: 0;
     border-radius: 0;
     text-align: center;

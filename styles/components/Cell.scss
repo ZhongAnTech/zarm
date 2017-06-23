@@ -7,19 +7,19 @@
 .ui-cell {
   position: relative;
   overflow: hidden;
-  @include cell-theme(btn-default-bg, $btn-default-border);
+  @include cell-theme(button-default-bg, $button-default-border);
 
   &.theme-info {
-    @include cell-theme($btn-info-bg, $btn-info-border);
+    @include cell-theme($button-info-bg, $button-info-border);
   }
   &.theme-success {
-    @include cell-theme($btn-success-bg, $btn-success-border);
+    @include cell-theme($button-success-bg, $button-success-border);
   }
   &.theme-warning {
-    @include cell-theme($btn-warning-bg, $btn-warning-border);
+    @include cell-theme($button-warning-bg, $button-warning-border);
   }
   &.theme-error {
-    @include cell-theme($btn-error-bg, $btn-error-border);
+    @include cell-theme($button-error-bg, $button-error-border);
   }
 
   @include onepx(top);
@@ -35,11 +35,6 @@
   background: #fff;
   font-size: r(15);
   min-height: r(45);
-/*  background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 0);
-  background-size: 120% 1px;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-origin: content-box;*/
 
   a,
   a:hover {
@@ -72,10 +67,11 @@
 .ui-cell-link {
   cursor: pointer;
   user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   
-  .ui-cell-inner:active {
-    background-color: #d9d9d9;
+  .ui-cell-inner {
+    &:active {
+      background-color: #d9d9d9;
+    }
   }
 
   .ui-cell-title {

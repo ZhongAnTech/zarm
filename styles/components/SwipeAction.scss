@@ -8,26 +8,25 @@
     position: relative;
   }
 
-  &-right-btn-wrap {
-    position: absolute;
-    height: 100%;
-    right: 0;
-    top: 0;
+  &-actions {
+    &-left,
+    &-right {
+      display: flex;
+      position: absolute;
+      height: 100%;
+      top: 0;
+    }
+
+    &-left {
+      left: 0;
+    }
+
+    &-right {
+      right: 0;
+    }
   }
 
-  &-left-btn-wrap {
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-  }
-  
-  &-btn-wrap {
-    height: 100%;
-    display: flex;
-  }
-
-  &-btn {
+  &-button {
     display: flex;
     width: r(80);
     justify-content: center;
@@ -36,20 +35,20 @@
 
     /* Button themes */
     &.theme-info {
-      @include button-theme($btn-info-color, $btn-info-bg, $btn-info-border);
-      @include button-bordered($btn-info-border, $btn-info-bg, 35%, $btn-info-border);
+      @include button-theme($button-info-color, $button-info-bg, $button-info-border);
+      @include button-bordered($button-info-border, $button-info-bg, $button-info-border);
     }
     &.theme-success {
-      @include button-theme($btn-success-color, $btn-success-bg, $btn-success-border);
-      @include button-bordered($btn-success-border, $btn-success-bg, 35%, $btn-success-border);
+      @include button-theme($button-success-color, $button-success-bg, $button-success-border);
+      @include button-bordered($button-success-border, $button-success-bg, $button-success-border);
     }
     &.theme-warning {
-      @include button-theme($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-      @include button-bordered($btn-warning-border, $btn-warning-bg, 35%, $btn-warning-border);
+      @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
+      @include button-bordered($button-warning-border, $button-warning-bg, $button-warning-border);
     }
     &.theme-error {
-      @include button-theme($btn-error-color, $btn-error-bg, $btn-error-border);
-      @include button-bordered($btn-error-border, $btn-error-bg, 35%, $btn-error-border);
+      @include button-theme($button-error-color, $button-error-bg, $button-error-border);
+      @include button-bordered($button-error-border, $button-error-bg, $button-error-border);
     }
   }
 }
