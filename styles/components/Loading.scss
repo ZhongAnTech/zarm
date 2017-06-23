@@ -1,4 +1,6 @@
-.ui-loading {
+$prefixCls: ui-loading;
+
+.#{$prefixCls} {
   display: none;
   position: fixed;
   left: 0px;

@@ -2,8 +2,19 @@
 
 .index-page {
 
-  .logo {
-    width: 100%;
+  .brand {
+    padding: r(30) r(30) 0 r(30);
+
+    &-title {
+      font-size: r(30);
+    }
+
+    &-description {
+      font-size: r(14);
+    }
   }
 
+  main {
+    padding: r(15);
+  }
 }

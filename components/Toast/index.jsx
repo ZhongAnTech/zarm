@@ -15,7 +15,7 @@ class Toast extends PureComponent {
 
   componentDidMount() {
     if (this.props.visible) {
-      this.enter();
+      this.enter(this.props);
     }
   }
 
@@ -23,7 +23,7 @@ class Toast extends PureComponent {
     clearTimeout(this.state.timer);
 
     if (nextProps.visible) {
-      this.enter();
+      this.enter(nextProps);
     } else {
       this.leave();
     }
@@ -33,8 +33,8 @@ class Toast extends PureComponent {
     clearTimeout(this.state.timer);
   }
 
-  enter() {
-    const { duration, onMaskClick } = this.props;
+  enter(props) {
+    const { duration, onMaskClick } = props;
 
     this.setState({
       isShow: true,

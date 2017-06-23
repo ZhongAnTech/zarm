@@ -1,10 +1,12 @@
-
 import React, { Component } from 'react';
 import Events from '../utils/events';
-import Header from './Header';
 
-import '../../styles/index';
+// page styles
+import '../styles/core/index';
 import '../styles/components/App';
+
+// components styles
+import '../../styles/index';
 
 class App extends Component {
 
@@ -15,10 +17,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div className="app-container">
           {this.props.children}
         </div>
+        <footer>
+          <div className="copyright">
+            <div className="copyright-cn">众安·体验设计中心</div>
+            <div className="copyright-en">Zhongan UX Densign</div>
+          </div>
+        </footer>
       </div>
     );
   }

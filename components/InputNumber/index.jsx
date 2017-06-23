@@ -1,10 +1,9 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
-class InputNumber extends Component {
+class InputNumber extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -51,32 +50,29 @@ class InputNumber extends Component {
 
   onSubClick() {
     const { step } = this.props;
-    const value = this.state.value - step;
+    const value = Number(this.state.value) - step;
     this.onInputChange(value);
   }
 
   onPlusClick() {
     const { step } = this.props;
-    const value = this.state.value + step;
+    const value = Number(this.state.value) + step;
     this.onInputChange(value);
   }
 
   render() {
     const props = this.props;
-    const { prefixCls, theme, isRadius, isRound, isDisabled, size, min, max, className, onChange } = this.props;
+    const { prefixCls, className, theme, size, shape, isDisabled, min, max } = this.props;
     const { value } = this.state;
     const disabled = 'disabled' in props || isDisabled;
-    const radius = 'radius' in props || isRadius;
-    const round = 'round' in props || isRound;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
-      disabled,
-      radius,
-      round,
+      [className]: !!className,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [className]: !!className,
+      [`shape-${shape}`]: !!shape,
+      disabled,
     });
 
     const subDisabled = !!(min && value <= min) || disabled;
@@ -95,7 +91,7 @@ class InputNumber extends Component {
     return (
       <span className={cls}>
         <span className={subCls} onClick={() => !subDisabled && this.onSubClick()}><Icon type="minus" /></span>
-        <input className={`${prefixCls}-body`} value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} />
+        <input className={`${prefixCls}-body`} value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} disabled={disabled} />
         <span className={plusCls} onClick={() => !plusDisabled && this.onPlusClick()}><Icon type="add" /></span>
       </span>
     );
@@ -104,28 +100,28 @@ class InputNumber extends Component {
 
 InputNumber.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
+  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
-  isRadius: PropTypes.bool,
-  isRound: PropTypes.bool,
+  shape: PropTypes.oneOf(['radius', 'round', 'circle']),
   isDisabled: PropTypes.bool,
   value: PropTypes.number,
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
-  className: PropTypes.string,
 };
 
 InputNumber.defaultProps = {
   prefixCls: 'ui-input-number',
+  className: null,
+  theme: null,
   size: null,
-  isRadius: false,
-  isRound: false,
+  shape: null,
   isDisabled: false,
   value: 0,
   step: 1,
   min: null,
   max: null,
-  className: null,
 };
 
 export default InputNumber;

@@ -1,4 +1,3 @@
-// $itemNum: 6;
 $transform-time: 4s !default;
 
 @mixin rotate-transition {
@@ -9,20 +8,20 @@ $transform-time: 4s !default;
   transform: rotate($angle);
 }
 
-.lottery-area{
+.ui-lottery {
   position: relative;
   
-  .rotate-area{
+  .rotate-area {
     position: relative;
     width: r(325);
     height: r(325);
     margin: r(20) auto;
     background-position: center center;
     background-repeat: no-repeat;
-    // background: url(../../images/lottery/lottery-bg.png) center center no-repeat;
     background-size: cover;
   }
-  .award-item{
+
+  .award-item {
     width: r(112.5); 
     height: r(148);
     background-position: center center;
@@ -33,20 +32,14 @@ $transform-time: 4s !default;
     top: r(15);
     margin-left: r(-56);
     transform-origin: bottom center;
-    // @for $i from 1 through $itemNum {   
-    //   &.award-item#{$i} { 
-    //     // background-image: url(../../images/lottery/item#{$i}.png);
-    //     transform: rotate(#{360/$itemNum*($i - 0.5)}deg);
-    //   }  
-    // }
   }
-  .lottery-btn{
+
+  &-btn {
     position: absolute;
     width: r(92);
     height: r(106);
     background-position: center center;
     background-repeat: no-repeat;
-    // background: url(../../images/lottery/pointer.png) center center no-repeat;
     background-size: cover;
     left: 50%;
     margin-left: r(-46);

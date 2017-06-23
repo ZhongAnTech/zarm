@@ -1,5 +1,6 @@
+$prefixCls: ui-toast;
 
-.ui-toast {
+.#{$prefixCls} {
   display: none;
   position: fixed;
   left: 0px;
@@ -26,17 +27,5 @@
     color: #fff;
     text-align: center;
     font-size: r(15);
-
-    .ui-icon {
-      font-size: r(40);
-      margin-bottom: r(5);
-    }
-
-    p {
-      margin: 0;
-      padding: 0;
-      line-height: 1.5;
-      overflow: hidden;
-    }
   }
 }

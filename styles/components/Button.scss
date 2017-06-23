@@ -1,7 +1,7 @@
 $prefixCls: ui-button;
 
-@mixin button-bordered($color, $background, $active-percent, $border) {
-  $active-background: lighten($background, $active-percent);
+@mixin button-bordered($color, $active-background, $border) {
+  $active-background: $active-background;
   $active-border: $border;
   $active-color: $color;
 
@@ -19,9 +19,16 @@ $prefixCls: ui-button;
 
     &.disabled,
     &:disabled {      
-      background-color: $disabled-background;
-      border-color: $disabled-background;
-      color: $disabled-color;
+      &:active,
+      &.active,
+      &:focus,
+      &.focus,
+      &:visited,
+      &.visited {
+        background-color: #fff;
+        border-color: $border;
+        box-shadow: none;
+      }
     }
   }
 }
@@ -53,12 +60,14 @@ $prefixCls: ui-button;
   
   &.disabled,
   &:disabled {
-    background-color: $disabled-background;
+    /*background-color: $disabled-background;
     border-color: $disabled-background;
-    color: $disabled-color;
-    /*cursor: not-allowed;*/
+    color: $disabled-color;*/
+    opacity: $disabled-opacity;
+    color: rgba(255, 255, 255, $disabled-opacity);
+    cursor: not-allowed;
     
-    /*&:active,
+    &:active,
     &.active,
     &:focus,
     &.focus,
@@ -67,7 +76,7 @@ $prefixCls: ui-button;
       background-color: $background;
       border-color: $border;
       box-shadow: none;
-    }*/
+    }
   }
 
 }
@@ -78,15 +87,15 @@ $prefixCls: ui-button;
   height: $height;
   line-height: $height;
 
-  &.radius {
+  &.shape-radius {
     border-radius: $border-radius;
   }
   
-  &.round {
+  &.shape-round {
     border-radius: r(1000);
   }
 
-  &.circle {
+  &.shape-circle {
     width: $height;
     height: $height;
     padding: 0;
@@ -115,8 +124,8 @@ $prefixCls: ui-button;
   user-select: none;
   /*transition: background-color 300ms ease-out, border-color 300ms ease-out;*/
   @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
-  @include button-theme($btn-default-color, $btn-default-bg, $btn-default-border);
-  @include button-bordered($btn-default-color, $btn-default-bg, 10%, $btn-default-border);
+  @include button-theme($button-default-color, $button-default-bg, $button-default-border);
+  @include button-bordered($button-default-color, $button-default-activebg, $button-default-border);
   
   &,
   &:hover,
@@ -163,20 +172,20 @@ $prefixCls: ui-button;
 
   /* Button themes */
   &.theme-info {
-    @include button-theme($btn-info-color, $btn-info-bg, $btn-info-border);
-    @include button-bordered($btn-info-border, $btn-info-bg, 35%, $btn-info-border);
+    @include button-theme($button-info-color, $button-info-bg, $button-info-border);
+    @include button-bordered($button-info-border, $button-info-activebg, $button-info-border);
   }
   &.theme-success {
-    @include button-theme($btn-success-color, $btn-success-bg, $btn-success-border);
-    @include button-bordered($btn-success-border, $btn-success-bg, 35%, $btn-success-border);
+    @include button-theme($button-success-color, $button-success-bg, $button-success-border);
+    @include button-bordered($button-success-border, $button-success-activebg, $button-success-border);
   }
   &.theme-warning {
-    @include button-theme($btn-warning-color, $btn-warning-bg, $btn-warning-border);
-    @include button-bordered($btn-warning-border, $btn-warning-bg, 35%, $btn-warning-border);
+    @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
+    @include button-bordered($button-warning-border, $button-warning-activebg, $button-warning-border);
   }
   &.theme-error {
-    @include button-theme($btn-error-color, $btn-error-bg, $btn-error-border);
-    @include button-bordered($btn-error-border, $btn-error-bg, 35%, $btn-error-border);
+    @include button-theme($button-error-color, $button-error-bg, $button-error-border);
+    @include button-bordered($button-error-border, $button-error-activebg, $button-error-border);
   }
 
 }

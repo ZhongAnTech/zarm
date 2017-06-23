@@ -1,12 +1,12 @@
 
-$font-size-base: 14;
-$font-size-base-px: 14px;
+/* base */
+$base-fontSize: 14;
 
-$theme-default: #383838;
-$theme-info: #00aff9;
-$theme-success: #50c44a;
-$theme-warning: #ffba34;
-$theme-error: #f03a3a;
+$theme-default: #666;
+$theme-info: #12c287;
+$theme-success: #12c287;
+$theme-warning: #eca632;
+$theme-error: #e55546;
 
 $radius-xl: r(4);
 $radius-lg: r(4);
@@ -14,11 +14,11 @@ $radius-md: r(4);
 $radius-sm: r(4);
 $radius-xs: r(4);
 
-$height-xl: r(50);
-$height-lg: r(45);
-$height-md: r(40);
-$height-sm: r(35);
-$height-xs: r(30);
+$height-xl: r(52);
+$height-lg: r(48);
+$height-md: r(44);
+$height-sm: r(34);
+$height-xs: r(27);
 
 $padding-xl: r(25);
 $padding-lg: r(20);
@@ -27,8 +27,8 @@ $padding-sm: r(15);
 $padding-xs: r(10);
 
 $fontSize-xl: r(18);
-$fontSize-lg: r(16);
-$fontSize-md: r(16);
+$fontSize-lg: r(18);
+$fontSize-md: r(17);
 $fontSize-sm: r(14);
 $fontSize-xs: r(14);
 
@@ -37,33 +37,37 @@ $zIndex-modal: 1100 !default;
 $zIndex-toast: 1300 !default;
 $zIndex-loading: 1300 !default;
 
-/*$line-height:         1.5 !default;*/
 $disabled-opacity: .5;
 $disabled-background: #ddd;
 $disabled-color: #bbb;
 $placeholder-color: #a9a9a9;
 $icon-url:            '//at.alicdn.com/t/font_1rke47h9f6r';
 
-$btn-default-color:   #4e4e4e !default;
-$btn-default-bg:      #ddd !default;
-$btn-default-border:  $btn-default-bg !default;
+/* button */
+$button-default-color: #333 !default;
+$button-default-bg: #dbdbdb !default;
+$button-default-activebg: lighten($button-default-bg, 10%);
+$button-default-border: #dbdbdb !default;
 
-$btn-info-color:      #fff !default;
-$btn-info-bg:         $theme-info !default;
-$btn-info-border:     $btn-info-bg !default;
+$button-info-color: #fff !default;
+$button-info-bg: $theme-info !default;
+$button-info-activebg: lighten($button-info-bg, 50%);
+$button-info-border: $theme-info !default;
 
-$btn-success-color:   #fff !default;
-$btn-success-bg:      $theme-success !default;
-$btn-success-border:  $btn-success-bg !default;
+$button-success-color: #fff !default;
+$button-success-bg: $theme-success !default;
+$button-success-activebg: lighten($button-success-bg, 50%);
+$button-success-border: $theme-success !default;
 
-$btn-warning-color:   #fff !default;
-$btn-warning-bg:      $theme-warning !default;
-$btn-warning-border:  $btn-warning-bg !default;
+$button-warning-color:   #fff !default;
+$button-warning-bg: $theme-warning !default;
+$button-warning-activebg: lighten($button-warning-bg, 50%);
+$button-warning-border: $theme-warning !default;
 
-$btn-error-color:     #fff !default;
-$btn-error-bg:        $theme-error !default;
-$btn-error-border:    $btn-error-bg !default;
-
+$button-error-color: #fff !default;
+$button-error-bg: $theme-error !default;
+$button-error-activebg: lighten($button-error-bg, 50%);
+$button-error-border: $theme-error !default;
 
 
 

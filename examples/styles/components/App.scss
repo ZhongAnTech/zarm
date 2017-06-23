@@ -4,10 +4,27 @@
   position: relative;
   width: 100%;
   min-width: 320px;
-  /*min-height: 100%;*/
-  margin: 0px auto;
-  padding-top: r(50);
+  min-height: 100%;
+  margin: 0 auto;
   overflow: hidden;
+}
+
+footer {
+  text-align: center;
+}
+
+.copyright {
+  display: inline-block;
+  margin: r(30) auto r(50) auto;
+  color: #ccc;
+
+  &-cn {
+    font-size: r(14);
+  }
+
+  &-en {
+    font-size: r(12);
+  }
 }
 
 @media screen and (min-width: 600px) {

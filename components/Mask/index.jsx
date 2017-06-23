@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class Mask extends Component {
+class Mask extends PureComponent {
 
   render() {
-    const { prefixCls, visible, type, onClose, ...others } = this.props;
+    const { prefixCls, className, visible, type, onClose } = this.props;
     const markCls = classnames({
       [`${prefixCls}`]: true,
+      [className]: !!className,
       transparent: type === 'transparent',
       light: type === 'light',
       dark: type === 'dark',
     });
 
     return visible
-      ? <div className={markCls} onClick={onClose} {...others} />
+      ? <div className={markCls} onClick={onClose} />
       : null;
   }
 
@@ -22,6 +23,7 @@ class Mask extends Component {
 
 Mask.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   visible: PropTypes.bool,
   type: PropTypes.oneOf(['transparent', 'light', 'normal', 'dark']),
   onClose: PropTypes.func,
@@ -29,6 +31,7 @@ Mask.propTypes = {
 
 Mask.defaultProps = {
   prefixCls: 'ui-mask',
+  className: null,
   visible: false,
   type: 'normal',
   onClose: () => {},

@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 function _getCurrentPoint(e) {
@@ -7,14 +7,7 @@ function _getCurrentPoint(e) {
   return e.touches[0].pageX;
 }
 
-function _addListenerMulti(el, s, fn) {
-  const evts = s.split(' ');
-  for (let i = 0, iLen = evts.length; i < iLen; i += 1) {
-    el.addEventListener(evts[i], fn, false);
-  }
-}
-
-class SwipeAction extends Component {
+class SwipeAction extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -27,7 +20,6 @@ class SwipeAction extends Component {
   componentDidMount() {
     document.body.addEventListener('touchstart', this.onCloseSwipe.bind(this), true);
   }
-
 
   onCloseSwipe(ev) {
     if (this.openedLeft || this.openedRight) {
@@ -46,6 +38,17 @@ class SwipeAction extends Component {
           this.touchEnd = true;
         }
       }
+    }
+  }
+
+  onBtnClick(e, btn) {
+    const onClick = btn.onClick;
+    if (onClick) {
+      onClick(e);
+    }
+
+    if (this.props.autoClose) {
+      this.close();
     }
   }
 
@@ -104,7 +107,6 @@ class SwipeAction extends Component {
     const { left = [], right = [] } = this.props;
 
     const posX = (this.pointEnd !== 0) ? this.pointEnd - this.pointStart : 0;
-    const timeSpan = new Date().getTime() - this.timeStart.getTime();
 
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
@@ -162,42 +164,38 @@ class SwipeAction extends Component {
     this._doTransition(0, duration);
   }
 
-  onBtnClick(e, btn) {
-    const onClick = btn.onClick;
-    if (onClick) {
-      onClick(e);
-    }
-
-    if (this.props.autoClose) {
-      this.close();
-    }
-  }
-
   renderButtons(buttons, ref) {
     const prefixCls = this.props.prefixCls;
 
     return (buttons && buttons.length) ? (
       <div
-        className={`${prefixCls}-${ref}-btn-wrap`}
-        ref={(el) => this[ref] = ReactDOM.findDOMNode(el)}>
-        <div className={`${prefixCls}-btn-wrap`}>
-          {
-            buttons.map((btn, i) => (
+        className={`${prefixCls}-actions-${ref}`}
+        ref={(el) => { this[ref] = el; }}>
+        {
+          buttons.map((btn, i) => {
+            const { theme, className, text } = btn;
+
+            const classes = classnames({
+              [`${prefixCls}-button`]: true,
+              [`theme-${theme}`]: true,
+              [className]: !!className,
+            });
+
+            return (
               <div
-                className={`${prefixCls}-btn theme-${btn.theme} ${btn.hasOwnProperty('className') ? btn.className : ''}`}
-                onClick={(e) => this.onBtnClick(e, btn)}
-                >
-                <div className={`${prefixCls}-text`}>{btn.text || `${ref}${i}`}</div>
+                className={classes}
+                onClick={e => this.onBtnClick(e, btn)}>
+                <div className={`${prefixCls}-text`}>{text || `${ref}${i}`}</div>
               </div>
-            ))
-          }
-        </div>
+            );
+          })
+        }
       </div>
     ) : null;
   }
 
   render() {
-    const { left = [], right = [], children, prefixCls } = this.props;
+    const { left, right, children, prefixCls } = this.props;
     return (left.length || right.length) ? (
       <div
         className={`${prefixCls}-wrap`}
@@ -226,15 +224,18 @@ class SwipeAction extends Component {
 }
 
 SwipeAction.propTypes = {
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  prefixCls: PropTypes.string,
+  left: PropTypes.array,
+  right: PropTypes.array,
 };
 
 SwipeAction.defaultProps = {
   prefixCls: 'ui-swipeAction',
+  left: [],
+  right: [],
   moveTimeDur: 300,
   moveDistanceRatio: 0.5,
   offset: 10,
-  theme: 'default',
   onOpen: () => {},
   onClose: () => {},
 };

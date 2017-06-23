@@ -5,8 +5,12 @@ import '../styles/components/Header.scss';
 class Header extends Component {
 
   render() {
+    const { title } = this.props;
+
     return (
-      <div className="Header">Dragon Mobile UI</div>
+      <header className="Header">
+        {title}
+      </header>
     );
   }
 }

@@ -49,25 +49,26 @@ $prefixCls: ui-tab;
 
     &-item {
       flex: 1;
-      margin-bottom: -1px;
       text-align: center;
       font-size: r(15);
       color: #000;
       cursor: pointer;
       
-      /*&:nth-of-type(n+2) {
-        position: relative;
+      /*&-hasline {
+        &:nth-of-type(n+2) {
+          position: relative;
 
-        &:after {
-          display: inline-block;
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 0;
-          width: 1px;
-          height: r(14);
-          margin-top: r(-7);
-          background: #e9e9e9;
+          &:after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 1px;
+            height: r(14);
+            margin-top: r(-7);
+            background: #e9e9e9;
+          }
         }
       }*/
 
@@ -89,6 +90,7 @@ $prefixCls: ui-tab;
     width: 50%;
     height: r(2);
     transition: left .3s ease-out;
+    /*transition: width 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1) 0.09s;*/
 
     &-inner {
       display: block;

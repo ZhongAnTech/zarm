@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import Header from '../components/Header';
 import { Lottery, Toast } from '../../components';
 
 function getRandom(min, max) {  // 参数min为随机数最小值 max为随机数最大值 得到的随机数范围为[min,max]
   return Math.floor((Math.random() * ((max + 1) - min)) + min);
 }
 
-class LotteryPage extends Component {
+class Page extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,43 +36,46 @@ class LotteryPage extends Component {
   render() {
     const { toast } = this.state;
     return (
-      <div className="lottery-wrapper">
-        <Lottery
-          bgUrl={require('../images/lottery/lottery-bg.png')}
-          btnUrl={require('../images/lottery/pointer.png')}
-          option={this.state.option}
-          value={this.state.id}
-          isStart={this.state.isStart}
-          onStart={() => {
-            if (this.count < 1) {
+      <div className="lottery-page">
+        <Header title="大转盘 Lottery" />
+        <main>
+          <Lottery
+            bgUrl={require('../images/lottery/lottery-bg.png')}
+            btnUrl={require('../images/lottery/pointer.png')}
+            option={this.state.option}
+            value={this.state.id}
+            isStart={this.state.isStart}
+            onStart={() => {
+              if (this.count < 1) {
+                toast.visible = true;
+                toast.children = '次数到了';
+                this.setState({ toast, isStart: false });
+              } else {
+                this.setState({
+                  id: getRandom(1, 6),
+                  isStart: true,
+                });
+                this.count -= 1;
+              }
+            }}
+            onComplete={(name) => {
               toast.visible = true;
-              toast.children = '次数到了';
-              this.setState({ toast, isStart: false });
-            } else {
+              toast.children = name;
               this.setState({
-                id: getRandom(1, 6),
-                isStart: true,
+                isStart: false,
+                toast,
               });
-              this.count -= 1;
-            }
-          }}
-          onComplete={(name) => {
-            toast.visible = true;
-            toast.children = name;
-            this.setState({
-              isStart: false,
-              toast,
-            });
-          }}
-          onError={() => {
-            console.log('程序报错');
-          }}
-          />
+            }}
+            onError={() => {
+              console.log('程序报错');
+            }}
+            />
 
-        <Toast {...this.state.toast} />
+          <Toast {...this.state.toast} />
+        </main>
       </div>
     );
   }
 }
 
-export default LotteryPage;
+export default Page;

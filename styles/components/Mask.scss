@@ -1,5 +1,6 @@
+$prefixCls: ui-mask;
 
-.ui-mask {
+.#{$prefixCls} {
   position: fixed;
   left: 0px;
   top: 0px;

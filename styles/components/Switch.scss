@@ -1,86 +1,77 @@
+$prefixCls: ui-switch;
 
-.ui-switch {
-  position: relative;
-  display: inline-block;
-  width: r(44);
-  height: r(22);
-  line-height: r(20);
-  vertical-align: middle;
-  border-radius: r(20);
-  border: 1px solid #ccc;
-  background-color: #ccc;
-  cursor: pointer;
-  transition: left .3s cubic-bezier(.78, .14, .15, .86);
-  user-select: none;
-
-  &:after {
-    position: absolute;
-    width: r(18);
-    height: r(18);
-    left: r(2);
-    top: r(1);
-    border-radius: 100%;
-    background-color: #fff;
-    content: " ";
-    cursor: pointer;
-    transition: left .3s cubic-bezier(.78, .14, .15, .86);
+@mixin switch-theme($color) {
+  .#{$prefixCls}-input {
+    &:checked {
+      border-color: $color;
+      background-color: $color;
+    }
   }
+}
 
-  &.checked {
-    border: 1px solid $theme-info;
-    background-color: $theme-info;
+.#{$prefixCls} {
+  @include switch-theme($theme-info);
 
+  &-input {
+    position: relative;
+    width: r(51);
+    height: r(31);
+    border: 1px solid #e5e5e5;
+    border-radius: r(15.5);
+    background-color: #e5e5e5;
+    vertical-align: middle;
+    outline: 0;
+    transition: background-color 0.1s, border 0.1s;
+    -webkit-appearance: none;
+
+    &:before,
     &:after {
-      left: r(22);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: r(29);
+      border-radius: r(14.5);
+    }
+    
+    &:before {
+      width: r(49);
+      background-color: #fdfdfd;
+      transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
     }
 
-    .ui-switch-inner {
-      left: r(6);
+    &:after {
+      width: r(29);
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    }
+
+    &:checked {
+      &:before {
+        transform: scale(0);
+      }
+      &:after {
+        transform: translateX(r(20));
+      }
     }
   }
 
   &.disabled {
     cursor: not-allowed;
-    opacity: 0.5;
-
-    &:after {
-      cursor: not-allowed;
-    }
+    opacity: $disabled-opacity;
   }
   
-  &.size-sm {
-    height: r(14);
-    line-height: r(12);
-    width: r(28);
-
-    &:after {
-      width: r(12);
-      height: r(12);
-      top: 0;
-      left: 0;
-    }
-
-    &.checked {
-      &:after {
-        left: r(14);
-      }
-
-      .ui-switch-inner {
-        left: r(3);
-      }
-    }
-
-    .ui-switch-inner {
-      left: r(13);
-      font-size: r(10);
-    }
+  &.theme-info {
+    @include switch-theme($theme-info);
   }
-
-  .ui-switch-inner {
-    position: absolute;
-    left: r(24);
-    color: #fff;
-    font-size: r(12);
+  &.theme-success {
+    @include switch-theme($theme-success);
   }
-  
+  &.theme-warning {
+    @include switch-theme($theme-warning);
+  }
+  &.theme-error {
+    @include switch-theme($theme-error);
+  }
 }

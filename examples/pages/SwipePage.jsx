@@ -1,8 +1,8 @@
-
 import React, { Component } from 'react';
+import Header from '../components/Header';
 import { Swipe } from '../../components';
 
-class SwipePage extends Component {
+class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -67,10 +67,13 @@ class SwipePage extends Component {
   render() {
     return (
       <div className="swipe-page">
-        {this.renderSwipe()}
+        <Header title="图片轮播 Swipe" />
+        <main>
+          {this.renderSwipe()}
+        </main>
       </div>
     );
   }
 }
 
-export default SwipePage;
+export default Page;
