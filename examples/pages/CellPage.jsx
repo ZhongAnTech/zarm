@@ -20,21 +20,6 @@ class Page extends PureComponent {
     };
   }
 
-  componentDidMount() {
-    // setInterval(() => {
-    //   let timer = this.state.timer ;
-    //   this.setState({
-    //     timer: ++timer
-    //   })
-    // }, 1000)
-    // setTimeout(() => {
-    //   this.setState({
-    //     dataSource: District,
-    //     disabled: false,
-    //   });
-    // }, 3000);
-  }
-
   toggle(key) {
     this.setState({
       [`${key}`]: !this.state[key],
@@ -112,93 +97,6 @@ class Page extends PureComponent {
             <Panel.Body>
               <Cell title="姓名" help={<span><Icon type="info-round" /> 姓名不能为空</span>}>
                 <Input type="text" placeholder="请输入姓名" />
-              </Cell>
-
-              <Cell
-                title="份数"
-                description={
-                  <InputNumber
-                    shape="radius"
-                    type="tel"
-                    min={-3}
-                    max={3}
-                    step={1}
-                    value={this.state.number}
-                    onChange={(value) => {
-                      if (value === '' || isNaN(value)) {
-                        return;
-                      }
-                      this.setState({
-                        number: Number(value),
-                      });
-                      console.log(value);
-                    }}
-                    />}
-                />
-
-              <Cell title="开关" description={<Switch onChange={value => console.log(value)} />} />
-
-              <Cell title="性别" type="select">
-                <Select
-                  placeholder="请选择性别"
-                  value={this.state.sex}
-                  onChange={(e) => {
-                    console.log(e.target.value);
-                  }}>
-                  <Select.Option value="">请选择性别</Select.Option>
-                  <Select.Option value={0}>男</Select.Option>
-                  <Select.Option value={1}>女</Select.Option>
-                </Select>
-              </Cell>
-
-              <Cell title="日期选择器" type="select">
-                <Picker.Date
-                  visible={this.state.datePicker}
-                  title="选择日期"
-                  placeholder="请选择日期"
-                  mode="date"
-                  disabled={this.state.disabled}
-                  value={this.state.date}
-                  defaultValue={this.state.date}
-                  onChange={(value) => {
-                    console.log('外部change value ->', value);
-                    // this.setState({
-                    //   date: value,
-                    // });
-                  }}
-                  onOk={(value) => {
-                    console.log('外部ok value ->', value);
-                    this.setState({
-                      date: value,
-                    });
-                  }}
-                  onCancel={() => {
-                  }}
-                  />
-              </Cell>
-
-              <Cell title="多级选择器" type="select">
-                <Picker
-                  visible={this.state.picker}
-                  title="请选择"
-                  placeholder="请选择"
-                  format="-"
-                  disabled={this.state.disabled}
-                  dataSource={District}
-                  cols={3}
-                  displayMember="label"
-                  valueMember="label"
-                  value={this.state.sValue}
-                  onChange={(value) => {
-                    console.log('外部change value ->', value);
-                    this.setState({ sValue: value });
-                  }}
-                  onOk={(value) => {
-                    console.log(value);
-                  }}
-                  onCancel={() => {
-                  }}
-                  />
               </Cell>
 
               <Cell>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
-class InputNumber extends PureComponent {
+class Stepper extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -91,14 +91,14 @@ class InputNumber extends PureComponent {
     return (
       <span className={cls}>
         <span className={subCls} onClick={() => !subDisabled && this.onSubClick()}><Icon type="minus" /></span>
-        <input className={`${prefixCls}-body`} value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} disabled={disabled} />
+        <input className={`${prefixCls}-body`} type="tel" value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} disabled={disabled} />
         <span className={plusCls} onClick={() => !plusDisabled && this.onPlusClick()}><Icon type="add" /></span>
       </span>
     );
   }
 }
 
-InputNumber.propTypes = {
+Stepper.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
@@ -111,8 +111,8 @@ InputNumber.propTypes = {
   max: PropTypes.number,
 };
 
-InputNumber.defaultProps = {
-  prefixCls: 'ui-input-number',
+Stepper.defaultProps = {
+  prefixCls: 'ui-stepper',
   className: null,
   theme: null,
   size: null,
@@ -124,4 +124,4 @@ InputNumber.defaultProps = {
   max: null,
 };
 
-export default InputNumber;
+export default Stepper;

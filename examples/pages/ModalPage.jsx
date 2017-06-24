@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Cell, Switch, Button, Modal, Confirm } from '../../components';
+import { Panel, Cell, Switch, Button, Modal, Confirm, Alert } from '../../components';
 
 import '../styles/pages/ModalPage';
 
@@ -8,7 +8,10 @@ class Page extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      alert: false,
+      confirm: false,
+    };
   }
 
   open(key) {
@@ -147,14 +150,23 @@ class Page extends Component {
             </Modal.Footer>
           </Modal>
 
+          <Alert
+            radius
+            visible={this.state.alert}
+            title="警告"
+            message="这里是警告信息"
+            onCancel={() => this.close('alert')}
+            />
+
           <Confirm
             radius
             visible={this.state.confirm}
-            title="多个按钮情况"
-            message="这里有好多个按钮, 你试试"
+            title="确认信息"
+            message="你确定要这样做吗？"
             onOk={() => alert('click ok')}
             onCancel={() => this.close('confirm')}
             />
+
         </main>
       </div>
     );

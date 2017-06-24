@@ -87,6 +87,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'stepper',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/StepperPage'));
+        });
+      },
+    },
+    {
       path: 'swipe',
       getComponent(location, cb) {
         require.ensure([], (require) => {
