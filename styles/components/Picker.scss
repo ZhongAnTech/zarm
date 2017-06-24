@@ -51,10 +51,11 @@ $picker-item-height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #f2f2f2;
   width: 100%;
   height: r(45);
   line-height: r(45);
+  position: relative;
+  @include onepx(bottom);
 
   .ui-picker-cancel,
   .ui-picker-submit {

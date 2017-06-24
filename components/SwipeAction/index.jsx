@@ -183,6 +183,7 @@ class SwipeAction extends PureComponent {
 
             return (
               <div
+                key={i}
                 className={classes}
                 onClick={e => this.onBtnClick(e, btn)}>
                 <div className={`${prefixCls}-text`}>{text || `${ref}${i}`}</div>

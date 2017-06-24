@@ -33,6 +33,7 @@ class Page extends PureComponent {
             </Panel.Header>
             <Panel.Body>
               <Cell type="link" title="单选框 Radio" onClick={() => hashHistory.push('/radio')} />
+              <Cell type="link" title="步进器 Stepper" onClick={() => hashHistory.push('/stepper')} />
               <Cell type="link" title="开关 Switch" onClick={() => hashHistory.push('/switch')} />
               <Cell type="link" title="选择器 Picker" onClick={() => hashHistory.push('/picker')} />
             </Panel.Body>

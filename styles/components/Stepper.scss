@@ -1,8 +1,7 @@
-$prefixCls: ui-input-number;
+$prefixCls: ui-stepper;
 
-@mixin input-number-theme($color) {
+@mixin stepper-theme($color) {
   .#{$prefixCls} {
-    &-body,
     &-sub,
     &-plus {
       color: $color
@@ -13,7 +12,7 @@ $prefixCls: ui-input-number;
 .#{$prefixCls} {
   display: flex;
   user-select: none;
-  @include input-number-theme($theme-info);
+  @include stepper-theme($theme-info);
 
   &.disabled {
     .#{$prefixCls}-body {
@@ -36,16 +35,16 @@ $prefixCls: ui-input-number;
   }
 
   &.theme-info {
-    @include input-number-theme($theme-info);
+    @include stepper-theme($theme-info);
   }
   &.theme-success {
-    @include input-number-theme($theme-success);
+    @include stepper-theme($theme-success);
   }
   &.theme-warning {
-    @include input-number-theme($theme-warning);
+    @include stepper-theme($theme-warning);
   }
   &.theme-error {
-    @include input-number-theme($theme-error);
+    @include stepper-theme($theme-error);
   }
 
   &-sub,
@@ -59,7 +58,6 @@ $prefixCls: ui-input-number;
     font-size: r(16);
     font-weight: bold;
     cursor: pointer;
-    color: #a6a6a6;
     border: 1px solid #ddd;
 
     &.disabled {
@@ -82,6 +80,7 @@ $prefixCls: ui-input-number;
     height: r(30);
     border: 0;
     border-radius: 0;
+    color: $theme-default;
     text-align: center;
     outline: 0;
     -webkit-appearance: none;
