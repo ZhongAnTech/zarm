@@ -18,23 +18,6 @@ const ICONS = [
 class Page extends Component {
 
   render() {
-    let ele = [];
-    let childEle = [];
-
-    for (var i = 0; i < ICONS.length; i++) {
-      childEle.push(
-        <div className="grid-column" key={`column-${i}`}>
-          <Icon theme="info" type={ICONS[i]} />
-          <span>{ICONS[i]}</span>
-        </div>
-      );
-
-      if (i % 3 === 2) {
-        ele.push(<div className="grid-row" key={`row-${(i + 1) / 3}`}>{childEle}</div>);
-        childEle = [];
-      }
-    }
-
     return (
       <div className="icon-page">
         <Header title="图标 Icon" />
@@ -44,7 +27,18 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <div className="grid">{ele}</div>
+              <div className="grid">
+              {
+                ICONS.sort().map((icon, index) => {
+                  return (
+                    <div className="grid-column" key={index}>
+                      <Icon theme="info" type={icon} />
+                      <span className="icon-name">{icon}</span>
+                    </div>
+                  );
+                })
+              }
+              </div>
             </Panel.Body>
           </Panel>
         </main>

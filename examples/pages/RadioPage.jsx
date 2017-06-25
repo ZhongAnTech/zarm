@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Header from '../components/Header';
-import { Panel, Radio } from '../../components';
+import { Panel, Cell, Radio, Icon } from '../../components';
 
 import '../styles/pages/RadioPage';
 
@@ -9,7 +9,7 @@ class Page extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      radio: 'a',
+      radio: '0',
     };
   }
 
@@ -22,112 +22,83 @@ class Page extends PureComponent {
             <Panel.Header>
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
-            <Panel.Body>
-              <Radio.Group
-                value={this.state.radio}
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
-                <Radio value="a">A</Radio>
-                <Radio value="b">B</Radio>
-                <Radio value="c">C</Radio>
-                <Radio value="d">D</Radio>
-              </Radio.Group>
+            <Panel.Body className="radio-buttons">
+              <Cell description={
+                <Radio.Group value={this.state.radio} onChange={(value) => console.log(`radio to ${value}`) }>
+                  <Radio value="0">选项一</Radio>
+                  <Radio value="1">选项二</Radio>
+                  <Radio value="2">选项三</Radio>
+                </Radio.Group>
+              }>普通</Cell>
+
+              <Cell description={
+                <Radio.Group defaultValue="1" onChange={(value) => console.log(`radio to ${value}`) }>
+                  <Radio value="0">选项一</Radio>
+                  <Radio value="1">选项二</Radio>
+                  <Radio value="2">选项三</Radio>
+                </Radio.Group>
+              }>指定默认值</Cell>
+
+              <Cell description={
+                <Radio.Group value={this.state.radio} onChange={(value) => console.log(`radio to ${value}`) }>
+                  <Radio value="0">选项一</Radio>
+                  <Radio value="1">选项二</Radio>
+                  <Radio value="2" disabled>选项三</Radio>
+                </Radio.Group>
+              }>禁用指定项</Cell>
+
+              <Cell description={
+                <Radio.Group shape="radius" value={this.state.radio} onChange={(value) => console.log(`radio to ${value}`) }>
+                  <Radio value="0">选项一</Radio>
+                  <Radio value="1">选项二</Radio>
+                  <Radio value="2">选项三</Radio>
+                </Radio.Group>
+              }>圆角</Cell>
+
+              <Cell description={
+                <Radio.Group shape="round" value={this.state.radio} onChange={(value) => console.log(`radio to ${value}`) }>
+                  <Radio value="0">选项一</Radio>
+                  <Radio value="1">选项二</Radio>
+                  <Radio value="2">选项三</Radio>
+                </Radio.Group>
+              }>椭圆角</Cell>
+
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>指定选中项</Panel.Title>
+              <Panel.Title>块级样式</Panel.Title>
             </Panel.Header>
-            <Panel.Body>
-              <Radio.Group
-                defaultValue="c"
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
-                <Radio value="a">A</Radio>
-                <Radio value="b">B</Radio>
-                <Radio value="c">C</Radio>
-                <Radio value="d">D</Radio>
-              </Radio.Group>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>禁用指定项</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
-              <Radio.Group
-                value={this.state.radio}
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
-                <Radio value="a">A</Radio>
-                <Radio value="b">B</Radio>
-                <Radio value="c" disabled>C</Radio>
-                <Radio value="d">D</Radio>
-              </Radio.Group>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>按钮样式</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
-              <Radio.Group
-                type="button"
-                value={this.state.radio}
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
-                <Radio value="a">A</Radio>
-                <Radio value="b">B</Radio>
-                <Radio value="c" disabled>C</Radio>
-                <Radio value="d">D</Radio>
-              </Radio.Group>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>圆角按钮样式</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
-              <Radio.Group
-                radius
-                type="button"
-                value={this.state.radio}
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
-                <Radio value="a">A</Radio>
-                <Radio value="b">B</Radio>
-                <Radio value="c" disabled>C</Radio>
-                <Radio value="d">D</Radio>
-              </Radio.Group>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>通栏样式</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
+            <Panel.Body className="block-radio">
               <Radio.Group
                 radius
                 block
-                type="button"
                 value={this.state.radio}
                 onChange={(value) => {
                   console.log(`radio to ${value}`);
                 }}>
-                <Radio value="a">AAAAA</Radio>
-                <Radio value="b">BBBBB</Radio>
-                <Radio value="c" disabled>CCC</Radio>
-                <Radio value="d">D</Radio>
+                  <Radio value="0">选项一</Radio>
+                  <Radio value="1">选项二</Radio>
+                  <Radio value="2">选项三</Radio>
+              </Radio.Group>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>列表样式</Panel.Title>
+            </Panel.Header>
+            <Panel.Body>
+              <Radio.Group
+                type="cell"
+                value={this.state.radio}
+                onChange={(value) => {
+                  console.log(`radio to ${value}`);
+                }}>
+                  <Radio value={0}>选项一</Radio>
+                  <Radio value={1}>选项二</Radio>
+                  <Radio value={2}>选项三</Radio>
               </Radio.Group>
             </Panel.Body>
           </Panel>
