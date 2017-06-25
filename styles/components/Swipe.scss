@@ -47,18 +47,19 @@
       padding: 0;
       
       li {
-        margin: r(1);
+        /*margin: r(1);*/
         width: r(8);
         height: r(8);
-        border-radius: 50%;
-        border: r(1) solid #fff;
+        border-radius: r(4);
+        background: #ccc;
+        /*border: r(1) solid #fff;*/
         cursor: pointer;
         
         &.active {
-          margin: 0;
+          /*margin: 0;
           width: r(10);
-          height: r(10);
-          background: #fff;
+          height: r(10);*/
+          background: $theme-info;
         }
       }
     }

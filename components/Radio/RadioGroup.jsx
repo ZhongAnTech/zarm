@@ -36,25 +36,26 @@ class RadioGroup extends PureComponent {
 
   render() {
     const props = this.props;
-    const { prefixCls, type, isBlock, isRadius, isDisabled, theme, size, className, children } = this.props;
+    const { prefixCls, className, theme, size, shape, type, isBlock, isDisabled, children } = this.props;
 
     const items = React.Children.map(children, (element, index) => {
       return cloneElement(element, {
         key: index,
         type,
+        theme,
         onChange: () => this.onRadioChange(element.props.value),
-        checked: (this.state.value === element.props.value),
+        checked: (this.state.value == element.props.value),
       });
     });
 
     const cls = classnames({
       [`${prefixCls}`]: true,
-      block: ('block' in props || isBlock),
-      radius: ('radius' in props || isRadius),
-      disabled: ('disabled' in props || isDisabled),
+      [className]: !!className,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [className]: !!className,
+      [`shape-${shape}`]: !!shape,
+      block: ('block' in props || isBlock),
+      disabled: ('disabled' in props || isDisabled),
     });
 
     return (
@@ -67,13 +68,19 @@ class RadioGroup extends PureComponent {
 
 RadioGroup.propTypes = {
   prefixCls: PropTypes.string,
-  type: PropTypes.oneOf(['default', 'button']),
+  className: PropTypes.string,
+  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  type: PropTypes.oneOf(['cell']),
+  shape: PropTypes.oneOf(['radius', 'round']),
   onChange: PropTypes.func,
 };
 
 RadioGroup.defaultProps = {
   prefixCls: 'ui-radio-group',
-  type: 'default',
+  className: null,
+  theme: 'info',
+  type: null,
+  shape: null,
   onChange: () => {},
 };
 

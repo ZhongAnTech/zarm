@@ -61,7 +61,7 @@ class TabPage extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>联动的标签页</Panel.Title>
+              <Panel.Title>联动</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Tab
@@ -92,7 +92,7 @@ class TabPage extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>默认选项的标签页</Panel.Title>
+              <Panel.Title>指定默认选项</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Tab defaultValue={1}>
@@ -111,7 +111,7 @@ class TabPage extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>指定线条宽度的标签页</Panel.Title>
+              <Panel.Title>指定线条宽度</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Tab lineWidth={60}>
@@ -130,7 +130,7 @@ class TabPage extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>禁用选项的标签页</Panel.Title>
+              <Panel.Title>禁用指定选项</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Tab>

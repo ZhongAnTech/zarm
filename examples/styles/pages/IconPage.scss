@@ -2,13 +2,20 @@
 @import "../core/func";
 
 .icon-page {
+  
+  .icon-name {
+    font-size: r(13);
+  }
+
+  .ui-icon {
+    display: block;
+    font-size: 45px;
+    margin-bottom: r(15);
+  }
 
   .grid {
-  
-    &-row {
-      display: flex;
-      flex-wrap: wrap;
-    }
+    display: flex;
+    flex-wrap: wrap;
 
     &-column {
       display: flex;
@@ -20,18 +27,8 @@
       height: r(125);
       @include onepx(top right);
 
-      &:last-of-type {
+      &:nth-of-type(3n) {
         @include onepx(top);
-      }
-
-      span {
-        font-size: r(13);
-      }
-
-      .ui-icon {
-        display: block;
-        font-size: 45px;
-        margin-bottom: r(15);
       }
     }
   }
