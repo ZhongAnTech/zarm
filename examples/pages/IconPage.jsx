@@ -3,9 +3,38 @@ import Header from '../components/Header';
 import { Panel, Icon } from '../../components';
 import '../styles/pages/IconPage';
 
+const ICONS = [
+  'right', 'right-round', 'right-round-fill',
+  'wrong', 'wrong-round', 'wrong-round-fill',
+  'info-round', 'info-round-fill',
+  'question-round', 'question-round-fill',
+  'warning-round', 'warning-round-fill',
+  'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom',
+  'add', 'add-round', 'add-round-fill',
+  'minus', 'minus-round', 'minus-round-fill',
+  'date',
+  'loading',
+]
 class Page extends Component {
 
   render() {
+    let ele = [];
+    let childEle = [];
+
+    for (var i = 0; i < ICONS.length; i++) {
+      childEle.push(
+        <div className="grid-column" key={`column-${i}`}>
+          <Icon theme="info" type={ICONS[i]} />
+          <span>{ICONS[i]}</span>
+        </div>
+      );
+
+      if (i % 3 === 2) {
+        ele.push(<div className="grid-row" key={`row-${(i + 1) / 3}`}>{childEle}</div>);
+        childEle = [];
+      }
+    }
+
     return (
       <div className="icon-page">
         <Header title="图标 Icon" />
@@ -15,30 +44,7 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Icon type="right" theme="success" />
-              <Icon type="right-round" theme="success" />
-              <Icon type="right-round-fill" theme="success" />
-              <Icon type="wrong" theme="error" />
-              <Icon type="wrong-round" theme="error" />
-              <Icon type="wrong-round-fill" theme="error" />
-              <Icon type="info-round" theme="info" />
-              <Icon type="info-round-fill" theme="info" />
-              <Icon type="question-round" />
-              <Icon type="question-round-fill" />
-              <Icon type="warning-round" theme="warning" />
-              <Icon type="warning-round-fill" theme="warning" />
-              <Icon type="arrow-left" />
-              <Icon type="arrow-right" />
-              <Icon type="arrow-top" />
-              <Icon type="arrow-bottom" />
-              <Icon type="add" />
-              <Icon type="add-round" />
-              <Icon type="add-round-fill" />
-              <Icon type="minus" />
-              <Icon type="minus-round" />
-              <Icon type="minus-round-fill" />
-              <Icon type="date" />
-              <Icon type="loading" />
+              <div className="grid">{ele}</div>
             </Panel.Body>
           </Panel>
         </main>

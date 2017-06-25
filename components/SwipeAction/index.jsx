@@ -21,7 +21,7 @@ class SwipeAction extends PureComponent {
     document.body.addEventListener('touchstart', this.onCloseSwipe.bind(this), true);
   }
 
-  onCloseSwipe(ev) {
+  onCloseSwipe(e) {
     if (this.openedLeft || this.openedRight) {
       const pNode = ((node) => {
         while (node.parentNode && node.parentNode !== document.body) {
@@ -30,9 +30,9 @@ class SwipeAction extends PureComponent {
           }
           node = node.parentNode;
         }
-      })(ev.target);
+      })(e.target);
       if (!pNode) {
-        ev.preventDefault();
+        e.preventDefault();
         if (this.openedLeft || this.openedRight) {
           this.close();
           this.touchEnd = true;

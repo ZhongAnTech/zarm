@@ -85,6 +85,8 @@ class TabGroup extends PureComponent {
     const lineStyle = {
       width: `${100 / children.length}%`,
       left: `${(this.state.value / children.length) * 100}%`,
+      // right: `${(children.length - this.state.value - 1) / children.length * 100}%`,
+      // transition: `right 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1) 0.09s`,
     };
 
 

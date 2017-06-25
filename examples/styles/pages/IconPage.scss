@@ -1,15 +1,38 @@
+@import "../core/mixins";
 @import "../core/func";
 
 .icon-page {
 
-  .ui-panel-body {
-    padding: r(10) 0 r(10) r(10);
-    background: #fff;
-  }
+  .grid {
+  
+    &-row {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-  .ui-icon {
-    display: inline-block;
-    font-size: r(30);
-    margin-right: r(10);
+    &-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      width: r(125);
+      height: r(125);
+      @include onepx(top right);
+
+      &:last-of-type {
+        @include onepx(top);
+      }
+
+      span {
+        font-size: r(13);
+      }
+
+      .ui-icon {
+        display: block;
+        font-size: 45px;
+        margin-bottom: r(15);
+      }
+    }
   }
 }

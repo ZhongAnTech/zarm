@@ -140,16 +140,6 @@ class Page extends Component {
             </Modal.Body>
           </Modal>
 
-          <Modal radius visible={this.state.alert}>
-            <Modal.Header title="警告" />
-            <Modal.Body>
-              这是一个警告提示框
-            </Modal.Body>
-            <Modal.Footer>
-              <Button bordered onClick={() => this.close('alert')}>关闭</Button>
-            </Modal.Footer>
-          </Modal>
-
           <Alert
             radius
             visible={this.state.alert}
