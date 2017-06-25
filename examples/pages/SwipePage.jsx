@@ -64,7 +64,7 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>方向</Panel.Title>
+              <Panel.Title>纵向</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Swipe
