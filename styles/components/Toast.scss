@@ -3,8 +3,8 @@ $prefixCls: ui-toast;
 .#{$prefixCls} {
   display: none;
   position: fixed;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;

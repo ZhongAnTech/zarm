@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Mask from '../Mask';
 
 class Modal extends PureComponent {
 
@@ -97,12 +98,13 @@ class Modal extends PureComponent {
     }
 
     return (
-      <div className={classes.modal} style={style.modal} onClick={onMaskClick} ref={(modal) => { this.modal = modal; }}>
+      <div className={classes.modal} style={style.modal} ref={(modal) => { this.modal = modal; }}>
         <div className={`${prefixCls}-wrapper`}>
           <div className={classes.dialog} style={style.dialog} onClick={e => e.stopPropagation()}>
             {children}
           </div>
         </div>
+        <Mask visible={isShow} onClose={onMaskClick} />
       </div>
     );
   }

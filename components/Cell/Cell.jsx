@@ -5,13 +5,14 @@ import classnames from 'classnames';
 class Cell extends PureComponent {
 
   render() {
-    const { prefixCls, type, theme, icon, title, description, help, children, className, ...others } = this.props;
+    const { prefixCls, className, theme, hasArrow, icon, title, description, help, onClick, children } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
-      [`${prefixCls}-${type}`]: true,
-      [`theme-${theme}`]: !!theme,
       [className]: !!className,
+      [`theme-${theme}`]: !!theme,
+      'is-link': !!onClick,
+      'has-arrow': hasArrow,
     });
 
     const iconRender = icon
@@ -35,7 +36,7 @@ class Cell extends PureComponent {
       : null;
 
     return (
-      <div onTouchStart={() => {}} className={cls} {...others}>
+      <div className={cls} onTouchStart={() => {}} onClick={onClick}>
         <div className={`${prefixCls}-inner`}>
           <div className={`${prefixCls}-header`}>
             {iconRender}
@@ -57,13 +58,13 @@ class Cell extends PureComponent {
 Cell.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['normal', 'link', 'select']),
+  hasArrow: PropTypes.bool,
 };
 
 Cell.defaultProps = {
   prefixCls: 'ui-cell',
   className: null,
-  type: 'normal',
+  hasArrow: false,
 };
 
 export default Cell;

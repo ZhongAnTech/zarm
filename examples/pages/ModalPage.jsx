@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Cell, Switch, Button, Modal, Confirm, Alert } from '../../components';
-
-import '../styles/pages/ModalPage';
+import { Panel, Cell, Button, Modal, Confirm, Alert } from '../../components';
 
 class Page extends Component {
 
@@ -27,8 +25,6 @@ class Page extends Component {
   }
 
   render() {
-    const { modal } = this.state;
-
     return (
       <div className="modal-page">
         <Header title="模态框 Modal" />
@@ -162,18 +158,5 @@ class Page extends Component {
     );
   }
 }
-
-const ModalDemo = (props) => {
-  const { visible, title, onClose, children, others } = props;
-
-  return (
-    <Modal visible={visible} {...others}>
-      <Modal.Header title={title} onClose={onClose} />
-      <Modal.Body>
-        {children}
-      </Modal.Body>
-    </Modal>
-  );
-};
 
 export default Page;

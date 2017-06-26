@@ -44,6 +44,7 @@ class RadioGroup extends PureComponent {
         type,
         theme,
         onChange: () => this.onRadioChange(element.props.value),
+        // use '==' because the result will fail when the value's typeof is Number
         checked: (this.state.value == element.props.value),
       });
     });
@@ -69,7 +70,7 @@ class RadioGroup extends PureComponent {
 RadioGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['cell']),
   shape: PropTypes.oneOf(['radius', 'round']),
   onChange: PropTypes.func,

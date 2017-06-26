@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Icon, Button } from '../../components';
 import '../styles/pages/ButtonPage';
 
-class Page extends PureComponent {
+class Page extends Component {
 
   render() {
     return (

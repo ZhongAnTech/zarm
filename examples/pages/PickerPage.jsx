@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Header from '../components/Header';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch } from '../../components';
+import { Panel, Cell, Picker } from '../../components';
 import District from './district';
 
 class Page extends PureComponent {
@@ -11,7 +11,7 @@ class Page extends PureComponent {
       single: {},
       multiple: {},
       disabled: {
-        value: ['1']
+        value: ['1'],
       },
       diy: {},
       city1: {},
@@ -36,7 +36,7 @@ class Page extends PureComponent {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-            
+
               <Cell title="单列" type="select">
                 <Picker
                   visible={single.visible}
@@ -53,7 +53,7 @@ class Page extends PureComponent {
                   }}
                   />
               </Cell>
-            
+
               <Cell title="多列" type="select">
                 <Picker
                   visible={multiple.visible}
@@ -65,7 +65,7 @@ class Page extends PureComponent {
                     [
                       { value: 'a', label: '选项A' },
                       { value: 'b', label: '选项B' },
-                    ]
+                    ],
                   ]}
                   cols={2}
                   value={multiple.value}
@@ -81,21 +81,21 @@ class Page extends PureComponent {
                 <Picker
                   visible={multiple.visible}
                   dataSource={[
-                    { 
+                    {
                       value: '1',
                       label: '北京市',
                       children: [
                         { value: '11', label: '海淀区' },
                         { value: '12', label: '西城区' },
-                      ]
+                      ],
                     },
-                    { 
+                    {
                       value: '2',
                       label: '上海市',
                       children: [
                         { value: '21', label: '黄埔区' },
                         { value: '22', label: '虹口区' },
-                      ]
+                      ],
                     },
                   ]}
                   cols={2}
@@ -110,8 +110,8 @@ class Page extends PureComponent {
 
               <Cell title="禁止修改" type="select">
                 <Picker
+                  disabled
                   visible={disabled.visible}
-                  disabled={true}
                   dataSource={[
                     { value: '1', label: '选项一' },
                     { value: '2', label: '选项二' },
@@ -140,7 +140,7 @@ class Page extends PureComponent {
                     [
                       { value: 'a', label: '选项A' },
                       { value: 'b', label: '选项B' },
-                    ]
+                    ],
                   ]}
                   cols={2}
                   displayMember="label"
@@ -162,7 +162,7 @@ class Page extends PureComponent {
               <Panel.Title>城市选择器</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-            
+
               <Cell title="省市选择" type="select">
                 <Picker
                   visible={city1.visible}
