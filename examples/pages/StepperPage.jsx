@@ -7,7 +7,7 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stepper: 0,
+      stepper: 1,
     };
   }
 
@@ -33,13 +33,34 @@ class Page extends Component {
                 />
 
               <Cell
+                title="设置默认值"
+                description={
+                  <Stepper
+                    defaultValue={2}
+                    onChange={(value) => {
+                      console.log(value);
+                    }}
+                    />}
+                />
+
+              <Cell
                 title="设置上下限"
                 description={
                   <Stepper
                     min={-3}
                     max={3}
                     step={1}
-                    value={this.state.stepper}
+                    onChange={(value) => {
+                      console.log(value);
+                    }}
+                    />}
+                />
+
+              <Cell
+                title="设置步长"
+                description={
+                  <Stepper
+                    step={0.5}
                     onChange={(value) => {
                       console.log(value);
                     }}
