@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Icon, Input, Cell, Checkbox } from '../../components';
 
+const img = require('../images/icons/state.png');
+
 class Page extends Component {
 
   render() {
@@ -34,7 +36,7 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Cell title="标题文字1" description="描述文字" icon={<Icon type="right" />} />
-              <Cell title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
+              <Cell title="标题文字" description="描述文字" icon={<img alt="" src={img} />} />
             </Panel.Body>
           </Panel>
 
@@ -64,7 +66,7 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Cell hasArrow title="标题文字" description="描述文字" icon={<Icon type="right" />} onClick={() => {}} />
-              <Cell hasArrow title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} onClick={() => {}} />
+              <Cell hasArrow title="标题文字" description="描述文字" icon={<img alt="" src={img} />} onClick={() => {}} />
             </Panel.Body>
           </Panel>
 

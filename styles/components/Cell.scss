@@ -81,13 +81,14 @@ $prefixCls: ui-cell;
 
   &-footer {
     text-align: right;
+    font-size: r(14);
   }
 
   &-icon {
     margin-right: r(10);
 
     img {
-      max-height: r(29);
+      max-height: r(25);
     }
   }
 
@@ -110,7 +111,7 @@ $prefixCls: ui-cell;
     min-height: r(30);
     background: #fff;
     padding: 0 r(15) r(9) r(15);
-    font-size: r(13);
+    font-size: r(12);
 
     &-text {
       width: 100%;

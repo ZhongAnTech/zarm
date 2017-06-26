@@ -23,7 +23,7 @@ $prefixCls: ui-loading;
     height: r(80);
     padding: r(20) r(15);
     border-radius: r(6);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     color: #fff;
     text-align: center;
     font-size: r(15);
@@ -59,87 +59,12 @@ $prefixCls: ui-loading;
       transform-origin: left 50% 0;
     }
 
-    &:nth-of-type(1) {
-      animation: opacity-60-25-0-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(0deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(2) {
-      animation: opacity-60-25-1-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(30deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(3) {
-      animation: opacity-60-25-2-12 1.25s linear infinite;
-      &:before {
-          transform: rotate(60deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(4) {
-      animation: opacity-60-25-3-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(90deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(5) {
-      animation: opacity-60-25-4-12 1.25s linear infinite;
-      &:before {
-          transform: rotate(120deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(6) {
-      animation: opacity-60-25-5-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(150deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(7) {
-      animation: opacity-60-25-6-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(180deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(8) {
-      animation: opacity-60-25-7-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(210deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(9) {
-      animation: opacity-60-25-8-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(240deg) translate(r(7.92), 0);
-      }
-    }
-
-    &:nth-of-type(10) {
-        animation: opacity-60-25-9-12 1.25s linear infinite;
-        &:before{
-            transform: rotate(270deg) translate(r(7.92), 0);
+    @for $i from 0 through 11 {
+      &:nth-of-type(#{$i + 1}) {
+        animation: opacity-60-25-#{$i}-12 1.25s linear infinite;
+        &:before {
+          transform: rotate(#{$i * 30}deg) translate(r(7.92), 0);
         }
-    }
-
-    &:nth-of-type(11) {
-        animation: opacity-60-25-10-12 1.25s linear infinite;
-        &:before{
-            transform: rotate(300deg) translate(r(7.92), 0);
-        }
-    }
-
-    &:nth-of-type(12) {
-      animation: opacity-60-25-11-12 1.25s linear infinite;
-      &:before {
-        transform: rotate(330deg) translate(r(7.92), 0);
       }
     }
   }
