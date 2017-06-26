@@ -27,7 +27,6 @@ class Alert extends PureComponent {
 Alert.propTypes = {
   prefixCls: PropTypes.string,
   message: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   cancelText: PropTypes.string,
   onCancel: PropTypes.func,
 };
@@ -35,7 +34,6 @@ Alert.propTypes = {
 Alert.defaultProps = {
   prefixCls: 'ui-alert',
   message: '',
-  width: '70%',
   cancelText: '关闭',
   onCancel: () => {},
 };

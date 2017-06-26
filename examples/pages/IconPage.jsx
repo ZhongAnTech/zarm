@@ -14,7 +14,8 @@ const ICONS = [
   'minus', 'minus-round', 'minus-round-fill',
   'date',
   'loading',
-]
+];
+
 class Page extends Component {
 
   render() {
@@ -28,16 +29,16 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <div className="grid">
-              {
-                ICONS.sort().map((icon, index) => {
-                  return (
-                    <div className="grid-column" key={index}>
-                      <Icon theme="info" type={icon} />
-                      <span className="icon-name">{icon}</span>
-                    </div>
-                  );
-                })
-              }
+                {
+                  ICONS.sort().map((icon, i) => {
+                    return (
+                      <div className="grid-column" key={i}>
+                        <Icon theme="info" type={icon} />
+                        <span className="icon-name">{icon}</span>
+                      </div>
+                    );
+                  })
+                }
               </div>
             </Panel.Body>
           </Panel>
