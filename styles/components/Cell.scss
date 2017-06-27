@@ -24,7 +24,7 @@ $prefixCls: ui-cell;
     @include cell-theme($theme-error);
   }
 
-  @include onepx(top);
+  @include onepx(bottom);
   &:after {
     left: r(15);
   }
@@ -43,18 +43,9 @@ $prefixCls: ui-cell;
     }
   }
 
-  &.has-arrow {
-    .#{$prefixCls}-footer {
-      &:after {
-        display: inline-block;
-        margin-left: r(5);
-        content: '';
-        border-right: r(2) solid #c7c7cc;
-        border-top: r(2) solid #c7c7cc;
-        width: r(10);
-        height: r(10);
-        transform: rotate(45deg);
-      }
+  &.has-icon {
+    &:after {
+      left: r(59);
     }
   }
 
@@ -72,6 +63,18 @@ $prefixCls: ui-cell;
       flex: 1;
     }
   }
+  
+  &.disabled {
+    .#{$prefixCls}-body,
+    .#{$prefixCls}-footer {
+      opacity: $disabled-opacity;
+    }
+  }
+
+  &-body,
+  &-footer {
+    padding: r(8) 0;
+  }
 
   &-body {
     flex: 1;
@@ -84,11 +87,28 @@ $prefixCls: ui-cell;
     font-size: r(14);
   }
 
+  &-arrow {
+    &:after {
+      display: inline-block;
+      content: '';
+      margin-left: r(5);
+      border-right: r(2) solid #c7c7cc;
+      border-top: r(2) solid #c7c7cc;
+      width: r(10);
+      height: r(10);
+      transform: rotate(45deg);
+    }
+  }
+
   &-icon {
-    margin-right: r(10);
+    width: r(28);
+    height: r(28);
+    text-align: center;
+    margin-right: r(15);
 
     img {
-      max-height: r(25);
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 

@@ -36,13 +36,18 @@ class RadioGroup extends PureComponent {
 
   render() {
     const props = this.props;
-    const { prefixCls, className, theme, size, shape, type, isBlock, isDisabled, children } = this.props;
+    const { prefixCls, className, theme, shape, type, isBlock, isDisabled, isGather, children } = this.props;
+    const block = 'block' in props || isBlock;
+    const disabled = 'disabled' in props || isDisabled;
+    const gather = 'gather' in props || isGather;
 
     const items = React.Children.map(children, (element, index) => {
       return cloneElement(element, {
         key: index,
         type,
         theme,
+        isBlock: block,
+        isDisabled: disabled,
         onChange: () => this.onRadioChange(element.props.value),
         // use '==' because the result will fail when the value's typeof is Number
         checked: (this.state.value == element.props.value),
@@ -52,11 +57,10 @@ class RadioGroup extends PureComponent {
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
-      block: ('block' in props || isBlock),
-      disabled: ('disabled' in props || isDisabled),
+      'is-gather': gather,
+      block,
+      disabled,
     });
 
     return (
@@ -71,8 +75,11 @@ RadioGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
-  type: PropTypes.oneOf(['cell']),
+  type: PropTypes.oneOf(['button', 'cell']),
   shape: PropTypes.oneOf(['radius', 'round']),
+  isBlock: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  isGather: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
@@ -82,6 +89,9 @@ RadioGroup.defaultProps = {
   theme: 'info',
   type: null,
   shape: null,
+  isBlock: false,
+  isDisabled: false,
+  isGather: false,
   onChange: () => {},
 };
 

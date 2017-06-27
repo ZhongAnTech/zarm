@@ -1,88 +1,12 @@
-@mixin radio-group-theme($color) {
-  .ui-radio {
-    border-color: $color;
-    color: $color;
+$prefixCls: ui-radio;
 
-    &.checked {
-      background: $color;
-      color: #fff;
-    }
-
-    &.disabled {
-      opacity: $disabled-opacity;
-/*      border-color: #f1f1f1;
-      background: #f9f9f9;
-      color: #bbb;*/
-      cursor: not-allowed;
-    }
-  }
-}
-
-.ui-radio-group {
-  @include radio-group-theme($theme-info);
-
-  &.block {
-    width: 100%;
-    display: flex;
-
-    .ui-radio {
-      flex: 1;
-    }
-  }
-
-  &.shape-radius {
-    .ui-radio {
-      &:first-child {
-        border-radius: $radius-md 0 0 $radius-md;
-      }
-
-      &:last-child {
-        border-radius: 0 $radius-md $radius-md 0;
-      }
-    }
-  }
-
-  &.shape-round {
-    .ui-radio {
-      &:first-child {
-        border-radius: r(15) 0 0 r(15);
-      }
-
-      &:last-child {
-        border-radius: 0 r(15) r(15) 0;
-      }
-    }
-  }
-
-  &.theme-info {
-    @include radio-group-theme($theme-info);
-  }
-  &.theme-success {
-    @include radio-group-theme($theme-success);
-  }
-  &.theme-warning {
-    @include radio-group-theme($theme-warning);
-  }
-  &.theme-error {
-    @include radio-group-theme($theme-error);
-  }
-}
-
-.ui-radio {
-  display: inline-block;
+.#{$prefixCls} {
   position: relative;
-  height: r(27);
-  line-height: r(27);
-  transition: all .3s ease;
-  cursor: pointer;
-  border-style: solid;
-  border-width: 1px;
-  background: #fff;
-  margin-left: -1px;
-  padding: 0 r(16);
-  font-size: r(14);
-  text-align: center;
-  /*margin-right: r(5);*/
+  margin-left: r(10);
+
+  &:first-child {
+    margin-left: 0;
+  }
 
   &-input {
     position: absolute;
@@ -91,5 +15,63 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+  }
+
+  &-group {
+
+    &.block {
+      display: flex;
+
+      /* 通栏模式字体增大 */
+      .#{$prefixCls} {
+        font-size: r(15);
+      }
+    }
+
+    &.shape-radius {
+      .#{$prefixCls} {
+        border-radius: $radius-md;
+      }
+    }
+
+    &.shape-round {
+      .#{$prefixCls} {
+        border-radius: r(15);
+      }
+    }
+
+    &.is-gather {
+      .#{$prefixCls} {
+        margin-left: -1px;
+      }
+
+      &.shape-radius {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: $radius-md 0 0 $radius-md;
+          }
+
+          &:last-child {
+            border-radius: 0 $radius-md $radius-md 0;
+          }
+        }
+      }
+
+      &.shape-round {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: r(15) 0 0 r(15);
+          }
+
+          &:last-child {
+            border-radius: 0 r(15) r(15) 0;
+          }
+        }
+      }
+    }
   }
 }
