@@ -52,7 +52,7 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带描述、跳转的列表项</Panel.Title>
+              <Panel.Title>带描述、箭头、跳转的列表项</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
@@ -62,11 +62,18 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
+              <Panel.Title>带图标、描述、箭头、跳转的列表项</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Cell hasArrow title="标题文字" description="描述文字" icon={<Icon type="right" />} onClick={() => {}} />
               <Cell hasArrow title="标题文字" description="描述文字" icon={<img alt="" src={img} />} onClick={() => {}} />
+              <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
+              <Cell hasArrow title={
+                <div>
+                  <div>标题文字</div>
+                  <div style={{ fontSize: 12, color: 'gray' }}>标题文字</div>
+                </div>
+              } description="描述文字" icon={<img alt="" src={img} />} onClick={() => {}} />
             </Panel.Body>
           </Panel>
 
