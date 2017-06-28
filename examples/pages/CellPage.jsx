@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Icon, Input, Cell, Checkbox } from '../../components';
+import { Panel, Icon, Input, Cell, Checkbox, Badge } from '../../components';
+import '../styles/pages/CellPage';
 
 const img = require('../images/icons/state.png');
 
@@ -67,13 +68,18 @@ class Page extends Component {
             <Panel.Body>
               <Cell hasArrow title="标题文字" description="描述文字" icon={<Icon type="right" />} onClick={() => {}} />
               <Cell hasArrow title="标题文字" description="描述文字" icon={<img alt="" src={img} />} onClick={() => {}} />
-              <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
-              <Cell hasArrow title={
-                <div>
-                  <div>标题文字</div>
-                  <div style={{ fontSize: 12, color: 'gray' }}>标题文字</div>
-                </div>
-              } description="描述文字" icon={<img alt="" src={img} />} onClick={() => {}} />
+              <Cell
+                hasArrow
+                title={
+                  <div>
+                    <div>标题文字</div>
+                    <div style={{ fontSize: 12, color: 'gray' }}>描述文字</div>
+                  </div>
+                }
+                description="附加提示"
+                icon={<img alt="" src={img} />}
+                onClick={() => {}}
+                />
             </Panel.Body>
           </Panel>
 

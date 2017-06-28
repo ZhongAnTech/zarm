@@ -8,7 +8,8 @@ $prefixCls: ui-cell;
 
 .#{$prefixCls} {
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  background: #fff;
   @include cell-theme(#999);
 
   &.theme-info {
@@ -33,7 +34,6 @@ $prefixCls: ui-cell;
     display: flex;
     align-items: center;
     padding: 0 r(15);
-    background: #fff;
     font-size: r(15);
     min-height: r(45);
 
@@ -71,15 +71,11 @@ $prefixCls: ui-cell;
     }
   }
 
-  &-body,
-  &-footer {
-    padding: r(8) 0;
-  }
-
   &-body {
     flex: 1;
     display: flex;
     align-items: center;
+    padding: r(12) 0;
   }
 
   &-footer {
@@ -88,10 +84,11 @@ $prefixCls: ui-cell;
   }
 
   &-arrow {
+    margin-left: r(5);
+
     &:after {
       display: inline-block;
       content: '';
-      margin-left: r(5);
       border-right: r(2) solid #c7c7cc;
       border-top: r(2) solid #c7c7cc;
       width: r(10);
