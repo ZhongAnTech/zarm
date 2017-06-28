@@ -37,8 +37,6 @@ class Radio extends PureComponent {
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
-      [`type-${type}`]: !!type,
-      disabled,
     });
 
     if (type === 'cell') {

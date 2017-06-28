@@ -59,7 +59,6 @@ class Page extends PureComponent {
                 description={
                   <Radio.Group
                     gather
-                    shape="radius"
                     value={this.state.radio}
                     onChange={value => console.log(`radio to ${value}`)}>
                     <Radio value="0">选项一</Radio>
@@ -128,7 +127,26 @@ class Page extends PureComponent {
                 onChange={(value) => {
                   console.log(`radio to ${value}`);
                 }}>
-                <Radio value={0} disabled>选项一</Radio>
+                <Radio value={0}>选项一</Radio>
+                <Radio value={1}>选项二</Radio>
+                <Radio value={2} disabled>选项三（禁止选择）</Radio>
+              </Radio.Group>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>列表样式禁用状态</Panel.Title>
+            </Panel.Header>
+            <Panel.Body>
+              <Radio.Group
+                disabled
+                type="cell"
+                value={this.state.radio}
+                onChange={(value) => {
+                  console.log(`radio to ${value}`);
+                }}>
+                <Radio value={0}>选项一</Radio>
                 <Radio value={1}>选项二</Radio>
                 <Radio value={2}>选项三</Radio>
               </Radio.Group>
