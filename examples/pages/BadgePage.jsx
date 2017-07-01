@@ -17,10 +17,10 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell hasArrow title="标题文字" description={<Badge shape="dot" />} />
-              <Cell hasArrow title="标题文字" description={<span><Badge text="免费" /> <Badge shape="radius" text="new" /></span>} />
-              <Cell hasArrow title="标题文字" description={<Badge shape="round" text={3} />} />
-              <Cell hasArrow title="标题文字" description={<Badge shape="round" text="999+" />} />
+              <Cell hasArrow title="标题文字" description={<Badge shape="dot" />} onClick={() => {}} />
+              <Cell hasArrow title="标题文字" description={<span><Badge text="免费" /> <Badge shape="radius" text="new" /></span>} onClick={() => {}} />
+              <Cell hasArrow title="标题文字" description={<Badge shape="round" text={3} />} onClick={() => {}} />
+              <Cell hasArrow title="标题文字" description={<Badge shape="round" text="999+" />} onClick={() => {}} />
             </Panel.Body>
           </Panel>
 
