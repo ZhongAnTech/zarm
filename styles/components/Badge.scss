@@ -4,7 +4,7 @@ $prefixCls: ui-badge;
   position: relative;
   display: inline-block;
   vertical-align: middle;
-
+  
   &-sup {
     display: block;
     top: auto;
@@ -13,6 +13,9 @@ $prefixCls: ui-badge;
     color: #fff;
     text-align: center;
     vertical-align: middle;
+    height: r(19);
+    line-height: r(19);
+    padding: 0 r(5);
 
     &-up {
       position: absolute;
@@ -27,25 +30,20 @@ $prefixCls: ui-badge;
       width: r(8);
       height: r(8);
       border-radius: 100%;
+      padding: 0;
     }
   }
 
   &.shape-radius {
     .#{$prefixCls}-sup {
-      height: r(19);
-      line-height: r(19);
       border-radius: r(4);
-      padding: 0 r(5);
     }
   }
 
   &.shape-round {
     .#{$prefixCls}-sup {
       min-width: r(19);
-      height: r(19);
-      line-height: r(19);
       border-radius: r(19);
-      padding: 0 r(5);
     }
   }
 
