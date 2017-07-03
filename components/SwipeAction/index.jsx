@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Events from '../utils/events';
 
 function _getCurrentPoint(e) {
   // console.log("e.touches[0].pageX: ", e.touches[0].pageX , " e.touches[0].screenX: ", e.touches[0].screenX);
@@ -18,7 +19,11 @@ class SwipeAction extends PureComponent {
   }
 
   componentDidMount() {
-    document.body.addEventListener('touchstart', this.onCloseSwipe.bind(this), true);
+    Events.on(document.body, 'touchstart', e => this.onCloseSwipe(e));
+  }
+
+  componentWillUnmount() {
+    Events.off(document.body, 'touchstart', e => this.onCloseSwipe(e));
   }
 
   onCloseSwipe(e) {
@@ -133,15 +138,11 @@ class SwipeAction extends PureComponent {
     const dom = this.content;
     const x = offset;
     const y = 0;
+    if (!dom) return;
 
     dom.style.webkitTransitionDuration = `${duration}ms`;
-    dom.style.mozTransitionDuration = `${duration}ms`;
-    dom.style.oTransitionDuration = `${duration}ms`;
     dom.style.transitionDuration = `${duration}ms`;
-
     dom.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`;
-    dom.style.mozTransform = `translate3d(${x}px, ${y}px, 0)`;
-    dom.style.oTransform = `translate3d(${x}px, ${y}px, 0)`;
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 

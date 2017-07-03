@@ -5,13 +5,18 @@ import classnames from 'classnames';
 class Cell extends PureComponent {
 
   render() {
-    const { prefixCls, type, theme, icon, title, description, help, children, className, ...others } = this.props;
+    const props = this.props;
+    const { prefixCls, className, theme, hasArrow, icon, title, description, help, isDisabled, onClick, children } = this.props;
+    const disabled = ('disabled' in props || isDisabled);
 
     const cls = classnames({
       [`${prefixCls}`]: true,
-      [`${prefixCls}-${type}`]: true,
-      [`theme-${theme}`]: !!theme,
       [className]: !!className,
+      [`theme-${theme}`]: !!theme,
+      disabled,
+      'is-link': !disabled && !!onClick,
+      'has-icon': !!icon,
+      'has-arrow': hasArrow,
     });
 
     const iconRender = icon
@@ -26,6 +31,10 @@ class Cell extends PureComponent {
       ? <div className={`${prefixCls}-content`}>{children}</div>
       : null;
 
+    const arrowRender = hasArrow
+      ? <div className={`${prefixCls}-arrow`} />
+      : null;
+
     const helpRender = help
       ? (
         <div className={`${prefixCls}-explain`}>
@@ -35,7 +44,7 @@ class Cell extends PureComponent {
       : null;
 
     return (
-      <div onTouchStart={() => {}} className={cls} {...others}>
+      <div className={cls} onTouchStart={() => {}} onClick={onClick}>
         <div className={`${prefixCls}-inner`}>
           <div className={`${prefixCls}-header`}>
             {iconRender}
@@ -47,6 +56,7 @@ class Cell extends PureComponent {
           <div className={`${prefixCls}-footer`}>
             {description}
           </div>
+          {arrowRender}
         </div>
         {helpRender}
       </div>
@@ -57,13 +67,15 @@ class Cell extends PureComponent {
 Cell.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['normal', 'link', 'select']),
+  hasArrow: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 Cell.defaultProps = {
   prefixCls: 'ui-cell',
   className: null,
-  type: 'normal',
+  hasArrow: false,
+  isDisabled: false,
 };
 
 export default Cell;

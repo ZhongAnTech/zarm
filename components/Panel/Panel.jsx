@@ -5,14 +5,12 @@ import classnames from 'classnames';
 class Panel extends PureComponent {
 
   render() {
-    const props = this.props;
-    const { prefixCls, isRadius, theme, className, children, ...others } = this.props;
+    const { prefixCls, className, theme, children, ...others } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
-      radius: ('radius' in props || isRadius),
-      [`theme-${theme}`]: !!theme,
       [className]: !!className,
+      [`theme-${theme}`]: !!theme,
     });
 
     return <div {...others} className={cls}>{children}</div>;
@@ -22,14 +20,12 @@ class Panel extends PureComponent {
 
 Panel.propTypes = {
   prefixCls: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
-  isRadius: PropTypes.bool,
+  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
 };
 
 Panel.defaultProps = {
   prefixCls: 'ui-panel',
-  theme: 'default',
-  isRadius: false,
+  theme: null,
 };
 
 export default Panel;

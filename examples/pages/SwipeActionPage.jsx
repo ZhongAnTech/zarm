@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Cell, SwipeAction } from '../../components';
 
-class Page extends PureComponent {
+class Page extends Component {
   render() {
     return (
       <div className="swipeAction-page">
@@ -14,7 +14,7 @@ class Page extends PureComponent {
             </Panel.Header>
             <Panel.Body>
               <SwipeAction
-                autoClose={true}
+                autoClose
                 right={[
                   {
                     theme: 'error',
