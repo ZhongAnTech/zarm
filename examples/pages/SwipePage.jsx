@@ -20,24 +20,24 @@ const ITEMS = [
   },
 ];
 
-class Page extends Component {
-
-  contentRender() {
-    return ITEMS.map((item, i) => {
-      return (
-        <div className="ui-swipe-item" key={i}>
-          <div className="ui-swipe-pic">
-            <a href={item.url}>
-              <img src={item.img} alt={item.title} />
-            </a>
-          </div>
-          <div className="ui-swipe-info">
-            <div className="ui-swipe-title">{item.title}</div>
-          </div>
+function contentRender() {
+  return ITEMS.map((item, i) => {
+    return (
+      <div className="ui-swipe-item" key={i}>
+        <div className="ui-swipe-pic">
+          <a href={item.url}>
+            <img src={item.img} alt={item.title} />
+          </a>
         </div>
-      );
-    })
-  }
+        <div className="ui-swipe-info">
+          <div className="ui-swipe-title">{item.title}</div>
+        </div>
+      </div>
+    );
+  });
+}
+
+class Page extends Component {
 
   render() {
     return (
@@ -57,7 +57,7 @@ class Page extends Component {
                 onChangeEnd={(index) => {
                   console.log(index);
                 }}>
-                {this.contentRender()}
+                {contentRender()}
               </Swipe>
             </Panel.Body>
           </Panel>
@@ -69,9 +69,8 @@ class Page extends Component {
             <Panel.Body>
               <Swipe
                 direction="top"
-                height={187}
-                >
-                {this.contentRender()}
+                height={187}>
+                {contentRender()}
               </Swipe>
             </Panel.Body>
           </Panel>
@@ -82,12 +81,12 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Swipe
+                isLoop
                 direction="left"
-                isLoop={true}
                 onChangeEnd={(index) => {
                   console.log(index);
                 }}>
-                {this.contentRender()}
+                {contentRender()}
               </Swipe>
             </Panel.Body>
           </Panel>
@@ -98,13 +97,13 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Swipe
+                autoPlay
+                isLoop
                 direction="left"
-                autoPlay={true}
-                isLoop={true}
                 onChangeEnd={(index) => {
                   console.log(index);
                 }}>
-                {this.contentRender()}
+                {contentRender()}
               </Swipe>
             </Panel.Body>
           </Panel>

@@ -1,30 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch } from '../../components';
-import District from './district';
+import { Panel, Icon, Input, Cell, Checkbox, Badge } from '../../components';
+import '../styles/pages/CellPage';
 
-class Page extends PureComponent {
+const img = require('../images/icons/state.png');
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      picker: false,
-      datePicker: false,
-      sValue: [],
-      dataSource: [],
-      date: '',
-      sex: 0,
-      timer: 0,
-      number: 2,
-      disabled: false,
-    };
-  }
-
-  toggle(key) {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
-  }
+class Page extends Component {
 
   render() {
     return (
@@ -56,7 +37,7 @@ class Page extends PureComponent {
             </Panel.Header>
             <Panel.Body>
               <Cell title="标题文字1" description="描述文字" icon={<Icon type="right" />} />
-              <Cell title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
+              <Cell title="标题文字" description="描述文字" icon={<img alt="" src={img} />} />
             </Panel.Body>
           </Panel>
 
@@ -65,28 +46,40 @@ class Page extends PureComponent {
               <Panel.Title>带跳转的列表项</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell type="link" title="标题文字" />
-              <Cell type="link" title="标题文字" />
+              <Cell title="标题文字" onClick={() => {}} />
+              <Cell title="标题文字" onClick={() => {}} />
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带描述、跳转的列表项</Panel.Title>
+              <Panel.Title>带描述、箭头、跳转的列表项</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell type="link" title="标题文字" description="描述文字" />
-              <Cell type="link" title="标题文字" description="描述文字" />
+              <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
+              <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带图标、描述、跳转的列表项</Panel.Title>
+              <Panel.Title>带图标、描述、箭头、跳转的列表项</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell type="link" title="标题文字" description="描述文字" icon={<Icon type="right" />} />
-              <Cell type="link" title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
+              <Cell hasArrow title="标题文字" description="描述文字" icon={<Icon type="right" />} onClick={() => {}} />
+              <Cell hasArrow title="标题文字" description="描述文字" icon={<img alt="" src={img} />} onClick={() => {}} />
+              <Cell
+                hasArrow
+                title={
+                  <div>
+                    <div>标题文字</div>
+                    <div style={{ fontSize: 12, color: 'gray' }}>描述文字</div>
+                  </div>
+                }
+                description="附加提示"
+                icon={<img alt="" src={img} />}
+                onClick={() => {}}
+                />
             </Panel.Body>
           </Panel>
 

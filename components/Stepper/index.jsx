@@ -3,21 +3,32 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Icon from '../Icon';
 
+function getValue(props, defaultValue) {
+  if ('value' in props) {
+    return props.value;
+  }
+  if ('defaultValue' in props) {
+    return props.defaultValue;
+  }
+  return defaultValue;
+}
+
 class Stepper extends PureComponent {
 
   constructor(props) {
     super(props);
+    console.log(props)
     this.state = {
-      value: props.value,
-      lastValue: props.value,
+      value: getValue(props, 0),
+      lastValue: getValue(props, 0),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: Number(nextProps.value),
-        lastValue: Number(nextProps.value),
+        value: Number(getValue(nextProps, 0)),
+        lastValue: Number(getValue(nextProps, 0)),
       });
     }
   }
@@ -106,6 +117,7 @@ Stepper.propTypes = {
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
   isDisabled: PropTypes.bool,
   value: PropTypes.number,
+  defaultValue: PropTypes.number,
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
@@ -118,7 +130,7 @@ Stepper.defaultProps = {
   size: null,
   shape: null,
   isDisabled: false,
-  value: 0,
+  defaultValue: 0,
   step: 1,
   min: null,
   max: null,

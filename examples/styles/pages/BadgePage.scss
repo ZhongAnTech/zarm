@@ -1,0 +1,21 @@
+@import "../core/func";
+
+.badge-page {
+
+  .custom-panel {
+    display: flex;
+    padding: r(20);
+    background: #fff;
+  }
+
+  .box {
+    flex: 1;
+    text-align: center;
+    
+    &-item {
+      width: r(50);
+      height: r(50);
+      background: #ddd;
+    }
+  }
+}

@@ -6,7 +6,7 @@ $prefixCls: ui-modal;
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  /*background: rgba(0, 0, 0, 0.4);*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,14 +39,13 @@ $prefixCls: ui-modal;
     position: relative;
     /*height: r(50);*/
     /*border-bottom: 1px solid #e9e9e9;*/
-    padding: r(25) r(15) 0 r(15);
+    padding: r(20) r(15) 0 r(15);
     text-align: center;
 
     &-title {
-      font-size: r(18);
+      font-size: r(17);
       line-height: 1;
-      /*line-height: r(50);*/
-      color: #000;
+      color: #333;
     }
 
     &-close {
@@ -65,9 +64,8 @@ $prefixCls: ui-modal;
   }
 
   &-body {
-    font-size: r(14);
-    color: #888;
-    line-height: 1.5;
+    font-size: r(15);
+    color: #999;
     padding: r(15);
     overflow: auto;
     user-select: auto;
@@ -89,7 +87,7 @@ $prefixCls: ui-modal;
       flex: 1;
       height: r(50);
       line-height: r(50);
-      font-size: r(16);
+      font-size: r(17);
       border-width: 0;
       /*border-left-width: 1px;
       border-color: #ddd !important;*/

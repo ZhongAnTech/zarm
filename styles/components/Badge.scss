@@ -1,0 +1,50 @@
+$prefixCls: ui-badge;
+
+.#{$prefixCls} {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  
+  &-sup {
+    display: block;
+    top: auto;
+    background: #ff5b05;
+    font-size: r(12);
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    height: r(19);
+    line-height: r(19);
+    padding: 0 r(5);
+
+    &-up {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(50%) translateY(-50%);
+    }
+  }
+
+  &.shape-dot {
+    .#{$prefixCls}-sup {
+      width: r(8);
+      height: r(8);
+      border-radius: 100%;
+      padding: 0;
+    }
+  }
+
+  &.shape-radius {
+    .#{$prefixCls}-sup {
+      border-radius: r(4);
+    }
+  }
+
+  &.shape-round {
+    .#{$prefixCls}-sup {
+      min-width: r(19);
+      border-radius: r(19);
+    }
+  }
+
+}
