@@ -4,7 +4,7 @@ $prefixCls: ui-badge;
   position: relative;
   display: inline-block;
   vertical-align: middle;
-
+  
   &-sup {
     display: block;
     top: auto;
@@ -13,9 +13,9 @@ $prefixCls: ui-badge;
     color: #fff;
     text-align: center;
     vertical-align: middle;
-    padding: 0 r(5);
     height: r(19);
     line-height: r(19);
+    padding: 0 r(5);
 
     &-up {
       position: absolute;
@@ -31,6 +31,7 @@ $prefixCls: ui-badge;
       height: r(8);
       padding: 0;
       border-radius: 100%;
+      padding: 0;
     }
   }
 

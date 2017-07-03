@@ -8,7 +8,7 @@ $prefixCls: ui-cell;
 
 .#{$prefixCls} {
   position: relative;
-  /*overflow: hidden;*/
+  overflow: hidden;
   background: #fff;
   @include cell-theme(#999);
 
