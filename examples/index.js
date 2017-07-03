@@ -87,6 +87,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'lazyload',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/LazyloadPage'));
+        });
+      },
+    },
+    {
       path: 'lottery',
       getComponent(location, cb) {
         require.ensure([], (require) => {
