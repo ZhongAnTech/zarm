@@ -7,7 +7,7 @@
 .ui-cell {
   position: relative;
   overflow: hidden;
-  @include cell-theme(button-default-bg, $button-default-border);
+  @include cell-theme($button-default-bg, $button-default-border);
 
   &.theme-info {
     @include cell-theme($button-info-bg, $button-info-border);
