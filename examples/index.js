@@ -133,6 +133,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'circle',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/CirclePage'));
+        }, 'CirclePage');
+      },
+    },
+    {
       path: 'swipe',
       getComponent(location, cb) {
         require.ensure([], (require) => {

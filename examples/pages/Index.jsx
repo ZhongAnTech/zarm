@@ -60,6 +60,7 @@ class Page extends PureComponent {
               <Cell hasArrow title="列表项 Cell" onClick={() => hashHistory.push('/cell')} />
               <Cell hasArrow title="图片轮播 Swipe" onClick={() => hashHistory.push('/swipe')} />
               <Cell hasArrow title="标签页 Tab" onClick={() => hashHistory.push('/tab')} />
+              <Cell hasArrow title="加载动画 Circle" onClick={() => hashHistory.push('/circle')} />
             </Panel.Body>
           </Panel>
         </main>
