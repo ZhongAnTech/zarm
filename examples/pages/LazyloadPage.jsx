@@ -12,7 +12,7 @@ class Page extends Component {
     const images = [];
 
     for (let i = 0; i < 1000; i += 1) {
-      images.push(<Img key={i} src={`${img}?t=${i}`} width={375} height={300} alt="" />);
+      images.push(<Img key={i} src={`${img}?t=${i}`} alt="" width={120} height={120} />);
     }
 
     return (
