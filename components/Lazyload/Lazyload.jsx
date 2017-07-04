@@ -1,29 +1,14 @@
-import React, { Component } from 'react';
+import { PureComponent, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Events from '../utils/events';
 
-const winHeight = window.innerHeight || document.documentElement.clientTop || 0;
-
-class Lazyload extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: false,
-    };
-  }
+class Lazyload extends PureComponent {
 
   componentDidMount() {
-    // const parent = this.lazyload.parentNode;
     this.rect = this.lazyload.getBoundingClientRect();
-
-    if (this.rect.top < winHeight) {
-      this.setState({
-        loaded: true,
-      });
-    }
-
+    // console.log(scrollParent(this.lazyload))
+    this.scrollHandler();
     Events.on(window, 'scroll', () => this.scrollHandler());
   }
 
@@ -32,29 +17,32 @@ class Lazyload extends Component {
   }
 
   scrollHandler() {
+    // const parent = this.lazyload.parentNode;
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
     const top = this.rect.top - document.body.scrollTop;
-    const bottom = this.rect.bottom - document.body.scrollTop;
+    const left = this.rect.left - document.body.scrollLeft;
+    const { onLoad } = this.props;
 
-    if (top < winHeight) {
-      // this.props.onLoad();
-      this.setState({
-        loaded: true,
-      });
+    if (top <= windowHeight) {
+      typeof onLoad === 'function' && onLoad();
     }
   }
 
   render() {
-    const { prefixCls, className, children, ...others } = this.props;
-    const { loaded } = this.state;
+    const { prefixCls, className, children } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
-    return loaded
-      ? children
-      : <div ref={(ref) => { this.lazyload = ref; }} className={classes} {...others} />;
+    const ele = cloneElement(children, {
+      className: classes,
+      ref: (ref) => { this.lazyload = ref; },
+    });
+
+    return ele;
   }
 }
 
