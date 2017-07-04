@@ -1,0 +1,151 @@
+$sizeNum: 62;
+$size: r($sizeNum);
+$blue: #86bcfc;
+$LoopBorderWidth: 2px;
+$PI: 3.141592674;
+$l: $sizeNum * $PI;
+
+@mixin borderTop($color: $blue, $width: 4px) {
+  border: $width solid $color;
+  border-left-color: rgba(0,0,0,0);
+  border-right-color: rgba(0,0,0,0);
+  border-bottom-color: rgba(0,0,0,0);
+  border-radius: 50%;
+}
+
+@function getCubicBezier($a, $b: 0.1) {
+  @return cubic-bezier(#{$a},#{$b},#{1 - $a},#{1 - $b})
+}
+
+%absoluteFull{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+%relativeFull{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+@mixin circleQuarter{
+  .ui-circle-quarter{
+    animation: 1s uiCircleRotate infinite linear;
+    
+    @extend %relativeFull;
+    @include borderTop;
+  }
+}
+
+@mixin circleLoop{
+  .ui-circle-loop{
+
+    &, .ui-circle-loop-inner{
+      @extend %relativeFull;
+
+      &:before, &:after{
+        content: '';
+        display: inline-block;
+
+        @extend %absoluteFull;
+        @include borderTop($blue, $LoopBorderWidth);
+      }
+    }
+
+    &:before{
+      animation: 1s uiCircleRotate infinite linear;
+    }
+
+    &:after{
+      animation: 1s uiCircleRotate infinite getCubicBezier(0.15);
+    }
+
+    .ui-circle-loop-inner{
+      &:before{
+        animation: 1s uiCircleRotate infinite getCubicBezier(0.45);
+      }
+
+      &:after{
+        animation: 1s uiCircleRotate infinite getCubicBezier(0.75);;
+      }
+    }
+  }
+}
+
+@mixin circleRainbow{
+  .ui-circle-rainbow{
+
+    &, .ui-circle-rainbow-inner{
+      @extend %relativeFull;
+
+      &:before, &:after{
+        content: '';
+        display: inline-block;
+
+        @extend %absoluteFull;
+        @include borderTop(rgba(white, .35), $LoopBorderWidth);
+      }
+    }
+
+    &:before{
+      animation: 1s uiCircleRotate infinite linear;
+    }
+
+    &:after{
+      border-top-color: rgba(blue, .35);
+      animation: 1s uiCircleRotate infinite getCubicBezier(0.15);
+    }
+
+    .ui-circle-rainbow-inner{
+      &:before{
+        border-top-color: rgba(green, .35);
+        animation: 1s uiCircleRotate infinite getCubicBezier(0.45);
+      }
+
+      &:after{
+        border-top-color: rgba(red, .35);
+        animation: 1s uiCircleRotate infinite getCubicBezier(0.75);;
+      }
+    }
+  }
+}
+
+@mixin circleProcess{
+  .ui-circle-process{
+    .circle-svg{
+      transform: rotate(-90deg);
+
+      .circle-bar{
+        stroke-dasharray: $l;
+        stroke-dashoffset: $l;
+
+        transition: .2s;
+      }
+    }
+  }
+}
+
+.ui-circle{
+  width: $size;
+  height: $size;
+
+  @include circleQuarter;
+  @include circleLoop;
+  @include circleRainbow;
+  @include circleProcess;
+}
+
+
+
+@keyframes uiCircleRotate{
+  0%{
+    transform: rotate(0deg);
+  }
+
+  100%{
+    transform: rotate(360deg);
+  }
+}
