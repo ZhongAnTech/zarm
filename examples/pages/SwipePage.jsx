@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Swipe } from '../../components';
+import { Panel, Swipe, Button, Img } from '../../components';
+import '../styles/pages/SwipePage';
 
 const ITEMS = [
   {
@@ -26,7 +27,7 @@ function contentRender() {
       <div className="ui-swipe-item" key={i}>
         <div className="ui-swipe-pic">
           <a href={item.url}>
-            <img src={item.img} alt={item.title} />
+            <Img src={item.img} alt={item.title} />
           </a>
         </div>
         <div className="ui-swipe-info">
@@ -81,6 +82,7 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Swipe
+                ref={(ele) => { this.swipe = ele; }}
                 isLoop
                 direction="left"
                 onChangeEnd={(index) => {
@@ -88,6 +90,21 @@ class Page extends Component {
                 }}>
                 {contentRender()}
               </Swipe>
+              <div className="controls">
+                <Button
+                  block
+                  size="sm"
+                  onClick={() => {
+                    this.swipe.onJumpTo(0);
+                  }}>无动画切换指定页</Button>
+
+                <Button
+                  block
+                  size="sm"
+                  onClick={() => {
+                    this.swipe.onSlideTo(2);
+                  }}>滑动到指定页</Button>
+              </div>
             </Panel.Body>
           </Panel>
 
