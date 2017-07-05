@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Cell, Toast, Loading, Button, Icon } from '../../components';
 
-import '../styles/pages/ToastPage';
-
 class ToastPage extends Component {
 
   constructor(props) {
@@ -39,6 +37,7 @@ class ToastPage extends Component {
               <Panel.Title>提示信息</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+
               <Cell
                 description={
                   <Button

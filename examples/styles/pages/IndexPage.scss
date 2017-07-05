@@ -17,4 +17,22 @@
   main {
     padding: r(15);
   }
+
+  .ui-panel-body {
+    border-radius: r(2);
+
+    &:after {
+      display: none;
+    }
+  }
+
+  .ui-cell {
+    background-color: transparent;
+
+    &:last-of-type {
+      &:after {
+        display: none;
+      }
+    }
+  }
 }
