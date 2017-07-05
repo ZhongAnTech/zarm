@@ -17,6 +17,8 @@ class Swipe extends Component {
       items: [],
       activeIndex: props.activeIndex,
     };
+    this._updateResize = this._updateResize.bind(this);
+    this._transitionEnd = this._transitionEnd.bind(this);
   }
 
   componentWillMount() {
@@ -26,9 +28,9 @@ class Swipe extends Component {
 
   componentDidMount() {
     // 监听窗口变化
-    Events.on(window, 'resize', () => this._updateResize());
-    Events.on(this.swipeItems, 'webkitTransitionEnd', () => this._transitionEnd());
-    Events.on(this.swipeItems, 'transitionend', () => this._transitionEnd());
+    Events.on(window, 'resize', this._updateResize);
+    Events.on(this.swipeItems, 'webkitTransitionEnd', this._transitionEnd);
+    Events.on(this.swipeItems, 'transitionend', this._transitionEnd);
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
@@ -38,6 +40,10 @@ class Swipe extends Component {
     if ('children' in nextProps) {
       this._parseItem(nextProps);
     }
+
+    if ('activeIndex' in nextProps) {
+      this.onJumpTo(nextProps.activeIndex);
+    }
   }
 
   componentWillUnmount() {
@@ -45,9 +51,9 @@ class Swipe extends Component {
     this.pauseAutoPlay();
 
     // 移除监听窗口变化
-    Events.off(window, 'resize', () => this._updateResize());
-    Events.off(this.swipeItems, 'webkitTransitionEnd', () => this._transitionEnd());
-    Events.off(this.swipeItems, 'transitionend', () => this._transitionEnd());
+    Events.off(window, 'resize', this._updateResize);
+    Events.off(this.swipeItems, 'webkitTransitionEnd', this._transitionEnd);
+    Events.off(this.swipeItems, 'transitionend', this._transitionEnd);
   }
 
   // 滑动到指定编号
@@ -312,7 +318,7 @@ class Swipe extends Component {
     return (
       <div className={classes}>
         <div
-          ref={(swipeItems) => { this.swipeItems = swipeItems; }}
+          ref={(ele) => { this.swipeItems = ele; }}
           className={`${prefixCls}-items`}
           style={style.items}
           onTouchStart={event => this._onTouchStart(event)}

@@ -17,7 +17,6 @@ class Stepper extends PureComponent {
 
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
       value: getValue(props, 0),
       lastValue: getValue(props, 0),
@@ -116,8 +115,6 @@ Stepper.propTypes = {
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
   isDisabled: PropTypes.bool,
-  value: PropTypes.number,
-  defaultValue: PropTypes.number,
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
@@ -130,7 +127,6 @@ Stepper.defaultProps = {
   size: null,
   shape: null,
   isDisabled: false,
-  defaultValue: 0,
   step: 1,
   min: null,
   max: null,

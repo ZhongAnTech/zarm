@@ -1,9 +1,17 @@
 @import "../core/func";
 
 .lazyload-page {
+  
+  .ui-img {
+    width: r(250);
+    height: r(170);
+    margin-bottom: r(10);
+  }
 
-  img {
-    width: 100%;
-    height: r(300);
+  .img-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 }
