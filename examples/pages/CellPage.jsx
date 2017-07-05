@@ -35,7 +35,9 @@ class CellPage extends Component {
       picker: false,
       datePicker: false,
       CascaderPicker: false,
+      StackPicker: false,
       sValue: [],
+      spValue: [{"label":"湖北省","value":"420000"},{"label":"十堰市","value":"420300"},{"label":"丹江口市","value":"420381"}],
       dataSource: [],
       date: '',
       sex: '',
@@ -262,6 +264,28 @@ class CellPage extends Component {
                 }}
                 onOk={(value) => {
                   console.log(value);
+                }}
+                onCancel={() => {
+                }}
+                />
+            </Cell>
+
+            <Cell title="层叠式选择器" type="select">
+              <Picker.Stack
+                visible={this.state.StackPicker}
+                title="请选择"
+                placeholder="请选择"
+                disabled={this.state.disabled}
+                dataSource={District}
+                cols={3}
+                valueMember="value"
+                value={this.state.spValue}
+                crumbAddon=" - "
+                labelCompile={ ({ value, label }) => `${ label }(${ value })` }
+                validate={ data => (data.length === 3 && data[0].label === '北京') ? '选择了北京行政区域' : '' }
+                onOk={ value => {
+                  console.log('外部change value ->', value);
+                  this.setState({ spValue: value });
                 }}
                 onCancel={() => {
                 }}
