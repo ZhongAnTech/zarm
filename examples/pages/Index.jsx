@@ -36,6 +36,7 @@ class Page extends PureComponent {
               <Cell type="link" title="步进器 Stepper" onClick={() => hashHistory.push('/stepper')} />
               <Cell type="link" title="开关 Switch" onClick={() => hashHistory.push('/switch')} />
               <Cell type="link" title="选择器 Picker" onClick={() => hashHistory.push('/picker')} />
+              <Cell type="link" title="上传图片 Uploader" onClick={() => hashHistory.push('/uploader')} />
             </Panel.Body>
           </Panel>
           <Panel>
