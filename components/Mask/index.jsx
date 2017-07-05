@@ -9,9 +9,7 @@ class Mask extends PureComponent {
     const markCls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
-      transparent: type === 'transparent',
-      light: type === 'light',
-      dark: type === 'dark',
+      [type]: !!type,
     });
 
     return visible

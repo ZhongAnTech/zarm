@@ -23,6 +23,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'badge',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/BadgePage'));
+        });
+      },
+    },
+    {
       path: 'button',
       getComponent(location, cb) {
         require.ensure([], (require) => {
@@ -75,6 +83,14 @@ const rootRoute = {
       getComponent(location, cb) {
         require.ensure([], (require) => {
           cb(null, require('./pages/TabPage'));
+        });
+      },
+    },
+    {
+      path: 'lazyload',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/LazyloadPage'));
         });
       },
     },

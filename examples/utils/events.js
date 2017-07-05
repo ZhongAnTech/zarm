@@ -1,32 +1,32 @@
 module.exports = {
 
-  on: function (el, type, callback) {
-    if(el.addEventListener) {
+  on: (el, type, callback) => {
+    if (el.addEventListener) {
       el.addEventListener(type, callback);
     } else {
-      el.attachEvent('on' + type, function() {
+      el.attachEvent(`on${type}`, () => {
         callback.call(el);
       });
     }
   },
 
-  off: function (el, type, callback) {
-    if(el.removeEventListener) {
+  off: (el, type, callback) => {
+    if (el.removeEventListener) {
       el.removeEventListener(type, callback);
     } else {
-      el.detachEvent('off' + type, callback);
+      el.detachEvent(`off${type}`, callback);
     }
   },
-  
-  once: function (el, type, callback) {
-    let typeArray = type.split(' ');
-    let recursiveFunction = function(e){
+
+  once: (el, type, callback) => {
+    const typeArray = type.split(' ');
+    const recursiveFunction = (e) => {
       e.target.removeEventListener(e.type, recursiveFunction);
       return callback(e);
     };
 
-    for (let i = typeArray.length - 1; i >= 0; i--) {
+    for (let i = typeArray.length - 1; i >= 0; i -= 1) {
       this.on(el, typeArray[i], recursiveFunction);
     }
-  }
-}
+  },
+};

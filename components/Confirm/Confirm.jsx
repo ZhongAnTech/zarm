@@ -28,7 +28,6 @@ class Confirm extends PureComponent {
 Confirm.propTypes = {
   prefixCls: PropTypes.string,
   message: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   okText: PropTypes.string,
   cancelText: PropTypes.string,
   onOk: PropTypes.func,
@@ -38,7 +37,6 @@ Confirm.propTypes = {
 Confirm.defaultProps = {
   prefixCls: 'ui-confirm',
   message: '',
-  width: '70%',
   okText: '确定',
   cancelText: '取消',
   onOk: () => {},

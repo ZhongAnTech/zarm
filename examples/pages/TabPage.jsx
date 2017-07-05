@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Tab } from '../../components';
-
 import '../styles/pages/TabPage';
 
 class TabPage extends Component {
