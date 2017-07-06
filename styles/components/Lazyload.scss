@@ -1,0 +1,12 @@
+$prefixCls: ui-lazyload;
+
+.#{$prefixCls} {
+	display: inline-block;
+
+  &-placeholder {
+  	display: flex;
+    justify-content: center;
+    align-items: center;
+  	background-color: #eee;
+  }
+}
