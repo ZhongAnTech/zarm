@@ -7,48 +7,29 @@ class Img extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      visible: false,
-    };
-    this.imgLoad = this.imgLoad.bind(this);
+    this._onLoad = this._onLoad.bind(this);
   }
 
-  imgLoad() {
+  _onLoad(cb) {
     const img = new Image();
     img.src = this.props.src;
-    img.onload = () => {
-      this.setState({
-        visible: true,
-        width: img.width,
-        height: img.height,
-      });
-    };
-    img.onerror = () => {
-      console.log('image load error');
-    };
+    img.onload = cb;
+    img.onerror = () => {};
   }
 
   render() {
-    const props = this.props;
-    const { prefixCls, src, alt, lazyload, isLazyload, placeholder, className, style, ...others } = this.props;
-    const { visible } = this.state;
-    const lazy = 'lazyload' in props || isLazyload;
+    const { prefixCls, src, alt, lazyload, isLazyload, placeholder, className, ...others } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
-    const styles = { ...style };
-    if (visible) {
-      styles.backgroundImage = `url(${src})`;
-    }
-
-    const imgRender = <div className={classes} style={styles} {...others}>{ !visible && placeholder }</div>;
-
-    return lazy
-      ? <Lazyload onLoad={this.imgLoad}>{imgRender}</Lazyload>
-      : imgRender;
+    return (
+      <Lazyload onLoad={this._onLoad}>
+        <img src={src} alt={alt} className={classes} {...others} />
+      </Lazyload>
+    );
   }
 }
 

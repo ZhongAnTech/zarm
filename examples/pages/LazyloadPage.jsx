@@ -18,11 +18,7 @@ class Page extends Component {
           key={i}
           src={`${img}?t=${i}`}
           alt=""
-          placeholder={
-            <div className="img-placeholder">
-              <Icon type="loading" className="rotate360" />
-            </div>
-          }
+          // placeholder={<Icon type="loading" className="rotate360" />}
           />
       );
     }

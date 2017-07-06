@@ -2,16 +2,10 @@
 
 .lazyload-page {
   
-  .ui-img {
+  .ui-img,
+  .ui-lazyload-placeholder {
     width: r(250);
     height: r(170);
     margin-bottom: r(10);
-  }
-
-  .img-placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
   }
 }
