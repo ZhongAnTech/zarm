@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Swipe, Button, Img } from '../../components';
+import { Panel, Swipe, Button } from '../../components';
 import '../styles/pages/SwipePage';
 
 const ITEMS = [
@@ -27,7 +27,7 @@ function contentRender() {
       <div className="ui-swipe-item" key={i}>
         <div className="ui-swipe-pic">
           <a href={item.url}>
-            <Img src={item.img} alt={item.title} />
+            <img src={item.img} alt={item.title} />
           </a>
         </div>
         <div className="ui-swipe-info">

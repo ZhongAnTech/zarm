@@ -1,26 +1,22 @@
-export Alert from './Alert';
-export Badge from './Badge';
-export Button from './Button';
-export Cell from './Cell';
-export Checkbox from './Checkbox';
-export Confirm from './Confirm';
-export Icon from './Icon';
-export Img from './Img';
-export Input from './Input';
-export Lazyload from './Lazyload';
-export Loading from './Loading';
-export Mask from './Mask';
-export Modal from './Modal';
-export Panel from './Panel';
-export Picker from './Picker';
-export Radio from './Radio';
-export Stepper from './Stepper';
-export Swipe from './Swipe';
-export SwipeAction from './SwipeAction';
-export Switch from './Switch';
-export Tab from './Tab';
-export Toast from './Toast';
-export Lottery from './Lottery';
-
-
+export { default as Alert } from './Alert';
+export { default as Badge } from './Badge';
+export { default as Button } from './Button';
+export { default as Cell } from './Cell';
+export { default as Checkbox } from './Checkbox';
+export { default as Confirm } from './Confirm';
+export { default as Icon } from './Icon';
+export { default as Input } from './Input';
+export { default as Loading } from './Loading';
+export { default as Mask } from './Mask';
+export { default as Modal } from './Modal';
+export { default as Panel } from './Panel';
+export { default as Picker } from './Picker';
+export { default as Radio } from './Radio';
+export { default as Stepper } from './Stepper';
+export { default as Swipe } from './Swipe';
+export { default as SwipeAction } from './SwipeAction';
+export { default as Switch } from './Switch';
+export { default as Tab } from './Tab';
+export { default as Toast } from './Toast';
+export { default as Lottery } from './Lottery';
 

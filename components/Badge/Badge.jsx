@@ -37,7 +37,6 @@ Badge.propTypes = {
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   shape: PropTypes.oneOf(['dot', 'radius', 'round', 'circle']),
   isSup: PropTypes.bool,
-  onClick: PropTypes.func,
 };
 
 Badge.defaultProps = {
@@ -46,7 +45,6 @@ Badge.defaultProps = {
   theme: null,
   shape: null,
   isSup: false,
-  onClick: () => {},
 };
 
 export default Badge;
