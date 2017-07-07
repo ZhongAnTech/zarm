@@ -1,37 +1,132 @@
-
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes, cloneElement } from 'react';
 import classnames from 'classnames';
-import Cell from '../Cell';
 
 class CellForm extends Component {
+  constructor(props) {
+    super(props);
 
-  render () {
-    const { className, help, ...others } = this.props;
+    this.initing = true;
+    this.state = {
+      data: {},
+    };
+
+    this.setResult = this.setResult.bind(this);
+  }
+
+  onInit() {
+    if (!this.initing) {
+      return null;
+    }
+
+    let { total } = this.props;
+    const { children, onInit } = this.props;
+    const { data } = this.state;
+
+    const keys = Object.keys(data);
+
+    total = total === undefined ? children.length : total;
+
+    if (keys.length < total) {
+      return null;
+    }
+
+    this.initing = false;
+    this._callback(onInit);
+  }
+
+  onChange() {
+    this._callback(this.props.onChange);
+  }
+
+  onBlur() {
+    this._callback(this.props.onBlur);
+  }
+
+  setResult(value, validate, opts) {
+    const { data = {} } = this.state;
+    const { type = '', name = '' } = opts;
+    const res = {
+      value,
+      validate,
+    };
+
+    data[name] = res;
+    this.setState({ data }, () => {
+      switch (type) {
+        case 'init':
+          this.onInit();
+          break;
+        case 'change':
+          this.onChange();
+          break;
+        case 'blur':
+          this.onBlur();
+          break;
+      }
+    });
+  }
+
+  _callback(cb) {
+    const data = this._data();
+    const validate = this._validate();
+
+    cb && cb(data, validate);
+  }
+
+  _data() {
+    const { data } = this.state;
+
+    const keys = Object.keys(data);
+
+    return keys.reduce((res, key) => {
+      res[key] = data[key].value;
+      return res;
+    }, {});
+  }
+
+  _validate() {
+    const { data = {} } = this.state;
+    const keys = Object.keys(data);
+
+    const res = keys.some(key => !data[key].validate);
+    return !res;
+  }
+
+  render() {
+    const { className, onInit, onChange, onBlur, children, total, ...others } = this.props;
 
     const cls = classnames({
       'ui-cell-form': true,
-      [className]   : !!className,
+      [className]: !!className,
+    });
+
+    const newChildren = React.Children.map(children, (child) => {
+      const { props } = child;
+
+      return cloneElement(child, {
+        setResult: this.setResult,
+        ...props,
+      });
     });
 
     return (
-      <div className={cls} {...others}>
-        <Cell {...others} />
-        <div className="ui-cell-explain">
-          <div className="ui-cell-explain-text">{help}</div>
-        </div>
-      </div>
+      <span className={cls} {...others}>
+        { newChildren }
+      </span>
     );
   }
 }
 
 CellForm.propTypes = {
-  type      : PropTypes.oneOf(['normal', 'link', 'select']),
-  className : PropTypes.string,
+  onInit: PropTypes.func,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 CellForm.defaultProps = {
-  type      : 'normal',
-  className : null,
+  onInit: () => {},
+  onChange: () => {},
+  onBlur: () => {},
 };
 
 export default CellForm;

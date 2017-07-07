@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, SwipeAction } from '../../components';
 import District from './district';
 
+import '../styles/pages/CellPage';
+
 const seasons = [
   [
     {
@@ -125,6 +127,30 @@ class CellPage extends Component {
           <Panel.Body>
             <Cell type="link" title="标题文字" description="描述文字" icon={<Icon type="right" />} />
             <Cell type="link" title="标题文字" description="描述文字" icon={<img alt="" src="https://weui.io/images/icon_nav_toast.png" />} />
+          </Panel.Body>
+        </Panel>
+
+        <Panel>
+          <Panel.Header>
+            <Panel.Title>表单组件(添加ValidInput验证)</Panel.Title>
+          </Panel.Header>
+          <Panel.Body>
+            <Cell.Form
+              onInit={(data, validate) => { console.log(data, validate); }}
+              onChange={(data, validate) => { console.log(data, validate); }}
+              onBlur={(data, validate) => { console.log(data, validate); }}>
+                <Cell.Validate title="姓名" name="username" maxLength={10} minLength={2} showHelp="hide">
+                  <Input type="text" placeholder="请输入姓名(长度2-10)" />
+                </Cell.Validate>
+
+                <Cell.Validate title="手机" name="mobile" maxLength={11} minLength={11} showHelp="always">
+                  <Input type="text" placeholder="请输入手机号(长度11位)" />
+                </Cell.Validate>
+
+                <Cell.Input className="ui-hide" name="test" minLength={2}>
+                  <Input type="text" placeholder="test" />
+                </Cell.Input>
+            </Cell.Form>
           </Panel.Body>
         </Panel>
 
