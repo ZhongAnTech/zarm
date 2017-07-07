@@ -55,7 +55,6 @@ class Page extends PureComponent {
             <Panel.Body>
               <Cell hasArrow title="徽标 Badge" onClick={() => hashHistory.push('/badge')} />
               <Cell hasArrow title="列表项 Cell" onClick={() => hashHistory.push('/cell')} />
-              <Cell hasArrow title="懒加载 Lazyload" onClick={() => hashHistory.push('/lazyload')} />
               <Cell hasArrow title="图片轮播 Swipe" onClick={() => hashHistory.push('/swipe')} />
               <Cell hasArrow title="标签页 Tab" onClick={() => hashHistory.push('/tab')} />
             </Panel.Body>
