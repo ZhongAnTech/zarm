@@ -80,7 +80,7 @@ class Toast extends PureComponent {
 Toast.propTypes = {
   prefixCls: PropTypes.string,
   visible: PropTypes.bool,
-  duration: PropTypes.number,
+  duration: PropTypes.number, // eslint-disable-line
   onMaskClick: PropTypes.func,
 };
 

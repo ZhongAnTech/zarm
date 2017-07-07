@@ -24,12 +24,15 @@ $prefixCls: ui-tab;
   &.theme-info {
     @include tab-theme($theme-info);
   }
+
   &.theme-success {
     @include tab-theme($theme-success);
   }
+
   &.theme-warning {
     @include tab-theme($theme-warning);
   }
+
   &.theme-error {
     @include tab-theme($theme-error);
   }
@@ -53,8 +56,9 @@ $prefixCls: ui-tab;
       font-size: r(15);
       color: #000;
       cursor: pointer;
-      
-      /*&-hasline {
+
+      /*
+      &-hasline {
         &:nth-of-type(n+2) {
           position: relative;
 
@@ -70,7 +74,8 @@ $prefixCls: ui-tab;
             background: #e9e9e9;
           }
         }
-      }*/
+      }
+      */
 
       &.active {
         color: $theme-success;
@@ -82,7 +87,7 @@ $prefixCls: ui-tab;
       }
     }
   }
-  
+
   &-line {
     position: absolute;
     left: 0;
@@ -103,7 +108,7 @@ $prefixCls: ui-tab;
 
     &-item {
       display: none;
-      
+
       &.active {
         display: block;
       }

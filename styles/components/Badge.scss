@@ -15,7 +15,6 @@ $prefixCls: ui-badge;
     font-size: r(12);
     color: #fff;
     height: r(19);
-    /*line-height: r(19);*/
     padding: 0 r(5);
     white-space: nowrap;
     text-rendering: optimizeLegibility;
@@ -58,5 +57,4 @@ $prefixCls: ui-badge;
       border-radius: r(19);
     }
   }
-
 }

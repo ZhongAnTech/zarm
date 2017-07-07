@@ -6,7 +6,7 @@ $prefixCls: ui-modal;
   top: 0;
   width: 100%;
   height: 100%;
-  /*background: rgba(0, 0, 0, 0.4);*/
+  /* background: rgba(0, 0, 0, 0.4); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,20 +25,20 @@ $prefixCls: ui-modal;
     width: 100%;
     margin: auto 0;
   }
-  
+
   &-dialog {
     position: relative;
     margin: r(60) auto;
     background: #fff;
-    box-shadow: 0 r(7) r(21) rgba(0,0,0,.2);
+    box-shadow: 0 r(7) r(21) rgba(0, 0, 0, .2);
     overflow: hidden;
     z-index: $zIndex-modal + 1;
   }
 
   &-header {
     position: relative;
-    /*height: r(50);*/
-    /*border-bottom: 1px solid #e9e9e9;*/
+    /* height: r(50); */
+    /* border-bottom: 1px solid #e9e9e9; */
     padding: r(20) r(15) 0 r(15);
     text-align: center;
 
@@ -89,10 +89,12 @@ $prefixCls: ui-modal;
       line-height: r(50);
       font-size: r(17);
       border-width: 0;
-      /*border-left-width: 1px;
-      border-color: #ddd !important;*/
+      /*
+      border-left-width: 1px;
+      border-color: #ddd !important;
+      */
 
-      /* 1px line*/
+      /* 1px line */
       position: relative;
       @include onepx(top);
 
@@ -101,8 +103,8 @@ $prefixCls: ui-modal;
       }
 
       &:not(:first-of-type) {
-        /*color: #333;*/
-        /*border-left-width: 0;*/
+        /* color: #333; */
+        /* border-left-width: 0; */
         @include onepx(left top);
       }
     }
