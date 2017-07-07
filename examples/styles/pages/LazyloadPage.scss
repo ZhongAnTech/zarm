@@ -1,11 +1,13 @@
 @import "../core/func";
 
 .lazyload-page {
-  
-  .ui-img,
-  .ui-lazyload-placeholder {
-    width: r(250);
-    height: r(170);
+
+  .img {
+    margin: 0 auto;
+    width: 100%;
+    height: r(200);
+/*    height: auto;
+    min-height: r(200);*/
     margin-bottom: r(10);
   }
 }

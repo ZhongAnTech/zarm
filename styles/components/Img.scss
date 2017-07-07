@@ -2,6 +2,7 @@ $prefixCls: ui-img;
 
 .#{$prefixCls} {
   width: 100%;
-  height: auto;
+  height: 100%;
   background-size: cover;
+  background-position: center center;
 }

@@ -14,11 +14,11 @@ class Page extends Component {
     for (let i = 0; i < 1000; i += 1) {
       images.push(
         <Img
-          lazyload
           key={i}
+          className="img"
           src={`${img}?t=${i}`}
           alt=""
-          // placeholder={<Icon type="loading" className="rotate360" />}
+          // placeholder={<div className="img-placeholder"><Icon type="loading" className="rotate360" /></div>}
           />
       );
     }
