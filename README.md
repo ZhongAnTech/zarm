@@ -1,4 +1,4 @@
-# dragon-mobile-ui
+# dragon-mobile-ui [![Build Status](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui.svg?branch=master)](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui)
   基于ReactJS的移动端UI库
   
 ## 安装

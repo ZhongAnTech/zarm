@@ -8,6 +8,7 @@
     "dev": "node devServer.js",
     "pro": "rm -rf assets && webpack --config webpack.config.pro.js",
     "lint": "eslint components --ext '.js,.jsx'; exit 0",
+    "test": "exit 0",
     "build:lib": "babel components --out-dir lib --presets=es2015,react,stage-0",
     "build:umd": "webpack --config webpack.config.umd.js && WEBPACK_ENV=production webpack --config webpack.config.umd.js",
     "build": "npm run clean && npm run build:lib && npm run build:umd"
