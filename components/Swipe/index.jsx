@@ -35,7 +35,11 @@ class Swipe extends Component {
 
   componentWillReceiveProps(nextProps) {
     if ('children' in nextProps) {
-      this.parseItem(nextProps)
+      this.parseItem(nextProps);
+    }
+
+    if ('activeIndex' in nextProps) {
+      this.onJumpTo(nextProps.activeIndex);
     }
   }
 
