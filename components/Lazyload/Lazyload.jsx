@@ -7,9 +7,6 @@ class Lazyload extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-      loaded: false,
-    };
     this.scrollHandler = this.scrollHandler.bind(this);
   }
 
@@ -28,21 +25,22 @@ class Lazyload extends PureComponent {
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
     const windowWidth = window.innerWidth || document.documentElement.clientWidth;
     const top = this.rect.top - document.body.scrollTop;
+    const bottom = this.rect.bottom - document.body.scrollTop;
     const left = this.rect.left - document.body.scrollLeft;
     const { onLoad } = this.props;
 
-    if (top <= windowHeight) {
-      typeof onLoad === 'function' && onLoad(() => {
-        this.setState({
-          loaded: true,
-        });
-      });
+    // console.log(this.rect.top, this.rect.bottom, document.body.scrollTop, windowHeight);
+
+    if (
+      (top <= windowHeight)
+      // || (bottom > 0 && bottom <= windowHeight)
+    ) {
+      typeof onLoad === 'function' && onLoad();
     }
   }
 
   render() {
-    const { prefixCls, className, children, placeholder } = this.props;
-    const { loaded } = this.state;
+    const { prefixCls, className, children } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
@@ -51,11 +49,7 @@ class Lazyload extends PureComponent {
 
     return (
       <div className={classes} ref={(ref) => { this.lazyload = ref; }}>
-        {
-          loaded
-            ? children
-            : <div className="ui-lazyload-placeholder">{placeholder}</div>
-        }
+        {children}
       </div>
     );
   }
@@ -64,13 +58,11 @@ class Lazyload extends PureComponent {
 Lazyload.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  placeholder: PropTypes.element,
 };
 
 Lazyload.defaultProps = {
   prefixCls: 'ui-lazyload',
   className: null,
-  placeholder: null,
 };
 
 export default Lazyload;
