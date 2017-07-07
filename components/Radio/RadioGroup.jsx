@@ -50,7 +50,7 @@ class RadioGroup extends PureComponent {
         isDisabled: disabled,
         onChange: () => this.onRadioChange(element.props.value),
         // use '==' because the result will fail when the value's typeof is Number
-        checked: (this.state.value == element.props.value),
+        checked: (this.state.value == element.props.value), // eslint-disable-line
       });
     });
 

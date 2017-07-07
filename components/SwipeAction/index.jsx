@@ -227,8 +227,8 @@ class SwipeAction extends PureComponent {
 
 SwipeAction.propTypes = {
   prefixCls: PropTypes.string,
-  left: PropTypes.array,
-  right: PropTypes.array,
+  left: PropTypes.arrayOf(PropTypes.object),
+  right: PropTypes.arrayOf(PropTypes.object),
 };
 
 SwipeAction.defaultProps = {

@@ -2,8 +2,8 @@ $prefixCls: ui-mask;
 
 .#{$prefixCls} {
   position: fixed;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   animation: fade-enter .3s ease-out;

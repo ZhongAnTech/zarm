@@ -17,16 +17,16 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell hasArrow title="标题文字" description={<Badge shape="dot" />} onClick={() => {}} />
-              <Cell hasArrow title="标题文字" description={<span><Badge text="免费" /> <Badge shape="radius" text="new" /></span>} onClick={() => {}} />
-              <Cell hasArrow title="标题文字" description={<Badge shape="round" text={3} />} onClick={() => {}} />
-              <Cell hasArrow title="标题文字" description={<Badge shape="round" text="999+" />} onClick={() => {}} />
+              <Cell hasArrow title="点状" description={<Badge shape="dot" />} onClick={() => {}} />
+              <Cell hasArrow title="直角" description={<Badge text="免费" />} onClick={() => {}} />
+              <Cell hasArrow title="圆角" description={<Badge shape="radius" text="new" />} onClick={() => {}} />
+              <Cell hasArrow title="椭圆形" description={<span><Badge shape="circle" text={3} /> <Badge shape="round" text="999+" /></span>} onClick={() => {}} />
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>上标</Panel.Title>
+              <Panel.Title>上标位置</Panel.Title>
             </Panel.Header>
             <Panel.Body className="custom-panel">
               <div className="box">

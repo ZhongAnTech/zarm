@@ -37,6 +37,7 @@ class ToastPage extends Component {
               <Panel.Title>提示信息</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+
               <Cell
                 description={
                   <Button

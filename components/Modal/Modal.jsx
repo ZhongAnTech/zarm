@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Events from '../utils/events';
 import Mask from '../Mask';
 
 class Modal extends PureComponent {
@@ -12,6 +13,7 @@ class Modal extends PureComponent {
       isPending: false,
       animationState: 'enter',
     };
+    this.animationEnd = this.animationEnd.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,8 +25,13 @@ class Modal extends PureComponent {
   }
 
   componentWillUpdate() {
-    this.modal.addEventListener('webkitAnimationEnd', () => this.animationEnd());
-    this.modal.addEventListener('animationEnd', () => this.animationEnd());
+    Events.on(this.modal, 'webkitAnimationEnd', this.animationEnd);
+    Events.on(this.modal, 'animationend', this.animationEnd);
+  }
+
+  componentWillUnmount() {
+    Events.off(this.modal, 'webkitAnimationEnd', this.animationEnd);
+    Events.off(this.modal, 'animationend', this.animationEnd);
   }
 
   animationEnd() {

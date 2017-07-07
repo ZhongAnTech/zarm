@@ -12,6 +12,7 @@ class Radio extends PureComponent {
     this.state = {
       checked: props.checked || props.defaultChecked,
     };
+    this.onValueChange = this.onValueChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,10 +23,17 @@ class Radio extends PureComponent {
     }
   }
 
-  _onClick() {
+  onValueChange() {
+    const { isDisabled, onChange } = this.props;
+    const disabled = 'disabled' in this.props || isDisabled;
+
+    if (disabled) {
+      return;
+    }
+
     const checked = true;
     this.setState({ checked });
-    this.props.onChange(checked);
+    typeof onChange === 'function' && onChange(checked);
   }
 
   render() {
@@ -42,7 +50,7 @@ class Radio extends PureComponent {
     if (type === 'cell') {
       return (
         <Cell isDisabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
-          <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={() => !disabled && this._onClick()} />
+          <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
           {children}
         </Cell>
       );
@@ -50,7 +58,7 @@ class Radio extends PureComponent {
 
     return (
       <Button className={cls} theme={theme} size="xs" isBlock={isBlock} isBordered={!checked} isDisabled={disabled}>
-        <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={() => !disabled && this._onClick()} />
+        <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         {children}
       </Button>
     );

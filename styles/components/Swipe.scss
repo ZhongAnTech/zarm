@@ -1,17 +1,15 @@
-
 .ui-swipe {
   position: relative;
   overflow: hidden;
 
   .ui-swipe-items {
-
     .ui-swipe-item {
       position: relative;
       display: inline-block;
       width: 100%;
       height: 100%;
       cursor: pointer;
-      
+
       &:after {
         clear: both;
       }
@@ -31,8 +29,7 @@
         .ui-swipe-title {
           color: #fff;
         }
-      } 
-
+      }
     }
   }
 
@@ -45,20 +42,22 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      
+
       li {
-        /*margin: r(1);*/
+        /* margin: r(1); */
         width: r(8);
         height: r(8);
         border-radius: r(4);
         background: #ccc;
-        /*border: r(1) solid #fff;*/
+        /* border: r(1) solid #fff; */
         cursor: pointer;
-        
+
         &.active {
-          /*margin: 0;
+          /*
+          margin: 0;
           width: r(10);
-          height: r(10);*/
+          height: r(10);
+          */
           background: $theme-info;
         }
       }

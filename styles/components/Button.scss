@@ -17,7 +17,7 @@ $prefixCls: ui-button;
     }
 
     &.disabled,
-    &:disabled {      
+    &:disabled {
       &:active,
       &.active,
       &:focus,
@@ -47,25 +47,27 @@ $prefixCls: ui-button;
   &:visited {
     color: $color;
   }
-  
+
   &:active,
   &.active {
     background-color: $active-background;
     border-color: $active-border;
     color: $active-color;
     background-image: none;
-    /*box-shadow: inset 0 r(3) r(5) rgba(0, 0, 0,.125);*/
+    /* box-shadow: inset 0 r(3) r(5) rgba(0, 0, 0,.125); */
   }
-  
+
   &.disabled,
   &:disabled {
-    /*background-color: $disabled-background;
+    /*
+    background-color: $disabled-background;
     border-color: $disabled-background;
-    color: $disabled-color;*/
+    color: $disabled-color;
+    */
     opacity: $disabled-opacity;
     color: rgba(255, 255, 255, $disabled-opacity);
     cursor: not-allowed;
-    
+
     &:active,
     &.active,
     &:focus,
@@ -77,7 +79,6 @@ $prefixCls: ui-button;
       box-shadow: none;
     }
   }
-
 }
 
 @mixin button-size($height, $padding, $font-size, $border-radius, $icon-size, $spacing) {
@@ -89,7 +90,7 @@ $prefixCls: ui-button;
   &.shape-radius {
     border-radius: $border-radius;
   }
-  
+
   &.shape-round {
     border-radius: r(1000);
   }
@@ -121,11 +122,11 @@ $prefixCls: ui-button;
   outline: 0 none;
   -webkit-appearance: none;
   user-select: none;
-  /*transition: background-color 300ms ease-out, border-color 300ms ease-out;*/
+  /* transition: background-color 300ms ease-out, border-color 300ms ease-out; */
   @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
   @include button-theme($button-default-color, $button-default-bg, $button-default-border);
   @include button-bordered($button-default-color, $button-default-activebg, $button-default-border);
-  
+
   &,
   &:hover,
   &:focus,
@@ -159,12 +160,15 @@ $prefixCls: ui-button;
   &.size-xl {
     @include button-size($height-xl, $padding-xl, $fontSize-xl, $radius-xl, r(26), r(8));
   }
+
   &.size-lg {
     @include button-size($height-lg, $padding-lg, $fontSize-lg, $radius-lg, r(24), r(6));
   }
+
   &.size-sm {
     @include button-size($height-sm, $padding-sm, $fontSize-sm, $radius-sm, r(20), r(5));
   }
+
   &.size-xs {
     @include button-size($height-xs, $padding-xs, $fontSize-xs, $radius-xs, r(18), r(5));
   }
@@ -174,18 +178,20 @@ $prefixCls: ui-button;
     @include button-theme($button-info-color, $button-info-bg, $button-info-border);
     @include button-bordered($button-info-border, $button-info-activebg, $button-info-border);
   }
+
   &.theme-success {
     @include button-theme($button-success-color, $button-success-bg, $button-success-border);
     @include button-bordered($button-success-border, $button-success-activebg, $button-success-border);
   }
+
   &.theme-warning {
     @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
     @include button-bordered($button-warning-border, $button-warning-activebg, $button-warning-border);
   }
+
   &.theme-error {
     @include button-theme($button-error-color, $button-error-bg, $button-error-border);
     @include button-bordered($button-error-border, $button-error-activebg, $button-error-border);
   }
-
 }
 

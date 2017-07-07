@@ -4,18 +4,21 @@ $prefixCls: ui-badge;
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  
+  line-height: 1;
+
   &-sup {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: auto;
     background: #ff5b05;
     font-size: r(12);
     color: #fff;
-    text-align: center;
-    vertical-align: middle;
     height: r(19);
-    line-height: r(19);
     padding: 0 r(5);
+    white-space: nowrap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 
     &-up {
       position: absolute;
@@ -29,8 +32,8 @@ $prefixCls: ui-badge;
     .#{$prefixCls}-sup {
       width: r(8);
       height: r(8);
-      border-radius: 100%;
       padding: 0;
+      border-radius: 100%;
     }
   }
 
@@ -47,4 +50,11 @@ $prefixCls: ui-badge;
     }
   }
 
+  &.shape-circle {
+    .#{$prefixCls}-sup {
+      width: r(19);
+      padding: 0;
+      border-radius: r(19);
+    }
+  }
 }
