@@ -1,0 +1,22 @@
+@import "../core/func";
+
+.swipeAction-page{
+  padding-top: r(30);
+  .cell{
+    display: flex;
+    align-items: center;
+    padding: 0.48833rem 0.915rem;
+    background: #fff;
+    font-size: 0.915rem;
+    min-height: 2.74357rem;
+    overflow: hidden;
+    color: #333;
+  }
+  .ui-swipeAction{
+    &-btn{
+      &.custom-btn{
+        background: gold;
+      }
+    }
+  }
+}
