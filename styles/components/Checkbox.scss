@@ -1,4 +1,3 @@
-
 .ui-checkbox-group {
   display: inline-block;
 
@@ -19,7 +18,6 @@
 
   /* 选中状态 */
   &.checked {
-    
     .ui-checkbox-inner {
       border-color: $theme-info;
       background-color: $theme-info;
@@ -33,7 +31,6 @@
 
   /* 禁用状态 */
   &.disabled {
-
     .ui-checkbox-inner {
       border-color: #d9d9d9;
       background-color: #f3f3f3;

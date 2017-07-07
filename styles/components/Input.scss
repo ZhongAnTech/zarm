@@ -1,6 +1,7 @@
 @mixin input-size($height, $padding, $font-size, $border-radius) {
-  input, textarea {
-    /*height: $height;*/
+  input,
+  textarea {
+    /* height: $height; */
     line-height: 1.5;
     padding: $padding;
 
@@ -14,21 +15,22 @@
   position: relative;
   @include input-size($height-md, 0 0, $fontSize-md, $radius-md);
 
-  input, textarea {
+  input,
+  textarea {
     position: relative;
     display: inline-block;
     width: 100%;
     background-color: #fff;
     background-image: none;
     border-width: 0;
-    /*border: 1px solid #d9d9d9;*/
+    /* border: 1px solid #d9d9d9; */
     outline: 0;
     appearance: none;
 
     &[type="date"] {
       height: r(21);
     }
-  
+
     &[type="date"],
     &[type="text"] {
       height: r(21);
@@ -51,12 +53,10 @@
     &:disabled {
       cursor: not-allowed;
       opacity: $disabled-opacity;
-      /*background-color: #f3f5f7;*/
-      
+      /* background-color: #f3f5f7; */
+
       &:focus,
-      &.focus {
-        border-color: #ccc;
-      }
+      &.focus,
       &:hover {
         border-color: #ccc;
       }
@@ -67,12 +67,15 @@
   &.size-xl {
     @include input-size($height-xl, 4px 14px, $fontSize-xl, $radius-xl);
   }
+
   &.size-lg {
     @include input-size($height-lg, 4px 11px, $fontSize-lg, $radius-lg);
   }
+
   &.size-sm {
     @include input-size($height-sm, 4px 7px, $fontSize-sm, $radius-sm);
   }
+
   &.size-xs {
     @include input-size($height-xs, 4px 4px, $fontSize-xs, $radius-xs);
   }
