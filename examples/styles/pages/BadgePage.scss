@@ -4,17 +4,16 @@
 
   .custom-panel {
     display: flex;
-    padding: r(20);
+    justify-content: space-between;
+    padding: r(25);
     background: #fff;
   }
 
   .box {
-    flex: 1;
-    text-align: center;
-    
+
     &-item {
-      width: r(50);
-      height: r(50);
+      width: r(30);
+      height: r(30);
       background: #ddd;
     }
   }

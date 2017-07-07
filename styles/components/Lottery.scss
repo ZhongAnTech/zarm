@@ -10,7 +10,7 @@ $transform-time: 4s !default;
 
 .ui-lottery {
   position: relative;
-  
+
   .rotate-area {
     position: relative;
     width: r(325);
@@ -22,7 +22,7 @@ $transform-time: 4s !default;
   }
 
   .award-item {
-    width: r(112.5); 
+    width: r(112.5);
     height: r(148);
     background-position: center center;
     background-repeat: no-repeat;
@@ -46,5 +46,4 @@ $transform-time: 4s !default;
     top: 50%;
     margin-top: r(-58);
   }
-
 }

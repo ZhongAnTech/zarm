@@ -33,7 +33,7 @@ $prefixCls: ui-switch;
       height: r(29);
       border-radius: r(14.5);
     }
-    
+
     &:before {
       width: r(49);
       background-color: #fdfdfd;
@@ -51,6 +51,7 @@ $prefixCls: ui-switch;
       &:before {
         transform: scale(0);
       }
+
       &:after {
         transform: translateX(r(20));
       }
@@ -61,16 +62,19 @@ $prefixCls: ui-switch;
     cursor: not-allowed;
     opacity: $disabled-opacity;
   }
-  
+
   &.theme-info {
     @include switch-theme($theme-info);
   }
+
   &.theme-success {
     @include switch-theme($theme-success);
   }
+
   &.theme-warning {
     @include switch-theme($theme-warning);
   }
+
   &.theme-error {
     @include switch-theme($theme-error);
   }

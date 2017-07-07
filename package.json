@@ -7,13 +7,15 @@
     "clean": "rm -rf lib && rm -rf dist",
     "dev": "node devServer.js",
     "pro": "rm -rf assets && webpack --config webpack.config.pro.js",
-    "lint": "eslint components --ext '.js,.jsx'; exit 0",
+    "lint:js": "eslint components --ext '.js,.jsx'; exit 0",
+    "lint:style": "stylelint styles/**/*.scss --syntax scss",
+    "lint": "npm run lint:js && npm run lint:style",
+    "test": "exit 0",
     "build:lib": "babel components --out-dir lib --presets=es2015,react,stage-0",
     "build:umd": "webpack --config webpack.config.umd.js && WEBPACK_ENV=production webpack --config webpack.config.umd.js",
     "build": "npm run clean && npm run build:lib && npm run build:umd"
   },
   "dependencies": {
-    "babel-runtime": "^6.23.0",
     "moment": "^2.18.0",
     "zscroller": "^0.2.5"
   },
@@ -27,6 +29,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.23.0",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.1",
     "cssnano": "^3.10.0",
@@ -43,6 +46,8 @@
     "react-dom": "15.4.0",
     "react-router": "^2.5.0",
     "sass-loader": "^6.0.3",
+    "stylelint": "^7.12.0",
+    "stylelint-config-standard": "^16.0.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.5.0",
     "webpack-dev-server": "1.16.2"

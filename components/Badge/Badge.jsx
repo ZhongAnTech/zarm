@@ -22,10 +22,10 @@ class Badge extends PureComponent {
     });
 
     return (
-      <div className={cls}>
+      <span className={cls}>
         {children}
         <sup className={supCls}>{text}</sup>
-      </div>
+      </span>
     );
   }
 
@@ -35,9 +35,8 @@ Badge.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
-  shape: PropTypes.oneOf(['dot', 'radius', 'round']),
+  shape: PropTypes.oneOf(['dot', 'radius', 'round', 'circle']),
   isSup: PropTypes.bool,
-  onClick: PropTypes.func,
 };
 
 Badge.defaultProps = {
@@ -46,7 +45,6 @@ Badge.defaultProps = {
   theme: null,
   shape: null,
   isSup: false,
-  onClick: () => {},
 };
 
 export default Badge;

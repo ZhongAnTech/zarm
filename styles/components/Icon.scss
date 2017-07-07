@@ -5,15 +5,12 @@
 @font-face {
   font-family: "dragonicon";
   src: url('#{$icon-url}.eot');
-  src: url('#{$icon-url}.eot?#iefix') format('embedded-opentype'),
-    url('#{$icon-url}.woff') format('woff'),
-    url('#{$icon-url}.ttf') format('truetype'),
-    url('#{$icon-url}.svg#dragonicon') format('svg');
+  src: url('#{$icon-url}.eot?#iefix') format('embedded-opentype'), url('#{$icon-url}.woff') format('woff'), url('#{$icon-url}.ttf') format('truetype'), url('#{$icon-url}.svg#dragonicon') format('svg');
 }
 
 .ui-icon {
   display: inline-block;
-  /*margin-top: -2px;*/
+  /* margin-top: -2px; */
   vertical-align: middle;
   font-family: "dragonicon" !important;
   font-style: normal;
@@ -21,18 +18,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /*&.theme-default {
+  /*
+  &.theme-default {
     @include icon-theme($theme-default);
-  }*/
+  }
+  */
   &.theme-info {
     @include icon-theme($theme-info);
   }
+
   &.theme-success {
     @include icon-theme($theme-success);
   }
+
   &.theme-warning {
     @include icon-theme($theme-warning);
   }
+
   &.theme-error {
     @include icon-theme($theme-error);
   }

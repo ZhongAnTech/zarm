@@ -4,7 +4,8 @@ $prefixCls: ui-stepper;
   .#{$prefixCls} {
     &-sub,
     &-plus {
-      color: $color
+      color: $color;
+      border: 1px solid $color;
     }
   }
 }
@@ -27,6 +28,7 @@ $prefixCls: ui-stepper;
       border-radius: $radius-md;
     }
   }
+
   &.shape-circle {
     .#{$prefixCls}-sub,
     .#{$prefixCls}-plus {
@@ -37,12 +39,15 @@ $prefixCls: ui-stepper;
   &.theme-info {
     @include stepper-theme($theme-info);
   }
+
   &.theme-success {
     @include stepper-theme($theme-success);
   }
+
   &.theme-warning {
     @include stepper-theme($theme-warning);
   }
+
   &.theme-error {
     @include stepper-theme($theme-error);
   }
@@ -58,11 +63,11 @@ $prefixCls: ui-stepper;
     font-size: r(18);
     font-weight: bold;
     cursor: pointer;
-    border: 1px solid #e1e1e1;
 
     &.disabled {
       opacity: $disabled-opacity;
       cursor: not-allowed;
+
       &:active {
         background: #fff;
       }

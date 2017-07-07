@@ -28,12 +28,11 @@ class Lottery extends Component {
     };
 
     this.num = props.option.length;
+    this._transitionend = this._transitionend.bind(this);
   }
 
   componentDidMount() {
-    _addListenerMulti(this.rotateArea, 'webkitTransitionEnd transitionend', () => {
-      this._transitionend();
-    });
+    _addListenerMulti(this.rotateArea, 'webkitTransitionEnd transitionend', this._transitionend);
   }
 
   componentWillReceiveProps(nextProps) {
