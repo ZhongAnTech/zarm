@@ -1,5 +1,8 @@
 # 版本更新日志  
 
+## 0.0.42 
+  * 修复Swipe组件接收新activeIndex时不重新render的bug
+
 ## 0.0.41 
   * 优化InputNumber组件，onChange时会自动触发setState保存变更记录，onBlur时会自动校验输入的合法性
   * 修复Picker组件在未选择时点“确定”，不保存结果的bug
