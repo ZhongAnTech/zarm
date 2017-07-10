@@ -10,8 +10,8 @@ export default function changeImageSize(img, quality, fileType) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
-  const MAX_WIDTH = 800;
-  const MAX_HEIGHT = 600;
+  // const MAX_WIDTH = 800;
+  // const MAX_HEIGHT = 600;
   const width = img.width;
   const height = img.height;
 
