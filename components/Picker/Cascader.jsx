@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import { arrayTreeFilter } from './utils';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { arrayTreeFilter, formatToInit } from './utils';
 import ColumnGroup from './ColumnGroup';
 
 class Cascader extends Component {
@@ -24,13 +25,24 @@ class Cascader extends Component {
       return level <= index && item[this.props.valueMember] === value[level];
     });
     let data = children[index];
-    let i;
-    for (i = index + 1; data && data.children && data.children.length && i < this.props.cols; i += 1) {
+    let i = index + 1;
+
+    while (data && data.children && data.children.length) {
+      if (this.props.cols && i >= this.props.cols) {
+        break;
+      }
       data = data.children[0];
       value[i] = data[this.props.valueMember];
+      i += 1;
     }
+
     value.length = i;
 
+    // for (i = index + 1; data && data.children && data.children.length && i < this.props.cols; i += 1) {
+    //   data = data.children[0];
+    //   value[i] = data[this.props.valueMember];
+    // }
+    // value.length = i;
     if (!('value' in this.props)) {
       this.setState({
         value,
@@ -42,10 +54,16 @@ class Cascader extends Component {
   getCols() {
     const { data, cols } = this.props;
     const value = this.state.value;
+
     const childrenTree = arrayTreeFilter(data, (item, level) => {
       return item[this.props.valueMember] === value[level];
     }).map(c => c.children);
-    childrenTree.length = cols - 1;
+
+    if (cols) {
+      childrenTree.length = cols - 1;
+    } else {
+      childrenTree.length > 1 && childrenTree.splice(-1);
+    }
     childrenTree.unshift(data);
 
     return childrenTree.map((children) => {
@@ -58,16 +76,19 @@ class Cascader extends Component {
   }
 
   getValue(d, val) {
-    let data = d || this.props.data;
-    let value = val || this.props.value || this.props.defaultValue;
+    const data = d || this.props.data;
+    const value = val || this.props.value || this.props.defaultValue;
+    const valueMember = this.props.valueMember;
+
     if (!value || !value.length) {
-      value = [];
-      for (let i = 0; i < this.props.cols; i += 1) {
-        if (data && data.length) {
-          value[i] = data[0][this.props.valueMember];
-          data = data[0].children;
-        }
-      }
+      return formatToInit(data[0], valueMember, this.props.cols);
+      // value = [];
+      // for (let i = 0; i < this.props.cols; i += 1) {
+      //   if (data && data.length) {
+      //     value[i] = data[0][this.props.valueMember];
+      //     data = data[0].children;
+      //   }
+      // }
     }
 
     return value;
@@ -101,7 +122,6 @@ Cascader.propTypes = {
 };
 
 Cascader.defaultProps = {
-  cols: 3,
   prefixCls: '',
   pickerPrefixCls: '',
   data: [],
