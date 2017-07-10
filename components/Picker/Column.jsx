@@ -139,7 +139,7 @@ class Column extends Component {
     const {
       children, prefixCls,
       className, itemStyle,
-      indicatorStyle, valueMember, displayMember,
+      indicatorStyle, valueMember,
     } = this.props;
 
     const { selectedValue } = this.state;
@@ -151,7 +151,7 @@ class Column extends Component {
           style={itemStyle}
           className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
           key={item.value} >
-          {item[displayMember]}
+          {item.label}
         </div>
       );
     });
