@@ -55,7 +55,6 @@ class Picker extends Component {
   }
 
   onValueChange(value) {
-    console.log('Picker value -> ', value);
     this.setState({
       value,
     });
