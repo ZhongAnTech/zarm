@@ -224,6 +224,7 @@ class CellPage extends Component {
                 title="选择日期"
                 placeholder="请选择日期"
                 mode="date"
+                wheelDefaultValue="2009"
                 disabled={this.state.disabled}
                 value={this.state.date}
                 defaultValue={this.state.date}
@@ -258,10 +259,11 @@ class CellPage extends Component {
                 value={this.state.sValue}
                 onChange={(value) => {
                   console.log('外部change value ->', value);
-                  this.setState({ sValue: value });
+                  
                 }}
                 onOk={(value) => {
                   console.log(value);
+                  this.setState({ sValue: value });
                 }}
                 onCancel={() => {
                 }}

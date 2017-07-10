@@ -76,3 +76,27 @@ export function arrayTreeFilter(data, filterFn, options) {
   } while (children.length > 0);
   return result;
 }
+
+export function formatToInit(data, member, cols) {
+  let _data = data || [];
+  const result = [];
+  let level = 0;
+
+  do {
+    const foundValue = _data[member];
+
+    if (!foundValue) {
+      break;
+    }
+
+    if (cols && level >= cols) {
+      break;
+    }
+
+    result.push(foundValue);
+    _data = _data.children[0];
+    level += 1;
+  } while (_data && _data.children && _data.children.length >= 0);
+
+  return result;
+}

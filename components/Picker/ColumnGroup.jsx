@@ -8,7 +8,6 @@ class ColumnGroup extends Component {
     super(props);
     this.state = {
       visible: props.visible || false,
-      date: props.date || props.defaultDate || [],
     };
   }
 
