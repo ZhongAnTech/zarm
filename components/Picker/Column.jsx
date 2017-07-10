@@ -11,7 +11,7 @@ function toChildrenArray(children) {
   return children;
 }
 
-class Picker extends Component {
+class Column extends Component {
   constructor(props) {
     super(props);
     let selectedValueState;
@@ -139,7 +139,7 @@ class Picker extends Component {
     const {
       children, prefixCls,
       className, itemStyle,
-      indicatorStyle,
+      indicatorStyle, valueMember, displayMember,
     } = this.props;
 
     const { selectedValue } = this.state;
@@ -149,9 +149,9 @@ class Picker extends Component {
       return (
         <div
           style={itemStyle}
-          className={selectedValue === item[this.props.valueMember] ? selectedItemClassName : itemClassName}
+          className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
           key={item.value} >
-          {item.label}
+          {item[displayMember]}
         </div>
       );
     });
@@ -172,10 +172,10 @@ class Picker extends Component {
 
 }
 
-Picker.defaultProps = {
+Column.defaultProps = {
   prefixCls: 'ui-cascaderpicker',
   pure: true,
   onValueChange: () => {},
 };
 
-export default Picker;
+export default Column;
