@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import { arrayTreeFilter, formatToInit } from './utils';
 import ColumnGroup from './ColumnGroup';
