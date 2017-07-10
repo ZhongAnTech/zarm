@@ -257,6 +257,7 @@ class Page extends Component {
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
+                  wheelDefaultValue="2009"
                   value={datePicker.value}
                   onOk={(value) => {
                     console.log(value);
