@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import moment from 'moment';
 import ColumnGroup from './ColumnGroup';
@@ -37,12 +38,14 @@ class DatePicker extends Component {
 
     const date = props.value && this.isExtendMoment(props.value);
     const defaultDate = props.defaultValue && this.isExtendMoment(props.defaultValue);
+    const display = props.wheelDefaultValue && this.isExtendMoment(props.wheelDefaultValue);
 
     this.initDate = props.value && this.isExtendMoment(props.value);
 
     this.state = {
       visible: props.visible || false,
       date: date || defaultDate,
+      display,
     };
   }
 
@@ -77,6 +80,9 @@ class DatePicker extends Component {
   onOk() {
     const { onOk } = this.props;
     const value = this.getDate();
+    this.setState({
+      date: value,
+    });
     this.initDate = value;
     this.toggle();
     onOk && onOk(formatFn(this, value));
@@ -147,7 +153,7 @@ class DatePicker extends Component {
   }
 
   getDate() {
-    return this.state.date || this.getMinDate() || moment(new Date());
+    return this.state.date || this.state.display || this.getMinDate() || moment(new Date());
   }
 
   getMinYear() {

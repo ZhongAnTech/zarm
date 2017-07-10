@@ -1,5 +1,8 @@
 # 版本更新日志  
 
+## 0.0.43 
+  * Picker.Date新增属性wheelDefaultValue，用于滚轮选项默认值的设置
+
 ## 0.0.42 
   * 修复Swipe组件接收新activeIndex时不重新render的bug
 
