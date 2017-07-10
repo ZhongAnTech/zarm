@@ -242,7 +242,7 @@ class Page extends Component {
                   title="选择年份"
                   placeholder="请选择年份"
                   mode="year"
-                  initDisplay="2009"
+                  wheelDefaultValue="2009"
                   value={yearPicker.value}
                   onOk={(value) => {
                     console.log(value);

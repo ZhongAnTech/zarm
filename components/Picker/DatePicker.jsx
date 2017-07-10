@@ -38,7 +38,7 @@ class DatePicker extends Component {
 
     const date = props.value && this.isExtendMoment(props.value);
     const defaultDate = props.defaultValue && this.isExtendMoment(props.defaultValue);
-    const display = props.initDisplay && this.isExtendMoment(props.initDisplay);
+    const display = props.wheelDefaultValue && this.isExtendMoment(props.wheelDefaultValue);
 
     this.initDate = props.value && this.isExtendMoment(props.value);
 
