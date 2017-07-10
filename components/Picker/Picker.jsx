@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { arrayTreeFilter } from './utils';
+import { arrayTreeFilter, formatToInit } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
 
@@ -13,27 +14,48 @@ class Picker extends Component {
   constructor(props) {
     super(props);
 
+    let _data = null;
+    let _value = null;
+
+    if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
+      _data = [props.dataSource];
+      _value = props.value.length ? [props.value] : props.value;
+    } else {
+      _data = props.dataSource;
+      _value = props.value;
+    }
+
     this.state = {
       visible: props.visible || false,
-      value: props.value,
-      data: props.dataSource,
-      cascade: Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]',
+      value: _value,
+      data: _data,
+      cascade: Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children'),
     };
 
     this.tempValue = props.value;
   }
 
   componentWillReceiveProps(nextProps) {
+    // console.log(nextProps);
     if ('value' in nextProps) {
+      let _value = null;
+
+      if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
+        _value = nextProps.value.length ? [nextProps.value] : nextProps.value;
+      } else {
+        _value = nextProps.value;
+      }
+
       this.setState({
-        value: nextProps.value,
-        data: nextProps.dataSource,
-        cascade: Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]',
+        value: _value,
+        // data: nextProps.dataSource,
+        cascade: Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children'),
       });
     }
   }
 
   onValueChange(value) {
+    console.log('Picker value -> ', value);
     this.setState({
       value,
     });
@@ -52,9 +74,14 @@ class Picker extends Component {
   onOk() {
     const { onOk } = this.props;
     const value = this.getInitValue();
+
     this.tempValue = value;
     this.toggle();
-    onOk && onOk(value);
+    let _value = null;
+
+    _value = value.length === 1 ? value.toString() : value;
+
+    onOk && onOk(_value);
   }
 
   onMaskClick() {
@@ -64,27 +91,26 @@ class Picker extends Component {
   }
 
   getInitValue() {
-    let data = this.state.data;
-    const { displayMember } = this.props;
+    const data = this.state.data;
+    const { valueMember, displayMember } = this.props;
 
-
-    const value = this.state.value;
+    const { value } = this.state;
 
     if (!value || !value.length) {
-      // 判断数据是否为级联，简单判断数据第一个元素是否为数组
       if (this.state.cascade) {
-        for (let i = 0; i < this.props.cols; i += 1) {
-          if (data && data.length) {
-            value[i] = data[0][displayMember];
-            data = data[0].children;
-          }
-        }
-      } else {
-        data.forEach((d) => {
-          value.push(d[0][displayMember]);
-        });
+        return formatToInit(data[0], valueMember, this.props.cols);
+        // const _value = [];
+        // for (let i = 0; i < this.props.cols; i += 1) {
+        //   if (data && data.length) {
+        //     _value[i] = data[0][valueMember];
+        //     data = data[0].children;
+        //   }
+        // }
+        // return _value;
       }
+      return data.map(d => (d[0][valueMember]));
     }
+
     return value;
   }
 
@@ -166,7 +192,18 @@ class Picker extends Component {
 
         return value.join(format) || placeholder;
       }
-      return value.join(format) || placeholder;
+
+      let treeChildren2 = this.props.dataSource.reduce((a, b) => {
+        return a.concat(b);
+      }, []);
+
+      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item.value); });
+
+      return treeChildren2.map((v) => {
+        return v[displayMember];
+      }).join(format) || placeholder;
+
+      // return value.join(format) || placeholder;
     };
 
     return (
@@ -222,7 +259,6 @@ Picker.defaultProps = {
   format: '',
   disabled: false,
   dataSource: [],
-  cols: 3,
   value: [],
   onClick: () => {},
   onChange: () => {},
