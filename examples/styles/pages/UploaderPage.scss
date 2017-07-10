@@ -1,0 +1,39 @@
+@import "../core/func";
+@import "../core/mixins";
+
+.uploader-page {
+  .ui-cell-content {
+    padding: r(5);
+  }
+
+  .pic-wrapper {
+    display: inline-block;
+    margin: r(5);
+    width: r(100);
+    height: r(100);
+
+    > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .ui-uploader {
+    margin: r(5);
+  }
+
+  .btn-wrapper {
+    @include onepx(left top right bottom);
+  }
+
+  .uploader-btn {
+    display: inline-block;
+    padding: r(25);
+
+    @include onepx(left top right bottom);
+
+    .ui-icon {
+      font-size: r(50);
+    }
+  }
+}
