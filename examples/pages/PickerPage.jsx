@@ -25,17 +25,7 @@ class Page extends Component {
       datetimePicker: {},
       diyDatePicker: {},
     };
-
-    // this.handleOk = this.handleOk.bind(this);
   }
-
-  // handleOk(value) {
-  //   const _value = this.single.value;
-  //   _value = value;
-  //   this.setState({
-  //     single,
-  //   });
-  // }
 
   render() {
     const { single, multiple, multiple2, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker } = this.state;
@@ -212,9 +202,9 @@ class Page extends Component {
                 <Picker
                   visible={city2.visible}
                   dataSource={District}
-                  // cols={3}
+                  wheelDefaultValue={[]}
                   displayMember="label"
-                  valueMember="value"
+                  valueMember="label"
                   value={city2.value}
                   onOk={(value) => {
                     city2.value = value;
