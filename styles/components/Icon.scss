@@ -1,3 +1,5 @@
+$prefixCls: ui-icon;
+
 @mixin icon-theme($color) {
   color: $color;
 }
@@ -8,7 +10,7 @@
   src: url('#{$icon-url}.eot?#iefix') format('embedded-opentype'), url('#{$icon-url}.woff') format('woff'), url('#{$icon-url}.ttf') format('truetype'), url('#{$icon-url}.svg#dragonicon') format('svg');
 }
 
-.ui-icon {
+.#{$prefixCls} {
   display: inline-block;
   /* margin-top: -2px; */
   vertical-align: middle;
@@ -38,33 +40,33 @@
   &.theme-error {
     @include icon-theme($theme-error);
   }
-}
 
-.ui-icon-arrow-top:before { content: "\e60e"; }
-.ui-icon-arrow-bottom:before { content: "\e60f"; }
-.ui-icon-arrow-left:before { content: "\e610"; }
-.ui-icon-arrow-right:before { content: "\e611"; }
-.ui-icon-warning-round-fill:before { content: "\e616"; }
-.ui-icon-warning-round:before { content: "\e617"; }
-.ui-icon-date:before { content: "\e618"; }
-.ui-icon-loading:before { content: "\e61a"; }
-.ui-icon-right-square-fill:before { content: "\e600"; }
-.ui-icon-right-square:before { content: "\e601"; }
-.ui-icon-wrong:before { content: "\e602"; }
-.ui-icon-wrong-round-fill:before { content: "\e603"; }
-.ui-icon-wrong-round:before { content: "\e604"; }
-.ui-icon-add-round:before { content: "\e605"; }
-.ui-icon-add:before { content: "\e606"; }
-.ui-icon-add-round-fill:before { content: "\e607"; }
-.ui-icon-minus:before { content: "\e608"; }
-.ui-icon-info-round-fill:before { content: "\e609"; }
-.ui-icon-info-round:before { content: "\e60a"; }
-.ui-icon-question-round-fill:before { content: "\e60b"; }
-.ui-icon-question-round:before { content: "\e60c"; }
-.ui-icon-right:before { content: "\e60d"; }
-.ui-icon-right-round-fill:before { content: "\e612"; }
-.ui-icon-right-round:before { content: "\e613"; }
-.ui-icon-minus-round-fill:before { content: "\e614"; }
-.ui-icon-required:before { content: "\e619"; }
-.ui-icon-minus-round:before { content: "\e615"; }
+  &-arrow-top:before { content: "\e60e"; }
+  &-arrow-bottom:before { content: "\e60f"; }
+  &-arrow-left:before { content: "\e610"; }
+  &-arrow-right:before { content: "\e611"; }
+  &-warning-round-fill:before { content: "\e616"; }
+  &-warning-round:before { content: "\e617"; }
+  &-date:before { content: "\e618"; }
+  &-loading:before { content: "\e61a"; }
+  &-right-square-fill:before { content: "\e600"; }
+  &-right-square:before { content: "\e601"; }
+  &-wrong:before { content: "\e602"; }
+  &-wrong-round-fill:before { content: "\e603"; }
+  &-wrong-round:before { content: "\e604"; }
+  &-add-round:before { content: "\e605"; }
+  &-add:before { content: "\e606"; }
+  &-add-round-fill:before { content: "\e607"; }
+  &-minus:before { content: "\e608"; }
+  &-info-round-fill:before { content: "\e609"; }
+  &-info-round:before { content: "\e60a"; }
+  &-question-round-fill:before { content: "\e60b"; }
+  &-question-round:before { content: "\e60c"; }
+  &-right:before { content: "\e60d"; }
+  &-right-round-fill:before { content: "\e612"; }
+  &-right-round:before { content: "\e613"; }
+  &-minus-round-fill:before { content: "\e614"; }
+  &-required:before { content: "\e619"; }
+  &-minus-round:before { content: "\e615"; }
+}
 

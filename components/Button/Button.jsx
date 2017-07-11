@@ -76,7 +76,7 @@ Button.defaultProps = {
   isFocus: false,
   isDisabled: false,
   isLoading: false,
-  onClick: () => {},
+  onClick() {},
 };
 
 export default Button;

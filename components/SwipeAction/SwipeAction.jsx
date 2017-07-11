@@ -238,8 +238,8 @@ SwipeAction.defaultProps = {
   moveTimeDur: 300,
   moveDistanceRatio: 0.5,
   offset: 10,
-  onOpen: () => {},
-  onClose: () => {},
+  onOpen() {},
+  onClose() {},
 };
 
 export default SwipeAction;
