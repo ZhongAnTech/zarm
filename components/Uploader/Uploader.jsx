@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import classNames from 'classnames';
 
 import handleFileInfo from './utils/handleFileInfo';
@@ -15,7 +15,7 @@ import handleFileInfo from './utils/handleFileInfo';
  * onChange: () => { file, fileType, fileSize, fileName, thumbnail }。
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
-class Uploader extends Component {
+class Uploader extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -33,14 +33,11 @@ class Uploader extends Component {
     // 防止选择同一张图片两次造成 onChange 事件不触发
     e.target.value = null;
 
-    const {
-      onBeforeSelect,
-      disabled,
-      isDisabled,
-    } = this.props;
+    const { onBeforeSelect, isDisabled } = this.props;
+    const disabled = ('disabled' in this.props || isDisabled);
 
     // 阻止 input onChange 默认事件
-    if (onBeforeSelect() === false || disabled || isDisabled) {
+    if (onBeforeSelect() === false || disabled) {
       e.preventDefault();
     }
   }
@@ -50,14 +47,9 @@ class Uploader extends Component {
   }
 
   handleChange(e) {
-    const {
-      onChange,
-      quality,
-      multiple,
-    } = this.props;
-
+    const { onChange, quality, isMultiple } = this.props;
+    const multiple = ('multiple' in this.props || isMultiple);
     const files = Array.from(e.target.files);
-
     const fileList = [];
 
     const getFileInfo = (data) => {
@@ -72,12 +64,13 @@ class Uploader extends Component {
       }
     };
 
-    files &&
-    files.map(file => handleFileInfo({ file, quality }, getFileInfo));
+    files && files.map(file => handleFileInfo({ file, quality }, getFileInfo));
   }
 
   render() {
-    const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;
+    const { prefixCls, className, isMultiple, accept, capture, isDisabled, children } = this.props;
+    const multiple = ('multiple' in this.props || isMultiple);
+    const disabled = ('disabled' in this.props || isDisabled);
 
     const compStyle = classNames(prefixCls, {
       disabled,
@@ -105,9 +98,8 @@ class Uploader extends Component {
 
 Uploader.propTypes = {
   prefixCls: PropTypes.string,
-  multiple: PropTypes.bool,
-  disabled: PropTypes.bool,
   isDisabled: PropTypes.bool,
+  isMultiple: PropTypes.bool,
   quality: PropTypes.number,
   accept: PropTypes.string,
   capture: PropTypes.string,
@@ -117,9 +109,8 @@ Uploader.propTypes = {
 
 Uploader.defaultProps = {
   prefixCls: 'ui-uploader',
-  multiple: false,
-  disabled: false,
   isDisabled: false,
+  isMultiple: false,
   accept: null,
   capture: null,
   // () => { file, fileType, fileSize, fileName, thumbnail }
