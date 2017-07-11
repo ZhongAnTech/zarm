@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class Input extends Component {
+class Input extends PureComponent {
 
   render() {
     const props = this.props;

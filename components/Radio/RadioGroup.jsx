@@ -92,7 +92,7 @@ RadioGroup.defaultProps = {
   isBlock: false,
   isDisabled: false,
   isGather: false,
-  onChange: () => {},
+  onChange() {},
 };
 
 export default RadioGroup;

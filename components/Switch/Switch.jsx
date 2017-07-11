@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -77,7 +76,7 @@ Switch.defaultProps = {
   theme: null,
   size: null,
   shape: null,
-  onChange: () => {},
+  onChange() {},
 };
 
 export default Switch;
