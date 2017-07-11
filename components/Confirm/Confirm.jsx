@@ -39,8 +39,8 @@ Confirm.defaultProps = {
   message: '',
   okText: '确定',
   cancelText: '取消',
-  onOk: () => {},
-  onCancel: () => {},
+  onOk() {},
+  onCancel() {},
 };
 
 export default Confirm;

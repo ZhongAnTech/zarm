@@ -76,7 +76,7 @@ Switch.defaultProps = {
   theme: null,
   size: null,
   shape: null,
-  onChange: () => {},
+  onChange() {},
 };
 
 export default Switch;

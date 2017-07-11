@@ -364,7 +364,7 @@ Swipe.defaultProps = {
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
-  onChangeEnd: () => {},
+  onChangeEnd() {},
 };
 
 export default Swipe;

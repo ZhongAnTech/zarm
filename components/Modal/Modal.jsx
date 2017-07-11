@@ -140,7 +140,7 @@ Modal.defaultProps = {
   width: '70%',
   minWidth: 270,
   isRadius: false,
-  onMaskClick: () => {},
+  onMaskClick() {},
 };
 
 export default Modal;
