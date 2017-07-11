@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Icon, Input, Cell, Checkbox, Badge } from '../../components';
+import { Panel, Icon, Input, Cell } from '../../components';
 import '../styles/pages/CellPage';
 
 const img = require('../images/icons/state.png');
@@ -92,27 +92,28 @@ class Page extends Component {
                 <Input type="text" placeholder="请输入姓名" />
               </Cell>
 
-              <Cell>
-                <Checkbox
-                  defaultChecked
-                  onChange={(value) => {
-                    console.log(value);
-                  }}
-                  />
-              </Cell>
+              {
+                // <Cell>
+                //   <Checkbox
+                //     defaultChecked
+                //     onChange={(value) => {
+                //       console.log(value);
+                //     }}
+                //     />
+                // </Cell>
 
-              <Cell>
-                <Checkbox.Group
-                  onChange={(values) => {
-                    console.log(`Checkbox to ${values}`);
-                  }}>
-                  <Checkbox value="a">A</Checkbox>
-                  <Checkbox value="b" disabled>B</Checkbox>
-                  <Checkbox value="c">C</Checkbox>
-                  <Checkbox value="d">D</Checkbox>
-                </Checkbox.Group>
-              </Cell>
-
+                // <Cell>
+                //   <Checkbox.Group
+                //     onChange={(values) => {
+                //       console.log(`Checkbox to ${values}`);
+                //     }}>
+                //     <Checkbox value="a">A</Checkbox>
+                //     <Checkbox value="b" disabled>B</Checkbox>
+                //     <Checkbox value="c">C</Checkbox>
+                //     <Checkbox value="d">D</Checkbox>
+                //   </Checkbox.Group>
+                // </Cell>
+              }
             </Panel.Body>
           </Panel>
         </main>

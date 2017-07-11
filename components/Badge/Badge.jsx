@@ -6,6 +6,7 @@ class Badge extends PureComponent {
 
   render() {
     const { prefixCls, className, theme, shape, sup, isSup, text, children, ...others } = this.props;
+    const supFlag = ('sup' in this.props || isSup);
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -16,7 +17,7 @@ class Badge extends PureComponent {
 
     const supCls = classnames({
       [`${prefixCls}-sup`]: true,
-      [`${prefixCls}-sup-up`]: sup || isSup,
+      [`${prefixCls}-sup-up`]: supFlag,
     });
 
     return (
