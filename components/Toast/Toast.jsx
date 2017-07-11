@@ -88,7 +88,7 @@ Toast.defaultProps = {
   prefixCls: 'ui-toast',
   visible: false,
   duration: 3000,
-  onMaskClick: () => {},
+  onMaskClick() {},
 };
 
 export default Toast;

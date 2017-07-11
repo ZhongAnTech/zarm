@@ -80,7 +80,7 @@ Radio.defaultProps = {
   type: null,
   defaultChecked: false,
   isDisabled: false,
-  onChange: () => {},
+  onChange() {},
 };
 
 export default Radio;

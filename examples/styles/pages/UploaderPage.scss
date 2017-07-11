@@ -2,38 +2,50 @@
 @import "../core/mixins";
 
 .uploader-page {
-  .ui-cell-content {
-    padding: r(5);
+  .ui-panel-body {
+    padding: r(15) 0 0 r(15);
   }
 
-  .pic-wrapper {
-    display: inline-block;
-    margin: r(5);
-    width: r(100);
-    height: r(100);
-
-    > img {
-      width: 100%;
-      height: 100%;
+  .uploader {
+    &-wrapper {
+      display: flex;
+      flex-wrap: wrap;
     }
-  }
 
-  .ui-uploader {
-    margin: r(5);
-  }
+    &-item,
+    &-btn {
+      width: r(74);
+      height: r(74);
+      margin-bottom: r(15);
+    }
 
-  .btn-wrapper {
-    @include onepx(left top right bottom);
-  }
+    &-item {
+      display: inline-block;
+      border: r(2) solid #ddd;
+      margin-right: r(15);
 
-  .uploader-btn {
-    display: inline-block;
-    padding: r(25);
+      &-img {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
 
-    @include onepx(left top right bottom);
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
 
-    .ui-icon {
-      font-size: r(50);
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: r(2) dashed #ddd;
+      color: #ddd;
+
+      .ui-icon {
+        font-size: r(30);
+      }
     }
   }
 }

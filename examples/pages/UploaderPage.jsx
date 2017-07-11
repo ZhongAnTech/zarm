@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Button, Panel, Uploader, Cell, Icon } from '../../components';
-
+import { Panel, Uploader, Icon, Toast, Badge } from '../../components';
 import '../styles/pages/UploaderPage.scss';
 
-const getFileProperties = (data) => {
-  const properties = [];
+const MAX_FILES_COUNT = 5;
 
-  Object.keys(data).forEach((key) => {
-    properties.push(
-      <div className="file-wrapper" key={key}>
-        {`${key}: ${data[key]}`}
-      </div>
-    );
-  });
-
-  return properties;
-};
+function onBeforeSelect() {
+  alert('执行 onBeforeSelect 方法');
+}
 
 class UploaderPage extends Component {
 
@@ -28,28 +19,44 @@ class UploaderPage extends Component {
       files: [],
       filesWithToast: [],
       allTypeFiles: {},
+      toast: {
+        visible: false,
+        onMaskClick: () => {
+          const toast = this.state.toast;
+          toast.visible = false;
+          this.setState({ toast });
+        },
+      },
     };
 
-    this.handleStartMulti = this.handleStartMulti.bind(this);
-    this.handleStart = this.handleStart.bind(this);
-    this.handleStartWithToast = this.handleStartWithToast.bind(this);
-    this.handleAllTypeFiles = this.handleAllTypeFiles.bind(this);
+    this.onSelectMulti = this.onSelectMulti.bind(this);
+    this.onSelect = this.onSelect.bind(this);
   }
 
-  handleStartMulti(files) {
+  onSelectMulti(files) {
+    console.log(files);
     let { multiFiles } = this.state;
+    const { toast } = this.state;
 
     multiFiles = multiFiles.concat(files);
+
+    if (multiFiles.length > MAX_FILES_COUNT) {
+      toast.visible = true;
+      toast.children = '最多只能选择5张图片';
+      this.setState({
+        toast,
+      });
+      return;
+    }
 
     this.setState({
       multiFiles,
     });
   }
 
-  handleStart(file) {
+  onSelect(file) {
     console.log(file);
     const { files } = this.state;
-
     files.push(file);
 
     this.setState({
@@ -57,83 +64,59 @@ class UploaderPage extends Component {
     });
   }
 
-  handleStartWithToast(file) {
-    const { filesWithToast } = this.state;
+  remove(fileskey, index) {
+    const files = this.state[fileskey];
+    const { toast } = this.state;
 
-    filesWithToast.push(file);
+    files.splice(index, 1);
+
+    toast.visible = true;
+    toast.children = '图片删除成功';
+    this.setState({
+      toast,
+    });
 
     this.setState({
-      filesWithToast,
+      [fileskey]: files,
+      toast,
     });
   }
 
-  handleAllTypeFiles(file) {
-    console.log(file);
-    this.setState({
-      allTypeFiles: file,
+  fileRender(files) {
+    return this.state[files].map((item, index) => {
+      return (
+        <Badge sup className="uploader-item" shape="circle" text={<Icon type="wrong" />} key={+index} onClick={() => this.remove(files, +index)}>
+          <div className="uploader-item-img"><img src={item.thumbnail} alt="" /></div>
+        </Badge>
+      );
     });
-  }
-
-  handleBeforeSelect() {
-    alert('执行 onBeforeSelect 方法');
   }
 
   render() {
     const {
-      files,
+      toast,
       multiFiles,
-      filesWithToast,
-      allTypeFiles,
     } = this.state;
 
     return (
       <div className="uploader-page">
-        <Header title="上传图片 Uploader" />
+        <Header title="上传组件 Uploader" />
 
         <main>
           <Panel>
             <Panel.Header>
-              <Panel.Title>选择文件</Panel.Title>
+              <Panel.Title>点击一次选择单张</Panel.Title>
             </Panel.Header>
-
             <Panel.Body>
-              <Cell>
-                {
-                  getFileProperties(allTypeFiles)
-                }
-
-                <Uploader onChange={this.handleAllTypeFiles}>
-                  <Button bordered shape="radius">点击上传文件获取文件信息</Button>
-                </Uploader>
-              </Cell>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>点击一次选择一张</Panel.Title>
-            </Panel.Header>
-
-            <Panel.Body>
-              <Cell>
-                {
-                  files.map((item, index) => {
-                    return (
-                      <div className="pic-wrapper" key={+index}>
-                        <img src={item.thumbnail} alt="" />
-                      </div>
-                    );
-                  })
-                }
-
+              <div className="uploader-wrapper">
+                {this.fileRender('files')}
                 <Uploader
-                  onChange={this.handleStart}
-                  accept="image/*">
-                  <span className="uploader-btn">
-                    <Icon type="add" />
-                  </span>
+                  className="uploader-btn"
+                  accept="image/jpg, image/jpeg, image/gif, image/png"
+                  onChange={this.onSelect}>
+                  <Icon type="add" />
                 </Uploader>
-              </Cell>
+              </div>
             </Panel.Body>
           </Panel>
 
@@ -141,75 +124,39 @@ class UploaderPage extends Component {
             <Panel.Header>
               <Panel.Title>点击一次选择多张</Panel.Title>
             </Panel.Header>
-
             <Panel.Body>
-              <Cell>
+              <div className="uploader-wrapper">
+                {this.fileRender('multiFiles')}
                 {
-                  multiFiles.map((item, index) => {
-                    return (
-                      <div className="pic-wrapper" key={+index}>
-                        <img src={item.thumbnail} alt="" />
-                      </div>
-                    );
-                  })
+                  multiFiles.length < MAX_FILES_COUNT
+                    ? <Uploader
+                      multiple
+                      className="uploader-btn"
+                      accept="image/jpg, image/jpeg, image/gif, image/png"
+                      onBeforeSelect={onBeforeSelect}
+                      onChange={this.onSelectMulti}>
+                      <Icon type="add" />
+                    </Uploader>
+                    : null
                 }
-
-                <Uploader
-                  onChange={this.handleStartMulti}
-                  accept="image/*"
-                  multiple>
-                  <span className="uploader-btn">
-                    <Icon type="add" />
-                  </span>
-                </Uploader>
-              </Cell>
+              </div>
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>点击选择图片之前有提示</Panel.Title>
+              <Panel.Title>禁用状态</Panel.Title>
             </Panel.Header>
-
             <Panel.Body>
-              <Cell>
-                {
-                  filesWithToast.map((item, index) => {
-                    return (
-                      <div className="pic-wrapper" key={+index}>
-                        <img src={item.thumbnail} alt="" />
-                      </div>
-                    );
-                  })
-                }
-
-                <Uploader
-                  onChange={this.handleStartWithToast}
-                  onBeforeSelect={this.handleBeforeSelect}
-                  accept="image/*">
-                  <span className="uploader-btn">
-                    <Icon type="add" />
-                  </span>
+              <div className="uploader-wrapper">
+                <Uploader className="uploader-btn" disabled>
+                  <Icon type="add" />
                 </Uploader>
-              </Cell>
+              </div>
             </Panel.Body>
           </Panel>
 
-          <Panel>
-            <Panel.Header>
-              <Panel.Title>点击毫无反应</Panel.Title>
-            </Panel.Header>
-
-            <Panel.Body>
-              <Cell>
-                <Uploader disabled>
-                  <span className="uploader-btn">
-                    <Icon type="add" />
-                  </span>
-                </Uploader>
-              </Cell>
-            </Panel.Body>
-          </Panel>
+          <Toast {...toast} />
         </main>
       </div>
     );

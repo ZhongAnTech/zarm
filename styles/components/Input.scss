@@ -1,3 +1,5 @@
+$prefixCls: ui-input;
+
 @mixin input-size($height, $padding, $font-size, $border-radius) {
   input,
   textarea {
@@ -11,7 +13,7 @@
   }
 }
 
-.ui-input {
+.#{$prefixCls} {
   position: relative;
   @include input-size($height-md, 0 0, $fontSize-md, $radius-md);
 
@@ -79,11 +81,11 @@
   &.size-xs {
     @include input-size($height-xs, 4px 4px, $fontSize-xs, $radius-xs);
   }
-}
 
-.ui-input-placeholder {
-  position: absolute;
-  color: #c1c1c1;
+  &-placeholder {
+    position: absolute;
+    color: #c1c1c1;
+  }
 }
 
 textarea {

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Icon, Input, Cell, Checkbox, Badge } from '../../components';
+import { Panel, Cell, Badge } from '../../components';
 import '../styles/pages/BadgePage';
-
-const img = require('../images/icons/state.png');
 
 class Page extends Component {
 

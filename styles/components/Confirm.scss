@@ -1,3 +1,5 @@
-.ui-confirm {
+$prefixCls: ui-confirm;
+
+.#{$prefixCls} {
   text-align: center;
 }

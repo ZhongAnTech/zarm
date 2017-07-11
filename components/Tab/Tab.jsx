@@ -127,7 +127,7 @@ TabGroup.defaultProps = {
   prefixCls: 'ui-tab',
   theme: 'default',
   lineWidth: null,
-  onChange: () => {},
+  onChange() {},
 };
 
 export default TabGroup;

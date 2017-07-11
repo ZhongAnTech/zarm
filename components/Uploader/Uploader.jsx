@@ -77,56 +77,55 @@ class Uploader extends Component {
   }
 
   render() {
-    const {
-      multiple,
-      accept,
-      disabled,
-      children,
-    } = this.props;
+    const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;
 
-    const compStyle = classNames('ui-uploader', {
+    const compStyle = classNames(prefixCls, {
       disabled,
+      [className]: !!className,
     });
 
     return (
       <div className={compStyle}>
         <input
+          className={`${prefixCls}-input`}
           type="file"
           ref={e => (this.file = e)}
           accept={accept}
           multiple={multiple}
-          capture="camera"
+          capture={capture}
           onClick={this.handleDefaultInput}
           onChange={this.handleChange}
           />
-
-        <span className="ui-trigger" onClick={this.handleClick} />
-
+        <span className={`${prefixCls}-trigger`} onClick={this.handleClick} />
         {children}
       </div>
     );
   }
 }
 
-Uploader.defaultProps = {
-  multiple: false,
-  disabled: false,
-  isDisabled: false,
-  accept: '',
-  // () => { file, fileType, fileSize, fileName, thumbnail }
-  onChange() { },
-  // () => boolean
-  onBeforeSelect() { return true; },
-};
-
 Uploader.propTypes = {
+  prefixCls: PropTypes.string,
   multiple: PropTypes.bool,
   disabled: PropTypes.bool,
   isDisabled: PropTypes.bool,
   quality: PropTypes.number,
   accept: PropTypes.string,
+  capture: PropTypes.string,
   onChange: PropTypes.func,
   onBeforeSelect: PropTypes.func,
+};
+
+Uploader.defaultProps = {
+  prefixCls: 'ui-uploader',
+  multiple: false,
+  disabled: false,
+  isDisabled: false,
+  accept: null,
+  capture: null,
+  // () => { file, fileType, fileSize, fileName, thumbnail }
+  onChange() { },
+  // () => boolean
+  onBeforeSelect() { return true; },
 };
 
 export default Uploader;

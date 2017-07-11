@@ -35,7 +35,7 @@ Alert.defaultProps = {
   prefixCls: 'ui-alert',
   message: '',
   cancelText: '关闭',
-  onCancel: () => {},
+  onCancel() {},
 };
 
 export default Alert;
