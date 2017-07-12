@@ -16,6 +16,7 @@
     "build": "npm run clean && npm run build:lib && npm run build:umd"
   },
   "dependencies": {
+    "autosize": "^3.0.21",
     "moment": "^2.18.0",
     "zscroller": "^0.2.5"
   },

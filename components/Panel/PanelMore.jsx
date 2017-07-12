@@ -19,10 +19,12 @@ class PanelMore extends PureComponent {
 
 PanelMore.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PanelMore.defaultProps = {
   prefixCls: 'ui-panel-more',
+  className: null,
 };
 
 export default PanelMore;

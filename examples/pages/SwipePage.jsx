@@ -24,7 +24,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="ui-swipe-item" key={i}>
+      <div className="ui-swipe-item" key={+i}>
         <div className="swipe-pic">
           <a href={item.url}>
             <img src={item.img} alt={item.title} />
@@ -53,7 +53,7 @@ class Page extends Component {
               <Swipe
                 direction="left"
                 // autoPlay={false}
-                // isLoop={false}
+                // loop={false}
                 // height={617}
                 onChangeEnd={(index) => {
                   console.log(index);
@@ -83,7 +83,7 @@ class Page extends Component {
             <Panel.Body>
               <Swipe
                 ref={(ele) => { this.swipe = ele; }}
-                isLoop
+                loop
                 direction="left"
                 onChangeEnd={(index) => {
                   console.log(index);
@@ -115,7 +115,7 @@ class Page extends Component {
             <Panel.Body>
               <Swipe
                 autoPlay
-                isLoop
+                loop
                 direction="left"
                 onChangeEnd={(index) => {
                   console.log(index);

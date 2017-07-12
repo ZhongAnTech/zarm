@@ -19,10 +19,12 @@ class PanelFooter extends PureComponent {
 
 PanelFooter.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PanelFooter.defaultProps = {
   prefixCls: 'ui-panel-footer',
+  className: null,
 };
 
 export default PanelFooter;

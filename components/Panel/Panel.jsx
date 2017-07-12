@@ -20,11 +20,13 @@ class Panel extends PureComponent {
 
 Panel.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
 };
 
 Panel.defaultProps = {
   prefixCls: 'ui-panel',
+  className: null,
   theme: null,
 };
 

@@ -39,23 +39,20 @@ class TabGroup extends PureComponent {
   }
 
   render() {
-    const { prefixCls, lineWidth, theme, className, children, onChange } = this.props;
+    const { prefixCls, className, theme, lineWidth, disabled, children, onChange } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
-      [`theme-${theme}`]: !!theme,
       [className]: !!className,
+      [`theme-${theme}`]: !!theme,
     });
 
     // 渲染选项
     const itemsRender = React.Children.map(children, (item, $index) => {
-      const itemDisabled = 'disabled' in item.props || item.isDisabled;
-      const itemActived = this.state.value === $index;
-
       const itemClasses = classnames({
         [`${prefixCls}-header-item`]: true,
-        disabled: itemDisabled,
-        active: itemActived,
+        disabled: disabled || item.props.disabled,
+        active: this.state.value === $index,
         [item.className]: !!item.className,
       });
 
@@ -64,7 +61,7 @@ class TabGroup extends PureComponent {
           key={$index}
           className={itemClasses}
           onClick={() => {
-            if (itemDisabled) return;
+            if (disabled || item.props.disabled) return;
             this.setState({ value: $index });
             onChange($index);
           }}>
@@ -118,15 +115,19 @@ class TabGroup extends PureComponent {
 
 TabGroup.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   lineWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  disabled: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
 TabGroup.defaultProps = {
   prefixCls: 'ui-tab',
+  className: null,
   theme: 'default',
   lineWidth: null,
+  disabled: false,
   onChange() {},
 };
 

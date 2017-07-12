@@ -19,10 +19,12 @@ class PanelHeader extends PureComponent {
 
 PanelHeader.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PanelHeader.defaultProps = {
   prefixCls: 'ui-panel-header',
+  className: null,
 };
 
 export default PanelHeader;

@@ -33,9 +33,7 @@ class Toast extends PureComponent {
     clearTimeout(this.state.timer);
   }
 
-  enter(props) {
-    const { duration, onMaskClick } = props;
-
+  enter({ duration, onMaskClick }) {
     this.setState({
       isShow: true,
     });
@@ -57,12 +55,12 @@ class Toast extends PureComponent {
   }
 
   render() {
-    const { prefixCls, visible, children, onMaskClick, className } = this.props;
+    const { prefixCls, className, visible, children, onMaskClick } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
-      [`${prefixCls}-open`]: this.state.isShow,
       [className]: !!className,
+      [`${prefixCls}-open`]: this.state.isShow,
     });
 
     return (
@@ -79,6 +77,7 @@ class Toast extends PureComponent {
 
 Toast.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   visible: PropTypes.bool,
   duration: PropTypes.number, // eslint-disable-line
   onMaskClick: PropTypes.func,
@@ -86,6 +85,7 @@ Toast.propTypes = {
 
 Toast.defaultProps = {
   prefixCls: 'ui-toast',
+  className: null,
   visible: false,
   duration: 3000,
   onMaskClick() {},

@@ -5,9 +5,7 @@ import classnames from 'classnames';
 class Cell extends PureComponent {
 
   render() {
-    const props = this.props;
-    const { prefixCls, className, theme, hasArrow, icon, title, description, help, isDisabled, onClick, children } = this.props;
-    const disabled = ('disabled' in props || isDisabled);
+    const { prefixCls, className, theme, hasArrow, icon, title, description, help, disabled, onClick, children } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -68,14 +66,14 @@ Cell.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   hasArrow: PropTypes.bool,
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Cell.defaultProps = {
   prefixCls: 'ui-cell',
   className: null,
   hasArrow: false,
-  isDisabled: false,
+  disabled: false,
 };
 
 export default Cell;
