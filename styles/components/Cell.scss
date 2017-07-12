@@ -33,19 +33,6 @@ $prefixCls: ui-cell;
     @include cell-theme($theme-error);
   }
 
-  &-inner {
-    display: flex;
-    align-items: center;
-    padding: 0 r(15);
-    font-size: r(15);
-    min-height: r(45);
-
-    a,
-    a:hover {
-      text-decoration: none;
-    }
-  }
-
   &.has-icon {
     &:after {
       left: r(59);
@@ -74,10 +61,23 @@ $prefixCls: ui-cell;
     }
   }
 
+  &-inner {
+    display: flex;
+    align-items: center;
+    padding: 0 r(15);
+    font-size: r(15);
+    min-height: r(45);
+
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
   &-body {
     flex: 1;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     padding: r(12) 0;
   }
 

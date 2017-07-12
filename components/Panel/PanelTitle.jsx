@@ -19,10 +19,12 @@ class PanelTitle extends PureComponent {
 
 PanelTitle.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PanelTitle.defaultProps = {
   prefixCls: 'ui-panel-title',
+  className: null,
 };
 
 export default PanelTitle;

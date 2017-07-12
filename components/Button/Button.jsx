@@ -6,10 +6,7 @@ import Icon from '../Icon';
 class Button extends PureComponent {
 
   render() {
-    const props = this.props;
-    const { prefixCls, className, theme, size, shape, icon, isBlock, isActive, isFocus, isBordered, isDisabled, isLoading, onClick, children } = this.props;
-    const disabled = ('disabled' in props || isDisabled);
-    const loading = ('loading' in props || isLoading);
+    const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, onClick, children } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
@@ -17,10 +14,10 @@ class Button extends PureComponent {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
-      block: ('block' in props || isBlock),
-      bordered: ('bordered' in props || isBordered),
-      active: ('active' in props || isActive),
-      focus: ('focus' in props || isFocus),
+      block,
+      bordered,
+      active,
+      focus,
       disabled,
     });
 
@@ -55,12 +52,12 @@ Button.propTypes = {
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
-  isBlock: PropTypes.bool,
-  isBordered: PropTypes.bool,
-  isActive: PropTypes.bool,
-  isFocus: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isLoading: PropTypes.bool,
+  block: PropTypes.bool,
+  bordered: PropTypes.bool,
+  active: PropTypes.bool,
+  focus: PropTypes.bool,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
@@ -70,12 +67,12 @@ Button.defaultProps = {
   theme: null,
   size: null,
   shape: null,
-  isBlock: false,
-  isBordered: false,
-  isActive: false,
-  isFocus: false,
-  isDisabled: false,
-  isLoading: false,
+  block: false,
+  bordered: false,
+  active: false,
+  focus: false,
+  disabled: false,
+  loading: false,
   onClick() {},
 };
 

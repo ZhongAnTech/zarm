@@ -53,11 +53,13 @@ class Loading extends PureComponent {
 
 Loading.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   visible: PropTypes.bool,
 };
 
 Loading.defaultProps = {
   prefixCls: 'ui-loading',
+  className: null,
   visible: false,
 };
 

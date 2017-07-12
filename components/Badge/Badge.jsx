@@ -5,8 +5,7 @@ import classnames from 'classnames';
 class Badge extends PureComponent {
 
   render() {
-    const { prefixCls, className, theme, shape, sup, isSup, text, children, ...others } = this.props;
-    const supFlag = ('sup' in this.props || isSup);
+    const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -17,7 +16,7 @@ class Badge extends PureComponent {
 
     const supCls = classnames({
       [`${prefixCls}-sup`]: true,
-      [`${prefixCls}-sup-up`]: supFlag,
+      [`${prefixCls}-sup-up`]: sup,
     });
 
     return (
@@ -35,7 +34,7 @@ Badge.propTypes = {
   className: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   shape: PropTypes.oneOf(['dot', 'radius', 'round', 'circle']),
-  isSup: PropTypes.bool,
+  sup: PropTypes.bool,
 };
 
 Badge.defaultProps = {
@@ -43,7 +42,7 @@ Badge.defaultProps = {
   className: null,
   theme: null,
   shape: null,
-  isSup: false,
+  sup: false,
 };
 
 export default Badge;
