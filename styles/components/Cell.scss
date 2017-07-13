@@ -123,22 +123,4 @@ $prefixCls: ui-cell;
     align-items: center;
     justify-content: center;
   }
-
-  &-explain {
-    display: flex;
-    align-items: center;
-    position: relative;
-    min-height: r(30);
-    background: #fff;
-    padding: 0 r(15) r(9) r(15);
-    font-size: r(12);
-
-    &-text {
-      width: 100%;
-      background: #fff6e2;
-      color: #feaa00;
-      border: 1px solid #feeebd;
-      padding: r(5) r(8);
-    }
-  }
 }

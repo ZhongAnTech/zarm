@@ -2,11 +2,25 @@
 /* base */
 $base-fontSize: 14;
 
-$theme-default: #666;
+$theme-default: #ddd;
+$theme-default-light: rgba($theme-default, 0.5);
+$theme-default-dark: darken($theme-default, 10%);
+
 $theme-info: #12c287;
+$theme-info-light: rgba($theme-info, 0.1);
+$theme-info-dark: darken($theme-info, 10%);
+
 $theme-success: #69c964;
+$theme-success-light: rgba($theme-success, 0.1);
+$theme-success-dark: darken($theme-success, 10%);
+
 $theme-warning: #eca632;
+$theme-warning-light: rgba($theme-warning, 0.1);
+$theme-warning-dark: darken($theme-warning, 10%);
+
 $theme-error: #e55546;
+$theme-error-light: rgba($theme-error, 0.1);
+$theme-error-dark: darken($theme-error, 10%);
 
 $radius-xl: r(4);
 $radius-lg: r(4);
@@ -32,10 +46,10 @@ $fontSize-md: r(17);
 $fontSize-sm: r(14);
 $fontSize-xs: r(14);
 
-$zIndex-mask: 1000 !default;
-$zIndex-modal: 1100 !default;
-$zIndex-toast: 1300 !default;
-$zIndex-loading: 1300 !default;
+$zIndex-mask: 1000;
+$zIndex-modal: 1100;
+$zIndex-toast: 1300;
+$zIndex-loading: 1300;
 
 $disabled-opacity: .5;
 $disabled-background: #ddd;
@@ -44,45 +58,30 @@ $placeholder-color: #a9a9a9;
 $icon-url: '//at.alicdn.com/t/font_1rke47h9f6r';
 
 /* button */
-$button-default-color: #333 !default;
-$button-default-bg: #dbdbdb !default;
-$button-default-activebg: lighten($button-default-bg, 10%);
-$button-default-border: #dbdbdb !default;
+$button-default-color: #333;
+$button-default-bg: $theme-default;
+$button-default-border: $theme-default;
+$button-default-activebg: $theme-default-light;
 
-$button-info-color: #fff !default;
-$button-info-bg: $theme-info !default;
-$button-info-activebg: lighten($button-info-bg, 50%);
-$button-info-border: $theme-info !default;
+$button-info-color: #fff;
+$button-info-bg: $theme-info;
+$button-info-border: $theme-info;
+$button-info-activebg: $theme-info-light;
 
-$button-success-color: #fff !default;
-$button-success-bg: $theme-success !default;
-$button-success-activebg: lighten($button-success-bg, 50%);
-$button-success-border: $theme-success !default;
+$button-success-color: #fff;
+$button-success-bg: $theme-success;
+$button-success-border: $theme-success;
+$button-success-activebg: $theme-success-light;
 
-$button-warning-color:   #fff !default;
-$button-warning-bg: $theme-warning !default;
-$button-warning-activebg: lighten($button-warning-bg, 50%);
-$button-warning-border: $theme-warning !default;
+$button-warning-color: #fff;
+$button-warning-bg: $theme-warning;
+$button-warning-border: $theme-warning;
+$button-warning-activebg: $theme-warning-light;
 
-$button-error-color: #fff !default;
-$button-error-bg: $theme-error !default;
-$button-error-activebg: lighten($button-error-bg, 50%);
-$button-error-border: $theme-error !default;
-
-$tag-default-color:   #444 !default;
-$tag-default-bg:      $theme-default !default;
-
-$tag-info-color:      #fff !default;
-$tag-info-bg:         $theme-info !default;
-
-$tag-success-color:   #fff !default;
-$tag-success-bg:      $theme-success !default;
-
-$tag-warning-color:   #fff !default;
-$tag-warning-bg:      $theme-warning !default;
-
-$tag-error-color:     #fff !default;
-$tag-error-bg:        $theme-error !default;
+$button-error-color: #fff;
+$button-error-bg: $theme-error;
+$button-error-border: $theme-error;
+$button-error-activebg: $theme-error-light;
 
 $screen-xs:                 480px !default;
 
