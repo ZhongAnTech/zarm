@@ -1,17 +1,41 @@
 $prefixCls: ui-badge;
 
+@mixin badge-theme($color) {
+  .#{$prefixCls} {
+    &-sup {
+      background-color: $color;
+    }
+  }
+}
+
 .#{$prefixCls} {
   position: relative;
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
+  @include badge-theme($theme-default);
+
+  &.theme-info {
+    @include badge-theme($theme-info);
+  }
+
+  &.theme-success {
+    @include badge-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include badge-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include badge-theme($theme-error);
+  }
 
   &-sup {
     display: flex;
     justify-content: center;
     align-items: center;
     top: auto;
-    background: #ff5b05;
     font-size: r(12);
     color: #fff;
     height: r(19);

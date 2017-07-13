@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Icon, Input, Cell } from '../../components';
+import { Panel, Icon, Input, Cell, Message } from '../../components';
 import '../styles/pages/CellPage';
 
 class Page extends Component {
@@ -45,7 +45,15 @@ class Page extends Component {
               <Panel.Title>提示信息</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell title="标题" help={<span><Icon type="info-round" /> 标题不能为空</span>}><Input type="text" placeholder="请输入标题" /></Cell>
+              <Cell
+                title="标题"
+                help={
+                  <Message theme="warning">
+                    <Icon type="info-round" />
+                    标题不能为空
+                  </Message>
+                }>
+                <Input type="text" placeholder="请输入标题" /></Cell>
               <Cell title="摘要"><Input autoHeight type="textarea" rows="3" placeholder="请输入摘要" /></Cell>
             </Panel.Body>
           </Panel>
