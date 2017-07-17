@@ -79,6 +79,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'popup',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/PopupPage'));
+        });
+      },
+    },
+    {
       path: 'tab',
       getComponent(location, cb) {
         require.ensure([], (require) => {
