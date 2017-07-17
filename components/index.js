@@ -9,6 +9,7 @@ export { default as Input } from './Input';
 export { default as Loading } from './Loading';
 export { default as Mask } from './Mask';
 export { default as Modal } from './Modal';
+export { default as Popup } from './Popup';
 export { default as Panel } from './Panel';
 export { default as Picker } from './Picker';
 export { default as Radio } from './Radio';

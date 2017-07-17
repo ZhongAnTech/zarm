@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import { arrayTreeFilter, formatToInit } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
+import { Popup } from '../../components';
+
 
 // 阻止选择器区域的默认事件
 function onContainerClick(e) {
@@ -211,8 +213,11 @@ class Picker extends Component {
           {display()}
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
-          <div className="ui-picker-mask" onClick={() => this.onMaskClick()} />
-          <div className="ui-picker-inner">
+          {/* <Popup*/}
+          <div
+            className="ui-picker-inner"
+            visible={this.state.visible}
+            onMaskClick={() => this.close('popBottom')}>
             <div className="ui-picker-header">
               <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
               <div className="ui-picker-title">{title}</div>

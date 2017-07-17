@@ -1,0 +1,22 @@
+$prefixCls: ui-popup;
+
+.#{$prefixCls} {
+  .ui-modal-wrapper {
+    position: absolute;
+    bottom: 0;
+  }
+  .ui-modal-dialog{
+    margin: 0;
+  }
+  .ui-modal-body{
+    padding: 0;
+  }
+}
+
+.ui-picker-hidden {
+  
+  .#{$prefixCls} {
+    display: block;
+    transform: translate(0, 100%);
+  }
+}
