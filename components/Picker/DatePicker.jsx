@@ -5,6 +5,8 @@ import moment from 'moment';
 import ColumnGroup from './ColumnGroup';
 import { formatFn } from './utils';
 import defaultLocale from './locale/zh_CN';
+import { Popup } from '../../components';
+
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -38,12 +40,14 @@ class DatePicker extends Component {
 
     const date = props.value && this.isExtendMoment(props.value);
     const defaultDate = props.defaultValue && this.isExtendMoment(props.defaultValue);
+    const display = props.wheelDefaultValue && this.isExtendMoment(props.wheelDefaultValue);
 
     this.initDate = props.value && this.isExtendMoment(props.value);
 
     this.state = {
       visible: props.visible || false,
       date: date || defaultDate,
+      display,
     };
   }
 
@@ -78,6 +82,9 @@ class DatePicker extends Component {
   onOk() {
     const { onOk } = this.props;
     const value = this.getDate();
+    this.setState({
+      date: value,
+    });
     this.initDate = value;
     this.toggle();
     onOk && onOk(formatFn(this, value));
@@ -148,7 +155,7 @@ class DatePicker extends Component {
   }
 
   getDate() {
-    return this.state.date || this.getMinDate() || moment(new Date());
+    return this.state.date || this.state.display || this.getMinDate() || moment(new Date());
   }
 
   getMinYear() {
@@ -443,6 +450,12 @@ class DatePicker extends Component {
     });
   }
 
+  close(key) {
+    this.setState({
+      [`${key}`]: false,
+    });
+  }
+
   handleClick() {
     this.props.onClick();
     !this.props.disabled && this.toggle();
@@ -471,8 +484,10 @@ class DatePicker extends Component {
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
         </div>
         <div className={classes} onClick={e => stopClick(e)}>
-          <div className="ui-picker-mask" onClick={() => this.onMaskClick()} />
-          <div className="ui-picker-inner">
+          <Popup
+            className="ui-popup-inner"
+            visible={this.state.visible}
+            onMaskClick={() => this.close('visible')}>
             <div className="ui-picker-header">
               <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
               <div className="ui-picker-title">{title}</div>
@@ -493,7 +508,7 @@ class DatePicker extends Component {
                 </ColumnGroup>
               </div>
             </div>
-          </div>
+          </Popup>
         </div>
       </div>
     );
