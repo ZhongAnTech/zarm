@@ -31,7 +31,7 @@ class Column extends Component {
 
   componentDidMount() {
     this.itemHeight = this.indicator.offsetHeight;
-    console.log('this.itemHeight -> ', this.indicator.offsetHeight);
+    // console.log('this.itemHeight -> ', this.indicator.offsetHeight);
     // compact
     this.content.style.padding = `${this.itemHeight * 3}px 0`;
     this.zscroller = new ZScroller(this.content, {
