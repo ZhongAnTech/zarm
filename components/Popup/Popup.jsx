@@ -52,7 +52,6 @@ class Popup extends PureComponent {
 
   animationEnd() {
     const { onClose } = this.props;
-
     !this.state.isShow && typeof onClose === 'function' && onClose();
   }
 
