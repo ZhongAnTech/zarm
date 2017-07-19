@@ -82,7 +82,7 @@ export function formatToInit(data, member, cols) {
   const result = [];
   let level = 0;
 
-  do {
+  while (_data) {
     const foundValue = _data[member];
 
     if (!foundValue) {
@@ -94,9 +94,13 @@ export function formatToInit(data, member, cols) {
     }
 
     result.push(foundValue);
-    _data = _data.children[0];
+    if (Object.prototype.hasOwnProperty.call(_data, 'children')) {
+      _data = _data.children[0];
+    } else {
+      break;
+    }
     level += 1;
-  } while (_data && _data.children && _data.children.length >= 0);
+  }
 
   return result;
 }

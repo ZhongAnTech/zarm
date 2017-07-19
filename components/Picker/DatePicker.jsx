@@ -5,6 +5,8 @@ import moment from 'moment';
 import ColumnGroup from './ColumnGroup';
 import { formatFn } from './utils';
 import defaultLocale from './locale/zh_CN';
+import { Popup } from '../../components';
+
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -448,6 +450,12 @@ class DatePicker extends Component {
     });
   }
 
+  close(key) {
+    this.setState({
+      [`${key}`]: false,
+    });
+  }
+
   handleClick() {
     this.props.onClick();
     !this.props.disabled && this.toggle();
@@ -476,8 +484,10 @@ class DatePicker extends Component {
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
         </div>
         <div className={classes} onClick={e => stopClick(e)}>
-          <div className="ui-picker-mask" onClick={() => this.onMaskClick()} />
-          <div className="ui-picker-inner">
+          <Popup
+            className="ui-popup-inner"
+            visible={this.state.visible}
+            onMaskClick={() => this.close('visible')}>
             <div className="ui-picker-header">
               <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
               <div className="ui-picker-title">{title}</div>
@@ -498,7 +508,7 @@ class DatePicker extends Component {
                 </ColumnGroup>
               </div>
             </div>
-          </div>
+          </Popup>
         </div>
       </div>
     );

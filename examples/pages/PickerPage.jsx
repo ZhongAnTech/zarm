@@ -191,7 +191,7 @@ class Page extends Component {
                     this.setState({
                       city1,
                     });
-                    console.log("onOk->", value);
+                    console.log('onOk->', value);
                   }}
                   onCancel={() => {
                   }}
@@ -235,6 +235,10 @@ class Page extends Component {
                   wheelDefaultValue="2009"
                   value={yearPicker.value}
                   onOk={(value) => {
+                    yearPicker.value = value;
+                    this.setState({
+                      yearPicker,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
@@ -250,6 +254,10 @@ class Page extends Component {
                   wheelDefaultValue="2009"
                   value={datePicker.value}
                   onOk={(value) => {
+                    datePicker.value = value;
+                    this.setState({
+                      datePicker,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
@@ -264,6 +272,10 @@ class Page extends Component {
                   mode="time"
                   value={timePicker.value}
                   onOk={(value) => {
+                    timePicker.value = value;
+                    this.setState({
+                      timePicker,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
@@ -277,6 +289,10 @@ class Page extends Component {
                   mode="datetime"
                   value={datetimePicker.value}
                   onOk={(value) => {
+                    datetimePicker.value = value;
+                    this.setState({
+                      datetimePicker,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
@@ -292,6 +308,10 @@ class Page extends Component {
                   format="YYYY年MM月DD日"
                   value={diyDatePicker.value}
                   onOk={(value) => {
+                    diyDatePicker.value = value;
+                    this.setState({
+                      diyDatePicker,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
