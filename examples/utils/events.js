@@ -29,4 +29,6 @@ module.exports = {
       this.on(el, typeArray[i], recursiveFunction);
     }
   },
+
+  
 };

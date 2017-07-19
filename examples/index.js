@@ -91,6 +91,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'popup',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/PopupPage'));
+        });
+      },
+    },
+    {
       path: 'swipeAction',
       getComponent(location, cb) {
         require.ensure([], (require) => {
