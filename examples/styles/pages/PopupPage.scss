@@ -1,0 +1,18 @@
+@import "../core/func";
+
+.popup-page {
+  .pop-con {
+    padding: r(20) r(20) r(100);
+  }
+
+  .pop-con-top {
+    padding: r(10);
+    background: rgba(0, 0, 0, .5);
+    color: #fff;
+    text-align: center;
+  }
+
+  .popwrap-left {
+    width: 100%;
+  }
+}
