@@ -60,7 +60,7 @@ class Page extends Component {
                   />
               </Cell>
 
-              {/*<Cell title="多列" type="select">
+              <Cell title="多列" type="select">
                 <Picker
                   visible={multiple.visible}
                   dataSource={[
@@ -167,7 +167,7 @@ class Page extends Component {
                   onCancel={() => {
                   }}
                   />
-              </Cell>*/}
+              </Cell>
 
             </Panel.Body>
           </Panel>
