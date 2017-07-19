@@ -130,6 +130,12 @@ class Picker extends Component {
     !this.props.disabled && this.toggle();
   }
 
+  close(key) {
+    this.setState({
+      [`${key}`]: false,
+    });
+  }
+
   render() {
     const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
     const { data, value } = this.state;
@@ -143,6 +149,7 @@ class Picker extends Component {
     });
 
     const inputCls = classnames({
+      'ui-picker-input': true,
       'ui-picker-placeholder': !value.join(format),
       'ui-picker-disabled': !!disabled,
     });
@@ -210,14 +217,15 @@ class Picker extends Component {
     return (
       <div className="ui-picker" onClick={() => this.handleClick()}>
         <div className={inputCls}>
+          <input type="hidden" value={this.state.value} />
           {display()}
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
-          {/* <Popup*/}
-          <div
+          {/* <div*/}
+          <Popup
             className="ui-picker-inner"
             visible={this.state.visible}
-            onMaskClick={() => this.close('popBottom')}>
+            onMaskClick={() => this.close('visible')}>
             <div className="ui-picker-header">
               <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
               <div className="ui-picker-title">{title}</div>
@@ -228,7 +236,9 @@ class Picker extends Component {
                 {PickerCol}
               </div>
             </div>
-          </div>
+
+          </Popup>
+          {/* </div> */}
         </div>
       </div>
     );
