@@ -131,8 +131,15 @@ class Page extends Component {
 
           <Modal visible={this.state.modal5} animationType="rotate" onMaskClick={() => this.close('modal5')}>
             <Modal.Body>
-              支持多种动画效果。<br />
-              当前使用的是rotate旋转效果。
+              当前使用的是rotate旋转效果。<br /><br />
+              支持多种动画效果：<br />
+              zoom：缩放效果（默认）<br />
+              rotate：旋转效果<br />
+              fade：淡出淡入效果<br />
+              door：开关门效果<br />
+              flip：翻转效果<br />
+              moveUp、moveDown、moveLeft、moveRight：移出移入效果<br />
+              slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />    
             </Modal.Body>
           </Modal>
 

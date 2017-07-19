@@ -5,9 +5,7 @@ import classnames from 'classnames';
 class Badge extends PureComponent {
 
   render() {
-    const props = this.props;
-    const { prefixCls, className, theme, shape, isSup, text, children } = this.props;
-    const sup = ('sup' in props || isSup);
+    const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -24,7 +22,7 @@ class Badge extends PureComponent {
     return (
       <span className={cls}>
         {children}
-        <sup className={supCls}>{text}</sup>
+        <sup className={supCls} {...others}>{text}</sup>
       </span>
     );
   }
@@ -34,17 +32,17 @@ class Badge extends PureComponent {
 Badge.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   shape: PropTypes.oneOf(['dot', 'radius', 'round', 'circle']),
-  isSup: PropTypes.bool,
+  sup: PropTypes.bool,
 };
 
 Badge.defaultProps = {
   prefixCls: 'ui-badge',
   className: null,
-  theme: null,
+  theme: 'error',
   shape: null,
-  isSup: false,
+  sup: false,
 };
 
 export default Badge;

@@ -1,39 +1,17 @@
-.ui-swipe {
+$prefixCls: ui-swipe;
+
+.#{$prefixCls} {
   position: relative;
   overflow: hidden;
 
-  .ui-swipe-items {
-    .ui-swipe-item {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-
-      &:after {
-        clear: both;
-      }
-
-      .ui-swipe-pic {
-        img {
-          width: 100%;
-          height: auto;
-        }
-      }
-
-      .ui-swipe-info {
-        position: absolute;
-        left: r(20);
-        bottom: r(30);
-
-        .ui-swipe-title {
-          color: #fff;
-        }
-      }
-    }
+  &-item {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
   }
 
-  .ui-swipe-pagination {
+  &-pagination {
     position: absolute;
     right: r(10);
     bottom: r(10);
@@ -44,20 +22,13 @@
       padding: 0;
 
       li {
-        /* margin: r(1); */
         width: r(8);
         height: r(8);
         border-radius: r(4);
         background: #ccc;
-        /* border: r(1) solid #fff; */
         cursor: pointer;
 
         &.active {
-          /*
-          margin: 0;
-          width: r(10);
-          height: r(10);
-          */
           background: $theme-info;
         }
       }

@@ -1,7 +1,7 @@
 $prefixCls: ui-button;
 
-@mixin button-bordered($color, $active-background, $border) {
-  $active-background: $active-background;
+@mixin button-bordered($color, $activebg, $border) {
+  $active-background: $activebg;
   $active-border: $border;
   $active-color: $color;
 
@@ -12,7 +12,7 @@ $prefixCls: ui-button;
 
     &:active,
     &.active {
-      background-color: $active-background;
+      background-color: $activebg;
       color: $active-color;
     }
 
@@ -35,7 +35,6 @@ $prefixCls: ui-button;
 @mixin button-theme($color, $background, $border) {
   $active-background: darken($background, 10%);
   $active-border: darken($border, 10%);
-  $active-color: lighten($color, 10%);
 
   background-color: $background;
   border-color: $border;
@@ -52,20 +51,12 @@ $prefixCls: ui-button;
   &.active {
     background-color: $active-background;
     border-color: $active-border;
-    color: $active-color;
-    background-image: none;
-    /* box-shadow: inset 0 r(3) r(5) rgba(0, 0, 0,.125); */
   }
 
   &.disabled,
   &:disabled {
-    /*
-    background-color: $disabled-background;
-    border-color: $disabled-background;
-    color: $disabled-color;
-    */
     opacity: $disabled-opacity;
-    color: rgba(255, 255, 255, $disabled-opacity);
+    color: rgba(#fff, $disabled-opacity);
     cursor: not-allowed;
 
     &:active,

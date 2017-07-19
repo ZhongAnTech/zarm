@@ -35,19 +35,15 @@ class RadioGroup extends PureComponent {
   }
 
   render() {
-    const props = this.props;
-    const { prefixCls, className, theme, shape, type, isBlock, isDisabled, isGather, children } = this.props;
-    const block = 'block' in props || isBlock;
-    const disabled = 'disabled' in props || isDisabled;
-    const gather = 'gather' in props || isGather;
+    const { prefixCls, className, theme, shape, type, block, disabled, gather, children } = this.props;
 
     const items = React.Children.map(children, (element, index) => {
       return cloneElement(element, {
         key: index,
         type,
         theme,
-        isBlock: block,
-        isDisabled: disabled,
+        block: block || element.props.block,
+        disabled: disabled || element.props.disabled,
         onChange: () => this.onRadioChange(element.props.value),
         // use '==' because the result will fail when the value's typeof is Number
         checked: (this.state.value == element.props.value), // eslint-disable-line
@@ -77,9 +73,9 @@ RadioGroup.propTypes = {
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   shape: PropTypes.oneOf(['radius', 'round']),
-  isBlock: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isGather: PropTypes.bool,
+  block: PropTypes.bool,
+  disabled: PropTypes.bool,
+  gather: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
@@ -89,10 +85,10 @@ RadioGroup.defaultProps = {
   theme: 'info',
   type: null,
   shape: null,
-  isBlock: false,
-  isDisabled: false,
-  isGather: false,
-  onChange: () => {},
+  block: false,
+  disabled: false,
+  gather: false,
+  onChange() {},
 };
 
 export default RadioGroup;

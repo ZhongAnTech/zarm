@@ -14,8 +14,8 @@ class ModalHeader extends PureComponent {
     });
 
     const btnClose = onClose
-                   ? <div className={`${prefixCls}-close`} onClick={onClose}><Icon type="wrong" /></div>
-                   : null;
+      ? <div className={`${prefixCls}-close`} onClick={onClose}><Icon type="wrong" /></div>
+      : null;
 
     return (
       <div className={cls} {...others}>
@@ -29,12 +29,14 @@ class ModalHeader extends PureComponent {
 
 ModalHeader.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   title: PropTypes.string,
   onClose: PropTypes.func,
 };
 
 ModalHeader.defaultProps = {
   prefixCls: 'ui-modal-header',
+  className: null,
   title: '',
   onClose: null,
 };

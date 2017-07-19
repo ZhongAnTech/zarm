@@ -65,15 +65,15 @@ class Modal extends PureComponent {
   }
 
   render() {
-    const { prefixCls, animationType, animationDuration, width, minWidth, isRadius, className, onMaskClick, children } = this.props;
+    const { prefixCls, className, animationType, animationDuration, width, minWidth, radius, onMaskClick, children } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
     const classes = {
       modal: classnames({
         [`${prefixCls}`]: true,
-        radius: ('radius' in this.props || isRadius),
-        [`fade-${animationState}`]: isPending,
         [className]: !!className,
+        radius,
+        [`fade-${animationState}`]: isPending,
       }),
       dialog: classnames({
         [`${prefixCls}-dialog`]: true,
@@ -105,7 +105,7 @@ class Modal extends PureComponent {
     }
 
     return (
-      <div className={classes.modal} style={style.modal} ref={(modal) => { this.modal = modal; }}>
+      <div className={classes.modal} style={style.modal} ref={(ele) => { this.modal = ele; }}>
         <div className={`${prefixCls}-wrapper`}>
           <div className={classes.dialog} style={style.dialog} onClick={e => e.stopPropagation()}>
             {children}
@@ -119,6 +119,7 @@ class Modal extends PureComponent {
 
 Modal.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   visible: PropTypes.bool,
   animationType: PropTypes.oneOf([
     'fade', 'door', 'flip', 'rotate', 'zoom',
@@ -128,19 +129,20 @@ Modal.propTypes = {
   animationDuration: PropTypes.number,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   minWidth: PropTypes.number,
-  isRadius: PropTypes.bool,
+  radius: PropTypes.bool,
   onMaskClick: PropTypes.func,
 };
 
 Modal.defaultProps = {
   prefixCls: 'ui-modal',
+  className: null,
   visible: false,
   animationType: 'zoom',
   animationDuration: 200,
   width: '70%',
   minWidth: 270,
-  isRadius: false,
-  onMaskClick: () => {},
+  radius: false,
+  onMaskClick() {},
 };
 
 export default Modal;

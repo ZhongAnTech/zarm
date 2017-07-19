@@ -33,19 +33,6 @@ $prefixCls: ui-cell;
     @include cell-theme($theme-error);
   }
 
-  &-inner {
-    display: flex;
-    align-items: center;
-    padding: 0 r(15);
-    font-size: r(15);
-    min-height: r(45);
-
-    a,
-    a:hover {
-      text-decoration: none;
-    }
-  }
-
   &.has-icon {
     &:after {
       left: r(59);
@@ -74,10 +61,23 @@ $prefixCls: ui-cell;
     }
   }
 
+  &-inner {
+    display: flex;
+    align-items: center;
+    padding: 0 r(15);
+    font-size: r(15);
+    min-height: r(45);
+
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
   &-body {
     flex: 1;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     padding: r(12) 0;
   }
 
@@ -122,23 +122,5 @@ $prefixCls: ui-cell;
     flex: 1;
     align-items: center;
     justify-content: center;
-  }
-
-  &-explain {
-    display: flex;
-    align-items: center;
-    position: relative;
-    min-height: r(30);
-    background: #fff;
-    padding: 0 r(15) r(9) r(15);
-    font-size: r(12);
-
-    &-text {
-      width: 100%;
-      background: #fff6e2;
-      color: #feaa00;
-      border: 1px solid #feeebd;
-      padding: r(5) r(8);
-    }
   }
 }
