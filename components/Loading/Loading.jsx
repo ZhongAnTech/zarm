@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Mask from '../Mask';
 
-class Loading extends Component {
+class Loading extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -53,11 +53,13 @@ class Loading extends Component {
 
 Loading.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   visible: PropTypes.bool,
 };
 
 Loading.defaultProps = {
   prefixCls: 'ui-loading',
+  className: null,
   visible: false,
 };
 

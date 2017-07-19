@@ -32,7 +32,7 @@ Mask.defaultProps = {
   className: null,
   visible: false,
   type: 'normal',
-  onClose: () => {},
+  onClose() {},
 };
 
 export default Mask;

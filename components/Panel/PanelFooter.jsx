@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class PanelFooter extends Component {
+class PanelFooter extends PureComponent {
 
   render() {
     const { prefixCls, className, children, ...others } = this.props;
@@ -19,10 +19,12 @@ class PanelFooter extends Component {
 
 PanelFooter.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PanelFooter.defaultProps = {
   prefixCls: 'ui-panel-footer',
+  className: null,
 };
 
 export default PanelFooter;

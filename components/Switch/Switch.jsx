@@ -1,5 +1,4 @@
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -13,7 +12,7 @@ function getChecked(props, defaultChecked) {
   return defaultChecked;
 }
 
-class Switch extends Component {
+class Switch extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -40,10 +39,8 @@ class Switch extends Component {
   }
 
   render() {
-    const props = this.props;
-    const { prefixCls, className, theme, size, shape, isDisabled } = this.props;
+    const { prefixCls, className, theme, size, shape, disabled } = this.props;
     const { checked } = this.state;
-    const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -68,6 +65,7 @@ Switch.propTypes = {
   className: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
+  disabled: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
@@ -77,7 +75,8 @@ Switch.defaultProps = {
   theme: null,
   size: null,
   shape: null,
-  onChange: () => {},
+  disabled: false,
+  onChange() {},
 };
 
 export default Switch;

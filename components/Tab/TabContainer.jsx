@@ -24,8 +24,8 @@ class TabContainer extends PureComponent {
 
     const cls = classnames({
       [`${prefixCls}`]: true,
-      active: !!this.state.selected,
       [className]: !!className,
+      active: !!this.state.selected,
     });
 
     return (
@@ -38,10 +38,12 @@ class TabContainer extends PureComponent {
 
 TabContainer.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
 };
 
 TabContainer.defaultProps = {
   prefixCls: 'ui-tab-container-item',
+  className: null,
 };
 
 export default TabContainer;

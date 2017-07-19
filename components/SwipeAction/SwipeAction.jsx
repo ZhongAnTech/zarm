@@ -156,7 +156,7 @@ class SwipeAction extends PureComponent {
     this._doTransition(value, duration);
   }
 
-  close(duration = 300) {
+  close(duration = this.props.moveTimeDuration) {
     if (this.openedLeft || this.openedRight) {
       this.props.onClose();
     }
@@ -184,7 +184,7 @@ class SwipeAction extends PureComponent {
 
             return (
               <div
-                key={i}
+                key={+i}
                 className={classes}
                 onClick={e => this.onBtnClick(e, btn)}>
                 <div className={`${prefixCls}-text`}>{text || `${ref}${i}`}</div>
@@ -229,17 +229,22 @@ SwipeAction.propTypes = {
   prefixCls: PropTypes.string,
   left: PropTypes.arrayOf(PropTypes.object),
   right: PropTypes.arrayOf(PropTypes.object),
+  moveTimeDuration: PropTypes.number,
+  moveDistanceRatio: PropTypes.number,
+  offset: PropTypes.number,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
 SwipeAction.defaultProps = {
   prefixCls: 'ui-swipeAction',
   left: [],
   right: [],
-  moveTimeDur: 300,
+  moveTimeDuration: 300,
   moveDistanceRatio: 0.5,
   offset: 10,
-  onOpen: () => {},
-  onClose: () => {},
+  onOpen() {},
+  onClose() {},
 };
 
 export default SwipeAction;

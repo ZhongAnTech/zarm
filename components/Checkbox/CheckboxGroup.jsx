@@ -1,8 +1,8 @@
 
-import React, { Component, cloneElement } from 'react';
+import React, { PureComponent, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 
-class CheckboxGroup extends Component {
+class CheckboxGroup extends PureComponent {
 
   constructor(props) {
     super(props);

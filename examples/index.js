@@ -5,12 +5,20 @@ import { hashHistory, Router } from 'react-router';
 const rootRoute = {
   path: '/',
   component: require('./components/App'),
+  indexRoute: {
+    getComponent(location, cb) {
+      require.ensure([], (require) => {
+        cb(null, require('./pages/Index'));
+      });
+    },
+  },
   childRoutes: [
+    // 基础组件
     {
-      path: 'index',
+      path: 'button',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./pages/Index'));
+          cb(null, require('./pages/ButtonPage'));
         });
       },
     },
@@ -22,27 +30,13 @@ const rootRoute = {
         });
       },
     },
+
+    // 表单组件
     {
-      path: 'badge',
+      path: 'input',
       getComponent(location, cb) {
         require.ensure([], (require) => {
-          cb(null, require('./pages/BadgePage'));
-        });
-      },
-    },
-    {
-      path: 'button',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/ButtonPage'));
-        });
-      },
-    },
-    {
-      path: 'cell',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/CellPage'));
+          cb(null, require('./pages/InputPage'));
         });
       },
     },
@@ -63,58 +57,10 @@ const rootRoute = {
       },
     },
     {
-      path: 'modal',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/ModalPage'));
-        });
-      },
-    },
-    {
-      path: 'toast',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/ToastPage'));
-        });
-      },
-    },
-    {
-      path: 'popup',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/PopupPage'));
-        });
-      },
-    },
-    {
-      path: 'tab',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/TabPage'));
-        });
-      },
-    },
-    {
-      path: 'lottery',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/LotteryPage'));
-        });
-      },
-    },
-    {
       path: 'stepper',
       getComponent(location, cb) {
         require.ensure([], (require) => {
           cb(null, require('./pages/StepperPage'));
-        });
-      },
-    },
-    {
-      path: 'swipe',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/SwipePage'));
         });
       },
     },
@@ -127,6 +73,32 @@ const rootRoute = {
       },
     },
     {
+      path: 'uploader',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/UploaderPage'));
+        });
+      },
+    },
+
+    // 操作反馈
+    {
+      path: 'modal',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ModalPage'));
+        });
+      },
+    },
+    {
+      path: 'popup',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/PopupPage'));
+        });
+      },
+    },
+    {
       path: 'swipeAction',
       getComponent(location, cb) {
         require.ensure([], (require) => {
@@ -134,6 +106,58 @@ const rootRoute = {
         });
       },
     },
+    {
+      path: 'toast',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ToastPage'));
+        });
+      },
+    },
+
+    // 数据展示
+    {
+      path: 'badge',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/BadgePage'));
+        });
+      },
+    },
+    {
+      path: 'cell',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/CellPage'));
+        });
+      },
+    },
+    {
+      path: 'swipe',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/SwipePage'));
+        });
+      },
+    },
+    {
+      path: 'tab',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/TabPage'));
+        });
+      },
+    },
+
+    // 其他
+    // {
+    //   path: 'lottery',
+    //   getComponent(location, cb) {
+    //     require.ensure([], (require) => {
+    //       cb(null, require('./pages/LotteryPage'));
+    //     });
+    //   },
+    // },
     {
       path: '*',
       getComponent(location, cb) {
@@ -143,13 +167,6 @@ const rootRoute = {
       },
     },
   ],
-  indexRoute: {
-    getComponent(location, cb) {
-      require.ensure([], (require) => {
-        cb(null, require('./pages/Index'));
-      });
-    },
-  },
 };
 
 ReactDOM.render(

@@ -24,8 +24,7 @@ class Radio extends PureComponent {
   }
 
   onValueChange() {
-    const { isDisabled, onChange } = this.props;
-    const disabled = 'disabled' in this.props || isDisabled;
+    const { disabled, onChange } = this.props;
 
     if (disabled) {
       return;
@@ -37,10 +36,8 @@ class Radio extends PureComponent {
   }
 
   render() {
-    const props = this.props;
-    const { prefixCls, type, theme, isBlock, isDisabled, className, children } = this.props;
+    const { prefixCls, className, type, theme, block, disabled, children } = this.props;
     const { checked } = this.state;
-    const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -49,7 +46,7 @@ class Radio extends PureComponent {
 
     if (type === 'cell') {
       return (
-        <Cell isDisabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
+        <Cell disabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
           <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
           {children}
         </Cell>
@@ -57,7 +54,7 @@ class Radio extends PureComponent {
     }
 
     return (
-      <Button className={cls} theme={theme} size="xs" isBlock={isBlock} isBordered={!checked} isDisabled={disabled}>
+      <Button className={cls} theme={theme} size="xs" block={block} bordered={!checked} disabled={disabled}>
         <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         {children}
       </Button>
@@ -67,20 +64,24 @@ class Radio extends PureComponent {
 
 Radio.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   defaultChecked: PropTypes.bool,
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
+  block: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
 Radio.defaultProps = {
   prefixCls: 'ui-radio',
+  className: null,
   theme: null,
   type: null,
   defaultChecked: false,
-  isDisabled: false,
-  onChange: () => {},
+  disabled: false,
+  block: false,
+  onChange() {},
 };
 
 export default Radio;

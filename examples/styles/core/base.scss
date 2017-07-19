@@ -22,23 +22,28 @@ textarea {
   font-size: inherit;
   line-height: inherit;
 }
+
 a {
-  color: #337ab7;
+  color: #12c287;
   text-decoration: none;
 }
+
 a:hover,
 a:focus,
 a:visited {
-  color: #23527c;
+  color: #12c287;
 }
+
 a:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
+
 figure {
   margin: 0;
 }
+
 img {
   vertical-align: middle;
 }

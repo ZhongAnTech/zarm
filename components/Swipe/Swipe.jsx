@@ -77,7 +77,7 @@ class Swipe extends Component {
 
       if (activeIndex > maxLength - 1) {
         // 不循环暂停轮播
-        if (!this.props.isLoop) {
+        if (!this.props.loop) {
           this.pauseAutoPlay();
           return;
         }
@@ -109,7 +109,7 @@ class Swipe extends Component {
     const firstItem = items[0];
     const lastItem = items[items.length - 1];
 
-    if (props.isLoop) {
+    if (props.loop) {
       items.push(firstItem);
       items.unshift(lastItem);
     }
@@ -139,8 +139,8 @@ class Swipe extends Component {
     }
 
     const px = (this._isDirectionX())
-             ? -dom.offsetWidth * (index + this.props.isLoop)
-             : -dom.offsetHeight * (index + this.props.isLoop);
+             ? -dom.offsetWidth * (index + this.props.loop)
+             : -dom.offsetHeight * (index + this.props.loop);
 
     this._doTransition(px, speed);
     this.translateX = px;
@@ -205,7 +205,7 @@ class Swipe extends Component {
     const px = this.translateX + (pointX - this.pointStart);
 
     // 设置不循环的时候
-    if (!this.props.isLoop) {
+    if (!this.props.loop) {
       // 在首页时禁止拖动
       if (this._isLastIndex() && (pointX - this.pointStart) < 0) {
         return;
@@ -343,7 +343,7 @@ Swipe.propTypes = {
   prefixCls: PropTypes.string,
   direction: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  isLoop: PropTypes.bool,
+  loop: PropTypes.bool,
   activeIndex: PropTypes.number,
   speed: PropTypes.number,
   autoPlay: PropTypes.bool,
@@ -357,14 +357,14 @@ Swipe.defaultProps = {
   prefixCls: 'ui-swipe',
   direction: 'left',
   height: 160,
-  isLoop: false,
+  loop: false,
   activeIndex: 0,
   speed: 300,
   autoPlay: false,
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
-  onChangeEnd: () => {},
+  onChangeEnd() {},
 };
 
 export default Swipe;

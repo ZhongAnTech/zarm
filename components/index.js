@@ -7,6 +7,8 @@ export { default as Confirm } from './Confirm';
 export { default as Icon } from './Icon';
 export { default as Input } from './Input';
 export { default as Loading } from './Loading';
+// export { default as Lottery } from './Lottery';
+export { default as Message } from './Message';
 export { default as Mask } from './Mask';
 export { default as Modal } from './Modal';
 export { default as Popup } from './Popup';
@@ -19,5 +21,4 @@ export { default as SwipeAction } from './SwipeAction';
 export { default as Switch } from './Switch';
 export { default as Tab } from './Tab';
 export { default as Toast } from './Toast';
-export { default as Lottery } from './Lottery';
-
+export { default as Uploader } from './Uploader';

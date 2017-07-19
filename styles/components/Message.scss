@@ -1,0 +1,34 @@
+$prefixCls: ui-message;
+
+@mixin message-theme($color, $background, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+}
+
+.#{$prefixCls} {
+  display: flex;
+  align-items: center;
+  margin: 0 r(15) r(9) r(15);
+  padding: r(5) r(8);
+  min-height: r(30);
+  border: 1px solid transparent;
+  font-size: r(12);
+  @include message-theme($button-default-border, $button-default-activebg, $button-default-border);
+
+  &.theme-info {
+    @include message-theme($button-info-border, $button-info-activebg, $button-info-border);
+  }
+
+  &.theme-success {
+    @include message-theme($button-success-border, $button-success-activebg, $button-success-border);
+  }
+
+  &.theme-warning {
+    @include message-theme($button-warning-border, $button-warning-activebg, $button-warning-border);
+  }
+
+  &.theme-error {
+    @include message-theme($button-error-border, $button-error-activebg, $button-error-border);
+  }
+}

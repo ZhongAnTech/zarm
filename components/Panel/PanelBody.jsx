@@ -19,10 +19,12 @@ class PanelBody extends PureComponent {
 
 PanelBody.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
 };
 
 PanelBody.defaultProps = {
   prefixCls: 'ui-panel-body',
+  className: null,
 };
 
 export default PanelBody;

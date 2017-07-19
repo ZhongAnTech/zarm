@@ -71,10 +71,8 @@ class Stepper extends PureComponent {
   }
 
   render() {
-    const props = this.props;
-    const { prefixCls, className, theme, size, shape, isDisabled, min, max } = this.props;
+    const { prefixCls, className, theme, size, shape, disabled, min, max } = this.props;
     const { value } = this.state;
-    const disabled = 'disabled' in props || isDisabled;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -114,7 +112,7 @@ Stepper.propTypes = {
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
@@ -126,7 +124,7 @@ Stepper.defaultProps = {
   theme: null,
   size: null,
   shape: null,
-  isDisabled: false,
+  disabled: false,
   step: 1,
   min: null,
   max: null,

@@ -8,9 +8,9 @@ class Icon extends PureComponent {
     const { prefixCls, type, theme, className, ...others } = this.props;
     const cls = classnames({
       [`${prefixCls}`]: true,
+      [className]: !!className,
       [`${prefixCls}-${type}`]: !!type,
       [`theme-${theme}`]: !!theme,
-      [className]: !!className,
     });
 
     return (
@@ -22,12 +22,14 @@ class Icon extends PureComponent {
 
 Icon.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   type: PropTypes.string,
   theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
 };
 
 Icon.defaultProps = {
   prefixCls: 'ui-icon',
+  className: null,
   type: '',
   theme: null,
 };
