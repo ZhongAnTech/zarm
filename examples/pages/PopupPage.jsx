@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Popup, Button } from '../../components';
+import { Panel, Popup, Cell, Button } from '../../components';
 import '../styles/pages/PopupPage';
 
 
@@ -38,10 +38,25 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Button theme="info" size="sm" onClick={() => this.open('popBottom')}>从下方弹出popUp</Button>
-              <Button theme="info" size="sm" onClick={() => this.open('popTop')}>从上方弹出popUp</Button>
-              <Button theme="info" size="sm" onClick={() => this.open('popLeft')}>从左侧弹出popUp</Button>
-              <Button theme="info" size="sm" onClick={() => this.open('popRight')}>从右侧弹出popUp</Button>
+              <Cell
+                description={
+                  <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
+                }>从下方弹出</Cell>
+              
+              <Cell
+                description={
+                  <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
+                }>从上方弹出</Cell>
+
+              <Cell
+                description={
+                  <Button size="xs" onClick={() => this.open('popLeft')}>开启</Button>
+                }>从左侧弹出</Cell>
+
+              <Cell
+                description={
+                  <Button size="xs" onClick={() => this.open('popRight')}>开启</Button>
+                }>从右侧弹出</Cell>
             </Panel.Body>
           </Panel>
         </main>
@@ -60,7 +75,7 @@ class Page extends Component {
           visible={this.state.popTop}
           direction="top"
           mask={false}
-          duration="3000"
+          duration={3000}
           autoClose
           onMaskClick={() => this.close('popTop')}
           onClose={() => console.log('关闭')}>

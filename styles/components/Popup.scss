@@ -7,8 +7,10 @@ $prefixCls: ui-popup;
     position: fixed;
     transform: translate(0, 0);
     transition: transform .2s;
-    z-index: $zIndex-popup;
     background: #fff;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: $zIndex-popup;
 
     &.position-bottom {
       left: 0;
