@@ -100,14 +100,6 @@ class Picker extends Component {
     if (!value || !value.length) {
       if (this.state.cascade) {
         return formatToInit(data[0], valueMember, this.props.cols);
-        // const _value = [];
-        // for (let i = 0; i < this.props.cols; i += 1) {
-        //   if (data && data.length) {
-        //     _value[i] = data[0][valueMember];
-        //     data = data[0].children;
-        //   }
-        // }
-        // return _value;
       }
       return data.map(d => (d[0][valueMember]));
     }
@@ -144,7 +136,6 @@ class Picker extends Component {
 
     const classes = classnames({
       'ui-picker-container': true,
-      'ui-picker-hidden': !this.state.visible,
       [className]: !!className,
     });
 
@@ -221,9 +212,8 @@ class Picker extends Component {
           {display()}
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
-          {/* <div*/}
           <Popup
-            className="ui-picker-inner"
+            className="ui-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
             <div className="ui-picker-header">
@@ -236,9 +226,7 @@ class Picker extends Component {
                 {PickerCol}
               </div>
             </div>
-
           </Popup>
-          {/* </div> */}
         </div>
       </div>
     );
