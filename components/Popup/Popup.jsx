@@ -19,7 +19,7 @@ class Popup extends PureComponent {
 
   componentDidMount() {
     Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
-    Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
+    Events.on(this.popup, 'transitionend', this.animationEnd);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,7 +47,7 @@ class Popup extends PureComponent {
 
   componentWillUnmount() {
     Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
-    Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
+    Events.off(this.popup, 'transitionend', this.animationEnd);
   }
 
   animationEnd() {
@@ -62,13 +62,13 @@ class Popup extends PureComponent {
 
     const cls = classnames({
       [`${prefixCls}`]: true,
+      [className]: !!className,
     });
 
     const clsWrap = classnames({
       [`${prefixCls}-wrapper`]: true,
       'ui-popup-hidden': !isShow,
       [`position-${direction}`]: true,
-      [className]: !!className,
     });
 
     return (
@@ -84,13 +84,20 @@ class Popup extends PureComponent {
 
 Popup.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
+  visible: PropTypes.bool,
+  mask: PropTypes.bool,
+  direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  duration: PropTypes.number,
+  autoClose: PropTypes.bool,
   onMaskClick: PropTypes.func,
   onClose: PropTypes.func,
-
 };
 
 Popup.defaultProps = {
   prefixCls: 'ui-popup',
+  className: null,
+  visible: false,
   mask: true,
   direction: 'bottom',
   duration: 3000,

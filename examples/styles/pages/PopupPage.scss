@@ -1,26 +1,18 @@
 @import "../core/func";
 
 .popup-page {
-  .ui-panel-body{
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-around;
-    padding: r(10) 0;
-    .ui-button{
-      display: block;
-      margin: r(10) 0;
-    }
-  }
-  .pop-con{
+  .pop-con {
     padding: r(20) r(20) r(100);
   }
-  .pop-con-top{
+
+  .pop-con-top {
     padding: r(10);
     background: rgba(0, 0, 0, .5);
     color: #fff;
     text-align: center;
   }
-  .popwrap-left{
+
+  .popwrap-left {
     width: 100%;
   }
 }

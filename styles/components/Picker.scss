@@ -71,21 +71,6 @@ $picker-item-height: 30px;
     padding: 3 * $picker-item-height 0;
   }
 
-  &-mask {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
-    background-position: top, bottom;
-    background-size: 100% 102px;
-    background-repeat: no-repeat;
-    /* z-index: 100; */
-  }
-
   &-item {
     text-align: center;
     font-size: r(16);
