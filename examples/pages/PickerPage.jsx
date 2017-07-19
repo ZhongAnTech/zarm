@@ -1,17 +1,20 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Cell, Picker } from '../../components';
 import District from './district';
 
-class Page extends PureComponent {
+class Page extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      single: {},
+      single: {
+        value: '1',
+      },
       multiple: {},
+      multiple2: {},
       disabled: {
-        value: ['1'],
+        value: '1',
       },
       diy: {},
       city1: {},
@@ -25,7 +28,7 @@ class Page extends PureComponent {
   }
 
   render() {
-    const { single, multiple, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker } = this.state;
+    const { single, multiple, multiple2, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker } = this.state;
 
     return (
       <div className="cell-page">
@@ -44,10 +47,13 @@ class Page extends PureComponent {
                     { value: '1', label: '选项一' },
                     { value: '2', label: '选项二' },
                   ]}
-                  cols={1}
                   value={single.value}
                   onOk={(value) => {
-                    console.log(value);
+                    single.value = value;
+                    this.setState({
+                      single,
+                    });
+                    console.log("pickerPage onOk ->", value);
                   }}
                   onCancel={() => {
                   }}
@@ -67,10 +73,13 @@ class Page extends PureComponent {
                       { value: 'b', label: '选项B' },
                     ],
                   ]}
-                  cols={2}
                   value={multiple.value}
                   onOk={(value) => {
-                    console.log(value);
+                    multiple.value = value;
+                    this.setState({
+                      multiple,
+                    });
+                    console.log("multiple onOk ->", value);
                   }}
                   onCancel={() => {
                   }}
@@ -79,7 +88,7 @@ class Page extends PureComponent {
 
               <Cell title="多列联动" type="select">
                 <Picker
-                  visible={multiple.visible}
+                  visible={multiple2.visible}
                   dataSource={[
                     {
                       value: '1',
@@ -98,9 +107,13 @@ class Page extends PureComponent {
                       ],
                     },
                   ]}
-                  cols={2}
-                  value={multiple.value}
+                  // cols={2}
+                  value={multiple2.value}
                   onOk={(value) => {
+                    multiple2.value = value;
+                    this.setState({
+                      multiple2,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
@@ -116,7 +129,6 @@ class Page extends PureComponent {
                     { value: '1', label: '选项一' },
                     { value: '2', label: '选项二' },
                   ]}
-                  cols={1}
                   value={disabled.value}
                   onOk={(value) => {
                     console.log(value);
@@ -142,11 +154,14 @@ class Page extends PureComponent {
                       { value: 'b', label: '选项B' },
                     ],
                   ]}
-                  cols={2}
                   displayMember="label"
-                  valueMember="label"
+                  valueMember="value"
                   value={diy.value}
                   onOk={(value) => {
+                    diy.value = value;
+                    this.setState({
+                      diy,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
@@ -172,7 +187,11 @@ class Page extends PureComponent {
                   valueMember="label"
                   value={city1.value}
                   onOk={(value) => {
-                    console.log(value);
+                    city1.value = value;
+                    this.setState({
+                      city1,
+                    });
+                    console.log("onOk->", value);
                   }}
                   onCancel={() => {
                   }}
@@ -183,11 +202,15 @@ class Page extends PureComponent {
                 <Picker
                   visible={city2.visible}
                   dataSource={District}
-                  cols={3}
+                  wheelDefaultValue={[]}
                   displayMember="label"
                   valueMember="label"
                   value={city2.value}
                   onOk={(value) => {
+                    city2.value = value;
+                    this.setState({
+                      city2,
+                    });
                     console.log(value);
                   }}
                   onCancel={() => {
@@ -209,6 +232,7 @@ class Page extends PureComponent {
                   title="选择年份"
                   placeholder="请选择年份"
                   mode="year"
+                  wheelDefaultValue="2009"
                   value={yearPicker.value}
                   onOk={(value) => {
                     console.log(value);
@@ -223,6 +247,7 @@ class Page extends PureComponent {
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
+                  wheelDefaultValue="2009"
                   value={datePicker.value}
                   onOk={(value) => {
                     console.log(value);
