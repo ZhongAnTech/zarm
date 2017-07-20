@@ -32,6 +32,7 @@ class Page extends PureComponent {
               <Panel.Title>表单组件</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+              <Cell hasArrow title="复选框 Checkbox" onClick={() => hashHistory.push('/checkbox')} />
               <Cell hasArrow title="文本框 Input" onClick={() => hashHistory.push('/input')} />
               <Cell hasArrow title="选择器 Picker" onClick={() => hashHistory.push('/picker')} />
               <Cell hasArrow title="单选框 Radio" onClick={() => hashHistory.push('/radio')} />

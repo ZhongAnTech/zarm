@@ -33,6 +33,14 @@ const rootRoute = {
 
     // 表单组件
     {
+      path: 'checkbox',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/CheckboxPage'));
+        });
+      },
+    },
+    {
       path: 'input',
       getComponent(location, cb) {
         require.ensure([], (require) => {
