@@ -133,6 +133,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'img',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ImgPage'));
+        }, 'Img');
+      }
+    },
+    {
       path: 'swipe',
       getComponent(location, cb) {
         require.ensure([], (require) => {
