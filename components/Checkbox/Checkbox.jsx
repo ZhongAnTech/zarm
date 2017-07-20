@@ -9,6 +9,7 @@ class Checkbox extends PureComponent {
     this.state = {
       checked: props.checked || props.defaultChecked || false,
     };
+    this.onValueChange = this.onValueChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -19,45 +20,54 @@ class Checkbox extends PureComponent {
     }
   }
 
+  onValueChange() {
+    const { disabled, onChange } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
+    const checked = !this.state.checked;
+    this.setState({ checked });
+    typeof onChange === 'function' && onChange(checked);
+  }
+
   render () {
     const props = this.props;
-    const { value, isDisabled, className, children, onChange, ...others } = props;
-    const disabled = 'disabled' in props || isDisabled;
+    const { prefixCls, className, value, disabled, children, onChange } = props;
+    const { checked } = this.state;
 
     const cls = classnames({
-      'ui-checkbox': true,
-      'checked'    : this.state.checked,
-      'disabled'   : disabled,
-      [className]  : !!className,
+      [`${prefixCls}`]: true,
+      [className]: !!className,
+      checked,
+      disabled,
     });
 
     return (
-      <label {...others} onClick={() => !disabled && this._onClick()}>
-        <span className={cls}>
-          <span className="ui-checkbox-inner"></span>
-        </span>
+      <label className={cls}>
+        <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <span className="ui-checkbox-inner"></span>
         {children}
       </label>
     );
   }
-
-  _onClick() {
-    const checked = !this.state.checked;
-    this.setState({ checked });
-    this.props.onChange(checked);
-  }
 }
 
 Checkbox.propTypes = {
+  prefixCls: PropTypes.string,
+  className: PropTypes.string,
   defaultChecked: PropTypes.bool,
-  isDisabled    : PropTypes.bool,
-  onChange      : PropTypes.func,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 Checkbox.defaultProps = {
+  prefixCls: 'ui-checkbox',
+  className: null,
   defaultChecked: false,
-  isDisabled    : false,
-  onChange      : () => {},
+  disabled: false,
+  onChange() {},
 };
 
 export default Checkbox;
