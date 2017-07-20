@@ -8,12 +8,10 @@ class Popup extends PureComponent {
 
   constructor(props) {
     super(props);
-
+    this.timer = null;
     this.state = {
       isShow: this.props.visible || false,
-      timer: null,
     };
-
     this.animationEnd = this.animationEnd.bind(this);
   }
 
@@ -23,31 +21,41 @@ class Popup extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { duration, autoClose, onMaskClick } = nextProps;
+    clearTimeout(this.timer);
 
-    if ('visible' in nextProps) {
-      this.setState({
-        isShow: nextProps.visible,
-      });
-
-      if (duration === 0 || this.state.timer) {
-        return;
-      }
-      if (autoClose) {
-        this.state.timer = setTimeout(() => {
-          onMaskClick();
-          clearTimeout(this.state.timer);
-          this.setState({
-            timer: null,
-          });
-        }, duration);
-      }
+    if (nextProps.visible) {
+      this.enter(nextProps);
+    } else {
+      this.leave();
     }
   }
 
   componentWillUnmount() {
     Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
     Events.off(this.popup, 'transitionend', this.animationEnd);
+  }
+
+  enter({ duration, autoClose, onMaskClick }) {
+    this.setState({
+      isShow: true,
+    });
+
+    if (duration === 0 || this.timer) {
+      return;
+    }
+
+    if (autoClose) {
+      this.timer = setTimeout(() => {
+        onMaskClick();
+        clearTimeout(this.timer);
+      }, duration);
+    }
+  }
+
+  leave() {
+    this.setState({
+      isShow: false,
+    });
   }
 
   animationEnd() {
@@ -66,8 +74,8 @@ class Popup extends PureComponent {
 
     const clsWrap = classnames({
       [`${prefixCls}-wrapper`]: true,
-      'ui-popup-hidden': !isShow,
       [`position-${direction}`]: true,
+      [`${prefixCls}-hidden`]: !isShow,
     });
 
     return (

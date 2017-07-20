@@ -7,9 +7,9 @@ class Toast extends PureComponent {
 
   constructor(props) {
     super(props);
+    this.timer = null;
     this.state = {
       isShow: false,
-      timer: undefined,
     };
   }
 
@@ -20,7 +20,7 @@ class Toast extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    clearTimeout(this.state.timer);
+    clearTimeout(this.timer);
 
     if (nextProps.visible) {
       this.enter(nextProps);
@@ -30,7 +30,7 @@ class Toast extends PureComponent {
   }
 
   componentWillUnmount() {
-    clearTimeout(this.state.timer);
+    clearTimeout(this.timer);
   }
 
   enter({ duration, onMaskClick }) {
@@ -42,9 +42,9 @@ class Toast extends PureComponent {
       return;
     }
 
-    this.state.timer = setTimeout(() => {
+    this.timer = setTimeout(() => {
       onMaskClick();
-      clearTimeout(this.state.timer);
+      clearTimeout(this.timer);
     }, duration);
   }
 
@@ -72,7 +72,6 @@ class Toast extends PureComponent {
       </div>
     );
   }
-
 }
 
 Toast.propTypes = {
