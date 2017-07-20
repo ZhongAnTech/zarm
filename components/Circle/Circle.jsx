@@ -36,11 +36,11 @@ class Circle extends Component {
 }
 
 Circle.propTypes = {
-  type : PropTypes.oneOf(['quarter', 'loop', 'rainbow', 'process']),
+  type: PropTypes.oneOf(['quarter', 'loop', 'rainbow', 'process']),
 };
 
 Circle.defaultProps = {
-  type : 'quarter',
+  type: 'quarter',
 };
 
 export default Circle;

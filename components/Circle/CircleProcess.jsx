@@ -17,8 +17,11 @@ class CircleProcess extends Component {
       [className]: !!className,
     });
 
+    let strokeDashoffset = l * (100 - percent);
+    strokeDashoffset /= 100;
+
     const style = {
-      strokeDashoffset: l * (100 - percent) / 100,
+      strokeDashoffset,
     };
 
     return (
