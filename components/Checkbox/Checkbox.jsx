@@ -69,7 +69,7 @@ class Checkbox extends PureComponent {
       <label className={cls}>
         <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         <span className="ui-checkbox-inner"></span>
-        {children}
+        <span className="ui-checkbox-text">{children}</span>
       </label>
     );
   }
