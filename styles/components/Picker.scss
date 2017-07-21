@@ -1,6 +1,32 @@
 $prefixCls: ui-picker;
 $picker-item-height: 30px;
 
+@mixin pickerStackColumn($count) {
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      z-index: $i * 2;
+
+      @if ($i > 2) {
+        left: r(60 * ($i - 2));
+      }
+
+      .ui-picker-stack-column-wrapper {
+        z-index: $i * 2 + 1;
+
+        @if ($i > 1) {
+          left: r(60);
+        }
+      }
+
+      .ui-picker-stack-item {
+        @if ($i > 2) {
+          padding-left: r(10);
+        }
+      }
+    }
+  }
+}
+
 .#{$prefixCls} {
   &-placeholder {
     color: $placeholder-color;
@@ -52,6 +78,109 @@ $picker-item-height: 30px;
     &-item {
       flex: 1;
       text-align: center;
+    }
+  }
+
+  &-crumbs {
+    padding: r(6) r(20);
+    line-height: r(24);
+    font-size: r(14);
+    color: #999;
+    border-bottom: 1px solid #f2f2f2;
+
+    p {
+      margin: 0;
+    }
+
+    &-error {
+      color: $theme-error;
+    }
+  }
+
+  &-stack {
+
+    &-group {
+      position: relative;
+      height: 8 * $picker-item-height;
+      overflow: hidden;
+    }
+
+    &-column {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translate(0, 0);
+      transition: transform .3s;
+
+      &.lower-hidden {
+        ~ .ui-picker-stack-column {
+          transform: translate(100%, 0)
+        }
+
+        .ui-picker-stack-item {
+          padding-left: r(20);
+        }
+      }
+
+      @include pickerStackColumn(5);
+
+      &:not(:last-child) {
+        .ui-picker-stack-item {
+          padding-right: r(40);
+
+          &:before {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            content: "";
+            width: r(9);
+            height: r(9);
+            margin-top: r(-4);
+            border-right: r(2) solid #c7c7cc;
+            border-top: r(2) solid #c7c7cc;
+            transform: rotate(45deg);
+          }
+        }
+      }
+
+      &:first-child:last-child,
+      &:nth-child(2):last-child {
+        .ui-picker-stack-item {
+          padding-left: r(20);
+        }
+      }
+    }
+
+    &-column-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: r(-20);
+      bottom: 0;
+      padding-right: r(20);
+      overflow-y: scroll;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+
+    &-item {
+      position: relative;
+      padding: 0 r(10);
+      line-height: $picker-item-height - 1;
+      font-size: r(14);
+      color: #333;
+      border-bottom: 1px solid #f2f2f2;
+      transition: padding-left .4s;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      &.active {
+        color: $theme-info;
+      }
     }
   }
 }
