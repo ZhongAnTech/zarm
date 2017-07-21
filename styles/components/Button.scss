@@ -113,7 +113,7 @@ $prefixCls: ui-button;
   outline: 0 none;
   -webkit-appearance: none;
   user-select: none;
-  /* transition: background-color 300ms ease-out, border-color 300ms ease-out; */
+  transition: background-color 200ms ease-out, border-color 200ms ease-out;
   @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
   @include button-theme($button-default-color, $button-default-bg, $button-default-border);
   @include button-bordered($button-default-color, $button-default-activebg, $button-default-border);
