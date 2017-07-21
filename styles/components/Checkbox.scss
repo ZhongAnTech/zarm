@@ -17,10 +17,14 @@ $prefixCls: ui-checkbox;
     opacity: 0;
   }
 
+  &-text {
+    margin-left: r(5);
+  }
+
   /* 选中状态 */
   &.checked {
     .#{$prefixCls}-inner {
-      &:after {
+      &:before {
         transform: rotate(45deg) scale(1);
         transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
       }
@@ -34,7 +38,7 @@ $prefixCls: ui-checkbox;
       background-color: #f3f3f3;
       cursor: not-allowed;
 
-      &:after {
+      &:before {
         border-color: #ccc;
       }
     }
@@ -42,26 +46,27 @@ $prefixCls: ui-checkbox;
 
   &-inner {
     position: relative;
+    overflow: hidden;
     display: inline-block;
-    width: r(12);
-    height: r(12);
-    border: 1px solid #d9d9d9;
-    border-radius: r(3);
+    width: r(14);
+    height: r(14);
     background-color: #fff;
     transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
+    /* @include onepx(top right bottom left, $theme-info, $radius-md); */
+    border: 1px solid $theme-info;
+    border-radius: $radius-md;
 
-    &:after {
-      transform: rotate(45deg) scale(0);
+    &:before {
+      content: ' ';
       position: absolute;
-      left: r(3);
-      top: r(1);
-      display: table;
-      width: r(4.5);
-      height: r(7);
-      border: r(1) solid $theme-info;
+      left: r(4);
+      top: r(0.8);
+      width: r(4);
+      height: r(8);
+      border: 1px solid $theme-info;
       border-top: 0;
       border-left: 0;
-      content: ' ';
+      transform: rotate(45deg) scale(0);
       transition: all .1s cubic-bezier(.71, -0.46, .88, .6);
     }
   }

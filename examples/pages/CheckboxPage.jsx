@@ -63,7 +63,20 @@ class Page extends PureComponent {
                     <Checkbox value="1">选项二</Checkbox>
                     <Checkbox value="2">选项三</Checkbox>
                   </Checkbox.Group>
-                }>普通</Cell>
+                }>圆角</Cell>
+
+              <Cell
+                description={
+                  <Checkbox.Group
+                    type="button"
+                    shape="round"
+                    value={this.state.Checkbox}
+                    onChange={value => console.log(`checkbox to ${value}`)}>
+                    <Checkbox value="0">选项一</Checkbox>
+                    <Checkbox value="1">选项二</Checkbox>
+                    <Checkbox value="2">选项三</Checkbox>
+                  </Checkbox.Group>
+                }>椭圆角</Cell>
             </Panel.Body>
           </Panel>
 
