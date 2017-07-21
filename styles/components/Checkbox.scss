@@ -1,26 +1,25 @@
-.ui-checkbox-group {
-  display: inline-block;
+$prefixCls: ui-checkbox;
 
-  label {
-    margin-right: r(16);
-  }
-}
-
-/* 一般状态 */
-.ui-checkbox {
-  display: inline-block;
+.#{$prefixCls} {
   position: relative;
-  line-height: 1;
-  white-space: nowrap;
-  outline: none;
-  cursor: pointer;
+  margin-left: r(10);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
 
   /* 选中状态 */
   &.checked {
-    .ui-checkbox-inner {
-      border-color: $theme-info;
-      background-color: $theme-info;
-
+    .#{$prefixCls}-inner {
       &:after {
         transform: rotate(45deg) scale(1);
         transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
@@ -30,7 +29,7 @@
 
   /* 禁用状态 */
   &.disabled {
-    .ui-checkbox-inner {
+    .#{$prefixCls}-inner {
       border-color: #d9d9d9;
       background-color: #f3f3f3;
       cursor: not-allowed;
@@ -41,11 +40,11 @@
     }
   }
 
-  .ui-checkbox-inner {
+  &-inner {
     position: relative;
     display: inline-block;
-    width: r(15);
-    height: r(15);
+    width: r(12);
+    height: r(12);
     border: 1px solid #d9d9d9;
     border-radius: r(3);
     background-color: #fff;
@@ -54,12 +53,12 @@
     &:after {
       transform: rotate(45deg) scale(0);
       position: absolute;
-      left: r(4);
-      top: r(1.5);
+      left: r(3);
+      top: r(1);
       display: table;
-      width: r(5.5);
-      height: r(9);
-      border: r(2) solid #fff;
+      width: r(4.5);
+      height: r(7);
+      border: r(1) solid $theme-info;
       border-top: 0;
       border-left: 0;
       content: ' ';
@@ -67,16 +66,60 @@
     }
   }
 
-  .ui-checkbox-input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-  }
+  &-group {
+    &.block {
+      display: flex;
 
-  & + span {
-    margin-left: r(5);
+      /* 通栏模式字体增大 */
+      .#{$prefixCls} {
+        font-size: r(15);
+      }
+    }
+
+    &.shape-radius {
+      .#{$prefixCls} {
+        border-radius: $radius-md;
+      }
+    }
+
+    &.shape-round {
+      .#{$prefixCls} {
+        border-radius: r(15);
+      }
+    }
+
+    &.is-gather {
+      .#{$prefixCls} {
+        margin-left: -1px;
+      }
+
+      &.shape-radius {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: $radius-md 0 0 $radius-md;
+          }
+
+          &:last-child {
+            border-radius: 0 $radius-md $radius-md 0;
+          }
+        }
+      }
+
+      &.shape-round {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: r(15) 0 0 r(15);
+          }
+
+          &:last-child {
+            border-radius: 0 r(15) r(15) 0;
+          }
+        }
+      }
+    }
   }
 }

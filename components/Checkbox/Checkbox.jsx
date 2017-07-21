@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Cell from '../Cell';
+import Button from '../Button';
+import Icon from '../Icon';
 
 class Checkbox extends PureComponent {
 
@@ -34,7 +37,7 @@ class Checkbox extends PureComponent {
 
   render () {
     const props = this.props;
-    const { prefixCls, className, value, disabled, children, onChange } = props;
+    const { prefixCls, className, theme, type, value, block, disabled, children, onChange } = props;
     const { checked } = this.state;
 
     const cls = classnames({
@@ -44,9 +47,27 @@ class Checkbox extends PureComponent {
       disabled,
     });
 
+    if (type === 'cell') {
+      return (
+        <Cell disabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
+          <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          {children}
+        </Cell>
+      );
+    }
+
+    if (type === 'button') {
+      return (
+        <Button className={cls} theme={theme} size="xs" block={block} bordered={!checked} disabled={disabled}>
+          <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          {children}
+        </Button>
+      );
+    }
+
     return (
       <label className={cls}>
-        <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         <span className="ui-checkbox-inner"></span>
         {children}
       </label>
@@ -57,6 +78,8 @@ class Checkbox extends PureComponent {
 Checkbox.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
+  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  type: PropTypes.oneOf(['button', 'cell']),
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
@@ -65,6 +88,8 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   prefixCls: 'ui-checkbox',
   className: null,
+  theme: 'info',
+  type: null,
   defaultChecked: false,
   disabled: false,
   onChange() {},

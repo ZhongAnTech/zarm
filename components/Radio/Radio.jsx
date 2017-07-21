@@ -65,7 +65,6 @@ class Radio extends PureComponent {
 Radio.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -76,7 +75,6 @@ Radio.propTypes = {
 Radio.defaultProps = {
   prefixCls: 'ui-radio',
   className: null,
-  theme: null,
   type: null,
   defaultChecked: false,
   disabled: false,

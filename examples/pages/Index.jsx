@@ -17,18 +17,6 @@ class Page extends PureComponent {
         <main>
           <Panel>
             <Panel.Header>
-              <Panel.Title>基础组件</Panel.Title>
-            </Panel.Header>
-            <Panel.Body>
-              <Cell hasArrow title="按钮 Button" onClick={() => hashHistory.push('/button')} />
-              <Cell hasArrow title="图标 Icon" onClick={() => hashHistory.push('/icon')} />
-              {
-                // <Cell hasArrow title="大转盘 Lottery" onClick={() => hashHistory.push('/lottery')} />
-              }
-            </Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Header>
               <Panel.Title>表单组件</Panel.Title>
             </Panel.Header>
             <Panel.Body>
@@ -46,6 +34,7 @@ class Page extends PureComponent {
               <Panel.Title>操作反馈</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+              <Cell hasArrow title="按钮 Button" onClick={() => hashHistory.push('/button')} />
               <Cell hasArrow title="模态框 Modal" onClick={() => hashHistory.push('/modal')} />
               <Cell hasArrow title="弹出框 Popup" onClick={() => hashHistory.push('/popup')} />
               <Cell hasArrow title="滑动操作 SwipeAction" onClick={() => hashHistory.push('/swipeAction')} />
@@ -59,10 +48,21 @@ class Page extends PureComponent {
             <Panel.Body>
               <Cell hasArrow title="徽标 Badge" onClick={() => hashHistory.push('/badge')} />
               <Cell hasArrow title="列表项 Cell" onClick={() => hashHistory.push('/cell')} />
+              <Cell hasArrow title="图标 Icon" onClick={() => hashHistory.push('/icon')} />
               <Cell hasArrow title="图片轮播 Swipe" onClick={() => hashHistory.push('/swipe')} />
               <Cell hasArrow title="标签页 Tab" onClick={() => hashHistory.push('/tab')} />
             </Panel.Body>
           </Panel>
+          {
+            // <Panel>
+            //   <Panel.Header>
+            //     <Panel.Title>基础组件</Panel.Title>
+            //   </Panel.Header>
+            //   <Panel.Body>
+            //     <Cell hasArrow title="大转盘 Lottery" onClick={() => hashHistory.push('/lottery')} />
+            //   </Panel.Body>
+            // </Panel> 
+          }
         </main>
       </div>
     );

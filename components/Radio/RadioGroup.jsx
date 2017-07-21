@@ -70,7 +70,7 @@ class RadioGroup extends PureComponent {
 RadioGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   shape: PropTypes.oneOf(['radius', 'round']),
   block: PropTypes.bool,
