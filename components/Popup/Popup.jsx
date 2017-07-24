@@ -64,7 +64,7 @@ class Popup extends PureComponent {
   }
 
   render() {
-    const { prefixCls, children, onMaskClick, direction, className } = this.props;
+    const { prefixCls, children, onMaskClick, direction, className, maskType, ...others } = this.props;
     const { isShow } = this.state;
 
     const cls = classnames({
@@ -83,7 +83,7 @@ class Popup extends PureComponent {
         <div className={clsWrap}>
           {children}
         </div>
-        {this.props.mask && <Mask visible={isShow} onClose={onMaskClick} />}
+        {this.props.mask && <Mask visible={isShow} type={maskType} onClose={onMaskClick} />}
       </div>
     );
   }
