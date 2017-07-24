@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Icon, Cell } from '../../components';
-import '../styles/pages/CellPage';
 
 const img = require('../images/icons/state.png');
 

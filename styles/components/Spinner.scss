@@ -1,16 +1,6 @@
 $prefixCls: ui-spinner;
-$sizeNum: 62;
-$PI: 3.141592674;
-$l: $sizeNum * $PI;
 
 .#{$prefixCls} {
-  &-svg {
-    transform: rotate(-90deg);
-  }
-
-  &-bar {
-    stroke-dasharray: $l;
-    stroke-dashoffset: $l;
-    transition: .2s;
-  }
+  width: r(31);
+  height: r(31);
 }

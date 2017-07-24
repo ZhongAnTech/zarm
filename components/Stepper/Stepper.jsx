@@ -45,10 +45,10 @@ class Stepper extends PureComponent {
     if (value === '' || isNaN(value)) {
       value = this.state.lastValue;
     }
-    if (min && value < min) {
+    if (typeof min === 'number' && value < min) {
       value = min;
     }
-    if (max && value > max) {
+    if (typeof max === 'number' && value > max) {
       value = max;
     }
     this.setState({
@@ -83,8 +83,8 @@ class Stepper extends PureComponent {
       disabled,
     });
 
-    const subDisabled = !!(min && value <= min) || disabled;
-    const plusDisabled = !!(max && value >= max) || disabled;
+    const subDisabled = !!(typeof min === 'number' && value <= min) || disabled;
+    const plusDisabled = !!(typeof max === 'number' && value >= max) || disabled;
 
     const subCls = classnames({
       [`${prefixCls}-sub`]: true,

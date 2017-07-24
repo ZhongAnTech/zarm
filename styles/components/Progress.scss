@@ -1,0 +1,44 @@
+$prefixCls: ui-progress;
+$PI: 3.141592674;
+
+@mixin progress-theme($color) {
+  .#{$prefixCls}-line {
+    stroke: $color;
+  }
+}
+
+.#{$prefixCls} {
+  display: inline-block;
+  width: r(31);
+  height: r(31);
+  @include progress-theme($theme-info);
+
+  &-svg {
+    transform: rotate(-90deg);
+  }
+
+  &-path {
+    stroke: #e6e6e6;
+  }
+
+  &-line {
+    stroke-dasharray: 100 * $PI;
+    transition: .2s;
+  }
+
+  &.theme-default {
+    @include progress-theme($theme-default);
+  }
+
+  &.theme-info {
+    @include progress-theme($theme-info);
+  }
+
+  &.theme-warning {
+    @include progress-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include progress-theme($theme-error);
+  }
+}
