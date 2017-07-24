@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
 import { Panel, Icon, Input, Cell, Message } from '../../components';
-import '../styles/pages/CellPage';
 
 class Page extends Component {
 

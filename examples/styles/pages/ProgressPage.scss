@@ -1,0 +1,14 @@
+@import "../core/func";
+
+.progress-page {
+  .show {
+    width: 100%;
+    margin: r(30) 0;
+    text-align: center;
+  }
+
+  .ui-progress {
+    width: r(150);
+    height: r(150);
+  }
+}

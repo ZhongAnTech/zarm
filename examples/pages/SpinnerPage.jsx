@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import { Panel, Spinner, Cell } from '../../components';
+import { Panel, Cell, Spinner } from '../../components';
+import '../styles/pages/SpinnerPage';
 
 class Page extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      percent: 0,
+      theme: 'info',
+    };
+  }
 
   render() {
     return (
@@ -10,14 +19,13 @@ class Page extends Component {
         <Header title="指示器 Spinner" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
             <Panel.Body>
-              <Cell
-                description={
-                  <Spinner percent={50} />
-                }>loading</Cell>
+              <Cell description={
+                <Spinner
+                  className="rotate360"
+                  percent={15}
+                  theme={this.state.theme} />
+              }>普通</Cell>
             </Panel.Body>
           </Panel>
         </main>
