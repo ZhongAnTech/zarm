@@ -141,6 +141,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'spinner',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/SpinnerPage'));
+        });
+      },
+    },
+    {
       path: 'swipe',
       getComponent(location, cb) {
         require.ensure([], (require) => {
