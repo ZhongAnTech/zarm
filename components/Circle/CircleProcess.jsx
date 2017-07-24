@@ -14,7 +14,7 @@ class CircleProcess extends Component {
 
     const half = num / 2;
     const r = half - strokeWidth;
-    const l = half * Math.PI * 2;
+    const l = (half + strokeWidth) * Math.PI * 2;
 
     let strokeDashoffset = l * (100 - percent);
     strokeDashoffset /= 100;
