@@ -9,8 +9,9 @@ $PI: 3.141592674;
 
 .#{$prefixCls} {
   display: inline-block;
-  width: r(31);
-  height: r(31);
+  position: relative;
+  width: r(32);
+  height: r(32);
   @include progress-theme($theme-info);
 
   &-svg {
@@ -24,6 +25,19 @@ $PI: 3.141592674;
   &-line {
     stroke-dasharray: 100 * $PI;
     transition: .2s;
+  }
+
+  &-text {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    line-height: 1;
+    transform: translateY(-50%);
+    font-size: r(30);
   }
 
   &.theme-default {
