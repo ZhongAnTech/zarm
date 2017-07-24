@@ -21,10 +21,7 @@ class Page extends Component {
           <Panel>
             <Panel.Body>
               <Cell description={
-                <Spinner
-                  className="rotate360"
-                  percent={15}
-                  theme={this.state.theme} />
+                <Spinner theme={this.state.theme} />
               }>普通</Cell>
             </Panel.Body>
           </Panel>
