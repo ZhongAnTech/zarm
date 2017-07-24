@@ -11,6 +11,7 @@ class Spinner extends PureComponent {
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
+      rotate360: true,
     });
 
     return (
@@ -19,17 +20,17 @@ class Spinner extends PureComponent {
   }
 }
 
-Progress.propTypes = {
+Spinner.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   percent: PropTypes.number,
 
 };
 
-Progress.defaultProps = {
-  prefixCls: 'ui-progress',
+Spinner.defaultProps = {
+  prefixCls: 'ui-spinner',
   className: null,
   percent: 15,
 };
 
-export default Progress;
+export default Spinner;

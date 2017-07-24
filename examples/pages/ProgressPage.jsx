@@ -8,7 +8,7 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      percent: 0,
+      percent: 10,
       theme: 'info',
     };
   }

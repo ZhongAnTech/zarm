@@ -5,7 +5,6 @@ import classnames from 'classnames';
 const diameter = 100;
 
 class Progress extends PureComponent {
-
   render() {
     const { prefixCls, className, theme, percent, strokeWidth } = this.props;
 
