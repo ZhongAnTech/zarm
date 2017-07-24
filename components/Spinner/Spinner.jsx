@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const num = 62;
+const diameter = 62;
 
 class Spinner extends PureComponent {
 
@@ -15,11 +15,11 @@ class Spinner extends PureComponent {
       [`theme-${theme}`]: !!theme,
     });
 
-    const half = num / 2;
-    const r = half - strokeWidth;
-    const l = half * Math.PI * 2;
+    const radius = diameter / 2;
+    const r = radius - strokeWidth / 2;
+    const round = (radius + strokeWidth / 2) * Math.PI * 2;
 
-    let strokeDashoffset = l * (100 - percent);
+    let strokeDashoffset = round * (100 - percent);
     strokeDashoffset /= 100;
 
     const style = {
@@ -29,9 +29,9 @@ class Spinner extends PureComponent {
 
     return (
       <div className={cls}>
-        <svg className={`${prefixCls}-svg`} width={num} height={num}>
-          <circle cx={half} cy={half} r={r} fill="none" stroke="#e6e6e6" strokeWidth={strokeWidth} />
-          <circle style={style} className={`${prefixCls}-bar`} cx={half} cy={half} r={r} fill="none" stroke="#86bcfc" />
+        <svg className={`${prefixCls}-svg`} width={diameter} height={diameter} viewBox={`0 0 ${diameter} ${diameter}`}>
+          <circle cx={radius} cy={radius} r={r} fill="none" stroke="#e6e6e6" strokeWidth={strokeWidth} />
+          <circle style={style} className={`${prefixCls}-bar`} cx={radius} cy={radius} r={r} fill="none" stroke="#86bcfc" />
         </svg>
       </div>
     );
