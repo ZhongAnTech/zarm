@@ -14,7 +14,7 @@ $l: $sizeNum * $PI;
 }
 
 @function getCubicBezier($a, $b: 0.1) {
-  @return cubic-bezier(#{$a},#{$b},#{1 - $a},#{1 - $b})
+  @return cubic-bezier(#{$a},#{$b},#{1 - $a},#{1 - $b});
 }
 
 %absoluteFull{
@@ -69,7 +69,7 @@ $l: $sizeNum * $PI;
       }
 
       &:after{
-        animation: 1s uiCircleRotate infinite getCubicBezier(0.75);;
+        animation: 1s uiCircleRotate infinite getCubicBezier(0.75);
       }
     }
   }
@@ -107,7 +107,7 @@ $l: $sizeNum * $PI;
 
       &:after{
         border-top-color: rgba(red, .35);
-        animation: 1s uiCircleRotate infinite getCubicBezier(0.75);;
+        animation: 1s uiCircleRotate infinite getCubicBezier(0.75);
       }
     }
   }
@@ -120,7 +120,6 @@ $l: $sizeNum * $PI;
 
       .circle-bar{
         stroke-dasharray: $l;
-        stroke-dashoffset: $l;
 
         transition: .2s;
       }

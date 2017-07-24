@@ -4,7 +4,7 @@ import { Circle } from '../../components';
 import '../styles/pages/CirclePage';
 
 const list = ['quarter', 'loop', 'rainbow', 'process'];
-const loadList = [20, 40, 60, 80, 100];
+const loadList = [25, 50, 75, 100];
 
 class CirclePage extends Component {
 
