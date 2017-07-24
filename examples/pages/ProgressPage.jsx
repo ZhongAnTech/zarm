@@ -18,10 +18,15 @@ class Page extends Component {
       <div className="progress-page">
         <Header title="进度条 Progress" />
         <main>
-          <div className="show">
+          <div className="progress">
             <Progress
               percent={this.state.percent}
-              theme={this.state.theme} />
+              theme={this.state.theme}>
+              <div className="progress-content">
+                <span className="progress-text">{this.state.percent}</span>
+                <span className="progress-percent">%</span>
+              </div>
+            </Progress>
           </div>
           <Panel>
             <Panel.Body>

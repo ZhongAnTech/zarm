@@ -6,7 +6,7 @@ const diameter = 100;
 
 class Progress extends PureComponent {
   render() {
-    const { prefixCls, className, theme, percent, strokeWidth } = this.props;
+    const { prefixCls, className, theme, percent, strokeWidth, children } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -29,6 +29,7 @@ class Progress extends PureComponent {
           <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
           <circle className={`${prefixCls}-line`} cx={half} cy={half} r={r} fill="none" style={style} />
         </svg>
+        <div className={`${prefixCls}-text`}>{children}</div>
       </div>
     );
   }
