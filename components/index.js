@@ -15,6 +15,7 @@ export { default as Popup } from './Popup';
 export { default as Panel } from './Panel';
 export { default as Picker } from './Picker';
 export { default as Radio } from './Radio';
+export { default as Spinner } from './Spinner';
 export { default as Stepper } from './Stepper';
 export { default as Swipe } from './Swipe';
 export { default as SwipeAction } from './SwipeAction';
