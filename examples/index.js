@@ -139,6 +139,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'message',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/MessagePage'));
+        });
+      },
+    },
+    {
       path: 'progress',
       getComponent(location, cb) {
         require.ensure([], (require) => {

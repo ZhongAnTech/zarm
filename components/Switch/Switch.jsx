@@ -62,7 +62,7 @@ class Switch extends PureComponent {
 Switch.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
@@ -71,7 +71,7 @@ Switch.propTypes = {
 Switch.defaultProps = {
   prefixCls: 'ui-switch',
   className: null,
-  theme: null,
+  theme: 'primary',
   size: null,
   shape: null,
   disabled: false,

@@ -17,7 +17,7 @@ class Confirm extends PureComponent {
         </Modal.Body>
         <Modal.Footer>
           <Button block bordered onClick={onCancel}>{cancelText}</Button>
-          <Button block bordered theme="info" onClick={onOk}>{okText}</Button>
+          <Button block bordered theme="primary" onClick={onOk}>{okText}</Button>
         </Modal.Footer>
       </Modal>
     );

@@ -33,7 +33,7 @@ class Page extends Component {
                   ICONS.sort().map((icon, i) => {
                     return (
                       <div className="grid-column" key={i}>
-                        <Icon theme="info" type={icon} />
+                        <Icon theme="primary" type={icon} />
                         <span className="icon-name">{icon}</span>
                       </div>
                     );

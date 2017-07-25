@@ -56,7 +56,7 @@ class CheckboxGroup extends PureComponent {
         disabled: disabled || element.props.disabled,
         onChange: () => this.onCheckboxChange(element.props.value),
         // use '==' because the result will fail when the value's typeof is Number
-        checked: (this.state.value == element.props.value), // eslint-disable-line
+        checked: (this.state.value.indexOf(element.props.value) > -1),
       });
     });
 
@@ -80,7 +80,7 @@ class CheckboxGroup extends PureComponent {
 CheckboxGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   shape: PropTypes.oneOf(['radius', 'round']),
   block: PropTypes.bool,
@@ -92,7 +92,7 @@ CheckboxGroup.propTypes = {
 CheckboxGroup.defaultProps = {
   prefixCls: 'ui-checkbox-group',
   className: null,
-  theme: 'info',
+  theme: 'primary',
   type: null,
   shape: null,
   block: false,

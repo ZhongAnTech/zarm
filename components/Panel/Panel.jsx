@@ -19,7 +19,7 @@ class Panel extends PureComponent {
 Panel.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
 };
 
 Panel.defaultProps = {

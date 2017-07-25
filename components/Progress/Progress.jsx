@@ -38,7 +38,7 @@ class Progress extends PureComponent {
 Progress.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   strokeWidth: PropTypes.number,
   percent: PropTypes.number,
 
@@ -47,7 +47,7 @@ Progress.propTypes = {
 Progress.defaultProps = {
   prefixCls: 'ui-progress',
   className: null,
-  theme: 'info',
+  theme: 'primary',
   strokeWidth: 4,
   percent: 0,
 };

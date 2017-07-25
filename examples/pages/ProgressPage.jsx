@@ -9,7 +9,7 @@ class Page extends Component {
     super(props);
     this.state = {
       percent: 10,
-      theme: 'info',
+      theme: 'primary',
     };
   }
 
@@ -50,6 +50,7 @@ class Page extends Component {
                   value={this.state.theme}
                   dataSource={[
                     { value: 'default', label: 'default' },
+                    { value: 'primary', label: 'primary' },
                     { value: 'info', label: 'info' },
                     { value: 'warning', label: 'warning' },
                     { value: 'error', label: 'error' },
@@ -60,7 +61,7 @@ class Page extends Component {
                     });
                   }}
                   />
-                </Cell>
+              </Cell>
             </Panel.Body>
           </Panel>
         </main>

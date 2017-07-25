@@ -34,8 +34,8 @@ class Cell extends PureComponent {
 
     const helpRender = help
       ? (
-        <div className={`${prefixCls}-explain`}>
-          <div className={`${prefixCls}-explain-text`}>{help}</div>
+        <div className={`${prefixCls}-help`}>
+          {help}
         </div>
       )
       : null;
