@@ -108,7 +108,7 @@ class Stepper extends PureComponent {
 Stepper.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
   disabled: PropTypes.bool,
@@ -120,7 +120,7 @@ Stepper.propTypes = {
 Stepper.defaultProps = {
   prefixCls: 'ui-stepper',
   className: null,
-  theme: null,
+  theme: 'primary',
   size: null,
   shape: null,
   disabled: false,

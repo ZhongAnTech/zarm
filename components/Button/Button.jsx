@@ -49,7 +49,7 @@ class Button extends PureComponent {
 Button.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   shape: PropTypes.oneOf(['radius', 'round', 'circle']),
   block: PropTypes.bool,
@@ -65,7 +65,7 @@ Button.propTypes = {
 Button.defaultProps = {
   prefixCls: 'ui-button',
   className: null,
-  theme: null,
+  theme: 'default',
   size: null,
   shape: null,
   block: false,
@@ -74,7 +74,7 @@ Button.defaultProps = {
   focus: false,
   disabled: false,
   loading: false,
-  tabIndex: 0,
+  tabIndex: null,
   onClick() {},
 };
 

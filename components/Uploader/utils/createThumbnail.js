@@ -29,3 +29,17 @@ export default function createThumbnail({ file, quality, fileType, maxWidth, max
     callback(imgUrl);
   };
 }
+
+// FileReader
+// export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }, callback) {
+//   const img = document.createElement('img');
+//   const reader = new FileReader();
+
+//   reader.onload = (e) => {
+//     img.src = e.target.result;
+
+//     callback(img.src);
+//   };
+
+//   reader.readAsDataURL(file);
+// }

@@ -12,7 +12,7 @@ $PI: 3.141592674;
   position: relative;
   width: r(32);
   height: r(32);
-  @include progress-theme($theme-info);
+  @include progress-theme($theme-default);
 
   &-svg {
     transform: rotate(-90deg);
@@ -42,6 +42,10 @@ $PI: 3.141592674;
 
   &.theme-default {
     @include progress-theme($theme-default);
+  }
+
+  &.theme-primary {
+    @include progress-theme($theme-primary);
   }
 
   &.theme-info {

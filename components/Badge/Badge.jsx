@@ -30,7 +30,7 @@ class Badge extends PureComponent {
 Badge.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   shape: PropTypes.oneOf(['dot', 'radius', 'round', 'circle']),
   sup: PropTypes.bool,
 };

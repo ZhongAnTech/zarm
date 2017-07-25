@@ -4,15 +4,6 @@ import { Panel, Cell, Spinner } from '../../components';
 import '../styles/pages/SpinnerPage';
 
 class Page extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      percent: 0,
-      theme: 'info',
-    };
-  }
-
   render() {
     return (
       <div className="spinner-page">
@@ -21,7 +12,7 @@ class Page extends Component {
           <Panel>
             <Panel.Body>
               <Cell description={
-                <Spinner theme={this.state.theme} />
+                <Spinner />
               }>普通</Cell>
             </Panel.Body>
           </Panel>

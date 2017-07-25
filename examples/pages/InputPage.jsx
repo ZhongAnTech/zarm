@@ -47,9 +47,9 @@ class Page extends Component {
               <Cell
                 title="标题"
                 help={
-                  <Message theme="warning">
+                  <Message theme="error">
                     <Icon type="info-round" />
-                    标题不能为空
+                    <span style={{ marginLeft: 5 }}>标题不能为空</span>
                   </Message>
                 }>
                 <Input type="text" placeholder="请输入标题" /></Cell>

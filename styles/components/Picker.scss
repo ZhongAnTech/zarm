@@ -29,12 +29,12 @@ $picker-item-height: 30px;
   }
 
   &-cancel {
-    color: $theme-default;
+    color: #999;
   }
 
   &-submit {
     text-align: right;
-    color: $theme-info;
+    color: $theme-primary;
   }
 
   &-mask-top {

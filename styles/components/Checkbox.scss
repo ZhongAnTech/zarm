@@ -1,6 +1,7 @@
 $prefixCls: ui-checkbox;
 
 .#{$prefixCls} {
+  display: inline-block;
   position: relative;
   margin-left: r(10);
 
@@ -52,8 +53,7 @@ $prefixCls: ui-checkbox;
     height: r(14);
     background-color: #fff;
     transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
-    /* @include onepx(top right bottom left, $theme-info, $radius-md); */
-    border: 1px solid $theme-info;
+    border: 1px solid $theme-primary;
     border-radius: $radius-md;
 
     &:before {
@@ -63,7 +63,7 @@ $prefixCls: ui-checkbox;
       top: r(0.8);
       width: r(4);
       height: r(8);
-      border: 1px solid $theme-info;
+      border: 1px solid $theme-primary;
       border-top: 0;
       border-left: 0;
       transform: rotate(45deg) scale(0);

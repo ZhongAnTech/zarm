@@ -49,6 +49,10 @@ $prefixCls: ui-stepper;
     }
   }
 
+  &.theme-primary {
+    @include stepper-theme($theme-primary, $theme-primary-light);
+  }
+
   &.theme-info {
     @include stepper-theme($theme-info, $theme-info-light);
   }

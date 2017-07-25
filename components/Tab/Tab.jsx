@@ -116,7 +116,7 @@ class TabGroup extends PureComponent {
 TabGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   lineWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
@@ -125,7 +125,7 @@ TabGroup.propTypes = {
 TabGroup.defaultProps = {
   prefixCls: 'ui-tab',
   className: null,
-  theme: 'default',
+  theme: 'primary',
   lineWidth: null,
   disabled: false,
   onChange() {},

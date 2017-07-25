@@ -127,9 +127,9 @@ class Page extends PureComponent {
                 onChange={(value) => {
                   console.log(`radio to ${value}`);
                 }}>
-                <Radio value={0}>选项一</Radio>
-                <Radio value={1}>选项二</Radio>
-                <Radio value={2} disabled>选项三（禁止选择）</Radio>
+                <Radio value="0">选项一</Radio>
+                <Radio value="1">选项二</Radio>
+                <Radio value="2" disabled>选项三（禁止选择）</Radio>
               </Radio.Group>
             </Panel.Body>
           </Panel>
@@ -146,9 +146,9 @@ class Page extends PureComponent {
                 onChange={(value) => {
                   console.log(`radio to ${value}`);
                 }}>
-                <Radio value={0}>选项一</Radio>
-                <Radio value={1}>选项二</Radio>
-                <Radio value={2}>选项三</Radio>
+                <Radio value="0">选项一</Radio>
+                <Radio value="1">选项二</Radio>
+                <Radio value="2">选项三</Radio>
               </Radio.Group>
             </Panel.Body>
           </Panel>

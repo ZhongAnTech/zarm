@@ -76,7 +76,7 @@ class Checkbox extends PureComponent {
 Checkbox.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -86,7 +86,7 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   prefixCls: 'ui-checkbox',
   className: null,
-  theme: 'info',
+  theme: 'primary',
   type: null,
   defaultChecked: false,
   disabled: false,

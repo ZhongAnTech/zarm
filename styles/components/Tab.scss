@@ -19,7 +19,15 @@ $prefixCls: ui-tab;
 }
 
 .#{$prefixCls} {
-  @include tab-theme($theme-info);
+  @include tab-theme($theme-primary);
+
+  &.theme-default {
+    @include tab-theme($theme-default);
+  }
+
+  &.theme-primary {
+    @include tab-theme($theme-primary);
+  }
 
   &.theme-info {
     @include tab-theme($theme-info);

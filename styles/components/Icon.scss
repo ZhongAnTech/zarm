@@ -20,11 +20,14 @@ $prefixCls: ui-icon;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /*
   &.theme-default {
     @include icon-theme($theme-default);
   }
-  */
+
+  &.theme-primary {
+    @include icon-theme($theme-primary);
+  }
+
   &.theme-info {
     @include icon-theme($theme-info);
   }
