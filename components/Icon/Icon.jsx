@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Icon extends PureComponent {
-
   render() {
     const { prefixCls, type, theme, className, ...others } = this.props;
     const cls = classnames({
@@ -17,7 +16,6 @@ class Icon extends PureComponent {
       <i className={cls} {...others} />
     );
   }
-
 }
 
 Icon.propTypes = {

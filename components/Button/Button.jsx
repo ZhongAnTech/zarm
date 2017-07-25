@@ -4,9 +4,8 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 class Button extends PureComponent {
-
   render() {
-    const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, onClick, children } = this.props;
+    const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, tabIndex, onClick, children } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
@@ -36,6 +35,7 @@ class Button extends PureComponent {
     return (
       <a
         role="button"
+        tabIndex={tabIndex}
         aria-disabled={disabled}
         className={classes}
         onTouchStart={() => {}}
@@ -58,6 +58,7 @@ Button.propTypes = {
   focus: PropTypes.bool,
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
+  tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onClick: PropTypes.func,
 };
 
@@ -73,6 +74,7 @@ Button.defaultProps = {
   focus: false,
   disabled: false,
   loading: false,
+  tabIndex: 0,
   onClick() {},
 };
 

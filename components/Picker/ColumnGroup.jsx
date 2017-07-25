@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import Column from './Column';
 
 class ColumnGroup extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +64,6 @@ class ColumnGroup extends Component {
       </div>
     );
   }
-
 }
 
 ColumnGroup.defaultProps = {

@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import Cell from '../Cell';
 
 class CellForm extends PureComponent {
-
   render() {
     const { prefixCls, className, help, ...others } = this.props;
 

@@ -93,7 +93,7 @@ class Picker extends Component {
 
   getInitValue() {
     const data = this.state.data;
-    const { valueMember, displayMember } = this.props;
+    const { valueMember } = this.props;
 
     const { value } = this.state;
 

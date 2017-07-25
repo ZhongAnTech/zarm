@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 function getCheckedValue(children) {
-  let checkedValue = [];
+  const checkedValue = [];
   React.Children.forEach(children, (checkbox) => {
     if (checkbox.props && checkbox.props.checked) {
       checkedValue.push(checkbox.props.value);
@@ -13,7 +13,6 @@ function getCheckedValue(children) {
 }
 
 class CheckboxGroup extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -30,8 +29,8 @@ class CheckboxGroup extends PureComponent {
   }
 
   onCheckboxChange(value) {
-    let values = this.state.value,
-        index = values.indexOf(value);
+    const values = this.state.value;
+    const index = values.indexOf(value);
 
     if (index < 0) {
       values.push(value);
@@ -40,7 +39,7 @@ class CheckboxGroup extends PureComponent {
     }
 
     this.setState({
-      value: values
+      value: values,
     });
     this.props.onChange(values);
   }

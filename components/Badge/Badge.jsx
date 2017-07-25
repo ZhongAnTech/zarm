@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Badge extends PureComponent {
-
   render() {
     const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
 
@@ -26,7 +25,6 @@ class Badge extends PureComponent {
       </span>
     );
   }
-
 }
 
 Badge.propTypes = {

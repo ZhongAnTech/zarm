@@ -463,7 +463,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, onClick, displayMember, valueMember } = this.props;
+    const { prefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,

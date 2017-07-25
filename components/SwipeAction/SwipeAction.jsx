@@ -9,7 +9,6 @@ function _getCurrentPoint(e) {
 }
 
 class SwipeAction extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -222,7 +221,6 @@ class SwipeAction extends PureComponent {
       </div>
     );
   }
-
 }
 
 SwipeAction.propTypes = {
