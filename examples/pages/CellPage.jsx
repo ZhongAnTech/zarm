@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, SwipeAction } from '../../components';
 import District from './district';
+import testData from './testData';
 
 const seasons = [
   [
@@ -26,7 +27,6 @@ const seasons = [
   ],
 ];
 
-
 class CellPage extends Component {
 
   constructor(props) {
@@ -42,6 +42,12 @@ class CellPage extends Component {
       timer: 0,
       number: 0,
       disabled: false,
+      testPicker1: false,
+      testPicker2: false,
+      single: {},
+      single2: {},
+      single1Data: testData.result.bookingDate[0],
+      single2Data: testData.result.bookingTime[0],
     };
   }
 
@@ -66,7 +72,17 @@ class CellPage extends Component {
     });
   }
 
+  matchDate(value) {
+
+    return testData.result.bookingDate[0].forEach((item, index) => {
+      if(item.value === value) {
+        return index;
+      }
+    })
+  }
+
   render() {
+    const { single, single2 } = this.state;
     return (
       <div className="cell-page">
         <Panel>
@@ -242,7 +258,7 @@ class CellPage extends Component {
                 }}
                 onCancel={() => {
                 }}
-                />
+              />
             </Cell>
 
             <Cell title="多级选择器" type="select">
@@ -263,6 +279,46 @@ class CellPage extends Component {
                 onOk={(value) => {
                   console.log(value);
                   this.setState({ sValue: value });
+                }}
+                onCancel={() => {
+                }}
+                />
+            </Cell>
+
+            <Cell title="单列日期" type="select">
+              <Picker
+                visible={single.visible}
+                dataSource={this.state.single1Data}
+                value={single.value}
+                onOk={(value) => {
+                  single.value = value;
+
+                  const _index = testData.result.bookingDate[0].findIndex((item) => (
+                    item.value === value
+                  ));
+                  this.setState({
+                    single,
+                    single2Data: testData.result.bookingTime[_index],
+                  });
+                  console.log("pickerPage onOk ->", value);
+                }}
+                onCancel={() => {
+                }}
+                />
+            </Cell>
+
+            <Cell title="单列时间" type="select">
+              <Picker
+                visible={single2.visible}
+                dataSource={this.state.single2Data}
+                value={single2.value}
+                onOk={(value) => {
+                  single2.value = value;
+
+                  this.setState({
+                    single2,
+                  });
+                  console.log("pickerPage onOk ->", value);
                 }}
                 onCancel={() => {
                 }}
