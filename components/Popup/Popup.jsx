@@ -70,12 +70,12 @@ class Popup extends PureComponent {
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
+      [`${prefixCls}-hidden`]: !isShow,
     });
 
     const clsWrap = classnames({
       [`${prefixCls}-wrapper`]: true,
-      [`position-${direction}`]: true,
-      [`${prefixCls}-hidden`]: !isShow,
+      [`${prefixCls}-wrapper-${direction}`]: true,
     });
 
     return (
@@ -97,8 +97,9 @@ Popup.propTypes = {
   direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   duration: PropTypes.number,
   autoClose: PropTypes.bool,
-  onMaskClick: PropTypes.func,
   onClose: PropTypes.func,
+  maskType: Mask.propTypes.type,
+  onMaskClick: Mask.propTypes.onClose,
 };
 
 Popup.defaultProps = {
@@ -109,8 +110,9 @@ Popup.defaultProps = {
   direction: 'bottom',
   duration: 3000,
   autoClose: false,
-  onMaskClick() {},
   onClose() {},
+  maskType: Mask.defaultProps.type,
+  onMaskClick: Mask.defaultProps.onClose,
 };
 
 export default Popup;
