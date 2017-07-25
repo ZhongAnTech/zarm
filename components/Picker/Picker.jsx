@@ -38,16 +38,20 @@ class Picker extends Component {
     // console.log(nextProps);
     if ('value' in nextProps) {
       let _value = null;
+      let _data = null;
+
 
       if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
         _value = nextProps.value.length ? [nextProps.value] : nextProps.value;
+        _data = [nextProps.dataSource];
       } else {
         _value = nextProps.value;
+        _data = nextProps.dataSource;
       }
 
       this.setState({
         value: _value,
-        // data: nextProps.dataSource,
+        data: _data,
         cascade: Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children'),
       });
     }
