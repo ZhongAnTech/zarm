@@ -27,7 +27,6 @@ const seasons = [
   ],
 ];
 
-
 class CellPage extends Component {
 
   constructor(props) {
@@ -45,11 +44,10 @@ class CellPage extends Component {
       disabled: false,
       testPicker1: false,
       testPicker2: false,
-      single: {
-        visible: false,
-      },
-      testData1: testData.result.bookingDate[0],
-      testData2: testData.result.bookingTime[0],
+      single: {},
+      single2: {},
+      single1Data: testData.result.bookingDate[0],
+      single2Data: testData.result.bookingTime[0],
     };
   }
 
@@ -74,8 +72,17 @@ class CellPage extends Component {
     });
   }
 
+  matchDate(value) {
+
+    return testData.result.bookingDate[0].forEach((item, index) => {
+      if(item.value === value) {
+        return index;
+      }
+    })
+  }
+
   render() {
-    const { single } = this.state;
+    const { single, single2 } = this.state;
     return (
       <div className="cell-page">
         <Panel>
@@ -251,7 +258,7 @@ class CellPage extends Component {
                 }}
                 onCancel={() => {
                 }}
-                />
+              />
             </Cell>
 
             <Cell title="多级选择器" type="select">
@@ -278,44 +285,20 @@ class CellPage extends Component {
                 />
             </Cell>
 
-            <Cell title="单列" type="select">
+            <Cell title="单列日期" type="select">
               <Picker
                 visible={single.visible}
-                dataSource={[
-                  {
-                    'label': '2017年7月28日',
-                    'value': '2017年7月28日'
-                  }, {
-                    'label': '2017年7月31日',
-                    'value': '2017年7月31日'
-                  }, {
-                    'label': '2017年8月1日',
-                    'value': '2017年8月1日'
-                  }, {
-                    'label': '2017年8月2日',
-                    'value': '2017年8月2日'
-                  }, {
-                    'label': '2017年8月3日',
-                    'value': '2017年8月3日'
-                  }, {
-                    'label': '2017年8月4日',
-                    'value': '2017年8月4日'
-                  }, {
-                    'label': '2017年8月7日',
-                    'value': '2017年8月7日'
-                  }, {
-                    'label': '2017年8月8日',
-                    'value': '2017年8月8日'
-                  }, {
-                    'label': '2017年8月9日',
-                    'value': '2017年8月9日'
-                  }]
-                }
+                dataSource={this.state.single1Data}
                 value={single.value}
                 onOk={(value) => {
                   single.value = value;
+
+                  const _index = testData.result.bookingDate[0].findIndex((item) => (
+                    item.value === value
+                  ));
                   this.setState({
                     single,
+                    single2Data: testData.result.bookingTime[_index],
                   });
                   console.log("pickerPage onOk ->", value);
                 }}
@@ -324,46 +307,18 @@ class CellPage extends Component {
                 />
             </Cell>
 
-            <Cell title="自定义日期选择器" type="select">
+            <Cell title="单列时间" type="select">
               <Picker
-                visible={this.state.testPicker1}
-                title="请选择"
-                placeholder="请选择"
-                format="-"
-                disabled={this.state.disabled}
-                dataSource={this.state.testData1}
-                displayMember="label"
-                valueMember="value"
-                value={this.state.testValue1}
-                onChange={(value) => {
-                  console.log('外部change value ->', value);
-                }}
+                visible={single2.visible}
+                dataSource={this.state.single2Data}
+                value={single2.value}
                 onOk={(value) => {
-                  console.log(value);
-                  this.setState({ testValue1: value });
-                }}
-                onCancel={() => {
-                }}
-                />
-            </Cell>
+                  single2.value = value;
 
-            <Cell title="自定义时间选择器" type="select">
-              <Picker
-                visible={this.state.testPicker2}
-                title="请选择"
-                placeholder="请选择"
-                format="-"
-                disabled={this.state.disabled}
-                dataSource={this.state.testData2}
-                displayMember="label"
-                valueMember="value"
-                value={this.state.testValue2}
-                onChange={(value) => {
-                  console.log('外部change value ->', value);
-                }}
-                onOk={(value) => {
-                  console.log(value);
-                  this.setState({ testValue2: value });
+                  this.setState({
+                    single2,
+                  });
+                  console.log("pickerPage onOk ->", value);
                 }}
                 onCancel={() => {
                 }}
