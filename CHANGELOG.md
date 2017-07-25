@@ -1,5 +1,8 @@
 # 版本更新日志  
 
+## 0.0.45 
+  * 修复Picker接收新dataSource时不重新render的bug
+
 ## 0.0.44 
   * Picker.Date新增属性wheelDefaultValue，用于滚轮选项默认值的设置
 
