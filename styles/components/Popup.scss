@@ -12,25 +12,25 @@ $prefixCls: ui-popup;
     -webkit-overflow-scrolling: touch;
     z-index: $zIndex-popup;
 
-    &.position-bottom {
+    &-bottom {
       left: 0;
       bottom: 0;
       width: 100%;
     }
 
-    &.position-top {
+    &-top {
       left: 0;
       top: 0;
       width: 100%;
     }
 
-    &.position-left {
+    &-left {
       left: 0;
       top: 0;
       height: 100%;
     }
 
-    &.position-right {
+    &-right {
       right: 0;
       top: 0;
       height: 100%;
@@ -38,20 +38,22 @@ $prefixCls: ui-popup;
   }
 
   &-hidden {
-    &.position-bottom {
-      transform: translate(0, 100%);
-    }
+    .#{$prefixCls}-wrapper {
+      &-bottom {
+        transform: translate(0, 100%);
+      }
 
-    &.position-top {
-      transform: translate(0, -100%);
-    }
+      &-top {
+        transform: translate(0, -100%);
+      }
 
-    &.position-left {
-      transform: translate(-100%, 0);
-    }
+      &-left {
+        transform: translate(-100%, 0);
+      }
 
-    &.position-right {
-      transform: translate(100%, 0);
+      &-right {
+        transform: translate(100%, 0);
+      }
     }
   }
 }
