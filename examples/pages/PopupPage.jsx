@@ -3,7 +3,6 @@ import Header from '../components/Header';
 import { Panel, Popup, Cell, Button } from '../../components';
 import '../styles/pages/PopupPage';
 
-
 class Page extends Component {
   constructor(props) {
     super(props);

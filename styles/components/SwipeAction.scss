@@ -1,4 +1,6 @@
-.ui-swipeAction {
+$prefixCls: ui-swipeAction;
+
+.#{$prefixCls} {
   &-wrap {
     position: relative;
   }
