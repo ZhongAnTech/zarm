@@ -33,8 +33,8 @@ const testData = {
     ],
     'bookingTime': [
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:01',
+        'value': '10:01'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -76,8 +76,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:02',
+        'value': '10:02'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -119,8 +119,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:03',
+        'value': '10:03'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -162,8 +162,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:04',
+        'value': '10:04'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -205,8 +205,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:05',
+        'value': '10:05'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -248,8 +248,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:06',
+        'value': '10:06'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -291,8 +291,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:07',
+        'value': '10:07'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -334,8 +334,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:08',
+        'value': '10:08'
       }, {
         'label': '10:30',
         'value': '10:30'
@@ -377,8 +377,8 @@ const testData = {
         'value': '18:00'
       }],
       [{
-        'label': '10:00',
-        'value': '10:00'
+        'label': '10:09',
+        'value': '10:09'
       }, {
         'label': '10:30',
         'value': '10:30'
