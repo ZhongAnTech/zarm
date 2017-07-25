@@ -41,7 +41,7 @@ class Page extends Component {
                 description={
                   <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
                 }>从下方弹出</Cell>
-              
+
               <Cell
                 description={
                   <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
@@ -73,9 +73,9 @@ class Page extends Component {
         <Popup
           visible={this.state.popTop}
           direction="top"
-          mask={false}
           duration={3000}
           autoClose
+          maskType="transparent"
           onMaskClick={() => this.close('popTop')}
           onClose={() => console.log('关闭')}>
           <div className="pop-con-top">

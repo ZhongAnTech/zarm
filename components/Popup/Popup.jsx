@@ -64,18 +64,18 @@ class Popup extends PureComponent {
   }
 
   render() {
-    const { prefixCls, children, onMaskClick, direction, className } = this.props;
+    const { prefixCls, children, onMaskClick, direction, className, maskType, ...others } = this.props;
     const { isShow } = this.state;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
+      [`${prefixCls}-hidden`]: !isShow,
     });
 
     const clsWrap = classnames({
       [`${prefixCls}-wrapper`]: true,
-      [`position-${direction}`]: true,
-      [`${prefixCls}-hidden`]: !isShow,
+      [`${prefixCls}-wrapper-${direction}`]: true,
     });
 
     return (
@@ -83,7 +83,7 @@ class Popup extends PureComponent {
         <div className={clsWrap}>
           {children}
         </div>
-        {this.props.mask && <Mask visible={isShow} onClose={onMaskClick} />}
+        {this.props.mask && <Mask visible={isShow} type={maskType} onClose={onMaskClick} />}
       </div>
     );
   }
@@ -97,8 +97,9 @@ Popup.propTypes = {
   direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
   duration: PropTypes.number,
   autoClose: PropTypes.bool,
-  onMaskClick: PropTypes.func,
   onClose: PropTypes.func,
+  maskType: Mask.propTypes.type,
+  onMaskClick: Mask.propTypes.onClose,
 };
 
 Popup.defaultProps = {
@@ -109,8 +110,9 @@ Popup.defaultProps = {
   direction: 'bottom',
   duration: 3000,
   autoClose: false,
-  onMaskClick() {},
   onClose() {},
+  maskType: Mask.defaultProps.type,
+  onMaskClick: Mask.defaultProps.onClose,
 };
 
 export default Popup;
