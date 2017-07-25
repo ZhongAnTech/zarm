@@ -49,6 +49,8 @@ class Page extends PureComponent {
               <Cell hasArrow title="徽标 Badge" onClick={() => hashHistory.push('/badge')} />
               <Cell hasArrow title="列表项 Cell" onClick={() => hashHistory.push('/cell')} />
               <Cell hasArrow title="图标 Icon" onClick={() => hashHistory.push('/icon')} />
+              <Cell hasArrow title="进度条 Progress" onClick={() => hashHistory.push('/progress')} />
+              <Cell hasArrow title="指示器 Spinner" onClick={() => hashHistory.push('/spinner')} />
               <Cell hasArrow title="图片轮播 Swipe" onClick={() => hashHistory.push('/swipe')} />
               <Cell hasArrow title="标签页 Tab" onClick={() => hashHistory.push('/tab')} />
             </Panel.Body>

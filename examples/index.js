@@ -13,24 +13,6 @@ const rootRoute = {
     },
   },
   childRoutes: [
-    // 基础组件
-    {
-      path: 'button',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/ButtonPage'));
-        });
-      },
-    },
-    {
-      path: 'icon',
-      getComponent(location, cb) {
-        require.ensure([], (require) => {
-          cb(null, require('./pages/IconPage'));
-        });
-      },
-    },
-
     // 表单组件
     {
       path: 'checkbox',
@@ -91,6 +73,14 @@ const rootRoute = {
 
     // 操作反馈
     {
+      path: 'button',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ButtonPage'));
+        });
+      },
+    },
+    {
       path: 'modal',
       getComponent(location, cb) {
         require.ensure([], (require) => {
@@ -137,6 +127,30 @@ const rootRoute = {
       getComponent(location, cb) {
         require.ensure([], (require) => {
           cb(null, require('./pages/CellPage'));
+        });
+      },
+    },
+    {
+      path: 'icon',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/IconPage'));
+        });
+      },
+    },
+    {
+      path: 'progress',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ProgressPage'));
+        });
+      },
+    },
+    {
+      path: 'spinner',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/SpinnerPage'));
         });
       },
     },

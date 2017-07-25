@@ -1,0 +1,22 @@
+@import "../core/func";
+
+.progress-page {
+  .progress {
+    width: 100%;
+    margin: r(30) 0;
+    text-align: center;
+
+    &-text {
+      font-size: r(30);
+    }
+
+    &-percent {
+      font-size: r(14);
+    }
+  }
+
+  .ui-progress {
+    width: r(150);
+    height: r(150);
+  }
+}

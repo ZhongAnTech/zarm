@@ -82,6 +82,8 @@ $prefixCls: ui-cell;
   }
 
   &-footer {
+    display: flex;
+    justify-content: center;
     text-align: right;
     font-size: r(14);
   }
