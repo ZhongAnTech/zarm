@@ -45,6 +45,9 @@ class CellPage extends Component {
       disabled: false,
       testPicker1: false,
       testPicker2: false,
+      single: {
+        visible: false,
+      },
       testData1: testData.result.bookingDate[0],
       testData2: testData.result.bookingTime[0],
     };
@@ -72,6 +75,7 @@ class CellPage extends Component {
   }
 
   render() {
+    const { single } = this.state;
     return (
       <div className="cell-page">
         <Panel>
@@ -268,6 +272,52 @@ class CellPage extends Component {
                 onOk={(value) => {
                   console.log(value);
                   this.setState({ sValue: value });
+                }}
+                onCancel={() => {
+                }}
+                />
+            </Cell>
+
+            <Cell title="单列" type="select">
+              <Picker
+                visible={single.visible}
+                dataSource={[
+                  {
+                    'label': '2017年7月28日',
+                    'value': '2017年7月28日'
+                  }, {
+                    'label': '2017年7月31日',
+                    'value': '2017年7月31日'
+                  }, {
+                    'label': '2017年8月1日',
+                    'value': '2017年8月1日'
+                  }, {
+                    'label': '2017年8月2日',
+                    'value': '2017年8月2日'
+                  }, {
+                    'label': '2017年8月3日',
+                    'value': '2017年8月3日'
+                  }, {
+                    'label': '2017年8月4日',
+                    'value': '2017年8月4日'
+                  }, {
+                    'label': '2017年8月7日',
+                    'value': '2017年8月7日'
+                  }, {
+                    'label': '2017年8月8日',
+                    'value': '2017年8月8日'
+                  }, {
+                    'label': '2017年8月9日',
+                    'value': '2017年8月9日'
+                  }]
+                }
+                value={single.value}
+                onOk={(value) => {
+                  single.value = value;
+                  this.setState({
+                    single,
+                  });
+                  console.log("pickerPage onOk ->", value);
                 }}
                 onCancel={() => {
                 }}
