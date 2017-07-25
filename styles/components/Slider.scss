@@ -1,0 +1,104 @@
+.ui-slider {
+  padding: 40px;
+  position: relative;
+  user-select: none;
+  background-color: #fff;
+  .ui-slider-bar {
+    height: 4px;
+    background-color: #e4e8f1;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  &.show-input {
+    .ui-slider-bar {
+      margin-right: 80px;
+    }
+  }
+
+  .ui-slider-content-bar {
+    background-color: #2db7f5;
+    width: 30%;
+    height: 100%;
+    border-radius: 4px;
+  }
+
+  //拖动的圆点
+  .pointer {
+    position: absolute;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #2db7f5;
+    background-color: #fff;
+    left: -9px;
+    top: -8px;
+    z-index: 100;
+  }
+
+  .pointer.transition {
+    transition: transform 0.3s;
+  }
+
+  .notice-icon {
+    display: none;
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: content-box;
+    text-align: center;
+    background-color: #333;
+    padding: 3px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 12px;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+    &:after {
+      content: "";
+      border-top: 3px solid #333;
+      border-left: 3px transparent solid;
+      border-right: 3px transparent solid;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -3px;
+    }
+  }
+
+  .marks {
+    position: absolute;
+    background-color: #bfcbd9;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+  .marks-box {
+    top: 0;
+    width: 100%;
+    position: absolute;
+    margin-left: -2px;
+  }
+  .marks-label {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 2px;
+    margin-top: 15px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
+.ui-slider.disabled {
+  .ui-slider-content-bar {
+    background-color: #bfcbd9
+  }
+  .pointer {
+    border-color: #bfcbd9;
+  }
+  .marks-label {
+    color: #bfcbd9;
+  }
+}

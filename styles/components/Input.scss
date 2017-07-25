@@ -9,15 +9,20 @@
       border-radius: $border-radius;
     }
   }
+  //禁用系统默认的图标
+  &:focus::-webkit-contacts-auto-fill-button {
+    opacity: 0;
+  }
 }
 
 .ui-input {
   position: relative;
+  display: block;
   @include input-size($base-height, 0 0, $base-fontSize, $base-radius);
 
   input, textarea {
     position: relative;
-    display: inline-block;
+    display: block;
     width: 100%;
     color: #636363;
     background-color: #fff;
@@ -44,7 +49,7 @@
     &:disabled {
       cursor: not-allowed;
       /*background-color: #f3f5f7;*/
-      
+
       &:focus,
       &.focus {
         border-color: #ccc;
@@ -70,6 +75,10 @@
   }
 }
 
+.ui-input-box {
+  padding: 5px 0;
+}
+
 .ui-input-placeholder {
   position: absolute;
   color: #c1c1c1;
@@ -81,5 +90,32 @@ textarea {
     height: auto !important;
     line-height: 1.5;
     vertical-align: bottom;
+  }
+}
+
+input[type="text"] {
+  &.ui-input {
+    transition: padding-right 0.1s;
+  }
+}
+
+//clear btn
+
+//留出右边距 但是没啥用
+.ui-input.show-btn[type='text'] {
+  padding-right: 1.8rem;
+}
+
+.clear-input-btn {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: center center;
+  line-height: normal;
+  &:before {
+    color: #ccc;
+    font-size: 1.6rem;
   }
 }
