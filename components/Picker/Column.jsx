@@ -170,7 +170,6 @@ class Column extends Component {
       </div>
     );
   }
-
 }
 
 Column.defaultProps = {

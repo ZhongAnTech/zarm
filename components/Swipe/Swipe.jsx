@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 
 class Swipe extends Component {
-
   constructor(props) {
     super(props);
     this.moveInterval = null;
@@ -72,8 +71,8 @@ class Swipe extends Component {
       const maxLength = this.props.children.length;
 
       activeIndex = (['left', 'top'].indexOf(this.props.direction) > -1)
-                  ? (activeIndex + 1)
-                  : (activeIndex - 1);
+        ? (activeIndex + 1)
+        : (activeIndex - 1);
 
       if (activeIndex > maxLength - 1) {
         // 不循环暂停轮播
@@ -139,8 +138,8 @@ class Swipe extends Component {
     }
 
     const px = (this._isDirectionX())
-             ? -dom.offsetWidth * (index + this.props.loop)
-             : -dom.offsetHeight * (index + this.props.loop);
+      ? -dom.offsetWidth * (index + this.props.loop)
+      : -dom.offsetHeight * (index + this.props.loop);
 
     this._doTransition(px, speed);
     this.translateX = px;
@@ -246,8 +245,8 @@ class Swipe extends Component {
       )
     ) {
       activeIndex = (px > 0)
-                  ? (this.state.activeIndex - 1)
-                  : (this.state.activeIndex + 1);
+        ? (this.state.activeIndex - 1)
+        : (this.state.activeIndex + 1);
     }
     this.onSlideTo(activeIndex);
     this.pointStart = 0;
@@ -329,7 +328,15 @@ class Swipe extends Component {
           <ul>
             {
               Children.map(children, (result, index) => {
-                return <li key={`pagination-${index}`} className={classnames({ active: index === this.state.activeIndex })} style={style.pagination} onClick={() => this.onSlideTo(index)} />;
+                return (
+                  <li
+                    role="tab"
+                    key={`pagination-${index}`}
+                    className={classnames({ active: index === this.state.activeIndex })}
+                    style={style.pagination}
+                    onClick={() => this.onSlideTo(index)}
+                    />
+                );
               })
             }
           </ul>

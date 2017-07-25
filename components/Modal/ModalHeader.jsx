@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 class ModalHeader extends PureComponent {
-
   render() {
     const { prefixCls, className, title, onClose, ...others } = this.props;
 
@@ -24,7 +23,6 @@ class ModalHeader extends PureComponent {
       </div>
     );
   }
-
 }
 
 ModalHeader.propTypes = {

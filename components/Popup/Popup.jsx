@@ -5,7 +5,6 @@ import Events from '../utils/events';
 import Mask from '../Mask';
 
 class Popup extends PureComponent {
-
   constructor(props) {
     super(props);
     this.timer = null;
@@ -64,7 +63,7 @@ class Popup extends PureComponent {
   }
 
   render() {
-    const { prefixCls, children, onMaskClick, direction, className, maskType, ...others } = this.props;
+    const { prefixCls, children, onMaskClick, direction, className, maskType } = this.props;
     const { isShow } = this.state;
 
     const cls = classnames({
@@ -95,8 +94,8 @@ Popup.propTypes = {
   visible: PropTypes.bool,
   mask: PropTypes.bool,
   direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-  duration: PropTypes.number,
-  autoClose: PropTypes.bool,
+  duration: PropTypes.number, // eslint-disable-line
+  autoClose: PropTypes.bool,  // eslint-disable-line
   onClose: PropTypes.func,
   maskType: Mask.propTypes.type,
   onMaskClick: Mask.propTypes.onClose,

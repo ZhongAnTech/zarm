@@ -6,7 +6,6 @@ import Button from '../Button';
 import Icon from '../Icon';
 
 class Checkbox extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -35,9 +34,8 @@ class Checkbox extends PureComponent {
     typeof onChange === 'function' && onChange(checked);
   }
 
-  render () {
-    const props = this.props;
-    const { prefixCls, className, theme, type, value, block, disabled, children, onChange } = props;
+  render() {
+    const { prefixCls, className, theme, type, value, block, disabled, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames({
@@ -50,7 +48,7 @@ class Checkbox extends PureComponent {
     if (type === 'cell') {
       return (
         <Cell disabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
-          <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          <input type="checkbox" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
           {children}
         </Cell>
       );
@@ -66,11 +64,11 @@ class Checkbox extends PureComponent {
     }
 
     return (
-      <label className={cls}>
+      <span className={cls}>
         <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-        <span className="ui-checkbox-inner"></span>
+        <span className="ui-checkbox-inner" />
         <span className="ui-checkbox-text">{children}</span>
-      </label>
+      </span>
     );
   }
 }

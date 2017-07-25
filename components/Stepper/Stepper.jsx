@@ -14,7 +14,6 @@ function getValue(props, defaultValue) {
 }
 
 class Stepper extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {

@@ -5,7 +5,6 @@ import Autosize from 'autosize';
 import Events from '../utils/events';
 
 class Input extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -76,7 +75,7 @@ class Input extends PureComponent {
           {...others}>
           {defaultValue}
         </textarea>
-        )
+      )
       : (
         <input
           ref={(ele) => { this.input = ele; }}
@@ -88,7 +87,7 @@ class Input extends PureComponent {
           maxLength={maxLength}
           {...others}
           />
-        );
+      );
 
     const valueRender = (type === 'date')
       ? <div className={`${prefixCls}-placeholder`}>{placeholder}</div>
@@ -106,7 +105,6 @@ class Input extends PureComponent {
       </div>
     );
   }
-
 }
 
 Input.propTypes = {

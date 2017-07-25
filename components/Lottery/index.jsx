@@ -7,7 +7,7 @@ let angle = 0;
 let error = false;
 let flag = true;
 
-function _getRandom(min, max) {  // 参数min为随机数最小值 max为随机数最大值 得到的随机数范围为[min,max]
+function _getRandom(min, max) { // 参数min为随机数最小值 max为随机数最大值 得到的随机数范围为[min,max]
   return Math.floor((Math.random() * ((max + 1) - min)) + min);
 }
 
@@ -102,14 +102,14 @@ class Lottery extends Component {
     this.rotateArea.style.transition = `${this.props.duration}s`;
   }
 
-    // 监听动画执行完成
+  // 监听动画执行完成
   _transitionend() {
     this.rotateArea.style.transform = `rotate(${angle % 360}deg)`;
     this.rotateArea.style.transition = '0s';
     finished = true;
     flag = true;
     error ? this.onError()
-          : this.onComplete(this.state.gift);
+      : this.onComplete(this.state.gift);
   }
 
 

@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import Mask from '../Mask';
 
 class Toast extends PureComponent {
-
   constructor(props) {
     super(props);
     this.timer = null;

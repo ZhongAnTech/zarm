@@ -15,11 +15,11 @@ class Progress extends PureComponent {
     });
 
     const half = diameter / 2;
-    const r = half - strokeWidth / 2;
+    const r = half - (strokeWidth / 2);
     const round = 2 * Math.PI * r;
 
     const style = {
-      strokeDasharray: `${round * percent / 100} ${round}`,
+      strokeDasharray: `${(round * percent) / 100} ${round}`,
       strokeWidth,
     };
 

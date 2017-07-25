@@ -13,7 +13,6 @@ function getCheckedValue(children) {
 }
 
 class RadioGroup extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {

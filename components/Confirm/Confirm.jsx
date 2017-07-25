@@ -4,7 +4,6 @@ import Modal from '../Modal';
 import Button from '../Button';
 
 class Confirm extends PureComponent {
-
   render() {
     const { prefixCls, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
 
