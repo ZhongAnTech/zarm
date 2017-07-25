@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Panel, Icon, Input, InputNumber, Cell, Select, Picker, Checkbox, Switch, SwipeAction } from '../../components';
 import District from './district';
+import testData from './testData';
 
 const seasons = [
   [
@@ -42,6 +43,10 @@ class CellPage extends Component {
       timer: 0,
       number: 0,
       disabled: false,
+      testPicker1: false,
+      testPicker2: false,
+      testData1: testData.result.bookingDate[0],
+      testData2: testData.result.bookingTime[0],
     };
   }
 
@@ -263,6 +268,52 @@ class CellPage extends Component {
                 onOk={(value) => {
                   console.log(value);
                   this.setState({ sValue: value });
+                }}
+                onCancel={() => {
+                }}
+                />
+            </Cell>
+
+            <Cell title="自定义日期选择器" type="select">
+              <Picker
+                visible={this.state.testPicker1}
+                title="请选择"
+                placeholder="请选择"
+                format="-"
+                disabled={this.state.disabled}
+                dataSource={this.state.testData1}
+                displayMember="label"
+                valueMember="value"
+                value={this.state.testValue1}
+                onChange={(value) => {
+                  console.log('外部change value ->', value);
+                }}
+                onOk={(value) => {
+                  console.log(value);
+                  this.setState({ testValue1: value });
+                }}
+                onCancel={() => {
+                }}
+                />
+            </Cell>
+
+            <Cell title="自定义时间选择器" type="select">
+              <Picker
+                visible={this.state.testPicker2}
+                title="请选择"
+                placeholder="请选择"
+                format="-"
+                disabled={this.state.disabled}
+                dataSource={this.state.testData2}
+                displayMember="label"
+                valueMember="value"
+                value={this.state.testValue2}
+                onChange={(value) => {
+                  console.log('外部change value ->', value);
+                }}
+                onOk={(value) => {
+                  console.log(value);
+                  this.setState({ testValue2: value });
                 }}
                 onCancel={() => {
                 }}

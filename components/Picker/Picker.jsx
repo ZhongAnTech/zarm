@@ -47,7 +47,7 @@ class Picker extends Component {
 
       this.setState({
         value: _value,
-        // data: nextProps.dataSource,
+        data: nextProps.dataSource,
         cascade: Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children'),
       });
     }
