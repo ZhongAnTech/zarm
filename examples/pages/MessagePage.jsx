@@ -15,26 +15,26 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Message>primary theme</Message>
+              <Message>primary</Message>
 
               <Message theme="info">
                 <Icon type="info-round" className="icon" />
-                <span>info theme</span>
+                <span>info</span>
               </Message>
 
               <Message theme="success">
                 <Icon type="right-round" className="icon" />
-                <span>success theme</span>
+                <span>success</span>
               </Message>
 
               <Message theme="warning">
                 <Icon type="info-round" className="icon" />
-                <span>warning theme</span>
+                <span>warning</span>
               </Message>
 
               <Message theme="error">
                 <Icon type="wrong-round" className="icon" />
-                <span>error theme</span>
+                <span>error</span>
               </Message>
 
             </Panel.Body>

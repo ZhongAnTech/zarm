@@ -2,6 +2,8 @@ $prefixCls: ui-picker;
 $picker-item-height: 30px;
 
 .#{$prefixCls} {
+  background: #fff;
+
   &-placeholder {
     color: $placeholder-color;
   }
@@ -10,14 +12,18 @@ $picker-item-height: 30px;
     color: $disabled-color;
   }
 
+  &-wrapper {
+    background: #fff;
+  }
+
   &-header {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     width: 100%;
     height: r(45);
     line-height: r(45);
-    position: relative;
     @include onepx(bottom);
   }
 
