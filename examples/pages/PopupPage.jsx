@@ -39,13 +39,13 @@ class Page extends Component {
             <Panel.Body>
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
-                }>从下方弹出</Cell>
+                  <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
+                }>从上方弹出</Cell>
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
-                }>从上方弹出</Cell>
+                  <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
+                }>从下方弹出</Cell>
 
               <Cell
                 description={
@@ -61,35 +61,34 @@ class Page extends Component {
         </main>
 
         <Popup
-          visible={this.state.popBottom}
-          direction="bottom"
-          onMaskClick={() => this.close('popBottom')}
-          onClose={() => console.log('关闭')}>
-          <div className="pop-con">
-            <Button size="sm" onClick={() => this.close('popBottom')}>关闭弹层</Button>
-          </div>
-        </Popup>
-
-        <Popup
+          autoClose
           visible={this.state.popTop}
           direction="top"
           duration={3000}
-          autoClose
           maskType="transparent"
           onMaskClick={() => this.close('popTop')}
           onClose={() => console.log('关闭')}>
-          <div className="pop-con-top">
+          <div className="popup-box-top">
             更新成功
           </div>
         </Popup>
 
         <Popup
-          className="popwrap-left"
+          visible={this.state.popBottom}
+          direction="bottom"
+          onMaskClick={() => this.close('popBottom')}
+          onClose={() => console.log('关闭')}>
+          <div className="popup-box">
+            <Button size="sm" onClick={() => this.close('popBottom')}>关闭弹层</Button>
+          </div>
+        </Popup>
+
+        <Popup
           visible={this.state.popLeft}
           onMaskClick={() => this.close('popLeft')}
           direction="left"
           onClose={() => console.log('关闭')}>
-          <div className="pop-con">
+          <div className="popup-box-left">
             <Button size="sm" onClick={() => this.close('popLeft')}>关闭弹层</Button>
           </div>
         </Popup>
@@ -99,7 +98,7 @@ class Page extends Component {
           onMaskClick={() => this.close('popRight')}
           direction="right"
           onClose={() => console.log('关闭')}>
-          <div className="pop-con">
+          <div className="popup-box">
             <Button size="sm" onClick={() => this.close('popRight')}>关闭弹层</Button>
           </div>
         </Popup>
