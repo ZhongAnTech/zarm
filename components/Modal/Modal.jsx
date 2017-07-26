@@ -5,7 +5,6 @@ import Events from '../utils/events';
 import Mask from '../Mask';
 
 class Modal extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {

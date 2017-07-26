@@ -13,7 +13,6 @@ function getCheckedValue(children) {
 }
 
 class RadioGroup extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +69,7 @@ class RadioGroup extends PureComponent {
 RadioGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   shape: PropTypes.oneOf(['radius', 'round']),
   block: PropTypes.bool,
@@ -82,7 +81,7 @@ RadioGroup.propTypes = {
 RadioGroup.defaultProps = {
   prefixCls: 'ui-radio-group',
   className: null,
-  theme: 'info',
+  theme: 'primary',
   type: null,
   shape: null,
   block: false,

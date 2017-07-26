@@ -40,6 +40,11 @@ class TabPage extends Component {
               <Panel.Title>多主题</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+              <Tab theme="info">
+                <Item title="选项卡1" />
+                <Item title="选项卡2" />
+                <Item title="选项卡3" />
+              </Tab>
               <Tab theme="success">
                 <Item title="选项卡1" />
                 <Item title="选项卡2" />

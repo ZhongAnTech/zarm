@@ -19,12 +19,6 @@ class ToastPage extends Component {
     };
   }
 
-  toggle(key) {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
-  }
-
   render() {
     const { toast } = this.state;
 

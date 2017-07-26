@@ -97,7 +97,7 @@ class Picker extends Component {
 
   getInitValue() {
     const data = this.state.data;
-    const { valueMember, displayMember } = this.props;
+    const { valueMember } = this.props;
 
     const { value } = this.state;
 
@@ -220,14 +220,16 @@ class Picker extends Component {
             className="ui-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
-            <div className="ui-picker-header">
-              <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
-              <div className="ui-picker-title">{title}</div>
-              <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
-            </div>
-            <div className="ui-picker-mask-top">
-              <div className="ui-picker-mask-bottom">
-                {PickerCol}
+            <div className="ui-picker-wrapper">
+              <div className="ui-picker-header">
+                <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
+                <div className="ui-picker-title">{title}</div>
+                <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
+              </div>
+              <div className="ui-picker-mask-top">
+                <div className="ui-picker-mask-bottom">
+                  {PickerCol}
+                </div>
               </div>
             </div>
           </Popup>

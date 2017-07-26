@@ -17,6 +17,10 @@ $prefixCls: ui-cell;
     left: r(15);
   }
 
+  &.theme-primary {
+    @include cell-theme($theme-primary);
+  }
+
   &.theme-info {
     @include cell-theme($theme-info);
   }
@@ -124,5 +128,9 @@ $prefixCls: ui-cell;
     flex: 1;
     align-items: center;
     justify-content: center;
+  }
+
+  &-help {
+    padding: 0 r(15) r(10) r(15);
   }
 }

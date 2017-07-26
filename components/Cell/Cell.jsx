@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Cell extends PureComponent {
-
   render() {
     const { prefixCls, className, theme, hasArrow, icon, title, description, help, disabled, onClick, children } = this.props;
 
@@ -35,8 +34,8 @@ class Cell extends PureComponent {
 
     const helpRender = help
       ? (
-        <div className={`${prefixCls}-explain`}>
-          <div className={`${prefixCls}-explain-text`}>{help}</div>
+        <div className={`${prefixCls}-help`}>
+          {help}
         </div>
       )
       : null;

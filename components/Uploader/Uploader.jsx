@@ -15,7 +15,6 @@ import handleFileInfo from './utils/handleFileInfo';
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
 class Uploader extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -77,7 +76,7 @@ class Uploader extends PureComponent {
         <input
           className={`${prefixCls}-input`}
           type="file"
-          ref={e => (this.file = e)}
+          ref={(ele) => { this.file = ele; }}
           accept={accept}
           multiple={multiple}
           capture={capture}

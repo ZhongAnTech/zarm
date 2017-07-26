@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import Progress from '../Progress';
 
 class Spinner extends PureComponent {
-
   render() {
     const { prefixCls, className, ...others } = this.props;
 

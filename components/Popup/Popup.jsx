@@ -5,7 +5,6 @@ import Events from '../utils/events';
 import Mask from '../Mask';
 
 class Popup extends PureComponent {
-
   constructor(props) {
     super(props);
     this.timer = null;
@@ -64,18 +63,18 @@ class Popup extends PureComponent {
   }
 
   render() {
-    const { prefixCls, children, onMaskClick, direction, className, maskType, ...others } = this.props;
+    const { prefixCls, children, onMaskClick, direction, className, maskType } = this.props;
     const { isShow } = this.state;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
+      [`${prefixCls}-hidden`]: !isShow,
     });
 
     const clsWrap = classnames({
       [`${prefixCls}-wrapper`]: true,
-      [`position-${direction}`]: true,
-      [`${prefixCls}-hidden`]: !isShow,
+      [`${prefixCls}-wrapper-${direction}`]: true,
     });
 
     return (
@@ -95,10 +94,11 @@ Popup.propTypes = {
   visible: PropTypes.bool,
   mask: PropTypes.bool,
   direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-  duration: PropTypes.number,
-  autoClose: PropTypes.bool,
-  onMaskClick: PropTypes.func,
+  duration: PropTypes.number, // eslint-disable-line
+  autoClose: PropTypes.bool,  // eslint-disable-line
   onClose: PropTypes.func,
+  maskType: Mask.propTypes.type,
+  onMaskClick: Mask.propTypes.onClose,
 };
 
 Popup.defaultProps = {
@@ -109,8 +109,9 @@ Popup.defaultProps = {
   direction: 'bottom',
   duration: 3000,
   autoClose: false,
-  onMaskClick() {},
   onClose() {},
+  maskType: Mask.defaultProps.type,
+  onMaskClick: Mask.defaultProps.onClose,
 };
 
 export default Popup;

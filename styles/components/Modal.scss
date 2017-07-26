@@ -76,10 +76,6 @@ $prefixCls: ui-modal;
 
     &.block {
       display: block;
-
-      .ui-button {
-        @include onepx(top);
-      }
     }
 
     .ui-button {

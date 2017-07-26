@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class PanelMore extends PureComponent {
-
   render() {
     const { prefixCls, className, children, ...others } = this.props;
 
@@ -14,7 +13,6 @@ class PanelMore extends PureComponent {
 
     return <div {...others} className={cls}>{children}</div>;
   }
-
 }
 
 PanelMore.propTypes = {

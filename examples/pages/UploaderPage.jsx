@@ -86,7 +86,7 @@ class UploaderPage extends Component {
     return this.state[files].map((item, index) => {
       return (
         <Badge sup className="uploader-item" shape="circle" text={<Icon type="wrong" />} key={+index} onClick={() => this.remove(files, +index)}>
-          <div className="uploader-item-img"><img src={item.thumbnail} alt="" /></div>
+          <div className="uploader-item-img"><a href={item.thumbnail} target="_blank"><img src={item.thumbnail} alt="" /></a></div>
         </Badge>
       );
     });

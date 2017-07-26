@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Mask extends PureComponent {
-
   render() {
     const { prefixCls, className, visible, type, onClose } = this.props;
     const markCls = classnames({
@@ -16,7 +15,6 @@ class Mask extends PureComponent {
       ? <div className={markCls} onClick={onClose} />
       : null;
   }
-
 }
 
 Mask.propTypes = {
