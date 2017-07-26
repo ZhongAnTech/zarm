@@ -27,7 +27,7 @@ class Page extends Component {
                     onClick: () => console.log('右按钮2'),
                   },
                 ]}>
-                <Cell>右侧按钮（自动关闭）</Cell>
+                <Cell>左滑看看（自动关闭）</Cell>
               </SwipeAction>
 
               <SwipeAction
@@ -43,7 +43,7 @@ class Page extends Component {
                     onClick: () => console.log('左按钮2'),
                   },
                 ]}>
-                <Cell>左侧按钮</Cell>
+                <Cell>右滑看看</Cell>
               </SwipeAction>
 
               <SwipeAction
@@ -71,7 +71,7 @@ class Page extends Component {
                     onClick: () => console.log('右按钮2'),
                   },
                 ]}>
-                <Cell>双侧按钮</Cell>
+                <Cell>左右都能滑动</Cell>
               </SwipeAction>
             </Panel.Body>
           </Panel>
