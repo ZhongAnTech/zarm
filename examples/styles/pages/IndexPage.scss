@@ -1,7 +1,6 @@
 @import "../core/func";
 
 .index-page {
-
   .brand {
     padding: r(30) r(30) 0 r(30);
 
@@ -29,7 +28,7 @@
   .ui-cell {
     background-color: transparent;
 
-    &:last-of-type {
+    &:first-of-type {
       &:after {
         display: none;
       }
