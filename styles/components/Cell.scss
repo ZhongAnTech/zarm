@@ -11,7 +11,7 @@ $prefixCls: ui-cell;
   overflow: hidden;
   background: #fff;
   @include cell-theme(#999);
-  @include onepx(bottom);
+  @include onepx(top);
 
   &:after {
     left: r(15);
