@@ -98,7 +98,6 @@ $picker-item-height: 30px;
   }
 
   &-stack {
-
     &-group {
       position: relative;
       height: 8 * $picker-item-height;
@@ -116,7 +115,7 @@ $picker-item-height: 30px;
 
       &.lower-hidden {
         ~ .ui-picker-stack-column {
-          transform: translate(100%, 0)
+          transform: translate(100%, 0);
         }
 
         .ui-picker-stack-item {
@@ -132,7 +131,7 @@ $picker-item-height: 30px;
 
           &:before {
             position: absolute;
-            right: 20px;
+            right: r(20);
             top: 50%;
             content: "";
             width: r(9);
@@ -173,7 +172,6 @@ $picker-item-height: 30px;
       color: #333;
       border-bottom: 1px solid #f2f2f2;
       transition: padding-left .4s;
-
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
