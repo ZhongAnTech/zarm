@@ -34,6 +34,7 @@ class Page extends PureComponent {
               <Panel.Title>操作反馈</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+              <Cell hasArrow title="动作面板 ActionSheet" onClick={() => hashHistory.push('/actionsheet')} />
               <Cell hasArrow title="按钮 Button" onClick={() => hashHistory.push('/button')} />
               <Cell hasArrow title="模态框 Modal" onClick={() => hashHistory.push('/modal')} />
               <Cell hasArrow title="弹出框 Popup" onClick={() => hashHistory.push('/popup')} />
@@ -49,6 +50,7 @@ class Page extends PureComponent {
               <Cell hasArrow title="徽标 Badge" onClick={() => hashHistory.push('/badge')} />
               <Cell hasArrow title="列表项 Cell" onClick={() => hashHistory.push('/cell')} />
               <Cell hasArrow title="图标 Icon" onClick={() => hashHistory.push('/icon')} />
+              <Cell hasArrow title="消息 Message" onClick={() => hashHistory.push('/message')} />
               <Cell hasArrow title="进度条 Progress" onClick={() => hashHistory.push('/progress')} />
               <Cell hasArrow title="指示器 Spinner" onClick={() => hashHistory.push('/spinner')} />
               <Cell hasArrow title="图片轮播 Swipe" onClick={() => hashHistory.push('/swipe')} />
@@ -63,7 +65,7 @@ class Page extends PureComponent {
             //   <Panel.Body>
             //     <Cell hasArrow title="大转盘 Lottery" onClick={() => hashHistory.push('/lottery')} />
             //   </Panel.Body>
-            // </Panel> 
+            // </Panel>
           }
         </main>
       </div>

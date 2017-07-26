@@ -34,7 +34,17 @@ $prefixCls: ui-swipeAction;
     align-items: center;
     font-size: r(14);
 
+    &.theme-default {
+      @include button-theme($button-default-color, $button-default-bg, $button-default-border);
+      @include button-bordered($button-default-border, $button-default-bg, $button-default-border);
+    }
+
     /* Button themes */
+    &.theme-primary {
+      @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
+      @include button-bordered($button-primary-border, $button-primary-bg, $button-primary-border);
+    }
+
     &.theme-info {
       @include button-theme($button-info-color, $button-info-bg, $button-info-border);
       @include button-bordered($button-info-border, $button-info-bg, $button-info-border);

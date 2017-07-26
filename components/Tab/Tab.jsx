@@ -14,7 +14,6 @@ function getSelectIndex(children) {
 }
 
 class TabGroup extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -58,6 +57,7 @@ class TabGroup extends PureComponent {
 
       return (
         <li
+          role="tab"
           key={$index}
           className={itemClasses}
           onClick={() => {
@@ -102,7 +102,7 @@ class TabGroup extends PureComponent {
     return (
       <div className={classes}>
         <div className={`${prefixCls}-header`}>
-          <ul>{itemsRender}</ul>
+          <ul role="tablist">{itemsRender}</ul>
           <div className={`${prefixCls}-line`} style={lineStyle}>{lineInnerRender}</div>
         </div>
         <div className={`${prefixCls}-container`}>
@@ -116,7 +116,7 @@ class TabGroup extends PureComponent {
 TabGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   lineWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
@@ -125,7 +125,7 @@ TabGroup.propTypes = {
 TabGroup.defaultProps = {
   prefixCls: 'ui-tab',
   className: null,
-  theme: 'default',
+  theme: 'primary',
   lineWidth: null,
   disabled: false,
   onChange() {},

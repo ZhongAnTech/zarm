@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Message extends PureComponent {
-
   render() {
     const { prefixCls, className, theme, block, children } = this.props;
 
@@ -25,14 +24,14 @@ class Message extends PureComponent {
 Message.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   block: PropTypes.bool,
 };
 
 Message.defaultProps = {
   prefixCls: 'ui-message',
   className: null,
-  theme: 'default',
+  theme: 'primary',
   block: false,
 };
 

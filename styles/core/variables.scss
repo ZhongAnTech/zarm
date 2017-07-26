@@ -6,7 +6,11 @@ $theme-default: #333;
 $theme-default-light: rgba($theme-default, 0.5);
 $theme-default-dark: darken($theme-default, 10%);
 
-$theme-info: #12c287;
+$theme-primary: #12c287;
+$theme-primary-light: rgba($theme-primary, 0.1);
+$theme-primary-dark: darken($theme-primary, 10%);
+
+$theme-info: #347af6;
 $theme-info-light: rgba($theme-info, 0.1);
 $theme-info-dark: darken($theme-info, 10%);
 
@@ -63,6 +67,11 @@ $button-default-color: $theme-default;
 $button-default-bg: #ddd;
 $button-default-border: #ddd;
 $button-default-activebg: rgba(#ddd, 0.5);
+
+$button-primary-color: #fff;
+$button-primary-bg: $theme-primary;
+$button-primary-border: $theme-primary;
+$button-primary-activebg: $theme-primary-light;
 
 $button-info-color: #fff;
 $button-info-bg: $theme-info;

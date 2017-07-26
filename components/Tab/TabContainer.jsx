@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class TabContainer extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +28,7 @@ class TabContainer extends PureComponent {
     });
 
     return (
-      <div className={cls}>
+      <div className={cls} role="tabpanel">
         {children}
       </div>
     );

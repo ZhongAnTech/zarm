@@ -5,7 +5,6 @@ import Mask from '../Mask';
 import Spinner from '../Spinner';
 
 class Loading extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +25,7 @@ class Loading extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, visible, type } = this.props;
+    const { prefixCls, className, visible } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -60,14 +59,12 @@ Loading.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   visible: PropTypes.bool,
-  type: PropTypes.oneOf(['flower']),
 };
 
 Loading.defaultProps = {
   prefixCls: 'ui-loading',
   className: null,
   visible: false,
-  type: null,
 };
 
 export default Loading;

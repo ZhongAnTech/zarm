@@ -15,11 +15,11 @@ class Progress extends PureComponent {
     });
 
     const half = diameter / 2;
-    const r = half - strokeWidth / 2;
+    const r = half - (strokeWidth / 2);
     const round = 2 * Math.PI * r;
 
     const style = {
-      strokeDasharray: `${round * percent / 100} ${round}`,
+      strokeDasharray: `${(round * percent) / 100} ${round}`,
       strokeWidth,
     };
 
@@ -38,7 +38,7 @@ class Progress extends PureComponent {
 Progress.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'info', 'success', 'warning', 'error']),
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   strokeWidth: PropTypes.number,
   percent: PropTypes.number,
 
@@ -47,7 +47,7 @@ Progress.propTypes = {
 Progress.defaultProps = {
   prefixCls: 'ui-progress',
   className: null,
-  theme: 'info',
+  theme: 'primary',
   strokeWidth: 4,
   percent: 0,
 };

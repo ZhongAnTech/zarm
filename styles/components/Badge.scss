@@ -15,6 +15,10 @@ $prefixCls: ui-badge;
   line-height: 1;
   @include badge-theme($theme-default);
 
+  &.theme-primary {
+    @include badge-theme($theme-primary);
+  }
+
   &.theme-info {
     @include badge-theme($theme-info);
   }

@@ -10,7 +10,7 @@ $prefixCls: ui-switch;
 }
 
 .#{$prefixCls} {
-  @include switch-theme($theme-info);
+  @include switch-theme($theme-default);
 
   &-input {
     position: relative;
@@ -61,6 +61,10 @@ $prefixCls: ui-switch;
   &.disabled {
     cursor: not-allowed;
     opacity: $disabled-opacity;
+  }
+
+  &.theme-primary {
+    @include switch-theme($theme-primary);
   }
 
   &.theme-info {

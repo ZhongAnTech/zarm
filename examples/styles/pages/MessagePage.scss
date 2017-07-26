@@ -1,0 +1,20 @@
+@import "../core/func";
+
+.message-page {
+  .ui-panel-body {
+    padding: r(15);
+  }
+
+  .ui-message {
+    margin-bottom: r(15);
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .icon {
+    font-size: r(16);
+    margin-right: r(5);
+  }
+}
