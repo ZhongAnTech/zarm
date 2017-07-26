@@ -73,6 +73,14 @@ const rootRoute = {
 
     // 操作反馈
     {
+      path: 'actionsheet',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/ActionSheetPage'));
+        });
+      },
+    },
+    {
       path: 'button',
       getComponent(location, cb) {
         require.ensure([], (require) => {

@@ -34,6 +34,7 @@ class Page extends PureComponent {
               <Panel.Title>操作反馈</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+              <Cell hasArrow title="动作面板 ActionSheet" onClick={() => hashHistory.push('/actionsheet')} />
               <Cell hasArrow title="按钮 Button" onClick={() => hashHistory.push('/button')} />
               <Cell hasArrow title="模态框 Modal" onClick={() => hashHistory.push('/modal')} />
               <Cell hasArrow title="弹出框 Popup" onClick={() => hashHistory.push('/popup')} />

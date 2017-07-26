@@ -488,24 +488,26 @@ class DatePicker extends Component {
             className="ui-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
-            <div className="ui-picker-header">
-              <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
-              <div className="ui-picker-title">{title}</div>
-              <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
-            </div>
-            <div className="ui-picker-mask-top">
-              <div className="ui-picker-mask-bottom">
-                <ColumnGroup
-                  className={className}
-                  prefixCls={prefixCls}
-                  pickerPrefixCls={pickerPrefixCls}
-                  disabled={disabled}
-                  displayMember={displayMember}
-                  valueMember={valueMember}
-                  selectedValue={value}
-                  onValueChange={(values, index) => this.onValueChange(values, index)}>
-                  {cols}
-                </ColumnGroup>
+            <div className="ui-picker-wrapper">
+              <div className="ui-picker-header">
+                <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
+                <div className="ui-picker-title">{title}</div>
+                <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
+              </div>
+              <div className="ui-picker-mask-top">
+                <div className="ui-picker-mask-bottom">
+                  <ColumnGroup
+                    className={className}
+                    prefixCls={prefixCls}
+                    pickerPrefixCls={pickerPrefixCls}
+                    disabled={disabled}
+                    displayMember={displayMember}
+                    valueMember={valueMember}
+                    selectedValue={value}
+                    onValueChange={(values, index) => this.onValueChange(values, index)}>
+                    {cols}
+                  </ColumnGroup>
+                </div>
               </div>
             </div>
           </Popup>
