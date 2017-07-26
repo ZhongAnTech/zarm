@@ -4,14 +4,15 @@ $prefixCls: ui-message;
   color: $color;
   background-color: $background;
   border-color: $border;
+  @include onepx(top right bottom left, $border);
 }
 
 .#{$prefixCls} {
   display: flex;
   align-items: center;
+  position: relative;
   padding: r(5) r(8);
   min-height: r(30);
-  border: 1px solid transparent;
   font-size: r(12);
   @include message-theme($button-default-border, $button-default-activebg, $button-default-border);
 
