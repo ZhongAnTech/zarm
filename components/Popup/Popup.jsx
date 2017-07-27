@@ -10,6 +10,8 @@ class Popup extends PureComponent {
     this.timer = null;
     this.state = {
       isShow: this.props.visible || false,
+      isMaskShow: this.props.visible || false,
+      animationState: 'enter',
     };
     this.animationEnd = this.animationEnd.bind(this);
   }
@@ -37,9 +39,11 @@ class Popup extends PureComponent {
   enter({ duration, autoClose, onMaskClick }) {
     this.setState({
       isShow: true,
+      isMaskShow: true,
+      animationState: 'enter',
     });
 
-    if (duration === 0 || this.timer) {
+    if (duration === 0) {
       return;
     }
 
@@ -54,17 +58,26 @@ class Popup extends PureComponent {
   leave() {
     this.setState({
       isShow: false,
+      animationState: 'leave',
     });
   }
 
   animationEnd() {
     const { onClose } = this.props;
-    !this.state.isShow && typeof onClose === 'function' && onClose();
+    const { animationState } = this.state;
+
+    if (animationState === 'leave') {
+      this.setState({
+        isMaskShow: false,
+      });
+      typeof onClose === 'function' && onClose();
+    }
+    // !this.state.isShow &&
   }
 
   render() {
-    const { prefixCls, children, onMaskClick, direction, className, maskType } = this.props;
-    const { isShow } = this.state;
+    const { prefixCls, children, onMaskClick, animationDuration, direction, className, maskType } = this.props;
+    const { isShow, isMaskShow } = this.state;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -77,12 +90,27 @@ class Popup extends PureComponent {
       [`${prefixCls}-wrapper-${direction}`]: true,
     });
 
+    const style = {
+      mask: {
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      },
+    };
+
+    // if (!isShow) {
+    //   style.modal.display = 'none';
+    // }
+
+
     return (
       <div className={cls} ref={(popup) => { this.popup = popup; }}>
         <div className={clsWrap}>
           {children}
         </div>
-        {this.props.mask && <Mask visible={isShow} type={maskType} onClose={onMaskClick} />}
+        {this.props.mask && <Mask visible={isMaskShow} type={maskType} onClose={onMaskClick} />}
       </div>
     );
   }
@@ -98,6 +126,7 @@ Popup.propTypes = {
   autoClose: PropTypes.bool,  // eslint-disable-line
   onClose: PropTypes.func,
   maskType: Mask.propTypes.type,
+  animationDuration: PropTypes.number,
   onMaskClick: Mask.propTypes.onClose,
 };
 
@@ -110,6 +139,7 @@ Popup.defaultProps = {
   duration: 3000,
   autoClose: false,
   onClose() {},
+  animationDuration: 200,
   maskType: Mask.defaultProps.type,
   onMaskClick: Mask.defaultProps.onClose,
 };
