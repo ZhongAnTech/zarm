@@ -35,7 +35,7 @@ class ColumnGroup extends Component {
   render() {
     const props = this.props;
     const {
-      prefixCls, pickerPrefixCls,
+      columnPrefixCls, pickerPrefixCls,
       className, indicatorStyle,
       pure, children, displayMember, valueMember,
     } = props;
@@ -43,7 +43,7 @@ class ColumnGroup extends Component {
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
       return (
-        <div key={col.key || i} className={`${prefixCls}-item`}>
+        <div key={col.key || i} className={`${columnPrefixCls}-item`}>
           <Column
             pure={pure}
             indicatorStyle={indicatorStyle}
@@ -59,7 +59,7 @@ class ColumnGroup extends Component {
     });
 
     return (
-      <div className={classnames(className, prefixCls)}>
+      <div className={classnames(className, columnPrefixCls)}>
         {colElements}
       </div>
     );
@@ -67,7 +67,7 @@ class ColumnGroup extends Component {
 }
 
 ColumnGroup.defaultProps = {
-  prefixCls: '',
+  columnPrefixCls: '',
   pickerPrefixCls: '',
   onValueChange: () => {},
   disabled: false,
