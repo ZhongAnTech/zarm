@@ -12,6 +12,7 @@ class Popup extends PureComponent {
       isShow: this.props.visible || false,
       isMaskShow: this.props.visible || false,
       animationState: 'enter',
+      isPending: false,
     };
     this.animationEnd = this.animationEnd.bind(this);
   }
@@ -40,6 +41,7 @@ class Popup extends PureComponent {
     this.setState({
       isShow: true,
       isMaskShow: true,
+      isPending: true,
       animationState: 'enter',
     });
 
@@ -58,6 +60,7 @@ class Popup extends PureComponent {
   leave() {
     this.setState({
       isShow: false,
+      isPending: true,
       animationState: 'leave',
     });
   }
@@ -72,25 +75,31 @@ class Popup extends PureComponent {
       });
       typeof onClose === 'function' && onClose();
     }
-    // !this.state.isShow &&
   }
 
   render() {
     const { prefixCls, children, onMaskClick, animationDuration, direction, className, maskType } = this.props;
-    const { isShow, isMaskShow } = this.state;
+    const { isShow, isPending, animationState, isMaskShow } = this.state;
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
-      [`${prefixCls}-hidden`]: !isShow,
-    });
-
-    const clsWrap = classnames({
-      [`${prefixCls}-wrapper`]: true,
-      [`${prefixCls}-wrapper-${direction}`]: true,
-    });
+    const cls = {
+      popup: classnames({
+        [`${prefixCls}`]: true,
+        [className]: !!className,
+        [`${prefixCls}-hidden`]: !isShow,
+      }),
+      wrap: classnames({
+        [`${prefixCls}-wrapper`]: true,
+        [`${prefixCls}-wrapper-${direction}`]: true,
+      }),
+      mask: classnames({
+        [`fade-${animationState}`]: isPending,
+      }),
+    };
 
     const style = {
+      wrap: {
+        transition: `transform ${animationDuration}ms`,
+      },
       mask: {
         WebkitAnimationDuration: `${animationDuration}ms`,
         MozAnimationDuration: `${animationDuration}ms`,
@@ -100,17 +109,12 @@ class Popup extends PureComponent {
       },
     };
 
-    // if (!isShow) {
-    //   style.modal.display = 'none';
-    // }
-
-
     return (
-      <div className={cls} ref={(popup) => { this.popup = popup; }}>
-        <div className={clsWrap}>
+      <div className={cls.popup} ref={(popup) => { this.popup = popup; }}>
+        <div className={cls.wrap} style={style.wrap}>
           {children}
         </div>
-        {this.props.mask && <Mask visible={isMaskShow} type={maskType} onClose={onMaskClick} />}
+        {this.props.mask && <Mask className={cls.mask} style={style.mask} visible={isMaskShow} type={maskType} onClose={onMaskClick} />}
       </div>
     );
   }

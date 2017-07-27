@@ -6,7 +6,7 @@ $prefixCls: ui-popup;
   &-wrapper {
     position: fixed;
     transform: translate(0, 0);
-    transition: transform .2s;
+    // transition: transform .3s;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     z-index: $zIndex-popup;
