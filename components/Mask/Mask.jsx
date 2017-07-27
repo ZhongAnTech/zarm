@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 class Mask extends PureComponent {
   render() {
-    const { prefixCls, className, visible, type, onClose } = this.props;
+    const { prefixCls, className, visible, type, onClose, ...others } = this.props;
     const markCls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
@@ -12,7 +12,7 @@ class Mask extends PureComponent {
     });
 
     return visible
-      ? <div className={markCls} onClick={onClose} />
+      ? <div {...others} className={markCls} onClick={onClose} />
       : null;
   }
 }
