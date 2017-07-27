@@ -22,11 +22,18 @@ class Page extends Component {
       timePicker: {},
       datetimePicker: {},
       diyDatePicker: {},
+      stactPicker: {
+        value: [
+          { label: '湖北省', value: '420000' },
+          { label: '十堰市', value: '420300' },
+          { label: '丹江口市', value: '420381' },
+        ],
+      },
     };
   }
 
   render() {
-    const { single, multiple, multiple2, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker } = this.state;
+    const { single, multiple, multiple2, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker, stactPicker } = this.state;
 
     return (
       <div className="cell-page">
@@ -314,6 +321,42 @@ class Page extends Component {
                   }}
                   onCancel={() => {
                   }}
+                  />
+              </Cell>
+
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>层叠式选择器</Panel.Title>
+            </Panel.Header>
+            <Panel.Body>
+
+              <Cell title="层叠式选择器" type="select">
+                <Picker.Stack
+                  title="请选择"
+                  placeholder="请选择"
+                  disabled={false}
+                  dataSource={District}
+                  cols={3}
+                  valueMember="value"
+                  value={stactPicker.value}
+                  labelAddon=" - "
+                  displayCompile={data => data.slice(-1).map(({ label, value }) => `${label}(${value})`).join('')}
+                  itemCompile={({ label, value }) => `${label}(${value})`}
+                  validate={data => ((data.length && data[0].label === '北京') ? '选择了北京行政区域' : '')}
+                  onOk={
+                    (value) => {
+                      console.log('外部change value ->', value);
+                      this.setState({
+                        stactPicker: {
+                          value,
+                        },
+                      });
+                    }
+                  }
+                  onCancel={() => { console.log('===> cancel <==='); }}
                   />
               </Cell>
 
