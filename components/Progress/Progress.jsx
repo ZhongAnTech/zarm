@@ -15,7 +15,7 @@ class Progress extends PureComponent {
     });
 
     const half = diameter / 2;
-    const r = half - (strokeWidth / 2);
+    const r = half - strokeWidth;
     const round = 2 * Math.PI * r;
 
     const style = {
