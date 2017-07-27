@@ -67,16 +67,18 @@ class Modal extends PureComponent {
     const { prefixCls, className, animationType, animationDuration, width, minWidth, radius, onMaskClick, children } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
-    const classes = {
+    const cls = {
       modal: classnames({
         [`${prefixCls}`]: true,
         [className]: !!className,
         radius,
-        [`fade-${animationState}`]: isPending,
       }),
       dialog: classnames({
         [`${prefixCls}-dialog`]: true,
         [`${animationType}-${animationState}`]: isPending,
+      }),
+      mask: classnames({
+        [`fade-${animationState}`]: isPending,
       }),
     };
 
@@ -97,6 +99,13 @@ class Modal extends PureComponent {
         OAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
       },
+      mask: {
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        MozAnimationDuration: `${animationDuration}ms`,
+        msAnimationDuration: `${animationDuration}ms`,
+        OAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      },
     };
 
     if (!isShow) {
@@ -104,13 +113,13 @@ class Modal extends PureComponent {
     }
 
     return (
-      <div className={classes.modal} style={style.modal} ref={(ele) => { this.modal = ele; }}>
+      <div className={cls.modal} style={style.modal} ref={(ele) => { this.modal = ele; }}>
         <div className={`${prefixCls}-wrapper`}>
-          <div className={classes.dialog} style={style.dialog} onClick={e => e.stopPropagation()}>
+          <div className={cls.dialog} style={style.dialog} onClick={e => e.stopPropagation()}>
             {children}
           </div>
         </div>
-        <Mask visible={isShow} onClose={onMaskClick} />
+        <Mask visible={isShow} className={cls.mask} style={style.mask} onClose={onMaskClick} />
       </div>
     );
   }

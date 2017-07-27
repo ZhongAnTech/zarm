@@ -59,8 +59,8 @@ $prefixCls: ui-checkbox;
     &:before {
       content: ' ';
       position: absolute;
-      left: r(4);
-      top: r(0.8);
+      left: r(4.2);
+      top: r(0.7);
       width: r(4);
       height: r(8);
       border: 1px solid $theme-primary;
