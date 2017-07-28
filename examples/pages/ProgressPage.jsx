@@ -55,9 +55,9 @@ class Page extends Component {
                     { value: 'warning', label: 'warning' },
                     { value: 'error', label: 'error' },
                   ]}
-                  onOk={(value) => {
+                  onOk={(selected) => {
                     this.setState({
-                      theme: value,
+                      theme: selected.value,
                     });
                   }}
                   />
