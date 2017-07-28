@@ -105,6 +105,11 @@ export function formatToInit(data, member, cols) {
   return result;
 }
 
+const filterValue = (dataSource, value, member, level) => {
+  return dataSource.find(item => (
+    item[member] === value[level]
+  ));
+};
 
 export function formatBackToObject(data, value, cascade, member, cols) {
   if (!cascade) {
@@ -121,11 +126,8 @@ export function formatBackToObject(data, value, cascade, member, cols) {
   let level = 0;
 
   while (_data) {
-    const foundValue = _data.find(item => (
-      item[member] === value[level]
-    ));
-
-    if (!foundValue) {
+    const curValue = filterValue(_data, value, member, level);
+    if (!curValue) {
       break;
     }
 
@@ -133,9 +135,9 @@ export function formatBackToObject(data, value, cascade, member, cols) {
       break;
     }
 
-    result.push(foundValue);
-    if (Object.prototype.hasOwnProperty.call(foundValue, 'children')) {
-      _data = foundValue.children;
+    result.push(curValue);
+    if (Object.prototype.hasOwnProperty.call(curValue, 'children')) {
+      _data = curValue.children;
     } else {
       break;
     }
