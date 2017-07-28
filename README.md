@@ -1,7 +1,7 @@
 # dragon-mobile-ui
   [![Build Status](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui.svg?branch=master)](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui)
   [![npm package](https://img.shields.io/npm/v/dragon-mobile-ui.svg?style=flat-square)](https://www.npmjs.org/package/dragon-mobile-ui)
-  [![NPM downloads](http://img.shields.io/npm/dm/dragon-mobile-ui.svg?style=flat-square)](https://npmjs.org/package/dragon-mobile-ui)
+  [![NPM downloads](http://img.shields.io/npm/dm/dragon-mobile-ui.svg?style=flat-square)](https://npmjs.org/package/dragon-mobile-ui)  
   基于ReactJS的移动端UI库
   
 ## 安装
