@@ -463,7 +463,7 @@ class DatePicker extends Component {
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { columnPrefixCls, pickerPrefixCls, className, disabled, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
+    const { prefixCls, className, disabled, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
 
     const classes = classnames({
       'ui-picker-container': true,
@@ -498,8 +498,7 @@ class DatePicker extends Component {
                 <div className="ui-picker-mask-bottom">
                   <ColumnGroup
                     className={className}
-                    columnPrefixCls={columnPrefixCls}
-                    pickerPrefixCls={pickerPrefixCls}
+                    prefixCls={prefixCls}
                     disabled={disabled}
                     displayMember={displayMember}
                     valueMember={valueMember}
@@ -537,8 +536,7 @@ DatePicker.propTypes = {
   onCancel: PropTypes.func,
   onMaskClick: PropTypes.func,
   minuteStep: PropTypes.number,
-  columnPrefixCls: PropTypes.string,
-  pickerPrefixCls: PropTypes.string,
+  prefixCls: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
@@ -558,8 +556,7 @@ DatePicker.defaultProps = {
   onMaskClick: () => {},
   locale: defaultLocale,
   minuteStep: 1,
-  columnPrefixCls: 'ui-picker-column-group',
-  pickerPrefixCls: 'ui-cascaderpicker',
+  prefixCls: 'ui-picker',
   displayMember: 'value',
   valueMember: 'value',
 };
