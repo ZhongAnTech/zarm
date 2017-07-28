@@ -1,12 +1,14 @@
 
 @keyframes rotate360 {
-  from { 
+  from {
     transform: rotate(0);
   }
-  to { 
+
+  to {
     transform: rotate(360deg);
   }
 }
+
 .rotate360 {
   animation: rotate360 1s linear infinite;
 }
@@ -17,11 +19,13 @@
     transform-origin: center;
     transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
   }
+
   to {
     transform-origin: center;
     transform: scale3d(1, 1, 1);
   }
 }
+
 .rotate-enter {
   animation: rotate-enter both;
 }
@@ -30,11 +34,13 @@
   from {
     transform-origin: center;
   }
+
   to {
     transform-origin: center;
     transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
   }
 }
+
 .rotate-leave {
   animation: rotate-leave both;
 }

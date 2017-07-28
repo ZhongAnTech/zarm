@@ -12,7 +12,7 @@ class Page extends Component {
           <Panel>
             <Panel.Body>
               <Cell description={
-                <Spinner />
+                <Spinner className="rotate360" />
               }>普通</Cell>
             </Panel.Body>
           </Panel>

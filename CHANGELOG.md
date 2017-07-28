@@ -1,6 +1,7 @@
 # 版本更新日志  
 
 ## 1.0.0 
+  * 调整接口属性，废除isRadius, isBordered, isDisabled属性
   * 组件Select.Option兼容String和Number类型的value值
 
 ## 0.0.41 

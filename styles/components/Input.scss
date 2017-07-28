@@ -17,7 +17,7 @@ $prefixCls: ui-input;
 
     &[type="date"],
     &[type="text"] {
-      height: 100%;
+      height: r(21);
     }
 
     &::-webkit-input-placeholder {
