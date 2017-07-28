@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { arrayTreeFilter, formatToInit } from './utils';
+import { arrayTreeFilter, formatToInit, formatBackToObject } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
 import { Popup } from '../../components';
@@ -77,15 +77,15 @@ class Picker extends Component {
   }
 
   onOk() {
-    const { onOk } = this.props;
+    const { onOk, valueMember, cols } = this.props;
+    const { data, cascade } = this.state;
     const value = this.getInitValue();
 
     this.tempValue = value;
     this.toggle();
     let _value = null;
-
-    _value = value.length === 1 ? value.toString() : value;
-
+    // _value = value.length === 1 ? value.toString() : value;
+    _value = formatBackToObject(data, value, cascade, valueMember, cols);
     onOk && onOk(_value);
   }
 
@@ -133,20 +133,20 @@ class Picker extends Component {
   }
 
   render() {
-    const { prefixCls, columnPrefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
+    const { prefixCls, format, disabled, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
     const { data, value } = this.state;
 
     let PickerCol = null;
 
     const classes = classnames({
-      'ui-picker-container': true,
+      [`${prefixCls}-container`]: true,
       [className]: !!className,
     });
 
     const inputCls = classnames({
-      'ui-picker-input': true,
-      'ui-picker-placeholder': !value.join(format),
-      'ui-picker-disabled': !!disabled,
+      [`${prefixCls}-input`]: true,
+      [`${prefixCls}-placeholder`]: !value.join(format),
+      [`${prefixCls}-disabled`]: !!disabled,
     });
 
     const cols = data.map((d) => {
@@ -156,8 +156,7 @@ class Picker extends Component {
     if (this.state.cascade) {
       PickerCol = (
         <Cascader
-          columnPrefixCls={columnPrefixCls}
-          pickerPrefixCls={pickerPrefixCls}
+          prefixCls={prefixCls}
           data={data}
           value={this.state.value}
           cols={this.props.cols}
@@ -170,8 +169,7 @@ class Picker extends Component {
       PickerCol = (
         <ColumnGroup
           className={className}
-          columnPrefixCls={columnPrefixCls}
-          pickerPrefixCls={pickerPrefixCls}
+          prefixCls={prefixCls}
           displayMember={displayMember}
           valueMember={valueMember}
           selectedValue={value}
@@ -253,8 +251,6 @@ Picker.propTypes = {
   onCancel: PropTypes.func,
   onMaskClick: PropTypes.func,
   prefixCls: PropTypes.string,
-  columnPrefixCls: PropTypes.string,
-  pickerPrefixCls: PropTypes.string,
   displayMember: PropTypes.string,
   valueMember: PropTypes.string,
 };
@@ -275,8 +271,6 @@ Picker.defaultProps = {
   onCancel: () => {},
   onMaskClick: () => {},
   prefixCls: 'ui-picker',
-  columnPrefixCls: 'ui-picker-column-group',
-  pickerPrefixCls: 'ui-cascaderpicker',
   displayMember: 'label',
   valueMember: 'value',
 };

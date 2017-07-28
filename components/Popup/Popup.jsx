@@ -84,8 +84,8 @@ class Popup extends PureComponent {
     const cls = {
       popup: classnames({
         [`${prefixCls}`]: true,
-        [className]: !!className,
         [`${prefixCls}-hidden`]: !isShow,
+        [className]: !!className,
       }),
       wrap: classnames({
         [`${prefixCls}-wrapper`]: true,

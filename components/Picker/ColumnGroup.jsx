@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Column from './Column';
 
@@ -35,19 +36,19 @@ class ColumnGroup extends Component {
   render() {
     const props = this.props;
     const {
-      columnPrefixCls, pickerPrefixCls,
-      className, indicatorStyle,
-      pure, children, displayMember, valueMember,
+      prefixCls, className,
+      indicatorStyle, pure,
+      children, displayMember, valueMember,
     } = props;
 
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
       return (
-        <div key={col.key || i} className={`${columnPrefixCls}-item`}>
+        <div key={col.key || i} className={`${prefixCls}-column-group-item`}>
           <Column
             pure={pure}
             indicatorStyle={indicatorStyle}
-            prefixCls={pickerPrefixCls}
+            prefixCls={prefixCls}
             selectedValue={selectedValue[i]}
             displayMember={displayMember}
             valueMember={valueMember}
@@ -59,16 +60,18 @@ class ColumnGroup extends Component {
     });
 
     return (
-      <div className={classnames(className, columnPrefixCls)}>
+      <div className={classnames(className, `${prefixCls}-column-group`)}>
         {colElements}
       </div>
     );
   }
 }
 
+ColumnGroup.propTypes = {
+  prefixCls: PropTypes.string,
+};
 ColumnGroup.defaultProps = {
-  columnPrefixCls: '',
-  pickerPrefixCls: '',
+  prefixCls: 'ui-picker',
   onValueChange: () => {},
   disabled: false,
 };

@@ -144,8 +144,8 @@ class Column extends Component {
     } = this.props;
 
     const { selectedValue } = this.state;
-    const itemClassName = `${prefixCls}-item`;
-    const selectedItemClassName = `${itemClassName} ${prefixCls}-item-selected`;
+    const itemClassName = `${prefixCls}-cascader-item`;
+    const selectedItemClassName = `${itemClassName} ${prefixCls}-cascader-item-selected`;
     const items = children.map((item) => {
       return (
         <div
@@ -158,13 +158,13 @@ class Column extends Component {
     });
     const pickerCls = {
       [className]: !!className,
-      [prefixCls]: true,
+      [`${prefixCls}-cascader`]: true,
     };
     return (
       <div
         className={classNames(pickerCls)} >
-        <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} style={indicatorStyle} />
-        <div className={`${prefixCls}-content`} ref={(content) => { this.content = content; }}>
+        <div className={`${prefixCls}-cascader-indicator`} ref={(indicator) => { this.indicator = indicator; }} style={indicatorStyle} />
+        <div className={`${prefixCls}-cascader-content`} ref={(content) => { this.content = content; }}>
           {items}
         </div>
       </div>
@@ -173,7 +173,8 @@ class Column extends Component {
 }
 
 Column.defaultProps = {
-  prefixCls: 'ui-cascaderpicker',
+  // prefixCls: 'ui-cascaderpicker',
+  prefixCls: 'ui-picker',
   pure: true,
   onValueChange: () => {},
 };

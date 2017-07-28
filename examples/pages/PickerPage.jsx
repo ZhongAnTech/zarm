@@ -47,11 +47,12 @@ class Page extends Component {
                   ]}
                   value={single.value}
                   onOk={(value) => {
-                    single.value = value;
+                    console.log("pickerPage onOk ->", value);
+                    const _value = value.value;
+                    single.value = _value;
                     this.setState({
                       single,
                     });
-                    console.log("pickerPage onOk ->", value);
                   }}
                   onCancel={() => {
                   }}
@@ -73,11 +74,12 @@ class Page extends Component {
                   ]}
                   value={multiple.value}
                   onOk={(value) => {
-                    multiple.value = value;
+                    console.log('multiple onOk ->', value);
+                    const _value = value.map(item => item.value);
+                    multiple.value = _value;
                     this.setState({
                       multiple,
                     });
-                    console.log("multiple onOk ->", value);
                   }}
                   onCancel={() => {
                   }}
@@ -108,11 +110,12 @@ class Page extends Component {
                   // cols={2}
                   value={multiple2.value}
                   onOk={(value) => {
-                    multiple2.value = value;
+                    console.log('multiple2 onOk ->', value);
+                    const _value = value.map(item => item.value);
+                    multiple2.value = _value;
                     this.setState({
                       multiple2,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}
@@ -156,11 +159,12 @@ class Page extends Component {
                   valueMember="value"
                   value={diy.value}
                   onOk={(value) => {
-                    diy.value = value;
+                    console.log('diy onOk ->', value);
+                    const _value = value.map(item => item.value);
+                    diy.value = _value;
                     this.setState({
                       diy,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}
@@ -185,11 +189,12 @@ class Page extends Component {
                   valueMember="label"
                   value={city1.value}
                   onOk={(value) => {
-                    city1.value = value;
+                    console.log('city1 onOk->', value);
+                    const _value = value.map(item => item.label);
+                    city1.value = _value;
                     this.setState({
                       city1,
                     });
-                    console.log('onOk->', value);
                   }}
                   onCancel={() => {
                   }}
@@ -205,11 +210,12 @@ class Page extends Component {
                   valueMember="label"
                   value={city2.value}
                   onOk={(value) => {
-                    city2.value = value;
+                    console.log('city2 onOk->', value);
+                    const _value = value.map(item => item.label);
+                    city2.value = _value;
                     this.setState({
                       city2,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}

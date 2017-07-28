@@ -96,15 +96,13 @@ class Cascader extends Component {
 
   render() {
     const {
-      columnPrefixCls, pickerPrefixCls,
-      className, displayMember,
-      valueMember,
+      prefixCls, className,
+      displayMember, valueMember,
     } = this.props;
 
     return (
       <ColumnGroup
-        columnPrefixCls={columnPrefixCls}
-        pickerPrefixCls={pickerPrefixCls}
+        prefixCls={prefixCls}
         className={className}
         displayMember={displayMember}
         valueMember={valueMember}
@@ -117,13 +115,11 @@ class Cascader extends Component {
 }
 
 Cascader.propTypes = {
-  columnPrefixCls: PropTypes.string,
-  pickerPrefixCls: PropTypes.string,
+  prefixCls: PropTypes.string,
 };
 
 Cascader.defaultProps = {
-  columnPrefixCls: '',
-  pickerPrefixCls: '',
+  prefixCls: 'ui-picker',
   data: [],
   disabled: false,
 };
