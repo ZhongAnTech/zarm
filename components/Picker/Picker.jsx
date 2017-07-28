@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { arrayTreeFilter, formatToInit } from './utils';
+import { arrayTreeFilter, formatToInit, formatBackToObject } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
 import { Popup } from '../../components';
@@ -41,16 +41,20 @@ class Picker extends Component {
     // console.log(nextProps);
     if ('value' in nextProps) {
       let _value = null;
+      let _data = null;
+
 
       if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
         _value = nextProps.value.length ? [nextProps.value] : nextProps.value;
+        _data = [nextProps.dataSource];
       } else {
         _value = nextProps.value;
+        _data = nextProps.dataSource;
       }
 
       this.setState({
         value: _value,
-        // data: nextProps.dataSource,
+        data: _data,
         cascade: Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children'),
       });
     }
@@ -73,15 +77,15 @@ class Picker extends Component {
   }
 
   onOk() {
-    const { onOk } = this.props;
+    const { onOk, valueMember, cols } = this.props;
+    const { data, cascade } = this.state;
     const value = this.getInitValue();
 
     this.tempValue = value;
     this.toggle();
     let _value = null;
-
-    _value = value.length === 1 ? value.toString() : value;
-
+    // _value = value.length === 1 ? value.toString() : value;
+    _value = formatBackToObject(data, value, cascade, valueMember, cols);
     onOk && onOk(_value);
   }
 
@@ -129,20 +133,20 @@ class Picker extends Component {
   }
 
   render() {
-    const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
+    const { prefixCls, format, disabled, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
     const { data, value } = this.state;
 
     let PickerCol = null;
 
     const classes = classnames({
-      'ui-picker-container': true,
+      [`${prefixCls}-container`]: true,
       [className]: !!className,
     });
 
     const inputCls = classnames({
-      'ui-picker-input': true,
-      'ui-picker-placeholder': !value.join(format),
-      'ui-picker-disabled': !!disabled,
+      [`${prefixCls}-input`]: true,
+      [`${prefixCls}-placeholder`]: !value.join(format),
+      [`${prefixCls}-disabled`]: !!disabled,
     });
 
     const cols = data.map((d) => {
@@ -153,7 +157,6 @@ class Picker extends Component {
       PickerCol = (
         <Cascader
           prefixCls={prefixCls}
-          pickerPrefixCls={pickerPrefixCls}
           data={data}
           value={this.state.value}
           cols={this.props.cols}
@@ -167,7 +170,6 @@ class Picker extends Component {
         <ColumnGroup
           className={className}
           prefixCls={prefixCls}
-          pickerPrefixCls={pickerPrefixCls}
           displayMember={displayMember}
           valueMember={valueMember}
           selectedValue={value}
@@ -206,7 +208,7 @@ class Picker extends Component {
     };
 
     return (
-      <div className="ui-picker" onClick={() => this.handleClick()}>
+      <div className={`${prefixCls}`} onClick={() => this.handleClick()}>
         <div className={inputCls}>
           <input type="hidden" value={this.state.value} />
           {display()}
@@ -216,14 +218,14 @@ class Picker extends Component {
             className="ui-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
-            <div className="ui-picker-wrapper">
-              <div className="ui-picker-header">
-                <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
-                <div className="ui-picker-title">{title}</div>
-                <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
+            <div className={`${prefixCls}-wrapper`}>
+              <div className={`${prefixCls}-header`}>
+                <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+                <div className={`${prefixCls}-title`}>{title}</div>
+                <div className={`${prefixCls}-submit`} onClick={() => this.onOk()}>{okText}</div>
               </div>
-              <div className="ui-picker-mask-top">
-                <div className="ui-picker-mask-bottom">
+              <div className={`${prefixCls}-mask-top`}>
+                <div className={`${prefixCls}-mask-bottom`}>
                   {PickerCol}
                 </div>
               </div>
@@ -249,7 +251,6 @@ Picker.propTypes = {
   onCancel: PropTypes.func,
   onMaskClick: PropTypes.func,
   prefixCls: PropTypes.string,
-  pickerPrefixCls: PropTypes.string,
   displayMember: PropTypes.string,
   valueMember: PropTypes.string,
 };
@@ -269,8 +270,7 @@ Picker.defaultProps = {
   onOk: () => {},
   onCancel: () => {},
   onMaskClick: () => {},
-  prefixCls: 'ui-picker-column-group',
-  pickerPrefixCls: 'ui-cascaderpicker',
+  prefixCls: 'ui-picker',
   displayMember: 'label',
   valueMember: 'value',
 };

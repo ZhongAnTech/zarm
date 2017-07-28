@@ -104,3 +104,42 @@ export function formatToInit(data, member, cols) {
 
   return result;
 }
+
+
+export function formatBackToObject(data, value, cascade, member, cols) {
+  if (!cascade) {
+    const result = data.map((item, index) => (
+      item.find(itemInner => (
+        itemInner[member] === value[index]
+      ))
+    ));
+    return value.length === 1 ? result[0] : result;
+  }
+
+  let _data = data || [];
+  const result = [];
+  let level = 0;
+
+  while (_data) {
+    const foundValue = _data.find(item => (
+      item[member] === value[level]
+    ));
+
+    if (!foundValue) {
+      break;
+    }
+
+    if (cols && level >= cols) {
+      break;
+    }
+
+    result.push(foundValue);
+    if (Object.prototype.hasOwnProperty.call(foundValue, 'children')) {
+      _data = foundValue.children;
+    } else {
+      break;
+    }
+    level += 1;
+  }
+  return result;
+}
