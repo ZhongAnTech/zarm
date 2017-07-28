@@ -72,14 +72,16 @@ class Modal extends PureComponent {
         [`${prefixCls}`]: true,
         [className]: !!className,
         radius,
+        [`fade-${animationState}`]: isPending,
       }),
       dialog: classnames({
         [`${prefixCls}-dialog`]: true,
         [`${animationType}-${animationState}`]: isPending,
-      }),
-      mask: classnames({
         [`fade-${animationState}`]: isPending,
       }),
+      // mask: classnames({
+      //   [`fade-${animationState}`]: isPending,
+      // }),
     };
 
     const style = {
@@ -99,13 +101,13 @@ class Modal extends PureComponent {
         OAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
       },
-      mask: {
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
-      },
+      // mask: {
+      //   WebkitAnimationDuration: `${animationDuration}ms`,
+      //   MozAnimationDuration: `${animationDuration}ms`,
+      //   msAnimationDuration: `${animationDuration}ms`,
+      //   OAnimationDuration: `${animationDuration}ms`,
+      //   animationDuration: `${animationDuration}ms`,
+      // },
     };
 
     if (!isShow) {
@@ -119,7 +121,12 @@ class Modal extends PureComponent {
             {children}
           </div>
         </div>
-        <Mask visible={isShow} className={cls.mask} style={style.mask} onClose={onMaskClick} />
+        <Mask
+          visible={isShow}
+          // className={cls.mask}
+          // style={style.mask}
+          onClose={onMaskClick}
+          />
       </div>
     );
   }
