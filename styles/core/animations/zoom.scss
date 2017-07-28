@@ -3,10 +3,12 @@
   from {
     transform: scale3d(.3, .3, .3);
   }
+
   to {
     transform: scale3d(1, 1, 1);
   }
 }
+
 .zoom-enter {
   animation: zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
@@ -15,10 +17,12 @@
   from {
     transform: scale3d(1, 1, 1);
   }
+
   to {
     transform: scale3d(.3, .3, .3);
   }
 }
+
 .zoom-leave {
   animation: zoom-leave both;
 }

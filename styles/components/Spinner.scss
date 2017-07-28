@@ -1,0 +1,59 @@
+$prefixCls: ui-spinner;
+$PI: 3.141592674;
+
+@mixin spinner-theme($color) {
+  .#{$prefixCls}-line {
+    stroke: $color;
+  }
+}
+
+.#{$prefixCls} {
+  display: inline-block;
+  position: relative;
+  width: r(31);
+  height: r(31);
+  transform: rotate(-90deg);
+  @include spinner-theme($theme-default);
+
+  &-path {
+    stroke: #e6e6e6;
+  }
+
+  &-line {
+    stroke-dasharray: 100 * $PI;
+    transition: .2s;
+  }
+
+  &-text {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    line-height: 1;
+    transform: translateY(-50%);
+    font-size: r(30);
+  }
+
+  &.theme-default {
+    @include spinner-theme($theme-default);
+  }
+
+  &.theme-primary {
+    @include spinner-theme($theme-primary);
+  }
+
+  &.theme-info {
+    @include spinner-theme($theme-info);
+  }
+
+  &.theme-warning {
+    @include spinner-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include spinner-theme($theme-error);
+  }
+}
