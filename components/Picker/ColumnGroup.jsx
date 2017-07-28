@@ -34,12 +34,11 @@ class ColumnGroup extends Component {
   }
 
   render() {
-    const props = this.props;
     const {
       prefixCls, className,
       indicatorStyle, pure,
       children, displayMember, valueMember,
-    } = props;
+    } = this.props;
 
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
@@ -69,11 +68,12 @@ class ColumnGroup extends Component {
 
 ColumnGroup.propTypes = {
   prefixCls: PropTypes.string,
+  onValueChange: PropTypes.func,
 };
+
 ColumnGroup.defaultProps = {
   prefixCls: 'ui-picker',
   onValueChange: () => {},
-  disabled: false,
 };
 
 export default ColumnGroup;
