@@ -60,45 +60,49 @@ $picker-item-height: 30px;
       text-align: center;
     }
   }
-}
 
-.ui-cascaderpicker {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  height: 7 * $picker-item-height;
-  width: 100%;
-
-  &-content {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    padding: 3 * $picker-item-height 0;
-  }
-
-  &-item {
-    text-align: center;
-    font-size: r(16);
-    line-height: $picker-item-height;
-    height: $picker-item-height;
-    color: #000;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  &-cascader {
+    display: block;
+    position: relative;
     overflow: hidden;
-  }
+    height: 7 * $picker-item-height;
+    width: 100%;
 
-  &-indicator {
-    right: 0;
-    position: absolute;
-    left: 0;
-    top: 3 * $picker-item-height;
-    height: $picker-item-height;
-    background-image: linear-gradient(to bottom, #d0d0d0, #d0d0d0, transparent, transparent), linear-gradient(to top, #d0d0d0, #d0d0d0, transparent, transparent);
-    background-position: top, bottom;
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    /* z-index: 3; */
+    &-content {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      padding: 3 * $picker-item-height 0;
+    }
+
+    &-item {
+      text-align: center;
+      font-size: r(16);
+      line-height: $picker-item-height;
+      height: $picker-item-height;
+      color: #000;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      &-selected {
+        // font-size: r(18);
+        // transition: all 0.3s;
+      }
+    }
+
+    &-indicator {
+      right: 0;
+      position: absolute;
+      left: 0;
+      top: 3 * $picker-item-height;
+      height: $picker-item-height;
+      background-image: linear-gradient(to bottom, #d0d0d0, #d0d0d0, transparent, transparent), linear-gradient(to top, #d0d0d0, #d0d0d0, transparent, transparent);
+      background-position: top, bottom;
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      /* z-index: 3; */
+    }
   }
 }
-
