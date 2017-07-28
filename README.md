@@ -1,4 +1,7 @@
-# dragon-mobile-ui [![Build Status](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui.svg?branch=master)](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui)
+# dragon-mobile-ui
+  [![Build Status](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui.svg?branch=master)](https://www.travis-ci.org/JeromeLin/dragon-mobile-ui)
+  [![npm package](https://img.shields.io/npm/v/dragon-mobile-ui.svg?style=flat-square)](https://www.npmjs.org/package/dragon-mobile-ui)
+  [![NPM downloads](http://img.shields.io/npm/dm/dragon-mobile-ui.svg?style=flat-square)](https://npmjs.org/package/dragon-mobile-ui)
   基于ReactJS的移动端UI库
   
 ## 安装
@@ -17,27 +20,8 @@ import 'dragon-mobile-ui/styles/core/index.scss'
 import 'dragon-mobile-ui/styles/components/Button.scss'
 ```
 
-## 已完成组件
-- Button 按钮
-- Cell 列表项
-- Checkbox 复选框
-- DatePicker 日期时间选择器
-- Icon 字体图标
-- Input 输入框/文本域
-- InputNumber 数字选择框
-- Loading 加载中
-- Lottery 大转盘
-- Mask 遮罩层
-- Modal 模态框
-- Panel 面版
-- Picker 选择器
-- Radio 单选框
-- Select 选择项
-- Swipe 走马灯
-- Switch 开关
-- Tab 选项卡
-- Toast 消息提示
-
 ## 更新日志
 [CHANGELOG.md](https://github.com/JeromeLin/dragon-mobile-ui/blob/master/CHANGELOG.md)
+
+## 版本更新帮助 v0 => v1
 
