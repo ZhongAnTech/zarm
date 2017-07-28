@@ -10,8 +10,8 @@ $PI: 3.141592674;
 .#{$prefixCls} {
   display: inline-block;
   position: relative;
-  width: r(31);
-  height: r(31);
+  width: 31px;
+  height: 31px;
   transform: rotate(-90deg);
   @include spinner-theme($theme-default);
 
