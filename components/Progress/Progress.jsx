@@ -1,34 +1,20 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
-const diameter = 100;
+import Spinner from '../Spinner';
 
 class Progress extends PureComponent {
   render() {
-    const { prefixCls, className, theme, percent, strokeWidth, children } = this.props;
+    const { prefixCls, className, theme, strokeWidth, percent, children, ...others } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
-      [`theme-${theme}`]: !!theme,
     });
 
-    const half = diameter / 2;
-    const r = half - strokeWidth;
-    const round = 2 * Math.PI * r;
-
-    const style = {
-      strokeDasharray: `${(round * percent) / 100} ${round}`,
-      strokeWidth,
-    };
-
     return (
-      <div className={cls}>
-        <svg className={`${prefixCls}-svg`} viewBox={`0 0 ${diameter} ${diameter}`}>
-          <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
-          <circle className={`${prefixCls}-line`} cx={half} cy={half} r={r} fill="none" style={style} />
-        </svg>
+      <div className={cls} {...others}>
+        <Spinner theme={theme} strokeWidth={strokeWidth} percent={percent} />
         <div className={`${prefixCls}-text`}>{children}</div>
       </div>
     );
@@ -38,18 +24,18 @@ class Progress extends PureComponent {
 Progress.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
-  strokeWidth: PropTypes.number,
-  percent: PropTypes.number,
+  theme: Spinner.propTypes.theme,
+  strokeWidth: Spinner.propTypes.strokeWidth,
+  percent: Spinner.propTypes.percent,
 
 };
 
 Progress.defaultProps = {
   prefixCls: 'ui-progress',
   className: null,
-  theme: 'primary',
-  strokeWidth: 4,
-  percent: 0,
+  theme: Spinner.defaultProps.theme,
+  strokeWidth: Spinner.defaultProps.strokeWidth,
+  percent: Spinner.defaultProps.percent,
 };
 
 export default Progress;

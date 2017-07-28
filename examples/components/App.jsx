@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FastClick from 'fastclick';
 import Events from '../utils/events';
 
 // page styles
@@ -12,6 +13,9 @@ class App extends Component {
 
   componentDidMount() {
     Events.on(window, 'resize', window.__setFontSize__);
+    Events.on(window, 'resize', () => {
+      FastClick.attach(document.body);
+    });
   }
 
   render() {
