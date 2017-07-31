@@ -23,5 +23,3 @@ import 'dragon-mobile-ui/styles/components/Button.scss'
 ## 更新日志
 [CHANGELOG.md](https://github.com/JeromeLin/dragon-mobile-ui/blob/master/CHANGELOG.md)
 
-## 版本更新帮助 v0 => v1
-
