@@ -66,8 +66,8 @@ class Checkbox extends PureComponent {
     return (
       <span className={cls}>
         <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-        <span className="zax-checkbox-inner" />
-        <span className="zax-checkbox-text">{children}</span>
+        <span className="za-checkbox-inner" />
+        <span className="za-checkbox-text">{children}</span>
       </span>
     );
   }
@@ -84,7 +84,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  prefixCls: 'zax-checkbox',
+  prefixCls: 'za-checkbox',
   className: null,
   theme: 'primary',
   type: null,

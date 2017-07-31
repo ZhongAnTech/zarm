@@ -1,5 +1,5 @@
 {
-  "name": "zaxui",
+  "name": "zarm",
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
@@ -59,18 +59,18 @@
     "webpack-dev-server": "1.16.2"
   },
   "tags": [
-    "zaxui",
-    "zax-ui",
+    "zarm",
+    "zarm-ui",
     "react",
-    "react-zaxui",
+    "react-zarm",
     "zhongan"
   ],
   "keywords": [
     "react",
     "react-ui",
     "react-component",
-    "zaxui",
-    "zax-ui",
+    "zarm",
+    "zarm-ui",
     "mobile"
   ],
   "description": "UI for react.js",

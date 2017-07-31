@@ -21,7 +21,7 @@ Loading.propTypes = {
 };
 
 Loading.defaultProps = {
-  prefixCls: 'zax-loading',
+  prefixCls: 'za-loading',
 };
 
 export default Loading;

@@ -53,7 +53,7 @@ ActionSheet.propTypes = {
 };
 
 ActionSheet.defaultProps = {
-  prefixCls: 'zax-actionsheet',
+  prefixCls: 'za-actionsheet',
   className: null,
   shape: 'radius',
   actions: [],

@@ -173,8 +173,8 @@ class Column extends Component {
 }
 
 Column.defaultProps = {
-  // prefixCls: 'zax-cascaderpicker',
-  prefixCls: 'zax-picker',
+  // prefixCls: 'za-cascaderpicker',
+  prefixCls: 'za-picker',
   pure: true,
   onValueChange: () => {},
 };

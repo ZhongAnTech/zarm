@@ -34,7 +34,7 @@ Confirm.propTypes = {
 };
 
 Confirm.defaultProps = {
-  prefixCls: 'zax-confirm',
+  prefixCls: 'za-confirm',
   message: '',
   okText: '确定',
   cancelText: '取消',

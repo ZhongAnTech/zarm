@@ -1,4 +1,4 @@
-$prefixCls: zax-modal;
+$prefixCls: za-modal;
 
 .#{$prefixCls} {
   position: fixed;
@@ -78,7 +78,7 @@ $prefixCls: zax-modal;
       display: block;
     }
 
-    .zax-button {
+    .za-button {
       flex: 1;
       height: r(50);
       line-height: r(50);
