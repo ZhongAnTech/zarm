@@ -1,8 +1,6 @@
 @function r($px) {
   @return #{$px}px;
 }
-
-/* v0版本方案 */
 /*
 $ratio: 750/640;
 @function r($px) {
@@ -15,7 +13,9 @@ $ratio: 750/640;
 }
 */
 
-/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/*
+  阿里flexible方案，详见 https://github.com/amfe/lib-flexible
+*/
 /*
 @function r($px) {
   @if $px != 0 {
