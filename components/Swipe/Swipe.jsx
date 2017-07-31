@@ -365,7 +365,7 @@ Swipe.propTypes = {
 };
 
 Swipe.defaultProps = {
-  prefixCls: 'ui-swipe',
+  prefixCls: 'zax-swipe',
   direction: 'left',
   height: 160,
   loop: false,

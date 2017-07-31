@@ -123,7 +123,7 @@ TabGroup.propTypes = {
 };
 
 TabGroup.defaultProps = {
-  prefixCls: 'ui-tab',
+  prefixCls: 'zax-tab',
   className: null,
   theme: 'primary',
   lineWidth: null,

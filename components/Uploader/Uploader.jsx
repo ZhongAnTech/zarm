@@ -103,7 +103,7 @@ Uploader.propTypes = {
 };
 
 Uploader.defaultProps = {
-  prefixCls: 'ui-uploader',
+  prefixCls: 'zax-uploader',
   className: null,
   disabled: false,
   multiple: false,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FastClick from 'fastclick';
 import Eruda from 'eruda';
-// import Events from '../utils/events';
+import Events from '../utils/events';
 
 // page styles
 import '../styles/core/index';

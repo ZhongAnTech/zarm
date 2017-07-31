@@ -21,7 +21,7 @@ PanelBody.propTypes = {
 };
 
 PanelBody.defaultProps = {
-  prefixCls: 'ui-panel-body',
+  prefixCls: 'zax-panel-body',
   className: null,
 };
 

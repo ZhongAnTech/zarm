@@ -29,7 +29,7 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-  prefixCls: 'ui-message',
+  prefixCls: 'zax-message',
   className: null,
   theme: 'primary',
   block: false,

@@ -1,6 +1,7 @@
 @function r($px) {
-  @return #{$px}px;
+  @return $px * 1px;
 }
+
 /*
 $ratio: 750/640;
 $base-fontSize: 14;
@@ -22,8 +23,7 @@ $base-fontSize: 14;
   @if $px != 0 {
     @return $px * 2 / 75 * 1rem;
   }
-  @else
-  {
+  @else {
     @return 0;
   }
 }

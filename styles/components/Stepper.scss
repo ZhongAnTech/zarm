@@ -1,4 +1,4 @@
-$prefixCls: ui-stepper;
+$prefixCls: zax-stepper;
 
 @mixin stepper-theme($color, $activebg) {
   .#{$prefixCls} {
@@ -71,12 +71,11 @@ $prefixCls: ui-stepper;
 
   &-sub,
   &-plus {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     width: r(27);
     height: r(27);
+    line-height: r(27);
+    text-align: center;
     font-size: r(18);
     font-weight: bold;
     cursor: pointer;

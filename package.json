@@ -1,5 +1,5 @@
 {
-  "name": "dragon-mobile-ui",
+  "name": "zaxui",
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
@@ -59,26 +59,28 @@
     "webpack-dev-server": "1.16.2"
   },
   "tags": [
+    "zaxui",
+    "zax-ui",
     "react",
-    "dragon"
+    "react-zaxui",
+    "zhongan"
   ],
   "keywords": [
     "react",
     "react-ui",
     "react-component",
-    "dragon-ui",
-    "dragon-mobile-ui",
-    "dragon",
+    "zaxui",
+    "zax-ui",
     "mobile"
   ],
   "description": "UI for react.js",
-  "author": "Jerome.Lin <16908091@qq.com>",
+  "author": "Jerome.Lin <jerome.lin@zhongan.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/JeromeLin/dragon-ui"
+    "url": "git://github.com/JeromeLin/zaxui"
   },
   "bugs": {
-    "url": "https://github.com/JeromeLin/dragon-ui/issues"
+    "url": "https://github.com/JeromeLin/zaxui/issues"
   }
 }

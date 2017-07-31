@@ -21,7 +21,7 @@ PanelFooter.propTypes = {
 };
 
 PanelFooter.defaultProps = {
-  prefixCls: 'ui-panel-footer',
+  prefixCls: 'zax-panel-footer',
   className: null,
 };
 

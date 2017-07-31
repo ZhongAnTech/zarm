@@ -30,7 +30,7 @@ CellForm.propTypes = {
 };
 
 CellForm.defaultProps = {
-  prefixCls: 'ui-cell',
+  prefixCls: 'zax-cell',
   type: 'normal',
   className: null,
 };

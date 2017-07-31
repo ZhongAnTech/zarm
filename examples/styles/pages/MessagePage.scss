@@ -1,11 +1,11 @@
 @import "../core/func";
 
 .message-page {
-  .ui-panel-body {
+  .zax-panel-body {
     padding: r(15);
   }
 
-  .ui-message {
+  .zax-message {
     margin-bottom: r(15);
 
     &:last-of-type {

@@ -82,7 +82,7 @@ Toast.propTypes = {
 };
 
 Toast.defaultProps = {
-  prefixCls: 'ui-toast',
+  prefixCls: 'zax-toast',
   className: null,
   visible: false,
   duration: 3000,

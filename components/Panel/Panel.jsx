@@ -23,7 +23,7 @@ Panel.propTypes = {
 };
 
 Panel.defaultProps = {
-  prefixCls: 'ui-panel',
+  prefixCls: 'zax-panel',
   className: null,
   theme: null,
 };
