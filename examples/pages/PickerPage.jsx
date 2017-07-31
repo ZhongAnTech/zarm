@@ -23,11 +23,7 @@ class Page extends Component {
       datetimePicker: {},
       diyDatePicker: {},
       stactPicker: {
-        value: [
-          { label: '湖北省', value: '420000' },
-          { label: '十堰市', value: '420300' },
-          { label: '丹江口市', value: '420381' },
-        ],
+        value: ['420000', '420300', '420381'],
       },
     };
   }
@@ -54,7 +50,7 @@ class Page extends Component {
                   ]}
                   value={single.value}
                   onOk={(value) => {
-                    console.log("pickerPage onOk ->", value);
+                    console.log('pickerPage onOk ->', value);
                     const _value = value.value;
                     single.value = _value;
                     this.setState({
@@ -357,7 +353,7 @@ class Page extends Component {
                       console.log('外部change value ->', value);
                       this.setState({
                         stactPicker: {
-                          value,
+                          value: value.map(item => item.value),
                         },
                       });
                     }

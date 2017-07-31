@@ -13,12 +13,13 @@ class PickerStack extends Component {
   constructor(props) {
     super(props);
 
+    const resolvedProps = this.resolveProps(props);
+
     this.columns = {};
 
     this.state = {
       visible: false,
-      value: props.value,
-      errorMsg: '',
+      ...resolvedProps,
     };
   }
 
@@ -26,12 +27,40 @@ class PickerStack extends Component {
     this.reposition();
   }
 
-  componentWillReceiveProps({ value, validate }) {
-    this.setState({ value, errorMsg: validate(value) });
+  componentWillReceiveProps(nextProps) {
+    this.setState(this.resolveProps(nextProps));
   }
 
   componentDidUpdate() {
     this.reposition();
+  }
+
+  resolveProps({ value, dataSource, validate }) {
+    const resolveValue = [];
+
+    value.reduce((list, item) => {
+      const valueItem = this.obtainItem(list, item);
+
+      if (valueItem) {
+        resolveValue.push(valueItem);
+
+        return valueItem.children || [];
+      }
+
+      return [];
+    }, dataSource);
+
+    return {
+      value: resolveValue,
+      valueBackups: [...resolveValue],
+      errorMsg: validate(value),
+    };
+  }
+
+  obtainItem(list, value) {
+    const { valueMember } = this.props;
+
+    return list.filter(item => item[valueMember] === value)[0];
   }
 
   change(index, cVal, isLast) {
@@ -52,9 +81,7 @@ class PickerStack extends Component {
   }
 
   show() {
-    const { value, validate } = this.props;
-
-    this.setState({ visible: true, value, errorMsg: validate(value) });
+    this.setState({ visible: true });
   }
 
   close(isCancel) {
@@ -97,7 +124,7 @@ class PickerStack extends Component {
 
     while (dataSource) {
       const colVal = value[i];
-      const childrenData = ((colVal ? dataSource.filter(item => item[valueMember] === colVal[valueMember])[0] : dataSource[0]) || {}).children;
+      const childrenData = ((colVal ? this.obtainItem(dataSource, colVal[valueMember]) : dataSource[0]) || {}).children;
 
       if (childrenData && childrenData.length && (i < (cols - 1))) {
         group.push(this.renderColumn(dataSource, i, colVal || { [valueMember]: '' }));
@@ -114,10 +141,10 @@ class PickerStack extends Component {
   }
 
   renderColumn(list, colIndex, data, isLast) {
-    const { valueMember, itemCompile } = this.props;
+    const { valueMember, prefixCls, itemCompile } = this.props;
     const pickVal = data[valueMember];
     const cls = classnames({
-      'ui-picker-stack-column': true,
+      [`${prefixCls}-stack-column`]: true,
       'lower-hidden': !pickVal,
     });
 
@@ -127,7 +154,7 @@ class PickerStack extends Component {
         className={cls}
         onClick={() => this.change(colIndex - 1)}>
         <div
-          className="ui-picker-stack-column-wrapper"
+          className={`${prefixCls}-stack-column-wrapper`}
           ref={(ref) => { this.columns[`column${colIndex}`] = ref; }}
           onClick={stopEventPropagation}>
           {
@@ -136,7 +163,7 @@ class PickerStack extends Component {
                 key={index}
                 className={
                   classnames({
-                    'ui-picker-stack-item': true,
+                    [`${prefixCls}-stack-item`]: true,
                     active: item[valueMember] === pickVal,
                   })
                 }
@@ -151,21 +178,21 @@ class PickerStack extends Component {
   }
 
   render() {
-    const { className, value: baseVal, title, dataSource, placeholder, disabled, labelAddon, displayCompile, itemCompile } = this.props;
-    const { visible, errorMsg, value } = this.state;
-    const displayLabel = displayCompile(baseVal);
+    const { className, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayCompile, itemCompile } = this.props;
+    const { visible, errorMsg, value, valueBackups } = this.state;
+    const displayLabel = displayCompile(valueBackups);
     const labelCls = classnames({
-      'ui-picker-placeholder': !displayLabel,
-      'ui-picker-disabled': disabled,
+      [`${prefixCls}-placeholder`]: !displayLabel,
+      [`${prefixCls}-disabled`]: disabled,
     });
     const wrapperCls = classnames({
-      'ui-picker-container': true,
-      'ui-picker-hidden': !visible,
+      [`${prefixCls}-container`]: true,
+      [`${prefixCls}-hidden`]: !visible,
       [className]: !!className,
     });
 
     return (
-      <div className="ui-picker">
+      <div className={prefixCls}>
         <div className={labelCls} onClick={() => !disabled && this.show()}>{ displayLabel || placeholder }</div>
         {
           disabled ?
@@ -175,16 +202,18 @@ class PickerStack extends Component {
               className="ui-popup-inner"
               visible={visible}
               onMaskClick={() => this.close(true)}>
-              <div className="ui-picker-header">
-                <div className="ui-picker-cancel" onClick={() => this.close(true)}>取消</div>
-                <div className="ui-picker-title">{ title }</div>
-                <div className="ui-picker-submit" />
+              <div className={`${prefixCls}-wrapper`}>
+                <div className={`${prefixCls}-header`}>
+                  <div className={`${prefixCls}-cancel`} onClick={() => this.close(true)}>取消</div>
+                  <div className={`${prefixCls}-title`}>{ title }</div>
+                  <div className={`${prefixCls}-submit`} />
+                </div>
+                <div className={`${prefixCls}-crumbs`}>
+                  <p>选择：{ value.map(item => itemCompile(item)).join(labelAddon) }</p>
+                  { errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{ errorMsg }</p> : null }
+                </div>
+                <div className={`${prefixCls}-stack-group`}>{ this.renderGroup(dataSource, value) }</div>
               </div>
-              <div className="ui-picker-crumbs">
-                <p>选择：{ value.map(item => itemCompile(item)).join(labelAddon) }</p>
-                { errorMsg ? <p className="ui-picker-crumbs-error">{ errorMsg }</p> : null }
-              </div>
-              <div className="ui-picker-stack-group">{ this.renderGroup(dataSource, value) }</div>
             </Popup>
           </div>
         }
@@ -202,6 +231,7 @@ PickerStack.propTypes = {
   labelAddon: PropTypes.string,
   displayItems: PropTypes.number,
   itemHeight: PropTypes.number,
+  prefixCls: PropTypes.string,
   onOk: PropTypes.func,
   onCancel: PropTypes.func,
   displayCompile: PropTypes.func,
@@ -220,6 +250,7 @@ PickerStack.defaultProps = {
   labelAddon: ' > ',
   displayItems: 8,
   itemHeight: 30,
+  prefixCls: 'ui-picker',
   onOk: () => {},
   onCancel: () => {},
   displayCompile: data => data.map(({ label }) => label).join(''),
