@@ -106,17 +106,17 @@ export function formatToInit(data, member, cols) {
 }
 
 const filterValue = (dataSource, value, member, level) => {
-  return dataSource.find(item => (
+  return dataSource.filter(item => (
     item[member] === value[level]
-  ));
+  ))[0];
 };
 
 export function formatBackToObject(data, value, cascade, member, cols) {
   if (!cascade) {
     const result = data.map((item, index) => (
-      item.find(itemInner => (
+      item.filter(itemInner => (
         itemInner[member] === value[index]
-      ))
+      ))[0]
     ));
     return value.length === 1 ? result[0] : result;
   }
