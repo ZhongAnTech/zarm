@@ -11,6 +11,7 @@ $prefixCls: za-icon;
 }
 
 .#{$prefixCls} {
+  display: inline-block;
   font-family: "dragonicon" !important;
   font-size: r(16);
   font-style: normal;

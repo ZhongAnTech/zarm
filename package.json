@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run deploy && npm run dev",
@@ -41,7 +41,6 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
-    "fastclick": "^1.0.6",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.2",
@@ -78,9 +77,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/JeromeLin/zaxui"
+    "url": "git://github.com/JeromeLin/zarm"
   },
   "bugs": {
-    "url": "https://github.com/JeromeLin/zaxui/issues"
+    "url": "https://github.com/JeromeLin/zarm/issues"
   }
 }
