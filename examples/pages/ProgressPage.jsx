@@ -45,7 +45,7 @@ class Page extends Component {
                   />
               </Cell>
 
-              <Cell title="主题">
+              <Cell title="主题1">
                 <Picker
                   value={this.state.theme}
                   dataSource={[
