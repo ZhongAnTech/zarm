@@ -214,7 +214,7 @@ class Picker extends Component {
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
-            className="zax-popup-inner"
+            className="za-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
             <div className={`${prefixCls}-wrapper`}>
@@ -269,7 +269,7 @@ Picker.defaultProps = {
   onOk: () => {},
   onCancel: () => {},
   onMaskClick: () => {},
-  prefixCls: 'zax-picker',
+  prefixCls: 'za-picker',
   displayMember: 'label',
   valueMember: 'value',
 };

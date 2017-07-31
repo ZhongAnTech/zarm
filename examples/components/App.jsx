@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FastClick from 'fastclick';
-import Eruda from 'eruda';
+// import Eruda from 'eruda';
 // import Events from '../utils/events';
 
 // page styles
@@ -15,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     // Events.on(window, 'resize', window.__setFontSize__);
     FastClick.attach(document.body);
-    Eruda.init();
+    // Eruda.init();
   }
 
   render() {

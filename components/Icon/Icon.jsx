@@ -26,7 +26,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  prefixCls: 'zax-icon',
+  prefixCls: 'za-icon',
   className: null,
   type: '',
   theme: null,

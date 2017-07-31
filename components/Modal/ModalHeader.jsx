@@ -33,7 +33,7 @@ ModalHeader.propTypes = {
 };
 
 ModalHeader.defaultProps = {
-  prefixCls: 'zax-modal-header',
+  prefixCls: 'za-modal-header',
   className: null,
   title: '',
   onClose: null,

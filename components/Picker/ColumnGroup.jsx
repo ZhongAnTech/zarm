@@ -72,7 +72,7 @@ ColumnGroup.propTypes = {
 };
 
 ColumnGroup.defaultProps = {
-  prefixCls: 'zax-picker',
+  prefixCls: 'za-picker',
   onValueChange: () => {},
 };
 

@@ -135,7 +135,7 @@ Popup.propTypes = {
 };
 
 Popup.defaultProps = {
-  prefixCls: 'zax-popup',
+  prefixCls: 'za-popup',
   className: null,
   visible: false,
   mask: true,

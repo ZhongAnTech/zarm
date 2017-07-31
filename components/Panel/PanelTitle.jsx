@@ -21,7 +21,7 @@ PanelTitle.propTypes = {
 };
 
 PanelTitle.defaultProps = {
-  prefixCls: 'zax-panel-title',
+  prefixCls: 'za-panel-title',
   className: null,
 };
 

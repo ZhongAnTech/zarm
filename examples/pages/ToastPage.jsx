@@ -56,7 +56,7 @@ class ToastPage extends Component {
                       toast.children = (
                         <div>
                           <Icon type="right-round-fill" style={{ fontSize: '3rem' }} />
-                          <div style={{ marginTop: '10px' }}>预约成功</div>
+                          <div style={{ marginBottom: 5 }}>预约成功</div>
                         </div>
                       );
                       this.setState({ toast });
