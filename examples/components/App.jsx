@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FastClick from 'fastclick';
 import Eruda from 'eruda';
-import Events from '../utils/events';
+// import Events from '../utils/events';
 
 // page styles
 import '../styles/core/index';
@@ -13,7 +13,7 @@ import '../../styles/index';
 class App extends Component {
 
   componentDidMount() {
-    Events.on(window, 'resize', window.__setFontSize__);
+    // Events.on(window, 'resize', window.__setFontSize__);
     FastClick.attach(document.body);
     Eruda.init();
   }
