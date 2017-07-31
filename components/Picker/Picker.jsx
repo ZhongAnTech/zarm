@@ -80,7 +80,6 @@ class Picker extends Component {
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
-
     this.tempValue = value;
     this.toggle();
     let _value = null;
