@@ -149,7 +149,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  prefixCls: 'ui-modal',
+  prefixCls: 'zax-modal',
   className: null,
   visible: false,
   animationType: 'zoom',

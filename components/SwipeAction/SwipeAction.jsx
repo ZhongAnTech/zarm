@@ -235,7 +235,7 @@ SwipeAction.propTypes = {
 };
 
 SwipeAction.defaultProps = {
-  prefixCls: 'ui-swipeAction',
+  prefixCls: 'zax-swipeAction',
   left: [],
   right: [],
   moveTimeDuration: 300,

@@ -21,7 +21,7 @@ PanelTitle.propTypes = {
 };
 
 PanelTitle.defaultProps = {
-  prefixCls: 'ui-panel-title',
+  prefixCls: 'zax-panel-title',
   className: null,
 };
 

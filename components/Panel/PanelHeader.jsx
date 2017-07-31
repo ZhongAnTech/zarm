@@ -21,7 +21,7 @@ PanelHeader.propTypes = {
 };
 
 PanelHeader.defaultProps = {
-  prefixCls: 'ui-panel-header',
+  prefixCls: 'zax-panel-header',
   className: null,
 };
 

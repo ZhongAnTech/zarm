@@ -41,7 +41,7 @@ TabContainer.propTypes = {
 };
 
 TabContainer.defaultProps = {
-  prefixCls: 'ui-tab-container-item',
+  prefixCls: 'zax-tab-container-item',
   className: null,
 };
 

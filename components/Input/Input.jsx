@@ -118,7 +118,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  prefixCls: 'ui-input',
+  prefixCls: 'zax-input',
   className: null,
   type: 'text',
   radius: false,

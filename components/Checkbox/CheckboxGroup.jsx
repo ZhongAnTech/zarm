@@ -90,7 +90,7 @@ CheckboxGroup.propTypes = {
 };
 
 CheckboxGroup.defaultProps = {
-  prefixCls: 'ui-checkbox-group',
+  prefixCls: 'zax-checkbox-group',
   className: null,
   theme: 'primary',
   type: null,

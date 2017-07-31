@@ -21,7 +21,7 @@ Loading.propTypes = {
 };
 
 Loading.defaultProps = {
-  prefixCls: 'ui-loading',
+  prefixCls: 'zax-loading',
 };
 
 export default Loading;

@@ -118,7 +118,7 @@ Stepper.propTypes = {
 };
 
 Stepper.defaultProps = {
-  prefixCls: 'ui-stepper',
+  prefixCls: 'zax-stepper',
   className: null,
   theme: 'primary',
   size: null,

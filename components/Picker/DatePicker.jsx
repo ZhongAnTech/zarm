@@ -466,36 +466,36 @@ class DatePicker extends Component {
     const { prefixCls, className, disabled, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
 
     const classes = classnames({
-      'ui-picker-container': true,
-      'ui-picker-hidden': !this.state.visible,
+      'zax-picker-container': true,
+      'zax-picker-hidden': !this.state.visible,
       [className]: !!className,
     });
 
     const inputCls = classnames({
-      'ui-picker-placeholder': !this.state.date,
-      'ui-picker-disabled': !!disabled,
+      'zax-picker-placeholder': !this.state.date,
+      'zax-picker-disabled': !!disabled,
     });
 
     return (
       <div
-        className="ui-picker"
+        className="zax-picker"
         onClick={() => this.handleClick()}>
         <div className={inputCls}>
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
         </div>
         <div className={classes} onClick={e => stopClick(e)}>
           <Popup
-            className="ui-popup-inner"
+            className="zax-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
-            <div className="ui-picker-wrapper">
-              <div className="ui-picker-header">
-                <div className="ui-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
-                <div className="ui-picker-title">{title}</div>
-                <div className="ui-picker-submit" onClick={() => this.onOk()}>{okText}</div>
+            <div className="zax-picker-wrapper">
+              <div className="zax-picker-header">
+                <div className="zax-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
+                <div className="zax-picker-title">{title}</div>
+                <div className="zax-picker-submit" onClick={() => this.onOk()}>{okText}</div>
               </div>
-              <div className="ui-picker-mask-top">
-                <div className="ui-picker-mask-bottom">
+              <div className="zax-picker-mask-top">
+                <div className="zax-picker-mask-bottom">
                   <ColumnGroup
                     className={className}
                     prefixCls={prefixCls}
@@ -556,7 +556,7 @@ DatePicker.defaultProps = {
   onMaskClick: () => {},
   locale: defaultLocale,
   minuteStep: 1,
-  prefixCls: 'ui-picker',
+  prefixCls: 'zax-picker',
   displayMember: 'value',
   valueMember: 'value',
 };

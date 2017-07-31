@@ -10,7 +10,7 @@ class Page extends PureComponent {
       <div className="index-page">
         <header>
           <section className="brand">
-            <div className="brand-title">Dragon Mobile UI</div>
+            <div className="brand-title">ZaxUI</div>
             <div className="brand-description">众安保险移动端组件库</div>
           </section>
         </header>

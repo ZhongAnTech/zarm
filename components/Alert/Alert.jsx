@@ -31,7 +31,7 @@ Alert.propTypes = {
 };
 
 Alert.defaultProps = {
-  prefixCls: 'ui-alert',
+  prefixCls: 'zax-alert',
   message: '',
   cancelText: '关闭',
   onCancel() {},

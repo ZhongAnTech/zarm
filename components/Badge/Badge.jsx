@@ -36,7 +36,7 @@ Badge.propTypes = {
 };
 
 Badge.defaultProps = {
-  prefixCls: 'ui-badge',
+  prefixCls: 'zax-badge',
   className: null,
   theme: 'error',
   shape: null,

@@ -26,7 +26,7 @@ Mask.propTypes = {
 };
 
 Mask.defaultProps = {
-  prefixCls: 'ui-mask',
+  prefixCls: 'zax-mask',
   className: null,
   visible: false,
   type: 'normal',

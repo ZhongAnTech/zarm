@@ -30,7 +30,7 @@ ModalBody.propTypes = {
 };
 
 ModalBody.defaultProps = {
-  prefixCls: 'ui-modal-body',
+  prefixCls: 'zax-modal-body',
   className: null,
 };
 

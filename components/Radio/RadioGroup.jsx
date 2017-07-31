@@ -79,7 +79,7 @@ RadioGroup.propTypes = {
 };
 
 RadioGroup.defaultProps = {
-  prefixCls: 'ui-radio-group',
+  prefixCls: 'zax-radio-group',
   className: null,
   theme: 'primary',
   type: null,

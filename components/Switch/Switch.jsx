@@ -69,7 +69,7 @@ Switch.propTypes = {
 };
 
 Switch.defaultProps = {
-  prefixCls: 'ui-switch',
+  prefixCls: 'zax-switch',
   className: null,
   theme: 'primary',
   size: null,

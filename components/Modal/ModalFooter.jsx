@@ -25,7 +25,7 @@ ModalFooter.propTypes = {
 };
 
 ModalFooter.defaultProps = {
-  prefixCls: 'ui-modal-footer',
+  prefixCls: 'zax-modal-footer',
   className: null,
 };
 

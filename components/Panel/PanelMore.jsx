@@ -21,7 +21,7 @@ PanelMore.propTypes = {
 };
 
 PanelMore.defaultProps = {
-  prefixCls: 'ui-panel-more',
+  prefixCls: 'zax-panel-more',
   className: null,
 };
 
