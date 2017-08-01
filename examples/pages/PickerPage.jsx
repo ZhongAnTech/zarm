@@ -334,7 +334,7 @@ class Page extends Component {
               <Panel.Title>层叠式选择器</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell title="层叠式选择器">
+              <Cell title="省市区选择">
                 <Picker.Stack
                   title="请选择"
                   placeholder="请选择"
