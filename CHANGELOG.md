@@ -1,5 +1,8 @@
 # 版本更新日志  
 
+## 0.0.46 
+  * 修复Picker单列默认值和展示的bug，Picker.Date时间单位显示不正确的bug。
+
 ## 0.0.45 
   * 修复Picker接收新dataSource时不重新render的bug
 
