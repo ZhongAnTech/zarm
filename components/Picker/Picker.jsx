@@ -18,7 +18,7 @@ class Picker extends Component {
 
     if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
       _data = [props.dataSource];
-      _value = props.value ? [props.value] : [];
+      _value = Object.prototype.toString.call(props.value) === '[object Array]' ? props.value : [props.value];
     } else {
       _data = props.dataSource;
       _value = props.value;
@@ -42,7 +42,7 @@ class Picker extends Component {
 
 
       if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
-        _value = nextProps.value ? [nextProps.value] : [];
+        _value = Object.prototype.toString.call(nextProps.value) === '[object Array]' ? nextProps.value : [nextProps.value];
         _data = [nextProps.dataSource];
       } else {
         _value = nextProps.value;
