@@ -1,6 +1,6 @@
 {
   "name": "dragon-mobile-ui",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run deploy && npm run dev",
