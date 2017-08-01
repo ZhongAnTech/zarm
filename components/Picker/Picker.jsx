@@ -77,6 +77,7 @@ class Picker extends Component {
     const { onOk } = this.props;
     const value = this.getInitValue();
 
+    console.log(value);
     this.tempValue = value;
     this.toggle();
     let _value = null;
@@ -135,6 +136,7 @@ class Picker extends Component {
     const { prefixCls, format, disabled, pickerPrefixCls, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
     const { data, value } = this.state;
 
+    console.log('render value', value);
     let PickerCol = null;
 
     const classes = classnames({
@@ -198,8 +200,8 @@ class Picker extends Component {
       let treeChildren2 = this.props.dataSource.reduce((a, b) => {
         return a.concat(b);
       }, []);
-
-      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item.value); });
+      console.log('treeChildren2 => ', treeChildren2);
+      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item[valueMember]); });
 
       return treeChildren2.map((v) => {
         return v[displayMember];
