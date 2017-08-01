@@ -8,7 +8,6 @@ export { default as Confirm } from './Confirm';
 export { default as Icon } from './Icon';
 export { default as Input } from './Input';
 export { default as Loading } from './Loading';
-// export { default as Lottery } from './Lottery';
 export { default as Message } from './Message';
 export { default as Mask } from './Mask';
 export { default as Modal } from './Modal';
