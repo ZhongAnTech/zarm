@@ -9,6 +9,11 @@ $prefixCls: za-checkbox;
     margin-left: 0;
   }
 
+  &-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   &-input {
     position: absolute;
     left: 0;
@@ -20,29 +25,6 @@ $prefixCls: za-checkbox;
 
   &-text {
     margin-left: r(5);
-  }
-
-  /* 选中状态 */
-  &.checked {
-    .#{$prefixCls}-inner {
-      &:before {
-        transform: rotate(45deg) scale(1);
-        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
-      }
-    }
-  }
-
-  /* 禁用状态 */
-  &.disabled {
-    .#{$prefixCls}-inner {
-      border-color: #d9d9d9;
-      background-color: #f3f3f3;
-      cursor: not-allowed;
-
-      &:before {
-        border-color: #ccc;
-      }
-    }
   }
 
   &-inner {
@@ -124,6 +106,29 @@ $prefixCls: za-checkbox;
             border-radius: 0 r(15) r(15) 0;
           }
         }
+      }
+    }
+  }
+
+  /* 选中状态 */
+  &.checked {
+    .#{$prefixCls}-inner {
+      &:before {
+        transform: rotate(45deg) scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  &.disabled {
+    .#{$prefixCls}-inner {
+      border-color: #d9d9d9;
+      background-color: #f3f3f3;
+      cursor: not-allowed;
+
+      &:before {
+        border-color: #ccc;
       }
     }
   }
