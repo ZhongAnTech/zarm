@@ -11,13 +11,13 @@ npm install zarm
 ## 使用
 ```
 import { Button, Cell } from 'zarm';
-import 'zarm/styles/index.scss'
+import 'zarm/styles/index.scss';
 
 or
 
 import Button from 'zarm/lib/Button';
-import 'zarm/styles/core/index.scss'
-import 'zarm/styles/components/Button.scss'
+import 'zarm/styles/core/index.scss';
+import 'zarm/styles/components/Button.scss';
 ```
 
 ## 更新日志
