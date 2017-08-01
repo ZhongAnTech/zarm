@@ -21,7 +21,7 @@ class Picker extends Component {
 
     if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
       _data = [props.dataSource];
-      _value = props.value.length ? [props.value] : props.value;
+      _value = props.value ? [props.value] : [];
     } else {
       _data = props.dataSource;
       _value = props.value;
@@ -34,18 +34,17 @@ class Picker extends Component {
       cascade: Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children'),
     };
 
-    this.tempValue = props.value;
+    this.tempValue = _value;
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps);
     if ('value' in nextProps) {
       let _value = null;
       let _data = null;
 
 
       if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
-        _value = nextProps.value.length ? [nextProps.value] : nextProps.value;
+        _value = nextProps.value ? [nextProps.value] : [];
         _data = [nextProps.dataSource];
       } else {
         _value = nextProps.value;
@@ -197,7 +196,7 @@ class Picker extends Component {
         return a.concat(b);
       }, []);
 
-      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item.value); });
+      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item[valueMember]); });
 
       return treeChildren2.map((v) => {
         return v[displayMember];
@@ -216,7 +215,7 @@ class Picker extends Component {
           <Popup
             className="za-popup-inner"
             visible={this.state.visible}
-            onMaskClick={() => this.close('visible')}>
+            onMaskClick={() => this.onMaskClick()}>
             <div className={`${prefixCls}-wrapper`}>
               <div className={`${prefixCls}-header`}>
                 <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
