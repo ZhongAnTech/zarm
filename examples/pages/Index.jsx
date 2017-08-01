@@ -11,7 +11,7 @@ class Page extends PureComponent {
         <header>
           <section className="brand">
             <div className="brand-title">Zarm UI</div>
-            <div className="brand-description">众安保险移动端组件库</div>
+            <div className="brand-description">众安科技移动端组件库</div>
           </section>
         </header>
         <main>
