@@ -215,7 +215,7 @@ class Picker extends Component {
           <Popup
             className="za-popup-inner"
             visible={this.state.visible}
-            onMaskClick={() => this.close('visible')}>
+            onMaskClick={() => this.onMaskClick()}>
             <div className={`${prefixCls}-wrapper`}>
               <div className={`${prefixCls}-header`}>
                 <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
