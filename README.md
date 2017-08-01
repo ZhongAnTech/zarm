@@ -2,7 +2,7 @@
   [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm)
   [![npm package](https://img.shields.io/npm/v/zarm.svg?style=flat-square)](https://www.npmjs.org/package/zarm)
   [![NPM downloads](http://img.shields.io/npm/dm/zarm.svg?style=flat-square)](https://npmjs.org/package/zarm)  
-  众安科技移动端UI组件库
+  众安保险移动端UI组件库
   
 ## 安装
 ```
