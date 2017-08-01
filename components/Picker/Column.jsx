@@ -138,7 +138,7 @@ class Column extends Component {
   render() {
     const {
       children, prefixCls,
-      className, itemStyle,
+      className, itemStyle, displayMember,
       indicatorStyle, valueMember,
     } = this.props;
 
@@ -150,8 +150,8 @@ class Column extends Component {
         <div
           style={itemStyle}
           className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
-          key={item.value} >
-          {item.label}
+          key={item[valueMember]} >
+          {item[displayMember]}
         </div>
       );
     });
