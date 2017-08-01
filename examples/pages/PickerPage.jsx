@@ -22,11 +22,14 @@ class Page extends Component {
       timePicker: {},
       datetimePicker: {},
       diyDatePicker: {},
+      stactPicker: {
+        value: [],
+      },
     };
   }
 
   render() {
-    const { single, multiple, multiple2, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker } = this.state;
+    const { single, multiple, multiple2, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker, stactPicker } = this.state;
 
     return (
       <div className="cell-page">
@@ -47,7 +50,7 @@ class Page extends Component {
                   ]}
                   value={single.value}
                   onOk={(value) => {
-                    console.log("pickerPage onOk ->", value);
+                    console.log('pickerPage onOk ->', value);
                     const _value = value.value;
                     single.value = _value;
                     this.setState({
@@ -320,6 +323,38 @@ class Page extends Component {
                   }}
                   onCancel={() => {
                   }}
+                  />
+              </Cell>
+
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>层叠式选择器</Panel.Title>
+            </Panel.Header>
+            <Panel.Body>
+              <Cell title="层叠式选择器">
+                <Picker.Stack
+                  title="请选择"
+                  placeholder="请选择"
+                  dataSource={District}
+                  cols={3}
+                  valueMember="value"
+                  value={stactPicker.value}
+                  labelAddon=" - "
+                  itemCompile={data => `${data.label}(${data.value})`}
+                  displayCompile={selected => selected.map(item => item.label).join('-')}
+                  validate={selected => ((selected.length && selected[0].label === '北京') ? '选择了北京行政区域' : '')}
+                  onOk={(selected) => {
+                    console.log('选中项:', selected);
+                    this.setState({
+                      stactPicker: {
+                        value: selected.map(item => item.value),
+                      },
+                    });
+                  }}
+                  onCancel={() => { console.log('===> cancel <==='); }}
                   />
               </Cell>
 
