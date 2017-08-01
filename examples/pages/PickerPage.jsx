@@ -9,9 +9,7 @@ class Page extends Component {
     super(props);
     this.state = {
       single: {},
-      multiple: {
-        value: ['1', '2'],
-      },
+      multiple: {},
       multiple2: {},
       disabled: {
         value: '1',
