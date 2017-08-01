@@ -60,7 +60,9 @@ class CellPage extends Component {
       testPicker2: false,
       single: {},
       single2: {},
-      col1: {},
+      col1: {
+        value: 1,
+      },
       single1Data: testData.result.bookingDate[0],
       single2Data: testData.result.bookingTime[0],
     };
@@ -216,13 +218,13 @@ class CellPage extends Component {
                 dataSource={col1Data}
                 valueMember="idCardType"
                 displayMember="idCardName"
-                value={this.state.col1.value}
+                value={col1.value}
                 onChange={(value) => {
                   console.log('onChange ', value);
                 }}
                 onOk={(value) => {
                   console.log('外部ok value ->', value);
-                  col1.value = value;
+                  col1.value = value[0];
                   this.setState({
                     col1,
                   });
