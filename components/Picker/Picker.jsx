@@ -18,7 +18,7 @@ class Picker extends Component {
 
     if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
       _data = [props.dataSource];
-      _value = props.value.length ? [props.value] : props.value;
+      _value = props.value ? [props.value] : [];
     } else {
       _data = props.dataSource;
       _value = props.value;
@@ -42,7 +42,7 @@ class Picker extends Component {
 
 
       if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
-        _value = nextProps.value.length ? [nextProps.value] : nextProps.value;
+        _value = nextProps.value ? [nextProps.value] : [];
         _data = [nextProps.dataSource];
       } else {
         _value = nextProps.value;
@@ -81,7 +81,7 @@ class Picker extends Component {
     this.toggle();
     let _value = null;
 
-    _value = value.length === 1 ? value.toString() : value;
+    _value = value.length === 1 ? value[0] : value;
 
     onOk && onOk(_value);
   }
@@ -198,8 +198,7 @@ class Picker extends Component {
       let treeChildren2 = this.props.dataSource.reduce((a, b) => {
         return a.concat(b);
       }, []);
-
-      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item.value); });
+      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item[valueMember]); });
 
       return treeChildren2.map((v) => {
         return v[displayMember];
