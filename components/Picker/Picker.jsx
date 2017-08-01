@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { arrayTreeFilter, formatToInit, formatBackToObject } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
-import { Popup } from '../../components';
+import Popup from '../Popup';
 
 
 // 阻止选择器区域的默认事件
