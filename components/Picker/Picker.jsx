@@ -31,7 +31,7 @@ class Picker extends Component {
       cascade: Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children'),
     };
 
-    this.tempValue = props.value;
+    this.tempValue = _value;
   }
 
   componentWillReceiveProps(nextProps) {
