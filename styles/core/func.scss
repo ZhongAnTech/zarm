@@ -1,29 +1,29 @@
-/*
-  为了兼容老系统写法，参数2倍后才是设计稿尺寸
-  详见 https://github.com/amfe/lib-flexible
-*/
-/*
-@function r($px, $isFixed:true) {
-  @if $px != 0 {
-    @return $px * 2 / 75 * 1rem;
-  }
-  @else
-  {
-    @return 0;
-  }
+@function r($px) {
+  @return $px * 1px;
 }
-*/
 
+/*
 $ratio: 750/640;
-
-@function r($px, $isFixed:true) {
-  /* 
+@function r($px) {
   @if $px != 0 {
     @return $px / $ratio / $base-fontSize * 1rem;
   }
   @else {
     @return 0;
   }
-  */
-  @return $px * 1px;
 }
+*/
+
+/*
+  阿里flexible方案，详见 https://github.com/amfe/lib-flexible
+*/
+/*
+@function r($px) {
+  @if $px != 0 {
+    @return $px * 2 / 75 * 1rem;
+  }
+  @else {
+    @return 0;
+  }
+}
+*/

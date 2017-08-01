@@ -1,4 +1,4 @@
-$prefixCls: ui-icon;
+$prefixCls: za-icon;
 
 @mixin icon-theme($color) {
   color: $color;
@@ -12,11 +12,9 @@ $prefixCls: ui-icon;
 
 .#{$prefixCls} {
   display: inline-block;
-  /* margin-top: -2px; */
-  vertical-align: middle;
   font-family: "dragonicon" !important;
+  font-size: r(16);
   font-style: normal;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

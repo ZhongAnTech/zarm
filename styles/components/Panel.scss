@@ -1,4 +1,4 @@
-$prefixCls: ui-panel;
+$prefixCls: za-panel;
 
 .#{$prefixCls} {
   &-header {
@@ -25,7 +25,7 @@ $prefixCls: ui-panel;
     font-size: r(14);
     color: #999;
 
-    .ui-icon {
+    .za-icon {
       margin-right: r(5);
     }
   }

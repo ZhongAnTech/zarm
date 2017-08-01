@@ -72,7 +72,7 @@ Radio.propTypes = {
 };
 
 Radio.defaultProps = {
-  prefixCls: 'ui-radio',
+  prefixCls: 'za-radio',
   className: null,
   type: null,
   defaultChecked: false,

@@ -69,7 +69,7 @@ Cell.propTypes = {
 };
 
 Cell.defaultProps = {
-  prefixCls: 'ui-cell',
+  prefixCls: 'za-cell',
   className: null,
   hasArrow: false,
   disabled: false,

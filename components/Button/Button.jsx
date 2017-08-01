@@ -63,7 +63,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  prefixCls: 'ui-button',
+  prefixCls: 'za-button',
   className: null,
   theme: 'default',
   size: null,

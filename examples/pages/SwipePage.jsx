@@ -24,7 +24,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="ui-swipe-item" key={+i}>
+      <div className="za-swipe-item" key={+i}>
         <div className="swipe-pic">
           <a href={item.url}>
             <img src={item.img} alt={item.title} />

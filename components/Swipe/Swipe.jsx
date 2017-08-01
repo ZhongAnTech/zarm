@@ -247,6 +247,9 @@ class Swipe extends Component {
       activeIndex = (px > 0)
         ? (this.state.activeIndex - 1)
         : (this.state.activeIndex + 1);
+
+      const { onChange } = this.props;
+      typeof onChange === 'function' && onChange(activeIndex);
     }
     this.onSlideTo(activeIndex);
     this.pointStart = 0;
@@ -357,11 +360,12 @@ Swipe.propTypes = {
   autoPlayIntervalTime: PropTypes.number,
   moveDistanceRatio: PropTypes.number,
   moveTimeSpan: PropTypes.number,
+  onChange: PropTypes.func,
   onChangeEnd: PropTypes.func,
 };
 
 Swipe.defaultProps = {
-  prefixCls: 'ui-swipe',
+  prefixCls: 'za-swipe',
   direction: 'left',
   height: 160,
   loop: false,
@@ -371,6 +375,7 @@ Swipe.defaultProps = {
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
+  onChange() {},
   onChangeEnd() {},
 };
 

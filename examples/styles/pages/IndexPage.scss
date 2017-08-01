@@ -17,7 +17,7 @@
     padding: r(15);
   }
 
-  .ui-panel-body {
+  .za-panel-body {
     border-radius: r(2);
 
     &:after {
@@ -25,7 +25,7 @@
     }
   }
 
-  .ui-cell {
+  .za-cell {
     background-color: transparent;
 
     &:first-of-type {

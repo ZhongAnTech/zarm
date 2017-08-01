@@ -1,6 +1,36 @@
 {
-  "name": "dragon-mobile-ui",
-  "version": "1.0.0",
+  "name": "zarm",
+  "version": "1.0.4",
+  "description": "基于 React 的移动端UI库",
+  "tags": [
+    "zarm",
+    "zarm-ui",
+    "react",
+    "react-zarm",
+    "zhongan"
+  ],
+  "keywords": [
+    "react",
+    "react-ui",
+    "react-component",
+    "zarm",
+    "zarm-ui",
+    "zarm-mobile",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend",
+    "mobile"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JeromeLin/zarm"
+  },
+  "bugs": {
+    "url": "https://github.com/JeromeLin/zarm/issues"
+  },
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run deploy && npm run dev",
@@ -41,7 +71,6 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
-    "fastclick": "^1.0.6",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.2",
@@ -57,28 +86,5 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.5.0",
     "webpack-dev-server": "1.16.2"
-  },
-  "tags": [
-    "react",
-    "dragon"
-  ],
-  "keywords": [
-    "react",
-    "react-ui",
-    "react-component",
-    "dragon-ui",
-    "dragon-mobile-ui",
-    "dragon",
-    "mobile"
-  ],
-  "description": "UI for react.js",
-  "author": "Jerome.Lin <16908091@qq.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/JeromeLin/dragon-ui"
-  },
-  "bugs": {
-    "url": "https://github.com/JeromeLin/dragon-ui/issues"
   }
 }
