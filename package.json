@@ -1,6 +1,36 @@
 {
   "name": "zarm",
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "description": "基于 React 的移动端UI库",
+  "tags": [
+    "zarm",
+    "zarm-ui",
+    "react",
+    "react-zarm",
+    "zhongan"
+  ],
+  "keywords": [
+    "react",
+    "react-ui",
+    "react-component",
+    "zarm",
+    "zarm-ui",
+    "zarm-mobile",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend",
+    "mobile"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JeromeLin/zarm"
+  },
+  "bugs": {
+    "url": "https://github.com/JeromeLin/zarm/issues"
+  },
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run deploy && npm run dev",
@@ -56,30 +86,5 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.5.0",
     "webpack-dev-server": "1.16.2"
-  },
-  "tags": [
-    "zarm",
-    "zarm-ui",
-    "react",
-    "react-zarm",
-    "zhongan"
-  ],
-  "keywords": [
-    "react",
-    "react-ui",
-    "react-component",
-    "zarm",
-    "zarm-ui",
-    "mobile"
-  ],
-  "description": "UI for react.js",
-  "author": "Jerome.Lin <jerome.lin@zhongan.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/JeromeLin/zarm"
-  },
-  "bugs": {
-    "url": "https://github.com/JeromeLin/zarm/issues"
   }
 }
