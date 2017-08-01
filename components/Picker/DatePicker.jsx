@@ -466,36 +466,36 @@ class DatePicker extends Component {
     const { prefixCls, className, disabled, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
 
     const classes = classnames({
-      'za-picker-container': true,
-      'za-picker-hidden': !this.state.visible,
+      [`${prefixCls}-container`]: true,
+      [`${prefixCls}-hidden`]: !this.state.visible,
       [className]: !!className,
     });
 
     const inputCls = classnames({
-      'za-picker-placeholder': !this.state.date,
-      'za-picker-disabled': !!disabled,
+      [`${prefixCls}-placeholder`]: !this.state.date,
+      [`${prefixCls}-disabled`]: !!disabled,
     });
 
     return (
       <div
-        className="za-picker"
+        className={prefixCls}
         onClick={() => this.handleClick()}>
         <div className={inputCls}>
+          <input type="hidden" value={this.state.date} />
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
         </div>
         <div className={classes} onClick={e => stopClick(e)}>
           <Popup
-            className="za-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
-            <div className="za-picker-wrapper">
-              <div className="za-picker-header">
-                <div className="za-picker-cancel" onClick={() => this.onCancel()}>{cancelText}</div>
-                <div className="za-picker-title">{title}</div>
-                <div className="za-picker-submit" onClick={() => this.onOk()}>{okText}</div>
+            <div className={`${prefixCls}-wrapper`}>
+              <div className={`${prefixCls}-header`}>
+                <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+                <div className={`${prefixCls}-title`}>{title}</div>
+                <div className={`${prefixCls}-submit`} onClick={() => this.onOk()}>{okText}</div>
               </div>
-              <div className="za-picker-mask-top">
-                <div className="za-picker-mask-bottom">
+              <div className={`${prefixCls}-mask-top`}>
+                <div className={`${prefixCls}-mask-bottom`}>
                   <ColumnGroup
                     className={className}
                     prefixCls={prefixCls}
@@ -557,7 +557,7 @@ DatePicker.defaultProps = {
   locale: defaultLocale,
   minuteStep: 1,
   prefixCls: 'za-picker',
-  displayMember: 'value',
+  displayMember: 'label',
   valueMember: 'value',
 };
 
