@@ -38,14 +38,13 @@ class Picker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps);
     if ('value' in nextProps) {
       let _value = null;
       let _data = null;
 
 
       if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
-        _value = nextProps.value.length ? [nextProps.value] : nextProps.value;
+        _value = nextProps.value ? [nextProps.value] : [];
         _data = [nextProps.dataSource];
       } else {
         _value = nextProps.value;
@@ -198,7 +197,7 @@ class Picker extends Component {
         return a.concat(b);
       }, []);
 
-      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item.value); });
+      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item[valueMember]); });
 
       return treeChildren2.map((v) => {
         return v[displayMember];

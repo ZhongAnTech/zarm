@@ -42,13 +42,25 @@ class Page extends Component {
                 <Picker
                   visible={single.visible}
                   dataSource={[
-                    { value: '1', label: '选项一' },
-                    { value: '2', label: '选项二' },
+                    {
+                      idCardType: 1,
+                      idCardName: '身份证',
+                    },
+                    {
+                      idCardType: 2,
+                      idCardName: '护照',
+                    },
+                    {
+                      idCardType: 3,
+                      idCardName: '出生证',
+                    },
                   ]}
                   value={single.value}
+                  displayMember="idCardName"
+                  valueMember="idCardType"
                   onOk={(value) => {
-                    console.log("pickerPage onOk ->", value);
-                    const _value = value.value;
+                    console.log('pickerPage onOk ->', value);
+                    const _value = value.idCardType;
                     single.value = _value;
                     this.setState({
                       single,
