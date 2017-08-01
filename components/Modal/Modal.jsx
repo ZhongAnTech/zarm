@@ -87,18 +87,12 @@ class Modal extends PureComponent {
     const style = {
       modal: {
         WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
       },
       dialog: {
         width,
         minWidth,
         WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
       },
       // mask: {

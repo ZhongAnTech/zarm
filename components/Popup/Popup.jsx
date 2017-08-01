@@ -98,13 +98,11 @@ class Popup extends PureComponent {
 
     const style = {
       wrap: {
-        transition: `transform ${animationDuration}ms`,
+        WebkitTransitionDuration: `${animationDuration}ms`,
+        transitionDuration: `${animationDuration}ms`,
       },
       mask: {
         WebkitAnimationDuration: `${animationDuration}ms`,
-        MozAnimationDuration: `${animationDuration}ms`,
-        msAnimationDuration: `${animationDuration}ms`,
-        OAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
       },
     };
