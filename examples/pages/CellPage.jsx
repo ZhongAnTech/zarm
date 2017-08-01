@@ -27,6 +27,20 @@ const seasons = [
   ],
 ];
 
+const col1Data = [{
+  idCardType: 1,
+  idCardName: '身份证',
+},
+{
+  idCardType: 2,
+  idCardName: '护照',
+},
+{
+  idCardType: 3,
+  idCardName: '出生证',
+}];
+
+
 class CellPage extends Component {
 
   constructor(props) {
@@ -46,6 +60,9 @@ class CellPage extends Component {
       testPicker2: false,
       single: {},
       single2: {},
+      col1: {
+        value: 1,
+      },
       single1Data: testData.result.bookingDate[0],
       single2Data: testData.result.bookingTime[0],
     };
@@ -82,7 +99,7 @@ class CellPage extends Component {
   }
 
   render() {
-    const { single, single2 } = this.state;
+    const { single, single2, col1 } = this.state;
     return (
       <div className="cell-page">
         <Panel>
@@ -194,18 +211,28 @@ class CellPage extends Component {
               </Select>
             </Cell>
 
-            {/* <Cell title="省份" type="select">
+           <Cell title="单列" type="select">
               <Picker
-                placeholder="选择省份"
-                dataSource={District}
-                value={'520000'}
+                placeholder="单列选择"
+                visible={col1.visible}
+                dataSource={col1Data}
+                valueMember="idCardType"
+                displayMember="idCardName"
+                value={col1.value}
                 onChange={(value) => {
-                  console.log(value);
+                  console.log('onChange ', value);
+                }}
+                onOk={(value) => {
+                  console.log('外部ok value ->', value);
+                  col1.value = value;
+                  this.setState({
+                    col1,
+                  });
                 }}
                 />
             </Cell>
 
-            <Cell title="所在城市" type="select">
+            {/* <Cell title="所在城市" type="select">
               <Picker.Group
                 visible={this.state.picker}
                 title="选择城市"
