@@ -224,7 +224,7 @@ class CellPage extends Component {
                 }}
                 onOk={(value) => {
                   console.log('外部ok value ->', value);
-                  col1.value = value[0];
+                  col1.value = value;
                   this.setState({
                     col1,
                   });
