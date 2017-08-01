@@ -61,7 +61,7 @@ class CellPage extends Component {
       single: {},
       single2: {},
       col1: {
-        value: 1,
+        // value: 1,
       },
       single1Data: testData.result.bookingDate[0],
       single2Data: testData.result.bookingTime[0],
