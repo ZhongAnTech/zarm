@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { arrayTreeFilter, formatToInit, formatBackToObject } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
-import { Popup } from '../../components';
+import Popup from '../Popup';
 
 
 // 阻止选择器区域的默认事件
@@ -79,7 +79,6 @@ class Picker extends Component {
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
-
     this.tempValue = value;
     this.toggle();
     let _value = null;
@@ -214,7 +213,7 @@ class Picker extends Component {
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
-            className="ui-popup-inner"
+            className="za-popup-inner"
             visible={this.state.visible}
             onMaskClick={() => this.close('visible')}>
             <div className={`${prefixCls}-wrapper`}>
@@ -269,7 +268,7 @@ Picker.defaultProps = {
   onOk: () => {},
   onCancel: () => {},
   onMaskClick: () => {},
-  prefixCls: 'ui-picker',
+  prefixCls: 'za-picker',
   displayMember: 'label',
   valueMember: 'value',
 };

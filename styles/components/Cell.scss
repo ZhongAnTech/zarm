@@ -1,7 +1,7 @@
-$prefixCls: ui-cell;
+$prefixCls: za-cell;
 
 @mixin cell-theme($color) {
-  .ui-cell-footer {
+  .za-cell-footer {
     color: $color;
   }
 }
@@ -47,13 +47,13 @@ $prefixCls: ui-cell;
     cursor: pointer;
     user-select: none;
 
-    .ui-cell-inner {
+    .za-cell-inner {
       &:active {
         background-color: #d9d9d9;
       }
     }
 
-    .ui-cell-title {
+    .za-cell-title {
       flex: 1;
     }
   }

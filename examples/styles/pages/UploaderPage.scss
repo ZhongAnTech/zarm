@@ -1,7 +1,7 @@
 @import "../core/func";
 
 .uploader-page {
-  .ui-panel-body {
+  .za-panel-body {
     padding: r(15) 0 0 r(15);
   }
 
@@ -41,7 +41,10 @@
       justify-content: center;
       border: r(2) dashed #ddd;
       color: #ddd;
-      font-size: r(30);
+
+      .za-icon {
+        font-size: r(30);
+      }
     }
   }
 }

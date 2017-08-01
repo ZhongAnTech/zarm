@@ -1,4 +1,4 @@
-$prefixCls: ui-button;
+$prefixCls: za-button;
 
 @mixin button-bordered($color, $activebg, $border) {
   $active-background: $activebg;
@@ -93,12 +93,12 @@ $prefixCls: ui-button;
     border-radius: 50%;
   }
 
-  .ui-icon {
+  .za-icon {
     font-size: $icon-size;
   }
 
-  .ui-icon + span,
-  span + .ui-icon {
+  .za-icon + span,
+  span + .za-icon {
     margin-left: $spacing;
   }
 }

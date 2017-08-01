@@ -119,7 +119,7 @@ Cascader.propTypes = {
 };
 
 Cascader.defaultProps = {
-  prefixCls: 'ui-picker',
+  prefixCls: 'za-picker',
   data: [],
   disabled: false,
 };

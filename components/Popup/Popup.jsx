@@ -135,7 +135,7 @@ Popup.propTypes = {
 };
 
 Popup.defaultProps = {
-  prefixCls: 'ui-popup',
+  prefixCls: 'za-popup',
   className: null,
   visible: false,
   mask: true,

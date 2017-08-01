@@ -21,7 +21,7 @@ PanelFooter.propTypes = {
 };
 
 PanelFooter.defaultProps = {
-  prefixCls: 'ui-panel-footer',
+  prefixCls: 'za-panel-footer',
   className: null,
 };
 
