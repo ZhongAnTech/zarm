@@ -5,7 +5,7 @@ import moment from 'moment';
 import ColumnGroup from './ColumnGroup';
 import { formatFn } from './utils';
 import defaultLocale from './locale/zh_CN';
-import { Popup } from '../../components';
+import Popup from '../Popup';
 
 
 const DATETIME = 'datetime';
