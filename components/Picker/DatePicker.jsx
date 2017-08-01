@@ -547,7 +547,7 @@ DatePicker.defaultProps = {
   minuteStep: 1,
   prefixCls: 'ui-picker-column-group',
   pickerPrefixCls: 'ui-cascaderpicker',
-  displayMember: 'value',
+  displayMember: 'label',
   valueMember: 'value',
 };
 
