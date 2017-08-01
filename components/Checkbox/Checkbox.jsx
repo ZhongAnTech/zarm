@@ -66,9 +66,9 @@ class Checkbox extends PureComponent {
     return (
       <div className={cls}>
         <div className={`${prefixCls}-wrapper`}>
-          <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
           <span className={`${prefixCls}-inner`} />
           <span className={`${prefixCls}-text`}>{children}</span>
+          <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         </div>
       </div>
     );
