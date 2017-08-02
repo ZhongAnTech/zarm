@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
-import { Panel, Cell, Message, Icon } from '../../components';
+import Footer from '../components/Footer';
+import { Panel, Message, Icon } from '../../components';
 import '../styles/pages/MessagePage';
 
 class Page extends Component {
 
   render() {
     return (
-      <div className="message-page">
+      <Container className="message-page">
         <Header title="消息 Message" />
         <main>
           <Panel>
@@ -40,7 +42,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

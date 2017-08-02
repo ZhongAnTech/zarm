@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Stepper } from '../../components';
 
 class Page extends Component {
@@ -13,7 +15,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="stepper-page">
+      <Container className="stepper-page">
         <Header title="步进器 Stepper" />
         <main>
           <Panel>
@@ -110,7 +112,8 @@ class Page extends Component {
           </Panel>
 
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

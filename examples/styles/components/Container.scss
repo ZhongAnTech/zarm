@@ -1,0 +1,12 @@
+@import "../core/index";
+
+.app-container {
+  background-color: #f6f6f6;
+}
+
+@media screen and (min-width: 600px) {
+  .app-container {
+    max-width: 760px;
+  }
+}
+

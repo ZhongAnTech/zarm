@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Icon, Input, Cell, Message } from '../../components';
 
 class Page extends Component {
 
   render() {
     return (
-      <div className="cell-page">
+      <Container className="cell-page">
         <Header title="文本框 Input" />
         <main>
           <Panel>
@@ -57,7 +59,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

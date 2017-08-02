@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Swipe, Button } from '../../components';
 import '../styles/pages/SwipePage';
 
@@ -42,7 +44,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="swipe-page">
+      <Container className="swipe-page">
         <Header title="图片轮播 Swipe" />
         <main>
           <Panel>
@@ -125,7 +127,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

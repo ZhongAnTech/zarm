@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Uploader, Icon, Toast, Badge } from '../../components';
 import '../styles/pages/UploaderPage.scss';
 
@@ -99,7 +101,7 @@ class UploaderPage extends Component {
     } = this.state;
 
     return (
-      <div className="uploader-page">
+      <Container className="uploader-page">
         <Header title="上传组件 Uploader" />
 
         <main>
@@ -158,7 +160,8 @@ class UploaderPage extends Component {
 
           <Toast {...toast} />
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

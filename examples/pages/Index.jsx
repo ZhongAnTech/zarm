@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import { hashHistory } from 'react-router';
+import Container from '../components/Container';
+import Footer from '../components/Footer';
 import { Panel, Cell } from '../../components';
 import '../styles/pages/IndexPage';
 
@@ -7,7 +9,7 @@ class Page extends PureComponent {
 
   render() {
     return (
-      <div className="index-page">
+      <Container className="index-page">
         <header>
           <section className="brand">
             <div className="brand-title">Zarm UI</div>
@@ -57,18 +59,9 @@ class Page extends PureComponent {
               <Cell hasArrow title="标签页 Tab" onClick={() => hashHistory.push('/tab')} />
             </Panel.Body>
           </Panel>
-          {
-            // <Panel>
-            //   <Panel.Header>
-            //     <Panel.Title>基础组件</Panel.Title>
-            //   </Panel.Header>
-            //   <Panel.Body>
-            //     <Cell hasArrow title="大转盘 Lottery" onClick={() => hashHistory.push('/lottery')} />
-            //   </Panel.Body>
-            // </Panel>
-          }
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Stepper, Progress, Picker } from '../../components';
 import '../styles/pages/ProgressPage';
 
@@ -15,7 +17,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="progress-page">
+      <Container className="progress-page">
         <Header title="进度条 Progress" />
         <main>
           <div className="progress">
@@ -65,7 +67,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

@@ -1,10 +1,15 @@
 import React, { PureComponent } from 'react';
+import Container from '../components/Container';
+import Footer from '../components/Footer';
 
 class Page extends PureComponent {
 
   render() {
     return (
-      <div>Not Found Page</div>
+      <Container>
+        <main>Not Found Page</main>
+        <Footer />
+      </Container>
     );
   }
 }

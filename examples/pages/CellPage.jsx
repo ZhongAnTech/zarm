@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Icon, Cell } from '../../components';
 
 const img = require('../images/icons/state.png');
@@ -8,7 +10,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="cell-page">
+      <Container className="cell-page">
         <Header title="列表项 Cell" />
         <main>
           <Panel>
@@ -82,7 +84,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }
