@@ -13,7 +13,7 @@ class Container extends Component {
     });
 
     return (
-      <div className={cls} style={{ minHeight: window.screen.height }}>
+      <div className={cls} style={{ minHeight: window.innerHeight }}>
         {children}
       </div>
     );
