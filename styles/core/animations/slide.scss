@@ -1,13 +1,14 @@
-
 /* slideUp */
 @keyframes slideUp-enter {
   from {
     transform: translate3d(0, 100px, 0);
   }
+
   to {
     transform: translate3d(0, 0, 0);
   }
 }
+
 .slideUp-enter {
   animation: slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
@@ -16,10 +17,12 @@
   from {
     transform: translate3d(0, 0, 0);
   }
+
   to {
     transform: translate3d(0, 100px, 0);
   }
 }
+
 .slideUp-leave {
   animation: slideUp-leave both;
 }
@@ -29,10 +32,12 @@
   from {
     transform: translate3d(0, -100px, 0);
   }
+
   to {
     transform: translate3d(0, 0, 0);
   }
 }
+
 .slideDown-enter {
   animation: slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
@@ -41,10 +46,12 @@
   from {
     transform: translate3d(0, 0, 0);
   }
+
   to {
     transform: translate3d(0, -100px, 0);
   }
 }
+
 .slideDown-leave {
   animation: slideDown-leave both;
 }
@@ -54,10 +61,12 @@
   from {
     transform: translate3d(150px, 0, 0);
   }
+
   to {
     transform: translate3d(0, 0, 0);
   }
 }
+
 .slideLeft-enter {
   animation: slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
@@ -66,10 +75,12 @@
   from {
     transform: translate3d(0, 0, 0);
   }
+
   to {
     transform: translate3d(150px, 0, 0);
   }
 }
+
 .slideLeft-leave {
   animation: slideLeft-leave both;
 }
@@ -79,10 +90,12 @@
   from {
     transform: translate3d(-150px, 0, 0);
   }
+
   to {
     transform: translate3d(0, 0, 0);
   }
 }
+
 .slideRight-enter {
   animation: slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
@@ -91,10 +104,12 @@
   from {
     transform: translate3d(0, 0, 0);
   }
+
   to {
     transform: translate3d(-150px, 0, 0);
   }
 }
+
 .slideRight-leave {
   animation: slideRight-leave both;
 }

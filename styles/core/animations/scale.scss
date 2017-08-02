@@ -1,16 +1,17 @@
-
 @keyframes scaleDown-enter {
   from {
     opacity: 0;
     transform-origin: 0 0;
     transform: scaleY(.8);
   }
+
   to {
     opacity: 1;
     transform-origin: 0 0;
     transform: scaleY(1);
   }
 }
+
 .scaleDown-enter {
   animation: scaleDown-enter both;
 }
@@ -19,14 +20,16 @@
   from {
     opacity: 1;
     transform-origin: 0 0;
-    transform:scaleY(1);
+    transform: scaleY(1);
   }
+
   to {
     opacity: 0;
     transform-origin: 0 0;
-    transform:scaleY(.8);
+    transform: scaleY(.8);
   }
 }
+
 .scaleDown-leave {
   animation: scaleDown-leave both;
 }
