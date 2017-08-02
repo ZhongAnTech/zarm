@@ -160,7 +160,7 @@ class PickerStack extends Component {
           {
             list.map((item, index) => (
               <div
-                key={index}
+                key={+index}
                 className={
                   classnames({
                     [`${prefixCls}-stack-item`]: true,

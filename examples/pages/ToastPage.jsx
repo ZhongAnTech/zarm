@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Toast, Loading, Button, Icon } from '../../components';
 
 class ToastPage extends Component {
@@ -23,7 +25,7 @@ class ToastPage extends Component {
     const { toast } = this.state;
 
     return (
-      <div className="toast-page">
+      <Container className="toast-page">
         <Header title="轻提示 Toast" />
         <main>
           <Panel>
@@ -98,7 +100,8 @@ class ToastPage extends Component {
 
           <Loading visible={this.state.loading} />
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

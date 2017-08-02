@@ -186,16 +186,6 @@ const rootRoute = {
         });
       },
     },
-
-    // 其他
-    // {
-    //   path: 'lottery',
-    //   getComponent(location, cb) {
-    //     require.ensure([], (require) => {
-    //       cb(null, require('./pages/LotteryPage'));
-    //     });
-    //   },
-    // },
     {
       path: '*',
       getComponent(location, cb) {

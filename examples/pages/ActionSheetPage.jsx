@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, ActionSheet, Button } from '../../components';
 
 class Page extends Component {
@@ -20,7 +22,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="actionsheet-page">
+      <Container className="actionsheet-page">
         <Header title="动作面板 ActionSheet" />
         <main>
           <Panel>
@@ -77,7 +79,8 @@ class Page extends Component {
             ]}
             />
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Checkbox } from '../../components';
 
 class Page extends PureComponent {
@@ -13,7 +15,7 @@ class Page extends PureComponent {
 
   render() {
     return (
-      <div className="checkbox-page">
+      <Container className="checkbox-page">
         <Header title="复选框 Checkbox" />
         <main>
           <Panel>
@@ -139,7 +141,8 @@ class Page extends PureComponent {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

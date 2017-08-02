@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Radio } from '../../components';
 import '../styles/pages/RadioPage';
 
@@ -14,7 +16,7 @@ class Page extends PureComponent {
 
   render() {
     return (
-      <div className="radio-page">
+      <Container className="radio-page">
         <Header title="单选框 Radio" />
         <main>
           <Panel>
@@ -153,7 +155,8 @@ class Page extends PureComponent {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

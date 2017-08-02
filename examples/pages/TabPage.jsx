@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Tab } from '../../components';
 import '../styles/pages/TabPage';
 
@@ -16,7 +18,7 @@ class TabPage extends Component {
     const { Item } = Tab;
 
     return (
-      <div className="tab-page">
+      <Container className="tab-page">
         <Header title="标签页 Tab" />
         <main>
           <Panel>
@@ -151,7 +153,8 @@ class TabPage extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

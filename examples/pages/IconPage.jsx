@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Icon } from '../../components';
 import '../styles/pages/IconPage';
 
@@ -20,7 +22,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="icon-page">
+      <Container className="icon-page">
         <Header title="图标 Icon" />
         <main>
           <Panel>
@@ -32,7 +34,7 @@ class Page extends Component {
                 {
                   ICONS.sort().map((icon, i) => {
                     return (
-                      <div className="grid-column" key={i}>
+                      <div className="grid-column" key={+i}>
                         <Icon theme="primary" type={icon} />
                         <span className="icon-name">{icon}</span>
                       </div>
@@ -43,7 +45,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

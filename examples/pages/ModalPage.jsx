@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Button, Modal, Confirm, Alert } from '../../components';
 
 class Page extends Component {
@@ -26,7 +28,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="modal-page">
+      <Container className="modal-page">
         <Header title="模态框 Modal" />
         <main>
           <Panel>
@@ -161,7 +163,8 @@ class Page extends Component {
             />
 
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import { Component, Children } from 'react';
 // import Eruda from 'eruda';
 // import Events from '../utils/events';
 
-// page styles
-import '../styles/core/index';
-import '../styles/components/App';
-
-// components styles
-import '../../styles/index';
+import '../styles/core/index';  // page styles
+import '../../styles/index';  // components styles
 
 class App extends Component {
 
@@ -17,19 +13,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div className="app-container">
-          {this.props.children}
-        </div>
-        <footer>
-          <div className="copyright">
-            <div className="copyright-cn">众安·体验设计中心</div>
-            <div className="copyright-en">Zhongan UX Densign</div>
-          </div>
-        </footer>
-      </div>
-    );
+    return this.props.children ? Children.only(this.props.children) : null;
   }
 }
 

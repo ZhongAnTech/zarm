@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Spinner } from '../../components';
 import '../styles/pages/SpinnerPage';
 
 class Page extends Component {
   render() {
     return (
-      <div className="spinner-page">
+      <Container className="spinner-page">
         <Header title="指示器 Spinner" />
         <main>
           <Panel>
@@ -17,7 +19,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

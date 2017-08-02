@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Icon, Button } from '../../components';
 import '../styles/pages/ButtonPage';
 
@@ -7,7 +9,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="button-page">
+      <Container className="button-page">
         <Header title="按钮 Button" />
         <main>
           <Panel>
@@ -86,7 +88,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Badge } from '../../components';
 import '../styles/pages/BadgePage';
 
@@ -7,7 +9,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="badge-page">
+      <Container className="badge-page">
         <Header title="徽标 Badge" />
         <main>
           <Panel>
@@ -43,7 +45,8 @@ class Page extends Component {
           </Panel>
 
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Picker } from '../../components';
 import District from './district';
 
@@ -32,7 +34,7 @@ class Page extends Component {
     const { single, multiple, multiple2, disabled, diy, city1, city2, yearPicker, datePicker, timePicker, datetimePicker, diyDatePicker, stactPicker } = this.state;
 
     return (
-      <div className="cell-page">
+      <Container className="cell-page">
         <Header title="选择器 Picker" />
         <main>
           <Panel>
@@ -373,7 +375,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }

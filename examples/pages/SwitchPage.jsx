@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Container from '../components/Container';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Panel, Cell, Switch } from '../../components';
 
 class Page extends Component {
@@ -19,7 +21,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="switch-page">
+      <Container className="switch-page">
         <Header title="开关 Switch" />
         <main>
           <Panel>
@@ -43,7 +45,8 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
         </main>
-      </div>
+        <Footer />
+      </Container>
     );
   }
 }
