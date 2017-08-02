@@ -84,10 +84,6 @@ $prefixCls: za-modal;
       line-height: r(50);
       font-size: r(17);
       border-width: 0;
-      /*
-      border-left-width: 1px;
-      border-color: #ddd !important;
-      */
 
       /* 1px line */
       position: relative;
@@ -98,8 +94,6 @@ $prefixCls: za-modal;
       }
 
       &:not(:first-of-type) {
-        /* color: #333; */
-        /* border-left-width: 0; */
         @include onepx(left top);
       }
     }
