@@ -139,7 +139,7 @@ class Page extends Component {
               door：开关门效果<br />
               flip：翻转效果<br />
               moveUp、moveDown、moveLeft、moveRight：移出移入效果<br />
-              slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />    
+              slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />
             </Modal.Body>
           </Modal>
 
