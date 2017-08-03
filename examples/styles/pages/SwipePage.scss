@@ -1,21 +1,16 @@
 @import "../core/func";
 
 .swipe-page {
-  .swipe-pic {
-    img {
-      width: 100%;
-      height: auto;
+  .swipe-item {
+    width: 100vw;
+    height: 48vw;
+
+    &-pic {
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
-  }
-
-  .swipe-info {
-    position: absolute;
-    left: r(20);
-    bottom: r(30);
-  }
-
-  .swipe-title {
-    color: #fff;
   }
 
   .controls {
