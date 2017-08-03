@@ -1,6 +1,13 @@
-@import "../core/index";
+@import "../core/func";
 
 .app-container {
+  position: relative;
   background-color: #f6f6f6;
+
+  .github {
+    position: absolute;
+    right: r(10);
+    top: r(10);
+  }
 }
 

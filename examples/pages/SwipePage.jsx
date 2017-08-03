@@ -7,19 +7,16 @@ import '../styles/pages/SwipePage';
 
 const ITEMS = [
   {
-    title: '百度',
     url: '#',
-    img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E4%BD%B3%E4%B9%90%E9%94%AD.png',
+    img: require('../images/banners/1.png'),
   },
   {
-    title: '淘宝',
     url: '#',
-    img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E8%96%AF%E7%89%87-0.png',
+    img: require('../images/banners/2.png'),
   },
   {
-    title: '腾讯',
     url: '#',
-    img: 'http://map.baidu.com/fwmap/upload/h5v1.2-%E9%A6%96%E9%A1%B5banner-%E9%BB%84%E6%B2%B9%E8%96%AF%E7%89%87-0.png',
+    img: require('../images/banners/3.png'),
   },
 ];
 
@@ -27,13 +24,10 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="za-swipe-item" key={+i}>
-        <div className="swipe-pic">
+        <div className="swipe-item-pic">
           <a href={item.url}>
             <img src={item.img} alt={item.title} />
           </a>
-        </div>
-        <div className="swipe-info">
-          <div className="swipe-title">{item.title}</div>
         </div>
       </div>
     );
@@ -53,10 +47,6 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Swipe
-                direction="left"
-                // autoPlay={false}
-                // loop={false}
-                // height={617}
                 onChangeEnd={(index) => {
                   console.log(index);
                 }}>
@@ -72,7 +62,7 @@ class Page extends Component {
             <Panel.Body>
               <Swipe
                 direction="top"
-                height={187}>
+                height={'48vw'}>
                 {contentRender()}
               </Swipe>
             </Panel.Body>
