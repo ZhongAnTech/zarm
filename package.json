@@ -26,10 +26,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/JeromeLin/zarm"
+    "url": "git://github.com/ZhonganTechENG/zarm"
   },
   "bugs": {
-    "url": "https://github.com/JeromeLin/zarm/issues"
+    "url": "https://github.com/ZhonganTechENG/zarm/issues"
   },
   "main": "lib/index.js",
   "scripts": {
