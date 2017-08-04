@@ -193,8 +193,10 @@ class PickerStack extends Component {
 
     return (
       <div className={prefixCls}>
-        <div className={labelCls} onClick={() => !disabled && this.show()}>{ displayLabel || placeholder }</div>
-        <input type="hidden" value={curVal} />
+        <div className={labelCls} onClick={() => !disabled && this.show()}>
+          <input type="hidden" value={curVal} />
+          { displayLabel || placeholder }
+        </div>
         {
           disabled ?
           null :
