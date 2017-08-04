@@ -9,14 +9,14 @@ const env = process.env.WEBPACK_ENV;
 config.devtool = 'source-map';
 
 config.entry = {
-  'dragon-mobile-ui': [
+  zarm: [
     './components/index.js',
     './styles/index.scss',
   ],
 };
 
 config.output = {
-  library: 'DragonMobileUI',
+  library: 'Zarm',
   libraryTarget: 'umd',
   path: path.resolve(__dirname, 'dist'),
   filename: '[name].js',

@@ -34,7 +34,7 @@ class Page extends PureComponent {
                   </Checkbox.Group>
                 }>普通</Cell>
 
-              <Cell><Checkbox value="0">同意条款</Checkbox></Cell>
+              <Cell><Checkbox onChange={checked => console.log(`checkbox to ${checked}`)}>同意条款</Checkbox></Cell>
             </Panel.Body>
           </Panel>
 
