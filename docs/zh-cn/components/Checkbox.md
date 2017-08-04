@@ -14,13 +14,13 @@ import { Checkbox } from 'zarm';
 
 单独使用
 
-```html
+```jsx
 <Checkbox onChange={checked => console.log(`checkbox to ${checked}`)}>同意条款</Checkbox>
 ```
 
 组合使用
 
-```html
+```jsx
 <Checkbox.Group
   value={this.state.checkbox}
   onChange={value => console.log(`checkbox to ${value}`)}>
@@ -34,7 +34,7 @@ import { Checkbox } from 'zarm';
 
 普通
 
-```html
+```jsx
 <Checkbox.Group
   type="button"
   value={this.state.checkbox}
@@ -47,7 +47,7 @@ import { Checkbox } from 'zarm';
 
 指定默认值
 
-```html
+```jsx
 <Checkbox.Group
   type="button"
   defaultValue={['0', '1']}
@@ -60,7 +60,7 @@ import { Checkbox } from 'zarm';
 
 禁用指定项
 
-```html
+```jsx
 <Checkbox.Group
   type="button"
   value={this.state.checkbox}
@@ -73,7 +73,7 @@ import { Checkbox } from 'zarm';
 
 圆角
 
-```html
+```jsx
 <Checkbox.Group
   type="button"
   shape="radius"
@@ -87,7 +87,7 @@ import { Checkbox } from 'zarm';
 
 椭圆角
 
-```html
+```jsx
 <Checkbox.Group
   type="button"
   shape="round"
@@ -103,7 +103,7 @@ import { Checkbox } from 'zarm';
 
 普通
 
-```html
+```jsx
 <Checkbox.Group
   type="cell"
   value={this.state.checkbox}
@@ -116,7 +116,7 @@ import { Checkbox } from 'zarm';
 
 禁用状态
 
-```html
+```jsx
 <Checkbox.Group
   disabled
   type="cell"

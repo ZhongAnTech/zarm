@@ -1,11 +1,12 @@
 {
-  "gitbook": ">=2.0.0",
-  "plugins": ["anchors", "editlink", "github"],
+  "title": "Zarm",
+  "gitbook": ">=3.0.0",
+  "language": "en",
+  "plugins": ["prism", "-highlight", "anchors", "editlink", "github"],
   "pluginsConfig": {
     "editlink": {
-      "base": "https://github.com/ZhonganTechENG/zarm/tree/master/docs/",
-      "label": "Edit This Page",
-      "multilingual": false
+      "base": "https://github.com/ZhonganTechENG/zarm/tree/master/docs",
+      "label": "Edit This Page"
     },
     "github": {
       "url": "https://github.com/ZhonganTechENG/zarm"
