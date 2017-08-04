@@ -20,9 +20,11 @@ class Page extends PureComponent {
         <main>
           <Panel>
             <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
+              <Panel.Title>基本用法</Panel.Title>
             </Panel.Header>
             <Panel.Body>
+              <Cell><Checkbox onChange={checked => console.log(`checkbox to ${checked}`)}>单独使用</Checkbox></Cell>
+
               <Cell
                 description={
                   <Checkbox.Group
@@ -32,9 +34,7 @@ class Page extends PureComponent {
                     <Checkbox value="1">选项二</Checkbox>
                     <Checkbox value="2">选项三</Checkbox>
                   </Checkbox.Group>
-                }>普通</Cell>
-
-              <Cell><Checkbox onChange={checked => console.log(`checkbox to ${checked}`)}>同意条款</Checkbox></Cell>
+                }>组合使用</Cell>
             </Panel.Body>
           </Panel>
 

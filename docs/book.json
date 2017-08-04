@@ -1,0 +1,20 @@
+{
+  "gitbook": ">=2.0.0",
+  "plugins": ["anchors", "editlink", "github"],
+  "pluginsConfig": {
+    "editlink": {
+      "base": "https://github.com/ZhonganTechENG/zarm/tree/master/docs/",
+      "label": "Edit This Page",
+      "multilingual": false
+    },
+    "github": {
+      "url": "https://github.com/ZhonganTechENG/zarm"
+    }
+  },
+  "links": {
+    "sharing": {
+      "facebook": false,
+      "twitter": false
+    }
+  }
+}
