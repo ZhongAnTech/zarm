@@ -1,14 +1,17 @@
 # Zarm UI
   [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm)
-  [![npm package](https://img.shields.io/npm/v/zarm.svg?style=flat-square)](https://www.npmjs.org/package/zarm)
-  [![NPM downloads](http://img.shields.io/npm/dm/zarm.svg?style=flat-square)](https://npmjs.org/package/zarm)  
+  [![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
+  [![NPM downloads](http://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm)  
   众安科技移动端UI组件库
   
 ## 安装
+
 ```
-npm install zarm
+npm install zarm --save
 ```
+
 ## 使用
+
 ```
 import { Button, Cell } from 'zarm';
 import 'zarm/styles/index.scss';
