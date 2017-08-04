@@ -178,7 +178,7 @@ class PickerStack extends Component {
   }
 
   render() {
-    const { className, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayCompile, itemCompile } = this.props;
+    const { className, value: curVal, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayCompile, itemCompile } = this.props;
     const { visible, errorMsg, value, valueBackups } = this.state;
     const displayLabel = displayCompile(valueBackups);
     const labelCls = classnames({
@@ -193,7 +193,10 @@ class PickerStack extends Component {
 
     return (
       <div className={prefixCls}>
-        <div className={labelCls} onClick={() => !disabled && this.show()}>{ displayLabel || placeholder }</div>
+        <div className={labelCls} onClick={() => !disabled && this.show()}>
+          <input type="hidden" value={curVal} />
+          { displayLabel || placeholder }
+        </div>
         {
           disabled ?
           null :
