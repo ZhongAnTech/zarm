@@ -142,7 +142,6 @@ class Picker extends Component {
     });
 
     const inputCls = classnames({
-      [`${prefixCls}-input`]: true,
       [`${prefixCls}-placeholder`]: !value.join(format),
       [`${prefixCls}-disabled`]: !!disabled,
     });
