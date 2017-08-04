@@ -55,7 +55,7 @@ html 标签引入css和js文件
 ReactDOM.render(<Zarm.Button theme="primary">按钮</Zarm.Button>, document.getElementById('app'));
 ```
 
-（注：使用以上方法需要支持jsx语法或者经过编译）
+> 注：使用以上方法需要支持jsx语法或者经过编译
 
 ### 自定义主题
 
