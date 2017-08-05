@@ -19,7 +19,8 @@ class Input extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.style !== this.props.style) {
+    if (prevProps.style !== this.props.style ||
+        prevProps.className !== this.props.className) {
       Autosize.update(this.input);
     }
   }
