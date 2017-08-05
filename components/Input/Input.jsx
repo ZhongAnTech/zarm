@@ -18,6 +18,13 @@ class Input extends PureComponent {
     Events.on(this.input, 'input', this.setLength);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.style !== this.props.style ||
+        prevProps.className !== this.props.className) {
+      Autosize.update(this.input);
+    }
+  }
+
   componentWillUnmount() {
     this.destroyAutoHeight();
     Events.off(this.input, 'input', this.setLength);
@@ -72,9 +79,9 @@ class Input extends PureComponent {
           placeholder={placeholder}
           disabled={disabled}
           maxLength={maxLength}
-          {...others}>
-          {defaultValue}
-        </textarea>
+          defaultValue={defaultValue}
+          {...others}
+          />
       )
       : (
         <input
