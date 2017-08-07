@@ -44,10 +44,10 @@ class Stepper extends PureComponent {
     if (value === '' || isNaN(value)) {
       value = this.state.lastValue;
     }
-    if (typeof min === 'number' && value < min) {
+    if (min !== null && value < min) {
       value = min;
     }
-    if (typeof max === 'number' && value > max) {
+    if (max !== null && value > max) {
       value = max;
     }
     this.setState({
