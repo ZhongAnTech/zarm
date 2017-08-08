@@ -1,27 +1,54 @@
 $prefixCls: za-progress;
 
 .#{$prefixCls} {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
-  width: r(150);
-  height: r(150);
-  transform: translate3d(0, 0, 0);
 
-  svg {
-    width: 100%;
-    height: 100%;
+  &-inner {
+    flex: 1;
+    background-color: #e6e6e6;
   }
 
   &-text {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    line-height: 1;
-    transform: translateY(-50%);
-    font-size: r(30);
+    display: inline-block;
+    margin-left: r(5);
+    font-size: r(12);
+  }
+
+  &-bg {
+    height: 100%;
+    background-color: $theme-primary;
+    transition: width .3s;
+  }
+
+  &-circle {
+    display: inline-block;
+    width: r(150);
+    height: r(150);
+
+    .#{$prefixCls} {
+      &-inner {
+        background-color: transparent;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &-text {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        line-height: 1;
+        transform: translateY(-50%);
+        font-size: r(30);
+      }
+    }
   }
 }

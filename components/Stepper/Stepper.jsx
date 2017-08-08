@@ -32,15 +32,17 @@ class Stepper extends PureComponent {
   }
 
   onInputChange(value) {
-    const { onChange } = this.props;
+    const { onInputChange } = this.props;
+    value = Number(value);
     this.setState({
       value,
     });
-    typeof onChange === 'function' && onChange(value);
+    typeof onInputChange === 'function' && onInputChange(value);
   }
 
   onInputBlur(value) {
-    const { min, max, onBlur } = this.props;
+    const { min, max, onChange } = this.props;
+    value = Number(value);
     if (value === '' || isNaN(value)) {
       value = this.state.lastValue;
     }
@@ -54,19 +56,19 @@ class Stepper extends PureComponent {
       value,
       lastValue: value,
     });
-    typeof onBlur === 'function' && onBlur(value);
+    typeof onChange === 'function' && onChange(value);
   }
 
   onSubClick() {
     const { step } = this.props;
     const value = Number(this.state.value) - step;
-    this.onInputChange(value);
+    this.onInputBlur(value);
   }
 
   onPlusClick() {
     const { step } = this.props;
     const value = Number(this.state.value) + step;
-    this.onInputChange(value);
+    this.onInputBlur(value);
   }
 
   render() {
@@ -115,6 +117,8 @@ Stepper.propTypes = {
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
+  onInputChange: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 Stepper.defaultProps = {
@@ -127,6 +131,8 @@ Stepper.defaultProps = {
   step: 1,
   min: null,
   max: null,
+  onInputChange() {},
+  onChange() {},
 };
 
 export default Stepper;

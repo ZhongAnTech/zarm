@@ -24,6 +24,14 @@ class Page extends Component {
             <Progress
               percent={this.state.percent}
               theme={this.state.theme}>
+              {this.state.percent}%
+            </Progress>
+          </div>
+          <div className="progress">
+            <Progress
+              type="circle"
+              percent={this.state.percent}
+              theme={this.state.theme}>
               <div className="progress-content">
                 <span className="progress-text">{this.state.percent}</span>
                 <span className="progress-percent">%</span>
@@ -40,6 +48,7 @@ class Page extends Component {
                   max={100}
                   value={this.state.percent}
                   onChange={(value) => {
+                    if (isNaN(value)) return;
                     this.setState({
                       percent: value,
                     });

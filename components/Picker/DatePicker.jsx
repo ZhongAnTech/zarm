@@ -472,6 +472,7 @@ class DatePicker extends Component {
     });
 
     const inputCls = classnames({
+      [`${prefixCls}-input`]: true,
       [`${prefixCls}-placeholder`]: !this.state.date,
       [`${prefixCls}-disabled`]: !!disabled,
     });
