@@ -93,36 +93,3 @@ $button-error-bg: $theme-error;
 $button-error-border: $theme-error;
 $button-error-activebg: $theme-error-light;
 
-$screen-xs:                 480px !default;
-
-$screen-xs-min:             $screen-xs !default;
-$screen-phone:              $screen-xs-min !default;
-$screen-sm:                 768px !default;
-$screen-sm-min:             $screen-sm !default;
-$screen-tablet:             $screen-sm-min !default;
-
-$screen-md:                 992px !default;
-$screen-md-min:             $screen-md !default;
-$screen-desktop:            $screen-md-min !default;
-
-$screen-lg:                 1200px !default;
-$screen-lg-min:             $screen-lg !default;
-$screen-lg-desktop:         $screen-lg-min !default;
-
-$screen-xs-max:             ($screen-sm-min - 1) !default;
-$screen-sm-max:             ($screen-md-min - 1) !default;
-$screen-md-max:             ($screen-lg-min - 1) !default;
-
-$grid-columns:              12 !default;
-$grid-gutter-width:         30px !default;
-$grid-float-breakpoint:     $screen-sm-min !default;
-$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
-
-$container-tablet:          (750px + $grid-gutter-width) !default;
-$container-sm:              $container-tablet !default;
-
-$container-desktop:         (970px + $grid-gutter-width) !default;
-$container-md:              $container-desktop !default;
-
-$container-large-desktop:   (1170px + $grid-gutter-width) !default;
-$container-lg:              $container-large-desktop !default;
