@@ -1,5 +1,11 @@
 $prefixCls: za-progress;
 
+@mixin progress-theme($color) {
+  .#{$prefixCls}-bg {
+    background-color: $color;
+  }
+}
+
 .#{$prefixCls} {
   display: flex;
   align-items: center;
@@ -50,5 +56,25 @@ $prefixCls: za-progress;
         font-size: r(30);
       }
     }
+  }
+
+  &.theme-default {
+    @include progress-theme($theme-default);
+  }
+
+  &.theme-primary {
+    @include progress-theme($theme-primary);
+  }
+
+  &.theme-info {
+    @include progress-theme($theme-info);
+  }
+
+  &.theme-warning {
+    @include progress-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include progress-theme($theme-error);
   }
 }
