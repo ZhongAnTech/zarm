@@ -5,6 +5,7 @@ import classnames from 'classnames';
 const diameter = 100;
 
 class Spinner extends PureComponent {
+
   render() {
     const { prefixCls, className, theme, percent, strokeWidth, children, ...others } = this.props;
 
@@ -15,7 +16,7 @@ class Spinner extends PureComponent {
     });
 
     const half = diameter / 2;
-    const r = half - strokeWidth;
+    const r = half - (strokeWidth / 2);
     const round = 2 * Math.PI * r;
 
     const style = {
@@ -24,7 +25,7 @@ class Spinner extends PureComponent {
     };
 
     return (
-      <svg className={`${cls}`} viewBox={`0 0 ${diameter} ${diameter}`} {...others}>
+      <svg className={`${cls}`} viewBox={`0 0 ${diameter} ${diameter}`} {...others} ref={(ele) => { this.svg = ele; }}>
         <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
         <circle className={`${prefixCls}-line`} cx={half} cy={half} r={r} fill="none" style={style} />
       </svg>

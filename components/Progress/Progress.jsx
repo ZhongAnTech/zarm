@@ -10,6 +10,7 @@ class Progress extends PureComponent {
 
     const cls = classnames({
       [`${prefixCls}`]: true,
+      [`theme-${theme}`]: !!theme,
       [`${prefixCls}-${type}`]: !!type,
       [className]: !!className,
     });
@@ -21,10 +22,8 @@ class Progress extends PureComponent {
 
     return (
       <div className={cls} {...others}>
-        <div className={`${prefixCls}-inner`} style={{ height: strokeWidth }}>
-          {innerRender}
-        </div>
-        { children ? <div className={`${prefixCls}-text`}>{children}</div> : null }
+        {innerRender}
+        {children ? <div className={`${prefixCls}-text`}>{children}</div> : null}
       </div>
     );
   }
