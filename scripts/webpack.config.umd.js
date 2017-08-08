@@ -18,7 +18,7 @@ config.entry = {
 config.output = {
   library: 'Zarm',
   libraryTarget: 'umd',
-  path: path.resolve(__dirname, 'dist'),
+  path: path.resolve(__dirname, '../dist'),
   filename: '[name].js',
 };
 

@@ -35,14 +35,14 @@
   "scripts": {
     "start": "npm run deploy && npm run dev",
     "clean": "rm -rf lib && rm -rf dist",
-    "dev": "node devServer.js",
-    "pro": "rm -rf assets && webpack --config webpack.config.pro.js",
+    "dev": "node scripts/devServer.js",
+    "pro": "rm -rf assets && webpack --config scripts/webpack.config.pro.js",
     "lint:js": "eslint components --ext '.js,.jsx'",
     "lint:style": "stylelint styles/**/*.scss --syntax scss",
     "lint": "npm run lint:js && npm run lint:style",
     "test": "exit 0",
     "build:lib": "babel components --out-dir lib --presets=es2015,react,stage-0",
-    "build:umd": "webpack --config webpack.config.umd.js && WEBPACK_ENV=production webpack --config webpack.config.umd.js",
+    "build:umd": "webpack --config scripts/webpack.config.umd.js && WEBPACK_ENV=production webpack --config scripts/webpack.config.umd.js",
     "build": "npm run clean && npm run build:lib && npm run build:umd",
     "docs": "cd docs && gitbook install && gitbook serve"
   },
