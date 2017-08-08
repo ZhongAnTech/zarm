@@ -181,7 +181,9 @@ class PickerStack extends Component {
     const { className, value: curVal, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayCompile, itemCompile } = this.props;
     const { visible, errorMsg, value, valueBackups } = this.state;
     const displayLabel = displayCompile(valueBackups);
+
     const labelCls = classnames({
+      [`${prefixCls}-input`]: true,
       [`${prefixCls}-placeholder`]: !displayLabel,
       [`${prefixCls}-disabled`]: disabled,
     });

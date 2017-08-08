@@ -29,7 +29,14 @@ $picker-stackitem-height: 35px;
 }
 
 .#{$prefixCls} {
+  width: 100%;
+  height: 100%;
   background: #fff;
+
+  &-input {
+    width: 100%;
+    padding: r(12) 0;
+  }
 
   &-placeholder {
     color: $placeholder-color;

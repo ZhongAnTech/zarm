@@ -2,13 +2,8 @@
 
 .progress-page {
   .progress {
-    width: 100%;
-    margin: r(30) 0;
+    margin: r(15);
     text-align: center;
-
-    &-text {
-      font-size: r(30);
-    }
 
     &-percent {
       font-size: r(14);
