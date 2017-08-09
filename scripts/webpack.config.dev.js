@@ -47,6 +47,8 @@ Object.keys(config.entry).forEach((key) => {
   }));
 });
 
+config.module.rules[0].use[0].options.presets.push('react-hmre');
+
 config.devServer = {
   contentBase: path.join(__dirname, '../examples'),
   publicPath: config.output.publicPath,
