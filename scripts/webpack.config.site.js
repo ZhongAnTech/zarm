@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./webpack.config.base');
 
 config.entry = {
@@ -48,9 +49,7 @@ config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
   names: Object.keys(config.entry),
   async: 'common.async',
   children: true,
-  minChunks(module, count) {
-    return module.context && module.context.indexOf('node_modules') !== -1 && count >= 3;
-  },
+  minChunks: 3,
 }));
 
 config.plugins.push(new webpack.DefinePlugin({
@@ -67,5 +66,7 @@ Object.keys(config.entry).forEach((key) => {
     chunks: ['common', key],
   }));
 });
+
+// config.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = config;
