@@ -33,7 +33,7 @@
     "start": "npm run deploy && npm run dev",
     "clean": "rm -rf lib && rm -rf dist",
     "dev": "webpack-dev-server --config scripts/webpack.config.dev.js",
-    "pro": "rm -rf assets && webpack --config scripts/webpack.config.pro.js",
+    "site": "rm -rf assets && webpack --config scripts/webpack.config.site.js",
     "lint:js": "eslint components --ext '.js,.jsx'",
     "lint:style": "stylelint styles/**/*.scss --syntax scss",
     "lint": "npm run lint:js && npm run lint:style",
