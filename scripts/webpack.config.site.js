@@ -44,20 +44,20 @@ config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
   name: 'common',
 }));
 
-// config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-//   names: Object.keys(config.entry),
-//   async: 'common.async',
-//   children: true,
-//   minChunks(module, count) {
-//     return module.context && module.context.indexOf('node_modules') !== -1 && count >= 3;
-//   },
-// }));
+config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+  names: Object.keys(config.entry),
+  async: 'common.async',
+  children: true,
+  minChunks(module, count) {
+    return module.context && module.context.indexOf('node_modules') !== -1 && count >= 3;
+  },
+}));
 
 config.plugins.push(new webpack.DefinePlugin({
   'process.env': {
     NODE_ENV: '"production"',
   },
-  __DEBUG__: true,
+  __DEBUG__: false,
 }));
 
 Object.keys(config.entry).forEach((key) => {
