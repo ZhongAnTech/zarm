@@ -46,6 +46,7 @@ class SwipeAction extends PureComponent {
   }
 
   onBtnClick(e, btn) {
+    e.preventDefault();
     const onClick = btn.onClick;
     if (onClick) {
       onClick(e);
