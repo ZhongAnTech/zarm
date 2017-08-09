@@ -10,7 +10,7 @@ class Page extends Component {
     this.state = {
       single: {},
       multiple: {
-        value: ['1', '2'],
+        value: ['1', 'a'],
       },
       multiple2: {},
       disabled: {
