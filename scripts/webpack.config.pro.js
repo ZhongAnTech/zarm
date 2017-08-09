@@ -41,25 +41,31 @@ config.plugins.push(new webpack.optimize.UglifyJsPlugin({
 }));
 
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: 'vendors',
+  name: 'common',
+}));
+
+config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+  names: Object.keys(config.entry),
+  async: 'common.async',
+  children: true,
+  minChunks(module, count) {
+    return module.context && module.context.indexOf('node_modules') !== -1 && count >= 3;
+  },
 }));
 
 config.plugins.push(new webpack.DefinePlugin({
   'process.env': {
-    NODE_ENV: JSON.stringify('production'),
+    NODE_ENV: '"production"',
   },
   __DEBUG__: true,
 }));
 
-for (var key in config.entry) {
-  if (key === 'vendors') {
-    continue;
-  }
+Object.keys(config.entry).forEach((key) => {
   config.plugins.push(new HtmlWebpackPlugin({
     template: `./examples/${key}.html`,
     filename: `${key}.html`,
-    chunks: ['vendors', key],
+    chunks: ['common', key],
   }));
-}
+});
 
 module.exports = config;
