@@ -9,7 +9,7 @@ class Checkbox extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked,
+      checked: props.checked || props.defaultChecked || false,
     };
     this.onValueChange = this.onValueChange.bind(this);
   }
@@ -17,7 +17,7 @@ class Checkbox extends PureComponent {
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
-        checked: nextProps.checked || nextProps.defaultChecked,
+        checked: nextProps.checked || nextProps.defaultChecked || false,
       });
     }
   }
