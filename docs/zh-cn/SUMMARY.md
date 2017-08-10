@@ -8,5 +8,5 @@
 ## 组件
 
 * 表单组件
-  * [复选框 Checkbox](/components/Checkbox.md)
+  * [复选框 Checkbox](components/Checkbox.md)
 
