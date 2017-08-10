@@ -23,7 +23,7 @@ class RadioGroup extends PureComponent {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || getCheckedValue(nextProps.children),
+        value: nextProps.value || nextProps.defaultValue || getCheckedValue(nextProps.children),
       });
     }
   }
