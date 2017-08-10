@@ -23,7 +23,7 @@ class CheckboxGroup extends PureComponent {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || getCheckedValue(nextProps.children)) {
       this.setState({
-        value: nextProps.value || getCheckedValue(nextProps.children),
+        value: nextProps.value || nextProps.defaultValue || getCheckedValue(nextProps.children),
       });
     }
   }
@@ -55,7 +55,6 @@ class CheckboxGroup extends PureComponent {
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
         onChange: () => this.onCheckboxChange(element.props.value),
-        // use '==' because the result will fail when the value's typeof is Number
         checked: (this.state.value.indexOf(element.props.value) > -1),
       });
     });
