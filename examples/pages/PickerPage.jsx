@@ -161,8 +161,7 @@ class Page extends Component {
                   displayMember="label"
                   valueMember="value"
                   value={diy.value}
-                  onOk={(selected) => {
-                    diy.value = selected.map(item => item.value);
+                  onChange={() => {
                     this.setState({
                       diy,
                     });
