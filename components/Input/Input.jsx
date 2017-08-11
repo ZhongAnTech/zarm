@@ -57,7 +57,6 @@ class Input extends PureComponent {
       type,
       defaultValue,
       maxLength,
-      radius,
       disabled,
       autoHeight,
       showLength,
@@ -67,7 +66,6 @@ class Input extends PureComponent {
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
-      radius,
       disabled,
     });
 
@@ -118,7 +116,6 @@ Input.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,
-  radius: PropTypes.bool,
   disabled: PropTypes.bool,
   autoHeight: PropTypes.bool,
   showLength: PropTypes.bool,
@@ -128,7 +125,6 @@ Input.defaultProps = {
   prefixCls: 'za-input',
   className: null,
   type: 'text',
-  radius: false,
   disabled: false,
   autoHeight: false,
   showLength: false,
