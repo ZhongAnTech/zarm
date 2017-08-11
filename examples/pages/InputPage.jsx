@@ -37,27 +37,19 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Cell><Input type="text" placeholder="标题" /></Cell>
-              <Cell><Input autoHeight showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
+              <Cell><Input autoHeight type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>提示信息</Panel.Title>
+              <Panel.Title>显示输入字数</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell
-                title="标题"
-                help={
-                  <Message theme="error">
-                    <Icon type="info-round" />
-                    <span style={{ marginLeft: 5 }}>标题不能为空</span>
-                  </Message>
-                }>
-                <Input type="text" placeholder="请输入标题" /></Cell>
-              <Cell title="摘要"><Input autoHeight type="textarea" rows="3" placeholder="请输入摘要" /></Cell>
+              <Cell><Input autoHeight showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
             </Panel.Body>
           </Panel>
+
         </main>
         <Footer />
       </Container>
