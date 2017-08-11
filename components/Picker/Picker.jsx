@@ -14,14 +14,15 @@ class Picker extends Component {
     super(props);
 
     let _data = null;
+    const initValue = props.defaultValue || props.value
     let _value = null;
 
     if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
       _data = [props.dataSource];
-      _value = Object.prototype.toString.call(props.value) === '[object Array]' ? props.value : [props.value];
+      _value = Object.prototype.toString.call(initValue) === '[object Array]' ? initValue : [initValue];
     } else {
       _data = props.dataSource;
-      _value = props.value;
+      _value = initValue;
     }
 
     this.state = {

@@ -219,6 +219,7 @@ class CellPage extends Component {
                 valueMember="idCardType"
                 displayMember="idCardName"
                 value={col1.value}
+                defaultValue={2}
                 onChange={(value) => {
                   console.log('onChange ', value);
                 }}
