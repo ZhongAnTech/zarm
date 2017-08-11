@@ -71,6 +71,8 @@ import './styles/index.scss';
 ```css
 @import "node_modules/zarm/styles/core/variables";
 @import "variables";
+@import "node_modules/zarm/styles/core/mixins";
+@import "node_modules/zarm/styles/core/func";
 @import "node_modules/zarm/styles/core/animations/index";
 @import "node_modules/zarm/styles/components/index";
 ```
