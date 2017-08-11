@@ -69,17 +69,14 @@ import './styles/index.scss';
 `./style/index.scss` 文件内容如下：
 
 ```css
-@import "node_modules/zarm/styles/core/variables";
+@import "node_modules/zarm/styles/core/index";
 @import "variables";
-@import "node_modules/zarm/styles/core/mixins";
-@import "node_modules/zarm/styles/core/func";
-@import "node_modules/zarm/styles/core/animations/index";
 @import "node_modules/zarm/styles/components/index";
 ```
 
 通过自己的variables文件重写sass变量。
 
-甚至可以拷贝 `./node_modules/zarm/styles` 文件，自行修改。
+甚至可以拷贝 `./node_modules/zarm/styles` 文件，自行修改组件的sass文件。
 
 ## 更新日志
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
