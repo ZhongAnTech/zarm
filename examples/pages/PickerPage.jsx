@@ -90,6 +90,7 @@ class Page extends Component {
                     ],
                   ]}
                   value={multiple.value}
+                  defaultValue={multiple.value}
                   onOk={(value) => {
                     console.log('multiple onOk ->', value);
                     const _value = value.map(item => item.value);
@@ -147,7 +148,7 @@ class Page extends Component {
                     { value: '1', label: '选项一' },
                     { value: '2', label: '选项二' },
                   ]}
-                  value={disabled.value}
+                  defaultValue={disabled.value}
                   onOk={(value) => {
                     console.log(value);
                   }}
@@ -175,6 +176,7 @@ class Page extends Component {
                   displayMember="label"
                   valueMember="value"
                   value={diy.value}
+                  defaultValue={['1', 'b']}
                   onOk={(value) => {
                     console.log('diy onOk ->', value);
                     const _value = value.map(item => item.value);
