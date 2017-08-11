@@ -43,9 +43,8 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
 
-              <Cell title="单列" type="select">
+              <Cell title="单列">
                 <Picker
-                  visible={single.visible}
                   dataSource={[
                     {
                       idCardType: 1,
@@ -63,10 +62,8 @@ class Page extends Component {
                   value={single.value}
                   displayMember="idCardName"
                   valueMember="idCardType"
-                  onOk={(value) => {
-                    console.log('pickerPage onOk ->', value);
-                    const _value = value.idCardType;
-                    single.value = _value;
+                  onOk={(selected) => {
+                    single.value = selected.idCardType;
                     this.setState({
                       single,
                     });
@@ -76,9 +73,8 @@ class Page extends Component {
                   />
               </Cell>
 
-              <Cell title="多列" type="select">
+              <Cell title="多列">
                 <Picker
-                  visible={multiple.visible}
                   dataSource={[
                     [
                       { value: '1', label: '选项一' },
@@ -90,10 +86,8 @@ class Page extends Component {
                     ],
                   ]}
                   value={multiple.value}
-                  onOk={(value) => {
-                    console.log('multiple onOk ->', value);
-                    const _value = value.map(item => item.value);
-                    multiple.value = _value;
+                  onOk={(selected) => {
+                    multiple.value = selected.map(item => item.value);
                     this.setState({
                       multiple,
                     });
@@ -103,7 +97,7 @@ class Page extends Component {
                   />
               </Cell>
 
-              <Cell title="多列联动" type="select">
+              <Cell title="多列联动">
                 <Picker
                   visible={multiple2.visible}
                   dataSource={[
@@ -126,10 +120,8 @@ class Page extends Component {
                   ]}
                   // cols={2}
                   value={multiple2.value}
-                  onOk={(value) => {
-                    console.log('multiple2 onOk ->', value);
-                    const _value = value.map(item => item.value);
-                    multiple2.value = _value;
+                  onOk={(selected) => {
+                    multiple2.value = selected.map(item => item.value);
                     this.setState({
                       multiple2,
                     });
@@ -139,24 +131,18 @@ class Page extends Component {
                   />
               </Cell>
 
-              <Cell title="禁止修改" type="select">
+              <Cell title="禁止修改">
                 <Picker
                   disabled
-                  visible={disabled.visible}
                   dataSource={[
                     { value: '1', label: '选项一' },
                     { value: '2', label: '选项二' },
                   ]}
-                  value={disabled.value}
-                  onOk={(value) => {
-                    console.log(value);
-                  }}
-                  onCancel={() => {
-                  }}
+                  defaultValue={disabled.value}
                   />
               </Cell>
 
-              <Cell title="自定义格式" type="select">
+              <Cell title="自定义格式">
                 <Picker
                   visible={diy.visible}
                   title="自定义标题"
@@ -175,10 +161,8 @@ class Page extends Component {
                   displayMember="label"
                   valueMember="value"
                   value={diy.value}
-                  onOk={(value) => {
-                    console.log('diy onOk ->', value);
-                    const _value = value.map(item => item.value);
-                    diy.value = _value;
+                  onOk={(selected) => {
+                    diy.value = selected.map(item => item.value);
                     this.setState({
                       diy,
                     });
@@ -197,7 +181,7 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
 
-              <Cell title="省市选择" type="select">
+              <Cell title="省市选择">
                 <Picker
                   visible={city1.visible}
                   dataSource={District}
@@ -205,10 +189,8 @@ class Page extends Component {
                   displayMember="label"
                   valueMember="label"
                   value={city1.value}
-                  onOk={(value) => {
-                    console.log('city1 onOk->', value);
-                    const _value = value.map(item => item.label);
-                    city1.value = _value;
+                  onOk={(selected) => {
+                    city1.value = selected.map(item => item.label);
                     this.setState({
                       city1,
                     });
@@ -218,7 +200,7 @@ class Page extends Component {
                   />
               </Cell>
 
-              <Cell title="省市区选择" type="select">
+              <Cell title="省市区选择">
                 <Picker
                   visible={city2.visible}
                   dataSource={District}
@@ -226,10 +208,8 @@ class Page extends Component {
                   displayMember="label"
                   valueMember="label"
                   value={city2.value}
-                  onOk={(value) => {
-                    console.log('city2 onOk->', value);
-                    const _value = value.map(item => item.label);
-                    city2.value = _value;
+                  onOk={(selected) => {
+                    city2.value = selected.map(item => item.label);
                     this.setState({
                       city2,
                     });
@@ -248,92 +228,88 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
 
-              <Cell title="年份选择" type="select">
+              <Cell title="年份选择">
                 <Picker.Date
                   title="选择年份"
                   placeholder="请选择年份"
                   mode="year"
                   wheelDefaultValue="2009"
                   value={yearPicker.value}
-                  onOk={(value) => {
-                    yearPicker.value = value;
+                  onOk={(selected) => {
+                    yearPicker.value = selected;
                     this.setState({
                       yearPicker,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}
                   />
               </Cell>
 
-              <Cell title="日期选择" type="select">
+              <Cell title="日期选择">
                 <Picker.Date
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
                   wheelDefaultValue="2009"
                   value={datePicker.value}
-                  onOk={(value) => {
-                    datePicker.value = value;
+                  onOk={(selected) => {
+                    datePicker.value = selected;
                     this.setState({
                       datePicker,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}
                   />
               </Cell>
 
-              <Cell title="时间选择" type="select">
+              <Cell title="时间选择">
                 <Picker.Date
                   title="选择时间"
                   placeholder="请选择时间"
                   mode="time"
                   value={timePicker.value}
-                  onOk={(value) => {
-                    timePicker.value = value;
+                  minuteStep={15}
+                  onOk={(selected) => {
+                    timePicker.value = selected;
                     this.setState({
                       timePicker,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}
                   />
               </Cell>
 
-              <Cell title="日期&时间" type="select">
+              <Cell title="日期&时间">
                 <Picker.Date
                   placeholder="请选择"
                   mode="datetime"
                   value={datetimePicker.value}
-                  onOk={(value) => {
-                    datetimePicker.value = value;
+                  onOk={(selected) => {
+                    datetimePicker.value = selected;
                     this.setState({
                       datetimePicker,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}
                   />
               </Cell>
 
-              <Cell title="自定义格式" type="select">
+              <Cell title="自定义格式">
                 <Picker.Date
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
                   format="YYYY年MM月DD日"
                   value={diyDatePicker.value}
-                  onOk={(value) => {
-                    diyDatePicker.value = value;
+                  onOk={(selected) => {
+                    diyDatePicker.value = selected;
                     this.setState({
                       diyDatePicker,
                     });
-                    console.log(value);
                   }}
                   onCancel={() => {
                   }}
@@ -353,22 +329,19 @@ class Page extends Component {
                   title="请选择"
                   placeholder="请选择"
                   dataSource={District}
-                  cols={3}
-                  valueMember="value"
                   value={stactPicker.value}
                   labelAddon=" - "
                   itemCompile={data => `${data.label}(${data.value})`}
                   displayCompile={selected => selected.map(item => item.label).join('-')}
                   validate={selected => ((selected.length && selected[0].label === '北京') ? '选择了北京行政区域' : '')}
                   onOk={(selected) => {
-                    console.log('选中项:', selected);
+                    stactPicker.value = selected.map(item => item.value);
                     this.setState({
-                      stactPicker: {
-                        value: selected.map(item => item.value),
-                      },
+                      stactPicker,
                     });
                   }}
-                  onCancel={() => { console.log('===> cancel <==='); }}
+                  onCancel={() => {
+                  }}
                   />
               </Cell>
 
