@@ -57,7 +57,7 @@ import { Input } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-input | | 类名前缀 |
 | className | string | 无 | | 追加类名 |
-| type | string | text | 'text', 'textarea' | 显示类型 |
+| type | string | text | | 显示类型 |
 | value | string | 无 | | 值 |
 | defaultValue | string | 无 | | 初始值 |
 | disabled | bool | false | | 是否禁用 |
