@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Icon, Cell } from '../../components';
+import { Panel, Icon, Cell, Message, Input } from '../../components';
 
 const img = require('../images/icons/state.png');
 
@@ -81,6 +81,23 @@ class Page extends Component {
                 icon={<img alt="" src={img} />}
                 onClick={() => {}}
                 />
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>提示信息</Panel.Title>
+            </Panel.Header>
+            <Panel.Body>
+              <Cell
+                title="标题"
+                help={
+                  <Message theme="error">
+                    <Icon type="info-round" />
+                    <span style={{ marginLeft: 5 }}>标题不能为空</span>
+                  </Message>
+                }>
+                <Input type="text" placeholder="请输入标题" /></Cell>
             </Panel.Body>
           </Panel>
         </main>
