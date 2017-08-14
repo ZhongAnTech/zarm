@@ -60,19 +60,6 @@ class Page extends PureComponent {
               <Cell
                 description={
                   <Radio.Group
-                    compact
-                    value={this.state.radio}
-                    onChange={value => console.log(`radio to ${value}`)}>
-                    <Radio value="0">选项一</Radio>
-                    <Radio value="1">选项二</Radio>
-                    <Radio value="2">选项三</Radio>
-                  </Radio.Group>
-                }>收紧样式</Cell>
-
-              <Cell
-                description={
-                  <Radio.Group
-                    compact
                     shape="radius"
                     value={this.state.radio}
                     onChange={value => console.log(`radio to ${value}`)}>
@@ -85,7 +72,6 @@ class Page extends PureComponent {
               <Cell
                 description={
                   <Radio.Group
-                    compact
                     shape="round"
                     value={this.state.radio}
                     onChange={value => console.log(`radio to ${value}`)}>
