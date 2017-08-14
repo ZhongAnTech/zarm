@@ -16,8 +16,8 @@ class Picker extends Component {
   constructor(props) {
     super(props);
 
+    const initValue = props.value || props.defaultValue || [];
     let _data = null;
-    const initValue = props.defaultValue || props.value;
     let _value = null;
 
     if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
@@ -39,7 +39,7 @@ class Picker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
+    if ('value' in nextProps && nextProps.value !== this.props.value) {
       let _value = null;
       let _data = null;
 
@@ -263,7 +263,6 @@ Picker.defaultProps = {
   format: '',
   disabled: false,
   dataSource: [],
-  value: [],
   onClick: () => {},
   onChange: () => {},
   onOk: () => {},
