@@ -161,7 +161,8 @@ class Page extends Component {
                   displayMember="label"
                   valueMember="value"
                   value={diy.value}
-                  onChange={() => {
+                  onOk={(selected) => {
+                    diy.value = selected.map(item => item.value);
                     this.setState({
                       diy,
                     });
@@ -330,9 +331,8 @@ class Page extends Component {
                   dataSource={District}
                   value={stactPicker.value}
                   labelAddon=" - "
-                  itemCompile={data => `${data.label}(${data.value})`}
-                  displayCompile={selected => selected.map(item => item.label).join('-')}
-                  validate={selected => ((selected.length && selected[0].label === '北京') ? '选择了北京行政区域' : '')}
+                  // itemCompile={data => `${data.label}(${data.value})`}
+                  // displayCompile={selected => selected.map(item => item.label).join('-')}
                   onOk={(selected) => {
                     stactPicker.value = selected.map(item => item.value);
                     this.setState({

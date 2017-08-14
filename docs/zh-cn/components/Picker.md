@@ -15,7 +15,6 @@ import { Picker } from 'zarm';
 单列
 
 ```jsx
-
 <Picker
   dataSource={[
     {
