@@ -93,12 +93,14 @@ $prefixCls: za-button;
     border-radius: 50%;
   }
 
-  .za-icon {
+  i {
     font-size: $icon-size;
   }
 
-  .za-icon + span,
-  span + .za-icon {
+  i + span,
+  span + i,
+  svg + span,
+  span + svg {
     margin-left: $spacing;
   }
 }
@@ -108,6 +110,7 @@ $prefixCls: za-button;
   padding: 0;
   font-weight: normal;
   text-align: center;
+  vertical-align: middle;
   border: 1px solid transparent;
   cursor: pointer;
   outline: 0 none;

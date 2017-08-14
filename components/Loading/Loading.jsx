@@ -10,7 +10,7 @@ class Loading extends PureComponent {
 
     return (
       <Toast prefixCls={prefixCls} {...others}>
-        <Spinner className="rotate360" />
+        <Spinner size="lg" className="rotate360" />
       </Toast>
     );
   }

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Icon from '../Icon';
+import Spinner from '../Spinner';
 
 class Button extends PureComponent {
   render() {
@@ -21,7 +21,7 @@ class Button extends PureComponent {
     });
 
     const iconRender = loading
-      ? <Icon type="loading" className="rotate360" />
+      ? <Spinner className="rotate360" />
       : icon;
 
     const childrenRender = children
