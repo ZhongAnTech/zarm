@@ -45,7 +45,7 @@ class CheckboxGroup extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, type, block, disabled, gather, children } = this.props;
+    const { prefixCls, className, theme, shape, type, block, disabled, compact, children } = this.props;
 
     const items = React.Children.map(children, (element, index) => {
       return cloneElement(element, {
@@ -63,7 +63,7 @@ class CheckboxGroup extends PureComponent {
       [`${prefixCls}`]: true,
       [className]: !!className,
       [`shape-${shape}`]: !!shape,
-      'is-gather': gather,
+      'is-compact': compact,
       block,
       disabled,
     });
@@ -84,7 +84,7 @@ CheckboxGroup.propTypes = {
   shape: PropTypes.oneOf(['radius', 'round']),
   block: PropTypes.bool,
   disabled: PropTypes.bool,
-  gather: PropTypes.bool,
+  compact: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
@@ -96,7 +96,7 @@ CheckboxGroup.defaultProps = {
   shape: null,
   block: false,
   disabled: false,
-  gather: false,
+  compact: false,
   onChange() {},
 };
 
