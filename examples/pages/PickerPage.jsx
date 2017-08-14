@@ -330,9 +330,7 @@ class Page extends Component {
                   placeholder="请选择"
                   dataSource={District}
                   value={stactPicker.value}
-                  labelAddon=" - "
-                  // itemCompile={data => `${data.label}(${data.value})`}
-                  // displayCompile={selected => selected.map(item => item.label).join('-')}
+                  displayRender={selected => selected.map(item => item.label).join('-')}
                   onOk={(selected) => {
                     stactPicker.value = selected.map(item => item.value);
                     this.setState({

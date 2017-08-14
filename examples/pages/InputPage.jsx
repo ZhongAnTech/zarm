@@ -27,7 +27,7 @@ class Page extends Component {
               <Panel.Title>高度自适应</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell title="多行文本"><Input autoHeight type="textarea" rows="3" placeholder="写点啥..." /></Cell>
+              <Cell title="多行文本"><Input autosize type="textarea" rows="3" placeholder="写点啥..." /></Cell>
             </Panel.Body>
           </Panel>
 
@@ -37,7 +37,7 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Cell><Input type="text" placeholder="标题" /></Cell>
-              <Cell><Input autoHeight type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
+              <Cell><Input autosize type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
             </Panel.Body>
           </Panel>
 
@@ -46,7 +46,7 @@ class Page extends Component {
               <Panel.Title>显示输入字数</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell><Input autoHeight showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
+              <Cell><Input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
             </Panel.Body>
           </Panel>
 
