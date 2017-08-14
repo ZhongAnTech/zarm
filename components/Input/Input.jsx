@@ -14,7 +14,7 @@ class Input extends PureComponent {
   }
 
   componentDidMount() {
-    this.initAutoHeight();
+    this.initAutosize();
     Events.on(this.input, 'input', this.setLength);
   }
 
@@ -26,7 +26,7 @@ class Input extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.destroyAutoHeight();
+    this.destroyAutosize();
     Events.off(this.input, 'input', this.setLength);
   }
 
@@ -38,15 +38,15 @@ class Input extends PureComponent {
   }
 
   // 初始化自适应高度
-  initAutoHeight() {
-    const { autoHeight } = this.props;
-    autoHeight && Autosize(this.input);
+  initAutosize() {
+    const { autosize } = this.props;
+    autosize && Autosize(this.input);
   }
 
   // 销毁自适应高度
-  destroyAutoHeight() {
-    const { autoHeight } = this.props;
-    autoHeight && Autosize.destroy(this.input);
+  destroyAutosize() {
+    const { autosize } = this.props;
+    autosize && Autosize.destroy(this.input);
   }
 
   render() {
@@ -58,7 +58,7 @@ class Input extends PureComponent {
       defaultValue,
       maxLength,
       disabled,
-      autoHeight,
+      autosize,
       showLength,
       ...others
     } = this.props;
@@ -117,7 +117,7 @@ Input.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,
-  autoHeight: PropTypes.bool,
+  autosize: PropTypes.bool,
   showLength: PropTypes.bool,
 };
 
@@ -126,7 +126,7 @@ Input.defaultProps = {
   className: null,
   type: 'text',
   disabled: false,
-  autoHeight: false,
+  autosize: false,
   showLength: false,
 };
 

@@ -141,7 +141,7 @@ class PickerStack extends Component {
   }
 
   renderColumn(list, colIndex, data, isLast) {
-    const { valueMember, prefixCls, itemCompile } = this.props;
+    const { valueMember, prefixCls, itemRender } = this.props;
     const pickVal = data[valueMember];
     const cls = classnames({
       [`${prefixCls}-stack-column`]: true,
@@ -168,7 +168,7 @@ class PickerStack extends Component {
                   })
                 }
                 onClick={() => this.change(colIndex, item, isLast)}>
-                { itemCompile(item) }
+                { itemRender(item) }
               </div>
             ))
           }
@@ -178,9 +178,9 @@ class PickerStack extends Component {
   }
 
   render() {
-    const { className, value: curVal, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayCompile, itemCompile } = this.props;
+    const { className, value: curVal, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayRender, itemRender } = this.props;
     const { visible, errorMsg, value, valueBackups } = this.state;
-    const displayLabel = displayCompile(valueBackups);
+    const displayLabel = displayRender(valueBackups);
 
     const labelCls = classnames({
       [`${prefixCls}-input`]: true,
@@ -213,7 +213,7 @@ class PickerStack extends Component {
                   <div className={`${prefixCls}-submit`} />
                 </div>
                 <div className={`${prefixCls}-crumbs`}>
-                  <p>选择：{ value.map(item => itemCompile(item)).join(labelAddon) }</p>
+                  <p>选择：{ value.map(item => itemRender(item)).join(labelAddon) }</p>
                   { errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{ errorMsg }</p> : null }
                 </div>
                 <div className={`${prefixCls}-stack-group`}>{ this.renderGroup(dataSource, value) }</div>
@@ -239,8 +239,8 @@ PickerStack.propTypes = {
   itemHeight: PropTypes.number,
   onOk: PropTypes.func,
   onCancel: PropTypes.func,
-  displayCompile: PropTypes.func,
-  itemCompile: PropTypes.func,
+  displayRender: PropTypes.func,
+  itemRender: PropTypes.func,
   validate: PropTypes.func,
 };
 
@@ -258,8 +258,8 @@ PickerStack.defaultProps = {
   itemHeight: 30,
   onOk() {},
   onCancel() {},
-  displayCompile: data => data.map(({ label }) => label).join(''),
-  itemCompile: data => data.label,
+  displayRender: data => data.map(({ label }) => label).join(''),
+  itemRender: data => data.label,
   validate() {},
 };
 
