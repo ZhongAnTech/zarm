@@ -156,7 +156,7 @@ import { Checkbox } from 'zarm';
 | shape | string | 无 | 'radius', 'round' | 形状 |
 | block | bool | false | | 是否为块级元素 |
 | disabled | bool | false | | 是否禁用 |
-| gather | bool | false | | 是否收紧 |
+| compact | bool | false | | 是否启用紧凑模式 |
 | onChange | func | noop | \(value: string, number\) | 值变化时触发的回调函数 |
 
 
