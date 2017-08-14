@@ -131,8 +131,19 @@ class Picker extends Component {
     });
   }
 
+  _displayRender(data) {
+    const { displayRender, displayMember, displayAddon } = this.props;
+
+    if (typeof displayRender === 'function') {
+      return displayRender(data);
+    }
+    return data.map((v) => {
+      return v[displayMember];
+    }).join(displayAddon);
+  }
+
   render() {
-    const { prefixCls, format, disabled, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
+    const { prefixCls, disabled, className, cancelText, okText, title, placeholder, valueMember, displayMember, displayAddon } = this.props;
     const { data, value } = this.state;
 
     let PickerCol = null;
@@ -144,7 +155,7 @@ class Picker extends Component {
 
     const inputCls = classnames({
       [`${prefixCls}-input`]: true,
-      [`${prefixCls}-placeholder`]: !value.join(format),
+      [`${prefixCls}-placeholder`]: !value.join(displayAddon),
       [`${prefixCls}-disabled`]: !!disabled,
     });
 
@@ -185,32 +196,23 @@ class Picker extends Component {
             return item[valueMember] === value[level];
           });
 
-          return treeChildren.map((v) => {
-            return v[displayMember];
-          }).join(format);
+          return this._displayRender(treeChildren);
         }
-
-        return value.join(format) || placeholder;
       }
 
       let treeChildren2 = this.props.dataSource.reduce((a, b) => {
         return a.concat(b);
       }, []);
-
       treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item[valueMember]); });
 
-      return treeChildren2.map((v) => {
-        return v[displayMember];
-      }).join(format) || placeholder;
-
-      // return value.join(format) || placeholder;
+      return this._displayRender(treeChildren2);
     };
 
     return (
       <div className={`${prefixCls}`} onClick={() => this.handleClick()}>
         <div className={inputCls}>
           <input type="hidden" value={this.state.value} />
-          {display()}
+          {display() || placeholder}
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
@@ -242,13 +244,14 @@ Picker.propTypes = {
   title: PropTypes.string,
   cancelText: PropTypes.string,
   okText: PropTypes.string,
-  format: PropTypes.string,
+  displayAddon: PropTypes.string,
   disabled: PropTypes.bool,
   dataSource: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.array])).isRequired,
   cols: PropTypes.number,
   onOk: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   onMaskClick: PropTypes.func,
+  displayRender: PropTypes.func,
   prefixCls: PropTypes.string,
   displayMember: PropTypes.string,
   valueMember: PropTypes.string,
@@ -260,7 +263,7 @@ Picker.defaultProps = {
   title: '请选择',
   cancelText: '取消',
   okText: '确定',
-  format: '',
+  displayAddon: '',
   disabled: false,
   dataSource: [],
   onClick: () => {},

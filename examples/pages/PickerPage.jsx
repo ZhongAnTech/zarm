@@ -147,7 +147,7 @@ class Page extends Component {
                   visible={diy.visible}
                   title="自定义标题"
                   placeholder="自定义placeholder"
-                  format="/"
+                  displayRender={selected => selected.map(item => item.label).join('/')}
                   dataSource={[
                     [
                       { value: '1', label: '选项一' },
@@ -189,6 +189,7 @@ class Page extends Component {
                   displayMember="label"
                   valueMember="label"
                   value={city1.value}
+                  displayAddon="-"
                   onOk={(selected) => {
                     city1.value = selected.map(item => item.label);
                     this.setState({
