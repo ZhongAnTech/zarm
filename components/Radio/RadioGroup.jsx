@@ -34,7 +34,7 @@ class RadioGroup extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, type, block, disabled, gather, children } = this.props;
+    const { prefixCls, className, theme, shape, type, block, disabled, compact, children } = this.props;
 
     const items = React.Children.map(children, (element, index) => {
       return cloneElement(element, {
@@ -53,7 +53,7 @@ class RadioGroup extends PureComponent {
       [`${prefixCls}`]: true,
       [className]: !!className,
       [`shape-${shape}`]: !!shape,
-      'is-gather': gather,
+      'is-compact': compact,
       block,
       disabled,
     });
@@ -74,7 +74,7 @@ RadioGroup.propTypes = {
   shape: PropTypes.oneOf(['radius', 'round']),
   block: PropTypes.bool,
   disabled: PropTypes.bool,
-  gather: PropTypes.bool,
+  compact: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
@@ -86,7 +86,7 @@ RadioGroup.defaultProps = {
   shape: null,
   block: false,
   disabled: false,
-  gather: false,
+  compact: false,
   onChange() {},
 };
 

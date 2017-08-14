@@ -75,7 +75,7 @@ $prefixCls: za-checkbox;
       }
     }
 
-    &.is-gather {
+    &.is-compact {
       .#{$prefixCls} {
         margin-left: -1px;
       }
