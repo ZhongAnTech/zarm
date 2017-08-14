@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const config = require('./webpack.config.base');
+const config = require('./config.base');
 
 const env = process.env.WEBPACK_ENV;
 
@@ -18,7 +18,7 @@ config.entry = {
 config.output = {
   library: 'Zarm',
   libraryTarget: 'umd',
-  path: path.resolve(__dirname, '../dist'),
+  path: path.resolve(__dirname, '../../dist'),
   filename: '[name].js',
 };
 

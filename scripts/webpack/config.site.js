@@ -1,10 +1,9 @@
-const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const config = require('./webpack.config.base');
-
-config.devtool = 'cheap-module-eval-source-map';
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const config = require('./config.base');
 
 config.entry = {
   index: [
@@ -12,10 +11,34 @@ config.entry = {
   ],
 };
 
+config.output.publicPath = './';
+
 config.plugins.push(new ExtractTextPlugin({
   filename: 'stylesheet/[name].css',
   disable: false,
   allChunks: true,
+}));
+
+config.plugins.push(new OptimizeCssAssetsPlugin({
+  assetNameRegExp: /\.css$/g,
+  cssProcessor: require('cssnano'),
+  cssProcessorOptions: {
+    discardComments: {
+      removeAll: true,
+    },
+  },
+  canPrint: true,
+}));
+
+config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+  compress: {
+    warnings: false,
+  },
+  output: {
+    comments: false,
+  },
+  sourceMap: true,
+  mangle: true,
 }));
 
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
@@ -26,17 +49,14 @@ config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
   names: Object.keys(config.entry),
   async: 'common.async',
   children: true,
-  minChunks(module, count) {
-    return module.context && module.context.indexOf('node_modules') !== -1 && count >= 3;
-  },
+  minChunks: 3,
 }));
 
-config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.plugins.push(new webpack.DefinePlugin({
   'process.env': {
-    NODE_ENV: '"development"',
+    NODE_ENV: '"production"',
   },
-  __DEBUG__: true,
+  __DEBUG__: false,
 }));
 
 Object.keys(config.entry).forEach((key) => {
@@ -47,17 +67,6 @@ Object.keys(config.entry).forEach((key) => {
   }));
 });
 
-config.module.rules[0].use[0].options.presets.push('react-hmre');
-
-config.devServer = {
-  contentBase: path.join(__dirname, '../examples'),
-  publicPath: config.output.publicPath,
-  host: '0.0.0.0',
-  port: 3000,
-  compress: true,
-  noInfo: true,
-  inline: true,
-  hot: true,
-};
+// config.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = config;
