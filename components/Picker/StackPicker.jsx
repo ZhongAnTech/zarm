@@ -33,6 +33,18 @@ class PickerStack extends Component {
     this.reposition();
   }
 
+  onMaskClick() {
+    const { onMaskClick } = this.props;
+    this.close(true);
+    onMaskClick && onMaskClick();
+  }
+
+  onCancel() {
+    const { onCancel } = this.props;
+    this.close(true);
+    onCancel && onCancel();
+  }
+
   resolveProps({ value, dataSource, validate }) {
     const resolveValue = [];
 
@@ -92,18 +104,6 @@ class PickerStack extends Component {
         value: [...this.state.displayValue],
       });
     }
-  }
-
-  onMaskClick() {
-    const { onMaskClick } = this.props;
-    this.close(true);
-    onMaskClick && onMaskClick();
-  }
-
-  onCancel() {
-    const { onCancel } = this.props;
-    this.close(true);
-    onCancel && onCancel();
   }
 
   reposition() {
