@@ -7,12 +7,16 @@ $PI: 3.141592674;
   }
 }
 
+@mixin spinner-size($diameter) {
+  width: $diameter;
+  height: $diameter;
+}
+
 .#{$prefixCls} {
   display: inline-block;
   position: relative;
-  width: r(31);
-  height: r(31);
   transform: rotate(-90deg);
+  @include spinner-size($spinner-diameter-md);
   @include spinner-theme($theme-default);
 
   &-path {
@@ -37,6 +41,12 @@ $PI: 3.141592674;
     font-size: r(30);
   }
 
+  /* sizes */
+  &.size-lg {
+    @include spinner-size($spinner-diameter-lg);
+  }
+
+  /* themes */
   &.theme-default {
     @include spinner-theme($theme-default);
   }

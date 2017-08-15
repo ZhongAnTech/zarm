@@ -37,9 +37,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group
-                    defaultValue="1"
-                    onChange={value => console.log(`radio to ${value}`)}>
+                  <Radio.Group defaultValue="1">
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
@@ -48,9 +46,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group
-                    value={this.state.radio}
-                    onChange={value => console.log(`radio to ${value}`)}>
+                  <Radio.Group>
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2" disabled>选项三</Radio>
@@ -59,23 +55,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group
-                    compact
-                    value={this.state.radio}
-                    onChange={value => console.log(`radio to ${value}`)}>
-                    <Radio value="0">选项一</Radio>
-                    <Radio value="1">选项二</Radio>
-                    <Radio value="2">选项三</Radio>
-                  </Radio.Group>
-                }>收紧样式</Cell>
-
-              <Cell
-                description={
-                  <Radio.Group
-                    compact
-                    shape="radius"
-                    value={this.state.radio}
-                    onChange={value => console.log(`radio to ${value}`)}>
+                  <Radio.Group shape="radius">
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
@@ -84,11 +64,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group
-                    compact
-                    shape="round"
-                    value={this.state.radio}
-                    onChange={value => console.log(`radio to ${value}`)}>
+                  <Radio.Group shape="round">
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
@@ -102,15 +78,8 @@ class Page extends PureComponent {
             <Panel.Header>
               <Panel.Title>块级样式</Panel.Title>
             </Panel.Header>
-            <Panel.Body className="block-radio">
-              <Radio.Group
-                block
-                compact
-                shape="radius"
-                value={this.state.radio}
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
+            <Panel.Body className="block-box">
+              <Radio.Group block compact shape="radius">
                 <Radio value="0">选项一</Radio>
                 <Radio value="1">选项二</Radio>
                 <Radio value="2">选项三</Radio>
@@ -123,12 +92,7 @@ class Page extends PureComponent {
               <Panel.Title>列表样式</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Radio.Group
-                type="cell"
-                value={this.state.radio}
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
+              <Radio.Group type="cell">
                 <Radio value="0">选项一</Radio>
                 <Radio value="1">选项二</Radio>
                 <Radio value="2" disabled>选项三（禁止选择）</Radio>
@@ -141,13 +105,7 @@ class Page extends PureComponent {
               <Panel.Title>列表样式禁用状态</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Radio.Group
-                disabled
-                type="cell"
-                value={this.state.radio}
-                onChange={(value) => {
-                  console.log(`radio to ${value}`);
-                }}>
+              <Radio.Group disabled type="cell">
                 <Radio value="0">选项一</Radio>
                 <Radio value="1">选项二</Radio>
                 <Radio value="2">选项三</Radio>

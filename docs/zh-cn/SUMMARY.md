@@ -10,4 +10,6 @@
 * 表单组件
   * [复选框 Checkbox](components/Checkbox.md)
   * [文本框 Input](components/Input.md)
+  * [选择器 Picker](components/Picker.md)
+  * [单选框 Radio](components/Radio.md)
 
