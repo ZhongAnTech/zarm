@@ -33,15 +33,8 @@ import { Input } from 'zarm';
 #### 无标签栏
 
 ```jsx
-<Panel>
-  <Panel.Header>
-    <Panel.Title>无标签栏</Panel.Title>
-  </Panel.Header>
-  <Panel.Body>
-    <Cell><Input type="text" placeholder="标题" /></Cell>
-    <Cell><Input autoHeight type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
-	</Panel.Body>
-</Panel>
+<Cell><Input type="text" placeholder="标题" /></Cell>
+<Cell><Input autoHeight type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
 ```
 
 #### 显示输入字数
