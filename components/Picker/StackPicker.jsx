@@ -52,7 +52,7 @@ class PickerStack extends Component {
 
     return {
       value: resolveValue,
-      valueBackups: [...resolveValue],
+      displayValue: [...resolveValue],
       errorMsg: validate(value),
     };
   }
@@ -73,6 +73,11 @@ class PickerStack extends Component {
     errorMsg = validate(value);
 
     if (isLast && !errorMsg) {
+      this.setState({
+        value,
+        displayValue: [...value],
+        errorMsg,
+      });
       this.close();
       onOk(value);
     } else {
@@ -89,7 +94,12 @@ class PickerStack extends Component {
 
     this.setState({ visible: false });
 
-    isCancel && onCancel();
+    if (isCancel) {
+      this.setState({
+        value: [...this.state.displayValue],
+      });
+      onCancel();
+    }
   }
 
   reposition() {
@@ -179,8 +189,8 @@ class PickerStack extends Component {
 
   render() {
     const { className, value: curVal, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayRender, itemRender } = this.props;
-    const { visible, errorMsg, value, valueBackups } = this.state;
-    const displayLabel = displayRender(valueBackups);
+    const { visible, errorMsg, value, displayValue } = this.state;
+    const displayLabel = displayRender(displayValue);
 
     const labelCls = classnames({
       [`${prefixCls}-input`]: true,
@@ -252,10 +262,10 @@ PickerStack.defaultProps = {
   placeholder: '请选择',
   disabled: false,
   dataSource: [],
-  cols: 3,
+  cols: Infinity,
   labelAddon: ' > ',
   displayItems: 8,
-  itemHeight: 30,
+  itemHeight: 35,
   onOk() {},
   onCancel() {},
   displayRender: data => data.map(({ label }) => label).join(''),

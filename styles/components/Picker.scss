@@ -223,7 +223,7 @@ $picker-stackitem-height: 35px;
     &-item {
       position: relative;
       padding: 0 r(10);
-      line-height: $picker-stackitem-height - 1;
+      line-height: $picker-stackitem-height;
       font-size: r(14);
       color: #333;
       transition: padding-left .4s;
