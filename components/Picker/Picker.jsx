@@ -41,22 +41,34 @@ class Picker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps && nextProps.value !== this.props.value) {
-      let _value = null;
-      let _data = null;
+    if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
       const { dataSource } = nextProps;
+      let _data = null;
 
       if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
         _data = [nextProps.dataSource];
       } else {
-        _value = nextProps.value;
         _data = nextProps.dataSource;
       }
 
       this.setState({
-        value: _value,
         data: _data,
+        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+      });
+    }
+
+    if ('value' in nextProps && nextProps.value !== this.props.value) {
+      let _value = null;
+      const { dataSource } = nextProps;
+
+      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
+        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
+      } else {
+        _value = nextProps.value;
+      }
+
+      this.setState({
+        value: _value,
         cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
     }
