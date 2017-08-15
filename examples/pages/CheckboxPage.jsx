@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Panel, Cell, Checkbox } from '../../components';
+import '../styles/pages/CheckboxPage';
 
 class Page extends PureComponent {
 
@@ -45,10 +46,7 @@ class Page extends PureComponent {
             <Panel.Body>
               <Cell
                 description={
-                  <Checkbox.Group
-                    type="button"
-                    value={this.state.checkbox}
-                    onChange={value => console.log(`checkbox to ${value}`)}>
+                  <Checkbox.Group type="button">
                     <Checkbox value="0">选项一</Checkbox>
                     <Checkbox value="1">选项二</Checkbox>
                     <Checkbox value="2">选项三</Checkbox>
@@ -57,10 +55,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Checkbox.Group
-                    type="button"
-                    defaultValue={['0', '1']}
-                    onChange={value => console.log(`checkbox to ${value}`)}>
+                  <Checkbox.Group type="button" defaultValue={['0', '1']}>
                     <Checkbox value="0">选项一</Checkbox>
                     <Checkbox value="1">选项二</Checkbox>
                     <Checkbox value="2">选项三</Checkbox>
@@ -69,10 +64,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Checkbox.Group
-                    type="button"
-                    value={this.state.checkbox}
-                    onChange={value => console.log(`checkbox to ${value}`)}>
+                  <Checkbox.Group type="button">
                     <Checkbox value="0">选项一</Checkbox>
                     <Checkbox value="1">选项二</Checkbox>
                     <Checkbox value="2" disabled>选项三</Checkbox>
@@ -81,11 +73,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Checkbox.Group
-                    type="button"
-                    shape="radius"
-                    value={this.state.checkbox}
-                    onChange={value => console.log(`checkbox to ${value}`)}>
+                  <Checkbox.Group type="button" shape="radius">
                     <Checkbox value="0">选项一</Checkbox>
                     <Checkbox value="1">选项二</Checkbox>
                     <Checkbox value="2">选项三</Checkbox>
@@ -94,11 +82,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Checkbox.Group
-                    type="button"
-                    shape="round"
-                    value={this.state.checkbox}
-                    onChange={value => console.log(`checkbox to ${value}`)}>
+                  <Checkbox.Group type="button" shape="round">
                     <Checkbox value="0">选项一</Checkbox>
                     <Checkbox value="1">选项二</Checkbox>
                     <Checkbox value="2">选项三</Checkbox>
@@ -110,13 +94,23 @@ class Page extends PureComponent {
 
           <Panel>
             <Panel.Header>
+              <Panel.Title>块级样式</Panel.Title>
+            </Panel.Header>
+            <Panel.Body className="block-box">
+              <Checkbox.Group block type="button">
+                <Checkbox value="0">选项一</Checkbox>
+                <Checkbox value="1">选项二</Checkbox>
+                <Checkbox value="2">选项三</Checkbox>
+              </Checkbox.Group>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
               <Panel.Title>列表样式</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Checkbox.Group
-                type="cell"
-                value={this.state.checkbox}
-                onChange={value => console.log(`checkbox to ${value}`)}>
+              <Checkbox.Group type="cell">
                 <Checkbox value="0">选项一</Checkbox>
                 <Checkbox value="1">选项二</Checkbox>
                 <Checkbox value="2" disabled>选项三（禁止选择）</Checkbox>
@@ -129,11 +123,7 @@ class Page extends PureComponent {
               <Panel.Title>列表样式禁用状态</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Checkbox.Group
-                disabled
-                type="cell"
-                value={this.state.checkbox}
-                onChange={value => console.log(`checkbox to ${value}`)}>
+              <Checkbox.Group disabled type="cell">
                 <Checkbox value="0">选项一</Checkbox>
                 <Checkbox value="1">选项二</Checkbox>
                 <Checkbox value="2">选项三</Checkbox>

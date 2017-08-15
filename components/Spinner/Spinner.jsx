@@ -7,12 +7,13 @@ const diameter = 100;
 class Spinner extends PureComponent {
 
   render() {
-    const { prefixCls, className, theme, percent, strokeWidth, children, ...others } = this.props;
+    const { prefixCls, className, theme, size, percent, strokeWidth, children, ...others } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
       [`theme-${theme}`]: !!theme,
+      [`size-${size}`]: !!size,
     });
 
     const half = diameter / 2;
@@ -37,6 +38,7 @@ Spinner.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
+  size: PropTypes.oneOf(['lg']),
   strokeWidth: PropTypes.number,
   percent: PropTypes.number,
 };
@@ -45,6 +47,7 @@ Spinner.defaultProps = {
   prefixCls: 'za-spinner',
   className: null,
   theme: 'primary',
+  size: null,
   strokeWidth: 4,
   percent: 15,
 };
