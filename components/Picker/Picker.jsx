@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { arrayTreeFilter, formatToInit, formatBackToObject } from './utils';
+import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
 import Popup from '../Popup';
@@ -17,14 +17,16 @@ class Picker extends Component {
     super(props);
 
     const initValue = props.value || props.defaultValue || [];
+    const { dataSource } = props;
     let _data = null;
     let _value = null;
 
-    if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
+    // 针对单列数据源，转换为[[{}]]
+    if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
       _data = [props.dataSource];
-      _value = Object.prototype.toString.call(initValue) === '[object Array]' ? initValue : [initValue];
+      _value = isArray(initValue) ? initValue : [initValue];
     } else {
-      _data = props.dataSource;
+      _data = dataSource;
       _value = initValue;
     }
 
@@ -32,30 +34,42 @@ class Picker extends Component {
       visible: props.visible || false,
       value: _value,
       data: _data,
-      cascade: Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children'),
+      cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
     };
 
     this.tempValue = _value;
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps && nextProps.value !== this.props.value) {
-      let _value = null;
+    if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
+      const { dataSource } = nextProps;
       let _data = null;
 
-
-      if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
-        _value = Object.prototype.toString.call(nextProps.value) === '[object Array]' ? nextProps.value : [nextProps.value];
+      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
         _data = [nextProps.dataSource];
       } else {
-        _value = nextProps.value;
         _data = nextProps.dataSource;
       }
 
       this.setState({
-        value: _value,
         data: _data,
-        cascade: Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children'),
+        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+      });
+    }
+
+    if ('value' in nextProps && nextProps.value !== this.props.value) {
+      let _value = null;
+      const { dataSource } = nextProps;
+
+      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
+        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
+      } else {
+        _value = nextProps.value;
+      }
+
+      this.setState({
+        value: _value,
+        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
     }
   }
@@ -86,7 +100,6 @@ class Picker extends Component {
     this.tempValue = value;
     this.toggle();
     let _value = null;
-    // _value = value.length === 1 ? value.toString() : value;
     _value = formatBackToObject(data, value, cascade, valueMember, cols);
     onOk && onOk(_value);
   }
@@ -134,8 +147,19 @@ class Picker extends Component {
     });
   }
 
+  _displayRender(data) {
+    const { displayRender, displayMember, displayAddon } = this.props;
+
+    if (typeof displayRender === 'function') {
+      return displayRender(data);
+    }
+    return data.map((v) => {
+      return v[displayMember];
+    }).join(displayAddon);
+  }
+
   render() {
-    const { prefixCls, format, disabled, className, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
+    const { prefixCls, disabled, className, cancelText, okText, title, placeholder, valueMember, displayMember, displayAddon } = this.props;
     const { data, value } = this.state;
 
     let PickerCol = null;
@@ -147,7 +171,7 @@ class Picker extends Component {
 
     const inputCls = classnames({
       [`${prefixCls}-input`]: true,
-      [`${prefixCls}-placeholder`]: !value.join(format),
+      [`${prefixCls}-placeholder`]: !value.join(displayAddon),
       [`${prefixCls}-disabled`]: !!disabled,
     });
 
@@ -188,32 +212,23 @@ class Picker extends Component {
             return item[valueMember] === value[level];
           });
 
-          return treeChildren.map((v) => {
-            return v[displayMember];
-          }).join(format);
+          return this._displayRender(treeChildren);
         }
-
-        return value.join(format) || placeholder;
       }
 
       let treeChildren2 = this.props.dataSource.reduce((a, b) => {
         return a.concat(b);
       }, []);
-
       treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item[valueMember]); });
 
-      return treeChildren2.map((v) => {
-        return v[displayMember];
-      }).join(format) || placeholder;
-
-      // return value.join(format) || placeholder;
+      return this._displayRender(treeChildren2);
     };
 
     return (
       <div className={`${prefixCls}`} onClick={() => this.handleClick()}>
         <div className={inputCls}>
           <input type="hidden" value={this.state.value} />
-          {display()}
+          {display() || placeholder}
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
@@ -245,13 +260,14 @@ Picker.propTypes = {
   title: PropTypes.string,
   cancelText: PropTypes.string,
   okText: PropTypes.string,
-  format: PropTypes.string,
+  displayAddon: PropTypes.string,
   disabled: PropTypes.bool,
   dataSource: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.array])).isRequired,
   cols: PropTypes.number,
   onOk: PropTypes.func.isRequired,
   onCancel: PropTypes.func,
   onMaskClick: PropTypes.func,
+  displayRender: PropTypes.func,
   prefixCls: PropTypes.string,
   displayMember: PropTypes.string,
   valueMember: PropTypes.string,
@@ -263,7 +279,7 @@ Picker.defaultProps = {
   title: '请选择',
   cancelText: '取消',
   okText: '确定',
-  format: '',
+  displayAddon: '',
   disabled: false,
   dataSource: [],
   onClick: () => {},

@@ -145,3 +145,12 @@ export function formatBackToObject(data, value, cascade, member, cols) {
   }
   return result;
 }
+
+export function isArray(data) {
+  return Object.prototype.toString.call(data) === '[object Array]';
+}
+
+export function hasChildrenObject(data) {
+  return Object.prototype.hasOwnProperty.call(data, 'children') && Object.prototype.toString.call(data.children) !== '[object String]';
+}
+

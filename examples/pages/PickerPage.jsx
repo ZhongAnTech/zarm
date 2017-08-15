@@ -27,7 +27,6 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-
               <Cell title="单列">
                 <Picker
                   dataSource={[
@@ -125,7 +124,7 @@ class Page extends Component {
                   visible={diy.visible}
                   title="自定义标题"
                   placeholder="自定义placeholder"
-                  format="/"
+                  displayRender={selected => selected.map(item => item.idCardName).join('/')}
                   dataSource={[
                     {
                       idCardType: 1,
