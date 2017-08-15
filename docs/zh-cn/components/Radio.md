@@ -16,11 +16,11 @@ import { Radio } from 'zarm';
 
 ```jsx
 <Radio.Group
-	value={this.state.radio}
-	onChange={value => console.log(`radio to ${value}`)}>
-	<Radio value="0">选项一</Radio>
-	<Radio value="1">选项二</Radio>
-	<Radio value="2">选项三</Radio>
+  value={this.state.radio}
+  onChange={value => console.log(`radio to ${value}`)}>
+  <Radio value="0">选项一</Radio>
+  <Radio value="1">选项二</Radio>
+  <Radio value="2">选项三</Radio>
 </Radio.Group>
 ```
 
@@ -28,9 +28,9 @@ import { Radio } from 'zarm';
 
 ```jsx
 <Radio.Group defaultValue="1">
-	<Radio value="0">选项一</Radio>
-	<Radio value="1">选项二</Radio>
-	<Radio value="2">选项三</Radio>
+  <Radio value="0">选项一</Radio>
+  <Radio value="1">选项二</Radio>
+  <Radio value="2">选项三</Radio>
 </Radio.Group>
 ```
 
@@ -48,9 +48,9 @@ import { Radio } from 'zarm';
 
 ```jsx
 <Radio.Group shape="radius">
-	<Radio value="0">选项一</Radio>
-	<Radio value="1">选项二</Radio>
-	<Radio value="2">选项三</Radio>
+  <Radio value="0">选项一</Radio>
+  <Radio value="1">选项二</Radio>
+  <Radio value="2">选项三</Radio>
 </Radio.Group>
 ```
 
