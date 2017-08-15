@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { arrayTreeFilter, formatToInit, formatBackToObject } from './utils';
+import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
 import ColumnGroup from './ColumnGroup';
 import Cascader from './Cascader';
 import Popup from '../Popup';
@@ -17,14 +17,16 @@ class Picker extends Component {
     super(props);
 
     const initValue = props.value || props.defaultValue || [];
+    const { dataSource } = props;
     let _data = null;
     let _value = null;
 
-    if (Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children')) {
+    // 针对单列数据源，转换为[[{}]]
+    if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
       _data = [props.dataSource];
-      _value = Object.prototype.toString.call(initValue) === '[object Array]' ? initValue : [initValue];
+      _value = isArray(initValue) ? initValue : [initValue];
     } else {
-      _data = props.dataSource;
+      _data = dataSource;
       _value = initValue;
     }
 
@@ -32,7 +34,7 @@ class Picker extends Component {
       visible: props.visible || false,
       value: _value,
       data: _data,
-      cascade: Object.prototype.toString.call(props.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(props.dataSource[0], 'children'),
+      cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
     };
 
     this.tempValue = _value;
@@ -42,10 +44,10 @@ class Picker extends Component {
     if ('value' in nextProps && nextProps.value !== this.props.value) {
       let _value = null;
       let _data = null;
+      const { dataSource } = nextProps;
 
-
-      if (Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && !Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children')) {
-        _value = Object.prototype.toString.call(nextProps.value) === '[object Array]' ? nextProps.value : [nextProps.value];
+      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
+        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
         _data = [nextProps.dataSource];
       } else {
         _value = nextProps.value;
@@ -55,7 +57,7 @@ class Picker extends Component {
       this.setState({
         value: _value,
         data: _data,
-        cascade: Object.prototype.toString.call(nextProps.dataSource[0]) !== '[object Array]' && Object.prototype.hasOwnProperty.call(nextProps.dataSource[0], 'children'),
+        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
     }
   }
@@ -80,10 +82,12 @@ class Picker extends Component {
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
+    this.setState({
+      value,
+    });
     this.tempValue = value;
     this.toggle();
     let _value = null;
-    // _value = value.length === 1 ? value.toString() : value;
     _value = formatBackToObject(data, value, cascade, valueMember, cols);
     onOk && onOk(_value);
   }
