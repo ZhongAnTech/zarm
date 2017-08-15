@@ -542,8 +542,8 @@ DatePicker.propTypes = {
 
 DatePicker.defaultProps = {
   visible: false,
-  placeholder: '请选择日期',
-  title: '请选择日期',
+  placeholder: '请选择',
+  title: '请选择',
   cancelText: '取消',
   okText: '确定',
   mode: DATE,
