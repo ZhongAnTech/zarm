@@ -35,10 +35,7 @@ import { Checkbox } from 'zarm';
 普通
 
 ```jsx
-<Checkbox.Group
-  type="button"
-  value={this.state.checkbox}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+<Checkbox.Group type="button">
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2">选项三</Checkbox>
@@ -48,10 +45,7 @@ import { Checkbox } from 'zarm';
 指定默认值
 
 ```jsx
-<Checkbox.Group
-  type="button"
-  defaultValue={['0', '1']}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+<Checkbox.Group type="button" defaultValue={['0', '1']}>
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2">选项三</Checkbox>
@@ -61,10 +55,7 @@ import { Checkbox } from 'zarm';
 禁用指定项
 
 ```jsx
-<Checkbox.Group
-  type="button"
-  value={this.state.checkbox}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+<Checkbox.Group type="button">
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2" disabled>选项三</Checkbox>
@@ -74,11 +65,7 @@ import { Checkbox } from 'zarm';
 圆角
 
 ```jsx
-<Checkbox.Group
-  type="button"
-  shape="radius"
-  value={this.state.checkbox}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+<Checkbox.Group type="button" shape="radius">
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2">选项三</Checkbox>
@@ -88,11 +75,17 @@ import { Checkbox } from 'zarm';
 椭圆角
 
 ```jsx
-<Checkbox.Group
-  type="button"
-  shape="round"
-  value={this.state.checkbox}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+<Checkbox.Group type="button" shape="round">
+  <Checkbox value="0">选项一</Checkbox>
+  <Checkbox value="1">选项二</Checkbox>
+  <Checkbox value="2">选项三</Checkbox>
+</Checkbox.Group>
+```
+
+#### 块级样式
+
+```jsx
+<Checkbox.Group block shape="radius">
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2">选项三</Checkbox>
@@ -104,10 +97,7 @@ import { Checkbox } from 'zarm';
 普通
 
 ```jsx
-<Checkbox.Group
-  type="cell"
-  value={this.state.checkbox}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+<Checkbox.Group type="cell">
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2" disabled>选项三（禁止选择）</Checkbox>
@@ -117,11 +107,7 @@ import { Checkbox } from 'zarm';
 禁用状态
 
 ```jsx
-<Checkbox.Group
-  disabled
-  type="cell"
-  value={this.state.checkbox}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+<Checkbox.Group disabled type="cell">
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2">选项三（禁止选择）</Checkbox>
@@ -156,7 +142,6 @@ import { Checkbox } from 'zarm';
 | shape | string | 无 | 'radius', 'round' | 形状 |
 | block | bool | false | | 是否为块级元素 |
 | disabled | bool | false | | 是否禁用 |
-| compact | bool | false | | 是否启用紧凑模式 |
 | onChange | func | noop | \(value: string, number\) | 值变化时触发的回调函数 |
 
 
