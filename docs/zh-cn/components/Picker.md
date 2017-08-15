@@ -12,6 +12,7 @@ import { Picker } from 'zarm';
 
 #### 基本用法
 
+
 单列
 
 ```jsx
@@ -32,6 +33,7 @@ import { Picker } from 'zarm';
   }}
   />
 ```
+
 
 多列
 
@@ -242,7 +244,7 @@ import { Picker } from 'zarm';
 | disabled | bool | false | | 是否禁用 |
 | title | string | 请选择 | | 选择器标题 |
 | placeholder | string | 请选择 | | 输入提示信息 |
-| displayRender | func | function() {} | | 显示渲染
+| displayRender | func | noop | | 显示渲染
 | cols | number | 无 | | 级联选择器的级数 |
 | onChange | func | noop | \(selected : object\) | 值变化时触发的回调函数 |
 | onOk | func | noop | \(selected : object\) | 点击确定时触发的回调函数 |
@@ -252,8 +254,8 @@ import { Picker } from 'zarm';
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| mode | string | date | `year``date``time` | 指定日期选择模式，只有Picker.Date才生效 |
-| format | string | 无 | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值，只有Picker.Date才生效 |
+| mode | string | date | `year`, `date`, `time` | 指定日期选择模式 |
+| format | string | 无 | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
 | minuteStep | number | 1 | | 分钟步长 |
 
 
