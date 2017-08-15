@@ -241,6 +241,7 @@ import { Picker } from 'zarm';
 | defaultValue | array, string | 无 | | 初始是否选中 |
 | wheelDefaultValue | array, string | | | 滚轮默认值 |
 | valueMember | string | value | | 值对应的key |
+| displayMember | string | value | | 显示名称对应的key |
 | disabled | bool | false | | 是否禁用 |
 | title | string | 请选择 | | 选择器标题 |
 | placeholder | string | 请选择 | | 输入提示信息 |
