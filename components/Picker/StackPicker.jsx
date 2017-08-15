@@ -12,15 +12,13 @@ class PickerStack extends Component {
 
   constructor(props) {
     super(props);
-
-    const resolvedProps = this.resolveProps(props, props.value); // 解决 value PropType定义的eslint报错
-
     this.columns = {};
-
     this.state = {
       visible: false,
-      ...resolvedProps,
+      ...this.resolveProps(props, props.value),
     };
+    this.onMaskClick = this.onMaskClick.bind(this);
+    this.onCancel = this.onCancel.bind(this);
   }
 
   componentDidMount() {
@@ -59,7 +57,6 @@ class PickerStack extends Component {
 
   obtainItem(list, value) {
     const { valueMember } = this.props;
-
     return list.filter(item => item[valueMember] === value)[0];
   }
 
@@ -69,7 +66,6 @@ class PickerStack extends Component {
     let errorMsg = null;
 
     cVal && (value[index] = cVal);
-
     errorMsg = validate(value);
 
     if (isLast && !errorMsg) {
@@ -90,16 +86,24 @@ class PickerStack extends Component {
   }
 
   close(isCancel) {
-    const { onCancel } = this.props;
-
     this.setState({ visible: false });
-
     if (isCancel) {
       this.setState({
         value: [...this.state.displayValue],
       });
-      onCancel();
     }
+  }
+
+  onMaskClick() {
+    const { onMaskClick } = this.props;
+    this.close(true);
+    onMaskClick && onMaskClick();
+  }
+
+  onCancel() {
+    const { onCancel } = this.props;
+    this.close(true);
+    onCancel && onCancel();
   }
 
   reposition() {
@@ -215,10 +219,10 @@ class PickerStack extends Component {
           <div className={wrapperCls} onClick={stopEventPropagation}>
             <Popup
               visible={visible}
-              onMaskClick={() => this.close(true)}>
+              onMaskClick={this.onMaskClick}>
               <div className={`${prefixCls}-wrapper`}>
                 <div className={`${prefixCls}-header`}>
-                  <div className={`${prefixCls}-cancel`} onClick={() => this.close(true)}>取消</div>
+                  <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>取消</div>
                   <div className={`${prefixCls}-title`}>{ title }</div>
                   <div className={`${prefixCls}-submit`} />
                 </div>

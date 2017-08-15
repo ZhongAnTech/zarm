@@ -235,7 +235,6 @@ class Page extends Component {
                 <Picker.Stack
                   dataSource={District}
                   displayRender={selected => selected.map(item => item.label).join('-')}
-                  onOk={() => {}}
                   />
               </Cell>
 
