@@ -105,6 +105,7 @@ class Page extends Component {
                     },
                   ]}
                   defaultValue={['1', '12']}
+                  displayAddon="-"
                   />
               </Cell>
 
@@ -124,26 +125,30 @@ class Page extends Component {
                   visible={diy.visible}
                   title="自定义标题"
                   placeholder="自定义placeholder"
-                  displayRender={selected => selected.map(item => item.idCardName).join('/')}
+                  displayRender={selected => selected.map(item => item.name).join('/')}
                   dataSource={[
                     {
-                      idCardType: 1,
-                      idCardName: '身份证',
+                      code: '1',
+                      name: '北京市',
+                      children: [
+                        { code: '11', name: '海淀区' },
+                        { code: '12', name: '西城区' },
+                      ],
                     },
                     {
-                      idCardType: 2,
-                      idCardName: '护照',
-                    },
-                    {
-                      idCardType: 3,
-                      idCardName: '出生证',
+                      code: '2',
+                      name: '上海市',
+                      children: [
+                        { code: '21', name: '黄埔区' },
+                        { code: '22', name: '虹口区' },
+                      ],
                     },
                   ]}
-                  displayMember="idCardName"
-                  valueMember="idCardType"
+                  displayMember="name"
+                  valueMember="code"
                   value={diy.value}
                   onOk={(selected) => {
-                    diy.value = selected.idCardType;
+                    diy.value = selected.code;
                     this.setState({
                       diy,
                     });
