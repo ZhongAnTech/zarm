@@ -35,7 +35,7 @@ class Checkbox extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, theme, type, value, block, disabled, children } = this.props;
+    const { prefixCls, className, theme, type, value, block, disabled, id, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames({
@@ -67,8 +67,12 @@ class Checkbox extends PureComponent {
       <div className={cls}>
         <div className={`${prefixCls}-wrapper`}>
           <span className={`${prefixCls}-inner`} />
-          <span className={`${prefixCls}-text`}>{children}</span>
-          <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          {
+            children
+              ? <span className={`${prefixCls}-text`}>{children}</span>
+              : null
+          }
+          <input id={id} type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         </div>
       </div>
     );

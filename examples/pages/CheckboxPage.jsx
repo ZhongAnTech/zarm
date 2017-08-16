@@ -24,7 +24,9 @@ class Page extends PureComponent {
               <Panel.Title>基本用法</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell><Checkbox onChange={checked => console.log(`checkbox to ${checked}`)}>单独使用</Checkbox></Cell>
+              <Cell>
+                <Checkbox onChange={checked => console.log(`checkbox to ${checked}`)}>单独使用</Checkbox>
+              </Cell>
 
               <Cell
                 description={

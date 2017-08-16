@@ -24,6 +24,10 @@ $prefixCls: za-checkbox;
   }
 
   &-text {
+    color: #333;
+  }
+
+  &-inner + &-text {
     margin-left: r(5);
   }
 
@@ -122,13 +126,19 @@ $prefixCls: za-checkbox;
 
   /* 禁用状态 */
   &.disabled {
-    .#{$prefixCls}-inner {
-      border-color: #d9d9d9;
-      background-color: #f3f3f3;
-      cursor: not-allowed;
+    .#{$prefixCls} {
+      &-inner {
+        border-color: #d9d9d9;
+        background-color: #f3f3f3;
+        cursor: not-allowed;
 
-      &:before {
-        border-color: #ccc;
+        &:before {
+          border-color: #ccc;
+        }
+      }
+
+      &-text {
+        opacity: 0.5;
       }
     }
   }
