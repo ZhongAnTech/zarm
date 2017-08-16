@@ -1,4 +1,4 @@
-@mixin onepx($positions: top right bottom left, $border-color: #ddd, $radius: 0) {
+@mixin onepx($positions: top right bottom left, $border-color: #ddd, $border-radius: 0) {
   &:after {
     content: '';
     pointer-events: none;
@@ -7,7 +7,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    border-radius: $radius;
+    border-radius: $border-radius;
     @each $position in $positions {
       border-#{$position}: 1px solid $border-color;
     }
