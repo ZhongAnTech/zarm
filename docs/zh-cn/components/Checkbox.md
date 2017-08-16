@@ -129,7 +129,7 @@ import { Checkbox } from 'zarm';
 | defaultChecked | bool | false | | 初始是否选中 |
 | checked | bool | false | | 当前是否选中 |
 | disabled | bool | false | | 是否禁用 |
-| onChange | func | noop | \(checked : bool\) | 值变化时触发的回调函数 |
+| onChange | func | noop | \(checked: bool\) | 值变化时触发的回调函数 |
 
 #### Checkbox.Group
 

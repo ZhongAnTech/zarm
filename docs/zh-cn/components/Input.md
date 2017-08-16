@@ -27,20 +27,20 @@ import { Input } from 'zarm';
 #### 高度自适应
 
 ```jsx
-<Input autoHeight type="textarea" rows="3" placeholder="写点啥..." />
+<Input autosize type="textarea" rows="3" placeholder="写点啥..." />
 ```
 
 #### 无标签栏
 
 ```jsx
 <Cell><Input type="text" placeholder="标题" /></Cell>
-<Cell><Input autoHeight type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
+<Cell><Input autosize type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
 ```
 
 #### 显示输入字数
 
 ```jsx
-<Input autoHeight showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" />
+<Input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" />
 ```
 
 
@@ -55,9 +55,9 @@ import { Input } from 'zarm';
 | defaultValue | string | 无 | | 初始值 |
 | disabled | bool | false | | 是否禁用 |
 | rows | string, number | 无 | | 多行文本时的显示行数 |
-| autoHeight | bool | false | | 是否高度自适应 |
+| autosize | bool | false | | 是否高度自适应 |
 | showLength | bool | false | | 是否显示输入字数 |
-| onChange | func | noop | \(value : string\) | 值变化时触发的回调函数 |
+| onChange | func | noop | \(value: string\) | 值变化时触发的回调函数 |
 
 
 
