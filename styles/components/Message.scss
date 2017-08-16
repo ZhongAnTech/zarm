@@ -4,7 +4,7 @@ $prefixCls: za-message;
   color: $color;
   background-color: $background;
   border-color: $border;
-  @include onepx(top right bottom left, $border);
+  @include onepx($border-color: $border);
 }
 
 .#{$prefixCls} {
