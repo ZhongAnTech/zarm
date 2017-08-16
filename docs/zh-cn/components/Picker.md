@@ -239,7 +239,6 @@ import { Picker } from 'zarm';
 | dataSource | array | [] | | 数据源 |
 | value | array, string | 无 | | 值 |
 | defaultValue | array, string | 无 | | 初始是否选中 |
-| wheelDefaultValue | array, string | | | 滚轮默认值 |
 | valueMember | string | value | | 值对应的key |
 | displayMember | string | value | | 显示名称对应的key |
 | disabled | bool | false | | 是否禁用 |
@@ -258,6 +257,8 @@ import { Picker } from 'zarm';
 | mode | string | date | `year`, `date`, `time` | 指定日期选择模式 |
 | format | string | 无 | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
 | minuteStep | number | 1 | | 分钟步长 |
+| wheelDefaultValue | array, string | | | 滚轮默认值 |
+
 
 
 

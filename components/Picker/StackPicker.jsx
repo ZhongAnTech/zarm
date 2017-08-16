@@ -269,7 +269,7 @@ PickerStack.defaultProps = {
   cols: Infinity,
   labelAddon: ' > ',
   displayItems: 8,
-  itemHeight: 35,
+  itemHeight: 50,
   onOk() {},
   onCancel() {},
   displayRender: data => data.map(({ label }) => label).join(''),
