@@ -22,8 +22,12 @@ import { Checkbox } from 'zarm';
 
 ```jsx
 <Checkbox.Group
-  value={this.state.checkbox}
-  onChange={value => console.log(`checkbox to ${value}`)}>
+  value={this.state.value}
+  onChange={value => {
+    this.setState({
+      value,
+    })
+  }}>
   <Checkbox value="0">选项一</Checkbox>
   <Checkbox value="1">选项二</Checkbox>
   <Checkbox value="2">选项三</Checkbox>
@@ -139,10 +143,11 @@ import { Checkbox } from 'zarm';
 | className | string | 无 | | 追加类名 |
 | theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | type | string | 无 | 'button', 'cell' | 显示类型 |
+| value | array | [] | | 选中值 |
 | shape | string | 无 | 'radius', 'round' | 形状 |
 | block | bool | false | | 是否为块级元素 |
 | disabled | bool | false | | 是否禁用 |
-| onChange | func | noop | \(value: string, number\) | 值变化时触发的回调函数 |
+| onChange | func | noop | \(value: array\) | 值变化时触发的回调函数 |
 
 
 
