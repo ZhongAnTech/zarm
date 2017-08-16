@@ -6,11 +6,11 @@ import Events from '../utils/events';
 class Swipe extends Component {
   constructor(props) {
     super(props);
-    this.moveInterval = null;
-    this.pointStart = 0;
-    this.pointEnd = 0;
-    this.timeStart = new Date();
+    this.dragState = {};
+    this.scrolling = false;
     this.translateX = 0;
+    this.translateY = 0;
+    this.moveInterval = null;
     this.state = {
       items: [],
       activeIndex: props.activeIndex,
@@ -20,7 +20,7 @@ class Swipe extends Component {
   }
 
   componentWillMount() {
-    this._parseItem(this.props);
+    this.parseItems(this.props);
     this.startAutoPlay(this.props);
   }
 
@@ -36,7 +36,7 @@ class Swipe extends Component {
 
   componentWillReceiveProps(nextProps) {
     if ('children' in nextProps) {
-      this._parseItem(nextProps);
+      this.parseItems(nextProps);
     }
 
     if ('activeIndex' in nextProps) {
@@ -98,7 +98,7 @@ class Swipe extends Component {
   }
 
   // 处理节点（首位拼接）
-  _parseItem(props) {
+  parseItems(props) {
     if (props.children.length === 0) {
       return;
     }
@@ -137,12 +137,10 @@ class Swipe extends Component {
       return;
     }
 
-    const px = (this._isDirectionX())
-      ? -dom.offsetWidth * (index + this.props.loop)
-      : -dom.offsetHeight * (index + this.props.loop);
+    this.translateX = -dom.offsetWidth * (index + this.props.loop);
+    this.translateY = -dom.offsetHeight * (index + this.props.loop);
+    this._doTransition({ x: this.translateX, y: this.translateY }, speed);
 
-    this._doTransition(px, speed);
-    this.translateX = px;
     this.setState({
       activeIndex: index,
     });
@@ -155,9 +153,9 @@ class Swipe extends Component {
     let y = 0;
 
     if (this._isDirectionX()) {
-      x = offset;
+      x = offset.x;
     } else {
-      y = offset;
+      y = offset.y;
     }
 
     dom.style.webkitTransitionDuration = `${duration}ms`;
@@ -180,71 +178,95 @@ class Swipe extends Component {
 
   // 触屏事件
   _onTouchStart(event) {
-    this.pauseAutoPlay();
+    const dragState = this.dragState;
+    const touch = event.touches[0];
 
-    const pointX = this._getCurrentPoint(event);
+    this.scrolling = false;
+    dragState.startLeft = touch.pageX;
+    dragState.startTop = touch.pageY;
+    dragState.startTopAbsolute = touch.clientY;
+    dragState.startTime = new Date();
+
+    // 跳转到头尾
     const activeIndex = this.state.activeIndex;
     const maxLength = this.props.children.length;
 
-    // 跳转到头尾
     if (activeIndex <= 0) {
       this.onJumpTo(0);
     } else if (activeIndex >= (maxLength - 1)) {
       this.onJumpTo(maxLength - 1);
     }
 
-    this.pointStart = pointX;
-    this.timeStart = new Date();
+    // 暂停自动轮播
+    this.pauseAutoPlay();
   }
 
   _onTouchMove(event) {
-    event.preventDefault();
+    const dragState = this.dragState;
+    const touch = event.touches[0];
 
-    const pointX = this._getCurrentPoint(event);
-    const px = this.translateX + (pointX - this.pointStart);
+    const offsetLeft = touch.pageX - dragState.startLeft;
+    const offsetTop = touch.clientY - dragState.startTopAbsolute;
+
+    const distanceX = Math.abs(offsetLeft);
+    const distanceY = Math.abs(offsetTop);
+    // console.log('x: %d, y: %d', distanceX, distanceY);
+
+    if (this._isDirectionX() && (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))) {
+      this.scrolling = true;
+      return;
+    }
+
+    if (!this._isDirectionX() && (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))) {
+      this.scrolling = true;
+      return;
+    }
+
+    this.scrolling = false;
+    event.preventDefault();
 
     // 设置不循环的时候
     if (!this.props.loop) {
       // 在首页时禁止拖动
-      if (this._isLastIndex() && (pointX - this.pointStart) < 0) {
-        return;
+      if (this._isLastIndex()) {
+        if (this._isDirectionX() && offsetLeft < 0) return;
+        if (!this._isDirectionX() && offsetTop < 0) return;
       }
 
       // 在尾页时禁止拖动
-      if (this._isFirstIndex() && (pointX - this.pointStart) > 0) {
-        return;
+      if (this._isFirstIndex()) {
+        if (this._isDirectionX() && offsetLeft > 0) return;
+        if (!this._isDirectionX() && offsetTop > 0) return;
       }
     }
 
-    this._doTransition(px, 0);
-    this.pointEnd = pointX;
+    dragState.currentLeft = touch.pageX;
+    dragState.currentTop = touch.pageY;
+    dragState.currentTopAbsolute = touch.clientY;
+    this._doTransition({ x: this.translateX + offsetLeft, y: this.translateY + offsetTop }, 0);
   }
 
   _onTouchEnd() {
-    const dom = this.swipeItems;
-    const px = (this.pointEnd !== 0)
-      ? this.pointEnd - this.pointStart
-      : 0;
-    const timeSpan = new Date().getTime() - this.timeStart.getTime();
+    const dragState = this.dragState;
+    if (!dragState.currentLeft && !dragState.currentTop) return;
+    if (this.scrolling) return;
 
+    const offsetLeft = dragState.currentLeft - dragState.startLeft;
+    const offsetTop = dragState.currentTop - dragState.startTop;
+    const dom = this.swipeItems;
+
+    const moveDistanceRatio = this._isDirectionX()
+      ? Math.abs(offsetLeft / dom.offsetWidth)
+      : Math.abs(offsetTop / dom.offsetHeight);
+
+    const timeSpan = new Date().getTime() - dragState.startTime.getTime();
     let activeIndex = this.state.activeIndex;
 
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
-    if (
-      // 滑动距离超过0
-      px !== 0
-      &&
-      (
-        // 滑动距离和父容器长度之比超过moveDistanceRatio
-        Math.abs(px / dom.offsetWidth) >= this.props.moveDistanceRatio
-        ||
-        // 滑动释放时间差低于moveTimeSpan
-        timeSpan <= this.props.moveTimeSpan
-      )
-    ) {
-      activeIndex = (px > 0)
+    if (moveDistanceRatio >= this.props.moveDistanceRatio || timeSpan <= this.props.moveTimeSpan) {
+      activeIndex = ((this._isDirectionX() && offsetLeft > 0) || (!this._isDirectionX() && offsetTop > 0))
         ? (this.state.activeIndex - 1)
         : (this.state.activeIndex + 1);
 
@@ -252,41 +274,19 @@ class Swipe extends Component {
       typeof onChange === 'function' && onChange(activeIndex);
     }
     this.onSlideTo(activeIndex);
-    this.pointStart = 0;
-    this.pointEnd = 0;
     // 恢复自动轮播
     this.startAutoPlay();
-  }
-
-  // 获取鼠标/触摸点坐标
-  _getCurrentPoint(event, type) {
-    const touch = (type === 'mouse')
-      ? event
-      : event.touches[0];
-
-    const offset = (this._isDirectionX())
-      ? touch.pageX
-      : touch.pageY;
-
-    return offset;
+    this.dragState = {};
   }
 
   // 判断当前是否在最后一页
   _isLastIndex() {
-    let result = false;
-    if (this.state.activeIndex >= this.props.children.length - 1) {
-      result = true;
-    }
-    return result;
+    return this.state.activeIndex >= this.props.children.length - 1;
   }
 
   // 判断当前是否在第一页
   _isFirstIndex() {
-    let result = false;
-    if (this.state.activeIndex <= 0) {
-      result = true;
-    }
-    return result;
+    return this.state.activeIndex <= 0;
   }
 
   // 是否横向移动
