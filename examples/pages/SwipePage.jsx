@@ -62,7 +62,7 @@ class Page extends Component {
             <Panel.Body>
               <Swipe
                 direction="top"
-                height={'48vw'}>
+                height={180}>
                 {contentRender()}
               </Swipe>
             </Panel.Body>
