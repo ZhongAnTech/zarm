@@ -21,13 +21,11 @@ import { Picker } from 'zarm';
     { value: '1', label: '选项一' },
     { value: '2', label: '选项二' },
   ]}
-  value={single.value}
+  value={this.state.value}
   onOk={(selected) => {
-    single.value = selected.value;
     this.setState({
-      single,
+      value: selected.value,
     });
-    console.log(`selected ${single.value}`);
   }}
   onCancel={() => {
   }}
@@ -120,10 +118,10 @@ import { Picker } from 'zarm';
 
 ```jsx
 <Picker
-  visible={diy.visible}
+  visible={this.state.visible}
   title="自定义标题"
   placeholder="自定义placeholder"
-  format="/"
+  displayAddon="/"
   dataSource={[
     {
       idCardType: 1,
@@ -139,11 +137,10 @@ import { Picker } from 'zarm';
     },
   ]}
   valueMember="idCardType"
-  value={diy.value}
+  value={this.state.value}
   onOk={(selected) => {
-    diy.value = selected.idCardType;
     this.setState({
-      diy,
+      value: selected.idCardType,
     });
   }}
   onCancel={() => {
@@ -237,18 +234,20 @@ import { Picker } from 'zarm';
 | prefixCls | string | za-picker | | 类名前缀 |
 | className | string | 无 | | 追加类名 |
 | dataSource | array | [] | | 数据源 |
+| visible | bool | false | | 是否显示 |
 | value | array, string | 无 | | 值 |
 | defaultValue | array, string | 无 | | 初始是否选中 |
-| valueMember | string | value | | 值对应的key |
-| displayMember | string | value | | 显示名称对应的key |
+| valueMember | string | value | | 值字段对应的key |
+| displayMember | string | label | | 选项列表显示字段对应的key |
 | disabled | bool | false | | 是否禁用 |
 | title | string | 请选择 | | 选择器标题 |
 | placeholder | string | 请选择 | | 输入提示信息 |
-| displayRender | func | noop | | 显示渲染
+| displayRender | func | noop | | 所选值渲染 |
 | cols | number | 无 | | 级联选择器的级数 |
-| onChange | func | noop | \(selected : object\) | 值变化时触发的回调函数 |
-| onOk | func | noop | \(selected : object\) | 点击确定时触发的回调函数 |
-| onCancel | func | noop | \(selected : object\) | 点击取消时触发的回调函数 |
+| onChange | func | noop | \(selected: object\) | 值变化时触发的回调函数 |
+| onOk | func | noop | \(selected: object\) | 点击确定时触发的回调函数 |
+| onCancel | func | noop | \(selected: object\) | 点击取消时触发的回调函数 |
+| onMaskClick | func | noop | 无 | 点击遮罩层时触发的回调函数 |
 
 #### Picker.Date 额外的属性
 

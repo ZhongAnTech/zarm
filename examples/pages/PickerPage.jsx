@@ -125,7 +125,6 @@ class Page extends Component {
                   visible={diy.visible}
                   title="自定义标题"
                   placeholder="自定义placeholder"
-                  displayRender={selected => selected.map(item => item.name).join('/')}
                   dataSource={[
                     {
                       code: '1',
@@ -144,9 +143,10 @@ class Page extends Component {
                       ],
                     },
                   ]}
-                  displayMember="name"
-                  valueMember="code"
                   value={diy.value}
+                  valueMember="code"
+                  displayMember="name"
+                  displayRender={selected => selected.map(item => item.name).join('/')}
                   onOk={(selected) => {
                     diy.value = selected.code;
                     this.setState({
