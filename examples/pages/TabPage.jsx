@@ -46,7 +46,7 @@ class TabPage extends Component {
                 <TabPanel title="选项卡1">
                   <div className="content">试试点我左滑</div>
                 </TabPanel>
-                <TabPanel title="选项卡2" selected>
+                <TabPanel title="选项卡2">
                   <div className="content">试试点我右滑</div>
                 </TabPanel>
               </Tab>
