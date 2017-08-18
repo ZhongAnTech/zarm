@@ -44,6 +44,7 @@ class Column extends Component {
 
     this.zscroller.setDisabled(this.props.disabled);
     this.zscroller.scroller.setSnapSize(0, this.itemHeight);
+
     this.select(this.state.selectedValue);
   }
 
@@ -57,8 +58,9 @@ class Column extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.selectedValue !== nextState.selectedValue
-      || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
+    return true;
+    // return this.state.selectedValue !== nextState.selectedValue
+    //   || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
   }
 
   componentDidUpdate() {
@@ -77,6 +79,7 @@ class Column extends Component {
 
   scrollingComplete() {
     const { top } = this.zscroller.scroller.getValues();
+    console.log('top =>', top);
     if (top >= 0) {
       this.doScrollingComplete(top);
     }
