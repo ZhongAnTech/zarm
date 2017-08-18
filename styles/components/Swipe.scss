@@ -3,11 +3,13 @@ $prefixCls: za-swipe;
 .#{$prefixCls} {
   position: relative;
   overflow: hidden;
+  font-size: 0;
 
   &-item {
     display: inline-block;
     width: 100%;
     height: 100%;
+    font-size: r(16);
   }
 
   &-pagination {
