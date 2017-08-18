@@ -79,7 +79,6 @@ class Swipe extends Component {
     } else if (index < 0) {
       index = maxLength - 1;
     }
-
     this.setState({
       activeIndex: index,
     });
@@ -198,17 +197,10 @@ class Swipe extends Component {
         ? (activeIndex + 1)
         : (activeIndex - 1);
 
-      if (activeIndex > maxLength - 1) {
-        // 不循环暂停轮播
-        if (!this.props.loop) {
-          this.pauseAutoPlay();
-          return;
-        }
-        activeIndex = 0;
-        this.onJumpTo(-1);
-      } else if (activeIndex < 0) {
-        activeIndex = maxLength - 1;
-        this.onJumpTo(maxLength);
+      // 不循环暂停轮播
+      if (!this.props.loop && activeIndex > maxLength - 1) {
+        this.pauseAutoPlay();
+        return;
       }
       this.onSlideTo(activeIndex);
     }, this.props.autoPlayIntervalTime));
@@ -273,6 +265,12 @@ class Swipe extends Component {
   }
 
   transitionEnd() {
+    const activeIndex = this.state.activeIndex;
+    const dom = this.swipeItems;
+    this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
+    this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
+    this.doTransition({ x: this.translateX, y: this.translateY }, 0);
+
     this.props.onChangeEnd(this.state.activeIndex);
   }
 
