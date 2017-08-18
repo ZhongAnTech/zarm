@@ -47,6 +47,7 @@ class Tab extends PureComponent {
         [item.props.className]: !!item.props.className,
         disabled: disabled || item.props.disabled,
         active: this.state.value === $index,
+        // hasline,
       });
 
       return (

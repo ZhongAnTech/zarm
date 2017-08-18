@@ -41,7 +41,7 @@ TabPanel.propTypes = {
 };
 
 TabPanel.defaultProps = {
-  prefixCls: 'za-tab-container-item',
+  prefixCls: 'za-tab-panel-item',
   className: null,
 };
 
