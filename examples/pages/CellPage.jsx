@@ -91,12 +91,7 @@ class Page extends Component {
             <Panel.Body>
               <Cell
                 title="标题"
-                help={
-                  <Message theme="error">
-                    <Icon type="info-round" />
-                    <span style={{ marginLeft: 5 }}>标题不能为空</span>
-                  </Message>
-                }>
+                help={<Message theme="error" icon={<Icon type="info-round" />}>标题不能为空</Message>}>
                 <Input type="text" placeholder="请输入标题" /></Cell>
             </Panel.Body>
           </Panel>
