@@ -48,8 +48,6 @@ $prefixCls: za-icon;
   &-arrow-right:before { content: "\e611"; }
   &-warning-round-fill:before { content: "\e616"; }
   &-warning-round:before { content: "\e617"; }
-  &-date:before { content: "\e618"; }
-  &-loading:before { content: "\e61a"; }
   &-right-square-fill:before { content: "\e600"; }
   &-right-square:before { content: "\e601"; }
   &-wrong:before { content: "\e602"; }
@@ -69,5 +67,6 @@ $prefixCls: za-icon;
   &-minus-round-fill:before { content: "\e614"; }
   &-required:before { content: "\e619"; }
   &-minus-round:before { content: "\e615"; }
+  &-broadcast:before { content: "\e618"; }
 }
 

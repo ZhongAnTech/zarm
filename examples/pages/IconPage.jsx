@@ -14,8 +14,7 @@ const ICONS = [
   'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom',
   'add', 'add-round', 'add-round-fill',
   'minus', 'minus-round', 'minus-round-fill',
-  'date',
-  'loading',
+  'broadcast',
 ];
 
 class Page extends Component {

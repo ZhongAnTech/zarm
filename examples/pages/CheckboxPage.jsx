@@ -35,7 +35,7 @@ class Page extends PureComponent {
                     onChange={value => console.log(`checkbox to ${value}`)}>
                     <Checkbox value="0">选项一</Checkbox>
                     <Checkbox value="1">选项二</Checkbox>
-                    <Checkbox value="2">选项三</Checkbox>
+                    <Checkbox value="2" disabled>选项三</Checkbox>
                   </Checkbox.Group>
                 }>组合使用</Cell>
             </Panel.Body>

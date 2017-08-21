@@ -1,0 +1,15 @@
+$prefixCls: za-noticebar;
+
+.#{$prefixCls} {
+  width: 100%;
+  height: r(24);
+  position: relative;
+  overflow: hidden;
+
+  &-body {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    white-space: nowrap;
+  }
+}
