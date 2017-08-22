@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell renders correctly 1`] = `
+<div
+  className="za-cell"
+  onClick={undefined}
+  onTouchStart={[Function]}
+>
+  <div
+    className="za-cell-inner"
+  >
+    <div
+      className="za-cell-header"
+    />
+    <div
+      className="za-cell-body"
+    />
+    <div
+      className="za-cell-footer"
+    />
+  </div>
+</div>
+`;
