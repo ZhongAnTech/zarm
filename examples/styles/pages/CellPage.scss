@@ -1,0 +1,10 @@
+@import "../core/func";
+
+.cell-page {
+  .box {
+    &-description {
+      font-size: r(12);
+      color: gray;
+    }
+  }
+}

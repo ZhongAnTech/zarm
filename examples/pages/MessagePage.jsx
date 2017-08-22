@@ -26,11 +26,11 @@ class Page extends Component {
           </Panel>
           <Panel>
             <Panel.Header>
-              <Panel.Title>模式</Panel.Title>
+              <Panel.Title>可操作</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Message theme="warning" mode="link">链接模式</Message>
-              <Message theme="error" mode="closable">可关闭模式</Message>
+              <Message hasArrow theme="warning" onClick={() => alert('click this message!')}>链接样式的</Message>
+              <Message hasClosable theme="error">可关闭的</Message>
             </Panel.Body>
           </Panel>
         </main>
