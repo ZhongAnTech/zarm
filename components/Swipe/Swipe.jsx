@@ -308,11 +308,9 @@ class Swipe extends Component {
 
     if (!this.isDirectionX()) {
       style.items.height = height;
-      style.pagination.marginTop = 3;
     } else {
       style.items.whiteSpace = 'nowrap';
       style.pagination.display = 'inline-block';
-      style.pagination.marginRight = 3;
     }
 
     return (
