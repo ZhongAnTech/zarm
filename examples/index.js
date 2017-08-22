@@ -155,6 +155,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'noticebar',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/NoticeBarPage'));
+        });
+      },
+    },
+    {
       path: 'progress',
       getComponent(location, cb) {
         require.ensure([], (require) => {

@@ -4,35 +4,48 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 class Message extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: props.visible || true,
+    };
+  }
+
   render() {
-    const { prefixCls, className, theme, size, block, icon, mode, children } = this.props;
+    const { prefixCls, className, theme, size, icon, hasArrow, hasClosable, onClick, children } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      block,
     });
 
     const iconRender = icon
       ? <div className={`${prefixCls}-icon`}>{icon}</div>
       : null;
 
-    let footerRender;
-    if (mode === 'closable') {
-      footerRender = <Icon type="wrong" />;
-    } else if (mode === 'link') {
-      footerRender = <Icon type="arrow-right" />;
-    }
+    const renderCloseIcon = hasClosable
+      ? <Icon type="wrong" onClick={() => { this.setState({ visible: false }); }} />
+      : null;
 
-    return (
-      <div className={classes}>
+    const renderArrow = hasArrow
+      ? <Icon type="arrow-right" />
+      : null;
+
+    const noFooter = !hasClosable && !hasArrow;
+
+    return this.state.visible ? (
+      <div className={classes} onClick={renderArrow && onClick}>
         <div className={`${prefixCls}-header`}>{iconRender}</div>
         <div className={`${prefixCls}-body`}>{children}</div>
-        <div className={`${prefixCls}-footer`}>{footerRender}</div>
+        {
+          !noFooter
+            ? <div className={`${prefixCls}-footer`}>{renderArrow}{renderCloseIcon}</div>
+            : null
+        }
       </div>
-    );
+    ) : null;
   }
 }
 
@@ -41,9 +54,10 @@ Message.propTypes = {
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['lg']),
-  block: PropTypes.bool,
-  mode: PropTypes.oneOf(['link', 'closable']),
+  visible: PropTypes.bool,
   icon: PropTypes.element,
+  hasArrow: PropTypes.bool,
+  hasClosable: PropTypes.bool,
 };
 
 Message.defaultProps = {
@@ -51,9 +65,10 @@ Message.defaultProps = {
   className: null,
   theme: 'primary',
   size: null,
-  block: false,
-  mode: null,
+  visible: true,
   icon: null,
+  hasArrow: false,
+  hasClosable: false,
 };
 
 export default Message;
