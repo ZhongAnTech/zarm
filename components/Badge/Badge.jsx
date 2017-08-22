@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 class Badge extends PureComponent {
   render() {
-    const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
+    const { prefixCls, className, theme, shape, sup, text, children } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -21,7 +21,7 @@ class Badge extends PureComponent {
     return (
       <span className={cls}>
         {children}
-        <sup className={supCls} {...others}>{text}</sup>
+        <sup className={supCls}>{text}</sup>
       </span>
     );
   }

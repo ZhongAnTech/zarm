@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge renders shape is dot correctly 1`] = `
+<span
+  className="za-badge theme-error shape-dot"
+>
+  <sup
+    className="za-badge-sup"
+  />
+</span>
+`;
