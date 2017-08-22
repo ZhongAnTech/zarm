@@ -46,7 +46,7 @@ html 标签引入css和js文件
 <script src="https://unpkg.com/react@15.5.0/dist/react.min.js" type="text/javascript"></script>
 <script src="https://unpkg.com/react@15.5.0/dist/react-dom.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="https://unpkg.com/zarm@1.0.7/dist/zarm.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/zarm@latest/dist/zarm.min.js"></script>
 ```
 
 调用方法
