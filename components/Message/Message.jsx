@@ -58,6 +58,7 @@ Message.propTypes = {
   icon: PropTypes.element,
   hasArrow: PropTypes.bool,
   hasClosable: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 Message.defaultProps = {
@@ -69,6 +70,7 @@ Message.defaultProps = {
   icon: null,
   hasArrow: false,
   hasClosable: false,
+  onClick() {},
 };
 
 export default Message;
