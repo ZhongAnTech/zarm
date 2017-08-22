@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+<a
+  aria-disabled={false}
+  className="za-button theme-default"
+  onClick={[Function]}
+  onTouchStart={[Function]}
+  role="button"
+  tabIndex={null}
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
