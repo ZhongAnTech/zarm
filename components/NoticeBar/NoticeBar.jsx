@@ -10,26 +10,41 @@ class NoticeBar extends PureComponent {
     this.state = {
       offset: 0,
     };
+    this.moveInterval = null;
   }
 
   componentDidMount() {
-    const distance = this.content.offsetWidth - this.wrapper.offsetWidth;
-    if (distance <= 0) return;
+    const { autoscroll } = this.props;
+    if (!autoscroll) return;
 
-    setInterval(() => {
+    const distance = this.wrapper.offsetWidth - this.content.offsetWidth;
+    if (distance > 0) return;
+
+    let delay = 1000;
+    this.moveInterval = setInterval(() => {
       let { offset } = this.state;
-      offset = (offset < -distance)
+      if ((offset < distance || offset >= 0) && delay > 0) {
+        delay -= 50;
+        return;
+      }
+
+      delay = 1000;
+      offset = (offset < distance)
         ? 0
         : (offset - 1);
 
-      this.setState({
-        offset,
-      });
+      this.setState({ offset });
     }, 50);
   }
 
+  componentWillUnmount() {
+    if (this.moveInterval) {
+      clearInterval(this.moveInterval);
+    }
+  }
+
   render() {
-    const { prefixCls, children, ...others } = this.props;
+    const { prefixCls, children, autoscroll, ...others } = this.props;
 
     return (
       <Message {...others} size="lg">
@@ -45,16 +60,22 @@ NoticeBar.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: Message.propTypes.theme,
-  mode: Message.propTypes.mode,
+  visible: Message.propTypes.visible,
   icon: Message.propTypes.icon,
+  hasArrow: Message.propTypes.hasArrow,
+  hasClosable: Message.propTypes.hasClosable,
+  autoscroll: PropTypes.bool,
 };
 
 NoticeBar.defaultProps = {
   prefixCls: 'za-noticebar',
   className: null,
   theme: 'warning',
-  mode: null,
+  visible: Message.defaultProps.visible,
   icon: <Icon type="broadcast" />,
+  hasArrow: false,
+  hasClosable: false,
+  autoscroll: false,
 };
 
 export default NoticeBar;
