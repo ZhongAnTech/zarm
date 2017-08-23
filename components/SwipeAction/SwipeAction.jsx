@@ -90,7 +90,7 @@ class SwipeAction extends PureComponent {
     const distanceX = Math.abs(offsetLeft);
     const distanceY = Math.abs(offsetTop);
 
-    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX)) {
+    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) {
       return;
     }
 
