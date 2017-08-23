@@ -84,7 +84,6 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^3.0.5",
-    "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.2",
     "stylelint": "^7.12.0",
