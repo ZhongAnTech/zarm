@@ -42,6 +42,7 @@
     "lint:style": "stylelint styles/**/*.scss --syntax scss",
     "lint": "npm run lint:js && npm run lint:style",
     "test": "jest --coverage",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
     "docs": "cd docs && gitbook install && gitbook serve"
   },
   "dependencies": {
@@ -63,6 +64,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.23.0",
+    "coveralls": "^2.13.1",
     "css-loader": "^0.28.1",
     "cssnano": "^3.10.0",
     "enzyme": "^2.9.1",
