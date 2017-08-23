@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Icon from '../index';
+import Radio from '../index';
 
-describe('Icon', () => {
+describe('Radio', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Icon type="right" />);
+    const wrapper = render(<Radio checked>foo</Radio>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

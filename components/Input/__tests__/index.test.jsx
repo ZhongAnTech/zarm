@@ -1,11 +1,11 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Icon from '../index';
+import Input from '../index';
 
-describe('Icon', () => {
+describe('Input', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Icon type="right" />);
+    const wrapper = render(<Input type="text" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

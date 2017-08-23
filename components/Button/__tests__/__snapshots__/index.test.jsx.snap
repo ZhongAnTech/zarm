@@ -2,12 +2,9 @@
 
 exports[`Button renders correctly 1`] = `
 <a
-  aria-disabled={false}
-  className="za-button theme-default"
-  onClick={[Function]}
-  onTouchStart={[Function]}
+  aria-disabled="false"
+  class="za-button theme-default"
   role="button"
-  tabIndex={null}
 >
   <span>
     foo

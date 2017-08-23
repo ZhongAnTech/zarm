@@ -1,11 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import Mask from '../index';
 
 describe('Mask', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<Mask visible />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = render(<Mask visible />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

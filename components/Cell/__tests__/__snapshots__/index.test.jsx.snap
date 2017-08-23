@@ -2,21 +2,19 @@
 
 exports[`Cell renders correctly 1`] = `
 <div
-  className="za-cell"
-  onClick={undefined}
-  onTouchStart={[Function]}
+  class="za-cell"
 >
   <div
-    className="za-cell-inner"
+    class="za-cell-inner"
   >
     <div
-      className="za-cell-header"
+      class="za-cell-header"
     />
     <div
-      className="za-cell-body"
+      class="za-cell-body"
     />
     <div
-      className="za-cell-footer"
+      class="za-cell-footer"
     />
   </div>
 </div>
