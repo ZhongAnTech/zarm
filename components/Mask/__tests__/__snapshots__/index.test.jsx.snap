@@ -2,7 +2,6 @@
 
 exports[`Mask renders correctly 1`] = `
 <div
-  className="za-mask normal"
-  onClick={[Function]}
+  class="za-mask normal"
 />
 `;

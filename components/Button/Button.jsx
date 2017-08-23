@@ -5,7 +5,7 @@ import Spinner from '../Spinner';
 
 class Button extends PureComponent {
   render() {
-    const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, tabIndex, onClick, children } = this.props;
+    const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, tabIndex, onClick, children, ...others } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
@@ -34,6 +34,7 @@ class Button extends PureComponent {
 
     return (
       <a
+        {...others}
         role="button"
         tabIndex={tabIndex}
         aria-disabled={disabled}

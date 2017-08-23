@@ -1,11 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import Button from '../index';
 
 describe('Button', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<Button>foo</Button>);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = render(<Button>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
