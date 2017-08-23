@@ -11,24 +11,24 @@ describe('SwipeAction', () => {
           {
             theme: 'info',
             text: '左按钮1',
-            onClick: () => console.log('左按钮1'),
+            onClick: jest.fn(),
           },
           {
             theme: 'warning',
             text: '左按钮2',
-            onClick: () => console.log('左按钮2'),
+            onClick: jest.fn(),
           },
         ]}
         right={[
           {
             theme: 'error',
             text: '右按钮1',
-            onClick: () => console.log('右按钮1'),
+            onClick: jest.fn(),
           },
           {
             theme: 'success',
             text: '右按钮2',
-            onClick: () => console.log('右按钮2'),
+            onClick: jest.fn(),
           },
         ]}>
         <div>左右都能滑动</div>

@@ -15,16 +15,16 @@ describe('ActionSheet', () => {
         actions={[
           {
             text: '操作一',
-            onClick: () => console.log('点击操作一'),
+            onClick: jest.fn(),
           },
           {
             text: '操作二',
-            onClick: () => console.log('点击操作二'),
+            onClick: jest.fn(),
           },
           {
             theme: 'error',
             text: '操作三',
-            onClick: () => console.log('点击操作三'),
+            onClick: jest.fn(),
           },
         ]}
         onCancel={onCancel}
