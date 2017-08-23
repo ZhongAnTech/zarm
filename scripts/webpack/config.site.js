@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./config.base');
 
 config.entry = {
@@ -66,7 +65,5 @@ Object.keys(config.entry).forEach((key) => {
     chunks: ['common', key],
   }));
 });
-
-// config.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = config;
