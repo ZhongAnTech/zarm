@@ -76,6 +76,295 @@ class Page extends Component {
                 ]}>
                 <Cell>左右都能滑动</Cell>
               </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              <SwipeAction
+                autoClose
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
+                <Cell>左滑看看（自动关闭）</Cell>
+              </SwipeAction>
+              
             </Panel.Body>
           </Panel>
         </main>

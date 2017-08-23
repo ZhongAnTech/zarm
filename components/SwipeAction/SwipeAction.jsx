@@ -15,6 +15,7 @@ class SwipeAction extends PureComponent {
     this.openedLeft = false;
     this.openedRight = false;
     this.touchEnd = true;
+    this.dragState = {};
   }
 
   componentDidMount() {
@@ -58,7 +59,14 @@ class SwipeAction extends PureComponent {
   }
 
   _onTouchStart(e) {
-    e.preventDefault();
+    // 记录开始touch位置，方便后面计算是否滚动
+    const dragState = this.dragState;
+    const touch = e.touches[0];
+
+    dragState.startLeft = touch.pageX;
+    dragState.startTop = touch.pageY;
+    dragState.startTopAbsolute = touch.clientY;
+
     if (this.props.disabled) {
       return;
     }
@@ -73,6 +81,19 @@ class SwipeAction extends PureComponent {
   }
 
   _onTouchMove(e) {
+    // 验证是否应该滚动页面还是侧滑对应模块
+    const dragState = this.dragState;
+    const touch = e.touches[0];
+    const offsetLeft = touch.pageX - dragState.startLeft;
+    const offsetTop = touch.clientY - dragState.startTopAbsolute;
+
+    const distanceX = Math.abs(offsetLeft);
+    const distanceY = Math.abs(offsetTop);
+
+    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) {
+      return;
+    }
+
     e.preventDefault();
 
     if (this.props.disabled) {
