@@ -31,7 +31,8 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />}
+                    />
+                }
                 />
 
               <Cell
@@ -42,7 +43,8 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />}
+                    />
+                }
                 />
 
               <Cell
@@ -55,7 +57,8 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />}
+                    />
+                }
                 />
 
               <Cell
@@ -66,7 +69,8 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />}
+                    />
+                }
                 />
 
               <Cell
@@ -77,7 +81,8 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />}
+                    />
+                }
                 />
             </Panel.Body>
           </Panel>
@@ -95,7 +100,8 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />}
+                    />
+                }
                 />
 
               <Cell
@@ -106,7 +112,8 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />}
+                    />
+                }
                 />
             </Panel.Body>
           </Panel>

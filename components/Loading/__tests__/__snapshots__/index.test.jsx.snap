@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Confirm renders correctly 1`] = `
+<div
+  class="za-loading"
+>
+  <div
+    class="za-loading-container"
+  >
+    <svg
+      class="za-spinner rotate360 theme-primary size-lg"
+      viewbox="0 0 100 100"
+    >
+      <circle
+        class="za-spinner-path"
+        cx="50"
+        cy="50"
+        fill="none"
+        r="48"
+        style="stroke-width:4;"
+      />
+      <circle
+        class="za-spinner-line"
+        cx="50"
+        cy="50"
+        fill="none"
+        r="48"
+        style="stroke-dasharray:45.23893421169302 301.59289474462014;stroke-width:4;"
+      />
+    </svg>
+  </div>
+  <div
+    class="za-mask transparent"
+  />
+</div>
+`;

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper renders correctly 1`] = `
+<span
+  class="za-stepper theme-primary"
+>
+  <span
+    class="za-stepper-sub"
+  >
+    <i
+      class="za-icon za-icon-minus"
+    />
+  </span>
+  <input
+    class="za-stepper-body"
+    type="tel"
+    value="0"
+  />
+  <span
+    class="za-stepper-plus"
+  >
+    <i
+      class="za-icon za-icon-add"
+    />
+  </span>
+</span>
+`;

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab renders correctly 1`] = `
+<div
+  class="za-tab theme-primary"
+>
+  <div
+    class="za-tab-header"
+  >
+    <ul
+      role="tablist"
+    >
+      <li
+        class="za-tab-header-item active"
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        class="za-tab-header-item"
+        role="tab"
+      >
+        选项卡2
+      </li>
+    </ul>
+    <div
+      class="za-tab-line"
+      style="width:50%;left:0%;"
+    />
+  </div>
+  <div
+    class="za-tab-container"
+  >
+    <div
+      class="za-swipe"
+    >
+      <div
+        class="za-swipe-items"
+        style="white-space:nowrap;"
+      >
+        <div
+          class="za-swipe-item"
+        >
+          <div>
+            试试点我左滑
+          </div>
+        </div>
+        <div
+          class="za-swipe-item"
+        >
+          <div>
+            试试点我右滑
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
