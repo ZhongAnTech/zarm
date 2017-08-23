@@ -1,6 +1,6 @@
 # Zarm UI
   [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm)
-  [![Codecov](https://img.shields.io/codecov/c/github/ZhonganTechENG/zarm.svg)](https://codecov.io/gh/ZhonganTechENG/zarm)
+  [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm?branch=master) 
   [![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
   [![NPM downloads](http://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm)  
   众安科技移动端UI组件库
