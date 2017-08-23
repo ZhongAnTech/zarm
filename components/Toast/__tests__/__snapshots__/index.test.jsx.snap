@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast renders correctly 1`] = `
+<div
+  class="za-toast"
+>
+  <div
+    class="za-toast-container"
+  >
+    foo
+  </div>
+  <div
+    class="za-mask transparent"
+  />
+</div>
+`;

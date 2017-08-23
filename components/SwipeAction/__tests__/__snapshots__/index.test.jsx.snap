@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeAction renders correctly 1`] = `
+<div
+  class="za-swipeAction-wrap"
+>
+  <div
+    class="za-swipeAction-actions-left"
+  >
+    <div
+      class="za-swipeAction-button theme-info"
+    >
+      <div
+        class="za-swipeAction-text"
+      >
+        左按钮1
+      </div>
+    </div>
+    <div
+      class="za-swipeAction-button theme-warning"
+    >
+      <div
+        class="za-swipeAction-text"
+      >
+        左按钮2
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-swipeAction-actions-right"
+  >
+    <div
+      class="za-swipeAction-button theme-error"
+    >
+      <div
+        class="za-swipeAction-text"
+      >
+        右按钮1
+      </div>
+    </div>
+    <div
+      class="za-swipeAction-button theme-success"
+    >
+      <div
+        class="za-swipeAction-text"
+      >
+        右按钮2
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-swipeAction-content"
+  >
+    <div>
+      左右都能滑动
+    </div>
+  </div>
+</div>
+`;
