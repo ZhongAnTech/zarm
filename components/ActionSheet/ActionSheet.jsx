@@ -46,20 +46,22 @@ ActionSheet.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   shape: PropTypes.oneOf(['radius']),
+  visible: PropTypes.bool,
   actions: PropTypes.arrayOf(PropTypes.object),
-  cancelText: PropTypes.string,
-  onCancel: PropTypes.func,
   onMaskClick: Popup.propTypes.onMaskClick,
+  onCancel: PropTypes.func,
+  cancelText: PropTypes.string,
 };
 
 ActionSheet.defaultProps = {
   prefixCls: 'za-actionsheet',
   className: null,
   shape: 'radius',
+  visible: false,
   actions: [],
-  cancelText: '取消',
-  onCancel: null,
   onMaskClick: Popup.defaultProps.onMaskClick,
+  onCancel: null,
+  cancelText: '取消',
 };
 
 export default ActionSheet;
