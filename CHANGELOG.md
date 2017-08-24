@@ -1,4 +1,9 @@
 # 版本更新日志  
+
+## v1.0.12
+- Bug Fix
+  - 修复`SwipeAction`组件上下滑动时影响了页面scroll滚动的bug。（[#69](https://github.com/ZhonganTechENG/zarm/pull/67)）
+  - 修复`Input`组件计算输入字数长度产生性能问题的bug。([f385e48](https://github.com/ZhonganTechENG/zarm/commit/d22c652ef25e63accba306a0d3a58117616a1351))
     
 ## v1.0.11
 - Feature
