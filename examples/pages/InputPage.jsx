@@ -46,7 +46,7 @@ class Page extends Component {
               <Panel.Title>显示输入字数</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell><Input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" value="111" /></Cell>
+              <Cell><Input autosize showLength type="textarea" rows="4" maxLength="200" placeholder="摘要" /></Cell>
             </Panel.Body>
           </Panel>
 
