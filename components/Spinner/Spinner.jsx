@@ -26,7 +26,7 @@ class Spinner extends PureComponent {
     };
 
     return (
-      <svg className={`${cls}`} viewBox={`0 0 ${diameter} ${diameter}`} ref={(ele) => { this.svg = ele; }}>
+      <svg className={`${cls}`} viewBox={`0 0 ${diameter} ${diameter}`}>
         <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
         <circle className={`${prefixCls}-line`} cx={half} cy={half} r={r} fill="none" style={style} />
       </svg>

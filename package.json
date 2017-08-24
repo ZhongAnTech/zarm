@@ -41,7 +41,7 @@
     "lint:js": "eslint components --ext '.js,.jsx'",
     "lint:style": "stylelint styles/**/*.scss --syntax scss",
     "lint": "npm run lint:js && npm run lint:style",
-    "test": "jest --coverage",
+    "test": "jest",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "docs": "cd docs && gitbook install && gitbook serve"
   },
