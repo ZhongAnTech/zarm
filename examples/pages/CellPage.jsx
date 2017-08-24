@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Panel, Icon, Cell, Message, Input } from '../../components';
+import '../styles/pages/CellPage';
 
 const img = require('../images/icons/state.png');
 
@@ -72,9 +73,9 @@ class Page extends Component {
               <Cell
                 hasArrow
                 title={
-                  <div>
-                    <div>标题文字</div>
-                    <div style={{ fontSize: 12, color: 'gray' }}>描述文字</div>
+                  <div className="box">
+                    <div className="box-title">标题文字</div>
+                    <div className="box-description">描述文字</div>
                   </div>
                 }
                 description="附加提示"
@@ -91,12 +92,7 @@ class Page extends Component {
             <Panel.Body>
               <Cell
                 title="标题"
-                help={
-                  <Message theme="error">
-                    <Icon type="info-round" />
-                    <span style={{ marginLeft: 5 }}>标题不能为空</span>
-                  </Message>
-                }>
+                help={<Message theme="error" icon={<Icon type="info-round" />}>标题不能为空</Message>}>
                 <Input type="text" placeholder="请输入标题" /></Cell>
             </Panel.Body>
           </Panel>

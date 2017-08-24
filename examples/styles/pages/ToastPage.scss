@@ -1,0 +1,13 @@
+@import "../core/func";
+
+.toast-page {
+  .box {
+    &-icon {
+      font-size: r(50);
+    }
+
+    &-text {
+      margin-bottom: r(5);
+    }
+  }
+}

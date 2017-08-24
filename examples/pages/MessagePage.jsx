@@ -18,27 +18,19 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Message>primary</Message>
-
-              <Message theme="info">
-                <Icon type="info-round" className="icon" />
-                <span>info</span>
-              </Message>
-
-              <Message theme="success">
-                <Icon type="right-round" className="icon" />
-                <span>success</span>
-              </Message>
-
-              <Message theme="warning">
-                <Icon type="info-round" className="icon" />
-                <span>warning</span>
-              </Message>
-
-              <Message theme="error">
-                <Icon type="wrong-round" className="icon" />
-                <span>error</span>
-              </Message>
-
+              <Message theme="info" icon={<Icon type="info-round" />}>info</Message>
+              <Message theme="success" icon={<Icon type="right-round" />}>success</Message>
+              <Message theme="warning" icon={<Icon type="warning-round" />}>warning</Message>
+              <Message theme="error" icon={<Icon type="wrong-round" />}>error</Message>
+            </Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>可操作</Panel.Title>
+            </Panel.Header>
+            <Panel.Body>
+              <Message hasArrow theme="warning" onClick={() => alert('click this message!')}>链接样式的</Message>
+              <Message hasClosable theme="error">可关闭的</Message>
             </Panel.Body>
           </Panel>
         </main>

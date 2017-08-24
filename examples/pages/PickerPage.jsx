@@ -148,7 +148,7 @@ class Page extends Component {
                   displayMember="name"
                   displayRender={selected => selected.map(item => item.name).join('/')}
                   onOk={(selected) => {
-                    diy.value = selected.code;
+                    diy.value = selected.map(item => item.code);
                     this.setState({
                       diy,
                     });

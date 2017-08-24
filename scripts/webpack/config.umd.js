@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./config.base');
 
 const env = process.env.WEBPACK_ENV;
@@ -70,5 +71,14 @@ if (env === 'production') {
 } else {
   config.plugins.push(new ExtractTextPlugin(cssConfig));
 }
+
+config.plugins.push(new webpack.DefinePlugin({
+  'process.env': {
+    NODE_ENV: '"production"',
+  },
+  __DEBUG__: false,
+}));
+
+// config.plugins.push(new BundleAnalyzerPlugin());
 
 module.exports = config;

@@ -5,7 +5,7 @@ import Popup from '../Popup';
 
 class ActionSheet extends PureComponent {
   render() {
-    const { prefixCls, className, shape, visible, onMaskClick, actions, cancelText, onCancel, ...others } = this.props;
+    const { prefixCls, className, shape, visible, onMaskClick, actions, cancelText, onCancel } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -15,7 +15,7 @@ class ActionSheet extends PureComponent {
 
     return (
       <Popup visible={visible} onMaskClick={onMaskClick}>
-        <div className={cls} {...others}>
+        <div className={cls}>
           <div className={`${prefixCls}-actions`}>
             {
               actions.map((action, index) => {

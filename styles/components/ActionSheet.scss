@@ -5,6 +5,7 @@ $prefixCls: za-actionsheet;
   &:hover,
   &:focus,
   &:visited {
+    text-decoration: none;
     color: $color;
   }
 }

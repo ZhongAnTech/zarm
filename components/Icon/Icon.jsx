@@ -13,7 +13,7 @@ class Icon extends PureComponent {
     });
 
     return (
-      <i className={cls} {...others} />
+      <i {...others} className={cls} />
     );
   }
 }

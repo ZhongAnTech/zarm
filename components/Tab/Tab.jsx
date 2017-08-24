@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import TabContainer from './TabContainer';
+import TabPanel from './TabPanel';
+import Swipe from '../Swipe';
 
 function getSelectIndex(children) {
   let selectIndex;
@@ -13,7 +14,7 @@ function getSelectIndex(children) {
   return selectIndex;
 }
 
-class TabGroup extends PureComponent {
+class Tab extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,21 +25,14 @@ class TabGroup extends PureComponent {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps || getSelectIndex(nextProps.children)) {
       this.setState({
-        value: nextProps.value,
+        value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
       });
       nextProps.onChange(nextProps.value);
     }
   }
 
-  getTitleItemCls(idx) {
-    const { prefixCls } = this.props;
-    return idx === this.state.value
-      ? `${prefixCls}-header-item active`
-      : `${prefixCls}-header-item`;
-  }
-
   render() {
-    const { prefixCls, className, theme, lineWidth, disabled, children, onChange } = this.props;
+    const { prefixCls, className, theme, lineWidth, disabled, canSwipe, children, onChange } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
@@ -47,37 +41,60 @@ class TabGroup extends PureComponent {
     });
 
     // 渲染选项
-    const itemsRender = React.Children.map(children, (item, $index) => {
-      const itemClasses = classnames({
+    const tabsRender = React.Children.map(children, (item, $index) => {
+      const itemCls = classnames({
         [`${prefixCls}-header-item`]: true,
+        [item.props.className]: !!item.props.className,
         disabled: disabled || item.props.disabled,
         active: this.state.value === $index,
-        [item.className]: !!item.className,
+        // hasline,
       });
 
       return (
         <li
           role="tab"
           key={$index}
-          className={itemClasses}
+          className={itemCls}
           onClick={() => {
             if (disabled || item.props.disabled) return;
             this.setState({ value: $index });
-            onChange($index);
+            typeof onChange === 'function' && onChange($index);
+            canSwipe && this.swipe.onSlideTo($index);
           }}>
-          <span ref={(tabItem) => { this.tabItem = tabItem; }}>{item.props.title}</span>
+          {item.props.title}
         </li>
       );
     });
 
     // 渲染内容
-    const contentRender = React.Children.map(children, (item, $index) => {
-      return (
-        <TabContainer {...item.props} selected={this.state.value === $index}>
-          {item.props.children}
-        </TabContainer>
+    let contentRender;
+
+    if (canSwipe) {
+      contentRender = (
+        <Swipe
+          showPagination={false}
+          activeIndex={this.state.value}
+          ref={(ele) => { this.swipe = ele; }}
+          onChange={(value) => {
+            this.setState({ value });
+            typeof onChange === 'function' && onChange(value);
+          }}>
+          {
+            React.Children.map(children, (item) => {
+              return (
+                <div>{item.props.children}</div>
+              );
+            })
+          }
+        </Swipe>
       );
-    });
+    } else {
+      contentRender = React.Children.map(children, (item, $index) => {
+        return (
+          <TabPanel {...item.props} selected={this.state.value === $index} />
+        );
+      });
+    }
 
     const lineStyle = {
       width: `${100 / children.length}%`,
@@ -102,7 +119,7 @@ class TabGroup extends PureComponent {
     return (
       <div className={classes}>
         <div className={`${prefixCls}-header`}>
-          <ul role="tablist">{itemsRender}</ul>
+          <ul role="tablist">{tabsRender}</ul>
           <div className={`${prefixCls}-line`} style={lineStyle}>{lineInnerRender}</div>
         </div>
         <div className={`${prefixCls}-container`}>
@@ -113,22 +130,24 @@ class TabGroup extends PureComponent {
   }
 }
 
-TabGroup.propTypes = {
+Tab.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   lineWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   disabled: PropTypes.bool,
+  canSwipe: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
-TabGroup.defaultProps = {
+Tab.defaultProps = {
   prefixCls: 'za-tab',
   className: null,
   theme: 'primary',
   lineWidth: null,
   disabled: false,
+  canSwipe: false,
   onChange() {},
 };
 
-export default TabGroup;
+export default Tab;

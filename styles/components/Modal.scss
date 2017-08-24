@@ -74,11 +74,7 @@ $prefixCls: za-modal;
     display: flex;
     width: 100%;
 
-    &.block {
-      display: block;
-    }
-
-    .za-button {
+    a {
       flex: 1;
       height: r(50);
       line-height: r(50);
@@ -95,6 +91,16 @@ $prefixCls: za-modal;
 
       &:not(:first-of-type) {
         @include onepx(left top);
+      }
+    }
+
+    &.block {
+      display: block;
+
+      a {
+        &:not(:first-of-type) {
+          @include onepx(top);
+        }
       }
     }
   }
