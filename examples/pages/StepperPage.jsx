@@ -38,50 +38,28 @@ class Page extends Component {
               <Cell
                 title="设置默认值"
                 description={
-                  <Stepper
-                    defaultValue={2}
-                    onChange={(value) => {
-                      console.log(value);
-                    }}
-                    />
+                  <Stepper defaultValue={2} />
                 }
                 />
 
               <Cell
                 title="设置上下限"
                 description={
-                  <Stepper
-                    min={-3}
-                    max={3}
-                    step={1}
-                    onChange={(value) => {
-                      console.log(value);
-                    }}
-                    />
+                  <Stepper min={-3} max={3} />
                 }
                 />
 
               <Cell
                 title="设置步长"
                 description={
-                  <Stepper
-                    step={0.5}
-                    onChange={(value) => {
-                      console.log(value);
-                    }}
-                    />
+                  <Stepper step={0.5} />
                 }
                 />
 
               <Cell
                 title="禁用状态"
                 description={
-                  <Stepper
-                    disabled
-                    onChange={(value) => {
-                      console.log(value);
-                    }}
-                    />
+                  <Stepper disabled />
                 }
                 />
             </Panel.Body>
@@ -95,24 +73,14 @@ class Page extends Component {
               <Cell
                 title="圆角"
                 description={
-                  <Stepper
-                    shape="radius"
-                    onChange={(value) => {
-                      console.log(value);
-                    }}
-                    />
+                  <Stepper shape="radius" />
                 }
                 />
 
               <Cell
-                title="圆型"
+                title="圆形"
                 description={
-                  <Stepper
-                    shape="circle"
-                    onChange={(value) => {
-                      console.log(value);
-                    }}
-                    />
+                  <Stepper shape="circle" />
                 }
                 />
             </Panel.Body>

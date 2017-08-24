@@ -12,8 +12,7 @@ import { Radio } from 'zarm';
 
 #### 基本用法
 
-普通
-
+###### 普通
 ```jsx
 <Radio.Group
   value={this.state.radio}
@@ -24,8 +23,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-指定默认值
-
+###### 指定默认值
 ```jsx
 <Radio.Group defaultValue="1">
   <Radio value="0">选项一</Radio>
@@ -34,8 +32,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-禁用指定项
-
+###### 禁用指定项
 ```jsx
 <Radio.Group>
   <Radio value="0">选项一</Radio>
@@ -44,8 +41,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-圆角
-
+###### 圆角
 ```jsx
 <Radio.Group shape="radius">
   <Radio value="0">选项一</Radio>
@@ -54,8 +50,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-椭圆角
-
+###### 椭圆角
 ```jsx
 <Radio.Group type="button" shape="round">
   <Radio value="0">选项一</Radio>
@@ -65,7 +60,6 @@ import { Radio } from 'zarm';
 ```
 
 #### 块级样式
-
 ```jsx
 <Radio.Group block compact shape="radius">
   <Radio value="0">选项一</Radio>
@@ -76,8 +70,7 @@ import { Radio } from 'zarm';
 
 #### 列表样式
 
-普通
-
+###### 普通
 ```jsx
 <Radio.Group type="cell">
   <Radio value="0">选项一</Radio>
@@ -86,8 +79,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-禁用状态
-
+###### 禁用状态
 ```jsx
 <Radio.Group disabled type="cell">
   <Radio value="0">选项一</Radio>

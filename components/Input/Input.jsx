@@ -114,8 +114,10 @@ Input.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,
+  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   autosize: PropTypes.bool,
   showLength: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 Input.defaultProps = {
@@ -123,8 +125,10 @@ Input.defaultProps = {
   className: null,
   type: 'text',
   disabled: false,
+  rows: null,
   autosize: false,
   showLength: false,
+  onChange() {},
 };
 
 export default Input;

@@ -67,7 +67,7 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>圆角、椭圆角、圆形按钮</Panel.Title>
+              <Panel.Title>多形状</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Button bordered shape="radius">圆角按钮</Button>

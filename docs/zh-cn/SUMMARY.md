@@ -12,4 +12,11 @@
   * [文本框 Input](components/Input.md)
   * [选择器 Picker](components/Picker.md)
   * [单选框 Radio](components/Radio.md)
+  * [步进器 Stepper](components/Stepper.md)
+  * [开关 Switch](components/Switch.md)
+  * [上传组件 Uploader](components/Uploader.md)
+
+* 操作反馈
+  * [动作面板 ActionSheet](components/ActionSheet.md)
+  * [按钮 Button](components/Button.md)
 
