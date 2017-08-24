@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class TabContainer extends PureComponent {
+class TabPanel extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,14 +35,14 @@ class TabContainer extends PureComponent {
   }
 }
 
-TabContainer.propTypes = {
+TabPanel.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
 };
 
-TabContainer.defaultProps = {
-  prefixCls: 'za-tab-container-item',
+TabPanel.defaultProps = {
+  prefixCls: 'za-tab-panel-item',
   className: null,
 };
 
-export default TabContainer;
+export default TabPanel;

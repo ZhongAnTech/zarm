@@ -7,7 +7,7 @@ const diameter = 100;
 class Spinner extends PureComponent {
 
   render() {
-    const { prefixCls, className, theme, size, percent, strokeWidth, children, ...others } = this.props;
+    const { prefixCls, className, theme, size, percent, strokeWidth } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -26,7 +26,7 @@ class Spinner extends PureComponent {
     };
 
     return (
-      <svg className={`${cls}`} viewBox={`0 0 ${diameter} ${diameter}`} {...others} ref={(ele) => { this.svg = ele; }}>
+      <svg className={`${cls}`} viewBox={`0 0 ${diameter} ${diameter}`} ref={(ele) => { this.svg = ele; }}>
         <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
         <circle className={`${prefixCls}-line`} cx={half} cy={half} r={r} fill="none" style={style} />
       </svg>

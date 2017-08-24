@@ -9,6 +9,7 @@ class ModalFooter extends PureComponent {
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
+      // block: true,
     });
 
     return (

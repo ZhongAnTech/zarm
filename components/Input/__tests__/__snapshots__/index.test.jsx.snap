@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+<div
+  class="za-input"
+>
+  <input
+    class="za-input"
+    type="text"
+  />
+</div>
+`;

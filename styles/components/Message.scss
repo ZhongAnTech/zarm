@@ -3,18 +3,39 @@ $prefixCls: za-message;
 @mixin message-theme($color, $background, $border) {
   color: $color;
   background-color: $background;
-  border-color: $border;
-  @include onepx($border-color: $border);
 }
 
 .#{$prefixCls} {
   display: flex;
-  align-items: center;
   position: relative;
-  padding: r(5) r(8);
+  padding: r(6) r(8);
   min-height: r(30);
   font-size: r(12);
   @include message-theme($button-default-border, $button-default-activebg, $button-default-border);
+
+  &-icon {
+    margin-right: r(5);
+    margin-top: r(1);
+  }
+
+  &-header,
+  &-footer {
+    line-height: 1;
+  }
+
+  &-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-left: r(10);
+  }
 
   &.theme-primary {
     @include message-theme($button-primary-border, $button-primary-activebg, $button-primary-border);
@@ -34,5 +55,19 @@ $prefixCls: za-message;
 
   &.theme-error {
     @include message-theme($button-error-border, $button-error-activebg, $button-error-border);
+  }
+
+  &.size-lg {
+    min-height: r(42);
+    padding: r(9) r(15);
+
+    .#{$prefixCls}-icon {
+      margin-right: r(10);
+      margin-top: r(4);
+    }
+
+    .#{$prefixCls}-body {
+      font-size: r(15);
+    }
   }
 }

@@ -2,14 +2,14 @@
 @import "../core/func";
 
 .icon-page {
-  .icon-name {
-    font-size: r(13);
-  }
-
-  .za-icon {
+  .icon {
     display: block;
-    font-size: 45px;
     margin-bottom: r(15);
+    font-size: r(45);
+
+    &-name {
+      font-size: r(13);
+    }
   }
 
   .grid {

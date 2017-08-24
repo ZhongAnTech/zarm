@@ -66,7 +66,7 @@ $prefixCls: za-tab;
       cursor: pointer;
 
       /*
-      &-hasline {
+      &.hasline {
         &:nth-of-type(n+2) {
           position: relative;
 
@@ -110,12 +110,13 @@ $prefixCls: za-tab;
     }
   }
 
-  &-container {
+  &-panel {
     position: relative;
     transition: height .3s;
 
     &-item {
       display: none;
+      font-size: r(14);
 
       &.active {
         display: block;

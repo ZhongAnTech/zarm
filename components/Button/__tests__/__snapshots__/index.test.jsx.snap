@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-default"
+  role="button"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;

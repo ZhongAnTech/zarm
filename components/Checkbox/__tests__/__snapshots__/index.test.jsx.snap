@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly 1`] = `
+<div
+  class="za-checkbox checked"
+>
+  <div
+    class="za-checkbox-wrapper"
+  >
+    <span
+      class="za-checkbox-inner"
+    />
+    <span
+      class="za-checkbox-text"
+    >
+      foo
+    </span>
+    <input
+      checked=""
+      class="za-checkbox-input"
+      type="checkbox"
+    />
+  </div>
+</div>
+`;

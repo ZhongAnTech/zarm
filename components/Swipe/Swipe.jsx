@@ -79,7 +79,6 @@ class Swipe extends Component {
     } else if (index < 0) {
       index = maxLength - 1;
     }
-
     this.setState({
       activeIndex: index,
     });
@@ -198,17 +197,10 @@ class Swipe extends Component {
         ? (activeIndex + 1)
         : (activeIndex - 1);
 
-      if (activeIndex > maxLength - 1) {
-        // 不循环暂停轮播
-        if (!this.props.loop) {
-          this.pauseAutoPlay();
-          return;
-        }
-        activeIndex = 0;
-        this.onJumpTo(-1);
-      } else if (activeIndex < 0) {
-        activeIndex = maxLength - 1;
-        this.onJumpTo(maxLength);
+      // 不循环暂停轮播
+      if (!this.props.loop && activeIndex > maxLength - 1) {
+        this.pauseAutoPlay();
+        return;
       }
       this.onSlideTo(activeIndex);
     }, this.props.autoPlayIntervalTime));
@@ -241,6 +233,10 @@ class Swipe extends Component {
     const newItems = React.Children.map(items, (element, index) => {
       return cloneElement(element, {
         key: index,
+        className: classnames({
+          [`${props.prefixCls}-item`]: true,
+          [element.props.className]: !!element.props.className,
+        }),
       });
     });
 
@@ -273,6 +269,12 @@ class Swipe extends Component {
   }
 
   transitionEnd() {
+    const activeIndex = this.state.activeIndex;
+    const dom = this.swipeItems;
+    this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
+    this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
+    this.doTransition({ x: this.translateX, y: this.translateY }, 0);
+
     this.props.onChangeEnd(this.state.activeIndex);
   }
 
@@ -292,7 +294,7 @@ class Swipe extends Component {
   }
 
   render() {
-    const { prefixCls, className, height, children } = this.props;
+    const { prefixCls, className, height, showPagination, children } = this.props;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
@@ -306,11 +308,9 @@ class Swipe extends Component {
 
     if (!this.isDirectionX()) {
       style.items.height = height;
-      style.pagination.marginTop = 3;
     } else {
       style.items.whiteSpace = 'nowrap';
       style.pagination.display = 'inline-block';
-      style.pagination.marginRight = 3;
     }
 
     return (
@@ -324,23 +324,27 @@ class Swipe extends Component {
           onTouchEnd={event => this.onTouchEnd(event)}>
           { this.state.items }
         </div>
-        <div className={`${prefixCls}-pagination`}>
-          <ul>
-            {
-              Children.map(children, (result, index) => {
-                return (
-                  <li
-                    role="tab"
-                    key={`pagination-${index}`}
-                    className={classnames({ active: index === this.state.activeIndex })}
-                    style={style.pagination}
-                    onClick={() => this.onSlideTo(index)}
-                    />
-                );
-              })
-            }
-          </ul>
-        </div>
+        {
+          showPagination
+            ? <div className={`${prefixCls}-pagination`}>
+              <ul>
+                {
+                  Children.map(children, (result, index) => {
+                    return (
+                      <li
+                        role="tab"
+                        key={`pagination-${index}`}
+                        className={classnames({ active: index === this.state.activeIndex })}
+                        style={style.pagination}
+                        onClick={() => this.onSlideTo(index)}
+                        />
+                    );
+                  })
+                }
+              </ul>
+            </div>
+            : null
+        }
       </div>
     );
   }
@@ -357,6 +361,7 @@ Swipe.propTypes = {
   autoPlayIntervalTime: PropTypes.number,
   moveDistanceRatio: PropTypes.number,
   moveTimeSpan: PropTypes.number,
+  showPagination: PropTypes.bool,
   onChange: PropTypes.func,
   onChangeEnd: PropTypes.func,
 };
@@ -372,6 +377,7 @@ Swipe.defaultProps = {
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
+  showPagination: true,
   onChange() {},
   onChangeEnd() {},
 };

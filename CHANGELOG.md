@@ -1,5 +1,15 @@
 # 版本更新日志  
 
+## v1.0.11
+- Feature
+    - `Checkbox`新增属性id，并调整文字的显示样式。（[4149c01](https://github.com/ZhonganTechENG/zarm/commit/b7135ade392d6edfeb70f90b42ee056d0d969dde)）
+    - `Tab`新增canSwipe属性，支持左右滑动切换。`Swipe`新增showPagination属性，用于是否显示圆点分页。([406c0b4](https://github.com/ZhonganTechENG/zarm/commit/168ea1944917211614603f0691b5f79337b8ad17))
+    - `Message`新增属性icon，用于设置图标。新增hasArrow、onClick属性，用于显示箭头并支持点击事件。新增hasClosable属性，用于关闭消息。
+    - 新增`NoticeBar`组件。
+
+-  Improve && Enhancement
+    - `Swipe`体验优化。循环轮播返回到第一个item时pagination位置更新在动画结束前就执行。（[8270305](https://github.com/ZhonganTechENG/zarm/commit/3d8de9671d8d633bd729d4f28ce17d1e1fd4b512)）
+
 ## v1.0.10
 - Bug Fix
   - 修复`Picker`dataSource属性改变不能更新的bug。（[#67](https://github.com/ZhonganTechENG/zarm/pull/67)）

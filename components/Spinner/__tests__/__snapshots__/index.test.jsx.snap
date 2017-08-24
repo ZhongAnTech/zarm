@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner renders correctly 1`] = `
+<svg
+  class="za-spinner theme-primary"
+  viewbox="0 0 100 100"
+>
+  <circle
+    class="za-spinner-path"
+    cx="50"
+    cy="50"
+    fill="none"
+    r="48"
+    style="stroke-width:4;"
+  />
+  <circle
+    class="za-spinner-line"
+    cx="50"
+    cy="50"
+    fill="none"
+    r="48"
+    style="stroke-dasharray:45.23893421169302 301.59289474462014;stroke-width:4;"
+  />
+</svg>
+`;

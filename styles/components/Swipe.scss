@@ -8,6 +8,7 @@ $prefixCls: za-swipe;
     display: inline-block;
     width: 100%;
     height: 100%;
+    font-size: r(14);
   }
 
   &-pagination {
@@ -19,6 +20,7 @@ $prefixCls: za-swipe;
       list-style: none;
       margin: 0;
       padding: 0;
+      font-size: 0;
 
       li {
         width: r(8);
@@ -26,6 +28,7 @@ $prefixCls: za-swipe;
         border-radius: r(4);
         background: #ccc;
         cursor: pointer;
+        margin: r(3) 0 0 r(3);
 
         &.active {
           background: $theme-primary;

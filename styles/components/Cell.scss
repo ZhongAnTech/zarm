@@ -1,7 +1,7 @@
 $prefixCls: za-cell;
 
 @mixin cell-theme($color) {
-  .za-cell-footer {
+  .#{$prefixCls}-footer {
     color: $color;
   }
 }
@@ -47,13 +47,13 @@ $prefixCls: za-cell;
     cursor: pointer;
     user-select: none;
 
-    .za-cell-inner {
+    .#{$prefixCls}-inner {
       &:active {
         background-color: #eee;
       }
     }
 
-    .za-cell-title {
+    .#{$prefixCls}-title {
       flex: 1;
     }
   }

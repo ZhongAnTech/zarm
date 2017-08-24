@@ -16,7 +16,7 @@ $prefixCls: za-switch;
     position: relative;
     width: r(51);
     height: r(31);
-    border: 1px solid #e5e5e5;
+    border: r(1) solid #e5e5e5;
     border-radius: r(15.5);
     background-color: #e5e5e5;
     vertical-align: middle;
@@ -43,7 +43,7 @@ $prefixCls: za-switch;
     &:after {
       width: r(29);
       background-color: #fff;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
       transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
     }
 

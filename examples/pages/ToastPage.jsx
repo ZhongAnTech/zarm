@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Panel, Cell, Toast, Loading, Button, Icon } from '../../components';
+import '../styles/pages/ToastPage';
 
 class ToastPage extends Component {
 
@@ -56,9 +57,9 @@ class ToastPage extends Component {
                       toast.visible = true;
                       toast.duration = 3000;
                       toast.children = (
-                        <div>
-                          <Icon type="right-round-fill" style={{ fontSize: '3rem' }} />
-                          <div style={{ marginBottom: 5 }}>预约成功</div>
+                        <div className="box">
+                          <Icon className="box-icon" type="right-round-fill" />
+                          <div className="box-text">预约成功</div>
                         </div>
                       );
                       this.setState({ toast });

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio renders correctly 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button za-radio theme-default size-xs"
+  role="button"
+>
+  <span>
+    <input
+      checked=""
+      class="za-radio-input"
+      type="radio"
+    />
+    foo
+  </span>
+</a>
+`;

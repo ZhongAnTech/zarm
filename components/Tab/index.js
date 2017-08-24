@@ -1,6 +1,6 @@
 import Tab from './Tab';
-import TabItem from './TabContainer';
+import TabPanel from './TabPanel';
 
-Tab.Item = TabItem;
+Tab.Panel = TabPanel;
 
 export default Tab;

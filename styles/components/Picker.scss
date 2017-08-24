@@ -1,6 +1,6 @@
 $prefixCls: za-picker;
-$picker-item-height: 30px;
-$picker-stackitem-height: 35px;
+$picker-item-height: r(30);
+$picker-stackitem-height: r(35);
 
 @mixin pickerStackColumn($count) {
   @for $i from 1 through $count {
@@ -217,14 +217,14 @@ $picker-stackitem-height: 35px;
       padding-right: r(20);
       overflow-y: scroll;
       background: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+      box-shadow: 0 0 r(10) rgba(0, 0, 0, .3);
     }
 
     &-item {
       position: relative;
       padding: 0 r(10);
       line-height: $picker-stackitem-height;
-      font-size: r(14);
+      font-size: r(16);
       color: #333;
       transition: padding-left .4s;
       white-space: nowrap;

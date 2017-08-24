@@ -6,29 +6,16 @@ import { Panel, Swipe, Button } from '../../components';
 import '../styles/pages/SwipePage';
 
 const ITEMS = [
-  {
-    url: '#',
-    img: require('../images/banners/1.png'),
-  },
-  {
-    url: '#',
-    img: require('../images/banners/2.png'),
-  },
-  {
-    url: '#',
-    img: require('../images/banners/3.png'),
-  },
+  require('../images/banners/1.png'),
+  require('../images/banners/2.png'),
+  require('../images/banners/3.png'),
 ];
 
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="za-swipe-item" key={+i}>
-        <div className="swipe-item-pic">
-          <a href={item.url}>
-            <img src={item.img} alt={item.title} />
-          </a>
-        </div>
+      <div className="swipe-item-pic" key={+i}>
+        <img src={item} alt="" />
       </div>
     );
   });
