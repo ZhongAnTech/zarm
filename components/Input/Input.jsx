@@ -7,7 +7,7 @@ class Input extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      length: 0,
+      length: (props.value || props.defaultValue || '').length,
     };
     this.onInputChange = this.onInputChange.bind(this);
   }
