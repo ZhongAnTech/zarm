@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Icon, Input, Cell, Message } from '../../components';
+import { Panel, Input, Cell } from '../../components';
 
 class Page extends Component {
 

@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Autosize from 'autosize';
-import Events from '../utils/events';
 
 class Input extends PureComponent {
   constructor(props) {
@@ -10,12 +9,11 @@ class Input extends PureComponent {
     this.state = {
       length: 0,
     };
-    this.setLength = this.setLength.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
   componentDidMount() {
     this.initAutosize();
-    Events.on(this.input, 'input', this.setLength);
   }
 
   componentDidUpdate(prevProps) {
@@ -27,14 +25,16 @@ class Input extends PureComponent {
 
   componentWillUnmount() {
     this.destroyAutosize();
-    Events.off(this.input, 'input', this.setLength);
   }
 
-  // 设置长度
-  setLength() {
+  onInputChange(e) {
+    const { onChange } = this.props;
+
     this.setState({
-      length: this.input.value.length,
+      length: e.target.value.length,
     });
+
+    typeof onChange === 'function' && onChange(e);
   }
 
   // 初始化自适应高度
@@ -55,7 +55,6 @@ class Input extends PureComponent {
       className,
       placeholder,
       type,
-      defaultValue,
       maxLength,
       disabled,
       autosize,
@@ -72,25 +71,23 @@ class Input extends PureComponent {
     const inputRender = (type === 'textarea')
       ? (
         <textarea
+          {...others}
           ref={(ele) => { this.input = ele; }}
           className={cls}
           placeholder={placeholder}
           disabled={disabled}
-          maxLength={maxLength}
-          defaultValue={defaultValue}
-          {...others}
+          onChange={this.onInputChange}
           />
       )
       : (
         <input
+          {...others}
           ref={(ele) => { this.input = ele; }}
           type={type}
           className={cls}
           placeholder={placeholder}
-          defaultValue={defaultValue}
           disabled={disabled}
-          maxLength={maxLength}
-          {...others}
+          onChange={this.onInputChange}
           />
       );
 
