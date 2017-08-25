@@ -2,7 +2,7 @@
 
 exports[`Confirm renders correctly 1`] = `
 <div
-  class="za-modal radius"
+  class="za-modal"
   style="-webkit-animation-duration:200ms;animation-duration:200ms;"
 >
   <div
@@ -10,7 +10,7 @@ exports[`Confirm renders correctly 1`] = `
   >
     <div
       class="za-modal-dialog"
-      style="width:70%;min-width:270px;-webkit-animation-duration:200ms;animation-duration:200ms;"
+      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms;"
     >
       <div
         class="za-modal-header"

@@ -43,6 +43,7 @@ exports[`ActionSheet renders correctly 1`] = `
   </div>
   <div
     class="za-mask normal"
+    style="-webkit-animation-duration:200ms;animation-duration:200ms;"
   />
 </div>
 `;

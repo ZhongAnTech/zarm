@@ -2,7 +2,7 @@
 
 exports[`Progress renders correctly 1`] = `
 <div
-  class="za-progress theme-primary za-progress-line"
+  class="za-progress theme-primary shape-line"
 >
   <div
     class="za-progress-inner"
