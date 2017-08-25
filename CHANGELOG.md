@@ -1,4 +1,12 @@
-# 版本更新日志  
+# 版本更新日志 
+
+## v1.0.14
+- Break Change
+  - `Progress`组件type属性更名为shape，表示形状。（[f2cccd5](https://github.com/ZhonganTechENG/zarm/commit/1b87e889e80df8b43ede6c4e07c19a0b1cc20e30)）
+  - `Modal`组件动画属性animationType默认值由`zoom`变更为`fade`。（[f2cccd5](https://github.com/ZhonganTechENG/zarm/commit/1b87e889e80df8b43ede6c4e07c19a0b1cc20e30)）
+
+- Bug Fix 
+  - 修复`Mask`、`Icon`组件没有载入原生属性的bug。（[f2cccd5](https://github.com/ZhonganTechENG/zarm/commit/1b87e889e80df8b43ede6c4e07c19a0b1cc20e30)）
 
 ## v1.0.13
 - Bug Fix  
