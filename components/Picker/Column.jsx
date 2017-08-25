@@ -79,7 +79,6 @@ class Column extends Component {
 
   scrollingComplete() {
     const { top } = this.zscroller.scroller.getValues();
-    console.log('top =>', top);
     if (top >= 0) {
       this.doScrollingComplete(top);
     }
