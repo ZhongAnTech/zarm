@@ -6,7 +6,7 @@
   ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
   ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
 
-  众安科技移动端UI组件库
+  众安科技移动端UI组件库，基于React。（Vue版本传送门：[zarm-vue](https://github.com/ZhonganTechENG/zarm-vue)）
 
 ### Example 案例
 
