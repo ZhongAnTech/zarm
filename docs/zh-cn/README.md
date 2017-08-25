@@ -1,6 +1,6 @@
 # Zarm
 
-众安科技出品的一套基于 React 的移动端UI库。
+  众安科技移动端UI组件库，基于React。
 
 ### Example 案例
 
@@ -74,4 +74,7 @@ import './styles/index.scss';
 
 ### Changelog 更新日志
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
+
+### License
+MIT
 
