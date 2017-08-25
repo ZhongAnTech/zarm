@@ -71,16 +71,16 @@ import { Button } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-button | | 类名前缀 |
-| className | string | null | | 追加类名 |
-| theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| size | string | null | 'xl', 'lg', 'sm', 'xs' | 大小 |
-| shape | string | null | 'radius', 'round', 'circle' | 形状 |
+| className | string | | | 追加类名 |
+| theme | string | 'default' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| size | string | | 'xl', 'lg', 'sm', 'xs' | 大小 |
+| shape | string | | 'radius', 'round', 'circle' | 形状 |
 | block | bool | false | | 是否为块级元素 |
 | bordered | bool | false | | 是否是幽灵按钮 |
 | disabled | bool | false | | 是否禁用 |
 | loading | bool | false | | 是否显示加载中 |
-| icon | React.element | null | | icon |
-| onChange | func | noop | \(value: bool\) | 值变化时触发的回调函数 |
+| icon | React.element | | | icon |
+| onClick | func | noop | | 点击后触发的回调函数 |
 
 
 

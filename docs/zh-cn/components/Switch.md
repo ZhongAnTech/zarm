@@ -38,8 +38,8 @@ import { Switch } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-switch | | 类名前缀 |
-| className | string | 无 | | 追加类名 |
-| theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| className | string | | | 追加类名 |
+| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | checked | bool | false | | 值 |
 | defaultChecked | bool | false | | 初始值 |
 | disabled | bool | false | | 是否禁用 |

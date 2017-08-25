@@ -1,6 +1,6 @@
 # 动作面板 ActionSheet
 
-[demo页面](https://zhongantecheng.github.io/zarm/#/actionsheet)
+[demo页面](https://zhongantecheng.github.io/zarm/#/action-sheet)
 
 ### 引入
 
@@ -72,12 +72,12 @@ import { ActionSheet } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-switch | | 类名前缀 |
-| className | string | null | | 追加类名 |
-| shape | string | null | 'radius' | 形状 |
+| className | string | | | 追加类名 |
+| shape | string | | 'radius' | 形状 |
 | visible | bool | false | | 是否显示 |
 | actions | arrayOf(object) | [ ] | object: { theme, text, onClick } | 动作列表 |
 | onMaskClick | func | noop | | 点击遮罩层时触发的回调函数 |
-| onCancel | func | null | void | 显示取消菜单，点击时触发的回调函数 |
+| onCancel | func | | void | 显示取消菜单，点击时触发的回调函数 |
 | cancelText | string | '取消' |  | 取消菜单的文案 |
 
 

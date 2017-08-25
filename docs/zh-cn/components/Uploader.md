@@ -50,10 +50,10 @@ import { Uploader } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-uploader | | 类名前缀 |
-| className | string | 无 | | 追加类名 |
-| accept | string | 无 | | 允许上传的附件格式 |
+| className | string | | | 追加类名 |
+| accept | string | | | 允许上传的附件格式 |
 | multiple | bool | false | | 是否多选 |
-| capture | string | 无 | 照相机`camera`, 摄像机`camcorder`, 录音`microphone`| 唤起的原生应用 |
+| capture | string | | 照相机`camera`, 摄像机`camcorder`, 录音`microphone`| 唤起的原生应用 |
 | disabled | bool | false | | 是否禁用 |
 | onBeforeSelect | func | noop | | 选择前触发的事件 |
 | onChange | func | noop | \(value: bool\) | 值变化时触发的回调函数 |

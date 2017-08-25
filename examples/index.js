@@ -73,7 +73,7 @@ const rootRoute = {
 
     // 操作反馈
     {
-      path: 'actionsheet',
+      path: 'action-sheet',
       getComponent(location, cb) {
         require.ensure([], (require) => {
           cb(null, require('./pages/ActionSheetPage'));
@@ -105,7 +105,7 @@ const rootRoute = {
       },
     },
     {
-      path: 'swipeAction',
+      path: 'swipe-action',
       getComponent(location, cb) {
         require.ensure([], (require) => {
           cb(null, require('./pages/SwipeActionPage'));
@@ -155,7 +155,7 @@ const rootRoute = {
       },
     },
     {
-      path: 'noticebar',
+      path: 'notice-bar',
       getComponent(location, cb) {
         require.ensure([], (require) => {
           cb(null, require('./pages/NoticeBarPage'));
