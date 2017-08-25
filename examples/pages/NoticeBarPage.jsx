@@ -7,13 +7,6 @@ import '../styles/pages/NoticeBarPage';
 
 class Page extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: true,
-    };
-  }
-
   render() {
     return (
       <Container className="noticebar-page">
@@ -24,9 +17,20 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <div>
-              <NoticeBar hasArrow onClick={() => alert('click this notice!')}>带图标，带右侧箭头的链接样式</NoticeBar>
-              <NoticeBar hasClosable theme="error" icon={<Icon type="wrong-round" />}>自定义icon，自定义主题，显示关闭按钮。</NoticeBar>
+              <NoticeBar>普通</NoticeBar>
+              <NoticeBar theme="error">错误色</NoticeBar>
+              <NoticeBar icon={<Icon type="wrong-round" />}>自定义图标</NoticeBar>
               <NoticeBar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
+            </div>
+          </Panel>
+
+          <Panel>
+            <Panel.Header>
+              <Panel.Title>可操作</Panel.Title>
+            </Panel.Header>
+            <div>
+              <NoticeBar hasArrow onClick={() => alert('click this notice!')}>链接样式的</NoticeBar>
+              <NoticeBar hasClosable>可关闭的</NoticeBar>
             </div>
           </Panel>
         </main>

@@ -38,12 +38,12 @@ import { Input } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-input | | 类名前缀 |
-| className | string | null | | 追加类名 |
+| className | string | | | 追加类名 |
 | type | string | text | | 显示类型 |
 | value | string |  | | 值 |
 | defaultValue | string |  | | 初始值 |
 | disabled | bool | false | | 是否禁用 |
-| rows | string, number | null | | 多行文本时的显示行数 |
+| rows | string, number | | | 多行文本时的显示行数 |
 | autosize | bool | false | | 是否高度自适应 |
 | showLength | bool | false | | 是否显示输入字数 |
 | onChange | func | noop | \(value: string\) | 值变化时触发的回调函数 |

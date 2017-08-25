@@ -26,6 +26,7 @@ class Confirm extends PureComponent {
 
 Confirm.propTypes = {
   prefixCls: PropTypes.string,
+  animationType: Modal.propTypes.animationType,
   message: PropTypes.string,
   okText: PropTypes.string,
   cancelText: PropTypes.string,
@@ -35,6 +36,7 @@ Confirm.propTypes = {
 
 Confirm.defaultProps = {
   prefixCls: 'za-confirm',
+  animationType: 'zoom',
   message: '',
   okText: '确定',
   cancelText: '取消',

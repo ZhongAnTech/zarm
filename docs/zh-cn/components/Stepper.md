@@ -60,14 +60,14 @@ import { Stepper } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-stepper | | 类名前缀 |
-| className | string | 无 | | 追加类名 |
-| theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| shape | string | 无 | 'radius', 'circle' | 形状 |
-| value | string | 无 | | 值 |
-| defaultValue | string | 无 | | 初始值 |
+| className | string | | | 追加类名 |
+| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| shape | string | | 'radius', 'circle' | 形状 |
+| value | string | | | 值 |
+| defaultValue | string | | | 初始值 |
 | disabled | bool | false | | 是否禁用 |
-| min | number | 无 | | 最小值 |
-| max | number | 无 | | 最大值 |
+| min | number | | | 最小值 |
+| max | number | | | 最大值 |
 | step | number | 1 | | 步长 |
 | onChange | func | noop | \(value: number\) | 值变化时触发的回调函数 |
 

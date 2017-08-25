@@ -17,7 +17,6 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <SwipeAction
-                autoClose
                 right={[
                   {
                     theme: 'error',
@@ -30,7 +29,7 @@ class Page extends Component {
                     onClick: () => console.log('右按钮2'),
                   },
                 ]}>
-                <Cell>左滑看看（自动关闭）</Cell>
+                <Cell>左滑看看</Cell>
               </SwipeAction>
 
               <SwipeAction
@@ -50,6 +49,7 @@ class Page extends Component {
               </SwipeAction>
 
               <SwipeAction
+                autoClose
                 left={[
                   {
                     theme: 'info',
@@ -74,7 +74,7 @@ class Page extends Component {
                     onClick: () => console.log('右按钮2'),
                   },
                 ]}>
-                <Cell>左右都能滑动</Cell>
+                <Cell>左右都能滑动（自动关闭）</Cell>
               </SwipeAction>
 
             </Panel.Body>

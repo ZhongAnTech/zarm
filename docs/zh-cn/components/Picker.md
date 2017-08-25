@@ -224,7 +224,7 @@ import { Picker } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-picker | | 类名前缀 |
-| className | string | null | | 追加类名 |
+| className | string | | | 追加类名 |
 | dataSource | array | [ ] | | 数据源 |
 | visible | bool | false | | 是否显示 |
 | value | array, string |  | | 值 |
@@ -235,7 +235,7 @@ import { Picker } from 'zarm';
 | title | string | '请选择' | | 选择器标题 |
 | placeholder | string | '请选择' | | 输入提示信息 |
 | displayRender | func | noop | | 所选值渲染 |
-| cols | number | null | | 级联选择器的级数 |
+| cols | number | | | 级联选择器的级数 |
 | onChange | func | noop | \(selected: object\) | 值变化时触发的回调函数 |
 | onOk | func | noop | \(selected: object\) | 点击确定时触发的回调函数 |
 | onCancel | func | noop | \(selected: object\) | 点击取消时触发的回调函数 |
@@ -246,7 +246,7 @@ import { Picker } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | mode | string | date | `year`, `date`, `time` | 指定日期选择模式 |
-| format | string | null | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
+| format | string | | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
 | minuteStep | number | 1 | | 分钟步长 |
 | wheelDefaultValue | array, string | | | 滚轮默认值 |
 

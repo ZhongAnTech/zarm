@@ -14,7 +14,7 @@ $prefixCls: za-modal;
   overflow: auto;
   z-index: $zIndex-modal;
 
-  &.radius {
+  &.shape-radius {
     .#{$prefixCls}-dialog {
       border-radius: $radius-md;
     }

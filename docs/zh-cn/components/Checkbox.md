@@ -116,9 +116,9 @@ import { Checkbox } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-checkbox | | 类名前缀 |
-| className | string | null | | 追加类名 |
-| theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | null | 'button', 'cell' | 显示类型 |
+| className | string | | | 追加类名 |
+| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| type | string | | 'button', 'cell' | 显示类型 |
 | checked | bool | false | | 是否选中 |
 | defaultChecked | bool | false | | 初始是否选中 |
 | disabled | bool | false | | 是否禁用 |
@@ -129,10 +129,10 @@ import { Checkbox } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-checkbox | | 类名前缀 |
-| className | string | null | | 追加类名 |
-| theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| shape | string | null | 'radius', 'round' | 形状 |
-| type | string | null | 'button', 'cell' | 显示类型 |
+| className | string | | | 追加类名 |
+| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| shape | string | | 'radius', 'round' | 形状 |
+| type | string | | 'button', 'cell' | 显示类型 |
 | value | array | [ ] | | 选中值 |
 | defaultValue | array | [ ] | | 初始选中值 |
 | block | bool | false | | 是否为块级元素 |

@@ -20,7 +20,8 @@ class Page extends Component {
               <Cell hasArrow title="点状" description={<Badge shape="dot" />} onClick={() => {}} />
               <Cell hasArrow title="直角" description={<Badge text="免费" />} onClick={() => {}} />
               <Cell hasArrow title="圆角" description={<Badge shape="radius" text="new" />} onClick={() => {}} />
-              <Cell hasArrow title="椭圆形" description={<span><Badge shape="circle" text={3} /> <Badge shape="round" text="999+" /></span>} onClick={() => {}} />
+              <Cell hasArrow title="椭圆形" description={<Badge shape="round" text="999+" />} onClick={() => {}} />
+              <Cell hasArrow title="圆形" description={<Badge shape="circle" text={3} />} onClick={() => {}} />
             </Panel.Body>
           </Panel>
 
@@ -36,10 +37,10 @@ class Page extends Component {
                 <Badge sup shape="radius" text="new"><div className="box-item" /></Badge>
               </div>
               <div className="box">
-                <Badge sup shape="round" text={3}><div className="box-item" /></Badge>
+                <Badge sup shape="round" text="999+"><div className="box-item" /></Badge>
               </div>
               <div className="box">
-                <Badge sup shape="round" text="999+"><div className="box-item" /></Badge>
+                <Badge sup shape="circle" text={3}><div className="box-item" /></Badge>
               </div>
             </Panel.Body>
           </Panel>

@@ -16,7 +16,7 @@ class Page extends Component {
         <main>
           <Panel>
             <Panel.Header>
-              <Panel.Title>普通列表项</Panel.Title>
+              <Panel.Title>普通</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Cell title="标题文字" />
@@ -25,7 +25,7 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带描述的列表项</Panel.Title>
+              <Panel.Title>带描述</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Cell title="标题文字" description="描述文字" />
@@ -35,17 +35,17 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带图标、描述的列表项</Panel.Title>
+              <Panel.Title>带图标、描述</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell title="标题文字1" description="描述文字" icon={<Icon type="right" />} />
+              <Cell title="标题文字" description="描述文字" icon={<Icon type="right" />} />
               <Cell title="标题文字" description="描述文字" icon={<img alt="" src={img} />} />
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带跳转的列表项</Panel.Title>
+              <Panel.Title>带跳转</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Cell title="标题文字" onClick={() => {}} />
@@ -55,7 +55,7 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带描述、箭头、跳转的列表项</Panel.Title>
+              <Panel.Title>带描述、箭头、跳转</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
@@ -65,7 +65,7 @@ class Page extends Component {
 
           <Panel>
             <Panel.Header>
-              <Panel.Title>带图标、描述、箭头、跳转的列表项</Panel.Title>
+              <Panel.Title>带图标、描述、箭头、跳转</Panel.Title>
             </Panel.Header>
             <Panel.Body>
               <Cell hasArrow title="标题文字" description="描述文字" icon={<Icon type="right" />} onClick={() => {}} />
