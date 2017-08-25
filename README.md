@@ -81,3 +81,5 @@ import './styles/index.scss';
 ### Changelog 更新日志
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
 
+### License
+MIT
