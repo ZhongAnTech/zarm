@@ -1,35 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NoticeBar autoscroll 1`] = `
-<div
-  class="za-message theme-warning size-lg"
+<Message
+  className={null}
+  hasArrow={false}
+  hasClosable={false}
+  icon={
+    <Icon
+      className={null}
+      prefixCls="za-icon"
+      theme={null}
+      type="broadcast"
+    />
+  }
+  onClick={[Function]}
+  prefixCls="za-message"
+  size="lg"
+  theme="warning"
+  visible={true}
 >
   <div
-    class="za-message-header"
+    className="za-noticebar"
   >
     <div
-      class="za-message-icon"
+      className="za-noticebar-body"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
     >
-      <i
-        class="za-icon za-icon-broadcast"
-      />
+      各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。
     </div>
   </div>
-  <div
-    class="za-message-body"
-  >
-    <div
-      class="za-noticebar"
-    >
-      <div
-        class="za-noticebar-body"
-        style="left:0;"
-      >
-        各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。
-      </div>
-    </div>
-  </div>
-</div>
+</Message>
 `;
 
 exports[`NoticeBar icon 1`] = `
