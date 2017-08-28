@@ -4,15 +4,20 @@ import toJson from 'enzyme-to-json';
 import Checkbox from '../index';
 
 describe('Checkbox', () => {
+  const props = {
+    checked: true,
+    children: 'foo',
+    onChange: jest.fn(),
+  };
+
   it('renders correctly', () => {
-    const wrapper = render(<Checkbox checked>foo</Checkbox>);
+    const wrapper = render(<Checkbox {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('checked change false', () => {
-    const onChange = jest.fn();
-    const wrapper = shallow(<Checkbox checked onChange={onChange}>foo</Checkbox>);
+    const wrapper = shallow(<Checkbox {...props} />);
     wrapper.find('input').simulate('change', { target: { checked: false } });
-    expect(onChange).toBeCalledWith(false);
+    expect(props.onChange).toBeCalledWith(false);
   });
 });

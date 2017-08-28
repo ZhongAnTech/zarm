@@ -35,7 +35,7 @@ class Radio extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, type, theme, block, disabled, children } = this.props;
+    const { prefixCls, className, type, theme, block, value, disabled, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames({
@@ -46,7 +46,7 @@ class Radio extends PureComponent {
     if (type === 'cell') {
       return (
         <Cell disabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
-          <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          <input type="radio" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
           {children}
         </Cell>
       );
@@ -54,7 +54,7 @@ class Radio extends PureComponent {
 
     return (
       <Button className={cls} theme={theme} size="xs" block={block} bordered={!checked} disabled={disabled}>
-        <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <input type="radio" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         {children}
       </Button>
     );

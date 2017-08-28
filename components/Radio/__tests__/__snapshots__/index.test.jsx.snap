@@ -1,18 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Radio renders correctly 1`] = `
-<a
-  aria-disabled="false"
-  class="za-button za-radio theme-default size-xs"
-  role="button"
+<div
+  class="za-radio-group"
 >
-  <span>
-    <input
-      checked=""
-      class="za-radio-input"
-      type="radio"
-    />
-    foo
-  </span>
-</a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs"
+    role="button"
+  >
+    <span>
+      <input
+        checked=""
+        class="za-radio-input"
+        type="radio"
+        value="0"
+      />
+      选项一
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="1"
+      />
+      选项二
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="2"
+      />
+      选项三
+    </span>
+  </a>
+</div>
 `;
