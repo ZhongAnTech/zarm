@@ -20,7 +20,8 @@ describe('NoticeBar', () => {
   });
 
   it('autoscroll', () => {
-    const wrapper = render(<NoticeBar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
+    const wrapper = shallow(<NoticeBar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
   });
 });
