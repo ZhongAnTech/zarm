@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Input from '../index';
 
@@ -15,8 +15,16 @@ describe('Input', () => {
   });
 
   it('autosize', () => {
-    const wrapper = render(<Input autosize type="textarea" rows={4} />);
+    const onChange = jest.fn();
+    const wrapper = shallow(<Input autosize type="textarea" rows={4} onChange={onChange} />);
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.find('textarea').simulate('change', { target: { value: 'this is a test!' } });
+    expect(onChange).toBeCalledWith(expect.objectContaining({
+      target: {
+        value: 'this is a test!',
+      },
+    }));
+    wrapper.unmount();
   });
 
   it('showLength', () => {

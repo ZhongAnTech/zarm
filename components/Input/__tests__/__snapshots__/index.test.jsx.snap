@@ -2,11 +2,13 @@
 
 exports[`Input autosize 1`] = `
 <div
-  class="za-input"
+  className="za-input"
 >
   <textarea
-    class="za-input"
-    rows="4"
+    className="za-input"
+    disabled={false}
+    onChange={[Function]}
+    rows={4}
   />
 </div>
 `;
