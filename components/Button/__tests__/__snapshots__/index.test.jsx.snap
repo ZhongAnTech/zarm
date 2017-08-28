@@ -1,9 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button block 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-default block"
+  role="button"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
+
+exports[`Button bordered 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-default bordered"
+  role="button"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
+
+exports[`Button icon 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-default"
+  role="button"
+>
+  <span
+    class="za-button-content"
+  >
+    <img
+      alt=""
+      src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
+    />
+    <span>
+      foo
+    </span>
+  </span>
+</a>
+`;
+
+exports[`Button loading 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-default"
+  role="button"
+>
+  <span
+    class="za-button-content"
+  >
+    <svg
+      class="za-spinner rotate360 theme-primary"
+      viewbox="0 0 100 100"
+    >
+      <circle
+        class="za-spinner-path"
+        cx="50"
+        cy="50"
+        fill="none"
+        r="48"
+        style="stroke-width:4;"
+      />
+      <circle
+        class="za-spinner-line"
+        cx="50"
+        cy="50"
+        fill="none"
+        r="48"
+        style="stroke-dasharray:45.23893421169302 301.59289474462014;stroke-width:4;"
+      />
+    </svg>
+    <span>
+      foo
+    </span>
+  </span>
+</a>
+`;
+
 exports[`Button renders correctly 1`] = `
 <a
   aria-disabled="false"
   class="za-button theme-default"
+  role="button"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
+
+exports[`Button shape is radius 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-default shape-radius"
+  role="button"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
+
+exports[`Button size 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-default size-lg"
+  role="button"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
+
+exports[`Button theme 1`] = `
+<a
+  aria-disabled="false"
+  class="za-button theme-primary"
   role="button"
 >
   <span>
