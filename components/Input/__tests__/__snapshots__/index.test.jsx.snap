@@ -9,6 +9,7 @@ exports[`Input autosize 1`] = `
     disabled={false}
     onChange={[Function]}
     rows={4}
+    value="foo"
   />
 </div>
 `;

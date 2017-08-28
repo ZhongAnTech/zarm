@@ -15,15 +15,17 @@ describe('Input', () => {
   });
 
   it('autosize', () => {
-    const onChange = jest.fn();
-    const wrapper = shallow(<Input autosize type="textarea" rows={4} onChange={onChange} />);
+    const props = {
+      autosize: true,
+      type: 'textarea',
+      rows: 4,
+      value: 'foo',
+      onChange: jest.fn(),
+    };
+    const wrapper = shallow(<Input {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find('textarea').simulate('change', { target: { value: 'this is a test!' } });
-    expect(onChange).toBeCalledWith(expect.objectContaining({
-      target: {
-        value: 'this is a test!',
-      },
-    }));
+    expect(props.onChange).toBeCalledWith(expect.objectContaining({ target: { value: 'this is a test!' } }));
     wrapper.unmount();
   });
 
