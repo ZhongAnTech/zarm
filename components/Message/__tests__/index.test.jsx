@@ -19,18 +19,18 @@ describe('Message', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('hasClosable', () => {
-    const wrapper = shallow(<Message hasClosable>foo</Message>);
-    expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.find('Icon').simulate('click');
-    expect(wrapper.state('visible')).toEqual(false);
-  });
-
   it('hasArrow', () => {
     const onClick = jest.fn();
     const wrapper = shallow(<Message hasArrow onClick={onClick}>foo</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.simulate('click');
     expect(onClick).toBeCalled();
+  });
+
+  it('hasClosable', () => {
+    const wrapper = shallow(<Message hasClosable>foo</Message>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.find('Icon').simulate('click');
+    expect(wrapper.state('visible')).toEqual(false);
   });
 });
