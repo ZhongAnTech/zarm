@@ -13,6 +13,22 @@ exports[`Progress renders correctly 1`] = `
       style="width:10%;"
     />
   </div>
+</div>
+`;
+
+exports[`Progress renders has children correctly 1`] = `
+<div
+  class="za-progress theme-primary shape-line"
+>
+  <div
+    class="za-progress-inner"
+    style="height:4px;"
+  >
+    <div
+      class="za-progress-bg"
+      style="width:10%;"
+    />
+  </div>
   <div
     class="za-progress-text"
   >
