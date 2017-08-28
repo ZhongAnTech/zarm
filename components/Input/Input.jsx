@@ -76,6 +76,7 @@ class Input extends PureComponent {
           className={cls}
           placeholder={placeholder}
           disabled={disabled}
+          maxLength={maxLength}
           onChange={this.onInputChange}
           />
       )
@@ -87,6 +88,7 @@ class Input extends PureComponent {
           className={cls}
           placeholder={placeholder}
           disabled={disabled}
+          maxLength={maxLength}
           onChange={this.onInputChange}
           />
       );
