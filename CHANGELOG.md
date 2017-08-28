@@ -1,5 +1,10 @@
 # 版本更新日志 
 
+## v1.0.15
+- Bug Fix
+  - 修复`Badge`组件没有载入原生属性的bug。（[20a66f8](https://github.com/ZhonganTechENG/zarm/commit/32879261a694fe5a09820035217105e7b9fd3154)）
+  - 修复`Input`组件maxLength属性没有载入的bug。（[ef199da](https://github.com/ZhonganTechENG/zarm/commit/20a66f854b9d5b997c9ca29291a6a9ef6d54b60d)）
+
 ## v1.0.14
 - Break Change
   - `Progress`组件type属性更名为shape，表示形状。（[f2cccd5](https://github.com/ZhonganTechENG/zarm/commit/1b87e889e80df8b43ede6c4e07c19a0b1cc20e30)）
