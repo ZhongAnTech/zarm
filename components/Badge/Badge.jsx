@@ -19,9 +19,9 @@ class Badge extends PureComponent {
     });
 
     return (
-      <span className={cls} {...others}>
+      <span className={cls}>
         {children}
-        <sup className={supCls}>{text}</sup>
+        <sup className={supCls} {...others}>{text}</sup>
       </span>
     );
   }
