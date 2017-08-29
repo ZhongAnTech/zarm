@@ -25,7 +25,7 @@ describe('Radio', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.find('input[type="radio"][value="1"]').prop('checked')).toEqual(true);
+    expect(wrapper.find('input[type="radio"][value="1"]').prop('checked')).toBe(true);
   });
 
   // 指定默认值
@@ -37,7 +37,7 @@ describe('Radio', () => {
         <Radio value="2" disabled>选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.find('input[type="radio"][value="2"]').prop('disabled')).toEqual(true);
+    expect(wrapper.find('input[type="radio"][value="2"]').prop('disabled')).toBe(true);
   });
 
   // 圆角
@@ -49,7 +49,7 @@ describe('Radio', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.hasClass('shape-radius')).toEqual(true);
+    expect(wrapper.hasClass('shape-radius')).toBe(true);
   });
 
   // 椭圆角
@@ -61,7 +61,7 @@ describe('Radio', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.hasClass('shape-round')).toEqual(true);
+    expect(wrapper.hasClass('shape-round')).toBe(true);
   });
 
   // 块级样式
@@ -73,7 +73,7 @@ describe('Radio', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.hasClass('block')).toEqual(true);
+    expect(wrapper.hasClass('block')).toBe(true);
   });
 
   // 列表样式
@@ -87,16 +87,4 @@ describe('Radio', () => {
     );
     expect(wrapper.props().children[0].props.type).toEqual('cell');
   });
-
-  // 列表样式
-  // it('type is cell and all options is disabled', () => {
-  //   const wrapper = shallow(
-  //     <Radio.Group type="cell" disabled>
-  //       <Radio value="0">选项一</Radio>
-  //       <Radio value="1">选项二</Radio>
-  //       <Radio value="2">选项三</Radio>
-  //     </Radio.Group>
-  //   );
-  //   expect(wrapper.props().children[0].props.type).toEqual('cell');
-  // });
 });
