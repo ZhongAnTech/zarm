@@ -54,7 +54,7 @@ class Page extends Component {
                       { value: '2', label: '选项二' },
                     ],
                     [
-                      { value: '1', label: '选项A' },
+                      { value: 'a', label: '选项A' },
                       { value: 'b', label: '选项B' },
                     ],
                   ]}
