@@ -2,11 +2,26 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, SwipeAction } from '../../components';
+import { Panel, Cell, SwipeAction, Drag } from '../../components';
 
 class Page extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      offsetLeft: 0,
+    };
+  }
+
   render() {
+    const { offsetLeft } = this.state;
+    const style = {
+      WebkitTransitionDuration: 0,
+      transitionDuration: 0,
+      WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
+      transform: `translate3d(${offsetLeft}px, 0, 0)`,
+    };
+
     return (
       <Container className="swipeAction-page">
         <Header title="滑动操作 SwipeAction" />
@@ -76,6 +91,24 @@ class Page extends Component {
                 ]}>
                 <Cell>左右都能滑动（自动关闭）</Cell>
               </SwipeAction>
+
+              <Drag
+                onDragStart={() => {
+
+                }}
+                onDragMove={({ translateX, offsetX, distanceX }) => {
+                  // console.log(offsetX, distanceX, translateX)
+                  if (offsetX > 0 && distanceX > 100) return false;
+                  if (translateX > 100) return false;
+
+                  this.setState({ offsetLeft: translateX + offsetX });
+                  return true;
+                }}
+                onDragEnd={() => {
+
+                }}>
+                <Cell style={style}>Drag</Cell>
+              </Drag>
 
             </Panel.Body>
           </Panel>
