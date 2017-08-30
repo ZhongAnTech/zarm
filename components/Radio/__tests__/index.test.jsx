@@ -25,7 +25,19 @@ describe('Radio', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.find('input[type="radio"][value="1"]').prop('checked')).toBe(true);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  // 指定默认值
+  it('Radio checked', () => {
+    const wrapper = render(
+      <Radio.Group>
+        <Radio value="0">选项一</Radio>
+        <Radio value="1" checked>选项二</Radio>
+        <Radio value="2">选项三</Radio>
+      </Radio.Group>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   // 指定默认值
@@ -85,6 +97,7 @@ describe('Radio', () => {
         <Radio value="2" disabled>选项三</Radio>
       </Radio.Group>
     );
+    expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.props().children[0].props.type).toEqual('cell');
   });
 });
