@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 class Cell extends PureComponent {
   render() {
-    const { prefixCls, className, theme, hasArrow, icon, title, description, help, disabled, onClick, children } = this.props;
+    const { prefixCls, className, theme, hasArrow, icon, title, description, help, disabled, onClick, children, ...others } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -41,7 +41,7 @@ class Cell extends PureComponent {
       : null;
 
     return (
-      <div className={cls} onTouchStart={() => {}} onClick={onClick}>
+      <div className={cls} onClick={onClick} {...others}>
         <div className={`${prefixCls}-inner`}>
           <div className={`${prefixCls}-header`}>
             {iconRender}
