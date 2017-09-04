@@ -5,7 +5,6 @@ class Drag extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.flag = false;
     this.dragState = {};
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
