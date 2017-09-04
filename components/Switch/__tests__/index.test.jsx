@@ -13,6 +13,6 @@ describe('Switch', () => {
     const onChange = jest.fn();
     const wrapper = shallow(<Switch checked onChange={onChange} />);
     wrapper.find('input').simulate('change', { target: { checked: false } });
-    expect(onChange).toHaveBeenCalledWith(false);
+    expect(onChange).toBeCalledWith(false);
   });
 });

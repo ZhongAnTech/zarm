@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Input autosize 1`] = `
+<div
+  className="za-input"
+>
+  <textarea
+    className="za-input"
+    disabled={false}
+    onChange={[Function]}
+    rows={4}
+    value="foo"
+  />
+</div>
+`;
+
 exports[`Input renders correctly 1`] = `
 <div
   class="za-input"
@@ -7,6 +21,28 @@ exports[`Input renders correctly 1`] = `
   <input
     class="za-input"
     type="text"
+  />
+</div>
+`;
+
+exports[`Input renders type is textarea correctly 1`] = `
+<div
+  class="za-input"
+>
+  <textarea
+    class="za-input"
+    rows="4"
+  />
+</div>
+`;
+
+exports[`Input showLength 1`] = `
+<div
+  class="za-input"
+>
+  <textarea
+    class="za-input"
+    rows="4"
   />
 </div>
 `;

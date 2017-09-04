@@ -28,7 +28,7 @@ $prefixCls: za-progress;
     transition: width .3s;
   }
 
-  &-circle {
+  &.shape-circle {
     display: inline-block;
     width: r(150);
     height: r(150);

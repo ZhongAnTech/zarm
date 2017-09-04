@@ -38,7 +38,7 @@ class Switch extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, theme, size, shape, disabled } = this.props;
+    const { prefixCls, className, theme, size, disabled } = this.props;
     const { checked } = this.state;
 
     const cls = classnames({
@@ -46,7 +46,6 @@ class Switch extends PureComponent {
       [className]: !!className,
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
-      [`shape-${shape}`]: !!shape,
       checked,
       disabled,
     });
@@ -63,7 +62,6 @@ Switch.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
-  shape: PropTypes.oneOf(['radius', 'round', 'circle']),
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
 };
@@ -73,7 +71,6 @@ Switch.defaultProps = {
   className: null,
   theme: 'primary',
   size: null,
-  shape: null,
   disabled: false,
   onChange() {},
 };

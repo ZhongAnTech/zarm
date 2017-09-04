@@ -216,11 +216,12 @@ class Picker extends Component {
         }
       }
 
-      let treeChildren2 = this.props.dataSource.reduce((a, b) => {
-        return a.concat(b);
-      }, []);
-      treeChildren2 = treeChildren2.filter((item) => { return ~value.indexOf(item[valueMember]); });
-
+      const treeChildren2 = data.map((d, index) => {
+        if (value[index]) {
+          return d.find(obj => value[index] === obj[valueMember]);
+        }
+        return undefined;
+      }).filter(t => !!t);
       return this._displayRender(treeChildren2);
     };
 

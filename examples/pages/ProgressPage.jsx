@@ -29,7 +29,7 @@ class Page extends Component {
           </div>
           <div className="progress">
             <Progress
-              type="circle"
+              shape="circle"
               percent={this.state.percent}
               theme={this.state.theme}>
               <div className="progress-content">

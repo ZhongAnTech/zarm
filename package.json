@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "1.0.11",
+  "version": "1.0.15",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -41,7 +41,8 @@
     "lint:js": "eslint components --ext '.js,.jsx'",
     "lint:style": "stylelint styles/**/*.scss --syntax scss",
     "lint": "npm run lint:js && npm run lint:style",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "docs": "cd docs && gitbook install && gitbook serve"
   },

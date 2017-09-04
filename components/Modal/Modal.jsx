@@ -64,14 +64,14 @@ class Modal extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, animationType, animationDuration, width, minWidth, radius, onMaskClick, children } = this.props;
+    const { prefixCls, className, shape, animationType, animationDuration, width, onMaskClick, children } = this.props;
     const { isShow, isPending, animationState } = this.state;
 
     const cls = {
       modal: classnames({
         [`${prefixCls}`]: true,
         [className]: !!className,
-        radius,
+        [`shape-${shape}`]: !!shape,
         [`fade-${animationState}`]: isPending,
       }),
       dialog: classnames({
@@ -91,7 +91,6 @@ class Modal extends PureComponent {
       },
       dialog: {
         width,
-        minWidth,
         WebkitAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
       },
@@ -129,6 +128,7 @@ class Modal extends PureComponent {
 Modal.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
+  shape: PropTypes.oneOf(['radius']),
   visible: PropTypes.bool,
   animationType: PropTypes.oneOf([
     'fade', 'door', 'flip', 'rotate', 'zoom',
@@ -137,20 +137,17 @@ Modal.propTypes = {
   ]),
   animationDuration: PropTypes.number,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  minWidth: PropTypes.number,
-  radius: PropTypes.bool,
   onMaskClick: PropTypes.func,
 };
 
 Modal.defaultProps = {
   prefixCls: 'za-modal',
   className: null,
+  shape: null,
   visible: false,
-  animationType: 'zoom',
+  animationType: 'fade',
   animationDuration: 200,
   width: '70%',
-  minWidth: 270,
-  radius: false,
   onMaskClick() {},
 };
 

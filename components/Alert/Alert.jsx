@@ -25,6 +25,7 @@ class Alert extends PureComponent {
 
 Alert.propTypes = {
   prefixCls: PropTypes.string,
+  animationType: Modal.propTypes.animationType,
   message: PropTypes.string,
   cancelText: PropTypes.string,
   onCancel: PropTypes.func,
@@ -32,6 +33,7 @@ Alert.propTypes = {
 
 Alert.defaultProps = {
   prefixCls: 'za-alert',
+  animationType: 'zoom',
   message: '',
   cancelText: '关闭',
   onCancel() {},

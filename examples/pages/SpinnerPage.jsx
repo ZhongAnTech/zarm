@@ -17,10 +17,16 @@ class Page extends Component {
             </Panel.Header>
             <Panel.Body>
               <Cell description={
-                <Spinner className="rotate360" />
+                <Spinner />
               }>普通</Cell>
               <Cell description={
-                <Spinner className="rotate360" size="lg" />
+                <Spinner theme="error" />
+              }>自定义主题</Cell>
+              <Cell description={
+                <Spinner className="rotate360" />
+              }>旋转动画</Cell>
+              <Cell description={
+                <Spinner size="lg" />
               }>大号</Cell>
             </Panel.Body>
           </Panel>
