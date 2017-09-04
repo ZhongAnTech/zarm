@@ -40,15 +40,18 @@ class SwipeAction extends PureComponent {
     const { disabled } = this.props;
     if (disabled) return;
 
+    // 拖动距离达到上限
     const { offset } = this.props;
     const { offsetLeft } = this.state;
-
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
-
     if (offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset)) return false;
     if (offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)) return false;
-    if (Math.abs(offsetX) < 5 || (Math.abs(offsetX) >= 5 && Math.abs(offsetY) >= 0.3 * Math.abs(offsetX))) return false;
+
+    // 判断滚屏情况
+    const distanceX = Math.abs(offsetX);
+    const distanceY = Math.abs(offsetY);
+    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) return false;
 
     this.doTransition({ offsetLeft: offsetX, duration: 0 });
     return true;
@@ -59,12 +62,11 @@ class SwipeAction extends PureComponent {
 
     const { speed, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
+    const btnsLeftWidth = this.left && this.left.offsetWidth;
+    const btnsRightWidth = this.right && this.right.offsetWidth;
 
     let distanceX = 0;
     let isOpen = false;
-
-    const btnsLeftWidth = this.left && this.left.offsetWidth;
-    const btnsRightWidth = this.right && this.right.offsetWidth;
 
     if ((offsetX / btnsLeftWidth > moveDistanceRatio) || (offsetX > 0 && timeSpan <= moveTimeSpan)) {
       distanceX = btnsLeftWidth;
