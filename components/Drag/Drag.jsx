@@ -55,7 +55,6 @@ class Drag extends PureComponent {
     onDragEnd(event, dragState);
 
     this.dragState = {};
-    // console.log('end', dragState);
   }
 
   render() {
