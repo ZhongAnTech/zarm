@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import { Panel, Cell, SwipeAction } from '../../components';
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="swipeAction-page">
@@ -73,10 +72,11 @@ class Page extends Component {
                     text: '右按钮2',
                     onClick: () => console.log('右按钮2'),
                   },
-                ]}>
+                ]}
+                onOpen={() => console.log('open')}
+                onClose={() => console.log('close')}>
                 <Cell>左右都能滑动（自动关闭）</Cell>
               </SwipeAction>
-
             </Panel.Body>
           </Panel>
         </main>

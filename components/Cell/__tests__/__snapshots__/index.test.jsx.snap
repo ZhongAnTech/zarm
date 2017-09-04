@@ -130,7 +130,6 @@ exports[`Cell onClick 1`] = `
 <div
   className="za-cell is-link has-arrow"
   onClick={[Function]}
-  onTouchStart={[Function]}
 >
   <div
     className="za-cell-inner"
