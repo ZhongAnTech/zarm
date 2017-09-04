@@ -21,6 +21,7 @@ export { default as Spinner } from './Spinner';
 export { default as Stepper } from './Stepper';
 export { default as Swipe } from './Swipe';
 export { default as SwipeAction } from './SwipeAction';
+export { default as SwipeActions } from './SwipeActions';
 export { default as Switch } from './Switch';
 export { default as Tab } from './Tab';
 export { default as Toast } from './Toast';
