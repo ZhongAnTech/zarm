@@ -91,7 +91,12 @@ import { SwipeAction } from 'zarm';
 | className | string | | | 追加类名 |
 | left | arrayOf(object) | [ ] | object: { theme, text, onClick } | 左侧按钮组 |
 | right | arrayOf(object) | [ ] | object: { theme, text, onClick } | 右侧按钮组 |
-| autoClose | bool | false | | 点击按钮是否自动关闭 |
+| moveDistanceRatio | number | 0.5 | | 移动距离比例临界点 |
+| moveTimeSpan | number | 300 | | 移动时间跨度临界点 |
+| duration | number | 300 | | 移动持续时间 |
+| offset | number | 10 | | 回弹偏移的距离 |
+| onOpen | func | noop | | 滑开时触发的回调函数 |
+| onClose | func | noop | | 关闭时触发的回调函数 |
 
 
 
