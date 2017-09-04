@@ -15,7 +15,19 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <SwipeAction>
+              <SwipeAction
+                right={[
+                  {
+                    theme: 'error',
+                    text: '右按钮1',
+                    onClick: () => console.log('右按钮1'),
+                  },
+                  {
+                    theme: 'success',
+                    text: '右按钮2',
+                    onClick: () => console.log('右按钮2'),
+                  },
+                ]}>
                 <Cell>左滑看看</Cell>
               </SwipeAction>
 
