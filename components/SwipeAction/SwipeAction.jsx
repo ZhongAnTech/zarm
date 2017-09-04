@@ -2,20 +2,19 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Events from '../utils/events';
-
-function _getCurrentPoint(e) {
-  // console.log("e.touches[0].pageX: ", e.touches[0].pageX , " e.touches[0].screenX: ", e.touches[0].screenX);
-  return e.touches[0].pageX;
-}
+import Drag from '../Drag';
 
 class SwipeAction extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.openedLeft = false;
-    this.openedRight = false;
+    this.state = {
+      offsetLeft: 0,
+    };
+    this.isOpen = false;
     this.touchEnd = true;
-    this.dragState = {};
+    this.onDragStart = this.onDragStart.bind(this);
+    this.onDragMove = this.onDragMove.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   componentDidMount() {
@@ -26,23 +25,66 @@ class SwipeAction extends PureComponent {
     Events.off(document.body, 'touchstart', e => this.onCloseSwipe(e));
   }
 
-  onCloseSwipe(e) {
-    if (this.openedLeft || this.openedRight) {
-      const pNode = ((node) => {
-        while (node.parentNode && node.parentNode !== document.body) {
-          if (node === this.wrap) {
-            return node;
-          }
-          node = node.parentNode;
-        }
-      })(e.target);
-      if (!pNode) {
-        e.preventDefault();
-        if (this.openedLeft || this.openedRight) {
-          this.close();
-          this.touchEnd = true;
-        }
-      }
+  onDragStart() {
+    if (this.isOpen) {
+      this.touchEnd = false;
+      this.close();
+      return;
+    }
+    this.touchEnd = true;
+  }
+
+  onDragMove(event, { offsetX, offsetY }) {
+    if (!this.touchEnd) return;
+
+    const { disabled } = this.props;
+    if (disabled) return;
+
+    // 拖动距离达到上限
+    const { offset } = this.props;
+    const { offsetLeft } = this.state;
+    const btnsLeftWidth = this.left && this.left.offsetWidth;
+    const btnsRightWidth = this.right && this.right.offsetWidth;
+    if (offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset)) return false;
+    if (offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)) return false;
+
+    // 判断滚屏情况
+    const distanceX = Math.abs(offsetX);
+    const distanceY = Math.abs(offsetY);
+    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) return false;
+
+    this.doTransition({ offsetLeft: offsetX, duration: 0 });
+    return true;
+  }
+
+  onDragEnd(event, { offsetX, startTime }) {
+    event.preventDefault();
+
+    const { speed, moveDistanceRatio, moveTimeSpan } = this.props;
+    const timeSpan = new Date().getTime() - startTime.getTime();
+    const btnsLeftWidth = this.left && this.left.offsetWidth;
+    const btnsRightWidth = this.right && this.right.offsetWidth;
+
+    let distanceX = 0;
+    let isOpen = false;
+
+    if ((offsetX / btnsLeftWidth > moveDistanceRatio) || (offsetX > 0 && timeSpan <= moveTimeSpan)) {
+      distanceX = btnsLeftWidth;
+      isOpen = true;
+    } else if ((offsetX / btnsRightWidth < -moveDistanceRatio) || (offsetX < 0 && timeSpan <= moveTimeSpan)) {
+      distanceX = -btnsRightWidth;
+      isOpen = true;
+    }
+
+    if (isOpen && !this.isOpen) {
+      // 打开
+      this.open(distanceX);
+    } else if (!isOpen && this.isOpen) {
+      // 关闭
+      this.close();
+    } else {
+      // 还原
+      this.doTransition({ offsetLeft: distanceX, duration: speed });
     }
   }
 
@@ -58,132 +100,41 @@ class SwipeAction extends PureComponent {
     }
   }
 
-  _onTouchStart(e) {
-    // 记录开始touch位置，方便后面计算是否滚动
-    const dragState = this.dragState;
-    const touch = e.touches[0];
+  onCloseSwipe(e) {
+    if (this.isOpen) {
+      const pNode = ((node) => {
+        while (node.parentNode && node.parentNode !== document.body) {
+          if (node === this.wrap) {
+            return node;
+          }
+          node = node.parentNode;
+        }
+      })(e.target);
 
-    dragState.startLeft = touch.pageX;
-    dragState.startTop = touch.pageY;
-    dragState.startTopAbsolute = touch.clientY;
-
-    if (this.props.disabled) {
-      return;
-    }
-    this.pointStart = _getCurrentPoint(e);
-    this.pointEnd = _getCurrentPoint(e);
-    if (this.openedLeft || this.openedRight) {
-      this.touchEnd = false;
-      this.close();
-      return;
-    }
-    this.timeStart = new Date();
-  }
-
-  _onTouchMove(e) {
-    // 验证是否应该滚动页面还是侧滑对应模块
-    const dragState = this.dragState;
-    const touch = e.touches[0];
-    const offsetLeft = touch.pageX - dragState.startLeft;
-    const offsetTop = touch.clientY - dragState.startTopAbsolute;
-
-    const distanceX = Math.abs(offsetLeft);
-    const distanceY = Math.abs(offsetTop);
-
-    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) {
-      return;
-    }
-
-    e.preventDefault();
-
-    if (this.props.disabled) {
-      return;
-    }
-
-    if (!this.touchEnd) {
-      return;
-    }
-    const { left = [], right = [], offset } = this.props;
-
-    const pointX = _getCurrentPoint(e);
-    const posX = pointX - this.pointStart;
-    const btnsLeftWidth = this.left && this.left.offsetWidth;
-    const btnsRightWidth = this.right && this.right.offsetWidth;
-
-    if (posX < 0 && right.length) {
-      if (posX < -btnsRightWidth - offset) {
-        return;
+      if (!pNode) {
+        e.preventDefault();
+        this.touchEnd = true;
+        this.close();
       }
-      this._doTransition(Math.min(posX, 0), 0);
-    } else if (posX > 0 && left.length) {
-      if (posX > btnsLeftWidth + offset) {
-        return;
-      }
-      this._doTransition(Math.max(posX, 0), 0);
     }
-
-    this.pointEnd = pointX;
   }
 
-  _onTouchEnd(e) {
-    e.preventDefault();
-    if (this.props.disabled) {
-      return;
-    }
-    const { left = [], right = [] } = this.props;
-
-    const posX = (this.pointEnd !== 0) ? this.pointEnd - this.pointStart : 0;
-
-    const btnsLeftWidth = this.left && this.left.offsetWidth;
-    const btnsRightWidth = this.right && this.right.offsetWidth;
-
-    const leftOpenX = btnsLeftWidth * this.props.moveDistanceRatio;
-    const rightOpenX = btnsRightWidth * this.props.moveDistanceRatio;
-
-    const openLeft = posX > leftOpenX;
-    const openRight = posX < -rightOpenX;
-
-    if (openRight && posX < 0 && right.length) {
-      this.open(-btnsRightWidth, 300, false, true);
-    } else if (openLeft && posX > 0 && left.length) {
-      this.open(btnsLeftWidth, 300, true, false);
-    } else {
-      this.close();
-    }
-
-    this.touchEnd = true;
+  open(offsetLeft) {
+    const { speed, onOpen } = this.props;
+    onOpen();
+    this.isOpen = true;
+    this.doTransition({ offsetLeft, duration: speed });
   }
 
-  // 执行过渡动画
-  _doTransition(offset, duration) {
-    const dom = this.content;
-    const x = offset;
-    const y = 0;
-    if (!dom) return;
-
-    dom.style.webkitTransitionDuration = `${duration}ms`;
-    dom.style.transitionDuration = `${duration}ms`;
-    dom.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`;
-    dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  close() {
+    const { speed, onClose } = this.props;
+    onClose();
+    this.isOpen = false;
+    this.doTransition({ offsetLeft: 0, duration: speed });
   }
 
-  open(value, duration, openedLeft, openedRight) {
-    if (!this.openedLeft && !this.openedRight) {
-      this.props.onOpen();
-    }
-
-    this.openedLeft = openedLeft;
-    this.openedRight = openedRight;
-    this._doTransition(value, duration);
-  }
-
-  close(duration = this.props.moveTimeDuration) {
-    if (this.openedLeft || this.openedRight) {
-      this.props.onClose();
-    }
-    this.openedLeft = false;
-    this.openedRight = false;
-    this._doTransition(0, duration);
+  doTransition({ offsetLeft, duration }) {
+    this.setState({ offsetLeft, duration });
   }
 
   renderButtons(buttons, ref) {
@@ -218,30 +169,32 @@ class SwipeAction extends PureComponent {
   }
 
   render() {
-    const { left, right, children, prefixCls } = this.props;
-    return (left.length || right.length) ? (
-      <div
-        className={`${prefixCls}-wrap`}
-        ref={(wrap) => { this.wrap = wrap; }}>
-        {this.renderButtons(left, 'left')}
-        {this.renderButtons(right, 'right')}
-        <div
-          className={`${prefixCls}-content`}
-          ref={(content) => { this.content = content; }}
-          onTouchStart={e => this._onTouchStart(e)}
-          onTouchMove={e => this._onTouchMove(e)}
-          onTouchEnd={e => this._onTouchEnd(e)}>
-          {children}
+    const { prefixCls, left, right, children } = this.props;
+    const { offsetLeft, duration } = this.state;
+
+    const style = {
+      WebkitTransitionDuration: `${duration}ms`,
+      transitionDuration: `${duration}ms`,
+      WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
+      transform: `translate3d(${offsetLeft}px, 0, 0)`,
+    };
+
+    return (left.length || right.length)
+      ? (
+        <div className={prefixCls} ref={(wrap) => { this.wrap = wrap; }}>
+          {this.renderButtons(left, 'left')}
+          {this.renderButtons(right, 'right')}
+          <Drag
+            onDragStart={this.onDragStart}
+            onDragMove={this.onDragMove}
+            onDragEnd={this.onDragEnd}>
+            <div className={`${prefixCls}-content`} style={style}>
+              {children}
+            </div>
+          </Drag>
         </div>
-      </div>
-    ) : (
-      <div
-        className={`${prefixCls}-wrap`}>
-        <div className={`${prefixCls}-content`}>
-          {children}
-        </div>
-      </div>
-    );
+        )
+      : children;
   }
 }
 
@@ -249,19 +202,21 @@ SwipeAction.propTypes = {
   prefixCls: PropTypes.string,
   left: PropTypes.arrayOf(PropTypes.object),
   right: PropTypes.arrayOf(PropTypes.object),
-  moveTimeDuration: PropTypes.number,
   moveDistanceRatio: PropTypes.number,
+  moveTimeSpan: PropTypes.number,
+  speed: PropTypes.number,
   offset: PropTypes.number,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
 };
 
 SwipeAction.defaultProps = {
-  prefixCls: 'za-swipeAction',
+  prefixCls: 'za-swipeaction',
   left: [],
   right: [],
-  moveTimeDuration: 300,
   moveDistanceRatio: 0.5,
+  moveTimeSpan: 300,
+  speed: 300,
   offset: 10,
   onOpen() {},
   onClose() {},

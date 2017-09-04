@@ -12,8 +12,7 @@ import { Radio } from 'zarm';
 
 #### 基本用法
 
-普通
-
+###### 普通
 ```jsx
 <Radio.Group
   value={this.state.radio}
@@ -24,8 +23,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-指定默认值
-
+###### 指定默认值
 ```jsx
 <Radio.Group defaultValue="1">
   <Radio value="0">选项一</Radio>
@@ -34,8 +32,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-禁用指定项
-
+###### 禁用指定项
 ```jsx
 <Radio.Group>
   <Radio value="0">选项一</Radio>
@@ -44,8 +41,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-圆角
-
+###### 圆角
 ```jsx
 <Radio.Group shape="radius">
   <Radio value="0">选项一</Radio>
@@ -54,8 +50,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-椭圆角
-
+###### 椭圆角
 ```jsx
 <Radio.Group type="button" shape="round">
   <Radio value="0">选项一</Radio>
@@ -65,7 +60,6 @@ import { Radio } from 'zarm';
 ```
 
 #### 块级样式
-
 ```jsx
 <Radio.Group block compact shape="radius">
   <Radio value="0">选项一</Radio>
@@ -76,8 +70,7 @@ import { Radio } from 'zarm';
 
 #### 列表样式
 
-普通
-
+###### 普通
 ```jsx
 <Radio.Group type="cell">
   <Radio value="0">选项一</Radio>
@@ -86,8 +79,7 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
-禁用状态
-
+###### 禁用状态
 ```jsx
 <Radio.Group disabled type="cell">
   <Radio value="0">选项一</Radio>
@@ -104,10 +96,10 @@ import { Radio } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-radio | | 类名前缀 |
-| className | string | 无 | | 追加类名 |
-| theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | 无 | 'button', 'cell' | 显示类型 |
-| value | string, number | 无 | | 值 |
+| className | string | | | 追加类名 |
+| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| type | string | | 'button', 'cell' | 显示类型 |
+| value | string, number | | | 值 |
 | defaultChecked | bool | false | | 初始是否选中 |
 | checked | bool | false | | 当前是否选中 |
 | disabled | bool | false | | 是否禁用 |
@@ -118,10 +110,10 @@ import { Radio } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-radio | | 类名前缀 |
-| className | string | 无 | | 追加类名 |
-| theme | string | primary | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | 无 | 'button', 'cell' | 显示类型 |
-| shape | string | 无 | 'radius', 'round' | 形状 |
+| className | string | | | 追加类名 |
+| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| type | string | | 'button', 'cell' | 显示类型 |
+| shape | string | | 'radius', 'round' | 形状 |
 | block | bool | false | | 是否为块级元素 |
 | disabled | bool | false | | 是否禁用 |
 | compact | bool | false | | 是否启用紧凑模式 |

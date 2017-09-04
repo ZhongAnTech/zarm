@@ -39,7 +39,7 @@ class Page extends Component {
               <Cell
                 description={
                   <Button size="xs" onClick={() => this.toggle('visible2')}>开启</Button>
-                }>无取消操作</Cell>
+                }>带取消操作</Cell>
             </Panel.Body>
           </Panel>
 
@@ -55,13 +55,7 @@ class Page extends Component {
                 text: '操作二',
                 onClick: () => console.log('点击操作二'),
               },
-              {
-                theme: 'error',
-                text: '操作三',
-                onClick: () => console.log('点击操作三'),
-              },
             ]}
-            onCancel={() => this.toggle('visible1')}
             />
 
           <ActionSheet
@@ -76,7 +70,13 @@ class Page extends Component {
                 text: '操作二',
                 onClick: () => console.log('点击操作二'),
               },
+              {
+                theme: 'error',
+                text: '操作三',
+                onClick: () => console.log('点击操作三'),
+              },
             ]}
+            onCancel={() => this.toggle('visible2')}
             />
         </main>
         <Footer />

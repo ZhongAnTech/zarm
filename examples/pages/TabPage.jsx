@@ -15,8 +15,6 @@ class TabPage extends Component {
   }
 
   render() {
-    const TabPanel = Tab.Panel;
-
     return (
       <Container className="tab-page">
         <Header title="标签页 Tab" />
@@ -27,12 +25,12 @@ class TabPage extends Component {
             </Panel.Header>
             <Panel.Body>
               <Tab onChange={(i) => { console.log(i); }}>
-                <TabPanel title="选项卡1">
+                <Tab.Panel title="选项卡1">
                   <div className="content">选项卡1内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡2">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡2">
                   <div className="content">选项卡2内容</div>
-                </TabPanel>
+                </Tab.Panel>
               </Tab>
             </Panel.Body>
           </Panel>
@@ -43,12 +41,12 @@ class TabPage extends Component {
             </Panel.Header>
             <Panel.Body>
               <Tab canSwipe onChange={(i) => { console.log(i); }}>
-                <TabPanel title="选项卡1">
+                <Tab.Panel title="选项卡1">
                   <div className="content">试试点我左滑</div>
-                </TabPanel>
-                <TabPanel title="选项卡2">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡2">
                   <div className="content">试试点我右滑</div>
-                </TabPanel>
+                </Tab.Panel>
               </Tab>
             </Panel.Body>
           </Panel>
@@ -59,24 +57,24 @@ class TabPage extends Component {
             </Panel.Header>
             <Panel.Body>
               <Tab theme="info">
-                <TabPanel title="选项卡1" />
-                <TabPanel title="选项卡2" />
-                <TabPanel title="选项卡3" />
+                <Tab.Panel title="选项卡1" />
+                <Tab.Panel title="选项卡2" />
+                <Tab.Panel title="选项卡3" />
               </Tab>
               <Tab theme="success">
-                <TabPanel title="选项卡1" />
-                <TabPanel title="选项卡2" />
-                <TabPanel title="选项卡3" />
+                <Tab.Panel title="选项卡1" />
+                <Tab.Panel title="选项卡2" />
+                <Tab.Panel title="选项卡3" />
               </Tab>
               <Tab theme="warning">
-                <TabPanel title="选项卡1" />
-                <TabPanel title="选项卡2" />
-                <TabPanel title="选项卡3" />
+                <Tab.Panel title="选项卡1" />
+                <Tab.Panel title="选项卡2" />
+                <Tab.Panel title="选项卡3" />
               </Tab>
               <Tab theme="error">
-                <TabPanel title="选项卡1" />
-                <TabPanel title="选项卡2" />
-                <TabPanel title="选项卡3" />
+                <Tab.Panel title="选项卡1" />
+                <Tab.Panel title="选项卡2" />
+                <Tab.Panel title="选项卡3" />
               </Tab>
             </Panel.Body>
           </Panel>
@@ -93,21 +91,21 @@ class TabPage extends Component {
                     activeIndex: i,
                   });
                 }}>
-                <TabPanel title="选项卡1" />
-                <TabPanel title="选项卡2" />
-                <TabPanel title="选项卡3" />
+                <Tab.Panel title="选项卡1" />
+                <Tab.Panel title="选项卡2" />
+                <Tab.Panel title="选项卡3" />
               </Tab>
 
               <Tab theme="error" value={this.state.activeIndex} onChange={(i) => console.log(i)}>
-                <TabPanel title="选项卡1">
+                <Tab.Panel title="选项卡1">
                   <div className="content">选项卡1内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡2">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡2">
                   <div className="content">选项卡2内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡3">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡3">
                   <div className="content">选项卡3内容</div>
-                </TabPanel>
+                </Tab.Panel>
               </Tab>
             </Panel.Body>
           </Panel>
@@ -118,15 +116,15 @@ class TabPage extends Component {
             </Panel.Header>
             <Panel.Body>
               <Tab defaultValue={1}>
-                <TabPanel title="选项卡1">
+                <Tab.Panel title="选项卡1">
                   <div className="content">选项卡1内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡2">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡2">
                   <div className="content">选项卡2内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡3">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡3">
                   <div className="content">选项卡3内容</div>
-                </TabPanel>
+                </Tab.Panel>
               </Tab>
             </Panel.Body>
           </Panel>
@@ -137,15 +135,15 @@ class TabPage extends Component {
             </Panel.Header>
             <Panel.Body>
               <Tab lineWidth={60}>
-                <TabPanel title="选项卡1">
+                <Tab.Panel title="选项卡1">
                   <div className="content">选项卡1内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡2">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡2">
                   <div className="content">选项卡2内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡3">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡3">
                   <div className="content">选项卡3内容</div>
-                </TabPanel>
+                </Tab.Panel>
               </Tab>
             </Panel.Body>
           </Panel>
@@ -156,15 +154,15 @@ class TabPage extends Component {
             </Panel.Header>
             <Panel.Body>
               <Tab>
-                <TabPanel title="选项卡1">
+                <Tab.Panel title="选项卡1">
                   <div className="content">选项卡1内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡2" disabled>
+                </Tab.Panel>
+                <Tab.Panel title="选项卡2" disabled>
                   <div className="content">选项卡2内容</div>
-                </TabPanel>
-                <TabPanel title="选项卡3">
+                </Tab.Panel>
+                <Tab.Panel title="选项卡3">
                   <div className="content">选项卡3内容</div>
-                </TabPanel>
+                </Tab.Panel>
               </Tab>
             </Panel.Body>
           </Panel>

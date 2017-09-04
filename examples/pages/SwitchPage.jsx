@@ -29,7 +29,14 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <Cell description={<Switch />}>默认关</Cell>
+              <Cell description={
+                <Switch
+                  value={this.state.value}
+                  onChange={(value) => {
+                    this.setState({ value });
+                  }}
+                  />
+              }>普通</Cell>
               <Cell description={<Switch defaultChecked />}>默认开</Cell>
               <Cell description={<Switch disabled />}>禁用的开关（默认关）</Cell>
               <Cell description={<Switch defaultChecked disabled />}>禁用的开关（默认开）</Cell>

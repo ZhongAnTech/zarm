@@ -13,8 +13,7 @@ import { Picker } from 'zarm';
 #### 基本用法
 
 
-单列
-
+###### 单列
 ```jsx
 <Picker
   dataSource={[
@@ -33,8 +32,7 @@ import { Picker } from 'zarm';
 ```
 
 
-多列
-
+###### 多列
 ```jsx
 <Picker
   dataSource={[
@@ -50,8 +48,7 @@ import { Picker } from 'zarm';
   />
 ```
 
-多列联动
-
+###### 多列联动
 ```jsx
 <Picker
   dataSource={[
@@ -75,8 +72,7 @@ import { Picker } from 'zarm';
   />
 ```
 
-指定默认值
-
+###### 指定默认值
 ```jsx
 <Picker
   dataSource={[
@@ -101,8 +97,7 @@ import { Picker } from 'zarm';
   />
 ```
 
-禁止修改
-
+###### 禁止修改
 ```jsx
 <Picker
   disabled
@@ -114,8 +109,7 @@ import { Picker } from 'zarm';
   />
 ```
 
-自定义格式
-
+###### 自定义格式
 ```jsx
 <Picker
   visible={diy.visible}
@@ -156,22 +150,19 @@ import { Picker } from 'zarm';
 
 #### 城市选择器
 
-省市选择
-
+###### 省市选择
 ```jsx
 <Picker dataSource={District} cols={2} />
 ```
 
-省市区选择
-
+###### 省市区选择
 ```jsx
 <Picker dataSource={District} />
 ```
 
 #### 日期选择器
 
-年份选择
-
+###### 年份选择
 ```jsx
 <Picker.Date
   title="选择年份"
@@ -181,8 +172,7 @@ import { Picker } from 'zarm';
   />
 ```
 
-日期选择
-
+###### 日期选择
 ```jsx
 <Picker.Date
   title="选择日期"
@@ -191,8 +181,7 @@ import { Picker } from 'zarm';
   />
 ```
 
-时间选择
-
+###### 时间选择
 ```jsx
 <Picker.Date
   title="选择时间"
@@ -202,14 +191,12 @@ import { Picker } from 'zarm';
   />
 ```
 
-日期&时间
-
+###### 日期&时间
 ```jsx
 <Picker.Date mode="datetime" />
 ```
 
-自定义格式
-
+###### 自定义格式
 ```jsx
 <Picker.Date
   title="选择日期"
@@ -221,8 +208,7 @@ import { Picker } from 'zarm';
 
 #### 层叠式选择器
 
-级联选择
-
+###### 级联选择
 ```jsx
 <Picker.Stack
   dataSource={District}
@@ -238,29 +224,29 @@ import { Picker } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-picker | | 类名前缀 |
-| className | string | 无 | | 追加类名 |
-| dataSource | array | [] | | 数据源 |
+| className | string | | | 追加类名 |
+| dataSource | array | [ ] | | 数据源 |
 | visible | bool | false | | 是否显示 |
-| value | array, string | 无 | | 值 |
-| defaultValue | array, string | 无 | | 初始是否选中 |
-| valueMember | string | value | | 值字段对应的key |
-| displayMember | string | label | | 选项列表显示字段对应的key |
+| value | array, string |  | | 值 |
+| defaultValue | array, string |  | | 初始是否选中 |
+| valueMember | string | 'value' | | 值字段对应的key |
+| displayMember | string | 'label' | | 选项列表显示字段对应的key |
 | disabled | bool | false | | 是否禁用 |
-| title | string | 请选择 | | 选择器标题 |
-| placeholder | string | 请选择 | | 输入提示信息 |
+| title | string | '请选择' | | 选择器标题 |
+| placeholder | string | '请选择' | | 输入提示信息 |
 | displayRender | func | noop | | 所选值渲染 |
-| cols | number | 无 | | 级联选择器的级数 |
+| cols | number | | | 级联选择器的级数 |
 | onChange | func | noop | \(selected: object\) | 值变化时触发的回调函数 |
 | onOk | func | noop | \(selected: object\) | 点击确定时触发的回调函数 |
 | onCancel | func | noop | \(selected: object\) | 点击取消时触发的回调函数 |
-| onMaskClick | func | noop | 无 | 点击遮罩层时触发的回调函数 |
+| onMaskClick | func | noop | | 点击遮罩层时触发的回调函数 |
 
 #### Picker.Date 额外的属性
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | mode | string | date | `year`, `date`, `time` | 指定日期选择模式 |
-| format | string | 无 | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
+| format | string | | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
 | minuteStep | number | 1 | | 分钟步长 |
 | wheelDefaultValue | array, string | | | 滚轮默认值 |
 

@@ -2,6 +2,7 @@ import React, { Component, cloneElement, Children } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Events from '../utils/events';
+import Drag from '../Drag';
 
 class Swipe extends Component {
   constructor(props) {
@@ -17,6 +18,9 @@ class Swipe extends Component {
     };
     this.resize = this.resize.bind(this);
     this.transitionEnd = this.transitionEnd.bind(this);
+    this.onDragStart = this.onDragStart.bind(this);
+    this.onDragMove = this.onDragMove.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   componentWillMount() {
@@ -85,15 +89,8 @@ class Swipe extends Component {
   }
 
   // 触屏事件
-  onTouchStart(event) {
-    const dragState = this.dragState;
-    const touch = event.touches[0];
-
+  onDragStart() {
     this.scrolling = false;
-    dragState.startLeft = touch.pageX;
-    dragState.startTop = touch.pageY;
-    dragState.startTopAbsolute = touch.clientY;
-    dragState.startTime = new Date();
 
     // 跳转到头尾
     const activeIndex = this.state.activeIndex;
@@ -109,25 +106,18 @@ class Swipe extends Component {
     this.pauseAutoPlay();
   }
 
-  onTouchMove(event) {
-    const dragState = this.dragState;
-    const touch = event.touches[0];
-
-    const offsetLeft = touch.pageX - dragState.startLeft;
-    const offsetTop = touch.clientY - dragState.startTopAbsolute;
-
-    const distanceX = Math.abs(offsetLeft);
-    const distanceY = Math.abs(offsetTop);
-    // console.log('x: %d, y: %d', distanceX, distanceY);
+  onDragMove(event, { offsetX, offsetY }) {
+    const distanceX = Math.abs(offsetX);
+    const distanceY = Math.abs(offsetY);
 
     if (this.isDirectionX() && (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))) {
       this.scrolling = true;
-      return;
+      return false;
     }
 
     if (!this.isDirectionX() && (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))) {
       this.scrolling = true;
-      return;
+      return false;
     }
 
     this.scrolling = false;
@@ -137,73 +127,68 @@ class Swipe extends Component {
     if (!this.props.loop) {
       // 在首页时禁止拖动
       if (this.isLastIndex()) {
-        if (this.isDirectionX() && offsetLeft < 0) return;
-        if (!this.isDirectionX() && offsetTop < 0) return;
+        if (this.isDirectionX() && offsetX < 0) return false;
+        if (!this.isDirectionX() && offsetY < 0) return false;
       }
 
       // 在尾页时禁止拖动
       if (this.isFirstIndex()) {
-        if (this.isDirectionX() && offsetLeft > 0) return;
-        if (!this.isDirectionX() && offsetTop > 0) return;
+        if (this.isDirectionX() && offsetX > 0) return false;
+        if (!this.isDirectionX() && offsetY > 0) return false;
       }
     }
 
-    dragState.currentLeft = touch.pageX;
-    dragState.currentTop = touch.pageY;
-    dragState.currentTopAbsolute = touch.clientY;
-    this.doTransition({ x: this.translateX + offsetLeft, y: this.translateY + offsetTop }, 0);
+    this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
+    return true;
   }
 
-  onTouchEnd() {
-    const dragState = this.dragState;
-    if (!dragState.currentLeft && !dragState.currentTop) return;
+  onDragEnd(event, { offsetX, offsetY, startTime }) {
     if (this.scrolling) return;
 
-    const offsetLeft = dragState.currentLeft - dragState.startLeft;
-    const offsetTop = dragState.currentTop - dragState.startTop;
+    const { moveDistanceRatio, moveTimeSpan, onChange } = this.props;
+    let { activeIndex } = this.state;
+
     const dom = this.swipeItems;
+    const timeSpan = new Date().getTime() - startTime.getTime();
+    const ratio = this.isDirectionX()
+      ? Math.abs(offsetX / dom.offsetWidth)
+      : Math.abs(offsetY / dom.offsetHeight);
 
-    const moveDistanceRatio = this.isDirectionX()
-      ? Math.abs(offsetLeft / dom.offsetWidth)
-      : Math.abs(offsetTop / dom.offsetHeight);
-
-    const timeSpan = new Date().getTime() - dragState.startTime.getTime();
-    let activeIndex = this.state.activeIndex;
 
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
-    if (moveDistanceRatio >= this.props.moveDistanceRatio || timeSpan <= this.props.moveTimeSpan) {
-      activeIndex = ((this.isDirectionX() && offsetLeft > 0) || (!this.isDirectionX() && offsetTop > 0))
+    if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
+      activeIndex = ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0))
         ? (this.state.activeIndex - 1)
         : (this.state.activeIndex + 1);
-
-      const { onChange } = this.props;
-      typeof onChange === 'function' && onChange(activeIndex);
+      onChange(activeIndex);
     }
     this.onSlideTo(activeIndex);
+
     // 恢复自动轮播
     this.startAutoPlay();
-    this.dragState = {};
   }
 
   // 自动轮播开始
   startAutoPlay() {
-    this.moveInterval = (this.props.autoPlay && setInterval(() => {
-      let activeIndex = this.state.activeIndex;
-      const maxLength = this.props.children.length;
+    const { direction, loop, autoPlay, autoPlayIntervalTime, children } = this.props;
 
-      activeIndex = (['left', 'top'].indexOf(this.props.direction) > -1)
+    this.moveInterval = (autoPlay && setInterval(() => {
+      let activeIndex = this.state.activeIndex;
+      const maxLength = children.length;
+
+      activeIndex = (['left', 'top'].indexOf(direction) > -1)
         ? (activeIndex + 1)
         : (activeIndex - 1);
 
       // 不循环暂停轮播
-      if (!this.props.loop && activeIndex > maxLength - 1) {
+      if (!loop && activeIndex > maxLength - 1) {
         this.pauseAutoPlay();
         return;
       }
       this.onSlideTo(activeIndex);
-    }, this.props.autoPlayIntervalTime));
+    }, autoPlayIntervalTime));
   }
 
   // 暂停自动轮播
@@ -315,15 +300,17 @@ class Swipe extends Component {
 
     return (
       <div className={classes}>
-        <div
-          ref={(ele) => { this.swipeItems = ele; }}
-          className={`${prefixCls}-items`}
-          style={style.items}
-          onTouchStart={event => this.onTouchStart(event)}
-          onTouchMove={event => this.onTouchMove(event)}
-          onTouchEnd={event => this.onTouchEnd(event)}>
-          { this.state.items }
-        </div>
+        <Drag
+          onDragStart={this.onDragStart}
+          onDragMove={this.onDragMove}
+          onDragEnd={this.onDragEnd}>
+          <div
+            ref={(ele) => { this.swipeItems = ele; }}
+            className={`${prefixCls}-items`}
+            style={style.items}>
+            {this.state.items}
+          </div>
+        </Drag>
         {
           showPagination
             ? <div className={`${prefixCls}-pagination`}>

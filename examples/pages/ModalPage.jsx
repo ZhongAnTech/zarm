@@ -118,7 +118,7 @@ class Page extends Component {
             </Modal.Body>
           </Modal>
 
-          <Modal radius visible={this.state.modal3}>
+          <Modal shape="radius" visible={this.state.modal3}>
             <Modal.Header title="标题" onClose={() => this.close('modal3')} />
             <Modal.Body>
               模态框内容
@@ -146,7 +146,7 @@ class Page extends Component {
           </Modal>
 
           <Alert
-            radius
+            shape="radius"
             visible={this.state.alert}
             title="警告"
             message="这里是警告信息"
@@ -154,7 +154,7 @@ class Page extends Component {
             />
 
           <Confirm
-            radius
+            shape="radius"
             visible={this.state.confirm}
             title="确认信息"
             message="你确定要这样做吗？"

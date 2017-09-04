@@ -112,7 +112,7 @@ Stepper.propTypes = {
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
-  shape: PropTypes.oneOf(['radius', 'round', 'circle']),
+  shape: PropTypes.oneOf(['radius', 'circle']),
   disabled: PropTypes.bool,
   step: PropTypes.number,
   min: PropTypes.number,
