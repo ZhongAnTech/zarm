@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, SwipeAction, SwipeActions } from '../../components';
+import { Panel, Cell, SwipeAction } from '../../components';
 
 class Page extends Component {
   render() {
@@ -15,19 +15,7 @@ class Page extends Component {
               <Panel.Title>基本</Panel.Title>
             </Panel.Header>
             <Panel.Body>
-              <SwipeAction
-                right={[
-                  {
-                    theme: 'error',
-                    text: '右按钮1',
-                    onClick: () => console.log('右按钮1'),
-                  },
-                  {
-                    theme: 'success',
-                    text: '右按钮2',
-                    onClick: () => console.log('右按钮2'),
-                  },
-                ]}>
+              <SwipeAction>
                 <Cell>左滑看看</Cell>
               </SwipeAction>
 
@@ -47,7 +35,8 @@ class Page extends Component {
                 <Cell>右滑看看</Cell>
               </SwipeAction>
 
-              <SwipeActions
+              <SwipeAction
+                autoClose
                 left={[
                   {
                     theme: 'info',
@@ -72,14 +61,10 @@ class Page extends Component {
                     onClick: () => console.log('右按钮2'),
                   },
                 ]}
-                onOpen={() => {
-                  console.log('open')
-                }}
-                onClose={() => {
-                  console.log('close')
-                }}>
+                onOpen={() => console.log('open')}
+                onClose={() => console.log('close')}>
                 <Cell>左右都能滑动（自动关闭）</Cell>
-              </SwipeActions>
+              </SwipeAction>
             </Panel.Body>
           </Panel>
         </main>

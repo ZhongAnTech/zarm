@@ -1,5 +1,5 @@
 import { PureComponent, cloneElement } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Drag extends PureComponent {
 
@@ -21,7 +21,7 @@ class Drag extends PureComponent {
     dragState.startTime = new Date();
 
     const { onDragStart } = this.props;
-    typeof onDragStart === 'function' && onDragStart(event, dragState);
+    onDragStart(event, dragState);
   }
 
   onTouchMove(event) {
@@ -43,7 +43,7 @@ class Drag extends PureComponent {
     };
 
     const { onDragMove } = this.props;
-    if (typeof onDragMove === 'function' && !onDragMove(event, state)) return;
+    if (!onDragMove(event, state)) return;
 
     this.dragState = state;
   }
@@ -53,7 +53,8 @@ class Drag extends PureComponent {
     if (!dragState.currentX && !dragState.currentY) return;
 
     const { onDragEnd } = this.props;
-    typeof onDragEnd === 'function' && onDragEnd(event, dragState);
+    onDragEnd(event, dragState);
+
     this.dragState = {};
     // console.log('end', dragState);
   }
@@ -69,9 +70,15 @@ class Drag extends PureComponent {
 }
 
 Drag.propTypes = {
+  onDragStart: PropTypes.func,
+  onDragMove: PropTypes.func,
+  onDragEnd: PropTypes.func,
 };
 
 Drag.defaultProps = {
+  onDragStart() {},
+  onDragMove() {},
+  onDragEnd() {},
 };
 
 export default Drag;

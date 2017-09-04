@@ -5,6 +5,7 @@ export { default as Button } from './Button';
 export { default as Cell } from './Cell';
 export { default as Checkbox } from './Checkbox';
 export { default as Confirm } from './Confirm';
+export { default as Drag } from './Drag';
 export { default as Icon } from './Icon';
 export { default as Input } from './Input';
 export { default as Loading } from './Loading';
@@ -21,11 +22,8 @@ export { default as Spinner } from './Spinner';
 export { default as Stepper } from './Stepper';
 export { default as Swipe } from './Swipe';
 export { default as SwipeAction } from './SwipeAction';
-export { default as SwipeActions } from './SwipeActions';
 export { default as Switch } from './Switch';
 export { default as Tab } from './Tab';
 export { default as Toast } from './Toast';
 export { default as Uploader } from './Uploader';
-
-export { default as Drag } from './Drag';
 

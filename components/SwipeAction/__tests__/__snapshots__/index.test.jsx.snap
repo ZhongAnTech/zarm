@@ -2,7 +2,7 @@
 
 exports[`SwipeAction renders correctly 1`] = `
 <div
-  class="za-swipeaction-wrap"
+  class="za-swipeaction"
 >
   <div
     class="za-swipeaction-actions-left"
@@ -50,6 +50,7 @@ exports[`SwipeAction renders correctly 1`] = `
   </div>
   <div
     class="za-swipeaction-content"
+    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0);"
   >
     <div>
       左右都能滑动
