@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ActionSheet from '../index';
 
@@ -21,12 +21,18 @@ describe('ActionSheet', () => {
         onClick: jest.fn(),
       },
     ],
-    onCancel: jest.fn(),
     onMaskClick: jest.fn(),
   };
 
   it('renders correctly', () => {
     const wrapper = render(<ActionSheet {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('click cancel button', () => {
+    props.onCancel = jest.fn();
+    const wrapper = shallow(<ActionSheet {...props} />);
+    (wrapper.find('.za-actionsheet-cancel').childAt(0)).simulate('click');
+    expect(props.onCancel).toBeCalled();
   });
 });

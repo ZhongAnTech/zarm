@@ -38,9 +38,7 @@ exports[`Alert renders correctly 1`] = `
           class="za-button theme-default block bordered"
           role="button"
         >
-          <span>
-            关闭
-          </span>
+          关闭
         </a>
       </div>
     </div>

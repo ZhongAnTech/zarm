@@ -9,43 +9,37 @@ exports[`Radio Radio checked 1`] = `
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="0"
-      />
-      选项一
-    </span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="0"
+    />
+    选项一
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs"
     role="button"
   >
-    <span>
-      <input
-        checked=""
-        class="za-radio-input"
-        type="radio"
-        value="1"
-      />
-      选项二
-    </span>
+    <input
+      checked=""
+      class="za-radio-input"
+      type="radio"
+      value="1"
+    />
+    选项二
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="2"
-      />
-      选项三
-    </span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="2"
+    />
+    选项三
   </a>
 </div>
 `;
@@ -59,43 +53,37 @@ exports[`Radio defaultValue 1`] = `
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="0"
-      />
-      选项一
-    </span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="0"
+    />
+    选项一
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs"
     role="button"
   >
-    <span>
-      <input
-        checked=""
-        class="za-radio-input"
-        type="radio"
-        value="1"
-      />
-      选项二
-    </span>
+    <input
+      checked=""
+      class="za-radio-input"
+      type="radio"
+      value="1"
+    />
+    选项二
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="2"
-      />
-      选项三
-    </span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="2"
+    />
+    选项三
   </a>
 </div>
 `;
@@ -109,43 +97,37 @@ exports[`Radio renders correctly 1`] = `
     class="za-button za-radio theme-primary size-xs"
     role="button"
   >
-    <span>
-      <input
-        checked=""
-        class="za-radio-input"
-        type="radio"
-        value="0"
-      />
-      选项一
-    </span>
+    <input
+      checked=""
+      class="za-radio-input"
+      type="radio"
+      value="0"
+    />
+    选项一
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="1"
-      />
-      选项二
-    </span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="1"
+    />
+    选项二
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="2"
-      />
-      选项三
-    </span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="2"
+    />
+    选项三
   </a>
 </div>
 `;

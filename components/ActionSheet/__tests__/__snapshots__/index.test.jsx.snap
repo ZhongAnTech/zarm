@@ -30,15 +30,6 @@ exports[`ActionSheet renders correctly 1`] = `
           操作三
         </a>
       </div>
-      <div
-        class="za-actionsheet-cancel"
-      >
-        <a
-          class="za-actionsheet-btn"
-        >
-          取消
-        </a>
-      </div>
     </div>
   </div>
   <div

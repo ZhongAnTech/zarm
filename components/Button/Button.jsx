@@ -24,13 +24,9 @@ class Button extends PureComponent {
       ? <Spinner className="rotate360" />
       : icon;
 
-    const childrenRender = children
-      ? <span>{children}</span>
-      : null;
-
     const contentRender = (!!icon || loading)
-      ? <span className={`${prefixCls}-content`}>{iconRender}{childrenRender}</span>
-      : childrenRender;
+      ? <div className={`${prefixCls}-content`}>{iconRender}<span>{children}</span></div>
+      : children;
 
     return (
       <a
