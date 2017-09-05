@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Button from '../index';
 
@@ -42,5 +42,17 @@ describe('Button', () => {
   it('loading', () => {
     const wrapper = render(<Button loading>foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('disabled', () => {
+    const wrapper = render(<Button disabled>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('onClick', () => {
+    const onClick = jest.fn();
+    const wrapper = shallow(<Button onClick={onClick}>foo</Button>);
+    wrapper.simulate('click');
+    expect(onClick).toBeCalled();
   });
 });
