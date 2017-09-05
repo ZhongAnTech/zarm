@@ -1,17 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input autosize 1`] = `
-<div
-  className="za-input"
+<Input
+  autosize={true}
+  className={null}
+  disabled={false}
+  onChange={[Function]}
+  prefixCls="za-input"
+  rows={4}
+  showLength={false}
+  type="textarea"
+  value="foo"
 >
-  <textarea
+  <div
     className="za-input"
-    disabled={false}
-    onChange={[Function]}
-    rows={4}
-    value="foo"
-  />
-</div>
+  >
+    <textarea
+      className="za-input"
+      disabled={false}
+      onChange={[Function]}
+      rows={4}
+      value="foo"
+    />
+  </div>
+</Input>
 `;
 
 exports[`Input renders correctly 1`] = `

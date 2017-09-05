@@ -20,18 +20,18 @@ describe('Checkbox', () => {
     wrapper.find('input').simulate('change', { target: { checked: true } });
     expect(onChange).toBeCalledWith(true);
   });
+});
 
-  it('checkbox group renders', () => {
-    const onChange = jest.fn();
-    const wrapper = shallow(
-      <Checkbox.Group value={['0', '2']} onChange={onChange}>
+describe('Checkbox.Group', () => {
+  it('renders correctly', () => {
+    const wrapper = render(
+      <Checkbox.Group>
         <Checkbox value="0">选项一</Checkbox>
-        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="1" checked>选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.find(Checkbox).first().simulate('click');
   });
 
   it('type is button', () => {
@@ -56,26 +56,30 @@ describe('Checkbox', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('Checkbox checked', () => {
-    const wrapper = render(
+  it('receive new value', () => {
+    const wrapper = shallow(
       <Checkbox.Group>
-        <Checkbox value="0" checked>选项一</Checkbox>
+        <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
       </Checkbox.Group>
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ value: ['0'] });
   });
 
-  // it('', () => {
-  //   const onChange = jest.fn();
-  //   const wrapper = render(
-  //     <Checkbox.Group type="button" onChange={onChange}>
-  //       <Checkbox value="0">选项一</Checkbox>
-  //       <Checkbox value="1">选项二</Checkbox>
-  //       <Checkbox value="2">选项三</Checkbox>
-  //     </Checkbox.Group>
-  //   );
-  //   wrapper.find('Checkbox').first().simulate('click');
-  // });
+  it('onChange', () => {
+    const onChange = jest.fn();
+    const wrapper = shallow(
+      <Checkbox.Group onChange={onChange}>
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    );
+    const firstCheckbox = wrapper.find(Checkbox).first().dive().find('input[type="checkbox"]');
+    firstCheckbox.simulate('change', { target: { checked: true } });
+    expect(onChange).toBeCalledWith(['0']);
+    firstCheckbox.simulate('change', { target: { checked: false } });
+    expect(onChange).toBeCalledWith([]);
+  });
 });

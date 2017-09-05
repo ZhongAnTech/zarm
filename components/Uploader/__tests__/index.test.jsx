@@ -14,15 +14,15 @@ describe('Uploader', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('simulate click event', () => {
+  // it('select file', () => {
   //   const props = {
   //     accept: 'image/jpg, image/jpeg, image/gif, image/png',
   //     onChange: jest.fn(),
   //     onBeforeSelect: jest.fn(),
   //     children: <button>+</button>,
   //   };
-  //   const wrapper = mount(<Uploader {...props} />);
-  //   wrapper.find('input[type="file"]').simulate('change');
+  //   const wrapper = shallow(<Uploader {...props} />);
+  //   wrapper.find('input[type="file"]').simulate('click');
   //   expect(props.onChange).toBeCalled();
   // });
 });

@@ -6,7 +6,9 @@ exports[`Button block 1`] = `
   class="za-button theme-default block"
   role="button"
 >
-  foo
+  <span>
+    foo
+  </span>
 </a>
 `;
 
@@ -16,7 +18,9 @@ exports[`Button bordered 1`] = `
   class="za-button theme-default bordered"
   role="button"
 >
-  foo
+  <span>
+    foo
+  </span>
 </a>
 `;
 
@@ -26,7 +30,9 @@ exports[`Button disabled 1`] = `
   class="za-button theme-default disabled"
   role="button"
 >
-  foo
+  <span>
+    foo
+  </span>
 </a>
 `;
 
@@ -93,7 +99,9 @@ exports[`Button renders correctly 1`] = `
   class="za-button theme-default"
   role="button"
 >
-  foo
+  <span>
+    foo
+  </span>
 </a>
 `;
 
@@ -103,7 +111,9 @@ exports[`Button shape is radius 1`] = `
   class="za-button theme-default shape-radius"
   role="button"
 >
-  foo
+  <span>
+    foo
+  </span>
 </a>
 `;
 
@@ -113,7 +123,9 @@ exports[`Button size 1`] = `
   class="za-button theme-default size-lg"
   role="button"
 >
-  foo
+  <span>
+    foo
+  </span>
 </a>
 `;
 
@@ -123,6 +135,8 @@ exports[`Button theme 1`] = `
   class="za-button theme-primary"
   role="button"
 >
-  foo
+  <span>
+    foo
+  </span>
 </a>
 `;
