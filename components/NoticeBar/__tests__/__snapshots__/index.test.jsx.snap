@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NoticeBar autoscroll 1`] = `
-<Message
+<NoticeBar
+  autoscroll={true}
   className={null}
   hasArrow={false}
   hasClosable={false}
@@ -13,27 +14,69 @@ exports[`NoticeBar autoscroll 1`] = `
       type="broadcast"
     />
   }
-  onClick={[Function]}
-  prefixCls="za-message"
-  size="lg"
+  prefixCls="za-noticebar"
   theme="warning"
-  visible={true}
 >
-  <div
-    className="za-noticebar"
+  <Message
+    className={null}
+    hasArrow={false}
+    hasClosable={false}
+    icon={
+      <Icon
+        className={null}
+        prefixCls="za-icon"
+        theme={null}
+        type="broadcast"
+      />
+    }
+    onClick={[Function]}
+    prefixCls="za-message"
+    size="lg"
+    theme="warning"
   >
     <div
-      className="za-noticebar-body"
-      style={
-        Object {
-          "left": 0,
-        }
-      }
+      className="za-message theme-warning size-lg"
+      onClick={null}
     >
-      各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。
+      <div
+        className="za-message-header"
+      >
+        <div
+          className="za-message-icon"
+        >
+          <Icon
+            className={null}
+            prefixCls="za-icon"
+            theme={null}
+            type="broadcast"
+          >
+            <i
+              className="za-icon za-icon-broadcast"
+            />
+          </Icon>
+        </div>
+      </div>
+      <div
+        className="za-message-body"
+      >
+        <div
+          className="za-noticebar"
+        >
+          <div
+            className="za-noticebar-body"
+            style={
+              Object {
+                "left": 0,
+              }
+            }
+          >
+            各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</Message>
+  </Message>
+</NoticeBar>
 `;
 
 exports[`NoticeBar icon 1`] = `
@@ -70,35 +113,82 @@ exports[`NoticeBar icon 1`] = `
 `;
 
 exports[`NoticeBar renders correctly 1`] = `
-<div
-  class="za-message theme-warning size-lg"
+<NoticeBar
+  autoscroll={false}
+  className={null}
+  hasArrow={false}
+  hasClosable={false}
+  icon={
+    <Icon
+      className={null}
+      prefixCls="za-icon"
+      theme={null}
+      type="broadcast"
+    />
+  }
+  prefixCls="za-noticebar"
+  theme="warning"
 >
-  <div
-    class="za-message-header"
-  >
-    <div
-      class="za-message-icon"
-    >
-      <i
-        class="za-icon za-icon-broadcast"
+  <Message
+    className={null}
+    hasArrow={false}
+    hasClosable={false}
+    icon={
+      <Icon
+        className={null}
+        prefixCls="za-icon"
+        theme={null}
+        type="broadcast"
       />
-    </div>
-  </div>
-  <div
-    class="za-message-body"
+    }
+    onClick={[Function]}
+    prefixCls="za-message"
+    size="lg"
+    theme="warning"
   >
     <div
-      class="za-noticebar"
+      className="za-message theme-warning size-lg"
+      onClick={null}
     >
       <div
-        class="za-noticebar-body"
-        style="left:0;"
+        className="za-message-header"
       >
-        foo
+        <div
+          className="za-message-icon"
+        >
+          <Icon
+            className={null}
+            prefixCls="za-icon"
+            theme={null}
+            type="broadcast"
+          >
+            <i
+              className="za-icon za-icon-broadcast"
+            />
+          </Icon>
+        </div>
+      </div>
+      <div
+        className="za-message-body"
+      >
+        <div
+          className="za-noticebar"
+        >
+          <div
+            className="za-noticebar-body"
+            style={
+              Object {
+                "left": 0,
+              }
+            }
+          >
+            foo
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </Message>
+</NoticeBar>
 `;
 
 exports[`NoticeBar theme 1`] = `

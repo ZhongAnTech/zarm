@@ -17,7 +17,7 @@ class Radio extends PureComponent {
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
-        checked: nextProps.checked || nextProps.defaultChecked || false,
+        checked: !!nextProps.checked,
       });
     }
   }

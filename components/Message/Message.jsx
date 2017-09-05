@@ -7,7 +7,7 @@ class Message extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      visible: props.visible || true,
+      visible: true,
     };
   }
 
@@ -54,7 +54,6 @@ Message.propTypes = {
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['lg']),
-  visible: PropTypes.bool,
   icon: PropTypes.element,
   hasArrow: PropTypes.bool,
   hasClosable: PropTypes.bool,
@@ -66,7 +65,6 @@ Message.defaultProps = {
   className: null,
   theme: 'primary',
   size: null,
-  visible: true,
   icon: null,
   hasArrow: false,
   hasClosable: false,

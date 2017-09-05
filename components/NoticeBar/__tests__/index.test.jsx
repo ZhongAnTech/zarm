@@ -1,12 +1,15 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import NoticeBar from '../index';
 
 describe('NoticeBar', () => {
   it('renders correctly', () => {
-    const wrapper = render(<NoticeBar>foo</NoticeBar>);
+    jest.useFakeTimers();
+    const wrapper = mount(<NoticeBar>foo</NoticeBar>);
+    jest.runTimersToTime(3000);
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
   });
 
   it('theme', () => {
@@ -20,7 +23,9 @@ describe('NoticeBar', () => {
   });
 
   it('autoscroll', () => {
-    const wrapper = shallow(<NoticeBar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
+    jest.useFakeTimers();
+    const wrapper = mount(<NoticeBar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
+    jest.runTimersToTime(3000);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
   });
