@@ -6,12 +6,14 @@ exports[`Radio renders correctly 1`] = `
   class="za-button za-radio theme-default size-xs bordered"
   role="button"
 >
-  <input
-    class="za-radio-input"
-    type="radio"
-    value="0"
-  />
-  选项一
+  <span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="0"
+    />
+    选项一
+  </span>
 </a>
 `;
 
@@ -45,37 +47,43 @@ exports[`Radio.Group Radio checked 1`] = `
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <input
-      class="za-radio-input"
-      type="radio"
-      value="0"
-    />
-    选项一
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="0"
+      />
+      选项一
+    </span>
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs"
     role="button"
   >
-    <input
-      checked=""
-      class="za-radio-input"
-      type="radio"
-      value="1"
-    />
-    选项二
+    <span>
+      <input
+        checked=""
+        class="za-radio-input"
+        type="radio"
+        value="1"
+      />
+      选项二
+    </span>
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <input
-      class="za-radio-input"
-      type="radio"
-      value="2"
-    />
-    选项三
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="2"
+      />
+      选项三
+    </span>
   </a>
 </div>
 `;
@@ -89,37 +97,43 @@ exports[`Radio.Group defaultValue 1`] = `
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <input
-      class="za-radio-input"
-      type="radio"
-      value="0"
-    />
-    选项一
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="0"
+      />
+      选项一
+    </span>
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs"
     role="button"
   >
-    <input
-      checked=""
-      class="za-radio-input"
-      type="radio"
-      value="1"
-    />
-    选项二
+    <span>
+      <input
+        checked=""
+        class="za-radio-input"
+        type="radio"
+        value="1"
+      />
+      选项二
+    </span>
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <input
-      class="za-radio-input"
-      type="radio"
-      value="2"
-    />
-    选项三
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="2"
+      />
+      选项三
+    </span>
   </a>
 </div>
 `;
@@ -133,37 +147,43 @@ exports[`Radio.Group renders correctly 1`] = `
     class="za-button za-radio theme-primary size-xs"
     role="button"
   >
-    <input
-      checked=""
-      class="za-radio-input"
-      type="radio"
-      value="0"
-    />
-    选项一
+    <span>
+      <input
+        checked=""
+        class="za-radio-input"
+        type="radio"
+        value="0"
+      />
+      选项一
+    </span>
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <input
-      class="za-radio-input"
-      type="radio"
-      value="1"
-    />
-    选项二
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="1"
+      />
+      选项二
+    </span>
   </a>
   <a
     aria-disabled="false"
     class="za-button za-radio theme-primary size-xs bordered"
     role="button"
   >
-    <input
-      class="za-radio-input"
-      type="radio"
-      value="2"
-    />
-    选项三
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="2"
+      />
+      选项三
+    </span>
   </a>
 </div>
 `;

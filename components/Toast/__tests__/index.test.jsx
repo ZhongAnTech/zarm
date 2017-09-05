@@ -1,21 +1,36 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Toast from '../index';
 
 describe('Toast', () => {
   it('renders correctly', () => {
-    const onMaskClick = jest.fn();
-
-    const wrapper = shallow(
-      <Toast onMaskClick={onMaskClick}>foo</Toast>
+    const wrapper = render(
+      <Toast>foo</Toast>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ visible: true });
+  });
+
+  it('visible change false', () => {
+    const wrapper = mount(
+      <Toast visible>foo</Toast>
+    );
+    wrapper.setProps({ visible: false });
+    jest.useFakeTimers();
+    jest.runAllTimers();
     wrapper.unmount();
   });
 
   it('duration', () => {
+    const wrapper = mount(
+      <Toast visible>foo</Toast>
+    );
+    jest.useFakeTimers();
+    jest.runAllTimers();
+    wrapper.unmount();
+  });
+
+  it('duration is 0', () => {
     const wrapper = shallow(
       <Toast duration={0}>foo</Toast>
     );

@@ -38,14 +38,18 @@ exports[`Confirm renders correctly 1`] = `
           class="za-button theme-default block bordered"
           role="button"
         >
-          取消
+          <span>
+            取消
+          </span>
         </a>
         <a
           aria-disabled="false"
           class="za-button theme-primary block bordered"
           role="button"
         >
-          确定
+          <span>
+            确定
+          </span>
         </a>
       </div>
     </div>

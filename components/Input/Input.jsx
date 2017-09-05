@@ -17,6 +17,7 @@ class Input extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
+    if (prevProps.type !== 'textarea') return;
     if (prevProps.style !== this.props.style ||
         prevProps.className !== this.props.className) {
       Autosize.update(this.input);
@@ -29,18 +30,16 @@ class Input extends PureComponent {
 
   onInputChange(e) {
     const { onChange } = this.props;
-
     this.setState({
       length: e.target.value.length,
     });
-
-    typeof onChange === 'function' && onChange(e);
+    onChange(e);
   }
 
   // 初始化自适应高度
   initAutosize() {
-    const { autosize } = this.props;
-    autosize && Autosize(this.input);
+    const { type, autosize } = this.props;
+    (type === 'textarea') && autosize && Autosize(this.input);
   }
 
   // 销毁自适应高度
@@ -83,7 +82,6 @@ class Input extends PureComponent {
       : (
         <input
           {...others}
-          ref={(ele) => { this.input = ele; }}
           type={type}
           className={cls}
           placeholder={placeholder}
