@@ -9,17 +9,56 @@ describe('Checkbox', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('checked change false', () => {
-    const onChange = jest.fn();
-    const wrapper = shallow(<Checkbox checked onChange={onChange}>foo</Checkbox>);
-    wrapper.find('input').simulate('change', { target: { checked: false } });
-    expect(onChange).toBeCalledWith(false);
+  it('disabled', () => {
+    const wrapper = shallow(<Checkbox disabled>foo</Checkbox>);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('group renders correctly', () => {
+  it('checked change false', () => {
+    const onChange = jest.fn();
+    const wrapper = shallow(<Checkbox onChange={onChange}>foo</Checkbox>);
+    wrapper.find('input').simulate('change', { target: { checked: true } });
+    expect(onChange).toBeCalledWith(true);
+  });
+
+  it('checkbox group renders', () => {
+    const onChange = jest.fn();
+    const wrapper = shallow(
+      <Checkbox.Group onChange={onChange}>
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.find('Checkbox').first().simulate('click');
+  });
+
+  it('type is button', () => {
+    const wrapper = render(
+      <Checkbox.Group type="button">
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('type is cell', () => {
+    const wrapper = render(
+      <Checkbox.Group type="cell">
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+  // it('', () => {
   //   const onChange = jest.fn();
-  //   const wrapper = shallow(
-  //     <Checkbox.Group type="button" value={['0']} onChange={onChange}>
+  //   const wrapper = render(
+  //     <Checkbox.Group type="button" onChange={onChange}>
   //       <Checkbox value="0">选项一</Checkbox>
   //       <Checkbox value="1">选项二</Checkbox>
   //       <Checkbox value="2">选项三</Checkbox>
