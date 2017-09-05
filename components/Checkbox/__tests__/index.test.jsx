@@ -24,7 +24,7 @@ describe('Checkbox', () => {
   it('checkbox group renders', () => {
     const onChange = jest.fn();
     const wrapper = shallow(
-      <Checkbox.Group onChange={onChange}>
+      <Checkbox.Group value={['0', '2']} onChange={onChange}>
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
@@ -55,6 +55,18 @@ describe('Checkbox', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('Checkbox checked', () => {
+    const wrapper = render(
+      <Checkbox.Group>
+        <Checkbox value="0" checked>选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   // it('', () => {
   //   const onChange = jest.fn();
   //   const wrapper = render(
