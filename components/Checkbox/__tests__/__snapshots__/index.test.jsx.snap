@@ -1,5 +1,145 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Checkbox Checkbox checked 1`] = `
+<div
+  class="za-checkbox-group"
+>
+  <div
+    class="za-checkbox checked"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项一
+      </span>
+      <input
+        checked=""
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class="za-checkbox"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项二
+      </span>
+      <input
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class="za-checkbox"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项三
+      </span>
+      <input
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox checkbox group renders 1`] = `
+<div
+  className="za-checkbox-group"
+>
+  <Checkbox
+    checked={true}
+    className={null}
+    defaultChecked={false}
+    disabled={false}
+    onChange={[Function]}
+    prefixCls="za-checkbox"
+    theme="primary"
+    type={null}
+    value="0"
+  >
+    选项一
+  </Checkbox>
+  <Checkbox
+    checked={false}
+    className={null}
+    defaultChecked={false}
+    disabled={false}
+    onChange={[Function]}
+    prefixCls="za-checkbox"
+    theme="primary"
+    type={null}
+    value="1"
+  >
+    选项二
+  </Checkbox>
+  <Checkbox
+    checked={true}
+    className={null}
+    defaultChecked={false}
+    disabled={false}
+    onChange={[Function]}
+    prefixCls="za-checkbox"
+    theme="primary"
+    type={null}
+    value="2"
+  >
+    选项三
+  </Checkbox>
+</div>
+`;
+
+exports[`Checkbox disabled 1`] = `
+<div
+  className="za-checkbox disabled"
+>
+  <div
+    className="za-checkbox-wrapper"
+  >
+    <span
+      className="za-checkbox-inner"
+    />
+    <span
+      className="za-checkbox-text"
+    >
+      foo
+    </span>
+    <input
+      checked={false}
+      className="za-checkbox-input"
+      disabled={true}
+      onChange={[Function]}
+      type="checkbox"
+    />
+  </div>
+</div>
+`;
+
 exports[`Checkbox renders correctly 1`] = `
 <div
   class="za-checkbox checked"
@@ -20,6 +160,137 @@ exports[`Checkbox renders correctly 1`] = `
       class="za-checkbox-input"
       type="checkbox"
     />
+  </div>
+</div>
+`;
+
+exports[`Checkbox type is button 1`] = `
+<div
+  class="za-checkbox-group"
+>
+  <a
+    aria-disabled="false"
+    class="za-button za-checkbox theme-primary size-xs bordered"
+    role="button"
+  >
+    <input
+      class="za-checkbox-input"
+      type="checkbox"
+    />
+    选项一
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-checkbox theme-primary size-xs bordered"
+    role="button"
+  >
+    <input
+      class="za-checkbox-input"
+      type="checkbox"
+    />
+    选项二
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-checkbox theme-primary size-xs bordered"
+    role="button"
+  >
+    <input
+      class="za-checkbox-input"
+      type="checkbox"
+    />
+    选项三
+  </a>
+</div>
+`;
+
+exports[`Checkbox type is cell 1`] = `
+<div
+  class="za-checkbox-group"
+>
+  <div
+    class="za-cell is-link"
+  >
+    <div
+      class="za-cell-inner"
+    >
+      <div
+        class="za-cell-header"
+      />
+      <div
+        class="za-cell-body"
+      >
+        <div
+          class="za-cell-content"
+        >
+          <input
+            class="za-checkbox-input"
+            type="checkbox"
+            value="0"
+          />
+          选项一
+        </div>
+      </div>
+      <div
+        class="za-cell-footer"
+      />
+    </div>
+  </div>
+  <div
+    class="za-cell is-link"
+  >
+    <div
+      class="za-cell-inner"
+    >
+      <div
+        class="za-cell-header"
+      />
+      <div
+        class="za-cell-body"
+      >
+        <div
+          class="za-cell-content"
+        >
+          <input
+            class="za-checkbox-input"
+            type="checkbox"
+            value="1"
+          />
+          选项二
+        </div>
+      </div>
+      <div
+        class="za-cell-footer"
+      />
+    </div>
+  </div>
+  <div
+    class="za-cell is-link"
+  >
+    <div
+      class="za-cell-inner"
+    >
+      <div
+        class="za-cell-header"
+      />
+      <div
+        class="za-cell-body"
+      >
+        <div
+          class="za-cell-content"
+        >
+          <input
+            class="za-checkbox-input"
+            type="checkbox"
+            value="2"
+          />
+          选项三
+        </div>
+      </div>
+      <div
+        class="za-cell-footer"
+      />
+    </div>
   </div>
 </div>
 `;
