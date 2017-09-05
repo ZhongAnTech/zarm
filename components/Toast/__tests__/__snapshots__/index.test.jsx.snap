@@ -2,15 +2,19 @@
 
 exports[`Toast renders correctly 1`] = `
 <div
-  class="za-toast"
+  className="za-toast"
 >
   <div
-    class="za-toast-container"
+    className="za-toast-container"
   >
     foo
   </div>
-  <div
-    class="za-mask transparent"
+  <Mask
+    className={null}
+    onClose={[Function]}
+    prefixCls="za-mask"
+    type="transparent"
+    visible={false}
   />
 </div>
 `;

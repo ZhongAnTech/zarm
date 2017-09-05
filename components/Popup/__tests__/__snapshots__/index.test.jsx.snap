@@ -1,18 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Popup renders correctly 1`] = `
+exports[`Popup autoClose 1`] = `
 <div
-  class="za-popup"
+  className="za-popup za-popup-hidden"
 >
   <div
-    class="za-popup-wrapper za-popup-wrapper-bottom"
-    style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+    className="za-popup-wrapper za-popup-wrapper-bottom"
+    style={
+      Object {
+        "WebkitTransitionDuration": "200ms",
+        "transitionDuration": "200ms",
+      }
+    }
   >
     foo
   </div>
+  <Mask
+    className=""
+    onClose={[Function]}
+    prefixCls="za-mask"
+    style={
+      Object {
+        "WebkitAnimationDuration": "200ms",
+        "animationDuration": "200ms",
+      }
+    }
+    type="normal"
+    visible={false}
+  />
+</div>
+`;
+
+exports[`Popup duration 1`] = `
+<div
+  className="za-popup za-popup-hidden"
+>
   <div
-    class="za-mask normal"
-    style="-webkit-animation-duration:200ms;animation-duration:200ms;"
+    className="za-popup-wrapper za-popup-wrapper-bottom"
+    style={
+      Object {
+        "WebkitTransitionDuration": "200ms",
+        "transitionDuration": "200ms",
+      }
+    }
+  >
+    foo
+  </div>
+  <Mask
+    className=""
+    onClose={[Function]}
+    prefixCls="za-mask"
+    style={
+      Object {
+        "WebkitAnimationDuration": "200ms",
+        "animationDuration": "200ms",
+      }
+    }
+    type="normal"
+    visible={false}
+  />
+</div>
+`;
+
+exports[`Popup renders correctly 1`] = `
+<div
+  className="za-popup za-popup-hidden"
+>
+  <div
+    className="za-popup-wrapper za-popup-wrapper-bottom"
+    style={
+      Object {
+        "WebkitTransitionDuration": "200ms",
+        "transitionDuration": "200ms",
+      }
+    }
+  >
+    foo
+  </div>
+  <Mask
+    className=""
+    onClose={[Function]}
+    prefixCls="za-mask"
+    style={
+      Object {
+        "WebkitAnimationDuration": "200ms",
+        "animationDuration": "200ms",
+      }
+    }
+    type="normal"
+    visible={false}
   />
 </div>
 `;

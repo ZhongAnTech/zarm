@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Modal from '../index';
 
@@ -8,7 +8,7 @@ describe('Modal', () => {
     const onMaskClick = jest.fn();
     const onClose = jest.fn();
 
-    const wrapper = render(
+    const wrapper = shallow(
       <Modal visible onMaskClick={onMaskClick}>
         <Modal.Header title="标题" onClose={onClose} />
         <Modal.Body>
@@ -17,5 +17,7 @@ describe('Modal', () => {
       </Modal>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.find(Modal.Header).dive().find('.za-modal-header-close').simulate('click');
+    expect(onClose).toBeCalled();
   });
 });

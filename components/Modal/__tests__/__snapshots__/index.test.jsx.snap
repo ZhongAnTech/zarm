@@ -2,41 +2,48 @@
 
 exports[`Modal renders correctly 1`] = `
 <div
-  class="za-modal"
-  style="-webkit-animation-duration:200ms;animation-duration:200ms;"
+  className="za-modal"
+  style={
+    Object {
+      "WebkitAnimationDuration": "200ms",
+      "animationDuration": "200ms",
+    }
+  }
 >
   <div
-    class="za-modal-wrapper"
+    className="za-modal-wrapper"
   >
     <div
-      class="za-modal-dialog"
-      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms;"
+      className="za-modal-dialog"
+      onClick={[Function]}
+      style={
+        Object {
+          "WebkitAnimationDuration": "200ms",
+          "animationDuration": "200ms",
+          "width": "70%",
+        }
+      }
     >
-      <div
-        class="za-modal-header"
-      >
-        <div
-          class="za-modal-header-title"
-        >
-          标题
-        </div>
-        <div
-          class="za-modal-header-close"
-        >
-          <i
-            class="za-icon za-icon-wrong"
-          />
-        </div>
-      </div>
-      <div
-        class="za-modal-body"
+      <ModalHeader
+        className={null}
+        onClose={[Function]}
+        prefixCls="za-modal-header"
+        title="标题"
+      />
+      <ModalBody
+        className={null}
+        prefixCls="za-modal-body"
       >
         foo
-      </div>
+      </ModalBody>
     </div>
   </div>
-  <div
-    class="za-mask normal"
+  <Mask
+    className={null}
+    onClose={[Function]}
+    prefixCls="za-mask"
+    type="normal"
+    visible={true}
   />
 </div>
 `;
