@@ -1,94 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Popup autoClose 1`] = `
-<div
-  className="za-popup za-popup-hidden"
->
-  <div
-    className="za-popup-wrapper za-popup-wrapper-bottom"
-    style={
-      Object {
-        "WebkitTransitionDuration": "200ms",
-        "transitionDuration": "200ms",
-      }
-    }
-  >
-    foo
-  </div>
-  <Mask
-    className=""
-    onClose={[Function]}
-    prefixCls="za-mask"
-    style={
-      Object {
-        "WebkitAnimationDuration": "200ms",
-        "animationDuration": "200ms",
-      }
-    }
-    type="normal"
-    visible={false}
-  />
-</div>
-`;
-
-exports[`Popup duration 1`] = `
-<div
-  className="za-popup za-popup-hidden"
->
-  <div
-    className="za-popup-wrapper za-popup-wrapper-bottom"
-    style={
-      Object {
-        "WebkitTransitionDuration": "200ms",
-        "transitionDuration": "200ms",
-      }
-    }
-  >
-    foo
-  </div>
-  <Mask
-    className=""
-    onClose={[Function]}
-    prefixCls="za-mask"
-    style={
-      Object {
-        "WebkitAnimationDuration": "200ms",
-        "animationDuration": "200ms",
-      }
-    }
-    type="normal"
-    visible={false}
-  />
-</div>
-`;
-
 exports[`Popup renders correctly 1`] = `
 <div
-  className="za-popup za-popup-hidden"
+  class="za-popup za-popup-hidden"
 >
   <div
-    className="za-popup-wrapper za-popup-wrapper-bottom"
-    style={
-      Object {
-        "WebkitTransitionDuration": "200ms",
-        "transitionDuration": "200ms",
-      }
-    }
+    class="za-popup-wrapper za-popup-wrapper-bottom"
+    style="-webkit-transition-duration:200ms;transition-duration:200ms;"
   >
     foo
   </div>
-  <Mask
-    className=""
-    onClose={[Function]}
-    prefixCls="za-mask"
-    style={
-      Object {
-        "WebkitAnimationDuration": "200ms",
-        "animationDuration": "200ms",
-      }
-    }
-    type="normal"
-    visible={false}
-  />
 </div>
 `;
