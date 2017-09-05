@@ -31,7 +31,7 @@ describe('Checkbox', () => {
       </Checkbox.Group>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.find('Checkbox').first().simulate('click');
+    wrapper.find(Checkbox).first().simulate('click');
   });
 
   it('type is button', () => {

@@ -9,8 +9,10 @@ describe('Panel', () => {
       <Panel>
         <Panel.Header>
           <Panel.Title>title</Panel.Title>
+          <Panel.More>more</Panel.More>
         </Panel.Header>
         <Panel.Body>body</Panel.Body>
+        <Panel.Footer />
       </Panel>
     );
     expect(toJson(wrapper)).toMatchSnapshot();

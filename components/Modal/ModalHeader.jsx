@@ -13,7 +13,7 @@ class ModalHeader extends PureComponent {
     });
 
     const btnClose = onClose
-      ? <div className={`${prefixCls}-close`} onClick={onClose}><Icon type="wrong" /></div>
+      ? <Icon type="wrong" className={`${prefixCls}-close`} onClick={onClose} />
       : null;
 
     return (
