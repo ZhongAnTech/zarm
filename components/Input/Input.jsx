@@ -17,11 +17,7 @@ class Input extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.type !== 'textarea') return;
-    if (prevProps.style !== this.props.style ||
-        prevProps.className !== this.props.className) {
-      Autosize.update(this.input);
-    }
+    this.updateAutosize(prevProps);
   }
 
   componentWillUnmount() {
@@ -33,7 +29,7 @@ class Input extends PureComponent {
     this.setState({
       length: e.target.value.length,
     });
-    onChange(e);
+    typeof onChange === 'function' && onChange(e);
   }
 
   // 初始化自适应高度
@@ -42,10 +38,17 @@ class Input extends PureComponent {
     (type === 'textarea') && autosize && Autosize(this.input);
   }
 
+  updateAutosize(prevProps) {
+    if (prevProps.type !== 'textarea') return;
+    if (prevProps.style !== this.props.style || prevProps.className !== this.props.className) {
+      Autosize.update(this.input);
+    }
+  }
+
   // 销毁自适应高度
   destroyAutosize() {
-    const { autosize } = this.props;
-    autosize && Autosize.destroy(this.input);
+    const { type, autosize } = this.props;
+    (type === 'textarea') && autosize && Autosize.destroy(this.input);
   }
 
   render() {
@@ -82,6 +85,7 @@ class Input extends PureComponent {
       : (
         <input
           {...others}
+          ref={(ele) => { this.input = ele; }}
           type={type}
           className={cls}
           placeholder={placeholder}
@@ -122,13 +126,10 @@ Input.propTypes = {
 
 Input.defaultProps = {
   prefixCls: 'za-input',
-  className: null,
   type: 'text',
   disabled: false,
-  rows: null,
   autosize: false,
   showLength: false,
-  onChange() {},
 };
 
 export default Input;

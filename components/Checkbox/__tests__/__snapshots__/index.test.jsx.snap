@@ -1,25 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkbox disabled 1`] = `
+exports[`Checkbox defaultChecked 1`] = `
 <div
-  className="za-checkbox disabled"
+  class="za-checkbox checked"
 >
   <div
-    className="za-checkbox-wrapper"
+    class="za-checkbox-wrapper"
   >
     <span
-      className="za-checkbox-inner"
+      class="za-checkbox-inner"
     />
     <span
-      className="za-checkbox-text"
+      class="za-checkbox-text"
     >
       foo
     </span>
     <input
-      checked={false}
-      className="za-checkbox-input"
-      disabled={true}
-      onChange={[Function]}
+      checked=""
+      class="za-checkbox-input"
+      type="checkbox"
+    />
+  </div>
+</div>
+`;
+
+exports[`Checkbox disabled 1`] = `
+<div
+  class="za-checkbox disabled"
+>
+  <div
+    class="za-checkbox-wrapper"
+  >
+    <span
+      class="za-checkbox-inner"
+    />
+    <span
+      class="za-checkbox-text"
+    >
+      foo
+    </span>
+    <input
+      class="za-checkbox-input"
+      disabled=""
       type="checkbox"
     />
   </div>

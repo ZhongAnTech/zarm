@@ -195,8 +195,6 @@ exports[`Radio.Group type is cell 1`] = `
   <Radio
     block={false}
     checked={false}
-    className={null}
-    defaultChecked={false}
     disabled={false}
     onChange={[Function]}
     prefixCls="za-radio"
@@ -209,8 +207,6 @@ exports[`Radio.Group type is cell 1`] = `
   <Radio
     block={false}
     checked={false}
-    className={null}
-    defaultChecked={false}
     disabled={false}
     onChange={[Function]}
     prefixCls="za-radio"
@@ -223,8 +219,6 @@ exports[`Radio.Group type is cell 1`] = `
   <Radio
     block={false}
     checked={false}
-    className={null}
-    defaultChecked={false}
     disabled={true}
     onChange={[Function]}
     prefixCls="za-radio"

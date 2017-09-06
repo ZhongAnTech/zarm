@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Uploader from '../index';
 
@@ -22,7 +22,7 @@ describe('Uploader', () => {
   //     children: <button>+</button>,
   //   };
   //   const wrapper = shallow(<Uploader {...props} />);
-  //   wrapper.find('input[type="file"]').simulate('click');
-  //   expect(props.onChange).toBeCalled();
+  //   wrapper.find('button').simulate('click');
+  //   expect(props.onBeforeSelect).toBeCalled();
   // });
 });
