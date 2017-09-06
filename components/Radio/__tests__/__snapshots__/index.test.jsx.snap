@@ -1,164 +1,200 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Radio Radio checked 1`] = `
-<div
-  class="za-radio-group"
->
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
-  >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="0"
-      />
-      选项一
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs"
-    role="button"
-  >
-    <span>
-      <input
-        checked=""
-        class="za-radio-input"
-        type="radio"
-        value="1"
-      />
-      选项二
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
-  >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="2"
-      />
-      选项三
-    </span>
-  </a>
-</div>
-`;
-
-exports[`Radio defaultValue 1`] = `
-<div
-  class="za-radio-group"
->
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
-  >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="0"
-      />
-      选项一
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs"
-    role="button"
-  >
-    <span>
-      <input
-        checked=""
-        class="za-radio-input"
-        type="radio"
-        value="1"
-      />
-      选项二
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
-  >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="2"
-      />
-      选项三
-    </span>
-  </a>
-</div>
-`;
-
 exports[`Radio renders correctly 1`] = `
-<div
-  class="za-radio-group"
+<a
+  aria-disabled="false"
+  class="za-button za-radio theme-default size-xs bordered"
+  role="button"
 >
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs"
-    role="button"
-  >
-    <span>
-      <input
-        checked=""
-        class="za-radio-input"
-        type="radio"
-        value="0"
-      />
-      选项一
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
-  >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="1"
-      />
-      选项二
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
-  >
-    <span>
-      <input
-        class="za-radio-input"
-        type="radio"
-        value="2"
-      />
-      选项三
-    </span>
-  </a>
-</div>
+  <span>
+    <input
+      class="za-radio-input"
+      type="radio"
+      value="0"
+    />
+    选项一
+  </span>
+</a>
 `;
 
 exports[`Radio type is cell 1`] = `
+<Cell
+  className={null}
+  description={null}
+  disabled={false}
+  hasArrow={false}
+  onClick={[Function]}
+  prefixCls="za-cell"
+>
+  <input
+    checked={false}
+    className="za-radio-input"
+    disabled={false}
+    onChange={[Function]}
+    type="radio"
+    value="0"
+  />
+  选项一
+</Cell>
+`;
+
+exports[`Radio.Group Radio checked 1`] = `
+<div
+  class="za-radio-group"
+>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="0"
+      />
+      选项一
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs"
+    role="button"
+  >
+    <span>
+      <input
+        checked=""
+        class="za-radio-input"
+        type="radio"
+        value="1"
+      />
+      选项二
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="2"
+      />
+      选项三
+    </span>
+  </a>
+</div>
+`;
+
+exports[`Radio.Group defaultValue 1`] = `
+<div
+  class="za-radio-group"
+>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="0"
+      />
+      选项一
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs"
+    role="button"
+  >
+    <span>
+      <input
+        checked=""
+        class="za-radio-input"
+        type="radio"
+        value="1"
+      />
+      选项二
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="2"
+      />
+      选项三
+    </span>
+  </a>
+</div>
+`;
+
+exports[`Radio.Group renders correctly 1`] = `
+<div
+  class="za-radio-group"
+>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs"
+    role="button"
+  >
+    <span>
+      <input
+        checked=""
+        class="za-radio-input"
+        type="radio"
+        value="0"
+      />
+      选项一
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="1"
+      />
+      选项二
+    </span>
+  </a>
+  <a
+    aria-disabled="false"
+    class="za-button za-radio theme-primary size-xs bordered"
+    role="button"
+  >
+    <span>
+      <input
+        class="za-radio-input"
+        type="radio"
+        value="2"
+      />
+      选项三
+    </span>
+  </a>
+</div>
+`;
+
+exports[`Radio.Group type is cell 1`] = `
 <div
   className="za-radio-group"
 >
   <Radio
     block={false}
     checked={false}
-    className={null}
-    defaultChecked={false}
     disabled={false}
     onChange={[Function]}
     prefixCls="za-radio"
@@ -171,8 +207,6 @@ exports[`Radio type is cell 1`] = `
   <Radio
     block={false}
     checked={false}
-    className={null}
-    defaultChecked={false}
     disabled={false}
     onChange={[Function]}
     prefixCls="za-radio"
@@ -185,8 +219,6 @@ exports[`Radio type is cell 1`] = `
   <Radio
     block={false}
     checked={false}
-    className={null}
-    defaultChecked={false}
     disabled={true}
     onChange={[Function]}
     prefixCls="za-radio"

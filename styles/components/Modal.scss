@@ -36,8 +36,6 @@ $prefixCls: za-modal;
 
   &-header {
     position: relative;
-    /* height: r(50); */
-    /* border-bottom: 1px solid #e9e9e9; */
     padding: r(20) r(15) 0 r(15);
     text-align: center;
 
@@ -49,10 +47,10 @@ $prefixCls: za-modal;
 
     &-close {
       position: absolute;
-      top: 0;
+      top: r(20);
       right: r(15);
+      line-height: r(15);
       font-size: r(20);
-      line-height: r(50);
       color: #999;
       cursor: pointer;
 

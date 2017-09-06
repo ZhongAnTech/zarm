@@ -104,7 +104,8 @@
       "json"
     ],
     "collectCoverageFrom": [
-      "components/**/*.{js,jsx}"
+      "components/**/*.{js,jsx}",
+      "!components/*.{js}"
     ],
     "transform": {
       "^.+\\.jsx?$": "<rootDir>/scripts/jest/preprocessor.js"

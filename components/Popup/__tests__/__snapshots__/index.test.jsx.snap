@@ -2,7 +2,7 @@
 
 exports[`Popup renders correctly 1`] = `
 <div
-  class="za-popup"
+  class="za-popup za-popup-hidden"
 >
   <div
     class="za-popup-wrapper za-popup-wrapper-bottom"
@@ -10,9 +10,5 @@ exports[`Popup renders correctly 1`] = `
   >
     foo
   </div>
-  <div
-    class="za-mask normal"
-    style="-webkit-animation-duration:200ms;animation-duration:200ms;"
-  />
 </div>
 `;

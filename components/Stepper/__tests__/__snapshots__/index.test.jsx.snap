@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Stepper defaultValue 1`] = `
+<span
+  className="za-stepper theme-primary"
+>
+  <span
+    className="za-stepper-sub"
+    onClick={[Function]}
+  >
+    <Icon
+      className={null}
+      prefixCls="za-icon"
+      theme={null}
+      type="minus"
+    />
+  </span>
+  <input
+    className="za-stepper-body"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="tel"
+    value={2}
+  />
+  <span
+    className="za-stepper-plus"
+    onClick={[Function]}
+  >
+    <Icon
+      className={null}
+      prefixCls="za-icon"
+      theme={null}
+      type="add"
+    />
+  </span>
+</span>
+`;
+
 exports[`Stepper renders correctly 1`] = `
 <span
   class="za-stepper theme-primary"

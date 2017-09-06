@@ -60,7 +60,7 @@ class Swipe extends Component {
 
   // 滑动到指定编号
   onSlideTo(index) {
-    this.onMoveTo(index, this.props.speed);
+    this.onMoveTo(index, this.props.duration);
   }
 
   // 静默跳到指定编号
@@ -69,13 +69,13 @@ class Swipe extends Component {
   }
 
   // 移动到指定编号
-  onMoveTo(index, speed) {
+  onMoveTo(index, duration) {
     const dom = this.swipeItems;
     if (!dom) return;
 
     this.translateX = -dom.offsetWidth * (index + this.props.loop);
     this.translateY = -dom.offsetHeight * (index + this.props.loop);
-    this.doTransition({ x: this.translateX, y: this.translateY }, speed);
+    this.doTransition({ x: this.translateX, y: this.translateY }, duration);
 
     const maxLength = this.props.children.length;
     if (index > maxLength - 1) {
@@ -339,11 +339,12 @@ class Swipe extends Component {
 
 Swipe.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   direction: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   loop: PropTypes.bool,
   activeIndex: PropTypes.number,
-  speed: PropTypes.number,
+  duration: PropTypes.number,
   autoPlay: PropTypes.bool,
   autoPlayIntervalTime: PropTypes.number,
   moveDistanceRatio: PropTypes.number,
@@ -355,11 +356,12 @@ Swipe.propTypes = {
 
 Swipe.defaultProps = {
   prefixCls: 'za-swipe',
+  className: null,
   direction: 'left',
   height: 160,
   loop: false,
   activeIndex: 0,
-  speed: 300,
+  duration: 300,
   autoPlay: false,
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,

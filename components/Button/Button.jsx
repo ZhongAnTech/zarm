@@ -29,7 +29,7 @@ class Button extends PureComponent {
       : null;
 
     const contentRender = (!!icon || loading)
-      ? <span className={`${prefixCls}-content`}>{iconRender}{childrenRender}</span>
+      ? <div className={`${prefixCls}-content`}>{iconRender}{childrenRender}</div>
       : childrenRender;
 
     return (

@@ -1,11 +1,12 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SwipeAction from '../index';
 
 describe('SwipeAction', () => {
   it('renders correctly', () => {
-    const wrapper = render(
+    jest.useFakeTimers();
+    const wrapper = mount(
       <SwipeAction
         left={[
           {
@@ -35,5 +36,7 @@ describe('SwipeAction', () => {
       </SwipeAction>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+    jest.runAllTimers();
+    wrapper.unmount();
   });
 });
