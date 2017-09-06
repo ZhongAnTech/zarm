@@ -49,19 +49,12 @@ $prefixCls: za-cell;
 
     .#{$prefixCls}-inner {
       &:active {
-        background-color: #eee;
+        background-color: #ddd;
       }
     }
 
     .#{$prefixCls}-title {
       flex: 1;
-    }
-  }
-
-  &.disabled {
-    .#{$prefixCls}-body,
-    .#{$prefixCls}-footer {
-      opacity: $disabled-opacity;
     }
   }
 

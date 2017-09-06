@@ -35,16 +35,20 @@ $prefixCls: za-radio;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     width: r(20);
     height: r(20);
     border: 1px solid $theme-primary;
     border-radius: r(20);
 
-    i {
-      font-size: r(15);
-      font-weight: 600;
+    &:before {
+      content: ' ';
+      width: r(8);
+      height: r(8);
+      border-radius: r(8);
+      background-color: $theme-primary;
       transform: scale(0);
-      transition: all .3s cubic-bezier(.12, .4, .29, 1.46);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
 
@@ -52,11 +56,6 @@ $prefixCls: za-radio;
   &-group {
     &.block {
       display: flex;
-
-      /* 通栏模式字体增大 */
-      .#{$prefixCls} {
-        font-size: r(15);
-      }
     }
 
     &.is-compact {
@@ -97,8 +96,9 @@ $prefixCls: za-radio;
   /* 选中状态 */
   &.checked {
     .#{$prefixCls}-inner {
-      i {
+      &:before {
         transform: scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
       }
     }
   }
@@ -110,8 +110,8 @@ $prefixCls: za-radio;
         border-color: $disabled-background;
         cursor: not-allowed;
 
-        i {
-          color: $disabled-background;
+        &:before {
+          background-color: $disabled-background;
         }
       }
 

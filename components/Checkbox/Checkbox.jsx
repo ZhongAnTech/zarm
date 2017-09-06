@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Cell from '../Cell';
 import Button from '../Button';
-import Icon from '../Icon';
 
 function getChecked(props, defaultChecked) {
   if ('checked' in props && props.checked) {
@@ -56,11 +55,20 @@ class Checkbox extends PureComponent {
       disabled,
     });
 
+    const renderCheckbox = (
+      <div className={cls}>
+        <div className={`${prefixCls}-wrapper`}>
+          <span className={`${prefixCls}-inner`} />
+          { children && <span className={`${prefixCls}-text`}>{children}</span> }
+          <input id={id} type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        </div>
+      </div>
+    );
+
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} description={checked && <Icon type="right" theme={!disabled && theme} />} onClick={() => {}}>
-          <input type="checkbox" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-          {children}
+        <Cell disabled={disabled} onClick={this.onValueChange}>
+          {renderCheckbox}
         </Cell>
       );
     }
@@ -74,17 +82,7 @@ class Checkbox extends PureComponent {
       );
     }
 
-    return (
-      <div className={cls}>
-        <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`}>
-            <Icon type="right" theme={theme} />
-          </span>
-          { children && <span className={`${prefixCls}-text`}>{children}</span> }
-          <input id={id} type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-        </div>
-      </div>
-    );
+    return renderCheckbox;
   }
 }
 

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Cell from '../Cell';
 import Button from '../Button';
-import Icon from '../Icon';
 
 function getChecked(props, defaultChecked) {
   if ('checked' in props && props.checked) {
@@ -58,9 +57,7 @@ class Radio extends PureComponent {
     const renderRadio = (
       <div className={cls}>
         <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`}>
-            <Icon type="right" theme={theme} />
-          </span>
+          <span className={`${prefixCls}-inner`} />
           { children && <span className={`${prefixCls}-text`}>{children}</span> }
           <input id={id} type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         </div>
