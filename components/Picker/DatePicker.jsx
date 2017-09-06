@@ -58,7 +58,7 @@ class DatePicker extends Component {
     this.setState({
       date: date || defaultDate,
     });
-    this.initDate = date || defaultDate
+    this.initDate = date || defaultDate;
   }
 
   // 点击遮罩层
