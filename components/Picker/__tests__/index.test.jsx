@@ -117,18 +117,18 @@ describe('Picker', () => {
     wrapper.setProps({ value: '1' });
   });
 
-  it('onChange', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(
-      <Picker
-        dataSource={[
-          { value: '1', label: '选项一' },
-          { value: '2', label: '选项二' },
-        ]}
-        onChange={onChange}
-        />
-    );
-    // wrapper.find('input').simulate('change', { target: { value: '2' } });
-    // expect(onChange).toBeCalled();
-  });
+  // it('onChange', () => {
+  //   const onChange = jest.fn();
+  //   const wrapper = mount(
+  //     <Picker
+  //       dataSource={[
+  //         { value: '1', label: '选项一' },
+  //         { value: '2', label: '选项二' },
+  //       ]}
+  //       onChange={onChange}
+  //       />
+  //   );
+  //   wrapper.find('input').simulate('change', { target: { value: '2' } });
+  //   expect(onChange).toBeCalled();
+  // });
 });

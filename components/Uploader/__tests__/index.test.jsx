@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Uploader from '../index';
 
