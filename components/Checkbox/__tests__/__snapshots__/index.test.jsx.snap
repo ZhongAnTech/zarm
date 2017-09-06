@@ -2,7 +2,7 @@
 
 exports[`Checkbox defaultChecked 1`] = `
 <div
-  class="za-checkbox checked"
+  class="za-checkbox theme-primary checked"
 >
   <div
     class="za-checkbox-wrapper"
@@ -26,7 +26,7 @@ exports[`Checkbox defaultChecked 1`] = `
 
 exports[`Checkbox disabled 1`] = `
 <div
-  class="za-checkbox disabled"
+  class="za-checkbox theme-primary disabled"
 >
   <div
     class="za-checkbox-wrapper"
@@ -50,7 +50,7 @@ exports[`Checkbox disabled 1`] = `
 
 exports[`Checkbox renders correctly 1`] = `
 <div
-  class="za-checkbox checked"
+  class="za-checkbox theme-primary checked"
 >
   <div
     class="za-checkbox-wrapper"
@@ -77,7 +77,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
   class="za-checkbox-group"
 >
   <div
-    class="za-checkbox"
+    class="za-checkbox theme-primary"
   >
     <div
       class="za-checkbox-wrapper"
@@ -97,7 +97,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox checked"
+    class="za-checkbox theme-primary checked"
   >
     <div
       class="za-checkbox-wrapper"
@@ -118,7 +118,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox"
+    class="za-checkbox theme-primary"
   >
     <div
       class="za-checkbox-wrapper"
@@ -146,39 +146,42 @@ exports[`Checkbox.Group type is button 1`] = `
 >
   <a
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary size-xs bordered"
+    class="za-button za-checkbox theme-primary theme-primary size-xs bordered"
     role="button"
   >
     <span>
       <input
         class="za-checkbox-input"
         type="checkbox"
+        value="0"
       />
       选项一
     </span>
   </a>
   <a
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary size-xs bordered"
+    class="za-button za-checkbox theme-primary theme-primary size-xs bordered"
     role="button"
   >
     <span>
       <input
         class="za-checkbox-input"
         type="checkbox"
+        value="1"
       />
       选项二
     </span>
   </a>
   <a
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary size-xs bordered"
+    class="za-button za-checkbox theme-primary theme-primary size-xs bordered"
     role="button"
   >
     <span>
       <input
         class="za-checkbox-input"
         type="checkbox"
+        value="2"
       />
       选项三
     </span>
@@ -205,12 +208,26 @@ exports[`Checkbox.Group type is cell 1`] = `
         <div
           class="za-cell-content"
         >
-          <input
-            class="za-checkbox-input"
-            type="checkbox"
-            value="0"
-          />
-          选项一
+          <div
+            class="za-checkbox theme-primary"
+          >
+            <div
+              class="za-checkbox-wrapper"
+            >
+              <span
+                class="za-checkbox-inner"
+              />
+              <span
+                class="za-checkbox-text"
+              >
+                选项一
+              </span>
+              <input
+                class="za-checkbox-input"
+                type="checkbox"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -233,12 +250,26 @@ exports[`Checkbox.Group type is cell 1`] = `
         <div
           class="za-cell-content"
         >
-          <input
-            class="za-checkbox-input"
-            type="checkbox"
-            value="1"
-          />
-          选项二
+          <div
+            class="za-checkbox theme-primary"
+          >
+            <div
+              class="za-checkbox-wrapper"
+            >
+              <span
+                class="za-checkbox-inner"
+              />
+              <span
+                class="za-checkbox-text"
+              >
+                选项二
+              </span>
+              <input
+                class="za-checkbox-input"
+                type="checkbox"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -261,12 +292,26 @@ exports[`Checkbox.Group type is cell 1`] = `
         <div
           class="za-cell-content"
         >
-          <input
-            class="za-checkbox-input"
-            type="checkbox"
-            value="2"
-          />
-          选项三
+          <div
+            class="za-checkbox theme-primary"
+          >
+            <div
+              class="za-checkbox-wrapper"
+            >
+              <span
+                class="za-checkbox-inner"
+              />
+              <span
+                class="za-checkbox-text"
+              >
+                选项三
+              </span>
+              <input
+                class="za-checkbox-input"
+                type="checkbox"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
