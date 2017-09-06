@@ -2,33 +2,46 @@ import React, { PureComponent, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-function getCheckedValue(children) {
+function getChildChecked(children) {
   const checkedValue = [];
-  React.Children.forEach(children, (checkbox) => {
-    if (checkbox.props && checkbox.props.checked) {
-      checkedValue.push(checkbox.props.value);
+  React.Children.forEach(children, (element) => {
+    if (element.props && element.props.checked) {
+      checkedValue.push(element.props.value);
     }
   });
   return checkedValue;
+}
+
+function getValue(props, defaultValue) {
+  if ('value' in props) {
+    return props.value;
+  }
+  if ('defaultValue' in props) {
+    return props.defaultValue;
+  }
+  if (getChildChecked(props.children).length > 0) {
+    return getChildChecked(props.children);
+  }
+  return defaultValue;
 }
 
 class CheckboxGroup extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || getCheckedValue(props.children),
+      value: getValue(props, []),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps || getChildChecked(nextProps.children).length > 0) {
       this.setState({
-        value: nextProps.value || nextProps.defaultValue || getCheckedValue(nextProps.children),
+        value: nextProps.value || getChildChecked(nextProps.children),
       });
     }
   }
 
-  onCheckboxChange(value) {
+  onChildChange(value) {
     const values = this.state.value;
     const index = values.indexOf(value);
 
@@ -41,7 +54,9 @@ class CheckboxGroup extends PureComponent {
     this.setState({
       value: values,
     });
-    this.props.onChange(values);
+
+    const { onChange } = this.props;
+    typeof onChange === 'function' && onChange(values);
   }
 
   render() {
@@ -52,9 +67,10 @@ class CheckboxGroup extends PureComponent {
         key: index,
         type,
         theme,
+        shape,
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
-        onChange: () => this.onCheckboxChange(element.props.value),
+        onChange: () => this.onChildChange(element.props.value),
         checked: (this.state.value.indexOf(element.props.value) > -1),
       });
     });
@@ -83,7 +99,7 @@ CheckboxGroup.propTypes = {
   shape: PropTypes.oneOf(['radius', 'round']),
   type: PropTypes.oneOf(['button', 'cell']),
   value: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-  defaultValue: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  defaultValue: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])), // eslint-disable-line
   block: PropTypes.bool,
   disabled: PropTypes.bool,
   compact: PropTypes.bool,
@@ -92,16 +108,10 @@ CheckboxGroup.propTypes = {
 
 CheckboxGroup.defaultProps = {
   prefixCls: 'za-checkbox-group',
-  className: null,
   theme: 'primary',
-  shape: null,
-  type: null,
-  value: null,
-  defaultValue: null,
   block: false,
   disabled: false,
   compact: false,
-  onChange() {},
 };
 
 export default CheckboxGroup;
