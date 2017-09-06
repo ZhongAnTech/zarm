@@ -9,8 +9,5 @@ exports[`Toast renders correctly 1`] = `
   >
     foo
   </div>
-  <div
-    class="za-mask transparent"
-  />
 </div>
 `;

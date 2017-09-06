@@ -24,13 +24,25 @@ exports[`Button bordered 1`] = `
 </a>
 `;
 
+exports[`Button disabled 1`] = `
+<a
+  aria-disabled="true"
+  class="za-button theme-default disabled"
+  role="button"
+>
+  <span>
+    foo
+  </span>
+</a>
+`;
+
 exports[`Button icon 1`] = `
 <a
   aria-disabled="false"
   class="za-button theme-default"
   role="button"
 >
-  <span
+  <div
     class="za-button-content"
   >
     <img
@@ -40,7 +52,7 @@ exports[`Button icon 1`] = `
     <span>
       foo
     </span>
-  </span>
+  </div>
 </a>
 `;
 
@@ -50,7 +62,7 @@ exports[`Button loading 1`] = `
   class="za-button theme-default"
   role="button"
 >
-  <span
+  <div
     class="za-button-content"
   >
     <svg
@@ -77,7 +89,7 @@ exports[`Button loading 1`] = `
     <span>
       foo
     </span>
-  </span>
+  </div>
 </a>
 `;
 

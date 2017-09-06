@@ -57,8 +57,14 @@ import { Swipe } from 'zarm';
 | className | string | | | 追加类名 |
 | direction | string | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向 |
 | height | number, string | | | 高度 |
+| activeIndex | number | 0 | | 当前页面的索引 |
 | loop | bool | false | | 是否循环 |
 | autoPlay | bool | false | | 是否自动轮播 |
+| autoPlayIntervalTime | number | 3000 | | 自动轮播时间间隔 |
+| moveDistanceRatio | number | 0.5 | | 移动距离比例临界点 |
+| moveTimeSpan | number | 300 | | 移动时间跨度临界点 |
+| duration | number | 300 | | 移动持续时间 |
+| showPagination | bool | true | | 是否显示分页器 |
 | onChange | func | noop | \(value: number\) | 值变化时触发的回调函数 |
 | onChangeEnd | func | noop | \(value: number\) | 值变化动画结束后触发的回调函数 |
 

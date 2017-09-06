@@ -5,14 +5,24 @@ import Switch from '../index';
 
 describe('Switch', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Switch checked />);
+    const wrapper = render(<Switch />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('checked change false', () => {
+  it('defaultChecked', () => {
+    const wrapper = render(<Switch defaultChecked />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('onChange', () => {
     const onChange = jest.fn();
     const wrapper = shallow(<Switch checked onChange={onChange} />);
     wrapper.find('input').simulate('change', { target: { checked: false } });
     expect(onChange).toBeCalledWith(false);
+  });
+
+  it('receive new checked', () => {
+    const wrapper = shallow(<Switch />);
+    wrapper.setProps({ checked: true });
   });
 });

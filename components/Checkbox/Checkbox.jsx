@@ -5,11 +5,21 @@ import Cell from '../Cell';
 import Button from '../Button';
 import Icon from '../Icon';
 
+function getChecked(props, defaultChecked) {
+  if ('checked' in props && props.checked) {
+    return props.checked;
+  }
+  if ('defaultChecked' in props && props.defaultChecked) {
+    return props.defaultChecked;
+  }
+  return defaultChecked;
+}
+
 class Checkbox extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked || false,
+      checked: getChecked(props, false),
     };
     this.onValueChange = this.onValueChange.bind(this);
   }
@@ -17,7 +27,7 @@ class Checkbox extends PureComponent {
   componentWillReceiveProps(nextProps) {
     if ('checked' in nextProps) {
       this.setState({
-        checked: nextProps.checked || nextProps.defaultChecked || false,
+        checked: !!nextProps.checked,
       });
     }
   }
@@ -25,9 +35,7 @@ class Checkbox extends PureComponent {
   onValueChange() {
     const { disabled, onChange } = this.props;
 
-    if (disabled) {
-      return;
-    }
+    if (disabled) return;
 
     const checked = !this.state.checked;
     this.setState({ checked });
@@ -85,20 +93,15 @@ Checkbox.propTypes = {
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   checked: PropTypes.bool,
-  defaultChecked: PropTypes.bool,
+  defaultChecked: PropTypes.bool, // eslint-disable-line
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
 Checkbox.defaultProps = {
   prefixCls: 'za-checkbox',
-  className: null,
   theme: 'primary',
-  type: null,
-  checked: false,
-  defaultChecked: false,
   disabled: false,
-  onChange() {},
 };
 
 export default Checkbox;

@@ -1,42 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders correctly 1`] = `
-<div
-  class="za-modal"
-  style="-webkit-animation-duration:200ms;animation-duration:200ms;"
+<Modal
+  animationDuration={200}
+  animationType="fade"
+  className={null}
+  onMaskClick={[Function]}
+  prefixCls="za-modal"
+  shape={null}
+  visible={true}
+  width="70%"
 >
   <div
-    class="za-modal-wrapper"
+    className="za-modal"
+    style={
+      Object {
+        "WebkitAnimationDuration": "200ms",
+        "animationDuration": "200ms",
+      }
+    }
   >
     <div
-      class="za-modal-dialog"
-      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms;"
+      className="za-modal-wrapper"
     >
       <div
-        class="za-modal-header"
+        className="za-modal-dialog"
+        onClick={[Function]}
+        style={
+          Object {
+            "WebkitAnimationDuration": "200ms",
+            "animationDuration": "200ms",
+            "width": "70%",
+          }
+        }
       >
-        <div
-          class="za-modal-header-title"
+        <ModalHeader
+          className={null}
+          onClose={[Function]}
+          prefixCls="za-modal-header"
+          title="标题"
         >
-          标题
-        </div>
-        <div
-          class="za-modal-header-close"
+          <div
+            className="za-modal-header"
+          >
+            <div
+              className="za-modal-header-title"
+            >
+              标题
+            </div>
+            <Icon
+              className="za-modal-header-close"
+              onClick={[Function]}
+              prefixCls="za-icon"
+              theme={null}
+              type="wrong"
+            >
+              <i
+                className="za-icon za-modal-header-close za-icon-wrong"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </ModalHeader>
+        <ModalBody
+          className={null}
+          prefixCls="za-modal-body"
         >
-          <i
-            class="za-icon za-icon-wrong"
-          />
-        </div>
-      </div>
-      <div
-        class="za-modal-body"
-      >
-        foo
+          <div
+            className="za-modal-body"
+            style={
+              Object {
+                "height": undefined,
+              }
+            }
+          >
+            foo
+          </div>
+        </ModalBody>
       </div>
     </div>
+    <Mask
+      className={null}
+      onClose={[Function]}
+      prefixCls="za-mask"
+      type="normal"
+      visible={true}
+    >
+      <div
+        className="za-mask normal"
+        onClick={[Function]}
+      />
+    </Mask>
   </div>
-  <div
-    class="za-mask normal"
-  />
-</div>
+</Modal>
 `;

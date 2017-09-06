@@ -40,10 +40,10 @@ import { Switch } from 'zarm';
 | prefixCls | string | za-switch | | 类名前缀 |
 | className | string | | | 追加类名 |
 | theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| checked | bool | false | | 值 |
-| defaultChecked | bool | false | | 初始值 |
+| checked | bool | | | 值 |
+| defaultChecked | bool | | | 初始值 |
 | disabled | bool | false | | 是否禁用 |
-| onChange | func | noop | \(value: bool\) | 值变化时触发的回调函数 |
+| onChange | func | | \(value: bool\) | 值变化时触发的回调函数 |
 
 
 

@@ -60,7 +60,7 @@ class SwipeAction extends PureComponent {
   onDragEnd(event, { offsetX, startTime }) {
     event.preventDefault();
 
-    const { speed, moveDistanceRatio, moveTimeSpan } = this.props;
+    const { duration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
@@ -84,7 +84,7 @@ class SwipeAction extends PureComponent {
       this.close();
     } else {
       // 还原
-      this.doTransition({ offsetLeft: distanceX, duration: speed });
+      this.doTransition({ offsetLeft: distanceX, duration });
     }
   }
 
@@ -120,17 +120,17 @@ class SwipeAction extends PureComponent {
   }
 
   open(offsetLeft) {
-    const { speed, onOpen } = this.props;
+    const { duration, onOpen } = this.props;
     onOpen();
     this.isOpen = true;
-    this.doTransition({ offsetLeft, duration: speed });
+    this.doTransition({ offsetLeft, duration });
   }
 
   close() {
-    const { speed, onClose } = this.props;
+    const { duration, onClose } = this.props;
     onClose();
     this.isOpen = false;
-    this.doTransition({ offsetLeft: 0, duration: speed });
+    this.doTransition({ offsetLeft: 0, duration });
   }
 
   doTransition({ offsetLeft, duration }) {
@@ -169,8 +169,13 @@ class SwipeAction extends PureComponent {
   }
 
   render() {
-    const { prefixCls, left, right, children } = this.props;
+    const { prefixCls, className, left, right, children } = this.props;
     const { offsetLeft, duration } = this.state;
+
+    const classes = classnames({
+      [`${prefixCls}`]: true,
+      [className]: !!className,
+    });
 
     const style = {
       WebkitTransitionDuration: `${duration}ms`,
@@ -181,7 +186,7 @@ class SwipeAction extends PureComponent {
 
     return (left.length || right.length)
       ? (
-        <div className={prefixCls} ref={(wrap) => { this.wrap = wrap; }}>
+        <div className={classes} ref={(wrap) => { this.wrap = wrap; }}>
           {this.renderButtons(left, 'left')}
           {this.renderButtons(right, 'right')}
           <Drag
@@ -200,11 +205,12 @@ class SwipeAction extends PureComponent {
 
 SwipeAction.propTypes = {
   prefixCls: PropTypes.string,
+  className: PropTypes.string,
   left: PropTypes.arrayOf(PropTypes.object),
   right: PropTypes.arrayOf(PropTypes.object),
   moveDistanceRatio: PropTypes.number,
   moveTimeSpan: PropTypes.number,
-  speed: PropTypes.number,
+  duration: PropTypes.number,
   offset: PropTypes.number,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
@@ -212,11 +218,12 @@ SwipeAction.propTypes = {
 
 SwipeAction.defaultProps = {
   prefixCls: 'za-swipeaction',
+  className: null,
   left: [],
   right: [],
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
-  speed: 300,
+  duration: 300,
   offset: 10,
   onOpen() {},
   onClose() {},
