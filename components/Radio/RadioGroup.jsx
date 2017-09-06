@@ -2,35 +2,50 @@ import React, { PureComponent, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-function getCheckedValue(children) {
+function getChildChecked(children) {
   let checkedValue = null;
-  React.Children.forEach(children, (radio) => {
-    if (radio.props && radio.props.checked) {
-      checkedValue = radio.props.value;
+  React.Children.forEach(children, (element) => {
+    if (element.props && element.props.checked) {
+      checkedValue = element.props.value;
     }
   });
   return checkedValue;
+}
+
+function getValue(props, defaultValue) {
+  if ('value' in props) {
+    return props.value;
+  }
+  if ('defaultValue' in props) {
+    return props.defaultValue;
+  }
+  if (getChildChecked(props.children)) {
+    return getChildChecked(props.children);
+  }
+  return defaultValue;
 }
 
 class RadioGroup extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || getCheckedValue(props.children),
+      value: getValue(props, null),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getCheckedValue(nextProps.children)) {
+    if ('value' in nextProps || getChildChecked(nextProps.children)) {
       this.setState({
-        value: nextProps.value || nextProps.defaultValue || getCheckedValue(nextProps.children),
+        value: nextProps.value || getChildChecked(nextProps.children),
       });
     }
   }
 
-  onRadioChange(value) {
+  onChildChange(value) {
     this.setState({ value });
-    this.props.onChange(value);
+
+    const { onChange } = this.props;
+    typeof onChange === 'function' && onChange(value);
   }
 
   render() {
@@ -41,9 +56,10 @@ class RadioGroup extends PureComponent {
         key: index,
         type,
         theme,
+        shape,
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
-        onChange: () => this.onRadioChange(element.props.value),
+        onChange: () => this.onChildChange(element.props.value),
         // use '==' because the result will fail when the value's typeof is Number
         checked: (this.state.value == element.props.value), // eslint-disable-line
       });
@@ -70,8 +86,10 @@ RadioGroup.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
-  type: PropTypes.oneOf(['button', 'cell']),
   shape: PropTypes.oneOf(['radius', 'round']),
+  type: PropTypes.oneOf(['button', 'cell']),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // eslint-disable-line
   block: PropTypes.bool,
   disabled: PropTypes.bool,
   compact: PropTypes.bool,
