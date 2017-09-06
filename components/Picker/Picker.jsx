@@ -71,6 +71,7 @@ class Picker extends Component {
         value: _value,
         cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
+      this.tempValue = _value;
     }
   }
 
