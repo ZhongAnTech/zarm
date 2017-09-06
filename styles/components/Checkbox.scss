@@ -37,15 +37,19 @@ $prefixCls: za-checkbox;
     justify-content: center;
     width: r(20);
     height: r(20);
-    background-color: #fff;
     border: 1px solid $theme-primary;
-    border-radius: $radius-md;
+    border-radius: r(20);
 
-    i {
-      font-size: r(15);
-      font-weight: 600;
-      transform: scale(0);
-      transition: all .3s cubic-bezier(.12, .4, .29, 1.46);
+    &:before {
+      content: ' ';
+      margin-top: r(-2);
+      width: r(6);
+      height: r(12);
+      border: 1px solid $theme-primary;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(45deg) scale(0);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
 
@@ -110,8 +114,9 @@ $prefixCls: za-checkbox;
   /* 选中状态 */
   &.checked {
     .#{$prefixCls}-inner {
-      i {
-        transform: scale(1);
+      &:before {
+        transform: rotate(45deg) scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
       }
     }
   }
@@ -123,8 +128,8 @@ $prefixCls: za-checkbox;
         border-color: $disabled-background;
         cursor: not-allowed;
 
-        i {
-          color: $disabled-background;
+        &:before {
+          border-color: $disabled-background;
         }
       }
 
@@ -155,20 +160,6 @@ $prefixCls: za-checkbox;
     .#{$prefixCls} {
       &-inner {
         border-radius: r(1000);
-      }
-    }
-  }
-
-  /* 大小 */
-  &.size-lg {
-    .#{$prefixCls} {
-      &-inner {
-        width: r(20);
-        height: r(20);
-
-        i {
-          font-size: r(15);
-        }
       }
     }
   }
