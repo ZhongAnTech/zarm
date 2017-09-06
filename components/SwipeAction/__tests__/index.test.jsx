@@ -5,6 +5,7 @@ import SwipeAction from '../index';
 
 describe('SwipeAction', () => {
   it('renders correctly', () => {
+    jest.useFakeTimers();
     const wrapper = mount(
       <SwipeAction
         left={[
@@ -35,7 +36,6 @@ describe('SwipeAction', () => {
       </SwipeAction>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    jest.useFakeTimers();
     jest.runAllTimers();
     wrapper.unmount();
   });

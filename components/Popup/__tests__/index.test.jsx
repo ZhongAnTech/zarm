@@ -19,16 +19,16 @@ describe('Popup', () => {
   });
 
   it('visible change false', () => {
+    jest.useFakeTimers();
     const wrapper = mount(
       <Popup>foo</Popup>
     );
     wrapper.setProps({ visible: false });
-    jest.useFakeTimers();
     jest.runAllTimers();
     wrapper.unmount();
   });
 
-  it('duration', () => {
+  it('duration is 0', () => {
     const wrapper = shallow(
       <Popup duration={0}>foo</Popup>
     );
@@ -36,6 +36,7 @@ describe('Popup', () => {
   });
 
   it('autoClose', () => {
+    jest.useFakeTimers();
     const onMaskClick = jest.fn();
     const onClose = jest.fn();
     const wrapper = mount(
@@ -46,7 +47,6 @@ describe('Popup', () => {
         onClose={onClose}>foo</Popup>
     );
     wrapper.setProps({ visible: true });
-    jest.useFakeTimers();
     jest.runAllTimers();
   });
 });

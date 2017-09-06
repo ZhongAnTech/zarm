@@ -9,12 +9,18 @@ describe('Input', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders type is textarea correctly', () => {
+  it('type is textarea renders correctly', () => {
     const wrapper = render(<Input type="textarea" rows={4} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('type is date renders correctly', () => {
+    const wrapper = render(<Input type="date" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('autosize', () => {
+    jest.useFakeTimers();
     const props = {
       autosize: true,
       type: 'textarea',
@@ -26,20 +32,19 @@ describe('Input', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find('textarea').simulate('change', { target: { value: 'this is a test!' } });
     expect(props.onChange).toBeCalledWith(expect.objectContaining({ target: { value: 'this is a test!' } }));
-    jest.useFakeTimers();
     jest.runAllTimers();
     wrapper.unmount();
   });
 
   it('type text has autosize', () => {
+    jest.useFakeTimers();
     const wrapper = mount(<Input autosize type="text" />);
     wrapper.find('input').simulate('change', { target: { value: 'this is a test!' } });
-    jest.useFakeTimers();
     jest.runAllTimers();
   });
 
   it('showLength', () => {
-    const wrapper = render(<Input showLength type="textarea" rows={4} />);
+    const wrapper = render(<Input showLength maxLength={100} type="textarea" rows={4} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

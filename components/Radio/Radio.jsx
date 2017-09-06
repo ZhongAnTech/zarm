@@ -5,11 +5,21 @@ import Cell from '../Cell';
 import Button from '../Button';
 import Icon from '../Icon';
 
+function getChecked(props, defaultChecked) {
+  if ('checked' in props && props.checked) {
+    return props.checked;
+  }
+  if ('defaultChecked' in props && props.defaultChecked) {
+    return props.defaultChecked;
+  }
+  return defaultChecked;
+}
+
 class Radio extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      checked: props.checked || props.defaultChecked || false,
+      checked: getChecked(props, false),
     };
     this.onValueChange = this.onValueChange.bind(this);
   }
@@ -25,9 +35,7 @@ class Radio extends PureComponent {
   onValueChange() {
     const { disabled, onChange } = this.props;
 
-    if (disabled) {
-      return;
-    }
+    if (disabled) return;
 
     const checked = true;
     this.setState({ checked });
@@ -65,7 +73,8 @@ Radio.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.oneOf(['button', 'cell']),
-  defaultChecked: PropTypes.bool,
+  checked: PropTypes.bool,
+  defaultChecked: PropTypes.bool, // eslint-disable-line
   disabled: PropTypes.bool,
   block: PropTypes.bool,
   onChange: PropTypes.func,
@@ -73,12 +82,8 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
   prefixCls: 'za-radio',
-  className: null,
-  type: null,
-  defaultChecked: false,
   disabled: false,
   block: false,
-  onChange() {},
 };
 
 export default Radio;

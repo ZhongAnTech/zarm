@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Picker from '../index';
 
@@ -17,7 +17,8 @@ describe('Picker', () => {
   });
 
   it('Cascader Picker', () => {
-    const wrapper = render(
+    jest.useFakeTimers();
+    const wrapper = mount(
       <Picker
         dataSource={[
           {
@@ -40,17 +41,25 @@ describe('Picker', () => {
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ value: ['1', '12'] });
+    jest.runAllTimers();
+    wrapper.unmount();
   });
 
   it('DatePicker', () => {
-    const wrapper = render(
+    jest.useFakeTimers();
+    const wrapper = mount(
       <Picker.Date mode="date" />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ value: '2017-09-06' });
+    jest.runAllTimers();
+    wrapper.unmount();
   });
 
   it('StackPicker', () => {
-    const wrapper = render(
+    jest.useFakeTimers();
+    const wrapper = mount(
       <Picker.Stack
         dataSource={[
           {
@@ -73,6 +82,9 @@ describe('Picker', () => {
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ value: ['1', '12'] });
+    jest.runAllTimers();
+    wrapper.unmount();
   });
 
   it('receive new dataSourcea', () => {
@@ -105,18 +117,18 @@ describe('Picker', () => {
     wrapper.setProps({ value: '1' });
   });
 
-  // it('onChange', () => {
-  //   const onChange = jest.fn();
-  //   const wrapper = shallow(
-  //     <Picker
-  //       dataSource={[
-  //         { value: '1', label: '选项一' },
-  //         { value: '2', label: '选项二' },
-  //       ]}
-  //       onChange={onChange}
-  //       />
-  //   );
-  //   wrapper.find('input').simulate('change', { target: { value: '2' } });
-  //   expect(onChange).toBeCalledWith('2');
-  // });
+  it('onChange', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        onChange={onChange}
+        />
+    );
+    // wrapper.find('input').simulate('change', { target: { value: '2' } });
+    // expect(onChange).toBeCalled();
+  });
 });

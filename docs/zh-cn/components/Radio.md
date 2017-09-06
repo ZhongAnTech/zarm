@@ -100,10 +100,10 @@ import { Radio } from 'zarm';
 | theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | type | string | | 'button', 'cell' | 显示类型 |
 | value | string, number | | | 值 |
-| defaultChecked | bool | false | | 初始是否选中 |
-| checked | bool | false | | 当前是否选中 |
+| checked | bool | | | 当前是否选中 |
+| defaultChecked | bool | | | 初始是否选中 |
 | disabled | bool | false | | 是否禁用 |
-| onChange | func | noop | \(checked: bool\) | 值变化时触发的回调函数 |
+| onChange | func | | \(checked: bool\) | 值变化时触发的回调函数 |
 
 #### Radio.Group
 
