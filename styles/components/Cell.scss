@@ -58,6 +58,13 @@ $prefixCls: za-cell;
     }
   }
 
+  &.disabled {
+    .#{$prefixCls}-body,
+    .#{$prefixCls}-footer {
+      color: $disabled-color;
+    }
+  }
+
   &-inner {
     display: flex;
     align-items: center;

@@ -28,6 +28,10 @@ class Page extends PureComponent {
               <Cell><Checkbox defaultChecked>默认选中</Checkbox></Cell>
               <Cell><Checkbox disabled>禁用</Checkbox></Cell>
               <Cell><Checkbox defaultChecked disabled>选中且禁用</Checkbox></Cell>
+              <Cell className="agreement-box">
+                <Checkbox id="agreement" />
+                <label htmlFor="agreement">阅读并同意<a onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX条款》</a>中的相关规定</label>
+              </Cell>
             </Panel.Body>
           </Panel>
 
