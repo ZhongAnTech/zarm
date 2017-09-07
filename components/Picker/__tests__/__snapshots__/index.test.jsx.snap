@@ -634,21 +634,21 @@ exports[`Picker renders correctly 1`] = `
                   class="za-picker-column-group-item"
                 >
                   <div
-                    class="za-picker-cascader"
+                    class="za-picker-column"
                   >
                     <div
-                      class="za-picker-cascader-indicator"
+                      class="za-picker-column-indicator"
                     />
                     <div
-                      class="za-picker-cascader-content"
+                      class="za-picker-column-content"
                     >
                       <div
-                        class="za-picker-cascader-item za-picker-cascader-item-selected"
+                        class="za-picker-column-item za-picker-column-item-selected"
                       >
                         选项一
                       </div>
                       <div
-                        class="za-picker-cascader-item"
+                        class="za-picker-column-item"
                       >
                         选项二
                       </div>
