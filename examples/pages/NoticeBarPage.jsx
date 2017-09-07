@@ -13,9 +13,7 @@ class Page extends Component {
         <Header title="通告栏 NoticeBar" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <div>
               <NoticeBar>普通</NoticeBar>
               <NoticeBar theme="error">错误色</NoticeBar>
@@ -25,9 +23,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>可操作</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="可操作" />
             <div>
               <NoticeBar hasArrow onClick={() => alert('click this notice!')}>链接样式的</NoticeBar>
               <NoticeBar hasClosable>可关闭的</NoticeBar>

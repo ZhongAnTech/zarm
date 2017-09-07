@@ -25,9 +25,7 @@ class Page extends Component {
         <Header title="图标 Icon" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <div className="grid">
                 {

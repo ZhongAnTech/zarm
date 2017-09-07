@@ -26,9 +26,7 @@ class Page extends Component {
         <Header title="动作面板 ActionSheet" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>提示信息</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="提示信息" />
             <Panel.Body>
 
               <Cell
