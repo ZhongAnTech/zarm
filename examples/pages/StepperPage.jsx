@@ -19,9 +19,7 @@ class Page extends Component {
         <Header title="步进器 Stepper" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Cell
                 title="普通"
@@ -66,9 +64,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>多形状</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="多形状" />
             <Panel.Body>
               <Cell
                 title="圆角"

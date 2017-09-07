@@ -20,13 +20,22 @@ class Page extends PureComponent {
         <Header title="单选框 Radio" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
+            <Panel.Body className="radio-buttons">
+              <Cell><Radio>普通</Radio></Cell>
+              <Cell><Radio defaultChecked>默认选中</Radio></Cell>
+              <Cell><Radio disabled>禁用</Radio></Cell>
+              <Cell><Radio defaultChecked disabled>选中且禁用</Radio></Cell>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header title="按钮样式" />
             <Panel.Body className="radio-buttons">
               <Cell
                 description={
                   <Radio.Group
+                    type="button"
                     value={this.state.radio}
                     onChange={value => console.log(`radio to ${value}`)}>
                     <Radio value="0">选项一</Radio>
@@ -37,7 +46,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group defaultValue="1">
+                  <Radio.Group type="button" defaultValue="1">
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
@@ -46,7 +55,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group>
+                  <Radio.Group type="button">
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2" disabled>选项三</Radio>
@@ -55,7 +64,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group shape="radius">
+                  <Radio.Group type="button" shape="radius">
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
@@ -64,7 +73,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group shape="round">
+                  <Radio.Group type="button" shape="round">
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
@@ -75,11 +84,9 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>块级样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="块级样式" />
             <Panel.Body className="block-box">
-              <Radio.Group block compact shape="radius">
+              <Radio.Group block compact type="button" shape="radius">
                 <Radio value="0">选项一</Radio>
                 <Radio value="1">选项二</Radio>
                 <Radio value="2">选项三</Radio>
@@ -88,9 +95,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>列表样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="列表样式" />
             <Panel.Body>
               <Radio.Group type="cell">
                 <Radio value="0">选项一</Radio>
@@ -101,9 +106,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>列表样式禁用状态</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="列表样式禁用状态" />
             <Panel.Body>
               <Radio.Group disabled type="cell">
                 <Radio value="0">选项一</Radio>

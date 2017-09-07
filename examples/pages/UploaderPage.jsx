@@ -106,9 +106,7 @@ class UploaderPage extends Component {
 
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>点击一次选择单张</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="点击一次选择单张" />
             <Panel.Body>
               <div className="uploader-wrapper">
                 {this.fileRender('files')}
@@ -123,9 +121,7 @@ class UploaderPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>点击一次选择多张</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="点击一次选择多张" />
             <Panel.Body>
               <div className="uploader-wrapper">
                 {this.fileRender('multiFiles')}
@@ -146,9 +142,7 @@ class UploaderPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>禁用状态</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="禁用状态" />
             <Panel.Body>
               <div className="uploader-wrapper">
                 <Uploader className="uploader-btn" disabled>

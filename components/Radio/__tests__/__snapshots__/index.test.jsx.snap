@@ -1,9 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Radio defaultChecked 1`] = `
+<div
+  class="za-radio theme-primary checked"
+>
+  <div
+    class="za-radio-wrapper"
+  >
+    <span
+      class="za-radio-inner"
+    />
+    <span
+      class="za-radio-text"
+    >
+      选项一
+    </span>
+    <input
+      checked=""
+      class="za-radio-input"
+      type="radio"
+    />
+  </div>
+</div>
+`;
+
 exports[`Radio renders correctly 1`] = `
+<div
+  class="za-radio theme-primary"
+>
+  <div
+    class="za-radio-wrapper"
+  >
+    <span
+      class="za-radio-inner"
+    />
+    <span
+      class="za-radio-text"
+    >
+      选项一
+    </span>
+    <input
+      class="za-radio-input"
+      type="radio"
+    />
+  </div>
+</div>
+`;
+
+exports[`Radio type is button 1`] = `
 <a
   aria-disabled="false"
-  class="za-button za-radio theme-default size-xs bordered"
+  class="za-button za-radio theme-primary theme-primary size-xs bordered"
   role="button"
 >
   <span>
@@ -18,73 +65,101 @@ exports[`Radio renders correctly 1`] = `
 `;
 
 exports[`Radio type is cell 1`] = `
-<Cell
-  className={null}
-  description={null}
-  disabled={false}
-  hasArrow={false}
-  onClick={[Function]}
-  prefixCls="za-cell"
+<div
+  class="za-cell is-link"
 >
-  <input
-    checked={false}
-    className="za-radio-input"
-    disabled={false}
-    onChange={[Function]}
-    type="radio"
-    value="0"
-  />
-  选项一
-</Cell>
+  <div
+    class="za-cell-inner"
+  >
+    <div
+      class="za-cell-header"
+    />
+    <div
+      class="za-cell-body"
+    >
+      <div
+        class="za-cell-content"
+      >
+        <input
+          class="za-radio-input"
+          type="radio"
+          value="0"
+        />
+        选项一
+      </div>
+    </div>
+    <div
+      class="za-cell-footer"
+    />
+  </div>
+</div>
 `;
 
 exports[`Radio.Group Radio checked 1`] = `
 <div
   class="za-radio-group"
 >
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
+  <div
+    class="za-radio theme-primary"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项一
+      </span>
       <input
         class="za-radio-input"
         type="radio"
-        value="0"
       />
-      选项一
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs"
-    role="button"
+    </div>
+  </div>
+  <div
+    class="za-radio theme-primary checked"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项二
+      </span>
       <input
         checked=""
         class="za-radio-input"
         type="radio"
-        value="1"
       />
-      选项二
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
+    </div>
+  </div>
+  <div
+    class="za-radio theme-primary"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项三
+      </span>
       <input
         class="za-radio-input"
         type="radio"
-        value="2"
       />
-      选项三
-    </span>
-  </a>
+    </div>
+  </div>
 </div>
 `;
 
@@ -92,49 +167,67 @@ exports[`Radio.Group defaultValue 1`] = `
 <div
   class="za-radio-group"
 >
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
+  <div
+    class="za-radio theme-primary"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项一
+      </span>
       <input
         class="za-radio-input"
         type="radio"
-        value="0"
       />
-      选项一
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs"
-    role="button"
+    </div>
+  </div>
+  <div
+    class="za-radio theme-primary checked"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项二
+      </span>
       <input
         checked=""
         class="za-radio-input"
         type="radio"
-        value="1"
       />
-      选项二
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
+    </div>
+  </div>
+  <div
+    class="za-radio theme-primary"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项三
+      </span>
       <input
         class="za-radio-input"
         type="radio"
-        value="2"
       />
-      选项三
-    </span>
-  </a>
+    </div>
+  </div>
 </div>
 `;
 
@@ -142,49 +235,67 @@ exports[`Radio.Group renders correctly 1`] = `
 <div
   class="za-radio-group"
 >
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs"
-    role="button"
+  <div
+    class="za-radio theme-primary checked"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项一
+      </span>
       <input
         checked=""
         class="za-radio-input"
         type="radio"
-        value="0"
       />
-      选项一
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
+    </div>
+  </div>
+  <div
+    class="za-radio theme-primary"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项二
+      </span>
       <input
         class="za-radio-input"
         type="radio"
-        value="1"
       />
-      选项二
-    </span>
-  </a>
-  <a
-    aria-disabled="false"
-    class="za-button za-radio theme-primary size-xs bordered"
-    role="button"
+    </div>
+  </div>
+  <div
+    class="za-radio theme-primary"
   >
-    <span>
+    <div
+      class="za-radio-wrapper"
+    >
+      <span
+        class="za-radio-inner"
+      />
+      <span
+        class="za-radio-text"
+      >
+        选项三
+      </span>
       <input
         class="za-radio-input"
         type="radio"
-        value="2"
       />
-      选项三
-    </span>
-  </a>
+    </div>
+  </div>
 </div>
 `;
 
@@ -198,6 +309,7 @@ exports[`Radio.Group type is cell 1`] = `
     disabled={false}
     onChange={[Function]}
     prefixCls="za-radio"
+    shape={null}
     theme="primary"
     type="cell"
     value="0"
@@ -210,6 +322,7 @@ exports[`Radio.Group type is cell 1`] = `
     disabled={false}
     onChange={[Function]}
     prefixCls="za-radio"
+    shape={null}
     theme="primary"
     type="cell"
     value="1"
@@ -222,6 +335,7 @@ exports[`Radio.Group type is cell 1`] = `
     disabled={true}
     onChange={[Function]}
     prefixCls="za-radio"
+    shape={null}
     theme="primary"
     type="cell"
     value="2"

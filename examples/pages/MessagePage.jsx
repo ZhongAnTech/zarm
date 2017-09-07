@@ -13,9 +13,7 @@ class Page extends Component {
         <Header title="消息 Message" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Message>普通</Message>
               <Message theme="error">自定义主题</Message>
@@ -24,9 +22,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>可操作</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="可操作" />
             <Panel.Body>
               <Message hasArrow onClick={() => alert('click this message!')}>链接样式的</Message>
               <Message hasClosable>可关闭的</Message>

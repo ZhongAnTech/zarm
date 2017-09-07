@@ -20,31 +20,21 @@ class Page extends PureComponent {
         <Header title="复选框 Checkbox" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本用法</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
-              <Cell>
-                <Checkbox onChange={checked => console.log(`checkbox to ${checked}`)}>单独使用</Checkbox>
+              <Cell><Checkbox>普通</Checkbox></Cell>
+              <Cell><Checkbox defaultChecked>默认选中</Checkbox></Cell>
+              <Cell><Checkbox disabled>禁用</Checkbox></Cell>
+              <Cell><Checkbox defaultChecked disabled>选中且禁用</Checkbox></Cell>
+              <Cell className="agreement-box">
+                <Checkbox id="agreement" />
+                <label htmlFor="agreement">阅读并同意<a onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX条款》</a>中的相关规定</label>
               </Cell>
-
-              <Cell
-                description={
-                  <Checkbox.Group
-                    value={this.state.checkbox}
-                    onChange={value => console.log(`checkbox to ${value}`)}>
-                    <Checkbox value="0">选项一</Checkbox>
-                    <Checkbox value="1">选项二</Checkbox>
-                    <Checkbox value="2" disabled>选项三</Checkbox>
-                  </Checkbox.Group>
-                }>组合使用</Cell>
             </Panel.Body>
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>按钮样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="按钮样式" />
             <Panel.Body>
               <Cell
                 description={
@@ -95,9 +85,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>块级样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="块级样式" />
             <Panel.Body className="block-box">
               <Checkbox.Group block type="button">
                 <Checkbox value="0">选项一</Checkbox>
@@ -108,9 +96,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>列表样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="列表样式" />
             <Panel.Body>
               <Checkbox.Group type="cell">
                 <Checkbox value="0">选项一</Checkbox>
@@ -121,9 +107,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>列表样式禁用状态</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="列表样式禁用状态" />
             <Panel.Body>
               <Checkbox.Group disabled type="cell">
                 <Checkbox value="0">选项一</Checkbox>

@@ -1,11 +1,17 @@
 $prefixCls: za-radio;
 
 .#{$prefixCls} {
+  display: inline-block;
   position: relative;
   margin-left: r(10);
 
   &:first-child {
     margin-left: 0;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
   }
 
   &-input {
@@ -17,26 +23,39 @@ $prefixCls: za-radio;
     opacity: 0;
   }
 
+  &-text {
+    color: #333;
+  }
+
+  &-inner + &-text {
+    margin-left: r(10);
+  }
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: r(20);
+    height: r(20);
+    border: 1px solid $theme-primary;
+    border-radius: r(20);
+
+    &:before {
+      content: ' ';
+      width: r(8);
+      height: r(8);
+      border-radius: r(8);
+      background-color: $theme-primary;
+      transform: scale(0);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    }
+  }
+
+  /* 组合 */
   &-group {
     &.block {
       display: flex;
-
-      /* 通栏模式字体增大 */
-      .#{$prefixCls} {
-        font-size: r(15);
-      }
-    }
-
-    &.shape-radius {
-      .#{$prefixCls} {
-        border-radius: $radius-md;
-      }
-    }
-
-    &.shape-round {
-      .#{$prefixCls} {
-        border-radius: r(15);
-      }
     }
 
     &.is-compact {
@@ -70,6 +89,59 @@ $prefixCls: za-radio;
             border-radius: 0 r(15) r(15) 0;
           }
         }
+      }
+    }
+  }
+
+  /* 选中状态 */
+  &.checked {
+    .#{$prefixCls}-inner {
+      &:before {
+        transform: scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  &.disabled {
+    .#{$prefixCls} {
+      &-inner {
+        border-color: $disabled-background;
+        cursor: not-allowed;
+
+        &:before {
+          background-color: $disabled-background;
+        }
+      }
+
+      &-text {
+        color: $disabled-color;
+      }
+    }
+  }
+
+  /* 形状 */
+  &.shape-radius {
+    .#{$prefixCls} {
+      &-inner {
+        border-radius: $radius-md;
+      }
+    }
+  }
+
+  &.shape-round {
+    .#{$prefixCls} {
+      &-inner {
+        border-radius: r(20);
+      }
+    }
+  }
+
+  &.shape-circle {
+    .#{$prefixCls} {
+      &-inner {
+        border-radius: r(1000);
       }
     }
   }

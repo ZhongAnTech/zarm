@@ -11,9 +11,7 @@ class Page extends Component {
         <Header title="滑动操作 SwipeAction" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <SwipeAction
                 right={[

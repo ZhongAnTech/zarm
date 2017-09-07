@@ -20,9 +20,7 @@ class TabPage extends Component {
         <Header title="标签页 Tab" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Tab onChange={(i) => { console.log(i); }}>
                 <Tab.Panel title="选项卡1">
@@ -36,9 +34,7 @@ class TabPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>可滑动</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="可滑动" />
             <Panel.Body>
               <Tab canSwipe onChange={(i) => { console.log(i); }}>
                 <Tab.Panel title="选项卡1">
@@ -52,9 +48,7 @@ class TabPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>多主题</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="多主题" />
             <Panel.Body>
               <Tab theme="info">
                 <Tab.Panel title="选项卡1" />
@@ -80,9 +74,7 @@ class TabPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>联动</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="联动" />
             <Panel.Body>
               <Tab
                 lineWidth="auto"
@@ -111,9 +103,7 @@ class TabPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>指定默认选项</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="指定默认选项" />
             <Panel.Body>
               <Tab defaultValue={1}>
                 <Tab.Panel title="选项卡1">
@@ -130,9 +120,7 @@ class TabPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>指定线条宽度</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="指定线条宽度" />
             <Panel.Body>
               <Tab lineWidth={60}>
                 <Tab.Panel title="选项卡1">
@@ -149,9 +137,7 @@ class TabPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>禁用指定选项</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="禁用指定选项" />
             <Panel.Body>
               <Tab>
                 <Tab.Panel title="选项卡1">
