@@ -20,9 +20,7 @@ class Page extends PureComponent {
         <Header title="单选框 Radio" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body className="radio-buttons">
               <Cell><Radio>普通</Radio></Cell>
               <Cell><Radio defaultChecked>默认选中</Radio></Cell>
@@ -32,9 +30,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>按钮样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="按钮样式" />
             <Panel.Body className="radio-buttons">
               <Cell
                 description={
@@ -88,9 +84,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>块级样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="块级样式" />
             <Panel.Body className="block-box">
               <Radio.Group block compact type="button" shape="radius">
                 <Radio value="0">选项一</Radio>
@@ -101,9 +95,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>列表样式</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="列表样式" />
             <Panel.Body>
               <Radio.Group type="cell">
                 <Radio value="0">选项一</Radio>
@@ -114,9 +106,7 @@ class Page extends PureComponent {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>列表样式禁用状态</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="列表样式禁用状态" />
             <Panel.Body>
               <Radio.Group disabled type="cell">
                 <Radio value="0">选项一</Radio>

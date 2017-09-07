@@ -18,9 +18,7 @@ class Page extends PureComponent {
         </header>
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>表单组件</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="表单组件" />
             <Panel.Body>
               <Cell hasArrow title="复选框 Checkbox" onClick={() => hashHistory.push('/checkbox')} />
               <Cell hasArrow title="文本框 Input" onClick={() => hashHistory.push('/input')} />
@@ -32,9 +30,7 @@ class Page extends PureComponent {
             </Panel.Body>
           </Panel>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>操作反馈</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="操作反馈" />
             <Panel.Body>
               <Cell hasArrow title="动作面板 ActionSheet" onClick={() => hashHistory.push('/action-sheet')} />
               <Cell hasArrow title="按钮 Button" onClick={() => hashHistory.push('/button')} />
@@ -45,15 +41,14 @@ class Page extends PureComponent {
             </Panel.Body>
           </Panel>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>数据展示</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="数据展示" />
             <Panel.Body>
               <Cell hasArrow title="徽标 Badge" onClick={() => hashHistory.push('/badge')} />
               <Cell hasArrow title="列表项 Cell" onClick={() => hashHistory.push('/cell')} />
               <Cell hasArrow title="图标 Icon" onClick={() => hashHistory.push('/icon')} />
               <Cell hasArrow title="消息 Message" onClick={() => hashHistory.push('/message')} />
               <Cell hasArrow title="通告栏 NoticeBar" onClick={() => hashHistory.push('/notice-bar')} />
+              <Cell hasArrow title="面板 Panel" onClick={() => hashHistory.push('/panel')} />
               <Cell hasArrow title="进度条 Progress" onClick={() => hashHistory.push('/progress')} />
               <Cell hasArrow title="指示器 Spinner" onClick={() => hashHistory.push('/spinner')} />
               <Cell hasArrow title="图片轮播 Swipe" onClick={() => hashHistory.push('/swipe')} />

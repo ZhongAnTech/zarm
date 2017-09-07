@@ -30,9 +30,7 @@ class ToastPage extends Component {
         <Header title="轻提示 Toast" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>提示信息</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
 
               <Cell
@@ -82,9 +80,7 @@ class ToastPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>加载中</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="加载中" />
             <Panel.Body>
               <Cell
                 description={

@@ -2,16 +2,18 @@ $prefixCls: za-panel;
 
 .#{$prefixCls} {
   &-header {
-    position: relative;
+    display: flex;
     padding: r(25) r(15) r(7) r(15);
+    font-size: r(14);
+    color: #999;
   }
 
   &-footer {
-    position: relative;
-    padding: r(5) r(15);
+    display: flex;
+    padding: r(7) r(15);
     margin-bottom: r(10);
-    color: #999;
     font-size: r(12);
+    color: #999;
   }
 
   &-body {
@@ -21,18 +23,10 @@ $prefixCls: za-panel;
   }
 
   &-title {
-    line-height: 1.5;
-    font-size: r(14);
-    color: #999;
+    flex: 1;
 
     .za-icon {
       margin-right: r(5);
     }
-  }
-
-  &-more {
-    position: absolute;
-    top: 0;
-    right: r(15);
   }
 }

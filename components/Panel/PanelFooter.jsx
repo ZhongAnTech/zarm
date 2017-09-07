@@ -4,14 +4,19 @@ import classnames from 'classnames';
 
 class PanelFooter extends PureComponent {
   render() {
-    const { prefixCls, className, children, ...others } = this.props;
+    const { prefixCls, className, title, more } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}`]: true,
+      [`${prefixCls}-footer`]: true,
       [className]: !!className,
     });
 
-    return <div {...others} className={cls}>{children}</div>;
+    return (
+      <div className={cls}>
+        { title && <div className={`${prefixCls}-title`}>{title}</div> }
+        { more && <div className={`${prefixCls}-more`}>{more}</div> }
+      </div>
+    );
   }
 }
 
@@ -21,8 +26,7 @@ PanelFooter.propTypes = {
 };
 
 PanelFooter.defaultProps = {
-  prefixCls: 'za-panel-footer',
-  className: null,
+  prefixCls: 'za-panel',
 };
 
 export default PanelFooter;

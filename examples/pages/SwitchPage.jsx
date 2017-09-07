@@ -25,9 +25,7 @@ class Page extends Component {
         <Header title="开关 Switch" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Cell description={
                 <Switch
@@ -43,9 +41,7 @@ class Page extends Component {
             </Panel.Body>
           </Panel>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>受控开关</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="受控开关" />
             <Panel.Body>
               <Cell description={<Switch onChange={value => this.toggle(value)} />}>主开关</Cell>
               <Cell description={<Switch checked={this.state.switch} onChange={value => console.log(value)} />}>受控开关</Cell>
