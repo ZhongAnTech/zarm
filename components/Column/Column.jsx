@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import ZScroller from 'zscroller';
-import { isChildrenEqual } from './utils';
 
 function getChildMember(child, m) {
   return child[m];
@@ -44,6 +43,7 @@ class Column extends Component {
 
     this.zscroller.setDisabled(this.props.disabled);
     this.zscroller.scroller.setSnapSize(0, this.itemHeight);
+
     this.select(this.state.selectedValue);
   }
 
@@ -57,8 +57,9 @@ class Column extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.selectedValue !== nextState.selectedValue
-      || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
+    return true;
+    // return this.state.selectedValue !== nextState.selectedValue
+    //   || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
   }
 
   componentDidUpdate() {
@@ -140,12 +141,12 @@ class Column extends Component {
     const {
       children, prefixCls,
       className, itemStyle, displayMember,
-      indicatorStyle, valueMember,
+      valueMember,
     } = this.props;
 
     const { selectedValue } = this.state;
-    const itemClassName = `${prefixCls}-cascader-item`;
-    const selectedItemClassName = `${itemClassName} ${prefixCls}-cascader-item-selected`;
+    const itemClassName = `${prefixCls}-column-item`;
+    const selectedItemClassName = `${itemClassName} ${prefixCls}-column-item-selected`;
     const items = children.map((item) => {
       return (
         <div
@@ -158,13 +159,13 @@ class Column extends Component {
     });
     const pickerCls = {
       [className]: !!className,
-      [`${prefixCls}-cascader`]: true,
+      [`${prefixCls}-column`]: true,
     };
     return (
       <div
         className={classNames(pickerCls)} >
-        <div className={`${prefixCls}-cascader-indicator`} ref={(indicator) => { this.indicator = indicator; }} style={indicatorStyle} />
-        <div className={`${prefixCls}-cascader-content`} ref={(content) => { this.content = content; }}>
+        <div className={`${prefixCls}-column-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
+        <div className={`${prefixCls}-column-content`} ref={(content) => { this.content = content; }}>
           {items}
         </div>
       </div>
@@ -173,7 +174,7 @@ class Column extends Component {
 }
 
 Column.defaultProps = {
-  // prefixCls: 'za-cascaderpicker',
+  // prefixCls: 'za-columnpicker',
   prefixCls: 'za-picker',
   pure: true,
   onValueChange: () => {},
