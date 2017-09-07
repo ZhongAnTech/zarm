@@ -4,14 +4,19 @@ import classnames from 'classnames';
 
 class PanelHeader extends PureComponent {
   render() {
-    const { prefixCls, className, children, ...others } = this.props;
+    const { prefixCls, className, title, more } = this.props;
 
     const cls = classnames({
-      [`${prefixCls}`]: true,
+      [`${prefixCls}-header`]: true,
       [className]: !!className,
     });
 
-    return <div {...others} className={cls}>{children}</div>;
+    return (
+      <div className={cls}>
+        { title && <div className={`${prefixCls}-title`}>{title}</div> }
+        { more && <div className={`${prefixCls}-more`}>{more}</div> }
+      </div>
+    );
   }
 }
 
@@ -21,8 +26,7 @@ PanelHeader.propTypes = {
 };
 
 PanelHeader.defaultProps = {
-  prefixCls: 'za-panel-header',
-  className: null,
+  prefixCls: 'za-panel',
 };
 
 export default PanelHeader;

@@ -12,9 +12,7 @@ class Page extends Component {
         <Header title="指示器 Spinner" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Cell description={
                 <Spinner />

@@ -32,9 +32,7 @@ class Page extends Component {
         <Header title="模态框 Modal" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Cell
                 description={
@@ -78,9 +76,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>特定场景</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="特定场景" />
             <Panel.Body>
               <Cell
                 description={

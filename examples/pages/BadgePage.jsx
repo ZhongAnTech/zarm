@@ -13,9 +13,7 @@ class Page extends Component {
         <Header title="徽标 Badge" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Cell hasArrow title="点状" description={<Badge shape="dot" />} onClick={() => {}} />
               <Cell hasArrow title="直角" description={<Badge text="免费" />} onClick={() => {}} />
@@ -26,9 +24,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>上标位置</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="上标位置" />
             <Panel.Body className="custom-panel">
               <div className="box">
                 <Badge sup shape="dot"><div className="box-item" /></Badge>

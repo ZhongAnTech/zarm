@@ -29,9 +29,7 @@ class Page extends Component {
         <Header title="图片轮播 Swipe" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Swipe
                 onChangeEnd={(index) => {
@@ -43,9 +41,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>纵向</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="纵向" />
             <Panel.Body>
               <Swipe
                 direction="top"
@@ -56,9 +52,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>循环轮播</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="循环轮播" />
             <Panel.Body>
               <Swipe
                 ref={(ele) => { this.swipe = ele; }}
@@ -88,9 +82,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>自动循环轮播</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="自动循环轮播" />
             <Panel.Body>
               <Swipe
                 autoPlay

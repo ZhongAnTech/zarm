@@ -163,6 +163,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'panel',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/PanelPage'));
+        });
+      },
+    },
+    {
       path: 'progress',
       getComponent(location, cb) {
         require.ensure([], (require) => {

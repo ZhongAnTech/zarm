@@ -43,12 +43,16 @@ class Radio extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, type, theme, block, value, disabled, children } = this.props;
+    const { prefixCls, className, type, theme, shape, block, value, disabled, id, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
+      [`theme-${theme}`]: !!theme,
+      [`shape-${shape}`]: !!shape,
+      checked,
+      disabled,
     });
 
     if (type === 'cell') {
@@ -60,11 +64,23 @@ class Radio extends PureComponent {
       );
     }
 
+    if (type === 'button') {
+      return (
+        <Button className={cls} theme={theme} shape={shape} size="xs" block={block} bordered={!checked} disabled={disabled}>
+          <input type="radio" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          {children}
+        </Button>
+      );
+    }
+
     return (
-      <Button className={cls} theme={theme} size="xs" block={block} bordered={!checked} disabled={disabled}>
-        <input type="radio" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-        {children}
-      </Button>
+      <div className={cls}>
+        <div className={`${prefixCls}-wrapper`}>
+          <span className={`${prefixCls}-inner`} />
+          { children && <span className={`${prefixCls}-text`}>{children}</span> }
+          <input id={id} type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        </div>
+      </div>
     );
   }
 }
@@ -72,6 +88,7 @@ class Radio extends PureComponent {
 Radio.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
+  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   type: PropTypes.oneOf(['button', 'cell']),
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool, // eslint-disable-line
@@ -82,6 +99,7 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
   prefixCls: 'za-radio',
+  theme: 'primary',
   disabled: false,
   block: false,
 };

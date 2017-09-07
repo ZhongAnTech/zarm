@@ -28,35 +28,32 @@ $prefixCls: za-checkbox;
   }
 
   &-inner + &-text {
-    margin-left: r(5);
+    margin-left: r(10);
   }
 
   &-inner {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    width: r(14);
-    height: r(14);
-    background-color: #fff;
-    transition: border-color .1s cubic-bezier(.71, -0.46, .29, 1.46), background-color .1s cubic-bezier(.71, -0.46, .29, 1.46);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: r(20);
+    height: r(20);
     border: 1px solid $theme-primary;
-    border-radius: $radius-md;
+    border-radius: r(20);
 
     &:before {
       content: ' ';
-      position: absolute;
-      left: r(4);
-      top: r(1);
-      width: r(4);
-      height: r(8);
+      margin-top: r(-2);
+      width: r(6);
+      height: r(12);
       border: 1px solid $theme-primary;
       border-top: 0;
       border-left: 0;
       transform: rotate(45deg) scale(0);
-      transition: all .1s cubic-bezier(.71, -0.46, .88, .6);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
 
+  /* 组合 */
   &-group {
     &.block {
       display: flex;
@@ -128,17 +125,41 @@ $prefixCls: za-checkbox;
   &.disabled {
     .#{$prefixCls} {
       &-inner {
-        border-color: #d9d9d9;
-        background-color: #f3f3f3;
+        border-color: $disabled-background;
         cursor: not-allowed;
 
         &:before {
-          border-color: #ccc;
+          border-color: $disabled-background;
         }
       }
 
       &-text {
-        opacity: 0.5;
+        color: $disabled-color;
+      }
+    }
+  }
+
+  /* 形状 */
+  &.shape-radius {
+    .#{$prefixCls} {
+      &-inner {
+        border-radius: $radius-md;
+      }
+    }
+  }
+
+  &.shape-round {
+    .#{$prefixCls} {
+      &-inner {
+        border-radius: r(20);
+      }
+    }
+  }
+
+  &.shape-circle {
+    .#{$prefixCls} {
+      &-inner {
+        border-radius: r(1000);
       }
     }
   }

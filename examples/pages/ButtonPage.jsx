@@ -13,9 +13,7 @@ class Page extends Component {
         <Header title="按钮 Button" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Button theme="primary">普通按钮</Button>
               <Button theme="primary" block>块级按钮</Button>
@@ -25,9 +23,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>幽灵按钮</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="幽灵按钮" />
             <Panel.Body>
               <Button block bordered>幽灵按钮</Button>
               <Button block bordered active>激活状态的按钮</Button>
@@ -39,9 +35,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>多主题</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="主题" />
             <Panel.Body>
               <Button>default</Button>
               <Button theme="primary">primary</Button>
@@ -53,9 +47,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>按钮大小</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="大小" />
             <Panel.Body>
               <Button theme="primary" size="xl">xl</Button>
               <Button theme="primary" size="lg">lg</Button>
@@ -66,9 +58,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>多形状</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="形状" />
             <Panel.Body>
               <Button bordered shape="radius">圆角按钮</Button>
               <Button bordered shape="round">椭圆角按钮</Button>
@@ -78,9 +68,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>带icon的按钮</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="带Icon" />
             <Panel.Body>
               <Button bordered shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
               <Button bordered shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>

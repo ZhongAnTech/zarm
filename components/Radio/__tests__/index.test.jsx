@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow, mount } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Radio from '../index';
 
@@ -11,15 +11,28 @@ describe('Radio', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('defaultChecked', () => {
+    const wrapper = render(
+      <Radio defaultChecked value="0">选项一</Radio>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('type is button', () => {
+    const wrapper = render(
+      <Radio type="button" value="0">选项一</Radio>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('type is cell', () => {
-    const wrapper = shallow(
+    const wrapper = render(
       <Radio type="cell" value="0">选项一</Radio>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ checked: true });
   });
 
-  it('checked change true', () => {
+  it('receive new checked', () => {
     const onChange = jest.fn();
     const wrapper = shallow(
       <Radio value="0" onChange={onChange}>选项一</Radio>
@@ -62,17 +75,6 @@ describe('Radio.Group', () => {
     wrapper.setProps({ value: '1' });
   });
 
-  it('receive new radio checked', () => {
-    const wrapper = mount(
-      <Radio.Group value="0" onChange={jest.fn()}>
-        <Radio value="0">选项一</Radio>
-        <Radio value="1">选项二</Radio>
-        <Radio value="2">选项三</Radio>
-      </Radio.Group>
-    );
-    wrapper.find('input[type="radio"][value="1"]').simulate('change', { target: { checked: true } });
-  });
-
   it('defaultValue', () => {
     const wrapper = render(
       <Radio.Group defaultValue="1">
@@ -93,18 +95,6 @@ describe('Radio.Group', () => {
       </Radio.Group>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  // 指定默认值
-  it('disabled', () => {
-    const wrapper = render(
-      <Radio.Group>
-        <Radio value="0">选项一</Radio>
-        <Radio value="1">选项二</Radio>
-        <Radio value="2" disabled>选项三</Radio>
-      </Radio.Group>
-    );
-    expect(wrapper.find('input[type="radio"][value="2"]').prop('disabled')).toBe(true);
   });
 
   // 圆角

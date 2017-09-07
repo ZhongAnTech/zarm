@@ -4,14 +4,14 @@ import classnames from 'classnames';
 
 class Panel extends PureComponent {
   render() {
-    const { prefixCls, className, children, ...others } = this.props;
+    const { prefixCls, className, children } = this.props;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
-    return <div {...others} className={cls}>{children}</div>;
+    return <div className={cls}>{children}</div>;
   }
 }
 
@@ -22,7 +22,6 @@ Panel.propTypes = {
 
 Panel.defaultProps = {
   prefixCls: 'za-panel',
-  className: null,
 };
 
 export default Panel;

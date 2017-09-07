@@ -3,7 +3,7 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Panel, Cell, Picker } from '../../components';
-import District from './district';
+import District from '../mock/district';
 
 class Page extends Component {
 
@@ -23,9 +23,7 @@ class Page extends Component {
         <Header title="选择器 Picker" />
         <main>
           <Panel>
-            <Panel.Header>
-              <Panel.Title>基本</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="基本" />
             <Panel.Body>
               <Cell title="单列">
                 <Picker
@@ -162,9 +160,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>城市选择器</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="城市选择器" />
             <Panel.Body>
 
               <Cell title="省市选择">
@@ -179,9 +175,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>日期选择器</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="日期选择器" />
             <Panel.Body>
 
               <Cell title="年份选择">
@@ -227,9 +221,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header>
-              <Panel.Title>层叠式选择器</Panel.Title>
-            </Panel.Header>
+            <Panel.Header title="层叠式选择器" />
             <Panel.Body>
               <Cell title="级联选择">
                 <Picker.Stack

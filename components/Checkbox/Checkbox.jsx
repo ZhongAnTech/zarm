@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Cell from '../Cell';
 import Button from '../Button';
-import Icon from '../Icon';
 
 function getChecked(props, defaultChecked) {
   if ('checked' in props && props.checked) {
@@ -43,47 +42,47 @@ class Checkbox extends PureComponent {
   }
 
   render() {
-    const { prefixCls, className, theme, type, value, block, disabled, id, children } = this.props;
+    const { prefixCls, className, theme, shape, size, type, value, block, disabled, id, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
+      [`theme-${theme}`]: !!theme,
+      [`shape-${shape}`]: !!shape,
+      [`size-${size}`]: !!size,
       checked,
       disabled,
     });
 
+    const renderCheckbox = (
+      <div className={cls}>
+        <div className={`${prefixCls}-wrapper`}>
+          <span className={`${prefixCls}-inner`} />
+          { children && <span className={`${prefixCls}-text`}>{children}</span> }
+          <input id={id} type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        </div>
+      </div>
+    );
+
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
-          <input type="checkbox" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-          {children}
+        <Cell disabled={disabled} onClick={this.onValueChange}>
+          {renderCheckbox}
         </Cell>
       );
     }
 
     if (type === 'button') {
       return (
-        <Button className={cls} theme={theme} size="xs" block={block} bordered={!checked} disabled={disabled}>
-          <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <Button className={cls} theme={theme} shape={shape} size="xs" block={block} bordered={!checked} disabled={disabled}>
+          <input type="checkbox" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
           {children}
         </Button>
       );
     }
 
-    return (
-      <div className={cls}>
-        <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`} />
-          {
-            children
-              ? <span className={`${prefixCls}-text`}>{children}</span>
-              : null
-          }
-          <input id={id} type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-        </div>
-      </div>
-    );
+    return renderCheckbox;
   }
 }
 
@@ -91,6 +90,7 @@ Checkbox.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
+  size: PropTypes.oneOf(['lg']),
   type: PropTypes.oneOf(['button', 'cell']),
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool, // eslint-disable-line
