@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
-import ColumnGroup from './ColumnGroup';
-import Cascader from './Cascader';
+import Column from '../Column';
 import Popup from '../Popup';
 
 
@@ -182,7 +181,7 @@ class Picker extends Component {
 
     if (this.state.cascade) {
       PickerCol = (
-        <Cascader
+        <Column.Cascader
           prefixCls={prefixCls}
           data={data}
           value={this.state.value}
@@ -194,7 +193,7 @@ class Picker extends Component {
       );
     } else {
       PickerCol = (
-        <ColumnGroup
+        <Column.Group
           className={className}
           prefixCls={prefixCls}
           displayMember={displayMember}
@@ -202,7 +201,7 @@ class Picker extends Component {
           selectedValue={value}
           onValueChange={v => this.onValueChange(v)} >
           {cols}
-        </ColumnGroup>
+        </Column.Group>
       );
     }
 
