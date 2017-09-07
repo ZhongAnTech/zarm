@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Cell from '../Cell';
 import Button from '../Button';
+import Icon from '../Icon';
 
 function getChecked(props, defaultChecked) {
   if ('checked' in props && props.checked) {
@@ -54,20 +55,11 @@ class Radio extends PureComponent {
       disabled,
     });
 
-    const renderRadio = (
-      <div className={cls}>
-        <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`} />
-          { children && <span className={`${prefixCls}-text`}>{children}</span> }
-          <input id={id} type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
-        </div>
-      </div>
-    );
-
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} onClick={this.onValueChange}>
-          {renderRadio}
+        <Cell disabled={disabled} description={checked ? <Icon type="right" theme={disabled ? null : theme} /> : null} onClick={() => {}}>
+          <input type="radio" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          {children}
         </Cell>
       );
     }
@@ -81,7 +73,15 @@ class Radio extends PureComponent {
       );
     }
 
-    return renderRadio;
+    return (
+      <div className={cls}>
+        <div className={`${prefixCls}-wrapper`}>
+          <span className={`${prefixCls}-inner`} />
+          { children && <span className={`${prefixCls}-text`}>{children}</span> }
+          <input id={id} type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        </div>
+      </div>
+    );
   }
 }
 

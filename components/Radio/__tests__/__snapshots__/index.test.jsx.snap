@@ -80,26 +80,12 @@ exports[`Radio type is cell 1`] = `
       <div
         class="za-cell-content"
       >
-        <div
-          class="za-radio theme-primary"
-        >
-          <div
-            class="za-radio-wrapper"
-          >
-            <span
-              class="za-radio-inner"
-            />
-            <span
-              class="za-radio-text"
-            >
-              选项一
-            </span>
-            <input
-              class="za-radio-input"
-              type="radio"
-            />
-          </div>
-        </div>
+        <input
+          class="za-radio-input"
+          type="radio"
+          value="0"
+        />
+        选项一
       </div>
     </div>
     <div
