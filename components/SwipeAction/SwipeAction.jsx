@@ -26,6 +26,7 @@ class SwipeAction extends PureComponent {
   }
 
   onDragStart() {
+    event.preventDefault();
     if (this.isOpen) {
       this.touchEnd = false;
       this.close();
@@ -35,6 +36,7 @@ class SwipeAction extends PureComponent {
   }
 
   onDragMove(event, { offsetX, offsetY }) {
+    event.preventDefault();
     if (!this.touchEnd) return;
 
     const { disabled } = this.props;
@@ -59,7 +61,6 @@ class SwipeAction extends PureComponent {
 
   onDragEnd(event, { offsetX, startTime }) {
     event.preventDefault();
-
     const { duration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const btnsLeftWidth = this.left && this.left.offsetWidth;
