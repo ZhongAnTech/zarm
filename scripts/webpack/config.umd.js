@@ -43,6 +43,7 @@ const cssConfig = {
   disable: false,
   allChunks: true,
 };
+
 if (env === 'production') {
   cssConfig.filename = '[name].min.css';
   config.plugins.push(new ExtractTextPlugin(cssConfig));
@@ -79,6 +80,8 @@ config.plugins.push(new webpack.DefinePlugin({
   __DEBUG__: false,
 }));
 
-// config.plugins.push(new BundleAnalyzerPlugin());
+// config.plugins.push(new BundleAnalyzerPlugin({
+//   analyzerMode: 'static'
+// }));
 
 module.exports = config;
