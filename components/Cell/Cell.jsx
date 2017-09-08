@@ -41,7 +41,7 @@ class Cell extends PureComponent {
       : null;
 
     return (
-      <div className={cls} onClick={onClick} {...others}>
+      <div className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>
         <div className={`${prefixCls}-inner`}>
           <div className={`${prefixCls}-header`}>
             {iconRender}
