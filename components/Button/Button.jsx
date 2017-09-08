@@ -34,13 +34,13 @@ class Button extends PureComponent {
 
     return (
       <a
-        {...others}
         role="button"
         tabIndex={tabIndex}
         aria-disabled={disabled}
         className={classes}
+        onClick={e => !disabled && onClick(e)}
         onTouchStart={() => {}}
-        onClick={e => !disabled && onClick(e)}>
+        {...others}>
         {contentRender}
       </a>
     );
