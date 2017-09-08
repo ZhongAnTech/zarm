@@ -3,7 +3,6 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Panel, Cell, Spinner } from '../../components';
-import '../styles/pages/SpinnerPage';
 
 class Page extends Component {
   render() {
