@@ -1,14 +1,14 @@
-@import "normalize";
-
-html {
-  box-sizing: border-box;
-}
-
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Helvetica, Microsoft YaHei, Arial;
+  line-height: 1.42857143;
+  color: #383838;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 input,
@@ -20,11 +20,21 @@ textarea {
   line-height: inherit;
 }
 
-a,
+a {
+  color: #12c287;
+  text-decoration: none;
+}
+
 a:hover,
 a:focus,
 a:visited {
-  text-decoration: none;
+  color: #12c287;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 
 figure {

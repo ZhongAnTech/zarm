@@ -1,36 +1,21 @@
 @import "normalize";
 
-html {
-  box-sizing: border-box;
-}
-
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+*[contenteditable] {
+  -webkit-user-select: auto !important;
 }
 
-a,
-a:hover,
-a:focus,
-a:visited {
+*:focus {
+  outline: none;
+}
+
+a {
+  background: transparent;
   text-decoration: none;
-}
-
-figure {
-  margin: 0;
-}
-
-img {
-  vertical-align: middle;
+  outline: none;
 }
