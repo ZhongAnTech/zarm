@@ -35,7 +35,6 @@ class SwipeAction extends PureComponent {
   }
 
   onDragMove(event, { offsetX, offsetY }) {
-    event.preventDefault();
     if (!this.touchEnd) return;
 
     const { disabled } = this.props;
@@ -53,6 +52,8 @@ class SwipeAction extends PureComponent {
     const distanceX = Math.abs(offsetX);
     const distanceY = Math.abs(offsetY);
     if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) return false;
+
+    event.preventDefault();
 
     this.doTransition({ offsetLeft: offsetX, duration: 0 });
     return true;
