@@ -57,11 +57,6 @@ $prefixCls: za-checkbox;
   &-group {
     &.block {
       display: flex;
-
-      /* 通栏模式字体增大 */
-      .#{$prefixCls} {
-        font-size: r(15);
-      }
     }
 
     &.shape-radius {
