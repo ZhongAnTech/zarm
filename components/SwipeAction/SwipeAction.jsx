@@ -101,6 +101,8 @@ class SwipeAction extends PureComponent {
   }
 
   onCloseSwipe(e) {
+    if (!this.wrap) return;
+
     if (this.isOpen) {
       const pNode = ((node) => {
         while (node.parentNode && node.parentNode !== document.body) {
