@@ -1,0 +1,17 @@
+@import "../functions/index";
+
+.pull-page {
+  .custom-control {
+    display: flex;
+    align-items: center;
+    padding: r(10) 0;
+    height: r(50);
+    color: #999;
+    font-size: r(14);
+
+    img {
+      width: r(40);
+      height: r(40);
+    }
+  }
+}

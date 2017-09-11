@@ -11,32 +11,32 @@ class Pull extends PureComponent {
     this.state = {
       offsetY: 0,
       duration: 0,
-      actionState: props.loading ? 'loading' : 'normal',
+      actionState: props.refreshing ? 'loading' : 'normal',
     };
     this.onDragMove = this.onDragMove.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('loading' in nextProps) {
-      const actionState = nextProps.loading ? 'loading' : 'success';
+    if ('refreshing' in nextProps && nextProps.refreshing !== this.props.refreshing) {
+      const actionState = nextProps.refreshing ? 'loading' : 'success';
       this.doAction(actionState);
     }
   }
 
   onDragMove(event, { offsetY }) {
     if (offsetY < 0) return;
+    if (document.body.scrollTop > 0) return;
 
-    if (this.pull.scrollTop > 0 || document.body.scrollTop > 0) return;
-
+    // 解决低端安卓系统只触发一次touchmove事件的bug
     event.preventDefault();
 
     const { moveDistance } = this.props;
-    if (offsetY < moveDistance) {
-      this.doAction('pull', offsetY);
-    } else {
-      this.doAction('drop', offsetY);
-    }
+    const action = ((offsetY / 2) < moveDistance)
+      ? 'pull'
+      : 'drop';
+
+    this.doAction(action, offsetY);
     return true;
   }
 
@@ -48,6 +48,7 @@ class Pull extends PureComponent {
       this.doAction('normal');
       return;
     }
+
     typeof onRefresh === 'function' && onRefresh();
   }
 
@@ -56,14 +57,11 @@ class Pull extends PureComponent {
   }
 
   doAction(actionState, offset) {
-    const { duration } = this.props;
+    const { duration, stayTime } = this.props;
 
     this.setState({ actionState });
     switch (actionState) {
       case 'pull':
-        this.doTransition({ offsetY: offset / 2, duration: 0 });
-        break;
-
       case 'drop':
         this.doTransition({ offsetY: offset / 2, duration: 0 });
         break;
@@ -76,7 +74,7 @@ class Pull extends PureComponent {
         this.doTransition({ offsetY: 50, duration: 0 });
         setTimeout(() => {
           this.doAction('normal');
-        }, 2000);
+        }, stayTime);
         break;
 
       default:
@@ -86,15 +84,20 @@ class Pull extends PureComponent {
   }
 
   renderControlTop(offsetY) {
-    const { prefixCls, moveDistance } = this.props;
+    const { prefixCls, moveDistance, pullDownRender } = this.props;
     const { actionState } = this.state;
+    const percent = ((offsetY < moveDistance ? offsetY : moveDistance) * 100) / moveDistance;
+
+    if (pullDownRender) {
+      return pullDownRender(actionState, percent);
+    }
+
     const cls = classnames({
       [`${prefixCls}-control`]: true,
     });
 
     switch (actionState) {
       case 'pull':
-        const percent = ((offsetY < moveDistance ? offsetY : moveDistance) * 100) / moveDistance;
         return (
           <div className={cls}>
             <Spinner percent={percent} />
@@ -143,8 +146,6 @@ class Pull extends PureComponent {
     const style = {
       WebkitTransitionDuration: `${duration}ms`,
       transitionDuration: `${duration}ms`,
-      // WebkitTransform: `translate3d(0, ${offsetY}px, 0)`,
-      // transform: `translate3d(0, ${offsetY}px, 0)`,
       height: offsetY,
     };
 
@@ -152,7 +153,7 @@ class Pull extends PureComponent {
       <Drag
         onDragMove={this.onDragMove}
         onDragEnd={this.onDragEnd}>
-        <div className={classes} ref={(ele) => { this.pull = ele; }}>
+        <div className={classes}>
           <div className={`${prefixCls}-down`} style={style}>
             {this.renderControlTop(offsetY)}
           </div>
@@ -166,15 +167,20 @@ class Pull extends PureComponent {
 Pull.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
+  refreshing: PropTypes.bool,
   moveDistance: PropTypes.number,
   duration: PropTypes.number,
+  stayTime: PropTypes.number,
   onRefresh: PropTypes.func,
+  pullDownRender: PropTypes.func,
 };
 
 Pull.defaultProps = {
   prefixCls: 'za-pull',
-  moveDistance: 100,
+  refreshing: false,
+  moveDistance: 50,
   duration: 300,
+  stayTime: 2000,
 };
 
 export default Pull;
