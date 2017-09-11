@@ -36,6 +36,7 @@ class Page extends PureComponent {
               <Cell hasArrow title="按钮 Button" onClick={() => hashHistory.push('/button')} />
               <Cell hasArrow title="模态框 Modal" onClick={() => hashHistory.push('/modal')} />
               <Cell hasArrow title="弹出框 Popup" onClick={() => hashHistory.push('/popup')} />
+              <Cell hasArrow title="下拉刷新 Pull" onClick={() => hashHistory.push('/pull')} />
               <Cell hasArrow title="滑动操作 SwipeAction" onClick={() => hashHistory.push('/swipe-action')} />
               <Cell hasArrow title="轻提示 Toast" onClick={() => hashHistory.push('/toast')} />
             </Panel.Body>

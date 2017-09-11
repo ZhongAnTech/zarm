@@ -65,10 +65,16 @@ class Page extends Component {
                   const cls = 'custom-control';
                   switch (actionState) {
                     case 'pull':
-                    case 'drop':
                       return (
                         <div className={cls} style={{ transform: `scale(${percent / 100})` }}>
                           <img src={logo} alt="" />
+                        </div>
+                      );
+
+                    case 'drop':
+                      return (
+                        <div className={cls}>
+                          释放加载
                         </div>
                       );
 
