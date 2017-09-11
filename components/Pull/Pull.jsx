@@ -109,7 +109,7 @@ class Pull extends PureComponent {
         return (
           <div className={cls}>
             <Spinner percent={100} />
-            <span>释放刷新</span>
+            <span>释放加载</span>
           </div>
         );
 
