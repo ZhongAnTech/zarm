@@ -66,7 +66,8 @@ class Page extends Component {
             <Panel.Body>
               <Pull
                 refreshing={this.state.refreshing2}
-                moveDistance={80}
+                initialDistance={0}
+                refreshDistance={80}
                 onRefresh={() => {
                   this.fetchData('refreshing2');
                 }}
