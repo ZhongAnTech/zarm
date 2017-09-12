@@ -1,4 +1,4 @@
-# 下拉 Pull
+# 下拉刷新 Pull
 
 [demo页面](https://zhongantecheng.github.io/zarm/#/pull)
 
