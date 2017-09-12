@@ -26,6 +26,7 @@ import 'zarm/styles/index.scss';
 ```js
 import Button from 'zarm/lib/Button';
 import 'zarm/styles/core/index.scss';
+import 'zarm/styles/variables.scss';
 import 'zarm/styles/components/Button.scss';
 ```
 
@@ -60,14 +61,12 @@ import './styles/index.scss';
 
 ```css
 @import "node_modules/zarm/styles/core/index";
-@import "variables";
-@import "node_modules/zarm/styles/components/index";
+@import "node_modules/zarm/styles/variables";
+@import "./variables";
+@import "node_modules/zarm/styles/components";
 ```
 
-通过自己的variables文件重写sass变量。
-
-甚至可以拷贝 `./node_modules/zarm/styles` 文件，自行修改组件的sass文件。
-
+通过自己的variables.scss文件重写sass变量。
 
 ### Document 文档
 [中文](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/SUMMARY.md)

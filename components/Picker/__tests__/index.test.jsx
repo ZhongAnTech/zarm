@@ -46,16 +46,16 @@ describe('Picker', () => {
     wrapper.unmount();
   });
 
-  it('DatePicker', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(
-      <Picker.Date mode="date" />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ value: '2017-09-06' });
-    jest.runAllTimers();
-    wrapper.unmount();
-  });
+  // it('DatePicker', () => {
+  //   jest.useFakeTimers();
+  //   const wrapper = mount(
+  //     <Picker.Date mode="date" />
+  //   );
+  //   expect(toJson(wrapper)).toMatchSnapshot();
+  //   wrapper.setProps({ value: '2017-09-06' });
+  //   jest.runAllTimers();
+  //   wrapper.unmount();
+  // });
 
   it('StackPicker', () => {
     jest.useFakeTimers();

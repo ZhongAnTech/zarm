@@ -1,4 +1,3 @@
-
 *,
 *:before,
 *:after {
@@ -11,15 +10,6 @@ body {
   line-height: 1.42857143;
   color: #383838;
   -webkit-font-smoothing: subpixel-antialiased;
-}
-
-input,
-button,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
 }
 
 a {
@@ -39,11 +29,6 @@ a:focus {
   outline-offset: -2px;
 }
 
-figure {
-  margin: 0;
-}
-
 img {
   vertical-align: middle;
 }
-

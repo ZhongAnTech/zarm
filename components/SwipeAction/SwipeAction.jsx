@@ -53,13 +53,13 @@ class SwipeAction extends PureComponent {
     const distanceY = Math.abs(offsetY);
     if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) return false;
 
+    event.preventDefault();
+
     this.doTransition({ offsetLeft: offsetX, duration: 0 });
     return true;
   }
 
   onDragEnd(event, { offsetX, startTime }) {
-    event.preventDefault();
-
     const { duration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const btnsLeftWidth = this.left && this.left.offsetWidth;
@@ -101,6 +101,8 @@ class SwipeAction extends PureComponent {
   }
 
   onCloseSwipe(e) {
+    if (!this.wrap) return;
+
     if (this.isOpen) {
       const pNode = ((node) => {
         while (node.parentNode && node.parentNode !== document.body) {

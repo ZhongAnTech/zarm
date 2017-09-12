@@ -2,8 +2,7 @@ import { Component, Children } from 'react';
 // import Eruda from 'eruda';
 // import Events from '../utils/events';
 
-import '../styles/core/index';  // page styles
-import '../../styles/index';  // components styles
+import '../styles/index';  // page styles
 
 class App extends Component {
 

@@ -120,9 +120,6 @@ class Swipe extends Component {
       return false;
     }
 
-    this.scrolling = false;
-    event.preventDefault();
-
     // 设置不循环的时候
     if (!this.props.loop) {
       // 在首页时禁止拖动
@@ -137,6 +134,9 @@ class Swipe extends Component {
         if (!this.isDirectionX() && offsetY > 0) return false;
       }
     }
+
+    this.scrolling = false;
+    event.preventDefault();
 
     this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
     return true;
