@@ -10,3 +10,4 @@ examples
 travis.yml
 devServer.js
 webpack.config.*.js
+lib/**/__tests__/*.*

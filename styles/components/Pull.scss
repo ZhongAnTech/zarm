@@ -1,0 +1,29 @@
+$prefixCls: za-pull;
+
+.#{$prefixCls} {
+  &-down {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    transition: all .3s;
+    height: 0;
+  }
+
+  &-control {
+    display: flex;
+    align-items: center;
+    padding: r(10) 0;
+    height: r(50);
+    color: #999;
+    font-size: r(14);
+
+    i {
+      font-size: r(22);
+    }
+
+    span {
+      margin-left: r(8);
+    }
+  }
+}

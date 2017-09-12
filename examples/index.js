@@ -105,6 +105,14 @@ const rootRoute = {
       },
     },
     {
+      path: 'pull',
+      getComponent(location, cb) {
+        require.ensure([], (require) => {
+          cb(null, require('./pages/PullPage'));
+        });
+      },
+    },
+    {
       path: 'swipe-action',
       getComponent(location, cb) {
         require.ensure([], (require) => {

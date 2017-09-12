@@ -19,6 +19,7 @@
     "no-unused-vars": "warn",
     "global-require": "off",
     "max-len": ["warn", 200],
+    "no-case-declarations": "off",
     "no-console": ["warn", { "allow": ["debug", "info", "warn", "error"] }],
     "no-bitwise": ["error", { "allow": ["~"] }],
     "no-underscore-dangle": "off",
