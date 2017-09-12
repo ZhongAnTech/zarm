@@ -5,6 +5,15 @@ import Footer from '../components/Footer';
 import { Panel, Cell, Pull, Spinner } from '../../components';
 import '../styles/pages/PullPage';
 
+const ACTION_STATE = {
+  normal: 0,  // 普通
+  pull: 1,    // 下拉状态（未满足刷新条件）
+  drop: 2,    // 可释放状态（满足刷新条件）
+  loading: 3, // 加载中
+  success: 4, // 加载成功
+  failure: 5, // 加载失败
+}
+
 const logo = require('../images/icons/state.png');
 
 class Page extends Component {
@@ -63,29 +72,30 @@ class Page extends Component {
                 }}
                 pullDownRender={(actionState, percent) => {
                   const cls = 'custom-control';
+
                   switch (actionState) {
-                    case 'pull':
+                    case ACTION_STATE.pull:
                       return (
                         <div className={cls} style={{ transform: `scale(${percent / 100})` }}>
                           <img src={logo} alt="" />
                         </div>
                       );
 
-                    case 'drop':
+                    case ACTION_STATE.drop:
                       return (
                         <div className={cls}>
                           释放加载
                         </div>
                       );
 
-                    case 'loading':
+                    case ACTION_STATE.loading:
                       return (
                         <div className={cls}>
                           <Spinner className="rotate360" />
                         </div>
                       );
 
-                    case 'success':
+                    case ACTION_STATE.success:
                       return (
                         <div className={cls}>
                           加载成功

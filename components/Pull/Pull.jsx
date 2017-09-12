@@ -5,13 +5,24 @@ import Drag from '../Drag';
 import Spinner from '../Spinner';
 import Icon from '../Icon';
 
+const ACTION_STATE = {
+  normal: 0,  // 普通
+  pull: 1,    // 下拉状态（未满足刷新条件）
+  drop: 2,    // 可释放状态（满足刷新条件）
+  loading: 3, // 加载中
+  success: 4, // 加载成功
+  failure: 5, // 加载失败
+};
+
 class Pull extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       offsetY: 0,
       duration: 0,
-      actionState: props.refreshing ? 'loading' : 'normal',
+      actionState: props.refreshing
+        ? ACTION_STATE.loading
+        : ACTION_STATE.normal,
     };
     this.onDragMove = this.onDragMove.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -19,7 +30,10 @@ class Pull extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if ('refreshing' in nextProps && nextProps.refreshing !== this.props.refreshing) {
-      const actionState = nextProps.refreshing ? 'loading' : 'success';
+      const actionState = nextProps.refreshing
+        ? ACTION_STATE.loading
+        : ACTION_STATE.success;
+
       this.doAction(actionState);
     }
   }
@@ -33,8 +47,8 @@ class Pull extends PureComponent {
 
     const { moveDistance } = this.props;
     const action = ((offsetY / 2) < moveDistance)
-      ? 'pull'
-      : 'drop';
+      ? ACTION_STATE.pull
+      : ACTION_STATE.drop;
 
     this.doAction(action, offsetY);
     return true;
@@ -44,8 +58,8 @@ class Pull extends PureComponent {
     const { onRefresh } = this.props;
     const { actionState } = this.state;
 
-    if (actionState === 'pull') {
-      this.doAction('normal');
+    if (actionState === ACTION_STATE.pull) {
+      this.doAction(ACTION_STATE.normal);
       return;
     }
 
@@ -61,19 +75,19 @@ class Pull extends PureComponent {
 
     this.setState({ actionState });
     switch (actionState) {
-      case 'pull':
-      case 'drop':
+      case ACTION_STATE.pull:
+      case ACTION_STATE.drop:
         this.doTransition({ offsetY: offset / 2, duration: 0 });
         break;
 
-      case 'loading':
+      case ACTION_STATE.loading:
         this.doTransition({ offsetY: 50, duration });
         break;
 
-      case 'success':
+      case ACTION_STATE.success:
         this.doTransition({ offsetY: 50, duration: 0 });
         setTimeout(() => {
-          this.doAction('normal');
+          this.doAction(ACTION_STATE.normal);
         }, stayTime);
         break;
 
@@ -97,7 +111,7 @@ class Pull extends PureComponent {
     });
 
     switch (actionState) {
-      case 'pull':
+      case ACTION_STATE.pull:
         return (
           <div className={cls}>
             <Spinner percent={percent} />
@@ -105,7 +119,7 @@ class Pull extends PureComponent {
           </div>
         );
 
-      case 'drop':
+      case ACTION_STATE.drop:
         return (
           <div className={cls}>
             <Spinner percent={100} />
@@ -113,7 +127,7 @@ class Pull extends PureComponent {
           </div>
         );
 
-      case 'loading':
+      case ACTION_STATE.loading:
         return (
           <div className={cls}>
             <Spinner className="rotate360" />
@@ -121,7 +135,7 @@ class Pull extends PureComponent {
           </div>
         );
 
-      case 'success':
+      case ACTION_STATE.success:
         return (
           <div className={cls}>
             <Icon type="right-round" theme="success" />
