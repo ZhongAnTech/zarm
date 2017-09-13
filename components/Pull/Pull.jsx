@@ -8,7 +8,7 @@ import Icon from '../Icon';
 const ACTION_STATE = {
   normal: 0,  // 普通
   pull: 1,    // 下拉状态（未满足刷新条件）
-  drop: 2,    // 可释放状态（满足刷新条件）
+  drop: 2,    // 释放立即刷新（满足刷新条件）
   loading: 3, // 加载中
   success: 4, // 加载成功
   failure: 5, // 加载失败
@@ -49,8 +49,8 @@ class Pull extends PureComponent {
     // 移动距离为拖动距离的一半
     const offset = offsetY / 2;
 
-    const { refreshDistance } = this.props;
-    const action = (offset < refreshDistance)
+    const { refreshDistance, refreshInitDistance } = this.props;
+    const action = ((offset - refreshInitDistance) < refreshDistance)
       ? ACTION_STATE.pull
       : ACTION_STATE.drop;
 
@@ -131,7 +131,7 @@ class Pull extends PureComponent {
         return (
           <div className={cls}>
             <Spinner percent={100} />
-            <span>释放加载</span>
+            <span>释放立即刷新</span>
           </div>
         );
 
@@ -202,7 +202,7 @@ Pull.defaultProps = {
   prefixCls: 'za-pull',
   refreshing: false,
   refreshInitDistance: 20,
-  refreshDistance: 60,
+  refreshDistance: 50,
   duration: 300,
   stayTime: 2000,
 };
