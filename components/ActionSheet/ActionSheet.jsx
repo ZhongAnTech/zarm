@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Popup from '../Popup';
 
 class ActionSheet extends PureComponent {
+
   render() {
     const { prefixCls, className, shape, visible, onMaskClick, actions, cancelText, onCancel } = this.props;
 
@@ -55,12 +56,10 @@ ActionSheet.propTypes = {
 
 ActionSheet.defaultProps = {
   prefixCls: 'za-actionsheet',
-  className: null,
   shape: 'radius',
   visible: false,
   actions: [],
   onMaskClick: Popup.defaultProps.onMaskClick,
-  onCancel: null,
   cancelText: '取消',
 };
 

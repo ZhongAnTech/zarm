@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Spinner from '../Spinner';
 
 class Button extends PureComponent {
+
   render() {
     const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, tabIndex, onClick, children, ...others } = this.props;
 
@@ -65,17 +66,13 @@ Button.propTypes = {
 
 Button.defaultProps = {
   prefixCls: 'za-button',
-  className: null,
   theme: 'default',
-  size: null,
-  shape: null,
   block: false,
   bordered: false,
   active: false,
   focus: false,
   disabled: false,
   loading: false,
-  tabIndex: null,
   onClick() {},
 };
 

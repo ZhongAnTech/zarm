@@ -16,13 +16,12 @@ import handleFileInfo from './utils/handleFileInfo';
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
 class Uploader extends PureComponent {
+
   constructor(props) {
     super(props);
-
     this.state = {
       fileList: [],
     };
-
     this.handleDefaultInput = this.handleDefaultInput.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -54,10 +53,10 @@ class Uploader extends PureComponent {
         fileList.push(data);
 
         if (files.length === fileList.length) {
-          onChange(fileList);
+          typeof onChange === 'function' && onChange(fileList);
         }
       } else {
-        onChange(data);
+        typeof onChange === 'function' && onChange(data);
       }
     };
 
@@ -105,14 +104,8 @@ Uploader.propTypes = {
 
 Uploader.defaultProps = {
   prefixCls: 'za-uploader',
-  className: null,
   disabled: false,
   multiple: false,
-  accept: null,
-  capture: null,
-  // () => { file, fileType, fileSize, fileName, thumbnail }
-  onChange() { },
-  // () => boolean
   onBeforeSelect() { return true; },
 };
 

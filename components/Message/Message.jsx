@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 class Message extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -62,13 +63,9 @@ Message.propTypes = {
 
 Message.defaultProps = {
   prefixCls: 'za-message',
-  className: null,
   theme: 'primary',
-  size: null,
-  icon: null,
   hasArrow: false,
   hasClosable: false,
-  onClick() {},
 };
 
 export default Message;

@@ -5,6 +5,7 @@ import Events from '../utils/events';
 import Mask from '../Mask';
 
 class Modal extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -142,13 +143,10 @@ Modal.propTypes = {
 
 Modal.defaultProps = {
   prefixCls: 'za-modal',
-  className: null,
-  shape: null,
   visible: false,
   animationType: 'fade',
   animationDuration: 200,
   width: '70%',
-  onMaskClick() {},
 };
 
 export default Modal;

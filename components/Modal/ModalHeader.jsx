@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 class ModalHeader extends PureComponent {
+
   render() {
     const { prefixCls, className, title, onClose, ...others } = this.props;
 
@@ -34,9 +35,7 @@ ModalHeader.propTypes = {
 
 ModalHeader.defaultProps = {
   prefixCls: 'za-modal-header',
-  className: null,
   title: '',
-  onClose: null,
 };
 
 export default ModalHeader;

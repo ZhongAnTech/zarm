@@ -45,9 +45,7 @@ Spinner.propTypes = {
 
 Spinner.defaultProps = {
   prefixCls: 'za-spinner',
-  className: null,
   theme: 'primary',
-  size: null,
   strokeWidth: 4,
   percent: 15,
 };

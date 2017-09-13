@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class PanelBody extends PureComponent {
+
   render() {
     const { prefixCls, className, children, ...others } = this.props;
 
@@ -22,7 +23,6 @@ PanelBody.propTypes = {
 
 PanelBody.defaultProps = {
   prefixCls: 'za-panel-body',
-  className: null,
 };
 
 export default PanelBody;

@@ -14,6 +14,7 @@ function getValue(props, defaultValue) {
 }
 
 class Stepper extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -123,16 +124,9 @@ Stepper.propTypes = {
 
 Stepper.defaultProps = {
   prefixCls: 'za-stepper',
-  className: null,
   theme: 'primary',
-  size: null,
-  shape: null,
   disabled: false,
   step: 1,
-  min: null,
-  max: null,
-  onInputChange() {},
-  onChange() {},
 };
 
 export default Stepper;

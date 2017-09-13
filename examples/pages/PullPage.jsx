@@ -7,12 +7,12 @@ import '../styles/pages/PullPage';
 
 const ACTION_STATE = {
   normal: 0,  // 普通
-  pull: 1,    // 下拉状态（未满足刷新条件）
-  drop: 2,    // 可释放状态（满足刷新条件）
+  pull: 1,    // 下拉刷新（未满足刷新条件）
+  drop: 2,    // 释放立即刷新（满足刷新条件）
   loading: 3, // 加载中
   success: 4, // 加载成功
   failure: 5, // 加载失败
-}
+};
 
 const logo = require('../images/icons/state.png');
 
