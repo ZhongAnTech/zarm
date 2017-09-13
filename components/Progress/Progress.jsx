@@ -41,7 +41,6 @@ Progress.propTypes = {
 
 Progress.defaultProps = {
   prefixCls: 'za-progress',
-  className: null,
   theme: Spinner.defaultProps.theme,
   shape: 'line',
   strokeWidth: Spinner.defaultProps.strokeWidth,

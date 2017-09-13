@@ -15,6 +15,7 @@ const ACTION_STATE = {
 };
 
 class Pull extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
