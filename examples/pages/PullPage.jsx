@@ -71,7 +71,7 @@ class Page extends Component {
                 onRefresh={() => {
                   this.fetchData('refreshing2');
                 }}
-                pullDownRender={(actionState, percent) => {
+                refreshRender={(actionState, percent) => {
                   const cls = 'custom-control';
 
                   switch (actionState) {
