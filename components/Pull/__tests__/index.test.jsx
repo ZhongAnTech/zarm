@@ -30,9 +30,9 @@ describe('Pull', () => {
     const onRefresh = jest.fn();
     const wrapper = shallow(
       <Pull
-        moveDistance={80}
-        onRefresh={onRefresh}
-        pullDownRender={(actionState, percent) => {
+        refreshInitDistance={0}
+        refreshDistance={80}
+        refreshRender={(actionState, percent) => {
           const cls = 'custom-control';
           switch (actionState) {
             case 'pull':
@@ -58,7 +58,8 @@ describe('Pull', () => {
             default:
               return null;
           }
-        }}>
+        }}
+        onRefresh={onRefresh}>
         <div>1</div>
         <div>2</div>
         <div>3</div>

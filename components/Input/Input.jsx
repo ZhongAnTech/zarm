@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Autosize from 'autosize';
 
 class Input extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {

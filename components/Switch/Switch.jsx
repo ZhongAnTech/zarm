@@ -13,6 +13,7 @@ function getChecked(props, defaultChecked) {
 }
 
 class Switch extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class PanelHeader extends PureComponent {
+
   render() {
     const { prefixCls, className, title, more } = this.props;
 
