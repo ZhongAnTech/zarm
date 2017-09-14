@@ -4,10 +4,8 @@ exports[`Modal renders correctly 1`] = `
 <Modal
   animationDuration={200}
   animationType="fade"
-  className={null}
   onMaskClick={[Function]}
   prefixCls="za-modal"
-  shape={null}
   visible={true}
   width="70%"
 >
@@ -35,7 +33,6 @@ exports[`Modal renders correctly 1`] = `
         }
       >
         <ModalHeader
-          className={null}
           onClose={[Function]}
           prefixCls="za-modal-header"
           title="标题"
@@ -52,7 +49,6 @@ exports[`Modal renders correctly 1`] = `
               className="za-modal-header-close"
               onClick={[Function]}
               prefixCls="za-icon"
-              theme={null}
               type="wrong"
             >
               <i
@@ -80,7 +76,6 @@ exports[`Modal renders correctly 1`] = `
       </div>
     </div>
     <Mask
-      className={null}
       onClose={[Function]}
       prefixCls="za-mask"
       type="normal"

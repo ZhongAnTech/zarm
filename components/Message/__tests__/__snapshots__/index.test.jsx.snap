@@ -17,9 +17,7 @@ exports[`Message hasArrow 1`] = `
     className="za-message-footer"
   >
     <Icon
-      className={null}
       prefixCls="za-icon"
-      theme={null}
       type="arrow-right"
     />
   </div>
@@ -43,10 +41,8 @@ exports[`Message hasClosable 1`] = `
     className="za-message-footer"
   >
     <Icon
-      className={null}
       onClick={[Function]}
       prefixCls="za-icon"
-      theme={null}
       type="wrong"
     />
   </div>
