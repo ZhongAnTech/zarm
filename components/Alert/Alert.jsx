@@ -4,6 +4,7 @@ import Modal from '../Modal';
 import Button from '../Button';
 
 class Alert extends PureComponent {
+
   render() {
     const { prefixCls, title, message, cancelText, onCancel, ...others } = this.props;
 
@@ -36,7 +37,6 @@ Alert.defaultProps = {
   animationType: 'zoom',
   message: '',
   cancelText: '关闭',
-  onCancel() {},
 };
 
 export default Alert;

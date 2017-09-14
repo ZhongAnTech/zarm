@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Mask from '../Mask';
 
 class Toast extends PureComponent {
+
   constructor(props) {
     super(props);
     this.timer = null;
@@ -37,12 +38,10 @@ class Toast extends PureComponent {
       isShow: true,
     });
 
-    if (duration === 0) {
-      return;
-    }
+    if (duration === 0) return;
 
     this.timer = setTimeout(() => {
-      onMaskClick();
+      typeof onMaskClick === 'function' && onMaskClick();
       clearTimeout(this.timer);
     }, duration);
   }
@@ -78,15 +77,13 @@ Toast.propTypes = {
   className: PropTypes.string,
   visible: PropTypes.bool,
   duration: PropTypes.number, // eslint-disable-line
-  onMaskClick: PropTypes.func,
+  onMaskClick: Mask.propTypes.onClose,
 };
 
 Toast.defaultProps = {
   prefixCls: 'za-toast',
-  className: null,
   visible: false,
   duration: 3000,
-  onMaskClick() {},
 };
 
 export default Toast;

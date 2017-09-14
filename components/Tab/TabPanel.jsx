@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class TabPanel extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +43,6 @@ TabPanel.propTypes = {
 
 TabPanel.defaultProps = {
   prefixCls: 'za-tab-panel-item',
-  className: null,
 };
 
 export default TabPanel;

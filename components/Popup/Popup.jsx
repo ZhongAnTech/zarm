@@ -5,6 +5,7 @@ import Events from '../utils/events';
 import Mask from '../Mask';
 
 class Popup extends PureComponent {
+
   constructor(props) {
     super(props);
     this.timer = null;
@@ -134,13 +135,11 @@ Popup.propTypes = {
 
 Popup.defaultProps = {
   prefixCls: 'za-popup',
-  className: null,
   visible: false,
   mask: true,
   direction: 'bottom',
   duration: 3000,
   autoClose: false,
-  onClose() {},
   animationDuration: 200,
   maskType: Mask.defaultProps.type,
   onMaskClick: Mask.defaultProps.onClose,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Cell extends PureComponent {
+
   render() {
     const { prefixCls, className, theme, hasArrow, icon, title, description, help, disabled, onClick, children, ...others } = this.props;
 
@@ -70,7 +71,6 @@ Cell.propTypes = {
 
 Cell.defaultProps = {
   prefixCls: 'za-cell',
-  className: null,
   hasArrow: false,
   disabled: false,
 };

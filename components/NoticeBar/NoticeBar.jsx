@@ -68,7 +68,6 @@ NoticeBar.propTypes = {
 
 NoticeBar.defaultProps = {
   prefixCls: 'za-noticebar',
-  className: null,
   theme: 'warning',
   icon: <Icon type="broadcast" />,
   hasArrow: false,

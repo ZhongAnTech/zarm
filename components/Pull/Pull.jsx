@@ -8,13 +8,14 @@ import Icon from '../Icon';
 const ACTION_STATE = {
   normal: 0,  // 普通
   pull: 1,    // 下拉状态（未满足刷新条件）
-  drop: 2,    // 可释放状态（满足刷新条件）
+  drop: 2,    // 释放立即刷新（满足刷新条件）
   loading: 3, // 加载中
   success: 4, // 加载成功
   failure: 5, // 加载失败
 };
 
 class Pull extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -41,16 +42,20 @@ class Pull extends PureComponent {
   onDragMove(event, { offsetY }) {
     if (offsetY < 0) return;
     if (document.body.scrollTop > 0) return;
+    if (this.state.actionState >= ACTION_STATE.loading) return;
 
     // 解决低端安卓系统只触发一次touchmove事件的bug
     event.preventDefault();
 
-    const { moveDistance } = this.props;
-    const action = ((offsetY / 2) < moveDistance)
+    // 移动距离为拖动距离的一半
+    const offset = offsetY / 2;
+
+    const { refreshDistance, refreshInitDistance } = this.props;
+    const action = ((offset - refreshInitDistance) < refreshDistance)
       ? ACTION_STATE.pull
       : ACTION_STATE.drop;
 
-    this.doAction(action, offsetY);
+    this.doAction(action, offset);
     return true;
   }
 
@@ -77,7 +82,7 @@ class Pull extends PureComponent {
     switch (actionState) {
       case ACTION_STATE.pull:
       case ACTION_STATE.drop:
-        this.doTransition({ offsetY: offset / 2, duration: 0 });
+        this.doTransition({ offsetY: offset, duration: 0 });
         break;
 
       case ACTION_STATE.loading:
@@ -98,12 +103,16 @@ class Pull extends PureComponent {
   }
 
   renderControlTop(offsetY) {
-    const { prefixCls, moveDistance, pullDownRender } = this.props;
+    const { prefixCls, refreshInitDistance, refreshDistance, refreshRender } = this.props;
     const { actionState } = this.state;
-    const percent = ((offsetY < moveDistance ? offsetY : moveDistance) * 100) / moveDistance;
 
-    if (pullDownRender) {
-      return pullDownRender(actionState, percent);
+    let percent = 0;
+    if (offsetY >= refreshInitDistance) {
+      percent = (((offsetY - refreshInitDistance) < refreshDistance ? (offsetY - refreshInitDistance) : refreshDistance) * 100) / refreshDistance;
+    }
+
+    if (refreshRender) {
+      return refreshRender(actionState, percent);
     }
 
     const cls = classnames({
@@ -123,7 +132,7 @@ class Pull extends PureComponent {
         return (
           <div className={cls}>
             <Spinner percent={100} />
-            <span>释放加载</span>
+            <span>释放立即刷新</span>
           </div>
         );
 
@@ -182,17 +191,19 @@ Pull.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   refreshing: PropTypes.bool,
-  moveDistance: PropTypes.number,
+  refreshInitDistance: PropTypes.number,
+  refreshDistance: PropTypes.number,
+  refreshRender: PropTypes.func,
+  onRefresh: PropTypes.func,
   duration: PropTypes.number,
   stayTime: PropTypes.number,
-  onRefresh: PropTypes.func,
-  pullDownRender: PropTypes.func,
 };
 
 Pull.defaultProps = {
   prefixCls: 'za-pull',
   refreshing: false,
-  moveDistance: 50,
+  refreshInitDistance: 20,
+  refreshDistance: 50,
   duration: 300,
   stayTime: 2000,
 };

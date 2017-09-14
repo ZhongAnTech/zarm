@@ -5,6 +5,7 @@ import Events from '../utils/events';
 import Drag from '../Drag';
 
 class Swipe extends Component {
+
   constructor(props) {
     super(props);
     this.dragState = {};
@@ -162,7 +163,8 @@ class Swipe extends Component {
       activeIndex = ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0))
         ? (this.state.activeIndex - 1)
         : (this.state.activeIndex + 1);
-      onChange(activeIndex);
+
+      typeof onChange === 'function' && onChange(activeIndex);
     }
     this.onSlideTo(activeIndex);
 
@@ -260,7 +262,8 @@ class Swipe extends Component {
     this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
 
-    this.props.onChangeEnd(this.state.activeIndex);
+    const { onChangeEnd } = this.props;
+    typeof onChangeEnd === 'function' && onChangeEnd(this.state.activeIndex);
   }
 
   // 判断当前是否在最后一页
@@ -367,8 +370,6 @@ Swipe.defaultProps = {
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
   showPagination: true,
-  onChange() {},
-  onChangeEnd() {},
 };
 
 export default Swipe;

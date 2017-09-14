@@ -5,6 +5,7 @@ import Events from '../utils/events';
 import Drag from '../Drag';
 
 class SwipeAction extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -123,16 +124,16 @@ class SwipeAction extends PureComponent {
 
   open(offsetLeft) {
     const { duration, onOpen } = this.props;
-    onOpen();
     this.isOpen = true;
     this.doTransition({ offsetLeft, duration });
+    typeof onOpen === 'function' && onOpen();
   }
 
   close() {
     const { duration, onClose } = this.props;
-    onClose();
     this.isOpen = false;
     this.doTransition({ offsetLeft: 0, duration });
+    typeof onClose === 'function' && onClose();
   }
 
   doTransition({ offsetLeft, duration }) {
@@ -220,15 +221,12 @@ SwipeAction.propTypes = {
 
 SwipeAction.defaultProps = {
   prefixCls: 'za-swipeaction',
-  className: null,
   left: [],
   right: [],
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
   duration: 300,
   offset: 10,
-  onOpen() {},
-  onClose() {},
 };
 
 export default SwipeAction;

@@ -4,6 +4,7 @@ import Modal from '../Modal';
 import Button from '../Button';
 
 class Confirm extends PureComponent {
+
   render() {
     const { prefixCls, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
 
@@ -40,8 +41,6 @@ Confirm.defaultProps = {
   message: '',
   okText: '确定',
   cancelText: '取消',
-  onOk() {},
-  onCancel() {},
 };
 
 export default Confirm;
