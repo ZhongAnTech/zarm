@@ -1,17 +1,27 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Events from '../utils/events';
 import Drag from '../Drag';
 import Spinner from '../Spinner';
 import Icon from '../Icon';
 
-const ACTION_STATE = {
+const REFRESH_STATE = {
   normal: 0,  // 普通
   pull: 1,    // 下拉状态（未满足刷新条件）
   drop: 2,    // 释放立即刷新（满足刷新条件）
   loading: 3, // 加载中
   success: 4, // 加载成功
   failure: 5, // 加载失败
+};
+
+const LOAD_STATE = {
+  normal: 0,  // 普通
+  abort: 1, // 中止
+  loading: 2, // 加载中
+  success: 3, // 加载成功
+  failure: 4, // 加载失败
+  complete: 5, // 加载完成（无新数据）
 };
 
 class Pull extends PureComponent {
@@ -21,106 +31,181 @@ class Pull extends PureComponent {
     this.state = {
       offsetY: 0,
       duration: 0,
-      actionState: props.refreshing
-        ? ACTION_STATE.loading
-        : ACTION_STATE.normal,
+      refreshState: props.refreshing,
+      loadState: props.loading,
     };
     this.onDragMove = this.onDragMove.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.onScroll = this.onScroll.bind(this);
+  }
+
+  componentDidMount() {
+    Events.on(window, 'scroll', this.onScroll);
   }
 
   componentWillReceiveProps(nextProps) {
     if ('refreshing' in nextProps && nextProps.refreshing !== this.props.refreshing) {
-      const actionState = nextProps.refreshing
-        ? ACTION_STATE.loading
-        : ACTION_STATE.success;
+      this.doRefreshAction(nextProps.refreshing);
+    }
 
-      this.doAction(actionState);
+    if ('loading' in nextProps && nextProps.loading !== this.props.loading) {
+      this.doLoadAction(nextProps.loading);
+    }
+  }
+
+  componentWillUnmount() {
+    Events.off(window, 'scroll', this.onScroll);
+  }
+
+  onScroll() {
+    if (this.state.loadState === LOAD_STATE.complete) {
+      return;
+    }
+
+    const { onLoad } = this.props;
+    if (!onLoad) return;
+
+    const bottom = this.pull.getBoundingClientRect().bottom;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollHeight <= clientHeight) return;
+
+    if (this.state.loadState === LOAD_STATE.normal && bottom <= clientHeight) {
+      this.doLoadAction(LOAD_STATE.loading);
+      typeof onLoad === 'function' && onLoad();
     }
   }
 
   onDragMove(event, { offsetY }) {
+    // 未设置刷新事件
+    const { onRefresh } = this.props;
+    if (!onRefresh) return;
+
+    // 上拉
     if (offsetY < 0) return;
-    if (document.body.scrollTop > 0) return;
-    if (this.state.actionState >= ACTION_STATE.loading) return;
+
+    // 未滚动到顶部
+    if (offsetY > 0 && (document.documentElement.scrollTop + document.body.scrollTop) > 0) return;
+
+    // 已经触发过加载状态
+    if (this.state.refreshState >= REFRESH_STATE.loading) return;
 
     // 解决低端安卓系统只触发一次touchmove事件的bug
     event.preventDefault();
 
-    // 移动距离为拖动距离的一半
-    const offset = offsetY / 2;
-
     const { refreshDistance, refreshInitDistance } = this.props;
-    const action = ((offset - refreshInitDistance) < refreshDistance)
-      ? ACTION_STATE.pull
-      : ACTION_STATE.drop;
+    const offset = offsetY / 2; // 移动距离为拖动距离的一半
 
-    this.doAction(action, offset);
+    // 判断是否达到释放立即刷新的条件
+    const action = ((offset - refreshInitDistance) < refreshDistance)
+      ? REFRESH_STATE.pull
+      : REFRESH_STATE.drop;
+
+    this.doRefreshAction(action, offset);
     return true;
   }
 
   onDragEnd() {
     const { onRefresh } = this.props;
-    const { actionState } = this.state;
+    const { refreshState } = this.state;
 
-    if (actionState === ACTION_STATE.pull) {
-      this.doAction(ACTION_STATE.normal);
+    // 当前状态为下拉状态时
+    if (refreshState === REFRESH_STATE.pull) {
+      this.doRefreshAction(REFRESH_STATE.normal);
       return;
     }
 
+    // 执行外部触发刷新的回调
     typeof onRefresh === 'function' && onRefresh();
   }
 
+  /**
+   * 执行动画
+   * @param  {number} options.offsetY  偏移距离
+   * @param  {number} options.duration 动画执行时间
+   */
   doTransition({ offsetY, duration }) {
     this.setState({ offsetY, duration });
   }
 
-  doAction(actionState, offset) {
+  /**
+   * 执行刷新动作
+   * @param  {REFRESH_STATE} refreshState 刷新状态
+   * @param  {number}        offsetY      偏移距离
+   */
+  doRefreshAction(refreshState, offsetY) {
     const { duration, stayTime } = this.props;
 
-    this.setState({ actionState });
-    switch (actionState) {
-      case ACTION_STATE.pull:
-      case ACTION_STATE.drop:
-        this.doTransition({ offsetY: offset, duration: 0 });
+    this.setState({ refreshState });
+    switch (refreshState) {
+      case REFRESH_STATE.pull:
+      case REFRESH_STATE.drop:
+        this.doTransition({ offsetY, duration: 0 });
         break;
 
-      case ACTION_STATE.loading:
+      case REFRESH_STATE.loading:
         this.doTransition({ offsetY: 50, duration });
         break;
 
-      case ACTION_STATE.success:
+      case REFRESH_STATE.success:
+      case REFRESH_STATE.failure:
         this.doTransition({ offsetY: 50, duration: 0 });
         setTimeout(() => {
-          this.doAction(ACTION_STATE.normal);
+          this.doRefreshAction(REFRESH_STATE.normal);
+          this.doLoadAction(LOAD_STATE.normal);
         }, stayTime);
         break;
 
       default:
         this.doTransition({ offsetY: 0, duration });
+    }
+  }
+
+  /**
+   * 执行加载动作
+   * @param  {LOAD_STATE} loadState 加载状态
+   */
+  doLoadAction(loadState) {
+    const { stayTime } = this.props;
+    this.setState({ loadState });
+
+    switch (loadState) {
+      case LOAD_STATE.success:
+        this.doLoadAction(LOAD_STATE.normal);
+        break;
+
+      case LOAD_STATE.failure:
+        setTimeout(() => {
+          this.doLoadAction(LOAD_STATE.abort);
+        }, stayTime);
         break;
     }
   }
 
-  renderControlTop(offsetY) {
+  /**
+   * 渲染刷新节点
+   * @param  {number} offsetY 偏移距离
+   */
+  renderRefresh(offsetY) {
     const { prefixCls, refreshInitDistance, refreshDistance, refreshRender } = this.props;
-    const { actionState } = this.state;
+    const { refreshState } = this.state;
 
     let percent = 0;
     if (offsetY >= refreshInitDistance) {
       percent = (((offsetY - refreshInitDistance) < refreshDistance ? (offsetY - refreshInitDistance) : refreshDistance) * 100) / refreshDistance;
     }
 
-    if (refreshRender) {
-      return refreshRender(actionState, percent);
+    if (typeof refreshRender === 'function') {
+      return refreshRender(refreshState, percent);
     }
 
     const cls = classnames({
       [`${prefixCls}-control`]: true,
     });
 
-    switch (actionState) {
-      case ACTION_STATE.pull:
+    switch (refreshState) {
+      case REFRESH_STATE.pull:
         return (
           <div className={cls}>
             <Spinner percent={percent} />
@@ -128,7 +213,7 @@ class Pull extends PureComponent {
           </div>
         );
 
-      case ACTION_STATE.drop:
+      case REFRESH_STATE.drop:
         return (
           <div className={cls}>
             <Spinner percent={100} />
@@ -136,7 +221,7 @@ class Pull extends PureComponent {
           </div>
         );
 
-      case ACTION_STATE.loading:
+      case REFRESH_STATE.loading:
         return (
           <div className={cls}>
             <Spinner className="rotate360" />
@@ -144,7 +229,7 @@ class Pull extends PureComponent {
           </div>
         );
 
-      case ACTION_STATE.success:
+      case REFRESH_STATE.success:
         return (
           <div className={cls}>
             <Icon type="right-round" theme="success" />
@@ -152,35 +237,89 @@ class Pull extends PureComponent {
           </div>
         );
 
-      default:
-        return null;
+      case REFRESH_STATE.failure:
+        return (
+          <div className={cls}>
+            <Icon type="wrong-round" theme="error" />
+            <span>加载失败</span>
+          </div>
+        );
+    }
+  }
+
+  /**
+   * 渲染加载节点
+   */
+  renderLoad() {
+    const { loadState } = this.state;
+    const { prefixCls, loadRender } = this.props;
+
+    if (typeof loadRender === 'function') {
+      loadRender();
+      return;
+    }
+
+    const cls = classnames({
+      [`${prefixCls}-control`]: true,
+    });
+
+    switch (loadState) {
+      case LOAD_STATE.complete:
+        return (
+          <div className={cls}>
+            <span>我是有底线的</span>
+          </div>
+        );
+
+      case LOAD_STATE.loading:
+        return (
+          <div className={cls}>
+            <Spinner className="rotate360" />
+            <span>加载中</span>
+          </div>
+        );
+
+      case LOAD_STATE.failure:
+        return (
+          <div className={cls}>
+            <Icon type="wrong-round" theme="error" />
+            <span>加载失败</span>
+          </div>
+        );
     }
   }
 
   render() {
     const { prefixCls, className, children } = this.props;
-    const { offsetY, duration } = this.state;
+    const { offsetY, duration, loadState } = this.state;
 
     const classes = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
     });
 
-    const style = {
+    const refreshStyle = {
       WebkitTransitionDuration: `${duration}ms`,
       transitionDuration: `${duration}ms`,
       height: offsetY,
+    };
+
+    const loadStyle = {
+      height: loadState >= LOAD_STATE.loading ? 50 : 0,
     };
 
     return (
       <Drag
         onDragMove={this.onDragMove}
         onDragEnd={this.onDragEnd}>
-        <div className={classes}>
-          <div className={`${prefixCls}-down`} style={style}>
-            {this.renderControlTop(offsetY)}
+        <div className={classes} ref={(ele) => { this.pull = ele; }}>
+          <div className={`${prefixCls}-refresh`} style={refreshStyle}>
+            {this.renderRefresh(offsetY)}
           </div>
           {children}
+          <div className={`${prefixCls}-load`} style={loadStyle}>
+            {this.renderLoad(offsetY)}
+          </div>
         </div>
       </Drag>
     );
@@ -190,20 +329,24 @@ class Pull extends PureComponent {
 Pull.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  refreshing: PropTypes.bool,
+  refreshing: PropTypes.number,
   refreshInitDistance: PropTypes.number,
   refreshDistance: PropTypes.number,
   refreshRender: PropTypes.func,
   onRefresh: PropTypes.func,
+  loading: PropTypes.number,
+  onLoad: PropTypes.func,
+  loadRender: PropTypes.func,
   duration: PropTypes.number,
   stayTime: PropTypes.number,
 };
 
 Pull.defaultProps = {
   prefixCls: 'za-pull',
-  refreshing: false,
+  refreshing: REFRESH_STATE.normal,
   refreshInitDistance: 20,
   refreshDistance: 50,
+  loading: LOAD_STATE.normal,
   duration: 300,
   stayTime: 2000,
 };
