@@ -37,8 +37,8 @@ class Page extends Component {
     super(props);
     this.mounted = true;
     this.state = {
-      loading: LOAD_STATE.normal,
-      refreshing: REFRESH_STATE.normal,
+      customLoading: LOAD_STATE.normal,
+      customRefreshing: REFRESH_STATE.normal,
       dataSource: [],
     };
   }
@@ -104,7 +104,7 @@ class Page extends Component {
   }
 
   render() {
-    const { refreshing, customRefreshing, customLoading, dataSource } = this.state;
+    const { customRefreshing, customLoading, dataSource } = this.state;
 
     const itemsRender = [];
     for (let i = 0; i < 3; i++) {
@@ -119,45 +119,45 @@ class Page extends Component {
             <Panel.Header title="基本" />
             <Panel.Body>
               <Pull
-                refreshing={refreshing}
-                onRefresh={() => {
-                  this.fetchData('refreshing');
-                }}>
-                {itemsRender}
-              </Pull>
-            </Panel.Body>
-          </Panel>
+                // initialDistance={0}
+                // refreshDistance={80}
+                // refreshRender={(refreshState, percent) => {
+                //   const cls = 'custom-control';
+                //   switch (refreshState) {
+                //     case REFRESH_STATE.pull:
+                //       return <div className={cls} style={{ transform: `scale(${percent / 100})` }}><img src={logo} alt="" /></div>;
 
-          <Panel>
-            <Panel.Header title="自定义（下拉刷新 + 上拉加载）" />
-            <Panel.Body>
-              <Pull
+                //     case REFRESH_STATE.drop:
+                //       return <div className={`${cls} rotate360`}><img src={logo} alt="" /></div>;
+
+                //     case REFRESH_STATE.loading:
+                //       return <div className={cls}><Spinner className="rotate360" /></div>;
+
+                //     case REFRESH_STATE.success:
+                //       return <div className={cls}>加载成功</div>;
+
+                //     case REFRESH_STATE.failure:
+                //       return <div className={cls}>加载失败</div>;
+                //   }
+                // }}
+                // loadRender={(loadState) => {
+                //   const cls = 'custom-control';
+                //   switch (loadState) {
+                //     case LOAD_STATE.loading:
+                //       return <div className={cls}><Spinner className="rotate360" /></div>;
+
+                //     case LOAD_STATE.failure:
+                //       return <div className={cls}>加载失败</div>;
+
+                //     case LOAD_STATE.complete:
+                //       return <div className={cls}>我是有底线的</div>;
+                //   }
+                // }}
                 refreshing={customRefreshing}
+                loading={customLoading}
                 onRefresh={() => {
                   this.fetchData('customRefreshing');
                 }}
-                initialDistance={0}
-                refreshDistance={80}
-                refreshRender={(actionState, percent) => {
-                  const cls = 'custom-control';
-                  switch (actionState) {
-                    case REFRESH_STATE.pull:
-                      return <div className={cls} style={{ transform: `scale(${percent / 100})` }}><img src={logo} alt="" /></div>;
-
-                    case REFRESH_STATE.drop:
-                      return <div className={cls}>释放立即刷新</div>;
-
-                    case REFRESH_STATE.loading:
-                      return <div className={cls}><Spinner className="rotate360" /></div>;
-
-                    case REFRESH_STATE.success:
-                      return <div className={cls}>加载成功</div>;
-
-                    case REFRESH_STATE.failure:
-                      return <div className={cls}>加载失败</div>;
-                  }
-                }}
-                loading={customLoading}
                 onLoad={() => {
                   this.loadData();
                 }}>
