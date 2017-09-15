@@ -17,10 +17,11 @@ const REFRESH_STATE = {
 
 const LOAD_STATE = {
   normal: 0,  // 普通
-  complete: 1, // 完成
+  abort: 1, // 中止
   loading: 2, // 加载中
   success: 3, // 加载成功
   failure: 4, // 加载失败
+  complete: 5, // 加载完成（无新数据）
 };
 
 class Pull extends PureComponent {
@@ -57,8 +58,6 @@ class Pull extends PureComponent {
   }
 
   onScroll() {
-    // if (document.documentElement.scrollTop + document.body.scrollTop)  0
-
     if (this.state.loadState === LOAD_STATE.complete) {
       return;
     }
@@ -131,27 +130,6 @@ class Pull extends PureComponent {
   }
 
   /**
-   * 执行加载动作
-   * @param  {LOAD_STATE} loadState 加载状态
-   */
-  doLoadAction(loadState) {
-    const { stayTime } = this.props;
-    this.setState({ loadState });
-
-    switch (loadState) {
-      case LOAD_STATE.success:
-        this.doLoadAction(LOAD_STATE.normal);
-        break;
-
-      case LOAD_STATE.failure:
-        setTimeout(() => {
-          this.doLoadAction(LOAD_STATE.complete);
-        }, stayTime);
-        break;
-    }
-  }
-
-  /**
    * 执行刷新动作
    * @param  {REFRESH_STATE} refreshState 刷新状态
    * @param  {number}        offsetY      偏移距离
@@ -175,11 +153,33 @@ class Pull extends PureComponent {
         this.doTransition({ offsetY: 50, duration: 0 });
         setTimeout(() => {
           this.doRefreshAction(REFRESH_STATE.normal);
+          this.doLoadAction(LOAD_STATE.normal);
         }, stayTime);
         break;
 
       default:
         this.doTransition({ offsetY: 0, duration });
+    }
+  }
+
+  /**
+   * 执行加载动作
+   * @param  {LOAD_STATE} loadState 加载状态
+   */
+  doLoadAction(loadState) {
+    const { stayTime } = this.props;
+    this.setState({ loadState });
+
+    switch (loadState) {
+      case LOAD_STATE.success:
+        this.doLoadAction(LOAD_STATE.normal);
+        break;
+
+      case LOAD_STATE.failure:
+        setTimeout(() => {
+          this.doLoadAction(LOAD_STATE.abort);
+        }, stayTime);
+        break;
     }
   }
 
@@ -264,6 +264,13 @@ class Pull extends PureComponent {
     });
 
     switch (loadState) {
+      case LOAD_STATE.complete:
+        return (
+          <div className={cls}>
+            <span>我是有底线的</span>
+          </div>
+        );
+
       case LOAD_STATE.loading:
         return (
           <div className={cls}>

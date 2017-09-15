@@ -16,13 +16,20 @@ const REFRESH_STATE = {
 
 const LOAD_STATE = {
   normal: 0,  // 普通
-  complete: 1, // 加载完成（无新数据）
+  abort: 1, // 中止
   loading: 2, // 加载中
   success: 3, // 加载成功
   failure: 4, // 加载失败
+  complete: 5, // 加载完成（无新数据）
 };
 
 const logo = require('../images/icons/state.png');
+
+function getRandomNum(min, max) {
+  const Range = max - min;
+  const Rand = Math.random();
+  return (min + Math.round(Rand * Range));
+}
 
 class Page extends Component {
 
@@ -64,22 +71,17 @@ class Page extends Component {
     }, 2000);
   }
 
-  getRandomNum(min, max) {
-    const Range = max - min;
-    const Rand = Math.random();
-    return(min + Math.round(Rand * Range));
-  } 
-
   // 模拟加载更多数据
   loadData() {
     this.setState({ customLoading: LOAD_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
 
-      const randomNum = this.getRandomNum(0, 5);
-      let dataSource = this.state.dataSource;
+      const randomNum = getRandomNum(0, 5);
+      const { dataSource } = this.state;
       let customLoading = LOAD_STATE.success;
 
+      // eslint-disable-next-line
       console.log(`状态: ${randomNum === 0 ? '失败' : (randomNum === 1 ? '完成' : '成功')}`);
 
       if (randomNum === 0) {
@@ -111,7 +113,7 @@ class Page extends Component {
 
     return (
       <Container className="pull-page">
-        <Header title="上拉加载 PullUp" />
+        <Header title="上拉加载下拉刷新 Pull" />
         <main>
           <Panel>
             <Panel.Header title="基本" />
