@@ -9,9 +9,7 @@ exports[`Stepper defaultValue 1`] = `
     onClick={[Function]}
   >
     <Icon
-      className={null}
       prefixCls="za-icon"
-      theme={null}
       type="minus"
     />
   </span>
@@ -28,9 +26,7 @@ exports[`Stepper defaultValue 1`] = `
     onClick={[Function]}
   >
     <Icon
-      className={null}
       prefixCls="za-icon"
-      theme={null}
       type="add"
     />
   </span>

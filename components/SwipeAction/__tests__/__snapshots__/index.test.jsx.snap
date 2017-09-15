@@ -39,7 +39,6 @@ exports[`SwipeAction left only 1`] = `
 
 exports[`SwipeAction renders correctly 1`] = `
 <SwipeAction
-  className={null}
   duration={300}
   left={
     Array [
@@ -58,8 +57,6 @@ exports[`SwipeAction renders correctly 1`] = `
   moveDistanceRatio={0.5}
   moveTimeSpan={300}
   offset={10}
-  onClose={[Function]}
-  onOpen={[Function]}
   prefixCls="za-swipeaction"
   right={
     Array [
