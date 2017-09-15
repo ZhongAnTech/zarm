@@ -3,14 +3,11 @@
 exports[`NoticeBar autoscroll 1`] = `
 <NoticeBar
   autoscroll={true}
-  className={null}
   hasArrow={false}
   hasClosable={false}
   icon={
     <Icon
-      className={null}
       prefixCls="za-icon"
-      theme={null}
       type="broadcast"
     />
   }
@@ -18,18 +15,14 @@ exports[`NoticeBar autoscroll 1`] = `
   theme="warning"
 >
   <Message
-    className={null}
     hasArrow={false}
     hasClosable={false}
     icon={
       <Icon
-        className={null}
         prefixCls="za-icon"
-        theme={null}
         type="broadcast"
       />
     }
-    onClick={[Function]}
     prefixCls="za-message"
     size="lg"
     theme="warning"
@@ -45,9 +38,7 @@ exports[`NoticeBar autoscroll 1`] = `
           className="za-message-icon"
         >
           <Icon
-            className={null}
             prefixCls="za-icon"
-            theme={null}
             type="broadcast"
           >
             <i
@@ -115,14 +106,11 @@ exports[`NoticeBar icon 1`] = `
 exports[`NoticeBar renders correctly 1`] = `
 <NoticeBar
   autoscroll={false}
-  className={null}
   hasArrow={false}
   hasClosable={false}
   icon={
     <Icon
-      className={null}
       prefixCls="za-icon"
-      theme={null}
       type="broadcast"
     />
   }
@@ -130,18 +118,14 @@ exports[`NoticeBar renders correctly 1`] = `
   theme="warning"
 >
   <Message
-    className={null}
     hasArrow={false}
     hasClosable={false}
     icon={
       <Icon
-        className={null}
         prefixCls="za-icon"
-        theme={null}
         type="broadcast"
       />
     }
-    onClick={[Function]}
     prefixCls="za-message"
     size="lg"
     theme="warning"
@@ -157,9 +141,7 @@ exports[`NoticeBar renders correctly 1`] = `
           className="za-message-icon"
         >
           <Icon
-            className={null}
             prefixCls="za-icon"
-            theme={null}
             type="broadcast"
           >
             <i

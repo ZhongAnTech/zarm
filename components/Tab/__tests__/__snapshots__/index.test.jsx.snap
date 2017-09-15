@@ -107,7 +107,6 @@ exports[`Tab lineWidth is auto 1`] = `
     className="za-tab-container"
   >
     <TabPanel
-      className={null}
       prefixCls="za-tab-panel-item"
       selected={true}
       title="选项卡1"
@@ -117,7 +116,6 @@ exports[`Tab lineWidth is auto 1`] = `
       </div>
     </TabPanel>
     <TabPanel
-      className={null}
       prefixCls="za-tab-panel-item"
       selected={false}
       title="选项卡2"
@@ -179,7 +177,6 @@ exports[`Tab lineWidth is auto 2`] = `
     className="za-tab-container"
   >
     <TabPanel
-      className={null}
       prefixCls="za-tab-panel-item"
       selected={true}
       title="选项卡1"
@@ -189,7 +186,6 @@ exports[`Tab lineWidth is auto 2`] = `
       </div>
     </TabPanel>
     <TabPanel
-      className={null}
       prefixCls="za-tab-panel-item"
       selected={false}
       title="选项卡2"
