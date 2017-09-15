@@ -23,7 +23,7 @@ describe('Pull', () => {
         <div>3</div>
       </Pull>
     );
-    wrapper.setProps({ refreshing: true });
+    wrapper.setProps({ refreshing: 3 });
   });
 
   it('custom', () => {
@@ -65,6 +65,6 @@ describe('Pull', () => {
         <div>3</div>
       </Pull>
     );
-    wrapper.setProps({ refreshing: true });
+    wrapper.setProps({ refreshing: 3 });
   });
 });
