@@ -31,9 +31,9 @@ const LOAD_STATE = {
 };
 ```
 
-#### 基本用法
+#### 下拉刷新
 
-###### 下拉刷新
+###### 基本
 ```jsx
 <Pull
   refreshing={this.state.refreshing}
@@ -47,7 +47,7 @@ const LOAD_STATE = {
 </Pull>
 ```
 
-###### 下拉刷新（自定义显示）
+###### 自定义
 ```jsx
 <Pull
   refreshing={this.state.refreshing}
@@ -82,10 +82,39 @@ const LOAD_STATE = {
 </Pull>
 ```
 
-###### 上拉加载
+#### 上拉加载
+
+###### 基本
 ```jsx
 <Pull
   loading={this.state.loading}
+  onLoad={() => {
+    this.setState({ loading: LOAD_STATE.loading });
+    setTimeout(() => {
+      this.setState({ loading: LOAD_STATE.success });
+    }, 2000);
+  }}>
+  foo
+</Pull>
+```
+
+###### 自定义
+```jsx
+<Pull
+  loading={this.state.loading}
+  loadRender={(loadState) => {
+    const cls = 'custom-control';
+    switch (loadState) {
+      case LOAD_STATE.loading:
+        return <div className={cls}><Spinner className="rotate360" /></div>;
+
+      case LOAD_STATE.failure:
+        return <div className={cls}>加载失败</div>;
+
+      case LOAD_STATE.complete:
+        return <div className={cls}>我是有底线的</div>;
+    }
+  }}
   onLoad={() => {
     this.setState({ loading: LOAD_STATE.loading });
     setTimeout(() => {
