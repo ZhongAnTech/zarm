@@ -21,7 +21,7 @@
   * [按钮 Button](components/Button.md)
   * [模态框 Modal](components/Modal.md)
   * [弹出框 Popup](components/Popup.md)
-  * [下拉刷新 Pull](components/Pull.md)
+  * [上拉加载下拉刷新 Pull](components/Pull.md)
   * [滑动操作 SwipeAction](components/SwipeAction.md)
   * [轻提示 Toast](components/Toast.md)
 
