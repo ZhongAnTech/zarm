@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Pull, Spinner } from '../../components';
+import { Panel, Cell, Pull } from '../../components';
 import '../styles/pages/PullPage';
 
 const REFRESH_STATE = {
