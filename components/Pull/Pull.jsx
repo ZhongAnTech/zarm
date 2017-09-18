@@ -183,7 +183,6 @@ class Pull extends PureComponent {
 
   /**
    * 渲染刷新节点
-   * @param  {number} offsetY 偏移距离
    */
   renderRefresh() {
     const { prefixCls, refreshInitDistance, refreshDistance, refreshRender } = this.props;

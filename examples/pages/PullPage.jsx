@@ -23,8 +23,6 @@ const LOAD_STATE = {
   complete: 5, // 加载完成（无新数据）
 };
 
-const logo = require('../images/icons/state.png');
-
 function getRandomNum(min, max) {
   const Range = max - min;
   const Rand = Math.random();
@@ -37,8 +35,8 @@ class Page extends Component {
     super(props);
     this.mounted = true;
     this.state = {
-      customLoading: LOAD_STATE.normal,
       customRefreshing: REFRESH_STATE.normal,
+      customLoading: LOAD_STATE.normal,
       dataSource: [],
     };
   }
