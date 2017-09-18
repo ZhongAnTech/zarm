@@ -2,6 +2,12 @@
 @import "../functions/index";
 
 .pull-page {
+  .za-pull-load {
+    position: relative;
+    left: r(15);
+    @include onepx(top);
+  }
+
   .custom-control {
     display: flex;
     align-items: center;

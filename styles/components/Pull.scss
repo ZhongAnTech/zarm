@@ -16,11 +16,6 @@ $prefixCls: za-pull;
     transition: all .3s;
   }
 
-  &-load {
-    position: relative;
-    @include onepx(top);
-  }
-
   &-control {
     display: flex;
     align-items: center;

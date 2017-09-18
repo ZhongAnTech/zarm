@@ -1,0 +1,18 @@
+$prefixCls: za-slider;
+
+.#{$prefixCls} {
+  position: relative;
+  width: 100%;
+  padding: 0 r(14);
+
+  &-handle {
+    position: absolute;
+    left: 0;
+    top: r(-12);
+    width: r(28);
+    height: r(28);
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+  }
+}
