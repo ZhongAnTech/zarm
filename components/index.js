@@ -19,6 +19,7 @@ export { default as Pull } from './Pull';
 export { default as Panel } from './Panel';
 export { default as Picker } from './Picker';
 export { default as Radio } from './Radio';
+export { default as Slider } from './Slider';
 export { default as Spinner } from './Spinner';
 export { default as Stepper } from './Stepper';
 export { default as Swipe } from './Swipe';
