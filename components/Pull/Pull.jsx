@@ -7,20 +7,20 @@ import Spinner from '../Spinner';
 import Icon from '../Icon';
 
 const REFRESH_STATE = {
-  normal: 0,  // 普通
-  pull: 1,    // 下拉状态（未满足刷新条件）
-  drop: 2,    // 释放立即刷新（满足刷新条件）
-  loading: 3, // 加载中
-  success: 4, // 加载成功
-  failure: 5, // 加载失败
+  normal: 0,   // 普通
+  pull: 1,     // 下拉状态（未满足刷新条件）
+  drop: 2,     // 释放立即刷新（满足刷新条件）
+  loading: 3,  // 加载中
+  success: 4,  // 加载成功
+  failure: 5,  // 加载失败
 };
 
 const LOAD_STATE = {
-  normal: 0,  // 普通
-  abort: 1, // 中止
-  loading: 2, // 加载中
-  success: 3, // 加载成功
-  failure: 4, // 加载失败
+  normal: 0,   // 普通
+  abort: 1,    // 中止
+  loading: 2,  // 加载中
+  success: 3,  // 加载成功
+  failure: 4,  // 加载失败
   complete: 5, // 加载完成（无新数据）
 };
 
@@ -58,11 +58,11 @@ class Pull extends PureComponent {
   }
 
   onScroll() {
-    if (this.state.loadState === LOAD_STATE.complete) {
-      return;
-    }
+    const { refreshState, loadState } = this.state;
+    if (refreshState !== REFRESH_STATE.normal) return;
+    if (loadState !== LOAD_STATE.normal) return;
 
-    const { onLoad } = this.props;
+    const { onLoad, loadDistance } = this.props;
     if (!onLoad) return;
 
     const bottom = this.pull.getBoundingClientRect().bottom;
@@ -71,8 +71,7 @@ class Pull extends PureComponent {
 
     if (scrollHeight <= clientHeight) return;
 
-    if (this.state.loadState === LOAD_STATE.normal && bottom <= clientHeight) {
-      this.doLoadAction(LOAD_STATE.loading);
+    if (bottom <= clientHeight + loadDistance) {
       typeof onLoad === 'function' && onLoad();
     }
   }
@@ -145,12 +144,12 @@ class Pull extends PureComponent {
         break;
 
       case REFRESH_STATE.loading:
-        this.doTransition({ offsetY: 50, duration });
+        this.doTransition({ offsetY: 'auto', duration });
         break;
 
       case REFRESH_STATE.success:
       case REFRESH_STATE.failure:
-        this.doTransition({ offsetY: 50, duration: 0 });
+        this.doTransition({ offsetY: 'auto', duration: 0 });
         setTimeout(() => {
           this.doRefreshAction(REFRESH_STATE.normal);
           this.doLoadAction(LOAD_STATE.normal);
@@ -185,11 +184,10 @@ class Pull extends PureComponent {
 
   /**
    * 渲染刷新节点
-   * @param  {number} offsetY 偏移距离
    */
-  renderRefresh(offsetY) {
+  renderRefresh() {
     const { prefixCls, refreshInitDistance, refreshDistance, refreshRender } = this.props;
-    const { refreshState } = this.state;
+    const { refreshState, offsetY } = this.state;
 
     let percent = 0;
     if (offsetY >= refreshInitDistance) {
@@ -251,12 +249,11 @@ class Pull extends PureComponent {
    * 渲染加载节点
    */
   renderLoad() {
-    const { loadState } = this.state;
     const { prefixCls, loadRender } = this.props;
+    const { loadState } = this.state;
 
     if (typeof loadRender === 'function') {
-      loadRender();
-      return;
+      return loadRender(loadState);
     }
 
     const cls = classnames({
@@ -264,13 +261,6 @@ class Pull extends PureComponent {
     });
 
     switch (loadState) {
-      case LOAD_STATE.complete:
-        return (
-          <div className={cls}>
-            <span>我是有底线的</span>
-          </div>
-        );
-
       case LOAD_STATE.loading:
         return (
           <div className={cls}>
@@ -284,6 +274,13 @@ class Pull extends PureComponent {
           <div className={cls}>
             <Icon type="wrong-round" theme="error" />
             <span>加载失败</span>
+          </div>
+        );
+
+      case LOAD_STATE.complete:
+        return (
+          <div className={cls}>
+            <span>我是有底线的</span>
           </div>
         );
     }
@@ -305,7 +302,7 @@ class Pull extends PureComponent {
     };
 
     const loadStyle = {
-      height: loadState >= LOAD_STATE.loading ? 50 : 0,
+      height: loadState >= LOAD_STATE.loading ? 'auto' : 0,
     };
 
     return (
@@ -314,11 +311,11 @@ class Pull extends PureComponent {
         onDragEnd={this.onDragEnd}>
         <div className={classes} ref={(ele) => { this.pull = ele; }}>
           <div className={`${prefixCls}-refresh`} style={refreshStyle}>
-            {this.renderRefresh(offsetY)}
+            {this.renderRefresh()}
           </div>
           {children}
           <div className={`${prefixCls}-load`} style={loadStyle}>
-            {this.renderLoad(offsetY)}
+            {this.renderLoad()}
           </div>
         </div>
       </Drag>
@@ -335,6 +332,7 @@ Pull.propTypes = {
   refreshRender: PropTypes.func,
   onRefresh: PropTypes.func,
   loading: PropTypes.number,
+  loadDistance: PropTypes.number,
   onLoad: PropTypes.func,
   loadRender: PropTypes.func,
   duration: PropTypes.number,
@@ -347,6 +345,7 @@ Pull.defaultProps = {
   refreshInitDistance: 20,
   refreshDistance: 50,
   loading: LOAD_STATE.normal,
+  loadDistance: 10,
   duration: 300,
   stayTime: 2000,
 };

@@ -88,7 +88,7 @@ class TabPage extends Component {
                 <Tab.Panel title="选项卡3" />
               </Tab>
 
-              <Tab theme="error" value={this.state.activeIndex} onChange={(i) => console.log(i)}>
+              <Tab theme="error" value={this.state.activeIndex} onChange={i => console.log(i)}>
                 <Tab.Panel title="选项卡1">
                   <div className="content">选项卡1内容</div>
                 </Tab.Panel>
