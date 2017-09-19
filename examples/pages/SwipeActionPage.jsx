@@ -74,7 +74,7 @@ class Page extends Component {
                 onOpen={() => console.log('open')}
                 onClose={() => console.log('close')}>
                 <Cell>左右都能滑动（自动关闭）</Cell>
-              </SwipeAction>    
+              </SwipeAction>
             </Panel.Body>
           </Panel>
         </main>
