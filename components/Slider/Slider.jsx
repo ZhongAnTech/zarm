@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Drag from '../Drag';
-import Progress from '../Progress';
 
 function getValue(props, defaultValue) {
   if ('value' in props) {
@@ -20,8 +19,11 @@ class Slider extends PureComponent {
     super(props);
     this.state = {
       value: getValue(props, 0),
-      lastValue: getValue(props, 0),
+      offset: 0,
     };
+    this.offsetStart = 0;
+    this.onDragMove = this.onDragMove.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,27 +34,69 @@ class Slider extends PureComponent {
     }
   }
 
+  onDragMove(event, { offsetX }) {
+    const { disabled } = this.props;
+    if (disabled) return;
+
+    event.preventDefault();
+
+    let offset = this.offsetStart + offsetX;
+    const maxOffset = this.slider.offsetWidth - this.handle.offsetWidth;
+    offset = (offset < 0) ? 0 : offset;
+    offset = (offset > maxOffset) ? maxOffset : offset;
+
+    const { min, max, step } = this.props;
+    const percent = offset / maxOffset;
+    const value = Math.round(((max - min) * percent) / step) * step;
+    offset = maxOffset * (value / (max - min));
+
+    this.setState({ offset, value });
+    return true;
+  }
+
+  onDragEnd(event, { offsetX }) {
+    this.offsetStart += offsetX;
+
+    const { onChange } = this.props;
+    typeof onChange === 'function' && onChange();
+  }
+
   render() {
-    const { prefixCls, className, theme, size, shape, disabled, min, max } = this.props;
-    const { value } = this.state;
+    const { prefixCls, className, disabled, min, max } = this.props;
+    const { value, offset } = this.state;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
       [className]: !!className,
-      [`theme-${theme}`]: !!theme,
       disabled,
     });
 
+    const handleStyle = {
+      left: offset,
+    };
+
+    const bgStyle = {
+      width: offset,
+    };
+
     return (
-      <div className={cls}>
-        <Progress percent={0} />
-        <div
-          className={`${prefixCls}-handle`}
-          role="slider"
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-valuenow={value}
-          />
+      <div className={cls} ref={(ele) => { this.slider = ele; }}>
+        <div className={`${prefixCls}-line`}>
+          <div className={`${prefixCls}-line-bg`} style={bgStyle} />
+        </div>
+        <Drag
+          onDragMove={this.onDragMove}
+          onDragEnd={this.onDragEnd}>
+          <div
+            className={`${prefixCls}-handle`}
+            role="slider"
+            aria-valuemin={min}
+            aria-valuemax={max}
+            aria-valuenow={value}
+            style={handleStyle}
+            ref={(ele) => { this.handle = ele; }}
+            />
+        </Drag>
       </div>
     );
   }
@@ -61,7 +105,6 @@ class Slider extends PureComponent {
 Slider.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   disabled: PropTypes.bool,
   step: PropTypes.number,
   min: PropTypes.number,
@@ -71,7 +114,6 @@ Slider.propTypes = {
 
 Slider.defaultProps = {
   prefixCls: 'za-slider',
-  theme: 'primary',
   disabled: false,
   step: 1,
   min: 0,
