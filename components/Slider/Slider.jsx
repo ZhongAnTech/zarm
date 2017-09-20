@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Drag from '../Drag';
+import Tooltip from '../Tooltip';
 
 function getValue(props, defaultValue) {
   if ('value' in props) {
@@ -26,11 +27,15 @@ class Slider extends PureComponent {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
+  componentDidMount() {
+    this.init();
+  }
+
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
-      this.setState({
-        value: getValue(nextProps, 0),
-      });
+      const value = nextProps.value;
+      const offset = this.getOffsetByValue(value);
+      this.setState({ value, offset });
     }
   }
 
@@ -41,15 +46,11 @@ class Slider extends PureComponent {
     event.preventDefault();
 
     let offset = this.offsetStart + offsetX;
-    const maxOffset = this.slider.offsetWidth - this.handle.offsetWidth;
     offset = (offset < 0) ? 0 : offset;
-    offset = (offset > maxOffset) ? maxOffset : offset;
+    offset = (offset > this.maxOffset()) ? this.maxOffset() : offset;
 
-    const { min, max, step } = this.props;
-    const percent = offset / maxOffset;
-    const value = Math.round(((max - min) * percent) / step) * step;
-    offset = maxOffset * (value / (max - min));
-
+    const value = this.getValueByOffset(offset);
+    offset = this.getOffsetByValue(value);
     this.setState({ offset, value });
     return true;
   }
@@ -59,6 +60,45 @@ class Slider extends PureComponent {
 
     const { onChange } = this.props;
     typeof onChange === 'function' && onChange();
+  }
+
+  /**
+   * 通过偏移量确定值
+   * @param  {number} offset 偏移量
+   * @return {number}        值
+   */
+  getValueByOffset(offset) {
+    const { min, max, step } = this.props;
+    const percent = offset / this.maxOffset();
+    return Math.round(((max - min) * percent) / step) * step;
+  }
+
+  /**
+   * 通过值获取偏移量
+   * @param  {number} value 值
+   * @return {number}       偏移量
+   */
+  getOffsetByValue(value) {
+    const { min, max } = this.props;
+    return this.maxOffset() * (value / (max - min));
+  }
+
+  /**
+   * 获取最大偏移量
+   */
+  maxOffset() {
+    return this.line.offsetWidth;
+  }
+
+  /**
+   * 初始化
+   */
+  init() {
+    const offset = this.getOffsetByValue(this.state.value);
+    this.offsetStart = offset;
+    this.setState({ offset }, () => {
+      Tooltip.show();
+    });
   }
 
   render() {
@@ -80,8 +120,8 @@ class Slider extends PureComponent {
     };
 
     return (
-      <div className={cls} ref={(ele) => { this.slider = ele; }}>
-        <div className={`${prefixCls}-line`}>
+      <div className={cls}>
+        <div className={`${prefixCls}-line`} ref={(ele) => { this.line = ele; }}>
           <div className={`${prefixCls}-line-bg`} style={bgStyle} />
         </div>
         <Drag
@@ -97,6 +137,7 @@ class Slider extends PureComponent {
             ref={(ele) => { this.handle = ele; }}
             />
         </Drag>
+        <Tooltip message={value}><span className={`${prefixCls}-tooltip`} style={handleStyle} /></Tooltip>
       </div>
     );
   }

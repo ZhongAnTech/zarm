@@ -3,10 +3,12 @@ $prefixCls: za-slider;
 .#{$prefixCls} {
   position: relative;
   width: 100%;
+  height: r(2);
   margin: r(14) 0;
   padding: 0 r(14);
 
   &-line {
+    flex: 1;
     height: r(2);
     background-color: #d6d6d6;
 
@@ -14,6 +16,15 @@ $prefixCls: za-slider;
       height: 100%;
       background-color: $theme-primary;
     }
+  }
+
+  &-tooltip {
+    position: absolute;
+    left: 0;
+    top: r(-50);
+    width: r(28);
+    height: r(28);
+    background-color: #ddd;
   }
 
   &-handle {
