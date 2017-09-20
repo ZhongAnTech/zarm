@@ -18,7 +18,7 @@ class Page extends Component {
             <Panel.Header title="普通" />
             <Panel.Body>
               <Cell title="标题文字" />
-              <Cell title="标题文字"><Slider /></Cell>
+              <Cell title="标题文字"><Slider value={50} /></Cell>
             </Panel.Body>
           </Panel>
 

@@ -1,0 +1,19 @@
+$prefixCls: za-tooltip;
+
+.#{$prefixCls} {
+  position: absolute;
+  top: r(20);
+  min-height: r(21);
+  padding: r(5);
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: $radius-md;
+  color: #fff;
+  font-size: r(12);
+
+  &-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
