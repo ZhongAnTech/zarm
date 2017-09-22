@@ -114,6 +114,8 @@ Stepper.propTypes = {
   theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
   size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
   shape: PropTypes.oneOf(['radius', 'circle']),
+  value: PropTypes.number,  // eslint-disable-line
+  defaultValue: PropTypes.number, // eslint-disable-line
   disabled: PropTypes.bool,
   step: PropTypes.number,
   min: PropTypes.number,
