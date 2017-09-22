@@ -63,8 +63,8 @@ import { Stepper } from 'zarm';
 | className | string | | | 追加类名 |
 | theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | shape | string | | 'radius', 'circle' | 形状 |
-| value | string | | | 值 |
-| defaultValue | string | | | 初始值 |
+| value | number | | | 值 |
+| defaultValue | number | | | 初始值 |
 | disabled | bool | false | | 是否禁用 |
 | min | number | | | 最小值 |
 | max | number | | | 最大值 |

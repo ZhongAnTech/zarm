@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Drag from '../Drag';
@@ -24,6 +23,7 @@ class Slider extends PureComponent {
       offset: 0,
       tooltip: false,
     };
+    this.allowDrag = false;
     this.offsetStart = 0;
     this.onDragStart = this.onDragStart.bind(this);
     this.onDragMove = this.onDragMove.bind(this);
@@ -47,10 +47,13 @@ class Slider extends PureComponent {
     const { disabled } = this.props;
     if (disabled) return;
 
+    this.allowDrag = true;
     this.setState({ tooltip: true });
   }
 
   onDragMove(event, { offsetX }) {
+    if (!this.allowDrag) return;
+
     event.preventDefault();
 
     let offset = this.offsetStart + offsetX;
@@ -65,6 +68,7 @@ class Slider extends PureComponent {
 
   onDragEnd(event, { offsetX }) {
     this.offsetStart += offsetX;
+    this.allowDrag = false;
     this.setState({ tooltip: false });
 
     const { onChange } = this.props;
@@ -96,7 +100,9 @@ class Slider extends PureComponent {
    * 获取最大偏移量
    */
   maxOffset() {
-    return this.line.offsetWidth;
+    return this.line
+      ? this.line.offsetWidth
+      : 0;
   }
 
   /**
@@ -133,8 +139,7 @@ class Slider extends PureComponent {
             aria-valuemin={min}
             aria-valuemax={max}
             aria-valuenow={value}
-            style={{ left: offset }}
-            ref={(ele) => { this.handle = ele; }}>
+            style={{ left: offset }}>
             <Tooltip visible={tooltip} message={value}><div className={`${prefixCls}-handle-shadow`} /></Tooltip>
           </div>
         </Drag>
@@ -147,6 +152,8 @@ Slider.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  value: PropTypes.number,
+  defaultValue: PropTypes.number, // eslint-disable-line
   step: PropTypes.number,
   min: PropTypes.number,
   max: PropTypes.number,
@@ -158,7 +165,7 @@ Slider.defaultProps = {
   disabled: false,
   step: 1,
   min: 0,
-  max: 100000,
+  max: 100,
 };
 
 export default Slider;
