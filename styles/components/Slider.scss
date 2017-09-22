@@ -18,15 +18,6 @@ $prefixCls: za-slider;
     }
   }
 
-  &-tooltip {
-    position: absolute;
-    left: 0;
-    top: r(-50);
-    width: r(28);
-    height: r(28);
-    background-color: #ddd;
-  }
-
   &-handle {
     position: absolute;
     left: 0;
@@ -36,6 +27,11 @@ $prefixCls: za-slider;
     border-radius: 50%;
     background-color: #fff;
     box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+
+    &-shadow {
+      width: r(28);
+      height: r(28);
+    }
   }
 
   &.disabled {

@@ -104,9 +104,12 @@ class Pull extends PureComponent {
     return true;
   }
 
-  onDragEnd() {
+  onDragEnd(event, { offsetY }) {
     const { onRefresh } = this.props;
     const { refreshState } = this.state;
+
+    // 没有产生位移
+    if (!offsetY) return;
 
     // 当前状态为下拉状态时
     if (refreshState === REFRESH_STATE.pull) {

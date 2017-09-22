@@ -1,5 +1,5 @@
 import React, { PureComponent, cloneElement } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -7,43 +7,59 @@ class Tooltip extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
+    this.rootDom = document.createElement('div');
   }
 
-  show() {
-    const { prefixCls, className, message } = this.props;
+  componentDidMount() {
+    this.show(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.show(nextProps);
+  }
+
+  show(props) {
+    const { prefixCls, className, visible, message } = props;
+
+    const root = this.rootDom;
+    if (visible) {
+      document.body.appendChild(this.rootDom);
+    }
 
     const cls = classnames({
       [`${prefixCls}`]: true,
+      [`${prefixCls}-hidden`]: !visible,
       [className]: !!className,
     });
 
-    const child = this.child.getBoundingClientRect();
+    // eslint-disable-next-line
+    const rect = findDOMNode(this.child).getBoundingClientRect();
     const style = {
-      left: child.left,
-      top: child.top,
+      left: rect.left,
+      top: rect.top,
+      width: rect.width,
     };
 
-    const root = document.createElement('div');
-    root.className = `${prefixCls}-wrapper`;
-    document.body.appendChild(root);
-    ReactDOM.render(<div className={cls} style={style}>{message}</div>, root);
+    ReactDOM.render(
+      <div className={cls} style={style} ref={(ele) => { this.tooltip = ele; }}>
+        <div className={`${prefixCls}-inner`}>{message}</div>
+      </div>
+    , root);
   }
 
   render() {
     const { children } = this.props;
 
     return cloneElement(children, {
-      ref: ele => this.child = ele,
+      ref: (ele) => { this.child = ele; },
     });
   }
 }
 
 Tooltip.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
+  prefixCls: PropTypes.string,  // eslint-disable-line
+  className: PropTypes.string,  // eslint-disable-line
+  message: PropTypes.any, // eslint-disable-line
 };
 
 Tooltip.defaultProps = {
