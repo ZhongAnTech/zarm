@@ -49,11 +49,8 @@ class Drag extends PureComponent {
 
   onTouchEnd(event) {
     const dragState = this.dragState;
-    if (!dragState.currentX && !dragState.currentY) return;
-
     const { onDragEnd } = this.props;
     onDragEnd(event, dragState);
-
     this.dragState = {};
   }
 

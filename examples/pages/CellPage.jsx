@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Icon, Cell, Message, Input, Slider } from '../../components';
+import { Panel, Icon, Cell, Message, Input, Slider, Tooltip } from '../../components';
 import '../styles/pages/CellPage';
 
 const img = require('../images/icons/state.png');
@@ -18,7 +18,7 @@ class Page extends Component {
             <Panel.Header title="普通" />
             <Panel.Body>
               <Cell title="标题文字" />
-              <Cell title="标题文字"><Slider value={50} /></Cell>
+              <Cell title="标题文字"><Slider /></Cell>
             </Panel.Body>
           </Panel>
 

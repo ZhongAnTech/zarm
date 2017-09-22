@@ -145,6 +145,7 @@ class Swipe extends Component {
 
   onDragEnd(event, { offsetX, offsetY, startTime }) {
     if (this.scrolling) return;
+    if (!offsetX && !offsetY) return;
 
     const { moveDistanceRatio, moveTimeSpan, onChange } = this.props;
     let { activeIndex } = this.state;

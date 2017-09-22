@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Drag from '../Drag';
@@ -21,8 +22,10 @@ class Slider extends PureComponent {
     this.state = {
       value: getValue(props, 0),
       offset: 0,
+      tooltip: false,
     };
     this.offsetStart = 0;
+    this.onDragStart = this.onDragStart.bind(this);
     this.onDragMove = this.onDragMove.bind(this);
     this.onDragEnd = this.onDragEnd.bind(this);
   }
@@ -39,10 +42,15 @@ class Slider extends PureComponent {
     }
   }
 
-  onDragMove(event, { offsetX }) {
+  onDragStart(event) {
+    event.preventDefault();
     const { disabled } = this.props;
     if (disabled) return;
 
+    this.setState({ tooltip: true });
+  }
+
+  onDragMove(event, { offsetX }) {
     event.preventDefault();
 
     let offset = this.offsetStart + offsetX;
@@ -57,6 +65,7 @@ class Slider extends PureComponent {
 
   onDragEnd(event, { offsetX }) {
     this.offsetStart += offsetX;
+    this.setState({ tooltip: false });
 
     const { onChange } = this.props;
     typeof onChange === 'function' && onChange();
@@ -96,14 +105,12 @@ class Slider extends PureComponent {
   init() {
     const offset = this.getOffsetByValue(this.state.value);
     this.offsetStart = offset;
-    this.setState({ offset }, () => {
-      Tooltip.show();
-    });
+    this.setState({ offset });
   }
 
   render() {
     const { prefixCls, className, disabled, min, max } = this.props;
-    const { value, offset } = this.state;
+    const { value, offset, tooltip } = this.state;
 
     const cls = classnames({
       [`${prefixCls}`]: true,
@@ -111,20 +118,13 @@ class Slider extends PureComponent {
       disabled,
     });
 
-    const handleStyle = {
-      left: offset,
-    };
-
-    const bgStyle = {
-      width: offset,
-    };
-
     return (
       <div className={cls}>
         <div className={`${prefixCls}-line`} ref={(ele) => { this.line = ele; }}>
-          <div className={`${prefixCls}-line-bg`} style={bgStyle} />
+          <div className={`${prefixCls}-line-bg`} style={{ width: offset }} />
         </div>
         <Drag
+          onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
           onDragEnd={this.onDragEnd}>
           <div
@@ -133,11 +133,11 @@ class Slider extends PureComponent {
             aria-valuemin={min}
             aria-valuemax={max}
             aria-valuenow={value}
-            style={handleStyle}
-            ref={(ele) => { this.handle = ele; }}
-            />
+            style={{ left: offset }}
+            ref={(ele) => { this.handle = ele; }}>
+            <Tooltip visible={tooltip} message={value}><div className={`${prefixCls}-handle-shadow`} /></Tooltip>
+          </div>
         </Drag>
-        <Tooltip message={value}><span className={`${prefixCls}-tooltip`} style={handleStyle} /></Tooltip>
       </div>
     );
   }
@@ -158,7 +158,7 @@ Slider.defaultProps = {
   disabled: false,
   step: 1,
   min: 0,
-  max: 100,
+  max: 100000,
 };
 
 export default Slider;
