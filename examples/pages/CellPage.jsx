@@ -19,6 +19,7 @@ class Page extends Component {
             <Panel.Body>
               <Cell title="标题文字" />
               <Cell title="标题文字"><Slider defaultValue={10} /></Cell>
+              <Cell title="标题文字"><Slider min={-100} max={100} step={15} defaultValue={15} /></Cell>
             </Panel.Body>
           </Panel>
 
