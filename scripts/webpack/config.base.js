@@ -34,10 +34,12 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [
-                ['env', {
+                [
+                  'env',
+                  {
                     targets: {
                       browsers: BROWSERS,
-                    }
+                    },
                   },
                 ],
                 'react',
