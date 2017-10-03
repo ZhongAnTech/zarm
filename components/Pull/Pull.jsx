@@ -58,10 +58,11 @@ class Pull extends PureComponent {
   }
 
   onScroll() {
-    if (this.state.refreshState !== REFRESH_STATE.normal) return;
-    if (this.state.loadState !== LOAD_STATE.normal) return;
+    const { refreshState, loadState } = this.state;
+    if (refreshState !== REFRESH_STATE.normal) return;
+    if (loadState !== LOAD_STATE.normal) return;
 
-    const { onLoad } = this.props;
+    const { onLoad, loadDistance } = this.props;
     if (!onLoad) return;
 
     const bottom = this.pull.getBoundingClientRect().bottom;
@@ -70,7 +71,7 @@ class Pull extends PureComponent {
 
     if (scrollHeight <= clientHeight) return;
 
-    if (bottom <= clientHeight) {
+    if (bottom <= clientHeight + loadDistance) {
       typeof onLoad === 'function' && onLoad();
     }
   }
@@ -334,6 +335,7 @@ Pull.propTypes = {
   refreshRender: PropTypes.func,
   onRefresh: PropTypes.func,
   loading: PropTypes.number,
+  loadDistance: PropTypes.number,
   onLoad: PropTypes.func,
   loadRender: PropTypes.func,
   duration: PropTypes.number,
@@ -346,6 +348,7 @@ Pull.defaultProps = {
   refreshInitDistance: 20,
   refreshDistance: 50,
   loading: LOAD_STATE.normal,
+  loadDistance: 10,
   duration: 300,
   stayTime: 2000,
 };
