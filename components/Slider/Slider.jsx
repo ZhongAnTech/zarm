@@ -23,7 +23,6 @@ class Slider extends PureComponent {
       offset: 0,
       tooltip: false,
     };
-    this.allowDrag = false;
     this.offsetStart = 0;
     this.onDragStart = this.onDragStart.bind(this);
     this.onDragMove = this.onDragMove.bind(this);
@@ -42,23 +41,32 @@ class Slider extends PureComponent {
     }
   }
 
-  onDragStart(event) {
-    event.preventDefault();
+  onDragStart() {
     const { disabled } = this.props;
     if (disabled) return;
-
-    this.allowDrag = true;
     this.setState({ tooltip: true });
   }
 
   onDragMove(event, { offsetX }) {
-    if (!this.allowDrag) return;
+    const { disabled } = this.props;
+    if (disabled) return;
 
     event.preventDefault();
 
     let offset = this.offsetStart + offsetX;
-    offset = (offset < 0) ? 0 : offset;
-    offset = (offset > this.maxOffset()) ? this.maxOffset() : offset;
+    if (offset < 0) {
+      offset = 0;
+      const value = this.getValueByOffset(offset);
+      this.setState({ offset, value });
+      return false;
+    }
+
+    if (offset > this.maxOffset()) {
+      offset = this.maxOffset();
+      const value = this.getValueByOffset(offset);
+      this.setState({ offset, value });
+      return false;
+    }
 
     const value = this.getValueByOffset(offset);
     offset = this.getOffsetByValue(value);
@@ -67,9 +75,10 @@ class Slider extends PureComponent {
   }
 
   onDragEnd(event, { offsetX }) {
-    this.offsetStart += offsetX;
-    this.allowDrag = false;
     this.setState({ tooltip: false });
+    if (isNaN(offsetX)) return;
+
+    this.offsetStart += offsetX;
 
     const { onChange } = this.props;
     typeof onChange === 'function' && onChange();
@@ -83,7 +92,8 @@ class Slider extends PureComponent {
   getValueByOffset(offset) {
     const { min, max, step } = this.props;
     const percent = offset / this.maxOffset();
-    return Math.round(((max - min) * percent) / step) * step;
+    const value = Math.round((min + ((max - min) * percent)) / step) * step;
+    return Math.max(Math.min(value, max), min);
   }
 
   /**
@@ -93,7 +103,7 @@ class Slider extends PureComponent {
    */
   getOffsetByValue(value) {
     const { min, max } = this.props;
-    return this.maxOffset() * (value / (max - min));
+    return this.maxOffset() * ((value - min) / (max - min));
   }
 
   /**

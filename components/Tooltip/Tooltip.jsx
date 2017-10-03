@@ -34,9 +34,10 @@ class Tooltip extends PureComponent {
 
     // eslint-disable-next-line
     const rect = findDOMNode(this.child).getBoundingClientRect();
+    const scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
     const style = {
       left: rect.left,
-      top: rect.top,
+      top: rect.top + scrollTop,
       width: rect.width,
     };
 
