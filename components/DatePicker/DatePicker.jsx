@@ -93,7 +93,6 @@ class DatePicker extends Component {
   onCancel() {
     const { onCancel } = this.props;
     this.toggle();
-    console.log(this.initDate);
     this.setState({
       date: this.initDate,
     });
