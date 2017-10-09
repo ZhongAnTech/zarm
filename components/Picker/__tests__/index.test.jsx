@@ -16,6 +16,19 @@ describe('Picker', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('render defaultValue correctly ', () => {
+    const wrapper = render(
+      <Picker
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        defaultValue="2"
+        />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('Cascader Picker', () => {
     jest.useFakeTimers();
     const wrapper = mount(

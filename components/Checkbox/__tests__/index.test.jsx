@@ -44,6 +44,28 @@ describe('Checkbox.Group', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('render value correctly', () => {
+    const wrapper = render(
+      <Checkbox.Group value={['0']}>
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('render defaultValue correctly', () => {
+    const wrapper = render(
+      <Checkbox.Group defaultValue={['1']}>
+        <Checkbox value="0">选项一</Checkbox>
+        <Checkbox value="1">选项二</Checkbox>
+        <Checkbox value="2">选项三</Checkbox>
+      </Checkbox.Group>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('type is button', () => {
     const wrapper = render(
       <Checkbox.Group type="button">
@@ -92,6 +114,7 @@ describe('Checkbox.Group', () => {
     firstCheckbox.simulate('change', { target: { checked: false } });
     expect(onChange).toBeCalledWith([]);
 
+    // 测试disabled
     const lastCheckbox = wrapper.find(Checkbox).last().dive().find('input[type="checkbox"]');
     lastCheckbox.simulate('change', { target: { checked: true } });
   });

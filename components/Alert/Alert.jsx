@@ -9,7 +9,6 @@ class Alert extends PureComponent {
     const { prefixCls, title, message, cancelText, onCancel, ...others } = this.props;
 
     return (
-      {/* asdasd */}
       <Modal {...others}>
         <Modal.Header title={title} />
         <Modal.Body>
