@@ -178,5 +178,3 @@ export function isArray(data) {
 export function hasChildrenObject(data) {
   return Object.prototype.hasOwnProperty.call(data, 'children') && Object.prototype.toString.call(data.children) !== '[object String]';
 }
-
-
