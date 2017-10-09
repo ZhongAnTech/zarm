@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import moment from 'moment';
-import ColumnGroup from './ColumnGroup';
+import Column from '../Column';
 import { formatFn } from './utils';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
@@ -13,10 +12,11 @@ const DATE = 'date';
 const TIME = 'time';
 const MONTH = 'month';
 const YEAR = 'year';
+const ONE_DAY = 24 * 60 * 60 * 1000;
 
 // 获取当月天数
-function getDaysInMonth(now) {
-  return now.clone().endOf('month').date();
+function getDaysInMonth(date) {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 }
 
 // 补齐格式
@@ -24,25 +24,47 @@ function pad(n) {
   return n < 10 ? `0${n}` : `${n}`;
 }
 
+function cloneDate(date) {
+  return new Date(+date);
+}
+
 // 阻止选择器区域的默认事件
 function stopClick(e) {
   e.stopPropagation();
 }
 
-// 转成moment格式
+// 设置月份
+function setMonth(date, month) {
+  date.setDate(Math.min(date.getDate(), getDaysInMonth(new Date(date.getFullYear(), month))));
+  date.setMonth(month);
+}
+
+// 转成Date格式
 function getGregorianCalendar(arg) {
-  return moment(arg);
+  return new Date(...arg);
+}
+
+function isExtendDate(date) {
+  if (date instanceof Date) {
+    return date;
+  }
+
+  if (!date) {
+    return '';
+  }
+
+  return new Date(date.toString().replace(/-/g, '/'));
 }
 
 class DatePicker extends Component {
   constructor(props) {
     super(props);
 
-    const date = props.value && this.isExtendMoment(props.value);
-    const defaultDate = props.defaultValue && this.isExtendMoment(props.defaultValue);
-    const display = props.wheelDefaultValue && this.isExtendMoment(props.wheelDefaultValue);
+    const date = props.value && isExtendDate(props.value);
+    const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
+    const display = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
 
-    this.initDate = props.value && this.isExtendMoment(props.value);
+    this.initDate = date;
 
     this.state = {
       visible: props.visible || false,
@@ -52,8 +74,8 @@ class DatePicker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const date = nextProps.value && this.isExtendMoment(nextProps.value);
-    const defaultDate = nextProps.defaultValue && this.isExtendMoment(nextProps.defaultValue);
+    const date = nextProps.value && isExtendDate(nextProps.value);
+    const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
 
     this.setState({
       date: date || defaultDate,
@@ -72,7 +94,6 @@ class DatePicker extends Component {
   onCancel() {
     const { onCancel } = this.props;
     this.toggle();
-
     this.setState({
       date: this.initDate,
     });
@@ -96,24 +117,24 @@ class DatePicker extends Component {
 
     const props = this.props;
     const { mode } = props;
-    let newValue = this.getDate().clone();
+    let newValue = cloneDate(this.getDate());
 
     if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
       switch (index) {
         case 0:
-          newValue.year(value);
+          newValue.setFullYear(value);
           break;
         case 1:
-          newValue.month(value);
+          setMonth(newValue, value);
           break;
         case 2:
-          newValue.date(value);
+          newValue.setDate(value);
           break;
         case 3:
-          newValue.hour(value);
+          this.setHours(newValue, value);
           break;
         case 4:
-          newValue.minute(value);
+          newValue.setMinutes(value);
           break;
         default:
           break;
@@ -121,10 +142,10 @@ class DatePicker extends Component {
     } else {
       switch (index) {
         case 0:
-          newValue.hour(value);
+          this.setHours(newValue, value);
           break;
         case 1:
-          newValue.minute(value);
+          newValue.setMinutes(value);
           break;
         default:
           break;
@@ -138,7 +159,19 @@ class DatePicker extends Component {
         date: newValue,
       });
     }
-    props.onChange(formatFn(this, newValue));
+    // props.onChange(formatFn(this, newValue));
+  }
+
+  setHours(date, hour) {
+    if (this.props.use12Hours) {
+      const dh = date.getHours();
+      let nhour = hour;
+      nhour = dh >= 12 ? hour + 12 : hour;
+      nhour = nhour >= 24 ? 0 : nhour; // Make sure no more than one day
+      date.setHours(nhour);
+    } else {
+      date.setHours(hour);
+    }
   }
 
   getDefaultMinDate() {
@@ -155,57 +188,65 @@ class DatePicker extends Component {
     return this.defaultMaxDate;
   }
 
+  getDefaultDate() {
+    // 存在最小值且毫秒数大于现在
+    if (this.props.min && Date.parse(this.getMinDate()) >= Date.now()) {
+      return this.getMinDate();
+    }
+    return new Date();
+  }
+
   getDate() {
-    return this.state.date || this.state.display || this.getMinDate() || moment(new Date());
+    return this.state.date || this.state.display || this.getDefaultDate();
   }
 
   getMinYear() {
-    return this.getMinDate().year();
+    return this.getMinDate().getFullYear();
   }
 
   getMaxYear() {
-    return this.getMaxDate().year();
+    return this.getMaxDate().getFullYear();
   }
 
   getMinMonth() {
-    return this.getMinDate().month();
+    return this.getMinDate().getMonth();
   }
 
   getMaxMonth() {
-    return this.getMaxDate().month();
+    return this.getMaxDate().getMonth();
   }
 
   getMinDay() {
-    return this.getMinDate().date();
+    return this.getMinDate().getDate();
   }
 
   getMaxDay() {
-    return this.getMaxDate().date();
+    return this.getMaxDate().getDate();
   }
 
   getMinHour() {
-    return this.getMinDate().hour();
+    return this.getMinDate().getHours();
   }
 
   getMaxHour() {
-    return this.getMaxDate().hour();
+    return this.getMaxDate().getHours();
   }
 
   getMinMinute() {
-    return this.getMinDate().minute();
+    return this.getMinDate().getMinutes();
   }
 
   getMaxMinute() {
-    return this.getMaxDate().minute();
+    return this.getMaxDate().getMinutes();
   }
 
   getMinDate() {
-    const minDate = this.isExtendMoment(this.props.min);
+    const minDate = isExtendDate(this.props.min);
     return minDate || this.getDefaultMinDate();
   }
 
   getMaxDate() {
-    const maxDate = this.isExtendMoment(this.props.max);
+    const maxDate = isExtendDate(this.props.max);
     return maxDate || this.getDefaultMaxDate();
   }
 
@@ -213,8 +254,8 @@ class DatePicker extends Component {
     const { locale, formatMonth, formatDay, mode } = this.props;
     const date = this.getDate();
 
-    const selYear = date.year();
-    const selMonth = date.month();
+    const selYear = date.getFullYear();
+    const selMonth = date.getMonth();
     const minDateYear = this.getMinYear();
     const maxDateYear = this.getMaxYear();
     const minDateMonth = this.getMinMonth();
@@ -294,12 +335,12 @@ class DatePicker extends Component {
     const maxDateMinute = this.getMaxMinute();
     const minDateHour = this.getMinHour();
     const maxDateHour = this.getMaxHour();
-    const hour = date.hour();
+    const hour = date.getHours();
 
     if (mode === DATETIME) {
-      const year = date.year();
-      const month = date.month();
-      const day = date.date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const day = date.getDate();
 
       const minDateYear = this.getMinYear();
       const maxDateYear = this.getMaxYear();
@@ -365,25 +406,25 @@ class DatePicker extends Component {
     if (mode === YEAR) {
       return {
         cols: this.getDateData(),
-        value: [`${date.year()}`],
+        value: [`${date.getFullYear()}`],
       };
     }
 
     if (mode === MONTH) {
       return {
         cols: this.getDateData(),
-        value: [`${date.year()}`, `${date.month()}`],
+        value: [`${date.getFullYear()}`, `${date.getMonth()}`],
       };
     }
 
     if (mode === DATETIME || mode === DATE) {
       cols = this.getDateData();
-      value = [`${date.year()}`, `${date.month()}`, `${date.date()}`];
+      value = [`${date.getFullYear()}`, `${date.getMonth()}`, `${date.getDate()}`];
     }
 
     if (mode === DATETIME || mode === TIME) {
       cols = cols.concat(this.getTimeData());
-      value = value.concat([`${date.hour()}`, `${date.minute()}`]);
+      value = value.concat([`${date.getHours()}`, `${date.getMinutes()}`]);
     }
 
     return {
@@ -397,51 +438,34 @@ class DatePicker extends Component {
     const minDate = this.getMinDate();
     const maxDate = this.getMaxDate();
     if (mode === DATETIME) {
-      if (date.isBefore(minDate)) {
-        return minDate.clone();
+      if (date < minDate) {
+        return cloneDate(minDate);
       }
-      if (date.isAfter(maxDate)) {
-        return maxDate.clone();
+      if (date > maxDate) {
+        return cloneDate(maxDate);
       }
     } else if (mode === DATE) {
-      if (date.isBefore(minDate, 'day')) {
-        return minDate.clone();
+      if (+date + ONE_DAY <= minDate) {
+        return cloneDate(minDate);
       }
-      if (date.isAfter(maxDate, 'day')) {
-        return maxDate.clone();
+      if (date >= +maxDate + ONE_DAY) {
+        return cloneDate(maxDate);
       }
     } else {
-      const maxHour = maxDate.hour();
-      const maxMinutes = maxDate.minute();
-      const minHour = minDate.hour();
-      const minMinutes = minDate.minute();
-      const hour = date.hour();
-      const minutes = date.minute();
+      const maxHour = maxDate.getHours();
+      const maxMinutes = maxDate.getMinutes();
+      const minHour = minDate.getHours();
+      const minMinutes = minDate.getMinutes();
+      const hour = date.getHours();
+      const minutes = date.getMinutes();
       if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
-        return minDate.clone();
+        return cloneDate(minDate);
       }
       if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
-        return maxDate.clone();
+        return cloneDate(maxDate);
       }
     }
     return date;
-  }
-
-  isExtendMoment(date) {
-    const { mode } = this.props;
-    if (date instanceof moment) {
-      return date;
-    }
-
-    if (!date) {
-      return '';
-    }
-
-    if (mode === TIME) {
-      // 如果传递参数不合法，默认转换为时：分
-      return moment(date).isValid() ? moment(date, 'YYYY-MM-DD HH:mm') : moment(date, 'HH:mm');
-    }
-    return moment(date, 'YYYY-MM-DD HH:mm');
   }
 
   // 切换显示状态
@@ -477,7 +501,6 @@ class DatePicker extends Component {
       [`${prefixCls}-placeholder`]: !this.state.date,
       [`${prefixCls}-disabled`]: !!disabled,
     });
-
     return (
       <div
         className={prefixCls}
@@ -489,7 +512,7 @@ class DatePicker extends Component {
         <div className={classes} onClick={e => stopClick(e)}>
           <Popup
             visible={this.state.visible}
-            onMaskClick={() => this.close('visible')}>
+            onMaskClick={() => this.onMaskClick()}>
             <div className={`${prefixCls}-wrapper`}>
               <div className={`${prefixCls}-header`}>
                 <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
@@ -498,7 +521,7 @@ class DatePicker extends Component {
               </div>
               <div className={`${prefixCls}-mask-top`}>
                 <div className={`${prefixCls}-mask-bottom`}>
-                  <ColumnGroup
+                  <Column.Group
                     className={className}
                     prefixCls={prefixCls}
                     disabled={disabled}
@@ -507,7 +530,7 @@ class DatePicker extends Component {
                     selectedValue={value}
                     onValueChange={(values, index) => this.onValueChange(values, index)}>
                     {cols}
-                  </ColumnGroup>
+                  </Column.Group>
                 </div>
               </div>
             </div>
