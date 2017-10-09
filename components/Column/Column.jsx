@@ -56,7 +56,7 @@ class Column extends Component {
     this.zscroller.setDisabled(nextProps.disabled);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate() {
     return true;
     // return this.state.selectedValue !== nextState.selectedValue
     //   || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
