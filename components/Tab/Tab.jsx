@@ -15,6 +15,7 @@ function getSelectIndex(children) {
 }
 
 class Tab extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +28,7 @@ class Tab extends PureComponent {
       this.setState({
         value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
       });
-      nextProps.onChange(nextProps.value);
+      typeof nextProps.onChange === 'function' && nextProps.onChange(nextProps.value);
     }
   }
 
@@ -142,12 +143,9 @@ Tab.propTypes = {
 
 Tab.defaultProps = {
   prefixCls: 'za-tab',
-  className: null,
   theme: 'primary',
-  lineWidth: null,
   disabled: false,
   canSwipe: false,
-  onChange() {},
 };
 
 export default Tab;

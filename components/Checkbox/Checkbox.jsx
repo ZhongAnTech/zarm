@@ -15,6 +15,7 @@ function getChecked(props, defaultChecked) {
 }
 
 class Checkbox extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {

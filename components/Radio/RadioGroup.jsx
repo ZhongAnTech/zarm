@@ -26,6 +26,7 @@ function getValue(props, defaultValue) {
 }
 
 class RadioGroup extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -98,14 +99,10 @@ RadioGroup.propTypes = {
 
 RadioGroup.defaultProps = {
   prefixCls: 'za-radio-group',
-  className: null,
   theme: 'primary',
-  type: null,
-  shape: null,
   block: false,
   disabled: false,
   compact: false,
-  onChange() {},
 };
 
 export default RadioGroup;

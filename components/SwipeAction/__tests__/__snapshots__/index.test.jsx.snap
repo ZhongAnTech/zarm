@@ -1,8 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SwipeAction left only 1`] = `
+<div
+  class="za-swipeaction"
+>
+  <div
+    class="za-swipeaction-actions-left"
+  >
+    <div
+      class="za-swipeaction-button theme-info"
+    >
+      <div
+        class="za-swipeaction-text"
+      >
+        左按钮1
+      </div>
+    </div>
+    <div
+      class="za-swipeaction-button theme-warning"
+    >
+      <div
+        class="za-swipeaction-text"
+      >
+        左按钮2
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-swipeaction-content"
+    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0);"
+  >
+    <div>
+      右滑
+    </div>
+  </div>
+</div>
+`;
+
 exports[`SwipeAction renders correctly 1`] = `
 <SwipeAction
-  className={null}
   duration={300}
   left={
     Array [
@@ -21,8 +57,6 @@ exports[`SwipeAction renders correctly 1`] = `
   moveDistanceRatio={0.5}
   moveTimeSpan={300}
   offset={10}
-  onClose={[Function]}
-  onOpen={[Function]}
   prefixCls="za-swipeaction"
   right={
     Array [
@@ -116,4 +150,41 @@ exports[`SwipeAction renders correctly 1`] = `
     </Drag>
   </div>
 </SwipeAction>
+`;
+
+exports[`SwipeAction right only 1`] = `
+<div
+  class="za-swipeaction"
+>
+  <div
+    class="za-swipeaction-actions-right"
+  >
+    <div
+      class="za-swipeaction-button theme-info"
+    >
+      <div
+        class="za-swipeaction-text"
+      >
+        左按钮1
+      </div>
+    </div>
+    <div
+      class="za-swipeaction-button theme-warning"
+    >
+      <div
+        class="za-swipeaction-text"
+      >
+        左按钮2
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-swipeaction-content"
+    style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0);"
+  >
+    <div>
+      左滑
+    </div>
+  </div>
+</div>
 `;

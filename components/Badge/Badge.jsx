@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 class Badge extends PureComponent {
+
   render() {
     const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
 
@@ -37,9 +38,7 @@ Badge.propTypes = {
 
 Badge.defaultProps = {
   prefixCls: 'za-badge',
-  className: null,
   theme: 'error',
-  shape: null,
   sup: false,
 };
 

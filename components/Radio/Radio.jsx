@@ -16,6 +16,7 @@ function getChecked(props, defaultChecked) {
 }
 
 class Radio extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
