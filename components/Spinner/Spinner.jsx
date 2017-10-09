@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const diameter = 100;
+const diameter = 62;
 
 class Spinner extends PureComponent {
 
@@ -45,10 +45,8 @@ Spinner.propTypes = {
 
 Spinner.defaultProps = {
   prefixCls: 'za-spinner',
-  className: null,
   theme: 'primary',
-  size: null,
-  strokeWidth: 4,
+  strokeWidth: 5,
   percent: 15,
 };
 

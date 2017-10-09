@@ -4,8 +4,6 @@ import '../styles/components/Footer.scss';
 class Footer extends Component {
 
   render() {
-    const { title } = this.props;
-
     return (
       <footer>
         <div className="copyright">
