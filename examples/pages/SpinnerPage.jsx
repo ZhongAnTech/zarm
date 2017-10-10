@@ -19,10 +19,6 @@ class Page extends Component {
               }>普通</Cell>
 
               <Cell description={
-                <Spinner theme="error" />
-              }>自定义主题</Cell>
-
-              <Cell description={
                 <Spinner className="rotate360" />
               }>旋转动画</Cell>
 

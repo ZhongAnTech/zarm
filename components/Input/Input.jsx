@@ -112,9 +112,12 @@ Input.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,
+  value: PropTypes.string,
+  defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
-  rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  rows: PropTypes.number,
   autosize: PropTypes.bool,
+  maxLength: PropTypes.number,
   showLength: PropTypes.bool,
   onChange: PropTypes.func,
 };
