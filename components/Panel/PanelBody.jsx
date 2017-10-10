@@ -6,11 +6,7 @@ class PanelBody extends PureComponent {
 
   render() {
     const { prefixCls, className, children, ...others } = this.props;
-
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
-    });
+    const cls = classnames(`${prefixCls}-body`, className);
 
     return <div {...others} className={cls}>{children}</div>;
   }
@@ -22,7 +18,7 @@ PanelBody.propTypes = {
 };
 
 PanelBody.defaultProps = {
-  prefixCls: 'za-panel-body',
+  prefixCls: 'za-panel',
 };
 
 export default PanelBody;

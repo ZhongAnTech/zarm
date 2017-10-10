@@ -33,7 +33,7 @@ class Toast extends PureComponent {
     clearTimeout(this.timer);
   }
 
-  enter({ duration, onMaskClick }) {
+  enter = ({ duration, onMaskClick }) => {
     this.setState({
       isShow: true,
     });
@@ -46,7 +46,7 @@ class Toast extends PureComponent {
     }, duration);
   }
 
-  leave() {
+  leave = () => {
     this.setState({
       isShow: false,
     });
@@ -55,14 +55,12 @@ class Toast extends PureComponent {
   render() {
     const { prefixCls, className, visible, children, onMaskClick } = this.props;
 
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`${prefixCls}-open`]: this.state.isShow,
     });
 
     return (
-      <div className={classes}>
+      <div className={cls}>
         <div className={`${prefixCls}-container`}>
           {children}
         </div>

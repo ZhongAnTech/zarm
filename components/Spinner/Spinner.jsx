@@ -9,9 +9,7 @@ class Spinner extends PureComponent {
   render() {
     const { prefixCls, className, theme, size, percent, strokeWidth } = this.props;
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
     });
@@ -19,7 +17,6 @@ class Spinner extends PureComponent {
     const half = diameter / 2;
     const r = half - (strokeWidth / 2);
     const round = 2 * Math.PI * r;
-
     const style = {
       strokeDasharray: `${(round * percent) / 100} ${round}`,
       strokeWidth,

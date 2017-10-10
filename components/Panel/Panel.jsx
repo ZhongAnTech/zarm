@@ -6,11 +6,7 @@ class Panel extends PureComponent {
 
   render() {
     const { prefixCls, className, children } = this.props;
-
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
-    });
+    const cls = classnames(`${prefixCls}`, className);
 
     return <div className={cls}>{children}</div>;
   }

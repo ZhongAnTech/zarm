@@ -6,12 +6,9 @@ class Drag extends PureComponent {
   constructor(props) {
     super(props);
     this.dragState = {};
-    this.onTouchStart = this.onTouchStart.bind(this);
-    this.onTouchMove = this.onTouchMove.bind(this);
-    this.onTouchEnd = this.onTouchEnd.bind(this);
   }
 
-  onTouchStart(event) {
+  onTouchStart = (event) => {
     const dragState = this.dragState;
     const touch = event.touches[0];
 
@@ -23,7 +20,7 @@ class Drag extends PureComponent {
     onDragStart(event, dragState);
   }
 
-  onTouchMove(event) {
+  onTouchMove = (event) => {
     const dragState = this.dragState;
     const touch = event.touches[0];
 
@@ -47,7 +44,7 @@ class Drag extends PureComponent {
     this.dragState = state;
   }
 
-  onTouchEnd(event) {
+  onTouchEnd = (event) => {
     const dragState = this.dragState;
     const { onDragEnd } = this.props;
     onDragEnd(event, dragState);

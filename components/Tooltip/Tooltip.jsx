@@ -18,7 +18,7 @@ class Tooltip extends PureComponent {
     this.show(nextProps);
   }
 
-  show(props) {
+  show = (props) => {
     const { prefixCls, className, visible, message } = props;
 
     const root = this.rootDom;

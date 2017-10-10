@@ -22,12 +22,9 @@ class Uploader extends PureComponent {
     this.state = {
       fileList: [],
     };
-    this.handleDefaultInput = this.handleDefaultInput.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleDefaultInput(e) {
+  handleDefaultInput = (e) => {
     // 防止选择同一张图片两次造成 onChange 事件不触发
     e.target.value = null;
 
@@ -39,11 +36,11 @@ class Uploader extends PureComponent {
     }
   }
 
-  handleClick() {
+  handleClick = () => {
     this.file.click();
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     const { onChange, quality, multiple } = this.props;
     const files = [].slice.call(e.target.files);
     const fileList = [];
@@ -66,13 +63,13 @@ class Uploader extends PureComponent {
   render() {
     const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;
 
-    const compStyle = classNames(prefixCls, {
+    const cls = classNames(prefixCls, {
       disabled,
       [className]: !!className,
     });
 
     return (
-      <div className={compStyle}>
+      <div className={cls}>
         <input
           className={`${prefixCls}-input`}
           type="file"

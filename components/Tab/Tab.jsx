@@ -35,17 +35,13 @@ class Tab extends PureComponent {
   render() {
     const { prefixCls, className, theme, lineWidth, disabled, canSwipe, children, onChange } = this.props;
 
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const classes = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
     });
 
     // 渲染选项
     const tabsRender = React.Children.map(children, (item, $index) => {
-      const itemCls = classnames({
-        [`${prefixCls}-header-item`]: true,
-        [item.props.className]: !!item.props.className,
+      const itemCls = classnames(`${prefixCls}-header-item`, item.props.className, {
         disabled: disabled || item.props.disabled,
         active: this.state.value === $index,
         // hasline,
@@ -91,9 +87,7 @@ class Tab extends PureComponent {
       );
     } else {
       contentRender = React.Children.map(children, (item, $index) => {
-        return (
-          <TabPanel {...item.props} selected={this.state.value === $index} />
-        );
+        return <TabPanel {...item.props} selected={this.state.value === $index} />;
       });
     }
 

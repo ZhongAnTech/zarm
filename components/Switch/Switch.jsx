@@ -19,7 +19,6 @@ class Switch extends PureComponent {
     this.state = {
       checked: getChecked(props, false),
     };
-    this.onValueChange = this.onValueChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -30,9 +29,8 @@ class Switch extends PureComponent {
     }
   }
 
-  onValueChange() {
+  onValueChange = () => {
     const { disabled, onChange } = this.props;
-
     if (disabled) return;
 
     const checked = !this.state.checked;
@@ -44,9 +42,7 @@ class Switch extends PureComponent {
     const { prefixCls, className, theme, disabled } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       checked,
       disabled,

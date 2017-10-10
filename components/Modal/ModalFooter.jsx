@@ -6,10 +6,7 @@ class ModalFooter extends PureComponent {
 
   render() {
     const { prefixCls, className, children, ...others } = this.props;
-
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}-footer`, className, {
       // block: true,
     });
 
@@ -27,7 +24,7 @@ ModalFooter.propTypes = {
 };
 
 ModalFooter.defaultProps = {
-  prefixCls: 'za-modal-footer',
+  prefixCls: 'za-modal',
 };
 
 export default ModalFooter;

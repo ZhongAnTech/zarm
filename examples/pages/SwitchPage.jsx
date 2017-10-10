@@ -9,13 +9,13 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      switch: false,
+      value: false,
     };
   }
 
-  toggle(value) {
+  toggle = (value) => {
     this.setState({
-      switch: value,
+      value,
     });
   }
 
@@ -44,7 +44,7 @@ class Page extends Component {
             <Panel.Header title="受控开关" />
             <Panel.Body>
               <Cell description={<Switch onChange={value => this.toggle(value)} />}>主开关</Cell>
-              <Cell description={<Switch checked={this.state.switch} onChange={value => console.log(value)} />}>受控开关</Cell>
+              <Cell description={<Switch checked={this.state.value} onChange={value => console.log(value)} />}>受控开关</Cell>
             </Panel.Body>
           </Panel>
         </main>
