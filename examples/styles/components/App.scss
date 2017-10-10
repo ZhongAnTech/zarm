@@ -1,7 +1,6 @@
-/*路由切换动画——改变透明度*/
+/* 路由切换动画——改变透明度 */
 .normal-enter {
   opacity: 0;
-  z-index: 10000;
 }
 
 .normal-enter.normal-enter-active {
@@ -18,13 +17,11 @@
   transition: all .4s ease-out;
 }
 
-/*路由切换动画——左移动*/
+/* 路由切换动画——左移动 */
 .left-enter {
   position: absolute;
   top: 0;
   width: 100%;
-  background: #fff;
-  z-index: 10000;
   opacity: 1;
   transform: translateX(100%);
 }
@@ -46,7 +43,7 @@
   transition: all 0.4s ease-out;
 }
 
-/*路由切换动画——右移动*/
+/* 路由切换动画——右移动 */
 .right-enter {
   transform: translateX(-100%);
 }
@@ -60,8 +57,6 @@
   position: absolute;
   top: 0;
   width: 100%;
-  background: #fff;
-  z-index: 10000;
   opacity: 1;
   transform: translateX(0);
 }

@@ -23,10 +23,6 @@ function contentRender() {
 
 class Page extends Component {
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
   render() {
     return (
       <Container className="swipe-page">
