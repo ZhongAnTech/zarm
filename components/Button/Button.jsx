@@ -8,9 +8,7 @@ class Button extends PureComponent {
   render() {
     const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, tabIndex, onClick, children, ...others } = this.props;
 
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const classes = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
@@ -25,9 +23,7 @@ class Button extends PureComponent {
       ? <Spinner className="rotate360" />
       : icon;
 
-    const childrenRender = children
-      ? <span>{children}</span>
-      : null;
+    const childrenRender = children && <span>{children}</span>;
 
     const contentRender = (!!icon || loading)
       ? <div className={`${prefixCls}-content`}>{iconRender}{childrenRender}</div>
