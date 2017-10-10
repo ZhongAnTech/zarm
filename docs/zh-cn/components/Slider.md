@@ -1,4 +1,4 @@
-# 指示器 Slider
+# 滑动输入条 Slider
 
 [demo页面](https://zhongantecheng.github.io/zarm/#/slider)
 
@@ -22,17 +22,20 @@ import { Slider } from 'zarm';
 <Slider defaultValue={10} />
 ```
 
-###### 禁用状态
-```jsx
-<Slider disabled />
-```
-
 ###### 设置上下限
 ```jsx
 <Slider min={0} max={100} />
 ```
 
+###### 禁用步长
+```jsx
+<Slider step={10} />
+```
 
+###### 禁用状态
+```jsx
+<Slider disabled />
+```
 
 ### API
 
@@ -42,10 +45,10 @@ import { Slider } from 'zarm';
 | className | string | | | 追加类名 |
 | value | number | | | 值 |
 | defaultValue | number | | | 初始值 |
-| disabled | bool | false | | 是否禁用 |
 | min | number | | | 最小值 |
 | max | number | | | 最大值 |
 | step | number | 1 | | 步长 |
+| disabled | bool | false | | 是否禁用 |
 | onChange | func | noop | \(value: number\) | 值变化时触发的回调函数 |
 
 

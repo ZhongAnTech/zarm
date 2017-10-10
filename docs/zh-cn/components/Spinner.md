@@ -17,11 +17,6 @@ import { Spinner } from 'zarm';
 <Spinner />
 ```
 
-###### 设置主题
-```jsx
-<Spinner theme="error" />
-```
-
 ###### 设置动画
 ```jsx
 <Spinner className="rotate360" />
@@ -40,7 +35,6 @@ import { Spinner } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-stepper | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | size | string | | 'lg' | 大小 |
 
 

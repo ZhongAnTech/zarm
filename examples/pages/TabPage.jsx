@@ -48,61 +48,6 @@ class TabPage extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header title="多主题" />
-            <Panel.Body>
-              <Tab theme="info">
-                <Tab.Panel title="选项卡1" />
-                <Tab.Panel title="选项卡2" />
-                <Tab.Panel title="选项卡3" />
-              </Tab>
-              <Tab theme="success">
-                <Tab.Panel title="选项卡1" />
-                <Tab.Panel title="选项卡2" />
-                <Tab.Panel title="选项卡3" />
-              </Tab>
-              <Tab theme="warning">
-                <Tab.Panel title="选项卡1" />
-                <Tab.Panel title="选项卡2" />
-                <Tab.Panel title="选项卡3" />
-              </Tab>
-              <Tab theme="error">
-                <Tab.Panel title="选项卡1" />
-                <Tab.Panel title="选项卡2" />
-                <Tab.Panel title="选项卡3" />
-              </Tab>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header title="联动" />
-            <Panel.Body>
-              <Tab
-                lineWidth="auto"
-                onChange={(i) => {
-                  this.setState({
-                    activeIndex: i,
-                  });
-                }}>
-                <Tab.Panel title="选项卡1" />
-                <Tab.Panel title="选项卡2" />
-                <Tab.Panel title="选项卡3" />
-              </Tab>
-
-              <Tab theme="error" value={this.state.activeIndex} onChange={i => console.log(i)}>
-                <Tab.Panel title="选项卡1">
-                  <div className="content">选项卡1内容</div>
-                </Tab.Panel>
-                <Tab.Panel title="选项卡2">
-                  <div className="content">选项卡2内容</div>
-                </Tab.Panel>
-                <Tab.Panel title="选项卡3">
-                  <div className="content">选项卡3内容</div>
-                </Tab.Panel>
-              </Tab>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
             <Panel.Header title="指定默认选项" />
             <Panel.Body>
               <Tab defaultValue={1}>

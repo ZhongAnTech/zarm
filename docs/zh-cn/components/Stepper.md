@@ -65,10 +65,10 @@ import { Stepper } from 'zarm';
 | shape | string | | 'radius', 'circle' | 形状 |
 | value | number | | | 值 |
 | defaultValue | number | | | 初始值 |
-| disabled | bool | false | | 是否禁用 |
 | min | number | | | 最小值 |
 | max | number | | | 最大值 |
 | step | number | 1 | | 步长 |
+| disabled | bool | false | | 是否禁用 |
 | onChange | func | noop | \(value: number\) | 值变化时触发的回调函数 |
 
 
