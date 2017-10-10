@@ -1,0 +1,73 @@
+/*路由切换动画——改变透明度*/
+.normal-enter {
+  opacity: 0;
+  z-index: 10000;
+}
+
+.normal-enter.normal-enter-active {
+  opacity: 1;
+  transition: all 0.4s ease-in;
+}
+
+.normal-leave {
+  opacity: 1;
+}
+
+.normal-leave.normal-leave-active {
+  opacity: 0;
+  transition: all .4s ease-out;
+}
+
+/*路由切换动画——左移动*/
+.left-enter {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 10000;
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+.left-enter.left-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s ease-out;
+}
+
+.left-leave {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.left-leave.left-leave-active {
+  opacity: 1;
+  transform: translateX(-100%);
+  transition: all 0.4s ease-out;
+}
+
+/*路由切换动画——右移动*/
+.right-enter {
+  transform: translateX(-100%);
+}
+
+.right-enter.right-enter-active {
+  transform: translateX(0);
+  transition: all 0.4s ease-out;
+}
+
+.right-leave {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 10000;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.right-leave.right-leave-active {
+  opacity: 1;
+  transform: translateX(100%);
+  transition: all 0.4s ease-out;
+}
