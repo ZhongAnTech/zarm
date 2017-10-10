@@ -10,7 +10,6 @@ class Input extends PureComponent {
     this.state = {
       length: (props.value || props.defaultValue || '').length,
     };
-    this.onInputChange = this.onInputChange.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +24,7 @@ class Input extends PureComponent {
     this.destroyAutosize();
   }
 
-  onInputChange(e) {
+  onInputChange = (e) => {
     const { onChange } = this.props;
     this.setState({
       length: e.target.value.length,
@@ -34,12 +33,12 @@ class Input extends PureComponent {
   }
 
   // 初始化自适应高度
-  initAutosize() {
+  initAutosize = () => {
     const { type, autosize } = this.props;
     (type === 'textarea') && autosize && Autosize(this.input);
   }
 
-  updateAutosize(prevProps) {
+  updateAutosize = (prevProps) => {
     if (prevProps.type !== 'textarea') return;
     if (prevProps.style !== this.props.style || prevProps.className !== this.props.className) {
       Autosize.update(this.input);
@@ -47,7 +46,7 @@ class Input extends PureComponent {
   }
 
   // 销毁自适应高度
-  destroyAutosize() {
+  destroyAutosize = () => {
     const { type, autosize } = this.props;
     (type === 'textarea') && autosize && Autosize.destroy(this.input);
   }
@@ -96,13 +95,8 @@ class Input extends PureComponent {
           />
       );
 
-    const valueRender = (type === 'date')
-      ? <div className={`${prefixCls}-placeholder`}>{placeholder}</div>
-      : null;
-
-    const textLengthRender = (showLength && maxLength)
-      ? <div className={`${prefixCls}-length`}>{`${this.state.length}/${maxLength}`}</div>
-      : null;
+    const valueRender = (type === 'date') && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>;
+    const textLengthRender = (showLength && maxLength) && <div className={`${prefixCls}-length`}>{`${this.state.length}/${maxLength}`}</div>;
 
     return (
       <div className={cls}>

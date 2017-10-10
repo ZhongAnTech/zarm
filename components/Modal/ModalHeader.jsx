@@ -7,19 +7,12 @@ class ModalHeader extends PureComponent {
 
   render() {
     const { prefixCls, className, title, onClose, ...others } = this.props;
-
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
-    });
-
-    const btnClose = onClose
-      ? <Icon type="wrong" className={`${prefixCls}-close`} onClick={onClose} />
-      : null;
+    const cls = classnames(`${prefixCls}-header`, className);
+    const btnClose = onClose && <Icon type="wrong" className={`${prefixCls}-header-close`} onClick={onClose} />;
 
     return (
       <div className={cls} {...others}>
-        <div className={`${prefixCls}-title`}>{title}</div>
+        <div className={`${prefixCls}-header-title`}>{title}</div>
         {btnClose}
       </div>
     );
@@ -34,7 +27,7 @@ ModalHeader.propTypes = {
 };
 
 ModalHeader.defaultProps = {
-  prefixCls: 'za-modal-header',
+  prefixCls: 'za-modal',
   title: '',
 };
 

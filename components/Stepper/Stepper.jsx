@@ -32,16 +32,14 @@ class Stepper extends PureComponent {
     }
   }
 
-  onInputChange(value) {
-    const { onInputChange } = this.props;
+  onInputChange = (value) => {
     value = Number(value);
-    this.setState({
-      value,
-    });
+    const { onInputChange } = this.props;
+    this.setState({ value });
     typeof onInputChange === 'function' && onInputChange(value);
   }
 
-  onInputBlur(value) {
+  onInputBlur = (value) => {
     const { min, max, onChange } = this.props;
     value = Number(value);
     if (value === '' || isNaN(value)) {
@@ -60,13 +58,13 @@ class Stepper extends PureComponent {
     typeof onChange === 'function' && onChange(value);
   }
 
-  onSubClick() {
+  onSubClick = () => {
     const { step } = this.props;
     const value = Number(this.state.value) - step;
     this.onInputBlur(value);
   }
 
-  onPlusClick() {
+  onPlusClick = () => {
     const { step } = this.props;
     const value = Number(this.state.value) + step;
     this.onInputBlur(value);
@@ -76,9 +74,7 @@ class Stepper extends PureComponent {
     const { prefixCls, className, theme, size, shape, disabled, min, max } = this.props;
     const { value } = this.state;
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
@@ -88,21 +84,19 @@ class Stepper extends PureComponent {
     const subDisabled = !!(typeof min === 'number' && value <= min) || disabled;
     const plusDisabled = !!(typeof max === 'number' && value >= max) || disabled;
 
-    const subCls = classnames({
-      [`${prefixCls}-sub`]: true,
+    const subCls = classnames(`${prefixCls}-sub`, {
       disabled: subDisabled,
     });
 
-    const plusCls = classnames({
-      [`${prefixCls}-plus`]: true,
+    const plusCls = classnames(`${prefixCls}-plus`, {
       disabled: plusDisabled,
     });
 
     return (
       <span className={cls}>
-        <span className={subCls} onClick={() => !subDisabled && this.onSubClick()}><Icon type="minus" /></span>
-        <input className={`${prefixCls}-body`} type="tel" value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} disabled={disabled} />
-        <span className={plusCls} onClick={() => !plusDisabled && this.onPlusClick()}><Icon type="add" /></span>
+        <span className={subCls} onClick={!subDisabled && this.onSubClick}><Icon type="minus" /></span>
+        <input className={`${prefixCls}-body`} type="tel" value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} />
+        <span className={plusCls} onClick={!plusDisabled && this.onPlusClick}><Icon type="add" /></span>
       </span>
     );
   }

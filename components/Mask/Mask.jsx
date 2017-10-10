@@ -12,9 +12,7 @@ class Mask extends PureComponent {
       [type]: !!type,
     });
 
-    return visible
-      ? <div className={markCls} onClick={onClose} {...others} />
-      : null;
+    return visible && <div className={markCls} onClick={onClose} {...others} />;
   }
 }
 
