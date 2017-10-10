@@ -73,7 +73,7 @@ class Popup extends PureComponent {
       this.setState({
         isMaskShow: false,
       });
-      onClose();
+      typeof onClose === 'function' && onClose();
     }
   }
 
