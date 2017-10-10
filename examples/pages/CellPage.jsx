@@ -9,10 +9,6 @@ const img = require('../images/icons/state.png');
 
 class Page extends Component {
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
   render() {
     return (
       <Container className="cell-page">
