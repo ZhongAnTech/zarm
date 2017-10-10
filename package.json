@@ -91,14 +91,14 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-test-renderer": "^15.6.1",
-    "react-transition-group": "^2.2.1",
+    "react-transition-group": "^1.2.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.2",
     "stylelint": "^7.12.0",
     "stylelint-config-standard": "^16.0.0",
     "url-loader": "^0.5.8",
-    "webpack": "^2.5.0",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
