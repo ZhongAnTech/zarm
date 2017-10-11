@@ -1,4 +1,3 @@
-const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -50,7 +49,6 @@ Object.keys(config.entry).forEach((key) => {
 config.module.rules[0].use[0].options.presets.push('react-hmre');
 
 config.devServer = {
-  contentBase: path.join(__dirname, '../../examples'),
   publicPath: config.output.publicPath,
   host: '0.0.0.0',
   port: 3000,
