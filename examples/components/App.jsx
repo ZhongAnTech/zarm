@@ -28,8 +28,8 @@ class App extends Component {
                 transitionName={history.action === 'PUSH' ? 'left' : 'right'}
                 transitionEnter
                 transitionLeave
-                transitionEnterTimeout={400}
-                transitionLeaveTimeout={400}>
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}>
                 <div key={location.pathname}>
                   <Route location={location} exact path="/" component={AsyncComponent(() => import('../pages/Index'))} />
 

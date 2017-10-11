@@ -1,68 +1,53 @@
-/* 路由切换动画——改变透明度 */
-.normal-enter {
-  opacity: 0;
-}
-
-.normal-enter.normal-enter-active {
-  opacity: 1;
-  transition: all 0.4s ease-in;
-}
-
-.normal-leave {
-  opacity: 1;
-}
-
-.normal-leave.normal-leave-active {
-  opacity: 0;
-  transition: all .4s ease-out;
-}
-
 /* 路由切换动画——左移动 */
 .left-enter {
   position: absolute;
   top: 0;
   width: 100%;
-  opacity: 1;
+  height: 100%;
+  opacity: 0;
   transform: translateX(100%);
-}
+  transition: all .5s ease-out;
 
-.left-enter.left-enter-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.4s ease-out;
+  &-active {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .left-leave {
   opacity: 1;
   transform: translateX(0);
-}
+  transition: all .5s ease-out;
 
-.left-leave.left-leave-active {
-  opacity: 1;
-  transform: translateX(-100%);
-  transition: all 0.4s ease-out;
+  &-active {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
 }
 
 /* 路由切换动画——右移动 */
 .right-enter {
+  opacity: 0;
   transform: translateX(-100%);
-}
+  transition: all .5s ease-out;
 
-.right-enter.right-enter-active {
-  transform: translateX(0);
-  transition: all 0.4s ease-out;
+  &-active {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .right-leave {
   position: absolute;
   top: 0;
   width: 100%;
+  height: 100%;
   opacity: 1;
   transform: translateX(0);
-}
+  transition: all .5s ease-out;
 
-.right-leave.right-leave-active {
-  opacity: 1;
-  transform: translateX(100%);
-  transition: all 0.4s ease-out;
+  &-active {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
 }
