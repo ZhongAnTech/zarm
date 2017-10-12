@@ -42,9 +42,8 @@ class RadioGroup extends PureComponent {
     }
   }
 
-  onChildChange(value) {
+  onChildChange = (value) => {
     this.setState({ value });
-
     const { onChange } = this.props;
     typeof onChange === 'function' && onChange(value);
   }
@@ -66,20 +65,14 @@ class RadioGroup extends PureComponent {
       });
     });
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`shape-${shape}`]: !!shape,
       'is-compact': compact,
       block,
       disabled,
     });
 
-    return (
-      <div className={cls}>
-        {items}
-      </div>
-    );
+    return <div className={cls}>{items}</div>;
   }
 }
 

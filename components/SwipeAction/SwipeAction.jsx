@@ -13,9 +13,6 @@ class SwipeAction extends PureComponent {
     };
     this.isOpen = false;
     this.touchEnd = true;
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onDragMove = this.onDragMove.bind(this);
-    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +23,7 @@ class SwipeAction extends PureComponent {
     Events.off(document.body, 'touchstart', e => this.onCloseSwipe(e));
   }
 
-  onDragStart() {
+  onDragStart = () => {
     if (this.isOpen) {
       this.touchEnd = false;
       this.close();
@@ -35,7 +32,7 @@ class SwipeAction extends PureComponent {
     this.touchEnd = true;
   }
 
-  onDragMove(event, { offsetX, offsetY }) {
+  onDragMove = (event, { offsetX, offsetY }) => {
     if (!this.touchEnd) return;
 
     const { disabled } = this.props;
@@ -60,7 +57,7 @@ class SwipeAction extends PureComponent {
     return true;
   }
 
-  onDragEnd(event, { offsetX, startTime }) {
+  onDragEnd = (event, { offsetX, startTime }) => {
     const { duration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const btnsLeftWidth = this.left && this.left.offsetWidth;
@@ -89,7 +86,7 @@ class SwipeAction extends PureComponent {
     }
   }
 
-  onBtnClick(e, btn) {
+  onBtnClick = (e, btn) => {
     e.preventDefault();
     const onClick = btn.onClick;
     if (onClick) {
@@ -101,7 +98,7 @@ class SwipeAction extends PureComponent {
     }
   }
 
-  onCloseSwipe(e) {
+  onCloseSwipe = (e) => {
     if (!this.wrap) return;
 
     if (this.isOpen) {
@@ -122,25 +119,25 @@ class SwipeAction extends PureComponent {
     }
   }
 
-  open(offsetLeft) {
+  open = (offsetLeft) => {
     const { duration, onOpen } = this.props;
     this.isOpen = true;
     this.doTransition({ offsetLeft, duration });
     typeof onOpen === 'function' && onOpen();
   }
 
-  close() {
+  close = () => {
     const { duration, onClose } = this.props;
     this.isOpen = false;
     this.doTransition({ offsetLeft: 0, duration });
     typeof onClose === 'function' && onClose();
   }
 
-  doTransition({ offsetLeft, duration }) {
+  doTransition = ({ offsetLeft, duration }) => {
     this.setState({ offsetLeft, duration });
   }
 
-  renderButtons(buttons, ref) {
+  renderButtons = (buttons, ref) => {
     const prefixCls = this.props.prefixCls;
 
     return (buttons && buttons.length) ? (
@@ -150,11 +147,8 @@ class SwipeAction extends PureComponent {
         {
           buttons.map((btn, i) => {
             const { theme, className, text } = btn;
-
-            const classes = classnames({
-              [`${prefixCls}-button`]: true,
+            const classes = classnames(`${prefixCls}-button`, className, {
               [`theme-${theme}`]: true,
-              [className]: !!className,
             });
 
             return (
@@ -174,12 +168,7 @@ class SwipeAction extends PureComponent {
   render() {
     const { prefixCls, className, left, right, children } = this.props;
     const { offsetLeft, duration } = this.state;
-
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
-    });
-
+    const cls = classnames(`${prefixCls}`, className);
     const style = {
       WebkitTransitionDuration: `${duration}ms`,
       transitionDuration: `${duration}ms`,
@@ -189,7 +178,7 @@ class SwipeAction extends PureComponent {
 
     return (left.length || right.length)
       ? (
-        <div className={classes} ref={(wrap) => { this.wrap = wrap; }}>
+        <div className={cls} ref={(wrap) => { this.wrap = wrap; }}>
           {this.renderButtons(left, 'left')}
           {this.renderButtons(right, 'right')}
           <Drag

@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Panel, Icon, Button } from '../../components';
+
 import '../styles/pages/ButtonPage';
 
 class Page extends Component {

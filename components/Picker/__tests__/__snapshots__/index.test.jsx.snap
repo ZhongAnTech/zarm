@@ -80,7 +80,7 @@ exports[`Picker Cascader Picker 1`] = `
         visible={false}
       >
         <div
-          className="za-popup za-popup-hidden za-popup-inner"
+          className="za-popup za-popup-inner za-popup-hidden"
         >
           <div
             className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -873,7 +873,7 @@ exports[`Picker Picker 1`] = `
     class="za-picker-container"
   >
     <div
-      class="za-popup za-popup-hidden za-popup-inner"
+      class="za-popup za-popup-inner za-popup-hidden"
     >
       <div
         class="za-popup-wrapper za-popup-wrapper-bottom"
