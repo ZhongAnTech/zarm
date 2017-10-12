@@ -1,53 +1,68 @@
-/* 路由切换动画——左移动 */
+.left-appear,
+.left-enter {
+  opacity: 0;
+
+  &-active {
+    opacity: 1;
+    transition: all 5s linear;
+  }
+}
+
 .left-enter {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0;
   transform: translateX(100%);
-  transition: all .5s ease-out;
 
   &-active {
-    opacity: 1;
     transform: translateX(0);
   }
 }
 
-.left-leave {
+.left-exit {
   opacity: 1;
   transform: translateX(0);
-  transition: all .5s ease-out;
 
+  &-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 5s linear;
+  }
+}
+
+
+.right-appear,
+.right-enter {
+  opacity: 0;
+
+  &-active {
+    opacity: 1;
+    transition: all 5s linear;
+  }
+}
+
+.right-enter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+
+  &-active {
+    transform: translateX(0);
+  }
+}
+
+.right-exit {
+  opacity: 1;
+  transform: translateX(0);
+  
   &-active {
     opacity: 0;
     transform: translateX(-100%);
-  }
-}
-
-/* 路由切换动画——右移动 */
-.right-enter {
-  opacity: 0;
-  transform: translateX(-100%);
-  transition: all .5s ease-out;
-
-  &-active {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.right-leave {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-  transform: translateX(0);
-  transition: all .5s ease-out;
-
-  &-active {
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
+    transition: all 5s linear;
   }
 }
