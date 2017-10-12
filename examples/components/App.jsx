@@ -22,10 +22,11 @@ class App extends Component {
     return (
       <Router history={hashHistory}>
         <Route
-          render={({ history, location }) => {
+          render={(props) => {
+            const { history, location, match } = props;
             return (
               <CSSTransitionGroup
-                transitionName={history.action === 'PUSH' ? 'left' : 'right'}
+                transitionName={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'left' : 'right'}
                 transitionEnter
                 transitionLeave
                 transitionEnterTimeout={500}
