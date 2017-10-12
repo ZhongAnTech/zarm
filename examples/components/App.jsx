@@ -19,14 +19,13 @@ class App extends Component {
     const { history, location, match } = this.props;
     const currentKey = location.pathname.split('/')[1] || '/';
 
-    console.log(history.action)
     return (
       <TransitionGroup>
         <CSSTransition
           key={currentKey}
-          timeout={5000}
+          timeout={500}
           classNames={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'left' : 'right'}
-          /* onEntered={() => window.scrollTo(0, 0)} */
+          // onEnter={() => window.scrollTo(0, 0)}
           appear>
           <section>
             <Switch location={location}>
