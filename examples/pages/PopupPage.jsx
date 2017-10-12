@@ -6,6 +6,7 @@ import { Panel, Popup, Cell, Button } from '../../components';
 import '../styles/pages/PopupPage';
 
 class Page extends Component {
+
   constructor(props) {
     super(props);
 
@@ -17,13 +18,13 @@ class Page extends Component {
     };
   }
 
-  open(key) {
+  open = (key) => {
     this.setState({
       [`${key}`]: true,
     });
   }
 
-  close(key) {
+  close = (key) => {
     this.setState({
       [`${key}`]: false,
     });

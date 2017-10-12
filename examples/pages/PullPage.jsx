@@ -50,7 +50,7 @@ class Page extends Component {
   }
 
   // 模拟请求数据
-  fetchData(key) {
+  fetchData = (key) => {
     this.setState({ [`${key}`]: REFRESH_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
@@ -70,7 +70,7 @@ class Page extends Component {
   }
 
   // 模拟加载更多数据
-  loadData() {
+  loadData = () => {
     this.setState({ customLoading: LOAD_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
@@ -156,9 +156,7 @@ class Page extends Component {
                 onRefresh={() => {
                   this.fetchData('customRefreshing');
                 }}
-                onLoad={() => {
-                  this.loadData();
-                }}>
+                onLoad={this.loadData}>
                 {dataSource}
               </Pull>
             </Panel.Body>

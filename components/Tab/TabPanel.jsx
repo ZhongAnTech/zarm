@@ -22,17 +22,11 @@ class TabPanel extends PureComponent {
   render() {
     const { prefixCls, className, children } = this.props;
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}-item`, className, {
       active: !!this.state.selected,
     });
 
-    return (
-      <div className={cls} role="tabpanel">
-        {children}
-      </div>
-    );
+    return <div className={cls} role="tabpanel">{children}</div>;
   }
 }
 
@@ -42,7 +36,7 @@ TabPanel.propTypes = {
 };
 
 TabPanel.defaultProps = {
-  prefixCls: 'za-tab-panel-item',
+  prefixCls: 'za-tab-panel',
 };
 
 export default TabPanel;

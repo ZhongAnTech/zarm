@@ -14,7 +14,7 @@ class Page extends Component {
     };
   }
 
-  toggle(key) {
+  toggle = (key) => {
     this.setState({
       [`${key}`]: !this.state[key],
     });

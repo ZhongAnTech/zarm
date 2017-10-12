@@ -34,7 +34,7 @@ exports[`Modal renders correctly 1`] = `
       >
         <ModalHeader
           onClose={[Function]}
-          prefixCls="za-modal-header"
+          prefixCls="za-modal"
           title="标题"
         >
           <div
@@ -60,7 +60,7 @@ exports[`Modal renders correctly 1`] = `
         </ModalHeader>
         <ModalBody
           className={null}
-          prefixCls="za-modal-body"
+          prefixCls="za-modal"
         >
           <div
             className="za-modal-body"

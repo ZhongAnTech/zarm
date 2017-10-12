@@ -41,7 +41,7 @@ class CheckboxGroup extends PureComponent {
     }
   }
 
-  onChildChange(value) {
+  onChildChange = (value) => {
     const values = this.state.value;
     const index = values.indexOf(value);
 
@@ -75,20 +75,14 @@ class CheckboxGroup extends PureComponent {
       });
     });
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`shape-${shape}`]: !!shape,
       'is-compact': compact,
       block,
       disabled,
     });
 
-    return (
-      <div className={cls}>
-        {items}
-      </div>
-    );
+    return <div className={cls}>{items}</div>;
   }
 }
 

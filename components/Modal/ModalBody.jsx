@@ -6,15 +6,10 @@ class ModalBody extends PureComponent {
 
   render() {
     const { prefixCls, className, height, children, ...others } = this.props;
+    const cls = classnames(`${prefixCls}-body`, className);
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
-    });
-
-    const bodyStyle = {
-      height,
-    };
+    const bodyStyle = {};
+    bodyStyle.height = height;
 
     return (
       <div className={cls} style={bodyStyle} {...others}>
@@ -31,7 +26,7 @@ ModalBody.propTypes = {
 };
 
 ModalBody.defaultProps = {
-  prefixCls: 'za-modal-body',
+  prefixCls: 'za-modal',
   className: null,
 };
 

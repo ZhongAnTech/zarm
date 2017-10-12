@@ -1,9 +1,9 @@
 {
   "extends": ["eslint-config-airbnb"],
+  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "node": true,
-    "mocha": true,
     "jest": true,
     "es6": true
   },
@@ -30,7 +30,7 @@
       "objects": "always-multiline",
       "imports": "always-multiline",
       "exports": "always-multiline",
-      "functions": "never",
+      "functions": "never"
     }],
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
@@ -42,6 +42,6 @@
     "react/prop-types": "off",
     "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "react/jsx-closing-bracket-location": ["error", { "selfClosing": "props-aligned", "nonEmpty": "after-props" }],
-    "react/no-array-index-key": "warn",
+    "react/no-array-index-key": "warn"
   }
 }

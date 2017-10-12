@@ -15,7 +15,6 @@ class Popup extends PureComponent {
       animationState: 'enter',
       isPending: false,
     };
-    this.animationEnd = this.animationEnd.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +37,7 @@ class Popup extends PureComponent {
     Events.off(this.popup, 'transitionend', this.animationEnd);
   }
 
-  enter({ duration, autoClose, onMaskClick }) {
+  enter = ({ duration, autoClose, onMaskClick }) => {
     this.setState({
       isShow: true,
       isMaskShow: true,
@@ -58,7 +57,7 @@ class Popup extends PureComponent {
     }
   }
 
-  leave() {
+  leave = () => {
     this.setState({
       isShow: false,
       isPending: true,
@@ -66,7 +65,7 @@ class Popup extends PureComponent {
     });
   }
 
-  animationEnd() {
+  animationEnd = () => {
     const { onClose } = this.props;
     const { animationState } = this.state;
 
@@ -74,7 +73,7 @@ class Popup extends PureComponent {
       this.setState({
         isMaskShow: false,
       });
-      onClose();
+      typeof onClose === 'function' && onClose();
     }
   }
 
@@ -83,15 +82,10 @@ class Popup extends PureComponent {
     const { isShow, isPending, animationState, isMaskShow } = this.state;
 
     const cls = {
-      popup: classnames({
-        [`${prefixCls}`]: true,
+      popup: classnames(`${prefixCls}`, className, {
         [`${prefixCls}-hidden`]: !isShow,
-        [className]: !!className,
       }),
-      wrap: classnames({
-        [`${prefixCls}-wrapper`]: true,
-        [`${prefixCls}-wrapper-${direction}`]: true,
-      }),
+      wrap: classnames(`${prefixCls}-wrapper`, `${prefixCls}-wrapper-${direction}`),
       mask: classnames({
         [`fade-${animationState}`]: isPending,
       }),

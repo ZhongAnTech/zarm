@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import ScrollToTop from './ScrollToTop';
 import '../styles/components/Header.scss';
 
 class Header extends Component {
@@ -7,7 +8,10 @@ class Header extends Component {
     const { title } = this.props;
 
     return (
-      <header className="Header">{title}</header>
+      <header className="Header">
+        {/* <ScrollToTop /> */}
+        {title}
+      </header>
     );
   }
 }
