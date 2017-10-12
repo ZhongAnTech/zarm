@@ -26,7 +26,7 @@ class App extends Component {
       //     key={currentKey}
       //     timeout={500}
       //     classNames={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'left' : 'right'}
-      //     onEntered={() => window.scrollTo(0, 0)}
+      //     // onEntered={() => window.scrollTo(0, 0)}
       //     appear>
       //     <section>
       <Switch location={location}>
