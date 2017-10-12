@@ -1,5 +1,13 @@
 # 版本更新日志 
 
+## v1.0.18
+- Bug Fix
+  - 修复`Popup`组件onClose未设置导致报错的bug。
+
+- Feature
+  - 新增`Slider`组件。（[aafc712](https://github.com/ZhonganTechENG/zarm/commit/d46abd9e7aa8bb0f3015e754ca37b785605c54f1)）
+
+
 ## v1.0.17
 - Bug Fix
   - 修复`Uploader`组件包含Array.from存在的浏览器兼容性问题。（[1963435](https://github.com/ZhonganTechENG/zarm/commit/8dca8a23b446c38d68e6da94d26b033417f644ff)）
