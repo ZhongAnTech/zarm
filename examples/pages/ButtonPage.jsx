@@ -7,7 +7,7 @@ import { Panel, Icon, Button } from '../../components';
 import '../styles/pages/ButtonPage';
 
 class Page extends Component {
-
+  
   render() {
     return (
       <Container className="button-page">
