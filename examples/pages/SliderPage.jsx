@@ -43,7 +43,7 @@ class Page extends Component {
               </Cell>
 
               <Cell title="禁用状态">
-                <Slider disabled />
+                <Slider defaultValue={20} disabled />
               </Cell>
 
             </Panel.Body>

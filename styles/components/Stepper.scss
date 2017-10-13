@@ -12,7 +12,8 @@ $prefixCls: za-stepper;
       }
 
       &.disabled {
-        opacity: $disabled-opacity;
+        color: $disabled-color;
+        border-color: $disabled-background;
         cursor: not-allowed;
 
         &:active {
