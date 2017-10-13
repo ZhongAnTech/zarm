@@ -98,7 +98,7 @@
     "stylelint-config-standard": "^16.0.0",
     "url-loader": "^0.5.8",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "2.7.1"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",

@@ -219,7 +219,7 @@ class Picker extends Component {
 
       const treeChildren2 = data.map((d, index) => {
         if (value[index]) {
-          return d.find(obj => value[index] === obj[valueMember]);
+          return d.filter(obj => value[index] === obj[valueMember])[0];
         }
         return undefined;
       }).filter(t => !!t);
