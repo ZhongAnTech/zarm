@@ -1,5 +1,10 @@
 # 版本更新日志 
 
+## v1.0.19
+- Bug Fix
+  - 修复`Picker`组件中使用了find API导致低端安卓浏览器出错的bug。
+
+
 ## v1.0.18
 - Bug Fix
   - 修复`Popup`组件onClose未设置导致报错的bug。
