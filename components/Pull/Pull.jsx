@@ -149,7 +149,7 @@ class Pull extends PureComponent {
 
       case REFRESH_STATE.success:
       case REFRESH_STATE.failure:
-        this.doTransition({ offsetY: 'auto', duration: 0 });
+        this.doTransition({ offsetY: 'auto', duration });
         setTimeout(() => {
           this.doRefreshAction(REFRESH_STATE.normal);
           this.doLoadAction(LOAD_STATE.normal);
@@ -198,9 +198,7 @@ class Pull extends PureComponent {
       return refreshRender(refreshState, percent);
     }
 
-    const cls = classnames({
-      [`${prefixCls}-control`]: true,
-    });
+    const cls = `${prefixCls}-control`;
 
     switch (refreshState) {
       case REFRESH_STATE.pull:
@@ -256,9 +254,7 @@ class Pull extends PureComponent {
       return loadRender(loadState);
     }
 
-    const cls = classnames({
-      [`${prefixCls}-control`]: true,
-    });
+    const cls = `${prefixCls}-control`;
 
     switch (loadState) {
       case LOAD_STATE.loading:
@@ -288,29 +284,36 @@ class Pull extends PureComponent {
 
   render() {
     const { prefixCls, className, children } = this.props;
-    const { offsetY, duration, loadState } = this.state;
+    const { offsetY, duration, refreshState, loadState } = this.state;
     const cls = classnames(`${prefixCls}`, className);
+
+    const refreshCls = classnames(`${prefixCls}-refresh`, {
+      [`${prefixCls}-refresh-show`]: refreshState >= REFRESH_STATE.loading,
+    });
+
+    const loadCls = classnames(`${prefixCls}-load`, {
+      [`${prefixCls}-load-show`]: loadState >= LOAD_STATE.loading,
+    });
 
     const refreshStyle = {
       WebkitTransitionDuration: `${duration}ms`,
       transitionDuration: `${duration}ms`,
-      height: offsetY,
     };
 
-    const loadStyle = {
-      height: loadState >= LOAD_STATE.loading ? 'auto' : 0,
-    };
+    if (refreshState <= REFRESH_STATE.drop) {
+      refreshStyle.height = offsetY;
+    }
 
     return (
       <Drag
         onDragMove={this.onDragMove}
         onDragEnd={this.onDragEnd}>
         <div className={cls} ref={(ele) => { this.pull = ele; }}>
-          <div className={`${prefixCls}-refresh`} style={refreshStyle}>
+          <div className={refreshCls} style={refreshStyle}>
             {this.renderRefresh()}
           </div>
           {children}
-          <div className={`${prefixCls}-load`} style={loadStyle}>
+          <div className={loadCls}>
             {this.renderLoad()}
           </div>
         </div>
@@ -338,12 +341,12 @@ Pull.propTypes = {
 Pull.defaultProps = {
   prefixCls: 'za-pull',
   refreshing: REFRESH_STATE.normal,
-  refreshInitDistance: 20,
+  refreshInitDistance: 30,
   refreshDistance: 50,
   loading: LOAD_STATE.normal,
   loadDistance: 10,
-  duration: 300,
-  stayTime: 2000,
+  duration: 500,
+  stayTime: 1000,
 };
 
 export default Pull;
