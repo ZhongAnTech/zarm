@@ -1,4 +1,4 @@
-$prefixCls: za-badge;
+$prefixCls: $prefixCls-badge;
 
 @mixin badge-theme($color) {
   .#{$prefixCls} {
