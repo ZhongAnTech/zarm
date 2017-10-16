@@ -1,4 +1,4 @@
-$prefixCls: za-pull;
+$prefixCls: $prefixCls-pull;
 
 .#{$prefixCls} {
   &-refresh,
@@ -23,7 +23,7 @@ $prefixCls: za-pull;
     color: #999;
     font-size: r(13);
 
-    i {
+    .#{$prefixCls-icon} {
       font-size: r(22);
     }
 

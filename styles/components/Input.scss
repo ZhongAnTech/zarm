@@ -1,4 +1,4 @@
-$prefixCls: za-input;
+$prefixCls: $prefixCls-input;
 
 .#{$prefixCls} {
   position: relative;
@@ -15,7 +15,7 @@ $prefixCls: za-input;
     background-image: none;
     border-width: 0;
     outline: 0;
-    appearance: none;
+    -webkit-appearance: none;
 
     &[type="date"],
     &[type="text"] {

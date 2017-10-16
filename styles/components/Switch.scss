@@ -1,4 +1,4 @@
-$prefixCls: za-switch;
+$prefixCls: $prefixCls-switch;
 
 @mixin switch-theme($color) {
   .#{$prefixCls}-input {

@@ -1,4 +1,4 @@
-$prefixCls: za-panel;
+$prefixCls: $prefixCls-panel;
 
 .#{$prefixCls} {
   &-header {
@@ -24,9 +24,5 @@ $prefixCls: za-panel;
 
   &-title {
     flex: 1;
-
-    .za-icon {
-      margin-right: r(5);
-    }
   }
 }

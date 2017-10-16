@@ -1,4 +1,4 @@
-$prefixCls: za-tab;
+$prefixCls: $prefixCls-tab;
 
 @mixin tab-theme($color) {
   .#{$prefixCls} {

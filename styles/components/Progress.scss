@@ -1,4 +1,4 @@
-$prefixCls: za-progress;
+$prefixCls: $prefixCls-progress;
 
 @mixin progress-theme($color) {
   .#{$prefixCls}-bg {
@@ -28,8 +28,10 @@ $prefixCls: za-progress;
     transition: width .3s;
   }
 
-  .za-spinner-line {
-    transition: stroke-dasharray .3s;
+  .#{$prefixCls-spinner} {
+    &-line {
+      transition: stroke-dasharray .3s;
+    }
   }
 
   &.shape-circle {
