@@ -25,7 +25,6 @@ $PI: 3.141592674;
 
   &-line {
     stroke-dasharray: 100 * $PI;
-    transition: stroke-dasharray .3s;
   }
 
   &-text {
