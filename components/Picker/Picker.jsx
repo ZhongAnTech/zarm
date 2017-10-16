@@ -29,6 +29,7 @@ class Picker extends Component {
       _value = initValue;
     }
 
+
     this.state = {
       visible: props.visible || false,
       value: _value,
@@ -74,14 +75,14 @@ class Picker extends Component {
     }
   }
 
-  onValueChange(value) {
+  onValueChange = (value) => {
     this.setState({
       value,
     });
     this.props.onChange(value);
   }
 
-  onCancel() {
+  onCancel = () => {
     const { onCancel } = this.props;
     this.toggle();
     this.setState({
@@ -90,7 +91,7 @@ class Picker extends Component {
     onCancel && onCancel();
   }
 
-  onOk() {
+  onOk = () => {
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
@@ -104,13 +105,13 @@ class Picker extends Component {
     onOk && onOk(_value);
   }
 
-  onMaskClick() {
+  onMaskClick = () => {
     const { onMaskClick } = this.props;
     this.onCancel();
     onMaskClick && onMaskClick();
   }
 
-  getInitValue() {
+  getInitValue = () => {
     const data = this.state.data;
     const { valueMember } = this.props;
 
@@ -127,7 +128,7 @@ class Picker extends Component {
   }
 
   // 切换显示状态
-  toggle() {
+  toggle = () => {
     if (this.props.disabled) {
       return;
     }
@@ -136,18 +137,18 @@ class Picker extends Component {
     });
   }
 
-  handleClick() {
+  handleClick = () => {
     this.props.onClick();
     !this.props.disabled && this.toggle();
   }
 
-  close(key) {
+  close = (key) => {
     this.setState({
       [`${key}`]: false,
     });
   }
 
-  _displayRender(data) {
+  _displayRender = (data) => {
     const { displayRender, displayMember, displayAddon } = this.props;
 
     if (typeof displayRender === 'function') {
@@ -164,13 +165,9 @@ class Picker extends Component {
 
     let PickerCol = null;
 
-    const classes = classnames({
-      [`${prefixCls}-container`]: true,
-      [className]: !!className,
-    });
+    const classes = classnames(`${prefixCls}-container`, className);
 
-    const inputCls = classnames({
-      [`${prefixCls}-input`]: true,
+    const inputCls = classnames(`${prefixCls}-input`, {
       [`${prefixCls}-placeholder`]: !value.join(displayAddon),
       [`${prefixCls}-disabled`]: !!disabled,
     });
@@ -206,6 +203,7 @@ class Picker extends Component {
     }
 
     const display = () => {
+      
       if (this.state.cascade) {
         if (value.length) {
           const treeChildren = arrayTreeFilter(this.props.dataSource, (item, level) => {
@@ -218,10 +216,12 @@ class Picker extends Component {
 
       const treeChildren2 = data.map((d, index) => {
         if (value[index]) {
-          return d.find(obj => value[index] === obj[valueMember]);
+          return d.filter(obj => value[index] === obj[valueMember])[0];
         }
         return undefined;
       }).filter(t => !!t);
+
+
       return this._displayRender(treeChildren2);
     };
 
@@ -235,12 +235,12 @@ class Picker extends Component {
           <Popup
             className="za-popup-inner"
             visible={this.state.visible}
-            onMaskClick={() => this.onMaskClick()}>
+            onMaskClick={this.onMaskClick}>
             <div className={`${prefixCls}-wrapper`}>
               <div className={`${prefixCls}-header`}>
-                <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+                <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
                 <div className={`${prefixCls}-title`}>{title}</div>
-                <div className={`${prefixCls}-submit`} onClick={() => this.onOk()}>{okText}</div>
+                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
               </div>
               <div className={`${prefixCls}-mask-top`}>
                 <div className={`${prefixCls}-mask-bottom`}>
