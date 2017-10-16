@@ -154,7 +154,7 @@ class Page extends Component {
                   onCancel={() => {
                   }}
                   />
-              </Cell>
+              </Cell> 
 
             </Panel.Body>
           </Panel>
@@ -201,6 +201,7 @@ class Page extends Component {
                   title="选择时间"
                   placeholder="请选择时间"
                   mode="time"
+                  use12Hours
                   minuteStep={15}
                   />
               </Cell>

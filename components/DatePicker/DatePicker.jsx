@@ -164,15 +164,16 @@ class DatePicker extends Component {
   }
 
   setHours(date, hour) {
-    if (this.props.use12Hours) {
-      const dh = date.getHours();
-      let nhour = hour;
-      nhour = dh >= 12 ? hour + 12 : hour;
-      nhour = nhour >= 24 ? 0 : nhour; // Make sure no more than one day
-      date.setHours(nhour);
-    } else {
-      date.setHours(hour);
-    }
+    // if (this.props.use12Hours) {
+    //   const dh = date.getHours();
+    //   let nhour = hour;
+    //   console.log('dh ', dh, ' nhour ', nhour );
+    //   nhour = dh >= 12 ? hour + 12 : hour;
+    //   nhour = nhour >= 24 ? 0 : nhour; // Make sure no more than one day
+    //   date.setHours(nhour);
+    // } else {
+    date.setHours(hour);
+    // }
   }
 
   getDefaultMinDate() {

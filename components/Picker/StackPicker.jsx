@@ -17,8 +17,6 @@ class PickerStack extends Component {
       visible: false,
       ...this.resolveProps(props, props.value),
     };
-    this.onMaskClick = this.onMaskClick.bind(this);
-    this.onCancel = this.onCancel.bind(this);
   }
 
   componentDidMount() {
@@ -33,19 +31,19 @@ class PickerStack extends Component {
     this.reposition();
   }
 
-  onMaskClick() {
+  onMaskClick = () => {
     const { onMaskClick } = this.props;
     this.close(true);
     onMaskClick && onMaskClick();
   }
 
-  onCancel() {
+  onCancel = () => {
     const { onCancel } = this.props;
     this.close(true);
     onCancel && onCancel();
   }
 
-  resolveProps({ value, dataSource, validate }) {
+  resolveProps = ({ value, dataSource, validate }) => {
     const resolveValue = [];
 
     value.reduce((list, item) => {
@@ -67,12 +65,12 @@ class PickerStack extends Component {
     };
   }
 
-  obtainItem(list, value) {
+  obtainItem = (list, value) => {
     const { valueMember } = this.props;
     return list.filter(item => item[valueMember] === value)[0];
   }
 
-  change(index, cVal, isLast) {
+  change = (index, cVal, isLast) => {
     const { validate, onOk } = this.props;
     const value = this.state.value.slice(0, index);
     let errorMsg = null;
@@ -93,11 +91,11 @@ class PickerStack extends Component {
     }
   }
 
-  show() {
+  show = () => {
     this.setState({ visible: true });
   }
 
-  close(isCancel) {
+  close = (isCancel) => {
     this.setState({ visible: false });
     if (isCancel) {
       this.setState({
@@ -106,7 +104,7 @@ class PickerStack extends Component {
     }
   }
 
-  reposition() {
+  reposition = () => {
     const { dataSource, valueMember, disabled, displayItems, itemHeight, cols } = this.props;
 
     if (disabled) return;
@@ -131,7 +129,7 @@ class PickerStack extends Component {
     }, dataSource);
   }
 
-  renderGroup(dataSource, value) {
+  renderGroup = (dataSource, value) => {
     const { valueMember, cols } = this.props;
     const group = [];
     let i = 0;
@@ -154,11 +152,10 @@ class PickerStack extends Component {
     return group;
   }
 
-  renderColumn(list, colIndex, data, isLast) {
+  renderColumn = (list, colIndex, data, isLast) => {
     const { valueMember, prefixCls, itemRender } = this.props;
     const pickVal = data[valueMember];
-    const cls = classnames({
-      [`${prefixCls}-stack-column`]: true,
+    const cls = classnames(`${prefixCls}-stack-column`, {
       'lower-hidden': !pickVal,
     });
 
@@ -176,8 +173,7 @@ class PickerStack extends Component {
               <div
                 key={+index}
                 className={
-                  classnames({
-                    [`${prefixCls}-stack-item`]: true,
+                  classnames(`${prefixCls}-stack-item`, {
                     active: item[valueMember] === pickVal,
                   })
                 }
@@ -196,20 +192,17 @@ class PickerStack extends Component {
     const { visible, errorMsg, value, displayValue } = this.state;
     const displayLabel = displayRender(displayValue);
 
-    const labelCls = classnames({
-      [`${prefixCls}-input`]: true,
+    const labelCls = classnames(`${prefixCls}-input`, {
       [`${prefixCls}-placeholder`]: !displayLabel,
       [`${prefixCls}-disabled`]: disabled,
     });
-    const wrapperCls = classnames({
-      [`${prefixCls}-container`]: true,
+    const wrapperCls = classnames(`${prefixCls}-container`, {
       [`${prefixCls}-hidden`]: !visible,
-      [className]: !!className,
-    });
+    }, className);
 
     return (
       <div className={prefixCls}>
-        <div className={labelCls} onClick={() => !disabled && this.show()}>
+        <div className={labelCls} onClick={!disabled && this.show}>
           <input type="hidden" value={curVal} />
           { displayLabel || placeholder }
         </div>
@@ -230,7 +223,7 @@ class PickerStack extends Component {
                   <p>选择：{ value.map(item => itemRender(item)).join(labelAddon) }</p>
                   { errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{ errorMsg }</p> : null }
                 </div>
-                <div className={`${prefixCls}-stack-group`}>{ this.renderGroup(dataSource, value) }</div>
+                <div className={`${prefixCls}-stack-group`}>{this.renderGroup}</div>
               </div>
             </Popup>
           </div>

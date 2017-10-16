@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import ZScroller from 'zscroller';
 
 function getChildMember(child, m) {
@@ -71,19 +71,19 @@ class Column extends Component {
     this.zscroller.destroy();
   }
 
-  getValue() {
+  getValue = () => {
     return this.props.selectedValue ? this.props.selectedValue
       : this.props.children && this.props.children[0] && this.props.children[0][this.props.valueMember];
   }
 
-  scrollingComplete() {
+  scrollingComplete = () => {
     const { top } = this.zscroller.scroller.getValues();
     if (top >= 0) {
       this.doScrollingComplete(top);
     }
   }
 
-  fireValueChange(selectedValue) {
+  fireValueChange = (selectedValue) => {
     if (selectedValue !== this.state.selectedValue) {
       if (!('selectedValue' in this.props)) {
         this.setState({
@@ -95,11 +95,11 @@ class Column extends Component {
     }
   }
 
-  scrollTo(top) {
+  scrollTo = (top) => {
     this.zscroller.scroller.scrollTo(0, top);
   }
 
-  select(value) {
+  select = (value) => {
     const children = toChildrenArray(this.props.children);
     for (let i = 0, len = children.length; i < len; i += 1) {
       if (getChildMember(children[i], this.props.valueMember) === value) {
@@ -110,14 +110,14 @@ class Column extends Component {
     this.selectByIndex(0);
   }
 
-  selectByIndex(index) {
+  selectByIndex = (index) => {
     if (index < 0 || index >= toChildrenArray(this.props.children).length || !this.itemHeight) {
       return;
     }
     this.scrollTo(index * this.itemHeight);
   }
 
-  doScrollingComplete(top) {
+  doScrollingComplete = (top) => {
     let index = top / this.itemHeight;
     const floor = Math.floor(index);
     if (index - floor > 0.5) {
@@ -157,13 +157,11 @@ class Column extends Component {
         </div>
       );
     });
-    const pickerCls = {
-      [className]: !!className,
-      [`${prefixCls}-column`]: true,
-    };
+
+    const pickerCls = classnames(`${prefixCls}-column`, className);
     return (
       <div
-        className={classNames(pickerCls)} >
+        className={pickerCls} >
         <div className={`${prefixCls}-column-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
         <div className={`${prefixCls}-column-content`} ref={(content) => { this.content = content; }}>
           {items}

@@ -11,14 +11,14 @@ class ColumnGroup extends Component {
     };
   }
 
-  onValueChange(v, i) {
+  onValueChange = (v, i) => {
     const value = this.getValue().concat();
 
     value[i] = v;
     this.props.onValueChange(value, i);
   }
 
-  getValue() {
+  getValue = () => {
     const { children, selectedValue } = this.props;
 
     if (selectedValue && selectedValue.length) {

@@ -70,35 +70,35 @@ describe('Picker', () => {
   //   wrapper.unmount();
   // });
 
-  it('StackPicker', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(
-      <Picker.Stack
-        dataSource={[
-          {
-            value: '1',
-            label: '北京市',
-            children: [
-              { value: '11', label: '海淀区' },
-              { value: '12', label: '西城区' },
-            ],
-          },
-          {
-            value: '2',
-            label: '上海市',
-            children: [
-              { value: '21', label: '黄埔区' },
-              { value: '22', label: '虹口区' },
-            ],
-          },
-        ]}
-        />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ value: ['1', '12'] });
-    jest.runAllTimers();
-    wrapper.unmount();
-  });
+  // it('StackPicker', () => {
+  //   jest.useFakeTimers();
+  //   const wrapper = mount(
+  //     <Picker.Stack
+  //       dataSource={[
+  //         {
+  //           value: '1',
+  //           label: '北京市',
+  //           children: [
+  //             { value: '11', label: '海淀区' },
+  //             { value: '12', label: '西城区' },
+  //           ],
+  //         },
+  //         {
+  //           value: '2',
+  //           label: '上海市',
+  //           children: [
+  //             { value: '21', label: '黄埔区' },
+  //             { value: '22', label: '虹口区' },
+  //           ],
+  //         },
+  //       ]}
+  //       />
+  //   );
+  //   expect(toJson(wrapper)).toMatchSnapshot();
+  //   wrapper.setProps({ value: ['1', '12'] });
+  //   jest.runAllTimers();
+  //   wrapper.unmount();
+  // });
 
   it('receive new dataSourcea', () => {
     const wrapper = shallow(

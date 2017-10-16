@@ -75,7 +75,7 @@ class Cascader extends Component {
     });
   }
 
-  getValue(d, val) {
+  getValue = (d, val) => {
     const data = d || this.props.data;
     const value = val || this.props.value || this.props.defaultValue;
     const valueMember = this.props.valueMember;
