@@ -4,16 +4,15 @@ $prefixCls: za-pull;
   &-refresh,
   &-load {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     overflow: hidden;
     width: 100%;
     height: 0;
-  }
 
-  &-refresh {
-    align-items: flex-end;
-    transition: all .3s;
+    &-show {
+      height: r(50);
+    }
   }
 
   &-control {
@@ -28,7 +27,7 @@ $prefixCls: za-pull;
       font-size: r(22);
     }
 
-    span {
+    * + span {
       margin-left: r(8);
     }
   }
