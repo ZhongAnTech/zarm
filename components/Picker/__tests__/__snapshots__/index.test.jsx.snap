@@ -68,7 +68,7 @@ exports[`Picker Cascader Picker 1`] = `
       onClick={[Function]}
     >
       <Popup
-        animationDuration={300}
+        animationDuration={200}
         autoClose={false}
         className="za-popup-inner"
         direction="bottom"
@@ -86,8 +86,8 @@ exports[`Picker Cascader Picker 1`] = `
             className="za-popup-wrapper za-popup-wrapper-bottom"
             style={
               Object {
-                "WebkitTransitionDuration": "300ms",
-                "transitionDuration": "300ms",
+                "WebkitTransitionDuration": "200ms",
+                "transitionDuration": "200ms",
               }
             }
           >
@@ -257,8 +257,8 @@ exports[`Picker Cascader Picker 1`] = `
             prefixCls="za-mask"
             style={
               Object {
-                "WebkitAnimationDuration": "300ms",
-                "animationDuration": "300ms",
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
               }
             }
             type="normal"
@@ -319,7 +319,7 @@ exports[`Picker DatePicker 1`] = `
       onClick={[Function]}
     >
       <Popup
-        animationDuration={300}
+        animationDuration={200}
         autoClose={false}
         direction="bottom"
         mask={true}
@@ -336,8 +336,8 @@ exports[`Picker DatePicker 1`] = `
             className="za-popup-wrapper za-popup-wrapper-bottom"
             style={
               Object {
-                "WebkitTransitionDuration": "300ms",
-                "transitionDuration": "300ms",
+                "WebkitTransitionDuration": "200ms",
+                "transitionDuration": "200ms",
               }
             }
           >
@@ -842,8 +842,8 @@ exports[`Picker DatePicker 1`] = `
             prefixCls="za-mask"
             style={
               Object {
-                "WebkitAnimationDuration": "300ms",
-                "animationDuration": "300ms",
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
               }
             }
             type="normal"
@@ -877,7 +877,7 @@ exports[`Picker Picker 1`] = `
     >
       <div
         class="za-popup-wrapper za-popup-wrapper-bottom"
-        style="-webkit-transition-duration:300ms;transition-duration:300ms;"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms;"
       >
         <div
           class="za-picker-wrapper"
@@ -1013,7 +1013,7 @@ exports[`Picker StackPicker 1`] = `
       onClick={[Function]}
     >
       <Popup
-        animationDuration={300}
+        animationDuration={200}
         autoClose={false}
         direction="bottom"
         mask={true}
@@ -1030,8 +1030,8 @@ exports[`Picker StackPicker 1`] = `
             className="za-popup-wrapper za-popup-wrapper-bottom"
             style={
               Object {
-                "WebkitTransitionDuration": "300ms",
-                "transitionDuration": "300ms",
+                "WebkitTransitionDuration": "200ms",
+                "transitionDuration": "200ms",
               }
             }
           >
@@ -1119,8 +1119,8 @@ exports[`Picker StackPicker 1`] = `
             prefixCls="za-mask"
             style={
               Object {
-                "WebkitAnimationDuration": "300ms",
-                "animationDuration": "300ms",
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
               }
             }
             type="normal"
