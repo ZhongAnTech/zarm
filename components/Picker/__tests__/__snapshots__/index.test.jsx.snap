@@ -68,15 +68,15 @@ exports[`Picker Cascader Picker 1`] = `
       onClick={[Function]}
     >
       <Popup
-        animationDuration={200}
+        animationDuration={300}
         autoClose={false}
         className="za-popup-inner"
         direction="bottom"
-        duration={3000}
         mask={true}
         maskType="normal"
         onMaskClick={[Function]}
         prefixCls="za-popup"
+        stayTime={3000}
         visible={false}
       >
         <div
@@ -86,8 +86,8 @@ exports[`Picker Cascader Picker 1`] = `
             className="za-popup-wrapper za-popup-wrapper-bottom"
             style={
               Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
+                "WebkitTransitionDuration": "300ms",
+                "transitionDuration": "300ms",
               }
             }
           >
@@ -257,8 +257,8 @@ exports[`Picker Cascader Picker 1`] = `
             prefixCls="za-mask"
             style={
               Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
+                "WebkitAnimationDuration": "300ms",
+                "animationDuration": "300ms",
               }
             }
             type="normal"
@@ -319,14 +319,14 @@ exports[`Picker DatePicker 1`] = `
       onClick={[Function]}
     >
       <Popup
-        animationDuration={200}
+        animationDuration={300}
         autoClose={false}
         direction="bottom"
-        duration={3000}
         mask={true}
         maskType="normal"
         onMaskClick={[Function]}
         prefixCls="za-popup"
+        stayTime={3000}
         visible={false}
       >
         <div
@@ -336,8 +336,8 @@ exports[`Picker DatePicker 1`] = `
             className="za-popup-wrapper za-popup-wrapper-bottom"
             style={
               Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
+                "WebkitTransitionDuration": "300ms",
+                "transitionDuration": "300ms",
               }
             }
           >
@@ -842,8 +842,8 @@ exports[`Picker DatePicker 1`] = `
             prefixCls="za-mask"
             style={
               Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
+                "WebkitAnimationDuration": "300ms",
+                "animationDuration": "300ms",
               }
             }
             type="normal"
@@ -877,7 +877,7 @@ exports[`Picker Picker 1`] = `
     >
       <div
         class="za-popup-wrapper za-popup-wrapper-bottom"
-        style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+        style="-webkit-transition-duration:300ms;transition-duration:300ms;"
       >
         <div
           class="za-picker-wrapper"
@@ -1013,14 +1013,14 @@ exports[`Picker StackPicker 1`] = `
       onClick={[Function]}
     >
       <Popup
-        animationDuration={200}
+        animationDuration={300}
         autoClose={false}
         direction="bottom"
-        duration={3000}
         mask={true}
         maskType="normal"
         onMaskClick={[Function]}
         prefixCls="za-popup"
+        stayTime={3000}
         visible={false}
       >
         <div
@@ -1030,8 +1030,8 @@ exports[`Picker StackPicker 1`] = `
             className="za-popup-wrapper za-popup-wrapper-bottom"
             style={
               Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
+                "WebkitTransitionDuration": "300ms",
+                "transitionDuration": "300ms",
               }
             }
           >
@@ -1119,8 +1119,8 @@ exports[`Picker StackPicker 1`] = `
             prefixCls="za-mask"
             style={
               Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
+                "WebkitAnimationDuration": "300ms",
+                "animationDuration": "300ms",
               }
             }
             type="normal"

@@ -28,9 +28,9 @@ describe('Popup', () => {
     wrapper.unmount();
   });
 
-  it('duration is 0', () => {
+  it('stayTime is 0', () => {
     const wrapper = shallow(
-      <Popup duration={0}>foo</Popup>
+      <Popup stayTime={0}>foo</Popup>
     );
     wrapper.setProps({ visible: true });
   });

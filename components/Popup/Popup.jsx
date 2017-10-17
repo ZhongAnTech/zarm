@@ -37,7 +37,7 @@ class Popup extends PureComponent {
     Events.off(this.popup, 'transitionend', this.animationEnd);
   }
 
-  enter = ({ duration, autoClose, onMaskClick }) => {
+  enter = ({ stayTime, autoClose, onMaskClick }) => {
     this.setState({
       isShow: true,
       isMaskShow: true,
@@ -45,7 +45,7 @@ class Popup extends PureComponent {
       animationState: 'enter',
     });
 
-    if (duration === 0) {
+    if (stayTime === 0) {
       return;
     }
 
@@ -53,7 +53,7 @@ class Popup extends PureComponent {
       this.timer = setTimeout(() => {
         onMaskClick();
         clearTimeout(this.timer);
-      }, duration);
+      }, stayTime);
     }
   }
 
@@ -119,12 +119,12 @@ Popup.propTypes = {
   visible: PropTypes.bool,
   mask: PropTypes.bool,
   direction: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-  duration: PropTypes.number, // eslint-disable-line
   autoClose: PropTypes.bool,  // eslint-disable-line
-  onClose: PropTypes.func,
-  maskType: Mask.propTypes.type,
+  stayTime: PropTypes.number, // eslint-disable-line
   animationDuration: PropTypes.number,
+  maskType: Mask.propTypes.type,
   onMaskClick: Mask.propTypes.onClose,
+  onClose: PropTypes.func,
 };
 
 Popup.defaultProps = {
@@ -132,9 +132,9 @@ Popup.defaultProps = {
   visible: false,
   mask: true,
   direction: 'bottom',
-  duration: 3000,
   autoClose: false,
-  animationDuration: 200,
+  stayTime: 3000,
+  animationDuration: 300,
   maskType: Mask.defaultProps.type,
   onMaskClick: Mask.defaultProps.onClose,
 };

@@ -53,12 +53,12 @@ class SwipeAction extends PureComponent {
 
     event.preventDefault();
 
-    this.doTransition({ offsetLeft: offsetX, duration: 0 });
+    this.doTransition({ offsetLeft: offsetX, animationDuration: 0 });
     return true;
   }
 
   onDragEnd = (event, { offsetX, startTime }) => {
-    const { duration, moveDistanceRatio, moveTimeSpan } = this.props;
+    const { animationDuration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
@@ -82,7 +82,7 @@ class SwipeAction extends PureComponent {
       this.close();
     } else {
       // 还原
-      this.doTransition({ offsetLeft: distanceX, duration });
+      this.doTransition({ offsetLeft: distanceX, animationDuration });
     }
   }
 
@@ -120,21 +120,21 @@ class SwipeAction extends PureComponent {
   }
 
   open = (offsetLeft) => {
-    const { duration, onOpen } = this.props;
+    const { animationDuration, onOpen } = this.props;
     this.isOpen = true;
-    this.doTransition({ offsetLeft, duration });
+    this.doTransition({ offsetLeft, animationDuration });
     typeof onOpen === 'function' && onOpen();
   }
 
   close = () => {
-    const { duration, onClose } = this.props;
+    const { animationDuration, onClose } = this.props;
     this.isOpen = false;
-    this.doTransition({ offsetLeft: 0, duration });
+    this.doTransition({ offsetLeft: 0, animationDuration });
     typeof onClose === 'function' && onClose();
   }
 
-  doTransition = ({ offsetLeft, duration }) => {
-    this.setState({ offsetLeft, duration });
+  doTransition = ({ offsetLeft, animationDuration }) => {
+    this.setState({ offsetLeft, animationDuration });
   }
 
   renderButtons = (buttons, ref) => {
@@ -167,11 +167,11 @@ class SwipeAction extends PureComponent {
 
   render() {
     const { prefixCls, className, left, right, children } = this.props;
-    const { offsetLeft, duration } = this.state;
+    const { offsetLeft, animationDuration } = this.state;
     const cls = classnames(`${prefixCls}`, className);
     const style = {
-      WebkitTransitionDuration: `${duration}ms`,
-      transitionDuration: `${duration}ms`,
+      WebkitTransitionDuration: `${animationDuration}ms`,
+      transitionDuration: `${animationDuration}ms`,
       WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
       transform: `translate3d(${offsetLeft}px, 0, 0)`,
     };
@@ -202,7 +202,7 @@ SwipeAction.propTypes = {
   right: PropTypes.arrayOf(PropTypes.object),
   moveDistanceRatio: PropTypes.number,
   moveTimeSpan: PropTypes.number,
-  duration: PropTypes.number,
+  animationDuration: PropTypes.number,
   offset: PropTypes.number,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
@@ -214,7 +214,7 @@ SwipeAction.defaultProps = {
   right: [],
   moveDistanceRatio: 0.5,
   moveTimeSpan: 300,
-  duration: 300,
+  animationDuration: 300,
   offset: 10,
 };
 

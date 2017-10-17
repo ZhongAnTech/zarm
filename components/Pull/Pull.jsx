@@ -30,7 +30,7 @@ class Pull extends PureComponent {
     super(props);
     this.state = {
       offsetY: 0,
-      duration: 0,
+      animationDuration: 0,
       refreshState: props.refreshing,
       loadState: props.loading,
     };
@@ -122,10 +122,10 @@ class Pull extends PureComponent {
   /**
    * 执行动画
    * @param  {number} options.offsetY  偏移距离
-   * @param  {number} options.duration 动画执行时间
+   * @param  {number} options.animationDuration 动画执行时间
    */
-  doTransition = ({ offsetY, duration }) => {
-    this.setState({ offsetY, duration });
+  doTransition = ({ offsetY, animationDuration }) => {
+    this.setState({ offsetY, animationDuration });
   }
 
   /**
@@ -134,22 +134,22 @@ class Pull extends PureComponent {
    * @param  {number}        offsetY      偏移距离
    */
   doRefreshAction = (refreshState, offsetY) => {
-    const { duration, stayTime } = this.props;
+    const { animationDuration, stayTime } = this.props;
 
     this.setState({ refreshState });
     switch (refreshState) {
       case REFRESH_STATE.pull:
       case REFRESH_STATE.drop:
-        this.doTransition({ offsetY, duration: 0 });
+        this.doTransition({ offsetY, animationDuration: 0 });
         break;
 
       case REFRESH_STATE.loading:
-        this.doTransition({ offsetY: 'auto', duration });
+        this.doTransition({ offsetY: 'auto', animationDuration });
         break;
 
       case REFRESH_STATE.success:
       case REFRESH_STATE.failure:
-        this.doTransition({ offsetY: 'auto', duration });
+        this.doTransition({ offsetY: 'auto', animationDuration });
         setTimeout(() => {
           this.doRefreshAction(REFRESH_STATE.normal);
           this.doLoadAction(LOAD_STATE.normal);
@@ -157,7 +157,7 @@ class Pull extends PureComponent {
         break;
 
       default:
-        this.doTransition({ offsetY: 0, duration });
+        this.doTransition({ offsetY: 0, animationDuration });
     }
   }
 
@@ -284,7 +284,7 @@ class Pull extends PureComponent {
 
   render() {
     const { prefixCls, className, children } = this.props;
-    const { offsetY, duration, refreshState, loadState } = this.state;
+    const { offsetY, animationDuration, refreshState, loadState } = this.state;
     const cls = classnames(`${prefixCls}`, className);
 
     const refreshCls = classnames(`${prefixCls}-refresh`, {
@@ -296,8 +296,8 @@ class Pull extends PureComponent {
     });
 
     const refreshStyle = {
-      WebkitTransitionDuration: `${duration}ms`,
-      transitionDuration: `${duration}ms`,
+      WebkitTransitionDuration: `${animationDuration}ms`,
+      transitionDuration: `${animationDuration}ms`,
     };
 
     if (refreshState <= REFRESH_STATE.drop) {
@@ -334,7 +334,7 @@ Pull.propTypes = {
   loadDistance: PropTypes.number,
   onLoad: PropTypes.func,
   loadRender: PropTypes.func,
-  duration: PropTypes.number,
+  animationDuration: PropTypes.number,
   stayTime: PropTypes.number,
 };
 
@@ -345,7 +345,7 @@ Pull.defaultProps = {
   refreshDistance: 50,
   loading: LOAD_STATE.normal,
   loadDistance: 10,
-  duration: 300,
+  animationDuration: 300,
   stayTime: 1000,
 };
 

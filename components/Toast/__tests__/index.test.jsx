@@ -12,27 +12,25 @@ describe('Toast', () => {
   });
 
   it('visible change false', () => {
-    jest.useFakeTimers();
     const wrapper = mount(
       <Toast visible>foo</Toast>
+    );
+    wrapper.setProps({ visible: false });
+  });
+
+  it('stayTime', () => {
+    jest.useFakeTimers();
+    const wrapper = mount(
+      <Toast stayTime={5000}>foo</Toast>
     );
     wrapper.setProps({ visible: false });
     jest.runAllTimers();
     wrapper.unmount();
   });
 
-  it('duration', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(
-      <Toast visible>foo</Toast>
-    );
-    jest.runAllTimers();
-    wrapper.unmount();
-  });
-
-  it('duration is 0', () => {
+  it('stayTime is 0', () => {
     const wrapper = shallow(
-      <Toast duration={0}>foo</Toast>
+      <Toast stayTime={0}>foo</Toast>
     );
     wrapper.setProps({ visible: true });
   });

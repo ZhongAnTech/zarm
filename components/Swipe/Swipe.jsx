@@ -56,7 +56,7 @@ class Swipe extends Component {
 
   // 滑动到指定编号
   onSlideTo = (index) => {
-    this.onMoveTo(index, this.props.duration);
+    this.onMoveTo(index, this.props.animationDuration);
   }
 
   // 静默跳到指定编号
@@ -65,13 +65,13 @@ class Swipe extends Component {
   }
 
   // 移动到指定编号
-  onMoveTo = (index, duration) => {
+  onMoveTo = (index, animationDuration) => {
     const dom = this.swipeItems;
     if (!dom) return;
 
     this.translateX = -dom.offsetWidth * (index + this.props.loop);
     this.translateY = -dom.offsetHeight * (index + this.props.loop);
-    this.doTransition({ x: this.translateX, y: this.translateY }, duration);
+    this.doTransition({ x: this.translateX, y: this.translateY }, animationDuration);
 
     const maxLength = this.props.children.length;
     if (index > maxLength - 1) {
@@ -234,7 +234,7 @@ class Swipe extends Component {
   }
 
   // 执行过渡动画
-  doTransition = (offset, duration) => {
+  doTransition = (offset, animationDuration) => {
     const dom = this.swipeItems;
     let x = 0;
     let y = 0;
@@ -245,8 +245,8 @@ class Swipe extends Component {
       y = offset.y;
     }
 
-    dom.style.webkitTransitionDuration = `${duration}ms`;
-    dom.style.transitionDuration = `${duration}ms`;
+    dom.style.webkitTransitionDuration = `${animationDuration}ms`;
+    dom.style.transitionDuration = `${animationDuration}ms`;
     dom.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`;
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
@@ -338,7 +338,7 @@ Swipe.propTypes = {
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   loop: PropTypes.bool,
   activeIndex: PropTypes.number,
-  duration: PropTypes.number,
+  animationDuration: PropTypes.number,
   autoPlay: PropTypes.bool,
   autoPlayIntervalTime: PropTypes.number,
   moveDistanceRatio: PropTypes.number,
@@ -354,7 +354,7 @@ Swipe.defaultProps = {
   height: 160,
   loop: false,
   activeIndex: 0,
-  duration: 300,
+  animationDuration: 300,
   autoPlay: false,
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,
