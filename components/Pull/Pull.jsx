@@ -345,7 +345,7 @@ Pull.defaultProps = {
   refreshDistance: 50,
   loading: LOAD_STATE.normal,
   loadDistance: 10,
-  animationDuration: 300,
+  animationDuration: 400,
   stayTime: 1000,
 };
 
