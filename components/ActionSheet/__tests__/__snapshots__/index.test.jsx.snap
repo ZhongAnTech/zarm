@@ -6,7 +6,7 @@ exports[`ActionSheet renders correctly 1`] = `
 >
   <div
     class="za-popup-wrapper za-popup-wrapper-bottom"
-    style="-webkit-transition-duration:300ms;transition-duration:300ms;"
+    style="-webkit-transition-duration:200ms;transition-duration:200ms;"
   >
     <div
       class="za-actionsheet shape-radius"
@@ -34,7 +34,7 @@ exports[`ActionSheet renders correctly 1`] = `
   </div>
   <div
     class="za-mask normal"
-    style="-webkit-animation-duration:300ms;animation-duration:300ms;"
+    style="-webkit-animation-duration:200ms;animation-duration:200ms;"
   />
 </div>
 `;

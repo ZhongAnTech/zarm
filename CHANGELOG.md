@@ -1,4 +1,13 @@
 # 版本更新日志 
+d41a622ee8a3c5eba1d690d0617185733609a128
+
+## v1.1.0
+- Break Change
+  - 统一组件`Toast`、`Pull`、`Popup`、`Swipe`、`SwipeAction`的API，`stayTime`表示停留时间， `animationDuration`表示动画执行时间。（[7f3bfbd](https://github.com/ZhonganTechENG/zarm/commit/7f3bfbdc30e4355566dad0d7f0c907a262611ca4)）
+
+- Bug Fix
+  - 修复`Pull`组件下拉刷新动画不执行的bug。（[9102e3d](https://github.com/ZhonganTechENG/zarm/commit/9102e3d57e7906364ff07a02d314f448f625e290)）
+  - 修复`Spinner`组件进度条增加延时的bug。（[3d9a95a](https://github.com/ZhonganTechENG/zarm/commit/3d9a95ae77451752c62ce04aeb0eabfbd5841888)）
 
 ## v1.0.19
 - Bug Fix

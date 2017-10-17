@@ -6,7 +6,7 @@ exports[`Popup renders correctly 1`] = `
 >
   <div
     class="za-popup-wrapper za-popup-wrapper-bottom"
-    style="-webkit-transition-duration:300ms;transition-duration:300ms;"
+    style="-webkit-transition-duration:200ms;transition-duration:200ms;"
   >
     foo
   </div>
