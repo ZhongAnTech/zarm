@@ -39,7 +39,7 @@ exports[`SwipeAction left only 1`] = `
 
 exports[`SwipeAction renders correctly 1`] = `
 <SwipeAction
-  duration={300}
+  animationDuration={300}
   left={
     Array [
       Object {
