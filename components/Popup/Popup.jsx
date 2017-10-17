@@ -134,7 +134,7 @@ Popup.defaultProps = {
   direction: 'bottom',
   autoClose: false,
   stayTime: 3000,
-  animationDuration: 300,
+  animationDuration: 200,
   maskType: Mask.defaultProps.type,
   onMaskClick: Mask.defaultProps.onClose,
 };
