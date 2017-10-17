@@ -10,10 +10,10 @@ class Popup extends PureComponent {
     super(props);
     this.timer = null;
     this.state = {
-      isShow: this.props.visible || false,
-      isMaskShow: this.props.visible || false,
-      animationState: 'enter',
+      isShow: props.visible || false,
+      isMaskShow: props.visible || false,
       isPending: false,
+      animationState: 'enter',
     };
   }
 
