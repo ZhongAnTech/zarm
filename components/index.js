@@ -5,6 +5,7 @@ export { default as Button } from './Button';
 export { default as Cell } from './Cell';
 export { default as Checkbox } from './Checkbox';
 export { default as Confirm } from './Confirm';
+export { default as FakeInput } from './FakeInput';
 export { default as Drag } from './Drag';
 export { default as Icon } from './Icon';
 export { default as Input } from './Input';
