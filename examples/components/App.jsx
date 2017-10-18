@@ -50,7 +50,7 @@ class App extends Component {
         <Route path="/pull" component={AsyncComponent(() => import('../pages/PullPage'))} />
         <Route path="/swipe-action" component={AsyncComponent(() => import('../pages/SwipeActionPage'))} />
         <Route path="/toast" component={AsyncComponent(() => import('../pages/ToastPage'))} />
-        <Route path="/keyboard" component={AsyncComponent(() => import('../pages/KeyboardPage'))} />
+        <Route path="/numkeyboard" component={AsyncComponent(() => import('../pages/NumKeyboardPage'))} />
 
         {/* 数据展示 */}
         <Route path="/badge" component={AsyncComponent(() => import('../pages/BadgePage'))} />

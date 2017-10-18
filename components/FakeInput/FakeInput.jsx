@@ -39,7 +39,7 @@ class FakeInput extends Component {
 
   render() {
     const { prefixCls, className, wrapStyle, inputStyle, placeholder } = this.props;
-    const { value = '', isFocus } = this.state;
+    const { value, isFocus } = this.state;
     
     return (
       <article className={ classnames(`${prefixCls}`, className) }
@@ -49,8 +49,8 @@ class FakeInput extends Component {
              placeholder={ placeholder }
              style={ inputStyle }>{ value }</div>
         <div ref="referInput" tabIndex={-1}
-               className="refer-input"
-               onBlur={ this.fakeBlur }/>
+             className="refer-input"
+             onBlur={ this.fakeBlur }/>
       </article>
     );
   }
@@ -69,7 +69,10 @@ FakeInput.propTypes = {
 
 FakeInput.defaultProps = {
   prefixCls: 'za-fakeinput',
-  inputStyle: {width: '100%', minWidth: '100px'},
+  wrapStyle: {},
+  inputStyle: {width: '100%', minWidth: '150px'},
+  placeholder: '',
+  value: '',
 };
 
 export default FakeInput;
