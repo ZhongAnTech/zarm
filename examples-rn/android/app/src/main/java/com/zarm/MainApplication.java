@@ -1,4 +1,4 @@
-package com.examples_rn;
+package com.zarm;
 
 import android.app.Application;
 

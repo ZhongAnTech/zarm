@@ -1,4 +1,4 @@
-package com.examples_rn;
+package com.zarm;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "examples_rn";
+        return "zarm";
     }
 }

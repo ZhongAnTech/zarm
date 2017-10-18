@@ -98,7 +98,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.examples_rn"
+        applicationId "com.zarm"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1

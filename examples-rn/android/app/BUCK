@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.examples_rn",
+    package = "com.zarm",
 )
 
 android_resource(
     name = "res",
-    package = "com.examples_rn",
+    package = "com.zarm",
     res = "src/main/res",
 )
 
