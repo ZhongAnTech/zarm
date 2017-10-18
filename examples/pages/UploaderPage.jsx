@@ -109,7 +109,7 @@ class UploaderPage extends Component {
                 {this.fileRender('files')}
                 <Uploader
                   className="uploader-btn"
-                  accept="image/jpg, image/jpeg, image/gif, image/png"
+                  accept="image/*"
                   onChange={this.onSelect}>
                   <Icon type="add" />
                 </Uploader>
@@ -127,7 +127,7 @@ class UploaderPage extends Component {
                     <Uploader
                       multiple
                       className="uploader-btn"
-                      accept="image/jpg, image/jpeg, image/gif, image/png"
+                      accept="image/*"
                       onBeforeSelect={onBeforeSelect}
                       onChange={this.onSelectMulti}>
                       <Icon type="add" />
