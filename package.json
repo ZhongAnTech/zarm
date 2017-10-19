@@ -34,7 +34,7 @@
     "clean": "rm -rf lib && rm -rf dist",
     "dev": "webpack-dev-server --config scripts/webpack/config.dev.js",
     "build:lib": "babel components --out-dir lib --presets=env,react,stage-0",
-    "build:umd": "webpack --config scripts/webpack/config.umd.js && WEBPACK_ENV=production webpack --config scripts/webpack/config.umd.js",
+    "build:umd": "webpack --config scripts/webpack/config.umd.js && NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
     "build": "npm run clean && npm run build:lib && npm run build:umd",
     "deploy:build": "rm -rf assets && webpack --config scripts/webpack/config.site.js",
     "deploy": "npm run deploy:build && gh-pages -d assets",
