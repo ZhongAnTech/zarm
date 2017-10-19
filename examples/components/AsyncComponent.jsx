@@ -13,7 +13,7 @@ const asyncComponent = loadComponent => (
       if (this.hasLoadedComponent()) return;
 
       loadComponent()
-        .then(module => module)
+        .then(module => module.default)
         .then((Component) => {
           this.setState({ Component });
         })
