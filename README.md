@@ -41,8 +41,8 @@ import 'zarm/styles/components/Button.scss';
 ```html
 <link rel="stylesheet" href="https://unpkg.com/zarm@latest/dist/zarm.min.css">
 
-<script src="https://unpkg.com/react@15.5.0/dist/react.min.js" type="text/javascript"></script>
-<script src="https://unpkg.com/react@15.5.0/dist/react-dom.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react.production.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://unpkg.com/zarm@latest/dist/zarm.min.js"></script>
 ```
 
