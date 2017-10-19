@@ -21,7 +21,7 @@ class FakeInput extends Component {
 
   fakeFocus() {
     const { cbFocus } = this.props;
-    const referInput = this.refs['referInput'];
+    const referInput = this.referInput;
     referInput.focus();
     this.setState({
       isFocus: true,
@@ -29,7 +29,7 @@ class FakeInput extends Component {
     typeof cbFocus === 'function' && cbFocus();
   }
 
-  fakeBlur(e) {
+  fakeBlur() {
     const { cbBlur } = this.props;
     this.setState({
       isFocus: false,
@@ -40,18 +40,22 @@ class FakeInput extends Component {
   render() {
     const { prefixCls, className, wrapStyle, inputStyle, placeholder } = this.props;
     const { value, isFocus } = this.state;
-    
     return (
-      <article className={ classnames(`${prefixCls}`, className) }
-               style={ wrapStyle }
-               onClick={ this.fakeFocus }>
-        <div className={ classnames('fake-input', {'editing': isFocus, 'placeholder': value === '' && !isFocus})}
-             placeholder={ placeholder }
-             style={ inputStyle }>{ value }</div>
-        <div ref="referInput" tabIndex={-1}
-             className="refer-input"
-             onBlur={ this.fakeBlur }/>
-      </article>
+      <section
+        className={classnames(`${prefixCls}`, className)}
+        style={wrapStyle}
+        onClick={this.fakeFocus}>
+        <div
+          className={classnames('fake-input', { editing: isFocus, placeholder: value === '' && !isFocus })}
+          placeholder={placeholder}
+          style={inputStyle}>{value}</div>
+        <div
+          ref={(e) => { this.referInput = e; }}
+          tabIndex={-1}
+          className="refer-input"
+          onBlur={this.fakeBlur}
+          />
+      </section>
     );
   }
 }
@@ -59,8 +63,10 @@ class FakeInput extends Component {
 FakeInput.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
+  /* eslint-disable */
   wrapStyle: PropTypes.object,
   inputStyle: PropTypes.object,
+  /* eslint-enable */
   value: PropTypes.string,
   placeholder: PropTypes.string,
   cbFocus: PropTypes.func,
@@ -70,7 +76,7 @@ FakeInput.propTypes = {
 FakeInput.defaultProps = {
   prefixCls: 'za-fakeinput',
   wrapStyle: {},
-  inputStyle: {width: '100%', minWidth: '150px'},
+  inputStyle: { width: '100%', minWidth: '150px' },
   placeholder: '',
   value: '',
 };

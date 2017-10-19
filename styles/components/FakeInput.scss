@@ -12,10 +12,12 @@ $prefixCls: $prefixCls-fakeinput;
     white-space: nowrap;
     overflow-x: scroll;
     text-align: left;
+
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
     }
+
     &.placeholder {
       &:before {
         content: attr(placeholder);
@@ -24,8 +26,9 @@ $prefixCls: $prefixCls-fakeinput;
         color: #ccc;
       }
     }
+
     &.editing {
-      &:after{
+      &:after {
         content: '|';
         display: inline-block;
         color: #000;
@@ -33,10 +36,11 @@ $prefixCls: $prefixCls-fakeinput;
       }
     }
   }
+
   .refer-input {
-    height: 0px;
-    margin: 0px;
-    width: 0px;
+    height: 0;
+    margin: 0;
+    width: 0;
     padding: 0;
     outline: none;
     border-width: 0;
@@ -44,15 +48,18 @@ $prefixCls: $prefixCls-fakeinput;
 }
 
 @keyframes flashing {
-  0 {
+  0% {
     opacity: 1;
   }
+
   50% {
     opacity: 1;
   }
+
   51% {
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }

@@ -56,29 +56,31 @@ class Page extends Component {
         <Header title="模拟输入框+数字键盘" />
         <main>
           <Panel>
-            <Panel.Header title="手机号键盘"/>
+            <Panel.Header title="手机号键盘" />
             <Panel.Body>
-              手机：<FakeInput value={tel} placeholder="请输入手机号"  cbFocus={this.inputFocus('tel')}/>
+              手机：<FakeInput value={tel} placeholder="请输入手机号" cbFocus={this.inputFocus('tel')} />
             </Panel.Body>
           </Panel>
           <Panel>
-            <Panel.Header title="价格键盘"/>
+            <Panel.Header title="价格键盘" />
             <Panel.Body>
-              金额：<FakeInput value={price} placeholder="请输入金额"  cbFocus={this.inputFocus('price')} inputStyle={{color: 'red'}}/>
+              金额：<FakeInput value={price} placeholder="请输入金额" cbFocus={this.inputFocus('price')} inputStyle={{ color: 'red' }} />
             </Panel.Body>
           </Panel>
           <Panel>
-            <Panel.Header title="身份证键盘"/>
+            <Panel.Header title="身份证键盘" />
             <Panel.Body>
-              身份证：<FakeInput value={id} placeholder="请输入身份证"  cbFocus={this.inputFocus('id')}/>
+              身份证：<FakeInput value={id} placeholder="请输入身份证" cbFocus={this.inputFocus('id')} />
             </Panel.Body>
           </Panel>
         </main>
         <Footer />
-        <NumKeyboard visible={isShowKeyboard}
-                     type={kbType}
-                     keyCallback={this.keyHandle}
-                     doneCallback={this.doneHandle}/>
+        <NumKeyboard
+          visible={isShowKeyboard}
+          type={kbType}
+          keyCallback={this.keyHandle}
+          doneCallback={this.doneHandle}
+          />
       </Container>
     );
   }

@@ -9,16 +9,13 @@ const PRICE_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', '-1']
 const ID_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', '-1'];
 
 class NumKeyboard extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
-    FastClick.attach(this.refs.keyboard, { tapDelay: 10 });
+    FastClick.attach(this.keyboard, { tapDelay: 10 });
   }
   _genKey() {
     const { type, keyCallback } = this.props;
     let keys = null;
-    switch(type) {
+    switch (type) {
       case 'price':
         keys = [].concat(PRICE_KEYS);
         break;
@@ -32,32 +29,33 @@ class NumKeyboard extends Component {
     }
     return keys.map((key, index) => {
       return (
-        <div className={classnames('key-btn', {'top-right-1px-line': index % 3 !== 2, 'top-1px-line': index % 3 === 2})}
-             onClick={ () => typeof keyCallback === 'function' && keyCallback(key) }
-             key={ key }>
-          { key !== '-1' ? key : (<Icon type="wrong"/>) }
+        <div
+          className={classnames('key-btn', { 'top-right-1px-line': index % 3 !== 2, 'top-1px-line': index % 3 === 2 })}
+          onClick={() => typeof keyCallback === 'function' && keyCallback(key)}
+          key={key}>
+          {key !== '-1' ? key : (<Icon type="wrong" />)}
         </div>
       );
     });
   }
   render() {
     const { prefixCls, className, type, mask, btnTitle, visible, doneCallback, keyCallback, ...others } = this.props;
-
     return (
       <Popup mask={mask} visible={visible} onMaskClick={() => typeof doneCallback === 'function' && doneCallback()}>
-        <div className={classnames(`${prefixCls}`, className)} ref="keyboard" style={{bottom: visible ? '0' : '-1000px'}} {...others}>
+        <div className={classnames(`${prefixCls}`, className)} ref={(e) => { this.keyboard = e; }} style={{ bottom: visible ? '0' : '-1000px' }} {...others}>
           <div className="op-zone">
-            <button className="comfirm-btn"
-                    onClick={
-                      () => {
-                        const keyboard = this.refs['keyboard'];
-                        keyboard.style.bottom = '-1000px';
-                        typeof doneCallback === 'function' && doneCallback();
-                      }
-                    }>{ btnTitle }</button>
+            <button
+              className="comfirm-btn"
+              onClick={
+                () => {
+                  const keyboard = this.keyboard;
+                  keyboard.style.bottom = '-1000px';
+                  typeof doneCallback === 'function' && doneCallback();
+                }
+              }>{btnTitle}</button>
           </div>
           <div className="key-zone">
-            { this._genKey() }
+            {this._genKey()}
           </div>
         </div>
       </Popup>
