@@ -5,7 +5,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./config.base');
 
-const env = process.env.WEBPACK_ENV;
+const env = process.env.NODE_ENV;
 
 config.devtool = 'source-map';
 
@@ -74,9 +74,7 @@ if (env === 'production') {
 }
 
 config.plugins.push(new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: '"production"',
-  },
+  'process.env.NODE_ENV': JSON.stringify(env || 'production'),
   __DEBUG__: false,
 }));
 
