@@ -10,5 +10,14 @@
   },
   "include": [
     "components/**/*"
-  ]
+  ],
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "babelConfig": {
+          "presets": ["env", "react", "stage-0"]
+        }
+      }
+    }
+  }
 }
