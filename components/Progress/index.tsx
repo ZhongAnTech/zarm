@@ -1,9 +1,18 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { IProgress as ProgressProps } from './PropsType';
 import Spinner from '../Spinner';
 
-class Progress extends PureComponent {
+export { ProgressProps };
+
+export default class Progress extends PureComponent<ProgressProps, any> {
+  static defaultProps = {
+    prefixCls: 'za-progress',
+    theme: 'primary',
+    shape: 'line',
+    strokeWidth: 5,
+    percent: 15,
+  };
 
   render() {
     const { prefixCls, className, theme, shape, strokeWidth, percent, children, ...others } = this.props;
@@ -25,23 +34,3 @@ class Progress extends PureComponent {
     );
   }
 }
-
-Progress.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  theme: Spinner.propTypes.theme,
-  shape: PropTypes.oneOf(['line', 'circle']),
-  strokeWidth: Spinner.propTypes.strokeWidth,
-  percent: Spinner.propTypes.percent,
-
-};
-
-Progress.defaultProps = {
-  prefixCls: 'za-progress',
-  theme: Spinner.defaultProps.theme,
-  shape: 'line',
-  strokeWidth: Spinner.defaultProps.strokeWidth,
-  percent: Spinner.defaultProps.percent,
-};
-
-export default Progress;
