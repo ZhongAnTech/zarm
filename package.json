@@ -109,18 +109,21 @@
     "webpack-dev-server": "2.7.1"
   },
   "jest": {
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx|ts|tsx)$",
     "moduleFileExtensions": [
+      "ts",
+      "tsx",
       "js",
       "jsx",
       "json"
     ],
     "collectCoverageFrom": [
-      "components/**/*.{js,jsx}",
+      "components/**/*.{js, jsx, ts, tsx}",
       "!components/*.{js}"
     ],
     "transform": {
-      "^.+\\.jsx?$": "<rootDir>/scripts/jest/preprocessor.js"
+      "^.+\\.jsx?$": "<rootDir>/scripts/jest/preprocessor.js",
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     }
   }
 }
