@@ -42,14 +42,12 @@ class NumKeyboard extends Component {
     const { prefixCls, className, type, mask, btnTitle, visible, doneCallback, keyCallback, ...others } = this.props;
     return (
       <Popup mask={mask} visible={visible} onMaskClick={() => typeof doneCallback === 'function' && doneCallback()}>
-        <div className={classnames(`${prefixCls}`, className)} ref={(e) => { this.keyboard = e; }} style={{ bottom: visible ? '0' : '-1000px' }} {...others}>
+        <div className={classnames(`${prefixCls}`, className)} ref={(e) => { this.keyboard = e; }} {...others}>
           <div className="op-zone">
             <button
               className="comfirm-btn"
               onClick={
                 () => {
-                  const keyboard = this.keyboard;
-                  keyboard.style.bottom = '-1000px';
                   typeof doneCallback === 'function' && doneCallback();
                 }
               }>{btnTitle}</button>

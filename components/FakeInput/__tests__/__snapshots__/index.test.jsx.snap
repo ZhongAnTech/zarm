@@ -1,19 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FakeInput renders correctly 1`] = `
-<article
+exports[`FakeInput render correctly 1`] = `
+<section
   class="za-fakeinput"
 >
   <div
     class="fake-input placeholder"
     placeholder="请输入手机号"
-    style="width: 100%; min-width: 150px;"
-  >
-  </div>
+    style="width:100%;min-width:150px;"
+  />
   <div
-    tabindex="-1"
     class="refer-input"
-  >
-  </div>
-</article>
+    tabindex="-1"
+  />
+</section>
 `;

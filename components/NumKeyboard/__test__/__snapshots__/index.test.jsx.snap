@@ -1,16 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NumKeyboard renders correctly 1`] = `
+exports[`NumKeyboard render correctly 1`] = `
 <div
   class="za-popup"
 >
   <div
     class="za-popup-wrapper za-popup-wrapper-bottom"
-    style="transition-duration: 200ms;"
+    style="-webkit-transition-duration:200ms;transition-duration:200ms;"
   >
     <div
       class="za-numkeyboard"
-      style="bottom: 0px;"
     >
       <div
         class="op-zone"
@@ -71,8 +70,7 @@ exports[`NumKeyboard renders correctly 1`] = `
         </div>
         <div
           class="key-btn top-right-1px-line"
-        >
-        </div>
+        />
         <div
           class="key-btn top-right-1px-line"
         >
@@ -83,8 +81,7 @@ exports[`NumKeyboard renders correctly 1`] = `
         >
           <i
             class="za-icon za-icon-wrong"
-          >
-          </i>
+          />
         </div>
       </div>
     </div>
