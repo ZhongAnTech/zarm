@@ -1,13 +1,22 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { IToast as ToastProps } from './PropsType';
 import Mask from '../Mask';
 
-class Toast extends PureComponent {
+export { ToastProps };
+
+export default class Toast extends PureComponent<ToastProps, any> {
+
+  private timer: number;
+
+  static defaultProps = {
+    prefixCls: 'za-toast',
+    visible: false,
+    stayTime: 3000,
+  };
 
   constructor(props) {
     super(props);
-    this.timer = null;
     this.state = {
       isShow: false,
     };
@@ -15,7 +24,7 @@ class Toast extends PureComponent {
 
   componentDidMount() {
     if (this.props.visible) {
-      this.enter(this.props);
+      this.enter(this.props.stayTime, this.props.onMaskClick);
     }
   }
 
@@ -23,7 +32,7 @@ class Toast extends PureComponent {
     clearTimeout(this.timer);
 
     if (nextProps.visible) {
-      this.enter(nextProps);
+      this.enter(nextProps.stayTime, nextProps.onMaskClick);
     } else {
       this.leave();
     }
@@ -33,7 +42,7 @@ class Toast extends PureComponent {
     clearTimeout(this.timer);
   }
 
-  enter = ({ stayTime, onMaskClick }) => {
+  enter = (stayTime, onMaskClick) => {
     this.setState({
       isShow: true,
     });
@@ -69,19 +78,3 @@ class Toast extends PureComponent {
     );
   }
 }
-
-Toast.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  visible: PropTypes.bool,
-  stayTime: PropTypes.number, // eslint-disable-line
-  onMaskClick: Mask.propTypes.onClose,
-};
-
-Toast.defaultProps = {
-  prefixCls: 'za-toast',
-  visible: false,
-  stayTime: 3000,
-};
-
-export default Toast;

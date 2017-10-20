@@ -122,8 +122,8 @@ Popup.propTypes = {
   autoClose: PropTypes.bool,  // eslint-disable-line
   stayTime: PropTypes.number, // eslint-disable-line
   animationDuration: PropTypes.number,
-  maskType: Mask.propTypes.type,
-  onMaskClick: Mask.propTypes.onClose,
+  // maskType: Mask.propTypes.type,
+  // onMaskClick: Mask.propTypes.onClose,
   onClose: PropTypes.func,
 };
 
