@@ -2,16 +2,17 @@ import React, { PureComponent, cloneElement } from 'react';
 import ReactDOM, { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Events from '../utils/events';
 
 class Tooltip extends PureComponent {
 
-  constructor(props) {
-    super(props);
-    this.rootDom = document.createElement('div');
-  }
-
   componentDidMount() {
+    if (!window.zarmTooltip) {
+      window.zarmTooltip = document.createElement('div');
+      document.body.appendChild(window.zarmTooltip);
+    }
     this.show(this.props);
+    // Events.on(window, 'resize', this.resize);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,12 +21,6 @@ class Tooltip extends PureComponent {
 
   show = (props) => {
     const { prefixCls, className, visible, message } = props;
-
-    const root = this.rootDom;
-    if (visible) {
-      document.body.appendChild(this.rootDom);
-    }
-
     const cls = classnames({
       [`${prefixCls}`]: true,
       [`${prefixCls}-hidden`]: !visible,
@@ -45,7 +40,7 @@ class Tooltip extends PureComponent {
       <div className={cls} style={style} ref={(ele) => { this.tooltip = ele; }}>
         <div className={`${prefixCls}-inner`}>{message}</div>
       </div>
-    , root);
+    , window.zarmTooltip);
   }
 
   render() {
