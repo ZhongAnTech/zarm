@@ -11,13 +11,13 @@ class Input extends PureComponent {
 
     switch (type) {
       case 'number':
-        return <InputNumber {...others} />;
+        return <InputNumber ref={(ele) => { this.input = ele; }} {...others} />;
 
       case 'textarea':
-        return <InputTextarea {...others} />;
+        return <InputTextarea ref={(ele) => { this.input = ele; }} {...others} />;
 
       default:
-        return <InputText {...others} />;
+        return <InputText ref={(ele) => { this.input = ele; }} {...others} />;
     }
   }
 }
