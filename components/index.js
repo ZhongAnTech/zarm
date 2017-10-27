@@ -8,6 +8,7 @@ export { default as Confirm } from './Confirm';
 export { default as Drag } from './Drag';
 export { default as Icon } from './Icon';
 export { default as Input } from './Input';
+export { default as Keyboard } from './Keyboard';
 export { default as Loading } from './Loading';
 export { default as Message } from './Message';
 export { default as Mask } from './Mask';

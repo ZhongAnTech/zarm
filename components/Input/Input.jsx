@@ -10,8 +10,10 @@ class Input extends PureComponent {
     const { type, ...others } = this.props;
 
     switch (type) {
+      case 'idcard':
+      case 'price':
       case 'number':
-        return <InputNumber ref={(ele) => { this.input = ele; }} {...others} />;
+        return <InputNumber ref={(ele) => { this.input = ele; }} type={type} {...others} />;
 
       case 'textarea':
         return <InputTextarea ref={(ele) => { this.input = ele; }} {...others} />;
