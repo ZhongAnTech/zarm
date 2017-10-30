@@ -2,7 +2,7 @@
   "compilerOptions":{
     "strictNullChecks": true,
     "moduleResolution": "node",
-    "jsx": "preserve",
+    "jsx": "react",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
@@ -15,14 +15,5 @@
   },
   "include": [
     "components/**/*"
-  ],
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "babelConfig": {
-          "presets": ["env", "react", "stage-0"]
-        }
-      }
-    }
-  }
+  ]
 }
