@@ -47,7 +47,7 @@ ActionSheet.propTypes = {
   shape: PropTypes.oneOf(['radius']),
   visible: PropTypes.bool,
   actions: PropTypes.arrayOf(PropTypes.object),
-  onMaskClick: Popup.propTypes.onMaskClick,
+  // onMaskClick: Popup.propTypes.onMaskClick,
   onCancel: PropTypes.func,
   cancelText: PropTypes.string,
 };
