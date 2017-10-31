@@ -35,4 +35,3 @@ export default class TabPanel extends PureComponent<TabPannelProps, any> {
     return <div className={cls} role="tabpanel">{children}</div>;
   }
 }
-
