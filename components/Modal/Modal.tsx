@@ -7,13 +7,12 @@ import Mask from '../Mask';
 export { ModalProps };
 
 export default class Modal extends PureComponent<ModalProps, any> {
+  
+  private modal;
 
   static Header: any;
   static Body: any;
   static Footer: any;
-
-  private modal;
-
   static defaultProps = {
     prefixCls: 'za-modal',
     visible: false,

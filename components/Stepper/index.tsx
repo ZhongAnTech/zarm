@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { StepperProps } from './PropsType';
 import Icon from '../Icon';
 
 function getValue(props, defaultValue) {
@@ -13,7 +13,16 @@ function getValue(props, defaultValue) {
   return defaultValue;
 }
 
-class Stepper extends PureComponent {
+export { StepperProps };
+
+export default class Stepper extends PureComponent<StepperProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-stepper',
+    theme: 'primary',
+    disabled: false,
+    step: 1,
+  }
 
   constructor(props) {
     super(props);
@@ -60,69 +69,63 @@ class Stepper extends PureComponent {
 
   onSubClick = () => {
     const { step } = this.props;
-    const value = Number(this.state.value) - step;
-    this.onInputBlur(value);
+    const { value } = this.state;
+    if (this.isSubDisabled()) return;
+
+    const newValue = Number(value) - step;
+    this.onInputBlur(newValue);
   }
 
   onPlusClick = () => {
     const { step } = this.props;
-    const value = Number(this.state.value) + step;
-    this.onInputBlur(value);
+    const { value } = this.state;
+    if (this.isPlusDisabled()) return;
+
+    const newValue = Number(value) + step;
+    this.onInputBlur(newValue);
+  }
+
+  isSubDisabled = () => {
+    const { min, disabled } = this.props;
+    const { value } = this.state;
+
+    if (min === null) return false;
+    return (value <= min) || disabled;
+  }
+
+  isPlusDisabled = () => {
+    const { max, disabled } = this.props;
+    const { value } = this.state;
+
+    if (max === null) return false;
+    return (value >= max) || disabled;
   }
 
   render() {
-    const { prefixCls, className, theme, size, shape, disabled, min, max } = this.props;
+    const { prefixCls, className, theme, shape, disabled } = this.props;
     const { value } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
       disabled,
     });
 
-    const subDisabled = !!(typeof min === 'number' && value <= min) || disabled;
-    const plusDisabled = !!(typeof max === 'number' && value >= max) || disabled;
-
     const subCls = classnames(`${prefixCls}-sub`, {
-      disabled: subDisabled,
+      disabled: this.isSubDisabled(),
     });
 
     const plusCls = classnames(`${prefixCls}-plus`, {
-      disabled: plusDisabled,
+      disabled: this.isPlusDisabled(),
     });
 
     return (
       <span className={cls}>
-        <span className={subCls} onClick={!subDisabled && this.onSubClick}><Icon type="minus" /></span>
-        <input className={`${prefixCls}-body`} type="tel" value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={e => this.onInputBlur(e.target.value)} />
-        <span className={plusCls} onClick={!plusDisabled && this.onPlusClick}><Icon type="add" /></span>
+        <span className={subCls} onClick={this.onSubClick}><Icon type="minus" /></span>
+        <input className={`${prefixCls}-body`} type="tel" value={value} onChange={e => this.onInputChange(e.target.value)} onBlur={(e: any) => this.onInputBlur(e.target.value)} />
+        <span className={plusCls} onClick={this.onPlusClick}><Icon type="add" /></span>
       </span>
     );
   }
 }
 
-Stepper.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
-  size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
-  shape: PropTypes.oneOf(['radius', 'circle']),
-  value: PropTypes.number,  // eslint-disable-line
-  defaultValue: PropTypes.number, // eslint-disable-line
-  disabled: PropTypes.bool,
-  step: PropTypes.number,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  onInputChange: PropTypes.func,
-  onChange: PropTypes.func,
-};
-
-Stepper.defaultProps = {
-  prefixCls: 'za-stepper',
-  theme: 'primary',
-  disabled: false,
-  step: 1,
-};
-
-export default Stepper;

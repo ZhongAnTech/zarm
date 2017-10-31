@@ -1,18 +1,35 @@
-import React, { Component, cloneElement, Children } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, cloneElement, Children, CSSProperties } from 'react';
 import classnames from 'classnames';
+import { SwipeProps } from './PropsType';
 import Events from '../utils/events';
 import Drag from '../Drag';
 
-class Swipe extends Component {
+export { SwipeProps };
+
+export default class Swipe extends Component<SwipeProps, any> {
+
+  private swipeItems;
+  private moveInterval;  
+  private scrolling: boolean = false;
+  private translateX: number = 0;
+  private translateY: number = 0;
+
+  static defaultProps = {
+    prefixCls: 'za-swipe',
+    direction: 'left',
+    height: 160,
+    loop: false,
+    activeIndex: 0,
+    animationDuration: 300,
+    autoPlay: false,
+    autoPlayIntervalTime: 3000,
+    moveDistanceRatio: 0.5,
+    moveTimeSpan: 300,
+    showPagination: true,
+  }
 
   constructor(props) {
     super(props);
-    this.dragState = {};
-    this.scrolling = false;
-    this.translateX = 0;
-    this.translateY = 0;
-    this.moveInterval = null;
     this.state = {
       items: [],
       activeIndex: props.activeIndex,
@@ -21,7 +38,7 @@ class Swipe extends Component {
 
   componentWillMount() {
     this.parseItems(this.props);
-    this.startAutoPlay(this.props);
+    this.startAutoPlay();
   }
 
   componentDidMount() {
@@ -69,11 +86,13 @@ class Swipe extends Component {
     const dom = this.swipeItems;
     if (!dom) return;
 
-    this.translateX = -dom.offsetWidth * (index + this.props.loop);
-    this.translateY = -dom.offsetHeight * (index + this.props.loop);
+    const { loop, children } = this.props;
+    const maxLength = children.length;
+
+    this.translateX = -dom.offsetWidth * (index + loop);
+    this.translateY = -dom.offsetHeight * (index + loop);
     this.doTransition({ x: this.translateX, y: this.translateY }, animationDuration);
 
-    const maxLength = this.props.children.length;
     if (index > maxLength - 1) {
       index = 0;
     } else if (index < 0) {
@@ -138,11 +157,15 @@ class Swipe extends Component {
     return true;
   }
 
-  onDragEnd = (event, { offsetX, offsetY, startTime }) => {
+  onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
     if (this.scrolling) return;
     if (!offsetX && !offsetY) return;
 
-    const { moveDistanceRatio, moveTimeSpan, onChange } = this.props;
+    const {
+      moveDistanceRatio = Swipe.defaultProps.moveDistanceRatio,
+      moveTimeSpan = Swipe.defaultProps.moveTimeSpan,
+      onChange
+    } = this.props;
     let { activeIndex } = this.state;
 
     const dom = this.swipeItems;
@@ -170,7 +193,7 @@ class Swipe extends Component {
 
   // 自动轮播开始
   startAutoPlay = () => {
-    const { direction, loop, autoPlay, autoPlayIntervalTime, children } = this.props;
+    const { direction = 'left', loop, autoPlay, autoPlayIntervalTime, children } = this.props;
 
     this.moveInterval = (autoPlay && setInterval(() => {
       let activeIndex = this.state.activeIndex;
@@ -213,7 +236,7 @@ class Swipe extends Component {
     }
 
     // 节点追加后重排key
-    const newItems = React.Children.map(items, (element, index) => {
+    const newItems = React.Children.map(items, (element: any, index) => {
       return cloneElement(element, {
         key: index,
         className: classnames({
@@ -274,22 +297,20 @@ class Swipe extends Component {
 
   // 是否横向移动
   isDirectionX = () => {
-    return (['left', 'right'].indexOf(this.props.direction) > -1);
+    return (['left', 'right'].indexOf(this.props.direction || Swipe.defaultProps.direction) > -1);
   }
 
   render() {
     const { prefixCls, className, height, showPagination, children } = this.props;
     const cls = classnames(`${prefixCls}`, className);
-    const style = {
-      items: {},
-      pagination: {},
-    };
+    const itemsStyle: CSSProperties = {};
+    const paginationStyle: CSSProperties = {};
 
     if (!this.isDirectionX()) {
-      style.items.height = height;
+      itemsStyle.height = height;
     } else {
-      style.items.whiteSpace = 'nowrap';
-      style.pagination.display = 'inline-block';
+      itemsStyle.whiteSpace = 'nowrap';
+      paginationStyle.display = 'inline-block';
     }
 
     return (
@@ -301,7 +322,7 @@ class Swipe extends Component {
           <div
             ref={(ele) => { this.swipeItems = ele; }}
             className={`${prefixCls}-items`}
-            style={style.items}>
+            style={itemsStyle}>
             {this.state.items}
           </div>
         </Drag>
@@ -310,13 +331,13 @@ class Swipe extends Component {
             <div className={`${prefixCls}-pagination`}>
               <ul>
                 {
-                  Children.map(children, (result, index) => {
+                  Children.map(children, (_result, index) => {
                     return (
                       <li
                         role="tab"
                         key={`pagination-${index}`}
                         className={classnames({ active: index === this.state.activeIndex })}
-                        style={style.pagination}
+                        style={paginationStyle}
                         onClick={() => this.onSlideTo(index)}
                         />
                     );
@@ -331,36 +352,4 @@ class Swipe extends Component {
   }
 }
 
-Swipe.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  direction: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  loop: PropTypes.bool,
-  activeIndex: PropTypes.number,
-  animationDuration: PropTypes.number,
-  autoPlay: PropTypes.bool,
-  autoPlayIntervalTime: PropTypes.number,
-  moveDistanceRatio: PropTypes.number,
-  moveTimeSpan: PropTypes.number,
-  showPagination: PropTypes.bool,
-  onChange: PropTypes.func,
-  onChangeEnd: PropTypes.func,
-};
-
-Swipe.defaultProps = {
-  prefixCls: 'za-swipe',
-  direction: 'left',
-  height: 160,
-  loop: false,
-  activeIndex: 0,
-  animationDuration: 300,
-  autoPlay: false,
-  autoPlayIntervalTime: 3000,
-  moveDistanceRatio: 0.5,
-  moveTimeSpan: 300,
-  showPagination: true,
-};
-
-export default Swipe;
 

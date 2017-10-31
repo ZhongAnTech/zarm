@@ -1,18 +1,34 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { SwipeActionProps } from './PropsType';
 import Events from '../utils/events';
 import Drag from '../Drag';
 
-class SwipeAction extends PureComponent {
+export { SwipeActionProps };
+
+export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
+
+  private isOpen: boolean = false;
+  private touchEnd: boolean = true;
+  private wrap;
+  private left;
+  private right;
+
+  static defaultProps = {
+    prefixCls: 'za-swipeaction',
+    left: [],
+    right: [],
+    moveDistanceRatio: 0.5,
+    moveTimeSpan: 300,
+    animationDuration: 300,
+    offset: 10,
+  }
 
   constructor(props) {
     super(props);
     this.state = {
       offsetLeft: 0,
     };
-    this.isOpen = false;
-    this.touchEnd = true;
   }
 
   componentDidMount() {
@@ -57,7 +73,7 @@ class SwipeAction extends PureComponent {
     return true;
   }
 
-  onDragEnd = (event, { offsetX, startTime }) => {
+  onDragEnd = (_event, { offsetX, startTime }) => {
     const { animationDuration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const btnsLeftWidth = this.left && this.left.offsetWidth;
@@ -140,7 +156,7 @@ class SwipeAction extends PureComponent {
   renderButtons = (buttons, ref) => {
     const prefixCls = this.props.prefixCls;
 
-    return (buttons && buttons.length) ? (
+    return (buttons && buttons.length) && (
       <div
         className={`${prefixCls}-actions-${ref}`}
         ref={(el) => { this[ref] = el; }}>
@@ -162,10 +178,10 @@ class SwipeAction extends PureComponent {
           })
         }
       </div>
-    ) : null;
+    );
   }
 
-  render() {
+  render(): any {
     const { prefixCls, className, left, right, children } = this.props;
     const { offsetLeft, animationDuration } = this.state;
     const cls = classnames(`${prefixCls}`, className);
@@ -175,8 +191,8 @@ class SwipeAction extends PureComponent {
       WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
       transform: `translate3d(${offsetLeft}px, 0, 0)`,
     };
-
-    return (left.length || right.length)
+    
+    return (left || right)
       ? (
         <div className={cls} ref={(wrap) => { this.wrap = wrap; }}>
           {this.renderButtons(left, 'left')}
@@ -194,28 +210,3 @@ class SwipeAction extends PureComponent {
       : children;
   }
 }
-
-SwipeAction.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  left: PropTypes.arrayOf(PropTypes.object),
-  right: PropTypes.arrayOf(PropTypes.object),
-  moveDistanceRatio: PropTypes.number,
-  moveTimeSpan: PropTypes.number,
-  animationDuration: PropTypes.number,
-  offset: PropTypes.number,
-  onOpen: PropTypes.func,
-  onClose: PropTypes.func,
-};
-
-SwipeAction.defaultProps = {
-  prefixCls: 'za-swipeaction',
-  left: [],
-  right: [],
-  moveDistanceRatio: 0.5,
-  moveTimeSpan: 300,
-  animationDuration: 300,
-  offset: 10,
-};
-
-export default SwipeAction;
