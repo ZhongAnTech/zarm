@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import { TooltipProps } from './PropsType';
 // import Events from '../utils/events';
 
+export { TooltipProps };
+
 export default class Tooltip extends PureComponent<TooltipProps, any> {
 
   private child;
