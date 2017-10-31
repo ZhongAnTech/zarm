@@ -134,7 +134,7 @@
     ]
   },
   "lint-staged": {
-    "components/**/*.{ts,tsx}": "lint:ts",
+    "{components}/**/*.{ts,tsx}": "lint:ts",
     "{components,examples}/**/*.{js,jsx}": "lint:js",
     "{styles,examples}/**/*.scss": "lint:style"
   },
