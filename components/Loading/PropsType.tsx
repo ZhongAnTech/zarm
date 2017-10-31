@@ -1,3 +1,3 @@
-import { IToast } from '../Toast/PropsType';
+import { ToastProps } from '../Toast/PropsType';
 
-export { IToast as ILoading };
+export { ToastProps as LoadingProps };

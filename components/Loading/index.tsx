@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import Toast from '../Toast';
 import Spinner from '../Spinner';
-import { ILoading as LoadingProps } from './PropsType';
+import { LoadingProps } from './PropsType';
 
 export { LoadingProps };
 
-class Loading extends PureComponent<LoadingProps, any> {
+class Loading extends PureComponent<LoadingProps, {}> {
+
   static defaultProps = {
     prefixCls: 'za-loading',
   };

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { IToast as ToastProps } from './PropsType';
+import { ToastProps } from './PropsType';
 import Mask from '../Mask';
 
 export { ToastProps };

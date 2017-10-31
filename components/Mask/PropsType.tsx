@@ -1,10 +1,11 @@
-interface IBase {
+interface BaseProps {
   visible?: boolean;
   type?: 'transparent' | 'light' | 'normal' | 'dark';
-  onClose?: (x?: any) => void;
+  onClose?: () => void;
+  style?: React.CSSProperties;
 }
 
-export interface IMask extends IBase {
+export interface MaskProps extends BaseProps {
   prefixCls?: string;
   className?: string;
 }

@@ -1,11 +1,12 @@
 interface BaseProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
-  strokeWidth?: number;
-  percent?: number;
-  shape?: 'line' | 'circle';
+  shape?: 'dot' | 'radius' | 'round' | 'circle';
+  sup?: boolean;
+  text?: any;
 }
 
-export interface ProgressProps extends BaseProps {
+export interface BadgeProps extends BaseProps {
   prefixCls?: string;
   className?: string;
 }
+
