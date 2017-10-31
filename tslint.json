@@ -1,10 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-    "tslint:recommended",
-    "tslint-react"
-  ],
-  "jsRules": {},
+  "extends": ["tslint-react"],
   "rules": {
     "quotemark": [true, "single", "jsx-double"],
     "member-access": false,
@@ -13,7 +9,11 @@
     "object-literal-sort-keys": false,
     "curly": [true, "ignore-same-line"],
     "no-unused-expression": false,
-    "max-line-length": false
+    "max-line-length": false,
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
+    "jsx-alignment": false,
+    "jsx-boolean-value": false
   },
   "rulesDirectory": []
 }

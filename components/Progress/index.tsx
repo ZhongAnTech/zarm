@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { IProgress as ProgressProps } from './PropsType';
+import { ProgressProps } from './PropsType';
 import Spinner from '../Spinner';
 
 export { ProgressProps };
 
-export default class Progress extends PureComponent<ProgressProps, any> {
+export default class Progress extends PureComponent<ProgressProps, {}> {
+
   static defaultProps = {
     prefixCls: 'za-progress',
     theme: 'primary',

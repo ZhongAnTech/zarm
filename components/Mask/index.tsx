@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { IMask as MaskProps } from './PropsType';
+import { MaskProps } from './PropsType';
 
 export { MaskProps };
 
-export default class Mask extends PureComponent<MaskProps, any> {
+export default class Mask extends PureComponent<MaskProps, {}> {
+
   static defaultProps = {
     prefixCls: 'za-mask',
     visible: false,

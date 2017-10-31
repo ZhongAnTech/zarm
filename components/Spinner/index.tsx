@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { ISpinner as SpinnerProps } from './PropsType';
+import { SpinnerProps } from './PropsType';
 
 const DIAMETER = 62;
 

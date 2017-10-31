@@ -5,13 +5,9 @@
     "jsx": "react",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    "types": [
-      "classnames",
-      "react",
-      "react-dom"
-    ]
+    "target": "es6"
   },
   "include": [
     "components/**/*"

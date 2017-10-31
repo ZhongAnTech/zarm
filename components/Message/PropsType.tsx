@@ -1,11 +1,13 @@
 interface BaseProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   size?: 'lg';
-  strokeWidth?: number;
-  percent?: number;
+  icon?: any;
+  hasArrow?: boolean;
+  hasClosable?: boolean;
+  onClick?: () => void; 
 }
 
-export interface SpinnerProps extends BaseProps {
+export interface MessageProps extends BaseProps {
   prefixCls?: string;
   className?: string;
 }
