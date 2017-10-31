@@ -20,7 +20,6 @@ export { RadioProps };
 export default class Radio extends PureComponent<RadioProps, any> {
 
   static Group: any;
-
   static defaultProps = {
     prefixCls: 'za-radio',
     theme: 'primary',

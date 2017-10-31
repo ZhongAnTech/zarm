@@ -1,20 +1,32 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent, CSSProperties } from 'react';
+import { TabProps } from './PropsType';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
 import Swipe from '../Swipe';
 
 function getSelectIndex(children) {
   let selectIndex;
-  React.Children.forEach(children, (item, $index) => {
+  React.Children.forEach(children, (item: any, index) => {
     if (item.props && item.props.selected) {
-      selectIndex = $index;
+      selectIndex = index;
     }
   });
   return selectIndex;
 }
 
-class Tab extends PureComponent {
+export { TabProps };
+
+export default class Tab extends PureComponent<TabProps, any> {
+
+  private swipe;
+
+  static Panel: any;
+  static defaultProps = {
+    prefixCls: 'za-tab',
+    theme: 'primary',
+    disabled: false,
+    canSwipe: false,
+  }
 
   constructor(props) {
     super(props);
@@ -40,23 +52,23 @@ class Tab extends PureComponent {
     });
 
     // 渲染选项
-    const tabsRender = React.Children.map(children, (item, $index) => {
+    const tabsRender = React.Children.map(children, (item: any, index) => {
       const itemCls = classnames(`${prefixCls}-header-item`, item.props.className, {
         disabled: disabled || item.props.disabled,
-        active: this.state.value === $index,
+        active: this.state.value === index,
         // hasline,
       });
 
       return (
         <li
           role="tab"
-          key={$index}
+          key={+index}
           className={itemCls}
           onClick={() => {
             if (disabled || item.props.disabled) return;
-            this.setState({ value: $index });
-            typeof onChange === 'function' && onChange($index);
-            canSwipe && this.swipe.onSlideTo($index);
+            this.setState({ value: index });
+            typeof onChange === 'function' && onChange(index);
+            canSwipe && this.swipe.onSlideTo(index);
           }}>
           {item.props.title}
         </li>
@@ -69,6 +81,7 @@ class Tab extends PureComponent {
     if (canSwipe) {
       contentRender = (
         <Swipe
+          direction="left"
           showPagination={false}
           activeIndex={this.state.value}
           ref={(ele) => { this.swipe = ele; }}
@@ -77,7 +90,7 @@ class Tab extends PureComponent {
             typeof onChange === 'function' && onChange(value);
           }}>
           {
-            React.Children.map(children, (item) => {
+            React.Children.map(children, (item: any) => {
               return (
                 <div>{item.props.children}</div>
               );
@@ -86,12 +99,12 @@ class Tab extends PureComponent {
         </Swipe>
       );
     } else {
-      contentRender = React.Children.map(children, (item, $index) => {
-        return <TabPanel {...item.props} selected={this.state.value === $index} />;
+      contentRender = React.Children.map(children, (item: any, index) => {
+        return <TabPanel {...item.props} selected={this.state.value === index} />;
       });
     }
 
-    const lineStyle = {
+    const lineStyle: CSSProperties = {
       width: `${100 / children.length}%`,
       left: `${(this.state.value / children.length) * 100}%`,
       // right: `${(children.length - this.state.value - 1) / children.length * 100}%`,
@@ -101,14 +114,8 @@ class Tab extends PureComponent {
 
     let lineInnerRender;
     if (lineWidth) {
-      let w;
-      if (lineWidth === 'auto') {
-        w = lineWidth;
-      } else {
-        w = lineWidth;
-      }
       lineStyle.backgroundColor = 'transparent';
-      lineInnerRender = <span className={`${prefixCls}-line-inner`} style={{ width: w }} />;
+      lineInnerRender = <span className={`${prefixCls}-line-inner`} style={{ width: lineWidth }} />;
     }
 
     return (
@@ -125,21 +132,3 @@ class Tab extends PureComponent {
   }
 }
 
-Tab.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
-  lineWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  disabled: PropTypes.bool,
-  canSwipe: PropTypes.bool,
-  onChange: PropTypes.func,
-};
-
-Tab.defaultProps = {
-  prefixCls: 'za-tab',
-  theme: 'primary',
-  disabled: false,
-  canSwipe: false,
-};
-
-export default Tab;

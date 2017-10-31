@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { SwitchProps } from './PropsType';
 
 function getChecked(props, defaultChecked) {
   if ('checked' in props && props.checked) {
@@ -12,7 +12,15 @@ function getChecked(props, defaultChecked) {
   return defaultChecked;
 }
 
-class Switch extends PureComponent {
+export { SwitchProps };
+
+export default class Switch extends PureComponent<SwitchProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-switch',
+    theme: 'primary',
+    disabled: false,
+  }
 
   constructor(props) {
     super(props);
@@ -55,21 +63,3 @@ class Switch extends PureComponent {
     );
   }
 }
-
-Switch.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'error']),
-  checked: PropTypes.bool,
-  defaultChecked: PropTypes.bool, // eslint-disable-line
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func,
-};
-
-Switch.defaultProps = {
-  prefixCls: 'za-switch',
-  theme: 'primary',
-  disabled: false,
-};
-
-export default Switch;

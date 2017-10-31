@@ -1,9 +1,3 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-import handleFileInfo from './utils/handleFileInfo';
-
 /**
  * 设置选择前的方法，获取选择文件的相关信息，需要时可以对图片进行压缩、改变图片尺寸。
  *
@@ -15,7 +9,23 @@ import handleFileInfo from './utils/handleFileInfo';
  * onChange: () => { file, fileType, fileSize, fileName, thumbnail }。
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
-class Uploader extends PureComponent {
+import React, { PureComponent } from 'react';
+import { UploaderProps } from './PropsType';
+import classNames from 'classnames';
+import handleFileInfo from './utils/handleFileInfo';
+
+export { UploaderProps };
+
+export default class Uploader extends PureComponent<UploaderProps, any> {
+
+  private file;
+
+  static defaultProps = {
+    prefixCls: 'za-uploader',
+    disabled: false,
+    multiple: false,
+    onBeforeSelect() { return true; },
+  }
 
   constructor(props) {
     super(props);
@@ -29,6 +39,7 @@ class Uploader extends PureComponent {
     e.target.value = null;
 
     const { onBeforeSelect, disabled } = this.props;
+    if (typeof onBeforeSelect !== 'function') return;
 
     // 阻止 input onChange 默认事件
     if (onBeforeSelect() === false || disabled) {
@@ -43,7 +54,7 @@ class Uploader extends PureComponent {
   handleChange = (e) => {
     const { onChange, quality, multiple } = this.props;
     const files = [].slice.call(e.target.files);
-    const fileList = [];
+    const fileList: any[] = [];
 
     const getFileInfo = (data) => {
       if (multiple) {
@@ -63,9 +74,8 @@ class Uploader extends PureComponent {
   render() {
     const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;
 
-    const cls = classNames(prefixCls, {
+    const cls = classNames(prefixCls, className, {
       disabled,
-      [className]: !!className,
     });
 
     return (
@@ -86,24 +96,3 @@ class Uploader extends PureComponent {
     );
   }
 }
-
-Uploader.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  multiple: PropTypes.bool,
-  quality: PropTypes.number,
-  accept: PropTypes.string,
-  capture: PropTypes.string,
-  onChange: PropTypes.func,
-  onBeforeSelect: PropTypes.func,
-};
-
-Uploader.defaultProps = {
-  prefixCls: 'za-uploader',
-  disabled: false,
-  multiple: false,
-  onBeforeSelect() { return true; },
-};
-
-export default Uploader;
