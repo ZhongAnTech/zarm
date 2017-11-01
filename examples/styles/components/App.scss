@@ -4,7 +4,7 @@
 
   &-active {
     opacity: 1;
-    transition: all .5s linear;
+    transition: all .3s linear;
   }
 }
 
@@ -28,7 +28,7 @@
   &-active {
     opacity: 0;
     transform: translateX(100%);
-    transition: all .5s linear;
+    transition: all .3s linear;
   }
 }
 
@@ -38,7 +38,7 @@
 
   &-active {
     opacity: 1;
-    transition: all .5s linear;
+    transition: all .3s linear;
   }
 }
 
@@ -62,6 +62,6 @@
   &-active {
     opacity: 0;
     transform: translateX(-100%);
-    transition: all .5s linear;
+    transition: all .3s linear;
   }
 }
