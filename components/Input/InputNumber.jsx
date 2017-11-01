@@ -15,11 +15,11 @@ class InputNumber extends Component {
   }
 
   componentDidMount() {
-    Events.on(document.body, 'touchstart', e => this.onClosePicker(e));
+    Events.on(document.body, 'touchstart', this.onClosePicker);
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'touchstart', e => this.onClosePicker(e));
+    Events.off(document.body, 'touchstart', this.onClosePicker);
   }
 
   onClosePicker = (e) => {
@@ -35,10 +35,7 @@ class InputNumber extends Component {
       }
     })(e.target);
 
-    if (!pNode) {
-      e.preventDefault();
-      this.close();
-    }
+    !pNode && this.close();
   }
 
   onFocus = () => {
@@ -52,7 +49,7 @@ class InputNumber extends Component {
       ? value.slice(0, value.length - 1)
       : value + key;
 
-    this.setState({ value: newValue.toString() });
+    this.setState({ value: newValue });
   }
 
   open = () => {

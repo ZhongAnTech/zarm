@@ -48,7 +48,7 @@ class Keyboard extends PureComponent {
         </div>
         <div className={`${prefixCls}-handle`}>
           <div className={`${prefixCls}-handle-item`} onTouchStart={e => this.onKeyClick(e, 'delete')}><Icon type="deletekey" /></div>
-          <div className={`${prefixCls}-handle-item ${prefixCls}-handle-item-ok`} onTouchStart={e => this.onKeyClick(e, 'ok')}>确定</div>
+          <div className={`${prefixCls}-handle-item ${prefixCls}-handle-item-ok`} onClick={e => this.onKeyClick(e, 'ok')}>确定</div>
         </div>
       </div>
     );
