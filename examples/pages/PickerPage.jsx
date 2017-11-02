@@ -3,7 +3,7 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Panel, Cell, Picker, DatePicker } from '../../components';
-import District from './district';
+import District from '../mock/district';
 
 class Page extends Component {
 
