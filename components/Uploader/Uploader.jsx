@@ -45,7 +45,6 @@ class Uploader extends PureComponent {
 
   handleChange(e) {
     const { onChange, quality, multiple } = this.props;
-    // const files = Array.from(e.target.files);
     const files = [].slice.call(e.target.files);
     const fileList = [];
 

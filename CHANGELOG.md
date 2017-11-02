@@ -1,5 +1,13 @@
 # 版本更新日志 
 
+## v1.0.17
+- Bug Fix
+  - 修复`Uploader`组件包含Array.from存在的浏览器兼容性问题。（[1963435](https://github.com/ZhonganTechENG/zarm/commit/8dca8a23b446c38d68e6da94d26b033417f644ff)）
+
+- Feature
+  - `Pull`组件新增属性loadDistance：触发上拉加载离底部的距离阀值。（[167fef5](https://github.com/ZhonganTechENG/zarm/commit/196343524ad78d1929006a0eb7bbe58bd2befc66)）
+
+
 ## v1.0.16
 - Break Change
   - Panel组件API调整，去除子组件Panel.Title和Panel.More， Panel.Header和Panel.Footer增加属性title和more。（[9daa684](https://github.com/ZhonganTechENG/zarm/commit/7f3bfbdc30e4355566dad0d7f0c907a262611ca4)）
