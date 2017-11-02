@@ -2,7 +2,6 @@ import React, { PureComponent, cloneElement } from 'react';
 import ReactDOM, { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Events from '../utils/events';
 
 class Tooltip extends PureComponent {
 
@@ -12,7 +11,6 @@ class Tooltip extends PureComponent {
       document.body.appendChild(window.zarmTooltip);
     }
     this.show(this.props);
-    // Events.on(window, 'resize', this.resize);
   }
 
   componentWillReceiveProps(nextProps) {
