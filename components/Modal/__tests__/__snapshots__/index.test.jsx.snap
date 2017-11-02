@@ -59,7 +59,6 @@ exports[`Modal renders correctly 1`] = `
           </div>
         </ModalHeader>
         <ModalBody
-          className={null}
           prefixCls="za-modal"
         >
           <div
