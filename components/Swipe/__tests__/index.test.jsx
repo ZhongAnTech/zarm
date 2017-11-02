@@ -75,6 +75,4 @@ describe('Swipe', () => {
     wrapper.setProps({ activeIndex: 1 });
     jest.runTimersToTime(3000);
   });
-
-  
 });

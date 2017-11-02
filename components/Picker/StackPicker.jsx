@@ -5,7 +5,7 @@ import Popup from '../Popup';
 
 const stopEventPropagation = (e) => {
   e.stopPropagation();
-  e.nativeEvent.stopImmediatePropagation();
+  // e.nativeEvent.stopImmediatePropagation();
 };
 
 class PickerStack extends Component {
@@ -129,7 +129,7 @@ class PickerStack extends Component {
     }, dataSource);
   }
 
-  renderGroup = (dataSource, value) => {
+  renderGroup(dataSource, value) {
     const { valueMember, cols } = this.props;
     const group = [];
     let i = 0;
@@ -223,7 +223,7 @@ class PickerStack extends Component {
                   <p>选择：{ value.map(item => itemRender(item)).join(labelAddon) }</p>
                   { errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{ errorMsg }</p> : null }
                 </div>
-                <div className={`${prefixCls}-stack-group`}>{this.renderGroup}</div>
+                <div className={`${prefixCls}-stack-group`}>{this.renderGroup(dataSource, value)}</div>
               </div>
             </Popup>
           </div>

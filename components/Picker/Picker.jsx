@@ -203,7 +203,6 @@ class Picker extends Component {
     }
 
     const display = () => {
-      
       if (this.state.cascade) {
         if (value.length) {
           const treeChildren = arrayTreeFilter(this.props.dataSource, (item, level) => {
@@ -233,7 +232,6 @@ class Picker extends Component {
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
-            className="za-popup-inner"
             visible={this.state.visible}
             onMaskClick={this.onMaskClick}>
             <div className={`${prefixCls}-wrapper`}>

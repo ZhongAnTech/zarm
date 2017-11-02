@@ -154,7 +154,7 @@ class Page extends Component {
                   onCancel={() => {
                   }}
                   />
-              </Cell> 
+              </Cell>
 
             </Panel.Body>
           </Panel>
