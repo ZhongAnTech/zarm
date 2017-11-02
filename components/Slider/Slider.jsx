@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Events from '../utils/events';
 import Drag from '../Drag';
 import Tooltip from '../Tooltip';
 
@@ -28,6 +29,7 @@ class Slider extends PureComponent {
 
   componentDidMount() {
     this.init();
+    Events.on(window, 'resize', this.init);
   }
 
   componentWillReceiveProps(nextProps) {
