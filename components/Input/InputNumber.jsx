@@ -35,7 +35,9 @@ class InputNumber extends Component {
       }
     })(e.target);
 
-    !pNode && this.close();
+    if (!pNode) {
+      !pNode && this.close();
+    }
   }
 
   onFocus = () => {
