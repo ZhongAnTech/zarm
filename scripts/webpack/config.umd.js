@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const config = require('./config.base');
 const version = require('../../package.json').version;
 
@@ -81,9 +81,9 @@ if (env === 'production') {
   LICENSE file in the root directory of this source tree.
   `));
 
-  // config.plugins.push(new BundleAnalyzerPlugin({
-  //   analyzerMode: 'static',
-  // }));
+  config.plugins.push(new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+  }));
 } else {
   config.plugins.push(new ExtractTextPlugin(cssConfig));
 }
