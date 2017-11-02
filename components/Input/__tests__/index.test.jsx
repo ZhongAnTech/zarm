@@ -9,13 +9,15 @@ describe('Input', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('type is textarea renders correctly', () => {
-    const wrapper = render(<Input type="textarea" rows={4} />);
+  it('showLength', () => {
+    const wrapper = render(<Input showLength maxLength={100} type="textarea" rows={4} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+});
 
-  it('type is date renders correctly', () => {
-    const wrapper = render(<Input type="date" />);
+describe('Input.Textarea', () => {
+  it('renders correctly', () => {
+    const wrapper = render(<Input type="textarea" rows={4} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -35,16 +37,35 @@ describe('Input', () => {
     jest.runAllTimers();
     wrapper.unmount();
   });
+});
 
-  it('type text has autosize', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(<Input autosize type="text" />);
-    wrapper.find('input').simulate('change', { target: { value: 'this is a test!' } });
-    jest.runAllTimers();
+describe('Input.Number', () => {
+  it('renders correctly', () => {
+    const wrapper = render(<Input type="number" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('showLength', () => {
-    const wrapper = render(<Input showLength maxLength={100} type="textarea" rows={4} />);
+  it('enter number', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(<Input type="number" onChange={onChange} />);
+    wrapper.find('input').simulate('focus');
+    const keys = wrapper.find('.za-keyboard-key');
+    keys.childAt(0).simulate('click');
+    expect(onChange).toBeCalledWith('1');
+    wrapper.unmount();
+  });
+});
+
+describe('Input.Price', () => {
+  it('renders correctly', () => {
+    const wrapper = render(<Input type="price" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+});
+
+describe('Input.Idcard', () => {
+  it('renders correctly', () => {
+    const wrapper = render(<Input type="idcard" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
