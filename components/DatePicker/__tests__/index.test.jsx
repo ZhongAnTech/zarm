@@ -120,4 +120,25 @@ describe('DatePicker', () => {
     expect(onCancelFn).toHaveBeenCalled();
     expect(onOkFn).not.toHaveBeenCalled();
   });
+
+  it('should trigger maskClick when click mask', () => {
+    const onClickFn = jest.fn();
+    const onMaskClick = jest.fn();
+    const onCancelFn = jest.fn();
+    const wrapper = mount(
+      <DatePicker
+        title="选择时间"
+        placeholder="请选择时间"
+        mode="datetime"
+        onClick={onClickFn}
+        onCancel={onCancelFn}
+        onMaskClick={onMaskClick}
+        />
+    );
+    wrapper.find('.za-picker').simulate('click');
+    expect(onClickFn).toHaveBeenCalled();
+    wrapper.find('.za-mask').simulate('click');
+    expect(onMaskClick).toHaveBeenCalled();
+    expect(onCancelFn).toHaveBeenCalled();
+  });
 });
