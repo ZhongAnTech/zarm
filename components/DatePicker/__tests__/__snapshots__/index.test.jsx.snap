@@ -696,7 +696,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                         "10",
                         "2",
                         "11",
-                        "14",
+                        "28",
                       ]
                     }
                     valueMember="value"
@@ -1293,7 +1293,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
-                          selectedValue="14"
+                          selectedValue="28"
                           valueMember="value"
                         >
                           <div
@@ -1376,7 +1376,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                                 13分
                               </div>
                               <div
-                                className="za-picker-column-item za-picker-column-item-selected"
+                                className="za-picker-column-item"
                               >
                                 14分
                               </div>
@@ -1446,7 +1446,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                                 27分
                               </div>
                               <div
-                                className="za-picker-column-item"
+                                className="za-picker-column-item za-picker-column-item-selected"
                               >
                                 28分
                               </div>
@@ -1748,7 +1748,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                         "10",
                         "2",
                         "11",
-                        "14",
+                        "28",
                       ]
                     }
                     valueMember="value"
@@ -1990,7 +1990,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
-                          selectedValue="14"
+                          selectedValue="28"
                           valueMember="value"
                         >
                           <div
@@ -2073,7 +2073,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                                 13分
                               </div>
                               <div
-                                className="za-picker-column-item za-picker-column-item-selected"
+                                className="za-picker-column-item"
                               >
                                 14分
                               </div>
@@ -2143,7 +2143,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                                 27分
                               </div>
                               <div
-                                className="za-picker-column-item"
+                                className="za-picker-column-item za-picker-column-item-selected"
                               >
                                 28分
                               </div>
