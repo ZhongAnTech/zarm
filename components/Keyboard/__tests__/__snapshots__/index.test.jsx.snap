@@ -1,0 +1,362 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Keyboard renders correctly 1`] = `
+<div
+  class="za-keyboard"
+>
+  <div
+    class="za-keyboard-key"
+  >
+    <div
+      class="za-keyboard-key-item"
+    >
+      1
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      2
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      3
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      4
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      5
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      6
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      7
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      8
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      9
+    </div>
+    <div
+      class="za-keyboard-key-item za-keyboard-key-item-disabled"
+    />
+    <div
+      class="za-keyboard-key-item"
+    >
+      0
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      <i
+        class="za-icon za-icon-keyboard"
+      />
+    </div>
+  </div>
+  <div
+    class="za-keyboard-handle"
+  >
+    <div
+      class="za-keyboard-handle-item"
+    >
+      <i
+        class="za-icon za-icon-deletekey"
+      />
+    </div>
+    <div
+      class="za-keyboard-handle-item za-keyboard-handle-item-ok"
+    >
+      确定
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Keyboard type is idcard 1`] = `
+<div
+  class="za-keyboard"
+>
+  <div
+    class="za-keyboard-key"
+  >
+    <div
+      class="za-keyboard-key-item"
+    >
+      1
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      2
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      3
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      4
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      5
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      6
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      7
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      8
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      9
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      x
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      0
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      <i
+        class="za-icon za-icon-keyboard"
+      />
+    </div>
+  </div>
+  <div
+    class="za-keyboard-handle"
+  >
+    <div
+      class="za-keyboard-handle-item"
+    >
+      <i
+        class="za-icon za-icon-deletekey"
+      />
+    </div>
+    <div
+      class="za-keyboard-handle-item za-keyboard-handle-item-ok"
+    >
+      确定
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Keyboard type is price 1`] = `
+<div
+  class="za-keyboard"
+>
+  <div
+    class="za-keyboard-key"
+  >
+    <div
+      class="za-keyboard-key-item"
+    >
+      1
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      2
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      3
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      4
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      5
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      6
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      7
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      8
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      9
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      .
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      0
+    </div>
+    <div
+      class="za-keyboard-key-item"
+    >
+      <i
+        class="za-icon za-icon-keyboard"
+      />
+    </div>
+  </div>
+  <div
+    class="za-keyboard-handle"
+  >
+    <div
+      class="za-keyboard-handle-item"
+    >
+      <i
+        class="za-icon za-icon-deletekey"
+      />
+    </div>
+    <div
+      class="za-keyboard-handle-item za-keyboard-handle-item-ok"
+    >
+      确定
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Keyboard.Picker renders correctly 1`] = `
+<div
+  class="za-popup za-popup-hidden"
+>
+  <div
+    class="za-popup-wrapper za-popup-wrapper-bottom"
+    style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+  >
+    <div
+      class="za-keyboard"
+    >
+      <div
+        class="za-keyboard-key"
+      >
+        <div
+          class="za-keyboard-key-item"
+        >
+          1
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          2
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          3
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          4
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          5
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          6
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          7
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          8
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          9
+        </div>
+        <div
+          class="za-keyboard-key-item za-keyboard-key-item-disabled"
+        />
+        <div
+          class="za-keyboard-key-item"
+        >
+          0
+        </div>
+        <div
+          class="za-keyboard-key-item"
+        >
+          <i
+            class="za-icon za-icon-keyboard"
+          />
+        </div>
+      </div>
+      <div
+        class="za-keyboard-handle"
+      >
+        <div
+          class="za-keyboard-handle-item"
+        >
+          <i
+            class="za-icon za-icon-deletekey"
+          />
+        </div>
+        <div
+          class="za-keyboard-handle-item za-keyboard-handle-item-ok"
+        >
+          确定
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -10,7 +10,7 @@ class InputNumber extends Component {
     super(props);
     this.state = {
       visible: false,
-      value: props.value || '',
+      value: props.value || props.defaultValue || '',
     };
   }
 
@@ -42,7 +42,7 @@ class InputNumber extends Component {
 
   onFocus = () => {
     document.activeElement.blur();
-    this.setState({ visible: true });
+    this.open();
   }
 
   onKeyClick = (key) => {
@@ -51,7 +51,11 @@ class InputNumber extends Component {
       ? value.slice(0, value.length - 1)
       : value + key;
 
-    this.setState({ value: newValue });
+    if (newValue !== value) {
+      const { onChange } = this.props;
+      this.setState({ value: newValue });
+      typeof onChange === 'function' && onChange(newValue);
+    }
   }
 
   open = () => {
@@ -63,13 +67,13 @@ class InputNumber extends Component {
   }
 
   render() {
-    const { prefixCls, className, type, disabled, ...others } = this.props;
+    const { prefixCls, className, type, disabled, defaultValue, ...others } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, disabled);
 
     return (
-      <div className={cls} {...others} ref={(ele) => { this.picker = ele; }}>
+      <div className={cls} ref={(ele) => { this.picker = ele; }}>
         <input
           {...others}
           ref={(ele) => { this.input = ele; }}
@@ -91,8 +95,8 @@ class InputNumber extends Component {
 InputNumber.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
-  value: PropTypes.string,
-  defaultValue: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
   onChange: PropTypes.func,
