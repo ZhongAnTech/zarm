@@ -28,14 +28,6 @@ import { Tab } from 'zarm';
 </Tab>
 ```
 
-###### 自定义主题
-```jsx
-<Tab theme="info">
-  <Tab.Panel title="选项卡1">选项卡1内容</Tab.Panel>
-  <Tab.Panel title="选项卡2">选项卡2内容</Tab.Panel>
-</Tab>
-```
-
 ###### 指定默认选项
 ```jsx
 <Tab defaultValue={1}>
@@ -70,7 +62,6 @@ import { Tab } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-tab | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | value | string | | | 值 |
 | defaultValue | string | | | 初始值 |
 | disabled | bool | false | | 是否禁用 |

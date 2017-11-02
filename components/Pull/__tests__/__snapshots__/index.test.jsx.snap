@@ -19,7 +19,6 @@ exports[`Pull renders correctly 1`] = `
   </div>
   <div
     class="za-pull-load"
-    style="height:0;"
   />
 </div>
 `;

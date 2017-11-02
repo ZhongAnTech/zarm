@@ -1,4 +1,4 @@
-$prefixCls: za-radio;
+$prefixCls: $prefixCls-radio;
 
 .#{$prefixCls} {
   display: inline-block;
@@ -38,7 +38,7 @@ $prefixCls: za-radio;
     position: relative;
     width: r(20);
     height: r(20);
-    border: 1px solid $theme-primary;
+    border: 1px solid #999;
     border-radius: r(20);
 
     &:before {
@@ -96,6 +96,8 @@ $prefixCls: za-radio;
   /* 选中状态 */
   &.checked {
     .#{$prefixCls}-inner {
+      border-color: $theme-primary;
+
       &:before {
         transform: scale(1);
         transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;

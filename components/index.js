@@ -21,6 +21,7 @@ export { default as Column } from './Column';
 export { default as Picker } from './Picker';
 export { default as DatePicker } from './DatePicker';
 export { default as Radio } from './Radio';
+export { default as Slider } from './Slider';
 export { default as Spinner } from './Spinner';
 export { default as Stepper } from './Stepper';
 export { default as Swipe } from './Swipe';
@@ -28,5 +29,6 @@ export { default as SwipeAction } from './SwipeAction';
 export { default as Switch } from './Switch';
 export { default as Tab } from './Tab';
 export { default as Toast } from './Toast';
+export { default as Tooltip } from './Tooltip';
 export { default as Uploader } from './Uploader';
 

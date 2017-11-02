@@ -30,13 +30,10 @@ class Pull extends PureComponent {
     super(props);
     this.state = {
       offsetY: 0,
-      duration: 0,
+      animationDuration: 0,
       refreshState: props.refreshing,
       loadState: props.loading,
     };
-    this.onDragMove = this.onDragMove.bind(this);
-    this.onDragEnd = this.onDragEnd.bind(this);
-    this.onScroll = this.onScroll.bind(this);
   }
 
   componentDidMount() {
@@ -57,7 +54,7 @@ class Pull extends PureComponent {
     Events.off(window, 'scroll', this.onScroll);
   }
 
-  onScroll() {
+  onScroll = () => {
     const { refreshState, loadState } = this.state;
     if (refreshState !== REFRESH_STATE.normal) return;
     if (loadState !== LOAD_STATE.normal) return;
@@ -76,7 +73,7 @@ class Pull extends PureComponent {
     }
   }
 
-  onDragMove(event, { offsetY }) {
+  onDragMove = (event, { offsetY }) => {
     // 未设置刷新事件
     const { onRefresh } = this.props;
     if (!onRefresh) return;
@@ -105,9 +102,12 @@ class Pull extends PureComponent {
     return true;
   }
 
-  onDragEnd() {
+  onDragEnd = (event, { offsetY }) => {
     const { onRefresh } = this.props;
     const { refreshState } = this.state;
+
+    // 没有产生位移
+    if (!offsetY) return;
 
     // 当前状态为下拉状态时
     if (refreshState === REFRESH_STATE.pull) {
@@ -122,10 +122,10 @@ class Pull extends PureComponent {
   /**
    * 执行动画
    * @param  {number} options.offsetY  偏移距离
-   * @param  {number} options.duration 动画执行时间
+   * @param  {number} options.animationDuration 动画执行时间
    */
-  doTransition({ offsetY, duration }) {
-    this.setState({ offsetY, duration });
+  doTransition = ({ offsetY, animationDuration }) => {
+    this.setState({ offsetY, animationDuration });
   }
 
   /**
@@ -133,23 +133,23 @@ class Pull extends PureComponent {
    * @param  {REFRESH_STATE} refreshState 刷新状态
    * @param  {number}        offsetY      偏移距离
    */
-  doRefreshAction(refreshState, offsetY) {
-    const { duration, stayTime } = this.props;
+  doRefreshAction = (refreshState, offsetY) => {
+    const { animationDuration, stayTime } = this.props;
 
     this.setState({ refreshState });
     switch (refreshState) {
       case REFRESH_STATE.pull:
       case REFRESH_STATE.drop:
-        this.doTransition({ offsetY, duration: 0 });
+        this.doTransition({ offsetY, animationDuration: 0 });
         break;
 
       case REFRESH_STATE.loading:
-        this.doTransition({ offsetY: 'auto', duration });
+        this.doTransition({ offsetY: 'auto', animationDuration });
         break;
 
       case REFRESH_STATE.success:
       case REFRESH_STATE.failure:
-        this.doTransition({ offsetY: 'auto', duration: 0 });
+        this.doTransition({ offsetY: 'auto', animationDuration });
         setTimeout(() => {
           this.doRefreshAction(REFRESH_STATE.normal);
           this.doLoadAction(LOAD_STATE.normal);
@@ -157,7 +157,7 @@ class Pull extends PureComponent {
         break;
 
       default:
-        this.doTransition({ offsetY: 0, duration });
+        this.doTransition({ offsetY: 0, animationDuration });
     }
   }
 
@@ -165,7 +165,7 @@ class Pull extends PureComponent {
    * 执行加载动作
    * @param  {LOAD_STATE} loadState 加载状态
    */
-  doLoadAction(loadState) {
+  doLoadAction = (loadState) => {
     const { stayTime } = this.props;
     this.setState({ loadState });
 
@@ -185,7 +185,7 @@ class Pull extends PureComponent {
   /**
    * 渲染刷新节点
    */
-  renderRefresh() {
+  renderRefresh = () => {
     const { prefixCls, refreshInitDistance, refreshDistance, refreshRender } = this.props;
     const { refreshState, offsetY } = this.state;
 
@@ -198,9 +198,7 @@ class Pull extends PureComponent {
       return refreshRender(refreshState, percent);
     }
 
-    const cls = classnames({
-      [`${prefixCls}-control`]: true,
-    });
+    const cls = `${prefixCls}-control`;
 
     switch (refreshState) {
       case REFRESH_STATE.pull:
@@ -248,7 +246,7 @@ class Pull extends PureComponent {
   /**
    * 渲染加载节点
    */
-  renderLoad() {
+  renderLoad = () => {
     const { prefixCls, loadRender } = this.props;
     const { loadState } = this.state;
 
@@ -256,9 +254,7 @@ class Pull extends PureComponent {
       return loadRender(loadState);
     }
 
-    const cls = classnames({
-      [`${prefixCls}-control`]: true,
-    });
+    const cls = `${prefixCls}-control`;
 
     switch (loadState) {
       case LOAD_STATE.loading:
@@ -288,33 +284,36 @@ class Pull extends PureComponent {
 
   render() {
     const { prefixCls, className, children } = this.props;
-    const { offsetY, duration, loadState } = this.state;
+    const { offsetY, animationDuration, refreshState, loadState } = this.state;
+    const cls = classnames(`${prefixCls}`, className);
 
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const refreshCls = classnames(`${prefixCls}-refresh`, {
+      [`${prefixCls}-refresh-show`]: refreshState >= REFRESH_STATE.loading,
+    });
+
+    const loadCls = classnames(`${prefixCls}-load`, {
+      [`${prefixCls}-load-show`]: loadState >= LOAD_STATE.loading,
     });
 
     const refreshStyle = {
-      WebkitTransitionDuration: `${duration}ms`,
-      transitionDuration: `${duration}ms`,
-      height: offsetY,
+      WebkitTransitionDuration: `${animationDuration}ms`,
+      transitionDuration: `${animationDuration}ms`,
     };
 
-    const loadStyle = {
-      height: loadState >= LOAD_STATE.loading ? 'auto' : 0,
-    };
+    if (refreshState <= REFRESH_STATE.drop) {
+      refreshStyle.height = offsetY;
+    }
 
     return (
       <Drag
         onDragMove={this.onDragMove}
         onDragEnd={this.onDragEnd}>
-        <div className={classes} ref={(ele) => { this.pull = ele; }}>
-          <div className={`${prefixCls}-refresh`} style={refreshStyle}>
+        <div className={cls} ref={(ele) => { this.pull = ele; }}>
+          <div className={refreshCls} style={refreshStyle}>
             {this.renderRefresh()}
           </div>
           {children}
-          <div className={`${prefixCls}-load`} style={loadStyle}>
+          <div className={loadCls}>
             {this.renderLoad()}
           </div>
         </div>
@@ -335,19 +334,19 @@ Pull.propTypes = {
   loadDistance: PropTypes.number,
   onLoad: PropTypes.func,
   loadRender: PropTypes.func,
-  duration: PropTypes.number,
+  animationDuration: PropTypes.number,
   stayTime: PropTypes.number,
 };
 
 Pull.defaultProps = {
   prefixCls: 'za-pull',
   refreshing: REFRESH_STATE.normal,
-  refreshInitDistance: 20,
+  refreshInitDistance: 30,
   refreshDistance: 50,
   loading: LOAD_STATE.normal,
   loadDistance: 10,
-  duration: 300,
-  stayTime: 2000,
+  animationDuration: 400,
+  stayTime: 1000,
 };
 
 export default Pull;

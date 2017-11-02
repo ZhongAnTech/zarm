@@ -93,7 +93,7 @@ import { SwipeAction } from 'zarm';
 | right | arrayOf(object) | [ ] | object: { theme, text, onClick } | 右侧按钮组 |
 | moveDistanceRatio | number | 0.5 | | 移动距离比例临界点 |
 | moveTimeSpan | number | 300 | | 移动时间跨度临界点 |
-| duration | number | 300 | | 移动持续时间 |
+| animationDuration | number | 300 | | 动画执行时间，单位：毫秒 |
 | offset | number | 10 | | 回弹偏移的距离 |
 | onOpen | func | noop | | 滑开时触发的回调函数 |
 | onClose | func | noop | | 关闭时触发的回调函数 |

@@ -9,7 +9,7 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stepper: 1,
+      value: 1,
     };
   }
 
@@ -25,7 +25,7 @@ class Page extends Component {
                 title="普通"
                 description={
                   <Stepper
-                    value={this.state.stepper}
+                    value={this.state.value}
                     onChange={(value) => {
                       console.log(value);
                     }}

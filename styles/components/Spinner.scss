@@ -1,4 +1,4 @@
-$prefixCls: za-spinner;
+$prefixCls: $prefixCls-spinner;
 $PI: 3.141592674;
 
 @mixin spinner-theme($color) {
@@ -25,7 +25,6 @@ $PI: 3.141592674;
 
   &-line {
     stroke-dasharray: 100 * $PI;
-    transition: stroke-dasharray .3s;
   }
 
   &-text {

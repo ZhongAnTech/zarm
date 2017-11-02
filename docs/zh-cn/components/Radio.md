@@ -12,7 +12,12 @@ import { Radio } from 'zarm';
 
 #### 基本用法
 
-###### 普通
+###### 单独使用
+```jsx
+<Radio value="ok" onChange={value => console.log(`radio to ${value}`)}>同意条款</Radio>
+```
+
+###### 组合使用
 ```jsx
 <Radio.Group
   value={this.state.radio}
@@ -23,9 +28,20 @@ import { Radio } from 'zarm';
 </Radio.Group>
 ```
 
+#### 按钮样式
+
+###### 普通
+```jsx
+<Radio.Group type="button">
+  <Radio value="0">选项一</Radio>
+  <Radio value="1">选项二</Radio>
+  <Radio value="2">选项三</Radio>
+</Radio.Group>
+```
+
 ###### 指定默认值
 ```jsx
-<Radio.Group defaultValue="1">
+<Radio.Group type="button" defaultValue="1">
   <Radio value="0">选项一</Radio>
   <Radio value="1">选项二</Radio>
   <Radio value="2">选项三</Radio>
@@ -34,7 +50,7 @@ import { Radio } from 'zarm';
 
 ###### 禁用指定项
 ```jsx
-<Radio.Group>
+<Radio.Group type="button">
   <Radio value="0">选项一</Radio>
   <Radio value="1">选项二</Radio>
   <Radio value="2" disabled>选项三</Radio>
@@ -43,7 +59,7 @@ import { Radio } from 'zarm';
 
 ###### 圆角
 ```jsx
-<Radio.Group shape="radius">
+<Radio.Group type="button" shape="radius">
   <Radio value="0">选项一</Radio>
   <Radio value="1">选项二</Radio>
   <Radio value="2">选项三</Radio>
@@ -114,6 +130,8 @@ import { Radio } from 'zarm';
 | theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | type | string | | 'button', 'cell' | 显示类型 |
 | shape | string | | 'radius', 'round' | 形状 |
+| value | string, number | | | 选中值 |
+| defaultValue | string, number | | | 初始选中值 |
 | block | bool | false | | 是否为块级元素 |
 | disabled | bool | false | | 是否禁用 |
 | compact | bool | false | | 是否启用紧凑模式 |

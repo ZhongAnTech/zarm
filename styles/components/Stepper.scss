@@ -1,4 +1,4 @@
-$prefixCls: za-stepper;
+$prefixCls: $prefixCls-stepper;
 
 @mixin stepper-theme($color, $activebg) {
   .#{$prefixCls} {
@@ -12,7 +12,8 @@ $prefixCls: za-stepper;
       }
 
       &.disabled {
-        opacity: $disabled-opacity;
+        color: $disabled-color;
+        border-color: $disabled-background;
         cursor: not-allowed;
 
         &:active {

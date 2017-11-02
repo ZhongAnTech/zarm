@@ -15,38 +15,23 @@ class Message extends PureComponent {
   render() {
     const { prefixCls, className, theme, size, icon, hasArrow, hasClosable, onClick, children } = this.props;
 
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const classes = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
     });
 
-    const iconRender = icon
-      ? <div className={`${prefixCls}-icon`}>{icon}</div>
-      : null;
-
-    const renderCloseIcon = hasClosable
-      ? <Icon type="wrong" onClick={() => { this.setState({ visible: false }); }} />
-      : null;
-
-    const renderArrow = hasArrow
-      ? <Icon type="arrow-right" />
-      : null;
-
+    const iconRender = icon && <div className={`${prefixCls}-icon`}>{icon}</div>;
+    const renderCloseIcon = hasClosable && <Icon type="wrong" onClick={() => { this.setState({ visible: false }); }} />;
+    const renderArrow = hasArrow && <Icon type="arrow-right" />;
     const noFooter = !hasClosable && !hasArrow;
 
-    return this.state.visible ? (
+    return this.state.visible && (
       <div className={classes} onClick={renderArrow && onClick}>
         <div className={`${prefixCls}-header`}>{iconRender}</div>
         <div className={`${prefixCls}-body`}>{children}</div>
-        {
-          !noFooter
-            ? <div className={`${prefixCls}-footer`}>{renderArrow}{renderCloseIcon}</div>
-            : null
-        }
+        {!noFooter && <div className={`${prefixCls}-footer`}>{renderArrow}{renderCloseIcon}</div>}
       </div>
-    ) : null;
+    );
   }
 }
 

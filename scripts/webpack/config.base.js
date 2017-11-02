@@ -19,7 +19,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, '../../assets'),
-    filename: 'js/[name].[hash:8].js',
+    filename: 'js/[name].js',
     chunkFilename: 'js/[name].[chunkhash:8].js',
     publicPath: '/',
   },
@@ -37,6 +37,7 @@ module.exports = {
                 [
                   'env',
                   {
+                    modules: false,
                     targets: {
                       browsers: BROWSERS,
                     },
@@ -47,7 +48,6 @@ module.exports = {
               ],
               plugins: [
                 'transform-runtime',
-                'add-module-exports',
               ],
             },
           },
@@ -55,6 +55,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: [
             {
@@ -75,6 +76,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: [
             {

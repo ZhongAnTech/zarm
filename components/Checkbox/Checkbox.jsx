@@ -21,7 +21,6 @@ class Checkbox extends PureComponent {
     this.state = {
       checked: getChecked(props, false),
     };
-    this.onValueChange = this.onValueChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,9 +31,8 @@ class Checkbox extends PureComponent {
     }
   }
 
-  onValueChange() {
+  onValueChange = () => {
     const { disabled, onChange } = this.props;
-
     if (disabled) return;
 
     const checked = !this.state.checked;
@@ -46,9 +44,7 @@ class Checkbox extends PureComponent {
     const { prefixCls, className, theme, shape, size, type, value, block, disabled, id, children } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       [`shape-${shape}`]: !!shape,
       [`size-${size}`]: !!size,
@@ -60,7 +56,7 @@ class Checkbox extends PureComponent {
       <div className={cls}>
         <div className={`${prefixCls}-wrapper`}>
           <span className={`${prefixCls}-inner`} />
-          { children && <span className={`${prefixCls}-text`}>{children}</span> }
+          {children && <span className={`${prefixCls}-text`}>{children}</span>}
           <input id={id} type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         </div>
       </div>

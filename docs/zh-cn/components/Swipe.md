@@ -60,10 +60,10 @@ import { Swipe } from 'zarm';
 | activeIndex | number | 0 | | 当前页面的索引 |
 | loop | bool | false | | 是否循环 |
 | autoPlay | bool | false | | 是否自动轮播 |
-| autoPlayIntervalTime | number | 3000 | | 自动轮播时间间隔 |
+| autoPlayIntervalTime | number | 3000 | | 自动轮播时间间隔，单位：毫秒 |
 | moveDistanceRatio | number | 0.5 | | 移动距离比例临界点 |
-| moveTimeSpan | number | 300 | | 移动时间跨度临界点 |
-| duration | number | 300 | | 移动持续时间 |
+| moveTimeSpan | number | 300 | | 移动时间跨度临界点，单位：毫秒 |
+| animationDuration | number | 300 | | 动画执行时间，单位：毫秒 |
 | showPagination | bool | true | | 是否显示分页器 |
 | onChange | func | noop | \(value: number\) | 值变化时触发的回调函数 |
 | onChangeEnd | func | noop | \(value: number\) | 值变化动画结束后触发的回调函数 |
