@@ -4,6 +4,7 @@ import Keyboard from './Keyboard';
 import Popup from '../Popup';
 
 class KeyboardPicker extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
