@@ -140,8 +140,8 @@ const LOAD_STATE = {
 | loadDistance | number | 10 | | 触发上拉加载离底部的距离阀值 |
 | loadRender | func | | | 上拉各状态渲染的回调函数 |
 | onLoad | func | | | 触发上拉加载后的回调函数 |
-| duration | number | 300 | | 动画执行时间，单位：ms |
-| stayTime | number | 2000 | | 加载成功停留时间 |
+| animationDuration | number | 400 | | 动画执行时间，单位：毫秒 |
+| stayTime | number | 1000 | | 加载成功停留时间 |
 
 
 

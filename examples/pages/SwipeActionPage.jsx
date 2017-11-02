@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import { Panel, Cell, SwipeAction } from '../../components';
 
 class Page extends Component {
+
   render() {
     return (
       <Container className="swipeAction-page">

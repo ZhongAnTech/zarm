@@ -72,15 +72,15 @@ exports[`Picker Cascader Picker 1`] = `
         autoClose={false}
         className="za-popup-inner"
         direction="bottom"
-        duration={3000}
         mask={true}
         maskType="normal"
         onMaskClick={[Function]}
         prefixCls="za-popup"
+        stayTime={3000}
         visible={false}
       >
         <div
-          className="za-popup za-popup-hidden za-popup-inner"
+          className="za-popup za-popup-inner za-popup-hidden"
         >
           <div
             className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -471,6 +471,98 @@ exports[`Picker Picker 1`] = `
       </div>
     </div>
   </div>
+<<<<<<< HEAD
+=======
+</DatePicker>
+`;
+
+exports[`Picker Picker 1`] = `
+<div
+  class="za-picker"
+>
+  <div
+    class="za-picker-input za-picker-placeholder"
+  >
+    <input
+      type="hidden"
+      value=""
+    />
+    请选择
+  </div>
+  <div
+    class="za-picker-container"
+  >
+    <div
+      class="za-popup za-popup-inner za-popup-hidden"
+    >
+      <div
+        class="za-popup-wrapper za-popup-wrapper-bottom"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+      >
+        <div
+          class="za-picker-wrapper"
+        >
+          <div
+            class="za-picker-header"
+          >
+            <div
+              class="za-picker-cancel"
+            >
+              取消
+            </div>
+            <div
+              class="za-picker-title"
+            >
+              请选择
+            </div>
+            <div
+              class="za-picker-submit"
+            >
+              确定
+            </div>
+          </div>
+          <div
+            class="za-picker-mask-top"
+          >
+            <div
+              class="za-picker-mask-bottom"
+            >
+              <div
+                class="za-picker-column-group"
+              >
+                <div
+                  class="za-picker-column-group-item"
+                >
+                  <div
+                    class="za-picker-cascader"
+                  >
+                    <div
+                      class="za-picker-cascader-indicator"
+                    />
+                    <div
+                      class="za-picker-cascader-content"
+                    >
+                      <div
+                        class="za-picker-cascader-item za-picker-cascader-item-selected"
+                      >
+                        选项一
+                      </div>
+                      <div
+                        class="za-picker-cascader-item"
+                      >
+                        选项二
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+>>>>>>> upstream/master
 </div>
 `;
 
@@ -46706,11 +46798,11 @@ exports[`Picker StackPicker 2`] = `
         animationDuration={200}
         autoClose={false}
         direction="bottom"
-        duration={3000}
         mask={true}
         maskType="normal"
         onMaskClick={[Function]}
         prefixCls="za-popup"
+        stayTime={3000}
         visible={false}
       >
         <div

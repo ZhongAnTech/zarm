@@ -17,11 +17,6 @@ class Swipe extends Component {
       items: [],
       activeIndex: props.activeIndex,
     };
-    this.resize = this.resize.bind(this);
-    this.transitionEnd = this.transitionEnd.bind(this);
-    this.onDragStart = this.onDragStart.bind(this);
-    this.onDragMove = this.onDragMove.bind(this);
-    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   componentWillMount() {
@@ -60,23 +55,23 @@ class Swipe extends Component {
   }
 
   // 滑动到指定编号
-  onSlideTo(index) {
-    this.onMoveTo(index, this.props.duration);
+  onSlideTo = (index) => {
+    this.onMoveTo(index, this.props.animationDuration);
   }
 
   // 静默跳到指定编号
-  onJumpTo(index) {
+  onJumpTo = (index) => {
     this.onMoveTo(index, 0);
   }
 
   // 移动到指定编号
-  onMoveTo(index, duration) {
+  onMoveTo = (index, animationDuration) => {
     const dom = this.swipeItems;
     if (!dom) return;
 
     this.translateX = -dom.offsetWidth * (index + this.props.loop);
     this.translateY = -dom.offsetHeight * (index + this.props.loop);
-    this.doTransition({ x: this.translateX, y: this.translateY }, duration);
+    this.doTransition({ x: this.translateX, y: this.translateY }, animationDuration);
 
     const maxLength = this.props.children.length;
     if (index > maxLength - 1) {
@@ -90,7 +85,7 @@ class Swipe extends Component {
   }
 
   // 触屏事件
-  onDragStart() {
+  onDragStart = () => {
     this.scrolling = false;
 
     // 跳转到头尾
@@ -107,7 +102,7 @@ class Swipe extends Component {
     this.pauseAutoPlay();
   }
 
-  onDragMove(event, { offsetX, offsetY }) {
+  onDragMove = (event, { offsetX, offsetY }) => {
     const distanceX = Math.abs(offsetX);
     const distanceY = Math.abs(offsetY);
 
@@ -143,8 +138,9 @@ class Swipe extends Component {
     return true;
   }
 
-  onDragEnd(event, { offsetX, offsetY, startTime }) {
+  onDragEnd = (event, { offsetX, offsetY, startTime }) => {
     if (this.scrolling) return;
+    if (!offsetX && !offsetY) return;
 
     const { moveDistanceRatio, moveTimeSpan, onChange } = this.props;
     let { activeIndex } = this.state;
@@ -173,7 +169,7 @@ class Swipe extends Component {
   }
 
   // 自动轮播开始
-  startAutoPlay() {
+  startAutoPlay = () => {
     const { direction, loop, autoPlay, autoPlayIntervalTime, children } = this.props;
 
     this.moveInterval = (autoPlay && setInterval(() => {
@@ -194,14 +190,14 @@ class Swipe extends Component {
   }
 
   // 暂停自动轮播
-  pauseAutoPlay() {
+  pauseAutoPlay = () => {
     if (this.moveInterval) {
       clearInterval(this.moveInterval);
     }
   }
 
   // 处理节点（首位拼接）
-  parseItems(props) {
+  parseItems = (props) => {
     if (props.children.length === 0) {
       return;
     }
@@ -233,12 +229,12 @@ class Swipe extends Component {
   }
 
   // 更新窗口变化的位置偏移
-  resize() {
+  resize = () => {
     this.onJumpTo(this.state.activeIndex);
   }
 
   // 执行过渡动画
-  doTransition(offset, duration) {
+  doTransition = (offset, animationDuration) => {
     const dom = this.swipeItems;
     let x = 0;
     let y = 0;
@@ -249,13 +245,13 @@ class Swipe extends Component {
       y = offset.y;
     }
 
-    dom.style.webkitTransitionDuration = `${duration}ms`;
-    dom.style.transitionDuration = `${duration}ms`;
+    dom.style.webkitTransitionDuration = `${animationDuration}ms`;
+    dom.style.transitionDuration = `${animationDuration}ms`;
     dom.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`;
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 
-  transitionEnd() {
+  transitionEnd = () => {
     const activeIndex = this.state.activeIndex;
     const dom = this.swipeItems;
     this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
@@ -267,28 +263,23 @@ class Swipe extends Component {
   }
 
   // 判断当前是否在最后一页
-  isLastIndex() {
+  isLastIndex = () => {
     return this.state.activeIndex >= this.props.children.length - 1;
   }
 
   // 判断当前是否在第一页
-  isFirstIndex() {
+  isFirstIndex = () => {
     return this.state.activeIndex <= 0;
   }
 
   // 是否横向移动
-  isDirectionX() {
+  isDirectionX = () => {
     return (['left', 'right'].indexOf(this.props.direction) > -1);
   }
 
   render() {
     const { prefixCls, className, height, showPagination, children } = this.props;
-
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
-    });
-
+    const cls = classnames(`${prefixCls}`, className);
     const style = {
       items: {},
       pagination: {},
@@ -302,7 +293,7 @@ class Swipe extends Component {
     }
 
     return (
-      <div className={classes}>
+      <div className={cls}>
         <Drag
           onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
@@ -315,8 +306,8 @@ class Swipe extends Component {
           </div>
         </Drag>
         {
-          showPagination
-            ? <div className={`${prefixCls}-pagination`}>
+          showPagination && (
+            <div className={`${prefixCls}-pagination`}>
               <ul>
                 {
                   Children.map(children, (result, index) => {
@@ -333,7 +324,7 @@ class Swipe extends Component {
                 }
               </ul>
             </div>
-            : null
+          )
         }
       </div>
     );
@@ -347,7 +338,7 @@ Swipe.propTypes = {
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   loop: PropTypes.bool,
   activeIndex: PropTypes.number,
-  duration: PropTypes.number,
+  animationDuration: PropTypes.number,
   autoPlay: PropTypes.bool,
   autoPlayIntervalTime: PropTypes.number,
   moveDistanceRatio: PropTypes.number,
@@ -359,12 +350,11 @@ Swipe.propTypes = {
 
 Swipe.defaultProps = {
   prefixCls: 'za-swipe',
-  className: null,
   direction: 'left',
   height: 160,
   loop: false,
   activeIndex: 0,
-  duration: 300,
+  animationDuration: 300,
   autoPlay: false,
   autoPlayIntervalTime: 3000,
   moveDistanceRatio: 0.5,

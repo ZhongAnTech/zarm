@@ -1,4 +1,4 @@
-$prefixCls: za-checkbox;
+$prefixCls: $prefixCls-checkbox;
 
 .#{$prefixCls} {
   display: inline-block;
@@ -37,15 +37,16 @@ $prefixCls: za-checkbox;
     justify-content: center;
     width: r(20);
     height: r(20);
-    border: 1px solid $theme-primary;
+    border: 1px solid #999;
     border-radius: r(20);
+    background: #fff;
 
     &:before {
-      content: ' ';
+      content: '';
       margin-top: r(-2);
       width: r(6);
-      height: r(12);
-      border: 1px solid $theme-primary;
+      height: r(10);
+      border: 2px solid $theme-primary;
       border-top: 0;
       border-left: 0;
       transform: rotate(45deg) scale(0);
@@ -109,6 +110,8 @@ $prefixCls: za-checkbox;
   /* 选中状态 */
   &.checked {
     .#{$prefixCls}-inner {
+      border-color: $theme-primary;
+
       &:before {
         transform: rotate(45deg) scale(1);
         transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;

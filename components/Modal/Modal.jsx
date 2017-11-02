@@ -13,7 +13,6 @@ class Modal extends PureComponent {
       isPending: false,
       animationState: 'enter',
     };
-    this.animationEnd = this.animationEnd.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,7 +33,7 @@ class Modal extends PureComponent {
     Events.off(this.modal, 'animationend', this.animationEnd);
   }
 
-  animationEnd() {
+  animationEnd = () => {
     if (this.state.animationState === 'leave') {
       this.setState({
         isShow: false,
@@ -48,7 +47,7 @@ class Modal extends PureComponent {
     }
   }
 
-  enter() {
+  enter = () => {
     this.setState({
       isShow: true,
       isPending: true,
@@ -56,7 +55,7 @@ class Modal extends PureComponent {
     });
   }
 
-  leave() {
+  leave = () => {
     this.setState({
       isShow: true,
       isPending: true,
@@ -69,14 +68,11 @@ class Modal extends PureComponent {
     const { isShow, isPending, animationState } = this.state;
 
     const cls = {
-      modal: classnames({
-        [`${prefixCls}`]: true,
-        [className]: !!className,
+      modal: classnames(`${prefixCls}`, className, {
         [`shape-${shape}`]: !!shape,
         [`fade-${animationState}`]: isPending,
       }),
-      dialog: classnames({
-        [`${prefixCls}-dialog`]: true,
+      dialog: classnames(`${prefixCls}-dialog`, {
         [`${animationType}-${animationState}`]: isPending,
         [`fade-${animationState}`]: isPending,
       }),

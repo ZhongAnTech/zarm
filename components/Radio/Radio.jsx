@@ -22,7 +22,6 @@ class Radio extends PureComponent {
     this.state = {
       checked: getChecked(props, false),
     };
-    this.onValueChange = this.onValueChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,7 +32,7 @@ class Radio extends PureComponent {
     }
   }
 
-  onValueChange() {
+  onValueChange = () => {
     const { disabled, onChange } = this.props;
 
     if (disabled) return;
@@ -47,9 +46,7 @@ class Radio extends PureComponent {
     const { prefixCls, className, type, theme, shape, block, value, disabled, id, children } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       [`shape-${shape}`]: !!shape,
       checked,
@@ -78,7 +75,7 @@ class Radio extends PureComponent {
       <div className={cls}>
         <div className={`${prefixCls}-wrapper`}>
           <span className={`${prefixCls}-inner`} />
-          { children && <span className={`${prefixCls}-text`}>{children}</span> }
+          {children && <span className={`${prefixCls}-text`}>{children}</span>}
           <input id={id} type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
         </div>
       </div>

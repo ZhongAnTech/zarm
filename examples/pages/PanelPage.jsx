@@ -13,27 +13,12 @@ class Page extends Component {
         <Header title="面板 Panel" />
         <main>
           <Panel>
-            <Panel.Header title="普通" />
+            <Panel.Header title="标题" more={<a onClick={() => alert('click more')}>更多</a>} />
             <Panel.Body>
-              <div className="box">body</div>
+              <div className="box">内容</div>
             </Panel.Body>
+            <Panel.Footer title="底部左侧" more="底部右侧" />
           </Panel>
-
-          <Panel>
-            <Panel.Header title="带更多按钮" more={<a onClick={() => alert('click more')}>更多</a>} />
-            <Panel.Body>
-              <div className="box">body</div>
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header title="带底部" />
-            <Panel.Body>
-              <div className="box">body</div>
-            </Panel.Body>
-            <Panel.Footer title="左侧文案" more="右侧文案" />
-          </Panel>
-
         </main>
         <Footer />
       </Container>

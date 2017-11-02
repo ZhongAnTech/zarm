@@ -33,20 +33,20 @@ class Toast extends PureComponent {
     clearTimeout(this.timer);
   }
 
-  enter({ duration, onMaskClick }) {
+  enter = ({ stayTime, onMaskClick }) => {
     this.setState({
       isShow: true,
     });
 
-    if (duration === 0) return;
+    if (stayTime === 0) return;
 
     this.timer = setTimeout(() => {
       typeof onMaskClick === 'function' && onMaskClick();
       clearTimeout(this.timer);
-    }, duration);
+    }, stayTime);
   }
 
-  leave() {
+  leave = () => {
     this.setState({
       isShow: false,
     });
@@ -55,14 +55,12 @@ class Toast extends PureComponent {
   render() {
     const { prefixCls, className, visible, children, onMaskClick } = this.props;
 
-    const classes = classnames({
-      [`${prefixCls}`]: true,
-      [className]: !!className,
+    const cls = classnames(`${prefixCls}`, className, {
       [`${prefixCls}-open`]: this.state.isShow,
     });
 
     return (
-      <div className={classes}>
+      <div className={cls}>
         <div className={`${prefixCls}-container`}>
           {children}
         </div>
@@ -76,14 +74,14 @@ Toast.propTypes = {
   prefixCls: PropTypes.string,
   className: PropTypes.string,
   visible: PropTypes.bool,
-  duration: PropTypes.number, // eslint-disable-line
+  stayTime: PropTypes.number, // eslint-disable-line
   onMaskClick: Mask.propTypes.onClose,
 };
 
 Toast.defaultProps = {
   prefixCls: 'za-toast',
   visible: false,
-  duration: 3000,
+  stayTime: 3000,
 };
 
 export default Toast;

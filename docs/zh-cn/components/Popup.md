@@ -25,7 +25,7 @@ import { Popup } from 'zarm';
 ```jsx
 <Popup
   autoClose
-  duration={5000}
+  stayTime={5000}
   visible={this.state.visible}
   onMaskClick={() => this.setState({ visible: false })}>
   <div style={{ height: 100 }}>5秒后自动关闭</div>
@@ -41,7 +41,8 @@ import { Popup } from 'zarm';
 | visible | bool | false | | 是否显示 |
 | direction | string | 'bottom' | 'top', 'bottom', 'left', 'right' | 弹出方向 |
 | autoClose | bool | false | | 是否自动关闭 |
-| duration | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
+| stayTime | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
+| animationDuration | number | 200 | | 动画执行时间（单位：毫秒） |
 | maskType | string | 'normal' | 'transparent', 'light', 'normal', 'dark' | 遮罩层的类型 |
 | onMaskClick | func | noop | | 点击遮罩层时触发的回调函数 |
 | onClose | func | noop | | 关闭后触发的回调函数 |

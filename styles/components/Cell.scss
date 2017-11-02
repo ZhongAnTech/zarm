@@ -1,4 +1,4 @@
-$prefixCls: za-cell;
+$prefixCls: $prefixCls-cell;
 
 @mixin cell-theme($color) {
   .#{$prefixCls}-footer {

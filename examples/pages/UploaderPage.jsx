@@ -30,12 +30,9 @@ class UploaderPage extends Component {
         },
       },
     };
-
-    this.onSelectMulti = this.onSelectMulti.bind(this);
-    this.onSelect = this.onSelect.bind(this);
   }
 
-  onSelectMulti(files) {
+  onSelectMulti = (files) => {
     console.log(files);
     let { multiFiles } = this.state;
     const { toast } = this.state;
@@ -56,7 +53,7 @@ class UploaderPage extends Component {
     });
   }
 
-  onSelect(file) {
+  onSelect = (file) => {
     console.log(file);
     const { files } = this.state;
     files.push(file);
@@ -112,7 +109,7 @@ class UploaderPage extends Component {
                 {this.fileRender('files')}
                 <Uploader
                   className="uploader-btn"
-                  accept="image/jpg, image/jpeg, image/gif, image/png"
+                  accept="image/*"
                   onChange={this.onSelect}>
                   <Icon type="add" />
                 </Uploader>
@@ -126,16 +123,16 @@ class UploaderPage extends Component {
               <div className="uploader-wrapper">
                 {this.fileRender('multiFiles')}
                 {
-                  multiFiles.length < MAX_FILES_COUNT
-                    ? <Uploader
+                  (multiFiles.length < MAX_FILES_COUNT) && (
+                    <Uploader
                       multiple
                       className="uploader-btn"
-                      accept="image/jpg, image/jpeg, image/gif, image/png"
+                      accept="image/*"
                       onBeforeSelect={onBeforeSelect}
                       onChange={this.onSelectMulti}>
                       <Icon type="add" />
                     </Uploader>
-                    : null
+                  )
                 }
               </div>
             </Panel.Body>
