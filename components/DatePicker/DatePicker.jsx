@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Column from '../Column';
-import { formatFn } from './utils';
+import formatFn from './utils';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
 

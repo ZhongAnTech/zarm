@@ -2,6 +2,7 @@ import React from 'react';
 import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Picker from '../index';
+import District from '../../../examples/pages/district';
 
 describe('Picker', () => {
   it('Picker', () => {
@@ -59,48 +60,108 @@ describe('Picker', () => {
     wrapper.unmount();
   });
 
-  // it('DatePicker', () => {
-  //   jest.useFakeTimers();
-  //   const wrapper = mount(
-  //     <Picker.Date mode="date" />
-  //   );
-  //   expect(toJson(wrapper)).toMatchSnapshot();
-  //   wrapper.setProps({ value: '2017-09-06' });
-  //   jest.runAllTimers();
-  //   wrapper.unmount();
-  // });
+  it('Cascader Picker init value', () => {
+    jest.useFakeTimers();
+    const wrapper = render(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        value={['1', '12']}
+        displayAddon="-"
+        />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 
-  // it('StackPicker', () => {
-  //   jest.useFakeTimers();
-  //   const wrapper = mount(
-  //     <Picker.Stack
-  //       dataSource={[
-  //         {
-  //           value: '1',
-  //           label: '北京市',
-  //           children: [
-  //             { value: '11', label: '海淀区' },
-  //             { value: '12', label: '西城区' },
-  //           ],
-  //         },
-  //         {
-  //           value: '2',
-  //           label: '上海市',
-  //           children: [
-  //             { value: '21', label: '黄埔区' },
-  //             { value: '22', label: '虹口区' },
-  //           ],
-  //         },
-  //       ]}
-  //       />
-  //   );
-  //   expect(toJson(wrapper)).toMatchSnapshot();
-  //   wrapper.setProps({ value: ['1', '12'] });
-  //   jest.runAllTimers();
-  //   wrapper.unmount();
-  // });
+  it('should trigger onOk when press ok button', () => {
+    const onOkFn = jest.fn();
+    const onCancelFn = jest.fn();
 
-  it('receive new dataSourcea', () => {
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        value={['1', '12']}
+        displayAddon="-"
+        onOk={onOkFn}
+        onCancel={onCancelFn}
+        />
+    );
+
+    wrapper.find('.za-picker-submit').simulate('click');
+    expect(onOkFn).toHaveBeenCalled();
+    expect(onCancelFn).not.toHaveBeenCalled();
+  });
+
+  it('should trigger onCancel when press cancel button', () => {
+    const onOkFn = jest.fn();
+    const onCancelFn = jest.fn();
+
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        value={['1', '12']}
+        displayAddon="-"
+        onOk={onOkFn}
+        onCancel={onCancelFn}
+        />
+    );
+
+    wrapper.find('.za-picker-cancel').simulate('click');
+    expect(onCancelFn).toHaveBeenCalled();
+    expect(onOkFn).not.toHaveBeenCalled();
+  });
+
+  it('receive new dataSource', () => {
     const wrapper = shallow(
       <Picker
         dataSource={[
@@ -130,18 +191,97 @@ describe('Picker', () => {
     wrapper.setProps({ value: '1' });
   });
 
-  // it('onChange', () => {
-  //   const onChange = jest.fn();
-  //   const wrapper = mount(
-  //     <Picker
-  //       dataSource={[
-  //         { value: '1', label: '选项一' },
-  //         { value: '2', label: '选项二' },
-  //       ]}
-  //       onChange={onChange}
-  //       />
-  //   );
-  //   wrapper.find('input').simulate('change', { target: { value: '2' } });
-  //   expect(onChange).toBeCalled();
-  // });
+  it('receive new cascader dataSource', () => {
+    const wrapper = shallow(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        />
+    );
+
+    wrapper.setProps({
+      dataSource: [
+        {
+          value: '3',
+          label: '选项一',
+          children: [
+            { value: '31', label: '选项一' },
+            { value: '32', label: '选项二' },
+          ],
+        },
+        {
+          value: '4',
+          label: '选项一',
+          children: [
+            { value: '41', label: '选项一' },
+            { value: '42', label: '选项二' },
+          ],
+        },
+      ],
+    });
+  });
+
+  it('should trigger maskClick when click mask', () => {
+    const handleClickFn = jest.fn();
+    const onMaskClick = jest.fn();
+    const onCancelFn = jest.fn();
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        onClick={handleClickFn}
+        onCancel={onCancelFn}
+        onMaskClick={onMaskClick}
+        />
+    );
+    wrapper.find('.za-picker').simulate('click');
+    expect(handleClickFn).toHaveBeenCalled();
+    wrapper.find('.za-mask').simulate('click');
+    expect(onMaskClick).toHaveBeenCalled();
+    expect(onCancelFn).toHaveBeenCalled();
+  });
+
+  it('StackPicker', () => {
+    jest.useFakeTimers();
+    const wrapper = mount(
+      <Picker.Stack
+        dataSource={District}
+        />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ value: ['安徽省', '安庆市', '大观区'] });
+    jest.runAllTimers();
+    wrapper.unmount();
+  });
+
+  it('StackPicker', () => {
+    jest.useFakeTimers();
+    const wrapper = mount(
+      <Picker.Stack
+        dataSource={District}
+        />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ value: ['安徽省', '安庆市', '大观区'] });
+    jest.runAllTimers();
+    wrapper.unmount();
+  });
 });
