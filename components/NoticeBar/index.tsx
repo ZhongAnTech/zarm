@@ -18,7 +18,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
 
   private wrapper;
   private content;
-  private moveInterval?: number;
+  private moveInterval;
 
   constructor(props) {
     super(props);

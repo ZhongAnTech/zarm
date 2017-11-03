@@ -6,7 +6,7 @@ exports[`Swipe loop renders correctly 1`] = `
 >
   <div
     class="za-swipe-items"
-    style="white-space:nowrap;"
+    style="white-space:nowrap"
   >
     <div
       class="za-swipe-item"
@@ -41,17 +41,17 @@ exports[`Swipe loop renders correctly 1`] = `
       <li
         class="active"
         role="tab"
-        style="display:inline-block;"
+        style="display:inline-block"
       />
       <li
         class=""
         role="tab"
-        style="display:inline-block;"
+        style="display:inline-block"
       />
       <li
         class=""
         role="tab"
-        style="display:inline-block;"
+        style="display:inline-block"
       />
     </ul>
   </div>
@@ -64,7 +64,7 @@ exports[`Swipe renders correctly 1`] = `
 >
   <div
     class="za-swipe-items"
-    style="white-space:nowrap;"
+    style="white-space:nowrap"
   >
     <div
       class="za-swipe-item"
@@ -89,17 +89,17 @@ exports[`Swipe renders correctly 1`] = `
       <li
         class="active"
         role="tab"
-        style="display:inline-block;"
+        style="display:inline-block"
       />
       <li
         class=""
         role="tab"
-        style="display:inline-block;"
+        style="display:inline-block"
       />
       <li
         class=""
         role="tab"
-        style="display:inline-block;"
+        style="display:inline-block"
       />
     </ul>
   </div>

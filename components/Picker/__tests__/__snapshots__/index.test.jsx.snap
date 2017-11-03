@@ -122,6 +122,7 @@ exports[`Picker Cascader Picker 1`] = `
                   className="za-picker-mask-bottom"
                 >
                   <Cascader
+                    cols={undefined}
                     data={
                       Array [
                         Object {
@@ -162,6 +163,7 @@ exports[`Picker Cascader Picker 1`] = `
                     valueMember="value"
                   >
                     <ColumnGroup
+                      className={undefined}
                       displayMember="label"
                       onValueChange={[Function]}
                       prefixCls="za-picker"
@@ -178,9 +180,11 @@ exports[`Picker Cascader Picker 1`] = `
                       >
                         <div
                           className="za-picker-column-group-item"
+                          key="0"
                         >
                           <Column
                             displayMember="label"
+                            indicatorStyle={undefined}
                             onValueChange={[Function]}
                             prefixCls="za-picker"
                             pure={true}
@@ -192,17 +196,22 @@ exports[`Picker Cascader Picker 1`] = `
                             >
                               <div
                                 className="za-picker-cascader-indicator"
+                                style={undefined}
                               />
                               <div
                                 className="za-picker-cascader-content"
                               >
                                 <div
                                   className="za-picker-cascader-item za-picker-cascader-item-selected"
+                                  key="1"
+                                  style={undefined}
                                 >
                                   选项一
                                 </div>
                                 <div
                                   className="za-picker-cascader-item"
+                                  key="2"
+                                  style={undefined}
                                 >
                                   选项一
                                 </div>
@@ -212,9 +221,11 @@ exports[`Picker Cascader Picker 1`] = `
                         </div>
                         <div
                           className="za-picker-column-group-item"
+                          key="1"
                         >
                           <Column
                             displayMember="label"
+                            indicatorStyle={undefined}
                             onValueChange={[Function]}
                             prefixCls="za-picker"
                             pure={true}
@@ -226,17 +237,22 @@ exports[`Picker Cascader Picker 1`] = `
                             >
                               <div
                                 className="za-picker-cascader-indicator"
+                                style={undefined}
                               />
                               <div
                                 className="za-picker-cascader-content"
                               >
                                 <div
                                   className="za-picker-cascader-item za-picker-cascader-item-selected"
+                                  key="11"
+                                  style={undefined}
                                 >
                                   选项一
                                 </div>
                                 <div
                                   className="za-picker-cascader-item"
+                                  key="12"
+                                  style={undefined}
                                 >
                                   选项二
                                 </div>
@@ -372,6 +388,7 @@ exports[`Picker DatePicker 1`] = `
                   className="za-picker-mask-bottom"
                 >
                   <ColumnGroup
+                    className={undefined}
                     disabled={false}
                     displayMember="label"
                     onValueChange={[Function]}
@@ -390,9 +407,11 @@ exports[`Picker DatePicker 1`] = `
                     >
                       <div
                         className="za-picker-column-group-item"
+                        key="year"
                       >
                         <Column
                           displayMember="label"
+                          indicatorStyle={undefined}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
@@ -404,162 +423,225 @@ exports[`Picker DatePicker 1`] = `
                           >
                             <div
                               className="za-picker-cascader-indicator"
+                              style={undefined}
                             />
                             <div
                               className="za-picker-cascader-content"
                             >
                               <div
                                 className="za-picker-cascader-item za-picker-cascader-item-selected"
+                                key="2000"
+                                style={undefined}
                               >
                                 2000年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2001"
+                                style={undefined}
                               >
                                 2001年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2002"
+                                style={undefined}
                               >
                                 2002年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2003"
+                                style={undefined}
                               >
                                 2003年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2004"
+                                style={undefined}
                               >
                                 2004年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2005"
+                                style={undefined}
                               >
                                 2005年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2006"
+                                style={undefined}
                               >
                                 2006年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2007"
+                                style={undefined}
                               >
                                 2007年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2008"
+                                style={undefined}
                               >
                                 2008年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2009"
+                                style={undefined}
                               >
                                 2009年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2010"
+                                style={undefined}
                               >
                                 2010年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2011"
+                                style={undefined}
                               >
                                 2011年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2012"
+                                style={undefined}
                               >
                                 2012年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2013"
+                                style={undefined}
                               >
                                 2013年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2014"
+                                style={undefined}
                               >
                                 2014年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2015"
+                                style={undefined}
                               >
                                 2015年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2016"
+                                style={undefined}
                               >
                                 2016年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2017"
+                                style={undefined}
                               >
                                 2017年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2018"
+                                style={undefined}
                               >
                                 2018年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2019"
+                                style={undefined}
                               >
                                 2019年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2020"
+                                style={undefined}
                               >
                                 2020年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2021"
+                                style={undefined}
                               >
                                 2021年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2022"
+                                style={undefined}
                               >
                                 2022年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2023"
+                                style={undefined}
                               >
                                 2023年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2024"
+                                style={undefined}
                               >
                                 2024年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2025"
+                                style={undefined}
                               >
                                 2025年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2026"
+                                style={undefined}
                               >
                                 2026年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2027"
+                                style={undefined}
                               >
                                 2027年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2028"
+                                style={undefined}
                               >
                                 2028年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2029"
+                                style={undefined}
                               >
                                 2029年
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2030"
+                                style={undefined}
                               >
                                 2030年
                               </div>
@@ -569,9 +651,11 @@ exports[`Picker DatePicker 1`] = `
                       </div>
                       <div
                         className="za-picker-column-group-item"
+                        key="month"
                       >
                         <Column
                           displayMember="label"
+                          indicatorStyle={undefined}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
@@ -583,67 +667,92 @@ exports[`Picker DatePicker 1`] = `
                           >
                             <div
                               className="za-picker-cascader-indicator"
+                              style={undefined}
                             />
                             <div
                               className="za-picker-cascader-content"
                             >
                               <div
                                 className="za-picker-cascader-item za-picker-cascader-item-selected"
+                                key="0"
+                                style={undefined}
                               >
                                 1月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="1"
+                                style={undefined}
                               >
                                 2月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2"
+                                style={undefined}
                               >
                                 3月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="3"
+                                style={undefined}
                               >
                                 4月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="4"
+                                style={undefined}
                               >
                                 5月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="5"
+                                style={undefined}
                               >
                                 6月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="6"
+                                style={undefined}
                               >
                                 7月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="7"
+                                style={undefined}
                               >
                                 8月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="8"
+                                style={undefined}
                               >
                                 9月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="9"
+                                style={undefined}
                               >
                                 10月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="10"
+                                style={undefined}
                               >
                                 11月
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="11"
+                                style={undefined}
                               >
                                 12月
                               </div>
@@ -653,9 +762,11 @@ exports[`Picker DatePicker 1`] = `
                       </div>
                       <div
                         className="za-picker-column-group-item"
+                        key="day"
                       >
                         <Column
                           displayMember="label"
+                          indicatorStyle={undefined}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
@@ -667,162 +778,225 @@ exports[`Picker DatePicker 1`] = `
                           >
                             <div
                               className="za-picker-cascader-indicator"
+                              style={undefined}
                             />
                             <div
                               className="za-picker-cascader-content"
                             >
                               <div
                                 className="za-picker-cascader-item za-picker-cascader-item-selected"
+                                key="1"
+                                style={undefined}
                               >
                                 1日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="2"
+                                style={undefined}
                               >
                                 2日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="3"
+                                style={undefined}
                               >
                                 3日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="4"
+                                style={undefined}
                               >
                                 4日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="5"
+                                style={undefined}
                               >
                                 5日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="6"
+                                style={undefined}
                               >
                                 6日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="7"
+                                style={undefined}
                               >
                                 7日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="8"
+                                style={undefined}
                               >
                                 8日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="9"
+                                style={undefined}
                               >
                                 9日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="10"
+                                style={undefined}
                               >
                                 10日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="11"
+                                style={undefined}
                               >
                                 11日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="12"
+                                style={undefined}
                               >
                                 12日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="13"
+                                style={undefined}
                               >
                                 13日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="14"
+                                style={undefined}
                               >
                                 14日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="15"
+                                style={undefined}
                               >
                                 15日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="16"
+                                style={undefined}
                               >
                                 16日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="17"
+                                style={undefined}
                               >
                                 17日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="18"
+                                style={undefined}
                               >
                                 18日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="19"
+                                style={undefined}
                               >
                                 19日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="20"
+                                style={undefined}
                               >
                                 20日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="21"
+                                style={undefined}
                               >
                                 21日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="22"
+                                style={undefined}
                               >
                                 22日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="23"
+                                style={undefined}
                               >
                                 23日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="24"
+                                style={undefined}
                               >
                                 24日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="25"
+                                style={undefined}
                               >
                                 25日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="26"
+                                style={undefined}
                               >
                                 26日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="27"
+                                style={undefined}
                               >
                                 27日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="28"
+                                style={undefined}
                               >
                                 28日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="29"
+                                style={undefined}
                               >
                                 29日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="30"
+                                style={undefined}
                               >
                                 30日
                               </div>
                               <div
                                 className="za-picker-cascader-item"
+                                key="31"
+                                style={undefined}
                               >
                                 31日
                               </div>
@@ -877,7 +1051,7 @@ exports[`Picker Picker 1`] = `
     >
       <div
         class="za-popup-wrapper za-popup-wrapper-bottom"
-        style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
       >
         <div
           class="za-picker-wrapper"
@@ -1068,6 +1242,7 @@ exports[`Picker StackPicker 1`] = `
               >
                 <div
                   className="za-picker-stack-column lower-hidden"
+                  key="0"
                   onClick={[Function]}
                 >
                   <div
@@ -1076,12 +1251,14 @@ exports[`Picker StackPicker 1`] = `
                   >
                     <div
                       className="za-picker-stack-item"
+                      key="0"
                       onClick={[Function]}
                     >
                       北京市
                     </div>
                     <div
                       className="za-picker-stack-item"
+                      key="1"
                       onClick={[Function]}
                     >
                       上海市
@@ -1090,6 +1267,7 @@ exports[`Picker StackPicker 1`] = `
                 </div>
                 <div
                   className="za-picker-stack-column lower-hidden"
+                  key="1"
                   onClick={[Function]}
                 >
                   <div
@@ -1098,12 +1276,14 @@ exports[`Picker StackPicker 1`] = `
                   >
                     <div
                       className="za-picker-stack-item"
+                      key="0"
                       onClick={[Function]}
                     >
                       海淀区
                     </div>
                     <div
                       className="za-picker-stack-item"
+                      key="1"
                       onClick={[Function]}
                     >
                       西城区
