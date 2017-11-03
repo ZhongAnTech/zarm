@@ -192,18 +192,32 @@ export default class Swipe extends Component<SwipeProps, any> {
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
     if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
-      activeIndex = ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0))
-        ? (this.state.activeIndex - 1)
-        : (this.state.activeIndex + 1);
+      const op = ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)) ? false : true;
 
       if (typeof onChange === 'function') {
-        onChange(activeIndex);
+        onChange(this.parseActiveIndexParse(op));
       }
+
+      activeIndex = op ? activeIndex + 1 : activeIndex - 1;
     }
+
     this.onSlideTo(activeIndex);
 
     // 恢复自动轮播
     this.startAutoPlay();
+  }
+
+  parseActiveIndexParse = (op) => {
+    const { loop, children } = this.props;
+    const maxIndex = children.length - 1;
+    let { activeIndex } = this.state;
+
+    if (op) {
+      activeIndex = (activeIndex + 1) > maxIndex ? (loop ? 0 : maxIndex) : activeIndex += 1;
+    } else {
+      activeIndex = (activeIndex - 1) < 0 ? (loop ? maxIndex : 0) : activeIndex -= 1;
+    }
+    return activeIndex;
   }
 
   // 自动轮播开始
@@ -298,7 +312,7 @@ export default class Swipe extends Component<SwipeProps, any> {
 
     const { onChangeEnd } = this.props;
     if (typeof onChangeEnd === 'function') {
-      onChangeEnd(this.state.activeIndex);
+      onChangeEnd(activeIndex);
     }
   }
 

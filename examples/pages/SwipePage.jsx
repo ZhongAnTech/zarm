@@ -85,10 +85,9 @@ class Page extends Component {
             <Panel.Header title="自动循环轮播" />
             <Panel.Body>
               <Swipe
-                autoPlay
                 loop
                 direction="left"
-                onChangeEnd={(index) => {
+                onChange={(index) => {
                   console.log(index);
                 }}>
                 {contentRender()}
