@@ -59,6 +59,8 @@ $prefixCls: $prefixCls-input;
 
   &-placeholder {
     position: absolute;
+    left: 0;
+    top: 0;
     color: #c1c1c1;
   }
 
@@ -66,5 +68,9 @@ $prefixCls: $prefixCls-input;
     text-align: right;
     color: #c1c1c1;
     font-size: r(12);
+  }
+
+  &-number-picker {
+    background-color: #fff;
   }
 }

@@ -32,7 +32,7 @@ describe('ActionSheet', () => {
   it('click cancel button', () => {
     props.onCancel = jest.fn();
     const wrapper = shallow(<ActionSheet {...props} />);
-    (wrapper.find('.za-actionsheet-cancel').childAt(0)).simulate('click');
+    wrapper.find('.za-actionsheet-cancel').childAt(0).simulate('click');
     expect(props.onCancel).toBeCalled();
   });
 });

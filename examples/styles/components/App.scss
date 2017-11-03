@@ -1,9 +1,9 @@
 .left-appear,
 .left-enter {
-  opacity: 0;
+  // opacity: 0;
 
   &-active {
-    opacity: 1;
+    // opacity: 1;
     transition: all .3s linear;
   }
 }
@@ -15,6 +15,7 @@
   width: 100%;
   height: 100%;
   transform: translateX(100%);
+  z-index: 10;
 
   &-active {
     transform: translateX(0);
@@ -22,11 +23,11 @@
 }
 
 .left-exit {
-  opacity: 1;
+  // opacity: 1;
   transform: translateX(0);
 
   &-active {
-    opacity: 0;
+    // opacity: 0;
     transform: translateX(100%);
     transition: all .3s linear;
   }
@@ -34,10 +35,10 @@
 
 .right-appear,
 .right-enter {
-  opacity: 0;
+  // opacity: 0;
 
   &-active {
-    opacity: 1;
+    // opacity: 1;
     transition: all .3s linear;
   }
 }
@@ -48,7 +49,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transform: translateX(-100%);
+  transform: translateX(-100px);
 
   &-active {
     transform: translateX(0);
@@ -56,12 +57,12 @@
 }
 
 .right-exit {
-  opacity: 1;
+  // opacity: 1;
   transform: translateX(0);
 
   &-active {
-    opacity: 0;
-    transform: translateX(-100%);
+    // opacity: 0;
+    transform: translateX(-100px);
     transition: all .3s linear;
   }
 }

@@ -65,7 +65,7 @@ class Page extends Component {
             visible={this.state.popTop}
             direction="top"
             duration={3000}
-            maskType="transparent"
+            mask={false}
             onMaskClick={() => this.close('popTop')}
             onClose={() => console.log('关闭')}>
             <div className="popup-box-top">
