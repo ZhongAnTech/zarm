@@ -3,14 +3,14 @@
 exports[`Alert renders correctly 1`] = `
 <div
   class="za-modal"
-  style="-webkit-animation-duration:200ms;animation-duration:200ms;"
+  style="-webkit-animation-duration:200ms;animation-duration:200ms"
 >
   <div
     class="za-modal-wrapper"
   >
     <div
       class="za-modal-dialog"
-      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms;"
+      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms"
     >
       <div
         class="za-modal-header"

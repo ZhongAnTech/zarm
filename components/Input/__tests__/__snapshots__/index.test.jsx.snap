@@ -39,7 +39,7 @@ exports[`Input.Idcard renders correctly 1`] = `
   >
     <div
       class="za-popup-wrapper za-popup-wrapper-bottom"
-      style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
     >
       <div
         class="za-keyboard"
@@ -145,7 +145,7 @@ exports[`Input.Number renders correctly 1`] = `
   >
     <div
       class="za-popup-wrapper za-popup-wrapper-bottom"
-      style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
     >
       <div
         class="za-keyboard"
@@ -249,7 +249,7 @@ exports[`Input.Price renders correctly 1`] = `
   >
     <div
       class="za-popup-wrapper za-popup-wrapper-bottom"
-      style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
     >
       <div
         class="za-keyboard"
@@ -364,6 +364,7 @@ exports[`Input.Textarea autosize 1`] = `
     >
       <textarea
         disabled={false}
+        maxLength={undefined}
         onChange={[Function]}
         rows={4}
         value="foo"
