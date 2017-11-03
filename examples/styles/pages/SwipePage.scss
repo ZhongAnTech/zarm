@@ -1,15 +1,10 @@
 @import "../functions/index";
 
 .swipe-page {
-  .swipe-item {
-    width: 100vw;
-    height: 48vw;
-
-    &-pic {
-      img {
-        width: 100%;
-        height: auto;
-      }
+  .swipe-item-pic {
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 

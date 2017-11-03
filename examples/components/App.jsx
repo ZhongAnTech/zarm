@@ -23,7 +23,7 @@ class App extends Component {
       <TransitionGroup>
         <CSSTransition
           key={currentKey}
-          timeout={500}
+          timeout={300}
           classNames={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'left' : 'right'}
           appear>
           <section>

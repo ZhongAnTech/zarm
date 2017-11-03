@@ -14,9 +14,12 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="普通" />
             <Panel.Body>
-              <Cell title="单行文本"><Input ref={(ele) => { this.focusInput = ele; }} type="text" placeholder="type is text" /></Cell>
-              <Cell title="多行文本"><Input type="textarea" rows={3} placeholder="type is textarea" /></Cell>
-              <Cell><a onClick={() => { this.focusInput.input.focus(); }}>click to focus the first input</a></Cell>
+              <Cell title="单行文本"><Input ref={(ele) => { this.focusInput = ele; }} type="text" placeholder="请输入" /></Cell>
+              <Cell title="多行文本"><Input type="textarea" rows={3} placeholder="请输入" /></Cell>
+              {/* <Cell title="数字"><Input type="number" placeholder="type is number" /></Cell>
+              <Cell title="金额"><Input type="price" placeholder="type is price" /></Cell>
+              <Cell title="身份证"><Input type="idcard" placeholder="type is idcard" /></Cell> */}
+              <Cell><a onClick={() => { this.focusInput.input.input.focus(); }}>click to focus the first input</a></Cell>
             </Panel.Body>
           </Panel>
 

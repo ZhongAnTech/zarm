@@ -27,7 +27,7 @@ exports[`Message hasArrow 1`] = `
 exports[`Message hasClosable 1`] = `
 <div
   className="za-message theme-primary"
-  onClick={false}
+  onClick={[Function]}
 >
   <div
     className="za-message-header"
