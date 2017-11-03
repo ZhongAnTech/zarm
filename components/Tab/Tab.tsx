@@ -18,15 +18,15 @@ export { TabProps };
 
 export default class Tab extends PureComponent<TabProps, any> {
 
-  private swipe;
-
   static Panel: any;
   static defaultProps = {
     prefixCls: 'za-tab',
     theme: 'primary',
     disabled: false,
     canSwipe: false,
-  }
+  };
+
+  private swipe;
 
   constructor(props) {
     super(props);
@@ -40,40 +40,63 @@ export default class Tab extends PureComponent<TabProps, any> {
       this.setState({
         value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
       });
-      typeof nextProps.onChange === 'function' && nextProps.onChange(nextProps.value);
+      if (typeof nextProps.onChange === 'function') {
+        nextProps.onChange(nextProps.value);
+      }
     }
   }
 
+  onSwipeChange = (value) => {
+    const { onChange } = this.props;
+    this.setState({ value });
+    if (typeof onChange === 'function') {
+      onChange(value);
+    }
+  }
+
+  onTabClick = (tab, index) => {
+    const { disabled, canSwipe, onChange } = this.props;
+    if (disabled || tab.props.disabled) {
+      return;
+    }
+    this.setState({ value: index });
+    if (typeof onChange === 'function') {
+      onChange(index);
+    }
+    if (canSwipe) {
+      this.swipe.onSlideTo(index);
+    }
+  }
+
+  renderTabs = (tab, index) => {
+    const { prefixCls, disabled } = this.props;
+    const itemCls = classnames(`${prefixCls}-header-item`, tab.props.className, {
+      disabled: disabled || tab.props.disabled,
+      active: this.state.value === index,
+      // hasline,
+    });
+
+    return (
+      <li
+        role="tab"
+        key={+index}
+        className={itemCls}
+        onClick={() => this.onTabClick(tab, index)}
+      >
+        {tab.props.title}
+      </li>
+    );
+  }
+
   render() {
-    const { prefixCls, className, theme, lineWidth, disabled, canSwipe, children, onChange } = this.props;
+    const { prefixCls, className, theme, lineWidth, canSwipe, children } = this.props;
 
     const classes = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
     });
 
     // 渲染选项
-    const tabsRender = React.Children.map(children, (item: any, index) => {
-      const itemCls = classnames(`${prefixCls}-header-item`, item.props.className, {
-        disabled: disabled || item.props.disabled,
-        active: this.state.value === index,
-        // hasline,
-      });
-
-      return (
-        <li
-          role="tab"
-          key={+index}
-          className={itemCls}
-          onClick={() => {
-            if (disabled || item.props.disabled) return;
-            this.setState({ value: index });
-            typeof onChange === 'function' && onChange(index);
-            canSwipe && this.swipe.onSlideTo(index);
-          }}>
-          {item.props.title}
-        </li>
-      );
-    });
+    const tabsRender = React.Children.map(children, this.renderTabs);
 
     // 渲染内容
     let contentRender;
@@ -85,17 +108,9 @@ export default class Tab extends PureComponent<TabProps, any> {
           showPagination={false}
           activeIndex={this.state.value}
           ref={(ele) => { this.swipe = ele; }}
-          onChange={(value) => {
-            this.setState({ value });
-            typeof onChange === 'function' && onChange(value);
-          }}>
-          {
-            React.Children.map(children, (item: any) => {
-              return (
-                <div>{item.props.children}</div>
-              );
-            })
-          }
+          onChange={(value) => this.onSwipeChange(value)}
+        >
+          {React.Children.map(children, (item: any) => <div>{item.props.children}</div>)}
         </Swipe>
       );
     } else {
@@ -110,7 +125,6 @@ export default class Tab extends PureComponent<TabProps, any> {
       // right: `${(children.length - this.state.value - 1) / children.length * 100}%`,
       // transition: `right 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1) 0.09s`,
     };
-
 
     let lineInnerRender;
     if (lineWidth) {
@@ -131,4 +145,3 @@ export default class Tab extends PureComponent<TabProps, any> {
     );
   }
 }
-

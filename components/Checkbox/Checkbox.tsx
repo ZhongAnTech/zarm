@@ -24,7 +24,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
     prefixCls: 'za-checkbox',
     theme: 'primary',
     disabled: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -43,11 +43,15 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
 
   onValueChange = () => {
     const { disabled, onChange } = this.props;
-    if (disabled) return;
+    if (disabled) {
+      return;
+    }
 
     const checked = !this.state.checked;
     this.setState({ checked });
-    typeof onChange === 'function' && onChange(checked);
+    if (typeof onChange === 'function') {
+      onChange(checked);
+    }
   }
 
   render() {
@@ -67,7 +71,14 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
         <div className={`${prefixCls}-wrapper`}>
           <span className={`${prefixCls}-inner`} />
           {children && <span className={`${prefixCls}-text`}>{children}</span>}
-          <input id={id} type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          <input
+            id={id}
+            type="checkbox"
+            className={`${prefixCls}-input`}
+            disabled={disabled}
+            checked={checked}
+            onChange={this.onValueChange}
+          />
         </div>
       </div>
     );
@@ -82,8 +93,23 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
 
     if (type === 'button') {
       return (
-        <Button className={cls} theme={theme} shape={shape} size="xs" block={block} bordered={!checked} disabled={disabled}>
-          <input type="checkbox" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <Button
+          className={cls}
+          theme={theme}
+          shape={shape}
+          size="xs"
+          block={block}
+          bordered={!checked}
+          disabled={disabled}
+        >
+          <input
+            type="checkbox"
+            className={`${prefixCls}-input`}
+            value={value}
+            disabled={disabled}
+            checked={checked}
+            onChange={this.onValueChange}
+          />
           {children}
         </Button>
       );
@@ -92,4 +118,3 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
     return renderCheckbox;
   }
 }
-

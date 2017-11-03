@@ -10,10 +10,23 @@ export default class Cell extends PureComponent<CellProps, {}> {
     prefixCls: 'za-cell',
     hasArrow: false,
     disabled: false,
-  }
+  };
 
   render() {
-    const { prefixCls, className, theme, hasArrow, icon, title, description, help, disabled, onClick, children, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      theme,
+      hasArrow,
+      icon,
+      title,
+      description,
+      help,
+      disabled,
+      onClick,
+      children,
+      ...others,
+    } = this.props;
 
     const cls = classnames(prefixCls, className, {
       [`theme-${theme}`]: !!theme,
@@ -23,29 +36,15 @@ export default class Cell extends PureComponent<CellProps, {}> {
       'has-arrow': hasArrow,
     });
 
-    const iconRender = icon
-      ? <div className={`${prefixCls}-icon`}>{icon}</div>
-      : null;
-
-    const titleRender = title
-      ? <div className={`${prefixCls}-title`}>{title}</div>
-      : null;
-
-    const contentRender = children
-      ? <div className={`${prefixCls}-content`}>{children}</div>
-      : null;
-
-    const arrowRender = hasArrow
-      ? <div className={`${prefixCls}-arrow`} />
-      : null;
-
-    const helpRender = help
-      ? (
-        <div className={`${prefixCls}-help`}>
-          {help}
-        </div>
-      )
-      : null;
+    const iconRender = icon && <div className={`${prefixCls}-icon`}>{icon}</div>;
+    const titleRender = title && <div className={`${prefixCls}-title`}>{title}</div>;
+    const contentRender = children && <div className={`${prefixCls}-content`}>{children}</div>;
+    const arrowRender = hasArrow && <div className={`${prefixCls}-arrow`} />;
+    const helpRender = help && (
+      <div className={`${prefixCls}-help`}>
+        {help}
+      </div>
+    );
 
     return (
       <div className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>

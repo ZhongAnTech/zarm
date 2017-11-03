@@ -8,7 +8,7 @@ export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-panel',
-  }
+  };
 
   render() {
     const { prefixCls, className, title, more } = this.props;
@@ -22,4 +22,3 @@ export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
     );
   }
 }
-

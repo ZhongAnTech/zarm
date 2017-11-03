@@ -8,7 +8,7 @@ export default class Icon extends PureComponent<IconProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-icon',
-  }
+  };
 
   render() {
     const { prefixCls, type, theme, className, ...others } = this.props;
@@ -22,4 +22,3 @@ export default class Icon extends PureComponent<IconProps, {}> {
     );
   }
 }
-

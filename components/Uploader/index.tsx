@@ -18,14 +18,14 @@ export { UploaderProps };
 
 export default class Uploader extends PureComponent<UploaderProps, any> {
 
-  private file;
-
   static defaultProps = {
     prefixCls: 'za-uploader',
     disabled: false,
     multiple: false,
     onBeforeSelect() { return true; },
-  }
+  };
+
+  private file;
 
   constructor(props) {
     super(props);
@@ -39,7 +39,9 @@ export default class Uploader extends PureComponent<UploaderProps, any> {
     e.target.value = null;
 
     const { onBeforeSelect, disabled } = this.props;
-    if (typeof onBeforeSelect !== 'function') return;
+    if (typeof onBeforeSelect !== 'function') {
+      return;
+    }
 
     // 阻止 input onChange 默认事件
     if (onBeforeSelect() === false || disabled) {
@@ -60,15 +62,19 @@ export default class Uploader extends PureComponent<UploaderProps, any> {
       if (multiple) {
         fileList.push(data);
 
-        if (files.length === fileList.length) {
-          typeof onChange === 'function' && onChange(fileList);
+        if (files.length === fileList.length && typeof onChange === 'function') {
+          onChange(fileList);
         }
       } else {
-        typeof onChange === 'function' && onChange(data);
+        if (typeof onChange === 'function') {
+          onChange(data);
+        }
       }
     };
 
-    files && files.map(file => handleFileInfo({ file, quality }, getFileInfo));
+    if (files) {
+      files.map(file => handleFileInfo({ file, quality }, getFileInfo));
+    }
   }
 
   render() {
@@ -89,7 +95,7 @@ export default class Uploader extends PureComponent<UploaderProps, any> {
           capture={capture}
           onClick={this.handleDefaultInput}
           onChange={this.handleChange}
-          />
+        />
         <span className={`${prefixCls}-trigger`} onClick={this.handleClick} />
         {children}
       </div>

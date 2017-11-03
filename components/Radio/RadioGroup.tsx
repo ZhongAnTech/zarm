@@ -35,7 +35,7 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
     block: false,
     disabled: false,
     compact: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -55,7 +55,9 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
   onChildChange = (value) => {
     this.setState({ value });
     const { onChange } = this.props;
-    typeof onChange === 'function' && onChange(value);
+    if (typeof onChange === 'function') {
+      onChange(value);
+    }
   }
 
   render() {
@@ -70,8 +72,7 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
         onChange: () => this.onChildChange(element.props.value),
-        // use '==' because the result will fail when the value's typeof is Number
-        checked: (this.state.value == element.props.value), // eslint-disable-line
+        checked: this.state.value === element.props.value || Number(this.state.value) === Number(element.props.value),
       });
     });
 
@@ -85,4 +86,3 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
     return <div className={cls}>{items}</div>;
   }
 }
-

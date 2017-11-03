@@ -25,7 +25,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
     theme: 'primary',
     disabled: false,
     block: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -45,11 +45,15 @@ export default class Radio extends PureComponent<RadioProps, any> {
   onValueChange = () => {
     const { disabled, onChange } = this.props;
 
-    if (disabled) return;
+    if (disabled) {
+      return;
+    }
 
     const checked = true;
     this.setState({ checked });
-    typeof onChange === 'function' && onChange(checked);
+    if (typeof onChange === 'function') {
+      onChange(checked);
+    }
   }
 
   render() {
@@ -65,8 +69,19 @@ export default class Radio extends PureComponent<RadioProps, any> {
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} description={checked ? <Icon type="right" theme={disabled ? undefined : theme} /> : null} onClick={() => {}}>
-          <input type="radio" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <Cell
+          disabled={disabled}
+          description={checked && <Icon type="right" theme={disabled ? undefined : theme} />}
+          onClick={() => {}}
+        >
+          <input
+            type="radio"
+            className={`${prefixCls}-input`}
+            value={value}
+            disabled={disabled}
+            checked={checked}
+            onChange={this.onValueChange}
+          />
           {children}
         </Cell>
       );
@@ -74,8 +89,23 @@ export default class Radio extends PureComponent<RadioProps, any> {
 
     if (type === 'button') {
       return (
-        <Button className={cls} theme={theme} shape={shape} size="xs" block={block} bordered={!checked} disabled={disabled}>
-          <input type="radio" className={`${prefixCls}-input`} value={value} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <Button
+          className={cls}
+          theme={theme}
+          shape={shape}
+          size="xs"
+          block={block}
+          bordered={!checked}
+          disabled={disabled}
+        >
+          <input
+            type="radio"
+            className={`${prefixCls}-input`}
+            value={value}
+            disabled={disabled}
+            checked={checked}
+            onChange={this.onValueChange}
+          />
           {children}
         </Button>
       );
@@ -86,10 +116,15 @@ export default class Radio extends PureComponent<RadioProps, any> {
         <div className={`${prefixCls}-wrapper`}>
           <span className={`${prefixCls}-inner`} />
           {children && <span className={`${prefixCls}-text`}>{children}</span>}
-          <input type="radio" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+          <input
+            type="radio"
+            className={`${prefixCls}-input`}
+            disabled={disabled}
+            checked={checked}
+            onChange={this.onValueChange}
+          />
         </div>
       </div>
     );
   }
 }
-

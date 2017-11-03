@@ -6,13 +6,13 @@ import Button from '../Button';
 export { AlertProps };
 
 export default class Alert extends PureComponent<AlertProps, {}> {
-  
+
   static defaultProps = {
     prefixCls: 'za-alert',
     animationType: 'zoom',
     message: '',
     cancelText: '关闭',
-  }
+  };
 
   render() {
     const { prefixCls, title, message, cancelText, onCancel, ...others } = this.props;
@@ -32,4 +32,3 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     );
   }
 }
-

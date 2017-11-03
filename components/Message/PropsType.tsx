@@ -4,7 +4,7 @@ interface BaseProps {
   icon?: any;
   hasArrow?: boolean;
   hasClosable?: boolean;
-  onClick?: () => void; 
+  onClick?: () => void;
 }
 
 export interface MessageProps extends BaseProps {

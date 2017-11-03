@@ -16,7 +16,9 @@ export default class Drag extends PureComponent<DragProps, {}> {
     dragState.startTime = new Date();
 
     const { onDragStart } = this.props;
-    typeof onDragStart === 'function' && onDragStart(event, dragState);
+    if (typeof onDragStart === 'function') {
+      onDragStart(event, dragState);
+    }
   }
 
   onTouchMove = (event) => {
@@ -38,7 +40,9 @@ export default class Drag extends PureComponent<DragProps, {}> {
     };
 
     const { onDragMove } = this.props;
-    if (typeof onDragMove === 'function' && !onDragMove(event, state)) return;
+    if (typeof onDragMove === 'function' && !onDragMove(event, state)) {
+      return;
+    }
 
     this.dragState = state;
   }
@@ -46,7 +50,9 @@ export default class Drag extends PureComponent<DragProps, {}> {
   onTouchEnd = (event) => {
     const dragState = this.dragState;
     const { onDragEnd } = this.props;
-    typeof onDragEnd === 'function' && onDragEnd(event, dragState);
+    if (typeof onDragEnd === 'function') {
+      onDragEnd(event, dragState);
+    }
     this.dragState = {};
   }
 

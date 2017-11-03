@@ -1,7 +1,10 @@
 interface BaseProps {
   shape?: 'radius';
   visible?: boolean;
-  animationType?: 'fade' | 'door' | 'flip' | 'rotate' | 'zoom' | 'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
+  animationType?:
+    'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
+    'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' |
+    'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
   width?: string | number;
   onMaskClick?: () => void;

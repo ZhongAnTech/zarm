@@ -17,7 +17,6 @@ export interface CheckboxProps extends BaseCheckboxProps {
   className?: string;
 }
 
-
 interface BaseCheckboxGroupProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';

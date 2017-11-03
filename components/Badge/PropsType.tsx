@@ -9,4 +9,3 @@ export interface BadgeProps extends BaseProps {
   prefixCls?: string;
   className?: string;
 }
-

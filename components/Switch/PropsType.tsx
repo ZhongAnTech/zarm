@@ -10,4 +10,3 @@ export interface SwitchProps extends BaseProps {
   prefixCls?: string;
   className?: string;
 }
-

@@ -13,11 +13,27 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
     visible: false,
     actions: [],
     cancelText: '取消',
+  };
+
+  renderActions = (action, index) => {
+    const { prefixCls } = this.props;
+    const actionCls = classnames(`${prefixCls}-btn`, {
+      [`theme-${action.theme}`]: !!action.theme,
+    });
+    return <a key={+index} className={actionCls} onClick={action.onClick}>{action.text}</a>;
+  }
+
+  renderCancel = () => {
+    const { prefixCls, onCancel, cancelText } = this.props;
+    return (typeof onCancel === 'function') && (
+      <div className={`${prefixCls}-cancel`}>
+        <a className={`${prefixCls}-btn`} onClick={onCancel}>{cancelText}</a>
+      </div>
+    );
   }
 
   render() {
-    const { prefixCls, className, shape, visible, onMaskClick, actions, cancelText, onCancel } = this.props;
-
+    const { prefixCls, className, shape, visible, onMaskClick, actions } = this.props;
     const cls = classnames(`${prefixCls}`, className, {
       [`shape-${shape}`]: !!shape,
     });
@@ -26,22 +42,9 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
       <Popup visible={visible} onMaskClick={onMaskClick}>
         <div className={cls}>
           <div className={`${prefixCls}-actions`}>
-            {
-              actions.map((action, index) => {
-                const actionCls = classnames(`${prefixCls}-btn`, {
-                  [`theme-${action.theme}`]: !!action.theme,
-                });
-                return <a key={+index} className={actionCls} onClick={action.onClick}>{action.text}</a>;
-              })
-            }
+            {actions.map(this.renderActions)}
           </div>
-          {
-            typeof onCancel === 'function' && (
-              <div className={`${prefixCls}-cancel`}>
-                <a className={`${prefixCls}-btn`} onClick={onCancel}>{cancelText}</a>
-              </div>
-            )
-          }
+          {this.renderCancel()}
         </div>
       </Popup>
     );

@@ -19,16 +19,16 @@ export { SliderProps };
 
 export default class Slider extends PureComponent<SliderProps, any> {
 
-  private line;
-  private offsetStart: number = 0;
-
   static defaultProps = {
     prefixCls: 'za-slider',
     disabled: false,
     step: 1,
     min: 0,
     max: 100,
-  }
+  };
+
+  private line;
+  private offsetStart: number = 0;
 
   constructor(props) {
     super(props);
@@ -54,28 +54,38 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
   onDragStart = () => {
     const { disabled } = this.props;
-    if (disabled) return;
+    if (disabled) {
+      return;
+    }
     this.setState({ tooltip: true });
   }
 
   onDragMove = (event, { offsetX }) => {
     const { disabled } = this.props;
-    if (disabled) return;
+    if (disabled) {
+      return;
+    }
 
     event.preventDefault();
 
     let offset = this.offsetStart + offsetX;
     if (offset < 0) {
       offset = 0;
-      const value = this.getValueByOffset(offset);
-      this.setState({ offset, value });
+      const newValue = this.getValueByOffset(offset);
+      this.setState({
+        offset,
+        value: newValue,
+      });
       return false;
     }
 
     if (offset > this.maxOffset()) {
       offset = this.maxOffset();
-      const value = this.getValueByOffset(offset);
-      this.setState({ offset, value });
+      const newValue = this.getValueByOffset(offset);
+      this.setState({
+        offset,
+        value: newValue,
+      });
       return false;
     }
 
@@ -87,12 +97,16 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
   onDragEnd = (_event, { offsetX }) => {
     this.setState({ tooltip: false });
-    if (isNaN(offsetX)) return;
+    if (isNaN(offsetX)) {
+      return;
+    }
 
     this.offsetStart += offsetX;
 
     const { onChange } = this.props;
-    typeof onChange === 'function' && onChange(this.state.value);
+    if (typeof onChange === 'function') {
+      onChange(this.state.value);
+    }
   }
 
   /**
@@ -150,14 +164,16 @@ export default class Slider extends PureComponent<SliderProps, any> {
         <Drag
           onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}>
+          onDragEnd={this.onDragEnd}
+        >
           <div
             className={`${prefixCls}-handle`}
             role="slider"
             aria-valuemin={min}
             aria-valuemax={max}
             aria-valuenow={value}
-            style={{ left: offset }}>
+            style={{ left: offset }}
+          >
             <Tooltip visible={tooltip} message={value}><div className={`${prefixCls}-handle-shadow`} /></Tooltip>
           </div>
         </Drag>
@@ -165,4 +181,3 @@ export default class Slider extends PureComponent<SliderProps, any> {
     );
   }
 }
-

@@ -10,7 +10,7 @@ export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
   static defaultProps = {
     prefixCls: 'za-modal',
     title: '',
-  }
+  };
 
   render() {
     const { prefixCls, className, title, onClose, ...others } = this.props;
@@ -25,4 +25,3 @@ export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
     );
   }
 }
-

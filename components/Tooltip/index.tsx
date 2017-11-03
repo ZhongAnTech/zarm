@@ -8,13 +8,13 @@ export { TooltipProps };
 
 export default class Tooltip extends PureComponent<TooltipProps, any> {
 
-  private child;
-  private tooltip;
-
   static defaultProps = {
     prefixCls: 'za-tooltip',
     visible: false,
-  }
+  };
+
+  private child;
+  private tooltip;
 
   componentDidMount() {
     if (!window.zarmTooltip) {
@@ -58,4 +58,3 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
     });
   }
 }
-
