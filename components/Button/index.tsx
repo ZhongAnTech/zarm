@@ -17,10 +17,26 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     disabled: false,
     loading: false,
     onClick() {},
-  }
+  };
 
   render() {
-    const { prefixCls, className, theme, size, shape, icon, block, active, focus, bordered, disabled, loading, onClick, children, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      theme,
+      size,
+      shape,
+      icon,
+      block,
+      active,
+      focus,
+      bordered,
+      disabled,
+      loading,
+      onClick,
+      children,
+      ...others,
+    } = this.props;
 
     const classes = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
@@ -50,10 +66,10 @@ export default class Button extends PureComponent<ButtonProps, {}> {
         className={classes}
         onClick={e => !disabled && typeof onClick === 'function' && onClick(e)}
         onTouchStart={() => {}}
-        {...others}>
+        {...others}
+      >
         {contentRender}
       </a>
     );
   }
 }
-

@@ -14,7 +14,7 @@ export enum LOAD_STATE {
   success,  // 加载成功
   failure,  // 加载失败
   complete, // 加载完成（无新数据）
-};
+}
 
 interface BaseProps {
   refreshing?: REFRESH_STATE;

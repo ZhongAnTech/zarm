@@ -7,8 +7,6 @@ import Mask from '../Mask';
 export { ModalProps };
 
 export default class Modal extends PureComponent<ModalProps, any> {
-  
-  private modal;
 
   static Header: any;
   static Body: any;
@@ -19,7 +17,9 @@ export default class Modal extends PureComponent<ModalProps, any> {
     animationType: 'fade',
     animationDuration: 200,
     width: '70%',
-  }
+  };
+
+  private modal;
 
   constructor(props) {
     super(props);
@@ -131,7 +131,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
           // className={cls.mask}
           // style={maskStyle}
           onClose={onMaskClick}
-          />
+        />
       </div>
     );
   }

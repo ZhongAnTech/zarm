@@ -8,7 +8,7 @@ export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-modal',
-  }
+  };
 
   render() {
     const { prefixCls, className, children, ...others } = this.props;

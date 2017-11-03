@@ -8,9 +8,6 @@ export { PopupProps };
 
 export default class Popup extends PureComponent<PopupProps, any> {
 
-  private timer: number;
-  private popup;
-
   static defaultProps = {
     prefixCls: 'za-popup',
     visible: false,
@@ -20,7 +17,10 @@ export default class Popup extends PureComponent<PopupProps, any> {
     stayTime: 3000,
     animationDuration: 200,
     maskType: Mask.defaultProps.type,
-  }
+  };
+
+  private timer: number;
+  private popup;
 
   constructor(props) {
     super(props);
@@ -84,41 +84,55 @@ export default class Popup extends PureComponent<PopupProps, any> {
       this.setState({
         isMaskShow: false,
       });
-      typeof onClose === 'function' && onClose();
+      if (typeof onClose === 'function') {
+        onClose();
+      }
     }
   }
 
-  render() {
-    const { prefixCls, children, onMaskClick, animationDuration, direction, className, mask, maskType } = this.props;
-    const { isShow, isPending, animationState, isMaskShow } = this.state;
+  renderMask = () => {
+    const { mask, maskType, onMaskClick, animationDuration } = this.props;
+    const { isPending, animationState, isMaskShow } = this.state;
 
-    const cls = {
-      popup: classnames(`${prefixCls}`, className, {
-        [`${prefixCls}-hidden`]: !isShow,
-      }),
-      wrap: classnames(`${prefixCls}-wrapper`, `${prefixCls}-wrapper-${direction}`),
-      mask: classnames({
-        [`fade-${animationState}`]: isPending,
-      }),
+    const maskCls = classnames({
+      [`fade-${animationState}`]: isPending,
+    });
+
+    const maskStyle = {
+      WebkitAnimationDuration: `${animationDuration}ms`,
+      animationDuration: `${animationDuration}ms`,
     };
 
-    const style = {
-      wrap: {
-        WebkitTransitionDuration: `${animationDuration}ms`,
-        transitionDuration: `${animationDuration}ms`,
-      },
-      mask: {
-        WebkitAnimationDuration: `${animationDuration}ms`,
-        animationDuration: `${animationDuration}ms`,
-      },
+    return mask && (
+      <Mask
+        className={maskCls}
+        style={maskStyle}
+        visible={isMaskShow}
+        type={maskType}
+        onClose={onMaskClick}
+      />
+    );
+  }
+  render() {
+    const { prefixCls, className, animationDuration, direction, children } = this.props;
+    const { isShow } = this.state;
+
+    const popupCls = classnames(`${prefixCls}`, className, {
+      [`${prefixCls}-hidden`]: !isShow,
+    });
+    const wrapCls = classnames(`${prefixCls}-wrapper`, `${prefixCls}-wrapper-${direction}`);
+
+    const wrapStyle = {
+      WebkitTransitionDuration: `${animationDuration}ms`,
+      transitionDuration: `${animationDuration}ms`,
     };
 
     return (
-      <div className={cls.popup} ref={(popup) => { this.popup = popup; }}>
-        <div className={cls.wrap} style={style.wrap}>
+      <div className={popupCls} ref={(popup) => { this.popup = popup; }}>
+        <div className={wrapCls} style={wrapStyle}>
           {children}
         </div>
-        {mask && <Mask className={cls.mask} style={style.mask} visible={isMaskShow} type={maskType} onClose={onMaskClick} />}
+        {this.renderMask()}
       </div>
     );
   }

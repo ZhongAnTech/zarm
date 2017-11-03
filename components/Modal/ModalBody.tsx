@@ -8,7 +8,7 @@ export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-modal',
-  }
+  };
 
   render() {
     const { prefixCls, className, height, children, ...others } = this.props;
@@ -24,5 +24,3 @@ export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
     );
   }
 }
-
-

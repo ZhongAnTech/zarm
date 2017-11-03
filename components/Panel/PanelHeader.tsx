@@ -8,7 +8,7 @@ export default class PanelHeader extends PureComponent<PanelHeaderProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-panel',
-  }
+  };
 
   render() {
     const { prefixCls, className, title, more } = this.props;

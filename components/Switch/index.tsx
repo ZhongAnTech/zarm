@@ -20,7 +20,7 @@ export default class Switch extends PureComponent<SwitchProps, any> {
     prefixCls: 'za-switch',
     theme: 'primary',
     disabled: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -39,11 +39,15 @@ export default class Switch extends PureComponent<SwitchProps, any> {
 
   onValueChange = () => {
     const { disabled, onChange } = this.props;
-    if (disabled) return;
+    if (disabled) {
+      return;
+    }
 
     const checked = !this.state.checked;
     this.setState({ checked });
-    typeof onChange === 'function' && onChange(checked);
+    if (typeof onChange === 'function') {
+      onChange(checked);
+    }
   }
 
   render() {
@@ -58,7 +62,13 @@ export default class Switch extends PureComponent<SwitchProps, any> {
 
     return (
       <span className={cls}>
-        <input type="checkbox" className={`${prefixCls}-input`} disabled={disabled} checked={checked} onChange={this.onValueChange} />
+        <input
+          type="checkbox"
+          className={`${prefixCls}-input`}
+          disabled={disabled}
+          checked={checked}
+          onChange={this.onValueChange}
+        />
       </span>
     );
   }

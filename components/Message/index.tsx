@@ -12,7 +12,7 @@ export default class Message extends PureComponent<MessageProps, any> {
     theme: 'primary',
     hasArrow: false,
     hasClosable: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -23,7 +23,9 @@ export default class Message extends PureComponent<MessageProps, any> {
 
   onClick = () => {
     const { hasArrow, onClick } = this.props;
-    hasArrow && typeof onClick === 'function' && onClick();
+    if (hasArrow && typeof onClick === 'function') {
+      onClick();
+    }
   }
 
   render() {

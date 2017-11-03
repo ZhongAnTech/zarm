@@ -4,7 +4,7 @@ interface BaseProps {
   icon?: any;
   title?: any;
   description?: any;
-  help?: any
+  help?: any;
   disabled?: boolean;
   onClick?: () => void;
 }

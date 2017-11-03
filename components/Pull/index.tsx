@@ -10,8 +10,6 @@ export { PullProps };
 
 export default class Pull extends PureComponent<PullProps, any> {
 
-  private pull;
-
   static defaultProps = {
     prefixCls: 'za-pull',
     refreshing: REFRESH_STATE.normal,
@@ -21,7 +19,9 @@ export default class Pull extends PureComponent<PullProps, any> {
     loadDistance: 10,
     animationDuration: 400,
     stayTime: 1000,
-  }
+  };
+
+  private pull;
 
   constructor(props) {
     super(props);
@@ -53,36 +53,43 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   onScroll = () => {
     const { refreshState, loadState } = this.state;
-    if (refreshState !== REFRESH_STATE.normal) return;
-    if (loadState !== LOAD_STATE.normal) return;
-
     const { onLoad, loadDistance } = this.props;
-    if (!onLoad) return;
+    if (
+      refreshState !== REFRESH_STATE.normal ||
+      loadState !== LOAD_STATE.normal ||
+      !onLoad) {
+      return;
+    }
 
     const bottom = this.pull.getBoundingClientRect().bottom;
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
+    if (scrollHeight <= clientHeight) {
+      return;
+    }
 
-    if (scrollHeight <= clientHeight) return;
-
-    if (bottom <= clientHeight + loadDistance) {
-      typeof onLoad === 'function' && onLoad();
+    if (bottom <= clientHeight + loadDistance && typeof onLoad === 'function') {
+      onLoad();
     }
   }
 
   onDragMove = (event, { offsetY }) => {
-    // 未设置刷新事件
     const { onRefresh } = this.props;
-    if (!onRefresh) return;
+    if (
+      // 未设置刷新事件
+      !onRefresh ||
 
-    // 上拉
-    if (offsetY < 0) return;
+      // 上拉
+      offsetY < 0 ||
 
-    // 未滚动到顶部
-    if (offsetY > 0 && (document.documentElement.scrollTop + document.body.scrollTop) > 0) return;
+      // 未滚动到顶部
+      offsetY > 0 && (document.documentElement.scrollTop + document.body.scrollTop) > 0 ||
 
-    // 已经触发过加载状态
-    if (this.state.refreshState >= REFRESH_STATE.loading) return;
+      // 已经触发过加载状态
+      this.state.refreshState >= REFRESH_STATE.loading
+    ) {
+      return;
+    }
 
     // 解决低端安卓系统只触发一次touchmove事件的bug
     event.preventDefault();
@@ -106,7 +113,9 @@ export default class Pull extends PureComponent<PullProps, any> {
     const { refreshState } = this.state;
 
     // 没有产生位移
-    if (!offsetY) return;
+    if (!offsetY) {
+      return;
+    }
 
     // 当前状态为下拉状态时
     if (refreshState === REFRESH_STATE.pull) {
@@ -115,7 +124,9 @@ export default class Pull extends PureComponent<PullProps, any> {
     }
 
     // 执行外部触发刷新的回调
-    typeof onRefresh === 'function' && onRefresh();
+    if (typeof onRefresh === 'function') {
+      onRefresh();
+    }
   }
 
   /**
@@ -178,6 +189,8 @@ export default class Pull extends PureComponent<PullProps, any> {
           this.doLoadAction(LOAD_STATE.abort);
         }, stayTime);
         break;
+
+      default:
     }
   }
 
@@ -190,7 +203,13 @@ export default class Pull extends PureComponent<PullProps, any> {
 
     let percent = 0;
     if (offsetY >= refreshInitDistance) {
-      percent = (((offsetY - refreshInitDistance) < refreshDistance ? (offsetY - refreshInitDistance) : refreshDistance) * 100) / refreshDistance;
+      percent = (
+        (
+          (offsetY - refreshInitDistance) < refreshDistance
+            ? offsetY - refreshInitDistance
+            : refreshDistance
+          ) * 100
+        ) / refreshDistance;
     }
 
     if (typeof refreshRender === 'function') {
@@ -239,6 +258,8 @@ export default class Pull extends PureComponent<PullProps, any> {
             <span>加载失败</span>
           </div>
         );
+
+      default:
     }
   }
 
@@ -278,6 +299,8 @@ export default class Pull extends PureComponent<PullProps, any> {
             <span>我是有底线的</span>
           </div>
         );
+
+      default:
     }
   }
 
@@ -306,7 +329,8 @@ export default class Pull extends PureComponent<PullProps, any> {
     return (
       <Drag
         onDragMove={this.onDragMove}
-        onDragEnd={this.onDragEnd}>
+        onDragEnd={this.onDragEnd}
+      >
         <div className={cls} ref={(ele) => { this.pull = ele; }}>
           <div className={refreshCls} style={refreshStyle}>
             {this.renderRefresh()}

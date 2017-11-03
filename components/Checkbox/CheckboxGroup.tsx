@@ -35,7 +35,7 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
     block: false,
     disabled: false,
     compact: false,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -67,7 +67,9 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
     });
 
     const { onChange } = this.props;
-    typeof onChange === 'function' && onChange(values);
+    if (typeof onChange === 'function') {
+      onChange(values);
+    }
   }
 
   render() {

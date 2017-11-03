@@ -3,7 +3,7 @@ export type Action = {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error',
   className?: string,
   onClick?: () => void,
-}
+};
 
 interface BaseProps {
   visible?: boolean;

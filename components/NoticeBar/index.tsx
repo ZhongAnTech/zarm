@@ -7,10 +7,6 @@ export { NoticeBarProps };
 
 export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
 
-  private wrapper;
-  private content;
-  private moveInterval?: number;
-
   static defaultProps = {
     prefixCls: 'za-noticebar',
     theme: 'warning',
@@ -18,7 +14,11 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
     hasArrow: false,
     hasClosable: false,
     autoscroll: false,
-  }
+  };
+
+  private wrapper;
+  private content;
+  private moveInterval?: number;
 
   constructor(props) {
     super(props);
@@ -29,10 +29,14 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
 
   componentDidMount() {
     const { autoscroll } = this.props;
-    if (!autoscroll) return;
+    if (!autoscroll) {
+      return;
+    }
 
     const distance = this.wrapper.offsetWidth - this.content.offsetWidth;
-    if (distance > 0) return;
+    if (distance > 0) {
+      return;
+    }
 
     let delay = 1000;
     this.moveInterval = setInterval(() => {
@@ -63,10 +67,15 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
     return (
       <Message {...others} size="lg">
         <div className={prefixCls} ref={(ele) => { this.wrapper = ele; }}>
-          <div className={`${prefixCls}-body`} ref={(ele) => { this.content = ele; }} style={{ left: this.state.offset }}>{children}</div>
+          <div
+            className={`${prefixCls}-body`}
+            ref={(ele) => { this.content = ele; }}
+            style={{ left: this.state.offset }}
+          >
+            {children}
+          </div>
         </div>
       </Message>
     );
   }
 }
-

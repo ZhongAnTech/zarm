@@ -13,7 +13,7 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
     message: '',
     okText: '确定',
     cancelText: '取消',
-  }
+  };
 
   render() {
     const { prefixCls, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
@@ -34,4 +34,3 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
     );
   }
 }
-

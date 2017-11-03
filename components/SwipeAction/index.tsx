@@ -8,12 +8,6 @@ export { SwipeActionProps };
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
 
-  private isOpen: boolean = false;
-  private touchEnd: boolean = true;
-  private wrap;
-  private left;
-  private right;
-
   static defaultProps = {
     prefixCls: 'za-swipeaction',
     left: [],
@@ -22,7 +16,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     moveTimeSpan: 300,
     animationDuration: 300,
     offset: 10,
-  }
+  };
+
+  private isOpen: boolean = false;
+  private touchEnd: boolean = true;
+  private wrap;
+  private left;
+  private right;
 
   constructor(props) {
     super(props);
@@ -49,23 +49,30 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   }
 
   onDragMove = (event, { offsetX, offsetY }) => {
-    if (!this.touchEnd) return;
-
     const { disabled } = this.props;
-    if (disabled) return;
+
+    if (!this.touchEnd || disabled) {
+      return;
+    }
 
     // 拖动距离达到上限
     const { offset } = this.props;
     const { offsetLeft } = this.state;
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
-    if (offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset)) return false;
-    if (offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)) return false;
+    if (
+      offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset) ||
+      offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)
+    ) {
+      return false;
+    }
 
     // 判断滚屏情况
     const distanceX = Math.abs(offsetX);
     const distanceY = Math.abs(offsetY);
-    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) return false;
+    if (distanceX < 5 || (distanceX >= 5 && distanceY >= 0.3 * distanceX)) {
+      return false;
+    }
 
     event.preventDefault();
 
@@ -115,7 +122,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   }
 
   onCloseSwipe = (e) => {
-    if (!this.wrap) return;
+    if (!this.wrap) {
+      return;
+    }
 
     if (this.isOpen) {
       const pNode = ((node) => {
@@ -139,44 +148,52 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const { animationDuration, onOpen } = this.props;
     this.isOpen = true;
     this.doTransition({ offsetLeft, animationDuration });
-    typeof onOpen === 'function' && onOpen();
+    if (typeof onOpen === 'function') {
+      onOpen();
+    }
   }
 
   close = () => {
     const { animationDuration, onClose } = this.props;
     this.isOpen = false;
     this.doTransition({ offsetLeft: 0, animationDuration });
-    typeof onClose === 'function' && onClose();
+    if (typeof onClose === 'function') {
+      onClose();
+    }
   }
 
   doTransition = ({ offsetLeft, animationDuration }) => {
     this.setState({ offsetLeft, animationDuration });
   }
 
-  renderButtons = (buttons, ref) => {
-    const prefixCls = this.props.prefixCls;
+  renderButton = (button, index, direction) => {
+    const { prefixCls } = this.props;
+    const { theme, className, text } = button;
+    const classes = classnames(`${prefixCls}-button`, className, {
+      [`theme-${theme}`]: true,
+    });
 
-    return (buttons && buttons.length) && (
+    return (
       <div
-        className={`${prefixCls}-actions-${ref}`}
-        ref={(el) => { this[ref] = el; }}>
-        {
-          buttons.map((btn, i) => {
-            const { theme, className, text } = btn;
-            const classes = classnames(`${prefixCls}-button`, className, {
-              [`theme-${theme}`]: true,
-            });
+        key={+index}
+        className={classes}
+        onClick={e => this.onBtnClick(e, button)}
+      >
+        <div className={`${prefixCls}-text`}>{text || `${direction}${index}`}</div>
+      </div>
+    );
+  }
 
-            return (
-              <div
-                key={+i}
-                className={classes}
-                onClick={e => this.onBtnClick(e, btn)}>
-                <div className={`${prefixCls}-text`}>{text || `${ref}${i}`}</div>
-              </div>
-            );
-          })
-        }
+  renderButtons = (buttons, direction) => {
+    const { prefixCls } = this.props;
+
+    if (!buttons || buttons.length === 0) {
+      return;
+    }
+
+    return (
+      <div className={`${prefixCls}-actions-${direction}`} ref={(el) => { this[direction] = el; }}>
+        {buttons.map((button, index) => this.renderButton(button, index, direction))}
       </div>
     );
   }
@@ -191,7 +208,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       WebkitTransform: `translate3d(${offsetLeft}px, 0, 0)`,
       transform: `translate3d(${offsetLeft}px, 0, 0)`,
     };
-    
+
     return (left || right)
       ? (
         <div className={cls} ref={(wrap) => { this.wrap = wrap; }}>
@@ -200,13 +217,14 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
           <Drag
             onDragStart={this.onDragStart}
             onDragMove={this.onDragMove}
-            onDragEnd={this.onDragEnd}>
+            onDragEnd={this.onDragEnd}
+          >
             <div className={`${prefixCls}-content`} style={style}>
               {children}
             </div>
           </Drag>
         </div>
-        )
+      )
       : children;
   }
 }

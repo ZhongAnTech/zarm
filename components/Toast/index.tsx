@@ -7,13 +7,13 @@ export { ToastProps };
 
 export default class Toast extends PureComponent<ToastProps, any> {
 
-  private timer: number;
-
   static defaultProps = {
     prefixCls: 'za-toast',
     visible: false,
     stayTime: 3000,
   };
+
+  private timer: number;
 
   constructor(props) {
     super(props);
@@ -47,10 +47,14 @@ export default class Toast extends PureComponent<ToastProps, any> {
       isShow: true,
     });
 
-    if (stayTime === 0) return;
+    if (stayTime === 0) {
+      return;
+    }
 
     this.timer = setTimeout(() => {
-      typeof onMaskClick === 'function' && onMaskClick();
+      if (typeof onMaskClick === 'function') {
+        onMaskClick();
+      }
       clearTimeout(this.timer);
     }, stayTime);
   }

@@ -8,12 +8,6 @@ export { SwipeProps };
 
 export default class Swipe extends Component<SwipeProps, any> {
 
-  private swipeItems;
-  private moveInterval;  
-  private scrolling: boolean = false;
-  private translateX: number = 0;
-  private translateY: number = 0;
-
   static defaultProps = {
     prefixCls: 'za-swipe',
     direction: 'left',
@@ -26,7 +20,13 @@ export default class Swipe extends Component<SwipeProps, any> {
     moveDistanceRatio: 0.5,
     moveTimeSpan: 300,
     showPagination: true,
-  }
+  };
+
+  private swipeItems;
+  private moveInterval;
+  private scrolling: boolean = false;
+  private translateX: number = 0;
+  private translateY: number = 0;
 
   constructor(props) {
     super(props);
@@ -84,7 +84,9 @@ export default class Swipe extends Component<SwipeProps, any> {
   // 移动到指定编号
   onMoveTo = (index, animationDuration) => {
     const dom = this.swipeItems;
-    if (!dom) return;
+    if (!dom) {
+      return;
+    }
 
     const { loop, children } = this.props;
     const maxLength = children.length;
@@ -139,14 +141,22 @@ export default class Swipe extends Component<SwipeProps, any> {
     if (!this.props.loop) {
       // 在首页时禁止拖动
       if (this.isLastIndex()) {
-        if (this.isDirectionX() && offsetX < 0) return false;
-        if (!this.isDirectionX() && offsetY < 0) return false;
+        if (
+          this.isDirectionX() && offsetX < 0 ||
+          !this.isDirectionX() && offsetY < 0
+        ) {
+          return false;
+        }
       }
 
       // 在尾页时禁止拖动
       if (this.isFirstIndex()) {
-        if (this.isDirectionX() && offsetX > 0) return false;
-        if (!this.isDirectionX() && offsetY > 0) return false;
+        if (
+          this.isDirectionX() && offsetX > 0 ||
+          !this.isDirectionX() && offsetY > 0
+        ) {
+          return false;
+        }
       }
     }
 
@@ -158,13 +168,17 @@ export default class Swipe extends Component<SwipeProps, any> {
   }
 
   onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
-    if (this.scrolling) return;
-    if (!offsetX && !offsetY) return;
+    if (this.scrolling) {
+      return;
+    }
+    if (!offsetX && !offsetY) {
+      return;
+    }
 
     const {
       moveDistanceRatio = Swipe.defaultProps.moveDistanceRatio,
       moveTimeSpan = Swipe.defaultProps.moveTimeSpan,
-      onChange
+      onChange,
     } = this.props;
     let { activeIndex } = this.state;
 
@@ -174,7 +188,6 @@ export default class Swipe extends Component<SwipeProps, any> {
       ? Math.abs(offsetX / dom.offsetWidth)
       : Math.abs(offsetY / dom.offsetHeight);
 
-
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
@@ -183,7 +196,9 @@ export default class Swipe extends Component<SwipeProps, any> {
         ? (this.state.activeIndex - 1)
         : (this.state.activeIndex + 1);
 
-      typeof onChange === 'function' && onChange(activeIndex);
+      if (typeof onChange === 'function') {
+        onChange(activeIndex);
+      }
     }
     this.onSlideTo(activeIndex);
 
@@ -282,7 +297,9 @@ export default class Swipe extends Component<SwipeProps, any> {
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
 
     const { onChangeEnd } = this.props;
-    typeof onChangeEnd === 'function' && onChangeEnd(this.state.activeIndex);
+    if (typeof onChangeEnd === 'function') {
+      onChangeEnd(this.state.activeIndex);
+    }
   }
 
   // 判断当前是否在最后一页
@@ -300,17 +317,41 @@ export default class Swipe extends Component<SwipeProps, any> {
     return (['left', 'right'].indexOf(this.props.direction || Swipe.defaultProps.direction) > -1);
   }
 
+  renderPaginationItem = (_result, index) => {
+    const paginationStyle: CSSProperties = {};
+    if (this.isDirectionX()) {
+      paginationStyle.display = 'inline-block';
+    }
+    return (
+      <li
+        role="tab"
+        key={`pagination-${index}`}
+        className={classnames({ active: index === this.state.activeIndex })}
+        style={paginationStyle}
+        onClick={() => this.onSlideTo(index)}
+      />
+    );
+  }
+
+  renderPagination = () => {
+    const { prefixCls, children } = this.props;
+    return (
+      <div className={`${prefixCls}-pagination`}>
+        <ul>
+          {Children.map(children, this.renderPaginationItem)}
+        </ul>
+      </div>
+    );
+  }
   render() {
-    const { prefixCls, className, height, showPagination, children } = this.props;
+    const { prefixCls, className, height, showPagination } = this.props;
     const cls = classnames(`${prefixCls}`, className);
     const itemsStyle: CSSProperties = {};
-    const paginationStyle: CSSProperties = {};
 
     if (!this.isDirectionX()) {
       itemsStyle.height = height;
     } else {
       itemsStyle.whiteSpace = 'nowrap';
-      paginationStyle.display = 'inline-block';
     }
 
     return (
@@ -318,38 +359,18 @@ export default class Swipe extends Component<SwipeProps, any> {
         <Drag
           onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}>
+          onDragEnd={this.onDragEnd}
+        >
           <div
             ref={(ele) => { this.swipeItems = ele; }}
             className={`${prefixCls}-items`}
-            style={itemsStyle}>
+            style={itemsStyle}
+          >
             {this.state.items}
           </div>
         </Drag>
-        {
-          showPagination && (
-            <div className={`${prefixCls}-pagination`}>
-              <ul>
-                {
-                  Children.map(children, (_result, index) => {
-                    return (
-                      <li
-                        role="tab"
-                        key={`pagination-${index}`}
-                        className={classnames({ active: index === this.state.activeIndex })}
-                        style={paginationStyle}
-                        onClick={() => this.onSlideTo(index)}
-                        />
-                    );
-                  })
-                }
-              </ul>
-            </div>
-          )
-        }
+        {showPagination && this.renderPagination()}
       </div>
     );
   }
 }
-
-
