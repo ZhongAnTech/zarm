@@ -305,7 +305,7 @@ exports[`Radio.Group type is cell 1`] = `
 >
   <Radio
     block={false}
-    checked={false}
+    checked={true}
     disabled={false}
     onChange={[Function]}
     prefixCls="za-radio"

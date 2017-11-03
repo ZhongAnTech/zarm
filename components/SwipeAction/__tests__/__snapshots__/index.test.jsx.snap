@@ -26,7 +26,6 @@ exports[`SwipeAction left only 1`] = `
       </div>
     </div>
   </div>
-  0
   <div
     class="za-swipeaction-content"
     style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0);"
@@ -157,7 +156,6 @@ exports[`SwipeAction right only 1`] = `
 <div
   class="za-swipeaction"
 >
-  0
   <div
     class="za-swipeaction-actions-right"
   >
