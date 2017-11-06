@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { SwipeActionProps } from './PropsType';
+import PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag from '../Drag';
 
-export { SwipeActionProps };
+export interface SwipeActionProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
 

@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   value?: number;
   defaultValue?: number;
   step: number;
@@ -6,9 +6,4 @@ interface BaseProps {
   max: number;
   disabled?: boolean;
   onChange?: (value: number) => void;
-}
-
-export interface SliderProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

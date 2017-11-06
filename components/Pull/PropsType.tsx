@@ -16,7 +16,7 @@ export enum LOAD_STATE {
   complete, // 加载完成（无新数据）
 }
 
-interface BaseProps {
+export interface PropsType {
   refreshing?: REFRESH_STATE;
   refreshInitDistance: number;
   refreshDistance: number;
@@ -28,9 +28,4 @@ interface BaseProps {
   loadRender?: (loadState: LOAD_STATE) => any;
   animationDuration?: number;
   stayTime?: number;
-}
-
-export interface PullProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

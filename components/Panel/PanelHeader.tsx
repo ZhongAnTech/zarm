@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { PanelHeaderProps } from './PropsType';
+import { BasePanelHeaderProps } from './PropsType';
 
-export { PanelHeaderProps };
+export interface PanelHeaderProps extends BasePanelHeaderProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class PanelHeader extends PureComponent<PanelHeaderProps, {}> {
 

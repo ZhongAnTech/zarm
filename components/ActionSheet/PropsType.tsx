@@ -5,16 +5,11 @@ export type Action = {
   onClick?: () => void,
 };
 
-interface BaseProps {
+export default interface PropsType {
   visible?: boolean;
   shape?: 'radius';
   actions: Action[];
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;
-}
-
-export interface ActionSheetProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

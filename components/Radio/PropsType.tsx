@@ -1,4 +1,4 @@
-interface BaseRadioProps {
+export interface BaseRadioProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
   size?: 'lg';
@@ -11,12 +11,7 @@ interface BaseRadioProps {
   value?: number | string;
 }
 
-export interface RadioProps extends BaseRadioProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-interface BaseRadioGroupProps {
+export interface BaseRadioGroupProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
   size?: 'lg';
@@ -27,9 +22,4 @@ interface BaseRadioGroupProps {
   value?: number | string;
   defaultValue?: number | string;
   compact?: boolean;
-}
-
-export interface RadioGroupProps extends BaseRadioGroupProps {
-  prefixCls?: string;
-  className?: string;
 }

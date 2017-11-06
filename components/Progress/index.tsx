@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { ProgressProps } from './PropsType';
+import PropsType from './PropsType';
 import Spinner from '../Spinner';
 
-export { ProgressProps };
+export interface ProgressProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Progress extends PureComponent<ProgressProps, {}> {
 

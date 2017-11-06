@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
-import { ConfirmProps } from './PropsType';
+import PropsType from './PropsType';
 import Modal from '../Modal';
 import Button from '../Button';
 
-export { ConfirmProps };
+export interface ConfirmProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Confirm extends PureComponent<ConfirmProps, {}> {
 

@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { ModalFooterProps } from './PropsType';
 
-export { ModalFooterProps };
+export interface ModalFooterProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
 

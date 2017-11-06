@@ -1,3 +1,3 @@
-import { ToastProps } from '../Toast/PropsType';
+import PropsType from '../Toast/PropsType';
 
-export { ToastProps as LoadingProps };
+export default PropsType;

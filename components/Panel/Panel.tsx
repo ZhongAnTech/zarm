@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { PanelProps } from './PropsType';
 
-export { PanelProps };
+export interface PanelProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Panel extends PureComponent<PanelProps, {}> {
 

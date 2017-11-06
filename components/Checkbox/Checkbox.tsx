@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { CheckboxProps } from './PropsType';
+import { BaseCheckboxProps } from './PropsType';
 import Cell from '../Cell';
 import Button from '../Button';
 
@@ -14,7 +14,10 @@ function getChecked(props, defaultChecked) {
   return defaultChecked;
 }
 
-export { CheckboxProps };
+export interface CheckboxProps extends BaseCheckboxProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Checkbox extends PureComponent<CheckboxProps, any> {
 

@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { MaskProps } from './PropsType';
+import PropsType from './PropsType';
 
-export { MaskProps };
+export interface MaskProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Mask extends PureComponent<MaskProps, {}> {
 
@@ -12,12 +15,10 @@ export default class Mask extends PureComponent<MaskProps, {}> {
     type: 'normal',
   };
 
-  render() {
+  render(): any {
     const { prefixCls, className, visible, type, onClose, ...others } = this.props;
     const markCls = classnames(`${prefixCls}`, className, type);
 
-    return visible
-      ? <div className={markCls} onClick={onClose} {...others} />
-      : null;
+    return visible && <div className={markCls} onClick={onClose} {...others} />;
   }
 }

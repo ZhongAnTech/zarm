@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   direction?: 'left' | 'right' | 'top' | 'bottom';
   height?: string | number;
   loop?: boolean;
@@ -12,9 +12,4 @@ interface BaseProps {
   onChange?: (activeIndex: number) => void;
   onChangeEnd?: (activeIndex: number) => void;
   children?: any;
-}
-
-export interface SwipeProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

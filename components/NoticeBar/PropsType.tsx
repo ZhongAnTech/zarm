@@ -1,5 +1,5 @@
-import { MessageProps } from '../Message/PropsType';
+import MessagePropsType from '../Message/PropsType';
 
-export interface NoticeBarProps extends MessageProps {
+export default interface PropsType extends MessagePropsType {
   autoscroll?: boolean;
 }

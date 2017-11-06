@@ -1,11 +1,6 @@
-interface BaseProps {
+export default interface PropsType {
   visible?: boolean;
   type?: 'transparent' | 'light' | 'normal' | 'dark';
   onClose?: () => void;
   style?: React.CSSProperties;
-}
-
-export interface MaskProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

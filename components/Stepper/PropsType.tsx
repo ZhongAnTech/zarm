@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'circle';
   value?: number;
@@ -10,9 +10,4 @@ interface BaseProps {
   disabled?: boolean;
   onInputChange?: (value: number) => void;
   onChange?: (value: number) => void;
-}
-
-export interface StepperProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

@@ -1,6 +1,6 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
-import { CheckboxGroupProps } from './PropsType';
+import { BaseCheckboxGroupProps } from './PropsType';
 
 function getChildChecked(children) {
   const checkedValue: any[] = [];
@@ -25,7 +25,10 @@ function getValue(props, defaultValue) {
   return defaultValue;
 }
 
-export { CheckboxGroupProps };
+export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any> {
 

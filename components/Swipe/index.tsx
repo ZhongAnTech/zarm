@@ -1,10 +1,13 @@
 import React, { Component, cloneElement, Children, CSSProperties } from 'react';
 import classnames from 'classnames';
-import { SwipeProps } from './PropsType';
+import PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag from '../Drag';
 
-export { SwipeProps };
+export interface SwipeProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Swipe extends Component<SwipeProps, any> {
 

@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react';
 import Toast from '../Toast';
 import Spinner from '../Spinner';
-import { LoadingProps } from './PropsType';
+import PropsType from './PropsType';
 
-export { LoadingProps };
+export interface LoadingProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
-class Loading extends PureComponent<LoadingProps, {}> {
+export default class Loading extends PureComponent<LoadingProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-loading',
@@ -21,5 +24,3 @@ class Loading extends PureComponent<LoadingProps, {}> {
     );
   }
 }
-
-export default Loading;

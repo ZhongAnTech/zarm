@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   disabled?: boolean;
   multiple?: boolean;
   quality?: number;
@@ -6,9 +6,4 @@ interface BaseProps {
   capture?: any;
   onChange?: (file: Object | Array<Object>) => void;
   onBeforeSelect?: () => boolean;
-}
-
-export interface UploaderProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

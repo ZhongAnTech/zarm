@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { ButtonProps } from './PropsType';
+import PropsType from './PropsType';
 import Spinner from '../Spinner';
 
-export { ButtonProps };
+export interface ButtonProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Button extends PureComponent<ButtonProps, {}> {
 

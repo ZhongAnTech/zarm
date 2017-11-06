@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { PopupProps } from './PropsType';
+import PropsType from './PropsType';
 import Events from '../utils/events';
 import Mask from '../Mask';
 
-export { PopupProps };
+export interface PopupProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Popup extends PureComponent<PopupProps, any> {
 

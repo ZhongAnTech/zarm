@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { PanelFooterProps } from './PropsType';
+import { BasePanelFooterProps } from './PropsType';
 
-export { PanelFooterProps };
+export interface PanelFooterProps extends BasePanelFooterProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
 
