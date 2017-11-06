@@ -11,4 +11,3 @@ export default interface PropsType {
   icon?: any;
   onClick?: (x?: any) => void;
 }
-
