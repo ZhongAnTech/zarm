@@ -138,11 +138,19 @@ class Swipe extends Component {
     return true;
   }
 
-  onDragEnd = (event, { offsetX, offsetY, startTime }) => {
-    if (this.scrolling) return;
-    if (!offsetX && !offsetY) return;
+  onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
+    if (this.scrolling) {
+      return;
+    }
+    if (!offsetX && !offsetY) {
+      return;
+    }
 
-    const { moveDistanceRatio, moveTimeSpan, onChange } = this.props;
+    const {
+      moveDistanceRatio = Swipe.defaultProps.moveDistanceRatio,
+      moveTimeSpan = Swipe.defaultProps.moveTimeSpan,
+      onChange,
+    } = this.props;
     let { activeIndex } = this.state;
 
     const dom = this.swipeItems;
@@ -151,21 +159,38 @@ class Swipe extends Component {
       ? Math.abs(offsetX / dom.offsetWidth)
       : Math.abs(offsetY / dom.offsetHeight);
 
-
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
     if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
-      activeIndex = ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0))
-        ? (this.state.activeIndex - 1)
-        : (this.state.activeIndex + 1);
+      const op = !((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0));
 
-      typeof onChange === 'function' && onChange(activeIndex);
+      if (typeof onChange === 'function') {
+        onChange(this.parseActiveIndexParse(op));
+      }
+
+      activeIndex = op ? activeIndex + 1 : activeIndex - 1;
     }
+
     this.onSlideTo(activeIndex);
 
     // 恢复自动轮播
     this.startAutoPlay();
+  }
+
+  parseActiveIndexParse = (op) => {
+    const { loop, children } = this.props;
+    const maxIndex = children.length - 1;
+    let { activeIndex } = this.state;
+
+    if (op) {
+      // eslint-disable-next-line
+      activeIndex = (activeIndex + 1) > maxIndex ? (loop ? 0 : maxIndex) : activeIndex += 1;
+    } else {
+      // eslint-disable-next-line
+      activeIndex = (activeIndex - 1) < 0 ? (loop ? maxIndex : 0) : activeIndex -= 1;
+    }
+    return activeIndex;
   }
 
   // 自动轮播开始
