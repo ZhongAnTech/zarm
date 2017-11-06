@@ -3,34 +3,39 @@
 exports[`Input autosize 1`] = `
 <Input
   autosize={true}
-  disabled={false}
   onChange={[Function]}
-  prefixCls="za-input"
   rows={4}
-  showLength={false}
   type="textarea"
   value="foo"
 >
-  <div
-    className="za-input"
+  <InputTextarea
+    autosize={true}
+    disabled={false}
+    onChange={[Function]}
+    prefixCls="za-input"
+    rows={4}
+    showLength={false}
+    value="foo"
   >
-    <textarea
-      className="za-input"
-      disabled={false}
-      onChange={[Function]}
-      rows={4}
-      value="foo"
-    />
-  </div>
+    <div
+      className="za-input za-input-textarea"
+    >
+      <textarea
+        disabled={false}
+        onChange={[Function]}
+        rows={4}
+        value="foo"
+      />
+    </div>
+  </InputTextarea>
 </Input>
 `;
 
 exports[`Input renders correctly 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-text"
 >
   <input
-    class="za-input"
     type="text"
   />
 </div>
@@ -38,10 +43,9 @@ exports[`Input renders correctly 1`] = `
 
 exports[`Input showLength 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-textarea"
 >
   <textarea
-    class="za-input"
     maxlength="100"
     rows="4"
   />
@@ -55,24 +59,19 @@ exports[`Input showLength 1`] = `
 
 exports[`Input type is date renders correctly 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-text"
 >
-  <div
-    class="za-input-placeholder"
-  />
   <input
-    class="za-input"
-    type="date"
+    type="text"
   />
 </div>
 `;
 
 exports[`Input type is textarea renders correctly 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-textarea"
 >
   <textarea
-    class="za-input"
     rows="4"
   />
 </div>
