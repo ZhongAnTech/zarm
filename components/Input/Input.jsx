@@ -7,14 +7,14 @@ import InputTextarea from './InputTextarea';
 class Input extends PureComponent {
 
   render() {
-    const { type, ...others } = this.props;
+    const { type, autosize, ...others } = this.props;
 
     switch (type) {
       case 'number':
         return <InputNumber ref={(ele) => { this.input = ele; }} {...others} />;
 
       case 'textarea':
-        return <InputTextarea ref={(ele) => { this.input = ele; }} {...others} />;
+        return <InputTextarea ref={(ele) => { this.input = ele; }} autosize={autosize} {...others} />;
 
       default:
         return <InputText ref={(ele) => { this.input = ele; }} {...others} />;
