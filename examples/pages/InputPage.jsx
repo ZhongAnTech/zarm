@@ -16,8 +16,6 @@ class Page extends Component {
             <Panel.Body>
               <Cell title="单行文本"><Input ref={(ele) => { this.focusInput = ele; }} type="text" placeholder="请输入" /></Cell>
               <Cell title="多行文本"><Input type="textarea" rows={3} placeholder="请输入" /></Cell>
-              <Cell title="数字输入"><Input type="number" placeholder="type is number" /></Cell>
-              <Cell title="日期输入"><Input type="date" placeholder="type is number" /></Cell>
               <Cell><a onClick={() => { this.focusInput.input.input.focus(); }}>click to focus the first input</a></Cell>
             </Panel.Body>
           </Panel>
