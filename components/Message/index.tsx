@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { MessageProps } from './PropsType';
+import PropsType from './PropsType';
 import Icon from '../Icon';
 
-export { MessageProps };
+export interface MessageProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Message extends PureComponent<MessageProps, any> {
 

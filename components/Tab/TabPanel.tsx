@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { TabPannelProps } from './PropsType';
 
-export { TabPannelProps };
+export interface TabPannelProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class TabPanel extends PureComponent<TabPannelProps, any> {
 

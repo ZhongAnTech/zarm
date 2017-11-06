@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BadgeProps } from './PropsType';
+import PropsType from './PropsType';
 
-export { BadgeProps };
+export interface BadgeProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Badge extends PureComponent<BadgeProps, {}> {
 

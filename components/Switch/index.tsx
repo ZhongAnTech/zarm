@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { SwitchProps } from './PropsType';
+import PropsType from './PropsType';
 
 function getChecked(props, defaultChecked) {
   if ('checked' in props && props.checked) {
@@ -12,7 +12,10 @@ function getChecked(props, defaultChecked) {
   return defaultChecked;
 }
 
-export { SwitchProps };
+export interface SwitchProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Switch extends PureComponent<SwitchProps, any> {
 

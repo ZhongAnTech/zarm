@@ -1,10 +1,13 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import { ModalProps } from './PropsType';
+import { BaseModalProps } from './PropsType';
 import Mask from '../Mask';
 
-export { ModalProps };
+export interface ModalProps extends BaseModalProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Modal extends PureComponent<ModalProps, any> {
 

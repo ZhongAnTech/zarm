@@ -1,13 +1,16 @@
 {
-  "compilerOptions":{
+  "compilerOptions": {
     "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "react",
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6"
+    "target": "es6",
+    // "allowJs": true,
+    "declaration": true,
+    "outDir": "lib",
+    "module": "commonjs"
   },
   "include": [
     "components/**/*"

@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   visible?: boolean;
   shape?: 'radius';
   direction?: 'top' | 'right' | 'bottom' | 'left';
@@ -9,9 +9,4 @@ interface BaseProps {
   mask?: boolean;
   maskType?: 'transparent' | 'light' | 'normal' | 'dark';
   onMaskClick?: () => void;
-}
-
-export interface PopupProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

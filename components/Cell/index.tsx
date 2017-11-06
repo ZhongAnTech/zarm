@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
-import { CellProps } from './PropsType';
+import PropsType from './PropsType';
 import classnames from 'classnames';
 
-export { CellProps };
+export interface CellProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Cell extends PureComponent<CellProps, {}> {
 

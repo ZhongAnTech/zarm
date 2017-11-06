@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   hasArrow?: boolean;
   icon?: any;
@@ -7,9 +7,4 @@ interface BaseProps {
   help?: any;
   disabled?: boolean;
   onClick?: () => void;
-}
-
-export interface CellProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

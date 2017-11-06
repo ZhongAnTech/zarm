@@ -1,5 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { TabProps } from './PropsType';
+import PropsType from './PropsType';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
 import Swipe from '../Swipe';
@@ -14,7 +14,10 @@ function getSelectIndex(children) {
   return selectIndex;
 }
 
-export { TabProps };
+export interface TabProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Tab extends PureComponent<TabProps, any> {
 

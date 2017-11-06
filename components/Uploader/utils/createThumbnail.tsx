@@ -1,5 +1,11 @@
 import changeImageSize from './changeImageSize';
 
+declare global {
+  interface Window {
+    webkitURL?: any;
+  }
+}
+
 /**
  * generate preview image
  * modify image quality
@@ -11,7 +17,7 @@ import changeImageSize from './changeImageSize';
  * @param maxHeight
  * @param callback
  */
-export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }, callback) {
+export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }: any, callback) {
   const img = document.createElement('img');
 
   window.URL = window.URL || window.webkitURL;

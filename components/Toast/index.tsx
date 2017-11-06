@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { ToastProps } from './PropsType';
+import PropsType from './PropsType';
 import Mask from '../Mask';
 
-export { ToastProps };
+export interface ToastProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Toast extends PureComponent<ToastProps, any> {
 

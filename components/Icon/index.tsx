@@ -1,8 +1,11 @@
 import React, { PureComponent } from 'react';
-import { IconProps } from './PropsType';
+import PropsType from './PropsType';
 import classnames from 'classnames';
 
-export { IconProps };
+export interface IconProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Icon extends PureComponent<IconProps, {}> {
 

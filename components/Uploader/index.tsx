@@ -10,11 +10,14 @@
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
 import React, { PureComponent } from 'react';
-import { UploaderProps } from './PropsType';
+import PropsType from './PropsType';
 import classNames from 'classnames';
 import handleFileInfo from './utils/handleFileInfo';
 
-export { UploaderProps };
+export interface UploaderProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Uploader extends PureComponent<UploaderProps, any> {
 

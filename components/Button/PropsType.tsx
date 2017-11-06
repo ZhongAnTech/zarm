@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   size?: 'xl' | 'lg' | 'sm' | 'xs';
   shape?: 'radius' | 'round' | 'circle';
@@ -12,7 +12,3 @@ interface BaseProps {
   onClick?: (x?: any) => void;
 }
 
-export interface ButtonProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
-}

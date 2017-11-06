@@ -1,4 +1,4 @@
-interface BaseCheckboxProps {
+export interface BaseCheckboxProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
   size?: 'lg';
@@ -12,12 +12,7 @@ interface BaseCheckboxProps {
   value?: number | string;
 }
 
-export interface CheckboxProps extends BaseCheckboxProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-interface BaseCheckboxGroupProps {
+export interface BaseCheckboxGroupProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
   size?: 'lg';
@@ -28,9 +23,4 @@ interface BaseCheckboxGroupProps {
   value?: Array<number | string>;
   defaultValue?: Array<number | string>;
   compact?: boolean;
-}
-
-export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
-  prefixCls?: string;
-  className?: string;
 }

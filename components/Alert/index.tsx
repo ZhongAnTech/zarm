@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
-import { AlertProps } from './PropsType';
+import PropsType from './PropsType';
 import Modal from '../Modal';
 import Button from '../Button';
 
-export { AlertProps };
+export interface AlertProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Alert extends PureComponent<AlertProps, {}> {
 

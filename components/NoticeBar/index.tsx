@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react';
-import { NoticeBarProps } from './PropsType';
+import PropsType from './PropsType';
 import Message from '../Message';
 import Icon from '../Icon';
 
-export { NoticeBarProps };
+export interface MessageProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
-export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
+export default class NoticeBar extends PureComponent<MessageProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-noticebar',

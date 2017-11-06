@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   left?: Array<Object>;
   right?: Array<Object>;
   moveDistanceRatio: number;
@@ -9,9 +9,4 @@ interface BaseProps {
   disabled?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
-}
-
-export interface SwipeActionProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

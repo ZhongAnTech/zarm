@@ -21,6 +21,7 @@ export default function handleFileInfo({ file, quality }, callback) {
     fileType,
     fileSize,
     fileName,
+    thumbnail: '',
   };
 
   const callbackFunc = (url) => {

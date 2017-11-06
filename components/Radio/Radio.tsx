@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { RadioProps } from './PropsType';
+import { BaseRadioProps } from './PropsType';
 import Cell from '../Cell';
 import Button from '../Button';
 import Icon from '../Icon';
@@ -15,7 +15,10 @@ function getChecked(props, defaultChecked) {
   return defaultChecked;
 }
 
-export { RadioProps };
+export interface RadioProps extends BaseRadioProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Radio extends PureComponent<RadioProps, any> {
 

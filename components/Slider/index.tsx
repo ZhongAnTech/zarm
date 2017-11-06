@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import { SliderProps } from './PropsType';
+import PropsType from './PropsType';
 import Drag from '../Drag';
 import Tooltip from '../Tooltip';
 
@@ -15,7 +15,10 @@ function getValue(props, defaultValue) {
   return defaultValue;
 }
 
-export { SliderProps };
+export interface SliderProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Slider extends PureComponent<SliderProps, any> {
 

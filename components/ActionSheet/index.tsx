@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { ActionSheetProps } from './PropsType';
+import PropsType from './PropsType';
 import Popup from '../Popup';
 
-export { ActionSheetProps };
+export interface ActionSheetProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
 

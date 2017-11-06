@@ -1,7 +1,7 @@
 import { PureComponent, cloneElement } from 'react';
-import { DragProps } from './PropsType';
+import PropsType from './PropsType';
 
-export { DragProps };
+export interface DragProps extends PropsType { }
 
 export default class Drag extends PureComponent<DragProps, {}> {
 

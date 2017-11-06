@@ -1,4 +1,4 @@
-interface BaseProps {
+export interface BaseModalProps {
   shape?: 'radius';
   visible?: boolean;
   animationType?:
@@ -10,31 +10,11 @@ interface BaseProps {
   onMaskClick?: () => void;
 }
 
-export interface ModalProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-interface ModalHeaderBaseProps extends BaseProps {
+export interface BaseModalHeaderProps {
   title?: any;
   onClose?: () => void;
 }
 
-export interface ModalHeaderProps extends ModalHeaderBaseProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-interface ModalBodyBaseProps extends BaseProps {
+export interface BaseModalBodyProps {
   height?: string | number;
-}
-
-export interface ModalBodyProps extends ModalBodyBaseProps {
-  prefixCls?: string;
-  className?: string;
-}
-
-export interface ModalFooterProps {
-  prefixCls?: string;
-  className?: string;
 }

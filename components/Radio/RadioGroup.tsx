@@ -1,6 +1,6 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
-import { RadioGroupProps } from './PropsType';
+import { BaseRadioGroupProps } from './PropsType';
 
 function getChildChecked(children) {
   let checkedValue = null;
@@ -25,7 +25,10 @@ function getValue(props, defaultValue) {
   return defaultValue;
 }
 
-export { RadioGroupProps };
+export interface RadioGroupProps extends BaseRadioGroupProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
 

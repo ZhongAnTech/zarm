@@ -1,4 +1,4 @@
-interface BaseProps {
+export default interface PropsType {
   shape?: 'radius';
   visible?: boolean;
   animationType?:
@@ -12,9 +12,4 @@ interface BaseProps {
   message?: any;
   cancelText?: any;
   onCancel?: () => void;
-}
-
-export interface AlertProps extends BaseProps {
-  prefixCls?: string;
-  className?: string;
 }

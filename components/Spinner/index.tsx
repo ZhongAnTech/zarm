@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { SpinnerProps } from './PropsType';
+import PropsType from './PropsType';
 
 const DIAMETER = 62;
 
-export { SpinnerProps };
+export interface SpinnerProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Spinner extends PureComponent<SpinnerProps, any> {
   static defaultProps = {

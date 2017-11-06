@@ -1,8 +1,11 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
-import { ModalBodyProps } from './PropsType';
+import { BaseModalBodyProps } from './PropsType';
 
-export { ModalBodyProps };
+export interface ModalBodyProps extends BaseModalBodyProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
 

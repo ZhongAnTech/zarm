@@ -1,10 +1,13 @@
 import React, { PureComponent, cloneElement } from 'react';
 import ReactDOM, { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
-import { TooltipProps } from './PropsType';
+import PropsType from './PropsType';
 // import Events from '../utils/events';
 
-export { TooltipProps };
+export interface TooltipProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Tooltip extends PureComponent<TooltipProps, any> {
 

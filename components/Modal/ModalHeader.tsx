@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { ModalHeaderProps } from './PropsType';
+import { BaseModalHeaderProps } from './PropsType';
 import Icon from '../Icon';
 
-export { ModalHeaderProps };
+export interface ModalHeaderProps extends BaseModalHeaderProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
 

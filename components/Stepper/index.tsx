@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { StepperProps } from './PropsType';
+import PropsType from './PropsType';
 import Icon from '../Icon';
 
 function getValue(props, defaultValue) {
@@ -13,7 +13,10 @@ function getValue(props, defaultValue) {
   return defaultValue;
 }
 
-export { StepperProps };
+export interface StepperProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Stepper extends PureComponent<StepperProps, any> {
 

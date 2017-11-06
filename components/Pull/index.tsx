@@ -1,12 +1,15 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { REFRESH_STATE, LOAD_STATE, PullProps } from './PropsType';
+import { REFRESH_STATE, LOAD_STATE, PropsType } from './PropsType';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import Drag from '../Drag';
 import Spinner from '../Spinner';
 import Icon from '../Icon';
 
-export { PullProps };
+export interface PullProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
 
 export default class Pull extends PureComponent<PullProps, any> {
 
