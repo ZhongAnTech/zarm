@@ -1,5 +1,10 @@
 # 版本更新日志 
 
+## v1.1.1
+- Bug Fix
+  - 修复`Swipe`组件下onChange方法的index参数错误的bug。（[931815a](https://github.com/ZhonganTechENG/zarm/commit/931815ab28fb0f1286bd0487b4df0e2897134ad9)）
+
+
 ## v1.1.0
 - Break Change
   - 统一组件`Toast`、`Pull`、`Popup`、`Swipe`、`SwipeAction`的API，`stayTime`表示停留时间， `animationDuration`表示动画执行时间。（[7f3bfbd](https://github.com/ZhonganTechENG/zarm/commit/7f3bfbdc30e4355566dad0d7f0c907a262611ca4)）
