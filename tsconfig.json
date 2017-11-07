@@ -6,9 +6,7 @@
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es6",
-    // "allowJs": true,
-    "declaration": true
+    "target": "es6"
   },
   "include": [
     "components/**/*"
