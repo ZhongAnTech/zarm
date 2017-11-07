@@ -1,9 +1,23 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Autosize from 'autosize';
+import { BaseInputTextareaProps } from './PropsType';
 
-class InputTextarea extends PureComponent {
+export interface InputTextareaProps extends BaseInputTextareaProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+export default class InputTextarea extends PureComponent<InputTextareaProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-input',
+    disabled: false,
+    autosize: false,
+    showLength: false,
+  };
+
+  private input;
 
   constructor(props) {
     super(props);
@@ -28,13 +42,17 @@ class InputTextarea extends PureComponent {
     const { onChange } = this.props;
     const length = e.target.value.length;
     this.setState({ length });
-    typeof onChange === 'function' && onChange(e);
+    if (typeof onChange === 'function') {
+      onChange(e);
+    }
   }
 
   // 初始化自适应高度
   initAutosize = () => {
     const { autosize } = this.props;
-    autosize && Autosize(this.input);
+    if (autosize) {
+      Autosize(this.input);
+    }
   }
 
   updateAutosize = (prevProps) => {
@@ -46,7 +64,9 @@ class InputTextarea extends PureComponent {
   // 销毁自适应高度
   destroyAutosize = () => {
     const { autosize } = this.props;
-    autosize && Autosize.destroy(this.input);
+    if (autosize) {
+      Autosize.destroy(this.input);
+    }
   }
 
   render() {
@@ -57,11 +77,19 @@ class InputTextarea extends PureComponent {
       disabled,
       autosize,
       showLength,
-      ...others
+      ...others,
     } = this.props;
 
-    const cls = classnames(prefixCls, `${prefixCls}-textarea`, className, disabled);
-    const textLengthRender = (showLength && maxLength) && <div className={`${prefixCls}-length`}>{`${this.state.length}/${maxLength}`}</div>;
+    const cls = classnames(prefixCls, `${prefixCls}-textarea`, className, {
+      disabled,
+    });
+
+    const textLengthRender =
+      showLength &&
+      maxLength &&
+      <div className={`${prefixCls}-length`}>
+        {`${this.state.length}/${maxLength}`}
+      </div>;
 
     return (
       <div className={cls}>
@@ -71,31 +99,9 @@ class InputTextarea extends PureComponent {
           disabled={disabled}
           maxLength={maxLength}
           onChange={this.onInputChange}
-          />
+        />
         {textLengthRender}
       </div>
     );
   }
 }
-
-InputTextarea.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  value: PropTypes.string,
-  defaultValue: PropTypes.string,
-  disabled: PropTypes.bool,
-  rows: PropTypes.number,
-  autosize: PropTypes.bool,
-  maxLength: PropTypes.number,
-  showLength: PropTypes.bool,
-  onChange: PropTypes.func,
-};
-
-InputTextarea.defaultProps = {
-  prefixCls: 'za-input',
-  disabled: false,
-  autosize: false,
-  showLength: false,
-};
-
-export default InputTextarea;

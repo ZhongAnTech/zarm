@@ -56,7 +56,7 @@ export default class Drag extends PureComponent<DragProps, {}> {
     this.dragState = {};
   }
 
-  render() {
+  render(): any {
     const { children } = this.props;
     return cloneElement(children, {
       onTouchStart: this.onTouchStart,

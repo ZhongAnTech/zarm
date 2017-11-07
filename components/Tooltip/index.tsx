@@ -17,7 +17,6 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
   };
 
   private child;
-  private tooltip;
 
   componentDidMount() {
     if (!window.zarmTooltip) {
@@ -47,7 +46,7 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
     };
 
     ReactDOM.render(
-      <div className={cls} style={style} ref={(ele) => { this.tooltip = ele; }}>
+      <div className={cls} style={style}>
         <div className={`${prefixCls}-inner`}>{message}</div>
       </div>
     , window.zarmTooltip);
