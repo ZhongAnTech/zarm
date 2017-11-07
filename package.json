@@ -50,7 +50,6 @@
   "dependencies": {
     "autosize": "^3.0.21",
     "classnames": "^2.2.5",
-    "moment": "2.18.1",
     "zscroller": "^0.2.5"
   },
   "devDependencies": {
@@ -112,6 +111,7 @@
     "typescript": "^2.5.3",
     "url-loader": "^0.5.8",
     "webpack": "^3.6.0",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "2.7.1"
   },
   "jest": {

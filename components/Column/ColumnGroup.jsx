@@ -11,14 +11,14 @@ class ColumnGroup extends Component {
     };
   }
 
-  onValueChange(v, i) {
+  onValueChange = (v, i) => {
     const value = this.getValue().concat();
 
     value[i] = v;
     this.props.onValueChange(value, i);
   }
 
-  getValue() {
+  getValue = () => {
     const { children, selectedValue } = this.props;
 
     if (selectedValue && selectedValue.length) {
@@ -36,8 +36,8 @@ class ColumnGroup extends Component {
   render() {
     const {
       prefixCls, className,
-      indicatorStyle, pure,
-      children, displayMember, valueMember,
+      pure, children,
+      displayMember, valueMember,
     } = this.props;
 
     const selectedValue = this.getValue();
@@ -46,7 +46,6 @@ class ColumnGroup extends Component {
         <div key={col.key || i} className={`${prefixCls}-column-group-item`}>
           <Column
             pure={pure}
-            indicatorStyle={indicatorStyle}
             prefixCls={prefixCls}
             selectedValue={selectedValue[i]}
             displayMember={displayMember}

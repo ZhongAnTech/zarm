@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
-import ColumnGroup from './ColumnGroup';
-import Cascader from './Cascader';
+import Column from '../Column';
 import Popup from '../Popup';
 
 
@@ -29,6 +28,7 @@ class Picker extends Component {
       _data = dataSource;
       _value = initValue;
     }
+
 
     this.state = {
       visible: props.visible || false,
@@ -75,14 +75,14 @@ class Picker extends Component {
     }
   }
 
-  onValueChange(value) {
+  onValueChange = (value) => {
     this.setState({
       value,
     });
     this.props.onChange(value);
   }
 
-  onCancel() {
+  onCancel = () => {
     const { onCancel } = this.props;
     this.toggle();
     this.setState({
@@ -91,7 +91,7 @@ class Picker extends Component {
     onCancel && onCancel();
   }
 
-  onOk() {
+  onOk = () => {
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
@@ -105,13 +105,13 @@ class Picker extends Component {
     onOk && onOk(_value);
   }
 
-  onMaskClick() {
+  onMaskClick = () => {
     const { onMaskClick } = this.props;
     this.onCancel();
     onMaskClick && onMaskClick();
   }
 
-  getInitValue() {
+  getInitValue = () => {
     const data = this.state.data;
     const { valueMember } = this.props;
 
@@ -128,7 +128,7 @@ class Picker extends Component {
   }
 
   // 切换显示状态
-  toggle() {
+  toggle = () => {
     if (this.props.disabled) {
       return;
     }
@@ -137,18 +137,18 @@ class Picker extends Component {
     });
   }
 
-  handleClick() {
+  handleClick = () => {
     this.props.onClick();
     !this.props.disabled && this.toggle();
   }
 
-  close(key) {
+  close = (key) => {
     this.setState({
       [`${key}`]: false,
     });
   }
 
-  _displayRender(data) {
+  _displayRender = (data) => {
     const { displayRender, displayMember, displayAddon } = this.props;
 
     if (typeof displayRender === 'function') {
@@ -165,13 +165,9 @@ class Picker extends Component {
 
     let PickerCol = null;
 
-    const classes = classnames({
-      [`${prefixCls}-container`]: true,
-      [className]: !!className,
-    });
+    const classes = classnames(`${prefixCls}-container`, className);
 
-    const inputCls = classnames({
-      [`${prefixCls}-input`]: true,
+    const inputCls = classnames(`${prefixCls}-input`, {
       [`${prefixCls}-placeholder`]: !value.join(displayAddon),
       [`${prefixCls}-disabled`]: !!disabled,
     });
@@ -182,7 +178,7 @@ class Picker extends Component {
 
     if (this.state.cascade) {
       PickerCol = (
-        <Cascader
+        <Column.Cascader
           prefixCls={prefixCls}
           data={data}
           value={this.state.value}
@@ -194,7 +190,7 @@ class Picker extends Component {
       );
     } else {
       PickerCol = (
-        <ColumnGroup
+        <Column.Group
           className={className}
           prefixCls={prefixCls}
           displayMember={displayMember}
@@ -202,7 +198,7 @@ class Picker extends Component {
           selectedValue={value}
           onValueChange={v => this.onValueChange(v)} >
           {cols}
-        </ColumnGroup>
+        </Column.Group>
       );
     }
 
@@ -223,6 +219,8 @@ class Picker extends Component {
         }
         return undefined;
       }).filter(t => !!t);
+
+
       return this._displayRender(treeChildren2);
     };
 
@@ -234,14 +232,13 @@ class Picker extends Component {
         </div>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
-            className="za-popup-inner"
             visible={this.state.visible}
-            onMaskClick={() => this.onMaskClick()}>
+            onMaskClick={this.onMaskClick}>
             <div className={`${prefixCls}-wrapper`}>
               <div className={`${prefixCls}-header`}>
-                <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+                <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
                 <div className={`${prefixCls}-title`}>{title}</div>
-                <div className={`${prefixCls}-submit`} onClick={() => this.onOk()}>{okText}</div>
+                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
               </div>
               <div className={`${prefixCls}-mask-top`}>
                 <div className={`${prefixCls}-mask-bottom`}>

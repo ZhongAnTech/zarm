@@ -72,6 +72,142 @@ exports[`Checkbox renders correctly 1`] = `
 </div>
 `;
 
+exports[`Checkbox.Group render defaultValue correctly 1`] = `
+<div
+  class="za-checkbox-group"
+>
+  <div
+    class="za-checkbox theme-primary"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项一
+      </span>
+      <input
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class="za-checkbox theme-primary checked"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项二
+      </span>
+      <input
+        checked=""
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class="za-checkbox theme-primary"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项三
+      </span>
+      <input
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Checkbox.Group render value correctly 1`] = `
+<div
+  class="za-checkbox-group"
+>
+  <div
+    class="za-checkbox theme-primary checked"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项一
+      </span>
+      <input
+        checked=""
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class="za-checkbox theme-primary"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项二
+      </span>
+      <input
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+  <div
+    class="za-checkbox theme-primary"
+  >
+    <div
+      class="za-checkbox-wrapper"
+    >
+      <span
+        class="za-checkbox-inner"
+      />
+      <span
+        class="za-checkbox-text"
+      >
+        选项三
+      </span>
+      <input
+        class="za-checkbox-input"
+        type="checkbox"
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Checkbox.Group renders correctly 1`] = `
 <div
   class="za-checkbox-group"

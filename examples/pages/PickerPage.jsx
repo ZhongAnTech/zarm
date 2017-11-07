@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Picker } from '../../components';
+import { Panel, Cell, Picker, DatePicker } from '../../components';
 import District from '../mock/district';
 
 class Page extends Component {
@@ -179,24 +179,25 @@ class Page extends Component {
             <Panel.Body>
 
               <Cell title="年份选择">
-                <Picker.Date
+                <DatePicker
                   title="选择年份"
                   placeholder="请选择年份"
                   mode="year"
-                  wheelDefaultValue="2009"
+                  min="2014"
                   />
               </Cell>
 
               <Cell title="日期选择">
-                <Picker.Date
+                <DatePicker
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
+                  value="2009-03-04"
                   />
               </Cell>
 
               <Cell title="时间选择">
-                <Picker.Date
+                <DatePicker
                   title="选择时间"
                   placeholder="请选择时间"
                   mode="time"
@@ -205,15 +206,15 @@ class Page extends Component {
               </Cell>
 
               <Cell title="日期&时间">
-                <Picker.Date mode="datetime" />
+                <DatePicker mode="datetime" />
               </Cell>
 
               <Cell title="自定义格式">
-                <Picker.Date
+                <DatePicker
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
-                  format="YYYY年MM月DD日"
+                  format="yyyy年MM月dd日"
                   />
               </Cell>
 

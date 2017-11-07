@@ -364,7 +364,6 @@ exports[`Input.Textarea autosize 1`] = `
     >
       <textarea
         disabled={false}
-        maxLength={undefined}
         onChange={[Function]}
         rows={4}
         value="foo"
