@@ -8,8 +8,10 @@ scripts
 .eslintignore
 .eslintrc
 .gitignore
+.npmignore
 .stylelintrc
 .travis.yml
 tsconfig.json
 tslint.json
+yarn.lock
 
