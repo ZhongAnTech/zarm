@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import ZScroller from 'zscroller';
-import { isChildrenEqual } from './utils';
 
 function getChildMember(child, m) {
   return child[m];
@@ -44,6 +43,7 @@ class Column extends Component {
 
     this.zscroller.setDisabled(this.props.disabled);
     this.zscroller.scroller.setSnapSize(0, this.itemHeight);
+
     this.select(this.state.selectedValue);
   }
 
@@ -56,9 +56,10 @@ class Column extends Component {
     this.zscroller.setDisabled(nextProps.disabled);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.selectedValue !== nextState.selectedValue
-      || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
+  shouldComponentUpdate() {
+    return true;
+    // return this.state.selectedValue !== nextState.selectedValue
+    //   || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
   }
 
   componentDidUpdate() {
@@ -70,19 +71,19 @@ class Column extends Component {
     this.zscroller.destroy();
   }
 
-  getValue() {
+  getValue = () => {
     return this.props.selectedValue ? this.props.selectedValue
       : this.props.children && this.props.children[0] && this.props.children[0][this.props.valueMember];
   }
 
-  scrollingComplete() {
+  scrollingComplete = () => {
     const { top } = this.zscroller.scroller.getValues();
     if (top >= 0) {
       this.doScrollingComplete(top);
     }
   }
 
-  fireValueChange(selectedValue) {
+  fireValueChange = (selectedValue) => {
     if (selectedValue !== this.state.selectedValue) {
       if (!('selectedValue' in this.props)) {
         this.setState({
@@ -94,11 +95,11 @@ class Column extends Component {
     }
   }
 
-  scrollTo(top) {
+  scrollTo = (top) => {
     this.zscroller.scroller.scrollTo(0, top);
   }
 
-  select(value) {
+  select = (value) => {
     const children = toChildrenArray(this.props.children);
     for (let i = 0, len = children.length; i < len; i += 1) {
       if (getChildMember(children[i], this.props.valueMember) === value) {
@@ -109,14 +110,14 @@ class Column extends Component {
     this.selectByIndex(0);
   }
 
-  selectByIndex(index) {
+  selectByIndex = (index) => {
     if (index < 0 || index >= toChildrenArray(this.props.children).length || !this.itemHeight) {
       return;
     }
     this.scrollTo(index * this.itemHeight);
   }
 
-  doScrollingComplete(top) {
+  doScrollingComplete = (top) => {
     let index = top / this.itemHeight;
     const floor = Math.floor(index);
     if (index - floor > 0.5) {
@@ -140,12 +141,12 @@ class Column extends Component {
     const {
       children, prefixCls,
       className, itemStyle, displayMember,
-      indicatorStyle, valueMember,
+      valueMember,
     } = this.props;
 
     const { selectedValue } = this.state;
-    const itemClassName = `${prefixCls}-cascader-item`;
-    const selectedItemClassName = `${itemClassName} ${prefixCls}-cascader-item-selected`;
+    const itemClassName = `${prefixCls}-column-item`;
+    const selectedItemClassName = `${itemClassName} ${prefixCls}-column-item-selected`;
     const items = children.map((item) => {
       return (
         <div
@@ -156,15 +157,13 @@ class Column extends Component {
         </div>
       );
     });
-    const pickerCls = {
-      [className]: !!className,
-      [`${prefixCls}-cascader`]: true,
-    };
+
+    const pickerCls = classnames(`${prefixCls}-column`, className);
     return (
       <div
-        className={classNames(pickerCls)} >
-        <div className={`${prefixCls}-cascader-indicator`} ref={(indicator) => { this.indicator = indicator; }} style={indicatorStyle} />
-        <div className={`${prefixCls}-cascader-content`} ref={(content) => { this.content = content; }}>
+        className={pickerCls} >
+        <div className={`${prefixCls}-column-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
+        <div className={`${prefixCls}-column-content`} ref={(content) => { this.content = content; }}>
           {items}
         </div>
       </div>
@@ -173,7 +172,7 @@ class Column extends Component {
 }
 
 Column.defaultProps = {
-  // prefixCls: 'za-cascaderpicker',
+  // prefixCls: 'za-columnpicker',
   prefixCls: 'za-picker',
   pure: true,
   onValueChange: () => {},
