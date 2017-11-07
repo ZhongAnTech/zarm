@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { BaseInputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import Keyboard from '../Keyboard';
 
-class InputNumber extends Component {
+declare const document;
+
+export interface InputNumberProps extends BaseInputNumberProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+export default class InputNumber extends Component<InputNumberProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-input',
+    disabled: false,
+  };
+
+  private picker;
 
   constructor(props) {
     super(props);
@@ -23,8 +37,9 @@ class InputNumber extends Component {
   }
 
   onClosePicker = (e) => {
-    if (!this.picker) return;
-    if (!this.state.visible) return;
+    if (!this.picker || !this.state.visible) {
+      return;
+    }
 
     const pNode = ((node) => {
       while (node.parentNode && node.parentNode !== document.body) {
@@ -36,7 +51,7 @@ class InputNumber extends Component {
     })(e.target);
 
     if (!pNode) {
-      !pNode && this.close();
+      this.close();
     }
   }
 
@@ -54,7 +69,10 @@ class InputNumber extends Component {
     if (newValue !== value) {
       const { onChange } = this.props;
       this.setState({ value: newValue });
-      typeof onChange === 'function' && onChange(newValue);
+
+      if (typeof onChange === 'function') {
+        onChange(newValue);
+      }
     }
   }
 
@@ -70,41 +88,25 @@ class InputNumber extends Component {
     const { prefixCls, className, type, disabled, defaultValue, ...others } = this.props;
     const { visible, value } = this.state;
 
-    const cls = classnames(prefixCls, `${prefixCls}-number`, className, disabled);
+    const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
+      disabled,
+    });
 
     return (
       <div className={cls} ref={(ele) => { this.picker = ele; }}>
         <input
           {...others}
-          ref={(ele) => { this.input = ele; }}
           type="text"
           value={value}
           disabled={disabled}
           onFocus={this.onFocus}
-          />
+        />
         <Keyboard.Picker
           type={type}
           visible={visible}
           onKeyClick={this.onKeyClick}
-          />
+        />
       </div>
     );
   }
 }
-
-InputNumber.propTypes = {
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  disabled: PropTypes.bool,
-  maxLength: PropTypes.number,
-  onChange: PropTypes.func,
-};
-
-InputNumber.defaultProps = {
-  prefixCls: 'za-input',
-  disabled: false,
-};
-
-export default InputNumber;

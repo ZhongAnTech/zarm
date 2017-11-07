@@ -1,9 +1,19 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import PropsType from './PropsType';
 import Keyboard from './Keyboard';
 import Popup from '../Popup';
 
-class KeyboardPicker extends PureComponent {
+export interface KeyboardProps extends PropsType {
+  prefixCls?: string;
+  className?: string;
+}
+
+export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-keyboard',
+    type: 'number',
+  };
 
   constructor(props) {
     super(props);
@@ -26,7 +36,9 @@ class KeyboardPicker extends PureComponent {
       return;
     }
     const { onKeyClick } = this.props;
-    typeof onKeyClick === 'function' && onKeyClick(key);
+    if (typeof onKeyClick === 'function') {
+      onKeyClick(key);
+    }
   }
 
   open = () => {
@@ -44,23 +56,10 @@ class KeyboardPicker extends PureComponent {
         {...others}
         visible={this.state.visible}
         mask={false}
-        direction="bottom">
+        direction="bottom"
+      >
         <Keyboard type={type} onKeyClick={this.onKeyClick} />
       </Popup>
     );
   }
 }
-
-KeyboardPicker.propTypes = {
-  prefixCls: PropTypes.string,  // eslint-disable-line
-  className: PropTypes.string,  // eslint-disable-line
-  type: PropTypes.oneOf(['number', 'price', 'idcard']),
-  onKeyClick: PropTypes.func,
-};
-
-KeyboardPicker.defaultProps = {
-  prefixCls: 'za-keyboard',
-  type: 'number',
-};
-
-export default KeyboardPicker;

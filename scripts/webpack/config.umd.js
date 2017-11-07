@@ -12,7 +12,7 @@ config.devtool = 'source-map';
 
 config.entry = {
   zarm: [
-    './components/index.js',
+    './components/index.tsx',
     './styles/index.scss',
   ],
 };
@@ -70,7 +70,14 @@ if (env === 'production') {
     mangle: true,
   }));
 
-  config.plugins.push(new webpack.BannerPlugin(`
+  // config.plugins.push(new BundleAnalyzerPlugin({
+  //   analyzerMode: 'static',
+  // }));
+} else {
+  config.plugins.push(new ExtractTextPlugin(cssConfig));
+}
+
+config.plugins.push(new webpack.BannerPlugin(`
   Zarm v${version}
 
   Github: https://github.com/ZhonganTechENG/zarm
@@ -79,14 +86,7 @@ if (env === 'production') {
  
   This source code is licensed under the MIT license found in the
   LICENSE file in the root directory of this source tree.
-  `));
-
-  // config.plugins.push(new BundleAnalyzerPlugin({
-  //   analyzerMode: 'static',
-  // }));
-} else {
-  config.plugins.push(new ExtractTextPlugin(cssConfig));
-}
+`));
 
 config.plugins.push(new webpack.DefinePlugin({
   'process.env.NODE_ENV': JSON.stringify(env || 'production'),
