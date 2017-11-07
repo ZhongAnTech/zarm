@@ -772,8 +772,8 @@ exports[`DatePicker DatePicker datetime 1`] = `
                         "2017",
                         "10",
                         "7",
-                        "14",
-                        "13",
+                        "15",
+                        "2",
                       ]
                     }
                     valueMember="value"
@@ -1303,7 +1303,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
-                          selectedValue="14"
+                          selectedValue="15"
                           valueMember="value"
                         >
                           <div
@@ -1400,13 +1400,13 @@ exports[`DatePicker DatePicker datetime 1`] = `
                                 13时
                               </div>
                               <div
-                                className="za-picker-column-item za-picker-column-item-selected"
+                                className="za-picker-column-item"
                                 key="14"
                               >
                                 14时
                               </div>
                               <div
-                                className="za-picker-column-item"
+                                className="za-picker-column-item za-picker-column-item-selected"
                                 key="15"
                               >
                                 15时
@@ -1472,7 +1472,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
-                          selectedValue="13"
+                          selectedValue="2"
                           valueMember="value"
                         >
                           <div
@@ -1497,7 +1497,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                                 1分
                               </div>
                               <div
-                                className="za-picker-column-item"
+                                className="za-picker-column-item za-picker-column-item-selected"
                                 key="2"
                               >
                                 2分
@@ -1563,7 +1563,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                                 12分
                               </div>
                               <div
-                                className="za-picker-column-item za-picker-column-item-selected"
+                                className="za-picker-column-item"
                                 key="13"
                               >
                                 13分
@@ -1986,8 +1986,8 @@ exports[`DatePicker DatePicker datetime 2`] = `
                         "2017",
                         "10",
                         "7",
-                        "14",
-                        "13",
+                        "15",
+                        "2",
                       ]
                     }
                     valueMember="value"
@@ -2157,7 +2157,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
-                          selectedValue="14"
+                          selectedValue="15"
                           valueMember="value"
                         >
                           <div
@@ -2254,13 +2254,13 @@ exports[`DatePicker DatePicker datetime 2`] = `
                                 13时
                               </div>
                               <div
-                                className="za-picker-column-item za-picker-column-item-selected"
+                                className="za-picker-column-item"
                                 key="14"
                               >
                                 14时
                               </div>
                               <div
-                                className="za-picker-column-item"
+                                className="za-picker-column-item za-picker-column-item-selected"
                                 key="15"
                               >
                                 15时
@@ -2326,7 +2326,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           pure={true}
-                          selectedValue="13"
+                          selectedValue="2"
                           valueMember="value"
                         >
                           <div
@@ -2351,7 +2351,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                                 1分
                               </div>
                               <div
-                                className="za-picker-column-item"
+                                className="za-picker-column-item za-picker-column-item-selected"
                                 key="2"
                               >
                                 2分
@@ -2417,7 +2417,7 @@ exports[`DatePicker DatePicker datetime 2`] = `
                                 12分
                               </div>
                               <div
-                                className="za-picker-column-item za-picker-column-item-selected"
+                                className="za-picker-column-item"
                                 key="13"
                               >
                                 13分
@@ -3174,12 +3174,12 @@ exports[`DatePicker DatePicker time 1`] = `
                         13时
                       </div>
                       <div
-                        class="za-picker-column-item za-picker-column-item-selected"
+                        class="za-picker-column-item"
                       >
                         14时
                       </div>
                       <div
-                        class="za-picker-column-item"
+                        class="za-picker-column-item za-picker-column-item-selected"
                       >
                         15时
                       </div>
