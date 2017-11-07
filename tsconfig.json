@@ -8,8 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "es6",
     // "allowJs": true,
-    "declaration": true,
-    "outDir": "lib"
+    "declaration": true
   },
   "include": [
     "components/**/*"

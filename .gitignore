@@ -1,9 +1,10 @@
-.DS_Store
-*.log
-node_modules
-dist
-lib
 assets
 coverage
+dist
+es
+lib
+node_modules
 _book
 .idea
+.DS_Store
+*.log

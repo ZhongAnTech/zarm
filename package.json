@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "1.2.0-beta.4",
+  "version": "1.2.0-beta.6",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -31,11 +31,12 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run deploy && npm run dev",
-    "clean": "rm -rf lib && rm -rf dist",
+    "clean": "rm -rf lib dist es",
     "dev": "webpack-dev-server --config scripts/webpack/config.dev.js",
-    "build:lib": "rm -rf lib && tsc",
+    "build:es": "tsc --outDir es --jsx preserve",
+    "build:lib": "tsc && tsc --outDir lib && babel components --out-dir lib --presets=env,react,stage-0 --ignore 'components/**/__tests__'",    
     "build:umd": "webpack --config scripts/webpack/config.umd.js && NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
-    "build": "npm run clean && npm run build:lib && npm run build:umd",
+    "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd",
     "site:build": "rm -rf assets && webpack --config scripts/webpack/config.site.js",
     "site": "npm run site:build && gh-pages -d assets",
     "lint:ts": "tslint -c tslint.json 'components/**/*.{ts,tsx}'",
