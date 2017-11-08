@@ -13,14 +13,14 @@ config.devtool = 'source-map';
 config.entry = {
   zarm: [
     './components/index.tsx',
-    './styles/index.scss',
+    // './styles/index.scss',
   ],
 };
 
 config.output = {
   library: 'Zarm',
   libraryTarget: 'umd',
-  path: path.resolve(__dirname, '../../dist'),
+  path: path.join(process.cwd(), 'dist'),
   filename: '[name].js',
 };
 
@@ -81,9 +81,9 @@ config.plugins.push(new webpack.BannerPlugin(`
   Zarm v${version}
 
   Github: https://github.com/ZhonganTechENG/zarm
- 
+
   Copyright (c) 2013-present, ZhonganTech, Inc.
- 
+
   This source code is licensed under the MIT license found in the
   LICENSE file in the root directory of this source tree.
 `));
