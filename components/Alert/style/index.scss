@@ -1,3 +1,8 @@
-.alert {
-  margin: 0 auto;
+@import "../../styles/core/index";
+@import "../../styles/variables";
+
+$prefixCls: $prefixCls-alert;
+
+.#{$prefixCls} {
+  text-align: center;
 }

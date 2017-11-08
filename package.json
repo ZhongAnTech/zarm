@@ -54,6 +54,7 @@
   "dependencies": {
     "autosize": "^3.0.21",
     "classnames": "^2.2.5",
+    "normalize.css": "^7.0.0",
     "zscroller": "^0.2.5"
   },
   "devDependencies": {

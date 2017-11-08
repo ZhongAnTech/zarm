@@ -9,7 +9,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 
 const CONFIG = {
-  src: path.resolve(__dirname, '../../components/**/style/*.scss'),
+  src: path.resolve(__dirname, '../../components/**/*.scss'),
   lib: path.resolve(__dirname, '../../lib'),
   dist: path.resolve(__dirname, '../../dist'),
   autoprefixer: {
@@ -31,30 +31,30 @@ const CONFIG = {
 
 gulp.task('default', () => {
   return gulp.src(CONFIG.src)
-    .pipe(gulp.dest(CONFIG.lib))
+    .pipe(gulp.dest(CONFIG.lib));
 
-    .pipe(sourcemaps.init())
-    .pipe(sass({
-      outputStyle: 'compressed',
-    }))
-    .pipe(autoprefixer(CONFIG.autoprefixer))
-    .pipe(size())
-    .pipe(gulp.dest(CONFIG.lib))
+    // .pipe(sourcemaps.init())
+    // .pipe(sass({
+    //   outputStyle: 'compressed',
+    // }))
+    // .pipe(autoprefixer(CONFIG.autoprefixer))
+    // .pipe(size())
+    // .pipe(gulp.dest(CONFIG.lib))
 
-    .pipe(concat('zarm.css'))
-    .pipe(size())
-    .pipe(gulp.dest(CONFIG.dist))
-    .pipe(sourcemaps.write())
-    .pipe(rename('zarm.css.map'))
-    .pipe(size())
-    .pipe(gulp.dest(CONFIG.dist))
+    // .pipe(concat('zarm.css'))
+    // .pipe(size())
+    // .pipe(gulp.dest(CONFIG.dist))
+    // .pipe(sourcemaps.write())
+    // .pipe(rename('zarm.css.map'))
+    // .pipe(size())
+    // .pipe(gulp.dest(CONFIG.dist))
 
-    .pipe(cssnano())
-    .pipe(concat('zarm.min.css'))
-    .pipe(size())
-    .pipe(gulp.dest(CONFIG.dist))
-    .pipe(sourcemaps.write())
-    .pipe(rename('zarm.min.css.map'))
-    .pipe(size())
-    .pipe(gulp.dest(CONFIG.dist));
+    // .pipe(cssnano())
+    // .pipe(concat('zarm.min.css'))
+    // .pipe(size())
+    // .pipe(gulp.dest(CONFIG.dist))
+    // .pipe(sourcemaps.write())
+    // .pipe(rename('zarm.min.css.map'))
+    // .pipe(size())
+    // .pipe(gulp.dest(CONFIG.dist));
 });
