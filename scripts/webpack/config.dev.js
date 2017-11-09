@@ -53,4 +53,8 @@ config.devServer = {
   hot: true,
 };
 
+config.resolve.alias = {
+  zarm: process.cwd(),
+};
+
 module.exports = config;

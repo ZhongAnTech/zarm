@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Icon, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Icon, Button } from '../../components';
 
 import '../styles/pages/ButtonPage';
 

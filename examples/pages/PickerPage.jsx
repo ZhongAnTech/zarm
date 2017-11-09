@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, Picker, DatePicker } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Picker, DatePicker } from '../../components';
 import District from '../mock/district';
 
 class Page extends Component {

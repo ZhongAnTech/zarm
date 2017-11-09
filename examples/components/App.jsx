@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 // import Eruda from 'eruda';
 // import Events from '../utils/events';
 import AsyncComponent from './AsyncComponent';
-
 import '../styles/index';
 import '../styles/components/App';
 

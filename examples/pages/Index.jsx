@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
+import { Panel, Cell } from 'zarm';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
-import { Panel, Cell } from '../../components';
 import '../styles/pages/IndexPage';
 
 class Page extends PureComponent {

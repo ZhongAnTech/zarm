@@ -48,6 +48,12 @@ module.exports = {
               ],
               plugins: [
                 'transform-runtime',
+                ['import', {
+                  libraryName: 'zarm',
+                  libraryDirectory: 'components',
+                  style: true,
+                  camel2DashComponentName: false,
+                }],
               ],
             },
           },
@@ -84,29 +90,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader?importLoaders=1',
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: [
-                  require('autoprefixer')({
-                    browsers: BROWSERS,
-                  }),
-                ],
-              },
-            },
-          ],
-        }),
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
+        test: /\.(css|scss)$/,
         use: ExtractTextPlugin.extract({
           use: [
             {

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import Events from '../utils/events';
 import PropsType from './PropsType';
+import Events from '../utils/events';
 import Drag from '../Drag';
 import Tooltip from '../Tooltip';
 

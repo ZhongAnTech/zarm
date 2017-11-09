@@ -1,7 +1,7 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
-import Events from '../utils/events';
 import { BaseModalProps } from './PropsType';
+import Events from '../utils/events';
 import Mask from '../Mask';
 
 export interface ModalProps extends BaseModalProps {

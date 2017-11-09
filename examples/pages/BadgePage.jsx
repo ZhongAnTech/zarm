@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, Badge } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Badge } from '../../components';
 import '../styles/pages/BadgePage';
 
 class Page extends Component {
