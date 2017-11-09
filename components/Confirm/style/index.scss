@@ -1,7 +1,7 @@
 @import "../../style/core/index";
 @import "../../style/variables";
 
-$prefixCls: $prefixCls-alert;
+$prefixCls: $prefixCls-confirm;
 
 .#{$prefixCls} {
   text-align: center;
