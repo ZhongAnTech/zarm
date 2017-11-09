@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Tab } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Tab } from '../../components';
 import '../styles/pages/TabPage';
 
 class TabPage extends Component {

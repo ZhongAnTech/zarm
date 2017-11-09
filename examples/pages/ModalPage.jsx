@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, Button, Modal, Confirm, Alert } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Button, Modal, Confirm, Alert } from '../../components';
 
 class Page extends Component {
 

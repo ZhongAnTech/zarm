@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Icon, Cell, Message, Input } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Icon, Cell, Message, Input, Slider } from '../../components';
 import '../styles/pages/CellPage';
 
 const img = require('../images/icons/state.png');

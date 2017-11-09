@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Popup, Cell, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Popup, Cell, Button } from '../../components';
 import '../styles/pages/PopupPage';
 
 class Page extends Component {

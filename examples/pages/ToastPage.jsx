@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, Toast, Loading, Button, Icon } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Toast, Loading, Button, Icon } from '../../components';
 import '../styles/pages/ToastPage';
 
 class ToastPage extends Component {

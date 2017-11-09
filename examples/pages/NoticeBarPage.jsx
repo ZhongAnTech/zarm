@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Icon, NoticeBar } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Icon, NoticeBar } from '../../components';
 import '../styles/pages/NoticeBarPage';
 
 class Page extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel } from '../../components';
 import '../styles/pages/PanelPage';
 
 class Page extends Component {

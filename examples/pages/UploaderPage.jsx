@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Uploader, Icon, Toast, Badge } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Uploader, Icon, Toast, Badge } from '../../components';
 import '../styles/pages/UploaderPage.scss';
 
 const MAX_FILES_COUNT = 5;

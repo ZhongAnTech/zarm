@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Swipe, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Swipe, Button } from '../../components';
 import '../styles/pages/SwipePage';
 
 const ITEMS = [
