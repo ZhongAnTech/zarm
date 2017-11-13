@@ -24,7 +24,7 @@ describe('Uploader', () => {
     const wrapper = mount(<Uploader {...props} />);
     wrapper.find('.za-uploader-input').simulate('click');
     wrapper.find('.za-uploader-trigger').simulate('click');
-    // expect(onClickfn).toHaveBeenCalled();
+    // expect(onClickfn).toBeCalled();
   });
 
   it('select file', () => {
@@ -37,6 +37,6 @@ describe('Uploader', () => {
     };
     const wrapper = mount(<Uploader {...props} />);
     wrapper.find('.za-uploader-input').simulate('change');
-    // expect(props.onChange).toHaveBeenCalled();
+    // expect(props.onChange).toBeCalled();
   });
 });
