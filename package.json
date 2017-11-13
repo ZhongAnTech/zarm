@@ -35,8 +35,7 @@
     "clean": "rm -rf lib es dist",
     "dev": "webpack-dev-server --config scripts/webpack/config.dev.js",
     "build:es": "tsc --outDir es",
-    "build:temp": "tsc --outDir lib -d && tsc --outDir temp --jsx preserve && babel .temp --out-dir lib --presets=env,react,stage-0 && rm -rf .temp",
-    "build:lib": "tsc && tsc --outDir lib -d && babel components --out-dir lib --presets=env,react,stage-0 --ignore 'components/**/__tests__'",
+    "build:lib": "tsc --outDir lib -d && tsc --outDir .temp --jsx preserve && babel .temp --out-dir lib --presets=env,react,stage-0 && rm -rf .temp",
     "build:umd": "webpack --config scripts/webpack/config.umd.js && NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
     "build:css": "cd scripts/gulp && gulp",
     "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:css",
@@ -139,7 +138,7 @@
       "!components/*/style/*.{ts,tsx}"
     ],
     "transform": {
-      "^.+\\.jsx?$": "<rootDir>/scripts/jest/preprocessor.js",
+      "^.+\\.jsx?$": "<rootDir>/scripts/jest/jsxTransform.js",
       "^.+\\.tsx?$": "<rootDir>/scripts/jest/typescriptTransform.js"
     },
     "transformIgnorePatterns": [
