@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import ZScroller from 'zscroller';
+import { BaseColumnProps } from './PropsType';
 
 function getChildMember(child, m) {
   return child[m];
@@ -10,7 +11,25 @@ function toChildrenArray(children) {
   return children;
 }
 
-class Column extends Component {
+export interface ColumnProps extends BaseColumnProps {
+  prefixCls?: string;
+  className?: any;
+}
+
+export default class Column extends Component<ColumnProps, any> {
+
+  static Group: any;
+  static Cascader: any;
+  static defaultProps = {
+    prefixCls: 'za-picker',
+    onValueChange: () => {},
+  };
+
+  private zscroller;
+  private indicator;
+  private itemHeight;
+  private content;
+
   constructor(props) {
     super(props);
     let selectedValueState;
@@ -84,14 +103,16 @@ class Column extends Component {
   }
 
   fireValueChange = (selectedValue) => {
+    const { onValueChange } = this.props;
     if (selectedValue !== this.state.selectedValue) {
       if (!('selectedValue' in this.props)) {
         this.setState({
           selectedValue,
         });
       }
-
-      this.props.onValueChange(selectedValue);
+      if (typeof onValueChange === 'function') {
+        onValueChange(selectedValue);
+      }
     }
   }
 
@@ -152,7 +173,8 @@ class Column extends Component {
         <div
           style={itemStyle}
           className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
-          key={item[valueMember]} >
+          key={item[valueMember]}
+        >
           {item[displayMember]}
         </div>
       );
@@ -160,8 +182,7 @@ class Column extends Component {
 
     const pickerCls = classnames(`${prefixCls}-column`, className);
     return (
-      <div
-        className={pickerCls} >
+      <div className={pickerCls}>
         <div className={`${prefixCls}-column-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
         <div className={`${prefixCls}-column-content`} ref={(content) => { this.content = content; }}>
           {items}
@@ -170,12 +191,3 @@ class Column extends Component {
     );
   }
 }
-
-Column.defaultProps = {
-  // prefixCls: 'za-columnpicker',
-  prefixCls: 'za-picker',
-  pure: true,
-  onValueChange: () => {},
-};
-
-export default Column;

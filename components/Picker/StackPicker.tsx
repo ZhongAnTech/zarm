@@ -1,21 +1,47 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Popup from '../Popup';
+import { BasePickerStackProps } from './PropsType';
 
 const stopEventPropagation = (e) => {
   e.stopPropagation();
   // e.nativeEvent.stopImmediatePropagation();
 };
 
-class PickerStack extends Component {
+export interface PickerStackProps extends BasePickerStackProps {
+  prefixCls?: string;
+  className?: any;
+}
+
+export default class PickerStack extends Component<PickerStackProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-picker',
+    value: [],
+    valueMember: 'value',
+    title: '请选择',
+    placeholder: '请选择',
+    disabled: false,
+    dataSource: [],
+    cols: Infinity,
+    labelAddon: ' > ',
+    displayItems: 8,
+    itemHeight: 50,
+    displayRender: data => data.map(({ label }) => label).join(''),
+    itemRender: data => data.label,
+    validate: () => {},
+    onOk: () => {},
+    onCancel: () => {},
+  };
+
+  private columns;
 
   constructor(props) {
     super(props);
     this.columns = {};
     this.state = {
       visible: false,
-      ...this.resolveProps(props, props.value),
+      ...this.resolveProps(props),
     };
   }
 
@@ -34,17 +60,21 @@ class PickerStack extends Component {
   onMaskClick = () => {
     const { onMaskClick } = this.props;
     this.close(true);
-    onMaskClick && onMaskClick();
+    if (typeof onMaskClick === 'function') {
+      onMaskClick();
+    }
   }
 
   onCancel = () => {
     const { onCancel } = this.props;
     this.close(true);
-    onCancel && onCancel();
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
   }
 
   resolveProps = ({ value, dataSource, validate }) => {
-    const resolveValue = [];
+    const resolveValue: any[] = [];
 
     value.reduce((list, item) => {
       const valueItem = this.obtainItem(list, item);
@@ -70,12 +100,14 @@ class PickerStack extends Component {
     return list.filter(item => item[valueMember] === value)[0];
   }
 
-  change = (index, cVal, isLast) => {
+  change = (index: number, cVal?: object, isLast?: boolean) => {
     const { validate, onOk } = this.props;
     const value = this.state.value.slice(0, index);
-    let errorMsg = null;
+    let errorMsg: string = '';
 
-    cVal && (value[index] = cVal);
+    if (cVal) {
+      value[index] = cVal;
+    }
     errorMsg = validate(value);
 
     if (isLast && !errorMsg) {
@@ -92,10 +124,13 @@ class PickerStack extends Component {
   }
 
   show = () => {
-    this.setState({ visible: true });
+    const { disabled } = this.state;
+    if (!disabled) {
+      this.setState({ visible: true });
+    }
   }
 
-  close = (isCancel) => {
+  close = (isCancel?: boolean) => {
     this.setState({ visible: false });
     if (isCancel) {
       this.setState({
@@ -107,13 +142,13 @@ class PickerStack extends Component {
   reposition = () => {
     const { dataSource, valueMember, disabled, displayItems, itemHeight, cols } = this.props;
 
-    if (disabled) return;
+    if (disabled) { return; }
 
     this.state.value.reduce((data, item, index) => {
       const value = item[valueMember];
       const valIndex = data.map(dataItem => dataItem[valueMember]).indexOf(value);
 
-      if (index < cols && ~valIndex) {
+      if (index < cols && valIndex !== -1) {
         const target = this.columns[`column${index}`];
         const position = target.scrollTop;
         const viewTopIndex = valIndex - displayItems;
@@ -131,7 +166,7 @@ class PickerStack extends Component {
 
   renderGroup(dataSource, value) {
     const { valueMember, cols } = this.props;
-    const group = [];
+    const group: any[] = [];
     let i = 0;
 
     while (dataSource) {
@@ -152,8 +187,24 @@ class PickerStack extends Component {
     return group;
   }
 
-  renderColumn = (list, colIndex, data, isLast) => {
+  renderColumnItem = (list, colIndex, data, isLast): React.ReactNode => {
     const { valueMember, prefixCls, itemRender } = this.props;
+    const pickVal = data[valueMember];
+    return list.map((item, index) => {
+      return (
+        <div
+          key={+index}
+          className={classnames(`${prefixCls}-stack-item`, { active: item[valueMember] === pickVal })}
+          onClick={() => this.change(colIndex, item, isLast)}
+        >
+          {itemRender(item)}
+        </div>
+      );
+    });
+  }
+
+  renderColumn = (list: any[], colIndex: number, data: object, isLast?: boolean) => {
+    const { valueMember, prefixCls } = this.props;
     const pickVal = data[valueMember];
     const cls = classnames(`${prefixCls}-stack-column`, {
       'lower-hidden': !pickVal,
@@ -163,111 +214,72 @@ class PickerStack extends Component {
       <div
         key={colIndex}
         className={cls}
-        onClick={() => this.change(colIndex - 1)}>
+        onClick={() => this.change(colIndex - 1)}
+      >
         <div
           className={`${prefixCls}-stack-column-wrapper`}
           ref={(ref) => { this.columns[`column${colIndex}`] = ref; }}
-          onClick={stopEventPropagation}>
-          {
-            list.map((item, index) => (
-              <div
-                key={+index}
-                className={
-                  classnames(`${prefixCls}-stack-item`, {
-                    active: item[valueMember] === pickVal,
-                  })
-                }
-                onClick={() => this.change(colIndex, item, isLast)}>
-                { itemRender(item) }
-              </div>
-            ))
-          }
+          onClick={stopEventPropagation}
+        >
+        {this.renderColumnItem(list, colIndex, data, isLast)}
         </div>
       </div>
     );
   }
 
+  renderWrapper() {
+    const { className, title, dataSource,
+            disabled, labelAddon, prefixCls, itemRender } = this.props;
+    const { visible, errorMsg, value } = this.state;
+
+    const wrapperCls = classnames(`${prefixCls}-container`, {
+      [`${prefixCls}-hidden`]: !visible,
+    }, className);
+
+    return disabled ?
+          null :
+          <div className={wrapperCls} onClick={stopEventPropagation}>
+            <Popup
+              visible={visible}
+              onMaskClick={this.onMaskClick}
+            >
+              <div className={`${prefixCls}-wrapper`}>
+                <div className={`${prefixCls}-header`}>
+                  <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>取消</div>
+                  <div className={`${prefixCls}-title`}>{title}</div>
+                  <div className={`${prefixCls}-submit`} />
+                </div>
+                <div className={`${prefixCls}-crumbs`}>
+                  <p>选择：{value.map(item => itemRender(item)).join(labelAddon)}</p>
+                  {errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{errorMsg}</p> : null}
+                </div>
+                <div className={`${prefixCls}-stack-group`}>{this.renderGroup(dataSource, value)}</div>
+              </div>
+            </Popup>
+          </div>;
+  }
+
   render() {
-    const { className, value: curVal, title, dataSource, placeholder, disabled, labelAddon, prefixCls, displayRender, itemRender } = this.props;
-    const { visible, errorMsg, value, displayValue } = this.state;
+    const { value: curVal, placeholder, disabled, prefixCls, displayRender } = this.props;
+    const { displayValue } = this.state;
     const displayLabel = displayRender(displayValue);
 
     const labelCls = classnames(`${prefixCls}-input`, {
       [`${prefixCls}-placeholder`]: !displayLabel,
       [`${prefixCls}-disabled`]: disabled,
     });
-    const wrapperCls = classnames(`${prefixCls}-container`, {
-      [`${prefixCls}-hidden`]: !visible,
-    }, className);
 
     return (
       <div className={prefixCls}>
-        <div className={labelCls} onClick={!disabled && this.show}>
+        <div
+          className={labelCls}
+          onClick={this.show}
+        >
           <input type="hidden" value={curVal} />
-          { displayLabel || placeholder }
+          {displayLabel || placeholder}
         </div>
-        {
-          disabled ?
-          null :
-          <div className={wrapperCls} onClick={stopEventPropagation}>
-            <Popup
-              visible={visible}
-              onMaskClick={this.onMaskClick}>
-              <div className={`${prefixCls}-wrapper`}>
-                <div className={`${prefixCls}-header`}>
-                  <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>取消</div>
-                  <div className={`${prefixCls}-title`}>{ title }</div>
-                  <div className={`${prefixCls}-submit`} />
-                </div>
-                <div className={`${prefixCls}-crumbs`}>
-                  <p>选择：{ value.map(item => itemRender(item)).join(labelAddon) }</p>
-                  { errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{ errorMsg }</p> : null }
-                </div>
-                <div className={`${prefixCls}-stack-group`}>{this.renderGroup(dataSource, value)}</div>
-              </div>
-            </Popup>
-          </div>
-        }
+        {this.renderWrapper()}
       </div>
     );
   }
 }
-
-PickerStack.propTypes = {
-  prefixCls: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.arrayOf(PropTypes.number)]),
-  valueMember: PropTypes.string,
-  title: PropTypes.string,
-  placeholder: PropTypes.string,
-  disabled: PropTypes.bool,
-  cols: PropTypes.number,
-  labelAddon: PropTypes.string,
-  displayItems: PropTypes.number,
-  itemHeight: PropTypes.number,
-  onOk: PropTypes.func,
-  onCancel: PropTypes.func,
-  displayRender: PropTypes.func,
-  itemRender: PropTypes.func,
-  validate: PropTypes.func,
-};
-
-PickerStack.defaultProps = {
-  prefixCls: 'za-picker',
-  value: [],
-  valueMember: 'value',
-  title: '请选择',
-  placeholder: '请选择',
-  disabled: false,
-  dataSource: [],
-  cols: Infinity,
-  labelAddon: ' > ',
-  displayItems: 8,
-  itemHeight: 50,
-  onOk() {},
-  onCancel() {},
-  displayRender: data => data.map(({ label }) => label).join(''),
-  itemRender: data => data.label,
-  validate() {},
-};
-
-export default PickerStack;
