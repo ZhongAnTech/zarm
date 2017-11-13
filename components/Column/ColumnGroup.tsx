@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Column from './Column';
+import { BaseColumnGroupProps } from './PropsType';
 
-class ColumnGroup extends Component {
+export interface ColumnGroupProps extends BaseColumnGroupProps {
+  prefixCls?: string;
+  className?: any;
+}
+
+export default class ColumnGroup extends Component<ColumnGroupProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-picker',
+    onValueChange: () => {},
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,12 +24,15 @@ class ColumnGroup extends Component {
 
   onValueChange = (v, i) => {
     const value = this.getValue().concat();
+    const { onValueChange } = this.props;
 
     value[i] = v;
-    this.props.onValueChange(value, i);
+    if (typeof onValueChange === 'function') {
+      onValueChange(value, i);
+    }
   }
 
-  getValue = () => {
+  getValue = (): string[] => {
     const { children, selectedValue } = this.props;
 
     if (selectedValue && selectedValue.length) {
@@ -36,8 +50,7 @@ class ColumnGroup extends Component {
   render() {
     const {
       prefixCls, className,
-      pure, children,
-      displayMember, valueMember,
+      children, displayMember, valueMember,
     } = this.props;
 
     const selectedValue = this.getValue();
@@ -45,14 +58,13 @@ class ColumnGroup extends Component {
       return (
         <div key={col.key || i} className={`${prefixCls}-column-group-item`}>
           <Column
-            pure={pure}
             prefixCls={prefixCls}
             selectedValue={selectedValue[i]}
             displayMember={displayMember}
             valueMember={valueMember}
             onValueChange={value => this.onValueChange(value, i)}
             {...col.props}
-            />
+          />
         </div>
       );
     });
@@ -64,15 +76,3 @@ class ColumnGroup extends Component {
     );
   }
 }
-
-ColumnGroup.propTypes = {
-  prefixCls: PropTypes.string,
-  onValueChange: PropTypes.func,
-};
-
-ColumnGroup.defaultProps = {
-  prefixCls: 'za-picker',
-  onValueChange: () => {},
-};
-
-export default ColumnGroup;
