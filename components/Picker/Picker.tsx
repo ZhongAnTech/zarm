@@ -1,23 +1,48 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
 import Column from '../Column';
 import Popup from '../Popup';
-
+import { BasePickerProps } from './PropsType';
 
 // 阻止选择器区域的默认事件
 function onContainerClick(e) {
   e.stopPropagation();
 }
+export interface PickerProps extends BasePickerProps {
+  prefixCls?: string;
+  className?: any;
+}
 
-class Picker extends Component {
+export default class Picker extends Component<PickerProps, any> {
+
+  static defaultProps = {
+    visible: false,
+    placeholder: '请选择',
+    title: '请选择',
+    cancelText: '取消',
+    okText: '确定',
+    displayAddon: '',
+    disabled: false,
+    dataSource: [],
+    onClick: () => {},
+    onChange: () => {},
+    onOk: () => {},
+    onCancel: () => {},
+    onMaskClick: () => {},
+    prefixCls: 'za-picker',
+    displayMember: 'label',
+    valueMember: 'value',
+  };
+
+  private tempValue;
+
   constructor(props) {
     super(props);
 
     const initValue = props.value || props.defaultValue || [];
     const { dataSource } = props;
-    let _data = null;
+    let _data: any;
     let _value = null;
 
     // 针对单列数据源，转换为[[{}]]
@@ -28,7 +53,6 @@ class Picker extends Component {
       _data = dataSource;
       _value = initValue;
     }
-
 
     this.state = {
       visible: props.visible || false,
@@ -43,7 +67,7 @@ class Picker extends Component {
   componentWillReceiveProps(nextProps) {
     if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
       const { dataSource } = nextProps;
-      let _data = null;
+      let _data: any;
 
       if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
         _data = [nextProps.dataSource];
@@ -88,7 +112,9 @@ class Picker extends Component {
     this.setState({
       value: this.tempValue,
     });
-    onCancel && onCancel();
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
   }
 
   onOk = () => {
@@ -100,15 +126,20 @@ class Picker extends Component {
     });
     this.tempValue = value;
     this.toggle();
-    let _value = null;
+    let _value: any;
     _value = formatBackToObject(data, value, cascade, valueMember, cols);
-    onOk && onOk(_value);
+
+    if (typeof onOk === 'function') {
+      onOk(_value);
+    }
   }
 
   onMaskClick = () => {
     const { onMaskClick } = this.props;
     this.onCancel();
-    onMaskClick && onMaskClick();
+    if (typeof onMaskClick === 'function') {
+      onMaskClick();
+    }
   }
 
   getInitValue = () => {
@@ -139,7 +170,9 @@ class Picker extends Component {
 
   handleClick = () => {
     this.props.onClick();
-    !this.props.disabled && this.toggle();
+    if (!this.props.disabled) {
+      this.toggle();
+    }
   }
 
   close = (key) => {
@@ -160,10 +193,11 @@ class Picker extends Component {
   }
 
   render() {
-    const { prefixCls, disabled, className, cancelText, okText, title, placeholder, valueMember, displayMember, displayAddon } = this.props;
+    const { prefixCls, disabled, className, cancelText,
+      okText, title, placeholder, valueMember, displayMember, displayAddon } = this.props;
     const { data, value } = this.state;
 
-    let PickerCol = null;
+    let PickerCol: JSX.Element;
 
     const classes = classnames(`${prefixCls}-container`, className);
 
@@ -186,7 +220,7 @@ class Picker extends Component {
           displayMember={displayMember}
           valueMember={valueMember}
           onChange={v => this.onValueChange(v)}
-          />
+        />
       );
     } else {
       PickerCol = (
@@ -196,7 +230,8 @@ class Picker extends Component {
           displayMember={displayMember}
           valueMember={valueMember}
           selectedValue={value}
-          onValueChange={v => this.onValueChange(v)} >
+          onValueChange={v => this.onValueChange(v)}
+        >
           {cols}
         </Column.Group>
       );
@@ -220,7 +255,6 @@ class Picker extends Component {
         return undefined;
       }).filter(t => !!t);
 
-
       return this._displayRender(treeChildren2);
     };
 
@@ -233,7 +267,8 @@ class Picker extends Component {
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
             visible={this.state.visible}
-            onMaskClick={this.onMaskClick}>
+            onMaskClick={this.onMaskClick}
+          >
             <div className={`${prefixCls}-wrapper`}>
               <div className={`${prefixCls}-header`}>
                 <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
@@ -252,43 +287,3 @@ class Picker extends Component {
     );
   }
 }
-
-Picker.propTypes = {
-  visible: PropTypes.bool,
-  placeholder: PropTypes.string,
-  title: PropTypes.string,
-  cancelText: PropTypes.string,
-  okText: PropTypes.string,
-  displayAddon: PropTypes.string,
-  disabled: PropTypes.bool,
-  dataSource: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.array])).isRequired,
-  cols: PropTypes.number,
-  onOk: PropTypes.func.isRequired,
-  onCancel: PropTypes.func,
-  onMaskClick: PropTypes.func,
-  displayRender: PropTypes.func,
-  prefixCls: PropTypes.string,
-  displayMember: PropTypes.string,
-  valueMember: PropTypes.string,
-};
-
-Picker.defaultProps = {
-  visible: false,
-  placeholder: '请选择',
-  title: '请选择',
-  cancelText: '取消',
-  okText: '确定',
-  displayAddon: '',
-  disabled: false,
-  dataSource: [],
-  onClick: () => {},
-  onChange: () => {},
-  onOk: () => {},
-  onCancel: () => {},
-  onMaskClick: () => {},
-  prefixCls: 'za-picker',
-  displayMember: 'label',
-  valueMember: 'value',
-};
-
-export default Picker;
