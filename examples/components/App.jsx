@@ -27,7 +27,7 @@ class App extends Component {
           classNames={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'left' : 'right'}
           appear>
           <section>
-            <Switch location={location}>
+            <Switch key={location.pathname} location={location}>
               <Route exact path="/" component={AsyncComponent(() => import('../pages/Index'))} />
 
               {/* 表单组件 */}

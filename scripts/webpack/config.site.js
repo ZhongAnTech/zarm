@@ -18,6 +18,17 @@ config.plugins.push(new ExtractTextPlugin({
   allChunks: true,
 }));
 
+config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+  name: ['common', 'manifest'],
+}));
+
+config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+  names: Object.keys(config.entry),
+  async: true,
+  children: true,
+  minChunks: 3,
+}));
+
 config.plugins.push(new OptimizeCssAssetsPlugin({
   assetNameRegExp: /\.css$/g,
   cssProcessor: require('cssnano'),
@@ -40,17 +51,6 @@ config.plugins.push(new webpack.optimize.UglifyJsPlugin({
   mangle: true,
 }));
 
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: ['common', 'manifest'],
-}));
-
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  names: Object.keys(config.entry),
-  async: true,
-  children: true,
-  minChunks: 3,
-}));
-
 config.plugins.push(new webpack.DefinePlugin({
   'process.env.NODE_ENV': JSON.stringify('production'),
   __DEBUG__: false,
@@ -68,5 +68,9 @@ Object.keys(config.entry).forEach((key) => {
     chunks: ['common', 'manifest', key],
   }));
 });
+
+config.resolve.alias = {
+  zarm: process.cwd(),
+};
 
 module.exports = config;

@@ -13,7 +13,6 @@ config.devtool = 'source-map';
 config.entry = {
   zarm: [
     './components/index.tsx',
-    // './styles/index.scss',
   ],
 };
 
