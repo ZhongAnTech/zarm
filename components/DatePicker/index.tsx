@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Column from '../Column';
 import formatFn from './utils';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
-
+import PropsType from './PropsType';
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -56,7 +55,36 @@ function isExtendDate(date) {
   return new Date(date.toString().replace(/-/g, '/'));
 }
 
-class DatePicker extends Component {
+export interface DatePickerProps extends PropsType {
+  prefixCls?: string;
+  className?: any;
+}
+
+export default class DatePicker extends Component<DatePickerProps, any> {
+
+  static defaultProps = {
+    visible: false,
+    placeholder: '请选择',
+    title: '请选择',
+    cancelText: '取消',
+    okText: '确定',
+    mode: DATE,
+    disabled: false,
+    value: '',
+    defaultValue: '',
+    locale: defaultLocale,
+    minuteStep: 1,
+    prefixCls: 'za-picker',
+    displayMember: 'label',
+    valueMember: 'value',
+    onClick: () => {},
+    onCancel: () => {},
+  };
+
+  private initDate;
+  private defaultMinDate;
+  private defaultMaxDate;
+
   constructor(props) {
     super(props);
 
@@ -87,7 +115,9 @@ class DatePicker extends Component {
   onMaskClick() {
     const { onMaskClick } = this.props;
     this.onCancel();
-    onMaskClick && onMaskClick();
+    if (typeof onMaskClick === 'function') {
+      onMaskClick();
+    }
   }
 
   // 点击取消
@@ -97,7 +127,9 @@ class DatePicker extends Component {
     this.setState({
       date: this.initDate,
     });
-    onCancel && onCancel();
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
   }
 
   // 点击确定
@@ -109,7 +141,9 @@ class DatePicker extends Component {
     });
     this.initDate = value;
     this.toggle();
-    onOk && onOk(formatFn(this, value));
+    if (typeof onOk === 'function') {
+      onOk(formatFn(this, value));
+    }
   }
 
   onValueChange(values, index) {
@@ -163,15 +197,15 @@ class DatePicker extends Component {
   }
 
   setHours(date, hour) {
-    if (this.props.use12Hours) {
-      const dh = date.getHours();
-      let nhour = hour;
-      nhour = dh >= 12 ? hour + 12 : hour;
-      nhour = nhour >= 24 ? 0 : nhour; // Make sure no more than one day
-      date.setHours(nhour);
-    } else {
+    // if (this.props.use12Hours) {
+    // const dh = date.getHours();
+    // let nhour = hour;
+    // nhour = dh >= 12 ? hour + 12 : hour;
+    // nhour = nhour >= 24 ? 0 : nhour; // Make sure no more than one day
+    // date.setHours(nhour);
+    // } else {
       date.setHours(hour);
-    }
+    // }
   }
 
   getDefaultMinDate() {
@@ -183,7 +217,7 @@ class DatePicker extends Component {
 
   getDefaultMaxDate() {
     if (!this.defaultMaxDate) {
-      this.defaultMaxDate = getGregorianCalendar([2030, 1, 1, 23, 59, 59]);
+      this.defaultMaxDate = getGregorianCalendar([2030, 11, 30, 23, 59, 59]);
     }
     return this.defaultMaxDate;
   }
@@ -262,7 +296,7 @@ class DatePicker extends Component {
     const maxDateMonth = this.getMaxMonth();
     const minDateDay = this.getMinDay();
     const maxDateDay = this.getMaxDay();
-    const years = [];
+    const years: object[] = [];
 
     for (let i = minDateYear; i <= maxDateYear; i += 1) {
       years.push({
@@ -276,7 +310,7 @@ class DatePicker extends Component {
       return [yearCol];
     }
 
-    const months = [];
+    const months: object[] = [];
     let minMonth = 0;
     let maxMonth = 11;
 
@@ -298,7 +332,7 @@ class DatePicker extends Component {
       return [yearCol, monthCol];
     }
 
-    const days = [];
+    const days: object[] = [];
     let minDay = 1;
     let maxDay = getDaysInMonth(date);
 
@@ -328,7 +362,7 @@ class DatePicker extends Component {
     let maxHour = 23;
     let minMinute = 0;
     let maxMinute = 59;
-    const { mode, locale, minuteStep } = this.props;
+    const { mode, locale, minuteStep = DatePicker.defaultProps.minuteStep } = this.props;
     const date = this.getDate();
 
     const minDateMinute = this.getMinMinute();
@@ -372,7 +406,7 @@ class DatePicker extends Component {
       }
     }
 
-    const hours = [];
+    const hours: object[] = [];
     for (let i = minHour; i <= maxHour; i += 1) {
       hours.push({
         value: `${i}`,
@@ -380,7 +414,7 @@ class DatePicker extends Component {
       });
     }
 
-    const minutes = [];
+    const minutes: object[] = [];
 
     for (let i = minMinute; i <= maxMinute; i += minuteStep) {
       minutes.push({
@@ -400,8 +434,8 @@ class DatePicker extends Component {
     const { mode } = this.props;
     const date = this.getDate();
 
-    let cols = [];
-    let value = [];
+    let cols: any[] = [];
+    let value: any[] = [];
 
     if (mode === YEAR) {
       return {
@@ -483,12 +517,15 @@ class DatePicker extends Component {
 
   handleClick() {
     this.props.onClick();
-    !this.props.disabled && this.toggle();
+    if (!this.props.disabled) {
+      this.toggle();
+    }
   }
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, className, disabled, cancelText, okText, title, placeholder, displayMember, valueMember } = this.props;
+    const { prefixCls, className, disabled, cancelText,
+            okText, title, placeholder, displayMember, valueMember } = this.props;
 
     const classes = classnames({
       [`${prefixCls}-container`]: true,
@@ -504,15 +541,17 @@ class DatePicker extends Component {
     return (
       <div
         className={prefixCls}
-        onClick={() => this.handleClick()}>
+        onClick={() => this.handleClick()}
+      >
         <div className={inputCls}>
-          <input type="hidden" value={this.state.date} />
+          <input type="hidden" value={formatFn(this, this.state.date)} />
           {this.state.date ? formatFn(this, this.state.date) : placeholder}
         </div>
         <div className={classes} onClick={e => stopClick(e)}>
           <Popup
             visible={this.state.visible}
-            onMaskClick={() => this.onMaskClick()}>
+            onMaskClick={() => this.onMaskClick()}
+          >
             <div className={`${prefixCls}-wrapper`}>
               <div className={`${prefixCls}-header`}>
                 <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
@@ -528,7 +567,8 @@ class DatePicker extends Component {
                     displayMember={displayMember}
                     valueMember={valueMember}
                     selectedValue={value}
-                    onValueChange={(values, index) => this.onValueChange(values, index)}>
+                    onValueChange={(values, index) => this.onValueChange(values, index)}
+                  >
                     {cols}
                   </Column.Group>
                 </div>
@@ -540,50 +580,3 @@ class DatePicker extends Component {
     );
   }
 }
-
-DatePicker.propTypes = {
-  visible: PropTypes.bool,
-  placeholder: PropTypes.string,
-  title: PropTypes.string,
-  cancelText: PropTypes.string,
-  okText: PropTypes.string,
-  mode: PropTypes.oneOf([YEAR, MONTH, DATE, TIME, DATETIME]),
-  disabled: PropTypes.bool,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-  defaultValue: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-  onOk: PropTypes.func,
-  onCancel: PropTypes.func,
-  onMaskClick: PropTypes.func,
-  minuteStep: PropTypes.number,
-  prefixCls: PropTypes.string,
-};
-
-DatePicker.defaultProps = {
-  visible: false,
-  placeholder: '请选择',
-  title: '请选择',
-  cancelText: '取消',
-  okText: '确定',
-  mode: DATE,
-  disabled: false,
-  value: '',
-  defaultValue: '',
-  onClick: () => {},
-  onChange: () => {},
-  onOk: () => {},
-  onCancel: () => {},
-  onMaskClick: () => {},
-  locale: defaultLocale,
-  minuteStep: 1,
-  prefixCls: 'za-picker',
-  displayMember: 'label',
-  valueMember: 'value',
-};
-
-export default DatePicker;

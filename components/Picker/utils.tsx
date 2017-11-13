@@ -15,9 +15,9 @@ function getFormatter(type) {
   return formatter;
 }
 
-function isEmptyArray(a) {
-  return !a || !a.length;
-}
+// function isEmptyArray(a) {
+//   return !a || !a.length;
+// }
 
 export function formatFn(instance, value) {
   const { format } = instance.props;
@@ -33,7 +33,6 @@ export function formatFn(instance, value) {
 
   return value.format(getFormatter(instance.props.mode));
 }
-
 
 // export function isChildrenEqual(c1, c2, pure) {
 //   if (isEmptyArray(c1) && isEmptyArray(c2)) {
@@ -54,11 +53,11 @@ export function formatFn(instance, value) {
 //   return true;
 // }
 
-export function arrayTreeFilter(data, filterFn, options) {
+export function arrayTreeFilter(data: object[], filterFn: (item: object, level: number) => boolean, options?: any) {
   options = options || {};
   options.childrenKeyName = options.childrenKeyName || 'children';
   let children = data || [];
-  const result = [];
+  const result: any[] = [];
   let level = 0;
 
   const filterInnerFn = (item) => {
@@ -79,7 +78,7 @@ export function arrayTreeFilter(data, filterFn, options) {
 
 export function formatToInit(data, member, cols) {
   let _data = data || [];
-  const result = [];
+  const result: any[] = [];
   let level = 0;
 
   while (_data) {
@@ -113,16 +112,16 @@ const filterValue = (dataSource, value, member, level) => {
 
 export function formatBackToObject(data, value, cascade, member, cols) {
   if (!cascade) {
-    const result = data.map((item, index) => (
+    const finalRenderData = data.map((item, index) => (
       item.filter(itemInner => (
         itemInner[member] === value[index]
       ))[0]
     ));
-    return value.length === 1 ? result[0] : result;
+    return value.length === 1 ? finalRenderData[0] : finalRenderData;
   }
 
   let _data = data || [];
-  const result = [];
+  const result: any[] = [];
   let level = 0;
 
   while (_data) {
@@ -151,6 +150,6 @@ export function isArray(data) {
 }
 
 export function hasChildrenObject(data) {
-  return Object.prototype.hasOwnProperty.call(data, 'children') && Object.prototype.toString.call(data.children) !== '[object String]';
+  return Object.prototype.hasOwnProperty.call(data, 'children')
+    && Object.prototype.toString.call(data.children) !== '[object String]';
 }
-
