@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-// import Eruda from 'eruda';
-// import Events from '../utils/events';
 import AsyncComponent from './AsyncComponent';
 import '../styles/index';
 import '../styles/components/App';
@@ -12,7 +9,6 @@ class App extends Component {
 
   componentDidMount() {
     // Events.on(window, 'resize', window.__setFontSize__);
-    // Eruda.init();
   }
 
   render() {
@@ -24,7 +20,7 @@ class App extends Component {
         <CSSTransition
           key={currentKey}
           timeout={300}
-          classNames={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'left' : 'right'}
+          classNames={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'out' : 'in'}
           appear>
           <section>
             <Switch key={location.pathname} location={location}>
