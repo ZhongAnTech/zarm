@@ -232,8 +232,8 @@ describe('Picker', () => {
     );
 
     wrapper.find('.za-picker-submit').simulate('click');
-    expect(onOkFn).toHaveBeenCalled();
-    expect(onCancelFn).not.toHaveBeenCalled();
+    expect(onOkFn).toBeCalled();
+    expect(onCancelFn).not.toBeCalled();
   });
 
   it('should trigger onCancel when press cancel button', () => {
@@ -268,8 +268,8 @@ describe('Picker', () => {
     );
 
     wrapper.find('.za-picker-cancel').simulate('click');
-    expect(onCancelFn).toHaveBeenCalled();
-    expect(onOkFn).not.toHaveBeenCalled();
+    expect(onCancelFn).toBeCalled();
+    expect(onOkFn).not.toBeCalled();
   });
 
   it('receive new dataSource', () => {
@@ -364,10 +364,10 @@ describe('Picker', () => {
         />
     );
     wrapper.find('.za-picker').simulate('click');
-    expect(handleClickFn).toHaveBeenCalled();
+    expect(handleClickFn).toBeCalled();
     wrapper.find('.za-mask').simulate('click');
-    expect(onMaskClick).toHaveBeenCalled();
-    expect(onCancelFn).toHaveBeenCalled();
+    expect(onMaskClick).toBeCalled();
+    expect(onCancelFn).toBeCalled();
   });
 
   it('StackPicker', () => {
@@ -404,7 +404,7 @@ describe('Picker', () => {
 
     wrapper.find('.za-picker-stack-column').at(0).simulate('click');
     wrapper.find('.za-picker-stack-item').at(0).simulate('click');
-    expect(onChangeFn).toHaveBeenCalled();
+    expect(onChangeFn).toBeCalled();
   });
 
   it('StackPicker maskClick', () => {
