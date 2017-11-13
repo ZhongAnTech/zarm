@@ -183,7 +183,6 @@ exports[`Picker Cascader Picker 1`] = `
                             displayMember="label"
                             onValueChange={[Function]}
                             prefixCls="za-picker"
-                            pure={true}
                             selectedValue="1"
                             valueMember="value"
                           >
@@ -220,7 +219,6 @@ exports[`Picker Cascader Picker 1`] = `
                             displayMember="label"
                             onValueChange={[Function]}
                             prefixCls="za-picker"
-                            pure={true}
                             selectedValue="11"
                             valueMember="value"
                           >

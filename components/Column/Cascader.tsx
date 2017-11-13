@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { arrayTreeFilter, formatToInit } from './utils';
 import ColumnGroup from './ColumnGroup';
+import { BaseCascaderProps } from './PropsType';
 
-class Cascader extends Component {
+export interface CascaderProps extends BaseCascaderProps {
+  prefixCls?: string;
+  className?: any;
+}
+
+export default class Cascader extends Component<CascaderProps, any> {
+
+  static defaultProps = {
+    prefixCls: 'za-picker',
+    data: [],
+    disabled: false,
+  };
+
   constructor(props) {
     super(props);
 
@@ -62,7 +74,9 @@ class Cascader extends Component {
     if (cols) {
       childrenTree.length = cols - 1;
     } else {
-      childrenTree.length > 1 && childrenTree.splice(-1);
+      if (childrenTree.length > 1) {
+        childrenTree.splice(-1);
+      }
     }
     childrenTree.unshift(data);
 
@@ -107,21 +121,10 @@ class Cascader extends Component {
         displayMember={displayMember}
         valueMember={valueMember}
         selectedValue={this.state.value}
-        onValueChange={(value, index) => this.onValueChange(value, index)} >
+        onValueChange={(value, index) => this.onValueChange(value, index)}
+      >
         {this.getCols()}
       </ColumnGroup>
     );
   }
 }
-
-Cascader.propTypes = {
-  prefixCls: PropTypes.string,
-};
-
-Cascader.defaultProps = {
-  prefixCls: 'za-picker',
-  data: [],
-  disabled: false,
-};
-
-export default Cascader;
