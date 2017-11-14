@@ -17,12 +17,10 @@ export interface PickerProps extends BasePickerProps {
 export default class Picker extends Component<PickerProps, any> {
 
   static defaultProps = {
-    visible: false,
     placeholder: '请选择',
     title: '请选择',
     cancelText: '取消',
     okText: '确定',
-    displayAddon: '',
     disabled: false,
     dataSource: [],
     onClick: () => {},
@@ -31,8 +29,8 @@ export default class Picker extends Component<PickerProps, any> {
     onCancel: () => {},
     onMaskClick: () => {},
     prefixCls: 'za-picker',
-    displayMember: 'label',
     valueMember: 'value',
+    itemRender: data => data.label,
   };
 
   private tempValue;
@@ -55,7 +53,7 @@ export default class Picker extends Component<PickerProps, any> {
     }
 
     this.state = {
-      visible: props.visible || false,
+      visible: false,
       value: _value,
       data: _data,
       cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
@@ -100,10 +98,13 @@ export default class Picker extends Component<PickerProps, any> {
   }
 
   onValueChange = (value) => {
+    const { onChange } = this.props;
     this.setState({
       value,
     });
-    this.props.onChange(value);
+    if (typeof onChange === 'function') {
+      onChange(value);
+    }
   }
 
   onCancel = () => {
@@ -182,19 +183,19 @@ export default class Picker extends Component<PickerProps, any> {
   }
 
   _displayRender = (data) => {
-    const { displayRender, displayMember, displayAddon } = this.props;
+    const { displayRender, itemRender } = this.props;
 
     if (typeof displayRender === 'function') {
       return displayRender(data);
     }
     return data.map((v) => {
-      return v[displayMember];
-    }).join(displayAddon);
+      return itemRender(v);
+    }).join('');
   }
 
   render() {
     const { prefixCls, disabled, className, cancelText,
-      okText, title, placeholder, valueMember, displayMember, displayAddon } = this.props;
+      okText, title, placeholder, valueMember, itemRender } = this.props;
     const { data, value } = this.state;
 
     let PickerCol: JSX.Element;
@@ -202,7 +203,7 @@ export default class Picker extends Component<PickerProps, any> {
     const classes = classnames(`${prefixCls}-container`, className);
 
     const inputCls = classnames(`${prefixCls}-input`, {
-      [`${prefixCls}-placeholder`]: !value.join(displayAddon),
+      [`${prefixCls}-placeholder`]: !value.join(''),
       [`${prefixCls}-disabled`]: !!disabled,
     });
 
@@ -217,7 +218,7 @@ export default class Picker extends Component<PickerProps, any> {
           data={data}
           value={this.state.value}
           cols={this.props.cols}
-          displayMember={displayMember}
+          itemRender={itemRender}
           valueMember={valueMember}
           onChange={v => this.onValueChange(v)}
         />
@@ -227,7 +228,7 @@ export default class Picker extends Component<PickerProps, any> {
         <Column.Group
           className={className}
           prefixCls={prefixCls}
-          displayMember={displayMember}
+          itemRender={itemRender}
           valueMember={valueMember}
           selectedValue={value}
           onValueChange={v => this.onValueChange(v)}

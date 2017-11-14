@@ -14,6 +14,7 @@ export default class Cascader extends Component<CascaderProps, any> {
     prefixCls: 'za-picker',
     data: [],
     disabled: false,
+    itemRender: data => data.label,
   };
 
   constructor(props) {
@@ -111,14 +112,14 @@ export default class Cascader extends Component<CascaderProps, any> {
   render() {
     const {
       prefixCls, className,
-      displayMember, valueMember,
+      itemRender, valueMember,
     } = this.props;
 
     return (
       <ColumnGroup
         prefixCls={prefixCls}
         className={className}
-        displayMember={displayMember}
+        itemRender={itemRender}
         valueMember={valueMember}
         selectedValue={this.state.value}
         onValueChange={(value, index) => this.onValueChange(value, index)}
