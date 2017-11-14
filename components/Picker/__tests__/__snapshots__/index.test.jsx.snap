@@ -36,8 +36,7 @@ exports[`Picker Cascader Picker 1`] = `
     ]
   }
   disabled={false}
-  displayAddon=""
-  displayMember="label"
+  itemRender={[Function]}
   okText="确定"
   onCancel={[Function]}
   onChange={[Function]}
@@ -48,7 +47,6 @@ exports[`Picker Cascader Picker 1`] = `
   prefixCls="za-picker"
   title="请选择"
   valueMember="value"
-  visible={false}
 >
   <div
     className="za-picker"
@@ -154,14 +152,14 @@ exports[`Picker Cascader Picker 1`] = `
                       ]
                     }
                     disabled={false}
-                    displayMember="label"
+                    itemRender={[Function]}
                     onChange={[Function]}
                     prefixCls="za-picker"
                     value={Array []}
                     valueMember="value"
                   >
                     <ColumnGroup
-                      displayMember="label"
+                      itemRender={[Function]}
                       onValueChange={[Function]}
                       prefixCls="za-picker"
                       selectedValue={
@@ -180,7 +178,7 @@ exports[`Picker Cascader Picker 1`] = `
                           key="0"
                         >
                           <Column
-                            displayMember="label"
+                            itemRender={[Function]}
                             onValueChange={[Function]}
                             prefixCls="za-picker"
                             selectedValue="1"
@@ -216,7 +214,7 @@ exports[`Picker Cascader Picker 1`] = `
                           key="1"
                         >
                           <Column
-                            displayMember="label"
+                            itemRender={[Function]}
                             onValueChange={[Function]}
                             prefixCls="za-picker"
                             selectedValue="11"
@@ -285,7 +283,7 @@ exports[`Picker Cascader Picker init value 1`] = `
       type="hidden"
       value="1,12"
     />
-    选项一-选项二
+    选项一选项二
   </div>
   <div
     class="za-picker-container"
@@ -625,11 +623,8 @@ exports[`Picker StackPicker 1`] = `
     ]
   }
   disabled={false}
-  displayItems={8}
   displayRender={[Function]}
-  itemHeight={50}
   itemRender={[Function]}
-  labelAddon=" > "
   onCancel={[Function]}
   onOk={[Function]}
   placeholder="请选择"
@@ -949,11 +944,8 @@ exports[`Picker StackPicker init value 1`] = `
     ]
   }
   disabled={false}
-  displayItems={8}
   displayRender={[Function]}
-  itemHeight={50}
   itemRender={[Function]}
-  labelAddon=" > "
   onCancel={[Function]}
   onOk={[Function]}
   placeholder="请选择"
