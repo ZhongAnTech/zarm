@@ -3,7 +3,8 @@
 .app-container {
   position: relative;
   background-color: #f6f6f6;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   .github {
