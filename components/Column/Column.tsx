@@ -23,6 +23,7 @@ export default class Column extends Component<ColumnProps, any> {
   static defaultProps = {
     prefixCls: 'za-picker',
     onValueChange: () => {},
+    itemRender: data => data.label,
   };
 
   private zscroller;
@@ -161,7 +162,7 @@ export default class Column extends Component<ColumnProps, any> {
   render() {
     const {
       children, prefixCls,
-      className, itemStyle, displayMember,
+      className, itemStyle, itemRender,
       valueMember,
     } = this.props;
 
@@ -175,7 +176,7 @@ export default class Column extends Component<ColumnProps, any> {
           className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
           key={item[valueMember]}
         >
-          {item[displayMember]}
+          {itemRender(item)}
         </div>
       );
     });

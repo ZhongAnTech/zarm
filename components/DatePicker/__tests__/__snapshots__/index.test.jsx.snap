@@ -100,6 +100,7 @@ exports[`DatePicker DatePicker date 1`] = `
                   <ColumnGroup
                     disabled={false}
                     displayMember="label"
+                    itemRender={[Function]}
                     onValueChange={[Function]}
                     prefixCls="za-picker"
                     selectedValue={
@@ -119,7 +120,7 @@ exports[`DatePicker DatePicker date 1`] = `
                         key="year"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="2017"
@@ -329,7 +330,7 @@ exports[`DatePicker DatePicker date 1`] = `
                         key="month"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="8"
@@ -425,7 +426,7 @@ exports[`DatePicker DatePicker date 1`] = `
                         key="day"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="6"
@@ -752,6 +753,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                   <ColumnGroup
                     disabled={false}
                     displayMember="label"
+                    itemRender={[Function]}
                     onValueChange={[Function]}
                     prefixCls="za-picker"
                     selectedValue={
@@ -773,7 +775,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                         key="year"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="2017"
@@ -803,7 +805,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                         key="month"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="10"
@@ -833,7 +835,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                         key="day"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="3"
@@ -923,7 +925,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                         key="hours"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="15"
@@ -1091,7 +1093,7 @@ exports[`DatePicker DatePicker datetime 1`] = `
                         key="minutes"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="0"
@@ -1905,6 +1907,7 @@ exports[`DatePicker DatePicker time 1`] = `
                   <ColumnGroup
                     disabled={false}
                     displayMember="label"
+                    itemRender={[Function]}
                     onValueChange={[Function]}
                     prefixCls="za-picker"
                     selectedValue={
@@ -1923,7 +1926,7 @@ exports[`DatePicker DatePicker time 1`] = `
                         key="hours"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="15"
@@ -2091,7 +2094,7 @@ exports[`DatePicker DatePicker time 1`] = `
                         key="minutes"
                       >
                         <Column
-                          displayMember="label"
+                          itemRender={[Function]}
                           onValueChange={[Function]}
                           prefixCls="za-picker"
                           selectedValue="0"
