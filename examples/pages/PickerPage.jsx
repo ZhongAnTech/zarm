@@ -103,7 +103,6 @@ class Page extends Component {
                     },
                   ]}
                   defaultValue={['1', '12']}
-                  displayAddon="-"
                   />
               </Cell>
 
@@ -143,7 +142,7 @@ class Page extends Component {
                   ]}
                   value={diy.value}
                   valueMember="code"
-                  displayMember="name"
+                  itemRender={data => data.name}
                   displayRender={selected => selected.map(item => item.name).join('/')}
                   onOk={(selected) => {
                     diy.value = selected.map(item => item.code);
