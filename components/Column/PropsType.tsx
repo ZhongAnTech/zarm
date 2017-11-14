@@ -2,19 +2,19 @@ export interface BaseColumnProps {
   children: object[];
   selectedValue?: string[];
   defaultSelectedValue?: string;
-  displayMember: string;
   valueMember: string;
   onValueChange?: (value?: any) => void;
   disabled?: boolean;
   itemStyle?: object;
+  itemRender: (data?: object) => string;
 }
 
 export interface BaseColumnGroupProps {
   children: any[];
   selectedValue?: string[];
-  displayMember: string;
   valueMember: string;
   onValueChange?: (value?: any, i?: number) => void;
+  itemRender: (data?: object) => string;
 }
 
 export interface BaseCascaderProps {
@@ -25,7 +25,7 @@ export interface BaseCascaderProps {
   cols?: number;
   onChange: (value?: any) => any;
   selectedValue?: string[];
-  displayMember: string;
   valueMember: string;
   onValueChange?: (value?: any, i?: number) => void;
+  itemRender: (data?: object) => string;
 }

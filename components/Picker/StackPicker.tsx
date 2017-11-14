@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Popup from '../Popup';
-import { BasePickerStackProps } from './PropsType';
+import { BasePickerProps } from './PropsType';
 
 const stopEventPropagation = (e) => {
   e.stopPropagation();
   // e.nativeEvent.stopImmediatePropagation();
 };
 
-export interface PickerStackProps extends BasePickerStackProps {
+const labelAddon = ' > ';
+const displayItems = 8;
+const itemHeight = 50;
+export interface PickerStackProps extends BasePickerProps {
   prefixCls?: string;
   className?: any;
 }
@@ -24,9 +27,8 @@ export default class PickerStack extends Component<PickerStackProps, any> {
     disabled: false,
     dataSource: [],
     cols: Infinity,
-    labelAddon: ' > ',
-    displayItems: 8,
-    itemHeight: 50,
+    // displayItems: 8,
+    // itemHeight: 50,
     displayRender: data => data.map(({ label }) => label).join(''),
     itemRender: data => data.label,
     validate: () => {},
@@ -91,7 +93,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
     return {
       value: resolveValue,
       displayValue: [...resolveValue],
-      errorMsg: validate(value),
+      errorMsg: validate(value) || '',
     };
   }
 
@@ -101,14 +103,14 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   change = (index: number, cVal?: object, isLast?: boolean) => {
-    const { validate, onOk } = this.props;
+    const { onOk } = this.props;
     const value = this.state.value.slice(0, index);
     let errorMsg: string = '';
 
     if (cVal) {
       value[index] = cVal;
     }
-    errorMsg = validate(value);
+    // errorMsg = validate(value);
 
     if (isLast && !errorMsg) {
       this.setState({
@@ -140,7 +142,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   reposition = () => {
-    const { dataSource, valueMember, disabled, displayItems, itemHeight, cols } = this.props;
+    const { dataSource, valueMember, disabled, cols = PickerStack.defaultProps.cols } = this.props;
 
     if (disabled) { return; }
 
@@ -165,7 +167,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   renderGroup(dataSource, value) {
-    const { valueMember, cols } = this.props;
+    const { valueMember, cols = PickerStack.defaultProps.cols } = this.props;
     const group: any[] = [];
     let i = 0;
 
@@ -229,7 +231,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
 
   renderWrapper() {
     const { className, title, dataSource,
-            disabled, labelAddon, prefixCls, itemRender } = this.props;
+            disabled, prefixCls, itemRender } = this.props;
     const { visible, errorMsg, value } = this.state;
 
     const wrapperCls = classnames(`${prefixCls}-container`, {
@@ -262,7 +264,12 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   render() {
     const { value: curVal, placeholder, disabled, prefixCls, displayRender } = this.props;
     const { displayValue } = this.state;
-    const displayLabel = displayRender(displayValue);
+    let displayLabel = '';
+    if (typeof displayRender === 'function') {
+      displayLabel = displayRender(displayValue);
+    } else {
+      displayLabel = displayValue.map(({ label }) => label).join('');
+    }
 
     const labelCls = classnames(`${prefixCls}-input`, {
       [`${prefixCls}-placeholder`]: !displayLabel,

@@ -13,6 +13,7 @@ export default class ColumnGroup extends Component<ColumnGroupProps, any> {
   static defaultProps = {
     prefixCls: 'za-picker',
     onValueChange: () => {},
+    itemRender: data => data.label,
   };
 
   constructor(props) {
@@ -50,7 +51,7 @@ export default class ColumnGroup extends Component<ColumnGroupProps, any> {
   render() {
     const {
       prefixCls, className,
-      children, displayMember, valueMember,
+      children, itemRender, valueMember,
     } = this.props;
 
     const selectedValue = this.getValue();
@@ -60,7 +61,7 @@ export default class ColumnGroup extends Component<ColumnGroupProps, any> {
           <Column
             prefixCls={prefixCls}
             selectedValue={selectedValue[i]}
-            displayMember={displayMember}
+            itemRender={itemRender}
             valueMember={valueMember}
             onValueChange={value => this.onValueChange(value, i)}
             {...col.props}
