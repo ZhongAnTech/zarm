@@ -19,12 +19,13 @@ export default class Pull extends PureComponent<PullProps, any> {
     refreshInitDistance: 30,
     refreshDistance: 50,
     loading: LOAD_STATE.normal,
-    loadDistance: 10,
+    loadDistance: 0,
     animationDuration: 400,
     stayTime: 1000,
   };
 
   private pull;
+  private wrap;
 
   constructor(props) {
     super(props);
@@ -37,7 +38,9 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentDidMount() {
-    Events.on(window, 'scroll', this.onScroll);
+    this.wrap = this.getScrollContainer();
+    const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
+    Events.on(scroller, 'scroll', this.onScroll);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,29 +54,39 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentWillUnmount() {
-    Events.off(window, 'scroll', this.onScroll);
+    const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
+    Events.off(scroller, 'scroll', this.onScroll);
+  }
+
+  getScrollContainer = () => {
+    return (node => {
+      while (node.parentNode && node.parentNode !== document.body) {
+        const style = window.getComputedStyle(node);
+        if (['scroll', 'auto'].indexOf(style.overflowY || '') > - 1) {
+          return node;
+        }
+        node = node.parentNode;
+      }
+    })(this.pull) || document.documentElement;
   }
 
   onScroll = () => {
     const { refreshState, loadState } = this.state;
     const { onLoad, loadDistance } = this.props;
+    const { scrollHeight, scrollTop, clientHeight } = this.wrap;
+
     if (
+      typeof onLoad !== 'function' ||
       refreshState !== REFRESH_STATE.normal ||
       loadState !== LOAD_STATE.normal ||
-      !onLoad) {
+      scrollHeight <= clientHeight ||
+
+      // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度
+      scrollHeight - (scrollTop + document.body.scrollTop) - loadDistance > clientHeight
+    ) {
       return;
     }
-
-    const bottom = this.pull.getBoundingClientRect().bottom;
-    const scrollHeight = document.documentElement.scrollHeight;
-    const clientHeight = document.documentElement.clientHeight;
-    if (scrollHeight <= clientHeight) {
-      return;
-    }
-
-    if (bottom <= clientHeight + loadDistance && typeof onLoad === 'function') {
-      onLoad();
-    }
+    onLoad();
   }
 
   onDragMove = (event, { offsetY }) => {
@@ -83,15 +96,15 @@ export default class Pull extends PureComponent<PullProps, any> {
       !onRefresh ||
 
       // 上拉
-      offsetY < 0 ||
+      offsetY <= 0 ||
 
       // 未滚动到顶部
-      offsetY > 0 && (document.documentElement.scrollTop + document.body.scrollTop) > 0 ||
+      offsetY > 0 && (this.wrap.scrollTop + document.body.scrollTop) > 0 ||
 
       // 已经触发过加载状态
       this.state.refreshState >= REFRESH_STATE.loading
     ) {
-      return;
+      return false;
     }
 
     // 解决低端安卓系统只触发一次touchmove事件的bug
@@ -310,23 +323,20 @@ export default class Pull extends PureComponent<PullProps, any> {
   render() {
     const { prefixCls, className, children } = this.props;
     const { offsetY, animationDuration, refreshState, loadState } = this.state;
-    const cls = classnames(`${prefixCls}`, className);
-
-    const refreshCls = classnames(`${prefixCls}-refresh`, {
-      [`${prefixCls}-refresh-show`]: refreshState >= REFRESH_STATE.loading,
-    });
+    const cls = classnames(prefixCls, className);
 
     const loadCls = classnames(`${prefixCls}-load`, {
       [`${prefixCls}-load-show`]: loadState >= LOAD_STATE.loading,
     });
 
-    const refreshStyle: CSSProperties = {
-      WebkitTransitionDuration: `${animationDuration}ms`,
-      transitionDuration: `${animationDuration}ms`,
+    const contentStyle: CSSProperties = {
+      WebkitTransition: `all ${animationDuration}ms`,
+      transition: `all ${animationDuration}ms`,
     };
 
     if (refreshState <= REFRESH_STATE.drop) {
-      refreshStyle.height = offsetY;
+      contentStyle.WebkitTransform = `translate3d(0, ${offsetY}px, 0)`;
+      contentStyle.transform = `translate3d(0, ${offsetY}px, 0)`;
     }
 
     return (
@@ -334,13 +344,15 @@ export default class Pull extends PureComponent<PullProps, any> {
         onDragMove={this.onDragMove}
         onDragEnd={this.onDragEnd}
       >
-        <div className={cls} ref={(ele) => { this.pull = ele; }}>
-          <div className={refreshCls} style={refreshStyle}>
-            {this.renderRefresh()}
-          </div>
-          {children}
-          <div className={loadCls}>
-            {this.renderLoad()}
+        <div className={cls}>
+          <div className={`${prefixCls}-content`} style={contentStyle} ref={(ele) => { this.pull = ele; }}>
+            <div className={`${prefixCls}-refresh`}>
+              {this.renderRefresh()}
+            </div>
+            <div className={`${prefixCls}-body`}>{children}</div>
+            <div className={loadCls}>
+              {this.renderLoad()}
+            </div>
           </div>
         </div>
       </Drag>

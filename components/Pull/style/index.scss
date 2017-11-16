@@ -4,6 +4,16 @@
 $prefixCls: $prefixCls-pull;
 
 .#{$prefixCls} {
+  overflow: hidden;
+  min-height: r(50);
+  // overflow-x: hidden;
+  // overflow-y: scroll;
+  // height: r(300);
+
+  &-content {
+    transform: translate3d(0, r(50), 0);
+  }
+
   &-refresh,
   &-load {
     display: flex;
@@ -11,6 +21,14 @@ $prefixCls: $prefixCls-pull;
     justify-content: center;
     overflow: hidden;
     width: 100%;
+  }
+
+  &-refresh {
+    margin-top: r(-50);
+    height: r(50);
+  }
+
+  &-load {
     height: 0;
 
     &-show {

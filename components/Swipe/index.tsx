@@ -300,9 +300,9 @@ export default class Swipe extends Component<SwipeProps, any> {
       y = offset.y;
     }
 
-    dom.style.webkitTransitionDuration = `${animationDuration}ms`;
+    dom.style.WebkitTransformDuration = `${animationDuration}ms`;
     dom.style.transitionDuration = `${animationDuration}ms`;
-    dom.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`;
+    dom.style.WebkitTransform = `translate3d(${x}px, ${y}px, 0)`;
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 
