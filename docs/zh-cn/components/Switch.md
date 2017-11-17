@@ -5,7 +5,7 @@
 ### 引入
 
 ```js
-import { Switch } from 'zarm';
+import { Switch } from `zarm`;
 ```
 
 ### 代码演示
@@ -39,11 +39,11 @@ import { Switch } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-switch | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| checked | bool | | | 值 |
-| defaultChecked | bool | | | 初始值 |
-| disabled | bool | false | | 是否禁用 |
-| onChange | func | | \(value: bool\) | 值变化时触发的回调函数 |
+| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
+| checked | boolean | | | 值 |
+| defaultChecked | boolean | | | 初始值 |
+| disabled | boolean | false | | 是否禁用 |
+| onChange | <code>(value: boolean) => void</code> | | \(value: boolean\) | 值变化时触发的回调函数 |
 
 
 

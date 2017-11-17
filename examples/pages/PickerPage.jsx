@@ -39,8 +39,6 @@ class Page extends Component {
                     });
                     console.log(`selected ${single.value}`);
                   }}
-                  onCancel={() => {
-                  }}
                   />
               </Cell>
 
@@ -150,8 +148,6 @@ class Page extends Component {
                       diy,
                     });
                   }}
-                  onCancel={() => {
-                  }}
                   />
               </Cell>
 
@@ -182,7 +178,7 @@ class Page extends Component {
                   title="选择年份"
                   placeholder="请选择年份"
                   mode="year"
-                  min="2014"
+                  wheelDefaultValue="2009"
                   />
               </Cell>
 
@@ -192,6 +188,8 @@ class Page extends Component {
                   placeholder="请选择日期"
                   mode="date"
                   value="2009-03-04"
+                  min="2007-01-03"
+                  max="2017-11-23"
                   />
               </Cell>
 

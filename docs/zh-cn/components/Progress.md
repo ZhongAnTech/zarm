@@ -5,7 +5,7 @@
 ### 引入
 
 ```js
-import { Progress } from 'zarm';
+import { Progress } from `zarm`;
 ```
 
 ### 代码演示
@@ -44,9 +44,9 @@ import { Progress } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-progress | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
+| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | percent | number | 0 | | 进度百分比（范围：0～100） |
-| shape | string | 'line' | 'line', 'circle' | 类型 |
+| shape | string | `line` | `line`, `circle` | 类型 |
 
 
 

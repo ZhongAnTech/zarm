@@ -14,6 +14,13 @@ export default class InputText extends PureComponent<InputTextProps, {}> {
     disabled: false,
   };
 
+  onInputChange = (e) => {
+    const { onChange } = this.props;
+    if (typeof onChange === 'function') {
+      onChange(e.target.value);
+    }
+  }
+
   render() {
     const { prefixCls, className, disabled, ...others } = this.props;
     const cls = classnames(prefixCls, `${prefixCls}-text`, className, {
@@ -26,6 +33,7 @@ export default class InputText extends PureComponent<InputTextProps, {}> {
           {...others}
           type="text"
           disabled={disabled}
+          onChange={this.onInputChange}
         />
       </div>
     );

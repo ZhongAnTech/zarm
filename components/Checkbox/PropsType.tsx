@@ -1,7 +1,6 @@
 export interface BaseCheckboxProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
-  size?: 'lg';
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
@@ -15,11 +14,10 @@ export interface BaseCheckboxProps {
 export interface BaseCheckboxGroupProps {
   theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
-  size?: 'lg';
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
-  onChange?: (checked: boolean) => void;
+  onChange?: (value: Array<number | string>) => void;
   value?: Array<number | string>;
   defaultValue?: Array<number | string>;
   compact?: boolean;

@@ -5,7 +5,7 @@
 ### 引入
 
 ```js
-import { Stepper } from 'zarm';
+import { Stepper } from `zarm`;
 ```
 
 ### 代码演示
@@ -61,15 +61,16 @@ import { Stepper } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-stepper | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| shape | string | | 'radius', 'circle' | 形状 |
+| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
+| shape | string | | `radius`, `circle` | 形状 |
 | value | number | | | 值 |
 | defaultValue | number | | | 初始值 |
 | min | number | | | 最小值 |
 | max | number | | | 最大值 |
 | step | number | 1 | | 步长 |
-| disabled | bool | false | | 是否禁用 |
-| onChange | func | noop | \(value: number\) | 值变化时触发的回调函数 |
+| disabled | boolean | false | | 是否禁用 |
+| onInputChange | <code>(value: number) => void</code> | noop | \(value: number\) | 输入值变化时触发的回调函数 |
+| onChange | <code>(value: number) => void</code> | noop | \(value: number\) | 值变化时触发的回调函数 |
 
 
 
