@@ -14,12 +14,12 @@
 
 ## Installation 安装
 
-#### 使用npm安装：
+使用npm安装：
 ```bash
 npm install zarm --save
 ```
 
-#### 通过cdn引入umd模块：
+或者通过cdn引入umd模块：
 ```html
 <link rel="stylesheet" href="https://unpkg.com/zarm@latest/dist/zarm.min.css">
 <script type="text/javascript" src="https://unpkg.com/zarm@latest/dist/zarm.min.js"></script>
@@ -36,7 +36,10 @@ import 'zarm/dist/zarm.min.css';
 
 #### 按需加载
 
-* 方法一：使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)（推荐）
+* 方法一（推荐）
+
+> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
+
 ```js
   // .babelrc or babel-loader option
   {
@@ -49,8 +52,6 @@ import 'zarm/dist/zarm.min.css';
     ]
   }
 ```
-然后在程序中调用
-
 ```js
 import { Button, Cell } from 'zarm';
 ```
