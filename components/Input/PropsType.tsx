@@ -8,7 +8,7 @@ export interface BaseInputTextProps {
   defaultValue?: string;
   disabled?: boolean;
   maxLength?: number;
-  onChange?: (x?: any) => void;
+  onChange?: (value?: string) => void;
 }
 
 export interface BaseInputNumberProps {
@@ -17,7 +17,7 @@ export interface BaseInputNumberProps {
   defaultValue?: string | number;
   disabled?: boolean;
   maxLength?: number;
-  onChange?: (x?: any) => void;
+  onChange?: (value: any) => void;
 }
 
 export interface BaseInputTextareaProps {
@@ -30,5 +30,5 @@ export interface BaseInputTextareaProps {
   maxLength?: number;
   showLength?: boolean;
   style?: React.CSSProperties;
-  onChange?: (x?: any) => void;
+  onChange?: (value?: string) => void;
 }

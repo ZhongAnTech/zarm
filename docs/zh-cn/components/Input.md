@@ -39,7 +39,7 @@ import { Input } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-input | | 类名前缀 |
 | className | string | | | 追加类名 |
-| type | string | text | | 显示类型 |
+| type | string | `text` | `text`, `textarea` | 显示类型 |
 | value | string |  | | 值 |
 | defaultValue | string |  | | 初始值 |
 | disabled | bool | false | | 是否禁用 |
@@ -47,7 +47,7 @@ import { Input } from 'zarm';
 | autosize | bool | false | | 是否高度自适应 |
 | maxLength | number | | | 输入字数上限 |
 | showLength | bool | false | | 是否显示输入字数 |
-| onChange | func | noop | \(value: string\) | 值变化时触发的回调函数 |
+| onChange | <code>(value: string) => void</code> | noop | \(value: string\) | 值变化时触发的回调函数 |
 
 
 

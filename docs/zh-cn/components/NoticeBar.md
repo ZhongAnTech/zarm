@@ -53,10 +53,10 @@ import { NoticeBar } from 'zarm';
 | className | string | | | 追加类名 |
 | theme | string | 'warning' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | icon | any | | | 设置图标 |
-| autoscroll | bool | false | | 是否开启自动滚动轮播 |
-| hasClosable | bool | false | | 是否显示关闭按钮 |
-| hasArrow | bool | false | | 是否显示箭头 |
-| onClick | func | noop | | 点击后触发的回调函数 |
+| autoscroll | boolean | false | | 是否开启自动滚动轮播 |
+| hasClosable | boolean | false | | 是否显示关闭按钮 |
+| hasArrow | boolean | false | | 是否显示箭头 |
+| onClick | <code>() => void</code> | noop | | 点击后触发的回调函数 |
 
 
 

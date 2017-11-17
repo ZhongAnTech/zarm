@@ -55,7 +55,7 @@ class Page extends PureComponent {
 
               <Cell
                 description={
-                  <Radio.Group type="button">
+                  <Radio.Group>
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2" disabled>选项三</Radio>

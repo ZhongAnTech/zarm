@@ -6,7 +6,6 @@ export default interface PropsType {
   step: number;
   min: number;
   max: number;
-  block?: boolean;
   disabled?: boolean;
   onInputChange?: (value: number) => void;
   onChange?: (value: number) => void;

@@ -58,13 +58,12 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, size, type, value, block, disabled, id, children } = this.props;
+    const { prefixCls, className, theme, shape, type, value, block, disabled, id, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
       [`shape-${shape}`]: !!shape,
-      [`size-${size}`]: !!size,
       checked,
       disabled,
     });
