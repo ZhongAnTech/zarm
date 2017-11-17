@@ -7,4 +7,5 @@ node_modules
 _book
 .idea
 .DS_Store
+.temp
 *.log
