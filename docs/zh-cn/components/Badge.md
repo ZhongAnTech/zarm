@@ -5,7 +5,7 @@
 ### 引入
 
 ```js
-import { Badge } from 'zarm';
+import { Badge } from `zarm`;
 ```
 
 ### 代码演示
@@ -40,7 +40,7 @@ import { Badge } from 'zarm';
 #### 上标位置
 ```jsx
 <Badge sup shape="dot">
-  <div style={{ width: 30, height: 30, background: '#ddd' }}></div>
+  <div style={{ width: 30, height: 30, background: `#ddd` }}></div>
 </Badge>
 ```
 
@@ -51,9 +51,9 @@ import { Badge } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-badge | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'error' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| shape | string | | 'dot', 'radius', 'round', 'circle' | 形状 |
+| theme | string | `error` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | text | any | | | 显示文字 |
+| shape | string | | `dot`, `radius`, `round`, `circle` | 形状 |
 | sup | bool | false | | 是否上标位置 |
 
 

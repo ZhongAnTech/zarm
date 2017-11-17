@@ -75,9 +75,9 @@ import { ActionSheet } from 'zarm';
 | className | string | | | 追加类名 |
 | shape | string | | 'radius' | 形状 |
 | visible | bool | false | | 是否显示 |
-| actions | arrayOf(object) | [ ] | object: { theme, text, onClick } | 动作列表 |
-| onMaskClick | func | noop | | 点击遮罩层时触发的回调函数 |
-| onCancel | func | | void | 显示取消菜单，点击时触发的回调函数 |
+| actions | Action[] | [ ] | Action = { text: string, <br /> theme?: 'default' &#124; 'primary' &#124; 'info' &#124; 'success' &#124; 'warning' &#124; 'error', <br /> className?: string, <br /> onClick?: () => void} | 动作列表 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+| onCancel | <code>() => void</code> | noop | | 显示取消菜单，点击时触发的回调函数 |
 | cancelText | string | '取消' |  | 取消菜单的文案 |
 
 

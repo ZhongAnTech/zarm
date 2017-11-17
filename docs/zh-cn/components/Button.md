@@ -5,7 +5,7 @@
 ### 引入
 
 ```js
-import { Button } from 'zarm';
+import { Button } from `zarm`;
 ```
 
 ### 代码演示
@@ -72,15 +72,15 @@ import { Button } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-button | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'default' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| size | string | | 'xl', 'lg', 'sm', 'xs' | 大小 |
-| shape | string | | 'radius', 'round', 'circle' | 形状 |
-| block | bool | false | | 是否为块级元素 |
-| bordered | bool | false | | 是否是幽灵按钮 |
-| disabled | bool | false | | 是否禁用 |
-| loading | bool | false | | 是否显示加载中 |
-| icon | React.element | | | icon |
-| onClick | func | noop | | 点击后触发的回调函数 |
+| theme | string | `default` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
+| size | string | | `xl`, `lg`, `sm`, `xs` | 大小 |
+| shape | string | | `radius`, `round`, `circle` | 形状 |
+| block | boolean | false | | 是否为块级元素 |
+| bordered | boolean | false | | 是否是幽灵按钮 |
+| disabled | boolean | false | | 是否禁用 |
+| loading | boolean | false | | 是否显示加载中 |
+| icon | JSX.Element | | | icon |
+| onClick | <code>(e?: any) => void</code> | noop | | 点击后触发的回调函数 |
 
 
 

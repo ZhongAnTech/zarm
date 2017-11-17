@@ -49,9 +49,9 @@ import { Toast } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-toast | | 类名前缀 |
 | className | string | | | 追加类名 |
-| visible | bool | false | | 是否显示 |
+| visible | boolean | false | | 是否显示 |
 | stayTime | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
-| onMaskClick | func | noop | | 点击遮罩层时触发的回调函数 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 
 
 

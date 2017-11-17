@@ -1,5 +1,4 @@
 export default interface PropsType {
-  visible?: boolean;
   placeholder?: string;
   title?: any;
   cancelText?: string;
@@ -19,6 +18,5 @@ export default interface PropsType {
   formatMonth: (num?: number, date?: string | object) => void;
   formatDay: (num?: number, date?: string | object) => void;
   locale: any;
-  displayMember?: string;
   valueMember?: string;
 }
