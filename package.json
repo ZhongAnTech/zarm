@@ -29,6 +29,7 @@
     "url": "https://github.com/ZhonganTechENG/zarm/issues"
   },
   "main": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "npm run deploy && npm run dev",
