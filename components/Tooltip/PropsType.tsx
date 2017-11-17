@@ -3,3 +3,9 @@ export default interface PropsType {
   message?: any;
   children?: any;
 }
+
+declare global {
+  interface Window {
+    zarmTooltip?: any;
+  }
+}

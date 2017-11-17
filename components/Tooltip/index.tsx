@@ -3,7 +3,6 @@ import ReactDOM, { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 // import Events from '../utils/events';
-
 export interface TooltipProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -19,10 +18,9 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
   private child;
 
   componentDidMount() {
-    let zarmTooltip = (window as any).zarmTooltip;
-    if (!zarmTooltip) {
-      zarmTooltip = document.createElement('div');
-      document.body.appendChild(zarmTooltip);
+    if (!window.zarmTooltip) {
+      window.zarmTooltip = document.createElement('div');
+      document.body.appendChild(window.zarmTooltip);
     }
     this.show(this.props);
   }
@@ -50,12 +48,10 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
       <div className={cls} style={style}>
         <div className={`${prefixCls}-inner`}>{message}</div>
       </div>
-      , (window as any).zarmTooltip);
+      , window.zarmTooltip);
   }
-
   render() {
     const { children } = this.props;
-
     return cloneElement(children, {
       ref: (ele) => { this.child = ele; },
     });
