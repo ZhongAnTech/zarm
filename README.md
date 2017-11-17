@@ -38,7 +38,7 @@ import 'zarm/dist/zarm.min.css';
 
 * 方法一（推荐）
 
-> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
+> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载样式文件
 
 ```js
   // .babelrc or babel-loader option
