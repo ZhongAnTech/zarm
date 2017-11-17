@@ -16,6 +16,8 @@ export interface PickerProps extends BasePickerProps {
 
 export default class Picker extends Component<PickerProps, any> {
 
+  static Stack: any;
+
   static defaultProps = {
     placeholder: '请选择',
     title: '请选择',
