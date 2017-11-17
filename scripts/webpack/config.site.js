@@ -7,7 +7,7 @@ const config = require('./config.base');
 
 config.entry = {
   index: ['./examples/index.js'],
-  // common: ['core-js/es6/map', 'core-js/es6/set', 'react', 'react-dom', 'react-router-dom'],
+  common: ['core-js/es6/map', 'core-js/es6/set', 'react', 'react-dom', 'react-router-dom'],
 };
 
 config.output.filename = 'js/[name].[chunkhash:8].js';
