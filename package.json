@@ -130,18 +130,22 @@
     "webpack-dev-server": "2.7.1"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/scripts/jest/setup.js",
-    "testMatch": [
-      "<rootDir>/components/**/__tests__/**/*.(js|ts)?(x)"
+    "roots": [
+      "<rootDir>/components"
     ],
+    "setupFiles": [
+      "./scripts/jest/environment.js"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/scripts/jest/setup.js",
+    "testRegex": "/__tests__/.*(\\.jsx|[^d]\\.ts)$",
     "collectCoverageFrom": [
       "components/**/*.{ts,tsx}",
       "!components/*/PropsType.{ts,tsx}",
-      "!components/*/style/*.{ts,tsx}"
+      "!components/**/style/*"
     ],
     "transform": {
-      "^.+\\.jsx?$": "<rootDir>/scripts/jest/jsxTransform.js",
-      "^.+\\.tsx?$": "<rootDir>/scripts/jest/typescriptTransform.js"
+      "^.+\\.jsx?$": "<rootDir>/scripts/jest/preprocessor.js",
+      "^.+\\.tsx?$": "<rootDir>/scripts/jest/ts-preprocessor.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$"
