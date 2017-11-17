@@ -5,7 +5,7 @@
 ### 引入
 
 ```js
-import { Popup } from 'zarm';
+import { Popup } from `zarm`;
 ```
 
 ### 代码演示
@@ -38,14 +38,14 @@ import { Popup } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-popup | | 类名前缀 |
 | className | string | | | 追加类名 |
-| visible | bool | false | | 是否显示 |
-| direction | string | 'bottom' | 'top', 'bottom', 'left', 'right' | 弹出方向 |
-| autoClose | bool | false | | 是否自动关闭 |
+| visible | boolean | false | | 是否显示 |
+| autoClose | boolean | false | | 是否自动关闭 |
+| direction | string | `bottom` | `top`, `bottom`, `left`, `right` | 弹出方向 |
 | stayTime | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
 | animationDuration | number | 200 | | 动画执行时间（单位：毫秒） |
-| maskType | string | 'normal' | 'transparent', 'light', 'normal', 'dark' | 遮罩层的类型 |
-| onMaskClick | func | noop | | 点击遮罩层时触发的回调函数 |
-| onClose | func | noop | | 关闭后触发的回调函数 |
+| maskType | string | `normal` | `transparent`, `light`, `normal`, `dark` | 遮罩层的类型 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+| onClose | <code>() => void</code> | noop | | 关闭后触发的回调函数 |
 
 
 

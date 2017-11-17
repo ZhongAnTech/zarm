@@ -35,6 +35,8 @@ import { Spinner } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-stepper | | 类名前缀 |
 | className | string | | | 追加类名 |
+| strokeWidth | number | | | 指示器边框的宽度 |  
+| percent | number | | | 初始百分比 |
 | size | string | | 'lg' | 大小 |
 
 

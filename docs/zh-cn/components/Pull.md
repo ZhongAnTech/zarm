@@ -134,12 +134,12 @@ const LOAD_STATE = {
 | refreshing | number | 0 | 下拉刷新状态枚举（0-5） |下拉刷新的状态 |
 | refreshInitDistance | number | 20 | | 下拉助跑距离 |
 | refreshDistance | number | 50 | | 触发下拉刷新离顶部的距离阀值 |
-| refreshRender | func | | | 下拉各状态渲染的回调函数 |
-| onRefresh | func | | | 达到阀值后释放触发刷新的回调函数 |
+| refreshRender | <code>(refreshState: REFRESH_STATE, percent: number) => any</code> | | | 下拉各状态渲染的回调函数 |
+| onRefresh | <code>() => void</code> | | | 达到阀值后释放触发刷新的回调函数 |
 | loading | number | 0 | 上拉加载状态枚举（0-5） | 上拉加载的状态 |
 | loadDistance | number | 10 | | 触发上拉加载离底部的距离阀值 |
-| loadRender | func | | | 上拉各状态渲染的回调函数 |
-| onLoad | func | | | 触发上拉加载后的回调函数 |
+| loadRender | <code>(loadState: LOAD_STATE) => any</code> | | | 上拉各状态渲染的回调函数 |
+| onLoad | <code>() => void</code> | | | 触发上拉加载后的回调函数 |
 | animationDuration | number | 400 | | 动画执行时间，单位：毫秒 |
 | stayTime | number | 1000 | | 加载成功停留时间 |
 

@@ -5,7 +5,7 @@
 ### 引入
 
 ```js
-import { Modal } from 'zarm';
+import { Modal } from `zarm`;
 ```
 
 ### 代码演示
@@ -80,7 +80,7 @@ import { Modal } from 'zarm';
   visible={this.state.visible}
   title="确认信息"
   message="你确定要这样做吗？"
-  onOk={() => alert('click ok')}
+  onOk={() => alert(`click ok`)}
   onCancel={() => this.setState({ visible: false })}
   />
 ```
@@ -92,12 +92,12 @@ import { Modal } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-modal | | 类名前缀 |
 | className | string | 无 | | 追加类名 |
-| shape | string | 无 | 'radius' | 形状 |
-| visible | bool | false | | 是否显示 |
-| animationType | string | 'fade' | 'fade', 'door', 'flip', 'rotate', 'zoom','moveUp', 'moveDown', 'moveLeft', 'moveRight','slideUp', 'slideDown', 'slideLeft', 'slideRight' | 动画效果 |
+| shape | string | 无 | `radius` | 形状 |
+| visible | boolean | false | | 是否显示 |
+| animationType | string | `fade` | `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` | 动画效果 |
 | animationDuration | number | 200 | | 动画执行时间 |
-| width | string, number | '70%' | | 宽度 |
-| onMaskClick | func | noop | | 点击遮罩层时触发的回调函数 |
+| width | string &#124; number | `70%` | | 宽度 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 
 
 

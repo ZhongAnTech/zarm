@@ -8,6 +8,6 @@ export default interface PropsType {
   focus?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  icon?: any;
-  onClick?: (x?: any) => void;
+  icon?: JSX.Element;
+  onClick?: (e?: any) => void;
 }

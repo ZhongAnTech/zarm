@@ -63,7 +63,6 @@ export interface DatePickerProps extends PropsType {
 export default class DatePicker extends Component<DatePickerProps, any> {
 
   static defaultProps = {
-    visible: false,
     placeholder: '请选择',
     title: '请选择',
     cancelText: '取消',
@@ -75,7 +74,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     locale: defaultLocale,
     minuteStep: 1,
     prefixCls: 'za-picker',
-    displayMember: 'label',
     valueMember: 'value',
     onClick: () => {},
     onCancel: () => {},
@@ -95,7 +93,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     this.initDate = date;
 
     this.state = {
-      visible: props.visible || false,
+      visible: false,
       date: date || defaultDate,
       display,
     };
@@ -525,7 +523,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   render() {
     const { value, cols } = this.getValueCols();
     const { prefixCls, className, disabled, cancelText,
-            okText, title, placeholder, displayMember, valueMember } = this.props;
+            okText, title, placeholder, valueMember } = this.props;
 
     const classes = classnames({
       [`${prefixCls}-container`]: true,
@@ -564,7 +562,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
                     className={className}
                     prefixCls={prefixCls}
                     disabled={disabled}
-                    displayMember={displayMember}
                     valueMember={valueMember}
                     selectedValue={value}
                     onValueChange={(values, index) => this.onValueChange(values, index)}

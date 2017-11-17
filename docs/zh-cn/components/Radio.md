@@ -113,13 +113,14 @@ import { Radio } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-radio | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | | 'button', 'cell' | 显示类型 |
-| value | string, number | | | 值 |
-| checked | bool | | | 当前是否选中 |
-| defaultChecked | bool | | | 初始是否选中 |
-| disabled | bool | false | | 是否禁用 |
-| onChange | func | | \(checked: bool\) | 值变化时触发的回调函数 |
+| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
+| shape | string | | `radius`, `round` | 圆角或者椭圆角 | 
+| type | string | | `button`, `cell` | 显示类型 |
+| value | string &#124; number | | | 值 |
+| checked | boolean | | | 当前是否选中 |
+| defaultChecked | boolean | | | 初始是否选中 |
+| disabled | boolean | false | | 是否禁用 |
+| onChange | (checked: boolean) => void | | \(checked: boolean\) | 值变化时触发的回调函数 |
 
 #### Radio.Group
 
@@ -127,15 +128,15 @@ import { Radio } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-radio | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | | 'button', 'cell' | 显示类型 |
-| shape | string | | 'radius', 'round' | 形状 |
+| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
+| type | string | | `button`, `cell` | 显示类型 |
+| shape | string | | `radius`, `round` | 形状 |
 | value | string, number | | | 选中值 |
 | defaultValue | string, number | | | 初始选中值 |
-| block | bool | false | | 是否为块级元素 |
-| disabled | bool | false | | 是否禁用 |
-| compact | bool | false | | 是否启用紧凑模式 |
-| onChange | func | noop | \(value: string, number\) | 值变化时触发的回调函数 |
+| block | boolean | false | | 是否为块级元素 |
+| disabled | boolean | false | | 是否禁用 |
+| compact | boolean | false | | 是否启用紧凑模式 |
+| onChange | <code>(value: number &#124; string) => void</code> | noop | \(value: string &#124; number\) | 值变化时触发的回调函数 |
 
 
 

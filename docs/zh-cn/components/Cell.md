@@ -58,12 +58,13 @@ import { Cell } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-cell | | 类名前缀 |
 | className | string | | | 追加类名 |
+| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | icon | any | | | 显示的图标 |
 | titile | any | | | 标题 |
 | description | any | | | 描述 |
-| hasArrow | bool | false | | 是否显示箭头 |
-| onClick | func | noop | | 点击后触发的回调函数 |
+| hasArrow | boolean | false | | 是否显示箭头 |
 | help | any | | | 下方提示信息，通常配合`Message`组件使用 |
+| onClick | <code>() => void</code> | noop | | 点击后触发的回调函数 |
 
 
 

@@ -56,17 +56,17 @@ import { Swipe } from 'zarm';
 | prefixCls | string | za-swipe | | 类名前缀 |
 | className | string | | | 追加类名 |
 | direction | string | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向 |
-| height | number, string | | | 高度 |
+| height | number &#124; string | | | 高度 |
 | activeIndex | number | 0 | | 当前页面的索引 |
-| loop | bool | false | | 是否循环 |
-| autoPlay | bool | false | | 是否自动轮播 |
+| loop | boolean | false | | 是否循环 |
+| autoPlay | boolean | false | | 是否自动轮播 |
 | autoPlayIntervalTime | number | 3000 | | 自动轮播时间间隔，单位：毫秒 |
 | moveDistanceRatio | number | 0.5 | | 移动距离比例临界点 |
 | moveTimeSpan | number | 300 | | 移动时间跨度临界点，单位：毫秒 |
 | animationDuration | number | 300 | | 动画执行时间，单位：毫秒 |
-| showPagination | bool | true | | 是否显示分页器 |
-| onChange | func | noop | \(value: number\) | 值变化时触发的回调函数 |
-| onChangeEnd | func | noop | \(value: number\) | 值变化动画结束后触发的回调函数 |
+| showPagination | boolean | true | | 是否显示分页器 |
+| onChange | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化时触发的回调函数 |
+| onChangeEnd | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化动画结束后触发的回调函数 |
 
 
 
