@@ -8,11 +8,7 @@
 
   众安科技移动端UI组件库，基于React。（Vue版本传送门：[zarm-vue](https://github.com/ZhonganTechENG/zarm-vue)）
 
-## Example 案例
-
-[Online example](https://zhongantecheng.github.io/zarm/)
-
-## Installation 安装
+## Install 安装
 
 使用npm安装：
 ```bash
@@ -65,11 +61,11 @@ import 'zarm/lib/Button/style/index.scss';
 
 > 注：使用以上方法需要支持jsx语法或者经过编译
 
-### Document 文档
+## Document 文档
 [中文](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/SUMMARY.md)
 
-### Changelog 更新日志
+## Changelog 更新日志
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
 
-### License
+## License
 MIT
