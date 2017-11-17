@@ -5,7 +5,6 @@ exports[`DatePicker DatePicker date 1`] = `
   cancelText="取消"
   defaultValue=""
   disabled={false}
-  displayMember="label"
   locale={
     Object {
       "day": "日",
@@ -25,7 +24,6 @@ exports[`DatePicker DatePicker date 1`] = `
   title="选择日期"
   value="2017-09-06"
   valueMember="value"
-  visible={false}
 >
   <div
     className="za-picker"
@@ -99,7 +97,6 @@ exports[`DatePicker DatePicker date 1`] = `
                 >
                   <ColumnGroup
                     disabled={false}
-                    displayMember="label"
                     itemRender={[Function]}
                     onValueChange={[Function]}
                     prefixCls="za-picker"
@@ -656,7 +653,6 @@ exports[`DatePicker DatePicker datetime 1`] = `
   cancelText="取消"
   defaultValue="2017-11-03 15:00"
   disabled={false}
-  displayMember="label"
   locale={
     Object {
       "day": "日",
@@ -678,7 +674,6 @@ exports[`DatePicker DatePicker datetime 1`] = `
   title="选择时间"
   value=""
   valueMember="value"
-  visible={false}
 >
   <div
     className="za-picker"
@@ -752,7 +747,6 @@ exports[`DatePicker DatePicker datetime 1`] = `
                 >
                   <ColumnGroup
                     disabled={false}
-                    displayMember="label"
                     itemRender={[Function]}
                     onValueChange={[Function]}
                     prefixCls="za-picker"
@@ -1812,7 +1806,6 @@ exports[`DatePicker DatePicker time 1`] = `
   cancelText="取消"
   defaultValue="2017-11-03 15:00"
   disabled={false}
-  displayMember="label"
   locale={
     Object {
       "day": "日",
@@ -1832,7 +1825,6 @@ exports[`DatePicker DatePicker time 1`] = `
   title="选择时间"
   value=""
   valueMember="value"
-  visible={false}
 >
   <div
     className="za-picker"
@@ -1906,7 +1898,6 @@ exports[`DatePicker DatePicker time 1`] = `
                 >
                   <ColumnGroup
                     disabled={false}
-                    displayMember="label"
                     itemRender={[Function]}
                     onValueChange={[Function]}
                     prefixCls="za-picker"
