@@ -60,7 +60,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   getScrollContainer = () => {
     return (node => {
-      while (node.parentNode && node.parentNode !== document.body) {
+      while (node && node.parentNode && node.parentNode !== document.body) {
         const style = window.getComputedStyle(node);
         if (['scroll', 'auto'].indexOf(style.overflowY || '') > - 1) {
           return node;
