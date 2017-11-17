@@ -19,9 +19,10 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
   private child;
 
   componentDidMount() {
-    if (!window.zarmTooltip) {
-      window.zarmTooltip = document.createElement('div');
-      document.body.appendChild(window.zarmTooltip);
+    let zarmTooltip = (window as any).zarmTooltip;
+    if (!zarmTooltip) {
+      zarmTooltip = document.createElement('div');
+      document.body.appendChild(zarmTooltip);
     }
     this.show(this.props);
   }
@@ -49,7 +50,7 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
       <div className={cls} style={style}>
         <div className={`${prefixCls}-inner`}>{message}</div>
       </div>
-    , window.zarmTooltip);
+      , (window as any).zarmTooltip);
   }
 
   render() {
