@@ -34,7 +34,7 @@ import 'zarm/dist/zarm.min.css';
 
 * 方法一（推荐）
 
-> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载样式文件
+> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载sass文件
 
 ```js
   // .babelrc or babel-loader option
@@ -58,8 +58,6 @@ import { Button, Cell } from 'zarm';
 import Button from 'zarm/lib/Button';
 import 'zarm/lib/Button/style/index.scss';
 ```
-
-> 注：使用以上方法需要支持jsx语法或者经过编译
 
 ## Document 文档
 [中文](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/SUMMARY.md)
