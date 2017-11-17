@@ -3,6 +3,7 @@ import ReactDOM, { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 // import Events from '../utils/events';
+
 export interface TooltipProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -50,6 +51,7 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
       </div>
       , window.zarmTooltip);
   }
+
   render() {
     const { children } = this.props;
     return cloneElement(children, {
