@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { BaseInputNumberProps } from './PropsType';
 import Events from '../utils/events';
-import Keyboard from '../Keyboard';
+import KeyboardPicker from '../KeyboardPicker';
 
 declare const document;
 
@@ -18,7 +18,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     disabled: false,
   };
 
-  private picker;
+  private input;
 
   constructor(props) {
     super(props);
@@ -36,19 +36,24 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     Events.off(document.body, 'touchstart', this.onClosePicker);
   }
 
+  closest = (el, selector) => {
+    const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    while (el) {
+      if (matchesSelector.call(el, selector)) {
+        return el;
+      } else {
+        el = el.parentElement;
+      }
+    }
+    return null;
+  }
+
   onClosePicker = (e) => {
-    if (!this.picker || !this.state.visible) {
+    if (!this.input || !this.state.visible) {
       return;
     }
 
-    const pNode = ((node) => {
-      while (node.parentNode && node.parentNode !== document.body) {
-        if (node === this.picker) {
-          return node;
-        }
-        node = node.parentNode;
-      }
-    })(e.target);
+    const pNode = this.closest(e.target, '.za-keyboard');
 
     if (!pNode) {
       this.close();
@@ -78,6 +83,11 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   open = () => {
     this.setState({ visible: true });
+    // KeyboardPicker.show({
+    //   visible: true,
+    //   type: this.props.type,
+    //   onKeyClick: this.onKeyClick,
+    // });
   }
 
   close = () => {
@@ -94,7 +104,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     });
 
     return (
-      <div className={cls} ref={(ele) => { this.picker = ele; }} onClick={this.onFocus}>
+      <div className={cls} ref={(ele) => { this.input = ele; }} onClick={this.onFocus}>
         {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
         <div className={`${prefixCls}-content`}>{value}</div>
         <input
@@ -104,7 +114,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           disabled={disabled}
           onFocus={this.onFocus}
         />
-        <Keyboard.Picker
+        <KeyboardPicker
           type={type}
           visible={visible}
           onKeyClick={this.onKeyClick}
