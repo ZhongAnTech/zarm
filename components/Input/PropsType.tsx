@@ -15,6 +15,7 @@ export interface BaseInputNumberProps {
   type?: 'number' | 'price' | 'idcard';
   value?: string | number;
   defaultValue?: string | number;
+  placeholder?: string;
   disabled?: boolean;
   maxLength?: number;
   onChange?: (value: any) => void;

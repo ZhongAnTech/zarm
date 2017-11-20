@@ -85,18 +85,21 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   render() {
-    const { prefixCls, className, type, disabled, defaultValue, ...others } = this.props;
+    const { prefixCls, className, type, disabled, defaultValue, placeholder, ...others } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
       disabled,
+      focus: visible,
     });
 
     return (
-      <div className={cls} ref={(ele) => { this.picker = ele; }}>
+      <div className={cls} ref={(ele) => { this.picker = ele; }} onClick={this.onFocus}>
+        {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
+        <div className={`${prefixCls}-content`}>{value}</div>
         <input
           {...others}
-          type="text"
+          type="hidden"
           value={value}
           disabled={disabled}
           onFocus={this.onFocus}
