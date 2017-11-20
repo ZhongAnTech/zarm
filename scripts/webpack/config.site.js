@@ -7,7 +7,6 @@ const config = require('./config.base');
 
 config.entry = {
   index: ['./examples/index.js'],
-  common: ['core-js/es6/map', 'core-js/es6/set', 'react', 'react-dom', 'react-router-dom'],
 };
 
 config.output.filename = 'js/[name].[chunkhash:8].js';
@@ -19,7 +18,7 @@ config.plugins.push(new ExtractTextPlugin({
 }));
 
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: ['common', 'manifest'],
+  name: ['manifest'],
 }));
 
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
@@ -61,11 +60,10 @@ config.plugins.push(new webpack.DefinePlugin({
 // }));
 
 Object.keys(config.entry).forEach((key) => {
-  if (key === 'common') return;
   config.plugins.push(new HtmlWebpackPlugin({
     template: `./examples/${key}.html`,
     filename: `${key}.html`,
-    chunks: ['common', 'manifest', key],
+    chunks: ['manifest', key],
   }));
 });
 
