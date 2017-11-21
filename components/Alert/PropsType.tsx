@@ -13,3 +13,9 @@ export default interface PropsType {
   cancelText?: any;
   onCancel?: () => void;
 }
+
+declare global {
+  interface Window {
+    zarmAlert?: any;
+  }
+}

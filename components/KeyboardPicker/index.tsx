@@ -17,7 +17,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
   };
 
   static show = (props) => {
-    ReactDOM.render(<KeyboardPicker {...props} />, window.zarmKeyboardPicker);
+    ReactDOM.render(<KeyboardPicker {...props} visible />, window.zarmKeyboardPicker);
   }
 
   static hide = () => {

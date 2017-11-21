@@ -3,3 +3,9 @@ export default interface PropsType {
   stayTime?: number;
   onMaskClick?: () => void;
 }
+
+declare global {
+  interface Window {
+    zarmToast?: any;
+  }
+}
