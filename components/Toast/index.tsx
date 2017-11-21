@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Mask from '../Mask';
@@ -15,6 +16,14 @@ export default class Toast extends PureComponent<ToastProps, any> {
     visible: false,
     stayTime: 3000,
   };
+
+  static show = (props) => {
+    ReactDOM.render(<Toast {...props} visible />, window.zarmToast);
+  }
+
+  static hide = () => {
+    ReactDOM.render(<Toast visible={false} />, window.zarmToast);
+  }
 
   private timer: number;
 
@@ -58,6 +67,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
       if (typeof onMaskClick === 'function') {
         onMaskClick();
       }
+      this.leave();
       clearTimeout(this.timer);
     }, stayTime);
   }
@@ -85,3 +95,10 @@ export default class Toast extends PureComponent<ToastProps, any> {
     );
   }
 }
+
+if (!window.zarmToast) {
+  window.zarmToast = document.createElement('div');
+  document.body.appendChild(window.zarmToast);
+}
+
+ReactDOM.render(<Toast visible={false} />, window.zarmToast);

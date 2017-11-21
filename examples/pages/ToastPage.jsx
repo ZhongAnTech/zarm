@@ -23,8 +23,6 @@ class ToastPage extends Component {
   }
 
   render() {
-    const { toast } = this.state;
-
     return (
       <Container className="toast-page">
         <Header title="轻提示 Toast" />
@@ -39,10 +37,7 @@ class ToastPage extends Component {
                     size="xs"
                     theme="error"
                     onClick={() => {
-                      toast.visible = true;
-                      toast.duration = 3000;
-                      toast.children = '默认3秒自动关闭';
-                      this.setState({ toast });
+                      Toast.show({ children: '默认3秒自动关闭' });
                     }}>开启</Button>
                 }>错误提示</Cell>
 
@@ -52,15 +47,14 @@ class ToastPage extends Component {
                     size="xs"
                     theme="success"
                     onClick={() => {
-                      toast.visible = true;
-                      toast.duration = 3000;
-                      toast.children = (
-                        <div className="box">
-                          <Icon className="box-icon" type="right-round-fill" />
-                          <div className="box-text">预约成功</div>
-                        </div>
-                      );
-                      this.setState({ toast });
+                      Toast.show({
+                        children: (
+                          <div className="box">
+                            <Icon className="box-icon" type="right-round-fill" />
+                            <div className="box-text">预约成功</div>
+                          </div>
+                        ),
+                      });
                     }}>开启</Button>
                 }>成功提示</Cell>
 
@@ -69,10 +63,10 @@ class ToastPage extends Component {
                   <Button
                     size="xs"
                     onClick={() => {
-                      toast.visible = true;
-                      toast.duration = 10000;
-                      toast.children = '指定10秒自动关闭';
-                      this.setState({ toast });
+                      Toast.show({
+                        stayTime: 10000,
+                        children: '指定10秒自动关闭',
+                      });
                     }}>开启</Button>
                 }>指定关闭时间</Cell>
 
@@ -86,16 +80,15 @@ class ToastPage extends Component {
                 description={
                   <Button
                     size="xs"
-                    onClick={() => this.setState({ loading: true })}>
+                    onClick={() => {
+                      Loading.show();
+                    }}>
                     开启
                   </Button>
                 }>Loading</Cell>
             </Panel.Body>
           </Panel>
 
-          <Toast {...this.state.toast} />
-
-          <Loading visible={this.state.loading} />
         </main>
         <Footer />
       </Container>

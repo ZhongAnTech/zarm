@@ -83,7 +83,16 @@ class Page extends Component {
                   <Button
                     size="xs"
                     theme="warning"
-                    onClick={() => this.open('alert')}>开启</Button>
+                    onClick={() => {
+                      Alert.show({
+                        shape: 'radius',
+                        title: '警告',
+                        message: '这里是警告信息',
+                        onCancel: () => {
+                          Alert.hide();
+                        },
+                      });
+                    }}>开启</Button>
                 }>
                 警告框 Alert
               </Cell>
@@ -93,7 +102,17 @@ class Page extends Component {
                   <Button
                     size="xs"
                     theme="warning"
-                    onClick={() => this.open('confirm')}>开启</Button>
+                    onClick={() => {
+                      Confirm.show({
+                        shape: 'radius',
+                        title: '确认信息',
+                        message: '你确定要这样做吗？',
+                        onOk: () => alert('click ok'),
+                        onCancel: () => {
+                          Confirm.hide();
+                        },
+                      });
+                    }}>开启</Button>
                 }>
                 确认框 Confirm
               </Cell>
@@ -140,14 +159,6 @@ class Page extends Component {
               slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />
             </Modal.Body>
           </Modal>
-
-          <Alert
-            shape="radius"
-            visible={this.state.alert}
-            title="警告"
-            message="这里是警告信息"
-            onCancel={() => this.close('alert')}
-            />
 
           <Confirm
             shape="radius"
