@@ -16,34 +16,27 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
     type: 'number',
   };
 
-  static show = (options) => {
-    KeyboardPicker.show(options);
+  static show = (props) => {
+    ReactDOM.render(<KeyboardPicker {...props} />, window.zarmKeyboardPicker);
   }
 
-  componentDidMount() {
-    if (!window.zarmKeyboardPicker) {
-      window.zarmKeyboardPicker = document.createElement('div');
-      document.body.appendChild(window.zarmKeyboardPicker);
-    }
-    this.show(this.props);
+  static hide = () => {
+    ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: props.visible || false,
+    };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.show(nextProps);
-  }
-
-  show = (props) => {
-    const { visible, type } = props;
-
-    ReactDOM.render(
-      <Popup
-        visible={visible}
-        mask={false}
-        direction="bottom"
-      >
-        <Keyboard type={type} onKeyClick={this.onKeyClick} />
-      </Popup>
-      , window.zarmKeyboardPicker);
+    if ('visible' in nextProps) {
+      this.setState({
+        visible: nextProps.visible,
+      });
+    }
   }
 
   onKeyClick = (key) => {
@@ -62,6 +55,24 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
   }
 
   render() {
-    return null;
+    const { type } = this.props;
+    const { visible } = this.state;
+
+    return (
+      <Popup
+        visible={visible}
+        mask={false}
+        direction="bottom"
+      >
+        <Keyboard type={type} onKeyClick={this.onKeyClick} />
+      </Popup>
+    );
   }
 }
+
+if (!window.zarmKeyboardPicker) {
+  window.zarmKeyboardPicker = document.createElement('div');
+  document.body.appendChild(window.zarmKeyboardPicker);
+}
+
+ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
