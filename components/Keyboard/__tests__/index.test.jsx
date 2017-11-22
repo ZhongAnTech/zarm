@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow, mount } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Keyboard from '../index';
 
@@ -38,25 +38,3 @@ describe('Keyboard', () => {
   });
 });
 
-describe('Keyboard.Picker', () => {
-  it('renders correctly', () => {
-    const wrapper = render(<Keyboard.Picker />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('visible', () => {
-    const wrapper = shallow(<Keyboard.Picker />);
-    wrapper.setProps({ visible: true });
-    wrapper.setProps({ visible: false });
-  });
-
-  it('click keyboard', () => {
-    const onKeyClick = jest.fn();
-    const wrapper = shallow(<Keyboard.Picker visible onKeyClick={onKeyClick} />);
-    const keys = wrapper.find(Keyboard).dive().find('.za-keyboard-key');
-    const handles = wrapper.find(Keyboard).dive().find('.za-keyboard-handle');
-    keys.childAt(0).simulate('click');
-    expect(onKeyClick).toBeCalledWith('1');
-    handles.childAt(1).simulate('click');
-  });
-});

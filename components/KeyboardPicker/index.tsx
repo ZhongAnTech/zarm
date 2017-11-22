@@ -55,7 +55,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
   }
 
   render() {
-    const { type } = this.props;
+    const { type, ...others } = this.props;
     const { visible } = this.state;
 
     return (
@@ -64,7 +64,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
         mask={false}
         direction="bottom"
       >
-        <Keyboard type={type} onKeyClick={this.onKeyClick} />
+        <Keyboard {...others} type={type} onKeyClick={this.onKeyClick} />
       </Popup>
     );
   }
