@@ -17,8 +17,8 @@ export default class Toast extends PureComponent<ToastProps, any> {
     stayTime: 3000,
   };
 
-  static show = (props) => {
-    ReactDOM.render(<Toast {...props} visible />, window.zarmToast);
+  static show = (children: any, stayTime?: number, onMaskClick?: () => void) => {
+    ReactDOM.render(<Toast visible stayTime={stayTime} onMaskClick={onMaskClick}>{children}</Toast>, window.zarmToast);
   }
 
   static hide = () => {
