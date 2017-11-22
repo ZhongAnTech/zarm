@@ -1,5 +1,19 @@
 # 版本更新日志 
-d41a622ee8a3c5eba1d690d0617185733609a128
+
+
+## v2.0.0
+- Feature
+  - 新增对typescript的支持。
+  - 支持组件按需加载（配合使用`babel-plugin-import`插件）
+  - 新增`Toast`单例模式的应用。
+
+- Break Change
+  - 调整样式引入方式，具体参考README使用帮助。
+  - 调整`Picker`组件的使用方式。
+
+- Bug Fix
+  - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[5147573](https://github.com/ZhonganTechENG/zarm/commit/51475737dd8a17d499492c093568a647bbd28f2a)）
+  - 修复组件`Pull`不兼容自定义scroll容器的bug。
 
 ## v1.1.0
 - Break Change
