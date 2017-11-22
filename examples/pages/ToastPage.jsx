@@ -7,21 +7,6 @@ import '../styles/pages/ToastPage';
 
 class ToastPage extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      toast: {
-        visible: false,
-        onMaskClick: () => {
-          const toast = this.state.toast;
-          toast.visible = false;
-          this.setState({ toast });
-        },
-      },
-      loading: false,
-    };
-  }
-
   render() {
     return (
       <Container className="toast-page">
