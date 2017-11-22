@@ -37,7 +37,7 @@ class ToastPage extends Component {
                     size="xs"
                     theme="error"
                     onClick={() => {
-                      Toast.show({ children: '默认3秒自动关闭' });
+                      Toast.show('默认3秒自动关闭');
                     }}>开启</Button>
                 }>错误提示</Cell>
 
@@ -47,14 +47,12 @@ class ToastPage extends Component {
                     size="xs"
                     theme="success"
                     onClick={() => {
-                      Toast.show({
-                        children: (
-                          <div className="box">
-                            <Icon className="box-icon" type="right-round-fill" />
-                            <div className="box-text">预约成功</div>
-                          </div>
-                        ),
-                      });
+                      Toast.show(
+                        <div className="box">
+                          <Icon className="box-icon" type="right-round-fill" />
+                          <div className="box-text">预约成功</div>
+                        </div>
+                      );
                     }}>开启</Button>
                 }>成功提示</Cell>
 
@@ -63,10 +61,7 @@ class ToastPage extends Component {
                   <Button
                     size="xs"
                     onClick={() => {
-                      Toast.show({
-                        stayTime: 10000,
-                        children: '指定10秒自动关闭',
-                      });
+                      Toast.show('指定10秒自动关闭', 10000);
                     }}>开启</Button>
                 }>指定关闭时间</Cell>
 
