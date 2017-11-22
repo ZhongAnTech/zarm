@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Keyboard from '../Keyboard';
 import Popup from '../Popup';
@@ -16,13 +16,13 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
     type: 'number',
   };
 
-  static show = (props) => {
-    ReactDOM.render(<KeyboardPicker {...props} visible />, window.zarmKeyboardPicker);
-  }
+  // static show = (props) => {
+  //   ReactDOM.render(<KeyboardPicker {...props} visible />, window.zarmKeyboardPicker);
+  // }
 
-  static hide = () => {
-    ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
-  }
+  // static hide = () => {
+  //   ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
+  // }
 
   constructor(props) {
     super(props);
@@ -70,9 +70,9 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
   }
 }
 
-if (!window.zarmKeyboardPicker) {
-  window.zarmKeyboardPicker = document.createElement('div');
-  document.body.appendChild(window.zarmKeyboardPicker);
-}
+// if (!window.zarmKeyboardPicker) {
+//   window.zarmKeyboardPicker = document.createElement('div');
+//   document.body.appendChild(window.zarmKeyboardPicker);
+// }
 
-ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
+// ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
