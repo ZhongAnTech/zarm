@@ -139,9 +139,6 @@ class Swipe extends Component {
   }
 
   onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
-    if (this.scrolling) {
-      return;
-    }
     if (!offsetX && !offsetY) {
       return;
     }
