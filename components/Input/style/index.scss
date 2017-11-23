@@ -77,27 +77,26 @@ $prefixCls: $prefixCls-input;
     &-picker {
       background-color: #fff;
     }
+
+    &.focus {
+      .#{$prefixCls}-content {
+        &:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 10%;
+          height: 80%;
+          border-right: 1.5px solid #108ee9;
+          animation: keyboard-cursor infinite 1s step-start;
+        }
+      }
+    }
   }
 
   &-content {
       position: absolute;
       top: 0;
       height: r(22);
-  }
-
-  &.focus {
-    .#{$prefixCls}-content {
-      &:after {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 10%;
-        height: 80%;
-        border-right: 1.5px solid #108ee9;
-        -webkit-animation: keyboard-cursor infinite 1s step-start;
-        animation: keyboard-cursor infinite 1s step-start;
-      }
-    }
   }
 }
 

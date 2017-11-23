@@ -31,5 +31,5 @@ export interface BaseInputTextareaProps {
   maxLength?: number;
   showLength?: boolean;
   style?: React.CSSProperties;
-  onChange?: (value?: string) => void;
+  onChange?: (e?: any) => void;
 }
