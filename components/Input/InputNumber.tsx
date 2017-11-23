@@ -83,16 +83,10 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   open = () => {
     this.setState({ visible: true });
-    // KeyboardPicker.show({
-    //   visible: true,
-    //   type: this.props.type,
-    //   onKeyClick: this.onKeyClick,
-    // });
   }
 
   close = () => {
     this.setState({ visible: false });
-    // KeyboardPicker.hide();
   }
 
   render() {
