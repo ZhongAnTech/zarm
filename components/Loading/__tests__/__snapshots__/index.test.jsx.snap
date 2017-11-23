@@ -2,7 +2,7 @@
 
 exports[`Confirm renders correctly 1`] = `
 <div
-  class="za-loading"
+  class="za-loading za-loading-open"
 >
   <div
     class="za-loading-container"
@@ -29,8 +29,5 @@ exports[`Confirm renders correctly 1`] = `
       />
     </svg>
   </div>
-  <div
-    class="za-mask transparent"
-  />
 </div>
 `;
