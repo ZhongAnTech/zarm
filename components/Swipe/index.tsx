@@ -27,7 +27,6 @@ export default class Swipe extends Component<SwipeProps, any> {
 
   private swipeItems;
   private moveInterval;
-  private scrolling: boolean = false;
   private translateX: number = 0;
   private translateY: number = 0;
 
@@ -110,8 +109,6 @@ export default class Swipe extends Component<SwipeProps, any> {
 
   // 触屏事件
   onDragStart = () => {
-    this.scrolling = false;
-
     // 跳转到头尾
     const activeIndex = this.state.activeIndex;
     const maxLength = this.props.children.length;
@@ -131,12 +128,10 @@ export default class Swipe extends Component<SwipeProps, any> {
     const distanceY = Math.abs(offsetY);
 
     if (this.isDirectionX() && (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))) {
-      this.scrolling = true;
       return false;
     }
 
     if (!this.isDirectionX() && (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))) {
-      this.scrolling = true;
       return false;
     }
 
@@ -163,7 +158,6 @@ export default class Swipe extends Component<SwipeProps, any> {
       }
     }
 
-    this.scrolling = false;
     event.preventDefault();
 
     this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
@@ -171,9 +165,6 @@ export default class Swipe extends Component<SwipeProps, any> {
   }
 
   onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
-    if (this.scrolling) {
-      return;
-    }
     if (!offsetX && !offsetY) {
       return;
     }
@@ -195,7 +186,7 @@ export default class Swipe extends Component<SwipeProps, any> {
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
     if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
-      const op = ((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)) ? false : true;
+      const op = !((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0));
 
       if (typeof onChange === 'function') {
         onChange(this.parseActiveIndexParse(op));
