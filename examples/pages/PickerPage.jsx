@@ -1,64 +1,92 @@
 import React, { Component } from 'react';
-import { Panel, Cell, Picker, DatePicker } from 'zarm';
+import { Panel, Cell, Picker, DatePicker, Select, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import District from '../mock/district';
+import '../styles/pages/PickerPage';
 
+const multiData = [
+  [
+    { value: '1', label: '选项一' },
+    { value: '2', label: '选项二' },
+  ],
+  [
+    { value: '1', label: '选项一' },
+    { value: '2', label: '选项二' },
+  ],
+];
 class Page extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      single: {},
+      single: { value: '' },
+      multi: { value: '' },
+      multiCascade: { value: '' },
+      multiAssign: { value: ['1', '12'] },
       diy: {},
+      address1: {},
+      address2: {},
     };
   }
 
+  open = (key) => {
+    this.setState({
+      [`${key}`]: true,
+    });
+  }
+
+  close = (key) => {
+    this.setState({
+      [`${key}`]: false,
+    });
+  }
+
   render() {
-    const { single, diy } = this.state;
+    const { single, multi, multiCascade, multiAssign, diy, address1, address2 } = this.state;
 
     return (
-      <Container className="cell-page">
+      <Container className="picker-page">
         <Header title="选择器 Picker" />
         <main>
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
               <Cell title="单列">
-                <Picker
-                  dataSource={[
-                    { value: '1', label: '选项一' },
-                    { value: '2', label: '选项二' },
-                  ]}
+                <Select
+                  placeholder="请选择"
                   value={single.value}
-                  onOk={(selected) => {
+                  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
+                  onChange={(selected) => {
                     single.value = selected.value;
                     this.setState({
                       single,
                     });
-                    console.log(`selected ${single.value}`);
                   }}
                   />
               </Cell>
 
               <Cell title="多列">
-                <Picker
-                  dataSource={[
-                    [
-                      { value: '1', label: '选项一' },
-                      { value: '2', label: '选项二' },
-                    ],
-                    [
-                      { value: 'a', label: '选项A' },
-                      { value: 'b', label: '选项B' },
-                    ],
-                  ]}
+                <Select
+                  placeholder="请选择"
+                  value={multi.value}
+                  dataSource={multiData}
+                  onChange={(selected) => {
+                    const multiValue = selected.map(item => `${item.value}`);
+                    multi.value = multiValue;
+                    this.setState({
+                      multi,
+                    });
+                  }}
+                  displayRender={selected => selected.map(item => item.label).join('/')}
                   />
               </Cell>
 
-              <Cell title="多列联动">
+              <Cell title="多列联动" description={<Button theme="primary" size="sm" onClick={() => { this.open('pickerVisible'); }}>请选择</Button>}>
+                <div>{multiCascade.display}</div>
                 <Picker
+                  visible={this.state.pickerVisible}
                   dataSource={[
                     {
                       value: '1',
@@ -77,11 +105,23 @@ class Page extends Component {
                       ],
                     },
                   ]}
+                  onOk={(selected) => {
+                    multiCascade.value = selected.map(item => `${item.value}`);
+                    multiCascade.display = selected.map(item => item.label).join('-');
+                    this.setState({
+                      multiCascade,
+                    });
+                    this.close('pickerVisible');
+                  }}
+                  displayRender={(selected) => {
+                    return selected.map(item => item.label).join('/');
+                  }}
                   />
               </Cell>
 
               <Cell title="指定默认值">
-                <Picker
+                <Select
+                  placeholder="请选择"
                   dataSource={[
                     {
                       value: '1',
@@ -100,12 +140,22 @@ class Page extends Component {
                       ],
                     },
                   ]}
-                  defaultValue={['1', '12']}
+                  value={multiAssign.value}
+                  defaultValue={multiAssign.value}
+                  onChange={(selected) => {
+                    multiAssign.value = selected.map(item => `${item.value}`);
+                    this.setState({
+                      multiAssign,
+                    });
+                  }}
+                  displayRender={(selected) => {
+                    return selected.map(item => item.label).join('-');
+                  }}
                   />
               </Cell>
 
               <Cell title="禁止修改">
-                <Picker
+                <Select
                   disabled
                   dataSource={[
                     { value: '1', label: '选项一' },
@@ -116,7 +166,7 @@ class Page extends Component {
               </Cell>
 
               <Cell title="自定义格式">
-                <Picker
+                <Select
                   visible={diy.visible}
                   title="自定义标题"
                   placeholder="自定义placeholder"
@@ -142,7 +192,7 @@ class Page extends Component {
                   valueMember="code"
                   itemRender={data => data.name}
                   displayRender={selected => selected.map(item => item.name).join('/')}
-                  onOk={(selected) => {
+                  onChange={(selected) => {
                     diy.value = selected.map(item => item.code);
                     this.setState({
                       diy,
@@ -159,11 +209,33 @@ class Page extends Component {
             <Panel.Body>
 
               <Cell title="省市选择">
-                <Picker dataSource={District} cols={2} />
+                <Select
+                  placeholder="选择省市"
+                  dataSource={District}
+                  cols={2}
+                  value={address1.value}
+                  onChange={(selected) => {
+                    address1.value = selected.map(item => item.value);
+                    this.setState({
+                      address1,
+                    });
+                  }}
+                  />
               </Cell>
 
               <Cell title="省市区选择">
-                <Picker dataSource={District} />
+                <Select
+                  placeholder="选择省市区"
+                  dataSource={District}
+                  value={address2.value}
+                  displayRender={selected => selected.map(item => item.label).join('-')}
+                  onChange={(selected) => {
+                    address2.value = selected.map(item => item.value);
+                    this.setState({
+                      address2,
+                    });
+                  }}
+                  />
               </Cell>
 
             </Panel.Body>

@@ -116,7 +116,8 @@ export function formatBackToObject(data, value, cascade, member, cols) {
       item.filter(itemInner => (
         itemInner[member] === value[index]
       ))[0]
-    ));
+    )).filter(t => !!t);
+
     return value.length === 1 ? finalRenderData[0] : finalRenderData;
   }
 
