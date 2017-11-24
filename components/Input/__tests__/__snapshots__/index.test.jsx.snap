@@ -30,8 +30,14 @@ exports[`Input.Idcard renders correctly 1`] = `
 <div
   class="za-input za-input-number"
 >
+  <div
+    class="za-input-placeholder"
+  />
+  <div
+    class="za-input-content"
+  />
   <input
-    type="text"
+    type="hidden"
     value=""
   />
   <div
@@ -136,8 +142,14 @@ exports[`Input.Number renders correctly 1`] = `
 <div
   class="za-input za-input-number"
 >
+  <div
+    class="za-input-placeholder"
+  />
+  <div
+    class="za-input-content"
+  />
   <input
-    type="text"
+    type="hidden"
     value=""
   />
   <div
@@ -240,8 +252,14 @@ exports[`Input.Price renders correctly 1`] = `
 <div
   class="za-input za-input-number"
 >
+  <div
+    class="za-input-placeholder"
+  />
+  <div
+    class="za-input-content"
+  />
   <input
-    type="text"
+    type="hidden"
     value=""
   />
   <div

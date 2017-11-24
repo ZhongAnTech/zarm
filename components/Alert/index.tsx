@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+// import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Modal from '../Modal';
 import Button from '../Button';
@@ -16,6 +17,14 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     message: '',
     cancelText: '关闭',
   };
+
+  // static show = (props) => {
+  //   ReactDOM.render(<Alert {...props} visible />, window.zarmAlert);
+  // }
+
+  // static hide = () => {
+  //   ReactDOM.render(<Alert visible={false} />, window.zarmAlert);
+  // }
 
   render() {
     const { prefixCls, title, message, cancelText, onCancel, ...others } = this.props;
@@ -35,3 +44,10 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     );
   }
 }
+
+// if (!window.zarmAlert) {
+//   window.zarmAlert = document.createElement('div');
+//   document.body.appendChild(window.zarmAlert);
+// }
+
+// ReactDOM.render(<Alert visible={false} />, window.zarmAlert);

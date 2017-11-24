@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Mask from '../Mask';
@@ -14,20 +15,31 @@ export default class Toast extends PureComponent<ToastProps, any> {
     prefixCls: 'za-toast',
     visible: false,
     stayTime: 3000,
+    mask: false,
   };
+
+  static show = (children: any, stayTime?: number, onClose?: () => void) => {
+    ReactDOM.render(
+      <Toast visible stayTime={stayTime} onClose={onClose}>{children}</Toast>
+    , window.zarmToast);
+  }
+
+  static hide = () => {
+    ReactDOM.render(<Toast visible={false} />, window.zarmToast);
+  }
 
   private timer: number;
 
   constructor(props) {
     super(props);
     this.state = {
-      isShow: false,
+      visible: props.visible || false,
     };
   }
 
   componentDidMount() {
     if (this.props.visible) {
-      this.enter(this.props.stayTime, this.props.onMaskClick);
+      this.enter(this.props);
     }
   }
 
@@ -35,7 +47,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
     clearTimeout(this.timer);
 
     if (nextProps.visible) {
-      this.enter(nextProps.stayTime, nextProps.onMaskClick);
+      this.enter(nextProps);
     } else {
       this.leave();
     }
@@ -45,9 +57,11 @@ export default class Toast extends PureComponent<ToastProps, any> {
     clearTimeout(this.timer);
   }
 
-  enter = (stayTime, onMaskClick) => {
+  enter = (props) => {
+    const { stayTime, onMaskClick } = props;
+
     this.setState({
-      isShow: true,
+      visible: true,
     });
 
     if (stayTime === 0) {
@@ -58,21 +72,28 @@ export default class Toast extends PureComponent<ToastProps, any> {
       if (typeof onMaskClick === 'function') {
         onMaskClick();
       }
+      this.leave();
       clearTimeout(this.timer);
     }, stayTime);
   }
 
   leave = () => {
     this.setState({
-      isShow: false,
+      visible: false,
     });
+
+    const { onClose } = this.props;
+    if (typeof onClose === 'function') {
+      onClose();
+    }
   }
 
   render() {
-    const { prefixCls, className, visible, children, onMaskClick } = this.props;
+    const { prefixCls, className, mask, onMaskClick, children } = this.props;
+    const { visible } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
-      [`${prefixCls}-open`]: this.state.isShow,
+      [`${prefixCls}-open`]: visible,
     });
 
     return (
@@ -80,8 +101,15 @@ export default class Toast extends PureComponent<ToastProps, any> {
         <div className={`${prefixCls}-container`}>
           {children}
         </div>
-        <Mask visible={visible} type="transparent" onClose={onMaskClick} />
+        {mask && <Mask type="transparent" onClose={onMaskClick} />}
       </div>
     );
   }
 }
+
+if (!window.zarmToast) {
+  window.zarmToast = document.createElement('div');
+  document.body.appendChild(window.zarmToast);
+}
+
+ReactDOM.render(<Toast visible={false} />, window.zarmToast);
