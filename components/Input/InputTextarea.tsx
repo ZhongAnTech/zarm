@@ -3,6 +3,12 @@ import classnames from 'classnames';
 import Autosize from 'autosize';
 import { BaseInputTextareaProps } from './PropsType';
 
+const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
+
+function countSymbols(text = '') {
+  return text.replace(regexAstralSymbols, '_').length;
+}
+
 export interface InputTextareaProps extends BaseInputTextareaProps {
   prefixCls?: string;
   className?: string;
@@ -40,7 +46,8 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
 
   onInputChange = (e) => {
     const { onChange } = this.props;
-    const length = e.target.value.length;
+    const value = e.target.value;
+    const length = countSymbols(value) + (value ? value.length : 0);
     this.setState({ length });
     if (typeof onChange === 'function') {
       onChange(e);

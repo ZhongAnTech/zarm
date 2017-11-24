@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+// import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Modal from '../Modal';
 import Button from '../Button';
@@ -17,6 +18,14 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
     okText: '确定',
     cancelText: '取消',
   };
+
+  // static show = (props) => {
+  //   ReactDOM.render(<Confirm {...props} visible />, window.zarmConfirm);
+  // }
+
+  // static hide = () => {
+  //   ReactDOM.render(<Confirm visible={false} />, window.zarmConfirm);
+  // }
 
   render() {
     const { prefixCls, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
@@ -37,3 +46,10 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
     );
   }
 }
+
+// if (!window.zarmConfirm) {
+//   window.zarmConfirm = document.createElement('div');
+//   document.body.appendChild(window.zarmConfirm);
+// }
+
+// ReactDOM.render(<Confirm visible={false} />, window.zarmConfirm);

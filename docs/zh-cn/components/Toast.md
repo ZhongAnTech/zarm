@@ -43,6 +43,17 @@ import { Toast } from 'zarm';
 </Toast>
 ```
 
+#### 单例模式
+```js
+// 开启
+Toast.show('提示内容');
+Toast.show('提示内容', 3000);
+Toast.show('提示内容', 3000, () => { console.log('onClose') });
+
+// 关闭
+Toast.hide();
+```
+
 ### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
@@ -51,8 +62,8 @@ import { Toast } from 'zarm';
 | className | string | | | 追加类名 |
 | visible | boolean | false | | 是否显示 |
 | stayTime | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
+| onClose | <code>() => void</code> | noop | | 关闭时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-
 
 
 
