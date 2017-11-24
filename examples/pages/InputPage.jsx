@@ -23,7 +23,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="输入类型" />
             <Panel.Body>
-              <Cell title="数字"><Input type="number" placeholder="type is number" /></Cell>
+              <Cell title="数字"><Input type="number" value="11111111111111111111111111111111111111111111111111" placeholder="type is number" /></Cell>
               <Cell title="金额"><Input type="price" placeholder="type is price" /></Cell>
               <Cell title="身份证"><Input type="idcard" placeholder="type is idcard" /></Cell>
             </Panel.Body>
@@ -32,7 +32,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="高度自适应" />
             <Panel.Body>
-              <Cell title="多行文本"><Input autosize type="textarea" rows={3} placeholder="写点啥..." /></Cell>
+              <Cell title="多行文本"><Input autosize type="textarea" rows={1} placeholder="写点啥..." /></Cell>
             </Panel.Body>
           </Panel>
 
