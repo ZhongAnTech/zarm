@@ -1,4 +1,5 @@
 export interface BasePickerProps {
+  visible?: boolean;
   placeholder?: string;
   title?: string;
   cancelText?: string;
@@ -6,15 +7,15 @@ export interface BasePickerProps {
   dataSource: object[];
   value?: string | string[];
   defaultValue?: string | string[];
-  valueMember: string;
+  valueMember?: string;
   disabled?: boolean;
   cols?: number;
   prefixCls?: string;
-  onOk: (value?: object) => void;
-  onClick: () => void;
+  onOk?: (value?: object) => void;
+  onClick?: () => void;
   onCancel?: () => void;
   onMaskClick?: () => void;
   displayRender?: (data?: object) => string;
-  itemRender: (data?: object) => string;
+  itemRender?: (data?: object) => string;
   onChange?: (value?: object) => void;
 }

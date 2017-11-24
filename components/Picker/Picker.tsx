@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
+import { formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
 import Column from '../Column';
 import Popup from '../Popup';
 import { BasePickerProps } from './PropsType';
@@ -19,7 +19,6 @@ export default class Picker extends Component<PickerProps, any> {
   static Stack: any;
 
   static defaultProps = {
-    placeholder: '请选择',
     title: '请选择',
     cancelText: '取消',
     okText: '确定',
@@ -55,7 +54,7 @@ export default class Picker extends Component<PickerProps, any> {
     }
 
     this.state = {
-      visible: false,
+      visible: props.visible || false,
       value: _value,
       data: _data,
       cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
@@ -74,7 +73,6 @@ export default class Picker extends Component<PickerProps, any> {
       } else {
         _data = nextProps.dataSource;
       }
-
       this.setState({
         data: _data,
         cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
@@ -96,6 +94,10 @@ export default class Picker extends Component<PickerProps, any> {
         cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
       this.tempValue = _value;
+    }
+
+    if ('visible' in nextProps && this.state.visible !== nextProps.visible) {
+      this.setState({ visible: nextProps.visible });
     }
   }
 
@@ -124,11 +126,11 @@ export default class Picker extends Component<PickerProps, any> {
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
+    this.toggle();
     this.setState({
       value,
     });
     this.tempValue = value;
-    this.toggle();
     let _value: any;
     _value = formatBackToObject(data, value, cascade, valueMember, cols);
 
@@ -147,7 +149,7 @@ export default class Picker extends Component<PickerProps, any> {
 
   getInitValue = () => {
     const data = this.state.data;
-    const { valueMember } = this.props;
+    const { valueMember = Picker.defaultProps.valueMember } = this.props;
 
     const { value } = this.state;
 
@@ -171,43 +173,14 @@ export default class Picker extends Component<PickerProps, any> {
     });
   }
 
-  handleClick = () => {
-    this.props.onClick();
-    if (!this.props.disabled) {
-      this.toggle();
-    }
-  }
-
-  close = (key) => {
-    this.setState({
-      [`${key}`]: false,
-    });
-  }
-
-  _displayRender = (data) => {
-    const { displayRender, itemRender } = this.props;
-
-    if (typeof displayRender === 'function') {
-      return displayRender(data);
-    }
-    return data.map((v) => {
-      return itemRender(v);
-    }).join('');
-  }
-
   render() {
-    const { prefixCls, disabled, className, cancelText,
-      okText, title, placeholder, valueMember, itemRender } = this.props;
+    const { prefixCls, className, cancelText,
+      okText, title, valueMember = Picker.defaultProps.valueMember, itemRender } = this.props;
     const { data, value } = this.state;
 
     let PickerCol: JSX.Element;
 
     const classes = classnames(`${prefixCls}-container`, className);
-
-    const inputCls = classnames(`${prefixCls}-input`, {
-      [`${prefixCls}-placeholder`]: !value.join(''),
-      [`${prefixCls}-disabled`]: !!disabled,
-    });
 
     const cols = data.map((d) => {
       return { props: { children: d } };
@@ -240,33 +213,8 @@ export default class Picker extends Component<PickerProps, any> {
       );
     }
 
-    const display = () => {
-      if (this.state.cascade) {
-        if (value.length) {
-          const treeChildren = arrayTreeFilter(this.props.dataSource, (item, level) => {
-            return item[valueMember] === value[level];
-          });
-
-          return this._displayRender(treeChildren);
-        }
-      }
-
-      const treeChildren2 = data.map((d, index) => {
-        if (value[index]) {
-          return d.filter(obj => value[index] === obj[valueMember])[0];
-        }
-        return undefined;
-      }).filter(t => !!t);
-
-      return this._displayRender(treeChildren2);
-    };
-
     return (
-      <div className={`${prefixCls}`} onClick={() => this.handleClick()}>
-        <div className={inputCls}>
-          <input type="hidden" value={this.state.value} />
-          {display() || placeholder}
-        </div>
+      <div className={`${prefixCls}`}>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
             visible={this.state.visible}
