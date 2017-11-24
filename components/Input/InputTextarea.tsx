@@ -32,8 +32,11 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   }
 
   componentDidUpdate() {
-    this.input.style.height = '';
-    this.input.style.height = `${this.input.scrollHeight}px`;
+    const { autosize } = this.props;
+    if (autosize) {
+      this.input.style.height = '';
+      this.input.style.height = `${this.input.scrollHeight}px`;
+    }
   }
 
   onInputChange = (e) => {
