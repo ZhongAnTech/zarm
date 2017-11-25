@@ -1,18 +1,3 @@
 @import "../../style/core/index";
 @import "../../style/variables";
-
-$prefixCls: $prefixCls-noticebar;
-
-.#{$prefixCls} {
-  width: 100%;
-  height: r(24);
-  position: relative;
-  overflow: hidden;
-
-  &-body {
-    position: absolute;
-    left: 0;
-    top: r(2);
-    white-space: nowrap;
-  }
-}
+@import "./component";

@@ -1,2 +1,3 @@
-
-$theme-primary: #12c287;
+$theme-primary: #108ee9;
+$theme-primary-light: rgba($theme-primary, 0.1);
+$theme-primary-dark: darken($theme-primary, 10%);

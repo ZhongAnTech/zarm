@@ -1,0 +1,91 @@
+$prefixCls: $prefixCls-message;
+
+$message-default-color: $theme-default;
+$message-default-bg: $theme-default-light;
+
+$message-primary-color: $theme-primary;
+$message-primary-bg: $theme-primary-light;
+
+$message-info-color: $theme-info;
+$message-info-bg: $theme-info-light;
+
+$message-success-color: $theme-success;
+$message-success-bg: $theme-success-light;
+
+$message-warning-color: $theme-warning;
+$message-warning-bg: $theme-warning-light;
+
+$message-error-color: $theme-error;
+$message-error-bg: $theme-error-light;
+
+@mixin message-theme($color, $background) {
+  color: $color;
+  background-color: $background;
+}
+
+.#{$prefixCls} {
+  display: flex;
+  position: relative;
+  padding: r(6) r(8);
+  min-height: r(30);
+  font-size: r(12);
+  @include message-theme($message-default-color, $message-default-bg);
+
+  &-icon {
+    margin-right: r(5);
+    margin-top: r(1);
+  }
+
+  &-header,
+  &-footer {
+    line-height: 1;
+  }
+
+  &-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-left: r(10);
+  }
+
+  &.theme-primary {
+    @include message-theme($message-primary-color, $message-primary-bg);
+  }
+
+  &.theme-info {
+    @include message-theme($message-info-color, $message-info-bg);
+  }
+
+  &.theme-success {
+    @include message-theme($message-success-color, $message-success-bg);
+  }
+
+  &.theme-warning {
+    @include message-theme($message-warning-color, $message-warning-bg);
+  }
+
+  &.theme-error {
+    @include message-theme($message-error-color, $message-error-bg);
+  }
+
+  &.size-lg {
+    min-height: r(42);
+    padding: r(9) r(15);
+
+    .#{$prefixCls}-icon {
+      margin-right: r(10);
+      margin-top: r(4);
+    }
+
+    .#{$prefixCls}-body {
+      font-size: r(15);
+    }
+  }
+}

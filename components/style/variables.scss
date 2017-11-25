@@ -62,37 +62,6 @@ $disabled-color: #999;
 $placeholder-color: #a9a9a9;
 $icon-url: '//at.alicdn.com/t/font_126288_uipjvv8ogdivbo6r';
 
-/* button */
-$button-default-color: $theme-default;
-$button-default-bg: #ddd;
-$button-default-border: #ddd;
-$button-default-activebg: rgba(#ddd, 0.5);
-
-$button-primary-color: #fff;
-$button-primary-bg: $theme-primary;
-$button-primary-border: $theme-primary;
-$button-primary-activebg: $theme-primary-light;
-
-$button-info-color: #fff;
-$button-info-bg: $theme-info;
-$button-info-border: $theme-info;
-$button-info-activebg: $theme-info-light;
-
-$button-success-color: #fff;
-$button-success-bg: $theme-success;
-$button-success-border: $theme-success;
-$button-success-activebg: $theme-success-light;
-
-$button-warning-color: #fff;
-$button-warning-bg: $theme-warning;
-$button-warning-border: $theme-warning;
-$button-warning-activebg: $theme-warning-light;
-
-$button-error-color: #fff;
-$button-error-bg: $theme-error;
-$button-error-border: $theme-error;
-$button-error-activebg: $theme-error-light;
-
 /* spinner */
 $spinner-diameter-md: r(20);
 $spinner-diameter-lg: r(31);
