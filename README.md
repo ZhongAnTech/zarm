@@ -59,6 +59,28 @@ import Button from 'zarm/lib/Button';
 import 'zarm/lib/Button/style/index.scss';
 ```
 
+#### 定制主题
+复写Sass变量定义
+```css
+@import "~zarm/lib/style/index";
+@import "./themes/default";  // your theme variables
+@import "~zarm/lib/style/components";
+```
+
+> 如果是用了`babel-plugin-import`按需引入，请关闭style的引入功能
+```js
+  // .babelrc or babel-loader option
+  {
+    "plugins": [
+      ['import', {
+        libraryName: 'zarm',
+        style: false,
+        camel2DashComponentName: false,
+      }],
+    ]
+  }
+```
+
 ## Document 文档
 [中文](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/SUMMARY.md)
 
