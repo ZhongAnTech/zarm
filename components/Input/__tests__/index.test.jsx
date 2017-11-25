@@ -33,7 +33,7 @@ describe('Input.Textarea', () => {
     const wrapper = mount(<Input {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find('textarea').simulate('change', { target: { value: 'this is a test!' } });
-    expect(props.onChange).toBeCalledWith(expect.objectContaining({ target: { value: 'this is a test!' } }));
+    expect(props.onChange).toBeCalledWith('this is a test!');
     jest.runAllTimers();
     wrapper.unmount();
   });
