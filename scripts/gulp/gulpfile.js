@@ -11,6 +11,7 @@ const browsers = require('../config/browsers');
 
 const CONFIG = {
   src: path.resolve(__dirname, '../../components/**/*.scss'),
+  buildSrc: path.resolve(__dirname, '../../components/**/index.scss'),
   lib: path.resolve(__dirname, '../../lib'),
   dist: path.resolve(__dirname, '../../dist'),
   autoprefixer: { browsers },
@@ -22,7 +23,7 @@ gulp.task('copySass', () => {
 });
 
 gulp.task('dist', () => {
-  return gulp.src(CONFIG.src)
+  return gulp.src(CONFIG.buildSrc)
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',

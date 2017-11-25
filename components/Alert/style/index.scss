@@ -1,8 +1,3 @@
 @import "../../style/core/index";
 @import "../../style/variables";
-
-$prefixCls: $prefixCls-alert;
-
-.#{$prefixCls} {
-  text-align: center;
-}
+@import "./component";
