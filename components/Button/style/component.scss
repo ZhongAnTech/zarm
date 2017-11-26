@@ -239,16 +239,6 @@ $button-warning-border--active: $theme-error-dark;
     );
   }
 
-  // &.theme-info {
-  //   @include button-theme($button-info-color, $button-info-bg, $button-info-border);
-  //   @include button-bordered($button-info-border, $button-info-activebg, $button-info-border);
-  // }
-
-  // &.theme-success {
-  //   @include button-theme($button-success-color, $button-success-bg, $button-success-border);
-  //   @include button-bordered($button-success-border, $button-success-activebg, $button-success-border);
-  // }
-
   &.theme-warning {
     @include button-theme(
       $button-warning-background,
@@ -263,10 +253,5 @@ $button-warning-border--active: $theme-error-dark;
       $button-warning-color--bordered
     );
   }
-
-  // &.theme-error {
-  //   @include button-theme($button-error-color, $button-error-bg, $button-error-border);
-  //   @include button-bordered($button-error-border, $button-error-activebg, $button-error-border);
-  // }
 }
 
