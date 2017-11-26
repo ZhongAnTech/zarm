@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import FastClick from 'fastclick';
+// import FastClick from 'fastclick';
 import AsyncComponent from './AsyncComponent';
 import '../styles/index';
 import '../styles/components/App';
@@ -10,7 +10,7 @@ class App extends Component {
 
   componentDidMount() {
     // Events.on(window, 'resize', window.__setFontSize__);
-    FastClick.attach(document.body);
+    // FastClick.attach(document.body);
   }
 
   render() {

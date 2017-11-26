@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 // import ReactDOM from 'react-dom';
+import classnames from 'classnames';
 import PropsType from './PropsType';
 import Modal from '../Modal';
-import Button from '../Button';
 
 export interface AlertProps extends PropsType {
   prefixCls?: string;
@@ -27,18 +27,17 @@ export default class Alert extends PureComponent<AlertProps, {}> {
   // }
 
   render() {
-    const { prefixCls, title, message, cancelText, onCancel, ...others } = this.props;
+    const { prefixCls, className, title, message, cancelText, onCancel, ...others } = this.props;
+    const cls = classnames(prefixCls, className);
 
     return (
-      <Modal {...others}>
+      <Modal className={cls} {...others}>
         <Modal.Header title={title} />
-        <Modal.Body>
-          <div className={prefixCls}>
-            {message}
-          </div>
+        <Modal.Body className={`${prefixCls}-body`}>
+          {message}
         </Modal.Body>
-        <Modal.Footer>
-          <Button block bordered onClick={onCancel}>{cancelText}</Button>
+        <Modal.Footer className={`${prefixCls}-footer`}>
+          <a className={`${prefixCls}-footer-button`} onClick={onCancel}>{cancelText}</a>
         </Modal.Footer>
       </Modal>
     );

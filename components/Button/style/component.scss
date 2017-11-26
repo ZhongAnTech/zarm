@@ -1,93 +1,89 @@
 $prefixCls: $prefixCls-button;
 
 /* button */
+// $button-default-color: $theme-default;
+// $button-default-color--active: $theme-default;
+// $button-default-color--bordered: $theme-default;
+// $button-default-background: #fff;
+// $button-default-background--active: #ddd;
+// $button-default-border: #ddd;
+// $button-default-border--active: #ddd;
+
 $button-default-color: $theme-default;
-$button-default-bg: #ddd;
+$button-default-color--active: $theme-default;
+$button-default-color--bordered: $theme-default;
+$button-default-background: #ddd;
+$button-default-background--active: #c4c4c4;
 $button-default-border: #ddd;
-$button-default-activebg: rgba(#ddd, 0.5);
+$button-default-border--active: #c4c4c4;
 
 $button-primary-color: #fff;
-$button-primary-bg: $theme-primary;
+$button-primary-color--active: rgba(#fff, .3);
+$button-primary-color--bordered: $theme-primary;
+$button-primary-background: $theme-primary;
+$button-primary-background--active: $theme-primary-dark;
 $button-primary-border: $theme-primary;
-$button-primary-activebg: $theme-primary-light;
-
-$button-info-color: #fff;
-$button-info-bg: $theme-info;
-$button-info-border: $theme-info;
-$button-info-activebg: $theme-info-light;
-
-$button-success-color: #fff;
-$button-success-bg: $theme-success;
-$button-success-border: $theme-success;
-$button-success-activebg: $theme-success-light;
+$button-primary-border--active: $theme-primary-dark;
 
 $button-warning-color: #fff;
-$button-warning-bg: $theme-warning;
-$button-warning-border: $theme-warning;
-$button-warning-activebg: $theme-warning-light;
+$button-warning-color--active: rgba(#fff, .3);
+$button-warning-color--bordered: $theme-error;
+$button-warning-background: $theme-error;
+$button-warning-background--active: $theme-error-dark;
+$button-warning-border: $theme-error;
+$button-warning-border--active: $theme-error-dark;
 
-$button-error-color: #fff;
-$button-error-bg: $theme-error;
-$button-error-border: $theme-error;
-$button-error-activebg: $theme-error-light;
-
-@mixin button-bordered($color, $activebg, $border) {
-  $active-background: $activebg;
-  $active-border: $border;
-  $active-color: $color;
+@mixin button-bordered($border, $color) {
+  border: 1px solid transparent;
 
   &.bordered {
-    background-color: #fff;
-    border-color: $border;
+    background-color: transparent;
     color: $color;
+    border-color: $border;
+    // @include onepx($border-color: $border);
 
     &:active,
     &.active {
-      background-color: $activebg;
-      color: $active-color;
+      opacity: .6;
     }
 
     &.disabled,
     &:disabled {
+      opacity: $disabled-opacity;
+      // color: rgba($color, $disabled-opacity);
+      cursor: not-allowed;
+
       &:active,
       &.active,
       &:focus,
       &.focus,
       &:visited,
       &.visited {
-        background-color: #fff;
+        background-color: transparent;
         border-color: $border;
-        box-shadow: none;
       }
     }
   }
 }
 
-@mixin button-theme($color, $background, $border) {
-  $active-background: darken($background, 10%);
-  $active-border: darken($border, 10%);
-
+@mixin button-theme($background, $border, $color, $active-background, $active-border, $active-color) {
   background-color: $background;
-  border-color: $border;
   color: $color;
-
-  &,
-  &:hover,
-  &:focus,
-  &:visited {
-    color: $color;
-  }
+  border-color: $border;
+  // @include onepx($border-color: $border);
 
   &:active,
   &.active {
     background-color: $active-background;
+    color: $active-color;
     border-color: $active-border;
+    // @include onepx($border-color: $active-border);
   }
 
   &.disabled,
   &:disabled {
     opacity: $disabled-opacity;
-    color: rgba(#fff, $disabled-opacity);
+    color: rgba($color, $disabled-opacity);
     cursor: not-allowed;
 
     &:active,
@@ -98,7 +94,7 @@ $button-error-activebg: $theme-error-light;
     &.visited {
       background-color: $background;
       border-color: $border;
-      box-shadow: none;
+      // @include onepx($border-color: $border);
     }
   }
 }
@@ -107,21 +103,41 @@ $button-error-activebg: $theme-error-light;
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height;
+  line-height: $height - 2;
 
   &.shape-radius {
     border-radius: $border-radius;
+    // @include onepx($border-radius: $border-radius);
+
+    // &:active,
+    // &.active {
+    //   border-radius: $border-radius;
+    //   @include onepx($border-radius: $border-radius);
+    // }
   }
 
   &.shape-round {
     border-radius: r(1000);
+    // @include onepx($border-radius: r(1000));
+
+    // &:active,
+    // &.active {
+    //   border-radius: r(1000);
+    //   @include onepx($border-radius: r(1000));
+    // }
   }
 
   &.shape-circle {
     width: $height;
-    height: $height;
     padding: 0;
     border-radius: 50%;
+    // @include onepx($border-radius: 50%);
+
+    // &:active,
+    // &.active {
+    //   border-radius: 50%;
+    //   @include onepx($border-radius: 50%);
+    // }
   }
 
   .#{$prefixCls-icon} {
@@ -133,21 +149,16 @@ $button-error-activebg: $theme-error-light;
   }
 }
 
-.#{$prefixCls} {
-  display: inline-block;
+@mixin button-base() {
   padding: 0;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid transparent;
+  transition: background-color 200ms ease-out, border-color 200ms ease-out;
   cursor: pointer;
   outline: 0 none;
   -webkit-appearance: none;
   user-select: none;
-  transition: background-color 200ms ease-out, border-color 200ms ease-out;
-  @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
-  @include button-theme($button-default-color, $button-default-bg, $button-default-border);
-  @include button-bordered($button-default-color, $button-default-activebg, $button-default-border);
 
   &,
   &:hover,
@@ -160,8 +171,7 @@ $button-error-activebg: $theme-error-light;
   &.disabled,
   &:disabled {
     cursor: not-allowed;
-    opacity: .65;
-    box-shadow: none;
+    opacity: $disabled-opacity;
   }
 
   /* block Button */
@@ -177,6 +187,24 @@ $button-error-activebg: $theme-error-light;
     align-items: center;
     justify-content: center;
   }
+}
+
+.#{$prefixCls} {
+  display: inline-block;
+  @include button-base();
+  @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
+  @include button-theme(
+    $button-default-background,
+    $button-default-border,
+    $button-default-color,
+    $button-default-background--active,
+    $button-default-border--active,
+    $button-default-color--active
+  );
+  @include button-bordered(
+    $button-default-border,
+    $button-default-color--bordered
+  );
 
   /* Button sizes */
   &.size-xl {
@@ -197,28 +225,48 @@ $button-error-activebg: $theme-error-light;
 
   /* Button themes */
   &.theme-primary {
-    @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
-    @include button-bordered($button-primary-border, $button-primary-activebg, $button-primary-border);
+    @include button-theme(
+      $button-primary-background,
+      $button-primary-border,
+      $button-primary-color,
+      $button-primary-background--active,
+      $button-primary-border--active,
+      $button-primary-color--active
+    );
+    @include button-bordered(
+      $button-primary-border,
+      $button-primary-color--bordered
+    );
   }
 
-  &.theme-info {
-    @include button-theme($button-info-color, $button-info-bg, $button-info-border);
-    @include button-bordered($button-info-border, $button-info-activebg, $button-info-border);
-  }
+  // &.theme-info {
+  //   @include button-theme($button-info-color, $button-info-bg, $button-info-border);
+  //   @include button-bordered($button-info-border, $button-info-activebg, $button-info-border);
+  // }
 
-  &.theme-success {
-    @include button-theme($button-success-color, $button-success-bg, $button-success-border);
-    @include button-bordered($button-success-border, $button-success-activebg, $button-success-border);
-  }
+  // &.theme-success {
+  //   @include button-theme($button-success-color, $button-success-bg, $button-success-border);
+  //   @include button-bordered($button-success-border, $button-success-activebg, $button-success-border);
+  // }
 
   &.theme-warning {
-    @include button-theme($button-warning-color, $button-warning-bg, $button-warning-border);
-    @include button-bordered($button-warning-border, $button-warning-activebg, $button-warning-border);
+    @include button-theme(
+      $button-warning-background,
+      $button-warning-border,
+      $button-warning-color,
+      $button-warning-background--active,
+      $button-warning-border--active,
+      $button-warning-color--active
+    );
+    @include button-bordered(
+      $button-warning-border,
+      $button-warning-color--bordered
+    );
   }
 
-  &.theme-error {
-    @include button-theme($button-error-color, $button-error-bg, $button-error-border);
-    @include button-bordered($button-error-border, $button-error-activebg, $button-error-border);
-  }
+  // &.theme-error {
+  //   @include button-theme($button-error-color, $button-error-bg, $button-error-border);
+  //   @include button-bordered($button-error-border, $button-error-activebg, $button-error-border);
+  // }
 }
 

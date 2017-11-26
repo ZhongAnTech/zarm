@@ -1,5 +1,45 @@
 $prefixCls: $prefixCls-confirm;
 
 .#{$prefixCls} {
-  text-align: center;
+  &-body {
+    text-align: center;
+  }
+
+  &-footer {
+    display: flex;
+    width: 100%;
+
+    &-button {
+      flex: 1;
+      height: r(50);
+      line-height: r(50);
+      font-size: r(18);
+      position: relative;
+      @include onepx(top);
+      @include button-base();
+      @include button-theme(
+        #fff,
+        #fff,
+        $button-default-color,
+        rgba(#ddd, .5),
+        rgba(#ddd, .5),
+        $button-default-color--active
+      );
+
+      &:not(:first-of-type) {
+        @include onepx(left top);
+      }
+
+      &-ok {
+        @include button-theme(
+          #fff,
+          #fff,
+          $theme-primary,
+          rgba(#ddd, .5),
+          rgba(#ddd, .5),
+          $theme-primary
+        );
+      }
+    }
+  }
 }

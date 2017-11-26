@@ -12,63 +12,63 @@ exports[`KeyboardPicker renders correctly 1`] = `
       class="za-keyboard"
     >
       <div
-        class="za-keyboard-key"
+        class="za-keyboard-keys"
       >
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           1
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           2
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           3
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           4
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           5
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           6
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           7
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           8
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           9
         </div>
         <div
-          class="za-keyboard-key-item za-keyboard-key-item-disabled"
+          class="za-keyboard-item za-keyboard-item-disabled"
         />
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           0
         </div>
         <div
-          class="za-keyboard-key-item"
+          class="za-keyboard-item"
         >
           <i
             class="za-icon za-icon-keyboard"
@@ -79,14 +79,14 @@ exports[`KeyboardPicker renders correctly 1`] = `
         class="za-keyboard-handle"
       >
         <div
-          class="za-keyboard-handle-item"
+          class="za-keyboard-item"
         >
           <i
             class="za-icon za-icon-deletekey"
           />
         </div>
         <div
-          class="za-keyboard-handle-item za-keyboard-handle-item-ok"
+          class="za-keyboard-item za-keyboard-item-ok"
         >
           确定
         </div>

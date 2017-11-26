@@ -4,36 +4,55 @@ $prefixCls: $prefixCls-keyboard;
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  // border-top: 1px solid #ddd; 
-  font-size: r(28);
   color: $theme-default;
   user-select: none;
 
-  &-key {
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: r(28);
+    position: relative;
+    @include button-base();
+    @include button-theme(
+      #fff,
+      $button-default-border,
+      $button-default-color,
+      rgba(#ddd, .5),
+      rgba(#ddd, .5),
+      $button-default-color--active
+    );
+
+    &-ok {
+      font-size: r(21);
+      @include button-theme(
+        $button-primary-background,
+        $button-primary-border,
+        $button-primary-color,
+        $button-primary-background--active,
+        $button-primary-border--active,
+        $button-primary-color--active
+      );
+    }
+
+    &-disabled,
+    &-disabled:active {
+      background-color: rgba(#ddd, .5);
+    }
+  }
+
+  &-keys {
     display: flex;
     flex-wrap: wrap;
     width: 75%;
 
-    &-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      position: relative;
+    .#{$prefixCls}-item {
       width: 33.333333%;
       height: r(50);
       @include onepx(top left);
 
       &:first-of-type {
         @include onepx(top);
-      }
-
-      &:active {
-        background-color: $button-default-activebg;
-      }
-
-      &-disabled {
-        background-color: $button-default-activebg;
       }
     }
   }
@@ -43,26 +62,11 @@ $prefixCls: $prefixCls-keyboard;
     flex-direction: column;
     width: 25%;
 
-    &-item {
+    .#{$prefixCls}-item {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      color: $theme-default;
 
       &:first-of-type {
         @include onepx(top left);
-      }
-
-      &:active {
-        background-color: $button-default-activebg;
-      }
-
-      &-ok {
-        font-size: r(21);
-        @include button-theme($button-primary-color, $button-primary-bg, $button-primary-border);
-        @include button-bordered($button-primary-border, $button-primary-bg, $button-primary-border);
       }
     }
   }

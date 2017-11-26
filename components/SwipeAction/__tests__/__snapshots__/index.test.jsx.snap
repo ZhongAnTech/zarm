@@ -7,24 +7,24 @@ exports[`SwipeAction left only 1`] = `
   <div
     class="za-swipeaction-actions-left"
   >
-    <div
-      class="za-swipeaction-button theme-info"
+    <a
+      aria-disabled="false"
+      class="za-button theme-primary"
+      role="button"
     >
-      <div
-        class="za-swipeaction-text"
-      >
+      <span>
         左按钮1
-      </div>
-    </div>
-    <div
-      class="za-swipeaction-button theme-warning"
+      </span>
+    </a>
+    <a
+      aria-disabled="false"
+      class="za-button theme-warning"
+      role="button"
     >
-      <div
-        class="za-swipeaction-text"
-      >
+      <span>
         左按钮2
-      </div>
-    </div>
+      </span>
+    </a>
   </div>
   <div
     class="za-swipeaction-content"
@@ -42,16 +42,32 @@ exports[`SwipeAction renders correctly 1`] = `
   animationDuration={300}
   left={
     Array [
-      Object {
-        "onClick": [Function],
-        "text": "左按钮1",
-        "theme": "info",
-      },
-      Object {
-        "onClick": [Function],
-        "text": "左按钮2",
-        "theme": "warning",
-      },
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="za-button"
+        theme="primary"
+      >
+        左按钮1
+      </Button>,
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="za-button"
+        theme="warning"
+      >
+        左按钮2
+      </Button>,
     ]
   }
   moveDistanceRatio={0.5}
@@ -60,16 +76,32 @@ exports[`SwipeAction renders correctly 1`] = `
   prefixCls="za-swipeaction"
   right={
     Array [
-      Object {
-        "onClick": [Function],
-        "text": "右按钮1",
-        "theme": "error",
-      },
-      Object {
-        "onClick": [Function],
-        "text": "右按钮2",
-        "theme": "success",
-      },
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="za-button"
+        theme="primary"
+      >
+        右按钮1
+      </Button>,
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
+        loading={false}
+        onClick={[Function]}
+        prefixCls="za-button"
+        theme="warning"
+      >
+        右按钮2
+      </Button>,
     ]
   }
 >
@@ -79,54 +111,106 @@ exports[`SwipeAction renders correctly 1`] = `
     <div
       className="za-swipeaction-actions-left"
     >
-      <div
-        className="za-swipeaction-button theme-info"
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
         key="0"
+        loading={false}
         onClick={[Function]}
+        prefixCls="za-button"
+        theme="primary"
       >
-        <div
-          className="za-swipeaction-text"
+        <a
+          aria-disabled={false}
+          className="za-button theme-primary"
+          onClick={[Function]}
+          onTouchStart={[Function]}
+          role="button"
         >
-          左按钮1
-        </div>
-      </div>
-      <div
-        className="za-swipeaction-button theme-warning"
+          <span>
+            左按钮1
+          </span>
+        </a>
+      </Button>
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
         key="1"
+        loading={false}
         onClick={[Function]}
+        prefixCls="za-button"
+        theme="warning"
       >
-        <div
-          className="za-swipeaction-text"
+        <a
+          aria-disabled={false}
+          className="za-button theme-warning"
+          onClick={[Function]}
+          onTouchStart={[Function]}
+          role="button"
         >
-          左按钮2
-        </div>
-      </div>
+          <span>
+            左按钮2
+          </span>
+        </a>
+      </Button>
     </div>
     <div
       className="za-swipeaction-actions-right"
     >
-      <div
-        className="za-swipeaction-button theme-error"
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
         key="0"
+        loading={false}
         onClick={[Function]}
+        prefixCls="za-button"
+        theme="primary"
       >
-        <div
-          className="za-swipeaction-text"
+        <a
+          aria-disabled={false}
+          className="za-button theme-primary"
+          onClick={[Function]}
+          onTouchStart={[Function]}
+          role="button"
         >
-          右按钮1
-        </div>
-      </div>
-      <div
-        className="za-swipeaction-button theme-success"
+          <span>
+            右按钮1
+          </span>
+        </a>
+      </Button>
+      <Button
+        active={false}
+        block={false}
+        bordered={false}
+        disabled={false}
+        focus={false}
         key="1"
+        loading={false}
         onClick={[Function]}
+        prefixCls="za-button"
+        theme="warning"
       >
-        <div
-          className="za-swipeaction-text"
+        <a
+          aria-disabled={false}
+          className="za-button theme-warning"
+          onClick={[Function]}
+          onTouchStart={[Function]}
+          role="button"
         >
-          右按钮2
-        </div>
-      </div>
+          <span>
+            右按钮2
+          </span>
+        </a>
+      </Button>
     </div>
     <Drag
       onDragEnd={[Function]}
@@ -163,24 +247,24 @@ exports[`SwipeAction right only 1`] = `
   <div
     class="za-swipeaction-actions-right"
   >
-    <div
-      class="za-swipeaction-button theme-info"
+    <a
+      aria-disabled="false"
+      class="za-button theme-primary"
+      role="button"
     >
-      <div
-        class="za-swipeaction-text"
-      >
-        左按钮1
-      </div>
-    </div>
-    <div
-      class="za-swipeaction-button theme-warning"
+      <span>
+        右按钮1
+      </span>
+    </a>
+    <a
+      aria-disabled="false"
+      class="za-button theme-warning"
+      role="button"
     >
-      <div
-        class="za-swipeaction-text"
-      >
-        左按钮2
-      </div>
-    </div>
+      <span>
+        右按钮2
+      </span>
+    </a>
   </div>
   <div
     class="za-swipeaction-content"
