@@ -25,13 +25,37 @@ $button-primary-background--active: $theme-primary-dark;
 $button-primary-border: $theme-primary;
 $button-primary-border--active: $theme-primary-dark;
 
+$button-success-color: #fff;
+$button-success-color--active: rgba(#fff, .3);
+$button-success-color--bordered: $theme-success;
+$button-success-background: $theme-success;
+$button-success-background--active: $theme-success-dark;
+$button-success-border: $theme-success;
+$button-success-border--active: $theme-success-dark;
+
+$button-info-color: #fff;
+$button-info-color--active: rgba(#fff, .3);
+$button-info-color--bordered: $theme-info;
+$button-info-background: $theme-info;
+$button-info-background--active: $theme-info-dark;
+$button-info-border: $theme-info;
+$button-info-border--active: $theme-info-dark;
+
 $button-warning-color: #fff;
 $button-warning-color--active: rgba(#fff, .3);
-$button-warning-color--bordered: $theme-error;
-$button-warning-background: $theme-error;
-$button-warning-background--active: $theme-error-dark;
-$button-warning-border: $theme-error;
-$button-warning-border--active: $theme-error-dark;
+$button-warning-color--bordered: $theme-warning;
+$button-warning-background: $theme-warning;
+$button-warning-background--active: $theme-warning-dark;
+$button-warning-border: $theme-warning;
+$button-warning-border--active: $theme-warning-dark;
+
+$button-error-color: #fff;
+$button-error-color--active: rgba(#fff, .3);
+$button-error-color--bordered: $theme-error;
+$button-error-background: $theme-error;
+$button-error-background--active: $theme-error-dark;
+$button-error-border: $theme-error;
+$button-error-border--active: $theme-error-dark;
 
 @mixin button-bordered($border, $color) {
   border: 1px solid transparent;
@@ -207,20 +231,12 @@ $button-warning-border--active: $theme-error-dark;
   );
 
   /* Button sizes */
-  &.size-xl {
-    @include button-size($height-xl, $padding-xl, $fontSize-xl, $radius-xl, r(26), r(8));
-  }
-
   &.size-lg {
-    @include button-size($height-lg, $padding-lg, $fontSize-lg, $radius-lg, r(24), r(6));
+    @include button-size($height-lg, $padding-lg, $fontSize-lg, $radius-lg, r(26), r(8));
   }
 
   &.size-sm {
-    @include button-size($height-sm, $padding-sm, $fontSize-sm, $radius-sm, r(20), r(5));
-  }
-
-  &.size-xs {
-    @include button-size($height-xs, $padding-xs, $fontSize-xs, $radius-xs, r(18), r(5));
+    @include button-size($height-sm, $padding-sm, $fontSize-sm, $radius-sm, r(18), r(5));
   }
 
   /* Button themes */
@@ -239,6 +255,36 @@ $button-warning-border--active: $theme-error-dark;
     );
   }
 
+  &.theme-success {
+    @include button-theme(
+      $button-success-background,
+      $button-success-border,
+      $button-success-color,
+      $button-success-background--active,
+      $button-success-border--active,
+      $button-success-color--active
+    );
+    @include button-bordered(
+      $button-success-border,
+      $button-success-color--bordered
+    );
+  }
+
+  &.theme-info {
+    @include button-theme(
+      $button-info-background,
+      $button-info-border,
+      $button-info-color,
+      $button-info-background--active,
+      $button-info-border--active,
+      $button-info-color--active
+    );
+    @include button-bordered(
+      $button-info-border,
+      $button-info-color--bordered
+    );
+  }
+
   &.theme-warning {
     @include button-theme(
       $button-warning-background,
@@ -251,6 +297,21 @@ $button-warning-border--active: $theme-error-dark;
     @include button-bordered(
       $button-warning-border,
       $button-warning-color--bordered
+    );
+  }
+
+  &.theme-error {
+    @include button-theme(
+      $button-error-background,
+      $button-error-border,
+      $button-error-color,
+      $button-error-background--active,
+      $button-error-border--active,
+      $button-error-color--active
+    );
+    @include button-bordered(
+      $button-error-border,
+      $button-error-color--bordered
     );
   }
 }

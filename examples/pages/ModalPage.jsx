@@ -37,14 +37,14 @@ class Page extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     onClick={() => this.open('modal1')}>开启</Button>
                 }>普通</Cell>
 
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     onClick={() => this.open('modal3')}>开启</Button>
                 }>
                 圆角
@@ -53,7 +53,7 @@ class Page extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     onClick={() => this.open('modal2')}>开启</Button>
                 }>
                 遮罩层可关闭
@@ -62,14 +62,14 @@ class Page extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     onClick={() => this.open('modal4')}>开启</Button>
                 }>无头部</Cell>
 
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     onClick={() => this.open('modal5')}>开启</Button>
                 }>动画效果</Cell>
             </Panel.Body>
@@ -81,7 +81,7 @@ class Page extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     theme="warning"
                     onClick={() => this.open('alert')}>开启</Button>
                 }>
@@ -91,7 +91,7 @@ class Page extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     theme="warning"
                     onClick={() => this.open('confirm')}>开启</Button>
                 }>

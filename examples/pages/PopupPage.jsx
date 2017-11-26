@@ -40,22 +40,22 @@ class Page extends Component {
             <Panel.Body>
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
+                  <Button size="sm" onClick={() => this.open('popTop')}>开启</Button>
                 }>从上方弹出</Cell>
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
+                  <Button size="sm" onClick={() => this.open('popBottom')}>开启</Button>
                 }>从下方弹出</Cell>
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.open('popLeft')}>开启</Button>
+                  <Button size="sm" onClick={() => this.open('popLeft')}>开启</Button>
                 }>从左侧弹出</Cell>
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.open('popRight')}>开启</Button>
+                  <Button size="sm" onClick={() => this.open('popRight')}>开启</Button>
                 }>从右侧弹出</Cell>
             </Panel.Body>
           </Panel>
