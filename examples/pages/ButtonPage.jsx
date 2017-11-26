@@ -18,7 +18,7 @@ class Page extends Component {
             <Panel.Body>
               <Button>default</Button>
               <Button theme="primary">primary</Button>
-              <Button theme="warning">warning</Button>
+              <Button theme="error">error</Button>
             </Panel.Body>
           </Panel>
 
@@ -29,8 +29,8 @@ class Page extends Component {
               <Button block disabled shape="radius">disabled default</Button>
               <Button block theme="primary">primary</Button>
               <Button block disabled theme="primary">disabled primary</Button>
-              <Button block theme="warning">warning</Button>
-              <Button block disabled theme="warning">disabled warning</Button>
+              <Button block theme="error">error</Button>
+              <Button block disabled theme="error">disabled error</Button>
             </Panel.Body>
           </Panel>
 
@@ -41,19 +41,29 @@ class Page extends Component {
               <Button block bordered disabled>disabled default</Button>
               <Button block bordered theme="primary">primary</Button>
               <Button block bordered disabled theme="primary">disabled primary</Button>
-              <Button block bordered theme="warning">warning</Button>
-              <Button block bordered disabled theme="warning">disabled warning</Button>
+              <Button block bordered theme="error">error</Button>
+              <Button block bordered disabled theme="error">disabled error</Button>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header title="主题" />
+            <Panel.Body>
+              <Button theme="default">default</Button>
+              <Button theme="primary">primary</Button>
+              <Button theme="success">success</Button>
+              <Button theme="info">info</Button>
+              <Button theme="warning">warning</Button>
+              <Button theme="error">error</Button>
             </Panel.Body>
           </Panel>
 
           <Panel>
             <Panel.Header title="大小" />
             <Panel.Body>
-              <Button theme="primary" size="xl">xl</Button>
               <Button theme="primary" size="lg">lg</Button>
               <Button theme="primary">md</Button>
               <Button theme="primary" size="sm">sm</Button>
-              <Button theme="primary" size="xs">xs</Button>
             </Panel.Body>
           </Panel>
 
