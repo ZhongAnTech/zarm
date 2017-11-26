@@ -49,7 +49,7 @@ describe('Input.Number', () => {
     const onChange = jest.fn();
     const wrapper = mount(<Input type="number" onChange={onChange} />);
     wrapper.find('input').simulate('focus');
-    const keys = wrapper.find('.za-keyboard-key');
+    const keys = wrapper.find('.za-keyboard-keys');
     keys.childAt(0).simulate('click');
     expect(onChange).toBeCalledWith('1');
     wrapper.unmount();

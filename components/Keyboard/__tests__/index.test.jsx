@@ -22,7 +22,7 @@ describe('Keyboard', () => {
   it('click keyboard', () => {
     const onKeyClick = jest.fn();
     const wrapper = shallow(<Keyboard onKeyClick={onKeyClick} />);
-    const keys = wrapper.find('.za-keyboard-key');
+    const keys = wrapper.find('.za-keyboard-keys');
     expect(keys.childAt(0).text()).toBe('1');
     keys.childAt(0).simulate('click');
     expect(onKeyClick).toBeCalledWith('1');

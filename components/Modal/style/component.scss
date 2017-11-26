@@ -40,7 +40,7 @@ $prefixCls: $prefixCls-modal;
     text-align: center;
 
     &-title {
-      font-size: r(17);
+      font-size: r(18);
       line-height: 1;
       color: #333;
     }
@@ -50,12 +50,15 @@ $prefixCls: $prefixCls-modal;
       top: r(20);
       right: r(15);
       line-height: r(15);
-      font-size: r(20);
-      color: #999;
+      color: #ccc;
       cursor: pointer;
 
+      &.#{$prefixCls-icon} {
+        font-size: r(20);
+      }
+
       &:hover {
-        color: #666;
+        color: #999;
       }
     }
   }
@@ -72,33 +75,11 @@ $prefixCls: $prefixCls-modal;
     display: flex;
     width: 100%;
 
-    a {
-      flex: 1;
-      height: r(50);
-      line-height: r(50);
-      font-size: r(17);
-      border-width: 0;
-
-      /* 1px line */
-      position: relative;
-      @include onepx(top);
-
-      &:active {
-        background: rgba(#ddd, 0.5) !important;
-      }
-
-      &:not(:first-of-type) {
-        @include onepx(left top);
-      }
-    }
-
     &.block {
-      display: block;
+      flex-direction: column;
 
       a {
-        &:not(:first-of-type) {
-          @include onepx(top);
-        }
+        @include onepx(top);
       }
     }
   }

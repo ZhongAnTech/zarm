@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 // import ReactDOM from 'react-dom';
+import classnames from 'classnames';
 import PropsType from './PropsType';
 import Modal from '../Modal';
-import Button from '../Button';
 
 export interface ConfirmProps extends PropsType {
   prefixCls?: string;
@@ -28,19 +28,18 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
   // }
 
   render() {
-    const { prefixCls, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
+    const { prefixCls, className, title, message, okText, cancelText, onOk, onCancel, ...others } = this.props;
+    const cls = classnames(prefixCls, className);
 
     return (
-      <Modal {...others}>
+      <Modal className={cls} {...others}>
         <Modal.Header title={title} />
-        <Modal.Body>
-          <div className={prefixCls}>
-            {message}
-          </div>
+        <Modal.Body className={`${prefixCls}-body`}>
+          {message}
         </Modal.Body>
-        <Modal.Footer>
-          <Button block bordered onClick={onCancel}>{cancelText}</Button>
-          <Button block bordered theme="primary" onClick={onOk}>{okText}</Button>
+        <Modal.Footer className={`${prefixCls}-footer`}>
+          <a className={`${prefixCls}-footer-button`} onClick={onCancel}>{cancelText}</a>
+          <a className={`${prefixCls}-footer-button ${prefixCls}-footer-button-ok`} onClick={onOk}>{okText}</a>
         </Modal.Footer>
       </Modal>
     );
