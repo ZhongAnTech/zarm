@@ -1,10 +1,6 @@
-$prefixCls: $prefixCls-cell;
+@import "mixins";
 
-@mixin cell-theme($color) {
-  .#{$prefixCls}-footer {
-    color: $color;
-  }
-}
+$prefixCls: $prefixCls-cell;
 
 .#{$prefixCls} {
   position: relative;

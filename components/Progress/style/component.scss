@@ -1,11 +1,5 @@
 $prefixCls: $prefixCls-progress;
 
-@mixin progress-theme($color) {
-  .#{$prefixCls}-bg {
-    background-color: $color;
-  }
-}
-
 .#{$prefixCls} {
   display: flex;
   align-items: center;
@@ -65,22 +59,32 @@ $prefixCls: $prefixCls-progress;
   }
 
   &.theme-default {
-    @include progress-theme($theme-default);
+    .#{$prefixCls}-bg {
+      background-color: $theme-default;
+    }
   }
 
   &.theme-primary {
-    @include progress-theme($theme-primary);
+   .#{$prefixCls}-bg {
+      background-color: $theme-primary;
+    }
   }
 
   &.theme-info {
-    @include progress-theme($theme-info);
+    .#{$prefixCls}-bg {
+      background-color: $theme-info;
+    }
   }
 
   &.theme-warning {
-    @include progress-theme($theme-warning);
+    .#{$prefixCls}-bg {
+      background-color: $theme-warning;
+    }
   }
 
   &.theme-error {
-    @include progress-theme($theme-error);
+    .#{$prefixCls}-bg {
+      background-color: $theme-error;
+    }
   }
 }

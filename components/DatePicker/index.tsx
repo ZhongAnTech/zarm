@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Column from '../Column';
+import PropsType from './PropsType';
 import formatFn from './utils';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
-import PropsType from './PropsType';
+import Column from '../Column';
 
 const DATETIME = 'datetime';
 const DATE = 'date';

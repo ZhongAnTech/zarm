@@ -92,3 +92,61 @@ $prefixCls-tab: za-tab;
 $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
 $prefixCls-uploader: za-uploader;
+
+/* button */
+
+// $button-default-color: $theme-default;
+// $button-default-color--active: $theme-default;
+// $button-default-color--bordered: $theme-default;
+// $button-default-background: #fff;
+// $button-default-background--active: #ddd;
+// $button-default-border: #ddd;
+// $button-default-border--active: #ddd;
+
+$button-default-color: $theme-default;
+$button-default-color--active: $theme-default;
+$button-default-color--bordered: $theme-default;
+$button-default-background: #ddd;
+$button-default-background--active: #c4c4c4;
+$button-default-border: #ddd;
+$button-default-border--active: #c4c4c4;
+
+$button-primary-color: #fff;
+$button-primary-color--active: rgba(#fff, .3);
+$button-primary-color--bordered: $theme-primary;
+$button-primary-background: $theme-primary;
+$button-primary-background--active: $theme-primary-dark;
+$button-primary-border: $theme-primary;
+$button-primary-border--active: $theme-primary-dark;
+
+$button-success-color: #fff;
+$button-success-color--active: rgba(#fff, .3);
+$button-success-color--bordered: $theme-success;
+$button-success-background: $theme-success;
+$button-success-background--active: $theme-success-dark;
+$button-success-border: $theme-success;
+$button-success-border--active: $theme-success-dark;
+
+$button-info-color: #fff;
+$button-info-color--active: rgba(#fff, .3);
+$button-info-color--bordered: $theme-info;
+$button-info-background: $theme-info;
+$button-info-background--active: $theme-info-dark;
+$button-info-border: $theme-info;
+$button-info-border--active: $theme-info-dark;
+
+$button-warning-color: #fff;
+$button-warning-color--active: rgba(#fff, .3);
+$button-warning-color--bordered: $theme-warning;
+$button-warning-background: $theme-warning;
+$button-warning-background--active: $theme-warning-dark;
+$button-warning-border: $theme-warning;
+$button-warning-border--active: $theme-warning-dark;
+
+$button-error-color: #fff;
+$button-error-color--active: rgba(#fff, .3);
+$button-error-color--bordered: $theme-error;
+$button-error-background: $theme-error;
+$button-error-background--active: $theme-error-dark;
+$button-error-border: $theme-error;
+$button-error-border--active: $theme-error-dark;

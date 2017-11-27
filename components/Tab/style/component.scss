@@ -1,22 +1,6 @@
+@import "mixins";
+
 $prefixCls: $prefixCls-tab;
-
-@mixin tab-theme($color) {
-  .#{$prefixCls} {
-    &-header-item {
-      &.active {
-        color: $color;
-      }
-    }
-
-    &-line {
-      background-color: $color;
-
-      &-inner {
-        background-color: $color;
-      }
-    }
-  }
-}
 
 .#{$prefixCls} {
   @include tab-theme($theme-primary);

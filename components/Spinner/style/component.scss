@@ -1,16 +1,7 @@
+@import "mixins";
+
 $prefixCls: $prefixCls-spinner;
 $PI: 3.141592674;
-
-@mixin spinner-theme($color) {
-  .#{$prefixCls}-line {
-    stroke: $color;
-  }
-}
-
-@mixin spinner-size($diameter) {
-  width: $diameter;
-  height: $diameter;
-}
 
 .#{$prefixCls} {
   display: inline-block;

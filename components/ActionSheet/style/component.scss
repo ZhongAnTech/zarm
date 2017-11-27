@@ -1,14 +1,7 @@
-$prefixCls: $prefixCls-actionsheet;
+@import "mixins";
+@import "../../Button/style/mixins";
 
-@mixin actionsheet-theme($color) {
-  &,
-  &:hover,
-  &:focus,
-  &:visited {
-    text-decoration: none;
-    color: $color;
-  }
-}
+$prefixCls: $prefixCls-actionsheet;
 
 .#{$prefixCls} {
   margin: 0 r(10) r(10) r(10);
