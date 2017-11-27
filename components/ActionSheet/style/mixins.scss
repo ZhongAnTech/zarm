@@ -1,0 +1,9 @@
+@mixin actionsheet-theme($color) {
+  &,
+  &:hover,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+    color: $color;
+  }
+}

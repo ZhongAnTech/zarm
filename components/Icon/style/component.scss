@@ -1,9 +1,5 @@
 $prefixCls: $prefixCls-icon;
 
-@mixin icon-theme($color) {
-  color: $color;
-}
-
 @font-face {
   font-family: "zarmicon";
   src: url('#{$icon-url}.eot');
@@ -19,27 +15,27 @@ $prefixCls: $prefixCls-icon;
   -moz-osx-font-smoothing: grayscale;
 
   &.theme-default {
-    @include icon-theme($theme-default);
+    color: $theme-default;
   }
 
   &.theme-primary {
-    @include icon-theme($theme-primary);
+    color: $theme-primary;
   }
 
   &.theme-info {
-    @include icon-theme($theme-info);
+    color: $theme-info;
   }
 
   &.theme-success {
-    @include icon-theme($theme-success);
+    color: $theme-success;
   }
 
   &.theme-warning {
-    @include icon-theme($theme-warning);
+    color: $theme-warning;
   }
 
   &.theme-error {
-    @include icon-theme($theme-error);
+    color: $theme-error;
   }
 
   &-arrow-top:before { content: "\e60e"; }

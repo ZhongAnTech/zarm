@@ -1,3 +1,5 @@
+@import "mixins";
+
 $prefixCls: $prefixCls-message;
 
 $message-default-color: $theme-default;
@@ -17,11 +19,6 @@ $message-warning-bg: $theme-warning-light;
 
 $message-error-color: $theme-error;
 $message-error-bg: $theme-error-light;
-
-@mixin message-theme($color, $background) {
-  color: $color;
-  background-color: $background;
-}
 
 .#{$prefixCls} {
   display: flex;

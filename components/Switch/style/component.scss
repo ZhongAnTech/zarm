@@ -1,13 +1,6 @@
-$prefixCls: $prefixCls-switch;
+@import "mixins";
 
-@mixin switch-theme($color) {
-  .#{$prefixCls}-input {
-    &:checked {
-      border-color: $color;
-      background-color: $color;
-    }
-  }
-}
+$prefixCls: $prefixCls-switch;
 
 .#{$prefixCls} {
   @include switch-theme($theme-default);

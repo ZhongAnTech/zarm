@@ -1,12 +1,6 @@
-$prefixCls: $prefixCls-badge;
+@import "mixins";
 
-@mixin badge-theme($color) {
-  .#{$prefixCls} {
-    &-sup {
-      background-color: $color;
-    }
-  }
-}
+$prefixCls: $prefixCls-badge;
 
 .#{$prefixCls} {
   position: relative;
