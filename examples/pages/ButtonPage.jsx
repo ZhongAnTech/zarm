@@ -18,7 +18,6 @@ class Page extends Component {
             <Panel.Body>
               <Button>default</Button>
               <Button theme="primary">primary</Button>
-              <Button theme="error">error</Button>
             </Panel.Body>
           </Panel>
 
@@ -29,8 +28,6 @@ class Page extends Component {
               <Button block disabled shape="radius">disabled default</Button>
               <Button block theme="primary">primary</Button>
               <Button block disabled theme="primary">disabled primary</Button>
-              <Button block theme="error">error</Button>
-              <Button block disabled theme="error">disabled error</Button>
             </Panel.Body>
           </Panel>
 
@@ -41,8 +38,6 @@ class Page extends Component {
               <Button block bordered disabled>disabled default</Button>
               <Button block bordered theme="primary">primary</Button>
               <Button block bordered disabled theme="primary">disabled primary</Button>
-              <Button block bordered theme="error">error</Button>
-              <Button block bordered disabled theme="error">disabled error</Button>
             </Panel.Body>
           </Panel>
 
