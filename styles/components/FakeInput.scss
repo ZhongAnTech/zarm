@@ -1,0 +1,66 @@
+$prefixCls: $prefixCls-fakeinput;
+
+.#{$prefixCls} {
+  display: inline-block;
+  max-width: 50%;
+  height: r(30);
+  line-height: r(30);
+  vertical-align: middle;
+
+  .fake-input {
+    height: r(30);
+    white-space: nowrap;
+    overflow-x: scroll;
+    text-align: left;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+
+    &.placeholder {
+      &:before {
+        content: attr(placeholder);
+        display: block;
+        font-size: r(14);
+        color: #ccc;
+      }
+    }
+
+    &.editing {
+      &:after {
+        content: '|';
+        display: inline-block;
+        color: #000;
+        animation: flashing .9s ease-in-out infinite;
+      }
+    }
+  }
+
+  .refer-input {
+    height: 0;
+    margin: 0;
+    width: 0;
+    padding: 0;
+    outline: none;
+    border-width: 0;
+  }
+}
+
+@keyframes flashing {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

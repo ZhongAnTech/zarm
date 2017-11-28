@@ -50,7 +50,8 @@
     "autosize": "^3.0.21",
     "classnames": "^2.2.5",
     "moment": "2.18.1",
-    "zscroller": "^0.2.5"
+    "zscroller": "^0.2.5",
+    "fastclick": "^1.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",

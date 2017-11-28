@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumKeyboard render correctly 1`] = `
+<div
+  class="za-popup"
+>
+  <div
+    class="za-popup-wrapper za-popup-wrapper-bottom"
+    style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+  >
+    <div
+      class="za-numkeyboard"
+    >
+      <div
+        class="op-zone"
+      >
+        <button
+          class="comfirm-btn"
+        >
+          确定
+        </button>
+      </div>
+      <div
+        class="key-zone"
+      >
+        <div
+          class="key-btn top-right-1px-line"
+        >
+          1
+        </div>
+        <div
+          class="key-btn top-right-1px-line"
+        >
+          2
+        </div>
+        <div
+          class="key-btn top-1px-line"
+        >
+          3
+        </div>
+        <div
+          class="key-btn top-right-1px-line"
+        >
+          4
+        </div>
+        <div
+          class="key-btn top-right-1px-line"
+        >
+          5
+        </div>
+        <div
+          class="key-btn top-1px-line"
+        >
+          6
+        </div>
+        <div
+          class="key-btn top-right-1px-line"
+        >
+          7
+        </div>
+        <div
+          class="key-btn top-right-1px-line"
+        >
+          8
+        </div>
+        <div
+          class="key-btn top-1px-line"
+        >
+          9
+        </div>
+        <div
+          class="key-btn top-right-1px-line"
+        />
+        <div
+          class="key-btn top-right-1px-line"
+        >
+          0
+        </div>
+        <div
+          class="key-btn top-1px-line"
+        >
+          <i
+            class="za-icon za-icon-wrong"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -41,6 +41,7 @@ class Page extends PureComponent {
               <Cell hasArrow title="上拉加载下拉刷新 Pull" onClick={() => history.push('/pull')} />
               <Cell hasArrow title="滑动操作 SwipeAction" onClick={() => history.push('/swipe-action')} />
               <Cell hasArrow title="轻提示 Toast" onClick={() => history.push('/toast')} />
+              <Cell hasArrow title="模拟输入框+数字键盘 FakeInput+Keyboard" onClick={() => history.push('/numkeyboard')} />
             </Panel.Body>
           </Panel>
           <Panel>

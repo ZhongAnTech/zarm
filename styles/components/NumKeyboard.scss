@@ -1,0 +1,80 @@
+$prefixCls: $prefixCls-numkeyboard;
+$grey: #f5f5f5;
+$white: #fff;
+$blue: #249fe6;
+$lineColor: #e6e6e6;
+$keyColor: #333;
+
+.#{$prefixCls} {
+  // position: fixed;
+  // z-index: 9999;
+  width: 100%;
+  transition: all .2s ease-out;
+
+  .op-zone {
+    background-color: $grey;
+    font-size: r(18);
+    padding: r(10) 0;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      border-top: 1px solid $lineColor;
+      transform: scaleY(.5);
+      position: absolute;
+      top: 0;
+    }
+
+    .comfirm-btn {
+      margin-right: r(15);
+      color: $blue;
+      float: right;
+      background: transparent;
+      border: 0;
+      outline: none;
+    }
+  }
+
+  .key-zone {
+    height: r(220);
+    background: $white;
+    font-size: r(24);
+    color: $keyColor;
+    display: flex;
+    flex-wrap: wrap;
+
+    .key-btn {
+      position: relative;
+      width: 33.33%;
+      text-align: center;
+      line-height: r(55);
+      background-color: $white;
+
+      &:nth-of-type(10) {
+        background-color: $grey;
+      }
+
+      &:nth-of-type(12) {
+        background-color: $grey;
+      }
+
+      &:active {
+        box-shadow:
+          inset 0 r(4) 0 $grey,
+          inset 0 r(-4) 0 $grey,
+          inset r(4) 0 0 $grey,
+          inset r(-4) 0 0 $grey;
+      }
+
+      &.top-1px-line {
+        @include onepx(top, $lineColor);
+      }
+
+      &.top-right-1px-line {
+        @include onepx(top right, $lineColor);
+      }
+    }
+  }
+}
