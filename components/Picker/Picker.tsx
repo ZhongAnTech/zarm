@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
-import Column from '../Column';
+import { formatToInit, formatBackToObject, initDataAndValue, updateDataSource, updateValue } from './utils';
 import Popup from '../Popup';
+import PickerView from '../PickerView';
 import { BasePickerProps } from './PropsType';
 
 // 阻止选择器区域的默认事件
@@ -40,58 +40,36 @@ export default class Picker extends Component<PickerProps, any> {
     super(props);
 
     const initValue = props.value || props.defaultValue || [];
-    const { dataSource } = props;
-    let _data: any;
-    let _value = null;
 
-    // 针对单列数据源，转换为[[{}]]
-    if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-      _data = [props.dataSource];
-      _value = isArray(initValue) ? initValue : [initValue];
-    } else {
-      _data = dataSource;
-      _value = initValue;
-    }
+    let { data , value, cascade } = initDataAndValue(props.dataSource, initValue);
 
     this.state = {
       visible: props.visible || false,
-      value: _value,
-      data: _data,
-      cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+      value,
+      data,
+      cascade,
     };
 
-    this.tempValue = _value;
+    this.tempValue = value;
   }
 
   componentWillReceiveProps(nextProps) {
     if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
       const { dataSource } = nextProps;
-      let _data: any;
+      let { data, cascade } = updateDataSource(dataSource);
 
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _data = [nextProps.dataSource];
-      } else {
-        _data = nextProps.dataSource;
-      }
       this.setState({
-        data: _data,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+        data,
+        cascade,
       });
     }
 
     if ('value' in nextProps && nextProps.value !== this.props.value) {
-      let _value = null;
-      const { dataSource } = nextProps;
-
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
-      } else {
-        _value = nextProps.value;
-      }
+      const { dataSource, value } = nextProps;
+      let { _value } = updateValue(dataSource, value);
 
       this.setState({
         value: _value,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
       this.tempValue = _value;
     }
@@ -174,44 +152,11 @@ export default class Picker extends Component<PickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, cancelText,
-      okText, title, valueMember = Picker.defaultProps.valueMember, itemRender } = this.props;
-    const { data, value } = this.state;
-
-    let PickerCol: JSX.Element;
-
+    const { prefixCls, className, cancelText, dataSource,
+      okText, title, valueMember = Picker.defaultProps.valueMember,
+      itemRender = Picker.defaultProps.itemRender } = this.props;
+    const { value } = this.state;
     const classes = classnames(`${prefixCls}-container`, className);
-
-    const cols = data.map((d) => {
-      return { props: { children: d } };
-    });
-
-    if (this.state.cascade) {
-      PickerCol = (
-        <Column.Cascader
-          prefixCls={prefixCls}
-          data={data}
-          value={this.state.value}
-          cols={this.props.cols}
-          itemRender={itemRender}
-          valueMember={valueMember}
-          onChange={v => this.onValueChange(v)}
-        />
-      );
-    } else {
-      PickerCol = (
-        <Column.Group
-          className={className}
-          prefixCls={prefixCls}
-          itemRender={itemRender}
-          valueMember={valueMember}
-          selectedValue={value}
-          onValueChange={v => this.onValueChange(v)}
-        >
-          {cols}
-        </Column.Group>
-      );
-    }
 
     return (
       <div className={`${prefixCls}`}>
@@ -228,7 +173,15 @@ export default class Picker extends Component<PickerProps, any> {
               </div>
               <div className={`${prefixCls}-mask-top`}>
                 <div className={`${prefixCls}-mask-bottom`}>
-                  {PickerCol}
+                  <PickerView
+                    prefixCls={prefixCls}
+                    dataSource={dataSource}
+                    value={value}
+                    cols={this.props.cols}
+                    itemRender={itemRender}
+                    valueMember={valueMember}
+                    onValueChange={v => this.onValueChange(v)}
+                  />
                 </div>
               </div>
             </div>

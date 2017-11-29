@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Cell, Picker, DatePicker, Select, Button } from 'zarm';
+import { Panel, Cell, Picker, DatePicker, Select, Button, PickerView } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -12,8 +12,8 @@ const multiData = [
     { value: '2', label: '选项二' },
   ],
   [
-    { value: '1', label: '选项一' },
-    { value: '2', label: '选项二' },
+    { value: '3', label: '选项三' },
+    { value: '4', label: '选项四' },
   ],
 ];
 class Page extends Component {
@@ -23,12 +23,58 @@ class Page extends Component {
     this.state = {
       single: { value: '' },
       multi: { value: '' },
-      multiCascade: { value: '' },
+      multiCascadeData: [
+        {
+          value: '1',
+          label: '北京市',
+          children: [
+            { value: '11', label: '海淀区' },
+            { value: '12', label: '西城区' },
+          ],
+        },
+        {
+          value: '2',
+          label: '上海市',
+          children: [
+            { value: '21', label: '黄埔区' },
+            { value: '22', label: '虹口区' },
+          ],
+        },
+      ],
+      multiCascade: { value: ['1', '12'] },
       multiAssign: { value: ['1', '12'] },
       diy: {},
       address1: {},
       address2: {},
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        multiCascadeData: [
+          {
+            value: '1',
+            label: '北京市',
+            children: [
+              { value: '11', label: '海淀区' },
+              { value: '12', label: '西城区' },
+            ],
+          },
+          {
+            value: '2',
+            label: '上海市',
+            children: [
+              { value: '21', label: '杨浦区' },
+              { value: '22', label: '静安区' },
+            ],
+          },
+        ],
+        multiCascade: {
+          value: ['2', '21'],
+        },
+      });
+    }, 1000);
   }
 
   open = (key) => {
@@ -87,24 +133,8 @@ class Page extends Component {
                 <div>{multiCascade.display}</div>
                 <Picker
                   visible={this.state.pickerVisible}
-                  dataSource={[
-                    {
-                      value: '1',
-                      label: '北京市',
-                      children: [
-                        { value: '11', label: '海淀区' },
-                        { value: '12', label: '西城区' },
-                      ],
-                    },
-                    {
-                      value: '2',
-                      label: '上海市',
-                      children: [
-                        { value: '21', label: '黄埔区' },
-                        { value: '22', label: '虹口区' },
-                      ],
-                    },
-                  ]}
+                  dataSource={this.state.multiCascadeData}
+                  value={this.state.multiCascade.value}
                   onOk={(selected) => {
                     multiCascade.value = selected.map(item => `${item.value}`);
                     multiCascade.display = selected.map(item => item.label).join('-');
@@ -238,6 +268,37 @@ class Page extends Component {
                   />
               </Cell>
 
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header title="PickerView" />
+            <Panel.Body>
+              <PickerView
+                dataSource={[
+                  {
+                    code: '1',
+                    name: '北京市',
+                    children: [
+                      { code: '11', name: '海淀区' },
+                      { code: '12', name: '西城区' },
+                    ],
+                  },
+                  {
+                    code: '2',
+                    name: '上海市',
+                    children: [
+                      { code: '21', name: '黄埔区' },
+                      { code: '22', name: '虹口区' },
+                    ],
+                  },
+                ]}
+                valueMember="code"
+                itemRender={data => data.name}
+                onChange={(value) => {
+                  console.log(value);
+                }}
+                />
             </Panel.Body>
           </Panel>
 
