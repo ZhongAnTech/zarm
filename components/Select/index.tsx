@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { BaseSelectProps } from './PropsType';
-import { hasChildrenObject, isArray, arrayTreeFilter } from '../Picker/utils';
+import { arrayTreeFilter, initDataAndValue, updateDataSource, updateValue } from '../Picker/utils';
 import Picker from '../Picker';
 
 export interface SelectProps extends BaseSelectProps {
@@ -21,62 +21,35 @@ export default class InputSelect extends Component<SelectProps, any> {
     super(props);
 
     const initValue = props.value || props.defaultValue || [];
-    const { dataSource } = props;
-    let _data: any;
-    let _value = null;
-
-    // 针对单列数据源，转换为[[{}]]
-    if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-      _data = [props.dataSource];
-      _value = isArray(initValue) ? initValue : [initValue];
-    } else {
-      _data = dataSource;
-      _value = initValue;
-    }
+    let { data , value, cascade } = initDataAndValue(props.dataSource, initValue);
 
     this.state = {
       visible: props.visible || false,
-      value: _value,
-      data: _data,
-      cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+      value,
+      data,
+      cascade,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
       const { dataSource } = nextProps;
-      let _data: any;
+      let { data, cascade } = updateDataSource(dataSource);
 
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _data = [nextProps.dataSource];
-      } else {
-        _data = nextProps.dataSource;
-      }
       this.setState({
-        data: _data,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+        data,
+        cascade,
       });
     }
 
     if ('value' in nextProps && nextProps.value !== this.props.value) {
-      let _value = null;
-      const { dataSource } = nextProps;
-
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
-      } else {
-        _value = nextProps.value;
-      }
+      const { dataSource, value } = nextProps;
+      let { _value } = updateValue(dataSource, value);
 
       this.setState({
         value: _value,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
     }
-
-    // if ('visible' in nextProps && this.state.visible !== nextProps.visible) {
-    //   this.setState({ visible: nextProps.visible });
-    // }
   }
 
   onFocus = () => {
