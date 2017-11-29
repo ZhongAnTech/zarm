@@ -219,7 +219,32 @@ import { Picker } from 'zarm';
 
 ### API
 
-#### Picker & Picker.Stack
+#### Select & Picker
+
+| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| prefixCls | string | za-select\za-picker | | 类名前缀 |
+| className | string | | | 追加类名 |
+| visible | boolean | false | | 是否展示 |
+| dataSource | array | [ ] | | 数据源 |
+| value | array, string |  | | 值 |
+| defaultValue | array, string |  | | 初始是否选中 |
+| valueMember | string | 'value' | | 值字段对应的key 
+| itemRender | func | <code>(data?: object) => data.label</code> | | 控制选项列表显示字段对应的key |
+| disabled | bool | false | | 是否禁用 |
+| title | string | '请选择' | | 选择器标题 |
+| cancelText | string | '取消' | | 取消栏文字 |
+| okText | string | '确定' | | 确定栏文字 |
+| placeholder | string | '请选择' | | 输入提示信息 |
+| displayRender | <code>(data?: object) => string</code> | noop | \(data: object\) | 所选值渲染(只有Select有) |
+| cols | number | | | 级联选择器的级数 |
+| onChange（Select） | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 |
+| onChange（Picker） | <code>(value?: object) => void</code> | noop | \(value: object\) | 值变化时触发的回调函数 |
+| onOk | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数(只有Picker有，功能等同于Select的onChange) | 
+| onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+
+#### Picker.Stack
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |

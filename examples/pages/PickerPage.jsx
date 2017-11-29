@@ -135,6 +135,9 @@ class Page extends Component {
                   visible={this.state.pickerVisible}
                   dataSource={this.state.multiCascadeData}
                   value={this.state.multiCascade.value}
+                  onChange={(selected) => {
+                    console.log(selected);
+                  }}
                   onOk={(selected) => {
                     multiCascade.value = selected.map(item => `${item.value}`);
                     multiCascade.display = selected.map(item => item.label).join('-');
