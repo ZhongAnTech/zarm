@@ -53,10 +53,6 @@ $prefixCls: $prefixCls-actionsheet;
       @include actionsheet-theme($theme-primary);
     }
 
-    &.theme-info {
-      @include actionsheet-theme($theme-info);
-    }
-
     &.theme-success {
       @include actionsheet-theme($theme-success);
     }

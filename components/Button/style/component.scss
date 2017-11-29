@@ -59,21 +59,6 @@ $prefixCls: $prefixCls-button;
     );
   }
 
-  &.theme-info {
-    @include button-theme(
-      $button-info-background,
-      $button-info-border,
-      $button-info-color,
-      $button-info-background--active,
-      $button-info-border--active,
-      $button-info-color--active
-    );
-    @include button-bordered(
-      $button-info-border,
-      $button-info-color--bordered
-    );
-  }
-
   &.theme-warning {
     @include button-theme(
       $button-warning-background,

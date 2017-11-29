@@ -13,10 +13,6 @@ $prefixCls: $prefixCls-badge;
     @include badge-theme($theme-primary);
   }
 
-  &.theme-info {
-    @include badge-theme($theme-info);
-  }
-
   &.theme-success {
     @include badge-theme($theme-success);
   }

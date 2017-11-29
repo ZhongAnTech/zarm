@@ -60,10 +60,6 @@ $prefixCls: $prefixCls-switch;
     @include switch-theme($theme-primary);
   }
 
-  &.theme-info {
-    @include switch-theme($theme-info);
-  }
-
   &.theme-success {
     @include switch-theme($theme-success);
   }

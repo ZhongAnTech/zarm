@@ -13,10 +13,6 @@ $prefixCls: $prefixCls-tab;
     @include tab-theme($theme-primary);
   }
 
-  &.theme-info {
-    @include tab-theme($theme-info);
-  }
-
   &.theme-success {
     @include tab-theme($theme-success);
   }
