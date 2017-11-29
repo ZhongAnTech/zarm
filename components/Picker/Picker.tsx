@@ -80,12 +80,15 @@ export default class Picker extends Component<PickerProps, any> {
   }
 
   onValueChange = (value) => {
-    const { onChange } = this.props;
+    const { data, cascade } = this.state;
+    const { onChange, valueMember, cols } = this.props;
     this.setState({
       value,
     });
     if (typeof onChange === 'function') {
-      onChange(value);
+      let _value: any;
+      _value = formatBackToObject(data, value, cascade, valueMember, cols);
+      onChange(_value);
     }
   }
 

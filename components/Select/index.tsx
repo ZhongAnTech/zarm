@@ -13,6 +13,7 @@ export default class InputSelect extends Component<SelectProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-select',
+    onMaskClick: () => {},
     itemRender: data => data.label,
     valueMember: 'value',
   };
@@ -80,7 +81,7 @@ export default class InputSelect extends Component<SelectProps, any> {
 
   render() {
     const { prefixCls, placeholder, title, dataSource, className, defaultValue, disabled,
-      valueMember = Picker.defaultProps.valueMember, itemRender, cols } = this.props;
+      valueMember = Picker.defaultProps.valueMember, itemRender, cols, onMaskClick } = this.props;
     const { visible, value, data } = this.state;
     const cls = classnames(`${prefixCls}`, className, {});
     const inputCls = classnames(`${prefixCls}-input`, {
@@ -122,6 +123,7 @@ export default class InputSelect extends Component<SelectProps, any> {
           placeholder={placeholder}
           itemRender={itemRender}
           cols={cols}
+          onMaskClick={onMaskClick}
         />
         </div>
       </div>

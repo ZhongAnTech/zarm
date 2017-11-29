@@ -13,11 +13,7 @@ export default class PickerView extends Component<PickerViewProps, any> {
   static defaultProps = {
     disabled: false,
     dataSource: [],
-    onClick: () => {},
     onChange: () => {},
-    onOk: () => {},
-    onCancel: () => {},
-    onMaskClick: () => {},
     prefixCls: 'za-picker',
     valueMember: 'value',
     itemRender: data => data.label,

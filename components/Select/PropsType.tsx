@@ -8,6 +8,7 @@ export interface BaseSelectProps {
   dataSource: object[];
   valueMember?: string;
   cols?: number;
+  onMaskClick?: () => void;
   onChange?: (value?: object) => void;
   displayRender?: (data?: object) => string;
   itemRender?: (data?: object) => string;
