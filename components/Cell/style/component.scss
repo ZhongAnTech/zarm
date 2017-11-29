@@ -17,10 +17,6 @@ $prefixCls: $prefixCls-cell;
     @include cell-theme($theme-primary);
   }
 
-  &.theme-info {
-    @include cell-theme($theme-info);
-  }
-
   &.theme-success {
     @include cell-theme($theme-success);
   }

@@ -32,10 +32,6 @@ $prefixCls: $prefixCls-stepper;
     @include stepper-theme($theme-primary, $theme-primary-light);
   }
 
-  &.theme-info {
-    @include stepper-theme($theme-info, $theme-info-light);
-  }
-
   &.theme-success {
     @include stepper-theme($theme-success, $theme-success-light);
   }

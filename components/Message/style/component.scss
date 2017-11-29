@@ -8,9 +8,6 @@ $message-default-bg: $theme-default-light;
 $message-primary-color: $theme-primary;
 $message-primary-bg: $theme-primary-light;
 
-$message-info-color: $theme-info;
-$message-info-bg: $theme-info-light;
-
 $message-success-color: $theme-success;
 $message-success-bg: $theme-success-light;
 
@@ -54,10 +51,6 @@ $message-error-bg: $theme-error-light;
 
   &.theme-primary {
     @include message-theme($message-primary-color, $message-primary-bg);
-  }
-
-  &.theme-info {
-    @include message-theme($message-info-color, $message-info-bg);
   }
 
   &.theme-success {

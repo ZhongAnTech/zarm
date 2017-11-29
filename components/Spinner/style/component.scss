@@ -45,10 +45,6 @@ $PI: 3.141592674;
     @include spinner-theme($theme-primary);
   }
 
-  &.theme-info {
-    @include spinner-theme($theme-info);
-  }
-
   &.theme-warning {
     @include spinner-theme($theme-warning);
   }

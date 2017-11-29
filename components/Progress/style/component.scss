@@ -70,12 +70,6 @@ $prefixCls: $prefixCls-progress;
     }
   }
 
-  &.theme-info {
-    .#{$prefixCls}-bg {
-      background-color: $theme-info;
-    }
-  }
-
   &.theme-warning {
     .#{$prefixCls}-bg {
       background-color: $theme-warning;
