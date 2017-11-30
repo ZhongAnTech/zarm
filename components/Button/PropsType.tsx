@@ -1,5 +1,5 @@
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   size?: 'xl' | 'lg' | 'sm' | 'xs';
   shape?: 'radius' | 'round' | 'circle';
   block?: boolean;
