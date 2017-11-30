@@ -5,7 +5,7 @@ $prefixCls: $prefixCls-stepper;
 .#{$prefixCls} {
   display: flex;
   user-select: none;
-  @include stepper-theme($theme-primary, $theme-primary-light);
+  @include stepper-theme($theme-primary);
 
   &.disabled {
     .#{$prefixCls}-body {
@@ -29,19 +29,19 @@ $prefixCls: $prefixCls-stepper;
   }
 
   &.theme-primary {
-    @include stepper-theme($theme-primary, $theme-primary-light);
+    @include stepper-theme($theme-primary);
   }
 
   &.theme-success {
-    @include stepper-theme($theme-success, $theme-success-light);
+    @include stepper-theme($theme-success);
   }
 
   &.theme-warning {
-    @include stepper-theme($theme-warning, $theme-warning-light);
+    @include stepper-theme($theme-warning);
   }
 
   &.theme-error {
-    @include stepper-theme($theme-error, $theme-error-light);
+    @include stepper-theme($theme-error);
   }
 
   &-sub,
@@ -69,7 +69,7 @@ $prefixCls: $prefixCls-stepper;
     height: r(27);
     border: 0;
     border-radius: 0;
-    color: $theme-default;
+    color: $color-text;
     text-align: center;
     outline: 0;
     -webkit-appearance: none;

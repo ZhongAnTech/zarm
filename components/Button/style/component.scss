@@ -5,88 +5,38 @@ $prefixCls: $prefixCls-button;
 .#{$prefixCls} {
   display: inline-block;
   @include button-base();
-  @include button-size($height-md, $padding-md, $fontSize-md, $radius-md, r(22), r(5));
-  @include button-theme(
-    $button-default-background,
-    $button-default-border,
-    $button-default-color,
-    $button-default-background--active,
-    $button-default-border--active,
-    $button-default-color--active
-  );
-  @include button-bordered(
-    $button-default-border,
-    $button-default-color--bordered
-  );
+  @include button-size($button-height-md, $padding-h-md, $font-size-md, r(22));
+  @include button-theme($theme-default, $theme-default, $color-text);
+  @include button-bordered($theme-default, $color-text);
 
   /* Button sizes */
   &.size-lg {
-    @include button-size($height-lg, $padding-lg, $fontSize-lg, $radius-lg, r(26), r(8));
+    @include button-size($button-height-lg, $padding-h-lg, $font-size-lg, r(26));
   }
 
   &.size-sm {
-    @include button-size($height-sm, $padding-sm, $fontSize-sm, $radius-sm, r(18), r(5));
+    @include button-size($button-height-sm, $padding-h-sm, $font-size-sm, r(18));
   }
 
   /* Button themes */
   &.theme-primary {
-    @include button-theme(
-      $button-primary-background,
-      $button-primary-border,
-      $button-primary-color,
-      $button-primary-background--active,
-      $button-primary-border--active,
-      $button-primary-color--active
-    );
-    @include button-bordered(
-      $button-primary-border,
-      $button-primary-color--bordered
-    );
+    @include button-theme($theme-primary, $theme-primary, $color-text-inverse);
+    @include button-bordered($theme-primary, $theme-primary);
   }
 
   &.theme-success {
-    @include button-theme(
-      $button-success-background,
-      $button-success-border,
-      $button-success-color,
-      $button-success-background--active,
-      $button-success-border--active,
-      $button-success-color--active
-    );
-    @include button-bordered(
-      $button-success-border,
-      $button-success-color--bordered
-    );
+    @include button-theme($theme-success, $theme-success, $color-text-inverse);
+    @include button-bordered($theme-success, $theme-success);
   }
 
   &.theme-warning {
-    @include button-theme(
-      $button-warning-background,
-      $button-warning-border,
-      $button-warning-color,
-      $button-warning-background--active,
-      $button-warning-border--active,
-      $button-warning-color--active
-    );
-    @include button-bordered(
-      $button-warning-border,
-      $button-warning-color--bordered
-    );
+    @include button-theme($theme-warning, $theme-warning, $color-text-inverse);
+    @include button-bordered($theme-warning, $theme-warning);
   }
 
   &.theme-error {
-    @include button-theme(
-      $button-error-background,
-      $button-error-border,
-      $button-error-color,
-      $button-error-background--active,
-      $button-error-border--active,
-      $button-error-color--active
-    );
-    @include button-bordered(
-      $button-error-border,
-      $button-error-color--bordered
-    );
+    @include button-theme($theme-error, $theme-error, $color-text-inverse);
+    @include button-bordered($theme-error, $theme-error);
   }
 }
 

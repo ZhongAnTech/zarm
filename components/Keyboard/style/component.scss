@@ -16,25 +16,11 @@ $prefixCls: $prefixCls-keyboard;
     font-size: r(28);
     position: relative;
     @include button-base();
-    @include button-theme(
-      #fff,
-      $button-default-border,
-      $button-default-color,
-      rgba(#ddd, .5),
-      rgba(#ddd, .5),
-      $button-default-color--active
-    );
+    @include button-theme(#fff, #ddd, $color-text);
 
     &-ok {
       font-size: r(21);
-      @include button-theme(
-        $button-primary-background,
-        $button-primary-border,
-        $button-primary-color,
-        $button-primary-background--active,
-        $button-primary-border--active,
-        $button-primary-color--active
-      );
+      @include button-theme($theme-primary, $theme-primary, #fff);
     }
 
     &-disabled,
