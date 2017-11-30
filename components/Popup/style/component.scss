@@ -9,7 +9,7 @@ $prefixCls: $prefixCls-popup;
     transition-property: transform;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    z-index: $zIndex-popup;
+    z-index: $zindex-popup;
 
     &-bottom {
       left: 0;

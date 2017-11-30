@@ -38,7 +38,7 @@ module.exports = {
                 ['import', {
                   libraryName: 'zarm',
                   libraryDirectory: 'components',
-                  style: true,
+                  style: false,
                   camel2DashComponentName: false,
                 }],
               ],

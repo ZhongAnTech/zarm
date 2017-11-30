@@ -9,38 +9,25 @@ $prefixCls: $prefixCls-confirm;
 
   &-footer {
     display: flex;
-    width: 100%;
 
     &-button {
       flex: 1;
       height: r(50);
       line-height: r(50);
       font-size: r(18);
-      position: relative;
-      @include onepx(top);
       @include button-base();
-      @include button-theme(
-        #fff,
-        #fff,
-        $button-default-color,
-        rgba(#ddd, .5),
-        rgba(#ddd, .5),
-        $button-default-color--active
-      );
+      @include onepx(top);
+
+      &:active {
+        background-color: rgba(#ddd, 0.5);
+      }
 
       &:not(:first-of-type) {
         @include onepx(left top);
       }
 
       &-ok {
-        @include button-theme(
-          #fff,
-          #fff,
-          $theme-primary,
-          rgba(#ddd, .5),
-          rgba(#ddd, .5),
-          $theme-primary
-        );
+        color: $theme-primary;
       }
     }
   }

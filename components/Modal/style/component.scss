@@ -12,7 +12,7 @@ $prefixCls: $prefixCls-modal;
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overflow: auto;
-  z-index: $zIndex-modal;
+  z-index: $zindex-modal;
 
   &.shape-radius {
     .#{$prefixCls}-dialog {
@@ -31,7 +31,7 @@ $prefixCls: $prefixCls-modal;
     background: #fff;
     box-shadow: 0 r(7) r(21) rgba(0, 0, 0, .2);
     overflow: hidden;
-    z-index: $zIndex-modal + 1;
+    z-index: $zindex-modal + 1;
   }
 
   &-header {

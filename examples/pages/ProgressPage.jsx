@@ -62,7 +62,6 @@ class Page extends Component {
                   dataSource={[
                     { value: 'default', label: 'default' },
                     { value: 'primary', label: 'primary' },
-                    { value: 'info', label: 'info' },
                     { value: 'warning', label: 'warning' },
                     { value: 'error', label: 'error' },
                   ]}

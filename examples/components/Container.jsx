@@ -7,7 +7,7 @@ class Container extends Component {
   componentDidMount() {
     if (this.props.className !== 'index-page') return;
 
-    const scrollTop = window.localStorage[this.props.className];
+    const scrollTop = window.sessionStorage[this.props.className];
     if (scrollTop) {
       this.container.scrollTop = scrollTop;
     }
@@ -17,7 +17,7 @@ class Container extends Component {
     if (this.props.className !== 'index-page') return;
 
     const scrollTop = this.container.scrollTop;
-    window.localStorage[this.props.className] = scrollTop;
+    window.sessionStorage[this.props.className] = scrollTop;
   }
 
   render() {

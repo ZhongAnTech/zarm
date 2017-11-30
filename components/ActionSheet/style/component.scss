@@ -10,7 +10,6 @@ $prefixCls: $prefixCls-actionsheet;
     .#{$prefixCls} {
       &-actions,
       &-cancel {
-        overflow: hidden;
         border-radius: $radius-md;
       }
     }
@@ -18,7 +17,8 @@ $prefixCls: $prefixCls-actionsheet;
 
   &-actions,
   &-cancel {
-    background: #fff;
+    overflow: hidden;
+    background-color: $color-text-inverse;
   }
 
   &-cancel {
@@ -31,38 +31,29 @@ $prefixCls: $prefixCls-actionsheet;
     line-height: r(50);
     font-size: r(16);
     @include button-base();
-    @include button-theme(
-      #fff,
-      #fff,
-      $button-default-color,
-      rgba(#ddd, .5),
-      rgba(#ddd, .5),
-      $button-default-color--active
-    );
+
+    &:active {
+      background-color: rgba(#ddd, 0.5);
+    }
 
     &:not(:first-of-type) {
-      position: relative;
       @include onepx(top);
     }
 
-    &.theme-default {
-      @include actionsheet-theme($theme-default);
-    }
-
     &.theme-primary {
-      @include actionsheet-theme($theme-primary);
+      color: $theme-primary;
     }
 
     &.theme-success {
-      @include actionsheet-theme($theme-success);
+      color: $theme-success;
     }
 
     &.theme-warning {
-      @include actionsheet-theme($theme-warning);
+      color: $theme-warning;
     }
 
     &.theme-error {
-      @include actionsheet-theme($theme-error);
+      color: $theme-error;
     }
   }
 }

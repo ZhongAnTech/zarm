@@ -7,7 +7,7 @@ $prefixCls: $prefixCls-mask;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .4);
-  z-index: $zIndex-mask;
+  z-index: $zindex-mask;
 
   &.light {
     background-color: rgba(255, 255, 255, .3);

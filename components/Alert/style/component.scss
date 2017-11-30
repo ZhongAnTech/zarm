@@ -9,24 +9,22 @@ $prefixCls: $prefixCls-alert;
 
   &-footer {
     display: flex;
-    width: 100%;
 
     &-button {
       flex: 1;
       height: r(50);
       line-height: r(50);
       font-size: r(18);
-      position: relative;
-      @include onepx(top);
+      flex: 1;
+      height: r(50);
+      line-height: r(50);
+      font-size: r(18);
       @include button-base();
-      @include button-theme(
-        #fff,
-        #fff,
-        $button-default-color,
-        rgba(#ddd, .5),
-        rgba(#ddd, .5),
-        $button-default-color--active
-      );
+      @include onepx(top);
+
+      &:active {
+        background-color: rgba(#ddd, 0.5);
+      }
     }
   }
 }

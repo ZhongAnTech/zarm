@@ -3,19 +3,19 @@
 $prefixCls: $prefixCls-message;
 
 $message-default-color: $theme-default;
-$message-default-bg: $theme-default-light;
+$message-default-bg: rgba($theme-default, .1);
 
 $message-primary-color: $theme-primary;
-$message-primary-bg: $theme-primary-light;
+$message-primary-bg: rgba($theme-primary, .1);
 
 $message-success-color: $theme-success;
-$message-success-bg: $theme-success-light;
+$message-success-bg: rgba($theme-success, .1);
 
 $message-warning-color: $theme-warning;
-$message-warning-bg: $theme-warning-light;
+$message-warning-bg: rgba($theme-warning, .1);
 
 $message-error-color: $theme-error;
-$message-error-bg: $theme-error-light;
+$message-error-bg: rgba($theme-error, .1);
 
 .#{$prefixCls} {
   display: flex;

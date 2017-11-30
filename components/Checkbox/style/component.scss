@@ -24,7 +24,7 @@ $prefixCls: $prefixCls-checkbox;
   }
 
   &-text {
-    color: #333;
+    color: $color-text;
   }
 
   &-inner + &-text {

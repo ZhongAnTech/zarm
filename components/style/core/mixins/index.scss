@@ -8,17 +8,30 @@
     left: 0;
     top: 0;
     border-width: 0;
-    border-radius: $border-radius;
+    @if ($border-radius != 0) {
+      border-radius: $border-radius;
+    }
     @each $position in $positions {
       border-#{$position}: 1px solid $border-color;
     }
 
-    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
       width: 200%;
       height: 200%;
-      transform: scale(0.5, 0.5);
+      transform: scale(0.5);
       transform-origin: 0 0;
-      border-radius: $border-radius * 2;
+      @if ($border-radius != 0) {
+        border-radius: $border-radius * 2;
+      }
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+      width: 300%;
+      height: 300%;
+      transform: scale(0.33);
+      @if ($border-radius != 0) {
+        border-radius: $border-radius * 3;
+      }
     }
   }
 }
