@@ -4,7 +4,7 @@
 $prefixCls: $prefixCls-actionsheet;
 
 .#{$prefixCls} {
-  margin: 0 r(10) r(10) r(10);
+  margin: $actionsheet-margin;
 
   &.shape-radius {
     .#{$prefixCls} {
@@ -25,15 +25,15 @@ $prefixCls: $prefixCls-actionsheet;
     margin-top: r(7);
   }
 
-  &-btn {
+  &-item {
     display: block;
-    height: r(50);
-    line-height: r(50);
-    font-size: r(16);
+    height: $actionsheet-item-height;
+    line-height: $actionsheet-item-height;
+    font-size: $actionsheet-item-font-size;
     @include button-base();
 
     &:active {
-      background-color: rgba(#ddd, 0.5);
+      background-color: $background-active;
     }
 
     &:not(:first-of-type) {

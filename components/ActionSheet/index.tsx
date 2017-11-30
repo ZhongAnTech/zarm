@@ -12,7 +12,6 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-actionsheet',
-    shape: 'radius',
     visible: false,
     actions: [],
     cancelText: '取消',
@@ -20,7 +19,7 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
 
   renderActions = (action, index) => {
     const { prefixCls } = this.props;
-    const actionCls = classnames(`${prefixCls}-btn`, {
+    const actionCls = classnames(`${prefixCls}-item`, {
       [`theme-${action.theme}`]: !!action.theme,
     });
     return <a key={+index} className={actionCls} onClick={action.onClick}>{action.text}</a>;
@@ -30,7 +29,7 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
     const { prefixCls, onCancel, cancelText } = this.props;
     return (typeof onCancel === 'function') && (
       <div className={`${prefixCls}-cancel`}>
-        <a className={`${prefixCls}-btn`} onClick={onCancel}>{cancelText}</a>
+        <a className={`${prefixCls}-item`} onClick={onCancel}>{cancelText}</a>
       </div>
     );
   }
