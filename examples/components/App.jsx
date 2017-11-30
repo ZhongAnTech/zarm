@@ -30,6 +30,7 @@ class App extends Component {
               <Route path="/checkbox" component={AsyncComponent(() => import('../pages/CheckboxPage'))} />
               <Route path="/input" component={AsyncComponent(() => import('../pages/InputPage'))} />
               <Route path="/picker" component={AsyncComponent(() => import('../pages/PickerPage'))} />
+              <Route path="/datePicker" component={AsyncComponent(() => import('../pages/DatePickerPage'))} />
               <Route path="/radio" component={AsyncComponent(() => import('../pages/RadioPage'))} />
               <Route path="/slider" component={AsyncComponent(() => import('../pages/SliderPage'))} />
               <Route path="/stepper" component={AsyncComponent(() => import('../pages/StepperPage'))} />

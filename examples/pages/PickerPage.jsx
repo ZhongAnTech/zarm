@@ -275,7 +275,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header title="PickerView" />
+            <Panel.Header title="平铺选择器" />
             <Panel.Body>
               <PickerView
                 dataSource={[

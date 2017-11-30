@@ -24,6 +24,7 @@ class Page extends PureComponent {
               <Cell hasArrow title="复选框 Checkbox" onClick={() => history.push('/checkbox')} />
               <Cell hasArrow title="文本框 Input" onClick={() => history.push('/input')} />
               <Cell hasArrow title="选择器 Picker" onClick={() => history.push('/picker')} />
+              <Cell hasArrow title="日期选择器 DatePicker" onClick={() => history.push('/datePicker')} />
               <Cell hasArrow title="单选框 Radio" onClick={() => history.push('/radio')} />
               <Cell hasArrow title="滑动输入条 Slider" onClick={() => history.push('/slider')} />
               <Cell hasArrow title="步进器 Stepper" onClick={() => history.push('/stepper')} />
