@@ -1,6 +1,6 @@
 export type Action = {
   text: string,
-  theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error',
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error',
   className?: string,
   onClick?: () => void,
 };

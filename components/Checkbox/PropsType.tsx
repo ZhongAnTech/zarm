@@ -1,5 +1,5 @@
 export interface BaseCheckboxProps {
-  theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
   type?: 'button' | 'cell';
   disabled?: boolean;
@@ -12,7 +12,7 @@ export interface BaseCheckboxProps {
 }
 
 export interface BaseCheckboxGroupProps {
-  theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'round';
   type?: 'button' | 'cell';
   disabled?: boolean;
