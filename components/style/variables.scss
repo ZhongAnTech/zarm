@@ -13,6 +13,9 @@ $color-text-disabled: #bbb;              // 失效
 $color-text-caption: #888;               // 辅助描述
 $color-link: $theme-primary;               // 链接
 
+// 背景色
+$background-active: #ddd;
+
 // 边框色
 $border-color: #ddd;
 
@@ -79,6 +82,12 @@ $prefixCls-tab: za-tab;
 $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
 $prefixCls-uploader: za-uploader;
+
+
+// ActionSheet
+$actionsheet-margin: 0;
+$actionsheet-item-height: r(50);
+$actionsheet-item-font-size: r(16);
 
 // Button
 $button-height-sm: r(27);
