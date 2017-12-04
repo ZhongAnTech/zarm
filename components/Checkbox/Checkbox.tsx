@@ -25,7 +25,6 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-checkbox',
-    theme: 'primary',
     disabled: false,
   };
 
@@ -58,11 +57,10 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, type, value, block, disabled, id, children } = this.props;
+    const { prefixCls, className, shape, type, value, block, disabled, id, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
       [`shape-${shape}`]: !!shape,
       checked,
       disabled,
@@ -97,7 +95,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
       return (
         <Button
           className={cls}
-          theme={theme}
+          theme="primary"
           shape={shape}
           size="sm"
           block={block}

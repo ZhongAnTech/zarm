@@ -8,7 +8,6 @@ $prefixCls: $prefixCls-swipe;
     display: inline-block;
     width: 100%;
     height: 100%;
-    font-size: r(14);
   }
 
   &-pagination {
@@ -23,9 +22,9 @@ $prefixCls: $prefixCls-swipe;
       font-size: 0;
 
       li {
-        width: r(8);
-        height: r(8);
-        border-radius: r(4);
+        width: $swipe-pagination-dot-size;
+        height: $swipe-pagination-dot-size;
+        border-radius: $radius-circle;
         background: #ccc;
         cursor: pointer;
         margin: r(3) 0 0 r(3);

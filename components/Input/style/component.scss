@@ -23,29 +23,13 @@ $prefixCls: $prefixCls-input;
     }
 
     &::-webkit-input-placeholder {
-      color: $placeholder-color;
-    }
-
-    &:focus {
-      border-color: #57c5f7;
-      outline: 0;
-    }
-
-    &:hover {
-      border-color: #57c5f7;
+      color: $color-text-placeholder;
     }
 
     &.disabled,
     &:disabled {
       cursor: not-allowed;
-      opacity: $disabled-opacity;
-      /* background-color: #f3f5f7; */
-
-      &:focus,
-      &.focus,
-      &:hover {
-        border-color: #ccc;
-      }
+      opacity: $opacity-disabled;
     }
   }
 
@@ -75,7 +59,6 @@ $prefixCls: $prefixCls-input;
   }
 
   &-number {
-    height: r(24);
     line-height: r(24);
 
     &-picker {

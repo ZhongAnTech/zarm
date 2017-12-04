@@ -7,7 +7,7 @@ $prefixCls: $prefixCls-progress;
 
   &-inner {
     flex: 1;
-    background-color: #e6e6e6;
+    background-color: $spinner-path-color;
   }
 
   &-text {
@@ -42,7 +42,7 @@ $prefixCls: $prefixCls-progress;
           height: 100%;
         }
       }
-
+  
       &-text {
         display: block;
         position: absolute;
@@ -58,15 +58,15 @@ $prefixCls: $prefixCls-progress;
     }
   }
 
-  &.theme-default {
+  &.theme-primary {
     .#{$prefixCls}-bg {
-      background-color: $theme-default;
+      background-color: $theme-primary;
     }
   }
 
-  &.theme-primary {
-   .#{$prefixCls}-bg {
-      background-color: $theme-primary;
+  &.theme-success {
+    .#{$prefixCls}-bg {
+      background-color: $theme-success;
     }
   }
 

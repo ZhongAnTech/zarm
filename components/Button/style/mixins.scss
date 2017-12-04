@@ -1,5 +1,5 @@
 // 主题
-@mixin button-theme($background, $border, $color) {
+@mixin button-theme($background, $color) {
   background-color: $background;
   color: $color;
 
@@ -14,8 +14,8 @@
 
   &.disabled,
   &:disabled {
-    opacity: $disabled-opacity;
-    color: rgba($color, $disabled-opacity);
+    opacity: $opacity-disabled;
+    color: rgba($color, $opacity-disabled);
     cursor: not-allowed;
 
     &:active,
@@ -27,18 +27,6 @@
       background-color: $background;
     }
   }
-
-  &.shape-radius {
-    @include button-shape($border, $radius-md);
-  }
-
-  &.shape-round {
-    @include button-shape($border, $radius-round);
-  }
-
-  &.shape-circle {
-    @include button-shape($border, $radius-circle);
-  }
 }
 
 // 大小
@@ -46,7 +34,7 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height;
+  line-height: $height - 2;
 
   &.shape-circle {
     width: $height;
@@ -64,7 +52,19 @@
 
 // 幽灵按钮
 @mixin button-bordered($border, $color) {
-  @include button-shape($border-color: $border);
+  @include button-shape($border);
+
+  &.shape-radius {
+    @include button-shape($border, $radius-md);
+  }
+
+  &.shape-round {
+    @include button-shape($border, $radius-round);
+  }
+
+  &.shape-circle {
+    @include button-shape($border, $radius-circle);
+  }
 
   &.bordered {
     background-color: transparent;
@@ -72,13 +72,12 @@
 
     &:active,
     &.active {
-      opacity: .6;
+      opacity: $button-bordered-active-opacity;
     }
 
     &.disabled,
     &:disabled {
-      opacity: $disabled-opacity;
-      // color: rgba($color, $disabled-opacity);
+      opacity: $opacity-disabled;
       cursor: not-allowed;
 
       &:active,
@@ -120,7 +119,7 @@
   &.disabled,
   &:disabled {
     cursor: not-allowed;
-    opacity: $disabled-opacity;
+    opacity: $opacity-disabled;
   }
 
   /* block Button */

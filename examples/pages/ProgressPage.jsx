@@ -60,8 +60,8 @@ class Page extends Component {
                 <Picker
                   value={this.state.theme}
                   dataSource={[
-                    { value: 'default', label: 'default' },
                     { value: 'primary', label: 'primary' },
+                    { value: 'success', label: 'success' },
                     { value: 'warning', label: 'warning' },
                     { value: 'error', label: 'error' },
                   ]}

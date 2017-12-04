@@ -12,18 +12,14 @@ $prefixCls: $prefixCls-alert;
 
     &-button {
       flex: 1;
-      height: r(50);
-      line-height: r(50);
-      font-size: r(18);
-      flex: 1;
-      height: r(50);
-      line-height: r(50);
-      font-size: r(18);
+      height: $alert-button-height;
+      line-height: $alert-button-height;
+      font-size: $alert-button-font-size;
       @include button-base();
       @include onepx(top);
 
       &:active {
-        background-color: rgba(#ddd, 0.5);
+        background-color: $background-active;
       }
     }
   }

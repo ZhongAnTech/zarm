@@ -3,12 +3,6 @@
 $prefixCls: $prefixCls-tab;
 
 .#{$prefixCls} {
-  @include tab-theme($theme-primary);
-
-  &.theme-default {
-    @include tab-theme($theme-default);
-  }
-
   &.theme-primary {
     @include tab-theme($theme-primary);
   }
@@ -33,16 +27,16 @@ $prefixCls: $prefixCls-tab;
       list-style: none;
       margin: 0;
       padding: 0;
-      height: r(45);
-      line-height: r(45);
+      height: $tab-height;
+      line-height: $tab-height;
       @include onepx(bottom);
     }
 
     &-item {
       flex: 1;
       text-align: center;
-      font-size: r(15);
-      color: #000;
+      color: $color-text;
+      font-size: $tab-item-font-size;
       cursor: pointer;
 
       /*
@@ -52,7 +46,7 @@ $prefixCls: $prefixCls-tab;
 
           &:after {
             display: inline-block;
-            content: '';
+            content: ' ';
             position: absolute;
             top: 50%;
             left: 0;
@@ -70,7 +64,7 @@ $prefixCls: $prefixCls-tab;
       }
 
       &.disabled {
-        color: $disabled-color;
+        color: $color-text-disabled;
         cursor: not-allowed;
       }
     }
@@ -80,7 +74,7 @@ $prefixCls: $prefixCls-tab;
     position: absolute;
     left: 0;
     bottom: 0;
-    height: r(2);
+    height: $tab-line-height;
     transition: left .3s ease-out;
 
     &-inner {
@@ -96,7 +90,6 @@ $prefixCls: $prefixCls-tab;
 
     &-item {
       display: none;
-      font-size: r(14);
 
       &.active {
         display: block;

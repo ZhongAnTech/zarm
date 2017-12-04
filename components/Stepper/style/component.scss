@@ -9,7 +9,7 @@ $prefixCls: $prefixCls-stepper;
 
   &.disabled {
     .#{$prefixCls}-body {
-      opacity: $disabled-opacity;
+      opacity: $opacity-disabled;
       cursor: not-allowed;
     }
   }
@@ -24,7 +24,7 @@ $prefixCls: $prefixCls-stepper;
   &.shape-circle {
     .#{$prefixCls}-sub,
     .#{$prefixCls}-plus {
-      border-radius: 50%;
+      border-radius: $radius-circle;
     }
   }
 
@@ -50,27 +50,23 @@ $prefixCls: $prefixCls-stepper;
     align-items: center;
     justify-content: center;
     position: relative;
-    width: r(27);
-    height: r(27);
-    /*
-      line-height: r(27);
-      text-align: center;
-    */
-    font-size: r(18);
+    width: $stepper-button-width;
+    height: $stepper-height;
+    font-size: $stepper-button-font-size;
     font-weight: bold;
     cursor: pointer;
   }
 
-  &-body {
+  &-input {
     position: relative;
-    width: r(40);
+    width: $stepper-input-width;
+    height: $stepper-height;
     margin: 0 r(10);
     padding: 0;
-    height: r(27);
-    border: 0;
-    border-radius: 0;
+    font-size: $stepper-input-font-size;
     color: $color-text;
     text-align: center;
+    border: 0;
     outline: 0;
     -webkit-appearance: none;
   }

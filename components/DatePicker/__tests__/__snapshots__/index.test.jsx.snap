@@ -1779,12 +1779,12 @@ exports[`DatePicker DatePicker month 1`] = `
                         10月
                       </div>
                       <div
-                        class="za-picker-column-item za-picker-column-item-selected"
+                        class="za-picker-column-item"
                       >
                         11月
                       </div>
                       <div
-                        class="za-picker-column-item"
+                        class="za-picker-column-item za-picker-column-item-selected"
                       >
                         12月
                       </div>
