@@ -5,12 +5,12 @@ $prefixCls: $prefixCls-cell;
 .#{$prefixCls} {
   position: relative;
   overflow: hidden;
-  background: #fff;
-  @include cell-theme(#999);
+  background-color: $cell-background;
+  @include cell-theme($cell-description-color);
   @include onepx(top);
 
   &:after {
-    left: r(15);
+    left: $cell-line-left;
   }
 
   &.theme-primary {
@@ -31,7 +31,7 @@ $prefixCls: $prefixCls-cell;
 
   &.has-icon {
     &:after {
-      left: r(59);
+      left: $cell-line-hasicon-left;
     }
   }
 
@@ -41,7 +41,7 @@ $prefixCls: $prefixCls-cell;
 
     .#{$prefixCls}-inner {
       &:active {
-        background-color: #ddd;
+        background-color: $background-active;
       }
     }
 
@@ -53,16 +53,16 @@ $prefixCls: $prefixCls-cell;
   &.disabled {
     .#{$prefixCls}-body,
     .#{$prefixCls}-footer {
-      color: $disabled-color;
+      color: $color-text-disabled;
     }
   }
 
   &-inner {
     display: flex;
     align-items: center;
-    padding: 0 r(15);
-    font-size: r(15);
-    min-height: r(45);
+    padding: 0 $padding-h-lg;
+    font-size: $cell-title-font-size;
+    min-height: $cell-height;
 
     a,
     a:hover {
@@ -79,7 +79,7 @@ $prefixCls: $prefixCls-cell;
     display: flex;
     justify-content: center;
     text-align: right;
-    font-size: r(14);
+    font-size: $cell-description-font-size;
   }
 
   &-arrow {
@@ -97,10 +97,10 @@ $prefixCls: $prefixCls-cell;
   }
 
   &-icon {
-    width: r(28);
-    height: r(28);
+    width: $cell-icon-width;
+    height: $cell-icon-height;
     text-align: center;
-    margin-right: r(15);
+    margin-right: $padding-h-lg;
 
     img {
       max-width: 100%;
@@ -109,10 +109,10 @@ $prefixCls: $prefixCls-cell;
   }
 
   &-title {
-    width: r(100);
+    width: $cell-label-width;
     padding: r(12) 0;
     overflow: hidden;
-    color: #333;
+    color: $cell-title-color;
   }
 
   &-content {

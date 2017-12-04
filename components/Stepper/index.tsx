@@ -138,7 +138,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       <span className={cls}>
         <span className={subCls} onClick={this.onSubClick}><Icon type="minus" /></span>
         <input
-          className={`${prefixCls}-body`}
+          className={`${prefixCls}-input`}
           type="tel"
           value={value}
           onChange={e => this.onInputChange(e.target.value)}

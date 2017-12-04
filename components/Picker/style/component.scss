@@ -15,11 +15,11 @@ $picker-stackitem-height: r(35);
   }
 
   &-placeholder {
-    color: $placeholder-color;
+    color: $color-text-placeholder;
   }
 
   &-disabled {
-    color: $disabled-color;
+    color: $color-text-disabled;
   }
 
   &-wrapper {

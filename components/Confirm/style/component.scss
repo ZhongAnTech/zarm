@@ -12,14 +12,14 @@ $prefixCls: $prefixCls-confirm;
 
     &-button {
       flex: 1;
-      height: r(50);
-      line-height: r(50);
-      font-size: r(18);
+      height: $confirm-button-height;
+      line-height: $confirm-button-height;
+      font-size: $confirm-button-font-size;
       @include button-base();
       @include onepx(top);
 
       &:active {
-        background-color: rgba(#ddd, 0.5);
+        background-color: $background-active;
       }
 
       &:not(:first-of-type) {

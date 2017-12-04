@@ -7,6 +7,6 @@ export default interface PropsType {
   animationDuration?: number;
   onClose?: () => void;
   mask?: boolean;
-  maskType?: 'transparent' | 'light' | 'normal' | 'dark';
+  maskType?: 'transparent' | 'normal';
   onMaskClick?: () => void;
 }

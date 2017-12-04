@@ -28,8 +28,8 @@ $prefixCls: $prefixCls-modal;
   &-dialog {
     position: relative;
     margin: r(60) auto;
-    background: #fff;
-    box-shadow: 0 r(7) r(21) rgba(0, 0, 0, .2);
+    background-color: $modal-background;
+    box-shadow: 0 r(7) r(21) $color-shadow;
     overflow: hidden;
     z-index: $zindex-modal + 1;
   }
@@ -40,7 +40,7 @@ $prefixCls: $prefixCls-modal;
     text-align: center;
 
     &-title {
-      font-size: r(18);
+      font-size: $modal-title-font-size;
       line-height: 1;
       color: #333;
     }
@@ -65,7 +65,7 @@ $prefixCls: $prefixCls-modal;
 
   &-body {
     font-size: r(15);
-    color: #999;
+    color: $color-text-caption;
     padding: r(15);
     overflow: auto;
     user-select: auto;

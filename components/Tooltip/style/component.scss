@@ -5,28 +5,28 @@ $prefixCls: $prefixCls-tooltip;
   justify-content: center;
   position: absolute;
   transform: translateY(-100%);
-  padding-bottom: r(5);
+  padding-bottom: $tooltip-arrow-size;
 
   &-inner {
     position: relative;
-    background-color: rgba(0, 0, 0, .7);
-    padding: r(6);
+    background-color: rgba(0, 0, 0, $opacity-tooltip);
+    padding: $padding-v-md $padding-h-md;
     border-radius: $radius-md;
-    font-size: r(12);
-    color: #fff;
-    margin-bottom: r(5);
+    font-size: $tooltip-font-size;
+    color: $tooltip-color;
+    margin-bottom: $tooltip-arrow-size;
 
     &:after {
       content: '';
       position: absolute;
       left: 50%;
-      bottom: r(-5);
+      bottom: -$tooltip-arrow-size;
       width: 0;
       height: 0;
       transform: translateX(-50%);
-      border-width: r(5) r(5) 0;
+      border-width: $tooltip-arrow-size $tooltip-arrow-size 0;
       border-color: transparent;
-      border-top-color: rgba(0, 0, 0, .7);
+      border-top-color: rgba(0, 0, 0, $opacity-tooltip);
       border-style: solid;
     }
   }

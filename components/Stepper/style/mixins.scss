@@ -10,8 +10,8 @@
       }
 
       &.disabled {
-        color: $disabled-color;
-        border-color: $disabled-background;
+        color: $color-text-disabled;
+        border-color: $background-disabled;
         cursor: not-allowed;
 
         &:active {

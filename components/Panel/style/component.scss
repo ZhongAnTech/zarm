@@ -4,21 +4,22 @@ $prefixCls: $prefixCls-panel;
   &-header {
     display: flex;
     padding: r(25) r(15) r(7) r(15);
-    font-size: r(14);
-    color: #999;
+    color: $panel-header-color;
+    font-size: $panel-header-font-size;
   }
 
   &-footer {
     display: flex;
     padding: r(7) r(15);
     margin-bottom: r(10);
-    font-size: r(12);
-    color: #999;
+    color: $panel-footer-color;
+    font-size: $panel-footer-font-size;
   }
 
   &-body {
     position: relative;
     background: #fff;
+    color: $color-text;
     @include onepx(top bottom);
   }
 

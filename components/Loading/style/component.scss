@@ -25,19 +25,8 @@ $prefixCls: $prefixCls-loading;
     width: r(80);
     height: r(80);
     padding: r(20) r(15);
-    border-radius: r(5);
-    background: rgba(0, 0, 0, 0.7);
+    border-radius: $radius-md;
+    background: rgba(0, 0, 0, $opacity-toast);
     color: #fff;
-    /*
-    font-size: r(15);
-
-    p {
-      margin: 0;
-      padding: 0;
-      font-size: r(12);
-      line-height: 1.5;
-      overflow: hidden;
-    }
-    */
   }
 }

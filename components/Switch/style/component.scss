@@ -3,38 +3,36 @@
 $prefixCls: $prefixCls-switch;
 
 .#{$prefixCls} {
-  @include switch-theme($theme-default);
-
   &-input {
     position: relative;
-    width: r(51);
-    height: r(31);
-    border: r(1) solid #e5e5e5;
-    border-radius: r(15.5);
-    background-color: #e5e5e5;
+    width: $switch-width;
+    height: $switch-height;
+    border: 1px solid $switch-border-color;
+    border-radius: $radius-round;
+    background-color: $switch-border-color;
     vertical-align: middle;
-    outline: 0;
     transition: background-color 0.1s, border 0.1s;
+    outline: 0;
     -webkit-appearance: none;
 
     &:before,
     &:after {
-      content: '';
+      content: ' ';
       position: absolute;
       top: 0;
       left: 0;
-      height: r(29);
-      border-radius: r(14.5);
+      height: $switch-height - 2;
+      border-radius: $radius-round;
     }
 
     &:before {
-      width: r(49);
-      background-color: #fdfdfd;
+      width: $switch-width - 2;
+      background-color: $switch-background;
       transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
     }
 
     &:after {
-      width: r(29);
+      width: $switch-height - 2;
       background-color: #fff;
       box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
       transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
@@ -46,14 +44,14 @@ $prefixCls: $prefixCls-switch;
       }
 
       &:after {
-        transform: translateX(r(20));
+        transform: translateX($switch-width - $switch-height);
       }
     }
   }
 
   &.disabled {
     cursor: not-allowed;
-    opacity: $disabled-opacity;
+    opacity: $opacity-disabled;
   }
 
   &.theme-primary {
