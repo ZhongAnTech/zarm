@@ -4,18 +4,21 @@
 ## v2.0.0
 - Feature
   - 新增对typescript的支持。
-  - 支持组件按需加载（配合使用`babel-plugin-import`插件）
+  - 新增支持组件的 按需加载（可配合`babel-plugin-import`插件实现）
   - 新增`Toast`单例模式的应用。
+  - 新增组件：`Keyboard`、`KeyboardPicker`、`Tooltip`。
 
 - Break Change
-  - 调整样式引入方式，具体参考README使用帮助。
+  - 调整主题样式变量名及引入方式，具体参考README使用帮助。
   - 删除`info`主题色。
+  - 优化`Button`组件active状态的交互
   - 调整`Picker`组件的使用方式。
 
 - Bug Fix
   - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[5147573](https://github.com/ZhonganTechENG/zarm/commit/51475737dd8a17d499492c093568a647bbd28f2a)）
   - 修复组件`Pull`不兼容自定义scroll容器的bug。（[a9084cc](https://github.com/ZhonganTechENG/zarm/commit/a9084cc0eba7b92cff7eb712e77ee43bf597f887)）
   - 修复组件`Swipe`手动拖拽时，同时触发了滚动条滚动后，不能执行touchend事件里动画的bug。（[62a96d8](https://github.com/ZhonganTechENG/zarm/commit/62a96d8089f9d0f015d642f24077aaef585aa278)）
+
 
 ## v1.1.1
 - Bug Fix
