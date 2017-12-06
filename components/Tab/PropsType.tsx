@@ -1,5 +1,5 @@
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+  theme?: 'primary' | 'success' | 'warning' | 'error';
   lineWidth?: string | number;
   disabled?: boolean;
   canSwipe?: boolean;

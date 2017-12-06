@@ -5,7 +5,7 @@ $prefixCls: $prefixCls-uploader;
   display: inline-block;
 
   &.disabled {
-    opacity: $disabled-opacity;
+    opacity: $opacity-disabled;
   }
 
   &-trigger {

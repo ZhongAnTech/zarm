@@ -2,13 +2,13 @@ $prefixCls: $prefixCls-pull;
 
 .#{$prefixCls} {
   overflow: hidden;
-  min-height: r(50);
+  min-height: $pull-control-height;
   // overflow-x: hidden;
   // overflow-y: scroll;
   // height: r(300);
 
   &-content {
-    transform: translate3d(0, r(50), 0);
+    transform: translate3d(0, $pull-control-height, 0);
   }
 
   &-refresh,
@@ -21,15 +21,15 @@ $prefixCls: $prefixCls-pull;
   }
 
   &-refresh {
-    margin-top: r(-50);
-    height: r(50);
+    margin-top: -$pull-control-height;
+    height: $pull-control-height;
   }
 
   &-load {
     height: 0;
 
     &-show {
-      height: r(50);
+      height: $pull-control-height;
     }
   }
 
@@ -37,9 +37,9 @@ $prefixCls: $prefixCls-pull;
     display: flex;
     align-items: center;
     padding: r(10) 0;
-    height: r(50);
-    color: #999;
-    font-size: r(13);
+    height: $pull-control-height;
+    color: $color-text-caption;
+    font-size: $pull-control-font-size;
 
     .#{$prefixCls-icon} {
       font-size: r(22);

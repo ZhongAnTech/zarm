@@ -6,40 +6,30 @@ $prefixCls: $prefixCls-keyboard;
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  color: $theme-default;
+  color: $color-text;
   user-select: none;
 
   &-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: r(28);
+    font-size: $keyboard-item-font-size;
     position: relative;
     @include button-base();
-    @include button-theme(
-      #fff,
-      $button-default-border,
-      $button-default-color,
-      rgba(#ddd, .5),
-      rgba(#ddd, .5),
-      $button-default-color--active
-    );
+    @include button-theme(#fff, $color-text);
+
+    &:active {
+      color: $color-text;
+    }
 
     &-ok {
       font-size: r(21);
-      @include button-theme(
-        $button-primary-background,
-        $button-primary-border,
-        $button-primary-color,
-        $button-primary-background--active,
-        $button-primary-border--active,
-        $button-primary-color--active
-      );
+      @include button-theme($theme-primary, $color-text-inverse);
     }
 
     &-disabled,
     &-disabled:active {
-      background-color: rgba(#ddd, .5);
+      background-color: $background-disabled;
     }
   }
 
@@ -50,7 +40,7 @@ $prefixCls: $prefixCls-keyboard;
 
     .#{$prefixCls}-item {
       width: 33.333333%;
-      height: r(50);
+      height: $keyboard-item-height;
       @include onepx(top left);
 
       &:first-of-type {
@@ -74,6 +64,6 @@ $prefixCls: $prefixCls-keyboard;
   }
 
   .#{$prefixCls-icon} {
-    font-size: r(21);
+    font-size: $keyboard-icon-font-size;
   }
 }

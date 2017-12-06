@@ -9,21 +9,12 @@ $prefixCls: $prefixCls-icon;
 .#{$prefixCls} {
   display: inline-block;
   font-family: "zarmicon" !important;
-  font-size: r(16);
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &.theme-default {
-    color: $theme-default;
-  }
-
   &.theme-primary {
     color: $theme-primary;
-  }
-
-  &.theme-info {
-    color: $theme-info;
   }
 
   &.theme-success {

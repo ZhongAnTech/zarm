@@ -2,35 +2,18 @@
 
 $prefixCls: $prefixCls-message;
 
-$message-default-color: $theme-default;
-$message-default-bg: $theme-default-light;
-
-$message-primary-color: $theme-primary;
-$message-primary-bg: $theme-primary-light;
-
-$message-info-color: $theme-info;
-$message-info-bg: $theme-info-light;
-
-$message-success-color: $theme-success;
-$message-success-bg: $theme-success-light;
-
-$message-warning-color: $theme-warning;
-$message-warning-bg: $theme-warning-light;
-
-$message-error-color: $theme-error;
-$message-error-bg: $theme-error-light;
-
 .#{$prefixCls} {
   display: flex;
   position: relative;
-  padding: r(6) r(8);
-  min-height: r(30);
-  font-size: r(12);
-  @include message-theme($message-default-color, $message-default-bg);
+  padding: $padding-v-md $padding-h-md;
+  min-height: $message-min-height;
+  font-size: $message-font-size;
+  @include message-theme($theme-default);
 
   &-icon {
     margin-right: r(5);
     margin-top: r(1);
+    font-size: r(16);
   }
 
   &-header,
@@ -53,28 +36,24 @@ $message-error-bg: $theme-error-light;
   }
 
   &.theme-primary {
-    @include message-theme($message-primary-color, $message-primary-bg);
-  }
-
-  &.theme-info {
-    @include message-theme($message-info-color, $message-info-bg);
+    @include message-theme($theme-primary);
   }
 
   &.theme-success {
-    @include message-theme($message-success-color, $message-success-bg);
+    @include message-theme($theme-success);
   }
 
   &.theme-warning {
-    @include message-theme($message-warning-color, $message-warning-bg);
+    @include message-theme($theme-warning);
   }
 
   &.theme-error {
-    @include message-theme($message-error-color, $message-error-bg);
+    @include message-theme($theme-error);
   }
 
   &.size-lg {
-    min-height: r(42);
-    padding: r(9) r(15);
+    min-height: $message-min-height-lg;
+    padding: $padding-v-lg $padding-h-lg;
 
     .#{$prefixCls}-icon {
       margin-right: r(10);
@@ -82,7 +61,7 @@ $message-error-bg: $theme-error-light;
     }
 
     .#{$prefixCls}-body {
-      font-size: r(15);
+      font-size: $message-font-size-lg;
     }
   }
 }
