@@ -5,6 +5,10 @@ $prefixCls: $prefixCls-actionsheet;
 .#{$prefixCls} {
   margin: $actionsheet-margin;
 
+  &-spacing {
+    margin: 0 r(10) r(10);
+  }
+
   &.shape-radius {
     .#{$prefixCls} {
       &-actions,

@@ -13,6 +13,7 @@
   - 删除`info`主题色。
   - 优化`Button`组件active状态的交互
   - 调整`Picker`组件的使用方式。
+  - 调整`ActionSheet`组件的默认样式。
 
 - Bug Fix
   - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[5147573](https://github.com/ZhonganTechENG/zarm/commit/51475737dd8a17d499492c093568a647bbd28f2a)）
