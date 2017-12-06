@@ -18,3 +18,7 @@ export interface BaseModalHeaderProps {
 export interface BaseModalBodyProps {
   height?: string | number;
 }
+
+export interface BaseModalFooterProps {
+  block?: boolean;
+}

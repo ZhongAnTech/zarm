@@ -1,0 +1,23 @@
+@mixin stepper-theme($color, $activebg) {
+  .#{$prefixCls-stepper} {
+    &-sub,
+    &-plus {
+      color: $color;
+      border: 1px solid $color;
+
+      &:active {
+        background: $activebg;
+      }
+
+      &.disabled {
+        color: $disabled-color;
+        border-color: $disabled-background;
+        cursor: not-allowed;
+
+        &:active {
+          background: #fff;
+        }
+      }
+    }
+  }
+}

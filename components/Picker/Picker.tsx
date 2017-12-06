@@ -155,17 +155,16 @@ export default class Picker extends Component<PickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, cancelText, dataSource,
-      okText, title, valueMember = Picker.defaultProps.valueMember,
-      itemRender = Picker.defaultProps.itemRender } = this.props;
-    const { value } = this.state;
+    const { prefixCls, className, cancelText,
+      okText, title, ...others } = this.props;
+    const { visible, value } = this.state;
     const classes = classnames(`${prefixCls}-container`, className);
 
     return (
       <div className={`${prefixCls}`}>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
-            visible={this.state.visible}
+            visible={visible}
             onMaskClick={this.onMaskClick}
           >
             <div className={`${prefixCls}-wrapper`}>
@@ -178,12 +177,9 @@ export default class Picker extends Component<PickerProps, any> {
                 <div className={`${prefixCls}-mask-bottom`}>
                   <PickerView
                     prefixCls={prefixCls}
-                    dataSource={dataSource}
-                    value={value}
-                    cols={this.props.cols}
-                    itemRender={itemRender}
-                    valueMember={valueMember}
                     onValueChange={v => this.onValueChange(v)}
+                    {...others}
+                    value={value}
                   />
                 </div>
               </div>

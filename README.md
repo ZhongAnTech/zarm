@@ -6,7 +6,7 @@
   ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
   ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
 
-  众安科技移动端UI组件库，基于React。（Vue版本传送门：[zarm-vue](https://github.com/ZhonganTechENG/zarm-vue)）
+  众安科技移动端UI组件库，基于React。
 
 ## Install 安装
 
@@ -34,7 +34,7 @@ import 'zarm/dist/zarm.min.css';
 
 * 方法一（推荐）
 
-> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载sass文件
+> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载Sass文件
 
 ```js
   // .babelrc or babel-loader option
@@ -58,6 +58,27 @@ import { Button, Cell } from 'zarm';
 import Button from 'zarm/lib/Button';
 import 'zarm/lib/Button/style/index.scss';
 ```
+
+#### 定制主题
+
+通过覆盖Sass变量定义达到定制主题的效果
+
+```css
+@import "~zarm/lib/style/index.scss";  // 引入官方提供的Sass基础样式文件
+@import "your-theme-file.scss";  // 用于覆盖上面定义的变量
+@import "~zarm/lib/style/components.scss";  // 引入官方提供的组件样式文件
+```
+
+`your-theme-file.scss` 示例如下：
+
+```css
+$theme-primary: #108ee9;
+$theme-primary-light: lighten($theme-primary, 45%);
+$theme-primary-dark: darken($theme-primary, 10%);
+```
+
+> 注意：这种方式已经载入了所有组件的样式，不需要也无法和按需加载插件 `babel-plugin-import` 的 `style` 属性一起使用。
+
 
 ## Document 文档
 [中文](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/SUMMARY.md)

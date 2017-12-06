@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
@@ -112,18 +112,6 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     }
   }
 
-  onBtnClick = (e, btn) => {
-    e.preventDefault();
-    const onClick = btn.onClick;
-    if (onClick) {
-      onClick(e);
-    }
-
-    if (this.props.autoClose) {
-      this.close();
-    }
-  }
-
   onCloseSwipe = (e) => {
     if (!this.wrap) {
       return;
@@ -169,22 +157,21 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     this.setState({ offsetLeft, animationDuration });
   }
 
-  renderButton = (button, index, direction) => {
-    const { prefixCls } = this.props;
-    const { theme, className, text } = button;
-    const classes = classnames(`${prefixCls}-button`, className, {
-      [`theme-${theme}`]: true,
-    });
+  renderButton = (button, index) => {
+    return cloneElement(button, {
+      key: +index,
+      onClick: (e) => {
+        const onClick = button.props.onClick;
 
-    return (
-      <div
-        key={+index}
-        className={classes}
-        onClick={e => this.onBtnClick(e, button)}
-      >
-        <div className={`${prefixCls}-text`}>{text || `${direction}${index}`}</div>
-      </div>
-    );
+        if (onClick) {
+          onClick(e);
+        }
+
+        if (this.props.autoClose) {
+          this.close();
+        }
+      },
+    });
   }
 
   renderButtons = (buttons, direction) => {
@@ -196,12 +183,12 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
 
     return (
       <div className={`${prefixCls}-actions-${direction}`} ref={(el) => { this[direction] = el; }}>
-        {buttons.map((button, index) => this.renderButton(button, index, direction))}
+        {buttons.map(this.renderButton)}
       </div>
     );
   }
 
-  render(): any {
+  render() {
     const { prefixCls, className, left, right, children } = this.props;
     const { offsetLeft, animationDuration } = this.state;
     const cls = classnames(`${prefixCls}`, className);

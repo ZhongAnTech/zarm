@@ -19,7 +19,7 @@ class ToastPage extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     theme="error"
                     onClick={() => {
                       Toast.show('默认3秒自动关闭');
@@ -29,7 +29,7 @@ class ToastPage extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     theme="success"
                     onClick={() => {
                       Toast.show(
@@ -44,7 +44,7 @@ class ToastPage extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     onClick={() => {
                       Toast.show('指定10秒自动关闭', 10000);
                     }}>开启</Button>
@@ -59,7 +59,7 @@ class ToastPage extends Component {
               <Cell
                 description={
                   <Button
-                    size="xs"
+                    size="sm"
                     onClick={() => {
                       Loading.show();
                     }}>

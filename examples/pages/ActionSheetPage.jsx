@@ -31,12 +31,12 @@ class Page extends Component {
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.toggle('visible1')}>开启</Button>
+                  <Button size="sm" onClick={() => this.toggle('visible1')}>开启</Button>
                 }>普通</Cell>
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.toggle('visible2')}>开启</Button>
+                  <Button size="sm" onClick={() => this.toggle('visible2')}>开启</Button>
                 }>带取消操作</Cell>
             </Panel.Body>
           </Panel>

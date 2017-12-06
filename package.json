@@ -51,7 +51,6 @@
     "docs": "cd docs && gitbook install && gitbook serve"
   },
   "dependencies": {
-    "autosize": "^3.0.21",
     "classnames": "^2.2.5",
     "normalize.css": "^7.0.0",
     "zscroller": "^0.2.5"
@@ -90,6 +89,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "fastclick": "^1.0.6",
     "file-loader": "^0.11.1",
     "gh-pages": "^1.0.0",
     "gulp": "^3.9.1",

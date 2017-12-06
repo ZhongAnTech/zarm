@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import 'normalize.css';
+// import FastClick from 'fastclick';
 import AsyncComponent from './AsyncComponent';
 import '../styles/index';
 import '../styles/components/App';
@@ -9,6 +11,7 @@ class App extends Component {
 
   componentDidMount() {
     // Events.on(window, 'resize', window.__setFontSize__);
+    // FastClick.attach(document.body);
   }
 
   render() {
@@ -29,6 +32,7 @@ class App extends Component {
               {/* 表单组件 */}
               <Route path="/checkbox" component={AsyncComponent(() => import('../pages/CheckboxPage'))} />
               <Route path="/input" component={AsyncComponent(() => import('../pages/InputPage'))} />
+              <Route path="/select" component={AsyncComponent(() => import('../pages/SelectPage'))} />
               <Route path="/picker" component={AsyncComponent(() => import('../pages/PickerPage'))} />
               <Route path="/datePicker" component={AsyncComponent(() => import('../pages/DatePickerPage'))} />
               <Route path="/radio" component={AsyncComponent(() => import('../pages/RadioPage'))} />

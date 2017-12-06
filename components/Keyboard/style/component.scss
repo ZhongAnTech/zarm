@@ -1,0 +1,79 @@
+@import "../../Button/style/mixins";
+
+$prefixCls: $prefixCls-keyboard;
+
+.#{$prefixCls} {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  color: $theme-default;
+  user-select: none;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: r(28);
+    position: relative;
+    @include button-base();
+    @include button-theme(
+      #fff,
+      $button-default-border,
+      $button-default-color,
+      rgba(#ddd, .5),
+      rgba(#ddd, .5),
+      $button-default-color--active
+    );
+
+    &-ok {
+      font-size: r(21);
+      @include button-theme(
+        $button-primary-background,
+        $button-primary-border,
+        $button-primary-color,
+        $button-primary-background--active,
+        $button-primary-border--active,
+        $button-primary-color--active
+      );
+    }
+
+    &-disabled,
+    &-disabled:active {
+      background-color: rgba(#ddd, .5);
+    }
+  }
+
+  &-keys {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+
+    .#{$prefixCls}-item {
+      width: 33.333333%;
+      height: r(50);
+      @include onepx(top left);
+
+      &:first-of-type {
+        @include onepx(top);
+      }
+    }
+  }
+
+  &-handle {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+
+    .#{$prefixCls}-item {
+      flex: 1;
+
+      &:first-of-type {
+        @include onepx(top left);
+      }
+    }
+  }
+
+  .#{$prefixCls-icon} {
+    font-size: r(21);
+  }
+}

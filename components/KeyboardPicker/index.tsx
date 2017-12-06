@@ -42,7 +42,6 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
   onKeyClick = (key) => {
     if (['ok', 'close'].indexOf(key) > -1) {
       this.close();
-      return;
     }
     const { onKeyClick } = this.props;
     if (typeof onKeyClick === 'function') {
