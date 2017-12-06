@@ -2,6 +2,7 @@ import React, { PureComponent, CSSProperties } from 'react';
 import { REFRESH_STATE, LOAD_STATE, PropsType } from './PropsType';
 import classnames from 'classnames';
 import Events from '../utils/events';
+import Throttle from '../utils/throttle';
 import Drag from '../Drag';
 import Spinner from '../Spinner';
 import Icon from '../Icon';
@@ -40,7 +41,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   componentDidMount() {
     this.wrap = this.getScrollContainer();
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
-    Events.on(scroller, 'scroll', this.onScroll);
+    Events.on(scroller, 'scroll', Throttle(this.onScroll, 250));
   }
 
   componentWillReceiveProps(nextProps) {

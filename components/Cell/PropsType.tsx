@@ -1,5 +1,5 @@
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   hasArrow?: boolean;
   icon?: any;
   title?: any;

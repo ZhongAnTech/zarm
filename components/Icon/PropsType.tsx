@@ -1,5 +1,5 @@
 export default interface PropsType {
   type?: string;
-  theme?: 'default' | 'primary' | 'info' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   onClick?: () => void;
 }

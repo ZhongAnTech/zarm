@@ -3,14 +3,13 @@ $prefixCls: $prefixCls-slider;
 .#{$prefixCls} {
   position: relative;
   width: 100%;
-  height: r(2);
-  margin: r(14) 0;
-  padding: 0 r(14);
+  margin: $slider-handle-size / 2 0;
+  padding: 0 $slider-handle-size / 2;
 
   &-line {
     flex: 1;
-    height: r(2);
-    background-color: #d6d6d6;
+    height: $slider-line-height;
+    background-color: $slider-line-background;
 
     &-bg {
       height: 100%;
@@ -21,21 +20,21 @@ $prefixCls: $prefixCls-slider;
   &-handle {
     position: absolute;
     left: 0;
-    top: r(-14);
-    width: r(28);
-    height: r(28);
+    top: -$slider-handle-size / 2;
+    width: $slider-handle-size;
+    height: $slider-handle-size;
     border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+    background-color: $slider-handle-background;
+    box-shadow: $slider-handle-shadow;
 
     &-shadow {
-      width: r(28);
-      height: r(28);
+      width: $slider-handle-size;
+      height: $slider-handle-size;
     }
   }
 
   &.disabled {
     cursor: not-allowed;
-    opacity: $disabled-opacity;
+    opacity: $opacity-disabled;
   }
 }

@@ -14,7 +14,7 @@ exports[`Stepper defaultValue 1`] = `
     />
   </span>
   <input
-    className="za-stepper-body"
+    className="za-stepper-input"
     onBlur={[Function]}
     onChange={[Function]}
     type="tel"
@@ -44,7 +44,7 @@ exports[`Stepper renders correctly 1`] = `
     />
   </span>
   <input
-    class="za-stepper-body"
+    class="za-stepper-input"
     type="tel"
     value="0"
   />

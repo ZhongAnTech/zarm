@@ -2,7 +2,7 @@
 
 exports[`Checkbox defaultChecked 1`] = `
 <div
-  class="za-checkbox theme-primary checked"
+  class="za-checkbox checked"
 >
   <div
     class="za-checkbox-wrapper"
@@ -26,7 +26,7 @@ exports[`Checkbox defaultChecked 1`] = `
 
 exports[`Checkbox disabled 1`] = `
 <div
-  class="za-checkbox theme-primary disabled"
+  class="za-checkbox disabled"
 >
   <div
     class="za-checkbox-wrapper"
@@ -50,7 +50,7 @@ exports[`Checkbox disabled 1`] = `
 
 exports[`Checkbox renders correctly 1`] = `
 <div
-  class="za-checkbox theme-primary checked"
+  class="za-checkbox checked"
 >
   <div
     class="za-checkbox-wrapper"
@@ -77,7 +77,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
   class="za-checkbox-group"
 >
   <div
-    class="za-checkbox theme-primary"
+    class="za-checkbox"
   >
     <div
       class="za-checkbox-wrapper"
@@ -97,7 +97,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox theme-primary checked"
+    class="za-checkbox checked"
   >
     <div
       class="za-checkbox-wrapper"
@@ -118,7 +118,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox theme-primary"
+    class="za-checkbox"
   >
     <div
       class="za-checkbox-wrapper"
@@ -145,7 +145,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
   class="za-checkbox-group"
 >
   <div
-    class="za-checkbox theme-primary checked"
+    class="za-checkbox checked"
   >
     <div
       class="za-checkbox-wrapper"
@@ -166,7 +166,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox theme-primary"
+    class="za-checkbox"
   >
     <div
       class="za-checkbox-wrapper"
@@ -186,7 +186,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox theme-primary"
+    class="za-checkbox"
   >
     <div
       class="za-checkbox-wrapper"
@@ -213,7 +213,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
   class="za-checkbox-group"
 >
   <div
-    class="za-checkbox theme-primary"
+    class="za-checkbox"
   >
     <div
       class="za-checkbox-wrapper"
@@ -233,7 +233,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox theme-primary checked"
+    class="za-checkbox checked"
   >
     <div
       class="za-checkbox-wrapper"
@@ -254,7 +254,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-checkbox theme-primary"
+    class="za-checkbox"
   >
     <div
       class="za-checkbox-wrapper"
@@ -282,7 +282,7 @@ exports[`Checkbox.Group type is button 1`] = `
 >
   <a
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary theme-primary size-sm bordered"
+    class="za-button za-checkbox theme-primary size-sm bordered"
     role="button"
   >
     <span>
@@ -296,7 +296,7 @@ exports[`Checkbox.Group type is button 1`] = `
   </a>
   <a
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary theme-primary size-sm bordered"
+    class="za-button za-checkbox theme-primary size-sm bordered"
     role="button"
   >
     <span>
@@ -310,7 +310,7 @@ exports[`Checkbox.Group type is button 1`] = `
   </a>
   <a
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary theme-primary size-sm bordered"
+    class="za-button za-checkbox theme-primary size-sm bordered"
     role="button"
   >
     <span>
@@ -345,7 +345,7 @@ exports[`Checkbox.Group type is cell 1`] = `
           class="za-cell-content"
         >
           <div
-            class="za-checkbox theme-primary"
+            class="za-checkbox"
           >
             <div
               class="za-checkbox-wrapper"
@@ -387,7 +387,7 @@ exports[`Checkbox.Group type is cell 1`] = `
           class="za-cell-content"
         >
           <div
-            class="za-checkbox theme-primary"
+            class="za-checkbox"
           >
             <div
               class="za-checkbox-wrapper"
@@ -429,7 +429,7 @@ exports[`Checkbox.Group type is cell 1`] = `
           class="za-cell-content"
         >
           <div
-            class="za-checkbox theme-primary"
+            class="za-checkbox"
           >
             <div
               class="za-checkbox-wrapper"

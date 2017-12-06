@@ -2,7 +2,8 @@ $prefixCls: $prefixCls-noticebar;
 
 .#{$prefixCls} {
   width: 100%;
-  height: r(24);
+  height: $noticebar-height;
+  line-height: $noticebar-height;
   position: relative;
   overflow: hidden;
 

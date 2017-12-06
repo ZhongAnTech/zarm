@@ -117,7 +117,6 @@ import { Checkbox } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-checkbox | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | checked | boolean | | | 是否选中 |
 | shape | string | | `radius`, `round` | 形状 |
 | block | boolean | false | | 是否为块级元素 |
@@ -134,7 +133,6 @@ import { Checkbox } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-checkbox | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | block | boolean | false | | 是否为块级元素 |
 | shape | string | | `radius`, `round` | 形状 |
 | value | Array&lt;number &#124; string&gt; | [ ] | | 选中值 |

@@ -1,21 +1,83 @@
+// 主题
+@mixin button-theme($background, $color) {
+  background-color: $background;
+  color: $color;
+
+  $active-background: darken($background, 8%);
+  $active-color: rgba($color, .3);
+
+  &:active,
+  &.active {
+    background-color: $active-background;
+    color: $active-color;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: $opacity-disabled;
+    color: rgba($color, $opacity-disabled);
+    cursor: not-allowed;
+
+    &:active,
+    &.active,
+    &:focus,
+    &.focus,
+    &:visited,
+    &.visited {
+      background-color: $background;
+    }
+  }
+}
+
+// 大小
+@mixin button-size($height, $padding, $font-size, $icon-size) {
+  padding: 0 $padding;
+  font-size: $font-size;
+  height: $height;
+  line-height: $height - 2;
+
+  &.shape-circle {
+    width: $height;
+    padding: 0;
+  }
+
+  .#{$prefixCls-icon} {
+    font-size: $icon-size;
+  }
+
+  * + span {
+    margin-left: $padding / 2;
+  }
+}
+
+// 幽灵按钮
 @mixin button-bordered($border, $color) {
-  border: 1px solid transparent;
+  @include button-shape($border);
+
+  &.shape-radius {
+    @include button-shape($border, $radius-md);
+  }
+
+  &.shape-round {
+    @include button-shape($border, $radius-round);
+  }
+
+  &.shape-circle {
+    @include button-shape($border, $radius-circle);
+  }
 
   &.bordered {
     background-color: transparent;
     color: $color;
-    border-color: $border;
-    // @include onepx($border-color: $border);
 
     &:active,
     &.active {
-      opacity: .6;
+      opacity: $button-bordered-active-opacity;
     }
 
     &.disabled,
     &:disabled {
-      opacity: $disabled-opacity;
-      // color: rgba($color, $disabled-opacity);
+      opacity: $opacity-disabled;
       cursor: not-allowed;
 
       &:active,
@@ -31,94 +93,15 @@
   }
 }
 
-@mixin button-theme($background, $border, $color, $active-background, $active-border, $active-color) {
-  background-color: $background;
-  color: $color;
-  border-color: $border;
-  // @include onepx($border-color: $border);
-
-  &:active,
-  &.active {
-    background-color: $active-background;
-    color: $active-color;
-    border-color: $active-border;
-    // @include onepx($border-color: $active-border);
-  }
-
-  &.disabled,
-  &:disabled {
-    opacity: $disabled-opacity;
-    color: rgba($color, $disabled-opacity);
-    cursor: not-allowed;
-
-    &:active,
-    &.active,
-    &:focus,
-    &.focus,
-    &:visited,
-    &.visited {
-      background-color: $background;
-      border-color: $border;
-      // @include onepx($border-color: $border);
-    }
-  }
-}
-
-@mixin button-size($height, $padding, $font-size, $border-radius, $icon-size, $spacing) {
-  padding: 0 $padding;
-  font-size: $font-size;
-  height: $height;
-  line-height: $height - 2;
-
-  &.shape-radius {
-    border-radius: $border-radius;
-    // @include onepx($border-radius: $border-radius);
-
-    // &:active,
-    // &.active {
-    //   border-radius: $border-radius;
-    //   @include onepx($border-radius: $border-radius);
-    // }
-  }
-
-  &.shape-round {
-    border-radius: r(1000);
-    // @include onepx($border-radius: r(1000));
-
-    // &:active,
-    // &.active {
-    //   border-radius: r(1000);
-    //   @include onepx($border-radius: r(1000));
-    // }
-  }
-
-  &.shape-circle {
-    width: $height;
-    padding: 0;
-    border-radius: 50%;
-    // @include onepx($border-radius: 50%);
-
-    // &:active,
-    // &.active {
-    //   border-radius: 50%;
-    //   @include onepx($border-radius: 50%);
-    // }
-  }
-
-  .#{$prefixCls-icon} {
-    font-size: $icon-size;
-  }
-
-  * + span {
-    margin-left: $spacing;
-  }
-}
-
+// 基础
 @mixin button-base() {
+  position: relative;
   padding: 0;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
+  overflow: hidden;
+  color: $color-text;
   transition: background-color 200ms ease-out, border-color 200ms ease-out;
   cursor: pointer;
   outline: 0 none;
@@ -136,7 +119,7 @@
   &.disabled,
   &:disabled {
     cursor: not-allowed;
-    opacity: $disabled-opacity;
+    opacity: $opacity-disabled;
   }
 
   /* block Button */
@@ -151,5 +134,16 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+  }
+}
+
+// 形状
+@mixin button-shape($border-color, $border-radius: 0) {
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+
+  &.bordered {
+    border-color: $border-color;
+    // @include onepx($border-color: $border-color, $border-radius: $border-radius);
   }
 }

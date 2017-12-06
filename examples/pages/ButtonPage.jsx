@@ -25,7 +25,7 @@ class Page extends Component {
             <Panel.Header title="块级按钮" />
             <Panel.Body>
               <Button block>default</Button>
-              <Button block disabled shape="radius">disabled default</Button>
+              <Button block disabled>disabled default</Button>
               <Button block theme="primary">primary</Button>
               <Button block disabled theme="primary">disabled primary</Button>
             </Panel.Body>
@@ -47,7 +47,6 @@ class Page extends Component {
               <Button theme="default">default</Button>
               <Button theme="primary">primary</Button>
               <Button theme="success">success</Button>
-              <Button theme="info">info</Button>
               <Button theme="warning">warning</Button>
               <Button theme="error">error</Button>
             </Panel.Body>
@@ -67,7 +66,7 @@ class Page extends Component {
             <Panel.Body>
               <Button shape="radius" theme="primary">圆角按钮</Button>
               <Button shape="round" theme="primary">椭圆角按钮</Button>
-              <Button shape="circle" theme="primary">GO</Button>
+              <Button bordered shape="circle" theme="primary">GO</Button>
               <Button shape="circle" icon={<Icon type="right" />} />
             </Panel.Body>
           </Panel>

@@ -34,7 +34,6 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
 
   static defaultProps = {
     prefixCls: 'za-checkbox-group',
-    theme: 'primary',
     block: false,
     disabled: false,
     compact: false,
@@ -76,13 +75,12 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
   }
 
   render() {
-    const { prefixCls, className, theme, shape, type, block, disabled, compact, children } = this.props;
+    const { prefixCls, className, shape, type, block, disabled, compact, children } = this.props;
 
     const items = React.Children.map(children, (element: any, index) => {
       return cloneElement(element, {
         key: index,
         type,
-        theme,
         shape,
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,

@@ -4,13 +4,12 @@
 $prefixCls: $prefixCls-actionsheet;
 
 .#{$prefixCls} {
-  margin: 0 r(10) r(10) r(10);
+  margin: $actionsheet-margin;
 
   &.shape-radius {
     .#{$prefixCls} {
       &-actions,
       &-cancel {
-        overflow: hidden;
         border-radius: $radius-md;
       }
     }
@@ -18,55 +17,43 @@ $prefixCls: $prefixCls-actionsheet;
 
   &-actions,
   &-cancel {
-    background: #fff;
+    overflow: hidden;
+    background-color: $color-text-inverse;
   }
 
   &-cancel {
     margin-top: r(7);
   }
 
-  &-btn {
+  &-item {
     display: block;
-    height: r(50);
-    line-height: r(50);
-    font-size: r(16);
+    height: $actionsheet-item-height;
+    line-height: $actionsheet-item-height;
+    font-size: $actionsheet-item-font-size;
     @include button-base();
-    @include button-theme(
-      #fff,
-      #fff,
-      $button-default-color,
-      rgba(#ddd, .5),
-      rgba(#ddd, .5),
-      $button-default-color--active
-    );
+
+    &:active {
+      background-color: $background-active;
+    }
 
     &:not(:first-of-type) {
-      position: relative;
       @include onepx(top);
     }
 
-    &.theme-default {
-      @include actionsheet-theme($theme-default);
-    }
-
     &.theme-primary {
-      @include actionsheet-theme($theme-primary);
-    }
-
-    &.theme-info {
-      @include actionsheet-theme($theme-info);
+      color: $theme-primary;
     }
 
     &.theme-success {
-      @include actionsheet-theme($theme-success);
+      color: $theme-success;
     }
 
     &.theme-warning {
-      @include actionsheet-theme($theme-warning);
+      color: $theme-warning;
     }
 
     &.theme-error {
-      @include actionsheet-theme($theme-error);
+      color: $theme-error;
     }
   }
 }

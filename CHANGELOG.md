@@ -9,6 +9,7 @@
 
 - Break Change
   - 调整样式引入方式，具体参考README使用帮助。
+  - 删除`info`主题色。
   - 调整`Picker`组件的使用方式。
 
 - Bug Fix

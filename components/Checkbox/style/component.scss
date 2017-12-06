@@ -24,7 +24,7 @@ $prefixCls: $prefixCls-checkbox;
   }
 
   &-text {
-    color: #333;
+    color: $color-text;
   }
 
   &-inner + &-text {
@@ -35,20 +35,20 @@ $prefixCls: $prefixCls-checkbox;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: r(20);
-    height: r(20);
+    width: $checkbox-size;
+    height: $checkbox-size;
     border: 1px solid #999;
-    border-radius: r(20);
+    border-radius: $checkbox-size;
     background: #fff;
 
     &:before {
-      content: '';
-      margin-top: r(-2);
-      width: r(6);
-      height: r(10);
-      border: 2px solid $theme-primary;
+      content: ' ';
+      width: $checkbox-size / 3.5;
+      height: $checkbox-size / 2;
+      border: r(2) solid $theme-primary;
       border-top: 0;
       border-left: 0;
+      margin-top: r(-2);
       transform: rotate(45deg) scale(0);
       transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
@@ -58,18 +58,6 @@ $prefixCls: $prefixCls-checkbox;
   &-group {
     &.block {
       display: flex;
-    }
-
-    &.shape-radius {
-      .#{$prefixCls} {
-        border-radius: $radius-md;
-      }
-    }
-
-    &.shape-round {
-      .#{$prefixCls} {
-        border-radius: r(15);
-      }
     }
 
     &.is-compact {
@@ -96,11 +84,11 @@ $prefixCls: $prefixCls-checkbox;
           border-radius: 0;
 
           &:first-child {
-            border-radius: r(15) 0 0 r(15);
+            border-radius: $radius-round 0 0 $radius-round;
           }
 
           &:last-child {
-            border-radius: 0 r(15) r(15) 0;
+            border-radius: 0 $radius-round $radius-round 0;
           }
         }
       }
@@ -123,41 +111,16 @@ $prefixCls: $prefixCls-checkbox;
   &.disabled {
     .#{$prefixCls} {
       &-inner {
-        border-color: $disabled-background;
+        border-color: $border-disabled;
         cursor: not-allowed;
 
         &:before {
-          border-color: $disabled-background;
+          border-color: $border-disabled;
         }
       }
 
       &-text {
-        color: $disabled-color;
-      }
-    }
-  }
-
-  /* 形状 */
-  &.shape-radius {
-    .#{$prefixCls} {
-      &-inner {
-        border-radius: $radius-md;
-      }
-    }
-  }
-
-  &.shape-round {
-    .#{$prefixCls} {
-      &-inner {
-        border-radius: r(20);
-      }
-    }
-  }
-
-  &.shape-circle {
-    .#{$prefixCls} {
-      &-inner {
-        border-radius: r(1000);
+        color: $color-text-disabled;
       }
     }
   }

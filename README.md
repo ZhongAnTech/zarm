@@ -56,7 +56,7 @@ import { Button, Cell } from 'zarm';
 
 ```js
 import Button from 'zarm/lib/Button';
-import 'zarm/lib/Button/style/index.scss';
+import 'zarm/lib/Button/style';
 ```
 
 #### 定制主题
@@ -73,9 +73,8 @@ import 'zarm/lib/Button/style/index.scss';
 
 ```css
 $theme-primary: #108ee9;
-$theme-primary-light: lighten($theme-primary, 45%);
-$theme-primary-dark: darken($theme-primary, 10%);
 ```
+变量名可参考 [variables.scss](https://github.com/ZhonganTechENG/zarm/blob/master/components/style/variables.scss)
 
 > 注意：这种方式已经载入了所有组件的样式，不需要也无法和按需加载插件 `babel-plugin-import` 的 `style` 属性一起使用。
 
