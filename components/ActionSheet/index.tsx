@@ -13,6 +13,7 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
   static defaultProps = {
     prefixCls: 'za-actionsheet',
     visible: false,
+    spacing: false,
     actions: [],
     cancelText: '取消',
   };
@@ -35,9 +36,10 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
   }
 
   render() {
-    const { prefixCls, className, shape, visible, onMaskClick, actions } = this.props;
+    const { prefixCls, className, shape, spacing, visible, onMaskClick, actions } = this.props;
     const cls = classnames(`${prefixCls}`, className, {
       [`shape-${shape}`]: !!shape,
+      [`${prefixCls}-spacing`]: spacing,
     });
 
     return (
