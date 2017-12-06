@@ -38,7 +38,7 @@ class Page extends Component {
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible2')}>开启</Button>
                 }>带取消操作</Cell>
-              
+
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible3')}>开启</Button>
