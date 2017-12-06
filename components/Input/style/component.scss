@@ -67,14 +67,16 @@ $prefixCls: $prefixCls-input;
 
     &.focus {
       .#{$prefixCls}-content {
+        transform: translate3d(0, 0, 0);
+
         &:after {
-          content: '';
+          content: ' ';
           position: relative;
           right: 0;
           top: 10%;
           height: 80%;
           border-right: 1.5px solid #108ee9;
-          animation: keyboard-cursor infinite 1s step-start;
+          animation: custom-cursor 1s infinite step-start;
         }
       }
     }
@@ -92,7 +94,7 @@ $prefixCls: $prefixCls-input;
   }
 }
 
-@keyframes keyboard-cursor {
+@keyframes custom-cursor {
   0% {
     opacity: 1;
   }
