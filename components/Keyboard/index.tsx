@@ -23,6 +23,21 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     type: 'number',
   };
 
+  private longPressTimer;
+
+  onLongPressIn = (key) => {
+    this.onKeyClick(key);
+    this.longPressTimer = setTimeout(() => {
+      this.longPressTimer = setInterval(() => {
+        this.onKeyClick(key);
+      }, 100);
+    }, 800);
+  }
+
+  onLongPressOut = () => {
+    clearInterval(this.longPressTimer);
+  }
+
   onKeyClick = (key) => {
     if (key.length === 0) {
       return;
@@ -75,7 +90,11 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
           {this.getKeys().map(this.renderKey)}
         </div>
         <div className={`${prefixCls}-handle`}>
-          <div className={`${prefixCls}-item`} onClick={() => this.onKeyClick('delete')}>
+          <div
+            className={`${prefixCls}-item`}
+            onTouchStart={() => this.onLongPressIn('delete')}
+            onTouchEnd={() => this.onLongPressOut()}
+          >
             <Icon type="deletekey" />
           </div>
           <div className={`${prefixCls}-item ${prefixCls}-item-ok`} onClick={() => this.onKeyClick('ok')}>确定</div>
