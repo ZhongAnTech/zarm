@@ -9,7 +9,6 @@ const IDCARD_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', '0', 'clo
 
 const stopEventPropagation = (e) => {
   e.stopPropagation();
-  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface KeyboardProps extends PropsType {
@@ -52,8 +51,8 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
   renderKey = (text, index) => {
     const { prefixCls } = this.props;
 
-    const keyCls = classnames(`${prefixCls}-key-item`, {
-      [`${prefixCls}-key-item-disabled`]: text.length === 0,
+    const keyCls = classnames(`${prefixCls}-item`, {
+      [`${prefixCls}-item-disabled`]: text.length === 0,
     });
 
     return (
@@ -72,16 +71,14 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
 
     return (
       <div className={prefixCls} onClick={stopEventPropagation}>
-        <div className={`${prefixCls}-key`}>
+        <div className={`${prefixCls}-keys`}>
           {this.getKeys().map(this.renderKey)}
         </div>
         <div className={`${prefixCls}-handle`}>
-          <div className={`${prefixCls}-handle-item`} onClick={() => this.onKeyClick('delete')}>
+          <div className={`${prefixCls}-item`} onClick={() => this.onKeyClick('delete')}>
             <Icon type="deletekey" />
           </div>
-          <div className={`${prefixCls}-handle-item ${prefixCls}-handle-item-ok`} onClick={() => this.onKeyClick('ok')}>
-            确定
-          </div>
+          <div className={`${prefixCls}-item ${prefixCls}-item-ok`} onClick={() => this.onKeyClick('ok')}>确定</div>
         </div>
       </div>
     );

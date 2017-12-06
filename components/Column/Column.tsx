@@ -169,12 +169,12 @@ export default class Column extends Component<ColumnProps, any> {
     const { selectedValue } = this.state;
     const itemClassName = `${prefixCls}-column-item`;
     const selectedItemClassName = `${itemClassName} ${prefixCls}-column-item-selected`;
-    const items = children.map((item) => {
+    const items = children.map((item, index) => {
       return (
         <div
           style={itemStyle}
           className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
-          key={item[valueMember]}
+          key={index}
         >
           {itemRender(item)}
         </div>

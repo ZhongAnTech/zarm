@@ -9,7 +9,7 @@ export interface SelectProps extends BaseSelectProps {
   className?: string;
 }
 
-export default class InputSelect extends Component<SelectProps, any> {
+export default class Select extends Component<SelectProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-select',
@@ -67,7 +67,15 @@ export default class InputSelect extends Component<SelectProps, any> {
     if (typeof onChange === 'function') {
       onChange(selected);
     }
-    this.setState({ selected, visible: false });
+    this.setState({ visible: false });
+  }
+
+  onCancel = () => {
+    const { onCancel } = this.props;
+    this.setState({ visible: false });
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
   }
 
   _displayRender = (data) => {
@@ -80,8 +88,8 @@ export default class InputSelect extends Component<SelectProps, any> {
   }
 
   render() {
-    const { prefixCls, placeholder, title, dataSource, className, defaultValue, disabled,
-      valueMember = Picker.defaultProps.valueMember, itemRender, cols, onMaskClick } = this.props;
+    const { prefixCls, placeholder, className, disabled, title,
+      valueMember = Select.defaultProps.valueMember, onChange, ...others } = this.props;
     const { visible, value, data } = this.state;
     const cls = classnames(`${prefixCls}`, className, {});
     const inputCls = classnames(`${prefixCls}-input`, {
@@ -115,15 +123,10 @@ export default class InputSelect extends Component<SelectProps, any> {
         <Picker
           visible={visible}
           title={title}
-          dataSource={dataSource}
           onOk={this.onChange}
+          onCancel={this.onCancel}
           value={value}
-          defaultValue={defaultValue}
-          valueMember={valueMember}
-          placeholder={placeholder}
-          itemRender={itemRender}
-          cols={cols}
-          onMaskClick={onMaskClick}
+          {...others}
         />
         </div>
       </div>

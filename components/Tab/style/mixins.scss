@@ -1,0 +1,17 @@
+@mixin tab-theme($color) {
+  .#{$prefixCls-tab} {
+    &-header-item {
+      &.active {
+        color: $color;
+      }
+    }
+
+    &-line {
+      background-color: $color;
+
+      &-inner {
+        background-color: $color;
+      }
+    }
+  }
+}

@@ -13,7 +13,13 @@
 
 - Bug Fix
   - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[5147573](https://github.com/ZhonganTechENG/zarm/commit/51475737dd8a17d499492c093568a647bbd28f2a)）
-  - 修复组件`Pull`不兼容自定义scroll容器的bug。
+  - 修复组件`Pull`不兼容自定义scroll容器的bug。（[a9084cc](https://github.com/ZhonganTechENG/zarm/commit/a9084cc0eba7b92cff7eb712e77ee43bf597f887)）
+  - 修复组件`Swipe`手动拖拽时，同时触发了滚动条滚动后，不能执行touchend事件里动画的bug。（[62a96d8](https://github.com/ZhonganTechENG/zarm/commit/62a96d8089f9d0f015d642f24077aaef585aa278)）
+
+## v1.1.1
+- Bug Fix
+  - 修复`Swipe`组件下onChange方法的index参数错误的bug。（[931815a](https://github.com/ZhonganTechENG/zarm/commit/931815ab28fb0f1286bd0487b4df0e2897134ad9)）
+
 
 ## v1.1.0
 - Break Change
@@ -22,6 +28,7 @@
 - Bug Fix
   - 修复`Pull`组件下拉刷新动画不执行的bug。（[9102e3d](https://github.com/ZhonganTechENG/zarm/commit/9102e3d57e7906364ff07a02d314f448f625e290)）
   - 修复`Spinner`组件进度条增加延时的bug。（[3d9a95a](https://github.com/ZhonganTechENG/zarm/commit/3d9a95ae77451752c62ce04aeb0eabfbd5841888)）
+
 
 ## v1.0.19
 - Bug Fix

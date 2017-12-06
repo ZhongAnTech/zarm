@@ -3,28 +3,28 @@
 $base-fontSize: 14;
 
 $theme-default: #333;
-$theme-default-light: rgba($theme-default, 0.5);
-$theme-default-dark: darken($theme-default, 10%);
+$theme-default-light: rgba($theme-default, 0.1);
+$theme-default-dark: darken($theme-default, 8%);
 
 $theme-primary: #12c287;
 $theme-primary-light: rgba($theme-primary, 0.1);
-$theme-primary-dark: darken($theme-primary, 10%);
+$theme-primary-dark: darken($theme-primary, 8%);
 
 $theme-info: #347af6;
 $theme-info-light: rgba($theme-info, 0.1);
-$theme-info-dark: darken($theme-info, 10%);
+$theme-info-dark: darken($theme-info, 8%);
 
 $theme-success: #69c964;
 $theme-success-light: rgba($theme-success, 0.1);
-$theme-success-dark: darken($theme-success, 10%);
+$theme-success-dark: darken($theme-success, 8%);
 
 $theme-warning: #eca632;
 $theme-warning-light: rgba($theme-warning, 0.1);
-$theme-warning-dark: darken($theme-warning, 10%);
+$theme-warning-dark: darken($theme-warning, 8%);
 
 $theme-error: #e55546;
 $theme-error-light: rgba($theme-error, 0.1);
-$theme-error-dark: darken($theme-error, 10%);
+$theme-error-dark: darken($theme-error, 8%);
 
 $radius-xl: r(4);
 $radius-lg: r(4);
@@ -32,23 +32,17 @@ $radius-md: r(4);
 $radius-sm: r(4);
 $radius-xs: r(4);
 
-$height-xl: r(52);
-$height-lg: r(48);
-$height-md: r(44);
-$height-sm: r(34);
-$height-xs: r(27);
+$height-lg: r(52);
+$height-md: r(45);
+$height-sm: r(27);
 
-$padding-xl: r(25);
-$padding-lg: r(20);
+$padding-lg: r(25);
 $padding-md: r(16);
-$padding-sm: r(15);
-$padding-xs: r(10);
+$padding-sm: r(10);
 
-$fontSize-xl: r(18);
-$fontSize-lg: r(18);
-$fontSize-md: r(17);
+$fontSize-lg: r(20);
+$fontSize-md: r(18);
 $fontSize-sm: r(14);
-$fontSize-xs: r(14);
 
 $zIndex-mask: 1000;
 $zIndex-popup: 1300;
@@ -61,37 +55,6 @@ $disabled-background: #e1e1e1;
 $disabled-color: #999;
 $placeholder-color: #a9a9a9;
 $icon-url: '//at.alicdn.com/t/font_126288_uipjvv8ogdivbo6r';
-
-/* button */
-$button-default-color: $theme-default;
-$button-default-bg: #ddd;
-$button-default-border: #ddd;
-$button-default-activebg: rgba(#ddd, 0.5);
-
-$button-primary-color: #fff;
-$button-primary-bg: $theme-primary;
-$button-primary-border: $theme-primary;
-$button-primary-activebg: $theme-primary-light;
-
-$button-info-color: #fff;
-$button-info-bg: $theme-info;
-$button-info-border: $theme-info;
-$button-info-activebg: $theme-info-light;
-
-$button-success-color: #fff;
-$button-success-bg: $theme-success;
-$button-success-border: $theme-success;
-$button-success-activebg: $theme-success-light;
-
-$button-warning-color: #fff;
-$button-warning-bg: $theme-warning;
-$button-warning-border: $theme-warning;
-$button-warning-activebg: $theme-warning-light;
-
-$button-error-color: #fff;
-$button-error-bg: $theme-error;
-$button-error-border: $theme-error;
-$button-error-activebg: $theme-error-light;
 
 /* spinner */
 $spinner-diameter-md: r(20);
@@ -130,3 +93,61 @@ $prefixCls-tab: za-tab;
 $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
 $prefixCls-uploader: za-uploader;
+
+/* button */
+
+// $button-default-color: $theme-default;
+// $button-default-color--active: $theme-default;
+// $button-default-color--bordered: $theme-default;
+// $button-default-background: #fff;
+// $button-default-background--active: #ddd;
+// $button-default-border: #ddd;
+// $button-default-border--active: #ddd;
+
+$button-default-color: $theme-default;
+$button-default-color--active: $theme-default;
+$button-default-color--bordered: $theme-default;
+$button-default-background: #ddd;
+$button-default-background--active: #c4c4c4;
+$button-default-border: #ddd;
+$button-default-border--active: #c4c4c4;
+
+$button-primary-color: #fff;
+$button-primary-color--active: rgba(#fff, .3);
+$button-primary-color--bordered: $theme-primary;
+$button-primary-background: $theme-primary;
+$button-primary-background--active: $theme-primary-dark;
+$button-primary-border: $theme-primary;
+$button-primary-border--active: $theme-primary-dark;
+
+$button-success-color: #fff;
+$button-success-color--active: rgba(#fff, .3);
+$button-success-color--bordered: $theme-success;
+$button-success-background: $theme-success;
+$button-success-background--active: $theme-success-dark;
+$button-success-border: $theme-success;
+$button-success-border--active: $theme-success-dark;
+
+$button-info-color: #fff;
+$button-info-color--active: rgba(#fff, .3);
+$button-info-color--bordered: $theme-info;
+$button-info-background: $theme-info;
+$button-info-background--active: $theme-info-dark;
+$button-info-border: $theme-info;
+$button-info-border--active: $theme-info-dark;
+
+$button-warning-color: #fff;
+$button-warning-color--active: rgba(#fff, .3);
+$button-warning-color--bordered: $theme-warning;
+$button-warning-background: $theme-warning;
+$button-warning-background--active: $theme-warning-dark;
+$button-warning-border: $theme-warning;
+$button-warning-border--active: $theme-warning-dark;
+
+$button-error-color: #fff;
+$button-error-color--active: rgba(#fff, .3);
+$button-error-color--bordered: $theme-error;
+$button-error-background: $theme-error;
+$button-error-background--active: $theme-error-dark;
+$button-error-border: $theme-error;
+$button-error-border--active: $theme-error-dark;

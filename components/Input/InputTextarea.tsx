@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import Autosize from 'autosize';
 import { BaseInputTextareaProps } from './PropsType';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
@@ -32,16 +31,12 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     };
   }
 
-  componentDidMount() {
-    this.initAutosize();
-  }
-
-  componentDidUpdate(prevProps) {
-    this.updateAutosize(prevProps);
-  }
-
-  componentWillUnmount() {
-    this.destroyAutosize();
+  componentDidUpdate() {
+    const { autosize } = this.props;
+    if (autosize) {
+      this.input.style.height = '';
+      this.input.style.height = `${this.input.scrollHeight}px`;
+    }
   }
 
   onInputChange = (e) => {
@@ -50,29 +45,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     const length = countSymbols(value) + (value ? value.length : 0);
     this.setState({ length });
     if (typeof onChange === 'function') {
-      onChange(e);
-    }
-  }
-
-  // 初始化自适应高度
-  initAutosize = () => {
-    const { autosize } = this.props;
-    if (autosize) {
-      Autosize(this.input);
-    }
-  }
-
-  updateAutosize = (prevProps) => {
-    if (prevProps.style !== this.props.style || prevProps.className !== this.props.className) {
-      Autosize.update(this.input);
-    }
-  }
-
-  // 销毁自适应高度
-  destroyAutosize = () => {
-    const { autosize } = this.props;
-    if (autosize) {
-      Autosize.destroy(this.input);
+      onChange(value);
     }
   }
 
