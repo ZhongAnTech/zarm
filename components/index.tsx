@@ -32,4 +32,4 @@ export { default as Switch } from './Switch';
 export { default as Tab } from './Tab';
 export { default as Toast } from './Toast';
 export { default as Tooltip } from './Tooltip';
-export { default as Uploader } from './Uploader';
+export { default as FilePicker } from './FilePicker';

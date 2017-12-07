@@ -14,15 +14,15 @@ import PropsType from './PropsType';
 import classNames from 'classnames';
 import handleFileInfo from './utils/handleFileInfo';
 
-export interface UploaderProps extends PropsType {
+export interface FilePickerProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Uploader extends PureComponent<UploaderProps, any> {
+export default class FilePicker extends PureComponent<FilePickerProps, any> {
 
   static defaultProps = {
-    prefixCls: 'za-uploader',
+    prefixCls: 'za-filepicker',
     disabled: false,
     multiple: false,
     onBeforeSelect() { return true; },

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Panel, Uploader, Icon, Toast, Badge } from 'zarm';
+import { Panel, FilePicker, Icon, Toast, Badge, Cell, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/pages/UploaderPage.scss';
+import '../styles/pages/FilePickerPage.scss';
 
 const MAX_FILES_COUNT = 5;
 
@@ -11,7 +11,7 @@ function onBeforeSelect() {
   alert('执行 onBeforeSelect 方法');
 }
 
-class UploaderPage extends Component {
+class FilePickerPage extends Component {
 
   constructor(props) {
     super(props);
@@ -81,12 +81,20 @@ class UploaderPage extends Component {
     });
   }
 
+  imgRender(files) {
+    return this.state[files].map((item, index) => {
+      return (
+        <Badge sup className="filepicker-item" shape="circle" text={<Icon type="wrong" />} key={+index} onClick={() => this.remove(files, +index)}>
+          <div className="filepicker-item-img"><a href={item.thumbnail} target="_blank"><img src={item.thumbnail} alt="" /></a></div>
+        </Badge>
+      );
+    });
+  }
+
   fileRender(files) {
     return this.state[files].map((item, index) => {
       return (
-        <Badge sup className="uploader-item" shape="circle" text={<Icon type="wrong" />} key={+index} onClick={() => this.remove(files, +index)}>
-          <div className="uploader-item-img"><a href={item.thumbnail} target="_blank"><img src={item.thumbnail} alt="" /></a></div>
-        </Badge>
+        <Cell key={+index}>{item.fileName}</Cell>
       );
     });
   }
@@ -98,40 +106,39 @@ class UploaderPage extends Component {
     } = this.state;
 
     return (
-      <Container className="uploader-page">
-        <Header title="上传组件 Uploader" />
+      <Container className="filepicker-page">
+        <Header title="上传组件 FilePicker" />
 
         <main>
           <Panel>
-            <Panel.Header title="点击一次选择单张" />
+            <Panel.Header title="点击一次选择单个附件" />
             <Panel.Body>
-              <div className="uploader-wrapper">
-                {this.fileRender('files')}
-                <Uploader
-                  className="uploader-btn"
-                  accept="image/*"
+              {this.fileRender('files')}
+              <div className="filepicker-wrapper">
+                <FilePicker
+                  className="filepicker-btn"
                   onChange={this.onSelect}>
                   <Icon type="add" />
-                </Uploader>
+                </FilePicker>
               </div>
             </Panel.Body>
           </Panel>
 
           <Panel>
-            <Panel.Header title="点击一次选择多张" />
+            <Panel.Header title="点击一次选择多张图片" />
             <Panel.Body>
-              <div className="uploader-wrapper">
-                {this.fileRender('multiFiles')}
+              <div className="filepicker-wrapper">
+                {this.imgRender('multiFiles')}
                 {
                   (multiFiles.length < MAX_FILES_COUNT) && (
-                    <Uploader
+                    <FilePicker
                       multiple
-                      className="uploader-btn"
+                      className="filepicker-btn"
                       accept="image/*"
                       onBeforeSelect={onBeforeSelect}
                       onChange={this.onSelectMulti}>
                       <Icon type="add" />
-                    </Uploader>
+                    </FilePicker>
                   )
                 }
               </div>
@@ -141,10 +148,10 @@ class UploaderPage extends Component {
           <Panel>
             <Panel.Header title="禁用状态" />
             <Panel.Body>
-              <div className="uploader-wrapper">
-                <Uploader className="uploader-btn" disabled>
+              <div className="filepicker-wrapper">
+                <FilePicker className="filepicker-btn" disabled>
                   <Icon type="add" />
-                </Uploader>
+                </FilePicker>
               </div>
             </Panel.Body>
           </Panel>
@@ -157,4 +164,4 @@ class UploaderPage extends Component {
   }
 }
 
-export default UploaderPage;
+export default FilePickerPage;
