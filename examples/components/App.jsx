@@ -37,7 +37,7 @@ class App extends Component {
               <Route path="/slider" component={AsyncComponent(() => import('../pages/SliderPage'))} />
               <Route path="/stepper" component={AsyncComponent(() => import('../pages/StepperPage'))} />
               <Route path="/switch" component={AsyncComponent(() => import('../pages/SwitchPage'))} />
-              <Route path="/uploader" component={AsyncComponent(() => import('../pages/UploaderPage'))} />
+              <Route path="/file-picker" component={AsyncComponent(() => import('../pages/FilePickerPage'))} />
 
               {/* 操作反馈 */}
               <Route path="/action-sheet" component={AsyncComponent(() => import('../pages/ActionSheetPage'))} />
