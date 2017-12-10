@@ -17,7 +17,7 @@ class Page extends Component {
               <SwipeAction
                 right={[
                   <Button theme="primary" onClick={() => console.log('右按钮1')}>右按钮1</Button>,
-                  <Button theme="warning" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
+                  <Button theme="error" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
                 ]}>
                 <Cell>左滑看看</Cell>
               </SwipeAction>
@@ -25,7 +25,7 @@ class Page extends Component {
               <SwipeAction
                 left={[
                   <Button theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
-                  <Button theme="warning" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
+                  <Button theme="error" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
                 ]}>
                 <Cell>右滑看看</Cell>
               </SwipeAction>
@@ -37,8 +37,7 @@ class Page extends Component {
                   <Button theme="warning" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
                 ]}
                 right={[
-                  <Button theme="primary" onClick={() => console.log('右按钮1')}>右按钮1</Button>,
-                  <Button theme="warning" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
+                  <Button theme="error" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
                 ]}
                 onOpen={() => console.log('open')}
                 onClose={() => console.log('close')}>

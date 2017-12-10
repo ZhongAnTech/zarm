@@ -8,6 +8,7 @@ export type Action = {
 export default interface PropsType {
   visible?: boolean;
   shape?: 'radius';
+  spacing?: boolean;
   actions: Action[];
   cancelText?: string;
   onMaskClick?: () => void;
