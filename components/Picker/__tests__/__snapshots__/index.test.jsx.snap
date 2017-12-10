@@ -738,3 +738,108 @@ exports[`Picker StackPicker init value 1`] = `
   </div>
 </PickerStack>
 `;
+
+exports[`Picker render custom label 1`] = `
+<div
+  class="za-picker"
+>
+  <div
+    class="za-picker-container"
+  >
+    <div
+      class="za-popup za-popup-hidden"
+    >
+      <div
+        class="za-popup-wrapper za-popup-wrapper-bottom"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      >
+        <div
+          class="za-picker-wrapper"
+        >
+          <div
+            class="za-picker-header"
+          >
+            <div
+              class="za-picker-cancel"
+            >
+              取消
+            </div>
+            <div
+              class="za-picker-title"
+            >
+              请选择
+            </div>
+            <div
+              class="za-picker-submit"
+            >
+              确定
+            </div>
+          </div>
+          <div
+            class="za-picker-mask-top"
+          >
+            <div
+              class="za-picker-mask-bottom"
+            >
+              <div
+                class="za-picker-column-group"
+              >
+                <div
+                  class="za-picker-column-group-item"
+                >
+                  <div
+                    class="za-picker-column"
+                  >
+                    <div
+                      class="za-picker-column-indicator"
+                    />
+                    <div
+                      class="za-picker-column-content"
+                    >
+                      <div
+                        class="za-picker-column-item za-picker-column-item-selected"
+                      >
+                        北京市
+                      </div>
+                      <div
+                        class="za-picker-column-item"
+                      >
+                        上海市
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="za-picker-column-group-item"
+                >
+                  <div
+                    class="za-picker-column"
+                  >
+                    <div
+                      class="za-picker-column-indicator"
+                    />
+                    <div
+                      class="za-picker-column-content"
+                    >
+                      <div
+                        class="za-picker-column-item za-picker-column-item-selected"
+                      >
+                        海淀区
+                      </div>
+                      <div
+                        class="za-picker-column-item"
+                      >
+                        西城区
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

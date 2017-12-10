@@ -1,5 +1,4 @@
 export interface BaseSelectProps {
-  type?: 'number' | 'price' | 'idcard' | 'select';
   placeholder?: string;
   title?: string;
   value?: string;

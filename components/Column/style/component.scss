@@ -1,0 +1,56 @@
+$prefixCls: $prefixCls-picker;
+$picker-item-height: r(30);
+$picker-stackitem-height: r(35);
+
+.#{$prefixCls} {
+  &-column-group {
+    display: flex;
+    align-items: center;
+
+    &-item {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  &-column {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 7 * $picker-item-height;
+    width: 100%;
+
+    &-content {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      padding: 3 * $picker-item-height 0;
+    }
+
+    &-item {
+      text-align: center;
+      font-size: r(16);
+      line-height: $picker-item-height;
+      height: $picker-item-height;
+      color: #000;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      // &-selected {
+      //   font-size: r(18);
+      //   transition: all 0.1s;
+      // }
+    }
+
+    &-indicator {
+      right: 0;
+      position: absolute;
+      left: 0;
+      top: 3 * $picker-item-height;
+      height: $picker-item-height;
+      @include onepx(top bottom);
+    }
+  }
+}

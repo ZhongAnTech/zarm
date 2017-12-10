@@ -11,6 +11,7 @@ export interface PickerViewProps extends BasePickerViewProps {
 export default class PickerView extends Component<PickerViewProps, any> {
 
   static defaultProps = {
+    visible: true,
     disabled: false,
     dataSource: [],
     onChange: () => {},
@@ -27,7 +28,6 @@ export default class PickerView extends Component<PickerViewProps, any> {
     let { data , value, cascade } = initDataAndValue(props.dataSource, initValue);
 
     this.state = {
-      visible: props.visible || false,
       value,
       data,
       cascade,
@@ -74,9 +74,8 @@ export default class PickerView extends Component<PickerViewProps, any> {
   }
 
   render() {
-    const { prefixCls, valueMember = PickerView.defaultProps.valueMember, itemRender } = this.props;
+    const { prefixCls, valueMember, visible, itemRender } = this.props;
     const { data, value } = this.state;
-
     let PickerCol: JSX.Element;
 
     const cols = data.map((d) => {
@@ -109,6 +108,14 @@ export default class PickerView extends Component<PickerViewProps, any> {
       );
     }
 
-    return PickerCol;
+    return visible
+      ? (
+        <div className={`${prefixCls}-mask-top`}>
+          <div className={`${prefixCls}-mask-bottom`}>
+            {PickerCol}
+          </div>
+        </div>
+      )
+      : null;
   }
 }

@@ -119,6 +119,7 @@ describe('Picker', () => {
   it('Picker render visible', () => {
     const wrapper = render(
       <Picker
+        prefixCls="za-picker"
         dataSource={[
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
@@ -126,6 +127,34 @@ describe('Picker', () => {
         visible
         />
     );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('render custom label', () => {
+    const wrapper = render(
+      <Picker
+        dataSource={[
+          {
+            code: '1',
+            name: '北京市',
+            children: [
+              { code: '11', name: '海淀区' },
+              { code: '12', name: '西城区' },
+            ],
+          },
+          {
+            code: '2',
+            name: '上海市',
+            children: [
+              { code: '21', name: '黄埔区' },
+              { code: '22', name: '虹口区' },
+            ],
+          },
+        ]}
+        valueMember="code"
+        itemRender={data => data.name}
+        />);
+
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

@@ -1,41 +1,28 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import DatePicker from '../index';
-import enLocale from '../locale/en_US';
+import DateSelect from '../index';
+import enLocale from '../../DatePicker/locale/en_US';
 
 
-describe('DatePicker', () => {
-  it('DatePicker visible', () => {
+describe('DateSelect', () => {
+  it('DateSelect year', () => {
     const wrapper = render(
-      <DatePicker
-        visible
+      <DateSelect
         title="选择年份"
         placeholder="请选择年份"
         mode="year"
         value="2017"
         locale={enLocale}
         />
+
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('DatePicker year', () => {
+  it('DateSelect month', () => {
     const wrapper = render(
-      <DatePicker
-        title="选择年份"
-        placeholder="请选择年份"
-        mode="year"
-        value="2017"
-        locale={enLocale}
-        />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('DatePicker month', () => {
-    const wrapper = render(
-      <DatePicker
+      <DateSelect
         title="选择年份"
         placeholder="请选择年份"
         mode="month"
@@ -44,9 +31,9 @@ describe('DatePicker', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('DatePicker date', () => {
+  it('DateSelect date', () => {
     const wrapper = mount(
-      <DatePicker
+      <DateSelect
         title="选择日期"
         placeholder="请选择日期"
         mode="date"
@@ -57,9 +44,9 @@ describe('DatePicker', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('DatePicker time', () => {
+  it('DateSelect time', () => {
     const wrapper = mount(
-      <DatePicker
+      <DateSelect
         title="选择时间"
         placeholder="请选择时间"
         mode="time"
@@ -70,9 +57,9 @@ describe('DatePicker', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('DatePicker datetime', () => {
+  it('DateSelect datetime', () => {
     const wrapper = mount(
-      <DatePicker
+      <DateSelect
         title="选择时间"
         placeholder="请选择时间"
         mode="datetime"
@@ -90,7 +77,7 @@ describe('DatePicker', () => {
     const onCancelFn = jest.fn();
 
     const wrapper = mount(
-      <DatePicker
+      <DateSelect
         title="选择时间"
         placeholder="请选择时间"
         mode="datetime"
@@ -111,7 +98,7 @@ describe('DatePicker', () => {
     const onCancelFn = jest.fn();
 
     const wrapper = mount(
-      <DatePicker
+      <DateSelect
         title="选择时间"
         placeholder="请选择时间"
         mode="datetime"

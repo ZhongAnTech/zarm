@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropsType from './PropsType';
-import formatFn from '../DatePickerView/utils';
 import defaultLocale from './locale/zh_CN';
 import Column from '../Column';
 
@@ -56,6 +55,7 @@ export interface DatePickerViewProps extends PropsType {
 export default class DatePickerView extends Component<DatePickerViewProps, any> {
 
   static defaultProps = {
+    visible: true,
     placeholder: '请选择',
     title: '请选择',
     cancelText: '取消',
@@ -84,7 +84,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     this.state = {
       visible: false,
-      date: date || defaultDate,
+      date: defaultDate || date,
       display,
     };
   }
@@ -151,7 +151,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     if (typeof onChange === 'function') {
       if (this.state.date) {
-        onChange(formatFn(this, newValue));
+        onChange(newValue);
       }
     }
   }
@@ -245,7 +245,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   }
 
   getDateData() {
-    const { locale, formatMonth, formatDay, mode } = this.props;
+    const { locale, formatYear, formatMonth, formatDay, mode } = this.props;
     const date = this.getDate();
 
     const selYear = date.getFullYear();
@@ -259,9 +259,10 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     const years: object[] = [];
 
     for (let i = minDateYear; i <= maxDateYear; i += 1) {
+      const label = formatYear ? formatYear(i) : `${i + locale.year}`;
       years.push({
         value: `${i}`,
-        label: `${i + locale.year}`,
+        label,
       });
     }
 
@@ -281,7 +282,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       maxMonth = maxDateMonth;
     }
     for (let i = minMonth; i <= maxMonth; i += 1) {
-      const label = formatMonth ? formatMonth(i, date) : `${i + 1 + locale.month}`;
+      const label = formatMonth ? formatMonth(i) : `${i + 1 + locale.month}`;
       months.push({
         value: `${i}`,
         label,
@@ -304,7 +305,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     }
 
     for (let i = minDay; i <= maxDay; i += 1) {
-      const label = formatDay ? formatDay(i, date) : `${i + locale.day}`;
+      const label = formatDay ? formatDay(i) : `${i + locale.day}`;
       days.push({
         value: `${i}`,
         label,
@@ -322,7 +323,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     let maxHour = 23;
     let minMinute = 0;
     let maxMinute = 59;
-    const { mode, locale, minuteStep = DatePickerView.defaultProps.minuteStep } = this.props;
+    const { mode, locale, formatHour, formatMinute, minuteStep = DatePickerView.defaultProps.minuteStep } = this.props;
     const date = this.getDate();
 
     const minDateMinute = this.getMinMinute();
@@ -368,18 +369,31 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     const hours: object[] = [];
     for (let i = minHour; i <= maxHour; i += 1) {
+      let label = '';
+      if (formatHour) {
+        label = formatHour(i);
+      } else {
+        label = locale.hour ? `${i + locale.hour}` : pad(i);
+      }
+
       hours.push({
         value: `${i}`,
-        label: locale.hour ? `${i + locale.hour}` : pad(i),
+        label,
       });
     }
 
     const minutes: object[] = [];
 
     for (let i = minMinute; i <= maxMinute; i += minuteStep) {
+      let label = '';
+      if (formatMinute) {
+        label = formatMinute(i);
+      } else {
+        label = locale.minute ? `${i + locale.minute}` : pad(i);
+      }
       minutes.push({
         value: `${i}`,
-        label: locale.minute ? `${i + locale.minute}` : pad(i),
+        label,
       });
     }
 
@@ -477,19 +491,25 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
   render() {
     const { value, cols } = this.getValueCols();
-    const { prefixCls, className, disabled, valueMember } = this.props;
+    const { prefixCls, className, disabled, valueMember, visible } = this.props;
 
-    return (
-      <Column.Group
-        className={className}
-        prefixCls={prefixCls}
-        disabled={disabled}
-        valueMember={valueMember}
-        selectedValue={value}
-        onValueChange={(values, index) => this.onValueChange(values, index)}
-      >
-        {cols}
-      </Column.Group>
-    );
+    return visible
+    ? (
+      <div className={`${prefixCls}-mask-top`}>
+        <div className={`${prefixCls}-mask-bottom`}>
+          <Column.Group
+            className={className}
+            prefixCls={prefixCls}
+            disabled={disabled}
+            valueMember={valueMember}
+            selectedValue={value}
+            onValueChange={(values, index) => this.onValueChange(values, index)}
+          >
+            {cols}
+          </Column.Group>
+        </div>
+      </div>
+    )
+    : null;
   }
 }

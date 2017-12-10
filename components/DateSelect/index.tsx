@@ -35,7 +35,7 @@ export default class DateSelect extends Component<DateSelectProps, any> {
     value: '',
     defaultValue: '',
     minuteStep: 1,
-    prefixCls: 'za-picker',
+    prefixCls: 'za-select',
     valueMember: 'value',
     onClick: () => {},
     onCancel: () => {},
@@ -49,8 +49,8 @@ export default class DateSelect extends Component<DateSelectProps, any> {
 
     this.state = {
       visible: props.visible || false,
-      date: date || defaultDate,
-      value: props.value || '',
+      date: defaultDate || date,
+      value: props.defaultValue || props.value || '',
     };
 
   }

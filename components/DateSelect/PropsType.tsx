@@ -8,17 +8,19 @@ export default interface PropsType {
   value?: string | object;
   defaultValue?: string | object;
   wheelDefaultValue?: string | object;
-  onOk?: (date?: string | object) => void;
   onCancel?: () => void;
   onMaskClick?: () => void;
   onClick: () => void;
-  onChange?: (date?: string) => void;
+  onChange?: (value?: Date) => void;
   minuteStep?: number;
   prefixCls?: string;
-  min?: object | string;
-  max?: object | string;
-  formatMonth?: (num?: number, date?: string | object) => void;
-  formatDay: (num?: number, date?: string | object) => void;
+  min?: Date | string;
+  max?: Date | string;
+  formatYear?: (num?: number) => string;
+  formatMonth?: (num?: number) => string;
+  formatDay?: (num?: number) => string;
+  formatHour?: (num?: number) => string;
+  formatMinute?: (num?: number) => string;
   locale: any;
   valueMember?: string;
 }

@@ -1,3 +1,3 @@
 import '../../style/';
-import '../../Popup/style';
+import '../../DatePicker/style';
 import './index.scss';

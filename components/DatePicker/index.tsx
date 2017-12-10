@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import defaultLocale from './locale/zh_CN';
-import formatFn from '../DatePickerView/utils';
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
 
@@ -68,8 +67,8 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
     this.state = {
       visible: props.visible || false,
-      date: date || defaultDate,
-      value: props.value || '',
+      date: defaultDate || date,
+      value: props.defaultValue || props.value || '',
       display,
     };
   }
@@ -132,9 +131,13 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   getDefaultDate() {
+    const { min, mode, minuteStep } = this.props;
     // 存在最小值且毫秒数大于现在
-    if (this.props.min && Date.parse(this.getMinDate()) >= Date.now()) {
+    if (min && Date.parse(this.getMinDate()) >= Date.now()) {
       return this.getMinDate();
+    }
+    if (minuteStep && minuteStep > 1 && (mode === 'datetime' || mode === 'time')) {
+      return new Date(new Date().setMinutes(0));
     }
     return new Date();
   }
@@ -172,7 +175,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
 
     if (typeof onChange === 'function') {
-      onChange(formatFn(this, newValue));
+      onChange(newValue);
     }
   }
 
