@@ -126,6 +126,7 @@ export default class Select extends Component<SelectProps, any> {
           onOk={this.onChange}
           onCancel={this.onCancel}
           value={value}
+          valueMember={valueMember}
           {...others}
         />
         </div>

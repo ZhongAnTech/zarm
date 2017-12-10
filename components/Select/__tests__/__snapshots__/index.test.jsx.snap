@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select Cascader Select 1`] = `
-<InputSelect
+<Select
   dataSource={
     Array [
       Object {
@@ -153,52 +153,57 @@ exports[`Select Cascader Select 1`] = `
                         确定
                       </div>
                     </div>
-                    <div
-                      className="za-picker-mask-top"
+                    <PickerView
+                      dataSource={
+                        Array [
+                          Object {
+                            "children": Array [
+                              Object {
+                                "label": "选项一",
+                                "value": "11",
+                              },
+                              Object {
+                                "label": "选项二",
+                                "value": "12",
+                              },
+                            ],
+                            "label": "选项一",
+                            "value": "1",
+                          },
+                          Object {
+                            "children": Array [
+                              Object {
+                                "label": "选项一",
+                                "value": "21",
+                              },
+                              Object {
+                                "label": "选项二",
+                                "value": "22",
+                              },
+                            ],
+                            "label": "选项一",
+                            "value": "2",
+                          },
+                        ]
+                      }
+                      disabled={false}
+                      itemRender={[Function]}
+                      onCancel={[Function]}
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onMaskClick={[Function]}
+                      onOk={[Function]}
+                      onValueChange={[Function]}
+                      prefixCls="za-picker"
+                      value={Array []}
+                      valueMember="value"
+                      visible={false}
                     >
                       <div
-                        className="za-picker-mask-bottom"
+                        className="za-picker-mask-top"
                       >
-                        <PickerView
-                          dataSource={
-                            Array [
-                              Object {
-                                "children": Array [
-                                  Object {
-                                    "label": "选项一",
-                                    "value": "11",
-                                  },
-                                  Object {
-                                    "label": "选项二",
-                                    "value": "12",
-                                  },
-                                ],
-                                "label": "选项一",
-                                "value": "1",
-                              },
-                              Object {
-                                "children": Array [
-                                  Object {
-                                    "label": "选项一",
-                                    "value": "21",
-                                  },
-                                  Object {
-                                    "label": "选项二",
-                                    "value": "22",
-                                  },
-                                ],
-                                "label": "选项一",
-                                "value": "2",
-                              },
-                            ]
-                          }
-                          disabled={false}
-                          itemRender={[Function]}
-                          onChange={[Function]}
-                          onValueChange={[Function]}
-                          prefixCls="za-picker"
-                          value={Array []}
-                          valueMember="value"
+                        <div
+                          className="za-picker-mask-bottom"
                         >
                           <Cascader
                             data={
@@ -277,13 +282,13 @@ exports[`Select Cascader Select 1`] = `
                                       >
                                         <div
                                           className="za-picker-column-item za-picker-column-item-selected"
-                                          key="1"
+                                          key="0"
                                         >
                                           选项一
                                         </div>
                                         <div
                                           className="za-picker-column-item"
-                                          key="2"
+                                          key="1"
                                         >
                                           选项一
                                         </div>
@@ -313,13 +318,13 @@ exports[`Select Cascader Select 1`] = `
                                       >
                                         <div
                                           className="za-picker-column-item za-picker-column-item-selected"
-                                          key="11"
+                                          key="0"
                                         >
                                           选项一
                                         </div>
                                         <div
                                           className="za-picker-column-item"
-                                          key="12"
+                                          key="1"
                                         >
                                           选项二
                                         </div>
@@ -330,9 +335,9 @@ exports[`Select Cascader Select 1`] = `
                               </div>
                             </ColumnGroup>
                           </Cascader>
-                        </PickerView>
+                        </div>
                       </div>
-                    </div>
+                    </PickerView>
                   </div>
                 </div>
                 <Mask
@@ -355,7 +360,7 @@ exports[`Select Cascader Select 1`] = `
       </Picker>
     </div>
   </div>
-</InputSelect>
+</Select>
 `;
 
 exports[`Select Cascader Select init value 1`] = `

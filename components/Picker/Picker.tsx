@@ -131,7 +131,6 @@ export default class Picker extends Component<PickerProps, any> {
   getInitValue = () => {
     const data = this.state.data;
     const { valueMember = Picker.defaultProps.valueMember } = this.props;
-
     const { value } = this.state;
 
     if (!value || !value.length) {
@@ -159,7 +158,6 @@ export default class Picker extends Component<PickerProps, any> {
       okText, title, ...others } = this.props;
     const { visible, value } = this.state;
     const classes = classnames(`${prefixCls}-container`, className);
-
     return (
       <div className={`${prefixCls}`}>
         <div className={classes} onClick={e => onContainerClick(e)}>
@@ -173,16 +171,12 @@ export default class Picker extends Component<PickerProps, any> {
                 <div className={`${prefixCls}-title`}>{title}</div>
                 <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
               </div>
-              <div className={`${prefixCls}-mask-top`}>
-                <div className={`${prefixCls}-mask-bottom`}>
-                  <PickerView
-                    prefixCls={prefixCls}
-                    onValueChange={v => this.onValueChange(v)}
-                    {...others}
-                    value={value}
-                  />
-                </div>
-              </div>
+              <PickerView
+                prefixCls={prefixCls}
+                onValueChange={v => this.onValueChange(v)}
+                {...others}
+                value={value}
+              />
             </div>
           </Popup>
         </div>

@@ -89,7 +89,7 @@ class Page extends Component {
   }
 
   render() {
-    const { single, multi, multiAssign, multiCascade, diy, address1, address2 } = this.state;
+    const { single, multi, multiAssign, multiCascadeData, multiCascade, diy, address1, address2 } = this.state;
 
     return (
       <Container className="select-page">
@@ -166,14 +166,13 @@ class Page extends Component {
               <Cell title="多列联动">
                 <Select
                   placeholder="请选择"
-                  dataSource={this.state.multiCascadeData}
-                  value={this.state.multiCascade.value}
+                  dataSource={multiCascadeData}
+                  value={multiCascade.value}
                   onChange={(selected) => {
-                    multiCascade.value = selected.map(item => `${item.value}`);
+                    multiCascade.value = selected.map(item => item.value);
                     this.setState({
                       multiCascade,
                     });
-                    this.close('pickerVisible');
                   }}
                   displayRender={(selected) => {
                     return selected.map(item => item.label).join('/');
@@ -194,7 +193,6 @@ class Page extends Component {
 
               <Cell title="自定义格式">
                 <Select
-                  visible={diy.visible}
                   title="自定义标题"
                   placeholder="自定义placeholder"
                   dataSource={[

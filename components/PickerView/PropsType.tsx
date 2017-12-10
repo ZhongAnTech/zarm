@@ -1,5 +1,5 @@
 export interface BasePickerViewProps {
-  prefixCls?: string;
+  visible?: boolean;
   dataSource?: any[];
   defaultValue?: string | any[];
   value?: string | any[];

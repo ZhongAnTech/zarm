@@ -1,4 +1,5 @@
 export default interface PropsType {
+  visible?: boolean;
   placeholder?: string;
   title?: any;
   cancelText?: string;
@@ -11,14 +12,17 @@ export default interface PropsType {
   onOk?: (date?: string | object) => void;
   onCancel?: () => void;
   onValueChange?: (value?: Date) => void;
-  onChange?: (date?: string) => void;
+  onChange?: (value?: Date) => void;
   onMaskClick?: () => void;
   minuteStep?: number;
   prefixCls?: string;
   min?: object | string;
   max?: object | string;
-  formatMonth?: (num?: number, date?: string | object) => void;
-  formatDay?: (num?: number, date?: string | object) => void;
+  formatYear?: (num?: number) => string;
+  formatMonth?: (num?: number) => string;
+  formatDay?: (num?: number) => string;
+  formatHour?: (num?: number) => string;
+  formatMinute?: (num?: number) => string;
   locale?: any;
   valueMember?: string;
 }

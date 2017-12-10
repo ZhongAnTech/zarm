@@ -158,54 +158,6 @@ import { Picker } from 'zarm';
 <Picker dataSource={District} />
 ```
 
-#### 日期选择器
-
-###### 年份选择
-```jsx
-<DatePicker
-  title="选择年份"
-  placeholder="请选择年份"
-  mode="year"
-  wheelDefaultValue="2009"
-  />
-```
-
-###### 日期选择
-```jsx
-<DatePicker
-  title="选择日期"
-  placeholder="请选择日期"
-  mode="date"
-  min="2007-01-03"
-  max="2017-11-23"
-  />
-```
-
-###### 时间选择
-```jsx
-<DatePicker
-  title="选择时间"
-  placeholder="请选择时间"
-  mode="time"
-  minuteStep={15}
-  />
-```
-
-###### 日期&时间
-```jsx
-<DatePicker mode="datetime" />
-```
-
-###### 自定义格式
-```jsx
-<DatePicker
-  title="选择日期"
-  placeholder="请选择日期"
-  mode="date"
-  format="YYYY年MM月DD日"
-  />
-```
-
 #### 层叠式选择器
 
 ###### 级联选择
@@ -216,34 +168,55 @@ import { Picker } from 'zarm';
   />
 ```
 
-
+#### PickerView（平铺选择器）
+```jsx
+<PickerView
+  dataSource={[
+    {
+      code: '1',
+      name: '北京市',
+      children: [
+        { code: '11', name: '海淀区' },
+        { code: '12', name: '西城区' },
+      ],
+    },
+    {
+      code: '2',
+      name: '上海市',
+      children: [
+        { code: '21', name: '黄埔区' },
+        { code: '22', name: '虹口区' },
+      ],
+    },
+  ]}
+  valueMember="code"
+  itemRender={data => data.name}
+  onChange={(value) => {
+    console.log(value);
+  }}
+  />
+```
 ### API
-
-#### PickerView
-
-
-#### Select & Picker
+#### Picker & PickerView
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-select\za-picker | | 类名前缀 |
 | className | string | | | 追加类名 |
-| visible | boolean | false | | 是否展示 |
+| visible（Picker） | boolean | false | | 是否展示 |
 | dataSource | array | [ ] | | 数据源 |
-| value | array, string |  | | 值 |
-| defaultValue | array, string |  | | 初始是否选中 |
+| value | array &#124; string |  | | 值 |
+| defaultValue | array &#124; string |  | | 初始是否选中 |
 | valueMember | string | 'value' | | 值字段对应的key 
 | itemRender | func | <code>(data?: object) => data.label</code> | | 控制选项列表显示字段对应的key |
-| disabled | bool | false | | 是否禁用 |
-| title | string | '请选择' | | 选择器标题 |
-| cancelText | string | '取消' | | 取消栏文字 |
-| okText | string | '确定' | | 确定栏文字 |
-| placeholder | string | '请选择' | | 输入提示信息 |
-| displayRender | <code>(data?: object) => string</code> | noop | \(data: object\) | 所选值渲染(只有Select有) |
+| disabled（Picker） | boolean | false | | 是否禁用 |
+| title（Picker） | string | '请选择' | | 选择器标题 |
+| cancelText（Picker） | string | '取消' | | 取消栏文字 |
+| okText（Picker） | string | '确定' | | 确定栏文字 |
+| placeholder（Picker） | string | '请选择' | | 输入提示信息 |
 | cols | number | | | 级联选择器的级数 |
-| onChange（Select） | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 |
-| onChange（Picker） | <code>(value?: object) => void</code> | noop | \(value: object\) | 值变化时触发的回调函数 |
-| onOk | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数(只有Picker有，功能等同于Select的onChange) | 
+| onChange | <code>(value?: object) => void</code> | noop | \(value: object\) | 值变化时触发的回调函数 |
+| onOk（Picker） | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 | 
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 
@@ -254,11 +227,11 @@ import { Picker } from 'zarm';
 | prefixCls | string | za-picker | | 类名前缀 |
 | className | string | | | 追加类名 |
 | dataSource | array | [ ] | | 数据源 |
-| value | array, string |  | | 值 |
-| defaultValue | array, string |  | | 初始是否选中 |
+| value | array &#124; string |  | | 值 |
+| defaultValue | array &#124; string |  | | 初始值 |
 | valueMember | string | 'value' | | 值字段对应的key 
 | itemRender | func |  | | 控制选项列表显示字段对应的key |
-| disabled | bool | false | | 是否禁用 |
+| disabled | boolean | false | | 是否禁用 |
 | title | string | '请选择' | | 选择器标题 |
 | cancelText | string | '取消' | | 取消栏文字 |
 | okText | string | '确定' | | 确定栏文字 |
@@ -269,17 +242,6 @@ import { Picker } from 'zarm';
 | onOk | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 |
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-
-#### DatePicker 额外的属性
-
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| mode | string | date | `year`, `month`, `date`, `time`, `datetime` | 指定日期选择模式 |
-| format | string | | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
-| min | string | | | 相应mode的最小时间 |
-| max | string | | | 相应mode的最大时间 |
-| minuteStep | number | 1 | | 分钟步长 |
-| wheelDefaultValue | array, string | | | 滚轮默认值 |
 
 
 
