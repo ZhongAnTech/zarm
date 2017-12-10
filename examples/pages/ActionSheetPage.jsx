@@ -38,6 +38,11 @@ class Page extends Component {
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible2')}>开启</Button>
                 }>带取消操作</Cell>
+
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('visible3')}>开启</Button>
+                }>圆角留间隔</Cell>
             </Panel.Body>
           </Panel>
 
@@ -75,6 +80,28 @@ class Page extends Component {
               },
             ]}
             onCancel={() => this.toggle('visible2')}
+            />
+
+          <ActionSheet
+            spacing
+            shape="radius"
+            visible={this.state.visible3}
+            actions={[
+              {
+                text: '操作一',
+                onClick: () => console.log('点击操作一'),
+              },
+              {
+                text: '操作二',
+                onClick: () => console.log('点击操作二'),
+              },
+              {
+                theme: 'error',
+                text: '操作三',
+                onClick: () => console.log('点击操作三'),
+              },
+            ]}
+            onCancel={() => this.toggle('visible3')}
             />
 
         </main>

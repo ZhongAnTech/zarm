@@ -43,7 +43,7 @@ $prefixCls: $prefixCls-keyboard;
       height: $keyboard-item-height;
       @include onepx(top left);
 
-      &:first-of-type {
+      &:nth-of-type(3n+1) {
         @include onepx(top);
       }
     }
