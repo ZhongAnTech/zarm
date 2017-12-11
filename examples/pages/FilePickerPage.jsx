@@ -107,7 +107,7 @@ class FilePickerPage extends Component {
 
     return (
       <Container className="filepicker-page">
-        <Header title="上传组件 FilePicker" />
+        <Header title="文件选择器 FilePicker" />
 
         <main>
           <Panel>
