@@ -1,16 +1,16 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Uploader from '../index';
+import FilePicker from '../index';
 
-describe('Uploader', () => {
+describe('FilePicker', () => {
   it('renders correctly', () => {
     const props = {
       accept: 'image/jpg, image/jpeg, image/gif, image/png',
       onChange: jest.fn(),
       children: 'foo',
     };
-    const wrapper = render(<Uploader {...props} />);
+    const wrapper = render(<FilePicker {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -21,9 +21,9 @@ describe('Uploader', () => {
       onClick: onClickfn,
       children: 'foo',
     };
-    const wrapper = mount(<Uploader {...props} />);
-    wrapper.find('.za-uploader-input').simulate('click');
-    wrapper.find('.za-uploader-trigger').simulate('click');
+    const wrapper = mount(<FilePicker {...props} />);
+    wrapper.find('.za-filepicker-input').simulate('click');
+    wrapper.find('.za-filepicker-trigger').simulate('click');
     // expect(onClickfn).toBeCalled();
   });
 
@@ -35,8 +35,8 @@ describe('Uploader', () => {
       onBeforeSelect: jest.fn(),
       children: <button>+</button>,
     };
-    const wrapper = mount(<Uploader {...props} />);
-    wrapper.find('.za-uploader-input').simulate('change');
+    const wrapper = mount(<FilePicker {...props} />);
+    wrapper.find('.za-filepicker-input').simulate('change');
     // expect(props.onChange).toBeCalled();
   });
 });

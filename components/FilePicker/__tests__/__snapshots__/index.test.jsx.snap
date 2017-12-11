@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Uploader renders correctly 1`] = `
+exports[`FilePicker renders correctly 1`] = `
 <div
-  class="za-uploader"
+  class="za-filepicker"
 >
   <input
     accept="image/jpg, image/jpeg, image/gif, image/png"
-    class="za-uploader-input"
+    class="za-filepicker-input"
     type="file"
   />
   <span
-    class="za-uploader-trigger"
+    class="za-filepicker-trigger"
   />
   foo
 </div>

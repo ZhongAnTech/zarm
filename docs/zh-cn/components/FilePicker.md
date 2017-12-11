@@ -49,7 +49,7 @@ import { FilePicker } from 'zarm';
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-uploader | | 类名前缀 |
+| prefixCls | string | za-filepicker | | 类名前缀 |
 | className | string | | | 追加类名 |
 | accept | string | | | 允许上传的附件格式 |
 | multiple | boolean | false | | 是否多选 |
