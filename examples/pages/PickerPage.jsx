@@ -1,153 +1,162 @@
 import React, { Component } from 'react';
-import { Panel, Cell, Picker, DatePicker } from 'zarm';
+import { Panel, Cell, Picker, Button, PickerView } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import District from '../mock/district';
+import '../styles/pages/PickerPage';
 
+const multiData = [
+  [
+    { value: '1', label: '选项一' },
+    { value: '2', label: '选项二' },
+  ],
+  [
+    { value: '3', label: '选项三' },
+    { value: '4', label: '选项四' },
+  ],
+];
 class Page extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      single: {},
+      single: { value: '' },
+      multi: { value: ['1', '4'], display: '选项一&选项四' },
+      multiCascadeData: [
+        {
+          value: '1',
+          label: '北京市',
+          children: [
+            { value: '11', label: '海淀区' },
+            { value: '12', label: '西城区' },
+          ],
+        },
+        {
+          value: '2',
+          label: '上海市',
+          children: [
+            { value: '21', label: '黄埔区' },
+            { value: '22', label: '虹口区' },
+          ],
+        },
+      ],
+      multiCascade: { value: ['1', '12'] },
+      multiAssign: { value: ['1', '12'] },
       diy: {},
+      address1: {},
+      address2: {},
     };
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        multiCascadeData: [
+          {
+            value: '1',
+            label: '北京市',
+            children: [
+              { value: '11', label: '海淀区' },
+              { value: '12', label: '西城区' },
+            ],
+          },
+          {
+            value: '2',
+            label: '上海市',
+            children: [
+              { value: '21', label: '杨浦区' },
+              { value: '22', label: '静安区' },
+            ],
+          },
+        ],
+        multiCascade: {
+          value: ['2', '21'],
+        },
+      });
+    }, 1000);
+  }
+
+  open = (key) => {
+    this.setState({
+      [`${key}`]: true,
+    });
+  }
+
+  close = (key) => {
+    this.setState({
+      [`${key}`]: false,
+    });
+  }
+
   render() {
-    const { single, diy } = this.state;
+    const { single, singleVisible, multi, multiVisible, multiCascade,
+      address1, addr1Visible, address2, addr2Visible } = this.state;
 
     return (
-      <Container className="cell-page">
+      <Container className="picker-page">
         <Header title="选择器 Picker" />
         <main>
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
-              <Cell title="单列">
+              <Cell title="单列" hasArrow onClick={() => { this.open('singleVisible'); }}>
+                {single.value ? <div className="show-right">{single.display}</div> : <div className="za-picker-placeholder show-right">请选择</div>}
                 <Picker
-                  dataSource={[
-                    { value: '1', label: '选项一' },
-                    { value: '2', label: '选项二' },
-                  ]}
+                  visible={singleVisible}
+                  placeholder="请选择"
+                  className="show-right"
                   value={single.value}
+                  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
                   onOk={(selected) => {
+                    console.log('pickerPage onChange=> ', selected);
                     single.value = selected.value;
+                    single.display = selected.label;
                     this.setState({
                       single,
                     });
-                    console.log(`selected ${single.value}`);
+                    this.close('singleVisible');
                   }}
+                  onCancel={() => this.close('singleVisible')}
                   />
               </Cell>
 
-              <Cell title="多列">
+              <Cell title="多列" hasArrow onClick={() => { this.open('multiVisible'); }}>
+                {multi.value ? <div className="show-right">{multi.display}</div> : <div className="za-picker-placeholder show-right">请选择</div>}
                 <Picker
-                  dataSource={[
-                    [
-                      { value: '1', label: '选项一' },
-                      { value: '2', label: '选项二' },
-                    ],
-                    [
-                      { value: 'a', label: '选项A' },
-                      { value: 'b', label: '选项B' },
-                    ],
-                  ]}
-                  />
-              </Cell>
-
-              <Cell title="多列联动">
-                <Picker
-                  dataSource={[
-                    {
-                      value: '1',
-                      label: '北京市',
-                      children: [
-                        { value: '11', label: '海淀区' },
-                        { value: '12', label: '西城区' },
-                      ],
-                    },
-                    {
-                      value: '2',
-                      label: '上海市',
-                      children: [
-                        { value: '21', label: '黄埔区' },
-                        { value: '22', label: '虹口区' },
-                      ],
-                    },
-                  ]}
-                  />
-              </Cell>
-
-              <Cell title="指定默认值">
-                <Picker
-                  dataSource={[
-                    {
-                      value: '1',
-                      label: '北京市',
-                      children: [
-                        { value: '11', label: '海淀区' },
-                        { value: '12', label: '西城区' },
-                      ],
-                    },
-                    {
-                      value: '2',
-                      label: '上海市',
-                      children: [
-                        { value: '21', label: '黄埔区' },
-                        { value: '22', label: '虹口区' },
-                      ],
-                    },
-                  ]}
-                  defaultValue={['1', '12']}
-                  />
-              </Cell>
-
-              <Cell title="禁止修改">
-                <Picker
-                  disabled
-                  dataSource={[
-                    { value: '1', label: '选项一' },
-                    { value: '2', label: '选项二' },
-                  ]}
-                  defaultValue="2"
-                  />
-              </Cell>
-
-              <Cell title="自定义格式">
-                <Picker
-                  visible={diy.visible}
-                  title="自定义标题"
-                  placeholder="自定义placeholder"
-                  dataSource={[
-                    {
-                      code: '1',
-                      name: '北京市',
-                      children: [
-                        { code: '11', name: '海淀区' },
-                        { code: '12', name: '西城区' },
-                      ],
-                    },
-                    {
-                      code: '2',
-                      name: '上海市',
-                      children: [
-                        { code: '21', name: '黄埔区' },
-                        { code: '22', name: '虹口区' },
-                      ],
-                    },
-                  ]}
-                  value={diy.value}
-                  valueMember="code"
-                  itemRender={data => data.name}
-                  displayRender={selected => selected.map(item => item.name).join('/')}
+                  visible={multiVisible}
+                  value={multi.value}
+                  dataSource={multiData}
                   onOk={(selected) => {
-                    diy.value = selected.map(item => item.code);
+                    multi.value = selected.map(item => `${item.value}`);
+                    multi.display = selected.map(item => `${item.label}`).join('&');
                     this.setState({
-                      diy,
+                      multi,
                     });
+                    this.close('multiVisible');
                   }}
+                  onCancel={() => this.close('multiVisible')}
+                  />
+              </Cell>
+
+              <Cell title="多列联动" description={<Button theme="primary" size="sm" onClick={() => { this.open('pickerVisible'); }}>请选择</Button>}>
+                <div>{multiCascade.display}</div>
+                <Picker
+                  visible={this.state.pickerVisible}
+                  dataSource={this.state.multiCascadeData}
+                  value={this.state.multiCascade.value}
+                  onChange={(selected) => {
+                    console.log(selected);
+                  }}
+                  onOk={(selected) => {
+                    multiCascade.value = selected.map(item => `${item.value}`);
+                    multiCascade.display = selected.map(item => item.label).join('-');
+                    this.setState({
+                      multiCascade,
+                    });
+                    this.close('pickerVisible');
+                  }}
+                  onCancel={() => this.close('pickerVisible')}
                   />
               </Cell>
 
@@ -157,64 +166,74 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="城市选择器" />
             <Panel.Body>
-
-              <Cell title="省市选择">
-                <Picker dataSource={District} cols={2} />
+              <Cell title="省市选择" description={<Button theme="primary" size="sm" onClick={() => { this.open('addr1Visible'); }}>请选择省市</Button>}>
+                <div>{this.state.address1.display}</div>
+                <Picker
+                  visible={addr1Visible}
+                  dataSource={District}
+                  cols={2}
+                  value={address1.value}
+                  onOk={(selected) => {
+                    address1.value = selected.map(item => item.value);
+                    address1.display = selected.map(item => item.label).join('-');
+                    this.setState({
+                      address1,
+                    });
+                    this.close('addr1Visible');
+                  }}
+                  onCancel={() => this.close('addr1Visible')}
+                  />
               </Cell>
 
-              <Cell title="省市区选择">
-                <Picker dataSource={District} />
+              <Cell description={<Button theme="primary" size="sm" onClick={() => { this.open('addr2Visible'); }}>选择省市区</Button>}>
+                <div>{this.state.address2.display}</div>
+                <Picker
+                  visible={addr2Visible}
+                  dataSource={District}
+                  value={address2.value}
+                  onOk={(selected) => {
+                    address2.value = selected.map(item => item.value);
+                    address2.display = selected.map(item => item.label).join('-');
+                    this.setState({
+                      address2,
+                    });
+                    this.close('addr2Visible');
+                  }}
+                  onCancel={() => this.close('addr2Visible')}
+                  />
               </Cell>
 
             </Panel.Body>
           </Panel>
 
           <Panel>
-            <Panel.Header title="日期选择器" />
+            <Panel.Header title="平铺选择器" />
             <Panel.Body>
-
-              <Cell title="年份选择">
-                <DatePicker
-                  title="选择年份"
-                  placeholder="请选择年份"
-                  mode="year"
-                  wheelDefaultValue="2009"
-                  />
-              </Cell>
-
-              <Cell title="日期选择">
-                <DatePicker
-                  title="选择日期"
-                  placeholder="请选择日期"
-                  mode="date"
-                  value="2009-03-04"
-                  min="2007-01-03"
-                  max="2017-11-23"
-                  />
-              </Cell>
-
-              <Cell title="时间选择">
-                <DatePicker
-                  title="选择时间"
-                  placeholder="请选择时间"
-                  mode="time"
-                  minuteStep={15}
-                  />
-              </Cell>
-
-              <Cell title="日期&时间">
-                <DatePicker mode="datetime" />
-              </Cell>
-
-              <Cell title="自定义格式">
-                <DatePicker
-                  title="选择日期"
-                  placeholder="请选择日期"
-                  mode="date"
-                  format="yyyy年MM月dd日"
-                  />
-              </Cell>
-
+              <PickerView
+                dataSource={[
+                  {
+                    code: '1',
+                    name: '北京市',
+                    children: [
+                      { code: '11', name: '海淀区' },
+                      { code: '12', name: '西城区' },
+                    ],
+                  },
+                  {
+                    code: '2',
+                    name: '上海市',
+                    children: [
+                      { code: '21', name: '黄埔区' },
+                      { code: '22', name: '虹口区' },
+                    ],
+                  },
+                ]}
+                valueMember="code"
+                itemRender={data => data.name}
+                onChange={(value) => {
+                  console.log(value);
+                }}
+                />
             </Panel.Body>
           </Panel>
 

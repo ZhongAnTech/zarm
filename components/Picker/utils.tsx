@@ -116,7 +116,8 @@ export function formatBackToObject(data, value, cascade, member, cols) {
       item.filter(itemInner => (
         itemInner[member] === value[index]
       ))[0]
-    ));
+    )).filter(t => !!t);
+
     return value.length === 1 ? finalRenderData[0] : finalRenderData;
   }
 
@@ -152,4 +153,53 @@ export function isArray(data) {
 export function hasChildrenObject(data) {
   return Object.prototype.hasOwnProperty.call(data, 'children')
     && Object.prototype.toString.call(data.children) !== '[object String]';
+}
+
+export function initDataAndValue(dataSource, initValue) {
+  let data: any;
+  let value = null;
+
+  // 针对单列数据源，转换为[[{}]]
+  if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
+    data = [dataSource];
+    value = isArray(initValue) ? initValue : [initValue];
+  } else {
+    data = dataSource;
+    value = initValue;
+  }
+
+  return {
+    data,
+    value,
+    cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+  };
+}
+
+export function updateDataSource(dataSource) {
+  let data: any;
+
+  if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
+    data = [dataSource];
+  } else {
+    data = dataSource;
+  }
+
+  return {
+    data,
+    cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+  };
+}
+
+export function updateValue(dataSource, value) {
+  let _value = null;
+
+  if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
+    _value = isArray(value) ? value : [value];
+  } else {
+    _value = value;
+  }
+
+  return {
+    _value,
+  };
 }

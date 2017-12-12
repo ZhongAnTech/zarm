@@ -1,0 +1,52 @@
+$prefixCls: $prefixCls-roller;
+$itemheight: $roller-item-height;
+
+.#{$prefixCls} {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 7 * $itemheight;
+  width: 100%;
+  &-group {
+    display: flex;
+    align-items: center;
+
+    &-item {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  &-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: 3 * $itemheight 0;
+  }
+
+  &-item {
+    text-align: center;
+    font-size: r(16);
+    line-height: $itemheight;
+    height: $itemheight;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    // &-selected {
+    //   font-size: r(18);
+    //   transition: all 0.1s;
+    // }
+  }
+
+  &-indicator {
+    right: 0;
+    position: absolute;
+    left: 0;
+    top: 3 * $itemheight;
+    height: $itemheight;
+    @include onepx(top bottom);
+  }
+}

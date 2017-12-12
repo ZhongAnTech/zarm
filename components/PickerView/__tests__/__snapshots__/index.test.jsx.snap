@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PickerView PickerView render visible 1`] = `
+<div
+  class="za-picker-mask-top"
+>
+  <div
+    class="za-picker-mask-bottom"
+  >
+    <div
+      class="za-picker-column-group"
+    >
+      <div
+        class="za-picker-column-group-item"
+      >
+        <div
+          class="za-picker-column"
+        >
+          <div
+            class="za-picker-column-indicator"
+          />
+          <div
+            class="za-picker-column-content"
+          >
+            <div
+              class="za-picker-column-item za-picker-column-item-selected"
+            >
+              选项一
+            </div>
+            <div
+              class="za-picker-column-item"
+            >
+              选项二
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

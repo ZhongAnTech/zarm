@@ -16,16 +16,20 @@ import { Picker } from 'zarm';
 ###### 单列
 ```jsx
 <Picker
-  dataSource={[
-    { value: '1', label: '选项一' },
-    { value: '2', label: '选项二' },
-  ]}
-  value={this.state.value}
+  visible={singleVisible}
+  placeholder="请选择"
+  className="show-right"
+  value={single.value}
+  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
   onOk={(selected) => {
+    console.log('pickerPage onChange=> ', selected);
+    single.value = selected.value;
+    single.display = selected.label;
     this.setState({
-      value: selected.value,
+      single,
     });
   }}
+  onCancel={() => this.close('singleVisible')}
   />
 ```
 
@@ -33,65 +37,39 @@ import { Picker } from 'zarm';
 ###### 多列
 ```jsx
 <Picker
-  dataSource={[
-    [
-      { value: '1', label: '选项一' },
-      { value: '2', label: '选项二' },
-    ],
-    [
-      { value: 'a', label: '选项A' },
-      { value: 'b', label: '选项B' },
-    ],
-  ]}
+  visible={multiVisible}
+  value={multi.value}
+  dataSource={multiData}
+  onOk={(selected) => {
+    multi.value = selected.map(item => `${item.value}`);
+    multi.display = selected.map(item => `${item.label}`).join('&');
+    this.setState({
+      multi,
+    });
+    this.close('multiVisible');
+  }}
+  onCancel={() => this.close('multiVisible')}
   />
 ```
 
 ###### 多列联动
 ```jsx
 <Picker
-  dataSource={[
-    {
-      value: '1',
-      label: '北京市',
-      children: [
-        { value: '11', label: '海淀区' },
-        { value: '12', label: '西城区' },
-      ],
-    },
-    {
-      value: '2',
-      label: '上海市',
-      children: [
-        { value: '21', label: '黄埔区' },
-        { value: '22', label: '虹口区' },
-      ],
-    },
-  ]}
-  />
-```
-
-###### 指定默认值
-```jsx
-<Picker
-  dataSource={[
-    {
-      value: '1',
-      label: '北京市',
-      children: [
-        { value: '11', label: '海淀区' },
-        { value: '12', label: '西城区' },
-      ],
-    },
-    {
-      value: '2',
-      label: '上海市',
-      children: [
-        { value: '21', label: '黄埔区' },
-        { value: '22', label: '虹口区' },
-      ],
-    },
-  ]}
-  defaultValue={['1', '12']}
+  visible={this.state.pickerVisible}
+  dataSource={this.state.multiCascadeData}
+  value={this.state.multiCascade.value}
+  onChange={(selected) => {
+    console.log(selected);
+  }}
+  onOk={(selected) => {
+    multiCascade.value = selected.map(item => `${item.value}`);
+    multiCascade.display = selected.map(item => item.label).join('-');
+    this.setState({
+      multiCascade,
+    });
+    this.close('pickerVisible');
+  }}
+  onCancel={() => this.close('pickerVisible')}
   />
 ```
 
@@ -150,59 +128,38 @@ import { Picker } from 'zarm';
 
 ###### 省市选择
 ```jsx
-<Picker dataSource={District} cols={2} />
+<Picker
+  visible={addr1Visible}
+  dataSource={District}
+  cols={2}
+  value={address1.value}
+  onOk={(selected) => {
+    address1.value = selected.map(item => item.value);
+    address1.display = selected.map(item => item.label).join('-');
+    this.setState({
+      address1,
+    });
+    this.close('addr1Visible');
+  }}
+  onCancel={() => this.close('addr1Visible')}
+  />
 ```
 
 ###### 省市区选择
 ```jsx
-<Picker dataSource={District} />
-```
-
-#### 日期选择器
-
-###### 年份选择
-```jsx
-<DatePicker
-  title="选择年份"
-  placeholder="请选择年份"
-  mode="year"
-  wheelDefaultValue="2009"
-  />
-```
-
-###### 日期选择
-```jsx
-<DatePicker
-  title="选择日期"
-  placeholder="请选择日期"
-  mode="date"
-  min="2007-01-03"
-  max="2017-11-23"
-  />
-```
-
-###### 时间选择
-```jsx
-<DatePicker
-  title="选择时间"
-  placeholder="请选择时间"
-  mode="time"
-  minuteStep={15}
-  />
-```
-
-###### 日期&时间
-```jsx
-<DatePicker mode="datetime" />
-```
-
-###### 自定义格式
-```jsx
-<DatePicker
-  title="选择日期"
-  placeholder="请选择日期"
-  mode="date"
-  format="YYYY年MM月DD日"
+<Picker
+  visible={addr2Visible}
+  dataSource={District}
+  value={address2.value}
+  onOk={(selected) => {
+    address2.value = selected.map(item => item.value);
+    address2.display = selected.map(item => item.label).join('-');
+    this.setState({
+      address2,
+    });
+    this.close('addr2Visible');
+  }}
+  onCancel={() => this.close('addr2Visible')}
   />
 ```
 
@@ -216,21 +173,70 @@ import { Picker } from 'zarm';
   />
 ```
 
-
+#### PickerView（平铺选择器）
+```jsx
+<PickerView
+  dataSource={[
+    {
+      code: '1',
+      name: '北京市',
+      children: [
+        { code: '11', name: '海淀区' },
+        { code: '12', name: '西城区' },
+      ],
+    },
+    {
+      code: '2',
+      name: '上海市',
+      children: [
+        { code: '21', name: '黄埔区' },
+        { code: '22', name: '虹口区' },
+      ],
+    },
+  ]}
+  valueMember="code"
+  itemRender={data => data.name}
+  onChange={(value) => {
+    console.log(value);
+  }}
+  />
+```
 ### API
+#### Picker & PickerView
 
-#### Picker & Picker.Stack
+| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| prefixCls | string | za-select\za-picker | | 类名前缀 |
+| className | string | | | 追加类名 |
+| visible（Picker） | boolean | false | | 是否展示 |
+| dataSource | array | [ ] | | 数据源 |
+| value | array &#124; string |  | | 值 |
+| defaultValue | array &#124; string |  | | 初始是否选中 |
+| valueMember | string | 'value' | | 值字段对应的key 
+| itemRender | func | <code>(data?: object) => data.label</code> | | 控制选项列表显示字段对应的key |
+| disabled（Picker） | boolean | false | | 是否禁用 |
+| title（Picker） | string | '请选择' | | 选择器标题 |
+| cancelText（Picker） | string | '取消' | | 取消栏文字 |
+| okText（Picker） | string | '确定' | | 确定栏文字 |
+| placeholder（Picker） | string | '请选择' | | 输入提示信息 |
+| cols | number | | | 级联选择器的级数 |
+| onChange | <code>(value?: object) => void</code> | noop | \(value: object\) | 值变化时触发的回调函数 |
+| onOk（Picker） | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 | 
+| onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+
+#### Picker.Stack
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-picker | | 类名前缀 |
 | className | string | | | 追加类名 |
 | dataSource | array | [ ] | | 数据源 |
-| value | array, string |  | | 值 |
-| defaultValue | array, string |  | | 初始是否选中 |
+| value | array &#124; string |  | | 值 |
+| defaultValue | array &#124; string |  | | 初始值 |
 | valueMember | string | 'value' | | 值字段对应的key 
 | itemRender | func |  | | 控制选项列表显示字段对应的key |
-| disabled | bool | false | | 是否禁用 |
+| disabled | boolean | false | | 是否禁用 |
 | title | string | '请选择' | | 选择器标题 |
 | cancelText | string | '取消' | | 取消栏文字 |
 | okText | string | '确定' | | 确定栏文字 |
@@ -241,17 +247,6 @@ import { Picker } from 'zarm';
 | onOk | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 |
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-
-#### DatePicker 额外的属性
-
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| mode | string | date | `year`, `month`, `date`, `time`, `datetime` | 指定日期选择模式 |
-| format | string | | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`, 秒:`ss`。| 格式化显示值 |
-| min | string | | | 相应mode的最小时间 |
-| max | string | | | 相应mode的最大时间 |
-| minuteStep | number | 1 | | 分钟步长 |
-| wheelDefaultValue | array, string | | | 滚轮默认值 |
 
 
 

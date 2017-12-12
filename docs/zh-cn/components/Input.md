@@ -42,11 +42,11 @@ import { Input } from 'zarm';
 | type | string | `text` | `text`, `textarea` | 显示类型 |
 | value | string |  | | 值 |
 | defaultValue | string |  | | 初始值 |
-| disabled | bool | false | | 是否禁用 |
+| disabled | boolean | false | | 是否禁用 |
 | rows | number | | | 多行文本时的显示行数 |
-| autosize | bool | false | | 是否高度自适应 |
+| autosize | boolean | false | | 是否高度自适应 |
 | maxLength | number | | | 输入字数上限 |
-| showLength | bool | false | | 是否显示输入字数 |
+| showLength | boolean | false | | 是否显示输入字数 |
 | onChange | <code>(value: string) => void</code> | noop | \(value: string\) | 值变化时触发的回调函数 |
 
 
