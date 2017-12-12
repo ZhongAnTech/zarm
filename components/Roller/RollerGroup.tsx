@@ -11,7 +11,7 @@ export interface RollerGroupProps extends BaseRollerGroupProps {
 export default class RollerGroup extends Component<RollerGroupProps, any> {
 
   static defaultProps = {
-    prefixCls: 'za-picker',
+    prefixCls: 'za-roller',
     onValueChange: () => {},
     itemRender: data => data.label,
   };
@@ -57,7 +57,7 @@ export default class RollerGroup extends Component<RollerGroupProps, any> {
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
       return (
-        <div key={col.key || i} className={`${prefixCls}-roller-group-item`}>
+        <div key={col.key || i} className={`${prefixCls}-group-item`}>
           <Roller
             prefixCls={prefixCls}
             selectedValue={selectedValue[i]}
@@ -71,7 +71,7 @@ export default class RollerGroup extends Component<RollerGroupProps, any> {
     });
 
     return (
-      <div className={classnames(className, `${prefixCls}-roller-group`)}>
+      <div className={classnames(className, `${prefixCls}-group`)}>
         {colElements}
       </div>
     );

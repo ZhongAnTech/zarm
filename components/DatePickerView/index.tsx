@@ -499,7 +499,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
         <div className={`${prefixCls}-mask-bottom`}>
           <Roller.Group
             className={className}
-            prefixCls={prefixCls}
             disabled={disabled}
             valueMember={valueMember}
             selectedValue={value}

@@ -1,7 +1,7 @@
 @import "mixins";
 
 $prefixCls: $prefixCls-picker;
-$picker-stackitem-height: r(35);
+$stackitemHeight: $picker-stackitem-height;
 
 .#{$prefixCls} {
   &-wrapper {
@@ -28,7 +28,7 @@ $picker-stackitem-height: r(35);
 
   &-cancel {
     text-align: left;
-    color: $theme-primary;
+    color: $color-text-caption;
   }
 
   &-submit {
@@ -64,7 +64,7 @@ $picker-stackitem-height: r(35);
   &-stack {
     &-group {
       position: relative;
-      height: 8 * $picker-stackitem-height;
+      height: 8 * $stackitemHeight;
       overflow: hidden;
     }
 
@@ -131,7 +131,7 @@ $picker-stackitem-height: r(35);
     &-item {
       position: relative;
       padding: 0 r(10);
-      line-height: $picker-stackitem-height;
+      line-height: $stackitemHeight;
       font-size: r(16);
       color: #333;
       transition: padding-left .4s;
