@@ -5,13 +5,11 @@ exports[`FilePicker renders correctly 1`] = `
   class="za-filepicker"
 >
   <input
-    accept="image/jpg, image/jpeg, image/gif, image/png"
     class="za-filepicker-input"
     type="file"
   />
-  <span
-    class="za-filepicker-trigger"
-  />
-  foo
+  <div>
+    add
+  </div>
 </div>
 `;
