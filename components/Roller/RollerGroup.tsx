@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Column from './Column';
-import { BaseColumnGroupProps } from './PropsType';
+import Roller from './Roller';
+import { BaseRollerGroupProps } from './PropsType';
 
-export interface ColumnGroupProps extends BaseColumnGroupProps {
+export interface RollerGroupProps extends BaseRollerGroupProps {
   prefixCls?: string;
   className?: any;
 }
 
-export default class ColumnGroup extends Component<ColumnGroupProps, any> {
+export default class RollerGroup extends Component<RollerGroupProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-picker',
@@ -57,8 +57,8 @@ export default class ColumnGroup extends Component<ColumnGroupProps, any> {
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
       return (
-        <div key={col.key || i} className={`${prefixCls}-column-group-item`}>
-          <Column
+        <div key={col.key || i} className={`${prefixCls}-roller-group-item`}>
+          <Roller
             prefixCls={prefixCls}
             selectedValue={selectedValue[i]}
             itemRender={itemRender}
@@ -71,7 +71,7 @@ export default class ColumnGroup extends Component<ColumnGroupProps, any> {
     });
 
     return (
-      <div className={classnames(className, `${prefixCls}-column-group`)}>
+      <div className={classnames(className, `${prefixCls}-roller-group`)}>
         {colElements}
       </div>
     );

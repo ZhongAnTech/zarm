@@ -116,87 +116,45 @@ const District = [{
 
 
 describe('Picker', () => {
-  it('Picker', () => {
+  it('Picker render visible', () => {
     const wrapper = render(
       <Picker
+        prefixCls="za-picker"
         dataSource={[
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
+        visible
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('render defaultValue correctly ', () => {
-    const wrapper = render(
-      <Picker
-        dataSource={[
-          { value: '1', label: '选项一' },
-          { value: '2', label: '选项二' },
-        ]}
-        defaultValue="2"
-        />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('Cascader Picker', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(
-      <Picker
-        dataSource={[
-          {
-            value: '1',
-            label: '选项一',
-            children: [
-              { value: '11', label: '选项一' },
-              { value: '12', label: '选项二' },
-            ],
-          },
-          {
-            value: '2',
-            label: '选项一',
-            children: [
-              { value: '21', label: '选项一' },
-              { value: '22', label: '选项二' },
-            ],
-          },
-        ]}
-        />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ value: ['1', '12'] });
-    jest.runAllTimers();
-    wrapper.unmount();
-  });
-
-  it('Cascader Picker init value', () => {
-    jest.useFakeTimers();
+  it('render custom label', () => {
     const wrapper = render(
       <Picker
         dataSource={[
           {
-            value: '1',
-            label: '选项一',
+            code: '1',
+            name: '北京市',
             children: [
-              { value: '11', label: '选项一' },
-              { value: '12', label: '选项二' },
+              { code: '11', name: '海淀区' },
+              { code: '12', name: '西城区' },
             ],
           },
           {
-            value: '2',
-            label: '选项一',
+            code: '2',
+            name: '上海市',
             children: [
-              { value: '21', label: '选项一' },
-              { value: '22', label: '选项二' },
+              { code: '21', name: '黄埔区' },
+              { code: '22', name: '虹口区' },
             ],
           },
         ]}
-        value={['1', '12']}
-        displayAddon="-"
-        />
-    );
+        valueMember="code"
+        itemRender={data => data.name}
+        />);
+
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -225,7 +183,6 @@ describe('Picker', () => {
           },
         ]}
         value={['1', '12']}
-        displayAddon="-"
         onOk={onOkFn}
         onCancel={onCancelFn}
         />
@@ -261,7 +218,6 @@ describe('Picker', () => {
           },
         ]}
         value={['1', '12']}
-        displayAddon="-"
         onOk={onOkFn}
         onCancel={onCancelFn}
         />
@@ -346,28 +302,6 @@ describe('Picker', () => {
         },
       ],
     });
-  });
-
-  it('should trigger maskClick when click mask', () => {
-    const handleClickFn = jest.fn();
-    const onMaskClick = jest.fn();
-    const onCancelFn = jest.fn();
-    const wrapper = mount(
-      <Picker
-        dataSource={[
-          { value: '1', label: '选项一' },
-          { value: '2', label: '选项二' },
-        ]}
-        onClick={handleClickFn}
-        onCancel={onCancelFn}
-        onMaskClick={onMaskClick}
-        />
-    );
-    wrapper.find('.za-picker').simulate('click');
-    expect(handleClickFn).toBeCalled();
-    wrapper.find('.za-mask').simulate('click');
-    expect(onMaskClick).toBeCalled();
-    expect(onCancelFn).toBeCalled();
   });
 
   it('StackPicker', () => {

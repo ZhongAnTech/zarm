@@ -6,6 +6,20 @@ import enLocale from '../locale/en_US';
 
 
 describe('DatePicker', () => {
+  it('DatePicker visible', () => {
+    const wrapper = render(
+      <DatePicker
+        visible
+        title="选择年份"
+        placeholder="请选择年份"
+        mode="year"
+        value="2017"
+        locale={enLocale}
+        />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('DatePicker year', () => {
     const wrapper = render(
       <DatePicker
@@ -111,27 +125,5 @@ describe('DatePicker', () => {
     wrapper.find('.za-picker-cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
     expect(onOkFn).not.toBeCalled();
-  });
-
-  it('should trigger maskClick when click mask', () => {
-    const onClickFn = jest.fn();
-    const onMaskClick = jest.fn();
-    const onCancelFn = jest.fn();
-    const wrapper = mount(
-      <DatePicker
-        title="选择时间"
-        placeholder="请选择时间"
-        mode="datetime"
-        onClick={onClickFn}
-        onCancel={onCancelFn}
-        onMaskClick={onMaskClick}
-        defaultValue="2017-11-12 20:00"
-        />
-    );
-    wrapper.find('.za-picker').simulate('click');
-    expect(onClickFn).toBeCalled();
-    wrapper.find('.za-mask').simulate('click');
-    expect(onMaskClick).toBeCalled();
-    expect(onCancelFn).toBeCalled();
   });
 });

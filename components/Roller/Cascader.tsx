@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { arrayTreeFilter, formatToInit } from './utils';
-import ColumnGroup from './ColumnGroup';
+import RollerGroup from './RollerGroup';
 import { BaseCascaderProps } from './PropsType';
 
 export interface CascaderProps extends BaseCascaderProps {
@@ -116,7 +116,7 @@ export default class Cascader extends Component<CascaderProps, any> {
     } = this.props;
 
     return (
-      <ColumnGroup
+      <RollerGroup
         prefixCls={prefixCls}
         className={className}
         itemRender={itemRender}
@@ -125,7 +125,7 @@ export default class Cascader extends Component<CascaderProps, any> {
         onValueChange={(value, index) => this.onValueChange(value, index)}
       >
         {this.getCols()}
-      </ColumnGroup>
+      </RollerGroup>
     );
   }
 }
