@@ -70,7 +70,7 @@ class FilePickerPage extends Component {
     files.splice(index, 1);
 
     toast.visible = true;
-    toast.children = '图片删除成功';
+    toast.children = '删除成功';
     this.setState({
       toast,
     });
@@ -94,7 +94,7 @@ class FilePickerPage extends Component {
   fileRender(files) {
     return this.state[files].map((item, index) => {
       return (
-        <Cell key={+index}>{item.fileName}</Cell>
+        <Cell key={+index} description={<Icon type="wrong" theme="error" onClick={() => this.remove(files, +index)} />}>{item.fileName}</Cell>
       );
     });
   }
