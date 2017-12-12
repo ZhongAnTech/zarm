@@ -103,10 +103,12 @@ export default class Picker extends Component<PickerProps, any> {
     }
   }
 
-  onOk = () => {
+  onOk = (e) => {
+    e.stopPropagation();
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
+
     this.toggle();
     this.setState({
       value,

@@ -110,7 +110,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   // 点击确定
-  onOk() {
+  onOk = () => {
     const { onOk } = this.props;
     const value = this.getDate();
     this.setState({
@@ -201,7 +201,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
               <div className={`${prefixCls}-header`}>
                 <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
                 <div className={`${prefixCls}-title`}>{title}</div>
-                <div className={`${prefixCls}-submit`} onClick={() => this.onOk()}>{okText}</div>
+                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
               </div>
               <div className={`${prefixCls}-mask-top`}>
                 <div className={`${prefixCls}-mask-bottom`}>

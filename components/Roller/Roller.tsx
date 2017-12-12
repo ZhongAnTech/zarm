@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import ZScroller from 'zscroller';
-import { BaseColumnProps } from './PropsType';
+import { BaseRollerProps } from './PropsType';
 
 function getChildMember(child, m) {
   return child[m];
@@ -11,12 +11,12 @@ function toChildrenArray(children) {
   return children;
 }
 
-export interface ColumnProps extends BaseColumnProps {
+export interface RollerProps extends BaseRollerProps {
   prefixCls?: string;
   className?: any;
 }
 
-export default class Column extends Component<ColumnProps, any> {
+export default class Roller extends Component<RollerProps, any> {
 
   static Group: any;
   static Cascader: any;
@@ -167,8 +167,8 @@ export default class Column extends Component<ColumnProps, any> {
     } = this.props;
 
     const { selectedValue } = this.state;
-    const itemClassName = `${prefixCls}-column-item`;
-    const selectedItemClassName = `${itemClassName} ${prefixCls}-column-item-selected`;
+    const itemClassName = `${prefixCls}-roller-item`;
+    const selectedItemClassName = `${itemClassName} ${prefixCls}-roller-item-selected`;
     const items = children.map((item, index) => {
       return (
         <div
@@ -181,11 +181,11 @@ export default class Column extends Component<ColumnProps, any> {
       );
     });
 
-    const pickerCls = classnames(`${prefixCls}-column`, className);
+    const pickerCls = classnames(`${prefixCls}-roller`, className);
     return (
       <div className={pickerCls}>
-        <div className={`${prefixCls}-column-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
-        <div className={`${prefixCls}-column-content`} ref={(content) => { this.content = content; }}>
+        <div className={`${prefixCls}-roller-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
+        <div className={`${prefixCls}-roller-content`} ref={(content) => { this.content = content; }}>
           {items}
         </div>
       </div>

@@ -83,11 +83,6 @@ import { DateSelect } from 'zarm';
   placeholder="请选择日期"
   mode="datetime"
   format="yyyy年MM月dd日 HH时mm分"
-  formatYear={i => `${i}year`}
-  formatMonth={i => `${i + 1}Month`}
-  formatDay={i => `${i}day`}
-  formatHour={i => `${i}hour`}
-  formatMinute={i => `${i}minute`}
   value={customDate}
   onChange={(value) => {
     this.setState({
@@ -116,11 +111,6 @@ import { DateSelect } from 'zarm';
 | value | string |  | | 值 |
 | defaultValue | string &#124; Date | | | 初始值（例：'2017-12-10' 或 new Date()） |
 | format | string | | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`。| 格式化显示值 |
-| formatYear| <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的年份显示
-| formatMonth | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的月份显示
-| formatDay | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的天数显示
-| formatHour | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的小时显示
-| formatMinute | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的分钟显示
 | min | string | | | 相应mode的最小时间 |
 | max | string | | | 相应mode的最大时间 |
 | minuteStep | number | 1 | | 分钟间隔 |

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Cell, Picker, Select, Button, PickerView } from 'zarm';
+import { Panel, Cell, Picker, Button, PickerView } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -90,7 +90,7 @@ class Page extends Component {
   }
 
   render() {
-    const { single, multi, multiVisible, multiCascade,
+    const { single, singleVisible, multi, multiVisible, multiCascade,
       address1, addr1Visible, address2, addr2Visible } = this.state;
 
     return (
@@ -100,13 +100,15 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
-              <Cell title="单列" hasArrow>
-                <Select
+              <Cell title="单列" hasArrow onClick={() => { this.open('singleVisible'); }}>
+                {single.value ? <div className="show-right">{single.display}</div> : <div className="za-picker-placeholder show-right">请选择</div>}
+                <Picker
+                  visible={singleVisible}
                   placeholder="请选择"
                   className="show-right"
                   value={single.value}
                   dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
-                  onChange={(selected) => {
+                  onOk={(selected) => {
                     console.log('pickerPage onChange=> ', selected);
                     single.value = selected.value;
                     single.display = selected.label;
@@ -114,6 +116,7 @@ class Page extends Component {
                       single,
                     });
                   }}
+                  onCancel={() => this.close('singleVisible')}
                   />
               </Cell>
 

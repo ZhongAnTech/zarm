@@ -19,7 +19,7 @@ export { default as Popup } from './Popup';
 export { default as Progress } from './Progress';
 export { default as Pull } from './Pull';
 export { default as Panel } from './Panel';
-export { default as Column } from './Column';
+export { default as Roller } from './Roller';
 export { default as Picker } from './Picker';
 export { default as DatePicker } from './DatePicker';
 export { default as Radio } from './Radio';
