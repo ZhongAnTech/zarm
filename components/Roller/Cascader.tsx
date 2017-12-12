@@ -11,7 +11,7 @@ export interface CascaderProps extends BaseCascaderProps {
 export default class Cascader extends Component<CascaderProps, any> {
 
   static defaultProps = {
-    prefixCls: 'za-picker',
+    prefixCls: 'za-roller',
     data: [],
     disabled: false,
     itemRender: data => data.label,

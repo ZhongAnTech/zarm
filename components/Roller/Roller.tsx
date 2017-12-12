@@ -21,7 +21,7 @@ export default class Roller extends Component<RollerProps, any> {
   static Group: any;
   static Cascader: any;
   static defaultProps = {
-    prefixCls: 'za-picker',
+    prefixCls: 'za-roller',
     onValueChange: () => {},
     itemRender: data => data.label,
   };
@@ -167,8 +167,8 @@ export default class Roller extends Component<RollerProps, any> {
     } = this.props;
 
     const { selectedValue } = this.state;
-    const itemClassName = `${prefixCls}-roller-item`;
-    const selectedItemClassName = `${itemClassName} ${prefixCls}-roller-item-selected`;
+    const itemClassName = `${prefixCls}-item`;
+    const selectedItemClassName = `${itemClassName} ${prefixCls}-item-selected`;
     const items = children.map((item, index) => {
       return (
         <div
@@ -181,11 +181,11 @@ export default class Roller extends Component<RollerProps, any> {
       );
     });
 
-    const pickerCls = classnames(`${prefixCls}-roller`, className);
+    const rollerCls = classnames(`${prefixCls}`, className);
     return (
-      <div className={pickerCls}>
-        <div className={`${prefixCls}-roller-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
-        <div className={`${prefixCls}-roller-content`} ref={(content) => { this.content = content; }}>
+      <div className={rollerCls}>
+        <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
+        <div className={`${prefixCls}-content`} ref={(content) => { this.content = content; }}>
           {items}
         </div>
       </div>

@@ -85,7 +85,6 @@ export default class PickerView extends Component<PickerViewProps, any> {
     if (this.state.cascade) {
       PickerCol = (
         <Roller.Cascader
-          prefixCls={prefixCls}
           data={data}
           value={value}
           cols={this.props.cols}
@@ -97,7 +96,6 @@ export default class PickerView extends Component<PickerViewProps, any> {
     } else {
       PickerCol = (
         <Roller.Group
-          prefixCls={prefixCls}
           itemRender={itemRender}
           valueMember={valueMember}
           selectedValue={value}

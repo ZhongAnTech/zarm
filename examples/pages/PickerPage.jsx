@@ -115,6 +115,7 @@ class Page extends Component {
                     this.setState({
                       single,
                     });
+                    this.close('singleVisible');
                   }}
                   onCancel={() => this.close('singleVisible')}
                   />
