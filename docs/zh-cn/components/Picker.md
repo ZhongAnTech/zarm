@@ -16,16 +16,20 @@ import { Picker } from 'zarm';
 ###### 单列
 ```jsx
 <Picker
-  dataSource={[
-    { value: '1', label: '选项一' },
-    { value: '2', label: '选项二' },
-  ]}
-  value={this.state.value}
+  visible={singleVisible}
+  placeholder="请选择"
+  className="show-right"
+  value={single.value}
+  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
   onOk={(selected) => {
+    console.log('pickerPage onChange=> ', selected);
+    single.value = selected.value;
+    single.display = selected.label;
     this.setState({
-      value: selected.value,
+      single,
     });
   }}
+  onCancel={() => this.close('singleVisible')}
   />
 ```
 
@@ -33,65 +37,39 @@ import { Picker } from 'zarm';
 ###### 多列
 ```jsx
 <Picker
-  dataSource={[
-    [
-      { value: '1', label: '选项一' },
-      { value: '2', label: '选项二' },
-    ],
-    [
-      { value: 'a', label: '选项A' },
-      { value: 'b', label: '选项B' },
-    ],
-  ]}
+  visible={multiVisible}
+  value={multi.value}
+  dataSource={multiData}
+  onOk={(selected) => {
+    multi.value = selected.map(item => `${item.value}`);
+    multi.display = selected.map(item => `${item.label}`).join('&');
+    this.setState({
+      multi,
+    });
+    this.close('multiVisible');
+  }}
+  onCancel={() => this.close('multiVisible')}
   />
 ```
 
 ###### 多列联动
 ```jsx
 <Picker
-  dataSource={[
-    {
-      value: '1',
-      label: '北京市',
-      children: [
-        { value: '11', label: '海淀区' },
-        { value: '12', label: '西城区' },
-      ],
-    },
-    {
-      value: '2',
-      label: '上海市',
-      children: [
-        { value: '21', label: '黄埔区' },
-        { value: '22', label: '虹口区' },
-      ],
-    },
-  ]}
-  />
-```
-
-###### 指定默认值
-```jsx
-<Picker
-  dataSource={[
-    {
-      value: '1',
-      label: '北京市',
-      children: [
-        { value: '11', label: '海淀区' },
-        { value: '12', label: '西城区' },
-      ],
-    },
-    {
-      value: '2',
-      label: '上海市',
-      children: [
-        { value: '21', label: '黄埔区' },
-        { value: '22', label: '虹口区' },
-      ],
-    },
-  ]}
-  defaultValue={['1', '12']}
+  visible={this.state.pickerVisible}
+  dataSource={this.state.multiCascadeData}
+  value={this.state.multiCascade.value}
+  onChange={(selected) => {
+    console.log(selected);
+  }}
+  onOk={(selected) => {
+    multiCascade.value = selected.map(item => `${item.value}`);
+    multiCascade.display = selected.map(item => item.label).join('-');
+    this.setState({
+      multiCascade,
+    });
+    this.close('pickerVisible');
+  }}
+  onCancel={() => this.close('pickerVisible')}
   />
 ```
 
@@ -150,12 +128,39 @@ import { Picker } from 'zarm';
 
 ###### 省市选择
 ```jsx
-<Picker dataSource={District} cols={2} />
+<Picker
+  visible={addr1Visible}
+  dataSource={District}
+  cols={2}
+  value={address1.value}
+  onOk={(selected) => {
+    address1.value = selected.map(item => item.value);
+    address1.display = selected.map(item => item.label).join('-');
+    this.setState({
+      address1,
+    });
+    this.close('addr1Visible');
+  }}
+  onCancel={() => this.close('addr1Visible')}
+  />
 ```
 
 ###### 省市区选择
 ```jsx
-<Picker dataSource={District} />
+<Picker
+  visible={addr2Visible}
+  dataSource={District}
+  value={address2.value}
+  onOk={(selected) => {
+    address2.value = selected.map(item => item.value);
+    address2.display = selected.map(item => item.label).join('-');
+    this.setState({
+      address2,
+    });
+    this.close('addr2Visible');
+  }}
+  onCancel={() => this.close('addr2Visible')}
+  />
 ```
 
 #### 层叠式选择器

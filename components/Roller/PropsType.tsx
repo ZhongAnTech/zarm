@@ -1,4 +1,4 @@
-export interface BaseColumnProps {
+export interface BaseRollerProps {
   children: object[];
   selectedValue?: string[];
   defaultSelectedValue?: string;
@@ -9,7 +9,7 @@ export interface BaseColumnProps {
   itemRender: (data?: object) => string;
 }
 
-export interface BaseColumnGroupProps {
+export interface BaseRollerGroupProps {
   children: any[];
   selectedValue?: string[];
   valueMember: string;

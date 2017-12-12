@@ -85,11 +85,6 @@ import { DatePicker, DatePickerView } from 'zarm';
   title="选择日期"
   placeholder="请选择日期"
   mode="datetime"
-  formatYear={i => `${i}year`}
-  formatMonth={i => `${i + 1}Month`}
-  formatDay={i => `${i}day`}
-  formatHour={i => `${i}hour`}
-  formatMinute={i => `${i}minute`}
   value={customDate}
   onOk={(value) => {
     this.setState({ customDate: value, customVisible: false });
@@ -124,11 +119,6 @@ import { DatePicker, DatePickerView } from 'zarm';
 | valueMember | string | 'value' | | 值字段对应的key |
 | mode | string | date | `year`, `month`, `date`, `time`, `datetime` | 指定日期选择模式 |
 | format | string | | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`。| 格式化显示值 |
-| formatYear| <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的年份显示
-| formatMonth | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的月份显示
-| formatDay | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的天数显示
-| formatHour | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的小时显示
-| formatMinute | <code>(num: number) => string</code> | noop | \(num: number\) | 自定义选项中的分钟显示
 | min | string | | | 相应mode的最小时间 |
 | max | string | | | 相应mode的最大时间 |
 | minuteStep | number | 1 | | 分钟间隔 |

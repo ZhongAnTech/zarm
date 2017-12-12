@@ -3,7 +3,7 @@ $picker-item-height: r(30);
 $picker-stackitem-height: r(35);
 
 .#{$prefixCls} {
-  &-column-group {
+  &-roller-group {
     display: flex;
     align-items: center;
 
@@ -13,7 +13,7 @@ $picker-stackitem-height: r(35);
     }
   }
 
-  &-column {
+  &-roller {
     display: block;
     position: relative;
     overflow: hidden;

@@ -28,7 +28,7 @@ $picker-stackitem-height: r(35);
 
   &-cancel {
     text-align: left;
-    color: #999;
+    color: $theme-primary;
   }
 
   &-submit {

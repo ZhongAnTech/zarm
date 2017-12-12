@@ -105,11 +105,6 @@ class Page extends Component {
                   placeholder="请选择日期"
                   mode="datetime"
                   format="yyyy年MM月dd日 HH时mm分"
-                  formatYear={i => `${i}year`}
-                  formatMonth={i => `${i + 1}Month`}
-                  formatDay={i => `${i}day`}
-                  formatHour={i => `${i}hour`}
-                  formatMinute={i => `${i}minute`}
                   value={customDate}
                   onChange={(value) => {
                     this.setState({

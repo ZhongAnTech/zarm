@@ -113,16 +113,11 @@ class Page extends Component {
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="datetime"
-                  formatYear={i => `${i}year`}
-                  formatMonth={i => `${i + 1}Month`}
-                  formatDay={i => `${i}day`}
-                  formatHour={i => `${i}hour`}
-                  formatMinute={i => `${i}minute`}
                   value={customDate}
                   onOk={(value) => {
                     this.setState({ customDate: value, customVisible: false });
                   }}
-                  onCancel={() => this.close('datetimeVisible')}
+                  onCancel={() => this.close('customVisible')}
                   />
               </Cell>
             </Panel.Body>

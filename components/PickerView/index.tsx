@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { formatBackToObject, initDataAndValue, updateDataSource, updateValue } from '../Picker/utils';
-import Column from '../Column';
+import Roller from '../Roller';
 import { BasePickerViewProps } from './PropsType';
 
 export interface PickerViewProps extends BasePickerViewProps {
@@ -84,7 +84,7 @@ export default class PickerView extends Component<PickerViewProps, any> {
 
     if (this.state.cascade) {
       PickerCol = (
-        <Column.Cascader
+        <Roller.Cascader
           prefixCls={prefixCls}
           data={data}
           value={value}
@@ -96,7 +96,7 @@ export default class PickerView extends Component<PickerViewProps, any> {
       );
     } else {
       PickerCol = (
-        <Column.Group
+        <Roller.Group
           prefixCls={prefixCls}
           itemRender={itemRender}
           valueMember={valueMember}
@@ -104,7 +104,7 @@ export default class PickerView extends Component<PickerViewProps, any> {
           onValueChange={v => this.onValueChange(v)}
         >
           {cols}
-        </Column.Group>
+        </Roller.Group>
       );
     }
 

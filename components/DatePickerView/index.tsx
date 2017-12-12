@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropsType from './PropsType';
 import defaultLocale from './locale/zh_CN';
-import Column from '../Column';
+import Roller from '../Roller';
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -497,7 +497,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     ? (
       <div className={`${prefixCls}-mask-top`}>
         <div className={`${prefixCls}-mask-bottom`}>
-          <Column.Group
+          <Roller.Group
             className={className}
             prefixCls={prefixCls}
             disabled={disabled}
@@ -506,7 +506,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
             onValueChange={(values, index) => this.onValueChange(values, index)}
           >
             {cols}
-          </Column.Group>
+          </Roller.Group>
         </div>
       </div>
     )
