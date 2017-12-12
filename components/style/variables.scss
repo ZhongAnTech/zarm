@@ -79,10 +79,12 @@ $prefixCls-modal: za-modal;
 $prefixCls-noticebar: za-noticebar;
 $prefixCls-panel: za-panel;
 $prefixCls-picker: za-picker;
+$prefixCls-roller: za-roller;
 $prefixCls-popup: za-popup;
 $prefixCls-progress: za-progress;
 $prefixCls-pull: za-pull;
 $prefixCls-radio: za-radio;
+$prefixCls-select: za-select;
 $prefixCls-slider: za-slider;
 $prefixCls-spinner: za-spinner;
 $prefixCls-stepper: za-stepper;
@@ -168,6 +170,10 @@ $panel-header-font-size: r(14);
 $panel-body-color: $color-text;
 $panel-footer-color: $color-text-caption;
 $panel-footer-font-size: r(12);
+
+// Picker
+$roller-item-height: r(30);
+$picker-stackitem-height: r(35);
 
 // Pull
 $pull-control-height: r(50);

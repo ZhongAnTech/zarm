@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
-import Column from '../Column';
+import { formatToInit, formatBackToObject, initDataAndValue, updateDataSource, updateValue } from './utils';
 import Popup from '../Popup';
+import PickerView from '../PickerView';
 import { BasePickerProps } from './PropsType';
 
 // 阻止选择器区域的默认事件
@@ -19,7 +19,6 @@ export default class Picker extends Component<PickerProps, any> {
   static Stack: any;
 
   static defaultProps = {
-    placeholder: '请选择',
     title: '请选择',
     cancelText: '取消',
     okText: '确定',
@@ -41,71 +40,55 @@ export default class Picker extends Component<PickerProps, any> {
     super(props);
 
     const initValue = props.value || props.defaultValue || [];
-    const { dataSource } = props;
-    let _data: any;
-    let _value = null;
 
-    // 针对单列数据源，转换为[[{}]]
-    if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-      _data = [props.dataSource];
-      _value = isArray(initValue) ? initValue : [initValue];
-    } else {
-      _data = dataSource;
-      _value = initValue;
-    }
+    let { data , value, cascade } = initDataAndValue(props.dataSource, initValue);
 
     this.state = {
-      visible: false,
-      value: _value,
-      data: _data,
-      cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+      visible: props.visible || false,
+      value,
+      data,
+      cascade,
     };
 
-    this.tempValue = _value;
+    this.tempValue = value;
   }
 
   componentWillReceiveProps(nextProps) {
     if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
       const { dataSource } = nextProps;
-      let _data: any;
-
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _data = [nextProps.dataSource];
-      } else {
-        _data = nextProps.dataSource;
-      }
+      let { data, cascade } = updateDataSource(dataSource);
 
       this.setState({
-        data: _data,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+        data,
+        cascade,
       });
     }
 
     if ('value' in nextProps && nextProps.value !== this.props.value) {
-      let _value = null;
-      const { dataSource } = nextProps;
-
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
-      } else {
-        _value = nextProps.value;
-      }
+      const { dataSource, value } = nextProps;
+      let { _value } = updateValue(dataSource, value);
 
       this.setState({
         value: _value,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
       });
       this.tempValue = _value;
+    }
+
+    if ('visible' in nextProps && this.state.visible !== nextProps.visible) {
+      this.setState({ visible: nextProps.visible });
     }
   }
 
   onValueChange = (value) => {
-    const { onChange } = this.props;
+    const { data, cascade } = this.state;
+    const { onChange, valueMember, cols } = this.props;
     this.setState({
       value,
     });
     if (typeof onChange === 'function') {
-      onChange(value);
+      let _value: any;
+      _value = formatBackToObject(data, value, cascade, valueMember, cols);
+      onChange(_value);
     }
   }
 
@@ -120,15 +103,17 @@ export default class Picker extends Component<PickerProps, any> {
     }
   }
 
-  onOk = () => {
+  onOk = (e) => {
+    e.stopPropagation();
     const { onOk, valueMember, cols } = this.props;
     const { data, cascade } = this.state;
     const value = this.getInitValue();
+
+    this.toggle();
     this.setState({
       value,
     });
     this.tempValue = value;
-    this.toggle();
     let _value: any;
     _value = formatBackToObject(data, value, cascade, valueMember, cols);
 
@@ -147,8 +132,7 @@ export default class Picker extends Component<PickerProps, any> {
 
   getInitValue = () => {
     const data = this.state.data;
-    const { valueMember } = this.props;
-
+    const { valueMember = Picker.defaultProps.valueMember } = this.props;
     const { value } = this.state;
 
     if (!value || !value.length) {
@@ -171,105 +155,16 @@ export default class Picker extends Component<PickerProps, any> {
     });
   }
 
-  handleClick = () => {
-    this.props.onClick();
-    if (!this.props.disabled) {
-      this.toggle();
-    }
-  }
-
-  close = (key) => {
-    this.setState({
-      [`${key}`]: false,
-    });
-  }
-
-  _displayRender = (data) => {
-    const { displayRender, itemRender } = this.props;
-
-    if (typeof displayRender === 'function') {
-      return displayRender(data);
-    }
-    return data.map((v) => {
-      return itemRender(v);
-    }).join('');
-  }
-
   render() {
-    const { prefixCls, disabled, className, cancelText,
-      okText, title, placeholder, valueMember, itemRender } = this.props;
-    const { data, value } = this.state;
-
-    let PickerCol: JSX.Element;
-
+    const { prefixCls, className, cancelText,
+      okText, title, ...others } = this.props;
+    const { visible, value } = this.state;
     const classes = classnames(`${prefixCls}-container`, className);
-
-    const inputCls = classnames(`${prefixCls}-input`, {
-      [`${prefixCls}-placeholder`]: !value.join(''),
-      [`${prefixCls}-disabled`]: !!disabled,
-    });
-
-    const cols = data.map((d) => {
-      return { props: { children: d } };
-    });
-
-    if (this.state.cascade) {
-      PickerCol = (
-        <Column.Cascader
-          prefixCls={prefixCls}
-          data={data}
-          value={this.state.value}
-          cols={this.props.cols}
-          itemRender={itemRender}
-          valueMember={valueMember}
-          onChange={v => this.onValueChange(v)}
-        />
-      );
-    } else {
-      PickerCol = (
-        <Column.Group
-          className={className}
-          prefixCls={prefixCls}
-          itemRender={itemRender}
-          valueMember={valueMember}
-          selectedValue={value}
-          onValueChange={v => this.onValueChange(v)}
-        >
-          {cols}
-        </Column.Group>
-      );
-    }
-
-    const display = () => {
-      if (this.state.cascade) {
-        if (value.length) {
-          const treeChildren = arrayTreeFilter(this.props.dataSource, (item, level) => {
-            return item[valueMember] === value[level];
-          });
-
-          return this._displayRender(treeChildren);
-        }
-      }
-
-      const treeChildren2 = data.map((d, index) => {
-        if (value[index]) {
-          return d.filter(obj => value[index] === obj[valueMember])[0];
-        }
-        return undefined;
-      }).filter(t => !!t);
-
-      return this._displayRender(treeChildren2);
-    };
-
     return (
-      <div className={`${prefixCls}`} onClick={() => this.handleClick()}>
-        <div className={inputCls}>
-          <input type="hidden" value={this.state.value} />
-          {display() || placeholder}
-        </div>
+      <div className={`${prefixCls}`}>
         <div className={classes} onClick={e => onContainerClick(e)}>
           <Popup
-            visible={this.state.visible}
+            visible={visible}
             onMaskClick={this.onMaskClick}
           >
             <div className={`${prefixCls}-wrapper`}>
@@ -278,11 +173,12 @@ export default class Picker extends Component<PickerProps, any> {
                 <div className={`${prefixCls}-title`}>{title}</div>
                 <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
               </div>
-              <div className={`${prefixCls}-mask-top`}>
-                <div className={`${prefixCls}-mask-bottom`}>
-                  {PickerCol}
-                </div>
-              </div>
+              <PickerView
+                prefixCls={prefixCls}
+                onValueChange={v => this.onValueChange(v)}
+                {...others}
+                value={value}
+              />
             </div>
           </Popup>
         </div>

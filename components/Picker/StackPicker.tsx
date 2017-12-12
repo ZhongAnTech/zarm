@@ -98,12 +98,12 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   obtainItem = (list, value) => {
-    const { valueMember } = this.props;
+    const { valueMember = PickerStack.defaultProps.valueMember } = this.props;
     return list.filter(item => item[valueMember] === value)[0];
   }
 
   change = (index: number, cVal?: object, isLast?: boolean) => {
-    const { onOk } = this.props;
+    // const { onOk } = this.props;
     const value = this.state.value.slice(0, index);
     let errorMsg: string = '';
 
@@ -119,7 +119,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
         errorMsg,
       });
       this.close();
-      onOk(value);
+      // onOk(value);
     } else {
       this.setState({ value, errorMsg });
     }
@@ -142,7 +142,8 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   reposition = () => {
-    const { dataSource, valueMember, disabled, cols = PickerStack.defaultProps.cols } = this.props;
+    const { dataSource, valueMember = PickerStack.defaultProps.valueMember,
+      disabled, cols = PickerStack.defaultProps.cols } = this.props;
 
     if (disabled) { return; }
 
@@ -167,7 +168,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   renderGroup(dataSource, value) {
-    const { valueMember, cols = PickerStack.defaultProps.cols } = this.props;
+    const { valueMember = PickerStack.defaultProps.valueMember, cols = PickerStack.defaultProps.cols } = this.props;
     const group: any[] = [];
     let i = 0;
 
@@ -190,7 +191,8 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   renderColumnItem = (list, colIndex, data, isLast): React.ReactNode => {
-    const { valueMember, prefixCls, itemRender } = this.props;
+    const { valueMember = PickerStack.defaultProps.valueMember, prefixCls,
+      itemRender = PickerStack.defaultProps.itemRender } = this.props;
     const pickVal = data[valueMember];
     return list.map((item, index) => {
       return (
@@ -206,7 +208,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   renderColumn = (list: any[], colIndex: number, data: object, isLast?: boolean) => {
-    const { valueMember, prefixCls } = this.props;
+    const { valueMember = PickerStack.defaultProps.valueMember, prefixCls } = this.props;
     const pickVal = data[valueMember];
     const cls = classnames(`${prefixCls}-stack-column`, {
       'lower-hidden': !pickVal,
@@ -231,7 +233,7 @@ export default class PickerStack extends Component<PickerStackProps, any> {
 
   renderWrapper() {
     const { className, title, dataSource,
-            disabled, prefixCls, itemRender } = this.props;
+            disabled, prefixCls, itemRender = PickerStack.defaultProps.itemRender } = this.props;
     const { visible, errorMsg, value } = this.state;
 
     const wrapperCls = classnames(`${prefixCls}-container`, {

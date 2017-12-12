@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import ZScroller from 'zscroller';
-import { BaseColumnProps } from './PropsType';
+import { BaseRollerProps } from './PropsType';
 
 function getChildMember(child, m) {
   return child[m];
@@ -11,17 +11,17 @@ function toChildrenArray(children) {
   return children;
 }
 
-export interface ColumnProps extends BaseColumnProps {
+export interface RollerProps extends BaseRollerProps {
   prefixCls?: string;
   className?: any;
 }
 
-export default class Column extends Component<ColumnProps, any> {
+export default class Roller extends Component<RollerProps, any> {
 
   static Group: any;
   static Cascader: any;
   static defaultProps = {
-    prefixCls: 'za-picker',
+    prefixCls: 'za-roller',
     onValueChange: () => {},
     itemRender: data => data.label,
   };
@@ -167,25 +167,25 @@ export default class Column extends Component<ColumnProps, any> {
     } = this.props;
 
     const { selectedValue } = this.state;
-    const itemClassName = `${prefixCls}-column-item`;
-    const selectedItemClassName = `${itemClassName} ${prefixCls}-column-item-selected`;
-    const items = children.map((item) => {
+    const itemClassName = `${prefixCls}-item`;
+    const selectedItemClassName = `${itemClassName} ${prefixCls}-item-selected`;
+    const items = children.map((item, index) => {
       return (
         <div
           style={itemStyle}
           className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
-          key={item[valueMember]}
+          key={index}
         >
           {itemRender(item)}
         </div>
       );
     });
 
-    const pickerCls = classnames(`${prefixCls}-column`, className);
+    const rollerCls = classnames(`${prefixCls}`, className);
     return (
-      <div className={pickerCls}>
-        <div className={`${prefixCls}-column-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
-        <div className={`${prefixCls}-column-content`} ref={(content) => { this.content = content; }}>
+      <div className={rollerCls}>
+        <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
+        <div className={`${prefixCls}-content`} ref={(content) => { this.content = content; }}>
           {items}
         </div>
       </div>
