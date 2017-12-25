@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import ZScroller from 'zscroller';
-import { BaseRollerProps } from './PropsType';
+import { BaseWheelProps } from './PropsType';
 
-function getChildMember(child, m) {
-  return child[m];
+function getValue(props, defaultValue?: any) {
+  const { selectedValue, defaultSelectedValue, valueMember, children } = props;
+  if (selectedValue !== undefined) {
+    return selectedValue;
+  } else if (defaultSelectedValue !== undefined) {
+    return defaultSelectedValue;
+  } else if (children && children.length) {
+    return children[0][valueMember];
+  }
+  return defaultValue;
 }
 
-function toChildrenArray(children) {
-  return children;
-}
-
-export interface RollerProps extends BaseRollerProps {
+export interface WheelProps extends BaseWheelProps {
   prefixCls?: string;
-  className?: any;
+  className?: string;
 }
 
-export default class Roller extends Component<RollerProps, any> {
+export default class Wheel extends Component<WheelProps, any> {
 
   static Group: any;
   static Cascader: any;
   static defaultProps = {
-    prefixCls: 'za-roller',
-    onValueChange: () => {},
+    prefixCls: 'za-wheel',
+    dataSource: [],
+    valueMember: 'value',
     itemRender: data => data.label,
   };
 
@@ -33,25 +38,13 @@ export default class Roller extends Component<RollerProps, any> {
 
   constructor(props) {
     super(props);
-    let selectedValueState;
-    const { selectedValue, defaultSelectedValue, children } = this.props;
-
-    if (selectedValue !== undefined) {
-      selectedValueState = selectedValue;
-    } else if (defaultSelectedValue !== undefined) {
-      selectedValueState = defaultSelectedValue;
-    } else if (children && children.length) {
-      selectedValueState = children[0][this.props.valueMember];
-    }
     this.state = {
-      selectedValue: selectedValueState,
+      value: getValue(props),
     };
   }
 
   componentDidMount() {
     this.itemHeight = this.indicator.offsetHeight;
-    // console.log('this.itemHeight -> ', this.indicator.offsetHeight);
-    // compact
     this.content.style.padding = `${this.itemHeight * 3}px 0`;
     this.zscroller = new ZScroller(this.content, {
       scrollingX: false,
@@ -64,27 +57,21 @@ export default class Roller extends Component<RollerProps, any> {
     this.zscroller.setDisabled(this.props.disabled);
     this.zscroller.scroller.setSnapSize(0, this.itemHeight);
 
-    this.select(this.state.selectedValue);
+    this.select(this.state.value);
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('selectedValue' in nextProps) {
+    if ('value' in nextProps) {
       this.setState({
-        selectedValue: nextProps.selectedValue,
+        value: nextProps.value,
       });
     }
     this.zscroller.setDisabled(nextProps.disabled);
   }
 
-  shouldComponentUpdate() {
-    return true;
-    // return this.state.selectedValue !== nextState.selectedValue
-    //   || !isChildrenEqual(this.props.children, nextProps.children, this.props.pure);
-  }
-
   componentDidUpdate() {
     this.zscroller.reflow();
-    this.select(this.state.selectedValue);
+    this.select(this.state.value);
   }
 
   componentWillUnmount() {
@@ -92,8 +79,8 @@ export default class Roller extends Component<RollerProps, any> {
   }
 
   getValue = () => {
-    return this.props.selectedValue ? this.props.selectedValue
-      : this.props.children && this.props.children[0] && this.props.children[0][this.props.valueMember];
+    const { value, valueMember, dataSource } = this.props;
+    return value || dataSource && dataSource[0] && dataSource[0][valueMember!];
   }
 
   scrollingComplete = () => {
@@ -103,16 +90,16 @@ export default class Roller extends Component<RollerProps, any> {
     }
   }
 
-  fireValueChange = (selectedValue) => {
-    const { onValueChange } = this.props;
-    if (selectedValue !== this.state.selectedValue) {
-      if (!('selectedValue' in this.props)) {
+  fireValueChange = (value) => {
+    const { onChange } = this.props;
+    if (value !== this.state.value) {
+      if (!('value' in this.props)) {
         this.setState({
-          selectedValue,
+          value,
         });
       }
-      if (typeof onValueChange === 'function') {
-        onValueChange(selectedValue);
+      if (typeof onChange === 'function') {
+        onChange(value);
       }
     }
   }
@@ -122,9 +109,9 @@ export default class Roller extends Component<RollerProps, any> {
   }
 
   select = (value) => {
-    const children = toChildrenArray(this.props.children);
-    for (let i = 0, len = children.length; i < len; i += 1) {
-      if (getChildMember(children[i], this.props.valueMember) === value) {
+    const { dataSource, valueMember } = this.props;
+    for (let i = 0, len = dataSource!.length; i < len; i += 1) {
+      if (dataSource![i][valueMember!] === value) {
         this.selectByIndex(i);
         return;
       }
@@ -133,7 +120,7 @@ export default class Roller extends Component<RollerProps, any> {
   }
 
   selectByIndex = (index) => {
-    if (index < 0 || index >= toChildrenArray(this.props.children).length || !this.itemHeight) {
+    if (index < 0 || index >= this.props.dataSource!.length || !this.itemHeight) {
       return;
     }
     this.scrollTo(index * this.itemHeight);
@@ -148,32 +135,34 @@ export default class Roller extends Component<RollerProps, any> {
       index = floor;
     }
 
-    const children = toChildrenArray(this.props.children);
+    const { dataSource, valueMember } = this.props;
+    index = Math.min(index, dataSource!.length - 1);
 
-    index = Math.min(index, children.length - 1);
-    const child = children[index];
+    const child = dataSource![index];
+
     if (child) {
-      this.fireValueChange(getChildMember(child, this.props.valueMember));
+      this.fireValueChange(child[valueMember!]);
     } else if (console.warn) {
-      console.warn('child not found', children, index);
+      console.warn('child not found', dataSource, index);
     }
   }
 
   render() {
     const {
-      children, prefixCls,
-      className, itemStyle, itemRender,
+      prefixCls,
+      className,
       valueMember,
+      dataSource,
+      itemRender = Wheel.defaultProps.itemRender,
     } = this.props;
 
-    const { selectedValue } = this.state;
+    const { value } = this.state;
     const itemClassName = `${prefixCls}-item`;
     const selectedItemClassName = `${itemClassName} ${prefixCls}-item-selected`;
-    const items = children.map((item, index) => {
+    const items = dataSource!.map((item, index) => {
       return (
         <div
-          style={itemStyle}
-          className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
+          className={value === item[valueMember!] ? selectedItemClassName : itemClassName}
           key={index}
         >
           {itemRender(item)}
@@ -182,6 +171,7 @@ export default class Roller extends Component<RollerProps, any> {
     });
 
     const rollerCls = classnames(`${prefixCls}`, className);
+
     return (
       <div className={rollerCls}>
         <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
