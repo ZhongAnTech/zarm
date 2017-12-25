@@ -43,34 +43,8 @@ exports[`Picker Picker render visible 1`] = `
               class="za-picker-mask-bottom"
             >
               <div
-                class="za-picker-column-group"
-              >
-                <div
-                  class="za-picker-column-group-item"
-                >
-                  <div
-                    class="za-picker-column"
-                  >
-                    <div
-                      class="za-picker-column-indicator"
-                    />
-                    <div
-                      class="za-picker-column-content"
-                    >
-                      <div
-                        class="za-picker-column-item za-picker-column-item-selected"
-                      >
-                        选项一
-                      </div>
-                      <div
-                        class="za-picker-column-item"
-                      >
-                        选项二
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                class="za-roller-group"
+              />
             </div>
           </div>
         </div>

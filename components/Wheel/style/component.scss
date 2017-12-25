@@ -1,5 +1,5 @@
-$prefixCls: $prefixCls-roller;
-$itemheight: $roller-item-height;
+$prefixCls: $prefixCls-wheel;
+$itemheight: $wheel-item-height;
 
 .#{$prefixCls} {
   display: block;
@@ -7,6 +7,7 @@ $itemheight: $roller-item-height;
   overflow: hidden;
   height: 7 * $itemheight;
   width: 100%;
+
   &-group {
     display: flex;
     align-items: center;
