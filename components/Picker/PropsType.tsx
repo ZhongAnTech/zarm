@@ -1,21 +1,23 @@
-export interface BasePickerProps {
+
+export interface BasePickerViewProps {
+  value?: string | string[] | number[];
+  defaultValue?: string | string[] | number[];
+  valueMember?: string;
+  dataSource?: object[];
+  onInit?: (value?: object[], i?: number) => void;
+  onChange?: (value?: object[], i?: number) => void;
+  itemRender?: (item?: object) => string;
+  cols?: number;
+  disabled?: boolean;
+}
+
+export interface BasePickerProps extends BasePickerViewProps {
   visible?: boolean;
-  placeholder?: string;
   title?: string;
   cancelText?: string;
   okText?: string;
-  dataSource: object[];
-  value?: string | string[];
-  defaultValue?: string | string[];
-  valueMember?: string;
-  disabled?: boolean;
-  cols?: number;
-  prefixCls?: string;
   onOk?: (value?: object) => void;
-  onClick?: () => void;
   onCancel?: () => void;
   onMaskClick?: () => void;
-  displayRender?: (data?: object) => string;
-  itemRender?: (data?: object) => string;
-  onChange?: (value?: object) => void;
+  children?: any;
 }

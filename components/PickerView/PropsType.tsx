@@ -1,12 +1,11 @@
 export interface BasePickerViewProps {
-  visible?: boolean;
-  dataSource?: any[];
-  defaultValue?: string | any[];
-  value?: string | any[];
-  cols?: number;
-  onChange?: (value?: any) => any;
-  selectedValue?: string[];
+  value?: string | string[] | number[];
+  defaultValue?: string | string[] | number[];
   valueMember?: string;
-  onValueChange?: (value?: any, i?: number) => void;
-  itemRender?: (data?: object) => string;
+  dataSource?: object[];
+  onInit?: (value?: object[], i?: number) => void;
+  onChange?: (value?: object[], i?: number) => void;
+  itemRender?: (item?: object) => string;
+  cols?: number;
+  disabled?: boolean;
 }
