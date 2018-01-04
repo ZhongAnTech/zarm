@@ -1,97 +1,91 @@
 import React, { Component } from 'react';
-import { Panel, Cell, Picker, Button, PickerView } from 'zarm';
+import { Panel, Cell, Button, Toast, Picker, PickerView } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import District from '../mock/district';
 import '../styles/pages/PickerPage';
 
-const multiData = [
+const SINGLE_DATA = [
+  { value: '1', label: '选项一' },
+  { value: '2', label: '选项二' },
+];
+
+// 普通多列数据
+const MULTI_DATA = [
   [
     { value: '1', label: '选项一' },
     { value: '2', label: '选项二' },
   ],
   [
-    { value: '3', label: '选项三' },
-    { value: '4', label: '选项四' },
+    { value: '3', label: '选项A' },
+    { value: '4', label: '选项B' },
   ],
 ];
-class Page extends Component {
 
+// 级联数据
+const CASCADE_DATA = [
+  {
+    value: '1',
+    label: '北京市',
+    children: [
+      { value: '11', label: '海淀区' },
+      { value: '12', label: '西城区' },
+    ],
+  },
+  {
+    value: '2',
+    label: '上海市',
+    children: [
+      { value: '21', label: '杨浦区' },
+      { value: '22', label: '静安区' },
+    ],
+  },
+];
+
+class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      single: { value: '' },
-      multi: { value: ['1', '4'], display: '选项一&选项四' },
-      multiCascadeData: [
-        {
-          value: '1',
-          label: '北京市',
-          children: [
-            { value: '11', label: '海淀区' },
-            { value: '12', label: '西城区' },
-          ],
-        },
-        {
-          value: '2',
-          label: '上海市',
-          children: [
-            { value: '21', label: '黄埔区' },
-            { value: '22', label: '虹口区' },
-          ],
-        },
-      ],
-      multiCascade: { value: ['1', '12'] },
-      multiAssign: { value: ['1', '12'] },
-      diy: {},
-      address1: {},
-      address2: {},
+      single: {
+        visible: false,
+        value: [],
+        dataSource: SINGLE_DATA,
+      },
+      multi: {
+        visible: false,
+        value: [],
+        dataSource: MULTI_DATA,
+      },
+      cascade: {
+        visible: false,
+        value: [],
+        dataSource: CASCADE_DATA,
+      },
+      view: {
+        value: ['1', '12'],
+        dataSource: CASCADE_DATA,
+      },
     };
   }
 
   componentDidMount() {
+    // 异步加载数据源测试
     setTimeout(() => {
-      this.setState({
-        multiCascadeData: [
-          {
-            value: '1',
-            label: '北京市',
-            children: [
-              { value: '11', label: '海淀区' },
-              { value: '12', label: '西城区' },
-            ],
-          },
-          {
-            value: '2',
-            label: '上海市',
-            children: [
-              { value: '21', label: '杨浦区' },
-              { value: '22', label: '静安区' },
-            ],
-          },
-        ],
-        multiCascade: {
-          value: ['2', '21'],
-        },
-      });
+      const cascade = this.state.cascade;
+      cascade.dataSource = District;
+      this.setState({ cascade });
     }, 1000);
   }
 
-  open = (key) => {
-    this.setState({
-      [`${key}`]: true,
-    });
-  }
-
-  close = (key) => {
-    this.setState({
-      [`${key}`]: false,
-    });
+  toggle = (key) => {
+    const state = this.state[key];
+    state.visible = !state.visible;
+    this.setState({ [`${key}`]: state });
   }
 
   render() {
-    const { single, singleVisible, multi, multiVisible, multiCascade,
-      address1, addr1Visible, address2, addr2Visible } = this.state;
+    const { single, multi, cascade, view } = this.state;
 
     return (
       <Container className="picker-page">
@@ -100,155 +94,76 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
-              <Cell title="单列" hasArrow onClick={() => { this.open('singleVisible'); }}>
-                {single.value ? <div className="show-right">{single.display}</div> : <div className="za-picker-placeholder show-right">请选择</div>}
-                <Picker
-                  visible={singleVisible}
-                  placeholder="请选择"
-                  className="show-right"
-                  value={single.value}
-                  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
-                  onOk={(selected) => {
-                    console.log('pickerPage onChange=> ', selected);
-                    single.value = selected.value;
-                    single.display = selected.label;
-                    this.setState({
-                      single,
-                    });
-                    this.close('singleVisible');
-                  }}
-                  onCancel={() => this.close('singleVisible')}
-                  />
-              </Cell>
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('single')}>打开</Button>
+                }>单列</Cell>
 
-              <Cell title="多列" hasArrow onClick={() => { this.open('multiVisible'); }}>
-                {multi.value ? <div className="show-right">{multi.display}</div> : <div className="za-picker-placeholder show-right">请选择</div>}
-                <Picker
-                  visible={multiVisible}
-                  value={multi.value}
-                  dataSource={multiData}
-                  onOk={(selected) => {
-                    multi.value = selected.map(item => `${item.value}`);
-                    multi.display = selected.map(item => `${item.label}`).join('&');
-                    this.setState({
-                      multi,
-                    });
-                    this.close('multiVisible');
-                  }}
-                  onCancel={() => this.close('multiVisible')}
-                  />
-              </Cell>
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('multi')}>打开</Button>
+                }>多列</Cell>
 
-              <Cell title="多列联动" description={<Button theme="primary" size="sm" onClick={() => { this.open('pickerVisible'); }}>请选择</Button>}>
-                <div>{multiCascade.display}</div>
-                <Picker
-                  visible={this.state.pickerVisible}
-                  dataSource={this.state.multiCascadeData}
-                  value={this.state.multiCascade.value}
-                  onChange={(selected) => {
-                    console.log(selected);
-                  }}
-                  onOk={(selected) => {
-                    multiCascade.value = selected.map(item => `${item.value}`);
-                    multiCascade.display = selected.map(item => item.label).join('-');
-                    this.setState({
-                      multiCascade,
-                    });
-                    this.close('pickerVisible');
-                  }}
-                  onCancel={() => this.close('pickerVisible')}
-                  />
-              </Cell>
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
+                }>级联</Cell>
 
             </Panel.Body>
           </Panel>
 
           <Panel>
-            <Panel.Header title="城市选择器" />
-            <Panel.Body>
-              <Cell title="省市选择" description={<Button theme="primary" size="sm" onClick={() => { this.open('addr1Visible'); }}>请选择省市</Button>}>
-                <div>{this.state.address1.display}</div>
-                <Picker
-                  visible={addr1Visible}
-                  dataSource={District}
-                  cols={2}
-                  value={address1.value}
-                  onOk={(selected) => {
-                    address1.value = selected.map(item => item.value);
-                    address1.display = selected.map(item => item.label).join('-');
-                    this.setState({
-                      address1,
-                    });
-                    this.close('addr1Visible');
-                  }}
-                  onCancel={() => this.close('addr1Visible')}
-                  />
-              </Cell>
-
-              <Cell description={<Button theme="primary" size="sm" onClick={() => { this.open('addr2Visible'); }}>选择省市区</Button>}>
-                <div>{this.state.address2.display}</div>
-                <Picker
-                  visible={addr2Visible}
-                  dataSource={District}
-                  value={address2.value}
-                  onOk={(selected) => {
-                    address2.value = selected.map(item => item.value);
-                    address2.display = selected.map(item => item.label).join('-');
-                    this.setState({
-                      address2,
-                    });
-                    this.close('addr2Visible');
-                  }}
-                  onCancel={() => this.close('addr2Visible')}
-                  />
-              </Cell>
-
-            </Panel.Body>
-          </Panel>
-
-          <Panel>
-            <Panel.Header title="平铺选择器" />
+            <Panel.Header title="平铺选择器 PickerView" />
             <Panel.Body>
               <PickerView
-                dataSource={[
-                  {
-                    code: '1',
-                    name: '北京市',
-                    children: [
-                      { code: '11', name: '海淀区' },
-                      { code: '12', name: '西城区' },
-                    ],
-                  },
-                  {
-                    code: '2',
-                    name: '上海市',
-                    children: [
-                      { code: '21', name: '黄埔区' },
-                      { code: '22', name: '虹口区' },
-                    ],
-                  },
-                ]}
-                valueMember="code"
-                itemRender={data => data.name}
-                onChange={(value) => {
-                  console.log(value);
-                }}
+                value={view.value}
+                dataSource={view.dataSource}
+                onChange={selected => console.log('PickerView onChange: ', selected)}
                 />
             </Panel.Body>
           </Panel>
 
-          <Panel>
-            <Panel.Header title="层叠式选择器" />
-            <Panel.Body>
-              <Cell title="级联选择">
-                <Picker.Stack
-                  dataSource={District}
-                  displayRender={selected => selected.map(item => item.label).join('-')}
-                  />
-              </Cell>
+          <Picker
+            visible={single.visible}
+            value={single.value}
+            dataSource={single.dataSource}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              single.value = selected.map(item => item.value);
+              this.setState({ single });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('single');
+            }}
+            onCancel={() => this.toggle('single')}
+            />
 
-            </Panel.Body>
-          </Panel>
+          <Picker
+            visible={multi.visible}
+            value={multi.value}
+            dataSource={multi.dataSource}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              multi.value = selected.map(item => item.value);
+              this.setState({ multi });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('multi');
+            }}
+            onCancel={() => this.toggle('multi')}
+            />
+
+          <Picker
+            visible={cascade.visible}
+            value={cascade.value}
+            dataSource={cascade.dataSource}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              cascade.value = selected.map(item => item.value);
+              this.setState({ cascade });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('cascade');
+            }}
+            onCancel={() => this.toggle('cascade')}
+            />
         </main>
         <Footer />
       </Container>

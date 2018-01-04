@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { BaseWheelGroupProps } from './PropsType';
 import Wheel from './Wheel';
-
-function isArray(val) {
-  return Object.prototype.toString.call(val) === '[object Array]';
-}
+import { isArray } from '../utils/validate';
 
 function getValue(props, defaultValue?: any) {
   if ('value' in props) {
-    return props.value;
+    return [].concat(props.value);
   }
 
   if ('defaultValue' in props) {
-    return props.defaultValue;
+    return [].concat(props.defaultValue);
   }
 
   return defaultValue;
@@ -31,7 +28,8 @@ export default class WheelGroup extends Component<WheelGroupProps, any> {
     dataSource: [],
     cols: Infinity,
     valueMember: 'value',
-    itemRender: data => data.label,
+    itemRender: item => item.label,
+    disabled: false,
   };
 
   constructor(props) {
@@ -47,7 +45,7 @@ export default class WheelGroup extends Component<WheelGroupProps, any> {
 
   normalState = (props) => {
     const { valueMember, dataSource } = this.props;
-    const value = getValue(props, dataSource.map(item => item[0] && item[0][valueMember!]));
+    const value = getValue(props, dataSource!.map(item => item[0] && item[0][valueMember!]));
 
     return {
       value,
@@ -73,7 +71,7 @@ export default class WheelGroup extends Component<WheelGroupProps, any> {
           newValues[level] = item[valueMember!];
           newObjValues[level] = others;
 
-          if (children && isArray(children) && level + 1 < cols!) {
+          if (isArray(children) && children.length > 0 && level + 1 < cols!) {
             parseLevel({
               dataSource: children,
               level: level + 1,
@@ -102,7 +100,7 @@ export default class WheelGroup extends Component<WheelGroupProps, any> {
     let newObj = { value, objValue };
 
     value[level] = selected;
-    if (this.isCascader(this.props)) {
+    if (this.isCascader({ dataSource })) {
       value.length = level + 1;
       newObj = this.cascaderState({ dataSource, value });
     } else {
@@ -116,7 +114,7 @@ export default class WheelGroup extends Component<WheelGroupProps, any> {
   }
 
   renderWheel = (item, index) => {
-    const { valueMember } = this.props;
+    const { valueMember, itemRender, disabled } = this.props;
     const { value } = this.state;
 
     return (
@@ -125,6 +123,8 @@ export default class WheelGroup extends Component<WheelGroupProps, any> {
         dataSource={item}
         value={value[index]}
         valueMember={valueMember}
+        itemRender={itemRender}
+        disabled={disabled}
         onChange={selected => this.onValueChange(selected, index)}
       />
     );

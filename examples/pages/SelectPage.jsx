@@ -5,91 +5,111 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import District from '../mock/district';
 
-const multiData = [
+const SINGLE_DATA = [
+  { value: '1', label: '选项一' },
+  { value: '2', label: '选项二' },
+];
+
+// 普通多列数据
+const MULTI_DATA = [
   [
     { value: '1', label: '选项一' },
     { value: '2', label: '选项二' },
   ],
   [
-    { value: '3', label: '选项三' },
-    { value: '4', label: '选项四' },
+    { value: '3', label: '选项A' },
+    { value: '4', label: '选项B' },
   ],
 ];
+
+// 级联数据
+const CASCADE_DATA = [
+  {
+    value: '1',
+    label: '北京市',
+    children: [
+      { value: '11', label: '海淀区' },
+      { value: '12', label: '西城区' },
+    ],
+  },
+  {
+    value: '2',
+    label: '上海市',
+    children: [
+      { value: '21', label: '杨浦区' },
+      { value: '22', label: '静安区' },
+    ],
+  },
+];
+
+const DIY_DATA = [
+  {
+    code: '1',
+    name: '北京市',
+    children: [
+      { code: '11', name: '海淀区' },
+      { code: '12', name: '西城区' },
+    ],
+  },
+  {
+    code: '2',
+    name: '上海市',
+    children: [
+      { code: '21', name: '黄埔区' },
+      { code: '22', name: '虹口区' },
+    ],
+  },
+];
+
 class Page extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      single: { value: '' },
-      multi: { value: '' },
-      multiAssign: { value: ['1', '12'] },
-      multiCascadeData: [
-        {
-          value: '1',
-          label: '北京市',
-          children: [
-            { value: '11', label: '海淀区' },
-            { value: '12', label: '西城区' },
-          ],
-        },
-        {
-          value: '2',
-          label: '上海市',
-          children: [
-            { value: '21', label: '黄埔区' },
-            { value: '22', label: '虹口区' },
-          ],
-        },
-      ],
-      multiCascade: { value: ['1', '12'] },
-      diy: {},
-      address1: {},
-      address2: {},
+      single: {
+        visible: false,
+        value: [],
+        dataSource: SINGLE_DATA,
+      },
+      multi: {
+        visible: false,
+        value: [],
+        dataSource: MULTI_DATA,
+      },
+      cascade: {
+        visible: false,
+        value: [],
+        dataSource: CASCADE_DATA,
+      },
+      diy: {
+        visible: false,
+        value: [],
+        dataSource: DIY_DATA,
+      },
+      address1: {
+        visible: false,
+        value: [],
+        dataSource: District,
+      },
+      address2: {
+        visible: false,
+        value: [],
+        dataSource: District,
+      },
     };
   }
 
   componentDidMount() {
+    // 异步加载数据源测试
     setTimeout(() => {
-      this.setState({
-        multiCascadeData: [
-          {
-            value: '1',
-            label: '北京市',
-            children: [
-              { value: '11', label: '海淀区' },
-              { value: '12', label: '西城区' },
-            ],
-          },
-          {
-            value: '2',
-            label: '上海市',
-            children: [
-              { value: '21', label: '杨浦区' },
-              { value: '22', label: '静安区' },
-            ],
-          },
-        ],
-        multiCascade: {
-          value: ['2', '21'],
-        },
-      });
+      const cascade = this.state.cascade;
+      cascade.dataSource = District;
+      this.setState({ cascade });
     }, 1000);
   }
 
-  open = (key) => {
-    this.setState({
-      [`${key}`]: true,
-    });
-  }
-
-  close = (key) => {
-    this.setState({
-      [`${key}`]: false,
-    });
-  }
-
   render() {
-    const { single, multi, multiAssign, multiCascadeData, multiCascade, diy, address1, address2 } = this.state;
+    const { single, multi, cascade, diy, address1, address2 } = this.state;
 
     return (
       <Container className="select-page">
@@ -100,82 +120,48 @@ class Page extends Component {
             <Panel.Body>
               <Cell title="单列">
                 <Select
-                  placeholder="请选择"
                   value={single.value}
-                  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
+                  dataSource={single.dataSource}
                   onChange={(selected) => {
-                    single.value = selected.value;
-                    this.setState({
-                      single,
-                    });
+                    console.log('Select onChange: ', selected);
+                    single.value = selected.map(item => item.value);
+                    this.setState({ single });
                   }}
                   />
               </Cell>
 
               <Cell title="多列">
                 <Select
-                  placeholder="请选择"
                   value={multi.value}
-                  dataSource={multiData}
+                  dataSource={multi.dataSource}
                   onChange={(selected) => {
-                    const multiValue = selected.map(item => `${item.value}`);
-                    multi.value = multiValue;
-                    this.setState({
-                      multi,
-                    });
-                  }}
-                  displayRender={selected => selected.map(item => item.label).join('/')}
-                  />
-              </Cell>
-
-              <Cell title="指定默认值">
-                <Select
-                  placeholder="请选择"
-                  dataSource={[
-                    {
-                      value: '1',
-                      label: '北京市',
-                      children: [
-                        { value: '11', label: '海淀区' },
-                        { value: '12', label: '西城区' },
-                      ],
-                    },
-                    {
-                      value: '2',
-                      label: '上海市',
-                      children: [
-                        { value: '21', label: '黄埔区' },
-                        { value: '22', label: '虹口区' },
-                      ],
-                    },
-                  ]}
-                  value={multiAssign.value}
-                  defaultValue={multiAssign.value}
-                  onChange={(selected) => {
-                    multiAssign.value = selected.map(item => `${item.value}`);
-                    this.setState({
-                      multiAssign,
-                    });
-                  }}
-                  displayRender={(selected) => {
-                    return selected.map(item => item.label).join('-');
+                    console.log('Select onChange: ', selected);
+                    multi.value = selected.map(item => item.value);
+                    this.setState({ multi });
                   }}
                   />
               </Cell>
 
               <Cell title="多列联动">
                 <Select
-                  placeholder="请选择"
-                  dataSource={multiCascadeData}
-                  value={multiCascade.value}
+                  dataSource={cascade.dataSource}
+                  value={cascade.value}
                   onChange={(selected) => {
-                    multiCascade.value = selected.map(item => item.value);
-                    this.setState({
-                      multiCascade,
-                    });
+                    console.log('Select onChange: ', selected);
+                    cascade.value = selected.map(item => item.value);
+                    this.setState({ cascade });
                   }}
-                  displayRender={(selected) => {
-                    return selected.map(item => item.label).join('/');
+                  />
+              </Cell>
+
+              <Cell title="指定默认值">
+                <Select
+                  defaultValue={['1', '4']}
+                  dataSource={multi.dataSource}
+                  onChange={(selected) => {
+                    console.log('Select onChange: ', selected);
+                    multi.value = selected.map(item => item.value);
+                    this.setState({ multi });
                   }}
                   />
               </Cell>
@@ -183,45 +169,26 @@ class Page extends Component {
               <Cell title="禁止修改">
                 <Select
                   disabled
-                  dataSource={[
-                    { value: '1', label: '选项一' },
-                    { value: '2', label: '选项二' },
-                  ]}
-                  defaultValue="2"
+                  dataSource={single.dataSource}
+                  defaultValue={'2'}
                   />
               </Cell>
 
               <Cell title="自定义格式">
                 <Select
-                  title="自定义标题"
-                  placeholder="自定义placeholder"
-                  dataSource={[
-                    {
-                      code: '1',
-                      name: '北京市',
-                      children: [
-                        { code: '11', name: '海淀区' },
-                        { code: '12', name: '西城区' },
-                      ],
-                    },
-                    {
-                      code: '2',
-                      name: '上海市',
-                      children: [
-                        { code: '21', name: '黄埔区' },
-                        { code: '22', name: '虹口区' },
-                      ],
-                    },
-                  ]}
+                  dataSource={diy.dataSource}
                   value={diy.value}
                   valueMember="code"
                   itemRender={data => data.name}
                   displayRender={selected => selected.map(item => item.name).join('/')}
+                  title="custom title"
+                  placeholder="custom placeholder"
+                  cancelText="Cancel"
+                  okText="Ok"
                   onChange={(selected) => {
-                    diy.value = selected.map(item => item.code);
-                    this.setState({
-                      diy,
-                    });
+                    console.log('Select onChange: ', selected);
+                    diy.value = selected.map(item => item.value);
+                    this.setState({ diy });
                   }}
                   />
               </Cell>
@@ -236,14 +203,13 @@ class Page extends Component {
               <Cell title="省市选择">
                 <Select
                   placeholder="选择省市"
-                  dataSource={District}
-                  cols={2}
+                  dataSource={address1.dataSource}
                   value={address1.value}
+                  cols={2}
                   onChange={(selected) => {
+                    console.log('Select onChange: ', selected);
                     address1.value = selected.map(item => item.value);
-                    this.setState({
-                      address1,
-                    });
+                    this.setState({ address1 });
                   }}
                   />
               </Cell>
@@ -251,14 +217,12 @@ class Page extends Component {
               <Cell title="省市区选择">
                 <Select
                   placeholder="选择省市区"
-                  dataSource={District}
+                  dataSource={address2.dataSource}
                   value={address2.value}
-                  displayRender={selected => selected.map(item => item.label).join('-')}
                   onChange={(selected) => {
+                    console.log('Select onChange: ', selected);
                     address2.value = selected.map(item => item.value);
-                    this.setState({
-                      address2,
-                    });
+                    this.setState({ address2 });
                   }}
                   />
               </Cell>

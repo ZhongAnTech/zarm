@@ -117,13 +117,13 @@ exports[`DatePicker DatePicker date 1`] = `
                       <div
                         className="za-picker-mask-bottom"
                       >
-                        <RollerGroup
+                        <WheelGroup
                           cols={Infinity}
                           dataSource={Array []}
                           disabled={false}
                           itemRender={[Function]}
                           onValueChange={[Function]}
-                          prefixCls="za-roller-group"
+                          prefixCls="za-wheel-group"
                           selectedValue={
                             Array [
                               "2017",
@@ -134,9 +134,9 @@ exports[`DatePicker DatePicker date 1`] = `
                           valueMember="value"
                         >
                           <div
-                            className="za-roller-group"
+                            className="za-wheel-group"
                           />
-                        </RollerGroup>
+                        </WheelGroup>
                       </div>
                     </div>
                   </DatePickerView>
@@ -285,13 +285,13 @@ exports[`DatePicker DatePicker datetime 1`] = `
                       <div
                         className="za-picker-mask-bottom"
                       >
-                        <RollerGroup
+                        <WheelGroup
                           cols={Infinity}
                           dataSource={Array []}
                           disabled={false}
                           itemRender={[Function]}
                           onValueChange={[Function]}
-                          prefixCls="za-roller-group"
+                          prefixCls="za-wheel-group"
                           selectedValue={
                             Array [
                               "2017",
@@ -304,9 +304,9 @@ exports[`DatePicker DatePicker datetime 1`] = `
                           valueMember="value"
                         >
                           <div
-                            className="za-roller-group"
+                            className="za-wheel-group"
                           />
-                        </RollerGroup>
+                        </WheelGroup>
                       </div>
                     </div>
                   </DatePickerView>
@@ -383,7 +383,7 @@ exports[`DatePicker DatePicker month 1`] = `
                   class="za-picker-mask-bottom"
                 >
                   <div
-                    class="za-roller-group"
+                    class="za-wheel-group"
                   />
                 </div>
               </div>
@@ -513,13 +513,13 @@ exports[`DatePicker DatePicker time 1`] = `
                       <div
                         className="za-picker-mask-bottom"
                       >
-                        <RollerGroup
+                        <WheelGroup
                           cols={Infinity}
                           dataSource={Array []}
                           disabled={false}
                           itemRender={[Function]}
                           onValueChange={[Function]}
-                          prefixCls="za-roller-group"
+                          prefixCls="za-wheel-group"
                           selectedValue={
                             Array [
                               "15",
@@ -529,9 +529,9 @@ exports[`DatePicker DatePicker time 1`] = `
                           valueMember="value"
                         >
                           <div
-                            className="za-roller-group"
+                            className="za-wheel-group"
                           />
-                        </RollerGroup>
+                        </WheelGroup>
                       </div>
                     </div>
                   </DatePickerView>
@@ -608,7 +608,7 @@ exports[`DatePicker DatePicker visible 1`] = `
                   class="za-picker-mask-bottom"
                 >
                   <div
-                    class="za-roller-group"
+                    class="za-wheel-group"
                   />
                 </div>
               </div>
@@ -674,7 +674,7 @@ exports[`DatePicker DatePicker year 1`] = `
                   class="za-picker-mask-bottom"
                 >
                   <div
-                    class="za-roller-group"
+                    class="za-wheel-group"
                   />
                 </div>
               </div>

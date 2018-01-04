@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import ZScroller from 'zscroller';
 import { BaseWheelProps } from './PropsType';
+import { isArray } from '../utils/validate';
 
 function getValue(props, defaultValue?: any) {
-  const { selectedValue, defaultSelectedValue, valueMember, children } = props;
-  if (selectedValue !== undefined) {
-    return selectedValue;
-  } else if (defaultSelectedValue !== undefined) {
-    return defaultSelectedValue;
-  } else if (children && children.length) {
-    return children[0][valueMember];
+  if ('value' in props) {
+    return props.value;
+  }
+  if ('defaultValue' in props) {
+    return props.defaultValue;
+  }
+  if (isArray(props.dataSource) && props.dataSource[0]) {
+    return props.dataSource[0][props.valueMember];
   }
   return defaultValue;
 }
@@ -28,7 +30,7 @@ export default class Wheel extends Component<WheelProps, any> {
     prefixCls: 'za-wheel',
     dataSource: [],
     valueMember: 'value',
-    itemRender: data => data.label,
+    itemRender: item => item.label,
   };
 
   private zscroller;
@@ -45,7 +47,6 @@ export default class Wheel extends Component<WheelProps, any> {
 
   componentDidMount() {
     this.itemHeight = this.indicator.offsetHeight;
-    this.content.style.padding = `${this.itemHeight * 3}px 0`;
     this.zscroller = new ZScroller(this.content, {
       scrollingX: false,
       snapping: true,
@@ -91,16 +92,17 @@ export default class Wheel extends Component<WheelProps, any> {
   }
 
   fireValueChange = (value) => {
+    if (value === this.state.value) {
+      return;
+    }
+
+    if (!('value' in this.props)) {
+      this.setState({ value });
+    }
+
     const { onChange } = this.props;
-    if (value !== this.state.value) {
-      if (!('value' in this.props)) {
-        this.setState({
-          value,
-        });
-      }
-      if (typeof onChange === 'function') {
-        onChange(value);
-      }
+    if (typeof onChange === 'function') {
+      onChange(value);
     }
   }
 
@@ -129,11 +131,9 @@ export default class Wheel extends Component<WheelProps, any> {
   doScrollingComplete = (top) => {
     let index = top / this.itemHeight;
     const floor = Math.floor(index);
-    if (index - floor > 0.5) {
-      index = floor + 1;
-    } else {
-      index = floor;
-    }
+    index = (index - floor > 0.5)
+      ? floor + 1
+      : floor;
 
     const { dataSource, valueMember } = this.props;
     index = Math.min(index, dataSource!.length - 1);
@@ -153,19 +153,21 @@ export default class Wheel extends Component<WheelProps, any> {
       className,
       valueMember,
       dataSource,
-      itemRender = Wheel.defaultProps.itemRender,
+      itemRender,
     } = this.props;
 
     const { value } = this.state;
-    const itemClassName = `${prefixCls}-item`;
-    const selectedItemClassName = `${itemClassName} ${prefixCls}-item-selected`;
     const items = dataSource!.map((item, index) => {
+      const itemCls = classnames(`${prefixCls}-item`, {
+        [`${prefixCls}-item-selected`]: value === item[valueMember!],
+      });
+
       return (
         <div
-          className={value === item[valueMember!] ? selectedItemClassName : itemClassName}
-          key={index}
+          key={+index}
+          className={itemCls}
         >
-          {itemRender(item)}
+          {itemRender!(item)}
         </div>
       );
     });

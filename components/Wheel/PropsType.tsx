@@ -1,20 +1,20 @@
 export interface BaseWheelProps {
-  value?: string[];
-  defaultValue?: string;
+  value?: string | number;
+  defaultValue?: string | number;
   valueMember?: string;
   dataSource?: object[];
   onChange?: (value?: any) => void;
-  itemRender?: (data?: object) => string;
+  itemRender?: (item?: object) => string;
   disabled?: boolean;
 }
 
 export interface BaseWheelGroupProps {
-  value?: string[];
-  defaultValue?: string;
+  value?: string | string[] | number[];
+  defaultValue?: string | string[] | number[];
   valueMember?: string;
-  dataSource: any[];
-  children?: any[];
-  onChange?: (value?: any, i?: number) => void;
-  itemRender?: (data?: object) => string;
+  dataSource?: object[];
+  onChange?: (value?: object[], i?: number) => void;
+  itemRender?: (item?: object) => string;
   cols?: number;
+  disabled?: boolean;
 }

@@ -5,55 +5,73 @@ exports[`Picker Picker render visible 1`] = `
   class="za-picker"
 >
   <div
-    class="za-picker-container"
+    class="za-popup"
   >
     <div
-      class="za-popup"
+      class="za-popup-wrapper za-popup-wrapper-bottom"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
     >
       <div
-        class="za-popup-wrapper za-popup-wrapper-bottom"
-        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+        class="za-picker-wrapper"
       >
         <div
-          class="za-picker-wrapper"
+          class="za-picker-header"
         >
           <div
-            class="za-picker-header"
+            class="za-picker-cancel"
           >
-            <div
-              class="za-picker-cancel"
-            >
-              取消
-            </div>
-            <div
-              class="za-picker-title"
-            >
-              请选择
-            </div>
-            <div
-              class="za-picker-submit"
-            >
-              确定
-            </div>
+            取消
           </div>
           <div
-            class="za-picker-mask-top"
+            class="za-picker-title"
+          >
+            请选择
+          </div>
+          <div
+            class="za-picker-submit"
+          >
+            确定
+          </div>
+        </div>
+        <div
+          class="za-picker-mask-top"
+        >
+          <div
+            class="za-picker-mask-bottom"
           >
             <div
-              class="za-picker-mask-bottom"
+              class="za-picker-view"
             >
               <div
-                class="za-roller-group"
-              />
+                class="za-wheel"
+              >
+                <div
+                  class="za-wheel-indicator"
+                />
+                <div
+                  class="za-wheel-content"
+                >
+                  <div
+                    class="za-wheel-item za-wheel-item-selected"
+                  >
+                    选项一
+                  </div>
+                  <div
+                    class="za-wheel-item"
+                  >
+                    选项二
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="za-mask normal"
-        style="-webkit-animation-duration:200ms;animation-duration:200ms"
-      />
     </div>
+    <div
+      class="za-mask normal"
+      style="-webkit-animation-duration:200ms;animation-duration:200ms"
+    />
   </div>
 </div>
 `;
@@ -226,155 +244,149 @@ exports[`Picker StackPicker 1`] = `
     >
       <input
         type="hidden"
-        value={Array []}
+        value=""
       />
-      请选择
     </div>
-    <div
-      className="za-picker-container za-picker-hidden"
-      onClick={[Function]}
+    <Popup
+      animationDuration={200}
+      autoClose={false}
+      direction="bottom"
+      mask={true}
+      maskType="normal"
+      onMaskClick={[Function]}
+      prefixCls="za-popup"
+      stayTime={3000}
+      visible={false}
     >
-      <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
-        onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
-        visible={false}
+      <div
+        className="za-popup za-popup-hidden"
       >
         <div
-          className="za-popup za-popup-hidden"
+          className="za-popup-wrapper za-popup-wrapper-bottom"
+          style={
+            Object {
+              "WebkitTransitionDuration": "200ms",
+              "transitionDuration": "200ms",
+            }
+          }
         >
           <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
+            className="za-picker-wrapper"
           >
             <div
-              className="za-picker-wrapper"
+              className="za-picker-header"
             >
               <div
-                className="za-picker-header"
+                className="za-picker-cancel"
+                onClick={[Function]}
               >
-                <div
-                  className="za-picker-cancel"
-                  onClick={[Function]}
-                >
-                  取消
-                </div>
-                <div
-                  className="za-picker-title"
-                >
-                  请选择
-                </div>
-                <div
-                  className="za-picker-submit"
-                />
+                取消
               </div>
               <div
-                className="za-picker-crumbs"
+                className="za-picker-title"
               >
-                <p>
-                  选择：
-                </p>
+                请选择
               </div>
               <div
-                className="za-picker-stack-group"
+                className="za-picker-submit"
+              />
+            </div>
+            <div
+              className="za-picker-crumbs"
+            >
+              <p>
+                选择：
+              </p>
+            </div>
+            <div
+              className="za-picker-stack-group"
+            >
+              <div
+                className="za-picker-stack-column lower-hidden"
+                key="0"
+                onClick={[Function]}
               >
                 <div
-                  className="za-picker-stack-column lower-hidden"
-                  key="0"
+                  className="za-picker-stack-column-wrapper"
                   onClick={[Function]}
                 >
                   <div
-                    className="za-picker-stack-column-wrapper"
+                    className="za-picker-stack-item"
+                    key="0"
                     onClick={[Function]}
                   >
-                    <div
-                      className="za-picker-stack-item"
-                      key="0"
-                      onClick={[Function]}
-                    >
-                      安徽省
-                    </div>
-                    <div
-                      className="za-picker-stack-item"
-                      key="1"
-                      onClick={[Function]}
-                    >
-                      澳门特别行政区
-                    </div>
-                    <div
-                      className="za-picker-stack-item"
-                      key="2"
-                      onClick={[Function]}
-                    >
-                      北京
-                    </div>
+                    安徽省
+                  </div>
+                  <div
+                    className="za-picker-stack-item"
+                    key="1"
+                    onClick={[Function]}
+                  >
+                    澳门特别行政区
+                  </div>
+                  <div
+                    className="za-picker-stack-item"
+                    key="2"
+                    onClick={[Function]}
+                  >
+                    北京
                   </div>
                 </div>
+              </div>
+              <div
+                className="za-picker-stack-column lower-hidden"
+                key="1"
+                onClick={[Function]}
+              >
                 <div
-                  className="za-picker-stack-column lower-hidden"
-                  key="1"
+                  className="za-picker-stack-column-wrapper"
                   onClick={[Function]}
                 >
                   <div
-                    className="za-picker-stack-column-wrapper"
+                    className="za-picker-stack-item"
+                    key="0"
                     onClick={[Function]}
                   >
-                    <div
-                      className="za-picker-stack-item"
-                      key="0"
-                      onClick={[Function]}
-                    >
-                      安庆市
-                    </div>
+                    安庆市
                   </div>
                 </div>
+              </div>
+              <div
+                className="za-picker-stack-column lower-hidden"
+                key="2"
+                onClick={[Function]}
+              >
                 <div
-                  className="za-picker-stack-column lower-hidden"
-                  key="2"
+                  className="za-picker-stack-column-wrapper"
                   onClick={[Function]}
                 >
                   <div
-                    className="za-picker-stack-column-wrapper"
+                    className="za-picker-stack-item"
+                    key="0"
                     onClick={[Function]}
                   >
-                    <div
-                      className="za-picker-stack-item"
-                      key="0"
-                      onClick={[Function]}
-                    >
-                      大观区
-                    </div>
+                    大观区
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <Mask
-            className=""
-            onClose={[Function]}
-            prefixCls="za-mask"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-            type="normal"
-            visible={false}
-          />
         </div>
-      </Popup>
-    </div>
+        <Mask
+          className=""
+          onClose={[Function]}
+          prefixCls="za-mask"
+          style={
+            Object {
+              "WebkitAnimationDuration": "200ms",
+              "animationDuration": "200ms",
+            }
+          }
+          type="normal"
+          visible={false}
+        />
+      </div>
+    </Popup>
   </div>
 </PickerStack>
 `;
@@ -553,162 +565,151 @@ exports[`Picker StackPicker init value 1`] = `
     >
       <input
         type="hidden"
-        value={
-          Array [
-            "340000",
-            "340800",
-            "340803",
-          ]
-        }
+        value="340000,340800,340803"
       />
       安徽省安庆市大观区
     </div>
-    <div
-      className="za-picker-container za-picker-hidden"
-      onClick={[Function]}
+    <Popup
+      animationDuration={200}
+      autoClose={false}
+      direction="bottom"
+      mask={true}
+      maskType="normal"
+      onMaskClick={[Function]}
+      prefixCls="za-popup"
+      stayTime={3000}
+      visible={false}
     >
-      <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
-        onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
-        visible={false}
+      <div
+        className="za-popup za-popup-hidden"
       >
         <div
-          className="za-popup za-popup-hidden"
+          className="za-popup-wrapper za-popup-wrapper-bottom"
+          style={
+            Object {
+              "WebkitTransitionDuration": "200ms",
+              "transitionDuration": "200ms",
+            }
+          }
         >
           <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
+            className="za-picker-wrapper"
           >
             <div
-              className="za-picker-wrapper"
+              className="za-picker-header"
             >
               <div
-                className="za-picker-header"
+                className="za-picker-cancel"
+                onClick={[Function]}
               >
-                <div
-                  className="za-picker-cancel"
-                  onClick={[Function]}
-                >
-                  取消
-                </div>
-                <div
-                  className="za-picker-title"
-                >
-                  请选择
-                </div>
-                <div
-                  className="za-picker-submit"
-                />
+                取消
               </div>
               <div
-                className="za-picker-crumbs"
+                className="za-picker-title"
               >
-                <p>
-                  选择：
-                  安徽省 &gt; 安庆市 &gt; 大观区
-                </p>
+                请选择
               </div>
               <div
-                className="za-picker-stack-group"
+                className="za-picker-submit"
+              />
+            </div>
+            <div
+              className="za-picker-crumbs"
+            >
+              <p>
+                选择：
+                安徽省 &gt; 安庆市 &gt; 大观区
+              </p>
+            </div>
+            <div
+              className="za-picker-stack-group"
+            >
+              <div
+                className="za-picker-stack-column"
+                key="0"
+                onClick={[Function]}
               >
                 <div
-                  className="za-picker-stack-column"
-                  key="0"
+                  className="za-picker-stack-column-wrapper"
                   onClick={[Function]}
                 >
                   <div
-                    className="za-picker-stack-column-wrapper"
+                    className="za-picker-stack-item active"
+                    key="0"
                     onClick={[Function]}
                   >
-                    <div
-                      className="za-picker-stack-item active"
-                      key="0"
-                      onClick={[Function]}
-                    >
-                      安徽省
-                    </div>
-                    <div
-                      className="za-picker-stack-item"
-                      key="1"
-                      onClick={[Function]}
-                    >
-                      澳门特别行政区
-                    </div>
-                    <div
-                      className="za-picker-stack-item"
-                      key="2"
-                      onClick={[Function]}
-                    >
-                      北京
-                    </div>
+                    安徽省
+                  </div>
+                  <div
+                    className="za-picker-stack-item"
+                    key="1"
+                    onClick={[Function]}
+                  >
+                    澳门特别行政区
+                  </div>
+                  <div
+                    className="za-picker-stack-item"
+                    key="2"
+                    onClick={[Function]}
+                  >
+                    北京
                   </div>
                 </div>
+              </div>
+              <div
+                className="za-picker-stack-column"
+                key="1"
+                onClick={[Function]}
+              >
                 <div
-                  className="za-picker-stack-column"
-                  key="1"
+                  className="za-picker-stack-column-wrapper"
                   onClick={[Function]}
                 >
                   <div
-                    className="za-picker-stack-column-wrapper"
+                    className="za-picker-stack-item active"
+                    key="0"
                     onClick={[Function]}
                   >
-                    <div
-                      className="za-picker-stack-item active"
-                      key="0"
-                      onClick={[Function]}
-                    >
-                      安庆市
-                    </div>
+                    安庆市
                   </div>
                 </div>
+              </div>
+              <div
+                className="za-picker-stack-column"
+                key="2"
+                onClick={[Function]}
+              >
                 <div
-                  className="za-picker-stack-column"
-                  key="2"
+                  className="za-picker-stack-column-wrapper"
                   onClick={[Function]}
                 >
                   <div
-                    className="za-picker-stack-column-wrapper"
+                    className="za-picker-stack-item active"
+                    key="0"
                     onClick={[Function]}
                   >
-                    <div
-                      className="za-picker-stack-item active"
-                      key="0"
-                      onClick={[Function]}
-                    >
-                      大观区
-                    </div>
+                    大观区
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <Mask
-            className=""
-            onClose={[Function]}
-            prefixCls="za-mask"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-            type="normal"
-            visible={false}
-          />
         </div>
-      </Popup>
-    </div>
+        <Mask
+          className=""
+          onClose={[Function]}
+          prefixCls="za-mask"
+          style={
+            Object {
+              "WebkitAnimationDuration": "200ms",
+              "animationDuration": "200ms",
+            }
+          }
+          type="normal"
+          visible={false}
+        />
+      </div>
+    </Popup>
   </div>
 </PickerStack>
 `;
@@ -718,94 +719,82 @@ exports[`Picker render custom label 1`] = `
   class="za-picker"
 >
   <div
-    class="za-picker-container"
+    class="za-popup za-popup-hidden"
   >
     <div
-      class="za-popup za-popup-hidden"
+      class="za-popup-wrapper za-popup-wrapper-bottom"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
     >
       <div
-        class="za-popup-wrapper za-popup-wrapper-bottom"
-        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+        class="za-picker-wrapper"
       >
         <div
-          class="za-picker-wrapper"
+          class="za-picker-header"
         >
           <div
-            class="za-picker-header"
+            class="za-picker-cancel"
           >
-            <div
-              class="za-picker-cancel"
-            >
-              取消
-            </div>
-            <div
-              class="za-picker-title"
-            >
-              请选择
-            </div>
-            <div
-              class="za-picker-submit"
-            >
-              确定
-            </div>
+            取消
           </div>
           <div
-            class="za-picker-mask-top"
+            class="za-picker-title"
+          >
+            请选择
+          </div>
+          <div
+            class="za-picker-submit"
+          >
+            确定
+          </div>
+        </div>
+        <div
+          class="za-picker-mask-top"
+        >
+          <div
+            class="za-picker-mask-bottom"
           >
             <div
-              class="za-picker-mask-bottom"
+              class="za-picker-view"
             >
               <div
-                class="za-picker-column-group"
+                class="za-wheel"
               >
                 <div
-                  class="za-picker-column-group-item"
+                  class="za-wheel-indicator"
+                />
+                <div
+                  class="za-wheel-content"
                 >
                   <div
-                    class="za-picker-column"
+                    class="za-wheel-item za-wheel-item-selected"
                   >
-                    <div
-                      class="za-picker-column-indicator"
-                    />
-                    <div
-                      class="za-picker-column-content"
-                    >
-                      <div
-                        class="za-picker-column-item za-picker-column-item-selected"
-                      >
-                        北京市
-                      </div>
-                      <div
-                        class="za-picker-column-item"
-                      >
-                        上海市
-                      </div>
-                    </div>
+                    北京市
+                  </div>
+                  <div
+                    class="za-wheel-item"
+                  >
+                    上海市
                   </div>
                 </div>
+              </div>
+              <div
+                class="za-wheel"
+              >
                 <div
-                  class="za-picker-column-group-item"
+                  class="za-wheel-indicator"
+                />
+                <div
+                  class="za-wheel-content"
                 >
                   <div
-                    class="za-picker-column"
+                    class="za-wheel-item za-wheel-item-selected"
                   >
-                    <div
-                      class="za-picker-column-indicator"
-                    />
-                    <div
-                      class="za-picker-column-content"
-                    >
-                      <div
-                        class="za-picker-column-item za-picker-column-item-selected"
-                      >
-                        海淀区
-                      </div>
-                      <div
-                        class="za-picker-column-item"
-                      >
-                        西城区
-                      </div>
-                    </div>
+                    海淀区
+                  </div>
+                  <div
+                    class="za-wheel-item"
+                  >
+                    西城区
                   </div>
                 </div>
               </div>

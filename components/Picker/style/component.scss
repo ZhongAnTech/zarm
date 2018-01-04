@@ -15,6 +15,7 @@ $stackitemHeight: $picker-stackitem-height;
     position: relative;
     width: 100%;
     height: r(45);
+    font-size: r(16);
     line-height: r(45);
     @include onepx(bottom);
   }
@@ -36,29 +37,8 @@ $stackitemHeight: $picker-stackitem-height;
     color: $theme-primary;
   }
 
-  &-placeholder {
-    color: $color-text-placeholder;
-  }
-
-  &-disabled {
-    color: $color-text-disabled;
-  }
-
-  &-crumbs {
-    position: relative;
-    padding: r(10) r(20);
-    line-height: r(24);
-    font-size: r(14);
-    color: #999;
-    @include onepx(bottom);
-
-    p {
-      margin: 0;
-    }
-
-    &-error {
-      color: $theme-error;
-    }
+  &-title {
+    color: $color-text;
   }
 
   &-stack {
