@@ -2,15 +2,15 @@
 
 exports[`Confirm renders correctly 1`] = `
 <div
-  class="za-modal"
-  style="-webkit-animation-duration:200ms;animation-duration:200ms;"
+  class="za-modal za-confirm"
+  style="-webkit-animation-duration:200ms;animation-duration:200ms"
 >
   <div
     class="za-modal-wrapper"
   >
     <div
       class="za-modal-dialog"
-      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms;"
+      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms"
     >
       <div
         class="za-modal-header"
@@ -22,34 +22,22 @@ exports[`Confirm renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="za-modal-body"
+        class="za-modal-body za-confirm-body"
       >
-        <div
-          class="za-confirm"
-        >
-          你确定要这样做吗？
-        </div>
+        你确定要这样做吗？
       </div>
       <div
-        class="za-modal-footer"
+        class="za-modal-footer za-confirm-footer"
       >
         <a
-          aria-disabled="false"
-          class="za-button theme-default block bordered"
-          role="button"
+          class="za-confirm-footer-button block"
         >
-          <span>
-            取消
-          </span>
+          取消
         </a>
         <a
-          aria-disabled="false"
-          class="za-button theme-primary block bordered"
-          role="button"
+          class="za-confirm-footer-button block za-confirm-footer-button-ok"
         >
-          <span>
-            确定
-          </span>
+          确定
         </a>
       </div>
     </div>

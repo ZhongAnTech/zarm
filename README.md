@@ -6,79 +6,84 @@
   ![JS gzip size](http://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
   ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
 
-  众安科技移动端UI组件库，基于React。（Vue版本传送门：[zarm-vue](https://github.com/ZhonganTechENG/zarm-vue)）
+  众安科技移动端UI组件库，基于React。
 
-### Example 案例
+## Install 安装
 
-[Online example](https://zhongantecheng.github.io/zarm/)
-
-### Install 安装
-
+使用npm安装：
 ```bash
 npm install zarm --save
 ```
 
-### Import 引入
-
-* 全组件引入
-
-```js
-import { Button, Cell } from 'zarm';
-import 'zarm/styles/index.scss';
-```
-
-* 单独引入
-
-```js
-import Button from 'zarm/lib/Button';
-import 'zarm/styles/core/index.scss';
-import 'zarm/styles/variables.scss';
-import 'zarm/styles/components/Button.scss';
-```
-
-* 也可以通过cdn引入umd模块
-
+或者通过cdn引入umd模块：
 ```html
 <link rel="stylesheet" href="https://unpkg.com/zarm@latest/dist/zarm.min.css">
-
-<script src="https://unpkg.com/react@15.5.0/dist/react.min.js" type="text/javascript"></script>
-<script src="https://unpkg.com/react@15.5.0/dist/react-dom.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://unpkg.com/zarm@latest/dist/zarm.min.js"></script>
 ```
 
-### Usage 使用
+## Usage 使用
 
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
+#### 全组件引入
 
-ReactDOM.render(<Button theme="primary">按钮</Button>, document.getElementById('app'));
-```
-
-> 注：使用以上方法需要支持jsx语法或者经过编译
-
-### Custom Theme 自定义主题
 ```js
 import { Button, Cell } from 'zarm';
-import './styles/index.scss';
+import 'zarm/dist/zarm.min.css';
 ```
 
-`./style/index.scss` 文件内容如下：
+#### 按需加载
+
+* 方法一（推荐）
+
+> 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载Sass文件
+
+```js
+  // .babelrc or babel-loader option
+  {
+    "plugins": [
+      ['import', {
+        libraryName: 'zarm',
+        style: true,
+        camel2DashComponentName: false,
+      }],
+    ]
+  }
+```
+```js
+import { Button, Cell } from 'zarm';
+```
+
+* 方法二：
+
+```js
+import Button from 'zarm/lib/Button';
+import 'zarm/lib/Button/style';
+```
+
+#### 定制主题
+
+通过覆盖Sass变量定义达到定制主题的效果
 
 ```css
-@import "node_modules/zarm/styles/core/index";
-@import "node_modules/zarm/styles/variables";
-@import "./variables";
-@import "node_modules/zarm/styles/components";
+@import "~zarm/lib/style/index.scss";  // 引入官方提供的Sass基础样式文件
+@import "your-theme-file.scss";  // 用于覆盖上面定义的变量
+@import "~zarm/lib/style/components.scss";  // 引入官方提供的组件样式文件
 ```
 
-通过自己的variables.scss文件重写sass变量。
+`your-theme-file.scss` 示例如下：
 
-### Document 文档
+```css
+$theme-primary: #108ee9;
+```
+变量名可参考 [variables.scss](https://github.com/ZhonganTechENG/zarm/blob/master/components/style/variables.scss)
+
+> 注意：这种方式已经载入了所有组件的样式，不需要也无法和按需加载插件 `babel-plugin-import` 的 `style` 属性一起使用。
+
+
+## Document 文档
 [中文](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/SUMMARY.md)
 
-### Changelog 更新日志
+## Changelog 更新日志
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
 
-### License
+## License
 MIT

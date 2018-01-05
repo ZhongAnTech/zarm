@@ -64,10 +64,10 @@ import { Tab } from 'zarm';
 | className | string | | | 追加类名 |
 | value | string | | | 值 |
 | defaultValue | string | | | 初始值 |
-| disabled | bool | false | | 是否禁用 |
-| canSwipe | bool | false | | 是否支持滑动切换 |
-| lineWidth | number, string | | | 线条宽度 |
-| onChange | func | noop | \(index: number\) | 值变化时触发的回调函数 |
+| disabled | boolean | false | | 是否禁用 |
+| canSwipe | boolean | false | | 是否支持滑动切换 |
+| lineWidth | number &#124; string | | | 线条宽度 |
+| onChange | <code>(index: number) => void</code> | noop | \(index: number\) | 值变化时触发的回调函数 |
 
 
 #### Tab.Panel
@@ -75,7 +75,7 @@ import { Tab } from 'zarm';
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | className | string | | | 追加类名 |
-| disabled | bool | false | | 是否禁用 |
+| disabled | boolean | false | | 是否禁用 |
 | title | string | | | 标题 |
 | children | number | | | 内容 |
 

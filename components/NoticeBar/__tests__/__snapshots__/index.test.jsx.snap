@@ -29,7 +29,7 @@ exports[`NoticeBar autoscroll 1`] = `
   >
     <div
       className="za-message theme-warning size-lg"
-      onClick={false}
+      onClick={[Function]}
     >
       <div
         className="za-message-header"
@@ -94,7 +94,7 @@ exports[`NoticeBar icon 1`] = `
     >
       <div
         class="za-noticebar-body"
-        style="left:0;"
+        style="left:0"
       >
         foo
       </div>
@@ -132,7 +132,7 @@ exports[`NoticeBar renders correctly 1`] = `
   >
     <div
       className="za-message theme-warning size-lg"
-      onClick={false}
+      onClick={[Function]}
     >
       <div
         className="za-message-header"
@@ -196,7 +196,7 @@ exports[`NoticeBar theme 1`] = `
     >
       <div
         class="za-noticebar-body"
-        style="left:0;"
+        style="left:0"
       >
         foo
       </div>

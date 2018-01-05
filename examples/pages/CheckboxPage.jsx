@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
+import { Panel, Cell, Checkbox } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Checkbox } from '../../components';
 import '../styles/pages/CheckboxPage';
 
 class Page extends PureComponent {

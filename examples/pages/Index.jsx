@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
+import { Panel, Cell } from 'zarm';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
-import { Panel, Cell } from '../../components';
 import '../styles/pages/IndexPage';
 
 class Page extends PureComponent {
@@ -22,13 +22,13 @@ class Page extends PureComponent {
             <Panel.Header title="表单组件" />
             <Panel.Body>
               <Cell hasArrow title="复选框 Checkbox" onClick={() => history.push('/checkbox')} />
+              <Cell hasArrow title="文件选择器 FilePicker" onClick={() => history.push('/file-picker')} />
               <Cell hasArrow title="文本框 Input" onClick={() => history.push('/input')} />
               <Cell hasArrow title="选择器 Picker" onClick={() => history.push('/picker')} />
               <Cell hasArrow title="单选框 Radio" onClick={() => history.push('/radio')} />
               <Cell hasArrow title="滑动输入条 Slider" onClick={() => history.push('/slider')} />
               <Cell hasArrow title="步进器 Stepper" onClick={() => history.push('/stepper')} />
               <Cell hasArrow title="开关 Switch" onClick={() => history.push('/switch')} />
-              <Cell hasArrow title="上传组件 Uploader" onClick={() => history.push('/uploader')} />
             </Panel.Body>
           </Panel>
           <Panel>

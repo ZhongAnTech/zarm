@@ -25,7 +25,7 @@ exports[`Tab canSwipe 1`] = `
     </ul>
     <div
       class="za-tab-line"
-      style="width:50%;left:0%;"
+      style="width:50%;left:0%"
     />
   </div>
   <div
@@ -36,7 +36,7 @@ exports[`Tab canSwipe 1`] = `
     >
       <div
         class="za-swipe-items"
-        style="white-space:nowrap;"
+        style="white-space:nowrap"
       >
         <div
           class="za-swipe-item"
@@ -70,6 +70,7 @@ exports[`Tab lineWidth is auto 1`] = `
     >
       <li
         className="za-tab-header-item active"
+        key="0/.0"
         onClick={[Function]}
         role="tab"
       >
@@ -77,6 +78,7 @@ exports[`Tab lineWidth is auto 1`] = `
       </li>
       <li
         className="za-tab-header-item"
+        key="1/.1"
         onClick={[Function]}
         role="tab"
       >
@@ -107,7 +109,8 @@ exports[`Tab lineWidth is auto 1`] = `
     className="za-tab-container"
   >
     <TabPanel
-      prefixCls="za-tab-panel"
+      key=".0"
+      prefixCls="za-tab"
       selected={true}
       title="选项卡1"
     >
@@ -116,7 +119,8 @@ exports[`Tab lineWidth is auto 1`] = `
       </div>
     </TabPanel>
     <TabPanel
-      prefixCls="za-tab-panel"
+      key=".1"
+      prefixCls="za-tab"
       selected={false}
       title="选项卡2"
     >
@@ -140,6 +144,7 @@ exports[`Tab lineWidth is auto 2`] = `
     >
       <li
         className="za-tab-header-item active"
+        key="0/.0"
         onClick={[Function]}
         role="tab"
       >
@@ -147,6 +152,7 @@ exports[`Tab lineWidth is auto 2`] = `
       </li>
       <li
         className="za-tab-header-item"
+        key="1/.1"
         onClick={[Function]}
         role="tab"
       >
@@ -177,7 +183,8 @@ exports[`Tab lineWidth is auto 2`] = `
     className="za-tab-container"
   >
     <TabPanel
-      prefixCls="za-tab-panel"
+      key=".0"
+      prefixCls="za-tab"
       selected={true}
       title="选项卡1"
     >
@@ -186,7 +193,8 @@ exports[`Tab lineWidth is auto 2`] = `
       </div>
     </TabPanel>
     <TabPanel
-      prefixCls="za-tab-panel"
+      key=".1"
+      prefixCls="za-tab"
       selected={false}
       title="选项卡2"
     >
@@ -223,7 +231,7 @@ exports[`Tab renders correctly 1`] = `
     </ul>
     <div
       class="za-tab-line"
-      style="width:50%;left:0%;"
+      style="width:50%;left:0%"
     />
   </div>
   <div

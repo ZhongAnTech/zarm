@@ -1,0 +1,10 @@
+@mixin spinner-theme($color) {
+  .#{$prefixCls-spinner}-line {
+    stroke: $color;
+  }
+}
+
+@mixin spinner-size($diameter) {
+  width: $diameter;
+  height: $diameter;
+}

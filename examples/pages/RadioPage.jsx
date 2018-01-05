@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
+import { Panel, Cell, Radio } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Radio } from '../../components';
 import '../styles/pages/RadioPage';
 
 class Page extends PureComponent {

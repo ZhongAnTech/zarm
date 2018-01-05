@@ -1,0 +1,11 @@
+$prefixCls: $prefixCls-filepicker;
+
+.#{$prefixCls} {
+  &.disabled {
+    opacity: $opacity-disabled;
+  }
+
+  &-input {
+    display: none;
+  }
+}

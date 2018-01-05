@@ -6,11 +6,11 @@ exports[`Progress renders correctly 1`] = `
 >
   <div
     class="za-progress-inner"
-    style="height:5px;"
+    style="height:5px"
   >
     <div
       class="za-progress-bg"
-      style="width:10%;"
+      style="width:10%"
     />
   </div>
 </div>
@@ -22,11 +22,11 @@ exports[`Progress renders has children correctly 1`] = `
 >
   <div
     class="za-progress-inner"
-    style="height:5px;"
+    style="height:5px"
   >
     <div
       class="za-progress-bg"
-      style="width:10%;"
+      style="width:10%"
     />
   </div>
   <div
@@ -46,7 +46,7 @@ exports[`Progress renders shape is circle correctly 1`] = `
   >
     <svg
       class="za-spinner theme-primary"
-      viewbox="0 0 62 62"
+      viewBox="0 0 62 62"
     >
       <circle
         class="za-spinner-path"
@@ -54,7 +54,7 @@ exports[`Progress renders shape is circle correctly 1`] = `
         cy="31"
         fill="none"
         r="28.5"
-        style="stroke-width:5;"
+        style="stroke-width:5"
       />
       <circle
         class="za-spinner-line"
@@ -62,7 +62,7 @@ exports[`Progress renders shape is circle correctly 1`] = `
         cy="31"
         fill="none"
         r="28.5"
-        style="stroke-dasharray:17.90707812546182 179.0707812546182;stroke-width:5;"
+        style="stroke-dasharray:17.90707812546182 179.0707812546182;stroke-width:5"
       />
     </svg>
   </div>

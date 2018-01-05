@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, SwipeAction, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, SwipeAction } from '../../components';
 
 class Page extends Component {
 
@@ -16,32 +16,16 @@ class Page extends Component {
             <Panel.Body>
               <SwipeAction
                 right={[
-                  {
-                    theme: 'error',
-                    text: '右按钮1',
-                    onClick: () => console.log('右按钮1'),
-                  },
-                  {
-                    theme: 'success',
-                    text: '右按钮2',
-                    onClick: () => console.log('右按钮2'),
-                  },
+                  <Button theme="primary" onClick={() => console.log('右按钮1')}>右按钮1</Button>,
+                  <Button theme="error" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
                 ]}>
                 <Cell>左滑看看</Cell>
               </SwipeAction>
 
               <SwipeAction
                 left={[
-                  {
-                    theme: 'info',
-                    text: '左按钮1',
-                    onClick: () => console.log('左按钮1'),
-                  },
-                  {
-                    theme: 'warning',
-                    text: '左按钮2',
-                    onClick: () => console.log('左按钮2'),
-                  },
+                  <Button theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
+                  <Button theme="error" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
                 ]}>
                 <Cell>右滑看看</Cell>
               </SwipeAction>
@@ -49,28 +33,11 @@ class Page extends Component {
               <SwipeAction
                 autoClose
                 left={[
-                  {
-                    theme: 'info',
-                    text: '左按钮1',
-                    onClick: () => console.log('左按钮1'),
-                  },
-                  {
-                    theme: 'warning',
-                    text: '左按钮2',
-                    onClick: () => console.log('左按钮2'),
-                  },
+                  <Button theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
+                  <Button theme="warning" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
                 ]}
                 right={[
-                  {
-                    theme: 'error',
-                    text: '右按钮1',
-                    onClick: () => console.log('右按钮1'),
-                  },
-                  {
-                    theme: 'success',
-                    text: '右按钮2',
-                    onClick: () => console.log('右按钮2'),
-                  },
+                  <Button theme="error" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
                 ]}
                 onOpen={() => console.log('open')}
                 onClose={() => console.log('close')}>

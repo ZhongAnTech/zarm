@@ -1,0 +1,37 @@
+$prefixCls: $prefixCls-tooltip;
+
+.#{$prefixCls} {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  transform: translateY(-100%);
+  padding-bottom: $tooltip-arrow-size;
+
+  &-inner {
+    position: relative;
+    background-color: rgba(0, 0, 0, $opacity-tooltip);
+    padding: $padding-v-md $padding-h-md;
+    border-radius: $radius-md;
+    font-size: $tooltip-font-size;
+    color: $tooltip-color;
+    margin-bottom: $tooltip-arrow-size;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -$tooltip-arrow-size;
+      width: 0;
+      height: 0;
+      transform: translateX(-50%);
+      border-width: $tooltip-arrow-size $tooltip-arrow-size 0;
+      border-color: transparent;
+      border-top-color: rgba(0, 0, 0, $opacity-tooltip);
+      border-style: solid;
+    }
+  }
+
+  &-hidden {
+    display: none;
+  }
+}

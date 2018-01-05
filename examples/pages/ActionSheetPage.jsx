@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, ActionSheet, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, ActionSheet, Button } from '../../components';
 
 class Page extends Component {
 
@@ -31,13 +31,18 @@ class Page extends Component {
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.toggle('visible1')}>开启</Button>
+                  <Button size="sm" onClick={() => this.toggle('visible1')}>开启</Button>
                 }>普通</Cell>
 
               <Cell
                 description={
-                  <Button size="xs" onClick={() => this.toggle('visible2')}>开启</Button>
+                  <Button size="sm" onClick={() => this.toggle('visible2')}>开启</Button>
                 }>带取消操作</Cell>
+
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('visible3')}>开启</Button>
+                }>圆角留间隔</Cell>
             </Panel.Body>
           </Panel>
 
@@ -76,6 +81,29 @@ class Page extends Component {
             ]}
             onCancel={() => this.toggle('visible2')}
             />
+
+          <ActionSheet
+            spacing
+            shape="radius"
+            visible={this.state.visible3}
+            actions={[
+              {
+                text: '操作一',
+                onClick: () => console.log('点击操作一'),
+              },
+              {
+                text: '操作二',
+                onClick: () => console.log('点击操作二'),
+              },
+              {
+                theme: 'error',
+                text: '操作三',
+                onClick: () => console.log('点击操作三'),
+              },
+            ]}
+            onCancel={() => this.toggle('visible3')}
+            />
+
         </main>
         <Footer />
       </Container>

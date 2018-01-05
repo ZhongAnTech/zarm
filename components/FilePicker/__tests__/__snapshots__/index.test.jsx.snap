@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilePicker renders correctly 1`] = `
+<div
+  class="za-filepicker"
+>
+  <input
+    class="za-filepicker-input"
+    type="file"
+  />
+  <div>
+    add
+  </div>
+</div>
+`;

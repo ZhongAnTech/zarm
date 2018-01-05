@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, Picker, DatePicker } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Picker } from '../../components';
 import District from '../mock/district';
 
 class Page extends Component {
@@ -38,8 +38,6 @@ class Page extends Component {
                       single,
                     });
                     console.log(`selected ${single.value}`);
-                  }}
-                  onCancel={() => {
                   }}
                   />
               </Cell>
@@ -103,7 +101,6 @@ class Page extends Component {
                     },
                   ]}
                   defaultValue={['1', '12']}
-                  displayAddon="-"
                   />
               </Cell>
 
@@ -143,15 +140,13 @@ class Page extends Component {
                   ]}
                   value={diy.value}
                   valueMember="code"
-                  displayMember="name"
+                  itemRender={data => data.name}
                   displayRender={selected => selected.map(item => item.name).join('/')}
                   onOk={(selected) => {
                     diy.value = selected.map(item => item.code);
                     this.setState({
                       diy,
                     });
-                  }}
-                  onCancel={() => {
                   }}
                   />
               </Cell>
@@ -179,7 +174,7 @@ class Page extends Component {
             <Panel.Body>
 
               <Cell title="年份选择">
-                <Picker.Date
+                <DatePicker
                   title="选择年份"
                   placeholder="请选择年份"
                   mode="year"
@@ -188,15 +183,18 @@ class Page extends Component {
               </Cell>
 
               <Cell title="日期选择">
-                <Picker.Date
+                <DatePicker
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
+                  value="2009-03-04"
+                  min="2007-01-03"
+                  max="2017-11-23"
                   />
               </Cell>
 
               <Cell title="时间选择">
-                <Picker.Date
+                <DatePicker
                   title="选择时间"
                   placeholder="请选择时间"
                   mode="time"
@@ -205,15 +203,15 @@ class Page extends Component {
               </Cell>
 
               <Cell title="日期&时间">
-                <Picker.Date mode="datetime" />
+                <DatePicker mode="datetime" />
               </Cell>
 
               <Cell title="自定义格式">
-                <Picker.Date
+                <DatePicker
                   title="选择日期"
                   placeholder="请选择日期"
                   mode="date"
-                  format="YYYY年MM月DD日"
+                  format="yyyy年MM月dd日"
                   />
               </Cell>
 

@@ -1,36 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input autosize 1`] = `
-<Input
-  autosize={true}
-  disabled={false}
-  onChange={[Function]}
-  prefixCls="za-input"
-  rows={4}
-  showLength={false}
-  type="textarea"
-  value="foo"
->
-  <div
-    className="za-input"
-  >
-    <textarea
-      className="za-input"
-      disabled={false}
-      onChange={[Function]}
-      rows={4}
-      value="foo"
-    />
-  </div>
-</Input>
-`;
-
 exports[`Input renders correctly 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-text"
 >
   <input
-    class="za-input"
     type="text"
   />
 </div>
@@ -38,10 +12,9 @@ exports[`Input renders correctly 1`] = `
 
 exports[`Input showLength 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-textarea"
 >
   <textarea
-    class="za-input"
     maxlength="100"
     rows="4"
   />
@@ -53,26 +26,376 @@ exports[`Input showLength 1`] = `
 </div>
 `;
 
-exports[`Input type is date renders correctly 1`] = `
+exports[`Input.Idcard renders correctly 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-number"
 >
   <div
     class="za-input-placeholder"
   />
-  <input
-    class="za-input"
-    type="date"
+  <div
+    class="za-input-content"
   />
+  <input
+    type="hidden"
+    value=""
+  />
+  <div
+    class="za-popup za-popup-hidden"
+  >
+    <div
+      class="za-popup-wrapper za-popup-wrapper-bottom"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
+    >
+      <div
+        class="za-keyboard"
+      >
+        <div
+          class="za-keyboard-keys"
+        >
+          <div
+            class="za-keyboard-item"
+          >
+            1
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            2
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            3
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            4
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            5
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            6
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            7
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            8
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            9
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            x
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            0
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            <i
+              class="za-icon za-icon-keyboard"
+            />
+          </div>
+        </div>
+        <div
+          class="za-keyboard-handle"
+        >
+          <div
+            class="za-keyboard-item"
+          >
+            <i
+              class="za-icon za-icon-deletekey"
+            />
+          </div>
+          <div
+            class="za-keyboard-item za-keyboard-item-ok"
+          >
+            确定
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
-exports[`Input type is textarea renders correctly 1`] = `
+exports[`Input.Number renders correctly 1`] = `
 <div
-  class="za-input"
+  class="za-input za-input-number"
+>
+  <div
+    class="za-input-placeholder"
+  />
+  <div
+    class="za-input-content"
+  />
+  <input
+    type="hidden"
+    value=""
+  />
+  <div
+    class="za-popup za-popup-hidden"
+  >
+    <div
+      class="za-popup-wrapper za-popup-wrapper-bottom"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
+    >
+      <div
+        class="za-keyboard"
+      >
+        <div
+          class="za-keyboard-keys"
+        >
+          <div
+            class="za-keyboard-item"
+          >
+            1
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            2
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            3
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            4
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            5
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            6
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            7
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            8
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            9
+          </div>
+          <div
+            class="za-keyboard-item za-keyboard-item-disabled"
+          />
+          <div
+            class="za-keyboard-item"
+          >
+            0
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            <i
+              class="za-icon za-icon-keyboard"
+            />
+          </div>
+        </div>
+        <div
+          class="za-keyboard-handle"
+        >
+          <div
+            class="za-keyboard-item"
+          >
+            <i
+              class="za-icon za-icon-deletekey"
+            />
+          </div>
+          <div
+            class="za-keyboard-item za-keyboard-item-ok"
+          >
+            确定
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Input.Price renders correctly 1`] = `
+<div
+  class="za-input za-input-number"
+>
+  <div
+    class="za-input-placeholder"
+  />
+  <div
+    class="za-input-content"
+  />
+  <input
+    type="hidden"
+    value=""
+  />
+  <div
+    class="za-popup za-popup-hidden"
+  >
+    <div
+      class="za-popup-wrapper za-popup-wrapper-bottom"
+      style="-webkit-transition-duration:200ms;transition-duration:200ms"
+    >
+      <div
+        class="za-keyboard"
+      >
+        <div
+          class="za-keyboard-keys"
+        >
+          <div
+            class="za-keyboard-item"
+          >
+            1
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            2
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            3
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            4
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            5
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            6
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            7
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            8
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            9
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            .
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            0
+          </div>
+          <div
+            class="za-keyboard-item"
+          >
+            <i
+              class="za-icon za-icon-keyboard"
+            />
+          </div>
+        </div>
+        <div
+          class="za-keyboard-handle"
+        >
+          <div
+            class="za-keyboard-item"
+          >
+            <i
+              class="za-icon za-icon-deletekey"
+            />
+          </div>
+          <div
+            class="za-keyboard-item za-keyboard-item-ok"
+          >
+            确定
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Input.Textarea autosize 1`] = `
+<Input
+  autosize={true}
+  onChange={[Function]}
+  rows={4}
+  type="textarea"
+  value="foo"
+>
+  <InputTextarea
+    autosize={true}
+    disabled={false}
+    onChange={[Function]}
+    prefixCls="za-input"
+    rows={4}
+    showLength={false}
+    value="foo"
+  >
+    <div
+      className="za-input za-input-textarea"
+    >
+      <textarea
+        disabled={false}
+        onChange={[Function]}
+        rows={4}
+        value="foo"
+      />
+    </div>
+  </InputTextarea>
+</Input>
+`;
+
+exports[`Input.Textarea renders correctly 1`] = `
+<div
+  class="za-input za-input-textarea"
 >
   <textarea
-    class="za-input"
     rows="4"
   />
 </div>

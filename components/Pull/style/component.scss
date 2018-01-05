@@ -1,0 +1,52 @@
+$prefixCls: $prefixCls-pull;
+
+.#{$prefixCls} {
+  overflow: hidden;
+  min-height: $pull-control-height;
+  // overflow-x: hidden;
+  // overflow-y: scroll;
+  // height: r(300);
+
+  &-content {
+    transform: translate3d(0, $pull-control-height, 0);
+  }
+
+  &-refresh,
+  &-load {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &-refresh {
+    margin-top: -$pull-control-height;
+    height: $pull-control-height;
+  }
+
+  &-load {
+    height: 0;
+
+    &-show {
+      height: $pull-control-height;
+    }
+  }
+
+  &-control {
+    display: flex;
+    align-items: center;
+    padding: r(10) 0;
+    height: $pull-control-height;
+    color: $color-text-caption;
+    font-size: $pull-control-font-size;
+
+    .#{$prefixCls-icon} {
+      font-size: r(22);
+    }
+
+    * + span {
+      margin-left: r(8);
+    }
+  }
+}

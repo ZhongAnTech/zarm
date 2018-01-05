@@ -36,8 +36,7 @@ exports[`Picker Cascader Picker 1`] = `
     ]
   }
   disabled={false}
-  displayAddon=""
-  displayMember="label"
+  itemRender={[Function]}
   okText="确定"
   onCancel={[Function]}
   onChange={[Function]}
@@ -48,7 +47,6 @@ exports[`Picker Cascader Picker 1`] = `
   prefixCls="za-picker"
   title="请选择"
   valueMember="value"
-  visible={false}
 >
   <div
     className="za-picker"
@@ -70,7 +68,6 @@ exports[`Picker Cascader Picker 1`] = `
       <Popup
         animationDuration={200}
         autoClose={false}
-        className="za-popup-inner"
         direction="bottom"
         mask={true}
         maskType="normal"
@@ -80,7 +77,7 @@ exports[`Picker Cascader Picker 1`] = `
         visible={false}
       >
         <div
-          className="za-popup za-popup-inner za-popup-hidden"
+          className="za-popup za-popup-hidden"
         >
           <div
             className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -155,14 +152,14 @@ exports[`Picker Cascader Picker 1`] = `
                       ]
                     }
                     disabled={false}
-                    displayMember="label"
+                    itemRender={[Function]}
                     onChange={[Function]}
                     prefixCls="za-picker"
                     value={Array []}
                     valueMember="value"
                   >
                     <ColumnGroup
-                      displayMember="label"
+                      itemRender={[Function]}
                       onValueChange={[Function]}
                       prefixCls="za-picker"
                       selectedValue={
@@ -178,31 +175,33 @@ exports[`Picker Cascader Picker 1`] = `
                       >
                         <div
                           className="za-picker-column-group-item"
+                          key="0"
                         >
                           <Column
-                            displayMember="label"
+                            itemRender={[Function]}
                             onValueChange={[Function]}
                             prefixCls="za-picker"
-                            pure={true}
                             selectedValue="1"
                             valueMember="value"
                           >
                             <div
-                              className="za-picker-cascader"
+                              className="za-picker-column"
                             >
                               <div
-                                className="za-picker-cascader-indicator"
+                                className="za-picker-column-indicator"
                               />
                               <div
-                                className="za-picker-cascader-content"
+                                className="za-picker-column-content"
                               >
                                 <div
-                                  className="za-picker-cascader-item za-picker-cascader-item-selected"
+                                  className="za-picker-column-item za-picker-column-item-selected"
+                                  key="1"
                                 >
                                   选项一
                                 </div>
                                 <div
-                                  className="za-picker-cascader-item"
+                                  className="za-picker-column-item"
+                                  key="2"
                                 >
                                   选项一
                                 </div>
@@ -212,31 +211,33 @@ exports[`Picker Cascader Picker 1`] = `
                         </div>
                         <div
                           className="za-picker-column-group-item"
+                          key="1"
                         >
                           <Column
-                            displayMember="label"
+                            itemRender={[Function]}
                             onValueChange={[Function]}
                             prefixCls="za-picker"
-                            pure={true}
                             selectedValue="11"
                             valueMember="value"
                           >
                             <div
-                              className="za-picker-cascader"
+                              className="za-picker-column"
                             >
                               <div
-                                className="za-picker-cascader-indicator"
+                                className="za-picker-column-indicator"
                               />
                               <div
-                                className="za-picker-cascader-content"
+                                className="za-picker-column-content"
                               >
                                 <div
-                                  className="za-picker-cascader-item za-picker-cascader-item-selected"
+                                  className="za-picker-column-item za-picker-column-item-selected"
+                                  key="11"
                                 >
                                   选项一
                                 </div>
                                 <div
-                                  className="za-picker-cascader-item"
+                                  className="za-picker-column-item"
+                                  key="12"
                                 >
                                   选项二
                                 </div>
@@ -271,613 +272,28 @@ exports[`Picker Cascader Picker 1`] = `
 </Picker>
 `;
 
-exports[`Picker DatePicker 1`] = `
-<DatePicker
-  cancelText="取消"
-  defaultValue=""
-  disabled={false}
-  displayMember="label"
-  locale={
-    Object {
-      "day": "日",
-      "hour": "时",
-      "minute": "分",
-      "month": "月",
-      "year": "年",
-    }
-  }
-  minuteStep={1}
-  mode="date"
-  okText="确定"
-  onCancel={[Function]}
-  onChange={[Function]}
-  onClick={[Function]}
-  onMaskClick={[Function]}
-  onOk={[Function]}
-  placeholder="请选择"
-  prefixCls="za-picker"
-  title="请选择"
-  value=""
-  valueMember="value"
-  visible={false}
->
-  <div
-    className="za-picker"
-    onClick={[Function]}
-  >
-    <div
-      className="za-picker-input za-picker-placeholder"
-    >
-      <input
-        type="hidden"
-        value=""
-      />
-      请选择
-    </div>
-    <div
-      className="za-picker-container za-picker-hidden"
-      onClick={[Function]}
-    >
-      <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
-        onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
-        visible={false}
-      >
-        <div
-          className="za-popup za-popup-hidden"
-        >
-          <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
-          >
-            <div
-              className="za-picker-wrapper"
-            >
-              <div
-                className="za-picker-header"
-              >
-                <div
-                  className="za-picker-cancel"
-                  onClick={[Function]}
-                >
-                  取消
-                </div>
-                <div
-                  className="za-picker-title"
-                >
-                  请选择
-                </div>
-                <div
-                  className="za-picker-submit"
-                  onClick={[Function]}
-                >
-                  确定
-                </div>
-              </div>
-              <div
-                className="za-picker-mask-top"
-              >
-                <div
-                  className="za-picker-mask-bottom"
-                >
-                  <ColumnGroup
-                    disabled={false}
-                    displayMember="label"
-                    onValueChange={[Function]}
-                    prefixCls="za-picker"
-                    selectedValue={
-                      Array [
-                        "2000",
-                        "0",
-                        "1",
-                      ]
-                    }
-                    valueMember="value"
-                  >
-                    <div
-                      className="za-picker-column-group"
-                    >
-                      <div
-                        className="za-picker-column-group-item"
-                      >
-                        <Column
-                          displayMember="label"
-                          onValueChange={[Function]}
-                          prefixCls="za-picker"
-                          pure={true}
-                          selectedValue="2000"
-                          valueMember="value"
-                        >
-                          <div
-                            className="za-picker-cascader"
-                          >
-                            <div
-                              className="za-picker-cascader-indicator"
-                            />
-                            <div
-                              className="za-picker-cascader-content"
-                            >
-                              <div
-                                className="za-picker-cascader-item za-picker-cascader-item-selected"
-                              >
-                                2000年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2001年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2002年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2003年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2004年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2005年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2006年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2007年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2008年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2009年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2010年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2011年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2012年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2013年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2014年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2015年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2016年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2017年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2018年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2019年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2020年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2021年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2022年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2023年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2024年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2025年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2026年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2027年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2028年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2029年
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2030年
-                              </div>
-                            </div>
-                          </div>
-                        </Column>
-                      </div>
-                      <div
-                        className="za-picker-column-group-item"
-                      >
-                        <Column
-                          displayMember="label"
-                          onValueChange={[Function]}
-                          prefixCls="za-picker"
-                          pure={true}
-                          selectedValue="0"
-                          valueMember="value"
-                        >
-                          <div
-                            className="za-picker-cascader"
-                          >
-                            <div
-                              className="za-picker-cascader-indicator"
-                            />
-                            <div
-                              className="za-picker-cascader-content"
-                            >
-                              <div
-                                className="za-picker-cascader-item za-picker-cascader-item-selected"
-                              >
-                                1月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                3月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                4月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                5月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                6月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                7月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                8月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                9月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                10月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                11月
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                12月
-                              </div>
-                            </div>
-                          </div>
-                        </Column>
-                      </div>
-                      <div
-                        className="za-picker-column-group-item"
-                      >
-                        <Column
-                          displayMember="label"
-                          onValueChange={[Function]}
-                          prefixCls="za-picker"
-                          pure={true}
-                          selectedValue="1"
-                          valueMember="value"
-                        >
-                          <div
-                            className="za-picker-cascader"
-                          >
-                            <div
-                              className="za-picker-cascader-indicator"
-                            />
-                            <div
-                              className="za-picker-cascader-content"
-                            >
-                              <div
-                                className="za-picker-cascader-item za-picker-cascader-item-selected"
-                              >
-                                1日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                2日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                3日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                4日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                5日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                6日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                7日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                8日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                9日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                10日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                11日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                12日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                13日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                14日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                15日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                16日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                17日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                18日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                19日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                20日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                21日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                22日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                23日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                24日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                25日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                26日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                27日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                28日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                29日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                30日
-                              </div>
-                              <div
-                                className="za-picker-cascader-item"
-                              >
-                                31日
-                              </div>
-                            </div>
-                          </div>
-                        </Column>
-                      </div>
-                    </div>
-                  </ColumnGroup>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Mask
-            className=""
-            onClose={[Function]}
-            prefixCls="za-mask"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-            type="normal"
-            visible={false}
-          />
-        </div>
-      </Popup>
-    </div>
-  </div>
-</DatePicker>
-`;
-
-exports[`Picker Picker 1`] = `
+exports[`Picker Cascader Picker init value 1`] = `
 <div
   class="za-picker"
 >
   <div
-    class="za-picker-input za-picker-placeholder"
+    class="za-picker-input"
   >
     <input
       type="hidden"
-      value=""
+      value="1,12"
     />
-    请选择
+    选项一选项二
   </div>
   <div
     class="za-picker-container"
   >
     <div
-      class="za-popup za-popup-inner za-popup-hidden"
+      class="za-popup za-popup-hidden"
     >
       <div
         class="za-popup-wrapper za-popup-wrapper-bottom"
-        style="-webkit-transition-duration:200ms;transition-duration:200ms;"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
       >
         <div
           class="za-picker-wrapper"
@@ -914,21 +330,135 @@ exports[`Picker Picker 1`] = `
                   class="za-picker-column-group-item"
                 >
                   <div
-                    class="za-picker-cascader"
+                    class="za-picker-column"
                   >
                     <div
-                      class="za-picker-cascader-indicator"
+                      class="za-picker-column-indicator"
                     />
                     <div
-                      class="za-picker-cascader-content"
+                      class="za-picker-column-content"
                     >
                       <div
-                        class="za-picker-cascader-item za-picker-cascader-item-selected"
+                        class="za-picker-column-item za-picker-column-item-selected"
                       >
                         选项一
                       </div>
                       <div
-                        class="za-picker-cascader-item"
+                        class="za-picker-column-item"
+                      >
+                        选项一
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="za-picker-column-group-item"
+                >
+                  <div
+                    class="za-picker-column"
+                  >
+                    <div
+                      class="za-picker-column-indicator"
+                    />
+                    <div
+                      class="za-picker-column-content"
+                    >
+                      <div
+                        class="za-picker-column-item"
+                      >
+                        选项一
+                      </div>
+                      <div
+                        class="za-picker-column-item za-picker-column-item-selected"
+                      >
+                        选项二
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Picker Picker 1`] = `
+<div
+  class="za-picker"
+>
+  <div
+    class="za-picker-input za-picker-placeholder"
+  >
+    <input
+      type="hidden"
+      value=""
+    />
+    请选择
+  </div>
+  <div
+    class="za-picker-container"
+  >
+    <div
+      class="za-popup za-popup-hidden"
+    >
+      <div
+        class="za-popup-wrapper za-popup-wrapper-bottom"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      >
+        <div
+          class="za-picker-wrapper"
+        >
+          <div
+            class="za-picker-header"
+          >
+            <div
+              class="za-picker-cancel"
+            >
+              取消
+            </div>
+            <div
+              class="za-picker-title"
+            >
+              请选择
+            </div>
+            <div
+              class="za-picker-submit"
+            >
+              确定
+            </div>
+          </div>
+          <div
+            class="za-picker-mask-top"
+          >
+            <div
+              class="za-picker-mask-bottom"
+            >
+              <div
+                class="za-picker-column-group"
+              >
+                <div
+                  class="za-picker-column-group-item"
+                >
+                  <div
+                    class="za-picker-column"
+                  >
+                    <div
+                      class="za-picker-column-indicator"
+                    />
+                    <div
+                      class="za-picker-column-content"
+                    >
+                      <div
+                        class="za-picker-column-item za-picker-column-item-selected"
+                      >
+                        选项一
+                      </div>
+                      <div
+                        class="za-picker-column-item"
                       >
                         选项二
                       </div>
@@ -953,39 +483,148 @@ exports[`Picker StackPicker 1`] = `
       Object {
         "children": Array [
           Object {
-            "label": "海淀区",
-            "value": "11",
-          },
-          Object {
-            "label": "西城区",
-            "value": "12",
+            "children": Array [
+              Object {
+                "children": Array [],
+                "label": "大观区",
+                "value": "340803",
+              },
+            ],
+            "label": "安庆市",
+            "value": "340800",
           },
         ],
-        "label": "北京市",
-        "value": "1",
+        "label": "安徽省",
+        "value": "340000",
       },
       Object {
         "children": Array [
           Object {
-            "label": "黄埔区",
-            "value": "21",
+            "children": Array [],
+            "label": "澳门半岛",
+            "value": "820100",
           },
           Object {
-            "label": "虹口区",
-            "value": "22",
+            "children": Array [],
+            "label": "离岛",
+            "value": "820200",
           },
         ],
-        "label": "上海市",
-        "value": "2",
+        "label": "澳门特别行政区",
+        "value": "820000",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "label": "昌平区",
+                "value": "110114",
+              },
+              Object {
+                "children": Array [],
+                "label": "朝阳区",
+                "value": "110105",
+              },
+              Object {
+                "children": Array [],
+                "label": "崇文区",
+                "value": "110103",
+              },
+              Object {
+                "children": Array [],
+                "label": "大兴区",
+                "value": "110115",
+              },
+              Object {
+                "children": Array [],
+                "label": "东城区",
+                "value": "110101",
+              },
+              Object {
+                "children": Array [],
+                "label": "房山区",
+                "value": "110111",
+              },
+              Object {
+                "children": Array [],
+                "label": "丰台区",
+                "value": "110106",
+              },
+              Object {
+                "children": Array [],
+                "label": "海淀区",
+                "value": "110108",
+              },
+              Object {
+                "children": Array [],
+                "label": "怀柔区",
+                "value": "110116",
+              },
+              Object {
+                "children": Array [],
+                "label": "门头沟区",
+                "value": "110109",
+              },
+              Object {
+                "children": Array [],
+                "label": "密云县",
+                "value": "110228",
+              },
+              Object {
+                "children": Array [],
+                "label": "平谷区",
+                "value": "110117",
+              },
+              Object {
+                "children": Array [],
+                "label": "其它区",
+                "value": "110230",
+              },
+              Object {
+                "children": Array [],
+                "label": "石景山区",
+                "value": "110107",
+              },
+              Object {
+                "children": Array [],
+                "label": "顺义区",
+                "value": "110113",
+              },
+              Object {
+                "children": Array [],
+                "label": "通州区",
+                "value": "110112",
+              },
+              Object {
+                "children": Array [],
+                "label": "西城区",
+                "value": "110102",
+              },
+              Object {
+                "children": Array [],
+                "label": "宣武区",
+                "value": "110104",
+              },
+              Object {
+                "children": Array [],
+                "label": "延庆县",
+                "value": "110229",
+              },
+            ],
+            "label": "北京市",
+            "value": "110100",
+          },
+        ],
+        "label": "北京",
+        "value": "110000",
       },
     ]
   }
   disabled={false}
-  displayItems={8}
   displayRender={[Function]}
-  itemHeight={50}
   itemRender={[Function]}
-  labelAddon=" > "
   onCancel={[Function]}
   onOk={[Function]}
   placeholder="请选择"
@@ -1068,6 +707,7 @@ exports[`Picker StackPicker 1`] = `
               >
                 <div
                   className="za-picker-stack-column lower-hidden"
+                  key="0"
                   onClick={[Function]}
                 >
                   <div
@@ -1076,20 +716,30 @@ exports[`Picker StackPicker 1`] = `
                   >
                     <div
                       className="za-picker-stack-item"
+                      key="0"
                       onClick={[Function]}
                     >
-                      北京市
+                      安徽省
                     </div>
                     <div
                       className="za-picker-stack-item"
+                      key="1"
                       onClick={[Function]}
                     >
-                      上海市
+                      澳门特别行政区
+                    </div>
+                    <div
+                      className="za-picker-stack-item"
+                      key="2"
+                      onClick={[Function]}
+                    >
+                      北京
                     </div>
                   </div>
                 </div>
                 <div
                   className="za-picker-stack-column lower-hidden"
+                  key="1"
                   onClick={[Function]}
                 >
                   <div
@@ -1098,15 +748,28 @@ exports[`Picker StackPicker 1`] = `
                   >
                     <div
                       className="za-picker-stack-item"
+                      key="0"
                       onClick={[Function]}
                     >
-                      海淀区
+                      安庆市
                     </div>
+                  </div>
+                </div>
+                <div
+                  className="za-picker-stack-column lower-hidden"
+                  key="2"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="za-picker-stack-column-wrapper"
+                    onClick={[Function]}
+                  >
                     <div
                       className="za-picker-stack-item"
+                      key="0"
                       onClick={[Function]}
                     >
-                      西城区
+                      大观区
                     </div>
                   </div>
                 </div>
@@ -1131,4 +794,427 @@ exports[`Picker StackPicker 1`] = `
     </div>
   </div>
 </PickerStack>
+`;
+
+exports[`Picker StackPicker init value 1`] = `
+<PickerStack
+  cols={Infinity}
+  dataSource={
+    Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "label": "大观区",
+                "value": "340803",
+              },
+            ],
+            "label": "安庆市",
+            "value": "340800",
+          },
+        ],
+        "label": "安徽省",
+        "value": "340000",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [],
+            "label": "澳门半岛",
+            "value": "820100",
+          },
+          Object {
+            "children": Array [],
+            "label": "离岛",
+            "value": "820200",
+          },
+        ],
+        "label": "澳门特别行政区",
+        "value": "820000",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "label": "昌平区",
+                "value": "110114",
+              },
+              Object {
+                "children": Array [],
+                "label": "朝阳区",
+                "value": "110105",
+              },
+              Object {
+                "children": Array [],
+                "label": "崇文区",
+                "value": "110103",
+              },
+              Object {
+                "children": Array [],
+                "label": "大兴区",
+                "value": "110115",
+              },
+              Object {
+                "children": Array [],
+                "label": "东城区",
+                "value": "110101",
+              },
+              Object {
+                "children": Array [],
+                "label": "房山区",
+                "value": "110111",
+              },
+              Object {
+                "children": Array [],
+                "label": "丰台区",
+                "value": "110106",
+              },
+              Object {
+                "children": Array [],
+                "label": "海淀区",
+                "value": "110108",
+              },
+              Object {
+                "children": Array [],
+                "label": "怀柔区",
+                "value": "110116",
+              },
+              Object {
+                "children": Array [],
+                "label": "门头沟区",
+                "value": "110109",
+              },
+              Object {
+                "children": Array [],
+                "label": "密云县",
+                "value": "110228",
+              },
+              Object {
+                "children": Array [],
+                "label": "平谷区",
+                "value": "110117",
+              },
+              Object {
+                "children": Array [],
+                "label": "其它区",
+                "value": "110230",
+              },
+              Object {
+                "children": Array [],
+                "label": "石景山区",
+                "value": "110107",
+              },
+              Object {
+                "children": Array [],
+                "label": "顺义区",
+                "value": "110113",
+              },
+              Object {
+                "children": Array [],
+                "label": "通州区",
+                "value": "110112",
+              },
+              Object {
+                "children": Array [],
+                "label": "西城区",
+                "value": "110102",
+              },
+              Object {
+                "children": Array [],
+                "label": "宣武区",
+                "value": "110104",
+              },
+              Object {
+                "children": Array [],
+                "label": "延庆县",
+                "value": "110229",
+              },
+            ],
+            "label": "北京市",
+            "value": "110100",
+          },
+        ],
+        "label": "北京",
+        "value": "110000",
+      },
+    ]
+  }
+  disabled={false}
+  displayRender={[Function]}
+  itemRender={[Function]}
+  onCancel={[Function]}
+  onOk={[Function]}
+  placeholder="请选择"
+  prefixCls="za-picker"
+  title="请选择"
+  validate={[Function]}
+  value={
+    Array [
+      "340000",
+      "340800",
+      "340803",
+    ]
+  }
+  valueMember="value"
+>
+  <div
+    className="za-picker"
+  >
+    <div
+      className="za-picker-input"
+      onClick={[Function]}
+    >
+      <input
+        type="hidden"
+        value={
+          Array [
+            "340000",
+            "340800",
+            "340803",
+          ]
+        }
+      />
+      安徽省安庆市大观区
+    </div>
+    <div
+      className="za-picker-container za-picker-hidden"
+      onClick={[Function]}
+    >
+      <Popup
+        animationDuration={200}
+        autoClose={false}
+        direction="bottom"
+        mask={true}
+        maskType="normal"
+        onMaskClick={[Function]}
+        prefixCls="za-popup"
+        stayTime={3000}
+        visible={false}
+      >
+        <div
+          className="za-popup za-popup-hidden"
+        >
+          <div
+            className="za-popup-wrapper za-popup-wrapper-bottom"
+            style={
+              Object {
+                "WebkitTransitionDuration": "200ms",
+                "transitionDuration": "200ms",
+              }
+            }
+          >
+            <div
+              className="za-picker-wrapper"
+            >
+              <div
+                className="za-picker-header"
+              >
+                <div
+                  className="za-picker-cancel"
+                  onClick={[Function]}
+                >
+                  取消
+                </div>
+                <div
+                  className="za-picker-title"
+                >
+                  请选择
+                </div>
+                <div
+                  className="za-picker-submit"
+                />
+              </div>
+              <div
+                className="za-picker-crumbs"
+              >
+                <p>
+                  选择：
+                  安徽省 &gt; 安庆市 &gt; 大观区
+                </p>
+              </div>
+              <div
+                className="za-picker-stack-group"
+              >
+                <div
+                  className="za-picker-stack-column"
+                  key="0"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="za-picker-stack-column-wrapper"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="za-picker-stack-item active"
+                      key="0"
+                      onClick={[Function]}
+                    >
+                      安徽省
+                    </div>
+                    <div
+                      className="za-picker-stack-item"
+                      key="1"
+                      onClick={[Function]}
+                    >
+                      澳门特别行政区
+                    </div>
+                    <div
+                      className="za-picker-stack-item"
+                      key="2"
+                      onClick={[Function]}
+                    >
+                      北京
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="za-picker-stack-column"
+                  key="1"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="za-picker-stack-column-wrapper"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="za-picker-stack-item active"
+                      key="0"
+                      onClick={[Function]}
+                    >
+                      安庆市
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="za-picker-stack-column"
+                  key="2"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="za-picker-stack-column-wrapper"
+                    onClick={[Function]}
+                  >
+                    <div
+                      className="za-picker-stack-item active"
+                      key="0"
+                      onClick={[Function]}
+                    >
+                      大观区
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Mask
+            className=""
+            onClose={[Function]}
+            prefixCls="za-mask"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+            type="normal"
+            visible={false}
+          />
+        </div>
+      </Popup>
+    </div>
+  </div>
+</PickerStack>
+`;
+
+exports[`Picker render defaultValue correctly  1`] = `
+<div
+  class="za-picker"
+>
+  <div
+    class="za-picker-input"
+  >
+    <input
+      type="hidden"
+      value="2"
+    />
+    选项二
+  </div>
+  <div
+    class="za-picker-container"
+  >
+    <div
+      class="za-popup za-popup-hidden"
+    >
+      <div
+        class="za-popup-wrapper za-popup-wrapper-bottom"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      >
+        <div
+          class="za-picker-wrapper"
+        >
+          <div
+            class="za-picker-header"
+          >
+            <div
+              class="za-picker-cancel"
+            >
+              取消
+            </div>
+            <div
+              class="za-picker-title"
+            >
+              请选择
+            </div>
+            <div
+              class="za-picker-submit"
+            >
+              确定
+            </div>
+          </div>
+          <div
+            class="za-picker-mask-top"
+          >
+            <div
+              class="za-picker-mask-bottom"
+            >
+              <div
+                class="za-picker-column-group"
+              >
+                <div
+                  class="za-picker-column-group-item"
+                >
+                  <div
+                    class="za-picker-column"
+                  >
+                    <div
+                      class="za-picker-column-indicator"
+                    />
+                    <div
+                      class="za-picker-column-content"
+                    >
+                      <div
+                        class="za-picker-column-item"
+                      >
+                        选项一
+                      </div>
+                      <div
+                        class="za-picker-column-item za-picker-column-item-selected"
+                      >
+                        选项二
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

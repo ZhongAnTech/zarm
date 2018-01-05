@@ -1,25 +1,12 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-const BROWSERS = [
-  'last 3 versions',
-  'ie >= 10',
-  'ie_mob >= 10',
-  'ff >= 30',
-  'chrome >= 34',
-  'safari >= 6',
-  'opera >= 12.1',
-  'ios >= 6',
-  'android >= 4.4',
-  'bb >= 10',
-  'and_uc 9.9',
-];
+const browsers = require('../config/browsers');
 
 module.exports = {
 
   output: {
     path: path.resolve(__dirname, '../../assets'),
-    filename: 'js/[name].[hash:8].js',
+    filename: 'js/[name].js',
     chunkFilename: 'js/[name].[chunkhash:8].js',
     publicPath: '/',
   },
@@ -37,8 +24,9 @@ module.exports = {
                 [
                   'env',
                   {
+                    modules: false,
                     targets: {
-                      browsers: BROWSERS,
+                      browsers,
                     },
                   },
                 ],
@@ -47,34 +35,49 @@ module.exports = {
               ],
               plugins: [
                 'transform-runtime',
-                'add-module-exports',
+                ['import', {
+                  libraryName: 'zarm',
+                  libraryDirectory: 'components',
+                  style: true,
+                  camel2DashComponentName: false,
+                }],
               ],
             },
           },
         ],
       },
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader?importLoaders=1',
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: [
-                  require('autoprefixer')({
-                    browsers: BROWSERS,
-                  }),
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  'env',
+                  {
+                    modules: false,
+                    targets: {
+                      browsers,
+                    },
+                  },
                 ],
-              },
+                'react',
+                'stage-0',
+              ],
+              plugins: [
+                'transform-runtime',
+              ],
             },
-          ],
-        }),
+          },
+          {
+            loader: 'awesome-typescript-loader',
+          },
+        ],
       },
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: ExtractTextPlugin.extract({
           use: [
             {
@@ -85,7 +88,7 @@ module.exports = {
               options: {
                 plugins: [
                   require('autoprefixer')({
-                    browsers: BROWSERS,
+                    browsers,
                   }),
                 ],
               },
@@ -122,7 +125,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [' ', '.js', '.jsx', '.scss'],
+    extensions: [' ', '.js', '.jsx', '.ts', '.tsx', '.scss'],
   },
 
   plugins: [],

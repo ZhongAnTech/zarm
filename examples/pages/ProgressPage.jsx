@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Panel, Cell, Stepper, Progress, Picker } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Panel, Cell, Stepper, Progress, Picker } from '../../components';
 import '../styles/pages/ProgressPage';
 
 class Page extends Component {
@@ -60,9 +60,8 @@ class Page extends Component {
                 <Picker
                   value={this.state.theme}
                   dataSource={[
-                    { value: 'default', label: 'default' },
                     { value: 'primary', label: 'primary' },
-                    { value: 'info', label: 'info' },
+                    { value: 'success', label: 'success' },
                     { value: 'warning', label: 'warning' },
                     { value: 'error', label: 'error' },
                   ]}

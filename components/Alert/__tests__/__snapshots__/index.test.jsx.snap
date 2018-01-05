@@ -2,15 +2,15 @@
 
 exports[`Alert renders correctly 1`] = `
 <div
-  class="za-modal"
-  style="-webkit-animation-duration:200ms;animation-duration:200ms;"
+  class="za-modal za-alert"
+  style="-webkit-animation-duration:200ms;animation-duration:200ms"
 >
   <div
     class="za-modal-wrapper"
   >
     <div
       class="za-modal-dialog"
-      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms;"
+      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms"
     >
       <div
         class="za-modal-header"
@@ -22,25 +22,17 @@ exports[`Alert renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="za-modal-body"
+        class="za-modal-body za-alert-body"
       >
-        <div
-          class="za-alert"
-        >
-          这里是警告信息
-        </div>
+        这里是警告信息
       </div>
       <div
-        class="za-modal-footer"
+        class="za-modal-footer za-alert-footer"
       >
         <a
-          aria-disabled="false"
-          class="za-button theme-default block bordered"
-          role="button"
+          class="za-alert-footer-button"
         >
-          <span>
-            关闭
-          </span>
+          关闭
         </a>
       </div>
     </div>

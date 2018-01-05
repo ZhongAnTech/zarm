@@ -9,13 +9,13 @@
 
 * 表单组件
   * [复选框 Checkbox](components/Checkbox.md)
+  * [文件选择器 FilePicker](components/FilePicker.md)
   * [文本框 Input](components/Input.md)
   * [选择器 Picker](components/Picker.md)
   * [单选框 Radio](components/Radio.md)
   * [滑动输入条 Slider](components/Slider.md)
   * [步进器 Stepper](components/Stepper.md)
   * [开关 Switch](components/Switch.md)
-  * [上传组件 Uploader](components/Uploader.md)
 
 * 操作反馈
   * [动作面板 ActionSheet](components/ActionSheet.md)

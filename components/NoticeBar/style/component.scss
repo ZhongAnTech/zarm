@@ -1,0 +1,16 @@
+$prefixCls: $prefixCls-noticebar;
+
+.#{$prefixCls} {
+  width: 100%;
+  height: $noticebar-height;
+  line-height: $noticebar-height;
+  position: relative;
+  overflow: hidden;
+
+  &-body {
+    position: absolute;
+    left: 0;
+    top: r(2);
+    white-space: nowrap;
+  }
+}

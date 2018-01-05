@@ -1,0 +1,78 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-badge;
+
+.#{$prefixCls} {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  @include badge-theme($theme-default);
+
+  &.theme-primary {
+    @include badge-theme($theme-primary);
+  }
+
+  &.theme-success {
+    @include badge-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include badge-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include badge-theme($theme-error);
+  }
+
+  &-sup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: auto;
+    color: #fff;
+    font-size: $badge-font-size;
+    height: $badge-height;
+    padding: 0 $badge-padding-h;
+    white-space: nowrap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    &-up {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateX(50%) translateY(-50%);
+    }
+  }
+
+  &.shape-dot {
+    .#{$prefixCls}-sup {
+      width: $badge-dot-diameter;
+      height: $badge-dot-diameter;
+      padding: 0;
+      border-radius: $radius-circle;
+    }
+  }
+
+  &.shape-radius {
+    .#{$prefixCls}-sup {
+      border-radius: $radius-md;
+    }
+  }
+
+  &.shape-round {
+    .#{$prefixCls}-sup {
+      min-width: $badge-height;
+      border-radius: $radius-round;
+    }
+  }
+
+  &.shape-circle {
+    .#{$prefixCls}-sup {
+      width: $badge-height;
+      border-radius: $radius-circle;
+      padding: 0;
+    }
+  }
+}

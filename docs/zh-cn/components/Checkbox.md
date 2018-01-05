@@ -117,13 +117,15 @@ import { Checkbox } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-checkbox | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| type | string | | 'button', 'cell' | 显示类型 |
-| value | string, number | | | 值 |
-| checked | bool | | | 是否选中 |
-| defaultChecked | bool | | | 初始是否选中 |
-| disabled | bool | false | | 是否禁用 |
-| onChange | func | | \(checked: bool\) | 值变化时触发的回调函数 |
+| checked | boolean | | | 是否选中 |
+| shape | string | | `radius`, `round` | 形状 |
+| block | boolean | false | | 是否为块级元素 |
+| type | string | | `button`, `cell` | 显示类型 |
+| defaultChecked | boolean | | | 初始是否选中 |
+| value | string &#124; number | | | 值 |
+| disabled | boolean | false | | 是否禁用 |
+| onChange | <code>(checked: boolean) => void</code> | | <code>\(checked: boolean\)</code> | 值变化时触发的回调函数 |
+| id | string | | | 方便外部带有for属性的label标签控制当前checkbox |
 
 #### Checkbox.Group
 
@@ -131,14 +133,14 @@ import { Checkbox } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-checkbox | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| shape | string | | 'radius', 'round' | 形状 |
-| type | string | | 'button', 'cell' | 显示类型 |
-| value | array | [ ] | | 选中值 |
-| defaultValue | array | [ ] | | 初始选中值 |
-| block | bool | false | | 是否为块级元素 |
-| disabled | bool | false | | 是否禁用 |
-| onChange | func | noop | \(value: array\) | 值变化时触发的回调函数 |
+| block | boolean | false | | 是否为块级元素 |
+| shape | string | | `radius`, `round` | 形状 |
+| value | Array&lt;number &#124; string&gt; | [ ] | | 选中值 |
+| type | string | | `button`, `cell` | 显示类型 |
+| defaultValue | Array&lt;number &#124; string&gt; | [ ] | | 初始选中值 |
+| disabled | boolean | false | | 是否禁用 |
+| onChange | <code>(value: Array&lt;number &#124; string&gt;) => void</code> | noop | \(value: Array&lt;number &#124; string&gt;\) | 值变化时触发的回调函数 |
+| compact | boolean | false | | group内的checkbox（type="button"）是否无缝相连 |
 
 
 

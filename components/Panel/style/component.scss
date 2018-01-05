@@ -1,0 +1,29 @@
+$prefixCls: $prefixCls-panel;
+
+.#{$prefixCls} {
+  &-header {
+    display: flex;
+    padding: r(25) r(15) r(7) r(15);
+    color: $panel-header-color;
+    font-size: $panel-header-font-size;
+  }
+
+  &-footer {
+    display: flex;
+    padding: r(7) r(15);
+    margin-bottom: r(10);
+    color: $panel-footer-color;
+    font-size: $panel-footer-font-size;
+  }
+
+  &-body {
+    position: relative;
+    background: #fff;
+    color: $color-text;
+    @include onepx(top bottom);
+  }
+
+  &-title {
+    flex: 1;
+  }
+}

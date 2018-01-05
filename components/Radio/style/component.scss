@@ -1,0 +1,125 @@
+$prefixCls: $prefixCls-radio;
+
+.#{$prefixCls} {
+  display: inline-block;
+  position: relative;
+  margin-left: r(10);
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  &-text {
+    color: $color-text;
+  }
+
+  &-inner + &-text {
+    margin-left: r(10);
+  }
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $radio-size;
+    height: $radio-size;
+    border: 1px solid #999;
+    border-radius: $radio-size;
+    background: #fff;
+
+    &:before {
+      content: ' ';
+      width: $radio-size / 2.5;
+      height: $radio-size / 2.5;
+      border-radius: $radio-size / 2.5;
+      background-color: $theme-primary;
+      transform: scale(0);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    }
+  }
+
+  /* 组合 */
+  &-group {
+    &.block {
+      display: flex;
+    }
+
+    &.is-compact {
+      .#{$prefixCls} {
+        margin-left: -1px;
+      }
+
+      &.shape-radius {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: $radius-md 0 0 $radius-md;
+          }
+
+          &:last-child {
+            border-radius: 0 $radius-md $radius-md 0;
+          }
+        }
+      }
+
+      &.shape-round {
+        .#{$prefixCls} {
+          border-radius: 0;
+
+          &:first-child {
+            border-radius: $radius-round 0 0 $radius-round;
+          }
+
+          &:last-child {
+            border-radius: 0 $radius-round $radius-round 0;
+          }
+        }
+      }
+    }
+  }
+
+  /* 选中状态 */
+  &.checked {
+    .#{$prefixCls}-inner {
+      border-color: $theme-primary;
+
+      &:before {
+        transform: scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  &.disabled {
+    .#{$prefixCls} {
+      &-inner {
+        border-color: $border-disabled;
+        cursor: not-allowed;
+
+        &:before {
+          background-color: $background-disabled;
+        }
+      }
+
+      &-text {
+        color: $color-text-disabled;
+      }
+    }
+  }
+}

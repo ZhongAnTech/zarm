@@ -1,0 +1,72 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-switch;
+
+.#{$prefixCls} {
+  &-input {
+    position: relative;
+    width: $switch-width;
+    height: $switch-height;
+    border: 1px solid $switch-border-color;
+    border-radius: $radius-round;
+    background-color: $switch-border-color;
+    vertical-align: middle;
+    transition: background-color 0.1s, border 0.1s;
+    outline: 0;
+    -webkit-appearance: none;
+
+    &:before,
+    &:after {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: $switch-height - 2;
+      border-radius: $radius-round;
+    }
+
+    &:before {
+      width: $switch-width - 2;
+      background-color: $switch-background;
+      transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
+    }
+
+    &:after {
+      width: $switch-height - 2;
+      background-color: #fff;
+      box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+      transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
+    }
+
+    &:checked {
+      &:before {
+        transform: scale(0);
+      }
+
+      &:after {
+        transform: translateX($switch-width - $switch-height);
+      }
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+
+  &.theme-primary {
+    @include switch-theme($theme-primary);
+  }
+
+  &.theme-success {
+    @include switch-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include switch-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include switch-theme($theme-error);
+  }
+}

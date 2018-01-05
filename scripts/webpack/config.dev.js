@@ -6,35 +6,28 @@ const config = require('./config.base');
 config.devtool = 'cheap-module-eval-source-map';
 
 config.entry = {
-  index: [
-    './examples/index.js',
-  ],
+  index: ['./examples/index.js'],
 };
 
 config.plugins.push(new ExtractTextPlugin({
   filename: 'stylesheet/[name].css',
-  disable: false,
   allChunks: true,
 }));
 
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: 'common',
+  name: ['manifest'],
 }));
 
 config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
   names: Object.keys(config.entry),
-  async: 'common.async',
+  async: true,
   children: true,
-  minChunks(module, count) {
-    return module.context && module.context.indexOf('node_modules') !== -1 && count >= 3;
-  },
+  minChunks: 3,
 }));
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.plugins.push(new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: '"development"',
-  },
+  'process.env.NODE_ENV': JSON.stringify('development'),
   __DEBUG__: true,
 }));
 
@@ -42,7 +35,7 @@ Object.keys(config.entry).forEach((key) => {
   config.plugins.push(new HtmlWebpackPlugin({
     template: `./examples/${key}.html`,
     filename: `${key}.html`,
-    chunks: ['common', key],
+    chunks: ['manifest', key],
   }));
 });
 
@@ -56,6 +49,10 @@ config.devServer = {
   noInfo: true,
   inline: true,
   hot: true,
+};
+
+config.resolve.alias = {
+  zarm: process.cwd(),
 };
 
 module.exports = config;

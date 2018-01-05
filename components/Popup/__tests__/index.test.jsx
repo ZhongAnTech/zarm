@@ -28,12 +28,12 @@ describe('Popup', () => {
     wrapper.unmount();
   });
 
-  it('stayTime is 0', () => {
-    const wrapper = shallow(
-      <Popup stayTime={0}>foo</Popup>
-    );
-    wrapper.setProps({ visible: true });
-  });
+  // it('stayTime is 0', () => {
+  //   const wrapper = shallow(
+  //     <Popup stayTime={0}>foo</Popup>
+  //   );
+  //   wrapper.setProps({ visible: true });
+  // });
 
   it('autoClose', () => {
     jest.useFakeTimers();

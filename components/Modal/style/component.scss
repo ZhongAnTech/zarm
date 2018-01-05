@@ -1,0 +1,86 @@
+$prefixCls: $prefixCls-modal;
+
+.#{$prefixCls} {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  overflow: auto;
+  z-index: $zindex-modal;
+
+  &.shape-radius {
+    .#{$prefixCls}-dialog {
+      border-radius: $radius-md;
+    }
+  }
+
+  &-wrapper {
+    width: 100%;
+    margin: auto 0;
+  }
+
+  &-dialog {
+    position: relative;
+    margin: r(60) auto;
+    background-color: $modal-background;
+    box-shadow: 0 r(7) r(21) $color-shadow;
+    overflow: hidden;
+    z-index: $zindex-modal + 1;
+  }
+
+  &-header {
+    position: relative;
+    padding: r(20) r(15) 0 r(15);
+    text-align: center;
+
+    &-title {
+      font-size: $modal-title-font-size;
+      line-height: 1;
+      color: #333;
+    }
+
+    &-close {
+      position: absolute;
+      top: r(20);
+      right: r(15);
+      line-height: r(15);
+      color: #ccc;
+      cursor: pointer;
+
+      &.#{$prefixCls-icon} {
+        font-size: r(20);
+      }
+
+      &:hover {
+        color: #999;
+      }
+    }
+  }
+
+  &-body {
+    font-size: r(15);
+    color: $color-text-caption;
+    padding: r(15);
+    overflow: auto;
+    user-select: auto;
+  }
+
+  &-footer {
+    display: flex;
+    width: 100%;
+
+    &.block {
+      flex-direction: column;
+
+      a {
+        @include onepx(top);
+      }
+    }
+  }
+}
