@@ -5,8 +5,7 @@ export interface BaseRollerProps {
   valueMember: string;
   onValueChange?: (value?: any) => void;
   disabled?: boolean;
-  itemStyle?: object;
-  itemRender: (data?: object) => string;
+  itemRender: (item?: object) => string;
 }
 
 export interface BaseRollerGroupProps {
@@ -14,7 +13,7 @@ export interface BaseRollerGroupProps {
   selectedValue?: string[];
   valueMember: string;
   onValueChange?: (value?: any, i?: number) => void;
-  itemRender: (data?: object) => string;
+  itemRender: (item?: object) => string;
 }
 
 export interface BaseCascaderProps {
@@ -24,8 +23,7 @@ export interface BaseCascaderProps {
   children?: any[];
   cols?: number;
   onChange: (value?: any) => any;
-  selectedValue?: string[];
   valueMember: string;
   onValueChange?: (value?: any, i?: number) => void;
-  itemRender: (data?: object) => string;
+  itemRender: (item?: object) => string;
 }

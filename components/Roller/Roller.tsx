@@ -162,7 +162,7 @@ export default class Roller extends Component<RollerProps, any> {
   render() {
     const {
       children, prefixCls,
-      className, itemStyle, itemRender,
+      className, itemRender,
       valueMember,
     } = this.props;
 
@@ -172,7 +172,6 @@ export default class Roller extends Component<RollerProps, any> {
     const items = children.map((item, index) => {
       return (
         <div
-          style={itemStyle}
           className={selectedValue === item[valueMember] ? selectedItemClassName : itemClassName}
           key={index}
         >
