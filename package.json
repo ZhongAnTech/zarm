@@ -116,7 +116,7 @@
     "react-dom": "^16.0.0",
     "react-native": "~0.49.3",
     "react-router-dom": "^4.2.2",
-    "react-test-renderer": "^16.0.0",
+    "react-test-renderer": "^16.2.0",
     "react-transition-group": "^2.2.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.2",
