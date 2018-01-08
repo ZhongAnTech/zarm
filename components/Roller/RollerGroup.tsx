@@ -57,7 +57,7 @@ export default class RollerGroup extends Component<RollerGroupProps, any> {
     const selectedValue = this.getValue();
     const colElements = children.map((col, i) => {
       return (
-        <div key={col.key || i} className={`${prefixCls}-group-item`}>
+        <div key={i} className={`${prefixCls}-group-item`}>
           <Roller
             prefixCls={prefixCls}
             selectedValue={selectedValue[i]}
