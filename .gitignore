@@ -11,3 +11,5 @@ _book
 *.log
 examples-rn/ios/build
 examples-rn/ios/zarm.xcodeproj/project.xcworkspace/xcuserdata
+components/**/*.native.js
+components/*.native.js
