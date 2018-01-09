@@ -1,14 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const config = {
-  debug: true,
-
-  devtool: 'source-map',
+  // devtool: 'source-map',
 
   entry: {
     index: ['./examples-rn/index.js'],
-    // 'index': ['./examples-rn/index.js'],
   },
 
   output: {
@@ -17,48 +13,45 @@ const config = {
   },
 
   module: {
-    loaders: [{
-      test: /\.js$/,
-      include: [
-        path.resolve(__dirname, 'examples-rn'),
-      ],
-      loader: 'babel',
-      query: {
-        presets: ['env', 'stage-0', 'react'],
-        plugins: [],
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  'env',
+                  {
+                    modules: false,
+                  },
+                ],
+                'react',
+                'stage-0',
+              ],
+              // plugins: [
+              //   'transform-runtime',
+              // ],
+            },
+          },
+          {
+            loader: 'awesome-typescript-loader',
+          },
+        ],
       },
-    }],
+    ],
+  },
+
+  resolve: {
+    extensions: [' ', '.js', '.jsx', '.ts', '.tsx'],
   },
 
   plugins: [],
 
 };
 
-// Hot loader
-if (process.env.HOT) {
-  config.devtool = 'eval'; // Speed up incremental builds
-  config.entry['index.ios'].unshift('react-native-webpack-server/hot/entry');
-  config.entry['index.ios'].unshift('webpack/hot/only-dev-server');
-  config.entry['index.ios'].unshift('webpack-dev-server/client?http://localhost:8082');
-  config.output.publicPath = 'http://localhost:8082/';
-  config.plugins.unshift(new webpack.HotModuleReplacementPlugin());
-
-  // Note: enabling React Transform and React Transform HMR:
-  config.module.loaders[0].query.plugins.push([
-    'react-transform', {
-      transforms: [{
-        transform: 'react-transform-hmr',
-        imports: ['react-native'],
-        locals: ['module'],
-      }],
-    },
-  ]);
-}
-
-// Production config
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
-}
+config.output.publicPath = 'http://localhost:8081/';
 
 module.exports = config;
