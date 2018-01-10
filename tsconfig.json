@@ -17,4 +17,10 @@
   "include": [
     "components/**/*"
   ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es"
+  ],
+  "compileOnSave": false
 }
