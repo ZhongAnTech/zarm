@@ -74,7 +74,7 @@ import 'zarm/lib/Button/style';
 ```css
 $theme-primary: #108ee9;
 ```
-变量名可参考 [variables.scss](https://github.com/ZhonganTechENG/zarm/blob/master/components/style/variables.scss)
+变量名可参考 [default.scss](https://github.com/ZhonganTechENG/zarm/blob/master/components/style/themes/default.scss)
 
 > 注意：这种方式已经载入了所有组件的样式，不需要也无法和按需加载插件 `babel-plugin-import` 的 `style` 属性一起使用。
 
