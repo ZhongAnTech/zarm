@@ -186,4 +186,4 @@ export default {
   tooltip_font_size: 12,
   tooltip_color: '#fff',
   tooltip_arrow_size: 5,
-}
+};
