@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import PropsType from './PropsType';
+import buttonStyle from './style/index.native';
 
-const buttonStyles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-  },
-});
+export interface ButtonProps extends PropsType {
+  styles?: typeof buttonStyle;
+}
 
-export default class Button extends PureComponent<{}> {
+const buttonStyles = StyleSheet.create<any>(buttonStyle);
+
+export default class Button extends PureComponent<ButtonProps, {}> {
   static defaultProps = {
     prefixCls: 'za-button',
     theme: 'default',
@@ -23,23 +25,12 @@ export default class Button extends PureComponent<{}> {
 
   render() {
     const {
-      theme,
-      size,
-      shape,
-      icon,
-      block,
-      active,
-      focus,
-      bordered,
-      disabled,
-      loading,
-      onClick,
       styles,
       children,
     } = this.props;
 
     return (
-      <View style={styles.container}>
+      <View style={styles!.container}>
         <Text>{children}</Text>
       </View>
     );
