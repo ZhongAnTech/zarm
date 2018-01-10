@@ -10,6 +10,6 @@ _book
 .temp
 *.log
 examples-rn/ios/build
-components/**/*.native.js
-components/*.native.js
+components/**/*.js
+components/*.js
 xcuserdata
