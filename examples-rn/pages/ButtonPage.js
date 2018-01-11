@@ -6,7 +6,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View>
-        <Button>Button</Button>
+        <Button theme="primary">Button</Button>
       </View>
     );
   }
