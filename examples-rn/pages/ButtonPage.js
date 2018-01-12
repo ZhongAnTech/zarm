@@ -13,6 +13,7 @@ export default class App extends Component<{}> {
           <Button style={{ marginBottom: 10 }} theme="primary" shape="radius" onClick={() => console.log(1)}>Button</Button>
           <Button style={{ marginBottom: 10 }} theme="primary" shape="round" onClick={() => console.log(1)}>Button</Button>
           <Button style={{ marginBottom: 10 }} theme="primary" shape="circle" onClick={() => console.log(1)}>GO</Button>
+          <Button style={{ marginBottom: 10 }} theme="primary" shape="circle" size="lg" onClick={() => console.log(1)}>GO</Button>
 
           <Button style={{ marginBottom: 10 }} bordered onClick={() => console.log(1)}>Button</Button>
           <Button style={{ marginBottom: 10 }} theme="primary" bordered onClick={() => console.log(1)}>Button</Button>

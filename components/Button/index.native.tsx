@@ -47,9 +47,10 @@ export default class Button extends PureComponent<ButtonProps, any> {
       buttonStyle![`${size}Wrapper`],
       buttonStyle![`${theme}Wrapper`],
       buttonStyle![`${shape}Wrapper`],
-      bordered && buttonStyle!.borderedWrapper,
-      bordered && buttonStyle![`${theme}BorderedWrapper`],
+      shape === 'circle' && buttonStyle![`${size}CircleWrapper`],
       isActive && buttonStyle![`${theme}BorderedActive`],
+      bordered && buttonStyle![`${theme}BorderedWrapper`],
+      bordered && buttonStyle!.borderedWrapper,
       disabled && buttonStyle!.disabledWrapper,
       style,
     ];

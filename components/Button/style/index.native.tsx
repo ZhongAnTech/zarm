@@ -63,6 +63,9 @@ export default {
     paddingLeft: variables.button_padding_h_lg,
     paddingRight: variables.button_padding_h_lg,
   },
+  lgCircleWrapper: {
+    width: variables.button_height_lg,
+  },
   lgText: {
     fontSize: variables.button_font_size_lg,
   },
@@ -70,6 +73,9 @@ export default {
     height: variables.button_height_sm,
     paddingLeft: variables.button_padding_h_sm,
     paddingRight: variables.button_padding_h_sm,
+  },
+  smCircleWrapper: {
+    width: variables.button_height_sm,
   },
   smText: {
     fontSize: variables.button_font_size_sm,
