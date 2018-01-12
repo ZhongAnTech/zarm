@@ -18,43 +18,41 @@ export default {
     fontSize: variables.button_font_size_md,
     color: variables.color_text_inverse,
   },
+  iconStyle: {
+    marginRight: variables.button_padding_h_md / 2,
+  },
 
   // theme
   defaultWrapper: {
     backgroundColor: variables.theme_default,
   },
-  defaultActive: {
+  defaultActiveWrapper: {
     backgroundColor: '#c9c9c9',
   },
   defaultBorderedWrapper: {
     borderColor: variables.theme_default,
   },
-  defaultBorderedActive: {
-    borderColor: 'rgba(201, 201, 201, 0.5)',
-    backgroundColor: 'transparent',
-  },
   defaultText: {
     color: variables.color_text,
+  },
+  defaultActiveText: {
+    opacity: 0.6,
   },
 
   primaryWrapper: {
     backgroundColor: variables.theme_primary,
   },
-  primaryActive: {
+  primaryActiveWrapper: {
     backgroundColor: '#0f9d6d',
   },
   primaryBorderedWrapper: {
     borderColor: variables.theme_primary,
   },
-  primaryBorderedActive: {
-    borderColor: 'rgba(15, 157, 109, 0.5)',
-    backgroundColor: 'transparent',
-  },
-  // primaryText: {
-  //   color: variables.theme_primary,
-  // },
   primaryBorderedText: {
     color: variables.theme_primary,
+  },
+  primaryActiveText: {
+    opacity: 0.6,
   },
 
   // size
@@ -69,6 +67,9 @@ export default {
   lgText: {
     fontSize: variables.button_font_size_lg,
   },
+  lgIcon: {
+    marginRight: variables.button_padding_h_lg / 2,
+  },
   smWrapper: {
     height: variables.button_height_sm,
     paddingLeft: variables.button_padding_h_sm,
@@ -79,6 +80,9 @@ export default {
   },
   smText: {
     fontSize: variables.button_font_size_sm,
+  },
+  smIcon: {
+    marginRight: variables.button_padding_h_sm / 2,
   },
 
   // shape
@@ -91,6 +95,8 @@ export default {
   circleWrapper: {
     width: variables.button_height_md,
     borderRadius: variables.radius_round,
+    paddingLeft: 0,
+    paddingRight: 0,
   },
 
   // bordered
@@ -99,6 +105,7 @@ export default {
     backgroundColor: 'transparent',
   },
 
+  // disabled
   disabledWrapper: {
     opacity: 0.5,
   },

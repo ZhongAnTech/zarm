@@ -1,5 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, ActivityIndicator } from 'react-native';
 import PropsType from './PropsType';
 import buttonStyle from './style/index.native';
 
@@ -30,6 +30,12 @@ export default class Button extends PureComponent<ButtonProps, any> {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if ('active' in nextProps) {
+      this.setState({ isActive: nextProps.active });
+    }
+  }
+
   onPressIn = () => {
     this.setState({ isActive: true });
   }
@@ -39,7 +45,20 @@ export default class Button extends PureComponent<ButtonProps, any> {
   }
 
   render() {
-    const { theme, size, style, shape, bordered, active, disabled, onClick, children, ...others } = this.props;
+    const {
+      theme,
+      size,
+      shape,
+      bordered,
+      active,
+      disabled,
+      loading,
+      icon,
+      style,
+      onClick,
+      children,
+      ...others,
+    } = this.props;
     const isActive = this.state.isActive;
 
     const wrapperStyle = [
@@ -47,29 +66,42 @@ export default class Button extends PureComponent<ButtonProps, any> {
       buttonStyle![`${size}Wrapper`],
       buttonStyle![`${theme}Wrapper`],
       buttonStyle![`${shape}Wrapper`],
-      shape === 'circle' && buttonStyle![`${size}CircleWrapper`],
-      isActive && buttonStyle![`${theme}BorderedActive`],
+      isActive && buttonStyle![`${theme}ActiveWrapper`],
       bordered && buttonStyle![`${theme}BorderedWrapper`],
       bordered && buttonStyle!.borderedWrapper,
       disabled && buttonStyle!.disabledWrapper,
+      shape === 'circle' && buttonStyle![`${size}CircleWrapper`],
       style,
     ];
 
     const underlayColor = (StyleSheet.flatten(
-      bordered
-        ? buttonStyle![`${theme}BorderedActive`]
-        : buttonStyle![`${theme}Active`],
+      buttonStyle![`${theme}ActiveWrapper`],
     ) as any).backgroundColor;
+
+    const iconColor = (StyleSheet.flatten(
+      buttonStyle![`${theme}ActiveText`],
+    ) as any).color;
 
     const textStyle = [
       buttonStyle!.textStyle,
       buttonStyle![`${size}Text`],
       buttonStyle![`${theme}Text`],
       bordered && buttonStyle![`${theme}BorderedText`],
+      isActive && active && buttonStyle![`${theme}ActiveText`],
     ];
 
-    const content = (
+    const iconStyle = [
+      buttonStyle!.iconStyle,
+      buttonStyle![`${size}Icon`],
+    ];
+
+    const iconRender = loading
+      ? <ActivityIndicator animating style={iconStyle} color={iconColor} size="small" />
+      : icon;
+
+    const contentRender = (
       <View style={buttonStyles!.container}>
+        {iconRender}
         <Text style={textStyle}>{children}</Text>
       </View>
     );
@@ -85,7 +117,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
     };
 
     return bordered
-      ? <TouchableOpacity {...wrapperProps} activeOpacity={0.6}>{content}</TouchableOpacity>
-      : <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{content}</TouchableHighlight>;
+      ? <TouchableOpacity {...wrapperProps} activeOpacity={0.6}>{contentRender}</TouchableOpacity>
+      : <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>;
   }
 }
