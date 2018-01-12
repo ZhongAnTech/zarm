@@ -23,11 +23,15 @@ export default {
   defaultWrapper: {
     backgroundColor: variables.theme_default,
   },
-  defaultHighlight: {
+  defaultActive: {
     backgroundColor: '#c9c9c9',
   },
   defaultBorderedWrapper: {
     borderColor: variables.theme_default,
+  },
+  defaultBorderedActive: {
+    borderColor: 'rgba(201, 201, 201, 0.5)',
+    backgroundColor: 'transparent',
   },
   defaultText: {
     color: variables.color_text,
@@ -36,11 +40,15 @@ export default {
   primaryWrapper: {
     backgroundColor: variables.theme_primary,
   },
-  primaryHighlight: {
+  primaryActive: {
     backgroundColor: '#0f9d6d',
   },
   primaryBorderedWrapper: {
     borderColor: variables.theme_primary,
+  },
+  primaryBorderedActive: {
+    borderColor: 'rgba(15, 157, 109, 0.5)',
+    backgroundColor: 'transparent',
   },
   // primaryText: {
   //   color: variables.theme_primary,
@@ -85,4 +93,7 @@ export default {
     backgroundColor: 'transparent',
   },
 
+  disabledWrapper: {
+    opacity: 0.5,
+  },
 };

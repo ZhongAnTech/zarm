@@ -1,5 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, TouchableOpacity } from 'react-native';
 import PropsType from './PropsType';
 import buttonStyle from './style/index.native';
 
@@ -9,7 +9,7 @@ export interface ButtonProps extends PropsType {
 
 const buttonStyles = StyleSheet.create<any>(buttonStyle);
 
-export default class Button extends PureComponent<ButtonProps, {}> {
+export default class Button extends PureComponent<ButtonProps, any> {
   static defaultProps = {
     prefixCls: 'za-button',
     theme: 'default',
@@ -23,8 +23,24 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     onClick() {},
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isActive: props.active,
+    };
+  }
+
+  onPressIn = () => {
+    this.setState({ isActive: true });
+  }
+
+  onPressOut = () => {
+    this.setState({ isActive: false });
+  }
+
   render() {
-    const { theme, size, style, shape, bordered, onClick, children, ...others } = this.props;
+    const { theme, size, style, shape, bordered, active, disabled, onClick, children, ...others } = this.props;
+    const isActive = this.state.isActive;
 
     const wrapperStyle = [
       buttonStyle!.wrapperStyle,
@@ -33,11 +49,15 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       buttonStyle![`${shape}Wrapper`],
       bordered && buttonStyle!.borderedWrapper,
       bordered && buttonStyle![`${theme}BorderedWrapper`],
+      isActive && buttonStyle![`${theme}BorderedActive`],
+      disabled && buttonStyle!.disabledWrapper,
       style,
     ];
 
     const underlayColor = (StyleSheet.flatten(
-      buttonStyle![`${theme}Highlight`],
+      bordered
+        ? buttonStyle![`${theme}BorderedActive`]
+        : buttonStyle![`${theme}Active`],
     ) as any).backgroundColor;
 
     const textStyle = [
@@ -47,17 +67,24 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       bordered && buttonStyle![`${theme}BorderedText`],
     ];
 
-    return (
-      <TouchableHighlight
-        activeOpacity={0.3}
-        style={wrapperStyle}
-        onPress={onClick}
-        underlayColor={underlayColor}
-      >
-        <View style={buttonStyles!.container}>
-          <Text style={textStyle}>{children}</Text>
-        </View>
-      </TouchableHighlight>
+    const content = (
+      <View style={buttonStyles!.container}>
+        <Text style={textStyle}>{children}</Text>
+      </View>
     );
+
+    const wrapperProps = {
+      activeOpacity: 0.3,
+      style: wrapperStyle,
+      onPress: onClick,
+      onPressIn: this.onPressIn,
+      onPressOut: this.onPressOut,
+      disabled,
+      ...others,
+    };
+
+    return bordered
+      ? <TouchableOpacity {...wrapperProps} activeOpacity={0.6}>{content}</TouchableOpacity>
+      : <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{content}</TouchableHighlight>;
   }
 }
