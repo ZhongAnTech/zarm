@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, CSSProperties } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 import PropsType from './PropsType';
 import buttonStyle from './style/index.native';
 
 export interface ButtonProps extends PropsType {
-  styles?: typeof buttonStyle;
+  style?: CSSProperties;
 }
 
 const buttonStyles = StyleSheet.create<any>(buttonStyle);
@@ -20,32 +20,41 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     focus: false,
     disabled: false,
     loading: false,
-    styles: buttonStyles,
     onClick() {},
   };
 
   render() {
-    const { theme, size, styles, children, ...others } = this.props;
+    const { theme, size, style, shape, bordered, onClick, children, ...others } = this.props;
 
     const wrapperStyle = [
-      styles!.wrapperStyle,
-      styles![`${size}Size`],
-      styles![`${theme}Theme`],
+      buttonStyle!.wrapperStyle,
+      buttonStyle![`${size}Wrapper`],
+      buttonStyle![`${theme}Wrapper`],
+      buttonStyle![`${shape}Wrapper`],
+      bordered && buttonStyle!.borderedWrapper,
+      bordered && buttonStyle![`${theme}BorderedWrapper`],
+      style,
     ];
 
+    const underlayColor = (StyleSheet.flatten(
+      buttonStyle![`${theme}Highlight`],
+    ) as any).backgroundColor;
+
     const textStyle = [
-      styles!.textStyle,
-      styles![`${size}SizeText`],
-      styles![`${theme}ThemeText`],
+      buttonStyle!.textStyle,
+      buttonStyle![`${size}Text`],
+      buttonStyle![`${theme}Text`],
+      bordered && buttonStyle![`${theme}BorderedText`],
     ];
 
     return (
       <TouchableHighlight
-        activeOpacity={1}
+        activeOpacity={0.3}
         style={wrapperStyle}
-        {...others}
+        onPress={onClick}
+        underlayColor={underlayColor}
       >
-        <View style={styles!.container}>
+        <View style={buttonStyles!.container}>
           <Text style={textStyle}>{children}</Text>
         </View>
       </TouchableHighlight>

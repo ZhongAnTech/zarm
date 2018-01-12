@@ -28,7 +28,7 @@ export default {
   radius_md: 4,
   radius_lg: 8,
   radius_round: 1000,
-  radius_circle: '50%',
+  // radius_circle: '50%',
 
   // 水平间距
   padding_h_sm: 5,
