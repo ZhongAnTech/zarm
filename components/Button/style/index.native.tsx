@@ -49,6 +49,45 @@ export default {
     color: variables.theme_primary,
   },
 
+  successWrapper: {
+    backgroundColor: variables.theme_success,
+  },
+  successActiveWrapper: {
+    backgroundColor: '#4cbe46',
+  },
+  successBorderedWrapper: {
+    borderColor: variables.theme_success,
+  },
+  successBorderedText: {
+    color: variables.theme_success,
+  },
+
+  warningWrapper: {
+    backgroundColor: variables.theme_warning,
+  },
+  warningActiveWrapper: {
+    backgroundColor: '#e09415',
+  },
+  warningBorderedWrapper: {
+    borderColor: variables.theme_warning,
+  },
+  warningBorderedText: {
+    color: variables.theme_warning,
+  },
+
+  errorWrapper: {
+    backgroundColor: variables.theme_error,
+  },
+  errorActiveWrapper: {
+    backgroundColor: '#e03422',
+  },
+  errorBorderedWrapper: {
+    borderColor: variables.theme_error,
+  },
+  errorBorderedText: {
+    color: variables.theme_error,
+  },
+
   // size
   lgWrapper: {
     height: variables.button_height_lg,
