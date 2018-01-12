@@ -35,9 +35,6 @@ export default {
   defaultText: {
     color: variables.color_text,
   },
-  defaultActiveText: {
-    opacity: 0.6,
-  },
 
   primaryWrapper: {
     backgroundColor: variables.theme_primary,
@@ -50,9 +47,6 @@ export default {
   },
   primaryBorderedText: {
     color: variables.theme_primary,
-  },
-  primaryActiveText: {
-    opacity: 0.6,
   },
 
   // size
@@ -108,5 +102,10 @@ export default {
   // disabled
   disabledWrapper: {
     opacity: 0.5,
+  },
+
+  // active
+  activeText: {
+    opacity: 0.6,
   },
 };

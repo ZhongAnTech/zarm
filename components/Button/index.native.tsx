@@ -79,7 +79,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
     ) as any).backgroundColor;
 
     const iconColor = (StyleSheet.flatten(
-      buttonStyle![`${theme}ActiveText`],
+      buttonStyle!.activeText,
     ) as any).color;
 
     const textStyle = [
@@ -87,7 +87,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       buttonStyle![`${size}Text`],
       buttonStyle![`${theme}Text`],
       bordered && buttonStyle![`${theme}BorderedText`],
-      isActive && active && buttonStyle![`${theme}ActiveText`],
+      isActive && active && buttonStyle!.activeText,
     ];
 
     const iconStyle = [
