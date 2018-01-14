@@ -8,10 +8,9 @@ const mb = {
 const mr = {
   marginRight: 10,
 };
-const viewStyle = {
+const inline = {
   flexDirection: 'row',
   flexWrap: 'wrap',
-  ...mb,
 };
 const noop = () => {};
 
@@ -20,7 +19,7 @@ export default class Page extends Component<{}> {
     return (
       <ScrollView>
         <View style={{ padding: 15 }}>
-          <View style={viewStyle}>
+          <View style={{ ...inline, ...mb }}>
             <Button style={{ ...mb, ...mr }}>default</Button>
             <Button style={mb} theme="primary">primary</Button>
           </View>
@@ -39,7 +38,7 @@ export default class Page extends Component<{}> {
             <Button style={mb} bordered disabled theme="primary" onClick={noop}>disabled primary</Button>
           </View>
 
-          <View style={viewStyle}>
+          <View style={{ ...inline, ...mb }}>
             <Button style={{ ...mb, ...mr }} onClick={noop}>default</Button>
             <Button style={{ ...mb, ...mr }} theme="primary" onClick={noop}>primary</Button>
             <Button style={{ ...mb, ...mr }} theme="success" onClick={noop}>success</Button>
@@ -47,19 +46,19 @@ export default class Page extends Component<{}> {
             <Button style={{ ...mb, ...mr }} theme="error" onClick={noop}>error</Button>
           </View>
 
-          <View style={viewStyle}>
+          <View style={{ ...inline, ...mb }}>
             <Button style={{ ...mb, ...mr }} size="lg" onClick={noop}>lg</Button>
             <Button style={{ ...mb, ...mr }} onClick={noop}>md</Button>
             <Button size="sm" onClick={noop}>sm</Button>
           </View>
 
-          <View style={viewStyle}>
+          <View style={{ ...inline, ...mb }}>
             <Button style={{ ...mb, ...mr }} shape="radius" theme="primary" onClick={noop}>radius shape</Button>
             <Button style={{ ...mb, ...mr }} shape="round" theme="primary" onClick={noop}>round shape</Button>
             <Button style={{ ...mb, ...mr }} bordered shape="circle" theme="primary" onClick={noop}>Go</Button>
             <Button shape="circle" theme="primary" onClick={noop}>Go</Button>
           </View>
-          <View style={viewStyle}>
+          <View style={{ ...inline, ...mb }}>
             <Button style={{ ...mb, ...mr }} bordered loading shape="radius" onClick={noop}>loading</Button>
           </View>
         </View>
