@@ -5,21 +5,21 @@ import buttonStyle from './style/index.native';
 
 export interface ButtonProps extends PropsType {
   style?: CSSProperties;
+  styles?: typeof buttonStyle;
 }
 
 const buttonStyles = StyleSheet.create<any>(buttonStyle);
 
 export default class Button extends PureComponent<ButtonProps, any> {
   static defaultProps = {
-    prefixCls: 'za-button',
     theme: 'default',
     size: 'md',
     block: false,
     bordered: false,
     active: false,
-    focus: false,
     disabled: false,
     loading: false,
+    styles: buttonStyles,
     onClick() {},
   };
 
@@ -55,44 +55,45 @@ export default class Button extends PureComponent<ButtonProps, any> {
       loading,
       icon,
       style,
+      styles,
       onClick,
       children,
       ...others,
     } = this.props;
-    const isActive = this.state.isActive;
+    const { isActive } = this.state;
 
     const wrapperStyle = [
-      buttonStyle!.wrapperStyle,
-      buttonStyle![`${size}Wrapper`],
-      buttonStyle![`${theme}Wrapper`],
-      buttonStyle![`${shape}Wrapper`],
-      isActive && buttonStyle![`${theme}ActiveWrapper`],
-      bordered && buttonStyle![`${theme}BorderedWrapper`],
-      bordered && buttonStyle!.borderedWrapper,
-      disabled && buttonStyle!.disabledWrapper,
-      shape === 'circle' && buttonStyle![`${size}CircleWrapper`],
+      styles!.wrapperStyle,
+      styles![`${size}Wrapper`],
+      styles![`${theme}Wrapper`],
+      styles![`${shape}Wrapper`],
+      isActive && styles![`${theme}ActiveWrapper`],
+      bordered && styles![`${theme}BorderedWrapper`],
+      bordered && styles!.borderedWrapper,
+      disabled && styles!.disabledWrapper,
+      shape === 'circle' && styles![`${size}CircleWrapper`],
       style,
     ];
 
     const underlayColor = (StyleSheet.flatten(
-      buttonStyle![`${theme}ActiveWrapper`],
+      styles![`${theme}ActiveWrapper`],
     ) as any).backgroundColor;
 
     const iconColor = (StyleSheet.flatten(
-      buttonStyle!.activeText,
+      styles!.activeText,
     ) as any).color;
 
     const textStyle = [
-      buttonStyle!.textStyle,
-      buttonStyle![`${size}Text`],
-      buttonStyle![`${theme}Text`],
-      bordered && buttonStyle![`${theme}BorderedText`],
-      isActive && active && buttonStyle!.activeText,
+      styles!.textStyle,
+      styles![`${size}Text`],
+      styles![`${theme}Text`],
+      bordered && styles![`${theme}BorderedText`],
+      isActive && active && styles!.activeText,
     ];
 
     const iconStyle = [
-      buttonStyle!.iconStyle,
-      buttonStyle![`${size}Icon`],
+      styles!.iconStyle,
+      styles![`${size}Icon`],
     ];
 
     const iconRender = loading
@@ -100,7 +101,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       : icon;
 
     const contentRender = (
-      <View style={buttonStyles!.container}>
+      <View style={styles!.container}>
         {iconRender}
         <Text style={textStyle}>{children}</Text>
       </View>

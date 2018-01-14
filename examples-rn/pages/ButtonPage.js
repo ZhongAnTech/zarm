@@ -15,7 +15,7 @@ const viewStyle = {
 };
 const noop = () => {};
 
-export default class App extends Component<{}> {
+export default class Page extends Component<{}> {
   render() {
     return (
       <ScrollView>
