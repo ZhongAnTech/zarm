@@ -58,7 +58,7 @@ export default class Page extends Component<{}> {
             <Button style={{ ...mb, ...mr }} bordered shape="circle" theme="primary" onClick={noop}>Go</Button>
             <Button shape="circle" theme="primary" onClick={noop}>Go</Button>
           </View>
-          <View style={{ ...inline, ...mb }}>
+          <View style={inline}>
             <Button style={{ ...mb, ...mr }} bordered loading shape="radius" onClick={noop}>loading</Button>
           </View>
         </View>
