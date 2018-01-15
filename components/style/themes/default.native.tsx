@@ -157,8 +157,7 @@ export default {
 
   // Stepper
   stepper_height: 27,
-  stepper_button_width: 27,
-  stepper_button_font_size: 16,
+  stepper_button_font_size: 20,
   stepper_input_width: 40,
   stepper_input_font_size: 16,
 
