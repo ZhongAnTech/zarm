@@ -1,10 +1,9 @@
 import variables from '../../style/themes/default.native';
-import { ViewStyle } from 'react-native';
 
 export default {
   container: {
     flexDirection: 'row',
-  } as ViewStyle,
+  },
 
   // base
   wrapperStyle: {

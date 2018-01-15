@@ -1,5 +1,13 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, ActivityIndicator } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  TouchableOpacity,
+  ActivityIndicator,
+  ViewStyle,
+} from 'react-native';
 import PropsType from './PropsType';
 import buttonStyle from './style/index.native';
 
@@ -101,7 +109,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       : icon;
 
     const contentRender = (
-      <View style={styles!.container}>
+      <View style={styles!.container as ViewStyle}>
         {iconRender}
         <Text style={textStyle}>{children}</Text>
       </View>
