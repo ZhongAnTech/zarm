@@ -24,8 +24,6 @@ export interface WheelProps extends BaseWheelProps {
 
 export default class Wheel extends Component<WheelProps, any> {
 
-  static Group: any;
-  static Cascader: any;
   static defaultProps = {
     prefixCls: 'za-wheel',
     dataSource: [],

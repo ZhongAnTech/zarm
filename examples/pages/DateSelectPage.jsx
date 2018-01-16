@@ -9,13 +9,18 @@ class Page extends Component {
   constructor() {
     super();
     this.state = {
-      year: '',
       date: '',
       dateVisible: false,
       customDate: '',
       time: '',
       datetime: '',
     };
+  }
+
+  componentDidMount() {
+    // setTimeout(() => {
+    //   this.open('yearVisible');
+    // }, 500);
   }
 
   open = (key) => {
@@ -31,7 +36,7 @@ class Page extends Component {
   }
 
   render() {
-    const { year, date, time, datetime, customDate } = this.state;
+    const { date, time, datetime, customDate } = this.state;
     return (
       <Container className="picker-page">
         <Header title="日期选择器 DateSelect" />
@@ -39,19 +44,6 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="日期选择器" />
             <Panel.Body>
-              <Cell title="年份选择">
-                <DateSelect
-                  title="选择年份"
-                  placeholder="请选择年份"
-                  mode="year"
-                  value={year}
-                  onChange={(value) => {
-                    this.setState({
-                      year: value,
-                    });
-                  }}
-                  />
-              </Cell>
 
               <Cell title="日期选择">
                 <DateSelect
@@ -59,8 +51,8 @@ class Page extends Component {
                   placeholder="请选择日期"
                   mode="date"
                   value={date}
-                  defaultValue={new Date()}
-                  min="2007-01-03"
+                  wheelDefaultValue="2009-07-04"
+                  min="2007-03-03"
                   max="2018-11-23"
                   onChange={(value) => {
                     this.setState({
@@ -113,7 +105,6 @@ class Page extends Component {
                   }}
                   />
               </Cell>
-
             </Panel.Body>
           </Panel>
 

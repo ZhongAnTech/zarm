@@ -36,6 +36,7 @@ exports[`Select Cascader Select 1`] = `
   }
   displayRender={[Function]}
   itemRender={[Function]}
+  onClick={[Function]}
   placeholder="请选择"
   prefixCls="za-select"
   valueMember="value"
@@ -85,6 +86,8 @@ exports[`Select Cascader Select 1`] = `
       }
       itemRender={[Function]}
       okText="确定"
+      onCancel={[Function]}
+      onClick={[Function]}
       onInit={[Function]}
       onOk={[Function]}
       prefixCls="za-picker"
@@ -180,7 +183,9 @@ exports[`Select Cascader Select 1`] = `
                   }
                   disabled={false}
                   itemRender={[Function]}
+                  onCancel={[Function]}
                   onChange={[Function]}
+                  onClick={[Function]}
                   onInit={[Function]}
                   onOk={[Function]}
                   prefixCls="za-picker"

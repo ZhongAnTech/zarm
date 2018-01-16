@@ -16,20 +16,16 @@ import { Picker } from 'zarm';
 ###### 单列
 ```jsx
 <Picker
-  visible={singleVisible}
-  placeholder="请选择"
-  className="show-right"
+  visible={single.visible}
   value={single.value}
-  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
+  dataSource={single.dataSource}
   onOk={(selected) => {
-    console.log('pickerPage onChange=> ', selected);
-    single.value = selected.value;
-    single.display = selected.label;
-    this.setState({
-      single,
-    });
+    console.log('Picker onOk: ', selected);
+    single.value = selected.map(item => item.value);
+    this.setState({ single });
+    Toast.show(JSON.stringify(selected));
   }}
-  onCancel={() => this.close('singleVisible')}
+  onCancel={() => this.toggle('single')}
   />
 ```
 
@@ -37,39 +33,60 @@ import { Picker } from 'zarm';
 ###### 多列
 ```jsx
 <Picker
-  visible={multiVisible}
+  visible={multi.visible}
   value={multi.value}
-  dataSource={multiData}
+  dataSource={[
+    [
+      { value: '1', label: '选项一' },
+      { value: '2', label: '选项二' },
+    ],
+    [
+      { value: '3', label: '选项A' },
+      { value: '4', label: '选项B' },
+    ],
+  ]}
   onOk={(selected) => {
-    multi.value = selected.map(item => `${item.value}`);
-    multi.display = selected.map(item => `${item.label}`).join('&');
-    this.setState({
-      multi,
-    });
-    this.close('multiVisible');
+    console.log('Picker onOk: ', selected);
+    multi.value = selected.map(item => item.value);
+    this.setState({ multi });
+    Toast.show(JSON.stringify(selected));
+    this.toggle('multi');
   }}
-  onCancel={() => this.close('multiVisible')}
+  onCancel={() => this.toggle('multi')}
   />
 ```
 
 ###### 多列联动
 ```jsx
 <Picker
-  visible={this.state.pickerVisible}
-  dataSource={this.state.multiCascadeData}
-  value={this.state.multiCascade.value}
-  onChange={(selected) => {
-    console.log(selected);
-  }}
+  visible={cascade.visible}
+  value={cascade.value}
+  dataSource={[
+    {
+      value: '1',
+      label: '北京市',
+      children: [
+        { value: '11', label: '海淀区' },
+        { value: '12', label: '西城区' },
+      ],
+    },
+    {
+      value: '2',
+      label: '上海市',
+      children: [
+        { value: '21', label: '杨浦区' },
+        { value: '22', label: '静安区' },
+      ],
+    },
+  ]}
   onOk={(selected) => {
-    multiCascade.value = selected.map(item => `${item.value}`);
-    multiCascade.display = selected.map(item => item.label).join('-');
-    this.setState({
-      multiCascade,
-    });
-    this.close('pickerVisible');
+    console.log('Picker onOk: ', selected);
+    cascade.value = selected.map(item => item.value);
+    this.setState({ cascade });
+    Toast.show(JSON.stringify(selected));
+    this.toggle('cascade');
   }}
-  onCancel={() => this.close('pickerVisible')}
+  onCancel={() => this.toggle('cascade')}
   />
 ```
 
@@ -112,68 +129,19 @@ import { Picker } from 'zarm';
   value={diy.value}
   valueMember="code"
   itemRender={data => data.name}
-  displayRender={selected => selected.map(item => item.name).join('/')}
   onOk={(selected) => {
-    diy.value = selected.code;
+    console.log('Picker onOk: ', selected);
+    diy.value = selected.map(item => item.code);
     this.setState({
       diy,
     });
-  }}
-  onCancel={() => {
+    Toast.show(JSON.stringify(selected));
+    this.toggle('diy');
   }}
   />
 ```
 
-#### 城市选择器
-
-###### 省市选择
-```jsx
-<Picker
-  visible={addr1Visible}
-  dataSource={District}
-  cols={2}
-  value={address1.value}
-  onOk={(selected) => {
-    address1.value = selected.map(item => item.value);
-    address1.display = selected.map(item => item.label).join('-');
-    this.setState({
-      address1,
-    });
-    this.close('addr1Visible');
-  }}
-  onCancel={() => this.close('addr1Visible')}
-  />
-```
-
-###### 省市区选择
-```jsx
-<Picker
-  visible={addr2Visible}
-  dataSource={District}
-  value={address2.value}
-  onOk={(selected) => {
-    address2.value = selected.map(item => item.value);
-    address2.display = selected.map(item => item.label).join('-');
-    this.setState({
-      address2,
-    });
-    this.close('addr2Visible');
-  }}
-  onCancel={() => this.close('addr2Visible')}
-  />
-```
-
-#### 层叠式选择器
-
-###### 级联选择
-```jsx
-<Picker.Stack
-  dataSource={District}
-  displayRender={selected => selected.map(item => item.label).join('-')}
-  />
-```
-
-#### PickerView（平铺选择器）
+### PickerView（平铺选择器）
 ```jsx
 <PickerView
   dataSource={[
@@ -214,18 +182,18 @@ import { Picker } from 'zarm';
 | defaultValue | array &#124; string |  | | 初始是否选中 |
 | valueMember | string | 'value' | | 值字段对应的key 
 | itemRender | func | <code>(data?: object) => data.label</code> | | 控制选项列表显示字段对应的key |
-| disabled（Picker） | boolean | false | | 是否禁用 |
+| disabled | boolean | false | | 是否禁用 |
 | title（Picker） | string | '请选择' | | 选择器标题 |
 | cancelText（Picker） | string | '取消' | | 取消栏文字 |
 | okText（Picker） | string | '确定' | | 确定栏文字 |
 | placeholder（Picker） | string | '请选择' | | 输入提示信息 |
 | cols | number | | | 级联选择器的级数 |
-| onChange | <code>(value?: object) => void</code> | noop | \(value: object\) | 值变化时触发的回调函数 |
-| onOk（Picker） | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 | 
+| onChange | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 值变化时触发的回调函数 |
+| onOk（Picker） | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 点击确定时触发的回调函数 | 
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 
-#### Picker.Stack
+<!-- #### Picker.Stack
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -246,7 +214,7 @@ import { Picker } from 'zarm';
 | onChange | <code>(value?: object) => void</code> | noop | \(value: object\) | 值变化时触发的回调函数 |
 | onOk | <code>(value?: object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 |
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
-| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 | -->
 
 
 
