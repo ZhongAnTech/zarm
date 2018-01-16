@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import defaultLocale from './locale/zh_CN';
@@ -141,7 +141,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, placeholder, disabled,
+    const { prefixCls, className, title, okText, cancelText, placeholder, children, disabled,
        ...others } = this.props;
     const { visible, value } = this.state;
 
@@ -149,6 +149,10 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       [`${prefixCls}-container`]: true,
       [`${prefixCls}-hidden`]: !visible,
       [className]: !!className,
+    });
+
+    const content = children && cloneElement(children, {
+      onClick: () => this.toggle(true),
     });
 
     return (
@@ -178,6 +182,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
               </div>
             </div>
           </Popup>
+          {content}
         </div>
       </div>
     );

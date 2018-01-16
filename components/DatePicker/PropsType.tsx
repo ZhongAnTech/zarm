@@ -27,4 +27,5 @@ export default interface PropsType {
   formatMinute?: (num?: number) => string;
   locale: any;
   valueMember?: string;
+  children?: any;
 }
