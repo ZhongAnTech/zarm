@@ -169,10 +169,14 @@ export default class Stepper extends PureComponent<StepperProps, any> {
   }
 
   render() {
-    const { styles } = this.props;
+    const { styles, style } = this.props;
+    const wrapperStyle = [
+      styles!.container,
+      style,
+    ] as ViewStyle;
 
     return (
-      <View style={styles!.container as ViewStyle}>
+      <View style={wrapperStyle}>
         {this.renderButton('minus')}
         {this.renderInput()}
         {this.renderButton('plus')}
