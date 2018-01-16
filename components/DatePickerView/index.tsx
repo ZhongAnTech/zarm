@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropsType from './PropsType';
 import defaultLocale from './locale/zh_CN';
+import classnames from 'classnames';
 import Wheel from '../Wheel';
 
 const DATETIME = 'datetime';
@@ -72,54 +73,57 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     onCancel: () => {},
   };
 
-  private defaultMinDate;
-  private defaultMaxDate;
-
   constructor(props) {
     super(props);
-
     const date = props.value && isExtendDate(props.value);
     const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-    const display = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
+    const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
 
     this.state = {
-      visible: false,
       date: defaultDate || date,
-      display,
+      wheelDefault,
     };
+
+    if (typeof props.onInit === 'function') {
+      props.onInit(this.getDate());
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     const date = nextProps.value && isExtendDate(nextProps.value);
     const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
+    const wheelDefault = nextProps.wheelDefaultValue && isExtendDate(nextProps.wheelDefaultValue);
 
     this.setState({
       date: date || defaultDate,
+      wheelDefault,
     });
+
+    if (typeof this.props.onInit === 'function') {
+      this.props.onInit(this.getDate());
+    }
   }
 
-  onValueChange(values, index) {
-    const value = parseInt(values[index], 10);
+  onValueChange(selected, index) {
+    const { mode, onChange } = this.props;
 
-    const { mode, onValueChange, onChange } = this.props;
     let newValue = cloneDate(this.getDate());
-
-    if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
+    if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
       switch (index) {
         case 0:
-          newValue.setFullYear(value);
+          newValue.setFullYear(selected);
           break;
         case 1:
-          setMonth(newValue, value);
+          setMonth(newValue, selected);
           break;
         case 2:
-          newValue.setDate(value);
+          newValue.setDate(selected);
           break;
         case 3:
-          this.setHours(newValue, value);
+          newValue.setHours(selected);
           break;
         case 4:
-          newValue.setMinutes(value);
+          newValue.setMinutes(selected);
           break;
         default:
           break;
@@ -127,10 +131,10 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     } else {
       switch (index) {
         case 0:
-          this.setHours(newValue, value);
+          newValue.setHours(selected);
           break;
         case 1:
-          newValue.setMinutes(value);
+          newValue.setMinutes(selected);
           break;
         default:
           break;
@@ -139,59 +143,237 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     newValue = this.clipDate(newValue);
 
-    if (!('date' in this.props)) {
-      this.setState({
-        date: newValue,
-      });
-    }
-    // props.onChange(formatFn(this, newValue));
-    if (typeof onValueChange === 'function') {
-      onValueChange(newValue);
-    }
+    this.setState({
+      date: newValue,
+    });
 
     if (typeof onChange === 'function') {
-      if (this.state.date) {
-        onChange(newValue);
+      onChange(newValue);
+    }
+  }
+
+  clipDate(date) {
+    const { mode } = this.props;
+    const minDate = this.getMinDate();
+    const maxDate = this.getMaxDate();
+    if (mode === DATETIME) {
+      if (date < minDate) {
+        return cloneDate(minDate);
+      }
+      if (date > maxDate) {
+        return cloneDate(maxDate);
+      }
+    } else if (mode === DATE) {
+      if (+date + ONE_DAY <= +minDate) {
+        return cloneDate(minDate);
+      }
+      if (date >= +maxDate + ONE_DAY) {
+        return cloneDate(maxDate);
+      }
+    } else {
+      const maxHour = maxDate.getHours();
+      const maxMinutes = maxDate.getMinutes();
+      const minHour = minDate.getHours();
+      const minMinutes = minDate.getMinutes();
+      const hour = date.getHours();
+      const minutes = date.getMinutes();
+      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
+        return cloneDate(minDate);
+      }
+      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
+        return cloneDate(maxDate);
       }
     }
+    return date;
   }
 
-  setHours(date, hour) {
-    // if (this.props.use12Hours) {
-    // const dh = date.getHours();
-    // let nhour = hour;
-    // nhour = dh >= 12 ? hour + 12 : hour;
-    // nhour = nhour >= 24 ? 0 : nhour; // Make sure no more than one day
-    // date.setHours(nhour);
-    // } else {
-      date.setHours(hour);
-    // }
-  }
+  getColsValue() {
+    const { mode } = this.props;
+    const date = this.getDate();
 
-  getDefaultMinDate() {
-    if (!this.defaultMinDate) {
-      this.defaultMinDate = getGregorianCalendar([2000, 0, 1, 0, 0, 0]);
+    let dataSource: any[] = [];
+    let value: any[] = [];
+
+    if (mode === YEAR) {
+      dataSource = this.getDateData();
+      value = [`${date.getFullYear()}`];
     }
-    return this.defaultMinDate;
+    if (mode === MONTH) {
+      dataSource = this.getDateData();
+      value = [`${date.getFullYear()}`, `${date.getMonth()}`];
+    }
+    if (mode === DATE || mode === DATETIME) {
+      dataSource = this.getDateData();
+      value = [`${date.getFullYear()}`, `${date.getMonth()}`, `${date.getDate()}`];
+    }
+    if (mode === DATETIME) {
+      dataSource = dataSource.concat(this.getTimeData());
+      value = value.concat([`${date.getHours()}`, `${date.getMinutes()}`]);
+    }
+    if (mode === TIME) {
+      dataSource = this.getTimeData();
+      value = [`${date.getHours()}`, `${date.getMinutes()}`];
+    }
+
+    return {
+      dataSource,
+      value,
+    };
   }
 
-  getDefaultMaxDate() {
-    if (!this.defaultMaxDate) {
-      this.defaultMaxDate = getGregorianCalendar([2030, 11, 30, 23, 59, 59]);
+  getDateData() {
+    const { locale, mode } = this.props;
+    const date = this.getDate();
+    const yearCol: object[] = [];
+    const monthCol: object[] = [];
+    const dayCol: object[] = [];
+
+    const selectYear = date.getFullYear();
+    const selectMonth = date.getMonth();
+    const minYear = this.getMinYear();
+    const maxYear = this.getMaxYear();
+
+    for (let i = minYear; i <= maxYear; i += 1) {
+      yearCol.push({
+        label: `${i + locale.year}`,
+        value: `${i}`,
+      });
     }
-    return this.defaultMaxDate;
+
+    if (mode === YEAR) {
+      return [yearCol];
+    }
+
+    let minMonth = 0;
+    let maxMonth = 11;
+    if (selectYear === minYear) {
+      minMonth = this.getMinMonth();
+    }
+    if (selectYear === maxYear) {
+      maxMonth = this.getMaxMonth();
+    }
+
+    for (let i = minMonth; i <= maxMonth; i += 1) {
+      monthCol.push({
+        label: `${i + 1 + locale.month}`,
+        value: `${i}`,
+      });
+    }
+
+    if (mode === MONTH) {
+      return [yearCol, monthCol];
+    }
+
+    let minDay = 1;
+    let maxDay = getDaysInMonth(date);
+
+    if (selectYear === minYear && selectMonth === minMonth) {
+      minDay = this.getMinDay();
+    }
+
+    if (selectYear === maxYear && selectMonth === maxMonth) {
+      maxDay = this.getMaxDay();
+    }
+
+    for (let i = minDay; i <= maxDay; i += 1) {
+      dayCol.push({
+        label: `${i + locale.day}`,
+        value: `${i}`,
+      });
+    }
+
+    if (mode === DATE) {
+      return [yearCol, monthCol, dayCol];
+    }
+
+    return [yearCol, monthCol, dayCol];
   }
 
-  getDefaultDate() {
-    // 存在最小值且毫秒数大于现在
-    if (this.props.min && Date.parse(this.getMinDate()) >= Date.now()) {
-      return this.getMinDate();
+  getTimeData() {
+    const { locale, mode, minuteStep } = this.props;
+    const date = this.getDate();
+    const hourCol: object[] = [];
+    const minuteCol: object[] = [];
+
+    let minHour = 0;
+    let maxHour = 23;
+    let minMinute = 0;
+    let maxMinute = 59;
+
+    const minDateHour = this.getMinHour();
+    const maxDateHour = this.getMaxHour();
+    const minDateMinute = this.getMinMinute();
+    const maxDateMinute = this.getMaxMinute();
+    const selectHour = date.getHours();
+
+    if (mode === DATETIME) {
+      const selectYear = date.getFullYear();
+      const selectMonth = date.getMonth();
+      const selectDay = date.getDate();
+      const minYear = this.getMinYear();
+      const maxYear = this.getMaxYear();
+      const minMonth = this.getMinMonth();
+      const maxMonth = this.getMaxMonth();
+      const minDay = this.getMinDay();
+      const maxDay = this.getMaxDay();
+
+      if (selectYear === minYear && selectMonth === minMonth && selectDay === minDay) {
+        minHour = minDateHour;
+        if (selectHour === minHour) {
+          minMinute = minDateMinute;
+        }
+      }
+
+      if (selectYear === maxYear && selectMonth === maxMonth && selectDay === maxDay) {
+        maxHour = maxDateHour;
+        if (selectHour === maxHour) {
+          maxMinute = maxDateMinute;
+        }
+      }
+    } else {
+      minHour = minDateHour;
+      if (selectHour === minHour) {
+        minMinute = minDateMinute;
+      }
+
+      maxHour = maxDateHour;
+      if (selectHour === maxHour) {
+        maxMinute = maxDateMinute;
+      }
     }
-    return new Date();
+
+    for (let i = minHour; i <= maxHour; i += 1) {
+      hourCol.push({
+        label: locale.hour ? `${i + locale.hour}` : pad(i),
+        value: `${i}`,
+      });
+    }
+
+    for (let i = minMinute; i <= maxMinute; i += minuteStep!) {
+      minuteCol.push({
+        label: locale.minute ? `${i + locale.minute}` : pad(i),
+        value: `${i}`,
+      });
+    }
+
+    return [hourCol, minuteCol];
+
   }
 
   getDate() {
-    return this.state.date || this.state.display || this.getDefaultDate();
+    return this.state.date || this.state.wheelDefault || this.getDefaultDate();
+  }
+
+  getDefaultDate() {
+    const { min, mode, minuteStep } = this.props;
+    // 存在最小值且毫秒数大于现在
+    if (min && this.getMinDate().getTime() >= Date.now()) {
+      return this.getMinDate();
+    }
+    if (minuteStep && minuteStep > 1 && (mode === DATETIME || mode === TIME)) {
+      return new Date(new Date().setMinutes(0));
+    }
+    return new Date();
   }
 
   getMinYear() {
@@ -244,271 +426,41 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     return maxDate || this.getDefaultMaxDate();
   }
 
-  getDateData() {
-    const { locale, formatYear, formatMonth, formatDay, mode } = this.props;
-    const date = this.getDate();
-
-    const selYear = date.getFullYear();
-    const selMonth = date.getMonth();
-    const minDateYear = this.getMinYear();
-    const maxDateYear = this.getMaxYear();
-    const minDateMonth = this.getMinMonth();
-    const maxDateMonth = this.getMaxMonth();
-    const minDateDay = this.getMinDay();
-    const maxDateDay = this.getMaxDay();
-    const years: object[] = [];
-
-    for (let i = minDateYear; i <= maxDateYear; i += 1) {
-      const label = formatYear ? formatYear(i) : `${i + locale.year}`;
-      years.push({
-        value: `${i}`,
-        label,
-      });
-    }
-
-    const yearCol = { key: 'year', props: { children: years } };
-    if (mode === YEAR) {
-      return [yearCol];
-    }
-
-    const months: object[] = [];
-    let minMonth = 0;
-    let maxMonth = 11;
-
-    if (minDateYear === selYear) {
-      minMonth = minDateMonth;
-    }
-    if (maxDateYear === selYear) {
-      maxMonth = maxDateMonth;
-    }
-    for (let i = minMonth; i <= maxMonth; i += 1) {
-      const label = formatMonth ? formatMonth(i) : `${i + 1 + locale.month}`;
-      months.push({
-        value: `${i}`,
-        label,
-      });
-    }
-    const monthCol = { key: 'month', props: { children: months } };
-    if (mode === MONTH) {
-      return [yearCol, monthCol];
-    }
-
-    const days: object[] = [];
-    let minDay = 1;
-    let maxDay = getDaysInMonth(date);
-
-    if (minDateYear === selYear && minDateMonth === selMonth) {
-      minDay = minDateDay;
-    }
-    if (maxDateYear === selYear && maxDateMonth === selMonth) {
-      maxDay = maxDateDay;
-    }
-
-    for (let i = minDay; i <= maxDay; i += 1) {
-      const label = formatDay ? formatDay(i) : `${i + locale.day}`;
-      days.push({
-        value: `${i}`,
-        label,
-      });
-    }
-    return [
-      yearCol,
-      monthCol,
-      { key: 'day', props: { children: days } },
-    ];
+  getDefaultMinDate() {
+    return getGregorianCalendar([2000, 0, 1, 0, 0, 0]);
   }
 
-  getTimeData() {
-    let minHour = 0;
-    let maxHour = 23;
-    let minMinute = 0;
-    let maxMinute = 59;
-    const { mode, locale, formatHour, formatMinute, minuteStep = DatePickerView.defaultProps.minuteStep } = this.props;
-    const date = this.getDate();
-
-    const minDateMinute = this.getMinMinute();
-    const maxDateMinute = this.getMaxMinute();
-    const minDateHour = this.getMinHour();
-    const maxDateHour = this.getMaxHour();
-    const hour = date.getHours();
-
-    if (mode === DATETIME) {
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const day = date.getDate();
-
-      const minDateYear = this.getMinYear();
-      const maxDateYear = this.getMaxYear();
-      const minDateMonth = this.getMinMonth();
-      const maxDateMonth = this.getMaxMonth();
-      const minDateDay = this.getMinDay();
-      const maxDateDay = this.getMaxDay();
-
-      if (minDateYear === year && minDateMonth === month && minDateDay === day) {
-        minHour = minDateHour;
-        if (minDateHour === hour) {
-          minMinute = minDateMinute;
-        }
-      }
-      if (maxDateYear === year && maxDateMonth === month && maxDateDay === day) {
-        maxHour = maxDateHour;
-        if (maxDateHour === hour) {
-          maxMinute = maxDateMinute;
-        }
-      }
-    } else {
-      minHour = minDateHour;
-      if (minDateHour === hour) {
-        minMinute = minDateMinute;
-      }
-      maxHour = maxDateHour;
-      if (maxDateHour === hour) {
-        maxMinute = maxDateMinute;
-      }
-    }
-
-    const hours: object[] = [];
-    for (let i = minHour; i <= maxHour; i += 1) {
-      let label = '';
-      if (formatHour) {
-        label = formatHour(i);
-      } else {
-        label = locale.hour ? `${i + locale.hour}` : pad(i);
-      }
-
-      hours.push({
-        value: `${i}`,
-        label,
-      });
-    }
-
-    const minutes: object[] = [];
-
-    for (let i = minMinute; i <= maxMinute; i += minuteStep) {
-      let label = '';
-      if (formatMinute) {
-        label = formatMinute(i);
-      } else {
-        label = locale.minute ? `${i + locale.minute}` : pad(i);
-      }
-      minutes.push({
-        value: `${i}`,
-        label,
-      });
-    }
-
-    return [
-      { key: 'hours', props: { children: hours } },
-      { key: 'minutes', props: { children: minutes } },
-    ];
+  getDefaultMaxDate() {
+    return getGregorianCalendar([2030, 11, 30, 23, 59, 59]);
   }
 
-  // 获取
-  getValueCols() {
-    const { mode } = this.props;
-    const date = this.getDate();
+  renderWheel = (item, index) => {
+    const { valueMember, disabled } = this.props;
+    const { value } = this.getColsValue();
 
-    let cols: any[] = [];
-    let value: any[] = [];
-
-    if (mode === YEAR) {
-      return {
-        cols: this.getDateData(),
-        value: [`${date.getFullYear()}`],
-      };
-    }
-
-    if (mode === MONTH) {
-      return {
-        cols: this.getDateData(),
-        value: [`${date.getFullYear()}`, `${date.getMonth()}`],
-      };
-    }
-
-    if (mode === DATETIME || mode === DATE) {
-      cols = this.getDateData();
-      value = [`${date.getFullYear()}`, `${date.getMonth()}`, `${date.getDate()}`];
-    }
-
-    if (mode === DATETIME || mode === TIME) {
-      cols = cols.concat(this.getTimeData());
-      value = value.concat([`${date.getHours()}`, `${date.getMinutes()}`]);
-    }
-
-    return {
-      value,
-      cols,
-    };
-  }
-
-  clipDate(date) {
-    const { mode } = this.props;
-    const minDate = this.getMinDate();
-    const maxDate = this.getMaxDate();
-    if (mode === DATETIME) {
-      if (date < minDate) {
-        return cloneDate(minDate);
-      }
-      if (date > maxDate) {
-        return cloneDate(maxDate);
-      }
-    } else if (mode === DATE) {
-      if (+date + ONE_DAY <= minDate) {
-        return cloneDate(minDate);
-      }
-      if (date >= +maxDate + ONE_DAY) {
-        return cloneDate(maxDate);
-      }
-    } else {
-      const maxHour = maxDate.getHours();
-      const maxMinutes = maxDate.getMinutes();
-      const minHour = minDate.getHours();
-      const minMinutes = minDate.getMinutes();
-      const hour = date.getHours();
-      const minutes = date.getMinutes();
-      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
-        return cloneDate(minDate);
-      }
-      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
-        return cloneDate(maxDate);
-      }
-    }
-    return date;
-  }
-
-  // 切换显示状态
-  toggle() {
-    this.setState({
-      visible: !this.state.visible,
-    });
-  }
-
-  close(key) {
-    this.setState({
-      [`${key}`]: false,
-    });
+    return (
+      <Wheel
+        key={+index}
+        dataSource={item}
+        value={value[index]}
+        valueMember={valueMember}
+        disabled={disabled}
+        onChange={selected => this.onValueChange(selected, index)}
+      />
+    );
   }
 
   render() {
-    const { value, cols } = this.getValueCols();
-    const { prefixCls, className, disabled, valueMember, visible } = this.props;
-
-    return visible
-    ? (
+    const { prefixCls, className } = this.props;
+    const { dataSource } = this.getColsValue();
+    return (
       <div className={`${prefixCls}-mask-top`}>
         <div className={`${prefixCls}-mask-bottom`}>
-          <Wheel.Group
-            className={className}
-            disabled={disabled}
-            valueMember={valueMember}
-            selectedValue={value}
-            onValueChange={(values, index) => this.onValueChange(values, index)}
-          >
-            {cols}
-          </Wheel.Group>
+          <div className={classnames(`${prefixCls}-view`, className)}>
+            {dataSource.map(this.renderWheel)}
+          </div>
         </div>
       </div>
-    )
-    : null;
+    );
   }
 }

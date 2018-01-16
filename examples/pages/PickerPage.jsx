@@ -43,6 +43,25 @@ const CASCADE_DATA = [
   },
 ];
 
+const DIY_DATA = [
+  {
+    code: '1',
+    name: '北京市',
+    children: [
+      { code: '11', name: '海淀区' },
+      { code: '12', name: '西城区' },
+    ],
+  },
+  {
+    code: '2',
+    name: '上海市',
+    children: [
+      { code: '21', name: '黄埔区' },
+      { code: '22', name: '虹口区' },
+    ],
+  },
+];
+
 class Page extends Component {
   constructor(props) {
     super(props);
@@ -61,6 +80,11 @@ class Page extends Component {
         visible: false,
         value: [],
         dataSource: CASCADE_DATA,
+      },
+      diy: {
+        visible: false,
+        value: [],
+        dataSource: DIY_DATA,
       },
       view: {
         value: ['1', '12'],
@@ -85,7 +109,7 @@ class Page extends Component {
   }
 
   render() {
-    const { single, multi, cascade, view } = this.state;
+    const { single, multi, cascade, diy, view } = this.state;
 
     return (
       <Container className="picker-page">
@@ -108,6 +132,11 @@ class Page extends Component {
                 description={
                   <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
                 }>级联</Cell>
+
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('diy')}>打开</Button>
+                }>自定义数据</Cell>
 
             </Panel.Body>
           </Panel>
@@ -132,7 +161,6 @@ class Page extends Component {
               single.value = selected.map(item => item.value);
               this.setState({ single });
               Toast.show(JSON.stringify(selected));
-              this.toggle('single');
             }}
             onCancel={() => this.toggle('single')}
             />
@@ -163,6 +191,25 @@ class Page extends Component {
               this.toggle('cascade');
             }}
             onCancel={() => this.toggle('cascade')}
+            />
+
+          <Picker
+            visible={diy.visible}
+            title="自定义标题"
+            placeholder="自定义placeholder"
+            dataSource={diy.dataSource}
+            value={diy.value}
+            valueMember="code"
+            itemRender={data => data.name}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              diy.value = selected.map(item => item.code);
+              this.setState({
+                diy,
+              });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('diy');
+            }}
             />
         </main>
         <Footer />

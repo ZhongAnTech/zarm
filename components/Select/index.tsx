@@ -28,6 +28,7 @@ export default class Select extends Component<SelectProps, any> {
     placeholder: '请选择',
     itemRender: data => data.label,
     displayRender: selected => selected.map(item => item.label),
+    onClick: () => {},
   };
 
   private tempObjValue;
@@ -38,6 +39,13 @@ export default class Select extends Component<SelectProps, any> {
       visible: props.visible || false,
       value: getValue(props, []),
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      visible: nextProps.visible,
+      value: getValue(nextProps, []),
+    });
   }
 
   toggle = () => {
@@ -51,6 +59,11 @@ export default class Select extends Component<SelectProps, any> {
     this.tempObjValue = selected;
   }
 
+  handleClick = () => {
+    this.props.onClick();
+    this.toggle();
+  }
+
   onOk = (selected) => {
     this.toggle();
     const { onChange, valueMember } = this.props;
@@ -60,6 +73,15 @@ export default class Select extends Component<SelectProps, any> {
     });
     if (typeof onChange === 'function') {
       onChange(selected);
+    }
+  }
+
+  // 点击取消
+  onCancel = () => {
+    const { onCancel } = this.props;
+    this.toggle();
+    if (typeof onCancel === 'function') {
+      onCancel();
     }
   }
 
@@ -75,7 +97,7 @@ export default class Select extends Component<SelectProps, any> {
     });
 
     return (
-      <div className={cls} onClick={this.toggle}>
+      <div className={cls} onClick={this.handleClick}>
         <div className={inputCls}>
           {value.length > 0 && displayRender!(objValue || this.tempObjValue || []) || placeholder}
         </div>
@@ -85,6 +107,7 @@ export default class Select extends Component<SelectProps, any> {
           value={value}
           onInit={this.onInit}
           onOk={this.onOk}
+          onCancel={this.onCancel}
         />
       </div>
     );
