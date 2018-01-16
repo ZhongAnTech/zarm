@@ -9,6 +9,7 @@ export default interface PropsType {
   value?: string | object;
   defaultValue?: string | object;
   wheelDefaultValue?: string | object;
+  onInit?: (value?: Date) => void;
   onValueChange?: (value?: Date) => void;
   onChange?: (value?: Date) => void;
   onOk?: (date?: string | object) => void;

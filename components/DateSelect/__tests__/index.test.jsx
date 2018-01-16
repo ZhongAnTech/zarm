@@ -15,8 +15,17 @@ describe('DateSelect', () => {
         value="2017"
         locale={enLocale}
         />
-
     );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('DateSelect trigger visible', () => {
+    const wrapper = render(
+      <DateSelect
+        mode="date"
+        visible
+        />
+      );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -69,7 +78,22 @@ describe('DateSelect', () => {
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ value: '2017-11-06 12:00' });
+    jest.useFakeTimers();
+    wrapper.setProps({ defaultValue: '2017-11-06 12:00', value: '2017-11-06 12:00' });
+    jest.runAllTimers();
+  });
+
+  it('DateSelect wheelDefaultValue', () => {
+    const wrapper = mount(
+      <DateSelect
+        title="选择日期"
+        placeholder="请选择日期"
+        mode="date"
+        visible
+        wheelDefaultValue="2017-11-03"
+        />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('should trigger onOk when press ok button', () => {
@@ -82,7 +106,7 @@ describe('DateSelect', () => {
         placeholder="请选择时间"
         mode="datetime"
         defaultValue="2017-11-12 20:00"
-        onOk={onOkFn}
+        onChange={onOkFn}
         onCancel={onCancelFn}
         onMaskClick={onCancelFn}
         />

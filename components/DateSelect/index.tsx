@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import formatFn from '../DatePickerView/utils';
@@ -23,7 +23,7 @@ export interface DateSelectProps extends PropsType {
 
 const DATE = 'date';
 
-export default class DateSelect extends Component<DateSelectProps, any> {
+export default class DateSelect extends PureComponent<DateSelectProps, any> {
 
   static defaultProps = {
     placeholder: '请选择',
@@ -32,8 +32,6 @@ export default class DateSelect extends Component<DateSelectProps, any> {
     okText: '确定',
     mode: DATE,
     disabled: false,
-    value: '',
-    defaultValue: '',
     minuteStep: 1,
     prefixCls: 'za-select',
     valueMember: 'value',
@@ -48,40 +46,44 @@ export default class DateSelect extends Component<DateSelectProps, any> {
     const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
 
     this.state = {
+      value: defaultDate || date,
       visible: props.visible || false,
-      date: defaultDate || date,
-      value: props.defaultValue || props.value || '',
     };
 
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
-      const date = nextProps.value && isExtendDate(nextProps.value);
-      const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
+    const date = nextProps.value && isExtendDate(nextProps.value);
+    const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
 
+    this.setState({
+      value: date || defaultDate,
+    });
+
+    if ('visible' in nextProps && nextProps.visible !== this.state.visible) {
       this.setState({
-        date: date || defaultDate,
-        value: nextProps.value,
+        visible: nextProps.visible,
       });
     }
   }
 
   handleClick = () => {
     this.props.onClick();
-    if (!this.props.disabled) {
-      this.toggle();
-    }
+    this.toggle();
   }
 
   // 切换显示状态
   toggle() {
+    if (this.props.disabled) {
+      return;
+    }
+
     this.setState({
       visible: !this.state.visible,
     });
   }
 
-  onChange = (newValue) => {
+  onOk = (newValue) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(newValue);
@@ -89,9 +91,10 @@ export default class DateSelect extends Component<DateSelectProps, any> {
     this.setState({ visible: false });
   }
 
+  // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    this.setState({ visible: false });
+    this.toggle();
     if (typeof onCancel === 'function') {
       onCancel();
     }
@@ -100,22 +103,22 @@ export default class DateSelect extends Component<DateSelectProps, any> {
   render() {
     const { prefixCls, className, title, okText, cancelText, placeholder, disabled,
       onChange, ...others } = this.props;
-    const { value } = this.state;
+    const { value, visible } = this.state;
     const inputCls = classnames({
       [`${prefixCls}-input`]: true,
-      [`${prefixCls}-placeholder`]: !this.state.date,
+      [`${prefixCls}-placeholder`]: !this.state.value,
       [`${prefixCls}-disabled`]: !!disabled,
     });
 
     return(
       <div className={inputCls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, this.state.date)} />
-        {this.state.date ? formatFn(this, this.state.date) : placeholder}
+        <input type="hidden" value={formatFn(this, this.state.value)} />
+        {this.state.value ? formatFn(this, this.state.value) : placeholder}
         <DatePicker
-          visible={this.state.visible}
-          onOk={this.onChange}
+          visible={visible}
           value={value}
           {...others}
+          onOk={this.onOk}
           onCancel={this.onCancel}
         />
       </div>
