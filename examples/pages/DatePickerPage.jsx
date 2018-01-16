@@ -64,7 +64,24 @@ class Page extends Component {
 
               <Cell
                 description={
-                  <Button size="sm" onClick={() => this.toggle('limitDate')}>选择</Button>
+                  <DatePicker
+                    title="选择日期"
+                    placeholder="请选择日期"
+                    mode="date"
+                    min="2007-01-03"
+                    max="2019-11-23"
+                    value={limitDate.value}
+                    onOk={(value) => {
+                      this.setState({
+                        limitDate: {
+                          visible: false,
+                          value,
+                        },
+                      });
+                      Toast.show(format.date(value, 'yyyy年MM月dd日'));
+                    }}>
+                    <Button size="sm">选择</Button>
+                  </DatePicker>
                 }>选择日期(自定义)</Cell>
             </Panel.Body>
           </Panel>
@@ -118,25 +135,6 @@ class Page extends Component {
             onCancel={() => this.toggle('time')}
             />
 
-          <DatePicker
-            visible={limitDate.visible}
-            title="选择年份"
-            placeholder="请选择年份"
-            mode="date"
-            min="2007-01-03"
-            max="2019-11-23"
-            value={limitDate.value}
-            onOk={(value) => {
-              this.setState({
-                limitDate: {
-                  visible: false,
-                  value,
-                },
-              });
-              Toast.show(format.date(value, 'yyyy年MM月dd日'));
-            }}
-            onCancel={() => this.toggle('year')}
-            />
         </main>
         <Footer />
       </Container>
