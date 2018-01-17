@@ -1,4 +1,4 @@
-# 选择器 DateSelect
+# 日期选择器 DateSelect
 
 [demo页面](https://zhongantecheng.github.io/zarm/#/dateSelect)
 
@@ -12,21 +12,6 @@ import { DateSelect } from 'zarm';
 
 #### 基本用法
 
-
-###### 年份选择
-```jsx
-<DateSelect
-  title="选择年份"
-  placeholder="请选择年份"
-  mode="year"
-  value={year}
-  onChange={(value) => {
-    this.setState({
-      year: value,
-    });
-  }}
-  />
-```
 
 
 ###### 日期选择

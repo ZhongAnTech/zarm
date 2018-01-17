@@ -1,21 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
-
-const DATE = 'date';
-
-// 阻止选择器区域的默认事件
-function stopClick(e) {
-  e.stopPropagation();
-}
-
-// 转成Date格式
-function getGregorianCalendar(arg) {
-  return new Date(...arg);
-}
 
 function isExtendDate(date) {
   if (date instanceof Date) {
@@ -27,6 +15,11 @@ function isExtendDate(date) {
   }
 
   return new Date(date.toString().replace(/-/g, '/'));
+}
+
+// 阻止选择器区域的默认事件
+function stopClick(e) {
+  e.stopPropagation();
 }
 
 export interface DatePickerProps extends PropsType {
@@ -41,7 +34,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     title: '请选择',
     cancelText: '取消',
     okText: '确定',
-    mode: DATE,
+    mode: 'date',
     disabled: false,
     value: '',
     defaultValue: '',
@@ -51,25 +44,20 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     valueMember: 'value',
     onClick: () => {},
     onCancel: () => {},
+    onInit: () => {},
   };
 
   private initDate;
-  private defaultMinDate;
 
   constructor(props) {
     super(props);
 
     const date = props.value && isExtendDate(props.value);
     const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-    const display = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
-
-    this.initDate = date;
 
     this.state = {
       visible: props.visible || false,
-      date: defaultDate || date,
-      value: props.defaultValue || props.value || '',
-      display,
+      value: defaultDate || date,
     };
   }
 
@@ -78,13 +66,13 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
 
     this.setState({
-      date: date || defaultDate,
-      value: nextProps.value,
+      value: date || defaultDate,
     });
-    this.initDate = date || defaultDate;
 
-    if ('visible' in nextProps && this.state.visible !== nextProps.visible) {
-      this.setState({ visible: nextProps.visible });
+    if ('visible' in nextProps && nextProps.visible !== this.state.visible) {
+      this.setState({
+        visible: nextProps.visible,
+      });
     }
   }
 
@@ -112,50 +100,19 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   // 点击确定
   onOk = () => {
     const { onOk } = this.props;
-    const value = this.getDate();
+    const value = this.state.value || this.initDate;
     this.setState({
       value: value,
     });
-    this.initDate = value;
-    this.toggle();
     if (typeof onOk === 'function') {
       onOk(value);
     }
-  }
-
-  getDefaultMinDate() {
-    if (!this.defaultMinDate) {
-      this.defaultMinDate = getGregorianCalendar([2000, 0, 1, 0, 0, 0]);
-    }
-    return this.defaultMinDate;
-  }
-
-  getDefaultDate() {
-    const { min, mode, minuteStep } = this.props;
-    // 存在最小值且毫秒数大于现在
-    if (min && Date.parse(this.getMinDate()) >= Date.now()) {
-      return this.getMinDate();
-    }
-    if (minuteStep && minuteStep > 1 && (mode === 'datetime' || mode === 'time')) {
-      return new Date(new Date().setMinutes(0));
-    }
-    return new Date();
-  }
-
-  getDate() {
-    return this.state.value || this.state.date || this.state.display || this.getDefaultDate();
-  }
-
-  getMinDate() {
-    const minDate = isExtendDate(this.props.min);
-    return minDate || this.getDefaultMinDate();
+    this.toggle();
   }
 
   // 切换显示状态
-  toggle() {
-    this.setState({
-      visible: !this.state.visible,
-    });
+  toggle = (visible = false) => {
+    this.setState({ visible });
   }
 
   close(key) {
@@ -164,15 +121,19 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     });
   }
 
-  onValueChange(newValue) {
-    const { onChange, onValueChange } = this.props;
+  onInit = (selected) => {
+    const { onInit } = this.props;
+    this.initDate = selected;
+    if (typeof onInit === 'function') {
+      onInit(selected);
+    }
+  }
+
+  onValueChange = (newValue) => {
+    const { onChange } = this.props;
     this.setState({
       value: newValue,
     });
-
-    if (typeof onValueChange === 'function') {
-      onValueChange(newValue);
-    }
 
     if (typeof onChange === 'function') {
       onChange(newValue);
@@ -180,7 +141,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, placeholder, disabled,
+    const { prefixCls, className, title, okText, cancelText, placeholder, children, disabled,
        ...others } = this.props;
     const { visible, value } = this.state;
 
@@ -188,6 +149,10 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       [`${prefixCls}-container`]: true,
       [`${prefixCls}-hidden`]: !visible,
       [className]: !!className,
+    });
+
+    const content = children && cloneElement(children, {
+      onClick: () => this.toggle(true),
     });
 
     return (
@@ -209,13 +174,15 @@ export default class DatePicker extends Component<DatePickerProps, any> {
                     prefixCls={prefixCls}
                     className={className}
                     {...others}
-                    onValueChange={(newValue) => this.onValueChange(newValue)}
                     value={value}
+                    onInit={this.onInit}
+                    onChange={this.onValueChange}
                   />
                 </div>
               </div>
             </div>
           </Popup>
+          {content}
         </div>
       </div>
     );
