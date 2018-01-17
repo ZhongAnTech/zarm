@@ -1,4 +1,4 @@
-# 选择器(带input) Select
+# 选择器 Select
 
 [demo页面](https://zhongantecheng.github.io/zarm/#/select)
 
@@ -18,16 +18,18 @@ import { Select } from 'zarm';
  <Select
   placeholder="请选择"
   value={single.value}
-  dataSource={[{ value: '1', label: '选项一' }, { value: '2', label: '选项二' }]}
+  dataSource={[
+    { value: '1', label: '选项一' },
+    { value: '2', label: '选项二' },
+  ]}
   onChange={(selected) => {
-    single.value = selected.value;
+    single.value = selected.map(item => item.value);
     this.setState({
       single,
     });
   }}
   />
 ```
-
 
 ###### 多列
 ```jsx
@@ -40,8 +42,8 @@ import { Select } from 'zarm';
       { value: '2', label: '选项二' },
     ],
     [
-      { value: '3', label: '选项三' },
-      { value: '4', label: '选项四' },
+      { value: '3', label: '选项A' },
+      { value: '4', label: '选项B' },
     ],
   ]}
   onChange={(selected) => {
@@ -51,46 +53,29 @@ import { Select } from 'zarm';
       multi,
     });
   }}
-  displayRender={selected => selected.map(item => item.label).join('/')}
   />
 ```
 
 ###### 指定默认值
 ```jsx
-// this.state = {
-  // multiAssign: { value: ['1', '12'] }
-// }
-
-// const { multiAssign } = this.state;
 <Select
   placeholder="请选择"
   dataSource={[
-    {
-      value: '1',
-      label: '北京市',
-      children: [
-        { value: '11', label: '海淀区' },
-        { value: '12', label: '西城区' },
-      ],
-    },
-    {
-      value: '2',
-      label: '上海市',
-      children: [
-        { value: '21', label: '黄埔区' },
-        { value: '22', label: '虹口区' },
-      ],
-    },
+    [
+      { value: '1', label: '选项一' },
+      { value: '2', label: '选项二' },
+    ],
+    [
+      { value: '3', label: '选项A' },
+      { value: '4', label: '选项B' },
+    ],
   ]}
-  defaultValue={multiAssign.value}
+  defaultValue={['1', '4']}
   onChange={(selected) => {
     multiAssign.value = selected.map(item => `${item.value}`);
     this.setState({
       multiAssign,
     });
-  }}
-  displayRender={(selected) => {
-    return selected.map(item => item.label).join('-');
   }}
   />
 ```
@@ -117,16 +102,18 @@ import { Select } from 'zarm';
       ],
     },
   ]}
-  value={this.state.multiCascade.value}
-  onChange={(selected) => {
-    multiCascade.value = selected.map(item => `${item.value}`);
-    this.setState({
-      multiCascade,
-    });
-    this.close('pickerVisible');
+  value={cascade.value}
+  visible={cascade.visible}
+  onClick={() => {
+    this.toggle('cascade');
   }}
-  displayRender={(selected) => {
-    return selected.map(item => item.label).join('/');
+  onChange={(selected) => {
+    console.log('Select onChange: ', selected);
+    cascade.value = selected.map(item => item.value);
+    this.toggle('cascade');
+  }}
+  onCancel={() => {
+    this.toggle('cascade');
   }}
   />
 ```
@@ -146,8 +133,6 @@ import { Select } from 'zarm';
 ###### 自定义格式
 ```jsx
 <Select
-  title="自定义标题"
-  placeholder="自定义placeholder"
   dataSource={[
     {
       code: '1',
@@ -170,11 +155,14 @@ import { Select } from 'zarm';
   valueMember="code"
   itemRender={data => data.name}
   displayRender={selected => selected.map(item => item.name).join('/')}
+  title="custom title"
+  placeholder="custom placeholder"
+  cancelText="Cancel"
+  okText="Ok"
   onChange={(selected) => {
+    console.log('Select onChange: ', selected);
     diy.value = selected.map(item => item.code);
-    this.setState({
-      diy,
-    });
+    this.setState({ diy });
   }}
   />
 ```
@@ -232,9 +220,9 @@ import { Select } from 'zarm';
 | cancelText | string | '取消' | | 取消栏文字 |
 | okText | string | '确定' | | 确定栏文字 |
 | placeholder | string | '请选择' | | 输入提示信息 |
-| displayRender | <code>(data?: object) => string</code> | noop | \(data: object\) | 所选值渲染(只有Select有) |
+| displayRender | <code>(selected?: object) => string</code> | noop | \(selected: object\) | 所选值渲染(只有Select有) |
 | cols | number | | | 级联选择器的级数 |
-| onChange | <code>(value?: Object) => void</code> | noop | \(value: object\) | 点击确定时触发的回调函数 |
+| onChange | <code>(selected?: Object) => void</code> | noop | \(selected: object\) | 点击确定时触发的回调函数 |
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 

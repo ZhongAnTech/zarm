@@ -104,8 +104,19 @@ class Page extends Component {
     setTimeout(() => {
       const cascade = this.state.cascade;
       cascade.dataSource = District;
+      // cascade.visible = true;
       this.setState({ cascade });
     }, 1000);
+  }
+
+  toggle(key) {
+    const state = this.state[key];
+    this.setState({
+      [`${key}`]: {
+        ...state,
+        visible: !state.visible,
+      },
+    });
   }
 
   render() {
@@ -146,10 +157,17 @@ class Page extends Component {
                 <Select
                   dataSource={cascade.dataSource}
                   value={cascade.value}
+                  visible={cascade.visible}
+                  onClick={() => {
+                    this.toggle('cascade');
+                  }}
                   onChange={(selected) => {
                     console.log('Select onChange: ', selected);
                     cascade.value = selected.map(item => item.value);
-                    this.setState({ cascade });
+                    this.toggle('cascade');
+                  }}
+                  onCancel={() => {
+                    this.toggle('cascade');
                   }}
                   />
               </Cell>
@@ -176,18 +194,18 @@ class Page extends Component {
 
               <Cell title="自定义格式">
                 <Select
+                  title="custom title"
+                  placeholder="custom placeholder"
+                  cancelText="Cancel"
+                  okText="Ok"
                   dataSource={diy.dataSource}
                   value={diy.value}
                   valueMember="code"
                   itemRender={data => data.name}
                   displayRender={selected => selected.map(item => item.name).join('/')}
-                  title="custom title"
-                  placeholder="custom placeholder"
-                  cancelText="Cancel"
-                  okText="Ok"
                   onChange={(selected) => {
                     console.log('Select onChange: ', selected);
-                    diy.value = selected.map(item => item.value);
+                    diy.value = selected.map(item => item.code);
                     this.setState({ diy });
                   }}
                   />

@@ -11,6 +11,7 @@
     "linebreak-style": "off",
     "func-names": ["error", "as-needed"],
     "prefer-arrow-callback": "warn",
+    "no-undef": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-multi-assign": "warn",
     "no-param-reassign": "off",

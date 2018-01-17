@@ -43,6 +43,25 @@ const CASCADE_DATA = [
   },
 ];
 
+const DIY_DATA = [
+  {
+    code: '1',
+    name: '北京市',
+    children: [
+      { code: '11', name: '海淀区' },
+      { code: '12', name: '西城区' },
+    ],
+  },
+  {
+    code: '2',
+    name: '上海市',
+    children: [
+      { code: '21', name: '黄埔区' },
+      { code: '22', name: '虹口区' },
+    ],
+  },
+];
+
 class Page extends Component {
   constructor(props) {
     super(props);
@@ -62,6 +81,10 @@ class Page extends Component {
         value: [],
         dataSource: CASCADE_DATA,
       },
+      diy: {
+        value: [],
+        dataSource: DIY_DATA,
+      },
       view: {
         value: ['1', '12'],
         dataSource: CASCADE_DATA,
@@ -75,7 +98,7 @@ class Page extends Component {
       const cascade = this.state.cascade;
       cascade.dataSource = District;
       this.setState({ cascade });
-    }, 1000);
+    }, 200);
   }
 
   toggle = (key) => {
@@ -85,7 +108,7 @@ class Page extends Component {
   }
 
   render() {
-    const { single, multi, cascade, view } = this.state;
+    const { single, multi, cascade, diy, view } = this.state;
 
     return (
       <Container className="picker-page">
@@ -108,6 +131,28 @@ class Page extends Component {
                 description={
                   <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
                 }>级联</Cell>
+
+              <Cell
+                description={
+                  <Picker
+                    title="custom title"
+                    cancelText="Cancel"
+                    okText="Ok"
+                    dataSource={diy.dataSource}
+                    value={diy.value}
+                    valueMember="code"
+                    itemRender={data => data.name}
+                    onOk={(selected) => {
+                      console.log('Picker onOk: ', selected);
+                      diy.value = selected.map(item => item.code);
+                      this.setState({
+                        diy,
+                      });
+                      Toast.show(JSON.stringify(selected));
+                    }}>
+                    <Button size="sm">打开</Button>
+                  </Picker>
+                }>自定义</Cell>
 
             </Panel.Body>
           </Panel>
