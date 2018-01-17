@@ -82,7 +82,6 @@ class Page extends Component {
         dataSource: CASCADE_DATA,
       },
       diy: {
-        visible: false,
         value: [],
         dataSource: DIY_DATA,
       },
@@ -99,7 +98,7 @@ class Page extends Component {
       const cascade = this.state.cascade;
       cascade.dataSource = District;
       this.setState({ cascade });
-    }, 1000);
+    }, 200);
   }
 
   toggle = (key) => {
@@ -135,8 +134,25 @@ class Page extends Component {
 
               <Cell
                 description={
-                  <Button size="sm" onClick={() => this.toggle('diy')}>打开</Button>
-                }>自定义数据</Cell>
+                  <Picker
+                    title="custom title"
+                    cancelText="Cancel"
+                    okText="Ok"
+                    dataSource={diy.dataSource}
+                    value={diy.value}
+                    valueMember="code"
+                    itemRender={data => data.name}
+                    onOk={(selected) => {
+                      console.log('Picker onOk: ', selected);
+                      diy.value = selected.map(item => item.code);
+                      this.setState({
+                        diy,
+                      });
+                      Toast.show(JSON.stringify(selected));
+                    }}>
+                    <Button size="sm">打开</Button>
+                  </Picker>
+                }>自定义</Cell>
 
             </Panel.Body>
           </Panel>
@@ -161,6 +177,7 @@ class Page extends Component {
               single.value = selected.map(item => item.value);
               this.setState({ single });
               Toast.show(JSON.stringify(selected));
+              this.toggle('single');
             }}
             onCancel={() => this.toggle('single')}
             />
@@ -191,25 +208,6 @@ class Page extends Component {
               this.toggle('cascade');
             }}
             onCancel={() => this.toggle('cascade')}
-            />
-
-          <Picker
-            visible={diy.visible}
-            title="自定义标题"
-            placeholder="自定义placeholder"
-            dataSource={diy.dataSource}
-            value={diy.value}
-            valueMember="code"
-            itemRender={data => data.name}
-            onOk={(selected) => {
-              console.log('Picker onOk: ', selected);
-              diy.value = selected.map(item => item.code);
-              this.setState({
-                diy,
-              });
-              Toast.show(JSON.stringify(selected));
-              this.toggle('diy');
-            }}
             />
         </main>
         <Footer />
