@@ -22,7 +22,7 @@ describe('Switch', () => {
   });
 
   it('receive new checked', () => {
-    const wrapper = shallow(<Switch />);
+    const wrapper = shallow(<Switch className="test-class" />);
     wrapper.setProps({ checked: true });
   });
 });

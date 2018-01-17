@@ -1,0 +1,580 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select Cascader Select 1`] = `
+<Select
+  dataSource={
+    Array [
+      Object {
+        "children": Array [
+          Object {
+            "label": "选项一",
+            "value": "11",
+          },
+          Object {
+            "label": "选项二",
+            "value": "12",
+          },
+        ],
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "label": "选项一",
+            "value": "21",
+          },
+          Object {
+            "label": "选项二",
+            "value": "22",
+          },
+        ],
+        "label": "选项一",
+        "value": "2",
+      },
+    ]
+  }
+  displayRender={[Function]}
+  itemRender={[Function]}
+  onClick={[Function]}
+  placeholder="请选择"
+  prefixCls="za-select"
+  valueMember="value"
+>
+  <div
+    className="za-select"
+    onClick={[Function]}
+  >
+    <div
+      className="za-select-input za-select-placeholder"
+    >
+      请选择
+    </div>
+    <Picker
+      cancelText="取消"
+      dataSource={
+        Array [
+          Object {
+            "children": Array [
+              Object {
+                "label": "选项一",
+                "value": "11",
+              },
+              Object {
+                "label": "选项二",
+                "value": "12",
+              },
+            ],
+            "label": "选项一",
+            "value": "1",
+          },
+          Object {
+            "children": Array [
+              Object {
+                "label": "选项一",
+                "value": "21",
+              },
+              Object {
+                "label": "选项二",
+                "value": "22",
+              },
+            ],
+            "label": "选项一",
+            "value": "2",
+          },
+        ]
+      }
+      itemRender={[Function]}
+      okText="确定"
+      onCancel={[Function]}
+      onClick={[Function]}
+      onInit={[Function]}
+      onOk={[Function]}
+      prefixCls="za-picker"
+      title="请选择"
+      value={Array []}
+      valueMember="value"
+      visible={false}
+    >
+      <div
+        className="za-picker"
+        onClick={[Function]}
+      >
+        <Popup
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
+        >
+          <div
+            className="za-popup za-popup-hidden"
+          >
+            <div
+              className="za-popup-wrapper za-popup-wrapper-bottom"
+              style={
+                Object {
+                  "WebkitTransitionDuration": "200ms",
+                  "transitionDuration": "200ms",
+                }
+              }
+            >
+              <div
+                className="za-picker-wrapper"
+              >
+                <div
+                  className="za-picker-header"
+                >
+                  <div
+                    className="za-picker-cancel"
+                    onClick={[Function]}
+                  >
+                    取消
+                  </div>
+                  <div
+                    className="za-picker-title"
+                  >
+                    请选择
+                  </div>
+                  <div
+                    className="za-picker-submit"
+                    onClick={[Function]}
+                  >
+                    确定
+                  </div>
+                </div>
+                <PickerView
+                  cols={Infinity}
+                  dataSource={
+                    Array [
+                      Object {
+                        "children": Array [
+                          Object {
+                            "label": "选项一",
+                            "value": "11",
+                          },
+                          Object {
+                            "label": "选项二",
+                            "value": "12",
+                          },
+                        ],
+                        "label": "选项一",
+                        "value": "1",
+                      },
+                      Object {
+                        "children": Array [
+                          Object {
+                            "label": "选项一",
+                            "value": "21",
+                          },
+                          Object {
+                            "label": "选项二",
+                            "value": "22",
+                          },
+                        ],
+                        "label": "选项一",
+                        "value": "2",
+                      },
+                    ]
+                  }
+                  disabled={false}
+                  itemRender={[Function]}
+                  onCancel={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onInit={[Function]}
+                  onOk={[Function]}
+                  prefixCls="za-picker"
+                  value={Array []}
+                  valueMember="value"
+                  visible={false}
+                >
+                  <div
+                    className="za-picker-mask-top"
+                  >
+                    <div
+                      className="za-picker-mask-bottom"
+                    >
+                      <div
+                        className="za-picker-view"
+                      >
+                        <Wheel
+                          dataSource={
+                            Array [
+                              Object {
+                                "label": "选项一",
+                                "value": "1",
+                              },
+                              Object {
+                                "label": "选项一",
+                                "value": "2",
+                              },
+                            ]
+                          }
+                          disabled={false}
+                          itemRender={[Function]}
+                          key="0"
+                          onChange={[Function]}
+                          prefixCls="za-wheel"
+                          value="1"
+                          valueMember="value"
+                        >
+                          <div
+                            className="za-wheel"
+                          >
+                            <div
+                              className="za-wheel-indicator"
+                            />
+                            <div
+                              className="za-wheel-content"
+                            >
+                              <div
+                                className="za-wheel-item za-wheel-item-selected"
+                                key="0"
+                              >
+                                选项一
+                              </div>
+                              <div
+                                className="za-wheel-item"
+                                key="1"
+                              >
+                                选项一
+                              </div>
+                            </div>
+                          </div>
+                        </Wheel>
+                        <Wheel
+                          dataSource={
+                            Array [
+                              Object {
+                                "label": "选项一",
+                                "value": "11",
+                              },
+                              Object {
+                                "label": "选项二",
+                                "value": "12",
+                              },
+                            ]
+                          }
+                          disabled={false}
+                          itemRender={[Function]}
+                          key="1"
+                          onChange={[Function]}
+                          prefixCls="za-wheel"
+                          value="11"
+                          valueMember="value"
+                        >
+                          <div
+                            className="za-wheel"
+                          >
+                            <div
+                              className="za-wheel-indicator"
+                            />
+                            <div
+                              className="za-wheel-content"
+                            >
+                              <div
+                                className="za-wheel-item za-wheel-item-selected"
+                                key="0"
+                              >
+                                选项一
+                              </div>
+                              <div
+                                className="za-wheel-item"
+                                key="1"
+                              >
+                                选项二
+                              </div>
+                            </div>
+                          </div>
+                        </Wheel>
+                      </div>
+                    </div>
+                  </div>
+                </PickerView>
+              </div>
+            </div>
+            <Mask
+              className=""
+              onClose={[Function]}
+              prefixCls="za-mask"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+              type="normal"
+              visible={false}
+            />
+          </div>
+        </Popup>
+      </div>
+    </Picker>
+  </div>
+</Select>
+`;
+
+exports[`Select Cascader Select init value 1`] = `
+<div
+  class="za-select"
+>
+  <div
+    class="za-select-input"
+  />
+  <div
+    class="za-picker"
+  >
+    <div
+      class="za-popup za-popup-hidden"
+    >
+      <div
+        class="za-popup-wrapper za-popup-wrapper-bottom"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      >
+        <div
+          class="za-picker-wrapper"
+        >
+          <div
+            class="za-picker-header"
+          >
+            <div
+              class="za-picker-cancel"
+            >
+              取消
+            </div>
+            <div
+              class="za-picker-title"
+            >
+              请选择
+            </div>
+            <div
+              class="za-picker-submit"
+            >
+              确定
+            </div>
+          </div>
+          <div
+            class="za-picker-mask-top"
+          >
+            <div
+              class="za-picker-mask-bottom"
+            >
+              <div
+                class="za-picker-view"
+              >
+                <div
+                  class="za-wheel"
+                >
+                  <div
+                    class="za-wheel-indicator"
+                  />
+                  <div
+                    class="za-wheel-content"
+                  >
+                    <div
+                      class="za-wheel-item za-wheel-item-selected"
+                    >
+                      选项一
+                    </div>
+                    <div
+                      class="za-wheel-item"
+                    >
+                      选项一
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="za-wheel"
+                >
+                  <div
+                    class="za-wheel-indicator"
+                  />
+                  <div
+                    class="za-wheel-content"
+                  >
+                    <div
+                      class="za-wheel-item"
+                    >
+                      选项一
+                    </div>
+                    <div
+                      class="za-wheel-item za-wheel-item-selected"
+                    >
+                      选项二
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Select Select 1`] = `
+<div
+  class="za-select"
+>
+  <div
+    class="za-select-input za-select-placeholder"
+  >
+    请选择
+  </div>
+  <div
+    class="za-picker"
+  >
+    <div
+      class="za-popup za-popup-hidden"
+    >
+      <div
+        class="za-popup-wrapper za-popup-wrapper-bottom"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      >
+        <div
+          class="za-picker-wrapper"
+        >
+          <div
+            class="za-picker-header"
+          >
+            <div
+              class="za-picker-cancel"
+            >
+              取消
+            </div>
+            <div
+              class="za-picker-title"
+            >
+              请选择
+            </div>
+            <div
+              class="za-picker-submit"
+            >
+              确定
+            </div>
+          </div>
+          <div
+            class="za-picker-mask-top"
+          >
+            <div
+              class="za-picker-mask-bottom"
+            >
+              <div
+                class="za-picker-view"
+              >
+                <div
+                  class="za-wheel"
+                >
+                  <div
+                    class="za-wheel-indicator"
+                  />
+                  <div
+                    class="za-wheel-content"
+                  >
+                    <div
+                      class="za-wheel-item za-wheel-item-selected"
+                    >
+                      选项一
+                    </div>
+                    <div
+                      class="za-wheel-item"
+                    >
+                      选项二
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Select render defaultValue correctly  1`] = `
+<div
+  class="za-select"
+>
+  <div
+    class="za-select-input"
+  />
+  <div
+    class="za-picker"
+  >
+    <div
+      class="za-popup za-popup-hidden"
+    >
+      <div
+        class="za-popup-wrapper za-popup-wrapper-bottom"
+        style="-webkit-transition-duration:200ms;transition-duration:200ms"
+      >
+        <div
+          class="za-picker-wrapper"
+        >
+          <div
+            class="za-picker-header"
+          >
+            <div
+              class="za-picker-cancel"
+            >
+              取消
+            </div>
+            <div
+              class="za-picker-title"
+            >
+              请选择
+            </div>
+            <div
+              class="za-picker-submit"
+            >
+              确定
+            </div>
+          </div>
+          <div
+            class="za-picker-mask-top"
+          >
+            <div
+              class="za-picker-mask-bottom"
+            >
+              <div
+                class="za-picker-view"
+              >
+                <div
+                  class="za-wheel"
+                >
+                  <div
+                    class="za-wheel-indicator"
+                  />
+                  <div
+                    class="za-wheel-content"
+                  >
+                    <div
+                      class="za-wheel-item"
+                    >
+                      选项一
+                    </div>
+                    <div
+                      class="za-wheel-item za-wheel-item-selected"
+                    >
+                      选项二
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

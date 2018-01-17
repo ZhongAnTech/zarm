@@ -131,8 +131,8 @@ import { Radio } from 'zarm';
 | theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | type | string | | `button`, `cell` | 显示类型 |
 | shape | string | | `radius`, `round` | 形状 |
-| value | string, number | | | 选中值 |
-| defaultValue | string, number | | | 初始选中值 |
+| value | string &#124; number | | | 选中值 |
+| defaultValue | string &#124; number | | | 初始选中值 |
 | block | boolean | false | | 是否为块级元素 |
 | disabled | boolean | false | | 是否禁用 |
 | compact | boolean | false | | 是否启用紧凑模式 |
