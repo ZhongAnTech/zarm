@@ -43,9 +43,14 @@ export default class Select extends Component<SelectProps, any> {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      visible: nextProps.visible,
       value: getValue(nextProps, []),
     });
+
+    if ('visible' in nextProps && nextProps.visible !== this.state.visible) {
+      this.setState({
+        visible: nextProps.visible,
+      });
+    }
   }
 
   toggle = () => {

@@ -194,15 +194,15 @@ class Page extends Component {
 
               <Cell title="自定义格式">
                 <Select
+                  title="custom title"
+                  placeholder="custom placeholder"
+                  cancelText="Cancel"
+                  okText="Ok"
                   dataSource={diy.dataSource}
                   value={diy.value}
                   valueMember="code"
                   itemRender={data => data.name}
                   displayRender={selected => selected.map(item => item.name).join('/')}
-                  title="custom title"
-                  placeholder="custom placeholder"
-                  cancelText="Cancel"
-                  okText="Ok"
                   onChange={(selected) => {
                     console.log('Select onChange: ', selected);
                     diy.value = selected.map(item => item.code);
