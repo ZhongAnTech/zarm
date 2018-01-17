@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseSelectProps } from './PropsType';
 import Picker from '../Picker';
@@ -20,7 +20,7 @@ export interface SelectProps extends BaseSelectProps {
   className?: string;
 }
 
-export default class Select extends Component<SelectProps, any> {
+export default class Select extends PureComponent<SelectProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-select',
@@ -65,19 +65,18 @@ export default class Select extends Component<SelectProps, any> {
   }
 
   handleClick = () => {
-    this.props.onClick();
     this.toggle();
   }
 
   onOk = (selected) => {
     this.toggle();
-    const { onChange, valueMember } = this.props;
+    const { onOk, valueMember } = this.props;
     this.setState({
       value: selected.map(item => item[valueMember!]),
       objValue: selected,
     });
-    if (typeof onChange === 'function') {
-      onChange(selected);
+    if (typeof onOk === 'function') {
+      onOk(selected);
     }
   }
 
@@ -91,7 +90,7 @@ export default class Select extends Component<SelectProps, any> {
   }
 
   render() {
-    const { prefixCls, placeholder, className, disabled, onChange, displayRender, ...others } = this.props;
+    const { prefixCls, placeholder, className, disabled, displayRender, ...others } = this.props;
     const { visible, value, objValue } = this.state;
 
     const cls = classnames(`${prefixCls}`, className);

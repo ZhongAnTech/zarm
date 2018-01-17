@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Cell, Button, Toast, Picker, PickerView } from 'zarm';
+import { Panel, Cell, Button, Toast, Picker, PickerView, Select } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -85,6 +85,11 @@ class Page extends Component {
         value: [],
         dataSource: DIY_DATA,
       },
+      select: {
+        visible: false,
+        value: [],
+        dataSource: CASCADE_DATA,
+      },
       view: {
         value: ['1', '12'],
         dataSource: CASCADE_DATA,
@@ -98,6 +103,10 @@ class Page extends Component {
       const cascade = this.state.cascade;
       cascade.dataSource = District;
       this.setState({ cascade });
+
+      const select = this.state.select;
+      select.value = ['2', '22'];
+      this.setState({ select });
     }, 200);
   }
 
@@ -108,11 +117,11 @@ class Page extends Component {
   }
 
   render() {
-    const { single, multi, cascade, diy, view } = this.state;
+    const { single, multi, cascade, diy, select, view } = this.state;
 
     return (
       <Container className="picker-page">
-        <Header title="选择器 Picker" />
+        <Header title="选择器 Picker & Select" />
         <main>
           <Panel>
             <Panel.Header title="基本" />
@@ -154,6 +163,25 @@ class Page extends Component {
                   </Picker>
                 }>自定义</Cell>
 
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header title="选择器表单控件 Select" />
+            <Panel.Body>
+              <Cell title="城市">
+                <Select
+                  visible={select.visible}
+                  placeholder="请选择省市区"
+                  value={select.value}
+                  dataSource={select.dataSource}
+                  onOk={(selected) => {
+                    console.log('Picker onOk: ', selected);
+                    select.value = selected.map(item => item.value);
+                    this.setState({ select });
+                  }}
+                  />
+              </Cell>
             </Panel.Body>
           </Panel>
 

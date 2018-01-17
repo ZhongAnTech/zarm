@@ -24,6 +24,7 @@ import { Picker } from 'zarm';
     single.value = selected.map(item => item.value);
     this.setState({ single });
     Toast.show(JSON.stringify(selected));
+    this.toggle('single');
   }}
   onCancel={() => this.toggle('single')}
   />
@@ -105,9 +106,13 @@ import { Picker } from 'zarm';
 ###### 自定义格式
 ```jsx
 <Picker
-  visible={diy.visible}
-  title="自定义标题"
-  placeholder="自定义placeholder"
+  title="custom title"
+  cancelText="Cancel"
+  okText="Ok"
+  dataSource={diy.dataSource}
+  value={diy.value}
+  valueMember="code"
+  itemRender={data => data.name}
   dataSource={[
     {
       code: '1',
@@ -126,9 +131,6 @@ import { Picker } from 'zarm';
       ],
     },
   ]}
-  value={diy.value}
-  valueMember="code"
-  itemRender={data => data.name}
   onOk={(selected) => {
     console.log('Picker onOk: ', selected);
     diy.value = selected.map(item => item.code);
@@ -136,7 +138,22 @@ import { Picker } from 'zarm';
       diy,
     });
     Toast.show(JSON.stringify(selected));
-    this.toggle('diy');
+  }}>
+    <Button>打开</Button>
+  </Picker>
+```
+
+### Select（选择器表单控件）
+```jsx
+<Select
+  visible={select.visible}
+  placeholder="请选择省市区"
+  value={select.value}
+  dataSource={select.dataSource}
+  onOk={(selected) => {
+    console.log('Picker onOk: ', selected);
+    select.value = selected.map(item => item.value);
+    this.setState({ select });
   }}
   />
 ```
@@ -170,28 +187,36 @@ import { Picker } from 'zarm';
   />
 ```
 ### API
-#### Picker & PickerView
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-select\za-picker | | 类名前缀 |
+| prefixCls | string | za-picker | | 类名前缀 |
 | className | string | | | 追加类名 |
-| visible（Picker） | boolean | false | | 是否展示 |
 | dataSource | array | [ ] | | 数据源 |
 | value | array &#124; string |  | | 值 |
 | defaultValue | array &#124; string |  | | 初始是否选中 |
 | valueMember | string | 'value' | | 值字段对应的key 
-| itemRender | func | <code>(data?: object) => data.label</code> | | 控制选项列表显示字段对应的key |
+| itemRender | func | <code>(data?: object) => data.label</code> | | 单个选项的展示 |
 | disabled | boolean | false | | 是否禁用 |
-| title（Picker） | string | '请选择' | | 选择器标题 |
-| cancelText（Picker） | string | '取消' | | 取消栏文字 |
-| okText（Picker） | string | '确定' | | 确定栏文字 |
-| placeholder（Picker） | string | '请选择' | | 输入提示信息 |
 | cols | number | | | 级联选择器的级数 |
 | onChange | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 值变化时触发的回调函数 |
-| onOk（Picker） | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 点击确定时触发的回调函数 | 
-| onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+
+#### 仅 Picker & Select 支持的属性
+| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| visible | boolean | false | | 是否展示 |
+| title | string | '请选择' | | 选择器标题 |
+| okText | string | '确定' | | 确定栏文字 |
+| cancelText | string | '取消' | | 取消栏文字 |
+| onOk | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 点击确定时触发的回调函数 |
+| onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
+
+#### 仅 Select 支持的属性
+| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| placeholder | string | '请选择' | | 输入提示信息 |
+| displayRender | <code>(selected?: object) => string</code> | noop | \(selected: object\) | 所选值的展示 |
 
 <!-- #### Picker.Stack
 
