@@ -116,6 +116,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       />
     );
   }
+
   render() {
     const { prefixCls, className, animationDuration, direction, children } = this.props;
     const { isShow } = this.state;

@@ -1,0 +1,44 @@
+$prefixCls: $prefixCls-picker;
+
+.#{$prefixCls} {
+  &-wrapper {
+    background: #fff;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: r(45);
+    line-height: r(45);
+    @include onepx(bottom);
+  }
+
+  &-cancel,
+  &-submit {
+    flex: 1;
+    padding: 0 r(20);
+    cursor: pointer;
+  }
+
+  &-cancel {
+    text-align: left;
+    color: $color-text-caption;
+  }
+
+  &-submit {
+    text-align: right;
+    color: $theme-primary;
+  }
+
+  &-mask-top {
+    -webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(rgba(222, 187, 71, 1)), to(rgba(36, 142, 36, 0)));
+  }
+
+  &-mask-bottom {
+    -webkit-mask: -webkit-gradient(linear, 0% 60%, 0% 100%, from(rgba(222, 187, 71, 1)), to(rgba(36, 142, 36, 0)));
+  }
+
+}

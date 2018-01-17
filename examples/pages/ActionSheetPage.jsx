@@ -4,6 +4,22 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const BUTTONS = [
+  {
+    text: '操作一',
+    onClick: () => console.log('点击操作一'),
+  },
+  {
+    text: '操作二',
+    onClick: () => console.log('点击操作二'),
+  },
+  {
+    theme: 'error',
+    text: '操作三',
+    onClick: () => console.log('点击操作三'),
+  },
+];
+
 class Page extends Component {
 
   constructor(props) {
@@ -11,6 +27,7 @@ class Page extends Component {
     this.state = {
       visible1: false,
       visible2: false,
+      visible3: false,
     };
   }
 
@@ -28,7 +45,6 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="提示信息" />
             <Panel.Body>
-
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible1')}>开启</Button>
@@ -42,43 +58,19 @@ class Page extends Component {
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible3')}>开启</Button>
-                }>圆角留间隔</Cell>
+                }>圆角、留边</Cell>
             </Panel.Body>
           </Panel>
 
           <ActionSheet
             visible={this.state.visible1}
             onMaskClick={() => this.toggle('visible1')}
-            actions={[
-              {
-                text: '操作一',
-                onClick: () => console.log('点击操作一'),
-              },
-              {
-                text: '操作二',
-                onClick: () => console.log('点击操作二'),
-              },
-            ]}
+            actions={BUTTONS}
             />
 
           <ActionSheet
             visible={this.state.visible2}
-            onMaskClick={() => this.toggle('visible2')}
-            actions={[
-              {
-                text: '操作一',
-                onClick: () => console.log('点击操作一'),
-              },
-              {
-                text: '操作二',
-                onClick: () => console.log('点击操作二'),
-              },
-              {
-                theme: 'error',
-                text: '操作三',
-                onClick: () => console.log('点击操作三'),
-              },
-            ]}
+            actions={BUTTONS}
             onCancel={() => this.toggle('visible2')}
             />
 
@@ -86,21 +78,7 @@ class Page extends Component {
             spacing
             shape="radius"
             visible={this.state.visible3}
-            actions={[
-              {
-                text: '操作一',
-                onClick: () => console.log('点击操作一'),
-              },
-              {
-                text: '操作二',
-                onClick: () => console.log('点击操作二'),
-              },
-              {
-                theme: 'error',
-                text: '操作三',
-                onClick: () => console.log('点击操作三'),
-              },
-            ]}
+            actions={BUTTONS}
             onCancel={() => this.toggle('visible3')}
             />
 
