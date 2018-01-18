@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-// import ReactDOM from 'react-dom';
+import React, { PureComponent, cloneElement } from 'react';
+import classnames from 'classnames';
 import PropsType from './PropsType';
 import Keyboard from '../Keyboard';
 import Popup from '../Popup';
@@ -33,15 +33,13 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
 
   componentWillReceiveProps(nextProps) {
     if ('visible' in nextProps) {
-      this.setState({
-        visible: nextProps.visible,
-      });
+      this.toggle(nextProps.visible);
     }
   }
 
   onKeyClick = (key) => {
     if (['ok', 'close'].indexOf(key) > -1) {
-      this.close();
+      this.toggle();
     }
     const { onKeyClick } = this.props;
     if (typeof onKeyClick === 'function') {
@@ -49,22 +47,29 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
     }
   }
 
-  close = () => {
-    this.setState({ visible: false });
+  // 切换显示状态
+  toggle = (visible = false) => {
+    this.setState({ visible });
   }
 
   render() {
-    const { type, ...others } = this.props;
+    const { prefixCls, className, type, children, ...others } = this.props;
     const { visible } = this.state;
+    const cls = classnames(`${prefixCls}-picker`, className);
+    const content = children && cloneElement(children, {
+      onClick: () => this.toggle(true),
+    });
 
     return (
-      <Popup
-        visible={visible}
-        mask={false}
-        direction="bottom"
-      >
-        <Keyboard {...others} type={type} onKeyClick={this.onKeyClick} />
-      </Popup>
+      <div className={cls}>
+        <Popup
+          visible={visible}
+          mask={false}
+        >
+          <Keyboard {...others} type={type} onKeyClick={this.onKeyClick} />
+        </Popup>
+        {content}
+      </div>
     );
   }
 }

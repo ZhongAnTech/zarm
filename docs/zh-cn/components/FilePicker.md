@@ -1,11 +1,11 @@
-# 上传组件 Uploader
+# 文件选择器 FilePicker
 
 [demo页面](https://zhongantecheng.github.io/zarm/#/uploader)
 
 ### 引入
 
 ```js
-import { Uploader } from 'zarm';
+import { FilePicker } from 'zarm';
 ```
 
 ### 代码演示
@@ -14,34 +14,34 @@ import { Uploader } from 'zarm';
 
 ###### 普通
 ```jsx
-<Uploader
+<FilePicker
   onChange={(file) => {
     console.log(file);
   }}>
   选择文件
-</Uploader>
+</FilePicker>
 ```
 
 ###### 设置允许上传的附件格式
 ```jsx
-<Uploader accept="image/jpg, image/jpeg, image/gif, image/png">
+<FilePicker accept="image/jpg, image/jpeg, image/gif, image/png">
   选择文件
-</Uploader>
+</FilePicker>
 ```
 
 ###### 允许多选
 ```jsx
-<Uploader multiple>选择文件</Uploader>
+<FilePicker multiple>选择文件</FilePicker>
 ```
 
 ###### 选择前的触发事件
 ```jsx
-<Uploader onBeforeSelect={() => alert('执行 onBeforeSelect 方法')}>选择文件</Uploader>
+<FilePicker onBeforeSelect={() => alert('执行 onBeforeSelect 方法')}>选择文件</FilePicker>
 ```
 
 ###### 禁用状态
 ```jsx
-<Uploader disabled>选择文件</Uploader>
+<FilePicker disabled>选择文件</FilePicker>
 ```
 
 
@@ -49,7 +49,7 @@ import { Uploader } from 'zarm';
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-uploader | | 类名前缀 |
+| prefixCls | string | za-filepicker | | 类名前缀 |
 | className | string | | | 追加类名 |
 | accept | string | | | 允许上传的附件格式 |
 | multiple | boolean | false | | 是否多选 |

@@ -51,7 +51,7 @@ $prefixCls: $prefixCls-badge;
       width: $badge-dot-diameter;
       height: $badge-dot-diameter;
       padding: 0;
-      border-radius: 100%;
+      border-radius: $radius-circle;
     }
   }
 
@@ -64,14 +64,14 @@ $prefixCls: $prefixCls-badge;
   &.shape-round {
     .#{$prefixCls}-sup {
       min-width: $badge-height;
-      border-radius: $badge-height;
+      border-radius: $radius-round;
     }
   }
 
   &.shape-circle {
     .#{$prefixCls}-sup {
       width: $badge-height;
-      border-radius: $badge-height;
+      border-radius: $radius-circle;
       padding: 0;
     }
   }

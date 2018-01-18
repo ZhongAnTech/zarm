@@ -112,7 +112,7 @@ describe('Select', () => {
           },
         ]}
         value={['1', '12']}
-        onChange={onChangeFn}
+        onOk={onChangeFn}
         />
     );
 

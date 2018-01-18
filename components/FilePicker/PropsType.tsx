@@ -6,4 +6,5 @@ export default interface PropsType {
   capture?: any;
   onChange?: (file: Object | Array<Object>) => void;
   onBeforeSelect?: () => boolean;
+  children?: any;
 }

@@ -1,15 +1,6 @@
-export interface BaseSelectProps {
+import { BasePickerProps } from '../Picker/PropsType';
+
+export interface BaseSelectProps extends BasePickerProps {
   placeholder?: string;
-  title?: string;
-  value?: string;
-  defaultValue?: string;
-  disabled?: boolean;
-  dataSource: object[];
-  valueMember?: string;
-  cols?: number;
-  onMaskClick?: () => void;
-  onCancel?: () => void;
-  onChange?: (value?: object) => void;
   displayRender?: (data?: object) => string;
-  itemRender?: (data?: object) => string;
 }

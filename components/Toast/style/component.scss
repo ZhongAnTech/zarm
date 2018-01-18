@@ -20,7 +20,6 @@ $prefixCls: $prefixCls-toast;
   &-container {
     position: relative;
     max-width: $toast-max-width;
-    min-width: $toast-min-width;
     padding: $padding-v-xl $padding-h-xl;
     border-radius: $toast-border-radius;
     background: rgba(0, 0, 0, $opacity-toast);

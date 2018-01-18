@@ -1,12 +1,13 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import PickerView from '../index';
+import Wheel from '../index';
 
-describe('PickerView', () => {
-  it('PickerView render visible', () => {
-    const wrapper = render(
-      <PickerView
+describe('Wheel', () => {
+  it('Wheel render visible', () => {
+    jest.useFakeTimers();
+    const wrapper = mount(
+      <Wheel
         dataSource={[
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
@@ -16,5 +17,8 @@ describe('PickerView', () => {
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ value: '2' });
+    jest.runAllTimers();
+    wrapper.unmount();
   });
 });

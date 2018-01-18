@@ -1,20 +1,31 @@
-import React, { Component } from 'react';
+import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
-import { formatToInit, formatBackToObject, initDataAndValue, updateDataSource, updateValue } from './utils';
 import Popup from '../Popup';
 import PickerView from '../PickerView';
 import { BasePickerProps } from './PropsType';
 
-// 阻止选择器区域的默认事件
-function onContainerClick(e) {
-  e.stopPropagation();
+function getValue(props, defaultValue?: any) {
+  if ('value' in props && props.value.length > 0) {
+    return [].concat(props.value);
+  }
+
+  if ('defaultValue' in props && props.defaultValue.length > 0) {
+    return [].concat(props.defaultValue);
+  }
+
+  return defaultValue;
 }
+
+const stopEventPropagation = (e) => {
+  e.stopPropagation();
+};
+
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: any;
 }
 
-export default class Picker extends Component<PickerProps, any> {
+export default class Picker extends PureComponent<PickerProps, any> {
 
   static Stack: any;
 
@@ -22,73 +33,58 @@ export default class Picker extends Component<PickerProps, any> {
     title: '请选择',
     cancelText: '取消',
     okText: '确定',
-    disabled: false,
     dataSource: [],
-    onClick: () => {},
-    onChange: () => {},
-    onOk: () => {},
-    onCancel: () => {},
-    onMaskClick: () => {},
     prefixCls: 'za-picker',
     valueMember: 'value',
     itemRender: data => data.label,
   };
 
   private tempValue;
+  private tempObjValue;
 
   constructor(props) {
     super(props);
-
-    const initValue = props.value || props.defaultValue || [];
-
-    let { data , value, cascade } = initDataAndValue(props.dataSource, initValue);
-
     this.state = {
       visible: props.visible || false,
-      value,
-      data,
-      cascade,
+      value: getValue(props, []),
+      objValue: [],
     };
 
-    this.tempValue = value;
+    this.tempValue = this.state.value;
+    this.tempObjValue = this.state.objValue;
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
-      const { dataSource } = nextProps;
-      let { data, cascade } = updateDataSource(dataSource);
+    this.setState({
+      visible: nextProps.visible,
+      value: getValue(nextProps, []),
+    });
+  }
 
-      this.setState({
-        data,
-        cascade,
-      });
-    }
+  onInit = (selected) => {
+    const { valueMember, onInit } = this.props;
+    this.setState({
+      firstValue: selected.map(item => item[valueMember!]),
+      firstObjValue: selected,
+    });
+    // this.firstValue = selected.map(item => item[valueMember!]);
+    // this.firstObjValue = selected;
 
-    if ('value' in nextProps && nextProps.value !== this.props.value) {
-      const { dataSource, value } = nextProps;
-      let { _value } = updateValue(dataSource, value);
-
-      this.setState({
-        value: _value,
-      });
-      this.tempValue = _value;
-    }
-
-    if ('visible' in nextProps && this.state.visible !== nextProps.visible) {
-      this.setState({ visible: nextProps.visible });
+    if (typeof onInit === 'function') {
+      onInit(selected);
     }
   }
 
-  onValueChange = (value) => {
-    const { data, cascade } = this.state;
-    const { onChange, valueMember, cols } = this.props;
+  onChange = (selected) => {
+    const { valueMember, onChange } = this.props;
+    const value = selected.map(item => item[valueMember!]);
     this.setState({
       value,
+      objValue: selected,
     });
+
     if (typeof onChange === 'function') {
-      let _value: any;
-      _value = formatBackToObject(data, value, cascade, valueMember, cols);
-      onChange(_value);
+      onChange(selected);
     }
   }
 
@@ -97,29 +93,27 @@ export default class Picker extends Component<PickerProps, any> {
     this.toggle();
     this.setState({
       value: this.tempValue,
+      objValue: this.tempObjValue,
     });
     if (typeof onCancel === 'function') {
       onCancel();
     }
   }
 
-  onOk = (e) => {
-    e.stopPropagation();
-    const { onOk, valueMember, cols } = this.props;
-    const { data, cascade } = this.state;
-    const value = this.getInitValue();
+  onOk = () => {
+    const value = this.state.value.length === 0 ? this.state.firstValue : this.state.value;
+    const objValue = this.state.objValue.length === 0 ? this.state.firstObjValue : this.state.objValue;
 
-    this.toggle();
     this.setState({
       value,
+      objValue,
     });
-    this.tempValue = value;
-    let _value: any;
-    _value = formatBackToObject(data, value, cascade, valueMember, cols);
 
+    const { onOk } = this.props;
     if (typeof onOk === 'function') {
-      onOk(_value);
+      onOk(objValue);
     }
+    this.toggle();
   }
 
   onMaskClick = () => {
@@ -130,58 +124,43 @@ export default class Picker extends Component<PickerProps, any> {
     }
   }
 
-  getInitValue = () => {
-    const data = this.state.data;
-    const { valueMember = Picker.defaultProps.valueMember } = this.props;
-    const { value } = this.state;
-
-    if (!value || !value.length) {
-      if (this.state.cascade) {
-        return formatToInit(data[0], valueMember, this.props.cols);
-      }
-      return data.map(d => (d[0][valueMember]));
-    }
-
-    return value;
-  }
-
   // 切换显示状态
-  toggle = () => {
-    if (this.props.disabled) {
-      return;
-    }
-    this.setState({
-      visible: !this.state.visible,
-    });
+  toggle = (visible = false) => {
+    this.setState({ visible });
   }
 
   render() {
-    const { prefixCls, className, cancelText,
-      okText, title, ...others } = this.props;
-    const { visible, value } = this.state;
-    const classes = classnames(`${prefixCls}-container`, className);
+    const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
+    const { visible, value, firstObjValue } = this.state;
+
+    const cls = classnames(prefixCls, className);
+    const content = children && cloneElement(children, {
+      onClick: () => this.toggle(true),
+    });
+
     return (
-      <div className={`${prefixCls}`}>
-        <div className={classes} onClick={e => onContainerClick(e)}>
-          <Popup
-            visible={visible}
-            onMaskClick={this.onMaskClick}
-          >
-            <div className={`${prefixCls}-wrapper`}>
-              <div className={`${prefixCls}-header`}>
-                <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
-                <div className={`${prefixCls}-title`}>{title}</div>
-                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-              </div>
-              <PickerView
-                prefixCls={prefixCls}
-                onValueChange={v => this.onValueChange(v)}
-                {...others}
-                value={value}
-              />
+      <div className={cls} onClick={stopEventPropagation}>
+        <Popup
+          visible={visible}
+          onMaskClick={this.onMaskClick}
+        >
+          <div className={`${prefixCls}-wrapper`}>
+            <div className={`${prefixCls}-header`}>
+              <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
+              <div className={`${prefixCls}-title`}>{title}</div>
+              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
             </div>
-          </Popup>
-        </div>
+            <PickerView
+              {...others}
+              prefixCls={prefixCls}
+              value={value}
+              firstObjValue={firstObjValue}
+              onInit={this.onInit}
+              onChange={this.onChange}
+            />
+          </div>
+        </Popup>
+        {content}
       </div>
     );
   }

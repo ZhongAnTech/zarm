@@ -8,30 +8,26 @@ exports[`PickerView PickerView render visible 1`] = `
     class="za-picker-mask-bottom"
   >
     <div
-      class="za-picker-column-group"
+      class="za-picker-view"
     >
       <div
-        class="za-picker-column-group-item"
+        class="za-wheel"
       >
         <div
-          class="za-picker-column"
+          class="za-wheel-indicator"
+        />
+        <div
+          class="za-wheel-content"
         >
           <div
-            class="za-picker-column-indicator"
-          />
-          <div
-            class="za-picker-column-content"
+            class="za-wheel-item za-wheel-item-selected"
           >
-            <div
-              class="za-picker-column-item za-picker-column-item-selected"
-            >
-              选项一
-            </div>
-            <div
-              class="za-picker-column-item"
-            >
-              选项二
-            </div>
+            选项一
+          </div>
+          <div
+            class="za-wheel-item"
+          >
+            选项二
           </div>
         </div>
       </div>

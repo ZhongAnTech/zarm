@@ -142,16 +142,12 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   reposition = () => {
-    const { dataSource, valueMember = PickerStack.defaultProps.valueMember,
-      disabled, cols = PickerStack.defaultProps.cols } = this.props;
-
-    if (disabled) { return; }
-
+    const { dataSource, valueMember, cols } = this.props;
     this.state.value.reduce((data, item, index) => {
-      const value = item[valueMember];
-      const valIndex = data.map(dataItem => dataItem[valueMember]).indexOf(value);
+      const value = item[valueMember!];
+      const valIndex = data.map(dataItem => dataItem[valueMember!]).indexOf(value);
 
-      if (index < cols && valIndex !== -1) {
+      if (index < cols! && valIndex !== -1) {
         const target = this.columns[`column${index}`];
         const position = target.scrollTop;
         const viewTopIndex = valIndex - displayItems;
@@ -232,50 +228,37 @@ export default class PickerStack extends Component<PickerStackProps, any> {
   }
 
   renderWrapper() {
-    const { className, title, dataSource,
-            disabled, prefixCls, itemRender = PickerStack.defaultProps.itemRender } = this.props;
+    const { title, dataSource, prefixCls, itemRender } = this.props;
     const { visible, errorMsg, value } = this.state;
 
-    const wrapperCls = classnames(`${prefixCls}-container`, {
-      [`${prefixCls}-hidden`]: !visible,
-    }, className);
-
-    return disabled ?
-          null :
-          <div className={wrapperCls} onClick={stopEventPropagation}>
-            <Popup
-              visible={visible}
-              onMaskClick={this.onMaskClick}
-            >
-              <div className={`${prefixCls}-wrapper`}>
-                <div className={`${prefixCls}-header`}>
-                  <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>取消</div>
-                  <div className={`${prefixCls}-title`}>{title}</div>
-                  <div className={`${prefixCls}-submit`} />
-                </div>
-                <div className={`${prefixCls}-crumbs`}>
-                  <p>选择：{value.map(item => itemRender(item)).join(labelAddon)}</p>
-                  {errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{errorMsg}</p> : null}
-                </div>
-                <div className={`${prefixCls}-stack-group`}>{this.renderGroup(dataSource, value)}</div>
-              </div>
-            </Popup>
-          </div>;
+    return (
+      <Popup
+        visible={visible}
+        onMaskClick={this.onMaskClick}
+      >
+        <div className={`${prefixCls}-wrapper`}>
+          <div className={`${prefixCls}-header`}>
+            <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>取消</div>
+            <div className={`${prefixCls}-title`}>{title}</div>
+            <div className={`${prefixCls}-submit`} />
+          </div>
+          <div className={`${prefixCls}-crumbs`}>
+            <p>选择：{value.map(item => itemRender!(item)).join(labelAddon)}</p>
+            {errorMsg ? <p className={`${prefixCls}-crumbs-error`}>{errorMsg}</p> : null}
+          </div>
+          <div className={`${prefixCls}-stack-group`}>{this.renderGroup(dataSource, value)}</div>
+        </div>
+      </Popup>
+    );
   }
 
   render() {
-    const { value: curVal, placeholder, disabled, prefixCls, displayRender } = this.props;
+    const { prefixCls, valueMember } = this.props;
     const { displayValue } = this.state;
-    let displayLabel = '';
-    if (typeof displayRender === 'function') {
-      displayLabel = displayRender(displayValue);
-    } else {
-      displayLabel = displayValue.map(({ label }) => label).join('');
-    }
+    let displayLabel = displayValue.map(({ label }) => label).join('');
 
     const labelCls = classnames(`${prefixCls}-input`, {
       [`${prefixCls}-placeholder`]: !displayLabel,
-      [`${prefixCls}-disabled`]: disabled,
     });
 
     return (
@@ -284,8 +267,8 @@ export default class PickerStack extends Component<PickerStackProps, any> {
           className={labelCls}
           onClick={this.show}
         >
-          <input type="hidden" value={curVal} />
-          {displayLabel || placeholder}
+          <input type="hidden" value={displayValue.map(data => data[valueMember!]).join(',')} />
+          {displayLabel}
         </div>
         {this.renderWrapper()}
       </div>
