@@ -1,14 +1,11 @@
 @import "../functions/index";
 
-.uploader-page {
-  .za-panel-body {
-    padding: r(15) 0 0 r(15);
-  }
-
-  .uploader {
+.filepicker-page {
+  .filepicker {
     &-wrapper {
       display: flex;
       flex-wrap: wrap;
+      padding: r(15) 0 0 r(15);
     }
 
     &-item,

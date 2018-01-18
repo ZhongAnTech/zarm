@@ -8,4 +8,8 @@ $prefixCls: $prefixCls-picker;
   &-mask-bottom {
     -webkit-mask: -webkit-gradient(linear, 0% 60%, 0% 100%, from(rgba(222, 187, 71, 1)), to(rgba(36, 142, 36, 0)));
   }
+
+  &-view {
+    display: flex;
+  }
 }

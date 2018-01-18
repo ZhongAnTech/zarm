@@ -1,3 +1,3 @@
 import '../../style/';
-import '../../Roller/style';
+import '../../Wheel/style';
 import './index.scss';

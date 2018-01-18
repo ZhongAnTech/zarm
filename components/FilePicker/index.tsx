@@ -9,20 +9,20 @@
  * onChange: () => { file, fileType, fileSize, fileName, thumbnail }。
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
-import React, { PureComponent } from 'react';
+import React, { PureComponent, cloneElement } from 'react';
 import PropsType from './PropsType';
 import classNames from 'classnames';
 import handleFileInfo from './utils/handleFileInfo';
 
-export interface UploaderProps extends PropsType {
+export interface FilePickerProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Uploader extends PureComponent<UploaderProps, any> {
+export default class FilePicker extends PureComponent<FilePickerProps, any> {
 
   static defaultProps = {
-    prefixCls: 'za-uploader',
+    prefixCls: 'za-filepicker',
     disabled: false,
     multiple: false,
     onBeforeSelect() { return true; },
@@ -52,8 +52,8 @@ export default class Uploader extends PureComponent<UploaderProps, any> {
     }
   }
 
-  handleClick = () => {
-    this.file.click();
+  handleClick = (e) => {
+    this.file.click(e);
   }
 
   handleChange = (e) => {
@@ -87,6 +87,10 @@ export default class Uploader extends PureComponent<UploaderProps, any> {
       disabled,
     });
 
+    const content = cloneElement(children, {
+      onClick: this.handleClick,
+    });
+
     return (
       <div className={cls}>
         <input
@@ -99,8 +103,7 @@ export default class Uploader extends PureComponent<UploaderProps, any> {
           onClick={this.handleDefaultInput}
           onChange={this.handleChange}
         />
-        <span className={`${prefixCls}-trigger`} onClick={this.handleClick} />
-        {children}
+        {content}
       </div>
     );
   }

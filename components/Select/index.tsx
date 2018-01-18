@@ -1,135 +1,149 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseSelectProps } from './PropsType';
-import { arrayTreeFilter, initDataAndValue, updateDataSource, updateValue } from '../Picker/utils';
 import Picker from '../Picker';
+
+function getValue(props, defaultValue?: any) {
+  if (props.value) {
+    return [].concat(props.value);
+  }
+
+  if (props.defaultValue) {
+    return [].concat(props.defaultValue);
+  }
+
+  return defaultValue;
+}
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Select extends Component<SelectProps, any> {
+export default class Select extends PureComponent<SelectProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-select',
-    onMaskClick: () => {},
-    itemRender: data => data.label,
     valueMember: 'value',
+    placeholder: '请选择',
+    itemRender: data => data.label,
+    displayRender: selected => selected.map(item => item.label),
+    onClick: () => {},
   };
+
+  private tempValue;
+  private tempObjValue;
 
   constructor(props) {
     super(props);
-
-    const initValue = props.value || props.defaultValue || [];
-    let { data , value, cascade } = initDataAndValue(props.dataSource, initValue);
-
     this.state = {
       visible: props.visible || false,
-      value,
-      data,
-      cascade,
+      value: getValue(props, []),
+      objValue: [],
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
-      const { dataSource } = nextProps;
-      let { data, cascade } = updateDataSource(dataSource);
+    this.setState({
+      value: getValue(nextProps, []),
+    });
 
+    if ('visible' in nextProps && nextProps.visible !== this.state.visible) {
       this.setState({
-        data,
-        cascade,
-      });
-    }
-
-    if ('value' in nextProps && nextProps.value !== this.props.value) {
-      const { dataSource, value } = nextProps;
-      let { _value } = updateValue(dataSource, value);
-
-      this.setState({
-        value: _value,
+        visible: nextProps.visible,
       });
     }
   }
 
-  onFocus = () => {
+  toggle = () => {
     if (this.props.disabled) {
       return;
     }
+    this.setState({ visible: !this.state.visible });
+  }
+
+  onInit = (selected) => {
+    const { valueMember } = this.props;
+    const firstValue = selected.map(item => item[valueMember!]);
+
+    this.tempValue = this.state.value.length ? firstValue : [] ;
+    this.tempObjValue = this.state.objValue.length ? selected : [];
+
     this.setState({
-      visible: true,
+      firstValue,
+      firstObjValue: selected,
     });
   }
 
+  handleClick = () => {
+    this.toggle();
+  }
+
   onChange = (selected) => {
-    const { onChange } = this.props;
+    const { valueMember, onChange } = this.props;
+    const value = selected.map(item => item[valueMember!]);
+    this.setState({
+      value,
+      // objValue: selected,
+    });
+
     if (typeof onChange === 'function') {
       onChange(selected);
     }
-    this.setState({ visible: false });
   }
 
+  onOk = (selected) => {
+    this.toggle();
+    const { onOk, valueMember } = this.props;
+    this.setState({
+      value: selected.map(item => item[valueMember!]),
+      objValue: selected,
+    });
+    this.tempValue = selected.map(item => item[valueMember!]);
+    this.tempObjValue = selected;
+    if (typeof onOk === 'function') {
+      onOk(selected);
+    }
+  }
+
+  // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    this.setState({ visible: false });
+    this.toggle();
+    this.setState({
+      value: this.tempValue,
+      objValue: this.tempObjValue,
+    });
     if (typeof onCancel === 'function') {
       onCancel();
     }
   }
 
-  _displayRender = (data) => {
-    const { displayRender, itemRender = Picker.defaultProps.itemRender } = this.props;
-
-    if (typeof displayRender === 'function') {
-      return displayRender(data);
-    }
-    return data.map((v) => itemRender(v)).join('');
-  }
-
   render() {
-    const { prefixCls, placeholder, className, disabled, title,
-      valueMember = Select.defaultProps.valueMember, onChange, ...others } = this.props;
-    const { visible, value, data } = this.state;
-    const cls = classnames(`${prefixCls}`, className, {});
+    const { prefixCls, placeholder, className, disabled, displayRender, ...others } = this.props;
+    const { visible, value, objValue, firstObjValue } = this.state;
+    const cls = classnames(`${prefixCls}`, className);
+
     const inputCls = classnames(`${prefixCls}-input`, {
-      [`${prefixCls}-placeholder`] : !value.join(''),
+      [`${prefixCls}-placeholder`]: value.length === 0,
       [`${prefixCls}-disabled`]: !!disabled,
     });
 
-    const display = () => {
-      if (this.state.cascade) {
-        const cascadeChildren = arrayTreeFilter(this.props.dataSource, (item, level) => {
-          return item[valueMember] === value[level];
-        });
-        return this._displayRender(cascadeChildren);
-      }
-
-      const plainChildren = data.map((d, index) => (
-        d.filter(obj => value[index] === obj[valueMember])[0]
-      )).filter(t => !!t);
-
-      return this._displayRender(plainChildren);
-    };
-
     return (
-      <div className={cls} onClick={this.onFocus}>
-      {<div className={inputCls}>{display() || placeholder}</div>}
-        <div>
-        <input
-          type="hidden"
-          value={this.state.value}
-        />
-        <Picker
-          visible={visible}
-          title={title}
-          onOk={this.onChange}
-          onCancel={this.onCancel}
-          value={value}
-          valueMember={valueMember}
-          {...others}
-        />
+      <div className={cls} onClick={this.handleClick}>
+        <div className={inputCls}>
+          {value.length > 0 && displayRender!((objValue.length && objValue) || firstObjValue || []) || placeholder}
         </div>
+        <Picker
+          {...others}
+          visible={visible}
+          value={value}
+          firstObjValue={firstObjValue}
+          onInit={this.onInit}
+          onOk={this.onOk}
+          onChange={this.onChange}
+          onCancel={this.onCancel}
+        />
       </div>
     );
   }
