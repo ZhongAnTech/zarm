@@ -31,10 +31,8 @@ class App extends Component {
               {/* 表单组件 */}
               <Route path="/checkbox" component={AsyncComponent(() => import('../pages/CheckboxPage'))} />
               <Route path="/input" component={AsyncComponent(() => import('../pages/InputPage'))} />
-              <Route path="/select" component={AsyncComponent(() => import('../pages/SelectPage'))} />
               <Route path="/picker" component={AsyncComponent(() => import('../pages/PickerPage'))} />
               <Route path="/datePicker" component={AsyncComponent(() => import('../pages/DatePickerPage'))} />
-              <Route path="/dateSelect" component={AsyncComponent(() => import('../pages/DateSelectPage'))} />
               <Route path="/radio" component={AsyncComponent(() => import('../pages/RadioPage'))} />
               <Route path="/slider" component={AsyncComponent(() => import('../pages/SliderPage'))} />
               <Route path="/stepper" component={AsyncComponent(() => import('../pages/StepperPage'))} />

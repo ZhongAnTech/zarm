@@ -1,11 +1,11 @@
-# 选择器 Picker
+# 选择器 Picker & Select
 
 [demo页面](https://zhongantecheng.github.io/zarm/#/picker)
 
 ### 引入
 
 ```js
-import { Picker } from 'zarm';
+import { Picker, PickerView, Select } from 'zarm';
 ```
 
 ### 代码演示
@@ -186,21 +186,21 @@ import { Picker } from 'zarm';
   }}
   />
 ```
+
 ### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-picker | | 类名前缀 |
 | className | string | | | 追加类名 |
-| dataSource | array | [ ] | | 数据源 |
-| value | array &#124; string |  | | 值 |
-| defaultValue | array &#124; string |  | | 初始是否选中 |
+| dataSource | object[] | [ ] | | 数据源 |
+| value | string &#124; string[] &#124; number[] |  | | 值 |
+| defaultValue | string &#124; string[] &#124; number[] |  | | 初始值 |
 | valueMember | string | 'value' | | 值字段对应的key 
 | itemRender | func | <code>(data?: object) => data.label</code> | | 单个选项的展示 |
 | disabled | boolean | false | | 是否禁用 |
 | cols | number | | | 级联选择器的级数 |
 | onChange | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 值变化时触发的回调函数 |
-| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 
 #### 仅 Picker & Select 支持的属性
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
@@ -211,6 +211,7 @@ import { Picker } from 'zarm';
 | cancelText | string | '取消' | | 取消栏文字 |
 | onOk | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 点击确定时触发的回调函数 |
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
+| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 
 #### 仅 Select 支持的属性
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
