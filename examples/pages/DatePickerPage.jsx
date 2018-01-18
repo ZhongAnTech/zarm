@@ -22,6 +22,10 @@ class Page extends Component {
         visible: false,
         value: '2017-07-04',
       },
+      select: {
+        visible: false,
+        value: '',
+      },
     };
   }
 
@@ -44,7 +48,7 @@ class Page extends Component {
   }
 
   render() {
-    const { date, time, limitDate } = this.state;
+    const { date, time, limitDate, select } = this.state;
     return (
       <Container className="picker-page">
         <Header title="日期选择器 DatePicker" />
@@ -83,6 +87,28 @@ class Page extends Component {
                     <Button size="sm">选择</Button>
                   </DatePicker>
                 }>选择日期(自定义)</Cell>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header title="选择器表单控件 Select" />
+            <Panel.Body>
+              <Cell title="日期选择">
+                <DateSelect
+                  title="选择日期"
+                  placeholder="请选择日期"
+                  mode="date"
+                  value={select.value}
+                  onChange={(value) => {
+                    this.setState({
+                      select: {
+                        visible: false,
+                        value,
+                      },
+                    });
+                  }}
+                  />
+              </Cell>
             </Panel.Body>
           </Panel>
 

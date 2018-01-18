@@ -3465,12 +3465,12 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                             16日
                           </div>
                           <div
-                            class="za-wheel-item za-wheel-item-selected"
+                            class="za-wheel-item"
                           >
                             17日
                           </div>
                           <div
-                            class="za-wheel-item"
+                            class="za-wheel-item za-wheel-item-selected"
                           >
                             18日
                           </div>

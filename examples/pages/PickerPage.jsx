@@ -102,6 +102,7 @@ class Page extends Component {
     setTimeout(() => {
       const cascade = this.state.cascade;
       cascade.dataSource = District;
+      cascade.value = ['350000', '350400', '350429'];
       this.setState({ cascade });
 
       const select = this.state.select;
@@ -176,7 +177,7 @@ class Page extends Component {
                   value={select.value}
                   dataSource={select.dataSource}
                   onOk={(selected) => {
-                    console.log('Picker onOk: ', selected);
+                    console.log('Select onOk: ', selected);
                     select.value = selected.map(item => item.value);
                     this.setState({ select });
                   }}

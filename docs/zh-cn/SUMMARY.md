@@ -13,7 +13,6 @@
   * [文本框 Input](components/Input.md)
   * [选择器 Picker & Select](components/Picker.md)
   * [日期选择器 DatePicker & DateSelect](components/DatePicker.md)
-  * [日期选择器 DateSelect](components/DateSelect.md)
   * [单选框 Radio](components/Radio.md)
   * [滑动输入条 Slider](components/Slider.md)
   * [步进器 Stepper](components/Stepper.md)
