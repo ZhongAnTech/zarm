@@ -30,15 +30,15 @@ class Page extends Component {
   }
 
   componentDidMount() {
-    // setTimeout(() => {
-    //   const { year } = this.state;
-    //   this.setState({
-    //     year: {
-    //       ...year,
-    //       value: '2019',
-    //     },
-    //   });
-    // }, 500);
+    setTimeout(() => {
+      const { select } = this.state;
+      this.setState({
+        select: {
+          ...select,
+          value: '2019-09-13',
+        },
+      });
+    }, 0);
   }
 
   toggle = (key) => {
@@ -51,10 +51,10 @@ class Page extends Component {
     const { date, time, limitDate, select } = this.state;
     return (
       <Container className="picker-page">
-        <Header title="日期选择器 DatePicker" />
+        <Header title="日期选择器 DatePicker & DateSelect" />
         <main>
           <Panel>
-            <Panel.Header title="日期选择器" />
+            <Panel.Header title="日期选择器 DatePicker" />
             <Panel.Body>
               <Cell
                 description={
@@ -91,7 +91,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header title="选择器表单控件 Select" />
+            <Panel.Header title="选择器表单控件 DateSelect" />
             <Panel.Body>
               <Cell title="日期选择">
                 <DateSelect
@@ -113,7 +113,7 @@ class Page extends Component {
           </Panel>
 
           <Panel>
-            <Panel.Header title="平铺日期选择器" />
+            <Panel.Header title="平铺日期选择器 DatePickerView" />
             <Panel.Body>
               <DatePickerView
                 mode="datetime"

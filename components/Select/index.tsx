@@ -31,6 +31,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     onClick: () => {},
   };
 
+  private tempValue;
   private tempObjValue;
 
   constructor(props) {
@@ -61,11 +62,33 @@ export default class Select extends PureComponent<SelectProps, any> {
   }
 
   onInit = (selected) => {
-    this.tempObjValue = selected;
+    const { valueMember } = this.props;
+    const firstValue = selected.map(item => item[valueMember!]);
+
+    this.tempValue = this.state.value.length ? firstValue : [] ;
+    this.tempObjValue = this.state.objValue && this.state.objValue.length ? selected : [];
+
+    this.setState({
+      firstValue,
+      firstObjValue: selected,
+    });
   }
 
   handleClick = () => {
     this.toggle();
+  }
+
+  onChange = (selected) => {
+    const { valueMember, onChange } = this.props;
+    const value = selected.map(item => item[valueMember!]);
+    this.setState({
+      value,
+      objValue: selected,
+    });
+
+    if (typeof onChange === 'function') {
+      onChange(selected);
+    }
   }
 
   onOk = (selected) => {
@@ -75,6 +98,8 @@ export default class Select extends PureComponent<SelectProps, any> {
       value: selected.map(item => item[valueMember!]),
       objValue: selected,
     });
+    this.tempValue = selected.map(item => item[valueMember!]);
+    this.tempObjValue = selected;
     if (typeof onOk === 'function') {
       onOk(selected);
     }
@@ -84,6 +109,10 @@ export default class Select extends PureComponent<SelectProps, any> {
   onCancel = () => {
     const { onCancel } = this.props;
     this.toggle();
+    this.setState({
+      value: this.tempValue,
+      objValue: this.tempObjValue,
+    });
     if (typeof onCancel === 'function') {
       onCancel();
     }
@@ -91,8 +120,7 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   render() {
     const { prefixCls, placeholder, className, disabled, displayRender, ...others } = this.props;
-    const { visible, value, objValue } = this.state;
-
+    const { visible, value, objValue, firstObjValue } = this.state;
     const cls = classnames(`${prefixCls}`, className);
 
     const inputCls = classnames(`${prefixCls}-input`, {
@@ -103,14 +131,16 @@ export default class Select extends PureComponent<SelectProps, any> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={inputCls}>
-          {value.length > 0 && displayRender!(objValue || this.tempObjValue || []) || placeholder}
+          {value.length > 0 && displayRender!(objValue || firstObjValue || []) || placeholder}
         </div>
         <Picker
           {...others}
           visible={visible}
           value={value}
+          firstObjValue={firstObjValue}
           onInit={this.onInit}
           onOk={this.onOk}
+          onChange={this.onChange}
           onCancel={this.onCancel}
         />
       </div>

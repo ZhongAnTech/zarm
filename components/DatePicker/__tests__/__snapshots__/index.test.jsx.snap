@@ -18,7 +18,6 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
   mode="date"
   okText="确定"
   onCancel={[Function]}
-  onClick={[Function]}
   onInit={[Function]}
   onMaskClick={[Function]}
   placeholder="请选择"

@@ -8,7 +8,6 @@ exports[`DateSelect DateSelect date 1`] = `
   mode="date"
   okText="确定"
   onCancel={[Function]}
-  onClick={[Function]}
   placeholder="请选择日期"
   prefixCls="za-select"
   title="选择日期"
@@ -41,7 +40,6 @@ exports[`DateSelect DateSelect date 1`] = `
       mode="date"
       okText="确定"
       onCancel={[Function]}
-      onClick={[Function]}
       onInit={[Function]}
       onOk={[Function]}
       placeholder="请选择"
@@ -994,7 +992,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
   mode="datetime"
   okText="确定"
   onCancel={[Function]}
-  onClick={[Function]}
   placeholder="请选择时间"
   prefixCls="za-select"
   title="选择时间"
@@ -1028,7 +1025,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
       mode="datetime"
       okText="确定"
       onCancel={[Function]}
-      onClick={[Function]}
       onInit={[Function]}
       onOk={[Function]}
       placeholder="请选择"
@@ -2580,7 +2576,6 @@ exports[`DateSelect DateSelect time 1`] = `
   mode="time"
   okText="确定"
   onCancel={[Function]}
-  onClick={[Function]}
   placeholder="请选择时间"
   prefixCls="za-select"
   title="选择时间"
@@ -2612,7 +2607,6 @@ exports[`DateSelect DateSelect time 1`] = `
       mode="time"
       okText="确定"
       onCancel={[Function]}
-      onClick={[Function]}
       onInit={[Function]}
       onOk={[Function]}
       placeholder="请选择"
@@ -3470,12 +3464,12 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                             17日
                           </div>
                           <div
-                            class="za-wheel-item za-wheel-item-selected"
+                            class="za-wheel-item"
                           >
                             18日
                           </div>
                           <div
-                            class="za-wheel-item"
+                            class="za-wheel-item za-wheel-item-selected"
                           >
                             19日
                           </div>
@@ -3566,7 +3560,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   mode="date"
   okText="确定"
   onCancel={[Function]}
-  onClick={[Function]}
   placeholder="请选择日期"
   prefixCls="za-select"
   title="选择日期"
@@ -3600,7 +3593,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       mode="date"
       okText="确定"
       onCancel={[Function]}
-      onClick={[Function]}
       onInit={[Function]}
       onOk={[Function]}
       placeholder="请选择"

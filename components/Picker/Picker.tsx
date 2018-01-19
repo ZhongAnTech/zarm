@@ -41,8 +41,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   private tempValue;
   private tempObjValue;
-  private firstValue;
-  private firstObjValue;
 
   constructor(props) {
     super(props);
@@ -65,8 +63,12 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   onInit = (selected) => {
     const { valueMember, onInit } = this.props;
-    this.firstValue = selected.map(item => item[valueMember!]);
-    this.firstObjValue = selected;
+    this.setState({
+      firstValue: selected.map(item => item[valueMember!]),
+      firstObjValue: selected,
+    });
+    // this.firstValue = selected.map(item => item[valueMember!]);
+    // this.firstObjValue = selected;
 
     if (typeof onInit === 'function') {
       onInit(selected);
@@ -76,7 +78,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
   onChange = (selected) => {
     const { valueMember, onChange } = this.props;
     const value = selected.map(item => item[valueMember!]);
-
     this.setState({
       value,
       objValue: selected,
@@ -100,8 +101,8 @@ export default class Picker extends PureComponent<PickerProps, any> {
   }
 
   onOk = () => {
-    const value = this.state.value.length === 0 ? this.firstValue : this.state.value;
-    const objValue = this.state.objValue.length === 0 ? this.firstObjValue : this.state.objValue;
+    const value = this.state.value.length === 0 ? this.state.firstValue : this.state.value;
+    const objValue = this.state.objValue.length === 0 ? this.state.firstObjValue : this.state.objValue;
 
     this.setState({
       value,
@@ -130,7 +131,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   render() {
     const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
-    const { visible, value } = this.state;
+    const { visible, value, firstObjValue } = this.state;
 
     const cls = classnames(prefixCls, className);
     const content = children && cloneElement(children, {
@@ -153,6 +154,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
               {...others}
               prefixCls={prefixCls}
               value={value}
+              firstObjValue={firstObjValue}
               onInit={this.onInit}
               onChange={this.onChange}
             />

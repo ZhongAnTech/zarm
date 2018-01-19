@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { BaseDateSelectProps } from './PropsType';
 import formatFn from '../DatePickerView/utils';
 import DatePicker from '../DatePicker';
 
@@ -16,7 +16,7 @@ function isExtendDate(date) {
   return new Date(date.toString().replace(/-/g, '/'));
 }
 
-export interface DateSelectProps extends PropsType {
+export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
   className?: any;
 }
@@ -35,7 +35,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     minuteStep: 1,
     prefixCls: 'za-select',
     valueMember: 'value',
-    onClick: () => {},
     onCancel: () => {},
   };
 
@@ -68,7 +67,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   handleClick = () => {
-    this.props.onClick();
     this.toggle();
   }
 

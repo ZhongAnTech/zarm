@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropsType from './PropsType';
+import { BaseDatePickerViewProps } from './PropsType';
 import defaultLocale from './locale/zh_CN';
 import classnames from 'classnames';
 import Wheel from '../Wheel';
@@ -48,7 +48,7 @@ function isExtendDate(date) {
   return new Date(date.toString().replace(/-/g, '/'));
 }
 
-export interface DatePickerViewProps extends PropsType {
+export interface DatePickerViewProps extends BaseDatePickerViewProps {
   prefixCls?: string;
   className?: any;
 }

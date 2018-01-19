@@ -48,7 +48,7 @@ export default function formatFn(instance, value) {
   const { format } = instance.props;
   const type = typeof format;
 
-  if (type === 'string') {
+  if (format && type === 'string') {
     return formatDate(value, format) || '';
   }
 

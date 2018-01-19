@@ -102,13 +102,14 @@ class Page extends Component {
     setTimeout(() => {
       const cascade = this.state.cascade;
       cascade.dataSource = District;
-      cascade.value = ['350000', '350400', '350429'];
+      cascade.value = ['310000', '310100', '310101'];
       this.setState({ cascade });
 
       const select = this.state.select;
-      select.value = ['2', '22'];
+      select.dataSource = District;
+      select.value = ['310000', '310100', '310101'];
       this.setState({ select });
-    }, 200);
+    }, 0);
   }
 
   toggle = (key) => {
@@ -125,7 +126,7 @@ class Page extends Component {
         <Header title="选择器 Picker & Select" />
         <main>
           <Panel>
-            <Panel.Header title="基本" />
+            <Panel.Header title="选择器 Picker" />
             <Panel.Body>
               <Cell
                 description={
