@@ -64,7 +64,7 @@
     "@types/enzyme-to-json": "^1.5.0",
     "@types/jest": "^21.1.5",
     "@types/react": "^16.0.19",
-    "@types/react-dom": "^16.0.2",
+    "@types/react-dom": "15.5.1",
     "@types/react-native": "^0.51.9",
     "autoprefixer": "^6.7.7",
     "awesome-typescript-loader": "^3.2.3",
