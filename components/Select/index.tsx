@@ -54,19 +54,12 @@ export default class Select extends PureComponent<SelectProps, any> {
     }
   }
 
-  toggle = () => {
-    if (this.props.disabled) {
-      return;
-    }
-    this.setState({ visible: !this.state.visible });
-  }
-
   onInit = (selected) => {
     const { valueMember } = this.props;
     const firstValue = selected.map(item => item[valueMember!]);
 
     this.tempValue = this.state.value.length ? firstValue : [] ;
-    this.tempObjValue = this.state.objValue && this.state.objValue.length ? selected : [];
+    this.tempObjValue = this.state.value.length ? selected : [];
 
     this.setState({
       firstValue,
@@ -78,14 +71,18 @@ export default class Select extends PureComponent<SelectProps, any> {
     this.toggle();
   }
 
-  onChange = (selected) => {
-    const { valueMember, onChange } = this.props;
-    const value = selected.map(item => item[valueMember!]);
-    this.setState({
-      value,
-      objValue: selected,
-    });
+  toggle() {
+    if (this.props.disabled) {
+      return;
+    }
 
+    this.setState({
+      visible: !this.state.visible,
+    });
+  }
+
+  onChange = (selected) => {
+    const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(selected);
     }

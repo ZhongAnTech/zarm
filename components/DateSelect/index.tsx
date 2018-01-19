@@ -81,10 +81,17 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     });
   }
 
-  onOk = (newValue) => {
+  onChange = (selected) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
-      onChange(newValue);
+      onChange(selected);
+    }
+  }
+
+  onOk = (selected) => {
+    const { onOk } = this.props;
+    if (typeof onOk === 'function') {
+      onOk(selected);
     }
     this.setState({ visible: false });
   }
@@ -113,9 +120,9 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
         <input type="hidden" value={formatFn(this, this.state.value)} />
         {this.state.value ? formatFn(this, this.state.value) : placeholder}
         <DatePicker
+          {...others}
           visible={visible}
           value={value}
-          {...others}
           onOk={this.onOk}
           onCancel={this.onCancel}
         />

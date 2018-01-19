@@ -99,7 +99,8 @@ class Page extends Component {
                   placeholder="请选择日期"
                   mode="date"
                   value={select.value}
-                  onChange={(value) => {
+                  onOk={(value) => {
+                    console.log('DateSelect onOk: ', value);
                     this.setState({
                       select: {
                         visible: false,

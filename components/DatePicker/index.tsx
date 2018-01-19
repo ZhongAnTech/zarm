@@ -167,18 +167,14 @@ export default class DatePicker extends Component<DatePickerProps, any> {
                 <div className={`${prefixCls}-title`}>{title}</div>
                 <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
               </div>
-              <div className={`${prefixCls}-mask-top`}>
-                <div className={`${prefixCls}-mask-bottom`}>
-                  <DatePickerView
-                    prefixCls={prefixCls}
-                    className={className}
-                    {...others}
-                    value={value}
-                    onInit={this.onInit}
-                    onChange={this.onValueChange}
-                  />
-                </div>
-              </div>
+              <DatePickerView
+                prefixCls={prefixCls}
+                className={className}
+                {...others}
+                value={value}
+                onInit={this.onInit}
+                onChange={this.onValueChange}
+              />
             </div>
           </Popup>
           {content}
