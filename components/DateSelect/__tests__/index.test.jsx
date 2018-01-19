@@ -106,7 +106,7 @@ describe('DateSelect', () => {
         placeholder="请选择时间"
         mode="datetime"
         defaultValue="2017-11-12 20:00"
-        onChange={onOkFn}
+        onOk={onOkFn}
         onCancel={onCancelFn}
         onMaskClick={onCancelFn}
         />
