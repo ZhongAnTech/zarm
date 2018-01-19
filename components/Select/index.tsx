@@ -39,7 +39,6 @@ export default class Select extends PureComponent<SelectProps, any> {
     this.state = {
       visible: props.visible || false,
       value: getValue(props, []),
-      objValue: [],
     };
   }
 
@@ -67,7 +66,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     const firstValue = selected.map(item => item[valueMember!]);
 
     this.tempValue = this.state.value.length ? firstValue : [] ;
-    this.tempObjValue = this.state.objValue.length ? selected : [];
+    this.tempObjValue = this.state.objValue && this.state.objValue.length ? selected : [];
 
     this.setState({
       firstValue,
@@ -84,7 +83,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     const value = selected.map(item => item[valueMember!]);
     this.setState({
       value,
-      // objValue: selected,
+      objValue: selected,
     });
 
     if (typeof onChange === 'function') {
@@ -132,7 +131,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={inputCls}>
-          {value.length > 0 && displayRender!((objValue.length && objValue) || firstObjValue || []) || placeholder}
+          {value.length > 0 && displayRender!(objValue || firstObjValue || []) || placeholder}
         </div>
         <Picker
           {...others}
