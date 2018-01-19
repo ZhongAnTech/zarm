@@ -84,9 +84,22 @@ exports[`Select Cascader Select 1`] = `
           },
         ]
       }
+      firstObjValue={
+        Array [
+          Object {
+            "label": "选项一",
+            "value": "1",
+          },
+          Object {
+            "label": "选项一",
+            "value": "11",
+          },
+        ]
+      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
+      onChange={[Function]}
       onClick={[Function]}
       onInit={[Function]}
       onOk={[Function]}
@@ -182,6 +195,18 @@ exports[`Select Cascader Select 1`] = `
                     ]
                   }
                   disabled={false}
+                  firstObjValue={
+                    Array [
+                      Object {
+                        "label": "选项一",
+                        "value": "1",
+                      },
+                      Object {
+                        "label": "选项一",
+                        "value": "11",
+                      },
+                    ]
+                  }
                   itemRender={[Function]}
                   onCancel={[Function]}
                   onChange={[Function]}
@@ -299,7 +324,7 @@ exports[`Select Cascader Select 1`] = `
               </div>
             </div>
             <Mask
-              className=""
+              className="fade-leave"
               onClose={[Function]}
               prefixCls="za-mask"
               style={
