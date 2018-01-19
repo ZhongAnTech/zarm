@@ -99,7 +99,6 @@ export default class Wheel extends Component<WheelProps, any> {
     }
 
     const { onChange } = this.props;
-    console.log(value);
     if (typeof onChange === 'function') {
       onChange(value);
     }
