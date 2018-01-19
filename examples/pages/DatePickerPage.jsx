@@ -30,15 +30,15 @@ class Page extends Component {
   }
 
   componentDidMount() {
-    // setTimeout(() => {
-    //   const { year } = this.state;
-    //   this.setState({
-    //     year: {
-    //       ...year,
-    //       value: '2019',
-    //     },
-    //   });
-    // }, 500);
+    setTimeout(() => {
+      const { select } = this.state;
+      this.setState({
+        select: {
+          ...select,
+          value: '2019-09-13',
+        },
+      });
+    }, 500);
   }
 
   toggle = (key) => {

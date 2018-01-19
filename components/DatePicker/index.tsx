@@ -1,6 +1,6 @@
 import React, { Component, cloneElement } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import { BaseDatePickerProps } from './PropsType';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
@@ -22,7 +22,7 @@ function stopClick(e) {
   e.stopPropagation();
 }
 
-export interface DatePickerProps extends PropsType {
+export interface DatePickerProps extends BaseDatePickerProps {
   prefixCls?: string;
   className?: any;
 }
@@ -42,7 +42,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     minuteStep: 1,
     prefixCls: 'za-picker',
     valueMember: 'value',
-    onClick: () => {},
     onCancel: () => {},
     onInit: () => {},
   };
@@ -141,7 +140,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, placeholder, children, disabled,
+    const { prefixCls, className, title, okText, cancelText, children, disabled,
        ...others } = this.props;
     const { visible, value } = this.state;
 
