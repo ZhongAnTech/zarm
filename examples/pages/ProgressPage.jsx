@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, Cell, Stepper, Progress, Picker } from 'zarm';
+import { Panel, Cell, Stepper, Progress, Select } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -57,7 +57,7 @@ class Page extends Component {
               </Cell>
 
               <Cell title="主题">
-                <Picker
+                <Select
                   value={this.state.theme}
                   dataSource={[
                     { value: 'primary', label: 'primary' },
@@ -67,7 +67,7 @@ class Page extends Component {
                   ]}
                   onOk={(selected) => {
                     this.setState({
-                      theme: selected.value,
+                      theme: selected.map(item => item.value),
                     });
                   }}
                   />

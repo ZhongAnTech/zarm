@@ -1,20 +1,12 @@
-export interface BasePickerProps {
-  placeholder?: string;
+import { BasePickerViewProps } from '../PickerView/PropsType';
+
+export interface BasePickerProps extends BasePickerViewProps {
+  visible?: boolean;
   title?: string;
-  cancelText?: string;
   okText?: string;
-  dataSource: object[];
-  value?: string | string[];
-  defaultValue?: string | string[];
-  valueMember: string;
-  disabled?: boolean;
-  cols?: number;
-  prefixCls?: string;
-  onOk: (value?: object) => void;
-  onClick: () => void;
+  cancelText?: string;
+  onOk?: (value?: object) => void;
   onCancel?: () => void;
   onMaskClick?: () => void;
-  displayRender?: (data?: object) => string;
-  itemRender: (data?: object) => string;
-  onChange?: (value?: object) => void;
+  children?: any;
 }

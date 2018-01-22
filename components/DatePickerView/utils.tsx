@@ -48,14 +48,14 @@ export default function formatFn(instance, value) {
   const { format } = instance.props;
   const type = typeof format;
 
-  if (type === 'string') {
-    return formatDate(value, format);
+  if (format && type === 'string') {
+    return formatDate(value, format) || '';
   }
 
   if (type === 'function') {
-    return format(value);
+    return format(value) || '';
   }
 
-  return formatDate(value, getFormatter(instance.props.mode));
+  return formatDate(value, getFormatter(instance.props.mode)) || '';
   // return value.format(getFormatter(instance.props.mode));
 }

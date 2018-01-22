@@ -1,111 +1,90 @@
-import React, { Component } from 'react';
+import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
-import { arrayTreeFilter, formatToInit, formatBackToObject, isArray, hasChildrenObject } from './utils';
-import Column from '../Column';
 import Popup from '../Popup';
+import PickerView from '../PickerView';
 import { BasePickerProps } from './PropsType';
 
-// 阻止选择器区域的默认事件
-function onContainerClick(e) {
-  e.stopPropagation();
+function getValue(props, defaultValue?: any) {
+  if ('value' in props && props.value.length > 0) {
+    return [].concat(props.value);
+  }
+
+  if ('defaultValue' in props && props.defaultValue.length > 0) {
+    return [].concat(props.defaultValue);
+  }
+
+  return defaultValue;
 }
+
+const stopEventPropagation = (e) => {
+  e.stopPropagation();
+};
+
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: any;
 }
 
-export default class Picker extends Component<PickerProps, any> {
+export default class Picker extends PureComponent<PickerProps, any> {
 
   static Stack: any;
 
   static defaultProps = {
-    placeholder: '请选择',
     title: '请选择',
     cancelText: '取消',
     okText: '确定',
-    disabled: false,
     dataSource: [],
-    onClick: () => {},
-    onChange: () => {},
-    onOk: () => {},
-    onCancel: () => {},
-    onMaskClick: () => {},
     prefixCls: 'za-picker',
     valueMember: 'value',
     itemRender: data => data.label,
   };
 
   private tempValue;
+  private tempObjValue;
 
   constructor(props) {
     super(props);
-
-    const initValue = props.value || props.defaultValue || [];
-    const { dataSource } = props;
-    let _data: any;
-    let _value = null;
-
-    // 针对单列数据源，转换为[[{}]]
-    if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-      _data = [props.dataSource];
-      _value = isArray(initValue) ? initValue : [initValue];
-    } else {
-      _data = dataSource;
-      _value = initValue;
-    }
-
     this.state = {
-      visible: false,
-      value: _value,
-      data: _data,
-      cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
+      visible: props.visible || false,
+      value: getValue(props, []),
+      objValue: [],
     };
 
-    this.tempValue = _value;
+    this.tempValue = this.state.value;
+    this.tempObjValue = this.state.objValue;
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('dataSource' in nextProps && nextProps.dataSource !== this.props.dataSource) {
-      const { dataSource } = nextProps;
-      let _data: any;
+    this.setState({
+      visible: nextProps.visible,
+      value: getValue(nextProps, []),
+    });
+  }
 
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _data = [nextProps.dataSource];
-      } else {
-        _data = nextProps.dataSource;
-      }
+  onInit = (selected) => {
+    const { valueMember, onInit } = this.props;
+    this.setState({
+      firstValue: selected.map(item => item[valueMember!]),
+      firstObjValue: selected,
+    });
+    // this.firstValue = selected.map(item => item[valueMember!]);
+    // this.firstObjValue = selected;
 
-      this.setState({
-        data: _data,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
-      });
-    }
-
-    if ('value' in nextProps && nextProps.value !== this.props.value) {
-      let _value = null;
-      const { dataSource } = nextProps;
-
-      if (dataSource.length && !isArray(dataSource[0]) && !hasChildrenObject(dataSource[0])) {
-        _value = isArray(nextProps.value) ? nextProps.value : [nextProps.value];
-      } else {
-        _value = nextProps.value;
-      }
-
-      this.setState({
-        value: _value,
-        cascade: dataSource.length && !isArray(dataSource[0]) && hasChildrenObject(dataSource[0]),
-      });
-      this.tempValue = _value;
+    if (typeof onInit === 'function') {
+      onInit(selected);
     }
   }
 
-  onValueChange = (value) => {
-    const { onChange } = this.props;
+  onChange = (selected) => {
+    const { valueMember, onChange } = this.props;
+    const value = selected.map(item => item[valueMember!]);
     this.setState({
       value,
+      objValue: selected,
     });
+
     if (typeof onChange === 'function') {
-      onChange(value);
+      onChange(selected);
     }
   }
 
@@ -114,6 +93,7 @@ export default class Picker extends Component<PickerProps, any> {
     this.toggle();
     this.setState({
       value: this.tempValue,
+      objValue: this.tempObjValue,
     });
     if (typeof onCancel === 'function') {
       onCancel();
@@ -121,20 +101,19 @@ export default class Picker extends Component<PickerProps, any> {
   }
 
   onOk = () => {
-    const { onOk, valueMember, cols } = this.props;
-    const { data, cascade } = this.state;
-    const value = this.getInitValue();
+    const value = this.state.value.length === 0 ? this.state.firstValue : this.state.value;
+    const objValue = this.state.objValue.length === 0 ? this.state.firstObjValue : this.state.objValue;
+
     this.setState({
       value,
+      objValue,
     });
-    this.tempValue = value;
-    this.toggle();
-    let _value: any;
-    _value = formatBackToObject(data, value, cascade, valueMember, cols);
 
+    const { onOk } = this.props;
     if (typeof onOk === 'function') {
-      onOk(_value);
+      onOk(objValue);
     }
+    this.toggle();
   }
 
   onMaskClick = () => {
@@ -145,147 +124,43 @@ export default class Picker extends Component<PickerProps, any> {
     }
   }
 
-  getInitValue = () => {
-    const data = this.state.data;
-    const { valueMember } = this.props;
-
-    const { value } = this.state;
-
-    if (!value || !value.length) {
-      if (this.state.cascade) {
-        return formatToInit(data[0], valueMember, this.props.cols);
-      }
-      return data.map(d => (d[0][valueMember]));
-    }
-
-    return value;
-  }
-
   // 切换显示状态
-  toggle = () => {
-    if (this.props.disabled) {
-      return;
-    }
-    this.setState({
-      visible: !this.state.visible,
-    });
-  }
-
-  handleClick = () => {
-    this.props.onClick();
-    if (!this.props.disabled) {
-      this.toggle();
-    }
-  }
-
-  close = (key) => {
-    this.setState({
-      [`${key}`]: false,
-    });
-  }
-
-  _displayRender = (data) => {
-    const { displayRender, itemRender } = this.props;
-
-    if (typeof displayRender === 'function') {
-      return displayRender(data);
-    }
-    return data.map((v) => {
-      return itemRender(v);
-    }).join('');
+  toggle = (visible = false) => {
+    this.setState({ visible });
   }
 
   render() {
-    const { prefixCls, disabled, className, cancelText,
-      okText, title, placeholder, valueMember, itemRender } = this.props;
-    const { data, value } = this.state;
+    const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
+    const { visible, value, firstObjValue } = this.state;
 
-    let PickerCol: JSX.Element;
-
-    const classes = classnames(`${prefixCls}-container`, className);
-
-    const inputCls = classnames(`${prefixCls}-input`, {
-      [`${prefixCls}-placeholder`]: !value.join(''),
-      [`${prefixCls}-disabled`]: !!disabled,
+    const cls = classnames(prefixCls, className);
+    const content = children && cloneElement(children, {
+      onClick: () => this.toggle(true),
     });
-
-    const cols = data.map((d) => {
-      return { props: { children: d } };
-    });
-
-    if (this.state.cascade) {
-      PickerCol = (
-        <Column.Cascader
-          prefixCls={prefixCls}
-          data={data}
-          value={this.state.value}
-          cols={this.props.cols}
-          itemRender={itemRender}
-          valueMember={valueMember}
-          onChange={v => this.onValueChange(v)}
-        />
-      );
-    } else {
-      PickerCol = (
-        <Column.Group
-          className={className}
-          prefixCls={prefixCls}
-          itemRender={itemRender}
-          valueMember={valueMember}
-          selectedValue={value}
-          onValueChange={v => this.onValueChange(v)}
-        >
-          {cols}
-        </Column.Group>
-      );
-    }
-
-    const display = () => {
-      if (this.state.cascade) {
-        if (value.length) {
-          const treeChildren = arrayTreeFilter(this.props.dataSource, (item, level) => {
-            return item[valueMember] === value[level];
-          });
-
-          return this._displayRender(treeChildren);
-        }
-      }
-
-      const treeChildren2 = data.map((d, index) => {
-        if (value[index]) {
-          return d.filter(obj => value[index] === obj[valueMember])[0];
-        }
-        return undefined;
-      }).filter(t => !!t);
-
-      return this._displayRender(treeChildren2);
-    };
 
     return (
-      <div className={`${prefixCls}`} onClick={() => this.handleClick()}>
-        <div className={inputCls}>
-          <input type="hidden" value={this.state.value} />
-          {display() || placeholder}
-        </div>
-        <div className={classes} onClick={e => onContainerClick(e)}>
-          <Popup
-            visible={this.state.visible}
-            onMaskClick={this.onMaskClick}
-          >
-            <div className={`${prefixCls}-wrapper`}>
-              <div className={`${prefixCls}-header`}>
-                <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
-                <div className={`${prefixCls}-title`}>{title}</div>
-                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-              </div>
-              <div className={`${prefixCls}-mask-top`}>
-                <div className={`${prefixCls}-mask-bottom`}>
-                  {PickerCol}
-                </div>
-              </div>
+      <div className={cls} onClick={stopEventPropagation}>
+        <Popup
+          visible={visible}
+          onMaskClick={this.onMaskClick}
+        >
+          <div className={`${prefixCls}-wrapper`}>
+            <div className={`${prefixCls}-header`}>
+              <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
+              <div className={`${prefixCls}-title`}>{title}</div>
+              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
             </div>
-          </Popup>
-        </div>
+            <PickerView
+              {...others}
+              prefixCls={prefixCls}
+              value={value}
+              firstObjValue={firstObjValue}
+              onInit={this.onInit}
+              onChange={this.onChange}
+            />
+          </div>
+        </Popup>
+        {content}
       </div>
     );
   }
