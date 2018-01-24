@@ -49,7 +49,7 @@
     "test": "jest --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "docs": "cd docs && gitbook install && gitbook serve",
-    "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS.txt"
+    "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS"
   },
   "dependencies": {
     "classnames": "^2.2.5",
