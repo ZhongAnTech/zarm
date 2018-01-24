@@ -3431,7 +3431,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         18日
                       </div>
                       <div
-                        class="za-wheel-item za-wheel-item-selected"
+                        class="za-wheel-item"
                       >
                         19日
                       </div>
@@ -3451,7 +3451,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         22日
                       </div>
                       <div
-                        class="za-wheel-item"
+                        class="za-wheel-item za-wheel-item-selected"
                       >
                         23日
                       </div>
