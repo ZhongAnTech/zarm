@@ -1,3 +1,1 @@
-global.requestAnimationFrame = (callback) => {
-  setTimeout(callback);
-};
+global.requestAnimationFrame = jest.fn();
