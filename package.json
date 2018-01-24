@@ -143,18 +143,19 @@
       "<rootDir>/components"
     ],
     "setupFiles": [
-      "./scripts/jest/environment.js"
+      "<rootDir>/scripts/jest/environment.js"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/scripts/jest/setup.js",
     "testRegex": "/__tests__/.*(\\.jsx|[^d]\\.ts)$",
     "collectCoverageFrom": [
       "components/**/*.{ts,tsx}",
+      "!components/*/*.native.{ts,tsx}",
       "!components/*/PropsType.{ts,tsx}",
-      "!components/**/style/*"
+      "!components/**/style/*.{ts,tsx}"
     ],
     "transform": {
-      "^.+\\.jsx?$": "<rootDir>/scripts/jest/preprocessor.js",
-      "^.+\\.tsx?$": "<rootDir>/scripts/jest/ts-preprocessor.js"
+      "^.+\\.jsx?$": "<rootDir>/scripts/jest/preprocessor",
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$"
