@@ -1,6 +1,5 @@
 export default interface PropsType {
   visible?: boolean;
-  shape?: 'radius';
   direction?: 'top' | 'right' | 'bottom' | 'left';
   autoClose?: boolean;
   stayTime?: number;
