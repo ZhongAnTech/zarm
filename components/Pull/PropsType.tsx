@@ -16,16 +16,17 @@ export enum LOAD_STATE {
   complete, // 加载完成（无新数据）
 }
 
+interface Action {
+  state?: REFRESH_STATE | LOAD_STATE;
+  startDistance?: number;
+  distance?: number;
+  render?: (state: REFRESH_STATE | LOAD_STATE, percent?: number) => any;
+  handler?: () => void;
+}
+
 export interface PropsType {
-  refreshing?: REFRESH_STATE;
-  refreshInitDistance: number;
-  refreshDistance: number;
-  refreshRender?: (refreshState: REFRESH_STATE, percent: number) => any;
-  onRefresh?: () => void;
-  loading?: LOAD_STATE;
-  loadDistance: number;
-  onLoad?: () => void;
-  loadRender?: (loadState: LOAD_STATE) => any;
+  refresh: Action;
+  load: Action;
   animationDuration?: number;
   stayTime?: number;
 }
