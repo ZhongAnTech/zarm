@@ -41,7 +41,11 @@ describe('Pull', () => {
         <div>3</div>
       </Pull>
     );
-    wrapper.setProps({ refreshing: REFRESH_STATE.loading });
+    wrapper.setProps({
+      refresh: {
+        state: REFRESH_STATE.loading,
+      },
+    });
   });
 
   it('loading', () => {
@@ -52,7 +56,11 @@ describe('Pull', () => {
         <div>3</div>
       </Pull>
     );
-    wrapper.setProps({ loading: LOAD_STATE.loading });
+    wrapper.setProps({
+      load: {
+        state: REFRESH_STATE.loading,
+      },
+    });
   });
 
   it('custom', () => {
@@ -61,67 +69,71 @@ describe('Pull', () => {
     const onLoad = jest.fn();
     const wrapper = shallow(
       <Pull
-        refreshInitDistance={0}
-        refreshDistance={80}
-        refreshRender={(actionState, percent) => {
-          switch (actionState) {
-            case REFRESH_STATE.pull:
-              return (
-                <div>下拉刷新 {percent}</div>
-              );
+        refresh={{
+          startDistance: 0,
+          distance: 80,
+          render: (actionState, percent) => {
+            switch (actionState) {
+              case REFRESH_STATE.pull:
+                return (
+                  <div>下拉刷新 {percent}</div>
+                );
 
-            case REFRESH_STATE.drop:
-              return (
-                <div>释放刷新</div>
-              );
+              case REFRESH_STATE.drop:
+                return (
+                  <div>释放刷新</div>
+                );
 
-            case REFRESH_STATE.loading:
-              return (
-                <div>加载中</div>
-              );
+              case REFRESH_STATE.loading:
+                return (
+                  <div>加载中</div>
+                );
 
-            case REFRESH_STATE.success:
-              return (
-                <div>加载成功</div>
-              );
+              case REFRESH_STATE.success:
+                return (
+                  <div>加载成功</div>
+                );
 
-            case REFRESH_STATE.failure:
-              return (
-                <div>加载失败</div>
-              );
-          }
+              case REFRESH_STATE.failure:
+                return (
+                  <div>加载失败</div>
+                );
+            }
+          },
+          handler: onRefresh,
         }}
-        onRefresh={onRefresh}
-        loadRender={(loadState) => {
-          switch (loadState) {
-            case LOAD_STATE.loading:
-              return <div>加载中</div>;
+        load={{
+          render: (loadState) => {
+            switch (loadState) {
+              case LOAD_STATE.loading:
+                return <div>加载中</div>;
 
-            case LOAD_STATE.failure:
-              return <div>加载失败</div>;
+              case LOAD_STATE.failure:
+                return <div>加载失败</div>;
 
-            case LOAD_STATE.complete:
-              return <div>我是有底线的</div>;
-          }
-        }}
-        onLoad={onLoad}>
+              case LOAD_STATE.complete:
+                return <div>我是有底线的</div>;
+            }
+          },
+          handler: onLoad,
+        }}>
         <div>1</div>
         <div>2</div>
         <div>3</div>
       </Pull>
     );
-    wrapper.setProps({ refreshing: REFRESH_STATE.pull });
-    wrapper.setProps({ refreshing: REFRESH_STATE.drop });
-    wrapper.setProps({ refreshing: REFRESH_STATE.loading });
-    wrapper.setProps({ refreshing: REFRESH_STATE.success });
-    wrapper.setProps({ refreshing: REFRESH_STATE.failure });
+    wrapper.setProps({ refresh: { state: REFRESH_STATE.pull } });
+    wrapper.setProps({ refresh: { state: REFRESH_STATE.drop } });
+    wrapper.setProps({ refresh: { state: REFRESH_STATE.loading } });
+    wrapper.setProps({ refresh: { state: REFRESH_STATE.success } });
+    wrapper.setProps({ refresh: { state: REFRESH_STATE.failure } });
     jest.runAllTimers();
-    wrapper.setProps({ loading: LOAD_STATE.loading });
-    wrapper.setProps({ loading: LOAD_STATE.success });
-    wrapper.setProps({ loading: LOAD_STATE.failure });
+    wrapper.setProps({ load: { state: LOAD_STATE.loading } });
+    wrapper.setProps({ load: { state: LOAD_STATE.success } });
+    wrapper.setProps({ load: { state: LOAD_STATE.failure } });
     jest.runAllTimers();
-    wrapper.setProps({ loading: LOAD_STATE.complete });
-    wrapper.setProps({ loading: LOAD_STATE.abort });
+    wrapper.setProps({ load: { state: LOAD_STATE.complete } });
+    wrapper.setProps({ load: { state: LOAD_STATE.abort } });
     wrapper.unmount();
   });
 });
