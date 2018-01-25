@@ -5,7 +5,7 @@ import Cell from '../Cell';
 import Button from '../Button';
 import Icon from '../Icon';
 
-function getChecked(props, defaultChecked) {
+const getChecked = (props, defaultChecked) => {
   if ('checked' in props && props.checked) {
     return props.checked;
   }
@@ -13,7 +13,7 @@ function getChecked(props, defaultChecked) {
     return props.defaultChecked;
   }
   return defaultChecked;
-}
+};
 
 export interface RadioProps extends BaseRadioProps {
   prefixCls?: string;

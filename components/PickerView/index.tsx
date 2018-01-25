@@ -4,7 +4,7 @@ import { BasePickerViewProps } from './PropsType';
 import Wheel from '../Wheel';
 import { isArray } from '../utils/validate';
 
-function getValue(props, defaultValue?: any) {
+const getValue = (props, defaultValue?: any) => {
   if ('value' in props && props.value.length > 0) {
     return [].concat(props.value);
   }
@@ -14,7 +14,7 @@ function getValue(props, defaultValue?: any) {
   }
 
   return defaultValue;
-}
+};
 
 export interface PickerViewProps extends BasePickerViewProps {
   prefixCls?: string;

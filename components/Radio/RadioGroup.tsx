@@ -2,7 +2,7 @@ import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import { BaseRadioGroupProps } from './PropsType';
 
-function getChildChecked(children) {
+const getChildChecked = (children) => {
   let checkedValue = null;
   React.Children.forEach(children, (element: any) => {
     if (element.props && element.props.checked) {
@@ -10,9 +10,9 @@ function getChildChecked(children) {
     }
   });
   return checkedValue;
-}
+};
 
-function getValue(props, defaultValue) {
+const getValue = (props, defaultValue) => {
   if ('value' in props) {
     return props.value;
   }
@@ -23,7 +23,7 @@ function getValue(props, defaultValue) {
     return getChildChecked(props.children);
   }
   return defaultValue;
-}
+};
 
 export interface RadioGroupProps extends BaseRadioGroupProps {
   prefixCls?: string;

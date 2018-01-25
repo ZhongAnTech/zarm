@@ -4,9 +4,9 @@ import { BaseInputTextareaProps } from './PropsType';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
-function countSymbols(text = '') {
+const countSymbols = (text = '') => {
   return text.replace(regexAstralSymbols, '_').length;
-}
+};
 
 export interface InputTextareaProps extends BaseInputTextareaProps {
   prefixCls?: string;

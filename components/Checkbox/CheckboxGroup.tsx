@@ -2,7 +2,7 @@ import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxGroupProps } from './PropsType';
 
-function getChildChecked(children) {
+const getChildChecked = (children) => {
   const checkedValue: any[] = [];
   React.Children.map(children, (element: any) => {
     if (element.props && element.props.checked) {
@@ -10,9 +10,9 @@ function getChildChecked(children) {
     }
   });
   return checkedValue;
-}
+};
 
-function getValue(props, defaultValue) {
+const getValue = (props, defaultValue) => {
   if ('value' in props) {
     return props.value;
   }
@@ -23,7 +23,7 @@ function getValue(props, defaultValue) {
     return getChildChecked(props.children);
   }
   return defaultValue;
-}
+};
 
 export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
   prefixCls?: string;
