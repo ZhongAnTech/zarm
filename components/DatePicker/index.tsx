@@ -20,7 +20,7 @@ const isExtendDate = (date) => {
 // 阻止选择器区域的默认事件
 const stopPropagation = (e) => {
   e.stopPropagation();
-  e.nativeEvent.stopImmediatePropagation();
+  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface DatePickerProps extends BaseDatePickerProps {

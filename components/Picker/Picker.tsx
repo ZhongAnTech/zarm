@@ -18,7 +18,7 @@ const getValue = (props, defaultValue?: any) => {
 
 const stopPropagation = (e) => {
   e.stopPropagation();
-  e.nativeEvent.stopImmediatePropagation();
+  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface PickerProps extends BasePickerProps {

@@ -6,7 +6,7 @@ import Mask from '../Mask';
 
 const stopPropagation = (e) => {
   e.stopPropagation();
-  e.nativeEvent.stopImmediatePropagation();
+  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface ModalProps extends BaseModalProps {

@@ -9,7 +9,7 @@ const IDCARD_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', '0', 'clo
 
 const stopPropagation = (e) => {
   e.stopPropagation();
-  e.nativeEvent.stopImmediatePropagation();
+  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface KeyboardProps extends PropsType {
