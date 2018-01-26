@@ -12,7 +12,9 @@
   - 调整主题样式变量名及引入方式，具体参考README使用帮助。
   - 删除`info`主题色。
   - 优化`Button`组件active状态的交互
-  - 调整`Picker`组件的使用方式。
+  - 调整`Picker`组件的使用方式，拆分成`PickerView`、`Picker`、`Select`三种场景的实现。
+  - 调整`DatePicker`组件的使用方式，拆分成`DatePickerView`、`DatePicker`、`DateSelect`三种场景的实现。
+  - 调整`Pull`组件的API。详见[文档](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/components/Pull.md)
   - 调整`ActionSheet`组件的默认样式。
   - 文件选择器`Uploader`组件更名为`FilePicker`。
 
