@@ -28,8 +28,6 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     styles: stepperStyles,
   };
 
-  // private textInput;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -157,13 +155,14 @@ export default class Stepper extends PureComponent<StepperProps, any> {
 
     return (
       <TextInput
-        // ref={textInput => this.textInput = textInput }
         style={inputStyle}
         keyboardType="numeric"
         value={this.state.value.toString()}
         onChangeText={value => this.onInputChange(value)}
-        onBlur={() => this.onInputBlur(this.state.value)}
+        onEndEditing={() => this.onInputBlur(this.state.value)}
         editable={!disabled}
+        underlineColorAndroid="transparent"
+        returnKeyType="done"
       />
     );
   }
