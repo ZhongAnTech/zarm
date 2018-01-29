@@ -17,6 +17,7 @@ $prefixCls: $prefixCls-alert;
       font-size: $alert-button-font-size;
       @include button-base();
       @include onepx(top);
+      color: $theme-primary;
 
       &:active {
         background-color: $background-active;
