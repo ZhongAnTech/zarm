@@ -24,12 +24,12 @@ import { Input } from 'zarm';
 
 #### 高度自适应
 ```jsx
-<Input autosize type="textarea" rows={3} placeholder="写点啥..." />
+<Input autoHeight type="textarea" rows={3} placeholder="写点啥..." />
 ```
 
 #### 显示输入字数
 ```jsx
-<Input autosize showLength type="textarea" rows={4} maxLength={200} placeholder="摘要" />
+<Input autoHeight showLength type="textarea" rows={4} maxLength={200} placeholder="摘要" />
 ```
 
 
@@ -44,7 +44,7 @@ import { Input } from 'zarm';
 | defaultValue | string |  | | 初始值 |
 | disabled | boolean | false | | 是否禁用 |
 | rows | number | | | 多行文本时的显示行数 |
-| autosize | boolean | false | | 是否高度自适应 |
+| autoHeight | boolean | false | | 是否高度自适应 |
 | maxLength | number | | | 输入字数上限 |
 | showLength | boolean | false | | 是否显示输入字数 |
 | onChange | <code>(value: string) => void</code> | noop | \(value: string\) | 值变化时触发的回调函数 |

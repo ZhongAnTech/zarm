@@ -10,11 +10,10 @@ export default class Input extends PureComponent<InputProps, {}> {
 
   static defaultProps = {
     type: 'text',
-    autosize: false,
   };
 
   render() {
-    const { type, autosize, ...others } = this.props;
+    const { type, ...others } = this.props;
 
     switch (type) {
       case 'idcard':
@@ -23,10 +22,10 @@ export default class Input extends PureComponent<InputProps, {}> {
         return <InputNumber {...others} type={type} />;
 
       case 'textarea':
-        return <InputTextarea {...others} autosize={autosize} />;
+        return <InputTextarea {...others} />;
 
       default:
-        return <InputText {...others} />;
+        return <InputText {...others} type={type} />;
     }
   }
 }

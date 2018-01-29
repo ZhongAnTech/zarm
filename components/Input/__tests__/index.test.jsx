@@ -21,10 +21,10 @@ describe('Input.Textarea', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('autosize', () => {
+  it('autoHeight', () => {
     jest.useFakeTimers();
     const props = {
-      autosize: true,
+      autoHeight: true,
       type: 'textarea',
       rows: 4,
       value: 'foo',

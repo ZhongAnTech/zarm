@@ -1,35 +1,37 @@
 export interface BaseInputProps {
   type?: string;
-  autosize?: boolean;
-}
-
-export interface BaseInputTextProps {
-  value?: string;
-  defaultValue?: string;
-  disabled?: boolean;
-  maxLength?: number;
-  onChange?: (value?: string) => void;
-}
-
-export interface BaseInputNumberProps {
-  type?: 'number' | 'price' | 'idcard';
-  value?: string | number;
-  defaultValue?: string | number;
   placeholder?: string;
   disabled?: boolean;
   maxLength?: number;
-  onChange?: (value: any) => void;
+  focused?: boolean;
+  autoFocus?: boolean;
+  style?: React.CSSProperties;
 }
 
-export interface BaseInputTextareaProps {
-  type?: 'number' | 'price' | 'idcard';
+export interface BaseInputTextProps extends BaseInputProps {
   value?: string;
   defaultValue?: string;
-  disabled?: boolean;
+  onChange?: (value?: string) => void;
+  onFocus?: (value?: string) => void;
+  onBlur?: (value?: string) => void;
+}
+
+export interface BaseInputNumberProps extends BaseInputProps {
+  type?: 'number' | 'price' | 'idcard';
+  value?: string | number;
+  defaultValue?: string | number;
+  onChange?: (value?: string | number) => void;
+  onFocus?: (value?: string | number) => void;
+  onBlur?: (value?: string | number) => void;
+}
+
+export interface BaseInputTextareaProps extends BaseInputProps {
+  value?: string;
+  defaultValue?: string;
   rows?: number;
-  autosize?: boolean;
-  maxLength?: number;
+  autoHeight?: boolean;
   showLength?: boolean;
-  style?: React.CSSProperties;
-  onChange?: (e?: any) => void;
+  onChange?: (value?: string) => void;
+  onFocus?: (value?: string) => void;
+  onBlur?: (value?: string) => void;
 }
