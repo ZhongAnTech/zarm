@@ -44,7 +44,7 @@ export default class InputText extends PureComponent<InputTextProps, any> {
     }
   }
 
-  onInputFocus = (e) => {
+  onFocus = (e) => {
     if (!('focused' in this.props)) {
       this.setState({
         focused: true,
@@ -57,7 +57,7 @@ export default class InputText extends PureComponent<InputTextProps, any> {
     }
   }
 
-  onInputBlur = (e) => {
+  onBlur = (e) => {
     if (!('focused' in this.props)) {
       this.setState({
         focused: false,
@@ -69,7 +69,7 @@ export default class InputText extends PureComponent<InputTextProps, any> {
     }
   }
 
-  onInputChange = (e) => {
+  onChange = (e) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(e.target.value);
@@ -89,9 +89,9 @@ export default class InputText extends PureComponent<InputTextProps, any> {
           ref={(ele) => { this.input = ele; }}
           type="text"
           disabled={disabled}
-          onChange={this.onInputChange}
-          onFocus={this.onInputFocus}
-          onBlur={this.onInputBlur}
+          onChange={this.onChange}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
         />
       </div>
     );
