@@ -30,36 +30,28 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentDidMount() {
-    Events.on(document.body, 'click', this.onHide);
+    Events.on(document.body, 'click', this.onMaskClick);
+    if (this.props.autoFocus || this.state.focused) {
+      this.onFocus();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('focused' in nextProps) {
-      if (nextProps.focused) {
-        this.open();
-      } else {
-        this.close();
-      }
+    if (
+      'focused' in nextProps && nextProps.focused ||
+      'autoFocus' in nextProps && nextProps.autoFocus
+    ) {
+      this.onFocus();
+    } else {
+      this.onBlur();
     }
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'click', this.onHide);
+    Events.off(document.body, 'click', this.onMaskClick);
   }
 
-  closest = (el, selector) => {
-    const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-    while (el) {
-      if (matchesSelector.call(el, selector)) {
-        return el;
-      } else {
-        el = el.parentElement;
-      }
-    }
-    return null;
-  }
-
-  onHide = (e) => {
+  onMaskClick = (e) => {
     if (!this.container || !this.state.visible) {
       return;
     }
@@ -74,13 +66,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     })(e.target);
 
     if (!pNode) {
-      this.close();
+      this.onBlur();
     }
   }
 
   onKeyClick = (key) => {
     if (['close', 'ok'].indexOf(key) > -1) {
-      this.close();
+      this.onBlur();
       return;
     }
     const value = this.state.value;
@@ -106,7 +98,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     this.content.scrollLeft = this.content.scrollWidth;
   }
 
-  open = () => {
+  onFocus = () => {
     if (this.state.visible) {
       return;
     }
@@ -119,7 +111,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
   }
 
-  close = () => {
+  onBlur = () => {
     if (!this.state.visible) {
       return;
     }
@@ -142,7 +134,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     });
 
     return (
-      <div className={cls} ref={(ele) => { this.container = ele; }} onClick={this.open}>
+      <div className={cls} ref={ele => { this.container = ele; }} onClick={this.onFocus}>
         {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
         <div className={`${prefixCls}-content`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input
