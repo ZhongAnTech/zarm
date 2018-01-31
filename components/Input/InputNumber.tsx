@@ -43,13 +43,12 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      'focused' in nextProps && nextProps.focused ||
-      'autoFocus' in nextProps && nextProps.autoFocus
-    ) {
-      this.onFocus();
-    } else {
-      this.onBlur();
+    if ('focused' in nextProps || 'autoFocus' in nextProps) {
+      if (nextProps.focused || nextProps.autoFocus) {
+        this.onFocus();
+      } else {
+        this.onBlur();
+      }
     }
   }
 
