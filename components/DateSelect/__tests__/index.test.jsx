@@ -23,6 +23,7 @@ describe('DateSelect', () => {
     const wrapper = render(
       <DateSelect
         mode="date"
+        defaultValue="2017-11-03"
         visible
         />
       );
@@ -34,7 +35,7 @@ describe('DateSelect', () => {
       <DateSelect
         title="选择年份"
         placeholder="请选择年份"
-        mode="month"
+        defaultValue="2017"
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();

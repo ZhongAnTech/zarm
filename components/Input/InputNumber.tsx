@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import { BaseInputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../KeyboardPicker';
+import Portal from '../Portal';
 
 declare const document;
+
+const IS_REACT_16 = !!(ReactDOM as any).createPortal;
+let customKeyboard: any = null;
 
 export interface InputNumberProps extends BaseInputNumberProps {
   prefixCls?: string;
@@ -30,6 +35,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentDidMount() {
+    this.renderCustomKeyboard();
     Events.on(document.body, 'click', this.onMaskClick);
     if (this.props.autoFocus || this.state.focused) {
       this.onFocus();
@@ -49,6 +55,41 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   componentWillUnmount() {
     Events.off(document.body, 'click', this.onMaskClick);
+  }
+
+  getComponent() {
+    const { type } = this.props;
+    const { visible } = this.state;
+    return (
+      <KeyboardPicker
+        visible={visible}
+        type={type}
+        onKeyClick={this.onKeyClick}
+      />
+    );
+  }
+
+  getContainer() {
+    let container = document.querySelector(`#${this.props.prefixCls}-container`);
+    if (!container) {
+      container = document.createElement('div');
+      container.setAttribute('id', `${this.props.prefixCls}-container`);
+      document.body.appendChild(container);
+    }
+    // this.container = container;
+    return container;
+  }
+
+  renderCustomKeyboard() {
+    if (IS_REACT_16 || customKeyboard) {
+      return;
+    }
+    customKeyboard = ReactDOM.unstable_renderSubtreeIntoContainer(
+      this,
+      this.getComponent(),
+      this.getContainer(),
+    );
+
   }
 
   onMaskClick = (e) => {
@@ -124,8 +165,22 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
   }
 
+  renderPortal() {
+    if (!IS_REACT_16) {
+      return null;
+    }
+
+    const portal = (
+      <Portal getContainer={() => this.getContainer()}>
+        {this.getComponent()}
+      </Portal>
+    );
+    // console.log(portal);
+    return portal;
+  }
+
   render() {
-    const { prefixCls, className, type, disabled, placeholder } = this.props;
+    const { prefixCls, className, disabled, placeholder } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
@@ -142,11 +197,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           value={value}
           disabled={disabled}
         />
-        <KeyboardPicker
-          visible={visible}
-          type={type}
-          onKeyClick={this.onKeyClick}
-        />
+        {this.renderPortal()}
       </div>
     );
   }

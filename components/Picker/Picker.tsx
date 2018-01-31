@@ -2,6 +2,7 @@ import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import Popup from '../Popup';
 import PickerView from '../PickerView';
+import RenderInBody from '../RenderInBody';
 import { BasePickerProps } from './PropsType';
 
 const getValue = (props, defaultValue?: any) => {
@@ -140,29 +141,31 @@ export default class Picker extends PureComponent<PickerProps, any> {
     });
 
     return (
-      <div className={cls} onClick={stopPropagation}>
-        <Popup
-          visible={visible}
-          onMaskClick={this.onMaskClick}
-        >
-          <div className={`${prefixCls}-wrapper`}>
-            <div className={`${prefixCls}-header`}>
-              <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
-              <div className={`${prefixCls}-title`}>{title}</div>
-              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
+      <RenderInBody>
+        <div className={cls} onClick={stopPropagation}>
+          <Popup
+            visible={visible}
+            onMaskClick={this.onMaskClick}
+          >
+            <div className={`${prefixCls}-wrapper`}>
+              <div className={`${prefixCls}-header`}>
+                <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
+                <div className={`${prefixCls}-title`}>{title}</div>
+                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
+              </div>
+              <PickerView
+                {...others}
+                prefixCls={prefixCls}
+                value={value}
+                firstObjValue={firstObjValue}
+                onInit={this.onInit}
+                onChange={this.onChange}
+              />
             </div>
-            <PickerView
-              {...others}
-              prefixCls={prefixCls}
-              value={value}
-              firstObjValue={firstObjValue}
-              onInit={this.onInit}
-              onChange={this.onChange}
-            />
-          </div>
-        </Popup>
-        {content}
-      </div>
+          </Popup>
+          {content}
+        </div>
+      </RenderInBody>
     );
   }
 }
