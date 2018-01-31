@@ -16,7 +16,7 @@ export enum LOAD_STATE {
   complete, // 加载完成（无新数据）
 }
 
-interface Action {
+export interface PullAction {
   state?: REFRESH_STATE | LOAD_STATE;
   startDistance?: number;
   distance?: number;
@@ -25,8 +25,8 @@ interface Action {
 }
 
 export interface PropsType {
-  refresh: Action;
-  load: Action;
+  refresh: PullAction;
+  load: PullAction;
   animationDuration?: number;
   stayTime?: number;
 }
