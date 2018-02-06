@@ -12,31 +12,31 @@ const YEAR = 'year';
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
 // 获取当月天数
-function getDaysInMonth(date) {
+const getDaysInMonth = (date) => {
   return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-}
+};
 
 // 补齐格式
-function pad(n) {
+const pad = (n) => {
   return n < 10 ? `0${n}` : `${n}`;
-}
+};
 
-function cloneDate(date) {
+const cloneDate = (date) => {
   return new Date(+date);
-}
+};
 
 // 设置月份
-function setMonth(date, month) {
+const setMonth = (date, month) => {
   date.setDate(Math.min(date.getDate(), getDaysInMonth(new Date(date.getFullYear(), month))));
   date.setMonth(month);
-}
+};
 
 // 转成Date格式
-function getGregorianCalendar(arg) {
+const getGregorianCalendar = (arg) => {
   return new Date(...arg);
-}
+};
 
-function isExtendDate(date) {
+const isExtendDate = (date) => {
   if (date instanceof Date) {
     return date;
   }
@@ -46,7 +46,7 @@ function isExtendDate(date) {
   }
 
   return new Date(date.toString().replace(/-/g, '/'));
-}
+};
 
 export interface DatePickerViewProps extends BaseDatePickerViewProps {
   prefixCls?: string;

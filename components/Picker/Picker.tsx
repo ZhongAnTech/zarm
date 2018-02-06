@@ -4,7 +4,7 @@ import Popup from '../Popup';
 import PickerView from '../PickerView';
 import { BasePickerProps } from './PropsType';
 
-function getValue(props, defaultValue?: any) {
+const getValue = (props, defaultValue?: any) => {
   if ('value' in props && props.value.length > 0) {
     return [].concat(props.value);
   }
@@ -14,10 +14,11 @@ function getValue(props, defaultValue?: any) {
   }
 
   return defaultValue;
-}
+};
 
-const stopEventPropagation = (e) => {
+const stopPropagation = (e) => {
   e.stopPropagation();
+  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface PickerProps extends BasePickerProps {
@@ -139,7 +140,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     });
 
     return (
-      <div className={cls} onClick={stopEventPropagation}>
+      <div className={cls} onClick={stopPropagation}>
         <Popup
           visible={visible}
           onMaskClick={this.onMaskClick}

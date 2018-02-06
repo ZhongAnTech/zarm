@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import TabPanel from './TabPanel';
 import Swipe from '../Swipe';
 
-function getSelectIndex(children) {
+const getSelectIndex = (children) => {
   let selectIndex;
   React.Children.forEach(children, (item: any, index) => {
     if (item.props && item.props.selected) {
@@ -12,7 +12,7 @@ function getSelectIndex(children) {
     }
   });
   return selectIndex;
-}
+};
 
 export interface TabProps extends PropsType {
   prefixCls?: string;

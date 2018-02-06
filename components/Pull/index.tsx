@@ -16,11 +16,15 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-pull',
-    refreshing: REFRESH_STATE.normal,
-    refreshInitDistance: 30,
-    refreshDistance: 50,
-    loading: LOAD_STATE.normal,
-    loadDistance: 0,
+    refresh: {
+      state: REFRESH_STATE.normal,
+      startDistance: 30,
+      distance: 50,
+    },
+    load: {
+      state: LOAD_STATE.normal,
+      distance: 0,
+    },
     animationDuration: 400,
     stayTime: 1000,
   };
@@ -33,8 +37,8 @@ export default class Pull extends PureComponent<PullProps, any> {
     this.state = {
       offsetY: 0,
       animationDuration: 0,
-      refreshState: props.refreshing,
-      loadState: props.loading,
+      refreshState: props.refresh.state,
+      loadState: props.load.state,
     };
   }
 
@@ -45,12 +49,12 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('refreshing' in nextProps && nextProps.refreshing !== this.props.refreshing) {
-      this.doRefreshAction(nextProps.refreshing);
+    if ('refresh' in nextProps && nextProps.refresh.state !== this.props.refresh.state) {
+      this.doRefreshAction(nextProps.refresh.state);
     }
 
-    if ('loading' in nextProps && nextProps.loading !== this.props.loading) {
-      this.doLoadAction(nextProps.loading);
+    if ('load' in nextProps && nextProps.load.state !== this.props.load.state) {
+      this.doLoadAction(nextProps.load.state);
     }
   }
 
@@ -73,28 +77,29 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   onScroll = () => {
     const { refreshState, loadState } = this.state;
-    const { onLoad, loadDistance } = this.props;
     const { scrollHeight, scrollTop, clientHeight } = this.wrap;
+    const load = { ...Pull.defaultProps.load, ...this.props.load };
+    const { handler, distance } = load;
 
     if (
-      typeof onLoad !== 'function' ||
+      typeof handler !== 'function' ||
       refreshState !== REFRESH_STATE.normal ||
       loadState !== LOAD_STATE.normal ||
       scrollHeight <= clientHeight ||
 
       // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度
-      scrollHeight - (scrollTop + document.body.scrollTop) - loadDistance > clientHeight
+      scrollHeight - (scrollTop + document.body.scrollTop) - distance! > clientHeight
     ) {
       return;
     }
-    onLoad();
+    handler();
   }
 
   onDragMove = (event, { offsetY }) => {
-    const { onRefresh } = this.props;
+    const { handler } = this.props.refresh;
     if (
       // 未设置刷新事件
-      !onRefresh ||
+      !handler ||
 
       // 上拉
       offsetY <= 0 ||
@@ -111,11 +116,12 @@ export default class Pull extends PureComponent<PullProps, any> {
     // 解决低端安卓系统只触发一次touchmove事件的bug
     event.preventDefault();
 
-    const { refreshDistance, refreshInitDistance } = this.props;
+    const refresh = { ...Pull.defaultProps.refresh, ...this.props.refresh };
+    const { startDistance, distance } = refresh;
     const offset = offsetY / 2; // 移动距离为拖动距离的一半
 
     // 判断是否达到释放立即刷新的条件
-    const action = ((offset - refreshInitDistance) < refreshDistance)
+    const action = ((offset - startDistance!) < distance!)
       ? REFRESH_STATE.pull
       : REFRESH_STATE.drop;
 
@@ -126,23 +132,22 @@ export default class Pull extends PureComponent<PullProps, any> {
   onDragEnd = (event, { offsetY }) => {
     event.preventDefault();
 
-    const { onRefresh } = this.props;
-    const { refreshState } = this.state;
-
     // 没有产生位移
     if (!offsetY) {
       return;
     }
 
     // 当前状态为下拉状态时
+    const { refreshState } = this.state;
     if (refreshState === REFRESH_STATE.pull) {
       this.doRefreshAction(REFRESH_STATE.normal);
       return;
     }
 
     // 执行外部触发刷新的回调
-    if (typeof onRefresh === 'function') {
-      onRefresh();
+    const { handler } = this.props.refresh;
+    if (typeof handler === 'function') {
+      handler();
     }
   }
 
@@ -215,25 +220,26 @@ export default class Pull extends PureComponent<PullProps, any> {
    * 渲染刷新节点
    */
   renderRefresh = () => {
-    const { prefixCls, refreshInitDistance, refreshDistance, refreshRender } = this.props;
+    const refresh = { ...Pull.defaultProps.refresh, ...this.props.refresh };
+    const { startDistance, distance, render } = refresh;
     const { refreshState, offsetY } = this.state;
 
     let percent = 0;
-    if (offsetY >= refreshInitDistance) {
+    if (offsetY >= startDistance) {
       percent = (
         (
-          (offsetY - refreshInitDistance) < refreshDistance
-            ? offsetY - refreshInitDistance
-            : refreshDistance
-          ) * 100
-        ) / refreshDistance;
+          (offsetY - startDistance) < distance
+            ? offsetY - startDistance
+            : distance
+        ) * 100
+      ) / distance;
     }
 
-    if (typeof refreshRender === 'function') {
-      return refreshRender(refreshState, percent);
+    if (typeof render === 'function') {
+      return render(refreshState, percent);
     }
 
-    const cls = `${prefixCls}-control`;
+    const cls = `${this.props.prefixCls}-control`;
 
     switch (refreshState) {
       case REFRESH_STATE.pull:
@@ -284,14 +290,15 @@ export default class Pull extends PureComponent<PullProps, any> {
    * 渲染加载节点
    */
   renderLoad = () => {
-    const { prefixCls, loadRender } = this.props;
+    const load = { ...Pull.defaultProps.load, ...this.props.load };
+    const { render } = load;
     const { loadState } = this.state;
 
-    if (typeof loadRender === 'function') {
-      return loadRender(loadState);
+    if (typeof render === 'function') {
+      return render(loadState);
     }
 
-    const cls = `${prefixCls}-control`;
+    const cls = `${this.props.prefixCls}-control`;
 
     switch (loadState) {
       case LOAD_STATE.loading:

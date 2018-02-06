@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "1.2.0-beta.18",
+  "version": "1.2.0-beta.20",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -52,7 +52,8 @@
     "lint-staged": "lint-staged",
     "test": "jest --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls",
-    "docs": "cd docs && gitbook install && gitbook serve"
+    "docs": "cd docs && gitbook install && gitbook serve",
+    "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS"
   },
   "dependencies": {
     "classnames": "^2.2.5",

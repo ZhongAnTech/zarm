@@ -4,6 +4,11 @@ import { BaseModalProps } from './PropsType';
 import Events from '../utils/events';
 import Mask from '../Mask';
 
+const stopPropagation = (e) => {
+  e.stopPropagation();
+  // e.nativeEvent.stopImmediatePropagation();
+};
+
 export interface ModalProps extends BaseModalProps {
   prefixCls?: string;
   className?: string;
@@ -125,7 +130,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
     return (
       <div className={cls.modal} style={modalStyle} ref={(ele) => { this.modal = ele; }}>
         <div className={`${prefixCls}-wrapper`}>
-          <div className={cls.dialog} style={dialogStyle} onClick={e => e.stopPropagation()}>
+          <div className={cls.dialog} style={dialogStyle} onClick={stopPropagation}>
             {children}
           </div>
         </div>

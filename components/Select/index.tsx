@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { BaseSelectProps } from './PropsType';
 import Picker from '../Picker';
 
-function getValue(props, defaultValue?: any) {
+const getValue = (props, defaultValue?: any) => {
   if (props.value) {
     return [].concat(props.value);
   }
@@ -13,7 +13,7 @@ function getValue(props, defaultValue?: any) {
   }
 
   return defaultValue;
-}
+};
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;

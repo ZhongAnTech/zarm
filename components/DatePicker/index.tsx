@@ -5,7 +5,7 @@ import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
 
-function isExtendDate(date) {
+const isExtendDate = (date) => {
   if (date instanceof Date) {
     return date;
   }
@@ -15,12 +15,13 @@ function isExtendDate(date) {
   }
 
   return new Date(date.toString().replace(/-/g, '/'));
-}
+};
 
 // 阻止选择器区域的默认事件
-function stopClick(e) {
+const stopPropagation = (e) => {
   e.stopPropagation();
-}
+  // e.nativeEvent.stopImmediatePropagation();
+};
 
 export interface DatePickerProps extends BaseDatePickerProps {
   prefixCls?: string;
@@ -156,7 +157,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
     return (
       <div className={prefixCls}>
-        <div className={classes} onClick={e => stopClick(e)}>
+        <div className={classes} onClick={stopPropagation}>
           <Popup
             visible={visible}
             onMaskClick={() => this.onMaskClick()}

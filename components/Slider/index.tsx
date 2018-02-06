@@ -5,7 +5,7 @@ import Events from '../utils/events';
 import Drag from '../Drag';
 import Tooltip from '../Tooltip';
 
-function getValue(props, defaultValue) {
+const getValue = (props, defaultValue) => {
   if ('value' in props) {
     return props.value;
   }
@@ -13,7 +13,7 @@ function getValue(props, defaultValue) {
     return props.defaultValue;
   }
   return defaultValue;
-}
+};
 
 export interface SliderProps extends PropsType {
   prefixCls?: string;

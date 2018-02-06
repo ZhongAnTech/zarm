@@ -4,7 +4,7 @@ import { BaseDateSelectProps } from './PropsType';
 import formatFn from '../DatePickerView/utils';
 import DatePicker from '../DatePicker';
 
-function isExtendDate(date) {
+const isExtendDate = (date) => {
   if (date instanceof Date) {
     return date;
   }
@@ -14,14 +14,12 @@ function isExtendDate(date) {
   }
 
   return new Date(date.toString().replace(/-/g, '/'));
-}
+};
 
 export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
   className?: any;
 }
-
-const DATE = 'date';
 
 export default class DateSelect extends PureComponent<DateSelectProps, any> {
 
@@ -30,7 +28,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     title: '请选择',
     cancelText: '取消',
     okText: '确定',
-    mode: DATE,
+    mode: 'date',
     disabled: false,
     minuteStep: 1,
     prefixCls: 'za-select',

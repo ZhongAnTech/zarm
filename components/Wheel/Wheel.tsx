@@ -4,7 +4,7 @@ import ZScroller from 'zscroller';
 import { BaseWheelProps } from './PropsType';
 import { isArray } from '../utils/validate';
 
-function getValue(props, defaultValue?: any) {
+const getValue = (props, defaultValue?: any) => {
   if ('value' in props) {
     return props.value;
   }
@@ -15,7 +15,7 @@ function getValue(props, defaultValue?: any) {
     return props.dataSource[0][props.valueMember];
   }
   return defaultValue;
-}
+};
 
 export interface WheelProps extends BaseWheelProps {
   prefixCls?: string;

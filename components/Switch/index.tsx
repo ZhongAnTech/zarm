@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
-function getChecked(props, defaultChecked) {
+const getChecked = (props, defaultChecked) => {
   if ('checked' in props && props.checked) {
     return props.checked;
   }
@@ -10,7 +10,7 @@ function getChecked(props, defaultChecked) {
     return props.defaultChecked;
   }
   return defaultChecked;
-}
+};
 
 export interface SwitchProps extends PropsType {
   prefixCls?: string;

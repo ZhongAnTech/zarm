@@ -18,57 +18,60 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     disabled: false,
   };
 
-  private input;
+  private container;
   private content;
 
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
       value: props.value || props.defaultValue || '',
+      visible: props.focused || false,
     };
   }
 
   componentDidMount() {
-    Events.on(document.body, 'click', this.onBlur);
+    Events.on(document.body, 'click', this.onMaskClick);
+    if (this.props.autoFocus || this.state.focused) {
+      this.onFocus();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ('focused' in nextProps || 'autoFocus' in nextProps) {
+      if (nextProps.focused || nextProps.autoFocus) {
+        this.onFocus();
+      } else {
+        this.onBlur();
+      }
+    }
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'click', this.onBlur);
+    Events.off(document.body, 'click', this.onMaskClick);
   }
 
-  closest = (el, selector) => {
-    const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-    while (el) {
-      if (matchesSelector.call(el, selector)) {
-        return el;
-      } else {
-        el = el.parentElement;
-      }
-    }
-    return null;
-  }
-
-  onFocus = () => {
-    document.activeElement.blur();
-    this.open();
-  }
-
-  onBlur = (e) => {
-    if (!this.input || !this.state.visible) {
+  onMaskClick = (e) => {
+    if (!this.container || !this.state.visible) {
       return;
     }
 
-    const pNode = this.closest(e.target, '.za-keyboard');
+    const pNode = ((node) => {
+      while (node.parentNode && node.parentNode !== document.body) {
+        if (node === this.container) {
+          return node;
+        }
+        node = node.parentNode;
+      }
+    })(e.target);
 
     if (!pNode) {
-      this.close();
+      this.onBlur();
     }
   }
 
   onKeyClick = (key) => {
     if (['close', 'ok'].indexOf(key) > -1) {
-      this.close();
+      this.onBlur();
       return;
     }
     const value = this.state.value;
@@ -94,16 +97,34 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     this.content.scrollLeft = this.content.scrollWidth;
   }
 
-  open = () => {
-    this.setState({ visible: true }, () => this.scrollToEnd());
+  onFocus = () => {
+    if (this.state.visible) {
+      return;
+    }
+
+    this.setState({ visible: true });
+    this.scrollToEnd();
+    const { onFocus } = this.props;
+    if (typeof onFocus === 'function') {
+      onFocus(this.state.value);
+    }
   }
 
-  close = () => {
-    this.setState({ visible: false }, () => this.scrollToStart());
+  onBlur = () => {
+    if (!this.state.visible) {
+      return;
+    }
+
+    this.setState({ visible: false });
+    this.scrollToStart();
+    const { onBlur } = this.props;
+    if (typeof onBlur === 'function') {
+      onBlur(this.state.value);
+    }
   }
 
   render() {
-    const { prefixCls, className, type, disabled, defaultValue, placeholder, ...others } = this.props;
+    const { prefixCls, className, type, disabled, placeholder } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
@@ -112,15 +133,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     });
 
     return (
-      <div className={cls} ref={(ele) => { this.input = ele; }} onClick={this.onFocus}>
+      <div className={cls} ref={ele => { this.container = ele; }} onClick={this.onFocus}>
         {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
         <div className={`${prefixCls}-content`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input
-          {...others}
           type="hidden"
           value={value}
           disabled={disabled}
-          onFocus={this.onFocus}
         />
         <KeyboardPicker
           visible={visible}

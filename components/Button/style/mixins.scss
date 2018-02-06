@@ -34,7 +34,7 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height - 2;
+  line-height: $height;
 
   &.shape-circle {
     width: $height;
@@ -139,11 +139,10 @@
 
 // 形状
 @mixin button-shape($border-color, $border-radius: 0) {
-  border: 1px solid transparent;
   border-radius: $border-radius;
 
   &.bordered {
-    border-color: $border-color;
+    border: 1px solid $border-color;
     // @include onepx($border-color: $border-color, $border-radius: $border-radius);
   }
 }

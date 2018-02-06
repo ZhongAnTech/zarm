@@ -4,9 +4,9 @@ import { BaseInputTextareaProps } from './PropsType';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
-function countSymbols(text = '') {
+const countSymbols = (text = '') => {
   return text.replace(regexAstralSymbols, '_').length;
-}
+};
 
 export interface InputTextareaProps extends BaseInputTextareaProps {
   prefixCls?: string;
@@ -18,8 +18,9 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   static defaultProps = {
     prefixCls: 'za-input',
     disabled: false,
-    autosize: false,
+    autoHeight: false,
     showLength: false,
+    focused: false,
   };
 
   private input;
@@ -28,14 +29,57 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     super(props);
     this.state = {
       length: (props.value || props.defaultValue || '').length,
+      focused: props.focused || false,
     };
   }
 
+  componentDidMount() {
+    if (this.props.autoFocus || this.state.focused) {
+      this.input.focus();
+    }
+  }
+
   componentDidUpdate() {
-    const { autosize } = this.props;
-    if (autosize) {
+    const { autoHeight } = this.props;
+    if (autoHeight) {
       this.input.style.height = '';
       this.input.style.height = `${this.input.scrollHeight}px`;
+    }
+    if (this.state.focused) {
+      this.input.focus();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ('focused' in nextProps) {
+      this.setState({
+        focused: nextProps.focused,
+      });
+    }
+  }
+
+  onInputFocus = (e) => {
+    if (!('focused' in this.props)) {
+      this.setState({
+        focused: true,
+      });
+    }
+
+    const { onFocus } = this.props;
+    if (typeof onFocus === 'function') {
+      onFocus(e.target.value);
+    }
+  }
+
+  onInputBlur = (e) => {
+    if (!('focused' in this.props)) {
+      this.setState({
+        focused: false,
+      });
+    }
+    const { onBlur } = this.props;
+    if (typeof onBlur === 'function') {
+      onBlur(e.target.value);
     }
   }
 
@@ -55,8 +99,9 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       className,
       maxLength,
       disabled,
-      autosize,
+      autoHeight,
       showLength,
+      focused,
       ...others,
     } = this.props;
 
@@ -79,6 +124,8 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
           disabled={disabled}
           maxLength={maxLength}
           onChange={this.onInputChange}
+          onFocus={this.onInputFocus}
+          onBlur={this.onInputBlur}
         />
         {textLengthRender}
       </div>

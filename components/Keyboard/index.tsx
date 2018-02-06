@@ -7,8 +7,9 @@ const NUMBER_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'clos
 const PRICE_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'close'];
 const IDCARD_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'x', '0', 'close'];
 
-const stopEventPropagation = (e) => {
+const stopPropagation = (e) => {
   e.stopPropagation();
+  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface KeyboardProps extends PropsType {
@@ -85,7 +86,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     const { prefixCls } = this.props;
 
     return (
-      <div className={prefixCls} onClick={stopEventPropagation}>
+      <div className={prefixCls} onClick={stopPropagation}>
         <div className={`${prefixCls}-keys`}>
           {this.getKeys().map(this.renderKey)}
         </div>
