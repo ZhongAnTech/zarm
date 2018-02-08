@@ -64,13 +64,14 @@ class Page extends Component {
 
           <ActionSheet
             visible={this.state.visible1}
-            onMaskClick={() => this.toggle('visible1')}
             actions={BUTTONS}
+            onMaskClick={() => this.toggle('visible1')}
             />
 
           <ActionSheet
             visible={this.state.visible2}
             actions={BUTTONS}
+            onMaskClick={() => this.toggle('visible2')}
             onCancel={() => this.toggle('visible2')}
             />
 
@@ -79,6 +80,7 @@ class Page extends Component {
             shape="radius"
             visible={this.state.visible3}
             actions={BUTTONS}
+            onMaskClick={() => this.toggle('visible3')}
             onCancel={() => this.toggle('visible3')}
             />
 

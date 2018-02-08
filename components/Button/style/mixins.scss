@@ -1,6 +1,7 @@
 // 主题
 @mixin button-theme($background, $color) {
   background-color: $background;
+  border-color: $background;
   color: $color;
 
   $active-background: darken($background, 8%);
@@ -9,6 +10,7 @@
   &:active,
   &.active {
     background-color: $active-background;
+    border-color: $active-background;
     color: $active-color;
   }
 
@@ -25,6 +27,7 @@
     &:visited,
     &.visited {
       background-color: $background;
+      border-color: $background;
     }
   }
 }
@@ -139,10 +142,12 @@
 
 // 形状
 @mixin button-shape($border-color, $border-radius: 0) {
+  border-width: 1px;
+  border-style: solid;
   border-radius: $border-radius;
 
   &.bordered {
-    border: 1px solid $border-color;
+    border-color: $border-color;
     // @include onepx($border-color: $border-color, $border-radius: $border-radius);
   }
 }
