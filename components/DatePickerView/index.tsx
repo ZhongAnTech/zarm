@@ -31,11 +31,6 @@ const setMonth = (date, month) => {
   date.setMonth(month);
 };
 
-// 转成Date格式
-const getGregorianCalendar = (arg) => {
-  return new Date(...arg);
-};
-
 const isExtendDate = (date) => {
   if (date instanceof Date) {
     return date;
@@ -427,11 +422,11 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   }
 
   getDefaultMinDate() {
-    return getGregorianCalendar([2000, 0, 1, 0, 0, 0]);
+    return new Date(2000, 0, 1, 0, 0, 0);
   }
 
   getDefaultMaxDate() {
-    return getGregorianCalendar([2030, 11, 30, 23, 59, 59]);
+    return new Date(2030, 11, 30, 23, 59, 59);
   }
 
   renderWheel = (item, index) => {
