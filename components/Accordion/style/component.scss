@@ -1,0 +1,41 @@
+$prefixCls: $prefixCls-accordion;
+
+.#{$prefixCls} {
+
+  &-item {
+    position: relative;
+    @include onepx(bottom);
+
+    &-title {
+      height: $accordion-height;
+      line-height: $accordion-height;
+      padding: 0 $accordion-padding;
+    }
+    &-content {
+      position: relative;
+      display: none;
+      padding: $padding-v-lg $accordion-padding;
+      @include onepx(top);
+    }
+    &-arrow {
+      position: absolute;
+      width: r(10);
+      height: r(10);
+      top: r(17);
+      right: $accordion-padding;
+      border-right: r(2) solid $accordion-arrow-color;
+      border-bottom: r(2) solid $accordion-arrow-color;
+      transform: rotate(45deg);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &.active {
+      .#{$prefixCls}-item-content {
+        display: block;
+      }
+      .#{$prefixCls}-item-arrow {
+        transform: rotate(-135deg);
+      }
+    }
+  }
+}

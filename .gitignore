@@ -9,3 +9,4 @@ _book
 .DS_Store
 .temp
 *.log
+npm-debug.*
