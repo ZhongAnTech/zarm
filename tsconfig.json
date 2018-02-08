@@ -10,7 +10,8 @@
     "types": [
       "classnames",
       "react",
-      "react-dom"
+      "react-dom",
+      "react-native"
     ]
   },
   "include": [

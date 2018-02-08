@@ -1,3 +1,5 @@
+import 'core-js/es6/map';
+import 'core-js/es6/set';
 import { AppRegistry } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import IndexPage from './pages/IndexPage';
