@@ -15,7 +15,8 @@
     ]
   },
   "include": [
-    "components/**/*"
+    "components/*.tsx",
+    "components/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
