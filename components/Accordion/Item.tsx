@@ -16,14 +16,14 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
     super(props);
 
     this.state = {
-      active: this.isActive(),
+      active: this.isActive(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if ('activeKey' in nextProps) {
       this.setState({
-        active: this.isActive(),
+        active: this.isActive(nextProps),
       });
     }
   }
@@ -39,8 +39,8 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
     }
   }
 
-  isActive() {
-    const { index, activeKey = [] } = this.props;
+  isActive(props) {
+    const { index, activeKey = [] } = props;
 
     return activeKey.indexOf(index) > -1;
   }

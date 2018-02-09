@@ -2,6 +2,7 @@ export default interface PropsType  {
   defaultActiveKey?: string | Array<string>;
   onChange?: () => void;
   accordion?: boolean;
+  animated?: boolean;
 }
 
 export interface AccordionItemProps {

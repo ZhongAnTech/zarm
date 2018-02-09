@@ -8,11 +8,16 @@ export interface AccordionProps extends PropsType {
   className?: string;
 }
 
-export default class Accordion extends PureComponent<AccordionProps, any> {
+interface AccordionState {
+  activeKey: Array<string>;
+}
+
+export default class Accordion extends PureComponent<AccordionProps, AccordionState> {
 
   static defaultProps = {
     prefixCls: 'za-accordion',
     accordion: false,
+    animated: false,
   };
 
   static Item: any;
@@ -39,13 +44,13 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   }
 
   getDefaultActiveKey() {
-    const { defaultActiveKey } = this.props;
+    const { defaultActiveKey, accordion } = this.props;
 
     if (defaultActiveKey) {
       if (typeof defaultActiveKey === 'string') {
         return [defaultActiveKey];
       } else {
-        return defaultActiveKey;
+        return accordion ? [defaultActiveKey[0]] : defaultActiveKey;
       }
     }
 
@@ -53,7 +58,7 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   }
 
   renderItems() {
-    const { accordion } = this.props;
+    const { accordion, animated } = this.props;
     const { activeKey } = this.state;
 
     return Children.map(this.props.children, (ele, index) => {
@@ -61,6 +66,7 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
       return cloneElement(ele as JSX.Element, {
         index: String(index),
         accordion,
+        animated,
         activeKey,
         onItemChange: this.onItemChange,
       });

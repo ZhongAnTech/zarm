@@ -14,7 +14,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
-              <Accordion>
+              <Accordion defaultActiveKey={['0', '1']} accordion>
                 <Accordion.Item title="50元套餐">
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>
@@ -22,10 +22,16 @@ class Page extends Component {
                   <div>我是50元套餐内容</div>
                 </Accordion.Item>
                 <Accordion.Item title="100元套餐">
-                  我是100元套餐内容
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
                 </Accordion.Item>
                 <Accordion.Item title="200元套餐">
-                  我是200元套餐内容
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
                 </Accordion.Item>
               </Accordion>
             </Panel.Body>
