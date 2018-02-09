@@ -372,17 +372,18 @@ exports[`Input.Price renders correctly 1`] = `
 </div>
 `;
 
-exports[`Input.Textarea autosize 1`] = `
+exports[`Input.Textarea autoHeight 1`] = `
 <Input
-  autosize={true}
+  autoHeight={true}
   onChange={[Function]}
   rows={4}
   type="textarea"
   value="foo"
 >
   <InputTextarea
-    autosize={true}
+    autoHeight={true}
     disabled={false}
+    focused={false}
     onChange={[Function]}
     prefixCls="za-input"
     rows={4}
@@ -394,7 +395,9 @@ exports[`Input.Textarea autosize 1`] = `
     >
       <textarea
         disabled={false}
+        onBlur={[Function]}
         onChange={[Function]}
+        onFocus={[Function]}
         rows={4}
         value="foo"
       />

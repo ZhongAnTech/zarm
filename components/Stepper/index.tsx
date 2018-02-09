@@ -142,7 +142,11 @@ export default class Stepper extends PureComponent<StepperProps, any> {
           type="tel"
           value={value}
           onChange={e => this.onInputChange(e.target.value)}
+<<<<<<< HEAD
           onBlur={() => this.onInputBlur(this.state.value)}
+=======
+          onBlur={() => this.onInputBlur(value)}
+>>>>>>> dev-ts
         />
         <span className={plusCls} onClick={this.onPlusClick}><Icon type="add" /></span>
       </span>
