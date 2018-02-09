@@ -13,9 +13,13 @@ $prefixCls: $prefixCls-accordion;
     }
     &-content {
       position: relative;
-      display: none;
-      padding: $padding-v-lg $accordion-padding;
-      @include onepx(top);
+      box-sizing: content-box;
+      height: 0;
+      overflow: hidden;
+      padding: 0 $accordion-padding;
+    }
+    &-content-anim {
+      transition: all 0.2s ease-in-out;
     }
     &-arrow {
       position: absolute;
@@ -31,7 +35,9 @@ $prefixCls: $prefixCls-accordion;
 
     &.active {
       .#{$prefixCls}-item-content {
-        display: block;
+        height: auto;
+        @include onepx(top);
+        padding: $padding-v-lg $accordion-padding;
       }
       .#{$prefixCls}-item-arrow {
         transform: rotate(-135deg);

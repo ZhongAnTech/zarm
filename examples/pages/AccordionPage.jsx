@@ -14,7 +14,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
-              <Accordion defaultActiveKey={['0', '1']} accordion>
+              <Accordion animated>
                 <Accordion.Item title="50元套餐">
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>

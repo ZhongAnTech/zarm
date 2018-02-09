@@ -12,6 +12,8 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
     prefixCls: 'za-accordion',
   };
 
+  content: HTMLDivElement;
+
   constructor(props) {
     super(props);
 
@@ -21,20 +23,30 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('activeKey' in nextProps) {
+    const { active } = this.state;
+    const { animated } = nextProps;
+
+    if (active !== this.isActive(nextProps)) {
       this.setState({
-        active: this.isActive(nextProps),
+        active: !active,
       });
+      if (animated) {
+        this.setStyle(active);
+      }
     }
   }
 
-  onToggleActive = () => {
-    const { accordion, index, onItemChange } = this.props;
+  onClickItem = () => {
+    const { index, onItemChange, animated } = this.props;
+    const { active } = this.state;
 
     this.setState({
-      active: !this.state.active,
+      active: !active,
     });
-    if (accordion && onItemChange) {
+    if (animated) {
+      this.setStyle(active);
+    }
+    if (onItemChange) {
       onItemChange(index);
     }
   }
@@ -45,8 +57,37 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
     return activeKey.indexOf(index) > -1;
   }
 
+  setStyle(active) {
+    const { content } = this;
+    let height;
+
+    if (active) {
+      height = content.offsetHeight;
+      content.style.height = `${height}px`;
+
+      setTimeout(() => {
+        content.style.height = '0px';
+      }, 0);
+    } else {
+      content.style.height = '0px';
+
+      setTimeout(() => {
+        content.style.height = `${this.getContentHeight(content)}px`;
+      }, 0);
+    }
+  }
+
+  getContentHeight(content) {
+
+    const children = [...content.children];
+    return children.reduce((res, next) => {
+      res += next.offsetHeight;
+      return res;
+    }, 0);
+  }
+
   getCls() {
-    const { prefixCls, className } = this.props;
+    const { prefixCls, className, animated } = this.props;
     const { active } = this.state;
 
     const cls = classnames(`${prefixCls}-item`, {
@@ -54,7 +95,9 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
       [className as string]: !!className,
     });
     const titleCls = `${prefixCls}-item-title`;
-    const contentCls = `${prefixCls}-item-content`;
+    const contentCls = classnames(`${prefixCls}-item-content`, {
+      [`${prefixCls}-item-content-anim`]: animated,
+    });
     const arrowCls = `${prefixCls}-item-arrow`;
 
     return { cls, titleCls, contentCls, arrowCls };
@@ -68,12 +111,12 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
       <div className={cls}>
         <div
           className={titleCls}
-          onClick={this.onToggleActive}
+          onClick={this.onClickItem}
         >
           <div>{title}</div>
           <div className={arrowCls} />
         </div>
-        <div className={contentCls}>
+        <div className={contentCls} ref={(content) => this.content = content as HTMLDivElement}>
           {children}
         </div>
       </div>
