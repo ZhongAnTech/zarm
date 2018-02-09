@@ -2471,12 +2471,12 @@ exports[`DateSelect DateSelect month 1`] = `
                       class="za-wheel-content"
                     >
                       <div
-                        class="za-wheel-item za-wheel-item-selected"
+                        class="za-wheel-item"
                       >
                         1月
                       </div>
                       <div
-                        class="za-wheel-item"
+                        class="za-wheel-item za-wheel-item-selected"
                       >
                         2月
                       </div>
@@ -3270,12 +3270,12 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                       class="za-wheel-content"
                     >
                       <div
-                        class="za-wheel-item za-wheel-item-selected"
+                        class="za-wheel-item"
                       >
                         1月
                       </div>
                       <div
-                        class="za-wheel-item"
+                        class="za-wheel-item za-wheel-item-selected"
                       >
                         2月
                       </div>
@@ -3381,7 +3381,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         8日
                       </div>
                       <div
-                        class="za-wheel-item"
+                        class="za-wheel-item za-wheel-item-selected"
                       >
                         9日
                       </div>
@@ -3461,7 +3461,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         24日
                       </div>
                       <div
-                        class="za-wheel-item za-wheel-item-selected"
+                        class="za-wheel-item"
                       >
                         25日
                       </div>
@@ -3479,21 +3479,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         class="za-wheel-item"
                       >
                         28日
-                      </div>
-                      <div
-                        class="za-wheel-item"
-                      >
-                        29日
-                      </div>
-                      <div
-                        class="za-wheel-item"
-                      >
-                        30日
-                      </div>
-                      <div
-                        class="za-wheel-item"
-                      >
-                        31日
                       </div>
                     </div>
                   </div>
