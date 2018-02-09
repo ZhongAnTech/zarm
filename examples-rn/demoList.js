@@ -7,7 +7,11 @@ module.exports = {
     },
   ],
   UICONROL: [
-
+    {
+      title: 'Popup',
+      description: '弹出框',
+      module: require('./pages/PopupPage'),
+    },
   ],
   UIVIEW: [
     {
