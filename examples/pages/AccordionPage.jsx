@@ -14,8 +14,8 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
-              <Accordion animated>
-                <Accordion.Item title="50元套餐">
+              <Accordion>
+                <Accordion.Item title="50元套餐" key={123}>
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>
@@ -40,10 +40,51 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="手风琴模式" />
             <Panel.Body>
-              <Accordion>
-                <Accordion.Item title="50元套餐" />
-                <Accordion.Item title="100元套餐" />
-                <Accordion.Item title="200元套餐" />
+              <Accordion accordion animated>
+                <Accordion.Item title="50元套餐">
+                  <div>我是50元套餐内容</div>
+                  <div>我是50元套餐内容</div>
+                  <div>我是50元套餐内容</div>
+                  <div>我是50元套餐内容</div>
+                </Accordion.Item>
+                <Accordion.Item title="100元套餐">
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                </Accordion.Item>
+                <Accordion.Item title="200元套餐">
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                </Accordion.Item>
+              </Accordion>
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header title="默认展开项" />
+            <Panel.Body>
+              <Accordion animated defaultActiveIndex={[0, 1]}>
+                <Accordion.Item title="50元套餐">
+                  <div>我是50元套餐内容</div>
+                  <div>我是50元套餐内容</div>
+                  <div>我是50元套餐内容</div>
+                  <div>我是50元套餐内容</div>
+                </Accordion.Item>
+                <Accordion.Item title="100元套餐">
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                  <div>我是100元套餐内容</div>
+                </Accordion.Item>
+                <Accordion.Item title="200元套餐">
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                  <div>我是200元套餐内容</div>
+                </Accordion.Item>
               </Accordion>
             </Panel.Body>
           </Panel>

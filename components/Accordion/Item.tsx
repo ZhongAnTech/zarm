@@ -52,9 +52,9 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
   }
 
   isActive(props) {
-    const { index, activeKey = [] } = props;
+    const { index, activeIndex = [] } = props;
 
-    return activeKey.indexOf(index) > -1;
+    return activeIndex.indexOf(index) > -1;
   }
 
   setStyle(active) {
@@ -78,7 +78,6 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
   }
 
   getContentHeight(content) {
-
     const children = [...content.children];
     return children.reduce((res, next) => {
       res += next.offsetHeight;
@@ -98,14 +97,15 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
     const contentCls = classnames(`${prefixCls}-item-content`, {
       [`${prefixCls}-item-content-anim`]: animated,
     });
+    const contentInnerCls = `${prefixCls}-item-content-inner`;
     const arrowCls = `${prefixCls}-item-arrow`;
 
-    return { cls, titleCls, contentCls, arrowCls };
+    return { cls, titleCls, contentCls, contentInnerCls, arrowCls };
   }
 
   render() {
     const { title, children } = this.props;
-    const { cls, titleCls, contentCls, arrowCls } = this.getCls();
+    const { cls, titleCls, contentCls, contentInnerCls, arrowCls } = this.getCls();
 
     return (
       <div className={cls}>
@@ -116,8 +116,13 @@ export default class Item extends PureComponent<AccordionItemProps, AccordionIte
           <div>{title}</div>
           <div className={arrowCls} />
         </div>
-        <div className={contentCls} ref={(content) => this.content = content as HTMLDivElement}>
-          {children}
+        <div
+          className={contentCls}
+          ref={(content) => this.content = content as HTMLDivElement}
+        >
+          <div className={contentInnerCls}>
+            {children}
+          </div>
         </div>
       </div>
     );

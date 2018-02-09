@@ -13,13 +13,16 @@ $prefixCls: $prefixCls-accordion;
     }
     &-content {
       position: relative;
-      box-sizing: content-box;
       height: 0;
       overflow: hidden;
-      padding: 0 $accordion-padding;
+      @include onepx(top);
+
+      &-inner {
+        padding: $padding-v-lg $accordion-padding;
+      }
     }
     &-content-anim {
-      transition: all 0.2s ease-in-out;
+      transition: all 0.15s ease-out;
     }
     &-arrow {
       position: absolute;
@@ -30,14 +33,12 @@ $prefixCls: $prefixCls-accordion;
       border-right: r(2) solid $accordion-arrow-color;
       border-bottom: r(2) solid $accordion-arrow-color;
       transform: rotate(45deg);
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.15s ease-out;
     }
 
     &.active {
       .#{$prefixCls}-item-content {
         height: auto;
-        @include onepx(top);
-        padding: $padding-v-lg $accordion-padding;
       }
       .#{$prefixCls}-item-arrow {
         transform: rotate(-135deg);

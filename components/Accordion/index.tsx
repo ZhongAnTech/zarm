@@ -2,6 +2,7 @@ import React, { PureComponent, Children, cloneElement } from 'react';
 import classnames from 'classnames';
 import Item from './Item';
 import PropsType from './PropsType';
+import { isArray } from '../utils/validate';
 
 export interface AccordionProps extends PropsType {
   prefixCls?: string;
@@ -9,7 +10,7 @@ export interface AccordionProps extends PropsType {
 }
 
 interface AccordionState {
-  activeKey: Array<string>;
+  activeIndex: Array<string>;
 }
 
 export default class Accordion extends PureComponent<AccordionProps, AccordionState> {
@@ -27,38 +28,39 @@ export default class Accordion extends PureComponent<AccordionProps, AccordionSt
     super(props);
 
     this.state = {
-      activeKey: this.getDefaultActiveKey(),
+      activeIndex: this.getDefaultactiveIndex(),
     };
   }
 
   onItemChange = (key) => {
     const { accordion, onChange } = this.props;
-    const { activeKey } = this.state;
+    const { activeIndex } = this.state;
 
     if (!accordion) {
       onChange(key);
       return;
     }
-    if (activeKey.indexOf(key) > -1) {
+    if (activeIndex.indexOf(key) > -1) {
       this.setState({
-        activeKey: [],
+        activeIndex: [],
       });
     } else {
       this.setState({
-        activeKey: [key],
+        activeIndex: [key],
       });
     }
     onChange(key);
   }
 
-  getDefaultActiveKey() {
-    const { defaultActiveKey, accordion } = this.props;
+  getDefaultactiveIndex() {
+    const { defaultActiveIndex, accordion } = this.props;
 
-    if (defaultActiveKey) {
-      if (typeof defaultActiveKey === 'string') {
-        return [defaultActiveKey];
+    if (defaultActiveIndex) {
+      if (isArray(defaultActiveIndex)) {
+        return accordion ?
+        [String(defaultActiveIndex[0])] : (defaultActiveIndex as Array<any>).map(key => String(key));
       } else {
-        return accordion ? [defaultActiveKey[0]] : defaultActiveKey;
+        return [String(defaultActiveIndex)];
       }
     }
 
@@ -67,7 +69,7 @@ export default class Accordion extends PureComponent<AccordionProps, AccordionSt
 
   renderItems() {
     const { accordion, animated } = this.props;
-    const { activeKey } = this.state;
+    const { activeIndex } = this.state;
 
     return Children.map(this.props.children, (ele, index) => {
 
@@ -75,7 +77,7 @@ export default class Accordion extends PureComponent<AccordionProps, AccordionSt
         index: String(index),
         accordion,
         animated,
-        activeKey,
+        activeIndex,
         onItemChange: this.onItemChange,
       });
     });
