@@ -1,6 +1,7 @@
 export default interface PropsType  {
+  activeIndex?: string | number | Array<string | number>;
   defaultActiveIndex?: string | number | Array<string | number>;
-  onChange: (key: string) => void;
+  onChange: (key: number) => void;
   accordion?: boolean;
   animated?: boolean;
 }

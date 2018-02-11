@@ -28,8 +28,16 @@ export default class Accordion extends PureComponent<AccordionProps, AccordionSt
     super(props);
 
     this.state = {
-      activeIndex: this.getDefaultactiveIndex(),
+      activeIndex: this.getActiveIndex(props),
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.isPropEqual(this.props.activeIndex, nextProps.activeIndex)) {
+      this.setState({
+        activeIndex: this.getActiveIndex(nextProps),
+      });
+    }
   }
 
   onItemChange = (key) => {
@@ -49,22 +57,32 @@ export default class Accordion extends PureComponent<AccordionProps, AccordionSt
         activeIndex: [key],
       });
     }
-    onChange(key);
+    onChange(Number(key));
   }
 
-  getDefaultactiveIndex() {
-    const { defaultActiveIndex, accordion } = this.props;
+  getActiveIndex(props) {
+    const { activeIndex, defaultActiveIndex, accordion } = props;
 
-    if (defaultActiveIndex) {
-      if (isArray(defaultActiveIndex)) {
+    const defaultIndex = (activeIndex || activeIndex === 0) ? activeIndex : defaultActiveIndex;
+
+    if (defaultIndex || defaultIndex === 0) {
+      if (isArray(defaultIndex)) {
         return accordion ?
-        [String(defaultActiveIndex[0])] : (defaultActiveIndex as Array<any>).map(key => String(key));
+        [String(defaultIndex[0])] : (defaultIndex as Array<any>).map(key => String(key));
       } else {
-        return [String(defaultActiveIndex)];
+        return [String(defaultIndex)];
       }
     }
 
     return [];
+  }
+
+  isPropEqual(cur, next) {
+    if (isArray(next) && isArray(cur)) {
+     return next.length === cur.length && next.every((key, i) => key === cur[i]);
+    }
+
+    return cur === next;
   }
 
   renderItems() {

@@ -62,7 +62,7 @@ import { Accordion } from 'zarm';
 
 ###### 默认展开项
 ```jsx
-<Accordion defaultActiveIndex={[0, 1]}>
+<Accordion defaultActiveIndex={[0, 1]} activeIndex="2">
   <Accordion.Item title="50元套餐">
     <div>我是50元套餐内容</div>
     <div>我是50元套餐内容</div>
@@ -93,7 +93,7 @@ import { Accordion } from 'zarm';
 | className | string | | | 追加类名 |
 | accordion | boolean | false | | 是否使用手风琴模式 |
 | animated | boolean | false | | 是否添加展开动画 |
-| defaultActiveIndex | array | [] | | 初始化默认展开项索引数组 |
+| defaultActiveIndex | array or string or number | [] | | 初始化默认展开项索引数组或字符串或数字 |
 | onChange | <code>(index) => void</code> | noop | \(index: string\) | 点击某一项的回调函数 |
 
 ### Accordion.Item API
