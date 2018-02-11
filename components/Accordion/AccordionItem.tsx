@@ -1,12 +1,17 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { AccordionItemProps } from './PropsType';
+import { BaseAccordionItemProps } from './PropsType';
+
+export interface AccordionItemProps extends BaseAccordionItemProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 interface AccordionItemState {
   active: boolean;
 }
 
-export default class Item extends PureComponent<AccordionItemProps, AccordionItemState> {
+export default class AccordionItem extends PureComponent<AccordionItemProps, AccordionItemState> {
 
   static defaultProps = {
     prefixCls: 'za-accordion',

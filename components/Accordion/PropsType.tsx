@@ -1,4 +1,4 @@
-export default interface PropsType  {
+export interface BaseAccordionProps  {
   activeIndex?: string | number | Array<string | number>;
   defaultActiveIndex?: string | number | Array<string | number>;
   onChange: (key: number) => void;
@@ -6,13 +6,11 @@ export default interface PropsType  {
   animated?: boolean;
 }
 
-export interface AccordionItemProps {
+export interface BaseAccordionItemProps {
   title: string | JSX.Element;
   index: string;
   activeIndex?: Array<string | number>;
   accordion?: boolean;
   animated?: boolean;
-  prefixCls?: string;
-  className?: string;
   onItemChange?: (key: string) => void;
 }
