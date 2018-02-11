@@ -406,37 +406,6 @@ exports[`Input.Textarea autoHeight 1`] = `
 </Input>
 `;
 
-exports[`Input.Textarea autosize 1`] = `
-<Input
-  autosize={true}
-  onChange={[Function]}
-  rows={4}
-  type="textarea"
-  value="foo"
->
-  <InputTextarea
-    autosize={true}
-    disabled={false}
-    onChange={[Function]}
-    prefixCls="za-input"
-    rows={4}
-    showLength={false}
-    value="foo"
-  >
-    <div
-      className="za-input za-input-textarea"
-    >
-      <textarea
-        disabled={false}
-        onChange={[Function]}
-        rows={4}
-        value="foo"
-      />
-    </div>
-  </InputTextarea>
-</Input>
-`;
-
 exports[`Input.Textarea renders correctly 1`] = `
 <div
   class="za-input za-input-textarea"
