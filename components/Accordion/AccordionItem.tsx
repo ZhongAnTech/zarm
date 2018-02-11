@@ -7,17 +7,13 @@ export interface AccordionItemProps extends BaseAccordionItemProps {
   className?: string;
 }
 
-interface AccordionItemState {
-  active: boolean;
-}
-
-export default class AccordionItem extends PureComponent<AccordionItemProps, AccordionItemState> {
+export default class AccordionItem extends PureComponent<AccordionItemProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-accordion',
   };
 
-  content: HTMLDivElement;
+  private content;
 
   constructor(props) {
     super(props);
@@ -94,9 +90,8 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, Acc
     const { prefixCls, className, animated } = this.props;
     const { active } = this.state;
 
-    const cls = classnames(`${prefixCls}-item`, {
+    const cls = classnames(`${prefixCls}-item`, className, {
       active,
-      [className as string]: !!className,
     });
     const titleCls = `${prefixCls}-item-title`;
     const contentCls = classnames(`${prefixCls}-item-content`, {
@@ -123,7 +118,7 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, Acc
         </div>
         <div
           className={contentCls}
-          ref={(content) => this.content = content as HTMLDivElement}
+          ref={(content) => this.content = content}
         >
           <div className={contentInnerCls}>
             {children}

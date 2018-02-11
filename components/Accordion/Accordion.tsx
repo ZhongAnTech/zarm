@@ -8,11 +8,7 @@ export interface AccordionProps extends BaseAccordionProps {
   className?: string;
 }
 
-interface AccordionState {
-  activeIndex: Array<string>;
-}
-
-export default class Accordion extends PureComponent<AccordionProps, AccordionState> {
+export default class Accordion extends PureComponent<AccordionProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-accordion',
