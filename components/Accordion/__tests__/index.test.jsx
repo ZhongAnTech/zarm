@@ -46,6 +46,51 @@ describe('Accordion', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders correctly with activeIndex', () => {
+    props.activeIndex = [0];
+    const wrapper = render(
+      <Accordion {...props}>
+        <Accordion.Item title="50元套餐">
+          <div>50元套餐内容</div>
+        </Accordion.Item>
+        <Accordion.Item title="100元套餐">
+          <div>100元套餐内容</div>
+        </Accordion.Item>
+      </Accordion>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders correctly with dynamic activeIndex', () => {
+    props.activeIndex = [0];
+    const wrapper = render(
+      <Accordion {...props}>
+        <Accordion.Item title="50元套餐">
+          <div>50元套餐内容</div>
+        </Accordion.Item>
+        <Accordion.Item title="100元套餐">
+          <div>100元套餐内容</div>
+        </Accordion.Item>
+      </Accordion>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+
+    return Promise.resolve([1]).then((active) => {
+      props.activeIndex = active;
+      const wrapperDynamic = render(
+        <Accordion {...props}>
+          <Accordion.Item title="50元套餐">
+            <div>50元套餐内容</div>
+          </Accordion.Item>
+          <Accordion.Item title="100元套餐">
+            <div>100元套餐内容</div>
+          </Accordion.Item>
+        </Accordion>
+      );
+      expect(toJson(wrapperDynamic)).toMatchSnapshot();
+    });
+  });
+
   it('click accordion item correctly', () => {
     props.onChange = jest.fn();
     const wrapper = mount(

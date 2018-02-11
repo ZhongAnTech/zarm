@@ -48,15 +48,9 @@ export default class Accordion extends PureComponent<AccordionProps, AccordionSt
       onChange(key);
       return;
     }
-    if (activeIndex.indexOf(key) > -1) {
-      this.setState({
-        activeIndex: [],
-      });
-    } else {
-      this.setState({
-        activeIndex: [key],
-      });
-    }
+    this.setState({
+      activeIndex: activeIndex.indexOf(key) > -1 ? [] : [key],
+    });
     onChange(Number(key));
   }
 
@@ -110,7 +104,7 @@ export default class Accordion extends PureComponent<AccordionProps, AccordionSt
 
     return (
       <div className={cls}>
-          {this.renderItems()}
+        {this.renderItems()}
       </div>
     );
   }
