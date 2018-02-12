@@ -32,6 +32,38 @@ exports[`Accordion renders correctly 1`] = `
 </div>
 `;
 
+exports[`Accordion renders correctly with accordion mode 1`] = `
+<div
+  class="za-accordion"
+>
+  <div
+    class="za-accordion-item"
+  >
+    <div
+      class="za-accordion-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-accordion-item-arrow"
+      />
+    </div>
+    <div
+      class="za-accordion-item-content"
+    >
+      <div
+        class="za-accordion-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Accordion renders correctly with activeIndex 1`] = `
 <div
   class="za-accordion"

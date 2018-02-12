@@ -4,11 +4,21 @@ import toJson from 'enzyme-to-json';
 import Accordion from '../index';
 
 describe('Accordion', () => {
-  const props = {
-    accordion: true,
-  };
+  const props = {};
 
   it('renders correctly', () => {
+    const wrapper = render(
+      <Accordion {...props}>
+        <Accordion.Item title="50元套餐">
+          <div>50元套餐内容</div>
+        </Accordion.Item>
+      </Accordion>
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders correctly with accordion mode', () => {
+    props.accordion = true;
     const wrapper = render(
       <Accordion {...props}>
         <Accordion.Item title="50元套餐">
