@@ -9,4 +9,7 @@ _book
 .DS_Store
 .temp
 *.log
-npm-debug.*
+examples-rn/ios/build
+components/**/*.js
+components/*.js
+xcuserdata

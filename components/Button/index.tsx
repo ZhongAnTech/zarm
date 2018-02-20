@@ -16,7 +16,6 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     block: false,
     bordered: false,
     active: false,
-    focus: false,
     disabled: false,
     loading: false,
     onClick() {},
@@ -32,7 +31,6 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       icon,
       block,
       active,
-      focus,
       bordered,
       disabled,
       loading,
@@ -48,7 +46,6 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       block,
       bordered,
       active,
-      focus,
       disabled,
     });
 
