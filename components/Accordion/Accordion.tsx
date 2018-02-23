@@ -12,7 +12,7 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-accordion',
-    accordion: false,
+    multiple: true,
     animated: false,
     open: false,
     onChange: () => {},
@@ -37,11 +37,11 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   }
 
   onItemChange = (key) => {
-    const { accordion, onChange } = this.props;
+    const { multiple, onChange } = this.props;
     const { activeIndex } = this.state;
     const hasKey = activeIndex.indexOf(key) > -1;
 
-    if (!accordion) {
+    if (multiple) {
       this.setState({
         activeIndex: hasKey ? activeIndex.filter(i => i !== key) : [...activeIndex, key],
       });
@@ -54,13 +54,13 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   }
 
   getActiveIndex(props) {
-    const { activeIndex, defaultActiveIndex, accordion } = props;
+    const { activeIndex, defaultActiveIndex, multiple } = props;
 
     const defaultIndex = (activeIndex || activeIndex === 0) ? activeIndex : defaultActiveIndex;
 
     if (defaultIndex || defaultIndex === 0) {
       if (isArray(defaultIndex)) {
-        return accordion ?
+        return !multiple ?
         [String(defaultIndex[0])] : (defaultIndex as Array<any>).map(key => String(key));
       } else {
         return [String(defaultIndex)];
@@ -79,14 +79,13 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   }
 
   renderItems() {
-    const { accordion, animated, open } = this.props;
+    const { animated, open } = this.props;
     const { activeIndex } = this.state;
 
     return Children.map(this.props.children, (ele, index) => {
 
       return cloneElement(ele as JSX.Element, {
         index: String(index),
-        accordion,
         animated,
         activeIndex,
         open,

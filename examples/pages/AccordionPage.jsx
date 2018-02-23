@@ -55,7 +55,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="手风琴模式" />
             <Panel.Body>
-              <Accordion accordion animated>
+              <Accordion multiple={false} animated>
                 <Accordion.Item title="50元套餐">
                   <div>我是50元套餐内容</div>
                   <div>我是50元套餐内容</div>
