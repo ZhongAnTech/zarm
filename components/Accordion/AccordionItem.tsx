@@ -38,9 +38,12 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, any
   }
 
   onClickItem = () => {
-    const { index, onItemChange, animated } = this.props;
+    const { index, onItemChange, animated, open } = this.props;
     const { active } = this.state;
 
+    if (open) {
+      return;
+    }
     this.setState({
       active: !active,
     });
@@ -87,18 +90,20 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, any
   }
 
   getCls() {
-    const { prefixCls, className, animated } = this.props;
+    const { prefixCls, className, animated, open } = this.props;
     const { active } = this.state;
 
     const cls = classnames(`${prefixCls}-item`, className, {
-      active,
+      active: active || open,
     });
     const titleCls = `${prefixCls}-item-title`;
     const contentCls = classnames(`${prefixCls}-item-content`, {
       [`${prefixCls}-item-content-anim`]: animated,
     });
     const contentInnerCls = `${prefixCls}-item-content-inner`;
-    const arrowCls = `${prefixCls}-item-arrow`;
+    const arrowCls = classnames(`${prefixCls}-item-arrow`, {
+      [`${prefixCls}-item-arrow-hidden`]: open,
+    });
 
     return { cls, titleCls, contentCls, contentInnerCls, arrowCls };
   }

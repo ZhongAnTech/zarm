@@ -210,7 +210,7 @@ exports[`Accordion renders correctly with defaultActiveIndex 1`] = `
 </div>
 `;
 
-exports[`Accordion renders correctly with dynamic activeIndex 1`] = `
+exports[`Accordion renders correctly with number activeIndex 1`] = `
 <div
   class="za-accordion"
 >
@@ -267,7 +267,178 @@ exports[`Accordion renders correctly with dynamic activeIndex 1`] = `
 </div>
 `;
 
-exports[`Accordion renders correctly with dynamic activeIndex 2`] = `
+exports[`Accordion renders correctly with number defaultActiveIndex 1`] = `
+<div
+  class="za-accordion"
+>
+  <div
+    class="za-accordion-item active"
+  >
+    <div
+      class="za-accordion-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-accordion-item-arrow"
+      />
+    </div>
+    <div
+      class="za-accordion-item-content za-accordion-item-content-anim"
+    >
+      <div
+        class="za-accordion-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-accordion-item"
+  >
+    <div
+      class="za-accordion-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-accordion-item-arrow"
+      />
+    </div>
+    <div
+      class="za-accordion-item-content za-accordion-item-content-anim"
+    >
+      <div
+        class="za-accordion-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Accordion renders correctly with open mode 1`] = `
+<div
+  class="za-accordion"
+>
+  <div
+    class="za-accordion-item active"
+  >
+    <div
+      class="za-accordion-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-accordion-item-arrow za-accordion-item-arrow-hidden"
+      />
+    </div>
+    <div
+      class="za-accordion-item-content za-accordion-item-content-anim"
+    >
+      <div
+        class="za-accordion-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-accordion-item active"
+  >
+    <div
+      class="za-accordion-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-accordion-item-arrow za-accordion-item-arrow-hidden"
+      />
+    </div>
+    <div
+      class="za-accordion-item-content za-accordion-item-content-anim"
+    >
+      <div
+        class="za-accordion-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Accordion renders correctly with string activeIndex 1`] = `
+<div
+  class="za-accordion"
+>
+  <div
+    class="za-accordion-item"
+  >
+    <div
+      class="za-accordion-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-accordion-item-arrow"
+      />
+    </div>
+    <div
+      class="za-accordion-item-content za-accordion-item-content-anim"
+    >
+      <div
+        class="za-accordion-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-accordion-item active"
+  >
+    <div
+      class="za-accordion-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-accordion-item-arrow"
+      />
+    </div>
+    <div
+      class="za-accordion-item-content za-accordion-item-content-anim"
+    >
+      <div
+        class="za-accordion-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Accordion renders correctly with string defaultActiveIndex 1`] = `
 <div
   class="za-accordion"
 >

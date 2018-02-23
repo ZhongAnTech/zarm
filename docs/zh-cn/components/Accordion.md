@@ -93,6 +93,7 @@ import { Accordion } from 'zarm';
 | className | string | | | 追加类名 |
 | accordion | boolean | false | | 是否使用手风琴模式 |
 | animated | boolean | false | | 是否添加展开动画 |
+| open | boolean | false | | 是否强制展开 |
 | activeIndex | array or string or number | [] | | 动态更新展开项的索引数组或字符串或数字 |
 | defaultActiveIndex | array or string or number | [] | | 初始化默认展开项的索引数组或字符串或数字 |
 | onChange | <code>(index) => void</code> | noop | \(index: number\) | 点击某一项的回调函数 |

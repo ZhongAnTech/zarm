@@ -14,6 +14,7 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
     prefixCls: 'za-accordion',
     accordion: false,
     animated: false,
+    open: false,
     onChange: () => {},
   };
 
@@ -38,14 +39,17 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   onItemChange = (key) => {
     const { accordion, onChange } = this.props;
     const { activeIndex } = this.state;
+    const hasKey = activeIndex.indexOf(key) > -1;
 
     if (!accordion) {
-      onChange(key);
-      return;
+      this.setState({
+        activeIndex: hasKey ? activeIndex.filter(i => i !== key) : [...activeIndex, key],
+      });
+    } else {
+      this.setState({
+        activeIndex: hasKey ? [] : [key],
+      });
     }
-    this.setState({
-      activeIndex: activeIndex.indexOf(key) > -1 ? [] : [key],
-    });
     onChange(Number(key));
   }
 
@@ -75,7 +79,7 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   }
 
   renderItems() {
-    const { accordion, animated } = this.props;
+    const { accordion, animated, open } = this.props;
     const { activeIndex } = this.state;
 
     return Children.map(this.props.children, (ele, index) => {
@@ -85,6 +89,7 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
         accordion,
         animated,
         activeIndex,
+        open,
         onItemChange: this.onItemChange,
       });
     });
