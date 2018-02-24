@@ -1,16 +1,17 @@
 export interface BaseAccordionProps  {
   activeIndex?: string | number | Array<string | number>;
   defaultActiveIndex?: string | number | Array<string | number>;
-  onChange: (key: number) => void;
-  accordion?: boolean;
+  multiple?: boolean;
   animated?: boolean;
+  open?: boolean;
+  onChange: (key: number) => void;
 }
 
 export interface BaseAccordionItemProps {
   title: string | JSX.Element;
   index: string;
-  activeIndex?: Array<string | number>;
-  accordion?: boolean;
+  activeIndex?: Array<string>;
   animated?: boolean;
+  open?: boolean;
   onItemChange?: (key: string) => void;
 }
