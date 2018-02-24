@@ -52,7 +52,9 @@
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS"
   },
   "dependencies": {
+    "better-scroll": "^1.8.0",
     "classnames": "^2.2.5",
+    "iscroll": "^5.2.0",
     "normalize.css": "^7.0.0",
     "zscroller": "^0.2.5"
   },
@@ -124,7 +126,7 @@
     "tslint": "^5.7.0",
     "tslint-eslint-rules": "^4.1.1",
     "tslint-react": "^3.2.0",
-    "typescript": "^2.5.3",
+    "typescript": "^2.6.2",
     "url-loader": "^0.5.8",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",

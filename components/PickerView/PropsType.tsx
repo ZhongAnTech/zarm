@@ -9,4 +9,5 @@ export interface BasePickerViewProps {
   itemRender?: (item?: object) => string;
   cols?: number;
   disabled?: boolean;
+  onTransition?: (value: boolean) => void;
 }

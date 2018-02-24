@@ -34,37 +34,36 @@ exports[`Picker Picker render visible 1`] = `
           </div>
         </div>
         <div
-          class="za-picker-mask-top"
+          class="za-picker-panel"
         >
           <div
-            class="za-picker-mask-bottom"
+            class="za-picker-mask-top"
+          />
+          <div
+            class="za-picker-view"
           >
             <div
-              class="za-picker-view"
+              class="za-wheel"
             >
               <div
-                class="za-wheel"
+                class="za-wheel-content"
               >
                 <div
-                  class="za-wheel-indicator"
-                />
-                <div
-                  class="za-wheel-content"
+                  class="za-wheel-item za-wheel-item-selected"
                 >
-                  <div
-                    class="za-wheel-item za-wheel-item-selected"
-                  >
-                    选项一
-                  </div>
-                  <div
-                    class="za-wheel-item"
-                  >
-                    选项二
-                  </div>
+                  选项一
+                </div>
+                <div
+                  class="za-wheel-item"
+                >
+                  选项二
                 </div>
               </div>
             </div>
           </div>
+          <div
+            class="za-picker-mask-bottom"
+          />
         </div>
       </div>
     </div>
@@ -110,58 +109,54 @@ exports[`Picker render custom label 1`] = `
           </div>
         </div>
         <div
-          class="za-picker-mask-top"
+          class="za-picker-panel"
         >
           <div
-            class="za-picker-mask-bottom"
+            class="za-picker-mask-top"
+          />
+          <div
+            class="za-picker-view"
           >
             <div
-              class="za-picker-view"
+              class="za-wheel"
             >
               <div
-                class="za-wheel"
+                class="za-wheel-content"
               >
                 <div
-                  class="za-wheel-indicator"
-                />
-                <div
-                  class="za-wheel-content"
+                  class="za-wheel-item za-wheel-item-selected"
                 >
-                  <div
-                    class="za-wheel-item za-wheel-item-selected"
-                  >
-                    北京市
-                  </div>
-                  <div
-                    class="za-wheel-item"
-                  >
-                    上海市
-                  </div>
+                  北京市
+                </div>
+                <div
+                  class="za-wheel-item"
+                >
+                  上海市
                 </div>
               </div>
+            </div>
+            <div
+              class="za-wheel"
+            >
               <div
-                class="za-wheel"
+                class="za-wheel-content"
               >
                 <div
-                  class="za-wheel-indicator"
-                />
-                <div
-                  class="za-wheel-content"
+                  class="za-wheel-item za-wheel-item-selected"
                 >
-                  <div
-                    class="za-wheel-item za-wheel-item-selected"
-                  >
-                    海淀区
-                  </div>
-                  <div
-                    class="za-wheel-item"
-                  >
-                    西城区
-                  </div>
+                  海淀区
+                </div>
+                <div
+                  class="za-wheel-item"
+                >
+                  西城区
                 </div>
               </div>
             </div>
           </div>
+          <div
+            class="za-picker-mask-bottom"
+          />
         </div>
       </div>
     </div>

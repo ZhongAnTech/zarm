@@ -2,7 +2,7 @@ import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import Popup from '../Popup';
 import PickerView from '../PickerView';
-import RenderInBody from '../RenderInBody';
+// import RenderInBody from '../RenderInBody';
 import { BasePickerProps } from './PropsType';
 
 const getValue = (props, defaultValue?: any) => {
@@ -43,6 +43,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   private tempValue;
   private tempObjValue;
+  private isScrolling;
 
   constructor(props) {
     super(props);
@@ -69,8 +70,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
       firstValue: selected.map(item => item[valueMember!]),
       firstObjValue: selected,
     });
-    // this.firstValue = selected.map(item => item[valueMember!]);
-    // this.firstObjValue = selected;
 
     if (typeof onInit === 'function') {
       onInit(selected);
@@ -103,6 +102,9 @@ export default class Picker extends PureComponent<PickerProps, any> {
   }
 
   onOk = () => {
+    if (this.isScrolling) {
+      return false;
+    }
     const value = this.state.value.length === 0 ? this.state.firstValue : this.state.value;
     const objValue = this.state.objValue.length === 0 ? this.state.firstObjValue : this.state.objValue;
 
@@ -131,6 +133,10 @@ export default class Picker extends PureComponent<PickerProps, any> {
     this.setState({ visible });
   }
 
+  onTransition(isScrolling) {
+    this.isScrolling = isScrolling;
+  }
+
   render() {
     const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
     const { visible, value, firstObjValue } = this.state;
@@ -141,7 +147,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     });
 
     return (
-      <RenderInBody>
+      // <RenderInBody>
         <div className={cls} onClick={stopPropagation}>
           <Popup
             visible={visible}
@@ -160,12 +166,13 @@ export default class Picker extends PureComponent<PickerProps, any> {
                 firstObjValue={firstObjValue}
                 onInit={this.onInit}
                 onChange={this.onChange}
+                onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
               />
             </div>
           </Popup>
           {content}
         </div>
-      </RenderInBody>
+      // </RenderInBody>
     );
   }
 }

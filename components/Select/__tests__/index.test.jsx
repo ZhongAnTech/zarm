@@ -30,7 +30,7 @@ describe('Select', () => {
   });
 
   it('Cascader Select', () => {
-    jest.useFakeTimers();
+    // jest.useFakeTimers();
     const wrapper = mount(
       <Select
         dataSource={[
@@ -55,7 +55,7 @@ describe('Select', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: ['1', '12'] });
-    jest.runAllTimers();
+    // jest.runAllTimers();
     wrapper.unmount();
   });
 

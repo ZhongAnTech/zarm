@@ -124,126 +124,126 @@ class Page extends Component {
 
     return (
       <Container className="picker-page">
-        <Scroll>
-          <Header title="选择器 Picker & Select" />
-          <main>
-            <Panel>
-              <Panel.Header title="选择器 Picker" />
-              <Panel.Body>
-                <Cell
-                  description={
-                    <Button size="sm" onClick={() => this.toggle('single')}>打开</Button>
-                  }>单列</Cell>
+        {/* <Scroll> */}
+        <Header title="选择器 Picker & Select" />
+        <main>
+          <Panel>
+            <Panel.Header title="选择器 Picker" />
+            <Panel.Body>
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('single')}>打开</Button>
+                }>单列</Cell>
 
-                <Cell
-                  description={
-                    <Button size="sm" onClick={() => this.toggle('multi')}>打开</Button>
-                  }>多列</Cell>
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('multi')}>打开</Button>
+                }>多列</Cell>
 
-                <Cell
-                  description={
-                    <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
-                  }>级联</Cell>
+              <Cell
+                description={
+                  <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
+                }>级联</Cell>
 
-                <Cell
-                  description={
-                    <Picker
-                      title="custom title"
-                      cancelText="Cancel"
-                      okText="Ok"
-                      dataSource={diy.dataSource}
-                      value={diy.value}
-                      valueMember="code"
-                      itemRender={data => data.name}
-                      onOk={(selected) => {
-                        console.log('Picker onOk: ', selected);
-                        diy.value = selected.map(item => item.code);
-                        this.setState({
-                          diy,
-                        });
-                        Toast.show(JSON.stringify(selected));
-                      }}>
-                      <Button size="sm">打开</Button>
-                    </Picker>
-                  }>自定义</Cell>
-
-              </Panel.Body>
-            </Panel>
-
-            <Panel>
-              <Panel.Header title="选择器表单控件 Select" />
-              <Panel.Body>
-                <Cell title="城市">
-                  <Select
-                    visible={select.visible}
-                    placeholder="请选择省市区"
-                    value={select.value}
-                    dataSource={select.dataSource}
+              <Cell
+                description={
+                  <Picker
+                    title="custom title"
+                    cancelText="Cancel"
+                    okText="Ok"
+                    dataSource={diy.dataSource}
+                    value={diy.value}
+                    valueMember="code"
+                    itemRender={data => data.name}
                     onOk={(selected) => {
-                      console.log('Select onOk: ', selected);
-                      select.value = selected.map(item => item.value);
-                      this.setState({ select });
-                    }}
-                    />
-                </Cell>
-              </Panel.Body>
-            </Panel>
+                      console.log('Picker onOk: ', selected);
+                      diy.value = selected.map(item => item.code);
+                      this.setState({
+                        diy,
+                      });
+                      Toast.show(JSON.stringify(selected));
+                    }}>
+                    <Button size="sm">打开</Button>
+                  </Picker>
+                }>自定义</Cell>
 
-            <Panel>
-              <Panel.Header title="平铺选择器 PickerView" />
-              <Panel.Body>
-                <PickerView
-                  value={view.value}
-                  dataSource={view.dataSource}
-                  onChange={selected => console.log('PickerView onChange: ', selected)}
+            </Panel.Body>
+          </Panel>
+
+          <Panel>
+            <Panel.Header title="选择器表单控件 Select" />
+            <Panel.Body>
+              <Cell title="城市">
+                <Select
+                  visible={select.visible}
+                  placeholder="请选择省市区"
+                  value={select.value}
+                  dataSource={select.dataSource}
+                  onOk={(selected) => {
+                    console.log('Select onOk: ', selected);
+                    select.value = selected.map(item => item.value);
+                    this.setState({ select });
+                  }}
                   />
-              </Panel.Body>
-            </Panel>
+              </Cell>
+            </Panel.Body>
+          </Panel>
 
-            <Picker
-              visible={single.visible}
-              value={single.value}
-              dataSource={single.dataSource}
-              onOk={(selected) => {
-                console.log('Picker onOk: ', selected);
-                single.value = selected.map(item => item.value);
-                this.setState({ single });
-                Toast.show(JSON.stringify(selected));
-                this.toggle('single');
-              }}
-              onCancel={() => this.toggle('single')}
-              />
+          <Panel>
+            <Panel.Header title="平铺选择器 PickerView" />
+            <Panel.Body>
+              <PickerView
+                value={view.value}
+                dataSource={view.dataSource}
+                onChange={selected => console.log('PickerView onChange: ', selected)}
+                />
+            </Panel.Body>
+          </Panel>
 
-            <Picker
-              visible={multi.visible}
-              value={multi.value}
-              dataSource={multi.dataSource}
-              onOk={(selected) => {
-                console.log('Picker onOk: ', selected);
-                multi.value = selected.map(item => item.value);
-                this.setState({ multi });
-                Toast.show(JSON.stringify(selected));
-                this.toggle('multi');
-              }}
-              onCancel={() => this.toggle('multi')}
-              />
+          <Picker
+            visible={single.visible}
+            value={single.value}
+            dataSource={single.dataSource}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              single.value = selected.map(item => item.value);
+              this.setState({ single });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('single');
+            }}
+            onCancel={() => this.toggle('single')}
+            />
 
-            <Picker
-              visible={cascade.visible}
-              value={cascade.value}
-              dataSource={cascade.dataSource}
-              onOk={(selected) => {
-                console.log('Picker onOk: ', selected);
-                cascade.value = selected.map(item => item.value);
-                this.setState({ cascade });
-                Toast.show(JSON.stringify(selected));
-                this.toggle('cascade');
-              }}
-              onCancel={() => this.toggle('cascade')}
-              />
-          </main>
-          <Footer />
-        </Scroll>
+          <Picker
+            visible={multi.visible}
+            value={multi.value}
+            dataSource={multi.dataSource}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              multi.value = selected.map(item => item.value);
+              this.setState({ multi });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('multi');
+            }}
+            onCancel={() => this.toggle('multi')}
+            />
+
+          <Picker
+            visible={cascade.visible}
+            value={cascade.value}
+            dataSource={cascade.dataSource}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              cascade.value = selected.map(item => item.value);
+              this.setState({ cascade });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('cascade');
+            }}
+            onCancel={() => this.toggle('cascade')}
+            />
+        </main>
+        <Footer />
+        {/* </Scroll> */}
       </Container>
     );
   }

@@ -48,6 +48,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   private initDate;
+  private isScrolling;
 
   constructor(props) {
     super(props);
@@ -99,6 +100,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   // 点击确定
   onOk = () => {
+    if (this.isScrolling) {
+      return false;
+    }
     const { onOk } = this.props;
     const value = this.state.value || this.initDate;
     this.setState({
@@ -113,6 +117,10 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   // 切换显示状态
   toggle = (visible = false) => {
     this.setState({ visible });
+  }
+
+  onTransition(isScrolling) {
+    this.isScrolling = isScrolling;
   }
 
   close(key) {
@@ -175,6 +183,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
                 value={value}
                 onInit={this.onInit}
                 onChange={this.onValueChange}
+                onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
               />
             </div>
           </Popup>

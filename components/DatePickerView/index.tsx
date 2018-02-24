@@ -32,8 +32,8 @@ const setMonth = (date, month) => {
 };
 
 // 转成Date格式
-const getGregorianCalendar = (arg) => {
-  return new Date(...arg);
+const getGregorianCalendar = (year, month, day, hour, minutes, seconds) => {
+  return new Date(year, month, day, hour, minutes, seconds);
 };
 
 const isExtendDate = (date) => {
@@ -427,11 +427,17 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   }
 
   getDefaultMinDate() {
-    return getGregorianCalendar([2000, 0, 1, 0, 0, 0]);
+    return getGregorianCalendar(2000, 0, 1, 0, 0, 0);
   }
 
   getDefaultMaxDate() {
-    return getGregorianCalendar([2030, 11, 30, 23, 59, 59]);
+    return getGregorianCalendar(2030, 11, 30, 23, 59, 59);
+  }
+
+  onTransition(isScrolling) {
+    if (typeof this.props.onTransition === 'function') {
+      this.props.onTransition!(isScrolling);
+    }
   }
 
   renderWheel = (item, index) => {
@@ -446,6 +452,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
         valueMember={valueMember}
         disabled={disabled}
         onChange={selected => this.onValueChange(selected, index)}
+        onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
     );
   }
@@ -454,12 +461,12 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     const { prefixCls, className } = this.props;
     const { dataSource } = this.getColsValue();
     return (
-      <div className={`${prefixCls}-mask-top`}>
-        <div className={`${prefixCls}-mask-bottom`}>
-          <div className={classnames(`${prefixCls}-view`, className)}>
-            {dataSource.map(this.renderWheel)}
-          </div>
+      <div className={`${prefixCls}-panel`}>
+        <div className={`${prefixCls}-mask-top`} />
+        <div className={classnames(`${prefixCls}-view`, className)}>
+          {dataSource.map(this.renderWheel)}
         </div>
+        <div className={`${prefixCls}-mask-bottom`} />
       </div>
     );
   }
