@@ -3,17 +3,18 @@ $prefixCls: $prefixCls-accordion;
 .#{$prefixCls} {
 
   &-item {
-    position: relative;
-    @include onepx(bottom);
 
     &-title {
+      position: relative;
       height: $accordion-height;
       line-height: $accordion-height;
       padding: 0 $accordion-padding;
+      @include onepx(bottom);
     }
     &-content {
       position: relative;
       height: 0;
+      @include onepx(bottom);
       overflow: hidden;      
 
       &-inner {
@@ -42,7 +43,6 @@ $prefixCls: $prefixCls-accordion;
     &.active {
       .#{$prefixCls}-item-content {
         height: auto;
-        @include onepx(top);
       }
       .#{$prefixCls}-item-arrow {
         transform: rotate(-135deg);
