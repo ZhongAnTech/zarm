@@ -41,15 +41,20 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
     const { activeIndex } = this.state;
     const hasKey = activeIndex.indexOf(key) > -1;
 
+    let newActiveIndex: Array<string> = [];
     if (multiple) {
-      this.setState({
-        activeIndex: hasKey ? activeIndex.filter(i => i !== key) : [...activeIndex, key],
-      });
+      if (hasKey) {
+        newActiveIndex = activeIndex.filter(i => i !== key);
+      } else {
+        newActiveIndex = activeIndex.slice(0);
+        newActiveIndex.push(key);
+      }
     } else {
-      this.setState({
-        activeIndex: hasKey ? [] : [key],
-      });
+      newActiveIndex = hasKey ? [] : [key];
     }
+    this.setState({
+      activeIndex: newActiveIndex,
+    });
     onChange(Number(key));
   }
 

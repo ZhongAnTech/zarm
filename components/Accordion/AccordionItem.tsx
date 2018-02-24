@@ -57,7 +57,6 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, any
 
   isActive(props) {
     const { index, activeIndex = [] } = props;
-
     return activeIndex.indexOf(index) > -1;
   }
 

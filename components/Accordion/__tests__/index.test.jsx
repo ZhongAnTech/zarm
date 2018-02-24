@@ -18,7 +18,7 @@ describe('Accordion', () => {
   });
 
   it('renders correctly with accordion mode', () => {
-    props.accordion = true;
+    props.multiple = false;
     const wrapper = render(
       <Accordion {...props}>
         <Accordion.Item title="50元套餐">
@@ -152,7 +152,7 @@ describe('Accordion', () => {
     props.onChange = jest.fn();
     const wrapper = mount(
       <Accordion {...props}>
-        <Accordion.Item title="50元套餐">
+        <Accordion.Item title="50元套餐" {...props}>
           <div>50元套餐内容</div>
         </Accordion.Item>
       </Accordion>
