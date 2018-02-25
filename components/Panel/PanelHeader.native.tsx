@@ -5,6 +5,7 @@ import { BasePanelHeaderProps } from './PropsType';
 
 export interface PanelHeaderProps extends BasePanelHeaderProps {
     style?: CSSProperties;
+    styles?: typeof panelStyle;
 }
 const ChangeComponent = props => {
     const component = props.component;
@@ -20,13 +21,14 @@ export default class PanelHeader extends PureComponent<PanelHeaderProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-panel',
+    styles: panelStyles,
   };
 
   render() {
-    const { title, more, style } = this.props;
+    const { title, more, style, styles } = this.props;
 
     const wrapperStyle = [
-        panelStyles!.panelHeader,
+        styles!.panelHeader,
         style,
     ] as any[];
     return (

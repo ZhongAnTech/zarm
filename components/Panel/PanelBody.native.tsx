@@ -1,10 +1,10 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { StyleSheet, View, ViewStyle, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import panelStyle from './style/index.native';
-import { BasePanelHeaderProps } from './PropsType';
 
 export interface PanelBodyProps {
     style?: CSSProperties;
+    styles?: typeof panelStyle;
 }
 
 const panelStyles = StyleSheet.create<any>(panelStyle);
@@ -13,13 +13,14 @@ export default class PanelHeader extends PureComponent<PanelBodyProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-panel',
+    styles: panelStyles,
   };
 
   render() {
-    const { style, children } = this.props;
+    const { styles, style, children } = this.props;
 
     const wrapperStyle = [
-        panelStyles!.panelBody,
+        styles!.panelBody,
         style,
     ]  as any[];
     return (

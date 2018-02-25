@@ -5,6 +5,7 @@ import { BasePanelFooterProps } from './PropsType';
 
 export interface PanelFooterProps extends BasePanelFooterProps {
     style?: CSSProperties;
+    styles?: typeof panelStyle;
 }
 const ChangeComponent = props => {
     const component = props.component;
@@ -20,13 +21,14 @@ export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-panel',
+    styles: panelStyles,
   };
 
   render() {
-    const { title, more, style } = this.props;
+    const { title, more, style, styles } = this.props;
 
     const wrapperStyle = [
-        panelStyles!.panelFooter,
+        styles!.panelFooter,
         style,
     ] as any[];
     return (

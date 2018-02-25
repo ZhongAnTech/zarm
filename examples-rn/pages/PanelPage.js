@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { ScrollView, View, Alert, StyleSheet } from 'react-native';
-import { Button, Panel } from '../../components/index.native';
-import {Text} from 'react-native'
+import { Panel } from '../../components/index.native';
+import { Text } from 'react-native';
 
-const styles = StyleSheet.create({
+const styles = {
   moreHeaderColor: {
-    color: '#12c287'
+    color: '#12c287',
   },
   moreFooterColor: {
     color: '#999999',
-    fontSize: 12
+    fontSize: 12,
   },
   box: {
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
   },
   bodyColor: {
-    color: '#333'
-  }
-});
+    color: '#333',
+  },
+};
 
 
 export default class App extends Component<{}> {
@@ -29,10 +29,10 @@ export default class App extends Component<{}> {
       null,
       'click more',
       [
-        {text: '确定', onPress: () => console.log('OK Pressed!')},
+        { text: '确定', onPress: () => console.log('OK Pressed!') },
       ]
       // { cancelable: false }
-    )
+    );
   }
   render() {
     return (
