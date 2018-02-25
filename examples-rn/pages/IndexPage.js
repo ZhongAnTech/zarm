@@ -4,7 +4,6 @@ import { UIFORM, UICONROL, UIVIEW } from '../demoList';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 
-
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' +
 //     'Cmd+D or shake for dev menu',
