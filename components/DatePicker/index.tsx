@@ -1,8 +1,9 @@
-import React, { Component, cloneElement } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import { BaseDatePickerProps } from './PropsType';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
+import RenderInBody from '../RenderInBody';
 import DatePickerView from '../DatePickerView';
 
 const isExtendDate = (date) => {
@@ -15,12 +16,6 @@ const isExtendDate = (date) => {
   }
 
   return new Date(date.toString().replace(/-/g, '/'));
-};
-
-// 阻止选择器区域的默认事件
-const stopPropagation = (e) => {
-  e.stopPropagation();
-  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface DatePickerProps extends BaseDatePickerProps {
@@ -153,43 +148,38 @@ export default class DatePicker extends Component<DatePickerProps, any> {
        ...others } = this.props;
     const { visible, value } = this.state;
 
-    const classes = classnames({
-      [`${prefixCls}-container`]: true,
-      [`${prefixCls}-hidden`]: !visible,
-      [className]: !!className,
-    });
+    // const classes = classnames({
+    //   [`${prefixCls}-container`]: true,
+    //   [`${prefixCls}-hidden`]: !visible,
+    //   [className]: !!className,
+    // });
 
-    const content = children && cloneElement(children, {
-      onClick: () => this.toggle(true),
-    });
+    const cls = classnames(prefixCls, className);
 
     return (
-      <div className={prefixCls}>
-        <div className={classes} onClick={stopPropagation}>
-          <Popup
-            visible={visible}
-            onMaskClick={() => this.onMaskClick()}
-          >
-            <div className={`${prefixCls}-wrapper`}>
-              <div className={`${prefixCls}-header`}>
-                <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
-                <div className={`${prefixCls}-title`}>{title}</div>
-                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-              </div>
-              <DatePickerView
-                prefixCls={prefixCls}
-                className={className}
-                {...others}
-                value={value}
-                onInit={this.onInit}
-                onChange={this.onValueChange}
-                onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
-              />
+      <RenderInBody className={cls}>
+        <Popup
+          visible={visible}
+          onMaskClick={() => this.onMaskClick()}
+        >
+          <div className={`${prefixCls}-wrapper`}>
+            <div className={`${prefixCls}-header`}>
+              <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+              <div className={`${prefixCls}-title`}>{title}</div>
+              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
             </div>
-          </Popup>
-          {content}
-        </div>
-      </div>
+            <DatePickerView
+              prefixCls={prefixCls}
+              className={className}
+              {...others}
+              value={value}
+              onInit={this.onInit}
+              onChange={this.onValueChange}
+              onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+            />
+          </div>
+        </Popup>
+      </RenderInBody>
     );
   }
 }

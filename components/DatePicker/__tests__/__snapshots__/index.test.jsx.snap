@@ -27,942 +27,943 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
   valueMember="value"
   visible={true}
 >
-  <div
+  <RenderInBody
     className="za-picker"
   >
-    <div
-      className="za-picker-container"
-      onClick={[Function]}
-    >
-      <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
-        onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
-        visible={true}
+    <div>
+      <Portal
+        getContainer={[Function]}
       >
-        <div
-          className="za-popup"
+        <Popup
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={true}
         >
           <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
+            className="za-popup"
           >
             <div
-              className="za-picker-wrapper"
+              className="za-popup-wrapper za-popup-wrapper-bottom"
+              style={
+                Object {
+                  "WebkitTransitionDuration": "200ms",
+                  "transitionDuration": "200ms",
+                }
+              }
             >
               <div
-                className="za-picker-header"
+                className="za-picker-wrapper"
               >
                 <div
-                  className="za-picker-cancel"
-                  onClick={[Function]}
-                >
-                  取消
-                </div>
-                <div
-                  className="za-picker-title"
-                >
-                  请选择
-                </div>
-                <div
-                  className="za-picker-submit"
-                  onClick={[Function]}
-                >
-                  确定
-                </div>
-              </div>
-              <DatePickerView
-                cancelText="取消"
-                defaultValue=""
-                disabled={false}
-                locale={
-                  Object {
-                    "day": "日",
-                    "hour": "时",
-                    "minute": "分",
-                    "month": "月",
-                    "year": "年",
-                  }
-                }
-                minuteStep={1}
-                mode="date"
-                okText="确定"
-                onCancel={[Function]}
-                onChange={[Function]}
-                onClick={[Function]}
-                onInit={[Function]}
-                onMaskClick={[Function]}
-                onTransition={[Function]}
-                placeholder="请选择"
-                prefixCls="za-picker"
-                title="请选择"
-                value={2009-03-03T16:00:00.000Z}
-                valueMember="value"
-                visible={true}
-              >
-                <div
-                  className="za-picker-panel"
+                  className="za-picker-header"
                 >
                   <div
-                    className="za-picker-mask-top"
-                  />
-                  <div
-                    className="za-picker-view"
+                    className="za-picker-cancel"
+                    onClick={[Function]}
                   >
-                    <Wheel
-                      dataSource={
-                        Array [
-                          Object {
-                            "label": "2000年",
-                            "value": "2000",
-                          },
-                          Object {
-                            "label": "2001年",
-                            "value": "2001",
-                          },
-                          Object {
-                            "label": "2002年",
-                            "value": "2002",
-                          },
-                          Object {
-                            "label": "2003年",
-                            "value": "2003",
-                          },
-                          Object {
-                            "label": "2004年",
-                            "value": "2004",
-                          },
-                          Object {
-                            "label": "2005年",
-                            "value": "2005",
-                          },
-                          Object {
-                            "label": "2006年",
-                            "value": "2006",
-                          },
-                          Object {
-                            "label": "2007年",
-                            "value": "2007",
-                          },
-                          Object {
-                            "label": "2008年",
-                            "value": "2008",
-                          },
-                          Object {
-                            "label": "2009年",
-                            "value": "2009",
-                          },
-                          Object {
-                            "label": "2010年",
-                            "value": "2010",
-                          },
-                          Object {
-                            "label": "2011年",
-                            "value": "2011",
-                          },
-                          Object {
-                            "label": "2012年",
-                            "value": "2012",
-                          },
-                          Object {
-                            "label": "2013年",
-                            "value": "2013",
-                          },
-                          Object {
-                            "label": "2014年",
-                            "value": "2014",
-                          },
-                          Object {
-                            "label": "2015年",
-                            "value": "2015",
-                          },
-                          Object {
-                            "label": "2016年",
-                            "value": "2016",
-                          },
-                          Object {
-                            "label": "2017年",
-                            "value": "2017",
-                          },
-                          Object {
-                            "label": "2018年",
-                            "value": "2018",
-                          },
-                          Object {
-                            "label": "2019年",
-                            "value": "2019",
-                          },
-                          Object {
-                            "label": "2020年",
-                            "value": "2020",
-                          },
-                          Object {
-                            "label": "2021年",
-                            "value": "2021",
-                          },
-                          Object {
-                            "label": "2022年",
-                            "value": "2022",
-                          },
-                          Object {
-                            "label": "2023年",
-                            "value": "2023",
-                          },
-                          Object {
-                            "label": "2024年",
-                            "value": "2024",
-                          },
-                          Object {
-                            "label": "2025年",
-                            "value": "2025",
-                          },
-                          Object {
-                            "label": "2026年",
-                            "value": "2026",
-                          },
-                          Object {
-                            "label": "2027年",
-                            "value": "2027",
-                          },
-                          Object {
-                            "label": "2028年",
-                            "value": "2028",
-                          },
-                          Object {
-                            "label": "2029年",
-                            "value": "2029",
-                          },
-                          Object {
-                            "label": "2030年",
-                            "value": "2030",
-                          },
-                        ]
-                      }
-                      disabled={false}
-                      itemRender={[Function]}
-                      key="0"
-                      onChange={[Function]}
-                      onTransition={[Function]}
-                      prefixCls="za-wheel"
-                      value="2009"
-                      valueMember="value"
-                    >
-                      <div
-                        className="za-wheel"
-                      >
-                        <div
-                          className="za-wheel-content"
-                        >
-                          <div
-                            className="za-wheel-item"
-                            key="0"
-                          >
-                            2000年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="1"
-                          >
-                            2001年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="2"
-                          >
-                            2002年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="3"
-                          >
-                            2003年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="4"
-                          >
-                            2004年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="5"
-                          >
-                            2005年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="6"
-                          >
-                            2006年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="7"
-                          >
-                            2007年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="8"
-                          >
-                            2008年
-                          </div>
-                          <div
-                            className="za-wheel-item za-wheel-item-selected"
-                            key="9"
-                          >
-                            2009年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="10"
-                          >
-                            2010年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="11"
-                          >
-                            2011年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="12"
-                          >
-                            2012年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="13"
-                          >
-                            2013年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="14"
-                          >
-                            2014年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="15"
-                          >
-                            2015年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="16"
-                          >
-                            2016年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="17"
-                          >
-                            2017年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="18"
-                          >
-                            2018年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="19"
-                          >
-                            2019年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="20"
-                          >
-                            2020年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="21"
-                          >
-                            2021年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="22"
-                          >
-                            2022年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="23"
-                          >
-                            2023年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="24"
-                          >
-                            2024年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="25"
-                          >
-                            2025年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="26"
-                          >
-                            2026年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="27"
-                          >
-                            2027年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="28"
-                          >
-                            2028年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="29"
-                          >
-                            2029年
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="30"
-                          >
-                            2030年
-                          </div>
-                        </div>
-                      </div>
-                    </Wheel>
-                    <Wheel
-                      dataSource={
-                        Array [
-                          Object {
-                            "label": "1月",
-                            "value": "0",
-                          },
-                          Object {
-                            "label": "2月",
-                            "value": "1",
-                          },
-                          Object {
-                            "label": "3月",
-                            "value": "2",
-                          },
-                          Object {
-                            "label": "4月",
-                            "value": "3",
-                          },
-                          Object {
-                            "label": "5月",
-                            "value": "4",
-                          },
-                          Object {
-                            "label": "6月",
-                            "value": "5",
-                          },
-                          Object {
-                            "label": "7月",
-                            "value": "6",
-                          },
-                          Object {
-                            "label": "8月",
-                            "value": "7",
-                          },
-                          Object {
-                            "label": "9月",
-                            "value": "8",
-                          },
-                          Object {
-                            "label": "10月",
-                            "value": "9",
-                          },
-                          Object {
-                            "label": "11月",
-                            "value": "10",
-                          },
-                          Object {
-                            "label": "12月",
-                            "value": "11",
-                          },
-                        ]
-                      }
-                      disabled={false}
-                      itemRender={[Function]}
-                      key="1"
-                      onChange={[Function]}
-                      onTransition={[Function]}
-                      prefixCls="za-wheel"
-                      value="2"
-                      valueMember="value"
-                    >
-                      <div
-                        className="za-wheel"
-                      >
-                        <div
-                          className="za-wheel-content"
-                        >
-                          <div
-                            className="za-wheel-item"
-                            key="0"
-                          >
-                            1月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="1"
-                          >
-                            2月
-                          </div>
-                          <div
-                            className="za-wheel-item za-wheel-item-selected"
-                            key="2"
-                          >
-                            3月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="3"
-                          >
-                            4月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="4"
-                          >
-                            5月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="5"
-                          >
-                            6月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="6"
-                          >
-                            7月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="7"
-                          >
-                            8月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="8"
-                          >
-                            9月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="9"
-                          >
-                            10月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="10"
-                          >
-                            11月
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="11"
-                          >
-                            12月
-                          </div>
-                        </div>
-                      </div>
-                    </Wheel>
-                    <Wheel
-                      dataSource={
-                        Array [
-                          Object {
-                            "label": "1日",
-                            "value": "1",
-                          },
-                          Object {
-                            "label": "2日",
-                            "value": "2",
-                          },
-                          Object {
-                            "label": "3日",
-                            "value": "3",
-                          },
-                          Object {
-                            "label": "4日",
-                            "value": "4",
-                          },
-                          Object {
-                            "label": "5日",
-                            "value": "5",
-                          },
-                          Object {
-                            "label": "6日",
-                            "value": "6",
-                          },
-                          Object {
-                            "label": "7日",
-                            "value": "7",
-                          },
-                          Object {
-                            "label": "8日",
-                            "value": "8",
-                          },
-                          Object {
-                            "label": "9日",
-                            "value": "9",
-                          },
-                          Object {
-                            "label": "10日",
-                            "value": "10",
-                          },
-                          Object {
-                            "label": "11日",
-                            "value": "11",
-                          },
-                          Object {
-                            "label": "12日",
-                            "value": "12",
-                          },
-                          Object {
-                            "label": "13日",
-                            "value": "13",
-                          },
-                          Object {
-                            "label": "14日",
-                            "value": "14",
-                          },
-                          Object {
-                            "label": "15日",
-                            "value": "15",
-                          },
-                          Object {
-                            "label": "16日",
-                            "value": "16",
-                          },
-                          Object {
-                            "label": "17日",
-                            "value": "17",
-                          },
-                          Object {
-                            "label": "18日",
-                            "value": "18",
-                          },
-                          Object {
-                            "label": "19日",
-                            "value": "19",
-                          },
-                          Object {
-                            "label": "20日",
-                            "value": "20",
-                          },
-                          Object {
-                            "label": "21日",
-                            "value": "21",
-                          },
-                          Object {
-                            "label": "22日",
-                            "value": "22",
-                          },
-                          Object {
-                            "label": "23日",
-                            "value": "23",
-                          },
-                          Object {
-                            "label": "24日",
-                            "value": "24",
-                          },
-                          Object {
-                            "label": "25日",
-                            "value": "25",
-                          },
-                          Object {
-                            "label": "26日",
-                            "value": "26",
-                          },
-                          Object {
-                            "label": "27日",
-                            "value": "27",
-                          },
-                          Object {
-                            "label": "28日",
-                            "value": "28",
-                          },
-                          Object {
-                            "label": "29日",
-                            "value": "29",
-                          },
-                          Object {
-                            "label": "30日",
-                            "value": "30",
-                          },
-                          Object {
-                            "label": "31日",
-                            "value": "31",
-                          },
-                        ]
-                      }
-                      disabled={false}
-                      itemRender={[Function]}
-                      key="2"
-                      onChange={[Function]}
-                      onTransition={[Function]}
-                      prefixCls="za-wheel"
-                      value="4"
-                      valueMember="value"
-                    >
-                      <div
-                        className="za-wheel"
-                      >
-                        <div
-                          className="za-wheel-content"
-                        >
-                          <div
-                            className="za-wheel-item"
-                            key="0"
-                          >
-                            1日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="1"
-                          >
-                            2日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="2"
-                          >
-                            3日
-                          </div>
-                          <div
-                            className="za-wheel-item za-wheel-item-selected"
-                            key="3"
-                          >
-                            4日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="4"
-                          >
-                            5日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="5"
-                          >
-                            6日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="6"
-                          >
-                            7日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="7"
-                          >
-                            8日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="8"
-                          >
-                            9日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="9"
-                          >
-                            10日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="10"
-                          >
-                            11日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="11"
-                          >
-                            12日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="12"
-                          >
-                            13日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="13"
-                          >
-                            14日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="14"
-                          >
-                            15日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="15"
-                          >
-                            16日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="16"
-                          >
-                            17日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="17"
-                          >
-                            18日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="18"
-                          >
-                            19日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="19"
-                          >
-                            20日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="20"
-                          >
-                            21日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="21"
-                          >
-                            22日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="22"
-                          >
-                            23日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="23"
-                          >
-                            24日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="24"
-                          >
-                            25日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="25"
-                          >
-                            26日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="26"
-                          >
-                            27日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="27"
-                          >
-                            28日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="28"
-                          >
-                            29日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="29"
-                          >
-                            30日
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="30"
-                          >
-                            31日
-                          </div>
-                        </div>
-                      </div>
-                    </Wheel>
+                    取消
                   </div>
                   <div
-                    className="za-picker-mask-bottom"
-                  />
+                    className="za-picker-title"
+                  >
+                    请选择
+                  </div>
+                  <div
+                    className="za-picker-submit"
+                    onClick={[Function]}
+                  >
+                    确定
+                  </div>
                 </div>
-              </DatePickerView>
+                <DatePickerView
+                  cancelText="取消"
+                  defaultValue=""
+                  disabled={false}
+                  locale={
+                    Object {
+                      "day": "日",
+                      "hour": "时",
+                      "minute": "分",
+                      "month": "月",
+                      "year": "年",
+                    }
+                  }
+                  minuteStep={1}
+                  mode="date"
+                  okText="确定"
+                  onCancel={[Function]}
+                  onChange={[Function]}
+                  onClick={[Function]}
+                  onInit={[Function]}
+                  onMaskClick={[Function]}
+                  onTransition={[Function]}
+                  placeholder="请选择"
+                  prefixCls="za-picker"
+                  title="请选择"
+                  value={2009-03-03T16:00:00.000Z}
+                  valueMember="value"
+                  visible={true}
+                >
+                  <div
+                    className="za-picker-panel"
+                  >
+                    <div
+                      className="za-picker-mask-top"
+                    />
+                    <div
+                      className="za-picker-view"
+                    >
+                      <Wheel
+                        dataSource={
+                          Array [
+                            Object {
+                              "label": "2000年",
+                              "value": "2000",
+                            },
+                            Object {
+                              "label": "2001年",
+                              "value": "2001",
+                            },
+                            Object {
+                              "label": "2002年",
+                              "value": "2002",
+                            },
+                            Object {
+                              "label": "2003年",
+                              "value": "2003",
+                            },
+                            Object {
+                              "label": "2004年",
+                              "value": "2004",
+                            },
+                            Object {
+                              "label": "2005年",
+                              "value": "2005",
+                            },
+                            Object {
+                              "label": "2006年",
+                              "value": "2006",
+                            },
+                            Object {
+                              "label": "2007年",
+                              "value": "2007",
+                            },
+                            Object {
+                              "label": "2008年",
+                              "value": "2008",
+                            },
+                            Object {
+                              "label": "2009年",
+                              "value": "2009",
+                            },
+                            Object {
+                              "label": "2010年",
+                              "value": "2010",
+                            },
+                            Object {
+                              "label": "2011年",
+                              "value": "2011",
+                            },
+                            Object {
+                              "label": "2012年",
+                              "value": "2012",
+                            },
+                            Object {
+                              "label": "2013年",
+                              "value": "2013",
+                            },
+                            Object {
+                              "label": "2014年",
+                              "value": "2014",
+                            },
+                            Object {
+                              "label": "2015年",
+                              "value": "2015",
+                            },
+                            Object {
+                              "label": "2016年",
+                              "value": "2016",
+                            },
+                            Object {
+                              "label": "2017年",
+                              "value": "2017",
+                            },
+                            Object {
+                              "label": "2018年",
+                              "value": "2018",
+                            },
+                            Object {
+                              "label": "2019年",
+                              "value": "2019",
+                            },
+                            Object {
+                              "label": "2020年",
+                              "value": "2020",
+                            },
+                            Object {
+                              "label": "2021年",
+                              "value": "2021",
+                            },
+                            Object {
+                              "label": "2022年",
+                              "value": "2022",
+                            },
+                            Object {
+                              "label": "2023年",
+                              "value": "2023",
+                            },
+                            Object {
+                              "label": "2024年",
+                              "value": "2024",
+                            },
+                            Object {
+                              "label": "2025年",
+                              "value": "2025",
+                            },
+                            Object {
+                              "label": "2026年",
+                              "value": "2026",
+                            },
+                            Object {
+                              "label": "2027年",
+                              "value": "2027",
+                            },
+                            Object {
+                              "label": "2028年",
+                              "value": "2028",
+                            },
+                            Object {
+                              "label": "2029年",
+                              "value": "2029",
+                            },
+                            Object {
+                              "label": "2030年",
+                              "value": "2030",
+                            },
+                          ]
+                        }
+                        disabled={false}
+                        itemRender={[Function]}
+                        key="0"
+                        onChange={[Function]}
+                        onTransition={[Function]}
+                        prefixCls="za-wheel"
+                        value="2009"
+                        valueMember="value"
+                      >
+                        <div
+                          className="za-wheel"
+                        >
+                          <div
+                            className="za-wheel-content"
+                          >
+                            <div
+                              className="za-wheel-item"
+                              key="0"
+                            >
+                              2000年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="1"
+                            >
+                              2001年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="2"
+                            >
+                              2002年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="3"
+                            >
+                              2003年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="4"
+                            >
+                              2004年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="5"
+                            >
+                              2005年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="6"
+                            >
+                              2006年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="7"
+                            >
+                              2007年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="8"
+                            >
+                              2008年
+                            </div>
+                            <div
+                              className="za-wheel-item za-wheel-item-selected"
+                              key="9"
+                            >
+                              2009年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="10"
+                            >
+                              2010年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="11"
+                            >
+                              2011年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="12"
+                            >
+                              2012年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="13"
+                            >
+                              2013年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="14"
+                            >
+                              2014年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="15"
+                            >
+                              2015年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="16"
+                            >
+                              2016年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="17"
+                            >
+                              2017年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="18"
+                            >
+                              2018年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="19"
+                            >
+                              2019年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="20"
+                            >
+                              2020年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="21"
+                            >
+                              2021年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="22"
+                            >
+                              2022年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="23"
+                            >
+                              2023年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="24"
+                            >
+                              2024年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="25"
+                            >
+                              2025年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="26"
+                            >
+                              2026年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="27"
+                            >
+                              2027年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="28"
+                            >
+                              2028年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="29"
+                            >
+                              2029年
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="30"
+                            >
+                              2030年
+                            </div>
+                          </div>
+                        </div>
+                      </Wheel>
+                      <Wheel
+                        dataSource={
+                          Array [
+                            Object {
+                              "label": "1月",
+                              "value": "0",
+                            },
+                            Object {
+                              "label": "2月",
+                              "value": "1",
+                            },
+                            Object {
+                              "label": "3月",
+                              "value": "2",
+                            },
+                            Object {
+                              "label": "4月",
+                              "value": "3",
+                            },
+                            Object {
+                              "label": "5月",
+                              "value": "4",
+                            },
+                            Object {
+                              "label": "6月",
+                              "value": "5",
+                            },
+                            Object {
+                              "label": "7月",
+                              "value": "6",
+                            },
+                            Object {
+                              "label": "8月",
+                              "value": "7",
+                            },
+                            Object {
+                              "label": "9月",
+                              "value": "8",
+                            },
+                            Object {
+                              "label": "10月",
+                              "value": "9",
+                            },
+                            Object {
+                              "label": "11月",
+                              "value": "10",
+                            },
+                            Object {
+                              "label": "12月",
+                              "value": "11",
+                            },
+                          ]
+                        }
+                        disabled={false}
+                        itemRender={[Function]}
+                        key="1"
+                        onChange={[Function]}
+                        onTransition={[Function]}
+                        prefixCls="za-wheel"
+                        value="2"
+                        valueMember="value"
+                      >
+                        <div
+                          className="za-wheel"
+                        >
+                          <div
+                            className="za-wheel-content"
+                          >
+                            <div
+                              className="za-wheel-item"
+                              key="0"
+                            >
+                              1月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="1"
+                            >
+                              2月
+                            </div>
+                            <div
+                              className="za-wheel-item za-wheel-item-selected"
+                              key="2"
+                            >
+                              3月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="3"
+                            >
+                              4月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="4"
+                            >
+                              5月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="5"
+                            >
+                              6月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="6"
+                            >
+                              7月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="7"
+                            >
+                              8月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="8"
+                            >
+                              9月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="9"
+                            >
+                              10月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="10"
+                            >
+                              11月
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="11"
+                            >
+                              12月
+                            </div>
+                          </div>
+                        </div>
+                      </Wheel>
+                      <Wheel
+                        dataSource={
+                          Array [
+                            Object {
+                              "label": "1日",
+                              "value": "1",
+                            },
+                            Object {
+                              "label": "2日",
+                              "value": "2",
+                            },
+                            Object {
+                              "label": "3日",
+                              "value": "3",
+                            },
+                            Object {
+                              "label": "4日",
+                              "value": "4",
+                            },
+                            Object {
+                              "label": "5日",
+                              "value": "5",
+                            },
+                            Object {
+                              "label": "6日",
+                              "value": "6",
+                            },
+                            Object {
+                              "label": "7日",
+                              "value": "7",
+                            },
+                            Object {
+                              "label": "8日",
+                              "value": "8",
+                            },
+                            Object {
+                              "label": "9日",
+                              "value": "9",
+                            },
+                            Object {
+                              "label": "10日",
+                              "value": "10",
+                            },
+                            Object {
+                              "label": "11日",
+                              "value": "11",
+                            },
+                            Object {
+                              "label": "12日",
+                              "value": "12",
+                            },
+                            Object {
+                              "label": "13日",
+                              "value": "13",
+                            },
+                            Object {
+                              "label": "14日",
+                              "value": "14",
+                            },
+                            Object {
+                              "label": "15日",
+                              "value": "15",
+                            },
+                            Object {
+                              "label": "16日",
+                              "value": "16",
+                            },
+                            Object {
+                              "label": "17日",
+                              "value": "17",
+                            },
+                            Object {
+                              "label": "18日",
+                              "value": "18",
+                            },
+                            Object {
+                              "label": "19日",
+                              "value": "19",
+                            },
+                            Object {
+                              "label": "20日",
+                              "value": "20",
+                            },
+                            Object {
+                              "label": "21日",
+                              "value": "21",
+                            },
+                            Object {
+                              "label": "22日",
+                              "value": "22",
+                            },
+                            Object {
+                              "label": "23日",
+                              "value": "23",
+                            },
+                            Object {
+                              "label": "24日",
+                              "value": "24",
+                            },
+                            Object {
+                              "label": "25日",
+                              "value": "25",
+                            },
+                            Object {
+                              "label": "26日",
+                              "value": "26",
+                            },
+                            Object {
+                              "label": "27日",
+                              "value": "27",
+                            },
+                            Object {
+                              "label": "28日",
+                              "value": "28",
+                            },
+                            Object {
+                              "label": "29日",
+                              "value": "29",
+                            },
+                            Object {
+                              "label": "30日",
+                              "value": "30",
+                            },
+                            Object {
+                              "label": "31日",
+                              "value": "31",
+                            },
+                          ]
+                        }
+                        disabled={false}
+                        itemRender={[Function]}
+                        key="2"
+                        onChange={[Function]}
+                        onTransition={[Function]}
+                        prefixCls="za-wheel"
+                        value="4"
+                        valueMember="value"
+                      >
+                        <div
+                          className="za-wheel"
+                        >
+                          <div
+                            className="za-wheel-content"
+                          >
+                            <div
+                              className="za-wheel-item"
+                              key="0"
+                            >
+                              1日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="1"
+                            >
+                              2日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="2"
+                            >
+                              3日
+                            </div>
+                            <div
+                              className="za-wheel-item za-wheel-item-selected"
+                              key="3"
+                            >
+                              4日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="4"
+                            >
+                              5日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="5"
+                            >
+                              6日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="6"
+                            >
+                              7日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="7"
+                            >
+                              8日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="8"
+                            >
+                              9日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="9"
+                            >
+                              10日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="10"
+                            >
+                              11日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="11"
+                            >
+                              12日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="12"
+                            >
+                              13日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="13"
+                            >
+                              14日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="14"
+                            >
+                              15日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="15"
+                            >
+                              16日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="16"
+                            >
+                              17日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="17"
+                            >
+                              18日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="18"
+                            >
+                              19日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="19"
+                            >
+                              20日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="20"
+                            >
+                              21日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="21"
+                            >
+                              22日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="22"
+                            >
+                              23日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="23"
+                            >
+                              24日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="24"
+                            >
+                              25日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="25"
+                            >
+                              26日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="26"
+                            >
+                              27日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="27"
+                            >
+                              28日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="28"
+                            >
+                              29日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="29"
+                            >
+                              30日
+                            </div>
+                            <div
+                              className="za-wheel-item"
+                              key="30"
+                            >
+                              31日
+                            </div>
+                          </div>
+                        </div>
+                      </Wheel>
+                    </div>
+                    <div
+                      className="za-picker-mask-bottom"
+                    />
+                  </div>
+                </DatePickerView>
+              </div>
             </div>
-          </div>
-          <Mask
-            className=""
-            onClose={[Function]}
-            prefixCls="za-mask"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-            type="normal"
-            visible={true}
-          >
-            <div
-              className="za-mask normal"
-              onClick={[Function]}
+            <Mask
+              className=""
+              onClose={[Function]}
+              prefixCls="za-mask"
               style={
                 Object {
                   "WebkitAnimationDuration": "200ms",
                   "animationDuration": "200ms",
                 }
               }
-            />
-          </Mask>
-        </div>
-      </Popup>
+              type="normal"
+              visible={true}
+            >
+              <div
+                className="za-mask normal"
+                onClick={[Function]}
+                style={
+                  Object {
+                    "WebkitAnimationDuration": "200ms",
+                    "animationDuration": "200ms",
+                  }
+                }
+              />
+            </Mask>
+          </div>
+        </Popup>
+      </Portal>
     </div>
-  </div>
+  </RenderInBody>
 </DatePicker>
 `;

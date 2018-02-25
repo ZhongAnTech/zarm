@@ -9,6 +9,11 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      modal1: false,
+      modal2: false,
+      modal3: false,
+      modal4: false,
+      modal5: false,
       alert: false,
       confirm: false,
     };

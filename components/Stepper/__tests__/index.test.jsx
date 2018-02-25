@@ -27,21 +27,15 @@ describe('Stepper', () => {
     wrapper.setProps({ value: 10 });
   });
 
-  it('onInputChange', () => {
+  it('onChange and onInputChange', () => {
+    const onChange = jest.fn();
     const onInputChange = jest.fn();
     const wrapper = shallow(
-      <Stepper onInputChange={onInputChange} />
+      <Stepper onChange={onChange} onInputChange={onInputChange} />
     );
     wrapper.find('input').simulate('change', { target: { value: 10 } });
     expect(onInputChange).toBeCalled();
-  });
-
-  it('onChange', () => {
-    const onChange = jest.fn();
-    const wrapper = shallow(
-      <Stepper onChange={onChange} />
-    );
-    wrapper.find('input').simulate('blur', { target: { value: 10 } });
+    wrapper.find('input').simulate('blur');
     expect(onChange).toBeCalledWith(10);
     wrapper.find('.za-stepper-sub').simulate('click');
     expect(onChange).toBeCalledWith(9);
