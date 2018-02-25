@@ -46,6 +46,5 @@ export default {
     color: variables.color_text_caption,
   },
   panelFooterMore: {
-
   },
 };

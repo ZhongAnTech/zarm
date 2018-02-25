@@ -1,5 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import panelStyle from './style/index.native';
 
 export interface PanelBodyProps {
@@ -22,11 +22,8 @@ export default class PanelHeader extends PureComponent<PanelBodyProps, {}> {
     const wrapperStyle = [
       styles!.panelBody,
       style,
-    ]  as any[];
-    return (
-      <View style={wrapperStyle}>
-        {children}
-      </View>
-    );
+    ] as ViewStyle;
+
+    return <View style={wrapperStyle}>{children}</View>;
   }
 }
