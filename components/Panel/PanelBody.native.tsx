@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import panelStyle from './style/index.native';
 
 export interface PanelBodyProps {
-    style?: CSSProperties;
-    styles?: typeof panelStyle;
+  style?: CSSProperties;
+  styles?: typeof panelStyle;
 }
 
 const panelStyles = StyleSheet.create<any>(panelStyle);
@@ -20,8 +20,8 @@ export default class PanelHeader extends PureComponent<PanelBodyProps, {}> {
     const { styles, style, children } = this.props;
 
     const wrapperStyle = [
-        styles!.panelBody,
-        style,
+      styles!.panelBody,
+      style,
     ]  as any[];
     return (
       <View style={wrapperStyle}>

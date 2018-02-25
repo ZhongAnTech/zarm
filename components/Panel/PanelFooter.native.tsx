@@ -4,16 +4,16 @@ import panelStyle from './style/index.native';
 import { BasePanelFooterProps } from './PropsType';
 
 export interface PanelFooterProps extends BasePanelFooterProps {
-    style?: CSSProperties;
-    styles?: typeof panelStyle;
+  style?: CSSProperties;
+  styles?: typeof panelStyle;
 }
 const ChangeComponent = props => {
-    const component = props.component;
-    if (React.isValidElement(component)) {
-        return component;
-    } else {
-        return <Text style={panelStyles.panelFooterTitleText}>{component}</Text>;
-    }
+  const component = props.component;
+  if (React.isValidElement(component)) {
+    return component;
+  } else {
+    return <Text style={panelStyles.panelFooterTitleText}>{component}</Text>;
+  }
 };
 const panelStyles = StyleSheet.create<any>(panelStyle);
 
@@ -28,8 +28,8 @@ export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
     const { title, more, style, styles } = this.props;
 
     const wrapperStyle = [
-        styles!.panelFooter,
-        style,
+      styles!.panelFooter,
+      style,
     ] as any[];
     return (
       <View style={wrapperStyle}>

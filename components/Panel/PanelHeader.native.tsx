@@ -4,16 +4,16 @@ import panelStyle from './style/index.native';
 import { BasePanelHeaderProps } from './PropsType';
 
 export interface PanelHeaderProps extends BasePanelHeaderProps {
-    style?: CSSProperties;
-    styles?: typeof panelStyle;
+  style?: CSSProperties;
+  styles?: typeof panelStyle;
 }
 const ChangeComponent = props => {
-    const component = props.component;
-    if (React.isValidElement(component)) {
-        return component;
-    } else {
-        return <Text style={panelStyles.panelHeaderTitleText}>{component}</Text>;
-    }
+  const component = props.component;
+  if (React.isValidElement(component)) {
+    return component;
+  } else {
+    return <Text style={panelStyles.panelHeaderTitleText}>{component}</Text>;
+  }
 };
 const panelStyles = StyleSheet.create<any>(panelStyle);
 
@@ -28,8 +28,8 @@ export default class PanelHeader extends PureComponent<PanelHeaderProps, {}> {
     const { title, more, style, styles } = this.props;
 
     const wrapperStyle = [
-        styles!.panelHeader,
-        style,
+      styles!.panelHeader,
+      style,
     ] as any[];
     return (
       <View style={wrapperStyle}>
