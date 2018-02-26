@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
 import Mask from '../Mask';
+import RenderInBody from '../RenderInBody';
 
 export interface PopupProps extends PropsType {
   prefixCls?: string;
@@ -132,12 +133,14 @@ export default class Popup extends PureComponent<PopupProps, any> {
     };
 
     return (
-      <div className={popupCls} ref={(popup) => { this.popup = popup; }}>
-        <div className={wrapCls} style={wrapStyle}>
-          {children}
+      <RenderInBody>
+        <div className={popupCls} ref={(popup) => { this.popup = popup; }}>
+          <div className={wrapCls} style={wrapStyle}>
+            {children}
+          </div>
+          {this.renderMask()}
         </div>
-        {this.renderMask()}
-      </div>
+      </RenderInBody>
     );
   }
 }

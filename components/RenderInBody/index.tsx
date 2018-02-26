@@ -29,10 +29,10 @@ class RenderInBody extends PureComponent<PortalProps, any> {
   }
 
   getContainer() {
-    let container = document.querySelector(`#${this.props.prefixCls}-containerhm`);
+    let container = document.querySelector(`#${this.props.prefixCls}-container`);
     if (!container) {
       container = document.createElement('div');
-      container.classList.add(this.props.className);
+      container.classList.add('popup-container');
       document.body.appendChild(container);
     }
     this.container = container;

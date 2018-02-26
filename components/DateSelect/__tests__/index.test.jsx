@@ -6,18 +6,18 @@ import enLocale from '../../DatePicker/locale/en_US';
 
 
 describe('DateSelect', () => {
-  // it('DateSelect year', () => {
-  //   const wrapper = render(
-  //     <DateSelect
-  //       title="选择年份"
-  //       placeholder="请选择年份"
-  //       mode="year"
-  //       value="2017"
-  //       locale={enLocale}
-  //       />
-  //   );
-  //   expect(toJson(wrapper)).toMatchSnapshot();
-  // });
+  it('DateSelect year', () => {
+    const wrapper = render(
+      <DateSelect
+        title="选择年份"
+        placeholder="请选择年份"
+        mode="year"
+        value="2017"
+        // locale={enLocale}
+        />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 
   // it('DateSelect trigger visible', () => {
   //   const wrapper = render(

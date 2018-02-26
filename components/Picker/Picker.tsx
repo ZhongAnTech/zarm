@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import Popup from '../Popup';
 import PickerView from '../PickerView';
-import RenderInBody from '../RenderInBody';
 import { BasePickerProps } from './PropsType';
 
 const getValue = (props, defaultValue?: any) => {
@@ -136,35 +135,33 @@ export default class Picker extends PureComponent<PickerProps, any> {
     const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
     const { visible, value, firstObjValue } = this.state;
 
-    const cls = classnames(prefixCls, className);
+    // const cls = classnames(prefixCls, className);
     // const content = children && cloneElement(children, {
     //   onClick: () => this.toggle(true),
     // });
 
     return (
-      <RenderInBody className={cls}>
-        <Popup
-          visible={visible}
-          onMaskClick={this.onMaskClick}
-        >
-          <div className={`${prefixCls}-wrapper`}>
-            <div className={`${prefixCls}-header`}>
-              <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
-              <div className={`${prefixCls}-title`}>{title}</div>
-              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-            </div>
-            <PickerView
-              {...others}
-              prefixCls={prefixCls}
-              value={value}
-              firstObjValue={firstObjValue}
-              onInit={this.onInit}
-              onChange={this.onChange}
-              onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
-            />
+      <Popup
+        visible={visible}
+        onMaskClick={this.onMaskClick}
+      >
+        <div className={`${prefixCls}-wrapper`}>
+          <div className={`${prefixCls}-header`}>
+            <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
+            <div className={`${prefixCls}-title`}>{title}</div>
+            <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
           </div>
-        </Popup>
-      </RenderInBody>
+          <PickerView
+            {...others}
+            prefixCls={prefixCls}
+            value={value}
+            firstObjValue={firstObjValue}
+            onInit={this.onInit}
+            onChange={this.onChange}
+            onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+          />
+        </div>
+      </Popup>
     );
   }
 }

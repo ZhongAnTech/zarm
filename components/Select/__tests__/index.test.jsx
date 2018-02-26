@@ -4,17 +4,17 @@ import toJson from 'enzyme-to-json';
 import Select from '../index';
 
 describe('Select', () => {
-  it('Select', () => {
-    const wrapper = render(
-      <Select
-        dataSource={[
-          { value: '1', label: '选项一' },
-          { value: '2', label: '选项二' },
-        ]}
-        />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
+  // it('Select', () => {
+  //   const wrapper = render(
+  //     <Select
+  //       dataSource={[
+  //         { value: '1', label: '选项一' },
+  //         { value: '2', label: '选项二' },
+  //       ]}
+  //       />
+  //   );
+  //   expect(toJson(wrapper)).toMatchSnapshot();
+  // });
 
   // it('render defaultValue correctly ', () => {
   //   const wrapper = render(

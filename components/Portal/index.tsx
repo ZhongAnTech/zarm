@@ -6,10 +6,9 @@ const createPortal = (ReactDOM as any).createPortal;
 export interface PortalProps {
   prefixCls?: string;
   className?: any;
-}
-export default class Portal extends React.Component<{
   getContainer: Function;
-}, any> {
+}
+export default class Portal extends React.Component<PortalProps, any> {
   _container: any;
 
   constructor(props) {
