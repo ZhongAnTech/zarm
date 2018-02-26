@@ -4689,7 +4689,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   title="选择日期"
   valueMember="value"
   visible={true}
-  wheelDefaultValue="2017-11-03"
+  wheelDefaultValue="2017-11-03 15:00"
 >
   <div
     className="za-select-input za-select-placeholder"
@@ -4725,7 +4725,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       value=""
       valueMember="value"
       visible={true}
-      wheelDefaultValue="2017-11-03"
+      wheelDefaultValue="2017-11-03 15:00"
     >
       <Popup
         animationDuration={200}
@@ -4806,7 +4806,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                     value=""
                     valueMember="value"
                     visible={true}
-                    wheelDefaultValue="2017-11-03"
+                    wheelDefaultValue="2017-11-03 15:00"
                   >
                     <div
                       className="za-picker-panel"

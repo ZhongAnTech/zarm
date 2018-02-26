@@ -90,7 +90,7 @@ describe('DateSelect', () => {
         placeholder="请选择日期"
         mode="date"
         visible
-        wheelDefaultValue="2017-11-03"
+        wheelDefaultValue="2017-11-03 15:00"
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();

@@ -38,7 +38,7 @@ import { Accordion } from 'zarm';
 
 ###### 手风琴模式
 ```jsx
-<Accordion accordion animated>
+<Accordion multiple={false} animated>
   <Accordion.Item title="50元套餐">
     <div>我是50元套餐内容</div>
     <div>我是50元套餐内容</div>
@@ -91,8 +91,9 @@ import { Accordion } from 'zarm';
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-accordion | | 类名前缀 |
 | className | string | | | 追加类名 |
-| accordion | boolean | false | | 是否使用手风琴模式 |
+| multiple | boolean | true | | 是否可以同时展开多项 |
 | animated | boolean | false | | 是否添加展开动画 |
+| open | boolean | false | | 是否强制展开 |
 | activeIndex | array or string or number | [] | | 动态更新展开项的索引数组或字符串或数字 |
 | defaultActiveIndex | array or string or number | [] | | 初始化默认展开项的索引数组或字符串或数字 |
 | onChange | <code>(index) => void</code> | noop | \(index: number\) | 点击某一项的回调函数 |
