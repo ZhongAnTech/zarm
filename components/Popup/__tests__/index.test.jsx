@@ -1,7 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Popup from '../index';
+
+ReactDOM.createPortal = jest.fn().mockReturnValue(null);
 
 describe('Popup', () => {
   it('renders correctly', () => {

@@ -3,6 +3,8 @@ import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import KeyboardPicker from '../index';
 
+ReactDOM.createPortal = jest.fn().mockReturnValue(null);
+
 describe('KeyboardPicker', () => {
   it('renders correctly', () => {
     const wrapper = render(<KeyboardPicker />);

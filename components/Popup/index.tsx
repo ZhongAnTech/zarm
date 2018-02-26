@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
 import Mask from '../Mask';
-import RenderInBody from '../RenderInBody';
+import RenderInBody from './RenderInBody';
 
 export interface PopupProps extends PropsType {
   prefixCls?: string;

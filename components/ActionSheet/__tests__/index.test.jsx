@@ -3,6 +3,8 @@ import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ActionSheet from '../index';
 
+// ReactDOM.createPortal = jest.fn().mockReturnValue(null);
+
 describe('ActionSheet', () => {
   const props = {
     visible: true,

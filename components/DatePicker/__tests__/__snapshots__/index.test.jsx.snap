@@ -27,23 +27,21 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
   valueMember="value"
   visible={true}
 >
-  <RenderInBody
-    className="za-picker"
+  <Popup
+    animationDuration={200}
+    autoClose={false}
+    direction="bottom"
+    mask={true}
+    maskType="normal"
+    onMaskClick={[Function]}
+    prefixCls="za-popup"
+    stayTime={3000}
+    visible={true}
   >
-    <div>
-      <Portal
-        getContainer={[Function]}
-      >
-        <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
-          onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
-          visible={true}
+    <RenderInBody>
+      <div>
+        <Portal
+          getContainer={[Function]}
         >
           <div
             className="za-popup"
@@ -961,9 +959,9 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
               />
             </Mask>
           </div>
-        </Popup>
-      </Portal>
-    </div>
-  </RenderInBody>
+        </Portal>
+      </div>
+    </RenderInBody>
+  </Popup>
 </DatePicker>
 `;

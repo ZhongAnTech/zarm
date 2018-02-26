@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import Portal from '../Portal';
+import Portal from './Portal';
 
 const IS_REACT_16 = !!(ReactDOM as any).createPortal;
 

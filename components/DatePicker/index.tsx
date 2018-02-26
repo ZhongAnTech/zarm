@@ -154,32 +154,30 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     //   [className]: !!className,
     // });
 
-    const cls = classnames(prefixCls, className);
+    // const cls = classnames(prefixCls, className);
 
     return (
-      <RenderInBody className={cls}>
-        <Popup
-          visible={visible}
-          onMaskClick={() => this.onMaskClick()}
-        >
-          <div className={`${prefixCls}-wrapper`}>
-            <div className={`${prefixCls}-header`}>
-              <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
-              <div className={`${prefixCls}-title`}>{title}</div>
-              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-            </div>
-            <DatePickerView
-              prefixCls={prefixCls}
-              className={className}
-              {...others}
-              value={value}
-              onInit={this.onInit}
-              onChange={this.onValueChange}
-              onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
-            />
+      <Popup
+        visible={visible}
+        onMaskClick={() => this.onMaskClick()}
+      >
+        <div className={`${prefixCls}-wrapper`}>
+          <div className={`${prefixCls}-header`}>
+            <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+            <div className={`${prefixCls}-title`}>{title}</div>
+            <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
           </div>
-        </Popup>
-      </RenderInBody>
+          <DatePickerView
+            prefixCls={prefixCls}
+            className={className}
+            {...others}
+            value={value}
+            onInit={this.onInit}
+            onChange={this.onValueChange}
+            onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+          />
+        </div>
+      </Popup>
     );
   }
 }

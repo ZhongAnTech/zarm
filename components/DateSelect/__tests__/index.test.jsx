@@ -4,6 +4,7 @@ import toJson from 'enzyme-to-json';
 import DateSelect from '../index';
 import enLocale from '../../DatePicker/locale/en_US';
 
+ReactDOM.createPortal = jest.fn().mockReturnValue(null);
 
 describe('DateSelect', () => {
   it('DateSelect year', () => {
@@ -13,7 +14,7 @@ describe('DateSelect', () => {
         placeholder="请选择年份"
         mode="year"
         value="2017"
-        // locale={enLocale}
+        locale={enLocale}
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
