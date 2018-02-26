@@ -24,6 +24,6 @@ export default class Portal extends React.Component<PortalProps, any> {
     if (this.props.children) {
       return createPortal(this.props.children, this._container);
     }
-    return null;
+    return null as any;
   }
 }

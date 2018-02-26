@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-// import classnames from 'classnames';
+import classnames from 'classnames';
 import Popup from '../Popup';
 import PickerView from '../PickerView';
 import { BasePickerProps } from './PropsType';
@@ -135,12 +135,13 @@ export default class Picker extends PureComponent<PickerProps, any> {
     const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
     const { visible, value, firstObjValue } = this.state;
 
-    // const cls = classnames(prefixCls, className);
+    const cls = classnames(prefixCls, className);
     // const content = children && cloneElement(children, {
     //   onClick: () => this.toggle(true),
     // });
 
     return (
+      <div className={cls}>
       <Popup
         visible={visible}
         onMaskClick={this.onMaskClick}
@@ -162,6 +163,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
           />
         </div>
       </Popup>
+      </div>
     );
   }
 }

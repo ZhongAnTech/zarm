@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import { BaseDatePickerProps } from './PropsType';
 import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
-import RenderInBody from '../RenderInBody';
 import DatePickerView from '../DatePickerView';
 
 const isExtendDate = (date) => {

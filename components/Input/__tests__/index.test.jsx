@@ -39,11 +39,11 @@ describe('Input.Textarea', () => {
   });
 });
 
-// describe('Input.Number', () => {
-//   it('renders correctly', () => {
-//     const wrapper = render(<Input type="number" />);
-//     expect(toJson(wrapper)).toMatchSnapshot();
-//   });
+describe('Input.Number', () => {
+  it('renders correctly', () => {
+    const wrapper = mount(<Input type="number" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 
 //   it('enter number', () => {
 //     const onChange = jest.fn();
@@ -54,18 +54,18 @@ describe('Input.Textarea', () => {
 //     expect(onChange).toBeCalledWith('1');
 //     wrapper.unmount();
 //   });
-// });
+});
 
-// describe('Input.Price', () => {
-//   it('renders correctly', () => {
-//     const wrapper = render(<Input type="price" />);
-//     expect(toJson(wrapper)).toMatchSnapshot();
-//   });
-// });
+describe('Input.Price', () => {
+  it('renders correctly', () => {
+    const wrapper = mount(<Input type="price" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+});
 
-// describe('Input.Idcard', () => {
-//   it('renders correctly', () => {
-//     const wrapper = render(<Input type="idcard" />);
-//     expect(toJson(wrapper)).toMatchSnapshot();
-//   });
-// });
+describe('Input.Idcard', () => {
+  it('renders correctly', () => {
+    const wrapper = mount(<Input type="idcard" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+});
