@@ -136,6 +136,12 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     }
   }
 
+  onTransition(isScrolling) {
+    if (typeof this.props.onTransition === 'function') {
+      this.props.onTransition!(isScrolling);
+    }
+  }
+
   renderWheel = (item, index) => {
     const { valueMember, itemRender, disabled } = this.props;
     const { value } = this.state;
@@ -149,6 +155,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
         itemRender={itemRender}
         disabled={disabled}
         onChange={selected => this.onValueChange(selected, index)}
+        onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
     );
   }
@@ -158,12 +165,12 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     const { dataSource } = this.state;
 
     return (
-      <div className={`${prefixCls}-mask-top`}>
-        <div className={`${prefixCls}-mask-bottom`}>
-          <div className={classnames(`${prefixCls}-view`, className)}>
-            {dataSource.map(this.renderWheel)}
-          </div>
+      <div className={`${prefixCls}-panel`}>
+        <div className={`${prefixCls}-mask-top`} />
+        <div className={classnames(`${prefixCls}-view`, className)}>
+          {dataSource.map(this.renderWheel)}
         </div>
+        <div className={`${prefixCls}-mask-bottom`} />
       </div>
     );
   }

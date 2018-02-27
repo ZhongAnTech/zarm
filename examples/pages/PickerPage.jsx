@@ -4,6 +4,7 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import District from '../mock/district';
+import Scroll from './Scroll';
 import '../styles/pages/PickerPage';
 
 const SINGLE_DATA = [
@@ -82,6 +83,7 @@ class Page extends Component {
         dataSource: CASCADE_DATA,
       },
       diy: {
+        visible: false,
         value: [],
         dataSource: DIY_DATA,
       },
@@ -123,6 +125,7 @@ class Page extends Component {
 
     return (
       <Container className="picker-page">
+        {/* <Scroll> */}
         <Header title="选择器 Picker & Select" />
         <main>
           <Panel>
@@ -145,24 +148,7 @@ class Page extends Component {
 
               <Cell
                 description={
-                  <Picker
-                    title="custom title"
-                    cancelText="Cancel"
-                    okText="Ok"
-                    dataSource={diy.dataSource}
-                    value={diy.value}
-                    valueMember="code"
-                    itemRender={data => data.name}
-                    onOk={(selected) => {
-                      console.log('Picker onOk: ', selected);
-                      diy.value = selected.map(item => item.code);
-                      this.setState({
-                        diy,
-                      });
-                      Toast.show(JSON.stringify(selected));
-                    }}>
-                    <Button size="sm">打开</Button>
-                  </Picker>
+                  <Button size="sm" onClick={() => this.toggle('diy')}>打开</Button>
                 }>自定义</Cell>
 
             </Panel.Body>
@@ -239,8 +225,30 @@ class Page extends Component {
             }}
             onCancel={() => this.toggle('cascade')}
             />
+
+          <Picker
+            visible={diy.visible}
+            title="custom title"
+            cancelText="Cancel"
+            okText="Ok"
+            dataSource={diy.dataSource}
+            value={diy.value}
+            valueMember="code"
+            itemRender={data => data.name}
+            onOk={(selected) => {
+              console.log('Picker onOk: ', selected);
+              diy.value = selected.map(item => item.code);
+              this.setState({
+                diy,
+              });
+              Toast.show(JSON.stringify(selected));
+              this.toggle('diy');
+            }}
+            onCancel={() => this.toggle('diy')}
+            />
         </main>
         <Footer />
+        {/* </Scroll> */}
       </Container>
     );
   }

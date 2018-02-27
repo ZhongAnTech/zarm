@@ -5,7 +5,7 @@ import Wheel from '../index';
 
 describe('Wheel', () => {
   it('Wheel render visible', () => {
-    jest.useFakeTimers();
+    // jest.useFakeTimers();
     const wrapper = mount(
       <Wheel
         dataSource={[
@@ -18,7 +18,7 @@ describe('Wheel', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: '2' });
-    jest.runAllTimers();
+    // jest.runAllTimers();
     wrapper.unmount();
   });
 });

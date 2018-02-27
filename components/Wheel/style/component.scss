@@ -1,6 +1,6 @@
 $prefixCls: $prefixCls-wheel;
 $itemHeight: $wheel-item-height;
-$itemRows: 7;
+$itemRows: 5;
 
 .#{$prefixCls} {
   display: block;
@@ -10,7 +10,8 @@ $itemRows: 7;
   width: 100%;
 
   &-content {
-    padding: ($itemRows - 1) * $itemHeight / 2 0;
+    margin-top: 68px;
+    // padding: ($itemRows - 1) * $itemHeight / 2 0;
   }
 
   &-item {
@@ -29,12 +30,12 @@ $itemRows: 7;
     // }
   }
 
-  &-indicator {
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: ($itemRows - 1) * $itemHeight / 2;
-    height: $itemHeight;
-    @include onepx(top bottom);
-  }
+  // &-indicator {
+  //   position: absolute;
+  //   right: 0;
+  //   left: 0;
+  //   top: ($itemRows - 1) * $itemHeight / 2;
+  //   height: $itemHeight;
+  //   @include onepx(top bottom);
+  // }
 }

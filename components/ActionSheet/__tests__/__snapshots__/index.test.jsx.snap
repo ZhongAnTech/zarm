@@ -1,40 +1,114 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionSheet renders correctly 1`] = `
-<div
-  class="za-popup"
+<ActionSheet
+  actions={
+    Array [
+      Object {
+        "onClick": [Function],
+        "text": "操作一",
+      },
+      Object {
+        "onClick": [Function],
+        "text": "操作二",
+      },
+      Object {
+        "onClick": [Function],
+        "text": "操作三",
+        "theme": "error",
+      },
+    ]
+  }
+  cancelText="取消"
+  onMaskClick={[Function]}
+  prefixCls="za-actionsheet"
+  spacing={false}
+  visible={true}
 >
-  <div
-    class="za-popup-wrapper za-popup-wrapper-bottom"
-    style="-webkit-transition-duration:200ms;transition-duration:200ms"
+  <Popup
+    animationDuration={200}
+    autoClose={false}
+    direction="bottom"
+    mask={true}
+    maskType="normal"
+    onMaskClick={[Function]}
+    prefixCls="za-popup"
+    stayTime={3000}
+    visible={true}
   >
-    <div
-      class="za-actionsheet"
-    >
-      <div
-        class="za-actionsheet-actions"
+    <div>
+      <Portal
+        getContainer={[Function]}
       >
-        <a
-          class="za-actionsheet-item"
+        <div
+          className="za-popup"
         >
-          操作一
-        </a>
-        <a
-          class="za-actionsheet-item"
-        >
-          操作二
-        </a>
-        <a
-          class="za-actionsheet-item theme-error"
-        >
-          操作三
-        </a>
-      </div>
+          <div
+            className="za-popup-wrapper za-popup-wrapper-bottom"
+            style={
+              Object {
+                "WebkitTransitionDuration": "200ms",
+                "transitionDuration": "200ms",
+              }
+            }
+          >
+            <div
+              className="za-actionsheet"
+            >
+              <div
+                className="za-actionsheet-actions"
+              >
+                <a
+                  className="za-actionsheet-item"
+                  key="0"
+                  onClick={[Function]}
+                >
+                  操作一
+                </a>
+                <a
+                  className="za-actionsheet-item"
+                  key="1"
+                  onClick={[Function]}
+                >
+                  操作二
+                </a>
+                <a
+                  className="za-actionsheet-item theme-error"
+                  key="2"
+                  onClick={[Function]}
+                >
+                  操作三
+                </a>
+              </div>
+            </div>
+          </div>
+          <Mask
+            className=""
+            onClose={[Function]}
+            prefixCls="za-mask"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+            type="normal"
+            visible={true}
+          >
+            <div
+              className="za-mask normal"
+              onClick={[Function]}
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+            />
+          </Mask>
+        </div>
+      </Portal>
     </div>
-  </div>
-  <div
-    class="za-mask normal"
-    style="-webkit-animation-duration:200ms;animation-duration:200ms"
-  />
-</div>
+  </Popup>
+</ActionSheet>
 `;
