@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import ZScroller from 'zscroller';
+import BScroll from 'better-scroll';
 import { BaseWheelProps } from './PropsType';
 import { isArray } from '../utils/validate';
+import './findIndex.js';
 
 const getValue = (props, defaultValue?: any) => {
   if ('value' in props) {
@@ -31,32 +32,51 @@ export default class Wheel extends Component<WheelProps, any> {
     itemRender: item => item.label,
   };
 
-  private zscroller;
-  private indicator;
-  private itemHeight;
-  private content;
+  private BScroll;
+  private wrapper;
 
   constructor(props) {
     super(props);
     this.state = {
       value: getValue(props),
     };
+
   }
 
   componentDidMount() {
-    this.itemHeight = this.indicator.offsetHeight;
-    this.zscroller = new ZScroller(this.content, {
-      scrollingX: false,
-      snapping: true,
-      penetrationDeceleration: 0.1,
-      minVelocityToKeepDecelerating: 0.5,
-      scrollingComplete: this.scrollingComplete.bind(this),
+    const { prefixCls } = this.props;
+    this.BScroll = new BScroll(this.wrapper , {
+      wheel: {
+        selectedIndex: 0,
+        wheelWrapperClass: `${prefixCls}-content`,
+        wheelItemClass: `${prefixCls}-item`,
+        adjustTime: 100,
+      },
+      probeType: 3,
     });
 
-    this.zscroller.setDisabled(this.props.disabled);
-    this.zscroller.scroller.setSnapSize(0, this.itemHeight);
+    if (this.props.disabled) {
+      this.BScroll.disable();
+    }
 
-    this.select(this.state.value);
+    const initIndex = this.BScroll.getSelectedIndex(this.state.value);
+    this.BScroll.wheelTo(initIndex);
+
+    this.BScroll.on('scroll', () => {
+      this.props.onTransition!(true);
+    });
+
+    this.BScroll.on('scrollEnd', () => {
+      const { dataSource, valueMember } = this.props;
+      const index = this.BScroll.getSelectedIndex();
+      const child = dataSource![index];
+      if (child) {
+        this.fireValueChange(child[valueMember!]);
+        this.props.onTransition!(this.BScroll.isInTransition);
+      } else if (console.warn) {
+        console.warn('child not found', dataSource, index);
+      }
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -65,28 +85,21 @@ export default class Wheel extends Component<WheelProps, any> {
         value: nextProps.value,
       });
     }
-    this.zscroller.setDisabled(nextProps.disabled);
+
+    if (nextProps.disabled) {
+      this.BScroll.disable();
+    }
+    const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
+    this.BScroll.wheelTo(newIndex);
+
   }
 
   componentDidUpdate() {
-    this.zscroller.reflow();
-    this.select(this.state.value);
+    this.BScroll.refresh();
   }
 
   componentWillUnmount() {
-    this.zscroller.destroy();
-  }
-
-  getValue = () => {
-    const { value, valueMember, dataSource } = this.props;
-    return value || dataSource && dataSource[0] && dataSource[0][valueMember!];
-  }
-
-  scrollingComplete = () => {
-    const { top } = this.zscroller.scroller.getValues();
-    if (top >= 0) {
-      this.doScrollingComplete(top);
-    }
+    this.BScroll.destroy();
   }
 
   fireValueChange = (value) => {
@@ -104,45 +117,9 @@ export default class Wheel extends Component<WheelProps, any> {
     }
   }
 
-  scrollTo = (top) => {
-    this.zscroller.scroller.scrollTo(0, top);
-  }
-
-  select = (value) => {
-    const { dataSource, valueMember } = this.props;
-    for (let i = 0, len = dataSource!.length; i < len; i += 1) {
-      if (dataSource![i][valueMember!] === value) {
-        this.selectByIndex(i);
-        return;
-      }
-    }
-    this.selectByIndex(0);
-  }
-
-  selectByIndex = (index) => {
-    if (index < 0 || index >= this.props.dataSource!.length || !this.itemHeight) {
-      return;
-    }
-    this.scrollTo(index * this.itemHeight);
-  }
-
-  doScrollingComplete = (top) => {
-    let index = top / this.itemHeight;
-    const floor = Math.floor(index);
-    index = (index - floor > 0.5)
-      ? floor + 1
-      : floor;
-
-    const { dataSource, valueMember } = this.props;
-    index = Math.min(index, dataSource!.length - 1);
-
-    const child = dataSource![index];
-
-    if (child) {
-      this.fireValueChange(child[valueMember!]);
-    } else if (console.warn) {
-      console.warn('child not found', dataSource, index);
-    }
+  getSelectedIndex(value, dataSource) {
+    const { valueMember } = this.props;
+    return dataSource!.findIndex((item) => item[valueMember!] === value);
   }
 
   render() {
@@ -173,9 +150,9 @@ export default class Wheel extends Component<WheelProps, any> {
     const rollerCls = classnames(`${prefixCls}`, className);
 
     return (
-      <div className={rollerCls}>
-        <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} />
-        <div className={`${prefixCls}-content`} ref={(content) => { this.content = content; }}>
+      <div className={rollerCls} ref={(wrapper) => { this.wrapper = wrapper; }}>
+        {/* <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} /> */}
+        <div className={`${prefixCls}-content`}>
           {items}
         </div>
       </div>
