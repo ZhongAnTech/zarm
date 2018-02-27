@@ -28,6 +28,7 @@
   * [轻提示 Toast](components/Toast.md)
 
 * 数据展示
+  * [手风琴 Accordion](components/Accordion.md)
   * [徽标 Badge](components/Badge.md)
   * [列表项 Cell](components/Cell.md)
   * [图标 Icon](components/Icon.md)

@@ -47,6 +47,7 @@ class Page extends PureComponent {
           <Panel>
             <Panel.Header title="数据展示" />
             <Panel.Body>
+              <Cell hasArrow title="手风琴 Accordion" onClick={() => history.push('/accordion')} />
               <Cell hasArrow title="徽标 Badge" onClick={() => history.push('/badge')} />
               <Cell hasArrow title="列表项 Cell" onClick={() => history.push('/cell')} />
               <Cell hasArrow title="图标 Icon" onClick={() => history.push('/icon')} />

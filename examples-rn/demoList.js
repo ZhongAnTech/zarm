@@ -19,5 +19,10 @@ module.exports = {
       description: '按钮',
       module: require('./pages/ButtonPage'),
     },
+    {
+      title: 'Panel',
+      description: '面板',
+      module: require('./pages/PanelPage'),
+    },
   ],
 };

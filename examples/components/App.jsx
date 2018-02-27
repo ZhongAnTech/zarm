@@ -49,6 +49,7 @@ class App extends Component {
               <Route path="/toast" component={AsyncComponent(() => import('../pages/ToastPage'))} />
 
               {/* 数据展示 */}
+              <Route path="/accordion" component={AsyncComponent(() => import('../pages/AccordionPage'))} />
               <Route path="/badge" component={AsyncComponent(() => import('../pages/BadgePage'))} />
               <Route path="/cell" component={AsyncComponent(() => import('../pages/CellPage'))} />
               <Route path="/icon" component={AsyncComponent(() => import('../pages/IconPage'))} />
