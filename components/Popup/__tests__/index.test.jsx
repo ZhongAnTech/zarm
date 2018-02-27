@@ -1,13 +1,17 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Popup from '../index';
+
+// jest.mock('rc-util/lib/Portal');
+// ReactDOM.createPortal = jest.fn().mockReturnValue(null);
 
 describe('Popup', () => {
   it('renders correctly', () => {
     const onMaskClick = jest.fn();
     const onClose = jest.fn();
-    const wrapper = render(
+    const wrapper = mount(
       <Popup
         direction="bottom"
         onMaskClick={onMaskClick}
