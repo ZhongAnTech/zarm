@@ -941,7 +941,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
         onChange={[Function]}
         onTransition={[Function]}
         prefixCls="za-wheel"
-        value="9"
+        value="20"
         valueMember="value"
       >
         <div
@@ -1005,7 +1005,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
               8时
             </div>
             <div
-              className="za-wheel-item za-wheel-item-selected"
+              className="za-wheel-item"
               key="9"
             >
               9时
@@ -1071,7 +1071,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
               19时
             </div>
             <div
-              className="za-wheel-item"
+              className="za-wheel-item za-wheel-item-selected"
               key="20"
             >
               20时
