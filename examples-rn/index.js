@@ -1,22 +1,31 @@
 import 'core-js/es6/map';
 import 'core-js/es6/set';
-import { AppRegistry } from 'react-native';
+import React from 'react';
+import { AppRegistry, View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import IndexPage from './pages/IndexPage';
 import { UIFORM, UICONROL, UIVIEW } from './demoList';
 
 const getOptions = title => ({
-  title,
+  headerTitle: (
+    <View style={{ flex: 1 }}>
+      <Text style={{ fontSize: 16, alignSelf: 'center', textAlign: 'center', color: '#fff' }}>{title}</Text>
+    </View>
+  ),
   headerStyle: {
     backgroundColor: '#12c287',
   },
   headerTintColor: 'white',
+  headerRight: <View />,
 });
 
 const scenes = {
   Index: {
     screen: IndexPage,
-    navigationOptions: getOptions('Zarm UI - 众安科技移动端组件库'),
+    navigationOptions: {
+      ...getOptions('Zarm UI'),
+      headerLeft: <View />,
+    },
   },
 };
 
