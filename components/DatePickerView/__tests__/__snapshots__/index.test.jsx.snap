@@ -3,7 +3,7 @@
 exports[`DatePickerView DatePickerView time 1`] = `
 <DatePickerView
   cancelText="取消"
-  defaultValue="2017-09-06 12:00Z"
+  defaultValue={2017-09-06T04:00:00.000Z}
   disabled={false}
   locale={
     Object {
@@ -941,7 +941,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
         onChange={[Function]}
         onTransition={[Function]}
         prefixCls="za-wheel"
-        value="20"
+        value="12"
         valueMember="value"
       >
         <div
@@ -1023,7 +1023,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
               11时
             </div>
             <div
-              className="za-wheel-item"
+              className="za-wheel-item za-wheel-item-selected"
               key="12"
             >
               12时
@@ -1071,7 +1071,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
               19时
             </div>
             <div
-              className="za-wheel-item za-wheel-item-selected"
+              className="za-wheel-item"
               key="20"
             >
               20时
