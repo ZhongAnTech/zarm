@@ -41,31 +41,31 @@ describe('Input.Textarea', () => {
 
 describe('Input.Number', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Input type="number" />);
+    const wrapper = mount(<Input type="number" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('enter number', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(<Input type="number" onChange={onChange} />);
-    wrapper.find('input').simulate('focus');
-    const keys = wrapper.find('.za-keyboard-keys');
-    keys.childAt(0).simulate('click');
-    expect(onChange).toBeCalledWith('1');
-    wrapper.unmount();
-  });
+//   it('enter number', () => {
+//     const onChange = jest.fn();
+//     const wrapper = mount(<Input type="number" onChange={onChange} />);
+//     wrapper.find('input').simulate('focus');
+//     const keys = wrapper.find('.za-keyboard-keys');
+//     keys.childAt(0).simulate('click');
+//     expect(onChange).toBeCalledWith('1');
+//     wrapper.unmount();
+//   });
 });
 
 describe('Input.Price', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Input type="price" />);
+    const wrapper = mount(<Input type="price" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
 
 describe('Input.Idcard', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Input type="idcard" />);
+    const wrapper = mount(<Input type="idcard" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

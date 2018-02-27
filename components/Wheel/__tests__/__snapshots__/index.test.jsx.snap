@@ -24,9 +24,6 @@ exports[`Wheel Wheel render visible 1`] = `
     className="za-wheel"
   >
     <div
-      className="za-wheel-indicator"
-    />
-    <div
       className="za-wheel-content"
     >
       <div
