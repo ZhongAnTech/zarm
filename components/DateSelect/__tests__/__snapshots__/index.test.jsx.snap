@@ -11,7 +11,7 @@ exports[`DateSelect DateSelect date 1`] = `
   placeholder="请选择日期"
   prefixCls="za-select"
   title="选择日期"
-  value="2017-09-06"
+  value={"2017-09-05T16:00:00.000Z"}
   valueMember="value"
 >
   <div
@@ -970,10 +970,10 @@ exports[`DateSelect DateSelect date 1`] = `
 exports[`DateSelect DateSelect datetime 1`] = `
 <DateSelect
   cancelText="取消"
-  defaultValue="2017-11-03 15:00"
+  defaultValue={"2017-11-03T07:00:00.000Z"}
   disabled={false}
-  max="2017-11-12 14:00"
-  min="2017-11-02 11:00"
+  max={"2017-11-12T06:00:00.000Z"}
+  min={"2017-11-02T03:00:00.000Z"}
   minuteStep={1}
   mode="datetime"
   okText="确定"
@@ -994,7 +994,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
     2017-11-03 15:00
     <DatePicker
       cancelText="取消"
-      defaultValue="2017-11-03 15:00"
+      defaultValue={"2017-11-03T07:00:00.000Z"}
       disabled={false}
       locale={
         Object {
@@ -1005,8 +1005,8 @@ exports[`DateSelect DateSelect datetime 1`] = `
           "year": "年",
         }
       }
-      max="2017-11-12 14:00"
-      min="2017-11-02 11:00"
+      max={"2017-11-12T06:00:00.000Z"}
+      min={"2017-11-02T03:00:00.000Z"}
       minuteStep={1}
       mode="datetime"
       okText="确定"
@@ -1073,7 +1073,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
                   </div>
                   <DatePickerView
                     cancelText="取消"
-                    defaultValue="2017-11-03 15:00"
+                    defaultValue={"2017-11-03T07:00:00.000Z"}
                     disabled={false}
                     locale={
                       Object {
@@ -1084,8 +1084,8 @@ exports[`DateSelect DateSelect datetime 1`] = `
                         "year": "年",
                       }
                     }
-                    max="2017-11-12 14:00"
-                    min="2017-11-02 11:00"
+                    max={"2017-11-12T06:00:00.000Z"}
+                    min={"2017-11-02T03:00:00.000Z"}
                     minuteStep={1}
                     mode="datetime"
                     okText="确定"
@@ -2229,7 +2229,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
 exports[`DateSelect DateSelect month 1`] = `
 <DateSelect
   cancelText="取消"
-  defaultValue="2017"
+  defaultValue={"2017-01-01T00:00:00.000Z"}
   disabled={false}
   minuteStep={1}
   mode="date"
@@ -2251,7 +2251,7 @@ exports[`DateSelect DateSelect month 1`] = `
     2017-01-01
     <DatePicker
       cancelText="取消"
-      defaultValue="2017"
+      defaultValue={"2017-01-01T00:00:00.000Z"}
       disabled={false}
       locale={
         Object {
@@ -2328,7 +2328,7 @@ exports[`DateSelect DateSelect month 1`] = `
                   </div>
                   <DatePickerView
                     cancelText="取消"
-                    defaultValue="2017"
+                    defaultValue={"2017-01-01T00:00:00.000Z"}
                     disabled={false}
                     locale={
                       Object {
@@ -3206,7 +3206,7 @@ exports[`DateSelect DateSelect month 1`] = `
 exports[`DateSelect DateSelect time 1`] = `
 <DateSelect
   cancelText="取消"
-  defaultValue="2017-11-03 15:00"
+  defaultValue={"2017-11-03T07:00:00.000Z"}
   disabled={false}
   minuteStep={15}
   mode="time"
@@ -3228,7 +3228,7 @@ exports[`DateSelect DateSelect time 1`] = `
     15:00
     <DatePicker
       cancelText="取消"
-      defaultValue="2017-11-03 15:00"
+      defaultValue={"2017-11-03T07:00:00.000Z"}
       disabled={false}
       locale={
         Object {
@@ -3305,7 +3305,7 @@ exports[`DateSelect DateSelect time 1`] = `
                   </div>
                   <DatePickerView
                     cancelText="取消"
-                    defaultValue="2017-11-03 15:00"
+                    defaultValue={"2017-11-03T07:00:00.000Z"}
                     disabled={false}
                     locale={
                       Object {
@@ -3700,7 +3700,7 @@ exports[`DateSelect DateSelect time 1`] = `
 exports[`DateSelect DateSelect trigger visible 1`] = `
 <DateSelect
   cancelText="取消"
-  defaultValue="2017-11-03"
+  defaultValue={"2017-11-02T16:00:00.000Z"}
   disabled={false}
   minuteStep={1}
   mode="date"
@@ -3723,7 +3723,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
     2017-11-03
     <DatePicker
       cancelText="取消"
-      defaultValue="2017-11-03"
+      defaultValue={"2017-11-02T16:00:00.000Z"}
       disabled={false}
       locale={
         Object {
@@ -3800,7 +3800,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                   </div>
                   <DatePickerView
                     cancelText="取消"
-                    defaultValue="2017-11-03"
+                    defaultValue={"2017-11-02T16:00:00.000Z"}
                     disabled={false}
                     locale={
                       Object {
@@ -4689,7 +4689,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   title="选择日期"
   valueMember="value"
   visible={true}
-  wheelDefaultValue="2017-11-03 15:00"
+  wheelDefaultValue={"2017-11-03T07:00:00.000Z"}
 >
   <div
     className="za-select-input za-select-placeholder"
@@ -4725,7 +4725,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       value=""
       valueMember="value"
       visible={true}
-      wheelDefaultValue="2017-11-03 15:00"
+      wheelDefaultValue={"2017-11-03T07:00:00.000Z"}
     >
       <Popup
         animationDuration={200}
@@ -4806,7 +4806,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                     value=""
                     valueMember="value"
                     visible={true}
-                    wheelDefaultValue="2017-11-03 15:00"
+                    wheelDefaultValue={"2017-11-03T07:00:00.000Z"}
                   >
                     <div
                       className="za-picker-panel"
@@ -5677,7 +5677,7 @@ exports[`DateSelect DateSelect year 1`] = `
   placeholder="请选择年份"
   prefixCls="za-select"
   title="选择年份"
-  value="2017"
+  value={"2017-01-01T00:00:00.000Z"}
   valueMember="value"
 >
   <div

@@ -23,7 +23,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
   placeholder="请选择"
   prefixCls="za-picker"
   title="请选择"
-  value="2009-03-04"
+  value={"2009-03-03T16:00:00.000Z"}
   valueMember="value"
   visible={true}
 >
