@@ -8,16 +8,18 @@ import enLocale from '../locale/en_US';
 
 describe('DatePickerView', () => {
   it('DatePickerView time', () => {
-    moment.tz.setDefault('Asia/Shanghai');
+    // moment.tz.setDefault('Asia/Shanghai');
     const wrapper = mount(
       <DatePickerView
         title="选择时间"
         placeholder="请选择时间"
         mode="datetime"
-        defaultValue={moment('2017-11-03 15:00')}
+        // defaultValue={moment('2017-11-03T15:00:00.000Z')}
+        defaultValue="2017-11-03 15:00Z"
         />
     );
-    wrapper.setProps({ defaultValue: '2017-09-06 12:00' });
+    // wrapper.setProps({ defaultValue: '2017-09-06T12:00:00.000Z' });
+    wrapper.setProps({ defaultValue: '2017-09-06 12:00Z' });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

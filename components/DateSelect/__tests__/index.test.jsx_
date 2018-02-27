@@ -13,7 +13,7 @@ describe('DateSelect', () => {
         title="选择年份"
         placeholder="请选择年份"
         mode="year"
-        value={moment('2017')}
+        value={moment('2017-01-01T00:00:00.000Z')}
         locale={enLocale}
         />
     );
@@ -24,7 +24,7 @@ describe('DateSelect', () => {
     const wrapper = mount(
       <DateSelect
         mode="date"
-        defaultValue={moment('2017-11-03')}
+        defaultValue={moment('2017-11-03T00:00:00.000Z')}
         visible
         />
       );
@@ -36,7 +36,7 @@ describe('DateSelect', () => {
       <DateSelect
         title="选择年份"
         placeholder="请选择年份"
-        defaultValue={moment('2017')}
+        defaultValue={moment('2017-01-01T00:00:00.000Z')}
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -48,10 +48,10 @@ describe('DateSelect', () => {
         title="选择日期"
         placeholder="请选择日期"
         mode="date"
-        value={moment('2009-03-04')}
+        value={moment('2009-03-04T00:00:00.000Z')}
         />
     );
-    wrapper.setProps({ value: moment('2017-09-06') });
+    wrapper.setProps({ value: moment('2017-09-06T00:00:00.000Z') });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -61,7 +61,7 @@ describe('DateSelect', () => {
         title="选择时间"
         placeholder="请选择时间"
         mode="time"
-        defaultValue={moment('2017-11-03 15:00')}
+        defaultValue={moment('2017-11-03T15:00:00.000Z')}
         minuteStep={15}
         />
     );
@@ -74,14 +74,14 @@ describe('DateSelect', () => {
         title="选择时间"
         placeholder="请选择时间"
         mode="datetime"
-        min={moment('2017-11-02 11:00')}
-        max={moment('2017-11-12 14:00')}
-        defaultValue={moment('2017-11-03 15:00')}
+        min={moment('2017-11-02T11:00:00.000Z')}
+        max={moment('2017-11-12T14:00:00.000Z')}
+        defaultValue={moment('2017-11-03T15:00:00.000Z')}
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     jest.useFakeTimers();
-    wrapper.setProps({ defaultValue: moment('2017-11-06 12:00'), value: moment('2017-11-06 12:00') });
+    wrapper.setProps({ defaultValue: moment('2017-11-06T12:00:00.000Z'), value: moment('2017-11-06T12:00:00.000Z') });
     jest.runAllTimers();
   });
 
@@ -92,51 +92,51 @@ describe('DateSelect', () => {
         placeholder="请选择日期"
         mode="date"
         visible
-        wheelDefaultValue={moment('2017-11-03 15:00')}
+        wheelDefaultValue={moment('2017-11-03T15:00:00.000Z')}
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('should trigger onOk when press ok button', () => {
-    const onOkFn = jest.fn();
-    const onCancelFn = jest.fn();
+  // it('should trigger onOk when press ok button', () => {
+  //   const onOkFn = jest.fn();
+  //   const onCancelFn = jest.fn();
 
-    const wrapper = mount(
-      <DateSelect
-        title="选择时间"
-        placeholder="请选择时间"
-        mode="datetime"
-        defaultValue={moment('2017-11-12 20:00')}
-        onOk={onOkFn}
-        onCancel={onCancelFn}
-        onMaskClick={onCancelFn}
-        />
-    );
+  //   const wrapper = mount(
+  //     <DateSelect
+  //       title="选择时间"
+  //       placeholder="请选择时间"
+  //       mode="datetime"
+  //       defaultValue={moment('2017-11-12T20:00:00.000Z')}
+  //       onOk={onOkFn}
+  //       onCancel={onCancelFn}
+  //       onMaskClick={onCancelFn}
+  //       />
+  //   );
 
-    // wrapper.find('.za-picker-submit').simulate('click');
-    // expect(onOkFn).toBeCalled();
-    // expect(onCancelFn).not.toBeCalled();
-  });
+  //   wrapper.find('.za-picker-submit').simulate('click');
+  //   expect(onOkFn).toBeCalled();
+  //   expect(onCancelFn).not.toBeCalled();
+  // });
 
-  it('should trigger onCancel when press cancel button', () => {
-    const onOkFn = jest.fn();
-    const onCancelFn = jest.fn();
+  // it('should trigger onCancel when press cancel button', () => {
+  //   const onOkFn = jest.fn();
+  //   const onCancelFn = jest.fn();
 
-    const wrapper = mount(
-      <DateSelect
-        title="选择时间"
-        placeholder="请选择时间"
-        mode="datetime"
-        onOk={onOkFn}
-        onCancel={onCancelFn}
-        onMaskClick={onCancelFn}
-        defaultValue={moment('2017-11-12 20:00')}
-        />
-    );
+  //   const wrapper = mount(
+  //     <DateSelect
+  //       title="选择时间"
+  //       placeholder="请选择时间"
+  //       mode="datetime"
+  //       onOk={onOkFn}
+  //       onCancel={onCancelFn}
+  //       onMaskClick={onCancelFn}
+  //       defaultValue={moment('2017-11-12 20:00')}
+  //       />
+  //   );
 
-    // wrapper.find('.za-picker-cancel').simulate('click');
-    // expect(onCancelFn).toBeCalled();
-    // expect(onOkFn).not.toBeCalled();
-  });
+  //   wrapper.find('.za-picker-cancel').simulate('click');
+  //   expect(onCancelFn).toBeCalled();
+  //   expect(onOkFn).not.toBeCalled();
+  // });
 });
