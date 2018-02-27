@@ -9,7 +9,12 @@ _book
 .DS_Store
 .temp
 *.log
+*.iml
 examples-rn/ios/build
+examples-rn/android/build
+examples-rn/android/local.properties
+examples-rn/android/.gradle
+build
 components/**/*.js
 components/*.js
 xcuserdata
