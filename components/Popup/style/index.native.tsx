@@ -8,11 +8,11 @@ export default {
 
   // base
   wrapperStyle: {
-    paddingLeft: variables.button_padding_h_md,
-    paddingRight: variables.button_padding_h_md,
+    // [@REMOVE] paddingLeft: variables.button_padding_h_md,
+    // [@REMOVE] paddingRight: variables.button_padding_h_md,
     position: 'absolute',
     zIndex: variables.zindex_popup,
-    backgroundColor: '#fff',
+    // [@REMOVE] backgroundColor: '#fff',
   },
 
   // position
