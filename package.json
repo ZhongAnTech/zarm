@@ -46,7 +46,7 @@
     "site:build": "rm -rf assets && webpack --config scripts/webpack/config.site.js",
     "site": "npm run site:build && gh-pages -d assets",
     "lint:ts": "tslint -c tslint.json 'components/**/*.{ts,tsx}'",
-    "lint:js": "eslint examples --ext '.js,.jsx'",
+    "lint:js": "eslint examples examples-rn --ext '.js,.jsx'",
     "lint:style": "stylelint styles/**/*.scss examples/styles/**/*.scss --syntax scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "lint-staged": "lint-staged",
@@ -172,7 +172,7 @@
   },
   "lint-staged": {
     "components/**/*.{ts,tsx}": "lint:ts",
-    "{components,examples}/**/*.{js,jsx}": "lint:js",
+    "{components,examples,examples-rn}/**/*.{js,jsx}": "lint:js",
     "{styles,examples}/**/*.scss": "lint:style"
   },
   "pre-commit": [
