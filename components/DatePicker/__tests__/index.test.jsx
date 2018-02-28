@@ -9,7 +9,7 @@ describe('DatePicker', () => {
     const wrapper = mount(
       <DatePicker
         mode="date"
-        value={new Date(Date.UTC(2009, 2, 4, 0, 0, 0))}
+        value="2009-3-4"
         visible
         onMaskClick={onMaskClickFn}
         />

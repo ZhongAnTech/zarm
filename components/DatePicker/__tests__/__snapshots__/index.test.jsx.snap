@@ -23,7 +23,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
   placeholder="请选择"
   prefixCls="za-picker"
   title="请选择"
-  value={2009-03-04T00:00:00.000Z}
+  value="2009-3-4"
   valueMember="value"
   visible={true}
 >
@@ -103,7 +103,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                 placeholder="请选择"
                 prefixCls="za-picker"
                 title="请选择"
-                value={2009-03-04T00:00:00.000Z}
+                value={2009-03-04T05:00:00.000Z}
                 valueMember="value"
                 visible={true}
               >
@@ -727,7 +727,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                       onChange={[Function]}
                       onTransition={[Function]}
                       prefixCls="za-wheel"
-                      value="3"
+                      value="4"
                       valueMember="value"
                     >
                       <div
@@ -749,13 +749,13 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                             2日
                           </div>
                           <div
-                            className="za-wheel-item za-wheel-item-selected"
+                            className="za-wheel-item"
                             key="2"
                           >
                             3日
                           </div>
                           <div
-                            className="za-wheel-item"
+                            className="za-wheel-item za-wheel-item-selected"
                             key="3"
                           >
                             4日

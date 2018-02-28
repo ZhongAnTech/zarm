@@ -1,19 +1,17 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import moment from 'moment-timezone';
 import DateSelect from '../index';
 import enLocale from '../../DatePicker/locale/en_US';
 
 describe('DateSelect', () => {
-  moment.tz.setDefault('Asia/Shanghai');
   it('DateSelect year', () => {
     const wrapper = mount(
       <DateSelect
         title="选择年份"
         placeholder="请选择年份"
         mode="year"
-        value={moment('2017-01-01T00:00:00.000Z')}
+        value="2017"
         locale={enLocale}
         />
     );
@@ -24,21 +22,10 @@ describe('DateSelect', () => {
     const wrapper = mount(
       <DateSelect
         mode="date"
-        defaultValue={moment('2017-11-03T00:00:00.000Z')}
+        defaultValue="2017-11-03"
         visible
         />
       );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('DateSelect month', () => {
-    const wrapper = mount(
-      <DateSelect
-        title="选择年份"
-        placeholder="请选择年份"
-        defaultValue={moment('2017-01-01T00:00:00.000Z')}
-        />
-    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -48,10 +35,10 @@ describe('DateSelect', () => {
         title="选择日期"
         placeholder="请选择日期"
         mode="date"
-        value={moment('2009-03-04T00:00:00.000Z')}
+        value="2009-03-04"
         />
     );
-    wrapper.setProps({ value: moment('2017-09-06T00:00:00.000Z') });
+    wrapper.setProps({ value: '2017-09-06' });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -61,7 +48,7 @@ describe('DateSelect', () => {
         title="选择时间"
         placeholder="请选择时间"
         mode="time"
-        defaultValue={moment('2017-11-03T15:00:00.000Z')}
+        defaultValue="2017-11-03 15:00"
         minuteStep={15}
         />
     );
@@ -74,14 +61,14 @@ describe('DateSelect', () => {
         title="选择时间"
         placeholder="请选择时间"
         mode="datetime"
-        min={moment('2017-11-02T11:00:00.000Z')}
-        max={moment('2017-11-12T14:00:00.000Z')}
-        defaultValue={moment('2017-11-03T15:00:00.000Z')}
+        min="2017-11-02 11:00"
+        max="2017-11-02 14:00"
+        defaultValue="2017-11-03 15:00"
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     jest.useFakeTimers();
-    wrapper.setProps({ defaultValue: moment('2017-11-06T12:00:00.000Z'), value: moment('2017-11-06T12:00:00.000Z') });
+    wrapper.setProps({ defaultValue: '2017-11-06 12:00', value: '2017-11-06 12:00' });
     jest.runAllTimers();
   });
 
@@ -92,7 +79,7 @@ describe('DateSelect', () => {
         placeholder="请选择日期"
         mode="date"
         visible
-        wheelDefaultValue={moment('2017-11-03T15:00:00.000Z')}
+        wheelDefaultValue="2017-11-03 15:00"
         />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
