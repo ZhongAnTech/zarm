@@ -24,5 +24,10 @@ module.exports = {
       description: '面板',
       module: require('./pages/PanelPage'),
     },
+    {
+      title: 'ActionSheet',
+      description: '动作面板',
+      module: require('./pages/ActionSheet'),
+    },
   ],
 };
