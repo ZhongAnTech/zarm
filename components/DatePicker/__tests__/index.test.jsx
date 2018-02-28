@@ -1,18 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import moment from 'moment-timezone';
 import DatePicker from '../index';
 
 
 describe('DatePicker', () => {
   it('DatePicker trigger maskClick', () => {
     const onMaskClickFn = jest.fn();
-    moment.tz.setDefault('Asia/Shanghai');
     const wrapper = mount(
       <DatePicker
         mode="date"
-        value={moment('2009-03-04T00:00:00.000Z')}
+        value={new Date(Date.UTC(2009, 2, 4, 0, 0, 0))}
         visible
         onMaskClick={onMaskClickFn}
         />
