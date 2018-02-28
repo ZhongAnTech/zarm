@@ -25,9 +25,9 @@ export default class Page extends Component<{}> {
     visibleWithCancel: false,
     visibleShapeRadius: false,
     actions: [
-      { text: '操作一', onClick() { alert('choose A'); } },
-      { text: '操作二', onClick() { alert('choose B'); } },
-      { text: '操作三', onClick() { alert('choose C'); }, theme: 'error' },
+      { text: '操作一', onClick() { alert('choose 操作一'); } },
+      { text: '操作二', onClick() { alert('choose 操作二'); } },
+      { text: '操作三', onClick() { alert('choose 操作三'); }, theme: 'error' },
     ],
   };
 

@@ -26,18 +26,42 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
     styles: actionsheetStyles,
   };
 
+  state = {
+    isActive: false,
+    activeIndex: null,
+  };
+
+  onPressIn = (activeIndex) => {
+    this.setState({ isActive: true, activeIndex });
+  }
+
+  onPressOut = (activeIndex) => {
+    this.setState({ isActive: false, activeIndex });
+  }
+
   renderActions = (action, index) => {
     const { styles } = this.props;
+    const { isActive, activeIndex } = this.state;
+    const actionMaskStyle = [
+      // index !== 0 && styles!.actionItemBorder,
+      styles!.actionItemMask,
+      activeIndex === index && isActive && styles!.actionItemActive,
+    ];
     const actionStyle = [
       styles!.actionItem,
       !!action.theme && styles![`theme-${action.theme}`],
     ];
+
     return (
       <TouchableOpacity
         key={+index}
-        style={index !== 0 && styles!.actionItemBorder}
+        activeOpacity={0.6}
         onPress={action.onClick}
+        onPressIn={() => this.onPressIn(index)}
+        onPressOut={() => this.onPressOut(index)}
       >
+        <View style={actionMaskStyle as ViewStyle} />
+        {index !== 0 ? <View style={styles!.actionItemBorder} /> : null}
         <Text style={actionStyle}>{action.text}</Text>
       </TouchableOpacity>
     );
