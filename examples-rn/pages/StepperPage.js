@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import { Stepper } from '../../components/index.native';
 
@@ -8,7 +8,7 @@ const styles = {
   },
 };
 
-export default class Page extends Component<{}> {
+export default class Page extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

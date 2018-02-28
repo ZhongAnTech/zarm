@@ -1,9 +1,4 @@
-/**
- * Create by Yangtao. mail:yangtao@zhongan.com
- * Created on 2018/1/21.
- */
-
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 import { Popup, Button } from '../../components/index.native';
 
@@ -32,7 +27,7 @@ const styles = {
   },
 };
 
-export default class Page extends Component<{}> {
+export default class Page extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

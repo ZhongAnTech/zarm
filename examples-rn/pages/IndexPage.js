@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Index extends PureComponent<{}> {
+export default class Index extends PureComponent {
 
   render() {
     const { navigate } = this.props.navigation;

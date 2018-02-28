@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, ActionSheet } from '../../components/index.native';
 
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Page extends Component<{}> {
+export default class Page extends PureComponent {
   state = {
     visibleSimple: false,
     visibleWithCancel: false,
@@ -53,7 +53,7 @@ export default class Page extends Component<{}> {
           visible={visibleSimple}
           actions={actions}
           onMaskClick={() => this.onClose('visibleSimple')}
-        />
+          />
 
         <ActionSheet
           visible={visibleWithCancel}
@@ -61,7 +61,7 @@ export default class Page extends Component<{}> {
           onMaskClick={() => this.onClose('visibleWithCancel')}
           onCancel={() => this.onClose('visibleWithCancel')}
           cancelText={'取消'}
-        />
+          />
 
         <ActionSheet
           visible={visibleShapeRadius}
@@ -71,7 +71,7 @@ export default class Page extends Component<{}> {
           cancelText={'取消'}
           shape={'radius'}
           spacing
-        />
+          />
       </View>
     );
   }
