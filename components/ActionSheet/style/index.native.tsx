@@ -12,6 +12,7 @@ export default {
 
   radiusShape: {
     borderRadius: variables.radius_md,
+    overflow: 'hidden',
   },
 
   wrapperActions: {

@@ -55,7 +55,7 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
     return (
       <TouchableOpacity
         key={+index}
-        activeOpacity={0.6}
+        activeOpacity={1}
         onPress={action.onClick}
         onPressIn={() => this.onPressIn(index)}
         onPressOut={() => this.onPressOut(index)}
@@ -68,17 +68,29 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
   }
 
   renderCancel = () => {
-    const { styles, spacing, shape, onCancel, cancelText } = this.props;
+    const { styles, shape, onCancel, cancelText } = this.props;
+    const { isActive, activeIndex } = this.state;
     const cancelWrapperStyle = [
       styles!.wrapperCacnel,
       styles![`${shape}Shape`],
+    ];
+    const cancelMaskStyle = [
+      styles!.actionItemMask,
+      isActive && activeIndex === 'cancel' && styles!.actionItemActive,
     ];
     const cancelStyle = [
       styles!.actionItem,
     ];
 
     return (typeof onCancel === 'function') && (
-      <TouchableOpacity style={cancelWrapperStyle} onPress={onCancel}>
+      <TouchableOpacity
+        style={cancelWrapperStyle}
+        activeOpacity={1}
+        onPress={onCancel}
+        onPressIn={() => this.onPressIn('cancel')}
+        onPressOut={() => this.onPressOut('cancel')}
+      >
+        <View style={cancelMaskStyle as ViewStyle} />
         <Text style={cancelStyle as ViewStyle}>{cancelText}</Text>
       </TouchableOpacity>
     );
