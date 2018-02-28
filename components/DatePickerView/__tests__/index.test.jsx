@@ -6,7 +6,6 @@ import enLocale from '../locale/en_US';
 
 describe('DatePickerView', () => {
   it('DatePickerView time', () => {
-    moment.tz.setDefault('Asia/Shanghai');
     const wrapper = mount(
       <DatePickerView
         title="选择时间"

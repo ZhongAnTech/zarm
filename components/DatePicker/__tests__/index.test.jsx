@@ -3,7 +3,6 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import DatePicker from '../index';
 
-
 describe('DatePicker', () => {
   it('DatePicker trigger maskClick', () => {
     const onMaskClickFn = jest.fn();
