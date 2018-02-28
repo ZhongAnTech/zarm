@@ -46,7 +46,7 @@
     "lint:style": "stylelint styles/**/*.scss examples/styles/**/*.scss --syntax scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "lint-staged": "lint-staged",
-    "test": "export TZ=America/New_York; jest --coverage",
+    "test": "jest --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "docs": "cd docs && gitbook install && gitbook serve",
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS"
