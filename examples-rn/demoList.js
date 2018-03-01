@@ -12,6 +12,11 @@ module.exports = {
       description: '弹出框',
       module: require('./pages/PopupPage'),
     },
+    {
+      title: 'SwipeAction',
+      description: '滑动操作',
+      module: require('./pages/SwipeActionPage'),
+    },
   ],
   UIVIEW: [
     {
