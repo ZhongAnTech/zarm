@@ -48,5 +48,16 @@ $prefixCls: $prefixCls-accordion;
         transform: rotate(-135deg);
       }
     }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+      &-title,
+      &-content {
+        &:after {
+          width: 200%;
+          height: 200%;
+          transform: scale(0.5);
+        }
+      }
+    }
   }
 }
