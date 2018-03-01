@@ -8,6 +8,16 @@ module.exports = {
   ],
   UICONROL: [
     {
+      title: 'ActionSheet',
+      description: '动作面板',
+      module: require('./pages/ActionSheet'),
+    },
+    {
+      title: 'Button',
+      description: '按钮',
+      module: require('./pages/ButtonPage'),
+    },
+    {
       title: 'Popup',
       description: '弹出框',
       module: require('./pages/PopupPage'),
@@ -15,19 +25,9 @@ module.exports = {
   ],
   UIVIEW: [
     {
-      title: 'Button',
-      description: '按钮',
-      module: require('./pages/ButtonPage'),
-    },
-    {
       title: 'Panel',
       description: '面板',
       module: require('./pages/PanelPage'),
-    },
-    {
-      title: 'ActionSheet',
-      description: '动作面板',
-      module: require('./pages/ActionSheet'),
     },
   ],
 };
