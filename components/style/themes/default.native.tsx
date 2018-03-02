@@ -170,6 +170,10 @@ export default {
   switch_border_color: '#e5e5e5',
   switch_background: '#fdfdfd',
 
+  // SwipeAction
+  swipe_action_height: 45,
+  swipe_action_background: '#fff',
+
   // Tab
   tab_height: 45,
   tab_item_font_size: this.font_size_lg,
