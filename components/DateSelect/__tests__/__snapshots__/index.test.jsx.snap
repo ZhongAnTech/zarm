@@ -27,15 +27,6 @@ exports[`DateSelect DateSelect date 1`] = `
       cancelText="取消"
       defaultValue=""
       disabled={false}
-      locale={
-        Object {
-          "day": "日",
-          "hour": "时",
-          "minute": "分",
-          "month": "月",
-          "year": "年",
-        }
-      }
       minuteStep={1}
       mode="date"
       okText="确定"
@@ -996,15 +987,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
       cancelText="取消"
       defaultValue="2017-11-03 15:00"
       disabled={false}
-      locale={
-        Object {
-          "day": "日",
-          "hour": "时",
-          "minute": "分",
-          "month": "月",
-          "year": "年",
-        }
-      }
       max="2017-11-02 14:00"
       min="2017-11-02 11:00"
       minuteStep={1}
@@ -2153,15 +2135,6 @@ exports[`DateSelect DateSelect time 1`] = `
       cancelText="取消"
       defaultValue="2017-11-03 15:00"
       disabled={false}
-      locale={
-        Object {
-          "day": "日",
-          "hour": "时",
-          "minute": "分",
-          "month": "月",
-          "year": "年",
-        }
-      }
       minuteStep={15}
       mode="time"
       okText="确定"
@@ -2648,15 +2621,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       cancelText="取消"
       defaultValue="2017-11-03"
       disabled={false}
-      locale={
-        Object {
-          "day": "日",
-          "hour": "时",
-          "minute": "分",
-          "month": "月",
-          "year": "年",
-        }
-      }
       minuteStep={1}
       mode="date"
       okText="确定"
@@ -3627,15 +3591,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       cancelText="取消"
       defaultValue=""
       disabled={false}
-      locale={
-        Object {
-          "day": "日",
-          "hour": "时",
-          "minute": "分",
-          "month": "月",
-          "year": "年",
-        }
-      }
       minuteStep={1}
       mode="date"
       okText="确定"
