@@ -1,9 +1,7 @@
 $prefixCls: $prefixCls-accordion;
 
 .#{$prefixCls} {
-
   &-item {
-
     &-title {
       position: relative;
       height: $accordion-height;
@@ -11,19 +9,22 @@ $prefixCls: $prefixCls-accordion;
       padding: 0 $accordion-padding;
       @include onepx(bottom);
     }
+
     &-content {
       position: relative;
       height: 0;
+      overflow: hidden;
       @include onepx(bottom);
-      overflow: hidden;      
 
       &-inner {
         padding: $padding-v-lg $accordion-padding;
       }
     }
+
     &-content-anim {
       transition: all 0.15s ease-out;
     }
+
     &-arrow {
       position: absolute;
       width: r(10);
@@ -44,6 +45,7 @@ $prefixCls: $prefixCls-accordion;
       .#{$prefixCls}-item-content {
         height: auto;
       }
+
       .#{$prefixCls}-item-arrow {
         transform: rotate(-135deg);
       }
