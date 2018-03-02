@@ -1,10 +1,11 @@
 import React, { PureComponent, cloneElement } from 'react';
 import {
-  View, PanResponder, Animated, StyleSheet, Dimensions,
+  View, PanResponder, Animated, StyleSheet
 } from 'react-native';
 import PropsType from './PropsType';
+import swipeActionStyle from './style/index.native';
 
-const { width: screenWidth } = Dimensions.get('window');
+const styles = StyleSheet.create<any>(swipeActionStyle);
 
 export interface SwipeActionProps extends PropsType {}
 
@@ -163,10 +164,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     if (!buttons || buttons.length === 0) {
       return;
     }
-
-    const btnStyle = direction === 'left' ? styles.leftBtn : styles.rightBtn;
+    
+    const btnStyle = [styles.btn, styles[`${direction}Btn`]];
     return (
-      <View style={btnStyle} onLayout={(e) => this.getBtnsWidth(e, direction)}>
+      <View
+        style={btnStyle}
+        onLayout={(e) => this.getBtnsWidth(e, direction)}
+      >
         {buttons.map(this.renderButton)}
       </View>
     );
@@ -181,10 +185,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const { left, right, children } = this.props;
     return (left || right)
     ? (
-      <View style={styles.cell}>
+      <View style={styles.wrapper}>
         {this.renderButtons(left, 'left')}
         {this.renderButtons(right, 'right')}
-        <Animated.View style={[styles.content, viewStyle]} {...this.panResponder.panHandlers}>
+        <Animated.View
+          style={[styles.content, viewStyle]}
+          {...this.panResponder.panHandlers}
+        >
           {children}
         </Animated.View>
       </View>
@@ -193,30 +200,3 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   }
 }
 
-const styles = StyleSheet.create({
-  cell: {
-    position: 'relative',
-    width: screenWidth,
-    height: 45,
-    backgroundColor: '#fff',
-  },
-  content: {
-    flex: 1,
-    position: 'relative',
-    backgroundColor: '#fff',
-  },
-  leftBtn: {
-    height: '100%',
-    flexDirection: 'row',
-    position: 'absolute',
-    left: 0,
-    top: 0,
-  },
-  rightBtn: {
-    height: '100%',
-    flexDirection: 'row',
-    position: 'absolute',
-    right: 0,
-    top: 0,
-  },
-});
