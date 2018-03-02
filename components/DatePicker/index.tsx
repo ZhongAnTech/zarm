@@ -1,7 +1,6 @@
-import React, { Component, cloneElement } from 'react';
-import classnames from 'classnames';
+import React, { Component } from 'react';
+// import classnames from 'classnames';
 import { BaseDatePickerProps } from './PropsType';
-import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
 
@@ -15,12 +14,6 @@ const isExtendDate = (date) => {
   }
 
   return new Date(date.toString().replace(/-/g, '/'));
-};
-
-// 阻止选择器区域的默认事件
-const stopPropagation = (e) => {
-  e.stopPropagation();
-  // e.nativeEvent.stopImmediatePropagation();
 };
 
 export interface DatePickerProps extends BaseDatePickerProps {
@@ -39,7 +32,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     disabled: false,
     value: '',
     defaultValue: '',
-    locale: defaultLocale,
     minuteStep: 1,
     prefixCls: 'za-picker',
     valueMember: 'value',
@@ -48,6 +40,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   private initDate;
+  private isScrolling;
 
   constructor(props) {
     super(props);
@@ -99,6 +92,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   // 点击确定
   onOk = () => {
+    if (this.isScrolling) {
+      return false;
+    }
     const { onOk } = this.props;
     const value = this.state.value || this.initDate;
     this.setState({
@@ -113,6 +109,10 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   // 切换显示状态
   toggle = (visible = false) => {
     this.setState({ visible });
+  }
+
+  onTransition(isScrolling) {
+    this.isScrolling = isScrolling;
   }
 
   close(key) {
@@ -145,42 +145,36 @@ export default class DatePicker extends Component<DatePickerProps, any> {
        ...others } = this.props;
     const { visible, value } = this.state;
 
-    const classes = classnames({
-      [`${prefixCls}-container`]: true,
-      [`${prefixCls}-hidden`]: !visible,
-      [className]: !!className,
-    });
+    // const classes = classnames({
+    //   [`${prefixCls}-container`]: true,
+    //   [`${prefixCls}-hidden`]: !visible,
+    //   [className]: !!className,
+    // });
 
-    const content = children && cloneElement(children, {
-      onClick: () => this.toggle(true),
-    });
+    // const cls = classnames(prefixCls, className);
 
     return (
-      <div className={prefixCls}>
-        <div className={classes} onClick={stopPropagation}>
-          <Popup
-            visible={visible}
-            onMaskClick={() => this.onMaskClick()}
-          >
-            <div className={`${prefixCls}-wrapper`}>
-              <div className={`${prefixCls}-header`}>
-                <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
-                <div className={`${prefixCls}-title`}>{title}</div>
-                <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-              </div>
-              <DatePickerView
-                prefixCls={prefixCls}
-                className={className}
-                {...others}
-                value={value}
-                onInit={this.onInit}
-                onChange={this.onValueChange}
-              />
-            </div>
-          </Popup>
-          {content}
+      <Popup
+        visible={visible}
+        onMaskClick={() => this.onMaskClick()}
+      >
+        <div className={`${prefixCls}-wrapper`}>
+          <div className={`${prefixCls}-header`}>
+            <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+            <div className={`${prefixCls}-title`}>{title}</div>
+            <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
+          </div>
+          <DatePickerView
+            prefixCls={prefixCls}
+            className={className}
+            {...others}
+            value={value}
+            onInit={this.onInit}
+            onChange={this.onValueChange}
+            onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+          />
         </div>
-      </div>
+      </Popup>
     );
   }
 }

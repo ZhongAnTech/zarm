@@ -6,4 +6,5 @@ export interface BaseWheelProps {
   onChange?: (value?: any) => void;
   itemRender?: (item?: object) => string;
   disabled?: boolean;
+  onTransition?: (value: boolean) => void;
 }

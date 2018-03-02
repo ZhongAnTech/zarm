@@ -32,13 +32,4 @@ $prefixCls: $prefixCls-picker;
     text-align: right;
     color: $theme-primary;
   }
-
-  &-mask-top {
-    -webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(rgba(222, 187, 71, 1)), to(rgba(36, 142, 36, 0)));
-  }
-
-  &-mask-bottom {
-    -webkit-mask: -webkit-gradient(linear, 0% 60%, 0% 100%, from(rgba(222, 187, 71, 1)), to(rgba(36, 142, 36, 0)));
-  }
-
 }
