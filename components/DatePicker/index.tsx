@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import classnames from 'classnames';
 import { BaseDatePickerProps } from './PropsType';
-import defaultLocale from './locale/zh_CN';
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
 
@@ -33,7 +32,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     disabled: false,
     value: '',
     defaultValue: '',
-    locale: defaultLocale,
     minuteStep: 1,
     prefixCls: 'za-picker',
     valueMember: 'value',
