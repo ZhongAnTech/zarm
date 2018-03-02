@@ -145,6 +145,12 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   renderButton = (button, index) => {
     return cloneElement(button, {
       key: +index,
+      styles: {
+        ...button.props.styles,
+        ...StyleSheet.create({
+          textStyle: swipeActionStyle.textStyle,
+        }),
+      },
       onClick: (e) => {
         const onClick = button.props.onClick;
 
