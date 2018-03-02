@@ -1,6 +1,6 @@
 import React, { PureComponent, cloneElement } from 'react';
 import {
-  View, PanResponder, Animated, StyleSheet
+  View, PanResponder, Animated, StyleSheet,
 } from 'react-native';
 import PropsType from './PropsType';
 import swipeActionStyle from './style/index.native';
@@ -164,7 +164,6 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     if (!buttons || buttons.length === 0) {
       return;
     }
-    
     const btnStyle = [styles.btn, styles[`${direction}Btn`]];
     return (
       <View
@@ -199,4 +198,3 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     : children;
   }
 }
-

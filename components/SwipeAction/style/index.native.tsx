@@ -22,4 +22,4 @@ export default {
   rightBtn: {
     right: 0,
   },
-}
+};
