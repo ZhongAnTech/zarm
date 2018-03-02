@@ -148,10 +148,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       styles: {
         ...button.props.styles,
         ...StyleSheet.create({
-          textStyle: {
-            color: '#fff',
-            fontSize: 14,
-          },
+          textStyle: swipeActionStyle.textStyle,
         }),
       },
       onClick: (e) => {
