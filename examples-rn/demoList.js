@@ -13,6 +13,11 @@ module.exports = {
       module: require('./pages/ActionSheet'),
     },
     {
+      title: 'SwipeAction',
+      description: '滑动操作',
+      module: require('./pages/SwipeActionPage'),
+    },
+    {
       title: 'Button',
       description: '按钮',
       module: require('./pages/ButtonPage'),
