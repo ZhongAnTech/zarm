@@ -3,7 +3,6 @@ import { Panel, Cell, Toast, DateSelect, DatePicker, DatePickerView, Button } fr
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Scroll from './Scroll';
 import format from '../utils/format';
 
 class Page extends Component {
@@ -52,7 +51,6 @@ class Page extends Component {
     const { date, time, limitDate, select } = this.state;
     return (
       <Container className="picker-page">
-        {/* <Scroll> */}
         <Header title="日期选择器 DatePicker & DateSelect" />
         <main>
           <Panel>
@@ -168,7 +166,6 @@ class Page extends Component {
             />
         </main>
         <Footer />
-        {/* </Scroll> */}
       </Container>
     );
   }

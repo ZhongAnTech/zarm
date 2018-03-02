@@ -54,10 +54,7 @@
   "dependencies": {
     "better-scroll": "^1.8.0",
     "classnames": "^2.2.5",
-    "iscroll": "^5.2.0",
-    "normalize.css": "^7.0.0",
-    "rc-util": "^4.4.0",
-    "zscroller": "^0.2.5"
+    "normalize.css": "^7.0.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.3",

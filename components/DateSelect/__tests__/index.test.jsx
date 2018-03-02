@@ -2,7 +2,7 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import DateSelect from '../index';
-import enLocale from '../../DatePicker/locale/en_US';
+import enLocale from '../../DatePickerView/locale/en_US';
 
 describe('DateSelect', () => {
   it('DateSelect year', () => {

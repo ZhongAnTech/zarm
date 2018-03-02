@@ -4,7 +4,6 @@ import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import District from '../mock/district';
-import Scroll from './Scroll';
 import '../styles/pages/PickerPage';
 
 const SINGLE_DATA = [
@@ -125,7 +124,6 @@ class Page extends Component {
 
     return (
       <Container className="picker-page">
-        {/* <Scroll> */}
         <Header title="选择器 Picker & Select" />
         <main>
           <Panel>
@@ -248,7 +246,6 @@ class Page extends Component {
             />
         </main>
         <Footer />
-        {/* </Scroll> */}
       </Container>
     );
   }
