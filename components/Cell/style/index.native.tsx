@@ -2,10 +2,6 @@ import variables from '../../style/themes/default.native';
 import { PixelRatio, StyleSheet, ViewStyle } from 'react-native';
 import absoluteFill = StyleSheet.absoluteFill;
 export default {
-  container: {
-    flexDirection: 'column',
-  } as ViewStyle,
-
   defaultWrap: {
     width: '100%',
     position: 'relative',
@@ -14,34 +10,46 @@ export default {
   defaultInner: {
     width: '100%',
     flexDirection: 'row',
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingHorizontal: 15,
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
 
-  defaultTitle: {
-    paddingTop: 12,
-    paddingBottom: 12,
+  defaultHeader: {
+    justifyContent: 'center',
   },
 
   defaultBody: {
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    flex: 10,
   },
 
   defaultFooter: {
-    position: 'absolute',
-    right: 15,
+    flex: 3,
     justifyContent: 'center',
     height: '100%',
+    alignItems: 'flex-end',
+  },
+
+  defaultArrow: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    marginRight: -5,
+    marginLeft: 4,
+  },
+
+  defaultTitle: {
+    paddingVertical: 12,
   },
 
   defaultIcon: {
     width: 28,
-    height: '100%',
     marginRight: 10,
-    justifyContent: 'center',
   },
 
   defaultDes: {
     color: '#999',
+    alignItems: 'flex-end',
   },
 };

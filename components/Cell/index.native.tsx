@@ -1,5 +1,5 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { StyleSheet, View, Text , TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Image } from 'react-native';
 import cellStyle from './style/index.native';
 import PropsType from './PropsType';
 
@@ -39,10 +39,12 @@ export default class Cell extends PureComponent<CellProps, {}> {
       style,
     } = this.props;
 
+    const rightIconImg = require('../../examples/images/icons/right.png');
+    const rightIcon = <Image source={rightIconImg} style={{ width: 15, height: 15 }}/>;
     const iconRender = icon && <View style={[styles![`${theme}Icon`]]}>{icon}</View>;
     const titleRender = title && <View style={[styles![`${theme}Title`], style]}><Text>{title}</Text></View>;
     const contentRender = children && <View style={styles![`${theme}Content`]}>{children}</View>;
-    const arrowRender = hasArrow && <View style={styles![`${theme}Arrow`]} />;
+    const arrowRender = hasArrow && <View style={styles![`${theme}Arrow`]}>{rightIcon}</View>;
     const helpRender = help && (
       <View style={styles![`${theme}Help`]}>
         {help}
@@ -71,7 +73,7 @@ export default class Cell extends PureComponent<CellProps, {}> {
     };
 
     if (onClick) {
-      return (<TouchableHighlight onPress={onClick} style={{ width: '100%' }} underlayColor="rgba(0,0,0,0.5)">
+      return (<TouchableHighlight onPress={onClick} style={{ width: '100%' }} underlayColor="rgba(0,0,0,0.1)">
           {viewMain()}
         </TouchableHighlight>
       );
