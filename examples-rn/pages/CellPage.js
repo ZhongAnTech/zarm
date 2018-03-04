@@ -6,9 +6,9 @@ const styles = {
   bodyColor: {
     color: '#333',
   },
-  box:{
+  box: {
     flexDirection: 'column',
-  }
+  },
 };
 
 
