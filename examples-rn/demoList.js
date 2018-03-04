@@ -34,5 +34,10 @@ module.exports = {
       description: '面板',
       module: require('./pages/PanelPage'),
     },
+    {
+      title: 'Cell',
+      description: '列表项',
+      module: require('./pages/CellPage'),
+    },
   ],
 };
