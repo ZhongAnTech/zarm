@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import classnames from 'classnames';
 import { BaseDatePickerProps } from './PropsType';
-import defaultLocale from './locale/zh_CN';
+import defaultLocale from '../DatePickerView/locale/zh_CN';
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
 

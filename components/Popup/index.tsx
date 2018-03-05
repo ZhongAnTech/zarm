@@ -46,12 +46,14 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    clearTimeout(this.timer);
+    if (this.state.isShow !== nextProps.visible) {
+      clearTimeout(this.timer);
 
-    if (nextProps.visible) {
-      this.enter(nextProps);
-    } else {
-      this.leave();
+      if (nextProps.visible) {
+        this.enter(nextProps);
+      } else {
+        this.leave();
+      }
     }
   }
 
