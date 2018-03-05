@@ -326,7 +326,7 @@ exports[`Select Cascader Select 1`] = `
                   </div>
                 </div>
                 <Mask
-                  className="fade-leave"
+                  className=""
                   onClose={[Function]}
                   prefixCls="za-mask"
                   style={
@@ -694,7 +694,7 @@ exports[`Select Cascader Select init value 1`] = `
                   </div>
                 </div>
                 <Mask
-                  className="fade-leave"
+                  className=""
                   onClose={[Function]}
                   prefixCls="za-mask"
                   style={
@@ -931,7 +931,7 @@ exports[`Select Select 1`] = `
                   </div>
                 </div>
                 <Mask
-                  className="fade-leave"
+                  className=""
                   onClose={[Function]}
                   prefixCls="za-mask"
                   style={
@@ -1179,7 +1179,7 @@ exports[`Select render defaultValue correctly  1`] = `
                   </div>
                 </div>
                 <Mask
-                  className="fade-leave"
+                  className=""
                   onClose={[Function]}
                   prefixCls="za-mask"
                   style={
