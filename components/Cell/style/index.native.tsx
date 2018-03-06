@@ -23,6 +23,7 @@ export default {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     flex: 10,
+    justifyContent: 'space-around',
   },
 
   defaultFooter: {
@@ -41,6 +42,11 @@ export default {
 
   defaultTitle: {
     paddingVertical: 12,
+    flex: 1,
+  },
+
+  defaultContent: {
+    flex: 2,
   },
 
   defaultIcon: {
@@ -51,5 +57,28 @@ export default {
   defaultDes: {
     color: '#999',
     alignItems: 'flex-end',
+  },
+
+  defaultBorder: {
+    height: 1,
+    backgroundColor: '#ddd',
+    left: 15,
+    opacity: 0.3,
+  },
+
+  defaultBorderLeft: {
+    height: 1,
+    backgroundColor: '#ddd',
+    left: 59,
+    opacity: 0.3,
+  },
+
+  defaultHelp: {
+    width: '100%',
+    flexDirection: 'row',
+    paddingHorizontal: 15,
+    paddingBottom: 15,
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
 };

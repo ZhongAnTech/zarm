@@ -17,11 +17,6 @@ export default class Cell extends PureComponent<CellProps, {}> {
     disabled: false,
     styles: cellStyles,
     theme: 'default',
-    // theme: 'default',
-    // icon: '',
-    // title: '',
-    // description: '',
-    // help: '',
   };
 
   render() {
@@ -39,12 +34,17 @@ export default class Cell extends PureComponent<CellProps, {}> {
       style,
     } = this.props;
 
+    const cellTitle = (title.$$typeof) ? title : <Text>{title}</Text>;
+    const titleRender = title && <View style={[styles![`${theme}Title`], style]}>{cellTitle}</View>;
     const rightIconImg = require('../../examples/images/icons/right.png');
     const rightIcon = <Image source={rightIconImg} style={{ width: 15, height: 15 }}/>;
     const iconRender = icon && <View style={[styles![`${theme}Icon`]]}>{icon}</View>;
-    const titleRender = title && <View style={[styles![`${theme}Title`], style]}><Text>{title}</Text></View>;
     const contentRender = children && <View style={styles![`${theme}Content`]}>{children}</View>;
     const arrowRender = hasArrow && <View style={styles![`${theme}Arrow`]}>{rightIcon}</View>;
+    let borderStyle = styles![`${theme}Border`];
+    if (iconRender) {
+      borderStyle = styles![`${theme}BorderLeft`];
+    }
     const helpRender = help && (
       <View style={styles![`${theme}Help`]}>
         {help}
@@ -68,6 +68,7 @@ export default class Cell extends PureComponent<CellProps, {}> {
             {arrowRender}
           </View>
           {helpRender}
+          <View style={borderStyle}/>
         </View>
         );
     };
