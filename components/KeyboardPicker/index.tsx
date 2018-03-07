@@ -1,5 +1,4 @@
-import React, { PureComponent, cloneElement } from 'react';
-import classnames from 'classnames';
+import React, { PureComponent } from 'react';
 import PropsType from './PropsType';
 import Keyboard from '../Keyboard';
 import Popup from '../Popup';
@@ -53,23 +52,15 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
   }
 
   render() {
-    const { prefixCls, className, type, children, ...others } = this.props;
     const { visible } = this.state;
-    const cls = classnames(`${prefixCls}-picker`, className);
-    const content = children && cloneElement(children, {
-      onClick: () => this.toggle(true),
-    });
 
     return (
-      <div className={cls}>
-        <Popup
-          visible={visible}
-          mask={false}
-        >
-          <Keyboard {...others} type={type} onKeyClick={this.onKeyClick} />
-        </Popup>
-        {content}
-      </div>
+      <Popup
+        visible={visible}
+        mask={false}
+      >
+        <Keyboard {...this.props} onKeyClick={this.onKeyClick} />
+      </Popup>
     );
   }
 }
