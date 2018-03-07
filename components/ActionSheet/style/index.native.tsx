@@ -1,5 +1,5 @@
 import variables from '../../style/themes/default.native';
-import { PixelRatio } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default {
   wrapper: {
@@ -45,7 +45,7 @@ export default {
   },
 
   actionItemBorder: {
-    borderTopWidth: 1 / PixelRatio.get(),
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: '#ddd',
   },
 

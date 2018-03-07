@@ -1,5 +1,5 @@
 import variables from '../../style/themes/default.native';
-import { PixelRatio, ViewStyle } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 export default {
   container: {
     flexDirection: 'column',
@@ -25,8 +25,8 @@ export default {
   panelBody: {
     flexDirection: 'row',
     backgroundColor: '#ffffff',
-    borderTopWidth: 1 / PixelRatio.get(),
-    borderBottomWidth: 1 / PixelRatio.get(),
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
     borderStyle: 'solid',
     borderColor: '#dddddd',
     flex: 1,
