@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 import { BaseInputNumberProps } from './PropsType';
 import Events from '../utils/events';
@@ -18,8 +19,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     disabled: false,
   };
 
-  private container;
   private content;
+  private picker;
 
   constructor(props) {
     super(props);
@@ -51,20 +52,20 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   onMaskClick = (e) => {
-    if (!this.container || !this.state.visible) {
+    if (!this.state.visible) {
       return;
     }
 
-    const pNode = ((node) => {
+    const cNode = ((node) => {
       while (node.parentNode && node.parentNode !== document.body) {
-        if (node === this.container) {
+        if (node === findDOMNode(this.picker)) {
           return node;
         }
         node = node.parentNode;
       }
     })(e.target);
 
-    if (!pNode) {
+    if (!cNode) {
       this.onBlur();
     }
   }
@@ -133,7 +134,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     });
 
     return (
-      <div className={cls} ref={ele => { this.container = ele; }} onClick={this.onFocus}>
+      <div className={cls} onClick={this.onFocus}>
         {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
         <div className={`${prefixCls}-content`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input
@@ -142,6 +143,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           disabled={disabled}
         />
         <KeyboardPicker
+          ref={(ele) => { this.picker = ele; }}
           visible={visible}
           type={type}
           onKeyClick={this.onKeyClick}
