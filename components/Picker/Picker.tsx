@@ -35,6 +35,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     itemRender: data => data.label,
   };
 
+  private firstValue;
   private tempValue;
   private tempObjValue;
   private isScrolling;
@@ -60,10 +61,11 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   onInit = (selected) => {
     const { valueMember, onInit } = this.props;
-    this.setState({
-      firstValue: selected.map(item => item[valueMember!]),
-      firstObjValue: selected,
-    });
+    this.firstValue = selected.map(item => item[valueMember!]);
+    // this.setState({
+    //   firstValue: selected.map(item => item[valueMember!]),
+    //   firstObjValue: selected,
+    // });
 
     if (typeof onInit === 'function') {
       onInit(selected);
@@ -99,7 +101,8 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (this.isScrolling) {
       return false;
     }
-    const value = this.state.value.length === 0 ? this.state.firstValue : this.state.value;
+
+    const value = this.state.value.length === 0 ? this.firstValue : this.state.value;
     const objValue = this.state.objValue.length === 0 ? this.state.firstObjValue : this.state.objValue;
 
     this.setState({
