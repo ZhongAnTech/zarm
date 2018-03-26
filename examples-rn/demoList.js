@@ -16,4 +16,11 @@ module.exports = {
       module: require('./pages/ButtonPage'),
     },
   ],
+  UIDATA: [
+    {
+      title: 'BadgePage',
+      description: '徽标',
+      module: require('./pages/BadgePage'),
+    },
+  ]
 };

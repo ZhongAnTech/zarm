@@ -3,7 +3,7 @@ import 'core-js/es6/set';
 import { AppRegistry } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import IndexPage from './pages/IndexPage';
-import { UIFORM, UICONROL, UIVIEW } from './demoList';
+import { UIFORM, UICONROL, UIVIEW, UIDATA } from './demoList';
 
 const getOptions = title => ({
   title,
@@ -20,7 +20,7 @@ const scenes = {
   },
 };
 
-[...UIFORM, ...UICONROL, ...UIVIEW].forEach((component) => {
+[...UIFORM, ...UICONROL, ...UIVIEW, ...UIDATA].forEach((component) => {
   scenes[component.title] = {
     screen: component.module.default,
     navigationOptions: getOptions(component.title),
