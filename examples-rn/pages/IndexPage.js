@@ -4,7 +4,6 @@ import { UIFORM, UICONROL, UIVIEW, UIDATA } from '../demoList';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 
-
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' +
 //     'Cmd+D or shake for dev menu',
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Index extends PureComponent<{}> {
+export default class Index extends PureComponent {
 
   render() {
     const { navigate } = this.props.navigation;

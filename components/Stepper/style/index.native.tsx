@@ -21,6 +21,7 @@ export default {
   input: {
     width: variables.stepper_input_width,
     height: variables.stepper_height,
+    padding: 0,
     marginHorizontal: 10,
     fontSize: variables.stepper_input_font_size,
     color: variables.color_text,

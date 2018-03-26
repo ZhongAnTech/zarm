@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { ScrollView, View } from 'react-native';
 import { Button } from '../../components/index.native';
 
@@ -17,7 +17,7 @@ const styles = {
 
 const noop = () => {};
 
-export default class Page extends Component<{}> {
+export default class Page extends PureComponent {
   render() {
     return (
       <ScrollView>

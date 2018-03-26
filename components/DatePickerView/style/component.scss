@@ -1,13 +1,62 @@
 $prefixCls: $prefixCls-picker;
 
 .#{$prefixCls} {
- 
+  &-panel {
+    height: 210px;
+    position: relative;
+    z-index: 600;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    padding: 20px 0;
+  }
+
+  &-mask-top,
+  &-mask-bottom {
+    z-index: 10;
+    width: 100%;
+    height: 88px;
+    pointer-events: none;
+    transform: translateZ(0);
+  }
+
   &-mask-top {
-    
-    -webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(rgba(222, 187, 71, 1)), to(rgba(36, 142, 36, 0)));
+    position: absolute;
+    top: 0;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      border-bottom: 1px solid #ebebeb;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      -webkit-transform-origin: 0 bottom;
+      transform-origin: 0 bottom;
+    }
   }
 
   &-mask-bottom {
-    -webkit-mask: -webkit-gradient(linear, 0% 60%, 0% 100%, from(rgba(222, 187, 71, 1)), to(rgba(36, 142, 36, 0)));
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      border-top: 1px solid #ebebeb;
+      left: 0;
+      top: 0;
+      width: 100%;
+      -webkit-transform-origin: 0 top;
+      transform-origin: 0 top;
+    }
+  }
+
+  &-view {
+    display: flex;
   }
 }

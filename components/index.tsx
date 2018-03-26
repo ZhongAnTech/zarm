@@ -1,3 +1,4 @@
+export { default as Accordion } from './Accordion';
 export { default as ActionSheet } from './ActionSheet';
 export { default as Alert } from './Alert';
 export { default as Badge } from './Badge';

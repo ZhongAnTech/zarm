@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
 import Mask from '../Mask';
+import Portal from './Portal';
 
+const IS_REACT_16 = !!(ReactDOM as any).createPortal;
 export interface PopupProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -23,6 +26,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   };
 
   private timer: number;
+  private container;
   private popup;
 
   constructor(props) {
@@ -36,6 +40,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   componentDidMount() {
+    this.renderPopup();
     Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
     Events.on(this.popup, 'transitionend', this.animationEnd);
   }
@@ -51,8 +56,23 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   componentWillUnmount() {
+    if (!IS_REACT_16) {
+      ReactDOM.unmountComponentAtNode(this.container);
+    }
+    document.body.removeChild(this.container);
     Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
     Events.off(this.popup, 'transitionend', this.animationEnd);
+  }
+
+  renderPopup() {
+    if (IS_REACT_16) {
+      return;
+    }
+    ReactDOM.unstable_renderSubtreeIntoContainer(
+      this,
+      this.getComponent(),
+      this.getContainer(),
+    );
   }
 
   enter = ({ stayTime, autoClose, onMaskClick }) => {
@@ -117,7 +137,18 @@ export default class Popup extends PureComponent<PopupProps, any> {
     );
   }
 
-  render() {
+  getContainer() {
+    let container = document.querySelector(`#${this.props.prefixCls}-container`);
+    if (!container) {
+      container = document.createElement('div');
+      container.classList.add('popup-container');
+      document.body.appendChild(container);
+    }
+    this.container = container;
+    return container;
+  }
+
+  getComponent() {
     const { prefixCls, className, animationDuration, direction, children } = this.props;
     const { isShow } = this.state;
 
@@ -130,13 +161,34 @@ export default class Popup extends PureComponent<PopupProps, any> {
       WebkitTransitionDuration: `${animationDuration}ms`,
       transitionDuration: `${animationDuration}ms`,
     };
-
     return (
       <div className={popupCls} ref={(popup) => { this.popup = popup; }}>
         <div className={wrapCls} style={wrapStyle}>
           {children}
         </div>
         {this.renderMask()}
+      </div>
+    );
+  }
+
+  renderPortal() {
+    if (!IS_REACT_16) {
+      return null;
+    }
+
+    const portal = (
+      <Portal getContainer={() => this.getContainer()}>
+        {this.getComponent()}
+      </Portal>
+    );
+
+    return portal;
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderPortal()}
       </div>
     );
   }

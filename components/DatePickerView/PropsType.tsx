@@ -11,4 +11,5 @@ export interface BaseDatePickerViewProps {
   max?: object | string;
   locale?: any;
   valueMember?: string;
+  onTransition?: (value: boolean) => void;
 }
