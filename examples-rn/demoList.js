@@ -35,4 +35,11 @@ module.exports = {
       module: require('./pages/PanelPage'),
     },
   ],
+  UIDATA: [
+    {
+      title: 'BadgePage',
+      description: '徽标',
+      module: require('./pages/BadgePage'),
+    },
+  ]
 };

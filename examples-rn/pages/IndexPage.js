@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { UIFORM, UICONROL, UIVIEW } from '../demoList';
+import { UIFORM, UICONROL, UIVIEW, UIDATA } from '../demoList';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 
@@ -45,7 +45,7 @@ export default class Index extends PureComponent {
         </View>
         <View style={styles.main}>
           {
-            [...UIFORM, ...UICONROL, ...UIVIEW].map((component, i) => (
+            [...UIFORM, ...UICONROL, ...UIVIEW, ...UIDATA].map((component, i) => (
               <Button
                 key={+i}
                 onPress={() => navigate(component.title)}

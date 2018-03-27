@@ -4,7 +4,7 @@ import React from 'react';
 import { AppRegistry, View, Text } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import IndexPage from './pages/IndexPage';
-import { UIFORM, UICONROL, UIVIEW } from './demoList';
+import { UIFORM, UICONROL, UIVIEW, UIDATA } from './demoList';
 
 const getOptions = title => ({
   headerTitle: (
@@ -29,7 +29,7 @@ const scenes = {
   },
 };
 
-[...UIFORM, ...UICONROL, ...UIVIEW].forEach((component) => {
+[...UIFORM, ...UICONROL, ...UIVIEW, ...UIDATA].forEach((component) => {
   scenes[component.title] = {
     screen: component.module.default,
     navigationOptions: getOptions(component.title),
