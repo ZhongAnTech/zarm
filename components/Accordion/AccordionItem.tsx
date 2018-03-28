@@ -108,7 +108,7 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, any
   }
 
   render() {
-      const { title, children } = this.props;
+    const { title, children } = this.props;
     const { cls, titleCls, contentCls, contentInnerCls, arrowCls } = this.getCls();
 
     return (
