@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BaseDatePickerViewProps } from './PropsType';
 import defaultLocale from './locale/zh_CN';
-import classnames from 'classnames';
-import Wheel from '../Wheel';
+import PickerView from '../PickerView';
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -31,11 +30,11 @@ const setMonth = (date, month) => {
   date.setMonth(month);
 };
 
-// 转成Date格式
 const getGregorianCalendar = (year, month, day, hour, minutes, seconds) => {
   return new Date(year, month, day, hour, minutes, seconds);
 };
 
+// 转成Date格式
 const isExtendDate = (date) => {
   if (date instanceof Date) {
     return date;
@@ -104,26 +103,27 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     }
   }
 
-  onValueChange(selected, index) {
-    const { mode, onChange } = this.props;
+  onValueChange = (selected, index) => {
+    const { mode, onChange, valueMember } = this.props;
 
     let newValue = cloneDate(this.getDate());
+    let selectedItem = selected[index][valueMember!];
     if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
       switch (index) {
         case 0:
-          newValue.setFullYear(selected);
+          newValue.setFullYear(selectedItem);
           break;
         case 1:
-          setMonth(newValue, selected);
+          setMonth(newValue, selectedItem);
           break;
         case 2:
-          newValue.setDate(selected);
+          newValue.setDate(selectedItem);
           break;
         case 3:
-          newValue.setHours(selected);
+          newValue.setHours(selectedItem);
           break;
         case 4:
-          newValue.setMinutes(selected);
+          newValue.setMinutes(selectedItem);
           break;
         default:
           break;
@@ -131,10 +131,10 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     } else {
       switch (index) {
         case 0:
-          newValue.setHours(selected);
+          newValue.setHours(selectedItem);
           break;
         case 1:
-          newValue.setMinutes(selected);
+          newValue.setMinutes(selectedItem);
           break;
         default:
           break;
@@ -142,7 +142,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     }
 
     newValue = this.clipDate(newValue);
-
     this.setState({
       date: newValue,
     });
@@ -440,34 +439,19 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     }
   }
 
-  renderWheel = (item, index) => {
-    const { valueMember, disabled } = this.props;
-    const { value } = this.getColsValue();
+  render() {
+    const { prefixCls, className, ...others } = this.props;
+    const { dataSource, value } = this.getColsValue();
 
     return (
-      <Wheel
-        key={+index}
-        dataSource={item}
-        value={value[index]}
-        valueMember={valueMember}
-        disabled={disabled}
-        onChange={selected => this.onValueChange(selected, index)}
+      <PickerView
+        dataSource={dataSource}
+        prefixCls={prefixCls}
+        {...others}
+        value={value}
+        onChange={this.onValueChange}
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
-    );
-  }
-
-  render() {
-    const { prefixCls, className } = this.props;
-    const { dataSource } = this.getColsValue();
-    return (
-      <div className={`${prefixCls}-panel`}>
-        <div className={`${prefixCls}-mask-top`} />
-        <div className={classnames(`${prefixCls}-view`, className)}>
-          {dataSource.map(this.renderWheel)}
-        </div>
-        <div className={`${prefixCls}-mask-bottom`} />
-      </div>
     );
   }
 }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-// import classnames from 'classnames';
 import { BaseDatePickerProps } from './PropsType';
+<<<<<<< HEAD
+import defaultLocale from '../DatePickerView/locale/zh_CN';
+=======
+>>>>>>> 0efed1895369ad1e3dfc9caedb896247bba1ebe1
 import Popup from '../Popup';
 import DatePickerView from '../DatePickerView';
 
@@ -112,7 +115,11 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   onTransition(isScrolling) {
+    const { onTransition } = this.props;
     this.isScrolling = isScrolling;
+    if (typeof onTransition === 'function') {
+      onTransition(isScrolling);
+    }
   }
 
   close(key) {
