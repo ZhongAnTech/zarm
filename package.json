@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "1.2.0-beta.21",
+  "version": "1.2.0-beta.22",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -28,22 +28,23 @@
   "bugs": {
     "url": "https://github.com/ZhonganTechENG/zarm/issues"
   },
+  "module": "es/index.js",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "npm run deploy && npm run dev",
     "clean": "rm -rf lib es dist .temp",
     "dev": "webpack-dev-server --config scripts/webpack/config.dev.js",
-    "build:es": "tsc --outDir es -d",
+    "build:es": "tsc --outDir es -d --module es6",
     "build:lib": "tsc --outDir lib -d && tsc --outDir .temp --jsx preserve && babel .temp --out-dir lib --presets=env,react,stage-0 && rm -rf .temp",
-    "build:umd": "webpack --config scripts/webpack/config.umd.js && NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
+    "build:umd": "webpack --config scripts/webpack/config.umd.js && cross-env NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
     "build:css": "cd scripts/gulp && gulp",
-    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:css",
+    "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd && npm run build:css",
     "site:build": "rm -rf assets && webpack --config scripts/webpack/config.site.js",
     "site": "npm run site:build && gh-pages -d assets",
     "lint:ts": "tslint -c tslint.json 'components/**/*.{ts,tsx}'",
-    "lint:js": "eslint examples --ext '.js,.jsx'",
-    "lint:style": "stylelint styles/**/*.scss examples/styles/**/*.scss --syntax scss",
+    "lint:js": "eslint --ext '.js,.jsx' examples",
+    "lint:style": "stylelint --syntax scss components/**/*.scss components/**/**/*.scss examples/styles/**/*.scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "lint-staged": "lint-staged",
     "test": "export TZ=America/New_York; jest --coverage",
@@ -79,6 +80,7 @@
     "babel-runtime": "^6.23.0",
     "core-js": "^2.5.1",
     "coveralls": "^2.13.1",
+    "cross-env": "^5.1.3",
     "css-loader": "^0.28.1",
     "cssnano": "^3.10.0",
     "enzyme": "^3.1.0",
@@ -163,9 +165,9 @@
     ]
   },
   "lint-staged": {
-    "components/**/*.{ts,tsx}": "lint:ts",
-    "{components,examples}/**/*.{js,jsx}": "lint:js",
-    "{styles,examples}/**/*.scss": "lint:style"
+    "components/**/*.{ts,tsx}": "tslint -c tslint.json",
+    "{components,examples}/**/*.{js,jsx}": "eslint",
+    "{styles,examples}/**/*.scss": "stylelint"
   },
   "pre-commit": [
     "lint-staged"

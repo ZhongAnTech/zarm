@@ -5,15 +5,6 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
   cancelText="取消"
   defaultValue=""
   disabled={false}
-  locale={
-    Object {
-      "day": "日",
-      "hour": "时",
-      "minute": "分",
-      "month": "月",
-      "year": "年",
-    }
-  }
   minuteStep={1}
   mode="date"
   okText="确定"
