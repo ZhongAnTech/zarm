@@ -113,7 +113,11 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   onTransition(isScrolling) {
+    const { onTransition } = this.props;
     this.isScrolling = isScrolling;
+    if (typeof onTransition === 'function') {
+      onTransition(isScrolling);
+    }
   }
 
   close(key) {
