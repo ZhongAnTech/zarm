@@ -1,11 +1,5 @@
 import variables from '../../style/themes/default.native';
 
- // Badge
-//  badge_height: 19,
-//  badge_font_size: this.font_size_sm,
-//  badge_padding_h: this.padding_h_sm,
-//  badge_dot_diameter: 8,
-
 export default {
   TextStyle: {
     flexDirection: 'row',
