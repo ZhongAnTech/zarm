@@ -8,7 +8,9 @@ _book
 .idea
 .DS_Store
 .temp
+.history
 *.log
+.prettierrc.yaml
 *.iml
 examples-rn/ios/build
 examples-rn/android/build
