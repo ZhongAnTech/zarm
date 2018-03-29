@@ -15,8 +15,6 @@ export interface BadgeProps extends PropsType {
 
 const badgeStyles = StyleSheet.create<any>(badgeStyle);
 
-
-
 export default class Badge extends PureComponent<BadgeProps, {}> {
 
   static defaultProps = {
