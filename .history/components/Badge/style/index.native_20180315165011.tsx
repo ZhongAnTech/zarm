@@ -1,11 +1,5 @@
 import variables from '../../style/themes/default.native';
 
- // Badge
-//  badge_height: 19,
-//  badge_font_size: this.font_size_sm,
-//  badge_padding_h: this.padding_h_sm,
-//  badge_dot_diameter: 8,
-
 export default {
   TextStyle: {
     flexDirection: 'row',
@@ -38,7 +32,7 @@ export default {
   },
 
   roundShape: {
-    borderRadius: variables.badge_dot_diameter,
+    borderRadius: 16,
     height: 16,
   },
 
@@ -80,8 +74,8 @@ export default {
   dotText: {
     color: 'white',
     display: 'flex',
-    fontSize: variables.badge_font_size,
+    fontSize: 12,
     lineHeight: 16,
-    paddingHorizontal: variables.padding_h_sm,
+    paddingHorizontal: 4,
   },
 };

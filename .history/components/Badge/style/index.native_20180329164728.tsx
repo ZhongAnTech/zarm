@@ -38,7 +38,7 @@ export default {
   },
 
   roundShape: {
-    borderRadius: variables.badge_dot_diameter,
+    borderRadius: 16,
     height: 16,
   },
 

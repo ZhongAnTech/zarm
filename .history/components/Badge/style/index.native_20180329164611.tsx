@@ -38,7 +38,7 @@ export default {
   },
 
   roundShape: {
-    borderRadius: variables.badge_dot_diameter,
+    borderRadius: 16,
     height: 16,
   },
 
@@ -82,6 +82,6 @@ export default {
     display: 'flex',
     fontSize: variables.badge_font_size,
     lineHeight: 16,
-    paddingHorizontal: variables.padding_h_sm,
+    paddingHorizontal: 4,
   },
 };

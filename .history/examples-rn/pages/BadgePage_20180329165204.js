@@ -49,6 +49,7 @@ const styles = {
     flexDirection: 'row',
     display: 'flex',
     justifyContent: 'center',
+    // textAlign: 'right',
     alignItems: 'center',
   },
 
@@ -63,6 +64,7 @@ const styles = {
     flexDirection: 'row',
     display: 'flex',
     justifyContent: 'center',
+    // textAlign: 'right',
     alignItems: 'center',
   },
 

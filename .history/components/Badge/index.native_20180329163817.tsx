@@ -43,6 +43,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
       sup,
       text,
       children,
+      ...others,
     } = this.props;
 
     const bagdeWrapper = [

@@ -1,15 +1,13 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent } from 'react';
 import {
   StyleSheet,
   View,
   Text,
-  ViewStyle,
 } from 'react-native';
 import PropsType from './PropsType';
 import badgeStyle from './style/index.native';
 
 export interface BadgeProps extends PropsType {
-  style?: CSSProperties;
   styles?: typeof badgeStyle;
 }
 
@@ -18,6 +16,7 @@ const badgeStyles = StyleSheet.create<any>(badgeStyle);
 export default class Badge extends PureComponent<BadgeProps, {}> {
 
   static defaultProps = {
+    prefixCls: 'za-badge',
     theme: 'error',
     sup: false,
     styles: badgeStyles,
@@ -38,11 +37,13 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     const { styles } = this.props;
 
     const {
+      prefixCls,
       theme,
       shape,
       sup,
       text,
       children,
+      ...others,
     } = this.props;
 
     const bagdeWrapper = [
