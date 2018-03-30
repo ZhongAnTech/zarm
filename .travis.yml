@@ -6,6 +6,6 @@ before_install:
   - export TZ=America/New_York
 script:
   - npm run lint
-  - npm run test -- -i
+  - npm run test -- -w 2
 after_script:
   - npm run coverage
