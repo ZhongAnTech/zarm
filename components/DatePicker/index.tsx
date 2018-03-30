@@ -161,7 +161,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         visible={visible}
         onMaskClick={() => this.onMaskClick()}
       >
-        <div className={`${prefixCls}-wrapper`}>
+        <div className={`${prefixCls}-wrapper`} onClick={(e) => {e.stopPropagation(); }}>
           <div className={`${prefixCls}-header`}>
             <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
             <div className={`${prefixCls}-title`}>{title}</div>
