@@ -84,6 +84,18 @@ exports[`Select Cascader Select 1`] = `
           },
         ]
       }
+      firstObjValue={
+        Array [
+          Object {
+            "label": "选项一",
+            "value": "1",
+          },
+          Object {
+            "label": "选项一",
+            "value": "11",
+          },
+        ]
+      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
@@ -186,6 +198,18 @@ exports[`Select Cascader Select 1`] = `
                       ]
                     }
                     disabled={false}
+                    firstObjValue={
+                      Array [
+                        Object {
+                          "label": "选项一",
+                          "value": "1",
+                        },
+                        Object {
+                          "label": "选项一",
+                          "value": "11",
+                        },
+                      ]
+                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}
@@ -377,7 +401,10 @@ exports[`Select Cascader Select init value 1`] = `
   >
     <div
       className="za-select-input"
-    />
+    >
+      选项一
+      选项二
+    </div>
     <Picker
       cancelText="取消"
       dataSource={
@@ -413,6 +440,18 @@ exports[`Select Cascader Select init value 1`] = `
         ]
       }
       displayAddon="-"
+      firstObjValue={
+        Array [
+          Object {
+            "label": "选项一",
+            "value": "1",
+          },
+          Object {
+            "label": "选项二",
+            "value": "12",
+          },
+        ]
+      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
@@ -521,6 +560,18 @@ exports[`Select Cascader Select init value 1`] = `
                     }
                     disabled={false}
                     displayAddon="-"
+                    firstObjValue={
+                      Array [
+                        Object {
+                          "label": "选项一",
+                          "value": "1",
+                        },
+                        Object {
+                          "label": "选项二",
+                          "value": "12",
+                        },
+                      ]
+                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}
@@ -707,6 +758,14 @@ exports[`Select Select 1`] = `
           },
         ]
       }
+      firstObjValue={
+        Array [
+          Object {
+            "label": "选项一",
+            "value": "1",
+          },
+        ]
+      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
@@ -789,6 +848,14 @@ exports[`Select Select 1`] = `
                       ]
                     }
                     disabled={false}
+                    firstObjValue={
+                      Array [
+                        Object {
+                          "label": "选项一",
+                          "value": "1",
+                        },
+                      ]
+                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}
@@ -911,7 +978,9 @@ exports[`Select render defaultValue correctly  1`] = `
   >
     <div
       className="za-select-input"
-    />
+    >
+      选项二
+    </div>
     <Picker
       cancelText="取消"
       dataSource={
@@ -927,6 +996,14 @@ exports[`Select render defaultValue correctly  1`] = `
         ]
       }
       defaultValue="2"
+      firstObjValue={
+        Array [
+          Object {
+            "label": "选项二",
+            "value": "2",
+          },
+        ]
+      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
@@ -1014,6 +1091,14 @@ exports[`Select render defaultValue correctly  1`] = `
                     }
                     defaultValue="2"
                     disabled={false}
+                    firstObjValue={
+                      Array [
+                        Object {
+                          "label": "选项二",
+                          "value": "2",
+                        },
+                      ]
+                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}

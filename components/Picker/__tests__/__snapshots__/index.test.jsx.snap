@@ -90,6 +90,14 @@ exports[`Picker Picker render visible 1`] = `
                   ]
                 }
                 disabled={false}
+                firstObjValue={
+                  Array [
+                    Object {
+                      "label": "选项一",
+                      "value": "1",
+                    },
+                  ]
+                }
                 itemRender={[Function]}
                 onChange={[Function]}
                 onInit={[Function]}
@@ -319,6 +327,18 @@ exports[`Picker render custom label 1`] = `
                   ]
                 }
                 disabled={false}
+                firstObjValue={
+                  Array [
+                    Object {
+                      "code": "1",
+                      "name": "北京市",
+                    },
+                    Object {
+                      "code": "11",
+                      "name": "海淀区",
+                    },
+                  ]
+                }
                 itemRender={[Function]}
                 onChange={[Function]}
                 onInit={[Function]}
