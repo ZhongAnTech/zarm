@@ -56,7 +56,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
   onInputBlur = (value) => {
     const { min, max, onChange } = this.props;
     value = Number(value);
-    if (value === '' || isNaN(value)) {
+    if (value === '' || Number.isNaN(Number(value))) {
       value = this.state.lastValue;
     }
     if (min !== null && value < min) {
@@ -141,7 +141,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
           className={`${prefixCls}-input`}
           type="tel"
           value={value}
-          onChange={e => this.onInputChange(e.target.value)}
+          onCompositionStart={e => this.onInputChange(e.target.value)}
           onBlur={() => this.onInputBlur(value)}
         />
         <span className={plusCls} onClick={this.onPlusClick}><Icon type="add" /></span>

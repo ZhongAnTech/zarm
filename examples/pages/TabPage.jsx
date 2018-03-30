@@ -7,13 +7,6 @@ import '../styles/pages/TabPage';
 
 class TabPage extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeIndex: 0,
-    };
-  }
-
   render() {
     return (
       <Container className="tab-page">
@@ -102,6 +95,7 @@ class TabPage extends Component {
       </Container>
     );
   }
+
 }
 
 export default TabPage;

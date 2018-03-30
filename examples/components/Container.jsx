@@ -16,7 +16,7 @@ class Container extends Component {
   componentWillUnmount() {
     if (this.props.className !== 'index-page') return;
 
-    const scrollTop = this.container.scrollTop;
+    const { scrollTop } = this.container;
     window.sessionStorage[this.props.className] = scrollTop;
   }
 
@@ -39,6 +39,7 @@ class Container extends Component {
       </div>
     );
   }
+
 }
 
 export default Container;

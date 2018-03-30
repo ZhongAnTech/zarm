@@ -27,7 +27,7 @@ class Page extends Component {
                   onChange={(value) => {
                     console.log(value);
                   }}
-                  />
+                />
               </Cell>
 
               <Cell title="设置默认值">
@@ -54,6 +54,7 @@ class Page extends Component {
       </Container>
     );
   }
+
 }
 
 export default Page;

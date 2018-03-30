@@ -23,7 +23,8 @@ class Page extends Component {
           <div className="progress">
             <Progress
               percent={this.state.percent}
-              theme={this.state.theme}>
+              theme={this.state.theme}
+            >
               {this.state.percent}%
             </Progress>
           </div>
@@ -31,7 +32,8 @@ class Page extends Component {
             <Progress
               shape="circle"
               percent={this.state.percent}
-              theme={this.state.theme}>
+              theme={this.state.theme}
+            >
               <div className="progress-content">
                 <span className="progress-text">{this.state.percent}</span>
                 <span className="progress-percent">%</span>
@@ -48,12 +50,12 @@ class Page extends Component {
                   max={100}
                   value={this.state.percent}
                   onChange={(value) => {
-                    if (isNaN(value)) return;
+                    if (Number.isNaN(Number(value))) return;
                     this.setState({
                       percent: value,
                     });
                   }}
-                  />
+                />
               </Cell>
 
               <Cell title="主题">
@@ -70,7 +72,7 @@ class Page extends Component {
                       theme: selected.map(item => item.value),
                     });
                   }}
-                  />
+                />
               </Cell>
             </Panel.Body>
           </Panel>
@@ -79,6 +81,7 @@ class Page extends Component {
       </Container>
     );
   }
+
 }
 
 export default Page;
