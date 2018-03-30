@@ -32,7 +32,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     disabled: false,
   };
 
-  // private isManual;
+  private isManual;
 
   constructor(props) {
     super(props);
@@ -42,16 +42,16 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
       props.onInit(this.state.objValue);
     }
 
-    // this.isManual = false;
+    this.isManual = false;
   }
 
   componentWillReceiveProps(nextProps) {
     const state = this.getState(nextProps);
     this.setState(state);
     // 如果从上层组件传进来的值与当前值一样，或者人工滑动了改变值，则不执行onInit。
-    // if (JSON.stringify(state.objValue) === JSON.stringify(nextProps.firstObjValue) || this.isManual) {
-    //   return;
-    // }
+    if (JSON.stringify(state.objValue) === JSON.stringify(nextProps.firstObjValue) || this.isManual) {
+      return;
+    }
     if (typeof nextProps.onInit === 'function') {
       nextProps.onInit(state.objValue);
     }
@@ -130,7 +130,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
 
     const newObj = this.getState({ dataSource, value });
     this.setState(newObj);
-    // this.isManual = true;
+    this.isManual = true;
     if (typeof onChange === 'function') {
       onChange(newObj.objValue, level);
     }

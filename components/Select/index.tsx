@@ -33,7 +33,6 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   private tempValue;
   private tempObjValue;
-  private firstObjValue;
   private isScrolling;
 
   constructor(props) {
@@ -61,12 +60,10 @@ export default class Select extends PureComponent<SelectProps, any> {
 
     this.tempValue = this.state.value.length ? firstValue : [] ;
     this.tempObjValue = this.state.value.length ? selected : [];
-    this.firstObjValue = selected;
 
-    // this.setState({
-    //   firstValue,
-    //   firstObjValue: selected,
-    // });
+    this.setState({
+      firstObjValue: selected,
+    });
   }
 
   handleClick = () => {
@@ -96,6 +93,19 @@ export default class Select extends PureComponent<SelectProps, any> {
       onChange(selected);
     }
   }
+
+  // onChange = (selected) => {
+  //   const { valueMember, onChange } = this.props;
+  //   const value = selected.map(item => item[valueMember!]);
+  //   this.setState({
+  //     value,
+  //     objValue: selected,
+  //   });
+
+  //   if (typeof onChange === 'function') {
+  //     onChange(selected);
+  //   }
+  // }
 
   onOk = (selected) => {
     if (this.isScrolling) {
@@ -140,7 +150,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={inputCls}>
-          {value.length > 0 && displayRender!(objValue || this.firstObjValue || []) || placeholder}
+          {value.length > 0 && displayRender!(objValue || firstObjValue || []) || placeholder}
         </div>
         <Picker
           {...others}
