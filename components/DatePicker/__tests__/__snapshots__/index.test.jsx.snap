@@ -46,6 +46,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
         >
           <div
             className="za-picker-wrapper"
+            onClick={[Function]}
           >
             <div
               className="za-picker-header"

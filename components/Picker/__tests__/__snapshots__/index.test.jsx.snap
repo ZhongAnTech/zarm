@@ -53,6 +53,7 @@ exports[`Picker Picker render visible 1`] = `
           >
             <div
               className="za-picker-wrapper"
+              onClick={[Function]}
             >
               <div
                 className="za-picker-header"
@@ -270,6 +271,7 @@ exports[`Picker render custom label 1`] = `
           >
             <div
               className="za-picker-wrapper"
+              onClick={[Function]}
             >
               <div
                 className="za-picker-header"
