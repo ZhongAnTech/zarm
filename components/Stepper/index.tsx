@@ -141,7 +141,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
           className={`${prefixCls}-input`}
           type="tel"
           value={value}
-          onCompositionStart={e => this.onInputChange(e.target.value)}
+          onChange={e => this.onInputChange(e.target.value)}
           onBlur={() => this.onInputBlur(value)}
         />
         <span className={plusCls} onClick={this.onPlusClick}><Icon type="add" /></span>
