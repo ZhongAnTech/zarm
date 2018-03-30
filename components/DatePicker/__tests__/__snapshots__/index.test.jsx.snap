@@ -29,50 +29,387 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
     stayTime={3000}
     visible={true}
   >
-    <div>
-      <Portal
-        getContainer={[Function]}
+    <Portal
+      getContainer={[Function]}
+    >
+      <div
+        className="za-popup"
       >
         <div
-          className="za-popup"
+          className="za-popup-wrapper za-popup-wrapper-bottom"
+          style={
+            Object {
+              "WebkitTransitionDuration": "200ms",
+              "transitionDuration": "200ms",
+            }
+          }
         >
           <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
+            className="za-picker-wrapper"
+            onClick={[Function]}
           >
             <div
-              className="za-picker-wrapper"
+              className="za-picker-header"
             >
               <div
-                className="za-picker-header"
+                className="za-picker-cancel"
+                onClick={[Function]}
               >
-                <div
-                  className="za-picker-cancel"
-                  onClick={[Function]}
-                >
-                  取消
-                </div>
-                <div
-                  className="za-picker-title"
-                >
-                  请选择
-                </div>
-                <div
-                  className="za-picker-submit"
-                  onClick={[Function]}
-                >
-                  确定
-                </div>
+                取消
               </div>
-              <DatePickerView
+              <div
+                className="za-picker-title"
+              >
+                请选择
+              </div>
+              <div
+                className="za-picker-submit"
+                onClick={[Function]}
+              >
+                确定
+              </div>
+            </div>
+            <DatePickerView
+              cancelText="取消"
+              defaultValue=""
+              disabled={false}
+              locale={
+                Object {
+                  "day": "日",
+                  "hour": "时",
+                  "minute": "分",
+                  "month": "月",
+                  "year": "年",
+                }
+              }
+              minuteStep={1}
+              mode="date"
+              okText="确定"
+              onCancel={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onInit={[Function]}
+              onMaskClick={[Function]}
+              onTransition={[Function]}
+              placeholder="请选择"
+              prefixCls="za-picker"
+              title="请选择"
+              value={2009-03-04T05:00:00.000Z}
+              valueMember="value"
+              visible={true}
+            >
+              <PickerView
                 cancelText="取消"
+                cols={Infinity}
+                dataSource={
+                  Array [
+                    Array [
+                      Object {
+                        "label": "2000年",
+                        "value": "2000",
+                      },
+                      Object {
+                        "label": "2001年",
+                        "value": "2001",
+                      },
+                      Object {
+                        "label": "2002年",
+                        "value": "2002",
+                      },
+                      Object {
+                        "label": "2003年",
+                        "value": "2003",
+                      },
+                      Object {
+                        "label": "2004年",
+                        "value": "2004",
+                      },
+                      Object {
+                        "label": "2005年",
+                        "value": "2005",
+                      },
+                      Object {
+                        "label": "2006年",
+                        "value": "2006",
+                      },
+                      Object {
+                        "label": "2007年",
+                        "value": "2007",
+                      },
+                      Object {
+                        "label": "2008年",
+                        "value": "2008",
+                      },
+                      Object {
+                        "label": "2009年",
+                        "value": "2009",
+                      },
+                      Object {
+                        "label": "2010年",
+                        "value": "2010",
+                      },
+                      Object {
+                        "label": "2011年",
+                        "value": "2011",
+                      },
+                      Object {
+                        "label": "2012年",
+                        "value": "2012",
+                      },
+                      Object {
+                        "label": "2013年",
+                        "value": "2013",
+                      },
+                      Object {
+                        "label": "2014年",
+                        "value": "2014",
+                      },
+                      Object {
+                        "label": "2015年",
+                        "value": "2015",
+                      },
+                      Object {
+                        "label": "2016年",
+                        "value": "2016",
+                      },
+                      Object {
+                        "label": "2017年",
+                        "value": "2017",
+                      },
+                      Object {
+                        "label": "2018年",
+                        "value": "2018",
+                      },
+                      Object {
+                        "label": "2019年",
+                        "value": "2019",
+                      },
+                      Object {
+                        "label": "2020年",
+                        "value": "2020",
+                      },
+                      Object {
+                        "label": "2021年",
+                        "value": "2021",
+                      },
+                      Object {
+                        "label": "2022年",
+                        "value": "2022",
+                      },
+                      Object {
+                        "label": "2023年",
+                        "value": "2023",
+                      },
+                      Object {
+                        "label": "2024年",
+                        "value": "2024",
+                      },
+                      Object {
+                        "label": "2025年",
+                        "value": "2025",
+                      },
+                      Object {
+                        "label": "2026年",
+                        "value": "2026",
+                      },
+                      Object {
+                        "label": "2027年",
+                        "value": "2027",
+                      },
+                      Object {
+                        "label": "2028年",
+                        "value": "2028",
+                      },
+                      Object {
+                        "label": "2029年",
+                        "value": "2029",
+                      },
+                      Object {
+                        "label": "2030年",
+                        "value": "2030",
+                      },
+                    ],
+                    Array [
+                      Object {
+                        "label": "1月",
+                        "value": "0",
+                      },
+                      Object {
+                        "label": "2月",
+                        "value": "1",
+                      },
+                      Object {
+                        "label": "3月",
+                        "value": "2",
+                      },
+                      Object {
+                        "label": "4月",
+                        "value": "3",
+                      },
+                      Object {
+                        "label": "5月",
+                        "value": "4",
+                      },
+                      Object {
+                        "label": "6月",
+                        "value": "5",
+                      },
+                      Object {
+                        "label": "7月",
+                        "value": "6",
+                      },
+                      Object {
+                        "label": "8月",
+                        "value": "7",
+                      },
+                      Object {
+                        "label": "9月",
+                        "value": "8",
+                      },
+                      Object {
+                        "label": "10月",
+                        "value": "9",
+                      },
+                      Object {
+                        "label": "11月",
+                        "value": "10",
+                      },
+                      Object {
+                        "label": "12月",
+                        "value": "11",
+                      },
+                    ],
+                    Array [
+                      Object {
+                        "label": "1日",
+                        "value": "1",
+                      },
+                      Object {
+                        "label": "2日",
+                        "value": "2",
+                      },
+                      Object {
+                        "label": "3日",
+                        "value": "3",
+                      },
+                      Object {
+                        "label": "4日",
+                        "value": "4",
+                      },
+                      Object {
+                        "label": "5日",
+                        "value": "5",
+                      },
+                      Object {
+                        "label": "6日",
+                        "value": "6",
+                      },
+                      Object {
+                        "label": "7日",
+                        "value": "7",
+                      },
+                      Object {
+                        "label": "8日",
+                        "value": "8",
+                      },
+                      Object {
+                        "label": "9日",
+                        "value": "9",
+                      },
+                      Object {
+                        "label": "10日",
+                        "value": "10",
+                      },
+                      Object {
+                        "label": "11日",
+                        "value": "11",
+                      },
+                      Object {
+                        "label": "12日",
+                        "value": "12",
+                      },
+                      Object {
+                        "label": "13日",
+                        "value": "13",
+                      },
+                      Object {
+                        "label": "14日",
+                        "value": "14",
+                      },
+                      Object {
+                        "label": "15日",
+                        "value": "15",
+                      },
+                      Object {
+                        "label": "16日",
+                        "value": "16",
+                      },
+                      Object {
+                        "label": "17日",
+                        "value": "17",
+                      },
+                      Object {
+                        "label": "18日",
+                        "value": "18",
+                      },
+                      Object {
+                        "label": "19日",
+                        "value": "19",
+                      },
+                      Object {
+                        "label": "20日",
+                        "value": "20",
+                      },
+                      Object {
+                        "label": "21日",
+                        "value": "21",
+                      },
+                      Object {
+                        "label": "22日",
+                        "value": "22",
+                      },
+                      Object {
+                        "label": "23日",
+                        "value": "23",
+                      },
+                      Object {
+                        "label": "24日",
+                        "value": "24",
+                      },
+                      Object {
+                        "label": "25日",
+                        "value": "25",
+                      },
+                      Object {
+                        "label": "26日",
+                        "value": "26",
+                      },
+                      Object {
+                        "label": "27日",
+                        "value": "27",
+                      },
+                      Object {
+                        "label": "28日",
+                        "value": "28",
+                      },
+                      Object {
+                        "label": "29日",
+                        "value": "29",
+                      },
+                      Object {
+                        "label": "30日",
+                        "value": "30",
+                      },
+                      Object {
+                        "label": "31日",
+                        "value": "31",
+                      },
+                    ],
+                  ]
+                }
                 defaultValue=""
                 disabled={false}
+                itemRender={[Function]}
                 locale={
                   Object {
                     "day": "日",
@@ -94,7 +431,13 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                 placeholder="请选择"
                 prefixCls="za-picker"
                 title="请选择"
-                value={2009-03-04T05:00:00.000Z}
+                value={
+                  Array [
+                    "2009",
+                    "2",
+                    "4",
+                  ]
+                }
                 valueMember="value"
                 visible={true}
               >
@@ -921,36 +1264,36 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                     className="za-picker-mask-bottom"
                   />
                 </div>
-              </DatePickerView>
-            </div>
+              </PickerView>
+            </DatePickerView>
           </div>
-          <Mask
-            className=""
-            onClose={[Function]}
-            prefixCls="za-mask"
+        </div>
+        <Mask
+          className=""
+          onClose={[Function]}
+          prefixCls="za-mask"
+          style={
+            Object {
+              "WebkitAnimationDuration": "200ms",
+              "animationDuration": "200ms",
+            }
+          }
+          type="normal"
+          visible={true}
+        >
+          <div
+            className="za-mask normal"
+            onClick={[Function]}
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
                 "animationDuration": "200ms",
               }
             }
-            type="normal"
-            visible={true}
-          >
-            <div
-              className="za-mask normal"
-              onClick={[Function]}
-              style={
-                Object {
-                  "WebkitAnimationDuration": "200ms",
-                  "animationDuration": "200ms",
-                }
-              }
-            />
-          </Mask>
-        </div>
-      </Portal>
-    </div>
+          />
+        </Mask>
+      </div>
+    </Portal>
   </Popup>
 </DatePicker>
 `;
