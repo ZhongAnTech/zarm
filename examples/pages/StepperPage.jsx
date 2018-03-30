@@ -29,37 +29,37 @@ class Page extends Component {
                     onChange={(value) => {
                       console.log(value);
                     }}
-                    />
+                  />
                 }
-                />
+              />
 
               <Cell
                 title="设置默认值"
                 description={
                   <Stepper defaultValue={2} />
                 }
-                />
+              />
 
               <Cell
                 title="设置上下限"
                 description={
                   <Stepper min={-3} max={3} />
                 }
-                />
+              />
 
               <Cell
                 title="设置步长"
                 description={
                   <Stepper step={0.5} />
                 }
-                />
+              />
 
               <Cell
                 title="禁用状态"
                 description={
                   <Stepper disabled />
                 }
-                />
+              />
             </Panel.Body>
           </Panel>
 
@@ -71,14 +71,14 @@ class Page extends Component {
                 description={
                   <Stepper shape="radius" />
                 }
-                />
+              />
 
               <Cell
                 title="圆形"
                 description={
                   <Stepper shape="circle" />
                 }
-                />
+              />
             </Panel.Body>
           </Panel>
 
@@ -87,6 +87,7 @@ class Page extends Component {
       </Container>
     );
   }
+
 }
 
 export default Page;

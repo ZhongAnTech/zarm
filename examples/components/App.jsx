@@ -20,10 +20,11 @@ class App extends Component {
     return (
       <TransitionGroup>
         <CSSTransition
+          appear
           key={currentKey}
           timeout={300}
           classNames={(history.action === 'PUSH' || (history.action === 'POP' && !match.isExact)) ? 'out' : 'in'}
-          appear>
+        >
           <section>
             <Switch key={location.pathname} location={location}>
               <Route exact path="/" component={AsyncComponent(() => import('../pages/Index'))} />
@@ -68,6 +69,7 @@ class App extends Component {
       </TransitionGroup>
     );
   }
+
 }
 
 export default withRouter(App);

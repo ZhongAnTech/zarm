@@ -63,6 +63,7 @@ const DIY_DATA = [
 ];
 
 class Page extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -101,12 +102,12 @@ class Page extends Component {
   componentDidMount() {
     // 异步加载数据源测试
     setTimeout(() => {
-      const cascade = this.state.cascade;
+      const { cascade, select } = this.state;
+
       cascade.dataSource = District;
       cascade.value = ['310000', '310100', '310101'];
       this.setState({ cascade });
 
-      const select = this.state.select;
       select.dataSource = District;
       select.value = ['310000', '310100', '310101'];
       this.setState({ select });
@@ -120,7 +121,14 @@ class Page extends Component {
   }
 
   render() {
-    const { single, multi, cascade, diy, select, view } = this.state;
+    const {
+      single,
+      multi,
+      cascade,
+      diy,
+      select,
+      view,
+    } = this.state;
 
     return (
       <Container className="picker-page">
@@ -132,22 +140,34 @@ class Page extends Component {
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('single')}>打开</Button>
-                }>单列</Cell>
+                }
+              >
+                单列
+              </Cell>
 
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('multi')}>打开</Button>
-                }>多列</Cell>
+                }
+              >
+                多列
+              </Cell>
 
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
-                }>级联</Cell>
+                }
+              >
+                级联
+              </Cell>
 
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('diy')}>打开</Button>
-                }>自定义</Cell>
+                }
+              >
+                自定义
+              </Cell>
 
             </Panel.Body>
           </Panel>
@@ -166,7 +186,7 @@ class Page extends Component {
                     select.value = selected.map(item => item.value);
                     this.setState({ select });
                   }}
-                  />
+                />
               </Cell>
             </Panel.Body>
           </Panel>
@@ -178,7 +198,7 @@ class Page extends Component {
                 value={view.value}
                 dataSource={view.dataSource}
                 onChange={selected => console.log('PickerView onChange: ', selected)}
-                />
+              />
             </Panel.Body>
           </Panel>
 
@@ -194,7 +214,7 @@ class Page extends Component {
               this.toggle('single');
             }}
             onCancel={() => this.toggle('single')}
-            />
+          />
 
           <Picker
             visible={multi.visible}
@@ -208,7 +228,7 @@ class Page extends Component {
               this.toggle('multi');
             }}
             onCancel={() => this.toggle('multi')}
-            />
+          />
 
           <Picker
             visible={cascade.visible}
@@ -222,7 +242,7 @@ class Page extends Component {
               this.toggle('cascade');
             }}
             onCancel={() => this.toggle('cascade')}
-            />
+          />
 
           <Picker
             visible={diy.visible}
@@ -243,12 +263,13 @@ class Page extends Component {
               this.toggle('diy');
             }}
             onCancel={() => this.toggle('diy')}
-            />
+          />
         </main>
         <Footer />
       </Container>
     );
   }
+
 }
 
 export default Page;

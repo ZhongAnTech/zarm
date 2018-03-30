@@ -37,12 +37,16 @@ class Page extends PureComponent {
                   <Radio.Group
                     type="button"
                     value={this.state.radio}
-                    onChange={value => console.log(`radio to ${value}`)}>
+                    onChange={value => console.log(`radio to ${value}`)}
+                  >
                     <Radio value="0">选项一</Radio>
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
                   </Radio.Group>
-                }>普通</Cell>
+                }
+              >
+                普通
+              </Cell>
 
               <Cell
                 description={
@@ -51,7 +55,10 @@ class Page extends PureComponent {
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
                   </Radio.Group>
-                }>指定默认值</Cell>
+                }
+              >
+                指定默认值
+              </Cell>
 
               <Cell
                 description={
@@ -60,7 +67,10 @@ class Page extends PureComponent {
                     <Radio value="1">选项二</Radio>
                     <Radio value="2" disabled>选项三</Radio>
                   </Radio.Group>
-                }>禁用指定项</Cell>
+                }
+              >
+                禁用指定项
+              </Cell>
 
               <Cell
                 description={
@@ -69,7 +79,10 @@ class Page extends PureComponent {
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
                   </Radio.Group>
-                }>圆角</Cell>
+                }
+              >
+                圆角
+              </Cell>
 
               <Cell
                 description={
@@ -78,7 +91,10 @@ class Page extends PureComponent {
                     <Radio value="1">选项二</Radio>
                     <Radio value="2">选项三</Radio>
                   </Radio.Group>
-                }>椭圆角</Cell>
+                }
+              >
+                椭圆角
+              </Cell>
 
             </Panel.Body>
           </Panel>
@@ -120,6 +136,7 @@ class Page extends PureComponent {
       </Container>
     );
   }
+
 }
 
 export default Page;

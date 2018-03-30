@@ -15,11 +15,11 @@ const REFRESH_STATE = {
 };
 
 const LOAD_STATE = {
-  normal: 0,  // 普通
-  abort: 1, // 中止
-  loading: 2, // 加载中
-  success: 3, // 加载成功
-  failure: 4, // 加载失败
+  normal: 0,   // 普通
+  abort: 1,    // 中止
+  loading: 2,  // 加载中
+  success: 3,  // 加载成功
+  failure: 4,  // 加载失败
   complete: 5, // 加载完成（无新数据）
 };
 
@@ -56,7 +56,7 @@ class Page extends Component {
       if (!this.mounted) return;
 
       const dataSource = [];
-      const length = dataSource.length;
+      const { length } = dataSource;
 
       for (let i = length; i < length + 20; i++) {
         dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
@@ -156,7 +156,8 @@ class Page extends Component {
                   //       return <div className={cls}>我是有底线的</div>;
                   //   }
                   // },
-                }}>
+                }}
+              >
                 {dataSource}
               </Pull>
             </Panel.Body>
@@ -166,6 +167,7 @@ class Page extends Component {
       </Container>
     );
   }
+
 }
 
 export default Page;

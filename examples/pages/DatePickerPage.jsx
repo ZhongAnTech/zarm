@@ -48,7 +48,13 @@ class Page extends Component {
   }
 
   render() {
-    const { date, time, limitDate, select } = this.state;
+    const {
+      date,
+      time,
+      limitDate,
+      select,
+    } = this.state;
+
     return (
       <Container className="picker-page">
         <Header title="日期选择器 DatePicker & DateSelect" />
@@ -59,17 +65,26 @@ class Page extends Component {
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('date')}>选择</Button>
-                }>选择日期</Cell>
+                }
+              >
+                选择日期
+              </Cell>
 
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('time')}>选择</Button>
-                }>选择时间</Cell>
+                }
+              >
+                选择时间
+              </Cell>
 
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('limitDate')}>选择</Button>
-                }>选择日期(自定义)</Cell>
+                }
+              >
+                选择日期(自定义)
+              </Cell>
             </Panel.Body>
           </Panel>
 
@@ -91,7 +106,7 @@ class Page extends Component {
                       },
                     });
                   }}
-                  />
+                />
               </Cell>
             </Panel.Body>
           </Panel>
@@ -105,7 +120,7 @@ class Page extends Component {
                 onChange={(value) => {
                   console.log('datePickerView => ', value);
                 }}
-                />
+              />
             </Panel.Body>
           </Panel>
 
@@ -125,7 +140,7 @@ class Page extends Component {
               Toast.show(format.date(value, 'yyyy/MM/dd'));
             }}
             onCancel={() => this.toggle('date')}
-            />
+          />
 
           <DatePicker
             visible={time.visible}
@@ -143,7 +158,7 @@ class Page extends Component {
               Toast.show(format.date(value, 'hh时mm分'));
             }}
             onCancel={() => this.toggle('time')}
-            />
+          />
 
           <DatePicker
             visible={limitDate.visible}
@@ -163,12 +178,13 @@ class Page extends Component {
               Toast.show(format.date(value, 'yyyy年MM月dd日'));
             }}
             onCancel={() => this.toggle('limitDate')}
-            />
+          />
         </main>
         <Footer />
       </Container>
     );
   }
+
 }
 
 export default Page;
