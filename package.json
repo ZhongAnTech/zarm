@@ -59,7 +59,8 @@
   "dependencies": {
     "better-scroll": "^1.8.0",
     "classnames": "^2.2.5",
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^7.0.0",
+    "react-native-camera-roll-picker": "^1.2.3"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.3",
