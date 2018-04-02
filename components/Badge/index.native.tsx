@@ -42,11 +42,13 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
       shape,
       sup,
       text,
+      style,
       children,
     } = this.props;
 
     const bagdeWrapper = [
       styles!.TextStyle,
+      style,
     ] as ViewStyle;
 
     const dotText = [
