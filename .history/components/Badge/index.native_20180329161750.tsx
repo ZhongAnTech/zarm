@@ -1,10 +1,10 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent } from 'react';
 import {
   StyleSheet,
   View,
   Text,
-  ViewStyle,
 } from 'react-native';
+import classnames from 'classnames';
 import PropsType from './PropsType';
 import badgeStyle from './style/index.native';
 
@@ -18,6 +18,7 @@ const badgeStyles = StyleSheet.create<any>(badgeStyle);
 export default class Badge extends PureComponent<BadgeProps, {}> {
 
   static defaultProps = {
+    prefixCls: 'za-badge',
     theme: 'error',
     sup: false,
     styles: badgeStyles,
@@ -27,6 +28,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     dotWidth: 0,
   };
 
+  // 获取元素宽度设置style
   layout = (e) => {
     let dotWidth = -parseInt(e.layout.width, 10) / 2;
     this.setState({
@@ -38,11 +40,13 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     const { styles } = this.props;
 
     const {
+      prefixCls,
       theme,
       shape,
       sup,
       text,
       children,
+      ...others,
     } = this.props;
 
     const bagdeWrapper = [

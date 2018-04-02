@@ -18,6 +18,7 @@ const badgeStyles = StyleSheet.create<any>(badgeStyle);
 export default class Badge extends PureComponent<BadgeProps, {}> {
 
   static defaultProps = {
+    prefixCls: 'za-badge',
     theme: 'error',
     sup: false,
     styles: badgeStyles,
@@ -38,11 +39,13 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     const { styles } = this.props;
 
     const {
+      prefixCls,
       theme,
       shape,
       sup,
       text,
       children,
+      ...others,
     } = this.props;
 
     const bagdeWrapper = [
