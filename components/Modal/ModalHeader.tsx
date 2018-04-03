@@ -27,4 +27,5 @@ export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
       </div>
     );
   }
+
 }

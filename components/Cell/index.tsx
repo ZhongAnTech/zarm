@@ -68,4 +68,5 @@ export default class Cell extends PureComponent<CellProps, {}> {
       </div>
     );
   }
+
 }

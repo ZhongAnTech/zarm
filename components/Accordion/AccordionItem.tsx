@@ -131,4 +131,5 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, any
       </div>
     );
   }
+
 }

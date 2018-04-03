@@ -381,4 +381,5 @@ export default class Swipe extends Component<SwipeProps, any> {
       </div>
     );
   }
+
 }

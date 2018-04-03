@@ -1,4 +1,4 @@
-export interface BaseAccordionProps  {
+export interface BaseAccordionProps {
   activeIndex?: string | number | Array<string | number>;
   defaultActiveIndex?: string | number | Array<string | number>;
   multiple?: boolean;

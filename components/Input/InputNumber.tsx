@@ -151,4 +151,5 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       </div>
     );
   }
+
 }

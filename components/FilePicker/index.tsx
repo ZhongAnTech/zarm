@@ -107,4 +107,5 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       </div>
     );
   }
+
 }

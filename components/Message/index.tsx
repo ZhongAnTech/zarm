@@ -52,4 +52,5 @@ export default class Message extends PureComponent<MessageProps, any> {
       </div>
     );
   }
+
 }

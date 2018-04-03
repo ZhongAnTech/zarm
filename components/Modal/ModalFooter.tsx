@@ -25,4 +25,5 @@ export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
       </div>
     );
   }
+
 }

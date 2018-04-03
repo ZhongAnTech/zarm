@@ -148,4 +148,5 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       </span>
     );
   }
+
 }

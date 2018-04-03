@@ -147,4 +147,5 @@ export default class Tab extends PureComponent<TabProps, any> {
       </div>
     );
   }
+
 }

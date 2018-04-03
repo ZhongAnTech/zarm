@@ -27,12 +27,16 @@ export default class Progress extends PureComponent<ProgressProps, {}> {
     });
 
     const innerRender = shape === 'circle'
-      ? <div className={`${prefixCls}-inner`}>
-          <Spinner theme={theme} strokeWidth={strokeWidth} percent={percent} />
-        </div>
-      : <div className={`${prefixCls}-inner`} style={{ height: strokeWidth }}>
-          <div className={`${prefixCls}-bg`} style={{ width: `${percent}%` }} />
-        </div>;
+      ? (
+          <div className={`${prefixCls}-inner`}>
+            <Spinner theme={theme} strokeWidth={strokeWidth} percent={percent} />
+          </div>
+        )
+      : (
+          <div className={`${prefixCls}-inner`} style={{ height: strokeWidth }}>
+            <div className={`${prefixCls}-bg`} style={{ width: `${percent}%` }} />
+          </div>
+        );
 
     return (
       <div className={cls} {...others}>
@@ -41,4 +45,5 @@ export default class Progress extends PureComponent<ProgressProps, {}> {
       </div>
     );
   }
+
 }

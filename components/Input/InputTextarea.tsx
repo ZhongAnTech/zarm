@@ -112,9 +112,11 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     const textLengthRender =
       showLength &&
       maxLength &&
-      <div className={`${prefixCls}-length`}>
-        {`${this.state.length}/${maxLength}`}
-      </div>;
+      (
+        <div className={`${prefixCls}-length`}>
+          {`${this.state.length}/${maxLength}`}
+        </div>
+      );
 
     return (
       <div className={cls}>
@@ -131,4 +133,5 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       </div>
     );
   }
+
 }

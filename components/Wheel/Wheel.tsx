@@ -166,4 +166,5 @@ export default class Wheel extends Component<WheelProps, any> {
       </div>
     );
   }
+
 }

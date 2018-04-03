@@ -105,6 +105,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
       </div>
     );
   }
+
 }
 
 if (!window.zarmToast) {

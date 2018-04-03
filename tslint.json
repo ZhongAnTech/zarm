@@ -1,6 +1,16 @@
 {
   "extends": ["tslint-eslint-rules", "tslint-react"],
   "rules": {
+    "no-multi-spaces": true,
+    "trailing-comma": [
+      true,
+      {
+        "singleline": "never",
+        "multiline": "always"
+      }
+    ],
+    "switch-default": true,
+    "ter-padded-blocks": [true, { "classes": "always" }],
     "align": [
       true,
       "parameters",
@@ -86,14 +96,6 @@
       true,
       "always"
     ],
-    "switch-default": true,
-    "trailing-comma": [
-      true,
-      {
-        "singleline": "never",
-        "multiline": "always"
-      }
-    ],
     "triple-equals": [
       true,
       "allow-null-check"
@@ -116,7 +118,6 @@
         "variable-declaration": "onespace"
       }
     ],
-    "use-isnan": true,
     "variable-name": [
       true,
       "allow-leading-underscore",
@@ -133,12 +134,8 @@
       "check-type",
       "check-typecast"
     ],
+    "jsx-boolean-value": [true, "never"],
     "jsx-no-lambda": false,
-    "jsx-no-string-ref": false,
-    "jsx-boolean-value": [
-      true,
-      "never"
-    ],
     "jsx-wrap-multiline": false
   }
 }

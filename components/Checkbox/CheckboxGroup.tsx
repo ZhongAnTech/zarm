@@ -98,4 +98,5 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
 
     return <div className={cls}>{items}</div>;
   }
+
 }
