@@ -53,6 +53,7 @@ exports[`Picker Picker render visible 1`] = `
           >
             <div
               className="za-picker-wrapper"
+              onClick={[Function]}
             >
               <div
                 className="za-picker-header"
@@ -168,7 +169,7 @@ exports[`Picker Picker render visible 1`] = `
             </div>
           </div>
           <Mask
-            className="fade-enter"
+            className=""
             onClose={[Function]}
             prefixCls="za-mask"
             style={
@@ -181,7 +182,7 @@ exports[`Picker Picker render visible 1`] = `
             visible={true}
           >
             <div
-              className="za-mask fade-enter normal"
+              className="za-mask normal"
               onClick={[Function]}
               style={
                 Object {
@@ -270,6 +271,7 @@ exports[`Picker render custom label 1`] = `
           >
             <div
               className="za-picker-wrapper"
+              onClick={[Function]}
             >
               <div
                 className="za-picker-header"
@@ -451,7 +453,7 @@ exports[`Picker render custom label 1`] = `
             </div>
           </div>
           <Mask
-            className="fade-leave"
+            className=""
             onClose={[Function]}
             prefixCls="za-mask"
             style={
