@@ -33,6 +33,7 @@
     "react/prop-types": "off",
     "react/prefer-stateless-function": "off",
     "jsx-a11y/no-static-element-interactions": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
