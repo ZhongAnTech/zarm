@@ -25,6 +25,7 @@ export { default as Wheel } from './Wheel';
 export { default as Picker } from './Picker';
 export { default as DatePicker } from './DatePicker';
 export { default as Radio } from './Radio';
+export { default as Searchbar } from './Searchbar';
 export { default as Select } from './Select';
 export { default as Slider } from './Slider';
 export { default as Spinner } from './Spinner';
