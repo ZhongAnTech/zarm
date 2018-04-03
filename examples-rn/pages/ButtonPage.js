@@ -18,6 +18,7 @@ const styles = {
 const noop = () => {};
 
 export default class Page extends PureComponent {
+
   render() {
     return (
       <ScrollView>
@@ -68,4 +69,5 @@ export default class Page extends PureComponent {
       </ScrollView>
     );
   }
+
 }

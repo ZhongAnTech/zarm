@@ -23,8 +23,14 @@ class ToastPage extends Component {
                     theme="error"
                     onClick={() => {
                       Toast.show('默认3秒自动关闭');
-                    }}>开启</Button>
-                }>错误提示</Cell>
+                    }}
+                  >
+                    开启
+                  </Button>
+                }
+              >
+                错误提示
+              </Cell>
 
               <Cell
                 description={
@@ -35,11 +41,19 @@ class ToastPage extends Component {
                       Toast.show(
                         <div className="box">
                           <Icon className="box-icon" type="right-round-fill" />
-                          <div className="box-text">预约成功</div>
+                          <div className="box-text">
+                            预约成功
+                          </div>
                         </div>
                       );
-                    }}>开启</Button>
-                }>成功提示</Cell>
+                    }}
+                  >
+                    开启
+                  </Button>
+                }
+              >
+                成功提示
+              </Cell>
 
               <Cell
                 description={
@@ -47,8 +61,14 @@ class ToastPage extends Component {
                     size="sm"
                     onClick={() => {
                       Toast.show('指定10秒自动关闭', 10000);
-                    }}>开启</Button>
-                }>指定关闭时间</Cell>
+                    }}
+                  >
+                    开启
+                  </Button>
+                }
+              >
+                指定关闭时间
+              </Cell>
 
             </Panel.Body>
           </Panel>
@@ -62,10 +82,14 @@ class ToastPage extends Component {
                     size="sm"
                     onClick={() => {
                       Loading.show();
-                    }}>
+                    }}
+                  >
                     开启
                   </Button>
-                }>Loading</Cell>
+                }
+              >
+                Loading
+              </Cell>
             </Panel.Body>
           </Panel>
 
@@ -74,6 +98,7 @@ class ToastPage extends Component {
       </Container>
     );
   }
+
 }
 
 export default ToastPage;

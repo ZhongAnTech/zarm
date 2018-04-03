@@ -30,4 +30,5 @@ export default class Footer extends PureComponent {
       </View>
     );
   }
+
 }

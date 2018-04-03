@@ -48,17 +48,26 @@ class Page extends Component {
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible1')}>开启</Button>
-                }>普通</Cell>
+                }
+              >
+                普通
+              </Cell>
 
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible2')}>开启</Button>
-                }>带取消操作</Cell>
+                }
+              >
+                带取消操作
+              </Cell>
 
               <Cell
                 description={
                   <Button size="sm" onClick={() => this.toggle('visible3')}>开启</Button>
-                }>圆角、留边</Cell>
+                }
+              >
+                圆角、留边
+              </Cell>
             </Panel.Body>
           </Panel>
 
@@ -66,14 +75,14 @@ class Page extends Component {
             visible={this.state.visible1}
             actions={BUTTONS}
             onMaskClick={() => this.toggle('visible1')}
-            />
+          />
 
           <ActionSheet
             visible={this.state.visible2}
             actions={BUTTONS}
             onMaskClick={() => this.toggle('visible2')}
             onCancel={() => this.toggle('visible2')}
-            />
+          />
 
           <ActionSheet
             spacing
@@ -82,13 +91,14 @@ class Page extends Component {
             actions={BUTTONS}
             onMaskClick={() => this.toggle('visible3')}
             onCancel={() => this.toggle('visible3')}
-            />
+          />
 
         </main>
         <Footer />
       </Container>
     );
   }
+
 }
 
 export default Page;

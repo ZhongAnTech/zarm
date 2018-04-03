@@ -9,6 +9,7 @@ const styles = {
 };
 
 export default class Page extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -29,4 +30,5 @@ export default class Page extends PureComponent {
       </View>
     );
   }
+
 }

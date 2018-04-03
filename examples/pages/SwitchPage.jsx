@@ -27,14 +27,18 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="基本" />
             <Panel.Body>
-              <Cell description={
-                <Switch
-                  value={this.state.value}
-                  onChange={(value) => {
-                    this.setState({ value });
-                  }}
+              <Cell
+                description={
+                  <Switch
+                    value={this.state.value}
+                    onChange={(value) => {
+                      this.setState({ value });
+                    }}
                   />
-              }>普通</Cell>
+                }
+              >
+                普通
+              </Cell>
               <Cell description={<Switch defaultChecked />}>默认开</Cell>
               <Cell description={<Switch disabled />}>禁用的开关（默认关）</Cell>
               <Cell description={<Switch defaultChecked disabled />}>禁用的开关（默认开）</Cell>
@@ -45,6 +49,7 @@ class Page extends Component {
       </Container>
     );
   }
+
 }
 
 export default Page;

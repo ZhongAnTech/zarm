@@ -34,7 +34,8 @@ class Page extends Component {
               <Swipe
                 onChangeEnd={(index) => {
                   console.log(index);
-                }}>
+                }}
+              >
                 {contentRender()}
               </Swipe>
             </Panel.Body>
@@ -45,7 +46,8 @@ class Page extends Component {
             <Panel.Body>
               <Swipe
                 direction="top"
-                height={'48vw'}>
+                height="48vw"
+              >
                 {contentRender()}
               </Swipe>
             </Panel.Body>
@@ -60,7 +62,8 @@ class Page extends Component {
                 direction="left"
                 onChangeEnd={(index) => {
                   console.log(index);
-                }}>
+                }}
+              >
                 {contentRender()}
               </Swipe>
               <div className="controls">
@@ -69,14 +72,20 @@ class Page extends Component {
                   size="sm"
                   onClick={() => {
                     this.swipe.onJumpTo(0);
-                  }}>无动画切换指定页</Button>
+                  }}
+                >
+                  无动画切换指定页
+                </Button>
 
                 <Button
                   block
                   size="sm"
                   onClick={() => {
                     this.swipe.onSlideTo(2);
-                  }}>滑动到指定页</Button>
+                  }}
+                >
+                  滑动到指定页
+                </Button>
               </div>
             </Panel.Body>
           </Panel>
@@ -90,7 +99,8 @@ class Page extends Component {
                 direction="left"
                 onChangeEnd={(index) => {
                   console.log(index);
-                }}>
+                }}
+              >
                 {contentRender()}
               </Swipe>
             </Panel.Body>
@@ -100,6 +110,7 @@ class Page extends Component {
       </Container>
     );
   }
+
 }
 
 export default Page;

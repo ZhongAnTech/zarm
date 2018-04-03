@@ -2,6 +2,7 @@ import React from 'react';
 
 const asyncComponent = loadComponent => (
   class AsyncComponent extends React.Component {
+
     constructor(props) {
       super(props);
       this.state = {
@@ -31,6 +32,7 @@ const asyncComponent = loadComponent => (
       const { Component } = this.state;
       return Component && <Component {...this.props} />;
     }
+
   }
 );
 

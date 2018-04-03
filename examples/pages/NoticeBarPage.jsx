@@ -34,6 +34,7 @@ class Page extends Component {
       </Container>
     );
   }
+
 }
 
 export default Page;

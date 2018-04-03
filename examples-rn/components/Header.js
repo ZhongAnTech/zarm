@@ -25,4 +25,5 @@ export default class Header extends PureComponent {
       </View>
     );
   }
+
 }

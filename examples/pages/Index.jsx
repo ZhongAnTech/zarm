@@ -65,6 +65,7 @@ class Page extends PureComponent {
       </Container>
     );
   }
+
 }
 
 export default Page;

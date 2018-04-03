@@ -28,10 +28,10 @@ const styles = {
 };
 
 export default class Page extends PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {
-      value: 1,
       popBottom: false,
       popTop: false,
       popLeft: false,
@@ -67,7 +67,8 @@ export default class Page extends PureComponent {
           animationDuration={200}
           visible={this.state.popTop}
           onClose={() => console.log('关闭')}
-          autoClose>
+          autoClose
+        >
           <View style={styles.topStyle}>
             <Text style={{ color: '#fff', lineHeight: 40 }}>更新成功</Text>
           </View>
@@ -78,7 +79,8 @@ export default class Page extends PureComponent {
           visible={this.state.popBottom}
           onClose={() => console.log('关闭')}
           onMaskClick={() => this.close('popBottom')}
-          style={styles.bottomStyle}>
+          style={styles.bottomStyle}
+        >
           <Button style={[styles.mb, { width: 120, marginTop: 15 }]} onClick={() => this.close('popBottom')}>
             关闭弹层
           </Button>
@@ -88,7 +90,8 @@ export default class Page extends PureComponent {
           direction="left"
           visible={this.state.popLeft}
           onMaskClick={() => this.close('popLeft')}
-          style={styles.leftStyle}>
+          style={styles.leftStyle}
+        >
           <Button style={[styles.mb, { width: 120, marginTop: 15 }]} onClick={() => this.close('popLeft')}>
             关闭弹层
           </Button>
@@ -98,7 +101,8 @@ export default class Page extends PureComponent {
           direction="right"
           visible={this.state.popRight}
           onMaskClick={() => this.close('popRight')}
-          style={styles.rightStyle}>
+          style={styles.rightStyle}
+        >
           <Button style={[styles.mb, { width: 120, marginTop: 15 }]} onClick={() => this.close('popRight')}>
             关闭弹层
           </Button>
@@ -107,4 +111,5 @@ export default class Page extends PureComponent {
       </View>
     );
   }
+
 }

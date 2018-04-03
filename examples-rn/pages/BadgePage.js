@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Badge } from '../../components/index.native';
 
@@ -91,14 +91,7 @@ const styles = {
   },
 };
 
-export default class Page extends Component<{}> {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 1,
-    };
-  }
+export default class Page extends PureComponent {
 
   render() {
     return (
@@ -190,4 +183,5 @@ export default class Page extends Component<{}> {
       </View>
     );
   }
+
 }

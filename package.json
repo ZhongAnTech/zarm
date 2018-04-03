@@ -47,8 +47,8 @@
     "site:build": "rm -rf assets && webpack --config scripts/webpack/config.site.js",
     "site": "npm run site:build && gh-pages -d assets",
     "lint:ts": "tslint -c tslint.json 'components/**/*.{ts,tsx}'",
-    "lint:js": "eslint examples examples-rn --ext '.js,.jsx'",
-    "lint:style": "stylelint components/**/*.scss components/**/**/*.scss examples/styles/**/*.scss --syntax scss",
+    "lint:js": "eslint --ext '.js,.jsx' examples examples-rn",
+    "lint:style": "stylelint --syntax scss components/**/*.scss components/**/**/*.scss examples/styles/**/*.scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "lint-staged": "lint-staged",
     "test": "export TZ=America/New_York; jest --coverage",
@@ -93,10 +93,10 @@
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.3",
     "enzyme-to-json": "^3.2.0",
-    "eslint": "^3.13.1",
-    "eslint-config-airbnb": "^15.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "fastclick": "^1.0.6",
@@ -174,9 +174,9 @@
     ]
   },
   "lint-staged": {
-    "components/**/*.{ts,tsx}": "lint:ts",
-    "{components,examples,examples-rn}/**/*.{js,jsx}": "lint:js",
-    "{styles,examples}/**/*.scss": "lint:style"
+    "components/**/*.{ts,tsx}": "tslint -c tslint.json",
+    "{components,examples,examples-rn}/**/*.{js,jsx}": "eslint",
+    "{styles,examples}/**/*.scss": "stylelint"
   },
   "pre-commit": [
     "lint-staged"

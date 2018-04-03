@@ -26,6 +26,7 @@ const clickHandle = () => {
 };
 
 export default class App extends PureComponent {
+
   render() {
     return (
       <ScrollView>
@@ -39,4 +40,5 @@ export default class App extends PureComponent {
       </ScrollView>
     );
   }
+
 }

@@ -9,7 +9,16 @@ import { UIFORM, UICONROL, UIVIEW, UIDATA } from './demoList';
 const getOptions = title => ({
   headerTitle: (
     <View style={{ flex: 1, flexDirection: 'row' }}>
-      <Text style={{ fontSize: 16, alignSelf: 'center', textAlign: 'center', color: '#fff' }}>{title}</Text>
+      <Text
+        style={{
+          fontSize: 16,
+          alignSelf: 'center',
+          textAlign: 'center',
+          color: '#fff',
+        }}
+      >
+        {title}
+      </Text>
     </View>
   ),
   headerStyle: {

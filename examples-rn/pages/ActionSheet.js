@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
 });
 
 export default class Page extends PureComponent {
+
   state = {
     visibleSimple: false,
     visibleWithCancel: false,
@@ -41,7 +42,12 @@ export default class Page extends PureComponent {
   };
 
   render() {
-    const { visibleSimple, visibleWithCancel, visibleShapeRadius, actions } = this.state;
+    const {
+      visibleSimple,
+      visibleWithCancel,
+      visibleShapeRadius,
+      actions,
+    } = this.state;
 
     return (
       <View style={styles.container}>
@@ -53,26 +59,27 @@ export default class Page extends PureComponent {
           visible={visibleSimple}
           actions={actions}
           onMaskClick={() => this.onClose('visibleSimple')}
-          />
+        />
 
         <ActionSheet
           visible={visibleWithCancel}
           actions={actions}
           onMaskClick={() => this.onClose('visibleWithCancel')}
           onCancel={() => this.onClose('visibleWithCancel')}
-          cancelText={'取消'}
-          />
+          cancelText="取消"
+        />
 
         <ActionSheet
           visible={visibleShapeRadius}
           actions={actions}
           onMaskClick={() => this.onClose('visibleShapeRadius')}
           onCancel={() => this.onClose('visibleShapeRadius')}
-          cancelText={'取消'}
-          shape={'radius'}
+          cancelText="取消"
+          shape="radius"
           spacing
-          />
+        />
       </View>
     );
   }
+
 }

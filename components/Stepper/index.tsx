@@ -56,7 +56,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
   onInputBlur = (value) => {
     const { min, max, onChange } = this.props;
     value = Number(value);
-    if (value === '' || isNaN(value)) {
+    if (value === '' || Number.isNaN(Number(value))) {
       value = this.state.lastValue;
     }
     if (min !== null && value < min) {
