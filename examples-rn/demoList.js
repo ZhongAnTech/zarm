@@ -5,6 +5,11 @@ module.exports = {
       description: '步进器',
       module: require('./pages/StepperPage'),
     },
+    {
+      title: 'FilePicker',
+      description: '文件选择器',
+      module: require('./pages/FilePicker'),
+    },
   ],
   UICONROL: [
     {
