@@ -32,6 +32,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       </Toast>
     );
   }
+
 }
 
 if (!window.zarmLoading) {

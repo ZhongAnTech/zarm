@@ -217,4 +217,5 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       )
       : children;
   }
+
 }

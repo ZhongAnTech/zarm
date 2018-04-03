@@ -143,4 +143,5 @@ export default class Modal extends PureComponent<ModalProps, any> {
       </div>
     );
   }
+
 }

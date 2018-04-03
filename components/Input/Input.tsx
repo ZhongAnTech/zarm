@@ -28,4 +28,5 @@ export default class Input extends PureComponent<InputProps, {}> {
         return <InputText {...others} type={type} />;
     }
   }
+
 }

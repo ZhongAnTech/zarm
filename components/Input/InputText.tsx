@@ -96,4 +96,5 @@ export default class InputText extends PureComponent<InputTextProps, any> {
       </div>
     );
   }
+
 }

@@ -37,6 +37,7 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
   }
 
   onItemChange = (key) => {
+    alert(key);
     const { multiple, onChange } = this.props;
     const { activeIndex } = this.state;
     const hasKey = activeIndex.indexOf(key) > -1;
@@ -109,4 +110,5 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
       </div>
     );
   }
+
 }

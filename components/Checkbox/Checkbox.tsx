@@ -117,4 +117,5 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
 
     return renderCheckbox;
   }
+
 }

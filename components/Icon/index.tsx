@@ -24,4 +24,5 @@ export default class Icon extends PureComponent<IconProps, {}> {
       <i {...others} className={cls} />
     );
   }
+
 }

@@ -44,6 +44,7 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
       </Modal>
     );
   }
+
 }
 
 // if (!window.zarmConfirm) {

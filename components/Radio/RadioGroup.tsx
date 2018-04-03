@@ -88,4 +88,5 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
 
     return <div className={cls}>{items}</div>;
   }
+
 }

@@ -24,7 +24,7 @@
         "objects": "always-multiline",
         "imports": "always-multiline",
         "exports": "always-multiline",
-        "functions": "never"
+        "functions": "always-multiline"
       }
     ],
     "function-paren-newline": ["error", "consistent"],
@@ -32,7 +32,6 @@
     "import/no-unresolved": "off",
     "react/prop-types": "off",
     "react/prefer-stateless-function": "off",
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",

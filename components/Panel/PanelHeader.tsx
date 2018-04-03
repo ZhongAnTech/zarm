@@ -24,4 +24,5 @@ export default class PanelHeader extends PureComponent<PanelHeaderProps, {}> {
       </div>
     );
   }
+
 }

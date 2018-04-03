@@ -18,4 +18,5 @@ export default class PanelBody extends PureComponent<PanelBodyProps, {}> {
 
     return <div {...others} className={cls}>{children}</div>;
   }
+
 }

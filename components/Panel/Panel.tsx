@@ -22,4 +22,5 @@ export default class Panel extends PureComponent<PanelProps, {}> {
 
     return <div className={cls}>{children}</div>;
   }
+
 }

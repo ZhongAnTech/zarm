@@ -63,6 +63,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
       </Popup>
     );
   }
+
 }
 
 // if (!window.zarmKeyboardPicker) {

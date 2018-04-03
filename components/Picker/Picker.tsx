@@ -166,4 +166,5 @@ export default class Picker extends PureComponent<PickerProps, any> {
       </div>
     );
   }
+
 }

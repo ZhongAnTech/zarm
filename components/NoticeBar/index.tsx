@@ -81,4 +81,5 @@ export default class NoticeBar extends PureComponent<MessageProps, any> {
       </Message>
     );
   }
+
 }

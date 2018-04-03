@@ -24,4 +24,5 @@ export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
       </div>
     );
   }
+
 }
