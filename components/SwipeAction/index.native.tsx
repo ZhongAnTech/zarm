@@ -1,7 +1,5 @@
 import React, { PureComponent, cloneElement } from 'react';
-import {
-  View, PanResponder, Animated, StyleSheet,
-} from 'react-native';
+import { View, PanResponder, Animated, StyleSheet } from 'react-native';
 import PropsType from './PropsType';
 import swipeActionStyle from './style/index.native';
 
@@ -50,7 +48,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     return true;
   }
 
-  handlePanResponderMove = (_event, { dx, dy })  => {
+  handlePanResponderMove = (_event, { dx, dy }) => {
     const { disabled } = this.props;
 
     if (!this.touchEnd || disabled) {
@@ -203,4 +201,5 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     )
     : children;
   }
+
 }

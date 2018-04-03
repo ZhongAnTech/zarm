@@ -38,14 +38,16 @@ class ToastPage extends Component {
                     size="sm"
                     theme="success"
                     onClick={() => {
-                      Toast.show(
-                        <div className="box">
-                          <Icon className="box-icon" type="right-round-fill" />
-                          <div className="box-text">
-                            预约成功
+                      Toast.show(() => {
+                        return (
+                          <div className="box">
+                            <Icon className="box-icon" type="right-round-fill" />
+                            <div className="box-text">
+                              预约成功
+                            </div>
                           </div>
-                        </div>
-                      );
+                        );
+                      });
                     }}
                   >
                     开启

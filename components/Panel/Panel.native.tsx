@@ -30,4 +30,5 @@ export default class Panel extends PureComponent<PanelProps, {}> {
 
     return <View style={wrapperStyle}>{children}</View>;
   }
+
 }

@@ -74,4 +74,5 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
       </View>
     );
   }
+
 }

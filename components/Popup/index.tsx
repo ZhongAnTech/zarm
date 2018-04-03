@@ -188,4 +188,5 @@ export default class Popup extends PureComponent<PopupProps, any> {
   render() {
     return this.renderPortal();
   }
+
 }

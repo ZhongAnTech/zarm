@@ -19,6 +19,7 @@ export interface ButtonProps extends PropsType {
 const buttonStyles = StyleSheet.create<any>(buttonStyle);
 
 export default class Button extends PureComponent<ButtonProps, any> {
+
   static defaultProps = {
     theme: 'default',
     size: 'md',
@@ -129,4 +130,5 @@ export default class Button extends PureComponent<ButtonProps, any> {
       ? <TouchableOpacity {...wrapperProps} activeOpacity={0.6}>{contentRender}</TouchableOpacity>
       : <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>;
   }
+
 }

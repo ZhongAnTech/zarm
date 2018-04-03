@@ -26,4 +26,5 @@ export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
       </div>
     );
   }
+
 }

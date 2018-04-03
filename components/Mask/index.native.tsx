@@ -16,6 +16,7 @@ export interface MaskProps extends PropsType {
 const maskStyles = StyleSheet.create<any>(maskStyle);
 
 export default class Mask extends PureComponent<MaskProps, any> {
+
   static defaultProps = {
     visible: false,
     type: 'normal',
@@ -40,4 +41,5 @@ export default class Mask extends PureComponent<MaskProps, any> {
     return visible
       && <TouchableWithoutFeedback onPress={onClose}><View style={[popupCls]} /></TouchableWithoutFeedback>;
   }
+
 }

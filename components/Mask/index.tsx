@@ -21,4 +21,5 @@ export default class Mask extends PureComponent<MaskProps, {}> {
 
     return visible && <div className={markCls} onClick={onClose} {...others} />;
   }
+
 }

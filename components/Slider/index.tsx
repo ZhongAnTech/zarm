@@ -183,4 +183,5 @@ export default class Slider extends PureComponent<SliderProps, any> {
       </div>
     );
   }
+
 }

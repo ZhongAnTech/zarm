@@ -58,4 +58,5 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
       ref: (ele) => { this.child = ele; },
     });
   }
+
 }

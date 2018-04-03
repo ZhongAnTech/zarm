@@ -103,4 +103,5 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
       </div>
     );
   }
+
 }

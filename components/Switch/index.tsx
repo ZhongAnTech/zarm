@@ -75,4 +75,5 @@ export default class Switch extends PureComponent<SwitchProps, any> {
       </span>
     );
   }
+
 }

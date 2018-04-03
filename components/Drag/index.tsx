@@ -64,4 +64,5 @@ export default class Drag extends PureComponent<DragProps, {}> {
       onTouchEnd: this.onTouchEnd,
     });
   }
+
 }

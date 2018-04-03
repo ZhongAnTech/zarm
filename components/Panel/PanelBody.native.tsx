@@ -26,4 +26,5 @@ export default class PanelHeader extends PureComponent<PanelBodyProps, {}> {
 
     return <View style={wrapperStyle}>{children}</View>;
   }
+
 }

@@ -174,4 +174,5 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
       </div>
     );
   }
+
 }

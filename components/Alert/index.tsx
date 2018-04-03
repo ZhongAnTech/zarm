@@ -42,6 +42,7 @@ export default class Alert extends PureComponent<AlertProps, {}> {
       </Modal>
     );
   }
+
 }
 
 // if (!window.zarmAlert) {
