@@ -30,6 +30,7 @@
     flex: 1;
     width: 100%;
     height: r(30);
+    padding: r(4);
     background: #eee;
     overflow: hidden;
 
@@ -49,40 +50,42 @@
   &-mock {
     position: absolute;
     left: 0;
-    top: 0;
+    top: r(4);
     width: 100%;
-    height: r(30);
-    line-height: r(30);
-    font-size: r(13);
+    height: r(22);
+    line-height: r(22);
+    font-size: r(15);
     color: #7e7e7e;
-    // text-align: center;
+
     &-container {
-      position: absolute;
+      display: inline-block;
+      height: 100%;
       transform: translate3d(r(10), 0, 0);
     }
 
-    i {
-      display: inline-block;
-      width: r(14);
-      height: r(14);
-      background: url(./images/search-icon.png) 0 0 no-repeat;
-      background-size: cover;
-      margin-right: r(6);
-      vertical-align: -2.5px;
+    &-placeholder {
+      vertical-align: middle;
+    }
+
+    .za-icon-search {
+      font-size: r(17);
+      vertical-align: middle;
+      margin-right: r(3);
     }
   }
 
   &-input {
     position: absolute;
     left: 0;
-    top: 0;
+    top: r(4);
     // z-index: 2;
     opacity: 0;
     width: 100%;
     text-align: left;
     color: #000;
-    height: 28px;
-    font-size: 15px;
+    height: r(22);
+    font-size: r(15);
+    line-height: r(22);
     background-color: transparent;
     border: 0;
 
@@ -94,18 +97,14 @@
   &-clear {
     position: absolute;
     visibility: hidden;
-    // z-index: 3;
+    color: #d5d5d5;
     width: r(30);
     height: r(30);
-    padding: r(8);
-    border-radius: 50%;
+    line-height: r(30);
+    text-align: center;
     top: 0;
     right: 0;
-    background-color: transparent;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: r(14) r(14);
-    background-image: url(./images/clear.png);
+    font-size: r(18);
 
     &-show {
       visibility: visible;

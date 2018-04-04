@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import BScroll from 'better-scroll';
 import { BaseWheelProps } from './PropsType';
 import { isArray } from '../utils/validate';
-import './findIndex.js';
 
 const getValue = (props, defaultValue?: any) => {
   if ('value' in props) {
