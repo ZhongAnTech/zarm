@@ -36,6 +36,8 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     onCancel: () => {},
   };
 
+  private isScrolling;
+
   constructor(props) {
     super(props);
 
@@ -65,6 +67,9 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   handleClick = () => {
+    if (this.isScrolling) {
+      return false;
+    }
     this.toggle();
   }
 
@@ -77,6 +82,10 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     this.setState({
       visible: !this.state.visible,
     });
+  }
+
+  onTransition(isScrolling) {
+    this.isScrolling = isScrolling;
   }
 
   onChange = (selected) => {
@@ -123,6 +132,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
           value={value}
           onOk={this.onOk}
           onCancel={this.onCancel}
+          onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
         />
       </div>
     );

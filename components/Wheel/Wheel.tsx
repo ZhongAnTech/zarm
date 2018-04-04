@@ -119,7 +119,15 @@ export default class Wheel extends Component<WheelProps, any> {
 
   getSelectedIndex(value, dataSource) {
     const { valueMember } = this.props;
-    return dataSource!.findIndex((item) => item[valueMember!] === value);
+    // return dataSource!.findIndex((item) => item[valueMember!] === value); 不兼容
+    let index;
+    dataSource.some((item, i) => {
+      if (item[valueMember!] === value) {
+        index = i;
+        return true;
+      }
+    });
+    return index;
   }
 
   render() {

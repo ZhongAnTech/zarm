@@ -33,6 +33,7 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   private tempValue;
   private tempObjValue;
+  private isScrolling;
 
   constructor(props) {
     super(props);
@@ -46,7 +47,6 @@ export default class Select extends PureComponent<SelectProps, any> {
     this.setState({
       value: getValue(nextProps, []),
     });
-
     if ('visible' in nextProps && nextProps.visible !== this.state.visible) {
       this.setState({
         visible: nextProps.visible,
@@ -62,12 +62,14 @@ export default class Select extends PureComponent<SelectProps, any> {
     this.tempObjValue = this.state.value.length ? selected : [];
 
     this.setState({
-      firstValue,
       firstObjValue: selected,
     });
   }
 
   handleClick = () => {
+    if (this.isScrolling) {
+      return false;
+    }
     this.toggle();
   }
 
@@ -81,6 +83,10 @@ export default class Select extends PureComponent<SelectProps, any> {
     });
   }
 
+  onTransition(isScrolling) {
+    this.isScrolling = isScrolling;
+  }
+
   onChange = (selected) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
@@ -88,7 +94,23 @@ export default class Select extends PureComponent<SelectProps, any> {
     }
   }
 
+  // onChange = (selected) => {
+  //   const { valueMember, onChange } = this.props;
+  //   const value = selected.map(item => item[valueMember!]);
+  //   this.setState({
+  //     value,
+  //     objValue: selected,
+  //   });
+
+  //   if (typeof onChange === 'function') {
+  //     onChange(selected);
+  //   }
+  // }
+
   onOk = (selected) => {
+    if (this.isScrolling) {
+      return false;
+    }
     this.toggle();
     const { onOk, valueMember } = this.props;
     this.setState({
@@ -139,6 +161,7 @@ export default class Select extends PureComponent<SelectProps, any> {
           onOk={this.onOk}
           onChange={this.onChange}
           onCancel={this.onCancel}
+          onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
         />
       </div>
     );
