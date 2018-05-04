@@ -15,10 +15,13 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
   static defaultProps = {
     prefixCls: 'za-searchbar',
     disabled: false,
+    showCancel: true,
   };
 
   private searchForm;
   private searchContainer;
+  private cancelRef;
+  private cancelOuterWidth;
   private initPos;
   private onBlurTimeout;
   private blurFromClear;
@@ -35,6 +38,11 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
   componentDidMount() {
     const formWidth = this.searchForm.getBoundingClientRect().width;
     const containerWidth = this.searchContainer.getBoundingClientRect().width;
+    if (this.cancelRef) {
+      const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
+      this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
+      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
+    }
 
     this.initPos = (formWidth / 2) - (containerWidth / 2);
     if (!this.state.value) {
@@ -58,19 +66,19 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
       focus: true,
     });
     this.focusAnim();
-    // console.log(this.searchForm.getBoundingClientRect().height);
     if (this.props.onFocus) {
       this.props.onFocus();
     }
   }
 
   onChange(e) {
+    const { maxLength } = this.props;
     if (!this.state.focus) {
       this.setState({
         focus: true,
       });
     }
-    const value = e.target.value;
+    const value = maxLength ? e.target.value.slice(0, maxLength) : e.target.value;
     this.setState({ value });
     // only when onComposition===false to fire onChange
     if (e.target instanceof HTMLInputElement && !isOnComposition) {
@@ -148,18 +156,41 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
 
   focusAnim(transition = 300) {
     this.searchContainer.style.cssText += `transform: translate3d(10px, 0, 0);transition: ${transition}ms;`;
+    if (this.cancelRef) {
+      this.cancelRef.style.cssText = `margin-right: 0px;`;
+    }
   }
 
   blurAnim() {
     this.searchContainer.style.cssText += `transform: translate3d(${this.initPos}px, 0, 0);transition: 300ms;`;
+    if (this.cancelRef) {
+      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
+    }
   }
 
   focus() {
     this.inputRef.focus();
   }
 
+  renderCancel() {
+    const { prefixCls, cancelText, showCancel } = this.props;
+    const { value, focus } = this.state;
+    const cancelCls = classnames(`${prefixCls}-cancel`, {
+      [`${prefixCls}-cancel-show`]: !!(focus || (value && value.length > 0)),
+    });
+
+    return showCancel &&
+      <div
+        className={cancelCls}
+        ref={(cancelRef) => { this.cancelRef = cancelRef; }}
+        onClick={() => { this.onCancel(); }}
+      >
+        {cancelText}
+      </div>;
+  }
+
   render() {
-    const { prefixCls, className, shape, placeholder, cancelText, disabled } = this.props;
+    const { prefixCls, className, shape, placeholder, disabled } = this.props;
     const { value, focus } = this.state;
     const formCls = classnames(`${prefixCls}-form`, className, {
       [`${prefixCls}-form-focus`]: !!(focus || (value && value.length > 0)),
@@ -171,10 +202,6 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
 
     const clearCls = classnames(`${prefixCls}-clear`, {
       [`${prefixCls}-clear-show`]: !!(focus && value && value.length > 0),
-    });
-
-    const cancelCls = classnames(`${prefixCls}-cancel`, {
-      [`${prefixCls}-cancel-show`]: !!(focus || (value && value.length > 0)),
     });
 
     return (
@@ -220,7 +247,7 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
             />
             <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />
           </div>
-          <div className={cancelCls} onClick={() => { this.onCancel(); }}>{cancelText}</div>
+          {this.renderCancel()}
         </form>
       </div>
     );

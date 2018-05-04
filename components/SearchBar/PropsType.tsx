@@ -5,6 +5,8 @@ export interface BaseSearchbarProps {
   shape?: string;
   cancelText?: string;
   placeholder?: string;
+  showCancel?: boolean;
+  maxLength?: number;
   onSubmit?: (value?: string) => void;
   onChange?: (value?: string) => void;
   onInput?: (value?: string) => void;

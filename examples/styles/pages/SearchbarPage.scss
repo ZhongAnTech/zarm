@@ -1,8 +1,37 @@
+@import "../mixins/index";
 @import "../functions/index";
 
 .Searchbar-page {
   .button-wrap {
-    text-align: center;
-    padding: r(5) 0 r(10);
+    // text-align: center;
+    padding: r(2) 0 r(10) r(15);
+  }
+
+  .searchbar-wrap {
+    display: flex;
+    align-items: center;
+    padding-right: r(10);
+
+    .za-searchbar {
+      flex: 1;
+    }
+  }
+
+  .search-result {
+    margin: 0 r(10) 0 r(15);
+    padding: 0;
+    max-height: r(144);
+    overflow-y: scroll;
+
+    li {
+      @include onepx(bottom);
+
+      position: relative;
+      padding: 0;
+      list-style: none;
+      font-size: r(15);
+      height: r(36);
+      line-height: r(36);
+    }
   }
 }
