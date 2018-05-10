@@ -30,6 +30,7 @@ class Page extends PureComponent {
               <Cell hasArrow title="滑动输入条 Slider" onClick={() => history.push('/slider')} />
               <Cell hasArrow title="步进器 Stepper" onClick={() => history.push('/stepper')} />
               <Cell hasArrow title="开关 Switch" onClick={() => history.push('/switch')} />
+              <Cell hasArrow title="搜索框 Searchbar" onClick={() => history.push('/searchbar')} />
             </Panel.Body>
           </Panel>
           <Panel>
