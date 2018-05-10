@@ -21,7 +21,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="普通" />
             <Panel.Body>
-              <Cell title="单行文本"><Input type="text" placeholder="请输入" /></Cell>
+              <Cell title="单行文本"><Input type="text" placeholder="请输入" onChange={(value) => { console.log(value); }} onClear={(value) => { console.log('清除了', value); }} clearable /></Cell>
               <Cell title="多行文本"><Input type="textarea" rows={3} placeholder="请输入" /></Cell>
             </Panel.Body>
           </Panel>
@@ -29,7 +29,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="输入类型" />
             <Panel.Body>
-              <Cell title="数字"><Input type="number" placeholder="type is number" focused={this.state.focused} onFocus={value => console.log(`onFocus: ${value}`)} onBlur={value => console.log(`onBlur: ${value}`)} /></Cell>
+              <Cell title="数字"><Input type="number" placeholder="type is number" focused={this.state.focused} onFocus={value => console.log(`onFocus: ${value}`)} onBlur={value => console.log(`onBlur: ${value}`)} onClear={(value) => { console.log('清除了', value); }} clearable /></Cell>
               <Cell title="金额"><Input type="price" placeholder="type is price" /></Cell>
               <Cell title="身份证"><Input type="idcard" placeholder="type is idcard" /></Cell>
               <Cell><button onClick={() => this.setState({ focused: true })}>click to focus the first input</button></Cell>

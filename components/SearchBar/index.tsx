@@ -4,6 +4,7 @@ import { BaseSearchbarProps } from './PropsType';
 import Icon from '../Icon';
 
 let isOnComposition = false;
+let shouldUpdatePosition = false;
 
 export interface SearchbarProps extends BaseSearchbarProps {
   prefixCls?: string;
@@ -14,8 +15,11 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-searchbar',
+    placeholder: '搜索',
+    cancelText: '取消',
     disabled: false,
-    showCancel: true,
+    showCancel: false,
+    clearable: true,
   };
 
   private searchForm;
@@ -36,28 +40,55 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
   }
 
   componentDidMount() {
-    const formWidth = this.searchForm.getBoundingClientRect().width;
-    const containerWidth = this.searchContainer.getBoundingClientRect().width;
-    if (this.cancelRef) {
-      const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
-      this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
-      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
+    this.calculateInitPositon(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { cancelText, placeholder, value } = this.props;
+    if ('value' in nextProps && value !== nextProps.value ) {
+      this.setState({
+        value: nextProps.value,
+      });
     }
 
-    this.initPos = (formWidth / 2) - (containerWidth / 2);
-    if (!this.state.value) {
-      this.searchContainer.style.transform = `translate3d(${this.initPos}px, 0, 0)`;
-      this.searchContainer.style.webkitTransform = `translate3d(${this.initPos}px, 0, 0)`;
-    } else {
-      this.focusAnim(0);
+    if (cancelText !== nextProps.cancelText || placeholder !== nextProps.placeholder) {
+      shouldUpdatePosition = true;
     }
+  }
 
+  componentDidUpdate(prevProps) {
+    if (shouldUpdatePosition) {
+      this.calculateInitPositon(prevProps);
+    }
+    shouldUpdatePosition = false;
   }
 
   componentWillUnmount() {
     if (this.onBlurTimeout) {
       clearTimeout(this.onBlurTimeout);
       this.onBlurTimeout = null;
+    }
+  }
+
+  // 初始化搜索提示文字的位置
+  calculateInitPositon(props) {
+    const { showCancel } = props;
+    const formWidth = this.searchForm.getBoundingClientRect().width;
+    const containerWidth = this.searchContainer.getBoundingClientRect().width;
+    const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
+    this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
+    if (!showCancel) {
+      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
+      this.initPos = (formWidth / 2) - (containerWidth / 2);
+    } else {
+      this.initPos = (formWidth / 2) - (this.cancelOuterWidth / 2) - (containerWidth / 2);
+    }
+
+    if (!this.state.value) {
+      this.searchContainer.style.transform = `translate3d(${this.initPos}px, 0, 0)`;
+      this.searchContainer.style.webkitTransform = `translate3d(${this.initPos}px, 0, 0)`;
+    } else {
+      this.focusAnim(0);
     }
   }
 
@@ -84,7 +115,6 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
     if (e.target instanceof HTMLInputElement && !isOnComposition) {
       if (this.props.onChange) {
         this.props.onChange(value);
-        // props.onChange(e)
       }
     }
   }
@@ -124,21 +154,25 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
 
   onClear() {
     this.blurFromClear = true;
+    const _value = this.state.value;
     this.setState({
       value: '',
     });
     this.focus();
     if (this.props.onClear) {
-      this.props.onClear();
+      this.props.onClear(_value);
     }
   }
 
   onCancel() {
-    this.blurFromClear = false;
-    this.setState({
-      value: '',
-    });
-    this.onBlur();
+    const { showCancel } = this.props;
+    if (!showCancel) {
+      this.blurFromClear = false;
+      this.setState({
+        value: '',
+      });
+      this.onBlur();
+    }
 
     if (this.props.onCancel) {
       this.props.onCancel();
@@ -156,14 +190,13 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
 
   focusAnim(transition = 300) {
     this.searchContainer.style.cssText += `transform: translate3d(10px, 0, 0);transition: ${transition}ms;`;
-    if (this.cancelRef) {
-      this.cancelRef.style.cssText = `margin-right: 0px;`;
-    }
+    this.cancelRef.style.cssText = `margin-right: 0px;`;
   }
 
   blurAnim() {
+    const { showCancel } = this.props;
     this.searchContainer.style.cssText += `transform: translate3d(${this.initPos}px, 0, 0);transition: 300ms;`;
-    if (this.cancelRef) {
+    if (!showCancel) {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
     }
   }
@@ -176,21 +209,22 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
     const { prefixCls, cancelText, showCancel } = this.props;
     const { value, focus } = this.state;
     const cancelCls = classnames(`${prefixCls}-cancel`, {
-      [`${prefixCls}-cancel-show`]: !!(focus || (value && value.length > 0)),
+      [`${prefixCls}-cancel-show`]: !!(showCancel || focus || (value && value.length > 0)),
     });
 
-    return showCancel &&
+    return (
       <div
         className={cancelCls}
         ref={(cancelRef) => { this.cancelRef = cancelRef; }}
         onClick={() => { this.onCancel(); }}
       >
         {cancelText}
-      </div>;
+      </div>
+    );
   }
 
   render() {
-    const { prefixCls, className, shape, placeholder, disabled } = this.props;
+    const { prefixCls, className, shape, placeholder, disabled, clearable } = this.props;
     const { value, focus } = this.state;
     const formCls = classnames(`${prefixCls}-form`, className, {
       [`${prefixCls}-form-focus`]: !!(focus || (value && value.length > 0)),
@@ -245,7 +279,7 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
               disabled={disabled}
               ref={(inputRef) => { this.inputRef = inputRef; }}
             />
-            <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />
+            {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
           </div>
           {this.renderCancel()}
         </form>

@@ -11,18 +11,22 @@ export interface BaseInputProps {
 export interface BaseInputTextProps extends BaseInputProps {
   value?: string;
   defaultValue?: string;
+  clearable?: boolean;
   onChange?: (value?: string) => void;
   onFocus?: (value?: string) => void;
   onBlur?: (value?: string) => void;
+  onClear?: (value?: string) => void;
 }
 
 export interface BaseInputNumberProps extends BaseInputProps {
   type?: 'number' | 'price' | 'idcard';
   value?: string | number;
   defaultValue?: string | number;
+  clearable?: boolean;
   onChange?: (value?: string | number) => void;
   onFocus?: (value?: string | number) => void;
   onBlur?: (value?: string | number) => void;
+  onClear?: (value?: string) => void;
 }
 
 export interface BaseInputTextareaProps extends BaseInputProps {

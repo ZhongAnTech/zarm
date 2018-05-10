@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { BaseInputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../KeyboardPicker';
+import Icon from '../Icon';
 
 declare const document;
 
@@ -124,13 +125,28 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
   }
 
+  onClear() {
+    const { value } = this.state;
+    this.setState({
+      value: '',
+    });
+    // this.onFocus();
+    if (this.props.onClear) {
+      this.props.onClear(value);
+    }
+  }
+
   render() {
-    const { prefixCls, className, type, disabled, placeholder } = this.props;
+    const { prefixCls, className, type, disabled, placeholder, clearable } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
       disabled,
       focus: visible,
+    });
+
+    const clearCls = classnames(`${prefixCls}-clear`, {
+      [`${prefixCls}-clear-show`]: !!(visible && value && value.length > 0),
     });
 
     return (
@@ -148,6 +164,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           type={type}
           onKeyClick={this.onKeyClick}
         />
+        {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
       </div>
     );
   }
