@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import BScroll from 'better-scroll';
 import { BaseWheelProps } from './PropsType';
 import { isArray } from '../utils/validate';
-import './findIndex.js';
 
 const getValue = (props, defaultValue?: any) => {
   if ('value' in props) {
@@ -119,7 +118,6 @@ export default class Wheel extends Component<WheelProps, any> {
 
   getSelectedIndex(value, dataSource) {
     const { valueMember } = this.props;
-    // return dataSource!.findIndex((item) => item[valueMember!] === value); 不兼容
     let index;
     dataSource.some((item, i) => {
       if (item[valueMember!] === value) {

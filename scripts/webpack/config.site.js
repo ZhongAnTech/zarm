@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzer = require('webpack-bundle-analyzer');
 const config = require('./config.base');
 
 config.entry = {
@@ -55,7 +55,7 @@ config.plugins.push(new webpack.DefinePlugin({
   __DEBUG__: false,
 }));
 
-// config.plugins.push(new BundleAnalyzerPlugin({
+// config.plugins.push(new BundleAnalyzer.BundleAnalyzerPlugin({
 //   analyzerMode: 'static',
 // }));
 
