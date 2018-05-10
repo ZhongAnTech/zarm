@@ -9,7 +9,7 @@ class Page extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: false,
+      value: true,
     };
   }
 
@@ -30,7 +30,7 @@ class Page extends Component {
               <Cell
                 description={
                   <Switch
-                    value={this.state.value}
+                    checked={this.state.value}
                     onChange={(value) => {
                       this.setState({ value });
                     }}

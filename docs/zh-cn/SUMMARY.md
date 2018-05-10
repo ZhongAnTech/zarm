@@ -24,6 +24,7 @@
   * [模态框 Modal](components/Modal.md)
   * [弹出框 Popup](components/Popup.md)
   * [上拉加载下拉刷新 Pull](components/Pull.md)
+  * [搜索框 SearchBar](components/SearchBar.md)
   * [滑动操作 SwipeAction](components/SwipeAction.md)
   * [轻提示 Toast](components/Toast.md)
 
