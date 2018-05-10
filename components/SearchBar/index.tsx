@@ -286,4 +286,5 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
       </div>
     );
   }
+
 }
