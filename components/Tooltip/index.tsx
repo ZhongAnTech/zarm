@@ -36,8 +36,8 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
       [`${prefixCls}-hidden`]: !visible,
     });
 
-    // eslint-disable-next-line
-    const rect = findDOMNode(this.child).getBoundingClientRect();
+    const dom = findDOMNode(this.child) as HTMLElement;
+    const rect = dom.getBoundingClientRect();
     const scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
     const style = {
       left: rect.left,
