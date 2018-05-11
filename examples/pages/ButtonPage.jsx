@@ -7,7 +7,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/ButtonPage';
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="button-page">
@@ -84,7 +83,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

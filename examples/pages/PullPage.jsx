@@ -30,7 +30,6 @@ function getRandomNum(min, max) {
 }
 
 class Page extends Component {
-
   constructor(props) {
     super(props);
     this.mounted = true;
@@ -167,7 +166,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

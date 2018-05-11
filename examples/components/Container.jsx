@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import '../styles/components/Container';
 
 class Container extends Component {
-
   componentDidMount() {
     if (this.props.className !== 'index-page') return;
 
@@ -39,7 +38,6 @@ class Container extends Component {
       </div>
     );
   }
-
 }
 
 export default Container;

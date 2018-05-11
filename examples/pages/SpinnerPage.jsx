@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="spinner-page">
@@ -31,7 +30,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

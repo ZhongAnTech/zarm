@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/BadgePage';
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="badge-page">
@@ -46,7 +45,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

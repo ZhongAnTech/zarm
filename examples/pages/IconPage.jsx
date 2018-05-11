@@ -18,7 +18,6 @@ const ICONS = [
 ];
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="icon-page">
@@ -46,7 +45,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

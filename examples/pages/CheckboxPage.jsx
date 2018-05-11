@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/CheckboxPage';
 
 class Page extends PureComponent {
-
   render() {
     return (
       <Container className="checkbox-page">
@@ -129,7 +128,6 @@ class Page extends PureComponent {
       </Container>
     );
   }
-
 }
 
 export default Page;

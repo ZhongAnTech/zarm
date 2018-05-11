@@ -8,7 +8,6 @@ import '../styles/pages/CellPage';
 const img = require('../images/icons/state.png');
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="cell-page">
@@ -89,7 +88,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

@@ -8,7 +8,6 @@ import '../styles/index';
 import '../styles/components/App';
 
 class App extends Component {
-
   componentDidMount() {
     // Events.on(window, 'resize', window.__setFontSize__);
     // FastClick.attach(document.body);
@@ -69,7 +68,6 @@ class App extends Component {
       </TransitionGroup>
     );
   }
-
 }
 
 export default withRouter(App);
