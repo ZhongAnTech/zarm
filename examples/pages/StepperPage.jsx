@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 class Page extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -87,7 +86,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

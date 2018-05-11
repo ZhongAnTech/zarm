@@ -5,7 +5,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 class Page extends Component {
-
   state = {
     active: [1],
   };
@@ -160,7 +159,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

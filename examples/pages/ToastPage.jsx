@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/ToastPage';
 
 class ToastPage extends Component {
-
   render() {
     return (
       <Container className="toast-page">
@@ -100,7 +99,6 @@ class ToastPage extends Component {
       </Container>
     );
   }
-
 }
 
 export default ToastPage;

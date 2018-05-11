@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/PanelPage';
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="panel-page">
@@ -24,7 +23,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

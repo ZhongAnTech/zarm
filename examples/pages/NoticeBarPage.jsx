@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/NoticeBarPage';
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="noticebar-page">
@@ -34,7 +33,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

@@ -12,7 +12,6 @@ function onBeforeSelect() {
 }
 
 class FilePickerPage extends Component {
-
   constructor(props) {
     super(props);
 
@@ -164,7 +163,6 @@ class FilePickerPage extends Component {
       </Container>
     );
   }
-
 }
 
 export default FilePickerPage;

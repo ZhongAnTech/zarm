@@ -3,7 +3,6 @@ import Container from '../components/Container';
 import Footer from '../components/Footer';
 
 class Page extends PureComponent {
-
   render() {
     return (
       <Container>
@@ -12,7 +11,6 @@ class Page extends PureComponent {
       </Container>
     );
   }
-
 }
 
 export default Page;

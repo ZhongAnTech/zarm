@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/TabPage';
 
 class TabPage extends Component {
-
   render() {
     return (
       <Container className="tab-page">
@@ -95,7 +94,6 @@ class TabPage extends Component {
       </Container>
     );
   }
-
 }
 
 export default TabPage;

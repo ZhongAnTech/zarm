@@ -22,7 +22,6 @@ function contentRender() {
 }
 
 class Page extends Component {
-
   render() {
     return (
       <Container className="swipe-page">
@@ -110,7 +109,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;

@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/RadioPage';
 
 class Page extends PureComponent {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -136,7 +135,6 @@ class Page extends PureComponent {
       </Container>
     );
   }
-
 }
 
 export default Page;

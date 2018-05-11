@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/IndexPage';
 
 class Page extends PureComponent {
-
   render() {
     const { history } = this.props;
 
@@ -66,7 +65,6 @@ class Page extends PureComponent {
       </Container>
     );
   }
-
 }
 
 export default Page;
