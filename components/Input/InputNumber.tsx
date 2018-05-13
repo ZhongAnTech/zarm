@@ -58,8 +58,9 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
 
     const cNode = ((node) => {
+      const picker = findDOMNode(this.picker) as HTMLElement;
       while (node.parentNode && node.parentNode !== document.body) {
-        if (node === findDOMNode(this.picker)) {
+        if (node === picker) {
           return node;
         }
         node = node.parentNode;
