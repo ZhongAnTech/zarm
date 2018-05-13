@@ -58,7 +58,6 @@ $prefixCls: $prefixCls-input;
     visibility: hidden;
     color: #d5d5d5;
     width: r(30);
-    height: 100%;
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -78,10 +77,6 @@ $prefixCls: $prefixCls-input;
 
   &-number {
     line-height: r(24);
-
-    .za-input-clear {
-      top: 0;
-    }
 
     &-picker {
       background-color: #fff;

@@ -18,6 +18,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps = {
     prefixCls: 'za-input',
     disabled: false,
+    clearable: true,
   };
 
   private content;

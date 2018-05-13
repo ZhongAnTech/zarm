@@ -15,6 +15,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     prefixCls: 'za-input',
     disabled: false,
     type: 'text',
+    clearable: true,
   };
 
   private input;
