@@ -5,6 +5,7 @@ exports[`Input renders correctly 1`] = `
   class="za-input za-input-text"
 >
   <input
+    autocomplete="off"
     type="text"
     value=""
   />
@@ -17,7 +18,7 @@ exports[`Input renders onClear called correctly 1`] = `
   onClear={[Function]}
   type="text"
 >
-  <InputText
+  <InputBase
     clearable={true}
     disabled={false}
     onClear={[Function]}
@@ -28,6 +29,7 @@ exports[`Input renders onClear called correctly 1`] = `
       className="za-input za-input-text"
     >
       <input
+        autoComplete="off"
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
@@ -50,37 +52,7 @@ exports[`Input renders onClear called correctly 1`] = `
         />
       </Icon>
     </div>
-  </InputText>
-</Input>
-`;
-
-exports[`Input renders onFocus called correctly 1`] = `
-<Input
-  onFocus={[Function]}
-  type="text"
->
-  <InputText
-    disabled={false}
-    onFocus={[Function]}
-    prefixCls="za-input"
-    type="text"
-  >
-    <div
-      className="za-input za-input-text"
-    >
-      <input
-        disabled={false}
-        onBlur={[Function]}
-        onChange={[Function]}
-        onCompositionEnd={[Function]}
-        onCompositionStart={[Function]}
-        onCompositionUpdate={[Function]}
-        onFocus={[Function]}
-        type="text"
-        value=""
-      />
-    </div>
-  </InputText>
+  </InputBase>
 </Input>
 `;
 

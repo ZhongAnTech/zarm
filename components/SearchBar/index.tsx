@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseSearchbarProps } from './PropsType';
 import Icon from '../Icon';
+import InputBase from '../Input/InputBase';
 
-let isOnComposition = false;
 let shouldUpdatePosition = false;
 
 export interface SearchbarProps extends BaseSearchbarProps {
@@ -27,8 +27,6 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
   private cancelRef;
   private cancelOuterWidth;
   private initPos;
-  private onBlurTimeout;
-  private blurFromClear;
   private inputRef;
 
   constructor(props) {
@@ -36,21 +34,23 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
     this.state = {
       focus: false,
       value: props.defaultValue || props.value || '',
+      isOnComposition: false,
     };
   }
 
   componentDidMount() {
-    this.calculateInitPositon(this.props);
+    this.calculatePositon(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { cancelText, placeholder, value } = this.props;
+    const { cancelText, placeholder } = this.props;
+    const { value } = this.state;
     if ('value' in nextProps && value !== nextProps.value ) {
       this.setState({
         value: nextProps.value,
       });
     }
-
+    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
     if (cancelText !== nextProps.cancelText || placeholder !== nextProps.placeholder) {
       shouldUpdatePosition = true;
     }
@@ -58,20 +58,13 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
 
   componentDidUpdate(prevProps) {
     if (shouldUpdatePosition) {
-      this.calculateInitPositon(prevProps);
+      this.calculatePositon(prevProps);
     }
     shouldUpdatePosition = false;
   }
 
-  componentWillUnmount() {
-    if (this.onBlurTimeout) {
-      clearTimeout(this.onBlurTimeout);
-      this.onBlurTimeout = null;
-    }
-  }
-
   // 初始化搜索提示文字的位置
-  calculateInitPositon(props) {
+  calculatePositon(props) {
     const { showCancel } = props;
     const formWidth = this.searchForm.getBoundingClientRect().width;
     const containerWidth = this.searchContainer.getBoundingClientRect().width;
@@ -102,76 +95,58 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
     }
   }
 
-  onChange(e) {
-    const { maxLength } = this.props;
-    if (!this.state.focus) {
-      this.setState({
-        focus: true,
-      });
-    }
-    const value = maxLength ? e.target.value.slice(0, maxLength) : e.target.value;
+  onChange(value) {
     this.setState({ value });
-    // only when onComposition===false to fire onChange
-    if (e.target instanceof HTMLInputElement && !isOnComposition) {
-      if (this.props.onChange) {
-        this.props.onChange(value);
-      }
+
+    if (this.props.onChange) {
+      this.props.onChange(value);
     }
   }
 
   handleComposition(e) {
+    if (!this.state.isOnComposition) {
+      this.setState({
+        isOnComposition: true,
+      });
+    }
     if (e.type === 'compositionend') {
-      // composition is end
-      isOnComposition = false;
-      const value = e.target.value;
-      if (this.props.onChange) {
-        this.props.onChange(value);
-      }
-    } else {
-      // in composition
-      isOnComposition = true;
+      this.setState({
+        isOnComposition: false,
+      });
     }
   }
 
   onBlur() {
-    // 延迟onBlur的触发时间
-    this.onBlurTimeout = setTimeout(() => {
-      const { value } = this.state;
-      if (!this.blurFromClear && document.activeElement !== this.inputRef) {
-        this.setState({
-          focus: false,
-        });
-        if (!value) {
-          this.blurAnim();
-        }
-      }
-      this.blurFromClear = false;
-      if (this.props.onBlur) {
-        this.props.onBlur();
-      }
-    }, 0);
+    const { value } = this.state;
+    this.setState({
+      focus: false,
+    });
+    if (!value) {
+      this.blurAnim();
+    }
+
+    if (this.props.onBlur) {
+      this.props.onBlur();
+    }
   }
 
-  onClear() {
-    this.blurFromClear = true;
-    const _value = this.state.value;
+  onClear(val) {
     this.setState({
       value: '',
     });
-    this.focus();
     if (this.props.onClear) {
-      this.props.onClear(_value);
+      this.props.onClear(val);
     }
   }
 
   onCancel() {
     const { showCancel } = this.props;
     if (!showCancel) {
-      this.blurFromClear = false;
       this.setState({
         value: '',
+      }, () => {
+        this.onBlur();
       });
-      this.onBlur();
     }
 
     if (this.props.onCancel) {
@@ -183,6 +158,7 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
     e.preventDefault();
     const { value } = this.state;
     this.inputRef.blur();
+
     if (this.props.onSubmit) {
       this.props.onSubmit(value);
     }
@@ -225,17 +201,13 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
 
   render() {
     const { prefixCls, className, shape, placeholder, disabled, clearable } = this.props;
-    const { value, focus } = this.state;
+    const { value, focus, isOnComposition } = this.state;
     const formCls = classnames(`${prefixCls}-form`, className, {
       [`${prefixCls}-form-focus`]: !!(focus || (value && value.length > 0)),
     });
 
     const contentCls = classnames(`${prefixCls}-content`, {
       [`shape-${shape}`]: !!shape,
-    });
-
-    const clearCls = classnames(`${prefixCls}-clear`, {
-      [`${prefixCls}-clear-show`]: !!(focus && value && value.length > 0),
     });
 
     return (
@@ -247,9 +219,7 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
           ref={(searchForm) => { this.searchForm = searchForm; }}
         >
           <div className={contentCls}>
-            <div
-              className={`${prefixCls}-mock`}
-            >
+            <div className={`${prefixCls}-mock`}>
               <div
                 className={`${prefixCls}-mock-container`}
                 ref={(searchContainer) => { this.searchContainer = searchContainer; }}
@@ -257,29 +227,25 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
                 <Icon type="search" />
                 <span
                   className={`${prefixCls}-mock-placeholder`}
-                  style={{ visibility: value ? 'hidden' : 'visible' }}
+                  style={{ visibility: value || isOnComposition ? 'hidden' : 'visible' }}
                 >
                   {placeholder}
                 </span>
               </div>
             </div>
-            <input
+            <InputBase
               type="search"
-              autoComplete="off"
-              name="search"
               placeholder={placeholder}
-              className={`${prefixCls}-input`}
               value={value}
               onFocus={() => { this.onFocus(); }}
-              onCompositionStart={(e) => { this.handleComposition(e); }}
-              onCompositionUpdate={(e) => { this.handleComposition(e); }}
-              onCompositionEnd={(e) => { this.handleComposition(e); }}
+              handleComposition={(e) => {this.handleComposition(e); }}
               onChange={(e) => { this.onChange(e); }}
               onBlur={() => { this.onBlur(); }}
+              onClear={(val) => { this.onClear(val); }}
               disabled={disabled}
+              clearable={clearable}
               ref={(inputRef) => { this.inputRef = inputRef; }}
             />
-            {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
           </div>
           {this.renderCancel()}
         </form>

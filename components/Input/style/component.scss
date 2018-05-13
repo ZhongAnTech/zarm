@@ -18,7 +18,8 @@ $prefixCls: $prefixCls-input;
     -webkit-appearance: none;
 
     &[type="date"],
-    &[type="text"] {
+    &[type="text"],
+    &[type="search"] {
       height: r(21);
     }
 
@@ -57,10 +58,10 @@ $prefixCls: $prefixCls-input;
     visibility: hidden;
     color: #d5d5d5;
     width: r(30);
-    height: r(30);
-    line-height: r(30);
+    height: 100%;
     text-align: center;
-    top: r(9);
+    top: 50%;
+    transform: translateY(-50%);
     right: 0;
     font-size: r(18);
 

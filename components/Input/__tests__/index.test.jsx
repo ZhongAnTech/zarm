@@ -21,9 +21,26 @@ describe('Input', () => {
     );
     wrapper.find('input[type="text"]').simulate('focus');
     expect(onFocus).toBeCalled();
-    expect(toJson(wrapper)).toMatchSnapshot();
+    // expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
   });
+
+  // it('renders onBlur called correctly', () => {
+  //   const onBlur = jest.fn();
+  //   const wrapper = mount(
+  //     <Input onBlur={onBlur} />
+  //   );
+  //   wrapper.find('input[type="text"]').simulate('blur');
+  //   expect(onBlur).not.toBeCalled();
+
+  //   // Fast-forward until all timers have been executed
+  //   jest.runAllTimers();
+
+  //   // Now our callback should have been called!
+  //   // expect(onBlur).toBeCalled();
+  //   expect(onBlur).toHaveBeenCalledTimes(1);
+  //   // expect(onBlur).toBeCalled();
+  // });
 
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
@@ -36,7 +53,6 @@ describe('Input', () => {
 
     const input = wrapper.find('input[type="text"]');
     input.simulate('change', { target: { value: 'My new value' } });
-    console.log(wrapper.find('i.za-input-clear'));
     wrapper.find('i.za-input-clear').simulate('click');
     expect(onClear).toHaveBeenCalled();
     expect(input.instance().value).toEqual('');

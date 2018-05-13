@@ -8,7 +8,7 @@ export interface BaseInputProps {
   style?: React.CSSProperties;
 }
 
-export interface BaseInputTextProps extends BaseInputProps {
+export interface BaseInputBaseProps extends BaseInputProps {
   value?: string;
   defaultValue?: string;
   clearable?: boolean;
@@ -16,6 +16,7 @@ export interface BaseInputTextProps extends BaseInputProps {
   onFocus?: (value?: string) => void;
   onBlur?: (value?: string) => void;
   onClear?: (value?: string) => void;
+  handleComposition?: (e?: any) => void;
 }
 
 export interface BaseInputNumberProps extends BaseInputProps {

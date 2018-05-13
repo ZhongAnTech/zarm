@@ -28,17 +28,19 @@ exports[`SearchBar renders correctly 1`] = `
           </span>
         </div>
       </div>
-      <input
-        autocomplete="off"
-        class="za-searchbar-input"
-        name="search"
-        placeholder="搜索"
-        type="search"
-        value=""
-      />
-      <i
-        class="za-icon za-searchbar-clear za-icon-wrong-round-fill"
-      />
+      <div
+        class="za-input za-input-search"
+      >
+        <input
+          autocomplete="off"
+          placeholder="搜索"
+          type="search"
+          value=""
+        />
+        <i
+          class="za-icon za-input-clear za-icon-wrong-round-fill"
+        />
+      </div>
     </div>
     <div
       class="za-searchbar-cancel"
@@ -97,32 +99,48 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
             </span>
           </div>
         </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
+        <InputBase
+          clearable={true}
           disabled={false}
-          name="search"
+          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
+          onClear={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
+          prefixCls="za-input"
           type="search"
           value=""
-        />
-        <Icon
-          className="za-searchbar-clear"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
         >
-          <i
-            className="za-icon za-searchbar-clear za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
+          <div
+            className="za-input za-input-search"
+          >
+            <input
+              autoComplete="off"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              placeholder="搜索"
+              type="search"
+              value=""
+            />
+            <Icon
+              className="za-input-clear"
+              onClick={[Function]}
+              prefixCls="za-icon"
+              type="wrong-round-fill"
+            >
+              <i
+                className="za-icon za-input-clear za-icon-wrong-round-fill"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </InputBase>
       </div>
       <div
         className="za-searchbar-cancel"
@@ -135,99 +153,12 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
 </SearchBar>
 `;
 
-exports[`SearchBar renders maxLength correctly 1`] = `
+exports[`SearchBar renders onCancel called correctly 1`] = `
 <SearchBar
   cancelText="取消"
   clearable={true}
   disabled={false}
-  maxLength={5}
-  onChange={[Function]}
-  placeholder="搜索"
-  prefixCls="za-searchbar"
-  shape="round"
-  showCancel={false}
->
-  <div
-    className="za-searchbar"
-  >
-    <form
-      action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
-      onSubmit={[Function]}
-    >
-      <div
-        className="za-searchbar-content shape-round"
-      >
-        <div
-          className="za-searchbar-mock"
-        >
-          <div
-            className="za-searchbar-mock-container"
-          >
-            <Icon
-              prefixCls="za-icon"
-              type="search"
-            >
-              <i
-                className="za-icon za-icon-search"
-              />
-            </Icon>
-            <span
-              className="za-searchbar-mock-placeholder"
-              style={
-                Object {
-                  "visibility": "hidden",
-                }
-              }
-            >
-              搜索
-            </span>
-          </div>
-        </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
-          disabled={false}
-          name="search"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
-          onFocus={[Function]}
-          placeholder="搜索"
-          type="search"
-          value="12345"
-        />
-        <Icon
-          className="za-searchbar-clear za-searchbar-clear-show"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
-        >
-          <i
-            className="za-icon za-searchbar-clear za-searchbar-clear-show za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
-      </div>
-      <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
-        onClick={[Function]}
-      >
-        取消
-      </div>
-    </form>
-  </div>
-</SearchBar>
-`;
-
-exports[`SearchBar renders onBlur called correctly 1`] = `
-<SearchBar
-  cancelText="取消"
-  clearable={true}
-  disabled={false}
-  onBlur={[Function]}
+  onCancel={[Function]}
   placeholder="搜索"
   prefixCls="za-searchbar"
   shape="round"
@@ -270,121 +201,51 @@ exports[`SearchBar renders onBlur called correctly 1`] = `
             </span>
           </div>
         </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
+        <InputBase
+          clearable={true}
           disabled={false}
-          name="search"
+          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
+          onClear={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
+          prefixCls="za-input"
           type="search"
           value=""
-        />
-        <Icon
-          className="za-searchbar-clear"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
         >
-          <i
-            className="za-icon za-searchbar-clear za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
+          <div
+            className="za-input za-input-search"
+          >
+            <input
+              autoComplete="off"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              placeholder="搜索"
+              type="search"
+              value=""
+            />
+            <Icon
+              className="za-input-clear"
+              onClick={[Function]}
+              prefixCls="za-icon"
+              type="wrong-round-fill"
+            >
+              <i
+                className="za-icon za-input-clear za-icon-wrong-round-fill"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </InputBase>
       </div>
       <div
         className="za-searchbar-cancel"
-        onClick={[Function]}
-      >
-        取消
-      </div>
-    </form>
-  </div>
-</SearchBar>
-`;
-
-exports[`SearchBar renders onCancel called correctly 1`] = `
-<SearchBar
-  cancelText="取消"
-  clearable={true}
-  disabled={false}
-  onCancel={[Function]}
-  placeholder="搜索"
-  prefixCls="za-searchbar"
-  shape="round"
-  showCancel={false}
->
-  <div
-    className="za-searchbar"
-  >
-    <form
-      action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
-      onSubmit={[Function]}
-    >
-      <div
-        className="za-searchbar-content shape-round"
-      >
-        <div
-          className="za-searchbar-mock"
-        >
-          <div
-            className="za-searchbar-mock-container"
-          >
-            <Icon
-              prefixCls="za-icon"
-              type="search"
-            >
-              <i
-                className="za-icon za-icon-search"
-              />
-            </Icon>
-            <span
-              className="za-searchbar-mock-placeholder"
-              style={
-                Object {
-                  "visibility": "visible",
-                }
-              }
-            >
-              搜索
-            </span>
-          </div>
-        </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
-          disabled={false}
-          name="search"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
-          onFocus={[Function]}
-          placeholder="搜索"
-          type="search"
-          value=""
-        />
-        <Icon
-          className="za-searchbar-clear"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
-        >
-          <i
-            className="za-icon za-searchbar-clear za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
-      </div>
-      <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
         onClick={[Function]}
       >
         取消
@@ -410,93 +271,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
   >
     <form
       action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
-      onSubmit={[Function]}
-    >
-      <div
-        className="za-searchbar-content shape-round"
-      >
-        <div
-          className="za-searchbar-mock"
-        >
-          <div
-            className="za-searchbar-mock-container"
-          >
-            <Icon
-              prefixCls="za-icon"
-              type="search"
-            >
-              <i
-                className="za-icon za-icon-search"
-              />
-            </Icon>
-            <span
-              className="za-searchbar-mock-placeholder"
-              style={
-                Object {
-                  "visibility": "hidden",
-                }
-              }
-            >
-              搜索
-            </span>
-          </div>
-        </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
-          disabled={false}
-          name="search"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
-          onFocus={[Function]}
-          placeholder="搜索"
-          type="search"
-          value="测试值"
-        />
-        <Icon
-          className="za-searchbar-clear za-searchbar-clear-show"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
-        >
-          <i
-            className="za-icon za-searchbar-clear za-searchbar-clear-show za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
-      </div>
-      <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
-        onClick={[Function]}
-      >
-        取消
-      </div>
-    </form>
-  </div>
-</SearchBar>
-`;
-
-exports[`SearchBar renders onClear called correctly 1`] = `
-<SearchBar
-  cancelText="取消"
-  clearable={true}
-  disabled={false}
-  onClear={[Function]}
-  placeholder="搜索"
-  prefixCls="za-searchbar"
-  shape="round"
-  showCancel={false}
->
-  <div
-    className="za-searchbar"
-  >
-    <form
-      action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
+      className="za-searchbar-form"
       onSubmit={[Function]}
     >
       <div
@@ -528,35 +303,51 @@ exports[`SearchBar renders onClear called correctly 1`] = `
             </span>
           </div>
         </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
+        <InputBase
+          clearable={true}
           disabled={false}
-          name="search"
+          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
+          onClear={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
+          prefixCls="za-input"
           type="search"
           value=""
-        />
-        <Icon
-          className="za-searchbar-clear"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
         >
-          <i
-            className="za-icon za-searchbar-clear za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
+          <div
+            className="za-input za-input-search"
+          >
+            <input
+              autoComplete="off"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              placeholder="搜索"
+              type="search"
+              value="测试值"
+            />
+            <Icon
+              className="za-input-clear za-input-clear-show"
+              onClick={[Function]}
+              prefixCls="za-icon"
+              type="wrong-round-fill"
+            >
+              <i
+                className="za-icon za-input-clear za-input-clear-show za-icon-wrong-round-fill"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
+        className="za-searchbar-cancel"
         onClick={[Function]}
       >
         取消
@@ -614,32 +405,48 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
             </span>
           </div>
         </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
+        <InputBase
+          clearable={true}
           disabled={false}
-          name="search"
+          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
+          onClear={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
+          prefixCls="za-input"
           type="search"
           value=""
-        />
-        <Icon
-          className="za-searchbar-clear"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
         >
-          <i
-            className="za-icon za-searchbar-clear za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
+          <div
+            className="za-input za-input-search"
+          >
+            <input
+              autoComplete="off"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              placeholder="搜索"
+              type="search"
+              value=""
+            />
+            <Icon
+              className="za-input-clear"
+              onClick={[Function]}
+              prefixCls="za-icon"
+              type="wrong-round-fill"
+            >
+              <i
+                className="za-icon za-input-clear za-icon-wrong-round-fill"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </InputBase>
       </div>
       <div
         className="za-searchbar-cancel za-searchbar-cancel-show"
@@ -668,7 +475,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
   >
     <form
       action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
+      className="za-searchbar-form"
       onSubmit={[Function]}
     >
       <div
@@ -692,7 +499,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
               className="za-searchbar-mock-placeholder"
               style={
                 Object {
-                  "visibility": "hidden",
+                  "visibility": "visible",
                 }
               }
             >
@@ -700,35 +507,51 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
             </span>
           </div>
         </div>
-        <input
-          autoComplete="off"
-          className="za-searchbar-input"
+        <InputBase
+          clearable={true}
           disabled={false}
-          name="search"
+          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onCompositionUpdate={[Function]}
+          onClear={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
+          prefixCls="za-input"
           type="search"
-          value="My new value"
-        />
-        <Icon
-          className="za-searchbar-clear za-searchbar-clear-show"
-          onClick={[Function]}
-          prefixCls="za-icon"
-          type="wrong-round-fill"
+          value=""
         >
-          <i
-            className="za-icon za-searchbar-clear za-searchbar-clear-show za-icon-wrong-round-fill"
-            onClick={[Function]}
-          />
-        </Icon>
+          <div
+            className="za-input za-input-search"
+          >
+            <input
+              autoComplete="off"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onCompositionEnd={[Function]}
+              onCompositionStart={[Function]}
+              onCompositionUpdate={[Function]}
+              onFocus={[Function]}
+              placeholder="搜索"
+              type="search"
+              value="My new value"
+            />
+            <Icon
+              className="za-input-clear za-input-clear-show"
+              onClick={[Function]}
+              prefixCls="za-icon"
+              type="wrong-round-fill"
+            >
+              <i
+                className="za-icon za-input-clear za-input-clear-show za-icon-wrong-round-fill"
+                onClick={[Function]}
+              />
+            </Icon>
+          </div>
+        </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
+        className="za-searchbar-cancel"
         onClick={[Function]}
       >
         取消

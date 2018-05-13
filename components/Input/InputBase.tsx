@@ -1,19 +1,20 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseInputTextProps } from './PropsType';
+import { BaseInputBaseProps } from './PropsType';
 import Icon from '../Icon';
 
 let isOnComposition = false;
-export interface InputTextProps extends BaseInputTextProps {
+export interface InputBaseProps extends BaseInputBaseProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class InputText extends PureComponent<InputTextProps, any> {
+export default class InputBase extends PureComponent<InputBaseProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-input',
     disabled: false,
+    type: 'text',
   };
 
   private input;
@@ -35,22 +36,17 @@ export default class InputText extends PureComponent<InputTextProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { value } = this.state;
     if ('focused' in nextProps) {
       this.setState({
         focused: nextProps.focused,
       });
     }
 
-    if ('value' in nextProps) {
+    if ('value' in nextProps && value !== nextProps.value ) {
       this.setState({
         value: nextProps.value,
       });
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.state.focused) {
-      this.input.focus();
     }
   }
 
@@ -61,7 +57,7 @@ export default class InputText extends PureComponent<InputTextProps, any> {
     }
   }
 
-  onFocus = (e) => {
+  onFocus = () => {
     if (!('focused' in this.props)) {
       this.setState({
         focused: true,
@@ -70,22 +66,23 @@ export default class InputText extends PureComponent<InputTextProps, any> {
 
     const { onFocus } = this.props;
     if (typeof onFocus === 'function') {
-      onFocus(e.target.value);
+      onFocus();
     }
   }
 
-  onBlur = (e) => {
+  onBlur = () => {
+    const { onBlur } = this.props;
     this.onBlurTimeout = setTimeout(() => {
       if (!this.blurFromClear && document.activeElement !== this.input) {
         this.setState({
           focused: false,
         });
+
+        if (typeof onBlur === 'function') {
+          onBlur();
+        }
       }
       this.blurFromClear = false;
-      const { onBlur } = this.props;
-      if (typeof onBlur === 'function') {
-        onBlur(e.target.value);
-      }
     }, 0);
   }
 
@@ -112,7 +109,7 @@ export default class InputText extends PureComponent<InputTextProps, any> {
     this.setState({
       value: '',
     });
-    // this.onFocus();
+    this.focus();
     if (this.props.onClear) {
       this.props.onClear(value);
     }
@@ -130,12 +127,24 @@ export default class InputText extends PureComponent<InputTextProps, any> {
       // in composition
       isOnComposition = true;
     }
+
+    if (this.props.handleComposition) {
+      this.props.handleComposition(e);
+    }
+  }
+
+  focus() {
+    this.input.focus();
+  }
+
+  blur() {
+    this.input.blur();
   }
 
   render() {
-    const { prefixCls, className, disabled, onClear, clearable, ...others } = this.props;
+    const { prefixCls, className, disabled, onClear, clearable, type, handleComposition, ...others } = this.props;
     const { value, focused } = this.state;
-    const cls = classnames(prefixCls, `${prefixCls}-text`, className, {
+    const cls = classnames(prefixCls, `${prefixCls}-${type}`, className, {
       disabled,
     });
     const clearCls = classnames(`${prefixCls}-clear`, {
@@ -146,9 +155,10 @@ export default class InputText extends PureComponent<InputTextProps, any> {
         <input
           {...others}
           ref={(ele) => { this.input = ele; }}
-          type="text"
+          type={type}
           disabled={disabled}
           value={value}
+          autoComplete="off"
           onCompositionStart={(e) => { this.handleComposition(e); }}
           onCompositionUpdate={(e) => { this.handleComposition(e); }}
           onCompositionEnd={(e) => { this.handleComposition(e); }}

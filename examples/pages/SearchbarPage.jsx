@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import '../styles/pages/SearchbarPage';
 
 class Page extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -100,7 +99,6 @@ class Page extends Component {
       </Container>
     );
   }
-
 }
 
 export default Page;
