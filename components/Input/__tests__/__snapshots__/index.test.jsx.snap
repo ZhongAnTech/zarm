@@ -9,6 +9,9 @@ exports[`Input renders correctly 1`] = `
     type="text"
     value=""
   />
+  <i
+    class="za-icon za-input-clear za-icon-wrong-round-fill"
+  />
 </div>
 `;
 
@@ -77,6 +80,7 @@ exports[`Input.Idcard renders correctly 1`] = `
   type="idcard"
 >
   <InputNumber
+    clearable={true}
     disabled={false}
     prefixCls="za-input"
     type="idcard"
@@ -263,6 +267,17 @@ exports[`Input.Idcard renders correctly 1`] = `
           </Portal>
         </Popup>
       </KeyboardPicker>
+      <Icon
+        className="za-input-clear"
+        onClick={[Function]}
+        prefixCls="za-icon"
+        type="wrong-round-fill"
+      >
+        <i
+          className="za-icon za-input-clear za-icon-wrong-round-fill"
+          onClick={[Function]}
+        />
+      </Icon>
     </div>
   </InputNumber>
 </Input>
@@ -273,6 +288,7 @@ exports[`Input.Number renders correctly 1`] = `
   type="number"
 >
   <InputNumber
+    clearable={true}
     disabled={false}
     prefixCls="za-input"
     type="number"
@@ -457,6 +473,17 @@ exports[`Input.Number renders correctly 1`] = `
           </Portal>
         </Popup>
       </KeyboardPicker>
+      <Icon
+        className="za-input-clear"
+        onClick={[Function]}
+        prefixCls="za-icon"
+        type="wrong-round-fill"
+      >
+        <i
+          className="za-icon za-input-clear za-icon-wrong-round-fill"
+          onClick={[Function]}
+        />
+      </Icon>
     </div>
   </InputNumber>
 </Input>
@@ -676,6 +703,7 @@ exports[`Input.Price renders correctly 1`] = `
   type="price"
 >
   <InputNumber
+    clearable={true}
     disabled={false}
     prefixCls="za-input"
     type="price"
@@ -862,6 +890,17 @@ exports[`Input.Price renders correctly 1`] = `
           </Portal>
         </Popup>
       </KeyboardPicker>
+      <Icon
+        className="za-input-clear"
+        onClick={[Function]}
+        prefixCls="za-icon"
+        type="wrong-round-fill"
+      >
+        <i
+          className="za-icon za-input-clear za-icon-wrong-round-fill"
+          onClick={[Function]}
+        />
+      </Icon>
     </div>
   </InputNumber>
 </Input>

@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Input from '../index';
+import InputBase from '../InputBase';
+
 
 describe('Input', () => {
   it('renders correctly', () => {
@@ -25,22 +27,13 @@ describe('Input', () => {
     wrapper.unmount();
   });
 
-  // it('renders onBlur called correctly', () => {
-  //   const onBlur = jest.fn();
-  //   const wrapper = mount(
-  //     <Input onBlur={onBlur} />
-  //   );
-  //   wrapper.find('input[type="text"]').simulate('blur');
-  //   expect(onBlur).not.toBeCalled();
-
-  //   // Fast-forward until all timers have been executed
-  //   jest.runAllTimers();
-
-  //   // Now our callback should have been called!
-  //   // expect(onBlur).toBeCalled();
-  //   expect(onBlur).toHaveBeenCalledTimes(1);
-  //   // expect(onBlur).toBeCalled();
-  // });
+  it('renders onBlur called correctly', () => {
+    const wrapper = mount(<InputBase />);
+    const spy = jest.spyOn(wrapper.instance(), 'onBlur');
+    wrapper.find('input').simulate('focus');
+    wrapper.find('input').simulate('blur');
+    expect(spy).toHaveBeenCalled();
+  });
 
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
