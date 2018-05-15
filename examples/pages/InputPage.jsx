@@ -20,7 +20,7 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="普通" />
             <Panel.Body>
-              <Cell title="单行文本"><Input type="text" placeholder="请输入" onChange={(value) => { console.log(value); }} onClear={(value) => { console.log('清除了', value); }} clearable /></Cell>
+              <Cell title="单行文本"><Input type="text" placeholder="请输入" /></Cell>
               <Cell title="多行文本"><Input type="textarea" rows={3} placeholder="请输入" /></Cell>
             </Panel.Body>
           </Panel>

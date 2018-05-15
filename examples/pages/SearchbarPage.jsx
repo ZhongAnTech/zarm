@@ -37,7 +37,7 @@ class Page extends Component {
                 placeholder={this.state.placeholder}
                 showCancel={false}
                 onSubmit={(value) => {
-                  alert(`搜索内容为${value}`);
+                  console.log(`搜索内容为${value}`);
                 }}
                 onFocus={() => {
                   console.log('获取焦点');

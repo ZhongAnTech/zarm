@@ -104,11 +104,12 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
   }
 
   handleComposition(e) {
-    if (!this.state.isOnComposition) {
+    if (e.type === 'compositionstart') {
       this.setState({
         isOnComposition: true,
       });
     }
+
     if (e.type === 'compositionend') {
       // composition is end
       this.setState({
@@ -138,7 +139,11 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
   onClear(val) {
     this.setState({
       value: '',
+      isOnComposition: false,
+    }, () => {
+      this.focus();
     });
+
     if (this.props.onClear) {
       this.props.onClear(val);
     }
@@ -149,6 +154,7 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
     if (!showCancel) {
       this.setState({
         value: '',
+        isOnComposition: false,
       }, () => {
         this.onBlur();
       });
@@ -215,7 +221,6 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
     const contentCls = classnames(`${prefixCls}-content`, {
       [`shape-${shape}`]: !!shape,
     });
-
     return (
       <div className={`${prefixCls}`}>
         <form
