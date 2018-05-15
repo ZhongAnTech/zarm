@@ -96,10 +96,10 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
   }
 
   onChange(value) {
+    const { onChange } = this.props;
     this.setState({ value });
-
-    if (this.props.onChange) {
-      this.props.onChange(value);
+    if (!this.state.isOnComposition && onChange) {
+      onChange(value);
     }
   }
 
@@ -110,9 +110,14 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
       });
     }
     if (e.type === 'compositionend') {
+      // composition is end
       this.setState({
         isOnComposition: false,
       });
+      const value = e.target.value;
+      if (this.props.onChange) {
+        this.props.onChange(value);
+      }
     }
   }
 
@@ -239,8 +244,10 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
               placeholder={placeholder}
               value={value}
               onFocus={() => { this.onFocus(); }}
-              handleComposition={(e) => {this.handleComposition(e); }}
-              onChange={(e) => { this.onChange(e); }}
+              onCompositionStart={(e) => { this.handleComposition(e); }}
+              onCompositionUpdate={(e) => { this.handleComposition(e); }}
+              onCompositionEnd={(e) => { this.handleComposition(e); }}
+              onChange={(val) => { this.onChange(val); }}
               onBlur={() => { this.onBlur(); }}
               onClear={(val) => { this.onClear(val); }}
               disabled={disabled}

@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { BaseInputBaseProps } from './PropsType';
 import Icon from '../Icon';
 
-let isOnComposition = false;
 export interface InputBaseProps extends BaseInputBaseProps {
   prefixCls?: string;
   className?: string;
@@ -97,10 +96,8 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     this.setState({
       value: e.target.value,
     });
-    if (e.target instanceof HTMLInputElement && !isOnComposition) {
-      if (onChange) {
-        onChange(e.target.value);
-      }
+    if (onChange) {
+      onChange(e.target.value);
     }
   }
 
@@ -116,23 +113,23 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
   }
 
-  handleComposition(e) {
-    if (e.type === 'compositionend') {
-      // composition is end
-      isOnComposition = false;
-      const value = e.target.value;
-      if (this.props.onChange) {
-        this.props.onChange(value);
-      }
-    } else {
-      // in composition
-      isOnComposition = true;
-    }
+  // handleComposition(e) {
+  //   if (e.type === 'compositionend') {
+  //     // composition is end
+  //     isOnComposition = false;
+  //     const value = e.target.value;
+  //     if (this.props.onChange) {
+  //       this.props.onChange(value);
+  //     }
+  //   } else {
+  //     // in composition
+  //     isOnComposition = true;
+  //   }
 
-    if (this.props.handleComposition) {
-      this.props.handleComposition(e);
-    }
-  }
+  //   if (this.props.handleComposition) {
+  //     this.props.handleComposition(e);
+  //   }
+  // }
 
   focus() {
     this.input.focus();
@@ -143,7 +140,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   render() {
-    const { prefixCls, className, disabled, onClear, clearable, type, handleComposition, ...others } = this.props;
+    const { prefixCls, className, disabled, onClear, clearable, type, ...others } = this.props;
     const { value, focused } = this.state;
     const cls = classnames(prefixCls, `${prefixCls}-${type}`, className, {
       disabled,
@@ -160,9 +157,6 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
           disabled={disabled}
           value={value}
           autoComplete="off"
-          onCompositionStart={(e) => { this.handleComposition(e); }}
-          onCompositionUpdate={(e) => { this.handleComposition(e); }}
-          onCompositionEnd={(e) => { this.handleComposition(e); }}
           onChange={this.onChange}
           onFocus={this.onFocus}
           onBlur={this.onBlur}

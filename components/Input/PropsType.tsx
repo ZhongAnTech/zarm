@@ -16,7 +16,9 @@ export interface BaseInputBaseProps extends BaseInputProps {
   onFocus?: (value?: string) => void;
   onBlur?: (value?: string) => void;
   onClear?: (value?: string) => void;
-  handleComposition?: (e?: any) => void;
+  onCompositionStart?: (e: any) => void;
+  onCompositionUpdate?: (e: any) => void;
+  onCompositionEnd?: (e: any) => void;
 }
 
 export interface BaseInputNumberProps extends BaseInputProps {
