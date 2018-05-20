@@ -113,24 +113,6 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
   }
 
-  // handleComposition(e) {
-  //   if (e.type === 'compositionend') {
-  //     // composition is end
-  //     isOnComposition = false;
-  //     const value = e.target.value;
-  //     if (this.props.onChange) {
-  //       this.props.onChange(value);
-  //     }
-  //   } else {
-  //     // in composition
-  //     isOnComposition = true;
-  //   }
-
-  //   if (this.props.handleComposition) {
-  //     this.props.handleComposition(e);
-  //   }
-  // }
-
   focus() {
     this.input.focus();
   }
@@ -152,14 +134,14 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       <div className={cls}>
         <input
           {...others}
+          autoComplete="off"
           ref={(ele) => { this.input = ele; }}
           type={type}
           disabled={disabled}
           value={value}
-          autoComplete="off"
           onChange={this.onChange}
-          onFocus={this.onFocus}
           onBlur={this.onBlur}
+          onFocus={this.onFocus}
         />
         {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
       </div>
