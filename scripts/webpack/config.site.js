@@ -1,9 +1,10 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const BundleAnalyzer = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
+
+config.mode = 'production';
 
 config.entry = {
   index: ['./examples/index.js'],
@@ -12,52 +13,31 @@ config.entry = {
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
 
-config.plugins.push(new ExtractTextPlugin({
-  filename: 'stylesheet/[name].[contenthash:8].css',
-  allChunks: true,
-}));
-
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: ['manifest'],
-}));
-
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  names: Object.keys(config.entry),
-  async: true,
-  children: true,
-  minChunks: 3,
-}));
-
-config.plugins.push(new OptimizeCssAssetsPlugin({
-  assetNameRegExp: /\.css$/g,
-  cssProcessor: require('cssnano'),
-  cssProcessorOptions: {
-    discardComments: {
-      removeAll: true,
+config.plugins.push(
+  new MiniCssExtractPlugin({
+    filename: 'stylesheet/[name].[contenthash:8].css',
+    chunkFilename: 'stylesheet/[id].[contenthash:8].css',
+  }),
+  new webpack.optimize.SplitChunksPlugin({
+    cacheGroups: {
+      default: {
+        minChunks: 2,
+        priority: -20,
+        reuseExistingChunk: true,
+      },
+      vendors: {
+        test: /[\\/]node_modules[\\/]/,
+        priority: -10,
+      },
     },
-  },
-  canPrint: true,
-}));
-
-config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-  compress: {
-    warnings: false,
-  },
-  output: {
-    comments: false,
-  },
-  sourceMap: true,
-  mangle: true,
-}));
-
-config.plugins.push(new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('production'),
-  __DEBUG__: false,
-}));
-
-// config.plugins.push(new BundleAnalyzer.BundleAnalyzerPlugin({
-//   analyzerMode: 'static',
-// }));
+  }),
+  new webpack.optimize.RuntimeChunkPlugin({
+    name: 'manifest',
+  }),
+  new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+  })
+);
 
 Object.keys(config.entry).forEach((key) => {
   config.plugins.push(new HtmlWebpackPlugin({

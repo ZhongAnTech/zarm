@@ -1,13 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
 const { version } = require('../../package.json');
 
-const env = process.env.NODE_ENV;
-
+config.mode = 'development';
 config.devtool = 'source-map';
 
 config.entry = {
@@ -38,58 +36,36 @@ config.externals = {
   },
 };
 
+const env = process.env.NODE_ENV;
 const cssConfig = {
-  filename: '[name].css',
-  allChunks: true,
+  filename: 'stylesheet/[name].css',
+  chunkFilename: 'stylesheet/[id].css',
 };
-
 if (env === 'production') {
-  cssConfig.filename = '[name].min.css';
-  config.plugins.push(new ExtractTextPlugin(cssConfig));
-  config.plugins.push(new OptimizeCssAssetsPlugin({
-    assetNameRegExp: /\.css$/g,
-    cssProcessor: require('cssnano'),
-    cssProcessorOptions: {
-      discardComments: {
-        removeAll: true,
-      },
-    },
-    canPrint: true,
-  }));
-
+  config.mode = 'production';
   config.output.filename = '[name].min.js';
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: false,
-    },
-    output: {
-      comments: false,
-    },
-    sourceMap: true,
-    mangle: true,
-  }));
+  config.plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+    })
+  );
 
-  // config.plugins.push(new BundleAnalyzerPlugin({
-  //   analyzerMode: 'static',
-  // }));
-} else {
-  config.plugins.push(new ExtractTextPlugin(cssConfig));
+  cssConfig.filename = '[name].min.css';
+  cssConfig.chunkFilename = '[id].min.css';
 }
 
-config.plugins.push(new webpack.BannerPlugin(`
-  Zarm v${version}
+config.plugins.push(
+  new MiniCssExtractPlugin(cssConfig),
+  new webpack.BannerPlugin(`
+    Zarm v${version}
 
-  Github: https://github.com/ZhonganTechENG/zarm
+    Github: https://github.com/ZhonganTechENG/zarm
 
-  Copyright (c) 2013-present, ZhonganTech, Inc.
+    Copyright (c) 2013-present, ZhonganTech, Inc.
 
-  This source code is licensed under the MIT license found in the
-  LICENSE file in the root directory of this source tree.
-`));
-
-config.plugins.push(new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify(env || 'production'),
-  __DEBUG__: false,
-}));
+    This source code is licensed under the MIT license found in the
+    LICENSE file in the root directory of this source tree.
+  `)
+);
 
 module.exports = config;
