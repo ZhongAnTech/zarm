@@ -102,10 +102,12 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
         <InputBase
           clearable={true}
           disabled={false}
-          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
           onClear={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
           prefixCls="za-input"
@@ -204,10 +206,12 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
         <InputBase
           clearable={true}
           disabled={false}
-          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
           onClear={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
           prefixCls="za-input"
@@ -271,7 +275,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
   >
     <form
       action="#"
-      className="za-searchbar-form"
+      className="za-searchbar-form za-searchbar-form-focus"
       onSubmit={[Function]}
     >
       <div
@@ -295,7 +299,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
               className="za-searchbar-mock-placeholder"
               style={
                 Object {
-                  "visibility": "visible",
+                  "visibility": "hidden",
                 }
               }
             >
@@ -306,15 +310,17 @@ exports[`SearchBar renders onChange called correctly 1`] = `
         <InputBase
           clearable={true}
           disabled={false}
-          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
           onClear={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
           prefixCls="za-input"
           type="search"
-          value=""
+          value="测试值"
         >
           <div
             className="za-input za-input-search"
@@ -347,7 +353,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
         </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel"
+        className="za-searchbar-cancel za-searchbar-cancel-show"
         onClick={[Function]}
       >
         取消
@@ -408,10 +414,12 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
         <InputBase
           clearable={true}
           disabled={false}
-          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
           onClear={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
           prefixCls="za-input"
@@ -475,7 +483,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
   >
     <form
       action="#"
-      className="za-searchbar-form"
+      className="za-searchbar-form za-searchbar-form-focus"
       onSubmit={[Function]}
     >
       <div
@@ -499,7 +507,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
               className="za-searchbar-mock-placeholder"
               style={
                 Object {
-                  "visibility": "visible",
+                  "visibility": "hidden",
                 }
               }
             >
@@ -510,15 +518,17 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
         <InputBase
           clearable={true}
           disabled={false}
-          handleComposition={[Function]}
           onBlur={[Function]}
           onChange={[Function]}
           onClear={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onCompositionUpdate={[Function]}
           onFocus={[Function]}
           placeholder="搜索"
           prefixCls="za-input"
           type="search"
-          value=""
+          value="My new value"
         >
           <div
             className="za-input za-input-search"
@@ -551,7 +561,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
         </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel"
+        className="za-searchbar-cancel za-searchbar-cancel-show"
         onClick={[Function]}
       >
         取消
