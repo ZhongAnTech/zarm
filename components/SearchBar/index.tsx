@@ -141,6 +141,7 @@ export default class SearchBar extends PureComponent<SearchbarProps, any> {
       value: '',
       isOnComposition: false,
     }, () => {
+      // this.setState({ focus: true });
       this.focus();
     });
 

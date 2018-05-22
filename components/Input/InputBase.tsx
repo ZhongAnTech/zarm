@@ -86,6 +86,37 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }, 0);
   }
 
+  handleComposition(e) {
+    if (e.type === 'compositionstart') {
+      this.setState({
+        isOnComposition: true,
+      });
+      if (this.props.onCompositionStart) {
+        this.props.onCompositionStart(e);
+      }
+    }
+
+    if (e.type === 'compositionupdate') {
+      if (this.props.onCompositionUpdate) {
+        this.props.onCompositionUpdate(e);
+      }
+    }
+
+    if (e.type === 'compositionend') {
+      // composition is end
+      this.setState({
+        isOnComposition: false,
+      });
+      const value = e.target.value;
+      if (this.props.onCompositionEnd) {
+        this.props.onCompositionEnd(e);
+      }
+      if (this.props.onChange) {
+        this.props.onChange(value);
+      }
+    }
+  }
+
   onChange = (e) => {
     const { onChange } = this.props;
     if (!this.state.focused) {
@@ -107,7 +138,9 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     this.setState({
       value: '',
     });
-    this.focus();
+    if (!this.state.isOnComposition) {
+      this.focus();
+    }
     if (this.props.onClear) {
       this.props.onClear(value);
     }
@@ -142,6 +175,9 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
           onChange={this.onChange}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
+          onCompositionStart={(e) => { this.handleComposition(e); }}
+          onCompositionUpdate={(e) => { this.handleComposition(e); }}
+          onCompositionEnd={(e) => { this.handleComposition(e); }}
         />
         {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
       </div>
