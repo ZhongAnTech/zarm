@@ -8,7 +8,9 @@ exports[`FilePicker renders correctly 1`] = `
     class="za-filepicker-input"
     type="file"
   />
-  <div>
+  <div
+    class="needsclick"
+  >
     add
   </div>
 </div>
