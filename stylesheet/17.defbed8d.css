@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* $ratio: 750/640; @function r($px) { @if $px != 0 { @return $px / $ratio / $base-fontSize * 1rem; } @else { @return 0; } } */
+/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/* @function r($px) { @if $px != 0 { @return $px * 2 / 75 * 1rem; } @else { @return 0; } } */
+/* 组件前缀 */
+.za-swipeaction { position: relative; }
+
+.za-swipeaction-content { position: relative; }
+
+.za-swipeaction-actions-left, .za-swipeaction-actions-right { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; position: absolute; height: 100%; top: 0; }
+
+.za-swipeaction-actions-left { left: 0; }
+
+.za-swipeaction-actions-right { right: 0; }
+
+.za-swipeaction .za-button { font-size: 14px !important; }
+

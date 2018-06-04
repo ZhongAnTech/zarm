@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* $ratio: 750/640; @function r($px) { @if $px != 0 { @return $px / $ratio / $base-fontSize * 1rem; } @else { @return 0; } } */
+/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/* @function r($px) { @if $px != 0 { @return $px * 2 / 75 * 1rem; } @else { @return 0; } } */
+/* 组件前缀 */
+.za-swipe { position: relative; overflow: hidden; }
+
+.za-swipe-item { display: inline-block; width: 100%; height: 100%; }
+
+.za-swipe-pagination { position: absolute; right: 10px; bottom: 10px; }
+
+.za-swipe-pagination ul { list-style: none; margin: 0; padding: 0; font-size: 0; }
+
+.za-swipe-pagination ul li { width: 8px; height: 8px; border-radius: 50%; background: #ccc; cursor: pointer; margin: 3px 0 0 3px; }
+
+.za-swipe-pagination ul li.active { background: #12c287; }
+
+@charset "UTF-8";
+/* $ratio: 750/640; $base-fontSize: 14; @function r($px) { @if $px != 0 { @return $px / $ratio / $base-fontSize * 1rem; } @else { @return 0; } } */
+/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/* @function r($px) { @if $px != 0 { @return $px * 2 / 75 * 1rem; } @else { @return 0; } } */
+.swipe-page .swipe-item-pic img { width: 100%; height: auto; }
+
+.swipe-page .controls { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; padding: 10px 15px; }
+
+.swipe-page .controls .za-button { margin-right: 10px; }
+
+.swipe-page .controls .za-button:last-of-type { margin-right: 0; }
+

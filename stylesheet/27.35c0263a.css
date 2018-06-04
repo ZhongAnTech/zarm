@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/* $ratio: 750/640; @function r($px) { @if $px != 0 { @return $px / $ratio / $base-fontSize * 1rem; } @else { @return 0; } } */
+/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/* @function r($px) { @if $px != 0 { @return $px * 2 / 75 * 1rem; } @else { @return 0; } } */
+/* 组件前缀 */
+.za-radio { display: inline-block; position: relative; margin-left: 10px; /* 组合 */ /* 选中状态 */ /* 禁用状态 */ }
+
+.za-radio:first-child { margin-left: 0; }
+
+.za-radio-wrapper { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; }
+
+.za-radio-input { position: absolute; left: 0; top: 0; width: 100%; height: 100%; opacity: 0; }
+
+.za-radio-text { color: #333; }
+
+.za-radio-inner + .za-radio-text { margin-left: 10px; }
+
+.za-radio-inner { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; width: 20px; height: 20px; border: 1px solid #999; border-radius: 20px; background: #fff; }
+
+.za-radio-inner:before { content: ' '; width: 8px; height: 8px; border-radius: 8px; background-color: #12c287; -webkit-transform: scale(0); -ms-transform: scale(0); transform: scale(0); -webkit-transition: all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6); transition: all 0.2s cubic-bezier(0.71, -0.46, 0.88, 0.6); }
+
+.za-radio-group.block { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
+
+.za-radio-group.is-compact .za-radio { margin-left: -1px; }
+
+.za-radio-group.is-compact.shape-radius .za-radio { border-radius: 0; }
+
+.za-radio-group.is-compact.shape-radius .za-radio:first-child { border-radius: 4px 0 0 4px; }
+
+.za-radio-group.is-compact.shape-radius .za-radio:last-child { border-radius: 0 4px 4px 0; }
+
+.za-radio-group.is-compact.shape-round .za-radio { border-radius: 0; }
+
+.za-radio-group.is-compact.shape-round .za-radio:first-child { border-radius: 1000px 0 0 1000px; }
+
+.za-radio-group.is-compact.shape-round .za-radio:last-child { border-radius: 0 1000px 1000px 0; }
+
+.za-radio.checked .za-radio-inner { border-color: #12c287; }
+
+.za-radio.checked .za-radio-inner:before { -webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1); -webkit-transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s; transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s; }
+
+.za-radio.disabled .za-radio-inner { border-color: #e1e1e1; cursor: not-allowed; }
+
+.za-radio.disabled .za-radio-inner:before { background-color: #e1e1e1; }
+
+.za-radio.disabled .za-radio-text { color: #bbb; }
+
+@charset "UTF-8";
+/* $ratio: 750/640; $base-fontSize: 14; @function r($px) { @if $px != 0 { @return $px / $ratio / $base-fontSize * 1rem; } @else { @return 0; } } */
+/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/* @function r($px) { @if $px != 0 { @return $px * 2 / 75 * 1rem; } @else { @return 0; } } */
+.radio-page .block-box { padding: 10px; background: #fff; }
+

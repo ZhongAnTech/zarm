@@ -1,0 +1,39 @@
+@charset "UTF-8";
+/* $ratio: 750/640; @function r($px) { @if $px != 0 { @return $px / $ratio / $base-fontSize * 1rem; } @else { @return 0; } } */
+/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/* @function r($px) { @if $px != 0 { @return $px * 2 / 75 * 1rem; } @else { @return 0; } } */
+/* 组件前缀 */
+.za-actionsheet { margin: 0; }
+
+.za-actionsheet-spacing { margin: 0 10px 10px; }
+
+.za-actionsheet.shape-radius .za-actionsheet-actions, .za-actionsheet.shape-radius .za-actionsheet-cancel { border-radius: 4px; }
+
+.za-actionsheet-actions, .za-actionsheet-cancel { overflow: hidden; background-color: #fff; }
+
+.za-actionsheet-cancel { margin-top: 7px; }
+
+.za-actionsheet-item { display: block; height: 50px; line-height: 50px; font-size: 16px; position: relative; padding: 0; font-weight: normal; text-align: center; vertical-align: middle; overflow: hidden; color: #333; -webkit-transition: background-color 200ms ease-out, border-color 200ms ease-out; transition: background-color 200ms ease-out, border-color 200ms ease-out; cursor: pointer; outline: 0 none; -webkit-appearance: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; /* disabled Button */ /* block Button */ }
+
+.za-actionsheet-item, .za-actionsheet-item:hover, .za-actionsheet-item:focus, .za-actionsheet-item:visited { text-decoration: none; }
+
+.za-actionsheet-item.disabled, .za-actionsheet-item:disabled { cursor: not-allowed; opacity: 0.5; }
+
+.za-actionsheet-item.block { width: 100%; display: block; }
+
+.za-actionsheet-item-content { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; width: 100%; height: 100%; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; }
+
+.za-actionsheet-item:active { background-color: #ddd; }
+
+.za-actionsheet-item:not(:first-of-type):after { content: ''; pointer-events: none; position: absolute; width: 100%; height: 100%; left: 0; top: 0; border-width: 0; border-radius: 0; border-top: 1px solid #ddd; }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) { .za-actionsheet-item:not(:first-of-type):after { width: 200%; height: 200%; -webkit-transform: scale(0.5); -ms-transform: scale(0.5); transform: scale(0.5); -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; border-radius: 0; } }
+
+.za-actionsheet-item.theme-primary { color: #12c287; }
+
+.za-actionsheet-item.theme-success { color: #69c964; }
+
+.za-actionsheet-item.theme-warning { color: #eca632; }
+
+.za-actionsheet-item.theme-error { color: #e55546; }
+

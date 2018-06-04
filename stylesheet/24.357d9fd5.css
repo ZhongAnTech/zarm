@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* $ratio: 750/640; @function r($px) { @if $px != 0 { @return $px / $ratio / $base-fontSize * 1rem; } @else { @return 0; } } */
+/* 阿里flexible方案，详见 https://github.com/amfe/lib-flexible */
+/* @function r($px) { @if $px != 0 { @return $px * 2 / 75 * 1rem; } @else { @return 0; } } */
+/* 组件前缀 */
+.za-switch-input { position: relative; width: 51px; height: 31px; border: 1px solid #e5e5e5; border-radius: 1000px; background-color: #e5e5e5; vertical-align: middle; -webkit-transition: background-color 0.1s, border 0.1s; transition: background-color 0.1s, border 0.1s; outline: 0; -webkit-appearance: none; }
+
+.za-switch-input:before, .za-switch-input:after { content: ' '; position: absolute; top: 0; left: 0; height: 29px; border-radius: 1000px; }
+
+.za-switch-input:before { width: 49px; background-color: #fdfdfd; transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1); }
+
+.za-switch-input:after { width: 29px; background-color: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35); }
+
+.za-switch-input:checked:before { -webkit-transform: scale(0); -ms-transform: scale(0); transform: scale(0); }
+
+.za-switch-input:checked:after { -webkit-transform: translateX(20px); -ms-transform: translateX(20px); transform: translateX(20px); }
+
+.za-switch.disabled { cursor: not-allowed; opacity: 0.5; }
+
+.za-switch.theme-primary .za-switch-input:checked { border-color: #12c287; background-color: #12c287; }
+
+.za-switch.theme-success .za-switch-input:checked { border-color: #69c964; background-color: #69c964; }
+
+.za-switch.theme-warning .za-switch-input:checked { border-color: #eca632; background-color: #eca632; }
+
+.za-switch.theme-error .za-switch-input:checked { border-color: #e55546; background-color: #e55546; }
+
