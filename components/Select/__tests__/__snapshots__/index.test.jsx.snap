@@ -227,9 +227,6 @@ exports[`Select Cascader Select 1`] = `
                       className="za-picker-panel"
                     >
                       <div
-                        className="za-picker-mask-top"
-                      />
-                      <div
                         className="za-picker-view"
                       >
                         <Wheel
@@ -319,6 +316,9 @@ exports[`Select Cascader Select 1`] = `
                           </div>
                         </Wheel>
                       </div>
+                      <div
+                        className="za-picker-mask-top"
+                      />
                       <div
                         className="za-picker-mask-bottom"
                       />
@@ -595,9 +595,6 @@ exports[`Select Cascader Select init value 1`] = `
                       className="za-picker-panel"
                     >
                       <div
-                        className="za-picker-mask-top"
-                      />
-                      <div
                         className="za-picker-view"
                       >
                         <Wheel
@@ -687,6 +684,9 @@ exports[`Select Cascader Select init value 1`] = `
                           </div>
                         </Wheel>
                       </div>
+                      <div
+                        className="za-picker-mask-top"
+                      />
                       <div
                         className="za-picker-mask-bottom"
                       />
@@ -875,9 +875,6 @@ exports[`Select Select 1`] = `
                       className="za-picker-panel"
                     >
                       <div
-                        className="za-picker-mask-top"
-                      />
-                      <div
                         className="za-picker-view"
                       >
                         <Wheel
@@ -924,6 +921,9 @@ exports[`Select Select 1`] = `
                           </div>
                         </Wheel>
                       </div>
+                      <div
+                        className="za-picker-mask-top"
+                      />
                       <div
                         className="za-picker-mask-bottom"
                       />
@@ -1123,9 +1123,6 @@ exports[`Select render defaultValue correctly  1`] = `
                       className="za-picker-panel"
                     >
                       <div
-                        className="za-picker-mask-top"
-                      />
-                      <div
                         className="za-picker-view"
                       >
                         <Wheel
@@ -1172,6 +1169,9 @@ exports[`Select render defaultValue correctly  1`] = `
                           </div>
                         </Wheel>
                       </div>
+                      <div
+                        className="za-picker-mask-top"
+                      />
                       <div
                         className="za-picker-mask-bottom"
                       />

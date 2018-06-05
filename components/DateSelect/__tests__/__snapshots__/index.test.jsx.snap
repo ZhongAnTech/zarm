@@ -464,9 +464,6 @@ exports[`DateSelect DateSelect date 1`] = `
                       className="za-picker-panel"
                     >
                       <div
-                        className="za-picker-mask-top"
-                      />
-                      <div
                         className="za-picker-view"
                       >
                         <Wheel
@@ -1270,6 +1267,9 @@ exports[`DateSelect DateSelect date 1`] = `
                         </Wheel>
                       </div>
                       <div
+                        className="za-picker-mask-top"
+                      />
+                      <div
                         className="za-picker-mask-bottom"
                       />
                     </div>
@@ -1831,9 +1831,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
                     <div
                       className="za-picker-panel"
                     >
-                      <div
-                        className="za-picker-mask-top"
-                      />
                       <div
                         className="za-picker-view"
                       >
@@ -2824,6 +2821,9 @@ exports[`DateSelect DateSelect datetime 1`] = `
                         </Wheel>
                       </div>
                       <div
+                        className="za-picker-mask-top"
+                      />
+                      <div
                         className="za-picker-mask-bottom"
                       />
                     </div>
@@ -3132,9 +3132,6 @@ exports[`DateSelect DateSelect time 1`] = `
                     <div
                       className="za-picker-panel"
                     >
-                      <div
-                        className="za-picker-mask-top"
-                      />
                       <div
                         className="za-picker-view"
                       >
@@ -3465,6 +3462,9 @@ exports[`DateSelect DateSelect time 1`] = `
                           </div>
                         </Wheel>
                       </div>
+                      <div
+                        className="za-picker-mask-top"
+                      />
                       <div
                         className="za-picker-mask-bottom"
                       />
@@ -3958,9 +3958,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                     <div
                       className="za-picker-panel"
                     >
-                      <div
-                        className="za-picker-mask-top"
-                      />
                       <div
                         className="za-picker-view"
                       >
@@ -4764,6 +4761,9 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                           </div>
                         </Wheel>
                       </div>
+                      <div
+                        className="za-picker-mask-top"
+                      />
                       <div
                         className="za-picker-mask-bottom"
                       />
@@ -5272,9 +5272,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                       className="za-picker-panel"
                     >
                       <div
-                        className="za-picker-mask-top"
-                      />
-                      <div
                         className="za-picker-view"
                       >
                         <Wheel
@@ -6078,6 +6075,9 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                         </Wheel>
                       </div>
                       <div
+                        className="za-picker-mask-top"
+                      />
+                      <div
                         className="za-picker-mask-bottom"
                       />
                     </div>
@@ -6425,9 +6425,6 @@ exports[`DateSelect DateSelect year 1`] = `
                       className="za-picker-panel"
                     >
                       <div
-                        className="za-picker-mask-top"
-                      />
-                      <div
                         className="za-picker-view"
                       >
                         <Wheel
@@ -6764,6 +6761,9 @@ exports[`DateSelect DateSelect year 1`] = `
                           </div>
                         </Wheel>
                       </div>
+                      <div
+                        className="za-picker-mask-top"
+                      />
                       <div
                         className="za-picker-mask-bottom"
                       />
