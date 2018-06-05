@@ -31,18 +31,6 @@ config.plugins.push(
         minChunks: 5,
         enforce: true,
       },
-      common: {
-        chunks: 'initial',
-        name: 'common',
-        priority: -20,
-        maxInitialRequests: 5,
-      },
-      vendors: {
-        chunks: 'async',
-        name: 'vendors',
-        test: /[\\/]node_modules[\\/]/,
-        priority: 10,
-      },
     },
   }),
   new webpack.optimize.RuntimeChunkPlugin({
@@ -54,7 +42,7 @@ Object.keys(config.entry).forEach((key) => {
   config.plugins.push(new HtmlWebpackPlugin({
     template: `./examples/${key}.html`,
     filename: `${key}.html`,
-    chunks: ['manifest', 'common', key],
+    chunks: ['manifest', key],
   }));
 });
 
