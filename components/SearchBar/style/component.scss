@@ -1,4 +1,6 @@
-.za-searchbar {
+$prefixCls: $prefixCls-searchbar;
+
+.#{$prefixCls} {
   background: #fff;
 
   input[type='search']::-webkit-search-cancel-button {
@@ -9,15 +11,14 @@
     -webkit-appearance: none;
     position: absolute;
     left: r(0);
-    top: r(0);
-    // z-index: 2;
+    top: r(2);
     opacity: 0;
     width: 100%;
     text-align: left;
     color: #000;
-    height: r(24);
+    // height: r(24);
     font-size: r(15);
-    line-height: r(24);
+    line-height: r(21);
     background-color: transparent;
     border: 0;
 
@@ -67,10 +68,10 @@
   &-mock {
     position: absolute;
     left: 0;
-    top: r(4);
+    // top: r(5);
     width: 100%;
-    height: r(22);
-    line-height: r(22);
+    height: r(24);
+    line-height: r(24);
     font-size: r(15);
     color: #7e7e7e;
 
