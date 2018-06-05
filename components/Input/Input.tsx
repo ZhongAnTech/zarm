@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 import { BaseInputProps } from './PropsType';
 import InputNumber from './InputNumber';
-import InputText from './InputText';
+import InputBase from './InputBase';
 import InputTextarea from './InputTextarea';
 
-export interface InputProps extends BaseInputProps {}
+export interface InputProps extends BaseInputProps {
+}
 
-export default class Input extends PureComponent<InputProps, {}> {
+export default class Input extends PureComponent<BaseInputProps, {}> {
 
   static defaultProps = {
     type: 'text',
@@ -14,7 +15,6 @@ export default class Input extends PureComponent<InputProps, {}> {
 
   render() {
     const { type, ...others } = this.props;
-
     switch (type) {
       case 'idcard':
       case 'price':
@@ -25,7 +25,7 @@ export default class Input extends PureComponent<InputProps, {}> {
         return <InputTextarea {...others} />;
 
       default:
-        return <InputText {...others} type={type} />;
+        return <InputBase {...others} type={type} />;
     }
   }
 

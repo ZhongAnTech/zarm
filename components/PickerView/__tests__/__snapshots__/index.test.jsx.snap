@@ -5,9 +5,6 @@ exports[`PickerView PickerView render visible 1`] = `
   class="za-picker-panel"
 >
   <div
-    class="za-picker-mask-top"
-  />
-  <div
     class="za-picker-view"
   >
     <div
@@ -29,6 +26,9 @@ exports[`PickerView PickerView render visible 1`] = `
       </div>
     </div>
   </div>
+  <div
+    class="za-picker-mask-top"
+  />
   <div
     class="za-picker-mask-bottom"
   />

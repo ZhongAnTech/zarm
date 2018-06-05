@@ -47,6 +47,7 @@ import { Input } from 'zarm';
 | autoHeight | boolean | false | | 是否高度自适应 |
 | maxLength | number | | | 输入字数上限 |
 | showLength | boolean | false | | 是否显示输入字数 |
+| clearable | boolean | true | | 是否显示清除按钮(仅type不为textarea的input组件) |
 | onChange | <code>(value: string) => void</code> | noop | \(value: string\) | 值变化时触发的回调函数 |
 
 
