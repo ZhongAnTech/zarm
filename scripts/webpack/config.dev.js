@@ -16,15 +16,32 @@ config.plugins.push(
     chunkFilename: 'stylesheet/[id].css',
   }),
   new webpack.optimize.SplitChunksPlugin({
+    chunks: 'async',
+    minSize: 30000,
+    minChunks: 1,
+    maxAsyncRequests: 5,
+    maxInitialRequests: 3,
+    automaticNameDelimiter: '~',
+    name: true,
     cacheGroups: {
-      default: {
-        minChunks: 2,
+      styles: {
+        name: 'styles',
+        test: /\.s?css$/,
+        chunks: 'all',
+        minChunks: 5,
+        enforce: true,
+      },
+      common: {
+        chunks: 'initial',
+        name: 'common',
         priority: -20,
-        reuseExistingChunk: true,
+        maxInitialRequests: 5,
       },
       vendors: {
+        chunks: 'async',
+        name: 'vendors',
         test: /[\\/]node_modules[\\/]/,
-        priority: -10,
+        priority: 10,
       },
     },
   }),
@@ -37,7 +54,7 @@ Object.keys(config.entry).forEach((key) => {
   config.plugins.push(new HtmlWebpackPlugin({
     template: `./examples/${key}.html`,
     filename: `${key}.html`,
-    chunks: ['manifest', key],
+    chunks: ['manifest', 'common', key],
   }));
 });
 

@@ -1,5 +1,7 @@
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
@@ -13,29 +15,45 @@ config.entry = {
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
 
+config.optimization = {
+  minimizer: [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+    }),
+    new OptimizeCSSAssetsPlugin({}),
+  ],
+};
+
 config.plugins.push(
+  new BundleAnalyzerPlugin({
+    analyzerMode: 'static',
+  }),
   new MiniCssExtractPlugin({
     filename: 'stylesheet/[name].[contenthash:8].css',
     chunkFilename: 'stylesheet/[id].[contenthash:8].css',
   }),
   new webpack.optimize.SplitChunksPlugin({
+    chunks: 'async',
+    minSize: 30000,
+    minChunks: 1,
+    maxAsyncRequests: 5,
+    maxInitialRequests: 3,
+    automaticNameDelimiter: '~',
+    name: true,
     cacheGroups: {
-      default: {
-        minChunks: 2,
-        priority: -20,
-        reuseExistingChunk: true,
-      },
-      vendors: {
-        test: /[\\/]node_modules[\\/]/,
-        priority: -10,
+      styles: {
+        name: 'styles',
+        test: /\.s?css$/,
+        chunks: 'all',
+        minChunks: 5,
+        enforce: true,
       },
     },
   }),
   new webpack.optimize.RuntimeChunkPlugin({
     name: 'manifest',
-  }),
-  new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
   })
 );
 

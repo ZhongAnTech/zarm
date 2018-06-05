@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
 const { version } = require('../../package.json');
 
@@ -44,11 +44,11 @@ const cssConfig = {
 if (env === 'production') {
   config.mode = 'production';
   config.output.filename = '[name].min.js';
-  config.plugins.push(
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-    })
-  );
+  // config.plugins.push(
+  //   new BundleAnalyzerPlugin({
+  //     analyzerMode: 'static',
+  //   })
+  // );
 
   cssConfig.filename = '[name].min.css';
   cssConfig.chunkFilename = '[id].min.css';
