@@ -3,11 +3,11 @@ $prefixCls: $prefixCls-searchbar;
 .#{$prefixCls} {
   background: #fff;
 
-  input[type='search']::-webkit-search-cancel-button {
+  input[type="search"]::-webkit-search-cancel-button {
     display: none;
   }
 
-  input[type='search'] {
+  input[type="search"] {
     -webkit-appearance: none;
     position: absolute;
     left: r(0);
