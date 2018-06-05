@@ -4,7 +4,6 @@ $prefixCls: $prefixCls-picker;
   &-panel {
     height: 210px;
     position: relative;
-    z-index: 600;
     bottom: 0;
     width: 100%;
     background: #fff;
@@ -13,7 +12,6 @@ $prefixCls: $prefixCls-picker;
 
   &-mask-top,
   &-mask-bottom {
-    z-index: 10;
     width: 100%;
     height: 88px;
     pointer-events: none;

@@ -445,9 +445,6 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                   className="za-picker-panel"
                 >
                   <div
-                    className="za-picker-mask-top"
-                  />
-                  <div
                     className="za-picker-view"
                   >
                     <Wheel
@@ -1260,6 +1257,9 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                       </div>
                     </Wheel>
                   </div>
+                  <div
+                    className="za-picker-mask-top"
+                  />
                   <div
                     className="za-picker-mask-bottom"
                   />
