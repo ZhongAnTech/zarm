@@ -1,6 +1,3 @@
 {
-  "extends": ["@commitlint/config-conventional"],
-  "rules": {
-    "lang": [0, "always", "eng"]
-  }
+  "extends": ["@commitlint/config-conventional"]
 }
