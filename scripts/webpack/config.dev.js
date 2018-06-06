@@ -1,35 +1,42 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config.base');
 
-config.devtool = 'cheap-module-eval-source-map';
+config.mode = 'development';
 
 config.entry = {
   index: ['./examples/index.js'],
 };
 
-config.plugins.push(new ExtractTextPlugin({
-  filename: 'stylesheet/[name].css',
-  allChunks: true,
-}));
-
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: ['manifest'],
-}));
-
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  names: Object.keys(config.entry),
-  async: true,
-  children: true,
-  minChunks: 3,
-}));
-
-config.plugins.push(new webpack.HotModuleReplacementPlugin());
-config.plugins.push(new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('development'),
-  __DEBUG__: true,
-}));
+config.plugins.push(
+  new webpack.HotModuleReplacementPlugin(),
+  new MiniCssExtractPlugin({
+    filename: 'stylesheet/[name].css',
+    chunkFilename: 'stylesheet/[id].css',
+  }),
+  new webpack.optimize.SplitChunksPlugin({
+    chunks: 'async',
+    minSize: 30000,
+    minChunks: 1,
+    maxAsyncRequests: 5,
+    maxInitialRequests: 3,
+    automaticNameDelimiter: '~',
+    name: true,
+    cacheGroups: {
+      styles: {
+        name: 'styles',
+        test: /\.s?css$/,
+        chunks: 'all',
+        minChunks: 5,
+        enforce: true,
+      },
+    },
+  }),
+  new webpack.optimize.RuntimeChunkPlugin({
+    name: 'manifest',
+  })
+);
 
 Object.keys(config.entry).forEach((key) => {
   config.plugins.push(new HtmlWebpackPlugin({
