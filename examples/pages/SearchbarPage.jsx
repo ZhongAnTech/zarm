@@ -3,7 +3,7 @@ import { Panel, SearchBar, Button } from 'zarm';
 import Container from '../components/Container';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import '../styles/pages/SearchbarPage';
+import '../styles/pages/SearchBarPage';
 
 class Page extends Component {
   constructor() {
@@ -25,8 +25,8 @@ class Page extends Component {
 
   render() {
     return (
-      <Container className="Searchbar-page">
-        <Header title="搜索框 Searchbar" />
+      <Container className="searchBar-page">
+        <Header title="搜索框 SearchBar" />
         <main>
           <Panel>
             <Panel.Header title="基本" />
