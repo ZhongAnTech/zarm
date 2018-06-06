@@ -84,7 +84,11 @@ class FilePickerPage extends Component {
     return this.state[files].map((item, index) => {
       return (
         <Badge sup className="filepicker-item" shape="circle" text={<Icon type="wrong" />} key={+index} onClick={() => this.remove(files, +index)}>
+<<<<<<< HEAD
           <div className="filepicker-item-img"><a href={item.thumbnail} target="_blank" rel="noopener noreferrer"><img src={item.thumbnail} alt="" /></a></div>
+=======
+          <div className="filepicker-item-img"><a href={item.thumbnail} target="_blank" rel="noopener noreferrer" ><img src={item.thumbnail} alt="" /></a></div>
+>>>>>>> 36101194f46f16a390d11710bdec007ff3af727b
         </Badge>
       );
     });

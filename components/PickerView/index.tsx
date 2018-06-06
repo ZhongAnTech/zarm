@@ -166,10 +166,10 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
 
     return (
       <div className={`${prefixCls}-panel`}>
-        <div className={`${prefixCls}-mask-top`} />
         <div className={classnames(`${prefixCls}-view`, className)}>
           {dataSource.map(this.renderWheel)}
         </div>
+        <div className={`${prefixCls}-mask-top`} />
         <div className={`${prefixCls}-mask-bottom`} />
       </div>
     );

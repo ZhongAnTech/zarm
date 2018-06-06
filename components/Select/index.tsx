@@ -56,10 +56,11 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   onInit = (selected) => {
     const { valueMember } = this.props;
+    const { value } = this.state;
     const firstValue = selected.map(item => item[valueMember!]);
 
-    this.tempValue = this.state.value.length ? firstValue : [] ;
-    this.tempObjValue = this.state.value.length ? selected : [];
+    this.tempValue = this.isValueValid(value) ? firstValue : [] ;
+    this.tempObjValue = this.isValueValid(value) ? selected : [];
 
     this.setState({
       firstObjValue: selected,
@@ -137,20 +138,24 @@ export default class Select extends PureComponent<SelectProps, any> {
     }
   }
 
+  isValueValid(value) {
+    return value.length > 0 && value.some(item => !!item);
+  }
+
   render() {
     const { prefixCls, placeholder, className, disabled, displayRender, ...others } = this.props;
     const { visible, value, objValue, firstObjValue } = this.state;
     const cls = classnames(`${prefixCls}`, className);
 
     const inputCls = classnames(`${prefixCls}-input`, {
-      [`${prefixCls}-placeholder`]: value.length === 0,
+      [`${prefixCls}-placeholder`]: !this.isValueValid(value),
       [`${prefixCls}-disabled`]: !!disabled,
     });
 
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={inputCls}>
-          {value.length > 0 && displayRender!(objValue || firstObjValue || []) || placeholder}
+          {this.isValueValid(value) && displayRender!(objValue || firstObjValue || []) || placeholder}
         </div>
         <Picker
           {...others}

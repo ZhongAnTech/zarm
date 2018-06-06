@@ -7,6 +7,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  height: 100vh; // 之前使用js获取window.innerHeight，导致每次setState会重新渲染组件（包括container），当有键盘弹出时，高度计算会有问题。
 
   .github {
     position: absolute;

@@ -112,9 +112,6 @@ exports[`Picker Picker render visible 1`] = `
                   className="za-picker-panel"
                 >
                   <div
-                    className="za-picker-mask-top"
-                  />
-                  <div
                     className="za-picker-view"
                   >
                     <Wheel
@@ -161,6 +158,9 @@ exports[`Picker Picker render visible 1`] = `
                       </div>
                     </Wheel>
                   </div>
+                  <div
+                    className="za-picker-mask-top"
+                  />
                   <div
                     className="za-picker-mask-bottom"
                   />
@@ -353,9 +353,6 @@ exports[`Picker render custom label 1`] = `
                   className="za-picker-panel"
                 >
                   <div
-                    className="za-picker-mask-top"
-                  />
-                  <div
                     className="za-picker-view"
                   >
                     <Wheel
@@ -445,6 +442,9 @@ exports[`Picker render custom label 1`] = `
                       </div>
                     </Wheel>
                   </div>
+                  <div
+                    className="za-picker-mask-top"
+                  />
                   <div
                     className="za-picker-mask-bottom"
                   />
