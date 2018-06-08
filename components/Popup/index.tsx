@@ -58,12 +58,12 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   componentWillUnmount() {
+    Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
+    Events.off(this.popup, 'transitionend', this.animationEnd);
     if (!IS_REACT_16) {
       ReactDOM.unmountComponentAtNode(this.container);
     }
     document.body.removeChild(this.container);
-    Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
-    Events.off(this.popup, 'transitionend', this.animationEnd);
   }
 
   renderPopup() {
