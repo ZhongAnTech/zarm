@@ -27,7 +27,7 @@ export { default as Popup } from './Popup';
 export { default as Progress } from './Progress';
 export { default as Pull } from './Pull';
 export { default as Radio } from './Radio';
-export { default as Searchbar } from './Searchbar';
+export { default as SearchBar } from './SearchBar';
 export { default as Select } from './Select';
 export { default as Slider } from './Slider';
 export { default as Spinner } from './Spinner';

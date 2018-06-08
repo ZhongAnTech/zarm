@@ -1,17 +1,17 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseSearchbarProps } from './PropsType';
+import { BaseSearchBarProps } from './PropsType';
 import Icon from '../Icon';
 import InputBase from '../Input/InputBase';
 
 let shouldUpdatePosition = false;
 
-export interface SearchbarProps extends BaseSearchbarProps {
+export interface SearchBarProps extends BaseSearchBarProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class SearchBar extends PureComponent<SearchbarProps, any> {
+export default class SearchBar extends PureComponent<SearchBarProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-searchbar',

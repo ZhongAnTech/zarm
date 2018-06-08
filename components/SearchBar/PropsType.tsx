@@ -1,4 +1,4 @@
-export interface BaseSearchbarProps {
+export interface BaseSearchBarProps {
   disabled?: boolean;
   defaultValue?: string;
   value?: string;
