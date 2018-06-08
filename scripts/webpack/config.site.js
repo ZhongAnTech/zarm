@@ -21,6 +21,11 @@ config.optimization = {
       cache: true,
       parallel: true,
       sourceMap: true,
+      uglifyOptions: {
+        output: {
+          comments: false,
+        },
+      },
     }),
     new OptimizeCSSAssetsPlugin({}),
   ],
