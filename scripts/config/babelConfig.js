@@ -1,15 +1,15 @@
-const browsers = require('./browsers');
+const browserlist = require('./browserlist');
 
 module.exports = {
   presets: [
     ['env', {
       modules: false,
       targets: {
-        browsers,
+        browsers: browserlist,
       },
     }],
     'react',
-    'stage-0',
+    'stage-2',
   ],
   plugins: [
     'transform-runtime',

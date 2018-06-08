@@ -7,7 +7,7 @@ const cssnano = require('gulp-cssnano');
 const size = require('gulp-filesize');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
-const browsers = require('../config/browsers');
+const browserlist = require('../config/browserlist');
 
 const DIR = {
   sass: path.resolve(__dirname, '../../components/**/*.scss'),
@@ -27,7 +27,7 @@ gulp.task('dist', () => {
     .pipe(sass({
       outputStyle: 'compressed',
     }))
-    .pipe(autoprefixer({ browsers }))
+    .pipe(autoprefixer({ browsers: browserlist }))
     .pipe(concat('zarm.css'))
     .pipe(size())
     .pipe(gulp.dest(DIR.dist))

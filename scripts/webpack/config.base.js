@@ -1,6 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const browsers = require('../config/browsers');
+const browserlist = require('../config/browserlist');
 const babelConfig = require('../config/babelConfig');
 
 babelConfig.plugins.push([
@@ -59,7 +59,7 @@ module.exports = {
             options: {
               plugins: [
                 require('autoprefixer')({
-                  browsers,
+                  browsers: browserlist,
                 }),
               ],
             },
