@@ -3,7 +3,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
 
 config.mode = 'production';
@@ -32,9 +32,9 @@ config.optimization = {
 };
 
 config.plugins.push(
-  new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-  }),
+  // new BundleAnalyzerPlugin({
+  //   analyzerMode: 'static',
+  // }),
   new MiniCssExtractPlugin({
     filename: 'stylesheet/[name].[contenthash:8].css',
     chunkFilename: 'stylesheet/[id].[contenthash:8].css',
