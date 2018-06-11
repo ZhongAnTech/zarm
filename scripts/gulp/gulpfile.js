@@ -13,12 +13,14 @@ const DIR = {
   sass: path.resolve(__dirname, '../../components/**/*.scss'),
   buildSrc: path.resolve(__dirname, '../../components/**/index.scss'),
   lib: path.resolve(__dirname, '../../lib'),
+  es: path.resolve(__dirname, '../../es'),
   dist: path.resolve(__dirname, '../../dist'),
 };
 
 gulp.task('copySass', () => {
   return gulp.src(DIR.sass)
-    .pipe(gulp.dest(DIR.lib));
+    .pipe(gulp.dest(DIR.lib))
+    .pipe(gulp.dest(DIR.es));
 });
 
 gulp.task('dist', () => {
