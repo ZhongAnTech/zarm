@@ -13,14 +13,6 @@ class Page extends Component {
     };
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        number: '12345',
-      });
-    }, 3000);
-  }
-
   render() {
     return (
       <Container className="input-page">
