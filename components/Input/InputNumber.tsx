@@ -40,12 +40,20 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { value } = this.state;
     if ('focused' in nextProps || 'autoFocus' in nextProps) {
       if (nextProps.focused || nextProps.autoFocus) {
         this.onFocus();
       } else {
         this.onBlur();
       }
+    }
+
+    if ('value' in nextProps && value !== nextProps.value ) {
+      this.setState({
+        value: nextProps.value,
+        visible: this.state.visible,
+      });
     }
   }
 
@@ -54,6 +62,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   onMaskClick = (e) => {
+    const clsRegExp = new RegExp(`(^|\\s)${this.picker.props.prefixCls}(\\s|$)`, 'g');
     if (!this.state.visible) {
       return;
     }
@@ -61,7 +70,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     const cNode = ((node) => {
       const picker = findDOMNode(this.picker) as HTMLElement;
       while (node.parentNode && node.parentNode !== document.body) {
-        if (node === picker) {
+        if (node === picker || clsRegExp.test(node.className)) {
           return node;
         }
         node = node.parentNode;
@@ -78,6 +87,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       this.onBlur();
       return;
     }
+
     const value = this.state.value;
     const newValue = (key === 'delete')
       ? value.slice(0, value.length - 1)
@@ -131,24 +141,34 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     const { value } = this.state;
     this.setState({
       value: '',
-    });
-    // this.onFocus();
+    }, this.onFocus);
     if (this.props.onClear) {
       this.props.onClear(value);
     }
   }
 
+  renderClear() {
+    const { prefixCls, clearable } = this.props;
+    const { visible, value } = this.state;
+
+    const clearCls = classnames(`${prefixCls}-clear`, {
+      [`${prefixCls}-clear-show`]: !!(visible && value && value.length > 0),
+    });
+    return clearable &&
+      <Icon
+        type="wrong-round-fill"
+        className={clearCls}
+        onClick={(e) => { e.stopPropagation(); this.onClear(); }}
+      />;
+  }
+
   render() {
-    const { prefixCls, className, type, disabled, placeholder, clearable } = this.props;
+    const { prefixCls, className, type, disabled, placeholder } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
       disabled,
       focus: visible,
-    });
-
-    const clearCls = classnames(`${prefixCls}-clear`, {
-      [`${prefixCls}-clear-show`]: !!(visible && value && value.length > 0),
     });
 
     return (
@@ -166,7 +186,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           type={type}
           onKeyClick={this.onKeyClick}
         />
-        {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
+        {this.renderClear()}
       </div>
     );
   }

@@ -120,6 +120,7 @@ class Page extends Component {
   }
 
   render() {
+    console.log('picker render');
     const {
       single,
       multi,

@@ -14,7 +14,7 @@ babelConfig.plugins.push([
 ]);
 
 module.exports = {
-
+  devtool: 'eval-source-map',
   output: {
     path: path.resolve(__dirname, '../../assets'),
     filename: 'js/[name].js',
