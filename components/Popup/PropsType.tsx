@@ -4,6 +4,7 @@ export default interface PropsType {
   autoClose?: boolean;
   stayTime?: number;
   animationDuration?: number;
+  onOpen?: () => void;
   onClose?: () => void;
   mask?: boolean;
   maskType?: 'transparent' | 'normal';

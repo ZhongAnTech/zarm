@@ -88,10 +88,11 @@ class Page extends Component {
             visible={this.state.popBottom}
             direction="bottom"
             onMaskClick={() => this.close('popBottom')}
+            onOpen={() => console.log('打开')}
             onClose={() => console.log('关闭')}
           >
             <div className="popup-box">
-              <Button size="sm" onClick={() => this.close('popBottom')}>关闭弹层</Button>
+              <Button size="sm" onClick={() => { this.close('popBottom'); }}>关闭弹层</Button>
             </div>
           </Popup>
 

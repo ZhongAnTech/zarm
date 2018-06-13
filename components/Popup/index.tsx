@@ -45,6 +45,10 @@ export default class Popup extends PureComponent<PopupProps, any> {
     Events.on(this.popup, 'transitionend', this.animationEnd);
   }
 
+  componentDidUpdate() {
+    this.renderPopup();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.state.isShow !== nextProps.visible) {
       clearTimeout(this.timer);
@@ -64,6 +68,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       ReactDOM.unmountComponentAtNode(this.container);
     }
     document.body.removeChild(this.container);
+    this.container = null;
   }
 
   renderPopup() {
@@ -91,6 +96,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
         clearTimeout(this.timer);
       }, stayTime);
     }
+
   }
 
   leave = () => {
@@ -101,8 +107,12 @@ export default class Popup extends PureComponent<PopupProps, any> {
     });
   }
 
-  animationEnd = () => {
-    const { onClose } = this.props;
+  animationEnd = (e) => {
+    if (e.propertyName !== 'transform') {
+      return;
+    }
+
+    const { onClose, onOpen } = this.props;
     const { animationState } = this.state;
 
     if (animationState === 'leave') {
@@ -111,6 +121,10 @@ export default class Popup extends PureComponent<PopupProps, any> {
       });
       if (typeof onClose === 'function') {
         onClose();
+      }
+    } else {
+      if (typeof onOpen === 'function') {
+        onOpen();
       }
     }
   }
@@ -140,14 +154,14 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   getContainer() {
-    let container = document.querySelector(`#${this.props.prefixCls}-container`);
-    if (!container) {
-      container = document.createElement('div');
+    // let container = document.querySelector(`#${this.props.prefixCls}-container`);
+    if (!this.container) {
+      let container = document.createElement('div');
       container.classList.add('popup-container');
       document.body.appendChild(container);
+      this.container = container;
     }
-    this.container = container;
-    return container;
+    return this.container;
   }
 
   getComponent() {
