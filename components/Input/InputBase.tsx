@@ -57,7 +57,8 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
   }
 
-  onFocus = () => {
+  onFocus = (e) => {
+    const value = e.target.value;
     if (!('focused' in this.props)) {
       this.setState({
         focused: true,
@@ -66,12 +67,13 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
     const { onFocus } = this.props;
     if (typeof onFocus === 'function') {
-      onFocus();
+      onFocus(value);
     }
   }
 
-  onBlur = () => {
+  onBlur = (e) => {
     const { onBlur } = this.props;
+    const value = e.target.value;
     this.onBlurTimeout = setTimeout(() => {
       if (!this.blurFromClear && document.activeElement !== this.input) {
         this.setState({
@@ -79,7 +81,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
         });
 
         if (typeof onBlur === 'function') {
-          onBlur();
+          onBlur(value);
         }
       }
       this.blurFromClear = false;
