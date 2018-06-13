@@ -13,19 +13,25 @@ export default class Input extends PureComponent<BaseInputProps, {}> {
     type: 'text',
   };
 
+  private input;
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const { type, ...others } = this.props;
     switch (type) {
       case 'idcard':
       case 'price':
       case 'number':
-        return <InputNumber {...others} type={type} />;
+        return <InputNumber ref={ele => (this.input = ele)} {...others} type={type} />;
 
       case 'textarea':
-        return <InputTextarea {...others} />;
+        return <InputTextarea ref={ele => (this.input = ele)} {...others} />;
 
       default:
-        return <InputBase {...others} type={type} />;
+        return <InputBase ref={ele => (this.input = ele)} {...others} type={type} />;
     }
   }
 
