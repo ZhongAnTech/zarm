@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config.base');
 
 config.mode = 'development';
+config.devtool = 'cheap-source-map';
 
 config.entry = {
   index: ['./examples/index.js'],
@@ -56,6 +57,9 @@ config.devServer = {
   noInfo: true,
   inline: true,
   hot: true,
+  watchContentBase: true,
+  clientLogLevel: 'none',
+  quiet: true,
 };
 
 config.resolve.alias = {
