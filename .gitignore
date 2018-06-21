@@ -8,5 +8,15 @@ _book
 .idea
 .DS_Store
 .temp
+.history
 *.log
-npm-debug.*
+.prettierrc.yaml
+*.iml
+examples-rn/ios/build
+examples-rn/android/build
+examples-rn/android/local.properties
+examples-rn/android/.gradle
+build
+components/**/*.js
+components/*.js
+xcuserdata

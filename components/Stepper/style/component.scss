@@ -24,7 +24,7 @@ $prefixCls: $prefixCls-stepper;
   &.shape-circle {
     .#{$prefixCls}-sub,
     .#{$prefixCls}-plus {
-      border-radius: $radius-circle;
+      border-radius: $stepper-height;
     }
   }
 
@@ -50,7 +50,7 @@ $prefixCls: $prefixCls-stepper;
     align-items: center;
     justify-content: center;
     position: relative;
-    width: $stepper-button-width;
+    width: $stepper-height;
     height: $stepper-height;
     font-size: $stepper-button-font-size;
     font-weight: bold;

@@ -7,14 +7,17 @@
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
+    "skipLibCheck": true,
     "types": [
       "classnames",
       "react",
-      "react-dom"
+      "react-dom",
+      "react-native"
     ]
   },
   "include": [
-    "components/**/*"
+    "components/*.tsx",
+    "components/**/*.tsx"
   ],
   "exclude": [
     "node_modules",

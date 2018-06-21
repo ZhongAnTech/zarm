@@ -57,9 +57,6 @@ config.devServer = {
   noInfo: true,
   inline: true,
   hot: true,
-  watchContentBase: true,
-  clientLogLevel: 'none',
-  quiet: true,
 };
 
 config.resolve.alias = {

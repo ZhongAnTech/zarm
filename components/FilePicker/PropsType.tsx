@@ -3,6 +3,7 @@ export default interface PropsType {
   multiple?: boolean;
   quality?: number;
   accept?: string;
+  maximum?: number;
   capture?: any;
   onChange?: (file: Object | Array<Object>) => void;
   onBeforeSelect?: () => boolean;
