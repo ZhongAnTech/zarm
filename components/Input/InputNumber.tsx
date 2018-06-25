@@ -29,12 +29,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     this.state = {
       value: props.value || props.defaultValue || '',
       visible: props.focused || false,
+      focused: false,
     };
   }
 
   componentDidMount() {
     Events.on(document.body, 'click', this.onMaskClick);
-    if (this.props.autoFocus || this.state.focused) {
+    if (this.props.autoFocus || this.props.focused) {
       this.onFocus();
     }
   }
@@ -63,14 +64,16 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   onMaskClick = (e) => {
     const clsRegExp = new RegExp(`(^|\\s)${this.picker.props.prefixCls}(\\s|$)`, 'g');
-    if (!this.state.visible) {
+    if (!this.state.visible || this.state.focused) {
       return;
     }
 
     const cNode = ((node) => {
       const picker = findDOMNode(this.picker) as HTMLElement;
+      const content = findDOMNode(this.content) as HTMLElement;
+
       while (node.parentNode && node.parentNode !== document.body) {
-        if (node === picker || clsRegExp.test(node.className)) {
+        if (node === picker || node === content || clsRegExp.test(node.className) ) {
           return node;
         }
         node = node.parentNode;
