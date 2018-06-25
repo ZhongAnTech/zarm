@@ -10,6 +10,11 @@ module.exports = {
       description: '文件选择器',
       module: require('./pages/FilePicker'),
     },
+    {
+      title: 'Countdown',
+      description: '倒计时',
+      module: require('./pages/Countdown'),
+    },
   ],
   UICONROL: [
     {

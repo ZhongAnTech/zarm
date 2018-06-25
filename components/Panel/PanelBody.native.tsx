@@ -9,7 +9,7 @@ export interface PanelBodyProps {
 
 const panelStyles = StyleSheet.create<any>(panelStyle);
 
-export default class PanelHeader extends PureComponent<PanelBodyProps, {}> {
+export default class PanelBody extends PureComponent<PanelBodyProps, {}> {
 
   static defaultProps = {
     prefixCls: 'za-panel',
