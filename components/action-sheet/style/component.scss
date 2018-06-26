@@ -1,0 +1,62 @@
+@import "../../button/style/mixins";
+
+$prefixCls: $prefixCls-actionsheet;
+
+.#{$prefixCls} {
+  margin: $actionsheet-margin;
+
+  &-spacing {
+    margin: 0 r(10) r(10);
+  }
+
+  &.shape-radius {
+    .#{$prefixCls} {
+      &-actions,
+      &-cancel {
+        border-radius: $radius-md;
+      }
+    }
+  }
+
+  &-actions,
+  &-cancel {
+    overflow: hidden;
+    background-color: $color-text-inverse;
+  }
+
+  &-cancel {
+    margin-top: r(7);
+  }
+
+  &-item {
+    display: block;
+    height: $actionsheet-item-height;
+    line-height: $actionsheet-item-height;
+    font-size: $actionsheet-item-font-size;
+    @include button-base();
+
+    &:active {
+      background-color: $background-active;
+    }
+
+    &:not(:first-of-type) {
+      @include onepx(top);
+    }
+
+    &.theme-primary {
+      color: $theme-primary;
+    }
+
+    &.theme-success {
+      color: $theme-success;
+    }
+
+    &.theme-warning {
+      color: $theme-warning;
+    }
+
+    &.theme-error {
+      color: $theme-error;
+    }
+  }
+}

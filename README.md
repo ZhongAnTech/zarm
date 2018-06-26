@@ -10,6 +10,7 @@
 
 ## Install 安装
 
+
 使用npm安装：
 ```bash
 npm install zarm --save
@@ -43,7 +44,6 @@ import 'zarm/dist/zarm.min.css';
       ['import', {
         libraryName: 'zarm',
         style: true,
-        camel2DashComponentName: false,
       }],
     ]
   }

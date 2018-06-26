@@ -9,7 +9,6 @@ babelConfig.plugins.push([
     libraryName: 'zarm',
     libraryDirectory: 'components',
     style: true,
-    camel2DashComponentName: false,
   },
 ]);
 
