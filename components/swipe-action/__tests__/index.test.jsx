@@ -2,7 +2,7 @@ import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SwipeAction from '../index';
-import Button from '../../Button/index';
+import Button from '../../button/index';
 
 describe('SwipeAction', () => {
   it('renders correctly', () => {
