@@ -35,9 +35,11 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
 }
 
-if (!window.zarmLoading) {
-  window.zarmLoading = document.createElement('div');
-  document.body.appendChild(window.zarmLoading);
-}
+if (typeof window !== 'undefined') {
+  if (!window.zarmLoading) {
+    window.zarmLoading = document.createElement('div');
+    document.body.appendChild(window.zarmLoading);
+  }
 
-ReactDOM.render(<Loading visible={false} />, window.zarmLoading);
+  ReactDOM.render(<Loading visible={false} />, window.zarmLoading);
+}

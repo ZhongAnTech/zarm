@@ -108,9 +108,11 @@ export default class Toast extends PureComponent<ToastProps, any> {
 
 }
 
-if (!window.zarmToast) {
-  window.zarmToast = document.createElement('div');
-  document.body.appendChild(window.zarmToast);
-}
+if (typeof window !== 'undefined') {
+  if (!window.zarmToast) {
+    window.zarmToast = document.createElement('div');
+    document.body.appendChild(window.zarmToast);
+  }
 
-ReactDOM.render(<Toast visible={false} />, window.zarmToast);
+  ReactDOM.render(<Toast visible={false} />, window.zarmToast);
+}

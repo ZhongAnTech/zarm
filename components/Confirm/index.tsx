@@ -47,9 +47,11 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
 
 }
 
-// if (!window.zarmConfirm) {
-//   window.zarmConfirm = document.createElement('div');
-//   document.body.appendChild(window.zarmConfirm);
-// }
+// if (typeof window !== 'undefined') {
+//   if (!window.zarmConfirm) {
+//     window.zarmConfirm = document.createElement('div');
+//     document.body.appendChild(window.zarmConfirm);
+//   }
 
-// ReactDOM.render(<Confirm visible={false} />, window.zarmConfirm);
+//   ReactDOM.render(<Confirm visible={false} />, window.zarmConfirm);
+// }
