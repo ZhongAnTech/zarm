@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
-import Toast from '../Toast';
-import Spinner from '../Spinner';
+import Toast from '../toast';
+import Spinner from '../spinner';
 
 export interface LoadingProps extends PropsType {
   prefixCls?: string;

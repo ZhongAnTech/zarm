@@ -2,7 +2,7 @@ import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
 import { BaseModalProps } from './PropsType';
 import Events from '../utils/events';
-import Mask from '../Mask';
+import Mask from '../mask';
 
 const stopPropagation = (e) => {
   e.stopPropagation();

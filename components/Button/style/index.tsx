@@ -1,3 +1,3 @@
 import '../../style/';
-import '../../Spinner/style';
+import '../../spinner/style';
 import './index.scss';

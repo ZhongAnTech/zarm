@@ -3,8 +3,8 @@ import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 import { BaseInputNumberProps } from './PropsType';
 import Events from '../utils/events';
-import KeyboardPicker from '../KeyboardPicker';
-import Icon from '../Icon';
+import KeyboardPicker from '../keyboard-picker';
+import Icon from '../icon';
 
 declare const document;
 

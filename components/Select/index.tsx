@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseSelectProps } from './PropsType';
-import Picker from '../Picker';
+import Picker from '../picker';
 
 const getValue = (props, defaultValue?: any) => {
   if (props.value) {

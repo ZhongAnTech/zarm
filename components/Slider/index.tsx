@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
-import Drag from '../Drag';
-import Tooltip from '../Tooltip';
+import Drag from '../drag';
+import Tooltip from '../tooltip';
 
 const getValue = (props, defaultValue) => {
   if ('value' in props) {

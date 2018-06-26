@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseModalHeaderProps } from './PropsType';
-import Icon from '../Icon';
+import Icon from '../icon';
 
 export interface ModalHeaderProps extends BaseModalHeaderProps {
   prefixCls?: string;

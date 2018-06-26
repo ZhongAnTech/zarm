@@ -1,3 +1,3 @@
 import '../../style/';
-import '../../Swipe/style/';
+import '../../swipe/style/';
 import './index.scss';

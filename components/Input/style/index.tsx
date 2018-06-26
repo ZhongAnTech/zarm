@@ -1,3 +1,3 @@
 import '../../style/';
-import '../../KeyboardPicker/style/';
+import '../../keyboard-picker/style/';
 import './index.scss';

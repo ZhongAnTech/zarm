@@ -2,7 +2,7 @@ import React, { PureComponent, CSSProperties } from 'react';
 import PropsType from './PropsType';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
-import Swipe from '../Swipe';
+import Swipe from '../swipe';
 
 const getSelectIndex = (children) => {
   let selectIndex;

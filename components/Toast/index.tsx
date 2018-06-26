@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Mask from '../Mask';
+import Mask from '../mask';
 
 export interface ToastProps extends PropsType {
   prefixCls?: string;

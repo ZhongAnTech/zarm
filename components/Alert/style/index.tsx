@@ -1,3 +1,3 @@
 import '../../style/';
-import '../../Modal/style';
+import '../../modal/style';
 import './index.scss';

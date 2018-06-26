@@ -2,7 +2,7 @@ import React, { Component, cloneElement, Children, CSSProperties } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
-import Drag from '../Drag';
+import Drag from '../drag';
 
 export interface SwipeProps extends PropsType {
   prefixCls?: string;
