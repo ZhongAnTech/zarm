@@ -22,6 +22,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   private content;
   private picker;
+  private container;
 
   constructor(props) {
     super(props);
@@ -41,13 +42,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   componentWillReceiveProps(nextProps) {
     const { value } = this.state;
-    if ('focused' in nextProps || 'autoFocus' in nextProps) {
-      if (nextProps.focused || nextProps.autoFocus) {
-        this.onFocus();
-      } else {
-        this.onBlur();
-      }
-    }
+    // if ('focused' in nextProps || 'autoFocus' in nextProps) {
+    //   if (nextProps.focused || nextProps.autoFocus) {
+    //     this.onFocus();
+    //   } else {
+    //     this.onBlur();
+    //   }
+    // }
 
     if ('value' in nextProps && value !== nextProps.value ) {
       this.setState({
@@ -69,10 +70,9 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
     const cNode = ((node) => {
       const picker = findDOMNode(this.picker) as HTMLElement;
-      const content = findDOMNode(this.content) as HTMLElement;
-
+      const container = findDOMNode(this.container) as HTMLElement;
       while (node.parentNode && node.parentNode !== document.body) {
-        if (node === picker || node === content || clsRegExp.test(node.className) ) {
+        if (node === picker || node === container || clsRegExp.test(node.className)) {
           return node;
         }
         node = node.parentNode;
@@ -117,7 +117,6 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     if (this.state.visible) {
       return;
     }
-
     this.setState({ visible: true });
     this.scrollToEnd();
     const { onFocus } = this.props;
@@ -141,12 +140,24 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   onClear() {
     const { value } = this.state;
+    const { onChange, onClear } = this.props;
     this.setState({
       value: '',
     }, this.onFocus);
-    if (this.props.onClear) {
-      this.props.onClear(value);
+    if (onClear) {
+      onClear(value);
     }
+    if (typeof onChange === 'function') {
+      onChange('');
+    }
+  }
+
+  focus() {
+    this.onFocus();
+  }
+
+  blur() {
+    this.onBlur();
   }
 
   renderClear() {
@@ -165,16 +176,17 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   render() {
-    const { prefixCls, className, type, disabled, placeholder } = this.props;
+    const { prefixCls, className, type, disabled, placeholder, clearable } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
       disabled,
       focus: visible,
+      clearable,
     });
 
     return (
-      <div className={cls} onClick={this.onFocus}>
+      <div className={cls} onClick={this.onFocus} ref={(ele) => { this.container = ele; }}>
         {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
         <div className={`${prefixCls}-content`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input

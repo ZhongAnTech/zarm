@@ -106,7 +106,8 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   animationEnd = (e) => {
-    if (e.propertyName !== 'transform') {
+    // 防止其他的样式转换触发该事件，如border、background-image
+    if (!(/transform/i.test(e.propertyName))) {
       return;
     }
 

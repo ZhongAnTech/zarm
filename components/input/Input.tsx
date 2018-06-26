@@ -13,9 +13,22 @@ export default class Input extends PureComponent<BaseInputProps, {}> {
   };
 
   private input;
+  private inputNumber;
 
   constructor(props) {
     super(props);
+  }
+
+  focus() {
+    if (this.inputNumber) {
+      this.inputNumber.focus();
+    }
+  }
+
+  blur() {
+    if (this.inputNumber) {
+      this.inputNumber.blur();
+    }
   }
 
   render() {
@@ -24,7 +37,7 @@ export default class Input extends PureComponent<BaseInputProps, {}> {
       case 'idcard':
       case 'price':
       case 'number':
-        return <InputNumber ref={ele => (this.input = ele)} {...others} type={type} />;
+        return <InputNumber ref={ele => (this.inputNumber = ele)} {...others} type={type} />;
 
       case 'textarea':
         return <InputTextarea ref={ele => (this.input = ele)} {...others} />;

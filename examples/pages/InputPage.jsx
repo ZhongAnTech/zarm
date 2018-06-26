@@ -13,6 +13,13 @@ class Page extends Component {
     };
   }
 
+  componentDidMount() {
+    // this.manualFocus.focus();
+    // setTimeout(() => {
+    //   this.manualFocus.blur();
+    // }, 2000);
+  }
+
   render() {
     return (
       <Container className="input-page">
@@ -29,10 +36,10 @@ class Page extends Component {
           <Panel>
             <Panel.Header title="输入类型" />
             <Panel.Body>
-              <Cell title="数字"><Input type="number" placeholder="type is number" value={this.state.number} focused={this.state.focused} onFocus={value => console.log(`onFocus: ${value}`)} onBlur={value => console.log(`onBlur: ${value}`)} onClear={(value) => { this.setState({ number: '' }); console.log('清除了', value); }} /></Cell>
+              <Cell title="数字"><Input ref={(ref) => { this.manualFocus = ref; }} type="number" placeholder="type is number" value={this.state.number} focused={this.state.focused} onFocus={value => console.log(`onFocus: ${value}`)} onBlur={value => console.log(`onBlur: ${value}`)} onClear={(value) => { this.setState({ number: '' }); console.log('清除了', value); }} /></Cell>
               <Cell title="金额"><Input type="price" placeholder="type is price" /></Cell>
               <Cell title="身份证"><Input type="idcard" placeholder="type is idcard" /></Cell>
-              <Cell><button onClick={() => this.setState({ focused: true })}>click to focus the first input</button></Cell>
+              <Cell><button onClick={() => this.manualFocus.focus()}>click to focus the first input</button></Cell>
             </Panel.Body>
           </Panel>
 

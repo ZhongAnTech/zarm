@@ -3,7 +3,15 @@ $prefixCls: $prefixCls-input;
 .#{$prefixCls} {
   position: relative;
   width: 100%;
-  padding: r(12) r(30) r(12) 0;
+  padding: r(12) 0;
+
+  &.clearable {
+    padding-right: r(30);
+
+    .#{$prefixCls}-content {
+      right: r(30);
+    }
+  }
 
   input,
   textarea {
@@ -103,7 +111,7 @@ $prefixCls: $prefixCls-input;
     position: absolute;
     top: 0;
     left: 0;
-    right: r(30);
+    right: r(0);
     // width: 100%;
     height: 100%;
     overflow-x: auto;

@@ -91,7 +91,7 @@ class Page extends Component {
                 placeholder="搜索"
                 ref={(ref) => { this.manualFocus = ref; }}
               />
-              <div className="button-wrap"><Button theme="primary" size="sm" shape="radius" onClick={() => { console.log(this.manualFocus); this.manualFocus.focus(); }}>点击获取焦点</Button></div>
+              <div className="button-wrap"><Button theme="primary" size="sm" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button></div>
             </Panel.Body>
           </Panel>
         </main>
