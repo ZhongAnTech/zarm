@@ -14,7 +14,7 @@ describe('Wheel', () => {
         ]}
         defaultValue="1"
         value="1"
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: '2' });

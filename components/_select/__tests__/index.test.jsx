@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow, mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Select from '../index';
 
@@ -11,7 +11,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -24,7 +24,7 @@ describe('Select', () => {
           { value: '2', label: '选项二' },
         ]}
         defaultValue="2"
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -51,7 +51,7 @@ describe('Select', () => {
             ],
           },
         ]}
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: ['1', '12'] });
@@ -83,7 +83,7 @@ describe('Select', () => {
         ]}
         value={['1', '12']}
         displayAddon="-"
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -113,7 +113,7 @@ describe('Select', () => {
         ]}
         value={['1', '12']}
         onOk={onChangeFn}
-        />
+      />
     );
 
     // wrapper.find('.za-picker-submit').simulate('click');
@@ -146,7 +146,7 @@ describe('Select', () => {
         value={['1', '12']}
         displayAddon="-"
         onOk={onOkFn}
-        />
+      />
     );
 
     // wrapper.find('.za-picker-cancel').simulate('click');
@@ -160,7 +160,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-        />
+      />
     );
     wrapper.setProps({
       dataSource: [
@@ -178,7 +178,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-        />
+      />
     );
     wrapper.setProps({ value: '1' });
   });
@@ -204,7 +204,7 @@ describe('Select', () => {
             ],
           },
         ]}
-        />
+      />
     );
 
     wrapper.setProps({
@@ -238,7 +238,7 @@ describe('Select', () => {
           { value: '2', label: '选项二' },
         ]}
         onMaskClick={onMaskClick}
-        />
+      />
     );
     // wrapper.find('.za-select').simulate('click');
     // wrapper.find('.za-mask').simulate('click');
