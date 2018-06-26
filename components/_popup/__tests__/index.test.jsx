@@ -11,7 +11,8 @@ describe('Popup', () => {
       <Popup
         direction="bottom"
         onMaskClick={onMaskClick}
-        onClose={onClose}>
+        onClose={onClose}
+      >
         foo
       </Popup>
     );
