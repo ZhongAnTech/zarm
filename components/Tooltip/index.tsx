@@ -10,7 +10,6 @@ export interface TooltipProps extends PropsType {
 }
 
 export default class Tooltip extends PureComponent<TooltipProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-tooltip',
     visible: false,
@@ -58,5 +57,4 @@ export default class Tooltip extends PureComponent<TooltipProps, any> {
       ref: (ele) => { this.child = ele; },
     });
   }
-
 }

@@ -15,7 +15,6 @@ export interface ModalProps extends BaseModalProps {
 }
 
 export default class Modal extends PureComponent<ModalProps, any> {
-
   static Header: any;
   static Body: any;
   static Footer: any;
@@ -143,5 +142,4 @@ export default class Modal extends PureComponent<ModalProps, any> {
       </div>
     );
   }
-
 }

@@ -21,7 +21,6 @@ export interface SliderProps extends PropsType {
 }
 
 export default class Slider extends PureComponent<SliderProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-slider',
     disabled: false,
@@ -183,5 +182,4 @@ export default class Slider extends PureComponent<SliderProps, any> {
       </div>
     );
   }
-
 }

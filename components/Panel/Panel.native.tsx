@@ -10,7 +10,6 @@ export interface PanelProps {
 const panelStyles = StyleSheet.create<any>(panelStyle);
 
 export default class Panel extends PureComponent<PanelProps, {}> {
-
   static Header: any;
   static Body: any;
   static Footer: any;
@@ -30,5 +29,4 @@ export default class Panel extends PureComponent<PanelProps, {}> {
 
     return <View style={wrapperStyle}>{children}</View>;
   }
-
 }

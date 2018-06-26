@@ -14,7 +14,6 @@ export interface InputTextareaProps extends BaseInputTextareaProps {
 }
 
 export default class InputTextarea extends PureComponent<InputTextareaProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-input',
     disabled: false,
@@ -133,5 +132,4 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       </div>
     );
   }
-
 }

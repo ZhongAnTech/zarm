@@ -10,7 +10,6 @@ export interface AlertProps extends PropsType {
 }
 
 export default class Alert extends PureComponent<AlertProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-alert',
     animationType: 'zoom',
@@ -42,7 +41,6 @@ export default class Alert extends PureComponent<AlertProps, {}> {
       </Modal>
     );
   }
-
 }
 
 // if (typeof window !== 'undefined') {

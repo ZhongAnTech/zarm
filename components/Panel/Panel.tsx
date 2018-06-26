@@ -7,7 +7,6 @@ export interface PanelProps {
 }
 
 export default class Panel extends PureComponent<PanelProps, {}> {
-
   static Header: any;
   static Body: any;
   static Footer: any;
@@ -22,5 +21,4 @@ export default class Panel extends PureComponent<PanelProps, {}> {
 
     return <div className={cls}>{children}</div>;
   }
-
 }

@@ -33,7 +33,6 @@ const navBarStyles = StyleSheet.create<any>(navBarStyle);
 const PADDING_TOP = Platform.OS === 'ios' ? 20 : 0;
 
 export default class NavBar extends PureComponent<NavBarProps, any> {
-
   static defaultProps = {
     styles: navBarStyles,
     leftText: '返回',
@@ -96,5 +95,4 @@ export default class NavBar extends PureComponent<NavBarProps, any> {
       </View>
     );
   }
-
 }

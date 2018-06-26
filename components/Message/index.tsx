@@ -9,7 +9,6 @@ export interface MessageProps extends PropsType {
 }
 
 export default class Message extends PureComponent<MessageProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-message',
     theme: 'primary',
@@ -52,5 +51,4 @@ export default class Message extends PureComponent<MessageProps, any> {
       </div>
     );
   }
-
 }

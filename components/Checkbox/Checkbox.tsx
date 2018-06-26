@@ -20,7 +20,6 @@ export interface CheckboxProps extends BaseCheckboxProps {
 }
 
 export default class Checkbox extends PureComponent<CheckboxProps, any> {
-
   static Group: any;
 
   static defaultProps = {
@@ -117,5 +116,4 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
 
     return renderCheckbox;
   }
-
 }

@@ -22,7 +22,6 @@ export interface DateSelectProps extends BaseDateSelectProps {
 }
 
 export default class DateSelect extends PureComponent<DateSelectProps, any> {
-
   static defaultProps = {
     placeholder: '请选择',
     title: '请选择',
@@ -48,7 +47,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       value: defaultDate || date,
       visible: props.visible || false,
     };
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -137,5 +135,4 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       </div>
     );
   }
-
 }

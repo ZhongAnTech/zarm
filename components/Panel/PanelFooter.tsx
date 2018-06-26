@@ -8,7 +8,6 @@ export interface PanelFooterProps extends BasePanelFooterProps {
 }
 
 export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-panel',
   };
@@ -24,5 +23,4 @@ export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
       </div>
     );
   }
-
 }

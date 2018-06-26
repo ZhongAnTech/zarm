@@ -10,7 +10,6 @@ export interface PanelBodyProps {
 const panelStyles = StyleSheet.create<any>(panelStyle);
 
 export default class PanelHeader extends PureComponent<PanelBodyProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-panel',
     styles: panelStyles,
@@ -26,5 +25,4 @@ export default class PanelHeader extends PureComponent<PanelBodyProps, {}> {
 
     return <View style={wrapperStyle}>{children}</View>;
   }
-
 }

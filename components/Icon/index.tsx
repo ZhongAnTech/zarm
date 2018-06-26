@@ -8,7 +8,6 @@ export interface IconProps extends PropsType {
 }
 
 export default class Icon extends PureComponent<IconProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-icon',
   };
@@ -24,5 +23,4 @@ export default class Icon extends PureComponent<IconProps, {}> {
       <i {...others} className={cls} />
     );
   }
-
 }

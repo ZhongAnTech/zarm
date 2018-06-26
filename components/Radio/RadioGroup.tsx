@@ -31,7 +31,6 @@ export interface RadioGroupProps extends BaseRadioGroupProps {
 }
 
 export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-radio-group',
     theme: 'primary',
@@ -88,5 +87,4 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
 
     return <div className={cls}>{items}</div>;
   }
-
 }

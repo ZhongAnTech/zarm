@@ -10,7 +10,6 @@ export interface SwipeProps extends PropsType {
 }
 
 export default class Swipe extends Component<SwipeProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-swipe',
     direction: 'left',
@@ -381,5 +380,4 @@ export default class Swipe extends Component<SwipeProps, any> {
       </div>
     );
   }
-
 }

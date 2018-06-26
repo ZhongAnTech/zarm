@@ -9,7 +9,6 @@ export interface KeyboardProps extends PropsType {
 }
 
 export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-keyboard',
     type: 'number',
@@ -63,7 +62,6 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
       </Popup>
     );
   }
-
 }
 
 // if (typeof window !== 'undefined') {

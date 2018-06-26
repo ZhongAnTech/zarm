@@ -8,7 +8,6 @@ const styles = StyleSheet.create<any>(swipeActionStyle);
 export interface SwipeActionProps extends PropsType {}
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
-
   static defaultProps = {
     left: [],
     right: [],
@@ -164,7 +163,6 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   }
 
   renderButtons(buttons, direction) {
-
     if (!buttons || buttons.length === 0) {
       return;
     }
@@ -201,5 +199,4 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     )
     : children;
   }
-
 }

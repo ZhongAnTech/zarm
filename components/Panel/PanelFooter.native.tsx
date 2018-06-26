@@ -20,7 +20,6 @@ const ChangeComponent = props => {
 const panelStyles = StyleSheet.create<any>(panelStyle);
 
 export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-panel',
     styles: panelStyles,
@@ -41,5 +40,4 @@ export default class PanelFooter extends PureComponent<PanelFooterProps, {}> {
       </View>
     );
   }
-
 }

@@ -10,7 +10,6 @@ export interface ToastProps extends PropsType {
 }
 
 export default class Toast extends PureComponent<ToastProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-toast',
     visible: false,
@@ -105,7 +104,6 @@ export default class Toast extends PureComponent<ToastProps, any> {
       </div>
     );
   }
-
 }
 
 if (typeof window !== 'undefined') {

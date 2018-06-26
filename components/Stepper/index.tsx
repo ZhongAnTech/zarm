@@ -19,7 +19,6 @@ export interface StepperProps extends PropsType {
 }
 
 export default class Stepper extends PureComponent<StepperProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-stepper',
     theme: 'primary',
@@ -148,5 +147,4 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       </span>
     );
   }
-
 }

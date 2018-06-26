@@ -13,7 +13,6 @@ export interface PopupProps extends PropsType {
 }
 
 export default class Popup extends PureComponent<PopupProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-popup',
     visible: false,
@@ -96,7 +95,6 @@ export default class Popup extends PureComponent<PopupProps, any> {
         clearTimeout(this.timer);
       }, stayTime);
     }
-
   }
 
   leave = () => {
@@ -204,5 +202,4 @@ export default class Popup extends PureComponent<PopupProps, any> {
   render() {
     return this.renderPortal();
   }
-
 }

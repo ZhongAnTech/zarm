@@ -23,7 +23,6 @@ export interface WheelProps extends BaseWheelProps {
 }
 
 export default class Wheel extends Component<WheelProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-wheel',
     dataSource: [],
@@ -39,7 +38,6 @@ export default class Wheel extends Component<WheelProps, any> {
     this.state = {
       value: getValue(props),
     };
-
   }
 
   componentDidMount() {
@@ -90,7 +88,6 @@ export default class Wheel extends Component<WheelProps, any> {
     }
     const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
     this.BScroll.wheelTo(newIndex);
-
   }
 
   componentDidUpdate() {
@@ -164,5 +161,4 @@ export default class Wheel extends Component<WheelProps, any> {
       </div>
     );
   }
-
 }
