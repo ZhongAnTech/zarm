@@ -2,7 +2,7 @@
 
 exports[`Input renders correctly 1`] = `
 <div
-  class="za-input za-input-text"
+  class="za-input za-input-text clearable"
 >
   <input
     autocomplete="off"
@@ -29,7 +29,7 @@ exports[`Input renders onClear called correctly 1`] = `
     type="text"
   >
     <div
-      className="za-input za-input-text"
+      className="za-input za-input-text clearable"
     >
       <input
         autoComplete="off"
@@ -86,7 +86,7 @@ exports[`Input.Idcard renders correctly 1`] = `
     type="idcard"
   >
     <div
-      className="za-input za-input-number"
+      className="za-input za-input-number clearable"
       onClick={[Function]}
     >
       <div
@@ -294,7 +294,7 @@ exports[`Input.Number renders correctly 1`] = `
     type="number"
   >
     <div
-      className="za-input za-input-number"
+      className="za-input za-input-number clearable"
       onClick={[Function]}
     >
       <div
@@ -503,7 +503,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
     type="number"
   >
     <div
-      className="za-input za-input-number focus"
+      className="za-input za-input-number focus clearable"
       onClick={[Function]}
     >
       <div
@@ -709,7 +709,7 @@ exports[`Input.Price renders correctly 1`] = `
     type="price"
   >
     <div
-      className="za-input za-input-number"
+      className="za-input za-input-number clearable"
       onClick={[Function]}
     >
       <div
@@ -916,6 +916,7 @@ exports[`Input.Textarea autoHeight 1`] = `
 >
   <InputTextarea
     autoHeight={true}
+    clearable={false}
     disabled={false}
     focused={false}
     onChange={[Function]}

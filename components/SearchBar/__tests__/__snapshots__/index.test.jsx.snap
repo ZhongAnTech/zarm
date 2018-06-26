@@ -29,7 +29,7 @@ exports[`SearchBar renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="za-input za-input-search"
+        class="za-input za-input-search clearable"
       >
         <input
           autocomplete="off"
@@ -115,7 +115,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
           value=""
         >
           <div
-            className="za-input za-input-search"
+            className="za-input za-input-search clearable"
           >
             <input
               autoComplete="off"
@@ -219,7 +219,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
           value=""
         >
           <div
-            className="za-input za-input-search"
+            className="za-input za-input-search clearable"
           >
             <input
               autoComplete="off"
@@ -323,7 +323,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
           value="测试值"
         >
           <div
-            className="za-input za-input-search"
+            className="za-input za-input-search clearable"
           >
             <input
               autoComplete="off"
@@ -427,7 +427,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
           value=""
         >
           <div
-            className="za-input za-input-search"
+            className="za-input za-input-search clearable"
           >
             <input
               autoComplete="off"
@@ -531,7 +531,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
           value="My new value"
         >
           <div
-            className="za-input za-input-search"
+            className="za-input za-input-search clearable"
           >
             <input
               autoComplete="off"
