@@ -2,6 +2,7 @@ export interface BaseInputProps {
   type?: string;
   placeholder?: string;
   disabled?: boolean;
+  clearable?: boolean;
   maxLength?: number;
   focused?: boolean;
   autoFocus?: boolean;
@@ -11,7 +12,6 @@ export interface BaseInputProps {
 export interface BaseInputBaseProps extends BaseInputProps {
   value?: string;
   defaultValue?: string;
-  clearable?: boolean;
   onChange?: (value?: string) => void;
   onFocus?: (value?: string) => void;
   onBlur?: (value?: string) => void;
@@ -25,7 +25,6 @@ export interface BaseInputNumberProps extends BaseInputProps {
   type?: 'number' | 'price' | 'idcard';
   value?: string | number;
   defaultValue?: string | number;
-  clearable?: boolean;
   onChange?: (value?: string | number) => void;
   onFocus?: (value?: string | number) => void;
   onBlur?: (value?: string | number) => void;

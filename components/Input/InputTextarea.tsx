@@ -21,6 +21,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     autoHeight: false,
     showLength: false,
     focused: false,
+    clearable: false,
   };
 
   private input;
@@ -102,11 +103,13 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
+      clearable,
       ...others,
     } = this.props;
 
     const cls = classnames(prefixCls, `${prefixCls}-textarea`, className, {
       disabled,
+      clearable,
     });
 
     const textLengthRender =

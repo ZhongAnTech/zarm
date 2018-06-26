@@ -161,6 +161,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     const { value, focused } = this.state;
     const cls = classnames(prefixCls, `${prefixCls}-${type}`, className, {
       disabled,
+      clearable,
     });
     const clearCls = classnames(`${prefixCls}-clear`, {
       [`${prefixCls}-clear-show`]: !!(focused && value && value.length > 0),
