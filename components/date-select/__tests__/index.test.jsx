@@ -24,8 +24,8 @@ describe('DateSelect', () => {
         mode="date"
         defaultValue="2017-11-03"
         visible
-        />
-      );
+      />
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -36,7 +36,7 @@ describe('DateSelect', () => {
         placeholder="请选择日期"
         mode="date"
         value="2009-03-04"
-        />
+      />
     );
     wrapper.setProps({ value: '2017-09-06' });
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -50,7 +50,7 @@ describe('DateSelect', () => {
         mode="time"
         defaultValue="2017-11-03 15:00"
         minuteStep={15}
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -64,7 +64,7 @@ describe('DateSelect', () => {
         min="2017-11-02 11:00"
         max="2017-11-02 14:00"
         defaultValue="2017-11-03 15:00"
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     jest.useFakeTimers();
@@ -80,7 +80,7 @@ describe('DateSelect', () => {
         mode="date"
         visible
         wheelDefaultValue="2017-11-03 15:00"
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

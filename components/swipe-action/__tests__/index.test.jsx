@@ -16,7 +16,8 @@ describe('SwipeAction', () => {
         right={[
           <Button theme="primary" onClick={jest.fn()}>右按钮1</Button>,
           <Button theme="warning" onClick={jest.fn()}>右按钮2</Button>,
-        ]}>
+        ]}
+      >
         <div>左右都能滑动</div>
       </SwipeAction>
     );
@@ -31,7 +32,8 @@ describe('SwipeAction', () => {
         left={[
           <Button theme="primary" onClick={jest.fn()}>左按钮1</Button>,
           <Button theme="warning" onClick={jest.fn()}>左按钮2</Button>,
-        ]}>
+        ]}
+      >
         <div>右滑</div>
       </SwipeAction>
     );
@@ -44,7 +46,8 @@ describe('SwipeAction', () => {
         right={[
           <Button theme="primary" onClick={jest.fn()}>右按钮1</Button>,
           <Button theme="warning" onClick={jest.fn()}>右按钮2</Button>,
-        ]}>
+        ]}
+      >
         <div>左滑</div>
       </SwipeAction>
     );

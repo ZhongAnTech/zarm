@@ -12,8 +12,8 @@ describe('DatePicker', () => {
         value="2009-3-4"
         visible
         onMaskClick={onMaskClickFn}
-        />
-      );
+      />
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
     // document.body.find('.za-mask').simulate('click');
     // expect(onMaskClickFn).toBeCalled();
