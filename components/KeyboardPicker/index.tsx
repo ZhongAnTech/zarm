@@ -66,9 +66,11 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
 
 }
 
-// if (!window.zarmKeyboardPicker) {
-//   window.zarmKeyboardPicker = document.createElement('div');
-//   document.body.appendChild(window.zarmKeyboardPicker);
-// }
+// if (typeof window !== 'undefined') {
+//   if (!window.zarmKeyboardPicker) {
+//     window.zarmKeyboardPicker = document.createElement('div');
+//     document.body.appendChild(window.zarmKeyboardPicker);
+//   }
 
-// ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
+//   ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
+// }

@@ -45,9 +45,11 @@ export default class Alert extends PureComponent<AlertProps, {}> {
 
 }
 
-// if (!window.zarmAlert) {
-//   window.zarmAlert = document.createElement('div');
-//   document.body.appendChild(window.zarmAlert);
-// }
+// if (typeof window !== 'undefined') {
+//   if (!window.zarmAlert) {
+//     window.zarmAlert = document.createElement('div');
+//     document.body.appendChild(window.zarmAlert);
+//   }
 
-// ReactDOM.render(<Alert visible={false} />, window.zarmAlert);
+//   ReactDOM.render(<Alert visible={false} />, window.zarmAlert);
+// }
