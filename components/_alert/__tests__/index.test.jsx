@@ -14,7 +14,7 @@ describe('Alert', () => {
         title="警告"
         message="这里是警告信息"
         onCancel={onCancel}
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

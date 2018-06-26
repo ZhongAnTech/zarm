@@ -43,7 +43,8 @@ describe('Swipe', () => {
     const wrapper = mount(
       <Swipe
         autoPlay
-        onChange={onChange}>
+        onChange={onChange}
+      >
         {
           ITEMS.map((item, i) => {
             return (

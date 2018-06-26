@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { render, shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Popup from '../index';
 
@@ -45,7 +44,10 @@ describe('Popup', () => {
         visible
         autoClose
         onMaskClick={onMaskClick}
-        onClose={onClose}>foo</Popup>
+        onClose={onClose}
+      >
+        foo
+      </Popup>
     );
     wrapper.setProps({ visible: true });
     jest.runAllTimers();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow, mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Picker from '../index';
 
@@ -61,7 +61,8 @@ describe('Picker', () => {
         ]}
         valueMember="code"
         itemRender={data => data.name}
-        />);
+      />
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -162,7 +163,7 @@ describe('Picker', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-        />
+      />
     );
     wrapper.setProps({ value: '1' });
   });
@@ -188,7 +189,7 @@ describe('Picker', () => {
             ],
           },
         ]}
-        />
+      />
     );
 
     wrapper.setProps({
