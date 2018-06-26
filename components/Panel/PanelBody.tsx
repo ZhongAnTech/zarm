@@ -7,7 +7,6 @@ export interface PanelBodyProps {
 }
 
 export default class PanelBody extends PureComponent<PanelBodyProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-panel',
   };
@@ -18,5 +17,4 @@ export default class PanelBody extends PureComponent<PanelBodyProps, {}> {
 
     return <div {...others} className={cls}>{children}</div>;
   }
-
 }

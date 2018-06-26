@@ -8,7 +8,6 @@ export interface BadgeProps extends PropsType {
 }
 
 export default class Badge extends PureComponent<BadgeProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-badge',
     theme: 'error',
@@ -34,5 +33,4 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
       </span>
     );
   }
-
 }

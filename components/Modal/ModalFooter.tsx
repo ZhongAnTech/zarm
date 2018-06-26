@@ -8,7 +8,6 @@ export interface ModalFooterProps extends BaseModalFooterProps {
 }
 
 export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-modal',
   };
@@ -25,5 +24,4 @@ export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
       </div>
     );
   }
-
 }

@@ -9,7 +9,6 @@ export interface PortalProps {
   getContainer: Function;
 }
 export default class Portal extends React.Component<PortalProps, any> {
-
   _container: any;
 
   constructor(props) {
@@ -27,5 +26,4 @@ export default class Portal extends React.Component<PortalProps, any> {
     }
     return null as any;
   }
-
 }

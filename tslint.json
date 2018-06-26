@@ -10,7 +10,7 @@
       }
     ],
     "switch-default": true,
-    "ter-padded-blocks": [true, { "classes": "always" }],
+    "ter-padded-blocks": [true, { "blocks": "never", "classes": "never", "switches": "never" }],
     "align": [
       true,
       "parameters",

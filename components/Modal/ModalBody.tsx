@@ -8,7 +8,6 @@ export interface ModalBodyProps extends BaseModalBodyProps {
 }
 
 export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-modal',
   };
@@ -26,5 +25,4 @@ export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
       </div>
     );
   }
-
 }

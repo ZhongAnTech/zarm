@@ -8,7 +8,6 @@ export interface InputProps extends BaseInputProps {
 }
 
 export default class Input extends PureComponent<BaseInputProps, {}> {
-
   static defaultProps = {
     type: 'text',
   };
@@ -34,5 +33,4 @@ export default class Input extends PureComponent<BaseInputProps, {}> {
         return <InputBase ref={ele => (this.input = ele)} {...others} type={type} />;
     }
   }
-
 }

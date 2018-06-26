@@ -47,7 +47,6 @@ const cameraRollOptions = {
 };
 
 export default class FilePicker extends PureComponent<FilePickerProps, any> {
-
   static defaultProps = {
     accept: 'images/*',
     disabled: false,
@@ -188,5 +187,4 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       </View>
     );
   }
-
 }

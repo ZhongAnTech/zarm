@@ -8,7 +8,6 @@ export interface MaskProps extends PropsType {
 }
 
 export default class Mask extends PureComponent<MaskProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-mask',
     visible: false,
@@ -21,5 +20,4 @@ export default class Mask extends PureComponent<MaskProps, {}> {
 
     return visible && <div className={markCls} onClick={onClose} {...others} />;
   }
-
 }

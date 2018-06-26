@@ -21,7 +21,6 @@ export interface DatePickerProps extends BaseDatePickerProps {
 }
 
 export default class DatePicker extends Component<DatePickerProps, any> {
-
   static defaultProps = {
     placeholder: '请选择',
     title: '请选择',
@@ -180,5 +179,4 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       </Popup>
     );
   }
-
 }

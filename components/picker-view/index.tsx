@@ -22,7 +22,6 @@ export interface PickerViewProps extends BasePickerViewProps {
 }
 
 export default class PickerView extends PureComponent<PickerViewProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-picker',
     dataSource: [],
@@ -174,5 +173,4 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
       </div>
     );
   }
-
 }

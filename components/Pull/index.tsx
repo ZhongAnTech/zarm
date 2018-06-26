@@ -13,7 +13,6 @@ export interface PullProps extends PropsType {
 }
 
 export default class Pull extends PureComponent<PullProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-pull',
     refresh: {
@@ -366,5 +365,4 @@ export default class Pull extends PureComponent<PullProps, any> {
       </Drag>
     );
   }
-
 }

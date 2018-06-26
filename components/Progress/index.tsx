@@ -9,7 +9,6 @@ export interface ProgressProps extends PropsType {
 }
 
 export default class Progress extends PureComponent<ProgressProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-progress',
     theme: 'primary',
@@ -45,5 +44,4 @@ export default class Progress extends PureComponent<ProgressProps, {}> {
       </div>
     );
   }
-
 }

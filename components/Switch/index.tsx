@@ -18,7 +18,6 @@ export interface SwitchProps extends PropsType {
 }
 
 export default class Switch extends PureComponent<SwitchProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-switch',
     theme: 'primary',
@@ -75,5 +74,4 @@ export default class Switch extends PureComponent<SwitchProps, any> {
       </span>
     );
   }
-
 }

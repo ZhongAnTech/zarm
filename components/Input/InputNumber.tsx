@@ -14,7 +14,6 @@ export interface InputNumberProps extends BaseInputNumberProps {
 }
 
 export default class InputNumber extends Component<InputNumberProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-input',
     disabled: false,
@@ -193,5 +192,4 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       </div>
     );
   }
-
 }

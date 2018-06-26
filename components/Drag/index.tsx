@@ -4,7 +4,6 @@ import PropsType from './PropsType';
 export interface DragProps extends PropsType { }
 
 export default class Drag extends PureComponent<DragProps, {}> {
-
   private dragState: any = {};
 
   onTouchStart = (event) => {
@@ -64,5 +63,4 @@ export default class Drag extends PureComponent<DragProps, {}> {
       onTouchEnd: this.onTouchEnd,
     });
   }
-
 }

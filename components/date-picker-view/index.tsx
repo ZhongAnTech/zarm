@@ -53,7 +53,6 @@ export interface DatePickerViewProps extends BaseDatePickerViewProps {
 }
 
 export default class DatePickerView extends Component<DatePickerViewProps, any> {
-
   static defaultProps = {
     visible: true,
     placeholder: '请选择',
@@ -356,7 +355,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     }
 
     return [hourCol, minuteCol];
-
   }
 
   getDate() {
@@ -454,5 +452,4 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       />
     );
   }
-
 }

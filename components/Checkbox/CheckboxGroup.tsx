@@ -31,7 +31,6 @@ export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
 }
 
 export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-checkbox-group',
     block: false,
@@ -98,5 +97,4 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
 
     return <div className={cls}>{items}</div>;
   }
-
 }

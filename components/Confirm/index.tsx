@@ -10,7 +10,6 @@ export interface ConfirmProps extends PropsType {
 }
 
 export default class Confirm extends PureComponent<ConfirmProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-confirm',
     animationType: 'zoom',
@@ -44,7 +43,6 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
       </Modal>
     );
   }
-
 }
 
 // if (typeof window !== 'undefined') {

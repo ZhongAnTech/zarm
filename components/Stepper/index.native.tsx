@@ -21,7 +21,6 @@ export interface StepperProps extends PropsType {
 const stepperStyles = StyleSheet.create<any>(stepperStyle);
 
 export default class Stepper extends PureComponent<StepperProps, any> {
-
   static defaultProps = {
     disabled: false,
     step: 1,
@@ -182,5 +181,4 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       </View>
     );
   }
-
 }

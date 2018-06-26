@@ -18,7 +18,6 @@ export interface ButtonProps extends PropsType {
 const actionsheetStyles = StyleSheet.create<any>(actionsheetStyle);
 
 export default class ActionSheet extends PureComponent<ButtonProps, any> {
-
   static defaultProps = {
     visible: false,
     spacing: false,
@@ -123,5 +122,4 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
       </Popup>
     );
   }
-
 }

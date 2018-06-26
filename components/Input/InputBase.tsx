@@ -9,7 +9,6 @@ export interface InputBaseProps extends BaseInputBaseProps {
 }
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-input',
     disabled: false,
@@ -185,5 +184,4 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       </div>
     );
   }
-
 }

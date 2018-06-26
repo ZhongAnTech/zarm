@@ -17,7 +17,6 @@ export interface PickerStackProps extends BasePickerProps {
 }
 
 export default class PickerStack extends Component<PickerStackProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-picker',
     value: [],

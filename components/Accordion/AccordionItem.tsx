@@ -8,7 +8,6 @@ export interface AccordionItemProps extends BaseAccordionItemProps {
 }
 
 export default class AccordionItem extends PureComponent<AccordionItemProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-accordion',
   };
@@ -131,5 +130,4 @@ export default class AccordionItem extends PureComponent<AccordionItemProps, any
       </div>
     );
   }
-
 }

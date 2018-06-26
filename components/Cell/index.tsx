@@ -8,7 +8,6 @@ export interface CellProps extends PropsType {
 }
 
 export default class Cell extends PureComponent<CellProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-cell',
     hasArrow: false,
@@ -68,5 +67,4 @@ export default class Cell extends PureComponent<CellProps, {}> {
       </div>
     );
   }
-
 }

@@ -19,7 +19,6 @@ export interface PopupProps extends PropsType {
 const popupStyles = StyleSheet.create<any>(popupStyle);
 
 export default class Popup extends PureComponent<PopupProps, any> {
-
   static defaultProps = {
     visible: false,
     mask: true,
@@ -194,5 +193,4 @@ export default class Popup extends PureComponent<PopupProps, any> {
       </View>
     );
   }
-
 }

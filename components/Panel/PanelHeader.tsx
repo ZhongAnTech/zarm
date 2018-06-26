@@ -8,7 +8,6 @@ export interface PanelHeaderProps extends BasePanelHeaderProps {
 }
 
 export default class PanelHeader extends PureComponent<PanelHeaderProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-panel',
   };
@@ -24,5 +23,4 @@ export default class PanelHeader extends PureComponent<PanelHeaderProps, {}> {
       </div>
     );
   }
-
 }

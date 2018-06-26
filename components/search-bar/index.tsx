@@ -12,7 +12,6 @@ export interface SearchBarProps extends BaseSearchBarProps {
 }
 
 export default class SearchBar extends PureComponent<SearchBarProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-searchbar',
     placeholder: '搜索',
@@ -266,5 +265,4 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
       </div>
     );
   }
-
 }

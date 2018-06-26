@@ -10,7 +10,6 @@ export interface SpinnerProps extends PropsType {
 }
 
 export default class Spinner extends PureComponent<SpinnerProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-spinner',
     theme: 'primary',
@@ -41,5 +40,4 @@ export default class Spinner extends PureComponent<SpinnerProps, any> {
       </svg>
     );
   }
-
 }

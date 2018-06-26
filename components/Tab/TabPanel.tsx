@@ -7,7 +7,6 @@ export interface TabPannelProps {
 }
 
 export default class TabPanel extends PureComponent<TabPannelProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-tab',
   };
@@ -36,5 +35,4 @@ export default class TabPanel extends PureComponent<TabPannelProps, any> {
 
     return <div className={cls} role="tabpanel">{children}</div>;
   }
-
 }

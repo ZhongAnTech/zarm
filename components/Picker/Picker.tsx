@@ -22,7 +22,6 @@ export interface PickerProps extends BasePickerProps {
 }
 
 export default class Picker extends PureComponent<PickerProps, any> {
-
   static Stack: any;
 
   static defaultProps = {
@@ -169,5 +168,4 @@ export default class Picker extends PureComponent<PickerProps, any> {
       </div>
     );
   }
-
 }

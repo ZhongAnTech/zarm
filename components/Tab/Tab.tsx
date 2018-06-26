@@ -20,8 +20,8 @@ export interface TabProps extends PropsType {
 }
 
 export default class Tab extends PureComponent<TabProps, any> {
-
   static Panel: any;
+
   static defaultProps = {
     prefixCls: 'za-tab',
     theme: 'primary',
@@ -147,5 +147,4 @@ export default class Tab extends PureComponent<TabProps, any> {
       </div>
     );
   }
-
 }

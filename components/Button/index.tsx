@@ -9,7 +9,6 @@ export interface ButtonProps extends PropsType {
 }
 
 export default class Button extends PureComponent<ButtonProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-button',
     theme: 'default',
@@ -72,5 +71,4 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       </a>
     );
   }
-
 }

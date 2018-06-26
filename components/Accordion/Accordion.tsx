@@ -9,7 +9,6 @@ export interface AccordionProps extends BaseAccordionProps {
 }
 
 export default class Accordion extends PureComponent<AccordionProps, any> {
-
   static defaultProps = {
     prefixCls: 'za-accordion',
     multiple: true,
@@ -88,7 +87,6 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
     const { activeIndex } = this.state;
 
     return Children.map(this.props.children, (ele, index) => {
-
       return cloneElement(ele as JSX.Element, {
         index: String(index),
         animated,
@@ -109,5 +107,4 @@ export default class Accordion extends PureComponent<AccordionProps, any> {
       </div>
     );
   }
-
 }

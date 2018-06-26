@@ -10,7 +10,6 @@ export interface LoadingProps extends PropsType {
 }
 
 export default class Loading extends PureComponent<LoadingProps, {}> {
-
   static defaultProps = {
     prefixCls: 'za-loading',
   };
@@ -32,7 +31,6 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       </Toast>
     );
   }
-
 }
 
 if (typeof window !== 'undefined') {
