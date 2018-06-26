@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SearchBar from '../index';
 
