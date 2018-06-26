@@ -1,6 +1,7 @@
 assets
 coverage
 examples
+examples-rn
 node_modules
 scripts
 *.log
