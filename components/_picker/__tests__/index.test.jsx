@@ -33,7 +33,7 @@ describe('Picker', () => {
           { value: '2', label: '选项二' },
         ]}
         visible
-        />
+      />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -145,7 +145,7 @@ describe('Picker', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-        />
+      />
     );
     wrapper.setProps({
       dataSource: [
