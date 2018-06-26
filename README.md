@@ -44,7 +44,6 @@ import 'zarm/dist/zarm.min.css';
       ['import', {
         libraryName: 'zarm',
         style: true,
-        camel2DashComponentName: false,
       }],
     ]
   }
