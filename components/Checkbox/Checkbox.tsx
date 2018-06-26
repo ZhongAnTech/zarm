@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
-import Cell from '../Cell';
-import Button from '../Button';
+import Cell from '../cell';
+import Button from '../button';
 
 function getChecked(props, defaultChecked) {
   if ('checked' in props && props.checked) {

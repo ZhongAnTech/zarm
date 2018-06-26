@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseRadioProps } from './PropsType';
-import Cell from '../Cell';
-import Button from '../Button';
-import Icon from '../Icon';
+import Cell from '../cell';
+import Button from '../button';
+import Icon from '../icon';
 
 const getChecked = (props, defaultChecked) => {
   if ('checked' in props && props.checked) {

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Spinner from '../Spinner';
+import Spinner from '../spinner';
 
 export interface ProgressProps extends PropsType {
   prefixCls?: string;

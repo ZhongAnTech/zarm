@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 // import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Modal from '../Modal';
+import Modal from '../modal';
 
 export interface AlertProps extends PropsType {
   prefixCls?: string;

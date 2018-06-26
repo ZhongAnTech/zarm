@@ -3,9 +3,9 @@ import { REFRESH_STATE, LOAD_STATE, PropsType } from './PropsType';
 import classnames from 'classnames';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
-import Drag from '../Drag';
-import Spinner from '../Spinner';
-import Icon from '../Icon';
+import Drag from '../drag';
+import Spinner from '../spinner';
+import Icon from '../icon';
 
 export interface PullProps extends PropsType {
   prefixCls?: string;

@@ -1,4 +1,4 @@
-import { BasePickerViewProps } from '../PickerView/PropsType';
+import { BasePickerViewProps } from '../picker-view/PropsType';
 
 export interface BasePickerProps extends BasePickerViewProps {
   visible?: boolean;

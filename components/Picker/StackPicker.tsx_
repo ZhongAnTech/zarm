@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Popup from '../Popup';
+import Popup from '../popup';
 import { BasePickerProps } from './PropsType';
 
 const stopEventPropagation = (e) => {

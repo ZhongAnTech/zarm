@@ -1,4 +1,4 @@
 import '../../style/';
-import '../../Mask/style/';
-import '../../Icon/style/';
+import '../../mask/style/';
+import '../../icon/style/';
 import './index.scss';

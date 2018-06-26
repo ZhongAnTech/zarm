@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
-import Mask from '../Mask';
+import Mask from '../mask';
 import Portal from './Portal';
 
 const IS_REACT_16 = !!(ReactDOM as any).createPortal;

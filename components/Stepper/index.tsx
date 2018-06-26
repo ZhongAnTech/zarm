@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Icon from '../Icon';
+import Icon from '../icon';
 
 const getValue = (props, defaultValue) => {
   if ('value' in props) {

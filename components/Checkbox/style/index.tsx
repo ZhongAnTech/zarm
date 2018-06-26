@@ -1,4 +1,4 @@
 import '../../style/';
-import '../../Cell/style/';
-import '../../Button/style/';
+import '../../cell/style/';
+import '../../button/style/';
 import './index.scss';

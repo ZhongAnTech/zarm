@@ -1,5 +1,5 @@
 import '../../style/';
-import '../../Cell/style/';
-import '../../Button/style/';
-import '../../Icon/style/';
+import '../../cell/style/';
+import '../../button/style/';
+import '../../icon/style/';
 import './index.scss';
