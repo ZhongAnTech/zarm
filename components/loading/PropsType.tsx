@@ -1,4 +1,4 @@
-import PropsType from '../Toast/PropsType';
+import PropsType from '../toast/PropsType';
 
 declare global {
   interface Window {

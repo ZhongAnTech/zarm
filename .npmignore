@@ -1,10 +1,13 @@
 assets
 coverage
 examples
+examples-rn
 node_modules
 scripts
 *.log
 .DS_Store
+.commitlintrc
+.editorconfig
 .eslintignore
 .eslintrc
 .gitignore
