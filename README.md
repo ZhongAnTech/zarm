@@ -64,7 +64,7 @@ import 'zarm/lib/Button/style';
 通过覆盖Sass变量定义达到定制主题的效果
 
 ```css
-@import "~zarm/lib/style/index.scss";  // 引入官方提供的Sass基础样式文件
+@import "~zarm/lib/style/base.scss";  // 引入官方提供的Sass基础样式文件
 @import "your-theme-file.scss";  // 用于覆盖上面定义的变量
 @import "~zarm/lib/style/components.scss";  // 引入官方提供的组件样式文件
 ```
