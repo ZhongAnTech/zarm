@@ -29,6 +29,7 @@ class App extends Component {
               <Route exact path="/" component={AsyncComponent(() => import('../pages/Index'))} />
 
               {/* 表单组件 */}
+              <Route path="/a" component={AsyncComponent(() => import('../pages/a'))} />
               <Route path="/checkbox" component={AsyncComponent(() => import('../pages/CheckboxPage'))} />
               <Route path="/input" component={AsyncComponent(() => import('../pages/InputPage'))} />
               <Route path="/picker" component={AsyncComponent(() => import('../pages/PickerPage'))} />

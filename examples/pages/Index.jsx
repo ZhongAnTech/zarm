@@ -21,6 +21,7 @@ class Page extends PureComponent {
           <Panel>
             <Panel.Header title="表单组件" />
             <Panel.Body>
+              <Cell hasArrow title="aaaaaaaa" onClick={() => history.push('/a')} />
               <Cell hasArrow title="复选框 Checkbox" onClick={() => history.push('/checkbox')} />
               <Cell hasArrow title="文件选择器 FilePicker" onClick={() => history.push('/file-picker')} />
               <Cell hasArrow title="文本框 Input" onClick={() => history.push('/input')} />
