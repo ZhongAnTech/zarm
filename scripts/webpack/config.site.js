@@ -62,13 +62,16 @@ config.plugins.push(
   })
 );
 
-Object.keys(config.entry).forEach((key) => {
-  config.plugins.push(new HtmlWebpackPlugin({
-    template: `./examples/${key}.html`,
-    filename: `${key}.html`,
-    chunks: ['manifest', key],
-  }));
-});
+config.plugins.push(new HtmlWebpackPlugin({
+  template: './examples/index.html',
+  filename: 'index.html',
+  chunk: ['manifest', 'index'],
+}));
+config.plugins.push(new HtmlWebpackPlugin({
+  template: './examples/index_umd.html',
+  filename: 'index_umd.html',
+  inject: false,
+}));
 
 config.resolve.alias = {
   zarm: process.cwd(),

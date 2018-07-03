@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import 'normalize.css';
 // import FastClick from 'fastclick';
 import AsyncComponent from './AsyncComponent';
 import '../styles/index';
