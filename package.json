@@ -33,7 +33,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "start": "npm run deploy && npm run dev",
-    "clean": "rm -rf lib es dist assets coverage .temp && npm run clean:rn",
+    "clean": "rm -rf lib es dist assets coverage .temp",
     "clean:rn": "git clean -dxf -e node_modules",
     "dev": "webpack-dev-server --config scripts/webpack/config.dev.js",
     "rn-start": "node node_modules/react-native/local-cli/cli.js start",
