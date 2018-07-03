@@ -7,9 +7,11 @@ import {
   Animated,
   Easing,
 } from 'react-native';
+
+import Mask from '../mask/index.native';
+
 import PropsType from './PropsType';
 import popupStyle from './style/index.native';
-// import Mask from '../Mask';
 
 export interface PopupProps extends PropsType {
   style?: CSSProperties;
@@ -28,25 +30,24 @@ export default class Popup extends PureComponent<PopupProps, any> {
     animationDuration: 200,
     styles: popupStyles,
   };
-  private timer: number;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMaskShow: props.visible || false,
-      isPending: false,
-      isShow: false,
-      animationState: 'enter',
-      directionStyle: {},
-      transfromStyle: {},
-      translateValue: new Animated.Value(0),
-    };
-  }
+  state = {
+    isMaskShow: this.props.visible || false,
+    isPending: false,
+    isShow: false,
+    animationState: 'enter',
+    directionStyle: {},
+    transformStyle: {},
+    translateValue: new Animated.Value(0),
+  };
+
+  private timer: number;
 
   componentDidMount() {
     this.state.translateValue.addListener((value) => {
       this.animationEnd(value);
     });
+
     if (this.props.visible) {
       // this.enter(this.props);
       this.setState({
@@ -57,10 +58,13 @@ export default class Popup extends PureComponent<PopupProps, any> {
 
   componentWillUnmount() {
     this.state.translateValue.removeAllListeners();
+
+    clearTimeout(this.timer);
   }
 
   componentWillReceiveProps(nextProps) {
     clearTimeout(this.timer);
+
     if (nextProps.visible) {
       this.enter(nextProps);
     } else {
@@ -69,26 +73,27 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   enter = ({ stayTime, autoClose, onMaskClick, direction, animationDuration }) => {
-    let transfromStyle = {};
+    let transformStyle = {};
     let newValue;
     if (direction === 'bottom') {
-      transfromStyle = { transform: [{ translateY: this.state.translateValue }] };
+      transformStyle = { transform: [{ translateY: this.state.translateValue }] };
       newValue = this.state.directionStyle[direction];
     } else if (direction === 'top') {
-      transfromStyle = { transform: [{ translateY: this.state.translateValue }] };
+      transformStyle = { transform: [{ translateY: this.state.translateValue }] };
       newValue = -this.state.directionStyle[direction];
     } else if (direction === 'left') {
-      transfromStyle = { transform: [{ translateX: this.state.translateValue }] };
+      transformStyle = { transform: [{ translateX: this.state.translateValue }] };
       newValue = -this.state.directionStyle[direction];
     } else {
-      transfromStyle = { transform: [{ translateX: this.state.translateValue }] };
+      transformStyle = { transform: [{ translateX: this.state.translateValue }] };
       newValue = this.state.directionStyle[direction];
     }
+
     this.setState({
       isMaskShow: true,
       isPending: true,
       animationState: 'enter',
-      transfromStyle: transfromStyle,
+      transformStyle: transformStyle,
     });
 
     Animated.timing(
@@ -98,9 +103,11 @@ export default class Popup extends PureComponent<PopupProps, any> {
         duration: animationDuration,
         easing: Easing.linear,
       }).start();
+
     if (stayTime > 0 && autoClose) {
       this.timer = setTimeout(() => {
         onMaskClick();
+
         clearTimeout(this.timer);
       }, stayTime);
     }
@@ -112,6 +119,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       animationState: 'leave',
       isMaskShow: visible || false,
     });
+
     Animated.timing(
       this.state.translateValue,
       {
@@ -128,6 +136,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       this.setState({
         isPending: false,
       });
+
       if (typeof onClose === 'function') {
         onClose();
       }
@@ -135,41 +144,64 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   renderMask = () => {
-    return null;
-    // const { mask, maskType, onMaskClick, styles, direction } = this.props;
-    // const { isMaskShow } = this.state;
-    // const maskStyle = [
-    //   styles![`${direction}Mask`],
-    // ];
-    // return mask && (
-    //     <Mask
-    //       visible={isMaskShow}
-    //       type={maskType}
-    //       onClose={onMaskClick}
-    //       style={maskStyle}
-    //     />
-    //   );
+    const {
+      mask,
+      maskType,
+      onMaskClick,
+      styles,
+      direction,
+    } = this.props;
+
+    const { isMaskShow } = this.state;
+
+    const maskStyle = styles![`${direction}Mask`];
+
+    return mask && (
+      <Mask
+        visible={isMaskShow}
+        type={maskType}
+        onClose={onMaskClick}
+        style={maskStyle}
+      />
+    );
   }
 
   onLayout = (e, direction, that) => {
     let directionStyle = {};
-    UIManager.measure(e.target, (_x, _y, width, height, _pageX, _pageY) => {
+
+    UIManager.measure(e.target, (_x, _y, width, height) => {
       if (direction === 'bottom' || direction === 'top') {
         directionStyle[direction] = -height;
       } else {
         directionStyle[direction] = -width;
       }
-      that.setState({ directionStyle: directionStyle });
+
+      that.setState({
+        directionStyle: directionStyle,
+      });
+
       if (that.state.isShow) {
         that.enter(that.props);
-        that.setState({ isShow: false });
+
+        that.setState({
+          isShow: false,
+        });
       }
     });
   }
 
   render() {
-    const { direction, styles, children, style } = this.props;
-    const { directionStyle, transfromStyle } = this.state;
+    const {
+      direction,
+      styles,
+      children,
+      style,
+    } = this.props;
+
+    const {
+      directionStyle,
+      transformStyle,
+    } = this.state;
 
     const popupCls = [
       styles!.wrapperStyle,
@@ -182,13 +214,17 @@ export default class Popup extends PureComponent<PopupProps, any> {
       styles![`${direction}Invisible`],
     ] as ViewStyle;
 
-    const popUpStyle = [popupCls, directionStyle, transfromStyle];
+    const popUpStyle = [popupCls, directionStyle, transformStyle];
 
     return (
       <View style={invisibleStyle}>
-        <Animated.View style={popUpStyle} onLayout={(e) => this.onLayout(e, direction, this)}>
+        <Animated.View
+          style={popUpStyle}
+          onLayout={(e) => this.onLayout(e, direction, this)}
+        >
           {children}
         </Animated.View>
+
         {this.renderMask()}
       </View>
     );
