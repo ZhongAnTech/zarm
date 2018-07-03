@@ -35,9 +35,9 @@ export default {
     height: '100%',
   },
   invisibleWrapper: {
-    height: 1,
+    // height: 1,
     position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0)',
+    // backgroundColor: 'rgba(0,0,0,0)',
   },
   topInvisible: {
     left: 0,
