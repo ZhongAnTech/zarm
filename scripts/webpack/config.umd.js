@@ -12,8 +12,8 @@ config.devtool = 'source-map';
 
 config.entry = {
   zarm: [
+    './components/style/entry.tsx',
     './components/index.tsx',
-    './components/style/index.scss',
   ],
 };
 
