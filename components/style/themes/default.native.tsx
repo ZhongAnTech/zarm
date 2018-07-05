@@ -94,10 +94,10 @@ export default {
   cell_background: '#fff',                           // 背景色
   cell_line_left: 15,                                // 分隔线左边距
   cell_line_hasicon_left: 59,                        // 带icon时分隔线左边距
-  cell_title_color: this.color_text,                 // 标题文字颜色
-  cell_title_font_size: this.font_size_lg,           // 标题文字大小
+  cell_title_color: '#333',                          // 标题文字颜色
+  cell_title_font_size: 15,                          // 标题文字大小
   cell_description_color: '#999',                    // 标题文字颜色
-  cell_description_font_size: this.font_size_md,     // 描述文字大小
+  cell_description_font_size: 14,                    // 描述文字大小
   cell_icon_width: 28,                               // 图标度
   cell_icon_height: 28,                              // 图标度
   cell_label_width: 100,                             // 表单label度
@@ -131,10 +131,10 @@ export default {
   noticebar_height: 24,
 
   // Panel
-  panel_header_color: this.color_text_caption,
+  panel_header_color: '#999',
   panel_header_font_size: 14,
-  panel_body_color: this.color_text,
-  panel_footer_color: this.color_text_caption,
+  panel_body_color: '#333',
+  panel_footer_color: '#999',
   panel_footer_font_size: 12,
 
   // Pull
@@ -176,7 +176,7 @@ export default {
 
   // Tab
   tab_height: 45,
-  tab_item_font_size: this.font_size_lg,
+  tab_item_font_size: 15,
   tab_line_height: 2,
 
   // Toast
