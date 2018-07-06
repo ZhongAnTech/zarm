@@ -31,4 +31,17 @@ describe('Drag', () => {
       touches: [200, 100],
     });
   });
+
+  it('event props do not exist', () => {
+    const wrapper = shallow(<Drag><div /></Drag>);
+    wrapper.simulate('touchStart', {
+      touches: [0, 0],
+    });
+    wrapper.simulate('touchMove', {
+      touches: [100, 50],
+    });
+    wrapper.simulate('touchEnd', {
+      touches: [200, 100],
+    });
+  });
 });
