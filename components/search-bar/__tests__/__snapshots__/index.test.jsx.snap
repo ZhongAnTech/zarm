@@ -160,7 +160,19 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onCancel={[Function]}
+  onCancel={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
   prefixCls="za-searchbar"
   shape="round"
@@ -264,7 +276,21 @@ exports[`SearchBar renders onChange called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onChange={[Function]}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "测试值",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
   prefixCls="za-searchbar"
   shape="round"
@@ -368,7 +394,19 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onFocus={[Function]}
+  onFocus={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
   prefixCls="za-searchbar"
   shape="round"
@@ -472,7 +510,21 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onSubmit={[Function]}
+  onSubmit={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "My new value",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
   prefixCls="za-searchbar"
   shape="round"

@@ -129,7 +129,7 @@ exports[`Cell icon 1`] = `
 exports[`Cell onClick 1`] = `
 <div
   className="za-cell is-link has-arrow"
-  onClick={[Function]}
+  onClick={[MockFunction]}
   onTouchStart={[Function]}
 >
   <div
