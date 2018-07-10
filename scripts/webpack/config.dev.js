@@ -10,11 +10,6 @@ config.entry = {
   index: ['./examples/index.js'],
 };
 
-config.module.rules.push({
-  test: /\.md$/,
-  use: 'raw-loader',
-});
-
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
   new MiniCssExtractPlugin({
