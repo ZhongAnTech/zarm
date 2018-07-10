@@ -58,7 +58,7 @@ class Page extends Component {
       const { length } = dataSource;
 
       for (let i = length; i < length + 20; i++) {
-        dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+        dataSource.push(<Cell key={+i} onClick={() => console.log(i)}>第 {i + 1} 行</Cell>);
       }
 
       this.setState({

@@ -7,8 +7,8 @@ exports[`Popup renders correctly 1`] = `
   direction="bottom"
   mask={true}
   maskType="normal"
-  onClose={[Function]}
-  onMaskClick={[Function]}
+  onClose={[MockFunction]}
+  onMaskClick={[MockFunction]}
   prefixCls="za-popup"
   stayTime={3000}
   visible={false}
@@ -32,7 +32,7 @@ exports[`Popup renders correctly 1`] = `
       </div>
       <Mask
         className=""
-        onClose={[Function]}
+        onClose={[MockFunction]}
         prefixCls="za-mask"
         style={
           Object {
