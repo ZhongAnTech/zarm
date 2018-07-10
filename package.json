@@ -57,7 +57,8 @@
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "precommit": "lint-staged",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "release": "sh scripts/release.sh"
   },
   "peerDependencies": {
     "react": ">=16.0.0",
