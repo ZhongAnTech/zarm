@@ -128,9 +128,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     return true;
   }
 
-  onDragEnd = (event, { offsetY }) => {
-    event.preventDefault();
-
+  onDragEnd = (_event, { offsetY }) => {
     // 没有产生位移
     if (!offsetY) {
       return;

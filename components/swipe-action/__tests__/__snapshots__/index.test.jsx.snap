@@ -48,7 +48,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="primary"
       >
@@ -60,7 +60,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="warning"
       >
@@ -80,7 +80,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="primary"
       >
@@ -92,7 +92,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="warning"
       >

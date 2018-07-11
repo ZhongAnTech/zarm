@@ -16,7 +16,7 @@ module.exports = {
   ],
   transform: {
     '^.+\\.jsx?$': require.resolve('./preprocessor'),
-    '^.+\\.tsx?$': '<rootDir>/node_modules/ts-jest/preprocessor',
+    '^.+\\.tsx?$': 'ts-jest',
   },
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
