@@ -43,7 +43,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell, Icon } from 'zarm';
 
-const img = 'https://static.zhongan.com/website/factoryOnline/assets/images/public/icon_phone.png';
+const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
 
 class Demo extends React.Component {
   render() {
@@ -105,7 +105,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell, Icon } from 'zarm';
 
-const img = 'https://static.zhongan.com/website/factoryOnline/assets/images/public/icon_phone.png';
+const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
 
 class Demo extends React.Component {
   render() {
