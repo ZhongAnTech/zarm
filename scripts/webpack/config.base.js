@@ -93,7 +93,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
+    extensions: [' ', '.ts', '.tsx', '.js', '.jsx', '.scss'],
   },
 
   plugins: [],

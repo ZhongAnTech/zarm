@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
@@ -62,13 +62,16 @@ config.plugins.push(
   })
 );
 
-Object.keys(config.entry).forEach((key) => {
-  config.plugins.push(new HtmlWebpackPlugin({
-    template: `./examples/${key}.html`,
-    filename: `${key}.html`,
-    chunks: ['manifest', key],
-  }));
-});
+config.plugins.push(new HtmlWebpackPlugin({
+  template: './examples/index.html',
+  filename: 'index.html',
+  chunk: ['manifest', 'index'],
+}));
+config.plugins.push(new HtmlWebpackPlugin({
+  template: './examples/index_umd.html',
+  filename: 'index_umd.html',
+  inject: false,
+}));
 
 config.resolve.alias = {
   zarm: process.cwd(),

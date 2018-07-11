@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
@@ -10,6 +12,7 @@ config.devtool = 'source-map';
 
 config.entry = {
   zarm: [
+    './components/style/entry.tsx',
     './components/index.tsx',
   ],
 };
@@ -38,20 +41,34 @@ config.externals = {
 
 const env = process.env.NODE_ENV;
 const cssConfig = {
-  filename: 'stylesheet/[name].css',
-  chunkFilename: 'stylesheet/[id].css',
+  filename: '[name].css',
 };
+
 if (env === 'production') {
+  cssConfig.filename = '[name].min.css';
   config.mode = 'production';
   config.output.filename = '[name].min.js';
+  config.optimization = {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+        uglifyOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  };
+
   // config.plugins.push(
   //   new BundleAnalyzerPlugin({
   //     analyzerMode: 'static',
   //   })
   // );
-
-  cssConfig.filename = '[name].min.css';
-  cssConfig.chunkFilename = '[id].min.css';
 }
 
 config.plugins.push(
