@@ -154,9 +154,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 :::api API
 
-### Props
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
+| prefixCls | string | za-button | | 类名前缀 |
+| className | string | | | 追加类名 |
 | theme | string | `default` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | size | string | | `xl`, `lg`, `sm`, `xs` | 大小 |
 | shape | string | | `radius`, `round`, `circle` | 形状 |
@@ -166,11 +167,5 @@ ReactDOM.render(<Demo />, mountNode);
 | loading | boolean | falxse | | 是否显示加载中 |
 | icon | JSX.Element | | | icon |
 | onClick | <code>(e?: any) => void</code> | noop | | 点击后触发的回调函数 |
-
-### Only Web
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-button | | 类名前缀 |
-| className | string | | | 追加类名 |
 
 :::
