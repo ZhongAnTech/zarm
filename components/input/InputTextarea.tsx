@@ -86,7 +86,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   onInputChange = (e) => {
     const { onChange } = this.props;
     const value = e.target.value;
-    const length = countSymbols(value) + (value ? value.length : 0);
+    const length = countSymbols(value);
     this.setState({ length });
     if (typeof onChange === 'function') {
       onChange(value);
