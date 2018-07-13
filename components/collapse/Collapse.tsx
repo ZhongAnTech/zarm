@@ -1,16 +1,16 @@
 import React, { PureComponent, Children, cloneElement } from 'react';
 import classnames from 'classnames';
-import { BaseAccordionProps } from './PropsType';
+import { BaseCollapseProps } from './PropsType';
 import { isArray } from '../utils/validate';
 
-export interface AccordionProps extends BaseAccordionProps {
+export interface CollapseProps extends BaseCollapseProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Accordion extends PureComponent<AccordionProps, any> {
+export default class Collapse extends PureComponent<CollapseProps, any> {
   static defaultProps = {
-    prefixCls: 'za-accordion',
+    prefixCls: 'za-collapse',
     multiple: true,
     animated: false,
     open: false,

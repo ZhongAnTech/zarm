@@ -1,4 +1,4 @@
-export interface BaseAccordionProps {
+export interface BaseCollapseProps {
   activeIndex?: string | number | Array<string | number>;
   defaultActiveIndex?: string | number | Array<string | number>;
   multiple?: boolean;
@@ -7,7 +7,7 @@ export interface BaseAccordionProps {
   onChange: (key: number) => void;
 }
 
-export interface BaseAccordionItemProps {
+export interface BaseCollapseItemProps {
   title: string | JSX.Element;
   index: string;
   activeIndex?: Array<string>;

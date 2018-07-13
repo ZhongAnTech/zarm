@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseAccordionItemProps } from './PropsType';
+import { BaseCollapseItemProps } from './PropsType';
 
-export interface AccordionItemProps extends BaseAccordionItemProps {
+export interface CollapseItemProps extends BaseCollapseItemProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class AccordionItem extends PureComponent<AccordionItemProps, any> {
+export default class CollapseItem extends PureComponent<CollapseItemProps, any> {
   static defaultProps = {
-    prefixCls: 'za-accordion',
+    prefixCls: 'za-collapse',
   };
 
   private content;

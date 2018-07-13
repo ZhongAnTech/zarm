@@ -62,7 +62,7 @@ $opacity-toast: .7;
 $opacity-tooltip: .7;
 
 /* 组件前缀 */
-$prefixCls-accordion: za-accordion;
+$prefixCls-collapse: za-collapse;
 $prefixCls-actionsheet: za-actionsheet;
 $prefixCls-alert: za-alert;
 $prefixCls-badge: za-badge;
@@ -98,10 +98,10 @@ $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
 $prefixCls-filepicker: za-filepicker;
 
-// Accordion
-$accordion-height: r(45);
-$accordion-padding: r(15);
-$accordion-arrow-color: #c7c7cc;
+// Collapse
+$collapse-height: r(45);
+$collapse-padding: r(15);
+$collapse-arrow-color: #c7c7cc;
 
 // ActionSheet
 $actionsheet-margin: 0;
