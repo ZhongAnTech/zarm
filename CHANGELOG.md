@@ -16,10 +16,10 @@
   - 调整`DatePicker`组件的使用方式，拆分成`DatePickerView`、`DatePicker`、`DateSelect`三种场景的实现。
   - 调整`Pull`组件的API。详见[文档](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/components/Pull.md)
   - 调整`ActionSheet`组件的默认样式。
-  - 文件选择器`Uploader`组件更名为`FilePicker`。
+  - 组件更名：文件选择器`Uploader`组件更名为`FilePicker`，手风琴`Accordion`组件更名为`Collapse`。
 
 - Bug Fix
-  - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[5147573](https://github.com/ZhonganTechENG/zarm/commit/51475737dd8a17d499492c093568a647bbd28f2a)）
+  - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[6f6ccd6](https://github.com/ZhonganTechENG/zarm/commit/cc6924b4f4c3cb0717fd5bf24e3cd94ac7695f59)）
   - 修复组件`Pull`不兼容自定义scroll容器的bug。（[a9084cc](https://github.com/ZhonganTechENG/zarm/commit/a9084cc0eba7b92cff7eb712e77ee43bf597f887)）
   - 修复组件`Swipe`手动拖拽时，同时触发了滚动条滚动后，不能执行touchend事件里动画的bug。（[62a96d8](https://github.com/ZhonganTechENG/zarm/commit/62a96d8089f9d0f015d642f24077aaef585aa278)）
 
