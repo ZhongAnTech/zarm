@@ -96,7 +96,6 @@ export default class Modal extends PureComponent<ModalProps, any> {
       }),
       dialog: classnames(`${prefixCls}-dialog`, {
         [`${animationType}-${animationState}`]: isPending,
-        [`fade-${animationState}`]: isPending,
       }),
       // mask: classnames({
       //   [`fade-${animationState}`]: isPending,
