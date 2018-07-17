@@ -88,18 +88,20 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   handleComposition(e) {
+    const { onCompositionStart, onCompositionUpdate, onCompositionEnd, onChange } = this.props;
+
     if (e.type === 'compositionstart') {
       this.setState({
         isOnComposition: true,
       });
-      if (this.props.onCompositionStart) {
-        this.props.onCompositionStart(e);
+      if (typeof onCompositionStart === 'function') {
+        onCompositionStart(e);
       }
     }
 
     if (e.type === 'compositionupdate') {
-      if (this.props.onCompositionUpdate) {
-        this.props.onCompositionUpdate(e);
+      if (typeof onCompositionUpdate === 'function') {
+        onCompositionUpdate(e);
       }
     }
 
@@ -109,11 +111,11 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
         isOnComposition: false,
       });
       const value = e.target.value;
-      if (this.props.onCompositionEnd) {
-        this.props.onCompositionEnd(e);
+      if (typeof onCompositionEnd === 'function') {
+        onCompositionEnd(e);
       }
-      if (this.props.onChange) {
-        this.props.onChange(value);
+      if (typeof onChange === 'function') {
+        onChange(value);
       }
     }
   }
@@ -156,24 +158,34 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   render() {
-    const { prefixCls, className, disabled, onClear, clearable, type, ...others } = this.props;
-    const { value, focused } = this.state;
+    const { prefixCls, className, disabled, onClear, clearable, type, value, ...others } = this.props;
+    const valueState = this.state.value;
+    const focused = this.state.focused;
+
     const cls = classnames(prefixCls, `${prefixCls}-${type}`, className, {
       disabled,
       clearable,
     });
     const clearCls = classnames(`${prefixCls}-clear`, {
-      [`${prefixCls}-clear-show`]: !!(focused && value && value.length > 0),
+      [`${prefixCls}-clear-show`]: !!(focused && valueState && valueState.length > 0),
     });
+
+    const valueProps: any = {};
+    if ('value' in this.props) {
+      valueProps.value = valueState;
+    }
+
+    const showClearIcon = clearable && ('value' in this.props);
+
     return (
       <div className={cls}>
         <input
           {...others}
+          {...valueProps}
           autoComplete="off"
           ref={(ele) => { this.input = ele; }}
           type={type}
           disabled={disabled}
-          value={value}
           onChange={this.onChange}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
@@ -181,7 +193,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
           onCompositionUpdate={(e) => { this.handleComposition(e); }}
           onCompositionEnd={(e) => { this.handleComposition(e); }}
         />
-        {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
+        {showClearIcon && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
       </div>
     );
   }
