@@ -20,7 +20,6 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     autoHeight: false,
     showLength: false,
     focused: false,
-    clearable: false,
   };
 
   private input;
@@ -58,7 +57,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     }
   }
 
-  onInputFocus = (e) => {
+  onFocus = (e) => {
     if (!('focused' in this.props)) {
       this.setState({
         focused: true,
@@ -71,7 +70,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     }
   }
 
-  onInputBlur = (e) => {
+  onBlur = (e) => {
     if (!('focused' in this.props)) {
       this.setState({
         focused: false,
@@ -83,7 +82,40 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     }
   }
 
-  onInputChange = (e) => {
+  handleComposition(e) {
+    const { onCompositionStart, onCompositionUpdate, onCompositionEnd, onChange } = this.props;
+
+    if (e.type === 'compositionstart') {
+      this.setState({
+        isOnComposition: true,
+      });
+      if (typeof onCompositionStart === 'function') {
+        onCompositionStart(e);
+      }
+    }
+
+    if (e.type === 'compositionupdate') {
+      if (typeof onCompositionUpdate === 'function') {
+        onCompositionUpdate(e);
+      }
+    }
+
+    if (e.type === 'compositionend') {
+      // composition is end
+      this.setState({
+        isOnComposition: false,
+      });
+      const value = e.target.value;
+      if (typeof onCompositionEnd === 'function') {
+        onCompositionEnd(e);
+      }
+      if (typeof onChange === 'function') {
+        onChange(value);
+      }
+    }
+  }
+
+  onChange = (e) => {
     const { onChange } = this.props;
     const value = e.target.value;
     const length = countSymbols(value);
@@ -91,6 +123,14 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     if (typeof onChange === 'function') {
       onChange(value);
     }
+  }
+
+  focus() {
+    this.input.focus();
+  }
+
+  blur() {
+    this.input.blur();
   }
 
   render() {
@@ -102,13 +142,11 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
-      clearable,
       ...others,
     } = this.props;
 
     const cls = classnames(prefixCls, `${prefixCls}-textarea`, className, {
       disabled,
-      clearable,
     });
 
     const textLengthRender =
@@ -125,11 +163,14 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
         <textarea
           {...others}
           ref={(ele) => { this.input = ele; }}
-          disabled={disabled}
           maxLength={maxLength}
-          onChange={this.onInputChange}
-          onFocus={this.onInputFocus}
-          onBlur={this.onInputBlur}
+          disabled={disabled}
+          onChange={this.onChange}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onCompositionStart={(e) => { this.handleComposition(e); }}
+          onCompositionUpdate={(e) => { this.handleComposition(e); }}
+          onCompositionEnd={(e) => { this.handleComposition(e); }}
         />
         {textLengthRender}
       </div>
