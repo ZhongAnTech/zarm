@@ -23,7 +23,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      focused: props.focused || false,
+      focused: false,
       value: props.defaultValue || props.value || '',
     };
   }
@@ -36,12 +36,6 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
   componentWillReceiveProps(nextProps) {
     const { value } = this.state;
-    if ('focused' in nextProps) {
-      this.setState({
-        focused: nextProps.focused,
-      });
-    }
-
     if ('value' in nextProps && value !== nextProps.value ) {
       this.setState({
         value: nextProps.value,
@@ -57,16 +51,13 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   onFocus = (e) => {
-    const value = e.target.value;
-    if (!('focused' in this.props)) {
-      this.setState({
-        focused: true,
-      });
-    }
+    this.setState({
+      focused: true,
+    });
 
     const { onFocus } = this.props;
     if (typeof onFocus === 'function') {
-      onFocus(value);
+      onFocus(e.target.value);
     }
   }
 
