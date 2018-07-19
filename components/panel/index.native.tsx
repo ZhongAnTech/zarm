@@ -13,12 +13,12 @@ const panelStyles = StyleSheet.create<any>(panelStyle);
 const ChangeComponent = props => {
   const component = props.component;
   const viewStyle = (props.type === 'title')
-      ? panelStyles.panelHeaderTitle
-      : panelStyles.panelHeaderMore;
+    ? panelStyles.panelHeaderTitle
+    : panelStyles.panelHeaderMore;
 
   const textStyle = (props.type === 'title')
-      ? panelStyles.panelHeaderTitleText
-      : panelStyles.panelHeaderMoreText;
+    ? panelStyles.panelHeaderTitleText
+    : panelStyles.panelHeaderMoreText;
 
   let contentRender = component;
 
