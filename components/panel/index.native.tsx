@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent, CSSProperties, isValidElement } from 'react';
 import { StyleSheet, View, Text, ViewStyle } from 'react-native';
 import { BasePanelProps } from './PropsType';
 import panelStyle from './style/index.native';
@@ -22,7 +22,7 @@ const ChangeComponent = props => {
 
   let contentRender = component;
 
-  if (!React.isValidElement(component)) {
+  if (!isValidElement(component)) {
     contentRender = <Text style={textStyle}>{component}</Text>;
   }
   return <View style={viewStyle}>{contentRender}</View>;
