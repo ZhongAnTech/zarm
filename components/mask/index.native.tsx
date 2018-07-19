@@ -27,7 +27,7 @@ export default class Mask extends PureComponent<MaskProps, any> {
       styles,
       type,
       style,
-      onClose,
+      onClick,
     } = this.props;
 
     const popupCls = [
@@ -37,6 +37,6 @@ export default class Mask extends PureComponent<MaskProps, any> {
     ] as ViewStyle;
 
     return visible
-      && <TouchableWithoutFeedback onPress={onClose}><View style={[popupCls]} /></TouchableWithoutFeedback>;
+      && <TouchableWithoutFeedback onPress={onClick}><View style={[popupCls]} /></TouchableWithoutFeedback>;
   }
 }

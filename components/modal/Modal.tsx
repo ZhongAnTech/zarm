@@ -136,7 +136,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
           visible={isShow}
           // className={cls.mask}
           // style={maskStyle}
-          onClose={onMaskClick}
+          onClick={onMaskClick}
         />
       </div>
     );
