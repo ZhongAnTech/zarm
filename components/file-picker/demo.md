@@ -162,7 +162,7 @@ ReactDOM.render(<Demo />, mountNode);
 | multiple | boolean | false | | 是否多选 |
 | capture | string | | 照相机`camera`, 摄像机`camcorder`, 录音`microphone`| 唤起的原生应用 |
 | disabled | boolean | false | | 是否禁用 |
-| onBeforeSelect | <code>() => boolean</code> | noop | | 选择前触发的事件 |
+| onBeforeSelect | <code>() => boolean</code> | () => { return true; } | | 选择前触发的事件 |
 | onChange | <code>(file: Object &#124; Array&lt;Object&gt;) => void</code> | noop | \(file: Object &#124; Array&lt;Object&gt;\) | 值变化时触发的回调函数 |
 
 :::
