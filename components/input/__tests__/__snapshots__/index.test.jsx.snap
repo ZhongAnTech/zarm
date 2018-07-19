@@ -7,10 +7,6 @@ exports[`Input renders correctly 1`] = `
   <input
     autocomplete="off"
     type="text"
-    value=""
-  />
-  <i
-    class="za-icon za-input-clear za-icon-wrong-round-fill"
   />
 </div>
 `;
@@ -34,6 +30,7 @@ exports[`Input renders onClear called correctly 1`] = `
     }
   }
   type="text"
+  value=""
 >
   <InputBase
     clearable={true}
@@ -55,6 +52,7 @@ exports[`Input renders onClear called correctly 1`] = `
     }
     prefixCls="za-input"
     type="text"
+    value=""
   >
     <div
       className="za-input za-input-text clearable"
@@ -972,7 +970,6 @@ exports[`Input.Textarea autoHeight 1`] = `
 >
   <InputTextarea
     autoHeight={true}
-    clearable={false}
     disabled={false}
     focused={false}
     onChange={[MockFunction]}
@@ -988,6 +985,9 @@ exports[`Input.Textarea autoHeight 1`] = `
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
         onFocus={[Function]}
         rows={4}
         value="foo"

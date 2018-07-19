@@ -23,19 +23,5 @@ exports[`Panel renders correctly 1`] = `
   >
     body
   </div>
-  <div
-    class="za-panel-footer"
-  >
-    <div
-      class="za-panel-title"
-    >
-      title
-    </div>
-    <div
-      class="za-panel-more"
-    >
-      more
-    </div>
-  </div>
 </div>
 `;

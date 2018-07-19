@@ -328,7 +328,7 @@ exports[`Select Cascader Select 1`] = `
               </div>
               <Mask
                 className=""
-                onClose={[Function]}
+                onClick={[Function]}
                 prefixCls="za-mask"
                 style={
                   Object {
@@ -696,7 +696,7 @@ exports[`Select Cascader Select init value 1`] = `
               </div>
               <Mask
                 className=""
-                onClose={[Function]}
+                onClick={[Function]}
                 prefixCls="za-mask"
                 style={
                   Object {
@@ -933,7 +933,7 @@ exports[`Select Select 1`] = `
               </div>
               <Mask
                 className=""
-                onClose={[Function]}
+                onClick={[Function]}
                 prefixCls="za-mask"
                 style={
                   Object {
@@ -1181,7 +1181,7 @@ exports[`Select render defaultValue correctly  1`] = `
               </div>
               <Mask
                 className=""
-                onClose={[Function]}
+                onClick={[Function]}
                 prefixCls="za-mask"
                 style={
                   Object {
