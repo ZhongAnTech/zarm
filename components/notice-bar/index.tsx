@@ -10,7 +10,7 @@ export interface MessageProps extends PropsType {
 
 export default class NoticeBar extends PureComponent<MessageProps, any> {
   static defaultProps = {
-    prefixCls: 'za-noticebar',
+    prefixCls: 'za-notice-bar',
     theme: 'warning',
     icon: <Icon type="broadcast" />,
     hasArrow: false,

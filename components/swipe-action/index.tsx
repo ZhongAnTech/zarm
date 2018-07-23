@@ -11,7 +11,7 @@ export interface SwipeActionProps extends PropsType {
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   static defaultProps = {
-    prefixCls: 'za-swipeaction',
+    prefixCls: 'za-swipe-action',
     left: [],
     right: [],
     moveDistanceRatio: 0.5,

@@ -63,9 +63,9 @@ export default {
   opacity_tooltip: .7,
 
   // ActionSheet
-  actionsheet_margin: 0,
-  actionsheet_item_height: 50,
-  actionsheet_item_font_size: 16,
+  actionSheet_margin: 0,
+  actionSheet_item_height: 50,
+  actionSheet_item_font_size: 16,
 
   // Alert
   alert_button_height: 50,
@@ -128,7 +128,7 @@ export default {
   modal_title_font_size: 18,
 
   // NoticeBar
-  noticebar_height: 24,
+  noticeBar_height: 24,
 
   // Panel
   panel_header_color: this.color_text_caption,

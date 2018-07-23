@@ -94,7 +94,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-actionsheet | | 类名前缀 |
+| prefixCls | string | za-action-sheet | | 类名前缀 |
 | className | string | | | 追加类名 |
 | shape | string | | 'radius' | 形状 |
 | visible | boolean | false | | 是否显示 |

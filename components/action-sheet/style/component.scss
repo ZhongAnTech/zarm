@@ -1,9 +1,9 @@
 @import "../../button/style/mixins";
 
-$prefixCls: $prefixCls-actionsheet;
+$prefixCls: $prefixCls-action-sheet;
 
 .#{$prefixCls} {
-  margin: $actionsheet-margin;
+  margin: $action-sheet-margin;
 
   &-spacing {
     margin: 0 r(10) r(10);
@@ -30,9 +30,9 @@ $prefixCls: $prefixCls-actionsheet;
 
   &-item {
     display: block;
-    height: $actionsheet-item-height;
-    line-height: $actionsheet-item-height;
-    font-size: $actionsheet-item-font-size;
+    height: $action-sheet-item-height;
+    line-height: $action-sheet-item-height;
+    font-size: $action-sheet-item-font-size;
     @include button-base();
 
     &:active {

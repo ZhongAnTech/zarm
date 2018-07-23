@@ -21,7 +21,7 @@ export interface FilePickerProps extends PropsType {
 
 export default class FilePicker extends PureComponent<FilePickerProps, any> {
   static defaultProps = {
-    prefixCls: 'za-filepicker',
+    prefixCls: 'za-file-picker',
     disabled: false,
     multiple: false,
     onBeforeSelect() { return true; },

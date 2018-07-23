@@ -11,7 +11,7 @@ exports[`NoticeBar autoscroll 1`] = `
       type="broadcast"
     />
   }
-  prefixCls="za-noticebar"
+  prefixCls="za-notice-bar"
   theme="warning"
 >
   <Message
@@ -51,10 +51,10 @@ exports[`NoticeBar autoscroll 1`] = `
         className="za-message-body"
       >
         <div
-          className="za-noticebar"
+          className="za-notice-bar"
         >
           <div
-            className="za-noticebar-body"
+            className="za-notice-bar-body"
             style={
               Object {
                 "left": 0,
@@ -90,10 +90,10 @@ exports[`NoticeBar icon 1`] = `
     class="za-message-body"
   >
     <div
-      class="za-noticebar"
+      class="za-notice-bar"
     >
       <div
-        class="za-noticebar-body"
+        class="za-notice-bar-body"
         style="left:0"
       >
         foo
@@ -114,7 +114,7 @@ exports[`NoticeBar renders correctly 1`] = `
       type="broadcast"
     />
   }
-  prefixCls="za-noticebar"
+  prefixCls="za-notice-bar"
   theme="warning"
 >
   <Message
@@ -154,10 +154,10 @@ exports[`NoticeBar renders correctly 1`] = `
         className="za-message-body"
       >
         <div
-          className="za-noticebar"
+          className="za-notice-bar"
         >
           <div
-            className="za-noticebar-body"
+            className="za-notice-bar-body"
             style={
               Object {
                 "left": 0,
@@ -192,10 +192,10 @@ exports[`NoticeBar theme 1`] = `
     class="za-message-body"
   >
     <div
-      class="za-noticebar"
+      class="za-notice-bar"
     >
       <div
-        class="za-noticebar-body"
+        class="za-notice-bar-body"
         style="left:0"
       >
         foo
