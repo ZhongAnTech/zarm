@@ -16,7 +16,7 @@
   - 调整`DatePicker`组件的使用方式，拆分成`DatePickerView`、`DatePicker`、`DateSelect`三种场景的实现。
   - 调整`Pull`组件的API。详见[文档](https://github.com/ZhonganTechENG/zarm/blob/master/docs/zh-cn/components/Pull.md)
   - 调整`ActionSheet`组件的默认样式。
-  - 组件更名：文件选择器`Uploader`组件更名为`FilePicker`，手风琴`Accordion`组件更名为`Collapse`。
+  - 组件更名：文件选择器`Uploader`组件更名为`FilePicker`，手风琴`Accordion`组件更名为`Collapse`, 活动指示器`Spinner`组件更名为`ActivityIndicator`。
 
 - Bug Fix
   - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[6f6ccd6](https://github.com/ZhonganTechENG/zarm/commit/cc6924b4f4c3cb0717fd5bf24e3cd94ac7695f59)）

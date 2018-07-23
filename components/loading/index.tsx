@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Toast from '../toast';
-import Spinner from '../spinner';
+import ActivityIndicator from '../activity-indicator';
 
 export interface LoadingProps extends PropsType {
   prefixCls?: string;
@@ -27,7 +27,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
     return (
       <Toast prefixCls={prefixCls} {...others} stayTime={0}>
-        <Spinner size="lg" className="rotate360" />
+        <ActivityIndicator size="lg" className="rotate360" />
       </Toast>
     );
   }

@@ -150,10 +150,10 @@ export default {
   slider_handle_size: 28,
   slider_handle_background: '#fff',
 
-  // Spinner
-  spinner_size_md: 20,
-  spinner_size_lg: 31,
-  spinner_path_color: '#e6e6e6',
+  // activity-indicator
+  activityIndicator_size_md: 20,
+  activityIndicator_size_lg: 31,
+  activityIndicator_path_color: '#e6e6e6',
 
   // Stepper
   stepper_height: 27,

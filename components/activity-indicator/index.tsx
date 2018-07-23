@@ -4,14 +4,14 @@ import PropsType from './PropsType';
 
 const DIAMETER = 62;
 
-export interface SpinnerProps extends PropsType {
+export interface ActivityIndicatorProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Spinner extends PureComponent<SpinnerProps, any> {
+export default class ActivityIndicator extends PureComponent<ActivityIndicatorProps, any> {
   static defaultProps = {
-    prefixCls: 'za-spinner',
+    prefixCls: 'za-activity-indicator',
     theme: 'primary',
     strokeWidth: 5,
     percent: 15,

@@ -30,7 +30,7 @@ export { default as Radio } from './radio';
 export { default as SearchBar } from './search-bar';
 export { default as Select } from './select';
 export { default as Slider } from './slider';
-export { default as Spinner } from './spinner';
+export { default as ActivityIndicator } from './activity-indicator';
 export { default as Stepper } from './stepper';
 export { default as Swipe } from './swipe';
 export { default as SwipeAction } from './swipe-action';

@@ -123,7 +123,7 @@ class Demo extends React.Component {
             //       return <div className={`${cls} rotate360`}><img src={logo} alt="" /></div>;
 
             //     case REFRESH_STATE.loading:
-            //       return <div className={cls}><Spinner className="rotate360" /></div>;
+            //       return <div className={cls}><ActivityIndicator className="rotate360" /></div>;
 
             //     case REFRESH_STATE.success:
             //       return <div className={cls}>加载成功</div>;
@@ -140,7 +140,7 @@ class Demo extends React.Component {
             //   const cls = 'custom-control';
             //   switch (loadState) {
             //     case LOAD_STATE.loading:
-            //       return <div className={cls}><Spinner className="rotate360" /></div>;
+            //       return <div className={cls}><ActivityIndicator className="rotate360" /></div>;
 
             //     case LOAD_STATE.failure:
             //       return <div className={cls}>加载失败</div>;

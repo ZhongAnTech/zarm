@@ -57,7 +57,7 @@ class App extends Component {
               <Route path="/notice-bar" component={AsyncComponent(() => import('../pages/NoticeBarPage'))} />
               <Route path="/panel" component={AsyncComponent(() => import('../pages/PanelPage'))} />
               <Route path="/progress" component={AsyncComponent(() => import('../pages/ProgressPage'))} />
-              <Route path="/spinner" component={AsyncComponent(() => import('../pages/SpinnerPage'))} />
+              <Route path="/activity-indicator" component={AsyncComponent(() => import('../pages/ActivityIndicatorPage'))} />
               <Route path="/swipe" component={AsyncComponent(() => import('../pages/SwipePage'))} />
               <Route path="/tab" component={AsyncComponent(() => import('../pages/TabPage'))} />
 

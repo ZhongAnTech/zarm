@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Spinner from '../index';
+import ActivityIndicator from '../index';
 
-describe('Spinner', () => {
+describe('ActivityIndicator', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Spinner />);
+    const wrapper = render(<ActivityIndicator />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

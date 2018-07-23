@@ -88,7 +88,7 @@ $prefixCls-radio: za-radio;
 $prefixCls-searchbar: za-searchbar;
 $prefixCls-select: za-select;
 $prefixCls-slider: za-slider;
-$prefixCls-spinner: za-spinner;
+$prefixCls-activity-indicator: za-activity-indicator;
 $prefixCls-stepper: za-stepper;
 $prefixCls-swipe: za-swipe;
 $prefixCls-swipeaction: za-swipeaction;
@@ -198,10 +198,10 @@ $slider-handle-size: r(28);
 $slider-handle-background: #fff;
 $slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
 
-// Spinner
-$spinner-size-md: r(20);
-$spinner-size-lg: r(31);
-$spinner-path-color: #e6e6e6;
+// activity-indicator
+$activity-indicator-size-md: r(20);
+$activity-indicator-size-lg: r(31);
+$activity-indicator-path-color: #e6e6e6;
 
 // Stepper
 $stepper-height: r(27);
