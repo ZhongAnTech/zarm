@@ -42,7 +42,7 @@ module.exports = {
   ],
   UIDATA: [
     {
-      title: 'BadgePage',
+      title: 'Badge',
       description: '徽标',
       module: require('./pages/BadgePage'),
     },
