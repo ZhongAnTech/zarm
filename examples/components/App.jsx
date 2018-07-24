@@ -59,7 +59,7 @@ class App extends Component {
               <Route path="/progress" component={AsyncComponent(() => import('../pages/ProgressPage'))} />
               <Route path="/activity-indicator" component={AsyncComponent(() => import('../pages/ActivityIndicatorPage'))} />
               <Route path="/swipe" component={AsyncComponent(() => import('../pages/SwipePage'))} />
-              <Route path="/tab" component={AsyncComponent(() => import('../pages/TabPage'))} />
+              <Route path="/tabs" component={AsyncComponent(() => import('../pages/TabsPage'))} />
 
               <Route component={AsyncComponent(() => import('../pages/NotFoundPage'))} />
             </Switch>

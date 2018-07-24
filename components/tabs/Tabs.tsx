@@ -14,16 +14,16 @@ const getSelectIndex = (children) => {
   return selectIndex;
 };
 
-export interface TabProps extends PropsType {
+export interface TabsProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Tab extends PureComponent<TabProps, any> {
+export default class Tabs extends PureComponent<TabsProps, any> {
   static Panel: any;
 
   static defaultProps = {
-    prefixCls: 'za-tab',
+    prefixCls: 'za-tabs',
     theme: 'primary',
     disabled: false,
     canSwipe: false,

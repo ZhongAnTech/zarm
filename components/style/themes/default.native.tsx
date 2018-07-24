@@ -174,10 +174,10 @@ export default {
   swipe_action_height: 45,
   swipe_action_background: '#fff',
 
-  // Tab
-  tab_height: 45,
-  tab_item_font_size: this.font_size_lg,
-  tab_line_height: 2,
+  // Tabs
+  tabs_height: 45,
+  tabs_item_font_size: this.font_size_lg,
+  tabs_line_height: 2,
 
   // Toast
   toast_border_radius: 6,

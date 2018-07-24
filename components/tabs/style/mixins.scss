@@ -1,5 +1,5 @@
-@mixin tab-theme($color) {
-  .#{$prefixCls-tab} {
+@mixin tabs-theme($color) {
+  .#{$prefixCls-tabs} {
     &-header-item {
       &.active {
         color: $color;

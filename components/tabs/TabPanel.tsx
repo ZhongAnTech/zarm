@@ -8,7 +8,7 @@ export interface TabPannelProps {
 
 export default class TabPanel extends PureComponent<TabPannelProps, any> {
   static defaultProps = {
-    prefixCls: 'za-tab',
+    prefixCls: 'za-tabs',
   };
 
   constructor(props) {

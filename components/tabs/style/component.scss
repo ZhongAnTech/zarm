@@ -1,22 +1,22 @@
 @import "mixins";
 
-$prefixCls: $prefixCls-tab;
+$prefixCls: $prefixCls-tabs;
 
 .#{$prefixCls} {
   &.theme-primary {
-    @include tab-theme($theme-primary);
+    @include tabs-theme($theme-primary);
   }
 
   &.theme-success {
-    @include tab-theme($theme-success);
+    @include tabs-theme($theme-success);
   }
 
   &.theme-warning {
-    @include tab-theme($theme-warning);
+    @include tabs-theme($theme-warning);
   }
 
   &.theme-error {
-    @include tab-theme($theme-error);
+    @include tabs-theme($theme-error);
   }
 
   &-header {
@@ -27,8 +27,8 @@ $prefixCls: $prefixCls-tab;
       list-style: none;
       margin: 0;
       padding: 0;
-      height: $tab-height;
-      line-height: $tab-height;
+      height: $tabs-height;
+      line-height: $tabs-height;
       @include onepx(bottom);
     }
 
@@ -36,7 +36,7 @@ $prefixCls: $prefixCls-tab;
       flex: 1;
       text-align: center;
       color: $color-text;
-      font-size: $tab-item-font-size;
+      font-size: $tabs-item-font-size;
       cursor: pointer;
 
       /*
@@ -74,7 +74,7 @@ $prefixCls: $prefixCls-tab;
     position: absolute;
     left: 0;
     bottom: 0;
-    height: $tab-line-height;
+    height: $tabs-line-height;
     transition: left .3s ease-out;
 
     &-inner {

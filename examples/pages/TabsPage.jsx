@@ -1,11 +1,11 @@
 import Markdown from '../components/Markdown';
-import '../styles/pages/TabPage';
+import '../styles/pages/TabsPage';
 
 export default class Page extends Markdown {
   document = () => {
     return {
-      document: require('../../components/tab/demo.md'),
-      className: 'tab-page',
+      document: require('../../components/tabs/demo.md'),
+      className: 'tabs-page',
     };
   }
 }
