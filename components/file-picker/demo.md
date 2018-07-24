@@ -26,9 +26,9 @@ class Demo extends React.Component {
     return (
       <div>
         {this.state.files.map((item, index) => <Cell key={+index}>{item.fileName}</Cell>)}
-        <div className="filepicker-wrapper">
+        <div className="file-picker-wrapper">
           <FilePicker
-            className="filepicker-btn"
+            className="file-picker-btn"
             onChange={selected => this.onSelect(selected)}
           >
             <Icon type="add" />
@@ -87,12 +87,12 @@ class Demo extends React.Component {
         <Badge
           key={+index}
           sup
-          className="filepicker-item"
+          className="file-picker-item"
           shape="circle"
           text={<Icon type="wrong" />}
           onClick={() => this.remove(index)}
         >
-          <div className="filepicker-item-img">
+          <div className="file-picker-item-img">
             <a href={item.thumbnail} target="_blank" rel="noopener noreferrer">
               <img src={item.thumbnail} alt="" />
             </a>
@@ -105,13 +105,13 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <div className="filepicker-wrapper">
+        <div className="file-picker-wrapper">
           {this.imgRender()}
           {
             (this.state.files.length < MAX_FILES_COUNT) && (
               <FilePicker
                 multiple
-                className="filepicker-btn"
+                className="file-picker-btn"
                 accept="image/*"
                 onBeforeSelect={onBeforeSelect}
                 onChange={selected => this.onSelect(selected)}
@@ -138,8 +138,8 @@ import { FilePicker, Icon } from 'zarm';
 class Demo extends React.Component {
   render() {
     return (
-      <div className="filepicker-wrapper">
-        <FilePicker className="filepicker-btn" disabled>
+      <div className="file-picker-wrapper">
+        <FilePicker className="file-picker-btn" disabled>
           <Icon type="add" />
         </FilePicker>
       </div>
@@ -156,13 +156,13 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-filepicker | | 类名前缀 |
+| prefixCls | string | za-file-picker | | 类名前缀 |
 | className | string | | | 追加类名 |
 | accept | string | | | 允许上传的附件格式 |
 | multiple | boolean | false | | 是否多选 |
 | capture | string | | 照相机`camera`, 摄像机`camcorder`, 录音`microphone`| 唤起的原生应用 |
 | disabled | boolean | false | | 是否禁用 |
-| onBeforeSelect | <code>() => boolean</code> | noop | | 选择前触发的事件 |
+| onBeforeSelect | <code>() => boolean</code> | () => { return true; } | | 选择前触发的事件 |
 | onChange | <code>(file: Object &#124; Array&lt;Object&gt;) => void</code> | noop | \(file: Object &#124; Array&lt;Object&gt;\) | 值变化时触发的回调函数 |
 
 :::

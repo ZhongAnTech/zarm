@@ -132,7 +132,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-searchbar | | 类名前缀 |
+| prefixCls | string | za-search-bar | | 类名前缀 |
 | className | string | | | 追加类名 |
 | placeholder | string | '搜索' | | 占位符 |
 | value | string | | | 值 |

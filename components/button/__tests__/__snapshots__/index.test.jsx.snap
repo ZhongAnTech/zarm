@@ -66,11 +66,11 @@ exports[`Button loading 1`] = `
     class="za-button-content"
   >
     <svg
-      class="za-spinner rotate360 theme-primary"
+      class="za-activity-indicator rotate360 theme-primary"
       viewBox="0 0 62 62"
     >
       <circle
-        class="za-spinner-path"
+        class="za-activity-indicator-path"
         cx="31"
         cy="31"
         fill="none"
@@ -78,7 +78,7 @@ exports[`Button loading 1`] = `
         style="stroke-width:5"
       />
       <circle
-        class="za-spinner-line"
+        class="za-activity-indicator-line"
         cx="31"
         cy="31"
         fill="none"

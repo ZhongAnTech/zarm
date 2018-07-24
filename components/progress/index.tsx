@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Spinner from '../spinner';
+import ActivityIndicator from '../activity-indicator';
 
 export interface ProgressProps extends PropsType {
   prefixCls?: string;
@@ -28,7 +28,7 @@ export default class Progress extends PureComponent<ProgressProps, {}> {
     const innerRender = shape === 'circle'
       ? (
           <div className={`${prefixCls}-inner`}>
-            <Spinner theme={theme} strokeWidth={strokeWidth} percent={percent} />
+            <ActivityIndicator theme={theme} strokeWidth={strokeWidth} percent={percent} />
           </div>
         )
       : (

@@ -1,6 +1,6 @@
 export default interface PropsType {
   visible?: boolean;
   type?: 'transparent' | 'normal';
-  onClose?: () => void;
+  onClick?: () => void;
   style?: React.CSSProperties;
 }

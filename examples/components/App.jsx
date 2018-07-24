@@ -49,7 +49,7 @@ class App extends Component {
               <Route path="/toast" component={AsyncComponent(() => import('../pages/ToastPage'))} />
 
               {/* 数据展示 */}
-              <Route path="/accordion" component={AsyncComponent(() => import('../pages/AccordionPage'))} />
+              <Route path="/collapse" component={AsyncComponent(() => import('../pages/CollapsePage'))} />
               <Route path="/badge" component={AsyncComponent(() => import('../pages/BadgePage'))} />
               <Route path="/cell" component={AsyncComponent(() => import('../pages/CellPage'))} />
               <Route path="/icon" component={AsyncComponent(() => import('../pages/IconPage'))} />
@@ -57,9 +57,9 @@ class App extends Component {
               <Route path="/notice-bar" component={AsyncComponent(() => import('../pages/NoticeBarPage'))} />
               <Route path="/panel" component={AsyncComponent(() => import('../pages/PanelPage'))} />
               <Route path="/progress" component={AsyncComponent(() => import('../pages/ProgressPage'))} />
-              <Route path="/spinner" component={AsyncComponent(() => import('../pages/SpinnerPage'))} />
+              <Route path="/activity-indicator" component={AsyncComponent(() => import('../pages/ActivityIndicatorPage'))} />
               <Route path="/swipe" component={AsyncComponent(() => import('../pages/SwipePage'))} />
-              <Route path="/tab" component={AsyncComponent(() => import('../pages/TabPage'))} />
+              <Route path="/tabs" component={AsyncComponent(() => import('../pages/TabsPage'))} />
 
               <Route component={AsyncComponent(() => import('../pages/NotFoundPage'))} />
             </Switch>

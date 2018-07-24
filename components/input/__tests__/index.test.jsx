@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Input from '../index';
 import InputBase from '../InputBase';
@@ -39,6 +39,7 @@ describe('Input', () => {
     const onClear = jest.fn();
     const wrapper = mount(
       <Input
+        value=""
         onClear={onClear}
         clearable
       />

@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "1.2.0-beta.33",
+  "version": "2.0.0-alpha.2",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -34,7 +34,7 @@
   "scripts": {
     "start": "npm run deploy && npm run dev",
     "clean": "rm -rf lib es dist assets coverage .temp",
-    "clean:rn": "git clean -dxf -e node_modules",
+    "clean:ignore": "git clean -dxf -e node_modules",
     "dev": "webpack-dev-server --config scripts/webpack/config.dev.js",
     "rn-start": "node node_modules/react-native/local-cli/cli.js start",
     "rn-watch": "tsc --module es6 --jsx react-native --w",
@@ -107,7 +107,7 @@
     "enzyme-adapter-react-16": "^1.0.3",
     "enzyme-to-json": "^3.2.0",
     "eslint": "^4.19.1",
-    "eslint-config-za": "^1.0.0",
+    "eslint-config-za": "^1.0.2",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",

@@ -7,7 +7,7 @@ $prefixCls: $prefixCls-progress;
 
   &-inner {
     flex: 1;
-    background-color: $spinner-path-color;
+    background-color: $activity-indicator-path-color;
   }
 
   &-text {
@@ -22,7 +22,7 @@ $prefixCls: $prefixCls-progress;
     transition: width .3s;
   }
 
-  .#{$prefixCls-spinner} {
+  .#{$prefixCls-activity-indicator} {
     &-line {
       transition: stroke-dasharray .3s;
     }

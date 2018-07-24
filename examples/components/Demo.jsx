@@ -53,13 +53,13 @@ export default class Demo extends React.Component {
   }
 
   render() {
-    return (
-      <Panel>
-        <Panel.Header title={<span>{this.title}</span>} />
-        <Panel.Body>
+    // Panel的例子特殊处理
+    return (this.props.location.pathname === '/panel')
+      ? <div id={this.containerId} />
+      : (
+        <Panel titleRender={<span>{this.title}</span>}>
           <div id={this.containerId} />
-        </Panel.Body>
-      </Panel>
-    );
+        </Panel>
+      );
   }
 }

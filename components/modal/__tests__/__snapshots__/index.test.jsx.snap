@@ -75,7 +75,7 @@ exports[`Modal renders correctly 1`] = `
       </div>
     </div>
     <Mask
-      onClose={[MockFunction]}
+      onClick={[MockFunction]}
       prefixCls="za-mask"
       type="normal"
       visible={true}

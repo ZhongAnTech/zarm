@@ -22,7 +22,7 @@ describe('FilePicker', () => {
       children: <div>add</div>,
     };
     const wrapper = mount(<FilePicker {...props} />);
-    wrapper.find('.za-filepicker-input').simulate('change');
+    wrapper.find('.za-file-picker-input').simulate('change');
     // expect(props.onChange).toBeCalled();
   });
 });

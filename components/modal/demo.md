@@ -2,7 +2,7 @@
 
 :::demo 基本用法
 ```jsx
-import { Modal, Cell, Button } from 'zarm';
+import { Modal, Cell, Button, Select } from 'zarm';
 
 class Demo extends React.Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class Demo extends React.Component {
       modal3: false,
       modal4: false,
       modal5: false,
+      animationType: 'fade',
     };
   }
 
@@ -29,6 +30,7 @@ class Demo extends React.Component {
   }
 
   render() {
+    const { modal1, modal2, modal3, modal4, modal5, animationType } = this.state;
     return (
       <div>
         <Cell
@@ -64,43 +66,60 @@ class Demo extends React.Component {
         </Cell>
 
         <Cell
+          title="动画效果"
           description={
-            <Button size="sm" onClick={() => this.open('modal5')}>开启</Button>
+            <div>
+              <Button size="sm" onClick={() => this.open('modal5')}>开启</Button>
+            </div>
           }
         >
-          动画效果
+          <Select
+            value={animationType}
+            dataSource={[
+              { value: 'fade', label: '淡出淡入效果(fade)' },
+              { value: 'zoom', label: '缩放效果(zoom)' },
+              { value: 'rotate', label: '旋转效果(rotate)' },
+              { value: 'door', label: '开关门效果(door)' },
+              { value: 'flip', label: '翻转效果(flip)' },
+              { value: 'moveUp', label: '移出移入效果(moveUp)' },
+              { value: 'moveDown', label: '移出移入效果(moveDown)' },
+              { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
+              { value: 'moveRight', label: '移出移入效果(moveRight)' },
+              { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
+              { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
+              { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
+              { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
+            ]}
+            onOk={(selected) => {
+              this.setState({
+                animationType: selected.map(item => item.value),
+              });
+            }}
+          />
         </Cell>
 
-        <Modal visible={this.state.modal1}>
+        <Modal visible={modal1}>
           <Modal.Header title="标题" onClose={() => this.close('modal1')} />
           <Modal.Body>模态框内容</Modal.Body>
         </Modal>
 
-        <Modal visible={this.state.modal2} onMaskClick={() => this.close('modal2')}>
+        <Modal visible={modal2} onMaskClick={() => this.close('modal2')}>
           <Modal.Header title="标题" />
           <Modal.Body>点击遮罩层关闭</Modal.Body>
         </Modal>
 
-        <Modal shape="radius" visible={this.state.modal3}>
+        <Modal shape="radius" visible={modal3}>
           <Modal.Header title="标题" onClose={() => this.close('modal3')} />
           <Modal.Body>模态框内容</Modal.Body>
         </Modal>
 
-        <Modal visible={this.state.modal4} onMaskClick={() => this.close('modal4')}>
+        <Modal visible={modal4} onMaskClick={() => this.close('modal4')}>
           <Modal.Body>无头部</Modal.Body>
         </Modal>
 
-        <Modal visible={this.state.modal5} animationType="rotate" onMaskClick={() => this.close('modal5')}>
+        <Modal visible={modal5} animationType={animationType} onMaskClick={() => this.close('modal5')}>
           <Modal.Body>
-            当前使用的是rotate旋转效果。<br /><br />
-            支持多种动画效果：<br />
-            fade：淡出淡入效果（默认）<br />
-            zoom：缩放效果<br />
-            rotate：旋转效果<br />
-            door：开关门效果<br />
-            flip：翻转效果<br />
-            moveUp、moveDown、moveLeft、moveRight：移出移入效果<br />
-            slideUp、slideDown、slideLeft、slideRight：滑出滑入效果<br />
+            <div style={{ height: 100 }}>当前使用的动画类型animationType：'{animationType}'</div>
           </Modal.Body>
         </Modal>
       </div>
@@ -139,6 +158,7 @@ class Demo extends React.Component {
   }
 
   render() {
+    const { alert, confirm } = this.state;
     return (
       <div>
         <Cell
@@ -159,7 +179,7 @@ class Demo extends React.Component {
 
         <Alert
           shape="radius"
-          visible={this.state.alert}
+          visible={alert}
           title="警告"
           message="这里是警告信息"
           onCancel={() => this.close('alert')}
@@ -167,7 +187,7 @@ class Demo extends React.Component {
 
         <Confirm
           shape="radius"
-          visible={this.state.confirm}
+          visible={confirm}
           title="确认信息"
           message="你确定要这样做吗？"
           onOk={() => alert('click ok')}

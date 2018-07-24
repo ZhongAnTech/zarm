@@ -46,7 +46,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-noticebar | | 类名前缀 |
+| prefixCls | string | za-notice-bar | | 类名前缀 |
 | className | string | | | 追加类名 |
 | theme | string | 'warning' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
 | icon | any | | | 设置图标 |
