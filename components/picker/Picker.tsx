@@ -5,11 +5,11 @@ import PickerView from '../picker-view';
 import { BasePickerProps } from './PropsType';
 
 const getValue = (props, defaultValue?: any) => {
-  if ('value' in props && props.value.length > 0) {
+  if ('value' in props && props.value && props.value.length > 0) {
     return [].concat(props.value);
   }
 
-  if ('defaultValue' in props && props.defaultValue.length > 0) {
+  if ('defaultValue' in props && props.defaultValue && props.defaultValue.length > 0) {
     return [].concat(props.defaultValue);
   }
 

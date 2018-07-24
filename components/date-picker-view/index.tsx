@@ -438,7 +438,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   }
 
   render() {
-    const { prefixCls, className, ...others } = this.props;
+    const { prefixCls, className, onInit, ...others } = this.props;
     const { dataSource, value } = this.getColsValue();
 
     return (

@@ -1,35 +1,10 @@
-import React, { Component } from 'react';
-import { Panel, Cell, Spinner } from 'zarm';
-import Container from '../components/Container';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Markdown from '../components/Markdown';
 
-class Page extends Component {
-  render() {
-    return (
-      <Container className="spinner-page">
-        <Header title="指示器 Spinner" />
-        <main>
-          <Panel>
-            <Panel.Header title="基本" />
-            <Panel.Body>
-              <Cell description={<Spinner />}>
-                普通
-              </Cell>
-
-              <Cell description={<Spinner className="rotate360" />}>
-                旋转动画
-              </Cell>
-
-              <Cell description={<Spinner size="lg" />}>大号</Cell>
-
-            </Panel.Body>
-          </Panel>
-        </main>
-        <Footer />
-      </Container>
-    );
+export default class Page extends Markdown {
+  document = () => {
+    return {
+      document: require('../../components/spinner/demo.md'),
+      className: 'spinner-page',
+    };
   }
 }
-
-export default Page;

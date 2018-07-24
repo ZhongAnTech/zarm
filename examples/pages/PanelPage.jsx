@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../styles/pages/PanelPage';
 
-class Page extends Component {
+export default class Page extends Component {
   render() {
     return (
       <Container className="panel-page">
@@ -24,5 +24,3 @@ class Page extends Component {
     );
   }
 }
-
-export default Page;
