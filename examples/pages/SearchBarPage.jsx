@@ -5,7 +5,7 @@ export default class Page extends Markdown {
   document = () => {
     return {
       document: require('../../components/search-bar/demo.md'),
-      className: 'searchbar-page',
+      className: 'search-bar-page',
     };
   }
 }
