@@ -2,26 +2,26 @@
 
 exports[`SearchBar renders correctly 1`] = `
 <div
-  class="za-searchbar"
+  class="za-search-bar"
 >
   <form
     action="#"
-    class="za-searchbar-form"
+    class="za-search-bar-form"
   >
     <div
-      class="za-searchbar-content shape-round"
+      class="za-search-bar-content shape-round"
     >
       <div
-        class="za-searchbar-mock"
+        class="za-search-bar-mock"
       >
         <div
-          class="za-searchbar-mock-container"
+          class="za-search-bar-mock-container"
         >
           <i
             class="za-icon za-icon-search"
           />
           <span
-            class="za-searchbar-mock-placeholder"
+            class="za-search-bar-mock-placeholder"
             style="visibility:visible"
           >
             搜索
@@ -43,7 +43,7 @@ exports[`SearchBar renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="za-searchbar-cancel"
+      class="za-search-bar-cancel"
     >
       取消
     </div>
@@ -58,26 +58,26 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
   defaultValue="搜索关键字"
   disabled={false}
   placeholder="搜索"
-  prefixCls="za-searchbar"
+  prefixCls="za-search-bar"
   shape="round"
   showCancel={false}
 >
   <div
-    className="za-searchbar"
+    className="za-search-bar"
   >
     <form
       action="#"
-      className="za-searchbar-form"
+      className="za-search-bar-form"
       onSubmit={[Function]}
     >
       <div
-        className="za-searchbar-content shape-round"
+        className="za-search-bar-content shape-round"
       >
         <div
-          className="za-searchbar-mock"
+          className="za-search-bar-mock"
         >
           <div
-            className="za-searchbar-mock-container"
+            className="za-search-bar-mock-container"
           >
             <Icon
               prefixCls="za-icon"
@@ -88,7 +88,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
               />
             </Icon>
             <span
-              className="za-searchbar-mock-placeholder"
+              className="za-search-bar-mock-placeholder"
               style={
                 Object {
                   "visibility": "visible",
@@ -145,7 +145,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
         </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel"
+        className="za-search-bar-cancel"
         onClick={[Function]}
       >
         取消取消
@@ -160,28 +160,40 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onCancel={[Function]}
+  onCancel={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
-  prefixCls="za-searchbar"
+  prefixCls="za-search-bar"
   shape="round"
   showCancel={false}
 >
   <div
-    className="za-searchbar"
+    className="za-search-bar"
   >
     <form
       action="#"
-      className="za-searchbar-form"
+      className="za-search-bar-form"
       onSubmit={[Function]}
     >
       <div
-        className="za-searchbar-content shape-round"
+        className="za-search-bar-content shape-round"
       >
         <div
-          className="za-searchbar-mock"
+          className="za-search-bar-mock"
         >
           <div
-            className="za-searchbar-mock-container"
+            className="za-search-bar-mock-container"
           >
             <Icon
               prefixCls="za-icon"
@@ -192,7 +204,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
               />
             </Icon>
             <span
-              className="za-searchbar-mock-placeholder"
+              className="za-search-bar-mock-placeholder"
               style={
                 Object {
                   "visibility": "visible",
@@ -249,7 +261,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
         </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel"
+        className="za-search-bar-cancel"
         onClick={[Function]}
       >
         取消
@@ -264,28 +276,42 @@ exports[`SearchBar renders onChange called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onChange={[Function]}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "测试值",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
-  prefixCls="za-searchbar"
+  prefixCls="za-search-bar"
   shape="round"
   showCancel={false}
 >
   <div
-    className="za-searchbar"
+    className="za-search-bar"
   >
     <form
       action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
+      className="za-search-bar-form za-search-bar-form-focus"
       onSubmit={[Function]}
     >
       <div
-        className="za-searchbar-content shape-round"
+        className="za-search-bar-content shape-round"
       >
         <div
-          className="za-searchbar-mock"
+          className="za-search-bar-mock"
         >
           <div
-            className="za-searchbar-mock-container"
+            className="za-search-bar-mock-container"
           >
             <Icon
               prefixCls="za-icon"
@@ -296,7 +322,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
               />
             </Icon>
             <span
-              className="za-searchbar-mock-placeholder"
+              className="za-search-bar-mock-placeholder"
               style={
                 Object {
                   "visibility": "hidden",
@@ -353,7 +379,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
         </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
+        className="za-search-bar-cancel za-search-bar-cancel-show"
         onClick={[Function]}
       >
         取消
@@ -368,28 +394,40 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onFocus={[Function]}
+  onFocus={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
-  prefixCls="za-searchbar"
+  prefixCls="za-search-bar"
   shape="round"
   showCancel={false}
 >
   <div
-    className="za-searchbar"
+    className="za-search-bar"
   >
     <form
       action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
+      className="za-search-bar-form za-search-bar-form-focus"
       onSubmit={[Function]}
     >
       <div
-        className="za-searchbar-content shape-round"
+        className="za-search-bar-content shape-round"
       >
         <div
-          className="za-searchbar-mock"
+          className="za-search-bar-mock"
         >
           <div
-            className="za-searchbar-mock-container"
+            className="za-search-bar-mock-container"
           >
             <Icon
               prefixCls="za-icon"
@@ -400,7 +438,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
               />
             </Icon>
             <span
-              className="za-searchbar-mock-placeholder"
+              className="za-search-bar-mock-placeholder"
               style={
                 Object {
                   "visibility": "visible",
@@ -457,7 +495,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
         </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
+        className="za-search-bar-cancel za-search-bar-cancel-show"
         onClick={[Function]}
       >
         取消
@@ -472,28 +510,42 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
   cancelText="取消"
   clearable={true}
   disabled={false}
-  onSubmit={[Function]}
+  onSubmit={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "My new value",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   placeholder="搜索"
-  prefixCls="za-searchbar"
+  prefixCls="za-search-bar"
   shape="round"
   showCancel={false}
 >
   <div
-    className="za-searchbar"
+    className="za-search-bar"
   >
     <form
       action="#"
-      className="za-searchbar-form za-searchbar-form-focus"
+      className="za-search-bar-form za-search-bar-form-focus"
       onSubmit={[Function]}
     >
       <div
-        className="za-searchbar-content shape-round"
+        className="za-search-bar-content shape-round"
       >
         <div
-          className="za-searchbar-mock"
+          className="za-search-bar-mock"
         >
           <div
-            className="za-searchbar-mock-container"
+            className="za-search-bar-mock-container"
           >
             <Icon
               prefixCls="za-icon"
@@ -504,7 +556,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
               />
             </Icon>
             <span
-              className="za-searchbar-mock-placeholder"
+              className="za-search-bar-mock-placeholder"
               style={
                 Object {
                   "visibility": "hidden",
@@ -561,7 +613,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
         </InputBase>
       </div>
       <div
-        className="za-searchbar-cancel za-searchbar-cancel-show"
+        className="za-search-bar-cancel za-search-bar-cancel-show"
         onClick={[Function]}
       >
         取消

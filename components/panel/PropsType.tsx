@@ -1,9 +1,6 @@
-export interface BasePanelHeaderProps {
-  title?: any;
-  more?: any;
-}
+import { ReactNode } from 'React';
 
-export interface BasePanelFooterProps {
-  title?: any;
-  more?: any;
+export interface BasePanelProps {
+  titleRender?: ReactNode;
+  moreRender?: ReactNode;
 }

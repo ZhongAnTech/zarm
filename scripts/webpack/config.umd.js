@@ -5,15 +5,17 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
-const { version } = require('../../package.json');
+
+const env = process.env.NODE_ENV;
+const version = process.env.VERSION;
 
 config.mode = 'development';
 config.devtool = 'source-map';
 
 config.entry = {
   zarm: [
+    './components/style/entry.tsx',
     './components/index.tsx',
-    './components/style/index.scss',
   ],
 };
 
@@ -39,7 +41,6 @@ config.externals = {
   },
 };
 
-const env = process.env.NODE_ENV;
 const cssConfig = {
   filename: '[name].css',
 };

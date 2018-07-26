@@ -54,7 +54,7 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
   }
 
   onChildChange = (value) => {
-    const values = this.state.value;
+    const values = this.state.value.slice();
     const index = values.indexOf(value);
 
     if (index < 0) {

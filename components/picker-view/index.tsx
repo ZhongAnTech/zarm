@@ -27,7 +27,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     dataSource: [],
     cols: Infinity,
     valueMember: 'value',
-    itemRender: item => item.label,
+    itemRender: data => data.label,
     disabled: false,
   };
 

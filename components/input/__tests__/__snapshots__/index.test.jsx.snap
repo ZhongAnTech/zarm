@@ -7,10 +7,6 @@ exports[`Input renders correctly 1`] = `
   <input
     autocomplete="off"
     type="text"
-    value=""
-  />
-  <i
-    class="za-icon za-input-clear za-icon-wrong-round-fill"
   />
 </div>
 `;
@@ -18,15 +14,45 @@ exports[`Input renders correctly 1`] = `
 exports[`Input renders onClear called correctly 1`] = `
 <Input
   clearable={true}
-  onClear={[Function]}
+  onClear={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "My new value",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   type="text"
+  value=""
 >
   <InputBase
     clearable={true}
     disabled={false}
-    onClear={[Function]}
+    onClear={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "My new value",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
     prefixCls="za-input"
     type="text"
+    value=""
   >
     <div
       className="za-input za-input-text clearable"
@@ -492,13 +518,41 @@ exports[`Input.Number renders correctly 1`] = `
 exports[`Input.Number renders onClear called correctly 1`] = `
 <Input
   clearable={true}
-  onClear={[Function]}
+  onClear={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   type="number"
 >
   <InputNumber
     clearable={true}
     disabled={false}
-    onClear={[Function]}
+    onClear={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
     prefixCls="za-input"
     type="number"
   >
@@ -909,17 +963,16 @@ exports[`Input.Price renders correctly 1`] = `
 exports[`Input.Textarea autoHeight 1`] = `
 <Input
   autoHeight={true}
-  onChange={[Function]}
+  onChange={[MockFunction]}
   rows={4}
   type="textarea"
   value="foo"
 >
   <InputTextarea
     autoHeight={true}
-    clearable={false}
     disabled={false}
     focused={false}
-    onChange={[Function]}
+    onChange={[MockFunction]}
     prefixCls="za-input"
     rows={4}
     showLength={false}
@@ -932,6 +985,9 @@ exports[`Input.Textarea autoHeight 1`] = `
         disabled={false}
         onBlur={[Function]}
         onChange={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
         onFocus={[Function]}
         rows={4}
         value="foo"

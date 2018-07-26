@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Spinner from '../spinner';
+import ActivityIndicator from '../activity-indicator';
 
 export interface ButtonProps extends PropsType {
   prefixCls?: string;
@@ -49,7 +49,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     });
 
     const iconRender = loading
-      ? <Spinner className="rotate360" />
+      ? <ActivityIndicator className="rotate360" />
       : icon;
 
     const childrenRender = children && <span>{children}</span>;

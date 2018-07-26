@@ -2,10 +2,10 @@
 
 exports[`SwipeAction left only 1`] = `
 <div
-  class="za-swipeaction"
+  class="za-swipe-action"
 >
   <div
-    class="za-swipeaction-actions-left"
+    class="za-swipe-action-actions-left"
   >
     <a
       aria-disabled="false"
@@ -27,7 +27,7 @@ exports[`SwipeAction left only 1`] = `
     </a>
   </div>
   <div
-    class="za-swipeaction-content"
+    class="za-swipe-action-content"
     style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
   >
     <div>
@@ -48,7 +48,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="primary"
       >
@@ -60,7 +60,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="warning"
       >
@@ -71,7 +71,7 @@ exports[`SwipeAction renders correctly 1`] = `
   moveDistanceRatio={0.5}
   moveTimeSpan={300}
   offset={10}
-  prefixCls="za-swipeaction"
+  prefixCls="za-swipe-action"
   right={
     Array [
       <Button
@@ -80,7 +80,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="primary"
       >
@@ -92,7 +92,7 @@ exports[`SwipeAction renders correctly 1`] = `
         bordered={false}
         disabled={false}
         loading={false}
-        onClick={[Function]}
+        onClick={[MockFunction]}
         prefixCls="za-button"
         theme="warning"
       >
@@ -102,10 +102,10 @@ exports[`SwipeAction renders correctly 1`] = `
   }
 >
   <div
-    className="za-swipeaction"
+    className="za-swipe-action"
   >
     <div
-      className="za-swipeaction-actions-left"
+      className="za-swipe-action-actions-left"
     >
       <Button
         active={false}
@@ -155,7 +155,7 @@ exports[`SwipeAction renders correctly 1`] = `
       </Button>
     </div>
     <div
-      className="za-swipeaction-actions-right"
+      className="za-swipe-action-actions-right"
     >
       <Button
         active={false}
@@ -210,7 +210,7 @@ exports[`SwipeAction renders correctly 1`] = `
       onDragStart={[Function]}
     >
       <div
-        className="za-swipeaction-content"
+        className="za-swipe-action-content"
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
@@ -234,10 +234,10 @@ exports[`SwipeAction renders correctly 1`] = `
 
 exports[`SwipeAction right only 1`] = `
 <div
-  class="za-swipeaction"
+  class="za-swipe-action"
 >
   <div
-    class="za-swipeaction-actions-right"
+    class="za-swipe-action-actions-right"
   >
     <a
       aria-disabled="false"
@@ -259,7 +259,7 @@ exports[`SwipeAction right only 1`] = `
     </a>
   </div>
   <div
-    class="za-swipeaction-content"
+    class="za-swipe-action-content"
     style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
   >
     <div>

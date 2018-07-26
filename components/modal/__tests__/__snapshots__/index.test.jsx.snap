@@ -4,7 +4,7 @@ exports[`Modal renders correctly 1`] = `
 <Modal
   animationDuration={200}
   animationType="fade"
-  onMaskClick={[Function]}
+  onMaskClick={[MockFunction]}
   prefixCls="za-modal"
   visible={true}
   width="70%"
@@ -33,7 +33,7 @@ exports[`Modal renders correctly 1`] = `
         }
       >
         <ModalHeader
-          onClose={[Function]}
+          onClose={[MockFunction]}
           prefixCls="za-modal"
           title="标题"
         >
@@ -47,13 +47,13 @@ exports[`Modal renders correctly 1`] = `
             </div>
             <Icon
               className="za-modal-header-close"
-              onClick={[Function]}
+              onClick={[MockFunction]}
               prefixCls="za-icon"
               type="wrong"
             >
               <i
                 className="za-icon za-modal-header-close za-icon-wrong"
-                onClick={[Function]}
+                onClick={[MockFunction]}
               />
             </Icon>
           </div>
@@ -75,14 +75,14 @@ exports[`Modal renders correctly 1`] = `
       </div>
     </div>
     <Mask
-      onClose={[Function]}
+      onClick={[MockFunction]}
       prefixCls="za-mask"
       type="normal"
       visible={true}
     >
       <div
         className="za-mask normal"
-        onClick={[Function]}
+        onClick={[MockFunction]}
       />
     </Mask>
   </div>

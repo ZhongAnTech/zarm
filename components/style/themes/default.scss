@@ -62,8 +62,8 @@ $opacity-toast: .7;
 $opacity-tooltip: .7;
 
 /* 组件前缀 */
-$prefixCls-accordion: za-accordion;
-$prefixCls-actionsheet: za-actionsheet;
+$prefixCls-collapse: za-collapse;
+$prefixCls-action-sheet: za-action-sheet;
 $prefixCls-alert: za-alert;
 $prefixCls-badge: za-badge;
 $prefixCls-button: za-button;
@@ -77,7 +77,7 @@ $prefixCls-loading: za-loading;
 $prefixCls-mask: za-mask;
 $prefixCls-message: za-message;
 $prefixCls-modal: za-modal;
-$prefixCls-noticebar: za-noticebar;
+$prefixCls-notice-bar: za-notice-bar;
 $prefixCls-panel: za-panel;
 $prefixCls-picker: za-picker;
 $prefixCls-wheel: za-wheel;
@@ -85,28 +85,28 @@ $prefixCls-popup: za-popup;
 $prefixCls-progress: za-progress;
 $prefixCls-pull: za-pull;
 $prefixCls-radio: za-radio;
-$prefixCls-searchbar: za-searchbar;
+$prefixCls-search-bar: za-search-bar;
 $prefixCls-select: za-select;
 $prefixCls-slider: za-slider;
-$prefixCls-spinner: za-spinner;
+$prefixCls-activity-indicator: za-activity-indicator;
 $prefixCls-stepper: za-stepper;
 $prefixCls-swipe: za-swipe;
-$prefixCls-swipeaction: za-swipeaction;
+$prefixCls-swipe-action: za-swipe-action;
 $prefixCls-switch: za-switch;
-$prefixCls-tab: za-tab;
+$prefixCls-tabs: za-tabs;
 $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
-$prefixCls-filepicker: za-filepicker;
+$prefixCls-file-picker: za-file-picker;
 
-// Accordion
-$accordion-height: r(45);
-$accordion-padding: r(15);
-$accordion-arrow-color: #c7c7cc;
+// Collapse
+$collapse-height: r(45);
+$collapse-padding: r(15);
+$collapse-arrow-color: #c7c7cc;
 
 // ActionSheet
-$actionsheet-margin: 0;
-$actionsheet-item-height: r(50);
-$actionsheet-item-font-size: r(16);
+$action-sheet-margin: 0;
+$action-sheet-item-height: r(50);
+$action-sheet-item-font-size: r(16);
 
 // Alert
 $alert-button-height: r(50);
@@ -169,7 +169,7 @@ $modal-background: #fff;
 $modal-title-font-size: r(18);
 
 // NoticeBar
-$noticebar-height: r(24);
+$notice-bar-height: r(24);
 
 // Panel
 $panel-header-color: $color-text-caption;
@@ -198,10 +198,10 @@ $slider-handle-size: r(28);
 $slider-handle-background: #fff;
 $slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
 
-// Spinner
-$spinner-size-md: r(20);
-$spinner-size-lg: r(31);
-$spinner-path-color: #e6e6e6;
+// activity-indicator
+$activity-indicator-size-md: r(20);
+$activity-indicator-size-lg: r(31);
+$activity-indicator-path-color: #e6e6e6;
 
 // Stepper
 $stepper-height: r(27);
@@ -218,10 +218,10 @@ $switch-height: r(31);
 $switch-border-color: #e5e5e5;
 $switch-background: #fdfdfd;
 
-// Tab
-$tab-height: r(45);
-$tab-item-font-size: $font-size-lg;
-$tab-line-height: r(2);
+// Tabs
+$tabs-height: r(45);
+$tabs-item-font-size: $font-size-lg;
+$tabs-line-height: r(2);
 
 // Toast
 $toast-border-radius: r(6);

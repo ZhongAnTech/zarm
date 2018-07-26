@@ -63,9 +63,9 @@ export default {
   opacity_tooltip: .7,
 
   // ActionSheet
-  actionsheet_margin: 0,
-  actionsheet_item_height: 50,
-  actionsheet_item_font_size: 16,
+  actionSheet_margin: 0,
+  actionSheet_item_height: 50,
+  actionSheet_item_font_size: 16,
 
   // Alert
   alert_button_height: 50,
@@ -128,7 +128,7 @@ export default {
   modal_title_font_size: 18,
 
   // NoticeBar
-  noticebar_height: 24,
+  noticeBar_height: 24,
 
   // Panel
   panel_header_color: this.color_text_caption,
@@ -150,10 +150,10 @@ export default {
   slider_handle_size: 28,
   slider_handle_background: '#fff',
 
-  // Spinner
-  spinner_size_md: 20,
-  spinner_size_lg: 31,
-  spinner_path_color: '#e6e6e6',
+  // activity-indicator
+  activityIndicator_size_md: 20,
+  activityIndicator_size_lg: 31,
+  activityIndicator_path_color: '#e6e6e6',
 
   // Stepper
   stepper_height: 27,
@@ -174,10 +174,10 @@ export default {
   swipe_action_height: 45,
   swipe_action_background: '#fff',
 
-  // Tab
-  tab_height: 45,
-  tab_item_font_size: this.font_size_lg,
-  tab_line_height: 2,
+  // Tabs
+  tabs_height: 45,
+  tabs_item_font_size: this.font_size_lg,
+  tabs_line_height: 2,
 
   // Toast
   toast_border_radius: 6,

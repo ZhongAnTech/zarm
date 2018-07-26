@@ -147,7 +147,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
         style={maskStyle}
         visible={isMaskShow}
         type={maskType}
-        onClose={onMaskClick}
+        onClick={onMaskClick}
       />
     );
   }

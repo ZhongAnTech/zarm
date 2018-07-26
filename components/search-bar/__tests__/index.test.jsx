@@ -87,7 +87,7 @@ describe('SearchBar', () => {
     );
     const input = wrapper.find('input[type="search"]');
     input.simulate('focus');
-    wrapper.find('.za-searchbar-cancel').simulate('click');
+    wrapper.find('.za-search-bar-cancel').simulate('click');
     expect(onCancel).toHaveBeenCalled();
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -104,7 +104,7 @@ describe('SearchBar', () => {
 
     const input = wrapper.find('input[type="search"]');
     input.simulate('change', { target: { value: 'My new value' } });
-    wrapper.find('.za-searchbar-form').simulate('submit');
+    wrapper.find('.za-search-bar-form').simulate('submit');
     expect(onSubmit).toHaveBeenCalled();
     expect(toJson(wrapper)).toMatchSnapshot();
   });

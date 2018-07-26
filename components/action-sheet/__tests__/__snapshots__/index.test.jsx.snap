@@ -5,23 +5,23 @@ exports[`ActionSheet renders correctly 1`] = `
   actions={
     Array [
       Object {
-        "onClick": [Function],
+        "onClick": [MockFunction],
         "text": "操作一",
       },
       Object {
-        "onClick": [Function],
+        "onClick": [MockFunction],
         "text": "操作二",
       },
       Object {
-        "onClick": [Function],
+        "onClick": [MockFunction],
         "text": "操作三",
         "theme": "error",
       },
     ]
   }
   cancelText="取消"
-  onMaskClick={[Function]}
-  prefixCls="za-actionsheet"
+  onMaskClick={[MockFunction]}
+  prefixCls="za-action-sheet"
   spacing={false}
   visible={true}
 >
@@ -31,7 +31,7 @@ exports[`ActionSheet renders correctly 1`] = `
     direction="bottom"
     mask={true}
     maskType="normal"
-    onMaskClick={[Function]}
+    onMaskClick={[MockFunction]}
     prefixCls="za-popup"
     stayTime={3000}
     visible={true}
@@ -52,29 +52,29 @@ exports[`ActionSheet renders correctly 1`] = `
           }
         >
           <div
-            className="za-actionsheet"
+            className="za-action-sheet"
           >
             <div
-              className="za-actionsheet-actions"
+              className="za-action-sheet-actions"
             >
               <a
-                className="za-actionsheet-item"
+                className="za-action-sheet-item"
                 key="0"
-                onClick={[Function]}
+                onClick={[MockFunction]}
               >
                 操作一
               </a>
               <a
-                className="za-actionsheet-item"
+                className="za-action-sheet-item"
                 key="1"
-                onClick={[Function]}
+                onClick={[MockFunction]}
               >
                 操作二
               </a>
               <a
-                className="za-actionsheet-item theme-error"
+                className="za-action-sheet-item theme-error"
                 key="2"
-                onClick={[Function]}
+                onClick={[MockFunction]}
               >
                 操作三
               </a>
@@ -83,7 +83,7 @@ exports[`ActionSheet renders correctly 1`] = `
         </div>
         <Mask
           className=""
-          onClose={[Function]}
+          onClick={[MockFunction]}
           prefixCls="za-mask"
           style={
             Object {
@@ -96,7 +96,7 @@ exports[`ActionSheet renders correctly 1`] = `
         >
           <div
             className="za-mask normal"
-            onClick={[Function]}
+            onClick={[MockFunction]}
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
