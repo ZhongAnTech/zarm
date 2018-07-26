@@ -20,9 +20,9 @@ exports[`DateSelect DateSelect date 1`] = `
   >
     <input
       type="hidden"
-      value="2017-09-06"
+      value="2017-09-05"
     />
-    2017-09-06
+    2017-09-05
     <DatePicker
       cancelText="取消"
       defaultValue=""
@@ -37,7 +37,7 @@ exports[`DateSelect DateSelect date 1`] = `
       placeholder="请选择"
       prefixCls="za-picker"
       title="请选择"
-      value={2017-09-05T16:00:00.000Z}
+      value={2017-09-06T04:00:00.000Z}
       valueMember="value"
       visible={false}
     >
@@ -117,7 +117,7 @@ exports[`DateSelect DateSelect date 1`] = `
                   placeholder="请选择"
                   prefixCls="za-picker"
                   title="请选择"
-                  value={2017-09-05T16:00:00.000Z}
+                  value={2017-09-06T04:00:00.000Z}
                   valueMember="value"
                   visible={false}
                 >
@@ -1319,9 +1319,9 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <input
       type="hidden"
-      value="2017-11-03 15:00"
+      value="2017-11-03 11:00"
     />
-    2017-11-03 15:00
+    2017-11-03 11:00
     <DatePicker
       cancelText="取消"
       defaultValue="2017-11-03 15:00"
@@ -1338,7 +1338,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
       placeholder="请选择"
       prefixCls="za-picker"
       title="请选择"
-      value={2017-11-03T07:00:00.000Z}
+      value={2017-11-03T19:00:00.000Z}
       valueMember="value"
       visible={false}
     >
@@ -1420,7 +1420,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
                   placeholder="请选择"
                   prefixCls="za-picker"
                   title="请选择"
-                  value={2017-11-03T07:00:00.000Z}
+                  value={2017-11-03T19:00:00.000Z}
                   valueMember="value"
                   visible={false}
                 >
@@ -2870,9 +2870,9 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <input
       type="hidden"
-      value="15:00"
+      value="11:00"
     />
-    15:00
+    11:00
     <DatePicker
       cancelText="取消"
       defaultValue="2017-11-03 15:00"
@@ -2887,7 +2887,7 @@ exports[`DateSelect DateSelect time 1`] = `
       placeholder="请选择"
       prefixCls="za-picker"
       title="请选择"
-      value={2017-11-03T07:00:00.000Z}
+      value={2017-11-03T19:00:00.000Z}
       valueMember="value"
       visible={false}
     >
@@ -2967,7 +2967,7 @@ exports[`DateSelect DateSelect time 1`] = `
                   placeholder="请选择"
                   prefixCls="za-picker"
                   title="请选择"
-                  value={2017-11-03T07:00:00.000Z}
+                  value={2017-11-03T19:00:00.000Z}
                   valueMember="value"
                   visible={false}
                 >
@@ -3512,9 +3512,9 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   >
     <input
       type="hidden"
-      value="2017-11-03"
+      value="2017-11-02"
     />
-    2017-11-03
+    2017-11-02
     <DatePicker
       cancelText="取消"
       defaultValue="2017-11-03"
@@ -3529,7 +3529,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       placeholder="请选择"
       prefixCls="za-picker"
       title="请选择"
-      value={2017-11-02T16:00:00.000Z}
+      value={2017-11-03T04:00:00.000Z}
       valueMember="value"
       visible={true}
     >
@@ -3609,7 +3609,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                   placeholder="请选择"
                   prefixCls="za-picker"
                   title="请选择"
-                  value={2017-11-02T16:00:00.000Z}
+                  value={2017-11-03T04:00:00.000Z}
                   valueMember="value"
                   visible={true}
                 >
@@ -6141,9 +6141,9 @@ exports[`DateSelect DateSelect year 1`] = `
   >
     <input
       type="hidden"
-      value="2017年"
+      value="2016年"
     />
-    2017年
+    2016年
     <DatePicker
       cancelText="取消"
       defaultValue=""
@@ -6409,7 +6409,7 @@ exports[`DateSelect DateSelect year 1`] = `
                     title="请选择"
                     value={
                       Array [
-                        "2017",
+                        "2016",
                       ]
                     }
                     valueMember="value"
@@ -6556,7 +6556,7 @@ exports[`DateSelect DateSelect year 1`] = `
                           onChange={[Function]}
                           onTransition={[Function]}
                           prefixCls="za-wheel"
-                          value="2017"
+                          value="2016"
                           valueMember="value"
                         >
                           <div
@@ -6662,13 +6662,13 @@ exports[`DateSelect DateSelect year 1`] = `
                                 2015
                               </div>
                               <div
-                                className="za-wheel-item"
+                                className="za-wheel-item za-wheel-item-selected"
                                 key="16"
                               >
                                 2016
                               </div>
                               <div
-                                className="za-wheel-item za-wheel-item-selected"
+                                className="za-wheel-item"
                                 key="17"
                               >
                                 2017
