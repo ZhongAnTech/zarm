@@ -1,4 +1,5 @@
 import React from 'react';
+import { findDOMNode } from 'react-dom';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Input from '../index';
@@ -52,6 +53,23 @@ describe('Input', () => {
     expect(input.instance().value).toEqual('');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  // it('renders cn', () => {
+  //   const onFocus = jest.fn();
+  //   const wrapper = mount(
+  //     <Input
+  //       value=""
+  //       onFocus={onFocus}
+  //     />
+  //   );
+
+  //   const input = wrapper.find('input[type="text"]');
+  //   input.simulate('change', { target: { value: '测试' } });
+  //   wrapper.find('i.za-input-clear').simulate('click');
+  //   expect(input.instance().value).toEqual('');
+  //   expect(onFocus).toHaveBeenCalled();
+  //   expect(toJson(wrapper)).toMatchSnapshot();
+  // });
 });
 
 describe('Input.Textarea', () => {
@@ -76,6 +94,26 @@ describe('Input.Textarea', () => {
     jest.runAllTimers();
     wrapper.unmount();
   });
+
+  it('renders onFocus called correctly', () => {
+    const onFocus = jest.fn();
+    const wrapper = mount(
+      <Input type="textarea" onFocus={onFocus} />
+    );
+    wrapper.find('textarea').simulate('focus');
+    expect(onFocus).toBeCalled();
+    // expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
+  });
+
+  it('renders onBlur called correctly', () => {
+    const onBlur = jest.fn();
+    const wrapper = mount(<Input type="textarea" onBlur={onBlur} />);
+    // const spy = jest.spyOn(wrapper.instance(), 'onBlur');
+    wrapper.find('textarea').simulate('focus');
+    wrapper.find('textarea').simulate('blur');
+    expect(onBlur).toHaveBeenCalled();
+  });
 });
 
 describe('Input.Number', () => {
@@ -84,13 +122,23 @@ describe('Input.Number', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders onFocus called correctly', () => {
+    const onFocus = jest.fn();
+    const wrapper = mount(
+      <Input type="number" onFocus={onFocus} />
+    );
+    wrapper.find('.za-input-content').simulate('click');
+    expect(onFocus).toBeCalled();
+    // expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
+  });
+
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
     const wrapper = mount(
       <Input
         type="number"
         onClear={onClear}
-        clearable
       />
     );
 
@@ -102,15 +150,39 @@ describe('Input.Number', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-//   it('enter number', () => {
-//     const onChange = jest.fn();
-//     const wrapper = mount(<Input type="number" onChange={onChange} />);
-//     wrapper.find('input').simulate('focus');
-//     const keys = wrapper.find('.za-keyboard-keys');
-//     keys.childAt(0).simulate('click');
-//     expect(onChange).toBeCalledWith('1');
-//     wrapper.unmount();
-//   });
+  it('enter number', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(<Input type="number" focused onChange={onChange} />);
+    wrapper.find('input').simulate('focus');
+    const keys = wrapper.find('.za-keyboard-keys');
+    keys.childAt(0).simulate('click');
+    expect(onChange).toBeCalledWith('1');
+    wrapper.unmount();
+  });
+
+  it('input number hidden', () => {
+    const onBlur = jest.fn();
+    const wrapper = mount(<Input type="number" focused onBlur={onBlur} />);
+    wrapper.find('input').simulate('focus');
+    const keys = wrapper.find('.za-keyboard-keys');
+    keys.childAt(11).simulate('click');
+    expect(onBlur).toBeCalled();
+    wrapper.unmount();
+  });
+
+  it('input number hidden', () => {
+    const map = {};
+    document.body.addEventListener = jest.fn((event, cb) => {
+      map[event] = cb;
+    });
+    const onBlur = jest.fn();
+    const wrapper = mount(<Input type="number" focused onBlur={onBlur} />);
+    map.click({
+      target: findDOMNode(document.body), // eslint-disable-line
+    });
+    expect(onBlur).toBeCalled();
+    wrapper.unmount();
+  });
 });
 
 describe('Input.Price', () => {

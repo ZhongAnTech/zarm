@@ -108,4 +108,20 @@ describe('SearchBar', () => {
     expect(onSubmit).toHaveBeenCalled();
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('renders onClear called correctly', () => {
+    const onClear = jest.fn();
+    const wrapper = mount(
+      <SearchBar
+        onClear={onClear}
+      />
+    );
+
+    const input = wrapper.find('input[type="search"]');
+    input.simulate('change', { target: { value: 'My new value' } });
+    wrapper.find('i.za-input-clear').simulate('click');
+    expect(onClear).toHaveBeenCalled();
+    expect(input.instance().value).toEqual('');
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });

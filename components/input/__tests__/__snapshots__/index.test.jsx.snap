@@ -517,7 +517,6 @@ exports[`Input.Number renders correctly 1`] = `
 
 exports[`Input.Number renders onClear called correctly 1`] = `
 <Input
-  clearable={true}
   onClear={
     [MockFunction] {
       "calls": Array [
