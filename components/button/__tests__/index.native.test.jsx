@@ -2,7 +2,7 @@ import { TouchableHighlight } from 'react-native';
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Button from '../index.native.js';
+import Button from '../index.native';
 
 describe('Button', () => {
   it('renders correctly', () => {
