@@ -5,6 +5,19 @@ import Wheel from '../index';
 
 describe('Wheel', () => {
   it('Wheel render visible', () => {
+    const wrapper = mount(
+      <Wheel
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
+  });
+
+  it('Wheel set props value', () => {
     // jest.useFakeTimers();
     const wrapper = mount(
       <Wheel
@@ -22,7 +35,36 @@ describe('Wheel', () => {
     wrapper.unmount();
   });
 
-  it('Wheel render visible', () => {
+  it('Wheel render defaultValue', () => {
+    // jest.useFakeTimers();
+    const wrapper = mount(
+      <Wheel
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        defaultValue="1"
+      />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
+  });
+
+  it('Wheel disabled', () => {
+    const wrapper = mount(
+      <Wheel
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        disabled
+      />
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.unmount();
+  });
+
+  it('Wheel set props disabled', () => {
     // jest.useFakeTimers();
     const wrapper = mount(
       <Wheel
@@ -35,7 +77,7 @@ describe('Wheel', () => {
       />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.setProps({ value: '2' });
+    wrapper.setProps({ disabled: true });
     // jest.runAllTimers();
     wrapper.unmount();
   });

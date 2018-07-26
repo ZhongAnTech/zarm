@@ -176,7 +176,7 @@ export default {
 
   // Tabs
   tabs_height: 45,
-  tabs_item_font_size: this.font_size_lg,
+  tabs_item_font_size: 15,
   tabs_line_height: 2,
 
   // Toast

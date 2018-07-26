@@ -1,6 +1,6 @@
-import 'react-native';
+import { TouchableHighlight } from 'react-native';
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Button from '../index.native.js';
 
@@ -50,10 +50,27 @@ describe('Button', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('onClick', () => {
-  //   const onClick = jest.fn();
-  //   const wrapper = shallow(<Button onClick={onClick}>foo</Button>);
-  //   wrapper.simulate('click');
-  //   expect(onClick).toBeCalled();
-  // });
+  it('onClick', () => {
+    const onClick = jest.fn();
+    const wrapper = shallow(<Button onClick={onClick}>foo</Button>);
+    wrapper.find(TouchableHighlight).props().onPress();
+    expect(onClick).toBeCalled();
+  });
+
+  it('set props active', () => {
+    const wrapper = shallow(<Button>foo</Button>);
+    wrapper.setProps({ active: true });
+  });
+
+  it('pressIn', () => {
+    const wrapper = shallow(<Button>foo</Button>);
+    wrapper.find(TouchableHighlight).props().onPressIn();
+    expect(wrapper.state('isActive')).toBe(true);
+  });
+
+  it('pressOut', () => {
+    const wrapper = shallow(<Button>foo</Button>);
+    wrapper.find(TouchableHighlight).props().onPressOut();
+    expect(wrapper.state('isActive')).toBe(false);
+  });
 });

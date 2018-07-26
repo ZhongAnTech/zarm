@@ -90,67 +90,53 @@ describe('Swipe', () => {
           })
         }
       </Swipe>
-    ).find('.za-swipe-items');
-    wrapper.simulate('touchStart', {
-      touches: [10, 0],
-    });
-    wrapper.simulate('touchMove', {
-      touches: [100, 0],
-    });
-    wrapper.simulate('touchEnd', {
-      touches: [200, 0],
-    });
+    );
+
+    wrapper.find('.za-swipe-items')
+      .simulate('touchStart', {
+        touches: [
+          {
+            pageX: 0,
+          },
+        ],
+      })
+      .simulate('touchMove', {
+        touches: [
+          {
+            pageX: 100,
+          },
+        ],
+      })
+      .simulate('touchEnd');
+
+    expect(wrapper.state('activeIndex')).toEqual(0);
   });
 
   it('pagination event', () => {
     const onChange = jest.fn();
     const onChangeEnd = jest.fn();
     const ITEMS = ['1', '2', '3'];
-    class Test extends React.Component {
-      render() {
-        return (
-          <Swipe onChange={onChange} onChangeEnd={onChangeEnd} direction="right">
-            {
-              ITEMS.map((item, i) => {
-                return (
-                  <div key={+i}>{item}</div>
-                );
-              })
-            }
-          </Swipe>
-        );
-      }
-    }
-    const wrapper = mount(<Test />);
+    const wrapper = mount(
+      <Swipe onChange={onChange} onChangeEnd={onChangeEnd} direction="right">
+        {
+          ITEMS.map((item, i) => {
+            return (
+              <div key={+i}>{item}</div>
+            );
+          })
+        }
+      </Swipe>
+    );
 
     wrapper
       .find('.za-swipe-pagination li')
-      .at(0)
+      .at(2)
       .simulate('click');
     expect(
       wrapper
         .find('.za-swipe-pagination li')
-        .at(0)
+        .at(2)
         .hasClass('active')
     ).toBe(true);
-
-    // wrapper.ref('swipeRef').onSlideTo(2);
-
-    // wrapper.simulate('touchStart', {
-    //   touches: [10, 0],
-    // });
-    // wrapper.simulate('touchMove', {
-    //   touches: [100, 0],
-    // });
-    // wrapper.simulate('touchEnd', {
-    //   touches: [200, 0],
-    // });
-    // wrapper
-    //   .find('.za-swipe-pagination li')
-    //   .at(2)
-    //   .simulate('click');
-    // // jest.runAllTimers();
-    // expect(onChange).toHaveBeenCalled();
-    // expect(onChangeEnd).toHaveBeenCalled();
   });
 });
