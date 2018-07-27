@@ -1,6 +1,3 @@
-git checkout release
-git merge dev
-
 #!/bin/bash
 set -e
 
@@ -11,13 +8,11 @@ else
   VERSION=$1
 fi
 
-read -p "Releasing $VERSION - are you sure? (y/n)" -n 1 -r
+read -p "Releasing $VERSION - are you sure? (y/n) " -n 1 -r
 echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "Releasing $VERSION ..."
 
-  # lint and test
   if [[ -z $SKIP_TESTS ]]; then
     npm run lint
     npm run test
@@ -29,14 +24,13 @@ then
   # commit
   git add -A
   git commit -m "build: build $VERSION"
-  npm version $VERSION --message "build: release $VERSION"
+
+  # tag version
+  npm version "$VERSION" --message "build: release $VERSION"
 
   # publish
-  git push release
-  git push refs/tags/v$VERSION
-  git checkout dev
-  git rebase release
-  git push dev
+  git push origin refs/tags/v"$VERSION"
+  git push origin dev
 
   if [[ $VERSION =~ "alpha" ]]
   then
