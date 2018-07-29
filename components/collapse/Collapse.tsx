@@ -6,8 +6,6 @@ import { isArray } from '../utils/validate';
 export interface CollapseProps extends BaseCollapseProps {
   prefixCls?: string;
   className?: string;
-  activeKey?: string | number | Array<string | number>;
-  defaultActiveKey?: string | number | Array<string | number>;
 }
 
 function toArray(activeKey) {
@@ -20,8 +18,6 @@ function toArray(activeKey) {
 
 export default class Collapse extends PureComponent<CollapseProps, any> {
   static defaultProps = {
-    activeKey: null,
-    defaultActiveKey: null,
     prefixCls: 'za-collapse',
     multiple: true,
     animated: false,
@@ -87,6 +83,23 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
         [String(defaultIndex[0])] : (defaultIndex as Array<any>).map(key => String(key));
       } else {
         return [String(defaultIndex)];
+      }
+    }
+
+    return [];
+  }
+
+  getActiveKey(props) {
+    const { activeKey, defaultActiveKey, multiple } = props;
+
+    const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
+
+    if (defaultKey || defaultKey === 0) {
+      if (isArray(defaultKey)) {
+        return !multiple ?
+        [String(defaultKey[0])] : (defaultKey as Array<any>).map(key => String(key));
+      } else {
+        return [String(defaultKey)];
       }
     }
 

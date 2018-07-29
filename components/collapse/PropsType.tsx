@@ -1,6 +1,8 @@
 export interface BaseCollapseProps {
   activeIndex?: string | number | Array<string | number>;
   defaultActiveIndex?: string | number | Array<string | number>;
+  activeKey?: string | number | Array<string | number>;
+  defaultActiveKey?: string | number | Array<string | number>;
   multiple?: boolean;
   animated?: boolean;
   open?: boolean;
