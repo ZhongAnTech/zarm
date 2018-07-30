@@ -8,14 +8,6 @@ export interface CollapseProps extends BaseCollapseProps {
   className?: string;
 }
 
-function toArray(activeKey) {
-  let currentActiveKey = activeKey;
-  if (!Array.isArray(currentActiveKey)) {
-    currentActiveKey = currentActiveKey ? [currentActiveKey] : [];
-  }
-  return currentActiveKey;
-}
-
 export default class Collapse extends PureComponent<CollapseProps, any> {
   static defaultProps = {
     prefixCls: 'za-collapse',
@@ -30,15 +22,9 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   constructor(props) {
     super(props);
 
-    const { activeKey, defaultActiveKey } = this.props;
-    let currentActiveKey = defaultActiveKey;
-    if ('activeKey' in this.props) {
-      currentActiveKey = activeKey;
-    }
-
     this.state = {
       activeIndex: this.getActiveIndex(props),
-      activeKey: toArray(currentActiveKey),
+      activeKey: this.getActiveKey(props),
     };
   }
 
