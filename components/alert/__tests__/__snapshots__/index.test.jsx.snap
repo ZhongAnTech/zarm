@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert renders correctly 1`] = `
+<div
+  class="za-modal za-alert"
+  style="-webkit-animation-duration:200ms;animation-duration:200ms"
+>
+  <div
+    class="za-modal-wrapper"
+  >
+    <div
+      class="za-modal-dialog"
+      style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms"
+    >
+      <div
+        class="za-modal-header"
+      >
+        <div
+          class="za-modal-header-title"
+        >
+          警告
+        </div>
+      </div>
+      <div
+        class="za-modal-body za-alert-body"
+      >
+        这里是警告信息
+      </div>
+      <div
+        class="za-modal-footer za-alert-footer"
+      >
+        <a
+          class="za-alert-footer-button"
+        >
+          关闭
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-mask normal"
+  />
+</div>
+`;

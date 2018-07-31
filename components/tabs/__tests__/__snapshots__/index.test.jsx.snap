@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab canSwipe 1`] = `
+<div
+  class="za-tabs theme-primary"
+>
+  <div
+    class="za-tabs-header"
+  >
+    <ul
+      role="tablist"
+    >
+      <li
+        class="za-tabs-header-item active"
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        class="za-tabs-header-item"
+        role="tab"
+      >
+        选项卡2
+      </li>
+    </ul>
+    <div
+      class="za-tabs-line"
+      style="width:50%;left:0%"
+    />
+  </div>
+  <div
+    class="za-tabs-container"
+  >
+    <div
+      class="za-swipe"
+    >
+      <div
+        class="za-swipe-items"
+        style="white-space:nowrap"
+      >
+        <div
+          class="za-swipe-item"
+        >
+          <div>
+            试试点我左滑
+          </div>
+        </div>
+        <div
+          class="za-swipe-item"
+        >
+          <div>
+            试试点我右滑
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tab lineWidth is auto 1`] = `
+<div
+  className="za-tabs theme-primary"
+>
+  <div
+    className="za-tabs-header"
+  >
+    <ul
+      role="tablist"
+    >
+      <li
+        className="za-tabs-header-item active"
+        key="0/.0"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        className="za-tabs-header-item"
+        key="1/.1"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡2
+      </li>
+    </ul>
+    <div
+      className="za-tabs-line"
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "left": "0%",
+          "width": "50%",
+        }
+      }
+    >
+      <span
+        className="za-tabs-line-inner"
+        style={
+          Object {
+            "width": "auto",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="za-tabs-container"
+  >
+    <TabPanel
+      key=".0"
+      prefixCls="za-tabs"
+      selected={true}
+      title="选项卡1"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </TabPanel>
+    <TabPanel
+      key=".1"
+      prefixCls="za-tabs"
+      selected={false}
+      title="选项卡2"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </TabPanel>
+  </div>
+</div>
+`;
+
+exports[`Tab lineWidth is auto 2`] = `
+<div
+  className="za-tabs theme-primary"
+>
+  <div
+    className="za-tabs-header"
+  >
+    <ul
+      role="tablist"
+    >
+      <li
+        className="za-tabs-header-item active"
+        key="0/.0"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        className="za-tabs-header-item"
+        key="1/.1"
+        onClick={[Function]}
+        role="tab"
+      >
+        选项卡2
+      </li>
+    </ul>
+    <div
+      className="za-tabs-line"
+      style={
+        Object {
+          "backgroundColor": "transparent",
+          "left": "0%",
+          "width": "50%",
+        }
+      }
+    >
+      <span
+        className="za-tabs-line-inner"
+        style={
+          Object {
+            "width": 30,
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="za-tabs-container"
+  >
+    <TabPanel
+      key=".0"
+      prefixCls="za-tabs"
+      selected={true}
+      title="选项卡1"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </TabPanel>
+    <TabPanel
+      key=".1"
+      prefixCls="za-tabs"
+      selected={false}
+      title="选项卡2"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </TabPanel>
+  </div>
+</div>
+`;
+
+exports[`Tab renders correctly 1`] = `
+<div
+  class="za-tabs theme-primary"
+>
+  <div
+    class="za-tabs-header"
+  >
+    <ul
+      role="tablist"
+    >
+      <li
+        class="za-tabs-header-item active"
+        role="tab"
+      >
+        选项卡1
+      </li>
+      <li
+        class="za-tabs-header-item"
+        role="tab"
+      >
+        选项卡2
+      </li>
+    </ul>
+    <div
+      class="za-tabs-line"
+      style="width:50%;left:0%"
+    />
+  </div>
+  <div
+    class="za-tabs-container"
+  >
+    <div
+      class="za-tabs-panel-item active"
+      role="tabpanel"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </div>
+    <div
+      class="za-tabs-panel-item"
+      role="tabpanel"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </div>
+  </div>
+</div>
+`;

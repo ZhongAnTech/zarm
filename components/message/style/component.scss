@@ -1,0 +1,67 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-message;
+
+.#{$prefixCls} {
+  display: flex;
+  position: relative;
+  padding: $padding-v-md $padding-h-md;
+  min-height: $message-min-height;
+  font-size: $message-font-size;
+  @include message-theme($theme-default);
+
+  &-icon {
+    margin-right: r(5);
+    margin-top: r(1);
+    font-size: r(16);
+  }
+
+  &-header,
+  &-footer {
+    line-height: 1;
+  }
+
+  &-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-left: r(10);
+  }
+
+  &.theme-primary {
+    @include message-theme($theme-primary);
+  }
+
+  &.theme-success {
+    @include message-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include message-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include message-theme($theme-error);
+  }
+
+  &.size-lg {
+    min-height: $message-min-height-lg;
+    padding: $padding-v-lg $padding-h-lg;
+
+    .#{$prefixCls}-icon {
+      margin-right: r(10);
+      margin-top: r(4);
+    }
+
+    .#{$prefixCls}-body {
+      font-size: $message-font-size-lg;
+    }
+  }
+}

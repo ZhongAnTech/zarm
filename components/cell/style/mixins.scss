@@ -1,0 +1,5 @@
+@mixin cell-theme($color) {
+  .#{$prefixCls-cell}-footer {
+    color: $color;
+  }
+}

@@ -1,0 +1,496 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Collapse renders correctly 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with activeIndex 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with animated 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with collapse mode 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with defaultActiveIndex 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with number activeIndex 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with number defaultActiveIndex 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with open mode 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow za-collapse-item-arrow-hidden"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow za-collapse-item-arrow-hidden"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with string activeIndex 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with string defaultActiveIndex 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        50元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          50元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item active"
+  >
+    <div
+      class="za-collapse-item-title"
+    >
+      <div>
+        100元套餐
+      </div>
+      <div
+        class="za-collapse-item-arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item-content za-collapse-item-content-anim"
+    >
+      <div
+        class="za-collapse-item-content-inner"
+      >
+        <div>
+          100元套餐内容
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

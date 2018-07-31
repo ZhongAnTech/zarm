@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal renders correctly 1`] = `
+<Modal
+  animationDuration={200}
+  animationType="fade"
+  onMaskClick={[MockFunction]}
+  prefixCls="za-modal"
+  visible={true}
+  width="70%"
+>
+  <div
+    className="za-modal"
+    style={
+      Object {
+        "WebkitAnimationDuration": "200ms",
+        "animationDuration": "200ms",
+      }
+    }
+  >
+    <div
+      className="za-modal-wrapper"
+    >
+      <div
+        className="za-modal-dialog"
+        onClick={[Function]}
+        style={
+          Object {
+            "WebkitAnimationDuration": "200ms",
+            "animationDuration": "200ms",
+            "width": "70%",
+          }
+        }
+      >
+        <ModalHeader
+          onClose={[MockFunction]}
+          prefixCls="za-modal"
+          title="标题"
+        >
+          <div
+            className="za-modal-header"
+          >
+            <div
+              className="za-modal-header-title"
+            >
+              标题
+            </div>
+            <Icon
+              className="za-modal-header-close"
+              onClick={[MockFunction]}
+              prefixCls="za-icon"
+              type="wrong"
+            >
+              <i
+                className="za-icon za-modal-header-close za-icon-wrong"
+                onClick={[MockFunction]}
+              />
+            </Icon>
+          </div>
+        </ModalHeader>
+        <ModalBody
+          prefixCls="za-modal"
+        >
+          <div
+            className="za-modal-body"
+            style={
+              Object {
+                "height": undefined,
+              }
+            }
+          >
+            foo
+          </div>
+        </ModalBody>
+      </div>
+    </div>
+    <Mask
+      onClick={[MockFunction]}
+      prefixCls="za-mask"
+      type="normal"
+      visible={true}
+    >
+      <div
+        className="za-mask normal"
+        onClick={[MockFunction]}
+      />
+    </Mask>
+  </div>
+</Modal>
+`;

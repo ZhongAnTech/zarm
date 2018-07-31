@@ -2,8 +2,11 @@ sudo: false
 language: node_js
 node_js:
   - 6
+  - 8
+before_install:
+  - export TZ=America/New_York
 script:
   - npm run lint
-  - npm run test:coverage
+  - npm run test -- -w 2
 after_script:
   - npm run coverage

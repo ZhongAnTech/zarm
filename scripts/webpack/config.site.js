@@ -1,69 +1,80 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
 
+config.mode = 'production';
+
 config.entry = {
-  index: [
-    './examples/index.js',
+  index: ['./examples/index.js'],
+};
+
+config.output.filename = 'js/[name].[chunkhash:8].js';
+config.output.publicPath = './';
+
+config.optimization = {
+  minimizer: [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      uglifyOptions: {
+        output: {
+          comments: false,
+        },
+      },
+    }),
+    new OptimizeCSSAssetsPlugin({}),
   ],
 };
 
-config.output.publicPath = './';
-
-config.plugins.push(new ExtractTextPlugin({
-  filename: 'stylesheet/[name].css',
-  disable: false,
-  allChunks: true,
-}));
-
-config.plugins.push(new OptimizeCssAssetsPlugin({
-  assetNameRegExp: /\.css$/g,
-  cssProcessor: require('cssnano'),
-  cssProcessorOptions: {
-    discardComments: {
-      removeAll: true,
+config.plugins.push(
+  // new BundleAnalyzerPlugin({
+  //   analyzerMode: 'static',
+  // }),
+  new MiniCssExtractPlugin({
+    filename: 'stylesheet/[name].[contenthash:8].css',
+    chunkFilename: 'stylesheet/[id].[contenthash:8].css',
+  }),
+  new webpack.optimize.SplitChunksPlugin({
+    chunks: 'async',
+    minSize: 30000,
+    minChunks: 1,
+    maxAsyncRequests: 5,
+    maxInitialRequests: 3,
+    automaticNameDelimiter: '~',
+    name: true,
+    cacheGroups: {
+      styles: {
+        name: 'styles',
+        test: /\.s?css$/,
+        chunks: 'all',
+        minChunks: 5,
+        enforce: true,
+      },
     },
-  },
-  canPrint: true,
+  }),
+  new webpack.optimize.RuntimeChunkPlugin({
+    name: 'manifest',
+  })
+);
+
+config.plugins.push(new HtmlWebpackPlugin({
+  template: './examples/index.html',
+  filename: 'index.html',
+  chunk: ['manifest', 'index'],
+}));
+config.plugins.push(new HtmlWebpackPlugin({
+  template: './examples/index_umd.html',
+  filename: 'index_umd.html',
+  inject: false,
 }));
 
-config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-  compress: {
-    warnings: false,
-  },
-  output: {
-    comments: false,
-  },
-  sourceMap: true,
-  mangle: true,
-}));
-
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: 'common',
-}));
-
-config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  names: Object.keys(config.entry),
-  async: 'common.async',
-  children: true,
-  minChunks: 3,
-}));
-
-config.plugins.push(new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: '"production"',
-  },
-  __DEBUG__: false,
-}));
-
-Object.keys(config.entry).forEach((key) => {
-  config.plugins.push(new HtmlWebpackPlugin({
-    template: `./examples/${key}.html`,
-    filename: `${key}.html`,
-    chunks: ['common', key],
-  }));
-});
+config.resolve.alias = {
+  zarm: process.cwd(),
+};
 
 module.exports = config;

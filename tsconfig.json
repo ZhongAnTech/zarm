@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "skipLibCheck": true,
+    "types": [
+      "classnames",
+      "react",
+      "react-dom",
+      "react-native"
+    ]
+  },
+  "include": [
+    "components/*.tsx",
+    "components/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es"
+  ],
+  "compileOnSave": false
+}

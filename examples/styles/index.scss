@@ -1,12 +1,8 @@
-@import "../../styles/core/index";
+// 自定义主题（关闭babel-plugin-import的style功能后引入）
+// @import "~normalize.css/normalize.css";
+// @import "~zarm/components/style/index.scss";
+// @import "./themes/default.scss";
+// @import "~zarm/components/style/components.scss";
 
-/* 重写 zarm方法 */
-/* @import "./functions/index"; */
-
-/* 重写 zarm变量 */
-@import "../../styles/variables";
-@import "./themes/default";
-
-/* 组件sass */
-@import "../../styles/components";
-@import "./base/index";
+@import "./functions/index.scss";
+@import "./base/index.scss";

@@ -1,0 +1,32 @@
+$prefixCls: $prefixCls-loading;
+
+.#{$prefixCls} {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  user-select: none;
+  z-index: $zindex-loading;
+
+  &-open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: r(80);
+    height: r(80);
+    padding: r(20) r(15);
+    border-radius: $radius-md;
+    background: rgba(0, 0, 0, $opacity-toast);
+    color: #fff;
+  }
+}

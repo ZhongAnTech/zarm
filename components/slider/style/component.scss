@@ -1,0 +1,40 @@
+$prefixCls: $prefixCls-slider;
+
+.#{$prefixCls} {
+  position: relative;
+  width: 100%;
+  margin: $slider-handle-size / 2 0;
+  padding: 0 $slider-handle-size / 2;
+
+  &-line {
+    flex: 1;
+    height: $slider-line-height;
+    background-color: $slider-line-background;
+
+    &-bg {
+      height: 100%;
+      background-color: $theme-primary;
+    }
+  }
+
+  &-handle {
+    position: absolute;
+    left: 0;
+    top: -$slider-handle-size / 2;
+    width: $slider-handle-size;
+    height: $slider-handle-size;
+    border-radius: 50%;
+    background-color: $slider-handle-background;
+    box-shadow: $slider-handle-shadow;
+
+    &-shadow {
+      width: $slider-handle-size;
+      height: $slider-handle-size;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: $opacity-disabled;
+  }
+}

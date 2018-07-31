@@ -1,0 +1,34 @@
+@import "../../button/style/mixins";
+
+$prefixCls: $prefixCls-confirm;
+
+.#{$prefixCls} {
+  &-body {
+    text-align: center;
+  }
+
+  &-footer {
+    display: flex;
+
+    &-button {
+      flex: 1;
+      height: $confirm-button-height;
+      line-height: $confirm-button-height;
+      font-size: $confirm-button-font-size;
+      @include button-base();
+      @include onepx(top);
+
+      &:active {
+        background-color: $background-active;
+      }
+
+      &:not(:first-of-type) {
+        @include onepx(left top);
+      }
+
+      &-ok {
+        color: $theme-primary;
+      }
+    }
+  }
+}

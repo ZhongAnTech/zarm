@@ -1,0 +1,35 @@
+$prefixCls: $prefixCls-picker;
+
+.#{$prefixCls} {
+  &-wrapper {
+    background: #fff;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: r(45);
+    line-height: r(45);
+    @include onepx(bottom);
+  }
+
+  &-cancel,
+  &-submit {
+    flex: 1;
+    padding: 0 r(20);
+    cursor: pointer;
+  }
+
+  &-cancel {
+    text-align: left;
+    color: $color-text-caption;
+  }
+
+  &-submit {
+    text-align: right;
+    color: $theme-primary;
+  }
+}

@@ -1,0 +1,127 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-cell;
+
+.#{$prefixCls} {
+  position: relative;
+  overflow: hidden;
+  background-color: $cell-background;
+  @include cell-theme($cell-description-color);
+  @include onepx(top);
+
+  &:after {
+    left: $cell-line-left;
+  }
+
+  &.theme-primary {
+    @include cell-theme($theme-primary);
+  }
+
+  &.theme-success {
+    @include cell-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include cell-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include cell-theme($theme-error);
+  }
+
+  &.has-icon {
+    &:after {
+      left: $cell-line-hasicon-left;
+    }
+  }
+
+  &.is-link {
+    cursor: pointer;
+    user-select: none;
+
+    .#{$prefixCls}-inner {
+      &:active {
+        background-color: $background-active;
+      }
+    }
+
+    .#{$prefixCls}-title {
+      flex: 1;
+    }
+  }
+
+  &.disabled {
+    .#{$prefixCls}-body,
+    .#{$prefixCls}-footer {
+      color: $color-text-disabled;
+    }
+  }
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    padding: 0 $padding-h-lg;
+    font-size: $cell-title-font-size;
+    min-height: $cell-height;
+
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  &-body {
+    flex: 1;
+    display: flex;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: center;
+    text-align: right;
+    font-size: $cell-description-font-size;
+  }
+
+  &-arrow {
+    margin-left: r(5);
+
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: r(2) solid #c7c7cc;
+      border-top: r(2) solid #c7c7cc;
+      width: r(10);
+      height: r(10);
+      transform: rotate(45deg);
+    }
+  }
+
+  &-icon {
+    width: $cell-icon-width;
+    height: $cell-icon-height;
+    text-align: center;
+    margin-right: $padding-h-lg;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &-title {
+    width: $cell-label-width;
+    padding: r(12) 0;
+    overflow: hidden;
+    color: $cell-title-color;
+  }
+
+  &-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  &-help {
+    padding: 0 r(15) r(10) r(15);
+  }
+}

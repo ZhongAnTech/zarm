@@ -1,0 +1,42 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-button;
+
+.#{$prefixCls} {
+  display: inline-block;
+  @include button-base();
+  @include button-size($button-height-md, $button-padding-h-md, $button-font-size-md, r(22));
+  @include button-theme($theme-default, $color-text);
+  @include button-bordered($theme-default, $color-text);
+
+  /* Button sizes */
+  &.size-lg {
+    @include button-size($button-height-lg, $button-padding-h-lg, $button-font-size-lg, r(26));
+  }
+
+  &.size-sm {
+    @include button-size($button-height-sm, $button-padding-h-sm, $button-font-size-sm, r(18));
+  }
+
+  /* Button themes */
+  &.theme-primary {
+    @include button-theme($theme-primary, $color-text-inverse);
+    @include button-bordered($theme-primary, $theme-primary);
+  }
+
+  &.theme-success {
+    @include button-theme($theme-success, $color-text-inverse);
+    @include button-bordered($theme-success, $theme-success);
+  }
+
+  &.theme-warning {
+    @include button-theme($theme-warning, $color-text-inverse);
+    @include button-bordered($theme-warning, $theme-warning);
+  }
+
+  &.theme-error {
+    @include button-theme($theme-error, $color-text-inverse);
+    @include button-bordered($theme-error, $theme-error);
+  }
+}
+

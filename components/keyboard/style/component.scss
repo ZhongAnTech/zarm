@@ -1,0 +1,69 @@
+@import "../../button/style/mixins";
+
+$prefixCls: $prefixCls-keyboard;
+
+.#{$prefixCls} {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  color: $color-text;
+  user-select: none;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $keyboard-item-font-size;
+    position: relative;
+    @include button-base();
+    @include button-theme(#fff, $color-text);
+
+    &:active {
+      color: $color-text;
+    }
+
+    &-ok {
+      font-size: r(21);
+      @include button-theme($theme-primary, $color-text-inverse);
+    }
+
+    &-disabled,
+    &-disabled:active {
+      background-color: $background-disabled;
+    }
+  }
+
+  &-keys {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+
+    .#{$prefixCls}-item {
+      width: 33.333333%;
+      height: $keyboard-item-height;
+      @include onepx(top left);
+
+      &:nth-of-type(3n+1) {
+        @include onepx(top);
+      }
+    }
+  }
+
+  &-handle {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+
+    .#{$prefixCls}-item {
+      flex: 1;
+
+      &:first-of-type {
+        @include onepx(top left);
+      }
+    }
+  }
+
+  .#{$prefixCls-icon} {
+    font-size: $keyboard-icon-font-size;
+  }
+}

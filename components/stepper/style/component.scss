@@ -1,0 +1,73 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-stepper;
+
+.#{$prefixCls} {
+  display: flex;
+  user-select: none;
+  @include stepper-theme($theme-primary);
+
+  &.disabled {
+    .#{$prefixCls}-body {
+      opacity: $opacity-disabled;
+      cursor: not-allowed;
+    }
+  }
+
+  &.shape-radius {
+    .#{$prefixCls}-sub,
+    .#{$prefixCls}-plus {
+      border-radius: $radius-md;
+    }
+  }
+
+  &.shape-circle {
+    .#{$prefixCls}-sub,
+    .#{$prefixCls}-plus {
+      border-radius: $stepper-height;
+    }
+  }
+
+  &.theme-primary {
+    @include stepper-theme($theme-primary);
+  }
+
+  &.theme-success {
+    @include stepper-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include stepper-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include stepper-theme($theme-error);
+  }
+
+  &-sub,
+  &-plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: $stepper-height;
+    height: $stepper-height;
+    font-size: $stepper-button-font-size;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &-input {
+    position: relative;
+    width: $stepper-input-width;
+    height: $stepper-height;
+    margin: 0 r(10);
+    padding: 0;
+    font-size: $stepper-input-font-size;
+    color: $color-text;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+}
