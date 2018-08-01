@@ -34,14 +34,24 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
         activeIndex: this.getActiveIndex(nextProps),
       });
     }
+
+    if (!this.isPropEqual(this.props.activeKey, nextProps.activeKey)) {
+      this.setState({
+        activeKey: this.getActiveKey(nextProps),
+      });
+    }
   }
 
   onItemChange = (key) => {
+    console.log(key);
     const { multiple, onChange } = this.props;
-    const { activeIndex } = this.state;
-    const hasKey = activeIndex.indexOf(key) > -1;
+    // const { activeIndex } = this.state;
+    // const hasKey = activeIndex.indexOf(key) > -1;
+    const { activeKey } = this.state;
+    const hasKey = activeKey.indexOf(key) > -1;
+    console.log(hasKey);
 
-    let newActiveIndex: Array<string> = [];
+    /* let newActiveIndex: Array<string> = [];
     if (multiple) {
       if (hasKey) {
         newActiveIndex = activeIndex.filter(i => i !== key);
@@ -55,7 +65,23 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     this.setState({
       activeIndex: newActiveIndex,
     });
-    onChange(Number(key));
+    onChange(Number(key)); */
+    let newActiveKey: Array<string> = [];
+    if (multiple) {
+      if (hasKey) {
+        newActiveKey = activeKey.filter(i => i !== key);
+      } else {
+        newActiveKey = activeKey.slice(0);
+        newActiveKey.push(key);
+      }
+    } else {
+      newActiveKey = hasKey ? [] : [key];
+    }
+    console.log(newActiveKey);
+    this.setState({
+      activeKey: newActiveKey,
+    });
+    onChange(key);
   }
 
   getActiveIndex(props) {
@@ -100,17 +126,29 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     return cur === next;
   }
 
+  getCurrentKey(currentKey) {
+    if (isArray(currentKey)) {
+      return (currentKey as Array<any>).map(key => String(key));
+    } else {
+      return String(currentKey);
+    }
+  }
+
   renderItems() {
     const { animated, open } = this.props;
-    const { activeIndex } = this.state;
+    const { activeIndex, activeKey } = this.state;
 
-    return Children.map(this.props.children, (ele, index) => {
+    return Children.map(this.props.children, (ele: any, index) => {
+      const { disabled } = ele.props;
+      const key = this.getCurrentKey(ele.key);
+      const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele as JSX.Element, {
         index: String(index),
-        animated,
         activeIndex,
+        animated,
+        isActive,
         open,
-        onItemChange: this.onItemChange,
+        onItemChange: disabled ? null : () => this.onItemChange(key),
       });
     });
   }
