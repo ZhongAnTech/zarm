@@ -37,9 +37,8 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   onClickItem = () => {
-    const { index, onItemChange, animated, open } = this.props;
+    const { onItemChange, animated, open } = this.props;
     const { active } = this.state;
-
     if (open) {
       return;
     }
@@ -50,7 +49,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       this.setStyle(active);
     }
     if (onItemChange) {
-      onItemChange(index);
+      onItemChange();
     }
   }
 
