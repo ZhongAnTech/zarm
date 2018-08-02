@@ -109,11 +109,11 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   render() {
-    const { title, children } = this.props;
+    const { title, children, style } = this.props;
     const { cls, titleCls, contentCls, contentInnerCls, arrowCls } = this.getCls();
 
     return (
-      <div className={cls}>
+      <div className={cls} style={style}>
         <div
           className={titleCls}
           onClick={this.onClickItem}
