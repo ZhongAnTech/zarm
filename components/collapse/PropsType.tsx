@@ -1,19 +1,20 @@
 export interface BaseCollapseProps {
-  activeIndex?: string | number | Array<string | number>;
-  defaultActiveIndex?: string | number | Array<string | number>;
   activeKey?: string | number | Array<string | number>;
   defaultActiveKey?: string | number | Array<string | number>;
   multiple?: boolean;
   animated?: boolean;
   open?: boolean;
-  onChange: (key: number) => void;
+  style?: object;
+  onChange: (activeKey: string | number) => void;
 }
 
 export interface BaseCollapseItemProps {
-  title: string | JSX.Element;
-  index: string;
-  activeIndex?: Array<string>;
+  title?: string | JSX.Element;
+  index: number;
+  key?: string | number;
   animated?: boolean;
   open?: boolean;
-  onItemChange?: (key: string) => void;
+  style?: object;
+  disabled?: boolean;
+  onItemChange: (key?: string | number) => void;
 }
