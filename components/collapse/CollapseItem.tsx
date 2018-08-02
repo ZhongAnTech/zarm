@@ -54,11 +54,8 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   isActive(props) {
-    // const { index, activeIndex = [] } = props;
     const { isActive } = props;
-    // return activeIndex.indexOf(index) > -1;
     return isActive;
-    // return key in activeKey;
   }
 
   setStyle(active) {
