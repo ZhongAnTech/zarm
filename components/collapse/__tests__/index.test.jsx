@@ -18,7 +18,7 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with collapse mode', () => {
-    props.multiple = false;
+    props.multiple = true;
     const wrapper = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -41,8 +41,8 @@ describe('Collapse', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with defaultActiveIndex', () => {
-    props.defaultActiveIndex = [1];
+  it('renders correctly with defaultActiveKey', () => {
+    props.defaultActiveKey = [1];
     const wrapper = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -56,8 +56,8 @@ describe('Collapse', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with string defaultActiveIndex', () => {
-    props.defaultActiveIndex = '1';
+  it('renders correctly with string defaultActiveKey', () => {
+    props.defaultActiveKey = '1';
     const wrapper = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -71,8 +71,8 @@ describe('Collapse', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with number defaultActiveIndex', () => {
-    props.defaultActiveIndex = 0;
+  it('renders correctly with number defaultActiveKey', () => {
+    props.defaultActiveKey = 0;
     const wrapper = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -86,8 +86,8 @@ describe('Collapse', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with activeIndex', () => {
-    props.activeIndex = [0];
+  it('renders correctly with activeKey', () => {
+    props.activeKey = [0];
     const wrapper = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -101,8 +101,8 @@ describe('Collapse', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with string activeIndex', () => {
-    props.activeIndex = '1';
+  it('renders correctly with string activeKey', () => {
+    props.activeKey = '1';
     const wrapper = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -116,8 +116,8 @@ describe('Collapse', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with number activeIndex', () => {
-    props.activeIndex = 0;
+  it('renders correctly with number activeKey', () => {
+    props.activeKey = 0;
     const wrapper = render(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -131,8 +131,8 @@ describe('Collapse', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with dynamic activeIndex', () => {
-    props.activeIndex = [0];
+  it('renders correctly with dynamic activeKey', () => {
+    props.activeKey = [0];
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -143,9 +143,9 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    wrapper.setProps({ activeIndex: '1' });
+    wrapper.setProps({ activeKey: '1' });
 
-    expect(wrapper.state('activeIndex')).toEqual(['1']);
+    expect(wrapper.state('activeKey')).toEqual(['1']);
   });
 
   it('click collapse item correctly', () => {
