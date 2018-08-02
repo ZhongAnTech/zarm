@@ -54,7 +54,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-swipeaction | | 类名前缀 |
+| prefixCls | string | za-swipe-action | | 类名前缀 |
 | className | string | | | 追加类名 |
 | left | Array&lt;Object&gt; | [ ] | object: { theme, text, onClick } | 左侧按钮组 |
 | right | Array&lt;Object&gt; | [ ] | object: { theme, text, onClick } | 右侧按钮组 |

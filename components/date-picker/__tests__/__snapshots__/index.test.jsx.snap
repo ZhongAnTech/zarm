@@ -1269,7 +1269,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
         </div>
         <Mask
           className=""
-          onClose={[Function]}
+          onClick={[Function]}
           prefixCls="za-mask"
           style={
             Object {

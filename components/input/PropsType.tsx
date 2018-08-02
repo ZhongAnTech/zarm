@@ -40,4 +40,7 @@ export interface BaseInputTextareaProps extends BaseInputProps {
   onChange?: (value?: string) => void;
   onFocus?: (value?: string) => void;
   onBlur?: (value?: string) => void;
+  onCompositionStart?: (e: any) => void;
+  onCompositionUpdate?: (e: any) => void;
+  onCompositionEnd?: (e: any) => void;
 }

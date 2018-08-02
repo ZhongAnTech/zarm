@@ -5,7 +5,7 @@ export default class Page extends Markdown {
   document = () => {
     return {
       document: require('../../components/file-picker/demo.md'),
-      className: 'filepicker-page',
+      className: 'file-picker-page',
     };
   }
 }

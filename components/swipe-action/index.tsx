@@ -11,7 +11,7 @@ export interface SwipeActionProps extends PropsType {
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   static defaultProps = {
-    prefixCls: 'za-swipeaction',
+    prefixCls: 'za-swipe-action',
     left: [],
     right: [],
     moveDistanceRatio: 0.5,
@@ -62,6 +62,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const { offsetLeft } = this.state;
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
+
     if (
       offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset) ||
       offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)
@@ -77,7 +78,6 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     }
 
     event.preventDefault();
-
     this.doTransition({ offsetLeft: offsetX, animationDuration: 0 });
     return true;
   }
@@ -88,6 +88,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
 
+    // if (this.left.offsetWidth) {
+    //   this.props.onOpen!();
+    // }
     let distanceX = 0;
     let isOpen = false;
 

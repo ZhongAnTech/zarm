@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 export default {
   wrapper: {
-    margin: variables.actionsheet_margin,
+    margin: variables.actionSheet_margin,
   },
 
   wrapperSpacing: {
@@ -26,9 +26,9 @@ export default {
   },
 
   actionItem: {
-    height: variables.actionsheet_item_height,
-    lineHeight: variables.actionsheet_item_height,
-    fontSize: variables.actionsheet_item_font_size,
+    height: variables.actionSheet_item_height,
+    lineHeight: variables.actionSheet_item_height,
+    fontSize: variables.actionSheet_item_font_size,
     textAlign: 'center',
   },
 

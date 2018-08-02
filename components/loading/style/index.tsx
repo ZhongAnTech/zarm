@@ -1,4 +1,4 @@
 import '../../style/';
 import '../../toast/style/';
-import '../../spinner/style/';
+import '../../activity-indicator/style/';
 import './index.scss';

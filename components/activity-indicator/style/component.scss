@@ -1,0 +1,55 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-activity-indicator;
+$PI: 3.141592674;
+
+.#{$prefixCls} {
+  display: inline-block;
+  position: relative;
+  transform: rotate(-90deg);
+  @include activity-indicator-size($activity-indicator-size-md);
+  @include activity-indicator-theme($theme-default);
+
+  &-path {
+    stroke: $activity-indicator-path-color;
+  }
+
+  &-line {
+    stroke-dasharray: 100 * $PI;
+  }
+
+  &-text {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    line-height: 1;
+    transform: translateY(-50%);
+    font-size: r(30);
+  }
+
+  /* sizes */
+  &.size-lg {
+    @include activity-indicator-size($activity-indicator-size-lg);
+  }
+
+  /* themes */
+  &.theme-primary {
+    @include activity-indicator-theme($theme-primary);
+  }
+
+  &.theme-success {
+    @include activity-indicator-theme($theme-success);
+  }
+
+  &.theme-warning {
+    @include activity-indicator-theme($theme-warning);
+  }
+
+  &.theme-error {
+    @include activity-indicator-theme($theme-error);
+  }
+}

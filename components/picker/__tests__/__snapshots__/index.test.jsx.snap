@@ -170,7 +170,7 @@ exports[`Picker Picker render visible 1`] = `
           </div>
           <Mask
             className=""
-            onClose={[Function]}
+            onClick={[Function]}
             prefixCls="za-mask"
             style={
               Object {
@@ -454,7 +454,7 @@ exports[`Picker render custom label 1`] = `
           </div>
           <Mask
             className=""
-            onClose={[Function]}
+            onClick={[Function]}
             prefixCls="za-mask"
             style={
               Object {

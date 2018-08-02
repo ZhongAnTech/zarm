@@ -8,14 +8,6 @@ $prefixCls: $prefixCls-panel;
     font-size: $panel-header-font-size;
   }
 
-  &-footer {
-    display: flex;
-    padding: r(7) r(15);
-    margin-bottom: r(10);
-    color: $panel-footer-color;
-    font-size: $panel-footer-font-size;
-  }
-
   &-body {
     position: relative;
     background: #fff;

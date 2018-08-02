@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
 import Drag from '../drag';
-import Spinner from '../spinner';
+import ActivityIndicator from '../activity-indicator';
 import Icon from '../icon';
 
 export interface PullProps extends PropsType {
@@ -242,7 +242,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.pull:
         return (
           <div className={cls}>
-            <Spinner percent={percent} />
+            <ActivityIndicator percent={percent} />
             <span>下拉刷新</span>
           </div>
         );
@@ -250,7 +250,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.drop:
         return (
           <div className={cls}>
-            <Spinner percent={100} />
+            <ActivityIndicator percent={100} />
             <span>释放立即刷新</span>
           </div>
         );
@@ -258,7 +258,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.loading:
         return (
           <div className={cls}>
-            <Spinner className="rotate360" />
+            <ActivityIndicator className="rotate360" />
             <span>加载中</span>
           </div>
         );
@@ -301,7 +301,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case LOAD_STATE.loading:
         return (
           <div className={cls}>
-            <Spinner className="rotate360" />
+            <ActivityIndicator className="rotate360" />
             <span>加载中</span>
           </div>
         );

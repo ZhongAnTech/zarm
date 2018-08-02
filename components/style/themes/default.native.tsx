@@ -58,14 +58,14 @@ export default {
 
   // 透明度
   opacity_disabled: .5,
-  opacity_mask: .4,
-  opacity_toast: .7,
-  opacity_tooltip: .7,
+  opacity_mask: .6,
+  opacity_toast: .8,
+  opacity_tooltip: .8,
 
   // ActionSheet
-  actionsheet_margin: 0,
-  actionsheet_item_height: 50,
-  actionsheet_item_font_size: 16,
+  actionSheet_margin: 0,
+  actionSheet_item_height: 50,
+  actionSheet_item_font_size: 16,
 
   // Alert
   alert_button_height: 50,
@@ -94,10 +94,10 @@ export default {
   cell_background: '#fff',                           // 背景色
   cell_line_left: 15,                                // 分隔线左边距
   cell_line_hasicon_left: 59,                        // 带icon时分隔线左边距
-  cell_title_color: this.color_text,                 // 标题文字颜色
-  cell_title_font_size: this.font_size_lg,           // 标题文字大小
+  cell_title_color: '#333',                          // 标题文字颜色
+  cell_title_font_size: 15,                          // 标题文字大小
   cell_description_color: '#999',                    // 标题文字颜色
-  cell_description_font_size: this.font_size_md,     // 描述文字大小
+  cell_description_font_size: 14,                    // 描述文字大小
   cell_icon_width: 28,                               // 图标度
   cell_icon_height: 28,                              // 图标度
   cell_label_width: 100,                             // 表单label度
@@ -128,13 +128,13 @@ export default {
   modal_title_font_size: 18,
 
   // NoticeBar
-  noticebar_height: 24,
+  noticeBar_height: 24,
 
   // Panel
-  panel_header_color: this.color_text_caption,
+  panel_header_color: '#999',
   panel_header_font_size: 14,
-  panel_body_color: this.color_text,
-  panel_footer_color: this.color_text_caption,
+  panel_body_color: '#333',
+  panel_footer_color: '#999',
   panel_footer_font_size: 12,
 
   // Pull
@@ -150,10 +150,10 @@ export default {
   slider_handle_size: 28,
   slider_handle_background: '#fff',
 
-  // Spinner
-  spinner_size_md: 20,
-  spinner_size_lg: 31,
-  spinner_path_color: '#e6e6e6',
+  // activity-indicator
+  activityIndicator_size_md: 20,
+  activityIndicator_size_lg: 31,
+  activityIndicator_path_color: '#e6e6e6',
 
   // Stepper
   stepper_height: 27,
@@ -174,10 +174,10 @@ export default {
   swipe_action_height: 45,
   swipe_action_background: '#fff',
 
-  // Tab
-  tab_height: 45,
-  tab_item_font_size: this.font_size_lg,
-  tab_line_height: 2,
+  // Tabs
+  tabs_height: 45,
+  tabs_item_font_size: 15,
+  tabs_line_height: 2,
 
   // Toast
   toast_border_radius: 6,

@@ -67,76 +67,154 @@ describe('Picker', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('should trigger onOk when press ok button', () => {
-  //   const onOkFn = jest.fn();
-  //   const onCancelFn = jest.fn();
+  it('should trigger onOk when press ok button', () => {
+    const onOkFn = jest.fn();
+    const onCancelFn = jest.fn();
 
-  //   const wrapper = mount(
-  //     <Picker
-  //       dataSource={[
-  //         {
-  //           value: '1',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '11', label: '选项一' },
-  //             { value: '12', label: '选项二' },
-  //           ],
-  //         },
-  //         {
-  //           value: '2',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '21', label: '选项一' },
-  //             { value: '22', label: '选项二' },
-  //           ],
-  //         },
-  //       ]}
-  //       value={['1', '12']}
-  //       onOk={onOkFn}
-  //       onCancel={onCancelFn}
-  //       />
-  //   );
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        visible
+        value={['1', '12']}
+        onOk={onOkFn}
+        onCancel={onCancelFn}
+      />
+    );
 
-  //   wrapper.find('.za-picker-submit').simulate('click');
-  //   wrapper.find('.za-picker').simulate('click');
-  //   expect(onOkFn).toBeCalled();
-  //   expect(onCancelFn).not.toBeCalled();
-  // });
+    wrapper.find('.za-picker-submit').simulate('click');
+    wrapper.find('.za-picker').simulate('click');
+    expect(onOkFn).toBeCalled();
+    expect(onCancelFn).not.toBeCalled();
+  });
 
-  // it('should trigger onCancel when press cancel button', () => {
-  //   const onOkFn = jest.fn();
-  //   const onCancelFn = jest.fn();
+  it('should trigger onCancel when press cancel button', () => {
+    const onOkFn = jest.fn();
+    const onCancelFn = jest.fn();
 
-  //   const wrapper = mount(
-  //     <Picker
-  //       dataSource={[
-  //         {
-  //           value: '1',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '11', label: '选项一' },
-  //             { value: '12', label: '选项二' },
-  //           ],
-  //         },
-  //         {
-  //           value: '2',
-  //           label: '选项一',
-  //           children: [
-  //             { value: '21', label: '选项一' },
-  //             { value: '22', label: '选项二' },
-  //           ],
-  //         },
-  //       ]}
-  //       value={['1', '12']}
-  //       onOk={onOkFn}
-  //       onCancel={onCancelFn}
-  //       />
-  //   );
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        visible
+        defaultValue={['1', '12']}
+        onOk={onOkFn}
+        onCancel={onCancelFn}
+      />
+    );
 
-  //   wrapper.find('.za-picker-cancel').simulate('click');
-  //   expect(onCancelFn).toBeCalled();
-  //   expect(onOkFn).not.toBeCalled();
-  // });
+    wrapper.find('.za-picker-cancel').simulate('click');
+    expect(onCancelFn).toBeCalled();
+    expect(onOkFn).not.toBeCalled();
+  });
+
+  it('should trigger onMaskClick when click mask', () => {
+    const onOkFn = jest.fn();
+    const onMaskClick = jest.fn();
+
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        visible
+        defaultValue={['1', '12']}
+        onOk={onOkFn}
+        onMaskClick={onMaskClick}
+      />
+    );
+
+    wrapper.find('.za-mask').simulate('click');
+    expect(onMaskClick).toBeCalled();
+  });
+
+  it('should trigger onTransition when scroll', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <Picker
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        visible
+        defaultValue={['1', '12']}
+        onChange={onChange}
+      />
+    ).find('.za-wheel').at(0);
+
+    // wrapper.simulate('touchStart', {
+    //   touches: [0, 10],
+    // });
+    // wrapper.simulate('touchMove', {
+    //   touches: [0, 50],
+    // });
+    // wrapper.simulate('touchEnd', {
+    //   touches: [0, 100],
+    // });
+
+    // expect(onChange).toBeCalled();
+  });
 
   it('receive new dataSource', () => {
     const wrapper = shallow(

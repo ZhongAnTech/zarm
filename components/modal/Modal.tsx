@@ -96,7 +96,6 @@ export default class Modal extends PureComponent<ModalProps, any> {
       }),
       dialog: classnames(`${prefixCls}-dialog`, {
         [`${animationType}-${animationState}`]: isPending,
-        [`fade-${animationState}`]: isPending,
       }),
       // mask: classnames({
       //   [`fade-${animationState}`]: isPending,
@@ -137,7 +136,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
           visible={isShow}
           // className={cls.mask}
           // style={maskStyle}
-          onClose={onMaskClick}
+          onClick={onMaskClick}
         />
       </div>
     );

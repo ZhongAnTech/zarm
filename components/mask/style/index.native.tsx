@@ -1,8 +1,7 @@
 import variables from '../../style/themes/default.native';
 import { Dimensions } from 'react-native';
-export default {
 
-  // base
+export default {
   wrapperStyle: {
     position: 'absolute',
     top: 0,

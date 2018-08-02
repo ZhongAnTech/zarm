@@ -137,4 +137,23 @@ describe('Pull', () => {
     wrapper.setProps({ load: { state: LOAD_STATE.abort } });
     wrapper.unmount();
   });
+
+  it('refreshing', () => {
+    const wrapper = shallow(
+      <Pull>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </Pull>
+    );
+    wrapper.simulate('touchStart', {
+      touches: [0, 0],
+    });
+    wrapper.simulate('touchMove', {
+      touches: [0, 50],
+    });
+    wrapper.simulate('touchEnd', {
+      touches: [0, 100],
+    });
+  });
 });

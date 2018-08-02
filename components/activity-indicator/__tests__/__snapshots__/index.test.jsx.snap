@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityIndicator renders correctly 1`] = `
+<svg
+  class="za-activity-indicator theme-primary"
+  viewBox="0 0 62 62"
+>
+  <circle
+    class="za-activity-indicator-path"
+    cx="31"
+    cy="31"
+    fill="none"
+    r="28.5"
+    style="stroke-width:5"
+  />
+  <circle
+    class="za-activity-indicator-line"
+    cx="31"
+    cy="31"
+    fill="none"
+    r="28.5"
+    style="stroke-dasharray:26.860617188192727 179.0707812546182;stroke-width:5"
+  />
+</svg>
+`;

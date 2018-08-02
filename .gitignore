@@ -13,7 +13,9 @@ _book
 .prettierrc.yaml
 *.iml
 examples-rn/ios/build
+examples-rn/ios/bundle
 examples-rn/android/build
+examples-rn/android/bundle
 examples-rn/android/local.properties
 examples-rn/android/.gradle
 build

@@ -31,20 +31,4 @@ export default {
     borderColor: '#dddddd',
     flex: 1,
   },
-  panelFooter: {
-    flexDirection: 'row',
-    paddingTop: 7,
-    paddingBottom: 7,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
-  panelFooterTitle: {
-    flex: 1,
-  },
-  panelFooterTitleText: {
-    fontSize: variables.panel_footer_font_size,
-    color: variables.color_text_caption,
-  },
-  panelFooterMore: {
-  },
 };

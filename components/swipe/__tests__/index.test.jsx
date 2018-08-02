@@ -76,4 +76,67 @@ describe('Swipe', () => {
     wrapper.setProps({ activeIndex: 1 });
     jest.runTimersToTime(3000);
   });
+
+  it('touch event', () => {
+    const onChangeEnd = jest.fn();
+    const ITEMS = ['1', '2', '3'];
+    const wrapper = mount(
+      <Swipe onChangeEnd={onChangeEnd} direction="right">
+        {
+          ITEMS.map((item, i) => {
+            return (
+              <div key={+i}>{item}</div>
+            );
+          })
+        }
+      </Swipe>
+    );
+
+    wrapper.find('.za-swipe-items')
+      .simulate('touchStart', {
+        touches: [
+          {
+            pageX: 0,
+          },
+        ],
+      })
+      .simulate('touchMove', {
+        touches: [
+          {
+            pageX: 100,
+          },
+        ],
+      })
+      .simulate('touchEnd');
+
+    expect(wrapper.state('activeIndex')).toEqual(0);
+  });
+
+  it('pagination event', () => {
+    const onChange = jest.fn();
+    const onChangeEnd = jest.fn();
+    const ITEMS = ['1', '2', '3'];
+    const wrapper = mount(
+      <Swipe onChange={onChange} onChangeEnd={onChangeEnd} direction="right">
+        {
+          ITEMS.map((item, i) => {
+            return (
+              <div key={+i}>{item}</div>
+            );
+          })
+        }
+      </Swipe>
+    );
+
+    wrapper
+      .find('.za-swipe-pagination li')
+      .at(2)
+      .simulate('click');
+    expect(
+      wrapper
+        .find('.za-swipe-pagination li')
+        .at(2)
+        .hasClass('active')
+    ).toBe(true);
+  });
 });
