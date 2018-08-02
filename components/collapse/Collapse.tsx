@@ -11,7 +11,7 @@ export interface CollapseProps extends BaseCollapseProps {
 export default class Collapse extends PureComponent<CollapseProps, any> {
   static defaultProps = {
     prefixCls: 'za-collapse',
-    multiple: true,
+    multiple: false,
     animated: false,
     open: false,
     onChange: () => {},
