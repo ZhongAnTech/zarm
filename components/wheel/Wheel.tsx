@@ -106,7 +106,9 @@ export default class Wheel extends Component<WheelProps, any> {
 
     const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
     // console.log(newIndex);
-    this.BScroll.wheelTo(newIndex);
+    setTimeout(() => {
+      this.BScroll.wheelTo(newIndex);
+    });
   }
 
   componentDidUpdate() {
