@@ -24,6 +24,14 @@ const District = [
 
 
 describe('Picker', () => {
+  beforeAll(() => {
+    const div = document.createElement('div');
+    window.domNode = div;
+    document.body.appendChild(div);
+
+    jest.useFakeTimers();
+  });
+
   it('Picker render visible', () => {
     const wrapper = mount(
       <Picker
@@ -95,9 +103,10 @@ describe('Picker', () => {
         value={['1', '12']}
         onOk={onOkFn}
         onCancel={onCancelFn}
-      />
+      />, { attachTo: window.domNode }
     );
 
+    jest.advanceTimersByTime(1000);
     wrapper.find('.za-picker-submit').simulate('click');
     wrapper.find('.za-picker').simulate('click');
     expect(onOkFn).toBeCalled();
@@ -132,10 +141,10 @@ describe('Picker', () => {
         defaultValue={['1', '12']}
         onOk={onOkFn}
         onCancel={onCancelFn}
-      />
+      />, { attachTo: window.domNode }
     );
 
-    wrapper.find('.za-picker-cancel').simulate('click');
+    document.querySelector('.za-picker-cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
     expect(onOkFn).not.toBeCalled();
   });
@@ -168,10 +177,10 @@ describe('Picker', () => {
         defaultValue={['1', '12']}
         onOk={onOkFn}
         onMaskClick={onMaskClick}
-      />
+      />, { attachTo: window.domNode }
     );
 
-    wrapper.find('.za-mask').simulate('click');
+    document.querySelector('.za-mask').simulate('click');
     expect(onMaskClick).toBeCalled();
   });
 

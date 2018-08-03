@@ -46,6 +46,9 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
 
   componentWillReceiveProps(nextProps) {
     const state = this.getState(nextProps);
+    if (nextProps.visible) {
+      this.forceUpdate();
+    }
     this.setState(state);
     // 如果从上层组件传进来的值与当前值一样，或者人工滑动了改变值，则不执行onInit。
     if (JSON.stringify(state.objValue) === JSON.stringify(nextProps.firstObjValue) || this.isManual) {

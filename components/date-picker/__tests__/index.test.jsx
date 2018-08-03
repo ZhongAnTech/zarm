@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { findDOMNode } from 'react-dom';
 import toJson from 'enzyme-to-json';
 import DatePicker from '../index';
 
@@ -48,7 +49,7 @@ describe('DatePicker', () => {
       />
     );
 
-    wrapper.find('.za-picker-cancel').simulate('click');
+    document.querySelector('.za-picker-cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
     expect(onOkFn).not.toBeCalled();
   });
@@ -65,7 +66,7 @@ describe('DatePicker', () => {
       />
     );
 
-    wrapper.find('.za-mask').simulate('click');
+    document.querySelector('.za-mask').simulate('click');
     expect(onMaskClick).toBeCalled();
   });
 });
