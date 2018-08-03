@@ -1,6 +1,6 @@
 // 主题色
 $theme-default: #ddd;                    // 默认
-$theme-primary: #12c287;                 // 主色
+$theme-primary: #12c286;                 // 主色
 $theme-success: #69c964;                 // 成功
 $theme-warning: #eca632;                 // 警告
 $theme-error: #e55546;                   // 错误
@@ -120,14 +120,14 @@ $badge-dot-diameter: r(8);
 
 // Button
 $button-height-sm: r(27);
-$button-height-md: r(45);
-$button-height-lg: r(52);
+$button-height-md: r(36);
+$button-height-lg: r(44);
 $button-padding-h-sm: $padding-h-md;
 $button-padding-h-md: $padding-h-lg;
 $button-padding-h-lg: $padding-h-lg;
-$button-font-size-sm: r(14);
-$button-font-size-md: r(18);
-$button-font-size-lg: r(20);
+$button-font-size-sm: r(12);
+$button-font-size-md: r(16);
+$button-font-size-lg: r(16);
 $button-bordered-active-opacity: .6;
 
 // Cell

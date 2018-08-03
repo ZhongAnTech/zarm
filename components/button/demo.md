@@ -50,10 +50,10 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button block bordered>default</Button>
-        <Button block bordered disabled>disabled default</Button>
-        <Button block bordered theme="primary">primary</Button>
-        <Button block bordered disabled theme="primary">disabled primary</Button>
+        <Button block ghost>default</Button>
+        <Button block ghost disabled>disabled default</Button>
+        <Button block ghost theme="primary">primary</Button>
+        <Button block ghost disabled theme="primary">disabled primary</Button>
       </div>
     )
   }
@@ -118,7 +118,7 @@ class Demo extends React.Component {
       <div>
         <Button shape="radius" theme="primary">圆角按钮</Button>
         <Button shape="round" theme="primary">椭圆角按钮</Button>
-        <Button bordered shape="circle" theme="primary">GO</Button>
+        <Button ghost shape="circle" theme="primary">GO</Button>
         <Button shape="circle" icon={<Icon type="right" />} />
       </div>
     )
@@ -138,9 +138,8 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button bordered shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button bordered shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
-        <Button bordered loading shape="radius">加载中</Button>
+        <Button ghost shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
+        <Button ghost shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
       </div>
     )
   }
@@ -150,6 +149,41 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 :::
 
+:::demo 加载中按钮
+```jsx
+import { Button, Icon } from 'zarm';
+
+class Demo extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      pending: false,
+      resolved: false
+    }
+    this.enterPending = this.enterPending.bind(this)
+    this.enterResolved = this.enterResolved.bind(this)
+  }
+  enterPending() {
+    this.setState({ pending: true });
+  }
+  enterResolved() {
+    this.setState({ resolved: true });
+  }
+  render() {
+    return (
+      <div>
+        <Button theme="primary" loading shape="radius" ></Button>
+        <Button loading={this.state.pending} theme="primary" shape="radius" onClick={this.enterPending}>click me</Button>
+        <Button theme="primary" shape="radius" children={<span style={{width:22,height:'100%',textAlign:'left',display:'inline-block'}} ><Icon className="spread-enter" type="right" /></span>}></Button>
+        <Button theme="primary" shape="radius" icon={this.state.resolved?<span style={{width:22,height:'100%',textAlign:'left',display:'inline-block'}} ><Icon className="spread-enter" type="right" /></span>:null} onClick={this.enterResolved}>click me</Button>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+:::
 
 
 :::api API
@@ -162,7 +196,7 @@ ReactDOM.render(<Demo />, mountNode);
 | size | string | | `xl`, `lg`, `sm`, `xs` | 大小 |
 | shape | string | | `radius`, `round`, `circle` | 形状 |
 | block | boolean | false | | 是否为块级元素 |
-| bordered | boolean | false | | 是否是幽灵按钮 |
+| ghost | boolean | false | | 是否是幽灵按钮 |
 | disabled | boolean | false | | 是否禁用 |
 | loading | boolean | falxse | | 是否显示加载中 |
 | icon | JSX.Element | | | icon |
