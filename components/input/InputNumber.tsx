@@ -139,13 +139,12 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   onClear() {
-    const { value } = this.state;
     const { onChange, onClear } = this.props;
     this.setState({
       value: '',
     }, this.onFocus);
     if (onClear) {
-      onClear(value);
+      onClear('');
     }
     if (typeof onChange === 'function') {
       onChange('');

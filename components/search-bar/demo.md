@@ -27,7 +27,7 @@ class Demo extends React.Component {
       <div>
         <SearchBar
           shape="round"
-          cancelText="取消"
+          cancelText=""
           placeholder={this.state.placeholder}
           showCancel={false}
           onSubmit={(value) => {

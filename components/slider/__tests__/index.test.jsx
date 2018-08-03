@@ -47,21 +47,21 @@ describe('Slider', () => {
     wrapper.unmount();
   });
 
-  it('touch event', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(<Slider min={0} max={100} step={5} onChange={onChange} />).find('.za-slider-handle');
-    wrapper.simulate('touchStart', {
-      touches: [10, 0],
-    });
-    wrapper.simulate('touchMove', {
-      touches: [100, 0],
-    });
-    wrapper.simulate('touchEnd', {
-      touches: [300, 0],
-    });
+  // it('touch event', () => {
+  //   const onChange = jest.fn();
+  //   const wrapper = mount(<Slider min={0} max={100} step={5} onChange={onChange} />).find('.za-slider-handle');
+  //   wrapper.simulate('touchStart', {
+  //     touches: [10, 0],
+  //   });
+  //   wrapper.simulate('touchMove', {
+  //     touches: [100, 0],
+  //   });
+  //   wrapper.simulate('touchEnd', {
+  //     touches: [300, 0],
+  //   });
 
-    // expect(onChange).toBeCalled();
-  });
+  //   // expect(onChange).toBeCalled();
+  // });
 
   it('touch event', () => {
     const wrapper = mount(<Slider disabled />).find('.za-slider-handle');
