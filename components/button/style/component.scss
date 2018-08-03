@@ -8,6 +8,8 @@ $prefixCls: $prefixCls-button;
   @include button-size($button-height-md, $button-padding-h-md, $button-font-size-md, r(22));
   @include button-theme($theme-default, $color-text);
   @include button-bordered($theme-default, $color-text);
+  // @include button-shape($border-color, $radius-md);
+
 
   /* Button sizes */
   &.size-lg {
@@ -39,4 +41,3 @@ $prefixCls: $prefixCls-button;
     @include button-bordered($theme-error, $theme-error);
   }
 }
-

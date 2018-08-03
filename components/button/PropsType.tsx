@@ -3,11 +3,12 @@ export default interface PropsType {
   size?: 'xl' | 'lg' | 'sm' | 'xs';
   shape?: 'radius' | 'round' | 'circle';
   block?: boolean;
-  bordered?: boolean;
+  ghost?: boolean;
   active?: boolean;
   focus?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  // resolved?: boolean;
   icon?: JSX.Element;
   onClick?: (e?: any) => void;
 }

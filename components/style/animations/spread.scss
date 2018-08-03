@@ -1,0 +1,23 @@
+@keyframes spread-enter {
+  from {
+    width: 0;
+  }
+  to{
+    width: 100%;
+  }
+}
+
+.spread-enter {
+  animation: spread-enter both ease-in .5s;
+  overflow:hidden;
+}
+
+@keyframes spread-leave {
+  from {
+    width: 100%;
+  }
+}
+
+.spead-leave {
+  animation: door-leave both;
+}
