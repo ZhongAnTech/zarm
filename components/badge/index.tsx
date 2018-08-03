@@ -12,10 +12,11 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     prefixCls: 'za-badge',
     theme: 'error',
     sup: false,
+    visible: true,
   };
 
   render() {
-    const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
+    const { prefixCls, className, theme, shape, sup, text, visible, children, ...others } = this.props;
 
     const cls = classnames(`${prefixCls}`, className, {
       [`theme-${theme}`]: !!theme,
@@ -29,7 +30,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     return (
       <span className={cls}>
         {children}
-        <sup className={supCls} {...others}>{text}</sup>
+        {visible && <sup className={supCls} {...others}>{text}</sup>}
       </span>
     );
   }
