@@ -24,12 +24,15 @@ describe('Drag', () => {
     wrapper.simulate('touchStart', {
       touches: [0, 0],
     });
+    expect(props.onDragStart).toBeCalled();
+
     wrapper.simulate('touchMove', {
       touches: [100, 50],
     });
-    wrapper.simulate('touchEnd', {
-      touches: [200, 100],
-    });
+    expect(props.onDragMove).toBeCalled();
+
+    wrapper.simulate('touchEnd');
+    expect(props.onDragEnd).toBeCalled();
   });
 
   it('event props do not exist', () => {
@@ -40,8 +43,6 @@ describe('Drag', () => {
     wrapper.simulate('touchMove', {
       touches: [100, 50],
     });
-    wrapper.simulate('touchEnd', {
-      touches: [200, 100],
-    });
+    wrapper.simulate('touchEnd');
   });
 });

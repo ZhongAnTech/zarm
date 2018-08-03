@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import {
-    StyleSheet,
-    View,
-    ViewStyle,
-    TouchableWithoutFeedback,
+  StyleSheet,
+  View,
+  ViewStyle,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import PropsType from './PropsType';
 import maskStyle from './style/index.native';

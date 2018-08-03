@@ -58,9 +58,9 @@ export default {
 
   // 透明度
   opacity_disabled: .5,
-  opacity_mask: .4,
-  opacity_toast: .7,
-  opacity_tooltip: .7,
+  opacity_mask: .6,
+  opacity_toast: .8,
+  opacity_tooltip: .8,
 
   // ActionSheet
   actionSheet_margin: 0,

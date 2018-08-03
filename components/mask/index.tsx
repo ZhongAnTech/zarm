@@ -17,7 +17,6 @@ export default class Mask extends PureComponent<MaskProps, {}> {
   render(): any {
     const { prefixCls, className, visible, type, onClick, ...others } = this.props;
     const markCls = classnames(`${prefixCls}`, className, type);
-
     return visible && <div className={markCls} onClick={onClick} {...others} />;
   }
 }
