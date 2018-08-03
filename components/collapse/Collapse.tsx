@@ -36,25 +36,22 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
   onItemChange = key => {
     const { multiple, onChange } = this.props;
-    // index will be default if key(string) is not provided
-    if (typeof key === 'string') {
-      const { activeKey } = this.state;
-      const hasKey = activeKey.indexOf(key) > -1;
-      let newActiveKey: Array<string> = [];
-      if (multiple) {
-        if (hasKey) {
-          newActiveKey = activeKey.filter(i => i !== key);
-        } else {
-          newActiveKey = activeKey.slice(0);
-          newActiveKey.push(key);
-        }
+    const { activeKey } = this.state;
+    const hasKey = activeKey.indexOf(key) > -1;
+    let newActiveKey: Array<string> = [];
+    if (multiple) {
+      if (hasKey) {
+        newActiveKey = activeKey.filter(i => i !== key);
       } else {
-        newActiveKey = hasKey ? [] : [key];
+        newActiveKey = activeKey.slice(0);
+        newActiveKey.push(key);
       }
-      this.setState({
-        activeKey: newActiveKey,
-      });
+    } else {
+      newActiveKey = hasKey ? [] : [key];
     }
+    this.setState({
+      activeKey: newActiveKey,
+    });
     onChange(key);
   }
 
@@ -87,9 +84,9 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     const { animated } = this.props;
     const { activeKey } = this.state;
 
-    return Children.map(this.props.children, (ele: any, index) => {
+    return Children.map(this.props.children, (ele: any) => {
       const { disabled } = ele.props;
-      const key = ele.key ? String(ele.key) : index;
+      const key = String(ele.key);
       const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele as JSX.Element, {
         animated,
