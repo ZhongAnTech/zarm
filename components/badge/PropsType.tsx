@@ -3,5 +3,4 @@ export default interface PropsType {
   shape?: 'dot' | 'radius' | 'round' | 'circle' | 'leaf';
   sup?: boolean;
   text?: any;
-  visible?: boolean;
 }
