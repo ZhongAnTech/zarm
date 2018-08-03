@@ -79,4 +79,11 @@ $prefixCls: $prefixCls-badge;
       padding: 0;
     }
   }
+
+  &.shape-leaf {
+    .#{$prefixCls}-sup {
+      min-width: $badge-height;
+      border-radius: $radius-round $radius-round $radius-round 0;
+    }
+  }
 }
