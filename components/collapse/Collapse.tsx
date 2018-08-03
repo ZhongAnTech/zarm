@@ -13,7 +13,6 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     prefixCls: 'za-collapse',
     multiple: false,
     animated: false,
-    open: false,
     onChange: () => {},
   };
 
@@ -37,6 +36,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
   onItemChange = key => {
     const { multiple, onChange } = this.props;
+    // index will be default if key(string) is not provided
     if (typeof key === 'string') {
       const { activeKey } = this.state;
       const hasKey = activeKey.indexOf(key) > -1;
@@ -84,7 +84,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   }
 
   renderItems() {
-    const { animated, open } = this.props;
+    const { animated } = this.props;
     const { activeKey } = this.state;
 
     return Children.map(this.props.children, (ele: any, index) => {
@@ -94,7 +94,6 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
       return cloneElement(ele as JSX.Element, {
         animated,
         isActive,
-        open,
         onItemChange: disabled ? null : () => this.onItemChange(key),
       });
     });

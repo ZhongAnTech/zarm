@@ -3,7 +3,6 @@ export interface BaseCollapseProps {
   defaultActiveKey?: string | number | Array<string | number>;
   multiple?: boolean;
   animated?: boolean;
-  open?: boolean;
   style?: object;
   onChange: (activeKey: string | number) => void;
 }
@@ -13,7 +12,6 @@ export interface BaseCollapseItemProps {
   index: number;
   key?: string | number;
   animated?: boolean;
-  open?: boolean;
   style?: object;
   disabled?: boolean;
   onItemChange: (key?: string | number) => void;

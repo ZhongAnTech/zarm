@@ -37,9 +37,9 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   onClickItem = () => {
-    const { onItemChange, animated, open } = this.props;
+    const { onItemChange, animated, disabled } = this.props;
     const { active } = this.state;
-    if (open) {
+    if (disabled) {
       return;
     }
     this.setState({
@@ -87,20 +87,18 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   getCls() {
-    const { prefixCls, className, animated, open } = this.props;
+    const { prefixCls, className, animated } = this.props;
     const { active } = this.state;
 
     const cls = classnames(`${prefixCls}-item`, className, {
-      active: active || open,
+      active: active,
     });
     const titleCls = `${prefixCls}-item-title`;
     const contentCls = classnames(`${prefixCls}-item-content`, {
       [`${prefixCls}-item-content-anim`]: animated,
     });
     const contentInnerCls = `${prefixCls}-item-content-inner`;
-    const arrowCls = classnames(`${prefixCls}-item-arrow`, {
-      [`${prefixCls}-item-arrow-hidden`]: open,
-    });
+    const arrowCls = classnames(`${prefixCls}-item-arrow`);
 
     return { cls, titleCls, contentCls, contentInnerCls, arrowCls };
   }
