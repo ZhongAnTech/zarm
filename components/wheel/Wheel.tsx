@@ -57,17 +57,7 @@ export default class Wheel extends Component<WheelProps, any> {
       this.BScroll.disable();
     }
 
-    // console.log('this.state.value', this.state.value);
-    // console.log('this.props.dataSource', this.props.dataSource);
-    // const initIndex = this.BScroll.getSelectedIndex();
     const initIndex = this.getSelectedIndex(this.state.value, this.props.dataSource);
-    // let initIndex ;
-    // this.props.dataSource.forEach((item, index) => {
-    //   if (item[this.props.valueMember] === this.state.value) {
-    //     this.initIndex = index;
-    //   }
-    // })
-    // console.log(initIndex);
     this.BScroll.wheelTo(initIndex);
 
     this.BScroll.on('scroll', () => {
@@ -77,23 +67,18 @@ export default class Wheel extends Component<WheelProps, any> {
     this.BScroll.on('scrollEnd', () => {
       const { dataSource, valueMember } = this.props;
       const index = this.BScroll.getSelectedIndex();
-      // console.log(index);
       const child = dataSource![index];
       if (child) {
         this.fireValueChange(child[valueMember!]);
         this.props.onTransition!(this.BScroll.isInTransition);
       } else if (console.warn) {
-        // this.props.onTransition!(this.BScroll.isInTransition);
+        this.props.onTransition!(this.BScroll.isInTransition);
         console.warn('child not found', dataSource, index);
       }
     });
   }
 
   componentWillReceiveProps(nextProps) {
-    // // console.log(this.initIndex);
-    // setTimeout(() => {
-    //   this.BScroll.wheelTo(this.initIndex);
-    // });
     if ('value' in nextProps) {
       this.setState({
         value: nextProps.value,
@@ -105,14 +90,12 @@ export default class Wheel extends Component<WheelProps, any> {
     }
 
     const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
-    // console.log(newIndex);
     setTimeout(() => {
       this.BScroll.wheelTo(newIndex);
     });
   }
 
   componentDidUpdate() {
-    // console.log('didupdate');
     this.BScroll.refresh();
   }
 

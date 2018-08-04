@@ -36,6 +36,17 @@ export default class Portal extends React.Component<PortalProps, any> {
     };
   }
 
+  componentDidMount() {
+    if (this.props.visible) {
+      document.body.appendChild(this.container);
+      setTimeout(() => {
+        this.enter();
+      });
+    }
+    Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
+    Events.on(this.popup, 'transitionend', this.animationEnd);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.visible === true && nextProps.visible !== this.props.visible) {
       document.body.appendChild(this.container);
@@ -47,28 +58,6 @@ export default class Portal extends React.Component<PortalProps, any> {
     if (nextProps.visible === false && nextProps.visible !== this.props.visible) {
       this.leave();
     }
-    // if (nextProps.visible !== this.props.visible) {
-    //   this.setState({
-    //     isShow: nextProps.visible,
-    //   }, () => {
-    //     if (nextProps.visible === true) {
-    //       this.enter();
-    //     } else {
-    //       this.leave();
-    //     }
-    //   });
-    // }
-  }
-
-  componentDidMount() {
-    if (this.props.visible) {
-      document.body.appendChild(this.container);
-      setTimeout(() => {
-        this.enter();
-      });
-    }
-    Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
-    Events.on(this.popup, 'transitionend', this.animationEnd);
   }
 
   componentWillUnmount() {
@@ -157,7 +146,6 @@ export default class Portal extends React.Component<PortalProps, any> {
   }
 
   getContainer() {
-    // let container = document.querySelector(`#${this.props.prefixCls}-container`);
     if (!this.container) {
       let container = document.createElement('div');
       container.classList.add('popup-container');
@@ -196,9 +184,10 @@ export default class Portal extends React.Component<PortalProps, any> {
         this.getComponent(),
         this.getContainer(),
       );
+      return null;
+    } else {
+      return ReactDOM.createPortal(this.getComponent(), this.getContainer());
     }
-
-    return ReactDOM.createPortal(this.getComponent(), this.getContainer());
   }
 
   render() {

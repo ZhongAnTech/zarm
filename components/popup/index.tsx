@@ -17,7 +17,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.visible === true) {
+    if (nextProps.visible !== this.props.visible && nextProps.visible === true) {
       this.setState({
         renderPortal: true,
       });

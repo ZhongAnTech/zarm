@@ -5,5 +5,48 @@ exports[`Popup renders correctly 1`] = `
   direction="bottom"
   onClose={[MockFunction]}
   onMaskClick={[MockFunction]}
-/>
+>
+  <Portal
+    animationDuration={200}
+    autoClose={false}
+    direction="bottom"
+    handlePortalUnmount={[Function]}
+    mask={true}
+    maskType="normal"
+    onClose={[MockFunction]}
+    onMaskClick={[MockFunction]}
+    prefixCls="za-popup"
+    stayTime={3000}
+    visible={false}
+  >
+    <div
+      className="za-popup za-popup-hidden"
+    >
+      <div
+        className="za-popup-wrapper za-popup-wrapper-bottom"
+        style={
+          Object {
+            "WebkitTransitionDuration": "200ms",
+            "transitionDuration": "200ms",
+          }
+        }
+      >
+        foo
+      </div>
+      <Mask
+        className=""
+        onClick={[MockFunction]}
+        prefixCls="za-mask"
+        style={
+          Object {
+            "WebkitAnimationDuration": "200ms",
+            "animationDuration": "200ms",
+          }
+        }
+        type="normal"
+        visible={false}
+      />
+    </div>
+  </Portal>
+</Popup>
 `;

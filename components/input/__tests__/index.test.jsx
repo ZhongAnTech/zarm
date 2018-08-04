@@ -154,7 +154,7 @@ describe('Input.Number', () => {
     const onChange = jest.fn();
     const wrapper = mount(<Input type="number" focused onChange={onChange} />);
     wrapper.find('input').simulate('focus');
-    const keys = document.querySelector('.za-keyboard-keys');
+    const keys = wrapper.find('.za-keyboard-keys');
     keys.childAt(0).simulate('click');
     expect(onChange).toBeCalledWith('1');
     wrapper.unmount();
@@ -164,7 +164,7 @@ describe('Input.Number', () => {
     const onBlur = jest.fn();
     const wrapper = mount(<Input type="number" focused onBlur={onBlur} />);
     wrapper.find('input').simulate('focus');
-    const keys = document.querySelector('.za-keyboard-keys');
+    const keys = wrapper.find('.za-keyboard-keys');
     keys.childAt(11).simulate('click');
     expect(onBlur).toBeCalled();
     wrapper.unmount();

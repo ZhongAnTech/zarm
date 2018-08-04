@@ -18,7 +18,7 @@ class Demo extends React.Component {
       },
       limitDate: {
         visible: false,
-        value: '2017-07-04',
+        value: '2017-09-13',
       },
     };
   }
