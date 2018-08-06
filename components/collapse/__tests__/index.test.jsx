@@ -9,7 +9,7 @@ describe('Collapse', () => {
   it('renders correctly', () => {
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -21,7 +21,7 @@ describe('Collapse', () => {
     props.multiple = true;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -33,7 +33,7 @@ describe('Collapse', () => {
     props.animated = true;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -45,10 +45,10 @@ describe('Collapse', () => {
     props.defaultActiveKey = [1];
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item key="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -60,10 +60,10 @@ describe('Collapse', () => {
     props.defaultActiveKey = '1';
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item key="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -75,10 +75,10 @@ describe('Collapse', () => {
     props.defaultActiveKey = 0;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item key="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -90,10 +90,10 @@ describe('Collapse', () => {
     props.activeKey = [0];
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item key="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -105,10 +105,10 @@ describe('Collapse', () => {
     props.activeKey = '1';
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item key="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -120,10 +120,10 @@ describe('Collapse', () => {
     props.activeKey = 0;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item key="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -135,10 +135,10 @@ describe('Collapse', () => {
     props.activeKey = [0];
     const wrapper = shallow(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item key="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -152,7 +152,7 @@ describe('Collapse', () => {
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐" {...props}>
+        <Collapse.Item key="0" title="50元套餐" {...props}>
           <div>50元套餐内容</div>
         </Collapse.Item>
       </Collapse>
@@ -165,7 +165,7 @@ describe('Collapse', () => {
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐" disabled>
+        <Collapse.Item key="0" title="50元套餐" disabled>
           <div>50元套餐内容</div>
         </Collapse.Item>
       </Collapse>
