@@ -128,15 +128,17 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
   onClear() {
     this.blurFromClear = true;
-    const { value } = this.state;
     this.setState({
       value: '',
     });
     if (!this.state.isOnComposition) {
       this.focus();
     }
+    if (this.props.onChange) {
+      this.props.onChange('');
+    }
     if (this.props.onClear) {
-      this.props.onClear(value);
+      this.props.onClear('');
     }
   }
 
@@ -149,7 +151,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   render() {
-    const { prefixCls, className, disabled, onClear, clearable, type, value, ...others } = this.props;
+    const { prefixCls, className, disabled, clearable, type, value, onClear, ...others } = this.props;
     const valueState = this.state.value;
     const focused = this.state.focused;
 
