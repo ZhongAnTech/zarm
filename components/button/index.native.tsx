@@ -23,7 +23,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
     theme: 'default',
     size: 'md',
     block: false,
-    bordered: false,
+    ghost: false,
     active: false,
     disabled: false,
     loading: false,
@@ -57,7 +57,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       theme,
       size,
       shape,
-      bordered,
+      ghost,
       active,
       disabled,
       loading,
@@ -76,8 +76,8 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles![`${theme}Wrapper`],
       styles![`${shape}Wrapper`],
       isActive && styles![`${theme}ActiveWrapper`],
-      bordered && styles![`${theme}BorderedWrapper`],
-      bordered && styles!.borderedWrapper,
+      ghost && styles![`${theme}BorderedWrapper`],
+      ghost && styles!.borderedWrapper,
       disabled && styles!.disabledWrapper,
       shape === 'circle' && styles![`${size}CircleWrapper`],
       style,
@@ -95,7 +95,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles!.textStyle,
       styles![`${size}Text`],
       styles![`${theme}Text`],
-      bordered && styles![`${theme}BorderedText`],
+      ghost && styles![`${theme}BorderedText`],
       isActive && active && styles!.activeText,
     ];
 
@@ -125,7 +125,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       ...others,
     };
 
-    return bordered
+    return ghost
       ? <TouchableOpacity {...wrapperProps} activeOpacity={0.6}>{contentRender}</TouchableOpacity>
       : <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>;
   }

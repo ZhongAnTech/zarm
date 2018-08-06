@@ -4,14 +4,14 @@
   border-color: $background;
   color: $color;
 
-  $active-background: darken($background, 8%);
-  $active-color: rgba($color, .3);
+  $active-background: darken($background, 4%);
+  $active-color: darken($color, 4%);
 
   &:active,
   &.active {
     background-color: $active-background;
     border-color: $active-background;
-    color: $active-color;
+    // color: $active-color;
   }
 
   &.disabled,
@@ -73,9 +73,12 @@
     background-color: transparent;
     color: $color;
 
+    $active-color: darken($color, 4%);
+
     &:active,
     &.active {
-      opacity: $button-bordered-active-opacity;
+      border-color: $active-color;
+      color: $active-color;
     }
 
     &.disabled,
@@ -141,7 +144,7 @@
 }
 
 // 形状
-@mixin button-shape($border-color, $border-radius: 0) {
+@mixin button-shape($border-color: transparent, $border-radius: 0) {
   border-width: 1px;
   border-style: solid;
   border-radius: $border-radius;
