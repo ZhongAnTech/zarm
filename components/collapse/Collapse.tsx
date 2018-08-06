@@ -35,7 +35,10 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   }
 
   onItemChange = key => {
-    const { multiple, onChange } = this.props;
+    if (!key) {
+      return;
+    }
+    const { onChange, multiple } = this.props;
     const { activeKey } = this.state;
     const hasKey = activeKey.indexOf(key) > -1;
     let newActiveKey: Array<string> = [];
@@ -86,7 +89,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
     return Children.map(this.props.children, (ele: any) => {
       const { disabled } = ele.props;
-      const key = String(ele.key);
+      const key = ele.key && String(ele.key);
       const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele as JSX.Element, {
         animated,
