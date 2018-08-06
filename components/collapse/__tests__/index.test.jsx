@@ -161,26 +161,11 @@ describe('Collapse', () => {
     expect(props.onChange).toBeCalled();
   });
 
-  it('renders correctly with open mode', () => {
-    props.open = true;
-    const wrapper = render(
-      <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
-          <div>50元套餐内容</div>
-        </Collapse.Item>
-        <Collapse.Item title="100元套餐">
-          <div>100元套餐内容</div>
-        </Collapse.Item>
-      </Collapse>
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('click collapse item correctly with open mode', () => {
+  it('click collapse item correctly with disabled mode', () => {
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item title="50元套餐" disabled>
           <div>50元套餐内容</div>
         </Collapse.Item>
       </Collapse>
