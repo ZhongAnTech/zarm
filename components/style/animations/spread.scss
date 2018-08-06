@@ -2,20 +2,22 @@
   from {
     width: 0;
   }
-  to{
+
+  to {
     width: 100%;
   }
 }
 
 .spread-enter {
   animation: spread-enter both ease-in .5s;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 @keyframes spread-leave {
   from {
     width: 100%;
   }
+
   to {
     width: 0;
   }
