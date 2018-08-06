@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, CSSProperties } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
@@ -136,7 +136,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       [`fade-${animationState}`]: isPending,
     });
 
-    const maskStyle = {
+    const maskStyle: CSSProperties = {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };

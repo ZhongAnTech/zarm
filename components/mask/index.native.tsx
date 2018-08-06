@@ -4,12 +4,14 @@ import {
   View,
   ViewStyle,
   TouchableWithoutFeedback,
+  GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import maskStyle from './style/index.native';
 
 export interface MaskProps extends PropsType {
   styles?: typeof maskStyle;
+  onClick?: (event: GestureResponderEvent) => void;
 }
 
 const maskStyles = StyleSheet.create<any>(maskStyle);
@@ -21,7 +23,7 @@ export default class Mask extends PureComponent<MaskProps, any> {
     styles: maskStyles,
   };
 
-  render(): any {
+  render() {
     const {
       visible,
       styles,
