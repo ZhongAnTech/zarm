@@ -398,7 +398,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
     [MockFunction] {
       "calls": Array [
         Array [
-          "My new value",
+          "",
         ],
       ],
       "results": Array [
@@ -411,6 +411,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
   }
   placeholder="搜索"
   prefixCls="za-search-bar"
+  shape="radius"
   showCancel={false}
 >
   <div
@@ -422,7 +423,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="za-search-bar-content"
+        className="za-search-bar-content shape-radius"
       >
         <div
           className="za-search-bar-mock"
