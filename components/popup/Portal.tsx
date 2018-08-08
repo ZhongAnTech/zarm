@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, CSSProperties } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
@@ -10,7 +10,7 @@ export interface PortalProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
-export default class Portal extends React.Component<PortalProps, any> {
+export default class Portal extends Component<PortalProps, any> {
   static defaultProps = {
     prefixCls: 'za-popup',
     visible: false,
@@ -127,7 +127,7 @@ export default class Portal extends React.Component<PortalProps, any> {
       [`fade-${animationState}`]: isPending,
     });
 
-    const maskStyle = {
+    const maskStyle: CSSProperties = {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };

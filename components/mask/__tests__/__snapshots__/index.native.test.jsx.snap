@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mask renders correctly 1`] = `
+<react-native-mock>
+  <react-native-mock />
+</react-native-mock>
+`;
+
+exports[`Mask type is transparent 1`] = `
+<react-native-mock>
+  <react-native-mock />
+</react-native-mock>
+`;
