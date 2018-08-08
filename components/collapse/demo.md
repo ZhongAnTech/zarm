@@ -84,7 +84,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Collapse onChange={key => console.log(key)} defaultActiveKey={['test1', 'test2']}>
+        <Collapse defaultActiveKey={['test1', 'test2']}>
           <Collapse.Item key='test1' title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
@@ -162,7 +162,8 @@ class Demo extends React.Component {
     return (
       <div>
         <Collapse 
-          multiple 
+          multiple
+          activeKey={['test2']}
           onChange={key => console.log(key)}>
           <Collapse.Item key="test1" title="50元套餐">
             <div>我是50元套餐内容</div>
@@ -170,7 +171,7 @@ class Demo extends React.Component {
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key="test2" title="100元套餐">
+          <Collapse.Item disabled key="test2" title="100元套餐">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
