@@ -42,7 +42,7 @@ $prefixCls: $prefixCls-badge;
       position: absolute;
       top: 0;
       left: 100%;
-      transform: translateX(-$badge-height/2) translateY(-$badge-overflow);
+      transform: translateX(-$badge-height/2) translateY(-$badge-top-overflow);
     }
   }
 
