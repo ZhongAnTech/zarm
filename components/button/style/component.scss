@@ -7,7 +7,7 @@ $prefixCls: $prefixCls-button;
   @include button-base();
   @include button-size($button-height-md, $button-padding-h-md, $button-font-size-md, r(22));
   @include button-theme($theme-default, $color-text);
-  @include button-bordered($theme-default, $color-text);
+  @include button-ghost($theme-default, $color-text);
 
   /* Button sizes */
   &.size-lg {
@@ -21,22 +21,22 @@ $prefixCls: $prefixCls-button;
   /* Button themes */
   &.theme-primary {
     @include button-theme($theme-primary, $color-text-inverse);
-    @include button-bordered($theme-primary, $theme-primary);
+    @include button-ghost($theme-primary, $theme-primary);
   }
 
   &.theme-success {
     @include button-theme($theme-success, $color-text-inverse);
-    @include button-bordered($theme-success, $theme-success);
+    @include button-ghost($theme-success, $theme-success);
   }
 
   &.theme-warning {
     @include button-theme($theme-warning, $color-text-inverse);
-    @include button-bordered($theme-warning, $theme-warning);
+    @include button-ghost($theme-warning, $theme-warning);
   }
 
   &.theme-error {
     @include button-theme($theme-error, $color-text-inverse);
-    @include button-bordered($theme-error, $theme-error);
+    @include button-ghost($theme-error, $theme-error);
   }
 }
 

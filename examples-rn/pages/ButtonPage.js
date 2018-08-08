@@ -23,26 +23,20 @@ export default class Page extends PureComponent {
       <ScrollView>
         <View style={{ padding: 15 }}>
           <View style={[styles.inline, styles.mb]}>
-            <Button style={[styles.mb, styles.mr]}>default</Button>
             <Button style={styles.mb} theme="primary">primary</Button>
           </View>
 
           <View style={styles.mb}>
-            <Button style={styles.mb} onClick={noop}>default</Button>
-            <Button style={styles.mb} disabled onClick={noop}>default</Button>
             <Button style={styles.mb} theme="primary" onClick={noop}>primary</Button>
-            <Button style={styles.mb} disabled theme="primary" onClick={noop}>primary</Button>
+            <Button style={styles.mb} disabled theme="primary" onClick={noop}>disabled primary</Button>
           </View>
 
           <View style={styles.mb}>
-            <Button style={styles.mb} bordered onClick={noop}>default</Button>
-            <Button style={styles.mb} bordered disabled onClick={noop}>disabled default</Button>
-            <Button style={styles.mb} bordered theme="primary" onClick={noop}>primary</Button>
-            <Button style={styles.mb} bordered disabled theme="primary" onClick={noop}>disabled primary</Button>
+            <Button style={styles.mb} ghost theme="primary" onClick={noop}>primary</Button>
+            <Button style={styles.mb} ghost disabled theme="primary" onClick={noop}>disabled primary</Button>
           </View>
 
           <View style={[styles.inline, styles.mb]}>
-            <Button style={[styles.mb, styles.mr]} onClick={noop}>default</Button>
             <Button style={[styles.mb, styles.mr]} theme="primary" onClick={noop}>primary</Button>
             <Button style={[styles.mb, styles.mr]} theme="success" onClick={noop}>success</Button>
             <Button style={[styles.mb, styles.mr]} theme="warning" onClick={noop}>warning</Button>
@@ -58,11 +52,11 @@ export default class Page extends PureComponent {
           <View style={[styles.inline, styles.mb]}>
             <Button style={[styles.mb, styles.mr]} shape="radius" theme="primary" onClick={noop}>radius shape</Button>
             <Button style={[styles.mb, styles.mr]} shape="round" theme="primary" onClick={noop}>round shape</Button>
-            <Button style={[styles.mb, styles.mr]} bordered shape="circle" theme="primary" onClick={noop}>Go</Button>
+            <Button style={[styles.mb, styles.mr]} ghost shape="circle" theme="primary" onClick={noop}>Go</Button>
             <Button shape="circle" theme="primary" onClick={noop}>Go</Button>
           </View>
           <View style={styles.inline}>
-            <Button style={[styles.mb, styles.mr]} bordered loading shape="radius" onClick={noop}>loading</Button>
+            <Button style={[styles.mb, styles.mr]} ghost loading shape="radius" onClick={noop}>loading</Button>
           </View>
         </View>
       </ScrollView>

@@ -54,7 +54,7 @@
 }
 
 // 幽灵按钮
-@mixin button-bordered($border, $color) {
+@mixin button-ghost($border, $color) {
   @include button-shape($border);
 
   &.shape-radius {
@@ -69,13 +69,13 @@
     @include button-shape($border, $radius-circle);
   }
 
-  &.bordered {
+  &.ghost {
     background-color: transparent;
     color: $color;
 
     &:active,
     &.active {
-      opacity: $button-bordered-active-opacity;
+      opacity: 1;
     }
 
     &.disabled,
@@ -146,7 +146,7 @@
   border-style: solid;
   border-radius: $border-radius;
 
-  &.bordered {
+  &.ghost {
     border-color: $border-color;
     // @include onepx($border-color: $border-color, $border-radius: $border-radius);
   }

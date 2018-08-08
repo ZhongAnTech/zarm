@@ -9,43 +9,32 @@ export default {
   wrapperStyle: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: variables.button_height_md,
-    paddingLeft: variables.button_padding_h_md,
-    paddingRight: variables.button_padding_h_md,
+    height: variables.button_height_normal,
+    paddingLeft: variables.button_padding_h_normal,
+    paddingRight: variables.button_padding_h_normal,
   },
   textStyle: {
-    fontSize: variables.button_font_size_md,
+    fontSize: variables.button_font_size_normal,
     color: variables.color_text_inverse,
   },
   iconStyle: {
-    marginRight: variables.button_padding_h_md / 2,
-  },
-
-  // theme
-  defaultWrapper: {
-    backgroundColor: variables.theme_default,
-  },
-  defaultActiveWrapper: {
-    backgroundColor: '#c9c9c9',
-  },
-  defaultBorderedWrapper: {
-    borderColor: variables.theme_default,
-  },
-  defaultText: {
-    color: variables.color_text,
+    marginRight: variables.button_padding_h_normal / 2,
   },
 
   primaryWrapper: {
     backgroundColor: variables.theme_primary,
   },
   primaryActiveWrapper: {
-    backgroundColor: '#0f9d6d',
+    backgroundColor: '#00AE73',
   },
-  primaryBorderedWrapper: {
+  primaryGhostWrapper: {
     borderColor: variables.theme_primary,
   },
-  primaryBorderedText: {
+  primaryGhostText: {
     color: variables.theme_primary,
+  },
+  primaryActiveGhostText: {
+    color: '#00AE73',
   },
 
   successWrapper: {
@@ -54,10 +43,13 @@ export default {
   successActiveWrapper: {
     backgroundColor: '#4cbe46',
   },
-  successBorderedWrapper: {
+  successGhostWrapper: {
     borderColor: variables.theme_success,
   },
-  successBorderedText: {
+  successGhostText: {
+    color: variables.theme_success,
+  },
+  successActiveGhostText: {
     color: variables.theme_success,
   },
 
@@ -67,10 +59,13 @@ export default {
   warningActiveWrapper: {
     backgroundColor: '#e09415',
   },
-  warningBorderedWrapper: {
+  warningGhostWrapper: {
     borderColor: variables.theme_warning,
   },
-  warningBorderedText: {
+  warningGhostText: {
+    color: variables.theme_warning,
+  },
+  warningActiveGhostText: {
     color: variables.theme_warning,
   },
 
@@ -80,59 +75,79 @@ export default {
   errorActiveWrapper: {
     backgroundColor: '#e03422',
   },
-  errorBorderedWrapper: {
+  errorGhostWrapper: {
     borderColor: variables.theme_error,
   },
-  errorBorderedText: {
+  errorGhostText: {
+    color: variables.theme_error,
+  },
+  errorActiveGhostText: {
     color: variables.theme_error,
   },
 
   // size
-  lgWrapper: {
-    height: variables.button_height_lg,
-    paddingLeft: variables.button_padding_h_lg,
-    paddingRight: variables.button_padding_h_lg,
+  normalWrapper: {
+    height: variables.button_height_normal,
+    paddingLeft: variables.button_padding_h_normal,
+    paddingRight: variables.button_padding_h_normal,
   },
-  lgCircleWrapper: {
-    width: variables.button_height_lg,
+  normalCircleWrapper: {
+    width: variables.button_height_normal,
   },
-  lgText: {
-    fontSize: variables.button_font_size_lg,
+  normalText: {
+    fontSize: variables.button_font_size_normal,
   },
-  lgIcon: {
-    marginRight: variables.button_padding_h_lg / 2,
+  normalIcon: {
+    marginRight: variables.button_padding_h_normal / 2,
   },
-  smWrapper: {
-    height: variables.button_height_sm,
-    paddingLeft: variables.button_padding_h_sm,
-    paddingRight: variables.button_padding_h_sm,
+  largeWrapper: {
+    height: variables.button_height_large,
+    paddingLeft: variables.button_padding_h_large,
+    paddingRight: variables.button_padding_h_large,
   },
-  smCircleWrapper: {
-    width: variables.button_height_sm,
+  largeCircleWrapper: {
+    width: variables.button_height_large,
   },
-  smText: {
-    fontSize: variables.button_font_size_sm,
+  largeText: {
+    fontSize: variables.button_font_size_large,
   },
-  smIcon: {
-    marginRight: variables.button_padding_h_sm / 2,
+  largeIcon: {
+    marginRight: variables.button_padding_h_large / 2,
+  },
+  smallWrapper: {
+    height: variables.button_height_small,
+    paddingLeft: variables.button_padding_h_small,
+    paddingRight: variables.button_padding_h_small,
+  },
+  smallCircleWrapper: {
+    width: variables.button_height_small,
+  },
+  smallText: {
+    fontSize: variables.button_font_size_small,
+  },
+  smallIcon: {
+    marginRight: variables.button_padding_h_small / 2,
   },
 
   // shape
   radiusWrapper: {
-    borderRadius: variables.radius_md,
+    borderRadius: variables.radius_normal,
+  },
+  rectWrapper: {
+    borderRadius: 0,
   },
   roundWrapper: {
     borderRadius: variables.radius_round,
   },
   circleWrapper: {
-    width: variables.button_height_md,
+    width: variables.button_height_normal,
     borderRadius: variables.radius_round,
     paddingLeft: 0,
     paddingRight: 0,
   },
 
-  // bordered
-  borderedWrapper: {
+  // ghost
+ ghostWrapper: {
     borderWidth: 1,
     backgroundColor: 'transparent',
   },
@@ -144,6 +159,6 @@ export default {
 
   // active
   activeText: {
-    opacity: 0.6,
+    opacity: 1,
   },
 };
