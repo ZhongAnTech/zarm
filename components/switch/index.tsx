@@ -54,11 +54,11 @@ export default class Switch extends PureComponent<SwitchProps, any> {
   }
 
   render() {
-    const { prefixCls, className, disabled, size, style = {} } = this.props;
+    const { prefixCls, className, disabled, size, theme, style = {} } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
-      // [`theme-${theme}`]: !!theme,
+      [`theme-${theme}`]: !!theme,
       [`${prefixCls}-small`]: size === 'small',
       checked,
       disabled,
