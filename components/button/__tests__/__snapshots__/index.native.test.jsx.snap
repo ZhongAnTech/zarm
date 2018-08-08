@@ -10,7 +10,7 @@ exports[`Button block 1`] = `
 </react-native-mock>
 `;
 
-exports[`Button bordered 1`] = `
+exports[`Button disabled 1`] = `
 <react-native-mock>
   <react-native-mock>
     <react-native-mock>
@@ -20,7 +20,7 @@ exports[`Button bordered 1`] = `
 </react-native-mock>
 `;
 
-exports[`Button disabled 1`] = `
+exports[`Button ghost 1`] = `
 <react-native-mock>
   <react-native-mock>
     <react-native-mock>

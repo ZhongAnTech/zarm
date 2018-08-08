@@ -1,7 +1,6 @@
 export default {
   // 主题色
-  theme_default: '#ddd',                    // 默认色
-  theme_primary: '#12c287',                 // 主色
+  theme_primary: '#12C286',                 // 主色
   theme_success: '#69c964',                 // 成功
   theme_warning: '#eca632',                 // 警告
   theme_error: '#e55546',                   // 错误
@@ -24,9 +23,9 @@ export default {
   border_disabled: '#e1e1e1',
 
   // 圆角
-  radius_sm: 2,
-  radius_md: 4,
-  radius_lg: 8,
+  radius_small: 2,
+  radius_normal: 4,
+  radius_large: 8,
   radius_round: 1000,
   // radius_circle: '50%',
 
@@ -78,16 +77,15 @@ export default {
   badge_dot_diameter: 8,
 
   // Button
-  button_height_sm: 27,
-  button_height_md: 45,
-  button_height_lg: 52,
-  button_padding_h_sm: 8,
-  button_padding_h_md: 15,
-  button_padding_h_lg: 15,
-  button_font_size_sm: 14,
-  button_font_size_md: 18,
-  button_font_size_lg: 20,
-  button_bordered_active_opacity: .6,
+  button_height_small: 27,
+  button_height_normal: 36,
+  button_height_large: 44,
+  button_padding_h_small: 8,
+  button_padding_h_normal: 8,
+  button_padding_h_large: 16,
+  button_font_size_small: 12,
+  button_font_size_normal: 16,
+  button_font_size_large: 16,
 
   // Cell
   cell_height: 45,                                   // 最小度

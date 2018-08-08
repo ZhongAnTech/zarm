@@ -1,9 +1,9 @@
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
-  size?: 'xl' | 'lg' | 'sm' | 'xs';
-  shape?: 'radius' | 'round' | 'circle';
+  theme?: 'primary' | 'success' | 'warning' | 'error';
+  size?: 'normal' | 'large' | 'small';
+  shape?: 'radius' | 'rect' | 'round' | 'circle';
   block?: boolean;
-  bordered?: boolean;
+  ghost?: boolean;
   active?: boolean;
   focus?: boolean;
   disabled?: boolean;

@@ -20,13 +20,13 @@ describe('Button', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('bordered', () => {
-    const wrapper = render(<Button bordered>foo</Button>);
+  it('ghost', () => {
+    const wrapper = render(<Button ghost>foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('size', () => {
-    const wrapper = render(<Button size="lg">foo</Button>);
+    const wrapper = render(<Button size="large">foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

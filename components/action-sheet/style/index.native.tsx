@@ -12,7 +12,7 @@ export default {
   },
 
   radiusShape: {
-    borderRadius: variables.radius_md,
+    borderRadius: variables.radius_normal,
     overflow: 'hidden',
   },
 
