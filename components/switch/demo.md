@@ -36,7 +36,6 @@ class Demo extends React.Component {
         <Cell description={<Switch defaultChecked />}>默认开</Cell>
         <Cell description={<Switch disabled />}>禁用的开关（默认关）</Cell>
         <Cell description={<Switch defaultChecked disabled />}>禁用的开关（默认开）</Cell>
-        <Cell description={<Switch size='small'style={{'padding': 10}} />}>small 的开关</Cell>
       </div>
     )
   }

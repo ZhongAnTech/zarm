@@ -26,8 +26,8 @@ describe('Switch', () => {
     wrapper.setProps({ checked: true });
   });
 
-  it('size', () => {
-    const wrapper = render(<Switch size="small" />);
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
+  // it('size', () => {
+  //   const wrapper = render(<Switch size="small" />);
+  //   expect(toJson(wrapper)).toMatchSnapshot();
+  // });
 });

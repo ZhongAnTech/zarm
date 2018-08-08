@@ -22,14 +22,3 @@ exports[`Switch renders correctly 1`] = `
   />
 </span>
 `;
-
-exports[`Switch size 1`] = `
-<span
-  class="za-switch za-switch-small"
->
-  <input
-    class="za-switch-input"
-    type="checkbox"
-  />
-</span>
-`;
