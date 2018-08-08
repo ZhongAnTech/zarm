@@ -22,3 +22,4 @@ build
 components/**/*.js
 components/*.js
 xcuserdata
+package-lock.json

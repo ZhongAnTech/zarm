@@ -51,6 +51,18 @@ export default {
     top: -8,
   },
 
+  leafShape: {
+    borderTopLeftRadius: 150,
+    borderTopRightRadius: 1000,
+    borderBottomRightRadius: 1000,
+    height: 16,
+  },
+
+  leafSup: {
+    position: 'absolute',
+    top: -8,
+  },
+
   errorTheme: {
     backgroundColor: variables.theme_error,
   },
