@@ -22,7 +22,7 @@ describe('Popup', () => {
   it('visible change false', () => {
     jest.useFakeTimers();
     const wrapper = mount(
-      <Popup>foo</Popup>
+      <Popup visible>foo</Popup>
     );
     wrapper.setProps({ visible: false });
     jest.runAllTimers();
