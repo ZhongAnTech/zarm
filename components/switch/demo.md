@@ -36,6 +36,7 @@ class Demo extends React.Component {
         <Cell description={<Switch defaultChecked />}>默认开</Cell>
         <Cell description={<Switch disabled />}>禁用的开关（默认关）</Cell>
         <Cell description={<Switch defaultChecked disabled />}>禁用的开关（默认开）</Cell>
+        <Cell description={<Switch size='small'style={{'padding': 10}} />}>small 的开关</Cell>
       </div>
     )
   }
@@ -57,5 +58,8 @@ ReactDOM.render(<Demo />, mountNode);
 | defaultChecked | boolean | | | 初始值 |
 | disabled | boolean | false | | 是否禁用 |
 | onChange | <code>(value: boolean) => void</code> | | \(value: boolean\) | 值变化时触发的回调函数 |
+| size | `normal`,`small` | `normal` | | 大小 |
+| style | React.CSSProperties | | | 自定义样式 |
+
 
 :::
