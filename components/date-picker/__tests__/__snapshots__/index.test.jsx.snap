@@ -1281,7 +1281,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
           visible={true}
         >
           <div
-            className="za-mask normal"
+            className="za-mask type-normal"
             onClick={[Function]}
             style={
               Object {

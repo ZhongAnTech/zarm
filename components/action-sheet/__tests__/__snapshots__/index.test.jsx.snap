@@ -95,7 +95,7 @@ exports[`ActionSheet renders correctly 1`] = `
           visible={true}
         >
           <div
-            className="za-mask normal"
+            className="za-mask type-normal"
             onClick={[MockFunction]}
             style={
               Object {
