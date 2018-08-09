@@ -108,7 +108,7 @@ const styles = {
   },
 
   mr: {
-    marginRight: 20,
+    marginRight: 25,
   },
 
   text: {

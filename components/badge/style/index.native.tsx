@@ -6,7 +6,7 @@ export default {
   },
 
   Shape: {
-    height: 16,
+    height: 14,
   },
 
   dotShape: {
@@ -17,6 +17,8 @@ export default {
   },
 
   dotSup: {
+    width: 8,
+    height: 8,
     position: 'absolute',
     top: -4,
   },
@@ -28,7 +30,7 @@ export default {
 
   radiusSup: {
     position: 'absolute',
-    top: -8,
+    top: -4,
   },
 
   roundShape: {
@@ -38,7 +40,7 @@ export default {
 
   roundSup: {
     position: 'absolute',
-    top: -8,
+    top: -4,
   },
 
   circleShape: {
@@ -48,7 +50,7 @@ export default {
 
   circleSup: {
     position: 'absolute',
-    top: -8,
+    top: -4,
   },
 
   leafShape: {
@@ -60,7 +62,7 @@ export default {
 
   leafSup: {
     position: 'absolute',
-    top: -8,
+    top: -4,
   },
 
   errorTheme: {
@@ -87,7 +89,7 @@ export default {
     color: 'white',
     display: 'flex',
     fontSize: variables.badge_font_size,
-    lineHeight: 16,
+    lineHeight: 14,
     paddingHorizontal: variables.padding_h_sm,
   },
 };
