@@ -89,6 +89,10 @@ export default {
   button_font_size_lg: 20,
   button_bordered_active_opacity: .6,
 
+  // Collapse
+  collapse_height: 52,
+  collapse_padding_h: 15,
+
   // Cell
   cell_height: 45,                                   // 最小度
   cell_background: '#fff',                           // 背景色
