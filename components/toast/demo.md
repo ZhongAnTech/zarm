@@ -85,6 +85,9 @@ class Demo extends React.Component {
               size="sm"
               onClick={() => {
                 Loading.show();
+                setTimeout(()=>{
+                  Loading.hide();
+                }, 1000);
               }}
             >
               开启
