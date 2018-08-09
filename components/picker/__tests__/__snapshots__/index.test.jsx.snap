@@ -182,7 +182,7 @@ exports[`Picker Picker render visible 1`] = `
             visible={true}
           >
             <div
-              className="za-mask normal"
+              className="za-mask type-normal"
               onClick={[Function]}
               style={
                 Object {
