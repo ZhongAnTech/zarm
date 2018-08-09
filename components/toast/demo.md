@@ -87,7 +87,7 @@ class Demo extends React.Component {
                 Loading.show();
                 setTimeout(()=>{
                   Loading.hide();
-                }, 1000);
+                }, 1100);
               }}
             >
               开启
