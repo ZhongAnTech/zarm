@@ -32,6 +32,7 @@ export default class Wheel extends Component<WheelProps, any> {
 
   private BScroll;
   private wrapper;
+  // private initIndex;
 
   constructor(props) {
     super(props);
@@ -56,7 +57,7 @@ export default class Wheel extends Component<WheelProps, any> {
       this.BScroll.disable();
     }
 
-    const initIndex = this.BScroll.getSelectedIndex(this.state.value);
+    const initIndex = this.getSelectedIndex(this.state.value, this.props.dataSource);
     this.BScroll.wheelTo(initIndex);
 
     this.BScroll.on('scroll', () => {
@@ -71,6 +72,7 @@ export default class Wheel extends Component<WheelProps, any> {
         this.fireValueChange(child[valueMember!]);
         this.props.onTransition!(this.BScroll.isInTransition);
       } else if (console.warn) {
+        this.props.onTransition!(this.BScroll.isInTransition);
         console.warn('child not found', dataSource, index);
       }
     });
@@ -86,8 +88,11 @@ export default class Wheel extends Component<WheelProps, any> {
     if (nextProps.disabled) {
       this.BScroll.disable();
     }
+
     const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
-    this.BScroll.wheelTo(newIndex);
+    setTimeout(() => {
+      this.BScroll.wheelTo(newIndex);
+    });
   }
 
   componentDidUpdate() {
