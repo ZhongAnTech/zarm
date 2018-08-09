@@ -1,7 +1,6 @@
 import { CSSProperties } from 'react';
 
 export default interface PropsType {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
   checked?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;

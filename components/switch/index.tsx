@@ -20,7 +20,6 @@ export interface SwitchProps extends PropsType {
 export default class Switch extends PureComponent<SwitchProps, any> {
   static defaultProps = {
     prefixCls: 'za-switch',
-    theme: 'primary',
     disabled: false,
     size: 'normal',
   };
@@ -54,12 +53,11 @@ export default class Switch extends PureComponent<SwitchProps, any> {
   }
 
   render() {
-    const { prefixCls, className, disabled, size, theme, style = {} } = this.props;
+    const { prefixCls, className, disabled, style = {} } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
-      [`${prefixCls}-small`]: size === 'small',
+      // [`${prefixCls}-small`]: size === 'small',
       checked,
       disabled,
     });
