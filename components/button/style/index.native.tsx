@@ -30,6 +30,9 @@ export default {
   primaryGhostWrapper: {
     borderColor: variables.theme_primary,
   },
+  primaryGhostActiveWrapper: {
+    borderColor: '#00AE73',
+  },
   primaryGhostText: {
     color: variables.theme_primary,
   },
@@ -44,6 +47,9 @@ export default {
     backgroundColor: '#4cbe46',
   },
   successGhostWrapper: {
+    borderColor: variables.theme_success,
+  },
+  successGhostActiveWrapper: {
     borderColor: variables.theme_success,
   },
   successGhostText: {
@@ -62,6 +68,9 @@ export default {
   warningGhostWrapper: {
     borderColor: variables.theme_warning,
   },
+  warningGhostActiveWrapper: {
+    borderColor: variables.theme_warning,
+  },
   warningGhostText: {
     color: variables.theme_warning,
   },
@@ -76,6 +85,9 @@ export default {
     backgroundColor: '#e03422',
   },
   errorGhostWrapper: {
+    borderColor: variables.theme_error,
+  },
+  errorGhostActiveWrapper: {
     borderColor: variables.theme_error,
   },
   errorGhostText: {
