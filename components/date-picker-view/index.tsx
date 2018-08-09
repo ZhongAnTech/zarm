@@ -47,6 +47,17 @@ const isExtendDate = (date) => {
   return new Date(date.toString().replace(/-/g, '/'));
 };
 
+const getInitDate = (props) => {
+  const date = props.value && isExtendDate(props.value);
+  const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
+  const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
+
+  return {
+    date: date || defaultDate,
+    wheelDefault,
+  };
+};
+
 export interface DatePickerViewProps extends BaseDatePickerViewProps {
   prefixCls?: string;
   className?: any;
@@ -73,29 +84,43 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
   constructor(props) {
     super(props);
-    const date = props.value && isExtendDate(props.value);
-    const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-    const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
+    const state = getInitDate(props);
+    // const date = props.value && isExtendDate(props.value);
+    // const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
+    // const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
 
-    this.state = {
-      date: defaultDate || date,
-      wheelDefault,
-    };
+    this.state = state;
 
     if (typeof props.onInit === 'function') {
       props.onInit(this.getDate());
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const date = nextProps.value && isExtendDate(nextProps.value);
-    const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
-    const wheelDefault = nextProps.wheelDefaultValue && isExtendDate(nextProps.wheelDefaultValue);
+  componentDidMount() {
+    const state = getInitDate(this.props);
+    // const props = this.props;
+    // const date = props.value && isExtendDate(props.value);
+    // const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
+    // const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
 
-    this.setState({
-      date: date || defaultDate,
-      wheelDefault,
-    });
+    // this.setState({
+    //   date: date || defaultDate,
+    //   wheelDefault,
+    // });
+    this.setState(state);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const state = getInitDate(nextProps);
+    // const date = nextProps.value && isExtendDate(nextProps.value);
+    // const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
+    // const wheelDefault = nextProps.wheelDefaultValue && isExtendDate(nextProps.wheelDefaultValue);
+
+    // this.setState({
+    //   date: date || defaultDate,
+    //   wheelDefault,
+    // });
+    this.setState(state);
 
     if (typeof this.props.onInit === 'function') {
       this.props.onInit(this.getDate());
@@ -440,7 +465,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   render() {
     const { prefixCls, className, onInit, ...others } = this.props;
     const { dataSource, value } = this.getColsValue();
-
     return (
       <PickerView
         dataSource={dataSource}
