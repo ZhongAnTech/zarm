@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 import IndexPage from './pages/IndexPage';
 import { form, feedback, view, navigation } from './demos';
 
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'RCTCxxModule']);
 
 const getOptions = title => ({
   headerTitle: (
