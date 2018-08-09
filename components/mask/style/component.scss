@@ -9,7 +9,7 @@ $prefixCls: $prefixCls-mask;
   background-color: rgba(0, 0, 0, $opacity-mask);
   z-index: $zindex-mask;
 
-  &.transparent {
+  &.type-transparent {
     background-color: transparent;
   }
 }

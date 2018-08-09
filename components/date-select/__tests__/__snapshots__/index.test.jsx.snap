@@ -4782,7 +4782,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               visible={true}
             >
               <div
-                className="za-mask normal"
+                className="za-mask type-normal"
                 onClick={[Function]}
                 style={
                   Object {
@@ -6094,7 +6094,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               visible={true}
             >
               <div
-                className="za-mask normal"
+                className="za-mask type-normal"
                 onClick={[Function]}
                 style={
                   Object {
