@@ -24,11 +24,19 @@ export default class Markdown extends React.Component {
     this.renderDOM();
   }
 
+  componentWillUnmount() {
+    this.nodeList.forEach((node) => {
+      ReactDOM.unmountComponentAtNode(node);
+    });
+  }
+
+  nodeList = [];
+
   renderDOM() {
     // eslint-disable-next-line
     for (const [id, component] of this.components) {
       const div = document.getElementById(id);
-
+      this.nodeList.push(div);
       if (div instanceof HTMLElement) {
         ReactDOM.render(component, div);
       }
