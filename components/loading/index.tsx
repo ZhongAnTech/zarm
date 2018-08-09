@@ -14,12 +14,32 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     prefixCls: 'za-loading',
   };
 
+  static zarmLoading: HTMLElement;
+  static isShow: boolean;
   static show = (props) => {
-    ReactDOM.render(<Loading {...props} visible />, window.zarmLoading);
+    if (!Loading.zarmLoading) {
+      Loading.zarmLoading = document.createElement('div');
+    }
+    document.body.appendChild(Loading.zarmLoading);
+    ReactDOM.render(<Loading {...props} visible />, Loading.zarmLoading);
+    Loading.isShow = true;
   }
 
   static hide = () => {
-    ReactDOM.render(<Loading visible={false} />, window.zarmLoading);
+    ReactDOM.render(<Loading
+      visible={false}
+      onClose={Loading.unmountNode}
+    />, Loading.zarmLoading);
+  }
+
+  static unmountNode() {
+    const { zarmLoading } = Loading;
+    if (zarmLoading) {
+      ReactDOM.unmountComponentAtNode(zarmLoading);
+      if (zarmLoading.parentNode) {
+        zarmLoading.parentNode.removeChild(Loading.zarmLoading);
+      }
+    }
   }
 
   render() {
@@ -31,13 +51,4 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       </Toast>
     );
   }
-}
-
-if (typeof window !== 'undefined') {
-  if (!window.zarmLoading) {
-    window.zarmLoading = document.createElement('div');
-    document.body.appendChild(window.zarmLoading);
-  }
-
-  ReactDOM.render(<Loading visible={false} />, window.zarmLoading);
 }
