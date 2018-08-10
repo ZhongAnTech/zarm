@@ -1,10 +1,10 @@
 export default {
   // 主题色
-  theme_default: '#ddd',                    // 默认色
+  theme_default: '#e6e6e6',                    // 默认色
   theme_primary: '#12c287',                 // 主色
-  theme_success: '#69c964',                 // 成功
-  theme_warning: '#eca632',                 // 警告
-  theme_error: '#e55546',                   // 错误
+  theme_success: '#12c287',                 // 成功
+  theme_warning: '#ec9131',                 // 警告
+  theme_error: '#ff5050',                   // 失败
 
   // 文字色
   color_text: '#333',                       // 基本
