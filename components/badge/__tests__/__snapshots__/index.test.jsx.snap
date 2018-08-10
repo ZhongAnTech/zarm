@@ -12,7 +12,7 @@ exports[`Badge renders shape is dot correctly 1`] = `
 
 exports[`Badge sup 1`] = `
 <span
-  class="za-badge theme-error"
+  class="za-badge theme-error shape-dot"
 >
   <sup
     class="za-badge-sup za-badge-sup-up"
@@ -22,7 +22,7 @@ exports[`Badge sup 1`] = `
 
 exports[`Badge text 1`] = `
 <span
-  class="za-badge theme-error"
+  class="za-badge theme-error shape-rect"
 >
   <sup
     class="za-badge-sup"
@@ -34,7 +34,7 @@ exports[`Badge text 1`] = `
 
 exports[`Badge theme 1`] = `
 <span
-  class="za-badge theme-warning"
+  class="za-badge theme-warning shape-dot"
 >
   <sup
     class="za-badge-sup"
