@@ -9,7 +9,9 @@ const IS_REACT_16 = !!ReactDOM.createPortal;
 export interface PortalProps extends PropsType {
   prefixCls?: string;
   className?: string;
+  handlePortalUnmount?: () => void;
 }
+
 export default class Portal extends Component<PortalProps, any> {
   static defaultProps = {
     prefixCls: 'za-popup',
