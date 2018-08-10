@@ -36,18 +36,18 @@ export default {
         color: '#464646',
     },
     titleTextDisabledStyle: {
-        color: '#999',
+        color: '#EEE',
     },
     titleArrowStyle: {
         borderRightWidth: 1,
         borderBottomWidth: 1,
         borderStyle: 'solid',
-        borderColor: '#12C287',
+        borderColor: '#C2C2C2',
         width: 10,
         height: 10,
     },
     titleArrowDisabledStyle: {
-        borderColor: '#999',
+        borderColor: '#EEE',
     },
     itemBodyStyle: {
         backgroundColor: '#FFF',
