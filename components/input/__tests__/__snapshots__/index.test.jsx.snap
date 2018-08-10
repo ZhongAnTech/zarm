@@ -133,17 +133,19 @@ exports[`Input.Idcard renders correctly 1`] = `
         visible={false}
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
           mask={false}
-          maskType="normal"
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={false}
+            maskType="normal"
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -341,17 +343,19 @@ exports[`Input.Number renders correctly 1`] = `
         visible={false}
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
           mask={false}
-          maskType="normal"
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={false}
+            maskType="normal"
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -577,20 +581,22 @@ exports[`Input.Number renders onClear called correctly 1`] = `
         visible={true}
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
           mask={false}
-          maskType="normal"
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={true}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={false}
+            maskType="normal"
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={true}
           >
             <div
-              className="za-popup"
+              className="za-popup za-popup-hidden"
             >
               <div
                 className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -783,17 +789,19 @@ exports[`Input.Price renders correctly 1`] = `
         visible={false}
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
           mask={false}
-          maskType="normal"
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={false}
+            maskType="normal"
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"

@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 export default interface PropsType {
   visible?: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left';
@@ -9,4 +10,6 @@ export default interface PropsType {
   mask?: boolean;
   maskType?: 'transparent' | 'normal';
   onMaskClick?: () => void;
+  willUnMount?: () => void;
+  handlePortalUnmount?: (container?: ReactNode) => void;
 }

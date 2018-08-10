@@ -243,13 +243,13 @@ const CASCADE_DATA = [
 ];
 
 class Demo extends React.Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
-    this.state = {
-      visible: false,
-      value: [],
-      dataSource: [],
-    };
+      this.state = {
+        visible: false,
+        value: [],
+        dataSource: [],
+      };
   }
 
   componentDidMount() {
