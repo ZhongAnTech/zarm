@@ -26,21 +26,23 @@ exports[`Picker Picker render visible 1`] = `
     className="za-picker"
   >
     <Popup
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      mask={true}
-      maskType="normal"
       onMaskClick={[Function]}
-      prefixCls="za-popup"
-      stayTime={3000}
       visible={true}
     >
       <Portal
-        getContainer={[Function]}
+        animationDuration={200}
+        autoClose={false}
+        direction="bottom"
+        handlePortalUnmount={[Function]}
+        mask={true}
+        maskType="normal"
+        onMaskClick={[Function]}
+        prefixCls="za-popup"
+        stayTime={3000}
+        visible={true}
       >
         <div
-          className="za-popup"
+          className="za-popup za-popup-hidden"
         >
           <div
             className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -179,19 +181,8 @@ exports[`Picker Picker render visible 1`] = `
               }
             }
             type="normal"
-            visible={true}
-          >
-            <div
-              className="za-mask type-normal"
-              onClick={[Function]}
-              style={
-                Object {
-                  "WebkitAnimationDuration": "200ms",
-                  "animationDuration": "200ms",
-                }
-              }
-            />
-          </Mask>
+            visible={false}
+          />
         </div>
       </Portal>
     </Popup>
@@ -244,18 +235,20 @@ exports[`Picker render custom label 1`] = `
     className="za-picker"
   >
     <Popup
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      mask={true}
-      maskType="normal"
       onMaskClick={[Function]}
-      prefixCls="za-popup"
-      stayTime={3000}
       visible={false}
     >
       <Portal
-        getContainer={[Function]}
+        animationDuration={200}
+        autoClose={false}
+        direction="bottom"
+        handlePortalUnmount={[Function]}
+        mask={true}
+        maskType="normal"
+        onMaskClick={[Function]}
+        prefixCls="za-popup"
+        stayTime={3000}
+        visible={false}
       >
         <div
           className="za-popup za-popup-hidden"
@@ -348,6 +341,7 @@ exports[`Picker render custom label 1`] = `
                 prefixCls="za-picker"
                 value={Array []}
                 valueMember="code"
+                visible={false}
               >
                 <div
                   className="za-picker-panel"
