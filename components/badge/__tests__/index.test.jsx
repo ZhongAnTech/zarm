@@ -20,7 +20,7 @@ describe('Badge', () => {
   });
 
   it('text', () => {
-    const wrapper = render(<Badge text="99+" />);
+    const wrapper = render(<Badge shape="rect" text="99+" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

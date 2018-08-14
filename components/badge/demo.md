@@ -8,11 +8,11 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell hasArrow title="点状" description={<Badge shape="dot" />} onClick={() => {}} />
+        <Cell hasArrow title="点状" description={<Badge text="99" />} onClick={() => {}} />
         <Cell hasArrow title="圆形" description={<Badge shape="circle" text={3} />} onClick={() => {}} />
         <Cell hasArrow title="椭圆形" description={<Badge shape="round" text="999+" />} onClick={() => {}} />
         <Cell hasArrow title="圆角" description={<Badge shape="radius" text="new" />} onClick={() => {}} />
-        <Cell hasArrow title="直角" description={<Badge text="免费" />} onClick={() => {}} />
+        <Cell hasArrow title="直角" description={<Badge shape="rect" text="免费" />} onClick={() => {}} />
         <Cell hasArrow title="叶形" description={<Badge shape="leaf" text="新品" />} onClick={() => {}} />
       </div>
     )
@@ -45,7 +45,7 @@ class Demo extends React.Component {
           <Badge sup shape="radius" text="new"><div className="box-item" /></Badge>
         </div>
         <div className="box">
-          <Badge sup text="免费"><div className="box-item" /></Badge>
+          <Badge sup shape="rect" text="免费"><div className="box-item" /></Badge>
         </div>
         <div className="box">
           <Badge sup shape="leaf" text="新品"><div className="box-item" /></Badge>
@@ -91,7 +91,7 @@ ReactDOM.render(<Demo />, mountNode);
 | className | string | | | 追加类名 |
 | theme | string | `error` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | text | any | | | 显示文字 |
-| shape | string | | `dot`, `radius`, `round`, `circle` ,`leaf` | 形状 |
+| shape | string | | `dot`, `rect` , `radius`, `round`, `circle` ,`leaf` | 形状 |
 | sup | bool | false | | 是否上标位置 |
 
 :::
