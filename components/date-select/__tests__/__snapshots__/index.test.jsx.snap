@@ -42,18 +42,20 @@ exports[`DateSelect DateSelect date 1`] = `
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"
@@ -1343,18 +1345,20 @@ exports[`DateSelect DateSelect datetime 1`] = `
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"
@@ -2892,18 +2896,20 @@ exports[`DateSelect DateSelect time 1`] = `
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"
@@ -3534,21 +3540,23 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       visible={true}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={true}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={true}
         >
           <div
-            className="za-popup"
+            className="za-popup za-popup-hidden"
           >
             <div
               className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -4779,19 +4787,8 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                 }
               }
               type="normal"
-              visible={true}
-            >
-              <div
-                className="za-mask normal"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-              />
-            </Mask>
+              visible={false}
+            />
           </div>
         </Portal>
       </Popup>
@@ -4844,21 +4841,23 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       wheelDefaultValue="2017-11-03 15:00"
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={true}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={true}
         >
           <div
-            className="za-popup"
+            className="za-popup za-popup-hidden"
           >
             <div
               className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -6091,19 +6090,8 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                 }
               }
               type="normal"
-              visible={true}
-            >
-              <div
-                className="za-mask normal"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-              />
-            </Mask>
+              visible={false}
+            />
           </div>
         </Portal>
       </Popup>
@@ -6172,18 +6160,20 @@ exports[`DateSelect DateSelect year 1`] = `
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"

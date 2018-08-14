@@ -1,9 +1,9 @@
 // 主题色
-$theme-default: #ddd;                    // 默认
+$theme-default: #e6e6e6;                    // 默认
 $theme-primary: #12c287;                 // 主色
-$theme-success: #69c964;                 // 成功
-$theme-warning: #eca632;                 // 警告
-$theme-error: #e55546;                   // 错误
+$theme-success: #12c287;                 // 成功
+$theme-warning: #ec9131;                 // 警告
+$theme-error: #ff5050;                   // 失败
 
 // 文字色
 $color-text: #333;                       // 基本
@@ -57,7 +57,7 @@ $zindex-loading: 1500;
 
 // 透明度
 $opacity-disabled: .5;
-$opacity-mask: .6;
+$opacity-mask: .5;
 $opacity-toast: .8;
 $opacity-tooltip: .8;
 
