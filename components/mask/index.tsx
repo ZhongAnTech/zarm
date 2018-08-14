@@ -1,11 +1,9 @@
-import React, { PureComponent, MouseEventHandler } from 'react';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
-export interface MaskProps extends PropsType {
+export interface MaskProps extends HTMLAttributes<HTMLDivElement>, PropsType {
   prefixCls?: string;
-  className?: string;
-  onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
 export default class Mask extends PureComponent<MaskProps, {}> {
@@ -16,8 +14,10 @@ export default class Mask extends PureComponent<MaskProps, {}> {
   };
 
   render() {
-    const { prefixCls, className, visible, type, onClick, ...others } = this.props;
-    const markCls = classnames(`${prefixCls}`, className, type);
-    return visible && <div className={markCls} onClick={onClick} {...others} />;
+    const { prefixCls, className, visible, type, ...others } = this.props;
+    const markCls = classnames(prefixCls, className, {
+      [`type-${type}`]: !!type,
+    });
+    return visible && <div {...others} className={markCls} />;
   }
 }

@@ -114,18 +114,20 @@ exports[`Select Cascader Select 1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -476,18 +478,20 @@ exports[`Select Cascader Select init value 1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -786,18 +790,20 @@ exports[`Select Select 1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -1029,18 +1035,20 @@ exports[`Select render defaultValue correctly  1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
