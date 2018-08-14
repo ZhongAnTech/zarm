@@ -25,4 +25,9 @@ describe('Switch', () => {
     const wrapper = shallow(<Switch className="test-class" />);
     wrapper.setProps({ checked: true });
   });
+
+  it('size', () => {
+    const wrapper = render(<Switch size="small" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });
