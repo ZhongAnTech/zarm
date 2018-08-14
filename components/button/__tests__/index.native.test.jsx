@@ -1,0 +1,76 @@
+import { TouchableHighlight } from 'react-native';
+import React from 'react';
+import { render, mount, shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import Button from '../index.native';
+
+describe('Button', () => {
+  it('renders correctly', () => {
+    const wrapper = render(<Button>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('theme', () => {
+    const wrapper = render(<Button theme="primary">foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('block', () => {
+    const wrapper = render(<Button block>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('bordered', () => {
+    const wrapper = render(<Button bordered>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('size', () => {
+    const wrapper = render(<Button size="lg">foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('shape is radius', () => {
+    const wrapper = render(<Button shape="radius">foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('icon', () => {
+    const wrapper = render(<Button icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />}>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('loading', () => {
+    const wrapper = render(<Button loading>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('disabled', () => {
+    const wrapper = render(<Button disabled>foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('onClick', () => {
+    const onClick = jest.fn();
+    const wrapper = shallow(<Button onClick={onClick}>foo</Button>);
+    wrapper.find(TouchableHighlight).props().onPress();
+    expect(onClick).toBeCalled();
+  });
+
+  it('set props active', () => {
+    const wrapper = shallow(<Button>foo</Button>);
+    wrapper.setProps({ active: true });
+  });
+
+  it('pressIn', () => {
+    const wrapper = shallow(<Button>foo</Button>);
+    wrapper.find(TouchableHighlight).props().onPressIn();
+    expect(wrapper.state('isActive')).toBe(true);
+  });
+
+  it('pressOut', () => {
+    const wrapper = shallow(<Button>foo</Button>);
+    wrapper.find(TouchableHighlight).props().onPressOut();
+    expect(wrapper.state('isActive')).toBe(false);
+  });
+});

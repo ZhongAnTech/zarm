@@ -16,6 +16,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     prefixCls: 'za-search-bar',
     placeholder: '搜索',
     cancelText: '取消',
+    shape: 'radius',
     disabled: false,
     showCancel: false,
     clearable: true,
@@ -135,7 +136,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     }
   }
 
-  onClear(val) {
+  onClear() {
     this.setState({
       value: '',
       isOnComposition: false,
@@ -145,7 +146,11 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     });
 
     if (this.props.onClear) {
-      this.props.onClear(val);
+      this.props.onClear('');
+    }
+
+    if (this.props.onChange) {
+      this.props.onChange('');
     }
   }
 
@@ -212,7 +217,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   }
 
   render() {
-    const { prefixCls, className, shape, placeholder, disabled, clearable } = this.props;
+    const { prefixCls, className, shape, placeholder, disabled, clearable, maxLength } = this.props;
     const { value, focus, isOnComposition } = this.state;
     const formCls = classnames(`${prefixCls}-form`, className, {
       [`${prefixCls}-form-focus`]: !!(focus || (value && value.length > 0)),
@@ -248,13 +253,14 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
               type="search"
               placeholder={placeholder}
               value={value}
+              maxLength={maxLength}
               onFocus={() => { this.onFocus(); }}
               onCompositionStart={(e) => { this.handleComposition(e); }}
               onCompositionUpdate={(e) => { this.handleComposition(e); }}
               onCompositionEnd={(e) => { this.handleComposition(e); }}
               onChange={(val) => { this.onChange(val); }}
               onBlur={() => { this.onBlur(); }}
-              onClear={(val) => { this.onClear(val); }}
+              onClear={() => { this.onClear(); }}
               disabled={disabled}
               clearable={clearable}
               ref={(inputRef) => { this.inputRef = inputRef; }}

@@ -85,45 +85,53 @@ describe('DateSelect', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('should trigger onOk when press ok button', () => {
-  //   const onOkFn = jest.fn();
-  //   const onCancelFn = jest.fn();
+  it('should trigger onOk when press ok button', () => {
+    const onOkFn = jest.fn();
+
+    const wrapper = mount(
+      <DateSelect
+        mode="date"
+        value="2009-3-4"
+        visible
+        onOk={onOkFn}
+      />
+    );
+
+    wrapper.find('.za-picker-submit').simulate('click');
+    expect(onOkFn).toBeCalled();
+  });
+
+  it('should trigger onCancel when press cancel button', () => {
+    const onOkFn = jest.fn();
+    const onCancelFn = jest.fn();
+
+    const wrapper = mount(
+      <DateSelect
+        mode="date"
+        value="2009-3-4"
+        visible
+        onCancel={onCancelFn}
+      />
+    );
+
+    wrapper.find('.za-picker-cancel').simulate('click');
+    expect(onCancelFn).toBeCalled();
+    expect(onOkFn).not.toBeCalled();
+  });
+
+  // it('should trigger onMaskClick when click mask', () => {
+  //   const onMaskClick = jest.fn();
 
   //   const wrapper = mount(
   //     <DateSelect
-  //       title="选择时间"
-  //       placeholder="请选择时间"
-  //       mode="datetime"
-  //       defaultValue={moment('2017-11-12T20:00:00.000Z')}
-  //       onOk={onOkFn}
-  //       onCancel={onCancelFn}
-  //       onMaskClick={onCancelFn}
-  //       />
+  //       mode="date"
+  //       value="2009-3-4"
+  //       visible
+  //       onMaskClick={onMaskClick}
+  //     />
   //   );
 
-  //   wrapper.find('.za-picker-submit').simulate('click');
-  //   expect(onOkFn).toBeCalled();
-  //   expect(onCancelFn).not.toBeCalled();
-  // });
-
-  // it('should trigger onCancel when press cancel button', () => {
-  //   const onOkFn = jest.fn();
-  //   const onCancelFn = jest.fn();
-
-  //   const wrapper = mount(
-  //     <DateSelect
-  //       title="选择时间"
-  //       placeholder="请选择时间"
-  //       mode="datetime"
-  //       onOk={onOkFn}
-  //       onCancel={onCancelFn}
-  //       onMaskClick={onCancelFn}
-  //       defaultValue={moment('2017-11-12 20:00')}
-  //       />
-  //   );
-
-  //   wrapper.find('.za-picker-cancel').simulate('click');
-  //   expect(onCancelFn).toBeCalled();
-  //   expect(onOkFn).not.toBeCalled();
+  //   wrapper.find('.za-mask').simulate('click');
+  //   expect(onMaskClick).toBeCalled();
   // });
 });

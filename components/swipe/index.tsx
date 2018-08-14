@@ -298,6 +298,7 @@ export default class Swipe extends Component<SwipeProps, any> {
 
   transitionEnd = () => {
     const activeIndex = this.state.activeIndex;
+    // this.props.onChangeEnd!(activeIndex);
     const dom = this.swipeItems;
     this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
     this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);

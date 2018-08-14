@@ -6,3 +6,32 @@
     }
   }
 }
+
+@mixin switch-size($width, $height, $radius) {
+  .#{$prefixCls-switch}-input {
+    position: relative;
+    width: $width;
+    height: $height;
+    border-radius: $radius-round;
+
+    &:before,
+    &:after {
+      height: $height - 2;
+      border-radius: $radius;
+    }
+
+    &:before {
+      width: $width - 2;
+    }
+
+    &:after {
+      width: $height - 2;
+    }
+
+    &:checked {
+      &:after {
+        transform: translateX($width - $height);
+      }
+    }
+  }
+}

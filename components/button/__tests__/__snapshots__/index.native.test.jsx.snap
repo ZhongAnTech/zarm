@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button block 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button bordered 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button disabled 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button icon 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <img
+      alt=""
+      src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
+    />
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button loading 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button renders correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button shape is radius 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button size 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button theme 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
