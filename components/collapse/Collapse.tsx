@@ -76,7 +76,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
   isPropEqual(cur, next) {
     if (isArray(next) && isArray(cur)) {
-     return next.length === cur.length && next.every((key, i) => key === cur[i]);
+      return next.length === cur.length && next.every((key, i) => key === cur[i]);
     }
 
     return cur === next;
