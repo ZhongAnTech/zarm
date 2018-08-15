@@ -1,4 +1,4 @@
-import React, { PureComponent, Children, cloneElement } from 'react';
+import React, { PureComponent, Children, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
 import { BaseCollapseProps } from './PropsType';
 import { isArray } from '../utils/validate';
@@ -87,7 +87,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     const { activeIndex } = this.state;
 
     return Children.map(this.props.children, (ele, index) => {
-      return cloneElement(ele as JSX.Element, {
+      return cloneElement(ele as ReactElement<any>, {
         index: String(index),
         animated,
         activeIndex,
