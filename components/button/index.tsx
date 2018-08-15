@@ -35,7 +35,8 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       loading,
       onClick,
       children,
-      ...others,
+      // tslint:disable-next-line:trailing-comma
+      ...others
     } = this.props;
 
     const classes = classnames(`${prefixCls}`, className, {

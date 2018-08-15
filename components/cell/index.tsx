@@ -27,7 +27,8 @@ export default class Cell extends PureComponent<CellProps, {}> {
       disabled,
       onClick,
       children,
-      ...others,
+      // tslint:disable-next-line:trailing-comma
+      ...others
     } = this.props;
 
     const cls = classnames(prefixCls, className, {

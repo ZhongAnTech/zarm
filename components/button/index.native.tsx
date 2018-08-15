@@ -66,7 +66,8 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles,
       onClick,
       children,
-      ...others,
+      // tslint:disable-next-line:trailing-comma
+      ...others
     } = this.props;
     const { isActive } = this.state;
 

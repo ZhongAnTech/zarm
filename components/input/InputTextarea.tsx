@@ -142,7 +142,8 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
-      ...others,
+      // tslint:disable-next-line:trailing-comma
+      ...others
     } = this.props;
 
     const cls = classnames(prefixCls, `${prefixCls}-textarea`, className, {
