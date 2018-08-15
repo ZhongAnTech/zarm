@@ -58,7 +58,7 @@ export default {
 
   // 透明度
   opacity_disabled: .5,
-  opacity_mask: .6,
+  opacity_mask: .5,
   opacity_toast: .8,
   opacity_tooltip: .8,
 
@@ -165,10 +165,10 @@ export default {
   swipe_pagination_dot_size: 8,
 
   // Switch
-  switch_width: 51,
-  switch_height: 31,
+  switch_width: 53,
+  switch_height: 32,
   switch_border_color: '#e5e5e5',
-  switch_background: '#fdfdfd',
+  switch_background: '#fff',
 
   // SwipeAction
   swipe_action_height: 45,
