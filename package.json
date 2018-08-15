@@ -157,5 +157,10 @@
     "components/**/*.{ts,tsx}": "tslint",
     "{components,examples,examples-rn}/**/*.{js,jsx}": "eslint",
     "{styles,examples}/**/*.scss": "stylelint"
-  }
+  },
+  "sideEffects": [
+    "dist/*",
+    "es/**/style/*",
+    "lib/**/style/*"
+  ]
 }
