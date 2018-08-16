@@ -159,7 +159,7 @@ export default {
   },
 
   // ghost
- ghostWrapper: {
+  ghostWrapper: {
     borderWidth: 1,
     backgroundColor: 'transparent',
   },

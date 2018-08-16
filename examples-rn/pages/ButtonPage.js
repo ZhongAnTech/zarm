@@ -44,9 +44,9 @@ export default class Page extends PureComponent {
           </View>
 
           <View style={[styles.inline, styles.mb]}>
-            <Button style={[styles.mb, styles.mr]} size="lg" onClick={noop}>lg</Button>
-            <Button style={[styles.mb, styles.mr]} onClick={noop}>md</Button>
-            <Button size="sm" onClick={noop}>sm</Button>
+            <Button style={[styles.mb, styles.mr]} size="large" onClick={noop}>large</Button>
+            <Button style={[styles.mb, styles.mr]} onClick={noop}>normal</Button>
+            <Button size="small" onClick={noop}>small</Button>
           </View>
 
           <View style={[styles.inline, styles.mb]}>
