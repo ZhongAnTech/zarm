@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
-import { BaseInputNumberProps } from './PropsType';
+import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
 import Icon from '../icon';
 
 declare const document;
-
-export interface InputNumberProps extends BaseInputNumberProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps = {

@@ -1,12 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseInputBaseProps } from './PropsType';
+import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
-
-export interface InputBaseProps extends BaseInputBaseProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
   static defaultProps = {
