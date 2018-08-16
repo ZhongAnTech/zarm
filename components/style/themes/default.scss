@@ -213,10 +213,12 @@ $stepper-input-font-size: r(16);
 $swipe-pagination-dot-size: r(8);
 
 // Switch
-$switch-width: r(51);
-$switch-height: r(31);
+$switch-width: r(53);
+$switch-height: r(32);
+// $switch-width-sm: r(41);
+// $switch-height-sm: r(21);
 $switch-border-color: #e5e5e5;
-$switch-background: #fdfdfd;
+$switch-background: #fff;
 
 // Tabs
 $tabs-height: r(45);
