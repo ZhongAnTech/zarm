@@ -1,4 +1,4 @@
-import { TouchableHighlight } from 'react-native';
+import { TouchableHighlight, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -72,5 +72,16 @@ describe('Button', () => {
     const wrapper = shallow(<Button>foo</Button>);
     wrapper.find(TouchableHighlight).props().onPressOut();
     expect(wrapper.state('isActive')).toBe(false);
+  });
+
+  it('ghost active', () => {
+    const wrapper = shallow(<Button ghost theme="primary">foo</Button>);
+    wrapper.find(TouchableOpacity).props().onPressIn();
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('circle size', () => {
+    const wrapper = render(<Button shape="circle" size="large">foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
