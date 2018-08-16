@@ -12,8 +12,28 @@ $prefixCls: $prefixCls-swipe;
 
   &-pagination {
     position: absolute;
-    right: r(10);
-    bottom: r(10);
+
+    &.horizontal {
+      left: 50%;
+      bottom: r(10);
+      transform: translate3d(-50%, 0, 0);
+
+      li {
+        width: $swipe-pagination-rect-width;
+        height: $swipe-pagination-rect-height;
+      }
+    }
+
+    &.vertical {
+      top: 50%;
+      right: r(10);
+      transform: translate3d(0, -50%, 0);
+
+      li {
+        width: $swipe-pagination-rect-height;
+        height: $swipe-pagination-rect-width;
+      }
+    }
 
     ul {
       list-style: none;
@@ -22,9 +42,6 @@ $prefixCls: $prefixCls-swipe;
       font-size: 0;
 
       li {
-        width: $swipe-pagination-dot-size;
-        height: $swipe-pagination-dot-size;
-        border-radius: $radius-circle;
         background: #ccc;
         cursor: pointer;
         margin: r(3) 0 0 r(3);

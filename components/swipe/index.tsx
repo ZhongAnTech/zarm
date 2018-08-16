@@ -343,8 +343,9 @@ export default class Swipe extends Component<SwipeProps, any> {
 
   renderPagination = () => {
     const { prefixCls, children } = this.props;
+    const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
     return (
-      <div className={`${prefixCls}-pagination`}>
+      <div className={`${prefixCls}-pagination ${direction}`}>
         <ul>
           {Children.map(children, this.renderPaginationItem)}
         </ul>
