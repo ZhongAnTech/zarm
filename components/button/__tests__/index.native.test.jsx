@@ -57,11 +57,6 @@ describe('Button', () => {
     expect(onClick).toBeCalled();
   });
 
-  it('set props active', () => {
-    const wrapper = shallow(<Button>foo</Button>);
-    wrapper.setProps({ active: true });
-  });
-
   it('pressIn', () => {
     const wrapper = shallow(<Button>foo</Button>);
     wrapper.find(TouchableHighlight).props().onPressIn();
@@ -76,7 +71,7 @@ describe('Button', () => {
 
   it('ghost active', () => {
     const wrapper = shallow(<Button ghost theme="primary">foo</Button>);
-    wrapper.find(TouchableOpacity).props().onPressIn();
+    wrapper.setState({ isActive: true });
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
