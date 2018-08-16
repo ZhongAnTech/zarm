@@ -28,6 +28,10 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     };
   }
 
+  get showClearIcon() {
+    return this.props.clearable && ('value' in this.props);
+  }
+
   componentDidMount() {
     Events.on(document.body, 'click', this.onMaskClick);
     if (this.props.autoFocus || this.props.focused) {
@@ -155,13 +159,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   renderClear() {
-    const { prefixCls, clearable } = this.props;
+    const { prefixCls } = this.props;
     const { visible, value } = this.state;
 
     const clearCls = classnames(`${prefixCls}-clear`, {
       [`${prefixCls}-clear-show`]: !!(visible && value && value.length > 0),
     });
-    return clearable &&
+    return this.showClearIcon &&
       <Icon
         type="wrong-round-fill"
         className={clearCls}
@@ -170,13 +174,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   render() {
-    const { prefixCls, className, type, disabled, placeholder, clearable } = this.props;
+    const { prefixCls, className, type, disabled, placeholder } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
       disabled,
       focus: visible,
-      clearable,
+      clearable: this.showClearIcon,
     });
 
     return (
