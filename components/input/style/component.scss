@@ -3,13 +3,13 @@ $prefixCls: $prefixCls-input;
 .#{$prefixCls} {
   position: relative;
   width: 100%;
-  padding: r(12) 0;
+  padding: $input-padding-size 0;
 
   &.clearable {
-    padding-right: r(30);
+    padding-right: $input-clear-icon-width;
 
     .#{$prefixCls}-content {
-      right: r(30);
+      right: $input-clear-icon-width;
     }
   }
 
@@ -70,7 +70,7 @@ $prefixCls: $prefixCls-input;
     position: absolute;
     visibility: hidden;
     color: #d5d5d5;
-    width: r(30);
+    width: $input-clear-icon-width;
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -90,7 +90,7 @@ $prefixCls: $prefixCls-input;
   }
 
   &-number {
-    line-height: r(24);
+    line-height: $input-padding-size * 2;
 
     &-picker {
       background-color: #fff;
