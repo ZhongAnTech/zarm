@@ -150,7 +150,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     const valueState = this.state.value;
     const focused = this.state.focused;
 
-    const showClearIcon = clearable && ('value' in this.props);
+    const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
 
     const cls = classnames(prefixCls, `${prefixCls}-${type}`, className, {
       disabled,

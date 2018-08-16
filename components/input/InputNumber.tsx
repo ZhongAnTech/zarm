@@ -29,7 +29,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   get showClearIcon() {
-    return this.props.clearable && ('value' in this.props);
+    return this.props.clearable && ('value' in this.props) && ('onChange' in this.props);
   }
 
   componentDidMount() {
