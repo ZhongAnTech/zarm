@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch defaultChecked 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Switch renders correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+</react-native-mock>
+`;
