@@ -6,7 +6,8 @@
       true,
       {
         "singleline": "never",
-        "multiline": "always"
+        "multiline": "always",
+        "esSpecCompliant": true
       }
     ],
     "switch-default": true,

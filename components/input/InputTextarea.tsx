@@ -142,7 +142,6 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
-      // tslint:disable-next-line:trailing-comma
       ...others
     } = this.props;
 
