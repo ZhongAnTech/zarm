@@ -43,7 +43,7 @@ $prefixCls: $prefixCls-input;
     }
 
     &::selection {
-      background: rgba($theme-primary, 0.2);
+      background: $input-selection-color;
     }
   }
 
