@@ -24,9 +24,12 @@
     "curly": true,
     "object-curly-spacing": true,
     "eofline": true,
-    "indent": [
+    "ter-indent": [
       true,
-      "spaces"
+      2,
+      {
+        "SwitchCase": 1
+      }
     ],
     "jsdoc-format": false,
     "label-position": true,
