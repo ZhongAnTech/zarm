@@ -24,7 +24,7 @@ $prefixCls: $prefixCls-input;
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    caret-color: $theme-primary;
+    caret-color: $input-cursor-color;
 
     &[type="date"],
     &[type="text"],
@@ -102,11 +102,12 @@ $prefixCls: $prefixCls-input;
 
         &:after {
           content: ' ';
+          display: inline-block;
           position: relative;
-          right: 0;
+          right: r(-2);
           top: 10%;
-          height: 80%;
-          border-right: 1.5px solid #108ee9;
+          height: $input-cursor-height;
+          border-right: $input-cursor-width solid $input-cursor-color;
           animation: custom-cursor 1s infinite step-start;
         }
       }
