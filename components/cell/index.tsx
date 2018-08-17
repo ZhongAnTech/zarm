@@ -27,7 +27,7 @@ export default class Cell extends PureComponent<CellProps, {}> {
       disabled,
       onClick,
       children,
-      ...others,
+      ...others
     } = this.props;
 
     const cls = classnames(prefixCls, className, {

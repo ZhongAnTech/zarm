@@ -35,7 +35,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       loading,
       onClick,
       children,
-      ...others,
+      ...others
     } = this.props;
 
     const classes = classnames(`${prefixCls}`, className, {
