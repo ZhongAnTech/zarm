@@ -36,8 +36,9 @@ $prefixCls: $prefixCls-collapse;
       transform: rotate(45deg);
       transition: transform 0.15s ease-out;
 
-      &-hidden {
-        visibility: hidden;
+      &-disabled {
+        border-right: r(2) solid $collapse-arrow-disabled-color;
+        border-bottom: r(2) solid $collapse-arrow-disabled-color;
       }
     }
 
