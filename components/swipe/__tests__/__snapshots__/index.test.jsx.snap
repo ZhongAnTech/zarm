@@ -35,7 +35,7 @@ exports[`Swipe loop renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-swipe-pagination"
+    class="za-swipe-pagination horizontal"
   >
     <ul>
       <li
@@ -83,7 +83,7 @@ exports[`Swipe renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-swipe-pagination"
+    class="za-swipe-pagination horizontal"
   >
     <ul>
       <li
