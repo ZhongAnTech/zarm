@@ -55,7 +55,7 @@ describe('Swipe', () => {
       </Swipe>
     );
     wrapper.setProps({ activeIndex: 1 });
-    jest.runTimersToTime(20000);
+    jest.advanceTimersByTime(20000);
     wrapper.unmount();
   });
 
@@ -74,7 +74,7 @@ describe('Swipe', () => {
       </Swipe>
     );
     wrapper.setProps({ activeIndex: 1 });
-    jest.runTimersToTime(3000);
+    jest.advanceTimersByTime(3000);
   });
 
   it('touch event', () => {
