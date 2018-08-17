@@ -38,10 +38,12 @@ describe('Input', () => {
 
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
+    const onChange = jest.fn();
     const wrapper = mount(
       <Input
         value=""
         onClear={onClear}
+        onChange={onChange}
         clearable
       />
     );
@@ -135,10 +137,13 @@ describe('Input.Number', () => {
 
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
+    const onChange = jest.fn();
     const wrapper = mount(
       <Input
         type="number"
+        value=""
         onClear={onClear}
+        onChange={onChange}
       />
     );
 
