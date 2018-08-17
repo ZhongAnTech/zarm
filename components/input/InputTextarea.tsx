@@ -137,6 +137,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
+      type,
       ...others
     } = this.props;
 

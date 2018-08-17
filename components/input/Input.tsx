@@ -43,7 +43,7 @@ export default class Input extends PureComponent<InputProps, {}> {
         return <InputBase ref={ele => (this.input = ele)} {...this.props} />;
 
       default:
-        return <InputBase ref={ele => (this.input = ele)} {...this.props as InputBaseProps} />;
+        return <InputBase ref={ele => (this.input = ele)} {...this.props as InputBaseProps} type="text" />;
     }
   }
 }
