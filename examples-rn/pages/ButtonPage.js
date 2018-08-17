@@ -22,18 +22,20 @@ export default class Page extends PureComponent {
     return (
       <ScrollView>
         <View style={{ padding: 15 }}>
-          <View style={[styles.inline, styles.mb]}>
-            <Button style={styles.mb} theme="primary">primary</Button>
-          </View>
-
           <View style={styles.mb}>
             <Button style={styles.mb} theme="primary" onClick={noop}>primary</Button>
+            <Button style={styles.mb} theme="success" onClick={noop}>success</Button>
+            <Button style={styles.mb} theme="warning" onClick={noop}>warning</Button>
+            <Button style={styles.mb} theme="error" onClick={noop}>error</Button>
             <Button style={styles.mb} disabled theme="primary" onClick={noop}>disabled primary</Button>
           </View>
 
           <View style={styles.mb}>
             <Button style={styles.mb} ghost theme="primary" onClick={noop}>primary</Button>
-            <Button style={styles.mb} ghost disabled theme="primary" onClick={noop}>disabled primary</Button>
+            <Button style={styles.mb} ghost theme="success" onClick={noop}>success</Button>
+            <Button style={styles.mb} ghost theme="warning" onClick={noop}>warning</Button>
+            <Button style={styles.mb} ghost theme="error" onClick={noop}>error</Button>
+            <Button style={styles.mb} ghost disabled onClick={noop}>disabled ghost</Button>
           </View>
 
           <View style={[styles.inline, styles.mb]}>

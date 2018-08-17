@@ -25,76 +25,76 @@ export default {
     backgroundColor: variables.theme_primary,
   },
   primaryActiveWrapper: {
-    backgroundColor: '#00AE73',
+    backgroundColor: variables.button_primary_active_bg,
   },
   primaryGhostWrapper: {
     borderColor: variables.theme_primary,
   },
-  primaryGhostActiveWrapper: {
-    borderColor: '#00AE73',
-  },
   primaryGhostText: {
     color: variables.theme_primary,
   },
-  primaryActiveGhostText: {
-    color: '#00AE73',
+  primaryGhostActiveWrapper: {
+    borderColor: variables.button_primary_ghost_active_color,
+  },
+  primaryGhostActiveText: {
+    color: variables.button_primary_ghost_active_color,
   },
 
   successWrapper: {
     backgroundColor: variables.theme_success,
   },
   successActiveWrapper: {
-    backgroundColor: '#4cbe46',
+    backgroundColor: variables.button_success_active_bg,
   },
   successGhostWrapper: {
-    borderColor: variables.theme_success,
-  },
-  successGhostActiveWrapper: {
     borderColor: variables.theme_success,
   },
   successGhostText: {
     color: variables.theme_success,
   },
-  successActiveGhostText: {
-    color: variables.theme_success,
+  successGhostActiveWrapper: {
+    borderColor: variables.button_success_ghost_active_color,
+  },
+  successGhostActiveText: {
+    color: variables.button_success_ghost_active_color,
   },
 
   warningWrapper: {
     backgroundColor: variables.theme_warning,
   },
   warningActiveWrapper: {
-    backgroundColor: '#e09415',
+    backgroundColor: variables.button_warning_active_bg,
   },
   warningGhostWrapper: {
-    borderColor: variables.theme_warning,
-  },
-  warningGhostActiveWrapper: {
     borderColor: variables.theme_warning,
   },
   warningGhostText: {
     color: variables.theme_warning,
   },
-  warningActiveGhostText: {
-    color: variables.theme_warning,
+  warningGhostActiveWrapper: {
+    borderColor: variables.button_warning_ghost_active_color,
+  },
+  warningGhostActiveText: {
+    color: variables.button_warning_ghost_active_color,
   },
 
   errorWrapper: {
     backgroundColor: variables.theme_error,
   },
   errorActiveWrapper: {
-    backgroundColor: '#e03422',
+    backgroundColor: variables.button_error_active_bg,
   },
   errorGhostWrapper: {
-    borderColor: variables.theme_error,
-  },
-  errorGhostActiveWrapper: {
     borderColor: variables.theme_error,
   },
   errorGhostText: {
     color: variables.theme_error,
   },
-  errorActiveGhostText: {
-    color: variables.theme_error,
+  errorGhostActiveWrapper: {
+    borderColor: variables.button_error_ghost_active_color,
+  },
+  errorGhostActiveText: {
+    color: variables.button_error_ghost_active_color,
   },
 
   // size
@@ -167,6 +167,17 @@ export default {
   // disabled
   disabledWrapper: {
     opacity: 0.5,
+  },
+
+  // disabled ghost
+  disabledGhostWrapper: {
+    borderColor: variables.button_disabled_ghost_color,
+    opacity: 1,
+  },
+
+  // disabled ghost text
+  disabledGhostText: {
+    color: variables.button_disabled_ghost_color,
   },
 
   // active

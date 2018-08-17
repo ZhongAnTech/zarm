@@ -78,7 +78,7 @@ export default {
   badge_dot_diameter: 8,
 
   // Button
-  button_height_small: 27,
+  button_height_small: 28,
   button_height_normal: 36,
   button_height_large: 44,
   button_padding_h_small: 8,
@@ -87,6 +87,16 @@ export default {
   button_font_size_small: 12,
   button_font_size_normal: 16,
   button_font_size_large: 16,
+  button_bordered_active_opacity: .6,
+  button_primary_active_bg: '#10ae79',
+  button_success_active_bg: '#10ae79',
+  button_warning_active_bg: '#d3822c',
+  button_error_active_bg: '#e54747',
+  button_disabled_ghost_color: '#D2D2D2',
+  button_primary_ghost_active_color: '#00AE73',
+  button_success_ghost_active_color: '#00AE73',
+  button_warning_ghost_active_color: '#cc9131',
+  button_error_ghost_active_color: '#df5050',
 
   // Cell
   cell_height: 45,                                   // 最小度

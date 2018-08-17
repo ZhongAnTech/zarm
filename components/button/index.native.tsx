@@ -72,8 +72,9 @@ export default class Button extends PureComponent<ButtonProps, any> {
       isActive && styles![`${theme}ActiveWrapper`],
       ghost && styles!.ghostWrapper,
       ghost && styles![`${theme}GhostWrapper`],
-      isActive && ghost && styles![`${theme}GhostActiveWrapper`],
+      ghost && isActive && styles![`${theme}GhostActiveWrapper`],
       disabled && styles!.disabledWrapper,
+      disabled && ghost && styles!.disabledGhostWrapper,
       shape === 'circle' && styles![`${size}CircleWrapper`],
       style,
     ];
@@ -92,7 +93,8 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles![`${theme}Text`],
       ghost && styles![`${theme}GhostText`],
       isActive && styles!.activeText,
-      isActive && ghost && styles![`${theme}ActiveGhostText`],
+      isActive && ghost && styles![`${theme}GhostActiveText`],
+      disabled && ghost && styles!.disabledGhostText,
     ];
 
     const iconStyle = [
