@@ -88,6 +88,10 @@ export default {
   button_font_size_md: 18,
   button_font_size_lg: 20,
   button_bordered_active_opacity: .6,
+  button_primary_active_bg: '#10ae79',
+  button_success_active_bg: '#10ae79',
+  button_warning_active_bg: '#d3822c',
+  button_error_active_bg: '#e54747',
 
   // Cell
   cell_height: 45,                                   // 最小度
