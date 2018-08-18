@@ -15,23 +15,31 @@ $prefixCls: $prefixCls-swipe;
 
     &.horizontal {
       left: 50%;
-      bottom: r(10);
+      bottom: $swipe-pagination-distance;
       transform: translate3d(-50%, 0, 0);
 
       li {
         width: $swipe-pagination-rect-width;
         height: $swipe-pagination-rect-height;
+        
+        &:not(:last-child) {
+          margin-right: $swipe-pagination-rect-step;
+        }
       }
     }
 
     &.vertical {
       top: 50%;
-      right: r(10);
+      right: $swipe-pagination-distance;
       transform: translate3d(0, -50%, 0);
 
       li {
         width: $swipe-pagination-rect-height;
         height: $swipe-pagination-rect-width;
+
+        &:not(:last-child) {
+          margin-bottom: $swipe-pagination-rect-step;
+        }
       }
     }
 
@@ -42,12 +50,12 @@ $prefixCls: $prefixCls-swipe;
       font-size: 0;
 
       li {
-        background: #ccc;
+        background: $swipe-pagination-rect-color;
         cursor: pointer;
-        margin: r(3) 0 0 r(3);
+        border-radius: $swipe-pagination-rect-border-radius;
 
         &.active {
-          background: $theme-primary;
+          background: $swipe-pagination-rect-color-active;
         }
       }
     }

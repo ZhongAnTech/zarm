@@ -210,8 +210,13 @@ $stepper-input-width: r(40);
 $stepper-input-font-size: r(16);
 
 // Swipe
-$swipe-pagination-rect-width: r(14);
-$swipe-pagination-rect-height: r(2);
+$swipe-pagination-distance: r(8);
+$swipe-pagination-rect-width: r(19);
+$swipe-pagination-rect-height: r(4);
+$swipe-pagination-rect-border-radius: r(1);
+$swipe-pagination-rect-step: r(2);
+$swipe-pagination-rect-color: rgba(255, 255, 255, 0.6);
+$swipe-pagination-rect-color-active: rgb(255, 255, 255);
 
 // Switch
 $switch-width: r(53);
