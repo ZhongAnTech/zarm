@@ -21,7 +21,7 @@ $prefixCls: $prefixCls-carousel;
       li {
         width: $carousel-pagination-rect-width;
         height: $carousel-pagination-rect-height;
-        
+
         &:not(:last-child) {
           margin-right: $carousel-pagination-rect-step;
         }
