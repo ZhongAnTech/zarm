@@ -4,14 +4,14 @@ import PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag from '../drag';
 
-export interface SwipeProps extends PropsType {
+export interface CarouselProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Swipe extends Component<SwipeProps, any> {
+export default class Carousel extends Component<CarouselProps, any> {
   static defaultProps = {
-    prefixCls: 'za-swipe',
+    prefixCls: 'za-carousel',
     direction: 'left',
     height: 160,
     loop: false,
@@ -24,7 +24,7 @@ export default class Swipe extends Component<SwipeProps, any> {
     showPagination: true,
   };
 
-  private swipeItems;
+  private carouselItems;
   private moveInterval;
   private translateX: number = 0;
   private translateY: number = 0;
@@ -45,8 +45,8 @@ export default class Swipe extends Component<SwipeProps, any> {
   componentDidMount() {
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
-    Events.on(this.swipeItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.on(this.swipeItems, 'transitionend', this.transitionEnd);
+    Events.on(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
+    Events.on(this.carouselItems, 'transitionend', this.transitionEnd);
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
@@ -68,8 +68,8 @@ export default class Swipe extends Component<SwipeProps, any> {
 
     // 移除监听窗口变化
     Events.off(window, 'resize', this.resize);
-    Events.off(this.swipeItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.off(this.swipeItems, 'transitionend', this.transitionEnd);
+    Events.off(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
+    Events.off(this.carouselItems, 'transitionend', this.transitionEnd);
   }
 
   // 滑动到指定编号
@@ -84,7 +84,7 @@ export default class Swipe extends Component<SwipeProps, any> {
 
   // 移动到指定编号
   onMoveTo = (index, animationDuration) => {
-    const dom = this.swipeItems;
+    const dom = this.carouselItems;
     if (!dom) {
       return;
     }
@@ -169,13 +169,13 @@ export default class Swipe extends Component<SwipeProps, any> {
     }
 
     const {
-      moveDistanceRatio = Swipe.defaultProps.moveDistanceRatio,
-      moveTimeSpan = Swipe.defaultProps.moveTimeSpan,
+      moveDistanceRatio = Carousel.defaultProps.moveDistanceRatio,
+      moveTimeSpan = Carousel.defaultProps.moveTimeSpan,
       onChange,
     } = this.props;
     let { activeIndex } = this.state;
 
-    const dom = this.swipeItems;
+    const dom = this.carouselItems;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const ratio = this.isDirectionX()
       ? Math.abs(offsetX / dom.offsetWidth)
@@ -280,7 +280,7 @@ export default class Swipe extends Component<SwipeProps, any> {
 
   // 执行过渡动画
   doTransition = (offset, animationDuration) => {
-    const dom = this.swipeItems;
+    const dom = this.carouselItems;
     let x = 0;
     let y = 0;
 
@@ -299,7 +299,7 @@ export default class Swipe extends Component<SwipeProps, any> {
   transitionEnd = () => {
     const activeIndex = this.state.activeIndex;
     // this.props.onChangeEnd!(activeIndex);
-    const dom = this.swipeItems;
+    const dom = this.carouselItems;
     this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
     this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
@@ -322,7 +322,7 @@ export default class Swipe extends Component<SwipeProps, any> {
 
   // 是否横向移动
   isDirectionX = () => {
-    return (['left', 'right'].indexOf(this.props.direction || Swipe.defaultProps.direction) > -1);
+    return (['left', 'right'].indexOf(this.props.direction || Carousel.defaultProps.direction) > -1);
   }
 
   renderPaginationItem = (_result, index) => {
@@ -371,7 +371,7 @@ export default class Swipe extends Component<SwipeProps, any> {
           onDragEnd={this.onDragEnd}
         >
           <div
-            ref={(ele) => { this.swipeItems = ele; }}
+            ref={(ele) => { this.carouselItems = ele; }}
             className={`${prefixCls}-items`}
             style={itemsStyle}
           >

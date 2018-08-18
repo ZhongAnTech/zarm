@@ -93,7 +93,7 @@ module.exports = {
       description: '图标 Icon',
     },
     {
-      title: 'Swipe',
+      title: 'Carousel',
       description: '走马灯 Carousel',
     },
     {

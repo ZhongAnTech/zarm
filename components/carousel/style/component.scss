@@ -1,4 +1,4 @@
-$prefixCls: $prefixCls-swipe;
+$prefixCls: $prefixCls-carousel;
 
 .#{$prefixCls} {
   position: relative;
@@ -15,30 +15,30 @@ $prefixCls: $prefixCls-swipe;
 
     &.horizontal {
       left: 50%;
-      bottom: $swipe-pagination-distance;
+      bottom: $carousel-pagination-distance;
       transform: translate3d(-50%, 0, 0);
 
       li {
-        width: $swipe-pagination-rect-width;
-        height: $swipe-pagination-rect-height;
+        width: $carousel-pagination-rect-width;
+        height: $carousel-pagination-rect-height;
         
         &:not(:last-child) {
-          margin-right: $swipe-pagination-rect-step;
+          margin-right: $carousel-pagination-rect-step;
         }
       }
     }
 
     &.vertical {
       top: 50%;
-      right: $swipe-pagination-distance;
+      right: $carousel-pagination-distance;
       transform: translate3d(0, -50%, 0);
 
       li {
-        width: $swipe-pagination-rect-height;
-        height: $swipe-pagination-rect-width;
+        width: $carousel-pagination-rect-height;
+        height: $carousel-pagination-rect-width;
 
         &:not(:last-child) {
-          margin-bottom: $swipe-pagination-rect-step;
+          margin-bottom: $carousel-pagination-rect-step;
         }
       }
     }
@@ -50,12 +50,12 @@ $prefixCls: $prefixCls-swipe;
       font-size: 0;
 
       li {
-        background: $swipe-pagination-rect-color;
+        background: $carousel-pagination-rect-color;
         cursor: pointer;
-        border-radius: $swipe-pagination-rect-border-radius;
+        border-radius: $carousel-pagination-rect-border-radius;
 
         &.active {
-          background: $swipe-pagination-rect-color-active;
+          background: $carousel-pagination-rect-color-active;
         }
       }
     }

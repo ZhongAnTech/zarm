@@ -90,7 +90,7 @@ $prefixCls-select: za-select;
 $prefixCls-slider: za-slider;
 $prefixCls-activity-indicator: za-activity-indicator;
 $prefixCls-stepper: za-stepper;
-$prefixCls-swipe: za-swipe;
+$prefixCls-carousel: za-carousel;
 $prefixCls-swipe-action: za-swipe-action;
 $prefixCls-switch: za-switch;
 $prefixCls-tabs: za-tabs;
@@ -209,14 +209,14 @@ $stepper-button-font-size: r(16);
 $stepper-input-width: r(40);
 $stepper-input-font-size: r(16);
 
-// Swipe
-$swipe-pagination-distance: r(8);
-$swipe-pagination-rect-width: r(19);
-$swipe-pagination-rect-height: r(4);
-$swipe-pagination-rect-border-radius: r(1);
-$swipe-pagination-rect-step: r(2);
-$swipe-pagination-rect-color: rgba(255, 255, 255, 0.6);
-$swipe-pagination-rect-color-active: rgb(255, 255, 255);
+// Carousel
+$carousel-pagination-distance: r(8);
+$carousel-pagination-rect-width: r(19);
+$carousel-pagination-rect-height: r(4);
+$carousel-pagination-rect-border-radius: r(1);
+$carousel-pagination-rect-step: r(2);
+$carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
+$carousel-pagination-rect-color-active: rgb(255, 255, 255);
 
 // Switch
 $switch-width: r(53);
