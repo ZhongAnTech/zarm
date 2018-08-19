@@ -1,61 +1,67 @@
 import variables from '../../style/themes/default.native';
 export default {
     wrapperStyle: {
-        minWidth: 750,
-        minHeight: 104,
-        backgroundColor: '#FFFFFF',
-        paddingTop: 28,
-        paddingRight: 32,
-        paddingBottom: 28,
-        paddingLeft: 32,
+        flex: 1,
+        flexDirection: 'column',
+        minHeight: variables.cell_height,
+        backgroundColor: variables.cell_background,
+        paddingTop: variables.cell_padding_h,
+        paddingRight: variables.cell_padding_h,
+        paddingBottom: variables.cell_padding_h,
+        paddingLeft: variables.cell_padding_h,
     },
     containerStyle: {
         flex: 1,
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     bodyStyle: {
         flex: 1,
-        flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        minHeight: 40,
-    },
-    iconStyle: {
-        minWidth: 48,
-        minHeight: 48,
-    },
-    titleStyle: {
-        minWidth: 151,
-        minHeight: 40,
-        color: '#464646',
-        fontSize: 30,
-        textAlign: 'left',
-    },
-    contentStyle: {
-        minWidth: 539,
-        minHeight: 40,
-        color: '#909090',
-        fontSize: 30,
-        textAlign: 'right',
-    },
-    descriptionStyle: {
-        color: '#909090',
-        fontSize: 30,
-        textAlign: 'left',
     },
     arrowStyle: {
-        minWidth: 14,
-        minHeight: 24,
+        width: 14,
+        height: 14,
         borderTopWidth: 1,
         borderTopColor: '#BCBCBC',
         borderRightWidth: 1,
         borderRightColor: '#BCBCBC',
         transform: [{ rotate: '45deg' }],
     },
-    helpStyle: {
-        color: '#FF5050',
-        fontSize: 20,
-        textAlign: 'left',
-        minHeight: 28,
+    flexDirectionRow: {
+        flexDirection: 'row',
     },
+    flexDirectionColumn: {
+        flexDirection: 'column',
+    },
+    paddingBottom: {
+        paddingBottom: variables.padding_v_md,
+    },
+    alignItemsCenter: {
+        alignItems: 'center',
+    },
+    alignItemsStart: {
+        alignItems: 'flex-start',
+    },
+    iconStyle: {
+        maxWidth: variables.cell_icon_width,
+        maxHeight: variables.cell_icon_height,
+        marginRight: variables.padding_v_md,
+    },
+    descriptionStyle: {
+        color: variables.cell_description_color,
+        fontSize: variables.cell_description_font_size
+    },
+    titleStyle: {
+        color: variables.cell_title_color,
+        fontSize: variables.cell_title_font_size
+    },
+    helpStyle: {
+        paddingTop: variables.padding_v_md,
+    },
+    underlayColorStyle: {
+        backgroundColor: variables.background_active,
+    }
 };
