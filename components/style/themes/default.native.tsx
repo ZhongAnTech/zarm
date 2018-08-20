@@ -73,7 +73,7 @@ export default {
 
   // Badge
   badge_height: 19,
-  badge_font_size: 12, // font_size_sm,
+  badge_font_size: 10, // font_size_sm,
   badge_padding_h: 5, // padding_h_sm,
   badge_dot_diameter: 8,
 

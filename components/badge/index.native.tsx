@@ -27,7 +27,10 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
   };
 
   layout = (e) => {
-    let dotWidth = -parseInt(e.layout.width, 10) / 2;
+    let dotWidth = this.props.shape === 'dot' ?
+    (-(parseInt(e.layout.width, 10) - 4)) :
+    (-(parseInt(e.layout.width, 10) - 8));
+
     this.setState({
       dotWidth,
     });
