@@ -2,7 +2,18 @@
 
 exports[`Input renders correctly 1`] = `
 <div
-  class="za-input za-input-text clearable"
+  class="za-input za-input-text"
+>
+  <input
+    autocomplete="off"
+    type="text"
+  />
+</div>
+`;
+
+exports[`Input renders correctly if type isn't valid 1`] = `
+<div
+  class="za-input za-input-text"
 >
   <input
     autocomplete="off"
@@ -14,6 +25,28 @@ exports[`Input renders correctly 1`] = `
 exports[`Input renders onClear called correctly 1`] = `
 <Input
   clearable={true}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "My new value",
+        ],
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   onClear={
     [MockFunction] {
       "calls": Array [
@@ -35,6 +68,28 @@ exports[`Input renders onClear called correctly 1`] = `
   <InputBase
     clearable={true}
     disabled={false}
+    onChange={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "My new value",
+          ],
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
     onClear={
       [MockFunction] {
         "calls": Array [
@@ -112,7 +167,7 @@ exports[`Input.Idcard renders correctly 1`] = `
     type="idcard"
   >
     <div
-      className="za-input za-input-number clearable"
+      className="za-input za-input-number"
       onClick={[Function]}
     >
       <div
@@ -295,17 +350,6 @@ exports[`Input.Idcard renders correctly 1`] = `
           </Portal>
         </Popup>
       </KeyboardPicker>
-      <Icon
-        className="za-input-clear"
-        onClick={[Function]}
-        prefixCls="za-icon"
-        type="wrong-round-fill"
-      >
-        <i
-          className="za-icon za-input-clear za-icon-wrong-round-fill"
-          onClick={[Function]}
-        />
-      </Icon>
     </div>
   </InputNumber>
 </Input>
@@ -322,7 +366,7 @@ exports[`Input.Number renders correctly 1`] = `
     type="number"
   >
     <div
-      className="za-input za-input-number clearable"
+      className="za-input za-input-number"
       onClick={[Function]}
     >
       <div
@@ -503,17 +547,6 @@ exports[`Input.Number renders correctly 1`] = `
           </Portal>
         </Popup>
       </KeyboardPicker>
-      <Icon
-        className="za-input-clear"
-        onClick={[Function]}
-        prefixCls="za-icon"
-        type="wrong-round-fill"
-      >
-        <i
-          className="za-icon za-input-clear za-icon-wrong-round-fill"
-          onClick={[Function]}
-        />
-      </Icon>
     </div>
   </InputNumber>
 </Input>
@@ -521,6 +554,21 @@ exports[`Input.Number renders correctly 1`] = `
 
 exports[`Input.Number renders onClear called correctly 1`] = `
 <Input
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
   onClear={
     [MockFunction] {
       "calls": Array [
@@ -537,10 +585,26 @@ exports[`Input.Number renders onClear called correctly 1`] = `
     }
   }
   type="number"
+  value=""
 >
   <InputNumber
     clearable={true}
     disabled={false}
+    onChange={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
     onClear={
       [MockFunction] {
         "calls": Array [
@@ -558,6 +622,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
     }
     prefixCls="za-input"
     type="number"
+    value=""
   >
     <div
       className="za-input za-input-number focus clearable"
@@ -768,7 +833,7 @@ exports[`Input.Price renders correctly 1`] = `
     type="price"
   >
     <div
-      className="za-input za-input-number clearable"
+      className="za-input za-input-number"
       onClick={[Function]}
     >
       <div
@@ -951,17 +1016,6 @@ exports[`Input.Price renders correctly 1`] = `
           </Portal>
         </Popup>
       </KeyboardPicker>
-      <Icon
-        className="za-input-clear"
-        onClick={[Function]}
-        prefixCls="za-icon"
-        type="wrong-round-fill"
-      >
-        <i
-          className="za-icon za-input-clear za-icon-wrong-round-fill"
-          onClick={[Function]}
-        />
-      </Icon>
     </div>
   </InputNumber>
 </Input>
@@ -983,6 +1037,7 @@ exports[`Input.Textarea autoHeight 1`] = `
     prefixCls="za-input"
     rows={4}
     showLength={false}
+    type="textarea"
     value="foo"
   >
     <div
