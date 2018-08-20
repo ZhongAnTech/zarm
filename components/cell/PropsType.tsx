@@ -1,10 +1,9 @@
+import { ReactNode } from 'react';
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   hasArrow?: boolean;
-  icon?: any;
-  title?: any;
-  description?: any;
-  help?: any;
-  disabled?: boolean;
+  icon?: ReactNode;
+  title?: ReactNode;
+  description?: ReactNode;
+  help?: ReactNode;
   onClick?: () => void;
 }
