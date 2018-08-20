@@ -35,11 +35,11 @@ module.exports = {
       description: '步进器 Stepper',
       module: require('./pages/StepperPage'),
     },
-    // {
-    //   title: 'Switch',
-    //   description: '开关 Switch',
-    //   module: require('./pages/SwitchPage'),
-    // },
+    {
+      title: 'Switch',
+      description: '开关 Switch',
+      module: require('./pages/SwitchPage'),
+    },
     // {
     //   title: 'SearchBar',
     //   description: '搜索栏 SearchBar',
