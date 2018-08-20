@@ -34,6 +34,7 @@ $prefixCls: $prefixCls-collapse;
       border-right: r(2) solid $collapse-arrow-color;
       border-bottom: r(2) solid $collapse-arrow-color;
       transform: rotate(45deg);
+      transform-origin: 50% 50%;
       transition: transform 0.15s ease-out;
 
       &-disabled {
@@ -49,6 +50,7 @@ $prefixCls: $prefixCls-collapse;
 
       .#{$prefixCls}-item-arrow {
         transform: rotate(-135deg);
+        transform-origin: 60% 75%;
       }
     }
 
