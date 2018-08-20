@@ -1,8 +1,8 @@
-## 图片轮播 Swipe
+## 图片轮播 Carousel
 
 :::demo 基本用法
 ```jsx
-import { Swipe } from 'zarm';
+import { Carousel } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -13,7 +13,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="swipe-item-pic" key={+i}>
+      <div className="carousel-item-pic" key={+i}>
         <img src={item} alt="" />
       </div>
     );
@@ -24,13 +24,13 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Swipe
+        <Carousel
           onChangeEnd={(index) => {
             console.log(index);
           }}
         >
           {contentRender()}
-        </Swipe>
+        </Carousel>
       </div>
     )
   }
@@ -43,7 +43,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 :::demo 纵向
 ```jsx
-import { Swipe } from 'zarm';
+import { Carousel } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -54,7 +54,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="swipe-item-pic" key={+i}>
+      <div className="carousel-item-pic" key={+i}>
         <img src={item} alt="" />
       </div>
     );
@@ -65,12 +65,12 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Swipe
+        <Carousel
           direction="top"
           height="48vw"
         >
           {contentRender()}
-        </Swipe>
+        </Carousel>
       </div>
     )
   }
@@ -83,7 +83,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 :::demo 循环轮播
 ```jsx
-import { Swipe, Button } from 'zarm';
+import { Carousel, Button } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -94,7 +94,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="swipe-item-pic" key={+i}>
+      <div className="carousel-item-pic" key={+i}>
         <img src={item} alt="" />
       </div>
     );
@@ -105,8 +105,8 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Swipe
-          ref={(ele) => { this.swipe = ele; }}
+        <Carousel
+          ref={(ele) => { this.carousel = ele; }}
           loop
           direction="left"
           onChangeEnd={(index) => {
@@ -114,13 +114,13 @@ class Demo extends React.Component {
           }}
         >
           {contentRender()}
-        </Swipe>
+        </Carousel>
         <div className="controls">
           <Button
             block
             size="sm"
             onClick={() => {
-              this.swipe.onJumpTo(0);
+              this.carousel.onJumpTo(0);
             }}
           >
             无动画切换指定页
@@ -130,7 +130,7 @@ class Demo extends React.Component {
             block
             size="sm"
             onClick={() => {
-              this.swipe.onSlideTo(2);
+              this.carousel.onSlideTo(2);
             }}
           >
             滑动到指定页
@@ -148,7 +148,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 :::demo 自动循环轮播
 ```jsx
-import { Swipe } from 'zarm';
+import { Carousel } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -159,7 +159,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="swipe-item-pic" key={+i}>
+      <div className="carousel-item-pic" key={+i}>
         <img src={item} alt="" />
       </div>
     );
@@ -170,7 +170,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Swipe
+        <Carousel
           autoPlay
           loop
           direction="left"
@@ -179,7 +179,7 @@ class Demo extends React.Component {
           }}
         >
           {contentRender()}
-        </Swipe>
+        </Carousel>
       </div>
     )
   }
@@ -194,7 +194,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-swipe | | 类名前缀 |
+| prefixCls | string | za-carousel | | 类名前缀 |
 | className | string | | | 追加类名 |
 | direction | string | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向 |
 | height | number &#124; string | | | 高度 |
