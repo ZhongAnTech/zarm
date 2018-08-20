@@ -8,5 +8,6 @@ before_install:
 script:
   - npm run lint
   - npm run test -- -w 2
+  - npm run test:rn -- -w 2
 after_script:
   - npm run coverage

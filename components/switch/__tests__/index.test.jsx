@@ -22,7 +22,20 @@ describe('Switch', () => {
   });
 
   it('receive new checked', () => {
-    const wrapper = shallow(<Switch className="test-class" />);
+    const wrapper = shallow(<Switch />);
+    wrapper.setProps({ disabled: true });
     wrapper.setProps({ checked: true });
   });
+
+  it('receive new checked when disabled', () => {
+    const onChange = jest.fn();
+    const wrapper = shallow(<Switch disabled onChange={onChange} />);
+    wrapper.find('input').simulate('change', { target: { checked: true } });
+    expect(onChange).not.toBeCalled();
+  });
+
+  // it('size', () => {
+  //   const wrapper = render(<Switch size="small" />);
+  //   expect(toJson(wrapper)).toMatchSnapshot();
+  // });
 });

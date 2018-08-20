@@ -66,7 +66,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles,
       onClick,
       children,
-      ...others,
+      ...others
     } = this.props;
     const { isActive } = this.state;
 

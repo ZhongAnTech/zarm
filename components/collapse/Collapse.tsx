@@ -1,4 +1,4 @@
-import React, { PureComponent, Children, cloneElement } from 'react';
+import React, { PureComponent, Children, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
 import { BaseCollapseProps } from './PropsType';
 import { isArray } from '../utils/validate';
@@ -77,7 +77,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
   isPropEqual(cur, next) {
     if (isArray(next) && isArray(cur)) {
-     return next.length === cur.length && next.every((key, i) => key === cur[i]);
+      return next.length === cur.length && next.every((key, i) => key === cur[i]);
     }
 
     return cur === next;
@@ -91,7 +91,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
       const { disabled } = ele.props;
       const key = ele.key && String(ele.key);
       const isActive = activeKey.indexOf(key) > -1;
-      return cloneElement(ele as JSX.Element, {
+      return cloneElement(ele as ReactElement<any>, {
         animated,
         isActive,
         onItemChange: disabled ? null : () => this.onItemChange(key),

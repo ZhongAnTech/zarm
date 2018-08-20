@@ -1,14 +1,13 @@
 import variables from '../../style/themes/default.native';
 import { Dimensions } from 'react-native';
-export default {
 
-  // base
+export default {
   wrapperStyle: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: Dimensions.get('screen').width,
-    height: Dimensions.get('screen').height,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
     zIndex: variables.zindex_mask,
   },
   transparentWrapper: {

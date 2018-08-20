@@ -2,19 +2,22 @@
 
 exports[`Popup renders correctly 1`] = `
 <Popup
-  animationDuration={200}
-  autoClose={false}
   direction="bottom"
-  mask={true}
-  maskType="normal"
   onClose={[MockFunction]}
   onMaskClick={[MockFunction]}
-  prefixCls="za-popup"
-  stayTime={3000}
-  visible={false}
 >
   <Portal
-    getContainer={[Function]}
+    animationDuration={200}
+    autoClose={false}
+    direction="bottom"
+    handlePortalUnmount={[Function]}
+    mask={true}
+    maskType="normal"
+    onClose={[MockFunction]}
+    onMaskClick={[MockFunction]}
+    prefixCls="za-popup"
+    stayTime={3000}
+    visible={false}
   >
     <div
       className="za-popup za-popup-hidden"

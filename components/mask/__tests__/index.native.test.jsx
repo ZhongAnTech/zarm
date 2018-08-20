@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Mask from '../index';
+import { TouchableWithoutFeedback } from 'react-native';
+import Mask from '../index.native';
 
 describe('Mask', () => {
   it('renders correctly', () => {
@@ -17,7 +18,7 @@ describe('Mask', () => {
   it('onClick', () => {
     const onClick = jest.fn();
     const wrapper = shallow(<Mask visible onClick={onClick} />);
-    wrapper.simulate('click');
+    wrapper.find(TouchableWithoutFeedback).props().onPress();
     expect(onClick).toBeCalled();
   });
 });
