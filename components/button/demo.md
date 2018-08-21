@@ -159,7 +159,7 @@ ReactDOM.render(<Demo />, mountNode);
 | prefixCls | string | za-button | | 类名前缀 |
 | className | string | | | 追加类名 |
 | theme | string | `primary` | `primary`, `success`, `warning`, `error` | 主题 |
-| size | string | | `xl`, `lg`, `sm`, `xs` | 大小 |
+| size | string | | `md`, `lg`, `sm`, `xs` | 大小 |
 | shape | string | | `radius`, `round`, `circle` | 形状 |
 | block | boolean | false | | 是否为块级元素 |
 | ghost | boolean | false | | 是否是幽灵按钮 |

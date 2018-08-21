@@ -9,16 +9,16 @@ export default {
   wrapperStyle: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: variables.button_height_normal,
-    paddingLeft: variables.button_padding_h_normal,
-    paddingRight: variables.button_padding_h_normal,
+    height: variables.button_height_md,
+    paddingLeft: variables.button_padding_h_md,
+    paddingRight: variables.button_padding_h_md,
   },
   textStyle: {
-    fontSize: variables.button_font_size_normal,
+    fontSize: variables.button_font_size_md,
     color: variables.color_text_inverse,
   },
   iconStyle: {
-    marginRight: variables.button_padding_h_normal / 2,
+    marginRight: variables.button_padding_h_md / 2,
   },
 
   primaryWrapper: {
@@ -98,47 +98,61 @@ export default {
   },
 
   // size
-  normalWrapper: {
-    height: variables.button_height_normal,
-    paddingLeft: variables.button_padding_h_normal,
-    paddingRight: variables.button_padding_h_normal,
+  mdWrapper: {
+    height: variables.button_height_md,
+    paddingLeft: variables.button_padding_h_md,
+    paddingRight: variables.button_padding_h_md,
   },
-  normalCircleWrapper: {
-    width: variables.button_height_normal,
+  mdCircleWrapper: {
+    width: variables.button_height_md,
   },
-  normalText: {
-    fontSize: variables.button_font_size_normal,
+  mdText: {
+    fontSize: variables.button_font_size_md,
   },
-  normalIcon: {
-    marginRight: variables.button_padding_h_normal / 2,
+  mdIcon: {
+    marginRight: variables.button_padding_h_md / 2,
   },
-  largeWrapper: {
-    height: variables.button_height_large,
-    paddingLeft: variables.button_padding_h_large,
-    paddingRight: variables.button_padding_h_large,
+  lgWrapper: {
+    height: variables.button_height_lg,
+    paddingLeft: variables.button_padding_h_lg,
+    paddingRight: variables.button_padding_h_lg,
   },
-  largeCircleWrapper: {
-    width: variables.button_height_large,
+  lgCircleWrapper: {
+    width: variables.button_height_lg,
   },
-  largeText: {
-    fontSize: variables.button_font_size_large,
+  lgText: {
+    fontSize: variables.button_font_size_lg,
   },
-  largeIcon: {
-    marginRight: variables.button_padding_h_large / 2,
+  lgIcon: {
+    marginRight: variables.button_padding_h_lg / 2,
   },
-  smallWrapper: {
-    height: variables.button_height_small,
-    paddingLeft: variables.button_padding_h_small,
-    paddingRight: variables.button_padding_h_small,
+  smWrapper: {
+    height: variables.button_height_sm,
+    paddingLeft: variables.button_padding_h_sm,
+    paddingRight: variables.button_padding_h_sm,
   },
-  smallCircleWrapper: {
-    width: variables.button_height_small,
+  smCircleWrapper: {
+    width: variables.button_height_sm,
   },
-  smallText: {
-    fontSize: variables.button_font_size_small,
+  smText: {
+    fontSize: variables.button_font_size_sm,
   },
-  smallIcon: {
-    marginRight: variables.button_padding_h_small / 2,
+  smIcon: {
+    marginRight: variables.button_padding_h_sm / 2,
+  },
+  xsWrapper: {
+    height: variables.button_height_xs,
+    paddingLeft: variables.button_padding_h_xs,
+    paddingRight: variables.button_padding_h_xs,
+  },
+  xsCircleWrapper: {
+    width: variables.button_height_xs,
+  },
+  xsText: {
+    fontSize: variables.button_font_size_xs,
+  },
+  xsIcon: {
+    marginRight: variables.button_padding_h_xs / 2,
   },
 
   // shape
@@ -152,7 +166,7 @@ export default {
     borderRadius: variables.radius_round,
   },
   circleWrapper: {
-    width: variables.button_height_normal,
+    width: variables.button_height_md,
     borderRadius: variables.radius_round,
     paddingLeft: 0,
     paddingRight: 0,

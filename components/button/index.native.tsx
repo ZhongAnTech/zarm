@@ -21,7 +21,7 @@ const buttonStyles = StyleSheet.create<any>(buttonStyle);
 export default class Button extends PureComponent<ButtonProps, any> {
   static defaultProps = {
     theme: 'primary',
-    size: 'normal',
+    size: 'md',
     shape: 'radius',
     block: false,
     ghost: false,

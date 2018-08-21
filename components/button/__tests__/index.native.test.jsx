@@ -26,7 +26,7 @@ describe('Button', () => {
   });
 
   it('size', () => {
-    const wrapper = render(<Button size="large">foo</Button>);
+    const wrapper = render(<Button size="lg">foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -76,7 +76,7 @@ describe('Button', () => {
   });
 
   it('circle size', () => {
-    const wrapper = render(<Button shape="circle" size="large">foo</Button>);
+    const wrapper = render(<Button shape="circle" size="lg">foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

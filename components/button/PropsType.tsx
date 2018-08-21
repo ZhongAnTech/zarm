@@ -1,6 +1,6 @@
 export default interface PropsType {
   theme?: 'primary' | 'success' | 'warning' | 'error';
-  size?: 'normal' | 'large' | 'small';
+  size?: 'md' | 'lg' | 'sm' | 'xs';
   shape?: 'radius' | 'rect' | 'round' | 'circle';
   block?: boolean;
   ghost?: boolean;

@@ -52,15 +52,15 @@ exports[`Button ghost active 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "height": 36,
+        "height": 44,
         "justifyContent": "center",
-        "paddingLeft": 8,
-        "paddingRight": 8,
+        "paddingLeft": 11.5,
+        "paddingRight": 11.5,
       },
       Object {
-        "height": 36,
-        "paddingLeft": 8,
-        "paddingRight": 8,
+        "height": 44,
+        "paddingLeft": 11.5,
+        "paddingRight": 11.5,
       },
       Object {
         "backgroundColor": "#12c287",
