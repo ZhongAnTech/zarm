@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -53,7 +53,7 @@
     "lint:js": "eslint --ext '.js,.jsx' examples examples-rn",
     "lint:style": "stylelint --syntax scss components/**/*.scss components/**/**/*.scss examples/styles/**/*.scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
-    "test": "export TZ=America/New_York; jest --config scripts/jest/config.web.js --coverage",
+    "test": "cross-env TZ=America/New_York jest --config scripts/jest/config.web.js --coverage",
     "test:rn": "jest --config scripts/jest/config.native.js --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "authors": "git log --format='%aN <%aE>' | sort -u | grep -v 'users.noreply.github.com' > AUTHORS",
@@ -103,7 +103,7 @@
     "conventional-changelog-cli": "^1.3.22",
     "core-js": "^2.5.1",
     "coveralls": "^2.13.1",
-    "cross-env": "^5.1.3",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.3",
@@ -125,7 +125,7 @@
     "marked": "^0.4.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.2",
-    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^2.1.5",
     "prop-types": "^15.6.2",
     "raw-loader": "^0.5.1",
@@ -160,6 +160,7 @@
   },
   "sideEffects": [
     "dist/*",
+    "components/style/*",
     "es/**/style/*",
     "lib/**/style/*"
   ]

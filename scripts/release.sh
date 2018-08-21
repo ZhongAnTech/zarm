@@ -26,10 +26,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   git commit -m "build: build $VERSION"
 
   # tag version
-  npm version "$VERSION" --message "build: release $VERSION"
+  # npm version "$VERSION" --message "build: release $VERSION"
 
   # publish
-  git push origin refs/tags/v"$VERSION"
+  # git push origin refs/tags/v"$VERSION"
+  git tag v"$VERSION"
+  git push origin v"$VERSION"
   git push origin dev
 
   if [[ $VERSION =~ "alpha" ]]
