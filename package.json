@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -125,7 +125,7 @@
     "marked": "^0.4.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.2",
-    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^2.1.5",
     "prop-types": "^15.6.2",
     "raw-loader": "^0.5.1",
@@ -160,6 +160,7 @@
   },
   "sideEffects": [
     "dist/*",
+    "components/style/*",
     "es/**/style/*",
     "lib/**/style/*"
   ]
