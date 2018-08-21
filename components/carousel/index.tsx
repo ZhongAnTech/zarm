@@ -185,13 +185,17 @@ export default class Carousel extends Component<CarouselProps, any> {
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
     if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
-      const op = !((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0));
+      const action = (this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)
+        ? 'prev'
+        : 'next';
 
       if (typeof onChange === 'function') {
-        onChange(this.parseActiveIndexParse(op));
+        onChange(this.getActiveIndex(action));
       }
 
-      activeIndex = op ? activeIndex + 1 : activeIndex - 1;
+      activeIndex = (action === 'next')
+        ? activeIndex + 1
+        : activeIndex - 1;
     }
 
     this.onSlideTo(activeIndex);
@@ -200,12 +204,12 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.startAutoPlay();
   }
 
-  parseActiveIndexParse = (op) => {
+  getActiveIndex = (action: 'prev' | 'next') => {
     const { loop, children } = this.props;
     const maxIndex = children.length - 1;
     let { activeIndex } = this.state;
 
-    if (op) {
+    if (action === 'next') {
       activeIndex = (activeIndex + 1) > maxIndex ? (loop ? 0 : maxIndex) : activeIndex += 1;
     } else {
       activeIndex = (activeIndex - 1) < 0 ? (loop ? maxIndex : 0) : activeIndex -= 1;
@@ -298,8 +302,8 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   transitionEnd = () => {
     const activeIndex = this.state.activeIndex;
-    // this.props.onChangeEnd!(activeIndex);
     const dom = this.carouselItems;
+
     this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
     this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
@@ -327,9 +331,11 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   renderPaginationItem = (_result, index) => {
     const paginationStyle: CSSProperties = {};
+
     if (this.isDirectionX()) {
       paginationStyle.display = 'inline-block';
     }
+
     return (
       <li
         role="tab"
@@ -344,6 +350,7 @@ export default class Carousel extends Component<CarouselProps, any> {
   renderPagination = () => {
     const { prefixCls, children } = this.props;
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
+
     return (
       <div className={`${prefixCls}-pagination ${direction}`}>
         <ul>
@@ -352,6 +359,7 @@ export default class Carousel extends Component<CarouselProps, any> {
       </div>
     );
   }
+
   render() {
     const { prefixCls, className, height, showPagination } = this.props;
     const cls = classnames(prefixCls, className);
