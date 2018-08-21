@@ -29,7 +29,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   npm version "$VERSION" --message "build: release $VERSION"
 
   # publish
-  git push origin refs/tags/v"$VERSION"
+  # git push origin refs/tags/v"$VERSION"
+  git tag v"$VERSION"
+  git push origin v"$VERSION"
   git push origin dev
 
   if [[ $VERSION =~ "alpha" ]]
