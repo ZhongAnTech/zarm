@@ -160,6 +160,7 @@
   },
   "sideEffects": [
     "dist/*",
+    "components/style/*",
     "es/**/style/*",
     "lib/**/style/*"
   ]
