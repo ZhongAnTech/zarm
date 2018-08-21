@@ -125,7 +125,7 @@
     "marked": "^0.4.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.2",
-    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^2.1.5",
     "prop-types": "^15.6.2",
     "raw-loader": "^0.5.1",
