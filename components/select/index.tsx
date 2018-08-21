@@ -60,7 +60,6 @@ export default class Select extends PureComponent<SelectProps, any> {
 
     this.tempValue = this.isValueValid(value) ? firstValue : [] ;
     this.tempObjValue = this.isValueValid(value) ? selected : [];
-
     this.setState({
       firstObjValue: selected,
     });
@@ -77,7 +76,6 @@ export default class Select extends PureComponent<SelectProps, any> {
     if (this.props.disabled) {
       return;
     }
-
     this.setState({
       visible: !this.state.visible,
     });

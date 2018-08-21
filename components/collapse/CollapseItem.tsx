@@ -87,7 +87,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   getCls() {
-    const { prefixCls, className, animated } = this.props;
+    const { prefixCls, className, animated, disabled } = this.props;
     const { active } = this.state;
 
     const cls = classnames(`${prefixCls}-item`, className, {
@@ -98,7 +98,9 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       [`${prefixCls}-item-content-anim`]: animated,
     });
     const contentInnerCls = `${prefixCls}-item-content-inner`;
-    const arrowCls = classnames(`${prefixCls}-item-arrow`);
+    const arrowCls = classnames(`${prefixCls}-item-arrow`, {
+      [`${prefixCls}-item-arrow-disabled`]: disabled,
+    });
 
     return { cls, titleCls, contentCls, contentInnerCls, arrowCls };
   }

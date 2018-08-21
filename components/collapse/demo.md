@@ -115,7 +115,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
-:::demo 允许打开多项
+:::demo 允许展开多项
 ```jsx
 import { Collapse } from 'zarm';
 

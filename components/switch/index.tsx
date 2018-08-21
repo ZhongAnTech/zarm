@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -12,16 +12,15 @@ const getChecked = (props, defaultChecked) => {
   return defaultChecked;
 };
 
-export interface SwitchProps extends PropsType {
+export type SwitchProps = {
   prefixCls?: string;
-  className?: string;
-}
+} & HTMLAttributes<HTMLSpanElement> & PropsType;
 
 export default class Switch extends PureComponent<SwitchProps, any> {
   static defaultProps = {
     prefixCls: 'za-switch',
-    theme: 'primary',
     disabled: false,
+    // size: 'normal',
   };
 
   constructor(props) {
@@ -53,17 +52,17 @@ export default class Switch extends PureComponent<SwitchProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, disabled } = this.props;
+    const { prefixCls, className, disabled, ...others } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
+      // [`${prefixCls}-small`]: size === 'small',
       checked,
       disabled,
     });
 
     return (
-      <span className={cls}>
+      <span {...others} className={cls} >
         <input
           type="checkbox"
           className={`${prefixCls}-input`}

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, CSSProperties } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,6 +10,7 @@ import PropsType from './PropsType';
 import maskStyle from './style/index.native';
 
 export interface MaskProps extends PropsType {
+  style?: CSSProperties;
   styles?: typeof maskStyle;
   onClick?: (event: GestureResponderEvent) => void;
 }

@@ -157,6 +157,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
             <PickerView
               {...others}
               prefixCls={prefixCls}
+              visible={visible}
               value={value}
               firstObjValue={firstObjValue}
               onInit={this.onInit}

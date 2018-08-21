@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Swipe from '../index';
+import Carousel from '../index';
 
-describe('Swipe', () => {
+describe('Carousel', () => {
   it('renders correctly', () => {
     const ITEMS = ['1', '2', '3'];
     const wrapper = render(
-      <Swipe>
+      <Carousel>
         {
           ITEMS.map((item, i) => {
             return (
@@ -15,7 +15,7 @@ describe('Swipe', () => {
             );
           })
         }
-      </Swipe>
+      </Carousel>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -23,7 +23,7 @@ describe('Swipe', () => {
   it('loop renders correctly', () => {
     const ITEMS = ['1', '2', '3'];
     const wrapper = render(
-      <Swipe loop>
+      <Carousel loop>
         {
           ITEMS.map((item, i) => {
             return (
@@ -31,7 +31,7 @@ describe('Swipe', () => {
             );
           })
         }
-      </Swipe>
+      </Carousel>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -41,7 +41,7 @@ describe('Swipe', () => {
     const ITEMS = ['1', '2', '3'];
     const onChange = jest.fn();
     const wrapper = mount(
-      <Swipe
+      <Carousel
         autoPlay
         onChange={onChange}
       >
@@ -52,10 +52,10 @@ describe('Swipe', () => {
             );
           })
         }
-      </Swipe>
+      </Carousel>
     );
     wrapper.setProps({ activeIndex: 1 });
-    jest.runTimersToTime(20000);
+    jest.advanceTimersByTime(20000);
     wrapper.unmount();
   });
 
@@ -63,7 +63,7 @@ describe('Swipe', () => {
     jest.useFakeTimers();
     const ITEMS = ['1', '2', '3'];
     const wrapper = mount(
-      <Swipe autoPlay direction="right">
+      <Carousel autoPlay direction="right">
         {
           ITEMS.map((item, i) => {
             return (
@@ -71,17 +71,17 @@ describe('Swipe', () => {
             );
           })
         }
-      </Swipe>
+      </Carousel>
     );
     wrapper.setProps({ activeIndex: 1 });
-    jest.runTimersToTime(3000);
+    jest.advanceTimersByTime(3000);
   });
 
   it('touch event', () => {
     const onChangeEnd = jest.fn();
     const ITEMS = ['1', '2', '3'];
     const wrapper = mount(
-      <Swipe onChangeEnd={onChangeEnd} direction="right">
+      <Carousel onChangeEnd={onChangeEnd} direction="right">
         {
           ITEMS.map((item, i) => {
             return (
@@ -89,10 +89,10 @@ describe('Swipe', () => {
             );
           })
         }
-      </Swipe>
+      </Carousel>
     );
 
-    wrapper.find('.za-swipe-items')
+    wrapper.find('.za-carousel-items')
       .simulate('touchStart', {
         touches: [
           {
@@ -117,7 +117,7 @@ describe('Swipe', () => {
     const onChangeEnd = jest.fn();
     const ITEMS = ['1', '2', '3'];
     const wrapper = mount(
-      <Swipe onChange={onChange} onChangeEnd={onChangeEnd} direction="right">
+      <Carousel onChange={onChange} onChangeEnd={onChangeEnd} direction="right">
         {
           ITEMS.map((item, i) => {
             return (
@@ -125,16 +125,16 @@ describe('Swipe', () => {
             );
           })
         }
-      </Swipe>
+      </Carousel>
     );
 
     wrapper
-      .find('.za-swipe-pagination li')
+      .find('.za-carousel-pagination li')
       .at(2)
       .simulate('click');
     expect(
       wrapper
-        .find('.za-swipe-pagination li')
+        .find('.za-carousel-pagination li')
         .at(2)
         .hasClass('active')
     ).toBe(true);
