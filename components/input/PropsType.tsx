@@ -12,7 +12,7 @@ export interface BaseInputProps {
 }
 
 export interface InputBaseProps extends BaseInputProps {
-  type?: 'text';
+  type?: 'text' | 'search';
   value?: string;
   defaultValue?: string;
   clearable?: boolean;
