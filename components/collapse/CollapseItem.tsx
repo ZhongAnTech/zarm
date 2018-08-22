@@ -37,10 +37,9 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   onClickItem = () => {
-    const { index, onItemChange, animated, open } = this.props;
+    const { onItemChange, animated, disabled } = this.props;
     const { active } = this.state;
-
-    if (open) {
+    if (disabled) {
       return;
     }
     this.setState({
@@ -50,13 +49,13 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       this.setStyle(active);
     }
     if (onItemChange) {
-      onItemChange(index);
+      onItemChange();
     }
   }
 
   isActive(props) {
-    const { index, activeIndex = [] } = props;
-    return activeIndex.indexOf(index) > -1;
+    const { isActive } = props;
+    return isActive;
   }
 
   setStyle(active) {
@@ -88,11 +87,11 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   getCls() {
-    const { prefixCls, className, animated, open } = this.props;
+    const { prefixCls, className, animated, disabled } = this.props;
     const { active } = this.state;
 
     const cls = classnames(`${prefixCls}-item`, className, {
-      active: active || open,
+      active: active,
     });
     const titleCls = `${prefixCls}-item-title`;
     const contentCls = classnames(`${prefixCls}-item-content`, {
@@ -100,18 +99,18 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     });
     const contentInnerCls = `${prefixCls}-item-content-inner`;
     const arrowCls = classnames(`${prefixCls}-item-arrow`, {
-      [`${prefixCls}-item-arrow-hidden`]: open,
+      [`${prefixCls}-item-arrow-disabled`]: disabled,
     });
 
     return { cls, titleCls, contentCls, contentInnerCls, arrowCls };
   }
 
   render() {
-    const { title, children } = this.props;
+    const { title, children, style } = this.props;
     const { cls, titleCls, contentCls, contentInnerCls, arrowCls } = this.getCls();
 
     return (
-      <div className={cls}>
+      <div className={cls} style={style}>
         <div
           className={titleCls}
           onClick={this.onClickItem}
