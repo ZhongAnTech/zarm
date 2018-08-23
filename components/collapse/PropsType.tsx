@@ -13,5 +13,5 @@ export interface BaseCollapseItemProps {
   animated?: boolean;
   style?: React.CSSProperties;
   disabled?: boolean;
-  onItemChange?: (key?: string | number) => void;
+  onItemChange: (key?: string | number) => void;
 }
