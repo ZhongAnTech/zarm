@@ -15,8 +15,13 @@ describe('Cell', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('hasArrow', () => {
+    const wrapper = render(<Cell hasArrow title="标题文字" description="描述文字">我是Cell</Cell>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('icon', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />} />);
+    const wrapper = render(<Cell title="标题文字" description="描述文字" icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />}>我是Cell</Cell>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -26,7 +31,7 @@ describe('Cell', () => {
   });
 
   it('help', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" help="我是help" />);
+    const wrapper = render(<Cell title="标题文字" description="描述文字" help="我是help" icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -35,6 +40,11 @@ describe('Cell', () => {
     const wrapper = shallow(<Cell hasArrow onClick={onClick}>我是Cell</Cell>);
     wrapper.find(TouchableHighlight).props().onPress();
     expect(onClick).toBeCalled();
+  });
+
+  it('set props active', () => {
+    const wrapper = shallow(<Cell>我是Cell</Cell>);
+    wrapper.setProps({ active: true });
   });
 
   it('pressIn', () => {
