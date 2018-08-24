@@ -30,6 +30,10 @@ export default class Input extends PureComponent<InputProps, {}> {
   }
 
   render() {
+    if (this.props.type === 'text' && 'rows' in this.props) {
+      return <InputTextarea ref={ele => (this.input = ele)} {...this.props} type="textarea" />;
+    }
+
     switch (this.props.type) {
       case 'idcard':
       case 'price':
