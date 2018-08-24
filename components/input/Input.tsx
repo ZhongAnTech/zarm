@@ -40,10 +40,12 @@ export default class Input extends PureComponent<InputProps, {}> {
         return <InputTextarea ref={ele => (this.input = ele)} {...this.props} />;
 
       case 'text':
+      case 'search':
+      case 'password':
         return <InputBase ref={ele => (this.input = ele)} {...this.props} />;
 
       default:
-        return <InputBase ref={ele => (this.input = ele)} {...this.props as InputBaseProps} type="text" />;
+        return <InputBase ref={ele => (this.input = ele)} {...this.props as InputBaseProps} />;
     }
   }
 }
