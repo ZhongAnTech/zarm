@@ -15,6 +15,7 @@ const collapseStyles = StyleSheet.create<any>(collapaseStyle);
 export interface CollapseItemProps extends BaseCollapseItemProps {
   style?: CSSProperties;
   disabled?: boolean;
+  index?: string;
 }
 
 export default class CollapseItem extends PureComponent<CollapseItemProps, any> {
@@ -49,8 +50,8 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   isActive(props) {
-    const { index, activeIndex } = props;
-    return activeIndex.indexOf(index) > -1;
+    const { index, activeKey } = props;
+    return activeKey.indexOf(index) > -1;
   }
 
   getHeight = () => {
@@ -153,7 +154,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
         <TouchableHighlight
           style={collapseStyles!.touchStyle}
           onPress={this.onPress}
-          underlayColor="#ccc"
+          underlayColor="#EEE"
           activeOpacity={0.9}
         >
           <View style={titleStyle}>

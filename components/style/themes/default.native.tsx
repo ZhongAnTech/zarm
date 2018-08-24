@@ -95,7 +95,7 @@ export default {
 
   // Collapse
   collapse_height: 52,
-  collapse_padding_h: 15,
+  collapse_padding_h: 16,
 
   // Cell
   cell_height: 45,                                   // 最小度

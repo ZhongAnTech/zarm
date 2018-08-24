@@ -15,11 +15,11 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual([]);
+    expect(wrapper.state('activeKey')).toEqual([]);
   });
 
-  it('defaultActiveIndex is array', () => {
-    props.defaultActiveIndex = [0];
+  it('defaultactiveKey is array', () => {
+    props.defaultactiveKey = [0];
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -27,11 +27,11 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual(['0']);
+    expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
-  it('defaultActiveIndex is string', () => {
-    props.defaultActiveIndex = '0';
+  it('defaultactiveKey is string', () => {
+    props.defaultactiveKey = '0';
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -39,11 +39,11 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual(['0']);
+    expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
-  it('defaultActiveIndex is number', () => {
-    props.defaultActiveIndex = 0;
+  it('defaultactiveKey is number', () => {
+    props.defaultactiveKey = 0;
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -51,11 +51,11 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual(['0']);
+    expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
-  it('activeIndex is array', () => {
-    props.activeIndex = [0];
+  it('activeKey is array', () => {
+    props.activeKey = [0];
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -63,11 +63,11 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual(['0']);
+    expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
-  it('activeIndex is string', () => {
-    props.activeIndex = '0';
+  it('activeKey is string', () => {
+    props.activeKey = '0';
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -75,11 +75,11 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual(['0']);
+    expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
-  it('activeIndex is number', () => {
-    props.activeIndex = 0;
+  it('activeKey is number', () => {
+    props.activeKey = 0;
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -87,12 +87,12 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual(['0']);
+    expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
   it('multiple is false', () => {
     props.multiple = false;
-    props.activeIndex = [0, 1];
+    props.activeKey = [0, 1];
     const wrapper = mount(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -105,7 +105,7 @@ describe('Collapse', () => {
     );
     wrapper.find(TouchableHighlight).at(0).props().onPress();
     wrapper.find(TouchableHighlight).at(1).props().onPress();
-    expect(wrapper.state('activeIndex')).toEqual(['1']);
+    expect(wrapper.state('activeKey')).toEqual(['1']);
   });
 
   it('disabled is true', () => {
@@ -118,12 +118,12 @@ describe('Collapse', () => {
       </Collapse>
     );
     wrapper.find(TouchableHighlight).props().onPress();
-    expect(wrapper.state('activeIndex')).toEqual([]);
+    expect(wrapper.state('activeKey')).toEqual([]);
   });
 
   it('animated is true', () => {
     props.animated = true;
-    props.activeIndex = 0;
+    props.activeKey = 0;
     const wrapper = mount(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -131,12 +131,12 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.state('activeIndex')).toEqual(['0']);
+    expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
   it('default onChange', () => {
     props.multiple = true;
-    props.activeIndex = [0];
+    props.activeKey = [0];
     const wrapper = mount(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -145,12 +145,12 @@ describe('Collapse', () => {
       </Collapse>
     );
     wrapper.find(TouchableHighlight).props().onPress();
-    expect(wrapper.state('activeIndex')).toEqual([]);
+    expect(wrapper.state('activeKey')).toEqual([]);
   });
 
   it('change props', () => {
     props.multiple = true;
-    props.activeIndex = [0];
+    props.activeKey = [0];
     const wrapper = mount(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -163,12 +163,12 @@ describe('Collapse', () => {
     );
     wrapper.find(TouchableHighlight).at(0).props().onPress();
     wrapper.setProps({
-      activeIndex: [1],
+      activeKey: [1],
     });
     wrapper.setProps({
-      activeIndex: 1,
+      activeKey: 1,
     });
     wrapper.find(TouchableHighlight).at(0).props().onPress();
-    expect(wrapper.state('activeIndex')).toEqual(['1', '0']);
+    expect(wrapper.state('activeKey')).toEqual(['1', '0']);
   });
 });

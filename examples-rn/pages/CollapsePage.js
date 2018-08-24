@@ -65,7 +65,7 @@ export default class Page extends PureComponent {
             style={styles.mb}
             titleRender="默认展开项"
           />
-          <Collapse activeIndex={[0, 2]} animated>
+          <Collapse activeKey={[0, 2]} animated>
             <Collapse.Item disabled title="50元套餐">
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
