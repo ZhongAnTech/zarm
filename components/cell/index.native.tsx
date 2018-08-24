@@ -87,6 +87,9 @@ export default class Cell extends PureComponent<CellProps, any> {
     const helpStyle = [
       styles.helpStyle,
     ];
+    const contentStyle = [
+      !hasArrow && wrapperStyle,
+    ];
     const underlayColor = StyleSheet.flatten(styles.underlayColorStyle).backgroundColor;
 
     const iconRender = icon && <View style={iconStyle}>{icon}</View>;
@@ -94,7 +97,7 @@ export default class Cell extends PureComponent<CellProps, any> {
     const descriptionRender = description && <View>{description}</View>;
     const arrowRender = hasArrow && <View style={arrowStyle}/>;
     const helpRender = help && <View style={helpStyle}>{help}</View>;
-    const contentRender = <View style={!hasArrow && wrapperStyle}>
+    const contentRender = <View style={contentStyle}>
       <View style={containerStyle}>
         {iconRender}
         <View style={bodyStyle}>
@@ -106,7 +109,7 @@ export default class Cell extends PureComponent<CellProps, any> {
       </View>
       {helpRender}
     </View>;
-    const wrapperProps = Object.assign({ activeOpacity: 0.3, style: wrapperStyle, onPress: onClick,
+    const wrapperProps = Object.assign({ style: wrapperStyle, onPress: onClick,
       onPressIn: this.onPressIn, onPressOut: this.onPressOut }, others);
     return hasArrow
       ? <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>
