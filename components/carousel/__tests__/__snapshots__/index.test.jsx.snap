@@ -1,41 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Swipe loop renders correctly 1`] = `
+exports[`Carousel loop renders correctly 1`] = `
 <div
-  class="za-swipe"
+  class="za-carousel"
 >
   <div
-    class="za-swipe-items"
+    class="za-carousel-items"
     style="white-space:nowrap"
   >
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       3
     </div>
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       1
     </div>
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       2
     </div>
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       3
     </div>
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       1
     </div>
   </div>
   <div
-    class="za-swipe-pagination"
+    class="za-carousel-pagination horizontal"
   >
     <ul>
       <li
@@ -58,32 +58,32 @@ exports[`Swipe loop renders correctly 1`] = `
 </div>
 `;
 
-exports[`Swipe renders correctly 1`] = `
+exports[`Carousel renders correctly 1`] = `
 <div
-  class="za-swipe"
+  class="za-carousel"
 >
   <div
-    class="za-swipe-items"
+    class="za-carousel-items"
     style="white-space:nowrap"
   >
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       1
     </div>
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       2
     </div>
     <div
-      class="za-swipe-item"
+      class="za-carousel-item"
     >
       3
     </div>
   </div>
   <div
-    class="za-swipe-pagination"
+    class="za-carousel-pagination horizontal"
   >
     <ul>
       <li
