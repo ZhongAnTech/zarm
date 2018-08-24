@@ -13,11 +13,11 @@ exports[`Input renders correctly 1`] = `
 
 exports[`Input renders correctly if type isn't valid 1`] = `
 <div
-  class="za-input za-input-text"
+  class="za-input za-input-xxx"
 >
   <input
     autocomplete="off"
-    type="text"
+    type="xxx"
   />
 </div>
 `;
