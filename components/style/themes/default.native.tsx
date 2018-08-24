@@ -93,6 +93,10 @@ export default {
   button_warning_active_bg: '#d3822c',
   button_error_active_bg: '#e54747',
 
+  // Collapse
+  collapse_height: 52,
+  collapse_padding_h: 16,
+
   // Cell
   cell_height: 45,                                   // 最小度
   cell_background: '#fff',                           // 背景色
