@@ -2,7 +2,7 @@
 
 exports[`Switch defaultChecked 1`] = `
 <span
-  class="za-switch theme-primary checked"
+  class="za-switch checked"
 >
   <input
     checked=""
@@ -14,7 +14,7 @@ exports[`Switch defaultChecked 1`] = `
 
 exports[`Switch renders correctly 1`] = `
 <span
-  class="za-switch theme-primary"
+  class="za-switch"
 >
   <input
     class="za-switch-input"

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export default interface PropsType {
   direction?: 'left' | 'right' | 'top' | 'bottom';
   height?: string | number;
@@ -11,5 +13,5 @@ export default interface PropsType {
   showPagination?: boolean;
   onChange?: (activeIndex: number) => void;
   onChangeEnd?: (activeIndex: number) => void;
-  children?: any;
+  children: ReactNode[];
 }
