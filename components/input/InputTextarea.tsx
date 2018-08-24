@@ -15,6 +15,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     autoHeight: false,
     showLength: false,
     focused: false,
+    rows: 2,
   };
 
   private input;
