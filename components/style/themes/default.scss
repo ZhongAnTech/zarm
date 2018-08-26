@@ -99,9 +99,10 @@ $prefixCls-tooltip: za-tooltip;
 $prefixCls-file-picker: za-file-picker;
 
 // Collapse
-$collapse-height: r(45);
+$collapse-height: r(52);
 $collapse-padding: r(15);
-$collapse-arrow-color: #c7c7cc;
+$collapse-arrow-color: #c2c2c2;
+$collapse-arrow-disabled-color: #eee;
 
 // ActionSheet
 $action-sheet-margin: 0;

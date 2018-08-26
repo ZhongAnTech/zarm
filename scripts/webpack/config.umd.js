@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./config.base');
 
 const env = process.env.NODE_ENV;
-const version = process.env.VERSION;
+const version = process.env.VERSION || require('../../package.json').version;
 
 config.mode = 'development';
 config.devtool = 'source-map';

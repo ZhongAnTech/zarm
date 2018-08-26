@@ -11,9 +11,8 @@ export interface CollapseProps extends BaseCollapseProps {
 export default class Collapse extends PureComponent<CollapseProps, any> {
   static defaultProps = {
     prefixCls: 'za-collapse',
-    multiple: true,
+    multiple: false,
     animated: false,
-    open: false,
     onChange: () => {},
   };
 
@@ -23,51 +22,53 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     super(props);
 
     this.state = {
-      activeIndex: this.getActiveIndex(props),
+      activeKey: this.getActiveKey(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.isPropEqual(this.props.activeIndex, nextProps.activeIndex)) {
+    if (!this.isPropEqual(this.props.activeKey, nextProps.activeKey)) {
       this.setState({
-        activeIndex: this.getActiveIndex(nextProps),
+        activeKey: this.getActiveKey(nextProps),
       });
     }
   }
 
-  onItemChange = (key) => {
-    const { multiple, onChange } = this.props;
-    const { activeIndex } = this.state;
-    const hasKey = activeIndex.indexOf(key) > -1;
-
-    let newActiveIndex: Array<string> = [];
+  onItemChange = key => {
+    if (!key) {
+      return;
+    }
+    const { onChange, multiple } = this.props;
+    const { activeKey } = this.state;
+    const hasKey = activeKey.indexOf(key) > -1;
+    let newActiveKey: Array<string> = [];
     if (multiple) {
       if (hasKey) {
-        newActiveIndex = activeIndex.filter(i => i !== key);
+        newActiveKey = activeKey.filter(i => i !== key);
       } else {
-        newActiveIndex = activeIndex.slice(0);
-        newActiveIndex.push(key);
+        newActiveKey = activeKey.slice(0);
+        newActiveKey.push(key);
       }
     } else {
-      newActiveIndex = hasKey ? [] : [key];
+      newActiveKey = hasKey ? [] : [key];
     }
     this.setState({
-      activeIndex: newActiveIndex,
+      activeKey: newActiveKey,
     });
-    onChange(Number(key));
+    onChange(key);
   }
 
-  getActiveIndex(props) {
-    const { activeIndex, defaultActiveIndex, multiple } = props;
+  getActiveKey(props) {
+    const { activeKey, defaultActiveKey, multiple } = props;
 
-    const defaultIndex = (activeIndex || activeIndex === 0) ? activeIndex : defaultActiveIndex;
+    const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
 
-    if (defaultIndex || defaultIndex === 0) {
-      if (isArray(defaultIndex)) {
+    if (defaultKey || defaultKey === 0) {
+      if (isArray(defaultKey)) {
         return !multiple ?
-        [String(defaultIndex[0])] : (defaultIndex as Array<any>).map(key => String(key));
+        [String(defaultKey[0])] : (defaultKey as Array<any>).map(key => String(key));
       } else {
-        return [String(defaultIndex)];
+        return [String(defaultKey)];
       }
     }
 
@@ -83,26 +84,27 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   }
 
   renderItems() {
-    const { animated, open } = this.props;
-    const { activeIndex } = this.state;
+    const { animated } = this.props;
+    const { activeKey } = this.state;
 
-    return Children.map(this.props.children, (ele, index) => {
+    return Children.map(this.props.children, (ele: any) => {
+      const { disabled } = ele.props;
+      const key = ele.key && String(ele.key);
+      const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele as ReactElement<any>, {
-        index: String(index),
         animated,
-        activeIndex,
-        open,
-        onItemChange: this.onItemChange,
+        isActive,
+        onItemChange: disabled ? null : () => this.onItemChange(key),
       });
     });
   }
 
   render() {
-    const { prefixCls, className } = this.props;
+    const { prefixCls, className, style } = this.props;
     const cls = classnames(`${prefixCls}`, className);
 
     return (
-      <div className={cls}>
+      <div className={cls} style={style}>
         {this.renderItems()}
       </div>
     );
