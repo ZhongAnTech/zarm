@@ -85,9 +85,6 @@ export default class Carousel extends Component<CarouselProps, any> {
   // 移动到指定编号
   onMoveTo = (index, animationDuration) => {
     const dom = this.carouselItems;
-    if (!dom) {
-      return;
-    }
 
     const { loop, children, onChange } = this.props;
     const maxLength = children.length;
