@@ -45,8 +45,8 @@ export default class Carousel extends Component<CarouselProps, any> {
   componentDidMount() {
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
-    Events.on(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.on(this.carouselItems, 'transitionend', this.transitionEnd);
+    // Events.on(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
+    // Events.on(this.carouselItems, 'transitionend', this.transitionEnd);
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
@@ -365,6 +365,7 @@ export default class Carousel extends Component<CarouselProps, any> {
           <div
             ref={(ele) => { this.carouselItems = ele; }}
             className={`${prefixCls}-items`}
+            onTransitionEnd={this.transitionEnd}
             style={itemsStyle}
           >
             {this.state.items}
