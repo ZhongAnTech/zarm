@@ -198,11 +198,10 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 自动轮播开始
   startAutoPlay = () => {
-    const { direction = 'left', loop, autoPlay, autoPlayIntervalTime, children } = this.props;
+    const { direction = 'left', loop, autoPlay, autoPlayIntervalTime } = this.props;
 
     this.moveInterval = (autoPlay && setInterval(() => {
       let activeIndex = this.state.activeIndex;
-      const maxLength = children.length;
       const isLeftOrTopDirection = (['left', 'top']).indexOf(direction) > -1;
 
       activeIndex = isLeftOrTopDirection
@@ -210,12 +209,7 @@ export default class Carousel extends Component<CarouselProps, any> {
         : (activeIndex - 1);
 
       // 不循环暂停轮播
-      if (
-        !loop
-          && isLeftOrTopDirection
-            ? activeIndex > maxLength - 1
-            : activeIndex < 0
-      ) {
+      if (!loop && (isLeftOrTopDirection ? this.isLastIndex() : this.isFirstIndex())) {
         this.pauseAutoPlay();
         return;
       }
@@ -230,7 +224,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     }
   }
 
-  // 处理节点（首位拼接）
+  // 处理节点（首尾拼接）
   parseItems = (props) => {
     if (props.children.length === 0) {
       return;
@@ -285,9 +279,9 @@ export default class Carousel extends Component<CarouselProps, any> {
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 
+  // TODO:bug fix, change every time
   transitionEnd = () => {
     const activeIndex = this.state.activeIndex;
-    // this.props.onChangeEnd!(activeIndex);
     const dom = this.carouselItems;
     this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
     this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
