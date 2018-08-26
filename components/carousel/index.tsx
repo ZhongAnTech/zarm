@@ -89,8 +89,9 @@ export default class Carousel extends Component<CarouselProps, any> {
       return;
     }
 
-    const { loop, children } = this.props;
+    const { loop, children, onChange } = this.props;
     const maxLength = children.length;
+    const previousIndex = this.state.activeIndex;
 
     this.translateX = -dom.offsetWidth * (index + loop);
     this.translateY = -dom.offsetHeight * (index + loop);
@@ -104,6 +105,10 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.setState({
       activeIndex: index,
     });
+
+    if (typeof onChange === 'function' && previousIndex !== index) {
+      onChange(index);
+    }
   }
 
   // 触屏事件
@@ -171,7 +176,6 @@ export default class Carousel extends Component<CarouselProps, any> {
     const {
       moveDistanceRatio = Carousel.defaultProps.moveDistanceRatio,
       moveTimeSpan = Carousel.defaultProps.moveTimeSpan,
-      onChange,
     } = this.props;
     let { activeIndex } = this.state;
 
@@ -186,11 +190,6 @@ export default class Carousel extends Component<CarouselProps, any> {
     // 2.滑动释放时间差低于moveTimeSpan
     if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
       const op = !((this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0));
-
-      if (typeof onChange === 'function') {
-        onChange(this.parseActiveIndexParse(op));
-      }
-
       activeIndex = op ? activeIndex + 1 : activeIndex - 1;
     }
 
@@ -198,19 +197,6 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 恢复自动轮播
     this.startAutoPlay();
-  }
-
-  parseActiveIndexParse = (op) => {
-    const { loop, children } = this.props;
-    const maxIndex = children.length - 1;
-    let { activeIndex } = this.state;
-
-    if (op) {
-      activeIndex = (activeIndex + 1) > maxIndex ? (loop ? 0 : maxIndex) : activeIndex += 1;
-    } else {
-      activeIndex = (activeIndex - 1) < 0 ? (loop ? maxIndex : 0) : activeIndex -= 1;
-    }
-    return activeIndex;
   }
 
   // 自动轮播开始
