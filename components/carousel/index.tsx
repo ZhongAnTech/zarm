@@ -353,9 +353,9 @@ export default class Carousel extends Component<CarouselProps, any> {
     );
   }
   render() {
-    const { prefixCls, className, height, showPagination } = this.props;
+    const { prefixCls, className, height, showPagination, style } = this.props;
     const cls = classnames(prefixCls, className);
-    const itemsStyle: CSSProperties = {};
+    const itemsStyle: CSSProperties = { ...style };
 
     if (!this.isDirectionX()) {
       itemsStyle.height = height;
