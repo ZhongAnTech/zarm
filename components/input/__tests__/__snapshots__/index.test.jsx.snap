@@ -22,6 +22,16 @@ exports[`Input renders correctly if type isn't valid 1`] = `
 </div>
 `;
 
+exports[`Input renders correctly if type=text and props includes rows 1`] = `
+<div
+  class="za-input za-input-textarea"
+>
+  <textarea
+    rows="1"
+  />
+</div>
+`;
+
 exports[`Input renders onClear called correctly 1`] = `
 <Input
   clearable={true}

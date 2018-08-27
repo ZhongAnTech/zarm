@@ -13,6 +13,11 @@ describe('Input', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders correctly if type=text and props includes rows', () => {
+    const wrapper = render(<Input type="text" rows={1} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('renders correctly if type isn\'t valid', () => {
     const wrapper = render(<Input type="xxx" />);
     expect(toJson(wrapper)).toMatchSnapshot();
