@@ -18,7 +18,7 @@ export default {
   },
   textStyle: {
     color: variables.color_text_inverse,
-    fontSize: variables.button_font_size_small,
+    fontSize: variables.button_font_size_sm,
   },
   leftBtn: {
     left: 0,
