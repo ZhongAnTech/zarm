@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { findDOMNode } from 'react-dom';
 import toJson from 'enzyme-to-json';
 import DatePicker from '../index';
 
@@ -53,19 +54,19 @@ describe('DatePicker', () => {
     expect(onOkFn).not.toBeCalled();
   });
 
-  it('should trigger onMaskClick when click mask', () => {
-    const onMaskClick = jest.fn();
+  // it('should trigger onMaskClick when click mask', () => {
+  //   const onMaskClick = jest.fn();
 
-    const wrapper = mount(
-      <DatePicker
-        mode="date"
-        value="2009-3-4"
-        visible
-        onMaskClick={onMaskClick}
-      />
-    );
+  //   const wrapper = mount(
+  //     <DatePicker
+  //       mode="date"
+  //       value="2009-3-4"
+  //       visible
+  //       onMaskClick={onMaskClick}
+  //     />
+  //   );
 
-    wrapper.find('.za-mask').simulate('click');
-    expect(onMaskClick).toBeCalled();
-  });
+  //   wrapper.find('.za-mask').simulate('click');
+  //   expect(onMaskClick).toBeCalled();
+  // });
 });

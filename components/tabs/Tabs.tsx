@@ -2,7 +2,7 @@ import React, { PureComponent, CSSProperties } from 'react';
 import PropsType from './PropsType';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
-import Swipe from '../swipe';
+import Carousel from '../carousel';
 
 const getSelectIndex = (children) => {
   let selectIndex;
@@ -29,7 +29,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     canSwipe: false,
   };
 
-  private swipe;
+  private carousel;
 
   constructor(props) {
     super(props);
@@ -67,7 +67,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
       onChange(index);
     }
     if (canSwipe) {
-      this.swipe.onSlideTo(index);
+      this.carousel.onSlideTo(index);
     }
   }
 
@@ -106,15 +106,15 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
     if (canSwipe) {
       contentRender = (
-        <Swipe
+        <Carousel
           direction="left"
           showPagination={false}
           activeIndex={this.state.value}
-          ref={(ele) => { this.swipe = ele; }}
+          ref={(ele) => { this.carousel = ele; }}
           onChange={(value) => this.onSwipeChange(value)}
         >
           {React.Children.map(children, (item: any) => <div>{item.props.children}</div>)}
-        </Swipe>
+        </Carousel>
       );
     } else {
       contentRender = React.Children.map(children, (item: any, index) => {

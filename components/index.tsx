@@ -32,7 +32,7 @@ export { default as Select } from './select';
 export { default as Slider } from './slider';
 export { default as ActivityIndicator } from './activity-indicator';
 export { default as Stepper } from './stepper';
-export { default as Swipe } from './swipe';
+export { default as Carousel } from './carousel';
 export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
 export { default as Tabs } from './tabs';

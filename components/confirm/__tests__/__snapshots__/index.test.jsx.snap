@@ -43,7 +43,7 @@ exports[`Confirm renders correctly 1`] = `
     </div>
   </div>
   <div
-    class="za-mask normal"
+    class="za-mask type-normal"
   />
 </div>
 `;
