@@ -66,7 +66,7 @@ exports[`Button ghost active 1`] = `
         "backgroundColor": "#12c287",
       },
       Object {
-        "borderRadius": undefined,
+        "borderRadius": 4,
       },
       Object {
         "backgroundColor": "#10ae79",
