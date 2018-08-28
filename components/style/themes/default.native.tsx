@@ -24,9 +24,9 @@ export default {
   border_disabled: '#e1e1e1',
 
   // 圆角
-  radius_small: 2,
-  radius_normal: 4,
-  radius_large: 8,
+  radius_sm: 2,
+  radius_md: 4,
+  radius_lg: 8,
   radius_round: 1000,
   // radius_circle: '50%',
 

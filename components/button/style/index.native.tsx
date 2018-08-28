@@ -157,7 +157,7 @@ export default {
 
   // shape
   radiusWrapper: {
-    borderRadius: variables.radius_normal,
+    borderRadius: variables.radius_md,
   },
   rectWrapper: {
     borderRadius: 0,

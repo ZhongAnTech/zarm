@@ -30,7 +30,7 @@ export default {
 
   // shape
   radiusButton: {
-    borderRadius: variables.radius_normal,
+    borderRadius: variables.radius_md,
   },
   circleButton: {
     borderRadius: variables.stepper_height,
