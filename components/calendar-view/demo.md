@@ -41,6 +41,37 @@ class Demo extends React.Component {
     super();
     this.state = {
       calendar1_s: {
+        name: '单选String类型，无min/max',
+        defaultValue: '2018-08-02',
+        value: '2018-08-02',
+        // min: '2018-05-06',
+        // max: '2019-05-05',
+        multiple: false,
+        // dateRender: date => date,
+        // disabledDate: date => date
+      },
+      calendar1_s1: {
+        name: '单选String类型，只有min',
+        defaultValue: '2018-08-02',
+        value: '2018-08-02',
+        min: '2018-07-06',
+        // max: '2019-05-05',
+        multiple: false,
+        // dateRender: date => date,
+        // disabledDate: date => date
+      },
+
+      calendar1_s2: {
+        name: '单选String类型，只有max',
+        defaultValue: '2018-08-02',
+        value: '2018-08-02',
+        // min: '2018-05-06',
+        max: '2019-05-05',
+        multiple: false,
+        // dateRender: date => date,
+        // disabledDate: date => date
+      },
+      calendar1_s3: {
         name: '单选String类型，跨度1年',
         defaultValue: '2018-08-02',
         value: '2018-08-02',
@@ -203,7 +234,7 @@ class Demo extends React.Component {
             <p>
               {dateValue.map(
                 item =>
-                  item.constructor === Date ? item.toLocaleDateString() : item
+                  item && item.constructor === Date ? item.toLocaleDateString() : item
               ).join(',')}
             </p>
           </Cell>
@@ -211,15 +242,15 @@ class Demo extends React.Component {
             <p>
               {dateDefaultValue.map(
                 item =>
-                  item.constructor === Date ? item.toLocaleDateString() : item
+                  item && item.constructor === Date ? item.toLocaleDateString() : item
               ).join(',')}
             </p>
           </Cell>
           <Cell title="min">
-            <p>{tmp.min.constructor === Date ? tmp.min.toLocaleDateString() : tmp.min}</p>
+            <p>{tmp.min && tmp.min.constructor === Date ? tmp.min.toLocaleDateString() : tmp.min}</p>
           </Cell>
           <Cell title="max">
-            <p>{tmp.max.constructor === Date ? tmp.max.toLocaleDateString() : tmp.max}</p>
+            <p>{tmp.max && tmp.max.constructor === Date ? tmp.max.toLocaleDateString() : tmp.max}</p>
           </Cell>
         </div>
         <div>

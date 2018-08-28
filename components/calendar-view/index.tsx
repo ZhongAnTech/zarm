@@ -16,7 +16,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     defaultValue: '',
     multiple: false,
     min: new Date(),
-    max: DateTool.cloneDate(new Date(), 'y', 1),
+    // max: DateTool.cloneDate(new Date(), 'y', 1),
     dateRender: date => date.getDate(),
     disabledDate: date => !date,
     onChange: date => date,
@@ -47,12 +47,9 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     let max;
     let startMonth;
     let endMonth;
-    let md5;
 
     value = value || defaultValue;
-
     value = value.constructor === Array ? value : (value && [value]) || [];
-    // defaultValue = defaultValue.constructor === Array ? defaultValue : (defaultValue && [defaultValue]) || [];
 
     if (JSON.stringify(value) !== JSON.stringify(state.value)) {
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
@@ -60,23 +57,21 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
       tmpValue = value.slice(0, multiple ? 2 : 1).map(item => DateTool.parseDay(item));
     }
 
-    // if (JSON.stringify(defaultValue) !== JSON.stringify(state.defaultValue)) {
-    //   // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
-    //   // tmpDefaultValue = defaultValue.map(item => DateTool.parseDay(item));
-    //   tmpDefaultValue = defaultValue.slice(0, multiple ? 2: 1).map(item => DateTool.parseDay(item));
-    // }
-
     if (!DateTool.isOneDay(props.min, state.min)) {
-      min = DateTool.parseDay(props.min);
-      md5 = `${Math.floor(Math.random() * 10000)}`;
+      if(!(!props.min && state.min)){
+        min = props.min ? DateTool.parseDay(props.min) : new Date();
+      }
     }
+
     if (min || !state.startMonth) {
       startMonth = DateTool.cloneDate(min, 'dd', 1);
     }
 
     if (!DateTool.isOneDay(props.max, state.max)) {
-      max = DateTool.parseDay(props.max);
-      md5 = `${Math.floor(Math.random() * 10000)}`;
+      max = props.max ? DateTool.parseDay(props.max) : DateTool.cloneDate(min || state.min, 'y', 1);
+      if(max === state.max) {
+        max = null;
+      }
     }
     if (max || !state.endMonth) {
       endMonth = DateTool.cloneDate(max, 'dd', DateTool.getDaysByDate(max));
@@ -84,19 +79,21 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
 
     const tmp = {
       value: tmpValue || state.value,
-      // defaultValue: tmpDefaultValue || state.defaultValue,
       min: min || state.min,
       max: max || state.max,
       startMonth: startMonth || state.startMonth,
       endMonth: endMonth || state.endMonth,
       // 是否是入参更新(主要是月份跨度更新，需要重新定位)
-      md5: md5 || state.md5,
+      md5: state.md5,
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
       // steps:Math.max(tmp.value.length, tmp.defaultValue.length);
       steps: multiple ? 2 : 1,
       // 初始化点击步数
       step: !this.state ? 1 : state.step,
     };
+
+    if(JSON.stringify(tmp) === JSON.stringify(this.state)) return;
+    tmp.md5 = `${Math.floor(Math.random() * 10000)}`;
 
     if (!this.state) {
       this.state = tmp;

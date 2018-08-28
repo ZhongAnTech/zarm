@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
+import { CSSProperties, isValidElement } from 'react';
 
 import CalendarView from './index';
 import DateTool from '../utils/date';
@@ -81,7 +82,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
   anchor() {
     const { dateMonth, value = [] } = this.state;
     if (DateTool.isOneMonth(dateMonth, value[0])) {
-      this.node.scrollIntoViewIfNeeded();
+      this.node.scrollIntoViewIfNeeded && this.node.scrollIntoViewIfNeeded();
     }
   }
 
@@ -104,7 +105,6 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
       const max1 = DateTool.cloneDate(value[value.length - 1], 'dd', 1);
       isIn = currMonth >= min1 && currMonth <= max1;
     }
-    // console.log('checkRefresh isIn lastIn', dateMonth.toLocaleDateString(), isIn, this.lastIn);
     const result = !(!isIn && !this.lastIn);
     this.lastIn = isIn;
     return result;
@@ -158,13 +158,13 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
 
       let txt = (date && dateRender && dateRender(date)) || '';
       if (typeof txt === 'object') {
-        if (!txt.$$typeof || txt.$$typeof.toString() !== 'Symbol(react.element)') {
-          console.error('dateRender返回数据类型错误，请返回基本数据类型');
+        if (!isValidElement(txt)) {
+          console.error('dateRender返回数据类型错误，请返回基本数据类型或者reactNode');
           txt = '';
         }
       }
 
-      const style = {};
+      const style: CSSProperties = {};
       if (i === 0) {
         style.marginLeft = `${firstDay * WIDTH}%`;
       }
