@@ -1,17 +1,14 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import {
     StyleSheet,
-    Text,
     View,
     TouchableHighlight,
-    TouchableOpacity,
-    ActivityIndicator,
     ViewStyle,
 } from 'react-native';
-import { BasePanelProps } from './PropsType';
+import PropsType from './PropsType';
 import cellStyle from './style/index.native';
 
-export interface CellProps extends BasePanelProps {
+export interface CellProps extends PropsType {
   style?: CSSProperties;
   styles?: typeof cellStyle;
 }
@@ -48,49 +45,46 @@ export default class Cell extends PureComponent<CellProps, any> {
 
   render() {
     const {
-      theme,
       hasArrow,
       icon,
       title,
       description,
       help,
-      disabled,
       style,
       styles,
       onClick,
       children,
       ...others
     } = this.props;
-    const { isActive } = this.state;
 
     const wrapperStyle = [
-      styles.wrapperStyle,
+      styles!.wrapperStyle,
       style,
-    ];
+    ] as ViewStyle;
     const containerStyle = [
-      styles.containerStyle,
-    ];
+      styles!.containerStyle,
+    ] as ViewStyle;
     const bodyStyle = [
-      styles.bodyStyle,
-      description ? styles.flexDirectionColumn : styles.flexDirectionRow,
-      description ? styles.alignItemsStart : styles.alignItemsCenter,
-    ];
+      styles!.bodyStyle,
+      description ? styles!.flexDirectionColumn : styles!.flexDirectionRow,
+      description ? styles!.alignItemsStart : styles!.alignItemsCenter,
+    ] as ViewStyle;
     const iconStyle = [
-      styles.iconStyle,
-    ];
+      styles!.iconStyle,
+    ] as ViewStyle;
     const titleStyle = [
-      description && styles.paddingBottom,
-    ];
+      description && styles!.paddingBottom,
+    ] as ViewStyle;
     const arrowStyle = [
-      styles.arrowStyle,
-    ];
+      styles!.arrowStyle,
+    ] as ViewStyle;
     const helpStyle = [
-      styles.helpStyle,
-    ];
+      styles!.helpStyle,
+    ] as ViewStyle;
     const contentStyle = [
       !hasArrow && wrapperStyle,
-    ];
-    const underlayColor = StyleSheet.flatten(styles.underlayColorStyle).backgroundColor;
+    ] as ViewStyle;
+    const underlayColor = (StyleSheet.flatten(styles!.underlayColorStyle) as any).backgroundColor;
 
     const iconRender = icon && <View style={iconStyle}>{icon}</View>;
     const titleRender = title && <View style={titleStyle}>{title}</View>;
