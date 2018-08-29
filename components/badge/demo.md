@@ -90,7 +90,7 @@ ReactDOM.render(<Demo />, mountNode);
 | prefixCls | string | za-badge | | 类名前缀 |
 | className | string | | | 追加类名 |
 | theme | string | `error` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| text | any | | | 显示文字 |
+| text | string | | | 显示文字 |
 | shape | string | | `dot`, `rect` , `radius`, `round`, `circle` ,`leaf` | 形状 |
 | sup | bool | false | | 是否上标位置 |
 
