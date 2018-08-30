@@ -22,8 +22,8 @@ export default {
     alignItems: 'center',
   },
   arrowStyle: {
-    width: 14,
-    height: 14,
+    width: 7,
+    height: 7,
     borderTopWidth: 1,
     borderTopColor: '#BCBCBC',
     borderRightWidth: 1,
