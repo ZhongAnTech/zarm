@@ -98,7 +98,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
           shape={shape}
           size="sm"
           block={block}
-          bordered={!checked}
+          ghost={!checked}
           disabled={disabled}
         >
           <input
