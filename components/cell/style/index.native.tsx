@@ -5,10 +5,26 @@ export default {
     flexDirection: 'column',
     minHeight: variables.cell_height,
     backgroundColor: variables.cell_background,
+  },
+  cellContentStyle: {
+    flex: 1,
+    flexDirection: 'column',
     paddingTop: variables.cell_padding_h,
     paddingRight: variables.cell_padding_h,
     paddingBottom: variables.cell_padding_h,
     paddingLeft: variables.cell_padding_h,
+  },
+  cellLineLeft: {
+    marginTop: -1,
+    paddingLeft: variables.cell_line_left,
+  },
+  cellLineHasiconLeft: {
+    marginTop: -1,
+    paddingLeft: variables.cell_line_hasicon_left,
+  },
+  cellLineStyle: {
+    borderTopWidth: 1,
+    borderTopColor: variables.border_color,
   },
   containerStyle: {
     flex: 1,
