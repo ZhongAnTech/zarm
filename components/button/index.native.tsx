@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent, CSSProperties, isValidElement } from 'react';
 import {
   StyleSheet,
   Text,
@@ -109,7 +109,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
     const contentRender = (
       <View style={styles!.container as ViewStyle}>
         {iconRender}
-        <Text style={textStyle}>{children}</Text>
+        {isValidElement(children) ? children : <Text style={textStyle}>{children}</Text>}
       </View>
     );
 
