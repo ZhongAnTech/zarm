@@ -3,11 +3,16 @@
 exports[`Cell children 1`] = `
 <react-native-mock>
   <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
     <react-native-mock>
       <react-native-mock>
-        标题文字
+        <react-native-mock>
+          标题文字
+        </react-native-mock>
+        我是Cell
       </react-native-mock>
-      我是Cell
     </react-native-mock>
   </react-native-mock>
 </react-native-mock>
@@ -16,13 +21,18 @@ exports[`Cell children 1`] = `
 exports[`Cell description 1`] = `
 <react-native-mock>
   <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
     <react-native-mock>
       <react-native-mock>
-        标题文字
+        <react-native-mock>
+          标题文字
+        </react-native-mock>
       </react-native-mock>
-    </react-native-mock>
-    <react-native-mock>
-      描述文字
+      <react-native-mock>
+        描述文字
+      </react-native-mock>
     </react-native-mock>
   </react-native-mock>
 </react-native-mock>
@@ -30,6 +40,9 @@ exports[`Cell description 1`] = `
 
 exports[`Cell hasArrow 1`] = `
 <react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
@@ -50,23 +63,28 @@ exports[`Cell hasArrow 1`] = `
 exports[`Cell help 1`] = `
 <react-native-mock>
   <react-native-mock>
-    <react-native-mock>
-      <img
-        alt=""
-        src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
-      />
-    </react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
     <react-native-mock>
       <react-native-mock>
-        标题文字
+        <img
+          alt=""
+          src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
+        />
+      </react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          标题文字
+        </react-native-mock>
+      </react-native-mock>
+      <react-native-mock>
+        描述文字
       </react-native-mock>
     </react-native-mock>
     <react-native-mock>
-      描述文字
+      我是help
     </react-native-mock>
-  </react-native-mock>
-  <react-native-mock>
-    我是help
   </react-native-mock>
 </react-native-mock>
 `;
@@ -74,20 +92,25 @@ exports[`Cell help 1`] = `
 exports[`Cell icon 1`] = `
 <react-native-mock>
   <react-native-mock>
-    <react-native-mock>
-      <img
-        alt=""
-        src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
-      />
-    </react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
     <react-native-mock>
       <react-native-mock>
-        标题文字
+        <img
+          alt=""
+          src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
+        />
       </react-native-mock>
-      我是Cell
-    </react-native-mock>
-    <react-native-mock>
-      描述文字
+      <react-native-mock>
+        <react-native-mock>
+          标题文字
+        </react-native-mock>
+        我是Cell
+      </react-native-mock>
+      <react-native-mock>
+        描述文字
+      </react-native-mock>
     </react-native-mock>
   </react-native-mock>
 </react-native-mock>
@@ -96,9 +119,14 @@ exports[`Cell icon 1`] = `
 exports[`Cell renders correctly 1`] = `
 <react-native-mock>
   <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
     <react-native-mock>
       <react-native-mock>
-        标题文字
+        <react-native-mock>
+          标题文字
+        </react-native-mock>
       </react-native-mock>
     </react-native-mock>
   </react-native-mock>

@@ -42,19 +42,28 @@ describe('Cell', () => {
     expect(onClick).toBeCalled();
   });
 
+  it('is-link', () => {
+    const onClick = jest.fn();
+    const wrapper = shallow(<Cell onClick={onClick}>我是Cell</Cell>);
+    wrapper.find(TouchableHighlight).props().onPress();
+    expect(onClick).toBeCalled();
+  });
+
   it('set props active', () => {
     const wrapper = shallow(<Cell>我是Cell</Cell>);
     wrapper.setProps({ active: true });
   });
 
   it('pressIn', () => {
-    const wrapper = shallow(<Cell hasArrow>我是Cell</Cell>);
+    const onClick = jest.fn();
+    const wrapper = shallow(<Cell onClick={onClick}>我是Cell</Cell>);
     wrapper.find(TouchableHighlight).props().onPressIn();
     expect(wrapper.state('isActive')).toBe(true);
   });
 
   it('pressOut', () => {
-    const wrapper = shallow(<Cell hasArrow>我是Cell</Cell>);
+    const onClick = jest.fn();
+    const wrapper = shallow(<Cell onClick={onClick}>我是Cell</Cell>);
     wrapper.find(TouchableHighlight).props().onPressOut();
     expect(wrapper.state('isActive')).toBe(false);
   });
