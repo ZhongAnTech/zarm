@@ -55,6 +55,14 @@ export default class Picker extends PureComponent<PickerProps, any> {
       visible: nextProps.visible,
       value: getValue(nextProps, []),
     });
+
+    const isChangeDataSource = (JSON.stringify(this.props.dataSource) !== JSON.stringify(nextProps.dataSource));
+    if (isChangeDataSource) {
+      this.setState({
+        value: [],
+        objValue: [],
+      });
+    }
   }
 
   onInit = (selected) => {
