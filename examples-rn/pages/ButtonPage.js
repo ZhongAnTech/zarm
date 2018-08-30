@@ -92,20 +92,6 @@ export default class Page extends PureComponent {
           <View style={styles.inline}>
             <Button style={[styles.mb, styles.mr]} ghost loading shape="radius" onClick={noop}>loading</Button>
           </View>
-
-          <Text style={styles.title}>自定义内容按钮</Text>
-          <View style={styles.mb}>
-            <Button style={styles.mb} theme="primary" onclick={noop}>
-              <View style={styles.customContainer}>
-                <View style={styles.customLeft}>
-                  <Text style={styles.customText}>click to get more</Text>
-                </View>
-                <View style={styles.customRight}>
-                  <Badge shape="round" text="999+" />
-                </View>
-              </View>
-            </Button>
-          </View>
         </View>
       </ScrollView>
     );
