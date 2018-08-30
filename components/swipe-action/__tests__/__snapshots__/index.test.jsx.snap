@@ -45,8 +45,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
@@ -57,8 +57,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
@@ -77,8 +77,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
@@ -89,8 +89,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
@@ -110,8 +110,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         key="0"
         loading={false}
         onClick={[Function]}
@@ -133,8 +133,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         key="1"
         loading={false}
         onClick={[Function]}
@@ -160,8 +160,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         key="0"
         loading={false}
         onClick={[Function]}
@@ -183,8 +183,8 @@ exports[`SwipeAction renders correctly 1`] = `
       <Button
         active={false}
         block={false}
-        bordered={false}
         disabled={false}
+        ghost={false}
         key="1"
         loading={false}
         onClick={[Function]}
