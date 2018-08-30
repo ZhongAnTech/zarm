@@ -49,7 +49,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     } = this.props;
 
     const bagdeWrapper = [
-      styles!.TextStyle,
+      styles!.textStyle,
       style,
     ] as ViewStyle;
 
@@ -58,9 +58,9 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
       styles![`${shape}Text`],
     ];
 
-    const shapeStyle = [
-      styles![`${shape}Shape`],
-      styles![`${theme}Theme`],
+    const iconStyle = [
+      styles![`${shape}Badge`],
+      styles![`${theme}Bagde`],
       sup && styles![`${shape}Sup`],
     ] as ViewStyle;
 
@@ -69,7 +69,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
         {children}
         <View
           onLayout={({ nativeEvent: e }) => this.layout(e)}
-          style={[shapeStyle, { right: sup ? this.state.dotWidth : 0 }]}
+          style={[iconStyle, { right: sup ? this.state.dotWidth : 0 }]}
         >
           <Text style={dotText}>{text}</Text>
         </View>

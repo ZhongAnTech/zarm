@@ -9,7 +9,7 @@ $prefixCls: $prefixCls-switch;
     height: $switch-height;
     border: 1px solid $switch-border-color;
     border-radius: $radius-round;
-    background-color: $switch-border-color;
+    background-color: $switch-background;
     vertical-align: middle;
     transition: background-color 0.1s, border 0.1s;
     outline: 0;
@@ -17,7 +17,7 @@ $prefixCls: $prefixCls-switch;
 
     &:before,
     &:after {
-      content: ' ';
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -39,6 +39,9 @@ $prefixCls: $prefixCls-switch;
     }
 
     &:checked {
+      border: 1px solid $theme-primary;
+      background-color: $theme-primary;
+
       &:before {
         transform: scale(0);
       }
@@ -48,6 +51,10 @@ $prefixCls: $prefixCls-switch;
       }
     }
   }
+
+  // &-small {
+  //   @include switch-size($switch-width-sm, $switch-height-sm, $radius-round );
+  // }
 
   &.disabled {
     cursor: not-allowed;

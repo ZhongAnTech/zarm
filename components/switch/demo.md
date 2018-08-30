@@ -52,10 +52,11 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-switch | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | checked | boolean | | | 值 |
 | defaultChecked | boolean | | | 初始值 |
 | disabled | boolean | false | | 是否禁用 |
 | onChange | <code>(value: boolean) => void</code> | | \(value: boolean\) | 值变化时触发的回调函数 |
+| style | React.CSSProperties | | | 自定义样式 |
+
 
 :::
