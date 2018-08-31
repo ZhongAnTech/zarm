@@ -27,7 +27,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
   };
 
   layout = (e) => {
-    let dotWidth = this.props.shape === 'dot' ?
+    let dotWidth = (this.props.shape === 'dot' || this.props.shape === undefined) ?
     (-(parseInt(e.layout.width, 10) - 4)) :
     (-(parseInt(e.layout.width, 10) - 8));
 
@@ -53,15 +53,17 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
       style,
     ] as ViewStyle;
 
-    const dotText = [
-      styles!.dotText,
+    const badgeText = [
+      styles!.badgeText,
       styles![`${shape}Text`],
+      shape === undefined && styles!.dotText,
     ];
 
     const iconStyle = [
       styles![`${shape}Badge`],
       styles![`${theme}Bagde`],
-      sup && styles![`${shape}Sup`],
+      sup && [badgeStyles.sup],
+      shape === undefined && styles!.dotBadge,
     ] as ViewStyle;
 
     return (
@@ -71,7 +73,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
           onLayout={({ nativeEvent: e }) => this.layout(e)}
           style={[iconStyle, { right: sup ? this.state.dotWidth : 0 }]}
         >
-          <Text style={dotText}>{text}</Text>
+          <Text style={badgeText}>{text}</Text>
         </View>
       </View>
     );

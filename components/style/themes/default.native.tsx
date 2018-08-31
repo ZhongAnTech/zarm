@@ -1,6 +1,6 @@
 export default {
   // 主题色
-  theme_default: '#e6e6e6',                    // 默认色
+  theme_default: '#e6e6e6',                 // 默认色
   theme_primary: '#12c287',                 // 主色
   theme_success: '#12c287',                 // 成功
   theme_warning: '#ec9131',                 // 警告
@@ -72,10 +72,14 @@ export default {
   alert_button_font_size: 18,
 
   // Badge
-  badge_height: 19,
-  badge_font_size: 10, // font_size_sm,
-  badge_padding_h: 5, // padding_h_sm,
+  badge_height: 14,
+  badge_dot_height_with: 8,
+  badge_font_size: 10,
+  badge_padding_h: 2,
   badge_dot_diameter: 8,
+  badge_radius_diameter: 2,
+  badge_sup_top: -4,
+  badge_text_color: '#FFF',
 
   // Button
   button_height_sm: 27,

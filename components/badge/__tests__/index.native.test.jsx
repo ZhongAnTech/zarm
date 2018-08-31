@@ -1,10 +1,14 @@
-import { TouchableHighlight } from 'react-native';
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Badge from '../index.native';
 
 describe('Badge', () => {
+  it('renders shape is dot correctly', () => {
+    const wrapper = render(<Badge />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('renders shape is dot correctly', () => {
     const wrapper = render(<Badge shape="dot" />);
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -22,6 +26,11 @@ describe('Badge', () => {
 
   it('renders shape is circle correctly', () => {
     const wrapper = render(<Badge shape="circle" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders shape is rectangle correctly', () => {
+    const wrapper = render(<Badge shape="rect" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

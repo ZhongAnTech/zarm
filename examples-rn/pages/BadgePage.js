@@ -123,15 +123,13 @@ export default class Page extends PureComponent {
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <View >
           <Text style={styles.title}>基本用法</Text>
-
           <View style={styles.basicWrap}>
-
             <View style={styles.lineWrap}>
               <View style={styles.lineContent}>
                 <Text style={styles.lineText}>点状</Text>
               </View>
               <View style={styles.lineFooter}>
-                <Badge shape="dot" />
+                <Badge />
               </View>
               <View style={styles.arrowWrap}>
                 <View style={styles.arrow} />
@@ -179,7 +177,7 @@ export default class Page extends PureComponent {
                 <Text style={styles.lineText}>直角</Text>
               </View>
               <View style={styles.lineFooter}>
-                <Badge text="免费" />
+                <Badge shape="rect" text="免费" />
               </View>
               <View style={styles.arrowWrap}>
                 <View style={styles.arrow} />
@@ -202,7 +200,7 @@ export default class Page extends PureComponent {
           <Text style={styles.title}>上标位置</Text>
 
           <View style={styles.contentReg}>
-            <Badge sup shape="dot">
+            <Badge sup>
               <View style={[styles.block, styles.br]} />
             </Badge>
 

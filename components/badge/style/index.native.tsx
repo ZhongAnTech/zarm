@@ -5,62 +5,42 @@ export default {
     flexDirection: 'row',
   },
 
-  Shape: {
-    height: 14,
-  },
-
   dotBadge: {
-    width: 8,
-    height: 8,
-    borderRadius: 1000,
+    width: variables.badge_dot_height_with,
+    height: variables.badge_dot_height_with,
+    borderRadius: variables.badge_dot_diameter,
     display: 'flex',
   },
 
   radiusBadge: {
-    borderRadius: 4,
-    height: 16,
+    borderRadius: variables.badge_radius_diameter,
+    height: variables.badge_height,
   },
 
   roundBadge: {
     borderRadius: variables.badge_dot_diameter,
-    height: 16,
+    height: variables.badge_height,
+  },
+
+  rectBadge: {
+    height: variables.badge_height,
   },
 
   circleBadge: {
-    borderRadius: 1000,
-    height: 16,
+    borderRadius: variables.badge_dot_diameter,
+    height: variables.badge_height,
   },
 
   leafBadge: {
-    borderTopLeftRadius: 150,
-    borderTopRightRadius: 1000,
-    borderBottomRightRadius: 1000,
-    height: 16,
+    borderTopLeftRadius: variables.badge_dot_diameter,
+    borderTopRightRadius: variables.badge_dot_diameter,
+    borderBottomRightRadius: variables.badge_dot_diameter,
+    height: variables.badge_height,
   },
 
-  dotSup: {
+  sup: {
     position: 'absolute',
-    top: -4,
-  },
-
-  radiusSup: {
-    position: 'absolute',
-    top: -4,
-  },
-
-  roundSup: {
-    position: 'absolute',
-    top: -4,
-  },
-
-  circleSup: {
-    position: 'absolute',
-    top: -4,
-  },
-
-  leafSup: {
-    position: 'absolute',
-    top: -4,
+    top: variables.badge_sup_top,
   },
 
   errorBagde: {
@@ -83,11 +63,15 @@ export default {
     backgroundColor: variables.theme_default,
   },
 
-  dotText: {
-    color: 'white',
+  badgeText: {
+    color: variables.badge_text_color,
     display: 'flex',
     fontSize: variables.badge_font_size,
-    lineHeight: 14,
+    lineHeight: variables.badge_height,
     paddingHorizontal: variables.padding_h_sm,
+  },
+
+  dotText: {
+    width: 0,
   },
 };
