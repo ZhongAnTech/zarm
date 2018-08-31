@@ -13,7 +13,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     prefixCls: 'za-button',
     theme: 'default',
     block: false,
-    bordered: false,
+    ghost: false,
     active: false,
     disabled: false,
     loading: false,
@@ -30,12 +30,12 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       icon,
       block,
       active,
-      bordered,
+      ghost,
       disabled,
       loading,
       onClick,
       children,
-      ...others,
+      ...others
     } = this.props;
 
     const classes = classnames(`${prefixCls}`, className, {
@@ -43,7 +43,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
       block,
-      bordered,
+      ghost,
       active,
       disabled,
     });

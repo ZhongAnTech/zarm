@@ -1,10 +1,10 @@
 export default {
   // 主题色
-  theme_default: '#ddd',                    // 默认色
+  theme_default: '#e6e6e6',                    // 默认色
   theme_primary: '#12c287',                 // 主色
-  theme_success: '#69c964',                 // 成功
-  theme_warning: '#eca632',                 // 警告
-  theme_error: '#e55546',                   // 错误
+  theme_success: '#12c287',                 // 成功
+  theme_warning: '#ec9131',                 // 警告
+  theme_error: '#ff5050',                   // 失败
 
   // 文字色
   color_text: '#333',                       // 基本
@@ -58,7 +58,7 @@ export default {
 
   // 透明度
   opacity_disabled: .5,
-  opacity_mask: .6,
+  opacity_mask: .5,
   opacity_toast: .8,
   opacity_tooltip: .8,
 
@@ -78,16 +78,28 @@ export default {
   badge_dot_diameter: 8,
 
   // Button
-  button_height_sm: 27,
-  button_height_md: 45,
+  button_height_xs: 28,
+  button_height_sm: 36,
+  button_height_md: 44,
   button_height_lg: 52,
-  button_padding_h_sm: 8,
-  button_padding_h_md: 15,
-  button_padding_h_lg: 15,
-  button_font_size_sm: 14,
-  button_font_size_md: 18,
-  button_font_size_lg: 20,
+  button_padding_h_xs: 6,
+  button_padding_h_sm: 7.5,
+  button_padding_h_md: 11.5,
+  button_padding_h_lg: 15.5,
+  button_font_size_xs: 12,
+  button_font_size_sm: 16,
+  button_font_size_md: 16,
+  button_font_size_lg: 16,
   button_bordered_active_opacity: .6,
+  button_primary_active_bg: '#10ae79',
+  button_success_active_bg: '#10ae79',
+  button_warning_active_bg: '#d3822c',
+  button_error_active_bg: '#e54747',
+  button_disabled_ghost_color: '#D2D2D2',
+  button_primary_ghost_active_color: '#00AE73',
+  button_success_ghost_active_color: '#00AE73',
+  button_warning_ghost_active_color: '#cc9131',
+  button_error_ghost_active_color: '#df5050',
 
   // Cell
   cell_height: 45,                                   // 最小度
@@ -165,10 +177,10 @@ export default {
   swipe_pagination_dot_size: 8,
 
   // Switch
-  switch_width: 51,
-  switch_height: 31,
+  switch_width: 53,
+  switch_height: 32,
   switch_border_color: '#e5e5e5',
-  switch_background: '#fdfdfd',
+  switch_background: '#fff',
 
   // SwipeAction
   swipe_action_height: 45,

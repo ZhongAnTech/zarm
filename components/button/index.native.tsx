@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent, CSSProperties, isValidElement } from 'react';
 import {
   StyleSheet,
   Text,
@@ -20,28 +20,23 @@ const buttonStyles = StyleSheet.create<any>(buttonStyle);
 
 export default class Button extends PureComponent<ButtonProps, any> {
   static defaultProps = {
-    theme: 'default',
+    theme: 'primary',
     size: 'md',
+    shape: 'radius',
     block: false,
-    bordered: false,
-    active: false,
+    ghost: false,
     disabled: false,
     loading: false,
     styles: buttonStyles,
-    onClick() {},
+    onClick() {
+    },
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      isActive: props.active,
+      isActive: false,
     };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if ('active' in nextProps) {
-      this.setState({ isActive: nextProps.active });
-    }
   }
 
   onPressIn = () => {
@@ -57,8 +52,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       theme,
       size,
       shape,
-      bordered,
-      active,
+      ghost,
       disabled,
       loading,
       icon,
@@ -66,7 +60,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles,
       onClick,
       children,
-      ...others,
+      ...others
     } = this.props;
     const { isActive } = this.state;
 
@@ -76,9 +70,11 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles![`${theme}Wrapper`],
       styles![`${shape}Wrapper`],
       isActive && styles![`${theme}ActiveWrapper`],
-      bordered && styles![`${theme}BorderedWrapper`],
-      bordered && styles!.borderedWrapper,
+      ghost && styles!.ghostWrapper,
+      ghost && styles![`${theme}GhostWrapper`],
+      ghost && isActive && styles![`${theme}GhostActiveWrapper`],
       disabled && styles!.disabledWrapper,
+      disabled && ghost && styles!.disabledGhostWrapper,
       shape === 'circle' && styles![`${size}CircleWrapper`],
       style,
     ];
@@ -95,8 +91,10 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles!.textStyle,
       styles![`${size}Text`],
       styles![`${theme}Text`],
-      bordered && styles![`${theme}BorderedText`],
-      isActive && active && styles!.activeText,
+      ghost && styles![`${theme}GhostText`],
+      isActive && styles!.activeText,
+      isActive && ghost && styles![`${theme}GhostActiveText`],
+      disabled && ghost && styles!.disabledGhostText,
     ];
 
     const iconStyle = [
@@ -105,18 +103,18 @@ export default class Button extends PureComponent<ButtonProps, any> {
     ];
 
     const iconRender = loading
-      ? <ActivityIndicator animating style={iconStyle} color={iconColor} size="small" />
+      ? <ActivityIndicator animating style={iconStyle} color={iconColor} size="small"/>
       : icon;
 
     const contentRender = (
       <View style={styles!.container as ViewStyle}>
         {iconRender}
-        <Text style={textStyle}>{children}</Text>
+        {isValidElement(children) ? children : <Text style={textStyle}>{children}</Text>}
       </View>
     );
 
     const wrapperProps = {
-      activeOpacity: 0.3,
+      activeOpacity: 1,
       style: wrapperStyle,
       onPress: onClick,
       onPressIn: this.onPressIn,
@@ -125,8 +123,8 @@ export default class Button extends PureComponent<ButtonProps, any> {
       ...others,
     };
 
-    return bordered
-      ? <TouchableOpacity {...wrapperProps} activeOpacity={0.6}>{contentRender}</TouchableOpacity>
+    return ghost
+      ? <TouchableOpacity {...wrapperProps}>{contentRender}</TouchableOpacity>
       : <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>;
   }
 }

@@ -12,10 +12,10 @@ exports[`Button block 1`] = `
 </a>
 `;
 
-exports[`Button bordered 1`] = `
+exports[`Button disabled 1`] = `
 <a
-  aria-disabled="false"
-  class="za-button theme-default bordered"
+  aria-disabled="true"
+  class="za-button theme-default disabled"
   role="button"
 >
   <span>
@@ -24,10 +24,10 @@ exports[`Button bordered 1`] = `
 </a>
 `;
 
-exports[`Button disabled 1`] = `
+exports[`Button ghost 1`] = `
 <a
-  aria-disabled="true"
-  class="za-button theme-default disabled"
+  aria-disabled="false"
+  class="za-button theme-default ghost"
   role="button"
 >
   <span>
