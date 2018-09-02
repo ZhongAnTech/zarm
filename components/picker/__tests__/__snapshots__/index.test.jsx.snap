@@ -3,6 +3,7 @@
 exports[`Picker Picker render visible 1`] = `
 <Picker
   cancelText="取消"
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -93,20 +94,15 @@ exports[`Picker Picker render visible 1`] = `
                   ]
                 }
                 disabled={false}
-                firstObjValue={
-                  Array [
-                    Object {
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                  ]
-                }
                 itemRender={[Function]}
                 onChange={[Function]}
-                onInit={[Function]}
                 onTransition={[Function]}
                 prefixCls="za-picker"
-                value={Array []}
+                value={
+                  Array [
+                    "1",
+                  ]
+                }
                 valueMember="value"
                 visible={true}
               >
@@ -193,6 +189,7 @@ exports[`Picker Picker render visible 1`] = `
 exports[`Picker render custom label 1`] = `
 <Picker
   cancelText="取消"
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -322,24 +319,16 @@ exports[`Picker render custom label 1`] = `
                   ]
                 }
                 disabled={false}
-                firstObjValue={
-                  Array [
-                    Object {
-                      "code": "1",
-                      "name": "北京市",
-                    },
-                    Object {
-                      "code": "11",
-                      "name": "海淀区",
-                    },
-                  ]
-                }
                 itemRender={[Function]}
                 onChange={[Function]}
-                onInit={[Function]}
                 onTransition={[Function]}
                 prefixCls="za-picker"
-                value={Array []}
+                value={
+                  Array [
+                    "1",
+                    "11",
+                  ]
+                }
                 valueMember="code"
                 visible={false}
               >
