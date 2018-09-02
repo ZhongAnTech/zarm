@@ -14,7 +14,6 @@ module.exports = {
     require.resolve('./setup.js'),
   ],
   testRegex: '/__tests__/.*(\\.native\\.test\\.jsx|[^d]\\.ts)$',
-  testURL: 'http://localhost/',
   collectCoverageFrom: [
     'components/**/*.native.{ts,tsx}',
     '!components/*/PropsType.{ts,tsx}',
