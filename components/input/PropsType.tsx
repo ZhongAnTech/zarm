@@ -37,7 +37,7 @@ export interface InputNumberProps extends BaseInputProps {
 }
 
 export interface InputTextareaProps extends BaseInputProps {
-  type?: 'textarea';
+  type?: 'text';
   value?: string;
   defaultValue?: string;
   rows?: number;

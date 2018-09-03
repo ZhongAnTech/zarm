@@ -31,7 +31,7 @@ export default class Input extends PureComponent<InputProps, {}> {
 
   render() {
     if (this.props.type === 'text' && 'rows' in this.props) {
-      return <InputTextarea ref={ele => (this.input = ele)} {...this.props} type="textarea" />;
+      return <InputTextarea ref={ele => (this.input = ele)} {...this.props} />;
     }
 
     switch (this.props.type) {
@@ -39,9 +39,6 @@ export default class Input extends PureComponent<InputProps, {}> {
       case 'price':
       case 'number':
         return <InputNumber ref={ele => (this.input = ele)} {...this.props} />;
-
-      case 'textarea':
-        return <InputTextarea ref={ele => (this.input = ele)} {...this.props} />;
 
       case 'text':
       case 'search':
