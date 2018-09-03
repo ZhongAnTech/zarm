@@ -6,13 +6,13 @@ $theme-warning: #ec9131;                 // 警告
 $theme-error: #ff5050;                   // 失败
 
 // 文字色
-$color-text: #333;                       // 基本
-$color-text-inverse: #fff;               // 反色
-$color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bbb;              // 失效
-$color-text-caption: #999;               // 辅助描述
-$color-link: $theme-primary;               // 链接
-$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+$color-text: #333; // 基本
+$color-text-inverse: #fff; // 反色
+$color-text-placeholder: #a9a9a9; // 文本框提示
+$color-text-disabled: #bbb; // 失效
+$color-text-caption: #999; // 辅助描述
+$color-link: $theme-primary; // 链接
+$color-shadow: rgba(56, 56, 56, 0.15); // 阴影色
 
 // 背景色
 $background-active: #ddd;
@@ -67,6 +67,7 @@ $prefixCls-action-sheet: za-action-sheet;
 $prefixCls-alert: za-alert;
 $prefixCls-badge: za-badge;
 $prefixCls-button: za-button;
+$prefixCls-calendar: za-calendar;
 $prefixCls-cell: za-cell;
 $prefixCls-checkbox: za-checkbox;
 $prefixCls-confirm: za-confirm;
@@ -136,18 +137,37 @@ $button-success-active-bg: '#10ae79';
 $button-warning-active-bg: '#d3822c';
 $button-error-active-bg: '#e54747';
 
+// Calendar
+$calendar-height: r(45); // 最小高度
+$calendar-background: #fff; // 背景色
+$calendar-week-bar-fontsize: r(14); // 星期条文字大小
+$calendar-week-bar-background: #fafafa; // 星期条文字背景色
+$calendar-week-bar-color: #909090; // 星期条文字颜色
+$calendar-day-fontsize: r(16); // 月份文字大小
+$calendar-day-title-fontsize: r(17); // 月份title文字大小
+$calendar-day-background: #ffffff; // 月份文字背景颜色
+$calendar-day-color: #464646; // 月份文字颜色
+$calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
+$calendar-day-today-color: #11c286; // 日期今天选中颜色
+$calendar-day-selected-background: #12c286; // 日期文字选中背景颜色
+$calendar-day-selected-color: #fff; // 日期文字选中颜色
+$calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
+$calendar-day-range-color: #12c286; // 日期文字范围内颜色
+$calendar-day-width: 14.28571%; // 日期宽度
+$calendar-day-height: r(40); // 日期高度
+
 // Cell
-$cell-height: r(45);                            // 最小高度
-$cell-background: #fff;                       // 背景色
-$cell-line-left: r(15);                         // 分隔线左边距
-$cell-line-hasicon-left: r(59);                 // 带icon时分隔线左边距
-$cell-title-color: $color-text;                 // 标题文字颜色
-$cell-title-font-size: $font-size-lg;           // 标题文字大小
-$cell-description-color: #999;                // 标题文字颜色
-$cell-description-font-size: $font-size-md;     // 描述文字大小
-$cell-icon-width: r(28);                        // 图标宽度
-$cell-icon-height: r(28);                       // 图标高度
-$cell-label-width: r(100);                      // 表单label宽度
+$cell-height: r(45); // 最小高度
+$cell-background: #fff; // 背景色
+$cell-line-left: r(15); // 分隔线左边距
+$cell-line-hasicon-left: r(59); // 带icon时分隔线左边距
+$cell-title-color: $color-text; // 标题文字颜色
+$cell-title-font-size: $font-size-lg; // 标题文字大小
+$cell-description-color: #999; // 标题文字颜色
+$cell-description-font-size: $font-size-md; // 描述文字大小
+$cell-icon-width: r(28); // 图标宽度
+$cell-icon-height: r(28); // 图标高度
+$cell-label-width: r(100); // 表单label宽度
 
 // Checkbox
 $checkbox-size: r(20);
