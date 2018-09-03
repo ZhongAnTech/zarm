@@ -45,8 +45,8 @@ export default class Carousel extends Component<CarouselProps, any> {
   componentDidMount() {
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
-    Events.on(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.on(this.carouselItems, 'transitionend', this.transitionEnd);
+    // Events.on(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
+    // Events.on(this.carouselItems, 'transitionend', this.transitionEnd);
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
@@ -85,12 +85,10 @@ export default class Carousel extends Component<CarouselProps, any> {
   // 移动到指定编号
   onMoveTo = (index, animationDuration) => {
     const dom = this.carouselItems;
-    if (!dom) {
-      return;
-    }
 
-    const { loop, children } = this.props;
+    const { loop, children, onChange } = this.props;
     const maxLength = children.length;
+    const previousIndex = this.state.activeIndex;
 
     this.translateX = -dom.offsetWidth * (index + loop);
     this.translateY = -dom.offsetHeight * (index + loop);
@@ -104,6 +102,10 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.setState({
       activeIndex: index,
     });
+
+    if (typeof onChange === 'function' && previousIndex !== index) {
+      onChange(index);
+    }
   }
 
   // 触屏事件
@@ -171,7 +173,6 @@ export default class Carousel extends Component<CarouselProps, any> {
     const {
       moveDistanceRatio = Carousel.defaultProps.moveDistanceRatio,
       moveTimeSpan = Carousel.defaultProps.moveTimeSpan,
-      onChange,
     } = this.props;
     let { activeIndex } = this.state;
 
@@ -189,10 +190,6 @@ export default class Carousel extends Component<CarouselProps, any> {
         ? 'prev'
         : 'next';
 
-      if (typeof onChange === 'function') {
-        onChange(this.getActiveIndex(action));
-      }
-
       activeIndex = (action === 'next')
         ? activeIndex + 1
         : activeIndex - 1;
@@ -204,33 +201,20 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.startAutoPlay();
   }
 
-  getActiveIndex = (action: 'prev' | 'next') => {
-    const { loop, children } = this.props;
-    const maxIndex = children.length - 1;
-    let { activeIndex } = this.state;
-
-    if (action === 'next') {
-      activeIndex = (activeIndex + 1) > maxIndex ? (loop ? 0 : maxIndex) : activeIndex += 1;
-    } else {
-      activeIndex = (activeIndex - 1) < 0 ? (loop ? maxIndex : 0) : activeIndex -= 1;
-    }
-    return activeIndex;
-  }
-
   // 自动轮播开始
   startAutoPlay = () => {
-    const { direction = 'left', loop, autoPlay, autoPlayIntervalTime, children } = this.props;
+    const { direction = 'left', loop, autoPlay, autoPlayIntervalTime } = this.props;
 
     this.moveInterval = (autoPlay && setInterval(() => {
       let activeIndex = this.state.activeIndex;
-      const maxLength = children.length;
+      const isLeftOrTopDirection = (['left', 'top']).indexOf(direction) > -1;
 
-      activeIndex = (['left', 'top'].indexOf(direction) > -1)
+      activeIndex = isLeftOrTopDirection
         ? (activeIndex + 1)
         : (activeIndex - 1);
 
       // 不循环暂停轮播
-      if (!loop && activeIndex > maxLength - 1) {
+      if (!loop && (isLeftOrTopDirection ? this.isLastIndex() : this.isFirstIndex())) {
         this.pauseAutoPlay();
         return;
       }
@@ -245,7 +229,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     }
   }
 
-  // 处理节点（首位拼接）
+  // 处理节点（首尾拼接）
   parseItems = (props) => {
     if (props.children.length === 0) {
       return;
@@ -300,6 +284,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 
+  // TODO:bug fix, change every time
   transitionEnd = () => {
     const activeIndex = this.state.activeIndex;
     const dom = this.carouselItems;
@@ -361,9 +346,9 @@ export default class Carousel extends Component<CarouselProps, any> {
   }
 
   render() {
-    const { prefixCls, className, height, showPagination } = this.props;
+    const { prefixCls, className, height, showPagination, style } = this.props;
     const cls = classnames(prefixCls, className);
-    const itemsStyle: CSSProperties = {};
+    const itemsStyle: CSSProperties = { ...style };
 
     if (!this.isDirectionX()) {
       itemsStyle.height = height;
@@ -381,6 +366,7 @@ export default class Carousel extends Component<CarouselProps, any> {
           <div
             ref={(ele) => { this.carouselItems = ele; }}
             className={`${prefixCls}-items`}
+            onTransitionEnd={this.transitionEnd}
             style={itemsStyle}
           >
             {this.state.items}
