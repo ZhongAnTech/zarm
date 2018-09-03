@@ -9,3 +9,35 @@ exports[`Badge renders shape is dot correctly 1`] = `
   />
 </span>
 `;
+
+exports[`Badge sup 1`] = `
+<span
+  class="za-badge theme-error shape-dot"
+>
+  <sup
+    class="za-badge-sup za-badge-sup-up"
+  />
+</span>
+`;
+
+exports[`Badge text 1`] = `
+<span
+  class="za-badge theme-error shape-rect"
+>
+  <sup
+    class="za-badge-sup"
+  >
+    99+
+  </sup>
+</span>
+`;
+
+exports[`Badge theme 1`] = `
+<span
+  class="za-badge theme-warning shape-dot"
+>
+  <sup
+    class="za-badge-sup"
+  />
+</span>
+`;
