@@ -24,7 +24,7 @@ describe('Input', () => {
   });
 
   it('showLength', () => {
-    const wrapper = render(<Input showLength maxLength={100} type="textarea" rows={4} />);
+    const wrapper = render(<Input showLength maxLength={100} type="text" rows={4} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -147,7 +147,7 @@ describe('Input.Base', () => {
 
 describe('Input.Textarea', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Input type="textarea" rows={4} />);
+    const wrapper = render(<Input type="text" rows={4} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -155,7 +155,7 @@ describe('Input.Textarea', () => {
     jest.useFakeTimers();
     const props = {
       autoHeight: true,
-      type: 'textarea',
+      type: 'text',
       rows: 4,
       value: 'foo',
       onChange: jest.fn(),
@@ -171,7 +171,7 @@ describe('Input.Textarea', () => {
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
     const wrapper = mount(
-      <Input type="textarea" onFocus={onFocus} />
+      <Input type="text" rows={2} onFocus={onFocus} />
     );
     wrapper.find('textarea').simulate('focus');
     expect(onFocus).toBeCalled();
@@ -181,7 +181,7 @@ describe('Input.Textarea', () => {
 
   it('renders onBlur called correctly', () => {
     const onBlur = jest.fn();
-    const wrapper = mount(<Input type="textarea" onBlur={onBlur} />);
+    const wrapper = mount(<Input type="text" rows={2} onBlur={onBlur} />);
     // const spy = jest.spyOn(wrapper.instance(), 'onBlur');
     wrapper.find('textarea').simulate('focus');
     wrapper.find('textarea').simulate('blur');
