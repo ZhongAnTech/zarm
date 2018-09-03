@@ -7,7 +7,6 @@
     height: 100%;
     left: 0;
     top: 0;
-    border-width: 0;
     border-radius: $border-radius;
     @each $position in $positions {
       border-#{$position}: 1px solid $border-color;

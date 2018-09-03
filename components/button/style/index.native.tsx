@@ -21,73 +21,97 @@ export default {
     marginRight: variables.button_padding_h_md / 2,
   },
 
-  // theme
-  defaultWrapper: {
-    backgroundColor: variables.theme_default,
-  },
-  defaultActiveWrapper: {
-    backgroundColor: '#c9c9c9',
-  },
-  defaultBorderedWrapper: {
-    borderColor: variables.theme_default,
-  },
-  defaultText: {
-    color: variables.color_text,
-  },
-
   primaryWrapper: {
     backgroundColor: variables.theme_primary,
   },
   primaryActiveWrapper: {
-    backgroundColor: '#0f9d6d',
+    backgroundColor: variables.button_primary_active_bg,
   },
-  primaryBorderedWrapper: {
+  primaryGhostWrapper: {
     borderColor: variables.theme_primary,
   },
-  primaryBorderedText: {
+  primaryGhostText: {
     color: variables.theme_primary,
+  },
+  primaryGhostActiveWrapper: {
+    borderColor: variables.button_primary_ghost_active_color,
+  },
+  primaryGhostActiveText: {
+    color: variables.button_primary_ghost_active_color,
   },
 
   successWrapper: {
     backgroundColor: variables.theme_success,
   },
   successActiveWrapper: {
-    backgroundColor: '#4cbe46',
+    backgroundColor: variables.button_success_active_bg,
   },
-  successBorderedWrapper: {
+  successGhostWrapper: {
     borderColor: variables.theme_success,
   },
-  successBorderedText: {
+  successGhostText: {
     color: variables.theme_success,
+  },
+  successGhostActiveWrapper: {
+    borderColor: variables.button_success_ghost_active_color,
+  },
+  successGhostActiveText: {
+    color: variables.button_success_ghost_active_color,
   },
 
   warningWrapper: {
     backgroundColor: variables.theme_warning,
   },
   warningActiveWrapper: {
-    backgroundColor: '#e09415',
+    backgroundColor: variables.button_warning_active_bg,
   },
-  warningBorderedWrapper: {
+  warningGhostWrapper: {
     borderColor: variables.theme_warning,
   },
-  warningBorderedText: {
+  warningGhostText: {
     color: variables.theme_warning,
+  },
+  warningGhostActiveWrapper: {
+    borderColor: variables.button_warning_ghost_active_color,
+  },
+  warningGhostActiveText: {
+    color: variables.button_warning_ghost_active_color,
   },
 
   errorWrapper: {
     backgroundColor: variables.theme_error,
   },
   errorActiveWrapper: {
-    backgroundColor: '#e03422',
+    backgroundColor: variables.button_error_active_bg,
   },
-  errorBorderedWrapper: {
+  errorGhostWrapper: {
     borderColor: variables.theme_error,
   },
-  errorBorderedText: {
+  errorGhostText: {
     color: variables.theme_error,
+  },
+  errorGhostActiveWrapper: {
+    borderColor: variables.button_error_ghost_active_color,
+  },
+  errorGhostActiveText: {
+    color: variables.button_error_ghost_active_color,
   },
 
   // size
+  mdWrapper: {
+    height: variables.button_height_md,
+    paddingLeft: variables.button_padding_h_md,
+    paddingRight: variables.button_padding_h_md,
+  },
+  mdCircleWrapper: {
+    width: variables.button_height_md,
+  },
+  mdText: {
+    fontSize: variables.button_font_size_md,
+  },
+  mdIcon: {
+    marginRight: variables.button_padding_h_md / 2,
+  },
   lgWrapper: {
     height: variables.button_height_lg,
     paddingLeft: variables.button_padding_h_lg,
@@ -116,10 +140,27 @@ export default {
   smIcon: {
     marginRight: variables.button_padding_h_sm / 2,
   },
+  xsWrapper: {
+    height: variables.button_height_xs,
+    paddingLeft: variables.button_padding_h_xs,
+    paddingRight: variables.button_padding_h_xs,
+  },
+  xsCircleWrapper: {
+    width: variables.button_height_xs,
+  },
+  xsText: {
+    fontSize: variables.button_font_size_xs,
+  },
+  xsIcon: {
+    marginRight: variables.button_padding_h_xs / 2,
+  },
 
   // shape
   radiusWrapper: {
     borderRadius: variables.radius_md,
+  },
+  rectWrapper: {
+    borderRadius: 0,
   },
   roundWrapper: {
     borderRadius: variables.radius_round,
@@ -131,8 +172,8 @@ export default {
     paddingRight: 0,
   },
 
-  // bordered
-  borderedWrapper: {
+  // ghost
+  ghostWrapper: {
     borderWidth: 1,
     backgroundColor: 'transparent',
   },
@@ -142,8 +183,19 @@ export default {
     opacity: 0.5,
   },
 
+  // disabled ghost
+  disabledGhostWrapper: {
+    borderColor: variables.button_disabled_ghost_color,
+    opacity: 1,
+  },
+
+  // disabled ghost text
+  disabledGhostText: {
+    color: variables.button_disabled_ghost_color,
+  },
+
   // active
   activeText: {
-    opacity: 0.6,
+    opacity: 1,
   },
 };
