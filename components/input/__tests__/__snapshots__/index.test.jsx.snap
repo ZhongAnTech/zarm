@@ -1036,7 +1036,7 @@ exports[`Input.Textarea autoHeight 1`] = `
   autoHeight={true}
   onChange={[MockFunction]}
   rows={4}
-  type="textarea"
+  type="text"
   value="foo"
 >
   <InputTextarea
@@ -1047,7 +1047,7 @@ exports[`Input.Textarea autoHeight 1`] = `
     prefixCls="za-input"
     rows={4}
     showLength={false}
-    type="textarea"
+    type="text"
     value="foo"
   >
     <div
