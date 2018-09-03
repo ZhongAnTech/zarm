@@ -13,6 +13,7 @@ module.exports = {
     '!components/*/*.native.{ts,tsx}',
     '!components/*/PropsType.{ts,tsx}',
     '!components/**/style/*.{ts,tsx}',
+    '!components/style/**/*',
   ],
   transform: {
     '^.+\\.jsx?$': require.resolve('./preprocessor'),

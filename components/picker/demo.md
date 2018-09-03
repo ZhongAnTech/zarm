@@ -24,38 +24,38 @@ const MULTI_DATA = [
 // 级联数据
 const CASCADE_DATA = [
   {
-    value: '1',
+    code: '1',
     label: '北京市',
     children: [
-      { value: '11', label: '海淀区' },
-      { value: '12', label: '西城区' },
+      { code: '11', label: '海淀区' },
+      { code: '12', label: '西城区' },
     ],
   },
   {
-    value: '2',
+    code: '2',
     label: '上海市',
     children: [
-      { value: '21', label: '杨浦区' },
-      { value: '22', label: '静安区' },
+      { code: '21', label: '杨浦区' },
+      { code: '22', label: '静安区' },
     ],
   },
 ];
 
 const DIY_DATA = [
   {
-    code: '1',
+    value: '1',
     name: '北京市',
     children: [
-      { code: '11', name: '海淀区' },
-      { code: '12', name: '西城区' },
+      { value: '11', name: '海淀区' },
+      { value: '12', name: '西城区' },
     ],
   },
   {
-    code: '2',
+    value: '2',
     name: '上海市',
     children: [
-      { code: '21', name: '黄埔区' },
-      { code: '22', name: '虹口区' },
+      { value: '21', name: '黄埔区' },
+      { value: '22', name: '虹口区' },
     ],
   },
 ];
@@ -66,7 +66,7 @@ class Demo extends React.Component {
     this.state = {
       single: {
         visible: false,
-        value: [],
+        value: '',
         dataSource: SINGLE_DATA,
       },
       multi: {
@@ -77,7 +77,7 @@ class Demo extends React.Component {
       cascade: {
         visible: false,
         value: [],
-        dataSource: CASCADE_DATA,
+        dataSource: [],
       },
       diy: {
         visible: false,
@@ -94,6 +94,7 @@ class Demo extends React.Component {
 
       cascade.dataSource = CASCADE_DATA;
       cascade.value = ['1', '12'];
+      cascade.valueMember = "code";
       this.setState({ cascade });
     }, 0);
   }
@@ -178,9 +179,10 @@ class Demo extends React.Component {
           visible={cascade.visible}
           value={cascade.value}
           dataSource={cascade.dataSource}
+          valueMember={cascade.valueMember}
           onOk={(selected) => {
             console.log('Picker onOk: ', selected);
-            cascade.value = selected.map(item => item.value);
+            cascade.value = selected.map(item => item.code);
             this.setState({ cascade });
             Toast.show(JSON.stringify(selected));
             this.toggle('cascade');
@@ -195,11 +197,11 @@ class Demo extends React.Component {
           okText="Ok"
           dataSource={diy.dataSource}
           value={diy.value}
-          valueMember="code"
+          valueMember="value"
           itemRender={data => data.name}
           onOk={(selected) => {
             console.log('Picker onOk: ', selected);
-            diy.value = selected.map(item => item.code);
+            diy.value = selected.map(item => item.value);
             this.setState({
               diy,
             });
@@ -248,7 +250,7 @@ class Demo extends React.Component {
       this.state = {
         visible: false,
         value: [],
-        dataSource: [],
+        dataSource: CASCADE_DATA,
       };
   }
 
@@ -263,7 +265,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { visible, value, dataSource } = this.state;
+    const { visible, visible2, value, dataSource } = this.state;
     return (
       <div>
         <Cell title="城市">
@@ -297,19 +299,19 @@ import { PickerView } from 'zarm';
 // 级联数据
 const CASCADE_DATA = [
   {
-    value: '1',
+    code: '1',
     label: '北京市',
     children: [
-      { value: '11', label: '海淀区' },
-      { value: '12', label: '西城区' },
+      { code: '11', label: '海淀区' },
+      { code: '12', label: '西城区' },
     ],
   },
   {
-    value: '2',
+    code: '2',
     label: '上海市',
     children: [
-      { value: '21', label: '杨浦区' },
-      { value: '22', label: '静安区' },
+      { code: '21', label: '杨浦区' },
+      { code: '22', label: '静安区' },
     ],
   },
 ];
@@ -319,7 +321,35 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       value: [],
+      dataSource: CASCADE_DATA,
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        value: ['1', '12'],
+        dataSource: [
+          {
+            code: '1',
+            label: '北京市',
+            children: [
+              { code: '11', label: '海淀区' },
+              { code: '12', label: '西城区' },
+            ],
+          },
+          {
+            code: '2',
+            label: '上海市',
+            children: [
+              { code: '21', label: '杨浦区' },
+              { code: '22', label: '静安区' },
+            ],
+          },
+        ],
+        valueMember: 'code'
+      })
+    })
   }
 
   render() {
@@ -327,7 +357,8 @@ class Demo extends React.Component {
       <div>
         <PickerView
           value={this.state.value}
-          dataSource={CASCADE_DATA}
+          valueMember="code"
+          dataSource={this.state.dataSource}
           onChange={selected => console.log('PickerView onChange: ', selected)}
         />
       </div>
