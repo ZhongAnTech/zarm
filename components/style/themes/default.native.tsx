@@ -73,11 +73,11 @@ export default {
 
   // Badge
   badge_height: 14,
-  badge_dot_height_with: 8,
   badge_font_size: 10,
-  badge_padding_h: 2,
+  badge_padding_h: 4,
   badge_dot_diameter: 8,
-  badge_radius_diameter: 2,
+  badge_rect_radius: 2,
+  badge_round_radius: 1000,
   badge_sup_top: -4,
   badge_text_color: '#FFF',
 

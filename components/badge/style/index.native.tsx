@@ -6,14 +6,14 @@ export default {
   },
 
   dotBadge: {
-    width: variables.badge_dot_height_with,
-    height: variables.badge_dot_height_with,
-    borderRadius: variables.badge_dot_diameter,
+    width: variables.badge_dot_diameter,
+    height: variables.badge_dot_diameter,
+    borderRadius: variables.badge_round_radius,
     display: 'flex',
   },
 
   radiusBadge: {
-    borderRadius: variables.badge_radius_diameter,
+    borderRadius: variables.badge_rect_radius,
     height: variables.badge_height,
   },
 
@@ -68,7 +68,7 @@ export default {
     display: 'flex',
     fontSize: variables.badge_font_size,
     lineHeight: variables.badge_height,
-    paddingHorizontal: variables.padding_h_sm,
+    paddingHorizontal: variables.badge_padding_h,
   },
 
   dotText: {
