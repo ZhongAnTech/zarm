@@ -51,7 +51,7 @@ $prefixCls: $prefixCls-badge;
       width: $badge-dot-diameter;
       height: $badge-dot-diameter;
       padding: 0;
-      border-radius: $badge-round-radius;
+      border-radius: $radius-circle;
 
       &-up {
         transform: translateX(-$badge-dot-diameter/2) translateY(-50%);
@@ -75,7 +75,7 @@ $prefixCls: $prefixCls-badge;
   &.shape-circle {
     .#{$prefixCls}-sup {
       width: $badge-height;
-      border-radius: $badge-round-radius;
+      border-radius: $radius-circle;
       padding: 0;
     }
   }
