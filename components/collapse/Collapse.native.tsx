@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties, Children, cloneElement } from 'react';
+import React, { PureComponent, CSSProperties, Children, cloneElement, ReactElement } from 'react';
 import {
   StyleSheet,
   View,
@@ -91,7 +91,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     const { animated } = this.props;
     const { activeKey } = this.state;
     return Children.map(this.props.children, (ele, index) => {
-      return cloneElement(ele as JSX.Element, {
+      return cloneElement(ele as ReactElement<any>, {
         index: String(index),
         animated,
         activeKey,
