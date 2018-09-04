@@ -101,6 +101,10 @@ export default {
   button_warning_ghost_active_color: '#cc9131',
   button_error_ghost_active_color: '#df5050',
 
+  // Collapse
+  collapse_height: 52,
+  collapse_padding_h: 16,
+
   // Cell
   cell_height: 45,                                   // 最小度
   cell_background: '#fff',                           // 背景色
