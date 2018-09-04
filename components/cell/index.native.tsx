@@ -63,9 +63,6 @@ export default class Cell extends PureComponent<CellProps, any> {
     const cellContentStyle = [
       styles!.cellContentStyle,
     ] as ViewStyle;
-    const cellLineContainerStyle = [
-      icon ? styles!.cellLineHasiconLeft : styles!.cellLineLeft,
-    ] as ViewStyle;
     const cellLineStyle = [
       styles!.cellLineStyle,
     ] as ViewStyle;
@@ -101,9 +98,7 @@ export default class Cell extends PureComponent<CellProps, any> {
     const arrowRender = hasArrow && <View style={arrowStyle}/>;
     const helpRender = help && <View style={helpStyle}>{help}</View>;
     const contentRender = <View style={wrapperStyle}>
-      <View style={cellLineContainerStyle}>
-        <View style={cellLineStyle}/>
-      </View>
+      <View style={cellLineStyle}/>
       <View style={cellContentStyle}>
         <View style={containerStyle}>
           {iconRender}

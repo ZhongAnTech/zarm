@@ -18,10 +18,6 @@ export default {
     marginTop: -1,
     paddingLeft: variables.cell_line_left,
   },
-  cellLineHasiconLeft: {
-    marginTop: -1,
-    paddingLeft: variables.cell_line_hasicon_left,
-  },
   cellLineStyle: {
     borderTopWidth: 1,
     borderTopColor: variables.border_color,
