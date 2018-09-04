@@ -134,6 +134,11 @@ module.exports = {
       description: '面板 Panel',
       module: require('./pages/PanelPage'),
     },
+    {
+      title: 'Collapse',
+      description: '折叠面板 Collapse',
+      module: require('./pages/CollapsePage'),
+    },
   ],
   navigation: [
     {
