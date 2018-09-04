@@ -1,4 +1,3 @@
-// import 'jsdom-global/register';
 import React from 'react';
 import { TouchableHighlight, Text } from 'react-native';
 import { mount, shallow } from 'enzyme';

@@ -31,6 +31,5 @@ module.exports = {
     `<rootDir>/node_modules/(?!(${transformPackages.join('|')})/)`,
     // '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
   ],
-  testURL: 'http://localhost',
   testEnvironment: 'jsdom',
 };

@@ -18,7 +18,7 @@ const collapseStyles = StyleSheet.create<any>(collapaseStyle);
 
 export default class Collapse extends PureComponent<CollapseProps, any> {
   static defaultProps = {
-    multiple: true,
+    multiple: false,
     animated: false,
     styles: collapseStyles,
     onChange: () => {},

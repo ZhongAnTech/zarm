@@ -155,7 +155,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
           style={collapseStyles!.touchStyle}
           onPress={this.onPress}
           underlayColor="#EEE"
-          activeOpacity={0.9}
+          activeOpacity={disabled ? 1 : 0.8}
         >
           <View style={titleStyle}>
             <View style={titleInnerStyle}>
