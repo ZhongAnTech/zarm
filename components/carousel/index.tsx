@@ -100,7 +100,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     } else if (index < 0) {
       index = maxLength - 1;
     }
-    const activeIndexChanged = previousIndex !== index
+    const activeIndexChanged = previousIndex !== index;
     this.setState({
       activeIndex: index,
       activeIndexChanged,
