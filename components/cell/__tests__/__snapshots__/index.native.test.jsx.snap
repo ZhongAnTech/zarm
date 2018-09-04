@@ -2,7 +2,9 @@
 
 exports[`Cell children 1`] = `
 <react-native-mock>
-  <react-native-mock />
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
@@ -18,7 +20,9 @@ exports[`Cell children 1`] = `
 
 exports[`Cell description 1`] = `
 <react-native-mock>
-  <react-native-mock />
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
@@ -36,7 +40,9 @@ exports[`Cell description 1`] = `
 
 exports[`Cell hasArrow 1`] = `
 <react-native-mock>
-  <react-native-mock />
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
@@ -56,7 +62,9 @@ exports[`Cell hasArrow 1`] = `
 
 exports[`Cell help 1`] = `
 <react-native-mock>
-  <react-native-mock />
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
@@ -83,7 +91,9 @@ exports[`Cell help 1`] = `
 
 exports[`Cell icon 1`] = `
 <react-native-mock>
-  <react-native-mock />
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
@@ -108,7 +118,9 @@ exports[`Cell icon 1`] = `
 
 exports[`Cell renders correctly 1`] = `
 <react-native-mock>
-  <react-native-mock />
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
