@@ -245,25 +245,6 @@ describe('Carousel', () => {
       .simulate('touchEnd');
   });
 
-  it('pagination event', () => {
-    const onChange = jest.fn();
-    const onChangeEnd = jest.fn();
-    const direction = 'right';
-    const props = { onChange, onChangeEnd, direction };
-    const wrapper = mount(createCarousel(props));
-
-    wrapper
-      .find('.za-carousel-pagination li')
-      .at(2)
-      .simulate('click');
-    expect(
-      wrapper
-        .find('.za-carousel-pagination li')
-        .at(2)
-        .hasClass('active')
-    ).toBe(true);
-  });
-
   it('resize event', () => {
     // reference: https://github.com/airbnb/enzyme/issues/426#issuecomment-225912455
     const eventMap = {};
