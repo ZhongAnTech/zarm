@@ -224,25 +224,43 @@ describe('Carousel', () => {
     const moveTimeSpan = 200;
     const props = { moveDistanceRatio, moveTimeSpan };
     const wrapper = mount(createCarousel(props));
-    wrapper.find('.za-carousel-items')
-      .simulate('touchStart', {
-        touches: [
-          {
-            pageX: 0,
-            pageY: 0,
-          },
-        ],
-      })
-      .simulate('touchMove', {
-        touches: [
-          {
-            pageX: 100,
-            pageY: 100,
-          },
-        ],
-      })
-      // TODO: touchEnd callback not contain offsetX and offsetY props
-      .simulate('touchEnd');
+    const wrapperTouchEnd = ({
+      direction = 'left',
+      offset = 100,
+      activeIndex = 0,
+    }) => {
+      wrapper
+        .setProps({ direction, activeIndex })
+        .find('.za-carousel-items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: ['left', 'right'].includes(direction) ? offset : 0,
+              pageY: ['top', 'bottom'].includes(direction) ? offset : 0,
+            },
+          ],
+        })
+        .simulate('touchEnd');
+    };
+    wrapperTouchEnd({ offset: 0 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    wrapperTouchEnd({ offset: -100 });
+    expect(wrapper.state('activeIndex')).toEqual(1);
+
+    wrapperTouchEnd({ activeIndex: 1, offset: 100 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    wrapperTouchEnd({ direction: 'top', offset: -100 });
+    expect(wrapper.state('activeIndex')).toEqual(1);
   });
 
   it('resize event', () => {
