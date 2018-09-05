@@ -141,7 +141,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 设置不循环的时候
     if (!this.props.loop) {
-      // 在首页时禁止拖动
+      // 在尾页时禁止拖动
       if (this.isLastIndex()) {
         if (
           this.isDirectionX() && offsetX < 0 ||
@@ -151,7 +151,7 @@ export default class Carousel extends Component<CarouselProps, any> {
         }
       }
 
-      // 在尾页时禁止拖动
+      // 在首页时禁止拖动
       if (this.isFirstIndex()) {
         if (
           this.isDirectionX() && offsetX > 0 ||
