@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Carousel from '../index';
@@ -128,18 +128,108 @@ describe('Carousel', () => {
 
     wrapper.setProps({ activeIndex: -1 });
     expect(wrapper.state('activeIndex')).toEqual(1);
+
+    wrapper.setProps({ activeIndex: 10 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
   });
 
-  it('touch event', () => {
-    const direction = 'right';
-    const props = { direction };
-    const wrapper = mount(createCarousel(props));
+  it('touchStart', () => {
+    const wrapper = mount(createCarousel());
+    const wrapperTouchStart = (wrapperTouch) => {
+      wrapperTouch
+        .find('.za-carousel-items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+            },
+          ],
+        });
+    };
+    wrapperTouchStart(wrapper);
+    expect(wrapper.state('activeIndex')).toEqual(0);
 
+    wrapper.setProps({ activeIndex: 2 });
+    wrapperTouchStart(wrapper);
+    expect(wrapper.state('activeIndex')).toEqual(2);
+  });
+
+  it('touchMove', () => {
+    const wrapperDirectionX = mount(createCarousel());
+    const wrapperDirectionY = mount(createCarousel({ direction: 'bottom' }));
+    const wrapperTouchMove = (wrapper) => {
+      wrapper.find('.za-carousel-items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: -4,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: -5,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 4,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 4 + 5,
+            },
+          ],
+        });
+    };
+
+    Array.of(wrapperDirectionX, wrapperDirectionY).forEach((wrapper) => {
+      wrapperTouchMove(wrapper);
+      expect(wrapper.state('activeIndex')).toEqual(0);
+
+      wrapper.setProps({ activeIndex: 2 });
+      wrapperTouchMove(wrapper);
+      expect(wrapper.state('activeIndex')).toEqual(2);
+    });
+  });
+
+  it('touchEnd', () => {
+    const moveDistanceRatio = 1;
+    const moveTimeSpan = 200;
+    const props = { moveDistanceRatio, moveTimeSpan };
+    const wrapper = mount(createCarousel(props));
     wrapper.find('.za-carousel-items')
       .simulate('touchStart', {
         touches: [
           {
             pageX: 0,
+            pageY: 0,
           },
         ],
       })
@@ -147,12 +237,12 @@ describe('Carousel', () => {
         touches: [
           {
             pageX: 100,
+            pageY: 100,
           },
         ],
       })
+      // TODO: touchEnd callback not contain offsetX and offsetY props
       .simulate('touchEnd');
-
-    expect(wrapper.state('activeIndex')).toEqual(0);
   });
 
   it('pagination event', () => {
@@ -188,9 +278,9 @@ describe('Carousel', () => {
   });
 
   it('transitionend event', () => {
-    const activeIndex = 1;
     const onChangeEnd = jest.fn();
-    const wrapper = mount(createCarousel({ activeIndex, onChangeEnd }));
+    const wrapper = mount(createCarousel({ onChangeEnd }));
+    wrapper.find('.za-carousel-pagination li').at(1).simulate('click');
     wrapper.find('.za-carousel-items').at(0).simulate('transitionend');
     expect(onChangeEnd).toBeCalledWith(1);
   });
