@@ -114,10 +114,11 @@ $alert-button-height: r(50);
 $alert-button-font-size: r(18);
 
 // Badge
-$badge-height: r(19);
-$badge-font-size: $font-size-sm;
-$badge-padding-h: $padding-h-sm;
+$badge-height: r(14);
+$badge-font-size: $font-size-xs;
+$badge-padding-h: r(4);
 $badge-dot-diameter: r(8);
+$badge-top-overflow: r(4);
 
 // Button
 $button-height-sm: r(27);

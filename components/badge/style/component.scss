@@ -41,8 +41,8 @@ $prefixCls: $prefixCls-badge;
     &-up {
       position: absolute;
       top: 0;
-      right: 0;
-      transform: translateX(50%) translateY(-50%);
+      left: 100%;
+      transform: translateX(-$badge-height/2) translateY(-$badge-top-overflow);
     }
   }
 
@@ -52,6 +52,10 @@ $prefixCls: $prefixCls-badge;
       height: $badge-dot-diameter;
       padding: 0;
       border-radius: $radius-circle;
+
+      &-up {
+        transform: translateX(-$badge-dot-diameter/2) translateY(-50%);
+      }
     }
   }
 
@@ -73,6 +77,13 @@ $prefixCls: $prefixCls-badge;
       width: $badge-height;
       border-radius: $radius-circle;
       padding: 0;
+    }
+  }
+
+  &.shape-leaf {
+    .#{$prefixCls}-sup {
+      min-width: $badge-height;
+      border-radius: $radius-round $radius-round $radius-round 0;
     }
   }
 }
