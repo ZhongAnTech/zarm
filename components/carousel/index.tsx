@@ -34,6 +34,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.state = {
       items: [],
       activeIndex: props.activeIndex,
+      activeIndexChanged: false,
     };
   }
 
@@ -99,11 +100,13 @@ export default class Carousel extends Component<CarouselProps, any> {
     } else if (index < 0) {
       index = maxLength - 1;
     }
+    const activeIndexChanged = previousIndex !== index;
     this.setState({
       activeIndex: index,
+      activeIndexChanged,
     });
 
-    if (typeof onChange === 'function' && previousIndex !== index) {
+    if (typeof onChange === 'function' && activeIndexChanged) {
       onChange(index);
     }
   }
@@ -138,7 +141,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 设置不循环的时候
     if (!this.props.loop) {
-      // 在首页时禁止拖动
+      // 在尾页时禁止拖动
       if (this.isLastIndex()) {
         if (
           this.isDirectionX() && offsetX < 0 ||
@@ -148,7 +151,7 @@ export default class Carousel extends Component<CarouselProps, any> {
         }
       }
 
-      // 在尾页时禁止拖动
+      // 在首页时禁止拖动
       if (this.isFirstIndex()) {
         if (
           this.isDirectionX() && offsetX > 0 ||
@@ -284,7 +287,6 @@ export default class Carousel extends Component<CarouselProps, any> {
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 
-  // TODO:bug fix, change every time
   transitionEnd = () => {
     const activeIndex = this.state.activeIndex;
     const dom = this.carouselItems;
@@ -294,7 +296,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
 
     const { onChangeEnd } = this.props;
-    if (typeof onChangeEnd === 'function') {
+    if (typeof onChangeEnd === 'function' && this.state.activeIndexChanged) {
       onChangeEnd(activeIndex);
     }
   }
