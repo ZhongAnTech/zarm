@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 const border = {
   borderBottomWidth: StyleSheet.hairlineWidth,
   // borderBottomWidth: 1,
-  borderBottomColor: '#E6E6E6',
+  borderBottomColor: variables.theme_default,
   borderStyle: 'solid',
 };
 
