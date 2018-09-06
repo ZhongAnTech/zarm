@@ -30,7 +30,6 @@ $prefixCls: $prefixCls-input;
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    caret-color: $input-cursor-color;
     color: $color-text;
 
     &[type="date"],
@@ -46,10 +45,6 @@ $prefixCls: $prefixCls-input;
     &:disabled {
       cursor: not-allowed;
       color: $color-text-disabled;
-    }
-
-    &::selection {
-      background: $input-selection-color;
     }
   }
 
