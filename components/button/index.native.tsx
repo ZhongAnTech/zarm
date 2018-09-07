@@ -20,9 +20,9 @@ const buttonStyles = StyleSheet.create<any>(buttonStyle);
 
 export default class Button extends PureComponent<ButtonProps, any> {
   static defaultProps = {
-    theme: 'primary',
+    theme: 'default',
     size: 'md',
-    shape: 'radius',
+    shape: 'rect',
     block: false,
     ghost: false,
     disabled: false,
@@ -83,16 +83,12 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles![`${theme}ActiveWrapper`],
     ) as any).backgroundColor;
 
-    const iconColor = (StyleSheet.flatten(
-      styles!.activeText,
-    ) as any).color;
-
     const textStyle = [
       styles!.textStyle,
       styles![`${size}Text`],
       styles![`${theme}Text`],
+      isActive && styles![`${theme}ActiveText`],
       ghost && styles![`${theme}GhostText`],
-      isActive && styles!.activeText,
       isActive && ghost && styles![`${theme}GhostActiveText`],
       disabled && ghost && styles!.disabledGhostText,
     ];
@@ -103,7 +99,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
     ];
 
     const iconRender = loading
-      ? <ActivityIndicator animating style={iconStyle} color={iconColor} size="small"/>
+      ? <ActivityIndicator animating style={iconStyle} size="small"/>
       : icon;
 
     const contentRender = (

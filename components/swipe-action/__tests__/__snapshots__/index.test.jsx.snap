@@ -9,7 +9,7 @@ exports[`SwipeAction left only 1`] = `
   >
     <a
       aria-disabled="false"
-      class="za-button theme-primary"
+      class="za-button theme-primary size-md shape-rect"
       role="button"
     >
       <span>
@@ -18,7 +18,7 @@ exports[`SwipeAction left only 1`] = `
     </a>
     <a
       aria-disabled="false"
-      class="za-button theme-warning"
+      class="za-button theme-warning size-md shape-rect"
       role="button"
     >
       <span>
@@ -50,6 +50,8 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="primary"
       >
         左按钮1
@@ -62,6 +64,8 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="warning"
       >
         左按钮2
@@ -82,6 +86,8 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="primary"
       >
         右按钮1
@@ -94,6 +100,8 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="warning"
       >
         右按钮2
@@ -116,11 +124,13 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="primary"
       >
         <a
           aria-disabled={false}
-          className="za-button theme-primary"
+          className="za-button theme-primary size-md shape-rect"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
@@ -139,11 +149,13 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="warning"
       >
         <a
           aria-disabled={false}
-          className="za-button theme-warning"
+          className="za-button theme-warning size-md shape-rect"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
@@ -166,11 +178,13 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="primary"
       >
         <a
           aria-disabled={false}
-          className="za-button theme-primary"
+          className="za-button theme-primary size-md shape-rect"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
@@ -189,11 +203,13 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
+        shape="rect"
+        size="md"
         theme="warning"
       >
         <a
           aria-disabled={false}
-          className="za-button theme-warning"
+          className="za-button theme-warning size-md shape-rect"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
@@ -241,7 +257,7 @@ exports[`SwipeAction right only 1`] = `
   >
     <a
       aria-disabled="false"
-      class="za-button theme-primary"
+      class="za-button theme-primary size-md shape-rect"
       role="button"
     >
       <span>
@@ -250,7 +266,7 @@ exports[`SwipeAction right only 1`] = `
     </a>
     <a
       aria-disabled="false"
-      class="za-button theme-warning"
+      class="za-button theme-warning size-md shape-rect"
       role="button"
     >
       <span>

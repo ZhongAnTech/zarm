@@ -30,7 +30,7 @@ $prefixCls: $prefixCls-badge;
     justify-content: center;
     align-items: center;
     top: auto;
-    color: #fff;
+    color: $badge-text-color;
     font-size: $badge-font-size;
     height: $badge-height;
     padding: 0 $badge-padding-h;
@@ -42,7 +42,7 @@ $prefixCls: $prefixCls-badge;
       position: absolute;
       top: 0;
       left: 100%;
-      transform: translateX(-$badge-height/2) translateY(-$badge-top-overflow);
+      transform: translateX(-$badge-height/2) translateY($badge-sup-top);
     }
   }
 
@@ -61,14 +61,14 @@ $prefixCls: $prefixCls-badge;
 
   &.shape-radius {
     .#{$prefixCls}-sup {
-      border-radius: $radius-md;
+      border-radius: $badge-rect-radius;
     }
   }
 
   &.shape-round {
     .#{$prefixCls}-sup {
       min-width: $badge-height;
-      border-radius: $radius-round;
+      border-radius: $badge-round-radius;
     }
   }
 
@@ -83,7 +83,7 @@ $prefixCls: $prefixCls-badge;
   &.shape-leaf {
     .#{$prefixCls}-sup {
       min-width: $badge-height;
-      border-radius: $radius-round $radius-round $radius-round 0;
+      border-radius: $badge-round-radius $badge-round-radius $badge-round-radius 0;
     }
   }
 }

@@ -41,21 +41,21 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('visible1')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('visible1')}>开启</Button>
           }
         >
           普通
         </Cell>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('visible2')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('visible2')}>开启</Button>
           }
         >
           带取消操作
         </Cell>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('visible3')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('visible3')}>开启</Button>
           }
         >
           圆角、留边

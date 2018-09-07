@@ -1,6 +1,8 @@
-export default {
+
+// 主题色
+const base = {
   // 主题色
-  theme_default: '#e6e6e6',                    // 默认色
+  theme_default: '#e6e6e6',                 // 默认色
   theme_primary: '#12c287',                 // 主色
   theme_success: '#12c287',                 // 成功
   theme_warning: '#ec9131',                 // 警告
@@ -61,7 +63,9 @@ export default {
   opacity_mask: .5,
   opacity_toast: .8,
   opacity_tooltip: .8,
+};
 
+const components = {
   // ActionSheet
   actionSheet_margin: 0,
   actionSheet_item_height: 50,
@@ -80,30 +84,93 @@ export default {
   // Button
   button_height_xs: 28,
   button_height_sm: 36,
-  button_height_md: 44,
+  button_height_md: 45,
   button_height_lg: 52,
-  button_padding_h_xs: 6,
-  button_padding_h_sm: 7.5,
-  button_padding_h_md: 11.5,
-  button_padding_h_lg: 15.5,
+  button_padding_h_xs: 10,
+  button_padding_h_sm: 12,
+  button_padding_h_md: 16,
+  button_padding_h_lg: 20,
   button_font_size_xs: 12,
   button_font_size_sm: 16,
   button_font_size_md: 16,
-  button_font_size_lg: 16,
-  button_bordered_active_opacity: .6,
-  button_primary_active_bg: '#10ae79',
-  button_success_active_bg: '#10ae79',
-  button_warning_active_bg: '#d3822c',
-  button_error_active_bg: '#e54747',
-  button_disabled_ghost_color: '#D2D2D2',
-  button_primary_ghost_active_color: '#00AE73',
-  button_success_ghost_active_color: '#00AE73',
-  button_warning_ghost_active_color: '#cc9131',
-  button_error_ghost_active_color: '#df5050',
+  button_font_size_lg: 18,
+  button_icon_size_xs: 16,
+  button_icon_size_sm: 18,
+  button_icon_size_md: 22,
+  button_icon_size_lg: 26,
+  button_disabled_opacity: .6,
+  button_disabled_color_ghost: '#bcbcbc',
+
+  button_default_background: base.theme_default,
+  button_default_border: base.theme_default,
+  button_default_color: base.color_text,
+  button_default_active_background: '#bcbcbc',
+  button_default_active_border: '#bcbcbc',
+  button_default_active_color: base.color_text,
+  button_default_ghost_background: 'transparent',
+  button_default_ghost_border: base.theme_default,
+  button_default_ghost_color: base.color_text,
+  button_default_ghost_active_background: base.theme_default,
+  button_default_ghost_active_border: base.theme_default,
+  button_default_ghost_active_color: base.color_text,
+
+  button_primary_background: base.theme_primary,
+  button_primary_border: base.theme_primary,
+  button_primary_color: '#fff',
+  button_primary_active_background: '#10ae79',
+  button_primary_active_border: '#10ae79',
+  button_primary_active_color: '#fff',
+  button_primary_ghost_background: 'transparent',
+  button_primary_ghost_border: base.theme_primary,
+  button_primary_ghost_color: base.theme_primary,
+  button_primary_ghost_active_background: '#fff',
+  button_primary_ghost_active_border: '#10ae79',
+  button_primary_ghost_active_color: '#10ae79',
+
+  button_success_background: base.theme_success,
+  button_success_border: base.theme_success,
+  button_success_color: '#fff',
+  button_success_active_background: '#10ae79',
+  button_success_active_border: '#10ae79',
+  button_success_active_color: '#fff',
+  button_success_ghost_background: 'transparent',
+  button_success_ghost_border: base.theme_success,
+  button_success_ghost_color: base.theme_success,
+  button_success_ghost_active_background: '#fff',
+  button_success_ghost_active_border: '#10ae79',
+  button_success_ghost_active_color: '#10ae79',
+
+  button_warning_background: base.theme_warning,
+  button_warning_border: base.theme_warning,
+  button_warning_color: '#fff',
+  button_warning_active_background: '#d3822c',
+  button_warning_active_border: '#d3822c',
+  button_warning_active_color: '#fff',
+  button_warning_ghost_background: 'transparent',
+  button_warning_ghost_border: base.theme_warning,
+  button_warning_ghost_color: base.theme_warning,
+  button_warning_ghost_active_background: '#fff',
+  button_warning_ghost_active_border: '#d3822c',
+  button_warning_ghost_active_color: '#d3822c',
+
+  button_error_background: base.theme_error,
+  button_error_border: base.theme_error,
+  button_error_color: '#fff',
+  button_error_active_background: '#e54747',
+  button_error_active_border: '#e54747',
+  button_error_active_color: '#fff',
+  button_error_ghost_background: 'transparent',
+  button_error_ghost_border: base.theme_error,
+  button_error_ghost_color: base.theme_error,
+  button_error_ghost_active_background: '#fff',
+  button_error_ghost_active_border: '#e54747',
+  button_error_ghost_active_color: '#e54747',
 
   // Collapse
   collapse_height: 52,
-  collapse_padding_h: 16,
+  collapse_padding: 16,
+  collapse_arrow_color: '#c2c2c2',
+  collapse_arrow_disabled_color: '#eee',
 
   // Cell
   cell_height: 45,                                   // 最小度
@@ -206,3 +273,5 @@ export default {
   tooltip_color: '#fff',
   tooltip_arrow_size: 5,
 };
+
+export default { ...base, ...components };

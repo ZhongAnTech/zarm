@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 const border = {
   borderBottomWidth: StyleSheet.hairlineWidth,
   // borderBottomWidth: 1,
-  borderBottomColor: '#E6E6E6',
+  borderBottomColor: variables.theme_default,
   borderStyle: 'solid',
 };
 
@@ -30,8 +30,8 @@ export default {
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: '#FFF', // 解决在android下overflow属性无效（使用背景色掩盖文字）
-    marginLeft: variables.collapse_padding_h,
-    paddingRight: variables.collapse_padding_h,
+    marginLeft: variables.collapse_padding,
+    paddingRight: variables.collapse_padding,
     ...border,
   },
   titleTextStyle: {
@@ -45,19 +45,20 @@ export default {
     borderRightWidth: 1,
     borderBottomWidth: 1,
     borderStyle: 'solid',
-    borderColor: '#C2C2C2',
+    borderColor: variables.collapse_arrow_color,
     width: 10,
     height: 10,
+    position: 'relative',
   },
   titleArrowDisabledStyle: {
-    borderColor: '#EEE',
+    borderColor: variables.collapse_arrow_disabled_color,
   },
   itemBodyStyle: {
     backgroundColor: '#FFF',
-    marginLeft: variables.collapse_padding_h,
-    paddingRight: variables.collapse_padding_h,
-    paddingTop: variables.collapse_padding_h,
-    paddingBottom: variables.collapse_padding_h,
+    marginLeft: variables.collapse_padding,
+    paddingRight: variables.collapse_padding,
+    paddingTop: variables.collapse_padding,
+    paddingBottom: variables.collapse_padding,
     ...border,
   },
 };

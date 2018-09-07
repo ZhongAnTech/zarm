@@ -40,6 +40,10 @@ module.exports = {
       title: 'FilePicker',
       description: '文件选择器 FilePicker',
     },
+    {
+      title: 'Keyboard',
+      description: '虚拟键盘 Keyboard & KeyboardPicker',
+    },
   ],
   feedback: [
     {
