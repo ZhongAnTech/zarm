@@ -10,7 +10,6 @@ $prefixCls: $prefixCls-calendar;
 
 .#{$prefixCls}-view {
   background-color: $calendar-background;
-  color: $calendar-day-fontsize;
   user-select: none;
 
   ul {
@@ -34,6 +33,7 @@ $prefixCls: $prefixCls-calendar;
     color: $calendar-week-bar-color;
     background-color: $calendar-week-bar-background;
     font-size: $calendar-week-bar-fontsize;
+    padding: 0 $calendar-section-padding;
     li {
       height: $calendar-day-height;
       line-height: $calendar-day-height;
@@ -47,6 +47,7 @@ $prefixCls: $prefixCls-calendar;
   }
 
   .comp-month-content {
+    padding: 0 $calendar-section-padding;
     &:before {
       content: attr(title);
       display: block;
@@ -59,11 +60,12 @@ $prefixCls: $prefixCls-calendar;
   .comp-day-item {
     margin: r(10) 0;
     position: relative;
+    font-size: $calendar-day-fontsize;
     .comp-day-detail {
+      width: r(30);
+      height: r(30);
       background-color: transparent;
       border-radius: 50%;
-      width: r(35);
-      height: r(35);
       display: flex;
       justify-content: center;
       align-items: center;

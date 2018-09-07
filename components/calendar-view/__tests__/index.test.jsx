@@ -13,10 +13,34 @@ describe('Calendar', () => {
 
   it('should trigger onChange when press day', () => {
     const onChangeFn = jest.fn();
-    const wrapper = mount(<Calendar value="2018-05-19" min="2018-05-01" max="2018-09-02" multiple={false} onChange={onChangeFn} />);
+    const wrapper = mount(<Calendar multiple={false} onChange={onChangeFn} />);
     const day1 = wrapper.find('.comp-day-item.today');
     expect(day1.length).toBe(1);
-    // day1.simulate('click');
-    // expect(onChangeFn).toBeCalled();
+
+    const day2 = wrapper.find('.comp-day-item').at(15);
+    expect(day2.childAt(0).text()).toBe('16');
+    day2.simulate('click');
+    expect(onChangeFn).toBeCalled();
+  });
+
+  it('should trigger onChange when update props', () => {
+    const onChangeFn = jest.fn();
+    const wrapper = mount(<Calendar multiple={false} onChange={onChangeFn} />);
+
+    wrapper.setProps({ min: '2018-09-06', multiple: true });
+
+    const day3 = wrapper.find('.comp-day-item').at(20);
+    const day4 = wrapper.find('.comp-day-item').at(30);
+    day3.simulate('click');
+    day4.simulate('click');
+    expect(onChangeFn).toBeCalled();
+
+    wrapper.setProps({ max: '2019-02-06', multiple: true, value: ['2018-10-02', '2018-10-07'] });
+
+    wrapper.setProps({ disabledDate: date => date.getMonth() % 2 === 1 });
+
+    wrapper.setProps({ dateRender: date => '' });
+
+    wrapper.setProps({ dateRender: date => date });
   });
 });

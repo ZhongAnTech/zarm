@@ -38,7 +38,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     this.getState(nextProps);
   }
 
-  getState = props => {
+  getState = (props) => {
     const state = this.state || {};
     let { value, defaultValue, multiple } = props;
 
@@ -49,7 +49,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     let endMonth;
 
     value = value || defaultValue;
-    value = value.constructor === Array ? value : (value && [value]) || [];
+    value = Object.prototype.toString.call(value) === '[object Array]' ? value : (value && [value]) || [];
 
     if (JSON.stringify(value) !== JSON.stringify(state.value)) {
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
@@ -58,7 +58,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     }
 
     if (!DateTool.isOneDay(props.min, state.min)) {
-      if(!(!props.min && state.min)){
+      if (!(!props.min && state.min)) {
         min = props.min ? DateTool.parseDay(props.min) : new Date();
       }
     }
@@ -69,7 +69,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
 
     if (!DateTool.isOneDay(props.max, state.max)) {
       max = props.max ? DateTool.parseDay(props.max) : DateTool.cloneDate(min || state.min, 'y', 1);
-      if(max === state.max) {
+      if (max === state.max) {
         max = null;
       }
     }
@@ -92,7 +92,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
       step: !this.state ? 1 : state.step,
     };
 
-    if(JSON.stringify(tmp) === JSON.stringify(this.state)) return;
+    if (JSON.stringify(tmp) === JSON.stringify(this.state)) return;
     tmp.md5 = `${Math.floor(Math.random() * 10000)}`;
 
     if (!this.state) {
@@ -100,10 +100,10 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     } else {
       this.setState(tmp);
     }
-  }
+  };
 
   // 日期点击事件，注意排序
-  onDateClick = date => {
+  onDateClick = (date) => {
     const { step, steps, value } = this.state;
     const { onChange } = this.props;
     if (step === 1) {
@@ -112,11 +112,14 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     value[step - 1] = date;
     value.sort((item1, item2) => item1 - item2 > 0);
 
-    this.setState({
-      value,
-      step: step >= steps ? 1 : step + 1,
-    }, () => step >= steps && onChange && onChange.constructor === Function && onChange(value));
-  }
+    this.setState(
+      {
+        value,
+        step: step >= steps ? 1 : step + 1,
+      },
+      () => step >= steps && typeof onChange === 'function' && onChange(value)
+    );
+  };
 
   // 生成星期条
   renderWeekBar() {
