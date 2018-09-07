@@ -17,29 +17,12 @@ const cellStyles = StyleSheet.create<any>(cellStyle);
 
 export default class Cell extends PureComponent<CellProps, any> {
   static defaultProps = {
-    active: false,
+    hasArrow: false,
     styles: cellStyles,
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      isActive: props.active,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if ('active' in nextProps) {
-      this.setState({ isActive: nextProps.active });
-    }
-  }
-
-  onPressIn = () => {
-    this.setState({ isActive: true });
-  }
-
-  onPressOut = () => {
-    this.setState({ isActive: false });
   }
 
   render() {
@@ -117,8 +100,7 @@ export default class Cell extends PureComponent<CellProps, any> {
         {helpRender}
       </View>
     </View>;
-    const wrapperProps = Object.assign({ stlye: contentStyle, onPress: onClick,
-      onPressIn: this.onPressIn, onPressOut: this.onPressOut }, others);
+    const wrapperProps = Object.assign({ stlye: contentStyle, onPress: onClick }, others);
     return onClick
       ? <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>
       : (contentRender);

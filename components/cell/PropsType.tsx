@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 export default interface PropsType {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   hasArrow?: boolean;
   icon?: ReactNode;
   title?: ReactNode;

@@ -36,6 +36,7 @@ export default {
   arrowStyle: {
     width: 7,
     height: 7,
+    marginLeft: 8,
     borderTopWidth: 1,
     borderTopColor: '#BCBCBC',
     borderRightWidth: 1,
