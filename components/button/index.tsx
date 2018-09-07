@@ -12,12 +12,13 @@ export default class Button extends PureComponent<ButtonProps, {}> {
   static defaultProps = {
     prefixCls: 'za-button',
     theme: 'default',
+    size: 'md',
+    shape: 'rect',
     block: false,
-    bordered: false,
+    ghost: false,
     active: false,
     disabled: false,
     loading: false,
-    onClick() {},
   };
 
   render() {
@@ -30,7 +31,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       icon,
       block,
       active,
-      bordered,
+      ghost,
       disabled,
       loading,
       onClick,
@@ -43,7 +44,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
       block,
-      bordered,
+      ghost,
       active,
       disabled,
     });

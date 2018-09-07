@@ -29,9 +29,9 @@ class Demo extends React.Component {
     return (
       <div>
         <Button block>default</Button>
-        <Button block disabled>disabled default</Button>
+        <Button block disabled>default disabled</Button>
         <Button block theme="primary">primary</Button>
-        <Button block disabled theme="primary">disabled primary</Button>
+        <Button block disabled theme="primary">primary disabled</Button>
       </div>
     )
   }
@@ -50,10 +50,10 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button block bordered>default</Button>
-        <Button block bordered disabled>disabled default</Button>
-        <Button block bordered theme="primary">primary</Button>
-        <Button block bordered disabled theme="primary">disabled primary</Button>
+        <Button block ghost>default ghost</Button>
+        <Button block ghost disabled>default ghost disabled</Button>
+        <Button block ghost theme="primary">primary ghost</Button>
+        <Button block ghost disabled theme="primary">primary ghost disabled</Button>
       </div>
     )
   }
@@ -64,7 +64,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
-:::demo 主题
+:::demo 按钮主题
 ```jsx
 import { Button } from 'zarm';
 
@@ -87,7 +87,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
-:::demo 大小
+:::demo 按钮尺寸
 ```jsx
 import { Button } from 'zarm';
 
@@ -95,9 +95,10 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button theme="primary" size="lg">lg</Button>
-        <Button theme="primary">md</Button>
-        <Button theme="primary" size="sm">sm</Button>
+        <Button size="lg">lg</Button>
+        <Button>md</Button>
+        <Button size="sm">sm</Button>
+        <Button size="xs">xs</Button>
       </div>
     )
   }
@@ -108,7 +109,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
-:::demo 形状
+:::demo 按钮形状
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -116,10 +117,11 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button shape="radius" theme="primary">圆角按钮</Button>
-        <Button shape="round" theme="primary">椭圆角按钮</Button>
-        <Button bordered shape="circle" theme="primary">GO</Button>
-        <Button shape="circle" icon={<Icon type="right" />} />
+        <Button shape="rect" theme="primary">rect</Button>
+        <Button shape="radius" theme="primary">radius</Button>
+        <Button shape="round" theme="primary">round</Button>
+        <Button shape="circle" theme="primary">circle</Button>
+        <Button ghost shape="circle" icon={<Icon type="right" />} />
       </div>
     )
   }
@@ -138,9 +140,9 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button bordered shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button bordered shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
-        <Button bordered loading shape="radius">加载中</Button>
+        <Button ghost shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
+        <Button ghost shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
+        <Button ghost loading shape="radius">加载中</Button>
       </div>
     )
   }
@@ -158,11 +160,11 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-button | | 类名前缀 |
 | className | string | | | 追加类名 |
-| theme | string | `default` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| size | string | | `xl`, `lg`, `sm`, `xs` | 大小 |
+| theme | string | `primary` | `primary`, `success`, `warning`, `error` | 主题 |
+| size | string | | `md`, `lg`, `sm`, `xs` | 大小 |
 | shape | string | | `radius`, `round`, `circle` | 形状 |
 | block | boolean | false | | 是否为块级元素 |
-| bordered | boolean | false | | 是否是幽灵按钮 |
+| ghost | boolean | false | | 是否是幽灵按钮 |
 | disabled | boolean | false | | 是否禁用 |
 | loading | boolean | falxse | | 是否显示加载中 |
 | icon | JSX.Element | | | icon |

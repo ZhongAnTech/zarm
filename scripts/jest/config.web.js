@@ -7,12 +7,13 @@ module.exports = {
     require.resolve('./environment.js'),
   ],
   setupTestFrameworkScriptFile: require.resolve('./setup.js'),
-  testRegex: '/__tests__/.*(\\.jsx|[^d]\\.ts)$',
+  testRegex: '/__tests__/[^.]+\\.test(\\.jsx|[^d]\\.ts)$',
   collectCoverageFrom: [
     'components/**/*.{ts,tsx}',
     '!components/*/*.native.{ts,tsx}',
     '!components/*/PropsType.{ts,tsx}',
     '!components/**/style/*.{ts,tsx}',
+    '!components/style/**/*',
   ],
   transform: {
     '^.+\\.jsx?$': require.resolve('./preprocessor'),
