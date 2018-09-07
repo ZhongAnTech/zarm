@@ -21,6 +21,10 @@ module.exports = {
       description: '日期选择器 DatePicker & DateSelect',
     },
     {
+      title: 'Calendar',
+      description: '日历 Calendar',
+    },
+    {
       title: 'Slider',
       description: '滑动输入条 Slider',
     },
