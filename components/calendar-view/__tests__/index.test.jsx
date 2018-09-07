@@ -41,6 +41,6 @@ describe('Calendar', () => {
 
     wrapper.setProps({ dateRender: date => '' });
 
-    wrapper.setProps({ dateRender: date => date });
+    // wrapper.setProps({ dateRender: date => date });
   });
 });

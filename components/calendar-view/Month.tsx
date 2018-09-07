@@ -81,8 +81,8 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
 
   anchor() {
     const { dateMonth, value = [] } = this.state;
-    if (DateTool.isOneMonth(dateMonth, value[0])) {
-      this.node.scrollIntoViewIfNeeded && this.node.scrollIntoViewIfNeeded();
+    if (DateTool.isOneMonth(dateMonth, value[0]) && this.node.scrollIntoViewIfNeeded) {
+      this.node.scrollIntoViewIfNeeded();
     }
   }
 
