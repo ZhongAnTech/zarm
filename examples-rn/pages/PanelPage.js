@@ -27,7 +27,6 @@ export default class App extends PureComponent {
       <ScrollView>
         <View>
           <Panel
-            style={{ marginBottom: 10 }}
             titleRender="标题"
             moreRender={
               <Text style={styles.moreHeaderColor} onPress={clickHandle}>更多</Text>
