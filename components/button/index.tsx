@@ -12,12 +12,13 @@ export default class Button extends PureComponent<ButtonProps, {}> {
   static defaultProps = {
     prefixCls: 'za-button',
     theme: 'default',
+    size: 'md',
+    shape: 'rect',
     block: false,
     ghost: false,
     active: false,
     disabled: false,
     loading: false,
-    onClick() {},
   };
 
   render() {

@@ -16,7 +16,14 @@ $prefixCls: $prefixCls-keyboard;
     font-size: $keyboard-item-font-size;
     position: relative;
     @include button-base();
-    @include button-theme(#fff, $color-text);
+    @include button-theme(
+      $button-default-ghost-background,
+      $button-default-ghost-border,
+      $button-default-ghost-color,
+      $button-default-ghost-active-background,
+      $button-default-ghost-active-border,
+      $button-default-ghost-active-color
+    );
 
     &:active {
       color: $color-text;
@@ -24,12 +31,19 @@ $prefixCls: $prefixCls-keyboard;
 
     &-ok {
       font-size: r(21);
-      @include button-theme($theme-primary, $color-text-inverse);
+      @include button-theme(
+        $button-primary-background,
+        $button-primary-border,
+        $button-primary-color,
+        $button-primary-active-background,
+        $button-primary-active-border,
+        $button-primary-active-color
+      );
     }
 
     &-disabled,
     &-disabled:active {
-      background-color: $background-disabled;
+      background-color: #fff;
     }
   }
 
