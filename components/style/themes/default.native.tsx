@@ -63,7 +63,9 @@ const base = {
   opacity_mask: .5,
   opacity_toast: .8,
   opacity_tooltip: .8,
+};
 
+const components = {
   // ActionSheet
   actionSheet_margin: 0,
   actionSheet_item_height: 50,
@@ -78,9 +80,6 @@ const base = {
   badge_font_size: 12, // font_size_sm,
   badge_padding_h: 5, // padding_h_sm,
   badge_dot_diameter: 8,
-};
-
-const components = {
 
   // Button
   button_height_xs: 28,
