@@ -183,7 +183,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
-    if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
+    if (ratio >= moveDistanceRatio! || timeSpan <= moveTimeSpan!) {
       const action = (this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)
         ? 'prev'
         : 'next';
@@ -205,7 +205,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     this.moveInterval = (autoPlay && setInterval(() => {
       let activeIndex = this.state.activeIndex;
-      const isLeftOrTopDirection = (['left', 'top']).indexOf(direction) > -1;
+      const isLeftOrTopDirection = (['left', 'top']).indexOf(direction!) > -1;
 
       activeIndex = isLeftOrTopDirection
         ? (activeIndex + 1)
@@ -308,7 +308,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 是否横向移动
   isDirectionX = () => {
-    return (['left', 'right'].indexOf(this.props.direction) > -1);
+    return (['left', 'right'].indexOf(this.props.direction!) > -1);
   }
 
   renderPaginationItem = (_result, index) => {
