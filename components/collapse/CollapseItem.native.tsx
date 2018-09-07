@@ -141,6 +141,10 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
             }),
           },
         ],
+        top: this.state.rotate.interpolate({
+          inputRange: [0, 1],
+          outputRange: [ 0 , Math.sqrt(50) / 2 ],
+        }),
       },
       disabledBorderColorStyle,
     ];

@@ -118,7 +118,10 @@ $badge-height: r(14);
 $badge-font-size: $font-size-xs;
 $badge-padding-h: r(4);
 $badge-dot-diameter: r(8);
-$badge-top-overflow: r(4);
+$badge-rect-radius: $radius-sm;
+$badge-round-radius: $radius-round;
+$badge-sup-top: r(-4);
+$badge-text-color:#fff;
 
 // Button
 $button-height-sm: r(27);

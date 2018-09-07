@@ -103,7 +103,9 @@ export default {
 
   // Collapse
   collapse_height: 52,
-  collapse_padding_h: 16,
+  collapse_padding: 16,
+  collapse_arrow_color: '#c2c2c2',
+  collapse_arrow_disabled_color: '#eee',
 
   // Cell
   cell_height: 52,                                   // 最小度
