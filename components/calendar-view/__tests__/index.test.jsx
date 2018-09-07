@@ -35,7 +35,7 @@ describe('Calendar', () => {
     day4.simulate('click');
     expect(onChangeFn).toBeCalled();
 
-    wrapper.setProps({ max: '2019-02-06', multiple: true, value: ['2018-10-02', '2018-10-07'] });
+    wrapper.setProps({ min: '2018-09-06', max: '2018-09-13', multiple: true, value: ['2018-09-09', '2018-09-11'] });
 
     wrapper.setProps({ disabledDate: date => date.getMonth() % 2 === 1 });
 

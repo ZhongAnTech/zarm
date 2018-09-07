@@ -92,7 +92,9 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
       step: !this.state ? 1 : state.step,
     };
 
-    if (JSON.stringify(tmp) === JSON.stringify(this.state)) return;
+    if (JSON.stringify(tmp) === JSON.stringify(this.state)) {
+      return;
+    }
     tmp.md5 = `${Math.floor(Math.random() * 10000)}`;
 
     if (!this.state) {
@@ -100,7 +102,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     } else {
       this.setState(tmp);
     }
-  };
+  }
 
   // 日期点击事件，注意排序
   onDateClick = (date) => {
@@ -117,9 +119,9 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
         value,
         step: step >= steps ? 1 : step + 1,
       },
-      () => step >= steps && typeof onChange === 'function' && onChange(value)
+      () => step >= steps && typeof onChange === 'function' && onChange(value),
     );
-  };
+  }
 
   // 生成星期条
   renderWeekBar() {

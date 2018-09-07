@@ -111,7 +111,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
   }
 
   // 日期状态: 选中，区间
-  checkStatus = (date) => {
+  checkStatus = date => {
     const { value = [] } = this.state;
     const { min, max, disabledDate } = this.props;
     const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
@@ -124,7 +124,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
     };
     this.lastIn = this.lastIn || res.isSelected || res.isRange;
     return res;
-  };
+  }
 
   render() {
     const { dateMonth } = this.state;
@@ -185,14 +185,24 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
       };
 
       return (
-        <li key={`${year}-${month}-${key}`} className={classnames('comp-day-item', className)} style={style} onClick={() => !status.disabled && date && onDateClick && onDateClick(date)}>
+        <li
+          key={`${year}-${month}-${key}`}
+          className={classnames('comp-day-item', className)}
+          style={style}
+          onClick={() => !status.disabled && date && onDateClick && onDateClick(date)}
+        >
           {(txt && <div className="comp-day-detail">{txt}</div>) || ''}
         </li>
       );
     });
 
     this.cache = (
-      <section key={`${year}${month < 10 ? '0' : ''}${month}`} className="comp-month-content" title={`${year}年${month + 1}月`} ref={n => (this.node = n)}>
+      <section
+        key={`${year}${month < 10 ? '0' : ''}${month}`}
+        className="comp-month-content"
+        title={`${year}年${month + 1}月`}
+        ref={n => (this.node = n)}
+      >
         <ul>{content}</ul>
       </section>
     );
