@@ -50,7 +50,7 @@ exports[`Radio renders correctly 1`] = `
 exports[`Radio type is button 1`] = `
 <a
   aria-disabled="false"
-  class="za-button za-radio theme-primary theme-primary size-sm ghost"
+  class="za-button za-radio theme-primary theme-primary size-xs shape-rect ghost"
   role="button"
 >
   <span>

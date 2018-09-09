@@ -1,16 +1,20 @@
 // 主题
-@mixin button-theme($background, $color) {
+@mixin button-theme(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color
+) {
   background-color: $background;
-  border-color: $background;
+  border-color: $border;
   color: $color;
-
-  $active-background: darken($background, 8%);
-  $active-color: rgba($color, .3);
 
   &:active,
   &.active {
     background-color: $active-background;
-    border-color: $active-background;
+    border-color: $active-border;
     color: $active-color;
   }
 
@@ -27,7 +31,7 @@
     &:visited,
     &.visited {
       background-color: $background;
-      border-color: $background;
+      border-color: $border;
     }
   }
 }
@@ -54,7 +58,14 @@
 }
 
 // 幽灵按钮
-@mixin button-ghost($border, $color) {
+@mixin button-ghost(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color
+) {
   @include button-shape($border);
 
   &.shape-radius {
@@ -75,7 +86,9 @@
 
     &:active,
     &.active {
-      opacity: 1;
+      background-color: $active-background;
+      border-color: $active-border;
+      color: $active-color;
     }
 
     &.disabled,
