@@ -1,0 +1,8 @@
+@import "../mixins/index";
+@import "../functions/index";
+.segmented-control-page {
+    .za-panel-body{
+        padding: r(10) 0;
+        text-align: center;
+    }
+}
