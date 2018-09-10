@@ -1,4 +1,6 @@
 import variables from '../../style/themes/default.native';
+import { StyleSheet } from 'react-native';
+
 export default {
   wrapperStyle: {
     flex: 1,
@@ -19,7 +21,7 @@ export default {
     paddingLeft: variables.cell_line_left,
   },
   cellLineStyle: {
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: variables.border_color,
   },
   containerStyle: {
