@@ -196,8 +196,8 @@ const components = {
   icon_url: '//at.alicdn.com/t/font_126288_uipjvv8ogdivbo6r',
 
   // Keyboard
-  keyboard_item_height: 50,
-  keyboard_item_font_size: 28,
+  keyboard_item_height: 52,
+  keyboard_item_font_size: 30,
   keyboard_icon_font_size: 21,
 
   // Message
