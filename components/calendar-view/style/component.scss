@@ -1,0 +1,139 @@
+$prefixCls: $prefixCls-calendar;
+@mixin gradient($direction) {
+  background-image: linear-gradient(
+    to $direction,
+    transparent 0,
+    transparent 50%,
+    $calendar-day-range-background 50%
+  );
+}
+
+.#{$prefixCls}-view {
+  background-color: $calendar-background;
+  user-select: none;
+
+  ul {
+    list-style-type: disc;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+  }
+
+  li {
+    display: inline-block;
+    width: $calendar-day-width;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .week-bar {
+    display: flex;
+    flex-wrap: wrap;
+    color: $calendar-week-bar-color;
+    background-color: $calendar-week-bar-background;
+    font-size: $calendar-week-bar-fontsize;
+    padding: 0 $calendar-section-padding;
+
+    li {
+      height: $calendar-day-height;
+      line-height: $calendar-day-height;
+    }
+  }
+
+  .month-box {
+    padding: r(10) 0;
+    max-height: 60vh;
+    overflow: auto;
+  }
+
+  .comp-month-content {
+    padding: 0 $calendar-section-padding;
+
+    &:before {
+      content: attr(title);
+      display: block;
+      margin: r(20) auto;
+      font-size: $calendar-day-title-fontsize;
+      padding-left: r(20);
+    }
+  }
+
+  .comp-day-item {
+    margin: r(10) 0;
+    position: relative;
+    font-size: $calendar-day-fontsize;
+
+    .comp-day-detail {
+      width: r(30);
+      height: r(30);
+      background-color: transparent;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    &.disabled {
+      color: $color-text-disabled;
+    }
+
+    &.today .comp-day-detail {
+      background-color: $calendar-day-today-background;
+      color: $calendar-day-today-color;
+    }
+
+    &.selected .comp-day-detail {
+      background-color: $calendar-day-selected-background !important;
+      color: $calendar-day-selected-color !important;
+    }
+
+    &.range {
+      background-color: $calendar-day-range-background;
+      color: $calendar-day-range-color;
+
+      .comp-day-detail {
+        background-color: $calendar-day-range-background;
+      }
+
+      &.d6 {
+        background-color: transparent;
+        @include gradient(left);
+      }
+
+      &.d7 {
+        background-color: transparent;
+        @include gradient(right);
+      }
+
+      &:first-child:not(.d6) {
+        background-color: transparent;
+        @include gradient(right);
+      }
+
+      &:last-child:not(.d7) {
+        background-color: transparent;
+        @include gradient(left);
+      }
+
+      &:last-child.d7,
+      &:first-child.d6 {
+        background-image: none;
+      }
+    }
+
+    &.range-s:not(.d6):not(:last-child) {
+      @include gradient(right);
+    }
+
+    &.range-e:not(.d7):not(:first-child) {
+      @include gradient(left);
+    }
+
+    &.range-s.range-e {
+      background-image: none !important;
+    }
+  }
+}
