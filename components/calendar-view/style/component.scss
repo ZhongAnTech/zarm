@@ -20,6 +20,7 @@ $prefixCls: $prefixCls-calendar;
     -webkit-margin-end: 0;
     -webkit-padding-start: 0;
   }
+
   li {
     display: inline-block;
     width: $calendar-day-width;
@@ -34,6 +35,7 @@ $prefixCls: $prefixCls-calendar;
     background-color: $calendar-week-bar-background;
     font-size: $calendar-week-bar-fontsize;
     padding: 0 $calendar-section-padding;
+
     li {
       height: $calendar-day-height;
       line-height: $calendar-day-height;
@@ -48,6 +50,7 @@ $prefixCls: $prefixCls-calendar;
 
   .comp-month-content {
     padding: 0 $calendar-section-padding;
+
     &:before {
       content: attr(title);
       display: block;
@@ -61,6 +64,7 @@ $prefixCls: $prefixCls-calendar;
     margin: r(10) 0;
     position: relative;
     font-size: $calendar-day-fontsize;
+
     .comp-day-detail {
       width: r(30);
       height: r(30);
@@ -71,50 +75,63 @@ $prefixCls: $prefixCls-calendar;
       align-items: center;
       margin: 0 auto;
     }
+
     &.disabled {
       color: $color-text-disabled;
     }
+
     &.today .comp-day-detail {
       background-color: $calendar-day-today-background;
       color: $calendar-day-today-color;
     }
+
     &.selected .comp-day-detail {
       background-color: $calendar-day-selected-background !important;
       color: $calendar-day-selected-color !important;
     }
+
     &.range {
       background-color: $calendar-day-range-background;
       color: $calendar-day-range-color;
+
       .comp-day-detail {
         background-color: $calendar-day-range-background;
       }
+
       &.d6 {
         background-color: transparent;
         @include gradient(left);
       }
+
       &.d7 {
         background-color: transparent;
         @include gradient(right);
       }
+
       &:first-child:not(.d6) {
         background-color: transparent;
         @include gradient(right);
       }
+
       &:last-child:not(.d7) {
         background-color: transparent;
         @include gradient(left);
       }
+
       &:last-child.d7,
       &:first-child.d6 {
         background-image: none;
       }
     }
+
     &.range-s:not(.d6):not(:last-child) {
       @include gradient(right);
     }
+
     &.range-e:not(.d7):not(:first-child) {
       @include gradient(left);
     }
+
     &.range-s.range-e {
       background-image: none !important;
     }
