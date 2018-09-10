@@ -176,11 +176,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   render() {
     const { prefixCls, className, type, disabled, placeholder } = this.props;
     const { visible, value } = this.state;
+    const isEmpty = !String(value);
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
       disabled,
       focus: visible,
       clearable: this.showClearIcon,
+      empty: isEmpty,
     });
 
     return (

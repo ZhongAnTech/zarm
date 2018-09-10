@@ -112,6 +112,10 @@ $prefixCls: $prefixCls-input;
           animation: custom-cursor 1s infinite step-start;
         }
       }
+
+      &.empty .#{$prefixCls}-content:after {
+        right: r(0);
+      }
     }
   }
 
