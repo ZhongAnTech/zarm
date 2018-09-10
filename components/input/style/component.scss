@@ -105,7 +105,7 @@ $prefixCls: $prefixCls-input;
           content: ' ';
           display: inline-block;
           position: relative;
-          right: r(-2);
+          right: 0;
           top: 10%;
           height: $input-cursor-height;
           border-right: $input-cursor-width solid $input-cursor-color;
