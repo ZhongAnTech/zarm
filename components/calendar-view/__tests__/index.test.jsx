@@ -6,8 +6,6 @@ import Calendar from '../index';
 describe('Calendar', () => {
   it('Calendar render', () => {
     const wrapper = mount(<Calendar defaultValue="2018-08-07" min="2018-05-06" max="2018-10-02" multiple={false} />);
-    const day1 = wrapper.find('.comp-day-item').at(15);
-    expect(day1.childAt(0).text()).toBe('16');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

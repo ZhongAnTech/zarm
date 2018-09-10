@@ -1,11 +1,13 @@
 $prefixCls: $prefixCls-calendar;
+
 @mixin gradient($direction) {
-  background-image: linear-gradient(
-    to $direction,
-    transparent 0,
-    transparent 50%,
-    $calendar-day-range-background 50%
-  );
+  background-image:
+    linear-gradient(
+      to $direction,
+      transparent 0,
+      transparent 50%,
+      $calendar-day-range-background 50%
+    );
 }
 
 .#{$prefixCls}-view {
