@@ -104,11 +104,11 @@ module.exports = {
       description: '徽标 Badge',
       module: require('./pages/BadgePage'),
     },
-    // {
-    //   title: 'Cell',
-    //   description: '列表项 Cell',
-    //   module: require('./pages/CellPage'),
-    // },
+    {
+      title: 'Cell',
+      description: '列表项 Cell',
+      module: require('./pages/CellPage'),
+    },
     // {
     //   title: 'Icon',
     //   description: '图标 Icon',

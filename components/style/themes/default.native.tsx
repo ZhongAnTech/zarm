@@ -22,7 +22,7 @@ const base = {
   background_disabled: '#e1e1e1',
 
   // 边框色
-  border_color: '#ddd',
+  border_color: '#e6e6e6',
   border_disabled: '#e1e1e1',
 
   // 圆角
@@ -173,16 +173,17 @@ const components = {
   collapse_arrow_disabled_color: '#eee',
 
   // Cell
-  cell_height: 45,                                   // 最小度
+  cell_height: 52,                                   // 最小度
   cell_background: '#fff',                           // 背景色
-  cell_line_left: 15,                                // 分隔线左边距
-  cell_line_hasicon_left: 59,                        // 带icon时分隔线左边距
-  cell_title_color: '#333',                          // 标题文字颜色
+  cell_line_left: 16,                                // 分隔线左边距
+  cell_padding_h: 16,                                // 边内内距
+  cell_line_hasicon_left: 72,                        // 带icon时分隔线左边距
+  cell_title_color: '#464646',                          // 标题文字颜色
   cell_title_font_size: 15,                          // 标题文字大小
-  cell_description_color: '#999',                    // 标题文字颜色
-  cell_description_font_size: 14,                    // 描述文字大小
-  cell_icon_width: 28,                               // 图标度
-  cell_icon_height: 28,                              // 图标度
+  cell_description_color: '#909090',                    // 标题文字颜色
+  cell_description_font_size: 15,                    // 描述文字大小
+  cell_icon_width: 48,                               // 图标度
+  cell_icon_height: 48,                              // 图标度
   cell_label_width: 100,                             // 表单label度
 
   // Checkbox
@@ -196,8 +197,8 @@ const components = {
   icon_url: '//at.alicdn.com/t/font_126288_uipjvv8ogdivbo6r',
 
   // Keyboard
-  keyboard_item_height: 50,
-  keyboard_item_font_size: 28,
+  keyboard_item_height: 52,
+  keyboard_item_font_size: 30,
   keyboard_icon_font_size: 21,
 
   // Message
