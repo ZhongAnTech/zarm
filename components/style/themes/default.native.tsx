@@ -22,7 +22,7 @@ const base = {
   background_disabled: '#e1e1e1',
 
   // 边框色
-  border_color: '#ddd',
+  border_color: '#e6e6e6',
   border_disabled: '#e1e1e1',
 
   // 圆角
