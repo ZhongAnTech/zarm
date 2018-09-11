@@ -12,7 +12,7 @@ $prefixCls: $prefixCls-segmented-control;
     display: flex;
     width: 90%;
     margin: 0 auto;
-    
+
     .tab {
       flex: 1;
       text-align: center;
@@ -29,12 +29,11 @@ $prefixCls: $prefixCls-segmented-control;
       padding: 0 r(8/2);
       cursor: pointer;
 
-      >  span {
+      > span {
         cursor: pointer;
       }
 
       &.radius {
-
         &:first-child {
           border-top-left-radius: r(8/2);
           border-bottom-left-radius: r(8/2);
@@ -47,7 +46,6 @@ $prefixCls: $prefixCls-segmented-control;
       }
 
       &.rect {
-        
         &:first-child {
           border-top-left-radius: r(0);
           border-bottom-left-radius: r(0);
