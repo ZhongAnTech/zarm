@@ -46,8 +46,6 @@ export default class Carousel extends Component<CarouselProps, any> {
   componentDidMount() {
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
-    // Events.on(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
-    // Events.on(this.carouselItems, 'transitionend', this.transitionEnd);
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
@@ -173,10 +171,7 @@ export default class Carousel extends Component<CarouselProps, any> {
       return;
     }
 
-    const {
-      moveDistanceRatio = Carousel.defaultProps.moveDistanceRatio,
-      moveTimeSpan = Carousel.defaultProps.moveTimeSpan,
-    } = this.props;
+    const { moveDistanceRatio, moveTimeSpan } = this.props;
     let { activeIndex } = this.state;
 
     const dom = this.carouselItems;
@@ -188,7 +183,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
-    if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
+    if (ratio >= moveDistanceRatio! || timeSpan <= moveTimeSpan!) {
       const action = (this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)
         ? 'prev'
         : 'next';
@@ -206,11 +201,11 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 自动轮播开始
   startAutoPlay = () => {
-    const { direction = 'left', loop, autoPlay, autoPlayIntervalTime } = this.props;
+    const { direction, loop, autoPlay, autoPlayIntervalTime } = this.props;
 
     this.moveInterval = (autoPlay && setInterval(() => {
       let activeIndex = this.state.activeIndex;
-      const isLeftOrTopDirection = (['left', 'top']).indexOf(direction) > -1;
+      const isLeftOrTopDirection = (['left', 'top']).indexOf(direction!) > -1;
 
       activeIndex = isLeftOrTopDirection
         ? (activeIndex + 1)
@@ -313,7 +308,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 是否横向移动
   isDirectionX = () => {
-    return (['left', 'right'].indexOf(this.props.direction || Carousel.defaultProps.direction) > -1);
+    return (['left', 'right'].indexOf(this.props.direction!) > -1);
   }
 
   renderPaginationItem = (_result, index) => {
