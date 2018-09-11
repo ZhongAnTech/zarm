@@ -15,7 +15,6 @@ describe('SegmentedControl', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
-
   it('renders selectIndex correctly', () => {
     const OnChange = jest.fn();
     const wrapper = render(
@@ -28,5 +27,4 @@ describe('SegmentedControl', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
-  
 });

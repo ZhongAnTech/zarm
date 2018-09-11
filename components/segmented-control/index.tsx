@@ -30,7 +30,6 @@ export default class SegmentedControl extends PureComponent<SegmentedControlProp
     return null;
   }
 
-
   constructor(props: SegmentedControlProps) {
     super(props);
     let { items, selectIndex } = props;
@@ -58,8 +57,6 @@ export default class SegmentedControl extends PureComponent<SegmentedControlProp
     };
   }
 
-  componentDidMount() {
-  }
   clickTab(selectIndex: number): void {
     // 用户设置了禁用
     if (this.props.disabled) {
@@ -68,7 +65,9 @@ export default class SegmentedControl extends PureComponent<SegmentedControlProp
     this.setState({
       selectIndex,
     });
-    this.props.onChange && this.props.onChange(selectIndex);
+    if (typeof this.props.onChange === 'function') {
+      this.props.onChange(selectIndex);
+    }
   }
 
   render() {
@@ -80,26 +79,28 @@ export default class SegmentedControl extends PureComponent<SegmentedControlProp
       className,
     } = this.props;
     const { state } = this;
+    const { items } = state;
     const cls = classnames(prefixCls,
       className,
       block ? 'block' : null);
     const shapeCls = shape || 'radius';
+    const tabClassFn = (index: number) => {
+      return classnames('tab', shapeCls, (state.selectIndex === index ? 'active' : null));
+    };
+    let tabRender = (item: string, index: number) => {
+      return (
+        <div
+          key={item}
+          className={tabClassFn(index)}
+          onClick={() => { this.clickTab(index); }}
+        >
+          <span>{item}</span>
+        </div>
+      );
+    };
     return (
       <div className={`${cls}`} style={style}>
-        <div>
-          {
-            state.items.map((item, index) => {
-              return (
-                <div
-                  key={item}
-                  className={classnames('tab', shapeCls, (state.selectIndex === index ? 'active' : null))}
-                  onClick={() => { this.clickTab(index); }}>
-                  <span>{item}</span>
-                </div>
-              );
-            })
-          }
-        </div>
+        {items.map(tabRender)}
       </div>
     );
   }
