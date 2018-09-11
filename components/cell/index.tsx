@@ -34,7 +34,6 @@ export default class Cell extends PureComponent<CellProps, {}> {
       [`theme-${theme}`]: !!theme,
       disabled,
       'is-link': !disabled && !!onClick,
-      'has-icon': !!icon,
       'has-arrow': hasArrow,
     });
 

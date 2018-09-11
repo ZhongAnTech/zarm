@@ -9,11 +9,11 @@ const base = {
   theme_error: '#ff5050',                   // 失败
 
   // 文字色
-  color_text: '#333',                       // 基本
+  color_text: '#464646',                    // 基本
   color_text_inverse: '#fff',               // 反色
   color_text_placeholder: '#a9a9a9',        // 文本框提示
-  color_text_disabled: '#bbb',              // 失效
-  color_text_caption: '#999',               // 辅助描述
+  color_text_disabled: '#bcbcbc',           // 失效
+  color_text_caption: '#909090',            // 辅助描述
   color_link: '#108ee9',                    // 链接
   color_shadow: 'rgba(56, 56, 56, .15)',    // 阴影色
 
@@ -178,13 +178,15 @@ const components = {
   cell_line_left: 16,                                // 分隔线左边距
   cell_padding_h: 16,                                // 边内内距
   cell_line_hasicon_left: 16,                        // 带icon时分隔线左边距
-  cell_title_color: '#464646',                          // 标题文字颜色
+  cell_title_color: base.color_text,                 // 标题文字颜色
+  cell_title_line_height: 28,                        // 标题文字行高
   cell_title_font_size: 15,                          // 标题文字大小
-  cell_description_color: '#909090',                    // 标题文字颜色
+  cell_description_color: base.color_text_caption,   // 标题文字颜色
   cell_description_font_size: 15,                    // 描述文字大小
-  cell_icon_width: 48,                               // 图标度
-  cell_icon_height: 48,                              // 图标度
   cell_label_width: 100,                             // 表单label度
+  cell_arrow_color: '#bcbcbc',                       // 箭头颜色
+  cell_arrow_length: 10,                             // 箭头长度
+  cell_arrow_border_width: 2,                        // 箭头粗细
 
   // Checkbox
   checkbox_size: 20,
