@@ -25,8 +25,8 @@ class Demo extends React.Component {
     return (
       <div>
         <Carousel
-          onChangeEnd={(index) => {
-            console.log(index);
+          onChange={(index) => {
+            console.log(`onChange: ${index}`);
           }}
         >
           {contentRender()}
@@ -109,8 +109,8 @@ class Demo extends React.Component {
           ref={(ele) => { this.carousel = ele; }}
           loop
           direction="left"
-          onChangeEnd={(index) => {
-            console.log(index);
+          onChange={(index) => {
+            console.log(`onChange: ${index}`);
           }}
         >
           {contentRender()}
@@ -175,7 +175,7 @@ class Demo extends React.Component {
           loop
           direction="left"
           onChangeEnd={(index) => {
-            console.log(index);
+            console.log(`onChangeEnd: ${index}`);
           }}
         >
           {contentRender()}
