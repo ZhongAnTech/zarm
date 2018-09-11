@@ -100,7 +100,7 @@ export default class SegmentedControl extends PureComponent<SegmentedControlProp
     };
     return (
       <div className={`${cls}`} style={style}>
-        {items.map(tabRender)}
+        <div>{items.map(tabRender)}</div>
       </div>
     );
   }
