@@ -96,9 +96,9 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
           className={cls}
           theme="primary"
           shape={shape}
-          size="sm"
+          size="xs"
           block={block}
-          bordered={!checked}
+          ghost={!checked}
           disabled={disabled}
         >
           <input

@@ -115,7 +115,7 @@ class Demo extends React.Component {
           ref={(ref) => { this.manualFocus = ref; }}
         />
         <div className="button-wrap">
-          <Button theme="primary" size="sm" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
+          <Button theme="primary" size="xs" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
         </div>
       </div>
     )
