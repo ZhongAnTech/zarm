@@ -2,6 +2,7 @@ import React, { PureComponent, Children, cloneElement, ReactElement } from 'reac
 import classnames from 'classnames';
 import { BaseCollapseProps } from './PropsType';
 import { isArray } from '../utils/validate';
+import { CollapseItemProps } from './CollapseItem';
 
 export interface CollapseProps extends BaseCollapseProps {
   prefixCls?: string;
@@ -87,16 +88,19 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     const { animated } = this.props;
     const { activeKey } = this.state;
 
-    return Children.map(this.props.children, (ele: any) => {
-      const { disabled } = ele.props;
-      const key = ele.key && String(ele.key);
-      const isActive = activeKey.indexOf(key) > -1;
-      return cloneElement(ele as ReactElement<any>, {
-        animated,
-        isActive,
-        onItemChange: disabled ? null : () => this.onItemChange(key),
-      });
-    });
+    return Children.map(
+      this.props.children,
+      (ele: ReactElement<CollapseItemProps>) => {
+        const { disabled } = ele.props;
+        const key = ele.key && String(ele.key);
+        const isActive = activeKey.indexOf(key) > -1;
+        return cloneElement(ele, {
+          animated,
+          isActive,
+          onItemChange: disabled ? () => {} : () => this.onItemChange(key),
+        });
+      },
+    );
   }
 
   render() {
