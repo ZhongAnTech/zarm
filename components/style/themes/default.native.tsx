@@ -177,7 +177,7 @@ const components = {
   cell_background: '#fff',                           // 背景色
   cell_line_left: 16,                                // 分隔线左边距
   cell_padding_h: 16,                                // 边内内距
-  cell_line_hasicon_left: 72,                        // 带icon时分隔线左边距
+  cell_line_hasicon_left: 16,                        // 带icon时分隔线左边距
   cell_title_color: '#464646',                          // 标题文字颜色
   cell_title_font_size: 15,                          // 标题文字大小
   cell_description_color: '#909090',                    // 标题文字颜色

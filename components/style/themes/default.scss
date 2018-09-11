@@ -209,16 +209,17 @@ $button-error-ghost-active-border: #e54747;
 $button-error-ghost-active-color: #e54747;
 
 // Cell
-$cell-height: r(45);                            // 最小高度
+$cell-height: r(52);                            // 最小高度
 $cell-background: #fff;                       // 背景色
-$cell-line-left: r(15);                         // 分隔线左边距
-$cell-line-hasicon-left: r(59);                 // 带icon时分隔线左边距
+$cell-line-left: r(16);                         // 分隔线左边距
+$cell-padding-h: r(16);                         // 边内内距
+$cell-line-hasicon-left: r(16);                 // 带icon时分隔线左边距
 $cell-title-color: $color-text;                 // 标题文字颜色
-$cell-title-font-size: $font-size-lg;           // 标题文字大小
+$cell-title-font-size: r(15);                   // 标题文字大小
 $cell-description-color: #999;                // 标题文字颜色
-$cell-description-font-size: $font-size-md;     // 描述文字大小
-$cell-icon-width: r(28);                        // 图标宽度
-$cell-icon-height: r(28);                       // 图标高度
+$cell-description-font-size: r(15);             // 描述文字大小
+$cell-icon-width: r(24);                        // 图标宽度
+$cell-icon-height: r(24);                       // 图标高度
 $cell-label-width: r(100);                      // 表单label宽度
 
 // Checkbox
