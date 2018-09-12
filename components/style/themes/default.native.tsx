@@ -84,7 +84,7 @@ const components = {
   // Button
   button_height_xs: 28,
   button_height_sm: 36,
-  button_height_md: 45,
+  button_height_md: 44,
   button_height_lg: 52,
   button_padding_h_xs: 10,
   button_padding_h_sm: 12,
