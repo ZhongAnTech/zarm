@@ -1,0 +1,13 @@
+$prefixCls: $prefixCls-nav-bar;
+
+.#{$prefixCls} {
+  &-left {
+    width: $nav-bar-width;
+    height: $nav-bar-height;
+  }
+
+  &-right {
+    width: $nav-bar-width;
+    height: $nav-bar-height;
+  }
+}

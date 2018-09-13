@@ -1,0 +1,18 @@
+@import "../functions/index";
+
+.nav-bar-page {
+  .normal-panel {
+    display: flex;
+    background: #fdfdfd;
+    width: 100%;
+    height: r(44);
+  }
+
+  .multiple-panel {
+    display: flex;
+    justify-content: space-between;
+    background: #fdfdfd;
+    width: 100%;
+    height: r(44);
+  }
+}
