@@ -5,6 +5,7 @@ import { BaseCollapseItemProps } from './PropsType';
 export interface CollapseItemProps extends BaseCollapseItemProps {
   prefixCls?: string;
   className?: string;
+  isActive?: boolean;
 }
 
 export default class CollapseItem extends PureComponent<CollapseItemProps, any> {
