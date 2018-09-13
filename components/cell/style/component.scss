@@ -110,9 +110,10 @@ $prefixCls: $prefixCls-cell;
 
   &-title {
     width: $cell-label-width;
-    padding: r(12) 0;
+    padding: r(16) 0;
     overflow: hidden;
     color: $cell-title-color;
+    line-height: r(20);
   }
 
   &-content {

@@ -11,7 +11,7 @@ class Demo extends React.Component {
         <Cell
           description={
             <Button
-              size="sm"
+              size="xs"
               theme="error"
               onClick={() => {
                 Toast.show('默认3秒自动关闭');
@@ -27,7 +27,7 @@ class Demo extends React.Component {
         <Cell
           description={
             <Button
-              size="sm"
+              size="xs"
               theme="success"
               onClick={() => {
                 Toast.show(
@@ -50,7 +50,7 @@ class Demo extends React.Component {
         <Cell
           description={
             <Button
-              size="sm"
+              size="xs"
               onClick={() => {
                 Toast.show('指定10秒自动关闭', 10000);
               }}
@@ -82,7 +82,7 @@ class Demo extends React.Component {
         <Cell
           description={
             <Button
-              size="sm"
+              size="xs"
               onClick={() => {
                 Loading.show();
                 setTimeout(()=>{

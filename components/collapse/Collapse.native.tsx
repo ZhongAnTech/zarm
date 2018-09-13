@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties, Children, cloneElement } from 'react';
+import React, { PureComponent, CSSProperties, Children, cloneElement, ReactElement } from 'react';
 import {
   StyleSheet,
   View,
@@ -11,13 +11,14 @@ import { isArray } from '../utils/validate';
 export interface CollapseProps extends BaseCollapseProps {
   style?: CSSProperties;
   styles?: typeof collapaseStyle;
+  activeKey?: any;
 }
 
 const collapseStyles = StyleSheet.create<any>(collapaseStyle);
 
 export default class Collapse extends PureComponent<CollapseProps, any> {
   static defaultProps = {
-    multiple: true,
+    multiple: false,
     animated: false,
     styles: collapseStyles,
     onChange: () => {},
@@ -28,50 +29,50 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-        activeIndex: this.getActiveIndex(props),
+      activeKey: this.getactiveKey(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.isPropEqual(this.props.activeIndex, nextProps.activeIndex)) {
+    if (!this.isPropEqual(this.props.activeKey, nextProps.activeKey)) {
       this.setState({
-          activeIndex: this.getActiveIndex(nextProps),
+        activeKey: this.getactiveKey(nextProps),
       });
     }
   }
 
   onItemChange = (key) => {
     const { multiple, onChange } = this.props;
-    const { activeIndex } = this.state;
-    const hasKey = activeIndex.indexOf(key) > -1;
-    let newActiveIndex: Array<string> = [];
+    const { activeKey } = this.state;
+    const hasKey = activeKey.indexOf(key) > -1;
+    let newactiveKey: Array<string> = [];
     if (multiple) {
       if (hasKey) {
-        newActiveIndex = activeIndex.filter(i => i !== key);
+        newactiveKey = activeKey.filter(i => i !== key);
       } else {
-        newActiveIndex = activeIndex.slice(0);
-        newActiveIndex.push(key);
+        newactiveKey = activeKey.slice(0);
+        newactiveKey.push(key);
       }
     } else {
-      newActiveIndex = hasKey ? [] : [key];
+      newactiveKey = hasKey ? [] : [key];
     }
     this.setState({
-      activeIndex: newActiveIndex,
+      activeKey: newactiveKey,
     });
     onChange(Number(key));
   }
 
-  getActiveIndex(props) {
-    const { activeIndex, defaultActiveIndex, multiple } = props;
+  getactiveKey(props) {
+    const { activeKey, defaultactiveKey, multiple } = props;
 
-    const defaultIndex = (activeIndex || activeIndex === 0) ? activeIndex : defaultActiveIndex;
+    const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultactiveKey;
 
-    if (defaultIndex || defaultIndex === 0) {
-      if (isArray(defaultIndex)) {
+    if (defaultKey || defaultKey === 0) {
+      if (isArray(defaultKey)) {
         return !multiple ?
-        [String(defaultIndex[0])] : (defaultIndex as Array<any>).map(key => String(key));
+        [String(defaultKey[0])] : (defaultKey as Array<any>).map(key => String(key));
       } else {
-        return [String(defaultIndex)];
+        return [String(defaultKey)];
       }
     }
 
@@ -88,12 +89,12 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
   renderItems() {
     const { animated } = this.props;
-    const { activeIndex } = this.state;
+    const { activeKey } = this.state;
     return Children.map(this.props.children, (ele, index) => {
-      return cloneElement(ele as JSX.Element, {
+      return cloneElement(ele as ReactElement<any>, {
         index: String(index),
         animated,
-        activeIndex,
+        activeKey,
         onItemChange: this.onItemChange,
       });
     });

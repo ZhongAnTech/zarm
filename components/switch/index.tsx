@@ -52,7 +52,7 @@ export default class Switch extends PureComponent<SwitchProps, any> {
   }
 
   render() {
-    const { prefixCls, className, disabled, ...others } = this.props;
+    const { prefixCls, className, disabled, style } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
@@ -62,7 +62,7 @@ export default class Switch extends PureComponent<SwitchProps, any> {
     });
 
     return (
-      <span {...others} className={cls} >
+      <span className={cls} style={style}>
         <input
           type="checkbox"
           className={`${prefixCls}-input`}

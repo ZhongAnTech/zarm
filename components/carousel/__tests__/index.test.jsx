@@ -3,140 +3,284 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Carousel from '../index';
 
+const createCarousel = (props, childrenLen = 3) => {
+  const ITEMS = Array.from({ length: childrenLen }).map((v, i) => i);
+  return (
+    <Carousel {...props}>
+      {
+        ITEMS.map((item, index) => {
+          return (
+            <div key={index}>{ item }</div>
+          );
+        })
+      }
+    </Carousel>
+  );
+};
+
 describe('Carousel', () => {
-  it('renders correctly', () => {
-    const ITEMS = ['1', '2', '3'];
+  it('base render correctly', () => {
     const wrapper = render(
-      <Carousel>
-        {
-          ITEMS.map((item, i) => {
-            return (
-              <div key={+i}>{item}</div>
-            );
-          })
-        }
-      </Carousel>
+      <div>
+        { createCarousel() }
+        { createCarousel({}, 0) }
+        { createCarousel({ activeIndex: 1 }, 0) }
+        { createCarousel({}, 1) }
+      </div>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('loop renders correctly', () => {
-    const ITEMS = ['1', '2', '3'];
+  it('style render correctly', () => {
+    const style = { background: 'red' };
+    const wrapper = render(createCarousel({ style }, 0));
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('prefixCls render correctly', () => {
+    const prefixCls = 'za-test';
+    const wrapper = render(createCarousel({ prefixCls }, 1));
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('className render correctly', () => {
+    const className = 'za-wrapper-test';
+    const wrapper = render(createCarousel({ className }, 0));
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('height render correctly', () => {
+    const wrapper = render(createCarousel({ height: 150, direction: 'top' }));
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('pagination render correctly', () => {
     const wrapper = render(
-      <Carousel loop>
-        {
-          ITEMS.map((item, i) => {
-            return (
-              <div key={+i}>{item}</div>
-            );
-          })
-        }
-      </Carousel>
+      <div>
+        {createCarousel({ showPagination: true })}
+        {createCarousel({ showPagination: false })}
+      </div>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('activeIndex', () => {
+    const wrapper = mount(createCarousel({ activeIndex: 1 }));
+    expect(wrapper.state('activeIndex')).toEqual(1);
   });
 
   it('autoPlay', () => {
     jest.useFakeTimers();
-    const ITEMS = ['1', '2', '3'];
     const onChange = jest.fn();
-    const wrapper = mount(
-      <Carousel
-        autoPlay
-        onChange={onChange}
-      >
-        {
-          ITEMS.map((item, i) => {
-            return (
-              <div key={+i}>{item}</div>
-            );
-          })
-        }
-      </Carousel>
-    );
-    wrapper.setProps({ activeIndex: 1 });
-    jest.advanceTimersByTime(20000);
-    wrapper.unmount();
+    const animationDuration = 200;
+    const autoPlayIntervalTime = 1000;
+    const props = { autoPlay: true, animationDuration, autoPlayIntervalTime };
+    const wrapperLeft = mount(createCarousel({ ...props, onChange }));
+    const wrapperRight = mount(createCarousel({ ...props, direction: 'right' }));
+
+    jest.advanceTimersByTime(autoPlayIntervalTime);
+    expect(wrapperLeft.state('activeIndex')).toEqual(1);
+    expect(wrapperRight.state('activeIndex')).toEqual(0);
+    expect(onChange).toBeCalledWith(1);
+
+    jest.advanceTimersByTime(10 * autoPlayIntervalTime);
+    expect(onChange).toHaveBeenCalledTimes(2);
   });
 
-  it('autoPlay and direction is right', () => {
+  it('loop', () => {
     jest.useFakeTimers();
-    const ITEMS = ['1', '2', '3'];
-    const wrapper = mount(
-      <Carousel autoPlay direction="right">
-        {
-          ITEMS.map((item, i) => {
-            return (
-              <div key={+i}>{item}</div>
-            );
-          })
-        }
-      </Carousel>
-    );
-    wrapper.setProps({ activeIndex: 1 });
-    jest.advanceTimersByTime(3000);
+    const onChange = jest.fn();
+    const autoPlayIntervalTime = 1000;
+    const props = {
+      loop: true,
+      autoPlay: true,
+      autoPlayIntervalTime,
+      onChange,
+    };
+    const wrapper = mount(createCarousel(props, 2));
+
+    jest.advanceTimersByTime(autoPlayIntervalTime);
+    expect(wrapper.state('activeIndex')).toEqual(1);
+
+    jest.advanceTimersByTime(autoPlayIntervalTime);
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    wrapper.setState({ direction: 'right' });
+    jest.advanceTimersByTime(autoPlayIntervalTime);
+    expect(wrapper.state('activeIndex')).toEqual(1);
+
+    jest.advanceTimersByTime(10 * autoPlayIntervalTime);
+    expect(onChange).toHaveBeenCalledTimes(13);
   });
 
-  it('touch event', () => {
-    const onChangeEnd = jest.fn();
-    const ITEMS = ['1', '2', '3'];
-    const wrapper = mount(
-      <Carousel onChangeEnd={onChangeEnd} direction="right">
-        {
-          ITEMS.map((item, i) => {
-            return (
-              <div key={+i}>{item}</div>
-            );
-          })
-        }
-      </Carousel>
-    );
+  it('componentWillReceiveProps', () => {
+    const ITEMS = [1, 2];
+    const wrapper = mount(createCarousel());
+    const children = ITEMS.map((item, index) => {
+      return (
+        <div key={index}>{ item }</div>
+      );
+    });
 
-    wrapper.find('.za-carousel-items')
-      .simulate('touchStart', {
-        touches: [
-          {
-            pageX: 0,
-          },
-        ],
-      })
-      .simulate('touchMove', {
-        touches: [
-          {
-            pageX: 100,
-          },
-        ],
-      })
-      .simulate('touchEnd');
+    wrapper.setProps({ children, activeIndex: 1 });
+    expect(wrapper.state('activeIndex')).toEqual(1);
+    expect(toJson(render(wrapper))).toMatchSnapshot();
 
+    wrapper.setProps({ activeIndex: -1 });
+    expect(wrapper.state('activeIndex')).toEqual(1);
+
+    wrapper.setProps({ activeIndex: 10 });
     expect(wrapper.state('activeIndex')).toEqual(0);
   });
 
-  it('pagination event', () => {
-    const onChange = jest.fn();
-    const onChangeEnd = jest.fn();
-    const ITEMS = ['1', '2', '3'];
-    const wrapper = mount(
-      <Carousel onChange={onChange} onChangeEnd={onChangeEnd} direction="right">
-        {
-          ITEMS.map((item, i) => {
-            return (
-              <div key={+i}>{item}</div>
-            );
-          })
-        }
-      </Carousel>
-    );
+  it('touchStart', () => {
+    const wrapper = mount(createCarousel());
+    const wrapperTouchStart = (wrapperTouch) => {
+      wrapperTouch
+        .find('.za-carousel-items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+            },
+          ],
+        });
+    };
+    wrapperTouchStart(wrapper);
+    expect(wrapper.state('activeIndex')).toEqual(0);
 
-    wrapper
-      .find('.za-carousel-pagination li')
-      .at(2)
-      .simulate('click');
-    expect(
+    wrapper.setProps({ activeIndex: 2 });
+    wrapperTouchStart(wrapper);
+    expect(wrapper.state('activeIndex')).toEqual(2);
+  });
+
+  it('touchMove', () => {
+    const wrapperDirectionX = mount(createCarousel());
+    const wrapperDirectionY = mount(createCarousel({ direction: 'bottom' }));
+    const wrapperTouchMove = (wrapper) => {
+      wrapper.find('.za-carousel-items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: -4,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: -5,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 4,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 4 + 5,
+            },
+          ],
+        });
+    };
+
+    Array.of(wrapperDirectionX, wrapperDirectionY).forEach((wrapper) => {
+      wrapperTouchMove(wrapper);
+      expect(wrapper.state('activeIndex')).toEqual(0);
+
+      wrapper.setProps({ activeIndex: 2 });
+      wrapperTouchMove(wrapper);
+      expect(wrapper.state('activeIndex')).toEqual(2);
+    });
+  });
+
+  it('touchEnd', () => {
+    const moveDistanceRatio = 1;
+    const moveTimeSpan = 200;
+    const props = { moveDistanceRatio, moveTimeSpan };
+    const wrapper = mount(createCarousel(props));
+    const wrapperTouchEnd = ({
+      direction = 'left',
+      offset = 100,
+      activeIndex = 0,
+    }) => {
       wrapper
-        .find('.za-carousel-pagination li')
-        .at(2)
-        .hasClass('active')
-    ).toBe(true);
+        .setProps({ direction, activeIndex })
+        .find('.za-carousel-items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: ['left', 'right'].includes(direction) ? offset : 0,
+              pageY: ['top', 'bottom'].includes(direction) ? offset : 0,
+            },
+          ],
+        })
+        .simulate('touchEnd');
+    };
+    wrapperTouchEnd({ offset: 0 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    wrapperTouchEnd({ offset: -100 });
+    expect(wrapper.state('activeIndex')).toEqual(1);
+
+    wrapperTouchEnd({ activeIndex: 1, offset: 100 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    wrapperTouchEnd({ direction: 'top', offset: -100 });
+    expect(wrapper.state('activeIndex')).toEqual(1);
+  });
+
+  it('resize event', () => {
+    // reference: https://github.com/airbnb/enzyme/issues/426#issuecomment-225912455
+    const eventMap = {};
+    window.addEventListener = jest.fn((event, cb) => {
+      eventMap[event] = cb;
+    });
+
+    const wrapper = mount(createCarousel());
+    eventMap.resize({ innerWidth: 800 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
+    wrapper.unmount();
+  });
+
+  it('transitionend event', () => {
+    const onChangeEnd = jest.fn();
+    const wrapper = mount(createCarousel({ onChangeEnd }));
+    wrapper.find('.za-carousel-pagination li').at(1).simulate('click');
+    wrapper.find('.za-carousel-items').at(0).simulate('transitionend');
+    expect(onChangeEnd).toBeCalledWith(1);
   });
 });

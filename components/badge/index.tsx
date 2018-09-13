@@ -10,6 +10,7 @@ export interface BadgeProps extends PropsType {
 export default class Badge extends PureComponent<BadgeProps, {}> {
   static defaultProps = {
     prefixCls: 'za-badge',
+    shape: 'dot',
     theme: 'error',
     sup: false,
   };
@@ -29,7 +30,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     return (
       <span className={cls}>
         {children}
-        <sup className={supCls} {...others}>{text}</sup>
+        <sup className={supCls} {...others}>{shape !== 'dot' && text}</sup>
       </span>
     );
   }
