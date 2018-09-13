@@ -150,10 +150,10 @@ $button-default-active-background: #bcbcbc;
 $button-default-active-border: #bcbcbc;
 $button-default-active-color: $color-text;
 $button-default-ghost-background: transparent;
-$button-default-ghost-border: $theme-default;
+$button-default-ghost-border: #e6e6e6;
 $button-default-ghost-color: $color-text;
-$button-default-ghost-active-background: $theme-default;
-$button-default-ghost-active-border: $theme-default;
+$button-default-ghost-active-background: #f6f6f6;
+$button-default-ghost-active-border: #e6e6e6;
 $button-default-ghost-active-color: $color-text;
 
 $button-primary-background: $theme-primary;

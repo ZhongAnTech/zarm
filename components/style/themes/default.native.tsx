@@ -108,10 +108,10 @@ const components = {
   button_default_active_border: '#bcbcbc',
   button_default_active_color: base.color_text,
   button_default_ghost_background: 'transparent',
-  button_default_ghost_border: base.theme_default,
+  button_default_ghost_border: '#e6e6e6',
   button_default_ghost_color: base.color_text,
-  button_default_ghost_active_background: base.theme_default,
-  button_default_ghost_active_border: base.theme_default,
+  button_default_ghost_active_background: '#f6f6f6',
+  button_default_ghost_active_border: '#e6e6e6',
   button_default_ghost_active_color: base.color_text,
 
   button_primary_background: base.theme_primary,
