@@ -110,6 +110,7 @@ exports[`Button ghost active 1`] = `
           Object {
             "color": "#fff",
           },
+          false,
           Object {
             "color": "#12c287",
           },
