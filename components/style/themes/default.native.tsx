@@ -18,12 +18,12 @@ const base = {
   color_shadow: 'rgba(56, 56, 56, .15)',    // 阴影色
 
   // 背景色
-  background_active: '#ddd',
-  background_disabled: '#e1e1e1',
+  background_active: '#e6e6e6',
+  background_disabled: '#bcbcbc',
 
   // 边框色
   border_color: '#e6e6e6',
-  border_disabled: '#e1e1e1',
+  border_disabled: '#bcbcbc',
 
   // 圆角
   radius_sm: 2,
@@ -59,7 +59,7 @@ const base = {
   zindex_loading: 1500,
 
   // 透明度
-  opacity_disabled: .5,
+  opacity_disabled: .6,
   opacity_mask: .5,
   opacity_toast: .8,
   opacity_tooltip: .8,
@@ -98,20 +98,20 @@ const components = {
   button_icon_size_sm: 18,
   button_icon_size_md: 22,
   button_icon_size_lg: 26,
-  button_disabled_opacity: .6,
+  button_disabled_opacity: base.opacity_disabled,
   button_disabled_color_ghost: '#bcbcbc',
 
-  button_default_background: base.theme_default,
-  button_default_border: base.theme_default,
+  button_default_background: '#fff',
+  button_default_border: base.background_active,
   button_default_color: base.color_text,
-  button_default_active_background: '#bcbcbc',
-  button_default_active_border: '#bcbcbc',
+  button_default_active_background: base.background_active,
+  button_default_active_border: base.background_active,
   button_default_active_color: base.color_text,
   button_default_ghost_background: 'transparent',
-  button_default_ghost_border: '#e6e6e6',
+  button_default_ghost_border: base.background_active,
   button_default_ghost_color: base.color_text,
-  button_default_ghost_active_background: '#f6f6f6',
-  button_default_ghost_active_border: '#e6e6e6',
+  button_default_ghost_active_background: base.background_active,
+  button_default_ghost_active_border: base.background_active,
   button_default_ghost_active_color: base.color_text,
 
   button_primary_background: base.theme_primary,
@@ -123,7 +123,7 @@ const components = {
   button_primary_ghost_background: 'transparent',
   button_primary_ghost_border: base.theme_primary,
   button_primary_ghost_color: base.theme_primary,
-  button_primary_ghost_active_background: '#fff',
+  button_primary_ghost_active_background: 'transparent',
   button_primary_ghost_active_border: '#10ae79',
   button_primary_ghost_active_color: '#10ae79',
 
@@ -136,7 +136,7 @@ const components = {
   button_success_ghost_background: 'transparent',
   button_success_ghost_border: base.theme_success,
   button_success_ghost_color: base.theme_success,
-  button_success_ghost_active_background: '#fff',
+  button_success_ghost_active_background: 'transparent',
   button_success_ghost_active_border: '#10ae79',
   button_success_ghost_active_color: '#10ae79',
 
@@ -149,7 +149,7 @@ const components = {
   button_warning_ghost_background: 'transparent',
   button_warning_ghost_border: base.theme_warning,
   button_warning_ghost_color: base.theme_warning,
-  button_warning_ghost_active_background: '#fff',
+  button_warning_ghost_active_background: 'transparent',
   button_warning_ghost_active_border: '#d3822c',
   button_warning_ghost_active_color: '#d3822c',
 
@@ -162,7 +162,7 @@ const components = {
   button_error_ghost_background: 'transparent',
   button_error_ghost_border: base.theme_error,
   button_error_ghost_color: base.theme_error,
-  button_error_ghost_active_background: '#fff',
+  button_error_ghost_active_background: 'transparent',
   button_error_ghost_active_border: '#e54747',
   button_error_ghost_active_color: '#e54747',
 

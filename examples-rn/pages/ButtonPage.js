@@ -51,8 +51,6 @@ export default class Page extends PureComponent {
 
         <Panel titleRender="幽灵按钮">
           <View style={[styles.box]}>
-            <Button style={styles.mb} ghost onClick={noop}>default ghost</Button>
-            <Button style={styles.mb} ghost disabled onClick={noop}>default ghost disabled</Button>
             <Button style={styles.mb} theme="primary" ghost onClick={noop}>primary ghost</Button>
             <Button style={styles.mb} theme="primary" ghost disabled onClick={noop}>primary ghost disabled</Button>
           </View>

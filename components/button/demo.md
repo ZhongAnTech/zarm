@@ -50,8 +50,6 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button block ghost>default ghost</Button>
-        <Button block ghost disabled>default ghost disabled</Button>
         <Button block ghost theme="primary">primary ghost</Button>
         <Button block ghost disabled theme="primary">primary ghost disabled</Button>
       </div>

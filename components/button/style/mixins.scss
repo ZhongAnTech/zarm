@@ -5,7 +5,11 @@
   $color,
   $active-background,
   $active-border,
-  $active-color
+  $active-color,
+  $disabled-background,
+  $disabled-border,
+  $disabled-color,
+  $disabled-opacity
 ) {
   background-color: $background;
   border-color: $border;
@@ -20,8 +24,11 @@
 
   &.disabled,
   &:disabled {
-    opacity: $opacity-disabled;
-    color: rgba($color, $opacity-disabled);
+    background-color: $disabled-background;
+    border-color: $disabled-border;
+    color: $disabled-color;
+    // color: rgba($color, $opacity-disabled);
+    opacity: $disabled-opacity;
     cursor: not-allowed;
 
     &:active,
@@ -30,8 +37,10 @@
     &.focus,
     &:visited,
     &.visited {
-      background-color: $background;
-      border-color: $border;
+      background-color: $disabled-background;
+      border-color: $disabled-border;
+      color: $disabled-color;
+      opacity: $disabled-opacity;
     }
   }
 }
@@ -93,7 +102,8 @@
 
     &.disabled,
     &:disabled {
-      opacity: $opacity-disabled;
+      border-color: $border-disabled;
+      color: $color-text-disabled;
       cursor: not-allowed;
 
       &:active,
@@ -102,8 +112,8 @@
       &.focus,
       &:visited,
       &.visited {
-        background-color: transparent;
-        border-color: $border;
+        border-color: $border-disabled;
+        color: $color-text-disabled;
       }
     }
   }

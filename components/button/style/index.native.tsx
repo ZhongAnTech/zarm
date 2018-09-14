@@ -21,6 +21,7 @@ export default {
   },
 
   defaultWrapper: {
+    borderWidth: 1,
     backgroundColor: variables.button_default_background,
     borderColor: variables.button_default_border,
   },
@@ -33,6 +34,9 @@ export default {
   },
   defaultActiveText: {
     color: variables.button_default_active_color,
+  },
+  defaultDisabledText: {
+    color: variables.button_disabled_color_ghost,
   },
   defaultGhostWrapper: {
     backgroundColor: variables.button_default_ghost_background,
@@ -232,11 +236,16 @@ export default {
 
   // disabled
   disabledWrapper: {
-    opacity: 0.5,
+    opacity: variables.button_disabled_opacity,
+  },
+
+  disabledText: {
+    color: variables.color_text_disabled,
   },
 
   // disabled ghost
   disabledGhostWrapper: {
+    opacity: 1,
     borderColor: variables.button_disabled_color_ghost,
   },
 

@@ -15,12 +15,12 @@ $color-link: $theme-primary;               // 链接
 $color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
 // 背景色
-$background-active: #ddd;
-$background-disabled: #e1e1e1;
+$background-active: #e6e6e6;
+$background-disabled: #bcbcbc;
 
 // 边框色
 $border-color: #e6e6e6;
-$border-disabled: #e1e1e1;
+$border-disabled: #bcbcbc;
 
 // 圆角
 $radius-sm: r(2);
@@ -56,7 +56,7 @@ $zindex-toast: 1500;
 $zindex-loading: 1500;
 
 // 透明度
-$opacity-disabled: .5;
+$opacity-disabled: .6;
 $opacity-mask: .5;
 $opacity-toast: .8;
 $opacity-tooltip: .8;
@@ -140,20 +140,20 @@ $button-icon-size-xs: r(16);
 $button-icon-size-sm: r(18);
 $button-icon-size-md: r(22);
 $button-icon-size-lg: r(26);
-$button-disabled-opacity: .6;
+$button-disabled-opacity: $opacity-disabled;
 $button-disabled-color-ghost: #bcbcbc;
 
-$button-default-background: $theme-default;
-$button-default-border: $theme-default;
+$button-default-background: #fff;
+$button-default-border: $background-active;
 $button-default-color: $color-text;
-$button-default-active-background: #bcbcbc;
-$button-default-active-border: #bcbcbc;
+$button-default-active-background: $background-active;
+$button-default-active-border: $background-active;
 $button-default-active-color: $color-text;
 $button-default-ghost-background: transparent;
-$button-default-ghost-border: #e6e6e6;
+$button-default-ghost-border: $background-active;
 $button-default-ghost-color: $color-text;
-$button-default-ghost-active-background: #f6f6f6;
-$button-default-ghost-active-border: #e6e6e6;
+$button-default-ghost-active-background: $background-active;
+$button-default-ghost-active-border: $background-active;
 $button-default-ghost-active-color: $color-text;
 
 $button-primary-background: $theme-primary;
@@ -165,7 +165,7 @@ $button-primary-active-color: #fff;
 $button-primary-ghost-background: transparent;
 $button-primary-ghost-border: $theme-primary;
 $button-primary-ghost-color: $theme-primary;
-$button-primary-ghost-active-background: #fff;
+$button-primary-ghost-active-background: transparent;
 $button-primary-ghost-active-border: #10ae79;
 $button-primary-ghost-active-color: #10ae79;
 
@@ -178,7 +178,7 @@ $button-success-active-color: #fff;
 $button-success-ghost-background: transparent;
 $button-success-ghost-border: $theme-success;
 $button-success-ghost-color: $theme-success;
-$button-success-ghost-active-background: #fff;
+$button-success-ghost-active-background: transparent;
 $button-success-ghost-active-border: #10ae79;
 $button-success-ghost-active-color: #10ae79;
 
@@ -191,7 +191,7 @@ $button-warning-active-color: #fff;
 $button-warning-ghost-background: transparent;
 $button-warning-ghost-border: $theme-warning;
 $button-warning-ghost-color: $theme-warning;
-$button-warning-ghost-active-background: #fff;
+$button-warning-ghost-active-background: transparent;
 $button-warning-ghost-active-border: #d3822c;
 $button-warning-ghost-active-color: #d3822c;
 
@@ -204,7 +204,7 @@ $button-error-active-color: #fff;
 $button-error-ghost-background: transparent;
 $button-error-ghost-border: $theme-error;
 $button-error-ghost-color: $theme-error;
-$button-error-ghost-active-background: #fff;
+$button-error-ghost-active-background: transparent;
 $button-error-ghost-active-border: #e54747;
 $button-error-ghost-active-color: #e54747;
 

@@ -88,6 +88,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles![`${size}Text`],
       styles![`${theme}Text`],
       isActive && styles![`${theme}ActiveText`],
+      disabled && styles![`${theme}DisabledText`],
       ghost && styles![`${theme}GhostText`],
       isActive && ghost && styles![`${theme}GhostActiveText`],
       disabled && ghost && styles!.disabledGhostText,
