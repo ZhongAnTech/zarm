@@ -7,12 +7,11 @@ import { NavBar } from 'zarm';
 class Demo extends React.Component {
   render() {
     return (
-      <div className="normal-panel">
-        <NavBar
-          title='这是标题'
-          left
-        />
-      </div>
+      <NavBar
+        left
+        title='这是标题'
+        right='test'
+      />
     )
   }
 }
