@@ -1,13 +1,48 @@
+@import "mixins";
+
 $prefixCls: $prefixCls-nav-bar;
 
 .#{$prefixCls} {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdfdfd;
+  width: 100%;
+  height: r(44);
+
+  &-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &-left-icon {
+    position: absolute;
+    left: r(16);
+    top: r(5);
+    @include icon-size(
+      $nav-bar-icon-size
+    );
+  }
+  
   &-left {
+    position: absolute;
+    left: r(16);
     width: $nav-bar-width;
     height: $nav-bar-height;
   }
 
   &-right {
+    position: absolute;
+    right: r(16);
     width: $nav-bar-width;
     height: $nav-bar-height;
+  }
+
+  &-right-icon {
+    position: absolute;
+    right: r(16);
+    top: r(5);
+    font-size: r(24);
   }
 }

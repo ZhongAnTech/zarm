@@ -1,0 +1,5 @@
+@mixin icon-size($icon-size) {
+  .#{$prefixCls-icon} {
+    font-size: $icon-size;
+  }
+}
