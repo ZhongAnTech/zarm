@@ -5,7 +5,6 @@ module.exports = {
   ],
   setupFiles: [
     require.resolve('./environment.js'),
-    'jest-date-mock',
   ],
   setupTestFrameworkScriptFile: require.resolve('./setup.js'),
   testRegex: '/__tests__/[^.]+\\.test(\\.jsx|[^d]\\.ts)$',
