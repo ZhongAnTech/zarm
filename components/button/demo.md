@@ -138,9 +138,9 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button ghost shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button ghost shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
-        <Button ghost loading shape="radius">加载中</Button>
+        <Button shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
+        <Button shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
+        <Button loading shape="radius">加载中</Button>
       </div>
     )
   }

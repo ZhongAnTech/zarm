@@ -87,7 +87,7 @@ export default class Page extends PureComponent {
 
         <Panel titleRender="图标按钮">
           <View style={[styles.box, styles.inline]}>
-            <Button style={[styles.mb, styles.mr]} ghost loading shape="radius" onClick={noop}>loading</Button>
+            <Button style={[styles.mb, styles.mr]} loading shape="radius" onClick={noop}>loading</Button>
           </View>
         </Panel>
       </ScrollView>

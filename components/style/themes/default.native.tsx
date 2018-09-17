@@ -110,7 +110,7 @@ const components = {
   button_default_ghost_background: 'transparent',
   button_default_ghost_border: base.background_active,
   button_default_ghost_color: base.color_text,
-  button_default_ghost_active_background: base.background_active,
+  button_default_ghost_active_background: 'transparent',
   button_default_ghost_active_border: base.background_active,
   button_default_ghost_active_color: base.color_text,
 

@@ -90,7 +90,7 @@
   }
 
   &.ghost {
-    background-color: transparent;
+    background-color: $background;
     color: $color;
 
     &:active,
