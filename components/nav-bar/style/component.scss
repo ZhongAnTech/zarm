@@ -24,25 +24,13 @@ $prefixCls: $prefixCls-nav-bar;
       $nav-bar-icon-size
     );
   }
-  
-  &-left {
-    position: absolute;
-    left: r(16);
-    width: $nav-bar-width;
-    height: $nav-bar-height;
-  }
-
-  &-right {
-    position: absolute;
-    right: r(16);
-    width: $nav-bar-width;
-    height: $nav-bar-height;
-  }
 
   &-right-icon {
     position: absolute;
     right: r(16);
     top: r(5);
-    font-size: r(24);
+    @include icon-size(
+      $nav-bar-icon-size
+    );
   }
 }
