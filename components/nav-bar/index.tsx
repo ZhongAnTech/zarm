@@ -17,39 +17,36 @@ export default class NavBar extends React.PureComponent<NavBarProps> {
     const { prefixCls, className, style, title, left, right } = this.props;
     const cls = classnames(`${prefixCls}`, className);
     const titleCls = `${prefixCls}-title`;
-    const iconCls = `${prefixCls}-icon`;
-    const leftCls = `${prefixCls}-left`;
-    const leftClsIcon = classnames(`${prefixCls}-left-icon`, iconCls);
-    const rightCls = `${prefixCls}-right`;
+    const leftClsIcon = `${prefixCls}-left-icon`;
+    const rightClsIcon = `${prefixCls}-right-icon`;
 
     const renderLeft = () => {
       if (left && typeof left === 'boolean') {
         return (
-          <Icon className={leftClsIcon} theme="success" type="arrow-left" />
+          <div className={leftClsIcon}>
+            <Icon theme="success" type="arrow-left" />
+          </div>
         );
       } else if (!!left) {
         return (
-          <div className={leftCls}>
+          <div className={leftClsIcon}>
             {left}
           </div>
         );
       }
     };
 
-    const renderRight = () => {
-      if (right && typeof right !== 'boolean') {
-        return (
-          <div className={rightCls}>
-            {right}
-          </div>
-        );
-      }
-    };
+    const renderRight = (typeof right !== 'boolean') &&
+      <div className={rightClsIcon}>
+        {right}
+      </div>;
 
-    return <div className={cls} style={style}>
+    return (
+      <div className={cls} style={style}>
         {renderLeft()}
         <div className={titleCls}>{title}</div>
-        {renderRight()}
-      </div>;
+        {renderRight}
+      </div>
+    );
   }
 }
