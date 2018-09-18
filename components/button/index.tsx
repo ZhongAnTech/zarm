@@ -37,7 +37,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       ...others
     } = this.props;
 
-    const classes = classnames(`${prefixCls}`, className, {
+    const classes = classnames(prefixCls, className, {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
