@@ -45,7 +45,6 @@ exports[`Button ghost active 1`] = `
   activeOpacity={1}
   block={false}
   disabled={false}
-  onPress={[Function]}
   onPressIn={[Function]}
   onPressOut={[Function]}
   style={
