@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar renders correctly 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar-title"
+  />
+  <div
+    class="za-nav-bar-right-icon"
+  />
+</div>
+`;
+
+exports[`NavBar renders correctly with left content 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar-left-icon"
+  >
+    <i
+      class="za-icon za-icon-arrow-left"
+    />
+  </div>
+  <div
+    class="za-nav-bar-title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar-right-icon"
+  />
+</div>
+`;
+
+exports[`NavBar renders correctly with multiple right icons 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar-left-icon"
+  >
+    <i
+      class="za-icon za-icon-arrow-left"
+    />
+  </div>
+  <div
+    class="za-nav-bar-title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar-right-icon"
+  >
+    <div>
+      <i
+        class="za-icon za-icon-arrow-right"
+      />
+      <i
+        class="za-icon za-icon-info-round"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NavBar renders correctly with only left prop 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar-left-icon"
+  >
+    <i
+      class="za-icon za-icon-arrow-left theme-success"
+    />
+  </div>
+  <div
+    class="za-nav-bar-title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar-right-icon"
+  />
+</div>
+`;
+
+exports[`NavBar renders correctly with right content 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar-left-icon"
+  >
+    <i
+      class="za-icon za-icon-arrow-left"
+    />
+  </div>
+  <div
+    class="za-nav-bar-title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar-right-icon"
+  >
+    <i
+      class="za-icon za-icon-arrow-right"
+    />
+  </div>
+</div>
+`;
+
+exports[`NavBar renders correctly with title 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar-title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar-right-icon"
+  />
+</div>
+`;
