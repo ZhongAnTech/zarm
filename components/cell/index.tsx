@@ -1,8 +1,14 @@
-import React, { PureComponent } from 'react';
-import PropsType from './PropsType';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import PropsType from './PropsType';
+import { Omit } from '../utils/types';
 
-export interface CellProps extends PropsType {
+export type HTMLDivProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'title'
+>;
+
+export interface CellProps extends HTMLDivProps, PropsType {
   prefixCls?: string;
   className?: string;
 }
