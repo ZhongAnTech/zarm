@@ -2,6 +2,7 @@ import React, { PureComponent, CSSProperties } from 'react';
 import {
     StyleSheet,
     View,
+    Text,
     TouchableHighlight,
     ViewStyle,
     GestureResponderEvent,
@@ -62,7 +63,7 @@ export default class Cell extends PureComponent<CellProps, any> {
       styles!.iconStyle,
     ] as ViewStyle;
     const titleStyle = [
-      description && styles!.paddingBottom,
+      children && description && styles!.paddingBottom,
     ] as ViewStyle;
     const arrowStyle = [
       styles!.arrowStyle,
@@ -77,10 +78,18 @@ export default class Cell extends PureComponent<CellProps, any> {
     const underlayColor = (StyleSheet.flatten(styles!.underlayColorStyle) as any).backgroundColor;
 
     const iconRender = icon && <View style={iconStyle}>{icon}</View>;
-    const titleRender = title && <View style={titleStyle}>{title}</View>;
-    const descriptionRender = description && <View>{description}</View>;
+    const titleRender = title && (React.isValidElement(title)
+    ? <View style={titleStyle}>{title}</View>
+    : <View style={titleStyle}><Text>{title}</Text></View>);
+    const descriptionRender = description && (React.isValidElement(description)
+    ? <View>{description}</View>
+    : <View><Text>{description}</Text></View>);
     const arrowRender = hasArrow && <View style={arrowStyle}/>;
-    const helpRender = help && <View style={helpStyle}>{help}</View>;
+    const helpRender = help && (React.isValidElement(help)
+    ? <View style={helpStyle}>{help}</View>
+    : <View style={helpStyle}><Text>{help}</Text></View>);
+    const childrenRender = children
+    && (React.isValidElement(children) ? children : <View><Text>{children}</Text></View>);
     const contentRender = <View style={wrapperStyle}>
       <View style={cellLineContainerStyle}>
         <View style={cellLineStyle}/>
@@ -90,7 +99,7 @@ export default class Cell extends PureComponent<CellProps, any> {
           {iconRender}
           <View style={bodyStyle}>
             {titleRender}
-            {children}
+            {childrenRender}
           </View>
           {descriptionRender}
           {arrowRender}

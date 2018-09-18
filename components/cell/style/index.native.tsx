@@ -12,9 +12,9 @@ export default {
     flex: 1,
     flexDirection: 'column',
     paddingTop: variables.cell_padding_h,
-    paddingRight: variables.cell_padding_h,
+    paddingRight: variables.cell_padding_w,
     paddingBottom: variables.cell_padding_h,
-    paddingLeft: variables.cell_padding_h,
+    paddingLeft: variables.cell_padding_w,
   },
   cellLineLeft: {
     marginTop: -1,
