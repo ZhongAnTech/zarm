@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
-import { BaseInputProps } from './PropsType';
+import { InputBaseProps, InputNumberProps, InputTextareaProps } from './PropsType';
 import InputNumber from './InputNumber';
 import InputBase from './InputBase';
 import InputTextarea from './InputTextarea';
 
-export interface InputProps extends BaseInputProps {
-}
+export type InputProps = InputBaseProps | InputNumberProps | InputTextareaProps;
 
-export default class Input extends PureComponent<BaseInputProps, {}> {
+export default class Input extends PureComponent<InputProps, {}> {
   static defaultProps = {
     type: 'text',
   };
@@ -31,18 +30,23 @@ export default class Input extends PureComponent<BaseInputProps, {}> {
   }
 
   render() {
-    const { type, ...others } = this.props;
-    switch (type) {
+    if (this.props.type === 'text' && 'rows' in this.props) {
+      return <InputTextarea ref={ele => (this.input = ele)} {...this.props} />;
+    }
+
+    switch (this.props.type) {
       case 'idcard':
       case 'price':
       case 'number':
-        return <InputNumber ref={ele => (this.input = ele)} {...others} type={type} />;
+        return <InputNumber ref={ele => (this.input = ele)} {...this.props} />;
 
-      case 'textarea':
-        return <InputTextarea ref={ele => (this.input = ele)} {...others} />;
+      case 'text':
+      case 'search':
+      case 'password':
+        return <InputBase ref={ele => (this.input = ele)} {...this.props} />;
 
       default:
-        return <InputBase ref={ele => (this.input = ele)} {...others} type={type} />;
+        return <InputBase ref={ele => (this.input = ele)} {...this.props as InputBaseProps} />;
     }
   }
 }
