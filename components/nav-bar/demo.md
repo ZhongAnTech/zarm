@@ -20,6 +20,26 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
+:::demo 左侧自定义
+```jsx
+import { NavBar, Icon } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <NavBar
+        left={<Icon type='add' theme='success' />}
+        title='这是标题'
+      />
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+:::
+
+
 :::demo 右侧渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
