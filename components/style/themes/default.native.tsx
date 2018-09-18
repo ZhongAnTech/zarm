@@ -35,7 +35,7 @@ const base = {
   // 水平间距
   padding_h_sm: 5,
   padding_h_md: 8,
-  padding_h_lg: 15,
+  padding_h_lg: 16,
   padding_h_xl: 20,
 
   // 垂直间距
