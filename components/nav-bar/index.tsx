@@ -24,7 +24,7 @@ export default class NavBar extends React.PureComponent<NavBarProps> {
       if (left && typeof left === 'boolean') {
         return (
           <div className={leftClsIcon}>
-            <Icon theme="success" type="arrow-left" />
+            <Icon type="arrow-left" />
           </div>
         );
       } else if (!!left) {
