@@ -100,8 +100,8 @@
       color: $active-color;
     }
 
-    &.disabled,
-    &:disabled {
+    &:disabled,
+    &.disabled {
       border-color: $border-disabled;
       color: $color-text-disabled;
       cursor: not-allowed;
@@ -142,8 +142,8 @@
   }
 
   /* disabled Button */
-  &.disabled,
-  &:disabled {
+  &:disabled,
+  &.disabled {
     cursor: not-allowed;
     opacity: $opacity-disabled;
   }
