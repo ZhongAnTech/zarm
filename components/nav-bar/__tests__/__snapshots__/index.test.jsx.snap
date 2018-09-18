@@ -74,7 +74,7 @@ exports[`NavBar renders correctly with only left prop 1`] = `
     class="za-nav-bar-left-icon"
   >
     <i
-      class="za-icon za-icon-arrow-left theme-success"
+      class="za-icon za-icon-arrow-left"
     />
   </div>
   <div
