@@ -1,23 +1,34 @@
 // 主题
-@mixin button-theme($background, $color) {
+@mixin button-theme(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color,
+  $disabled-background,
+  $disabled-border,
+  $disabled-color,
+  $disabled-opacity
+) {
   background-color: $background;
-  border-color: $background;
+  border-color: $border;
   color: $color;
-
-  $active-background: darken($background, 8%);
-  $active-color: rgba($color, .3);
 
   &:active,
   &.active {
     background-color: $active-background;
-    border-color: $active-background;
+    border-color: $active-border;
     color: $active-color;
   }
 
   &.disabled,
   &:disabled {
-    opacity: $opacity-disabled;
-    color: rgba($color, $opacity-disabled);
+    background-color: $disabled-background;
+    border-color: $disabled-border;
+    color: $disabled-color;
+    // color: rgba($color, $opacity-disabled);
+    opacity: $disabled-opacity;
     cursor: not-allowed;
 
     &:active,
@@ -26,8 +37,10 @@
     &.focus,
     &:visited,
     &.visited {
-      background-color: $background;
-      border-color: $background;
+      background-color: $disabled-background;
+      border-color: $disabled-border;
+      color: $disabled-color;
+      opacity: $disabled-opacity;
     }
   }
 }
@@ -54,7 +67,14 @@
 }
 
 // 幽灵按钮
-@mixin button-ghost($border, $color) {
+@mixin button-ghost(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color
+) {
   @include button-shape($border);
 
   &.shape-radius {
@@ -70,17 +90,20 @@
   }
 
   &.ghost {
-    background-color: transparent;
+    background-color: $background;
     color: $color;
 
     &:active,
     &.active {
-      opacity: 1;
+      background-color: $active-background;
+      border-color: $active-border;
+      color: $active-color;
     }
 
-    &.disabled,
-    &:disabled {
-      opacity: $opacity-disabled;
+    &:disabled,
+    &.disabled {
+      border-color: $border-disabled;
+      color: $color-text-disabled;
       cursor: not-allowed;
 
       &:active,
@@ -89,8 +112,8 @@
       &.focus,
       &:visited,
       &.visited {
-        background-color: transparent;
-        border-color: $border;
+        border-color: $border-disabled;
+        color: $color-text-disabled;
       }
     }
   }
@@ -119,8 +142,8 @@
   }
 
   /* disabled Button */
-  &.disabled,
-  &:disabled {
+  &:disabled,
+  &.disabled {
     cursor: not-allowed;
     opacity: $opacity-disabled;
   }

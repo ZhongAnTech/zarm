@@ -32,7 +32,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popTop')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
           }
         >
           从上方弹出
@@ -40,7 +40,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popBottom')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
           }
         >
           从下方弹出
@@ -48,7 +48,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popLeft')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popLeft')}>开启</Button>
           }
         >
           从左侧弹出
@@ -56,7 +56,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popRight')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popRight')}>开启</Button>
           }
         >
           从右侧弹出
@@ -84,7 +84,7 @@ class Demo extends React.Component {
           onClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="sm" onClick={() => { this.close('popBottom'); }}>关闭弹层</Button>
+            <Button size="xs" onClick={() => { this.close('popBottom'); }}>关闭弹层</Button>
           </div>
         </Popup>
 
@@ -95,7 +95,7 @@ class Demo extends React.Component {
           onClose={() => console.log('关闭')}
         >
           <div className="popup-box-left">
-            <Button size="sm" onClick={() => this.close('popLeft')}>关闭弹层</Button>
+            <Button size="xs" onClick={() => this.close('popLeft')}>关闭弹层</Button>
           </div>
         </Popup>
 
@@ -106,7 +106,7 @@ class Demo extends React.Component {
           onClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="sm" onClick={() => this.close('popRight')}>关闭弹层</Button>
+            <Button size="xs" onClick={() => this.close('popRight')}>关闭弹层</Button>
           </div>
         </Popup>
       </div>

@@ -40,7 +40,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('date')}>选择</Button>
+            <Button size="xs" onClick={() => this.toggle('date')}>选择</Button>
           }
         >
           选择日期
@@ -48,7 +48,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('time')}>选择</Button>
+            <Button size="xs" onClick={() => this.toggle('time')}>选择</Button>
           }
         >
           选择时间
@@ -56,7 +56,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('limitDate')}>选择</Button>
+            <Button size="xs" onClick={() => this.toggle('limitDate')}>选择</Button>
           }
         >
           选择日期(自定义)

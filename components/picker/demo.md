@@ -117,7 +117,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('single')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('single')}>选择</Button>
           }
         >
           单列
@@ -125,7 +125,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('multi')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('multi')}>选择</Button>
           }
         >
           多列
@@ -133,7 +133,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('cascade')}>选择</Button>
           }
         >
           级联
@@ -141,7 +141,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('diy')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('diy')}>选择</Button>
           }
         >
           自定义

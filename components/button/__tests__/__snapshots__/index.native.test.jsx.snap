@@ -45,7 +45,6 @@ exports[`Button ghost active 1`] = `
   activeOpacity={1}
   block={false}
   disabled={false}
-  onPress={[Function]}
   onPressIn={[Function]}
   onPressOut={[Function]}
   style={
@@ -54,19 +53,19 @@ exports[`Button ghost active 1`] = `
         "alignItems": "center",
         "height": 44,
         "justifyContent": "center",
-        "paddingLeft": 11.5,
-        "paddingRight": 11.5,
+        "paddingLeft": 16,
+        "paddingRight": 16,
       },
       Object {
         "height": 44,
-        "paddingLeft": 11.5,
-        "paddingRight": 11.5,
+        "paddingLeft": 16,
+        "paddingRight": 16,
       },
       Object {
         "backgroundColor": "#12c287",
       },
       Object {
-        "borderRadius": 4,
+        "borderRadius": 0,
       },
       Object {
         "backgroundColor": "#10ae79",
@@ -79,7 +78,7 @@ exports[`Button ghost active 1`] = `
         "borderColor": "#12c287",
       },
       Object {
-        "borderColor": "#00AE73",
+        "borderColor": "#10ae79",
       },
       false,
       false,
@@ -99,21 +98,23 @@ exports[`Button ghost active 1`] = `
       style={
         Array [
           Object {
-            "color": "#fff",
             "fontSize": 16,
           },
           Object {
             "fontSize": 16,
           },
-          undefined,
+          Object {
+            "color": "#fff",
+          },
+          Object {
+            "color": "#fff",
+          },
+          false,
           Object {
             "color": "#12c287",
           },
           Object {
-            "opacity": 1,
-          },
-          Object {
-            "color": "#00AE73",
+            "color": "#10ae79",
           },
           false,
         ]

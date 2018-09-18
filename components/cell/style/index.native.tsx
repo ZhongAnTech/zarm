@@ -1,4 +1,6 @@
 import variables from '../../style/themes/default.native';
+import { StyleSheet } from 'react-native';
+
 export default {
   wrapperStyle: {
     flex: 1,
@@ -19,7 +21,7 @@ export default {
     paddingLeft: variables.cell_line_left,
   },
   cellLineStyle: {
-    borderTopWidth: 1,
+    borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: variables.border_color,
   },
   containerStyle: {
@@ -34,13 +36,13 @@ export default {
     alignItems: 'center',
   },
   arrowStyle: {
-    width: 7,
-    height: 7,
-    marginLeft: 8,
-    borderTopWidth: 1,
-    borderTopColor: '#BCBCBC',
-    borderRightWidth: 1,
-    borderRightColor: '#BCBCBC',
+    width: variables.cell_arrow_length,
+    height: variables.cell_arrow_length,
+    marginLeft: 5,
+    borderTopWidth: variables.cell_arrow_border_width,
+    borderTopColor: variables.cell_arrow_color,
+    borderRightWidth: variables.cell_arrow_border_width,
+    borderRightColor: variables.cell_arrow_color,
     transform: [{ rotate: '45deg' }],
   },
   flexDirectionRow: {
@@ -59,8 +61,6 @@ export default {
     alignItems: 'flex-start',
   },
   iconStyle: {
-    maxWidth: variables.cell_icon_width,
-    maxHeight: variables.cell_icon_height,
     marginRight: variables.padding_v_md,
   },
   descriptionStyle: {

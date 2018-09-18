@@ -35,7 +35,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal1')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal1')}>开启</Button>
           }
         >
           普通
@@ -43,7 +43,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal3')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
           }
         >
           圆角
@@ -51,7 +51,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal2')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal2')}>开启</Button>
           }
         >
           遮罩层可关闭
@@ -59,7 +59,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal4')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal4')}>开启</Button>
           }
         >
           无头部
@@ -69,7 +69,7 @@ class Demo extends React.Component {
           title="动画效果"
           description={
             <div>
-              <Button size="sm" onClick={() => this.open('modal5')}>开启</Button>
+              <Button size="xs" onClick={() => this.open('modal5')}>开启</Button>
             </div>
           }
         >
@@ -163,7 +163,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" theme="warning" onClick={() => this.open('alert')}>开启</Button>
+            <Button size="xs" theme="warning" onClick={() => this.open('alert')}>开启</Button>
           }
         >
           警告框 Alert
@@ -171,7 +171,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" theme="warning" onClick={() => this.open('confirm')}>开启</Button>
+            <Button size="xs" theme="warning" onClick={() => this.open('confirm')}>开启</Button>
           }
         >
           确认框 Confirm

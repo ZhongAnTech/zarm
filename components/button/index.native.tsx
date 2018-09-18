@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   ViewStyle,
+  GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import buttonStyle from './style/index.native';
@@ -14,22 +15,21 @@ import buttonStyle from './style/index.native';
 export interface ButtonProps extends PropsType {
   style?: CSSProperties;
   styles?: typeof buttonStyle;
+  onClick?: (event: GestureResponderEvent) => void;
 }
 
 const buttonStyles = StyleSheet.create<any>(buttonStyle);
 
 export default class Button extends PureComponent<ButtonProps, any> {
   static defaultProps = {
-    theme: 'primary',
+    theme: 'default',
     size: 'md',
-    shape: 'radius',
+    shape: 'rect',
     block: false,
     ghost: false,
     disabled: false,
     loading: false,
     styles: buttonStyles,
-    onClick() {
-    },
   };
 
   constructor(props) {
@@ -83,16 +83,13 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles![`${theme}ActiveWrapper`],
     ) as any).backgroundColor;
 
-    const iconColor = (StyleSheet.flatten(
-      styles!.activeText,
-    ) as any).color;
-
     const textStyle = [
       styles!.textStyle,
       styles![`${size}Text`],
       styles![`${theme}Text`],
+      isActive && styles![`${theme}ActiveText`],
+      disabled && styles![`${theme}DisabledText`],
       ghost && styles![`${theme}GhostText`],
-      isActive && styles!.activeText,
       isActive && ghost && styles![`${theme}GhostActiveText`],
       disabled && ghost && styles!.disabledGhostText,
     ];
@@ -103,7 +100,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
     ];
 
     const iconRender = loading
-      ? <ActivityIndicator animating style={iconStyle} color={iconColor} size="small"/>
+      ? <ActivityIndicator animating style={iconStyle} size="small"/>
       : icon;
 
     const contentRender = (

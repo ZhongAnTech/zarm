@@ -41,4 +41,5 @@ ReactDOM.render(<Demo />, mountNode);
 | visible | boolean | 否 | false | 是否显示 |
 | type | 'normal' \| 'transparent' | 否 | 'normal' | 类型 |
 | onClick | MouseEventHandler<HTMLDivElement\> | 否 | \&nbsp; | 点击后触发的回调函数 |
+
 :::
