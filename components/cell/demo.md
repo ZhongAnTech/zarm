@@ -50,7 +50,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell title="标题文字" icon={<Icon type="right" />} />
-        <Cell title="标题文字" icon={<img alt="" src={img} />} />
+        <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: '24px', height: '24px' }} />} />
       </div>
     )
   }
@@ -111,8 +111,24 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell hasArrow title="标题文字" description="描述文字" icon={<Icon type="right" />} onClick={() => {}} />
-        <Cell hasArrow title="标题文字" description="描述文字" icon={<img alt="" src={img} />} onClick={() => {}} />
+        <Cell
+          hasArrow
+          title="标题文字"
+          description="描述文字"
+          icon={<Icon type="right" />}
+          onClick={() => {}}
+        />
+
+        <Cell 
+          hasArrow
+          title="标题文字"
+          description="描述文字"
+          icon={
+            <img alt="" src={img} style={{ width: '24px', height: '24px' }} />
+          }
+          onClick={() => {}}
+        />
+
         <Cell
           hasArrow
           title={
@@ -122,7 +138,7 @@ class Demo extends React.Component {
             </div>
           }
           description="附加提示"
-          icon={<img alt="" src={img} />}
+          icon={<img alt="" src={img} style={{ width: '48px', height: '48px' }} />}
           onClick={() => {}}
         />
       </div>
@@ -164,14 +180,11 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-cell | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| icon | any | | | 显示的图标 |
-| titile | any | | | 标题 |
-| description | any | | | 描述 |
 | hasArrow | boolean | false | | 是否显示箭头 |
-| help | any | | | 下方提示信息，通常配合`Message`组件使用 |
-| onClick | <code>() => void</code> | noop | | 点击后触发的回调函数 |
+| icon | ReactNode | | | 显示的图标 |
+| titile | ReactNode | | | 标题 |
+| description | ReactNode | | | 描述 |
+| help | ReactNode | | | 下方提示信息，通常配合`Message`组件使用 |
+| onClick | MouseEventHandler<HTMLDivElement> | | | 点击后触发的回调函数 |
 
 :::

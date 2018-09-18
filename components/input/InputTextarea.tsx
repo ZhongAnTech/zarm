@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseInputTextareaProps } from './PropsType';
+import { InputTextareaProps } from './PropsType';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
 const countSymbols = (text = '') => {
   return text.replace(regexAstralSymbols, '_').length;
 };
-
-export interface InputTextareaProps extends BaseInputTextareaProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputTextarea extends PureComponent<InputTextareaProps, any> {
   static defaultProps = {
@@ -142,6 +137,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       autoHeight,
       showLength,
       focused,
+      type,
       ...others
     } = this.props;
 

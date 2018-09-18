@@ -1,20 +1,14 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View } from 'react-native';
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 15,
-  },
-});
+import { ScrollView } from 'react-native';
 
 export default class Container extends PureComponent {
   render() {
     const { children } = this.props;
 
     return (
-      <View style={styles.container}>
+      <ScrollView>
         {children}
-      </View>
+      </ScrollView>
     );
   }
 }

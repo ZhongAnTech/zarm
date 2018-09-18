@@ -36,13 +36,13 @@ export default {
     alignItems: 'center',
   },
   arrowStyle: {
-    width: 7,
-    height: 7,
-    marginLeft: 8,
-    borderTopWidth: 1,
-    borderTopColor: '#BCBCBC',
-    borderRightWidth: 1,
-    borderRightColor: '#BCBCBC',
+    width: variables.cell_arrow_length,
+    height: variables.cell_arrow_length,
+    marginLeft: 5,
+    borderTopWidth: variables.cell_arrow_border_width,
+    borderTopColor: variables.cell_arrow_color,
+    borderRightWidth: variables.cell_arrow_border_width,
+    borderRightColor: variables.cell_arrow_color,
     transform: [{ rotate: '45deg' }],
   },
   flexDirectionRow: {
@@ -61,9 +61,7 @@ export default {
     alignItems: 'flex-start',
   },
   iconStyle: {
-    maxWidth: variables.cell_icon_width,
-    maxHeight: variables.cell_icon_height,
-    marginRight: variables.padding_v_md,
+    marginRight: variables.padding_h_md,
   },
   descriptionStyle: {
     color: variables.cell_description_color,

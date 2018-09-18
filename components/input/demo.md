@@ -23,11 +23,11 @@ class Demo extends React.Component {
           <Input
             type="text"
             placeholder="请输入"
-            value={this.state.inputValue} 
+            value={this.state.inputValue}
             onChange={this.handleInputChange.bind(this)}
             />
         </Cell>
-        <Cell title="多行文本"><Input type="textarea" rows={3} placeholder="请输入" /></Cell>
+        <Cell title="多行文本"><Input type="text" rows={3} placeholder="请输入" /></Cell>
       </div>
     )
   }
@@ -95,7 +95,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell title="多行文本"><Input autoHeight type="textarea" rows={3} placeholder="写点啥..." /></Cell>
+        <Cell title="多行文本"><Input autoHeight type="text" rows={3} placeholder="写点啥..." /></Cell>
       </div>
     )
   }
@@ -115,7 +115,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell><Input type="text" placeholder="标题" /></Cell>
-        <Cell><Input autoHeight type="textarea" rows={4} maxLength={200} placeholder="摘要" /></Cell>
+        <Cell><Input autoHeight type="text" rows={4} maxLength={200} placeholder="摘要" /></Cell>
       </div>
     )
   }
@@ -134,7 +134,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell><Input autoHeight showLength type="textarea" rows={4} maxLength={200} placeholder="摘要" /></Cell>
+        <Cell><Input autoHeight showLength type="text" rows={4} maxLength={200} placeholder="摘要" /></Cell>
       </div>
     )
   }

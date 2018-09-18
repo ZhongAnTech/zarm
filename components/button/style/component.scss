@@ -17,7 +17,11 @@ $prefixCls: $prefixCls-button;
     $button-default-color,
     $button-default-active-background,
     $button-default-active-border,
-    $button-default-active-color
+    $button-default-active-color,
+    $button-default-background,
+    $button-default-border,
+    $color-text-disabled,
+    $button-disabled-opacity
   );
   @include button-ghost(
     $button-default-ghost-background,
@@ -64,7 +68,11 @@ $prefixCls: $prefixCls-button;
       $button-primary-color,
       $button-primary-active-background,
       $button-primary-active-border,
-      $button-primary-active-color
+      $button-primary-active-color,
+      $button-primary-background,
+      $button-primary-border,
+      $button-primary-color,
+      $button-disabled-opacity
     );
     @include button-ghost(
       $button-primary-ghost-background,
@@ -83,7 +91,11 @@ $prefixCls: $prefixCls-button;
       $button-success-color,
       $button-success-active-background,
       $button-success-active-border,
-      $button-success-active-color
+      $button-success-active-color,
+      $button-success-background,
+      $button-success-border,
+      $button-success-color,
+      $button-disabled-opacity
     );
     @include button-ghost(
       $button-success-ghost-background,
@@ -102,7 +114,11 @@ $prefixCls: $prefixCls-button;
       $button-warning-color,
       $button-warning-active-background,
       $button-warning-active-border,
-      $button-warning-active-color
+      $button-warning-active-color,
+      $button-warning-background,
+      $button-warning-border,
+      $button-warning-color,
+      $button-disabled-opacity
     );
     @include button-ghost(
       $button-warning-ghost-background,
@@ -121,7 +137,11 @@ $prefixCls: $prefixCls-button;
       $button-error-color,
       $button-error-active-background,
       $button-error-active-border,
-      $button-error-active-color
+      $button-error-active-color,
+      $button-error-background,
+      $button-error-border,
+      $button-error-color,
+      $button-disabled-opacity
     );
     @include button-ghost(
       $button-error-ghost-background,
