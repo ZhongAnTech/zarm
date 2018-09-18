@@ -16,21 +16,19 @@ $prefixCls: $prefixCls-nav-bar;
     font-weight: bold;
   }
 
-  &-left-icon {
+  &-icon {
     position: absolute;
-    left: r(16);
     top: r(5);
     @include icon-size(
       $nav-bar-icon-size
     );
   }
 
-  &-right-icon {
-    position: absolute;
+  &-left {
+    left: r(16);
+  }
+
+  &-right {
     right: r(16);
-    top: r(5);
-    @include icon-size(
-      $nav-bar-icon-size
-    );
   }
 }
