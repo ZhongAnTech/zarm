@@ -43,7 +43,6 @@ exports[`SwipeAction renders correctly 1`] = `
   left={
     Array [
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}
@@ -57,7 +56,6 @@ exports[`SwipeAction renders correctly 1`] = `
         左按钮1
       </Button>,
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}
@@ -79,7 +77,6 @@ exports[`SwipeAction renders correctly 1`] = `
   right={
     Array [
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}
@@ -93,7 +90,6 @@ exports[`SwipeAction renders correctly 1`] = `
         右按钮1
       </Button>,
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}
@@ -116,7 +112,6 @@ exports[`SwipeAction renders correctly 1`] = `
       className="za-swipe-action-actions-left"
     >
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}
@@ -141,7 +136,6 @@ exports[`SwipeAction renders correctly 1`] = `
         </a>
       </Button>
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}
@@ -170,7 +164,6 @@ exports[`SwipeAction renders correctly 1`] = `
       className="za-swipe-action-actions-right"
     >
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}
@@ -195,7 +188,6 @@ exports[`SwipeAction renders correctly 1`] = `
         </a>
       </Button>
       <Button
-        active={false}
         block={false}
         disabled={false}
         ghost={false}

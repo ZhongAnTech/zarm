@@ -4,6 +4,7 @@ import {
     View,
     TouchableHighlight,
     ViewStyle,
+    GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import cellStyle from './style/index.native';
@@ -11,6 +12,7 @@ import cellStyle from './style/index.native';
 export interface CellProps extends PropsType {
   style?: CSSProperties;
   styles?: typeof cellStyle;
+  onClick?: (event: GestureResponderEvent) => void;
 }
 
 const cellStyles = StyleSheet.create<any>(cellStyle);
@@ -20,10 +22,6 @@ export default class Cell extends PureComponent<CellProps, any> {
     hasArrow: false,
     styles: cellStyles,
   };
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const {

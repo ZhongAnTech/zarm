@@ -205,14 +205,14 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     this.moveInterval = (autoPlay && setInterval(() => {
       let activeIndex = this.state.activeIndex;
-      const isLeftOrTopDirection = (['left', 'top']).indexOf(direction!) > -1;
+      const isLeftOrUpDirection = (['left', 'up']).indexOf(direction!) > -1;
 
-      activeIndex = isLeftOrTopDirection
+      activeIndex = isLeftOrUpDirection
         ? (activeIndex + 1)
         : (activeIndex - 1);
 
       // 不循环暂停轮播
-      if (!loop && (isLeftOrTopDirection ? this.isLastIndex() : this.isFirstIndex())) {
+      if (!loop && (isLeftOrUpDirection ? this.isLastIndex() : this.isFirstIndex())) {
         this.pauseAutoPlay();
         return;
       }

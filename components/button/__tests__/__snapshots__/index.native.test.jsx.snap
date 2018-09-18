@@ -45,20 +45,19 @@ exports[`Button ghost active 1`] = `
   activeOpacity={1}
   block={false}
   disabled={false}
-  onPress={[Function]}
   onPressIn={[Function]}
   onPressOut={[Function]}
   style={
     Array [
       Object {
         "alignItems": "center",
-        "height": 45,
+        "height": 44,
         "justifyContent": "center",
         "paddingLeft": 16,
         "paddingRight": 16,
       },
       Object {
-        "height": 45,
+        "height": 44,
         "paddingLeft": 16,
         "paddingRight": 16,
       },
@@ -110,6 +109,7 @@ exports[`Button ghost active 1`] = `
           Object {
             "color": "#fff",
           },
+          false,
           Object {
             "color": "#12c287",
           },

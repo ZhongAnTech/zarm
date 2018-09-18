@@ -50,8 +50,6 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button block ghost>default ghost</Button>
-        <Button block ghost disabled>default ghost disabled</Button>
         <Button block ghost theme="primary">primary ghost</Button>
         <Button block ghost disabled theme="primary">primary ghost disabled</Button>
       </div>
@@ -140,9 +138,9 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button ghost shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button ghost shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
-        <Button ghost loading shape="radius">加载中</Button>
+        <Button shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
+        <Button shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
+        <Button loading shape="radius">加载中</Button>
       </div>
     )
   }
@@ -158,16 +156,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-button | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `primary` | `primary`, `success`, `warning`, `error` | 主题 |
+| theme | string | `default` | `default`, `primary`, `success`, `warning`, `error` | 主题 |
 | size | string | | `md`, `lg`, `sm`, `xs` | 大小 |
-| shape | string | | `radius`, `round`, `circle` | 形状 |
-| block | boolean | false | | 是否为块级元素 |
-| ghost | boolean | false | | 是否是幽灵按钮 |
+| shape | string | 'rect' | `rect`, `radius`, `round`, `circle` | 形状 |
+| block | boolean | false | | 是否块级元素 |
+| ghost | boolean | false | | 是否幽灵按钮 |
 | disabled | boolean | false | | 是否禁用 |
-| loading | boolean | falxse | | 是否显示加载中 |
-| icon | JSX.Element | | | icon |
-| onClick | <code>(e?: any) => void</code> | noop | | 点击后触发的回调函数 |
+| loading | boolean | false | | 是否加载中状态 |
+| icon | ReactNode | | | 图标 |
+| onClick | MouseEventHandler<HTMLAnchorElement> | | | 点击后触发的回调函数 |
 
 :::

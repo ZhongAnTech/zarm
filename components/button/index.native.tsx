@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   ViewStyle,
+  GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import buttonStyle from './style/index.native';
@@ -14,6 +15,7 @@ import buttonStyle from './style/index.native';
 export interface ButtonProps extends PropsType {
   style?: CSSProperties;
   styles?: typeof buttonStyle;
+  onClick?: (event: GestureResponderEvent) => void;
 }
 
 const buttonStyles = StyleSheet.create<any>(buttonStyle);
@@ -28,8 +30,6 @@ export default class Button extends PureComponent<ButtonProps, any> {
     disabled: false,
     loading: false,
     styles: buttonStyles,
-    onClick() {
-    },
   };
 
   constructor(props) {
@@ -88,6 +88,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
       styles![`${size}Text`],
       styles![`${theme}Text`],
       isActive && styles![`${theme}ActiveText`],
+      disabled && styles![`${theme}DisabledText`],
       ghost && styles![`${theme}GhostText`],
       isActive && ghost && styles![`${theme}GhostActiveText`],
       disabled && ghost && styles!.disabledGhostText,
