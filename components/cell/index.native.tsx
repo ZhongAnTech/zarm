@@ -63,7 +63,11 @@ export default class Cell extends PureComponent<CellProps, any> {
       styles!.iconStyle,
     ] as ViewStyle;
     const titleStyle = [
+      styles!.titleStyle,
       children && description && styles!.paddingBottom,
+    ] as ViewStyle;
+    const descriptionStyle = [
+      styles!.descriptionStyle,
     ] as ViewStyle;
     const arrowStyle = [
       styles!.arrowStyle,
@@ -82,8 +86,8 @@ export default class Cell extends PureComponent<CellProps, any> {
     ? <View style={titleStyle}>{title}</View>
     : <View style={titleStyle}><Text>{title}</Text></View>);
     const descriptionRender = description && (React.isValidElement(description)
-    ? <View>{description}</View>
-    : <View><Text>{description}</Text></View>);
+    ? <View style={descriptionStyle}>{description}</View>
+    : <View><Text style={descriptionStyle}>{description}</Text></View>);
     const arrowRender = hasArrow && <View style={arrowStyle}/>;
     const helpRender = help && (React.isValidElement(help)
     ? <View style={helpStyle}>{help}</View>
@@ -107,7 +111,7 @@ export default class Cell extends PureComponent<CellProps, any> {
         {helpRender}
       </View>
     </View>;
-    const wrapperProps = Object.assign({ stlye: contentStyle, onPress: onClick }, others);
+    const wrapperProps = Object.assign({ activeOpacity: 0.3, stlye: contentStyle, onPress: onClick }, others);
     return onClick
       ? <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>
       : (contentRender);

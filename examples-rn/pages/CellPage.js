@@ -22,6 +22,11 @@ const styles = {
     color: '#FF5050',
     fontSize: 10,
   },
+  childrenStyle: {
+    fontSize: 12,
+    marginTop: 5,
+    color: '#909090',
+  },
 };
 const noop = () => {};
 
@@ -29,10 +34,10 @@ export default class App extends PureComponent {
   render() {
     return (
       <ScrollView>
-        <View style={{ padding: 15 }}>
+        <View>
           <View style={styles.box}>
             <Panel titleRender="基本用法">
-              <Cell style={styles.cellStyle} title={<Text>标题文字</Text>} />
+              <Cell style={styles.cellStyle} title="标题文字" />
             </Panel>
           </View>
           <View style={styles.box}>
@@ -49,13 +54,13 @@ export default class App extends PureComponent {
               <Cell
                 icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
-                title={<Text>标题文字</Text>}
+                title="标题文字"
               />
               <Cell
                 icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
-                title={<Text>标题文字</Text>}
-                description={<Text>描述文字</Text>}
+                title="标题文字"
+                description="描述文字"
               />
             </Panel>
           </View>
@@ -64,12 +69,12 @@ export default class App extends PureComponent {
               <Cell
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<Text>标题文字</Text>}
+                title="标题文字"
               />
               <Cell
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<Text>标题文字</Text>}
+                title="标题文字"
               />
             </Panel>
           </View>
@@ -78,15 +83,15 @@ export default class App extends PureComponent {
               <Cell
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<Text>标题文字</Text>}
-                description={<Text>描述文字</Text>}
+                title="标题文字"
+                description="描述文字"
                 hasArrow
               />
               <Cell
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<Text>标题文字</Text>}
-                description={<Text>描述文字</Text>}
+                title="标题文字"
+                description="描述文字"
                 hasArrow
               />
             </Panel>
@@ -97,28 +102,26 @@ export default class App extends PureComponent {
                 icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<Text>标题文字</Text>}
-                description={<Text>描述文字</Text>}
+                title="标题文字"
+                description="描述文字"
                 hasArrow
               />
               <Cell
                 icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<Text>标题文字</Text>}
-                description={<Text>描述文字</Text>}
+                title="标题文字"
+                description="描述文字"
                 hasArrow
               />
               <Cell
-                icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+                icon={<Image style={styles.iconBigStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<Text>标题文字</Text>}
-                description={<Text>描述文字</Text>}
+                title={<View><Text>标题文字</Text><Text style={styles.childrenStyle}>描述文字</Text></View>}
+                description="附加提示"
                 hasArrow
-              >
-                <Text>附加提示</Text>
-              </Cell>
+              />
             </Panel>
           </View>
           <View style={styles.box}>
