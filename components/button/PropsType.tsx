@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export default interface PropsType {
   theme?: 'primary' | 'success' | 'warning' | 'error';
   size?: 'md' | 'lg' | 'sm' | 'xs';
@@ -7,5 +9,5 @@ export default interface PropsType {
   focus?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  icon?: JSX.Element;
+  icon?: ReactNode;
 }
