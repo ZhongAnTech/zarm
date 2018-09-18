@@ -24,7 +24,6 @@ export default class Cell extends PureComponent<CellProps, {}> {
     const {
       prefixCls,
       className,
-      theme,
       hasArrow,
       icon,
       title,
@@ -37,7 +36,6 @@ export default class Cell extends PureComponent<CellProps, {}> {
     } = this.props;
 
     const cls = classnames(prefixCls, className, {
-      [`theme-${theme}`]: !!theme,
       disabled,
       'is-link': !disabled && !!onClick,
       'has-arrow': hasArrow,
