@@ -1,12 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseInputBaseProps } from './PropsType';
+import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
-
-export interface InputBaseProps extends BaseInputBaseProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
   static defaultProps = {
@@ -155,9 +150,11 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     const valueState = this.state.value;
     const focused = this.state.focused;
 
+    const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
+
     const cls = classnames(prefixCls, `${prefixCls}-${type}`, className, {
       disabled,
-      clearable,
+      clearable: showClearIcon,
     });
     const clearCls = classnames(`${prefixCls}-clear`, {
       [`${prefixCls}-clear-show`]: !!(focused && valueState && valueState.length > 0),
@@ -167,8 +164,6 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     if ('value' in this.props) {
       valueProps.value = valueState;
     }
-
-    const showClearIcon = clearable && ('value' in this.props);
 
     return (
       <div className={cls}>
