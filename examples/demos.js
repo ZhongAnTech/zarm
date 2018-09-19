@@ -122,5 +122,9 @@ module.exports = {
       title: 'Tabs',
       description: '标签页 Tabs',
     },
+    {
+      title: 'SegmentedControl',
+      description: '分段器 SegmentedControl',
+    },
   ],
 };

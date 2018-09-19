@@ -39,3 +39,4 @@ export { default as Tabs } from './tabs';
 export { default as Toast } from './toast';
 export { default as Tooltip } from './tooltip';
 export { default as Wheel } from './wheel';
+export { default as SegmentedControl } from './segmented-control';

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SegmentedControl renders default correctly 1`] = `
+<div
+  class="za-segmented-control"
+>
+  <div>
+    <div
+      class="tab round active"
+    >
+      <span>
+        选项1
+      </span>
+    </div>
+    <div
+      class="tab round"
+    >
+      <span>
+        选项2
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SegmentedControl renders selectIndex correctly 1`] = `
+<div
+  class="za-segmented-control"
+>
+  <div>
+    <div
+      class="tab round"
+    >
+      <span>
+        选项1
+      </span>
+    </div>
+    <div
+      class="tab round active"
+    >
+      <span>
+        选项2
+      </span>
+    </div>
+  </div>
+</div>
+`;
