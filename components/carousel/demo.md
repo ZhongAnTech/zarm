@@ -1,4 +1,4 @@
-## 图片轮播 Carousel
+## 走马灯 Carousel
 
 :::demo 基本用法
 ```jsx
@@ -25,8 +25,8 @@ class Demo extends React.Component {
     return (
       <div>
         <Carousel
-          onChangeEnd={(index) => {
-            console.log(index);
+          onChange={(index) => {
+            console.log(`onChange: ${index}`);
           }}
         >
           {contentRender()}
@@ -66,7 +66,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Carousel
-          direction="top"
+          direction="up"
           height="48vw"
         >
           {contentRender()}
@@ -109,8 +109,8 @@ class Demo extends React.Component {
           ref={(ele) => { this.carousel = ele; }}
           loop
           direction="left"
-          onChangeEnd={(index) => {
-            console.log(index);
+          onChange={(index) => {
+            console.log(`onChange: ${index}`);
           }}
         >
           {contentRender()}
@@ -175,7 +175,7 @@ class Demo extends React.Component {
           loop
           direction="left"
           onChangeEnd={(index) => {
-            console.log(index);
+            console.log(`onChangeEnd: ${index}`);
           }}
         >
           {contentRender()}
@@ -196,7 +196,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-carousel | | 类名前缀 |
 | className | string | | | 追加类名 |
-| direction | string | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向 |
+| direction | string | 'left' | 'left', 'right', 'up', 'down' | 滑动方向 |
 | height | number &#124; string | | | 高度 |
 | activeIndex | number | 0 | | 当前页面的索引 |
 | loop | boolean | false | | 是否循环 |

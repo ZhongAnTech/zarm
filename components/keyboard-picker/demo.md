@@ -13,7 +13,6 @@ class Demo extends React.Component {
   }
 
   render() {
-    console.log(this.state.type)
     return (
       <div>
         <Cell title="键盘类型">
@@ -77,15 +76,19 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { type } = this.state;
+    const { visible } = this.state;
     return (
       <div>
-        <Cell title="数字输入">
-          <Input value={this.state.value} onClick={() => this.toggle()} />
+        <Cell
+          description={
+            <Button size="xs" onClick={() => this.toggle()}>{visible ? '关闭' : '开启'}</Button>
+          }
+        >
+          拾取器触发方式
         </Cell>
 
         <KeyboardPicker
-          visible={this.state.visible}
+          visible={visible}
           onKeyClick={(key) => this.onKeyClick(key)}
         />
       </div>
