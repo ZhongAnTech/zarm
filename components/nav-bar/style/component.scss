@@ -13,12 +13,13 @@ $prefixCls: $prefixCls-nav-bar;
 
   &-title {
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 500;
   }
 
   &-icon {
     position: absolute;
-    top: r(5);
+    top: 50%;
+    transform: translate(0, -50%);
     @include icon-size(
       $nav-bar-icon-size
     );
