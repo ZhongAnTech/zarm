@@ -7,9 +7,7 @@ exports[`NavBar renders correctly 1`] = `
   <div
     class="za-nav-bar-title"
   />
-  <div
-    class="za-nav-bar-right za-nav-bar-icon"
-  />
+  <div />
 </div>
 `;
 
@@ -17,9 +15,7 @@ exports[`NavBar renders correctly with left content 1`] = `
 <div
   class="za-nav-bar"
 >
-  <div
-    class="za-nav-bar-left za-nav-bar-icon"
-  >
+  <div>
     <i
       class="za-icon za-icon-arrow-left"
     />
@@ -29,9 +25,7 @@ exports[`NavBar renders correctly with left content 1`] = `
   >
     测试标题
   </div>
-  <div
-    class="za-nav-bar-right za-nav-bar-icon"
-  />
+  <div />
 </div>
 `;
 
@@ -39,9 +33,7 @@ exports[`NavBar renders correctly with multiple right icons 1`] = `
 <div
   class="za-nav-bar"
 >
-  <div
-    class="za-nav-bar-left za-nav-bar-icon"
-  >
+  <div>
     <i
       class="za-icon za-icon-arrow-left"
     />
@@ -51,9 +43,7 @@ exports[`NavBar renders correctly with multiple right icons 1`] = `
   >
     测试标题
   </div>
-  <div
-    class="za-nav-bar-right za-nav-bar-icon"
-  >
+  <div>
     <div>
       <i
         class="za-icon za-icon-arrow-right"
@@ -71,7 +61,7 @@ exports[`NavBar renders correctly with only left prop 1`] = `
   class="za-nav-bar"
 >
   <div
-    class="za-nav-bar-left za-nav-bar-icon"
+    class="za-nav-bar-left"
   >
     <i
       class="za-icon za-icon-arrow-left"
@@ -82,9 +72,7 @@ exports[`NavBar renders correctly with only left prop 1`] = `
   >
     测试标题
   </div>
-  <div
-    class="za-nav-bar-right za-nav-bar-icon"
-  />
+  <div />
 </div>
 `;
 
@@ -92,9 +80,7 @@ exports[`NavBar renders correctly with right content 1`] = `
 <div
   class="za-nav-bar"
 >
-  <div
-    class="za-nav-bar-left za-nav-bar-icon"
-  >
+  <div>
     <i
       class="za-icon za-icon-arrow-left"
     />
@@ -104,9 +90,7 @@ exports[`NavBar renders correctly with right content 1`] = `
   >
     测试标题
   </div>
-  <div
-    class="za-nav-bar-right za-nav-bar-icon"
-  >
+  <div>
     <i
       class="za-icon za-icon-arrow-right"
     />
@@ -123,8 +107,6 @@ exports[`NavBar renders correctly with title 1`] = `
   >
     测试标题
   </div>
-  <div
-    class="za-nav-bar-right za-nav-bar-icon"
-  />
+  <div />
 </div>
 `;
