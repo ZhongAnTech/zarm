@@ -9,7 +9,7 @@ class Demo extends React.Component {
     return (
       <NavBar
         left
-        title='这是标题'
+        title="这是标题"
       />
     )
   }
@@ -28,8 +28,8 @@ class Demo extends React.Component {
   render() {
     return (
       <NavBar
-        left={<Icon type='add' theme='success' />}
-        title='这是标题'
+        left={<Icon type="add" theme="success" />}
+        title="这是标题"
       />
     )
   }
@@ -49,8 +49,8 @@ class Demo extends React.Component {
     return (
       <NavBar
         left
-        title='这是标题'
-        right={<Icon type='info-round' theme='success' />}
+        title="这是标题"
+        right={<Icon type="info-round" theme="success" />}
       />
     )
   }
@@ -70,10 +70,10 @@ class Demo extends React.Component {
     return (
       <NavBar
         left
-        title='这是标题'
+        title="这是标题"
         right={<div>
-          <Icon type='question-round-fill' theme='success' />
-          <Icon style={{ marginLeft: '16px' }} type='warning-round-fill' theme='success' />
+          <Icon type="question-round-fill" theme="success" />
+          <Icon style={{ marginLeft: "16px" }} type="warning-round-fill" theme="success" />
         </div>}
       />
     )
