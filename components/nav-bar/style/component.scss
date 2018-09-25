@@ -20,9 +20,10 @@ $prefixCls: $prefixCls-nav-bar;
   }
 
   &-left {
+    margin-left: r(16);
+
     @include icon-size(
       $nav-bar-icon-size
     );
-    margin-left: r(16);
   }
 }
