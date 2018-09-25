@@ -5,38 +5,152 @@ $prefixCls: $prefixCls-button;
 .#{$prefixCls} {
   display: inline-block;
   @include button-base();
-  @include button-size($button-height-md, $button-padding-h-md, $button-font-size-md, r(22));
-  @include button-theme($theme-default, $color-text);
-  @include button-ghost($theme-default, $color-text);
+  @include button-size(
+    $button-height-md,
+    $button-padding-h-md,
+    $button-font-size-md,
+    $button-icon-size-md
+  );
+  @include button-theme(
+    $button-default-background,
+    $button-default-border,
+    $button-default-color,
+    $button-default-active-background,
+    $button-default-active-border,
+    $button-default-active-color,
+    $button-default-background,
+    $button-default-border,
+    $color-text-disabled,
+    $button-disabled-opacity
+  );
+  @include button-ghost(
+    $button-default-ghost-background,
+    $button-default-ghost-border,
+    $button-default-ghost-color,
+    $button-default-ghost-active-background,
+    $button-default-ghost-active-border,
+    $button-default-ghost-active-color
+  );
 
   /* Button sizes */
   &.size-lg {
-    @include button-size($button-height-lg, $button-padding-h-lg, $button-font-size-lg, r(26));
+    @include button-size(
+      $button-height-lg,
+      $button-padding-h-lg,
+      $button-font-size-lg,
+      $button-icon-size-lg
+    );
   }
 
   &.size-sm {
-    @include button-size($button-height-sm, $button-padding-h-sm, $button-font-size-sm, r(18));
+    @include button-size(
+      $button-height-sm,
+      $button-padding-h-sm,
+      $button-font-size-sm,
+      $button-icon-size-sm
+    );
+  }
+
+  &.size-xs {
+    @include button-size(
+      $button-height-xs,
+      $button-padding-h-xs,
+      $button-font-size-xs,
+      $button-icon-size-xs
+    );
   }
 
   /* Button themes */
   &.theme-primary {
-    @include button-theme($theme-primary, $color-text-inverse);
-    @include button-ghost($theme-primary, $theme-primary);
+    @include button-theme(
+      $button-primary-background,
+      $button-primary-border,
+      $button-primary-color,
+      $button-primary-active-background,
+      $button-primary-active-border,
+      $button-primary-active-color,
+      $button-primary-background,
+      $button-primary-border,
+      $button-primary-color,
+      $button-disabled-opacity
+    );
+    @include button-ghost(
+      $button-primary-ghost-background,
+      $button-primary-ghost-border,
+      $button-primary-ghost-color,
+      $button-primary-ghost-active-background,
+      $button-primary-ghost-active-border,
+      $button-primary-ghost-active-color
+    );
   }
 
   &.theme-success {
-    @include button-theme($theme-success, $color-text-inverse);
-    @include button-ghost($theme-success, $theme-success);
+    @include button-theme(
+      $button-success-background,
+      $button-success-border,
+      $button-success-color,
+      $button-success-active-background,
+      $button-success-active-border,
+      $button-success-active-color,
+      $button-success-background,
+      $button-success-border,
+      $button-success-color,
+      $button-disabled-opacity
+    );
+    @include button-ghost(
+      $button-success-ghost-background,
+      $button-success-ghost-border,
+      $button-success-ghost-color,
+      $button-success-ghost-active-background,
+      $button-success-ghost-active-border,
+      $button-success-ghost-active-color
+    );
   }
 
   &.theme-warning {
-    @include button-theme($theme-warning, $color-text-inverse);
-    @include button-ghost($theme-warning, $theme-warning);
+    @include button-theme(
+      $button-warning-background,
+      $button-warning-border,
+      $button-warning-color,
+      $button-warning-active-background,
+      $button-warning-active-border,
+      $button-warning-active-color,
+      $button-warning-background,
+      $button-warning-border,
+      $button-warning-color,
+      $button-disabled-opacity
+    );
+    @include button-ghost(
+      $button-warning-ghost-background,
+      $button-warning-ghost-border,
+      $button-warning-ghost-color,
+      $button-warning-ghost-active-background,
+      $button-warning-ghost-active-border,
+      $button-warning-ghost-active-color
+    );
   }
 
   &.theme-error {
-    @include button-theme($theme-error, $color-text-inverse);
-    @include button-ghost($theme-error, $theme-error);
+    @include button-theme(
+      $button-error-background,
+      $button-error-border,
+      $button-error-color,
+      $button-error-active-background,
+      $button-error-active-border,
+      $button-error-active-color,
+      $button-error-background,
+      $button-error-border,
+      $button-error-color,
+      $button-disabled-opacity
+    );
+    @include button-ghost(
+      $button-error-ghost-background,
+      $button-error-ghost-border,
+      $button-error-ghost-color,
+      $button-error-ghost-active-background,
+      $button-error-ghost-active-border,
+      $button-error-ghost-active-color
+    );
   }
 }
 

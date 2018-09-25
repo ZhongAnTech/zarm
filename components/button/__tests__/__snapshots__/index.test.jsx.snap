@@ -3,7 +3,7 @@
 exports[`Button block 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default block"
+  class="za-button theme-default size-md shape-rect block"
   role="button"
 >
   <span>
@@ -15,7 +15,7 @@ exports[`Button block 1`] = `
 exports[`Button disabled 1`] = `
 <a
   aria-disabled="true"
-  class="za-button theme-default disabled"
+  class="za-button theme-default size-md shape-rect disabled"
   role="button"
 >
   <span>
@@ -27,7 +27,7 @@ exports[`Button disabled 1`] = `
 exports[`Button ghost 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default ghost"
+  class="za-button theme-default size-md shape-rect ghost"
   role="button"
 >
   <span>
@@ -39,7 +39,7 @@ exports[`Button ghost 1`] = `
 exports[`Button icon 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default"
+  class="za-button theme-default size-md shape-rect"
   role="button"
 >
   <div
@@ -59,7 +59,7 @@ exports[`Button icon 1`] = `
 exports[`Button loading 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default"
+  class="za-button theme-default size-md shape-rect"
   role="button"
 >
   <div
@@ -96,7 +96,7 @@ exports[`Button loading 1`] = `
 exports[`Button renders correctly 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default"
+  class="za-button theme-default size-md shape-rect"
   role="button"
 >
   <span>
@@ -108,7 +108,7 @@ exports[`Button renders correctly 1`] = `
 exports[`Button shape is radius 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default shape-radius"
+  class="za-button theme-default size-md shape-radius"
   role="button"
 >
   <span>
@@ -120,7 +120,7 @@ exports[`Button shape is radius 1`] = `
 exports[`Button size 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default size-lg"
+  class="za-button theme-default size-lg shape-rect"
   role="button"
 >
   <span>
@@ -132,7 +132,7 @@ exports[`Button size 1`] = `
 exports[`Button theme 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-primary"
+  class="za-button theme-primary size-md shape-rect"
   role="button"
 >
   <span>

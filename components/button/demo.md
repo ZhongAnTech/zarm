@@ -29,9 +29,9 @@ class Demo extends React.Component {
     return (
       <div>
         <Button block>default</Button>
-        <Button block disabled>disabled default</Button>
+        <Button block disabled>default disabled</Button>
         <Button block theme="primary">primary</Button>
-        <Button block disabled theme="primary">disabled primary</Button>
+        <Button block disabled theme="primary">primary disabled</Button>
       </div>
     )
   }
@@ -50,10 +50,8 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button block ghost>default</Button>
-        <Button block ghost disabled>disabled default</Button>
-        <Button block ghost theme="primary">primary</Button>
-        <Button block ghost disabled theme="primary">disabled primary</Button>
+        <Button block ghost theme="primary">primary ghost</Button>
+        <Button block ghost disabled theme="primary">primary ghost disabled</Button>
       </div>
     )
   }
@@ -64,7 +62,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
-:::demo 主题
+:::demo 按钮主题
 ```jsx
 import { Button } from 'zarm';
 
@@ -87,7 +85,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
-:::demo 大小
+:::demo 按钮尺寸
 ```jsx
 import { Button } from 'zarm';
 
@@ -95,9 +93,10 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button theme="primary" size="lg">lg</Button>
-        <Button theme="primary">md</Button>
-        <Button theme="primary" size="sm">sm</Button>
+        <Button size="lg">lg</Button>
+        <Button>md</Button>
+        <Button size="sm">sm</Button>
+        <Button size="xs">xs</Button>
       </div>
     )
   }
@@ -108,7 +107,7 @@ ReactDOM.render(<Demo />, mountNode);
 :::
 
 
-:::demo 形状
+:::demo 按钮形状
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -116,10 +115,11 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button shape="radius" theme="primary">圆角按钮</Button>
-        <Button shape="round" theme="primary">椭圆角按钮</Button>
-        <Button ghost shape="circle" theme="primary">GO</Button>
-        <Button shape="circle" icon={<Icon type="right" />} />
+        <Button shape="rect" theme="primary">rect</Button>
+        <Button shape="radius" theme="primary">radius</Button>
+        <Button shape="round" theme="primary">round</Button>
+        <Button shape="circle" theme="primary">circle</Button>
+        <Button ghost shape="circle" icon={<Icon type="right" />} />
       </div>
     )
   }
@@ -138,9 +138,9 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button ghost shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button ghost shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
-        <Button ghost loading shape="radius">加载中</Button>
+        <Button shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
+        <Button shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
+        <Button loading shape="radius">加载中</Button>
       </div>
     )
   }
@@ -156,16 +156,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-button | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `primary` | `primary`, `success`, `warning`, `error` | 主题 |
+| theme | string | `default` | `default`, `primary`, `success`, `warning`, `error` | 主题 |
 | size | string | | `md`, `lg`, `sm`, `xs` | 大小 |
-| shape | string | | `radius`, `round`, `circle` | 形状 |
-| block | boolean | false | | 是否为块级元素 |
-| ghost | boolean | false | | 是否是幽灵按钮 |
+| shape | string | 'rect' | `rect`, `radius`, `round`, `circle` | 形状 |
+| block | boolean | false | | 是否块级元素 |
+| ghost | boolean | false | | 是否幽灵按钮 |
 | disabled | boolean | false | | 是否禁用 |
-| loading | boolean | falxse | | 是否显示加载中 |
-| icon | JSX.Element | | | icon |
-| onClick | <code>(e?: any) => void</code> | noop | | 点击后触发的回调函数 |
+| loading | boolean | false | | 是否加载中状态 |
+| icon | ReactNode | | | 图标 |
+| onClick | MouseEventHandler<HTMLAnchorElement> | | | 点击后触发的回调函数 |
 
 :::

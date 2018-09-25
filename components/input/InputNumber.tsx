@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
-import { BaseInputNumberProps } from './PropsType';
+import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
 import Icon from '../icon';
 
 declare const document;
-
-export interface InputNumberProps extends BaseInputNumberProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps = {
@@ -31,6 +26,10 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       visible: props.focused || false,
       focused: false,
     };
+  }
+
+  get showClearIcon() {
+    return this.props.clearable && ('value' in this.props) && ('onChange' in this.props);
   }
 
   componentDidMount() {
@@ -160,13 +159,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   renderClear() {
-    const { prefixCls, clearable } = this.props;
+    const { prefixCls } = this.props;
     const { visible, value } = this.state;
 
     const clearCls = classnames(`${prefixCls}-clear`, {
       [`${prefixCls}-clear-show`]: !!(visible && value && value.length > 0),
     });
-    return clearable &&
+    return this.showClearIcon &&
       <Icon
         type="wrong-round-fill"
         className={clearCls}
@@ -175,13 +174,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   render() {
-    const { prefixCls, className, type, disabled, placeholder, clearable } = this.props;
+    const { prefixCls, className, type, disabled, placeholder } = this.props;
     const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
       disabled,
       focus: visible,
-      clearable,
+      clearable: this.showClearIcon,
     });
 
     return (

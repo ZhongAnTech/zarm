@@ -6,21 +6,21 @@ $theme-warning: #ec9131;                 // 警告
 $theme-error: #ff5050;                   // 失败
 
 // 文字色
-$color-text: #333;                       // 基本
+$color-text: #464646;                    // 基本
 $color-text-inverse: #fff;               // 反色
 $color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bbb;              // 失效
-$color-text-caption: #999;               // 辅助描述
+$color-text-disabled: #bcbcbc;           // 失效
+$color-text-caption: #909090;            // 辅助描述
 $color-link: $theme-primary;               // 链接
 $color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
 // 背景色
-$background-active: #ddd;
-$background-disabled: #e1e1e1;
+$background-active: #e6e6e6;
+$background-disabled: #bcbcbc;
 
 // 边框色
-$border-color: #ddd;
-$border-disabled: #e1e1e1;
+$border-color: #e6e6e6;
+$border-disabled: #bcbcbc;
 
 // 圆角
 $radius-sm: r(2);
@@ -32,7 +32,7 @@ $radius-circle: 50%;
 // 水平间距
 $padding-h-sm: r(5);
 $padding-h-md: r(8);
-$padding-h-lg: r(15);
+$padding-h-lg: r(16);
 $padding-h-xl: r(20);
 
 // 垂直间距
@@ -56,7 +56,7 @@ $zindex-toast: 1500;
 $zindex-loading: 1500;
 
 // 透明度
-$opacity-disabled: .5;
+$opacity-disabled: .6;
 $opacity-mask: .5;
 $opacity-toast: .8;
 $opacity-tooltip: .8;
@@ -118,36 +118,111 @@ $badge-height: r(14);
 $badge-font-size: $font-size-xs;
 $badge-padding-h: r(4);
 $badge-dot-diameter: r(8);
-$badge-top-overflow: r(4);
+$badge-rect-radius: $radius-sm;
+$badge-round-radius: $radius-round;
+$badge-sup-top: r(-4);
+$badge-text-color:#fff;
 
 // Button
-$button-height-sm: r(27);
-$button-height-md: r(45);
+$button-height-xs: r(28);
+$button-height-sm: r(36);
+$button-height-md: r(44);
 $button-height-lg: r(52);
-$button-padding-h-sm: $padding-h-md;
-$button-padding-h-md: $padding-h-lg;
-$button-padding-h-lg: $padding-h-lg;
-$button-font-size-sm: r(14);
-$button-font-size-md: r(18);
-$button-font-size-lg: r(20);
-$button-bordered-active-opacity: .6;
-$button-primary-active-bg: '#10ae79';
-$button-success-active-bg: '#10ae79';
-$button-warning-active-bg: '#d3822c';
-$button-error-active-bg: '#e54747';
+$button-padding-h-xs: r(10);
+$button-padding-h-sm: r(12);
+$button-padding-h-md: r(16);
+$button-padding-h-lg: r(20);
+$button-font-size-xs: r(12);
+$button-font-size-sm: r(16);
+$button-font-size-md: r(16);
+$button-font-size-lg: r(18);
+$button-icon-size-xs: r(16);
+$button-icon-size-sm: r(18);
+$button-icon-size-md: r(22);
+$button-icon-size-lg: r(26);
+$button-disabled-opacity: $opacity-disabled;
+$button-disabled-color-ghost: #bcbcbc;
+
+$button-default-background: #fff;
+$button-default-border: $background-active;
+$button-default-color: $color-text;
+$button-default-active-background: $background-active;
+$button-default-active-border: $background-active;
+$button-default-active-color: $color-text;
+$button-default-ghost-background: transparent;
+$button-default-ghost-border: $background-active;
+$button-default-ghost-color: $color-text;
+$button-default-ghost-active-background: transparent;
+$button-default-ghost-active-border: $background-active;
+$button-default-ghost-active-color: $color-text;
+
+$button-primary-background: $theme-primary;
+$button-primary-border: $theme-primary;
+$button-primary-color: #fff;
+$button-primary-active-background: #10ae79;
+$button-primary-active-border: #10ae79;
+$button-primary-active-color: #fff;
+$button-primary-ghost-background: transparent;
+$button-primary-ghost-border: $theme-primary;
+$button-primary-ghost-color: $theme-primary;
+$button-primary-ghost-active-background: transparent;
+$button-primary-ghost-active-border: #10ae79;
+$button-primary-ghost-active-color: #10ae79;
+
+$button-success-background: $theme-success;
+$button-success-border: $theme-success;
+$button-success-color: #fff;
+$button-success-active-background: #10ae79;
+$button-success-active-border: #10ae79;
+$button-success-active-color: #fff;
+$button-success-ghost-background: transparent;
+$button-success-ghost-border: $theme-success;
+$button-success-ghost-color: $theme-success;
+$button-success-ghost-active-background: transparent;
+$button-success-ghost-active-border: #10ae79;
+$button-success-ghost-active-color: #10ae79;
+
+$button-warning-background: $theme-warning;
+$button-warning-border: $theme-warning;
+$button-warning-color: #fff;
+$button-warning-active-background: #d3822c;
+$button-warning-active-border: #d3822c;
+$button-warning-active-color: #fff;
+$button-warning-ghost-background: transparent;
+$button-warning-ghost-border: $theme-warning;
+$button-warning-ghost-color: $theme-warning;
+$button-warning-ghost-active-background: transparent;
+$button-warning-ghost-active-border: #d3822c;
+$button-warning-ghost-active-color: #d3822c;
+
+$button-error-background: $theme-error;
+$button-error-border: $theme-error;
+$button-error-color: #fff;
+$button-error-active-background: #e54747;
+$button-error-active-border: #e54747;
+$button-error-active-color: #fff;
+$button-error-ghost-background: transparent;
+$button-error-ghost-border: $theme-error;
+$button-error-ghost-color: $theme-error;
+$button-error-ghost-active-background: transparent;
+$button-error-ghost-active-border: #e54747;
+$button-error-ghost-active-color: #e54747;
 
 // Cell
-$cell-height: r(45);                            // 最小高度
+$cell-height: r(52);                            // 最小高度
 $cell-background: #fff;                       // 背景色
-$cell-line-left: r(15);                         // 分隔线左边距
-$cell-line-hasicon-left: r(59);                 // 带icon时分隔线左边距
+$cell-line-left: r(16);                         // 分隔线左边距
+$cell-padding-h: r(12);                         // 边内内距
+$cell-line-hasicon-left: r(16);                 // 带icon时分隔线左边距
 $cell-title-color: $color-text;                 // 标题文字颜色
-$cell-title-font-size: $font-size-lg;           // 标题文字大小
-$cell-description-color: #999;                // 标题文字颜色
-$cell-description-font-size: $font-size-md;     // 描述文字大小
-$cell-icon-width: r(28);                        // 图标宽度
-$cell-icon-height: r(28);                       // 图标高度
+$cell-title-font-size: r(15);                   // 标题文字大小
+$cell-title-line-height: r(28);                 // 标题文字行高
+$cell-description-color: $color-text-caption;   // 标题文字颜色
+$cell-description-font-size: r(15);             // 描述文字大小
 $cell-label-width: r(100);                      // 表单label宽度
+$cell-arrow-color: #bcbcbc;                   // 箭头颜色
+$cell-arrow-length: r(10);                      // 箭头长度
+$cell-arrow-border-width: r(2);                 // 箭头粗细
 
 // Checkbox
 $checkbox-size: r(20);
@@ -160,8 +235,8 @@ $confirm-button-font-size: r(18);
 $icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
 
 // Keyboard
-$keyboard-item-height: r(50);
-$keyboard-item-font-size: r(28);
+$keyboard-item-height: r(52);
+$keyboard-item-font-size: r(30);
 $keyboard-icon-font-size: r(21);
 
 // Message
@@ -247,3 +322,13 @@ $toast-max-width: 70%;
 $tooltip-font-size: r(12);
 $tooltip-color: #fff;
 $tooltip-arrow-size: r(5);
+
+// Input
+$input-clear-icon-width: r(16);
+$input-padding-size: r(12);
+$input-cursor-color: #597cf6;
+$input-cursor-width: r(2);
+$input-cursor-height: r(18);
+$input-selection-color: rgba($theme-primary, 0.2);
+$input-length-count-color: $color-text-disabled;
+$input-line-height: r(28);

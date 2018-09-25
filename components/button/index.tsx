@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import ActivityIndicator from '../activity-indicator';
 
-export interface ButtonProps extends PropsType {
+export interface ButtonProps extends HTMLAttributes<HTMLAnchorElement>, PropsType {
   prefixCls?: string;
   className?: string;
 }
@@ -12,12 +12,12 @@ export default class Button extends PureComponent<ButtonProps, {}> {
   static defaultProps = {
     prefixCls: 'za-button',
     theme: 'default',
+    size: 'md',
+    shape: 'rect',
     block: false,
     ghost: false,
-    active: false,
     disabled: false,
     loading: false,
-    onClick() {},
   };
 
   render() {
@@ -29,7 +29,6 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       shape,
       icon,
       block,
-      active,
       ghost,
       disabled,
       loading,
@@ -38,13 +37,12 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       ...others
     } = this.props;
 
-    const classes = classnames(`${prefixCls}`, className, {
+    const classes = classnames(prefixCls, className, {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
       [`shape-${shape}`]: !!shape,
       block,
       ghost,
-      active,
       disabled,
     });
 

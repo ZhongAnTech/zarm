@@ -34,6 +34,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.state = {
       items: [],
       activeIndex: props.activeIndex,
+      activeIndexChanged: false,
     };
   }
 
@@ -45,8 +46,6 @@ export default class Carousel extends Component<CarouselProps, any> {
   componentDidMount() {
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
-    Events.on(this.carouselItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.on(this.carouselItems, 'transitionend', this.transitionEnd);
 
     // 设置起始位置编号
     this.onJumpTo(this.props.activeIndex);
@@ -85,12 +84,10 @@ export default class Carousel extends Component<CarouselProps, any> {
   // 移动到指定编号
   onMoveTo = (index, animationDuration) => {
     const dom = this.carouselItems;
-    if (!dom) {
-      return;
-    }
 
-    const { loop, children } = this.props;
+    const { loop, children, onChange } = this.props;
     const maxLength = children.length;
+    const previousIndex = this.state.activeIndex;
 
     this.translateX = -dom.offsetWidth * (index + loop);
     this.translateY = -dom.offsetHeight * (index + loop);
@@ -101,9 +98,15 @@ export default class Carousel extends Component<CarouselProps, any> {
     } else if (index < 0) {
       index = maxLength - 1;
     }
+    const activeIndexChanged = previousIndex !== index;
     this.setState({
       activeIndex: index,
+      activeIndexChanged,
     });
+
+    if (typeof onChange === 'function' && activeIndexChanged) {
+      onChange(index);
+    }
   }
 
   // 触屏事件
@@ -136,7 +139,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 设置不循环的时候
     if (!this.props.loop) {
-      // 在首页时禁止拖动
+      // 在尾页时禁止拖动
       if (this.isLastIndex()) {
         if (
           this.isDirectionX() && offsetX < 0 ||
@@ -146,7 +149,7 @@ export default class Carousel extends Component<CarouselProps, any> {
         }
       }
 
-      // 在尾页时禁止拖动
+      // 在首页时禁止拖动
       if (this.isFirstIndex()) {
         if (
           this.isDirectionX() && offsetX > 0 ||
@@ -168,11 +171,7 @@ export default class Carousel extends Component<CarouselProps, any> {
       return;
     }
 
-    const {
-      moveDistanceRatio = Carousel.defaultProps.moveDistanceRatio,
-      moveTimeSpan = Carousel.defaultProps.moveTimeSpan,
-      onChange,
-    } = this.props;
+    const { moveDistanceRatio, moveTimeSpan } = this.props;
     let { activeIndex } = this.state;
 
     const dom = this.carouselItems;
@@ -184,14 +183,10 @@ export default class Carousel extends Component<CarouselProps, any> {
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
     // 2.滑动释放时间差低于moveTimeSpan
-    if (ratio >= moveDistanceRatio || timeSpan <= moveTimeSpan) {
+    if (ratio >= moveDistanceRatio! || timeSpan <= moveTimeSpan!) {
       const action = (this.isDirectionX() && offsetX > 0) || (!this.isDirectionX() && offsetY > 0)
         ? 'prev'
         : 'next';
-
-      if (typeof onChange === 'function') {
-        onChange(this.getActiveIndex(action));
-      }
 
       activeIndex = (action === 'next')
         ? activeIndex + 1
@@ -204,33 +199,20 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.startAutoPlay();
   }
 
-  getActiveIndex = (action: 'prev' | 'next') => {
-    const { loop, children } = this.props;
-    const maxIndex = children.length - 1;
-    let { activeIndex } = this.state;
-
-    if (action === 'next') {
-      activeIndex = (activeIndex + 1) > maxIndex ? (loop ? 0 : maxIndex) : activeIndex += 1;
-    } else {
-      activeIndex = (activeIndex - 1) < 0 ? (loop ? maxIndex : 0) : activeIndex -= 1;
-    }
-    return activeIndex;
-  }
-
   // 自动轮播开始
   startAutoPlay = () => {
-    const { direction = 'left', loop, autoPlay, autoPlayIntervalTime, children } = this.props;
+    const { direction, loop, autoPlay, autoPlayIntervalTime } = this.props;
 
     this.moveInterval = (autoPlay && setInterval(() => {
       let activeIndex = this.state.activeIndex;
-      const maxLength = children.length;
+      const isLeftOrUpDirection = (['left', 'up']).indexOf(direction!) > -1;
 
-      activeIndex = (['left', 'top'].indexOf(direction) > -1)
+      activeIndex = isLeftOrUpDirection
         ? (activeIndex + 1)
         : (activeIndex - 1);
 
       // 不循环暂停轮播
-      if (!loop && activeIndex > maxLength - 1) {
+      if (!loop && (isLeftOrUpDirection ? this.isLastIndex() : this.isFirstIndex())) {
         this.pauseAutoPlay();
         return;
       }
@@ -245,7 +227,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     }
   }
 
-  // 处理节点（首位拼接）
+  // 处理节点（首尾拼接）
   parseItems = (props) => {
     if (props.children.length === 0) {
       return;
@@ -309,7 +291,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
 
     const { onChangeEnd } = this.props;
-    if (typeof onChangeEnd === 'function') {
+    if (typeof onChangeEnd === 'function' && this.state.activeIndexChanged) {
       onChangeEnd(activeIndex);
     }
   }
@@ -326,7 +308,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 是否横向移动
   isDirectionX = () => {
-    return (['left', 'right'].indexOf(this.props.direction || Carousel.defaultProps.direction) > -1);
+    return (['left', 'right'].indexOf(this.props.direction!) > -1);
   }
 
   renderPaginationItem = (_result, index) => {
@@ -361,9 +343,9 @@ export default class Carousel extends Component<CarouselProps, any> {
   }
 
   render() {
-    const { prefixCls, className, height, showPagination } = this.props;
+    const { prefixCls, className, height, showPagination, style } = this.props;
     const cls = classnames(prefixCls, className);
-    const itemsStyle: CSSProperties = {};
+    const itemsStyle: CSSProperties = { ...style };
 
     if (!this.isDirectionX()) {
       itemsStyle.height = height;
@@ -381,6 +363,7 @@ export default class Carousel extends Component<CarouselProps, any> {
           <div
             ref={(ele) => { this.carouselItems = ele; }}
             className={`${prefixCls}-items`}
+            onTransitionEnd={this.transitionEnd}
             style={itemsStyle}
           >
             {this.state.items}

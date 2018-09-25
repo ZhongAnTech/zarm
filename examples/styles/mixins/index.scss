@@ -1,4 +1,4 @@
-@mixin onepx($positions: top right bottom left, $border-color: #ddd, $border-radius: 0) {
+@mixin onepx($positions: top right bottom left, $border-color: #e6e6e6, $border-radius: 0) {
   &:after {
     content: '';
     pointer-events: none;
