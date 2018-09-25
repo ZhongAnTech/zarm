@@ -5,31 +5,24 @@ $prefixCls: $prefixCls-nav-bar;
 .#{$prefixCls} {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background: #fdfdfd;
   width: 100%;
-  height: r(44);
+  height: $nav-bar-height;
+  background: $nav-bar-color;
 
   &-title {
     font-size: 18px;
     font-weight: 500;
-  }
-
-  &-icon {
     position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    @include icon-size(
-      $nav-bar-icon-size
-    );
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 
   &-left {
-    left: r(16);
-  }
-
-  &-right {
-    right: r(16);
+    @include icon-size(
+      $nav-bar-icon-size
+    );
+    margin-left: r(16);
   }
 }
