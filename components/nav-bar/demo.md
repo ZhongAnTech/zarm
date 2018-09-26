@@ -28,7 +28,12 @@ class Demo extends React.Component {
   render() {
     return (
       <NavBar
-        left={<Icon type="add" theme="success" style={{ fontSize: "24px", marginLeft: "16px" }} />}
+        left={<Icon
+          type="arrow-left"
+          theme="success" 
+          style={{ fontSize: "24px", marginLeft: "16px" }}
+          onClick={() => window.history.back()}
+        />}
         title="这是标题"
       />
     )
@@ -48,9 +53,12 @@ class Demo extends React.Component {
   render() {
     return (
       <NavBar
-        left
         title="这是标题"
-        right={<Icon type="info-round" theme="success" style={{ fontSize: "24px", marginRight: "16px" }} />}
+        right={<Icon
+         type="arrow-right" 
+         theme="success" 
+         style={{ fontSize: "24px", marginRight: "16px" }} 
+         onClick={() => window.history.go(1)} />}
       />
     )
   }
@@ -69,13 +77,16 @@ class Demo extends React.Component {
   render() {
     return (
       <NavBar
-        left
+        left={<Icon 
+          type="arrow-left" 
+          theme="success" 
+          style={{ fontSize: "24px", marginLeft: "16px" }} 
+          onClick={() => window.history.back()} />}
         title="这是标题"
-        right={
-          <div style={{ fontSize: "24px", marginRight: "16px" }}>
-            <Icon type="question-round-fill" theme="success" />
-            <Icon style={{ marginLeft: "16px" }} type="warning-round-fill" theme="success" />
-          </div>}
+        right={<div style={{ fontSize: "24px", marginRight: "16px" }}>
+          <Icon type="question-round" theme="success" />
+          <Icon style={{ marginLeft: "16px" }} type="arrow-right" theme="success" onClick={() => window.history.go(1)} />
+        </div>}
       />
     )
   }
