@@ -26,4 +26,8 @@ $prefixCls: $prefixCls-nav-bar;
       $nav-bar-icon-size
     );
   }
+
+  &-right-only {
+    justify-content: flex-end;
+  }
 }

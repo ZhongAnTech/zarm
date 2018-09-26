@@ -15,7 +15,8 @@ export default class NavBar extends React.PureComponent<NavBarProps> {
 
   render() {
     const { prefixCls, className, style, title, left, right } = this.props;
-    const cls = classnames(`${prefixCls}`, className);
+    const rightOnly = classnames(`${prefixCls}`, `${prefixCls}-right-only`, className);
+    const cls = !left && right ? rightOnly : classnames(`${prefixCls}`, className);
     const titleCls = `${prefixCls}-title`;
     const leftCls = `${prefixCls}-left`;
 
