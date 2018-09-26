@@ -1,0 +1,27 @@
+@import "../functions/index";
+
+.app-container {
+  position: relative;
+  background-color: #f6f6f6;
+  // overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh; // 之前使用js获取window.innerHeight，导致每次setState会重新渲染组件（包括container），当有键盘弹出时，高度计算会有问题。
+
+  .github {
+    position: absolute;
+    right: r(10);
+    top: r(10);
+    width: r(32);
+    height: r(32);
+  }
+
+  h2 {
+    margin: 0;
+    padding: r(15);
+    font-size: r(16);
+    font-weight: 400;
+  }
+}
+

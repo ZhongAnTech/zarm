@@ -7,14 +7,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config.base');
 
 config.mode = 'production';
-
-config.entry = {
-  index: ['./examples/index.js'],
-};
-
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
-
+config.entry = {
+  index: './examples/index.js',
+  index_home: './site/index.js',
+};
 config.optimization = {
   minimizer: [
     new UglifyJsPlugin({
@@ -30,7 +28,6 @@ config.optimization = {
     new OptimizeCSSAssetsPlugin({}),
   ],
 };
-
 config.plugins.push(
   // new BundleAnalyzerPlugin({
   //   analyzerMode: 'static',
@@ -61,18 +58,23 @@ config.plugins.push(
     name: 'manifest',
   })
 );
-
+// Object.keys(config.entry).forEach((key) => {
+//   config.plugins.push(new HtmlWebpackPlugin({
+//     template: config.entry[key],
+//     filename: `${key}.html`,
+//     chunks: ['manifest', key],
+//   }));
+// });
 config.plugins.push(new HtmlWebpackPlugin({
   template: './examples/index.html',
   filename: 'index.html',
-  chunk: ['manifest', 'index'],
+  chunks: ['manifest', 'index'],
 }));
 config.plugins.push(new HtmlWebpackPlugin({
-  template: './examples/index_umd.html',
-  filename: 'index_umd.html',
-  inject: false,
+  template: './site/index.html',
+  filename: 'index_home.html',
+  chunks: ['manifest', 'index_home'],
 }));
-
 config.resolve.alias = {
   zarm: process.cwd(),
 };

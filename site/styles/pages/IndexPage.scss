@@ -1,0 +1,37 @@
+@import "../functions/index";
+
+.index-page {
+  .brand {
+    padding: r(45) r(45) r(15) r(45);
+
+    &-title {
+      font-size: r(30);
+    }
+
+    &-description {
+      font-size: r(14);
+    }
+  }
+
+  main {
+    padding: r(15);
+  }
+
+  .za-panel-body {
+    border-radius: r(2);
+
+    &:after {
+      display: none;
+    }
+  }
+
+  .za-cell {
+    background-color: transparent;
+
+    &:first-of-type {
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

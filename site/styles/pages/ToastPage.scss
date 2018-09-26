@@ -1,0 +1,13 @@
+@import "../functions/index";
+
+.za-toast {
+  .box {
+    &-icon {
+      font-size: r(50);
+    }
+
+    &-text {
+      margin-bottom: r(5);
+    }
+  }
+}

@@ -47,8 +47,8 @@
     "build:umd": "webpack --config scripts/webpack/config.umd.js && cross-env NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
     "build:css": "cd scripts/gulp && gulp",
     "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd && npm run build:css",
-    "site:build": "rm -rf assets && webpack --config scripts/webpack/config.site.js",
-    "site": "npm run site:build && gh-pages -d assets",
+    "deploy:build": "rm -rf assets && webpack --config scripts/webpack/config.deploy.js",
+    "deploy": "npm run deploy:build && gh-pages -d assets",
     "lint:ts": "tslint 'components/**/*.{ts,tsx}'",
     "lint:js": "eslint --ext '.js,.jsx' examples examples-rn",
     "lint:style": "stylelint --syntax scss components/**/*.scss components/**/**/*.scss examples/styles/**/*.scss",
@@ -162,8 +162,9 @@
     "dist/*",
     "components/style/*",
     "components/**/style/*",
-    "examples/**",
     "es/**/style/*",
-    "lib/**/style/*"
+    "lib/**/style/*",
+    "examples/styles/**",
+    "site/styles/**"
   ]
 }
