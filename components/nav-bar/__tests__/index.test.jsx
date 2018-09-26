@@ -22,7 +22,7 @@ describe('NavBar', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with only left prop', () => {
+  it('renders correctly with left prop only', () => {
     props.left = true;
     const wrapper = render(
       <NavBar {...props} />
@@ -38,7 +38,8 @@ describe('NavBar', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with right content', () => {
+  it('renders correctly with right content only', () => {
+    props.left = false;
     props.right = <Icon type="arrow-right" />;
     const wrapper = render(
       <NavBar {...props} />
