@@ -331,9 +331,10 @@ $nav-bar-icon-size: r(24);
 
 // Input
 $input-clear-icon-width: r(16);
-$input-padding-size: r(16);
+$input-padding-size: r(12);
 $input-cursor-color: #597cf6;
 $input-cursor-width: r(2);
 $input-cursor-height: r(18);
 $input-selection-color: rgba($theme-primary, 0.2);
 $input-length-count-color: $color-text-disabled;
+$input-line-height: r(28);

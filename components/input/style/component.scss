@@ -35,7 +35,7 @@ $prefixCls: $prefixCls-input;
     &[type="date"],
     &[type="text"],
     &[type="search"] {
-      height: r(21);
+      height: $input-line-height;
     }
 
     &::-webkit-input-placeholder {
@@ -50,7 +50,7 @@ $prefixCls: $prefixCls-input;
 
   textarea {
     display: block;
-    line-height: 1.334;
+    line-height: $input-line-height;
     resize: none;
     word-break: break-all;
     word-wrap: break-word;
@@ -91,7 +91,8 @@ $prefixCls: $prefixCls-input;
   }
 
   &-number {
-    line-height: $input-padding-size * 2;
+    line-height: $input-line-height;
+    padding: $input-line-height / 2 0;
 
     &-picker {
       background-color: #fff;
