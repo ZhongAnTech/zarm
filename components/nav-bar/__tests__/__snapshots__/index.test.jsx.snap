@@ -7,7 +7,9 @@ exports[`NavBar renders correctly 1`] = `
   <div
     class="za-nav-bar-title"
   />
-  <div />
+  <div
+    class="za-nav-bar-icon za-nav-bar-icon-right"
+  />
 </div>
 `;
 
@@ -15,7 +17,9 @@ exports[`NavBar renders correctly with left content 1`] = `
 <div
   class="za-nav-bar"
 >
-  <div>
+  <div
+    class="za-nav-bar-icon za-nav-bar-icon-left"
+  >
     <i
       class="za-icon za-icon-arrow-left"
     />
@@ -25,7 +29,9 @@ exports[`NavBar renders correctly with left content 1`] = `
   >
     测试标题
   </div>
-  <div />
+  <div
+    class="za-nav-bar-icon za-nav-bar-icon-right"
+  />
 </div>
 `;
 
@@ -34,7 +40,7 @@ exports[`NavBar renders correctly with left prop only 1`] = `
   class="za-nav-bar"
 >
   <div
-    class="za-nav-bar-left"
+    class="za-nav-bar-icon za-nav-bar-icon-left"
   >
     <i
       class="za-icon za-icon-arrow-left"
@@ -45,7 +51,9 @@ exports[`NavBar renders correctly with left prop only 1`] = `
   >
     测试标题
   </div>
-  <div />
+  <div
+    class="za-nav-bar-icon za-nav-bar-icon-right"
+  />
 </div>
 `;
 
@@ -58,7 +66,9 @@ exports[`NavBar renders correctly with multiple right icons 1`] = `
   >
     测试标题
   </div>
-  <div>
+  <div
+    class="za-nav-bar-icon za-nav-bar-icon-right"
+  >
     <div>
       <i
         class="za-icon za-icon-arrow-right"
@@ -80,7 +90,9 @@ exports[`NavBar renders correctly with right content only 1`] = `
   >
     测试标题
   </div>
-  <div>
+  <div
+    class="za-nav-bar-icon za-nav-bar-icon-right"
+  >
     <i
       class="za-icon za-icon-arrow-right"
     />
@@ -97,6 +109,8 @@ exports[`NavBar renders correctly with title 1`] = `
   >
     测试标题
   </div>
-  <div />
+  <div
+    class="za-nav-bar-icon za-nav-bar-icon-right"
+  />
 </div>
 `;
