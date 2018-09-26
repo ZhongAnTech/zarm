@@ -12,19 +12,25 @@ $prefixCls: $prefixCls-nav-bar;
   background: $nav-bar-color;
 
   &-title {
-    font-size: 18px;
+    font-size: r(18);
     font-weight: 500;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
   }
 
-  &-left {
-    margin-left: r(16);
-
+  &-icon {
     @include icon-size(
       $nav-bar-icon-size
     );
+
+    &-left {
+      margin-left: r(16);
+    }
+
+    &-right {
+      margin-right: r(16);
+    }
   }
 
   &-right-only {
