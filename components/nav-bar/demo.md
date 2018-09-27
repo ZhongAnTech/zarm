@@ -1,26 +1,6 @@
 ## 导航栏 NavBar
 
-:::demo 基本用法
-```jsx
-import { NavBar, Icon } from 'zarm';
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <NavBar
-        left
-        title="这是标题"
-      />
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-:::
-
-
-:::demo 左侧自定义
+:::demo 左侧渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
 
@@ -101,7 +81,7 @@ ReactDOM.render(<Demo />, mountNode);
 | prefixCls | string | 否 | za-nav-bar | 类名前缀 |
 | className | string | 否 | | 追加类名 |
 | title | React.ReactNode | 否 | | 标题 |
-| left | React.ReactNode | 否 | <Icon type="arrow-left" /> | 导航栏左侧渲染 |
+| left | React.ReactNode | 否 | | 导航栏左侧渲染 |
 | right | React.ReactNode | 否 | | 导航栏右侧渲染 |
 | style | React.CSSProperties | 否 | | 自定义样式 |
 
