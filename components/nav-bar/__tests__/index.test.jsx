@@ -22,14 +22,6 @@ describe('NavBar', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with left prop only', () => {
-    props.left = true;
-    const wrapper = render(
-      <NavBar {...props} />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
   it('renders correctly with left content', () => {
     props.left = <Icon type="arrow-left" />;
     const wrapper = render(
@@ -47,7 +39,8 @@ describe('NavBar', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly with multiple right icons', () => {
+  it('renders correctly with multiple icons', () => {
+    props.left = <div><Icon type="arrow-left" /></div>;
     props.right = <div><Icon type="arrow-right" /><Icon type="info-round" /></div>;
     const wrapper = render(
       <NavBar {...props} />
