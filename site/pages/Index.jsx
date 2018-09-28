@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Cell } from 'zarm';
-import Container from '../components/Container';
-import Footer from '../components/Footer';
-import '../styles/components/Header.scss';
+import Container from '@site/components/Container';
+import Footer from '@site/components/Footer';
 import '../styles/pages/IndexPage.scss';
 
 class Page extends PureComponent {
@@ -11,14 +10,8 @@ class Page extends PureComponent {
 
     return (
       <Container className="index-page">
-        <header>
-          <section className="brand">
-            <div className="brand-title">Zarm UI</div>
-            <div className="brand-description">众安科技移动端组件库</div>
-          </section>
-        </header>
         <main>
-          <Cell hasArrow title="docs" onClick={() => history.push('/docs')} />
+          <Cell hasArrow title="docs" onClick={() => history.push('/docs/input')} />
         </main>
         <Footer />
       </Container>

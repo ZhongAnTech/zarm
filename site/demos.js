@@ -1,133 +1,133 @@
 module.exports = {
   documents: [
     {
-      title: 'QuickStart',
+      name: 'QuickStart',
       description: '快速上手',
     },
   ],
   components: {
     form: [
       {
-        title: 'Input',
-        description: '文本框 Input',
+        name: 'Input',
+        description: '文本框',
       },
       {
-        title: 'Radio',
-        description: '单选框 Radio',
+        name: 'Radio',
+        description: '单选框',
       },
       {
-        title: 'Checkbox',
-        description: '复选框 Checkbox',
+        name: 'Checkbox',
+        description: '复选框',
       },
       {
-        title: 'Picker',
-        description: '选择器 Picker & Select',
+        name: 'Picker',
+        description: '选择器',
       },
       {
-        title: 'DatePicker',
-        description: '日期选择器 DatePicker & DateSelect',
+        name: 'DatePicker',
+        description: '日期选择器',
       },
       {
-        title: 'Slider',
-        description: '滑动输入条 Slider',
+        name: 'Slider',
+        description: '滑动输入条',
       },
       {
-        title: 'Stepper',
-        description: '步进器 Stepper',
+        name: 'Stepper',
+        description: '步进器',
       },
       {
-        title: 'Switch',
-        description: '开关 Switch',
+        name: 'Switch',
+        description: '开关',
       },
       {
-        title: 'SearchBar',
-        description: '搜索栏 SearchBar',
+        name: 'SearchBar',
+        description: '搜索栏',
       },
       {
-        title: 'FilePicker',
-        description: '文件选择器 FilePicker',
+        name: 'FilePicker',
+        description: '文件选择器',
       },
       {
-        title: 'Keyboard',
-        description: '虚拟键盘 Keyboard & KeyboardPicker',
+        name: 'Keyboard',
+        description: '虚拟键盘',
       },
     ],
     feedback: [
       {
-        title: 'Button',
-        description: '按钮 Button',
+        name: 'Button',
+        description: '按钮',
       },
       {
-        title: 'ActionSheet',
-        description: '动作面板 ActionSheet',
+        name: 'ActionSheet',
+        description: '动作面板',
       },
       {
-        title: 'Message',
-        description: '消息 Message',
+        name: 'Message',
+        description: '消息',
       },
       {
-        title: 'Modal',
-        description: '模态框 Modal',
+        name: 'Modal',
+        description: '模态框',
       },
       {
-        title: 'Toast',
-        description: '轻提示 Toast',
+        name: 'Toast',
+        description: '轻提示',
       },
       {
-        title: 'Pull',
-        description: '上拉加载下拉刷新 Pull',
+        name: 'Pull',
+        description: '上拉加载下拉刷新',
       },
       {
-        title: 'SwipeAction',
-        description: '滑动操作 SwipeAction',
+        name: 'SwipeAction',
+        description: '滑动操作',
       },
       {
-        title: 'ActivityIndicator',
-        description: '活动指示器 ActivityIndicator',
+        name: 'ActivityIndicator',
+        description: '活动指示器',
       },
     ],
     view: [
       {
-        title: 'Collapse',
-        description: '折叠面板 Collapse',
+        name: 'Collapse',
+        description: '折叠面板',
       },
       {
-        title: 'Badge',
-        description: '徽标 Badge',
+        name: 'Badge',
+        description: '徽标',
       },
       {
-        title: 'Cell',
-        description: '列表项 Cell',
+        name: 'Cell',
+        description: '列表项',
       },
       {
-        title: 'Icon',
-        description: '图标 Icon',
+        name: 'Icon',
+        description: '图标',
       },
       {
-        title: 'Carousel',
-        description: '走马灯 Carousel',
+        name: 'Carousel',
+        description: '走马灯',
       },
       {
-        title: 'Progress',
-        description: '进度条 Progress',
+        name: 'Progress',
+        description: '进度条',
       },
       {
-        title: 'NoticeBar',
-        description: '通告栏 NoticeBar',
+        name: 'NoticeBar',
+        description: '通告栏',
       },
       {
-        title: 'Panel',
-        description: '面板 Panel',
+        name: 'Panel',
+        description: '面板',
       },
     ],
     navigation: [
       {
-        title: 'Popup',
-        description: '弹出框 Popup',
+        name: 'Popup',
+        description: '弹出框',
       },
       {
-        title: 'Tabs',
-        description: '标签页 Tabs',
+        name: 'Tabs',
+        description: '标签页',
       },
     ],
   },

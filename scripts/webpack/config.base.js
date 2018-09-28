@@ -5,11 +5,15 @@ const babelConfig = require('../config/babelConfig');
 
 babelConfig.plugins.push([
   'import',
-  {
+  [{
     libraryName: 'zarm',
     libraryDirectory: 'components',
     style: true,
   },
+  {
+    libraryName: 'dragon-ui',
+    style: true,
+  }],
 ]);
 
 module.exports = {
@@ -82,7 +86,6 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)$/,
-        exclude: /node_modules/,
         use: [
           {
             loader: 'file-loader?name=fonts/[name].[hash:8].[ext]',

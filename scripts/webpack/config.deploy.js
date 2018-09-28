@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -77,6 +78,7 @@ config.plugins.push(new HtmlWebpackPlugin({
 }));
 config.resolve.alias = {
   zarm: process.cwd(),
+  '@site': path.resolve(__dirname, '../../site'),
 };
 
 module.exports = config;

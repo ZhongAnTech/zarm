@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import marked from 'marked';
 import Demo from './Demo';
 // import Header from './Header';
-import Container from './Container';
-import Footer from './Footer';
 
 export default class Markdown extends React.Component {
   constructor(props) {
@@ -61,13 +59,7 @@ export default class Markdown extends React.Component {
           }), { renderer: this.renderer }
       );
 
-      return (
-        <Container className={className}>
-          {/* <Header title="title" /> */}
-          <main dangerouslySetInnerHTML={{ __html: html }} />
-          <Footer />
-        </Container>
-      );
+      return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
     }
 
     return <span />;
