@@ -12,14 +12,15 @@ $prefixCls: $prefixCls-nav-bar;
   background: $nav-bar-color;
 
   &-title {
-    font-size: r(18);
-    font-weight: 500;
     position: absolute;
     left: 50%;
+    white-space: nowrap;
+    font-size: r(18);
+    font-weight: 500;
     transform: translate(-50%, 0);
   }
 
-  &-icon {
+  &-side {
     @include icon-size(
       $nav-bar-icon-size
     );

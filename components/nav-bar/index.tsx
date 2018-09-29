@@ -21,11 +21,11 @@ export default class NavBar extends React.PureComponent<NavBarProps> {
       left,
       right,
     } = this.props;
-    const cls = classnames(`${prefixCls}`, className);
+    const cls = classnames(prefixCls, className);
     const titleCls = `${prefixCls}-title`;
-    const iconCls = `${prefixCls}-icon`;
-    const leftCls = `${iconCls} ${prefixCls}-icon-left`;
-    const rightCls = `${iconCls} ${prefixCls}-icon-right`;
+    const sideCls = `${prefixCls}-side`;
+    const leftCls = `${sideCls} ${prefixCls}-side-left`;
+    const rightCls = `${sideCls} ${prefixCls}-side-right`;
 
     return (
       <div style={style} className={cls}>
