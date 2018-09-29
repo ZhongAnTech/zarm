@@ -34,7 +34,7 @@ class Demo extends React.Component {
       <NavBar
         title="这是标题"
         right={<Icon
-         type="arrow-right"
+         type="question-round"
          theme="success"
          onClick={() => window.history.go(1)} />}
       />
@@ -61,8 +61,8 @@ class Demo extends React.Component {
           onClick={() => window.history.back()} />}
         title="这是标题"
         right={<div>
-          <Icon type="question-round" theme="success" />
-          <Icon style={{ marginLeft: "16px" }} type="arrow-right" theme="success" onClick={() => window.history.go(1)} />
+          <Icon type="add" theme="success" />
+          <Icon style={{ marginLeft: "16px" }} type="question-round" theme="success" onClick={() => window.history.go(1)} />
         </div>}
       />
     )
