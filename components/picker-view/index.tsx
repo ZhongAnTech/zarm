@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BasePickerViewProps } from './PropsType';
 import Wheel from '../wheel';
-import getState, { isCascader } from '../utils/getState';
+import { isCascader } from '../utils/validate';
+import parseProps from './utils/parseProps';
 
 export interface PickerViewProps extends BasePickerViewProps {
   prefixCls?: string;
@@ -21,11 +22,11 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
 
   constructor(props) {
     super(props);
-    this.state = getState(props);
+    this.state = parseProps.getSource(props);
   }
 
   componentWillReceiveProps(nextProps) {
-    const state = getState(nextProps);
+    const state = parseProps.getSource(nextProps);
     this.setState(state);
   }
 
@@ -38,7 +39,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
       value.length = level + 1;
     }
 
-    const newState = getState({ dataSource, value, valueMember, cols });
+    const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
     this.setState(newState);
     if (typeof onChange === 'function') {
       onChange(newState.objValue, level);
