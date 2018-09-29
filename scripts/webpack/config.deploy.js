@@ -45,15 +45,15 @@ config.plugins.push(
     maxInitialRequests: 3,
     automaticNameDelimiter: '~',
     name: true,
-    cacheGroups: {
-      styles: {
-        name: 'styles',
-        test: /\.s?css$/,
-        chunks: 'all',
-        minChunks: 5,
-        enforce: true,
-      },
-    },
+    // cacheGroups: {
+    //   styles: {
+    //     name: 'styles',
+    //     test: /\.s?css$/,
+    //     chunks: 'all',
+    //     minChunks: 5,
+    //     enforce: true,
+    //   },
+    // },
   }),
   new webpack.optimize.RuntimeChunkPlugin({
     name: 'manifest',
