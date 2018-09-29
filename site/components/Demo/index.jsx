@@ -69,28 +69,31 @@ export default class Demo extends Component {
 
   render() {
     return (
-      <div className="demo">
-        {/* {
-          this.props.location.pathname === '/panel'
-            ? <div className="demo-simulator" id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
-            : (
-              <div className="demo-simulator">
-                <Panel titleRender={<span>{this.title}</span>}>
-                  <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
-                </Panel>
-              </div>
-            )
-        } */}
-        <div className="demo-code">
-          {/* <div className="source" id={this.containerId} ref={(elem) => { this.containerElem = elem; }} /> */}
-          <div className="demo-code-editor" ref={(ele) => { this.code = ele; }} dangerouslySetInnerHTML={{ __html: this.description }} />
-          <Editor
-            value={this.source[2]}
-            onChange={code => this.renderSource(code)}
-          />
-        </div>
-        <div className="demo-control" onClick={this.toggleShowCode}>
-          <span>{this.state.isOpen ? '隐藏' : '展开'}</span>
+      <div>
+        <h3>{this.title}</h3>
+        <div className="demo">
+          {/* {
+            this.props.location.pathname === '/panel'
+              ? <div className="demo-simulator" id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
+              : (
+                <div className="demo-simulator">
+                  <Panel titleRender={<span>{this.title}</span>}>
+                    <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
+                  </Panel>
+                </div>
+              )
+          } */}
+          <div className="demo-code">
+            {/* <div className="source" id={this.containerId} ref={(elem) => { this.containerElem = elem; }} /> */}
+            <div className="demo-code-editor" ref={(ele) => { this.code = ele; }} dangerouslySetInnerHTML={{ __html: this.description }} />
+            <Editor
+              value={this.source[2]}
+              onChange={code => this.renderSource(code)}
+            />
+          </div>
+          <div className="demo-control" onClick={this.toggleShowCode}>
+            <span>{this.state.isOpen ? '隐藏' : '展开'}</span>
+          </div>
         </div>
       </div>
     );

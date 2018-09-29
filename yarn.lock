@@ -4443,9 +4443,9 @@ dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dragon-ui@1.0.0-alpha.15:
-  version "1.0.0-alpha.15"
-  resolved "https://registry.yarnpkg.com/dragon-ui/-/dragon-ui-1.0.0-alpha.15.tgz#488ec8820333ecaea05096cb085d7865e2c9c709"
+dragon-ui@1.0.0-alpha.16:
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/dragon-ui/-/dragon-ui-1.0.0-alpha.16.tgz#602e8492e81a3dd46e44332cfc587780188f9f7c"
   dependencies:
     classnames "^2.2.5"
     css-animation "^1.2.5"

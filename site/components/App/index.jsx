@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import AsyncComponent from '@site/components/AsyncComponent';
+// import '@site/styles/index.scss';
 import './App.scss';
 
 class App extends Component {

@@ -6,6 +6,10 @@ import Format from '@site/utils/format';
 import './Header.scss';
 
 class Header extends PureComponent {
+  state = {
+    dropdown: false,
+  }
+
   render() {
     const { history } = this.props;
     const { form, feedback, view, navigation } = components;
@@ -34,13 +38,20 @@ class Header extends PureComponent {
         <div className="lang">
           <Dropdown
             trigger="hover"
-            style={{position: 'absolute', left: 0, top: 36, minWidth: 200 }}
-            onVisibleChange={() => {
-              
+            visible={this.state.dropdown}
+            style={{ position: 'absolute', left: 0, top: 36, minWidth: 200 }}
+            onVisibleChange={(visible) => {
+              this.setState({
+                dropdown: visible,
+              });
             }}
-            overlay={<div>111</div>}
+            overlay={
+              <div className="qrcode">
+                111
+              </div>
+            }
           >
-            <span>扫码体验</span>
+            <Button theme="info">扫码体验</Button>
           </Dropdown>
           <Button>English</Button>
         </div>
