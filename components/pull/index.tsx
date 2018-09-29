@@ -30,6 +30,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   private pull;
   private wrap;
+  private throttledScroll;
 
   constructor(props) {
     super(props);
@@ -39,12 +40,13 @@ export default class Pull extends PureComponent<PullProps, any> {
       refreshState: props.refresh.state,
       loadState: props.load.state,
     };
+    this.throttledScroll = Throttle(this.onScroll, 250);
   }
 
   componentDidMount() {
     this.wrap = this.getScrollContainer();
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
-    Events.on(scroller, 'scroll', Throttle(this.onScroll, 250));
+    Events.on(scroller, 'scroll', this.throttledScroll);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,7 +61,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   componentWillUnmount() {
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
-    Events.off(scroller, 'scroll', this.onScroll);
+    Events.off(scroller, 'scroll', this.throttledScroll);
   }
 
   getScrollContainer = () => {
@@ -73,6 +75,9 @@ export default class Pull extends PureComponent<PullProps, any> {
       }
     })(this.pull) || document.documentElement;
   }
+
+  // 节流处理
+  onThrottledScroll = () => Throttle(this.onScroll, 250);
 
   onScroll = () => {
     const { refreshState, loadState } = this.state;

@@ -131,7 +131,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     const {
       disabled,
       styles,
-      multiple,
+      // multiple,
       children,
       accept,
       maximum,
@@ -163,9 +163,9 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       >
         <View style={{ flex: 1 }}>
           <NavBar
-            showRight={multiple}
+            /* showRight={multiple}
             onClickLeft={this.handleShowCameraRoll}
-            onClickRight={this.handleConfirm}
+            onClickRight={this.handleConfirm} */
           />
 
           <CameraRollPicker

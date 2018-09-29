@@ -122,5 +122,9 @@ module.exports = {
       title: 'Tabs',
       description: '标签页 Tabs',
     },
+    {
+      title: 'NavBar',
+      description: '导航栏 NavBar',
+    },
   ],
 };
