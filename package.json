@@ -69,7 +69,6 @@
   "dependencies": {
     "better-scroll": "^1.8.0",
     "classnames": "^2.2.5",
-    "codemirror": "^5.40.2",
     "normalize.css": "^7.0.0",
     "react-native-camera-roll-picker": "^1.2.3"
   },
@@ -100,6 +99,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "babel-standalone": "^6.26.0",
+    "codemirror": "^5.40.2",
     "concurrently": "^3.5.1",
     "conventional-changelog-cli": "^1.3.22",
     "core-js": "^2.5.1",
@@ -130,6 +130,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^2.1.5",
     "prop-types": "^15.6.2",
+    "qrious": "^4.0.2",
     "raw-loader": "^0.5.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -166,7 +167,7 @@
     "components/**/style/*",
     "es/**/style/*",
     "lib/**/style/*",
-    "examples/styles/**",
-    "site/styles/**"
+    "examples/**/**.scss",
+    "site/**/**.scss"
   ]
 }

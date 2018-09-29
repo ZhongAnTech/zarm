@@ -62,7 +62,7 @@ class Page extends PureComponent {
             </Switch>
           </div>
           <div className="simulator">
-            <iframe src={`index.html/#/${location.pathname.split('/')[2]}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+            <iframe src={`https://zhongantecheng.github.io/zarm/#/${location.pathname.split('/')[2]}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
         </main>
         <Footer />

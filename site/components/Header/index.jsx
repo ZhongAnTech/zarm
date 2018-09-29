@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Menu, Button, Select, Dropdown } from 'dragon-ui';
+import QRious from 'qrious';
 import { components } from '@site/demos';
 import Format from '@site/utils/format';
 import './Header.scss';
@@ -8,6 +9,13 @@ import './Header.scss';
 class Header extends PureComponent {
   state = {
     dropdown: false,
+  }
+
+  componentDidMount() {
+    const qr = new QRious({
+      element: this.qrcode,
+      value: 'https://zhongantecheng.github.io/zarm',
+    });
   }
 
   render() {
@@ -39,17 +47,12 @@ class Header extends PureComponent {
           <Dropdown
             trigger="hover"
             visible={this.state.dropdown}
-            style={{ position: 'absolute', left: 0, top: 36, minWidth: 200 }}
             onVisibleChange={(visible) => {
               this.setState({
                 dropdown: visible,
               });
             }}
-            overlay={
-              <div className="qrcode">
-                111
-              </div>
-            }
+            overlay={<canvas className="qrcode" ref={(ele) => { this.qrcode = ele; }} />}
           >
             <Button theme="info">扫码体验</Button>
           </Dropdown>

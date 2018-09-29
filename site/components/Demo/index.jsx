@@ -91,9 +91,9 @@ export default class Demo extends Component {
               onChange={code => this.renderSource(code)}
             />
           </div>
-          <div className="demo-control" onClick={this.toggleShowCode}>
+          {/* <div className="demo-control" onClick={this.toggleShowCode}>
             <span>{this.state.isOpen ? '隐藏' : '展开'}</span>
-          </div>
+          </div> */}
         </div>
       </div>
     );
