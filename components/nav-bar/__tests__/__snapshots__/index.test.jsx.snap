@@ -5,13 +5,13 @@ exports[`NavBar renders correctly 1`] = `
   class="za-nav-bar"
 >
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-left"
+    class="za-nav-bar-side za-nav-bar-side-left"
   />
   <div
     class="za-nav-bar-title"
   />
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-right"
+    class="za-nav-bar-side za-nav-bar-side-right"
   />
 </div>
 `;
@@ -21,7 +21,7 @@ exports[`NavBar renders correctly with left content 1`] = `
   class="za-nav-bar"
 >
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-left"
+    class="za-nav-bar-side za-nav-bar-side-left"
   >
     <i
       class="za-icon za-icon-arrow-left"
@@ -33,7 +33,7 @@ exports[`NavBar renders correctly with left content 1`] = `
     测试标题
   </div>
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-right"
+    class="za-nav-bar-side za-nav-bar-side-right"
   />
 </div>
 `;
@@ -43,7 +43,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   class="za-nav-bar"
 >
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-left"
+    class="za-nav-bar-side za-nav-bar-side-left"
   >
     <div>
       <i
@@ -57,7 +57,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
     测试标题
   </div>
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-right"
+    class="za-nav-bar-side za-nav-bar-side-right"
   >
     <div>
       <i
@@ -76,7 +76,7 @@ exports[`NavBar renders correctly with right content 1`] = `
   class="za-nav-bar"
 >
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-left"
+    class="za-nav-bar-side za-nav-bar-side-left"
   >
     <i
       class="za-icon za-icon-arrow-left"
@@ -88,7 +88,7 @@ exports[`NavBar renders correctly with right content 1`] = `
     测试标题
   </div>
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-right"
+    class="za-nav-bar-side za-nav-bar-side-right"
   >
     <i
       class="za-icon za-icon-arrow-right"
@@ -102,7 +102,7 @@ exports[`NavBar renders correctly with title 1`] = `
   class="za-nav-bar"
 >
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-left"
+    class="za-nav-bar-side za-nav-bar-side-left"
   />
   <div
     class="za-nav-bar-title"
@@ -110,7 +110,7 @@ exports[`NavBar renders correctly with title 1`] = `
     测试标题
   </div>
   <div
-    class="za-nav-bar-icon za-nav-bar-icon-right"
+    class="za-nav-bar-side za-nav-bar-side-right"
   />
 </div>
 `;
