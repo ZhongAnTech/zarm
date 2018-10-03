@@ -1,6 +1,6 @@
-import { isArray } from '../utils/validate';
+import { isArray, isCascader } from '../../utils/validate';
 
-const getValue = (props, defaultValue?: any) => {
+const getValues = (props, defaultValue?: any) => {
   if ('value' in props && props.value && props.value.length > 0) {
     return [].concat(props.value);
   }
@@ -12,13 +12,9 @@ const getValue = (props, defaultValue?: any) => {
   return defaultValue;
 };
 
-const isCascader = ({ dataSource }) => {
-  return dataSource && dataSource[0] && !isArray(dataSource[0]);
-};
-
 const normalState = (props) => {
   const { valueMember, dataSource } = props;
-  const value = getValue(props, dataSource!.map(item => item[0] && item[0][valueMember!]));
+  const value = getValues(props, dataSource!.map(item => item[0] && item[0][valueMember!]));
   return {
     value,
     objValue: props.dataSource.map((item, index) => item.filter(d => d[valueMember!] === value[index])[0]),
@@ -29,7 +25,7 @@ const normalState = (props) => {
 
 const cascaderState = (props) => {
   const { valueMember, cols } = props;
-  let newValues = getValue(props, []);
+  let newValues = getValues(props, []);
   let newObjValues: any[] = [];
   let newDateSource: any[] = [];
 
@@ -68,13 +64,10 @@ const cascaderState = (props) => {
   };
 };
 
-export {
-  isCascader,
-};
-
-export default (props) => {
-  const state = isCascader(props)
-  ? cascaderState(props)
-  : normalState(props);
-  return state;
+export default {
+  getSource(props) {
+    return isCascader(props)
+      ? cascaderState(props)
+      : normalState(props);
+  },
 };
