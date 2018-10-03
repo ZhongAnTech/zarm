@@ -20,7 +20,7 @@ function formatDate(date, fmt) {
     return date;
   }
 
-  date = new Date(date.toString().replace(/-/g, '/'));
+  // date = new Date(date.toString().replace(/-/g, '/'));
 
   const o = {
     'M+': date.getMonth() + 1, // 月份
