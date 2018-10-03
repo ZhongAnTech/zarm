@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import Popup from '../popup';
 import PickerView from '../picker-view';
 import { BasePickerProps } from './PropsType';
-import getState from '../utils/getState';
+import parseProps from '../picker-view/utils/parseProps';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
@@ -28,13 +28,13 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   constructor(props) {
     super(props);
-    this.state = getState(props);
+    this.state = parseProps.getSource(props);
     this.tempValue = this.state.value;
     this.tempObjValue = this.state.objValue;
   }
 
   componentWillReceiveProps(nextProps) {
-    const state = getState(nextProps);
+    const state = parseProps.getSource(nextProps);
     this.setState(state);
   }
 

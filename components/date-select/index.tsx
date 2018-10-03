@@ -111,7 +111,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, placeholder, disabled,
+    const { prefixCls, className, okText, cancelText, placeholder, disabled,
       onChange, ...others } = this.props;
     const { value, visible } = this.state;
     const inputCls = classnames({
