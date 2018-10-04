@@ -1,7 +1,6 @@
-export default interface PropsType {
-  showRight?: boolean;
-  leftText?: string;
-  rightText?: string;
-  onClickLeft: () => void;
-  onClickRight?: () => void;
+export default interface BaseNavbarProps {
+  title?: React.ReactNode;
+  left?: React.ReactNode;
+  right?: React.ReactNode;
+  style?: React.CSSProperties;
 }
