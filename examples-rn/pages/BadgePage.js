@@ -1,237 +1,166 @@
 import React, { PureComponent } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Badge, Cell } from '../../components/index.native';
+import { View, Text, ScrollView } from 'react-native';
+import { Panel, Badge, Cell } from '../../components/index.native';
+import Footer from '../components/Footer';
 
 const styles = {
   mb: {
     marginBottom: 10,
   },
 
-  title: {
-    color: 'gray',
-    paddingLeft: 25,
-    backgroundColor: '#f6f6f6',
-    display: 'flex',
-    height: 50,
-    lineHeight: 50,
-    fontSize: 16,
-  },
-
-  contentReg: {
-    flexDirection: 'row',
-    padding: 25,
-    backgroundColor: '#fff',
-    justifyContent: 'space-between',
-  },
-
-  contentRegLeft: {
-    flexDirection: 'row',
-    padding: 25,
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-  },
-
-  basicWrap: {
-    flexDirection: 'column',
-    backgroundColor: 'white',
-    borderTopWidth: 0.5,
-    borderColor: '#ddd',
-    borderBottomWidth: 0.5,
-  },
-
-  lineWrap: {
-    height: 50,
-    borderBottomWidth: StyleSheet.hairlineWidth / 2,
-    borderColor: '#ddd',
-    marginLeft: 25,
-    flexDirection: 'row',
-    paddingRight: 20,
-  },
-
-  lineContent: {
-    flex: 1,
-  },
-
-  lineFooter: {
-    flexDirection: 'row',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  wrapCenter: {
-    flexDirection: 'row',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  lineText: {
-    lineHeight: 50,
-    color: '#333',
-  },
-
-  arrowWrap: {
-    width: 15,
-    height: 50,
-    flexDirection: 'row',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  arrow: {
-    borderRightWidth: 2,
-    borderTopWidth: 2,
-    borderColor: '#c7c7cc',
-    width: 10,
-    height: 10,
-    transform: [{ rotateZ: '45deg' }],
-    flexDirection: 'row',
-  },
-
-  block: {
-    width: 35,
-    height: 35,
-    backgroundColor: '#ddd',
-  },
-
-  roundBlock: {
-    width: 44,
-    height: 44,
-    borderRadius: 1000,
-    backgroundColor: '#ddd',
-  },
-
-  br: {
-    borderRadius: 4,
-  },
-
   mr: {
     marginRight: 25,
   },
 
-  text: {
-    color: 'black',
-    backgroundColor: 'white',
+  content: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    backgroundColor: '#fff',
   },
 
-  box: {
-    marginBottom: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
+  supContent: {
+    paddingTop: 25,
+  },
+  supBox: {
+    width: '25%',
+    marginBottom: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  supItem: {
+    width: 24,
+    height: 24,
+    backgroundColor: '#ddd',
+    borderRadius: 4,
   },
 
-  cellStyle: {
-    // minHeight: 52,
+  textContent: {
+    paddingVertical: 25,
+    paddingHorizontal: 30,
+  },
+  textBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 25,
+  },
+  textItem: {
+    paddingRight: 10,
   },
 };
 
 export default class Page extends PureComponent {
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View>
-          <Text style={styles.title}>基本用法</Text>
-          <View style={styles.box}>
-            <Cell
-              title={<Text style={styles.titleTextStyle}>点状</Text>}
-              hasArrow
-            >
-              <View>
-                <Badge />
-              </View>
-            </Cell>
-            <Cell
-              title={<Text style={styles.titleTextStyle}>圆形</Text>}
-              hasArrow
-            >
-              <View>
-                <Badge shape="circle" text="3" />
-              </View>
-            </Cell>
-            <Cell
-              title={<Text style={styles.titleTextStyle}>椭圆形</Text>}
-              hasArrow
-            >
-              <View>
-                <Badge shape="round" text="999+" />
-              </View>
-            </Cell>
-            <Cell
-              title={<Text style={styles.titleTextStyle}>方圆形</Text>}
-              hasArrow
-            >
-              <View>
-                <Badge shape="radius" text="999+" />
-              </View>
-            </Cell>
-            <Cell
-              title={<Text style={styles.titleTextStyle}>直角</Text>}
-              hasArrow
-            >
-              <View>
-                <Badge shape="rect" text="免费" />
-              </View>
-            </Cell>
-            <Cell
-              title={<Text style={styles.titleTextStyle}>气泡形</Text>}
-              hasArrow
-            >
-              <View>
-                <Badge shape="leaf" text="新品" />
-              </View>
-            </Cell>
+      <ScrollView>
+        <Panel titleRender="基本用法">
+          <Cell hasArrow title={<Text>点状</Text>}>
+            <Badge />
+          </Cell>
+          <Cell hasArrow title={<Text>圆形</Text>}>
+            <Badge shape="circle" text="3" />
+          </Cell>
+          <Cell hasArrow title={<Text>直角</Text>}>
+            <Badge shape="rect" text="免费" />
+          </Cell>
+          <Cell hasArrow title={<Text>圆角</Text>}>
+            <Badge shape="radius" text="new" />
+          </Cell>
+          <Cell hasArrow title={<Text>椭圆形</Text>}>
+            <Badge shape="round" text="999+" />
+          </Cell>
+          <Cell hasArrow title={<Text>气泡形</Text>}>
+            <Badge shape="leaf" text="新品" />
+          </Cell>
+        </Panel>
+
+        <Panel titleRender="多主题">
+          <View style={[styles.content, styles.supContent]}>
+            <View style={styles.supBox}>
+              <Badge theme="primary" />
+            </View>
+            <View style={styles.supBox}>
+              <Badge theme="success" />
+            </View>
+            <View style={styles.supBox}>
+              <Badge theme="warning" />
+            </View>
+            <View style={styles.supBox}>
+              <Badge theme="error" />
+            </View>
+
+            <View style={styles.supBox}>
+              <Badge shape="round" text="999+" theme="primary" />
+            </View>
+            <View style={styles.supBox}>
+              <Badge shape="round" text="999+" theme="success" />
+            </View>
+            <View style={styles.supBox}>
+              <Badge shape="round" text="999+" theme="warning" />
+            </View>
+            <View style={styles.supBox}>
+              <Badge shape="round" text="999+" theme="error" />
+            </View>
+
           </View>
+        </Panel>
 
-          <Text style={styles.title}>上标位置</Text>
+        <Panel titleRender="上标位置">
+          <View style={[styles.content, styles.supContent]}>
+            <View style={styles.supBox}>
+              <Badge sup>
+                <View style={styles.supItem} />
+              </Badge>
+            </View>
 
-          <View style={styles.contentReg}>
-            <Badge sup>
-              <View style={[styles.block, styles.br]} />
-            </Badge>
+            <View style={styles.supBox}>
+              <Badge sup shape="circle" text="3">
+                <View style={styles.supItem} />
+              </Badge>
+            </View>
 
-            <Badge sup shape="radius" text="new">
-              <View style={[styles.block, styles.br]} />
-            </Badge>
+            <View style={styles.supBox}>
+              <Badge sup shape="rect" text="new">
+                <View style={styles.supItem} />
+              </Badge>
+            </View>
 
-            <Badge sup shape="round" text="999+">
-              <View style={[styles.block, styles.br]} />
-            </Badge>
+            <View style={styles.supBox}>
+              <Badge sup shape="radius" text="免费">
+                <View style={styles.supItem} />
+              </Badge>
+            </View>
 
-            <Badge sup shape="circle" text="3">
-              <View style={[styles.block, styles.br]} />
-            </Badge>
+            <View style={styles.supBox}>
+              <Badge sup shape="round" text="999+">
+                <View style={styles.supItem} />
+              </Badge>
+            </View>
 
-            <Badge sup shape="leaf" text="新品">
-              <View style={[styles.block, styles.br]} />
-            </Badge>
+            <View style={styles.supBox}>
+              <Badge sup shape="leaf" text="新品">
+                <View style={styles.supItem} />
+              </Badge>
+            </View>
           </View>
+        </Panel>
 
-          <Text style={styles.title}>文本示例</Text>
+        <Panel titleRender="文本示例">
+          <View style={[styles.content, styles.textContent]}>
+            <View style={styles.textBox}>
+              <Badge sup shape="dot">
+                <Text style={styles.textItem}>新品有礼</Text>
+              </Badge>
+            </View>
 
-          <View style={styles.contentRegLeft}>
-            <Badge sup shape="dot" style={styles.mr} >
-              <Text style={[styles.text, styles.br]}>新品有礼</Text>
-            </Badge>
-
-            <Text style={[styles.text, styles.br]}>新品有礼</Text>
-            <View style={styles.wrapCenter}>
+            <View style={styles.textBox}>
+              <Text style={styles.textItem}>新品有礼</Text>
               <Badge shape="dot" />
             </View>
           </View>
+        </Panel>
 
-          <Text style={styles.title}>图标示例</Text>
-          <View style={styles.contentRegLeft}>
-            <Badge sup shape="leaf" text="新品" style={styles.mr}>
-              <View style={[styles.roundBlock]} />
-            </Badge>
-
-            <Badge sup shape="leaf" text="999+" style={styles.mr}>
-              <View style={[styles.roundBlock]} />
-            </Badge>
-          </View>
-        </View>
+        <Footer />
       </ScrollView>
     );
   }
