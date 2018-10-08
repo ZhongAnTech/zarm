@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { Badge } from '../../components/index.native';
+import { Badge, Cell } from '../../components/index.native';
 
 const styles = {
   mb: {
@@ -115,86 +115,73 @@ const styles = {
     color: 'black',
     backgroundColor: 'white',
   },
+
+  box: {
+    marginBottom: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#ddd',
+  },
+
+  cellStyle: {
+    // minHeight: 52,
+  },
 };
 
 export default class Page extends PureComponent {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View >
+        <View>
           <Text style={styles.title}>基本用法</Text>
-          <View style={styles.basicWrap}>
-            <View style={styles.lineWrap}>
-              <View style={styles.lineContent}>
-                <Text style={styles.lineText}>点状</Text>
-              </View>
-              <View style={styles.lineFooter}>
+          <View style={styles.box}>
+            <Cell
+              title={<Text style={styles.titleTextStyle}>点状</Text>}
+              hasArrow
+            >
+              <View>
                 <Badge />
               </View>
-              <View style={styles.arrowWrap}>
-                <View style={styles.arrow} />
-              </View>
-            </View>
-
-            <View style={styles.lineWrap}>
-              <View style={styles.lineContent}>
-                <Text style={styles.lineText}>圆形</Text>
-              </View>
-              <View style={styles.lineFooter}>
+            </Cell>
+            <Cell
+              title={<Text style={styles.titleTextStyle}>圆形</Text>}
+              hasArrow
+            >
+              <View>
                 <Badge shape="circle" text="3" />
               </View>
-              <View style={styles.arrowWrap}>
-                <View style={styles.arrow} />
-              </View>
-            </View>
-
-            <View style={styles.lineWrap}>
-              <View style={styles.lineContent}>
-                <Text style={styles.lineText}>椭圆</Text>
-              </View>
-              <View style={styles.lineFooter}>
+            </Cell>
+            <Cell
+              title={<Text style={styles.titleTextStyle}>椭圆形</Text>}
+              hasArrow
+            >
+              <View>
                 <Badge shape="round" text="999+" />
               </View>
-              <View style={styles.arrowWrap}>
-                <View style={styles.arrow} />
-              </View>
-            </View>
-
-            <View style={styles.lineWrap}>
-              <View style={styles.lineContent}>
-                <Text style={styles.lineText}>方圆形</Text>
-              </View>
-              <View style={styles.lineFooter}>
+            </Cell>
+            <Cell
+              title={<Text style={styles.titleTextStyle}>方圆形</Text>}
+              hasArrow
+            >
+              <View>
                 <Badge shape="radius" text="999+" />
               </View>
-              <View style={styles.arrowWrap}>
-                <View style={styles.arrow} />
-              </View>
-            </View>
-
-            <View style={styles.lineWrap}>
-              <View style={styles.lineContent}>
-                <Text style={styles.lineText}>直角</Text>
-              </View>
-              <View style={styles.lineFooter}>
+            </Cell>
+            <Cell
+              title={<Text style={styles.titleTextStyle}>直角</Text>}
+              hasArrow
+            >
+              <View>
                 <Badge shape="rect" text="免费" />
               </View>
-              <View style={styles.arrowWrap}>
-                <View style={styles.arrow} />
-              </View>
-            </View>
-
-            <View style={styles.lineWrap}>
-              <View style={styles.lineContent}>
-                <Text style={styles.lineText}>气泡形</Text>
-              </View>
-              <View style={styles.lineFooter}>
+            </Cell>
+            <Cell
+              title={<Text style={styles.titleTextStyle}>气泡形</Text>}
+              hasArrow
+            >
+              <View>
                 <Badge shape="leaf" text="新品" />
               </View>
-              <View style={styles.arrowWrap}>
-                <View style={styles.arrow} />
-              </View>
-            </View>
+            </Cell>
           </View>
 
           <Text style={styles.title}>上标位置</Text>
