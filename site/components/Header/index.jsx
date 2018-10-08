@@ -30,7 +30,7 @@ class Header extends PureComponent {
           <Select
             radius
             search
-            style={{ width: 200 }}
+            style={{ width: 260 }}
             placeholder="搜索组件..."
             onChange={(data) => {
               history.replace(`/docs/${data.value}`);
@@ -38,7 +38,7 @@ class Header extends PureComponent {
           >
             {
               [...form, ...feedback, ...view, ...navigation].map((component, i) => {
-                return <Select.Option key={+i} value={Format.camel2Dash(component.name)}>{component.name} {component.description}</Select.Option>;
+                return <Select.Option key={+i} value={Format.camel2Dash(component.name)}>{`${component.name} ${component.description}`}</Select.Option>;
               })
             }
           </Select>

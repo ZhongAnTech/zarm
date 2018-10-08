@@ -6,7 +6,6 @@ import { components } from '@site/demos';
 import Format from '@site/utils/format';
 import Container from '@site/components/Container';
 import Header from '@site/components/Header';
-import Footer from '@site/components/Footer';
 import './Docs.scss';
 
 class Page extends PureComponent {
@@ -31,6 +30,10 @@ class Page extends PureComponent {
   render() {
     const { location, history, match } = this.props;
     const { form, feedback, view, navigation } = components;
+    const iframeURL = location.pathname.split('/')[2] !== 'quick-start'
+      ? `https://zhongantecheng.github.io/zarm/#/${location.pathname.split('/')[2]}`
+      : 'https://zhongantecheng.github.io/zarm';
+
     return (
       <Container className="docs-page">
         <Header />
@@ -58,14 +61,14 @@ class Page extends PureComponent {
                   return <Route key={+i} path={`${match.path}/${Format.camel2Dash(component.name)}`} component={AsyncComponent(() => import(`../${component.name}Page`))} />;
                 })
               }
+              <Route path={`${match.path}/quick-start`} component={AsyncComponent(() => import('../QuickStart'))} />
               <Redirect to="/" />
             </Switch>
           </div>
           <div className="simulator">
-            <iframe src={`https://zhongantecheng.github.io/zarm/#/${location.pathname.split('/')[2]}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+            <iframe src={iframeURL} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
         </main>
-        <Footer />
       </Container>
     );
   }

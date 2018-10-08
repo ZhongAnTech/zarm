@@ -9,9 +9,9 @@ export default class Markdown extends React.Component {
     super(props);
     this.components = new Map();
     this.renderer = new marked.Renderer();
-    // this.renderer.table = (header, body) => {
-    //   return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
-    // };
+    this.renderer.table = (header, body) => {
+      return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
+    };
   }
 
   componentDidMount() {
