@@ -23,7 +23,6 @@ export default {
 
   },
   panelBody: {
-    flexDirection: 'row',
     backgroundColor: '#ffffff',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,

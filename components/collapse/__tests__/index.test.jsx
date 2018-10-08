@@ -207,20 +207,53 @@ describe('Collapse', () => {
     expect(props.onChange).not.toBeCalled();
   });
 
-  it('renders correctly with multiple mode', () => {
-    props.multiple = true;
-    props.activeKey = [0, 1];
-    const wrapper = render(
+  it('collapse items toggle correctly with animated', (done) => {
+    props.animated = true;
+    const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐" {...props}>
+        <Collapse.Item key="0" title="50元套餐">
           <div>50元套餐内容</div>
-        </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐" {...props}>
-          <div>100元套餐内容</div>
         </Collapse.Item>
       </Collapse>
     );
-    expect(wrapper.find('.active').length).toBe(2);
+    wrapper.find('.za-collapse-item-title').simulate('click');
+    setTimeout(() => {
+      expect(wrapper.find('.active').length).toBe(1);
+      done();
+    }, 0);
+  });
+
+  it('negative item toggle correctly with animated', (done) => {
+    props.animated = true;
+    const wrapper = mount(
+      <Collapse {...props}>
+        <Collapse.Item key="0" title="50元套餐">
+          <div>50元套餐内容</div>
+        </Collapse.Item>
+      </Collapse>
+    );
+    wrapper.find('.za-collapse-item-title').simulate('click');
+    setTimeout(() => {
+      expect(wrapper.find('.active').length).toBe(1);
+      done();
+    }, 0);
+  });
+
+  it('active item toggle correctly with animated', (done) => {
+    props.animated = true;
+    props.activeKey = '0';
+    const wrapper = mount(
+      <Collapse {...props}>
+        <Collapse.Item key="0" title="50元套餐">
+          <div>50元套餐内容</div>
+        </Collapse.Item>
+      </Collapse>
+    );
+    wrapper.find('.za-collapse-item-title').simulate('click');
+    setTimeout(() => {
+      expect(wrapper.find('.active').length).toBe(0);
+      done();
+    }, 0);
   });
 
   it('collapse items toggle correctly without multiple mode', () => {
@@ -237,8 +270,8 @@ describe('Collapse', () => {
         </Collapse.Item>
       </Collapse>
     );
-    wrapper.find('.za-collapse-item-title').at(1).simulate('click');
-    expect(wrapper.find('.active').length).toBe(0);
+    wrapper.find('.za-collapse-item-title').at(0).simulate('click');
+    expect(wrapper.find('.active').length).toBe(1);
   });
 
   it('collapse items toggle correctly with multiple mode', () => {

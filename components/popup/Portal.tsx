@@ -41,6 +41,7 @@ export default class Portal extends Component<PortalProps, any> {
   componentDidMount() {
     if (this.props.visible) {
       document.body.appendChild(this.container);
+      // const _popupHeight = this.popup.offsetHeight;
       setTimeout(() => {
         this.enter();
       });
@@ -52,6 +53,7 @@ export default class Portal extends Component<PortalProps, any> {
   componentWillReceiveProps(nextProps) {
     if (nextProps.visible === true && nextProps.visible !== this.props.visible) {
       document.body.appendChild(this.container);
+      // const _popupHeight = this.popup.offsetHeight; // tslint:disable
       setTimeout(() => {
         this.enter();
       });
@@ -76,7 +78,7 @@ export default class Portal extends Component<PortalProps, any> {
       animationState: 'enter',
     });
 
-    if (stayTime as number > 0 && autoClose) {
+    if ((stayTime as number) > 0 && autoClose) {
       this.timer = setTimeout(() => {
         if (typeof onMaskClick === 'function') {
           onMaskClick();
@@ -94,7 +96,7 @@ export default class Portal extends Component<PortalProps, any> {
     });
   }
 
-  animationEnd = e => {
+  animationEnd = (e) => {
     // 防止其他的样式转换触发该事件，如border、background-image
     if (!/transform/i.test(e.propertyName)) {
       return;
@@ -114,10 +116,8 @@ export default class Portal extends Component<PortalProps, any> {
         handlePortalUnmount();
         document.body.removeChild(this.container);
       }
-    } else {
-      if (typeof onOpen === 'function') {
-        onOpen();
-      }
+    } else if (typeof onOpen === 'function') {
+      onOpen();
     }
   }
 
@@ -134,22 +134,13 @@ export default class Portal extends Component<PortalProps, any> {
       animationDuration: `${animationDuration}ms`,
     };
 
-    return (
-      mask && (
-        <Mask
-          className={maskCls}
-          style={maskStyle}
-          visible={isMaskShow}
-          type={maskType}
-          onClick={onMaskClick}
-        />
-      )
-    );
+    return mask &&
+      <Mask className={maskCls} style={maskStyle} visible={isMaskShow} type={maskType} onClick={onMaskClick} />;
   }
 
   getContainer() {
     if (!this.container) {
-      let container = document.createElement('div');
+      const container = document.createElement('div');
       container.classList.add('popup-container');
       this.container = container;
     }
@@ -170,7 +161,10 @@ export default class Portal extends Component<PortalProps, any> {
       transitionDuration: `${animationDuration}ms`,
     };
     return (
-      <div className={popupCls} ref={(popup) => { this.popup = popup; }}>
+      <div
+        className={popupCls}
+        ref={(popup) => { this.popup = popup; }}
+      >
         <div className={wrapCls} style={wrapStyle}>
           {children}
         </div>
@@ -181,15 +175,10 @@ export default class Portal extends Component<PortalProps, any> {
 
   renderPortal() {
     if (!IS_REACT_16) {
-      ReactDOM.unstable_renderSubtreeIntoContainer(
-        this,
-        this.getComponent(),
-        this.getContainer(),
-      );
+      ReactDOM.unstable_renderSubtreeIntoContainer(this, this.getComponent(), this.getContainer());
       return null;
-    } else {
-      return ReactDOM.createPortal(this.getComponent(), this.getContainer());
     }
+    return ReactDOM.createPortal(this.getComponent(), this.getContainer());
   }
 
   render() {

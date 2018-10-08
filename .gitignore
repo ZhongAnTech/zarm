@@ -6,6 +6,7 @@ lib
 node_modules
 _book
 .idea
+.vscode
 .DS_Store
 .temp
 .history

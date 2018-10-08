@@ -3,18 +3,7 @@ import classnames from 'classnames';
 import Popup from '../popup';
 import PickerView from '../picker-view';
 import { BasePickerProps } from './PropsType';
-
-const getValue = (props, defaultValue?: any) => {
-  if ('value' in props && props.value && props.value.length > 0) {
-    return [].concat(props.value);
-  }
-
-  if ('defaultValue' in props && props.defaultValue && props.defaultValue.length > 0) {
-    return [].concat(props.defaultValue);
-  }
-
-  return defaultValue;
-};
+import parseProps from '../picker-view/utils/parseProps';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
@@ -22,8 +11,6 @@ export interface PickerProps extends BasePickerProps {
 }
 
 export default class Picker extends PureComponent<PickerProps, any> {
-  static Stack: any;
-
   static defaultProps = {
     title: '请选择',
     cancelText: '取消',
@@ -31,6 +18,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     dataSource: [],
     prefixCls: 'za-picker',
     valueMember: 'value',
+    cols: Infinity,
     itemRender: data => data.label,
   };
 
@@ -40,33 +28,14 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   constructor(props) {
     super(props);
-    this.state = {
-      visible: props.visible || false,
-      value: getValue(props, []),
-      objValue: [],
-    };
-
+    this.state = parseProps.getSource(props);
     this.tempValue = this.state.value;
     this.tempObjValue = this.state.objValue;
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      visible: nextProps.visible,
-      value: getValue(nextProps, []),
-    });
-  }
-
-  onInit = (selected) => {
-    const { valueMember, onInit } = this.props;
-    this.setState({
-      firstValue: selected.map(item => item[valueMember!]),
-      firstObjValue: selected,
-    });
-
-    if (typeof onInit === 'function') {
-      onInit(selected);
-    }
+    const state = parseProps.getSource(nextProps);
+    this.setState(state);
   }
 
   onChange = (selected) => {
@@ -98,8 +67,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (this.isScrolling) {
       return false;
     }
-    const value = this.state.value.length === 0 ? this.state.firstValue : this.state.value;
-    const objValue = this.state.objValue.length === 0 ? this.state.firstObjValue : this.state.objValue;
+    const { value, objValue } = this.state;
     this.setState({
       value,
       objValue,
@@ -135,12 +103,9 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   render() {
     const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
-    const { visible, value, firstObjValue } = this.state;
+    const { visible, value } = this.state;
 
     const cls = classnames(prefixCls, className);
-    // const content = children && cloneElement(children, {
-    //   onClick: () => this.toggle(true),
-    // });
 
     return (
       <div className={cls}>
@@ -159,8 +124,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
               prefixCls={prefixCls}
               visible={visible}
               value={value}
-              firstObjValue={firstObjValue}
-              onInit={this.onInit}
               onChange={this.onChange}
               onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
             />

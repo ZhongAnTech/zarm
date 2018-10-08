@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 export default interface PropsType {
-  direction?: 'left' | 'right' | 'top' | 'bottom';
+  direction?: 'left' | 'right' | 'up' | 'down';
   height?: string | number;
   loop?: boolean;
   activeIndex?: number;
@@ -14,4 +14,5 @@ export default interface PropsType {
   onChange?: (activeIndex: number) => void;
   onChangeEnd?: (activeIndex: number) => void;
   children: ReactNode[];
+  style?: CSSProperties;
 }

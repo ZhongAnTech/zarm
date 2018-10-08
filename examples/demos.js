@@ -40,6 +40,10 @@ module.exports = {
       title: 'FilePicker',
       description: '文件选择器 FilePicker',
     },
+    {
+      title: 'Keyboard',
+      description: '虚拟键盘 Keyboard & KeyboardPicker',
+    },
   ],
   feedback: [
     {
@@ -117,6 +121,10 @@ module.exports = {
     {
       title: 'Tabs',
       description: '标签页 Tabs',
+    },
+    {
+      title: 'NavBar',
+      description: '导航栏 NavBar',
     },
   ],
 };

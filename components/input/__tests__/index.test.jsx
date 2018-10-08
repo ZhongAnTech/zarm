@@ -4,6 +4,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Input from '../index';
 import InputBase from '../InputBase';
+import InputTextarea from '../InputTextarea';
 
 
 describe('Input', () => {
@@ -12,9 +13,37 @@ describe('Input', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('showLength', () => {
-    const wrapper = render(<Input showLength maxLength={100} type="textarea" rows={4} />);
+  it('renders correctly if type=text and props includes rows', () => {
+    const wrapper = render(<Input type="text" rows={1} />);
     expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders correctly if type isn\'t valid', () => {
+    const wrapper = render(<Input type="xxx" />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('showLength', () => {
+    const wrapper = render(<Input showLength maxLength={100} type="text" rows={4} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('focus manual called correctly', () => {
+    const onFocus = jest.fn();
+    const id = String(Math.random());
+    const wrapper = mount(<Input id={id} type="text" onFocus={onFocus} />);
+    const instance = wrapper.instance();
+    instance.focus();
+    expect(document.activeElement.getAttribute('id')).toBe(id);
+  });
+
+  it('blur manual called correctly', () => {
+    const onBlur = jest.fn();
+    const wrapper = mount(<Input type="number" onBlur={onBlur} />);
+    const instance = wrapper.instance();
+    instance.focus();
+    instance.blur();
+    expect(onBlur).toBeCalled();
   });
 
   it('renders onFocus called correctly', () => {
@@ -38,10 +67,12 @@ describe('Input', () => {
 
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
+    const onChange = jest.fn();
     const wrapper = mount(
       <Input
         value=""
         onClear={onClear}
+        onChange={onChange}
         clearable
       />
     );
@@ -72,9 +103,51 @@ describe('Input', () => {
   // });
 });
 
+describe('Input.Base', () => {
+  it('auto focus', () => {
+    const id = String(Math.random());
+    mount(<InputBase id={id} autoFocus />);
+    expect(document.activeElement.getAttribute('id')).toBe(id);
+  });
+
+  it('value update', () => {
+    const wrapper = mount(<InputBase value={1} />);
+    wrapper.setProps({ value: 2 });
+    expect(wrapper.state('value')).toBe(2);
+  });
+
+  it('composition', () => {
+    const onCompositionStart = jest.fn();
+    const onCompositionUpdate = jest.fn();
+    const onCompositionEnd = jest.fn();
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <InputBase
+        onCompositionStart={onCompositionStart}
+        onCompositionUpdate={onCompositionUpdate}
+        onCompositionEnd={onCompositionEnd}
+        onChange={onChange}
+      />
+    );
+    const input = wrapper.find('input');
+    input.simulate('compositionstart');
+    expect(onCompositionStart).toBeCalled();
+    expect(wrapper.state('isOnComposition')).toBe(true);
+    expect(onChange).not.toBeCalled();
+    input.simulate('compositionupdate');
+    expect(onCompositionUpdate).toBeCalled();
+    expect(onChange).not.toBeCalled();
+    expect(wrapper.state('isOnComposition')).toBe(true);
+    input.simulate('compositionend');
+    expect(onCompositionEnd).toBeCalled();
+    expect(onChange).toBeCalled();
+    expect(wrapper.state('isOnComposition')).toBe(false);
+  });
+});
+
 describe('Input.Textarea', () => {
   it('renders correctly', () => {
-    const wrapper = render(<Input type="textarea" rows={4} />);
+    const wrapper = render(<Input type="text" rows={4} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -82,7 +155,7 @@ describe('Input.Textarea', () => {
     jest.useFakeTimers();
     const props = {
       autoHeight: true,
-      type: 'textarea',
+      type: 'text',
       rows: 4,
       value: 'foo',
       onChange: jest.fn(),
@@ -98,7 +171,7 @@ describe('Input.Textarea', () => {
   it('renders onFocus called correctly', () => {
     const onFocus = jest.fn();
     const wrapper = mount(
-      <Input type="textarea" onFocus={onFocus} />
+      <Input type="text" rows={2} onFocus={onFocus} />
     );
     wrapper.find('textarea').simulate('focus');
     expect(onFocus).toBeCalled();
@@ -108,11 +181,39 @@ describe('Input.Textarea', () => {
 
   it('renders onBlur called correctly', () => {
     const onBlur = jest.fn();
-    const wrapper = mount(<Input type="textarea" onBlur={onBlur} />);
+    const wrapper = mount(<Input type="text" rows={2} onBlur={onBlur} />);
     // const spy = jest.spyOn(wrapper.instance(), 'onBlur');
     wrapper.find('textarea').simulate('focus');
     wrapper.find('textarea').simulate('blur');
     expect(onBlur).toHaveBeenCalled();
+  });
+
+  it('composition', () => {
+    const onCompositionStart = jest.fn();
+    const onCompositionUpdate = jest.fn();
+    const onCompositionEnd = jest.fn();
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <InputTextarea
+        onCompositionStart={onCompositionStart}
+        onCompositionUpdate={onCompositionUpdate}
+        onCompositionEnd={onCompositionEnd}
+        onChange={onChange}
+      />
+    );
+    const textarea = wrapper.find('textarea');
+    textarea.simulate('compositionstart');
+    expect(onCompositionStart).toBeCalled();
+    expect(wrapper.state('isOnComposition')).toBe(true);
+    expect(onChange).not.toBeCalled();
+    textarea.simulate('compositionupdate');
+    expect(onCompositionUpdate).toBeCalled();
+    expect(onChange).not.toBeCalled();
+    expect(wrapper.state('isOnComposition')).toBe(true);
+    textarea.simulate('compositionend');
+    expect(onCompositionEnd).toBeCalled();
+    expect(onChange).toBeCalled();
+    expect(wrapper.state('isOnComposition')).toBe(false);
   });
 });
 
@@ -135,10 +236,13 @@ describe('Input.Number', () => {
 
   it('renders onClear called correctly', () => {
     const onClear = jest.fn();
+    const onChange = jest.fn();
     const wrapper = mount(
       <Input
         type="number"
+        value=""
         onClear={onClear}
+        onChange={onChange}
       />
     );
 
