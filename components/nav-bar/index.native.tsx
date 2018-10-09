@@ -35,20 +35,22 @@ const PADDING_TOP = Platform.OS === 'ios' ? 20 : 0;
 export default class NavBar extends PureComponent<NavBarProps, any> {
   static defaultProps = {
     styles: navBarStyles,
-    leftText: '返回',
+    /* leftText: '返回',
     rightText: '确定',
-    showRight: true,
+    showRight: true, */
   };
 
   render() {
     const {
       styles,
       style,
-      leftText,
+      left,
+      right,
+      /* leftText,
       rightText,
       onClickLeft,
       onClickRight,
-      showRight,
+      showRight, */
     } = this.props;
 
     const navBarWrapperStyle = [
@@ -60,17 +62,19 @@ export default class NavBar extends PureComponent<NavBarProps, any> {
     ] as ViewStyle;
 
     const leftBtn = (
-      <TouchableOpacity onPress={onClickLeft}>
+      <TouchableOpacity /* onPress={onClickLeft} */>
         <Text style={[styles!.btn]}>
-          {leftText}
+          {/* {leftText} */}
+          {left}
         </Text>
       </TouchableOpacity>
     );
 
-    const rightBtn = showRight
-      ? <TouchableOpacity onPress={onClickRight}>
+    const rightBtn = /* showRight */ right
+      ? <TouchableOpacity /* onPress={onClickRight} */>
           <Text style={[styles!.btn, styles!.rightBtn]}>
-            {rightText}
+            {/* {rightText} */}
+            {right}
           </Text>
         </TouchableOpacity>
       : <Text style={styles!.btn} />;
