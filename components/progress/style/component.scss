@@ -12,7 +12,7 @@ $themeMap: (
     &.theme-#{$key} {
       #{$attr}: $value;
     }
-  } 
+  }
 }
 
 .#{$prefixCls} {
@@ -29,6 +29,7 @@ $themeMap: (
   &.type-line {
     width: 100%;
     height: r(20);
+
     .#{$prefixCls} {
       &-track {
         width: 100%;
@@ -36,6 +37,7 @@ $themeMap: (
         background: $progress-background;
         overflow: hidden;
       }
+
       &-thumb {
         height: 100%;
         transition: width .6s ease, background-color .6s ease;
@@ -74,6 +76,7 @@ $themeMap: (
     display: inline-block;
     width: r(150);
     height: r(150 / 2);
+
     .#{$prefixCls} {
       svg {
         width: 100%;
@@ -100,7 +103,7 @@ $themeMap: (
       stroke: $progress-background;
       fill-opacity: 0;
     }
-  
+
     .#{$prefixCls}-thumb {
       fill-opacity: 0;
       transition: stroke-dashoffset .6s ease, stroke .6s ease;
