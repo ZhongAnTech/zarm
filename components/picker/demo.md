@@ -1,6 +1,8 @@
 ## 选择器 Picker & Select
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell, Button, Picker, Toast } from 'zarm';
 
@@ -217,10 +219,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 表单选择 Select
+
+### 表单选择 Select
 ```jsx
 import { Select, Cell } from 'zarm';
 
@@ -289,10 +291,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 平铺选择 PickerView
+
+### 平铺选择 PickerView
 ```jsx
 import { PickerView } from 'zarm';
 
@@ -368,10 +370,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -402,5 +404,3 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | | 输入提示信息 |
 | displayRender | <code>(selected?: object) => string</code> | noop | \(selected: object\) | 所选值的展示 |
-
-:::

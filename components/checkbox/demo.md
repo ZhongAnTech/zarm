@@ -1,6 +1,8 @@
 ## 复选框 Checkbox
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell, Checkbox } from 'zarm';
 
@@ -23,10 +25,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 按钮样式
+
+### 按钮样式
 ```jsx
 import { Cell, Checkbox } from 'zarm';
 
@@ -100,10 +102,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 块级样式
+
+### 块级样式
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -123,10 +125,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 列表样式
+
+### 列表样式
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -146,10 +148,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 列表样式禁用状态
+
+### 列表样式禁用状态
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -169,10 +171,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 #### Checkbox
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
@@ -202,5 +204,3 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | false | | 是否禁用 |
 | onChange | <code>(value: Array&lt;number &#124; string&gt;) => void</code> | noop | \(value: Array&lt;number &#124; string&gt;\) | 值变化时触发的回调函数 |
 | compact | boolean | false | | group内的checkbox（type="button"）是否无缝相连 |
-
-:::

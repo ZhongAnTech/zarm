@@ -1,6 +1,8 @@
 ## 上拉加载下拉刷新 Pull
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Pull, Cell } from 'zarm';
 
@@ -160,10 +162,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -182,5 +184,3 @@ ReactDOM.render(<Demo />, mountNode);
 | distance | number | 50 | | 触发距离阀值 |
 | render | <code>(refreshState: REFRESH_STATE &#124; LOAD_STATE, percent: number) => any</code> | | | 各状态渲染的回调函数 |
 | handler | <code>() => void</code> | | | 达到阀值后释放触发的回调函数 |
-
-:::

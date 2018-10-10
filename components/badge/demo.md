@@ -1,6 +1,7 @@
 ## 徽标 Badge
 
-:::demo 基本用法
+### 基本用法
+
 ```jsx
 import { Badge, Cell } from 'zarm';
 
@@ -21,10 +22,11 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 上标位置
+
+### 上标位置
+
 ```jsx
 import { Badge } from 'zarm';
 
@@ -57,9 +59,11 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
-:::demo
+
+
+### 文本示例
+
 ```jsx
 import { Badge } from 'zarm';
 
@@ -80,10 +84,9 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -94,4 +97,3 @@ ReactDOM.render(<Demo />, mountNode);
 | shape | string | | `dot`, `rect` , `radius`, `round`, `circle` ,`leaf` | 形状 |
 | sup | bool | false | | 是否上标位置 |
 
-:::

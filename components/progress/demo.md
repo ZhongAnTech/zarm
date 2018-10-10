@@ -1,6 +1,8 @@
 ## 进度条 Progress
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Progress, Cell, Select, Stepper } from 'zarm';
 
@@ -78,10 +80,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -90,5 +92,3 @@ ReactDOM.render(<Demo />, mountNode);
 | theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
 | percent | number | 0 | | 进度百分比（范围：0～100） |
 | shape | string | `line` | `line`, `circle` | 类型 |
-
-:::

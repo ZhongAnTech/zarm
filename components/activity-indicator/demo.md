@@ -1,6 +1,7 @@
 ## 活动指示器 ActivityIndicator
 
-:::demo 基本用法
+### 基本用法
+
 ```jsx
 import { Cell, ActivityIndicator } from 'zarm';
 
@@ -18,10 +19,9 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -30,5 +30,3 @@ ReactDOM.render(<Demo />, mountNode);
 | strokeWidth | number | | | 指示器边框的宽度 |  
 | percent | number | | | 初始百分比 |
 | size | string | | 'lg' | 大小 |
-
-:::

@@ -1,6 +1,8 @@
 ## 走马灯 Carousel
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -38,10 +40,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 纵向
+
+### 纵向
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -78,10 +80,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 循环轮播
+
+### 循环轮播
 ```jsx
 import { Carousel, Button } from 'zarm';
 
@@ -143,10 +145,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 自动循环轮播
+
+### 自动循环轮播
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -187,10 +189,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -208,5 +210,3 @@ ReactDOM.render(<Demo />, mountNode);
 | showPagination | boolean | true | | 是否显示分页器 |
 | onChange | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化时触发的回调函数 |
 | onChangeEnd | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化动画结束后触发的回调函数 |
-
-:::

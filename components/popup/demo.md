@@ -1,6 +1,8 @@
 ## 弹出框 Popup
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Popup, Cell, Button } from 'zarm';
 
@@ -116,10 +118,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -133,5 +135,3 @@ ReactDOM.render(<Demo />, mountNode);
 | maskType | string | `normal` | `transparent`, `light`, `normal`, `dark` | 遮罩层的类型 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 | onClose | <code>() => void</code> | noop | | 关闭后触发的回调函数 |
-
-:::

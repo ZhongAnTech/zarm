@@ -1,6 +1,8 @@
 ## 滑动操作 SwipeAction
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { SwipeAction, Button, Cell } from 'zarm';
 
@@ -47,10 +49,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -66,5 +68,3 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | | | 是否允许滑动 |
 | onOpen | <code>() => void</code> | noop | | 滑开时触发的回调函数 |
 | onClose | <code>() => void</code> | noop | | 关闭时触发的回调函数 |
-
-:::
