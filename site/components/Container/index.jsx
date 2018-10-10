@@ -23,7 +23,7 @@ class Container extends Component {
     const cls = classnames('app-container', className);
 
     return (
-      <div ref={(ele) => { this.container = ele; }} className={cls}>
+      <div className={cls}>
         {children}
       </div>
     );
