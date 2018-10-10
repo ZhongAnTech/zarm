@@ -23,7 +23,6 @@ config.devServer = {
   noInfo: true,
   inline: true,
   hot: true,
-  open: true,
 };
 
 module.exports = config;
