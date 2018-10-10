@@ -22,11 +22,11 @@ exports[`Progress renders has children correctly 1`] = `
 >
   <div
     class="za-progress-track"
-    style="height:8px;border-radius:8px"
+    style="height:4px;border-radius:4px"
   >
     <div
       class="za-progress-thumb theme-default"
-      style="width:10%;border-radius:8px"
+      style="width:10%;border-radius:4px"
     />
   </div>
   <div
@@ -37,19 +37,119 @@ exports[`Progress renders has children correctly 1`] = `
 </div>
 `;
 
-exports[`Progress renders shape is circle correctly 1`] = `
-<div
-  class="za-progress type-line"
+exports[`Progress renders percent correctly 1`] = `
+<Progress
+  percent={50}
+  prefixCls="za-progress"
+  shape="round"
+  theme="default"
+  type="circle"
+  weight="normal"
 >
   <div
-    class="za-progress-track"
-    style="height:8px;border-radius:0"
+    className="za-progress type-circle"
   >
+    <svg
+      viewBox="0 0 Infinity Infinity"
+    >
+      <path
+        className="za-progress-track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+      <path
+        className="za-progress-thumb theme-default"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={50.26548245743669}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
+      />
+    </svg>
     <div
-      class="za-progress-thumb theme-default"
-      style="width:10%;border-radius:0"
-    />
+      className="za-progress-text"
+    >
+      foo
+    </div>
   </div>
+</Progress>
+`;
+
+exports[`Progress renders shape is circle correctly 1`] = `
+<div
+  class="za-progress type-circle"
+>
+  <svg
+    viewBox="0 0 40 40"
+  >
+    <path
+      class="za-progress-track"
+      d="
+        M20, 20
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+      stroke-linecap="butt"
+      stroke-width="8"
+    />
+    <path
+      class="za-progress-thumb theme-default"
+      d="
+        M20, 20
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+      stroke-dasharray="100.53096491487338"
+      stroke-dashoffset="90.47786842338604"
+      stroke-linecap="butt"
+      stroke-width="8"
+    />
+  </svg>
+  <div
+    class="za-progress-text"
+  >
+    foo
+  </div>
+</div>
+`;
+
+exports[`Progress renders shape is semi-circle correctly 1`] = `
+<div
+  class="za-progress type-semi-circle"
+>
+  <svg
+    viewBox="0 0 40 20"
+  >
+    <path
+      class="za-progress-track"
+      d="
+        M20, 20
+        m-16 0
+        a16 16 0 0 1 32 0"
+      stroke-linecap="round"
+      stroke-width="8"
+    />
+    <path
+      class="za-progress-thumb theme-default"
+      d="
+        M20, 20
+        m-16 0
+        a16 16 0 0 1 32 0"
+      stroke-dasharray="50.26548245743669"
+      stroke-dashoffset="45.23893421169302"
+      stroke-linecap="round"
+      stroke-width="8"
+    />
+  </svg>
   <div
     class="za-progress-text"
   >
