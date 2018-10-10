@@ -6,6 +6,7 @@ import { components } from '@site/demos';
 import Format from '@site/utils/format';
 import Container from '@site/components/Container';
 import Header from '@site/components/Header';
+import ScrollToTop from '@site/components/ScrollToTop';
 import './Docs.scss';
 
 class Page extends PureComponent {
@@ -68,6 +69,7 @@ class Page extends PureComponent {
           <div className="simulator">
             <iframe src={iframeURL} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
+          <ScrollToTop />
         </main>
       </Container>
     );

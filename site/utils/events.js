@@ -1,27 +1,26 @@
-module.exports = {
-
-  on: (el, type, callback) => {
+export default {
+  on(el, type, callback) {
     if (el.addEventListener) {
-      el.addEventListener(type, callback);
+      el.addEventListener(type, callback, { passive: false });
     } else {
-      el.attachEvent(`on${type}`, () => {
+      el.attachEvent(`on ${type}`, () => {
         callback.call(el);
       });
     }
   },
 
-  off: (el, type, callback) => {
+  off(el, type, callback) {
     if (el.removeEventListener) {
-      el.removeEventListener(type, callback);
+      el.removeEventListener(type, callback, { passive: false });
     } else {
-      el.detachEvent(`off${type}`, callback);
+      el.detachEvent(`off ${type}`, callback);
     }
   },
 
-  once: (el, type, callback) => {
+  once(el, type, callback) {
     const typeArray = type.split(' ');
     const recursiveFunction = (e) => {
-      e.target.removeEventListener(e.type, recursiveFunction);
+      e.target.removeEventListener(e.type, recursiveFunction, { passive: false });
       return callback(e);
     };
 
@@ -29,5 +28,4 @@ module.exports = {
       this.on(el, typeArray[i], recursiveFunction);
     }
   },
-
 };
