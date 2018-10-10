@@ -32,7 +32,6 @@ const styles = {
     width: 24,
     height: 24,
     backgroundColor: '#ddd',
-    borderRadius: 4,
   },
 
   textContent: {
@@ -57,19 +56,19 @@ export default class Page extends PureComponent {
           <Cell hasArrow title={<Text>点状</Text>}>
             <Badge />
           </Cell>
-          <Cell hasArrow title={<Text>圆形</Text>}>
-            <Badge shape="circle" text="3" />
-          </Cell>
           <Cell hasArrow title={<Text>直角</Text>}>
             <Badge shape="rect" text="免费" />
           </Cell>
           <Cell hasArrow title={<Text>圆角</Text>}>
             <Badge shape="radius" text="new" />
           </Cell>
-          <Cell hasArrow title={<Text>椭圆形</Text>}>
+          <Cell hasArrow title={<Text>椭圆角</Text>}>
             <Badge shape="round" text="999+" />
           </Cell>
-          <Cell hasArrow title={<Text>气泡形</Text>}>
+          <Cell hasArrow title={<Text>圆形</Text>}>
+            <Badge shape="circle" text="3" />
+          </Cell>
+          <Cell hasArrow title={<Text>叶形</Text>}>
             <Badge shape="leaf" text="新品" />
           </Cell>
         </Panel>
@@ -114,25 +113,25 @@ export default class Page extends PureComponent {
             </View>
 
             <View style={styles.supBox}>
-              <Badge sup shape="circle" text="3">
+              <Badge sup shape="rect" text="免费">
                 <View style={styles.supItem} />
               </Badge>
             </View>
 
             <View style={styles.supBox}>
-              <Badge sup shape="rect" text="new">
-                <View style={styles.supItem} />
-              </Badge>
-            </View>
-
-            <View style={styles.supBox}>
-              <Badge sup shape="radius" text="免费">
+              <Badge sup shape="radius" text="new">
                 <View style={styles.supItem} />
               </Badge>
             </View>
 
             <View style={styles.supBox}>
               <Badge sup shape="round" text="999+">
+                <View style={styles.supItem} />
+              </Badge>
+            </View>
+
+            <View style={styles.supBox}>
+              <Badge sup shape="circle" text="3">
                 <View style={styles.supItem} />
               </Badge>
             </View>
