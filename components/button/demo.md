@@ -1,6 +1,8 @@
 ## 按钮 Button
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Button } from 'zarm';
 
@@ -17,10 +19,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 块级按钮
+
+### 块级按钮
 ```jsx
 import { Button } from 'zarm';
 
@@ -39,10 +41,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 幽灵按钮
+
+### 幽灵按钮
 ```jsx
 import { Button } from 'zarm';
 
@@ -59,10 +61,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 按钮主题
+
+### 按钮主题
 ```jsx
 import { Button } from 'zarm';
 
@@ -82,10 +84,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 按钮尺寸
+
+### 按钮尺寸
 ```jsx
 import { Button } from 'zarm';
 
@@ -104,10 +106,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 按钮形状
+
+### 按钮形状
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -127,10 +129,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 图标按钮
+
+### 图标按钮
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -148,11 +150,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
 
-:::api API
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -165,5 +166,3 @@ ReactDOM.render(<Demo />, mountNode);
 | loading | boolean | false | | 是否加载中状态 |
 | icon | ReactNode | | | 图标 |
 | onClick | MouseEventHandler<HTMLAnchorElement> | | | 点击后触发的回调函数 |
-
-:::

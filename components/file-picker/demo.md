@@ -1,6 +1,8 @@
 ## 文件选择器 FilePicker
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell, FilePicker, Icon } from 'zarm';
 
@@ -41,10 +43,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 多选模式
+
+### 多选模式
 ```jsx
 import { Cell, FilePicker, Icon, Toast, Badge } from 'zarm';
 
@@ -128,10 +130,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 禁用状态
+
+### 禁用状态
 ```jsx
 import { FilePicker, Icon } from 'zarm';
 
@@ -149,10 +151,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -164,5 +166,3 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | false | | 是否禁用 |
 | onBeforeSelect | <code>() => boolean</code> | () => { return true; } | | 选择前触发的事件 |
 | onChange | <code>(file: Object &#124; Array&lt;Object&gt;) => void</code> | noop | \(file: Object &#124; Array&lt;Object&gt;\) | 值变化时触发的回调函数 |
-
-:::

@@ -1,6 +1,8 @@
 ## 步进器 Stepper
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell, Stepper } from 'zarm';
 
@@ -61,10 +63,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 多形状
+
+### 多形状
 ```jsx
 import { Cell, Stepper } from 'zarm';
 
@@ -92,10 +94,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -111,5 +113,3 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | false | | 是否禁用 |
 | onInputChange | <code>(value: number) => void</code> | noop | \(value: number\) | 输入值变化时触发的回调函数 |
 | onChange | <code>(value: number) => void</code> | noop | \(value: number\) | 值变化时触发的回调函数 |
-
-:::
