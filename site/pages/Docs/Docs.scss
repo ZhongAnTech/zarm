@@ -7,12 +7,12 @@
 
     .side-bar {
       position: fixed;
-      top: 105px;
+      top: 65px;
       bottom: 0;
       width: 280px;
       border-right: 1px solid #ebedf0;
       margin-right: -1px;
-      padding-bottom: 50px;
+      padding: 30px 0 50px 0;
       overflow-y: scroll;
       z-index: 1;
 
@@ -43,7 +43,7 @@
 
       h2 {
         font-size: 28px;
-        font-weight: 300;
+        font-weight: normal;
         color: #1f2d3d;
         margin: 0;
       }
@@ -53,6 +53,10 @@
         font-weight: normal;
         color: #1f2d3d;
         margin-top: 50px;
+      }
+
+      p {
+        color: #666;
       }
 
       blockquote {
@@ -105,53 +109,6 @@
       
       iframe {
         border: 1px solid #eaeefb;
-      }
-    }
-  }
-}
-
-.demo {
-  border: solid 1px #eaeefb;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 20px;
-
-  &-code {
-    position: relative;
-    overflow: hidden;
-    background-color: #f9fafc;
-  }
-
-  &-control {
-    border-top: solid 1px #eaeefb;
-    height: 36px;
-    box-sizing: border-box;
-    background-color: #fff;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    text-align: center;
-    margin-top: -1px;
-    color: #d3dce6;
-    cursor: pointer;
-    transition: .2s;
-    position: relative;
-
-    span {
-      display: inline-block;
-      transform: translateX(-40px);
-      font-size: 14px;
-      line-height: 36px;
-      transition: .3s;
-      opacity: 0;
-    }
-
-    &:hover {
-      color: #24292e;
-      background-color: #f9fafc;
-
-      span {
-        opacity: 1;
-        transform: translateX(0);
       }
     }
   }
