@@ -56,7 +56,7 @@ class Header extends PureComponent {
           >
             <Button theme="info">扫码体验</Button>
           </Dropdown>
-          <Button>English</Button>
+          {/* <Button>English</Button> */}
         </div>
         <nav>
           <Menu mode="horizontal" defaultSelectedKeys={['components']}>

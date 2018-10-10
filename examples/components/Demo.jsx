@@ -28,11 +28,6 @@ export default class Demo extends React.Component {
       const args = ['context', 'React', 'ReactDOM', 'zarm'];
       const argv = [this, React, ReactDOM, Element];
 
-      // Object.keys(Element).forEach((key) => {
-      //   args.push(key);
-      //   argv.push(Element[key]);
-      // });
-
       return {
         args,
         argv,

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from 'babel-standalone';
-import Editor from '@site/components/Editor';
 import '../../../components/style/entry';
 
 export default class Demo extends Component {
@@ -85,11 +84,8 @@ export default class Demo extends Component {
           } */}
           <div className="demo-code">
             {/* <div className="source" id={this.containerId} ref={(elem) => { this.containerElem = elem; }} /> */}
-            <div className="demo-code-editor" ref={(ele) => { this.code = ele; }} dangerouslySetInnerHTML={{ __html: this.description }} />
-            <Editor
-              value={this.source[2]}
-              onChange={code => this.renderSource(code)}
-            />
+            {/* <div className="demo-code-editor" ref={(ele) => { this.code = ele; }} dangerouslySetInnerHTML={{ __html: this.description }} /> */}
+            {this.source[2]}
           </div>
           {/* <div className="demo-control" onClick={this.toggleShowCode}>
             <span>{this.state.isOpen ? '隐藏' : '展开'}</span>

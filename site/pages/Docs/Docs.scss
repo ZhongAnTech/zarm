@@ -26,13 +26,20 @@
     }
   
     .main-container {
-      padding: 0 660px 140px 340px;
-      background: #fff;
+      position: relative;
       min-height: 500px;
+      margin-left: -1px;
+      padding: 0 560px 140px 340px;
+      background: #fff;
       overflow: hidden;
       border-left: 1px solid #ebedf0;
-      position: relative;
-      margin-left: -1px;
+
+      pre {
+        padding: 15px;
+        border: 1px solid #eaeefb;
+        border-radius: 4px;
+        background: #f9fafc;
+      }
 
       h2 {
         font-size: 28px;
@@ -46,6 +53,14 @@
         font-weight: normal;
         color: #1f2d3d;
         margin-top: 50px;
+      }
+
+      blockquote {
+        margin: 0;
+        padding: 0 20px;
+        color: #6a737d;
+        font-size: 16px;
+        border-left: 4px solid #dfe2e5;
       }
 
       table.grid {
@@ -85,9 +100,8 @@
     .simulator {
       position: fixed;
       top: 105px;
-      bottom: 0;
       right: 0;
-      width: 600px;
+      width: 500px;
       
       iframe {
         border: 1px solid #eaeefb;
