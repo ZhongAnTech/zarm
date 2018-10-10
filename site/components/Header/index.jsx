@@ -4,7 +4,7 @@ import { Menu, Button, Select, Dropdown } from 'dragon-ui';
 import QRious from 'qrious';
 import { components } from '@site/demos';
 import Format from '@site/utils/format';
-import './Header.scss';
+import './style.scss';
 
 class Header extends PureComponent {
   state = {
