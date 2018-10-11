@@ -16,7 +16,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -57,7 +57,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -97,7 +97,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -162,7 +162,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });

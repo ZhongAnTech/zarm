@@ -8,11 +8,16 @@ export default class Drag extends PureComponent<DragProps, {}> {
 
   onTouchStart = (event) => {
     const dragState = this.dragState;
-    const touch = event.touches[0];
-
-    dragState.startX = touch.pageX;
-    dragState.startY = touch.pageY;
     dragState.startTime = new Date();
+
+    if (!event.touches) {
+      dragState.startX = event.clientX;
+      dragState.startY = event.clientY;
+    } else {
+      const touch = event.touches[0];
+      dragState.startX = touch.pageX;
+      dragState.startY = touch.pageY;
+    }
 
     const { onDragStart } = this.props;
     if (typeof onDragStart === 'function') {
@@ -22,10 +27,17 @@ export default class Drag extends PureComponent<DragProps, {}> {
 
   onTouchMove = (event) => {
     const dragState = this.dragState;
-    const touch = event.touches[0];
+    let currentX: number;
+    let currentY: number;
 
-    const currentX = touch.pageX;
-    const currentY = touch.pageY;
+    if (!event.touches) {
+      currentX = event.clientX;
+      currentY = event.clientY;
+    } else {
+      const touch = event.touches[0];
+      currentX = touch.pageX;
+      currentY = touch.pageY;
+    }
 
     const offsetX = currentX - dragState.startX;
     const offsetY = currentY - dragState.startY;
@@ -61,6 +73,9 @@ export default class Drag extends PureComponent<DragProps, {}> {
       onTouchStart: this.onTouchStart,
       onTouchMove: this.onTouchMove,
       onTouchEnd: this.onTouchEnd,
+      onMouseDown: this.onTouchStart,
+      onMouseMove: this.onTouchMove,
+      onMouseUp: this.onTouchEnd,
     });
   }
 }
