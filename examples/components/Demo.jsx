@@ -58,7 +58,7 @@ export default class Demo extends React.Component {
     return (this.props.location.pathname === '/panel')
       ? <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
       : (
-        <Panel titleRender={<span>{this.title}</span>}>
+        <Panel title={<span>{this.title}</span>}>
           <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
         </Panel>
       );

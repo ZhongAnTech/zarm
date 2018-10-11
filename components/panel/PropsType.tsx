@@ -1,6 +1,6 @@
 import { ReactNode } from 'React';
 
 export interface BasePanelProps {
-  titleRender?: ReactNode;
-  moreRender?: ReactNode;
+  title?: ReactNode;
+  more?: ReactNode;
 }
