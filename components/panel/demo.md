@@ -28,7 +28,6 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-#### Panel
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | title | React.ReactNode | | | 标题渲染 |
