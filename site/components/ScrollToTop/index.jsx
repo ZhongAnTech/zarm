@@ -81,7 +81,7 @@ ScrollToTop.propTypes = {
 
 ScrollToTop.defaultProps = {
   // 每10毫秒滑动的距离
-  speed: 60,
+  speed: 120,
   // 距离滚动条顶部300像素才出现按钮
   visibleDistance: 300,
 };
