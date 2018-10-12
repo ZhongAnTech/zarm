@@ -4,7 +4,7 @@ header {
   min-width: 1200px;
   width: 100%;
   height: 65px;
-  // line-height: 65px;
+  line-height: 65px;
   background-color: #fff;
   box-shadow: 0 2px 8px #f0f1f2;
   z-index: 1000;
@@ -18,7 +18,6 @@ header {
   a {
     display: block;
     margin-right: 80px;
-    padding-top: 16px;
     color: #333;
     text-decoration: none;
     text-align: center;
@@ -27,13 +26,11 @@ header {
 
 .search {
   float: left;
-  margin-top: 16px;
 }
 
 .lang {
   float: right;
   margin: 0 125px;
-  margin-top: 16px;
 }
 
 nav {

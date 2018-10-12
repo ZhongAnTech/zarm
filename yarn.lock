@@ -4439,14 +4439,13 @@ dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dragon-ui@1.0.0-alpha.17:
-  version "1.0.0-alpha.17"
-  resolved "https://registry.yarnpkg.com/dragon-ui/-/dragon-ui-1.0.0-alpha.17.tgz#8d05d51ff84610edf0435ccb475d70ac51ada6d5"
+dragon-ui@1.0.0-alpha.18:
+  version "1.0.0-alpha.18"
+  resolved "https://registry.yarnpkg.com/dragon-ui/-/dragon-ui-1.0.0-alpha.18.tgz#1665ad5b17ada1efc8584064622b9d6ae35605d5"
   dependencies:
     classnames "^2.2.5"
     css-animation "^1.2.5"
     hoist-non-react-statics "^3.0.1"
-    normalize.css "^7.0.0"
     rc-animate "^3.0.0-rc.5"
     tslib "^1.9.3"
 
