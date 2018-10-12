@@ -1,8 +1,10 @@
 header {
   position: fixed;
   top: 0;
+  min-width: 1200px;
   width: 100%;
   height: 65px;
+  // line-height: 65px;
   background-color: #fff;
   box-shadow: 0 2px 8px #f0f1f2;
   z-index: 1000;
@@ -30,7 +32,8 @@ header {
 
 .lang {
   float: right;
-  margin: 16px 40px 0 80px;
+  margin: 0 125px;
+  margin-top: 16px;
 }
 
 nav {
