@@ -105,7 +105,7 @@
     "coveralls": "^2.13.1",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.1",
-    "dragon-ui": "1.0.0-alpha.16",
+    "dragon-ui": "1.0.0-alpha.17",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.3",
     "enzyme-to-json": "^3.2.0",

@@ -4439,12 +4439,13 @@ dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dragon-ui@1.0.0-alpha.16:
-  version "1.0.0-alpha.16"
-  resolved "https://registry.yarnpkg.com/dragon-ui/-/dragon-ui-1.0.0-alpha.16.tgz#602e8492e81a3dd46e44332cfc587780188f9f7c"
+dragon-ui@1.0.0-alpha.17:
+  version "1.0.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/dragon-ui/-/dragon-ui-1.0.0-alpha.17.tgz#8d05d51ff84610edf0435ccb475d70ac51ada6d5"
   dependencies:
     classnames "^2.2.5"
     css-animation "^1.2.5"
+    hoist-non-react-statics "^3.0.1"
     normalize.css "^7.0.0"
     rc-animate "^3.0.0-rc.5"
     tslib "^1.9.3"
@@ -6207,6 +6208,12 @@ hoek@2.x.x:
 hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
+
+hoist-non-react-statics@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.0.1.tgz#fba3e7df0210eb9447757ca1a7cb607162f0a364"
+  dependencies:
+    react-is "^16.3.2"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
@@ -10673,6 +10680,10 @@ react-dom@^16.0.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-is@^16.3.2:
+  version "16.5.2"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
 
 react-is@^16.4.2:
   version "16.4.2"
