@@ -14,6 +14,11 @@ module.exports = {
     require.resolve('./setup.js'),
   ],
   testRegex: '/__tests__/.*(\\.native\\.test\\.jsx|[^d]\\.ts)$',
+  collectCoverageFrom: [
+    'components/**/*.native.{ts,tsx}',
+    '!components/*/PropsType.{ts,tsx}',
+    '!components/**/style/*.{ts,tsx}',
+  ],
   moduleFileExtensions: [
     'ts',
     'tsx',
@@ -26,4 +31,5 @@ module.exports = {
     `<rootDir>/node_modules/(?!(${transformPackages.join('|')})/)`,
     // '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
   ],
+  testEnvironment: 'jsdom',
 };

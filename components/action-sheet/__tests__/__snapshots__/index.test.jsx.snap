@@ -26,21 +26,23 @@ exports[`ActionSheet renders correctly 1`] = `
   visible={true}
 >
   <Popup
-    animationDuration={200}
-    autoClose={false}
-    direction="bottom"
-    mask={true}
-    maskType="normal"
     onMaskClick={[MockFunction]}
-    prefixCls="za-popup"
-    stayTime={3000}
     visible={true}
   >
     <Portal
-      getContainer={[Function]}
+      animationDuration={200}
+      autoClose={false}
+      direction="bottom"
+      handlePortalUnmount={[Function]}
+      mask={true}
+      maskType="normal"
+      onMaskClick={[MockFunction]}
+      prefixCls="za-popup"
+      stayTime={3000}
+      visible={true}
     >
       <div
-        className="za-popup"
+        className="za-popup za-popup-hidden"
       >
         <div
           className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -92,19 +94,8 @@ exports[`ActionSheet renders correctly 1`] = `
             }
           }
           type="normal"
-          visible={true}
-        >
-          <div
-            className="za-mask normal"
-            onClick={[MockFunction]}
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-          />
-        </Mask>
+          visible={false}
+        />
       </div>
     </Portal>
   </Popup>

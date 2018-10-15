@@ -1,0 +1,116 @@
+.docs-page {
+  main {
+    min-width: 1200px;
+    margin: 80px auto 15px;
+    padding-top: 40px;
+    background-color: #fff;
+    overflow: hidden;
+
+    .side-bar {
+      position: fixed;
+      top: 65px;
+      bottom: 0;
+      width: 280px;
+      border-right: 1px solid #ebedf0;
+      margin-right: -1px;
+      padding: 30px 0 50px 0;
+      overflow-y: scroll;
+      z-index: 1;
+
+      .menu-item-content {
+        .chinese {
+          font-size: 12px;
+          margin-left: 6px;
+          opacity: .6;
+        }
+      }
+    }
+  
+    .main-container {
+      position: relative;
+      min-height: 500px;
+      margin-left: -1px;
+      padding: 0 560px 140px 340px;
+      background: #fff;
+      overflow: hidden;
+      border-left: 1px solid #ebedf0;
+
+      pre {
+        padding: 15px;
+        border: 1px solid #eaeefb;
+        border-radius: 4px;
+        background: #f9fafc;
+      }
+
+      h2 {
+        font-size: 28px;
+        font-weight: normal;
+        color: #1f2d3d;
+        margin: 0;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: normal;
+        color: #1f2d3d;
+        margin-top: 50px;
+      }
+
+      p {
+        color: #666;
+      }
+
+      blockquote {
+        margin: 0;
+        padding: 0 20px;
+        color: #6a737d;
+        font-size: 16px;
+        border-left: 4px solid #dfe2e5;
+      }
+
+      table.grid {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #fff;
+        color: #5e6d82;
+        font-size: 14px;
+        margin-bottom: 45px;
+        line-height: 1.5em;
+    
+        strong {
+          font-weight: normal;
+        }
+    
+        th {
+          text-align: left;
+          border-top: 1px solid #eaeefb;
+          background-color: #eff2f7;
+          white-space: nowrap;
+        }
+    
+        td,
+        th {
+          border-bottom: 1px solid #eaeefb;
+          padding: 10px;
+          max-width: 250px;
+        }
+    
+        th:first-child,
+        td:first-child {
+          padding-left: 10px;
+        }
+      }
+    }
+
+    .simulator {
+      position: fixed;
+      top: 105px;
+      right: 0;
+      width: 500px;
+      
+      iframe {
+        border: 1px solid #eaeefb;
+      }
+    }
+  }
+}

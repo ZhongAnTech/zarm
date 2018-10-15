@@ -29,12 +29,6 @@ $prefixCls: $prefixCls-cell;
     @include cell-theme($theme-error);
   }
 
-  &.has-icon {
-    &:after {
-      left: $cell-line-hasicon-left;
-    }
-  }
-
   &.is-link {
     cursor: pointer;
     user-select: none;
@@ -88,19 +82,18 @@ $prefixCls: $prefixCls-cell;
     &:after {
       display: inline-block;
       content: '';
-      border-right: r(2) solid #c7c7cc;
-      border-top: r(2) solid #c7c7cc;
-      width: r(10);
-      height: r(10);
+      border-right: r(2) solid $cell-arrow-color;
+      border-top: r(2) solid $cell-arrow-color;
+      width: $cell-arrow-length;
+      height: $cell-arrow-length;
       transform: rotate(45deg);
     }
   }
 
   &-icon {
-    width: $cell-icon-width;
-    height: $cell-icon-height;
     text-align: center;
-    margin-right: $padding-h-lg;
+    margin-right: $padding-h-md;
+    padding: $cell-padding-h 0;
 
     img {
       max-width: 100%;
@@ -110,9 +103,10 @@ $prefixCls: $prefixCls-cell;
 
   &-title {
     width: $cell-label-width;
-    padding: r(12) 0;
+    padding: $cell-padding-h 0;
     overflow: hidden;
     color: $cell-title-color;
+    line-height: $cell-title-line-height;
   }
 
   &-content {

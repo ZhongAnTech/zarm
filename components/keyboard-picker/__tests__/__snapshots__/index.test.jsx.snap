@@ -6,17 +6,19 @@ exports[`KeyboardPicker renders correctly 1`] = `
   type="number"
 >
   <Popup
-    animationDuration={200}
-    autoClose={false}
-    direction="bottom"
     mask={false}
-    maskType="normal"
-    prefixCls="za-popup"
-    stayTime={3000}
     visible={false}
   >
     <Portal
-      getContainer={[Function]}
+      animationDuration={200}
+      autoClose={false}
+      direction="bottom"
+      handlePortalUnmount={[Function]}
+      mask={false}
+      maskType="normal"
+      prefixCls="za-popup"
+      stayTime={3000}
+      visible={false}
     >
       <div
         className="za-popup za-popup-hidden"

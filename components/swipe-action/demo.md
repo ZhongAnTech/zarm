@@ -1,6 +1,8 @@
 ## 滑动操作 SwipeAction
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { SwipeAction, Button, Cell } from 'zarm';
 
@@ -10,8 +12,8 @@ class Demo extends React.Component {
       <div>
         <SwipeAction
           right={[
-            <Button theme="primary" onClick={() => console.log('右按钮1')}>右按钮1</Button>,
-            <Button theme="error" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
+            <Button size="lg" theme="primary" onClick={() => console.log('右按钮1')}>右按钮1</Button>,
+            <Button size="lg" theme="error" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
           ]}
         >
           <Cell>左滑看看</Cell>
@@ -19,8 +21,8 @@ class Demo extends React.Component {
 
         <SwipeAction
           left={[
-            <Button theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
-            <Button theme="error" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
+            <Button size="lg" theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
+            <Button size="lg" theme="error" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
           ]}
         >
           <Cell>右滑看看</Cell>
@@ -29,11 +31,11 @@ class Demo extends React.Component {
         <SwipeAction
           autoClose
           left={[
-            <Button theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
-            <Button theme="warning" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
+            <Button size="lg" theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
+            <Button size="lg" theme="warning" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
           ]}
           right={[
-            <Button theme="error" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
+            <Button size="lg" theme="error" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
           ]}
           onOpen={() => console.log('open')}
           onClose={() => console.log('close')}
@@ -47,10 +49,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -66,5 +68,3 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | | | 是否允许滑动 |
 | onOpen | <code>() => void</code> | noop | | 滑开时触发的回调函数 |
 | onClose | <code>() => void</code> | noop | | 关闭时触发的回调函数 |
-
-:::

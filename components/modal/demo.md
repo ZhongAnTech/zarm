@@ -1,6 +1,8 @@
 ## 模态框 Modal
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Modal, Cell, Button, Select } from 'zarm';
 
@@ -35,7 +37,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal1')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal1')}>开启</Button>
           }
         >
           普通
@@ -43,7 +45,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal3')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
           }
         >
           圆角
@@ -51,7 +53,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal2')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal2')}>开启</Button>
           }
         >
           遮罩层可关闭
@@ -59,7 +61,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('modal4')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal4')}>开启</Button>
           }
         >
           无头部
@@ -69,7 +71,7 @@ class Demo extends React.Component {
           title="动画效果"
           description={
             <div>
-              <Button size="sm" onClick={() => this.open('modal5')}>开启</Button>
+              <Button size="xs" onClick={() => this.open('modal5')}>开启</Button>
             </div>
           }
         >
@@ -129,10 +131,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 特定场景
+
+### 特定场景
 ```jsx
 import { Cell, Button, Alert, Confirm  } from 'zarm';
 
@@ -163,7 +165,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" theme="warning" onClick={() => this.open('alert')}>开启</Button>
+            <Button size="xs" theme="warning" onClick={() => this.open('alert')}>开启</Button>
           }
         >
           警告框 Alert
@@ -171,7 +173,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" theme="warning" onClick={() => this.open('confirm')}>开启</Button>
+            <Button size="xs" theme="warning" onClick={() => this.open('confirm')}>开启</Button>
           }
         >
           确认框 Confirm
@@ -200,10 +202,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -215,5 +217,3 @@ ReactDOM.render(<Demo />, mountNode);
 | animationDuration | number | 200 | | 动画执行时间 |
 | width | string &#124; number | `70%` | | 宽度 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-
-:::

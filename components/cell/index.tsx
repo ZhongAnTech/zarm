@@ -1,8 +1,14 @@
-import React, { PureComponent } from 'react';
-import PropsType from './PropsType';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
+import PropsType from './PropsType';
+import { Omit } from '../utils/types';
 
-export interface CellProps extends PropsType {
+export type HTMLDivProps = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  'title'
+>;
+
+export interface CellProps extends HTMLDivProps, PropsType {
   prefixCls?: string;
   className?: string;
 }
@@ -18,7 +24,6 @@ export default class Cell extends PureComponent<CellProps, {}> {
     const {
       prefixCls,
       className,
-      theme,
       hasArrow,
       icon,
       title,
@@ -27,14 +32,12 @@ export default class Cell extends PureComponent<CellProps, {}> {
       disabled,
       onClick,
       children,
-      ...others,
+      ...others
     } = this.props;
 
     const cls = classnames(prefixCls, className, {
-      [`theme-${theme}`]: !!theme,
       disabled,
       'is-link': !disabled && !!onClick,
-      'has-icon': !!icon,
       'has-arrow': hasArrow,
     });
 

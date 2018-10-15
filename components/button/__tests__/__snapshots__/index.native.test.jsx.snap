@@ -10,7 +10,7 @@ exports[`Button block 1`] = `
 </react-native-mock>
 `;
 
-exports[`Button bordered 1`] = `
+exports[`Button circle size 1`] = `
 <react-native-mock>
   <react-native-mock>
     <react-native-mock>
@@ -28,6 +28,102 @@ exports[`Button disabled 1`] = `
     </react-native-mock>
   </react-native-mock>
 </react-native-mock>
+`;
+
+exports[`Button ghost 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Button ghost active 1`] = `
+<TouchableOpacity
+  activeOpacity={1}
+  block={false}
+  disabled={false}
+  onPressIn={[Function]}
+  onPressOut={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 44,
+        "justifyContent": "center",
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "height": 44,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "backgroundColor": "#12c287",
+      },
+      Object {
+        "borderRadius": 0,
+      },
+      Object {
+        "backgroundColor": "#10ae79",
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 1,
+      },
+      Object {
+        "borderColor": "#12c287",
+      },
+      Object {
+        "borderColor": "#10ae79",
+      },
+      false,
+      false,
+      false,
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#fff",
+          },
+          Object {
+            "color": "#fff",
+          },
+          false,
+          Object {
+            "color": "#12c287",
+          },
+          Object {
+            "color": "#10ae79",
+          },
+          false,
+        ]
+      }
+    >
+      foo
+    </Text>
+  </View>
+</TouchableOpacity>
 `;
 
 exports[`Button icon 1`] = `

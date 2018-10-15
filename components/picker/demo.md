@@ -1,6 +1,8 @@
 ## 选择器 Picker & Select
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell, Button, Picker, Toast } from 'zarm';
 
@@ -24,38 +26,38 @@ const MULTI_DATA = [
 // 级联数据
 const CASCADE_DATA = [
   {
-    value: '1',
+    code: '1',
     label: '北京市',
     children: [
-      { value: '11', label: '海淀区' },
-      { value: '12', label: '西城区' },
+      { code: '11', label: '海淀区' },
+      { code: '12', label: '西城区' },
     ],
   },
   {
-    value: '2',
+    code: '2',
     label: '上海市',
     children: [
-      { value: '21', label: '杨浦区' },
-      { value: '22', label: '静安区' },
+      { code: '21', label: '杨浦区' },
+      { code: '22', label: '静安区' },
     ],
   },
 ];
 
 const DIY_DATA = [
   {
-    code: '1',
+    value: '1',
     name: '北京市',
     children: [
-      { code: '11', name: '海淀区' },
-      { code: '12', name: '西城区' },
+      { value: '11', name: '海淀区' },
+      { value: '12', name: '西城区' },
     ],
   },
   {
-    code: '2',
+    value: '2',
     name: '上海市',
     children: [
-      { code: '21', name: '黄埔区' },
-      { code: '22', name: '虹口区' },
+      { value: '21', name: '黄埔区' },
+      { value: '22', name: '虹口区' },
     ],
   },
 ];
@@ -66,7 +68,7 @@ class Demo extends React.Component {
     this.state = {
       single: {
         visible: false,
-        value: [],
+        value: '',
         dataSource: SINGLE_DATA,
       },
       multi: {
@@ -77,7 +79,7 @@ class Demo extends React.Component {
       cascade: {
         visible: false,
         value: [],
-        dataSource: CASCADE_DATA,
+        dataSource: [],
       },
       diy: {
         visible: false,
@@ -94,6 +96,7 @@ class Demo extends React.Component {
 
       cascade.dataSource = CASCADE_DATA;
       cascade.value = ['1', '12'];
+      cascade.valueMember = "code";
       this.setState({ cascade });
     }, 0);
   }
@@ -116,7 +119,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('single')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('single')}>选择</Button>
           }
         >
           单列
@@ -124,7 +127,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('multi')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('multi')}>选择</Button>
           }
         >
           多列
@@ -132,7 +135,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('cascade')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('cascade')}>选择</Button>
           }
         >
           级联
@@ -140,7 +143,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('diy')}>打开</Button>
+            <Button size="xs" onClick={() => this.toggle('diy')}>选择</Button>
           }
         >
           自定义
@@ -178,9 +181,10 @@ class Demo extends React.Component {
           visible={cascade.visible}
           value={cascade.value}
           dataSource={cascade.dataSource}
+          valueMember={cascade.valueMember}
           onOk={(selected) => {
             console.log('Picker onOk: ', selected);
-            cascade.value = selected.map(item => item.value);
+            cascade.value = selected.map(item => item.code);
             this.setState({ cascade });
             Toast.show(JSON.stringify(selected));
             this.toggle('cascade');
@@ -195,11 +199,11 @@ class Demo extends React.Component {
           okText="Ok"
           dataSource={diy.dataSource}
           value={diy.value}
-          valueMember="code"
+          valueMember="value"
           itemRender={data => data.name}
           onOk={(selected) => {
             console.log('Picker onOk: ', selected);
-            diy.value = selected.map(item => item.code);
+            diy.value = selected.map(item => item.value);
             this.setState({
               diy,
             });
@@ -215,10 +219,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 表单选择 Select
+
+### 表单选择 Select
 ```jsx
 import { Select, Cell } from 'zarm';
 
@@ -243,13 +247,13 @@ const CASCADE_DATA = [
 ];
 
 class Demo extends React.Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
-    this.state = {
-      visible: false,
-      value: [],
-      dataSource: [],
-    };
+      this.state = {
+        visible: false,
+        value: [],
+        dataSource: CASCADE_DATA,
+      };
   }
 
   componentDidMount() {
@@ -263,7 +267,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { visible, value, dataSource } = this.state;
+    const { visible, visible2, value, dataSource } = this.state;
     return (
       <div>
         <Cell title="城市">
@@ -287,29 +291,29 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 平铺选择 PickerView
+
+### 平铺选择 PickerView
 ```jsx
 import { PickerView } from 'zarm';
 
 // 级联数据
 const CASCADE_DATA = [
   {
-    value: '1',
+    code: '1',
     label: '北京市',
     children: [
-      { value: '11', label: '海淀区' },
-      { value: '12', label: '西城区' },
+      { code: '11', label: '海淀区' },
+      { code: '12', label: '西城区' },
     ],
   },
   {
-    value: '2',
+    code: '2',
     label: '上海市',
     children: [
-      { value: '21', label: '杨浦区' },
-      { value: '22', label: '静安区' },
+      { code: '21', label: '杨浦区' },
+      { code: '22', label: '静安区' },
     ],
   },
 ];
@@ -319,7 +323,35 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       value: [],
+      dataSource: CASCADE_DATA,
     };
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        value: ['1', '12'],
+        dataSource: [
+          {
+            code: '1',
+            label: '北京市',
+            children: [
+              { code: '11', label: '海淀区' },
+              { code: '12', label: '西城区' },
+            ],
+          },
+          {
+            code: '2',
+            label: '上海市',
+            children: [
+              { code: '21', label: '杨浦区' },
+              { code: '22', label: '静安区' },
+            ],
+          },
+        ],
+        valueMember: 'code'
+      })
+    })
   }
 
   render() {
@@ -327,7 +359,8 @@ class Demo extends React.Component {
       <div>
         <PickerView
           value={this.state.value}
-          dataSource={CASCADE_DATA}
+          valueMember="code"
+          dataSource={this.state.dataSource}
           onChange={selected => console.log('PickerView onChange: ', selected)}
         />
       </div>
@@ -337,10 +370,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -371,5 +404,3 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | | 输入提示信息 |
 | displayRender | <code>(selected?: object) => string</code> | noop | \(selected: object\) | 所选值的展示 |
-
-:::

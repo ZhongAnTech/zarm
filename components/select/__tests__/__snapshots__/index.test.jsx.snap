@@ -2,6 +2,7 @@
 
 exports[`Select Cascader Select 1`] = `
 <Select
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -52,6 +53,7 @@ exports[`Select Cascader Select 1`] = `
     </div>
     <Picker
       cancelText="取消"
+      cols={Infinity}
       dataSource={
         Array [
           Object {
@@ -84,29 +86,15 @@ exports[`Select Cascader Select 1`] = `
           },
         ]
       }
-      firstObjValue={
-        Array [
-          Object {
-            "label": "选项一",
-            "value": "1",
-          },
-          Object {
-            "label": "选项一",
-            "value": "11",
-          },
-        ]
-      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
       onChange={[Function]}
       onClick={[Function]}
-      onInit={[Function]}
       onOk={[Function]}
       onTransition={[Function]}
       prefixCls="za-picker"
       title="请选择"
-      value={Array []}
       valueMember="value"
       visible={false}
     >
@@ -114,18 +102,20 @@ exports[`Select Cascader Select 1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -199,27 +189,19 @@ exports[`Select Cascader Select 1`] = `
                       ]
                     }
                     disabled={false}
-                    firstObjValue={
-                      Array [
-                        Object {
-                          "label": "选项一",
-                          "value": "1",
-                        },
-                        Object {
-                          "label": "选项一",
-                          "value": "11",
-                        },
-                      ]
-                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
-                    onInit={[Function]}
                     onOk={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker"
-                    value={Array []}
+                    value={
+                      Array [
+                        "1",
+                        "11",
+                      ]
+                    }
                     valueMember="value"
                     visible={false}
                   >
@@ -350,6 +332,7 @@ exports[`Select Cascader Select 1`] = `
 
 exports[`Select Cascader Select init value 1`] = `
 <Select
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -408,6 +391,7 @@ exports[`Select Cascader Select init value 1`] = `
     </div>
     <Picker
       cancelText="取消"
+      cols={Infinity}
       dataSource={
         Array [
           Object {
@@ -441,24 +425,11 @@ exports[`Select Cascader Select init value 1`] = `
         ]
       }
       displayAddon="-"
-      firstObjValue={
-        Array [
-          Object {
-            "label": "选项一",
-            "value": "1",
-          },
-          Object {
-            "label": "选项二",
-            "value": "12",
-          },
-        ]
-      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
       onChange={[Function]}
       onClick={[Function]}
-      onInit={[Function]}
       onOk={[Function]}
       onTransition={[Function]}
       prefixCls="za-picker"
@@ -476,18 +447,20 @@ exports[`Select Cascader Select init value 1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -562,23 +535,10 @@ exports[`Select Cascader Select init value 1`] = `
                     }
                     disabled={false}
                     displayAddon="-"
-                    firstObjValue={
-                      Array [
-                        Object {
-                          "label": "选项一",
-                          "value": "1",
-                        },
-                        Object {
-                          "label": "选项二",
-                          "value": "12",
-                        },
-                      ]
-                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
-                    onInit={[Function]}
                     onOk={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker"
@@ -718,6 +678,7 @@ exports[`Select Cascader Select init value 1`] = `
 
 exports[`Select Select 1`] = `
 <Select
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -748,6 +709,7 @@ exports[`Select Select 1`] = `
     </div>
     <Picker
       cancelText="取消"
+      cols={Infinity}
       dataSource={
         Array [
           Object {
@@ -760,25 +722,15 @@ exports[`Select Select 1`] = `
           },
         ]
       }
-      firstObjValue={
-        Array [
-          Object {
-            "label": "选项一",
-            "value": "1",
-          },
-        ]
-      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
       onChange={[Function]}
       onClick={[Function]}
-      onInit={[Function]}
       onOk={[Function]}
       onTransition={[Function]}
       prefixCls="za-picker"
       title="请选择"
-      value={Array []}
       valueMember="value"
       visible={false}
     >
@@ -786,18 +738,20 @@ exports[`Select Select 1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -851,23 +805,18 @@ exports[`Select Select 1`] = `
                       ]
                     }
                     disabled={false}
-                    firstObjValue={
-                      Array [
-                        Object {
-                          "label": "选项一",
-                          "value": "1",
-                        },
-                      ]
-                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
-                    onInit={[Function]}
                     onOk={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker"
-                    value={Array []}
+                    value={
+                      Array [
+                        "1",
+                      ]
+                    }
                     valueMember="value"
                     visible={false}
                   >
@@ -955,6 +904,7 @@ exports[`Select Select 1`] = `
 
 exports[`Select render defaultValue correctly  1`] = `
 <Select
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -980,12 +930,13 @@ exports[`Select render defaultValue correctly  1`] = `
     onClick={[Function]}
   >
     <div
-      className="za-select-input"
+      className="za-select-input za-select-placeholder"
     >
-      选项二
+      请选择
     </div>
     <Picker
       cancelText="取消"
+      cols={Infinity}
       dataSource={
         Array [
           Object {
@@ -999,29 +950,15 @@ exports[`Select render defaultValue correctly  1`] = `
         ]
       }
       defaultValue="2"
-      firstObjValue={
-        Array [
-          Object {
-            "label": "选项二",
-            "value": "2",
-          },
-        ]
-      }
       itemRender={[Function]}
       okText="确定"
       onCancel={[Function]}
       onChange={[Function]}
       onClick={[Function]}
-      onInit={[Function]}
       onOk={[Function]}
       onTransition={[Function]}
       prefixCls="za-picker"
       title="请选择"
-      value={
-        Array [
-          "2",
-        ]
-      }
       valueMember="value"
       visible={false}
     >
@@ -1029,18 +966,20 @@ exports[`Select render defaultValue correctly  1`] = `
         className="za-picker"
       >
         <Popup
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          mask={true}
-          maskType="normal"
           onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         >
           <Portal
-            getContainer={[Function]}
+            animationDuration={200}
+            autoClose={false}
+            direction="bottom"
+            handlePortalUnmount={[Function]}
+            mask={true}
+            maskType="normal"
+            onMaskClick={[Function]}
+            prefixCls="za-popup"
+            stayTime={3000}
+            visible={false}
           >
             <div
               className="za-popup za-popup-hidden"
@@ -1095,19 +1034,10 @@ exports[`Select render defaultValue correctly  1`] = `
                     }
                     defaultValue="2"
                     disabled={false}
-                    firstObjValue={
-                      Array [
-                        Object {
-                          "label": "选项二",
-                          "value": "2",
-                        },
-                      ]
-                    }
                     itemRender={[Function]}
                     onCancel={[Function]}
                     onChange={[Function]}
                     onClick={[Function]}
-                    onInit={[Function]}
                     onOk={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker"

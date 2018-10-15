@@ -20,9 +20,9 @@ exports[`DateSelect DateSelect date 1`] = `
   >
     <input
       type="hidden"
-      value="2017-09-05"
+      value="2017-09-06"
     />
-    2017-09-05
+    2017-09-06
     <DatePicker
       cancelText="取消"
       defaultValue=""
@@ -36,24 +36,26 @@ exports[`DateSelect DateSelect date 1`] = `
       onTransition={[Function]}
       placeholder="请选择"
       prefixCls="za-picker"
-      title="请选择"
+      title="选择日期"
       value={2017-09-06T04:00:00.000Z}
       valueMember="value"
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"
@@ -83,7 +85,7 @@ exports[`DateSelect DateSelect date 1`] = `
                   <div
                     className="za-picker-title"
                   >
-                    请选择
+                    选择日期
                   </div>
                   <div
                     className="za-picker-submit"
@@ -1319,9 +1321,9 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <input
       type="hidden"
-      value="2017-11-03 11:00"
+      value="2017-11-03 15:00"
     />
-    2017-11-03 11:00
+    2017-11-03 15:00
     <DatePicker
       cancelText="取消"
       defaultValue="2017-11-03 15:00"
@@ -1337,24 +1339,26 @@ exports[`DateSelect DateSelect datetime 1`] = `
       onTransition={[Function]}
       placeholder="请选择"
       prefixCls="za-picker"
-      title="请选择"
+      title="选择时间"
       value={2017-11-03T19:00:00.000Z}
       valueMember="value"
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"
@@ -1384,7 +1388,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
                   <div
                     className="za-picker-title"
                   >
-                    请选择
+                    选择时间
                   </div>
                   <div
                     className="za-picker-submit"
@@ -2870,9 +2874,9 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <input
       type="hidden"
-      value="11:00"
+      value="15:00"
     />
-    11:00
+    15:00
     <DatePicker
       cancelText="取消"
       defaultValue="2017-11-03 15:00"
@@ -2886,24 +2890,26 @@ exports[`DateSelect DateSelect time 1`] = `
       onTransition={[Function]}
       placeholder="请选择"
       prefixCls="za-picker"
-      title="请选择"
+      title="选择时间"
       value={2017-11-03T19:00:00.000Z}
       valueMember="value"
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"
@@ -2933,7 +2939,7 @@ exports[`DateSelect DateSelect time 1`] = `
                   <div
                     className="za-picker-title"
                   >
-                    请选择
+                    选择时间
                   </div>
                   <div
                     className="za-picker-submit"
@@ -3512,9 +3518,9 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   >
     <input
       type="hidden"
-      value="2017-11-02"
+      value="2017-11-03"
     />
-    2017-11-02
+    2017-11-03
     <DatePicker
       cancelText="取消"
       defaultValue="2017-11-03"
@@ -3534,21 +3540,23 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       visible={true}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={true}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={true}
         >
           <div
-            className="za-popup"
+            className="za-popup za-popup-hidden"
           >
             <div
               className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -4779,19 +4787,8 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                 }
               }
               type="normal"
-              visible={true}
-            >
-              <div
-                className="za-mask normal"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-              />
-            </Mask>
+              visible={false}
+            />
           </div>
         </Portal>
       </Popup>
@@ -4837,28 +4834,30 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       onTransition={[Function]}
       placeholder="请选择"
       prefixCls="za-picker"
-      title="请选择"
+      title="选择日期"
       value=""
       valueMember="value"
       visible={true}
       wheelDefaultValue="2017-11-03 15:00"
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={true}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={true}
         >
           <div
-            className="za-popup"
+            className="za-popup za-popup-hidden"
           >
             <div
               className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -4885,7 +4884,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                   <div
                     className="za-picker-title"
                   >
-                    请选择
+                    选择日期
                   </div>
                   <div
                     className="za-picker-submit"
@@ -6091,19 +6090,8 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                 }
               }
               type="normal"
-              visible={true}
-            >
-              <div
-                className="za-mask normal"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-              />
-            </Mask>
+              visible={false}
+            />
           </div>
         </Portal>
       </Popup>
@@ -6166,24 +6154,26 @@ exports[`DateSelect DateSelect year 1`] = `
       onTransition={[Function]}
       placeholder="请选择"
       prefixCls="za-picker"
-      title="请选择"
+      title="选择年份"
       value={2017-01-01T00:00:00.000Z}
       valueMember="value"
       visible={false}
     >
       <Popup
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        mask={true}
-        maskType="normal"
         onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
         visible={false}
       >
         <Portal
-          getContainer={[Function]}
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={false}
         >
           <div
             className="za-popup za-popup-hidden"
@@ -6213,7 +6203,7 @@ exports[`DateSelect DateSelect year 1`] = `
                   <div
                     className="za-picker-title"
                   >
-                    请选择
+                    选择年份
                   </div>
                   <div
                     className="za-picker-submit"

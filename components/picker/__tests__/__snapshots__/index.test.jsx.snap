@@ -3,6 +3,7 @@
 exports[`Picker Picker render visible 1`] = `
 <Picker
   cancelText="取消"
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -26,21 +27,23 @@ exports[`Picker Picker render visible 1`] = `
     className="za-picker"
   >
     <Popup
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      mask={true}
-      maskType="normal"
       onMaskClick={[Function]}
-      prefixCls="za-popup"
-      stayTime={3000}
       visible={true}
     >
       <Portal
-        getContainer={[Function]}
+        animationDuration={200}
+        autoClose={false}
+        direction="bottom"
+        handlePortalUnmount={[Function]}
+        mask={true}
+        maskType="normal"
+        onMaskClick={[Function]}
+        prefixCls="za-popup"
+        stayTime={3000}
+        visible={true}
       >
         <div
-          className="za-popup"
+          className="za-popup za-popup-hidden"
         >
           <div
             className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -91,20 +94,15 @@ exports[`Picker Picker render visible 1`] = `
                   ]
                 }
                 disabled={false}
-                firstObjValue={
-                  Array [
-                    Object {
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                  ]
-                }
                 itemRender={[Function]}
                 onChange={[Function]}
-                onInit={[Function]}
                 onTransition={[Function]}
                 prefixCls="za-picker"
-                value={Array []}
+                value={
+                  Array [
+                    "1",
+                  ]
+                }
                 valueMember="value"
                 visible={true}
               >
@@ -179,19 +177,8 @@ exports[`Picker Picker render visible 1`] = `
               }
             }
             type="normal"
-            visible={true}
-          >
-            <div
-              className="za-mask normal"
-              onClick={[Function]}
-              style={
-                Object {
-                  "WebkitAnimationDuration": "200ms",
-                  "animationDuration": "200ms",
-                }
-              }
-            />
-          </Mask>
+            visible={false}
+          />
         </div>
       </Portal>
     </Popup>
@@ -202,6 +189,7 @@ exports[`Picker Picker render visible 1`] = `
 exports[`Picker render custom label 1`] = `
 <Picker
   cancelText="取消"
+  cols={Infinity}
   dataSource={
     Array [
       Object {
@@ -244,18 +232,20 @@ exports[`Picker render custom label 1`] = `
     className="za-picker"
   >
     <Popup
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      mask={true}
-      maskType="normal"
       onMaskClick={[Function]}
-      prefixCls="za-popup"
-      stayTime={3000}
       visible={false}
     >
       <Portal
-        getContainer={[Function]}
+        animationDuration={200}
+        autoClose={false}
+        direction="bottom"
+        handlePortalUnmount={[Function]}
+        mask={true}
+        maskType="normal"
+        onMaskClick={[Function]}
+        prefixCls="za-popup"
+        stayTime={3000}
+        visible={false}
       >
         <div
           className="za-popup za-popup-hidden"
@@ -329,25 +319,18 @@ exports[`Picker render custom label 1`] = `
                   ]
                 }
                 disabled={false}
-                firstObjValue={
-                  Array [
-                    Object {
-                      "code": "1",
-                      "name": "北京市",
-                    },
-                    Object {
-                      "code": "11",
-                      "name": "海淀区",
-                    },
-                  ]
-                }
                 itemRender={[Function]}
                 onChange={[Function]}
-                onInit={[Function]}
                 onTransition={[Function]}
                 prefixCls="za-picker"
-                value={Array []}
+                value={
+                  Array [
+                    "1",
+                    "11",
+                  ]
+                }
                 valueMember="code"
+                visible={false}
               >
                 <div
                   className="za-picker-panel"

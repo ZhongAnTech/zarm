@@ -34,7 +34,7 @@ export default class Panel extends PureComponent<PanelProps, {}> {
   };
 
   render() {
-    const { titleRender, moreRender, style, styles, children } = this.props;
+    const { title, more, style, styles, children } = this.props;
 
     const wrapperStyle = [
       styles!.container,
@@ -52,8 +52,8 @@ export default class Panel extends PureComponent<PanelProps, {}> {
     return (
       <View style={wrapperStyle}>
         <View style={headerStyle}>
-          {titleRender && <ChangeComponent type="title" component={titleRender}/>}
-          {moreRender && <ChangeComponent type="more" component={moreRender}/>}
+          {title && <ChangeComponent type="title" component={title}/>}
+          {more && <ChangeComponent type="more" component={more}/>}
         </View>
         <View style={bodyStyle}>
           {children}

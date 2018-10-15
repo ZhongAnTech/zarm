@@ -1,6 +1,8 @@
 ## 日期选择器 DatePicker
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell, Button, DatePicker, Toast } from 'zarm';
 
@@ -18,7 +20,7 @@ class Demo extends React.Component {
       },
       limitDate: {
         visible: false,
-        value: '2017-07-04',
+        value: '2017-09-13',
       },
     };
   }
@@ -40,7 +42,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('date')}>选择</Button>
+            <Button size="xs" onClick={() => this.toggle('date')}>选择</Button>
           }
         >
           选择日期
@@ -48,7 +50,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('time')}>选择</Button>
+            <Button size="xs" onClick={() => this.toggle('time')}>选择</Button>
           }
         >
           选择时间
@@ -56,7 +58,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.toggle('limitDate')}>选择</Button>
+            <Button size="xs" onClick={() => this.toggle('limitDate')}>选择</Button>
           }
         >
           选择日期(自定义)
@@ -124,10 +126,9 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 表单选择 DateSelect
+### 表单选择 DateSelect
 ```jsx
 import { Cell, DateSelect } from 'zarm';
 
@@ -165,10 +166,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 平铺选择 DatePickerView
+
+### 平铺选择 DatePickerView
 ```jsx
 import { DatePickerView } from 'zarm';
 
@@ -190,10 +191,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -227,5 +228,3 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | | 输入提示信息 |
 | format | string | | 例：YYYY年MM月DD日<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`。| 格式化显示值 |
-
-:::

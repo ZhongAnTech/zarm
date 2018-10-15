@@ -1,6 +1,8 @@
 ## 搜索框 SearchBar
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { SearchBar } from 'zarm';
 
@@ -55,10 +57,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 始终展示取消按钮
+
+### 始终展示取消按钮
 ```jsx
 import { SearchBar } from 'zarm';
 
@@ -97,10 +99,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 手动获取焦点
+
+### 手动获取焦点
 ```jsx
 import { SearchBar, Button } from 'zarm';
 
@@ -115,7 +117,7 @@ class Demo extends React.Component {
           ref={(ref) => { this.manualFocus = ref; }}
         />
         <div className="button-wrap">
-          <Button theme="primary" size="sm" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
+          <Button theme="primary" size="xs" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
         </div>
       </div>
     )
@@ -124,10 +126,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -148,5 +150,3 @@ ReactDOM.render(<Demo />, mountNode);
 | onBlur | <code>() => void</code> | noop | | 失去焦点时触发的回调函数 |
 | onClear | <code>() => void</code> | noop | | 点击清除按钮时触发的回调函数 |
 | onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
-
-:::

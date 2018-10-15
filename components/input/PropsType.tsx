@@ -1,17 +1,21 @@
+import React from 'react';
+
 export interface BaseInputProps {
-  type?: string;
   placeholder?: string;
   disabled?: boolean;
-  clearable?: boolean;
   maxLength?: number;
   focused?: boolean;
   autoFocus?: boolean;
   style?: React.CSSProperties;
+  prefixCls?: string;
+  className?: string;
 }
 
-export interface BaseInputBaseProps extends BaseInputProps {
+export interface InputBaseProps extends BaseInputProps {
+  type?: 'text' | 'search' | 'password';
   value?: string;
   defaultValue?: string;
+  clearable?: boolean;
   onChange?: (value?: string) => void;
   onFocus?: (value?: string) => void;
   onBlur?: (value?: string) => void;
@@ -21,20 +25,22 @@ export interface BaseInputBaseProps extends BaseInputProps {
   onCompositionEnd?: (e: any) => void;
 }
 
-export interface BaseInputNumberProps extends BaseInputProps {
+export interface InputNumberProps extends BaseInputProps {
   type?: 'number' | 'price' | 'idcard';
   value?: string | number;
   defaultValue?: string | number;
+  clearable?: boolean;
   onChange?: (value?: string | number) => void;
   onFocus?: (value?: string | number) => void;
   onBlur?: (value?: string | number) => void;
   onClear?: (value?: string) => void;
 }
 
-export interface BaseInputTextareaProps extends BaseInputProps {
+export interface InputTextareaProps extends BaseInputProps {
+  type?: 'text';
   value?: string;
   defaultValue?: string;
-  rows?: number;
+  rows: number;
   autoHeight?: boolean;
   showLength?: boolean;
   onChange?: (value?: string) => void;

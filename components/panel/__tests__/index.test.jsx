@@ -6,7 +6,7 @@ import Panel from '../index';
 describe('Panel', () => {
   it('renders correctly', () => {
     const wrapper = render(
-      <Panel titleRender="title" moreRender="more">
+      <Panel title="title" more="more">
         body
       </Panel>
     );

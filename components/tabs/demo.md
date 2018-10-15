@@ -1,6 +1,8 @@
 ## 标签页 Tabs
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -24,10 +26,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 可滑动
+
+### 可滑动
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -51,10 +53,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 指定默认选项
+
+### 指定默认选项
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -81,10 +83,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 指定线条宽度
+
+### 指定线条宽度
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -111,10 +113,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 禁用指定选项
+
+### 禁用指定选项
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -141,10 +143,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 #### Tabs
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
@@ -166,5 +168,3 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | false | | 是否禁用 |
 | title | string | | | 标题 |
 | children | number | | | 内容 |
-
-:::

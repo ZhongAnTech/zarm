@@ -1,33 +1,47 @@
 // 主题
-@mixin button-theme($background, $color) {
+@mixin button-theme(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color,
+  $disabled-background,
+  $disabled-border,
+  $disabled-color,
+  $disabled-opacity
+) {
   background-color: $background;
-  border-color: $background;
+  border-color: $border;
   color: $color;
 
-  $active-background: darken($background, 8%);
-  $active-color: rgba($color, .3);
+  &:hover {
+    background-color: $background;
+    border-color: $border;
+    color: $color;
+  }
 
-  &:active,
-  &.active {
+  &:active {
     background-color: $active-background;
-    border-color: $active-background;
+    border-color: $active-border;
     color: $active-color;
   }
 
-  &.disabled,
-  &:disabled {
-    opacity: $opacity-disabled;
-    color: rgba($color, $opacity-disabled);
+  &.disabled {
+    background-color: $disabled-background;
+    border-color: $disabled-border;
+    color: $disabled-color;
+    // color: rgba($color, $opacity-disabled);
+    opacity: $disabled-opacity;
     cursor: not-allowed;
 
     &:active,
-    &.active,
     &:focus,
-    &.focus,
-    &:visited,
-    &.visited {
-      background-color: $background;
-      border-color: $background;
+    &:visited {
+      background-color: $disabled-background;
+      border-color: $disabled-border;
+      color: $disabled-color;
+      opacity: $disabled-opacity;
     }
   }
 }
@@ -54,7 +68,14 @@
 }
 
 // 幽灵按钮
-@mixin button-bordered($border, $color) {
+@mixin button-ghost(
+  $background,
+  $border,
+  $color,
+  $active-background,
+  $active-border,
+  $active-color
+) {
   @include button-shape($border);
 
   &.shape-radius {
@@ -69,28 +90,26 @@
     @include button-shape($border, $radius-circle);
   }
 
-  &.bordered {
-    background-color: transparent;
+  &.ghost {
+    background-color: $background;
     color: $color;
 
-    &:active,
-    &.active {
-      opacity: $button-bordered-active-opacity;
+    &:active {
+      background-color: $active-background;
+      border-color: $active-border;
+      color: $active-color;
     }
 
-    &.disabled,
-    &:disabled {
-      opacity: $opacity-disabled;
+    &.disabled {
+      border-color: $border-disabled;
+      color: $color-text-disabled;
       cursor: not-allowed;
 
       &:active,
-      &.active,
       &:focus,
-      &.focus,
-      &:visited,
-      &.visited {
-        background-color: transparent;
-        border-color: $border;
+      &:visited {
+        border-color: $border-disabled;
+        color: $color-text-disabled;
       }
     }
   }
@@ -119,8 +138,7 @@
   }
 
   /* disabled Button */
-  &.disabled,
-  &:disabled {
+  &.disabled {
     cursor: not-allowed;
     opacity: $opacity-disabled;
   }
@@ -146,7 +164,7 @@
   border-style: solid;
   border-radius: $border-radius;
 
-  &.bordered {
+  &.ghost {
     border-color: $border-color;
     // @include onepx($border-color: $border-color, $border-radius: $border-radius);
   }

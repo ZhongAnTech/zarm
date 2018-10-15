@@ -32,6 +32,7 @@ export default class Wheel extends Component<WheelProps, any> {
 
   private BScroll;
   private wrapper;
+  // private initIndex;
 
   constructor(props) {
     super(props);
@@ -42,7 +43,7 @@ export default class Wheel extends Component<WheelProps, any> {
 
   componentDidMount() {
     const { prefixCls } = this.props;
-    this.BScroll = new BScroll(this.wrapper , {
+    this.BScroll = new BScroll(this.wrapper, {
       wheel: {
         selectedIndex: 0,
         wheelWrapperClass: `${prefixCls}-content`,
@@ -56,8 +57,10 @@ export default class Wheel extends Component<WheelProps, any> {
       this.BScroll.disable();
     }
 
-    const initIndex = this.BScroll.getSelectedIndex(this.state.value);
-    this.BScroll.wheelTo(initIndex);
+    const initIndex = this.getSelectedIndex(this.state.value, this.props.dataSource);
+    setTimeout(() => {
+      this.BScroll.wheelTo(initIndex);
+    }, 80);
 
     this.BScroll.on('scroll', () => {
       this.props.onTransition!(true);
@@ -67,10 +70,12 @@ export default class Wheel extends Component<WheelProps, any> {
       const { dataSource, valueMember } = this.props;
       const index = this.BScroll.getSelectedIndex();
       const child = dataSource![index];
+
       if (child) {
         this.fireValueChange(child[valueMember!]);
         this.props.onTransition!(this.BScroll.isInTransition);
       } else if (console.warn) {
+        this.props.onTransition!(this.BScroll.isInTransition);
         console.warn('child not found', dataSource, index);
       }
     });
@@ -86,8 +91,11 @@ export default class Wheel extends Component<WheelProps, any> {
     if (nextProps.disabled) {
       this.BScroll.disable();
     }
+
     const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
-    this.BScroll.wheelTo(newIndex);
+    setTimeout(() => {
+      this.BScroll.wheelTo(newIndex);
+    }, 0);
   }
 
   componentDidUpdate() {
@@ -126,13 +134,7 @@ export default class Wheel extends Component<WheelProps, any> {
   }
 
   render() {
-    const {
-      prefixCls,
-      className,
-      valueMember,
-      dataSource,
-      itemRender,
-    } = this.props;
+    const { prefixCls, className, valueMember, dataSource, itemRender } = this.props;
 
     const { value } = this.state;
     const items = dataSource!.map((item, index) => {
@@ -141,10 +143,7 @@ export default class Wheel extends Component<WheelProps, any> {
       });
 
       return (
-        <div
-          key={+index}
-          className={itemCls}
-        >
+        <div key={+index} className={itemCls}>
           {itemRender!(item)}
         </div>
       );
@@ -153,11 +152,12 @@ export default class Wheel extends Component<WheelProps, any> {
     const rollerCls = classnames(`${prefixCls}`, className);
 
     return (
-      <div className={rollerCls} ref={(wrapper) => { this.wrapper = wrapper; }}>
+      <div
+        className={rollerCls}
+        ref={(wrapper) => { this.wrapper = wrapper; }}
+      >
         {/* <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} /> */}
-        <div className={`${prefixCls}-content`}>
-          {items}
-        </div>
+        <div className={`${prefixCls}-content`}>{items}</div>
       </div>
     );
   }

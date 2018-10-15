@@ -1,6 +1,8 @@
 ## 弹出框 Popup
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Popup, Cell, Button } from 'zarm';
 
@@ -32,7 +34,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popTop')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
           }
         >
           从上方弹出
@@ -40,7 +42,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popBottom')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
           }
         >
           从下方弹出
@@ -48,7 +50,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popLeft')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popLeft')}>开启</Button>
           }
         >
           从左侧弹出
@@ -56,7 +58,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="sm" onClick={() => this.open('popRight')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('popRight')}>开启</Button>
           }
         >
           从右侧弹出
@@ -84,7 +86,7 @@ class Demo extends React.Component {
           onClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="sm" onClick={() => { this.close('popBottom'); }}>关闭弹层</Button>
+            <Button size="xs" onClick={() => { this.close('popBottom'); }}>关闭弹层</Button>
           </div>
         </Popup>
 
@@ -95,7 +97,7 @@ class Demo extends React.Component {
           onClose={() => console.log('关闭')}
         >
           <div className="popup-box-left">
-            <Button size="sm" onClick={() => this.close('popLeft')}>关闭弹层</Button>
+            <Button size="xs" onClick={() => this.close('popLeft')}>关闭弹层</Button>
           </div>
         </Popup>
 
@@ -106,7 +108,7 @@ class Demo extends React.Component {
           onClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="sm" onClick={() => this.close('popRight')}>关闭弹层</Button>
+            <Button size="xs" onClick={() => this.close('popRight')}>关闭弹层</Button>
           </div>
         </Popup>
       </div>
@@ -116,10 +118,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -133,5 +135,3 @@ ReactDOM.render(<Demo />, mountNode);
 | maskType | string | `normal` | `transparent`, `light`, `normal`, `dark` | 遮罩层的类型 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
 | onClose | <code>() => void</code> | noop | | 关闭后触发的回调函数 |
-
-:::

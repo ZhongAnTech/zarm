@@ -17,15 +17,16 @@ export default class Demo extends React.Component {
     this.renderSource(this.source[2]);
   }
 
+  componentWillUnmount() {
+    if (this.containerElem) {
+      ReactDOM.unmountComponentAtNode(this.containerElem);
+    }
+  }
+
   renderSource(value) {
     import('../../components').then((Element) => {
       const args = ['context', 'React', 'ReactDOM', 'zarm'];
       const argv = [this, React, ReactDOM, Element];
-
-      // Object.keys(Element).forEach((key) => {
-      //   args.push(key);
-      //   argv.push(Element[key]);
-      // });
 
       return {
         args,
@@ -55,10 +56,10 @@ export default class Demo extends React.Component {
   render() {
     // Panel的例子特殊处理
     return (this.props.location.pathname === '/panel')
-      ? <div id={this.containerId} />
+      ? <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
       : (
-        <Panel titleRender={<span>{this.title}</span>}>
-          <div id={this.containerId} />
+        <Panel title={<span>{this.title}</span>}>
+          <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
         </Panel>
       );
   }
