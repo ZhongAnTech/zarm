@@ -32,8 +32,8 @@ class Page extends PureComponent {
     const { location, history, match } = this.props;
     const { form, feedback, view, navigation } = components;
     const iframeURL = location.pathname.split('/')[2] !== 'quick-start'
-      ? `https://zhongantecheng.github.io/zarm/#/${location.pathname.split('/')[2]}`
-      : 'https://zhongantecheng.github.io/zarm';
+      ? `https://zarm.design/#/${location.pathname.split('/')[2]}`
+      : 'https://zarm.design';
 
     return (
       <Container className="docs-page">
