@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import { ScrollView, View, Text } from 'react-native';
-import { Panel } from '../../components/index.native';
+import React, {PureComponent} from 'react';
+import {ScrollView,StyleSheet,View, Text} from 'react-native';
+import {Panel,Cell} from '../../components/index.native';
 
 const styles = {
   moreHeaderColor: {
@@ -15,6 +15,10 @@ const styles = {
   bodyColor: {
     color: '#333',
   },
+  titleTextStyle: {
+    color: '#464646',
+    fontSize: 15,
+  }
 };
 
 const clickHandle = () => {
@@ -24,20 +28,35 @@ const clickHandle = () => {
 export default class App extends PureComponent {
   render() {
     return (
-      <ScrollView>
-        <View>
-          <Panel
-            titleRender="标题"
-            moreRender={
-              <Text style={styles.moreHeaderColor} onPress={clickHandle}>更多</Text>
-            }
+      <View>
+        <Panel
+          titleRender="标题"
+          moreRender={
+            <Text style={styles.moreHeaderColor} onPress={clickHandle}>更多</Text>
+          }
+        >
+          <View style={styles.box}>
+            <Text style={styles.bodyColor}>内容</Text>
+          </View>
+        </Panel>
+        <Panel
+          titleRender="普通标题"
+          moreRender={
+            <Text style={styles.moreHeaderColor}>更多</Text>
+          }
+        >
+          <View style={styles.box}>
+            <Text style={styles.bodyColor}>普通内容</Text>
+          </View>
+          <Cell
+            title={<Text style={styles.titleTextStyle}>左侧文案</Text>}
           >
-            <View style={styles.box}>
-              <Text style={styles.bodyColor}>内容</Text>
+            <View>
+              <Text>右侧文案</Text>
             </View>
-          </Panel>
-        </View>
-      </ScrollView>
+          </Cell>
+        </Panel>
+      </View>
     );
   }
 }

@@ -33,5 +33,6 @@ ReactDOM.render(<Demo />, mountNode);
 | moreRender | React.ReactNode | | | 更多渲染 |
 | prefixCls | string | za-panel | | 类名前缀 |
 | className | string | | | 追加类名 |
+| style | React.ReactNode | | |自定义样式|
 
 :::

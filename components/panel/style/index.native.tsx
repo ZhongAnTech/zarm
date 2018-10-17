@@ -28,6 +28,5 @@ export default {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderStyle: 'solid',
     borderColor: '#dddddd',
-    flex: 1,
   },
 };
