@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { PureComponent } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import { Icon } from 'dragon-ui';
 import Events from '@site/utils/events';
 import Throttle from '@site/utils/throttle';
-import './style.scss';
 
-class ScrollToTop extends Component {
+class ScrollToTop extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +33,7 @@ class ScrollToTop extends Component {
   getContainer() {
     if (!this.container) {
       const container = document.createElement('div');
-      container.classList.add('scroll-to-top-container');
+      container.classList.add(`${this.props.prefixCls}-container`);
       this.container = container;
     }
     return this.container;
@@ -56,33 +53,34 @@ class ScrollToTop extends Component {
   }
 
   render() {
-    const cls = classnames('scroll-to-top', {
-      hide: !this.state.visible,
-    });
+    const { prefixCls, children } = this.props;
+    const style = {};
 
-    return ReactDOM.createPortal(
-      <div
-        className={cls}
-        onClick={this.scrollToTop}
-      >
-        <Icon type="arrow-top" />
-      </div>,
-      this.getContainer()
+    if (!this.state.visible) {
+      style.display = 'none';
+    }
+
+    return createPortal(
+      <div className={prefixCls} style={style} onClick={this.scrollToTop}>
+        {children}
+      </div>
+      , this.getContainer()
     );
   }
 }
 
 ScrollToTop.propTypes = {
-  // 滚动速度
+  // 类名前缀
+  prefixCls: PropTypes.string,
+  // 每10毫秒滑动的距离
   speed: PropTypes.number,
   // 离滚动条顶部的可视距离
   visibleDistance: PropTypes.number,
 };
 
 ScrollToTop.defaultProps = {
-  // 每10毫秒滑动的距离
+  prefixCls: 'za-scroll-to-top',
   speed: 120,
-  // 距离滚动条顶部300像素才出现按钮
   visibleDistance: 300,
 };
 

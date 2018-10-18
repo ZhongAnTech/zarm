@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import { Menu } from 'dragon-ui';
+import { Menu, Icon } from 'dragon-ui';
 import AsyncComponent from '@site/components/AsyncComponent';
 import { components } from '@site/demos';
 import Format from '@site/utils/format';
@@ -69,7 +69,11 @@ class Page extends PureComponent {
           <div className="simulator">
             <iframe src={iframeURL} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
-          <ScrollToTop />
+          <ScrollToTop>
+            <div className="scroll-to-top">
+              <Icon type="arrow-top" />
+            </div>
+          </ScrollToTop>
         </main>
       </Container>
     );
