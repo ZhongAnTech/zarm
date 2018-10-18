@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import PropsType from './PropsType';
 import cellStyle from './style/index.native';
+import { RenderWithText } from '../utils/renderWithText.native';
 
 export interface CellProps extends PropsType {
   style?: CSSProperties;
@@ -59,41 +60,26 @@ export default class Cell extends PureComponent<CellProps, any> {
       description ? styles!.flexDirectionColumn : styles!.flexDirectionRow,
       description ? styles!.alignItemsStart : styles!.alignItemsCenter,
     ] as ViewStyle;
+
     const iconStyle = [
       styles!.iconStyle,
     ] as ViewStyle;
-    const titleStyle = [
-      styles!.titleStyle,
-      children && description && styles!.paddingBottom,
+
+    const titleViewStyle = [
+      children && description && styles!.titleViewStyle,
     ] as ViewStyle;
-    const descriptionStyle = [
-      styles!.descriptionStyle,
-    ] as ViewStyle;
+
     const arrowStyle = [
       styles!.arrowStyle,
-    ] as ViewStyle;
-    const helpStyle = [
-      styles!.helpStyle,
     ] as ViewStyle;
     const contentStyle = [
       !onClick && wrapperStyle,
     ] as ViewStyle;
 
     const underlayColor = (StyleSheet.flatten(styles!.underlayColorStyle) as any).backgroundColor;
-
     const iconRender = icon && <View style={iconStyle}>{icon}</View>;
-    const titleRender = title && (React.isValidElement(title)
-    ? <View style={titleStyle}>{title}</View>
-    : <View style={titleStyle}><Text>{title}</Text></View>);
-    const descriptionRender = description && (React.isValidElement(description)
-    ? <View style={descriptionStyle}>{description}</View>
-    : <View><Text style={descriptionStyle}>{description}</Text></View>);
     const arrowRender = hasArrow && <View style={arrowStyle}/>;
-    const helpRender = help && (React.isValidElement(help)
-    ? <View style={helpStyle}>{help}</View>
-    : <View style={helpStyle}><Text>{help}</Text></View>);
-    const childrenRender = children
-    && (React.isValidElement(children) ? children : <View><Text>{children}</Text></View>);
+
     const contentRender = <View style={wrapperStyle}>
       <View style={cellLineContainerStyle}>
         <View style={cellLineStyle}/>
@@ -102,13 +88,26 @@ export default class Cell extends PureComponent<CellProps, any> {
         <View style={containerStyle}>
           {iconRender}
           <View style={bodyStyle}>
-            {titleRender}
-            {childrenRender}
+            <RenderWithText
+              component={title}
+              viewStyle={titleViewStyle}
+              textStyle={cellStyles.titleTextStyle}
+            />
+            <RenderWithText
+              component={children}
+            />
           </View>
-          {descriptionRender}
+          <RenderWithText
+            component={description}
+            textStyle={cellStyles.descriptionTextStyle}
+          />
           {arrowRender}
         </View>
-        {helpRender}
+        <RenderWithText
+          component={help}
+          viewStyle={cellStyles.helpViewStyle}
+          textStyle={cellStyles.helpTextStyle}
+        />
       </View>
     </View>;
     const wrapperProps = {

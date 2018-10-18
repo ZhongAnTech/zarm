@@ -192,6 +192,8 @@ const components = {
   cell_arrow_color: '#bcbcbc',                       // 箭头颜色
   cell_arrow_length: 10,                             // 箭头长度
   cell_arrow_border_width: 2,                        // 箭头粗细
+  cell_help_color: '#FF5050',                        // 提示文字颜色
+  cell_help_font_size: 10,                           // 提示文字大小
 
   // Checkbox
   checkbox_size: 20,

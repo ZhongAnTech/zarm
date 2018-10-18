@@ -63,16 +63,23 @@ export default {
   iconStyle: {
     marginRight: variables.padding_h_md,
   },
-  descriptionStyle: {
+  descriptionTextStyle: {
     color: variables.cell_description_color,
     fontSize: variables.cell_description_font_size,
   },
-  titleStyle: {
+  titleViewStyle: {
+    paddingBottom: variables.padding_v_md,
+  },
+  titleTextStyle: {
     color: variables.cell_title_color,
     fontSize: variables.cell_title_font_size,
   },
-  helpStyle: {
+  helpViewStyle: {
     paddingTop: variables.padding_v_md,
+  },
+  helpTextStyle: {
+    color: variables.cell_help_color,
+    fontSize: variables.cell_help_font_size,
   },
   underlayColorStyle: {
     backgroundColor: variables.background_active,
