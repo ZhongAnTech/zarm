@@ -1,6 +1,8 @@
 ## 通告栏 NoticeBar
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { NoticeBar, Icon } from 'zarm';
 
@@ -19,10 +21,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 特定场景
+
+### 特定场景
 ```jsx
 import { NoticeBar  } from 'zarm';
 
@@ -39,10 +41,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -54,5 +56,3 @@ ReactDOM.render(<Demo />, mountNode);
 | hasClosable | boolean | false | | 是否显示关闭按钮 |
 | hasArrow | boolean | false | | 是否显示箭头 |
 | onClick | <code>() => void</code> | noop | | 点击后触发的回调函数 |
-
-:::

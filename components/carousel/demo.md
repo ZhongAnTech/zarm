@@ -1,6 +1,8 @@
-## 图片轮播 Carousel
+## 走马灯 Carousel
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -14,7 +16,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -38,10 +40,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 纵向
+
+### 纵向
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -55,7 +57,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -66,7 +68,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Carousel
-          direction="top"
+          direction="up"
           height="48vw"
         >
           {contentRender()}
@@ -78,10 +80,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 循环轮播
+
+### 循环轮播
 ```jsx
 import { Carousel, Button } from 'zarm';
 
@@ -95,7 +97,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -143,10 +145,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 自动循环轮播
+
+### 自动循环轮播
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -160,7 +162,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -187,16 +189,16 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | prefixCls | string | za-carousel | | 类名前缀 |
 | className | string | | | 追加类名 |
-| direction | string | 'left' | 'left', 'right', 'top', 'bottom' | 滑动方向 |
+| direction | string | 'left' | 'left', 'right', 'up', 'down' | 滑动方向 |
 | height | number &#124; string | | | 高度 |
 | activeIndex | number | 0 | | 当前页面的索引 |
 | loop | boolean | false | | 是否循环 |
@@ -208,5 +210,3 @@ ReactDOM.render(<Demo />, mountNode);
 | showPagination | boolean | true | | 是否显示分页器 |
 | onChange | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化时触发的回调函数 |
 | onChangeEnd | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化动画结束后触发的回调函数 |
-
-:::

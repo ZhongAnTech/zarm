@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseSelectProps } from './PropsType';
 import Picker from '../picker';
-import getState from '../utils/getState';
+import parseProps from '../picker-view/utils/parseProps';
 import { isArray } from '../utils/validate';
 
 export interface SelectProps extends BaseSelectProps {
@@ -27,13 +27,13 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   constructor(props) {
     super(props);
-    this.state = getState(props);
+    this.state = parseProps.getSource(props);
     this.tempValue = this.state.value;
     this.tempObjValue = this.state.objValue;
   }
 
   componentWillReceiveProps(nextProps) {
-    const state = getState(nextProps);
+    const state = parseProps.getSource(nextProps);
     this.tempValue = state.value;
     this.tempObjValue = state.objValue;
     this.setState(state);

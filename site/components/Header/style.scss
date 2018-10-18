@@ -1,0 +1,47 @@
+header {
+  position: fixed;
+  top: 0;
+  min-width: 1200px;
+  width: 100%;
+  height: 64px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+  z-index: 1000;
+}
+
+.logo {
+  float: left;
+  width: 280px;
+  height: 100%;
+  font-size: 20px;
+
+  a {
+    display: block;
+    // margin-right: 80px;
+    padding-top: 16px;
+    height: 100%;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+
+.search {
+  float: left;
+  margin-left: 60px;
+  margin-top: 16px;
+}
+
+.lang {
+  float: right;
+  margin: 16px 125px 0 125px;
+}
+
+nav {
+  float: right;
+
+  .ui-menu-item {
+    height: 64px !important;
+    line-height: 62px !important;
+  }
+}

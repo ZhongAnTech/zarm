@@ -1,6 +1,8 @@
 ## 折叠面板 Collapse
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -35,10 +37,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 手风琴模式
+
+### 手风琴模式
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -73,10 +75,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 默认展开项
+
+### 默认展开项
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -112,10 +114,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 允许展开多项
+
+### 允许展开多项
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -150,10 +152,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 禁用子项
+
+### 禁用子项
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -191,10 +193,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 ### Collapse
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
@@ -216,4 +218,3 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | false | | 是否禁用 |
 | style | React.CSSProperties | | | 自定义样式 |
 
-:::

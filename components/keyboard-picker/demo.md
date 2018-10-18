@@ -1,6 +1,8 @@
 ## 虚拟键盘 Keyboard & KeyboardPicker
 
-:::demo 平铺键盘 Keyboard
+
+
+### 平铺键盘 Keyboard
 ```jsx
 import { Cell, Select, Keyboard } from 'zarm';
 
@@ -38,10 +40,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 键盘触发器 KeyboardPicker
+
+### 键盘触发器 KeyboardPicker
 ```jsx
 import { Cell, Button, KeyboardPicker, Input } from 'zarm';
 
@@ -98,10 +100,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -114,5 +116,3 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | visible | boolean | false | | 是否展示 |
-
-:::

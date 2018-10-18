@@ -1,6 +1,8 @@
 ## 模态框 Modal
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Modal, Cell, Button, Select } from 'zarm';
 
@@ -129,10 +131,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 特定场景
+
+### 特定场景
 ```jsx
 import { Cell, Button, Alert, Confirm  } from 'zarm';
 
@@ -200,10 +202,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -215,5 +217,3 @@ ReactDOM.render(<Demo />, mountNode);
 | animationDuration | number | 200 | | 动画执行时间 |
 | width | string &#124; number | `70%` | | 宽度 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-
-:::

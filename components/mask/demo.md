@@ -1,6 +1,8 @@
 ## 遮罩 Mask
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell, Button, Mask } from 'zarm';
 
@@ -31,15 +33,13 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 必填 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
 | visible | boolean | 否 | false | 是否显示 |
 | type | 'normal' \| 'transparent' | 否 | 'normal' | 类型 |
 | onClick | MouseEventHandler<HTMLDivElement\> | 否 | \&nbsp; | 点击后触发的回调函数 |
-
-:::

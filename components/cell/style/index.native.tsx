@@ -61,7 +61,7 @@ export default {
     alignItems: 'flex-start',
   },
   iconStyle: {
-    marginRight: variables.padding_v_md,
+    marginRight: variables.padding_h_md,
   },
   descriptionStyle: {
     color: variables.cell_description_color,

@@ -1,0 +1,36 @@
+@import "mixins";
+
+$prefixCls: $prefixCls-nav-bar;
+
+.#{$prefixCls} {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $nav-bar-height;
+  background: $nav-bar-color;
+
+  &-title {
+    position: absolute;
+    left: 50%;
+    white-space: nowrap;
+    font-size: r(18);
+    font-weight: 500;
+    transform: translate(-50%, 0);
+  }
+
+  &-side {
+    @include icon-size(
+      $nav-bar-icon-size
+    );
+
+    &-left {
+      margin-left: r(16);
+    }
+
+    &-right {
+      margin-right: r(16);
+    }
+  }
+}

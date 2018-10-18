@@ -1,6 +1,6 @@
 export default interface PropsType {
   theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
-  shape?: 'dot' | 'rect' | 'radius' | 'round' | 'circle' | 'leaf';
+  shape?: 'dot' | 'radius' | 'round' |'rect'| 'circle' | 'leaf';
   sup?: boolean;
   text?: string;
   style?: React.CSSProperties;

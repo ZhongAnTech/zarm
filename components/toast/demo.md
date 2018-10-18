@@ -1,6 +1,8 @@
 ## 轻提示 Toast
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Toast, Cell, Button, Icon } from 'zarm';
 
@@ -68,10 +70,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 加载中
+
+### 加载中
 ```jsx
 import { Loading, Cell, Button } from 'zarm';
 
@@ -103,10 +105,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+
+### API
 
 | 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -116,5 +118,3 @@ ReactDOM.render(<Demo />, mountNode);
 | stayTime | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
 | onClose | <code>() => void</code> | noop | | 关闭时触发的回调函数 |
 | onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-
-:::

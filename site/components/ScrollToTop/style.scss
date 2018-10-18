@@ -1,0 +1,25 @@
+
+.scroll-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 50px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #999;
+  font-size: 20px;
+  border-radius: 30px;
+  opacity: .8;
+  box-shadow:0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: #12C287;
+    color: #fff;
+    box-shadow:0px 2px 10px 0px rgba(18, 194, 135, 0.3);
+  }
+
+  &.hide {
+    display: none;
+  }
+}

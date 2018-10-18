@@ -15,15 +15,19 @@
   border-color: $border;
   color: $color;
 
-  &:active,
-  &.active {
+  &:hover {
+    background-color: $background;
+    border-color: $border;
+    color: $color;
+  }
+
+  &:active {
     background-color: $active-background;
     border-color: $active-border;
     color: $active-color;
   }
 
-  &.disabled,
-  &:disabled {
+  &.disabled {
     background-color: $disabled-background;
     border-color: $disabled-border;
     color: $disabled-color;
@@ -32,11 +36,8 @@
     cursor: not-allowed;
 
     &:active,
-    &.active,
     &:focus,
-    &.focus,
-    &:visited,
-    &.visited {
+    &:visited {
       background-color: $disabled-background;
       border-color: $disabled-border;
       color: $disabled-color;
@@ -93,25 +94,20 @@
     background-color: $background;
     color: $color;
 
-    &:active,
-    &.active {
+    &:active {
       background-color: $active-background;
       border-color: $active-border;
       color: $active-color;
     }
 
-    &:disabled,
     &.disabled {
       border-color: $border-disabled;
       color: $color-text-disabled;
       cursor: not-allowed;
 
       &:active,
-      &.active,
       &:focus,
-      &.focus,
-      &:visited,
-      &.visited {
+      &:visited {
         border-color: $border-disabled;
         color: $color-text-disabled;
       }
@@ -142,7 +138,6 @@
   }
 
   /* disabled Button */
-  &:disabled,
   &.disabled {
     cursor: not-allowed;
     opacity: $opacity-disabled;
