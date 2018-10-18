@@ -5,12 +5,12 @@ $prefixCls: $prefixCls-tooltip;
   justify-content: center;
   position: absolute;
   transform: translateY(-100%);
-  padding-bottom: $tooltip-arrow-size;
+  padding-bottom: $padding-h-md;
 
   &-inner {
     position: relative;
     background-color: rgba(0, 0, 0, $opacity-tooltip);
-    padding: $padding-v-md $padding-h-md;
+    padding: $padding-v-lg;
     border-radius: $radius-md;
     font-size: $tooltip-font-size;
     color: $tooltip-color;
