@@ -111,7 +111,11 @@ export default class Cell extends PureComponent<CellProps, any> {
         {helpRender}
       </View>
     </View>;
-    const wrapperProps = Object.assign({ activeOpacity: 0.3, stlye: contentStyle, onPress: onClick }, others);
+    const wrapperProps = {
+      style: contentStyle,
+      onPress: onClick,
+      ...others,
+    };
     return onClick
       ? <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>
       : (contentRender);

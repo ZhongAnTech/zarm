@@ -36,12 +36,12 @@ export default class App extends PureComponent {
       <ScrollView>
         <View>
           <View style={styles.box}>
-            <Panel titleRender="基本用法">
+            <Panel title="基本用法">
               <Cell style={styles.cellStyle} title="标题文字" />
             </Panel>
           </View>
           <View style={styles.box}>
-            <Panel titleRender="带描述">
+            <Panel title="带描述">
               <Cell
                 style={styles.cellStyle}
                 title="标题文字"
@@ -50,7 +50,7 @@ export default class App extends PureComponent {
             </Panel>
           </View>
           <View style={styles.box}>
-            <Panel titleRender="带图标、描述">
+            <Panel title="带图标、描述">
               <Cell
                 icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
@@ -65,7 +65,7 @@ export default class App extends PureComponent {
             </Panel>
           </View>
           <View style={styles.box}>
-            <Panel titleRender="带跳转">
+            <Panel title="带跳转">
               <Cell
                 style={styles.cellStyle}
                 onClick={noop}
@@ -79,7 +79,7 @@ export default class App extends PureComponent {
             </Panel>
           </View>
           <View style={styles.box}>
-            <Panel titleRender="带描述、箭头、跳转">
+            <Panel title="带描述、箭头、跳转">
               <Cell
                 style={styles.cellStyle}
                 onClick={noop}
@@ -97,7 +97,7 @@ export default class App extends PureComponent {
             </Panel>
           </View>
           <View style={styles.box}>
-            <Panel titleRender="带图标、描述、箭头、跳转">
+            <Panel title="带图标、描述、箭头、跳转">
               <Cell
                 icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
@@ -125,7 +125,7 @@ export default class App extends PureComponent {
             </Panel>
           </View>
           <View style={styles.box}>
-            <Panel titleRender="提示信息">
+            <Panel title="提示信息">
               <Cell
                 style={styles.cellStyle}
                 title={<Text>标题</Text>}
