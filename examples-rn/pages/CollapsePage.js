@@ -6,7 +6,7 @@ export default class Page extends PureComponent {
   render() {
     return (
       <ScrollView>
-        <Panel titleRender="基本用法">
+        <Panel title="基本用法">
           <Collapse>
             <Collapse.Item title="50元套餐">
               <Text>我是50元套餐内容</Text>
@@ -29,7 +29,7 @@ export default class Page extends PureComponent {
           </Collapse>
         </Panel>
 
-        <Panel titleRender="手风琴模式">
+        <Panel title="手风琴模式">
           <Collapse animated>
             <Collapse.Item title="50元套餐">
               <Text>我是50元套餐内容</Text>
@@ -52,7 +52,7 @@ export default class Page extends PureComponent {
           </Collapse>
         </Panel>
 
-        <Panel titleRender="默认展开项">
+        <Panel title="默认展开项">
           <Collapse activeKey={[0, 2]} animated>
             <Collapse.Item title="50元套餐">
               <Text>我是50元套餐内容</Text>
@@ -75,7 +75,7 @@ export default class Page extends PureComponent {
           </Collapse>
         </Panel>
 
-        <Panel titleRender="允许展开多项">
+        <Panel title="允许展开多项">
           <Collapse multiple animated>
             <Collapse.Item title="50元套餐">
               <Text>我是50元套餐内容</Text>
@@ -98,7 +98,7 @@ export default class Page extends PureComponent {
           </Collapse>
         </Panel>
 
-        <Panel titleRender="禁用子项">
+        <Panel title="禁用子项">
           <Collapse defaultactiveKey={[1]} multiple animated>
             <Collapse.Item title="50元套餐">
               <Text>我是50元套餐内容</Text>
