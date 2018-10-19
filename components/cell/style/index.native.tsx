@@ -8,6 +8,9 @@ export default {
     minHeight: variables.cell_height,
     backgroundColor: variables.cell_background,
   },
+  activeWrapper: {
+    backgroundColor: variables.background_active,
+  },
   cellContentStyle: {
     flex: 1,
     flexDirection: 'column',

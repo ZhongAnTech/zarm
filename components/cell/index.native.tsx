@@ -1,11 +1,10 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import {
-    StyleSheet,
-    View,
-    Text,
-    TouchableHighlight,
-    ViewStyle,
-    GestureResponderEvent,
+  StyleSheet,
+  View,
+  TouchableHighlight,
+  ViewStyle,
+  GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import cellStyle from './style/index.native';
@@ -25,6 +24,21 @@ export default class Cell extends PureComponent<CellProps, any> {
     styles: cellStyles,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isActive: false,
+    };
+  }
+
+  onPressIn = () => {
+    this.setState({ isActive: true });
+  }
+
+  onPressOut = () => {
+    this.setState({ isActive: false });
+  }
+
   render() {
     const {
       hasArrow,
@@ -38,9 +52,11 @@ export default class Cell extends PureComponent<CellProps, any> {
       children,
       ...others
     } = this.props;
+    const { isActive } = this.state;
 
     const wrapperStyle = [
       styles!.wrapperStyle,
+      isActive && styles!.activeWrapper,
       style,
     ] as ViewStyle;
     const cellContentStyle = [
@@ -93,12 +109,11 @@ export default class Cell extends PureComponent<CellProps, any> {
               viewStyle={titleViewStyle}
               textStyle={cellStyles.titleTextStyle}
             />
-            <RenderWithText
-              component={children}
-            />
+            children
           </View>
           <RenderWithText
             component={description}
+            viewStyle={cellStyles.descriptionViewStyle}
             textStyle={cellStyles.descriptionTextStyle}
           />
           {arrowRender}
@@ -111,12 +126,17 @@ export default class Cell extends PureComponent<CellProps, any> {
       </View>
     </View>;
     const wrapperProps = {
+      activeOpacity: 1,
+      underlayColor: underlayColor,
       style: contentStyle,
       onPress: onClick,
+      onPressIn: this.onPressIn,
+      onPressOut: this.onPressOut,
       ...others,
     };
+
     return onClick
-      ? <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>
-      : (contentRender);
+      ? <TouchableHighlight {...wrapperProps}>{contentRender}</TouchableHighlight>
+      : contentRender;
   }
 }
