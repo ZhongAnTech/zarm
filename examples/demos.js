@@ -78,6 +78,10 @@ module.exports = {
       title: 'ActivityIndicator',
       description: '活动指示器 ActivityIndicator',
     },
+    {
+      title: 'Tooltip',
+      description: '工具提示 Tooltip',
+    },
   ],
   view: [
     {
