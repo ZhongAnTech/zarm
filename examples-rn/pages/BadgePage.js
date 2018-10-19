@@ -52,7 +52,7 @@ export default class Page extends PureComponent {
   render() {
     return (
       <ScrollView>
-        <Panel titleRender="基本用法">
+        <Panel title="基本用法">
           <Cell hasArrow title={<Text>点状</Text>}>
             <Badge />
           </Cell>
@@ -73,7 +73,7 @@ export default class Page extends PureComponent {
           </Cell>
         </Panel>
 
-        <Panel titleRender="多主题">
+        <Panel title="多主题">
           <View style={[styles.content, styles.supContent]}>
             <View style={styles.supBox}>
               <Badge theme="primary" />
@@ -104,7 +104,7 @@ export default class Page extends PureComponent {
           </View>
         </Panel>
 
-        <Panel titleRender="上标位置">
+        <Panel title="上标位置">
           <View style={[styles.content, styles.supContent]}>
             <View style={styles.supBox}>
               <Badge sup>
@@ -144,7 +144,7 @@ export default class Page extends PureComponent {
           </View>
         </Panel>
 
-        <Panel titleRender="文本示例">
+        <Panel title="文本示例">
           <View style={[styles.content, styles.textContent]}>
             <View style={styles.textBox}>
               <Badge sup shape="dot">

@@ -36,28 +36,28 @@ export default class Index extends PureComponent {
           <Text style={styles.brandDescription}>众安科技移动端组件库</Text>
         </View>
         <View style={styles.main}>
-          <Panel titleRender={`数据录入（${form.length}）`}>
+          <Panel title={`数据录入（${form.length}）`}>
             {
               form.map((component, i) => (
                 <Cell key={+i} hasArrow title={<Text>{component.description}</Text>} onClick={() => navigate(component.title)} />
               ))
             }
           </Panel>
-          <Panel titleRender={`操作反馈（${feedback.length}）`}>
+          <Panel title={`操作反馈（${feedback.length}）`}>
             {
               feedback.map((component, i) => (
                 <Cell key={+i} hasArrow title={<Text>{component.description}</Text>} onClick={() => navigate(component.title)} />
               ))
             }
           </Panel>
-          <Panel titleRender={`数据展示（${view.length}）`}>
+          <Panel title={`数据展示（${view.length}）`}>
             {
               view.map((component, i) => (
                 <Cell key={+i} hasArrow title={<Text>{component.description}</Text>} onClick={() => navigate(component.title)} />
               ))
             }
           </Panel>
-          <Panel titleRender={`导航（${navigation.length}）`}>
+          <Panel title={`导航（${navigation.length}）`}>
             {
               navigation.map((component, i) => (
                 <Cell key={+i} hasArrow title={<Text>{component.description}</Text>} onClick={() => navigate(component.title)} />

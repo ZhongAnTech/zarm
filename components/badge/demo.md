@@ -130,12 +130,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-badge | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `error` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| text | string | | | 显示文字 |
-| shape | string | | `dot`, `rect` , `radius`, `round`, `circle` ,`leaf` | 形状 |
-| sup | bool | false | | 是否上标位置 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'error' | 设置主题，可选值为 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| shape | string | 'dot' | 设置形状，可选值为 `dot`, `rect` , `radius`, `round`, `circle` ,`leaf` |
+| sup | bool | false | 是否上标位置 |
+| text | string | - | 设置显示的文字 |
 

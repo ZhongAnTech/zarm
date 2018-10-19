@@ -155,14 +155,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| theme | string | `default` | `default`, `primary`, `success`, `warning`, `error` | 主题 |
-| size | string | | `md`, `lg`, `sm`, `xs` | 大小 |
-| shape | string | 'rect' | `rect`, `radius`, `round`, `circle` | 形状 |
-| block | boolean | false | | 是否块级元素 |
-| ghost | boolean | false | | 是否幽灵按钮 |
-| disabled | boolean | false | | 是否禁用 |
-| loading | boolean | false | | 是否加载中状态 |
-| icon | ReactNode | | | 图标 |
-| onClick | MouseEventHandler<HTMLAnchorElement> | | | 点击后触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'default' | 设置主题，可选值为 `default`, `primary`, `success`, `warning`, `error` |
+| size | string | 'md' | 设置大小，可选值为 `md`, `lg`, `sm`, `xs` |
+| shape | string | 'rect' | 设置形状，可选值为 `rect`, `radius`, `round`, `circle` |
+| block | boolean | false | 是否块级元素 |
+| ghost | boolean | false | 是否幽灵按钮 |
+| disabled | boolean | false | 是否禁用 |
+| loading | boolean | false | 是否加载中状态 |
+| icon | ReactNode | - | 设置图标 |
+| onClick | function | - | 点击后触发的回调函数 |

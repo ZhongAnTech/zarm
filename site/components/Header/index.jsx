@@ -52,7 +52,7 @@ class Header extends PureComponent {
                 dropdown: visible,
               });
             }}
-            overlay={<canvas className="qrcode" ref={(ele) => { this.qrcode = ele; }} />}
+            overlay={<canvas ref={(ele) => { this.qrcode = ele; }} />}
           >
             <Button theme="info">扫码体验</Button>
           </Dropdown>
