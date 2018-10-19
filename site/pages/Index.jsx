@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { Cell } from 'zarm';
 import Container from '@site/components/Container';
 import Footer from '@site/components/Footer';
-import '../styles/pages/IndexPage.scss';
 
 class Page extends PureComponent {
   render() {

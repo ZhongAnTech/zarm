@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-gist.css';
 
-export default class Markdown extends React.Component {
+export default class Markdown extends Component {
   render() {
     const { document, className } = this.document(localStorage.getItem('LANGUAGE') || 'zh-CN');
 

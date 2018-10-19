@@ -35,11 +35,17 @@
       overflow: hidden;
       border-left: 1px solid #ebedf0;
 
+      .hljs {
+        background-color: transparent;
+      }
+
       pre {
-        padding: 15px;
-        border: 1px solid #eaeefb;
-        border-radius: 4px;
-        background: #f9fafc;
+        padding: 16px;
+        overflow: auto;
+        font-size: 14px;
+        line-height: 1.45;
+        background-color: #f6f8fa;
+        border-radius: 3px;
       }
 
       h2 {

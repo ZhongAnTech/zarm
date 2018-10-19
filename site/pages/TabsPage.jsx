@@ -1,5 +1,4 @@
 import Markdown from '../components/Markdown';
-import '../styles/pages/TabsPage';
 
 export default class Page extends Markdown {
   document = () => {

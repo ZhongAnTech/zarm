@@ -7,7 +7,7 @@ import Format from '@site/utils/format';
 import Container from '@site/components/Container';
 import Header from '@site/components/Header';
 import ScrollToTop from '@site/components/ScrollToTop';
-import './Docs.scss';
+import './style.scss';
 
 class Page extends PureComponent {
   getMenu = (groupName, key) => {
@@ -28,12 +28,17 @@ class Page extends PureComponent {
     );
   }
 
+  iframeURL() {
+    const domain = window.location.origin;
+    const path = this.props.location.pathname.split('/')[2];
+    return path !== 'quick-start'
+      ? `${domain}/#/${path}`
+      : domain;
+  }
+
   render() {
     const { location, history, match } = this.props;
     const { form, feedback, view, navigation } = components;
-    const iframeURL = location.pathname.split('/')[2] !== 'quick-start'
-      ? `https://zarm.design/#/${location.pathname.split('/')[2]}`
-      : 'https://zarm.design';
 
     return (
       <Container className="docs-page">
@@ -67,7 +72,7 @@ class Page extends PureComponent {
             </Switch>
           </div>
           <div className="simulator">
-            <iframe src={iframeURL} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+            <iframe src={this.iframeURL()} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
           <ScrollToTop>
             <div className="scroll-to-top">

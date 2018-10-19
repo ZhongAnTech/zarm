@@ -1,5 +1,4 @@
 import Markdown from '../components/Markdown';
-import '../styles/pages/CarouselPage';
 
 export default class Page extends Markdown {
   document = () => {
