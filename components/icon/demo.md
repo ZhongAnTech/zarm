@@ -46,5 +46,5 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'default' | 主题，可选值 'default', 'primary', 'info', 'success', 'warning', 'error' |
-| type | string | - | 图标类型，可选值 'right', 'right-round', 'right-round-fill','wrong', 'wrong-round', 'wrong-round-fill', 'info-round', 'info-round-fill', 'question-round', 'question-round-fill', 'warning-round', 'warning-round-fill', 'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom', 'add', 'add-round', 'add-round-fill', 'minus', 'minus-round', 'minus-round-fill', 'broadcast' |
+| theme | string | 'default' | 主题，可选值 `default`、`primary`、`info`、`success`、`warning`、`error` |
+| type | string | - | 图标类型，可选值 `right`、`right-round`、`right-round-fill`,`wrong`、`wrong-round`、`wrong-round-fill`、`info-round`、`info-round-fill`、`question-round`、`question-round-fill`、`warning-round`、`warning-round-fill`、`arrow-left`、`arrow-right`、`arrow-top`、`arrow-bottom`、`add`、`add-round`、`add-round-fill`、`minus`、`minus-round`、`minus-round-fill`、`broadcast` |
