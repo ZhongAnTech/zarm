@@ -38,10 +38,6 @@ $prefixCls: $prefixCls-cell;
         background-color: $background-active;
       }
     }
-
-    .#{$prefixCls}-title {
-      flex: 1;
-    }
   }
 
   &.disabled {
@@ -102,11 +98,16 @@ $prefixCls: $prefixCls-cell;
   }
 
   &-title {
-    width: $cell-label-width;
+    flex: 1;
     padding: $cell-padding-h 0;
     overflow: hidden;
     color: $cell-title-color;
     line-height: $cell-title-line-height;
+
+    &-label {
+      flex: none;
+      width: $cell-label-width;
+    }
   }
 
   &-content {

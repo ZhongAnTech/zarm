@@ -22,10 +22,15 @@ const styles = {
     color: '#FF5050',
     fontSize: 10,
   },
-  childrenStyle: {
-    fontSize: 12,
-    marginTop: 5,
-    color: '#909090',
+  titleStyle: {
+    fontSize: 15,
+    lineHeight: 24,
+    color: '#464646',
+  },
+  descriptionStyle: {
+    fontSize: 15,
+    lineHeight: 24,
+    color: 'grey',
   },
 };
 const noop = () => {};
@@ -118,7 +123,12 @@ export default class App extends PureComponent {
                 icon={<Image style={styles.iconBigStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
                 style={styles.cellStyle}
                 onClick={noop}
-                title={<View><Text>标题文字</Text><Text style={styles.childrenStyle}>描述文字</Text></View>}
+                title={
+                  <View>
+                    <Text style={styles.titleStyle}>标题文字</Text>
+                    <Text style={styles.descriptionStyle}>描述文字</Text>
+                  </View>
+                }
                 description="附加提示"
                 hasArrow
               />
@@ -128,7 +138,7 @@ export default class App extends PureComponent {
             <Panel title="提示信息">
               <Cell
                 style={styles.cellStyle}
-                title={<Text>标题</Text>}
+                title="标题"
                 help={<View><Text style={styles.helpTextStyle}>标题不能为空</Text></View>}
               >
                 <TextInput placeholder="请输入标题" />

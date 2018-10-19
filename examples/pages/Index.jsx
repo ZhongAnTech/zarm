@@ -20,28 +20,28 @@ class Page extends PureComponent {
           </section>
         </header>
         <main>
-          <Panel titleRender={`数据录入（${form.length}）`}>
+          <Panel title={`数据录入（${form.length}）`}>
             {
               form.map((component, i) => (
                 <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />
               ))
             }
           </Panel>
-          <Panel titleRender={`操作反馈（${feedback.length}）`}>
+          <Panel title={`操作反馈（${feedback.length}）`}>
             {
               feedback.map((component, i) => (
                 <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />
               ))
             }
           </Panel>
-          <Panel titleRender={`数据展示（${view.length}）`}>
+          <Panel title={`数据展示（${view.length}）`}>
             {
               view.map((component, i) => (
                 <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />
               ))
             }
           </Panel>
-          <Panel titleRender={`导航（${navigation.length}）`}>
+          <Panel title={`导航（${navigation.length}）`}>
             {
               navigation.map((component, i) => (
                 <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />

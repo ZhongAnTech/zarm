@@ -35,7 +35,6 @@ export default {
   },
   bodyStyle: {
     flex: 1,
-    justifyContent: 'space-between',
     alignItems: 'center',
   },
   arrowStyle: {
@@ -71,11 +70,14 @@ export default {
     fontSize: variables.cell_description_font_size,
   },
   titleViewStyle: {
-    paddingBottom: variables.padding_v_md,
+  },
+  labelTitleViewStyle: {
+    width: variables.cell_label_width,
   },
   titleTextStyle: {
     color: variables.cell_title_color,
     fontSize: variables.cell_title_font_size,
+    lineHeight: variables.cell_title_line_height,
   },
   helpViewStyle: {
     paddingTop: variables.padding_v_md,

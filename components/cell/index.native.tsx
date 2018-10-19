@@ -82,7 +82,8 @@ export default class Cell extends PureComponent<CellProps, any> {
     ] as ViewStyle;
 
     const titleViewStyle = [
-      children && description && styles!.titleViewStyle,
+      styles!.titleViewStyle,
+      !!children && styles!.labelTitleViewStyle,
     ] as ViewStyle;
 
     const arrowStyle = [
@@ -96,7 +97,7 @@ export default class Cell extends PureComponent<CellProps, any> {
     const iconRender = icon && <View style={iconStyle}>{icon}</View>;
     const arrowRender = hasArrow && <View style={arrowStyle}/>;
 
-    const contentRender = <View style={wrapperStyle}>
+    const cellRender = <View style={wrapperStyle}>
       <View style={cellLineContainerStyle}>
         <View style={cellLineStyle}/>
       </View>
@@ -109,11 +110,12 @@ export default class Cell extends PureComponent<CellProps, any> {
               viewStyle={titleViewStyle}
               textStyle={cellStyles.titleTextStyle}
             />
-            children
+            <RenderWithText
+              component={children}
+            />
           </View>
           <RenderWithText
             component={description}
-            viewStyle={cellStyles.descriptionViewStyle}
             textStyle={cellStyles.descriptionTextStyle}
           />
           {arrowRender}
@@ -125,6 +127,7 @@ export default class Cell extends PureComponent<CellProps, any> {
         />
       </View>
     </View>;
+
     const wrapperProps = {
       activeOpacity: 1,
       underlayColor: underlayColor,
@@ -136,7 +139,7 @@ export default class Cell extends PureComponent<CellProps, any> {
     };
 
     return onClick
-      ? <TouchableHighlight {...wrapperProps}>{contentRender}</TouchableHighlight>
-      : contentRender;
+      ? <TouchableHighlight {...wrapperProps}>{cellRender}</TouchableHighlight>
+      : cellRender;
   }
 }

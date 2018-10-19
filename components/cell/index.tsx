@@ -41,8 +41,12 @@ export default class Cell extends PureComponent<CellProps, {}> {
       'has-arrow': hasArrow,
     });
 
+    const titleCls = classnames(`${prefixCls}-title`, {
+      [`${prefixCls}-title-label`]: !!children,
+    });
+
     const iconRender = icon && <div className={`${prefixCls}-icon`}>{icon}</div>;
-    const titleRender = title && <div className={`${prefixCls}-title`}>{title}</div>;
+    const titleRender = title && <div className={titleCls}>{title}</div>;
     const contentRender = children && <div className={`${prefixCls}-content`}>{children}</div>;
     const arrowRender = hasArrow && <div className={`${prefixCls}-arrow`} />;
     const helpRender = help && (
