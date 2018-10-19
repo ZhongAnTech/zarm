@@ -19,23 +19,21 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
   visible={true}
 >
   <Popup
+    animationDuration={200}
+    autoClose={false}
+    direction="bottom"
+    mask={true}
+    maskType="normal"
     onMaskClick={[Function]}
+    prefixCls="za-popup"
+    stayTime={3000}
     visible={true}
   >
     <Portal
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      handlePortalUnmount={[Function]}
-      mask={true}
-      maskType="normal"
-      onMaskClick={[Function]}
-      prefixCls="za-popup"
-      stayTime={3000}
-      visible={true}
+      getContainer={[Function]}
     >
       <div
-        className="za-popup za-popup-hidden"
+        className="za-popup"
       >
         <div
           className="za-popup-wrapper za-popup-wrapper-bottom"
@@ -96,7 +94,7 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
               placeholder="请选择"
               prefixCls="za-picker"
               title="请选择"
-              value={2009-03-03T15:00:00.000Z}
+              value={2009-03-04T05:00:00.000Z}
               valueMember="value"
               visible={true}
             >
@@ -1280,8 +1278,19 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
             }
           }
           type="normal"
-          visible={false}
-        />
+          visible={true}
+        >
+          <div
+            className="za-mask type-normal"
+            onClick={[Function]}
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+          />
+        </Mask>
       </div>
     </Portal>
   </Popup>
