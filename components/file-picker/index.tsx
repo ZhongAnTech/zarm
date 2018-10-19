@@ -24,7 +24,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     prefixCls: 'za-file-picker',
     disabled: false,
     multiple: false,
-    onBeforeSelect() { return true; },
+    onBeforeSelect: () => true,
   };
 
   private file;
