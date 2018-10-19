@@ -157,12 +157,12 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'default' | 设置主题，可选值为 `default`, `primary`, `success`, `warning`, `error` |
-| size | string | 'md' | 设置大小，可选值为 `md`, `lg`, `sm`, `xs` |
-| shape | string | 'rect' | 设置形状，可选值为 `rect`, `radius`, `round`, `circle` |
+| theme | string | 'default' | 设置主题，可选值为 `default`、`primary`、`success`、`warning`、`error` |
+| size | string | 'md' | 设置大小，可选值为 `md`、`lg`、`sm`、`xs` |
+| shape | string | 'rect' | 设置形状，可选值为 `rect`、`radius`、`round`、`circle` |
 | block | boolean | false | 是否块级元素 |
 | ghost | boolean | false | 是否幽灵按钮 |
 | disabled | boolean | false | 是否禁用 |
 | loading | boolean | false | 是否加载中状态 |
 | icon | ReactNode | - | 设置图标 |
-| onClick | function | - | 点击后触发的回调函数 |
+| onClick | () => void | - | 点击后触发的回调函数 |

@@ -167,20 +167,38 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-pull | | 类名前缀 |
-| className | string | | | 追加类名 |
-| refresh | Action | | | 下拉刷新的参数配置 |
-| load | Action |  | | 上拉加载的参数配置 |
-| animationDuration | number | 400 | | 动画执行时间，单位：毫秒 |
-| stayTime | number | 1000 | | 加载成功停留时间 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| refresh | Action | - | 下拉刷新的参数配置 |
+| load | Action | - | 上拉加载的参数配置 |
+| animationDuration | number | 400 | 动画执行时间，单位：毫秒 |
+| stayTime | number | 1000 | 加载成功停留时间 |
 
 #### Action 类型定义
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| state | REFRESH_STATE &#124; LOAD_STATE | 0 | | 状态枚举 |
-| startDistance | number | 20 | | 下拉时的助跑距离 |
-| distance | number | 50 | | 触发距离阀值 |
-| render | <code>(refreshState: REFRESH_STATE &#124; LOAD_STATE, percent: number) => any</code> | | | 各状态渲染的回调函数 |
-| handler | <code>() => void</code> | | | 达到阀值后释放触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| state | REFRESH_STATE &#124; LOAD_STATE | 0 | 状态枚举 |
+| startDistance | number | 20 | 下拉时的助跑距离，单位：px |
+| distance | number | 50 | 触发距离阀值，单位：px |
+| render | (refreshState: REFRESH_STATE &#124; LOAD_STATE, percent: number) => ReactNode | - | 各状态渲染的回调函数 |
+| handler | () => void | - | 达到阀值后释放触发的回调函数 |
+
+#### REFRESH_STATE 枚举定义
+| 枚举值 | 说明 |
+| :--- | :--- |
+| normal | 普通状态 |
+| pull | 下拉状态（未满足刷新条件） |
+| drop | 释放立即刷新（满足刷新条件） |
+| loading | 加载中 |
+| success | 加载成功 |
+| failure | 加载失败 |
+
+#### LOAD_STATE 枚举定义
+| 枚举值 | 说明 |
+| :--- | :--- |
+| normal | 普通状态 |
+| abort | 终止状态 |
+| loading | 加载中 |
+| success | 加载成功 |
+| failure | 加载失败 |
+| complete | 加载完成 |

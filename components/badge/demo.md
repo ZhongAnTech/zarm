@@ -132,8 +132,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'error' | 设置主题，可选值为 `default`, `primary`, `info`, `success`, `warning`, `error` |
-| shape | string | 'dot' | 设置形状，可选值为 `dot`, `rect` , `radius`, `round`, `circle` ,`leaf` |
+| theme | string | 'error' | 设置主题，可选值为 `default`、`primary`、`info`、`success`、`warning`、`error` |
+| shape | string | 'dot' | 设置形状，可选值为 `dot`、`rect` 、`radius`、`round`、`circle`、`leaf` |
 | sup | bool | false | 是否上标位置 |
 | text | string | - | 设置显示的文字 |
 

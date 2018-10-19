@@ -131,22 +131,20 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-search-bar | | 类名前缀 |
-| className | string | | | 追加类名 |
-| placeholder | string | '搜索' | | 占位符 |
-| value | string | | | 值 |
-| defaultValue | string |  | | 初始值 |
-| shape | string | | `radius`, `round` | 圆角或者椭圆角 |
-| disabled | boolean | false | | 是否禁用 |
-| showCancel | boolean | false | | 是否一直展示取消按钮 |
-| cancelText | any | '取消' | | 取消按钮显示的内容 |
-| maxLength | number | | | 输入字数上限 |
-| clearable | boolean | true | | 是否提供清空输入框功能 |
-| onChange | <code>(value: string) => void</code> | noop | \(value: string\) | 值变化时触发的回调函数 |
-| onSubmit | <code>(value: string) => void</code> | noop | \(value: string\) | 提交时触发的回调函数 |
-| onFocus | <code>() => void</code> | noop | | 获取焦点时触发的回调函数 |
-| onBlur | <code>() => void</code> | noop | | 失去焦点时触发的回调函数 |
-| onClear | <code>() => void</code> | noop | | 点击清除按钮时触发的回调函数 |
-| onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| placeholder | string | '搜索' | 占位符 |
+| value | string | - | 值 |
+| defaultValue | string | - | 初始值 |
+| shape | string | - | 形状，可选值 `radius`, `round` |
+| disabled | boolean | false | 是否禁用 |
+| showCancel | boolean | false | 是否一直展示取消按钮 |
+| cancelText | string | '取消' | 取消按钮显示的内容 |
+| maxLength | number | - | 输入字数上限 |
+| clearable | boolean | true | 是否提供清空输入框功能 |
+| onChange | (value: string) => void | - | 值变化时触发的回调函数 |
+| onSubmit | (value: string) => void | - | 提交时触发的回调函数 |
+| onFocus | () => void | - | 获取焦点时触发的回调函数 |
+| onBlur | () => void | - | 失去焦点时触发的回调函数 |
+| onClear | () => void | - | 点击清除按钮时触发的回调函数 |
+| onCancel | () => void | - | 点击取消时触发的回调函数 |

@@ -184,30 +184,26 @@ ReactDOM.render(<Demo />, mountNode);
 ### API
 
 #### Radio
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-radio | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| shape | string | | `radius`, `round` | 圆角或者椭圆角 | 
-| type | string | | `button`, `cell` | 显示类型 |
-| value | string &#124; number | | | 值 |
-| checked | boolean | | | 当前是否选中 |
-| defaultChecked | boolean | | | 初始是否选中 |
-| disabled | boolean | false | | 是否禁用 |
-| onChange | (checked: boolean) => void | | \(checked: boolean\) | 值变化时触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| shape | string | - | 形状，可选值 `radius`, `round` | 
+| type | string | - | 显示类型，可选值 `button`, `cell` |
+| value | string &#124; number | - | 值 |
+| checked | boolean | - | 当前是否选中 |
+| defaultChecked | boolean | - | 初始是否选中 |
+| disabled | boolean | false | 是否禁用 |
+| onChange | (checked: boolean) => void | - | 值变化时触发的回调函数 |
 
 #### Radio.Group
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-radio | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| type | string | | `button`, `cell` | 显示类型 |
-| shape | string | | `radius`, `round` | 形状 |
-| value | string &#124; number | | | 选中值 |
-| defaultValue | string &#124; number | | | 初始选中值 |
-| block | boolean | false | | 是否为块级元素 |
-| disabled | boolean | false | | 是否禁用 |
-| compact | boolean | false | | 是否启用紧凑模式 |
-| onChange | <code>(value: number &#124; string) => void</code> | noop | \(value: string &#124; number\) | 值变化时触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| shape | string | - | 形状，可选值 `radius`, `round` | 
+| type | string | - | 显示类型，可选值 `button`, `cell` |
+| value | string &#124; number | - | 选中值 |
+| defaultValue | string &#124; number | - | 初始选中值 |
+| block | boolean | false | 是否为块级元素 |
+| disabled | boolean | false | 是否禁用 |
+| compact | boolean | false | 是否启用紧凑模式 |
+| onChange | (value: number &#124; string) => void | - | 值变化时触发的回调函数 |

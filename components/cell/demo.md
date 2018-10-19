@@ -179,11 +179,11 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| hasArrow | boolean | false | | 是否显示箭头 |
-| icon | ReactNode | | | 显示的图标 |
-| titile | ReactNode | | | 标题 |
-| description | ReactNode | | | 描述 |
-| help | ReactNode | | | 下方提示信息，通常配合`Message`组件使用 |
-| onClick | MouseEventHandler<HTMLDivElement> | | | 点击后触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| hasArrow | boolean | false | 是否显示箭头 |
+| icon | ReactNode | - | 设置图标 |
+| titile | ReactNode | - | 设置标题区域内容 |
+| description | ReactNode | - | 设置描述区域内容 |
+| help | ReactNode | - | 设置下方提示信息区域内容，通常配合 `Message` 组件使用 |
+| onClick | () => void | - | 点击后触发的回调函数 |

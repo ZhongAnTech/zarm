@@ -50,12 +50,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-switch | | 类名前缀 |
-| className | string | | | 追加类名 |
-| checked | boolean | | | 值 |
-| defaultChecked | boolean | | | 初始值 |
-| disabled | boolean | false | | 是否禁用 |
-| onChange | <code>(value: boolean) => void</code> | | \(value: boolean\) | 值变化时触发的回调函数 |
-| style | React.CSSProperties | | | 自定义样式 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| checked | boolean | - | 值 |
+| defaultChecked | boolean | - | 初始值 |
+| disabled | boolean | false | 是否禁用 |
+| onChange | (value: boolean) => void | - | 值变化时触发的回调函数 |

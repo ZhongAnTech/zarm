@@ -56,6 +56,12 @@
         margin-top: 50px;
       }
 
+      h4 {
+        font-size: 16px;
+        font-weight: normal;
+        color: #1f2d3d;
+      }
+
       p {
         color: #666;
       }
@@ -69,13 +75,11 @@
       }
 
       table.grid {
-        border-collapse: collapse;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
         width: 100%;
-        background-color: #fff;
-        color: #5e6d82;
         font-size: 14px;
+        line-height: 1.5;
         margin-bottom: 45px;
-        line-height: 1.5em;
     
         strong {
           font-weight: normal;
@@ -84,8 +88,10 @@
         th {
           text-align: left;
           border-top: 1px solid #eaeefb;
-          background-color: #eff2f7;
+          background-color: #f9fafc;
           white-space: nowrap;
+          font-weight: normal;
+          color: #999;
         }
     
         td,
@@ -97,7 +103,14 @@
     
         th:first-child,
         td:first-child {
-          padding-left: 10px;
+          padding-left: 15px;
+        }
+
+        td > code {
+          background-color: #f1f1f1;
+          padding: 2px 6px;
+          margin: 0 1px;
+          border-radius: 3px;
         }
       }
     }

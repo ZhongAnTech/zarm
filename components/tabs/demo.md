@@ -149,22 +149,19 @@ ReactDOM.render(<Demo />, mountNode);
 ### API
 
 #### Tabs
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-tabs | | 类名前缀 |
-| className | string | | | 追加类名 |
-| value | string | | | 值 |
-| defaultValue | string | | | 初始值 |
-| disabled | boolean | false | | 是否禁用 |
-| canSwipe | boolean | false | | 是否支持滑动切换 |
-| lineWidth | number &#124; string | | | 线条宽度 |
-| onChange | <code>(index: number) => void</code> | noop | \(index: number\) | 值变化时触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| value | string | - | 值 |
+| defaultValue | string | - | 初始值 |
+| disabled | boolean | false | 是否禁用 |
+| canSwipe | boolean | false | 是否支持滑动切换 |
+| lineWidth | number &#124; string | - | 线条宽度 |
+| onChange | (index: number) => void | - | 值变化时触发的回调函数 |
 
 
 #### Panel
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| className | string | | | 追加类名 |
-| disabled | boolean | false | | 是否禁用 |
-| title | string | | | 标题 |
-| children | number | | | 内容 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| disabled | boolean | false | 是否禁用 |
+| title | string | - | 标题 |
+| children | number | - | 内容 |

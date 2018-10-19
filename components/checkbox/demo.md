@@ -177,30 +177,27 @@ ReactDOM.render(<Demo />, mountNode);
 ### API
 
 #### Checkbox
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-checkbox | | 类名前缀 |
-| className | string | | | 追加类名 |
-| checked | boolean | | | 是否选中 |
-| shape | string | | `radius`, `round` | 形状 |
-| block | boolean | false | | 是否为块级元素 |
-| type | string | | `button`, `cell` | 显示类型 |
-| defaultChecked | boolean | | | 初始是否选中 |
-| value | string &#124; number | | | 值 |
-| disabled | boolean | false | | 是否禁用 |
-| onChange | <code>(checked: boolean) => void</code> | | <code>\(checked: boolean\)</code> | 值变化时触发的回调函数 |
-| id | string | | | 方便外部带有for属性的label标签控制当前checkbox |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| shape | string | - | 形状，可选值 `radius`, `round` | 
+| type | string | - | 显示类型，可选值 `button`, `cell` |
+| value | string &#124; number | - | 值 |
+| checked | boolean | - | 当前是否选中 |
+| defaultChecked | boolean | - | 初始是否选中 |
+| disabled | boolean | false | 是否禁用 |
+| onChange | (checked: boolean) => void | - | 值变化时触发的回调函数 |
+| id | string | - | 方便外部带有for属性的label标签控制当前checkbox |
 
 #### Checkbox.Group
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-checkbox | | 类名前缀 |
-| className | string | | | 追加类名 |
-| block | boolean | false | | 是否为块级元素 |
-| shape | string | | `radius`, `round` | 形状 |
-| value | Array&lt;number &#124; string&gt; | [ ] | | 选中值 |
-| type | string | | `button`, `cell` | 显示类型 |
-| defaultValue | Array&lt;number &#124; string&gt; | [ ] | | 初始选中值 |
-| disabled | boolean | false | | 是否禁用 |
-| onChange | <code>(value: Array&lt;number &#124; string&gt;) => void</code> | noop | \(value: Array&lt;number &#124; string&gt;\) | 值变化时触发的回调函数 |
-| compact | boolean | false | | group内的checkbox（type="button"）是否无缝相连 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| shape | string | - | 形状，可选值 `radius`, `round` | 
+| type | string | - | 显示类型，可选值 `button`, `cell` |
+| value | Array&lt;number &#124; string&gt; | [] | 选中值 |
+| defaultValue | Array&lt;number &#124; string&gt; | [] | 初始选中值 |
+| block | boolean | false | 是否为块级元素 |
+| disabled | boolean | false | 是否禁用 |
+| compact | boolean | false | 是否启用紧凑模式 |
+| onChange | (value: Array&lt;number &#124; string&gt;) => void | - | 值变化时触发的回调函数 |

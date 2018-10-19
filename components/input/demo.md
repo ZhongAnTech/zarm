@@ -148,18 +148,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-input | | 类名前缀 |
-| className | string | | | 追加类名 |
-| type | string | `text` | `text`, `textarea` | 类型 |
-| value | string |  | | 值 |
-| defaultValue | string |  | | 初始值 |
-| disabled | boolean | false | | 是否禁用 |
-| rows | number | | | 多行文本时的显示行数。type为textarea类型时有效。 |
-| autoHeight | boolean | false | | 是否高度自适应 |
-| maxLength | number | | | 输入字数上限 |
-| showLength | boolean | false | | 是否显示输入字数。type为textarea类型时有效。 |
-| clearable | boolean | true | | 是否显示清除按钮。type不为textarea类型时有效。必须为受控组件（属性包含value、onChange）时方可生效。 |
-| onChange | <code>(value: string) => void</code> | noop | \(value: string\) | 值变化时触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| type | string | 'text' | 类型，可选值 `text`、`number`、`idcard`、`price`、`password`、`search` |
+| value | number | string | - | 值 |
+| defaultValue | number | string | - | 初始值 |
+| disabled | boolean | false | 是否禁用 |
+| rows | number | 2 | 多行文本时的显示行数。type为text类型时有效。 |
+| autoHeight | boolean | false | 是否高度自适应 |
+| maxLength | number | - | 输入字数上限 |
+| showLength | boolean | false | 是否显示输入字数。多行文本（type="text"且包含rows属性）时有效。 |
+| clearable | boolean | true | 是否显示清除按钮。多行文本（type="text"且包含rows属性）时无效。必须为受控组件（属性包含value、onChange）时方可生效。 |
+| onChange | (value: number &#124; string) => void | - | 值变化时触发的回调函数 |
 
