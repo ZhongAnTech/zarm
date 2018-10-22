@@ -11,7 +11,7 @@ export default {
   activeWrapper: {
     backgroundColor: variables.background_active,
   },
-  cellContentStyle: {
+  innerStyle: {
     flex: 1,
     flexDirection: 'column',
     marginTop: -1,
@@ -25,7 +25,7 @@ export default {
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: variables.border_color,
   },
-  containerStyle: {
+  contentStyle: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -53,10 +53,10 @@ export default {
     fontSize: variables.cell_description_font_size,
   },
   titleViewStyle: {
-    // width: '100%',
-    // alignItems: 'flex-start',
+    flex: 1,
   },
   labelTitleViewStyle: {
+    flex: 0,
     width: variables.cell_label_width,
   },
   titleTextStyle: {
@@ -72,7 +72,7 @@ export default {
     fontSize: variables.cell_help_font_size,
   },
   childrenViewStyle: {
-    flexDirection: 'row',
     flex: 1,
+    flexDirection: 'row',
   },
 };

@@ -74,8 +74,8 @@ export default class Cell extends PureComponent<CellProps, any> {
         <View style={styles!.lineContainerStyle}>
           <View style={styles!.lineStyle}/>
         </View>
-        <View style={styles!.cellContentStyle as ViewStyle}>
-          <View style={styles!.containerStyle as ViewStyle}>
+        <View style={styles!.innerStyle as ViewStyle}>
+          <View style={styles!.contentStyle as ViewStyle}>
             {iconRender}
             <View style={styles!.bodyStyle as ViewStyle}>
               <RenderWithText
