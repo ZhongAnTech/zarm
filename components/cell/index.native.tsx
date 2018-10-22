@@ -2,12 +2,14 @@ import React, { PureComponent, CSSProperties } from 'react';
 import {
     StyleSheet,
     View,
+    Text,
     TouchableHighlight,
     ViewStyle,
     GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import cellStyle from './style/index.native';
+import { RenderWithText } from '../utils/renderWithText.native';
 
 export interface CellProps extends PropsType {
   style?: CSSProperties;
@@ -58,29 +60,26 @@ export default class Cell extends PureComponent<CellProps, any> {
       description ? styles!.flexDirectionColumn : styles!.flexDirectionRow,
       description ? styles!.alignItemsStart : styles!.alignItemsCenter,
     ] as ViewStyle;
+
     const iconStyle = [
       styles!.iconStyle,
     ] as ViewStyle;
-    const titleStyle = [
-      description && styles!.paddingBottom,
+
+    const titleViewStyle = [
+      children && description && styles!.titleViewStyle,
     ] as ViewStyle;
+
     const arrowStyle = [
       styles!.arrowStyle,
-    ] as ViewStyle;
-    const helpStyle = [
-      styles!.helpStyle,
     ] as ViewStyle;
     const contentStyle = [
       !onClick && wrapperStyle,
     ] as ViewStyle;
 
     const underlayColor = (StyleSheet.flatten(styles!.underlayColorStyle) as any).backgroundColor;
-
     const iconRender = icon && <View style={iconStyle}>{icon}</View>;
-    const titleRender = title && <View style={titleStyle}>{title}</View>;
-    const descriptionRender = description && <View>{description}</View>;
     const arrowRender = hasArrow && <View style={arrowStyle}/>;
-    const helpRender = help && <View style={helpStyle}>{help}</View>;
+
     const contentRender = <View style={wrapperStyle}>
       <View style={cellLineContainerStyle}>
         <View style={cellLineStyle}/>
@@ -89,16 +88,33 @@ export default class Cell extends PureComponent<CellProps, any> {
         <View style={containerStyle}>
           {iconRender}
           <View style={bodyStyle}>
-            {titleRender}
-            {children}
+            <RenderWithText
+              component={title}
+              viewStyle={titleViewStyle}
+              textStyle={cellStyles.titleTextStyle}
+            />
+            <RenderWithText
+              component={children}
+            />
           </View>
-          {descriptionRender}
+          <RenderWithText
+            component={description}
+            textStyle={cellStyles.descriptionTextStyle}
+          />
           {arrowRender}
         </View>
-        {helpRender}
+        <RenderWithText
+          component={help}
+          viewStyle={cellStyles.helpViewStyle}
+          textStyle={cellStyles.helpTextStyle}
+        />
       </View>
     </View>;
-    const wrapperProps = Object.assign({ stlye: contentStyle, onPress: onClick }, others);
+    const wrapperProps = {
+      style: contentStyle,
+      onPress: onClick,
+      ...others,
+    };
     return onClick
       ? <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>
       : (contentRender);
