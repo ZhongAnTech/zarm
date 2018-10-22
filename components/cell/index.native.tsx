@@ -1,11 +1,10 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import {
-    StyleSheet,
-    View,
-    Text,
-    TouchableHighlight,
-    ViewStyle,
-    GestureResponderEvent,
+  StyleSheet,
+  View,
+  TouchableHighlight,
+  ViewStyle,
+  GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import cellStyle from './style/index.native';
@@ -25,6 +24,21 @@ export default class Cell extends PureComponent<CellProps, any> {
     styles: cellStyles,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isActive: false,
+    };
+  }
+
+  onPressIn = () => {
+    this.setState({ isActive: true });
+  }
+
+  onPressOut = () => {
+    this.setState({ isActive: false });
+  }
+
   render() {
     const {
       hasArrow,
@@ -38,85 +52,68 @@ export default class Cell extends PureComponent<CellProps, any> {
       children,
       ...others
     } = this.props;
+    const { isActive } = this.state;
 
     const wrapperStyle = [
       styles!.wrapperStyle,
+      isActive && styles!.activeWrapper,
       style,
-    ] as ViewStyle;
-    const cellContentStyle = [
-      styles!.cellContentStyle,
-    ] as ViewStyle;
-    const cellLineContainerStyle = [
-      styles!.cellLineLeft,
-    ] as ViewStyle;
-    const cellLineStyle = [
-      styles!.cellLineStyle,
-    ] as ViewStyle;
-    const containerStyle = [
-      styles!.containerStyle,
-    ] as ViewStyle;
-    const bodyStyle = [
-      styles!.bodyStyle,
-      description ? styles!.flexDirectionColumn : styles!.flexDirectionRow,
-      description ? styles!.alignItemsStart : styles!.alignItemsCenter,
-    ] as ViewStyle;
-
-    const iconStyle = [
-      styles!.iconStyle,
     ] as ViewStyle;
 
     const titleViewStyle = [
-      children && description && styles!.titleViewStyle,
+      styles!.titleViewStyle,
+      !!children && styles!.labelTitleViewStyle,
     ] as ViewStyle;
 
-    const arrowStyle = [
-      styles!.arrowStyle,
-    ] as ViewStyle;
-    const contentStyle = [
-      !onClick && wrapperStyle,
-    ] as ViewStyle;
+    const contentStyle = (!onClick && wrapperStyle) as ViewStyle;
+    const iconRender = icon && <View style={styles!.iconStyle}>{icon}</View>;
+    const arrowRender = hasArrow && <View style={styles!.arrowStyle}/>;
 
-    const underlayColor = (StyleSheet.flatten(styles!.underlayColorStyle) as any).backgroundColor;
-    const iconRender = icon && <View style={iconStyle}>{icon}</View>;
-    const arrowRender = hasArrow && <View style={arrowStyle}/>;
-
-    const contentRender = <View style={wrapperStyle}>
-      <View style={cellLineContainerStyle}>
-        <View style={cellLineStyle}/>
-      </View>
-      <View style={cellContentStyle}>
-        <View style={containerStyle}>
-          {iconRender}
-          <View style={bodyStyle}>
+    const cellRender = (
+      <View style={wrapperStyle}>
+        <View style={styles!.lineContainerStyle}>
+          <View style={styles!.lineStyle}/>
+        </View>
+        <View style={styles!.innerStyle as ViewStyle}>
+          <View style={styles!.contentStyle as ViewStyle}>
+            {iconRender}
+            <View style={styles!.bodyStyle as ViewStyle}>
+              <RenderWithText
+                component={title}
+                viewStyle={titleViewStyle}
+                textStyle={styles!.titleTextStyle}
+              />
+              <RenderWithText
+                component={children}
+                viewStyle={styles!.childrenViewStyle}
+              />
+            </View>
             <RenderWithText
-              component={title}
-              viewStyle={titleViewStyle}
-              textStyle={cellStyles.titleTextStyle}
+              component={description}
+              textStyle={styles!.descriptionTextStyle}
             />
-            <RenderWithText
-              component={children}
-            />
+            {arrowRender}
           </View>
           <RenderWithText
-            component={description}
-            textStyle={cellStyles.descriptionTextStyle}
+            component={help}
+            viewStyle={cellStyles.helpViewStyle}
+            textStyle={cellStyles.helpTextStyle}
           />
-          {arrowRender}
         </View>
-        <RenderWithText
-          component={help}
-          viewStyle={cellStyles.helpViewStyle}
-          textStyle={cellStyles.helpTextStyle}
-        />
       </View>
-    </View>;
+    );
+
     const wrapperProps = {
+      activeOpacity: 1,
       style: contentStyle,
       onPress: onClick,
+      onPressIn: this.onPressIn,
+      onPressOut: this.onPressOut,
       ...others,
     };
+
     return onClick
-      ? <TouchableHighlight {...wrapperProps} underlayColor={underlayColor}>{contentRender}</TouchableHighlight>
-      : (contentRender);
+      ? <TouchableHighlight {...wrapperProps}>{cellRender}</TouchableHighlight>
+      : cellRender;
   }
 }

@@ -10,7 +10,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell hasArrow title="点状" description={<Badge text="99" />} onClick={() => {}} />
+        <Cell hasArrow title="点状" description={<Badge />} onClick={() => {}} />
         <Cell hasArrow title="直角" description={<Badge shape="rect" text="免费" />} onClick={() => {}} />
         <Cell hasArrow title="圆角" description={<Badge shape="radius" text="new" />} onClick={() => {}} />
         <Cell hasArrow title="椭圆角" description={<Badge shape="round" text="999+" />} onClick={() => {}} />

@@ -1,7 +1,8 @@
 import React, { isValidElement } from 'react';
 import { View, Text } from 'react-native';
 
-export const RenderWithText = ({ component, viewStyle, textStyle }) => {
+export const RenderWithText = (props) => {
+  const { component, viewStyle, textStyle } = props;
   if (!component) {
     return null;
   }
