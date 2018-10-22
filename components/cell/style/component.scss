@@ -10,7 +10,7 @@ $prefixCls: $prefixCls-cell;
   @include onepx(top);
 
   &:after {
-    left: $cell-line-left;
+    left: $cell-line-padding-left;
   }
 
   &.theme-primary {
@@ -50,7 +50,7 @@ $prefixCls: $prefixCls-cell;
   &-inner {
     display: flex;
     align-items: center;
-    padding: 0 $padding-h-lg;
+    padding: 0 $cell-padding-h;
     font-size: $cell-title-font-size;
     min-height: $cell-height;
 
@@ -99,7 +99,7 @@ $prefixCls: $prefixCls-cell;
 
   &-title {
     flex: 1;
-    padding: $cell-padding-h 0;
+    padding: $cell-padding-v 0;
     overflow: hidden;
     color: $cell-title-color;
     line-height: $cell-title-line-height;

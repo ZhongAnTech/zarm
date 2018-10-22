@@ -179,10 +179,9 @@ const components = {
   // Cell
   cell_height: 52,                                   // 最小度
   cell_background: '#fff',                           // 背景色
-  cell_line_left: 16,                                // 分隔线左边距
-  cell_padding_h: 12,                                // 上下边内距
-  cell_padding_w: 16,                                // 左右边内距
-  cell_line_hasicon_left: 16,                        // 带icon时分隔线左边距
+  cell_line_padding_left: 16,                        // 分隔线左边距
+  cell_padding_h: 16,                                // 水平边内距
+  cell_padding_v: 12,                                // 纵向边内距
   cell_title_color: base.color_text,                 // 标题文字颜色
   cell_title_line_height: 28,                        // 标题文字行高
   cell_title_font_size: 15,                          // 标题文字大小

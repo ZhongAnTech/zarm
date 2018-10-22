@@ -14,16 +14,14 @@ export default {
   cellContentStyle: {
     flex: 1,
     flexDirection: 'column',
-    paddingTop: variables.cell_padding_h,
-    paddingRight: variables.cell_padding_w,
-    paddingBottom: variables.cell_padding_h,
-    paddingLeft: variables.cell_padding_w,
-  },
-  cellLineLeft: {
     marginTop: -1,
-    paddingLeft: variables.cell_line_left,
+    paddingVertical: variables.cell_padding_v,
+    paddingHorizontal: variables.cell_padding_h,
   },
-  cellLineStyle: {
+  lineContainerStyle: {
+    paddingLeft: variables.cell_line_padding_left,
+  },
+  lineStyle: {
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: variables.border_color,
   },
@@ -35,7 +33,7 @@ export default {
   },
   bodyStyle: {
     flex: 1,
-    alignItems: 'center',
+    flexDirection: 'row',
   },
   arrowStyle: {
     width: variables.cell_arrow_length,
@@ -47,21 +45,6 @@ export default {
     borderRightColor: variables.cell_arrow_color,
     transform: [{ rotate: '45deg' }],
   },
-  flexDirectionRow: {
-    flexDirection: 'row',
-  },
-  flexDirectionColumn: {
-    flexDirection: 'column',
-  },
-  paddingBottom: {
-    paddingBottom: variables.padding_v_md,
-  },
-  alignItemsCenter: {
-    alignItems: 'center',
-  },
-  alignItemsStart: {
-    alignItems: 'flex-start',
-  },
   iconStyle: {
     marginRight: variables.padding_h_md,
   },
@@ -70,6 +53,8 @@ export default {
     fontSize: variables.cell_description_font_size,
   },
   titleViewStyle: {
+    // width: '100%',
+    // alignItems: 'flex-start',
   },
   labelTitleViewStyle: {
     width: variables.cell_label_width,
@@ -86,7 +71,8 @@ export default {
     color: variables.cell_help_color,
     fontSize: variables.cell_help_font_size,
   },
-  underlayColorStyle: {
-    backgroundColor: variables.background_active,
+  childrenViewStyle: {
+    flexDirection: 'row',
+    flex: 1,
   },
 };

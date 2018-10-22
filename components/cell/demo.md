@@ -41,7 +41,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 带图标、描述
+### 带图标、标题
 ```jsx
 import { Cell, Icon } from 'zarm';
 
@@ -52,7 +52,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell title="标题文字" icon={<Icon type="right" />} />
-        <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: '24px', height: '24px' }} />} />
+        <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: 24, height: 24 }} />} />
       </div>
     )
   }
