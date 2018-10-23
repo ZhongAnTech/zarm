@@ -54,7 +54,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const { disabled } = this.props;
 
     if (!this.touchEnd || disabled) {
-      return;
+      return false;
     }
 
     // 拖动距离达到上限
