@@ -121,7 +121,7 @@ class Demo extends React.Component {
         <Button shape="radius" theme="primary">radius</Button>
         <Button shape="round" theme="primary">round</Button>
         <Button shape="circle" theme="primary">circle</Button>
-        <Button ghost shape="circle" icon={<Icon type="right" />} />
+        <Button shape="circle" icon={<Icon type="right" />} />
       </div>
     )
   }
