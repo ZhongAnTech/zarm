@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Loadable from 'react-loadable';
+import { Loading } from 'zarm';
+// import { TransitionGroup, CSSTransition } from 'react-transition-group';
 // import FastClick from 'fastclick';
+// import AsyncComponent from './AsyncComponent';
 import Format from '../utils/format';
 import { form, feedback, view, navigation } from '../demos';
-import AsyncComponent from './AsyncComponent';
 import '../styles/index';
 import '../styles/components/App';
+
+const LoadableComponent = (component) => {
+  return Loadable({
+    loader: component,
+    loading: () => <Loading visible />,
+  });
+};
 
 class App extends Component {
   componentDidMount() {
@@ -39,13 +48,13 @@ class App extends Component {
       //   </CSSTransition>
       // </TransitionGroup>
       <Switch key={location.pathname} location={location}>
-        <Route exact path="/" component={AsyncComponent(() => import('../pages/Index'))} />
+        <Route exact path="/" component={LoadableComponent(() => import('../pages/Index'))} />
         {
           [...form, ...feedback, ...view, ...navigation].map((component, i) => {
-            return <Route key={+i} path={`/${Format.camel2Dash(component.title)}`} component={AsyncComponent(() => import(`../pages/${component.title}Page`))} />;
+            return <Route key={+i} path={`/${Format.camel2Dash(component.title)}`} component={LoadableComponent(() => import(`../pages/${component.title}Page`))} />;
           })
         }
-        <Route component={AsyncComponent(() => import('../pages/NotFoundPage'))} />
+        <Route component={LoadableComponent(() => import('../pages/NotFoundPage'))} />
       </Switch>
     );
   }
