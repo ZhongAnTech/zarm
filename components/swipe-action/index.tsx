@@ -34,11 +34,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   }
 
   componentDidMount() {
-    Events.on(document.body, 'touchstart', e => this.onCloseSwipe(e));
+    Events.on(document.body, 'touchstart', this.onCloseSwipe);
+    Events.on(document.body, 'click', this.onCloseSwipe);
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'touchstart', e => this.onCloseSwipe(e));
+    Events.off(document.body, 'touchstart', this.onCloseSwipe);
+    Events.off(document.body, 'click', this.onCloseSwipe);
   }
 
   onDragStart = () => {
