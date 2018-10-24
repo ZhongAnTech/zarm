@@ -19,7 +19,6 @@
 
       .menu-item-content {
         .chinese {
-          font-size: 12px;
           margin-left: 6px;
           opacity: .6;
         }
@@ -37,6 +36,10 @@
 
       .hljs {
         background-color: transparent;
+      }
+
+      .grid-container {
+        overflow-x: auto;
       }
 
       pre {
