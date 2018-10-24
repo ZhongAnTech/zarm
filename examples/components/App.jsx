@@ -6,7 +6,7 @@ import { Loading } from 'zarm';
 // import FastClick from 'fastclick';
 // import AsyncComponent from './AsyncComponent';
 import Format from '../utils/format';
-import { form, feedback, view, navigation } from '../demos';
+import { components } from '../demos';
 import '../styles/index';
 import '../styles/components/App';
 
@@ -26,6 +26,8 @@ class App extends Component {
   render() {
     const { history, location, match } = this.props;
     const currentKey = location.pathname.split('/')[1] || '/';
+    const { form, feedback, view, navigation } = components;
+
     return (
       // <TransitionGroup>
       //   <CSSTransition
@@ -51,7 +53,7 @@ class App extends Component {
         <Route exact path="/" component={LoadableComponent(() => import('../pages/Index'))} />
         {
           [...form, ...feedback, ...view, ...navigation].map((component, i) => {
-            return <Route key={+i} path={`/${Format.camel2Dash(component.title)}`} component={LoadableComponent(() => import(`../pages/${component.title}Page`))} />;
+            return <Route key={+i} path={`/${Format.camel2Dash(component.name)}`} component={LoadableComponent(() => import(`../pages/${component.name}Page`))} />;
           })
         }
         <Route component={LoadableComponent(() => import('../pages/NotFoundPage'))} />

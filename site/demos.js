@@ -129,6 +129,10 @@ module.exports = {
         name: 'Tabs',
         description: '标签页',
       },
+      {
+        name: 'NavBar',
+        description: '导航栏',
+      },
     ],
   },
 };

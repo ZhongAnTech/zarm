@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Panel, Cell } from 'zarm';
-import { form, feedback, view, navigation } from '../demos';
+import { components } from '../demos';
 import Format from '../utils/format';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
@@ -8,9 +8,30 @@ import '../styles/components/Header.scss';
 import '../styles/pages/IndexPage.scss';
 
 class Page extends PureComponent {
-  render() {
+  getMenu = (groupName, key) => {
     const { history } = this.props;
+    return (
+      <Panel title={`${groupName}（${components[key].length}）`}>
+        {
+          components[key].map((component, i) => (
+            <Cell
+              hasArrow
+              key={+i}
+              title={
+                <div className="menu-item-content">
+                  <span>{component.name}</span>
+                  <span className="chinese">{component.description}</span>
+                </div>
+              }
+              onClick={() => history.push(`/${Format.camel2Dash(component.name)}`)}
+            />
+          ))
+        }
+      </Panel>
+    );
+  }
 
+  render() {
     return (
       <Container className="index-page">
         <header>
@@ -20,34 +41,10 @@ class Page extends PureComponent {
           </section>
         </header>
         <main>
-          <Panel title={`数据录入（${form.length}）`}>
-            {
-              form.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />
-              ))
-            }
-          </Panel>
-          <Panel title={`操作反馈（${feedback.length}）`}>
-            {
-              feedback.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />
-              ))
-            }
-          </Panel>
-          <Panel title={`数据展示（${view.length}）`}>
-            {
-              view.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />
-              ))
-            }
-          </Panel>
-          <Panel title={`导航（${navigation.length}）`}>
-            {
-              navigation.map((component, i) => (
-                <Cell key={+i} hasArrow title={component.description} onClick={() => history.push(`/${Format.camel2Dash(component.title)}`)} />
-              ))
-            }
-          </Panel>
+          {this.getMenu('数据录入', 'form')}
+          {this.getMenu('操作反馈', 'feedback')}
+          {this.getMenu('数据展示', 'view')}
+          {this.getMenu('导航', 'navigation')}
         </main>
         <Footer />
       </Container>
