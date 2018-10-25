@@ -100,7 +100,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
         <div className={`${prefixCls}-container`}>
           {children}
         </div>
-        {mask && <Mask type="transparent" onClick={onMaskClick} />}
+        {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
       </div>
     );
   }
