@@ -35,14 +35,14 @@ class Demo extends React.Component {
     super(props);
     this.mounted = true;
     this.state = {
-      customRefreshing: REFRESH_STATE.normal,
-      customLoading: LOAD_STATE.normal,
+      refreshing: REFRESH_STATE.normal,
+      loading: LOAD_STATE.normal,
       dataSource: [],
     };
   }
 
   componentDidMount() {
-    this.fetchData('customRefreshing');
+    this.appendData(20);
   }
 
   componentWillUnmount() {
@@ -50,93 +50,114 @@ class Demo extends React.Component {
   }
 
   // 模拟请求数据
-  fetchData(key) {
-    this.setState({ [`${key}`]: REFRESH_STATE.loading });
+  refreshData() {
+    this.setState({ refreshing: REFRESH_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
 
-      const dataSource = [];
-      const { length } = dataSource;
-
-      for (let i = length; i < length + 20; i++) {
-        dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
-      }
-
+      this.appendData(20, []);
       this.setState({
-        dataSource,
-        [`${key}`]: REFRESH_STATE.success,
+        refreshing: REFRESH_STATE.success,
       });
     }, 2000);
   }
 
   // 模拟加载更多数据
   loadData() {
-    this.setState({ customLoading: LOAD_STATE.loading });
+    this.setState({ loading: LOAD_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
 
       const randomNum = getRandomNum(0, 5);
       const { dataSource } = this.state;
-      let customLoading = LOAD_STATE.success;
+      let loading = LOAD_STATE.success;
 
       // eslint-disable-next-line
       console.log(`状态: ${randomNum === 0 ? '失败' : (randomNum === 1 ? '完成' : '成功')}`);
 
       if (randomNum === 0) {
-        customLoading = LOAD_STATE.failure;
+        loading = LOAD_STATE.failure;
       } else if (randomNum === 1) {
-        customLoading = LOAD_STATE.complete;
+        loading = LOAD_STATE.complete;
       } else {
-        const newLength = 5;
-        const startIndex = dataSource.length;
-        for (let i = startIndex; i < startIndex + newLength; i++) {
-          dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
-        }
+        this.appendData(20);
       }
 
       this.setState({
-        dataSource,
-        customLoading,
+        loading,
       });
     }, 2000);
   }
 
-  render() {
-    const { customRefreshing, customLoading, dataSource } = this.state;
-
-    const itemsRender = [];
-    for (let i = 0; i < 3; i++) {
-      itemsRender.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+  appendData(length, dataSource) {
+    dataSource = dataSource || this.state.dataSource;
+    const startIndex = dataSource.length;
+    for (let i = startIndex; i < startIndex + length; i++) {
+      dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
     }
+    this.setState({
+      dataSource,
+    });
+  }
 
+  render() {
+    const { refreshing, loading, dataSource } = this.state;
     return (
       <div>
         <Pull
           refresh={{
-            state: customRefreshing,
-            handler: () => this.fetchData('customRefreshing'),
+            state: refreshing,
+            handler: () => this.refreshData(),
             // render: (refreshState, percent) => {
             //   const cls = 'custom-control';
             //   switch (refreshState) {
             //     case REFRESH_STATE.pull:
-            //       return <div className={cls} style={{ transform: `scale(${percent / 100})` }}><img src={logo} alt="" /></div>;
+            //       return (
+            //         <div className={cls}>
+            //           <ActivityIndicator percent={percent} />
+            //           <span>下拉刷新</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.drop:
-            //       return <div className={`${cls} rotate360`}><img src={logo} alt="" /></div>;
+            //       return (
+            //         <div className={cls}>
+            //           <ActivityIndicator percent={100} />
+            //           <span>释放立即刷新</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.loading:
-            //       return <div className={cls}><ActivityIndicator className="rotate360" /></div>;
+            //       return (
+            //         <div className={cls}>
+            //           <ActivityIndicator className="rotate360" />
+            //           <span>加载中</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.success:
-            //       return <div className={cls}>加载成功</div>;
+            //       return (
+            //         <div className={cls}>
+            //           <Icon type="right-round" theme="success" />
+            //           <span>加载成功</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.failure:
-            //       return <div className={cls}>加载失败</div>;
+            //       return (
+            //         <div className={cls}>
+            //           <Icon type="wrong-round" theme="error" />
+            //           <span>加载失败</span>
+            //         </div>
+            //       );
+
+            //     default:
             //   }
             // },
           }}
           load={{
-            state: customLoading,
+            state: loading,
+            distance: 200,
             handler: () => this.loadData(),
             // render: (loadState) => {
             //   const cls = 'custom-control';
