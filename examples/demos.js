@@ -4,6 +4,10 @@ module.exports = {
       name: 'QuickStart',
       description: '快速上手',
     },
+    {
+      name: 'ChangeLog',
+      description: '更新日志',
+    },
   ],
   components: {
     form: [
