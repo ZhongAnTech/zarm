@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 // import Loadable from 'react-loadable';
 import './style.scss';
 
@@ -18,7 +18,9 @@ class App extends Component {
         <Route path="/docs" component={LoadableComponent(() => import('@site/pages/Docs'))} />
         <Route path="*" component={LoadableComponent(() => import('@site/pages/NotFoundPage'))} /> */}
         <Route exact path="/" component={require('@site/pages/Index').default} />
-        <Route path="/docs" component={require('@site/pages/Docs').default} />
+        <Route path="/documents/:document" component={require('@site/pages/Documents').default} />
+        <Route path="/components/:component" component={require('@site/pages/Components').default} />
+        {/* <Redirect from="/docs" to="/docs/quick-start" /> */}
         <Route path="*" component={require('@site/pages/NotFoundPage').default} />
       </Switch>
     );

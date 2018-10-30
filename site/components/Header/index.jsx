@@ -8,7 +8,8 @@ import './style.scss';
 
 class Header extends PureComponent {
   state = {
-    dropdown: false,
+    // dropdown: false,
+    searchKey: null,
   }
 
   componentDidMount() {
@@ -30,10 +31,13 @@ class Header extends PureComponent {
           <Select
             radius
             search
-            style={{ width: 260 }}
             placeholder="搜索组件..."
+            value={this.state.searchKey}
             onChange={(data) => {
-              history.replace(`/docs/${data.value}`);
+              history.replace(`/components/${data.value}`);
+              this.setState({
+                searchKey: null,
+              });
             }}
           >
             {
@@ -43,7 +47,7 @@ class Header extends PureComponent {
             }
           </Select>
         </div>
-        <div className="lang">
+        {/* <div className="lang">
           <Dropdown
             trigger="hover"
             visible={this.state.dropdown}
@@ -56,15 +60,15 @@ class Header extends PureComponent {
           >
             <Button theme="info">扫码体验</Button>
           </Dropdown>
-          {/* <Button>English</Button> */}
-        </div>
-        <nav>
+          <Button>English</Button>
+        </div> */}
+        {/* <nav>
           <Menu mode="horizontal" defaultSelectedKeys={['components']}>
             <Menu.Item key="index" onClick={() => history.replace('/')}>首页</Menu.Item>
             <Menu.Item key="components">组件</Menu.Item>
             <Menu.Item key="github" onClick={() => window.open('https://github.com/ZhonganTechENG/zarm')}>github</Menu.Item>
           </Menu>
-        </nav>
+        </nav> */}
       </header>
     );
   }

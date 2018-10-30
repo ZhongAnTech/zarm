@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
+import { Button } from 'dragon-ui';
 import Container from '@site/components/Container';
-import Footer from '@site/components/Footer';
+import Header from '@site/components/Header';
+import './style.scss';
 
 class Page extends PureComponent {
   render() {
@@ -8,17 +10,15 @@ class Page extends PureComponent {
 
     return (
       <Container className="index-page">
-        <main
-          style={{
-            margin: '0 auto',
-            width: 1500,
-            height: 1000,
-            background: `url(${require('./images/index.jpg')}) no-repeat top center`,
-            backgroundSize: 'contain',
-          }}
-          onClick={() => history.push('/docs/input')}
-        />
-        <Footer />
+        <Header />
+        <main>
+          <div className="introduce">
+            <div className="title"><span>ZARM</span> DESIGN</div>
+            <div className="description">一套为开发者、设计师和产品经理准备的组件库帮助你的网站快速成形</div>
+            <Button onClick={() => history.push('/documents/quick-start')}>开始使用</Button>
+          </div>
+          <div className="banner" />
+        </main>
       </Container>
     );
   }

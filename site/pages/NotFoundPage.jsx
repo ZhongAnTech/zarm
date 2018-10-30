@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Container from '../components/Container';
+import Container from '@site/components/Container';
 
 class Page extends PureComponent {
   render() {
