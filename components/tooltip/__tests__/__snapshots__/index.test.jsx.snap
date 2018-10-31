@@ -1,19 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip renders correctly 1`] = `
-<span>
-  foo
-</span>
+exports[`Tooltip direction 1`] = `
+<Tootip
+  className={null}
+  direction="top"
+  onVisibleChange={[Function]}
+  prefixCls="za-tooltip"
+  title="hello"
+  trigger="hover"
+  visible={false}
+>
+  <div
+    className="za-tooltip"
+  >
+    <div
+      className="za-tooltip-content"
+    >
+      hello
+      <span
+        className="za-tooltip-arrow"
+      />
+    </div>
+    <span>
+      foo
+    </span>
+  </div>
+</Tootip>
 `;
 
 exports[`Tooltip visible 1`] = `
-<Tooltip
-  message="hello"
+<Tootip
+  className={null}
+  direction="bottomRight"
+  onVisibleChange={[Function]}
   prefixCls="za-tooltip"
+  title="hello"
+  trigger="hover"
   visible={true}
 >
-  <span>
-    foo
-  </span>
-</Tooltip>
+  <div
+    className="za-tooltip"
+  >
+    <div
+      className="za-tooltip-content za-tooltip-content-show"
+    >
+      hello
+      <span
+        className="za-tooltip-arrow"
+      />
+    </div>
+    <span>
+      foo
+    </span>
+  </div>
+</Tootip>
 `;

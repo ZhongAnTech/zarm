@@ -15,7 +15,7 @@ class Demo extends React.Component {
         {
           ['left', 'top',  'bottom', 'right',  'rightBottom', 'leftBottom'].map(item => {
             return (
-              <Tooltip key={item} trigger='click'   title={() => '这是一个' + item + '的Tooltip' } direction={item}>
+              <Tooltip key={item} trigger='click'   title='Tooltip' direction={item}>
                 <div  style={{marginRight: 10}}>{item}</div>
               </Tooltip>
             );
