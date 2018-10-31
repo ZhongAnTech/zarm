@@ -1,37 +1,66 @@
 $prefixCls: $prefixCls-tooltip;
 
 .#{$prefixCls} {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  transform: translateY(-100%);
-  padding-bottom: $padding-h-md;
+  display: inline-block;
+  position: relative;
 
-  &-inner {
-    position: relative;
-    background-color: rgba(0, 0, 0, $opacity-tooltip);
+  &-content {
+    display: none;
     padding: $padding-v-lg;
+    background-color: rgba(0, 0, 0, $opacity-tooltip);
     border-radius: $radius-md;
     font-size: $tooltip-font-size;
     color: $tooltip-color;
+    border: 1px solid rgba(0, 0, 0, $opacity-tooltip);
     margin-bottom: $tooltip-arrow-size;
 
-    &:after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: -$tooltip-arrow-size;
-      width: 0;
-      height: 0;
-      transform: translateX(-50%);
-      border-width: $tooltip-arrow-size $tooltip-arrow-size 0;
-      border-color: transparent;
-      border-top-color: rgba(0, 0, 0, $opacity-tooltip);
-      border-style: solid;
+    &[x-placement^='left'] {
+      margin-right: 10px;
+    }
+    &[x-placement^='right'] {
+      margin-left: 10px;
+    }
+    &[x-placement^='top'] {
+      margin-bottom: 10px;
+    }
+    &[x-placement^='bottom'] {
+      margin-top: 10px;
+    }
+    &-show {
+      display: block;
     }
   }
-
-  &-hidden {
-    display: none;
+  &-arrow {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-width: 0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, $opacity-tooltip);
+    background: rgba(0, 0, 0, $opacity-tooltip);
+    transform: rotate(45deg);
   }
+}
+.#{$prefixCls}-arrow[x-arrow-s^='top'] {
+  bottom: -4px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.#{$prefixCls}-arrow[x-arrow-s^='left'] {
+  right: -4px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+}
+
+.#{$prefixCls}-arrow[x-arrow-s^='right'] {
+  left: -4px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.#{$prefixCls}-arrow[x-arrow-s^='bottom'] {
+  top: -4px;
+  border-left-width: 1px;
+  border-top-width: 1px;
 }
