@@ -1,0 +1,59 @@
+
+.index-page {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  background-image: url(./images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+
+  header {
+    position: fixed;
+    background-color: transparent;
+  }
+
+  main {
+    min-width: 1500px;
+    margin: 0 auto;
+    padding-top: 70px;
+    height: 100%;
+  }
+
+  .introduce {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 35%;
+    height: 100%;
+
+    .title {
+      font-size: 67px;
+      font-weight: bold;
+  
+      span {
+        color: #12C287;
+      }
+    }
+  
+    .description {
+      font-size: 19px;
+    }  
+  }
+
+  .banner {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    // width: 764px;
+    width: 650px;
+    height: 539px;
+    background-image: url(./images/banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center right;
+  }
+}

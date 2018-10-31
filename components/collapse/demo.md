@@ -199,22 +199,18 @@ ReactDOM.render(<Demo />, mountNode);
 ### API
 
 ### Collapse
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-collapse | | 类名前缀 |
-| className | string | | | 追加类名 |
-| multiple | boolean | false | | 是否可以同时展开多项 |
-| animated | boolean | false | | 是否添加展开动画 |
-| activeKey | array or string or number | [] | | 动态更新展开项的索引数组或字符串或数字 |
-| defaultActiveKey | array or string or number | [] | | 初始化默认展开项的索引数组或字符串或数字 |
-| onChange | <code>(key) => void</code> | noop | \(key: string or number\) | 点击某一项的回调函数 |
-| style | React.CSSProperties | | | 自定义样式 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| multiple | boolean | false | 是否可以同时展开多项 |
+| animated | boolean | false | 是否添加展开动画 |
+| activeKey | array &#124; string &#124; number | [] | 动态更新展开项的索引数组或字符串或数字 |
+| defaultActiveKey | array &#124; string &#124; number | [] | 初始化默认展开项的索引数组或字符串或数字 |
+| onChange | (key) => void | - | 点击某一项的回调函数 |
 
 ### Collapse.Item
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| title | string | | | 每一项的名称 |
-| key | string or number | | | 对应activeKey |
-| disabled | boolean | false | | 是否禁用 |
-| style | React.CSSProperties | | | 自定义样式 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| title | string | - | 每一项的名称 |
+| key | string &#124; number | - | 对应activeKey |
+| disabled | boolean | false | 是否禁用 |
 

@@ -135,13 +135,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-progress | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `primary` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| percent | number | 0 | | 进度百分比（范围：0～100） |
-| type | string | `line` | `line`, `circle`, `semi-circle` | 类型 |
-| shape | string | `round` | `round`, `rect` | 线条形状 |
-| weight | string | `normal` | `normal`, `thin` | 线条粗细 |
-| style | React.CSSProperties |  |  | 自定义样式 
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| percent | number | 0 | 进度百分比（范围：0～100） |
+| type | string | 'line' | 类型，可选值 `line`, `circle`, `semi-circle` |
+| shape | string | 'round' | 线条形状，可选值 `round`, `rect` |
+| weight | string | 'normal' | 线条粗细，可选值 `normal`, `thin` |

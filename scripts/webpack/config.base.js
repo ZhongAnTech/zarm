@@ -81,6 +81,9 @@ module.exports = {
         use: [
           {
             loader: 'url-loader?limit=8192&name=images/[name].[hash:8].[ext]',
+            options: {
+              publicPath: './',
+            },
           },
         ],
       },

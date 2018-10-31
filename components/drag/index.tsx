@@ -1,7 +1,7 @@
-import { PureComponent, cloneElement } from 'react';
+import { PureComponent, cloneElement, ReactElement } from 'react';
 import PropsType from './PropsType';
 
-export interface DragProps extends PropsType { }
+export interface DragProps extends PropsType {}
 
 export default class Drag extends PureComponent<DragProps, {}> {
   private dragState = Object.create(null);
@@ -69,7 +69,7 @@ export default class Drag extends PureComponent<DragProps, {}> {
 
   render() {
     const { children } = this.props;
-    return cloneElement(children, {
+    return cloneElement(children as ReactElement<any>, {
       onTouchStart: this.onTouchStart,
       onTouchMove: this.onTouchMove,
       onTouchEnd: this.onTouchEnd,

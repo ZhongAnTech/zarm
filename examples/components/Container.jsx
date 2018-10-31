@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import Events from '../utils/events';
 import '../styles/components/Container';
 
 class Container extends Component {
   componentDidMount() {
-    if (this.props.className !== 'index-page') return;
+    this.readScrollTop();
+    Events.on(this.container, 'scroll', () => {
+      this.saveScrollTop();
+    });
+  }
 
+  componentWillUnmount() {
+    this.saveScrollTop();
+  }
+
+  saveScrollTop = () => {
+    if (this.props.className !== 'index-page') return;
+    const { scrollTop } = this.container;
+    window.sessionStorage[this.props.className] = scrollTop;
+  }
+
+  readScrollTop = () => {
+    if (this.props.className !== 'index-page') return;
     const scrollTop = window.sessionStorage[this.props.className];
     if (scrollTop) {
       this.container.scrollTop = scrollTop;
     }
   }
 
-  componentWillUnmount() {
-    if (this.props.className !== 'index-page') return;
-
-    const { scrollTop } = this.container;
-    window.sessionStorage[this.props.className] = scrollTop;
-  }
-
   render() {
     const { className, children } = this.props;
-
-    const cls = classnames({
-      'app-container': true,
-      [className]: !!className,
-    });
-
+    const cls = classnames('app-container', className);
     return (
       <div ref={(ele) => { this.container = ele; }} className={cls}>
         <a className="github" href="https://github.com/ZhonganTechENG/zarm">

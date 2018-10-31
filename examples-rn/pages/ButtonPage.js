@@ -81,7 +81,7 @@ export default class Page extends PureComponent {
             <Button style={[styles.mb, styles.mr]} shape="radius" theme="primary" onClick={noop}>radius</Button>
             <Button style={[styles.mb, styles.mr]} shape="round" theme="primary" onClick={noop}>round</Button>
             <Button style={[styles.mb, styles.mr]} shape="circle" theme="primary" onClick={noop}>circle</Button>
-            <Button ghost shape="circle" theme="primary" onClick={noop}>ghost</Button>
+            <Button shape="circle" theme="primary" onClick={noop}>ghost</Button>
           </View>
         </Panel>
 

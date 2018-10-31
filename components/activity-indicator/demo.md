@@ -23,10 +23,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-activity-indicator | | 类名前缀 |
-| className | string | | | 追加类名 |
-| strokeWidth | number | | | 指示器边框的宽度 |  
-| percent | number | | | 初始百分比 |
-| size | string | | 'lg' | 大小 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| strokeWidth | number | - | 指示器边框的宽度 |  
+| percent | number | - | 初始百分比 |
+| size | string | 'md' | 大小，可选值 `md`、`lg` |

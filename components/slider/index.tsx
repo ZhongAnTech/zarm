@@ -65,7 +65,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
   onDragMove = (event, { offsetX }) => {
     const { disabled } = this.props;
     if (disabled) {
-      return;
+      return false;
     }
 
     event.preventDefault();

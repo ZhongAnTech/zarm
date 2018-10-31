@@ -10,7 +10,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell hasArrow title="点状" description={<Badge text="99" />} onClick={() => {}} />
+        <Cell hasArrow title="点状" description={<Badge />} onClick={() => {}} />
         <Cell hasArrow title="直角" description={<Badge shape="rect" text="免费" />} onClick={() => {}} />
         <Cell hasArrow title="圆角" description={<Badge shape="radius" text="new" />} onClick={() => {}} />
         <Cell hasArrow title="椭圆角" description={<Badge shape="round" text="999+" />} onClick={() => {}} />
@@ -132,8 +132,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'error' | 设置主题，可选值为 `default`, `primary`, `info`, `success`, `warning`, `error` |
-| shape | string | 'dot' | 设置形状，可选值为 `dot`, `rect` , `radius`, `round`, `circle` ,`leaf` |
+| theme | string | 'error' | 设置主题，可选值为 `default`、`primary`、`info`、`success`、`warning`、`error` |
+| shape | string | 'dot' | 设置形状，可选值为 `dot`、`rect` 、`radius`、`round`、`circle`、`leaf` |
 | sup | bool | false | 是否上标位置 |
 | text | string | - | 设置显示的文字 |
 

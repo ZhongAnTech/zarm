@@ -105,14 +105,12 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-picker | | 类名前缀 |
-| className | string | | | 追加类名 |
-| type | 'number' &#124; 'price' &#124; 'idcard' &#124; | 'number' | | 键盘类型 |
-| onKeyClick | function | <code>(key: string) => void</code> | | 点击按键时触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| type | string | 'number' | 键盘类型，可选值 `number`、`price`、`idcard` |
+| onKeyClick | (key: string) => void | - | 点击按键时触发的回调函数 |
 
 #### 仅 KeyboardPicker 支持的属性
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| visible | boolean | false | | 是否展示 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| visible | boolean | false | 是否展示 |

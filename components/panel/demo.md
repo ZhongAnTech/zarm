@@ -28,9 +28,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| title | React.ReactNode | | | 标题渲染 |
-| more | React.ReactNode | | | 更多渲染 |
-| prefixCls | string | za-panel | | 类名前缀 |
-| className | string | | | 追加类名 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| title | ReactNode | - | 标题渲染 |
+| more | ReactNode | - | 更多渲染 |

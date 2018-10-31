@@ -212,9 +212,9 @@ $button-error-ghost-active-color: #e54747;
 // Cell
 $cell-height: r(52);                            // 最小高度
 $cell-background: #fff;                       // 背景色
-$cell-line-left: r(16);                         // 分隔线左边距
-$cell-padding-h: r(12);                         // 边内内距
-$cell-line-hasicon-left: r(16);                 // 带icon时分隔线左边距
+$cell-line-padding-left: r(16);                 // 分隔线左边距
+$cell-padding-h: r(16);                         // 水平边内距
+$cell-padding-v: r(12);                         // 纵向边内距
 $cell-title-color: $color-text;                 // 标题文字颜色
 $cell-title-font-size: r(15);                   // 标题文字大小
 $cell-title-line-height: r(28);                 // 标题文字行高
