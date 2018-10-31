@@ -17,19 +17,24 @@ $prefixCls: $prefixCls-tooltip;
     &[x-placement^='left'] {
       margin-right: 10px;
     }
+
     &[x-placement^='right'] {
       margin-left: 10px;
     }
+
     &[x-placement^='top'] {
       margin-bottom: 10px;
     }
+
     &[x-placement^='bottom'] {
       margin-top: 10px;
     }
+
     &-show {
       display: block;
     }
   }
+
   &-arrow {
     position: absolute;
     width: 5px;
@@ -39,28 +44,30 @@ $prefixCls: $prefixCls-tooltip;
     border-color: rgba(0, 0, 0, $opacity-tooltip);
     background: rgba(0, 0, 0, $opacity-tooltip);
     transform: rotate(45deg);
+
+    &[x-arrow-s^='top'] {
+      bottom: -4px;
+      border-right-width: 1px;
+      border-bottom-width: 1px;
+    }
+
+    &[x-arrow-s^='left'] {
+      right: -4px;
+      border-right-width: 1px;
+      border-top-width: 1px;
+    }
+
+    &[x-arrow-s^='right'] {
+      left: -4px;
+      border-left-width: 1px;
+      border-bottom-width: 1px;
+    }
+
+    &[x-arrow-s^='bottom'] {
+      top: -4px;
+      border-left-width: 1px;
+      border-top-width: 1px;
+    }
   }
 }
-.#{$prefixCls}-arrow[x-arrow-s^='top'] {
-  bottom: -4px;
-  border-right-width: 1px;
-  border-bottom-width: 1px;
-}
 
-.#{$prefixCls}-arrow[x-arrow-s^='left'] {
-  right: -4px;
-  border-right-width: 1px;
-  border-top-width: 1px;
-}
-
-.#{$prefixCls}-arrow[x-arrow-s^='right'] {
-  left: -4px;
-  border-left-width: 1px;
-  border-bottom-width: 1px;
-}
-
-.#{$prefixCls}-arrow[x-arrow-s^='bottom'] {
-  top: -4px;
-  border-left-width: 1px;
-  border-top-width: 1px;
-}
