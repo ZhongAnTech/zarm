@@ -1,4 +1,3 @@
-
 .index-page {
   width: 100%;
   position: absolute;
@@ -12,14 +11,25 @@
   background-position: top right;
 
   header {
-    position: fixed;
     background-color: transparent;
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    .logo {
+      width: 100px;
+      text-align: left;
+    }
   }
 
   main {
-    min-width: 1500px;
+    position: relative;
+    max-width: 1400px;
     margin: 0 auto;
-    padding-top: 70px;
+    padding: 65px 30px;
     height: 100%;
   }
 
@@ -31,8 +41,9 @@
     height: 100%;
 
     .title {
-      font-size: 67px;
+      font-size: 64px;
       font-weight: bold;
+      line-height: 1;
   
       span {
         color: #12C287;
@@ -40,20 +51,153 @@
     }
   
     .description {
-      font-size: 19px;
-    }  
+      margin-top: 50px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .navigation {
+      margin-top: 160px;
+
+      button {
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 50px;
+        background-color: #12C287;
+        border: 0;
+        color: #fff;
+        font-size: 18px;
+        border-radius: 25px;
+        outline: none;
+        margin-right: 15px;
+        margin-bottom: 10px;
+
+        &:hover {
+          background: #10AE79;
+        }
+
+        &.ghost {
+          border: 1px solid #12C287;
+          color: #12C287;
+          background-color: #fff;
+
+          &:hover {
+            border-color: #10AE79;
+            color: #10AE79;
+          }
+        }
+
+        svg {
+          height: 20px;
+          margin-right: 6px;
+          fill: #12c287;
+        }
+      }
+    }
   }
 
   .banner {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    // width: 764px;
-    width: 650px;
-    height: 539px;
+    float: right;
+    position: relative;
+    top: 50%;
+    margin-top: -282px;
+    width: 680px;
+    height: 563px;
     background-image: url(./images/banner.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center right;
+    background-size: contain;
+    animation: banner-move 60s infinite;
+
+    .woman {
+      position: absolute;
+      top: 212px;
+      left: 264px;
+      width: 56px;
+      height: 33px;
+      background-image: url(./images/woman.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      animation: woman-move 10s infinite;
+    }
+
+    .buoy {
+      position: absolute;
+      top: 234px;
+      left: 284px;
+      width: 26px;
+      height: 22px;
+      background-image: url(./images/buoy.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      animation: buoy-move 10s infinite;
+
+      &.small {
+        top: 218px;
+        left: 240px;
+        animation: small-buoy-move 6s infinite;
+      }
+    }
+  }
+}
+
+@keyframes banner-move {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-40px, -40px, 0);
+  }
+  40% {
+    transform: translate3d(40px, -40px, 0);
+  }
+  60% {
+    transform: translate3d(-40px, 40px, 0);
+  }
+  80% {
+    transform: translate3d(40px, 40px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes woman-move {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes buoy-move {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-4px, -4px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes small-buoy-move {
+  0% {
+    transform: scale(0.6) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(0.6) translate3d(-2px, -2px, 0);
+  }
+  100% {
+    transform: scale(0.6) translate3d(0, 0, 0);
   }
 }
