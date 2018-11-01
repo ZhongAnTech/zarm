@@ -11,7 +11,7 @@ config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
   new HtmlWebpackPlugin({
     template: './examples/index_umd.html',
-    filename: 'index_umd.html',
+    filename: 'umd.html',
     inject: false,
   })
 );

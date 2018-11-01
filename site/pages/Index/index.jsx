@@ -13,7 +13,7 @@ class Page extends PureComponent {
   componentDidMount() {
     const qr = new QRious({
       element: this.qrcode,
-      value: 'https://zhongantecheng.github.io/zarm',
+      value: `${window.location.origin}/demo.html`,
       size: 134,
     });
   }
@@ -25,14 +25,17 @@ class Page extends PureComponent {
       <Container className="index-page">
         <Header />
         <main>
-          <div className="banner" ref={(ele) => { this.banner = ele; }}>
-            <div className="woman" />
-            <div className="buoy" />
-            <div className="buoy small" />
+          <div className="righter">
+            <div className="banner" ref={(ele) => { this.banner = ele; }}>
+              <img src={require('./images/banner2.png')} alt="" />
+              {/* <div className="woman" />
+              <div className="buoy" />
+              <div className="buoy small" /> */}
+            </div>
           </div>
           <div className="introduce">
             <div className="title"><span>ZARM</span> DESIGN</div>
-            <div className="description">一套为开发者、设计师和产品经理准备的组件库帮助你的网站快速成形</div>
+            <div className="description">基于 React / React Native 的 UI 组件库，为用户体验而生</div>
             <div className="navigation">
               <button onClick={() => history.push('/documents/quick-start')}>开始使用</button>
               <Dropdown

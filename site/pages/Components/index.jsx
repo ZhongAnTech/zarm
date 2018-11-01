@@ -30,7 +30,7 @@ class Page extends PureComponent {
             </Switch>
           </div>
           <div className="simulator">
-            <iframe src={`${window.location.origin}/#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+            <iframe src={`${window.location.origin}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
           <ScrollToTop>
             <div className="scroll-to-top">
