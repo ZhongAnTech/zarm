@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Menu, Button, Select, Dropdown } from 'dragon-ui';
-import QRious from 'qrious';
+import { Select } from 'dragon-ui';
+import classnames from 'classnames';
 import { components } from '@site/demos';
 import Format from '@site/utils/format';
 import './style.scss';
@@ -12,16 +12,17 @@ class Header extends PureComponent {
     searchKey: null,
   }
 
-  componentDidMount() {
-    const qr = new QRious({
-      element: this.qrcode,
-      value: 'https://zhongantecheng.github.io/zarm',
+  activeClassName = (keys) => {
+    const { match } = this.props;
+    return classnames({
+      active: keys.indexOf(match.url.split('/')[1] || '/') > -1,
     });
   }
 
   render() {
-    const { history } = this.props;
+    const { history, match } = this.props;
     const { form, feedback, view, navigation } = components;
+
     return (
       <header>
         <div className="header-container">
@@ -63,13 +64,13 @@ class Header extends PureComponent {
             </Dropdown>
             <Button>English</Button>
           </div> */}
-          {/* <nav>
-            <Menu mode="horizontal" defaultSelectedKeys={['components']}>
-              <Menu.Item key="index" onClick={() => history.replace('/')}>首页</Menu.Item>
-              <Menu.Item key="components">组件</Menu.Item>
-              <Menu.Item key="github" onClick={() => window.open('https://github.com/ZhonganTechENG/zarm')}>github</Menu.Item>
-            </Menu>
-          </nav> */}
+          <nav>
+            <ul>
+              { match.url !== '/' && <li><a href="#/">首页</a></li>}
+              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>文档</a></li>
+              <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
+            </ul>
+          </nav>
         </div>
       </header>
     );

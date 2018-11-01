@@ -20,7 +20,6 @@ class App extends Component {
         <Route exact path="/" component={require('@site/pages/Index').default} />
         <Route path="/documents/:document" component={require('@site/pages/Documents').default} />
         <Route path="/components/:component" component={require('@site/pages/Components').default} />
-        {/* <Redirect from="/docs" to="/docs/quick-start" /> */}
         <Route path="*" component={require('@site/pages/NotFoundPage').default} />
       </Switch>
     );

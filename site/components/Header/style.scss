@@ -56,9 +56,38 @@ header {
 
 nav {
   float: right;
+  height: 65px;
+  line-height: 65px;
+  margin-right: 100px;
 
-  .ui-menu-item {
-    height: 65px !important;
-    line-height: 65px !important;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    li {
+      float: left;
+      width: 120px;
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+
+      a {
+        display: block;
+        color: #333;
+        cursor: pointer;
+  
+        &.active,
+        &:hover {
+          color: #12C287;
+        }
+      }
+
+      svg {
+        height: 20px;
+        margin-right: 6px;
+      }
+    }
   }
 }

@@ -24,7 +24,6 @@ class Page extends PureComponent {
                   <Route key={+i} path={`/documents/${Format.camel2Dash(doc.name)}`} component={AsyncComponent(() => import(`./${doc.name}`))} />
                 ))
               }
-              <Redirect to="/" />
             </Switch>
           </div>
           <ScrollToTop>
