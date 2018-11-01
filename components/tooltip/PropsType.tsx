@@ -19,6 +19,6 @@ export default interface PropsType {
   visible?: boolean;
   direction: direction;
   onVisibleChange?: (visible: boolean) => void;
-  title?: React.ReactNode;
+  title?: () => void | React.ReactNode ;
   style?: React.CSSProperties;
 }

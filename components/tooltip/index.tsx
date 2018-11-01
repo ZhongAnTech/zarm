@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, cloneElement, ReactElement } from 'react';
 import { findDOMNode, createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Popper from './popper';
@@ -158,11 +158,7 @@ class Tootip extends Component<PropsType, any> {
       prefixCls,
       className,
     } = this.props;
-    const child = React.isValidElement(children) ? (
-      children
-    ) : (
-      <span>{children}</span>
-    );
+    // tslint:disable-next-line:jsx-no-multiline-js
     const popContent = typeof title === 'function' ? title() : title;
     const cls = classnames(prefixCls, {
       [className!]: !!className,
@@ -194,7 +190,7 @@ class Tootip extends Component<PropsType, any> {
         }}
       >
         {createPortal(dd(), document.body)}
-        {React.cloneElement(child, { ref: (reference) => { this.reference = reference; } })}
+        {cloneElement(children as ReactElement<any>, { ref: (reference) => { this.reference = reference; } })}
       </div>
     );
   }

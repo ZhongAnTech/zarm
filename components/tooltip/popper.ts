@@ -143,7 +143,6 @@ function getOffsetRect(element) {
  * @param {Object} options
  */
 function Popper(reference, popper, options) {
-  debugger
   this._reference = reference;
   this._popper = popper;
   this.state = {};
@@ -339,8 +338,10 @@ Popper.prototype._getBoundaries = function (data, padding) {
 
   boundaries = {
     top: 0 - (offsetParentRect.top - scrollTop),
+    // tslint:disable-next-line
     right:  (root as Window).document.documentElement.clientWidth -
       (offsetParentRect.left - scrollLeft),
+    // tslint:disable-next-line
     bottom: (root as Window).document.documentElement.clientHeight -
       (offsetParentRect.top - scrollTop),
     left: 0 - (offsetParentRect.left - scrollLeft),
