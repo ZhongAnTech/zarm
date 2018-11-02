@@ -17,7 +17,6 @@ header {
 
   a {
     display: block;
-    // margin-right: 80px;
     height: 65px;
     line-height: 65px;
     color: #333;
@@ -31,7 +30,7 @@ header {
   margin-left: 20px;
 
   .tag-input-box {
-    width: 260px;
+    width: 100px;
     border: 0;
 
     &-active {
