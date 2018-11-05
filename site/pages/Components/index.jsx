@@ -19,6 +19,9 @@ class Page extends PureComponent {
         <Header />
         <main>
           <SideBar />
+          <div className="simulator">
+            <iframe src={`${window.location.origin}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+          </div>
           <div className="main-container">
             <Switch>
               {
@@ -28,9 +31,6 @@ class Page extends PureComponent {
               }
               <Redirect to="/" />
             </Switch>
-          </div>
-          <div className="simulator">
-            <iframe src={`${window.location.origin}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
           <ScrollToTop>
             <div className="scroll-to-top">

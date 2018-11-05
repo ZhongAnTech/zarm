@@ -54,3 +54,19 @@
     box-shadow:0px 2px 10px 0px rgba(18, 194, 135, 0.3);
   }
 }
+
+@media only screen and (max-width: 767.99px) {
+  .side-bar {
+    display: none;
+  }
+
+  .documents-page {
+    main {
+      min-width: 100%;
+
+      .main-container {
+        padding: 0 20px;
+      }
+    }
+  }
+}

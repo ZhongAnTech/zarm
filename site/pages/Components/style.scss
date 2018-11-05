@@ -15,7 +15,6 @@
       min-height: 500px;
       margin-left: -1px;
       padding: 0 560px 140px 340px;
-      background: #fff;
       overflow: hidden;
       border-left: 1px solid #ebedf0;
       font-size: 16px;
@@ -26,7 +25,8 @@
       top: 105px;
       right: 0;
       width: 500px;
-      
+      z-index: 10;
+
       iframe {
         border: 1px solid #eaeefb;
       }
@@ -54,3 +54,26 @@
     box-shadow:0px 2px 10px 0px rgba(18, 194, 135, 0.3);
   }
 }
+
+// @media only screen and (max-width: 1200px) {
+//   .side-bar {
+//     display: none;
+//   }
+
+//   .components-page {
+//     main {
+//       min-width: 100%;
+
+//       .main-container {
+//         padding: 0 20px;
+//       }
+
+//       .simulator {
+//         position: static;
+//         width: auto;
+//         text-align: center;
+//         margin-bottom: 40px;
+//       }
+//     }
+//   }
+// }

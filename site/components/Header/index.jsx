@@ -8,7 +8,6 @@ import './style.scss';
 
 class Header extends PureComponent {
   state = {
-    // dropdown: false,
     searchKey: null,
   }
 
@@ -49,26 +48,10 @@ class Header extends PureComponent {
               }
             </Select>
           </div>
-          {/* <div className="lang">
-            <Dropdown
-              trigger="hover"
-              visible={this.state.dropdown}
-              onVisibleChange={(visible) => {
-                this.setState({
-                  dropdown: visible,
-                });
-              }}
-              overlay={<canvas ref={(ele) => { this.qrcode = ele; }} />}
-            >
-              <Button theme="info">扫码体验</Button>
-            </Dropdown>
-            <Button>English</Button>
-          </div> */}
           <nav>
             <ul>
               { match.url !== '/' && <li><a href="#/">首页</a></li>}
-              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>React / React Native 组件</a></li>
-              <li title="建设中...">Vue 组件</li>
+              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>文档</a></li>
               <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
             </ul>
           </nav>

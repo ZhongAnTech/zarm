@@ -14,7 +14,7 @@
     background-color: transparent;
 
     .header-container {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 30px;
     }
@@ -27,7 +27,7 @@
 
   main {
     position: relative;
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 100px 30px;
     height: 100%;
@@ -143,15 +143,6 @@
 
 @media only screen and (max-width: 767.99px) {
   .index-page {
-    header {
-      &-container {
-        margin: 0 auto;
-      }
-      .search, nav {
-        display: none;
-      }
-    }
-
     .banner {
       float: none;
       width: 100%;
