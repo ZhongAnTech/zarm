@@ -42,9 +42,13 @@ class Header extends PureComponent {
               }}
             >
               {
-                [...form, ...feedback, ...view, ...navigation].map((component, i) => {
-                  return <Select.Option key={+i} value={Format.camel2Dash(component.name)}>{`${component.name} ${component.description}`}</Select.Option>;
-                })
+                [...form, ...feedback, ...view, ...navigation]
+                  .sort((a, b) => {
+                    return a.name.localeCompare(b.name);
+                  })
+                  .map((component, i) => {
+                    return <Select.Option key={+i} value={Format.camel2Dash(component.name)}>{`${component.name} ${component.description}`}</Select.Option>;
+                  })
               }
             </Select>
           </div>

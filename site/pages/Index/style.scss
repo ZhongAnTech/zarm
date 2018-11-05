@@ -111,13 +111,13 @@
 }
 
 // 二维码
-.ui-dropdown {
+.btn-try {
   min-width: auto !important;
   line-height: 1;
+}
 
-  &-trigger-box {
-    background: transparent;
-  }
+.ui-dropdown-trigger-box {
+  background: transparent;
 }
 
 @keyframes banner-move {
