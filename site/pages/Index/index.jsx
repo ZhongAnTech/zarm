@@ -25,17 +25,12 @@ class Page extends PureComponent {
       <Container className="index-page">
         <Header />
         <main>
-          <div className="righter">
-            <div className="banner" ref={(ele) => { this.banner = ele; }}>
-              <img src={require('./images/banner2.png')} alt="" />
-              {/* <div className="woman" />
-              <div className="buoy" />
-              <div className="buoy small" /> */}
-            </div>
+          <div className="banner">
+            <img src={require('./images/banner2.png')} alt="" />
           </div>
           <div className="introduce">
             <div className="title"><span>ZARM</span> DESIGN</div>
-            <div className="description">基于 React / React Native 的 UI 组件库，为用户体验而生</div>
+            <div className="description">基于 React / React Native / Vue 的跨平台 UI 组件库，为用户体验而生</div>
             <div className="navigation">
               <button onClick={() => history.push('/documents/quick-start')}>开始使用</button>
               <Dropdown
