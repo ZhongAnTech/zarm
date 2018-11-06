@@ -28,6 +28,7 @@
       z-index: 10;
 
       iframe {
+        box-sizing: content-box;
         border: 1px solid #eaeefb;
       }
     }

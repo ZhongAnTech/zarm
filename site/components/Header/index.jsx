@@ -21,6 +21,7 @@ class Header extends PureComponent {
   render() {
     const { history, match } = this.props;
     const { form, feedback, view, navigation } = components;
+    const { version } = require('@/package.json');
 
     return (
       <header>
@@ -50,6 +51,14 @@ class Header extends PureComponent {
                     return <Select.Option key={+i} value={Format.camel2Dash(component.name)}>{`${component.name} ${component.description}`}</Select.Option>;
                   })
               }
+            </Select>
+          </div>
+          <div className="version">
+            <Select
+              radius
+              defaultValue={version}
+            >
+              <Select.Option value={version}>{version}</Select.Option>
             </Select>
           </div>
           <nav>
