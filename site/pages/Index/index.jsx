@@ -26,7 +26,7 @@ class Page extends PureComponent {
         <Header />
         <main>
           <div className="banner">
-            <img src={require('./images/banner2.png')} alt="" />
+            <img src={require('./images/banner@2x.png')} alt="" />
           </div>
           <div className="introduce">
             <div className="title"><span>ZARM</span> DESIGN</div>
