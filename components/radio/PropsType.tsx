@@ -4,7 +4,7 @@ export interface BaseRadioProps {
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
-  onChange?: (checked: boolean) => void;
+  onChange?: (checked?: boolean) => void;
   checked?: boolean;
   defaultChecked?: boolean;
   value?: number | string;
@@ -17,7 +17,7 @@ export interface BaseRadioGroupProps {
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
-  onChange?: (value: string | number) => void;
+  onChange?: (value?: string | number) => void;
   value?: number | string;
   defaultValue?: number | string;
   compact?: boolean;

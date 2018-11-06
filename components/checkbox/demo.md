@@ -186,7 +186,7 @@ ReactDOM.render(<Demo />, mountNode);
 | checked | boolean | - | 当前是否选中 |
 | defaultChecked | boolean | - | 初始是否选中 |
 | disabled | boolean | false | 是否禁用 |
-| onChange | (checked: boolean) => void | - | 值变化时触发的回调函数 |
+| onChange | (checked?: boolean) => void | - | 值变化时触发的回调函数 |
 | id | string | - | 方便外部带有for属性的label标签控制当前checkbox |
 
 #### Checkbox.Group
@@ -195,9 +195,9 @@ ReactDOM.render(<Demo />, mountNode);
 | theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
 | shape | string | - | 形状，可选值 `radius`, `round` | 
 | type | string | - | 显示类型，可选值 `button`, `cell` |
-| value | Array&lt;number &#124; string&gt; | [] | 选中值 |
-| defaultValue | Array&lt;number &#124; string&gt; | [] | 初始选中值 |
+| value | number[] \| string[] | [] | 选中值 |
+| defaultValue | number[] \| string[] | [] | 初始选中值 |
 | block | boolean | false | 是否为块级元素 |
 | disabled | boolean | false | 是否禁用 |
 | compact | boolean | false | 是否启用紧凑模式 |
-| onChange | (value: Array&lt;number &#124; string&gt;) => void | - | 值变化时触发的回调函数 |
+| onChange | (value?: number[] \| string[]) => void | - | 值变化时触发的回调函数 |

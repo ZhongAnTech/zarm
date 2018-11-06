@@ -109,5 +109,5 @@ ReactDOM.render(<Demo />, mountNode);
 | max | number | - | 最大值 |
 | step | number | 1 | 步长 |
 | disabled | boolean | false | 是否禁用 |
-| onInputChange | (value: number) => void | - | 输入值变化时触发的回调函数 |
-| onChange | (value: number) => void | - | 值变化时触发的回调函数 |
+| onInputChange | (value?: number) => void | - | 输入值变化时触发的回调函数 |
+| onChange | (value?: number) => void | - | 值变化时触发的回调函数 |

@@ -163,4 +163,4 @@ ReactDOM.render(<Demo />, mountNode);
 | multiple | boolean | false | 是否多选 |
 | disabled | boolean | false | 是否禁用 |
 | onBeforeSelect | () => boolean | () => true | 选择前触发的事件 |
-| onChange | (file: Object &#124; Array&lt;Object&gt;) => void | - | 值变化时触发的回调函数 |
+| onChange | (file?: object \| object[]) => void | - | 值变化时触发的回调函数 |

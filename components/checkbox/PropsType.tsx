@@ -3,7 +3,7 @@ export interface BaseCheckboxProps {
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
-  onChange?: (checked: boolean) => void;
+  onChange?: (checked?: boolean) => void;
   id?: string;
   checked?: boolean;
   defaultChecked?: boolean;
@@ -15,8 +15,8 @@ export interface BaseCheckboxGroupProps {
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
-  onChange?: (value: Array<number | string>) => void;
-  value?: Array<number | string>;
-  defaultValue?: Array<number | string>;
+  onChange?: (value?: number[] | string[]) => void;
+  value?: number[] | string[];
+  defaultValue?: number[] | string[];
   compact?: boolean;
 }

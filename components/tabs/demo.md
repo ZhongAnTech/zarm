@@ -155,8 +155,8 @@ ReactDOM.render(<Demo />, mountNode);
 | defaultValue | string | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
 | canSwipe | boolean | false | 是否支持滑动切换 |
-| lineWidth | number &#124; string | - | 线条宽度 |
-| onChange | (index: number) => void | - | 值变化时触发的回调函数 |
+| lineWidth | number \| string | - | 线条宽度 |
+| onChange | (index?: number) => void | - | 值变化时触发的回调函数 |
 
 
 #### Panel
@@ -164,4 +164,3 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | disabled | boolean | false | 是否禁用 |
 | title | string | - | 标题 |
-| children | number | - | 内容 |

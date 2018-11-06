@@ -3,5 +3,5 @@ export default interface PropsType {
   defaultChecked?: boolean;
   disabled?: boolean;
   // size?: 'normal'|'small';
-  onChange?: (checked: boolean) => void;
+  onChange?: (checked?: boolean) => void;
 }

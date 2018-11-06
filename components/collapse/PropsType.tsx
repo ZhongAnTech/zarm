@@ -1,17 +1,19 @@
+import { CSSProperties, ReactNode } from 'react';
+
 export interface BaseCollapseProps {
-  activeKey?: string | number | Array<string | number>;
-  defaultActiveKey?: string | number | Array<string | number>;
+  activeKey?: string | number | string[] | number[];
+  defaultActiveKey?: string | number | string[] | number[];
   multiple?: boolean;
   animated?: boolean;
-  style?: React.CSSProperties;
-  onChange: (activeKey: string | number) => void;
+  style?: CSSProperties;
+  onChange: (activeKey?: string | number) => void;
 }
 
 export interface BaseCollapseItemProps {
-  title?: React.ReactNode;
+  title?: ReactNode;
   key: string | number;
   animated?: boolean;
-  style?: React.CSSProperties;
   disabled?: boolean;
+  style?: CSSProperties;
   onItemChange?: (key?: string | number) => void;
 }

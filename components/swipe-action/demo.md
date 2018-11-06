@@ -56,8 +56,8 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| left | Array&lt;Object&gt; | [] | 左侧按钮组 |
-| right | Array&lt;Object&gt; | [] | 右侧按钮组 |
+| left | object[] | [] | 左侧按钮组 |
+| right | object[] | [] | 右侧按钮组 |
 | moveDistanceRatio | number | 0.5 | 移动距离比例临界点 |
 | moveTimeSpan | number | 300 | 移动时间跨度临界点 |
 | animationDuration | number | 300 | 动画执行时间，单位：毫秒 |
