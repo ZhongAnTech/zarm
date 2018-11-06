@@ -12,11 +12,13 @@ class Demo extends React.Component {
       inputValue: '',
     }
   }
+
   handleInputChange(value) {
     this.setState({
       inputValue: value,
     })
   }
+
   render() {
     return (
       <div>
