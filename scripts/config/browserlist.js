@@ -4,6 +4,6 @@ module.exports = [
   'Firefox ESR',
   '> 1%',
   'ie >= 9',
-  'iOS >= 8',
+  'iOS >= 7',
   'Android >= 4',
 ];
