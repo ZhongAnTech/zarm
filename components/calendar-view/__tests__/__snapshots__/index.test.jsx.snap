@@ -51,6 +51,7 @@ exports[`Calendar Calendar render 1`] = `
     >
       <section
         class="comp-month-content"
+        id="2018-4"
         title="2018年5月"
       >
         <ul>
@@ -338,6 +339,7 @@ exports[`Calendar Calendar render 1`] = `
       </section>
       <section
         class="comp-month-content"
+        id="2018-5"
         title="2018年6月"
       >
         <ul>
@@ -616,6 +618,7 @@ exports[`Calendar Calendar render 1`] = `
       </section>
       <section
         class="comp-month-content"
+        id="2018-6"
         title="2018年7月"
       >
         <ul>
@@ -903,6 +906,7 @@ exports[`Calendar Calendar render 1`] = `
       </section>
       <section
         class="comp-month-content"
+        id="2018-7"
         title="2018年8月"
       >
         <ul>
@@ -1190,6 +1194,7 @@ exports[`Calendar Calendar render 1`] = `
       </section>
       <section
         class="comp-month-content"
+        id="2018-8"
         title="2018年9月"
       >
         <ul>
@@ -1468,6 +1473,7 @@ exports[`Calendar Calendar render 1`] = `
       </section>
       <section
         class="comp-month-content"
+        id="2018-9"
         title="2018年10月"
       >
         <ul>

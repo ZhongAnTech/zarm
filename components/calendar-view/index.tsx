@@ -38,7 +38,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     this.getState(nextProps);
   }
 
-  getState = (props) => {
+  getState(props) {
     const state = this.state || {};
     let { value, defaultValue, multiple } = props;
 
@@ -84,7 +84,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
       startMonth: startMonth || state.startMonth,
       endMonth: endMonth || state.endMonth,
       // 是否是入参更新(主要是月份跨度更新，需要重新定位)
-      md5: state.md5,
+      refresh: state.refresh,
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
       // steps:Math.max(tmp.value.length, tmp.defaultValue.length);
       steps: multiple ? 2 : 1,
@@ -95,12 +95,30 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     if (JSON.stringify(tmp) === JSON.stringify(this.state)) {
       return;
     }
-    tmp.md5 = `${Math.floor(Math.random() * 10000)}`;
+
+    tmp.refresh = !state.refresh;
 
     if (!this.state) {
       this.state = tmp;
     } else {
       this.setState(tmp);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.refresh !== prevState.refresh) {
+      this.anchor();
+    }
+  }
+
+  // 月历定位
+  anchor() {
+    const { value } = this.state;
+    const target = value[0] || CalendarView.now;
+    const key = `${target.getFullYear()}-${target.getMonth()}`;
+    const node: any = document.getElementById(key);
+    if (node && typeof node.scrollIntoViewIfNeeded === 'function') {
+      node.scrollIntoViewIfNeeded(value);
     }
   }
 
@@ -134,12 +152,11 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
   }
 
   renderMonth(dateMonth) {
-    const { value, md5, min, max } = this.state;
+    const { value, min, max } = this.state;
     const { dateRender, disabledDate } = this.props;
     return (
       <CalendarMonthView
         key={dateMonth.toLocaleDateString()}
-        md5={md5}
         min={min}
         max={max}
         value={value}
