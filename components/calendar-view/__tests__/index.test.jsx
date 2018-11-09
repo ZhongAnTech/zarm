@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Calendar from '../index';
 
 describe('Calendar', () => {
   it('Calendar render', () => {
-    const wrapper = mount(<Calendar defaultValue="2018-08-07" min="2018-05-06" max="2018-10-02" multiple={false} />);
+    const wrapper = render(<Calendar defaultValue="2018-08-07" min="2018-05-06" max="2018-10-02" multiple={false} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
