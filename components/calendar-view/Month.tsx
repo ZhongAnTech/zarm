@@ -15,7 +15,6 @@ interface CalendarMonthViewProps {
   dateRender?: (value: Date) => void;
   disabledDate?: (value: Date) => boolean;
   onDateClick?: (value: Date) => void;
-  md5?: String;
 }
 
 export default class CalendarMonthView extends PureComponent<CalendarMonthViewProps, any> {
@@ -24,7 +23,6 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
     dateMonth: new Date(),
     min: new Date(),
     max: new Date(),
-    md5: '',
     dateRender: date => date.getDate(),
     disabledDate: date => !date,
     onDateClick: date => date,
@@ -40,10 +38,6 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
   private lastIn = false;
   // 当前组件是否需要更新
   private isRefresh = true;
-  // 当前月份的dom
-  private node?: any;
-  // 刷新，是否需要重新定位的md标志
-  private md5?: any;
 
   constructor(props) {
     super(props);
@@ -55,11 +49,6 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
     };
   }
 
-  componentDidMount() {
-    this.md5 = this.props.md5;
-    this.anchor();
-  }
-
   componentWillReceiveProps(nextProps) {
     this.isRefresh = this.checkRefresh(nextProps);
     if (this.isRefresh) {
@@ -69,20 +58,6 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
         value: nextProps.value,
         dateMonth: nextProps.dateMonth,
       });
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.md5 !== this.md5) {
-      this.md5 = this.props.md5;
-      this.anchor();
-    }
-  }
-
-  anchor() {
-    const { dateMonth, value = [] } = this.state;
-    if (DateTool.isOneMonth(dateMonth, value[0]) && this.node.scrollIntoViewIfNeeded) {
-      this.node.scrollIntoViewIfNeeded();
     }
   }
 
@@ -196,12 +171,13 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
       );
     });
 
+    const monthkey = `${year}-${month}`
     this.cache = (
       <section
-        key={`${year}${month < 10 ? '0' : ''}${month}`}
+        key={monthkey}
+        id={monthkey}
         className="comp-month-content"
         title={`${year}年${month + 1}月`}
-        ref={n => (this.node = n)}
       >
         <ul>{content}</ul>
       </section>

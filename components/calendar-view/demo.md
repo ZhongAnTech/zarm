@@ -36,37 +36,36 @@ function cloneDate(date, type, during) {
   return tmp;
 }
 
+function getDateString(date) {
+  return (date && new Date(date).toLocaleDateString()) || '-';
+}
+
+const min = cloneDate(NOW, 'm', -5);
+const max = cloneDate(NOW, 'm', 5);
+const defaultValue = [cloneDate(NOW, 'd', 20), cloneDate(NOW, 'd', 30)];
+
 class Demo extends React.Component {
   constructor() {
     super();
     this.state = {
       calendar1_s: {
         name: '单选String类型，无min/max',
-        defaultValue: '2018-08-02',
-        value: '2018-08-02',
+        defaultValue: defaultValue[0].toLocaleDateString(),
+        value: defaultValue[0].toLocaleDateString(),
         multiple: false
       },
       calendar1_s1: {
         name: '单选String类型，只有min',
-        defaultValue: '2018-08-02',
-        value: '2018-08-02',
-        min: '2018-07-06',
+        defaultValue: defaultValue[0].toLocaleDateString(),
+        value: defaultValue[0].toLocaleDateString(),
+        min: min.toLocaleDateString(),
         multiple: false
       },
-
       calendar1_s2: {
         name: '单选String类型，只有max',
-        defaultValue: '2018-08-02',
-        value: '2018-08-02',
-        max: '2019-05-05',
-        multiple: false
-      },
-      calendar1_s3: {
-        name: '单选String类型，跨度1年',
-        defaultValue: '2018-08-02',
-        value: '2018-08-02',
-        min: '2018-05-06',
-        max: '2019-05-05',
+        defaultValue: defaultValue[0].toLocaleDateString(),
+        value: defaultValue[0].toLocaleDateString(),
+        max: max.toLocaleDateString(),
         multiple: false
       },
       calendar1_o: {
@@ -81,22 +80,17 @@ class Demo extends React.Component {
         name: '单选Number类型，自定义render',
         defaultValue: '',
         value: '',
-        min: 1534333992270,
-        max: 1541088000000,
+        min: Date.parse(min) - 5184000000,
+        max: Date.parse(max) + 5184000000,
         multiple: false,
-        dateRender: date => (
-          <div>
-            <span>{date.getDay()}</span>
-            <span>${date.getDay()}</span>
-          </div>
-        )
+        dateRender: date => <div>${date.getDate()}</div>
       },
       calendar1_n1: {
         name: '单选Number类型，错误render',
         defaultValue: '',
         value: '',
-        min: 1543333992270,
-        max: 1591088000000,
+        min: Date.parse(min) + 5184000000,
+        max: Date.parse(max) - 5184000000,
         multiple: false,
         dateRender: date => date
       },
@@ -111,18 +105,30 @@ class Demo extends React.Component {
       },
       calendar2_s: {
         name: '双选String类型，跨度5个月',
-        defaultValue: ['2018-08-02', '2018-08-07'],
-        value: ['2018-08-02', '2018-08-07'],
-        min: '2018-07-02',
-        max: '2018-12-02',
+        defaultValue: [
+          defaultValue[0].toLocaleDateString(),
+          defaultValue[1].toLocaleDateString()
+        ],
+        value: [
+          defaultValue[0].toLocaleDateString(),
+          defaultValue[1].toLocaleDateString()
+        ],
+        min: Date.parse(min) + 5184000000,
+        max: Date.parse(max) - 5184000000,
         multiple: true
       },
       calendar2_n: {
         name: '双选Number类型，跨度2年',
-        defaultValue: [1534333992270, 1535344992270],
-        value: [1534333992270, 1535544992270],
-        min: '2017-07-02',
-        max: '2019-08-02',
+        defaultValue: [
+          Date.parse(defaultValue[0]),
+          Date.parse(defaultValue[1])
+        ],
+        value: [
+          Date.parse(defaultValue[0]) - 864000000,
+          Date.parse(defaultValue[1]) + 864000000
+        ],
+        min: Date.parse(min) - 5184000000,
+        max: Date.parse(max) - 5184000000,
         multiple: true
       },
       calendar2_o: {
@@ -133,6 +139,7 @@ class Demo extends React.Component {
         max: cloneDate(NOW, 'y', 1),
         multiple: true
       },
+      // 以后可能扩展部门
       //   calendar3_s: {
       //     name: '三选String类型，跨度1年',
       //     defaultValue: ['2018-08-02', '2018-08-07', '2018-08-18'],
@@ -219,28 +226,24 @@ class Demo extends React.Component {
             <Icon className="icon" theme="primary" type="arrow-right" />
           </Cell>
           <Cell title="value">
-            <p>
-              {dateValue
-                .map(
-                  item => (item && new Date(item).toLocaleDateString()) || '-'
-                )
-                .join(',')}
-            </p>
+            <p>{dateValue.map(item => getDateString(item)).join(',')}</p>
           </Cell>
           <Cell title="defaultValue">
-            <p>
-              {dateDefaultValue
-                .map(
-                  item => (item && new Date(item).toLocaleDateString()) || '-'
-                )
-                .join(',')}
-            </p>
+            <p>{dateDefaultValue.map(item => getDateString(item)).join(',')}</p>
           </Cell>
-          <Cell title="min">
-            <p>{(tmp.min && new Date(tmp.min).toLocaleDateString()) || '-'}</p>
-          </Cell>
-          <Cell title="max">
-            <p>{(tmp.max && new Date(tmp.max).toLocaleDateString()) || '-'}</p>
+          <Cell>
+            <div
+              style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between'
+              }}
+            >
+              <p>min</p>
+              <p>{getDateString(tmp.min)}</p>
+              <p>max</p>
+              <p>{getDateString(tmp.max)}</p>
+            </div>
           </Cell>
         </div>
         <div>
@@ -275,4 +278,4 @@ ReactDOM.render(<Demo />, mountNode);
 | max          | string &#124; Date                                  | new Date() + 1 年 |              | 最大日期，展示当月     |
 | dateRender   | <code>(value?: Date) => void</code>                 | noop              |              | 日期渲染               |
 | disabledDate | <code>(value?: Date) => boolean</code>              | false             |              | 是否禁止选择           |
-| onChange     | <code>(value?: Array&#60;Date>) => void</code>  | noop              |              | 值变化时触发的回调函数 |
+| onChange     | <code>(value?: Array&#60;Date>) => void</code>      | noop              |              | 值变化时触发的回调函数 |
