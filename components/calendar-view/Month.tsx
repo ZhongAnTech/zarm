@@ -86,7 +86,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
   }
 
   // 日期状态: 选中，区间
-  checkStatus = date => {
+  checkStatus(date) {
     const { value = [] } = this.state;
     const { min, max, disabledDate } = this.props;
     const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
@@ -171,14 +171,9 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
       );
     });
 
-    const monthkey = `${year}-${month}`
+    const monthkey = `${year}-${month}`;
     this.cache = (
-      <section
-        key={monthkey}
-        id={monthkey}
-        className="comp-month-content"
-        title={`${year}年${month + 1}月`}
-      >
+      <section key={monthkey} id={monthkey} className="comp-month-content" title={`${year}年${month + 1}月`}>
         <ul>{content}</ul>
       </section>
     );

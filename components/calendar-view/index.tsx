@@ -38,7 +38,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     this.getState(nextProps);
   }
 
-  getState = (props) => {
+  getState(props) {
     const state = this.state || {};
     let { value, defaultValue, multiple } = props;
 
@@ -103,11 +103,12 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     } else {
       this.setState(tmp);
     }
-  };
+  }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.refresh === prevState.refresh) return;
-    this.anchor();
+    if (this.state.refresh !== prevState.refresh) {
+      this.anchor();
+    }
   }
 
   // 月历定位
@@ -115,9 +116,10 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     const { value } = this.state;
     const target = value[0] || CalendarView.now;
     const key = `${target.getFullYear()}-${target.getMonth()}`;
-    const dom = document.getElementById(key);
-    if (!dom) return;
-    dom.scrollIntoViewIfNeeded && dom.scrollIntoViewIfNeeded();
+    const node: any = document.getElementById(key);
+    if (node && typeof node.scrollIntoViewIfNeeded === 'function') {
+      node.scrollIntoViewIfNeeded(value);
+    }
   }
 
   // 日期点击事件，注意排序
@@ -135,9 +137,9 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
         value,
         step: step >= steps ? 1 : step + 1,
       },
-      () => step >= steps && typeof onChange === 'function' && onChange(value)
+      () => step >= steps && typeof onChange === 'function' && onChange(value),
     );
-  };
+  }
 
   // 生成星期条
   renderWeekBar() {
