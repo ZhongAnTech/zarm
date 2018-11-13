@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { CSSProperties, isValidElement } from 'react';
+import { isValidElement } from 'react';
 
 import CalendarView from './index';
 import DateTool from '../utils/date';
 
-const WIDTH = 14.28571;
-
 interface CalendarMonthViewProps {
-  value?: Array<Date>;
+  prefixCls?: string;
+  value?: Date[];
   min?: Date;
   max?: Date;
   dateMonth?: Date;
@@ -19,6 +18,7 @@ interface CalendarMonthViewProps {
 
 export default class CalendarMonthView extends PureComponent<CalendarMonthViewProps, any> {
   static defaultProps = {
+    prefixCls: '',
     value: [],
     dateMonth: new Date(),
     min: new Date(),
@@ -38,6 +38,8 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
   private lastIn = false;
   // 当前组件是否需要更新
   private isRefresh = true;
+  // 当前月份的dom
+  private node?: any;
 
   constructor(props) {
     super(props);
@@ -51,6 +53,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
 
   componentWillReceiveProps(nextProps) {
     this.isRefresh = this.checkRefresh(nextProps);
+
     if (this.isRefresh) {
       this.min = nextProps.min;
       this.max = nextProps.max;
@@ -58,6 +61,12 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
         value: nextProps.value,
         dateMonth: nextProps.dateMonth,
       });
+    }
+  }
+
+  anchor() {
+    if (this.node && this.node.scrollIntoViewIfNeeded) {
+      this.node.scrollIntoViewIfNeeded();
     }
   }
 
@@ -87,8 +96,8 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
 
   // 日期状态: 选中，区间
   checkStatus(date) {
-    const { value = [] } = this.state;
     const { min, max, disabledDate } = this.props;
+    const { value = [] } = this.state;
     const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
@@ -101,22 +110,8 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
     return res;
   }
 
-  render() {
-    const { dateMonth } = this.state;
-    const { dateRender, onDateClick } = this.props;
-
-    if (Object.prototype.toString.call(dateMonth) !== '[object Date]') {
-      return null;
-    }
-
-    const year = dateMonth.getFullYear();
-    const month = dateMonth.getMonth();
-
-    if (!this.isRefresh) {
-      return this.cache;
-    }
-
-    this.isRefresh = false;
+  renderContent(year, month) {
+    const { prefixCls, dateRender, onDateClick } = this.props;
 
     let data = CalendarView.cache[`${year}-${month}`];
     if (!data) {
@@ -126,10 +121,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
 
     const { firstDay, dayCount } = data;
 
-    const content = Array.from({ length: dayCount }).map((item, i) => {
-      if (item) {
-        return null;
-      }
+    return Array.from({ length: dayCount }).map((_item, i) => {
       const key = i + 1;
       const date = new Date(year, month, key);
       const isToday = CalendarView.cache.now === `${year}-${month}-${key}`;
@@ -138,14 +130,9 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
       let txt = (date && dateRender && dateRender(date)) || '';
       if (typeof txt === 'object') {
         if (!isValidElement(txt)) {
-          console.error('dateRender返回数据类型错误，请返回基本数据类型或者reactNode');
+          console.error('dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode');
           txt = '';
         }
-      }
-
-      const style: CSSProperties = {};
-      if (i === 0) {
-        style.marginLeft = `${firstDay * WIDTH}%`;
       }
 
       const className = {
@@ -155,26 +142,45 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthViewPr
         today: isToday,
         selected: status.isSelected,
         range: status.isRange,
-        'range-s': status.rangeStart,
-        'range-e': status.rangeEnd,
+        'range-start': status.rangeStart,
+        'range-end': status.rangeEnd,
+        [`firstday-${firstDay}`]: i === 0 && firstDay,
       };
 
       return (
         <li
           key={`${year}-${month}-${key}`}
-          className={classnames('comp-day-item', className)}
-          style={style}
+          className={classnames(`${prefixCls}-day-item`, className)}
           onClick={() => !status.disabled && date && onDateClick && onDateClick(date)}
         >
-          {(txt && <div className="comp-day-detail">{txt}</div>) || ''}
+          {(txt && <div className={`${prefixCls}-day-detail`}>{txt}</div>) || ''}
         </li>
       );
     });
+  }
 
+  render() {
+    const { prefixCls } = this.props;
+    const { dateMonth } = this.state;
+
+    const year = dateMonth.getFullYear();
+    const month = dateMonth.getMonth();
+
+    if (!this.isRefresh) {
+      return this.cache;
+    }
+
+    this.isRefresh = false;
     const monthkey = `${year}-${month}`;
+
     this.cache = (
-      <section key={monthkey} id={monthkey} className="comp-month-content" title={`${year}年${month + 1}月`}>
-        <ul>{content}</ul>
+      <section
+        key={monthkey}
+        className={`${prefixCls}-month-content`}
+        title={`${year}年${month + 1}月`}
+        ref={n => (this.node = n)}
+      >
+        <ul>{this.renderContent(year, month)}</ul>
       </section>
     );
 

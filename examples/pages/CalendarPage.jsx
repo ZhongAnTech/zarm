@@ -4,7 +4,7 @@ import Markdown from '../components/Markdown';
 export default class Page extends Markdown {
   document = () => {
     return {
-      document: require('../../components/calendar-view/demo.md'),
+      document: require('../../components/calendar/demo.md'),
       className: 'calendar-page',
     };
   }

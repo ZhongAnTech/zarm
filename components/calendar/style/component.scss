@@ -10,7 +10,15 @@ $prefixCls: $prefixCls-calendar;
     );
 }
 
-.#{$prefixCls}-view {
+@mixin firstday() {
+  @each $num in 1, 2, 3, 4, 5, 6 {
+    &.firstday-#{$num} {
+      margin-left: $calendar-day-width * $num;
+    }
+  }
+}
+
+.#{$prefixCls} {
   background-color: $calendar-background;
   user-select: none;
 
@@ -30,7 +38,7 @@ $prefixCls: $prefixCls-calendar;
     vertical-align: middle;
   }
 
-  .week-bar {
+  .#{$prefixCls}-week-bar {
     display: flex;
     flex-wrap: wrap;
     color: $calendar-week-bar-color;
@@ -44,30 +52,32 @@ $prefixCls: $prefixCls-calendar;
     }
   }
 
-  .month-box {
+  .#{$prefixCls}-month-box {
     padding: r(10) 0;
     max-height: 60vh;
     overflow: auto;
   }
 
-  .comp-month-content {
+  .#{$prefixCls}-month-content {
     padding: 0 $calendar-section-padding;
+    color: $calendar-day-color;
 
     &:before {
       content: attr(title);
       display: block;
-      margin: r(20) auto;
+      margin: r(15) auto;
       font-size: $calendar-day-title-fontsize;
-      padding-left: r(20);
+      font-weight: 500;
+      padding-left: r(15);
     }
   }
 
-  .comp-day-item {
+  .#{$prefixCls}-day-item {
     margin: r(10) 0;
     position: relative;
     font-size: $calendar-day-fontsize;
 
-    .comp-day-detail {
+    .#{$prefixCls}-day-detail {
       width: r(30);
       height: r(30);
       background-color: transparent;
@@ -78,25 +88,28 @@ $prefixCls: $prefixCls-calendar;
       margin: 0 auto;
     }
 
+    @include firstday();
+
     &.disabled {
       color: $color-text-disabled;
     }
 
-    &.today .comp-day-detail {
+    &.today .#{$prefixCls}-day-detail {
       background-color: $calendar-day-today-background;
       color: $calendar-day-today-color;
     }
 
-    &.selected .comp-day-detail {
-      background-color: $calendar-day-selected-background !important;
-      color: $calendar-day-selected-color !important;
+    &.selected .#{$prefixCls}-day-detail,
+    &.today.selected .#{$prefixCls}-day-detail {
+      background-color: $calendar-day-selected-background;
+      color: $calendar-day-selected-color;
     }
 
     &.range {
       background-color: $calendar-day-range-background;
       color: $calendar-day-range-color;
 
-      .comp-day-detail {
+      .#{$prefixCls}-day-detail {
         background-color: $calendar-day-range-background;
       }
 
@@ -126,16 +139,16 @@ $prefixCls: $prefixCls-calendar;
       }
     }
 
-    &.range-s:not(.d6):not(:last-child) {
+    &.range-start.range-end {
+      background-image: none;
+    }
+
+    &.range-start:not(.range-end):not(.d6):not(:last-child) {
       @include gradient(right);
     }
 
-    &.range-e:not(.d7):not(:first-child) {
+    &.range-end:not(.range-start):not(.d7):not(:first-child) {
       @include gradient(left);
-    }
-
-    &.range-s.range-e {
-      background-image: none !important;
     }
   }
 }
