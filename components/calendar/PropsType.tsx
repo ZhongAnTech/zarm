@@ -1,15 +1,12 @@
-import { CSSProperties } from 'react';
-
-export interface BaseCalendarViewProps {
-  value?: string | object | Array<string | object>;
+export interface BaseCalendarProps {
+  value?: string | Date | Array<string | Date>;
   defaultValue?: string | object | Array<string | object>;
-  min?: string | object;
-  max?: string | object;
+  min?: string | Date;
+  max?: string | Date;
   multiple?: boolean;
   dateRender?: (value: Date) => void;
   disabledDate?: (value: Date) => boolean;
   onChange?: (value: Array<Date>) => void;
-  style?: CSSProperties;
   prefixCls?: string;
   className?: string;
 }

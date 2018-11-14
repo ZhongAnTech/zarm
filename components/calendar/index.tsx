@@ -1,17 +1,19 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseCalendarViewProps } from './PropsType';
+import { BaseCalendarProps } from './PropsType';
 
 import CalendarMonthView from './Month';
 import DateTool from '../utils/date';
 
 const CN_DAY_NAME = ['日', '一', '二', '三', '四', '五', '六'];
 
-export default class CalendarView extends PureComponent<BaseCalendarViewProps, any> {
+export default class CalendarView extends PureComponent<
+  BaseCalendarProps,
+  any
+> {
   static defaultProps = {
     prefixCls: 'za-calendar',
     className: '',
-    style: null,
     value: '',
     defaultValue: '',
     multiple: false,
@@ -29,9 +31,17 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     now: `${CalendarView.now.getFullYear()}-${CalendarView.now.getMonth()}-${CalendarView.now.getDate()}`,
   };
 
+  // 当前月份dom数据缓存
+  private nodes?: object;
+
   constructor(props) {
     super(props);
+    this.nodes = {};
     this.getState(props);
+  }
+
+  componentDidMount() {
+    this.anchor();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,12 +59,22 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     let endMonth;
 
     value = value || defaultValue;
-    value = Object.prototype.toString.call(value) === '[object Array]' ? value : (value && [value]) || [];
+    value =
+      Object.prototype.toString.call(value) === '[object Array]'
+        ? value
+        : (value && [value]) || [];
 
-    if (JSON.stringify(value) !== JSON.stringify(state.value)) {
+    if (
+      JSON.stringify(value) !== JSON.stringify(state.value) ||
+      multiple !== state.multiple
+    ) {
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
       // tmpValue = value.map(item => DateTool.parseDay(item));
-      tmpValue = value.slice(0, multiple ? 2 : 1).map(item => DateTool.parseDay(item));
+      tmpValue = value
+        .slice(0, multiple ? 2 : 1)
+        .map(item => DateTool.parseDay(item));
+      // 排序过滤
+      tmpValue = tmpValue.sort((item1, item2) => item1 - item2);
     }
 
     if (!DateTool.isOneDay(props.min, state.min)) {
@@ -68,7 +88,9 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     }
 
     if (!DateTool.isOneDay(props.max, state.max)) {
-      max = props.max ? DateTool.parseDay(props.max) : DateTool.cloneDate(min || state.min, 'y', 1);
+      max = props.max
+        ? DateTool.parseDay(props.max)
+        : DateTool.cloneDate(min || state.min, 'y', 1);
       if (max === state.max) {
         max = null;
       }
@@ -77,10 +99,15 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
       endMonth = DateTool.cloneDate(max, 'dd', DateTool.getDaysByDate(max));
     }
 
+    // min、max 排序
+    const duration = [min || state.min, max || state.max].sort(
+      (item1, item2) => item1 - item2,
+    );
+
     const tmp = {
       value: tmpValue || state.value,
-      min: min || state.min,
-      max: max || state.max,
+      min: duration[0],
+      max: duration[1],
       startMonth: startMonth || state.startMonth,
       endMonth: endMonth || state.endMonth,
       // 是否是入参更新(主要是月份跨度更新，需要重新定位)
@@ -105,7 +132,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     if (this.state.refresh !== prevState.refresh) {
       this.anchor();
     }
@@ -116,21 +143,25 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
     const { value } = this.state;
     const target = value[0] || CalendarView.now;
     const key = `${target.getFullYear()}-${target.getMonth()}`;
-    const node: any = document.getElementById(key);
-    if (node && typeof node.scrollIntoViewIfNeeded === 'function') {
-      node.scrollIntoViewIfNeeded(value);
+
+    const node = this.nodes[key];
+    if (
+      node &&
+      Object.prototype.toString.call(node.anchor) === '[object Function]'
+    ) {
+      node.anchor();
     }
   }
 
   // 日期点击事件，注意排序
-  onDateClick = (date) => {
+  onDateClick = date => {
     const { step, steps, value } = this.state;
     const { onChange } = this.props;
     if (step === 1) {
       value.splice(0, value.length);
     }
     value[step - 1] = date;
-    value.sort((item1, item2) => item1 - item2 > 0);
+    value.sort((item1, item2) => item1 - item2);
 
     this.setState(
       {
@@ -143,20 +174,23 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
 
   // 生成星期条
   renderWeekBar() {
+    const { prefixCls } = this.props;
     const content = CN_DAY_NAME.map(week => (
-      <li key={week} className="week-bar-item">
+      <li key={week} className={`${prefixCls}-week-bar-item`}>
         {week}
       </li>
     ));
-    return <ul className="week-bar">{content}</ul>;
+    return <ul className={`${prefixCls}-week-bar`}>{content}</ul>;
   }
 
   renderMonth(dateMonth) {
     const { value, min, max } = this.state;
-    const { dateRender, disabledDate } = this.props;
+    const { prefixCls, dateRender, disabledDate } = this.props;
+    const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth()}`;
     return (
       <CalendarMonthView
-        key={dateMonth.toLocaleDateString()}
+        prefixCls={prefixCls}
+        key={key}
         min={min}
         max={max}
         value={value}
@@ -164,18 +198,22 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
         dateRender={dateRender}
         disabledDate={disabledDate}
         onDateClick={this.onDateClick}
+        ref={n => (this.nodes[key] = n)}
       />
     );
   }
 
   // 生成日历内容
   renderMonths() {
+    const { prefixCls } = this.props;
     const { min, max } = this.state;
     const arr = Array.from({ length: DateTool.getMonthCount(min, max) });
-    const content = arr.map((_item, i) => this.renderMonth(DateTool.cloneDate(min, 'm', i)));
+    const content = arr.map((_item, i) =>
+      this.renderMonth(DateTool.cloneDate(min, 'm', i)),
+    );
     return (
-      <section className="month-box">
-        <div className="month-wrapper">{content}</div>
+      <section className={`${prefixCls}-month-box`}>
+        <div className={`${prefixCls}-month-wrapper`}>{content}</div>
       </section>
     );
   }
@@ -183,7 +221,7 @@ export default class CalendarView extends PureComponent<BaseCalendarViewProps, a
   render() {
     const { prefixCls, className } = this.props;
     return (
-      <div className={classnames(`${prefixCls}-view`, className)}>
+      <div className={classnames(`${prefixCls}`, className)}>
         {this.renderWeekBar()}
         {this.renderMonths()}
       </div>

@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         name: 'Calendar',
-        description: '日历 Calendar',
+        description: '日历',
       },
       {
         name: 'Slider',
