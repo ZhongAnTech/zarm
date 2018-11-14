@@ -8,17 +8,17 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell>
-          <Marquee id="1" scrollAmount="10" style={{width: '100%'}} scrollDelay="5">
+          <Marquee scrollAmount="10" style={{width: '100%'}} scrollDelay="5">
             <div>我从左向右滚动延迟执行5秒</div>
           </Marquee>
         </Cell>
         <Cell>
-          <Marquee id="2" direction="right" style={{width: '100%'}}>
+          <Marquee direction="right" style={{width: '100%'}}>
             <div>我从右向左滚动</div>
           </Marquee>
         </Cell>
         <Cell>
-          <Marquee id="3" direction="up" height="40px">
+          <Marquee direction="up" height="40">
             <div>我</div>
             <div>从</div>
             <div>下</div>
@@ -29,7 +29,7 @@ class Demo extends React.Component {
           </Marquee>
         </Cell>
          <Cell>
-          <Marquee id="4" direction="down" height="40px">
+          <Marquee direction="down" height="40">
             <div>我</div>
             <div>从</div>
             <div>上</div>
@@ -52,7 +52,6 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 必填 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| id | string | 是 | null | 唯一标识 |
 | direction | 'left' \| 'right' \| 'up' \| 'down' | 否 | 'left' | 方向 |
 | width | string | 否 | - |  容器宽度 |
 | height | string | 否 | - | 容器高度 |

@@ -4,7 +4,7 @@ export default class Page extends Markdown {
   document = () => {
     return {
       document: require('@/components/marquee/demo.md'),
-      className: 'mask-page',
+      className: 'marquee-page',
     };
   }
 }
