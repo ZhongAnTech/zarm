@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 $prefixCls: $prefixCls-stepper;
 
@@ -55,19 +55,25 @@ $prefixCls: $prefixCls-stepper;
     font-size: $stepper-button-font-size;
     font-weight: bold;
     cursor: pointer;
+    border: r(1) solid $border-color;
   }
 
   &-input {
     position: relative;
     width: $stepper-input-width;
     height: $stepper-height;
-    margin: 0 r(10);
+    margin: 0 r(4);
     padding: 0;
     font-size: $stepper-input-font-size;
     color: $color-text;
     text-align: center;
-    border: 0;
+    border-radius: r(4);
+    border: r(1) solid $border-color;
     outline: 0;
     -webkit-appearance: none;
+
+    &.disabled {
+      color: $stepper-input-disabled;
+    }
   }
 }

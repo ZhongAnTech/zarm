@@ -22,6 +22,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
   static defaultProps = {
     prefixCls: 'za-stepper',
     theme: 'primary',
+    shape: 'radius',
     disabled: false,
     step: 1,
   };
@@ -133,15 +134,20 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       disabled: this.isPlusDisabled(),
     });
 
+    const inputCls = classnames(`${prefixCls}-input`, {
+      disabled,
+    });
+
     return (
       <span className={cls}>
         <span className={subCls} onClick={this.onSubClick}><Icon type="minus" /></span>
         <input
-          className={`${prefixCls}-input`}
+          className={inputCls}
           type="tel"
           value={value}
-          onChange={e => this.onInputChange(e.target.value)}
-          onBlur={() => this.onInputBlur(value)}
+          disabled={disabled}
+          onChange={e => !disabled && this.onInputChange(e.target.value)}
+          onBlur={() => !disabled && this.onInputBlur(value)}
         />
         <span className={plusCls} onClick={this.onPlusClick}><Icon type="add" /></span>
       </span>
