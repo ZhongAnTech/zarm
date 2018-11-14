@@ -3,7 +3,7 @@
 ### 平铺选择
 
 ```jsx
-import { Select, Icon, Input, Cell, Calendar } from 'zarm';
+import { Button, Select, Icon, Input, Cell, Calendar } from 'zarm';
 
 const dataSource = [
   {
@@ -16,16 +16,20 @@ const dataSource = [
   }
 ];
 
+window.testc = Demo;
+
 class Demo extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       multiple: true,
-      defaultValue: ['2018-11-1', '2018-12-10'],
+      defaultValue: ['2018-11-21', '2018-12-8'],
       value: '',
       min: '2018-5-12',
       max: '2019-5-11',
-      visible: false
+      visible: false,
+      dateRender: date => date.getDate(),
+      disabledDate: date => /(0|6)/.test(date.getDay())
     };
   }
 
@@ -58,7 +62,6 @@ class Demo extends React.Component {
               onBlur={e => this.setState({ min: e })}
             />
           </Cell>
-
           <Cell title="max">
             <Input
               type="text"
@@ -92,10 +95,10 @@ ReactDOM.render(<Demo />, mountNode);
 | prefixCls | string | 'za-calendar' | 类名前缀 |
 | className | string | - | 追加类名 |
 | multiple | boolean | false | 是否多选(双选) |
-| value | string \| Date \| string[] \| Date[] | - | 值 |
-| defaultValue | string \| Date \| string[] \| Date[] | - | 初始值 |
-| min | string \| Date \| 时间戳 | new Date() | 最小日期，展示当月 |
-| max | string \| Date \| 时间戳 | new Date() + 1 年 | 最大日期，展示当月 |
+| value | Date | Date[] | - | 值 |
+| defaultValue | Date \| Date[] | - | 初始值 |
+| min | Date \| | new Date() | 最小日期，展示当月 |
+| max | Date \| | new Date() + 1 年 | 最大日期，展示当月 |
 | dateRender | <code>(value?: Date) => void</code> | noop | 日期渲染函数 |
 | disabledDate | <code>(value?: Date) => boolean</code> | false | 日期是否禁止选择 |
 | onChange | <code>(value?: Date[]) => void</code> | noop | 日期选择发生变化时触发的回调函数 |

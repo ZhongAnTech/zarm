@@ -1,4 +1,4 @@
-export interface BaseCalendarProps {
+export interface PropsType {
   value?: string | Date | Array<string | Date>;
   defaultValue?: string | object | Array<string | object>;
   min?: string | Date;
