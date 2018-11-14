@@ -1,6 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 
-export interface MarqueeProps extends HTMLAttributes<HTMLDivElement> {
+export interface PropsType {
   direction: 'left' | 'right' | 'up' | 'down';
   width?: number | string;
   height?: number | string;

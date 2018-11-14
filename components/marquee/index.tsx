@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
-import { MarqueeProps } from './PropsType';
+import React, { PureComponent, HTMLAttributes } from 'react';
+import { PropsType } from './PropsType';
 import classnames from 'classnames';
 import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
 import { getKeyFrameModifier, animationModifier } from './modifiers';
-
+export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, PropsType {}
 export default class Marquee extends PureComponent<MarqueeProps, {}> {
   static defaultProps = {
     prefixCls: 'za-marquee',
@@ -38,7 +38,7 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
         modifier = `translate3d(-${boundingRect.width}px, 0, 0)`;
         break;
       case DIRECTION_UP:
-        modifier = `translate3d(0, ${this.props.height}, 0)`;
+        modifier = `translate3d(0, ${this.props.height}px, 0)`;
         break;
       case DIRECTION_DOWN:
         modifier = `translate3d(0, -${boundingRect.height}px ,0)`;
@@ -50,7 +50,8 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
     this.container.style.WebkitTransform = modifier;
   }
   genKey() {
-    const { prefixCls, direction, id } = this.props;
+    const { prefixCls, direction } = this.props;
+    const id = Date.now();
     return `${prefixCls}-${direction}-${id}`.toUpperCase();
   }
   getDistance() {
@@ -84,10 +85,10 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
     let { prefixCls, className, style, height, width } = this.props;
     style = style || {};
     if (height) {
-      style.height = height;
+      style.height = `${height}px`;
     }
     if (width) {
-      style.width = width;
+      style.width = `${width}px`;
     }
     const cls = classnames(prefixCls, className);
     return (<div className={cls} style={style}>
