@@ -139,7 +139,7 @@ export default class CalendarView extends PureComponent<PropsType, any> {
     const { value } = this.state;
     const target = value[0] || CalendarView.now;
     const key = `${target.getFullYear()}-${target.getMonth()}`;
-    const node = this.nodes[key];
+    const node = this.nodes![key];
     if (
       node &&
       Object.prototype.toString.call(node.anchor) === '[object Function]'
@@ -193,7 +193,7 @@ export default class CalendarView extends PureComponent<PropsType, any> {
         dateRender={dateRender}
         disabledDate={disabledDate}
         onDateClick={this.onDateClick}
-        ref={n => (this.nodes[key] = n)}
+        ref={n => (this.nodes![key] = n)}
       />
     );
   }
