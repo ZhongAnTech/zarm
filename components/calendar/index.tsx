@@ -1,23 +1,23 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { PropsType } from './PropsType';
-
+import { BaseCalendarProps } from './PropsType';
 import CalendarMonthView from './Month';
 import DateTool from '../utils/date';
 
 const CN_DAY_NAME = ['日', '一', '二', '三', '四', '五', '六'];
 
-export default class CalendarView extends PureComponent<PropsType, any> {
+export interface CalendarProps extends BaseCalendarProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+export default class CalendarView extends PureComponent<CalendarProps, any> {
   static defaultProps = {
     prefixCls: 'za-calendar',
-    className: '',
-    value: '',
-    defaultValue: '',
     multiple: false,
     min: new Date(),
     dateRender: date => date.getDate(),
-    disabledDate: date => !date,
-    onChange: date => date,
+    disabledDate: () => false,
   };
 
   static now = new Date();

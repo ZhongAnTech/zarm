@@ -1,31 +1,23 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { isValidElement } from 'react';
-
+import { BaseCalendarMonthProps } from './PropsType';
 import CalendarView from './index';
 import DateTool from '../utils/date';
 
-interface MonthProps {
+export interface CalendarMonthProps extends BaseCalendarMonthProps {
   prefixCls?: string;
-  value?: Date[];
-  min?: Date;
-  max?: Date;
-  dateMonth?: Date;
-  dateRender?: (value: Date) => void;
-  disabledDate?: (value: Date) => boolean;
-  onDateClick?: (value: Date) => void;
 }
 
-export default class CalendarMonthView extends PureComponent<MonthProps, any> {
+export default class CalendarMonthView extends PureComponent<CalendarMonthProps, any> {
   static defaultProps = {
-    prefixCls: '',
+    prefixCls: 'za-calendar',
     value: [],
     dateMonth: new Date(),
     min: new Date(),
     max: new Date(),
     dateRender: date => date.getDate(),
-    disabledDate: date => !date,
-    onDateClick: date => date,
+    disabledDate: () => false,
   };
 
   // 月份最小值
@@ -113,11 +105,9 @@ export default class CalendarMonthView extends PureComponent<MonthProps, any> {
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
       isSelected: value.some(item => DateTool.isOneDay(date, item)),
-      isRange:
-        value.length > 1 && date > value[0] && date < value[value.length - 1],
+      isRange: value.length > 1 && date > value[0] && date < value[value.length - 1],
       rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]),
-      rangeEnd:
-        value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),
+      rangeEnd: value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),
     };
     this.lastIn = this.lastIn || res.isSelected || res.isRange;
     return res;
