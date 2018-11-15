@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Icon from '../icon';
 import Button from '../button';
 
 const getValue = (props, defaultValue) => {

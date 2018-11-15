@@ -33,7 +33,8 @@ $prefixCls: $prefixCls-stepper;
       height: $stepper-height;
       border-radius: $radius-md;
     }
-    &.#{$prefixCls}-input{
+
+    .#{$prefixCls}-input {
       border-radius: r(4);
     }
   }
@@ -41,10 +42,13 @@ $prefixCls: $prefixCls-stepper;
   &.shape-circle {
     .#{$prefixCls}-sub,
     .#{$prefixCls}-plus {
-
       width: $stepper-height;
       height: $stepper-height;
       border-radius: $stepper-height;
+    }
+
+    .#{$prefixCls}-input {
+      border-radius: r(4);
     }
   }
 
