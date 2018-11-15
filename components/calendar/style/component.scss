@@ -86,6 +86,7 @@ $prefixCls: $prefixCls-calendar;
     &.today.selected .#{$prefixCls}-day-detail {
       background-color: $calendar-day-selected-background;
       color: $calendar-day-selected-color;
+      box-shadow: r(1) r(1) r(5) $calendar-day-selected-background;
     }
 
     &.range.disabled {

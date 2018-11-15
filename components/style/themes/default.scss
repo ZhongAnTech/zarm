@@ -309,9 +309,11 @@ $activity-indicator-path-color: #e6e6e6;
 
 // Stepper
 $stepper-height: r(27);
-$stepper-button-font-size: r(16);
-$stepper-input-width: r(40);
-$stepper-input-font-size: r(16);
+$stepper-button-disabled: $theme-default;
+$stepper-button-font-size: r(14);
+$stepper-input-disabled: $color-text-caption;
+$stepper-input-width: r(52);
+$stepper-input-font-size: r(14);
 
 // Carousel
 $carousel-pagination-distance: r(8);

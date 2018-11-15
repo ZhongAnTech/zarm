@@ -1,11 +1,23 @@
-@import "mixins";
+@import 'mixins';
 
 $prefixCls: $prefixCls-stepper;
 
 .#{$prefixCls} {
   display: flex;
   user-select: none;
-  @include stepper-theme($theme-primary);
+
+  &-sub,
+  &-plus {
+    &.disabled {
+      color: $stepper-button-disabled;
+      border-color: $stepper-button-disabled;
+      cursor: not-allowed;
+
+      &:active {
+        background: #fff;
+      }
+    }
+  }
 
   &.disabled {
     .#{$prefixCls}-body {
@@ -17,31 +29,27 @@ $prefixCls: $prefixCls-stepper;
   &.shape-radius {
     .#{$prefixCls}-sub,
     .#{$prefixCls}-plus {
+      width: $stepper-height;
+      height: $stepper-height;
       border-radius: $radius-md;
+    }
+
+    .#{$prefixCls}-input {
+      border-radius: r(4);
     }
   }
 
   &.shape-circle {
     .#{$prefixCls}-sub,
     .#{$prefixCls}-plus {
+      width: $stepper-height;
+      height: $stepper-height;
       border-radius: $stepper-height;
     }
-  }
 
-  &.theme-primary {
-    @include stepper-theme($theme-primary);
-  }
-
-  &.theme-success {
-    @include stepper-theme($theme-success);
-  }
-
-  &.theme-warning {
-    @include stepper-theme($theme-warning);
-  }
-
-  &.theme-error {
-    @include stepper-theme($theme-error);
+    .#{$prefixCls}-input {
+      border-radius: $stepper-height;
+    }
   }
 
   &-sub,
@@ -55,19 +63,26 @@ $prefixCls: $prefixCls-stepper;
     font-size: $stepper-button-font-size;
     font-weight: bold;
     cursor: pointer;
+    border: r(1) solid $border-color;
+    padding: 0;
   }
 
   &-input {
     position: relative;
     width: $stepper-input-width;
     height: $stepper-height;
-    margin: 0 r(10);
+    margin: 0 r(4);
     padding: 0;
     font-size: $stepper-input-font-size;
     color: $color-text;
     text-align: center;
-    border: 0;
+    border: r(1) solid $border-color;
     outline: 0;
     -webkit-appearance: none;
+
+    &.disabled {
+      color: $stepper-input-disabled;
+      opacity: 0.6;
+    }
   }
 }
