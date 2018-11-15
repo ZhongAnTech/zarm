@@ -127,6 +127,10 @@ module.exports = {
         name: 'Panel',
         description: '面板',
       },
+      {
+        name: 'Marquee',
+        description: '滚动',
+      }
     ],
     navigation: [
       {
