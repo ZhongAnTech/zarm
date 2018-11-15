@@ -5,19 +5,6 @@
 ```jsx
 import { Button, Select, Icon, Input, Cell, Calendar } from 'zarm';
 
-const dataSource = [
-  {
-    value: 'false',
-    label: '单选'
-  },
-  {
-    value: 'true',
-    label: '双选'
-  }
-];
-
-window.testc = Demo;
-
 class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +41,16 @@ class Demo extends React.Component {
               visible={visible}
               placeholder="multiple"
               value={multiple ? 'true' : 'false'}
-              dataSource={dataSource}
+              dataSource={[
+                {
+                  value: 'false',
+                  label: '单选'
+                },
+                {
+                  value: 'true',
+                  label: '双选'
+                }
+              ]}
               onOk={e => {
                 this.setState({
                   multiple: e[0].value === 'true',
@@ -84,9 +80,9 @@ class Demo extends React.Component {
         <div>
           <Calendar
             {...this.state}
-            onChange={data => {
-              this.setState({ value: data });
-              console.log('onChange', data);
+            onChange={value => {
+              this.setState({ value });
+              console.log('onChange', value);
             }}
           />
         </div>
