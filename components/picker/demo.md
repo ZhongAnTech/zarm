@@ -383,7 +383,7 @@ ReactDOM.render(<Demo />, mountNode);
 | valueMember | string | 'value' | 值字段对应的key 
 | itemRender | (data?: object) => data.label | (data?: object) => data.label | 单个选项的展示 |
 | disabled | boolean | false | 是否禁用 |
-| cols | number | - | 级联选择器的级数 |
+| cols | number | Infinity | 级联选择器的级数 |
 | onChange | (selected?: object) => void | - | 值变化时触发的回调函数 |
 
 #### 仅 Picker & Select 支持的属性

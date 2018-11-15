@@ -38,7 +38,6 @@ $prefixCls: $prefixCls-calendar;
 
   .#{$prefixCls}-month-box {
     padding: r(10) 0;
-    max-height: 60vh;
     overflow: auto;
   }
 

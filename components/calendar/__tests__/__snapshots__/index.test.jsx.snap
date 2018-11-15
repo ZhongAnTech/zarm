@@ -2,7 +2,6 @@
 
 exports[`Calendar calendar render 1`] = `
 <CalendarView
-  className=""
   dateRender={[Function]}
   defaultValue="2018-08-07"
   disabledDate={[Function]}

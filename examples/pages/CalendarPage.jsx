@@ -1,5 +1,5 @@
 import Markdown from '../components/Markdown';
-// import '../styles/pages/CellPage';
+import '../styles/pages/CalendarPage';
 
 export default class Page extends Markdown {
   document = () => {

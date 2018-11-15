@@ -61,19 +61,19 @@ $prefixCls: $prefixCls-switch;
     opacity: $opacity-disabled;
   }
 
-  &.theme-primary {
-    @include switch-theme($theme-primary);
-  }
+  // &.theme-primary {
+  //   @include switch-theme($theme-primary);
+  // }
 
-  &.theme-success {
-    @include switch-theme($theme-success);
-  }
+  // &.theme-success {
+  //   @include switch-theme($theme-success);
+  // }
 
-  &.theme-warning {
-    @include switch-theme($theme-warning);
-  }
+  // &.theme-warning {
+  //   @include switch-theme($theme-warning);
+  // }
 
-  &.theme-error {
-    @include switch-theme($theme-error);
-  }
+  // &.theme-error {
+  //   @include switch-theme($theme-error);
+  // }
 }

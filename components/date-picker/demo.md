@@ -198,16 +198,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | string &#124; Date | - | 值 |
-| defaultValue | string &#124; Date | - | 初始值 |
-| valueMember | string | 'value' | 值字段对应的key |
+| value | string \| Date | - | 值 |
+| defaultValue | string \| Date | - | 初始值 |
 | mode | string | 'date' | 指定日期选择模式，可选项 `year`, `month`, `date`, `time`, `datetime` |
 | min | string | - | 相应mode的最小时间 |
 | max | string | - | 相应mode的最大时间 |
 | minuteStep | number | 1 | 分钟间隔 |
-| wheelDefaultValue | string | - | 滚轮默认值 |
 | disabled | boolean | false | 是否禁用 |
-| onChange | (value?: object) => void | - | 值变化时触发的回调函数 |
+| onChange | (value?: Date) => void | - | 值变化时触发的回调函数 |
 
 #### 仅 DatePicker & DateSelect 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
@@ -216,12 +214,13 @@ ReactDOM.render(<Demo />, mountNode);
 | title | string | '请选择' | 选择器标题 |
 | cancelText | string | '取消' | 取消栏文字 |
 | okText | string | '确定' | 确定栏文字 |
-| onOk | (value?: object) => void | - | 点击确定时触发的回调函数 | 
+| onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+| wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
 
 #### 仅 DateSelect 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |
-| format | string | - | 格式化显示值。例：format="YYYY年MM月DD日"<br /> 年:`YYYY`, 月:`MM`, 日:`DD`, 时:`hh`, 分:`mm`。 |
+| format | string | - | 格式化显示值。例：format="yyyy年MM月dd日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`hh`, 分:`mm`。 |
