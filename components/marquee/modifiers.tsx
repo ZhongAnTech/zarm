@@ -62,8 +62,8 @@ function getVertical(distance, key) {
   }`;
 }
 
-function animationModifier(speed, loop, scrollDelay, key) {
+function animationModifier(duration, loop, delay, key) {
   const infinite = loop ? 'infinite' : 1;
-  return `${speed}s ${key} ${scrollDelay}s linear ${infinite}`;
+  return `${duration}ms ${key} ${delay}ms linear ${infinite}`;
 }
 export { getKeyFrameModifier, animationModifier };

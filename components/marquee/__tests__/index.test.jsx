@@ -18,7 +18,7 @@ describe('Marquee', () => {
   it('renders correctly', () => {
     const wrapper = render(
       <div>
-        { createMarquee({ height: 150, direction: 'right', width: '100%', loop: false, scrollAmount: 6, scrollDelay: 5, prefix: 'zarm-marquee' }) }
+        { createMarquee({ height: 150, direction: 'right', width: '100%', loop: false, animationDuration: 6000, animationDelay: 5000, prefix: 'zarm-marquee' }) }
       </div>
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -77,7 +77,7 @@ describe('Marquee', () => {
     expect(modifier).toEqual(trim(result));
   });
   it('animationModifier', () => {
-    const modifier = animationModifier(5, true, 0, 'zarm-marquee-4');
-    expect(modifier).toEqual('5s zarm-marquee-4 0s linear infinite');
+    const modifier = animationModifier(5000, true, 0, 'zarm-marquee-4');
+    expect(modifier).toEqual('5000ms zarm-marquee-4 0ms linear infinite');
   });
 });

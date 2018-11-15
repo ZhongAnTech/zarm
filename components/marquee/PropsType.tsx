@@ -5,9 +5,7 @@ export interface PropsType {
   width?: number | string;
   height?: number | string;
   loop?: boolean;
-  scrollAmount?: number;
-  scrollDelay?: number;
+  animationDuration?: number;
+  animationDelay?: number;
   style?: React.CSSProperties;
-  prefixCls?: string;
-  className?: string;
 }

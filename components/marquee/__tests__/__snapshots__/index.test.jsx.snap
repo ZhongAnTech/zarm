@@ -4,7 +4,7 @@ exports[`Marquee renders correctly 1`] = `
 <div>
   <div
     class="za-marquee"
-    style="height:150px;width:100%px"
+    style="width:100%;height:150px"
   >
     <div
       class="za-marquee-body"

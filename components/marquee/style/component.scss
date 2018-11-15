@@ -5,6 +5,10 @@ $prefixCls: $prefixCls-marquee;
   width: 100%;
   overflow: hidden;
 
+  &-body {
+    white-space: nowrap;
+  }
+
   &-content {
     display: inline-block;
   }
