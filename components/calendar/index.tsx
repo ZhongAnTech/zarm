@@ -1,16 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseCalendarProps } from './PropsType';
+import { PropsType } from './PropsType';
 
 import CalendarMonthView from './Month';
 import DateTool from '../utils/date';
 
 const CN_DAY_NAME = ['日', '一', '二', '三', '四', '五', '六'];
 
-export default class CalendarView extends PureComponent<
-  BaseCalendarProps,
-  any
-> {
+export default class CalendarView extends PureComponent<PropsType, any> {
   static defaultProps = {
     prefixCls: 'za-calendar',
     className: '',
@@ -18,7 +15,6 @@ export default class CalendarView extends PureComponent<
     defaultValue: '',
     multiple: false,
     min: new Date(),
-    // max: DateTool.cloneDate(new Date(), 'y', 1),
     dateRender: date => date.getDate(),
     disabledDate: date => !date,
     onChange: date => date,
@@ -143,7 +139,6 @@ export default class CalendarView extends PureComponent<
     const { value } = this.state;
     const target = value[0] || CalendarView.now;
     const key = `${target.getFullYear()}-${target.getMonth()}`;
-
     const node = this.nodes[key];
     if (
       node &&
