@@ -5,19 +5,6 @@
 ```jsx
 import { Button, Select, Icon, Input, Cell, Calendar } from 'zarm';
 
-const dataSource = [
-  {
-    value: 'false',
-    label: '单选'
-  },
-  {
-    value: 'true',
-    label: '双选'
-  }
-];
-
-window.testc = Demo;
-
 class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +41,16 @@ class Demo extends React.Component {
               visible={visible}
               placeholder="multiple"
               value={multiple ? 'true' : 'false'}
-              dataSource={dataSource}
+              dataSource={[
+                {
+                  value: 'false',
+                  label: '单选'
+                },
+                {
+                  value: 'true',
+                  label: '双选'
+                }
+              ]}
               onOk={e => {
                 this.setState({
                   multiple: e[0].value === 'true',
@@ -84,9 +80,9 @@ class Demo extends React.Component {
         <div>
           <Calendar
             {...this.state}
-            onChange={data => {
-              this.setState({ value: data });
-              console.log('onChange', data);
+            onChange={value => {
+              this.setState({ value });
+              console.log('onChange', value);
             }}
           />
         </div>
@@ -105,8 +101,8 @@ ReactDOM.render(<Demo />, mountNode);
 | value | Date \| Date[] | - | 值 |
 | defaultValue | Date \| Date[] | - | 初始值 |
 | min | Date | new Date() | 最小可选日期 |
-| max | Date | new Date() + 1 年 | 最大可选日期 |
+| max | Date | min + 1 年 | 最大可选日期 |
 | multiple | boolean | false | 是否双选 |
-| dateRender | (value?: Date) => void | date => date.getDate() | 日期渲染函数 |
-| disabledDate | (value?: Date) => boolean | () => false | 日期是否禁止选择 |
+| dateRender | (date?: Date) => void | date => date.getDate() | 日期渲染函数 |
+| disabledDate | (date?: Date) => boolean | () => false | 日期是否禁止选择 |
 | onChange | (value?: Date[]) => void | - | 日期选择发生变化时触发的回调函数 |

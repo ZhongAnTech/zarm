@@ -8,9 +8,7 @@ exports[`Calendar calendar render 1`] = `
   max="2018-10-02"
   min="2018-05-06"
   multiple={false}
-  onChange={[Function]}
   prefixCls="za-calendar"
-  value=""
 >
   <div
     className="za-calendar"
