@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Icon from '../icon';
+import Button from '../button';
 
 const getValue = (props, defaultValue) => {
   if ('value' in props) {
@@ -21,8 +22,7 @@ export interface StepperProps extends PropsType {
 export default class Stepper extends PureComponent<StepperProps, any> {
   static defaultProps = {
     prefixCls: 'za-stepper',
-    theme: 'primary',
-    shape: 'radius',
+    shape: 'rect',
     disabled: false,
     step: 1,
   };
@@ -117,11 +117,10 @@ export default class Stepper extends PureComponent<StepperProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, disabled } = this.props;
+    const { prefixCls, className, shape, disabled } = this.props;
     const { value } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
       [`shape-${shape}`]: !!shape,
       disabled,
     });
@@ -140,7 +139,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
 
     return (
       <span className={cls}>
-        <span className={subCls} onClick={this.onSubClick}><Icon type="minus" /></span>
+        <Button className={subCls} shape={shape} onClick={this.onSubClick}>-</Button>
         <input
           className={inputCls}
           type="tel"
@@ -149,7 +148,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
           onChange={e => !disabled && this.onInputChange(e.target.value)}
           onBlur={() => !disabled && this.onInputBlur(value)}
         />
-        <span className={plusCls} onClick={this.onPlusClick}><Icon type="add" /></span>
+        <Button className={plusCls} shape={shape} onClick={this.onPlusClick}>+</Button>
       </span>
     );
   }

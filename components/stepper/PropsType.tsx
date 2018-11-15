@@ -1,5 +1,4 @@
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
   shape?: 'radius' | 'circle';
   value?: number;
   defaultValue?: number;

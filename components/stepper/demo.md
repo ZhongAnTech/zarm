@@ -101,8 +101,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
-| shape | string | 'radius' | 形状，可选值 `radius`, `circle` |
+| shape | string | 'rect' | 形状，可选值 `rect`, `radius`, `circle` |
 | value | number | - | 值 |
 | defaultValue | number | - | 初始值 |
 | min | number | - | 最小值 |
