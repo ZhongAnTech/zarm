@@ -1,22 +1,6 @@
+@import 'mixins';
+
 $prefixCls: $prefixCls-calendar;
-
-@mixin gradient($direction) {
-  background-image:
-    linear-gradient(
-      to $direction,
-      transparent 0,
-      transparent 50%,
-      $calendar-day-range-background 50%
-    );
-}
-
-@mixin firstday() {
-  @each $num in 1, 2, 3, 4, 5, 6 {
-    &.firstday-#{$num} {
-      margin-left: $calendar-day-width * $num;
-    }
-  }
-}
 
 .#{$prefixCls} {
   background-color: $calendar-background;
@@ -54,7 +38,6 @@ $prefixCls: $prefixCls-calendar;
 
   .#{$prefixCls}-month-box {
     padding: r(10) 0;
-    max-height: 60vh;
     overflow: auto;
   }
 
@@ -105,6 +88,32 @@ $prefixCls: $prefixCls-calendar;
       color: $calendar-day-selected-color;
     }
 
+    &.range.disabled {
+      .#{$prefixCls}-day-detail {
+        color: $color-text-disabled;
+      }
+      //   &:before,
+      //   &:after {
+      //     content: '';
+      //     display: inline-block;
+      //     position: absolute;
+      //     top: 0;
+      //     width: r(30);
+      //     height: r(30);
+      //     z-index: 1;
+      //   }
+
+      //   &:before {
+      //     right: 95%;
+      //     @include radialgradient(10%);
+      //   }
+
+      //   &:after {
+      //     left: 95%;
+      //     @include radialgradient(90%);
+      //   }
+    }
+
     &.range {
       background-color: $calendar-day-range-background;
       color: $calendar-day-range-color;
@@ -115,22 +124,22 @@ $prefixCls: $prefixCls-calendar;
 
       &.d6 {
         background-color: transparent;
-        @include gradient(left);
+        @include linegradient(left);
       }
 
       &.d7 {
         background-color: transparent;
-        @include gradient(right);
+        @include linegradient(right);
       }
 
       &:first-child:not(.d6) {
         background-color: transparent;
-        @include gradient(right);
+        @include linegradient(right);
       }
 
       &:last-child:not(.d7) {
         background-color: transparent;
-        @include gradient(left);
+        @include linegradient(left);
       }
 
       &:last-child.d7,
@@ -144,11 +153,11 @@ $prefixCls: $prefixCls-calendar;
     }
 
     &.range-start:not(.range-end):not(.d6):not(:last-child) {
-      @include gradient(right);
+      @include linegradient(right);
     }
 
     &.range-end:not(.range-start):not(.d7):not(:first-child) {
-      @include gradient(left);
+      @include linegradient(left);
     }
   }
 }

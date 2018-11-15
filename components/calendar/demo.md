@@ -3,29 +3,43 @@
 ### 平铺选择
 
 ```jsx
-import { Select, Icon, Input, Cell, Calendar } from 'zarm';
+import { Button, Select, Icon, Input, Cell, Calendar } from 'zarm';
 
 const dataSource = [
   {
     value: 'false',
-    label: 'false'
+    label: '单选'
   },
   {
     value: 'true',
-    label: 'true'
+    label: '双选'
   }
 ];
 
+window.testc = Demo;
+
 class Demo extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      visible: false,
       multiple: true,
-      defaultValue: ['2018-11-1', '2018-12-10'],
+      defaultValue: ['2018-11-21', '2018-12-7'],
       value: '',
       min: '2018-5-12',
       max: '2019-5-11',
-      visible: false
+      dateRender: date => {
+        if (/(0|6)/.test(date.getDay())) {
+          return (
+            <div className="custom">
+              <div className="custom-date">{date.getDate()}</div>
+              <div className="custom-text">休息</div>
+            </div>
+          );
+        }
+        return date.getDate();
+      },
+      disabledDate: date => /(0|6)/.test(date.getDay())
     };
   }
 
@@ -58,7 +72,6 @@ class Demo extends React.Component {
               onBlur={e => this.setState({ min: e })}
             />
           </Cell>
-
           <Cell title="max">
             <Input
               type="text"
@@ -89,13 +102,11 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| prefixCls | string | 'za-calendar' | 类名前缀 |
-| className | string | - | 追加类名 |
-| multiple | boolean | false | 是否多选(双选) |
-| value | string \| Date \| string[] \| Date[] | - | 值 |
-| defaultValue | string \| Date \| string[] \| Date[] | - | 初始值 |
-| min | string \| Date \| 时间戳 | new Date() | 最小日期，展示当月 |
-| max | string \| Date \| 时间戳 | new Date() + 1 年 | 最大日期，展示当月 |
-| dateRender | <code>(value?: Date) => void</code> | noop | 日期渲染函数 |
-| disabledDate | <code>(value?: Date) => boolean</code> | false | 日期是否禁止选择 |
-| onChange | <code>(value?: Date[]) => void</code> | noop | 日期选择发生变化时触发的回调函数 |
+| value | Date \| Date[] | - | 值 |
+| defaultValue | Date \| Date[] | - | 初始值 |
+| min | Date | new Date() | 最小可选日期 |
+| max | Date | new Date() + 1 年 | 最大可选日期 |
+| multiple | boolean | false | 是否双选 |
+| dateRender | (value?: Date) => void | date => date.getDate() | 日期渲染函数 |
+| disabledDate | (value?: Date) => boolean | () => false | 日期是否禁止选择 |
+| onChange | (value?: Date[]) => void | - | 日期选择发生变化时触发的回调函数 |

@@ -1,27 +1,23 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCalendarProps } from './PropsType';
-
 import CalendarMonthView from './Month';
 import DateTool from '../utils/date';
 
 const CN_DAY_NAME = ['日', '一', '二', '三', '四', '五', '六'];
 
-export default class CalendarView extends PureComponent<
-  BaseCalendarProps,
-  any
-> {
+export interface CalendarProps extends BaseCalendarProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+export default class CalendarView extends PureComponent<CalendarProps, any> {
   static defaultProps = {
     prefixCls: 'za-calendar',
-    className: '',
-    value: '',
-    defaultValue: '',
     multiple: false,
     min: new Date(),
-    // max: DateTool.cloneDate(new Date(), 'y', 1),
     dateRender: date => date.getDate(),
-    disabledDate: date => !date,
-    onChange: date => date,
+    disabledDate: () => false,
   };
 
   static now = new Date();
@@ -143,8 +139,7 @@ export default class CalendarView extends PureComponent<
     const { value } = this.state;
     const target = value[0] || CalendarView.now;
     const key = `${target.getFullYear()}-${target.getMonth()}`;
-
-    const node = this.nodes[key];
+    const node = this.nodes![key];
     if (
       node &&
       Object.prototype.toString.call(node.anchor) === '[object Function]'
@@ -198,7 +193,7 @@ export default class CalendarView extends PureComponent<
         dateRender={dateRender}
         disabledDate={disabledDate}
         onDateClick={this.onDateClick}
-        ref={n => (this.nodes[key] = n)}
+        ref={n => (this.nodes![key] = n)}
       />
     );
   }

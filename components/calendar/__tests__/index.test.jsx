@@ -42,9 +42,13 @@ describe('Calendar', () => {
     const onChangeFn = jest.fn();
     const wrapper = mount(<Calendar multiple={false} onChange={onChangeFn} />);
 
-    wrapper.setProps({ min: '2018-09-06', multiple: true });
+    wrapper.setProps({ multiple: true });
 
-    wrapper.setProps({ min: '2018-09-06', max: '2018-09-13', multiple: true, value: ['2018-09-09', '2018-09-11'] });
+    wrapper.setProps({ min: '2018-06-01' });
+
+    wrapper.setProps({ max: '2018-09-21' });
+
+    wrapper.setProps({ value: ['2018-09-05', '2018-09-08'] });
 
     wrapper.setProps({ disabledDate: date => date.getDate() % 2 === 1 });
 

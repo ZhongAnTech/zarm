@@ -1,12 +1,20 @@
 export interface BaseCalendarProps {
-  value?: string | Date | Array<string | Date>;
-  defaultValue?: string | object | Array<string | object>;
-  min?: string | Date;
-  max?: string | Date;
+  value?: Date | Date[];
+  defaultValue?: Date | Date[];
+  min?: Date;
+  max?: Date;
   multiple?: boolean;
-  dateRender?: (value: Date) => void;
-  disabledDate?: (value: Date) => boolean;
-  onChange?: (value: Array<Date>) => void;
-  prefixCls?: string;
-  className?: string;
+  dateRender?: (value?: Date) => void;
+  disabledDate?: (value?: Date) => boolean;
+  onChange?: (value?: Date[]) => void;
+}
+
+export interface BaseCalendarMonthProps {
+  value?: Date[];
+  min?: Date;
+  max?: Date;
+  dateMonth?: Date;
+  dateRender?: (value?: Date) => void;
+  disabledDate?: (value?: Date) => boolean;
+  onDateClick?: (value?: Date) => void;
 }
