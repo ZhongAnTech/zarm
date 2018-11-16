@@ -308,12 +308,18 @@ $activity-indicator-size-lg: r(31);
 $activity-indicator-path-color: #e6e6e6;
 
 // Stepper
-$stepper-height: r(27);
-$stepper-button-disabled: $theme-default;
-$stepper-button-font-size: r(14);
-$stepper-input-disabled: $color-text-caption;
-$stepper-input-width: r(52);
+$stepper-height-sm: r(28);
+$stepper-height-md: r(36);
+$stepper-icon-font-size-sm: r(12);
+$stepper-icon-font-size-md: r(14);
+$stepper-input-width-sm: r(50);
+$stepper-input-width-md: r(60);
+$stepper-input-disabled: $color-text-disabled;
 $stepper-input-font-size: r(14);
+$stepper-input-margin-h-sm: r(4);
+$stepper-input-margin-h-md: r(4);
+$stepper-input-padding-h-sm: r(8);
+$stepper-input-padding-h-md: r(8);
 
 // Carousel
 $carousel-pagination-distance: r(8);

@@ -4,87 +4,71 @@ $prefixCls: $prefixCls-stepper;
 
 .#{$prefixCls} {
   display: flex;
-  user-select: none;
 
   &-sub,
   &-plus {
-    &.disabled {
-      color: $stepper-button-disabled;
-      border-color: $stepper-button-disabled;
-      cursor: not-allowed;
+    &.#{$prefixCls-button} {
+      width: $stepper-height-md;
+      padding: 0;
 
-      &:active,
-      &:focus,
-      &:visited {
-        color: $stepper-button-disabled;
+      .#{$prefixCls-icon} {
+        font-size: $stepper-icon-font-size-md;
       }
     }
   }
 
-  &.disabled {
-    .#{$prefixCls}-body {
-      opacity: $opacity-disabled;
-      cursor: not-allowed;
-    }
-  }
-
-  &.shape-radius {
-    .#{$prefixCls}-sub,
-    .#{$prefixCls}-plus {
-      width: $stepper-height;
-      height: $stepper-height;
-      border-radius: $radius-md;
-    }
-
-    .#{$prefixCls}-input {
-      border-radius: r(4);
-    }
-  }
-
-  &.shape-circle {
-    .#{$prefixCls}-sub,
-    .#{$prefixCls}-plus {
-      width: $stepper-height;
-      height: $stepper-height;
-      border-radius: $stepper-height;
-    }
-
-    .#{$prefixCls}-input {
-      border-radius: $stepper-height;
-    }
-  }
-
-  &-sub,
-  &-plus {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: $stepper-height;
-    height: $stepper-height;
-    font-size: $stepper-button-font-size;
-    font-weight: bold;
-    cursor: pointer;
-    border: r(1) solid $border-color;
-    padding: 0;
-  }
-
   &-input {
     position: relative;
-    width: $stepper-input-width;
-    height: $stepper-height;
-    margin: 0 r(4);
-    padding: 0;
+    width: $stepper-input-width-md;
+    height: $stepper-height-md;
+    margin: 0 $stepper-input-margin-h-md;
+    padding: 0 $stepper-input-padding-h-md;
     font-size: $stepper-input-font-size;
     color: $color-text;
     text-align: center;
     border: r(1) solid $border-color;
+    border-radius: 0;
     outline: 0;
     -webkit-appearance: none;
 
     &.disabled {
       color: $stepper-input-disabled;
-      opacity: 0.6;
+      opacity: $opacity-disabled;
+    }
+  }
+
+  &.shape-radius {
+    .#{$prefixCls}-input {
+      border-radius: $radius-md;
+    }
+  }
+
+  &.shape-circle {
+    .#{$prefixCls}-input {
+      border-radius: $stepper-height-md;
+    }
+  }
+
+  &.size-sm {
+    .#{$prefixCls} {
+      &-input {
+        width: $stepper-input-width-sm;
+        height: $stepper-height-sm;
+        margin: 0 $stepper-input-margin-h-sm;
+        padding: 0 $stepper-input-padding-h-sm;
+      }
+
+      &-sub,
+      &-plus {
+        &.#{$prefixCls-button} {
+          width: $stepper-height-sm;
+          padding: 0;
+
+          .#{$prefixCls-icon} {
+            font-size: $stepper-icon-font-size-sm;
+          }
+        }
+      }
     }
   }
 }

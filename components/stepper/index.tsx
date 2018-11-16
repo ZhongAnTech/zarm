@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Button from '../button';
+import Icon from '../icon';
 
 const getValue = (props, defaultValue) => {
   if ('value' in props) {
@@ -116,29 +117,32 @@ export default class Stepper extends PureComponent<StepperProps, any> {
   }
 
   render() {
-    const { prefixCls, className, shape, disabled } = this.props;
+    const { prefixCls, className, shape, disabled, size } = this.props;
     const { value } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
       [`shape-${shape}`]: !!shape,
+      [`size-${size}`]: !!size,
       disabled,
-    });
-
-    const subCls = classnames(`${prefixCls}-sub`, {
-      disabled: this.isSubDisabled(),
-    });
-
-    const plusCls = classnames(`${prefixCls}-plus`, {
-      disabled: this.isPlusDisabled(),
     });
 
     const inputCls = classnames(`${prefixCls}-input`, {
       disabled,
     });
 
+    const buttonSize = (size === 'sm') ? 'xs' : 'sm';
+
     return (
       <span className={cls}>
-        <Button className={subCls} shape={shape} onClick={this.onSubClick}>-</Button>
+        <Button
+          className={`${prefixCls}-sub`}
+          size={buttonSize}
+          disabled={this.isSubDisabled()}
+          shape={shape}
+          onClick={this.onSubClick}
+        >
+          <Icon type="minus" />
+        </Button>
         <input
           className={inputCls}
           type="tel"
@@ -147,7 +151,15 @@ export default class Stepper extends PureComponent<StepperProps, any> {
           onChange={e => !disabled && this.onInputChange(e.target.value)}
           onBlur={() => !disabled && this.onInputBlur(value)}
         />
-        <Button className={plusCls} shape={shape} onClick={this.onPlusClick}>+</Button>
+        <Button
+          className={`${prefixCls}-plus`}
+          size={buttonSize}
+          disabled={this.isPlusDisabled()}
+          shape={shape}
+          onClick={this.onPlusClick}
+        >
+          <Icon type="add" />
+        </Button>
       </span>
     );
   }
