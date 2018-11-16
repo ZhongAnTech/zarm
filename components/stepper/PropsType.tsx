@@ -1,5 +1,5 @@
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
+  size?: 'md' | 'sm';
   shape?: 'radius' | 'circle';
   value?: number;
   defaultValue?: number;

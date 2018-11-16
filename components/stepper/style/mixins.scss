@@ -10,8 +10,8 @@
       }
 
       &.disabled {
-        color: $color-text-disabled;
-        border-color: $background-disabled;
+        color: $stepper-button-disabled;
+        border-color: $stepper-button-disabled;
         cursor: not-allowed;
 
         &:active {
