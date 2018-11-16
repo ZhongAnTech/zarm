@@ -60,7 +60,6 @@ $opacity-disabled: .6;
 $opacity-mask: .5;
 $opacity-toast: .8;
 $opacity-tooltip: .8;
-$popover-tooltip: .8;
 
 /* 组件前缀 */
 $prefixCls-collapse: za-collapse;
@@ -99,7 +98,6 @@ $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
 $prefixCls-file-picker: za-file-picker;
 $prefixCls-nav-bar: za-nav-bar;
-$prefixCls-popover: za-popover;
 
 // Collapse
 $collapse-height: r(52);
@@ -326,10 +324,7 @@ $tooltip-font-size: r(12);
 $tooltip-color: #fff;
 $tooltip-arrow-size: r(5);
 
-// Popover
-$popover-font-size: r(12);
-$popover-color: #fff;
-$popover-arrow-size: r(5);
+
 
 // NavBar
 $nav-bar-color: #fdfdfd;

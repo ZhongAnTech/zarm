@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag from '../drag';
-import Popover from '../popover';
+import Tooltip from '../tooltip';
 
 const getValue = (props, defaultValue) => {
   if ('value' in props) {
@@ -176,9 +176,9 @@ export default class Slider extends PureComponent<SliderProps, any> {
             aria-valuenow={value}
             style={{ left: offset }}
           >
-            <Popover visible={tooltip} message={value} >
+            <Tooltip visible={tooltip} title={value} >
             <div className={`${prefixCls}-handle-shadow`} />
-            </Popover>
+            </Tooltip>
           </div>
         </Drag>
       </div>
