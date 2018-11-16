@@ -13,8 +13,10 @@ $prefixCls: $prefixCls-stepper;
       border-color: $stepper-button-disabled;
       cursor: not-allowed;
 
-      &:active {
-        background: #fff;
+      &:active,
+      &:focus,
+      &:visited {
+        color: $stepper-button-disabled;
       }
     }
   }
