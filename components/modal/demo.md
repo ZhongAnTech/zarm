@@ -212,6 +212,6 @@ ReactDOM.render(<Demo />, mountNode);
 | shape | string | 'rect' | 形状，可选值 `rect`、`radius` |
 | visible | boolean | false | 是否显示 |
 | animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
-| animationDuration | number | 200 | 动画执行时间 |
+| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | '70%' | 宽度 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |

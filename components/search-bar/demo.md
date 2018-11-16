@@ -142,8 +142,8 @@ ReactDOM.render(<Demo />, mountNode);
 | cancelText | string | '取消' | 取消按钮显示的内容 |
 | maxLength | number | - | 输入字数上限 |
 | clearable | boolean | true | 是否提供清空输入框功能 |
-| onChange | (value: string) => void | - | 值变化时触发的回调函数 |
-| onSubmit | (value: string) => void | - | 提交时触发的回调函数 |
+| onChange | (value?: string) => void | - | 值变化时触发的回调函数 |
+| onSubmit | (value?: string) => void | - | 提交时触发的回调函数 |
 | onFocus | () => void | - | 获取焦点时触发的回调函数 |
 | onBlur | () => void | - | 失去焦点时触发的回调函数 |
 | onClear | () => void | - | 点击清除按钮时触发的回调函数 |

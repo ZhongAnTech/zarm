@@ -61,4 +61,4 @@ ReactDOM.render(<Demo />, mountNode);
 | max | number | - | 最大值 |
 | step | number | 1 | 步长 |
 | disabled | boolean | false | 是否禁用 |
-| onChange | (value: number) => void | - | 值变化时触发的回调函数 |
+| onChange | (value?: number) => void | - | 值变化时触发的回调函数 |

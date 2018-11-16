@@ -1,60 +1,142 @@
 header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   width: 100%;
-  height: 70px;
+  height: 65px;
   background-color: #fff;
-}
 
-.logo {
-  float: left;
-  width: 280px;
-  height: 100%;
-  font-size: 20px;
-
-  a {
-    display: block;
-    // margin-right: 80px;
-    padding-top: 19px;
+  .header-container {
+    width: 100%;
     height: 100%;
-    color: #333;
-    text-decoration: none;
+  }
+
+  .logo {
+    float: left;
+    width: 280px;
+    height: 100%;
+    font-size: 24px;
+    font-weight: 600;
     text-align: center;
+  
+    a {
+      display: block;
+      height: 65px;
+      line-height: 65px;
+      color: #333;
+      text-decoration: none;
+    }
+  }
+  
+  .search {
+    float: left;
+    margin-top: 19px;
+    margin-left: 20px;
+  
+    .tag-input-box {
+      width: 200px;
+      border: 0;
+  
+      &-active {
+        box-shadow: none;
+      }
+  
+      > .ui-icon {
+        display: none;
+      }
+  
+      > .input-div-placeholder,
+      > .value-text {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .version {
+    float: right;
+    height: 65px;
+    line-height: 65px;
+    margin-right: 125px;
+
+    .tag-input-box {
+      width: 130px;
+      background: #fff;
+
+      &:hover {
+        border-color: #12C287;
+      }
+      &-active {
+        border-color: #12C287;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(18, 194, 135, 0.6);
+      }
+    }
+  }
+
+  nav {
+    float: right;
+    height: 65px;
+    line-height: 65px;
+    margin-right: 100px;
+  
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+  
+      li {
+        float: left;
+        padding: 0 40px;
+        text-align: center;
+        font-size: 16px;
+        color: #999;
+  
+        a {
+          display: block;
+          color: #333;
+          cursor: pointer;
+    
+          &.active,
+          &:hover {
+            color: #12C287;
+          }
+        }
+  
+        svg {
+          height: 20px;
+          margin-right: 6px;
+        }
+      }
+    }
   }
 }
 
-.search {
-  float: left;
-  margin-left: 60px;
-  margin-top: 19px;
+.ui-option-list {
+  &:hover,
+  &.checked {
+    color: #333;
+    background: rgba(18, 194, 135, .1);
 
-  .tag-input-box {
-    width: 260px;
-    border: 0;
+    .ui-icon.theme-info {
+      color: #12C287;
+    }
+  }
+}
 
-    &-active {
-      box-shadow: none;
+@media only screen and (max-width: 767.99px) {
+  header {
+    &-container {
+      margin: 0 auto;
     }
 
-    > .ui-icon {
+    .logo {
+      width: 100%;
+    }
+
+    .search,
+    .version,
+    nav {
       display: none;
     }
-
-    > .input-div-placeholder,
-    > .value-text {
-      font-size: 14px;
-    }
-  }
-}
-
-.lang {
-  float: right;
-  margin: 19px 125px 0 125px;
-}
-
-nav {
-  float: right;
-
-  .ui-menu-item {
-    height: 70px !important;
-    line-height: 70px !important;
   }
 }

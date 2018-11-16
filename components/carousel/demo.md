@@ -197,7 +197,7 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | direction | string | 'left' | 滑动方向，可选值 `left`、`right`、`up`、`down` |
-| height | number &#124; string | 160 | 设置轮播区域高度 |
+| height | number \| string | 160 | 设置轮播区域高度 |
 | activeIndex | number | 0 | 当前页面的索引 |
 | loop | boolean | false | 是否循环 |
 | autoPlay | boolean | false | 是否自动轮播 |
@@ -206,5 +206,5 @@ ReactDOM.render(<Demo />, mountNode);
 | moveTimeSpan | number | 300 | 移动时间跨度临界点，单位：毫秒 |
 | animationDuration | number | 300 | 动画执行时间，单位：毫秒 |
 | showPagination | boolean | true | 是否显示分页器 |
-| onChange | (activeIndex: number) => void | - | 值变化时触发的回调函数 |
-| onChangeEnd | (activeIndex: number) => void | - | 值变化动画结束后触发的回调函数 |
+| onChange | (activeIndex?: number) => void | - | 值变化时触发的回调函数 |
+| onChangeEnd | (activeIndex?: number) => void | - | 值变化动画结束后触发的回调函数 |

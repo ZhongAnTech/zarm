@@ -11,8 +11,8 @@ config.mode = 'production';
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
 config.entry = {
-  index: './examples/index.js',
-  index_home: './site/index.js',
+  index: './site/index.js',
+  demo: './examples/index.js',
 };
 config.optimization = {
   minimizer: [
@@ -67,14 +67,14 @@ config.plugins.push(
 //   }));
 // });
 config.plugins.push(new HtmlWebpackPlugin({
-  template: './examples/index.html',
+  template: './site/index.html',
   filename: 'index.html',
   chunks: ['manifest', 'index'],
 }));
 config.plugins.push(new HtmlWebpackPlugin({
-  template: './site/index.html',
-  filename: 'index_home.html',
-  chunks: ['manifest', 'index_home'],
+  template: './examples/index.html',
+  filename: 'demo.html',
+  chunks: ['manifest', 'demo'],
 }));
 config.resolve.alias = {
   zarm: process.cwd(),

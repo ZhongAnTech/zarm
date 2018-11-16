@@ -32,6 +32,10 @@ module.exports = {
         description: '日期选择器',
       },
       {
+        name: 'Calendar',
+        description: '日历',
+      },
+      {
         name: 'Slider',
         description: '滑动输入条',
       },
@@ -126,6 +130,10 @@ module.exports = {
       {
         name: 'Panel',
         description: '面板',
+      },
+      {
+        name: 'Marquee',
+        description: '滚动',
       },
     ],
     navigation: [

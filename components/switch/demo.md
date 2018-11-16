@@ -10,7 +10,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: true,
+      value: false,
     };
   }
 
@@ -55,4 +55,4 @@ ReactDOM.render(<Demo />, mountNode);
 | checked | boolean | - | 值 |
 | defaultChecked | boolean | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
-| onChange | (value: boolean) => void | - | 值变化时触发的回调函数 |
+| onChange | (value?: boolean) => void | - | 值变化时触发的回调函数 |

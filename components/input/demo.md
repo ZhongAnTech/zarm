@@ -12,11 +12,13 @@ class Demo extends React.Component {
       inputValue: '',
     }
   }
+
   handleInputChange(value) {
     this.setState({
       inputValue: value,
     })
   }
+
   render() {
     return (
       <div>
@@ -159,5 +161,5 @@ ReactDOM.render(<Demo />, mountNode);
 | maxLength | number | - | 输入字数上限 |
 | showLength | boolean | false | 是否显示输入字数。多行文本（type="text"且包含rows属性）时有效。 |
 | clearable | boolean | true | 是否显示清除按钮。多行文本（type="text"且包含rows属性）时无效。必须为受控组件（属性包含value、onChange）时方可生效。 |
-| onChange | (value: number &#124; string) => void | - | 值变化时触发的回调函数 |
+| onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
 

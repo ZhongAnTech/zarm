@@ -9,6 +9,32 @@
   overflow-y: scroll;
   z-index: 1;
 
+  .ui-menu-submenu-title {
+    &:hover {
+      color: #12C287;
+
+      .ui-menu-submenu-arrow {
+        &:before,
+        &:after {
+          background: linear-gradient(to right, #12C287, #12C287);
+        }
+      }
+    }
+  }
+
+  .ui-menu-item {
+    &:hover,
+    &.selected,
+    &.active {
+      color: #12C287;
+    }
+
+    &.selected,
+    &.active {
+      background: rgba(18, 194, 135, .1);
+    }
+  }
+
   .menu-item-content {
     .chinese {
       margin-left: 6px;

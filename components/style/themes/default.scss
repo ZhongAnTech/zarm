@@ -67,6 +67,7 @@ $prefixCls-action-sheet: za-action-sheet;
 $prefixCls-alert: za-alert;
 $prefixCls-badge: za-badge;
 $prefixCls-button: za-button;
+$prefixCls-calendar: za-calendar;
 $prefixCls-cell: za-cell;
 $prefixCls-checkbox: za-checkbox;
 $prefixCls-confirm: za-confirm;
@@ -98,6 +99,7 @@ $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
 $prefixCls-file-picker: za-file-picker;
 $prefixCls-nav-bar: za-nav-bar;
+$prefixCls-marquee: za-marquee;
 
 // Collapse
 $collapse-height: r(52);
@@ -208,6 +210,26 @@ $button-error-ghost-color: $theme-error;
 $button-error-ghost-active-background: transparent;
 $button-error-ghost-active-border: #e54747;
 $button-error-ghost-active-color: #e54747;
+
+// Calendar
+$calendar-height: r(45); // 最小高度
+$calendar-background: #fff; // 背景色
+$calendar-week-bar-fontsize: r(14); // 星期条文字大小
+$calendar-week-bar-background: #fafafa; // 星期条文字背景色
+$calendar-week-bar-color: #909090; // 星期条文字颜色
+$calendar-section-padding: r(15); // 两边留白间距
+$calendar-day-fontsize: r(16); // 月份文字大小
+$calendar-day-title-fontsize: r(17); // 月份title文字大小
+$calendar-day-background: #fff; // 月份文字背景颜色
+$calendar-day-color: #464646; // 月份文字颜色
+$calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
+$calendar-day-today-color: #11c286; // 日期今天选中颜色
+$calendar-day-selected-background: #12c286; // 日期文字选中背景颜色
+$calendar-day-selected-color: #fff; // 日期文字选中颜色
+$calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
+$calendar-day-range-color: #12c286; // 日期文字范围内颜色
+$calendar-day-width: 14.28571%; // 日期宽度
+$calendar-day-height: r(40); // 日期高度
 
 // Cell
 $cell-height: r(52);                            // 最小高度

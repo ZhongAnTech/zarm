@@ -1,10 +1,23 @@
 import React, { PureComponent } from 'react';
-import { Button } from 'dragon-ui';
+import { Dropdown } from 'dragon-ui';
+import QRious from 'qrious';
 import Container from '@site/components/Container';
 import Header from '@site/components/Header';
 import './style.scss';
 
 class Page extends PureComponent {
+  state = {
+    dropdown: false,
+  }
+
+  componentDidMount() {
+    const qr = new QRious({
+      element: this.qrcode,
+      value: `${window.location.origin}/demo.html`,
+      size: 134,
+    });
+  }
+
   render() {
     const { history } = this.props;
 
@@ -12,12 +25,29 @@ class Page extends PureComponent {
       <Container className="index-page">
         <Header />
         <main>
+          <div className="banner">
+            <img src={require('./images/banner@2x.png')} alt="" />
+          </div>
           <div className="introduce">
             <div className="title"><span>ZARM</span> DESIGN</div>
-            <div className="description">一套为开发者、设计师和产品经理准备的组件库帮助你的网站快速成形</div>
-            <Button onClick={() => history.push('/documents/quick-start')}>开始使用</Button>
+            <div className="description">基于 React / React Native / Vue 的跨平台移动端 UI 组件库，为用户体验而生</div>
+            <div className="navigation">
+              <button onClick={() => history.push('/documents/quick-start')}>开始使用</button>
+              <Dropdown
+                className="btn-try"
+                trigger="hover"
+                visible={this.state.dropdown}
+                onVisibleChange={(visible) => {
+                  this.setState({
+                    dropdown: visible,
+                  });
+                }}
+                overlay={<canvas ref={(ele) => { this.qrcode = ele; }} />}
+              >
+                <button className="ghost">扫码体验</button>
+              </Dropdown>
+            </div>
           </div>
-          <div className="banner" />
         </main>
       </Container>
     );
