@@ -13,10 +13,13 @@ exports[`Stepper defaultValue 1`] = `
     onClick={[Function]}
     prefixCls="za-button"
     shape="rect"
-    size="md"
+    size="sm"
     theme="default"
   >
-    -
+    <Icon
+      prefixCls="za-icon"
+      type="minus"
+    />
   </Button>
   <input
     className="za-stepper-input"
@@ -35,10 +38,13 @@ exports[`Stepper defaultValue 1`] = `
     onClick={[Function]}
     prefixCls="za-button"
     shape="rect"
-    size="md"
+    size="sm"
     theme="default"
   >
-    +
+    <Icon
+      prefixCls="za-icon"
+      type="add"
+    />
   </Button>
 </span>
 `;
@@ -49,11 +55,13 @@ exports[`Stepper renders correctly 1`] = `
 >
   <a
     aria-disabled="false"
-    class="za-button za-stepper-sub theme-default size-md shape-rect"
+    class="za-button za-stepper-sub theme-default size-sm shape-rect"
     role="button"
   >
     <span>
-      -
+      <i
+        class="za-icon za-icon-minus"
+      />
     </span>
   </a>
   <input
@@ -63,11 +71,13 @@ exports[`Stepper renders correctly 1`] = `
   />
   <a
     aria-disabled="false"
-    class="za-button za-stepper-plus theme-default size-md shape-rect"
+    class="za-button za-stepper-plus theme-default size-sm shape-rect"
     role="button"
   >
     <span>
-      +
+      <i
+        class="za-icon za-icon-add"
+      />
     </span>
   </a>
 </span>
