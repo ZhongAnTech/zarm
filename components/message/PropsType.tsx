@@ -1,8 +1,8 @@
-export default interface PropsType {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
-  size?: 'lg';
+export default interface PropsType<T = any> {
+  theme?: 'default' |'primary' | 'success' | 'warning' | 'error';
   icon?: any;
+  closable?: boolean;
   hasArrow?: boolean;
-  hasClosable?: boolean;
-  onClick?: () => void;
+  onClick?: (event: T) => void;
+  size?: 'lg';
 }
