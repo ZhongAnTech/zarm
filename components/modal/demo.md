@@ -1,6 +1,8 @@
 ## 模态框 Modal
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Modal, Cell, Button, Select } from 'zarm';
 
@@ -129,10 +131,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 特定场景
+
+### 特定场景
 ```jsx
 import { Cell, Button, Alert, Confirm  } from 'zarm';
 
@@ -200,20 +202,16 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-modal | | 类名前缀 |
-| className | string | 无 | | 追加类名 |
-| shape | string | 无 | `radius` | 形状 |
-| visible | boolean | false | | 是否显示 |
-| animationType | string | `fade` | `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` | 动画效果 |
-| animationDuration | number | 200 | | 动画执行时间 |
-| width | string &#124; number | `70%` | | 宽度 |
-| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+### API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| shape | string | 'rect' | 形状，可选值 `rect`、`radius` |
+| visible | boolean | false | 是否显示 |
+| animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
+| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
+| width | string &#124; number | '70%' | 宽度 |
+| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |

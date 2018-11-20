@@ -57,7 +57,7 @@ export default class Switch extends PureComponent<SwitchProps, any> {
 
     const cls = classnames(`${prefixCls}`, className, {
       // [`${prefixCls}-small`]: size === 'small',
-      checked,
+      // checked,
       disabled,
     });
 
@@ -69,6 +69,7 @@ export default class Switch extends PureComponent<SwitchProps, any> {
           disabled={disabled}
           checked={checked}
           onChange={this.onValueChange}
+          value={checked ? 'on' : 'off'}
         />
       </span>
     );

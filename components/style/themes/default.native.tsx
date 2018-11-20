@@ -179,9 +179,9 @@ const components = {
   // Cell
   cell_height: 52,                                   // 最小度
   cell_background: '#fff',                           // 背景色
-  cell_line_left: 16,                                // 分隔线左边距
-  cell_padding_h: 16,                                // 边内内距
-  cell_line_hasicon_left: 16,                        // 带icon时分隔线左边距
+  cell_line_padding_left: 16,                        // 分隔线左边距
+  cell_padding_h: 16,                                // 水平边内距
+  cell_padding_v: 12,                                // 纵向边内距
   cell_title_color: base.color_text,                 // 标题文字颜色
   cell_title_line_height: 28,                        // 标题文字行高
   cell_title_font_size: 15,                          // 标题文字大小
@@ -191,6 +191,8 @@ const components = {
   cell_arrow_color: '#bcbcbc',                       // 箭头颜色
   cell_arrow_length: 10,                             // 箭头长度
   cell_arrow_border_width: 2,                        // 箭头粗细
+  cell_help_color: '#FF5050',                        // 提示文字颜色
+  cell_help_font_size: 10,                           // 提示文字大小
 
   // Checkbox
   checkbox_size: 20,

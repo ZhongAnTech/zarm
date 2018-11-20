@@ -33,14 +33,14 @@ export default class Page extends PureComponent {
   render() {
     return (
       <ScrollView>
-        <Panel titleRender="基本用法">
+        <Panel title="基本用法">
           <View style={[styles.box, styles.inline]}>
             <Button style={[styles.mb, styles.mr]} onClick={noop}>default</Button>
             <Button style={styles.mb} theme="primary" onClick={noop}>primary</Button>
           </View>
         </Panel>
 
-        <Panel titleRender="块级按钮">
+        <Panel title="块级按钮">
           <View style={[styles.box]}>
             <Button style={styles.mb} block onClick={noop}>default button</Button>
             <Button style={styles.mb} block disabled onClick={noop}>default disabled</Button>
@@ -49,14 +49,14 @@ export default class Page extends PureComponent {
           </View>
         </Panel>
 
-        <Panel titleRender="幽灵按钮">
+        <Panel title="幽灵按钮">
           <View style={[styles.box]}>
             <Button style={styles.mb} theme="primary" ghost onClick={noop}>primary ghost</Button>
             <Button style={styles.mb} theme="primary" ghost disabled onClick={noop}>primary ghost disabled</Button>
           </View>
         </Panel>
 
-        <Panel titleRender="按钮主题">
+        <Panel title="按钮主题">
           <View style={[styles.box, styles.inline]}>
             <Button style={[styles.mb, styles.mr]} onClick={noop}>default</Button>
             <Button style={[styles.mb, styles.mr]} theme="primary" onClick={noop}>primary</Button>
@@ -66,7 +66,7 @@ export default class Page extends PureComponent {
           </View>
         </Panel>
 
-        <Panel titleRender="按钮尺寸">
+        <Panel title="按钮尺寸">
           <View style={[styles.box, styles.inline]}>
             <Button style={[styles.mb, styles.mr]} size="lg" onClick={noop}>lg</Button>
             <Button style={[styles.mb, styles.mr]} onClick={noop}>md</Button>
@@ -75,17 +75,17 @@ export default class Page extends PureComponent {
           </View>
         </Panel>
 
-        <Panel titleRender="按钮形状">
+        <Panel title="按钮形状">
           <View style={[styles.box, styles.inline]}>
             <Button style={[styles.mb, styles.mr]} shape="rect" theme="primary" onClick={noop}>rect</Button>
             <Button style={[styles.mb, styles.mr]} shape="radius" theme="primary" onClick={noop}>radius</Button>
             <Button style={[styles.mb, styles.mr]} shape="round" theme="primary" onClick={noop}>round</Button>
             <Button style={[styles.mb, styles.mr]} shape="circle" theme="primary" onClick={noop}>circle</Button>
-            <Button ghost shape="circle" theme="primary" onClick={noop}>ghost</Button>
+            <Button shape="circle" theme="primary" onClick={noop}>ghost</Button>
           </View>
         </Panel>
 
-        <Panel titleRender="图标按钮">
+        <Panel title="图标按钮">
           <View style={[styles.box, styles.inline]}>
             <Button style={[styles.mb, styles.mr]} loading shape="radius" onClick={noop}>loading</Button>
           </View>

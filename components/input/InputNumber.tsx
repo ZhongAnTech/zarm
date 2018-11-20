@@ -33,7 +33,9 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentDidMount() {
+    Events.on(document.body, 'touchstart', this.onMaskClick);
     Events.on(document.body, 'click', this.onMaskClick);
+
     if (this.props.autoFocus || this.props.focused) {
       this.onFocus();
     }
@@ -58,6 +60,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentWillUnmount() {
+    Events.off(document.body, 'touchstart', this.onMaskClick);
     Events.off(document.body, 'click', this.onMaskClick);
   }
 

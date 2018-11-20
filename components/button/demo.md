@@ -1,6 +1,8 @@
 ## 按钮 Button
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Button } from 'zarm';
 
@@ -17,10 +19,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 块级按钮
+
+### 块级按钮
 ```jsx
 import { Button } from 'zarm';
 
@@ -39,10 +41,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 幽灵按钮
+
+### 幽灵按钮
 ```jsx
 import { Button } from 'zarm';
 
@@ -59,10 +61,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 按钮主题
+
+### 按钮主题
 ```jsx
 import { Button } from 'zarm';
 
@@ -82,10 +84,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 按钮尺寸
+
+### 按钮尺寸
 ```jsx
 import { Button } from 'zarm';
 
@@ -104,10 +106,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 按钮形状
+
+### 按钮形状
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -119,7 +121,7 @@ class Demo extends React.Component {
         <Button shape="radius" theme="primary">radius</Button>
         <Button shape="round" theme="primary">round</Button>
         <Button shape="circle" theme="primary">circle</Button>
-        <Button ghost shape="circle" icon={<Icon type="right" />} />
+        <Button shape="circle" icon={<Icon type="right" />} />
       </div>
     )
   }
@@ -127,10 +129,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 图标按钮
+
+### 图标按钮
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -148,22 +150,19 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
 
-:::api API
+### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| theme | string | `default` | `default`, `primary`, `success`, `warning`, `error` | 主题 |
-| size | string | | `md`, `lg`, `sm`, `xs` | 大小 |
-| shape | string | 'rect' | `rect`, `radius`, `round`, `circle` | 形状 |
-| block | boolean | false | | 是否块级元素 |
-| ghost | boolean | false | | 是否幽灵按钮 |
-| disabled | boolean | false | | 是否禁用 |
-| loading | boolean | false | | 是否加载中状态 |
-| icon | ReactNode | | | 图标 |
-| onClick | MouseEventHandler<HTMLAnchorElement> | | | 点击后触发的回调函数 |
-
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'default' | 设置主题，可选值为 `default`、`primary`、`success`、`warning`、`error` |
+| size | string | 'md' | 设置大小，可选值为 `md`、`lg`、`sm`、`xs` |
+| shape | string | 'rect' | 设置形状，可选值为 `rect`、`radius`、`round`、`circle` |
+| block | boolean | false | 是否块级元素 |
+| ghost | boolean | false | 是否幽灵按钮 |
+| disabled | boolean | false | 是否禁用 |
+| loading | boolean | false | 是否加载中状态 |
+| icon | ReactNode | - | 设置图标 |
+| onClick | () => void | - | 点击后触发的回调函数 |

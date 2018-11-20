@@ -1,6 +1,8 @@
 ## 上拉加载下拉刷新 Pull
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Pull, Cell } from 'zarm';
 
@@ -33,14 +35,14 @@ class Demo extends React.Component {
     super(props);
     this.mounted = true;
     this.state = {
-      customRefreshing: REFRESH_STATE.normal,
-      customLoading: LOAD_STATE.normal,
+      refreshing: REFRESH_STATE.normal,
+      loading: LOAD_STATE.normal,
       dataSource: [],
     };
   }
 
   componentDidMount() {
-    this.fetchData('customRefreshing');
+    this.appendData(20);
   }
 
   componentWillUnmount() {
@@ -48,93 +50,114 @@ class Demo extends React.Component {
   }
 
   // 模拟请求数据
-  fetchData(key) {
-    this.setState({ [`${key}`]: REFRESH_STATE.loading });
+  refreshData() {
+    this.setState({ refreshing: REFRESH_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
 
-      const dataSource = [];
-      const { length } = dataSource;
-
-      for (let i = length; i < length + 20; i++) {
-        dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
-      }
-
+      this.appendData(20, []);
       this.setState({
-        dataSource,
-        [`${key}`]: REFRESH_STATE.success,
+        refreshing: REFRESH_STATE.success,
       });
     }, 2000);
   }
 
   // 模拟加载更多数据
   loadData() {
-    this.setState({ customLoading: LOAD_STATE.loading });
+    this.setState({ loading: LOAD_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
 
       const randomNum = getRandomNum(0, 5);
       const { dataSource } = this.state;
-      let customLoading = LOAD_STATE.success;
+      let loading = LOAD_STATE.success;
 
       // eslint-disable-next-line
       console.log(`状态: ${randomNum === 0 ? '失败' : (randomNum === 1 ? '完成' : '成功')}`);
 
       if (randomNum === 0) {
-        customLoading = LOAD_STATE.failure;
+        loading = LOAD_STATE.failure;
       } else if (randomNum === 1) {
-        customLoading = LOAD_STATE.complete;
+        loading = LOAD_STATE.complete;
       } else {
-        const newLength = 5;
-        const startIndex = dataSource.length;
-        for (let i = startIndex; i < startIndex + newLength; i++) {
-          dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
-        }
+        this.appendData(20);
       }
 
       this.setState({
-        dataSource,
-        customLoading,
+        loading,
       });
     }, 2000);
   }
 
-  render() {
-    const { customRefreshing, customLoading, dataSource } = this.state;
-
-    const itemsRender = [];
-    for (let i = 0; i < 3; i++) {
-      itemsRender.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+  appendData(length, dataSource) {
+    dataSource = dataSource || this.state.dataSource;
+    const startIndex = dataSource.length;
+    for (let i = startIndex; i < startIndex + length; i++) {
+      dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
     }
+    this.setState({
+      dataSource,
+    });
+  }
 
+  render() {
+    const { refreshing, loading, dataSource } = this.state;
     return (
       <div>
         <Pull
           refresh={{
-            state: customRefreshing,
-            handler: () => this.fetchData('customRefreshing'),
+            state: refreshing,
+            handler: () => this.refreshData(),
             // render: (refreshState, percent) => {
             //   const cls = 'custom-control';
             //   switch (refreshState) {
             //     case REFRESH_STATE.pull:
-            //       return <div className={cls} style={{ transform: `scale(${percent / 100})` }}><img src={logo} alt="" /></div>;
+            //       return (
+            //         <div className={cls}>
+            //           <ActivityIndicator percent={percent} />
+            //           <span>下拉刷新</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.drop:
-            //       return <div className={`${cls} rotate360`}><img src={logo} alt="" /></div>;
+            //       return (
+            //         <div className={cls}>
+            //           <ActivityIndicator percent={100} />
+            //           <span>释放立即刷新</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.loading:
-            //       return <div className={cls}><ActivityIndicator className="rotate360" /></div>;
+            //       return (
+            //         <div className={cls}>
+            //           <ActivityIndicator className="rotate360" />
+            //           <span>加载中</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.success:
-            //       return <div className={cls}>加载成功</div>;
+            //       return (
+            //         <div className={cls}>
+            //           <Icon type="right-round" theme="success" />
+            //           <span>加载成功</span>
+            //         </div>
+            //       );
 
             //     case REFRESH_STATE.failure:
-            //       return <div className={cls}>加载失败</div>;
+            //       return (
+            //         <div className={cls}>
+            //           <Icon type="wrong-round" theme="error" />
+            //           <span>加载失败</span>
+            //         </div>
+            //       );
+
+            //     default:
             //   }
             // },
           }}
           load={{
-            state: customLoading,
+            state: loading,
+            distance: 200,
             handler: () => this.loadData(),
             // render: (loadState) => {
             //   const cls = 'custom-control';
@@ -160,27 +183,43 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-pull | | 类名前缀 |
-| className | string | | | 追加类名 |
-| refresh | Action | | | 下拉刷新的参数配置 |
-| load | Action |  | | 上拉加载的参数配置 |
-| animationDuration | number | 400 | | 动画执行时间，单位：毫秒 |
-| stayTime | number | 1000 | | 加载成功停留时间 |
+### API
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| refresh | Action | - | 下拉刷新的参数配置 |
+| load | Action | - | 上拉加载的参数配置 |
+| animationDuration | number | 400 | 动画执行时间，单位：毫秒 |
+| stayTime | number | 1000 | 加载成功停留时间 |
 
 #### Action 类型定义
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| state | REFRESH_STATE &#124; LOAD_STATE | 0 | | 状态枚举 |
-| startDistance | number | 20 | | 下拉时的助跑距离 |
-| distance | number | 50 | | 触发距离阀值 |
-| render | <code>(refreshState: REFRESH_STATE &#124; LOAD_STATE, percent: number) => any</code> | | | 各状态渲染的回调函数 |
-| handler | <code>() => void</code> | | | 达到阀值后释放触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| state | REFRESH_STATE &#124; LOAD_STATE | 0 | 状态枚举 |
+| startDistance | number | 20 | 下拉时的助跑距离，单位：px |
+| distance | number | 50 | 触发距离阀值，单位：px |
+| render | (refreshState: REFRESH_STATE &#124; LOAD_STATE, percent: number) => ReactNode | - | 各状态渲染的回调函数 |
+| handler | () => void | - | 达到阀值后释放触发的回调函数 |
 
-:::
+#### REFRESH_STATE 枚举定义
+| 枚举值 | 说明 |
+| :--- | :--- |
+| normal | 普通状态 |
+| pull | 下拉状态（未满足刷新条件） |
+| drop | 释放立即刷新（满足刷新条件） |
+| loading | 加载中 |
+| success | 加载成功 |
+| failure | 加载失败 |
+
+#### LOAD_STATE 枚举定义
+| 枚举值 | 说明 |
+| :--- | :--- |
+| normal | 普通状态 |
+| abort | 终止状态 |
+| loading | 加载中 |
+| success | 加载成功 |
+| failure | 加载失败 |
+| complete | 加载完成 |

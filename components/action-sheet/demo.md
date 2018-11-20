@@ -1,6 +1,8 @@
 ## 动作面板 ActionSheet
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { ActionSheet, Cell, Button } from 'zarm';
 
@@ -87,21 +89,23 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
+### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-action-sheet | | 类名前缀 |
-| className | string | | | 追加类名 |
-| shape | string | | 'radius' | 形状 |
-| visible | boolean | false | | 是否显示 |
-| spacing | boolean | false | | 是否和外部有间距 |
-| actions | Action[] | [ ] | Action = { text: string, <br /> theme?: 'default' &#124; 'primary' &#124; 'info' &#124; 'success' &#124; 'warning' &#124; 'error', <br /> className?: string, <br /> onClick?: () => void} | 动作列表 |
-| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-| onCancel | <code>() => void</code> | noop | | 显示取消菜单，点击时触发的回调函数 |
-| cancelText | string | '取消' |  | 取消菜单的文案 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| shape | string | 'rect' | 形状，可选值 `rect`、`radius` |
+| visible | boolean | false | 是否显示 |
+| spacing | boolean | false | 是否和外部有间距 |
+| actions | Action[] | [] | 动作列表 |
+| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+| onCancel | () => void | - | 显示取消菜单，点击时触发的回调函数 |
+| cancelText | string | '取消' | 取消菜单的文案 |
 
-:::
+#### Action 类型定义
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| text | string | - | 按钮文字 |
+| theme | string | 'default' | 按钮主题，可选值 `default`、`primary`、`success`、`warning`、`error`
+| onClick | () => void | - | 按钮点击后触发的回调函数 |

@@ -1,6 +1,8 @@
 ## 走马灯 Carousel
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -14,7 +16,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -38,10 +40,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 纵向
+
+### 纵向
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -55,7 +57,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -78,10 +80,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 循环轮播
+
+### 循环轮播
 ```jsx
 import { Carousel, Button } from 'zarm';
 
@@ -95,7 +97,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -143,10 +145,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 自动循环轮播
+
+### 自动循环轮播
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -160,7 +162,7 @@ function contentRender() {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel-item-pic" key={+i}>
-        <img src={item} alt="" />
+        <img src={item} alt="" draggable={false} />
       </div>
     );
   });
@@ -187,26 +189,22 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-carousel | | 类名前缀 |
-| className | string | | | 追加类名 |
-| direction | string | 'left' | 'left', 'right', 'up', 'down' | 滑动方向 |
-| height | number &#124; string | | | 高度 |
-| activeIndex | number | 0 | | 当前页面的索引 |
-| loop | boolean | false | | 是否循环 |
-| autoPlay | boolean | false | | 是否自动轮播 |
-| autoPlayIntervalTime | number | 3000 | | 自动轮播时间间隔，单位：毫秒 |
-| moveDistanceRatio | number | 0.5 | | 移动距离比例临界点 |
-| moveTimeSpan | number | 300 | | 移动时间跨度临界点，单位：毫秒 |
-| animationDuration | number | 300 | | 动画执行时间，单位：毫秒 |
-| showPagination | boolean | true | | 是否显示分页器 |
-| onChange | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化时触发的回调函数 |
-| onChangeEnd | <code>(activeIndex: number) => void</code> | noop | \(activeIndex: number\) | 值变化动画结束后触发的回调函数 |
+### API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| direction | string | 'left' | 滑动方向，可选值 `left`、`right`、`up`、`down` |
+| height | number \| string | 160 | 设置轮播区域高度 |
+| activeIndex | number | 0 | 当前页面的索引 |
+| loop | boolean | false | 是否循环 |
+| autoPlay | boolean | false | 是否自动轮播 |
+| autoPlayIntervalTime | number | 3000 | 自动轮播时间间隔，单位：毫秒 |
+| moveDistanceRatio | number | 0.5 | 移动距离比例临界点 |
+| moveTimeSpan | number | 300 | 移动时间跨度临界点，单位：毫秒 |
+| animationDuration | number | 300 | 动画执行时间，单位：毫秒 |
+| showPagination | boolean | true | 是否显示分页器 |
+| onChange | (activeIndex?: number) => void | - | 值变化时触发的回调函数 |
+| onChangeEnd | (activeIndex?: number) => void | - | 值变化动画结束后触发的回调函数 |

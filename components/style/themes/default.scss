@@ -67,6 +67,7 @@ $prefixCls-action-sheet: za-action-sheet;
 $prefixCls-alert: za-alert;
 $prefixCls-badge: za-badge;
 $prefixCls-button: za-button;
+$prefixCls-calendar: za-calendar;
 $prefixCls-cell: za-cell;
 $prefixCls-checkbox: za-checkbox;
 $prefixCls-confirm: za-confirm;
@@ -98,6 +99,7 @@ $prefixCls-toast: za-toast;
 $prefixCls-tooltip: za-tooltip;
 $prefixCls-file-picker: za-file-picker;
 $prefixCls-nav-bar: za-nav-bar;
+$prefixCls-marquee: za-marquee;
 
 // Collapse
 $collapse-height: r(52);
@@ -209,12 +211,32 @@ $button-error-ghost-active-background: transparent;
 $button-error-ghost-active-border: #e54747;
 $button-error-ghost-active-color: #e54747;
 
+// Calendar
+$calendar-height: r(45); // 最小高度
+$calendar-background: #fff; // 背景色
+$calendar-week-bar-fontsize: r(14); // 星期条文字大小
+$calendar-week-bar-background: #fafafa; // 星期条文字背景色
+$calendar-week-bar-color: #909090; // 星期条文字颜色
+$calendar-section-padding: r(15); // 两边留白间距
+$calendar-day-fontsize: r(16); // 月份文字大小
+$calendar-day-title-fontsize: r(17); // 月份title文字大小
+$calendar-day-background: #fff; // 月份文字背景颜色
+$calendar-day-color: #464646; // 月份文字颜色
+$calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
+$calendar-day-today-color: #11c286; // 日期今天选中颜色
+$calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
+$calendar-day-selected-color: #fff; // 日期文字选中颜色
+$calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
+$calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
+$calendar-day-width: 14.28571%; // 日期宽度
+$calendar-day-height: r(40); // 日期高度
+
 // Cell
 $cell-height: r(52);                            // 最小高度
 $cell-background: #fff;                       // 背景色
-$cell-line-left: r(16);                         // 分隔线左边距
-$cell-padding-h: r(12);                         // 边内内距
-$cell-line-hasicon-left: r(16);                 // 带icon时分隔线左边距
+$cell-line-padding-left: r(16);                 // 分隔线左边距
+$cell-padding-h: r(16);                         // 水平边内距
+$cell-padding-v: r(12);                         // 纵向边内距
 $cell-title-color: $color-text;                 // 标题文字颜色
 $cell-title-font-size: r(15);                   // 标题文字大小
 $cell-title-line-height: r(28);                 // 标题文字行高
@@ -286,10 +308,18 @@ $activity-indicator-size-lg: r(31);
 $activity-indicator-path-color: #e6e6e6;
 
 // Stepper
-$stepper-height: r(27);
-$stepper-button-font-size: r(16);
-$stepper-input-width: r(40);
-$stepper-input-font-size: r(16);
+$stepper-height-sm: r(28);
+$stepper-height-md: r(36);
+$stepper-icon-font-size-sm: r(12);
+$stepper-icon-font-size-md: r(14);
+$stepper-input-width-sm: r(50);
+$stepper-input-width-md: r(60);
+$stepper-input-disabled: $color-text-disabled;
+$stepper-input-font-size: r(14);
+$stepper-input-margin-h-sm: r(4);
+$stepper-input-margin-h-md: r(4);
+$stepper-input-padding-h-sm: r(8);
+$stepper-input-padding-h-md: r(8);
 
 // Carousel
 $carousel-pagination-distance: r(8);
@@ -338,3 +368,6 @@ $input-cursor-height: r(18);
 $input-selection-color: rgba($theme-primary, 0.2);
 $input-length-count-color: $color-text-disabled;
 $input-line-height: r(28);
+
+// Progress
+$progress-background: rgb(238, 238, 238);

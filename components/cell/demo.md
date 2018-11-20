@@ -1,6 +1,8 @@
 ## 列表项 Cell
 
-:::demo 基本用法
+
+
+### 基本用法
 ```jsx
 import { Cell } from 'zarm';
 
@@ -16,10 +18,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 带描述
+
+### 带描述
 ```jsx
 import { Cell, Icon } from 'zarm';
 
@@ -36,10 +38,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 带图标、描述
+
+### 带图标、标题
 ```jsx
 import { Cell, Icon } from 'zarm';
 
@@ -50,7 +52,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell title="标题文字" icon={<Icon type="right" />} />
-        <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: '24px', height: '24px' }} />} />
+        <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: 24, height: 24 }} />} />
       </div>
     )
   }
@@ -58,10 +60,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 带跳转
+
+### 带跳转
 ```jsx
 import { Cell } from 'zarm';
 
@@ -78,10 +80,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 带描述、箭头、跳转
+
+### 带描述、箭头、跳转
 ```jsx
 import { Cell } from 'zarm';
 
@@ -98,10 +100,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 带图标、描述、箭头、跳转
+
+### 带图标、描述、箭头、跳转
 ```jsx
 import { Cell, Icon } from 'zarm';
 
@@ -148,10 +150,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 提示信息
+
+### 提示信息
 ```jsx
 import { Cell, Message, Icon, Input } from 'zarm';
 
@@ -172,19 +174,16 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
 
-:::api API
+### API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| hasArrow | boolean | false | | 是否显示箭头 |
-| icon | ReactNode | | | 显示的图标 |
-| titile | ReactNode | | | 标题 |
-| description | ReactNode | | | 描述 |
-| help | ReactNode | | | 下方提示信息，通常配合`Message`组件使用 |
-| onClick | MouseEventHandler<HTMLDivElement> | | | 点击后触发的回调函数 |
-
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| hasArrow | boolean | false | 是否显示箭头 |
+| icon | ReactNode | - | 设置图标 |
+| titile | ReactNode | - | 设置标题区域内容 |
+| description | ReactNode | - | 设置描述区域内容 |
+| help | ReactNode | - | 设置下方提示信息区域内容，通常配合 `Message` 组件使用 |
+| onClick | () => void | - | 点击后触发的回调函数 |

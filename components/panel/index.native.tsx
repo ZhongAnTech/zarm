@@ -1,7 +1,8 @@
-import React, { PureComponent, CSSProperties, isValidElement } from 'react';
-import { StyleSheet, View, Text, ViewStyle } from 'react-native';
+import React, { PureComponent, CSSProperties } from 'react';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { BasePanelProps } from './PropsType';
 import panelStyle from './style/index.native';
+import { RenderWithText } from '../utils/renderWithText.native';
 
 export interface PanelProps extends BasePanelProps {
   style?: CSSProperties;
@@ -10,31 +11,13 @@ export interface PanelProps extends BasePanelProps {
 
 const panelStyles = StyleSheet.create<any>(panelStyle);
 
-const ChangeComponent = props => {
-  const component = props.component;
-  const viewStyle = (props.type === 'title')
-    ? panelStyles.panelHeaderTitle
-    : panelStyles.panelHeaderMore;
-
-  const textStyle = (props.type === 'title')
-    ? panelStyles.panelHeaderTitleText
-    : panelStyles.panelHeaderMoreText;
-
-  let contentRender = component;
-
-  if (!isValidElement(component)) {
-    contentRender = <Text style={textStyle}>{component}</Text>;
-  }
-  return <View style={viewStyle}>{contentRender}</View>;
-};
-
 export default class Panel extends PureComponent<PanelProps, {}> {
   static defaultProps = {
     styles: panelStyles,
   };
 
   render() {
-    const { titleRender, moreRender, style, styles, children } = this.props;
+    const { title, more, style, styles, children } = this.props;
 
     const wrapperStyle = [
       styles!.container,
@@ -52,8 +35,16 @@ export default class Panel extends PureComponent<PanelProps, {}> {
     return (
       <View style={wrapperStyle}>
         <View style={headerStyle}>
-          {titleRender && <ChangeComponent type="title" component={titleRender}/>}
-          {moreRender && <ChangeComponent type="more" component={moreRender}/>}
+          <RenderWithText
+            component={title}
+            viewStyle={panelStyles.panelHeaderTitle}
+            textStyle={panelStyles.panelHeaderTitleText}
+          />
+          <RenderWithText
+            component={more}
+            viewStyle={panelStyles.panelHeaderMore}
+            textStyle={panelStyles.panelHeaderMoreText}
+          />
         </View>
         <View style={bodyStyle}>
           {children}

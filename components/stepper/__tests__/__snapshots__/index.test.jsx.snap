@@ -2,58 +2,83 @@
 
 exports[`Stepper defaultValue 1`] = `
 <span
-  className="za-stepper theme-primary"
+  className="za-stepper shape-rect"
 >
-  <span
+  <Button
+    block={false}
     className="za-stepper-sub"
+    disabled={false}
+    ghost={false}
+    loading={false}
     onClick={[Function]}
+    prefixCls="za-button"
+    shape="rect"
+    size="sm"
+    theme="default"
   >
     <Icon
       prefixCls="za-icon"
       type="minus"
     />
-  </span>
+  </Button>
   <input
     className="za-stepper-input"
+    disabled={false}
     onBlur={[Function]}
     onChange={[Function]}
     type="tel"
     value={2}
   />
-  <span
+  <Button
+    block={false}
     className="za-stepper-plus"
+    disabled={false}
+    ghost={false}
+    loading={false}
     onClick={[Function]}
+    prefixCls="za-button"
+    shape="rect"
+    size="sm"
+    theme="default"
   >
     <Icon
       prefixCls="za-icon"
       type="add"
     />
-  </span>
+  </Button>
 </span>
 `;
 
 exports[`Stepper renders correctly 1`] = `
 <span
-  class="za-stepper theme-primary"
+  class="za-stepper shape-rect"
 >
-  <span
-    class="za-stepper-sub"
+  <a
+    aria-disabled="false"
+    class="za-button za-stepper-sub theme-default size-sm shape-rect"
+    role="button"
   >
-    <i
-      class="za-icon za-icon-minus"
-    />
-  </span>
+    <span>
+      <i
+        class="za-icon za-icon-minus"
+      />
+    </span>
+  </a>
   <input
     class="za-stepper-input"
     type="tel"
     value="0"
   />
-  <span
-    class="za-stepper-plus"
+  <a
+    aria-disabled="false"
+    class="za-button za-stepper-plus theme-default size-sm shape-rect"
+    role="button"
   >
-    <i
-      class="za-icon za-icon-add"
-    />
-  </span>
+    <span>
+      <i
+        class="za-icon za-icon-add"
+      />
+    </span>
+  </a>
 </span>
 `;

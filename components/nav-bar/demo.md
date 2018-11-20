@@ -1,6 +1,8 @@
 ## 导航栏 NavBar
 
-:::demo 左侧渲染
+
+
+### 左侧渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
 
@@ -21,10 +23,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 右侧渲染
+
+### 右侧渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
 
@@ -47,10 +49,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 复数渲染
+
+### 复数渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
 
@@ -82,18 +84,14 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 必填 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | 否 | za-nav-bar | 类名前缀 |
-| className | string | 否 | | 追加类名 |
-| title | React.ReactNode | 否 | | 标题 |
-| left | React.ReactNode | 否 | | 导航栏左侧渲染 |
-| right | React.ReactNode | 否 | | 导航栏右侧渲染 |
-| style | React.CSSProperties | 否 | | 自定义样式 |
+### API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| title | ReactNode | - | 标题渲染 |
+| left | ReactNode | - | 导航栏左侧渲染 |
+| right | ReactNode | - | 导航栏右侧渲染 |
+
