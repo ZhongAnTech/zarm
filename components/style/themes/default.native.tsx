@@ -217,7 +217,7 @@ const components = {
 
   message_height_lg: 40,
   message_font_size_lg: 14,
-  message_padding_horizontal_lg: 15,
+  message_padding_horizontal_lg: 16,
 
   message_theme_bg_default: '#d0f3e7',               // 默认色
   message_theme_bg_primary: '#d0f3e7',               // 主色

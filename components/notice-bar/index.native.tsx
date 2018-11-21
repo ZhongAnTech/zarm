@@ -78,10 +78,16 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
     return new Promise((resolve) => {
       setTimeout(() => {
         UIManager.measure(handle, (x, y, width, height, pageX, pageY) => {
-          // x,y 当前container的坐标
-          // width, height 是宽高
-          // pageX, pageY 是在屏幕中的坐标（起始坐标）
-          resolve(width);
+          // x,y 当前container的坐标, width, height 是宽高, pageX, pageY 是在屏幕中的坐标（起始坐标）
+          const result = {
+            x,
+            y,
+            width,
+            height,
+            pageX,
+            pageY
+          }
+          resolve(result.width);
         });
       });
     });
