@@ -23,22 +23,28 @@
   }
 
   .ui-menu-item {
+    a {
+      color: #666;
+    }
+
+    .chinese {
+      margin-left: 6px;
+      opacity: .6;
+    }
+
     &:hover,
     &.selected,
     &.active {
       color: #12C287;
+
+      a {
+        color: #12C287;
+      }
     }
 
     &.selected,
     &.active {
       background: rgba(18, 194, 135, .1);
-    }
-  }
-
-  .menu-item-content {
-    .chinese {
-      margin-left: 6px;
-      opacity: .6;
     }
   }
 }
