@@ -25,11 +25,11 @@ module.exports = {
     //   description: '日期选择器 DatePicker & DateSelect',
     //   module: require('./pages/DatePickerPage'),
     // },
-    // {
-    //   title: 'Slider',
-    //   description: '滑动输入条 Slider',
-    //   module: require('./pages/SliderPage'),
-    // },
+    {
+      title: 'Slider',
+      description: '滑动输入条 Slider',
+      module: require('./pages/SliderPage'),
+    },
     {
       title: 'Stepper',
       description: '步进器 Stepper',
