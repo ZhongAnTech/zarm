@@ -36,7 +36,7 @@ class Demo extends React.Component {
     return (
       <div>
         <div>
-          <Cell title="multiple">
+          <Cell title="multiple" hasArrow>
             <Select
               visible={visible}
               placeholder="multiple"
@@ -58,7 +58,6 @@ class Demo extends React.Component {
                 });
               }}
             />
-            <Icon className="icon" theme="primary" type="arrow-right" />
           </Cell>
           <Cell title="min">
             <Input
