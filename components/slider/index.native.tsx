@@ -63,7 +63,7 @@ export default class ZSlider extends PureComponent<SliderProps, any> {
     return (
       <View style={sliderWrapper}>
         <Text>
-          {value}
+          {~~value}
         </Text>
         <Slider
           step={step}

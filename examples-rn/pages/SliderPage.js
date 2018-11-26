@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { ScrollView, View, Slider, Text } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { ZSlider, Panel } from '../../components/index.native';
 
 const styles = {
@@ -21,15 +21,9 @@ const styles = {
     lineHeight: 50,
     fontSize: 16,
   },
-  inline: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
 };
 
-const noop = () => {};
-
-export default class Page extends PureComponent {
+export default class SliderPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,21 +35,10 @@ export default class Page extends PureComponent {
     return (
       <ScrollView>
         <Panel title="基本用法">
-          <View style={[styles.box, styles.inline]}>
-            {/* <ZSlider
+          <View style={[styles.box]}>
+            <ZSlider
               value={this.state.value}
               onChange={(value) => {
-                console.log(value);
-              }}
-            /> */}
-            <Text style={styles.text} >
-              {this.state.value && +this.state.value.toFixed(3)}
-            </Text>
-            <Slider
-              value={this.state.value}
-              minimumValue={0}
-              maximumValue={100}
-              onValueChange={(value) => {
                 this.setState({ value });
               }}
             />
