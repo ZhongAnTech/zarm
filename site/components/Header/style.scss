@@ -30,24 +30,39 @@ header {
   
   .search {
     float: left;
-    margin-top: 19px;
+    margin-top: 16px;
     margin-left: 20px;
   
-    .tag-input-box {
-      width: 200px;
+    input {
+      display: inline-block;
+      background: transparent;
       border: 0;
-  
-      &-active {
-        box-shadow: none;
+      outline: 0 none;
+      width: 200px;
+      height: 33px;
+      padding: 0 8px;
+    }
+
+    .algolia-autocomplete {
+      .ds-dropdown-menu {
+        border: none;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+    
+        [class^="ds-dataset-"] {
+          border: none;
+        }
+    
+        &:before {
+          display: none;
+        }
       }
-  
-      > .ui-icon {
-        display: none;
+    
+      .algolia-docsearch-suggestion--title {
+        color: #464646;
       }
-  
-      > .input-div-placeholder,
-      > .value-text {
-        font-size: 14px;
+    
+      .algolia-docsearch-suggestion--highlight {
+        color: #12c287;
       }
     }
   }
