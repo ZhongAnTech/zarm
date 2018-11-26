@@ -1,8 +1,8 @@
-## 消息 Message
+# 消息 Message
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Message, Icon } from 'zarm';
 
@@ -23,7 +23,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 可操作
+## 可操作
 ```jsx
 import { Message } from 'zarm';
 
@@ -43,7 +43,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

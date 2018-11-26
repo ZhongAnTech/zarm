@@ -1,8 +1,8 @@
-## 标签页 Tabs
+# 标签页 Tabs
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -29,7 +29,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 可滑动
+## 可滑动
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -56,7 +56,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 指定默认选项
+## 指定默认选项
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -86,7 +86,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 指定线条宽度
+## 指定线条宽度
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -116,7 +116,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 禁用指定选项
+## 禁用指定选项
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
@@ -146,9 +146,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
-#### Tabs
+### Tabs
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | value | string | - | 值 |
@@ -159,7 +159,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onChange | (index?: number) => void | - | 值变化时触发的回调函数 |
 
 
-#### Panel
+### Panel
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | disabled | boolean | false | 是否禁用 |

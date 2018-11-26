@@ -1,8 +1,8 @@
-## 滑动输入条 Slider
+# 滑动输入条 Slider
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Cell, Slider } from 'zarm';
 
@@ -51,7 +51,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

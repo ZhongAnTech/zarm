@@ -1,8 +1,8 @@
-## 选择器 Picker & Select
+# 选择器 Picker & Select
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Cell, Button, Picker, Toast } from 'zarm';
 
@@ -222,7 +222,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 表单选择 Select
+## 表单选择 Select
 ```jsx
 import { Select, Cell } from 'zarm';
 
@@ -294,7 +294,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 平铺选择 PickerView
+## 平铺选择 PickerView
 ```jsx
 import { PickerView } from 'zarm';
 
@@ -373,7 +373,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -386,7 +386,7 @@ ReactDOM.render(<Demo />, mountNode);
 | cols | number | Infinity | 级联选择器的级数 |
 | onChange | (selected?: object) => void | - | 值变化时触发的回调函数 |
 
-#### 仅 Picker & Select 支持的属性
+### 仅 Picker & Select 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否展示 |
@@ -397,7 +397,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 
-#### 仅 Select 支持的属性
+### 仅 Select 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |

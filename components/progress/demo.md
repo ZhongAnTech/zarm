@@ -1,8 +1,8 @@
-## 进度条 Progress
+# 进度条 Progress
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Progress, Cell, Select, Stepper } from 'zarm';
 
@@ -133,7 +133,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

@@ -1,8 +1,8 @@
-## 滚动 Marquee
+# 滚动 Marquee
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Marquee, Cell } from 'zarm';
 
@@ -51,7 +51,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

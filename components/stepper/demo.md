@@ -1,8 +1,8 @@
-## 步进器 Stepper
+# 步进器 Stepper
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Cell, Stepper } from 'zarm';
 
@@ -79,7 +79,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 多形状
+## 多形状
 ```jsx
 import { Cell, Stepper } from 'zarm';
 
@@ -110,7 +110,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

@@ -1,8 +1,8 @@
-## 面板 Panel
+# 面板 Panel
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Panel } from 'zarm';
 
@@ -26,7 +26,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

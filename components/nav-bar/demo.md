@@ -1,8 +1,8 @@
-## 导航栏 NavBar
+# 导航栏 NavBar
 
 
 
-### 左侧渲染
+## 左侧渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
 
@@ -26,7 +26,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 右侧渲染
+## 右侧渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
 
@@ -52,7 +52,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 复数渲染
+## 复数渲染
 ```jsx
 import { NavBar, Icon } from 'zarm';
 
@@ -87,7 +87,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

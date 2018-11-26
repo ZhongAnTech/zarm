@@ -1,8 +1,8 @@
-## 折叠面板 Collapse
+# 折叠面板 Collapse
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -40,7 +40,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 手风琴模式
+## 手风琴模式
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -78,7 +78,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 默认展开项
+## 默认展开项
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -117,7 +117,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 允许展开多项
+## 允许展开多项
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -155,7 +155,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 禁用子项
+## 禁用子项
 ```jsx
 import { Collapse } from 'zarm';
 
@@ -197,9 +197,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
-### Collapse
+## Collapse
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | multiple | boolean | false | 是否可以同时展开多项 |
@@ -208,7 +208,7 @@ ReactDOM.render(<Demo />, mountNode);
 | defaultActiveKey | string \| number \| string[] \| number[] | [] | 初始化默认展开项的索引数组或字符串或数字 |
 | onChange | (activeKey?: string \| number) => void | - | 点击某一项的回调函数 |
 
-### Collapse.Item
+## Collapse.Item
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | title | ReactNode | - | 每一项的名称 |

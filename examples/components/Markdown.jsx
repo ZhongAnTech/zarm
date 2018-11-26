@@ -47,8 +47,8 @@ export default class Markdown extends React.Component {
 
       const html = marked(
         document
-          .replace(/### API\s?([^]+)/g, '')
-          .replace(/###\s?([^]+?)((?=###)|$)/g, (match, p1) => {
+          .replace(/## API\s?([^]+)/g, '')
+          .replace(/##\s?([^]+?)((?=##)|$)/g, (match, p1) => {
             const id = parseInt(Math.random() * 1e9, 10).toString(36);
             this.components.set(id, React.createElement(Demo, this.props, p1));
             return `<div id=${id}></div>`;

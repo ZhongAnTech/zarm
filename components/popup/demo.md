@@ -1,8 +1,8 @@
-## 弹出框 Popup
+# 弹出框 Popup
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Popup, Cell, Button } from 'zarm';
 
@@ -121,7 +121,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

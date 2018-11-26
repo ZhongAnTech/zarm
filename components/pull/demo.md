@@ -1,8 +1,8 @@
-## 上拉加载下拉刷新 Pull
+# 上拉加载下拉刷新 Pull
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Pull, Cell } from 'zarm';
 
@@ -186,7 +186,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -195,7 +195,7 @@ ReactDOM.render(<Demo />, mountNode);
 | animationDuration | number | 400 | 动画执行时间，单位：毫秒 |
 | stayTime | number | 1000 | 加载成功停留时间 |
 
-#### Action 类型定义
+### Action 类型定义
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | state | REFRESH_STATE &#124; LOAD_STATE | 0 | 状态枚举 |
@@ -204,7 +204,7 @@ ReactDOM.render(<Demo />, mountNode);
 | render | (refreshState: REFRESH_STATE &#124; LOAD_STATE, percent: number) => ReactNode | - | 各状态渲染的回调函数 |
 | handler | () => void | - | 达到阀值后释放触发的回调函数 |
 
-#### REFRESH_STATE 枚举定义
+### REFRESH_STATE 枚举定义
 | 枚举值 | 说明 |
 | :--- | :--- |
 | normal | 普通状态 |
@@ -214,7 +214,7 @@ ReactDOM.render(<Demo />, mountNode);
 | success | 加载成功 |
 | failure | 加载失败 |
 
-#### LOAD_STATE 枚举定义
+### LOAD_STATE 枚举定义
 | 枚举值 | 说明 |
 | :--- | :--- |
 | normal | 普通状态 |

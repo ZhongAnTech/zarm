@@ -1,8 +1,8 @@
-## 通告栏 NoticeBar
+# 通告栏 NoticeBar
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { NoticeBar, Icon } from 'zarm';
 
@@ -24,7 +24,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 特定场景
+## 特定场景
 ```jsx
 import { NoticeBar  } from 'zarm';
 
@@ -44,7 +44,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

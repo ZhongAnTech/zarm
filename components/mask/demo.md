@@ -1,8 +1,8 @@
-## 遮罩 Mask
+# 遮罩 Mask
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Cell, Button, Mask } from 'zarm';
 
@@ -36,7 +36,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 必填 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
