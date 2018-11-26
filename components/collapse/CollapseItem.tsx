@@ -5,19 +5,19 @@ import { BaseCollapseItemProps } from './PropsType';
 export interface CollapseItemProps extends BaseCollapseItemProps {
   prefixCls?: string;
   className?: string;
-  isActive?: boolean;
 }
 
 export default class CollapseItem extends PureComponent<CollapseItemProps, any> {
   static defaultProps = {
     prefixCls: 'za-collapse',
+    animated: false,
+    disabled: false,
   };
 
   private content;
 
   constructor(props) {
     super(props);
-
     this.state = {
       active: this.isActive(props),
     };
@@ -38,7 +38,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   onClickItem = () => {
-    const { onItemChange, animated, disabled } = this.props;
+    const { itemKey, onItemChange, animated, disabled } = this.props;
     const { active } = this.state;
     if (disabled) {
       return;
@@ -49,8 +49,8 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     if (animated) {
       this.setStyle(active);
     }
-    if (onItemChange) {
-      onItemChange();
+    if (typeof onItemChange === 'function') {
+      onItemChange(itemKey);
     }
   }
 

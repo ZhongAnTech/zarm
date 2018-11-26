@@ -11,9 +11,10 @@ export interface BaseCollapseProps {
 
 export interface BaseCollapseItemProps {
   title?: ReactNode;
-  key: string | number;
+  itemKey: string | number;
   animated?: boolean;
   disabled?: boolean;
+  isActive?: boolean;
+  onItemChange?: (itemKey?: string | number) => void;
   style?: CSSProperties;
-  onItemChange?: (key?: string | number) => void;
 }

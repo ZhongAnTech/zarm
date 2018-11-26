@@ -11,19 +11,19 @@ class Demo extends React.Component {
     return (
       <div>
         <Collapse>
-          <Collapse.Item key="1" title="50元套餐">
+          <Collapse.Item itemKey="1" title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key={2} title="100元套餐">
+          <Collapse.Item itemKey={2} title="100元套餐">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key="3" title="200元套餐">
+          <Collapse.Item itemKey="3" title="200元套餐">
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -49,19 +49,19 @@ class Demo extends React.Component {
     return (
       <div>
         <Collapse animated>
-          <Collapse.Item key="test1" title="50元套餐">
+          <Collapse.Item itemKey="test1" title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key="test2" title="100元套餐">
+          <Collapse.Item itemKey="test2" title="100元套餐">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key="test3" title="200元套餐">
+          <Collapse.Item itemKey="test3" title="200元套餐">
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -86,20 +86,20 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Collapse defaultActiveKey={['test1', 'test2']}>
-          <Collapse.Item key='test1' title="50元套餐">
+        <Collapse defaultActiveKey={['test1', 'test2']} animated>
+          <Collapse.Item itemKey="test1" title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key='test2' title="100元套餐">
+          <Collapse.Item itemKey="test2" title="100元套餐">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key='test3' title="200元套餐">
+          <Collapse.Item itemKey="test3" title="200元套餐">
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -125,20 +125,20 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Collapse multiple defaultActiveKey={['test1', 'test3']}>
-          <Collapse.Item key="test1" title="50元套餐">
+        <Collapse animated multiple defaultActiveKey={['test1', 'test3']}>
+          <Collapse.Item itemKey="test1" title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key="test2" title="100元套餐">
+          <Collapse.Item itemKey="test2" title="100元套餐">
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item key="test3" title="200元套餐">
+          <Collapse.Item itemKey="test3" title="200元套餐">
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -166,20 +166,21 @@ class Demo extends React.Component {
         <Collapse 
           multiple
           activeKey={['test2']}
-          onChange={key => console.log(key)}>
-          <Collapse.Item key="test1" title="50元套餐">
+          onChange={key => console.log(key)}
+        >
+          <Collapse.Item itemKey="test1" title="50元套餐">
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
             <div>我是50元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item disabled key="test2" title="100元套餐">
+          <Collapse.Item itemKey="test2" title="100元套餐" disabled>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
             <div>我是100元套餐内容</div>
           </Collapse.Item>
-          <Collapse.Item disabled key="test3" title="200元套餐">
+          <Collapse.Item itemKey="test3" title="200元套餐" disabled>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
             <div>我是200元套餐内容</div>
@@ -211,6 +212,6 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | title | ReactNode | - | 每一项的名称 |
-| key | string \| number | - | 对应activeKey |
+| itemKey | string \| number | - | 对应activeKey |
 | disabled | boolean | false | 是否禁用 |
-| onItemChange | (key?: string \| number) => void | - | 点击某一项的回调函数 |
+| onItemChange | (itemKey?: string \| number) => void | - | 点击某一项的回调函数 |

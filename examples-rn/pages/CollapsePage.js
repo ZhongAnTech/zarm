@@ -7,20 +7,20 @@ export default class Page extends PureComponent {
     return (
       <ScrollView>
         <Panel title="基本用法">
-          <Collapse>
-            <Collapse.Item title="50元套餐">
+          <Collapse animated>
+            <Collapse.Item itemKey="1" title="50元套餐">
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="100元套餐">
+            <Collapse.Item itemKey={2} title="100元套餐">
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="200元套餐">
+            <Collapse.Item itemKey="3" title="200元套餐">
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
@@ -31,19 +31,19 @@ export default class Page extends PureComponent {
 
         <Panel title="手风琴模式">
           <Collapse animated>
-            <Collapse.Item title="50元套餐">
+            <Collapse.Item itemKey="test1" title="50元套餐">
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="100元套餐">
+            <Collapse.Item itemKey="test2" title="100元套餐">
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="200元套餐">
+            <Collapse.Item itemKey="test3" title="200元套餐">
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
@@ -53,20 +53,20 @@ export default class Page extends PureComponent {
         </Panel>
 
         <Panel title="默认展开项">
-          <Collapse activeKey={[0, 2]} animated>
-            <Collapse.Item title="50元套餐">
+          <Collapse animated activeKey={['test1', 'test2']}>
+            <Collapse.Item itemKey="test1" title="50元套餐">
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="100元套餐">
+            <Collapse.Item itemKey="test2" title="100元套餐">
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="200元套餐">
+            <Collapse.Item itemKey="test3" title="200元套餐">
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
@@ -76,20 +76,20 @@ export default class Page extends PureComponent {
         </Panel>
 
         <Panel title="允许展开多项">
-          <Collapse multiple animated>
-            <Collapse.Item title="50元套餐">
+          <Collapse animated multiple defaultActiveKey={['test1', 'test3']}>
+            <Collapse.Item itemKey="test1" title="50元套餐">
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="100元套餐">
+            <Collapse.Item itemKey="test2" title="100元套餐">
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item title="200元套餐">
+            <Collapse.Item itemKey="test3" title="200元套餐">
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
@@ -99,20 +99,24 @@ export default class Page extends PureComponent {
         </Panel>
 
         <Panel title="禁用子项">
-          <Collapse defaultactiveKey={[1]} multiple animated>
-            <Collapse.Item title="50元套餐">
+          <Collapse
+            multiple
+            activeKey={['test2']}
+            onChange={key => console.log(key)}
+          >
+            <Collapse.Item itemKey="test1" title="50元套餐">
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item disabled title="100元套餐">
+            <Collapse.Item itemKey="test2" title="100元套餐" disabled>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item disabled title="200元套餐">
+            <Collapse.Item itemKey="test3" title="200元套餐" disabled>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
