@@ -241,6 +241,9 @@ const components = {
   slider_line_height: 2,
   slider_handle_size: 28,
   slider_handle_background: '#fff',
+  slider_transparent: 'transparent',
+  slider_tooltip_width: 42,
+  slider_tooltip_height: 30,
 
   // activity-indicator
   activityIndicator_size_md: 20,
