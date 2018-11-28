@@ -63,6 +63,7 @@ class Demo extends React.Component {
 
         <Cell title="进度">
           <Stepper
+            size="sm"
             shape="radius"
             step={10}
             min={0}

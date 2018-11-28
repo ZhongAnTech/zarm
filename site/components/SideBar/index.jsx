@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Menu } from 'dragon-ui';
-import { components, documents } from '@site/demos';
+import { components, documents } from '@/examples/demos';
 import Format from '@site/utils/format';
 import './style.scss';
 
