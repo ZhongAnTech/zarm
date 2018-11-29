@@ -1,4 +1,12 @@
-# Zarm UI
+<p align="center">
+  <a href="http://zarm.design">
+    <img width="200" src="https://zarm.design/images/logo.ce68565d.svg">
+  </a>
+</p>
+
+<h1 align="center">Zarm</h1>
+
+<div align="center">
   [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm)
   [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm?branch=master) 
   [![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
@@ -7,6 +15,7 @@
   ![CSS gzip size](http://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
 
   众安科技移动端UI组件库，基于React、React-Native。
+</div>
 
 ## Install 安装
 
