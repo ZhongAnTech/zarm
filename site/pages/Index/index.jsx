@@ -29,7 +29,7 @@ class Page extends PureComponent {
             <img src={require('./images/banner@2x.png')} alt="" />
           </div>
           <div className="introduce">
-            <div className="title"><span>ZARM</span> DESIGN</div>
+            <div className="title"><span>Zarm</span> Design</div>
             <div className="description">基于 React / React Native / Vue 的跨平台移动端 UI 组件库，为用户体验而生</div>
             <div className="navigation">
               <button onClick={() => history.push('/documents/quick-start')}>开始使用</button>

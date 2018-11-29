@@ -41,7 +41,10 @@ class Header extends PureComponent {
       <header>
         <div className="header-container">
           <div className="logo">
-            <a href="#/">ZARM</a>
+            <a href="#/">
+              <img alt="logo" src={require('./images/logo.svg')} />
+              Zarm
+            </a>
           </div>
           <div className="search">
             <input placeholder="搜索组件..." ref={(ref) => { this.searchInput = ref; }} />
@@ -57,7 +60,8 @@ class Header extends PureComponent {
           <nav>
             <ul>
               { match.url !== '/' && <li><a href="#/">首页</a></li>}
-              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>文档</a></li>
+              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>React 组件</a></li>
+              <li><a href="https://zhongantecheng.github.io/zarm-vue/#/documents/quick-start">Vue 组件</a></li>
               <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
             </ul>
           </nav>
