@@ -26,7 +26,7 @@ class Tootip extends Component<PropsType, any> {
     className: null,
     visible: false,
     trigger: 'hover',
-    direction: 'bottomRight',
+    direction: 'top',
     onVisibleChange: () => {},
     title: null,
   };
