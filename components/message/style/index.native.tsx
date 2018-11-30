@@ -51,7 +51,9 @@ export default {
   },
 
   lgCloseWrapperStyle: {
-    width: 28,
+    alignItems: 'center',
+    width: 30,
+    marginLeft: 5,
   },
 
   arrowStyle: {

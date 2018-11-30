@@ -85,8 +85,8 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
             width,
             height,
             pageX,
-            pageY
-          }
+            pageY,
+          };
           resolve(result.width);
         });
       });
@@ -103,8 +103,8 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
     const {
       theme,
       scrollable,
+      closable,
       styles,
-      onClick,
       children,
       size,
       ...others } = this.props;
@@ -123,8 +123,8 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
     const wrapperProps = {
       theme,
       scrollable,
+      closable,
       children,
-      onClick,
       size,
     };
 

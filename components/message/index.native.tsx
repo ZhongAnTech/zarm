@@ -11,7 +11,7 @@ import PropsType from './PropsType';
 import messageStyle from './style/index.native';
 import { RenderWithText } from '../utils/renderWithText.native';
 
-export interface MessageProps extends PropsType<GestureResponderEvent> {
+export interface MessageProps extends PropsType {
   style?: CSSProperties;
   styles?: typeof messageStyle;
   onClick?: (event: GestureResponderEvent) => void;
@@ -71,7 +71,8 @@ export default class Message extends PureComponent<MessageProps, any> {
     ];
 
     const closeWrapperStyle = [
-      size ? styles!.lgCloseWrapperStyle : styles!.closeWrapperStyle,
+      styles!.closeWrapperStyle,
+      size && styles![`${size}CloseWrapperStyle`],
     ];
 
     const closeTextStyle = [
