@@ -9,6 +9,7 @@ export default {
     justifyContent: 'center',
     height: variables.message_height,
     paddingHorizontal: variables.message_padding_horizontal,
+    backgroundColor: variables.message_theme_bg_default,
   },
 
   lgMessageWrapper: {
@@ -109,6 +110,10 @@ export default {
 
   errorMessageText: {
     color: variables.message_theme_text_error,
+  },
+
+  activeMessageText: {
+    backgroundColor: variables.message_theme_text_primary,
   },
 
   messageTextSize: {
