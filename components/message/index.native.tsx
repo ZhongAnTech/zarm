@@ -88,7 +88,7 @@ export default class Message extends PureComponent<MessageProps, any> {
     const closeTextStyle = [
       styles![`${theme}MessageText`],
       isClose && styles![`${theme}MessageText`],
-      size ? styles![`${size}CloseTextStyle`] : 
+      size ? styles![`${size}CloseTextStyle`] :
       styles!.closeTextStyle,
       size ? styles![`${size}MessageTextSize`] : styles!.messageTextSize,
       isClose && styles![`${theme}MessageText`],
