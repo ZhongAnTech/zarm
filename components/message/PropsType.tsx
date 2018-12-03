@@ -1,8 +1,7 @@
 export default interface PropsType {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
-  size?: 'lg';
+  theme?: 'default' |'primary' | 'success' | 'warning' | 'error';
   icon?: any;
+  closable?: boolean;
   hasArrow?: boolean;
-  hasClosable?: boolean;
-  onClick?: () => void;
+  size?: 'lg';
 }

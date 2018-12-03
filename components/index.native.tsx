@@ -10,3 +10,5 @@ export { default as Panel } from './panel/index.native';
 export { default as Stepper } from './stepper/index.native';
 export { default as SwipeAction } from './swipe-action/index.native';
 export { default as Collapse } from './collapse/index.native';
+export { default as NoticeBar } from './notice-bar/index.native';
+export { default as Message } from './message/index.native';
