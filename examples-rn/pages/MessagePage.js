@@ -17,15 +17,23 @@ export default class App extends PureComponent {
       <ScrollView>
         <Panel title="基本用法">
           <View style={styles.wrap}>
-            <Message style={styles.mb}>普通</Message>
-            <Message theme="error">自定义主题</Message>
+            <View style={styles.mb}>
+              <Message>普通</Message>
+            </View>
+            <View>
+              <Message theme="error">自定义主题</Message>
+            </View>
           </View>
         </Panel>
 
         <Panel title="可操作">
           <View style={styles.wrap}>
-            <Message theme="success" hasArrow onClick={() => Alert.alert('click this message!')} style={styles.mb} >链接样式</Message>
-            <Message theme="warning" closable>可关闭</Message>
+            <View style={styles.mb}>
+              <Message theme="success" hasArrow onClick={() => Alert.alert('click this message!')} >链接样式</Message>
+            </View>
+            <View>
+              <Message theme="warning" closable>可关闭</Message>
+            </View>
           </View>
         </Panel>
       </ScrollView>

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { ScrollView, Alert } from 'react-native';
+import { ScrollView, Alert, View } from 'react-native';
 import { Panel, NoticeBar } from '../../components/index.native';
 
 const styles = {
@@ -16,13 +16,27 @@ export default class App extends PureComponent {
     return (
       <ScrollView>
         <Panel title="基本用法">
-          <NoticeBar style={styles.mb}>普通</NoticeBar>
-          <NoticeBar style={styles.mb} theme="error">错误色</NoticeBar>
-          <NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
+          <View style={styles.wrap}>
+            <View style={styles.mb}>
+              <NoticeBar>普通</NoticeBar>
+            </View>
+            <View style={styles.mb}>
+              <NoticeBar theme="error">错误色</NoticeBar>
+            </View>
+            <View>
+              <NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
+            </View>
+          </View>
         </Panel>
         <Panel title="特定场景">
-          <NoticeBar hasArrow onClick={() => Alert.alert('click this noticeBar!')} style={styles.mb}>链接样式的</NoticeBar>
-          <NoticeBar closable>可关闭的</NoticeBar>
+          <View style={styles.wrap}>
+            <View style={styles.mb}>
+              <NoticeBar hasArrow onClick={() => Alert.alert('click this noticeBar!')}>链接样式的</NoticeBar>
+            </View>
+            <View>
+              <NoticeBar closable>可关闭的</NoticeBar>
+            </View>
+          </View>
         </Panel>
       </ScrollView>
     );

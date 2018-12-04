@@ -31,11 +31,20 @@ export default class Message extends PureComponent<MessageProps, any> {
     super(props);
     this.state = {
       isActive: true,
+      isClose: false,
     };
   }
 
   _onPressClose = () => {
     this.setState({ isActive: false });
+  }
+
+  onPressIn = () => {
+    this.setState({ isClose: true });
+  }
+
+  onPressOut = () => {
+    this.setState({ isClose: false });
   }
 
   render() {
@@ -50,13 +59,14 @@ export default class Message extends PureComponent<MessageProps, any> {
       size,
     } = this.props;
 
-    const { isActive } = this.state;
+    const { isActive, isClose } = this.state;
 
     const wrapperStyle = [
       styles!.messageWrapper,
       isActive && styles!.messageWrapper,
       styles![`${theme}MessageBg`],
       styles![`${size}MessageWrapper`],
+      isClose && styles![`${theme}MessageBg`],
       style,
     ] as ViewStyle;
 
@@ -77,13 +87,25 @@ export default class Message extends PureComponent<MessageProps, any> {
 
     const closeTextStyle = [
       styles![`${theme}MessageText`],
-      size ? styles![`${size}CloseTextStyle`] : styles!.closeTextStyle,
+      isClose && styles![`${theme}MessageText`],
+      size ? styles![`${size}CloseTextStyle`] :
+      styles!.closeTextStyle,
       size ? styles![`${size}MessageTextSize`] : styles!.messageTextSize,
+      isClose && styles![`${theme}MessageText`],
+      isClose && styles![`${theme}MessageBg`],
+      isClose && styles!.messageTextSize,
+      isClose && styles![`${size}MessageTextSize`],
+      isClose && styles![`${size}CloseTextStyle`],
     ];
 
     const closeIconRender = closable &&
       <View style={closeWrapperStyle}>
-        <TouchableHighlight onPress={this._onPressClose}>
+        <TouchableHighlight
+          onPress={this._onPressClose}
+          onPressIn={this.onPressIn}
+          onPressOut={this.onPressOut}
+          activeOpacity={1}
+        >
           <View style={styles!.textBodyStyle as ViewStyle}>
             <Text style={closeTextStyle}>关闭</Text>
           </View>
@@ -109,8 +131,10 @@ export default class Message extends PureComponent<MessageProps, any> {
     );
 
     const wrapperProps = {
-      _onPressClose: this._onPressClose,
+      activeOpacity: 1,
       onPress: onClick,
+      onPressIn: this.onPressIn,
+      onPressOut: this.onPressOut,
     };
 
     return this.state.isActive && (
