@@ -219,21 +219,21 @@ const components = {
   message_font_size_lg: 14,
   message_padding_horizontal_lg: 16,
 
-  message_theme_bg_default: '#d0f3e7',               // 默认色
-  message_theme_bg_primary: '#d0f3e7',               // 主色
-  message_theme_bg_success: '#d0f3e7',               // 成功
-  message_theme_bg_warning: '#fff7cb',               // 警告
-  message_theme_bg_error: '#ffeded',                 // 失败
+  message_theme_bg_default: 'rgba(18, 194, 135, 0.2)',               // 默认色
+  message_theme_bg_primary: 'rgba(18, 194, 135, 0.2)',               // 主色
+  message_theme_bg_success: 'rgba(18, 194, 135, 0.2)',               // 成功
+  message_theme_bg_warning: 'rgba(255, 247, 203, 1)',                // 警告
+  message_theme_bg_error: 'rgba(255, 80, 80, 0.1)',                  // 失败
 
-  message_theme_text_default: '#e6e6e6',             // 默认色
-  message_theme_text_primary: '#12c287',             // 主色
-  message_theme_text_success: '#12c287',             // 成功
-  message_theme_text_warning: '#ec9131',             // 警告
-  message_theme_text_error: '#ff5050',               // 失败
+  message_theme_text_default: base.theme_default,                    // 默认色
+  message_theme_text_primary: base.theme_primary,                    // 主色
+  message_theme_text_success: base.theme_primary,                    // 成功
+  message_theme_text_warning: base.theme_warning,                    // 警告
+  message_theme_text_error: base.theme_error,                        // 失败
 
-  message_arrow_color: '#bcbcbc',                    // 箭头颜色
-  message_arrow_length: 10,                          // 箭头长度
-  message_arrow_border_width: 2,                     // 箭头粗细
+  message_arrow_color: '#bcbcbc',                                    // 箭头颜色
+  message_arrow_length: 10,                                          // 箭头长度
+  message_arrow_border_width: 2,                                     // 箭头粗细
 
   // Modal
   modal_background: '#fff',
