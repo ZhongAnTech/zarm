@@ -1,5 +1,5 @@
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
+  size?: 'md' | 'sm';
   shape?: 'radius' | 'circle';
   value?: number;
   defaultValue?: number;
@@ -7,6 +7,6 @@ export default interface PropsType {
   min: number;
   max: number;
   disabled?: boolean;
-  onInputChange?: (value: number) => void;
-  onChange?: (value: number) => void;
+  onInputChange?: (value?: number) => void;
+  onChange?: (value?: number) => void;
 }

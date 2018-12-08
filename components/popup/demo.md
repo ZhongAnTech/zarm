@@ -1,6 +1,8 @@
-## 弹出框 Popup
+# 弹出框 Popup
 
-:::demo 基本用法
+
+
+## 基本用法
 ```jsx
 import { Popup, Cell, Button } from 'zarm';
 
@@ -116,22 +118,18 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-popup | | 类名前缀 |
-| className | string | | | 追加类名 |
-| visible | boolean | false | | 是否显示 |
-| autoClose | boolean | false | | 是否自动关闭 |
-| direction | string | `bottom` | `top`, `bottom`, `left`, `right` | 弹出方向 |
-| stayTime | number | 3000 | | 自动关闭前停留的时间（单位：毫秒） |
-| animationDuration | number | 200 | | 动画执行时间（单位：毫秒） |
-| maskType | string | `normal` | `transparent`, `light`, `normal`, `dark` | 遮罩层的类型 |
-| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
-| onClose | <code>() => void</code> | noop | | 关闭后触发的回调函数 |
+## API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| visible | boolean | false | 是否显示 |
+| autoClose | boolean | false | 是否自动关闭 |
+| direction | string | 'bottom' | 弹出方向，可选值 `top`, `bottom`, `left`, `right` |
+| stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
+| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
+| maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `light`, `normal`, `dark` |
+| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+| onClose | () => void | - | 关闭后触发的回调函数 |

@@ -5,7 +5,7 @@ export default interface PropsType {
   accept?: string;
   maximum?: number;
   capture?: any;
-  onChange?: (file: Object | Array<Object>) => void;
+  onChange?: (file?: object | object[]) => void;
   onBeforeSelect?: () => boolean;
   children?: any;
 }

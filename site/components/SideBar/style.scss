@@ -1,0 +1,51 @@
+.side-bar {
+  position: fixed;
+  top: 65px;
+  bottom: 0;
+  width: 280px;
+  border-right: 1px solid #ebedf0;
+  margin-right: -1px;
+  padding: 30px 0 50px 0;
+  overflow-y: scroll;
+  z-index: 1;
+
+  .ui-menu-submenu-title {
+    &:hover {
+      color: #12C287;
+
+      .ui-menu-submenu-arrow {
+        &:before,
+        &:after {
+          background: linear-gradient(to right, #12C287, #12C287);
+        }
+      }
+    }
+  }
+
+  .ui-menu-item {
+    a {
+      color: #666;
+      outline: none;
+    }
+
+    .chinese {
+      margin-left: 6px;
+      opacity: .6;
+    }
+
+    &:hover,
+    &.selected,
+    &.active {
+      color: #12C287;
+
+      a {
+        color: #12C287;
+      }
+    }
+
+    &.selected,
+    &.active {
+      background: rgba(18, 194, 135, .1);
+    }
+  }
+}

@@ -28,11 +28,6 @@ export default class Demo extends React.Component {
       const args = ['context', 'React', 'ReactDOM', 'zarm'];
       const argv = [this, React, ReactDOM, Element];
 
-      // Object.keys(Element).forEach((key) => {
-      //   args.push(key);
-      //   argv.push(Element[key]);
-      // });
-
       return {
         args,
         argv,
@@ -63,7 +58,7 @@ export default class Demo extends React.Component {
     return (this.props.location.pathname === '/panel')
       ? <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
       : (
-        <Panel titleRender={<span>{this.title}</span>}>
+        <Panel title={<span>{this.title}</span>}>
           <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
         </Panel>
       );

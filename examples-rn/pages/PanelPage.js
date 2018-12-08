@@ -27,8 +27,8 @@ export default class App extends PureComponent {
       <ScrollView>
         <View>
           <Panel
-            titleRender="标题"
-            moreRender={
+            title="标题"
+            more={
               <Text style={styles.moreHeaderColor} onPress={clickHandle}>更多</Text>
             }
           >

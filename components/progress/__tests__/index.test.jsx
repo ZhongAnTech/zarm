@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Progress from '../index';
 
@@ -10,12 +10,24 @@ describe('Progress', () => {
   });
 
   it('renders has children correctly', () => {
-    const wrapper = render(<Progress percent={10}>foo</Progress>);
+    const wrapper = render(<Progress percent={10} weight="thin">foo</Progress>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders shape is circle correctly', () => {
-    const wrapper = render(<Progress shape="circle" percent={10}>foo</Progress>);
+    const wrapper = render(<Progress type="circle" shape="rect" percent={10}>foo</Progress>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders shape is semi-circle correctly', () => {
+    const wrapper = render(<Progress type="semi-circle" percent={10}>foo</Progress>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders percent correctly', () => {
+    const wrapper = mount(<Progress type="circle" percent={10}>foo</Progress>);
+    wrapper.setProps({ percent: 50 });
+    expect(wrapper.props().percent).toEqual(50);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

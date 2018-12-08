@@ -1,37 +1,34 @@
 import React, { PureComponent } from 'react';
-import { ScrollView, View, Text, Image } from 'react-native';
-import { Cell } from '../../components/index.native';
+import { ScrollView, View, Text, Image, TextInput } from 'react-native';
+import { Cell, Panel } from '../../components/index.native';
 
 const styles = {
-  box: {
-    marginBottom: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-  },
-  cellStyle: {
-    // minHeight: 52,
-  },
   iconBigStyle: {
     width: 48,
     height: 48,
-    backgroundColor: '#3385ff',
   },
   iconStyle: {
     width: 24,
     height: 24,
-    backgroundColor: '#3385ff',
   },
-  titleTextStyle: {
-    color: '#464646',
-    fontSize: 15,
-  },
-  descriptionTextStyle: {
-    color: '#909090',
-    fontSize: 15,
+  helpViewStyle: {
+    backgroundColor: 'rgba(255, 80, 80, 0.1)',
+    paddingVertical: 6,
+    paddingHorizontal: 8,
   },
   helpTextStyle: {
     color: '#FF5050',
-    fontSize: 10,
+    fontSize: 12,
+  },
+  titleStyle: {
+    fontSize: 15,
+    lineHeight: 24,
+    color: '#464646',
+  },
+  descriptionStyle: {
+    fontSize: 15,
+    lineHeight: 24,
+    color: 'grey',
   },
 };
 const noop = () => {};
@@ -40,100 +37,89 @@ export default class App extends PureComponent {
   render() {
     return (
       <ScrollView>
-        <View style={{ padding: 15 }}>
-          <View style={styles.box}>
-            <Cell
-              style={styles.cellStyle}
-              onClick={noop}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-            >
+        <Panel title="基本用法">
+          <Cell title="标题文字" />
+        </Panel>
+        <Panel title="带描述">
+          <Cell
+            title="标题文字"
+            description="描述文字"
+          />
+        </Panel>
+        <Panel title="带图标、标题">
+          <Cell
+            icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            title="标题文字"
+          />
+        </Panel>
+        <Panel title="带跳转">
+          <Cell
+            onClick={noop}
+            title="标题文字"
+          />
+          <Cell
+            onClick={noop}
+            title="标题文字"
+          />
+        </Panel>
+        <Panel title="带描述、箭头、跳转">
+          <Cell
+            onClick={noop}
+            title="标题文字"
+            description="描述文字"
+            hasArrow
+          />
+          <Cell
+            onClick={noop}
+            title="标题文字"
+            description="描述文字"
+            hasArrow
+          />
+        </Panel>
+        <Panel title="带图标、描述、箭头、跳转">
+          <Cell
+            icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            onClick={noop}
+            title="标题文字"
+            description="描述文字"
+            hasArrow
+          />
+          <Cell
+            icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            onClick={noop}
+            title="标题文字"
+            description="描述文字"
+            hasArrow
+          />
+          <Cell
+            icon={<Image style={styles.iconBigStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
+            onClick={noop}
+            title={
               <View>
-                <Text>超链接</Text>
+                <Text style={styles.titleStyle}>标题文字</Text>
+                <Text style={styles.descriptionStyle}>描述文字</Text>
               </View>
-            </Cell>
-            <Cell
-              style={styles.cellStyle}
-              onClick={noop}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-            >
-              <View>
-                <Text>超链接</Text>
+            }
+            description="附加提示"
+            hasArrow
+          />
+        </Panel>
+        <Panel title="提示信息">
+          <Cell
+            title="标题"
+            help={
+              <View style={styles.helpViewStyle}>
+                <Text style={styles.helpTextStyle}>标题不能为空</Text>
               </View>
-            </Cell>
-          </View>
-          <View style={styles.box}>
-            <Cell
-              icon={<Image style={styles.iconBigStyle} source={{ uri: 'https://static.zhongan.com/website/open/assets/wp/new_portal/1.2.8/img/h1_i5.97dafb6.png' }} />}
-              style={styles.cellStyle}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-              description={<Text style={styles.descriptionTextStyle}>我是描述</Text>}
-            >
-              <View>
-                <Text>我是内容</Text>
-              </View>
-            </Cell>
-            <Cell
-              icon={<Image style={styles.iconBigStyle} source={{ uri: 'https://static.zhongan.com/website/open/assets/wp/new_portal/1.2.8/img/h1_i5.97dafb6.png' }} />}
-              style={styles.cellStyle}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-              description={<Text style={styles.descriptionTextStyle}>我是描述</Text>}
-            >
-              <View>
-                <Text>我是内容</Text>
-              </View>
-            </Cell>
-          </View>
-          <View style={styles.box}>
-            <Cell
-              style={styles.cellStyle}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-              description={<Text style={styles.descriptionTextStyle}>我是描述</Text>}
-              hasArrow
-            >
-              <View>
-                <Text>我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</Text>
-              </View>
-            </Cell>
-          </View>
-          <View style={styles.box}>
-            <Cell
-              style={styles.cellStyle}
-              onClick={noop}
-              icon={<Image style={styles.iconStyle} source={{ uri: 'https://static.zhongan.com/website/open/assets/wp/new_portal/1.2.8/img/h1_i5.97dafb6.png' }} />}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-            >
-              <View>
-                <Text>我是内容</Text>
-              </View>
-            </Cell>
-          </View>
-          <View style={styles.box}>
-            <Cell
-              style={styles.cellStyle}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-              description={<Text style={styles.descriptionTextStyle}>我是描述</Text>}
-              hasArrow
-            >
-              <View>
-                <Text>我是内容</Text>
-              </View>
-            </Cell>
-          </View>
-          <View style={styles.box}>
-            <Cell
-              onClick={noop}
-              style={styles.cellStyle}
-              title={<Text style={styles.titleTextStyle}>标题</Text>}
-              description={<Text style={styles.descriptionTextStyle}>我是描述</Text>}
-              hasArrow
-              help={<View><Text style={styles.helpTextStyle}>我是help</Text></View>}
-            >
-              <View>
-                <Text>我是内容</Text>
-              </View>
-            </Cell>
-          </View>
-        </View>
+            }
+          >
+            <TextInput
+              style={{ width: '100%', padding: 0 }}
+              underlineColorAndroid="transparent"
+              placeholder="请输入标题"
+            />
+          </Cell>
+        </Panel>
       </ScrollView>
     );
   }

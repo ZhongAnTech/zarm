@@ -10,10 +10,6 @@ export default class Markdown extends React.Component {
   constructor(props) {
     super(props);
     this.components = new Map();
-    this.renderer = new marked.Renderer();
-    // this.renderer.table = (header, body) => {
-    //   return `<div class="grid-container"><table class="grid"><thead>${header}</thead><tbody>${body}</tbody></table></div>`;
-    // };
   }
 
   componentDidMount() {
@@ -51,20 +47,19 @@ export default class Markdown extends React.Component {
 
       const html = marked(
         document
-          .replace(/:::\s?api\s?([^]+?):::/g, '')
-          // .replace(/:::\s?api\s?([^]+?):::/g, (match, p1) => {
-          //   return p1;
-          // })
-          .replace(/:::\s?demo\s?([^]+?):::/g, (match, p1, offset) => {
-            const id = offset.toString(36);
+          .replace(/## API\s?([^]+)/g, '')
+          .replace(/##\s?([^]+?)((?=##)|$)/g, (match, p1) => {
+            const id = parseInt(Math.random() * 1e9, 10).toString(36);
             this.components.set(id, React.createElement(Demo, this.props, p1));
             return `<div id=${id}></div>`;
-          }), { renderer: this.renderer }
+          })
+        , {
+          renderer: new marked.Renderer(),
+        }
       );
 
       return (
         <Container className={className}>
-          {/* <Header title="title" /> */}
           <main dangerouslySetInnerHTML={{ __html: html }} />
           <Footer />
         </Container>

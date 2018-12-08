@@ -9,7 +9,6 @@ export default {
     width: variables.badge_dot_diameter,
     height: variables.badge_dot_diameter,
     borderRadius: variables.badge_round_radius,
-    display: 'flex',
   },
 
   radiusBadge: {

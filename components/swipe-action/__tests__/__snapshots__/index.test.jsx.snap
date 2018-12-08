@@ -219,6 +219,9 @@ exports[`SwipeAction renders correctly 1`] = `
     >
       <div
         className="za-swipe-action-content"
+        onMouseDown={[Function]}
+        onMouseMove={[Function]}
+        onMouseUp={[Function]}
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}

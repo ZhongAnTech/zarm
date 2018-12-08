@@ -5,11 +5,15 @@ const babelConfig = require('../config/babelConfig');
 
 babelConfig.plugins.push([
   'import',
-  {
+  [{
     libraryName: 'zarm',
     libraryDirectory: 'components',
     style: true,
   },
+  {
+    libraryName: 'dragon-ui',
+    style: true,
+  }],
 ]);
 
 module.exports = {
@@ -48,9 +52,17 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader?importLoaders=1',
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
           },
           {
             loader: 'postcss-loader',
@@ -72,17 +84,16 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'url-loader?limit=8192&name=images/[name].[hash:8].[ext]',
+            loader: 'url-loader?limit=1&name=images/[name].[hash:8].[ext]',
           },
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg)$/,
-        exclude: /node_modules/,
+        test: /\.(woff|woff2|ttf|eot)$/,
         use: [
           {
             loader: 'file-loader?name=fonts/[name].[hash:8].[ext]',

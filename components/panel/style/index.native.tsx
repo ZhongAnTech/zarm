@@ -9,8 +9,7 @@ export default {
     flexDirection: 'row',
     paddingTop: 25,
     paddingBottom: 7,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingHorizontal: 15,
   },
   panelHeaderTitle: {
     flex: 1,

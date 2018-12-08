@@ -1,6 +1,8 @@
-## 消息 Message
+# 消息 Message
 
-:::demo 基本用法
+
+
+## 基本用法
 ```jsx
 import { Message, Icon } from 'zarm';
 
@@ -18,10 +20,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 可操作
+
+## 可操作
 ```jsx
 import { Message } from 'zarm';
 
@@ -38,19 +40,15 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-message | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | 'primary' | 'default', 'primary', 'info', 'success', 'warning', 'error' | 主题 |
-| icon | any | | | 设置图标 |
-| hasClosable | boolean | false | | 是否显示关闭按钮 |
-| hasArrow | boolean | false | | 是否显示箭头 |
-| onClick | <code>() => void</code> | noop | | 点击后触发的回调函数 |
+## API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'primary' | 主题，可选值 `default`、`primary`、`info`、`success`、`warning`、`error` |
+| icon | ReactNode | - | 设置图标 |
+| hasClosable | boolean | false | 是否显示关闭按钮 |
+| hasArrow | boolean | false | 是否显示箭头 |
+| onClick | () => void | - | 点击后触发的回调函数 |

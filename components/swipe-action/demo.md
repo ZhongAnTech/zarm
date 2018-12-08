@@ -1,6 +1,8 @@
-## 滑动操作 SwipeAction
+# 滑动操作 SwipeAction
 
-:::demo 基本用法
+
+
+## 基本用法
 ```jsx
 import { SwipeAction, Button, Cell } from 'zarm';
 
@@ -47,24 +49,20 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-swipe-action | | 类名前缀 |
-| className | string | | | 追加类名 |
-| left | Array&lt;Object&gt; | [ ] | object: { theme, text, onClick } | 左侧按钮组 |
-| right | Array&lt;Object&gt; | [ ] | object: { theme, text, onClick } | 右侧按钮组 |
-| moveDistanceRatio | number | 0.5 | | 移动距离比例临界点 |
-| moveTimeSpan | number | 300 | | 移动时间跨度临界点 |
-| animationDuration | number | 300 | | 动画执行时间，单位：毫秒 |
-| offset | number | 10 | | 回弹偏移的距离 |
-| autoClose | boolean | | | 点击按钮后是否自动关闭 | 
-| disabled | boolean | | | 是否允许滑动 |
-| onOpen | <code>() => void</code> | noop | | 滑开时触发的回调函数 |
-| onClose | <code>() => void</code> | noop | | 关闭时触发的回调函数 |
+## API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| left | object[] | [] | 左侧按钮组 |
+| right | object[] | [] | 右侧按钮组 |
+| moveDistanceRatio | number | 0.5 | 移动距离比例临界点 |
+| moveTimeSpan | number | 300 | 移动时间跨度临界点 |
+| animationDuration | number | 300 | 动画执行时间，单位：毫秒 |
+| offset | number | 10 | 回弹偏移的距离 |
+| autoClose | boolean | true | 点击按钮后是否自动关闭 | 
+| disabled | boolean | false | 是否允许滑动 |
+| onOpen | () => void | - | 滑开时触发的回调函数 |
+| onClose | () => void | - | 关闭时触发的回调函数 |

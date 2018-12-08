@@ -1,6 +1,8 @@
-## 滑动输入条 Slider
+# 滑动输入条 Slider
 
-:::demo 基本用法
+
+
+## 基本用法
 ```jsx
 import { Cell, Slider } from 'zarm';
 
@@ -46,21 +48,17 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-slider | | 类名前缀 |
-| className | string | | | 追加类名 |
-| value | number | | | 值 |
-| defaultValue | number | | | 初始值 |
-| min | number | | | 最小值 |
-| max | number | | | 最大值 |
-| step | number | 1 | | 步长 |
-| disabled | boolean | false | | 是否禁用 |
-| onChange | <code>(value: number) => void</code> | noop | \(value: number\) | 值变化时触发的回调函数 |
+## API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| value | number | - | 值 |
+| defaultValue | number | - | 初始值 |
+| min | number | - | 最小值 |
+| max | number | - | 最大值 |
+| step | number | 1 | 步长 |
+| disabled | boolean | false | 是否禁用 |
+| onChange | (value?: number) => void | - | 值变化时触发的回调函数 |

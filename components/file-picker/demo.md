@@ -1,6 +1,8 @@
-## 文件选择器 FilePicker
+# 文件选择器 FilePicker
 
-:::demo 基本用法
+
+
+## 基本用法
 ```jsx
 import { Cell, FilePicker, Icon } from 'zarm';
 
@@ -41,10 +43,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 多选模式
+
+## 多选模式
 ```jsx
 import { Cell, FilePicker, Icon, Toast, Badge } from 'zarm';
 
@@ -128,10 +130,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 禁用状态
+
+## 禁用状态
 ```jsx
 import { FilePicker, Icon } from 'zarm';
 
@@ -149,20 +151,16 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-file-picker | | 类名前缀 |
-| className | string | | | 追加类名 |
-| accept | string | | | 允许上传的附件格式 |
-| multiple | boolean | false | | 是否多选 |
-| capture | string | | 照相机`camera`, 摄像机`camcorder`, 录音`microphone`| 唤起的原生应用 |
-| disabled | boolean | false | | 是否禁用 |
-| onBeforeSelect | <code>() => boolean</code> | () => { return true; } | | 选择前触发的事件 |
-| onChange | <code>(file: Object &#124; Array&lt;Object&gt;) => void</code> | noop | \(file: Object &#124; Array&lt;Object&gt;\) | 值变化时触发的回调函数 |
+## API
 
-:::
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| accept | string | - | 允许上传的附件格式 |
+| capture | string | - | 唤起的原生应用，可选值：照相机`camera`, 摄像机`camcorder`, 录音`microphone` |
+| multiple | boolean | false | 是否多选 |
+| disabled | boolean | false | 是否禁用 |
+| onBeforeSelect | () => boolean | () => true | 选择前触发的事件 |
+| onChange | (file?: object \| object[]) => void | - | 值变化时触发的回调函数 |

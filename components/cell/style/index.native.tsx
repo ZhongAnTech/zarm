@@ -8,23 +8,24 @@ export default {
     minHeight: variables.cell_height,
     backgroundColor: variables.cell_background,
   },
-  cellContentStyle: {
+  activeWrapper: {
+    backgroundColor: variables.background_active,
+  },
+  innerStyle: {
     flex: 1,
     flexDirection: 'column',
-    paddingTop: variables.cell_padding_h,
-    paddingRight: variables.cell_padding_h,
-    paddingBottom: variables.cell_padding_h,
-    paddingLeft: variables.cell_padding_h,
-  },
-  cellLineLeft: {
     marginTop: -1,
-    paddingLeft: variables.cell_line_left,
+    paddingVertical: variables.cell_padding_v,
+    paddingHorizontal: variables.cell_padding_h,
   },
-  cellLineStyle: {
+  lineContainerStyle: {
+    paddingLeft: variables.cell_line_padding_left,
+  },
+  lineStyle: {
     borderTopWidth: StyleSheet.hairlineWidth,
     borderTopColor: variables.border_color,
   },
-  containerStyle: {
+  contentStyle: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -32,8 +33,7 @@ export default {
   },
   bodyStyle: {
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: 'row',
   },
   arrowStyle: {
     width: variables.cell_arrow_length,
@@ -45,36 +45,34 @@ export default {
     borderRightColor: variables.cell_arrow_color,
     transform: [{ rotate: '45deg' }],
   },
-  flexDirectionRow: {
-    flexDirection: 'row',
-  },
-  flexDirectionColumn: {
-    flexDirection: 'column',
-  },
-  paddingBottom: {
-    paddingBottom: variables.padding_v_md,
-  },
-  alignItemsCenter: {
-    alignItems: 'center',
-  },
-  alignItemsStart: {
-    alignItems: 'flex-start',
-  },
   iconStyle: {
     marginRight: variables.padding_h_md,
   },
-  descriptionStyle: {
+  descriptionTextStyle: {
     color: variables.cell_description_color,
     fontSize: variables.cell_description_font_size,
   },
-  titleStyle: {
+  titleViewStyle: {
+    flex: 1,
+  },
+  labelTitleViewStyle: {
+    flex: 0,
+    width: variables.cell_label_width,
+  },
+  titleTextStyle: {
     color: variables.cell_title_color,
     fontSize: variables.cell_title_font_size,
+    lineHeight: variables.cell_title_line_height,
   },
-  helpStyle: {
+  helpViewStyle: {
     paddingTop: variables.padding_v_md,
   },
-  underlayColorStyle: {
-    backgroundColor: variables.background_active,
+  helpTextStyle: {
+    color: variables.cell_help_color,
+    fontSize: variables.cell_help_font_size,
+  },
+  childrenViewStyle: {
+    flex: 1,
+    flexDirection: 'row',
   },
 };

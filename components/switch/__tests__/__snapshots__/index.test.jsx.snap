@@ -2,12 +2,13 @@
 
 exports[`Switch defaultChecked 1`] = `
 <span
-  class="za-switch checked"
+  class="za-switch"
 >
   <input
     checked=""
     class="za-switch-input"
     type="checkbox"
+    value="on"
   />
 </span>
 `;
@@ -19,6 +20,7 @@ exports[`Switch renders correctly 1`] = `
   <input
     class="za-switch-input"
     type="checkbox"
+    value="off"
   />
 </span>
 `;

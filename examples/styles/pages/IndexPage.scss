@@ -26,12 +26,18 @@
   }
 
   .za-cell {
-    background-color: transparent;
-
     &:first-of-type {
       &:after {
         display: none;
       }
+    }
+  }
+
+  .menu-item-content {
+    .chinese {
+      font-size: r(14);
+      margin-left: r(6);
+      opacity: .6;
     }
   }
 }

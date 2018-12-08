@@ -1,6 +1,8 @@
-## 选择器 Picker & Select
+# 选择器 Picker & Select
 
-:::demo 基本用法
+
+
+## 基本用法
 ```jsx
 import { Cell, Button, Picker, Toast } from 'zarm';
 
@@ -217,10 +219,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 表单选择 Select
+
+## 表单选择 Select
 ```jsx
 import { Select, Cell } from 'zarm';
 
@@ -289,10 +291,10 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 平铺选择 PickerView
+
+## 平铺选择 PickerView
 ```jsx
 import { PickerView } from 'zarm';
 
@@ -368,39 +370,35 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-picker | | 类名前缀 |
-| className | string | | | 追加类名 |
-| dataSource | object[] | [ ] | | 数据源 |
-| value | string &#124; string[] &#124; number[] |  | | 值 |
-| defaultValue | string &#124; string[] &#124; number[] |  | | 初始值 |
-| valueMember | string | 'value' | | 值字段对应的key 
-| itemRender | func | <code>(data?: object) => data.label</code> | | 单个选项的展示 |
-| disabled | boolean | false | | 是否禁用 |
-| cols | number | | | 级联选择器的级数 |
-| onChange | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 值变化时触发的回调函数 |
+## API
 
-#### 仅 Picker & Select 支持的属性
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| visible | boolean | false | | 是否展示 |
-| title | string | '请选择' | | 选择器标题 |
-| okText | string | '确定' | | 确定栏文字 |
-| cancelText | string | '取消' | | 取消栏文字 |
-| onOk | <code>(selected?: object) => void</code> | noop | \(selected: object\) | 点击确定时触发的回调函数 |
-| onCancel | <code>() => void</code> | noop | | 点击取消时触发的回调函数 |
-| onMaskClick | <code>() => void</code> | noop | | 点击遮罩层时触发的回调函数 |
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| dataSource | object[] | [] | 数据源 |
+| value | string &#124; string[] &#124; number[] | - | 值 |
+| defaultValue | string &#124; string[] &#124; number[] | - | 初始值 |
+| valueMember | string | 'value' | 值字段对应的key 
+| itemRender | (data?: object) => data.label | (data?: object) => data.label | 单个选项的展示 |
+| disabled | boolean | false | 是否禁用 |
+| cols | number | Infinity | 级联选择器的级数 |
+| onChange | (selected?: object) => void | - | 值变化时触发的回调函数 |
 
-#### 仅 Select 支持的属性
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| placeholder | string | '请选择' | | 输入提示信息 |
-| displayRender | <code>(selected?: object) => string</code> | noop | \(selected: object\) | 所选值的展示 |
+### 仅 Picker & Select 支持的属性
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| visible | boolean | false | 是否展示 |
+| title | string | '请选择' | 选择器标题 |
+| okText | string | '确定' | 确定栏文字 |
+| cancelText | string | '取消' | 取消栏文字 |
+| onOk | (selected?: object) => void | - | 点击确定时触发的回调函数 |
+| onCancel | () => void | - | 点击取消时触发的回调函数 |
+| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 
-:::
+### 仅 Select 支持的属性
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| placeholder | string | '请选择' | 输入提示信息 |
+| displayRender | (selected?: object) => string | selected => selected.map(item => item.label) | 所选值的展示 |
