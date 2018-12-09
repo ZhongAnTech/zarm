@@ -7,6 +7,7 @@ import {
 import { BaseCollapseProps } from './PropsType';
 import collapaseStyle from './style/index.native';
 import { isArray } from '../utils/validate';
+import { CollapseItemProps } from './CollapseItem.native';
 
 export interface CollapseProps extends BaseCollapseProps {
   style?: CSSProperties;
@@ -41,7 +42,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     }
   }
 
-  onItemChange = (key) => {
+  onChange = (key) => {
     const { multiple, onChange } = this.props;
     const { activeKey } = this.state;
     const hasKey = activeKey.indexOf(key) > -1;
@@ -59,14 +60,12 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     this.setState({
       activeKey: newactiveKey,
     });
-    onChange(Number(key));
+    onChange(key);
   }
 
   getactiveKey(props) {
-    const { activeKey, defaultactiveKey, multiple } = props;
-
-    const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultactiveKey;
-
+    const { activeKey, defaultActiveKey, multiple } = props;
+    const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
     if (defaultKey || defaultKey === 0) {
       if (isArray(defaultKey)) {
         return !multiple ?
@@ -90,12 +89,15 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   renderItems() {
     const { animated } = this.props;
     const { activeKey } = this.state;
-    return Children.map(this.props.children, (ele, index) => {
-      return cloneElement(ele as ReactElement<any>, {
-        index: String(index),
+    return Children.map(this.props.children, (ele: ReactElement<CollapseItemProps>, index) => {
+      const { itemKey } = ele.props;
+      const key = Object.prototype.toString.call(itemKey) !== '[object Undefined]' ? String(itemKey) : String(index);
+      const isActive = activeKey.indexOf(key) > -1;
+      return cloneElement(ele, {
+        itemKey: key,
+        isActive,
         animated,
-        activeKey,
-        onItemChange: this.onItemChange,
+        onChange: this.onChange,
       });
     });
   }
