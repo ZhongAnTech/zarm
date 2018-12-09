@@ -21,7 +21,7 @@ describe('Message', () => {
   });
 
   it('closable', () => {
-    const wrapper = render(<Message closable>Message</Message>);
+    const wrapper = render(<Message closable>可关闭</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
