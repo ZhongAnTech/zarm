@@ -1,4 +1,3 @@
-
 // 主题色
 const base = {
   // 主题色
@@ -232,8 +231,9 @@ const components = {
   message_theme_text_error: base.theme_error,                        // 失败
 
   message_arrow_color: '#bcbcbc',                                    // 箭头颜色
-  message_arrow_length: 10,                                          // 箭头长度
-  message_arrow_border_width: 2,                                     // 箭头粗细
+  message_arrow_length: 6,                                          // 箭头长度
+  message_arrow_border_width: 1,                                     // 箭头粗细
+  message_arrow_length_lg: 8,
 
   // Modal
   modal_background: '#fff',

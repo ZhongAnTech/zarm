@@ -1,13 +1,15 @@
 import variables from '../../style/themes/default.native';
 
 export default {
-
   messageWrapper: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     height: variables.message_height,
+  },
+
+  messageWrapperInner: {
     paddingHorizontal: variables.message_padding_horizontal,
     backgroundColor: variables.message_theme_bg_default,
   },
@@ -47,14 +49,58 @@ export default {
 
   closeWrapperStyle: {
     alignItems: 'center',
-    width: 24,
-    marginLeft: 5,
+    width: 10,
+    marginLeft: 2,
+  },
+
+  closeIconWrapper: {
+    position: 'relative',
+    width: 10,
+    height: 10,
+  },
+
+  closeIconLeft: {
+    position: 'absolute',
+    top: 5,
+    width: 10,
+    height: 1,
+    transform: [{ rotate: '45deg' }],
+  },
+
+  closeIconRight: {
+    position: 'absolute',
+    top: 5,
+    width: 10,
+    height: 1,
+    transform: [{ rotate: '135deg' }],
+  },
+
+  lgCloseIconWrapper: {
+    position: 'relative',
+    width: 12,
+    height: 12,
+  },
+
+  lgCloseIconLeft: {
+    position: 'absolute',
+    top: 6,
+    width: 12,
+    height: 1,
+    transform: [{ rotate: '45deg' }],
+  },
+
+  lgCloseIconRight: {
+    position: 'absolute',
+    top: 6,
+    width: 12,
+    height: 1,
+    transform: [{ rotate: '135deg' }],
   },
 
   lgCloseWrapperStyle: {
     alignItems: 'center',
-    width: 30,
-    marginLeft: 5,
+    width: 12,
+    marginLeft: 2,
   },
 
   arrowStyle: {
@@ -64,7 +110,13 @@ export default {
     borderRightWidth: variables.message_arrow_border_width,
     transform: [{ rotate: '45deg' }],
     marginLeft: 5,
+    marginRight: 2,
     alignItems: 'center',
+  },
+
+  lgArrowStyle: {
+    width: variables.message_arrow_length_lg,
+    height: variables.message_arrow_length_lg,
   },
 
   textChildrenStyle: {
@@ -110,6 +162,26 @@ export default {
 
   errorMessageText: {
     color: variables.message_theme_text_error,
+  },
+
+  defaultCloseBg: {
+    backgroundColor: variables.message_theme_text_default,
+  },
+
+  primaryCloseBg: {
+    backgroundColor: variables.message_theme_text_primary,
+  },
+
+  successCloseBg: {
+    backgroundColor: variables.message_theme_text_success,
+  },
+
+  warningCloseBg: {
+    backgroundColor: variables.message_theme_text_warning,
+  },
+
+  errorCloseBg: {
+    backgroundColor: variables.message_theme_text_error,
   },
 
   activeMessageText: {

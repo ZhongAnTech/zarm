@@ -4,7 +4,7 @@ import {
   Text,
   ViewStyle,
   StyleSheet,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
   GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
@@ -31,7 +31,7 @@ export default class Message extends PureComponent<MessageProps, any> {
     super(props);
     this.state = {
       isActive: true,
-      isClose: false,
+      isPress: false,
     };
   }
 
@@ -40,11 +40,11 @@ export default class Message extends PureComponent<MessageProps, any> {
   }
 
   onPressIn = () => {
-    this.setState({ isClose: true });
+    this.setState({ isPress: true });
   }
 
   onPressOut = () => {
-    this.setState({ isClose: false });
+    this.setState({ isPress: false });
   }
 
   render() {
@@ -59,14 +59,14 @@ export default class Message extends PureComponent<MessageProps, any> {
       size,
     } = this.props;
 
-    const { isActive, isClose } = this.state;
+    const { isActive, isPress } = this.state;
 
     const wrapperStyle = [
       styles!.messageWrapper,
-      isActive && styles!.messageWrapper,
+      styles!.messageWrapperInner,
       styles![`${theme}MessageBg`],
       styles![`${size}MessageWrapper`],
-      isClose && styles![`${theme}MessageBg`],
+      isPress && styles![`${theme}MessageBg`],
       style,
     ] as ViewStyle;
 
@@ -78,6 +78,7 @@ export default class Message extends PureComponent<MessageProps, any> {
     const arrowStyle = [
       styles!.arrowStyle,
       styles![`${theme}MessageArrow`],
+      size && styles![`${size}ArrowStyle`],
     ];
 
     const closeWrapperStyle = [
@@ -85,31 +86,33 @@ export default class Message extends PureComponent<MessageProps, any> {
       size && styles![`${size}CloseWrapperStyle`],
     ];
 
-    const closeTextStyle = [
-      styles![`${theme}MessageText`],
-      isClose && styles![`${theme}MessageText`],
-      size ? styles![`${size}CloseTextStyle`] :
-      styles!.closeTextStyle,
-      size ? styles![`${size}MessageTextSize`] : styles!.messageTextSize,
-      isClose && styles![`${theme}MessageText`],
-      isClose && styles![`${theme}MessageBg`],
-      isClose && styles!.messageTextSize,
-      isClose && styles![`${size}MessageTextSize`],
-      isClose && styles![`${size}CloseTextStyle`],
+    const closeIconWrapper = [
+      styles!.closeIconWrapper,
+      size && styles![`${size}CloseIconWrapper`],
+    ];
+
+    const closeIconLeftStyle = [
+      styles!.closeIconLeft,
+      styles![`${theme}CloseBg`],
+      size && styles![`${size}CloseIconLeft`],
+    ];
+
+    const closeIconRightStyle = [
+      styles!.closeIconRight,
+      styles![`${theme}CloseBg`],
+      size && styles![`${size}CloseIconRight`],
     ];
 
     const closeIconRender = closable &&
       <View style={closeWrapperStyle}>
-        <TouchableHighlight
+        <TouchableWithoutFeedback
           onPress={this._onPressClose}
-          onPressIn={this.onPressIn}
-          onPressOut={this.onPressOut}
-          activeOpacity={1}
         >
-          <View style={styles!.textBodyStyle as ViewStyle}>
-            <Text style={closeTextStyle}>关闭</Text>
+          <View style={closeIconWrapper}>
+            <View style={closeIconLeftStyle} />
+            <View style={closeIconRightStyle as ViewStyle} />
           </View>
-        </TouchableHighlight>
+        </TouchableWithoutFeedback>
       </View>;
 
     const arrowRender = hasArrow && <View style={arrowStyle} />;
@@ -131,17 +134,16 @@ export default class Message extends PureComponent<MessageProps, any> {
     );
 
     const wrapperProps = {
-      activeOpacity: 1,
       onPress: onClick,
       onPressIn: this.onPressIn,
       onPressOut: this.onPressOut,
     };
 
-    return this.state.isActive && (
+    return isActive && (
       onClick ?
-      <TouchableHighlight {...wrapperProps}>
+      <TouchableWithoutFeedback {...wrapperProps}>
         {messageRender}
-      </TouchableHighlight> : messageRender
+      </TouchableWithoutFeedback> : messageRender
     );
   }
 }
