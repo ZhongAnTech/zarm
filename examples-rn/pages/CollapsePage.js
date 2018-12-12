@@ -7,7 +7,7 @@ export default class Page extends PureComponent {
     return (
       <ScrollView>
         <Panel title="基本用法">
-          <Collapse animated>
+          <Collapse>
             <Collapse.Item itemKey="1" title="50元套餐" onItemChange={key => console.log(key)}>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
