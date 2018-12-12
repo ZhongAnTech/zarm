@@ -17,8 +17,8 @@ describe('Collapse', () => {
     expect(wrapper.state('activeKey')).toEqual([]);
   });
 
-  it('defaultactiveKey is array', () => {
-    props.defaultactiveKey = [0];
+  it('defaultActiveKey is array', () => {
+    props.defaultActiveKey = [0];
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -29,8 +29,8 @@ describe('Collapse', () => {
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
-  it('defaultactiveKey is string', () => {
-    props.defaultactiveKey = '0';
+  it('defaultActiveKey is string', () => {
+    props.defaultActiveKey = '0';
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">
@@ -41,8 +41,8 @@ describe('Collapse', () => {
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
 
-  it('defaultactiveKey is number', () => {
-    props.defaultactiveKey = 0;
+  it('defaultActiveKey is number', () => {
+    props.defaultActiveKey = 0;
     const wrapper = shallow(
       <Collapse {...props}>
         <Collapse.Item title="50元套餐">

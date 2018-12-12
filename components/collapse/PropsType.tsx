@@ -16,5 +16,6 @@ export interface BaseCollapseItemProps {
   disabled?: boolean;
   isActive?: boolean;
   onItemChange?: (itemKey?: string | number) => void;
+  onChange?: (itemKey?: string | number) => void;
   style?: CSSProperties;
 }
