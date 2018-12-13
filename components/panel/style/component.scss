@@ -3,7 +3,7 @@ $prefixCls: $prefixCls-panel;
 .#{$prefixCls} {
   &-header {
     display: flex;
-    padding: r(25) r(15) r(7) r(15);
+    padding: r(25) r(16) r(7) r(16);
     color: $panel-header-color;
     font-size: $panel-header-font-size;
   }
