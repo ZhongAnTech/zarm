@@ -14,8 +14,8 @@ export default class NoticeBar extends PureComponent<MessageProps, any> {
     theme: 'warning',
     icon: <Icon type="broadcast" />,
     hasArrow: false,
-    hasClosable: false,
-    autoscroll: false,
+    closable: false,
+    scrollable: false,
   };
 
   private wrapper;
@@ -30,8 +30,8 @@ export default class NoticeBar extends PureComponent<MessageProps, any> {
   }
 
   componentDidMount() {
-    const { autoscroll } = this.props;
-    if (!autoscroll) {
+    const { scrollable } = this.props;
+    if (!scrollable) {
       return;
     }
 
@@ -64,7 +64,7 @@ export default class NoticeBar extends PureComponent<MessageProps, any> {
   }
 
   render() {
-    const { prefixCls, children, autoscroll, ...others } = this.props;
+    const { prefixCls, children, scrollable, ...others } = this.props;
 
     return (
       <Message {...others} size="lg">

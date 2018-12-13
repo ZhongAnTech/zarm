@@ -22,9 +22,9 @@ describe('NoticeBar', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('autoscroll', () => {
+  it('scrollable', () => {
     jest.useFakeTimers();
-    const wrapper = mount(<NoticeBar autoscroll>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
+    const wrapper = mount(<NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
     jest.runTimersToTime(3000);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
