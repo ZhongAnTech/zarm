@@ -28,8 +28,8 @@ describe('Message', () => {
     expect(onClick).toBeCalled();
   });
 
-  it('hasClosable', () => {
-    const wrapper = shallow(<Message hasClosable>foo</Message>);
+  it('closable', () => {
+    const wrapper = shallow(<Message closable>foo</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find('Icon').simulate('click');
     expect(wrapper.state('visible')).toEqual(false);
