@@ -106,7 +106,6 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
       closable,
       styles,
       children,
-      size,
       ...others } = this.props;
 
     const { offset } = this.state;
@@ -125,7 +124,6 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
       scrollable,
       closable,
       children,
-      size,
     };
 
     return scrollable ?
