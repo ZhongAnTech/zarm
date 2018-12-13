@@ -23,27 +23,28 @@ export default class Message extends PureComponent<MessageProps, any> {
     theme: 'primary',
     hasArrow: false,
     closable: false,
+    size: 'md',
     styles: messageStyles,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      isActive: true,
-      isPress: false,
+      visible: true,
+      isActive: false,
     };
   }
 
   _onPressClose = () => {
-    this.setState({ isActive: false });
+    this.setState({ visible: false });
   }
 
   onPressIn = () => {
-    this.setState({ isPress: true });
+    this.setState({ isActive: true });
   }
 
   onPressOut = () => {
-    this.setState({ isPress: false });
+    this.setState({ isActive: false });
   }
 
   render() {
@@ -58,14 +59,14 @@ export default class Message extends PureComponent<MessageProps, any> {
       size,
     } = this.props;
 
-    const { isActive, isPress } = this.state;
+    const { visible, isActive } = this.state;
 
     const wrapperStyle = [
       styles!.messageWrapper,
       styles!.messageWrapperInner,
       styles![`${theme}MessageBg`],
       styles![`${size}MessageWrapper`],
-      isPress && styles![`${theme}MessageBg`],
+      isActive && styles![`${theme}MessageBg`],
       style,
     ] as ViewStyle;
 
@@ -138,7 +139,7 @@ export default class Message extends PureComponent<MessageProps, any> {
       onPressOut: this.onPressOut,
     };
 
-    return isActive && (
+    return visible && (
       onClick ?
       <TouchableWithoutFeedback {...wrapperProps}>
         {messageRender}

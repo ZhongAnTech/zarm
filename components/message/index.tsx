@@ -34,7 +34,7 @@ export default class Message extends PureComponent<MessageProps, any> {
   render() {
     const { prefixCls, className, theme, size, icon, hasArrow, closable, children } = this.props;
 
-    const classes = classnames(`${prefixCls}`, className, {
+    const classes = classnames(prefixCls, className, {
       [`theme-${theme}`]: !!theme,
       [`size-${size}`]: !!size,
     });
