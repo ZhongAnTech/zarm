@@ -6,12 +6,17 @@ import NoticeBar from '../index.native';
 
 describe('NoticeBar', () => {
   it('renders correctly', () => {
-    const wrapper = render(<NoticeBar>This is a NoticeBar</NoticeBar>);
+    const wrapper = render(<NoticeBar>错误色</NoticeBar>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('theme', () => {
     const wrapper = render(<NoticeBar theme="error">This is a NoticeBar</NoticeBar>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('scroll', () => {
+    const wrapper = render(<NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -21,12 +26,7 @@ describe('NoticeBar', () => {
   });
 
   it('closable', () => {
-    const wrapper = render(<NoticeBar closable>NoticeBar</NoticeBar>);
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('scrollable', () => {
-    const wrapper = render(<NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>);
+    const wrapper = render(<NoticeBar closable>可关闭</NoticeBar>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

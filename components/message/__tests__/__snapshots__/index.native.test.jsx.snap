@@ -5,7 +5,7 @@ exports[`Message closable 1`] = `
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
-        Message
+        可关闭
       </react-native-mock>
     </react-native-mock>
   </react-native-mock>
@@ -13,9 +13,8 @@ exports[`Message closable 1`] = `
     <react-native-mock>
       <react-native-mock>
         <react-native-mock>
-          <react-native-mock>
-            关闭
-          </react-native-mock>
+          <react-native-mock />
+          <react-native-mock />
         </react-native-mock>
       </react-native-mock>
     </react-native-mock>
