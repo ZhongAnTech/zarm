@@ -49,31 +49,6 @@ exports[`Message hasArrow 1`] = `
 </div>
 `;
 
-exports[`Message hasClosable 1`] = `
-<div
-  className="za-message theme-primary"
-  onClick={[Function]}
->
-  <div
-    className="za-message-header"
-  />
-  <div
-    className="za-message-body"
-  >
-    foo
-  </div>
-  <div
-    className="za-message-footer"
-  >
-    <Icon
-      onClick={[Function]}
-      prefixCls="za-icon"
-      type="wrong"
-    />
-  </div>
-</div>
-`;
-
 exports[`Message icon 1`] = `
 <div
   class="za-message theme-primary"
