@@ -1,7 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import {
   View,
-  Text,
   ViewStyle,
   StyleSheet,
   TouchableWithoutFeedback,

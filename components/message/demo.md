@@ -32,7 +32,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Message hasArrow onClick={() => alert('click this message!')}>链接样式的</Message>
-        <Message hasClosable>可关闭的</Message>
+        <Message closable>可关闭的</Message>
       </div>
     )
   }
@@ -49,6 +49,6 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | theme | string | 'primary' | 主题，可选值 `default`、`primary`、`info`、`success`、`warning`、`error` |
 | icon | ReactNode | - | 设置图标 |
-| hasClosable | boolean | false | 是否显示关闭按钮 |
+| closable | boolean | false | 是否显示关闭按钮 |
 | hasArrow | boolean | false | 是否显示箭头 |
 | onClick | () => void | - | 点击后触发的回调函数 |
