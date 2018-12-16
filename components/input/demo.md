@@ -1,6 +1,6 @@
-## 文本框 Input
+# 文本框 Input
 
-### 基本用法
+## 基本用法
 
 ```jsx
 import { Input, Cell } from 'zarm';
@@ -39,7 +39,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-### 输入类型
+## 输入类型
 
 ```jsx
 import { Input, Cell } from 'zarm';
@@ -89,7 +89,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 高度自适应
+## 高度自适应
 
 ```jsx
 import { Input, Cell } from 'zarm';
@@ -109,7 +109,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 无标签栏
+## 无标签栏
 ```jsx
 import { Input, Cell } from 'zarm';
 
@@ -129,7 +129,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 显示输入字数
+## 显示输入字数
 ```jsx
 import { Input, Cell } from 'zarm';
 
@@ -148,7 +148,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

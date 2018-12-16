@@ -1,8 +1,8 @@
-## 走马灯 Carousel
+# 走马灯 Carousel
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -43,7 +43,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 纵向
+## 纵向
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -83,7 +83,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 循环轮播
+## 循环轮播
 ```jsx
 import { Carousel, Button } from 'zarm';
 
@@ -148,7 +148,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 自动循环轮播
+## 自动循环轮播
 ```jsx
 import { Carousel } from 'zarm';
 
@@ -192,7 +192,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

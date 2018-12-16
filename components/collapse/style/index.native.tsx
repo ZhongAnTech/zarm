@@ -42,8 +42,8 @@ export default {
     color: '#999',
   },
   titleArrowStyle: {
-    borderRightWidth: 1,
-    borderBottomWidth: 1,
+    borderRightWidth: 2,
+    borderBottomWidth: 2,
     borderStyle: 'solid',
     borderColor: variables.collapse_arrow_color,
     width: 10,

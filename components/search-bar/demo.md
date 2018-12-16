@@ -1,8 +1,8 @@
-## 搜索框 SearchBar
+# 搜索框 SearchBar
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { SearchBar } from 'zarm';
 
@@ -60,7 +60,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 始终展示取消按钮
+## 始终展示取消按钮
 ```jsx
 import { SearchBar } from 'zarm';
 
@@ -102,7 +102,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 手动获取焦点
+## 手动获取焦点
 ```jsx
 import { SearchBar, Button } from 'zarm';
 
@@ -129,7 +129,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

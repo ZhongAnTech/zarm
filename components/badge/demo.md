@@ -1,8 +1,8 @@
-## 徽标 Badge
+# 徽标 Badge
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Badge, Cell } from 'zarm';
 
@@ -26,7 +26,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 多主题
+## 多主题
 ```jsx
 import { Badge } from 'zarm';
 
@@ -69,7 +69,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 上标位置
+## 上标位置
 ```jsx
 import { Badge } from 'zarm';
 
@@ -105,7 +105,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 文本示例
+## 文本示例
 ```jsx
 import { Badge } from 'zarm';
 
@@ -128,7 +128,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

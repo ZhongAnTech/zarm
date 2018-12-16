@@ -1,8 +1,8 @@
-## 动作面板 ActionSheet
+# 动作面板 ActionSheet
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { ActionSheet, Cell, Button } from 'zarm';
 
@@ -91,7 +91,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -103,7 +103,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onCancel | () => void | - | 显示取消菜单，点击时触发的回调函数 |
 | cancelText | string | '取消' | 取消菜单的文案 |
 
-#### Action 类型定义
+### Action 类型定义
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | text | string | - | 按钮文字 |

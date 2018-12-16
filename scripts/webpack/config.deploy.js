@@ -70,11 +70,13 @@ config.plugins.push(new HtmlWebpackPlugin({
   template: './site/index.html',
   filename: 'index.html',
   chunks: ['manifest', 'index'],
+  favicon: './site/images/favicon.ico',
 }));
 config.plugins.push(new HtmlWebpackPlugin({
   template: './examples/index.html',
   filename: 'demo.html',
   chunks: ['manifest', 'demo'],
+  favicon: './site/images/favicon.ico',
 }));
 config.resolve.alias = {
   zarm: process.cwd(),

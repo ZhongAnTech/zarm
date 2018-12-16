@@ -1,4 +1,3 @@
-
 // 主题色
 const base = {
   // 主题色
@@ -210,10 +209,31 @@ const components = {
   keyboard_icon_font_size: 21,
 
   // Message
-  message_min_height: 30,
+  message_height: 29,
   message_font_size: 12,
-  message_min_height_lg: 42,
-  message_font_size_lg: 15,
+  message_padding_horizontal: 8,
+  // message_padding_vertical: 6,
+
+  message_height_lg: 40,
+  message_font_size_lg: 14,
+  message_padding_horizontal_lg: 16,
+
+  message_theme_bg_default: 'rgba(18, 194, 135, 0.2)',               // 默认色
+  message_theme_bg_primary: 'rgba(18, 194, 135, 0.2)',               // 主色
+  message_theme_bg_success: 'rgba(18, 194, 135, 0.2)',               // 成功
+  message_theme_bg_warning: 'rgba(255, 247, 203, 1)',                // 警告
+  message_theme_bg_error: 'rgba(255, 80, 80, 0.1)',                  // 失败
+
+  message_theme_text_default: base.theme_default,                    // 默认色
+  message_theme_text_primary: base.theme_primary,                    // 主色
+  message_theme_text_success: base.theme_primary,                    // 成功
+  message_theme_text_warning: base.theme_warning,                    // 警告
+  message_theme_text_error: base.theme_error,                        // 失败
+
+  message_arrow_color: '#bcbcbc',                                    // 箭头颜色
+  message_arrow_length: 6,                                          // 箭头长度
+  message_arrow_border_width: 1,                                     // 箭头粗细
+  message_arrow_length_lg: 8,
 
   // Modal
   modal_background: '#fff',
@@ -284,6 +304,12 @@ const components = {
   tooltip_font_size: 12,
   tooltip_color: '#fff',
   tooltip_arrow_size: 5,
+
+  // NoticeBar
+  noticeBar_theme_primary_bg: '#fff7cb',
+  noticeBar_theme_primary_text: '#ecc9131',
+  noticeBar_theme_error_bg: '#ffeded',
+  noticeBar_theme_error_text: 'ff5656',
 };
 
 export default { ...base, ...components };

@@ -87,6 +87,11 @@ module.exports = {
       description: '滑动操作 SwipeAction',
       module: require('./pages/SwipeActionPage'),
     },
+    {
+      title: 'Message',
+      description: '消息 Message',
+      module: require('./pages/MessagePage'),
+    },
     // {
     //   title: 'ActivityIndicator',
     //   description: '活动指示器 ActivityIndicator',
@@ -124,11 +129,11 @@ module.exports = {
     //   description: '进度条 Progress',
     //   module: require('./pages/ProgressPage'),
     // },
-    // {
-    //   title: 'NoticeBar',
-    //   description: '通告栏 NoticeBar',
-    //   module: require('./pages/NoticeBarPage'),
-    // },
+    {
+      title: 'NoticeBar',
+      description: '通告栏 NoticeBar',
+      module: require('./pages/NoticeBarPage'),
+    },
     {
       title: 'Panel',
       description: '面板 Panel',

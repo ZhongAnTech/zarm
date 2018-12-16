@@ -1,8 +1,8 @@
-## 复选框 Checkbox
+# 复选框 Checkbox
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Cell, Checkbox } from 'zarm';
 
@@ -28,7 +28,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 按钮样式
+## 按钮样式
 ```jsx
 import { Cell, Checkbox } from 'zarm';
 
@@ -105,7 +105,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 块级样式
+## 块级样式
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -128,7 +128,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 列表样式
+## 列表样式
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -151,7 +151,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 列表样式禁用状态
+## 列表样式禁用状态
 ```jsx
 import { Checkbox } from 'zarm';
 
@@ -174,9 +174,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
-#### Checkbox
+### Checkbox
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
@@ -189,7 +189,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onChange | (checked?: boolean) => void | - | 值变化时触发的回调函数 |
 | id | string | - | 方便外部带有for属性的label标签控制当前checkbox |
 
-#### Checkbox.Group
+### Checkbox.Group
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |

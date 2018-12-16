@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { Icon } from 'dragon-ui';
 import AsyncComponent from '@site/components/AsyncComponent';
-import { documents } from '@site/demos';
+import { documents } from '@/examples/demos';
 import Format from '@site/utils/format';
 import Container from '@site/components/Container';
 import Header from '@site/components/Header';

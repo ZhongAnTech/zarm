@@ -2,13 +2,28 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Select } from 'dragon-ui';
 import classnames from 'classnames';
-import { components } from '@site/demos';
-import Format from '@site/utils/format';
+import docsearch from 'docsearch.js';
+import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
 
+function initDocSearch() {
+  docsearch({
+    apiKey: '44e980b50447a3a5fac9dc2a4808c439',
+    indexName: 'zarm',
+    inputSelector: '.search input',
+    debug: false,
+  });
+}
+
 class Header extends PureComponent {
-  state = {
-    searchKey: null,
+  componentDidMount() {
+    const { searchInput } = this;
+    document.addEventListener('keyup', (event) => {
+      if (event.keyCode === 83 && event.target === document.body) {
+        searchInput.focus();
+      }
+    });
+    initDocSearch();
   }
 
   activeClassName = (keys) => {
@@ -19,39 +34,20 @@ class Header extends PureComponent {
   }
 
   render() {
-    const { history, match } = this.props;
-    const { form, feedback, view, navigation } = components;
+    const { match } = this.props;
     const { version } = require('@/package.json');
 
     return (
       <header>
         <div className="header-container">
           <div className="logo">
-            <a href="#/">ZARM</a>
+            <a href="#/">
+              <img alt="logo" src={require('./images/logo.svg')} />
+              Zarm
+            </a>
           </div>
           <div className="search">
-            <Select
-              radius
-              search
-              placeholder="搜索组件..."
-              value={this.state.searchKey}
-              onChange={(data) => {
-                history.replace(`/components/${data.value}`);
-                this.setState({
-                  searchKey: null,
-                });
-              }}
-            >
-              {
-                [...form, ...feedback, ...view, ...navigation]
-                  .sort((a, b) => {
-                    return a.name.localeCompare(b.name);
-                  })
-                  .map((component, i) => {
-                    return <Select.Option key={+i} value={Format.camel2Dash(component.name)}>{`${component.name} ${component.description}`}</Select.Option>;
-                  })
-              }
-            </Select>
+            <input placeholder="搜索组件..." ref={(ref) => { this.searchInput = ref; }} />
           </div>
           <div className="version">
             <Select
@@ -64,7 +60,8 @@ class Header extends PureComponent {
           <nav>
             <ul>
               { match.url !== '/' && <li><a href="#/">首页</a></li>}
-              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>文档</a></li>
+              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>React 组件</a></li>
+              <li><a href="https://zhongantecheng.github.io/zarm-vue/#/documents/quick-start">Vue 组件</a></li>
               <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
             </ul>
           </nav>

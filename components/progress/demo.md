@@ -1,8 +1,8 @@
-## 进度条 Progress
+# 进度条 Progress
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Progress, Cell, Select, Stepper } from 'zarm';
 
@@ -63,6 +63,7 @@ class Demo extends React.Component {
 
         <Cell title="进度">
           <Stepper
+            size="sm"
             shape="radius"
             step={10}
             min={0}
@@ -133,7 +134,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

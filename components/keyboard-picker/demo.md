@@ -1,8 +1,8 @@
-## 虚拟键盘 Keyboard & KeyboardPicker
+# 虚拟键盘 Keyboard & KeyboardPicker
 
 
 
-### 平铺键盘 Keyboard
+## 平铺键盘 Keyboard
 ```jsx
 import { Cell, Select, Keyboard } from 'zarm';
 
@@ -43,7 +43,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 键盘触发器 KeyboardPicker
+## 键盘触发器 KeyboardPicker
 ```jsx
 import { Cell, Button, KeyboardPicker, Input } from 'zarm';
 
@@ -103,14 +103,14 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | type | string | 'number' | 键盘类型，可选值 `number`、`price`、`idcard` |
 | onKeyClick | (key?: string) => void | - | 点击按键时触发的回调函数 |
 
-#### 仅 KeyboardPicker 支持的属性
+### 仅 KeyboardPicker 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否展示 |
