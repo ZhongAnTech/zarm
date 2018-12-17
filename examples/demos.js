@@ -145,6 +145,10 @@ module.exports = {
         name: 'NavBar',
         description: '导航栏',
       },
+      {
+        name: 'SegmentedControl',
+        description: '分段器',
+      },
     ],
   },
 };

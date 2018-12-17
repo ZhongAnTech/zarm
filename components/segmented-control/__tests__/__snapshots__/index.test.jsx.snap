@@ -1,0 +1,310 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SegmentedControl renders block correctly 1`] = `
+<SegmentedControl
+  block={true}
+  disabled={false}
+  items={
+    Array [
+      "选项1",
+      "选项2",
+    ]
+  }
+  onChange={[MockFunction]}
+  prefixCls="za-segmented-control"
+  selectIndex={1}
+  shape="round"
+>
+  <div
+    className="za-segmented-control block"
+  >
+    <div>
+      <div
+        className="tab round"
+        key="选项1"
+        onClick={[Function]}
+      >
+        <span>
+          选项1
+        </span>
+      </div>
+      <div
+        className="tab round active"
+        key="选项2"
+        onClick={[Function]}
+      >
+        <span>
+          选项2
+        </span>
+      </div>
+    </div>
+  </div>
+</SegmentedControl>
+`;
+
+exports[`SegmentedControl renders call onChange correctly 1`] = `
+<SegmentedControl
+  block={false}
+  disabled={false}
+  items={
+    Array [
+      "选项1",
+      "选项2",
+    ]
+  }
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          0,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  prefixCls="za-segmented-control"
+  selectIndex={1}
+  shape="round"
+>
+  <div
+    className="za-segmented-control"
+  >
+    <div>
+      <div
+        className="tab round"
+        key="选项1"
+        onClick={[Function]}
+      >
+        <span>
+          选项1
+        </span>
+      </div>
+      <div
+        className="tab round active"
+        key="选项2"
+        onClick={[Function]}
+      >
+        <span>
+          选项2
+        </span>
+      </div>
+    </div>
+  </div>
+</SegmentedControl>
+`;
+
+exports[`SegmentedControl renders default correctly 1`] = `
+<div
+  class="za-segmented-control"
+>
+  <div>
+    <div
+      class="tab round active"
+    >
+      <span>
+        选项1
+      </span>
+    </div>
+    <div
+      class="tab round"
+    >
+      <span>
+        选项2
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`SegmentedControl renders default shape correctly 1`] = `
+<SegmentedControl
+  block={false}
+  disabled={false}
+  items={
+    Array [
+      "选项1",
+      "选项2",
+    ]
+  }
+  prefixCls="za-segmented-control"
+  selectIndex={1}
+  shape="radius"
+>
+  <div
+    className="za-segmented-control"
+  >
+    <div>
+      <div
+        className="tab radius"
+        key="选项1"
+        onClick={[Function]}
+      >
+        <span>
+          选项1
+        </span>
+      </div>
+      <div
+        className="tab radius active"
+        key="选项2"
+        onClick={[Function]}
+      >
+        <span>
+          选项2
+        </span>
+      </div>
+    </div>
+  </div>
+</SegmentedControl>
+`;
+
+exports[`SegmentedControl renders disabled correctly 1`] = `
+<SegmentedControl
+  block={false}
+  disabled={true}
+  items={
+    Array [
+      "选项1",
+      "选项2",
+    ]
+  }
+  onChange={[MockFunction]}
+  prefixCls="za-segmented-control"
+  selectIndex={1}
+  shape="round"
+>
+  <div
+    className="za-segmented-control"
+  >
+    <div>
+      <div
+        className="tab round"
+        key="选项1"
+        onClick={[Function]}
+      >
+        <span>
+          选项1
+        </span>
+      </div>
+      <div
+        className="tab round active"
+        key="选项2"
+        onClick={[Function]}
+      >
+        <span>
+          选项2
+        </span>
+      </div>
+    </div>
+  </div>
+</SegmentedControl>
+`;
+
+exports[`SegmentedControl renders more items correctly 1`] = `
+<SegmentedControl
+  block={false}
+  disabled={false}
+  items={
+    Array [
+      "选项1",
+      "选项2",
+      "选项3",
+      "选项4",
+      "选项5",
+    ]
+  }
+  onChange={[MockFunction]}
+  prefixCls="za-segmented-control"
+  selectIndex={-1}
+  shape="round"
+>
+  <div
+    className="za-segmented-control"
+  >
+    <div>
+      <div
+        className="tab round"
+        key="选项1"
+        onClick={[Function]}
+      >
+        <span>
+          选项1
+        </span>
+      </div>
+      <div
+        className="tab round"
+        key="选项2"
+        onClick={[Function]}
+      >
+        <span>
+          选项2
+        </span>
+      </div>
+      <div
+        className="tab round"
+        key="选项3"
+        onClick={[Function]}
+      >
+        <span>
+          选项3
+        </span>
+      </div>
+      <div
+        className="tab round"
+        key="选项4"
+        onClick={[Function]}
+      >
+        <span>
+          选项4
+        </span>
+      </div>
+    </div>
+  </div>
+</SegmentedControl>
+`;
+
+exports[`SegmentedControl renders selectIndex correctly 1`] = `
+<SegmentedControl
+  block={false}
+  disabled={false}
+  items={
+    Array [
+      "选项1",
+      "选项2",
+    ]
+  }
+  onChange={[MockFunction]}
+  prefixCls="za-segmented-control"
+  selectIndex={1}
+  shape="round"
+>
+  <div
+    className="za-segmented-control"
+  >
+    <div>
+      <div
+        className="tab round"
+        key="选项1"
+        onClick={[Function]}
+      >
+        <span>
+          选项1
+        </span>
+      </div>
+      <div
+        className="tab round active"
+        key="选项2"
+        onClick={[Function]}
+      >
+        <span>
+          选项2
+        </span>
+      </div>
+    </div>
+  </div>
+</SegmentedControl>
+`;
