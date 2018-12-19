@@ -18,6 +18,12 @@
   众安科技移动端UI组件库，基于React、React-Native。
 </div>
 
+## Version 版本
+
+- 稳定版：[![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
+- 开发版：[![npm package](https://img.shields.io/npm/v/zarm/alpha.svg)](https://www.npmjs.org/package/zarm)
+
+
 ## Install 安装
 
 
