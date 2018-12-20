@@ -1,8 +1,8 @@
-## 按钮 Button
+# 按钮 Button
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Button } from 'zarm';
 
@@ -22,7 +22,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 块级按钮
+## 块级按钮
 ```jsx
 import { Button } from 'zarm';
 
@@ -44,7 +44,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 幽灵按钮
+## 幽灵按钮
 ```jsx
 import { Button } from 'zarm';
 
@@ -64,7 +64,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 按钮主题
+## 按钮主题
 ```jsx
 import { Button } from 'zarm';
 
@@ -87,7 +87,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 按钮尺寸
+## 按钮尺寸
 ```jsx
 import { Button } from 'zarm';
 
@@ -109,7 +109,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 按钮形状
+## 按钮形状
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -132,7 +132,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 图标按钮
+## 图标按钮
 ```jsx
 import { Button, Icon } from 'zarm';
 
@@ -153,7 +153,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

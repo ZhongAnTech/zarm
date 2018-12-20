@@ -1,8 +1,8 @@
-## 文件选择器 FilePicker
+# 文件选择器 FilePicker
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Cell, FilePicker, Icon } from 'zarm';
 
@@ -46,7 +46,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 多选模式
+## 多选模式
 ```jsx
 import { Cell, FilePicker, Icon, Toast, Badge } from 'zarm';
 
@@ -133,7 +133,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 禁用状态
+## 禁用状态
 ```jsx
 import { FilePicker, Icon } from 'zarm';
 
@@ -154,7 +154,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

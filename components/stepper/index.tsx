@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
+import Button from '../button';
 import Icon from '../icon';
 
 const getValue = (props, defaultValue) => {
@@ -21,7 +22,7 @@ export interface StepperProps extends PropsType {
 export default class Stepper extends PureComponent<StepperProps, any> {
   static defaultProps = {
     prefixCls: 'za-stepper',
-    theme: 'primary',
+    shape: 'rect',
     disabled: false,
     step: 1,
   };
@@ -116,34 +117,49 @@ export default class Stepper extends PureComponent<StepperProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, disabled } = this.props;
+    const { prefixCls, className, shape, disabled, size } = this.props;
     const { value } = this.state;
 
     const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
       [`shape-${shape}`]: !!shape,
+      [`size-${size}`]: !!size,
       disabled,
     });
 
-    const subCls = classnames(`${prefixCls}-sub`, {
-      disabled: this.isSubDisabled(),
+    const inputCls = classnames(`${prefixCls}-input`, {
+      disabled,
     });
 
-    const plusCls = classnames(`${prefixCls}-plus`, {
-      disabled: this.isPlusDisabled(),
-    });
+    const buttonSize = (size === 'sm') ? 'xs' : 'sm';
 
     return (
       <span className={cls}>
-        <span className={subCls} onClick={this.onSubClick}><Icon type="minus" /></span>
+        <Button
+          className={`${prefixCls}-sub`}
+          size={buttonSize}
+          disabled={this.isSubDisabled()}
+          shape={shape}
+          onClick={this.onSubClick}
+        >
+          <Icon type="minus" />
+        </Button>
         <input
-          className={`${prefixCls}-input`}
+          className={inputCls}
           type="tel"
           value={value}
-          onChange={e => this.onInputChange(e.target.value)}
-          onBlur={() => this.onInputBlur(value)}
+          disabled={disabled}
+          onChange={e => !disabled && this.onInputChange(e.target.value)}
+          onBlur={() => !disabled && this.onInputBlur(value)}
         />
-        <span className={plusCls} onClick={this.onPlusClick}><Icon type="add" /></span>
+        <Button
+          className={`${prefixCls}-plus`}
+          size={buttonSize}
+          disabled={this.isPlusDisabled()}
+          shape={shape}
+          onClick={this.onPlusClick}
+        >
+          <Icon type="add" />
+        </Button>
       </span>
     );
   }

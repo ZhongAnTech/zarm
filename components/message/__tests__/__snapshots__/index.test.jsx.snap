@@ -1,30 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Message hasArrow 1`] = `
-<div
-  className="za-message theme-primary"
-  onClick={[Function]}
->
-  <div
-    className="za-message-header"
-  />
-  <div
-    className="za-message-body"
-  >
-    foo
-  </div>
-  <div
-    className="za-message-footer"
-  >
-    <Icon
-      prefixCls="za-icon"
-      type="arrow-right"
-    />
-  </div>
-</div>
-`;
-
-exports[`Message hasClosable 1`] = `
+exports[`Message closable 1`] = `
 <div
   className="za-message theme-primary"
   onClick={[Function]}
@@ -44,6 +20,30 @@ exports[`Message hasClosable 1`] = `
       onClick={[Function]}
       prefixCls="za-icon"
       type="wrong"
+    />
+  </div>
+</div>
+`;
+
+exports[`Message hasArrow 1`] = `
+<div
+  className="za-message theme-primary"
+  onClick={[Function]}
+>
+  <div
+    className="za-message-header"
+  />
+  <div
+    className="za-message-body"
+  >
+    foo
+  </div>
+  <div
+    className="za-message-footer"
+  >
+    <Icon
+      prefixCls="za-icon"
+      type="arrow-right"
     />
   </div>
 </div>

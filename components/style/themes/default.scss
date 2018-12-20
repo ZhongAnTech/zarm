@@ -103,7 +103,7 @@ $prefixCls-marquee: za-marquee;
 
 // Collapse
 $collapse-height: r(52);
-$collapse-padding: r(15);
+$collapse-padding: r(16);
 $collapse-arrow-color: #c2c2c2;
 $collapse-arrow-disabled-color: #eee;
 
@@ -224,10 +224,10 @@ $calendar-day-background: #fff; // 月份文字背景颜色
 $calendar-day-color: #464646; // 月份文字颜色
 $calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
 $calendar-day-today-color: #11c286; // 日期今天选中颜色
-$calendar-day-selected-background: #12c286; // 日期文字选中背景颜色
+$calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
 $calendar-day-selected-color: #fff; // 日期文字选中颜色
 $calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
-$calendar-day-range-color: #12c286; // 日期文字范围内颜色
+$calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
 $calendar-day-width: 14.28571%; // 日期宽度
 $calendar-day-height: r(40); // 日期高度
 
@@ -308,10 +308,18 @@ $activity-indicator-size-lg: r(31);
 $activity-indicator-path-color: #e6e6e6;
 
 // Stepper
-$stepper-height: r(27);
-$stepper-button-font-size: r(16);
-$stepper-input-width: r(40);
-$stepper-input-font-size: r(16);
+$stepper-height-sm: r(28);
+$stepper-height-md: r(36);
+$stepper-icon-font-size-sm: r(12);
+$stepper-icon-font-size-md: r(14);
+$stepper-input-width-sm: r(50);
+$stepper-input-width-md: r(60);
+$stepper-input-disabled: $color-text-disabled;
+$stepper-input-font-size: r(14);
+$stepper-input-margin-h-sm: r(4);
+$stepper-input-margin-h-md: r(4);
+$stepper-input-padding-h-sm: r(8);
+$stepper-input-padding-h-md: r(8);
 
 // Carousel
 $carousel-pagination-distance: r(8);

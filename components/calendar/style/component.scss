@@ -73,6 +73,10 @@ $prefixCls: $prefixCls-calendar;
 
     @include firstday();
 
+    &:not(.disabled) {
+      cursor: pointer;
+    }
+
     &.disabled {
       color: $color-text-disabled;
     }
@@ -86,6 +90,7 @@ $prefixCls: $prefixCls-calendar;
     &.today.selected .#{$prefixCls}-day-detail {
       background-color: $calendar-day-selected-background;
       color: $calendar-day-selected-color;
+      box-shadow: 0 r(2) r(5) 0 rgba($calendar-day-selected-background, 0.15);
     }
 
     &.range.disabled {

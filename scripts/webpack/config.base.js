@@ -52,9 +52,17 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader?importLoaders=1',
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+            },
           },
           {
             loader: 'postcss-loader',
@@ -76,19 +84,16 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'url-loader?limit=8192&name=images/[name].[hash:8].[ext]',
-            options: {
-              publicPath: './',
-            },
+            loader: 'url-loader?limit=1&name=images/[name].[hash:8].[ext]',
           },
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        test: /\.(woff|woff2|ttf|eot)$/,
         use: [
           {
             loader: 'file-loader?name=fonts/[name].[hash:8].[ext]',

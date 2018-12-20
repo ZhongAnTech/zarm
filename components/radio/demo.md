@@ -1,8 +1,8 @@
-## 单选框 Radio
+# 单选框 Radio
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Radio, Cell } from 'zarm';
 
@@ -24,7 +24,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 按钮样式
+## 按钮样式
 ```jsx
 import { Radio, Cell } from 'zarm';
 
@@ -112,7 +112,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 块级样式
+## 块级样式
 ```jsx
 import { Radio } from 'zarm';
 
@@ -135,7 +135,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 列表样式
+## 列表样式
 ```jsx
 import { Radio } from 'zarm';
 
@@ -158,7 +158,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 列表样式禁用状态
+## 列表样式禁用状态
 ```jsx
 import { Radio } from 'zarm';
 
@@ -181,9 +181,9 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
-#### Radio
+### Radio
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
@@ -195,7 +195,7 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | false | 是否禁用 |
 | onChange | (checked?: boolean) => void | - | 值变化时触发的回调函数 |
 
-#### Radio.Group
+### Radio.Group
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |

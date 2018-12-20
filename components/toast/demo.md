@@ -1,8 +1,8 @@
-## 轻提示 Toast
+# 轻提示 Toast
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Toast, Cell, Button, Icon } from 'zarm';
 
@@ -73,7 +73,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 加载中
+## 加载中
 ```jsx
 import { Loading, Cell, Button } from 'zarm';
 
@@ -108,7 +108,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

@@ -21,7 +21,6 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
   constructor(props) {
     super(props);
-
     this.state = {
       activeKey: this.getActiveKey(props),
     };
@@ -91,8 +90,8 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     return Children.map(
       this.props.children,
       (ele: ReactElement<CollapseItemProps>) => {
-        const { disabled } = ele.props;
-        const key = ele.key && String(ele.key);
+        const { disabled, itemKey } = ele.props;
+        const key = itemKey && String(itemKey);
         const isActive = activeKey.indexOf(key) > -1;
         return cloneElement(ele, {
           animated,
@@ -105,7 +104,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
   render() {
     const { prefixCls, className, style } = this.props;
-    const cls = classnames(`${prefixCls}`, className);
+    const cls = classnames(prefixCls, className);
 
     return (
       <div className={cls} style={style}>

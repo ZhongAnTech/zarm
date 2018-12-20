@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 import { BaseCollapseItemProps } from './PropsType';
 import collapaseStyle from './style/index.native';
+import variables from '../style/themes/default.native';
 
 const collapseStyles = StyleSheet.create<any>(collapaseStyle);
 
 export interface CollapseItemProps extends BaseCollapseItemProps {
   style?: CSSProperties;
   disabled?: boolean;
-  index?: string;
 }
 
 export default class CollapseItem extends PureComponent<CollapseItemProps, any> {
@@ -25,7 +25,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   };
 
   // 标题的高度
-  private titleHeight = 52;
+  private titleHeight = variables.collapse_height;
   // 内容的高度
   private bodyHeight = 0;
 
@@ -50,8 +50,8 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   isActive(props) {
-    const { index, activeKey } = props;
-    return activeKey.indexOf(index) > -1;
+    const { isActive } = props;
+    return isActive;
   }
 
   getHeight = () => {
@@ -63,7 +63,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   onPress = () => {
-    const { disabled, index, onItemChange } = this.props;
+    const { disabled, itemKey, onItemChange, onChange } = this.props;
     if (disabled) {
       return null;
     }
@@ -72,8 +72,11 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       active: !active,
     } , () => {
       this.animate();
+      if (onChange) {
+        onChange(itemKey);
+      }
       if (onItemChange) {
-        onItemChange(index);
+        onItemChange(itemKey);
       }
     });
   }

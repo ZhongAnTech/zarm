@@ -1,6 +1,6 @@
-## 日历 Calendar
+# 日历 Calendar
 
-### 平铺选择
+## 平铺选择
 
 ```jsx
 import { Button, Select, Icon, Input, Cell, Calendar } from 'zarm';
@@ -36,7 +36,7 @@ class Demo extends React.Component {
     return (
       <div>
         <div>
-          <Cell title="multiple">
+          <Cell title="multiple" hasArrow>
             <Select
               visible={visible}
               placeholder="multiple"
@@ -58,7 +58,6 @@ class Demo extends React.Component {
                 });
               }}
             />
-            <Icon className="icon" theme="primary" type="arrow-right" />
           </Cell>
           <Cell title="min">
             <Input
@@ -94,7 +93,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |

@@ -1,8 +1,8 @@
-## 日期选择器 DatePicker
+# 日期选择器 DatePicker
 
 
 
-### 基本用法
+## 基本用法
 ```jsx
 import { Cell, Button, DatePicker, Toast } from 'zarm';
 
@@ -128,7 +128,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-### 表单选择 DateSelect
+## 表单选择 DateSelect
 ```jsx
 import { Cell, DateSelect } from 'zarm';
 
@@ -169,7 +169,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### 平铺选择 DatePickerView
+## 平铺选择 DatePickerView
 ```jsx
 import { DatePickerView } from 'zarm';
 
@@ -194,7 +194,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-### API
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
@@ -207,7 +207,7 @@ ReactDOM.render(<Demo />, mountNode);
 | disabled | boolean | false | 是否禁用 |
 | onChange | (value?: Date) => void | - | 值变化时触发的回调函数 |
 
-#### 仅 DatePicker & DateSelect 支持的属性
+### 仅 DatePicker & DateSelect 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否展示 |
@@ -219,7 +219,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
 
-#### 仅 DateSelect 支持的属性
+### 仅 DateSelect 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |
