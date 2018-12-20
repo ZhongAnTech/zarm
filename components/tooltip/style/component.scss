@@ -24,6 +24,7 @@ $arrow: #{$prefixCls}-arrow;
         border-top-width: 1px;
       }
     }
+
     &[x-placement^=right] {
       margin-left: 10px;
 
@@ -33,6 +34,7 @@ $arrow: #{$prefixCls}-arrow;
         border-bottom-width: 1px;
       }
     }
+
     &[x-placement^=top] {
       margin-bottom: 10px;
 
@@ -42,6 +44,7 @@ $arrow: #{$prefixCls}-arrow;
         border-bottom-width: 1px;
       }
     }
+
     &[x-placement^=bottom] {
       margin-top: 10px;
 
@@ -51,23 +54,27 @@ $arrow: #{$prefixCls}-arrow;
         border-top-width: 1px;
       }
     }
+
     &-show {
       display: block;
     }
+
     &-radius {
       border-radius: 2px;
     }
   }
+
   &-arrow {
     position: absolute;
     width: 5px;
     height: 5px;
     border-width: 0;
     border-style: solid;
-    border-color: rgba(0, 0, 0, $opacity-tooltip);
-    background:  rgba(0, 0, 0, $opacity-tooltip);
+    background-color: rgba(0, 0, 0, $opacity-tooltip);
+    border: 1px solid rgba(0, 0, 0, $opacity-tooltip);
     transform: rotate(45deg);
   }
+
   &-mask {
     position: fixed;
     display: none;
@@ -83,6 +90,7 @@ $arrow: #{$prefixCls}-arrow;
       display: block;
     }
   }
+
   &-actions {
     padding-top: 10px;
     text-align: right;
