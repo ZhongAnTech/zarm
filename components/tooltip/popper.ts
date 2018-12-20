@@ -338,11 +338,11 @@ Popper.prototype._getBoundaries = function (data, padding) {
 
   boundaries = {
     top: 0 - (offsetParentRect.top - scrollTop),
-    // tslint:disable-next-line
-    right:  (root as Window).document.documentElement.clientWidth -
+    right:
+    (root as Window).document.documentElement.clientWidth -
       (offsetParentRect.left - scrollLeft),
-    // tslint:disable-next-line
-    bottom: (root as Window).document.documentElement.clientHeight -
+    bottom:
+    (root as Window).document.documentElement.clientHeight -
       (offsetParentRect.top - scrollTop),
     left: 0 - (offsetParentRect.left - scrollLeft),
   };
@@ -614,7 +614,7 @@ Popper.prototype.modifiers.arrow = function (data) {
     data.offsets.popper[side] += reference[side] + arrowSize - popper[opSide];
   }
 
-  const center = reference[side] + reference[len] / 2 - arrowSize / 2- 2;
+  const center = reference[side] + reference[len] / 2 - arrowSize / 2;
   let sideValue = center - popper[side];
 
   sideValue = Math.max(Math.min(popper[len] - arrowSize - 6, sideValue), 6);

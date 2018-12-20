@@ -13,7 +13,7 @@ class Demo extends React.Component {
      <div>
         <Cell>
         {
-          ['left', 'top',  'bottom', 'right',  'rightBottom', 'leftBottom'].map(item => {
+          ['topLeft', 'top', 'topRight', 'rightTop', 'right', 'rightBottom'].map(item => {
             return (
               <Tooltip key={item} trigger='click'   title='Tooltip' direction={item}>
                 <div  style={{marginRight: 10}}>{item}</div>
@@ -22,6 +22,17 @@ class Demo extends React.Component {
           })
         }
         </Cell>
+         <Cell>
+         {
+          ['bottomLeft', 'bottom', 'bottomRight', 'leftTop', 'left', 'leftBottom'].map((item) => {
+            return (
+               <Tooltip key={item} trigger='click'   title='Tooltip' direction={item}>
+                <div  style={{marginRight: 10}}>{item}</div>
+              </Tooltip>
+            )
+          })
+          }
+         </Cell>
       </div>
      
     )

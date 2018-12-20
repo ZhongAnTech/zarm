@@ -1,4 +1,5 @@
 $prefixCls: $prefixCls-tooltip;
+$arrow: #{$prefixCls}-arrow;
 
 .#{$prefixCls} {
   display: inline-block;
@@ -6,35 +7,57 @@ $prefixCls: $prefixCls-tooltip;
 
   &-content {
     display: none;
-    padding: $padding-v-lg;
+    padding: $padding-v-md $padding-h-md;
     background-color: rgba(0, 0, 0, $opacity-tooltip);
     border-radius: $radius-md;
     font-size: $tooltip-font-size;
     color: $tooltip-color;
     border: 1px solid rgba(0, 0, 0, $opacity-tooltip);
-    margin-bottom: $tooltip-arrow-size;
+    // margin-bottom: $tooltip-arrow-size;
 
-    &[x-placement^='left'] {
+    &[x-placement^=left] {
       margin-right: 10px;
-    }
 
-    &[x-placement^='right'] {
+      .#{$arrow} {
+        right: -4px;
+        border-right-width: 1px;
+        border-top-width: 1px;
+      }
+    }
+    &[x-placement^=right] {
       margin-left: 10px;
-    }
 
-    &[x-placement^='top'] {
+      .#{$arrow} {
+        left: -4px;
+        border-left-width: 1px;
+        border-bottom-width: 1px;
+      }
+    }
+    &[x-placement^=top] {
       margin-bottom: 10px;
-    }
 
-    &[x-placement^='bottom'] {
+      .#{$arrow} {
+        bottom: -4px;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+      }
+    }
+    &[x-placement^=bottom] {
       margin-top: 10px;
-    }
 
+      .#{$arrow} {
+        top: -4px;
+        border-left-width: 1px;
+        border-top-width: 1px;
+      }
+    }
     &-show {
       display: block;
     }
+    &-radius {
+      border-radius: 2px;
+    }
   }
-
   &-arrow {
     position: absolute;
     width: 5px;
@@ -42,31 +65,30 @@ $prefixCls: $prefixCls-tooltip;
     border-width: 0;
     border-style: solid;
     border-color: rgba(0, 0, 0, $opacity-tooltip);
-    background: rgba(0, 0, 0, $opacity-tooltip);
+    background:  rgba(0, 0, 0, $opacity-tooltip);
     transform: rotate(45deg);
+  }
+  &-mask {
+    position: fixed;
+    display: none;
+    z-index: 998;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.2;
 
-    &[x-arrow-s^='top'] {
-      bottom: -4px;
-      border-right-width: 1px;
-      border-bottom-width: 1px;
+    &-show {
+      display: block;
     }
+  }
+  &-actions {
+    padding-top: 10px;
+    text-align: right;
 
-    &[x-arrow-s^='left'] {
-      right: -4px;
-      border-right-width: 1px;
-      border-top-width: 1px;
-    }
-
-    &[x-arrow-s^='right'] {
-      left: -4px;
-      border-left-width: 1px;
-      border-bottom-width: 1px;
-    }
-
-    &[x-arrow-s^='bottom'] {
-      top: -4px;
-      border-left-width: 1px;
-      border-top-width: 1px;
+    button {
+      margin-left: 10px;
     }
   }
 }
