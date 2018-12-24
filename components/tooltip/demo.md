@@ -1,8 +1,6 @@
-## 工具提示 Tooltip
+# 工具提示 Tooltip
 
-
-
-### 基本用法
+## 基本用法
 ```jsx
 import { Tooltip, Cell, Button } from 'zarm';
 
@@ -12,27 +10,74 @@ class Demo extends React.Component {
     return (
      <div>
         <Cell>
-        {
-          ['topLeft', 'top', 'topRight', 'rightTop', 'right', 'rightBottom'].map(item => {
-            return (
-              <Tooltip key={item} trigger='click'   title='Tooltip' direction={item}>
-                <div  style={{marginRight: 10}}>{item}</div>
+          <div className='tip'>
+            <div  style={{'marginLeft':  53}}>
+              {
+                // ['topLeft', 'top', 'topRight'].map(item => {
+                //   return (
+                //     <Tooltip key={item} trigger='click'   title='Tooltip' direction={item}>
+                //       <div  style={{marginRight: 10}}>{item}</div>
+                //     </Tooltip>
+                //   );
+                // })
+              }
+              <Tooltip direction="topLeft" title='topLeft text'>
+                <Button  size="xs">TL</Button>
               </Tooltip>
-            );
-          })
-        }
+
+              <Tooltip direction="top" title='top text'>
+                <Button  size="xs">Top</Button>
+              </Tooltip>
+
+              <Tooltip direction="topRight" title='topRight text'>
+                <Button size="xs">TR</Button>
+              </Tooltip>
+            </div>
+
+            <div style={{'width':  50, 'float': 'left'}}>
+              <Tooltip direction="leftTop" title='leftTop text'>
+                <Button size="xs">LT</Button>
+              </Tooltip>
+
+              <Tooltip direction="left" title='left text'>
+                <Button size="xs">Left</Button>
+              </Tooltip>
+
+              <Tooltip direction="leftBottom" title='leftBottom text'>
+                <Button  size="xs">LB</Button>
+              </Tooltip>
+            </div>
+
+            <div  style={{'width': 50,  'marginLeft':  50*4+30,}}>
+              <Tooltip direction="rightTop" title='rightTop text'>
+                <Button size="xs">RT</Button>
+              </Tooltip>
+
+              <Tooltip direction="right" title='right text'>
+                <Button size="xs">Right</Button>
+              </Tooltip>
+
+              <Tooltip direction="rightBottom" title='rightBottom text'>
+                <Button size="xs">RB</Button>
+              </Tooltip>
+            </div>
+
+            <div style={{"marginLeft": 53, "clear": "both" }}>
+              <Tooltip direction="bottomLeft" title='bottomLeft text'>
+                <Button size="xs">BL</Button>
+              </Tooltip>
+
+              <Tooltip direction="bottom" title='bottom text'>
+                <Button size="xs">Bottom</Button>
+              </Tooltip>
+
+              <Tooltip direction="bottomRight" title='bottomRight '>
+                <Button size="xs">BR</Button>
+              </Tooltip>
+            </div>
+
+          </div>
         </Cell>
-         <Cell>
-         {
-          ['bottomLeft', 'bottom', 'bottomRight', 'leftTop', 'left', 'leftBottom'].map((item) => {
-            return (
-               <Tooltip key={item} trigger='click'   title='Tooltip' direction={item}>
-                <div  style={{marginRight: 10}}>{item}</div>
-              </Tooltip>
-            )
-          })
-          }
-         </Cell>
       </div>
      
     )

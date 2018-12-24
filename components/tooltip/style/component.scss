@@ -3,22 +3,22 @@ $arrow: #{$prefixCls}-arrow;
 
 .#{$prefixCls} {
   display: inline-block;
-  position: relative;
 
   &-content {
     display: none;
+    z-index: 999;
     padding: $padding-v-md $padding-h-md;
     background-color: rgba(0, 0, 0, $opacity-tooltip);
     border-radius: $radius-md;
     font-size: $tooltip-font-size;
     color: $tooltip-color;
     border: 1px solid rgba(0, 0, 0, $opacity-tooltip);
-    // margin-bottom: $tooltip-arrow-size;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 
     &[x-placement^=left] {
       margin-right: 10px;
 
-      .#{$arrow} {
+      .za-tooltip-arrow {
         right: -4px;
         border-right-width: 1px;
         border-top-width: 1px;
@@ -28,7 +28,7 @@ $arrow: #{$prefixCls}-arrow;
     &[x-placement^=right] {
       margin-left: 10px;
 
-      .#{$arrow} {
+      .za-tooltip-arrow {
         left: -4px;
         border-left-width: 1px;
         border-bottom-width: 1px;
@@ -38,7 +38,7 @@ $arrow: #{$prefixCls}-arrow;
     &[x-placement^=top] {
       margin-bottom: 10px;
 
-      .#{$arrow} {
+      .za-tooltip-arrow {
         bottom: -4px;
         border-right-width: 1px;
         border-bottom-width: 1px;
@@ -48,7 +48,7 @@ $arrow: #{$prefixCls}-arrow;
     &[x-placement^=bottom] {
       margin-top: 10px;
 
-      .#{$arrow} {
+      .za-tooltip-arrow {
         top: -4px;
         border-left-width: 1px;
         border-top-width: 1px;
@@ -71,7 +71,7 @@ $arrow: #{$prefixCls}-arrow;
     border-width: 0;
     border-style: solid;
     background-color: rgba(0, 0, 0, $opacity-tooltip);
-    border: 1px solid rgba(0, 0, 0, $opacity-tooltip);
+    border-color: rgba(0, 0, 0, $opacity-tooltip);
     transform: rotate(45deg);
   }
 

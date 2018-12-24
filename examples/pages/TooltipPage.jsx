@@ -1,4 +1,5 @@
 import Markdown from '../components/Markdown';
+import '../styles/pages/TooltipPage';
 
 export default class Page extends Markdown {
   document = () => {
