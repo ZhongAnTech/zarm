@@ -16,17 +16,17 @@ $prefixCls: $prefixCls-segmented-control;
     .tab {
       flex: 1;
       text-align: center;
-      font-size: r(26/2);
+      font-size: $segmented-control-font-size;
       background: #fff;
-      color: #19c286;
-      line-height: r(48/2);
-      border: #19c286 r(1/2) solid;
+      color: $theme-primary;
+      line-height: $segmented-control-line-height;
+      border: $theme-primary r(1) solid;
       border-right: 0;
       overflow: hidden;
       white-space: nowrap;
       word-break: keep-all;
       text-overflow: ellipsis;
-      padding: 0 r(8/2);
+      padding: 0 r(4);
       cursor: pointer;
 
       > span {
@@ -35,13 +35,13 @@ $prefixCls: $prefixCls-segmented-control;
 
       &.radius {
         &:first-child {
-          border-top-left-radius: r(8/2);
-          border-bottom-left-radius: r(8/2);
+          border-top-left-radius: $segmented-control-border-radius;
+          border-bottom-left-radius: $segmented-control-border-radius;
         }
 
         &:last-child {
-          border-top-right-radius: r(8/2);
-          border-bottom-right-radius: r(8/2);
+          border-top-right-radius: $segmented-control-border-radius;
+          border-bottom-right-radius: $segmented-control-border-radius;
         }
       }
 
@@ -59,23 +59,23 @@ $prefixCls: $prefixCls-segmented-control;
 
       &.round {
         &:first-child {
-          border-top-left-radius: r(24);
-          border-bottom-left-radius: r(24);
+          border-top-left-radius: r(12);
+          border-bottom-left-radius: r(12);
         }
 
         &:last-child {
-          border-top-right-radius: r(24);
-          border-bottom-right-radius: r(24);
+          border-top-right-radius: r(12);
+          border-bottom-right-radius: r(12);
         }
       }
 
       &:last-child {
-        border-right: #19c286 r(1/2) solid;
+        border-right: $theme-primary r(1) solid;
       }
 
       &.active {
-        background: #19c286;
-        color: #fff;
+        background: $segmented-control-active-tab-background;
+        color: $segmented-control-active-tab-fong-color;
       }
     }
   }

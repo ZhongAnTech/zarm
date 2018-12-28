@@ -18,7 +18,6 @@ export default class SegmentedControl extends PureComponent<SegmentedControlProp
     disabled: false,
     prefixCls: 'za-segmented-control',
   };
-  static COMPONENT_NAME = 'SegmentedControl';
   static MAX_ITEM_COUNT = 4;
 
   static getDerivedStateFromProps(props: SegmentedControlProps, state: SegmentedControlState) {
@@ -35,15 +34,10 @@ export default class SegmentedControl extends PureComponent<SegmentedControlProp
     let { items, selectIndex } = props;
     // 格式化选项
     if (items.length > SegmentedControl.MAX_ITEM_COUNT) {
-      // console.warn(`${SegmentedControl.COMPONENT_NAME}选项数量最多为${SegmentedControl.MAX_ITEM_COUNT}个,将忽略多余的选项`);
       items = items.slice(0, 4);
     }
 
-    // 如果设置了value,忽略defaultValue
-    if (undefined === selectIndex) {
-      selectIndex = props.selectIndex;
-    }
-    // 如果value和defaultValue都未设置,设置默认为items的第一个值.
+    // 默认为items的第一个值.
     if (selectIndex === undefined) {
       selectIndex = 0;
     }
