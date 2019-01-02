@@ -9,10 +9,14 @@
     justify-content: center;
   }
 
-  .za-button {
+  .za-tooltip {
     width: r(50);
     padding: 0;
     margin-right: r(10);
     margin-bottom: r(10);
+  }
+
+  .za-button {
+    padding: 0;
   }
 }

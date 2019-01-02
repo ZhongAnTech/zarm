@@ -6,68 +6,80 @@ $arrow: #{$prefixCls}-arrow;
 
   &-content {
     display: none;
-    z-index: 999;
+    z-index: 999; // 动态添加样式 position: fixed / absolute
     padding: $padding-v-md $padding-h-md;
     background-color: rgba(0, 0, 0, $opacity-tooltip);
     border-radius: $radius-md;
     font-size: $tooltip-font-size;
     color: $tooltip-color;
-    border: 1px solid rgba(0, 0, 0, $opacity-tooltip);
-    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
-
-    &[x-placement^=left] {
-      margin-right: 10px;
-
-      .za-tooltip-arrow {
-        right: -4px;
-        border-right-width: 1px;
-        border-top-width: 1px;
-      }
-    }
-
-    &[x-placement^=right] {
-      margin-left: 10px;
-
-      .za-tooltip-arrow {
-        left: -4px;
-        border-left-width: 1px;
-        border-bottom-width: 1px;
-      }
-    }
-
-    &[x-placement^=top] {
-      margin-bottom: 10px;
-
-      .za-tooltip-arrow {
-        bottom: -4px;
-        border-right-width: 1px;
-        border-bottom-width: 1px;
-      }
-    }
-
-    &[x-placement^=bottom] {
-      margin-top: 10px;
-
-      .za-tooltip-arrow {
-        top: -4px;
-        border-left-width: 1px;
-        border-top-width: 1px;
-      }
-    }
+    border: r(1) solid rgba(0, 0, 0, $opacity-tooltip);
+    box-shadow: r(1) r(2) r(3) rgba(0, 0, 0, 0.1);
 
     &-show {
       display: block;
     }
 
     &-radius {
-      border-radius: 2px;
+      border-radius: r(2);
+    }
+  }
+
+  &-inner {
+    display: block;
+  }
+
+  &-placement-right,
+  &-placement-rightTop,
+  &-placement-rightBottom {
+    margin-left: r(10);
+
+    .za-tooltip-arrow {
+      left: r(-4);
+      border-left-width: r(1);
+      border-bottom-width: r(1);
+    }
+  }
+
+  &-placement-top,
+  &-placement-topLeft,
+  &-placement-topRight {
+    margin-bottom: r(10);
+
+    .za-tooltip-arrow {
+      bottom: r(-4);
+      border-right-width: r(1);
+      border-bottom-width: r(1);
+    }
+  }
+
+  &-placement-bottom,
+  &-placement-bottomLeft,
+  &-placement-bottomRight {
+    margin-top: r(10);
+
+    .za-tooltip-arrow {
+      top: r(-4);
+      border-left-width: r(1);
+      border-top-width: r(1);
+    }
+  }
+
+  &-placement-left,
+  &-placement-leftTop,
+  &-placement-leftBottom {
+    margin-right: r(10);
+
+    .za-tooltip-arrow {
+      right: r(-4);
+      border-right-width: r(1);
+      border-top-width: r(1);
     }
   }
 
   &-arrow {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: r(5);
+    height: r(5);
     border-width: 0;
     border-style: solid;
     background-color: rgba(0, 0, 0, $opacity-tooltip);
@@ -92,12 +104,11 @@ $arrow: #{$prefixCls}-arrow;
   }
 
   &-actions {
-    padding-top: 10px;
+    padding-top: r(10);
     text-align: right;
 
     button {
-      margin-left: 10px;
+      margin-left: r(10);
     }
   }
 }
-

@@ -1,5 +1,4 @@
-/* eslint-disable */
-/* tslint:disable */
+
 import domUtil from '../utils/dom';
 
 const {
@@ -24,7 +23,6 @@ const DEFAULTS = {
   offset: 0,
   boundariesPadding: 5,
   preventOverflowOrder: ['left', 'right', 'top', 'bottom'],
-  arrowElement: '[x-arrow]',
   modifiers: [
     'shift',
     'offset',
@@ -123,7 +121,7 @@ function getOffsetRect(element) {
     top: number,
     right?: number,
     bottom?: number,
-  }
+  };
   const elementRect: rect = {
     width: element.offsetWidth,
     height: element.offsetHeight,
@@ -149,11 +147,8 @@ function Popper(reference, popper, options) {
   this._options = { ...DEFAULTS, ...options };
   this._options.modifiers = this._options.modifiers.map(
     (modifier) => {
-      if (modifier === 'applyStyle') {
-        this._popper.setAttribute('x-placement', this._options.placement);
-      }
       return this.modifiers[modifier] || modifier;
-    }
+    },
   );
 
   this.state.position = this._getPosition(this._popper, this._reference);
@@ -173,7 +168,6 @@ function Popper(reference, popper, options) {
  * 销毁
  */
 Popper.prototype.destroy = function () {
-  this._popper.removeAttribute('x-placement');
   this._popper.style.left = '';
   this._popper.style.position = '';
   this._popper.style.top = '';
@@ -205,7 +199,7 @@ Popper.prototype.update = function () {
   data.offsets = this._getOffsets(
     this._popper,
     this._reference,
-    data.placement
+    data.placement,
   );
 
   // 获取边界，用于优化在边界情况下正常显示气泡框
@@ -219,8 +213,6 @@ Popper.prototype.update = function () {
  * 判断气泡框应该使用什么定位
  */
 Popper.prototype._getPosition = function (_, reference) {
-  // const container = getOffsetParent(reference);
-
   const isParentFixed = isFixed(reference);
   return isParentFixed ? 'fixed' : 'absolute';
   return 'absolute';
@@ -237,7 +229,7 @@ Popper.prototype._getOffsets = function (popper, reference, placement) {
     left?: number,
     width?: number,
     height?: number,
-  }
+  };
   const popperOffsets: offset = {};
 
   popperOffsets.position = this.state.position;
@@ -247,7 +239,7 @@ Popper.prototype._getOffsets = function (popper, reference, placement) {
   const referenceOffsets = getOffsetRectRelativeToCustomParent(
     reference,
     getOffsetParent(popper),
-    isParentFixed
+    isParentFixed,
   );
   const popperRect = getOuterSizes(popper);
 
@@ -322,7 +314,7 @@ Popper.prototype._getBoundaries = function (data, padding) {
     right?: number,
     top?: number,
     bottom?: number,
-  }
+  };
   let boundaries: boundary = {};
   const offsetParent = getOffsetParent(this._popper);
   const scrollParent = getScrollParent(this._popper);
@@ -363,7 +355,7 @@ Popper.prototype.runModifiers = function (data, modifiers, ends) {
   if (ends !== undefined) {
     modifiersToRun = this._options.modifiers.slice(
       0,
-      getArrayKeyIndex(this._options.modifiers, ends)
+      getArrayKeyIndex(this._options.modifiers, ends),
     );
   }
 
@@ -372,7 +364,7 @@ Popper.prototype.runModifiers = function (data, modifiers, ends) {
       if (isFunction(modifier)) {
         data = modifier.call(this, data);
       }
-    }
+    },
   );
 
   return data;
@@ -405,9 +397,6 @@ Popper.prototype.modifiers.applyStyle = function (data) {
   }
   setStyle(this._popper, styles);
 
-  // 给气泡框添加属性选择器，用于定位arrow
-  this._popper.setAttribute('x-placement', data.placement);
-  data.arrowElement.setAttribute('x-arrow-s', data.placement)
   // 设置arrow定位样式
   if (data.offsets.arrow) {
     setStyle(data.arrowElement, data.offsets.arrow);
@@ -560,12 +549,12 @@ Popper.prototype.modifiers.flip = function (data) {
         data.offsets.popper = this._getOffsets(
           this._popper,
           this._reference,
-          data.placement
+          data.placement,
         ).popper;
         // 因为翻转了反向，重新跑一遍flip之前的modifiers
         data = this.runModifiers(data, this._options.modifiers, this._flip);
       }
-    }
+    },
   );
 
   return data;

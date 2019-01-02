@@ -14,15 +14,20 @@ exports[`Tooltip direction 1`] = `
     className="za-tooltip"
   >
     <div
-      className="za-tooltip-content"
+      className="za-tooltip-content za-tooltip-placement-top"
     >
       hello
       <span
         className="za-tooltip-arrow"
+        id="za-tooltip-arrow"
       />
     </div>
-    <span>
-      foo
+    <span
+      className="za-tooltip-inner"
+    >
+      <span>
+        foo
+      </span>
     </span>
   </div>
 </Tootip>
@@ -42,15 +47,20 @@ exports[`Tooltip visible 1`] = `
     className="za-tooltip"
   >
     <div
-      className="za-tooltip-content za-tooltip-content-show"
+      className="za-tooltip-content za-tooltip-content-show za-tooltip-placement-top"
     >
       hello
       <span
         className="za-tooltip-arrow"
+        id="za-tooltip-arrow"
       />
     </div>
-    <span>
-      foo
+    <span
+      className="za-tooltip-inner"
+    >
+      <span>
+        foo
+      </span>
     </span>
   </div>
 </Tootip>

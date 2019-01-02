@@ -11,7 +11,7 @@ class Demo extends React.Component {
      <div>
         <Cell>
           <div className='tip'>
-            <div  style={{'marginLeft':  53}}>
+            <div  style={{'marginLeft':  60}}>
               {
                 // ['topLeft', 'top', 'topRight'].map(item => {
                 //   return (
@@ -22,57 +22,57 @@ class Demo extends React.Component {
                 // })
               }
               <Tooltip direction="topLeft" title='topLeft text'>
-                <Button  size="xs">TL</Button>
+                <Button block  size="xs">TL</Button>
               </Tooltip>
 
               <Tooltip direction="top" title='top text'>
-                <Button  size="xs">Top</Button>
+                <Button block  size="xs">Top</Button>
               </Tooltip>
 
               <Tooltip direction="topRight" title='topRight text'>
-                <Button size="xs">TR</Button>
+                <Button block size="xs">TR</Button>
               </Tooltip>
             </div>
 
-            <div style={{'width':  50, 'float': 'left'}}>
+            <div style={{'width':  60, 'float': 'left'}}>
               <Tooltip direction="leftTop" title='leftTop text'>
-                <Button size="xs">LT</Button>
+                <Button block size="xs">LT</Button>
               </Tooltip>
 
               <Tooltip direction="left" title='left text'>
-                <Button size="xs">Left</Button>
+                <Button block size="xs">Left</Button>
               </Tooltip>
 
               <Tooltip direction="leftBottom" title='leftBottom text'>
-                <Button  size="xs">LB</Button>
+                <Button block  size="xs">LB</Button>
               </Tooltip>
             </div>
 
-            <div  style={{'width': 50,  'marginLeft':  50*4+30,}}>
+            <div  style={{'width': 60,  'marginLeft':  60*4,}}>
               <Tooltip direction="rightTop" title='rightTop text'>
-                <Button size="xs">RT</Button>
+                <Button block size="xs">RT</Button>
               </Tooltip>
 
               <Tooltip direction="right" title='right text'>
-                <Button size="xs">Right</Button>
+                <Button block size="xs">Right</Button>
               </Tooltip>
 
               <Tooltip direction="rightBottom" title='rightBottom text'>
-                <Button size="xs">RB</Button>
+                <Button block size="xs">RB</Button>
               </Tooltip>
             </div>
 
-            <div style={{"marginLeft": 53, "clear": "both" }}>
+            <div style={{"marginLeft": 60, "clear": "both" }}>
               <Tooltip direction="bottomLeft" title='bottomLeft text'>
-                <Button size="xs">BL</Button>
+                <Button block size="xs">BL</Button>
               </Tooltip>
 
               <Tooltip direction="bottom" title='bottom text'>
-                <Button size="xs">Bottom</Button>
+                <Button block size="xs">Bottom</Button>
               </Tooltip>
 
               <Tooltip direction="bottomRight" title='bottomRight '>
-                <Button size="xs">BR</Button>
+                <Button block size="xs">BR</Button>
               </Tooltip>
             </div>
 

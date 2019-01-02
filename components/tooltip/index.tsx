@@ -36,12 +36,14 @@ class Tootip extends Component<PropsType, any> {
   private reference;
   private popper;
   private timer;
-  private arrow;
+  private abs;
 
   constructor(props) {
     super(props);
     this.state = {
       visible: !!props.visible,
+      placement: props.direction,
+      arrowElement: `#${props.prefixCls}-arrow`,
     };
   }
 
@@ -83,6 +85,8 @@ class Tootip extends Component<PropsType, any> {
         this.hidePop();
       });
     }
+
+    Events.on(window, 'resize', this.onSetDirection);
     this.componentDidUpdate();
   }
 
@@ -94,20 +98,18 @@ class Tootip extends Component<PropsType, any> {
     }
   }
 
-  componentDidUpdate() {
-    const { visible } = this.state;
-    const { direction, onVisibleChange } = this.props;
+  componentDidUpdate () {
+    const { visible, arrowElement } = this.state;
+    const { onVisibleChange } = this.props;
     const reference = findDOMNode(this.reference);
 
     if (visible) {
       if (this.popper) {
         this.popper.update();
       } else {
-        if (this.arrow) {
-          this.arrow.setAttribute('x-arrow', '');
-        }
         this.popper = new Popper(reference, this.pop, {
-          placement: directMap[direction],
+          placement: directMap[this.props.direction],
+          arrowElement: arrowElement,
         });
       }
     } else {
@@ -116,6 +118,7 @@ class Tootip extends Component<PropsType, any> {
       }
       delete this.popper;
     }
+
     if (!!onVisibleChange) {
       onVisibleChange(visible);
     }
@@ -126,6 +129,9 @@ class Tootip extends Component<PropsType, any> {
       this.popper.destroy();
     }
     delete this.popper;
+
+    // 移除绑定事件
+    Events.off(window, 'resize', this.onSetDirection);
   }
 
   showPop() {
@@ -133,6 +139,35 @@ class Tootip extends Component<PropsType, any> {
     this.setState({
       visible: true,
     });
+    this.onSetDirection();
+  }
+
+  // 修正方向
+  onSetDirection = () => {
+    if ( !this.reference && !this.pop ) { return false; }
+    const { direction } = this.props;
+    const { placement } = this.state;
+
+    const referenceRc = this.reference.getBoundingClientRect();
+    const popRc = this.pop.getBoundingClientRect();
+    const dirArray = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
+
+    let _direction = !this.abs ? direction : placement;
+    let first = directMap[_direction].split('-')[0];
+    let hash = _direction.replace(/left|right|bottom|top/g, (matched) => {
+      return dirArray[matched];
+    });
+
+    const last = dirArray[first];
+    const range = referenceRc[last] - popRc[first];
+
+    if (!this.abs) { this.abs = false; }
+    if (Math.abs(range) < 5) {
+      this.abs = true;
+      this.setState({
+        placement: hash,
+      });
+    }
   }
 
   hidePop() {
@@ -151,23 +186,26 @@ class Tootip extends Component<PropsType, any> {
   }
 
   render() {
-    const { visible } = this.state;
+    const { visible, placement } = this.state;
     const {
       children,
       title,
       prefixCls,
       className,
     } = this.props;
-    // tslint:disable-next-line:jsx-no-multiline-js
     const popContent = typeof title === 'function' ? title() : title;
     const cls = classnames(prefixCls, {
       [className!]: !!className,
     });
+    const sub = classnames({
+      [`${prefixCls}-inner`]: true,
+    });
     const contentCls = classnames({
       [`${prefixCls}-content`]: true,
       [`${prefixCls}-content-show`]: visible,
+      [`${prefixCls}-placement-${placement}`]: !!placement,
     });
-    const dd = () => {
+    const inner = () => {
       return (
         <div
           className={contentCls}
@@ -176,21 +214,19 @@ class Tootip extends Component<PropsType, any> {
           {popContent}
           <span
             className={`${prefixCls}-arrow`}
-            ref={(arrow) => { this.arrow = arrow; }}
+            id={`${prefixCls}-arrow`}
           />
         </div>
       );
     };
+    const subElement = <span className={sub}>{children}</span> as ReactElement<any>;
     return (
       <div
         className={cls}
-        // tslint:disable-next-line:jsx-no-multiline-js
-        ref={(instance) => {
-          this.instance = instance;
-        }}
+        ref={(instance) => { this.instance = instance; }}
       >
-        {createPortal(dd(), document.body)}
-        {cloneElement(children as ReactElement<any>, { ref: (reference) => { this.reference = reference; } })}
+        {createPortal(inner(), document.body)}
+        {cloneElement( subElement, { ref: (reference) => { this.reference = reference; } })}
       </div>
     );
   }
