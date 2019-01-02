@@ -46,7 +46,8 @@
   color: #999;
   font-size: 20px;
   border-radius: 30px;
-  opacity: .8;
+  background-color: #fff;
+  opacity: .9;
   box-shadow:0px 2px 10px 0px rgba(0, 0, 0, 0.3);
   z-index: 11;
 
@@ -57,7 +58,7 @@
   }
 }
 
-@media only screen and (max-width: 767.99px) {
+@media (max-width: 768px) {
   .side-bar {
     display: none;
   }

@@ -79,7 +79,7 @@ header {
     float: right;
     height: 65px;
     line-height: 65px;
-    margin-right: 60px;
+    margin-right: 30px;
 
     .tag-input-box {
       width: 130px;
@@ -146,18 +146,21 @@ header {
   }
 }
 
-@media only screen and (max-width: 767.99px) {
+@media (max-width: 1200px) {
   header {
-    &-container {
-      margin: 0 auto;
+    .search,
+    .version {
+      display: none;
     }
+  }
+}
 
+@media (max-width: 768px) {
+  header {
     .logo {
       width: 100%;
     }
 
-    .search,
-    .version,
     nav {
       display: none;
     }
