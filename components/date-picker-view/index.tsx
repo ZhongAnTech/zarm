@@ -186,7 +186,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       if (date > maxDate) {
         return cloneDate(maxDate);
       }
-    } else if (mode === DATE) {
+    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
       if (+date + ONE_DAY <= +minDate) {
         return cloneDate(minDate);
       }
