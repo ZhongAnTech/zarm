@@ -14,7 +14,6 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     prefixCls: 'za-alert',
     animationType: 'zoom',
     message: '',
-    cancelText: '关闭',
   };
 
   // static show = (props) => {
@@ -26,17 +25,15 @@ export default class Alert extends PureComponent<AlertProps, {}> {
   // }
 
   render() {
-    const { prefixCls, className, title, message, cancelText, onCancel, ...others } = this.props;
+    const { prefixCls, className, title, message, cancelText, onCancel, locale, ...others } = this.props;
     const cls = classnames(prefixCls, className);
 
     return (
       <Modal className={cls} {...others}>
         <Modal.Header title={title} />
-        <Modal.Body className={`${prefixCls}-body`}>
-          {message}
-        </Modal.Body>
+        <Modal.Body className={`${prefixCls}-body`}>{message}</Modal.Body>
         <Modal.Footer className={`${prefixCls}-footer`}>
-          <a className={`${prefixCls}-footer-button`} onClick={onCancel}>{cancelText}</a>
+          <a className={`${prefixCls}-footer-button`} onClick={onCancel}>{locale.cancelText}</a>
         </Modal.Footer>
       </Modal>
     );

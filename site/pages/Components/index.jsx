@@ -13,7 +13,7 @@ import './style.scss';
 class Page extends PureComponent {
   render() {
     const { match } = this.props;
-    const { form, feedback, view, navigation } = components;
+    const { form, feedback, view, navigation, other } = components;
     return (
       <Container className="components-page">
         <Header />
@@ -25,7 +25,7 @@ class Page extends PureComponent {
           <div className="main-container">
             <Switch>
               {
-                [...form, ...feedback, ...view, ...navigation].map((component, i) => (
+                [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
                   <Route key={+i} path={`/components/${Format.camel2Dash(component.name)}`} component={AsyncComponent(() => import(`./${component.name}`))} />
                 ))
               }

@@ -1,8 +1,8 @@
 export interface Locale {
-  lang: string;
+  locale?: string;
+  [key: string]: any;
 }
 
-export default interface PropsType {
+export interface LocaleProviderProps {
   locale: Locale;
-  children?: React.ReactNode;
 }

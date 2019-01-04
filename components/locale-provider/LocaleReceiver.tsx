@@ -1,13 +1,14 @@
 import React from 'react';
-import { LocaleContext } from './';
 import hoistNonReactStatic from 'hoist-non-react-statics';
+import { LocaleContext } from './LocaleProvider';
+import defaultLocaleData from './locale/en_US';
 
 const LocaleReceiverWrapper = (WrappedComponent, name?) => {
   const LocaleReceiver: any = props => {
     const component = locale => {
-      const componentLocale =
-        locale && locale[name || WrappedComponent.name];
-      const localeCode = locale && locale.locale;
+      const globalLocale = (locale.locale) ? locale : defaultLocaleData;
+      const componentLocale = globalLocale[name || WrappedComponent.name];
+      const localeCode = globalLocale.locale;
 
       return (
         <WrappedComponent
