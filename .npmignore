@@ -17,4 +17,6 @@ scripts
 tsconfig.json
 tslint.json
 yarn.lock
+components/**/*.js
+components/*.js
 
