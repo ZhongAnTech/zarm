@@ -18,15 +18,24 @@ export default class Toast extends PureComponent<ToastProps, any> {
   };
 
   static show = (children: any, stayTime?: number, onClose?: () => void) => {
+    if (!Toast.mounted) {
+      document.body.appendChild(Toast.zarmToast);
+      Toast.mounted = true;
+    }
     ReactDOM.render(
-      <Toast visible stayTime={stayTime} onClose={onClose}>{children}</Toast>
-      , window.zarmToast);
+      <Toast visible stayTime={stayTime} onClose={onClose}>
+        {children}
+      </Toast>,
+      Toast.zarmToast,
+    );
   }
 
   static hide = () => {
-    ReactDOM.render(<Toast visible={false} />, window.zarmToast);
+    ReactDOM.render(<Toast visible={false} />, Toast.zarmToast);
   }
 
+  private static zarmToast: HTMLDivElement = document.createElement('div');
+  private static mounted: boolean = false;
   private timer: number;
 
   constructor(props) {
@@ -97,20 +106,9 @@ export default class Toast extends PureComponent<ToastProps, any> {
 
     return (
       <div className={cls}>
-        <div className={`${prefixCls}-container`}>
-          {children}
-        </div>
+        <div className={`${prefixCls}-container`}>{children}</div>
         {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
       </div>
     );
   }
-}
-
-if (typeof window !== 'undefined') {
-  if (!window.zarmToast) {
-    window.zarmToast = document.createElement('div');
-    document.body.appendChild(window.zarmToast);
-  }
-
-  ReactDOM.render(<Toast visible={false} />, window.zarmToast);
 }
