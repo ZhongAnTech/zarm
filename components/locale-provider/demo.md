@@ -4,7 +4,7 @@
 
 ## 基本用法
 ```jsx
-import { Cell, LocaleProvider, Button, Confirm, Select } from 'zarm';
+import { Cell, LocaleProvider, Button, SearchBar, Confirm, Select } from 'zarm';
 
 const locales = {
   en: {
@@ -12,14 +12,22 @@ const locales = {
     Confirm: {
       cancelText: 'Cancel',
       okText: 'Ok',
-    }
+    },
+    SearchBar: {
+      placeholder: 'Search',
+      cancelText: 'Cancel',
+    },
   },
   'zh-cn': {
     locale: 'zh_cn',
     Confirm: {
       cancelText: '取消',
       okText: '确定',
-    }
+    },
+    SearchBar: {
+      placeholder: '搜索',
+      cancelText: '取消',
+    },
   },
 };
 
@@ -59,20 +67,7 @@ class Demo extends React.Component {
               onOk={this.onOk}
             />
           </Cell>
-          <Cell
-            title="确认框"
-            description={
-              <Button size="xs" onClick={() => this.toggle()}>开启</Button>
-            }
-          />
-          <Confirm
-            shape="radius"
-            visible={this.state.visible}
-            title="确认信息"
-            message="你确定要这样做吗？"
-            onOk={() => window.alert('click ok')}
-            onCancel={() => this.toggle()}
-          />
+          <SearchBar />
         </div>
       </LocaleProvider>
     )
