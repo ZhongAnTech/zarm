@@ -192,7 +192,7 @@ class Demo extends React.Component {
           visible={confirm}
           title="确认信息"
           message="你确定要这样做吗？"
-          onOk={() => alert('click ok')}
+          onOk={() => window.alert('click ok')}
           onCancel={() => this.close('confirm')}
         />
       </div>

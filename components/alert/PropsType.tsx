@@ -1,3 +1,5 @@
+import { Locale } from '../locale-provider/PropsType';
+
 export default interface PropsType {
   shape?: 'radius';
   visible?: boolean;
@@ -12,6 +14,7 @@ export default interface PropsType {
   message?: any;
   cancelText?: any;
   onCancel?: () => void;
+  locale: Locale;
 }
 
 declare global {

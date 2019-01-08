@@ -45,6 +45,7 @@ class Page extends PureComponent {
           {this.getMenu('操作反馈', 'feedback')}
           {this.getMenu('数据展示', 'view')}
           {this.getMenu('导航', 'navigation')}
+          {this.getMenu('其他', 'other')}
         </main>
         <Footer />
       </Container>

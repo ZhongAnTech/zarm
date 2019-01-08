@@ -7,29 +7,10 @@
 import { SearchBar } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: '默认关键字',
-      placeholder: '搜索',
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        value: '默认关键字2',
-        placeholder: '搜索你想购买的保险',
-      });
-    }, 0);
-  }
-
   render() {
     return (
       <div>
         <SearchBar
-          shape="round"
-          placeholder={this.state.placeholder}
           showCancel={false}
           onSubmit={(value) => {
             console.log(`搜索内容为${value}`);
@@ -77,8 +58,10 @@ class Demo extends React.Component {
       <div>
         <SearchBar
           showCancel
+          shape="radius"
           value={this.state.value}
           placeholder="搜索"
+          cancelText="取消"
           onChange={(value) => {
             console.log(value);
             this.setState({
@@ -111,9 +94,7 @@ class Demo extends React.Component {
     return (
       <div>
         <SearchBar
-          shape="radius"
-          cancelText="取消"
-          placeholder="搜索"
+          shape="round"
           ref={(ref) => { this.manualFocus = ref; }}
         />
         <div className="button-wrap">
