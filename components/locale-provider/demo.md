@@ -35,7 +35,6 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
       locale: 'en',
     };
     this.onOk = this.onOk.bind(this);
@@ -44,12 +43,6 @@ class Demo extends React.Component {
   onOk(selected) {
     this.setState({
       locale: selected[0].value,
-    });
-  }
-
-  toggle() {
-    this.setState({
-      visible: !this.state.visible
     });
   }
 
