@@ -17,7 +17,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     shape: 'rect',
     disabled: false,
     showCancel: false,
-    clearable: false,
+    clearable: true,
   };
 
   private searchForm;
