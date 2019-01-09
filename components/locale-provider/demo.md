@@ -9,10 +9,6 @@ import { Cell, LocaleProvider, Button, SearchBar, Confirm, Select } from 'zarm';
 const locales = {
   en: {
     locale: 'en',
-    Confirm: {
-      cancelText: 'Cancel',
-      okText: 'Ok',
-    },
     SearchBar: {
       placeholder: 'Search',
       cancelText: 'Cancel',
@@ -20,10 +16,6 @@ const locales = {
   },
   'zh-cn': {
     locale: 'zh_cn',
-    Confirm: {
-      cancelText: '取消',
-      okText: '确定',
-    },
     SearchBar: {
       placeholder: '搜索',
       cancelText: '取消',
