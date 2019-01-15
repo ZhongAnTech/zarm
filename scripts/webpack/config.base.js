@@ -41,10 +41,6 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: babelConfig,
-          },
-          {
             loader: 'awesome-typescript-loader',
           },
         ],
