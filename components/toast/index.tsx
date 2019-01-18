@@ -19,22 +19,27 @@ export default class Toast extends PureComponent<ToastProps, any> {
 
   static show = (children: any, stayTime?: number, onClose?: () => void) => {
     if (!Toast.mounted) {
+      Toast.zarmToast = document.createElement('div');
       document.body.appendChild(Toast.zarmToast);
       Toast.mounted = true;
     }
-    ReactDOM.render(
-      <Toast visible stayTime={stayTime} onClose={onClose}>
-        {children}
-      </Toast>,
-      Toast.zarmToast,
-    );
+    if (Toast.zarmToast) {
+      ReactDOM.render(
+        <Toast visible stayTime={stayTime} onClose={onClose}>
+          {children}
+        </Toast>,
+        Toast.zarmToast,
+      );
+    }
   }
 
   static hide = () => {
-    ReactDOM.render(<Toast visible={false} />, Toast.zarmToast);
+    if (Toast.zarmToast) {
+      ReactDOM.render(<Toast visible={false} />, Toast.zarmToast);
+    }
   }
 
-  private static zarmToast: HTMLDivElement = document.createElement('div');
+  private static zarmToast: undefined | HTMLDivElement;
   private static mounted: boolean = false;
   private timer: number;
 
