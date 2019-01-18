@@ -2,6 +2,11 @@
   @return $px * 1px;
 }
 
+// 方便后期切换css变量的方案
+@function var($var) {
+  @return $var;
+}
+
 /*
 $ratio: 750/640;
 @function r($px) {
