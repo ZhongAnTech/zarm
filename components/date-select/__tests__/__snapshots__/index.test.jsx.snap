@@ -60,7 +60,7 @@ exports[`DateSelect DateSelect date 1`] = `
           <Portal
             containerInfo={
               <div
-                class="popup-container"
+                class=" popup-container"
               >
                 <div
                   class="za-popup za-popup-hidden"
@@ -1882,7 +1882,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           <Portal
             containerInfo={
               <div
-                class="popup-container"
+                class=" popup-container"
               >
                 <div
                   class="za-popup za-popup-hidden"
@@ -4054,7 +4054,7 @@ exports[`DateSelect DateSelect time 1`] = `
           <Portal
             containerInfo={
               <div
-                class="popup-container"
+                class=" popup-container"
               >
                 <div
                   class="za-popup za-popup-hidden"
@@ -4938,7 +4938,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           <Portal
             containerInfo={
               <div
-                class="popup-container"
+                class=" popup-container"
               >
                 <div
                   class="za-popup za-popup-hidden"
@@ -6758,7 +6758,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           <Portal
             containerInfo={
               <div
-                class="popup-container"
+                class=" popup-container"
               >
                 <div
                   class="za-popup za-popup-hidden"
@@ -8596,7 +8596,7 @@ exports[`DateSelect DateSelect year 1`] = `
           <Portal
             containerInfo={
               <div
-                class="popup-container"
+                class=" popup-container"
               >
                 <div
                   class="za-popup za-popup-hidden"
