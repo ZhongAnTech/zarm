@@ -181,7 +181,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   focusAnim(transition = 300) {
     this.searchContainer.style.cssText += `transform: translate3d(10px, 0, 0);transition: ${transition}ms;`;
     this.cancelRef.style.cssText = `margin-right: 0px;`;
-    this.cancelRef.classList.add('animation-ease');
+    this.cancelRef.className += ' animation-ease';
   }
 
   blurAnim() {
