@@ -280,10 +280,11 @@ exports[`Checkbox.Group type is button 1`] = `
 <div
   class="za-checkbox-group"
 >
-  <a
+  <button
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary size-xs shape-rect ghost"
+    class="za-button za-checkbox za-button--primary za-button--xs za-button--radius za-button--ghost"
     role="button"
+    type="button"
   >
     <span>
       <input
@@ -293,11 +294,12 @@ exports[`Checkbox.Group type is button 1`] = `
       />
       选项一
     </span>
-  </a>
-  <a
+  </button>
+  <button
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary size-xs shape-rect ghost"
+    class="za-button za-checkbox za-button--primary za-button--xs za-button--radius za-button--ghost"
     role="button"
+    type="button"
   >
     <span>
       <input
@@ -307,11 +309,12 @@ exports[`Checkbox.Group type is button 1`] = `
       />
       选项二
     </span>
-  </a>
-  <a
+  </button>
+  <button
     aria-disabled="false"
-    class="za-button za-checkbox theme-primary size-xs shape-rect ghost"
+    class="za-button za-checkbox za-button--primary za-button--xs za-button--radius za-button--ghost"
     role="button"
+    type="button"
   >
     <span>
       <input
@@ -321,7 +324,7 @@ exports[`Checkbox.Group type is button 1`] = `
       />
       选项三
     </span>
-  </a>
+  </button>
 </div>
 `;
 

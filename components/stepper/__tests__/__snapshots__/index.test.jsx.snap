@@ -53,32 +53,34 @@ exports[`Stepper renders correctly 1`] = `
 <span
   class="za-stepper shape-rect"
 >
-  <a
+  <button
     aria-disabled="false"
-    class="za-button za-stepper-sub theme-default size-sm shape-rect"
+    class="za-button za-stepper-sub za-button--default za-button--sm za-button--rect"
     role="button"
+    type="button"
   >
     <span>
       <i
         class="za-icon za-icon-minus"
       />
     </span>
-  </a>
+  </button>
   <input
     class="za-stepper-input"
     type="tel"
     value="0"
   />
-  <a
+  <button
     aria-disabled="false"
-    class="za-button za-stepper-plus theme-default size-sm shape-rect"
+    class="za-button za-stepper-plus za-button--default za-button--sm za-button--rect"
     role="button"
+    type="button"
   >
     <span>
       <i
         class="za-icon za-icon-add"
       />
     </span>
-  </a>
+  </button>
 </span>
 `;

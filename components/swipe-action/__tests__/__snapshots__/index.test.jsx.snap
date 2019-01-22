@@ -7,24 +7,26 @@ exports[`SwipeAction left only 1`] = `
   <div
     class="za-swipe-action-actions-left"
   >
-    <a
+    <button
       aria-disabled="false"
-      class="za-button theme-primary size-md shape-rect"
+      class="za-button za-button--primary za-button--md za-button--radius"
       role="button"
+      type="button"
     >
       <span>
         左按钮1
       </span>
-    </a>
-    <a
+    </button>
+    <button
       aria-disabled="false"
-      class="za-button theme-warning size-md shape-rect"
+      class="za-button za-button--warning za-button--md za-button--radius"
       role="button"
+      type="button"
     >
       <span>
         左按钮2
       </span>
-    </a>
+    </button>
   </div>
   <div
     class="za-swipe-action-content"
@@ -49,7 +51,7 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="primary"
       >
@@ -62,7 +64,7 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="warning"
       >
@@ -83,7 +85,7 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="primary"
       >
@@ -96,7 +98,7 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[MockFunction]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="warning"
       >
@@ -119,21 +121,22 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="primary"
       >
-        <a
+        <button
           aria-disabled={false}
-          className="za-button theme-primary size-md shape-rect"
+          className="za-button za-button--primary za-button--md za-button--radius"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
+          type="button"
         >
           <span>
             左按钮1
           </span>
-        </a>
+        </button>
       </Button>
       <Button
         block={false}
@@ -143,21 +146,22 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="warning"
       >
-        <a
+        <button
           aria-disabled={false}
-          className="za-button theme-warning size-md shape-rect"
+          className="za-button za-button--warning za-button--md za-button--radius"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
+          type="button"
         >
           <span>
             左按钮2
           </span>
-        </a>
+        </button>
       </Button>
     </div>
     <div
@@ -171,21 +175,22 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="primary"
       >
-        <a
+        <button
           aria-disabled={false}
-          className="za-button theme-primary size-md shape-rect"
+          className="za-button za-button--primary za-button--md za-button--radius"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
+          type="button"
         >
           <span>
             右按钮1
           </span>
-        </a>
+        </button>
       </Button>
       <Button
         block={false}
@@ -195,21 +200,22 @@ exports[`SwipeAction renders correctly 1`] = `
         loading={false}
         onClick={[Function]}
         prefixCls="za-button"
-        shape="rect"
+        shape="radius"
         size="md"
         theme="warning"
       >
-        <a
+        <button
           aria-disabled={false}
-          className="za-button theme-warning size-md shape-rect"
+          className="za-button za-button--warning za-button--md za-button--radius"
           onClick={[Function]}
           onTouchStart={[Function]}
           role="button"
+          type="button"
         >
           <span>
             右按钮2
           </span>
-        </a>
+        </button>
       </Button>
     </div>
     <Drag
@@ -250,24 +256,26 @@ exports[`SwipeAction right only 1`] = `
   <div
     class="za-swipe-action-actions-right"
   >
-    <a
+    <button
       aria-disabled="false"
-      class="za-button theme-primary size-md shape-rect"
+      class="za-button za-button--primary za-button--md za-button--radius"
       role="button"
+      type="button"
     >
       <span>
         右按钮1
       </span>
-    </a>
-    <a
+    </button>
+    <button
       aria-disabled="false"
-      class="za-button theme-warning size-md shape-rect"
+      class="za-button za-button--warning za-button--md za-button--radius"
       role="button"
+      type="button"
     >
       <span>
         右按钮2
       </span>
-    </a>
+    </button>
   </div>
   <div
     class="za-swipe-action-content"
