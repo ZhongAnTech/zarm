@@ -131,6 +131,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
+## 链接按钮
+```jsx
+import { Button } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Button href="https://zarm.design">default link button</Button>
+        <Button theme="primary" href="https://zarm.design">primary link button</Button>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
 ## 幽灵按钮
 ```jsx
 import { Button } from 'zarm';

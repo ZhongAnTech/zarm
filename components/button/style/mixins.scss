@@ -67,6 +67,37 @@
   }
 }
 
+// 链接按钮
+@mixin button-link(
+  $color,
+  $active-color
+) {
+  @include when(link) {
+    &,
+    &:hover {
+      background-color: transparent;
+      border-color: transparent;
+      color: $color;
+    }
+
+    &:active {
+      color: $active-color;
+    }
+
+    @include when(disabled) {
+      color: $color-text-disabled;
+      cursor: not-allowed;
+
+      &:active,
+      &:hover,
+      &:focus,
+      &:visited {
+        color: $color-text-disabled;
+      }
+    }
+  }
+}
+
 // 幽灵按钮
 @mixin button-ghost(
   $border,
@@ -75,10 +106,7 @@
   $active-color
 ) {
   @include when(ghost) {
-    background-color: transparent;
-    border-color: $border;
-    color: $color;
-
+    &,
     &:hover {
       background-color: transparent;
       border-color: $border;

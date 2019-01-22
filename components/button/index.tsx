@@ -59,7 +59,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       ...rest
     } = this.props;
 
-    const classes = classnames(prefixCls, className, {
+    let classes = classnames(prefixCls, className, {
       [`${prefixCls}--${theme}`]: !!theme,
       [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--${shape}`]: !!shape,
@@ -82,6 +82,8 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     const { htmlType, ...nativeRest } = rest as NativeButtonProps;
 
     if (anchorRest.href !== undefined) {
+      classes = classnames(classes, `${prefixCls}--link`);
+
       return (
         <a
           role="button"

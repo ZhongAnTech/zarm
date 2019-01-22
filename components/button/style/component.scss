@@ -28,6 +28,10 @@
     var($--button-default-ghost-active-border),
     var($--button-default-ghost-active-color),
   );
+  @include button-link(
+    var($--button-default-color),
+    var($--button-default-active-color),
+  );
 
   /* Button sizes */
   @include m(lg) {
@@ -67,20 +71,7 @@
   }
 
   /* Button themes */
-  @include m(default) {
-    @include button-theme(
-      var($--button-default-background),
-      var($--button-default-border),
-      var($--button-default-color),
-      var($--button-default-active-background),
-      var($--button-default-active-border),
-      var($--button-default-active-color),
-      var($--button-default-background),
-      var($--button-default-border),
-      $color-text-disabled,
-      var($--button-disabled-opacity),
-    );
-  }
+  @include m(default) {}
 
   @include m(primary) {
     @include button-theme(
@@ -99,6 +90,10 @@
       var($--button-primary-ghost-border),
       var($--button-primary-ghost-color),
       var($--button-primary-ghost-active-border),
+      var($--button-primary-ghost-active-color),
+    );
+    @include button-link(
+      var($--button-primary-ghost-color),
       var($--button-primary-ghost-active-color),
     );
   }
