@@ -24,6 +24,7 @@ class Demo extends React.Component {
       <div>
         <Cell title="单行文本">
           <Input
+            clearable
             type="text"
             placeholder="请输入"
             value={this.state.inputValue}
