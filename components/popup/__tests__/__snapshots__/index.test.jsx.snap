@@ -22,7 +22,7 @@ exports[`Popup renders correctly 1`] = `
     <Portal
       containerInfo={
         <div
-          class="popup-container"
+          class=" popup-container"
         >
           <div
             class="za-popup za-popup-hidden"

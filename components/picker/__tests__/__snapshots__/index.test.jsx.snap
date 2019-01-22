@@ -45,7 +45,7 @@ exports[`Picker Picker render visible 1`] = `
         <Portal
           containerInfo={
             <div
-              class="popup-container"
+              class=" popup-container"
             >
               <div
                 class="za-popup za-popup-hidden"
@@ -325,7 +325,7 @@ exports[`Picker render custom label 1`] = `
         <Portal
           containerInfo={
             <div
-              class="popup-container"
+              class=" popup-container"
             >
               <div
                 class="za-popup za-popup-hidden"

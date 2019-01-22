@@ -120,7 +120,7 @@ exports[`Select Cascader Select 1`] = `
             <Portal
               containerInfo={
                 <div
-                  class="popup-container"
+                  class=" popup-container"
                 >
                   <div
                     class="za-popup za-popup-hidden"
@@ -561,7 +561,7 @@ exports[`Select Cascader Select init value 1`] = `
             <Portal
               containerInfo={
                 <div
-                  class="popup-container"
+                  class=" popup-container"
                 >
                   <div
                     class="za-popup za-popup-hidden"
@@ -948,7 +948,7 @@ exports[`Select Select 1`] = `
             <Portal
               containerInfo={
                 <div
-                  class="popup-container"
+                  class=" popup-container"
                 >
                   <div
                     class="za-popup za-popup-hidden"
@@ -1251,7 +1251,7 @@ exports[`Select render defaultValue correctly  1`] = `
             <Portal
               containerInfo={
                 <div
-                  class="popup-container"
+                  class=" popup-container"
                 >
                   <div
                     class="za-popup za-popup-hidden"

@@ -141,7 +141,7 @@ export default class Portal extends Component<PortalProps, any> {
   getContainer() {
     if (!this.container) {
       const container = document.createElement('div');
-      container.classList.add('popup-container');
+      container.className += ' popup-container';
       this.container = container;
     }
     return this.container;
