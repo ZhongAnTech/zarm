@@ -17,7 +17,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell title="键盘类型">
+        <Cell hasArrow title="键盘类型">
           <Select
             value={this.state.type}
             dataSource={[
