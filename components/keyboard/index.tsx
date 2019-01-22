@@ -66,8 +66,8 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
   renderKey = (text, index) => {
     const { prefixCls } = this.props;
 
-    const keyCls = classnames(`${prefixCls}-item`, {
-      [`${prefixCls}-item-disabled`]: text.length === 0,
+    const keyCls = classnames(`${prefixCls}__item`, {
+      [`${prefixCls}__item--disabled`]: text.length === 0,
     });
 
     return (
@@ -86,18 +86,18 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
 
     return (
       <div className={prefixCls} onClick={stopPropagation}>
-        <div className={`${prefixCls}-keys`}>
+        <div className={`${prefixCls}__keys`}>
           {this.getKeys().map(this.renderKey)}
         </div>
-        <div className={`${prefixCls}-handle`}>
+        <div className={`${prefixCls}__handle`}>
           <div
-            className={`${prefixCls}-item`}
+            className={`${prefixCls}__item`}
             onTouchStart={() => this.onLongPressIn('delete')}
             onTouchEnd={() => this.onLongPressOut()}
           >
             <Icon type="deletekey" />
           </div>
-          <div className={`${prefixCls}-item ${prefixCls}-item-ok`} onClick={() => this.onKeyClick('ok')}>确定</div>
+          <div className={`${prefixCls}__item ${prefixCls}--ok`} onClick={() => this.onKeyClick('ok')}>确定</div>
         </div>
       </div>
     );

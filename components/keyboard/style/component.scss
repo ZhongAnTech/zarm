@@ -2,14 +2,14 @@
 
 $prefixCls: $prefixCls-keyboard;
 
-.#{$prefixCls} {
+@include b(keyboard) {
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
   color: $color-text;
   user-select: none;
 
-  &-item {
+  @include e(item) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,50 +17,53 @@ $prefixCls: $prefixCls-keyboard;
     position: relative;
     @include button-base();
     @include button-theme(
-      $button-default-background,
-      $button-default-border,
-      $button-default-color,
-      $button-default-active-background,
-      $button-default-active-border,
-      $button-default-active-color,
-      $button-default-background,
-      $button-default-border,
+      var($--button-default-background),
+      var($--button-default-border),
+      var($--button-default-color),
+      var($--button-default-active-background),
+      var($--button-default-active-border),
+      var($--button-default-active-color),
+      var($--button-default-background),
+      var($--button-default-border),
       $color-text-disabled,
-      $button-disabled-opacity
+      var($--button-disabled-opacity),
     );
+
+    @include when(ok) {
+      font-size: r(21);
+      @include button-theme(
+        var($--button-primary-background),
+        var($--button-primary-border),
+        var($--button-primary-color),
+        var($--button-primary-active-background),
+        var($--button-primary-active-border),
+        var($--button-primary-active-color),
+        var($--button-primary-background),
+        var($--button-primary-border),
+        var($--button-primary-color),
+        var($--button-disabled-opacity),
+      );
+    }
 
     &:active {
       color: $color-text;
     }
 
-    &-ok {
-      font-size: r(21);
-      @include button-theme(
-        $button-primary-background,
-        $button-primary-border,
-        $button-primary-color,
-        $button-primary-active-background,
-        $button-primary-active-border,
-        $button-primary-active-color,
-        $button-primary-background,
-        $button-primary-border,
-        $button-primary-color,
-        $button-disabled-opacity
-      );
-    }
-
-    &-disabled,
-    &-disabled:active {
+    @include m(disabled) {
       background-color: #fff;
+
+      &:active {
+        background-color: #fff;
+      }
     }
   }
 
-  &-keys {
+  @include e(keys) {
     display: flex;
     flex-wrap: wrap;
     width: 75%;
 
-    .#{$prefixCls}-item {
+    @include e(item) {
       width: 33.333333%;
       height: $keyboard-item-height;
       @include onepx(top left);
@@ -71,12 +74,12 @@ $prefixCls: $prefixCls-keyboard;
     }
   }
 
-  &-handle {
+  @include e(handle) {
     display: flex;
     flex-direction: column;
     width: 25%;
 
-    .#{$prefixCls}-item {
+    @include e(item) {
       flex: 1;
 
       &:first-of-type {

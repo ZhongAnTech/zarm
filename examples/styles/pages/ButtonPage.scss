@@ -7,6 +7,12 @@
     background: #fff;
   }
 
+  main > div:last-child {
+    .za-panel-body {
+      background-color: #333;
+    }
+  }
+
   .za-button {
     margin-bottom: r(10);
     margin-right: r(10);

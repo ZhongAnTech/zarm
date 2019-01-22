@@ -1,24 +1,46 @@
-import React, { PureComponent, HTMLAttributes } from 'react';
+import React, { PureComponent, MouseEventHandler, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import ActivityIndicator from '../activity-indicator';
 
-export interface ButtonProps extends HTMLAttributes<HTMLAnchorElement>, PropsType {
+export interface BaseButtonPropsType extends PropsType {
   prefixCls?: string;
-  className?: string;
 }
+
+export type AnchorButtonProps = {
+  href: string;
+  target?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+} & BaseButtonPropsType & AnchorHTMLAttributes<HTMLAnchorElement>;
+
+export type NativeButtonProps = {
+  htmlType?: 'button' | 'submit' | 'reset';
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+} & BaseButtonPropsType & ButtonHTMLAttributes<HTMLButtonElement>;
+
+export type ButtonProps = AnchorButtonProps | NativeButtonProps;
 
 export default class Button extends PureComponent<ButtonProps, {}> {
   static defaultProps = {
     prefixCls: 'za-button',
     theme: 'default',
     size: 'md',
-    shape: 'rect',
+    shape: 'radius',
     block: false,
     ghost: false,
     disabled: false,
     loading: false,
   };
+
+  onClick = (e) => {
+    const { disabled, onClick } = this.props;
+    if (disabled) {
+      return;
+    }
+    if (typeof onClick === 'function') {
+      (onClick as MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
+    }
+  }
 
   render() {
     const {
@@ -34,16 +56,16 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       loading,
       onClick,
       children,
-      ...others
+      ...rest
     } = this.props;
 
     const classes = classnames(prefixCls, className, {
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
-      [`shape-${shape}`]: !!shape,
-      block,
-      ghost,
-      disabled,
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--block`]: !!block,
+      [`${prefixCls}--ghost`]: !!ghost,
+      [`${prefixCls}--disabled`]: !!disabled,
     });
 
     const iconRender = loading
@@ -53,20 +75,39 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     const childrenRender = children && <span>{children}</span>;
 
     const contentRender = (!!icon || loading)
-      ? <div className={`${prefixCls}-content`}>{iconRender}{childrenRender}</div>
+      ? <div className={`${prefixCls}__content`}>{iconRender}{childrenRender}</div>
       : childrenRender;
 
+    const anchorRest = rest as AnchorButtonProps;
+    const { htmlType, ...nativeRest } = rest as NativeButtonProps;
+
+    if (anchorRest.href !== undefined) {
+      return (
+        <a
+          role="button"
+          aria-disabled={disabled}
+          className={classes}
+          onClick={this.onClick}
+          onTouchStart={() => {}}
+          {...anchorRest}
+        >
+          {contentRender}
+        </a>
+      );
+    }
+
     return (
-      <a
+      <button
         role="button"
         aria-disabled={disabled}
+        type={htmlType || 'button'}
         className={classes}
-        onClick={e => !disabled && typeof onClick === 'function' && onClick(e)}
+        onClick={this.onClick}
         onTouchStart={() => {}}
-        {...others}
+        {...nativeRest}
       >
         {contentRender}
-      </a>
+      </button>
     );
   }
 }

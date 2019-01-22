@@ -10,6 +10,13 @@ $theme-success: #12c287;                 // 成功
 $theme-warning: #ec9131;                 // 警告
 $theme-error: #ff5050;                   // 失败
 
+// press状态色阶
+$theme-default-press: darken($theme-default, 10%);
+$theme-primary-press: darken($theme-primary, 10%);
+$theme-success-press: darken($theme-success, 10%);
+$theme-warning-press: darken($theme-warning, 10%);
+$theme-error-press: darken($theme-error, 10%);
+
 // 文字色
 $color-text: #464646;                    // 基本
 $color-text-inverse: #fff;               // 反色
@@ -132,89 +139,57 @@ $badge-sup-top: r(-4);
 $badge-text-color:#fff;
 
 // Button
-$button-height-xs: r(28);
-$button-height-sm: r(36);
-$button-height-md: r(44);
-$button-height-lg: r(52);
-$button-padding-h-xs: r(10);
-$button-padding-h-sm: r(12);
-$button-padding-h-md: r(16);
-$button-padding-h-lg: r(20);
-$button-font-size-xs: r(12);
-$button-font-size-sm: r(16);
-$button-font-size-md: r(16);
-$button-font-size-lg: r(18);
-$button-icon-size-xs: r(16);
-$button-icon-size-sm: r(18);
-$button-icon-size-md: r(22);
-$button-icon-size-lg: r(26);
-$button-disabled-opacity: $opacity-disabled;
-$button-disabled-color-ghost: #bcbcbc;
+$--button-height-xs: r(28);
+$--button-height-sm: r(36);
+$--button-height-md: r(44);
+$--button-height-lg: r(52);
+$--button-padding-h-xs: r(10);
+$--button-padding-h-sm: r(12);
+$--button-padding-h-md: r(16);
+$--button-padding-h-lg: r(20);
+$--button-font-size-xs: r(12);
+$--button-font-size-sm: r(16);
+$--button-font-size-md: r(16);
+$--button-font-size-lg: r(18);
+$--button-icon-size-xs: r(16);
+$--button-icon-size-sm: r(18);
+$--button-icon-size-md: r(22);
+$--button-icon-size-lg: r(26);
+$--button-disabled-opacity: $opacity-disabled;
+$--button-disabled-color-ghost: #bcbcbc;
 
-$button-default-background: #fff;
-$button-default-border: $background-active;
-$button-default-color: $color-text;
-$button-default-active-background: $background-active;
-$button-default-active-border: $background-active;
-$button-default-active-color: $color-text;
-$button-default-ghost-background: transparent;
-$button-default-ghost-border: $background-active;
-$button-default-ghost-color: $color-text;
-$button-default-ghost-active-background: transparent;
-$button-default-ghost-active-border: $background-active;
-$button-default-ghost-active-color: $color-text;
+$--button-default-background: #fff;
+$--button-default-border: $theme-default;
+$--button-default-color: $color-text;
+$--button-default-active-background: $theme-default;
+$--button-default-active-border: $theme-default;
+$--button-default-active-color: $color-text;
+$--button-default-ghost-border: #fff;
+$--button-default-ghost-color: #fff;
+$--button-default-ghost-active-border: $theme-default-press;
+$--button-default-ghost-active-color: $theme-default-press;
 
-$button-primary-background: $theme-primary;
-$button-primary-border: $theme-primary;
-$button-primary-color: #fff;
-$button-primary-active-background: #10ae79;
-$button-primary-active-border: #10ae79;
-$button-primary-active-color: #fff;
-$button-primary-ghost-background: transparent;
-$button-primary-ghost-border: $theme-primary;
-$button-primary-ghost-color: $theme-primary;
-$button-primary-ghost-active-background: transparent;
-$button-primary-ghost-active-border: #10ae79;
-$button-primary-ghost-active-color: #10ae79;
+$--button-primary-background: $theme-primary;
+$--button-primary-border: $theme-primary;
+$--button-primary-color: #fff;
+$--button-primary-active-background: $theme-primary-press;
+$--button-primary-active-border: $theme-primary-press;
+$--button-primary-active-color: rgba(255, 255, 255, 0.4);
+$--button-primary-ghost-border: $theme-primary;
+$--button-primary-ghost-color: $theme-primary;
+$--button-primary-ghost-active-border: $theme-primary-press;
+$--button-primary-ghost-active-color: $theme-primary-press;
 
-$button-success-background: $theme-success;
-$button-success-border: $theme-success;
-$button-success-color: #fff;
-$button-success-active-background: #10ae79;
-$button-success-active-border: #10ae79;
-$button-success-active-color: #fff;
-$button-success-ghost-background: transparent;
-$button-success-ghost-border: $theme-success;
-$button-success-ghost-color: $theme-success;
-$button-success-ghost-active-background: transparent;
-$button-success-ghost-active-border: #10ae79;
-$button-success-ghost-active-color: #10ae79;
-
-$button-warning-background: $theme-warning;
-$button-warning-border: $theme-warning;
-$button-warning-color: #fff;
-$button-warning-active-background: #d3822c;
-$button-warning-active-border: #d3822c;
-$button-warning-active-color: #fff;
-$button-warning-ghost-background: transparent;
-$button-warning-ghost-border: $theme-warning;
-$button-warning-ghost-color: $theme-warning;
-$button-warning-ghost-active-background: transparent;
-$button-warning-ghost-active-border: #d3822c;
-$button-warning-ghost-active-color: #d3822c;
-
-$button-error-background: $theme-error;
-$button-error-border: $theme-error;
-$button-error-color: #fff;
-$button-error-active-background: #e54747;
-$button-error-active-border: #e54747;
-$button-error-active-color: #fff;
-$button-error-ghost-background: transparent;
-$button-error-ghost-border: $theme-error;
-$button-error-ghost-color: $theme-error;
-$button-error-ghost-active-background: transparent;
-$button-error-ghost-active-border: #e54747;
-$button-error-ghost-active-color: #e54747;
+$--button-danger-background: $theme-error;
+$--button-danger-border: $theme-error;
+$--button-danger-color: #fff;
+$--button-danger-active-background: $theme-error-press;
+$--button-danger-active-border: $theme-error-press;
+$--button-danger-active-color: rgba(255, 255, 255, 0.4);
+$--button-danger-ghost-border: $theme-error;
+$--button-danger-ghost-color: $theme-error;
+$--button-danger-ghost-active-border: $theme-error-press;
+$--button-danger-ghost-active-color: $theme-error-press;
 
 // Calendar
 $calendar-height: r(45); // 最小高度
@@ -336,12 +311,12 @@ $carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
 $carousel-pagination-rect-color-active: rgb(255, 255, 255);
 
 // Switch
-$switch-width: r(53);
-$switch-height: r(32);
-// $switch-width-sm: r(41);
-// $switch-height-sm: r(21);
-$switch-border-color: #e5e5e5;
-$switch-background: #fff;
+$--switch-width: r(53);
+$--switch-height: r(32);
+// $--switch-width-sm: r(41);
+// $--switch-height-sm: r(21);
+$--switch-border-color: #e5e5e5;
+$--switch-background: #fff;
 
 // Tabs
 $tabs-height: r(45);

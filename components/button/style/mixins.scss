@@ -27,7 +27,7 @@
     color: $active-color;
   }
 
-  &.disabled {
+  @include when(disabled) {
     background-color: $disabled-background;
     border-color: $disabled-border;
     color: $disabled-color;
@@ -53,7 +53,7 @@
   height: $height;
   line-height: $height;
 
-  &.shape-circle {
+  @include when(circle) {
     width: $height;
     padding: 0;
   }
@@ -69,45 +69,39 @@
 
 // 幽灵按钮
 @mixin button-ghost(
-  $background,
   $border,
   $color,
-  $active-background,
   $active-border,
   $active-color
 ) {
-  @include button-shape($border);
-
-  &.shape-radius {
-    @include button-shape($border, $radius-md);
-  }
-
-  &.shape-round {
-    @include button-shape($border, $radius-round);
-  }
-
-  &.shape-circle {
-    @include button-shape($border, $radius-circle);
-  }
-
-  &.ghost {
-    background-color: $background;
+  @include when(ghost) {
+    background-color: transparent;
+    border-color: $border;
     color: $color;
 
+    &:hover {
+      background-color: transparent;
+      border-color: $border;
+      color: $color;
+    }
+
     &:active {
-      background-color: $active-background;
+      background-color: transparent;
       border-color: $active-border;
       color: $active-color;
     }
 
-    &.disabled {
+    @include when(disabled) {
+      background-color: transparent;
       border-color: $border-disabled;
       color: $color-text-disabled;
       cursor: not-allowed;
 
       &:active,
+      &:hover,
       &:focus,
       &:visited {
+        background-color: transparent;
         border-color: $border-disabled;
         color: $color-text-disabled;
       }
@@ -124,13 +118,16 @@
   vertical-align: middle;
   overflow: hidden;
   color: $color-text;
-  transition: background-color 200ms ease-out, border-color 200ms ease-out;
+  // transition-property: background-color, border-color, color;
+  // transition-duration: 200ms;
+  // transition-timing-function: ease-out;
   cursor: pointer;
   outline: 0 none;
   -webkit-appearance: none;
   user-select: none;
 
   &,
+  &:active,
   &:hover,
   &:focus,
   &:visited {
@@ -138,34 +135,21 @@
   }
 
   /* disabled Button */
-  &.disabled {
+  @include m(disabled) {
     cursor: not-allowed;
     opacity: $opacity-disabled;
   }
 
   /* block Button */
-  &.block {
+  @include m(block) {
     width: 100%;
     display: block;
-  }
-
-  &-content {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
   }
 }
 
 // 形状
-@mixin button-shape($border-color, $border-radius: 0) {
+@mixin button-shape($border-radius: 0) {
   border-width: 1px;
   border-style: solid;
   border-radius: $border-radius;
-
-  &.ghost {
-    border-color: $border-color;
-    // @include onepx($border-color: $border-color, $border-radius: $border-radius);
-  }
 }

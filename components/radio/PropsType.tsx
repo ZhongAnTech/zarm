@@ -1,5 +1,5 @@
 export interface BaseRadioProps {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'danger';
   shape?: 'radius' | 'round';
   type?: 'button' | 'cell';
   disabled?: boolean;
@@ -11,7 +11,7 @@ export interface BaseRadioProps {
 }
 
 export interface BaseRadioGroupProps {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
+  theme?: 'default' | 'primary' | 'danger';
   shape?: 'radius' | 'round';
   size?: 'lg';
   type?: 'button' | 'cell';

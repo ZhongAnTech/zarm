@@ -55,17 +55,16 @@ export default class Switch extends PureComponent<SwitchProps, any> {
     const { prefixCls, className, disabled, style } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      // [`${prefixCls}-small`]: size === 'small',
-      // checked,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--disabled`]: !!disabled,
+      // disabled,
     });
 
     return (
       <span className={cls} style={style}>
         <input
           type="checkbox"
-          className={`${prefixCls}-input`}
+          className={`${prefixCls}__input`}
           disabled={disabled}
           checked={checked}
           onChange={this.onValueChange}

@@ -279,7 +279,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.failure:
         return (
           <div className={cls}>
-            <Icon type="wrong-round" theme="error" />
+            <Icon type="wrong-round" theme="danger" />
             <span>加载失败</span>
           </div>
         );
@@ -314,7 +314,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case LOAD_STATE.failure:
         return (
           <div className={cls}>
-            <Icon type="wrong-round" theme="error" />
+            <Icon type="wrong-round" theme="danger" />
             <span>加载失败</span>
           </div>
         );

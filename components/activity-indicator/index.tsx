@@ -14,7 +14,7 @@ export default class ActivityIndicator extends PureComponent<ActivityIndicatorPr
     prefixCls: 'za-activity-indicator',
     theme: 'primary',
     strokeWidth: 5,
-    percent: 15,
+    percent: 25,
   };
 
   render() {
@@ -35,7 +35,7 @@ export default class ActivityIndicator extends PureComponent<ActivityIndicatorPr
 
     return (
       <svg className={`${cls}`} viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
-        <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
+        {/* <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} /> */}
         <circle className={`${prefixCls}-line`} cx={half} cy={half} r={r} fill="none" style={style} />
       </svg>
     );
