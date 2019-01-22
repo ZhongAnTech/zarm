@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const browserlist = require('../config/browserlist');
 const babelConfig = require('../config/babelConfig');
 
 babelConfig.plugins.push([
@@ -64,9 +63,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: [
-                require('autoprefixer')({
-                  browsers: browserlist,
-                }),
+                require('autoprefixer')(),
               ],
             },
           },
