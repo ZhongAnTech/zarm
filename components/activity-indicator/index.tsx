@@ -12,17 +12,15 @@ export interface ActivityIndicatorProps extends PropsType {
 export default class ActivityIndicator extends PureComponent<ActivityIndicatorProps, any> {
   static defaultProps = {
     prefixCls: 'za-activity-indicator',
-    theme: 'primary',
     strokeWidth: 5,
-    percent: 25,
+    percent: 20,
   };
 
   render() {
-    const { prefixCls, className, theme, size, percent, strokeWidth } = this.props;
+    const { prefixCls, className, size, percent, strokeWidth } = this.props;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${size}`]: !!size,
     });
 
     const half = DIAMETER / 2;
@@ -34,9 +32,9 @@ export default class ActivityIndicator extends PureComponent<ActivityIndicatorPr
     };
 
     return (
-      <svg className={`${cls}`} viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
-        {/* <circle className={`${prefixCls}-path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} /> */}
-        <circle className={`${prefixCls}-line`} cx={half} cy={half} r={r} fill="none" style={style} />
+      <svg className={cls} viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
+        <circle className={`${prefixCls}__path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
+        <circle className={`${prefixCls}__line`} cx={half} cy={half} r={r} fill="none" style={style} />
       </svg>
     );
   }

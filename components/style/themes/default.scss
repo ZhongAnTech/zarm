@@ -283,9 +283,9 @@ $slider-handle-background: #fff;
 $slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
 
 // activity-indicator
-$activity-indicator-size-md: r(20);
-$activity-indicator-size-lg: r(31);
-$activity-indicator-path-color: #e6e6e6;
+$--activity-indicator-size-md: r(20);
+$--activity-indicator-size-lg: r(31);
+$--activity-indicator-path-color: #e6e6e6;
 
 // Stepper
 $stepper-height-sm: r(28);
