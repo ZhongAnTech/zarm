@@ -139,8 +139,9 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Button href="https://zarm.design">default link button</Button>
-        <Button theme="primary" href="https://zarm.design">primary link button</Button>
+        <Button href="https://zarm.design">default</Button>
+        <Button theme="primary" href="https://zarm.design">primary</Button>
+        <Button disabled theme="primary" href="https://zarm.design">disabled</Button>
       </div>
     )
   }

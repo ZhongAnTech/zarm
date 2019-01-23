@@ -31,7 +31,6 @@
     background-color: $disabled-background;
     border-color: $disabled-border;
     color: $disabled-color;
-    // color: rgba($color, $opacity-disabled);
     opacity: $disabled-opacity;
     cursor: not-allowed;
 
@@ -41,7 +40,6 @@
       background-color: $disabled-background;
       border-color: $disabled-border;
       color: $disabled-color;
-      opacity: $disabled-opacity;
     }
   }
 }
@@ -85,14 +83,14 @@
     }
 
     @include when(disabled) {
-      color: $color-text-disabled;
-      cursor: not-allowed;
-
+      &,
       &:active,
       &:hover,
       &:focus,
       &:visited {
         color: $color-text-disabled;
+        cursor: not-allowed;
+        pointer-events: none;
       }
     }
   }
@@ -120,11 +118,7 @@
     }
 
     @include when(disabled) {
-      background-color: transparent;
-      border-color: $border-disabled;
-      color: $color-text-disabled;
-      cursor: not-allowed;
-
+      &,
       &:active,
       &:hover,
       &:focus,
@@ -132,6 +126,7 @@
         background-color: transparent;
         border-color: $border-disabled;
         color: $color-text-disabled;
+        cursor: not-allowed;
       }
     }
   }
