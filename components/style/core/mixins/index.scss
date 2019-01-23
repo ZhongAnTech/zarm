@@ -6,25 +6,25 @@
   }
 }
 
-@mixin e($element) {
-  $E: $element !global;
+@mixin e($elements...) {
   $selector: &;
   $currentSelector: '';
-  @each $unit in $element {
+  @each $unit in $elements {
     $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
   }
+  $currentSelectorAll: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
 
   @if hitAllSpecialNestRule($selector) {
     @at-root {
       #{$selector} {
-        #{$currentSelector} {
+        #{$currentSelectorAll} {
           @content;
         }
       }
     }
   } @else {
     @at-root {
-      #{$currentSelector} {
+      #{$currentSelectorAll} {
         @content;
       }
     }
