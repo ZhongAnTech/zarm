@@ -20,7 +20,6 @@ export default class Switch extends PureComponent<SwitchProps, any> {
   static defaultProps = {
     prefixCls: 'za-switch',
     disabled: false,
-    // size: 'normal',
   };
 
   constructor(props) {
@@ -57,7 +56,6 @@ export default class Switch extends PureComponent<SwitchProps, any> {
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--disabled`]: !!disabled,
-      // disabled,
     });
 
     return (
