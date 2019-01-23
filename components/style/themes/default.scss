@@ -120,9 +120,9 @@ $collapse-arrow-color: #c2c2c2;
 $collapse-arrow-disabled-color: #eee;
 
 // ActionSheet
-$action-sheet-margin: 0;
-$action-sheet-item-height: r(50);
-$action-sheet-item-font-size: r(16);
+$--action-sheet-margin: 0;
+$--action-sheet-item-height: r(50);
+$--action-sheet-item-font-size: r(16);
 
 // Alert
 $alert-button-height: r(50);

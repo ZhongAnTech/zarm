@@ -1,62 +1,48 @@
 @import "../../button/style/mixins";
 
-$prefixCls: $prefixCls-action-sheet;
+@include b(action-sheet) {
+  margin: var($--action-sheet-margin);
 
-.#{$prefixCls} {
-  margin: $action-sheet-margin;
-
-  &-spacing {
+  @include m(spacing) {
     margin: 0 r(10) r(10);
   }
 
-  &.shape-radius {
-    .#{$prefixCls} {
-      &-actions,
-      &-cancel {
-        border-radius: $radius-md;
-      }
+  @include m(radius) {
+    @include e(actions, cancel) {
+      border-radius: var($radius-md);
     }
   }
 
-  &-actions,
-  &-cancel {
+  @include e(actions, cancel) {
     overflow: hidden;
-    background-color: $color-text-inverse;
+    background-color: var($color-text-inverse);
   }
 
-  &-cancel {
+  @include e(cancel) {
     margin-top: r(7);
   }
 
-  &-item {
+  @include e(item) {
     display: block;
-    height: $action-sheet-item-height;
-    line-height: $action-sheet-item-height;
-    font-size: $action-sheet-item-font-size;
+    height: var($--action-sheet-item-height);
+    line-height: var($--action-sheet-item-height);
+    font-size: var($--action-sheet-item-font-size);
     @include button-base();
 
     &:active {
-      background-color: $background-active;
+      background-color: var($background-active);
     }
 
     &:not(:first-of-type) {
       @include onepx(top);
     }
 
-    &.theme-primary {
-      color: $theme-primary;
+    @include when(primary) {
+      color: var($theme-primary);
     }
-
-    &.theme-success {
-      color: $theme-success;
-    }
-
-    &.theme-warning {
-      color: $theme-warning;
-    }
-
-    &.theme-error {
-      color: $theme-error;
+  
+    @include when(danger) {
+      color: var($theme-error);
     }
   }
 }

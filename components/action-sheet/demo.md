@@ -16,7 +16,7 @@ const BUTTONS = [
     onClick: () => console.log('点击操作二'),
   },
   {
-    theme: 'error',
+    theme: 'danger',
     text: '操作三',
     onClick: () => console.log('点击操作三'),
   },
