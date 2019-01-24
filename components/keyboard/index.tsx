@@ -92,6 +92,8 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
         <div className={`${prefixCls}__handle`}>
           <div
             className={`${prefixCls}__item`}
+            onMouseDown={() => this.onLongPressIn('delete')}
+            onMouseUp={() => this.onLongPressOut()}
             onTouchStart={() => this.onLongPressIn('delete')}
             onTouchEnd={() => this.onLongPressOut()}
           >
