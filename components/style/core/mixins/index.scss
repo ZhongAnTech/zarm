@@ -53,6 +53,20 @@
   }
 }
 
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+
+  &::-moz-placeholder {
+    @content
+  }
+
+  &:-ms-input-placeholder {
+    @content
+  }
+}
+
 @mixin onepx($positions: top right bottom left, $border-color: $border-color, $border-radius: 0) {
   &:after {
     content: '';
