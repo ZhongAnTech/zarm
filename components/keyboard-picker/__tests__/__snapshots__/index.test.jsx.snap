@@ -239,6 +239,8 @@ exports[`KeyboardPicker renders correctly 1`] = `
                 >
                   <div
                     className="za-keyboard__item"
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
                     onTouchEnd={[Function]}
                     onTouchStart={[Function]}
                   >

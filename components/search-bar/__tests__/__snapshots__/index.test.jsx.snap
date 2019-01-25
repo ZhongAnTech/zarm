@@ -29,7 +29,7 @@ exports[`SearchBar renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="za-input za-input-search clearable"
+        class="za-input za-input--clearable"
       >
         <input
           autocomplete="off"
@@ -38,7 +38,7 @@ exports[`SearchBar renders correctly 1`] = `
           value=""
         />
         <i
-          class="za-icon za-input-clear za-icon-wrong-round-fill"
+          class="za-icon za-input__clear za-icon-wrong-round-fill"
         />
       </div>
     </div>
@@ -131,11 +131,12 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -151,13 +152,13 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -290,11 +291,12 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -310,13 +312,13 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -455,11 +457,12 @@ exports[`SearchBar renders onChange called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value="测试值"
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -475,13 +478,13 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                   value="测试值"
                 />
                 <Icon
-                  className="za-input-clear za-input-clear-show"
+                  className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-input-clear-show za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -615,11 +618,12 @@ exports[`SearchBar renders onClear called correctly 1`] = `
               onFocus={[Function]}
               placeholder="Search"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -635,13 +639,13 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -774,11 +778,12 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -794,13 +799,13 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -939,11 +944,12 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value="My new value"
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -959,13 +965,13 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                   value="My new value"
                 />
                 <Icon
-                  className="za-input-clear za-input-clear-show"
+                  className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-input-clear-show za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>

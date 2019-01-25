@@ -79,7 +79,7 @@ describe('Input', () => {
 
     const input = wrapper.find('input[type="text"]');
     input.simulate('change', { target: { value: 'My new value' } });
-    wrapper.find('i.za-input-clear').simulate('click');
+    wrapper.find('i.za-input__clear').simulate('click');
     expect(onClear).toHaveBeenCalled();
     expect(input.instance().value).toEqual('');
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -96,7 +96,7 @@ describe('Input', () => {
 
   //   const input = wrapper.find('input[type="text"]');
   //   input.simulate('change', { target: { value: '测试' } });
-  //   wrapper.find('i.za-input-clear').simulate('click');
+  //   wrapper.find('i.za-input__clear').simulate('click');
   //   expect(input.instance().value).toEqual('');
   //   expect(onFocus).toHaveBeenCalled();
   //   expect(toJson(wrapper)).toMatchSnapshot();
@@ -228,7 +228,7 @@ describe('Input.Number', () => {
     const wrapper = mount(
       <Input type="number" onFocus={onFocus} />
     );
-    wrapper.find('.za-input-content').simulate('click');
+    wrapper.find('.za-input__content').simulate('click');
     expect(onFocus).toBeCalled();
     // expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
@@ -248,7 +248,7 @@ describe('Input.Number', () => {
 
     const input = wrapper.find('input[type="hidden"]');
     input.simulate('change', { target: { value: 'My new value' } });
-    wrapper.find('i.za-input-clear').simulate('click');
+    wrapper.find('i.za-input__clear').simulate('click');
     expect(onClear).toHaveBeenCalled();
     expect(input.instance().value).toEqual('');
     expect(toJson(wrapper)).toMatchSnapshot();

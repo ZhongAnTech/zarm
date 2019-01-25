@@ -119,7 +119,7 @@ describe('SearchBar', () => {
 
     const input = wrapper.find('input[type="search"]');
     input.simulate('change', { target: { value: 'My new value' } });
-    wrapper.find('i.za-input-clear').simulate('click');
+    wrapper.find('i.za-input__clear').simulate('click');
     expect(onClear).toHaveBeenCalled();
     expect(input.instance().value).toEqual('');
     expect(toJson(wrapper)).toMatchSnapshot();
