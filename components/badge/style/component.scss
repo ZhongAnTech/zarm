@@ -1,89 +1,91 @@
 @import "mixins";
 
-$prefixCls: $prefixCls-badge;
-
-.#{$prefixCls} {
+@include b(badge) {
   position: relative;
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
-  @include badge-theme($theme-default);
+  @include badge-theme(var($theme-default));
 
-  &.theme-primary {
-    @include badge-theme($theme-primary);
-  }
-
-  &.theme-success {
-    @include badge-theme($theme-success);
-  }
-
-  &.theme-warning {
-    @include badge-theme($theme-warning);
-  }
-
-  &.theme-error {
-    @include badge-theme($theme-error);
-  }
-
-  &-sup {
+  @include e(content) {
     display: flex;
     justify-content: center;
     align-items: center;
     top: auto;
-    color: $badge-text-color;
-    font-size: $badge-font-size;
-    height: $badge-height;
-    padding: 0 $badge-padding-h;
+    color: var($--badge-text-color);
+    font-size: var($--badge-font-size);
+    height: var($--badge-height);
+    padding: 0 var($--badge-padding-h);
     white-space: nowrap;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
 
-    &-up {
+  @include m(primary) {
+    @include badge-theme(var($theme-primary));
+  }
+
+  @include m(success) {
+    @include badge-theme(var($theme-success));
+  }
+
+  @include m(warning) {
+    @include badge-theme(var($theme-warning));
+  }
+
+  @include m(error) {
+    @include badge-theme(var($theme-error));
+  }
+
+  @include m(dot) {
+    @include e(content) {
+      width: var($--badge-dot-diameter);
+      height: var($--badge-dot-diameter);
+      padding: 0;
+      border-radius: var($radius-circle);
+    }
+  }
+
+  @include m(radius) {
+    @include e(content) {
+      border-radius: var($--badge-border-radius-rect);
+    }
+  }
+
+  @include m(round) {
+    @include e(content) {
+      min-width: var($--badge-height);
+      border-radius: var($--badge-border-radius-round);
+    }
+  }
+
+  @include m(circle) {
+    @include e(content) {
+      width: var($--badge-height);
+      border-radius: var($radius-circle);
+      padding: 0;
+    }
+  }
+
+  @include m(leaf) {
+    @include e(content) {
+      min-width: var($--badge-height);
+      border-radius: var($--badge-border-radius-round) var($--badge-border-radius-round) var($--badge-border-radius-round) 0;
+    }
+  }
+
+  @include m(sup) {
+    @include e(content) {
       position: absolute;
       top: 0;
       left: 100%;
-      transform: translateX(-$badge-height/2) translateY($badge-sup-top);
+      transform: translateX(- var($--badge-height) / 2) translateY(var($--badge-sup-top));
     }
-  }
 
-  &.shape-dot {
-    .#{$prefixCls}-sup {
-      width: $badge-dot-diameter;
-      height: $badge-dot-diameter;
-      padding: 0;
-      border-radius: $radius-circle;
-
-      &-up {
-        transform: translateX(-$badge-dot-diameter/2) translateY(-50%);
+    @include when(dot) {
+      @include e(content) {
+        transform: translateX(- var($--badge-dot-diameter) / 2) translateY(-50%);
       }
-    }
-  }
-
-  &.shape-radius {
-    .#{$prefixCls}-sup {
-      border-radius: $badge-rect-radius;
-    }
-  }
-
-  &.shape-round {
-    .#{$prefixCls}-sup {
-      min-width: $badge-height;
-      border-radius: $badge-round-radius;
-    }
-  }
-
-  &.shape-circle {
-    .#{$prefixCls}-sup {
-      width: $badge-height;
-      border-radius: $radius-circle;
-      padding: 0;
-    }
-  }
-
-  &.shape-leaf {
-    .#{$prefixCls}-sup {
-      min-width: $badge-height;
-      border-radius: $badge-round-radius $badge-round-radius $badge-round-radius 0;
     }
   }
 }

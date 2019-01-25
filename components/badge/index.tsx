@@ -18,19 +18,16 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
   render() {
     const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
-      [`shape-${shape}`]: !!shape,
-    });
-
-    const supCls = classnames(`${prefixCls}-sup`, {
-      [`${prefixCls}-sup-up`]: sup,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--sup`]: sup,
     });
 
     return (
       <span className={cls}>
         {children}
-        <sup className={supCls} {...others}>{shape !== 'dot' && text}</sup>
+        <sup className={`${prefixCls}__content`} {...others}>{shape !== 'dot' && text}</sup>
       </span>
     );
   }

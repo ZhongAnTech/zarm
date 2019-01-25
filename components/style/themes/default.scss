@@ -129,14 +129,14 @@ $alert-button-height: r(50);
 $alert-button-font-size: r(18);
 
 // Badge
-$badge-height: r(14);
-$badge-font-size: $font-size-xs;
-$badge-padding-h: r(4);
-$badge-dot-diameter: r(8);
-$badge-rect-radius: $radius-sm;
-$badge-round-radius: $radius-round;
-$badge-sup-top: r(-4);
-$badge-text-color:#fff;
+$--badge-height: r(14);
+$--badge-font-size: $font-size-xs;
+$--badge-padding-h: r(4);
+$--badge-dot-diameter: r(8);
+$--badge-border-radius-rect: $radius-sm;
+$--badge-border-radius-round: $radius-round;
+$--badge-sup-top: r(-4);
+$--badge-text-color:#fff;
 
 // Button
 $--button-height-xs: r(28);
