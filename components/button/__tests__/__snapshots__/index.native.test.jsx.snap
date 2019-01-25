@@ -236,7 +236,7 @@ exports[`Button icon 1`] = `
   <react-native-mock>
     <img
       alt=""
-      src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
+      src="https://zarm.design/images/logo.ce68565d.svg"
     />
     <react-native-mock>
       foo
