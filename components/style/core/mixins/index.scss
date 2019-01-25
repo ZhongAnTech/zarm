@@ -7,24 +7,24 @@
 }
 
 @mixin e($elements...) {
+  $E: $elements !global;
   $selector: &;
   $currentSelector: '';
   @each $unit in $elements {
     $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
   }
-  $currentSelectorAll: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
 
   @if hitAllSpecialNestRule($selector) {
     @at-root {
       #{$selector} {
-        #{$currentSelectorAll} {
+        #{$currentSelector} {
           @content;
         }
       }
     }
   } @else {
     @at-root {
-      #{$currentSelectorAll} {
+      #{$currentSelector} {
         @content;
       }
     }
