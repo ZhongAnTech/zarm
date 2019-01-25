@@ -32,21 +32,20 @@ exports[`Tab canSwipe 1`] = `
     class="za-tabs-container"
   >
     <div
-      class="za-carousel"
+      class="za-carousel za-carousel--horizontal"
     >
       <div
-        class="za-carousel-items"
-        style="white-space:nowrap"
+        class="za-carousel__items"
       >
         <div
-          class="za-carousel-item"
+          class="za-carousel__item"
         >
           <div>
             试试点我左滑
           </div>
         </div>
         <div
-          class="za-carousel-item"
+          class="za-carousel__item"
         >
           <div>
             试试点我右滑

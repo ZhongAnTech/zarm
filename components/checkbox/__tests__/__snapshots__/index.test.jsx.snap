@@ -333,19 +333,19 @@ exports[`Checkbox.Group type is cell 1`] = `
   class="za-checkbox-group"
 >
   <div
-    class="za-cell is-link"
+    class="za-cell za-cell--link"
   >
     <div
-      class="za-cell-inner"
+      class="za-cell__inner"
     >
       <div
-        class="za-cell-header"
+        class="za-cell__header"
       />
       <div
-        class="za-cell-body"
+        class="za-cell__body"
       >
         <div
-          class="za-cell-content"
+          class="za-cell__content"
         >
           <div
             class="za-checkbox"
@@ -370,24 +370,24 @@ exports[`Checkbox.Group type is cell 1`] = `
         </div>
       </div>
       <div
-        class="za-cell-footer"
+        class="za-cell__footer"
       />
     </div>
   </div>
   <div
-    class="za-cell is-link"
+    class="za-cell za-cell--link"
   >
     <div
-      class="za-cell-inner"
+      class="za-cell__inner"
     >
       <div
-        class="za-cell-header"
+        class="za-cell__header"
       />
       <div
-        class="za-cell-body"
+        class="za-cell__body"
       >
         <div
-          class="za-cell-content"
+          class="za-cell__content"
         >
           <div
             class="za-checkbox"
@@ -412,24 +412,24 @@ exports[`Checkbox.Group type is cell 1`] = `
         </div>
       </div>
       <div
-        class="za-cell-footer"
+        class="za-cell__footer"
       />
     </div>
   </div>
   <div
-    class="za-cell is-link"
+    class="za-cell za-cell--link"
   >
     <div
-      class="za-cell-inner"
+      class="za-cell__inner"
     >
       <div
-        class="za-cell-header"
+        class="za-cell__header"
       />
       <div
-        class="za-cell-body"
+        class="za-cell__body"
       >
         <div
-          class="za-cell-content"
+          class="za-cell__content"
         >
           <div
             class="za-checkbox"
@@ -454,7 +454,7 @@ exports[`Checkbox.Group type is cell 1`] = `
         </div>
       </div>
       <div
-        class="za-cell-footer"
+        class="za-cell__footer"
       />
     </div>
   </div>

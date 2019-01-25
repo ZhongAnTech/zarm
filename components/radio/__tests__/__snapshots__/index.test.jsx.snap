@@ -67,19 +67,19 @@ exports[`Radio type is button 1`] = `
 
 exports[`Radio type is cell 1`] = `
 <div
-  class="za-cell is-link"
+  class="za-cell za-cell--link"
 >
   <div
-    class="za-cell-inner"
+    class="za-cell__inner"
   >
     <div
-      class="za-cell-header"
+      class="za-cell__header"
     />
     <div
-      class="za-cell-body"
+      class="za-cell__body"
     >
       <div
-        class="za-cell-content"
+        class="za-cell__content"
       >
         <input
           class="za-radio-input"
@@ -90,7 +90,7 @@ exports[`Radio type is cell 1`] = `
       </div>
     </div>
     <div
-      class="za-cell-footer"
+      class="za-cell__footer"
     />
   </div>
 </div>
