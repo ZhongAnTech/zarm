@@ -336,10 +336,7 @@ export default class Carousel extends Component<CarouselProps, any> {
   renderPagination = () => {
     const { prefixCls, children } = this.props;
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
-
-    const paginationCls = classnames(`${prefixCls}__pagination`, {
-      [`${prefixCls}__pagination--${direction}`]: true,
-    });
+    const paginationCls = classnames(`${prefixCls}__pagination`, `${prefixCls}__pagination--${direction}`);
 
     return (
       <div className={paginationCls}>
