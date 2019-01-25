@@ -71,8 +71,6 @@
   }
 
   /* Button themes */
-  @include m(default) {}
-
   @include m(primary) {
     @include button-theme(
       var($--button-primary-background),

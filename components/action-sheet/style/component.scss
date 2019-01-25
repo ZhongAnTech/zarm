@@ -40,7 +40,7 @@
     @include when(primary) {
       color: var($theme-primary);
     }
-  
+
     @include when(danger) {
       color: var($theme-error);
     }

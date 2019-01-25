@@ -134,7 +134,7 @@
         color: var($color-text-disabled);
       }
     }
-  
+
     @include e(content, placeholder) {
       cursor: not-allowed;
       color: var($color-text-disabled);
