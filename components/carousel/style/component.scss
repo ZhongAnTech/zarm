@@ -20,35 +20,43 @@
         background: $carousel-pagination-rect-color-active;
       }
     }
+  }
 
-    @include m(horizontal) {
+  @include m(horizontal) {
+    @include e(items) {
+      white-space: nowrap;
+    }
+
+    @include e(pagination) {
       left: 50%;
       bottom: $carousel-pagination-distance;
       transform: translate3d(-50%, 0, 0);
-
-      @include e(pagination__item) {
-        display: inline-block;
-        width: $carousel-pagination-rect-width;
-        height: $carousel-pagination-rect-height;
-
-        &:not(:last-child) {
-          margin-right: $carousel-pagination-rect-step;
-        }
-      }
     }
 
-    @include m(vertical) {
+    @include e(pagination__item) {
+      display: inline-block;
+      width: $carousel-pagination-rect-width;
+      height: $carousel-pagination-rect-height;
+
+      &:not(:last-child) {
+        margin-right: $carousel-pagination-rect-step;
+      }
+    }
+  }
+
+  @include m(vertical) {
+    @include e(pagination) {
       top: 50%;
       right: $carousel-pagination-distance;
       transform: translate3d(0, -50%, 0);
+    }
 
-      @include e(pagination__item) {
-        width: $carousel-pagination-rect-height;
-        height: $carousel-pagination-rect-width;
+    @include e(pagination__item) {
+      width: $carousel-pagination-rect-height;
+      height: $carousel-pagination-rect-width;
 
-        &:not(:last-child) {
-          margin-bottom: $carousel-pagination-rect-step;
-        }
+      &:not(:last-child) {
+        margin-bottom: $carousel-pagination-rect-step;
       }
     }
   }

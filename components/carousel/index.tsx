@@ -313,12 +313,6 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   renderPaginationItem = (_result, index) => {
     const { prefixCls } = this.props;
-    const paginationStyle: CSSProperties = {};
-
-    if (this.isDirectionX()) {
-      paginationStyle.display = 'inline-block';
-    }
-
     const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
       [`${prefixCls}__pagination__item--active`]: index === this.state.activeIndex,
     });
@@ -334,30 +328,26 @@ export default class Carousel extends Component<CarouselProps, any> {
   }
 
   renderPagination = () => {
-    const { prefixCls, children } = this.props;
-    const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
-    const paginationCls = classnames(`${prefixCls}__pagination`, `${prefixCls}__pagination--${direction}`);
-
-    return (
-      <div className={paginationCls}>
+    const { prefixCls, showPagination, children } = this.props;
+    return showPagination && (
+      <div className={`${prefixCls}__pagination`}>
         {Children.map(children, this.renderPaginationItem)}
       </div>
     );
   }
 
   render() {
-    const { prefixCls, className, height, showPagination, style } = this.props;
-    const cls = classnames(prefixCls, className);
-    const itemsStyle: CSSProperties = { ...style };
+    const { prefixCls, className, height, style } = this.props;
+    const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
+    const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
+    const itemsStyle: CSSProperties = {};
 
     if (!this.isDirectionX()) {
       itemsStyle.height = height;
-    } else {
-      itemsStyle.whiteSpace = 'nowrap';
     }
 
     return (
-      <div className={cls}>
+      <div className={cls} style={style}>
         <Drag
           onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
@@ -372,7 +362,7 @@ export default class Carousel extends Component<CarouselProps, any> {
             {this.state.items}
           </div>
         </Drag>
-        {showPagination && this.renderPagination()}
+        {this.renderPagination()}
       </div>
     );
   }
