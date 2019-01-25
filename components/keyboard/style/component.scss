@@ -1,19 +1,17 @@
 @import "../../button/style/mixins";
 
-$prefixCls: $prefixCls-keyboard;
-
 @include b(keyboard) {
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  color: $color-text;
+  color: var($color-text);
   user-select: none;
 
   @include e(item) {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: $keyboard-item-font-size;
+    font-size: var($--keyboard-item-font-size);
     position: relative;
     @include button-base();
     @include button-theme(
@@ -25,7 +23,7 @@ $prefixCls: $prefixCls-keyboard;
       var($--button-default-active-color),
       var($--button-default-background),
       var($--button-default-border),
-      $color-text-disabled,
+      var($color-text-disabled),
       var($--button-disabled-opacity),
     );
 
@@ -46,7 +44,7 @@ $prefixCls: $prefixCls-keyboard;
     }
 
     &:active {
-      color: $color-text;
+      color: var($color-text);
     }
 
     @include m(disabled) {
@@ -65,7 +63,7 @@ $prefixCls: $prefixCls-keyboard;
 
     @include e(item) {
       width: 33.333333%;
-      height: $keyboard-item-height;
+      height: var($--keyboard-item-height);
       @include onepx(top left);
 
       &:nth-of-type(3n+1) {
@@ -88,7 +86,7 @@ $prefixCls: $prefixCls-keyboard;
     }
   }
 
-  .#{$prefixCls-icon} {
-    font-size: $keyboard-icon-font-size;
+  @include b(icon) {
+    font-size: var($--keyboard-icon-font-size);
   }
 }
