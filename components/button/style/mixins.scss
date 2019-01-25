@@ -56,7 +56,7 @@
     padding: 0;
   }
 
-  .#{$prefixCls-icon} {
+  .#{$namespace + '-icon'} {
     font-size: $icon-size;
   }
 
