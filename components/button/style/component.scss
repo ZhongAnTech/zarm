@@ -119,6 +119,10 @@
     );
   }
 
+  @include m(rect) {
+    @include button-shape(0);
+  }
+
   @include m(radius) {
     @include button-shape(var($radius-md));
   }
