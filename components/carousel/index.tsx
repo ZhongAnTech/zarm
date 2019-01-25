@@ -248,7 +248,7 @@ export default class Carousel extends Component<CarouselProps, any> {
       return cloneElement(element, {
         key: index,
         className: classnames({
-          [`${props.prefixCls}-item`]: true,
+          [`${props.prefixCls}__item`]: true,
           [element.props.className]: !!element.props.className,
         }),
       });
@@ -312,18 +312,22 @@ export default class Carousel extends Component<CarouselProps, any> {
   }
 
   renderPaginationItem = (_result, index) => {
+    const { prefixCls } = this.props;
     const paginationStyle: CSSProperties = {};
 
     if (this.isDirectionX()) {
       paginationStyle.display = 'inline-block';
     }
 
+    const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
+      [`${prefixCls}__pagination__item--active`]: index === this.state.activeIndex,
+    });
+
     return (
-      <li
+      <div
         role="tab"
         key={`pagination-${index}`}
-        className={classnames({ active: index === this.state.activeIndex })}
-        style={paginationStyle}
+        className={paginationItemCls}
         onClick={() => this.onSlideTo(index)}
       />
     );
@@ -333,11 +337,13 @@ export default class Carousel extends Component<CarouselProps, any> {
     const { prefixCls, children } = this.props;
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
 
+    const paginationCls = classnames(`${prefixCls}__pagination`, {
+      [`${prefixCls}__pagination--${direction}`]: true,
+    });
+
     return (
-      <div className={`${prefixCls}-pagination ${direction}`}>
-        <ul>
-          {Children.map(children, this.renderPaginationItem)}
-        </ul>
+      <div className={paginationCls}>
+        {Children.map(children, this.renderPaginationItem)}
       </div>
     );
   }
@@ -362,7 +368,7 @@ export default class Carousel extends Component<CarouselProps, any> {
         >
           <div
             ref={(ele) => { this.carouselItems = ele; }}
-            className={`${prefixCls}-items`}
+            className={`${prefixCls}__items`}
             onTransitionEnd={this.transitionEnd}
             style={itemsStyle}
           >
