@@ -212,20 +212,20 @@ $calendar-day-width: 14.28571%; // 日期宽度
 $calendar-day-height: r(40); // 日期高度
 
 // Cell
-$cell-height: r(52);                            // 最小高度
-$cell-background: #fff;                       // 背景色
-$cell-line-padding-left: r(16);                 // 分隔线左边距
-$cell-padding-h: r(16);                         // 水平边内距
-$cell-padding-v: r(15);                         // 纵向边内距
-$cell-title-color: $color-text;                 // 标题文字颜色
-$cell-title-font-size: r(15);                   // 标题文字大小
-$cell-title-line-height: r(22);                 // 标题文字行高
-$cell-description-color: $color-text-caption;   // 标题文字颜色
-$cell-description-font-size: r(15);             // 描述文字大小
-$cell-label-width: r(100);                      // 表单label宽度
-$cell-arrow-color: #bcbcbc;                   // 箭头颜色
-$cell-arrow-length: r(10);                      // 箭头长度
-$cell-arrow-border-width: r(2);                 // 箭头粗细
+$--cell-height: r(52);                            // 最小高度
+$--cell-background: #fff;                       // 背景色
+$--cell-line-padding-left: r(16);                 // 分隔线左边距
+$--cell-padding-h: r(16);                         // 水平边内距
+$--cell-padding-v: r(15);                         // 纵向边内距
+$--cell-title-color: $color-text;                 // 标题文字颜色
+$--cell-title-font-size: r(15);                   // 标题文字大小
+$--cell-title-line-height: r(22);                 // 标题文字行高
+$--cell-description-color: $color-text-caption;   // 标题文字颜色
+$--cell-description-font-size: r(15);             // 描述文字大小
+$--cell-label-width: r(100);                      // 表单label宽度
+$--cell-arrow-color: #bcbcbc;                   // 箭头颜色
+$--cell-arrow-length: r(10);                      // 箭头长度
+$--cell-arrow-border-width: r(2);                 // 箭头粗细
 
 // Checkbox
 $checkbox-size: r(20);
@@ -341,14 +341,14 @@ $nav-bar-icon-size: r(24);
 
 // Input
 $--input-clear-icon-width: r(16);
-$--input-padding-v: $cell-padding-v;
+$--input-padding-v: $--cell-padding-v;
 $--input-cursor-color: #597cf6;
 $--input-cursor-width: r(2);
 $--input-cursor-height: r(16);
 $--input-selection-color: rgba($theme-primary, 0.2);
 $--input-length-count-color: $color-text-disabled;
 $--input-height: r(28);
-$--input-line-height: $cell-title-line-height;
+$--input-line-height: $--cell-title-line-height;
 
 // Progress
 $progress-background: rgb(238, 238, 238);
