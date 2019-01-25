@@ -113,7 +113,7 @@
     }
   }
 
-  @include when(readonly) {
+  @include m(readonly) {
     @include e(content) {
       height: auto;
     }
@@ -124,7 +124,7 @@
     }
   }
 
-  @include when(disabled) {
+  @include m(disabled) {
     input,
     textarea {
       cursor: not-allowed;
