@@ -1,6 +1,6 @@
 export interface BaseRadioProps {
   theme?: 'default' | 'primary' | 'danger';
-  shape?: 'radius' | 'round';
+  shape?: 'rect' | 'radius' | 'round';
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
@@ -12,7 +12,7 @@ export interface BaseRadioProps {
 
 export interface BaseRadioGroupProps {
   theme?: 'default' | 'primary' | 'danger';
-  shape?: 'radius' | 'round';
+  shape?: 'rect' | 'radius' | 'round';
   size?: 'lg';
   type?: 'button' | 'cell';
   disabled?: boolean;

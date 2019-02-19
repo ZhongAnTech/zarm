@@ -63,28 +63,29 @@ export default class Radio extends PureComponent<RadioProps, any> {
     const { prefixCls, className, type, theme, shape, block, value, disabled, children } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
-      [`shape-${shape}`]: !!shape,
-      checked,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--checked`]: !!checked,
+      [`${prefixCls}--disabled`]: !!disabled,
     });
+
+    const inputRender = <input
+      type="radio"
+      className={`${prefixCls}__input`}
+      value={value}
+      disabled={disabled}
+      checked={checked}
+      onChange={this.onValueChange}
+    />;
 
     if (type === 'cell') {
       return (
         <Cell
+          className={cls}
           disabled={disabled}
           description={checked && <Icon type="right" theme={disabled ? undefined : theme} />}
           onClick={() => {}}
         >
-          <input
-            type="radio"
-            className={`${prefixCls}-input`}
-            value={value}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
+          {inputRender}
           {children}
         </Cell>
       );
@@ -101,14 +102,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
           ghost={!checked}
           disabled={disabled}
         >
-          <input
-            type="radio"
-            className={`${prefixCls}-input`}
-            value={value}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
+          {inputRender}
           {children}
         </Button>
       );
@@ -116,16 +110,10 @@ export default class Radio extends PureComponent<RadioProps, any> {
 
     return (
       <div className={cls}>
-        <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`} />
-          {children && <span className={`${prefixCls}-text`}>{children}</span>}
-          <input
-            type="radio"
-            className={`${prefixCls}-input`}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
+        <div className={`${prefixCls}__wrapper`}>
+          <span className={`${prefixCls}__inner`} />
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
         </div>
       </div>
     );
