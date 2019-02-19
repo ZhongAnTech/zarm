@@ -64,13 +64,12 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, type, block, disabled, compact, children } = this.props;
+    const { prefixCls, className, shape, type, block, disabled, compact, children } = this.props;
 
     const items = React.Children.map(children, (element: any, index) => {
       return cloneElement(element, {
         key: index,
         type,
-        theme,
         shape,
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,

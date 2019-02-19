@@ -60,7 +60,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
   }
 
   render() {
-    const { prefixCls, className, type, theme, shape, block, value, disabled, children } = this.props;
+    const { prefixCls, className, type, shape, block, value, disabled, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -82,7 +82,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
         <Cell
           className={cls}
           disabled={disabled}
-          description={checked && <Icon type="right" theme={disabled ? undefined : theme} />}
+          description={checked && <Icon type="right" theme={disabled ? undefined : 'primary'} />}
           onClick={() => {}}
         >
           {inputRender}
@@ -95,7 +95,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
       return (
         <Button
           className={cls}
-          theme={theme}
+          theme="primary"
           shape={shape}
           size="xs"
           block={block}
