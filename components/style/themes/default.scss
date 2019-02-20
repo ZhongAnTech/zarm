@@ -288,18 +288,19 @@ $--activity-indicator-size-lg: r(31);
 $--activity-indicator-path-color: #e6e6e6;
 
 // Stepper
-$stepper-height-sm: r(28);
-$stepper-height-md: r(36);
-$stepper-icon-font-size-sm: r(12);
-$stepper-icon-font-size-md: r(14);
-$stepper-input-width-sm: r(50);
-$stepper-input-width-md: r(60);
-$stepper-input-disabled: $color-text-disabled;
-$stepper-input-font-size: r(14);
-$stepper-input-margin-h-sm: r(4);
-$stepper-input-margin-h-md: r(4);
-$stepper-input-padding-h-sm: r(8);
-$stepper-input-padding-h-md: r(8);
+$--stepper-height-md: r(28);
+$--stepper-height-lg: r(36);
+$--stepper-icon-font-size-md: r(12);
+$--stepper-icon-font-size-lg: r(14);
+$--stepper-input-width-md: r(50);
+$--stepper-input-width-lg: r(60);
+$--stepper-input-disabled: $color-text-disabled;
+$--stepper-input-font-size-md: r(14);
+$--stepper-input-font-size-lg: r(16);
+$--stepper-input-margin-h-md: r(4);
+$--stepper-input-margin-h-lg: r(4);
+$--stepper-input-padding-h-md: r(8);
+$--stepper-input-padding-h-lg: r(8);
 
 // Carousel
 $--carousel-pagination-distance: r(8);
