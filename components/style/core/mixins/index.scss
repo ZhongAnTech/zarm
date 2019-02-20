@@ -20,41 +20,40 @@
   @return str-slice($selector, 0, $modifierStart);
 }
 
+@function getElements($elements) {
+  $selector: &;
+  $currentSelector: '';
+  @if containsModifier($selector) {
+    $selector: getBlock($selector);
+  }
+  @each $unit in $elements {
+    $currentSelector: #{$currentSelector + $selector + $element-separator + $unit + ','};
+  }
+  $currentSelector: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
+  @return $currentSelector;
+}
+
 @mixin b($block) {
-  .#{$namespace+'-'+$block} {
+  .#{$namespace + '-' + $block} {
     @content;
   }
 }
 
 @mixin e($element...) {
   $selector: &;
+  $elements: getElements($element);
+  // @debug $elements;
   @if containsModifier($selector) {
-    $block: getBlock($selector);
-    $currentSelector: '';
-    @each $unit in $element {
-      $currentSelector: #{$currentSelector + $block + $element-separator + $unit + ","};
-    }
-    $currentSelector: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
-
-    // @debug $currentSelector;
     @at-root {
       #{$selector} {
-        #{$currentSelector} {
+        #{$elements} {
           @content;
         }
       }
     }
   } @else {
-    $currentSelector: '';
-    @each $unit in $element {
-      $currentSelector: #{$currentSelector + $selector + $element-separator + $unit + ","};
-    }
-    $currentSelector: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
-    // @debug $currentSelector;
-
     @at-root {
-      #{$currentSelector} {
-        // @debug &;
+      #{$elements} {
         @content;
       }
     }
@@ -63,7 +62,7 @@
 
 @mixin m($modifier) {
   @at-root {
-    #{&}#{$modifier-separator+$modifier} {
+    #{&}#{$modifier-separator + $modifier} {
       @content;
     }
   }
