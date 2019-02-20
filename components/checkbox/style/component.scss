@@ -85,7 +85,7 @@
   }
 
   @include m(compact) {
-    @include when(radius) {
+    @include m(radius) {
       @include b(button) {
         border-radius: 0;
 
@@ -99,7 +99,7 @@
       }
     }
 
-    @include when(round) {
+    @include m(round) {
       @include b(button) {
         border-radius: 0;
 

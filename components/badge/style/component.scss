@@ -82,7 +82,7 @@
       transform: translateX(- var($--badge-height) / 2) translateY(var($--badge-sup-top));
     }
 
-    @include when(dot) {
+    @include m(dot) {
       @include e(content) {
         transform: translateX(- var($--badge-dot-diameter) / 2) translateY(-50%);
       }

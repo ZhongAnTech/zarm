@@ -27,7 +27,7 @@
     color: $active-color;
   }
 
-  @include when(disabled) {
+  @include m(disabled) {
     background-color: $disabled-background;
     border-color: $disabled-border;
     color: $disabled-color;
@@ -51,7 +51,7 @@
   height: $height;
   line-height: $height;
 
-  @include when(circle) {
+  @include m(circle) {
     width: $height;
     padding: 0;
   }
@@ -70,7 +70,7 @@
   $color,
   $active-color
 ) {
-  @include when(link) {
+  @include m(link) {
     &,
     &:hover {
       background-color: transparent;
@@ -82,7 +82,7 @@
       color: $active-color;
     }
 
-    @include when(disabled) {
+    @include m(disabled) {
       &,
       &:active,
       &:hover,
@@ -103,7 +103,7 @@
   $active-border,
   $active-color
 ) {
-  @include when(ghost) {
+  @include m(ghost) {
     &,
     &:hover {
       background-color: transparent;
@@ -117,7 +117,7 @@
       color: $active-color;
     }
 
-    @include when(disabled) {
+    @include m(disabled) {
       &,
       &:active,
       &:hover,

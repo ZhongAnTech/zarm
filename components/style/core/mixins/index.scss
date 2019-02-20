@@ -1,20 +1,42 @@
-@mixin b($block) {
-  $B: $namespace + '-' + $block !global;
 
-  .#{$B} {
+@function containsModifier($selector) {
+  $selector: selectorToString($selector);
+  @if str-index($selector, $modifier-separator) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function selectorToString($selector) {
+  $selector: inspect($selector); //cast to string
+  $selector: str-slice($selector, 2, -2); //remove brackets
+  @return $selector;
+}
+
+@function getBlock($selector) {
+  $selector: selectorToString($selector);
+  $modifierStart: str-index($selector, $modifier-separator) - 1;
+  @return str-slice($selector, 0, $modifierStart);
+}
+
+@mixin b($block) {
+  .#{$namespace+'-'+$block} {
     @content;
   }
 }
 
-@mixin e($elements...) {
-  $E: $elements !global;
+@mixin e($element...) {
   $selector: &;
-  $currentSelector: '';
-  @each $unit in $elements {
-    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
-  }
+  @if containsModifier($selector) {
+    $block: getBlock($selector);
+    $currentSelector: '';
+    @each $unit in $element {
+      $currentSelector: #{$currentSelector + $block + $element-separator + $unit + ","};
+    }
+    $currentSelector: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
 
-  @if hitAllSpecialNestRule($selector) {
+    // @debug $currentSelector;
     @at-root {
       #{$selector} {
         #{$currentSelector} {
@@ -23,8 +45,16 @@
       }
     }
   } @else {
+    $currentSelector: '';
+    @each $unit in $element {
+      $currentSelector: #{$currentSelector + $selector + $element-separator + $unit + ","};
+    }
+    $currentSelector: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
+    // @debug $currentSelector;
+
     @at-root {
       #{$currentSelector} {
+        // @debug &;
         @content;
       }
     }
@@ -32,22 +62,8 @@
 }
 
 @mixin m($modifier) {
-  $selector: &;
-  $currentSelector: '';
-  @each $unit in $modifier {
-    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ','};
-  }
-
   @at-root {
-    #{$currentSelector} {
-      @content;
-    }
-  }
-}
-
-@mixin when($state) {
-  @at-root {
-    &.#{$B + $state-prefix + $state} {
+    #{&}#{$modifier-separator+$modifier} {
       @content;
     }
   }

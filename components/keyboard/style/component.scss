@@ -27,7 +27,7 @@
       var($--button-disabled-opacity),
     );
 
-    @include when(ok) {
+    @include m(ok) {
       font-size: r(21);
       @include button-theme(
         var($--button-primary-background),

@@ -37,11 +37,11 @@
       @include onepx(top);
     }
 
-    @include when(primary) {
+    @include m(primary) {
       color: var($theme-primary);
     }
 
-    @include when(danger) {
+    @include m(danger) {
       color: var($theme-error);
     }
   }

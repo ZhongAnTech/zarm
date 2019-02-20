@@ -88,7 +88,7 @@
   }
 
   @include m(number) {
-    @include when(focus) {
+    @include m(focus) {
       @include e(virtual-input) {
         transform: translate3d(0, 0, 0);
 
@@ -108,7 +108,7 @@
   }
 
   @include m(clearable) {
-    @include when(focus) {
+    @include m(focus) {
       padding-right: var($--input-clear-icon-width);
     }
   }
