@@ -8,6 +8,15 @@
   }
 }
 
+@function containsElement($selector) {
+  $selector: selectorToString($selector);
+  @if str-index($selector, $element-separator) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
 @function selectorToString($selector) {
   $selector: inspect($selector); //cast to string
   $selector: str-slice($selector, 2, -2); //remove brackets
@@ -16,8 +25,13 @@
 
 @function getBlock($selector) {
   $selector: selectorToString($selector);
-  $modifierStart: str-index($selector, $modifier-separator) - 1;
-  @return str-slice($selector, 0, $modifierStart);
+  $start: 0;
+  @if containsElement($selector) {
+    $start: str-index($selector, $element-separator) - 1;
+  } @else {
+    $start: str-index($selector, $modifier-separator) - 1;
+  }
+  @return str-slice($selector, 0, $start);
 }
 
 @function getElements($elements) {
@@ -27,9 +41,13 @@
     $selector: getBlock($selector);
   }
   @each $unit in $elements {
-    $currentSelector: #{$currentSelector + $selector + $element-separator + $unit + ','};
+    @if containsElement($selector) {
+      $block: getBlock($selector);
+      $currentSelector: #{$currentSelector + $selector} #{$block + $element-separator + $unit + ','};
+    } @else {
+      $currentSelector: #{$currentSelector + $selector + $element-separator + $unit + ','};
+    }
   }
-  $currentSelector: str-slice($currentSelector, 0, str-length($currentSelector) - 1);
   @return $currentSelector;
 }
 
@@ -42,7 +60,6 @@
 @mixin e($element...) {
   $selector: &;
   $elements: getElements($element);
-  // @debug $elements;
   @if containsModifier($selector) {
     @at-root {
       #{$selector} {
@@ -61,9 +78,19 @@
 }
 
 @mixin m($modifier) {
-  @at-root {
-    #{&}#{$modifier-separator + $modifier} {
-      @content;
+  $selector: &;
+  @if containsModifier($selector) {
+    $selector: getBlock($selector);
+    @at-root {
+      #{&}#{$selector + $modifier-separator + $modifier} {
+        @content;
+      }
+    }
+  } @else {
+    @at-root {
+      #{$selector}#{$modifier-separator + $modifier} {
+        @content;
+      }
     }
   }
 }
