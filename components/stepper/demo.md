@@ -30,19 +30,6 @@ class Demo extends React.Component {
         />
 
         <Cell
-          title="大号"
-          description={
-            <Stepper
-              size="lg"
-              value={this.state.value}
-              onChange={(value) => {
-                console.log(value);
-              }}
-            />
-          }
-        />
-
-        <Cell
           title="设置默认值"
           description={
             <Stepper defaultValue={2} />
@@ -88,9 +75,9 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell
-          title="圆角"
+          title="直角"
           description={
-            <Stepper shape="radius" />
+            <Stepper shape="rect" />
           }
         />
 
@@ -98,6 +85,30 @@ class Demo extends React.Component {
           title="圆形"
           description={
             <Stepper shape="circle" />
+          }
+        />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
+## 多尺寸
+```jsx
+import { Cell, Stepper } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Cell
+          title="大号"
+          description={
+            <Stepper size="lg" />
           }
         />
       </div>
