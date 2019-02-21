@@ -43,10 +43,6 @@
       );
     }
 
-    &:active {
-      color: var($color-text);
-    }
-
     @include m(disabled) {
       background-color: #fff;
 

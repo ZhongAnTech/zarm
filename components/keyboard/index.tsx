@@ -99,7 +99,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
           >
             <Icon type="deletekey" />
           </div>
-          <div className={`${prefixCls}__item ${prefixCls}--ok`} onClick={() => this.onKeyClick('ok')}>确定</div>
+          <div className={`${prefixCls}__item ${prefixCls}__item--ok`} onClick={() => this.onKeyClick('ok')}>确定</div>
         </div>
       </div>
     );
