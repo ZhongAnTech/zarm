@@ -4,8 +4,8 @@
   display: flex;
   position: relative;
   padding: $padding-v-md $padding-h-md;
-  min-height: $message-min-height;
-  font-size: $message-font-size;
+  min-height: var($--message-min-height);
+  font-size: var($--message-font-size);
   @include message-theme($theme-default);
 
   @include e(icon) {
@@ -49,7 +49,7 @@
   }
 
   @include m(lg) {
-    min-height: $message-min-height-lg;
+    min-height: var($--message-min-height-lg);
     padding: $padding-v-lg $padding-h-lg;
 
     @include b(icon) {
@@ -58,7 +58,7 @@
     }
 
     @include e(body) {
-      font-size: $message-font-size-lg;
+      font-size: var($--message-font-size-lg);
     }
   }
 }
