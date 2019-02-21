@@ -56,7 +56,7 @@
     padding: 0;
   }
 
-  .#{$namespace + '-icon'} {
+  @include b(icon) {
     font-size: $icon-size;
   }
 
