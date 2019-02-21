@@ -14,7 +14,7 @@ export interface SearchBarProps extends BaseSearchBarProps {
 export default class SearchBar extends PureComponent<SearchBarProps, any> {
   static defaultProps = {
     prefixCls: 'za-search-bar',
-    shape: 'rect',
+    shape: 'radius',
     disabled: false,
     showCancel: false,
     clearable: true,
@@ -199,8 +199,8 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   renderCancel() {
     const { prefixCls, cancelText, showCancel, locale } = this.props;
     const { value, focus } = this.state;
-    const cancelCls = classnames(`${prefixCls}-cancel`, {
-      [`${prefixCls}-cancel-show`]: !!(showCancel || focus || (value && value.length > 0)),
+    const cancelCls = classnames(`${prefixCls}__cancel`, {
+      [`${prefixCls}__cancel--show`]: !!(showCancel || focus || (value && value.length > 0)),
     });
 
     return (
@@ -217,30 +217,29 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   render() {
     const { prefixCls, className, shape, placeholder, disabled, clearable, maxLength, locale } = this.props;
     const { value, focus, isOnComposition } = this.state;
-    const formCls = classnames(`${prefixCls}-form`, className, {
-      [`${prefixCls}-form-focus`]: !!(focus || (value && value.length > 0)),
+
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--focus`]: !!(focus || (value && value.length > 0)),
     });
 
-    const contentCls = classnames(`${prefixCls}-content`, {
-      [`shape-${shape}`]: !!shape,
-    });
     return (
-      <div className={`${prefixCls}`}>
+      <div className={cls}>
         <form
           action="#"
-          className={formCls}
+          className={`${prefixCls}__form`}
           onSubmit={(e) => { this.onSubmit(e); }}
           ref={(searchForm) => { this.searchForm = searchForm; }}
         >
-          <div className={contentCls}>
-            <div className={`${prefixCls}-mock`}>
+          <div className={`${prefixCls}__content`}>
+            <div className={`${prefixCls}__mock`}>
               <div
-                className={`${prefixCls}-mock-container`}
+                className={`${prefixCls}__mock__container`}
                 ref={(searchContainer) => { this.searchContainer = searchContainer; }}
               >
                 <Icon type="search" />
                 <span
-                  className={`${prefixCls}-mock-placeholder`}
+                  className={`${prefixCls}__mock__placeholder`}
                   style={{ visibility: value || isOnComposition ? 'hidden' : 'visible' }}
                 >
                   {placeholder || locale.placeholder}
@@ -248,6 +247,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
               </div>
             </div>
             <InputBase
+              className={`${prefixCls}__input`}
               type="search"
               placeholder={placeholder || locale.placeholder}
               value={value}
