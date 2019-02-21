@@ -5,19 +5,19 @@
     position: relative;
   }
 
-  @include e(left, right) {
+  @include e(actions) {
     display: flex;
     position: absolute;
     height: 100%;
     top: 0;
-  }
 
-  @include e(left) {
-    left: 0;
-  }
-
-  @include e(right) {
-    right: 0;
+    @include m(left) {
+      left: 0;
+    }
+  
+    @include m(right) {
+      right: 0;
+    }
   }
 
   @include b(button) {

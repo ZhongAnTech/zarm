@@ -179,17 +179,15 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   }
 
   renderButtons = (buttons, direction) => {
-    const { prefixCls } = this.props;
-
     if (!buttons || buttons.length === 0) {
       return;
     }
 
+    const { prefixCls } = this.props;
+    const cls = classnames(`${prefixCls}__actions`, `${prefixCls}__actions--${direction}`);
+
     return (
-      <div
-        className={`${prefixCls}__${direction}`}
-        ref={(el) => { this[direction] = el; }}
-      >
+      <div className={cls} ref={(el) => { this[direction] = el; }}>
         {buttons.map(this.renderButton)}
       </div>
     );
@@ -198,7 +196,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   render() {
     const { prefixCls, className, left, right, children } = this.props;
     const { offsetLeft, animationDuration } = this.state;
-    const cls = classnames(`${prefixCls}`, className);
+    const cls = classnames(prefixCls, className);
     const style = {
       WebkitTransitionDuration: `${animationDuration}ms`,
       transitionDuration: `${animationDuration}ms`,

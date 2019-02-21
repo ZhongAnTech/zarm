@@ -32,7 +32,7 @@ class Demo extends React.Component {
           autoClose
           left={[
             <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
-            <Button size="lg" shape="rect" theme="warning" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
+            <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
           ]}
           right={[
             <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
