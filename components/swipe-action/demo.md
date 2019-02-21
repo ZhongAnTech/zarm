@@ -13,7 +13,7 @@ class Demo extends React.Component {
         <SwipeAction
           right={[
             <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('右按钮1')}>右按钮1</Button>,
-            <Button size="lg" shape="rect" theme="error" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
+            <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮2')}>右按钮2</Button>,
           ]}
         >
           <Cell>左滑看看</Cell>
@@ -22,7 +22,7 @@ class Demo extends React.Component {
         <SwipeAction
           left={[
             <Button size="lg" shape="rect" theme="primary" onClick={() => console.log('左按钮1')}>左按钮1</Button>,
-            <Button size="lg" shape="rect" theme="error" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
+            <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
           ]}
         >
           <Cell>右滑看看</Cell>
@@ -35,7 +35,7 @@ class Demo extends React.Component {
             <Button size="lg" shape="rect" theme="warning" onClick={() => console.log('左按钮2')}>左按钮2</Button>,
           ]}
           right={[
-            <Button size="lg" shape="rect" theme="error" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
+            <Button size="lg" shape="rect" theme="danger" onClick={() => console.log('右按钮1')}>右按钮2</Button>,
           ]}
           onOpen={() => console.log('open')}
           onClose={() => console.log('close')}

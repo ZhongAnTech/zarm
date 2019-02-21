@@ -186,7 +186,10 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     }
 
     return (
-      <div className={`${prefixCls}-actions-${direction}`} ref={(el) => { this[direction] = el; }}>
+      <div
+        className={`${prefixCls}__${direction}`}
+        ref={(el) => { this[direction] = el; }}
+      >
         {buttons.map(this.renderButton)}
       </div>
     );
@@ -213,7 +216,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
             onDragMove={this.onDragMove}
             onDragEnd={this.onDragEnd}
           >
-            <div className={`${prefixCls}-content`} style={style}>
+            <div className={`${prefixCls}__content`} style={style}>
               {children}
             </div>
           </Drag>

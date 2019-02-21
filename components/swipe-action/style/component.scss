@@ -1,31 +1,26 @@
-$prefixCls: $prefixCls-swipe-action;
-
-.#{$prefixCls} {
+@include b(swipe-action) {
   position: relative;
 
-  &-content {
+  @include e(content) {
     position: relative;
   }
 
-  &-actions {
-    &-left,
-    &-right {
-      display: flex;
-      position: absolute;
-      height: 100%;
-      top: 0;
-    }
-
-    &-left {
-      left: 0;
-    }
-
-    &-right {
-      right: 0;
-    }
+  @include e(left, right) {
+    display: flex;
+    position: absolute;
+    height: 100%;
+    top: 0;
   }
 
-  .#{$prefixCls-button} {
-    font-size: r(14) !important;
+  @include e(left) {
+    left: 0;
+  }
+
+  @include e(right) {
+    right: 0;
+  }
+
+  @include b(button) {
+    font-size: r(14);
   }
 }
