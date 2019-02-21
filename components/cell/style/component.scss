@@ -68,7 +68,7 @@
     color: var($--cell-title-color);
     line-height: var($--cell-title-line-height);
 
-    &__label {
+    @include m(label) {
       flex: none;
       width: var($--cell-label-width);
     }

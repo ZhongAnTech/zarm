@@ -42,7 +42,7 @@ export default class Cell extends PureComponent<CellProps, {}> {
     });
 
     const titleCls = classnames(`${prefixCls}__title`, {
-      [`${prefixCls}__title__label`]: !!children,
+      [`${prefixCls}__title--label`]: !!children,
     });
 
     const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;
