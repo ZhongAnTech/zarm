@@ -1,6 +1,4 @@
-$prefixCls: $prefixCls-mask;
-
-.#{$prefixCls} {
+@include b(mask) {
   position: fixed;
   left: 0;
   top: 0;
@@ -9,7 +7,7 @@ $prefixCls: $prefixCls-mask;
   background-color: rgba(0, 0, 0, $opacity-mask);
   z-index: $zindex-mask;
 
-  &.type-transparent {
+  @include m(transparent) {
     background-color: transparent;
   }
 }
