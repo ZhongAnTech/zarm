@@ -1,25 +1,5 @@
-@import "mixins";
-
-$prefixCls: $prefixCls-tabs;
-
-.#{$prefixCls} {
-  &.theme-primary {
-    @include tabs-theme($theme-primary);
-  }
-
-  &.theme-success {
-    @include tabs-theme($theme-success);
-  }
-
-  &.theme-warning {
-    @include tabs-theme($theme-warning);
-  }
-
-  &.theme-error {
-    @include tabs-theme($theme-error);
-  }
-
-  &-header {
+@include b(tabs) {
+  @include e(header) {
     position: relative;
 
     ul {
@@ -27,72 +7,70 @@ $prefixCls: $prefixCls-tabs;
       list-style: none;
       margin: 0;
       padding: 0;
-      height: $tabs-height;
-      line-height: $tabs-height;
+      height: var($--tabs-height);
+      line-height: var($--tabs-height);
       @include onepx(bottom);
     }
 
-    &-item {
+    &__item {
       flex: 1;
       text-align: center;
       color: $color-text;
-      font-size: $tabs-item-font-size;
+      font-size: var($--tabs-item-font-size);
       cursor: pointer;
-
-      /*
-      &.hasline {
-        &:nth-of-type(n+2) {
-          position: relative;
-
-          &:after {
-            display: inline-block;
-            content: ' ';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 1px;
-            height: r(14);
-            margin-top: r(-7);
-            background: #e9e9e9;
-          }
-        }
-      }
-      */
-
-      &.active {
-        color: $theme-success;
-      }
-
-      &.disabled {
+  
+      @include m(disabled) {
         color: $color-text-disabled;
         cursor: not-allowed;
       }
     }
   }
 
-  &-line {
+  @include e(line) {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: $tabs-line-height;
+    height: var($--tabs-line-height);
     transition: left .3s ease-out;
+    background-color: $theme-primary;
 
-    &-inner {
+    &__inner {
       display: block;
       margin: auto;
       height: 100%;
+      background-color: $theme-primary;
     }
   }
 
-  &-panel {
+  @include e(panel) {
     position: relative;
     transition: height .3s;
 
-    &-item {
+    &__item {
       display: none;
 
-      &.active {
+      @include m(active) {
         display: block;
+      }
+    }
+  }
+
+  @include m(hasline) {
+    @include e(header__item) {
+      &:nth-of-type(n+2) {
+        position: relative;
+
+        &:after {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 1px;
+          height: r(14);
+          margin-top: r(-7);
+          background: #e9e9e9;
+        }
       }
     }
   }

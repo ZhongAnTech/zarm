@@ -320,9 +320,9 @@ $--switch-border-color: #e5e5e5;
 $--switch-background: #fff;
 
 // Tabs
-$tabs-height: r(45);
-$tabs-item-font-size: $font-size-lg;
-$tabs-line-height: r(2);
+$--tabs-height: r(45);
+$--tabs-item-font-size: $font-size-lg;
+$--tabs-line-height: r(2);
 
 // Toast
 $toast-border-radius: r(6);
