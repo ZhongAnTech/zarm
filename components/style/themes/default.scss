@@ -276,11 +276,11 @@ $--radio-size: r(20);
 $wheel-item-height: r(34);
 
 // Slider
-$slider-line-background: #d6d6d6;
-$slider-line-height: r(2);
-$slider-handle-size: r(28);
-$slider-handle-background: #fff;
-$slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+$--slider-line-background: #d6d6d6;
+$--slider-line-height: r(2);
+$--slider-handle-size: r(28);
+$--slider-handle-background: #fff;
+$--slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
 
 // activity-indicator
 $--activity-indicator-size-md: r(20);
