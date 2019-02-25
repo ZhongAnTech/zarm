@@ -1,67 +1,70 @@
-$prefixCls: $prefixCls-collapse;
-
-.#{$prefixCls} {
-  &-item {
-    &-title {
-      position: relative;
-      height: $collapse-height;
-      line-height: $collapse-height;
-      padding: 0 $collapse-padding;
-      @include onepx(bottom);
-    }
-
-    &-content {
-      position: relative;
-      height: 0;
-      overflow: hidden;
-      @include onepx(bottom);
-
-      &-inner {
-        padding: $padding-v-lg $collapse-padding;
+@include b(collapse) {
+  @include m(animated) {
+    @include b(collapse-item) {
+      &__content {
+        transition: all 0.15s ease-out;
       }
     }
+  }
+}
 
-    &-content-anim {
-      transition: all 0.15s ease-out;
+@include b(collapse-item) {
+  @include e(title) {
+    position: relative;
+    height: var($--collapse-height);
+    line-height: var($--collapse-height);
+    padding: 0 var($--collapse-padding);
+    @include onepx(bottom);
+  }
+
+  @include e(content) {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    @include onepx(bottom);
+
+    &__inner {
+      padding: $padding-v-lg var($--collapse-padding);
+    }
+  }
+
+  @include e(arrow) {
+    position: absolute;
+    width: r(10);
+    height: r(10);
+    top: r(17);
+    right: var($--collapse-padding);
+    border-right: r(2) solid var($--collapse-arrow-color);
+    border-bottom: r(2) solid var($--collapse-arrow-color);
+    transform: rotate(45deg);
+    transform-origin: 50% 50%;
+    transition: transform 0.15s ease-out;
+  }
+
+  @include m(disabled) {
+    @include e(arrow) {
+      border-right: r(2) solid var($--collapse-arrow-disabled-color);
+      border-bottom: r(2) solid var($--collapse-arrow-disabled-color);
+    }
+  }
+
+  @include m(active) {
+    @include e(content) {
+      height: auto;
     }
 
-    &-arrow {
-      position: absolute;
-      width: r(10);
-      height: r(10);
-      top: r(17);
-      right: $collapse-padding;
-      border-right: r(2) solid $collapse-arrow-color;
-      border-bottom: r(2) solid $collapse-arrow-color;
-      transform: rotate(45deg);
-      transform-origin: 50% 50%;
-      transition: transform 0.15s ease-out;
-
-      &-disabled {
-        border-right: r(2) solid $collapse-arrow-disabled-color;
-        border-bottom: r(2) solid $collapse-arrow-disabled-color;
-      }
+    @include e(arrow) {
+      transform: rotate(-135deg);
+      transform-origin: 60% 75%;
     }
+  }
 
-    &.active {
-      .#{$prefixCls}-item-content {
-        height: auto;
-      }
-
-      .#{$prefixCls}-item-arrow {
-        transform: rotate(-135deg);
-        transform-origin: 60% 75%;
-      }
-    }
-
-    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
-      &-title,
-      &-content {
-        &:after {
-          width: 200%;
-          height: 200%;
-          transform: scale(0.5);
-        }
+  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+    @include e(title, content) {
+      &:after {
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
       }
     }
   }

@@ -9,7 +9,7 @@ export interface CollapseItemProps extends BaseCollapseItemProps {
 
 export default class CollapseItem extends PureComponent<CollapseItemProps, any> {
   static defaultProps = {
-    prefixCls: 'za-collapse',
+    prefixCls: 'za-collapse-item',
     animated: false,
     disabled: false,
   };
@@ -87,43 +87,30 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     }, 0);
   }
 
-  getCls() {
-    const { prefixCls, className, animated, disabled } = this.props;
-    const { active } = this.state;
-
-    const cls = classnames(`${prefixCls}-item`, className, {
-      active: active,
-    });
-    const titleCls = `${prefixCls}-item-title`;
-    const contentCls = classnames(`${prefixCls}-item-content`, {
-      [`${prefixCls}-item-content-anim`]: animated,
-    });
-    const contentInnerCls = `${prefixCls}-item-content-inner`;
-    const arrowCls = classnames(`${prefixCls}-item-arrow`, {
-      [`${prefixCls}-item-arrow-disabled`]: disabled,
-    });
-
-    return { cls, titleCls, contentCls, contentInnerCls, arrowCls };
-  }
-
   render() {
     const { title, children, style } = this.props;
-    const { cls, titleCls, contentCls, contentInnerCls, arrowCls } = this.getCls();
+    const { prefixCls, className, disabled } = this.props;
+    const { active } = this.state;
+
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--active`]: active,
+      [`${prefixCls}--disabled`]: disabled,
+    });
 
     return (
       <div className={cls} style={style}>
         <div
-          className={titleCls}
+          className={`${prefixCls}__title`}
           onClick={this.onClickItem}
         >
           <div>{title}</div>
-          <div className={arrowCls} />
+          <div className={`${prefixCls}__arrow`} />
         </div>
         <div
-          className={contentCls}
+          className={`${prefixCls}__content`}
           ref={(content) => this.content = content}
         >
-          <div className={contentInnerCls}>
+          <div className={`${prefixCls}__content__inner`}>
             {children}
           </div>
         </div>

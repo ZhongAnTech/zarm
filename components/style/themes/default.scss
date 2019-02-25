@@ -114,10 +114,10 @@ $prefixCls-nav-bar: za-nav-bar;
 $prefixCls-marquee: za-marquee;
 
 // Collapse
-$collapse-height: r(52);
-$collapse-padding: r(16);
-$collapse-arrow-color: #c2c2c2;
-$collapse-arrow-disabled-color: #eee;
+$--collapse-height: r(52);
+$--collapse-padding: r(16);
+$--collapse-arrow-color: #c2c2c2;
+$--collapse-arrow-disabled-color: #eee;
 
 // ActionSheet
 $--action-sheet-margin: 0;
