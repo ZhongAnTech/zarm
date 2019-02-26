@@ -11,7 +11,6 @@ export interface ActionSheetProps extends PropsType {
 export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
   static defaultProps = {
     prefixCls: 'za-action-sheet',
-    shape: 'rect',
     visible: false,
     spacing: false,
     actions: [],
@@ -21,7 +20,7 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
   renderActions = (action, index) => {
     const { prefixCls } = this.props;
     const actionCls = classnames(`${prefixCls}__item`, {
-      [`${prefixCls}--${action.theme}`]: !!action.theme,
+      [`${prefixCls}__item--${action.theme}`]: !!action.theme,
     });
     return <a key={+index} className={actionCls} onClick={action.onClick}>{action.text}</a>;
   }
@@ -36,9 +35,8 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
   }
 
   render() {
-    const { prefixCls, className, shape, spacing, visible, onMaskClick, actions } = this.props;
-    const cls = classnames(`${prefixCls}`, className, {
-      [`${prefixCls}--${shape}`]: !!shape,
+    const { prefixCls, className, spacing, visible, onMaskClick, actions } = this.props;
+    const cls = classnames(prefixCls, className, {
       [`${prefixCls}--spacing`]: spacing,
     });
 

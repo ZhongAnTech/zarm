@@ -5,9 +5,7 @@
 
   @include m(spacing) {
     margin: 0 r(10) r(10);
-  }
 
-  @include m(radius) {
     @include e(actions, cancel) {
       border-radius: var($radius-md);
     }

@@ -68,11 +68,10 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
   }
 
   renderCancel = () => {
-    const { styles, shape, onCancel, cancelText } = this.props;
+    const { styles, onCancel, cancelText } = this.props;
     const { isActive, activeIndex } = this.state;
     const cancelWrapperStyle = [
       styles!.wrapperCacnel,
-      styles![`${shape}Shape`],
     ];
     const cancelMaskStyle = [
       styles!.actionItemMask,
@@ -97,23 +96,21 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
   }
 
   render() {
-    const { style, styles, shape, spacing, visible, onMaskClick, actions } = this.props;
+    const { style, styles, spacing, visible, onMaskClick, actions } = this.props;
     const wrapperStyle = [
       styles!.wrapper,
       spacing && styles!.wrapperSpacing,
-      styles![`${shape}Shape`],
       style,
     ];
 
     const actionsStyle = [
       styles!.wrapperActions,
-      styles![`${shape}Shape`],
       { margin: 0 },
     ];
 
     return (
       <Popup visible={visible} onMaskClick={onMaskClick}>
-        <View style={wrapperStyle}>
+        <View style={wrapperStyle as ViewStyle}>
           <View style={actionsStyle}>
             {actions.map(this.renderActions)}
           </View>

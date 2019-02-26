@@ -12,6 +12,7 @@ const BUTTONS = [
     onClick: () => console.log('点击操作一'),
   },
   {
+    theme: 'primary',
     text: '操作二',
     onClick: () => console.log('点击操作二'),
   },
@@ -76,7 +77,6 @@ class Demo extends React.Component {
         />
         <ActionSheet
           spacing
-          shape="radius"
           visible={this.state.visible3}
           actions={BUTTONS}
           onMaskClick={() => this.toggle('visible3')}

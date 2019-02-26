@@ -7,7 +7,6 @@ export type Action = {
 
 export default interface PropsType {
   visible?: boolean;
-  shape?: 'rect' | 'radius';
   spacing?: boolean;
   actions: Action[];
   cancelText?: string;
