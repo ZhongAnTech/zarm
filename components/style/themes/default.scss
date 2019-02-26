@@ -325,10 +325,10 @@ $--tabs-item-font-size: $font-size-lg;
 $--tabs-line-height: r(2);
 
 // Toast
-$toast-border-radius: r(6);
-$toast-color: #fff;
-$toast-font-size: r(13);
-$toast-max-width: 70%;
+$--toast-border-radius: r(6);
+$--toast-color: #fff;
+$--toast-font-size: r(13);
+$--toast-max-width: 70%;
 
 // Tooltip
 $tooltip-font-size: r(12);

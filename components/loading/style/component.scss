@@ -1,6 +1,4 @@
-$prefixCls: $prefixCls-loading;
-
-.#{$prefixCls} {
+@include b(loading) {
   display: none;
   position: fixed;
   left: 0;
@@ -11,13 +9,13 @@ $prefixCls: $prefixCls-loading;
   user-select: none;
   z-index: $zindex-loading;
 
-  &-open {
+  @include m(open) {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &-container {
+  @include e(container) {
     position: relative;
     display: flex;
     align-items: center;

@@ -1,6 +1,4 @@
-$prefixCls: $prefixCls-toast;
-
-.#{$prefixCls} {
+@include b(toast) {
   display: none;
   position: fixed;
   left: 0;
@@ -11,20 +9,20 @@ $prefixCls: $prefixCls-toast;
   user-select: none;
   z-index: $zindex-toast;
 
-  &-open {
+  @include m(open) {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &-container {
+  @include e(container) {
     position: relative;
-    max-width: $toast-max-width;
+    max-width: var($--toast-max-width);
     padding: $padding-v-xl $padding-h-xl;
-    border-radius: $toast-border-radius;
+    border-radius: var($--toast-border-radius);
     background: rgba(0, 0, 0, $opacity-toast);
-    color: $toast-color;
+    color: var($--toast-color);
     text-align: center;
-    font-size: $toast-font-size;
+    font-size: var($--toast-font-size);
   }
 }
