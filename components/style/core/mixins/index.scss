@@ -88,7 +88,7 @@
     }
   } @else {
     @at-root {
-      #{$selector}#{$modifier-separator + $modifier} {
+      #{$selector + $modifier-separator + $modifier} {
         @content;
       }
     }
