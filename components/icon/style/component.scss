@@ -1,61 +1,114 @@
-$prefixCls: $prefixCls-icon;
-
 @font-face {
   font-family: 'zarmicon';
-  src: url('#{$icon-url}.eot');
-  src: url('#{$icon-url}.eot?#iefix') format('embedded-opentype'), url('#{$icon-url}.woff') format('woff'), url('#{$icon-url}.ttf') format('truetype'), url('#{$icon-url}.svg#dragonicon') format('svg');
+  src: url('#{var($--icon-url)}.eot');
+  src: url('#{var($--icon-url)}.eot?#iefix') format('embedded-opentype'), url('#{var($--icon-url)}.woff') format('woff'), url('#{var($--icon-url)}.ttf') format('truetype'), url('#{var($--icon-url)}.svg#zarmicon') format('svg');
 }
 
-.#{$prefixCls} {
+@include b(icon) {
   display: inline-block;
   font-family: 'zarmicon' !important;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &.theme-primary {
+  @include m(primary) {
     color: $theme-primary;
   }
-
-  &.theme-success {
+  @include m(success) {
     color: $theme-success;
   }
-
-  &.theme-warning {
+  @include m(warning) {
     color: $theme-warning;
   }
-
-  &.theme-error {
+  @include m(error) {
     color: $theme-error;
   }
 
-  &-arrow-top:before { content: "\e60e"; }
-  &-arrow-bottom:before { content: "\e60f"; }
-  &-arrow-left:before { content: "\e610"; }
-  &-arrow-right:before { content: "\e611"; }
-  &-warning-round-fill:before { content: "\e616"; }
-  &-warning-round:before { content: "\e617"; }
-  &-right-square-fill:before { content: "\e600"; }
-  &-right-square:before { content: "\e601"; }
-  &-wrong:before { content: "\e602"; }
-  &-wrong-round-fill:before { content: "\e603"; }
-  &-wrong-round:before { content: "\e604"; }
-  &-add-round:before { content: "\e605"; }
-  &-add:before { content: "\e606"; }
-  &-add-round-fill:before { content: "\e607"; }
-  &-minus:before { content: "\e608"; }
-  &-info-round-fill:before { content: "\e609"; }
-  &-info-round:before { content: "\e60a"; }
-  &-question-round-fill:before { content: "\e60b"; }
-  &-question-round:before { content: "\e60c"; }
-  &-right:before { content: "\e60d"; }
-  &-right-round-fill:before { content: "\e612"; }
-  &-right-round:before { content: "\e613"; }
-  &-minus-round-fill:before { content: "\e614"; }
-  &-required:before { content: "\e619"; }
-  &-minus-round:before { content: "\e615"; }
-  &-broadcast:before { content: "\e618"; }
-  &-deletekey:before { content: "\e61a"; }
-  &-keyboard:before { content: "\e61b"; }
-  &-search:before { content: "\e61d"; }
+  @include m(arrow-top) {
+    &:before { content: '\e60e'; }
+  }
+  @include m(arrow-bottom) {
+    &:before { content: '\e60f'; }
+  }
+  @include m(arrow-left) {
+    &:before { content: '\e610'; }
+  }
+  @include m(arrow-right) {
+    &:before { content: '\e611'; }
+  }
+  @include m(warning-round-fill) {
+    &:before { content: '\e616'; }
+  }
+  @include m(warning-round) {
+    &:before { content: '\e617'; }
+  }
+  @include m(right-square-fill) {
+    &:before { content: '\e600'; }
+  }
+  @include m(right-square) {
+    &:before { content: '\e601'; }
+  }
+  @include m(wrong) {
+    &:before { content: '\e602'; }
+  }
+  @include m(wrong-round-fill) {
+    &:before { content: '\e603'; }
+  }
+  @include m(wrong-round) {
+    &:before { content: '\e604'; }
+  }
+  @include m(add-round) {
+    &:before { content: '\e605'; }
+  }
+  @include m(add) {
+    &:before { content: '\e606'; }
+  }
+  @include m(add-round-fill) {
+    &:before { content: '\e607'; }
+  }
+  @include m(minus) {
+    &:before { content: '\e608'; }
+  }
+  @include m(info-round-fill) {
+    &:before { content: '\e609'; }
+  }
+  @include m(info-round) {
+    &:before { content: '\e60a'; }
+  }
+  @include m(question-round-fill) {
+    &:before { content: '\e60b'; }
+  }
+  @include m(question-round) {
+    &:before { content: '\e60c'; }
+  }
+  @include m(right) {
+    &:before { content: '\e60d'; }
+  }
+  @include m(right-round-fill) {
+    &:before { content: '\e612'; }
+  }
+  @include m(right-round) {
+    &:before { content: '\e613'; }
+  }
+  @include m(minus-round-fill) {
+    &:before { content: '\e614'; }
+  }
+  @include m(required) {
+    &:before { content: '\e619'; }
+  }
+  @include m(minus-round) {
+    &:before { content: '\e615'; }
+  }
+  @include m(broadcast) {
+    &:before { content: '\e618'; }
+  }
+  @include m(deletekey) {
+    &:before { content: '\e61a'; }
+  }
+  @include m(keyboard) {
+    &:before { content: '\e61b'; }
+  }
+  @include m(search) {
+    &:before { content: '\e61d'; }
+  }
 }
