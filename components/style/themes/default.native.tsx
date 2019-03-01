@@ -2,15 +2,15 @@
 const base = {
   // 主题色
   theme_default: '#e6e6e6',                 // 默认色
-  theme_primary: '#12c287',                 // 主色
-  theme_success: '#12c287',                 // 成功
+  theme_primary: '#00bc70',                 // 主色
+  theme_success: '#00bc70',                 // 成功
   theme_warning: '#ec9131',                 // 警告
   theme_error: '#ff5050',                   // 失败
 
   // press状态色阶
   theme_default_press: '#cdcdcd',
-  theme_primary_press: '#10ae79',
-  theme_success_press: '#10ae79',
+  theme_primary_press: '#00a864',
+  theme_success_press: '#00a864',
   theme_warning_press: '#d3833c',
   theme_error_press: '#e54747',
 

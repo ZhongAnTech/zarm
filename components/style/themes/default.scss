@@ -4,18 +4,18 @@ $modifier-separator: '--';
 $state-prefix: '--';
 
 // 主题色
-$theme-default: #e6e6e6;                    // 默认
-$theme-primary: #12c287;                 // 主色
-$theme-success: #12c287;                 // 成功
+$theme-default: #e6e6e6;                 // 默认
+$theme-primary: #00bc70;                 // 主色
+$theme-success: #00bc70;                 // 成功
 $theme-warning: #ec9131;                 // 警告
 $theme-error: #ff5050;                   // 失败
 
 // press状态色阶
-$theme-default-press: darken($theme-default, 10%);
-$theme-primary-press: darken($theme-primary, 10%);
-$theme-success-press: darken($theme-success, 10%);
-$theme-warning-press: darken($theme-warning, 10%);
-$theme-error-press: darken($theme-error, 10%);
+$theme-default-press: darken($theme-default, 5%);
+$theme-primary-press: darken($theme-primary, 5%);
+$theme-success-press: darken($theme-success, 5%);
+$theme-warning-press: darken($theme-warning, 5%);
+$theme-error-press: darken($theme-error, 5%);
 
 // 文字色
 $color-text: #464646;                    // 基本
@@ -166,8 +166,8 @@ $--button-default-active-border: $theme-default;
 $--button-default-active-color: $color-text;
 $--button-default-ghost-border: #fff;
 $--button-default-ghost-color: #fff;
-$--button-default-ghost-active-border: $theme-default-press;
-$--button-default-ghost-active-color: $theme-default-press;
+$--button-default-ghost-active-border: $theme-default;
+$--button-default-ghost-active-color: $theme-default;
 
 $--button-primary-background: $theme-primary;
 $--button-primary-border: $theme-primary;
