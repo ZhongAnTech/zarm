@@ -70,7 +70,7 @@ export default class NoticeBar extends PureComponent<MessageProps, any> {
       <Message {...others} size="lg">
         <div className={prefixCls} ref={(ele) => { this.wrapper = ele; }}>
           <div
-            className={`${prefixCls}-body`}
+            className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
             style={{ left: this.state.offset }}
           >

@@ -253,7 +253,7 @@ $modal-background: #fff;
 $modal-title-font-size: r(18);
 
 // NoticeBar
-$notice-bar-height: r(24);
+$--notice-bar-height: r(24);
 
 // Panel
 $--panel-header-color: $color-text-caption;
@@ -262,7 +262,7 @@ $--panel-body-color: $color-text;
 $--panel-body-font-size: r(15);
 
 // Picker
-$picker-stackitem-height: r(35);
+// $--picker-stackitem-height: r(35);
 
 // Pull
 $pull-control-height: r(50);
