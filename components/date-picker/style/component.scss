@@ -7,9 +7,9 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    height: r(45);
-    line-height: r(45);
-    font-size: r(16);
+    height: var($--picker-header-height);
+    line-height: var($--picker-header-height);
+    font-size: var($--picker-header-font-size);
     @include onepx(bottom);
   }
 
