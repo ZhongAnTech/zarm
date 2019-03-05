@@ -1,6 +1,4 @@
-$prefixCls: $prefixCls-modal;
-
-.#{$prefixCls} {
+@include b(modal) {
   position: fixed;
   left: 0;
   top: 0;
@@ -14,48 +12,45 @@ $prefixCls: $prefixCls-modal;
   overflow: auto;
   z-index: $zindex-modal;
 
-  &.shape-radius {
-    .#{$prefixCls}-dialog {
+  @include m(radius) {
+    @include e(dialog) {
       border-radius: $radius-md;
     }
   }
 
-  &-wrapper {
+  @include e(wrapper) {
     width: 100%;
     margin: auto 0;
   }
 
-  &-dialog {
+  @include e(dialog) {
     position: relative;
     margin: r(60) auto;
-    background-color: $modal-background;
+    background-color: var($--modal-background);
     box-shadow: 0 r(7) r(21) $color-shadow;
     overflow: hidden;
     z-index: $zindex-modal + 1;
   }
 
-  &-header {
+  @include e(header) {
     position: relative;
     padding: r(20) r(15) 0 r(15);
     text-align: center;
 
-    &-title {
-      font-size: $modal-title-font-size;
+    &__title {
+      font-size: var($--modal-title-font-size);
       line-height: 1;
       color: #333;
     }
 
-    &-close {
+    &__close {
       position: absolute;
       top: r(20);
       right: r(15);
       line-height: r(15);
       color: #ccc;
+      font-size: r(20);
       cursor: pointer;
-
-      &.#{$prefixCls-icon} {
-        font-size: r(20);
-      }
 
       &:hover {
         color: #999;
@@ -63,7 +58,7 @@ $prefixCls: $prefixCls-modal;
     }
   }
 
-  &-body {
+  @include e(body) {
     font-size: r(15);
     color: $color-text-caption;
     padding: r(15);
@@ -71,11 +66,11 @@ $prefixCls: $prefixCls-modal;
     user-select: auto;
   }
 
-  &-footer {
+  @include e(footer) {
     display: flex;
     width: 100%;
 
-    &.block {
+    @include m(block) {
       flex-direction: column;
 
       a {

@@ -125,8 +125,8 @@ $--action-sheet-item-height: r(50);
 $--action-sheet-item-font-size: r(16);
 
 // Alert
-$alert-button-height: r(50);
-$alert-button-font-size: r(18);
+$--alert-button-height: r(50);
+$--alert-button-font-size: r(18);
 
 // Badge
 $--badge-height: r(14);
@@ -231,8 +231,8 @@ $--cell-arrow-border-width: r(2);                 // 箭头粗细
 $--checkbox-size: r(20);
 
 // Confirm
-$confirm-button-height: r(50);
-$confirm-button-font-size: r(18);
+$--confirm-button-height: r(50);
+$--confirm-button-font-size: r(18);
 
 // Icon
 $--icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
@@ -249,8 +249,8 @@ $--message-min-height-lg: r(42);
 $--message-font-size-lg: r(15);
 
 // Modal
-$modal-background: #fff;
-$modal-title-font-size: r(18);
+$--modal-background: #fff;
+$--modal-title-font-size: r(18);
 
 // NoticeBar
 $--notice-bar-height: r(24);
@@ -262,6 +262,8 @@ $--panel-body-color: $color-text;
 $--panel-body-font-size: r(15);
 
 // Picker
+$--picker-header-height: r(45);
+$--picker-header-font-size: r(16);
 // $--picker-stackitem-height: r(35);
 
 // Pull

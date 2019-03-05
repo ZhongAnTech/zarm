@@ -14,7 +14,7 @@ export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
 
   render() {
     const { prefixCls, className, height, children, ...others } = this.props;
-    const cls = classnames(`${prefixCls}-body`, className);
+    const cls = classnames(`${prefixCls}__body`, className);
 
     const bodyStyle: CSSProperties = {};
     bodyStyle.height = height;

@@ -1,20 +1,18 @@
 @import "../../button/style/mixins";
 
-$prefixCls: $prefixCls-confirm;
-
-.#{$prefixCls} {
-  &-body {
+@include b(confirm) {
+  @include e(body) {
     text-align: center;
   }
 
-  &-footer {
+  @include e(footer) {
     display: flex;
 
-    &-button {
+    &__button {
       flex: 1;
-      height: $confirm-button-height;
-      line-height: $confirm-button-height;
-      font-size: $confirm-button-font-size;
+      height: var($--confirm-button-height);
+      line-height: var($--confirm-button-height);
+      font-size: var($--confirm-button-font-size);
       @include button-base();
       @include onepx(top);
 
@@ -26,7 +24,7 @@ $prefixCls: $prefixCls-confirm;
         @include onepx(left top);
       }
 
-      &-ok {
+      @include m(ok) {
         color: $theme-primary;
       }
     }
