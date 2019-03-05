@@ -353,4 +353,5 @@ $--input-height: r(28);
 $--input-line-height: $--cell-title-line-height;
 
 // Progress
-$progress-background: rgb(238, 238, 238);
+$--progress-background: #eee;
+$--progress-circle-diameter: r(150);
