@@ -238,7 +238,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       return render(refreshState, percent);
     }
 
-    const cls = `${this.props.prefixCls}-control`;
+    const cls = `${this.props.prefixCls}__control`;
 
     switch (refreshState) {
       case REFRESH_STATE.pull:
@@ -297,7 +297,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       return render(loadState);
     }
 
-    const cls = `${this.props.prefixCls}-control`;
+    const cls = `${this.props.prefixCls}__control`;
 
     switch (loadState) {
       case LOAD_STATE.loading:
@@ -332,8 +332,8 @@ export default class Pull extends PureComponent<PullProps, any> {
     const { offsetY, animationDuration, refreshState, loadState } = this.state;
     const cls = classnames(prefixCls, className);
 
-    const loadCls = classnames(`${prefixCls}-load`, {
-      [`${prefixCls}-load-show`]: loadState >= LOAD_STATE.loading,
+    const loadCls = classnames(`${prefixCls}__load`, {
+      [`${prefixCls}__load--show`]: loadState >= LOAD_STATE.loading,
     });
 
     const contentStyle: CSSProperties = {
@@ -352,11 +352,11 @@ export default class Pull extends PureComponent<PullProps, any> {
         onDragEnd={this.onDragEnd}
       >
         <div className={cls}>
-          <div className={`${prefixCls}-content`} style={contentStyle} ref={(ele) => { this.pull = ele; }}>
-            <div className={`${prefixCls}-refresh`}>
+          <div className={`${prefixCls}__content`} style={contentStyle} ref={(ele) => { this.pull = ele; }}>
+            <div className={`${prefixCls}__refresh`}>
               {this.renderRefresh()}
             </div>
-            <div className={`${prefixCls}-body`}>{children}</div>
+            <div className={`${prefixCls}__body`}>{children}</div>
             <div className={loadCls}>
               {this.renderLoad()}
             </div>
