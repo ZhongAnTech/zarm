@@ -76,9 +76,6 @@ export default class Pull extends PureComponent<PullProps, any> {
     })(this.pull) || document.documentElement;
   }
 
-  // 节流处理
-  onThrottledScroll = () => Throttle(this.onScroll, 250);
-
   onScroll = () => {
     const { refreshState, loadState } = this.state;
     const { scrollHeight, scrollTop, clientHeight } = this.wrap;
