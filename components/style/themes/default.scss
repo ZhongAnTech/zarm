@@ -332,9 +332,9 @@ $--toast-font-size: r(13);
 $--toast-max-width: 70%;
 
 // Tooltip
-$tooltip-font-size: r(12);
-$tooltip-color: #fff;
-$tooltip-arrow-size: r(5);
+$--tooltip-font-size: r(12);
+$--tooltip-color: #fff;
+$--tooltip-arrow-size: r(5);
 
 // NavBar
 $--nav-bar-color: #fdfdfd;
