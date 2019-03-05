@@ -1,41 +1,22 @@
-$prefixCls: $prefixCls-wheel;
-$itemHeight: $wheel-item-height;
-$itemRows: 5;
-
-.#{$prefixCls} {
+@include b(wheel) {
   display: block;
   position: relative;
-  overflow: hidden;
-  height: $itemRows * $itemHeight;
   width: 100%;
+  height: var($--wheel-item-rows) * var($--wheel-item-height);
+  overflow: hidden;
 
-  &-content {
-    margin-top: 68px;
-    // padding: ($itemRows - 1) * $itemHeight / 2 0;
+  @include e(content) {
+    margin-top: var($--wheel-item-height) * 2;
   }
 
-  &-item {
+  @include e(item) {
     text-align: center;
-    font-size: r(18);
-    line-height: $itemHeight;
-    height: $itemHeight;
+    font-size: var($--wheel-item-font-size);
+    line-height: var($--wheel-item-height);
+    height: var($--wheel-item-height);
     color: #000;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-
-    // &-selected {
-    //   font-size: r(18);
-    //   transition: all 0.1s;
-    // }
   }
-
-  // &-indicator {
-  //   position: absolute;
-  //   right: 0;
-  //   left: 0;
-  //   top: ($itemRows - 1) * $itemHeight / 2;
-  //   height: $itemHeight;
-  //   @include onepx(top bottom);
-  // }
 }
