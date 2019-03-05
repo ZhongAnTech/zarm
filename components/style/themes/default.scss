@@ -256,11 +256,10 @@ $modal-title-font-size: r(18);
 $notice-bar-height: r(24);
 
 // Panel
-$panel-header-color: $color-text-caption;
-$panel-header-font-size: r(14);
-$panel-body-color: $color-text;
-$panel-footer-color: $color-text-caption;
-$panel-footer-font-size: r(12);
+$--panel-header-color: $color-text-caption;
+$--panel-header-font-size: r(14);
+$--panel-body-color: $color-text;
+$--panel-body-font-size: r(15);
 
 // Picker
 $picker-stackitem-height: r(35);

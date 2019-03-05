@@ -1,11 +1,7 @@
-$prefixCls: $prefixCls-picker;
+@include b(date-picker) {
+  background: #fff;
 
-.#{$prefixCls} {
-  &-wrapper {
-    background: #fff;
-  }
-
-  &-header {
+  @include e(header) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,23 +9,27 @@ $prefixCls: $prefixCls-picker;
     width: 100%;
     height: r(45);
     line-height: r(45);
+    font-size: r(16);
     @include onepx(bottom);
   }
 
-  &-cancel,
-  &-submit {
+  @include e(cancel, submit) {
     flex: 1;
     padding: 0 r(20);
     cursor: pointer;
   }
 
-  &-cancel {
+  @include e(cancel) {
     text-align: left;
     color: $color-text-caption;
   }
 
-  &-submit {
+  @include e(submit) {
     text-align: right;
     color: $theme-primary;
+  }
+
+  @include e(title) {
+    color: $color-text;
   }
 }

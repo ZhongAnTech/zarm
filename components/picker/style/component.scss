@@ -1,43 +1,39 @@
 @import "mixins";
 
-$prefixCls: $prefixCls-picker;
 $stackitemHeight: $picker-stackitem-height;
 
-.#{$prefixCls} {
-  &-wrapper {
-    background: #fff;
-  }
+@include b(picker) {
+  background: #fff;
 
-  &-header {
+  @include e(header) {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     width: 100%;
     height: r(45);
-    font-size: r(16);
     line-height: r(45);
+    font-size: r(16);
     @include onepx(bottom);
   }
 
-  &-cancel,
-  &-submit {
+  @include e(cancel, submit) {
     flex: 1;
     padding: 0 r(20);
     cursor: pointer;
   }
 
-  &-cancel {
+  @include e(cancel) {
     text-align: left;
     color: $color-text-caption;
   }
 
-  &-submit {
+  @include e(submit) {
     text-align: right;
     color: $theme-primary;
   }
 
-  &-title {
+  @include e(title) {
     color: $color-text;
   }
 

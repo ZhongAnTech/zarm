@@ -17,7 +17,7 @@ const isExtendDate = (date) => {
 
 export interface DatePickerProps extends BaseDatePickerProps {
   prefixCls?: string;
-  className?: any;
+  className?: string;
 }
 
 export default class DatePicker extends Component<DatePickerProps, any> {
@@ -31,7 +31,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     value: '',
     defaultValue: '',
     minuteStep: 1,
-    prefixCls: 'za-picker',
+    prefixCls: 'za-date-picker',
     valueMember: 'value',
     onCancel: () => {},
     onInit: () => {},
@@ -143,33 +143,23 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, disabled,
-       ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, children, disabled, ...others } = this.props;
     const { visible, value } = this.state;
-
-    // const classes = classnames({
-    //   [`${prefixCls}-container`]: true,
-    //   [`${prefixCls}-hidden`]: !visible,
-    //   [className]: !!className,
-    // });
-
-    // const cls = classnames(prefixCls, className);
 
     return (
       <Popup
         visible={visible}
         onMaskClick={() => this.onMaskClick()}
       >
-        <div className={`${prefixCls}-wrapper`} onClick={(e) => {e.stopPropagation(); }}>
-          <div className={`${prefixCls}-header`}>
-            <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
-            <div className={`${prefixCls}-title`}>{title}</div>
-            <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
+        <div className={prefixCls} onClick={(e) => {e.stopPropagation(); }}>
+          <div className={`${prefixCls}__header`}>
+            <div className={`${prefixCls}__cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
+            <div className={`${prefixCls}__title`}>{title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText}</div>
           </div>
           <DatePickerView
-            prefixCls={prefixCls}
-            className={className}
             {...others}
+            className={className}
             value={value}
             onInit={this.onInit}
             onChange={this.onValueChange}

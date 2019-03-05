@@ -1,21 +1,20 @@
-$prefixCls: $prefixCls-panel;
-
-.#{$prefixCls} {
-  &-header {
+@include b(panel) {
+  @include e(header) {
     display: flex;
     padding: r(25) r(16) r(7) r(16);
-    color: $panel-header-color;
-    font-size: $panel-header-font-size;
+    font-size: var($--panel-header-font-size);
+    color: var($--panel-header-color);
+
+    &__title {
+      flex: 1;
+    }
   }
 
-  &-body {
+  @include e(body) {
     position: relative;
     background: #fff;
+    font-size: var($--panel-body-font-size);
     color: $color-text;
     @include onepx(top bottom);
-  }
-
-  &-title {
-    flex: 1;
   }
 }

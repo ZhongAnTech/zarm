@@ -9,6 +9,8 @@
 }
 
 @include b(collapse-item) {
+  font-size: r(15);
+
   @include e(title) {
     position: relative;
     height: var($--collapse-height);
