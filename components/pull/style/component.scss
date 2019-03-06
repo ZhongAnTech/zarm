@@ -18,7 +18,7 @@
   }
 
   @include e(refresh) {
-    margin-top: -var($--pull-control-height);
+    margin-top: - var($--pull-control-height);
     height: var($--pull-control-height);
   }
 
