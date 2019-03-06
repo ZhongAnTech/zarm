@@ -51,9 +51,9 @@ class Demo extends React.Component {
                   label: '双选'
                 }
               ]}
-              onOk={e => {
+              onOk={selected => {
                 this.setState({
-                  multiple: e[0].value === 'true',
+                  multiple: selected[0].value === 'true',
                   visible: false
                 });
               }}

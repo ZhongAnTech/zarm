@@ -12,7 +12,7 @@ $theme-error: #ff5050;                   // 失败
 
 // press状态色阶
 $theme-default-press: darken($theme-default, 5%);
-$theme-primary-press: darken($theme-primary, 5%);
+$theme-primary-press: hsl(156, 100%, 32.9%);
 $theme-success-press: darken($theme-success, 5%);
 $theme-warning-press: darken($theme-warning, 5%);
 $theme-error-press: darken($theme-error, 5%);
@@ -68,7 +68,7 @@ $zindex-toast: 1500;
 $zindex-loading: 1500;
 
 // 透明度
-$opacity-disabled: .6;
+$opacity-disabled: .5;
 $opacity-mask: .5;
 $opacity-toast: .8;
 $opacity-tooltip: .8;
@@ -192,24 +192,24 @@ $--button-danger-ghost-active-border: $theme-error-press;
 $--button-danger-ghost-active-color: $theme-error-press;
 
 // Calendar
-$calendar-height: r(45); // 最小高度
-$calendar-background: #fff; // 背景色
-$calendar-week-bar-fontsize: r(14); // 星期条文字大小
-$calendar-week-bar-background: #fafafa; // 星期条文字背景色
-$calendar-week-bar-color: #909090; // 星期条文字颜色
-$calendar-section-padding: r(15); // 两边留白间距
-$calendar-day-fontsize: r(16); // 月份文字大小
-$calendar-day-title-fontsize: r(17); // 月份title文字大小
-$calendar-day-background: #fff; // 月份文字背景颜色
-$calendar-day-color: #464646; // 月份文字颜色
-$calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
-$calendar-day-today-color: #11c286; // 日期今天选中颜色
-$calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
-$calendar-day-selected-color: #fff; // 日期文字选中颜色
-$calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
-$calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
-$calendar-day-width: 14.28571%; // 日期宽度
-$calendar-day-height: r(40); // 日期高度
+$--calendar-height: r(45); // 最小高度
+$--calendar-background: #fff; // 背景色
+$--calendar-week-bar-fontsize: r(14); // 星期条文字大小
+$--calendar-week-bar-background: #fafafa; // 星期条文字背景色
+$--calendar-week-bar-color: #909090; // 星期条文字颜色
+$--calendar-section-padding: r(15); // 两边留白间距
+$--calendar-day-fontsize: r(16); // 月份文字大小
+$--calendar-day-title-fontsize: r(17); // 月份title文字大小
+$--calendar-day-background: #fff; // 月份文字背景颜色
+$--calendar-day-color: #464646; // 月份文字颜色
+$--calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
+$--calendar-day-today-color: #11c286; // 日期今天选中颜色
+$--calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
+$--calendar-day-selected-color: #fff; // 日期文字选中颜色
+$--calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
+$--calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
+$--calendar-day-width: 14.28571%; // 日期宽度
+$--calendar-day-height: r(40); // 日期高度
 
 // Cell
 $--cell-height: r(52);                            // 最小高度
