@@ -15,12 +15,12 @@
     &__item {
       flex: 1;
       text-align: center;
-      color: $color-text;
+      color: var($--color-text);
       font-size: var($--tabs-item-font-size);
       cursor: pointer;
   
       @include m(disabled) {
-        color: $color-text-disabled;
+        color: var($--color-text-disabled);
         cursor: not-allowed;
       }
     }
@@ -32,13 +32,13 @@
     bottom: 0;
     height: var($--tabs-line-height);
     transition: left .3s ease-out;
-    background-color: $theme-primary;
+    background-color: var($--theme-primary);
 
     &__inner {
       display: block;
       margin: auto;
       height: 100%;
-      background-color: $theme-primary;
+      background-color: var($--theme-primary);
     }
   }
 

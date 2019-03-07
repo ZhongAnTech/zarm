@@ -7,9 +7,9 @@
 
   @include e(inner) {
     position: relative;
-    background-color: rgba(0, 0, 0, $opacity-tooltip);
-    padding: $padding-v-md $padding-h-md;
-    border-radius: $radius-md;
+    background-color: rgba(0, 0, 0, var($--opacity-tooltip));
+    padding: var($--padding-v-md) var($--padding-h-md);
+    border-radius: var($--radius-md);
     font-size: var($--tooltip-font-size);
     color: var($--tooltip-color);
     margin-bottom: var($--tooltip-arrow-size);
@@ -24,7 +24,7 @@
       transform: translateX(-50%);
       border-width: var($--tooltip-arrow-size) var($--tooltip-arrow-size) 0;
       border-color: transparent;
-      border-top-color: rgba(0, 0, 0, $opacity-tooltip);
+      border-top-color: rgba(0, 0, 0, var($--opacity-tooltip));
       border-style: solid;
     }
   }

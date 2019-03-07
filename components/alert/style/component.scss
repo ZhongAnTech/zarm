@@ -13,12 +13,12 @@
       height: var($--alert-button-height);
       line-height: var($--alert-button-height);
       font-size: var($--alert-button-font-size);
-      color: $theme-primary;
+      color: var($--theme-primary);
       @include button-base();
       @include onepx(top);
 
       &:active {
-        background-color: $background-active;
+        background-color: var($--background-active);
       }
     }
   }

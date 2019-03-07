@@ -12,16 +12,16 @@
   -moz-osx-font-smoothing: grayscale;
 
   @include m(primary) {
-    color: $theme-primary;
+    color: var($--theme-primary);
   }
   @include m(success) {
-    color: $theme-success;
+    color: var($--theme-success);
   }
   @include m(warning) {
-    color: $theme-warning;
+    color: var($--theme-warning);
   }
   @include m(error) {
-    color: $theme-error;
+    color: var($--theme-error);
   }
 
   @include m(arrow-top) {

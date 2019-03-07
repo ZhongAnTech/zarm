@@ -14,7 +14,7 @@
 
   @include e(line) {
     stroke-dasharray: 100 * $PI;
-    stroke: var($theme-primary);
+    stroke: var($--theme-primary);
   }
 
   @include e(text) {

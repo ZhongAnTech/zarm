@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
   padding: var($--input-padding-v) 0;
-  color: var($color-text);
+  color: var($--color-text);
 
   input,
   textarea {
@@ -16,7 +16,7 @@
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    color: var($color-text);
+    color: var($--color-text);
 
     &[type="date"],
     &[type="text"],
@@ -25,7 +25,7 @@
     }
 
     @include placeholder {
-      color: var($color-text-placeholder);
+      color: var($--color-text-placeholder);
     }
   }
 
@@ -61,7 +61,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    color: var($color-text-placeholder);
+    color: var($--color-text-placeholder);
   }
 
   @include e(clear) {
@@ -128,16 +128,16 @@
     input,
     textarea {
       cursor: not-allowed;
-      color: var($color-text-disabled);
+      color: var($--color-text-disabled);
 
       @include placeholder {
-        color: var($color-text-disabled);
+        color: var($--color-text-disabled);
       }
     }
 
     @include e(content, placeholder) {
       cursor: not-allowed;
-      color: var($color-text-disabled);
+      color: var($--color-text-disabled);
     }
   }
 }

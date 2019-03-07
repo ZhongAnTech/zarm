@@ -3,10 +3,10 @@
 @include b(message) {
   display: flex;
   position: relative;
-  padding: $padding-v-md $padding-h-md;
+  padding: var($--padding-v-md) var($--padding-h-md);
   min-height: var($--message-min-height);
   font-size: var($--message-font-size);
-  @include message-theme($theme-default);
+  @include message-theme(var($--theme-default));
 
   @include e(icon) {
     margin-right: r(5);
@@ -33,24 +33,24 @@
   }
 
   @include m(primary) {
-    @include message-theme($theme-primary);
+    @include message-theme(var($--theme-primary));
   }
 
   @include m(success) {
-    @include message-theme($theme-success);
+    @include message-theme(var($--theme-success));
   }
 
   @include m(warning) {
-    @include message-theme($theme-warning);
+    @include message-theme(var($--theme-warning));
   }
 
   @include m(error) {
-    @include message-theme($theme-error);
+    @include message-theme(var($--theme-error));
   }
 
   @include m(lg) {
     min-height: var($--message-min-height-lg);
-    padding: $padding-v-lg $padding-h-lg;
+    padding: var($--padding-v-lg) var($--padding-h-lg);
 
     @include b(icon) {
       margin-right: r(10);

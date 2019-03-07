@@ -35,7 +35,7 @@
     align-items: center;
     padding: r(10) 0;
     height: var($--pull-control-height);
-    color: $color-text-caption;
+    color: var($--color-text-caption);
     font-size: var($--pull-control-font-size);
 
     @include b(icon) {

@@ -3,7 +3,7 @@
 @include b(button) {
   display: inline-block;
   @include button-base();
-  @include button-shape(var($radius-md));
+  @include button-shape(var($--radius-md));
   @include button-size(
     var($--button-height-md),
     var($--button-padding-h-md),
@@ -19,7 +19,7 @@
     var($--button-default-active-color),
     var($--button-default-background),
     var($--button-default-border),
-    var($color-text-disabled),
+    var($--color-text-disabled),
     var($--button-disabled-opacity),
   );
   @include button-ghost(
@@ -122,15 +122,15 @@
   }
 
   @include m(radius) {
-    @include button-shape(var($radius-md));
+    @include button-shape(var($--radius-md));
   }
 
   @include m(round) {
-    @include button-shape(var($radius-round));
+    @include button-shape(var($--radius-round));
   }
 
   @include m(circle) {
-    @include button-shape(var($radius-circle));
+    @include button-shape(var($--radius-circle));
   }
 
   @include e(content) {

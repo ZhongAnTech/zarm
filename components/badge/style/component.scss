@@ -5,7 +5,7 @@
   display: inline-block;
   vertical-align: middle;
   line-height: 1;
-  @include badge-theme(var($theme-default));
+  @include badge-theme(var($--theme-default));
 
   @include e(content) {
     display: flex;
@@ -22,19 +22,19 @@
   }
 
   @include m(primary) {
-    @include badge-theme(var($theme-primary));
+    @include badge-theme(var($--theme-primary));
   }
 
   @include m(success) {
-    @include badge-theme(var($theme-success));
+    @include badge-theme(var($--theme-success));
   }
 
   @include m(warning) {
-    @include badge-theme(var($theme-warning));
+    @include badge-theme(var($--theme-warning));
   }
 
   @include m(error) {
-    @include badge-theme(var($theme-error));
+    @include badge-theme(var($--theme-error));
   }
 
   @include m(dot) {
@@ -42,7 +42,7 @@
       width: var($--badge-dot-diameter);
       height: var($--badge-dot-diameter);
       padding: 0;
-      border-radius: var($radius-circle);
+      border-radius: var($--radius-circle);
     }
   }
 
@@ -62,7 +62,7 @@
   @include m(circle) {
     @include e(content) {
       width: var($--badge-height);
-      border-radius: var($radius-circle);
+      border-radius: var($--radius-circle);
       padding: 0;
     }
   }

@@ -97,7 +97,7 @@
       cursor: auto;
 
       @include e(day__content) {
-        color: $color-text-disabled;
+        color: var($--color-text-disabled);
       }
     }
 

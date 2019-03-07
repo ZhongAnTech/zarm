@@ -14,7 +14,7 @@
     position: relative;
     background: #fff;
     font-size: var($--panel-body-font-size);
-    color: $color-text;
+    color: var($--color-text);
     @include onepx(top bottom);
   }
 }

@@ -17,7 +17,7 @@
       @include onepx(top);
 
       &:active {
-        background-color: $background-active;
+        background-color: var($--background-active);
       }
 
       &:not(:first-of-type) {
@@ -25,7 +25,7 @@
       }
 
       @include m(ok) {
-        color: $theme-primary;
+        color: var($--theme-primary);
       }
     }
   }

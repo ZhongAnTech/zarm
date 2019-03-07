@@ -7,13 +7,13 @@
     margin: 0 r(10) r(10);
 
     @include e(actions, cancel) {
-      border-radius: var($radius-md);
+      border-radius: var($--radius-md);
     }
   }
 
   @include e(actions, cancel) {
     overflow: hidden;
-    background-color: var($color-text-inverse);
+    background-color: var($--color-text-inverse);
   }
 
   @include e(cancel) {
@@ -28,7 +28,7 @@
     @include button-base();
 
     &:active {
-      background-color: var($background-active);
+      background-color: var($--background-active);
     }
 
     &:not(:first-of-type) {
@@ -36,11 +36,11 @@
     }
 
     @include m(primary) {
-      color: var($theme-primary);
+      color: var($--theme-primary);
     }
 
     @include m(danger) {
-      color: var($theme-error);
+      color: var($--theme-error);
     }
   }
 }

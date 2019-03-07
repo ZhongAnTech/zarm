@@ -4,74 +4,74 @@ $modifier-separator: '--';
 $state-prefix: '--';
 
 // 主题色
-$theme-default: #e6e6e6;                 // 默认
-$theme-primary: #00bc70;                 // 主色
-$theme-success: #00bc70;                 // 成功
-$theme-warning: #ec9131;                 // 警告
-$theme-error: #ff5050;                   // 失败
+$--theme-default: #e6e6e6;                 // 默认
+$--theme-primary: #00bc70;                 // 主色
+$--theme-success: #00bc70;                 // 成功
+$--theme-warning: #ec9131;                 // 警告
+$--theme-error: #ff5050;                   // 失败
 
 // press状态色阶
-$theme-default-press: darken($theme-default, 5%);
-$theme-primary-press: hsl(156, 100%, 32.9%);
-$theme-success-press: darken($theme-success, 5%);
-$theme-warning-press: darken($theme-warning, 5%);
-$theme-error-press: darken($theme-error, 5%);
+$--theme-default-press: darken(var($--theme-default), 5%);
+$--theme-primary-press: darken(var($--theme-primary), 5%);
+$--theme-success-press: darken(var($--theme-success), 5%);
+$--theme-warning-press: darken(var($--theme-warning), 5%);
+$--theme-error-press: darken(var($--theme-error), 5%);
 
 // 文字色
-$color-text: #464646;                    // 基本
-$color-text-inverse: #fff;               // 反色
-$color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bcbcbc;           // 失效
-$color-text-caption: #909090;            // 辅助描述
-$color-link: $theme-primary;               // 链接
-$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+$--color-text: #464646;                    // 基本
+$--color-text-inverse: #fff;               // 反色
+$--color-text-placeholder: #a9a9a9;        // 文本框提示
+$--color-text-disabled: #bcbcbc;           // 失效
+$--color-text-caption: #909090;            // 辅助描述
+$--color-link: var($--theme-primary);        // 链接
+$--color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
 // 背景色
-$background-active: #e6e6e6;
-$background-disabled: #bcbcbc;
+$--background-active: #e6e6e6;
+$--background-disabled: #bcbcbc;
 
 // 边框色
-$border-color: #e6e6e6;
-$border-disabled: #bcbcbc;
+$--border-color: #e6e6e6;
+$--border-disabled: #bcbcbc;
 
 // 圆角
-$radius-sm: r(2);
-$radius-md: r(4);
-$radius-lg: r(8);
-$radius-round: r(1000);
-$radius-circle: 50%;
+$--radius-sm: r(2);
+$--radius-md: r(4);
+$--radius-lg: r(8);
+$--radius-round: r(1000);
+$--radius-circle: 50%;
 
 // 水平间距
-$padding-h-sm: r(5);
-$padding-h-md: r(8);
-$padding-h-lg: r(16);
-$padding-h-xl: r(20);
+$--padding-h-sm: r(5);
+$--padding-h-md: r(8);
+$--padding-h-lg: r(16);
+$--padding-h-xl: r(20);
 
 // 垂直间距
-$padding-v-sm: r(2);
-$padding-v-md: r(6);
-$padding-v-lg: r(9);
-$padding-v-xl: r(12);
+$--padding-v-sm: r(2);
+$--padding-v-md: r(6);
+$--padding-v-lg: r(9);
+$--padding-v-xl: r(12);
 
 // 字体大小
-$font-size-xs: r(10);
-$font-size-sm: r(12);
-$font-size-md: r(14);
-$font-size-lg: r(15);
-$font-size-xl: r(18);
+$--font-size-xs: r(10);
+$--font-size-sm: r(12);
+$--font-size-md: r(14);
+$--font-size-lg: r(15);
+$--font-size-xl: r(18);
 
 // 堆叠顺序
-$zindex-mask: 1000;
-$zindex-popup: 1300;
-$zindex-modal: 1400;
-$zindex-toast: 1500;
-$zindex-loading: 1500;
+$--zindex-mask: 1000;
+$--zindex-popup: 1300;
+$--zindex-modal: 1400;
+$--zindex-toast: 1500;
+$--zindex-loading: 1500;
 
 // 透明度
-$opacity-disabled: .5;
-$opacity-mask: .5;
-$opacity-toast: .8;
-$opacity-tooltip: .8;
+$--opacity-disabled: .5;
+$--opacity-mask: .5;
+$--opacity-toast: .8;
+$--opacity-tooltip: .8;
 
 // Collapse
 $--collapse-height: r(52);
@@ -90,11 +90,11 @@ $--alert-button-font-size: r(18);
 
 // Badge
 $--badge-height: r(14);
-$--badge-font-size: $font-size-xs;
+$--badge-font-size: $--font-size-xs;
 $--badge-padding-h: r(4);
 $--badge-dot-diameter: r(8);
-$--badge-border-radius-rect: $radius-sm;
-$--badge-border-radius-round: $radius-round;
+$--badge-border-radius-rect: $--radius-sm;
+$--badge-border-radius-round: $--radius-round;
 $--badge-sup-top: r(-4);
 $--badge-text-color:#fff;
 
@@ -115,41 +115,41 @@ $--button-icon-size-xs: r(16);
 $--button-icon-size-sm: r(18);
 $--button-icon-size-md: r(22);
 $--button-icon-size-lg: r(26);
-$--button-disabled-opacity: $opacity-disabled;
+$--button-disabled-opacity: var($--opacity-disabled);
 $--button-disabled-color-ghost: #bcbcbc;
 
 $--button-default-background: #fff;
-$--button-default-border: $theme-default;
-$--button-default-color: $color-text;
-$--button-default-active-background: $theme-default;
-$--button-default-active-border: $theme-default;
-$--button-default-active-color: $color-text;
+$--button-default-border: var($--theme-default);
+$--button-default-color: var($--color-text);
+$--button-default-active-background: var($--theme-default);
+$--button-default-active-border: var($--theme-default);
+$--button-default-active-color: var($--color-text);
 $--button-default-ghost-border: #fff;
 $--button-default-ghost-color: #fff;
-$--button-default-ghost-active-border: $theme-default;
-$--button-default-ghost-active-color: $theme-default;
+$--button-default-ghost-active-border: var($--theme-default);
+$--button-default-ghost-active-color: var($--theme-default);
 
-$--button-primary-background: $theme-primary;
-$--button-primary-border: $theme-primary;
+$--button-primary-background: var($--theme-primary);
+$--button-primary-border: var($--theme-primary);
 $--button-primary-color: #fff;
-$--button-primary-active-background: $theme-primary-press;
-$--button-primary-active-border: $theme-primary-press;
+$--button-primary-active-background: var($--theme-primary-press);
+$--button-primary-active-border: var($--theme-primary-press);
 $--button-primary-active-color: rgba(255, 255, 255, 0.4);
-$--button-primary-ghost-border: $theme-primary;
-$--button-primary-ghost-color: $theme-primary;
-$--button-primary-ghost-active-border: $theme-primary-press;
-$--button-primary-ghost-active-color: $theme-primary-press;
+$--button-primary-ghost-border: var($--theme-primary);
+$--button-primary-ghost-color: var($--theme-primary);
+$--button-primary-ghost-active-border: var($--theme-primary-press);
+$--button-primary-ghost-active-color: var($--theme-primary-press);
 
-$--button-danger-background: $theme-error;
-$--button-danger-border: $theme-error;
+$--button-danger-background: var($--theme-error);
+$--button-danger-border: var($--theme-error);
 $--button-danger-color: #fff;
-$--button-danger-active-background: $theme-error-press;
-$--button-danger-active-border: $theme-error-press;
+$--button-danger-active-background: var($--theme-error-press);
+$--button-danger-active-border: var($--theme-error-press);
 $--button-danger-active-color: rgba(255, 255, 255, 0.4);
-$--button-danger-ghost-border: $theme-error;
-$--button-danger-ghost-color: $theme-error;
-$--button-danger-ghost-active-border: $theme-error-press;
-$--button-danger-ghost-active-color: $theme-error-press;
+$--button-danger-ghost-border: var($--theme-error);
+$--button-danger-ghost-color: var($--theme-error);
+$--button-danger-ghost-active-border: var($--theme-error-press);
+$--button-danger-ghost-active-color: var($--theme-error-press);
 
 // Calendar
 $--calendar-height: r(45); // 最小高度
@@ -164,28 +164,28 @@ $--calendar-day-background: #fff; // 月份文字背景颜色
 $--calendar-day-color: #464646; // 月份文字颜色
 $--calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
 $--calendar-day-today-color: #11c286; // 日期今天选中颜色
-$--calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
+$--calendar-day-selected-background: var($--theme-primary); // 日期文字选中背景颜色
 $--calendar-day-selected-color: #fff; // 日期文字选中颜色
 $--calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
-$--calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
+$--calendar-day-range-color: var($--theme-primary); // 日期文字范围内颜色
 $--calendar-day-width: 14.28571%; // 日期宽度
 $--calendar-day-height: r(40); // 日期高度
 
 // Cell
-$--cell-height: r(52);                            // 最小高度
-$--cell-background: #fff;                       // 背景色
-$--cell-line-padding-left: r(16);                 // 分隔线左边距
-$--cell-padding-h: r(16);                         // 水平边内距
-$--cell-padding-v: r(15);                         // 纵向边内距
-$--cell-title-color: $color-text;                 // 标题文字颜色
-$--cell-title-font-size: r(15);                   // 标题文字大小
-$--cell-title-line-height: r(22);                 // 标题文字行高
-$--cell-description-color: $color-text-caption;   // 标题文字颜色
-$--cell-description-font-size: r(15);             // 描述文字大小
-$--cell-label-width: r(100);                      // 表单label宽度
-$--cell-arrow-color: #bcbcbc;                   // 箭头颜色
-$--cell-arrow-length: r(10);                      // 箭头长度
-$--cell-arrow-border-width: r(2);                 // 箭头粗细
+$--cell-height: r(52);                                  // 最小高度
+$--cell-background: #fff;                             // 背景色
+$--cell-line-padding-left: r(16);                       // 分隔线左边距
+$--cell-padding-h: r(16);                               // 水平边内距
+$--cell-padding-v: r(15);                               // 纵向边内距
+$--cell-title-color: var($--color-text);                // 标题文字颜色
+$--cell-title-font-size: r(15);                         // 标题文字大小
+$--cell-title-line-height: r(22);                       // 标题文字行高
+$--cell-description-color: var($--color-text-caption);  // 标题文字颜色
+$--cell-description-font-size: r(15);                   // 描述文字大小
+$--cell-label-width: r(100);                            // 表单label宽度
+$--cell-arrow-color: #bcbcbc;                         // 箭头颜色
+$--cell-arrow-length: r(10);                            // 箭头长度
+$--cell-arrow-border-width: r(2);                       // 箭头粗细
 
 // Checkbox
 $--checkbox-size: r(20);
@@ -216,9 +216,9 @@ $--modal-title-font-size: r(18);
 $--notice-bar-height: r(24);
 
 // Panel
-$--panel-header-color: $color-text-caption;
+$--panel-header-color: var($--color-text-caption);
 $--panel-header-font-size: r(14);
-$--panel-body-color: $color-text;
+$--panel-body-color: var($--color-text);
 $--panel-body-font-size: r(15);
 
 // Picker
@@ -257,7 +257,7 @@ $--stepper-icon-font-size-md: r(12);
 $--stepper-icon-font-size-lg: r(14);
 $--stepper-input-width-md: r(50);
 $--stepper-input-width-lg: r(60);
-$--stepper-input-disabled: $color-text-disabled;
+$--stepper-input-disabled: var($--color-text-disabled);
 $--stepper-input-font-size-md: r(14);
 $--stepper-input-font-size-lg: r(16);
 $--stepper-input-margin-h-md: r(4);
@@ -284,7 +284,7 @@ $--switch-background: #fff;
 
 // Tabs
 $--tabs-height: r(45);
-$--tabs-item-font-size: $font-size-lg;
+$--tabs-item-font-size: var($--font-size-lg);
 $--tabs-line-height: r(2);
 
 // Toast
@@ -305,14 +305,14 @@ $--nav-bar-icon-size: r(24);
 
 // Input
 $--input-clear-icon-width: r(16);
-$--input-padding-v: $--cell-padding-v;
+$--input-padding-v: var($--cell-padding-v);
 $--input-cursor-color: #597cf6;
 $--input-cursor-width: r(2);
 $--input-cursor-height: r(16);
-$--input-selection-color: rgba($theme-primary, 0.2);
-$--input-length-count-color: $color-text-disabled;
+$--input-selection-color: rgba(var($--theme-primary), 0.2);
+$--input-length-count-color: var($--color-text-disabled);
 $--input-height: r(28);
-$--input-line-height: $--cell-title-line-height;
+$--input-line-height: var($--cell-title-line-height);
 
 // Progress
 $--progress-background: #eee;

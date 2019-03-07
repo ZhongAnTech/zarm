@@ -1,8 +1,8 @@
 $themeMap: (
-  primary: $theme-primary,
-  success: $theme-success,
-  warning: $theme-warning,
-  error: $theme-error
+  primary: var($--theme-primary),
+  success: var($--theme-success),
+  warning: var($--theme-warning),
+  error: var($--theme-error)
 );
 
 @mixin progress-theme($attr) {

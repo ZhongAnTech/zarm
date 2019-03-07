@@ -89,7 +89,7 @@
       &:hover,
       &:focus,
       &:visited {
-        color: $color-text-disabled;
+        color: var($--color-text-disabled);
         cursor: not-allowed;
         pointer-events: none;
       }
@@ -125,8 +125,8 @@
       &:focus,
       &:visited {
         background-color: transparent;
-        border-color: $border-disabled;
-        color: $color-text-disabled;
+        border-color: var($--border-disabled);
+        color: var($--color-text-disabled);
         cursor: not-allowed;
       }
     }
@@ -141,7 +141,7 @@
   text-align: center;
   vertical-align: middle;
   overflow: hidden;
-  color: $color-text;
+  color: var($--color-text);
   // transition-property: background-color, border-color, color;
   // transition-duration: 200ms;
   // transition-timing-function: ease-out;
@@ -161,7 +161,7 @@
   /* disabled Button */
   @include m(disabled) {
     cursor: not-allowed;
-    opacity: $opacity-disabled;
+    opacity: var($--opacity-disabled);
   }
 
   /* block Button */

@@ -11,7 +11,7 @@
 
     @include e(line__bg) {
       height: 100%;
-      background-color: $theme-primary;
+      background-color: var($--theme-primary);
     }
   }
 
@@ -33,6 +33,6 @@
 
   @include m(disabled) {
     cursor: not-allowed;
-    opacity: $opacity-disabled;
+    opacity: var($--opacity-disabled);
   }
 }

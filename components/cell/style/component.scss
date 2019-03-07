@@ -52,7 +52,7 @@
 
   @include e(icon) {
     text-align: center;
-    margin-right: var($padding-h-md);
+    margin-right: var($--padding-h-md);
     padding: var($--cell-padding-h 0);
 
     img {
@@ -85,19 +85,19 @@
   }
 
   @include m(primary) {
-    @include cell-theme(var($theme-primary));
+    @include cell-theme(var($--theme-primary));
   }
 
   @include m(success) {
-    @include cell-theme(var($theme-success));
+    @include cell-theme(var($--theme-success));
   }
 
   @include m(warning) {
-    @include cell-theme(var($theme-warning));
+    @include cell-theme(var($--theme-warning));
   }
 
   @include m(error) {
-    @include cell-theme(var($theme-error));
+    @include cell-theme(var($--theme-error));
   }
 
   @include m(link) {
@@ -106,14 +106,14 @@
 
     @include e(inner) {
       &:active {
-        background-color: var($background-active);
+        background-color: var($--background-active);
       }
     }
   }
 
   @include m(disabled) {
     @include e(body, footer) {
-      color: var($color-text-disabled);
+      color: var($--color-text-disabled);
     }
   }
 }

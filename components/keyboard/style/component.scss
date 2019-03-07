@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  color: var($color-text);
+  color: var($--color-text);
   user-select: none;
 
   @include e(item) {
@@ -23,7 +23,7 @@
       var($--button-default-active-color),
       var($--button-default-background),
       var($--button-default-border),
-      var($color-text-disabled),
+      var($--color-text-disabled),
       var($--button-disabled-opacity),
     );
 

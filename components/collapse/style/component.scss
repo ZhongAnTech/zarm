@@ -26,7 +26,7 @@
     @include onepx(bottom);
 
     &__inner {
-      padding: $padding-v-lg var($--collapse-padding);
+      padding: var($--padding-v-lg) var($--collapse-padding);
     }
   }
 

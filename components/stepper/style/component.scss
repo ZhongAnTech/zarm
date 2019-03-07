@@ -17,9 +17,9 @@
     margin: 0 var($--stepper-input-margin-h-md);
     padding: 0 var($--stepper-input-padding-h-md);
     font-size: var($--stepper-input-font-size-md);
-    color: $color-text;
+    color: var($--color-text);
     text-align: center;
-    border: r(1) solid $border-color;
+    border: r(1) solid var($--border-color);
     border-radius: 0;
     outline: 0;
     -webkit-appearance: none;
@@ -29,13 +29,13 @@
     @include e(input) {
       background: #fff;
       color: var($--stepper-input-disabled);
-      opacity: $opacity-disabled;
+      opacity: var($--opacity-disabled);
     }
   }
 
   @include m(radius) {
     @include e(input) {
-      border-radius: $radius-md;
+      border-radius: var($--radius-md);
     }
   }
 
