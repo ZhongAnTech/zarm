@@ -467,8 +467,9 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     const { dataSource, value } = this.getColsValue();
     return (
       <PickerView
-        dataSource={dataSource}
         {...others}
+        prefixCls={prefixCls}
+        dataSource={dataSource}
         value={value}
         onChange={this.onValueChange}
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}

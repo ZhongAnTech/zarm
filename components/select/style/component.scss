@@ -1,21 +1,23 @@
-$prefixCls: $prefixCls-select;
-
-.#{$prefixCls} {
+@include b(select) {
   width: 100%;
   height: 100%;
   background: #fff;
 
-  &-input {
+  @include e(input) {
     width: 100%;
     padding: r(12) 0;
     line-height: r(28);
   }
 
-  &-placeholder {
-    color: $color-text-placeholder;
+  @include m(placeholder) {
+    @include e(input) {
+      color: $color-text-placeholder;
+    }
   }
 
-  &-disabled {
-    color: $color-text-disabled;
+  @include m(disabled) {
+    @include e(input) {
+      color: $color-text-disabled;
+    }
   }
 }

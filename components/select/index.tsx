@@ -102,16 +102,14 @@ export default class Select extends PureComponent<SelectProps, any> {
   render() {
     const { prefixCls, placeholder, className, disabled, displayRender, value, ...others } = this.props;
     const { visible, objValue } = this.state;
-    const cls = classnames(`${prefixCls}`, className);
-
-    const inputCls = classnames(`${prefixCls}-input`, {
-      [`${prefixCls}-placeholder`]: !this.isValueValid(value),
-      [`${prefixCls}-disabled`]: !!disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--placeholder`]: !this.isValueValid(value),
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     return (
       <div className={cls} onClick={this.handleClick}>
-        <div className={inputCls}>
+        <div className={`${prefixCls}__input`}>
           {this.isValueValid(value) && displayRender!(objValue || []) || placeholder}
         </div>
         <Picker
