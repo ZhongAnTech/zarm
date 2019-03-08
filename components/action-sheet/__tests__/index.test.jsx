@@ -16,7 +16,7 @@ describe('ActionSheet', () => {
         onClick: jest.fn(),
       },
       {
-        theme: 'error',
+        theme: 'danger',
         text: '操作三',
         onClick: jest.fn(),
       },

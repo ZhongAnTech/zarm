@@ -90,7 +90,7 @@ exports[`Message renders correctly 1`] = `
 
 exports[`Message theme 1`] = `
 <div
-  class="za-message za-message--error"
+  class="za-message za-message--danger"
 >
   <div
     class="za-message__header"

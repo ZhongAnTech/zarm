@@ -2,7 +2,7 @@ $themeMap: (
   primary: $--theme-primary,
   success: $--theme-success,
   warning: $--theme-warning,
-  error: $--theme-error
+  danger: $--theme-danger
 );
 
 @mixin progress-theme($attr) {

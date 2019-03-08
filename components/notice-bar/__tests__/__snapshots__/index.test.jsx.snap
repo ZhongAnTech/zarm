@@ -175,7 +175,7 @@ exports[`NoticeBar scrollable 1`] = `
 
 exports[`NoticeBar theme 1`] = `
 <div
-  class="za-message za-message--error za-message--lg"
+  class="za-message za-message--danger za-message--lg"
 >
   <div
     class="za-message__header"

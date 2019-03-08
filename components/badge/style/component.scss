@@ -33,8 +33,8 @@
     @include badge-theme($--theme-warning);
   }
 
-  @include m(error) {
-    @include badge-theme($--theme-error);
+  @include m(danger) {
+    @include badge-theme($--theme-danger);
   }
 
   @include m(dot) {

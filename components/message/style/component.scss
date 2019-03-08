@@ -44,8 +44,8 @@
     @include message-theme($--theme-warning);
   }
 
-  @include m(error) {
-    @include message-theme($--theme-error);
+  @include m(danger) {
+    @include message-theme($--theme-danger);
   }
 
   @include m(lg) {

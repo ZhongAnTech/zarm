@@ -95,7 +95,6 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| shape | string | 'rect' | 形状，可选值 `rect`、`radius` |
 | visible | boolean | false | 是否显示 |
 | spacing | boolean | false | 是否和外部有间距 |
 | actions | Action[] | [] | 动作列表 |
@@ -107,5 +106,5 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | text | string | - | 按钮文字 |
-| theme | string | 'default' | 按钮主题，可选值 `default`、`primary`、`success`、`warning`、`error`
+| theme | string | 'default' | 按钮主题，可选值 `default`、`primary`、`success`、`warning`、`danger`
 | onClick | () => void | - | 按钮点击后触发的回调函数 |

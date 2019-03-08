@@ -119,7 +119,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Button icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
+        <Button icon={<Icon type="wrong-round" theme="danger" />}>错误</Button>
         <Button loading>加载中</Button>
       </div>
     )

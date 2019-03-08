@@ -40,7 +40,7 @@
     }
 
     @include m(danger) {
-      color: $--theme-error;
+      color: $--theme-danger;
     }
   }
 }

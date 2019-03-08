@@ -11,7 +11,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
   static defaultProps = {
     prefixCls: 'za-badge',
     shape: 'dot',
-    theme: 'error',
+    theme: 'danger',
     sup: false,
   };
 

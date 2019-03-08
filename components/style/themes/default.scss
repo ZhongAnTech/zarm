@@ -1,21 +1,21 @@
-$namespace: 'za';
-$element-separator: '__';
-$modifier-separator: '--';
-$state-prefix: '--';
+$--namespace: 'za';
+$--element-separator: '__';
+$--modifier-separator: '--';
+$--state-prefix: '--';
 
 // 主题色
-$--theme-default: #e6e6e6;                 // 默认
-$--theme-primary: #00bc70;                 // 主色
-$--theme-success: #00bc70;                 // 成功
-$--theme-warning: #ec9131;                 // 警告
-$--theme-error: #ff5050;                   // 失败
+$--theme-default: #e6e6e6;                  // 默认
+$--theme-primary: #00bc70;                  // 主色
+$--theme-success: #00bc70;                  // 成功
+$--theme-warning: #ec9131;                  // 警告
+$--theme-danger: #ff5050;                   // 失败
 
 // press状态色阶
-$--theme-default-press: darken($--theme-default, 5%);
-$--theme-primary-press: darken($--theme-primary, 5%);
-$--theme-success-press: darken($--theme-success, 5%);
-$--theme-warning-press: darken($--theme-warning, 5%);
-$--theme-error-press: darken($--theme-error, 5%);
+$--theme-default-press: darken($--theme-default, 4%);
+$--theme-primary-press: darken($--theme-primary, 4%);
+$--theme-success-press: darken($--theme-success, 4%);
+$--theme-warning-press: darken($--theme-warning, 4%);
+$--theme-danger-press: darken($--theme-danger, 4%);
 
 // 文字色
 $--color-text: #464646;                    // 基本
@@ -23,7 +23,7 @@ $--color-text-inverse: #fff;               // 反色
 $--color-text-placeholder: #a9a9a9;        // 文本框提示
 $--color-text-disabled: #bcbcbc;           // 失效
 $--color-text-caption: #909090;            // 辅助描述
-$--color-link: $--theme-primary;        // 链接
+$--color-link: $--theme-primary;             // 链接
 $--color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
 // 背景色
@@ -140,16 +140,16 @@ $--button-primary-ghost-color: $--theme-primary;
 $--button-primary-ghost-active-border: $--theme-primary-press;
 $--button-primary-ghost-active-color: $--theme-primary-press;
 
-$--button-danger-background: $--theme-error;
-$--button-danger-border: $--theme-error;
+$--button-danger-background: $--theme-danger;
+$--button-danger-border: $--theme-danger;
 $--button-danger-color: #fff;
-$--button-danger-active-background: $--theme-error-press;
-$--button-danger-active-border: $--theme-error-press;
+$--button-danger-active-background: $--theme-danger-press;
+$--button-danger-active-border: $--theme-danger-press;
 $--button-danger-active-color: rgba(255, 255, 255, 0.4);
-$--button-danger-ghost-border: $--theme-error;
-$--button-danger-ghost-color: $--theme-error;
-$--button-danger-ghost-active-border: $--theme-error-press;
-$--button-danger-ghost-active-color: $--theme-error-press;
+$--button-danger-ghost-border: $--theme-danger;
+$--button-danger-ghost-color: $--theme-danger;
+$--button-danger-ghost-active-border: $--theme-danger-press;
+$--button-danger-ghost-active-color: $--theme-danger-press;
 
 // Calendar
 $--calendar-height: r(45); // 最小高度
@@ -177,10 +177,10 @@ $--cell-background: #fff;                             // 背景色
 $--cell-line-padding-left: r(16);                       // 分隔线左边距
 $--cell-padding-h: r(16);                               // 水平边内距
 $--cell-padding-v: r(15);                               // 纵向边内距
-$--cell-title-color: $--color-text;                // 标题文字颜色
+$--cell-title-color: $--color-text;                     // 标题文字颜色
 $--cell-title-font-size: r(15);                         // 标题文字大小
 $--cell-title-line-height: r(22);                       // 标题文字行高
-$--cell-description-color: $--color-text-caption;  // 标题文字颜色
+$--cell-description-color: $--color-text-caption;       // 标题文字颜色
 $--cell-description-font-size: r(15);                   // 描述文字大小
 $--cell-label-width: r(100);                            // 表单label宽度
 $--cell-arrow-color: #bcbcbc;                         // 箭头颜色

@@ -5,14 +5,14 @@ const base = {
   theme_primary: '#00bc70',                 // 主色
   theme_success: '#00bc70',                 // 成功
   theme_warning: '#ec9131',                 // 警告
-  theme_error: '#ff5050',                   // 失败
+  theme_danger: '#ff5050',                   // 失败
 
   // press状态色阶
   theme_default_press: '#cdcdcd',
   theme_primary_press: '#00a864',
   theme_success_press: '#00a864',
   theme_warning_press: '#d3833c',
-  theme_error_press: '#e54747',
+  theme_danger_press: '#e54747',
 
   // 文字色
   color_text: '#464646',                    // 基本
@@ -133,16 +133,16 @@ const components = {
   button_primary_ghost_active_border: base.theme_primary_press,
   button_primary_ghost_active_color: base.theme_primary_press,
 
-  button_danger_background: base.theme_error,
-  button_danger_border: base.theme_error,
+  button_danger_background: base.theme_danger,
+  button_danger_border: base.theme_danger,
   button_danger_color: '#fff',
-  button_danger_active_background: base.theme_error_press,
-  button_danger_active_border: base.theme_error_press,
+  button_danger_active_background: base.theme_danger_press,
+  button_danger_active_border: base.theme_danger_press,
   button_danger_active_color: 'rgba(255, 255, 255, 0.4)',
-  button_danger_ghost_border: base.theme_error,
-  button_danger_ghost_color: base.theme_error,
-  button_danger_ghost_active_border: base.theme_error_press,
-  button_danger_ghost_active_color: base.theme_error_press,
+  button_danger_ghost_border: base.theme_danger,
+  button_danger_ghost_color: base.theme_danger,
+  button_danger_ghost_active_border: base.theme_danger_press,
+  button_danger_ghost_active_color: base.theme_danger_press,
 
   // Collapse
   collapse_height: 52,
@@ -197,13 +197,13 @@ const components = {
   message_theme_bg_primary: 'rgba(18, 194, 135, 0.2)',               // 主色
   message_theme_bg_success: 'rgba(18, 194, 135, 0.2)',               // 成功
   message_theme_bg_warning: 'rgba(255, 247, 203, 1)',                // 警告
-  message_theme_bg_error: 'rgba(255, 80, 80, 0.1)',                  // 失败
+  message_theme_bg_danger: 'rgba(255, 80, 80, 0.1)',                  // 失败
 
   message_theme_text_default: base.theme_default,                    // 默认色
   message_theme_text_primary: base.theme_primary,                    // 主色
   message_theme_text_success: base.theme_primary,                    // 成功
   message_theme_text_warning: base.theme_warning,                    // 警告
-  message_theme_text_error: base.theme_error,                        // 失败
+  message_theme_text_danger: base.theme_danger,                        // 失败
 
   message_arrow_color: '#bcbcbc',                                    // 箭头颜色
   message_arrow_length: 6,                                          // 箭头长度
@@ -280,8 +280,8 @@ const components = {
   // NoticeBar
   noticeBar_theme_primary_bg: '#fff7cb',
   noticeBar_theme_primary_text: '#ecc9131',
-  noticeBar_theme_error_bg: '#ffeded',
-  noticeBar_theme_error_text: 'ff5656',
+  noticeBar_theme_danger_bg: '#ffeded',
+  noticeBar_theme_danger_text: 'ff5656',
 };
 
 export default { ...base, ...components };

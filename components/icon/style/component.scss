@@ -20,8 +20,8 @@
   @include m(warning) {
     color: $--theme-warning;
   }
-  @include m(error) {
-    color: $--theme-error;
+  @include m(danger) {
+    color: $--theme-danger;
   }
 
   @include m(arrow-top) {

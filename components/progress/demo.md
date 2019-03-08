@@ -83,7 +83,7 @@ class Demo extends React.Component {
               { value: 'primary', label: 'primary' },
               { value: 'success', label: 'success' },
               { value: 'warning', label: 'warning' },
-              { value: 'error', label: 'error' },
+              { value: 'danger', label: 'danger' },
             ]}
             onOk={(selected) => {
               this.setState({
@@ -136,7 +136,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `success`, `warning`, `danger` |
 | percent | number | 0 | 进度百分比（范围：0～100） |
 | type | string | 'line' | 类型，可选值 `line`, `circle`, `semi-circle` |
 | shape | string | 'round' | 线条形状，可选值 `round`, `rect` |

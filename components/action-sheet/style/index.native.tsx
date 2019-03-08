@@ -59,6 +59,6 @@ export default {
   },
 
   'theme-danger': {
-    color: variables.theme_error,
+    color: variables.theme_danger,
   },
 };

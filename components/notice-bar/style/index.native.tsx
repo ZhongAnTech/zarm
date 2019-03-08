@@ -17,8 +17,8 @@ export default {
     backgroundColor: variables.message_theme_bg_warning,
   },
 
-  errorNoticeBarBg: {
-    backgroundColor: variables.message_theme_bg_error,
+  dangerNoticeBarBg: {
+    backgroundColor: variables.message_theme_bg_danger,
   },
 
   defaultNoticeBarText: {
@@ -37,8 +37,8 @@ export default {
     color: variables.message_theme_text_warning,
   },
 
-  errorNoticeBarText: {
-    color: variables.message_theme_text_error,
+  dangerNoticeBarText: {
+    color: variables.message_theme_text_danger,
   },
 
   noticeBarSize: {

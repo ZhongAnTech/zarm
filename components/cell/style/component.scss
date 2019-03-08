@@ -96,8 +96,8 @@
     @include cell-theme($--theme-warning);
   }
 
-  @include m(error) {
-    @include cell-theme($--theme-error);
+  @include m(danger) {
+    @include cell-theme($--theme-danger);
   }
 
   @include m(link) {

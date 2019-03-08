@@ -14,7 +14,7 @@ class Demo extends React.Component {
           description={
             <Button
               size="xs"
-              theme="error"
+              theme="danger"
               onClick={() => {
                 Toast.show('默认3秒自动关闭');
               }}
