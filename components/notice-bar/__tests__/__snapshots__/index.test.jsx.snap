@@ -2,13 +2,13 @@
 
 exports[`NoticeBar icon 1`] = `
 <div
-  class="za-message theme-warning size-lg"
+  class="za-message za-message--warning za-message--lg"
 >
   <div
-    class="za-message-header"
+    class="za-message__header"
   >
     <div
-      class="za-message-icon"
+      class="za-message__icon"
     >
       <img
         alt=""
@@ -17,13 +17,13 @@ exports[`NoticeBar icon 1`] = `
     </div>
   </div>
   <div
-    class="za-message-body"
+    class="za-message__body"
   >
     <div
       class="za-notice-bar"
     >
       <div
-        class="za-notice-bar-body"
+        class="za-notice-bar__body"
         style="left:0"
       >
         foo
@@ -61,33 +61,33 @@ exports[`NoticeBar renders correctly 1`] = `
     theme="warning"
   >
     <div
-      className="za-message theme-warning size-lg"
+      className="za-message za-message--warning za-message--lg"
       onClick={[Function]}
     >
       <div
-        className="za-message-header"
+        className="za-message__header"
       >
         <div
-          className="za-message-icon"
+          className="za-message__icon"
         >
           <Icon
             prefixCls="za-icon"
             type="broadcast"
           >
             <i
-              className="za-icon za-icon-broadcast"
+              className="za-icon za-icon--broadcast"
             />
           </Icon>
         </div>
       </div>
       <div
-        className="za-message-body"
+        className="za-message__body"
       >
         <div
           className="za-notice-bar"
         >
           <div
-            className="za-notice-bar-body"
+            className="za-notice-bar__body"
             style={
               Object {
                 "left": 0,
@@ -131,33 +131,33 @@ exports[`NoticeBar scrollable 1`] = `
     theme="warning"
   >
     <div
-      className="za-message theme-warning size-lg"
+      className="za-message za-message--warning za-message--lg"
       onClick={[Function]}
     >
       <div
-        className="za-message-header"
+        className="za-message__header"
       >
         <div
-          className="za-message-icon"
+          className="za-message__icon"
         >
           <Icon
             prefixCls="za-icon"
             type="broadcast"
           >
             <i
-              className="za-icon za-icon-broadcast"
+              className="za-icon za-icon--broadcast"
             />
           </Icon>
         </div>
       </div>
       <div
-        className="za-message-body"
+        className="za-message__body"
       >
         <div
           className="za-notice-bar"
         >
           <div
-            className="za-notice-bar-body"
+            className="za-notice-bar__body"
             style={
               Object {
                 "left": 0,
@@ -175,27 +175,27 @@ exports[`NoticeBar scrollable 1`] = `
 
 exports[`NoticeBar theme 1`] = `
 <div
-  class="za-message theme-error size-lg"
+  class="za-message za-message--error za-message--lg"
 >
   <div
-    class="za-message-header"
+    class="za-message__header"
   >
     <div
-      class="za-message-icon"
+      class="za-message__icon"
     >
       <i
-        class="za-icon za-icon-broadcast"
+        class="za-icon za-icon--broadcast"
       />
     </div>
   </div>
   <div
-    class="za-message-body"
+    class="za-message__body"
   >
     <div
       class="za-notice-bar"
     >
       <div
-        class="za-notice-bar-body"
+        class="za-notice-bar__body"
         style="left:0"
       >
         foo

@@ -2,14 +2,14 @@
 
 exports[`Progress renders correctly 1`] = `
 <div
-  class="za-progress type-line"
+  class="za-progress za-progress--line za-progress--default"
 >
   <div
-    class="za-progress-track"
+    class="za-progress__track"
     style="height:8px;border-radius:8px"
   >
     <div
-      class="za-progress-thumb theme-default"
+      class="za-progress__thumb"
       style="width:10%;border-radius:8px"
     />
   </div>
@@ -18,19 +18,19 @@ exports[`Progress renders correctly 1`] = `
 
 exports[`Progress renders has children correctly 1`] = `
 <div
-  class="za-progress type-line"
+  class="za-progress za-progress--line za-progress--default"
 >
   <div
-    class="za-progress-track"
+    class="za-progress__track"
     style="height:4px;border-radius:4px"
   >
     <div
-      class="za-progress-thumb theme-default"
+      class="za-progress__thumb"
       style="width:10%;border-radius:4px"
     />
   </div>
   <div
-    class="za-progress-text"
+    class="za-progress__text"
   >
     foo
   </div>
@@ -47,13 +47,13 @@ exports[`Progress renders percent correctly 1`] = `
   weight="normal"
 >
   <div
-    className="za-progress type-circle"
+    className="za-progress za-progress--circle za-progress--default"
   >
     <svg
       viewBox="0 0 Infinity Infinity"
     >
       <path
-        className="za-progress-track"
+        className="za-progress__track"
         d="
         MInfinity, Infinity
         m0 -16
@@ -63,7 +63,7 @@ exports[`Progress renders percent correctly 1`] = `
         strokeWidth={Infinity}
       />
       <path
-        className="za-progress-thumb theme-default"
+        className="za-progress__thumb"
         d="
         MInfinity, Infinity
         m0 -16
@@ -76,7 +76,7 @@ exports[`Progress renders percent correctly 1`] = `
       />
     </svg>
     <div
-      className="za-progress-text"
+      className="za-progress__text"
     >
       foo
     </div>
@@ -86,13 +86,13 @@ exports[`Progress renders percent correctly 1`] = `
 
 exports[`Progress renders shape is circle correctly 1`] = `
 <div
-  class="za-progress type-circle"
+  class="za-progress za-progress--circle za-progress--default"
 >
   <svg
     viewBox="0 0 40 40"
   >
     <path
-      class="za-progress-track"
+      class="za-progress__track"
       d="
         M20, 20
         m0 -16
@@ -102,7 +102,7 @@ exports[`Progress renders shape is circle correctly 1`] = `
       stroke-width="8"
     />
     <path
-      class="za-progress-thumb theme-default"
+      class="za-progress__thumb"
       d="
         M20, 20
         m0 -16
@@ -115,7 +115,7 @@ exports[`Progress renders shape is circle correctly 1`] = `
     />
   </svg>
   <div
-    class="za-progress-text"
+    class="za-progress__text"
   >
     foo
   </div>
@@ -124,13 +124,13 @@ exports[`Progress renders shape is circle correctly 1`] = `
 
 exports[`Progress renders shape is semi-circle correctly 1`] = `
 <div
-  class="za-progress type-semi-circle"
+  class="za-progress za-progress--semi-circle za-progress--default"
 >
   <svg
     viewBox="0 0 40 20"
   >
     <path
-      class="za-progress-track"
+      class="za-progress__track"
       d="
         M20, 20
         m-16 0
@@ -139,7 +139,7 @@ exports[`Progress renders shape is semi-circle correctly 1`] = `
       stroke-width="8"
     />
     <path
-      class="za-progress-thumb theme-default"
+      class="za-progress__thumb"
       d="
         M20, 20
         m-16 0
@@ -151,7 +151,7 @@ exports[`Progress renders shape is semi-circle correctly 1`] = `
     />
   </svg>
   <div
-    class="za-progress-text"
+    class="za-progress__text"
   >
     foo
   </div>

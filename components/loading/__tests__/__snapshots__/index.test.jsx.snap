@@ -2,10 +2,10 @@
 
 exports[`Confirm renders correctly 1`] = `
 <div
-  class="za-loading za-loading-open"
+  class="za-loading za-loading--open"
 >
   <div
-    class="za-loading-container"
+    class="za-loading__container"
   >
     <svg
       class="za-activity-indicator rotate360 za-activity-indicator--lg"

@@ -64,7 +64,7 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard"
+        class="za-icon za-icon--keyboard"
       />
     </div>
   </div>
@@ -75,11 +75,11 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey"
+        class="za-icon za-icon--deletekey"
       />
     </div>
     <div
-      class="za-keyboard__item za-keyboard--ok"
+      class="za-keyboard__item za-keyboard__item--ok"
     >
       确定
     </div>
@@ -153,7 +153,7 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard"
+        class="za-icon za-icon--keyboard"
       />
     </div>
   </div>
@@ -164,11 +164,11 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey"
+        class="za-icon za-icon--deletekey"
       />
     </div>
     <div
-      class="za-keyboard__item za-keyboard--ok"
+      class="za-keyboard__item za-keyboard__item--ok"
     >
       确定
     </div>
@@ -242,7 +242,7 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard"
+        class="za-icon za-icon--keyboard"
       />
     </div>
   </div>
@@ -253,11 +253,11 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey"
+        class="za-icon za-icon--deletekey"
       />
     </div>
     <div
-      class="za-keyboard__item za-keyboard--ok"
+      class="za-keyboard__item za-keyboard__item--ok"
     >
       确定
     </div>

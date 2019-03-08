@@ -142,7 +142,7 @@ exports[`Input renders onClear called correctly 1`] = `
         type="wrong-round-fill"
       >
         <i
-          className="za-icon za-input__clear za-icon-wrong-round-fill"
+          className="za-icon za-input__clear za-icon--wrong-round-fill"
           onClick={[Function]}
         />
       </Icon>
@@ -222,10 +222,10 @@ exports[`Input.Idcard renders correctly 1`] = `
                     class=" popup-container"
                   >
                     <div
-                      class="za-popup za-popup-hidden"
+                      class="za-popup za-popup--bottom za-popup--hidden"
                     >
                       <div
-                        class="za-popup-wrapper za-popup-wrapper-bottom"
+                        class="za-popup__wrapper"
                       >
                         <div
                           class="za-keyboard"
@@ -292,7 +292,7 @@ exports[`Input.Idcard renders correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-keyboard"
+                                class="za-icon za-icon--keyboard"
                               />
                             </div>
                           </div>
@@ -303,11 +303,11 @@ exports[`Input.Idcard renders correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-deletekey"
+                                class="za-icon za-icon--deletekey"
                               />
                             </div>
                             <div
-                              class="za-keyboard__item za-keyboard--ok"
+                              class="za-keyboard__item za-keyboard__item--ok"
                             >
                               确定
                             </div>
@@ -319,10 +319,10 @@ exports[`Input.Idcard renders correctly 1`] = `
                 }
               >
                 <div
-                  className="za-popup za-popup-hidden"
+                  className="za-popup za-popup--bottom za-popup--hidden"
                 >
                   <div
-                    className="za-popup-wrapper za-popup-wrapper-bottom"
+                    className="za-popup__wrapper"
                     style={
                       Object {
                         "WebkitTransitionDuration": "200ms",
@@ -430,7 +430,7 @@ exports[`Input.Idcard renders correctly 1`] = `
                               type="keyboard"
                             >
                               <i
-                                className="za-icon za-icon-keyboard"
+                                className="za-icon za-icon--keyboard"
                               />
                             </Icon>
                           </div>
@@ -450,12 +450,12 @@ exports[`Input.Idcard renders correctly 1`] = `
                               type="deletekey"
                             >
                               <i
-                                className="za-icon za-icon-deletekey"
+                                className="za-icon za-icon--deletekey"
                               />
                             </Icon>
                           </div>
                           <div
-                            className="za-keyboard__item za-keyboard--ok"
+                            className="za-keyboard__item za-keyboard__item--ok"
                             onClick={[Function]}
                           >
                             确定
@@ -530,10 +530,10 @@ exports[`Input.Number renders correctly 1`] = `
                     class=" popup-container"
                   >
                     <div
-                      class="za-popup za-popup-hidden"
+                      class="za-popup za-popup--bottom za-popup--hidden"
                     >
                       <div
-                        class="za-popup-wrapper za-popup-wrapper-bottom"
+                        class="za-popup__wrapper"
                       >
                         <div
                           class="za-keyboard"
@@ -598,7 +598,7 @@ exports[`Input.Number renders correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-keyboard"
+                                class="za-icon za-icon--keyboard"
                               />
                             </div>
                           </div>
@@ -609,11 +609,11 @@ exports[`Input.Number renders correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-deletekey"
+                                class="za-icon za-icon--deletekey"
                               />
                             </div>
                             <div
-                              class="za-keyboard__item za-keyboard--ok"
+                              class="za-keyboard__item za-keyboard__item--ok"
                             >
                               确定
                             </div>
@@ -625,10 +625,10 @@ exports[`Input.Number renders correctly 1`] = `
                 }
               >
                 <div
-                  className="za-popup za-popup-hidden"
+                  className="za-popup za-popup--bottom za-popup--hidden"
                 >
                   <div
-                    className="za-popup-wrapper za-popup-wrapper-bottom"
+                    className="za-popup__wrapper"
                     style={
                       Object {
                         "WebkitTransitionDuration": "200ms",
@@ -734,7 +734,7 @@ exports[`Input.Number renders correctly 1`] = `
                               type="keyboard"
                             >
                               <i
-                                className="za-icon za-icon-keyboard"
+                                className="za-icon za-icon--keyboard"
                               />
                             </Icon>
                           </div>
@@ -754,12 +754,12 @@ exports[`Input.Number renders correctly 1`] = `
                               type="deletekey"
                             >
                               <i
-                                className="za-icon za-icon-deletekey"
+                                className="za-icon za-icon--deletekey"
                               />
                             </Icon>
                           </div>
                           <div
-                            className="za-keyboard__item za-keyboard--ok"
+                            className="za-keyboard__item za-keyboard__item--ok"
                             onClick={[Function]}
                           >
                             确定
@@ -896,10 +896,10 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                     class=" popup-container"
                   >
                     <div
-                      class="za-popup za-popup-hidden"
+                      class="za-popup za-popup--bottom za-popup--hidden"
                     >
                       <div
-                        class="za-popup-wrapper za-popup-wrapper-bottom"
+                        class="za-popup__wrapper"
                       >
                         <div
                           class="za-keyboard"
@@ -964,7 +964,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-keyboard"
+                                class="za-icon za-icon--keyboard"
                               />
                             </div>
                           </div>
@@ -975,11 +975,11 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-deletekey"
+                                class="za-icon za-icon--deletekey"
                               />
                             </div>
                             <div
-                              class="za-keyboard__item za-keyboard--ok"
+                              class="za-keyboard__item za-keyboard__item--ok"
                             >
                               确定
                             </div>
@@ -991,10 +991,10 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                 }
               >
                 <div
-                  className="za-popup za-popup-hidden"
+                  className="za-popup za-popup--bottom za-popup--hidden"
                 >
                   <div
-                    className="za-popup-wrapper za-popup-wrapper-bottom"
+                    className="za-popup__wrapper"
                     style={
                       Object {
                         "WebkitTransitionDuration": "200ms",
@@ -1100,7 +1100,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                               type="keyboard"
                             >
                               <i
-                                className="za-icon za-icon-keyboard"
+                                className="za-icon za-icon--keyboard"
                               />
                             </Icon>
                           </div>
@@ -1120,12 +1120,12 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                               type="deletekey"
                             >
                               <i
-                                className="za-icon za-icon-deletekey"
+                                className="za-icon za-icon--deletekey"
                               />
                             </Icon>
                           </div>
                           <div
-                            className="za-keyboard__item za-keyboard--ok"
+                            className="za-keyboard__item za-keyboard__item--ok"
                             onClick={[Function]}
                           >
                             确定
@@ -1147,7 +1147,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
         type="wrong-round-fill"
       >
         <i
-          className="za-icon za-input__clear za-icon-wrong-round-fill"
+          className="za-icon za-input__clear za-icon--wrong-round-fill"
           onClick={[Function]}
         />
       </Icon>
@@ -1211,10 +1211,10 @@ exports[`Input.Price renders correctly 1`] = `
                     class=" popup-container"
                   >
                     <div
-                      class="za-popup za-popup-hidden"
+                      class="za-popup za-popup--bottom za-popup--hidden"
                     >
                       <div
-                        class="za-popup-wrapper za-popup-wrapper-bottom"
+                        class="za-popup__wrapper"
                       >
                         <div
                           class="za-keyboard"
@@ -1281,7 +1281,7 @@ exports[`Input.Price renders correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-keyboard"
+                                class="za-icon za-icon--keyboard"
                               />
                             </div>
                           </div>
@@ -1292,11 +1292,11 @@ exports[`Input.Price renders correctly 1`] = `
                               class="za-keyboard__item"
                             >
                               <i
-                                class="za-icon za-icon-deletekey"
+                                class="za-icon za-icon--deletekey"
                               />
                             </div>
                             <div
-                              class="za-keyboard__item za-keyboard--ok"
+                              class="za-keyboard__item za-keyboard__item--ok"
                             >
                               确定
                             </div>
@@ -1308,10 +1308,10 @@ exports[`Input.Price renders correctly 1`] = `
                 }
               >
                 <div
-                  className="za-popup za-popup-hidden"
+                  className="za-popup za-popup--bottom za-popup--hidden"
                 >
                   <div
-                    className="za-popup-wrapper za-popup-wrapper-bottom"
+                    className="za-popup__wrapper"
                     style={
                       Object {
                         "WebkitTransitionDuration": "200ms",
@@ -1419,7 +1419,7 @@ exports[`Input.Price renders correctly 1`] = `
                               type="keyboard"
                             >
                               <i
-                                className="za-icon za-icon-keyboard"
+                                className="za-icon za-icon--keyboard"
                               />
                             </Icon>
                           </div>
@@ -1439,12 +1439,12 @@ exports[`Input.Price renders correctly 1`] = `
                               type="deletekey"
                             >
                               <i
-                                className="za-icon za-icon-deletekey"
+                                className="za-icon za-icon--deletekey"
                               />
                             </Icon>
                           </div>
                           <div
-                            className="za-keyboard__item za-keyboard--ok"
+                            className="za-keyboard__item za-keyboard__item--ok"
                             onClick={[Function]}
                           >
                             确定

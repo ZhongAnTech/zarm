@@ -5,7 +5,7 @@ exports[`SwipeAction left only 1`] = `
   class="za-swipe-action"
 >
   <div
-    class="za-swipe-action-actions-left"
+    class="za-swipe-action__actions za-swipe-action__actions--left"
   >
     <button
       aria-disabled="false"
@@ -29,7 +29,7 @@ exports[`SwipeAction left only 1`] = `
     </button>
   </div>
   <div
-    class="za-swipe-action-content"
+    class="za-swipe-action__content"
     style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
   >
     <div>
@@ -111,7 +111,7 @@ exports[`SwipeAction renders correctly 1`] = `
     className="za-swipe-action"
   >
     <div
-      className="za-swipe-action-actions-left"
+      className="za-swipe-action__actions za-swipe-action__actions--left"
     >
       <Button
         block={false}
@@ -165,7 +165,7 @@ exports[`SwipeAction renders correctly 1`] = `
       </Button>
     </div>
     <div
-      className="za-swipe-action-actions-right"
+      className="za-swipe-action__actions za-swipe-action__actions--right"
     >
       <Button
         block={false}
@@ -224,7 +224,7 @@ exports[`SwipeAction renders correctly 1`] = `
       onDragStart={[Function]}
     >
       <div
-        className="za-swipe-action-content"
+        className="za-swipe-action__content"
         onMouseDown={[Function]}
         onMouseMove={[Function]}
         onMouseUp={[Function]}
@@ -254,7 +254,7 @@ exports[`SwipeAction right only 1`] = `
   class="za-swipe-action"
 >
   <div
-    class="za-swipe-action-actions-right"
+    class="za-swipe-action__actions za-swipe-action__actions--right"
   >
     <button
       aria-disabled="false"
@@ -278,7 +278,7 @@ exports[`SwipeAction right only 1`] = `
     </button>
   </div>
   <div
-    class="za-swipe-action-content"
+    class="za-swipe-action__content"
     style="-webkit-transition-duration:undefinedms;transition-duration:undefinedms;-webkit-transform:translate3d(0px, 0, 0);transform:translate3d(0px, 0, 0)"
   >
     <div>

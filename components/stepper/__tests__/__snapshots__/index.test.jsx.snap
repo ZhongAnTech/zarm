@@ -2,18 +2,18 @@
 
 exports[`Stepper defaultValue 1`] = `
 <span
-  className="za-stepper shape-rect"
+  className="za-stepper za-stepper--radius"
 >
   <Button
     block={false}
-    className="za-stepper-sub"
+    className="za-stepper__sub"
     disabled={false}
     ghost={false}
     loading={false}
     onClick={[Function]}
     prefixCls="za-button"
-    shape="rect"
-    size="sm"
+    shape="radius"
+    size="xs"
     theme="default"
   >
     <Icon
@@ -22,7 +22,7 @@ exports[`Stepper defaultValue 1`] = `
     />
   </Button>
   <input
-    className="za-stepper-input"
+    className="za-stepper__input"
     disabled={false}
     onBlur={[Function]}
     onChange={[Function]}
@@ -31,14 +31,14 @@ exports[`Stepper defaultValue 1`] = `
   />
   <Button
     block={false}
-    className="za-stepper-plus"
+    className="za-stepper__plus"
     disabled={false}
     ghost={false}
     loading={false}
     onClick={[Function]}
     prefixCls="za-button"
-    shape="rect"
-    size="sm"
+    shape="radius"
+    size="xs"
     theme="default"
   >
     <Icon
@@ -51,34 +51,34 @@ exports[`Stepper defaultValue 1`] = `
 
 exports[`Stepper renders correctly 1`] = `
 <span
-  class="za-stepper shape-rect"
+  class="za-stepper za-stepper--radius"
 >
   <button
     aria-disabled="false"
-    class="za-button za-stepper-sub za-button--default za-button--sm za-button--rect"
+    class="za-button za-stepper__sub za-button--default za-button--xs za-button--radius"
     role="button"
     type="button"
   >
     <span>
       <i
-        class="za-icon za-icon-minus"
+        class="za-icon za-icon--minus"
       />
     </span>
   </button>
   <input
-    class="za-stepper-input"
+    class="za-stepper__input"
     type="tel"
     value="0"
   />
   <button
     aria-disabled="false"
-    class="za-button za-stepper-plus za-button--default za-button--sm za-button--rect"
+    class="za-button za-stepper__plus za-button--default za-button--xs za-button--radius"
     role="button"
     type="button"
   >
     <span>
       <i
-        class="za-icon za-icon-add"
+        class="za-icon za-icon--add"
       />
     </span>
   </button>

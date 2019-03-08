@@ -22,7 +22,6 @@ exports[`ActionSheet renders correctly 1`] = `
   cancelText="取消"
   onMaskClick={[MockFunction]}
   prefixCls="za-action-sheet"
-  shape="rect"
   spacing={false}
   visible={true}
 >
@@ -48,13 +47,13 @@ exports[`ActionSheet renders correctly 1`] = `
             class=" popup-container"
           >
             <div
-              class="za-popup za-popup-hidden"
+              class="za-popup za-popup--bottom za-popup--hidden"
             >
               <div
-                class="za-popup-wrapper za-popup-wrapper-bottom"
+                class="za-popup__wrapper"
               >
                 <div
-                  class="za-action-sheet za-action-sheet--rect"
+                  class="za-action-sheet"
                 >
                   <div
                     class="za-action-sheet__actions"
@@ -70,7 +69,7 @@ exports[`ActionSheet renders correctly 1`] = `
                       操作二
                     </a>
                     <a
-                      class="za-action-sheet__item za-action-sheet--error"
+                      class="za-action-sheet__item za-action-sheet__item--error"
                     >
                       操作三
                     </a>
@@ -82,10 +81,10 @@ exports[`ActionSheet renders correctly 1`] = `
         }
       >
         <div
-          className="za-popup za-popup-hidden"
+          className="za-popup za-popup--bottom za-popup--hidden"
         >
           <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
+            className="za-popup__wrapper"
             style={
               Object {
                 "WebkitTransitionDuration": "200ms",
@@ -94,7 +93,7 @@ exports[`ActionSheet renders correctly 1`] = `
             }
           >
             <div
-              className="za-action-sheet za-action-sheet--rect"
+              className="za-action-sheet"
             >
               <div
                 className="za-action-sheet__actions"
@@ -114,7 +113,7 @@ exports[`ActionSheet renders correctly 1`] = `
                   操作二
                 </a>
                 <a
-                  className="za-action-sheet__item za-action-sheet--error"
+                  className="za-action-sheet__item za-action-sheet__item--error"
                   key="2"
                   onClick={[MockFunction]}
                 >

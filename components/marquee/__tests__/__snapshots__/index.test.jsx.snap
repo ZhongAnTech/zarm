@@ -7,10 +7,10 @@ exports[`Marquee renders correctly 1`] = `
     style="width:100%;height:150px"
   >
     <div
-      class="za-marquee-body"
+      class="za-marquee__body"
     >
       <div
-        class="za-marquee-content"
+        class="za-marquee__content"
       >
         测试我在滚动
       </div>
