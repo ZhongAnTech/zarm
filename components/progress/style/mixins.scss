@@ -1,8 +1,8 @@
 $themeMap: (
-  primary: var($--theme-primary),
-  success: var($--theme-success),
-  warning: var($--theme-warning),
-  error: var($--theme-error)
+  primary: $--theme-primary,
+  success: $--theme-success,
+  warning: $--theme-warning,
+  error: $--theme-error
 );
 
 @mixin progress-theme($attr) {
@@ -17,7 +17,7 @@ $themeMap: (
 
 @mixin progress-type() {
   @include e(track) {
-    stroke: var($--progress-background);
+    stroke: $--progress-background;
     fill-opacity: 0;
   }
 

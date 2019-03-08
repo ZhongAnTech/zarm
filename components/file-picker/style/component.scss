@@ -4,6 +4,6 @@
   }
 
   @include m(disabled) {
-    opacity: var($--opacity-disabled);
+    opacity: $--opacity-disabled;
   }
 }

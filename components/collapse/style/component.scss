@@ -13,9 +13,9 @@
 
   @include e(title) {
     position: relative;
-    height: var($--collapse-height);
-    line-height: var($--collapse-height);
-    padding: 0 var($--collapse-padding);
+    height: $--collapse-height;
+    line-height: $--collapse-height;
+    padding: 0 $--collapse-padding;
     @include onepx(bottom);
   }
 
@@ -26,7 +26,7 @@
     @include onepx(bottom);
 
     &__inner {
-      padding: var($--padding-v-lg) var($--collapse-padding);
+      padding: $--padding-v-lg $--collapse-padding;
     }
   }
 
@@ -35,9 +35,9 @@
     width: r(10);
     height: r(10);
     top: r(17);
-    right: var($--collapse-padding);
-    border-right: r(2) solid var($--collapse-arrow-color);
-    border-bottom: r(2) solid var($--collapse-arrow-color);
+    right: $--collapse-padding;
+    border-right: r(2) solid $--collapse-arrow-color;
+    border-bottom: r(2) solid $--collapse-arrow-color;
     transform: rotate(45deg);
     transform-origin: 50% 50%;
     transition: transform 0.15s ease-out;
@@ -45,8 +45,8 @@
 
   @include m(disabled) {
     @include e(arrow) {
-      border-right: r(2) solid var($--collapse-arrow-disabled-color);
-      border-bottom: r(2) solid var($--collapse-arrow-disabled-color);
+      border-right: r(2) solid $--collapse-arrow-disabled-color;
+      border-bottom: r(2) solid $--collapse-arrow-disabled-color;
     }
   }
 

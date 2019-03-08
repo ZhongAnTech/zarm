@@ -7,9 +7,9 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    height: var($--picker-header-height);
-    line-height: var($--picker-header-height);
-    font-size: var($--picker-header-font-size);
+    height: $--picker-header-height;
+    line-height: $--picker-header-height;
+    font-size: $--picker-header-font-size;
     @include onepx(bottom);
   }
 
@@ -21,15 +21,15 @@
 
   @include e(cancel) {
     text-align: left;
-    color: var($--color-text-caption);
+    color: $--color-text-caption;
   }
 
   @include e(submit) {
     text-align: right;
-    color: var($--theme-primary);
+    color: $--theme-primary;
   }
 
   @include e(title) {
-    color: var($--color-text);
+    color: $--color-text;
   }
 }

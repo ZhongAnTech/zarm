@@ -7,7 +7,7 @@
   height: 100%;
   overflow: auto;
   user-select: none;
-  z-index: var($--zindex-loading);
+  z-index: $--zindex-loading;
 
   @include m(open) {
     display: flex;
@@ -23,8 +23,8 @@
     width: r(80);
     height: r(80);
     padding: r(20) r(15);
-    border-radius: var($--radius-md);
-    background: rgba(0, 0, 0, var($--opacity-toast));
+    border-radius: $--radius-md;
+    background: rgba(0, 0, 0, $--opacity-toast);
     color: #fff;
   }
 }

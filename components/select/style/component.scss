@@ -11,13 +11,13 @@
 
   @include m(placeholder) {
     @include e(input) {
-      color: var($--color-text-placeholder);
+      color: $--color-text-placeholder;
     }
   }
 
   @include m(disabled) {
     @include e(input) {
-      color: var($--color-text-disabled);
+      color: $--color-text-disabled;
     }
   }
 }

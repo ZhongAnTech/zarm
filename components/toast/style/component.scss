@@ -7,7 +7,7 @@
   height: 100%;
   overflow: auto;
   user-select: none;
-  z-index: var($--zindex-toast);
+  z-index: $--zindex-toast;
 
   @include m(open) {
     display: flex;
@@ -17,12 +17,12 @@
 
   @include e(container) {
     position: relative;
-    max-width: var($--toast-max-width);
-    padding: var($--padding-v-xl) var($--padding-h-xl);
-    border-radius: var($--toast-border-radius);
-    background: rgba(0, 0, 0, var($--opacity-toast));
-    color: var($--toast-color);
+    max-width: $--toast-max-width;
+    padding: $--padding-v-xl $--padding-h-xl;
+    border-radius: $--toast-border-radius;
+    background: rgba(0, 0, 0, $--opacity-toast);
+    color: $--toast-color;
     text-align: center;
-    font-size: var($--toast-font-size);
+    font-size: $--toast-font-size;
   }
 }

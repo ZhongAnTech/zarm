@@ -4,7 +4,7 @@
       to $direction,
       transparent 0,
       transparent 50%,
-      var($--calendar-day-range-background) 50%
+      $--calendar-day-range-background 50%
     );
 }
 
@@ -21,7 +21,7 @@
 @mixin firstday() {
   @each $num in 1, 2, 3, 4, 5, 6 {
     &.firstday-#{$num} {
-      margin-left: var($--calendar-day-width) * $num;
+      margin-left: $--calendar-day-width * $num;
     }
   }
 }

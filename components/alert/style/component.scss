@@ -10,15 +10,15 @@
 
     &__button {
       flex: 1;
-      height: var($--alert-button-height);
-      line-height: var($--alert-button-height);
-      font-size: var($--alert-button-font-size);
-      color: var($--theme-primary);
+      height: $--alert-button-height;
+      line-height: $--alert-button-height;
+      font-size: $--alert-button-font-size;
+      color: $--theme-primary;
       @include button-base();
       @include onepx(top);
 
       &:active {
-        background-color: var($--background-active);
+        background-color: $--background-active;
       }
     }
   }

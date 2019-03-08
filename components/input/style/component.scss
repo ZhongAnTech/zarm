@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   height: 100%;
-  padding: var($--input-padding-v) 0;
-  color: var($--color-text);
+  padding: $--input-padding-v 0;
+  color: $--color-text;
 
   input,
   textarea {
@@ -16,22 +16,22 @@
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    color: var($--color-text);
+    color: $--color-text;
 
     &[type="date"],
     &[type="text"],
     &[type="search"] {
-      height: var($--input-line-height);
+      height: $--input-line-height;
     }
 
     @include placeholder {
-      color: var($--color-text-placeholder);
+      color: $--color-text-placeholder;
     }
   }
 
   textarea {
     display: block;
-    line-height: var($--input-line-height);
+    line-height: $--input-line-height;
     resize: none;
     word-break: break-all;
     word-wrap: break-word;
@@ -40,8 +40,8 @@
 
   @include e(content) {
     position: relative;
-    height: var($--input-line-height);
-    line-height: var($--input-line-height);
+    height: $--input-line-height;
+    line-height: $--input-line-height;
   }
 
   @include e(virtual-input) {
@@ -61,14 +61,14 @@
     top: 0;
     width: 100%;
     height: 100%;
-    color: var($--color-text-placeholder);
+    color: $--color-text-placeholder;
   }
 
   @include e(clear) {
     position: absolute;
     visibility: hidden;
     color: #bcbcbc;
-    width: var($--input-clear-icon-width);
+    width: $--input-clear-icon-width;
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -83,7 +83,7 @@
 
   @include e(length) {
     text-align: right;
-    color: var($--input-length-count-color);
+    color: $--input-length-count-color;
     font-size: r(12);
   }
 
@@ -98,8 +98,8 @@
           position: relative;
           right: 0;
           top: 13%;
-          height: var($--input-cursor-height);
-          border-right: var($--input-cursor-width) solid var($--input-cursor-color);
+          height: $--input-cursor-height;
+          border-right: $--input-cursor-width solid $--input-cursor-color;
           transition: opacity 0.1s ease-out;
           animation: virtual-cursor 1s infinite step-start;
         }
@@ -109,7 +109,7 @@
 
   @include m(clearable) {
     @include m(focus) {
-      padding-right: var($--input-clear-icon-width);
+      padding-right: $--input-clear-icon-width;
     }
   }
 
@@ -128,16 +128,16 @@
     input,
     textarea {
       cursor: not-allowed;
-      color: var($--color-text-disabled);
+      color: $--color-text-disabled;
 
       @include placeholder {
-        color: var($--color-text-disabled);
+        color: $--color-text-disabled;
       }
     }
 
     @include e(content, placeholder) {
       cursor: not-allowed;
-      color: var($--color-text-disabled);
+      color: $--color-text-disabled;
     }
   }
 }

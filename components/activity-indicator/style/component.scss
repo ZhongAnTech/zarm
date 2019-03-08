@@ -6,15 +6,15 @@
   display: inline-block;
   position: relative;
   transform: rotate(-90deg);
-  @include activity-indicator-size(var($--activity-indicator-size-md));
+  @include activity-indicator-size($--activity-indicator-size-md);
 
   @include e(path) {
-    stroke: var($--activity-indicator-path-color);
+    stroke: $--activity-indicator-path-color;
   }
 
   @include e(line) {
     stroke-dasharray: 100 * $PI;
-    stroke: var($--theme-primary);
+    stroke: $--theme-primary;
   }
 
   @include e(text) {
@@ -32,6 +32,6 @@
 
   /* sizes */
   @include m(lg) {
-    @include activity-indicator-size(var($--activity-indicator-size-lg));
+    @include activity-indicator-size($--activity-indicator-size-lg);
   }
 }

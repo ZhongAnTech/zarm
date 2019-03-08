@@ -2,18 +2,18 @@
   display: block;
   position: relative;
   width: 100%;
-  height: var($--wheel-item-rows) * var($--wheel-item-height);
+  height: $--wheel-item-rows * $--wheel-item-height;
   overflow: hidden;
 
   @include e(content) {
-    margin-top: var($--wheel-item-height) * 2;
+    margin-top: $--wheel-item-height * 2;
   }
 
   @include e(item) {
     text-align: center;
-    font-size: var($--wheel-item-font-size);
-    line-height: var($--wheel-item-height);
-    height: var($--wheel-item-height);
+    font-size: $--wheel-item-font-size;
+    line-height: $--wheel-item-height;
+    height: $--wheel-item-height;
     color: #000;
     white-space: nowrap;
     text-overflow: ellipsis;

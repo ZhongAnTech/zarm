@@ -3,11 +3,11 @@
 @include b(switch) {
   @include e(input) {
     position: relative;
-    width: var($--switch-width);
-    height: var($--switch-height);
-    border: 1px solid var($--switch-border-color);
-    border-radius: var($--radius-round);
-    background-color: var($--switch-background);
+    width: $--switch-width;
+    height: $--switch-height;
+    border: 1px solid $--switch-border-color;
+    border-radius: $--radius-round;
+    background-color: $--switch-background;
     vertical-align: middle;
     transition: background-color 0.1s, border 0.1s;
     outline: 0;
@@ -19,33 +19,33 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: var($--switch-height) - 2;
-      border-radius: var($--radius-round);
+      height: $--switch-height - 2;
+      border-radius: $--radius-round;
     }
 
     &:before {
-      width: var($--switch-width) - 2;
-      background-color: var($--switch-background);
+      width: $--switch-width - 2;
+      background-color: $--switch-background;
       transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1), -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
     }
 
     &:after {
-      width: var($--switch-height) - 2;
+      width: $--switch-height - 2;
       background-color: #fff;
       box-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
       transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
     }
 
     &:checked {
-      border: 1px solid var($--theme-primary);
-      background-color: var($--theme-primary);
+      border: 1px solid $--theme-primary;
+      background-color: $--theme-primary;
 
       &:before {
         transform: scale(0);
       }
 
       &:after {
-        transform: translateX(var($--switch-width) - var($--switch-height));
+        transform: translateX($--switch-width - $--switch-height);
       }
     }
   }
@@ -53,7 +53,7 @@
   @include m(disabled) {
     @include e(input) {
       cursor: not-allowed;
-      opacity: var($--opacity-disabled);
+      opacity: $--opacity-disabled;
     }
   }
 }
