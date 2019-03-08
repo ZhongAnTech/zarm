@@ -73,12 +73,6 @@ $--opacity-mask: .5;
 $--opacity-toast: .8;
 $--opacity-tooltip: .8;
 
-// Collapse
-$--collapse-height: r(52);
-$--collapse-padding: r(16);
-$--collapse-arrow-color: #c2c2c2;
-$--collapse-arrow-disabled-color: #eee;
-
 // ActionSheet
 $--action-sheet-margin: 0;
 $--action-sheet-item-height: r(50);
@@ -189,6 +183,12 @@ $--cell-arrow-border-width: r(2);                       // 箭头粗细
 
 // Checkbox
 $--checkbox-size: r(20);
+
+// Collapse
+$--collapse-height: r(52);
+$--collapse-padding: r(16);
+$--collapse-arrow-color: #c2c2c2;
+$--collapse-arrow-disabled-color: #eee;
 
 // Confirm
 $--confirm-button-height: r(50);

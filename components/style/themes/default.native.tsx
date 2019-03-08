@@ -1,18 +1,29 @@
-// 主题色
-const base = {
+import Color from 'color';
+
+const darken = (color, percent) => {
+  const hsl = Color(color).hsl();
+  hsl.color[2] = hsl.color[2] - percent * 100;
+  return hsl.hex();
+};
+
+let base: any = {
   // 主题色
   theme_default: '#e6e6e6',                 // 默认色
   theme_primary: '#00bc70',                 // 主色
   theme_success: '#00bc70',                 // 成功
   theme_warning: '#ec9131',                 // 警告
   theme_danger: '#ff5050',                   // 失败
+};
 
+// 主题色
+base = {
+  ...base,
   // press状态色阶
-  theme_default_press: '#cdcdcd',
-  theme_primary_press: '#00a864',
-  theme_success_press: '#00a864',
-  theme_warning_press: '#d3833c',
-  theme_danger_press: '#e54747',
+  theme_default_press: darken(base.theme_default, 0.04),
+  theme_primary_press: darken(base.theme_primary, 0.04),
+  theme_success_press: darken(base.theme_primary, 0.04),
+  theme_warning_press: darken(base.theme_warning, 0.04),
+  theme_danger_press: darken(base.theme_danger, 0.04),
 
   // 文字色
   color_text: '#464646',                    // 基本
