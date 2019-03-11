@@ -14,7 +14,6 @@ class Demo extends React.Component {
           description={
             <Button
               size="xs"
-              theme="danger"
               onClick={() => {
                 Toast.show('默认3秒自动关闭');
               }}
@@ -23,14 +22,28 @@ class Demo extends React.Component {
             </Button>
           }
         >
-          错误提示
+          普通
         </Cell>
 
         <Cell
           description={
             <Button
               size="xs"
-              theme="success"
+              onClick={() => {
+                Toast.show('指定10秒后自动关闭', 10000);
+              }}
+            >
+              开启
+            </Button>
+          }
+        >
+          指定停留时间
+        </Cell>
+
+        <Cell
+          description={
+            <Button
+              size="xs"
               onClick={() => {
                 Toast.show(
                   <div className="box">
@@ -46,22 +59,7 @@ class Demo extends React.Component {
             </Button>
           }
         >
-          成功提示
-        </Cell>
-
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Toast.show('指定10秒自动关闭', 10000);
-              }}
-            >
-              开启
-            </Button>
-          }
-        >
-          指定关闭时间
+          自定义内容
         </Cell>
       </div>
     )
