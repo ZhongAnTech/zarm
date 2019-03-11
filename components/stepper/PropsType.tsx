@@ -1,6 +1,6 @@
 export default interface PropsType {
-  size?: 'md' | 'sm';
-  shape?: 'radius' | 'circle';
+  size?: 'md' | 'lg';
+  shape?: 'rect' | 'radius' | 'circle';
   value?: number;
   defaultValue?: number;
   step: number;

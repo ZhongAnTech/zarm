@@ -6,11 +6,12 @@ exports[`Modal renders correctly 1`] = `
   animationType="fade"
   onMaskClick={[MockFunction]}
   prefixCls="za-modal"
+  shape="radius"
   visible={true}
   width="70%"
 >
   <div
-    className="za-modal"
+    className="za-modal za-modal--radius"
     style={
       Object {
         "WebkitAnimationDuration": "200ms",
@@ -19,10 +20,10 @@ exports[`Modal renders correctly 1`] = `
     }
   >
     <div
-      className="za-modal-wrapper"
+      className="za-modal__wrapper"
     >
       <div
-        className="za-modal-dialog"
+        className="za-modal__dialog"
         onClick={[Function]}
         style={
           Object {
@@ -38,21 +39,21 @@ exports[`Modal renders correctly 1`] = `
           title="标题"
         >
           <div
-            className="za-modal-header"
+            className="za-modal__header"
           >
             <div
-              className="za-modal-header-title"
+              className="za-modal__header__title"
             >
               标题
             </div>
             <Icon
-              className="za-modal-header-close"
+              className="za-modal__header__close"
               onClick={[MockFunction]}
               prefixCls="za-icon"
               type="wrong"
             >
               <i
-                className="za-icon za-modal-header-close za-icon-wrong"
+                className="za-icon za-modal__header__close za-icon--wrong"
                 onClick={[MockFunction]}
               />
             </Icon>
@@ -62,7 +63,7 @@ exports[`Modal renders correctly 1`] = `
           prefixCls="za-modal"
         >
           <div
-            className="za-modal-body"
+            className="za-modal__body"
             style={
               Object {
                 "height": undefined,
@@ -81,7 +82,7 @@ exports[`Modal renders correctly 1`] = `
       visible={true}
     >
       <div
-        className="za-mask type-normal"
+        className="za-mask za-mask--normal"
         onClick={[MockFunction]}
       />
     </Mask>

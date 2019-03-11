@@ -1,6 +1,5 @@
-$prefixCls: $prefixCls-radio;
 
-.#{$prefixCls} {
+@include b(radio) {
   display: inline-block;
   position: relative;
   margin-left: r(10);
@@ -9,12 +8,12 @@ $prefixCls: $prefixCls-radio;
     margin-left: 0;
   }
 
-  &-wrapper {
+  @include e(wrapper) {
     display: flex;
     align-items: center;
   }
 
-  &-input {
+  @include e(input) {
     position: absolute;
     left: 0;
     top: 0;
@@ -23,80 +22,36 @@ $prefixCls: $prefixCls-radio;
     opacity: 0;
   }
 
-  &-text {
-    color: $color-text;
-  }
-
-  &-inner + &-text {
+  @include e(text) {
+    color: $--color-text;
     margin-left: r(10);
   }
 
-  &-inner {
+  @include e(inner) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $radio-size;
-    height: $radio-size;
+    width: $--radio-size;
+    height: $--radio-size;
     border: 1px solid #999;
-    border-radius: $radio-size;
+    border-radius: $--radio-size;
     background: #fff;
 
     &:before {
-      content: ' ';
-      width: $radio-size / 2.5;
-      height: $radio-size / 2.5;
-      border-radius: $radio-size / 2.5;
-      background-color: $theme-primary;
+      content: '';
+      width: $--radio-size / 2.5;
+      height: $--radio-size / 2.5;
+      border-radius: $--radio-size / 2.5;
+      background-color: $--theme-primary;
       transform: scale(0);
       transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
 
-  /* 组合 */
-  &-group {
-    &.block {
-      display: flex;
-    }
-
-    &.is-compact {
-      .#{$prefixCls} {
-        margin-left: -1px;
-      }
-
-      &.shape-radius {
-        .#{$prefixCls} {
-          border-radius: 0;
-
-          &:first-child {
-            border-radius: $radius-md 0 0 $radius-md;
-          }
-
-          &:last-child {
-            border-radius: 0 $radius-md $radius-md 0;
-          }
-        }
-      }
-
-      &.shape-round {
-        .#{$prefixCls} {
-          border-radius: 0;
-
-          &:first-child {
-            border-radius: $radius-round 0 0 $radius-round;
-          }
-
-          &:last-child {
-            border-radius: 0 $radius-round $radius-round 0;
-          }
-        }
-      }
-    }
-  }
-
   /* 选中状态 */
-  &.checked {
-    .#{$prefixCls}-inner {
-      border-color: $theme-primary;
+  @include m(checked) {
+    @include e(inner) {
+      border-color: $--theme-primary;
 
       &:before {
         transform: scale(1);
@@ -106,20 +61,65 @@ $prefixCls: $prefixCls-radio;
   }
 
   /* 禁用状态 */
-  &.disabled {
-    .#{$prefixCls} {
-      &-inner {
-        border-color: $border-disabled;
-        cursor: not-allowed;
+  @include m(disabled) {
+    @include e(inner) {
+      border-color: $--border-disabled;
+      cursor: not-allowed;
 
-        &:before {
-          background-color: $background-disabled;
+      &:before {
+        background-color: $--background-disabled;
+      }
+    }
+
+    @include e(text) {
+      color: $--color-text-disabled;
+    }
+  }
+}
+
+@include b(radio-group) {
+  @include m(block) {
+    display: flex;
+  }
+
+  @include m(compact) {
+    @include m(radius) {
+      @include b(button) {
+        border-radius: 0;
+
+        &:first-child {
+          border-radius: $--radius-md 0 0 $--radius-md;
+        }
+
+        &:last-child {
+          border-radius: 0 $--radius-md $--radius-md 0;
         }
       }
+    }
 
-      &-text {
-        color: $color-text-disabled;
+    @include m(round) {
+      @include b(button) {
+        border-radius: 0;
+
+        &:first-child {
+          border-radius: $--radius-round 0 0 $--radius-round;
+        }
+
+        &:last-child {
+          border-radius: 0 $--radius-round $--radius-round 0;
+        }
       }
+    }
+
+    @include b(button) {
+      margin-left: -1px;
+    }
+  }
+
+  @include m(cell) {
+    @include b(cell) {
+      display: block;
+      margin-left: 0;
     }
   }
 }

@@ -1,9 +1,3 @@
-@mixin activity-indicator-theme($color) {
-  .#{$prefixCls-activity-indicator}-line {
-    stroke: $color;
-  }
-}
-
 @mixin activity-indicator-size($diameter) {
   width: $diameter;
   height: $diameter;

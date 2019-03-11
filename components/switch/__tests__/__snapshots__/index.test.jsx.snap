@@ -6,7 +6,7 @@ exports[`Switch defaultChecked 1`] = `
 >
   <input
     checked=""
-    class="za-switch-input"
+    class="za-switch__input"
     type="checkbox"
     value="on"
   />
@@ -18,7 +18,7 @@ exports[`Switch renders correctly 1`] = `
   class="za-switch"
 >
   <input
-    class="za-switch-input"
+    class="za-switch__input"
     type="checkbox"
     value="off"
   />

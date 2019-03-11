@@ -103,8 +103,10 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   }
 
   render() {
-    const { prefixCls, className, style } = this.props;
-    const cls = classnames(prefixCls, className);
+    const { prefixCls, className, animated, style } = this.props;
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--animated`]: animated,
+    });
 
     return (
       <div className={cls} style={style}>

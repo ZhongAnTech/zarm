@@ -30,43 +30,30 @@ class Demo extends React.Component {
         />
 
         <Cell
-          title="小号"
-          description={
-            <Stepper
-              size="sm"
-              value={this.state.value}
-              onChange={(value) => {
-                console.log(value);
-              }}
-            />
-          }
-        />
-
-        <Cell
           title="设置默认值"
           description={
-            <Stepper size="sm" defaultValue={2} />
+            <Stepper defaultValue={2} />
           }
         />
 
         <Cell
-          title="设置上下限"
+          title="设置上下限（-3 ~ 3）"
           description={
-            <Stepper size="sm" min={-3} max={3} />
+            <Stepper min={-3} max={3} />
           }
         />
 
         <Cell
           title="设置步长"
           description={
-            <Stepper size="sm" step={5} />
+            <Stepper step={5} />
           }
         />
 
         <Cell
           title="禁用状态"
           description={
-            <Stepper size="sm" disabled />
+            <Stepper disabled />
           }
         />
       </div>
@@ -88,16 +75,40 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell
-          title="圆角"
+          title="直角"
           description={
-            <Stepper size="sm" shape="radius" />
+            <Stepper shape="rect" />
           }
         />
 
         <Cell
           title="圆形"
           description={
-            <Stepper size="sm" shape="circle" />
+            <Stepper shape="circle" />
+          }
+        />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
+## 多尺寸
+```jsx
+import { Cell, Stepper } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Cell
+          title="大号"
+          description={
+            <Stepper size="lg" />
           }
         />
       </div>
@@ -115,7 +126,7 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | shape | string | 'rect' | 形状，可选值 `rect`, `radius`, `circle` |
-| size | string | 'md' | 大小，可选值 `md`、`sm` |
+| size | string | 'md' | 大小，可选值 `md`、`lg` |
 | value | number | - | 值 |
 | defaultValue | number | - | 初始值 |
 | min | number | - | 最小值 |

@@ -1,15 +1,12 @@
-
-$prefixCls: $prefixCls-marquee;
-
-.#{$prefixCls} {
+@include b(marquee) {
   width: 100%;
   overflow: hidden;
 
-  &-body {
+  @include e(body) {
     white-space: nowrap;
   }
 
-  &-content {
+  @include e(content) {
     display: inline-block;
   }
 }

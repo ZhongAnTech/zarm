@@ -76,9 +76,6 @@ export default class Pull extends PureComponent<PullProps, any> {
     })(this.pull) || document.documentElement;
   }
 
-  // 节流处理
-  onThrottledScroll = () => Throttle(this.onScroll, 250);
-
   onScroll = () => {
     const { refreshState, loadState } = this.state;
     const { scrollHeight, scrollTop, clientHeight } = this.wrap;
@@ -241,7 +238,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       return render(refreshState, percent);
     }
 
-    const cls = `${this.props.prefixCls}-control`;
+    const cls = `${this.props.prefixCls}__control`;
 
     switch (refreshState) {
       case REFRESH_STATE.pull:
@@ -279,7 +276,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.failure:
         return (
           <div className={cls}>
-            <Icon type="wrong-round" theme="error" />
+            <Icon type="wrong-round" theme="danger" />
             <span>加载失败</span>
           </div>
         );
@@ -300,7 +297,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       return render(loadState);
     }
 
-    const cls = `${this.props.prefixCls}-control`;
+    const cls = `${this.props.prefixCls}__control`;
 
     switch (loadState) {
       case LOAD_STATE.loading:
@@ -314,7 +311,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case LOAD_STATE.failure:
         return (
           <div className={cls}>
-            <Icon type="wrong-round" theme="error" />
+            <Icon type="wrong-round" theme="danger" />
             <span>加载失败</span>
           </div>
         );
@@ -335,8 +332,8 @@ export default class Pull extends PureComponent<PullProps, any> {
     const { offsetY, animationDuration, refreshState, loadState } = this.state;
     const cls = classnames(prefixCls, className);
 
-    const loadCls = classnames(`${prefixCls}-load`, {
-      [`${prefixCls}-load-show`]: loadState >= LOAD_STATE.loading,
+    const loadCls = classnames(`${prefixCls}__load`, {
+      [`${prefixCls}__load--show`]: loadState >= LOAD_STATE.loading,
     });
 
     const contentStyle: CSSProperties = {
@@ -355,11 +352,11 @@ export default class Pull extends PureComponent<PullProps, any> {
         onDragEnd={this.onDragEnd}
       >
         <div className={cls}>
-          <div className={`${prefixCls}-content`} style={contentStyle} ref={(ele) => { this.pull = ele; }}>
-            <div className={`${prefixCls}-refresh`}>
+          <div className={`${prefixCls}__content`} style={contentStyle} ref={(ele) => { this.pull = ele; }}>
+            <div className={`${prefixCls}__refresh`}>
               {this.renderRefresh()}
             </div>
-            <div className={`${prefixCls}-body`}>{children}</div>
+            <div className={`${prefixCls}__body`}>{children}</div>
             <div className={loadCls}>
               {this.renderLoad()}
             </div>

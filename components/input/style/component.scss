@@ -1,23 +1,9 @@
-$prefixCls: $prefixCls-input;
-
-.#{$prefixCls} {
+@include b(input) {
   position: relative;
   width: 100%;
-  padding: $input-padding-size 0;
-  color: $color-text;
-
-  &.clearable {
-    padding-right: $input-clear-icon-width;
-
-    .#{$prefixCls}-content {
-      right: $input-clear-icon-width;
-    }
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-    color: $color-text-disabled;
-  }
+  height: 100%;
+  padding: $--input-padding-v 0;
+  color: $--color-text;
 
   input,
   textarea {
@@ -30,48 +16,59 @@ $prefixCls: $prefixCls-input;
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    color: $color-text;
+    color: $--color-text;
 
     &[type="date"],
     &[type="text"],
     &[type="search"] {
-      height: $input-line-height;
+      height: $--input-line-height;
     }
 
-    &::-webkit-input-placeholder {
-      color: $color-text-placeholder;
-    }
-
-    &:disabled {
-      cursor: not-allowed;
-      color: $color-text-disabled;
+    @include placeholder {
+      color: $--color-text-placeholder;
     }
   }
 
   textarea {
     display: block;
-    line-height: $input-line-height;
+    line-height: $--input-line-height;
     resize: none;
     word-break: break-all;
     word-wrap: break-word;
-    background-color: transparent;
     overflow: visible;
   }
 
-  &-placeholder {
+  @include e(content) {
+    position: relative;
+    height: $--input-line-height;
+    line-height: $--input-line-height;
+  }
+
+  @include e(virtual-input) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  @include e(placeholder) {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    color: $color-text-placeholder;
+    color: $--color-text-placeholder;
   }
 
-  &-clear {
+  @include e(clear) {
     position: absolute;
     visibility: hidden;
     color: #bcbcbc;
-    width: $input-clear-icon-width;
+    width: $--input-clear-icon-width;
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -79,57 +76,73 @@ $prefixCls: $prefixCls-input;
     font-size: r(16);
     line-height: r(20);
 
-    &-show {
+    @include m(show) {
       visibility: visible;
     }
   }
 
-  &-length {
+  @include e(length) {
     text-align: right;
-    color: $input-length-count-color;
+    color: $--input-length-count-color;
     font-size: r(12);
   }
 
-  &-number {
-    line-height: $input-line-height;
-    padding: $input-line-height / 2 0;
-
-    &-picker {
-      background-color: #fff;
-    }
-
-    &.focus {
-      .#{$prefixCls}-content {
+  @include m(number) {
+    @include m(focus) {
+      @include e(virtual-input) {
         transform: translate3d(0, 0, 0);
 
         &:after {
-          content: ' ';
+          content: '';
           display: inline-block;
           position: relative;
           right: 0;
           top: 13%;
-          height: $input-cursor-height;
-          border-right: $input-cursor-width solid $input-cursor-color;
-          animation: custom-cursor 1s infinite step-start;
+          height: $--input-cursor-height;
+          border-right: $--input-cursor-width solid $--input-cursor-color;
+          transition: opacity 0.1s ease-out;
+          animation: virtual-cursor 1s infinite step-start;
         }
       }
     }
   }
 
-  &-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: r(0);
-    // width: 100%;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
+  @include m(clearable) {
+    @include m(focus) {
+      padding-right: $--input-clear-icon-width;
+    }
+  }
+
+  @include m(readonly) {
+    @include e(content) {
+      height: auto;
+    }
+
+    @include e(virtual-input) {
+      position: static;
+      white-space: normal;
+    }
+  }
+
+  @include m(disabled) {
+    input,
+    textarea {
+      cursor: not-allowed;
+      color: $--color-text-disabled;
+
+      @include placeholder {
+        color: $--color-text-disabled;
+      }
+    }
+
+    @include e(content, placeholder) {
+      cursor: not-allowed;
+      color: $--color-text-disabled;
+    }
   }
 }
 
-@keyframes custom-cursor {
+@keyframes virtual-cursor {
   0% {
     opacity: 1;
   }

@@ -105,13 +105,13 @@ export default class Toast extends PureComponent<ToastProps, any> {
     const { prefixCls, className, mask, onMaskClick, children } = this.props;
     const { visible } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`${prefixCls}-open`]: visible,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--open`]: visible,
     });
 
     return (
       <div className={cls}>
-        <div className={`${prefixCls}-container`}>{children}</div>
+        <div className={`${prefixCls}__container`}>{children}</div>
         {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
       </div>
     );

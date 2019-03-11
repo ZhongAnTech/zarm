@@ -9,9 +9,6 @@ export default {
   wrapperSpacing: {
     margin: 10,
     marginTop: 0,
-  },
-
-  radiusShape: {
     borderRadius: variables.radius_md,
     overflow: 'hidden',
   },
@@ -61,7 +58,7 @@ export default {
     color: variables.theme_warning,
   },
 
-  'theme-error': {
-    color: variables.theme_error,
+  'theme-danger': {
+    color: variables.theme_danger,
   },
 };

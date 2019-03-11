@@ -1,24 +1,23 @@
 @import "mixins";
 
-$prefixCls: $prefixCls-activity-indicator;
-$PI: 3.141592674;
+@include b(activity-indicator) {
+  $PI: 3.141592674;
 
-.#{$prefixCls} {
   display: inline-block;
   position: relative;
   transform: rotate(-90deg);
-  @include activity-indicator-size($activity-indicator-size-md);
-  @include activity-indicator-theme($theme-default);
+  @include activity-indicator-size($--activity-indicator-size-md);
 
-  &-path {
-    stroke: $activity-indicator-path-color;
+  @include e(path) {
+    stroke: $--activity-indicator-path-color;
   }
 
-  &-line {
+  @include e(line) {
     stroke-dasharray: 100 * $PI;
+    stroke: $--theme-primary;
   }
 
-  &-text {
+  @include e(text) {
     display: block;
     position: absolute;
     top: 50%;
@@ -32,24 +31,7 @@ $PI: 3.141592674;
   }
 
   /* sizes */
-  &.size-lg {
-    @include activity-indicator-size($activity-indicator-size-lg);
-  }
-
-  /* themes */
-  &.theme-primary {
-    @include activity-indicator-theme($theme-primary);
-  }
-
-  &.theme-success {
-    @include activity-indicator-theme($theme-success);
-  }
-
-  &.theme-warning {
-    @include activity-indicator-theme($theme-warning);
-  }
-
-  &.theme-error {
-    @include activity-indicator-theme($theme-error);
+  @include m(lg) {
+    @include activity-indicator-size($--activity-indicator-size-lg);
   }
 }

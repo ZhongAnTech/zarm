@@ -25,10 +25,10 @@ exports[`Popup renders correctly 1`] = `
           class=" popup-container"
         >
           <div
-            class="za-popup za-popup-hidden"
+            class="za-popup za-popup--bottom za-popup--hidden"
           >
             <div
-              class="za-popup-wrapper za-popup-wrapper-bottom"
+              class="za-popup__wrapper"
             >
               foo
             </div>
@@ -37,10 +37,10 @@ exports[`Popup renders correctly 1`] = `
       }
     >
       <div
-        className="za-popup za-popup-hidden"
+        className="za-popup za-popup--bottom za-popup--hidden"
       >
         <div
-          className="za-popup-wrapper za-popup-wrapper-bottom"
+          className="za-popup__wrapper"
           style={
             Object {
               "WebkitTransitionDuration": "200ms",

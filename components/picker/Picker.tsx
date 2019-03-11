@@ -108,28 +108,25 @@ export default class Picker extends PureComponent<PickerProps, any> {
     const cls = classnames(prefixCls, className);
 
     return (
-      <div className={cls}>
-        <Popup
-          visible={visible}
-          onMaskClick={this.onMaskClick}
-        >
-          <div className={`${prefixCls}-wrapper`} onClick={(e) => {e.stopPropagation(); }}>
-            <div className={`${prefixCls}-header`}>
-              <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
-              <div className={`${prefixCls}-title`}>{title}</div>
-              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-            </div>
-            <PickerView
-              {...others}
-              prefixCls={prefixCls}
-              visible={visible}
-              value={value}
-              onChange={this.onChange}
-              onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
-            />
+      <Popup
+        visible={visible}
+        onMaskClick={this.onMaskClick}
+      >
+        <div className={cls} onClick={(e) => {e.stopPropagation(); }}>
+          <div className={`${prefixCls}__header`}>
+            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText}</div>
+            <div className={`${prefixCls}__title`}>{title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText}</div>
           </div>
-        </Popup>
-      </div>
+          <PickerView
+            {...others}
+            visible={visible}
+            value={value}
+            onChange={this.onChange}
+            onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+          />
+        </div>
+      </Popup>
     );
   }
 }
