@@ -42,8 +42,8 @@
     &:after {
       display: inline-block;
       content: '';
-      border-right: r(2) solid $--cell-arrow-color;
-      border-top: r(2) solid $--cell-arrow-color;
+      border-right: $--cell-arrow-border-width solid $--cell-arrow-color;
+      border-top: $--cell-arrow-border-width solid $--cell-arrow-color;
       width: $--cell-arrow-length;
       height: $--cell-arrow-length;
       transform: rotate(45deg);

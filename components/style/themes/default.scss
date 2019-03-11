@@ -110,7 +110,7 @@ $--button-icon-size-sm: r(18);
 $--button-icon-size-md: r(22);
 $--button-icon-size-lg: r(26);
 $--button-disabled-opacity: $--opacity-disabled;
-$--button-disabled-color-ghost: #bcbcbc;
+$--button-disabled-color-ghost: $--border-disabled;
 
 $--button-default-background: #fff;
 $--button-default-border: $--theme-default;
@@ -128,7 +128,7 @@ $--button-primary-border: $--theme-primary;
 $--button-primary-color: #fff;
 $--button-primary-active-background: $--theme-primary-press;
 $--button-primary-active-border: $--theme-primary-press;
-$--button-primary-active-color: rgba(255, 255, 255, 0.4);
+$--button-primary-active-color: rgba(#fff, 0.4);
 $--button-primary-ghost-border: $--theme-primary;
 $--button-primary-ghost-color: $--theme-primary;
 $--button-primary-ghost-active-border: $--theme-primary-press;
@@ -139,7 +139,7 @@ $--button-danger-border: $--theme-danger;
 $--button-danger-color: #fff;
 $--button-danger-active-background: $--theme-danger-press;
 $--button-danger-active-border: $--theme-danger-press;
-$--button-danger-active-color: rgba(255, 255, 255, 0.4);
+$--button-danger-active-color: rgba(#fff, 0.4);
 $--button-danger-ghost-border: $--theme-danger;
 $--button-danger-ghost-color: $--theme-danger;
 $--button-danger-ghost-active-border: $--theme-danger-press;
@@ -149,15 +149,15 @@ $--button-danger-ghost-active-color: $--theme-danger-press;
 $--calendar-height: r(45); // 最小高度
 $--calendar-background: #fff; // 背景色
 $--calendar-week-bar-fontsize: r(14); // 星期条文字大小
-$--calendar-week-bar-background: #fafafa; // 星期条文字背景色
+$--calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
 $--calendar-week-bar-color: $--color-text-caption; // 星期条文字颜色
 $--calendar-section-padding: r(15); // 两边留白间距
 $--calendar-day-fontsize: r(16); // 月份文字大小
 $--calendar-day-title-fontsize: r(17); // 月份title文字大小
 $--calendar-day-background: #fff; // 月份文字背景颜色
 $--calendar-day-color: $--color-text; // 月份文字颜色
-$--calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
-$--calendar-day-today-color: #11c286; // 日期今天选中颜色
+$--calendar-day-today-background: rgba($--theme-primary, 0.2); // 日期今天选中背景颜色
+$--calendar-day-today-color: $--theme-primary; // 日期今天选中颜色
 $--calendar-day-selected-background: $--theme-primary; // 日期文字选中背景颜色
 $--calendar-day-selected-color: #fff; // 日期文字选中颜色
 $--calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
@@ -187,7 +187,7 @@ $--checkbox-size: r(20);
 // Collapse
 $--collapse-height: r(52);
 $--collapse-padding: r(16);
-$--collapse-arrow-color: #c2c2c2;
+$--collapse-arrow-color: #bcbcbc;
 $--collapse-arrow-disabled-color: #eee;
 
 // Confirm
@@ -239,7 +239,7 @@ $--wheel-item-rows: 5;
 $--wheel-item-font-size: r(18);
 
 // Slider
-$--slider-line-background: #d6d6d6;
+$--slider-line-background: #e6e6e6;
 $--slider-line-height: r(2);
 $--slider-handle-size: r(28);
 $--slider-handle-background: #fff;
@@ -279,7 +279,7 @@ $--switch-width: r(53);
 $--switch-height: r(32);
 // $--switch-width-sm: r(41);
 // $--switch-height-sm: r(21);
-$--switch-border-color: #e5e5e5;
+$--switch-border-color: #e6e6e6;
 $--switch-background: #fff;
 
 // Tabs
@@ -289,13 +289,13 @@ $--tabs-line-height: r(2);
 
 // Toast
 $--toast-border-radius: r(6);
-$--toast-color: #fff;
+$--toast-color: $--color-text-inverse;
 $--toast-font-size: r(13);
 $--toast-max-width: 70%;
 
 // Tooltip
 $--tooltip-font-size: r(12);
-$--tooltip-color: #fff;
+$--tooltip-color: $--color-text-inverse;
 $--tooltip-arrow-size: r(5);
 
 // NavBar
@@ -315,5 +315,5 @@ $--input-height: r(28);
 $--input-line-height: $--cell-title-line-height;
 
 // Progress
-$--progress-background: #eee;
+$--progress-background: #f2f2f2;
 $--progress-circle-diameter: r(150);

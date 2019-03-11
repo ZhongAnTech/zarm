@@ -120,7 +120,7 @@ const components = {
   button_icon_size_md: 22,
   button_icon_size_lg: 26,
   button_disabled_opacity: base.opacity_disabled,
-  button_disabled_color_ghost: '#bcbcbc',
+  button_disabled_color_ghost: base.border_disabled,
 
   button_default_background: '#fff',
   button_default_border: base.theme_default,
@@ -155,12 +155,6 @@ const components = {
   button_danger_ghost_active_border: base.theme_danger_press,
   button_danger_ghost_active_color: base.theme_danger_press,
 
-  // Collapse
-  collapse_height: 52,
-  collapse_padding: 16,
-  collapse_arrow_color: '#c2c2c2',
-  collapse_arrow_disabled_color: '#eee',
-
   // Cell
   cell_height: 52,                                   // 最小度
   cell_background: '#fff',                           // 背景色
@@ -181,6 +175,12 @@ const components = {
 
   // Checkbox
   checkbox_size: 20,
+
+  // Collapse
+  collapse_height: 52,
+  collapse_padding: 16,
+  collapse_arrow_color: '#c2c2c2',
+  collapse_arrow_disabled_color: '#eee',
 
   // Confirm
   confirm_button_height: 50,
@@ -243,7 +243,7 @@ const components = {
   radio_size: 20,
 
   // Slider
-  slider_line_background: '#d6d6d6',
+  slider_line_background: '#e6e6e6',
   slider_line_height: 2,
   slider_handle_size: 28,
   slider_handle_background: '#fff',
@@ -265,7 +265,7 @@ const components = {
   // Switch
   switch_width: 53,
   switch_height: 32,
-  switch_border_color: '#e5e5e5',
+  switch_border_color: '#e6e6e6',
   switch_background: '#fff',
 
   // SwipeAction
