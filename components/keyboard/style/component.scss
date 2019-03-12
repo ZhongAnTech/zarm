@@ -24,7 +24,7 @@
       $--button-default-background,
       $--button-default-border,
       $--color-text-disabled,
-      $--button-disabled-opacity,
+      1,
     );
 
     @include m(ok) {
@@ -39,7 +39,7 @@
         $--button-primary-background,
         $--button-primary-border,
         $--button-primary-color,
-        $--button-disabled-opacity,
+        1,
       );
     }
 
