@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Keyboard from '../index';
 
@@ -21,7 +21,7 @@ describe('Keyboard', () => {
 
   it('click keyboard', () => {
     const onKeyClick = jest.fn();
-    const wrapper = shallow(<Keyboard onKeyClick={onKeyClick} />);
+    const wrapper = mount(<Keyboard onKeyClick={onKeyClick} />);
     const keys = wrapper.find('.za-keyboard__keys');
     expect(keys.childAt(0).text()).toBe('1');
     keys.childAt(0).simulate('click');
