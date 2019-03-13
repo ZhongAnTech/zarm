@@ -78,191 +78,159 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                       >
                         <div
                           class="za-wheel-content"
-                          style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
                         >
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2000年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2001年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2002年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2003年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2004年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2005年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2006年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2007年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2008年
                           </div>
                           <div
                             class="za-wheel-item za-wheel-item-selected"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2009年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2010年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2011年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2012年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2013年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2014年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2015年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2016年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2017年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2018年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2019年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2020年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2021年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2022年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2023年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2024年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2025年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2026年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2027年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2028年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2029年
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2030年
                           </div>
@@ -273,77 +241,64 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                       >
                         <div
                           class="za-wheel-content"
-                          style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
                         >
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             1月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2月
                           </div>
                           <div
                             class="za-wheel-item za-wheel-item-selected"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             3月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             4月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             5月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             6月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             7月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             8月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             9月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             10月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             11月
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             12月
                           </div>
@@ -354,191 +309,159 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                       >
                         <div
                           class="za-wheel-content"
-                          style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
                         >
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             1日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             2日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             3日
                           </div>
                           <div
                             class="za-wheel-item za-wheel-item-selected"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             4日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             5日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             6日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             7日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             8日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             9日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             10日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             11日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             12日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             13日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             14日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             15日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             16日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             17日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             18日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             19日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             20日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             21日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             22日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             23日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             24日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             25日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             26日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             27日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             28日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             29日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             30日
                           </div>
                           <div
                             class="za-wheel-item"
-                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                           >
                             31日
                           </div>
