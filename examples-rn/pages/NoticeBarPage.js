@@ -21,7 +21,7 @@ export default class App extends PureComponent {
               <NoticeBar>普通</NoticeBar>
             </View>
             <View style={styles.mb}>
-              <NoticeBar theme="error">错误色</NoticeBar>
+              <NoticeBar theme="danger">错误色</NoticeBar>
             </View>
             <View>
               <NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>

@@ -73,7 +73,7 @@ export default class Page extends PureComponent {
               <Badge theme="warning" />
             </View>
             <View style={styles.supBox}>
-              <Badge theme="error" />
+              <Badge theme="danger" />
             </View>
 
             <View style={styles.supBox}>
@@ -86,7 +86,7 @@ export default class Page extends PureComponent {
               <Badge shape="round" text="999+" theme="warning" />
             </View>
             <View style={styles.supBox}>
-              <Badge shape="round" text="999+" theme="error" />
+              <Badge shape="round" text="999+" theme="danger" />
             </View>
 
           </View>
