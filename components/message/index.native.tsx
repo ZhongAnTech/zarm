@@ -16,35 +16,29 @@ export interface MessageProps extends PropsType {
   onClick?: (event: GestureResponderEvent) => void;
 }
 
+export interface MessageState {
+  visible?: boolean;
+}
+
 const messageStyles = StyleSheet.create<any>(messageStyle);
 
-export default class Message extends PureComponent<MessageProps, any> {
+export default class Message extends PureComponent<MessageProps, MessageState> {
   static defaultProps = {
     theme: 'primary',
     hasArrow: false,
     closable: false,
-    size: 'md',
     styles: messageStyles,
   };
 
-  constructor(props) {
+  constructor(props: MessageProps) {
     super(props);
     this.state = {
       visible: true,
-      isActive: false,
     };
   }
 
-  _onPressClose = () => {
+  onPressClose = () => {
     this.setState({ visible: false });
-  }
-
-  onPressIn = () => {
-    this.setState({ isActive: true });
-  }
-
-  onPressOut = () => {
-    this.setState({ isActive: false });
   }
 
   render() {
@@ -59,14 +53,13 @@ export default class Message extends PureComponent<MessageProps, any> {
       size,
     } = this.props;
 
-    const { visible, isActive } = this.state;
+    const { visible } = this.state;
 
     const wrapperStyle = [
       styles!.messageWrapper,
       styles!.messageWrapperInner,
       styles![`${theme}MessageBg`],
       styles![`${size}MessageWrapper`],
-      isActive && styles![`${theme}MessageBg`],
       style,
     ] as ViewStyle;
 
@@ -106,7 +99,7 @@ export default class Message extends PureComponent<MessageProps, any> {
     const closeIconRender = closable &&
       <View style={closeWrapperStyle}>
         <TouchableWithoutFeedback
-          onPress={this._onPressClose}
+          onPress={this.onPressClose}
         >
           <View style={closeIconWrapper}>
             <View style={closeIconLeftStyle} />
@@ -135,8 +128,6 @@ export default class Message extends PureComponent<MessageProps, any> {
 
     const wrapperProps = {
       onPress: onClick,
-      onPressIn: this.onPressIn,
-      onPressOut: this.onPressOut,
     };
 
     return visible && (

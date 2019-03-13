@@ -17,9 +17,13 @@ export interface NoticeBarProps extends PropsType {
   styles?: typeof noticeBarStyle;
 }
 
+export interface NoticeBarState {
+  offset: number;
+}
+
 const noticeBarStyles = StyleSheet.create<any>(noticeBarStyle);
 
-export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
+export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
   static defaultProps = {
     theme: 'warning',
     hasArrow: false,
@@ -32,7 +36,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
   private wrapper;
   private moveInterval;
 
-  constructor(props) {
+  constructor(props: NoticeBarProps) {
     super(props);
     this.state = {
       offset: 0,
@@ -129,8 +133,8 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
     return scrollable ?
     <Message {...wrapperProps} {...others} size="lg">
       <ScrollView
-        ref={view => { this.wrapper = view; }}
         horizontal
+        ref={view => { this.wrapper = view; }}
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
       >

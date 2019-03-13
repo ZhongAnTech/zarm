@@ -3,12 +3,16 @@ import PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
 
-export interface MessageProps extends PropsType {
+export interface NoticeBarProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class NoticeBar extends PureComponent<MessageProps, any> {
+export interface NoticeBarState {
+  offset: number;
+}
+
+export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
   static defaultProps = {
     prefixCls: 'za-notice-bar',
     theme: 'warning',
@@ -22,7 +26,7 @@ export default class NoticeBar extends PureComponent<MessageProps, any> {
   private content;
   private moveInterval;
 
-  constructor(props) {
+  constructor(props: NoticeBarProps) {
     super(props);
     this.state = {
       offset: 0,

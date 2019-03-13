@@ -11,7 +11,7 @@ export default {
 
   messageWrapperInner: {
     paddingHorizontal: variables.message_padding_horizontal,
-    backgroundColor: variables.message_theme_bg_default,
+    backgroundColor: variables.message_theme_bg_primary,
   },
 
   lgMessageWrapper: {
@@ -124,10 +124,6 @@ export default {
     flexDirection: 'row',
   },
 
-  defaultMessageBg: {
-    backgroundColor: variables.message_theme_bg_default,
-  },
-
   primaryMessageBg: {
     backgroundColor: variables.message_theme_bg_primary,
   },
@@ -144,48 +140,40 @@ export default {
     backgroundColor: variables.message_theme_bg_danger,
   },
 
-  defaultMessageText: {
-    color: variables.message_theme_text_default,
-  },
-
   primaryMessageText: {
-    color: variables.message_theme_text_primary,
+    color: variables.theme_primary,
   },
 
   successMessageText: {
-    color: variables.message_theme_text_success,
+    color: variables.theme_success,
   },
 
   warningMessageText: {
-    color: variables.message_theme_text_warning,
+    color: variables.theme_warning,
   },
 
   dangerMessageText: {
-    color: variables.message_theme_text_danger,
-  },
-
-  defaultCloseBg: {
-    backgroundColor: variables.message_theme_text_default,
+    color: variables.theme_danger,
   },
 
   primaryCloseBg: {
-    backgroundColor: variables.message_theme_text_primary,
+    backgroundColor: variables.theme_primary,
   },
 
   successCloseBg: {
-    backgroundColor: variables.message_theme_text_success,
+    backgroundColor: variables.theme_success,
   },
 
   warningCloseBg: {
-    backgroundColor: variables.message_theme_text_warning,
+    backgroundColor: variables.theme_warning,
   },
 
   dangerCloseBg: {
-    backgroundColor: variables.message_theme_text_danger,
+    backgroundColor: variables.theme_danger,
   },
 
   activeMessageText: {
-    backgroundColor: variables.message_theme_text_primary,
+    backgroundColor: variables.theme_primary,
   },
 
   messageTextSize: {
@@ -194,11 +182,6 @@ export default {
 
   lgMessageTextSize: {
     fontSize: variables.message_font_size_lg,
-  },
-
-  defaultMessageArrow: {
-    borderTopColor: variables.theme_primary,
-    borderRightColor: variables.theme_primary,
   },
 
   primaryMessageArrow: {

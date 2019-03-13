@@ -1,10 +1,6 @@
 import variables from '../../style/themes/default.native';
 
 export default {
-  defaultNoticeBarBg: {
-    backgroundColor: variables.message_theme_bg_default,
-  },
-
   primaryNoticeBarBg: {
     backgroundColor: variables.message_theme_bg_primary,
   },
@@ -21,24 +17,20 @@ export default {
     backgroundColor: variables.message_theme_bg_danger,
   },
 
-  defaultNoticeBarText: {
-    color: variables.message_theme_text_default,
-  },
-
   primaryNoticeBarText: {
-    color: variables.message_theme_text_primary,
+    color: variables.theme_primary,
   },
 
   successNoticeBarText: {
-    color: variables.message_theme_text_success,
+    color: variables.theme_success,
   },
 
   warningNoticeBarText: {
-    color: variables.message_theme_text_warning,
+    color: variables.theme_warning,
   },
 
   dangerNoticeBarText: {
-    color: variables.message_theme_text_danger,
+    color: variables.theme_danger,
   },
 
   noticeBarSize: {
