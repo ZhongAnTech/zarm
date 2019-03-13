@@ -41,7 +41,7 @@ class SideBar extends PureComponent {
       <div className="side-bar">
         <div className="menu">
           <Menu
-            defaultOpenKeys={['components', 'form', 'feedback', 'view', 'navigation']}
+            defaultOpenKeys={['components', 'form', 'feedback', 'view', 'navigation', 'other']}
             selectedKeys={[match.params.document, match.params.component]}
           >
             {this.getDocs()}
@@ -50,6 +50,7 @@ class SideBar extends PureComponent {
               {this.getMenus('操作反馈', 'feedback')}
               {this.getMenus('数据展示', 'view')}
               {this.getMenus('导航', 'navigation')}
+              {this.getMenus('其他', 'other')}
             </Menu.SubMenu>
           </Menu>
         </div>

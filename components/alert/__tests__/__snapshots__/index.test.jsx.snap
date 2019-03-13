@@ -32,7 +32,7 @@ exports[`Alert renders correctly 1`] = `
         <a
           class="za-alert-footer-button"
         >
-          关闭
+          Close
         </a>
       </div>
     </div>

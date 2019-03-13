@@ -13,19 +13,19 @@ import './style.scss';
 class Page extends PureComponent {
   render() {
     const { match } = this.props;
-    const { form, feedback, view, navigation } = components;
+    const { form, feedback, view, navigation, other } = components;
     return (
       <Container className="components-page">
         <Header />
         <main>
           <SideBar />
           <div className="simulator">
-            <iframe src={`${window.location.origin}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+            <iframe src={`${window.location.protocol}//${window.location.host}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
           </div>
           <div className="main-container">
             <Switch>
               {
-                [...form, ...feedback, ...view, ...navigation].map((component, i) => (
+                [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
                   <Route key={+i} path={`/components/${Format.camel2Dash(component.name)}`} component={AsyncComponent(() => import(`./${component.name}`))} />
                 ))
               }

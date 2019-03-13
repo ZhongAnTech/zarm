@@ -43,12 +43,12 @@ export default class Wheel extends Component<WheelProps, any> {
 
   componentDidMount() {
     const { prefixCls } = this.props;
+    const initIndex = this.getSelectedIndex(this.state.value, this.props.dataSource);
     this.BScroll = new BScroll(this.wrapper, {
       wheel: {
-        selectedIndex: 0,
+        selectedIndex: initIndex,
         wheelWrapperClass: `${prefixCls}-content`,
         wheelItemClass: `${prefixCls}-item`,
-        adjustTime: 100,
       },
       probeType: 3,
     });
@@ -56,11 +56,6 @@ export default class Wheel extends Component<WheelProps, any> {
     if (this.props.disabled) {
       this.BScroll.disable();
     }
-
-    const initIndex = this.getSelectedIndex(this.state.value, this.props.dataSource);
-    setTimeout(() => {
-      this.BScroll.wheelTo(initIndex);
-    }, 80);
 
     this.BScroll.on('scroll', () => {
       this.props.onTransition!(true);
@@ -82,7 +77,7 @@ export default class Wheel extends Component<WheelProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
+    if ('value' in nextProps && nextProps.value !== this.state.value) {
       this.setState({
         value: nextProps.value,
       });
@@ -93,9 +88,9 @@ export default class Wheel extends Component<WheelProps, any> {
     }
 
     const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
-    setTimeout(() => {
-      this.BScroll.wheelTo(newIndex);
-    }, 0);
+    this.BScroll.wheelTo(newIndex);
+    // setTimeout(() => {
+    // }, 0);
   }
 
   componentDidUpdate() {

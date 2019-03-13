@@ -32,12 +32,12 @@ exports[`Confirm renders correctly 1`] = `
         <a
           class="za-confirm-footer-button block"
         >
-          取消
+          Cancel
         </a>
         <a
           class="za-confirm-footer-button block za-confirm-footer-button-ok"
         >
-          确定
+          Ok
         </a>
       </div>
     </div>

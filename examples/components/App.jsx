@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     const { history, location, match } = this.props;
     const currentKey = location.pathname.split('/')[1] || '/';
-    const { form, feedback, view, navigation } = components;
+    const { form, feedback, view, navigation, other } = components;
 
     return (
       // <TransitionGroup>
@@ -52,7 +52,7 @@ class App extends Component {
       <Switch key={location.pathname} location={location}>
         <Route exact path="/" component={LoadableComponent(() => import('../pages/Index'))} />
         {
-          [...form, ...feedback, ...view, ...navigation].map((component, i) => {
+          [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => {
             return <Route key={+i} path={`/${Format.camel2Dash(component.name)}`} component={LoadableComponent(() => import(`../pages/${component.name}Page`))} />;
           })
         }

@@ -43,13 +43,17 @@ export default class Select extends PureComponent<SelectProps, any> {
     if (this.isScrolling) {
       return false;
     }
-    this.toggle();
+
+    this.setState({
+      visible: true,
+    });
   }
 
   toggle() {
     if (this.props.disabled) {
       return;
     }
+
     this.setState({
       visible: !this.state.visible,
     });
@@ -70,11 +74,12 @@ export default class Select extends PureComponent<SelectProps, any> {
     if (this.isScrolling) {
       return false;
     }
-    this.toggle();
+    // this.toggle();
     const { onOk, valueMember } = this.props;
     this.setState({
       value: selected.map(item => item[valueMember!]),
       objValue: selected,
+      visible: false,
     });
     if (typeof onOk === 'function') {
       onOk(selected);

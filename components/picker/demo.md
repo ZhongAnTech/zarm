@@ -267,7 +267,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { visible, visible2, value, dataSource } = this.state;
+    const { visible, value, dataSource } = this.state;
     return (
       <div>
         <Cell title="城市">
@@ -280,6 +280,11 @@ class Demo extends React.Component {
               console.log('Select onOk: ', selected);
               this.setState({
                 value: selected.map(item => item.value),
+              });
+            }}
+            onMaskClick={() => {
+              this.setState({
+                visible: false,
               });
             }}
           />

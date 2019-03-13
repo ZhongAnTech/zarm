@@ -33,7 +33,7 @@ class ScrollToTop extends PureComponent {
   getContainer() {
     if (!this.container) {
       const container = document.createElement('div');
-      container.classList.add(`${this.props.prefixCls}-container`);
+      container.className += ` ${this.props.prefixCls}-container`;
       this.container = container;
     }
     return this.container;

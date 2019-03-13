@@ -36,7 +36,7 @@ class Page extends PureComponent {
       <Container className="index-page">
         <header>
           <section className="brand">
-            <div className="brand-title">Zarm UI</div>
+            <div className="brand-title">Zarm</div>
             <div className="brand-description">众安科技移动端组件库</div>
           </section>
         </header>
@@ -45,6 +45,7 @@ class Page extends PureComponent {
           {this.getMenu('操作反馈', 'feedback')}
           {this.getMenu('数据展示', 'view')}
           {this.getMenu('导航', 'navigation')}
+          {this.getMenu('其他', 'other')}
         </main>
         <Footer />
       </Container>

@@ -1,8 +1,10 @@
+import { Locale } from '../locale-provider/PropsType';
+
 export interface BaseSearchBarProps {
   disabled?: boolean;
   defaultValue?: string;
   value?: string;
-  shape?: 'radius' | 'circle';
+  shape?: 'rect' | 'radius' | 'circle';
   cancelText?: string;
   placeholder?: string;
   showCancel?: boolean;
@@ -14,4 +16,5 @@ export interface BaseSearchBarProps {
   onBlur?: () => void;
   onClear?: (value?: string) => void;
   onCancel?: () => void;
+  locale: Locale;
 }

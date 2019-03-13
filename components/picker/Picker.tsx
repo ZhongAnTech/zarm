@@ -71,18 +71,17 @@ export default class Picker extends PureComponent<PickerProps, any> {
     this.setState({
       value,
       objValue,
+      visible: false,
     });
 
     const { onOk } = this.props;
     if (typeof onOk === 'function') {
       onOk(objValue);
     }
-    this.toggle();
   }
 
   onMaskClick = () => {
     const { onMaskClick } = this.props;
-    this.onCancel();
     if (typeof onMaskClick === 'function') {
       onMaskClick();
     }
@@ -104,7 +103,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
   render() {
     const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
     const { visible, value } = this.state;
-
     const cls = classnames(prefixCls, className);
 
     return (

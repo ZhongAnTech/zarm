@@ -10,6 +10,7 @@ export default class Markdown extends React.Component {
   constructor(props) {
     super(props);
     this.components = new Map();
+    this.nodeList = [];
   }
 
   componentDidMount() {
@@ -25,8 +26,6 @@ export default class Markdown extends React.Component {
       ReactDOM.unmountComponentAtNode(node);
     });
   }
-
-  nodeList = [];
 
   renderDOM() {
     // eslint-disable-next-line
