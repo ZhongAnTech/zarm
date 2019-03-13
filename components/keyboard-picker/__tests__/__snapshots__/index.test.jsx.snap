@@ -2,8 +2,9 @@
 
 exports[`KeyboardPicker renders correctly 1`] = `
 <KeyboardPicker
-  prefixCls="za-keyboard"
+  prefixCls="za-keyboard-picker"
   type="number"
+  visible={false}
 >
   <Popup
     mask={false}

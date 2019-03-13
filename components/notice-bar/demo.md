@@ -11,7 +11,7 @@ class Demo extends React.Component {
     return (
       <div>
         <NoticeBar>普通</NoticeBar>
-        <NoticeBar theme="error">错误色</NoticeBar>
+        <NoticeBar theme="danger">错误色</NoticeBar>
         <NoticeBar icon={<Icon type="wrong-round" />}>自定义图标</NoticeBar>
         <NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
       </div>
@@ -48,7 +48,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'warning' | 主题，可选值 `default`、`primary`、`info`、`success`、`warning`、`error` |
+| theme | string | 'warning' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
 | icon | ReactNode | - | 设置图标 |
 | scrollable | boolean | false | 是否开启自动滚动轮播 |
 | closable | boolean | false | 是否显示关闭按钮 |

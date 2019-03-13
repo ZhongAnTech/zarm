@@ -57,10 +57,8 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     const { theme, percent, shape, type, weight, style, prefixCls, className, children } = this.props;
 
     const cls = classnames(prefixCls, className, {
-      [`type-${type}`]: !!type,
-    });
-    const thumbCls = classnames(`${prefixCls}-thumb`, {
-      [`theme-${theme}`]: !!theme,
+      [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${theme}`]: !!theme,
     });
 
     const diameter = 32;
@@ -89,13 +87,13 @@ export default class Progress extends PureComponent<ProgressProps, any> {
       && (
         <svg viewBox={viewBox}>
           <path
-            className={`${prefixCls}-track`}
+            className={`${prefixCls}__track`}
             d={path}
             strokeWidth={strokeWidth}
             strokeLinecap={strokeLinecap}
           />
           <path
-            className={thumbCls}
+            className={`${prefixCls}__thumb`}
             d={path}
             strokeWidth={strokeWidth}
             strokeLinecap={strokeLinecap}
@@ -112,8 +110,8 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     const rectInner = (
       type === 'line'
       && (
-        <div className={`${prefixCls}-track`} style={lineTrackStyle}>
-          <div className={thumbCls} style={lineThumbStyle} />
+        <div className={`${prefixCls}__track`} style={lineTrackStyle}>
+          <div className={`${prefixCls}__thumb`} style={lineThumbStyle} />
         </div>
       )
     );
@@ -125,7 +123,7 @@ export default class Progress extends PureComponent<ProgressProps, any> {
         ref={(ele) => { this.progressElement = ele; }}
       >
         {type === 'line' ? rectInner : roundInner}
-        {children && <div className={`${prefixCls}-text`}>{children}</div>}
+        {children && <div className={`${prefixCls}__text`}>{children}</div>}
       </div>
     );
   }

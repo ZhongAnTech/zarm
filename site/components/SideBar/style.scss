@@ -11,12 +11,12 @@
 
   .ui-menu-submenu-title {
     &:hover {
-      color: #12C287;
+      color: #00bc70;
 
       .ui-menu-submenu-arrow {
         &:before,
         &:after {
-          background: linear-gradient(to right, #12C287, #12C287);
+          background: linear-gradient(to right, #00bc70, #00bc70);
         }
       }
     }
@@ -36,10 +36,10 @@
     &:hover,
     &.selected,
     &.active {
-      color: #12C287;
+      color: #00bc70;
 
       a {
-        color: #12C287;
+        color: #00bc70;
       }
     }
 

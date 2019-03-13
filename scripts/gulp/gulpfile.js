@@ -13,4 +13,4 @@ gulp.task('copySass', () => {
     .pipe(gulp.dest(DIR.es));
 });
 
-gulp.task('default', ['copySass']);
+gulp.task('default', gulp.series('copySass'));

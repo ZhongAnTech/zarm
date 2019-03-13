@@ -270,7 +270,7 @@ class Demo extends React.Component {
     const { visible, value, dataSource } = this.state;
     return (
       <div>
-        <Cell title="城市">
+        <Cell hasArrow title="城市">
           <Select
             visible={visible}
             placeholder="请选择省市区"

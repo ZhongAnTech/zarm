@@ -140,8 +140,8 @@ export default {
     backgroundColor: variables.message_theme_bg_warning,
   },
 
-  errorMessageBg: {
-    backgroundColor: variables.message_theme_bg_error,
+  dangerMessageBg: {
+    backgroundColor: variables.message_theme_bg_danger,
   },
 
   defaultMessageText: {
@@ -160,8 +160,8 @@ export default {
     color: variables.message_theme_text_warning,
   },
 
-  errorMessageText: {
-    color: variables.message_theme_text_error,
+  dangerMessageText: {
+    color: variables.message_theme_text_danger,
   },
 
   defaultCloseBg: {
@@ -180,8 +180,8 @@ export default {
     backgroundColor: variables.message_theme_text_warning,
   },
 
-  errorCloseBg: {
-    backgroundColor: variables.message_theme_text_error,
+  dangerCloseBg: {
+    backgroundColor: variables.message_theme_text_danger,
   },
 
   activeMessageText: {
@@ -216,9 +216,9 @@ export default {
     borderRightColor: variables.theme_warning,
   },
 
-  errorMessageArrow: {
-    borderTopColor: variables.theme_error,
-    borderRightColor: variables.theme_error,
+  dangerMessageArrow: {
+    borderTopColor: variables.theme_danger,
+    borderRightColor: variables.theme_danger,
   },
 
 };

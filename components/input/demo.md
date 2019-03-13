@@ -1,5 +1,7 @@
 # 文本框 Input
 
+
+
 ## 基本用法
 
 ```jsx
@@ -24,11 +26,12 @@ class Demo extends React.Component {
       <div>
         <Cell title="单行文本">
           <Input
+            clearable
             type="text"
             placeholder="请输入"
             value={this.state.inputValue}
             onChange={this.handleInputChange.bind(this)}
-            />
+          />
         </Cell>
         <Cell title="多行文本"><Input type="text" rows={3} placeholder="请输入" /></Cell>
       </div>
@@ -42,7 +45,7 @@ ReactDOM.render(<Demo />, mountNode);
 ## 输入类型
 
 ```jsx
-import { Input, Cell } from 'zarm';
+import { Input, Cell, Button } from 'zarm';
 
 class Demo extends React.Component {
   constructor(props) {
@@ -65,6 +68,7 @@ class Demo extends React.Component {
             focused={this.state.focused}
             onFocus={value => console.log(`onFocus: ${value}`)}
             onBlur={value => console.log(`onBlur: ${value}`)}
+            onChange={value => console.log(`onChange: ${value}`)}
           />
         </Cell>
 
@@ -77,7 +81,38 @@ class Demo extends React.Component {
         </Cell>
 
         <Cell>
-          <button onClick={() => this.manualFocus.focus()}>click to focus the first input</button>
+          <Button size="xs" theme="primary" onClick={() => this.manualFocus.focus()}>click to focus the first input</Button>
+        </Cell>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
+## 只读 / 禁用状态
+
+```jsx
+import { Input, Cell } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Cell title="单行文本">
+          <Input readOnly type="text" defaultValue="我是只读状态" />
+        </Cell>
+        <Cell title="单行文本">
+          <Input disabled type="text" value="我是禁用状态" />
+        </Cell>
+        <Cell title="多行文本">
+          <Input readOnly type="text" rows={3} value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。" />
+        </Cell>
+        <Cell title="多行文本">
+          <Input disabled type="text" rows={3} value="我是禁用状态，我是禁用状态，我是禁用状态，我是禁用状态。" />
         </Cell>
       </div>
     )
@@ -156,6 +191,7 @@ ReactDOM.render(<Demo />, mountNode);
 | value | number | string | - | 值 |
 | defaultValue | number | string | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
+| readOnly | boolean | false | 是否只读 |
 | rows | number | 2 | 多行文本时的显示行数。type为text类型时有效。 |
 | autoHeight | boolean | false | 是否高度自适应 |
 | maxLength | number | - | 输入字数上限 |

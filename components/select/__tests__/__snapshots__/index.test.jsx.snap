@@ -43,11 +43,11 @@ exports[`Select Cascader Select 1`] = `
   valueMember="value"
 >
   <div
-    className="za-select"
+    className="za-select za-select--placeholder"
     onClick={[Function]}
   >
     <div
-      className="za-select-input za-select-placeholder"
+      className="za-select__input"
     >
       请选择
     </div>
@@ -98,27 +98,23 @@ exports[`Select Cascader Select 1`] = `
       valueMember="value"
       visible={false}
     >
-      <div
-        className="za-picker"
+      <Popup
+        onMaskClick={[Function]}
+        visible={false}
       >
-        <Popup
+        <Portal
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
           onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
           visible={false}
-        >
-          <Portal
-            animationDuration={200}
-            autoClose={false}
-            direction="bottom"
-            handlePortalUnmount={[Function]}
-            mask={true}
-            maskType="normal"
-            onMaskClick={[Function]}
-            prefixCls="za-popup"
-            stayTime={3000}
-            visible={false}
-          />
-        </Popup>
-      </div>
+        />
+      </Popup>
     </Picker>
   </div>
 </Select>
@@ -178,7 +174,7 @@ exports[`Select Cascader Select init value 1`] = `
     onClick={[Function]}
   >
     <div
-      className="za-select-input"
+      className="za-select__input"
     >
       选项一
       选项二
@@ -237,27 +233,23 @@ exports[`Select Cascader Select init value 1`] = `
       valueMember="value"
       visible={false}
     >
-      <div
-        className="za-picker"
+      <Popup
+        onMaskClick={[Function]}
+        visible={false}
       >
-        <Popup
+        <Portal
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
           onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
           visible={false}
-        >
-          <Portal
-            animationDuration={200}
-            autoClose={false}
-            direction="bottom"
-            handlePortalUnmount={[Function]}
-            mask={true}
-            maskType="normal"
-            onMaskClick={[Function]}
-            prefixCls="za-popup"
-            stayTime={3000}
-            visible={false}
-          />
-        </Popup>
-      </div>
+        />
+      </Popup>
     </Picker>
   </div>
 </Select>
@@ -286,11 +278,11 @@ exports[`Select Select 1`] = `
   valueMember="value"
 >
   <div
-    className="za-select"
+    className="za-select za-select--placeholder"
     onClick={[Function]}
   >
     <div
-      className="za-select-input za-select-placeholder"
+      className="za-select__input"
     >
       请选择
     </div>
@@ -321,27 +313,23 @@ exports[`Select Select 1`] = `
       valueMember="value"
       visible={false}
     >
-      <div
-        className="za-picker"
+      <Popup
+        onMaskClick={[Function]}
+        visible={false}
       >
-        <Popup
+        <Portal
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
           onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
           visible={false}
-        >
-          <Portal
-            animationDuration={200}
-            autoClose={false}
-            direction="bottom"
-            handlePortalUnmount={[Function]}
-            mask={true}
-            maskType="normal"
-            onMaskClick={[Function]}
-            prefixCls="za-popup"
-            stayTime={3000}
-            visible={false}
-          />
-        </Popup>
-      </div>
+        />
+      </Popup>
     </Picker>
   </div>
 </Select>
@@ -371,11 +359,11 @@ exports[`Select render defaultValue correctly  1`] = `
   valueMember="value"
 >
   <div
-    className="za-select"
+    className="za-select za-select--placeholder"
     onClick={[Function]}
   >
     <div
-      className="za-select-input za-select-placeholder"
+      className="za-select__input"
     >
       请选择
     </div>
@@ -407,27 +395,23 @@ exports[`Select render defaultValue correctly  1`] = `
       valueMember="value"
       visible={false}
     >
-      <div
-        className="za-picker"
+      <Popup
+        onMaskClick={[Function]}
+        visible={false}
       >
-        <Popup
+        <Portal
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
           onMaskClick={[Function]}
+          prefixCls="za-popup"
+          stayTime={3000}
           visible={false}
-        >
-          <Portal
-            animationDuration={200}
-            autoClose={false}
-            direction="bottom"
-            handlePortalUnmount={[Function]}
-            mask={true}
-            maskType="normal"
-            onMaskClick={[Function]}
-            prefixCls="za-popup"
-            stayTime={3000}
-            visible={false}
-          />
-        </Popup>
-      </div>
+        />
+      </Popup>
     </Picker>
   </div>
 </Select>

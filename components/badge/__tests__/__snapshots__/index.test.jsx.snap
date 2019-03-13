@@ -2,30 +2,30 @@
 
 exports[`Badge renders shape is dot correctly 1`] = `
 <span
-  class="za-badge theme-error shape-dot"
+  class="za-badge za-badge--danger za-badge--dot"
 >
   <sup
-    class="za-badge-sup"
+    class="za-badge__content"
   />
 </span>
 `;
 
 exports[`Badge sup 1`] = `
 <span
-  class="za-badge theme-error shape-dot"
+  class="za-badge za-badge--danger za-badge--dot za-badge--sup"
 >
   <sup
-    class="za-badge-sup za-badge-sup-up"
+    class="za-badge__content"
   />
 </span>
 `;
 
 exports[`Badge text 1`] = `
 <span
-  class="za-badge theme-error shape-rect"
+  class="za-badge za-badge--danger za-badge--rect"
 >
   <sup
-    class="za-badge-sup"
+    class="za-badge__content"
   >
     99+
   </sup>
@@ -34,10 +34,10 @@ exports[`Badge text 1`] = `
 
 exports[`Badge theme 1`] = `
 <span
-  class="za-badge theme-warning shape-dot"
+  class="za-badge za-badge--warning za-badge--dot"
 >
   <sup
-    class="za-badge-sup"
+    class="za-badge__content"
   />
 </span>
 `;

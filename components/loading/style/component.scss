@@ -1,6 +1,4 @@
-$prefixCls: $prefixCls-loading;
-
-.#{$prefixCls} {
+@include b(loading) {
   display: none;
   position: fixed;
   left: 0;
@@ -9,15 +7,15 @@ $prefixCls: $prefixCls-loading;
   height: 100%;
   overflow: auto;
   user-select: none;
-  z-index: $zindex-loading;
+  z-index: $--zindex-loading;
 
-  &-open {
+  @include m(open) {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &-container {
+  @include e(container) {
     position: relative;
     display: flex;
     align-items: center;
@@ -25,8 +23,8 @@ $prefixCls: $prefixCls-loading;
     width: r(80);
     height: r(80);
     padding: r(20) r(15);
-    border-radius: $radius-md;
-    background: rgba(0, 0, 0, $opacity-toast);
+    border-radius: $--radius-md;
+    background: rgba(0, 0, 0, $--opacity-toast);
     color: #fff;
   }
 }

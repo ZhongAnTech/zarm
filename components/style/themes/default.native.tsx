@@ -1,11 +1,29 @@
-// 主题色
-const base = {
+import Color from 'color';
+
+const darken = (color, percent) => {
+  const hsl = Color(color).hsl();
+  hsl.color[2] = hsl.color[2] - percent * 100;
+  return hsl.hex();
+};
+
+let base: any = {
   // 主题色
   theme_default: '#e6e6e6',                 // 默认色
-  theme_primary: '#12c287',                 // 主色
-  theme_success: '#12c287',                 // 成功
+  theme_primary: '#00bc70',                 // 主色
+  theme_success: '#00bc70',                 // 成功
   theme_warning: '#ec9131',                 // 警告
-  theme_error: '#ff5050',                   // 失败
+  theme_danger: '#ff5050',                   // 失败
+};
+
+// 主题色
+base = {
+  ...base,
+  // press状态色阶
+  theme_default_press: darken(base.theme_default, 0.04),
+  theme_primary_press: darken(base.theme_primary, 0.04),
+  theme_success_press: darken(base.theme_primary, 0.04),
+  theme_warning_press: darken(base.theme_warning, 0.04),
+  theme_danger_press: darken(base.theme_danger, 0.04),
 
   // 文字色
   color_text: '#464646',                    // 基本
@@ -102,78 +120,40 @@ const components = {
   button_icon_size_md: 22,
   button_icon_size_lg: 26,
   button_disabled_opacity: base.opacity_disabled,
-  button_disabled_color_ghost: '#bcbcbc',
+  button_disabled_color_ghost: base.border_disabled,
 
   button_default_background: '#fff',
-  button_default_border: base.background_active,
+  button_default_border: base.theme_default,
   button_default_color: base.color_text,
-  button_default_active_background: base.background_active,
-  button_default_active_border: base.background_active,
+  button_default_active_background: base.theme_default,
+  button_default_active_border: base.theme_default,
   button_default_active_color: base.color_text,
-  button_default_ghost_background: 'transparent',
-  button_default_ghost_border: base.background_active,
-  button_default_ghost_color: base.color_text,
-  button_default_ghost_active_background: 'transparent',
-  button_default_ghost_active_border: base.background_active,
-  button_default_ghost_active_color: base.color_text,
+  button_default_ghost_border: '#fff',
+  button_default_ghost_color: '#fff',
+  button_default_ghost_active_border: base.theme_default_press,
+  button_default_ghost_active_color: base.theme_default_press,
 
   button_primary_background: base.theme_primary,
   button_primary_border: base.theme_primary,
   button_primary_color: '#fff',
-  button_primary_active_background: '#10ae79',
-  button_primary_active_border: '#10ae79',
-  button_primary_active_color: '#fff',
-  button_primary_ghost_background: 'transparent',
+  button_primary_active_background: base.theme_primary_press,
+  button_primary_active_border: base.theme_primary_press,
+  button_primary_active_color: 'rgba(255, 255, 255, 0.4)',
   button_primary_ghost_border: base.theme_primary,
   button_primary_ghost_color: base.theme_primary,
-  button_primary_ghost_active_background: 'transparent',
-  button_primary_ghost_active_border: '#10ae79',
-  button_primary_ghost_active_color: '#10ae79',
+  button_primary_ghost_active_border: base.theme_primary_press,
+  button_primary_ghost_active_color: base.theme_primary_press,
 
-  button_success_background: base.theme_success,
-  button_success_border: base.theme_success,
-  button_success_color: '#fff',
-  button_success_active_background: '#10ae79',
-  button_success_active_border: '#10ae79',
-  button_success_active_color: '#fff',
-  button_success_ghost_background: 'transparent',
-  button_success_ghost_border: base.theme_success,
-  button_success_ghost_color: base.theme_success,
-  button_success_ghost_active_background: 'transparent',
-  button_success_ghost_active_border: '#10ae79',
-  button_success_ghost_active_color: '#10ae79',
-
-  button_warning_background: base.theme_warning,
-  button_warning_border: base.theme_warning,
-  button_warning_color: '#fff',
-  button_warning_active_background: '#d3822c',
-  button_warning_active_border: '#d3822c',
-  button_warning_active_color: '#fff',
-  button_warning_ghost_background: 'transparent',
-  button_warning_ghost_border: base.theme_warning,
-  button_warning_ghost_color: base.theme_warning,
-  button_warning_ghost_active_background: 'transparent',
-  button_warning_ghost_active_border: '#d3822c',
-  button_warning_ghost_active_color: '#d3822c',
-
-  button_error_background: base.theme_error,
-  button_error_border: base.theme_error,
-  button_error_color: '#fff',
-  button_error_active_background: '#e54747',
-  button_error_active_border: '#e54747',
-  button_error_active_color: '#fff',
-  button_error_ghost_background: 'transparent',
-  button_error_ghost_border: base.theme_error,
-  button_error_ghost_color: base.theme_error,
-  button_error_ghost_active_background: 'transparent',
-  button_error_ghost_active_border: '#e54747',
-  button_error_ghost_active_color: '#e54747',
-
-  // Collapse
-  collapse_height: 52,
-  collapse_padding: 16,
-  collapse_arrow_color: '#c2c2c2',
-  collapse_arrow_disabled_color: '#eee',
+  button_danger_background: base.theme_danger,
+  button_danger_border: base.theme_danger,
+  button_danger_color: '#fff',
+  button_danger_active_background: base.theme_danger_press,
+  button_danger_active_border: base.theme_danger_press,
+  button_danger_active_color: 'rgba(255, 255, 255, 0.4)',
+  button_danger_ghost_border: base.theme_danger,
+  button_danger_ghost_color: base.theme_danger,
+  button_danger_ghost_active_border: base.theme_danger_press,
+  button_danger_ghost_active_color: base.theme_danger_press,
 
   // Cell
   cell_height: 52,                                   // 最小度
@@ -195,6 +175,12 @@ const components = {
 
   // Checkbox
   checkbox_size: 20,
+
+  // Collapse
+  collapse_height: 52,
+  collapse_padding: 16,
+  collapse_arrow_color: '#c2c2c2',
+  collapse_arrow_disabled_color: '#eee',
 
   // Confirm
   confirm_button_height: 50,
@@ -222,13 +208,13 @@ const components = {
   message_theme_bg_primary: 'rgba(18, 194, 135, 0.2)',               // 主色
   message_theme_bg_success: 'rgba(18, 194, 135, 0.2)',               // 成功
   message_theme_bg_warning: 'rgba(255, 247, 203, 1)',                // 警告
-  message_theme_bg_error: 'rgba(255, 80, 80, 0.1)',                  // 失败
+  message_theme_bg_danger: 'rgba(255, 80, 80, 0.1)',                  // 失败
 
   message_theme_text_default: base.theme_default,                    // 默认色
   message_theme_text_primary: base.theme_primary,                    // 主色
   message_theme_text_success: base.theme_primary,                    // 成功
   message_theme_text_warning: base.theme_warning,                    // 警告
-  message_theme_text_error: base.theme_error,                        // 失败
+  message_theme_text_danger: base.theme_danger,                        // 失败
 
   message_arrow_color: '#bcbcbc',                                    // 箭头颜色
   message_arrow_length: 6,                                          // 箭头长度
@@ -257,7 +243,7 @@ const components = {
   radio_size: 20,
 
   // Slider
-  slider_line_background: '#d6d6d6',
+  slider_line_background: '#e6e6e6',
   slider_line_height: 2,
   slider_handle_size: 28,
   slider_handle_background: '#fff',
@@ -279,7 +265,7 @@ const components = {
   // Switch
   switch_width: 53,
   switch_height: 32,
-  switch_border_color: '#e5e5e5',
+  switch_border_color: '#e6e6e6',
   switch_background: '#fff',
 
   // SwipeAction
@@ -305,8 +291,8 @@ const components = {
   // NoticeBar
   noticeBar_theme_primary_bg: '#fff7cb',
   noticeBar_theme_primary_text: '#ecc9131',
-  noticeBar_theme_error_bg: '#ffeded',
-  noticeBar_theme_error_text: 'ff5656',
+  noticeBar_theme_danger_bg: '#ffeded',
+  noticeBar_theme_danger_text: 'ff5656',
 };
 
 export default { ...base, ...components };

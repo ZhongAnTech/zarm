@@ -1,26 +1,24 @@
-@import "../../button/style/mixins";
+@import '../../button/style/mixins';
 
-$prefixCls: $prefixCls-alert;
-
-.#{$prefixCls} {
-  &-body {
+@include b(alert) {
+  @include e(body) {
     text-align: center;
   }
 
-  &-footer {
+  @include e(footer) {
     display: flex;
 
-    &-button {
+    &__button {
       flex: 1;
-      height: $alert-button-height;
-      line-height: $alert-button-height;
-      font-size: $alert-button-font-size;
-      color: $theme-primary;
+      height: $--alert-button-height;
+      line-height: $--alert-button-height;
+      font-size: $--alert-button-font-size;
+      color: $--theme-primary;
       @include button-base();
       @include onepx(top);
 
       &:active {
-        background-color: $background-active;
+        background-color: $--background-active;
       }
     }
   }

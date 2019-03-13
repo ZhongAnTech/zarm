@@ -64,7 +64,7 @@ describe('Slider', () => {
   // });
 
   it('touch event', () => {
-    const wrapper = mount(<Slider disabled />).find('.za-slider-handle');
+    const wrapper = mount(<Slider disabled />).find('.za-slider__handle');
     wrapper.simulate('touchStart', {
       touches: [10, 0],
     });

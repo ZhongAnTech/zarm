@@ -63,8 +63,6 @@ class Demo extends React.Component {
 
         <Cell title="进度">
           <Stepper
-            size="sm"
-            shape="radius"
             step={10}
             min={0}
             max={100}
@@ -78,14 +76,14 @@ class Demo extends React.Component {
           />
         </Cell>
 
-        <Cell title="主题">
+        <Cell hasArrow title="主题">
           <Select
             value={theme}
             dataSource={[
               { value: 'primary', label: 'primary' },
               { value: 'success', label: 'success' },
               { value: 'warning', label: 'warning' },
-              { value: 'error', label: 'error' },
+              { value: 'danger', label: 'danger' },
             ]}
             onOk={(selected) => {
               this.setState({
@@ -95,7 +93,7 @@ class Demo extends React.Component {
           />
         </Cell>
 
-        <Cell title="线条形状">
+        <Cell hasArrow title="线条形状">
           <Select
             value={shape}
             dataSource={[
@@ -110,7 +108,7 @@ class Demo extends React.Component {
           />
         </Cell>
 
-        <Cell title="线条粗细">
+        <Cell hasArrow title="线条粗细">
           <Select
             value={weight}
             dataSource={[
@@ -138,7 +136,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
+| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `success`, `warning`, `danger` |
 | percent | number | 0 | 进度百分比（范围：0～100） |
 | type | string | 'line' | 类型，可选值 `line`, `circle`, `semi-circle` |
 | shape | string | 'round' | 线条形状，可选值 `round`, `rect` |

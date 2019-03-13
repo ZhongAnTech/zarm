@@ -1,373 +1,319 @@
+$--namespace: 'za';
+$--element-separator: '__';
+$--modifier-separator: '--';
+$--state-prefix: '--';
+
 // 主题色
-$theme-default: #e6e6e6;                    // 默认
-$theme-primary: #12c287;                 // 主色
-$theme-success: #12c287;                 // 成功
-$theme-warning: #ec9131;                 // 警告
-$theme-error: #ff5050;                   // 失败
+$--theme-default: #e6e6e6;                  // 默认
+$--theme-primary: #00bc70;                  // 主色
+$--theme-success: #00bc70;                  // 成功
+$--theme-warning: #ec9131;                  // 警告
+$--theme-danger: #ff5050;                   // 失败
+
+// press状态色阶
+$--theme-default-press: darken($--theme-default, 4%);
+$--theme-primary-press: darken($--theme-primary, 4%);
+$--theme-success-press: darken($--theme-success, 4%);
+$--theme-warning-press: darken($--theme-warning, 4%);
+$--theme-danger-press: darken($--theme-danger, 4%);
 
 // 文字色
-$color-text: #464646;                    // 基本
-$color-text-inverse: #fff;               // 反色
-$color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bcbcbc;           // 失效
-$color-text-caption: #909090;            // 辅助描述
-$color-link: $theme-primary;               // 链接
-$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+$--color-text: #464646;                    // 基本
+$--color-text-inverse: #fff;               // 反色
+$--color-text-placeholder: #a9a9a9;        // 文本框提示
+$--color-text-disabled: #bcbcbc;           // 失效
+$--color-text-caption: #909090;            // 辅助描述
+$--color-link: $--theme-primary;             // 链接
+$--color-shadow: rgba(56, 56, 56, .15);    // 阴影色
 
 // 背景色
-$background-active: #e6e6e6;
-$background-disabled: #bcbcbc;
+$--background-active: #e6e6e6;
+$--background-disabled: #bcbcbc;
 
 // 边框色
-$border-color: #e6e6e6;
-$border-disabled: #bcbcbc;
+$--border-color: #e6e6e6;
+$--border-disabled: #bcbcbc;
 
 // 圆角
-$radius-sm: r(2);
-$radius-md: r(4);
-$radius-lg: r(8);
-$radius-round: r(1000);
-$radius-circle: 50%;
+$--radius-sm: r(2);
+$--radius-md: r(4);
+$--radius-lg: r(8);
+$--radius-round: r(1000);
+$--radius-circle: 50%;
 
 // 水平间距
-$padding-h-sm: r(5);
-$padding-h-md: r(8);
-$padding-h-lg: r(16);
-$padding-h-xl: r(20);
+$--padding-h-sm: r(5);
+$--padding-h-md: r(8);
+$--padding-h-lg: r(16);
+$--padding-h-xl: r(20);
 
 // 垂直间距
-$padding-v-sm: r(2);
-$padding-v-md: r(6);
-$padding-v-lg: r(9);
-$padding-v-xl: r(12);
+$--padding-v-sm: r(2);
+$--padding-v-md: r(6);
+$--padding-v-lg: r(9);
+$--padding-v-xl: r(12);
 
 // 字体大小
-$font-size-xs: r(10);
-$font-size-sm: r(12);
-$font-size-md: r(14);
-$font-size-lg: r(15);
-$font-size-xl: r(18);
+$--font-size-xs: r(10);
+$--font-size-sm: r(12);
+$--font-size-md: r(14);
+$--font-size-lg: r(15);
+$--font-size-xl: r(18);
 
 // 堆叠顺序
-$zindex-mask: 1000;
-$zindex-popup: 1300;
-$zindex-modal: 1400;
-$zindex-toast: 1500;
-$zindex-loading: 1500;
+$--zindex-mask: 1000;
+$--zindex-popup: 1300;
+$--zindex-modal: 1400;
+$--zindex-toast: 1500;
+$--zindex-loading: 1500;
 
 // 透明度
-$opacity-disabled: .6;
-$opacity-mask: .5;
-$opacity-toast: .8;
-$opacity-tooltip: .8;
-
-/* 组件前缀 */
-$prefixCls-collapse: za-collapse;
-$prefixCls-action-sheet: za-action-sheet;
-$prefixCls-alert: za-alert;
-$prefixCls-badge: za-badge;
-$prefixCls-button: za-button;
-$prefixCls-calendar: za-calendar;
-$prefixCls-cell: za-cell;
-$prefixCls-checkbox: za-checkbox;
-$prefixCls-confirm: za-confirm;
-$prefixCls-icon: za-icon;
-$prefixCls-input: za-input;
-$prefixCls-keyboard: za-keyboard;
-$prefixCls-loading: za-loading;
-$prefixCls-mask: za-mask;
-$prefixCls-message: za-message;
-$prefixCls-modal: za-modal;
-$prefixCls-notice-bar: za-notice-bar;
-$prefixCls-panel: za-panel;
-$prefixCls-picker: za-picker;
-$prefixCls-wheel: za-wheel;
-$prefixCls-popup: za-popup;
-$prefixCls-progress: za-progress;
-$prefixCls-pull: za-pull;
-$prefixCls-radio: za-radio;
-$prefixCls-search-bar: za-search-bar;
-$prefixCls-select: za-select;
-$prefixCls-slider: za-slider;
-$prefixCls-activity-indicator: za-activity-indicator;
-$prefixCls-stepper: za-stepper;
-$prefixCls-carousel: za-carousel;
-$prefixCls-swipe-action: za-swipe-action;
-$prefixCls-switch: za-switch;
-$prefixCls-tabs: za-tabs;
-$prefixCls-toast: za-toast;
-$prefixCls-tooltip: za-tooltip;
-$prefixCls-file-picker: za-file-picker;
-$prefixCls-nav-bar: za-nav-bar;
-$prefixCls-marquee: za-marquee;
-
-// Collapse
-$collapse-height: r(52);
-$collapse-padding: r(16);
-$collapse-arrow-color: #c2c2c2;
-$collapse-arrow-disabled-color: #eee;
+$--opacity-disabled: .5;
+$--opacity-mask: .5;
+$--opacity-toast: .8;
+$--opacity-tooltip: .8;
 
 // ActionSheet
-$action-sheet-margin: 0;
-$action-sheet-item-height: r(50);
-$action-sheet-item-font-size: r(16);
+$--action-sheet-margin: 0;
+$--action-sheet-item-height: r(50);
+$--action-sheet-item-font-size: r(16);
 
 // Alert
-$alert-button-height: r(50);
-$alert-button-font-size: r(18);
+$--alert-button-height: r(50);
+$--alert-button-font-size: r(18);
 
 // Badge
-$badge-height: r(14);
-$badge-font-size: $font-size-xs;
-$badge-padding-h: r(4);
-$badge-dot-diameter: r(8);
-$badge-rect-radius: $radius-sm;
-$badge-round-radius: $radius-round;
-$badge-sup-top: r(-4);
-$badge-text-color:#fff;
+$--badge-height: r(14);
+$--badge-font-size: $--font-size-xs;
+$--badge-padding-h: r(4);
+$--badge-dot-diameter: r(8);
+$--badge-border-radius-rect: $--radius-sm;
+$--badge-border-radius-round: $--radius-round;
+$--badge-sup-top: r(-4);
+$--badge-text-color:#fff;
 
 // Button
-$button-height-xs: r(28);
-$button-height-sm: r(36);
-$button-height-md: r(44);
-$button-height-lg: r(52);
-$button-padding-h-xs: r(10);
-$button-padding-h-sm: r(12);
-$button-padding-h-md: r(16);
-$button-padding-h-lg: r(20);
-$button-font-size-xs: r(12);
-$button-font-size-sm: r(16);
-$button-font-size-md: r(16);
-$button-font-size-lg: r(18);
-$button-icon-size-xs: r(16);
-$button-icon-size-sm: r(18);
-$button-icon-size-md: r(22);
-$button-icon-size-lg: r(26);
-$button-disabled-opacity: $opacity-disabled;
-$button-disabled-color-ghost: #bcbcbc;
+$--button-height-xs: r(28);
+$--button-height-sm: r(36);
+$--button-height-md: r(44);
+$--button-height-lg: r(52);
+$--button-padding-h-xs: r(10);
+$--button-padding-h-sm: r(12);
+$--button-padding-h-md: r(16);
+$--button-padding-h-lg: r(20);
+$--button-font-size-xs: r(12);
+$--button-font-size-sm: r(16);
+$--button-font-size-md: r(16);
+$--button-font-size-lg: r(18);
+$--button-icon-size-xs: r(16);
+$--button-icon-size-sm: r(18);
+$--button-icon-size-md: r(22);
+$--button-icon-size-lg: r(26);
+$--button-disabled-opacity: $--opacity-disabled;
+$--button-disabled-color-ghost: $--border-disabled;
 
-$button-default-background: #fff;
-$button-default-border: $background-active;
-$button-default-color: $color-text;
-$button-default-active-background: $background-active;
-$button-default-active-border: $background-active;
-$button-default-active-color: $color-text;
-$button-default-ghost-background: transparent;
-$button-default-ghost-border: $background-active;
-$button-default-ghost-color: $color-text;
-$button-default-ghost-active-background: transparent;
-$button-default-ghost-active-border: $background-active;
-$button-default-ghost-active-color: $color-text;
+$--button-default-background: #fff;
+$--button-default-border: $--theme-default;
+$--button-default-color: $--color-text;
+$--button-default-active-background: $--theme-default;
+$--button-default-active-border: $--theme-default;
+$--button-default-active-color: $--color-text;
+$--button-default-ghost-border: #fff;
+$--button-default-ghost-color: #fff;
+$--button-default-ghost-active-border: $--theme-default;
+$--button-default-ghost-active-color: $--theme-default;
 
-$button-primary-background: $theme-primary;
-$button-primary-border: $theme-primary;
-$button-primary-color: #fff;
-$button-primary-active-background: #10ae79;
-$button-primary-active-border: #10ae79;
-$button-primary-active-color: #fff;
-$button-primary-ghost-background: transparent;
-$button-primary-ghost-border: $theme-primary;
-$button-primary-ghost-color: $theme-primary;
-$button-primary-ghost-active-background: transparent;
-$button-primary-ghost-active-border: #10ae79;
-$button-primary-ghost-active-color: #10ae79;
+$--button-primary-background: $--theme-primary;
+$--button-primary-border: $--theme-primary;
+$--button-primary-color: #fff;
+$--button-primary-active-background: $--theme-primary-press;
+$--button-primary-active-border: $--theme-primary-press;
+$--button-primary-active-color: rgba(#fff, 0.4);
+$--button-primary-ghost-border: $--theme-primary;
+$--button-primary-ghost-color: $--theme-primary;
+$--button-primary-ghost-active-border: $--theme-primary-press;
+$--button-primary-ghost-active-color: $--theme-primary-press;
 
-$button-success-background: $theme-success;
-$button-success-border: $theme-success;
-$button-success-color: #fff;
-$button-success-active-background: #10ae79;
-$button-success-active-border: #10ae79;
-$button-success-active-color: #fff;
-$button-success-ghost-background: transparent;
-$button-success-ghost-border: $theme-success;
-$button-success-ghost-color: $theme-success;
-$button-success-ghost-active-background: transparent;
-$button-success-ghost-active-border: #10ae79;
-$button-success-ghost-active-color: #10ae79;
-
-$button-warning-background: $theme-warning;
-$button-warning-border: $theme-warning;
-$button-warning-color: #fff;
-$button-warning-active-background: #d3822c;
-$button-warning-active-border: #d3822c;
-$button-warning-active-color: #fff;
-$button-warning-ghost-background: transparent;
-$button-warning-ghost-border: $theme-warning;
-$button-warning-ghost-color: $theme-warning;
-$button-warning-ghost-active-background: transparent;
-$button-warning-ghost-active-border: #d3822c;
-$button-warning-ghost-active-color: #d3822c;
-
-$button-error-background: $theme-error;
-$button-error-border: $theme-error;
-$button-error-color: #fff;
-$button-error-active-background: #e54747;
-$button-error-active-border: #e54747;
-$button-error-active-color: #fff;
-$button-error-ghost-background: transparent;
-$button-error-ghost-border: $theme-error;
-$button-error-ghost-color: $theme-error;
-$button-error-ghost-active-background: transparent;
-$button-error-ghost-active-border: #e54747;
-$button-error-ghost-active-color: #e54747;
+$--button-danger-background: $--theme-danger;
+$--button-danger-border: $--theme-danger;
+$--button-danger-color: #fff;
+$--button-danger-active-background: $--theme-danger-press;
+$--button-danger-active-border: $--theme-danger-press;
+$--button-danger-active-color: rgba(#fff, 0.4);
+$--button-danger-ghost-border: $--theme-danger;
+$--button-danger-ghost-color: $--theme-danger;
+$--button-danger-ghost-active-border: $--theme-danger-press;
+$--button-danger-ghost-active-color: $--theme-danger-press;
 
 // Calendar
-$calendar-height: r(45); // 最小高度
-$calendar-background: #fff; // 背景色
-$calendar-week-bar-fontsize: r(14); // 星期条文字大小
-$calendar-week-bar-background: #fafafa; // 星期条文字背景色
-$calendar-week-bar-color: #909090; // 星期条文字颜色
-$calendar-section-padding: r(15); // 两边留白间距
-$calendar-day-fontsize: r(16); // 月份文字大小
-$calendar-day-title-fontsize: r(17); // 月份title文字大小
-$calendar-day-background: #fff; // 月份文字背景颜色
-$calendar-day-color: #464646; // 月份文字颜色
-$calendar-day-today-background: rgba(18, 194, 134, 0.2); // 日期今天选中背景颜色
-$calendar-day-today-color: #11c286; // 日期今天选中颜色
-$calendar-day-selected-background: $theme-primary; // 日期文字选中背景颜色
-$calendar-day-selected-color: #fff; // 日期文字选中颜色
-$calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
-$calendar-day-range-color: $theme-primary; // 日期文字范围内颜色
-$calendar-day-width: 14.28571%; // 日期宽度
-$calendar-day-height: r(40); // 日期高度
+$--calendar-height: r(45); // 最小高度
+$--calendar-background: #fff; // 背景色
+$--calendar-week-bar-fontsize: r(14); // 星期条文字大小
+$--calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
+$--calendar-week-bar-color: $--color-text-caption; // 星期条文字颜色
+$--calendar-section-padding: r(15); // 两边留白间距
+$--calendar-day-fontsize: r(16); // 月份文字大小
+$--calendar-day-title-fontsize: r(17); // 月份title文字大小
+$--calendar-day-background: #fff; // 月份文字背景颜色
+$--calendar-day-color: $--color-text; // 月份文字颜色
+$--calendar-day-today-background: rgba($--theme-primary, 0.2); // 日期今天选中背景颜色
+$--calendar-day-today-color: $--theme-primary; // 日期今天选中颜色
+$--calendar-day-selected-background: $--theme-primary; // 日期文字选中背景颜色
+$--calendar-day-selected-color: #fff; // 日期文字选中颜色
+$--calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
+$--calendar-day-range-color: $--theme-primary; // 日期文字范围内颜色
+$--calendar-day-width: 14.28571%; // 日期宽度
+$--calendar-day-height: r(40); // 日期高度
 
 // Cell
-$cell-height: r(52);                            // 最小高度
-$cell-background: #fff;                       // 背景色
-$cell-line-padding-left: r(16);                 // 分隔线左边距
-$cell-padding-h: r(16);                         // 水平边内距
-$cell-padding-v: r(12);                         // 纵向边内距
-$cell-title-color: $color-text;                 // 标题文字颜色
-$cell-title-font-size: r(15);                   // 标题文字大小
-$cell-title-line-height: r(28);                 // 标题文字行高
-$cell-description-color: $color-text-caption;   // 标题文字颜色
-$cell-description-font-size: r(15);             // 描述文字大小
-$cell-label-width: r(100);                      // 表单label宽度
-$cell-arrow-color: #bcbcbc;                   // 箭头颜色
-$cell-arrow-length: r(10);                      // 箭头长度
-$cell-arrow-border-width: r(2);                 // 箭头粗细
+$--cell-height: r(52);                                  // 最小高度
+$--cell-background: #fff;                             // 背景色
+$--cell-line-padding-left: r(16);                       // 分隔线左边距
+$--cell-padding-h: r(16);                               // 水平边内距
+$--cell-padding-v: r(15);                               // 纵向边内距
+$--cell-title-color: $--color-text;                     // 标题文字颜色
+$--cell-title-font-size: r(15);                         // 标题文字大小
+$--cell-title-line-height: r(22);                       // 标题文字行高
+$--cell-description-color: $--color-text-caption;       // 标题文字颜色
+$--cell-description-font-size: r(15);                   // 描述文字大小
+$--cell-label-width: r(100);                            // 表单label宽度
+$--cell-arrow-color: #bcbcbc;                         // 箭头颜色
+$--cell-arrow-length: r(10);                            // 箭头长度
+$--cell-arrow-border-width: r(2);                       // 箭头粗细
 
 // Checkbox
-$checkbox-size: r(20);
+$--checkbox-size: r(20);
+
+// Collapse
+$--collapse-height: r(52);
+$--collapse-padding: r(16);
+$--collapse-arrow-color: #bcbcbc;
+$--collapse-arrow-disabled-color: #eee;
 
 // Confirm
-$confirm-button-height: r(50);
-$confirm-button-font-size: r(18);
+$--confirm-button-height: r(50);
+$--confirm-button-font-size: r(18);
 
 // Icon
-$icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
+$--icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
 
 // Keyboard
-$keyboard-item-height: r(52);
-$keyboard-item-font-size: r(30);
-$keyboard-icon-font-size: r(21);
+$--keyboard-item-height: r(52);
+$--keyboard-item-font-size: r(30);
+$--keyboard-icon-font-size: r(21);
 
 // Message
-$message-min-height: r(30);
-$message-font-size: r(12);
-$message-min-height-lg: r(42);
-$message-font-size-lg: r(15);
+$--message-min-height: r(30);
+$--message-font-size: r(12);
+$--message-min-height-lg: r(42);
+$--message-font-size-lg: r(15);
 
 // Modal
-$modal-background: #fff;
-$modal-title-font-size: r(18);
+$--modal-background: #fff;
+$--modal-title-font-size: r(18);
 
 // NoticeBar
-$notice-bar-height: r(24);
+$--notice-bar-height: r(24);
 
 // Panel
-$panel-header-color: $color-text-caption;
-$panel-header-font-size: r(14);
-$panel-body-color: $color-text;
-$panel-footer-color: $color-text-caption;
-$panel-footer-font-size: r(12);
+$--panel-header-color: $--color-text-caption;
+$--panel-header-font-size: r(14);
+$--panel-body-color: $--color-text;
+$--panel-body-font-size: r(15);
 
 // Picker
-$picker-stackitem-height: r(35);
+$--picker-header-height: r(45);
+$--picker-header-font-size: r(16);
+// $--picker-stackitem-height: r(35);
 
 // Pull
-$pull-control-height: r(50);
-$pull-control-font-size: r(14);
+$--pull-control-height: r(50);
+$--pull-control-font-size: r(14);
 
 // Radio
-$radio-size: r(20);
+$--radio-size: r(20);
 
 // Wheel
-$wheel-item-height: r(34);
+$--wheel-item-height: r(34);
+$--wheel-item-rows: 5;
+$--wheel-item-font-size: r(18);
 
 // Slider
-$slider-line-background: #d6d6d6;
-$slider-line-height: r(2);
-$slider-handle-size: r(28);
-$slider-handle-background: #fff;
-$slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+$--slider-line-background: #e6e6e6;
+$--slider-line-height: r(2);
+$--slider-handle-size: r(28);
+$--slider-handle-background: #fff;
+$--slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
 
 // activity-indicator
-$activity-indicator-size-md: r(20);
-$activity-indicator-size-lg: r(31);
-$activity-indicator-path-color: #e6e6e6;
+$--activity-indicator-size-md: r(20);
+$--activity-indicator-size-lg: r(31);
+$--activity-indicator-path-color: #e6e6e6;
 
 // Stepper
-$stepper-height-sm: r(28);
-$stepper-height-md: r(36);
-$stepper-icon-font-size-sm: r(12);
-$stepper-icon-font-size-md: r(14);
-$stepper-input-width-sm: r(50);
-$stepper-input-width-md: r(60);
-$stepper-input-disabled: $color-text-disabled;
-$stepper-input-font-size: r(14);
-$stepper-input-margin-h-sm: r(4);
-$stepper-input-margin-h-md: r(4);
-$stepper-input-padding-h-sm: r(8);
-$stepper-input-padding-h-md: r(8);
+$--stepper-height-md: r(28);
+$--stepper-height-lg: r(36);
+$--stepper-icon-font-size-md: r(12);
+$--stepper-icon-font-size-lg: r(14);
+$--stepper-input-width-md: r(50);
+$--stepper-input-width-lg: r(60);
+$--stepper-input-disabled: $--color-text-disabled;
+$--stepper-input-font-size-md: r(14);
+$--stepper-input-font-size-lg: r(16);
+$--stepper-input-margin-h-md: r(4);
+$--stepper-input-margin-h-lg: r(4);
+$--stepper-input-padding-h-md: r(8);
+$--stepper-input-padding-h-lg: r(8);
 
 // Carousel
-$carousel-pagination-distance: r(8);
-$carousel-pagination-rect-width: r(19);
-$carousel-pagination-rect-height: r(4);
-$carousel-pagination-rect-border-radius: r(1);
-$carousel-pagination-rect-step: r(2);
-$carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
-$carousel-pagination-rect-color-active: rgb(255, 255, 255);
+$--carousel-pagination-distance: r(8);
+$--carousel-pagination-rect-width: r(19);
+$--carousel-pagination-rect-height: r(4);
+$--carousel-pagination-rect-border-radius: r(1);
+$--carousel-pagination-rect-step: r(2);
+$--carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
+$--carousel-pagination-rect-color-active: rgb(255, 255, 255);
 
 // Switch
-$switch-width: r(53);
-$switch-height: r(32);
-// $switch-width-sm: r(41);
-// $switch-height-sm: r(21);
-$switch-border-color: #e5e5e5;
-$switch-background: #fff;
+$--switch-width: r(53);
+$--switch-height: r(32);
+// $--switch-width-sm: r(41);
+// $--switch-height-sm: r(21);
+$--switch-border-color: #e6e6e6;
+$--switch-background: #fff;
 
 // Tabs
-$tabs-height: r(45);
-$tabs-item-font-size: $font-size-lg;
-$tabs-line-height: r(2);
+$--tabs-height: r(45);
+$--tabs-item-font-size: $--font-size-lg;
+$--tabs-line-height: r(2);
 
 // Toast
-$toast-border-radius: r(6);
-$toast-color: #fff;
-$toast-font-size: r(13);
-$toast-max-width: 70%;
+$--toast-border-radius: r(6);
+$--toast-color: $--color-text-inverse;
+$--toast-font-size: r(13);
+$--toast-max-width: 70%;
 
 // Tooltip
-$tooltip-font-size: r(12);
-$tooltip-color: #fff;
-$tooltip-arrow-size: r(5);
+$--tooltip-font-size: r(12);
+$--tooltip-color: $--color-text-inverse;
+$--tooltip-arrow-size: r(5);
 
 // NavBar
-$nav-bar-color: #fdfdfd;
-$nav-bar-height: r(44);
-$nav-bar-icon-size: r(24);
+$--nav-bar-color: #fdfdfd;
+$--nav-bar-height: r(44);
+$--nav-bar-icon-size: r(24);
 
 // Input
-$input-clear-icon-width: r(16);
-$input-padding-size: r(12);
-$input-cursor-color: #597cf6;
-$input-cursor-width: r(2);
-$input-cursor-height: r(18);
-$input-selection-color: rgba($theme-primary, 0.2);
-$input-length-count-color: $color-text-disabled;
-$input-line-height: r(28);
+$--input-clear-icon-width: r(16);
+$--input-padding-v: $--cell-padding-v;
+$--input-cursor-color: #597cf6;
+$--input-cursor-width: r(2);
+$--input-cursor-height: r(16);
+$--input-selection-color: rgba($--theme-primary, 0.2);
+$--input-length-count-color: $--color-text-disabled;
+$--input-height: r(28);
+$--input-line-height: $--cell-title-line-height;
 
 // Progress
-$progress-background: rgb(238, 238, 238);
+$--progress-background: #f2f2f2;
+$--progress-circle-diameter: r(150);

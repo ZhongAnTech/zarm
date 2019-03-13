@@ -133,8 +133,8 @@ export default class Wheel extends Component<WheelProps, any> {
 
     const { value } = this.state;
     const items = dataSource!.map((item, index) => {
-      const itemCls = classnames(`${prefixCls}-item`, {
-        [`${prefixCls}-item-selected`]: value === item[valueMember!],
+      const itemCls = classnames(`${prefixCls}__item`, {
+        [`${prefixCls}__item--selected`]: value === item[valueMember!],
       });
 
       return (
@@ -144,7 +144,7 @@ export default class Wheel extends Component<WheelProps, any> {
       );
     });
 
-    const rollerCls = classnames(`${prefixCls}`, className);
+    const rollerCls = classnames(prefixCls, className);
 
     return (
       <div
@@ -152,7 +152,7 @@ export default class Wheel extends Component<WheelProps, any> {
         ref={(wrapper) => { this.wrapper = wrapper; }}
       >
         {/* <div className={`${prefixCls}-indicator`} ref={(indicator) => { this.indicator = indicator; }} /> */}
-        <div className={`${prefixCls}-content`}>{items}</div>
+        <div className={`${prefixCls}__content`}>{items}</div>
       </div>
     );
   }

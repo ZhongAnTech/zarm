@@ -11,8 +11,8 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell>
-          <Marquee width="100%" animationDelay={5000} animationDuration={20000}>
-            <div>我延迟执行5秒，从右向左滚动，字有点多，我走慢点，领导先走~</div>
+          <Marquee animationDelay={2000} animationDuration={30000}>
+            <div>我延迟执行2秒，从右向左滚动，字有点多，我走慢点</div>
           </Marquee>
         </Cell>
         <Cell>

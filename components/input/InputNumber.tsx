@@ -28,10 +28,6 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     };
   }
 
-  get showClearIcon() {
-    return this.props.clearable && ('value' in this.props) && ('onChange' in this.props);
-  }
-
   componentDidMount() {
     Events.on(document.body, 'touchstart', this.onMaskClick);
     Events.on(document.body, 'click', this.onMaskClick);
@@ -116,12 +112,14 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   onFocus = () => {
-    if (this.state.visible) {
+    const { disabled, readOnly, onFocus } = this.props;
+    if (disabled || readOnly || this.state.visible) {
       return;
     }
-    this.setState({ visible: true });
-    this.scrollToEnd();
-    const { onFocus } = this.props;
+
+    // 定位到文本尾部
+    this.setState({ visible: true }, this.scrollToEnd);
+
     if (typeof onFocus === 'function') {
       onFocus(this.state.value);
     }
@@ -132,8 +130,9 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       return;
     }
 
-    this.setState({ visible: false });
-    this.scrollToStart();
+    // 定位到文本首部
+    this.setState({ visible: false }, this.scrollToStart);
+
     const { onBlur } = this.props;
     if (typeof onBlur === 'function') {
       onBlur(this.state.value);
@@ -161,35 +160,22 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     this.onBlur();
   }
 
-  renderClear() {
-    const { prefixCls } = this.props;
-    const { visible, value } = this.state;
-
-    const clearCls = classnames(`${prefixCls}-clear`, {
-      [`${prefixCls}-clear-show`]: !!(visible && value && value.length > 0),
-    });
-    return this.showClearIcon &&
-      <Icon
-        type="wrong-round-fill"
-        className={clearCls}
-        onClick={(e) => { e.stopPropagation(); this.onClear(); }}
-      />;
-  }
-
   render() {
-    const { prefixCls, className, type, disabled, placeholder } = this.props;
+    const { prefixCls, className, type, clearable, disabled, readOnly, placeholder } = this.props;
     const { visible, value } = this.state;
+    const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
 
-    const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
-      disabled,
-      focus: visible,
-      clearable: this.showClearIcon,
+    const cls = classnames(prefixCls, `${prefixCls}--number`, className, {
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--focus`]: visible,
+      [`${prefixCls}--clearable`]: showClearIcon,
+      [`${prefixCls}--readonly`]: readOnly,
     });
 
-    return (
-      <div className={cls} onClick={this.onFocus} ref={(ele) => { this.container = ele; }}>
-        {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
-        <div className={`${prefixCls}-content`} ref={(ele) => { this.content = ele; }}>{value}</div>
+    const renderInput = (
+      <div className={`${prefixCls}__content`}>
+        {!value && !readOnly && <div className={`${prefixCls}__placeholder`}>{placeholder}</div>}
+        <div className={`${prefixCls}__virtual-input`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input
           type="hidden"
           value={value}
@@ -201,7 +187,27 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           type={type}
           onKeyClick={this.onKeyClick}
         />
-        {this.renderClear()}
+      </div>
+    );
+
+    const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
+
+    // clear icon
+    const clearCls = classnames(`${prefixCls}__clear`, {
+      [`${prefixCls}__clear--show`]: visible && value && value.length > 0,
+    });
+    const renderClearIcon = showClearIcon && (
+      <Icon
+        type="wrong-round-fill"
+        className={clearCls}
+        onClick={(e) => { e.stopPropagation(); this.onClear(); }}
+      />
+    );
+
+    return (
+      <div className={cls} onClick={this.onFocus} ref={(ele) => { this.container = ele; }}>
+        {readOnly ? renderText : renderInput}
+        {renderClearIcon}
       </div>
     );
   }

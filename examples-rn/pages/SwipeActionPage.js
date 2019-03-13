@@ -35,8 +35,8 @@ export default class Page extends PureComponent {
         <View style={styles.wrapper}>
           <SwipeAction
             right={[
-              <Button theme="primary" onClick={noop}>标记未读</Button>,
-              <Button theme="error" onClick={showWarning}>删除</Button>,
+              <Button shape="rect" theme="primary" onClick={noop}>标记未读</Button>,
+              <Button shape="rect" theme="danger" onClick={showWarning}>删除</Button>,
             ]}
           >
             <Text style={styles.text}>左滑看看</Text>
@@ -46,8 +46,8 @@ export default class Page extends PureComponent {
         <View style={styles.wrapper}>
           <SwipeAction
             left={[
-              <Button theme="primary" onClick={noop}>标记未读</Button>,
-              <Button theme="error" onClick={showWarning}>删除</Button>,
+              <Button shape="rect" theme="primary" onClick={noop}>标记未读</Button>,
+              <Button shape="rect" theme="danger" onClick={showWarning}>删除</Button>,
             ]}
           >
             <Text style={styles.text}>右滑看看</Text>
@@ -58,10 +58,10 @@ export default class Page extends PureComponent {
           <SwipeAction
             autoClose
             left={[
-              <Button theme="primary" onClick={noop}>标记未读</Button>,
+              <Button shape="rect" theme="primary" onClick={noop}>标记未读</Button>,
             ]}
             right={[
-              <Button theme="error" onClick={showWarning}>删除</Button>,
+              <Button shape="rect" theme="danger" onClick={showWarning}>删除</Button>,
             ]}
           >
             <Text style={styles.text}>左右都能滑动（自动关闭）</Text>

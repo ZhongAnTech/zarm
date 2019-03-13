@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.0.0-alpha.15",
+  "version": "2.0.0-alpha.16",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -45,8 +45,8 @@
     "build:es": "tsc --outDir es -d --module es6",
     "build:lib": "tsc --outDir lib -d && tsc --outDir .temp --jsx preserve && babel .temp --out-dir lib --presets=env,react,stage-2 && rm -rf .temp",
     "build:umd": "webpack --config scripts/webpack/config.umd.js && cross-env NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
-    "build:css": "cd scripts/gulp && gulp",
-    "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd && npm run build:css",
+    "build:copyCss": "cd scripts/gulp && gulp",
+    "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd && npm run build:copyCss",
     "deploy:build": "rm -rf assets && webpack --config scripts/webpack/config.deploy.js",
     "deploy": "npm run deploy:build && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && gh-pages -d assets",
     "lint:ts": "tslint 'components/**/*.{ts,tsx}'",
@@ -67,11 +67,11 @@
     "react-dom": ">=16.0.0"
   },
   "dependencies": {
-    "better-scroll": "^1.8.0",
-    "classnames": "^2.2.5",
-    "create-react-context": "^0.2.3",
-    "normalize.css": "^7.0.0",
-    "react-native-camera-roll-picker": "^1.2.3"
+    "better-scroll": "1.12.6",
+    "classnames": "2.2.6",
+    "create-react-context": "0.2.3",
+    "normalize.css": "8.0.1",
+    "react-native-camera-roll-picker": "1.2.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^6.2.0",
@@ -100,6 +100,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.23.0",
     "babel-standalone": "^6.26.0",
+    "browserslist": "^4.4.1",
+    "color": "^3.1.0",
     "concurrently": "^3.5.1",
     "conventional-changelog-cli": "^1.3.22",
     "core-js": "^2.5.1",
@@ -119,7 +121,7 @@
     "fastclick": "^1.0.6",
     "file-loader": "^1.1.11",
     "gh-pages": "^1.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "highlight.js": "^9.12.0",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
@@ -130,7 +132,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.5.2",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
-    "postcss-loader": "^2.1.5",
+    "postcss-loader": "^3.0.0",
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
     "raw-loader": "^0.5.1",
@@ -164,6 +166,14 @@
     "{components,examples,examples-rn}/**/*.{js,jsx}": "eslint",
     "{styles,examples}/**/*.scss": "stylelint"
   },
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 9",
+    "iOS >= 7",
+    "Android >= 4"
+  ],
   "sideEffects": [
     "dist/*",
     "components/style/*",

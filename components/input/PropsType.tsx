@@ -3,6 +3,7 @@ import React from 'react';
 export interface BaseInputProps {
   placeholder?: string;
   disabled?: boolean;
+  readOnly?: boolean;
   maxLength?: number;
   focused?: boolean;
   autoFocus?: boolean;

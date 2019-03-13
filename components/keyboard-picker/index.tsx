@@ -1,18 +1,31 @@
 import React, { PureComponent } from 'react';
+import classnames from 'classnames';
 import PropsType from './PropsType';
 import Keyboard from '../keyboard';
 import Popup from '../popup';
 
-export interface KeyboardProps extends PropsType {
+export interface KeyboardPickerProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
+export interface KeyboardPickerState {
+  visible?: boolean;
+}
+
+export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, KeyboardPickerState> {
   static defaultProps = {
-    prefixCls: 'za-keyboard',
+    prefixCls: 'za-keyboard-picker',
+    visible: false,
     type: 'number',
   };
+
+  static getDerivedStateFromProps(nextProps: KeyboardPickerProps) {
+    if ('visible' in nextProps) {
+      return { visible: nextProps.visible };
+    }
+    return null;
+  }
 
   // static show = (props) => {
   //   ReactDOM.render(<KeyboardPicker {...props} visible />, window.zarmKeyboardPicker);
@@ -22,22 +35,16 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
   //   ReactDOM.render(<KeyboardPicker visible={false} />, window.zarmKeyboardPicker);
   // }
 
-  constructor(props) {
+  constructor(props: KeyboardPickerProps) {
     super(props);
     this.state = {
-      visible: props.visible || false,
+      visible: props.visible,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('visible' in nextProps) {
-      this.toggle(nextProps.visible);
-    }
-  }
-
-  onKeyClick = (key) => {
+  onKeyClick = (key: string) => {
     if (['ok', 'close'].indexOf(key) > -1) {
-      this.toggle();
+      this.setState({ visible: false });
     }
     const { onKeyClick } = this.props;
     if (typeof onKeyClick === 'function') {
@@ -45,20 +52,19 @@ export default class KeyboardPicker extends PureComponent<KeyboardProps, any> {
     }
   }
 
-  // 切换显示状态
-  toggle = (visible = false) => {
-    this.setState({ visible });
-  }
-
   render() {
+    const { prefixCls, className, ...others } = this.props;
     const { visible } = this.state;
+    const cls = classnames(prefixCls, className);
 
     return (
       <Popup
         visible={visible}
         mask={false}
       >
-        <Keyboard {...this.props} onKeyClick={this.onKeyClick} />
+        <div className={cls}>
+          <Keyboard {...others} onKeyClick={this.onKeyClick} />
+        </div>
       </Popup>
     );
   }

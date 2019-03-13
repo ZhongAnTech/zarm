@@ -42,8 +42,8 @@ export default {
     top: variables.badge_sup_top,
   },
 
-  errorBagde: {
-    backgroundColor: variables.theme_error,
+  dangerBagde: {
+    backgroundColor: variables.theme_danger,
   },
 
   successBagde: {

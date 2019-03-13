@@ -22,7 +22,7 @@ export interface StepperProps extends PropsType {
 export default class Stepper extends PureComponent<StepperProps, any> {
   static defaultProps = {
     prefixCls: 'za-stepper',
-    shape: 'rect',
+    shape: 'radius',
     disabled: false,
     step: 1,
   };
@@ -120,22 +120,18 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     const { prefixCls, className, shape, disabled, size } = this.props;
     const { value } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`shape-${shape}`]: !!shape,
-      [`size-${size}`]: !!size,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
-    const inputCls = classnames(`${prefixCls}-input`, {
-      disabled,
-    });
-
-    const buttonSize = (size === 'sm') ? 'xs' : 'sm';
+    const buttonSize = (size === 'lg') ? 'sm' : 'xs';
 
     return (
       <span className={cls}>
         <Button
-          className={`${prefixCls}-sub`}
+          className={`${prefixCls}__sub`}
           size={buttonSize}
           disabled={this.isSubDisabled()}
           shape={shape}
@@ -144,7 +140,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
           <Icon type="minus" />
         </Button>
         <input
-          className={inputCls}
+          className={`${prefixCls}__input`}
           type="tel"
           value={value}
           disabled={disabled}
@@ -152,7 +148,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
           onBlur={() => !disabled && this.onInputBlur(value)}
         />
         <Button
-          className={`${prefixCls}-plus`}
+          className={`${prefixCls}__plus`}
           size={buttonSize}
           disabled={this.isPlusDisabled()}
           shape={shape}

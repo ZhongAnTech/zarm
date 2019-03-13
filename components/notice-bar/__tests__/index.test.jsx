@@ -13,7 +13,7 @@ describe('NoticeBar', () => {
   });
 
   it('theme', () => {
-    const wrapper = render(<NoticeBar theme="error">foo</NoticeBar>);
+    const wrapper = render(<NoticeBar theme="danger">foo</NoticeBar>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

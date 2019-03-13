@@ -5,83 +5,83 @@ exports[`Keyboard renders correctly 1`] = `
   class="za-keyboard"
 >
   <div
-    class="za-keyboard-keys"
+    class="za-keyboard__keys"
   >
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       1
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       2
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       3
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       4
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       5
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       6
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       7
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       8
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       9
     </div>
     <div
-      class="za-keyboard-item za-keyboard-item-disabled"
+      class="za-keyboard__item za-keyboard__item--disabled"
     />
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       0
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard"
+        class="za-icon za-icon--keyboard"
       />
     </div>
   </div>
   <div
-    class="za-keyboard-handle"
+    class="za-keyboard__handle"
   >
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey"
+        class="za-icon za-icon--deletekey"
       />
     </div>
     <div
-      class="za-keyboard-item za-keyboard-item-ok"
+      class="za-keyboard__item za-keyboard__item--ok"
     >
-      确定
+      OK
     </div>
   </div>
 </div>
@@ -92,85 +92,85 @@ exports[`Keyboard type is idcard 1`] = `
   class="za-keyboard"
 >
   <div
-    class="za-keyboard-keys"
+    class="za-keyboard__keys"
   >
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       1
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       2
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       3
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       4
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       5
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       6
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       7
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       8
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       9
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       x
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       0
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard"
+        class="za-icon za-icon--keyboard"
       />
     </div>
   </div>
   <div
-    class="za-keyboard-handle"
+    class="za-keyboard__handle"
   >
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey"
+        class="za-icon za-icon--deletekey"
       />
     </div>
     <div
-      class="za-keyboard-item za-keyboard-item-ok"
+      class="za-keyboard__item za-keyboard__item--ok"
     >
-      确定
+      OK
     </div>
   </div>
 </div>
@@ -181,85 +181,85 @@ exports[`Keyboard type is price 1`] = `
   class="za-keyboard"
 >
   <div
-    class="za-keyboard-keys"
+    class="za-keyboard__keys"
   >
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       1
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       2
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       3
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       4
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       5
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       6
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       7
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       8
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       9
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       .
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       0
     </div>
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard"
+        class="za-icon za-icon--keyboard"
       />
     </div>
   </div>
   <div
-    class="za-keyboard-handle"
+    class="za-keyboard__handle"
   >
     <div
-      class="za-keyboard-item"
+      class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey"
+        class="za-icon za-icon--deletekey"
       />
     </div>
     <div
-      class="za-keyboard-item za-keyboard-item-ok"
+      class="za-keyboard__item za-keyboard__item--ok"
     >
-      确定
+      OK
     </div>
   </div>
 </div>
