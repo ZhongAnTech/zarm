@@ -10,13 +10,13 @@ export default {
   },
 
   messageWrapperInner: {
-    paddingHorizontal: variables.message_padding_horizontal,
+    paddingHorizontal: variables.message_padding_h_md,
     backgroundColor: variables.message_theme_bg_primary,
   },
 
   lgMessageWrapper: {
     height: variables.message_height_lg,
-    paddingHorizontal: variables.message_padding_horizontal_lg,
+    paddingHorizontal: variables.message_padding_h_lg,
   },
 
   textBodyStyle: {

@@ -195,20 +195,18 @@ const components = {
   keyboard_icon_font_size: 21,
 
   // Message
-  message_height: 29,
-  message_font_size: 12,
-  message_padding_horizontal: 8,
-  // message_padding_vertical: 6,
-
-  message_height_lg: 40,
+  message_min_height_md: 29,
+  message_min_height_lg: 40,
+  message_font_size_md: 12,
   message_font_size_lg: 14,
-  message_padding_horizontal_lg: 16,
-
+  message_padding_v_md: 6,
+  message_padding_v_lg: 8,
+  message_padding_h_md: 8,
+  message_padding_h_lg: 12,
   message_theme_bg_primary: Color(base.theme_primary).alpha(0.1),
   message_theme_bg_success: Color(base.theme_success).alpha(0.1),
   message_theme_bg_warning: Color(base.theme_warning).alpha(0.1),
   message_theme_bg_danger: Color(base.theme_danger).alpha(0.1),
-
   message_arrow_color: '#bcbcbc',                                    // 箭头颜色
   message_arrow_length: 6,                                           // 箭头长度
   message_arrow_border_width: 1,                                     // 箭头粗细

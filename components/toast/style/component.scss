@@ -18,7 +18,7 @@
   @include e(container) {
     position: relative;
     max-width: $--toast-max-width;
-    padding: $--padding-v-xl $--padding-h-xl;
+    padding: $--padding-v-md $--padding-h-md;
     border-radius: $--toast-border-radius;
     background: rgba(0, 0, 0, $--opacity-toast);
     color: $--toast-color;

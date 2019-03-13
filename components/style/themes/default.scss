@@ -42,22 +42,22 @@ $--radius-round: r(1000);
 $--radius-circle: 50%;
 
 // 水平间距
-$--padding-h-sm: r(5);
-$--padding-h-md: r(8);
-$--padding-h-lg: r(16);
-$--padding-h-xl: r(20);
+$--padding-h-xs: r(8);
+$--padding-h-sm: r(12);
+$--padding-h-md: r(16);
+$--padding-h-lg: r(20);
 
 // 垂直间距
-$--padding-v-sm: r(2);
-$--padding-v-md: r(6);
-$--padding-v-lg: r(9);
-$--padding-v-xl: r(12);
+$--padding-v-xs: r(4);
+$--padding-v-sm: r(8);
+$--padding-v-md: r(12);
+$--padding-v-lg: r(16);
 
 // 字体大小
 $--font-size-xs: r(10);
 $--font-size-sm: r(12);
 $--font-size-md: r(14);
-$--font-size-lg: r(15);
+$--font-size-lg: r(16);
 $--font-size-xl: r(18);
 
 // 堆叠顺序
@@ -97,12 +97,12 @@ $--button-height-xs: r(28);
 $--button-height-sm: r(36);
 $--button-height-md: r(44);
 $--button-height-lg: r(52);
-$--button-padding-h-xs: r(10);
-$--button-padding-h-sm: r(12);
-$--button-padding-h-md: r(16);
-$--button-padding-h-lg: r(20);
+$--button-padding-h-xs: $--padding-h-xs;
+$--button-padding-h-sm: $--padding-h-sm;
+$--button-padding-h-md: $--padding-h-md;
+$--button-padding-h-lg: $--padding-h-lg;
 $--button-font-size-xs: r(12);
-$--button-font-size-sm: r(16);
+$--button-font-size-sm: r(14);
 $--button-font-size-md: r(16);
 $--button-font-size-lg: r(18);
 $--button-icon-size-xs: r(16);
@@ -203,10 +203,14 @@ $--keyboard-item-font-size: r(30);
 $--keyboard-icon-font-size: r(21);
 
 // Message
-$--message-min-height: r(30);
-$--message-font-size: r(12);
-$--message-min-height-lg: r(42);
-$--message-font-size-lg: r(15);
+$--message-min-height-md: r(29);
+$--message-min-height-lg: r(40);
+$--message-font-size-md: r(12);
+$--message-font-size-lg: r(14);
+$--message-padding-v-md: r(6);
+$--message-padding-h-md: r(8);
+$--message-padding-v-lg: r(8);
+$--message-padding-h-lg: r(12);
 
 // Modal
 $--modal-background: #fff;
