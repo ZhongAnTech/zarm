@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 export default interface PropsType {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
-  size?: 'md' | 'lg' | 'sm' | 'xs';
+  theme?: 'default' | 'primary' | 'danger';
+  size?: 'lg' | 'sm' | 'xs';
   shape?: 'radius' | 'rect' | 'round' | 'circle';
   block?: boolean;
   ghost?: boolean;

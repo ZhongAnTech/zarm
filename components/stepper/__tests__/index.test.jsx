@@ -37,9 +37,9 @@ describe('Stepper', () => {
     expect(onInputChange).toBeCalled();
     wrapper.find('input').simulate('blur');
     expect(onChange).toBeCalledWith(10);
-    wrapper.find('.za-stepper-sub').simulate('click');
+    wrapper.find('.za-stepper__sub').simulate('click');
     expect(onChange).toBeCalledWith(9);
-    wrapper.find('.za-stepper-plus').simulate('click');
+    wrapper.find('.za-stepper__plus').simulate('click');
     expect(onChange).toBeCalledWith(10);
   });
 });

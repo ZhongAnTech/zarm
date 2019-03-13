@@ -26,7 +26,7 @@ describe('Modal', () => {
         <Modal.Body>foo</Modal.Body>
       </Modal>
     );
-    wrapper.find(Modal.Header).dive().find('.za-modal-header-close').simulate('click');
+    wrapper.find(Modal.Header).dive().find('.za-modal__header__close').simulate('click');
     expect(onClose).toBeCalled();
   });
 
@@ -41,6 +41,6 @@ describe('Modal', () => {
 
   it('click dialog', () => {
     const wrapper = mount(<Modal visible>foo</Modal>);
-    wrapper.find('.za-modal-dialog').simulate('click');
+    wrapper.find('.za-modal__dialog').simulate('click');
   });
 });

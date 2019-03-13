@@ -1,14 +1,20 @@
 @import "../functions/index";
 
 .button-page {
-  .za-panel-body {
+  .za-panel__body {
     overflow: hidden;
-    padding: r(10) r(10) 0 r(10);
+    padding: r(16) r(16) 0 r(16);
     background: #fff;
   }
 
+  main > div:last-child {
+    .za-panel__body {
+      background-color: #333;
+    }
+  }
+
   .za-button {
-    margin-bottom: r(10);
-    margin-right: r(10);
+    margin-bottom: r(16);
+    margin-right: r(16);
   }
 }

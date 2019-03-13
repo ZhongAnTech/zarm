@@ -30,7 +30,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     mode: 'date',
     disabled: false,
     minuteStep: 1,
-    prefixCls: 'za-select',
+    prefixCls: 'za-date-select',
     valueMember: 'value',
     onCancel: () => {},
   };
@@ -111,19 +111,20 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   render() {
-    const { prefixCls, className, okText, cancelText, placeholder, disabled,
-      onChange, ...others } = this.props;
+    const { prefixCls, className, okText, cancelText, placeholder, disabled, onChange, ...others } = this.props;
     const { value, visible } = this.state;
-    const inputCls = classnames({
-      [`${prefixCls}-input`]: true,
-      [`${prefixCls}-placeholder`]: !this.state.value,
-      [`${prefixCls}-disabled`]: !!disabled,
+
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--placeholder`]: !this.state.value,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     return(
-      <div className={inputCls} onClick={this.handleClick}>
+      <div className={cls} onClick={this.handleClick}>
         <input type="hidden" value={formatFn(this, this.state.value)} />
-        {this.state.value ? formatFn(this, this.state.value) : placeholder}
+        <div className={`${prefixCls}__input`}>
+          {this.state.value ? formatFn(this, this.state.value) : placeholder}
+        </div>
         <DatePicker
           {...others}
           visible={visible}

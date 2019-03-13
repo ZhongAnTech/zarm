@@ -58,7 +58,6 @@ class Demo extends React.Component {
       <div>
         <SearchBar
           showCancel
-          shape="radius"
           value={this.state.value}
           placeholder="搜索"
           cancelText="取消"
@@ -85,6 +84,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
+## 多形状
+```jsx
+import { SearchBar } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <SearchBar shape="rect" />
+        <SearchBar shape="round" />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
 ## 手动获取焦点
 ```jsx
 import { SearchBar, Button } from 'zarm';
@@ -93,10 +112,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar
-          shape="round"
-          ref={(ref) => { this.manualFocus = ref; }}
-        />
+        <SearchBar ref={(ref) => { this.manualFocus = ref; }} />
         <div className="button-wrap">
           <Button theme="primary" size="xs" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
         </div>
@@ -117,7 +133,7 @@ ReactDOM.render(<Demo />, mountNode);
 | placeholder | string | '搜索' | 占位符 |
 | value | string | - | 值 |
 | defaultValue | string | - | 初始值 |
-| shape | string | - | 形状，可选值 `radius`, `round` |
+| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` |
 | disabled | boolean | false | 是否禁用 |
 | showCancel | boolean | false | 是否一直展示取消按钮 |
 | cancelText | string | '取消' | 取消按钮显示的内容 |

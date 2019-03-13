@@ -75,8 +75,8 @@ describe('Tab', () => {
         </Tabs.Panel>
       </Tabs>
     );
-    wrapper.find('.za-tabs-header-item').first().simulate('click');
-    wrapper.find('.za-tabs-header-item').last().simulate('click');
+    wrapper.find('.za-tabs__header__item').first().simulate('click');
+    wrapper.find('.za-tabs__header__item').last().simulate('click');
     expect(onChange).toBeCalledWith(1);
   });
 });

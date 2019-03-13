@@ -2,26 +2,26 @@
 
 exports[`SearchBar renders correctly 1`] = `
 <div
-  class="za-search-bar"
+  class="za-search-bar za-search-bar--round"
 >
   <form
     action="#"
-    class="za-search-bar-form"
+    class="za-search-bar__form"
   >
     <div
-      class="za-search-bar-content shape-round"
+      class="za-search-bar__content"
     >
       <div
-        class="za-search-bar-mock"
+        class="za-search-bar__mock"
       >
         <div
-          class="za-search-bar-mock-container"
+          class="za-search-bar__mock__container"
         >
           <i
-            class="za-icon za-icon-search"
+            class="za-icon za-icon--search"
           />
           <span
-            class="za-search-bar-mock-placeholder"
+            class="za-search-bar__mock__placeholder"
             style="visibility:visible"
           >
             搜索
@@ -29,7 +29,7 @@ exports[`SearchBar renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="za-input za-input-search clearable"
+        class="za-input za-search-bar__input za-input--clearable"
       >
         <input
           autocomplete="off"
@@ -38,12 +38,12 @@ exports[`SearchBar renders correctly 1`] = `
           value=""
         />
         <i
-          class="za-icon za-input-clear za-icon-wrong-round-fill"
+          class="za-icon za-input__clear za-icon--wrong-round-fill"
         />
       </div>
     </div>
     <div
-      class="za-search-bar-cancel"
+      class="za-search-bar__cancel"
     >
       取消
     </div>
@@ -83,32 +83,32 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
       showCancel={false}
     >
       <div
-        className="za-search-bar"
+        className="za-search-bar za-search-bar--round"
       >
         <form
           action="#"
-          className="za-search-bar-form"
+          className="za-search-bar__form"
           onSubmit={[Function]}
         >
           <div
-            className="za-search-bar-content shape-round"
+            className="za-search-bar__content"
           >
             <div
-              className="za-search-bar-mock"
+              className="za-search-bar__mock"
             >
               <div
-                className="za-search-bar-mock-container"
+                className="za-search-bar__mock__container"
               >
                 <Icon
                   prefixCls="za-icon"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search"
+                    className="za-icon za-icon--search"
                   />
                 </Icon>
                 <span
-                  className="za-search-bar-mock-placeholder"
+                  className="za-search-bar__mock__placeholder"
                   style={
                     Object {
                       "visibility": "visible",
@@ -120,6 +120,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
               </div>
             </div>
             <InputBase
+              className="za-search-bar__input"
               clearable={true}
               disabled={false}
               onBlur={[Function]}
@@ -131,11 +132,12 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-search-bar__input za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -151,13 +153,13 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon--wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -165,7 +167,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
             </InputBase>
           </div>
           <div
-            className="za-search-bar-cancel"
+            className="za-search-bar__cancel"
             onClick={[Function]}
           >
             取消取消
@@ -242,32 +244,32 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
       showCancel={false}
     >
       <div
-        className="za-search-bar"
+        className="za-search-bar za-search-bar--round"
       >
         <form
           action="#"
-          className="za-search-bar-form"
+          className="za-search-bar__form"
           onSubmit={[Function]}
         >
           <div
-            className="za-search-bar-content shape-round"
+            className="za-search-bar__content"
           >
             <div
-              className="za-search-bar-mock"
+              className="za-search-bar__mock"
             >
               <div
-                className="za-search-bar-mock-container"
+                className="za-search-bar__mock__container"
               >
                 <Icon
                   prefixCls="za-icon"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search"
+                    className="za-icon za-icon--search"
                   />
                 </Icon>
                 <span
-                  className="za-search-bar-mock-placeholder"
+                  className="za-search-bar__mock__placeholder"
                   style={
                     Object {
                       "visibility": "visible",
@@ -279,6 +281,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
               </div>
             </div>
             <InputBase
+              className="za-search-bar__input"
               clearable={true}
               disabled={false}
               onBlur={[Function]}
@@ -290,11 +293,12 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-search-bar__input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -310,13 +314,13 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon--wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -324,7 +328,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
             </InputBase>
           </div>
           <div
-            className="za-search-bar-cancel"
+            className="za-search-bar__cancel"
             onClick={[Function]}
           >
             Cancel
@@ -407,32 +411,32 @@ exports[`SearchBar renders onChange called correctly 1`] = `
       showCancel={false}
     >
       <div
-        className="za-search-bar"
+        className="za-search-bar za-search-bar--round za-search-bar--focus"
       >
         <form
           action="#"
-          className="za-search-bar-form za-search-bar-form-focus"
+          className="za-search-bar__form"
           onSubmit={[Function]}
         >
           <div
-            className="za-search-bar-content shape-round"
+            className="za-search-bar__content"
           >
             <div
-              className="za-search-bar-mock"
+              className="za-search-bar__mock"
             >
               <div
-                className="za-search-bar-mock-container"
+                className="za-search-bar__mock__container"
               >
                 <Icon
                   prefixCls="za-icon"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search"
+                    className="za-icon za-icon--search"
                   />
                 </Icon>
                 <span
-                  className="za-search-bar-mock-placeholder"
+                  className="za-search-bar__mock__placeholder"
                   style={
                     Object {
                       "visibility": "hidden",
@@ -444,6 +448,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
               </div>
             </div>
             <InputBase
+              className="za-search-bar__input"
               clearable={true}
               disabled={false}
               onBlur={[Function]}
@@ -455,11 +460,12 @@ exports[`SearchBar renders onChange called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value="测试值"
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-search-bar__input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -475,13 +481,13 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                   value="测试值"
                 />
                 <Icon
-                  className="za-input-clear za-input-clear-show"
+                  className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-input-clear-show za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -489,7 +495,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
             </InputBase>
           </div>
           <div
-            className="za-search-bar-cancel za-search-bar-cancel-show"
+            className="za-search-bar__cancel za-search-bar__cancel--show"
             onClick={[Function]}
           >
             Cancel
@@ -563,36 +569,36 @@ exports[`SearchBar renders onClear called correctly 1`] = `
         }
       }
       prefixCls="za-search-bar"
-      shape="rect"
+      shape="radius"
       showCancel={false}
     >
       <div
-        className="za-search-bar"
+        className="za-search-bar za-search-bar--radius"
       >
         <form
           action="#"
-          className="za-search-bar-form"
+          className="za-search-bar__form"
           onSubmit={[Function]}
         >
           <div
-            className="za-search-bar-content shape-rect"
+            className="za-search-bar__content"
           >
             <div
-              className="za-search-bar-mock"
+              className="za-search-bar__mock"
             >
               <div
-                className="za-search-bar-mock-container"
+                className="za-search-bar__mock__container"
               >
                 <Icon
                   prefixCls="za-icon"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search"
+                    className="za-icon za-icon--search"
                   />
                 </Icon>
                 <span
-                  className="za-search-bar-mock-placeholder"
+                  className="za-search-bar__mock__placeholder"
                   style={
                     Object {
                       "visibility": "visible",
@@ -604,6 +610,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
               </div>
             </div>
             <InputBase
+              className="za-search-bar__input"
               clearable={true}
               disabled={false}
               onBlur={[Function]}
@@ -615,11 +622,12 @@ exports[`SearchBar renders onClear called correctly 1`] = `
               onFocus={[Function]}
               placeholder="Search"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-search-bar__input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -635,13 +643,13 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon--wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -649,7 +657,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
             </InputBase>
           </div>
           <div
-            className="za-search-bar-cancel"
+            className="za-search-bar__cancel"
             onClick={[Function]}
           >
             Cancel
@@ -726,32 +734,32 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
       showCancel={false}
     >
       <div
-        className="za-search-bar"
+        className="za-search-bar za-search-bar--round za-search-bar--focus"
       >
         <form
           action="#"
-          className="za-search-bar-form za-search-bar-form-focus"
+          className="za-search-bar__form"
           onSubmit={[Function]}
         >
           <div
-            className="za-search-bar-content shape-round"
+            className="za-search-bar__content"
           >
             <div
-              className="za-search-bar-mock"
+              className="za-search-bar__mock"
             >
               <div
-                className="za-search-bar-mock-container"
+                className="za-search-bar__mock__container"
               >
                 <Icon
                   prefixCls="za-icon"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search"
+                    className="za-icon za-icon--search"
                   />
                 </Icon>
                 <span
-                  className="za-search-bar-mock-placeholder"
+                  className="za-search-bar__mock__placeholder"
                   style={
                     Object {
                       "visibility": "visible",
@@ -763,6 +771,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
               </div>
             </div>
             <InputBase
+              className="za-search-bar__input"
               clearable={true}
               disabled={false}
               onBlur={[Function]}
@@ -774,11 +783,12 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value=""
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-search-bar__input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -794,13 +804,13 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                   value=""
                 />
                 <Icon
-                  className="za-input-clear"
+                  className="za-input__clear"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-icon--wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -808,7 +818,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
             </InputBase>
           </div>
           <div
-            className="za-search-bar-cancel za-search-bar-cancel-show"
+            className="za-search-bar__cancel za-search-bar__cancel--show"
             onClick={[Function]}
           >
             Cancel
@@ -891,32 +901,32 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
       showCancel={false}
     >
       <div
-        className="za-search-bar"
+        className="za-search-bar za-search-bar--round za-search-bar--focus"
       >
         <form
           action="#"
-          className="za-search-bar-form za-search-bar-form-focus"
+          className="za-search-bar__form"
           onSubmit={[Function]}
         >
           <div
-            className="za-search-bar-content shape-round"
+            className="za-search-bar__content"
           >
             <div
-              className="za-search-bar-mock"
+              className="za-search-bar__mock"
             >
               <div
-                className="za-search-bar-mock-container"
+                className="za-search-bar__mock__container"
               >
                 <Icon
                   prefixCls="za-icon"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search"
+                    className="za-icon za-icon--search"
                   />
                 </Icon>
                 <span
-                  className="za-search-bar-mock-placeholder"
+                  className="za-search-bar__mock__placeholder"
                   style={
                     Object {
                       "visibility": "hidden",
@@ -928,6 +938,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
               </div>
             </div>
             <InputBase
+              className="za-search-bar__input"
               clearable={true}
               disabled={false}
               onBlur={[Function]}
@@ -939,11 +950,12 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
               onFocus={[Function]}
               placeholder="搜索"
               prefixCls="za-input"
+              readOnly={false}
               type="search"
               value="My new value"
             >
               <div
-                className="za-input za-input-search clearable"
+                className="za-input za-search-bar__input za-input--focus za-input--clearable"
               >
                 <input
                   autoComplete="off"
@@ -959,13 +971,13 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                   value="My new value"
                 />
                 <Icon
-                  className="za-input-clear za-input-clear-show"
+                  className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
                   prefixCls="za-icon"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input-clear za-input-clear-show za-icon-wrong-round-fill"
+                    className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill"
                     onClick={[Function]}
                   />
                 </Icon>
@@ -973,7 +985,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
             </InputBase>
           </div>
           <div
-            className="za-search-bar-cancel za-search-bar-cancel-show"
+            className="za-search-bar__cancel za-search-bar__cancel--show"
             onClick={[Function]}
           >
             Cancel

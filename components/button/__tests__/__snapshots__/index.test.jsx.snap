@@ -1,34 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button block 1`] = `
-<a
+<button
   aria-disabled="false"
-  class="za-button theme-default size-md shape-rect block"
+  class="za-button za-button--default za-button--md za-button--radius za-button--block"
   role="button"
+  type="button"
 >
   <span>
     foo
   </span>
-</a>
+</button>
 `;
 
 exports[`Button disabled 1`] = `
-<a
+<button
   aria-disabled="true"
-  class="za-button theme-default size-md shape-rect disabled"
+  class="za-button za-button--default za-button--md za-button--radius za-button--disabled"
   role="button"
+  type="button"
 >
   <span>
     foo
   </span>
-</a>
+</button>
 `;
 
 exports[`Button ghost 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius za-button--ghost"
+  role="button"
+  type="button"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button href and target 1`] = `
 <a
   aria-disabled="false"
-  class="za-button theme-default size-md shape-rect ghost"
+  class="za-button za-button--default za-button--md za-button--radius za-button--link"
+  href="https://zarm.design"
   role="button"
+  target="__blank"
 >
   <span>
     foo
@@ -36,41 +53,56 @@ exports[`Button ghost 1`] = `
 </a>
 `;
 
-exports[`Button icon 1`] = `
-<a
+exports[`Button htmlType 1`] = `
+<button
   aria-disabled="false"
-  class="za-button theme-default size-md shape-rect"
+  class="za-button za-button--default za-button--md za-button--radius"
   role="button"
+  type="submit"
+>
+  <span>
+    foo
+  </span>
+</button>
+`;
+
+exports[`Button icon 1`] = `
+<button
+  aria-disabled="false"
+  class="za-button za-button--default za-button--md za-button--radius"
+  role="button"
+  type="button"
 >
   <div
-    class="za-button-content"
+    class="za-button__content"
   >
     <img
       alt=""
-      src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
+      src="https://zarm.design/images/logo.ce68565d.svg"
     />
     <span>
       foo
     </span>
   </div>
-</a>
+</button>
 `;
 
 exports[`Button loading 1`] = `
-<a
+<button
   aria-disabled="false"
-  class="za-button theme-default size-md shape-rect"
+  class="za-button za-button--default za-button--md za-button--radius"
   role="button"
+  type="button"
 >
   <div
-    class="za-button-content"
+    class="za-button__content"
   >
     <svg
-      class="za-activity-indicator rotate360 theme-primary"
+      class="za-activity-indicator rotate360"
       viewBox="0 0 62 62"
     >
       <circle
-        class="za-activity-indicator-path"
+        class="za-activity-indicator__path"
         cx="31"
         cy="31"
         fill="none"
@@ -78,65 +110,69 @@ exports[`Button loading 1`] = `
         style="stroke-width:5"
       />
       <circle
-        class="za-activity-indicator-line"
+        class="za-activity-indicator__line"
         cx="31"
         cy="31"
         fill="none"
         r="28.5"
-        style="stroke-dasharray:26.860617188192727 179.0707812546182;stroke-width:5"
+        style="stroke-dasharray:35.81415625092364 179.0707812546182;stroke-width:5"
       />
     </svg>
     <span>
       foo
     </span>
   </div>
-</a>
+</button>
 `;
 
 exports[`Button renders correctly 1`] = `
-<a
+<button
   aria-disabled="false"
-  class="za-button theme-default size-md shape-rect"
+  class="za-button za-button--default za-button--md za-button--radius"
   role="button"
+  type="button"
 >
   <span>
     foo
   </span>
-</a>
+</button>
 `;
 
 exports[`Button shape is radius 1`] = `
-<a
+<button
   aria-disabled="false"
-  class="za-button theme-default size-md shape-radius"
+  class="za-button za-button--default za-button--md za-button--radius"
   role="button"
+  type="button"
 >
   <span>
     foo
   </span>
-</a>
+</button>
 `;
 
 exports[`Button size 1`] = `
-<a
+<button
   aria-disabled="false"
-  class="za-button theme-default size-lg shape-rect"
+  class="za-button za-button--default za-button--lg za-button--radius"
   role="button"
+  type="button"
 >
   <span>
     foo
   </span>
-</a>
+</button>
 `;
 
 exports[`Button theme 1`] = `
-<a
+<button
   aria-disabled="false"
-  class="za-button theme-primary size-md shape-rect"
+  class="za-button za-button--primary za-button--md za-button--radius"
   role="button"
+  type="button"
 >
   <span>
     foo
   </span>
-</a>
+</button>
 `;

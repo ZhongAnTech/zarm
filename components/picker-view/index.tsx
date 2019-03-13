@@ -12,7 +12,7 @@ export interface PickerViewProps extends BasePickerViewProps {
 
 export default class PickerView extends PureComponent<PickerViewProps, any> {
   static defaultProps = {
-    prefixCls: 'za-picker',
+    prefixCls: 'za-picker-view',
     dataSource: [],
     cols: Infinity,
     valueMember: 'value',
@@ -73,14 +73,14 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
   render() {
     const { prefixCls, className } = this.props;
     const { dataSource } = this.state;
-
+    const cls = classnames(prefixCls, className);
     return (
-      <div className={`${prefixCls}-panel`}>
-        <div className={classnames(`${prefixCls}-view`, className)}>
+      <div className={cls}>
+        <div className={classnames(`${prefixCls}__content`, className)}>
           {dataSource.map(this.renderWheel)}
         </div>
-        <div className={`${prefixCls}-mask-top`} />
-        <div className={`${prefixCls}-mask-bottom`} />
+        <div className={`${prefixCls}__mask ${prefixCls}__mask--top`} />
+        <div className={`${prefixCls}__mask ${prefixCls}__mask--bottom`} />
       </div>
     );
   }

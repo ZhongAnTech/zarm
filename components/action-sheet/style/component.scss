@@ -1,62 +1,46 @@
 @import "../../button/style/mixins";
 
-$prefixCls: $prefixCls-action-sheet;
+@include b(action-sheet) {
+  margin: $--action-sheet-margin;
 
-.#{$prefixCls} {
-  margin: $action-sheet-margin;
-
-  &-spacing {
+  @include m(spacing) {
     margin: 0 r(10) r(10);
-  }
 
-  &.shape-radius {
-    .#{$prefixCls} {
-      &-actions,
-      &-cancel {
-        border-radius: $radius-md;
-      }
+    @include e(actions, cancel) {
+      border-radius: $--radius-md;
     }
   }
 
-  &-actions,
-  &-cancel {
+  @include e(actions, cancel) {
     overflow: hidden;
-    background-color: $color-text-inverse;
+    background-color: $--color-text-inverse;
   }
 
-  &-cancel {
+  @include e(cancel) {
     margin-top: r(7);
   }
 
-  &-item {
+  @include e(item) {
     display: block;
-    height: $action-sheet-item-height;
-    line-height: $action-sheet-item-height;
-    font-size: $action-sheet-item-font-size;
+    height: $--action-sheet-item-height;
+    line-height: $--action-sheet-item-height;
+    font-size: $--action-sheet-item-font-size;
     @include button-base();
 
     &:active {
-      background-color: $background-active;
+      background-color: $--background-active;
     }
 
     &:not(:first-of-type) {
       @include onepx(top);
     }
 
-    &.theme-primary {
-      color: $theme-primary;
+    @include m(primary) {
+      color: $--theme-primary;
     }
 
-    &.theme-success {
-      color: $theme-success;
-    }
-
-    &.theme-warning {
-      color: $theme-warning;
-    }
-
-    &.theme-error {
-      color: $theme-error;
+    @include m(danger) {
+      color: $--theme-danger;
     }
   }
 }

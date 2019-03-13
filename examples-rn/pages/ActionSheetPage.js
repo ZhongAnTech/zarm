@@ -26,8 +26,8 @@ export default class Page extends PureComponent {
     visibleShapeRadius: false,
     actions: [
       { text: '操作一', onClick() { alert('choose 操作一'); } },
-      { text: '操作二', onClick() { alert('choose 操作二'); } },
-      { text: '操作三', onClick() { alert('choose 操作三'); }, theme: 'error' },
+      { text: '操作二', onClick() { alert('choose 操作二'); }, theme: 'primary' },
+      { text: '操作三', onClick() { alert('choose 操作三'); }, theme: 'danger' },
     ],
   };
 
@@ -74,7 +74,6 @@ export default class Page extends PureComponent {
           onMaskClick={() => this.onClose('visibleShapeRadius')}
           onCancel={() => this.onClose('visibleShapeRadius')}
           cancelText="取消"
-          shape="radius"
           spacing
         />
       </View>

@@ -5,22 +5,22 @@ exports[`Cell children 1`] = `
   class="za-cell"
 >
   <div
-    class="za-cell-inner"
+    class="za-cell__inner"
   >
     <div
-      class="za-cell-header"
+      class="za-cell__header"
     />
     <div
-      class="za-cell-body"
+      class="za-cell__body"
     >
       <div
-        class="za-cell-content"
+        class="za-cell__content"
       >
         this is children!
       </div>
     </div>
     <div
-      class="za-cell-footer"
+      class="za-cell__footer"
     />
   </div>
 </div>
@@ -31,22 +31,22 @@ exports[`Cell description 1`] = `
   class="za-cell"
 >
   <div
-    class="za-cell-inner"
+    class="za-cell__inner"
   >
     <div
-      class="za-cell-header"
+      class="za-cell__header"
     />
     <div
-      class="za-cell-body"
+      class="za-cell__body"
     >
       <div
-        class="za-cell-title"
+        class="za-cell__title"
       >
         标题文字
       </div>
     </div>
     <div
-      class="za-cell-footer"
+      class="za-cell__footer"
     >
       描述文字
     </div>
@@ -59,28 +59,28 @@ exports[`Cell help 1`] = `
   class="za-cell"
 >
   <div
-    class="za-cell-inner"
+    class="za-cell__inner"
   >
     <div
-      class="za-cell-header"
+      class="za-cell__header"
     />
     <div
-      class="za-cell-body"
+      class="za-cell__body"
     >
       <div
-        class="za-cell-title"
+        class="za-cell__title"
       >
         标题文字
       </div>
     </div>
     <div
-      class="za-cell-footer"
+      class="za-cell__footer"
     >
       描述文字
     </div>
   </div>
   <div
-    class="za-cell-help"
+    class="za-cell__help"
   >
     <span>
       message
@@ -94,13 +94,13 @@ exports[`Cell icon 1`] = `
   class="za-cell"
 >
   <div
-    class="za-cell-inner"
+    class="za-cell__inner"
   >
     <div
-      class="za-cell-header"
+      class="za-cell__header"
     >
       <div
-        class="za-cell-icon"
+        class="za-cell__icon"
       >
         <img
           alt=""
@@ -109,16 +109,16 @@ exports[`Cell icon 1`] = `
       </div>
     </div>
     <div
-      class="za-cell-body"
+      class="za-cell__body"
     >
       <div
-        class="za-cell-title"
+        class="za-cell__title"
       >
         标题文字
       </div>
     </div>
     <div
-      class="za-cell-footer"
+      class="za-cell__footer"
     >
       描述文字
     </div>
@@ -128,32 +128,32 @@ exports[`Cell icon 1`] = `
 
 exports[`Cell onClick 1`] = `
 <div
-  className="za-cell is-link has-arrow"
+  className="za-cell za-cell--link za-cell--arrow"
   onClick={[MockFunction]}
   onTouchStart={[Function]}
 >
   <div
-    className="za-cell-inner"
+    className="za-cell__inner"
   >
     <div
-      className="za-cell-header"
+      className="za-cell__header"
     />
     <div
-      className="za-cell-body"
+      className="za-cell__body"
     >
       <div
-        className="za-cell-title"
+        className="za-cell__title"
       >
         标题文字
       </div>
     </div>
     <div
-      className="za-cell-footer"
+      className="za-cell__footer"
     >
       描述文字
     </div>
     <div
-      className="za-cell-arrow"
+      className="za-cell__arrow"
     />
   </div>
 </div>
@@ -164,22 +164,22 @@ exports[`Cell renders correctly 1`] = `
   class="za-cell"
 >
   <div
-    class="za-cell-inner"
+    class="za-cell__inner"
   >
     <div
-      class="za-cell-header"
+      class="za-cell__header"
     />
     <div
-      class="za-cell-body"
+      class="za-cell__body"
     >
       <div
-        class="za-cell-title"
+        class="za-cell__title"
       >
         标题文字
       </div>
     </div>
     <div
-      class="za-cell-footer"
+      class="za-cell__footer"
     />
   </div>
 </div>

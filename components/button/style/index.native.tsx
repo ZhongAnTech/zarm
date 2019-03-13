@@ -39,14 +39,14 @@ export default {
     color: variables.button_disabled_color_ghost,
   },
   defaultGhostWrapper: {
-    backgroundColor: variables.button_default_ghost_background,
+    backgroundColor: 'transparent',
     borderColor: variables.button_default_ghost_border,
   },
   defaultGhostText: {
     color: variables.button_default_ghost_color,
   },
   defaultGhostActiveWrapper: {
-    backgroundColor: variables.button_default_ghost_active_background,
+    backgroundColor: 'transparent',
     borderColor: variables.button_default_ghost_active_border,
   },
   defaultGhostActiveText: {
@@ -78,79 +78,29 @@ export default {
     color: variables.button_primary_ghost_active_color,
   },
 
-  successWrapper: {
-    backgroundColor: variables.button_success_background,
+  dangerWrapper: {
+    backgroundColor: variables.button_danger_background,
   },
-  successText: {
-    color: variables.button_success_color,
+  dangerText: {
+    color: variables.button_danger_color,
   },
-  successActiveWrapper: {
-    backgroundColor: variables.button_success_active_background,
+  dangerActiveWrapper: {
+    backgroundColor: variables.button_danger_active_background,
   },
-  successActiveText: {
-    color: variables.button_success_active_color,
+  dangerActiveText: {
+    color: variables.button_danger_active_color,
   },
-  successGhostWrapper: {
-    borderColor: variables.button_success_ghost_border,
+  dangerGhostWrapper: {
+    borderColor: variables.button_danger_ghost_border,
   },
-  successGhostText: {
-    color: variables.button_success_ghost_color,
+  dangerGhostText: {
+    color: variables.button_danger_ghost_color,
   },
-  successGhostActiveWrapper: {
-    borderColor: variables.button_success_ghost_active_color,
+  dangerGhostActiveWrapper: {
+    borderColor: variables.button_danger_ghost_active_color,
   },
-  successGhostActiveText: {
-    color: variables.button_success_ghost_active_color,
-  },
-
-  warningWrapper: {
-    backgroundColor: variables.button_warning_background,
-  },
-  warningText: {
-    color: variables.button_warning_color,
-  },
-  warningActiveWrapper: {
-    backgroundColor: variables.button_warning_active_background,
-  },
-  warningActiveText: {
-    color: variables.button_warning_active_color,
-  },
-  warningGhostWrapper: {
-    borderColor: variables.button_warning_ghost_border,
-  },
-  warningGhostText: {
-    color: variables.button_warning_ghost_color,
-  },
-  warningGhostActiveWrapper: {
-    borderColor: variables.button_warning_ghost_active_color,
-  },
-  warningGhostActiveText: {
-    color: variables.button_warning_ghost_active_color,
-  },
-
-  errorWrapper: {
-    backgroundColor: variables.button_error_background,
-  },
-  errorText: {
-    color: variables.button_error_color,
-  },
-  errorActiveWrapper: {
-    backgroundColor: variables.button_error_active_background,
-  },
-  errorActiveText: {
-    color: variables.button_error_active_color,
-  },
-  errorGhostWrapper: {
-    borderColor: variables.button_error_ghost_border,
-  },
-  errorGhostText: {
-    color: variables.button_error_ghost_color,
-  },
-  errorGhostActiveWrapper: {
-    borderColor: variables.button_error_ghost_active_color,
-  },
-  errorGhostActiveText: {
-    color: variables.button_error_ghost_active_color,
+  dangerGhostActiveText: {
+    color: variables.button_danger_ghost_active_color,
   },
 
   // size

@@ -106,7 +106,7 @@ describe('Radio.Group', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.hasClass('shape-radius')).toBe(true);
+    expect(wrapper.hasClass('za-radio-group--radius')).toBe(true);
   });
 
   // 椭圆角
@@ -118,7 +118,7 @@ describe('Radio.Group', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.hasClass('shape-round')).toBe(true);
+    expect(wrapper.hasClass('za-radio-group--round')).toBe(true);
   });
 
   // 块级样式
@@ -130,7 +130,7 @@ describe('Radio.Group', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>
     );
-    expect(wrapper.hasClass('block')).toBe(true);
+    expect(wrapper.hasClass('za-radio-group--block')).toBe(true);
   });
 
   // 列表样式

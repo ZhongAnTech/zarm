@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Calendar from '../index';
 
@@ -10,10 +10,10 @@ describe('Calendar', () => {
     const wrapper = mount(<Calendar defaultValue="2018-08-07" min="2018-05-06" max="2018-10-02" multiple={false} />);
     expect(toJson(wrapper)).toMatchSnapshot();
 
-    const selected = wrapper.find(`.${prefixCls}-day-item.selected`);
+    const selected = wrapper.find(`.${prefixCls}__day--selected`);
     expect(selected.length).toBe(1);
 
-    const day1 = wrapper.find(`.${prefixCls}-day-item`).at(20);
+    const day1 = wrapper.find(`.${prefixCls}__day`).at(20);
     day1.simulate('click');
   });
 
@@ -21,7 +21,7 @@ describe('Calendar', () => {
     const onChangeFn = jest.fn();
     const wrapper = mount(<Calendar min="2018-05-06" multiple={false} onChange={onChangeFn} />);
 
-    const day2 = wrapper.find(`.${prefixCls}-day-item`).at(15);
+    const day2 = wrapper.find(`.${prefixCls}__day`).at(15);
     expect(day2.childAt(0).text()).toBe('16');
     day2.simulate('click');
     expect(onChangeFn).toBeCalled();
@@ -31,8 +31,8 @@ describe('Calendar', () => {
     const onChangeFn = jest.fn();
     const wrapper = mount(<Calendar multiple={false} onChange={onChangeFn} />);
 
-    const day3 = wrapper.find(`.${prefixCls}-day-item`).at(30);
-    const day4 = wrapper.find(`.${prefixCls}-day-item`).at(20);
+    const day3 = wrapper.find(`.${prefixCls}__day`).at(30);
+    const day4 = wrapper.find(`.${prefixCls}__day`).at(20);
     day3.simulate('click');
     day4.simulate('click');
     expect(onChangeFn).toBeCalled();
@@ -54,6 +54,6 @@ describe('Calendar', () => {
 
     wrapper.setProps({ dateRender: date => `$${date.getDate()}` });
 
-    wrapper.setProps({ dateRender: date => date });
+    // wrapper.setProps({ dateRender: date => date });
   });
 });

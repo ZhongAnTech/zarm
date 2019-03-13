@@ -81,14 +81,14 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Radio.Group type="button" shape="radius">
+            <Radio.Group type="button" shape="rect">
               <Radio value="0">选项一</Radio>
               <Radio value="1">选项二</Radio>
               <Radio value="2">选项三</Radio>
             </Radio.Group>
           }
         >
-          圆角
+          直角
         </Cell>
 
         <Cell
@@ -186,11 +186,10 @@ ReactDOM.render(<Demo />, mountNode);
 ### Radio
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
-| shape | string | - | 形状，可选值 `radius`, `round` | 
 | type | string | - | 显示类型，可选值 `button`, `cell` |
 | value | string \| number | - | 值 |
 | checked | boolean | - | 当前是否选中 |
+| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | defaultChecked | boolean | - | 初始是否选中 |
 | disabled | boolean | false | 是否禁用 |
 | onChange | (checked?: boolean) => void | - | 值变化时触发的回调函数 |
@@ -198,11 +197,10 @@ ReactDOM.render(<Demo />, mountNode);
 ### Radio.Group
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
-| shape | string | - | 形状，可选值 `radius`, `round` | 
 | type | string | - | 显示类型，可选值 `button`, `cell` |
 | value | string \| number | - | 选中值 |
 | defaultValue | string \| number | - | 初始选中值 |
+| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | block | boolean | false | 是否为块级元素 |
 | disabled | boolean | false | 是否禁用 |
 | compact | boolean | false | 是否启用紧凑模式 |

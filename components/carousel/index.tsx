@@ -248,7 +248,7 @@ export default class Carousel extends Component<CarouselProps, any> {
       return cloneElement(element, {
         key: index,
         className: classnames({
-          [`${props.prefixCls}-item`]: true,
+          [`${props.prefixCls}__item`]: true,
           [element.props.className]: !!element.props.className,
         }),
       });
@@ -312,49 +312,42 @@ export default class Carousel extends Component<CarouselProps, any> {
   }
 
   renderPaginationItem = (_result, index) => {
-    const paginationStyle: CSSProperties = {};
-
-    if (this.isDirectionX()) {
-      paginationStyle.display = 'inline-block';
-    }
+    const { prefixCls } = this.props;
+    const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
+      [`${prefixCls}__pagination__item--active`]: index === this.state.activeIndex,
+    });
 
     return (
-      <li
+      <div
         role="tab"
         key={`pagination-${index}`}
-        className={classnames({ active: index === this.state.activeIndex })}
-        style={paginationStyle}
+        className={paginationItemCls}
         onClick={() => this.onSlideTo(index)}
       />
     );
   }
 
   renderPagination = () => {
-    const { prefixCls, children } = this.props;
-    const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
-
-    return (
-      <div className={`${prefixCls}-pagination ${direction}`}>
-        <ul>
-          {Children.map(children, this.renderPaginationItem)}
-        </ul>
+    const { prefixCls, showPagination, children } = this.props;
+    return showPagination && (
+      <div className={`${prefixCls}__pagination`}>
+        {Children.map(children, this.renderPaginationItem)}
       </div>
     );
   }
 
   render() {
-    const { prefixCls, className, height, showPagination, style } = this.props;
-    const cls = classnames(prefixCls, className);
-    const itemsStyle: CSSProperties = { ...style };
+    const { prefixCls, className, height, style } = this.props;
+    const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
+    const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
+    const itemsStyle: CSSProperties = {};
 
     if (!this.isDirectionX()) {
       itemsStyle.height = height;
-    } else {
-      itemsStyle.whiteSpace = 'nowrap';
     }
 
     return (
-      <div className={cls}>
+      <div className={cls} style={style}>
         <Drag
           onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
@@ -362,14 +355,14 @@ export default class Carousel extends Component<CarouselProps, any> {
         >
           <div
             ref={(ele) => { this.carouselItems = ele; }}
-            className={`${prefixCls}-items`}
+            className={`${prefixCls}__items`}
             onTransitionEnd={this.transitionEnd}
             style={itemsStyle}
           >
             {this.state.items}
           </div>
         </Drag>
-        {showPagination && this.renderPagination()}
+        {this.renderPagination()}
       </div>
     );
   }

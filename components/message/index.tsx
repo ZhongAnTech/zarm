@@ -35,20 +35,20 @@ export default class Message extends PureComponent<MessageProps, any> {
     const { prefixCls, className, theme, size, icon, hasArrow, closable, children } = this.props;
 
     const classes = classnames(prefixCls, className, {
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${size}`]: !!size,
     });
 
-    const iconRender = icon && <div className={`${prefixCls}-icon`}>{icon}</div>;
+    const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;
     const renderCloseIcon = closable && <Icon type="wrong" onClick={() => { this.setState({ visible: false }); }} />;
     const renderArrow = hasArrow && <Icon type="arrow-right" />;
     const noFooter = !closable && !hasArrow;
 
     return this.state.visible && (
       <div className={classes} onClick={this.onClick}>
-        <div className={`${prefixCls}-header`}>{iconRender}</div>
-        <div className={`${prefixCls}-body`}>{children}</div>
-        {!noFooter && <div className={`${prefixCls}-footer`}>{renderArrow}{renderCloseIcon}</div>}
+        <div className={`${prefixCls}__header`}>{iconRender}</div>
+        <div className={`${prefixCls}__body`}>{children}</div>
+        {!noFooter && <div className={`${prefixCls}__footer`}>{renderArrow}{renderCloseIcon}</div>}
       </div>
     );
   }

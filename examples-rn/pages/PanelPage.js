@@ -4,7 +4,7 @@ import { Panel } from '../../components/index.native';
 
 const styles = {
   moreHeaderColor: {
-    color: '#12c287',
+    color: '#00bc70',
   },
   box: {
     paddingTop: 10,

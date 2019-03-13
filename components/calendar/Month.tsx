@@ -123,7 +123,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     let txt = (date && dateRender && dateRender(date)) || '';
     if (typeof txt === 'object') {
       if (!isValidElement(txt)) {
-        console.error(
+        console.warn(
           'dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode',
         );
         txt = '';
@@ -133,10 +133,10 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     const className = {
       d6: (day + firstDay) % 7 === 0,
       d7: (day + firstDay) % 7 === 1,
-      disabled: status.disabled,
-      today: isToday,
-      selected: status.isSelected,
-      range: status.isRange,
+      [`${prefixCls}__day--disabled`]: status.disabled,
+      [`${prefixCls}__day--today`]: isToday,
+      [`${prefixCls}__day--selected`]: status.isSelected,
+      [`${prefixCls}__day--range`]: status.isRange,
       'range-start': status.rangeStart,
       'range-end': status.rangeEnd,
       [`firstday-${firstDay}`]: day === 1 && firstDay,
@@ -145,10 +145,10 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     return (
       <li
         key={`${year}-${month}-${day}`}
-        className={classnames(`${prefixCls}-day-item`, className)}
+        className={classnames(`${prefixCls}__day`, className)}
         onClick={() => !status.disabled && date && onDateClick && onDateClick(date)}
       >
-        {(txt && <div className={`${prefixCls}-day-detail`}>{txt}</div>) || ''}
+        {(txt && <div className={`${prefixCls}__day__content`}>{txt}</div>) || ''}
       </li>
     );
   }
@@ -183,7 +183,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     this.cache = (
       <section
         key={monthkey}
-        className={`${prefixCls}-month-content`}
+        className={`${prefixCls}__month`}
         title={`${year}年${month + 1}月`}
         ref={n => (this.node = n)}
       >

@@ -5,7 +5,7 @@ exports[`Toast renders correctly 1`] = `
   class="za-toast"
 >
   <div
-    class="za-toast-container"
+    class="za-toast__container"
   >
     foo
   </div>
