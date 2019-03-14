@@ -39,11 +39,10 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const { document, className } = this.document(localStorage.getItem('LANGUAGE') || 'zh-CN');
+    const { document, className } = this.document();
 
     if (typeof document === 'string') {
       this.components.clear();
-
       const html = marked(
         document
           .replace(/## API\s?([^]+)/g, '')
