@@ -8,7 +8,7 @@
   @include e(inner) {
     position: relative;
     background-color: rgba(0, 0, 0, $--opacity-tooltip);
-    padding: $--padding-v-md $--padding-h-md;
+    padding: $--tooltip-padding-v $--tooltip-padding-h;
     border-radius: $--radius-md;
     font-size: $--tooltip-font-size;
     color: $--tooltip-color;
