@@ -35,7 +35,7 @@
     "start": "npm run deploy && npm run dev",
     "clean": "rm -rf lib es dist assets coverage .temp",
     "clean:ignore": "git clean -dxf -e node_modules",
-    "dev": "webpack-dev-server --config scripts/webpack/config.dev.js",
+    "dev": "webpack-dev-server --config  scripts/webpack/config.dev.js",
     "rn-start": "react-native start",
     "rn-watch": "tsc --module es6 --jsx react-native --w",
     "ios": "concurrently \"npm run rn-watch\" \"npm run rn-start\" \"react-native run-ios --project-path examples-rn/ios\"",

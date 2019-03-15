@@ -10,8 +10,8 @@ config.optimization.minimize = false;
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
   new HtmlWebpackPlugin({
-    template: './examples/index_umd.html',
-    filename: 'umd.html',
+    template: './examples/index.html',
+    filename: 'index.html',
     inject: false,
   })
 );
