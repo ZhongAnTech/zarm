@@ -1,0 +1,280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel base render correctly 1`] = `
+<div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+        role="tab"
+      />
+      <div
+        class="za-carousel__pagination__item"
+        role="tab"
+      />
+      <div
+        class="za-carousel__pagination__item"
+        role="tab"
+      />
+    </div>
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    />
+    <div
+      class="za-carousel__pagination"
+    />
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    />
+    <div
+      class="za-carousel__pagination"
+    />
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+        role="tab"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel className render correctly 1`] = `
+<div
+  class="za-carousel za-wrapper-test za-carousel--horizontal"
+>
+  <div
+    class="za-carousel__items"
+  />
+  <div
+    class="za-carousel__pagination"
+  />
+</div>
+`;
+
+exports[`Carousel componentWillReceiveProps 1`] = `
+<div
+  class="za-carousel za-carousel--horizontal"
+>
+  <div
+    class="za-carousel__items"
+  >
+    <div
+      class="za-carousel__item"
+    >
+      1
+    </div>
+    <div
+      class="za-carousel__item"
+    >
+      2
+    </div>
+  </div>
+  <div
+    class="za-carousel__pagination"
+  >
+    <div
+      class="za-carousel__pagination__item"
+      role="tab"
+    />
+    <div
+      class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      role="tab"
+    />
+  </div>
+</div>
+`;
+
+exports[`Carousel height render correctly 1`] = `
+<div
+  class="za-carousel za-carousel--vertical"
+>
+  <div
+    class="za-carousel__items"
+    style="height:150px"
+  >
+    <div
+      class="za-carousel__item"
+    >
+      0
+    </div>
+    <div
+      class="za-carousel__item"
+    >
+      1
+    </div>
+    <div
+      class="za-carousel__item"
+    >
+      2
+    </div>
+  </div>
+  <div
+    class="za-carousel__pagination"
+  >
+    <div
+      class="za-carousel__pagination__item za-carousel__pagination__item--active"
+      role="tab"
+    />
+    <div
+      class="za-carousel__pagination__item"
+      role="tab"
+    />
+    <div
+      class="za-carousel__pagination__item"
+      role="tab"
+    />
+  </div>
+</div>
+`;
+
+exports[`Carousel pagination render correctly 1`] = `
+<div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+    <div
+      class="za-carousel__pagination"
+    >
+      <div
+        class="za-carousel__pagination__item za-carousel__pagination__item--active"
+        role="tab"
+      />
+      <div
+        class="za-carousel__pagination__item"
+        role="tab"
+      />
+      <div
+        class="za-carousel__pagination__item"
+        role="tab"
+      />
+    </div>
+  </div>
+  <div
+    class="za-carousel za-carousel--horizontal"
+  >
+    <div
+      class="za-carousel__items"
+    >
+      <div
+        class="za-carousel__item"
+      >
+        0
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        1
+      </div>
+      <div
+        class="za-carousel__item"
+      >
+        2
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Carousel prefixCls render correctly 1`] = `
+<div
+  class="za-test za-test--horizontal"
+>
+  <div
+    class="za-test__items"
+  >
+    <div
+      class="za-test__item"
+    >
+      0
+    </div>
+  </div>
+  <div
+    class="za-test__pagination"
+  >
+    <div
+      class="za-test__pagination__item za-test__pagination__item--active"
+      role="tab"
+    />
+  </div>
+</div>
+`;
+
+exports[`Carousel style render correctly 1`] = `
+<div
+  class="za-carousel za-carousel--horizontal"
+  style="background:red"
+>
+  <div
+    class="za-carousel__items"
+  />
+  <div
+    class="za-carousel__pagination"
+  />
+</div>
+`;

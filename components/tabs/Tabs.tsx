@@ -3,8 +3,10 @@ import PropsType from './PropsType';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
 import Carousel from '../carousel';
+import Drag from '../drag';
 
 const getSelectIndex = (children) => {
+  // console.log('Tabs-getSelectIndex-children',children)
   let selectIndex;
   React.Children.forEach(children, (item: any, index) => {
     if (item.props && item.props.selected) {
@@ -27,6 +29,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     disabled: false,
     hasline: false,
     canSwipe: false,
+    page: 5,
+    useTabPaged: false,
   };
 
   private carousel;
@@ -39,6 +43,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    // console.log('Tabs-componentWillReceiveProps-nextProps',nextProps)
     if ('value' in nextProps || getSelectIndex(nextProps.children)) {
       this.setState({
         value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
@@ -72,6 +77,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   renderTabs = (tab, index) => {
+   // console.log('Tabs-renderTabs-tab',tab)
     const { prefixCls, disabled } = this.props;
     const itemCls = classnames(`${prefixCls}__header__item`, tab.props.className, {
       [`${prefixCls}__header__item--disabled`]: disabled || tab.props.disabled,
@@ -91,17 +97,21 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
   render() {
     const { prefixCls, className, lineWidth, hasline, canSwipe, children } = this.props;
-
+    // console.log('Tabs-render-children',children)
     const classes = classnames(prefixCls, className, {
       [`${prefixCls}--hasline`]: hasline,
     });
 
     // 渲染选项
-    const tabsRender = React.Children.map(children, this.renderTabs);
-
+    // const tabsRender = React.Children.map(children, this.renderTabs);
+    const tabsRender = (
+      <Drag>
+      <div>
+         {React.Children.map(children, this.renderTabs)}
+      </div>
+    </Drag>);
     // 渲染内容
     let contentRender;
-
     if (canSwipe) {
       contentRender = (
         <Carousel

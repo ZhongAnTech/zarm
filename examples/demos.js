@@ -142,6 +142,10 @@ module.exports = {
         description: '标签页',
       },
       {
+        name: 'TabsCarousel',
+        description: 'tab标签页',
+      },
+      {
         name: 'NavBar',
         description: '导航栏',
       },

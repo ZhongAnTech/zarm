@@ -4,16 +4,16 @@ import PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag from '../drag';
 
-export interface CarouselProps extends PropsType {
+export interface TabsCarouselProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Carousel extends Component<CarouselProps, any> {
+export default class TabsCarousel extends Component<TabsCarouselProps, any> {
   static defaultProps = {
-    prefixCls: 'za-carousel',
+    prefixCls: 'za-tabs-carousel',
     direction: 'left',
-    height: 160,
+    height: 80,
     loop: false,
     activeIndex: 0,
     animationDuration: 300,
@@ -21,7 +21,6 @@ export default class Carousel extends Component<CarouselProps, any> {
     autoPlayIntervalTime: 3000,
     moveDistanceRatio: 0.5,
     moveTimeSpan: 300,
-    showPagination: true,
   };
 
   private carouselItems;
@@ -159,7 +158,7 @@ export default class Carousel extends Component<CarouselProps, any> {
         }
       }
     }
-    if (event.cancelable && (!event.defaultPrevented) ) {
+    if (event.cancelable && !event.defaultPrevented) {
       event.preventDefault();
     }
     this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
@@ -310,32 +309,6 @@ export default class Carousel extends Component<CarouselProps, any> {
   isDirectionX = () => {
     return (['left', 'right'].indexOf(this.props.direction!) > -1);
   }
-
-  renderPaginationItem = (_result, index) => {
-    const { prefixCls } = this.props;
-    const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
-      [`${prefixCls}__pagination__item--active`]: index === this.state.activeIndex,
-    });
-
-    return (
-      <div
-        role="tab"
-        key={`pagination-${index}`}
-        className={paginationItemCls}
-        onClick={() => this.onSlideTo(index)}
-      />
-    );
-  }
-
-  renderPagination = () => {
-    const { prefixCls, showPagination, children } = this.props;
-    return showPagination && (
-      <div className={`${prefixCls}__pagination`}>
-        {Children.map(children, this.renderPaginationItem)}
-      </div>
-    );
-  }
-
   render() {
     const { prefixCls, className, height, style } = this.props;
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
@@ -362,7 +335,7 @@ export default class Carousel extends Component<CarouselProps, any> {
             {this.state.items}
           </div>
         </Drag>
-        {this.renderPagination()}
+        {/* {this.renderPagination()} */}
       </div>
     );
   }

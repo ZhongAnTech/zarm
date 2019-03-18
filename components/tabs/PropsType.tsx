@@ -5,4 +5,7 @@ export default interface PropsType {
   canSwipe?: boolean;
   onChange?: (index: number) => void;
   children?: any;
+  page?: number;
+  // useTabPaged?:boolean;
+
 }
