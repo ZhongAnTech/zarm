@@ -288,6 +288,7 @@ $--switch-background: #fff;
 
 // Tabs
 $--tabs-height: r(45);
+$--tabs-paged-width: r(70);
 $--tabs-item-font-size: $--font-size-lg;
 $--tabs-line-height: r(2);
 
@@ -321,3 +322,8 @@ $--input-line-height: $--cell-title-line-height;
 // Progress
 $--progress-background: #f2f2f2;
 $--progress-circle-diameter: r(150);
+
+
+// Tabs-Carousel
+$--tabs-carousel--horizontal-height: r(40);
+

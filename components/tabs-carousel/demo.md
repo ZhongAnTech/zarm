@@ -7,16 +7,27 @@
 import { TabsCarousel } from 'zarm';
 
 const ITEMS = [
-  'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-  'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
-  'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+  '选项一',
+  '选项2',
+  '选项3',
+  '选项4',
+  '选项5',
+  '选项6',
+  '选项7',
+  '选项8',
+  '选项9',
+  '选项10',
+  '选项11',
 ];
 
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="carousel__item__pic" key={+i}>
-        <img src={item} alt="" draggable={false} />
+      // <div className="carousel__item__pic" key={+i}>
+      //   {item} 
+      // </div>
+       <div className="tab-carousel__item__text" key={+i}>
+        {item} 
       </div>
     );
   });
@@ -35,8 +46,6 @@ class Demo extends React.Component {
         >
           {contentRender()}
         </TabsCarousel>
-        <div className="controls">
-        </div>
       </div>
     )
   }

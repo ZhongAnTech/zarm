@@ -13,7 +13,7 @@ export default class TabsCarousel extends Component<TabsCarouselProps, any> {
   static defaultProps = {
     prefixCls: 'za-tabs-carousel',
     direction: 'left',
-    height: 80,
+    height: 120,
     loop: false,
     activeIndex: 0,
     animationDuration: 300,
@@ -21,6 +21,7 @@ export default class TabsCarousel extends Component<TabsCarouselProps, any> {
     autoPlayIntervalTime: 3000,
     moveDistanceRatio: 0.5,
     moveTimeSpan: 300,
+    showPagination: true,
   };
 
   private carouselItems;
@@ -159,7 +160,7 @@ export default class TabsCarousel extends Component<TabsCarouselProps, any> {
       }
     }
     if (event.cancelable && !event.defaultPrevented) {
-      event.preventDefault();
+          event.preventDefault();
     }
     this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
     return true;
@@ -309,10 +310,37 @@ export default class TabsCarousel extends Component<TabsCarouselProps, any> {
   isDirectionX = () => {
     return (['left', 'right'].indexOf(this.props.direction!) > -1);
   }
+
+  renderPaginationItem = (_result, index) => {
+    const { prefixCls } = this.props;
+    const paginationItemCls = classnames(`${prefixCls}__pagination__item`, {
+      [`${prefixCls}__pagination__item--active`]: index === this.state.activeIndex,
+    });
+
+    return (
+      <div
+        role="tab"
+        key={`pagination-${index}`}
+        className={paginationItemCls}
+        onClick={() => this.onSlideTo(index)}
+      />
+    );
+  }
+
+  renderPagination = () => {
+    const { prefixCls, showPagination, children } = this.props;
+    return showPagination && (
+      <div className={`${prefixCls}__pagination`}>
+        {Children.map(children, this.renderPaginationItem)}
+      </div>
+    );
+  }
+
   render() {
     const { prefixCls, className, height, style } = this.props;
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
     const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
+    console.log('tabs-C-render-cls',cls)
     const itemsStyle: CSSProperties = {};
 
     if (!this.isDirectionX()) {
@@ -335,7 +363,7 @@ export default class TabsCarousel extends Component<TabsCarouselProps, any> {
             {this.state.items}
           </div>
         </Drag>
-        {/* {this.renderPagination()} */}
+        {this.renderPagination()}
       </div>
     );
   }

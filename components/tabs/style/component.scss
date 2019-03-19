@@ -74,4 +74,23 @@
       }
     }
   }
+  @include m(horizontal){
+    ul{
+      touch-action: pan-x;
+    }
+  }
+  @include m(vertical){
+    ul{
+      touch-action: pan-y;
+    }
+  }
+  @include m(paged){
+    ul{
+      overflow: visible;
+    }
+    @include e(header__item){
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+  }
 }

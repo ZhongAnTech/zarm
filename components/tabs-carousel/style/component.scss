@@ -24,6 +24,8 @@
 
   @include m(horizontal) {
     @include e(items) {
+      height:$--tabs-carousel--horizontal-height;
+      line-height: $--tabs-carousel--horizontal-height;
       white-space: nowrap;
     }
 
@@ -32,7 +34,6 @@
       bottom: $--carousel-pagination-distance;
       transform: translate3d(-50%, 0, 0);
     }
-
     @include e(pagination__item) {
       display: inline-block;
       width: $--carousel-pagination-rect-width;

@@ -1,12 +1,13 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import PropsType from './PropsType';
+import TabBasePropsType from './PropsType';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
+import TabHeader from './TabHeader';
 import Carousel from '../carousel';
-import Drag from '../drag';
+
 
 const getSelectIndex = (children) => {
-  // console.log('Tabs-getSelectIndex-children',children)
+  console.log('Tabs-getSelectIndex-children', children)
   let selectIndex;
   React.Children.forEach(children, (item: any, index) => {
     if (item.props && item.props.selected) {
@@ -16,7 +17,7 @@ const getSelectIndex = (children) => {
   return selectIndex;
 };
 
-export interface TabsProps extends PropsType {
+export interface TabsProps extends TabBasePropsType {
   prefixCls?: string;
   className?: string;
 }
@@ -31,9 +32,14 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     canSwipe: false,
     page: 5,
     useTabPaged: false,
+    horizontal: true,
+    tabWidth: 70,
+    tabHeight: 40,
+    moveDistanceRatio: 0.5
   };
 
   private carousel;
+
 
   constructor(props) {
     super(props);
@@ -43,7 +49,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log('Tabs-componentWillReceiveProps-nextProps',nextProps)
+    console.log('Tabs-componentWillReceiveProps-nextProps', nextProps)
     if ('value' in nextProps || getSelectIndex(nextProps.children)) {
       this.setState({
         value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
@@ -76,40 +82,31 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     }
   }
 
-  renderTabs = (tab, index) => {
-   // console.log('Tabs-renderTabs-tab',tab)
-    const { prefixCls, disabled } = this.props;
-    const itemCls = classnames(`${prefixCls}__header__item`, tab.props.className, {
-      [`${prefixCls}__header__item--disabled`]: disabled || tab.props.disabled,
-    });
 
-    return (
-      <li
-        role="tab"
-        key={+index}
-        className={itemCls}
-        onClick={() => this.onTabClick(tab, index)}
-      >
-        {tab.props.title}
-      </li>
-    );
-  }
 
   render() {
-    const { prefixCls, className, lineWidth, hasline, canSwipe, children } = this.props;
-    // console.log('Tabs-render-children',children)
-    const classes = classnames(prefixCls, className, {
-      [`${prefixCls}--hasline`]: hasline,
-    });
+    const { prefixCls, className, lineWidth, hasline, canSwipe, children, horizontal, useTabPaged } = this.props;
+    console.log('Tabs-render-children', children)
+    const classes = classnames(prefixCls, className,
+      { [`${prefixCls}--hasline`]: hasline },
+      { [`${prefixCls}--paged`]: useTabPaged },
+      `${prefixCls}--${horizontal ? 'horizontal' : 'vertical'}`);
+    console.log('Tabs-render-itemCls', classes)
 
+
+    // const headerClasses = classnames()
+    // const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
+    // const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
     // 渲染选项
+
     // const tabsRender = React.Children.map(children, this.renderTabs);
-    const tabsRender = (
-      <Drag>
-      <div>
-         {React.Children.map(children, this.renderTabs)}
-      </div>
-    </Drag>);
+
+    // const tabsRender = (
+    //   <Drag>
+    //   <div>
+    //      {React.Children.map(children, this.renderTabs)}
+    //   </div>
+    // </Drag>);
     // 渲染内容
     let contentRender;
     if (canSwipe) {
@@ -146,7 +143,13 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     return (
       <div className={classes}>
         <div className={`${prefixCls}__header`}>
-          <ul role="tablist">{tabsRender}</ul>
+          {/* {this.renderHeader(children,useTabPaged)} */}
+          <TabHeader
+            {...this.props}
+            activeIndex={this.state.value}
+            onTabHeaderClick={(tab, index) => { this.onTabClick(tab, index) }}
+
+          ></TabHeader>
           <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
         </div>
         <div className={`${prefixCls}__container`}>

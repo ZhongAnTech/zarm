@@ -16,6 +16,7 @@ class Demo extends React.Component {
         canSwipe
         page={5}   //Tab分页尺寸
         useTabPaged={true}   //是否使用分页
+        tabWidth={80}
         >
           <Panel title="选项卡1">
             <div className="content">选项卡1内容</div>
@@ -63,12 +64,21 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tabs onChange={(i) => { console.log(i); }}>
+        <Tabs onChange={(i) => { console.log(i); }} 
+        canSwipe
+        page={5}   //Tab分页尺寸
+        >
           <Panel title="选项卡1">
             <div className="content">选项卡1内容</div>
           </Panel>
           <Panel title="选项卡2">
             <div className="content">选项卡2内容</div>
+          </Panel>
+          <Panel title="选项卡3">
+            <div className="content">选项卡3内容</div>
+          </Panel>
+          <Panel title="选项卡4">
+            <div className="content">选项卡4内容</div>
           </Panel>
         </Tabs>
       </div>
@@ -76,7 +86,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />, mountNode);
+ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -198,7 +208,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## API
+<!-- ## API
 
 ### Tabs
 | 属性 | 类型 | 默认值 | 说明 |
@@ -215,4 +225,4 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | disabled | boolean | false | 是否禁用 |
-| title | string | - | 标题 |
+| title | string | - | 标题 | -->

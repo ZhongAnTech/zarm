@@ -17,7 +17,7 @@ config.plugins.push(
 );
 config.module.rules[0].use[0].options.presets.push('react-hmre');
 config.devServer = {
-  host: '0.0.0.0',
+  host: '192.168.32.70',
   port: 3000,
   compress: true,
   noInfo: true,

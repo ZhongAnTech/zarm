@@ -1,11 +1,14 @@
-export default interface PropsType {
-  lineWidth?: string | number;
+export default interface TabBasePropsType {
+  tabWidth?:  number;
+  tabHeight?: number;
+  lineWidth?:number;
   disabled?: boolean;
   hasline?: boolean;
   canSwipe?: boolean;
   onChange?: (index: number) => void;
   children?: any;
   page?: number;
-  // useTabPaged?:boolean;
+  horizontal?: string;
+  useTabPaged?:boolean;
 
 }
