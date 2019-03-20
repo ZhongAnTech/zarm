@@ -28,11 +28,9 @@ export default class TabPanel extends PureComponent<TabPannelProps, any> {
 
   render() {
     const { prefixCls, className, children } = this.props;
-
     const cls = classnames(`${prefixCls}__panel__item`, className, {
       [`${prefixCls}__panel__item--active`]: !!this.state.selected,
     });
-
     return <div className={cls} role="tabpanel">{children}</div>;
   }
 }

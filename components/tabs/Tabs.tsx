@@ -31,10 +31,9 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     hasline: false,
     canSwipe: false,
     page: 5,
+    defaultValue:1,
     useTabPaged: false,
     horizontal: true,
-    tabWidth: 70,
-    tabHeight: 40,
     moveDistanceRatio: 0.5
   };
 
@@ -45,6 +44,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     super(props);
     this.state = {
       value: props.value || props.defaultValue || getSelectIndex(props.children) || 0,
+      linePosition:0
     };
   }
 
@@ -86,7 +86,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
   render() {
     const { prefixCls, className, lineWidth, hasline, canSwipe, children, horizontal, useTabPaged } = this.props;
-    console.log('Tabs-render-children', children)
+    
+    // console.log('Tabs-render-children', children)
     const classes = classnames(prefixCls, className,
       { [`${prefixCls}--hasline`]: hasline },
       { [`${prefixCls}--paged`]: useTabPaged },
@@ -126,32 +127,14 @@ export default class Tabs extends PureComponent<TabsProps, any> {
         return <TabPanel {...item.props} selected={this.state.value === index} />;
       });
     }
-
-    const lineStyle: CSSProperties = {
-      width: `${100 / children.length}%`,
-      left: `${(this.state.value / children.length) * 100}%`,
-      // right: `${(children.length - this.state.value - 1) / children.length * 100}%`,
-      // transition: `right 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1) 0.09s`,
-    };
-
-    let lineInnerRender;
-    if (lineWidth) {
-      lineStyle.backgroundColor = 'transparent';
-      lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
-    }
-
     return (
       <div className={classes}>
-        <div className={`${prefixCls}__header`}>
           {/* {this.renderHeader(children,useTabPaged)} */}
           <TabHeader
             {...this.props}
             activeIndex={this.state.value}
             onTabHeaderClick={(tab, index) => { this.onTabClick(tab, index) }}
-
           ></TabHeader>
-          <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
-        </div>
         <div className={`${prefixCls}__container`}>
           {contentRender}
         </div>

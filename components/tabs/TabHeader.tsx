@@ -3,27 +3,27 @@ import classnames from 'classnames';
 import Drag from '../drag';
 import Events from '../utils/events';
 import TabBasePropsType from './PropsType';
+import CONSTANS from './constans';
 
 export interface TabHeaderProps extends TabBasePropsType {
   prefixCls?: string;
   className?: string;
-  loop?: number;
   activeIndex?: number;
   moveDistanceRatio?: number;
   animationDuration?: number;
   onTabHeaderClick: (tab, index) => void;
 }
 
-export default class TabHeader extends PureComponent<TabHeaderProps, any> {
+export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> {
   static defaultProps = {
     prefixCls: 'za-tabs',
-    loop: 0,
-    animationDuration: 300,
-    tabWidth: 70,
-    tabHeight: 40,
+    animationDuration: CONSTANS.ANIMATION_DURATION,
+    tabWidth: CONSTANS.TAB_WIDTH,
+    tabHeight: CONSTANS.TAB_HEIGHT,
 
   };
-  private tabsItems;
+  private tabsHeaderBar;
+  private tabsHeaderline;
   private translateX: number = 0;
   private translateY: number = 0;
   private tabBarWidth: number = 0;
@@ -32,25 +32,33 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
     super(props);
     console.log('TabHeader-constructor-props', props)
     this.state = {
-      selected: props.selected || props.defaultSelected,
       activeIndex: props.activeIndex,
       activeIndexChanged: false,
+      linePosition:0
     };
   }
   componentWillMount() {
-    const { tabWidth, children } = this.props
+    const { tabWidth, children,useTabPaged,activeIndex} = this.props
     this.tabBarWidth = tabWidth! * children.length
+   
+  }
+  componentDidMount() {
+    const { tabWidth, children,useTabPaged,activeIndex} = this.props
+    this.tabBarWidth = tabWidth! * children.length
+    useTabPaged && this.onMoveTo(activeIndex,0)
   }
   componentWillReceiveProps(nextProps) {
     console.log('TabHeader-componentWillReceiveProps-nextProps', nextProps)
     this.setState({ activeIndex: nextProps.activeIndex })
+    nextProps.useTabPaged && this.onMoveTo(nextProps.activeIndex,500)
   }
   componentWillUnmount() {
 
     // 移除监听窗口变化
     Events.off(window, 'resize', this.resize);
-    Events.off(this.tabsItems, 'webkitTransitionEnd', this.transitionEnd);
-    Events.off(this.tabsItems, 'transitionend', this.transitionEnd);
+    // Events.off(this.tabsHeaderBar, 'webkitTransitionEnd', this.transitionEnd);
+    // Events.off(this.tabsHeaderBar, 'transitionend', this.transitionEnd);
+    
   }
   resize = () => {
     this.onJumpTo(this.state.activeIndex);
@@ -61,35 +69,78 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
   }
   // 移动到指定编号
   onMoveTo = (index, animationDuration) => {
-    console.log('onMoveTo-index', index)
-    // const dom = this.tabsItems;
-
+    // const dom = this.tabsHeaderBar;
     const { children, onChange, tabWidth, tabHeight } = this.props;
+    const {activeIndex} = this.state
+    // if(activeIndex ==index){
+    //   return
+    // }
+    let criticalCenterDistance = this.tabsHeaderBar.offsetWidth/2;   //中间点，临界值
+    console.log('onMoveTo-index', index,criticalCenterDistance)
+    let translateDistance=0;
+    const isPrev = index-activeIndex>0
+    console.log('onMoveTo-isPrev', isPrev)
+    //左需不要移动
+    if(tabWidth! * index < criticalCenterDistance) {
+      translateDistance = 0;
+      //右边不需要移动
+    }else if((isPrev && this.tabBarWidth-criticalCenterDistance < tabWidth! * index)|| (!isPrev && this.tabBarWidth-criticalCenterDistance < tabWidth! * activeIndex)){
+      translateDistance= this.tabsHeaderBar.offsetWidth-this.tabBarWidth;
+    }else{
+        console.log('左右需要移动tab',this.translateX)
+        if(this.translateX<this.tabsHeaderBar.offsetWidth-this.tabBarWidth){
+          translateDistance = this.tabsHeaderBar.offsetWidth-this.tabBarWidth;
+        }else if(this.translateX >0){
+          translateDistance =0
+        }else{
+          if(activeIndex-index<0){
+            console.log('左右需要移动tab-向前',this.translateX)
+          }else{
+            console.log('左右需要移动tab-向后',this.translateX)
+          }
+          translateDistance=  this.translateX + (activeIndex-index)*tabWidth!
+        }
+    }
+     
+   
     const maxLength = children.length;
-    const previousIndex = this.state.activeIndex;
-    this.translateX = -tabWidth! * index;
-    this.translateY = -tabHeight! * index;
-    this.doTransition({ x: this.translateX, y: this.translateY }, animationDuration);
-
+    const previousIndex =activeIndex
     if (index > maxLength - 1) {
       index = 0;
     } else if (index < 0) {
       index = maxLength - 1;
     }
     const activeIndexChanged = previousIndex !== index;
+    let linePosition = translateDistance+tabWidth! * index
+    this.doTabTransition({ x: translateDistance, y:0 }, animationDuration,true);
+    this.doLineTransition({ x: linePosition, y: 0 }, animationDuration)
     this.setState({
       activeIndex: index,
       activeIndexChanged,
+      // linePosition:linePosition
     });
-
+   
     if (typeof onChange === 'function' && activeIndexChanged) {
       onChange(index);
     }
   }
-  // 执行过渡动画
-  doTransition = (offset, animationDuration) => {
-    console.log('tabs-header-doTransition', offset, animationDuration)
-    const dom = this.tabsItems;
+  // 执行过渡line动画
+  doLineTransition = (offset,animationDuration)=>{
+    const { tabWidth} = this.props;
+    const {activeIndex} =this.state
+    const line = this.tabsHeaderline
+    console.log('doLineTransition',offset)
+     line.style.transform =  `translate3d(${offset.x}px, ${offset.y}px, 0)`;
+    line.style.WebkitTransform = `translate3d(${offset.x}px, ${offset.y}px, 0)`;
+    line.style.WebkitTransformDuration = `${animationDuration}ms`;
+    line.style.transitionDuration = `${animationDuration}ms`;
+  }
+  
+  // 执行过渡tab动画
+  doTabTransition = (offset, animationDuration,update) => {
+    console.log('tabs-header-doTabTransition', offset, animationDuration,update)
+    const dom = this.tabsHeaderBar;
+    
     let x = 0;
     let y = 0;
     if (this.props.horizontal) {
@@ -97,7 +148,7 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
     } else {
       y = offset.y;
     }
-    if (animationDuration > 0) {
+    if (update) {
       this.translateX = x
     }
     //  this.translateX = x
@@ -106,6 +157,7 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
     dom.style.transitionDuration = `${animationDuration}ms`;
     dom.style.WebkitTransform = `translate3d(${x}px, ${y}px, 0)`;
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  
   }
 
 
@@ -121,7 +173,8 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
   onDragMove = (event, { offsetX, offsetY }) => {
     console.log('onDragMove', offsetX, offsetY)
     console.log('this.translateX ', this.translateX)
-    const { horizontal } = this.props;
+    const { horizontal,tabWidth } = this.props;
+    const {activeIndex} = this.state
     if (this.isLastIndex()) {
       if (
         horizontal && offsetX < 0 ||
@@ -140,7 +193,8 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
     //     return false;
     //   }
     // }
-    this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
+    let linePosition = this.translateX + offsetX+tabWidth! * activeIndex
+    this.doTabTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0,false);
     return true
   }
   onDragEnd = (_event, { offsetX, offsetY }) => {
@@ -155,11 +209,11 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
     console.log(tabWidth, tabHeight)
     let { activeIndex } = this.state;
 
-    // const dom = this.tabsItems;
+    // const dom = this.tabsHeaderBar;
     // const timeSpan = new Date().getTime() - startTime.getTime();
-    const ratio = horizontal
-      ? Math.abs(offsetX / tabWidth!)
-      : Math.abs(offsetY / tabHeight!);
+    // const ratio = horizontal
+    //   ? Math.abs(offsetX / tabWidth!)
+    //   : Math.abs(offsetY / tabHeight!);
 
     // 判断滑动临界点
     // 1.滑动距离超过0，且滑动距离和父容器长度之比超过moveDistanceRatio
@@ -173,30 +227,33 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
     // }
 
     if (horizontal) {
-      let offsetXDis;
-
+      let offsetXDis,//位移
+      critical;  //临界
       if (isprev) {
         //右侧超过最大距离  弹回来
-        let maxOffset = this.tabsItems.offsetWidth - this.tabBarWidth
-
-        if (maxOffset > this.translateX + offsetX - tabWidth!) {
-          console.log('h-----', 1)
-          offsetXDis = maxOffset
+        critical = this.translateX + offsetX - tabWidth!
+        if (this.tabsHeaderBar.offsetWidth - this.tabBarWidth > critical) {
+          offsetXDis = this.tabsHeaderBar.offsetWidth - this.tabBarWidth
         } else {
-          console.log('h-----', 2)
-          offsetXDis = this.translateX + offsetX - tabWidth!
+          offsetXDis = critical
         }
       } else {
         //左侧弹性
-        if (this.translateX + offsetX + tabWidth! > 0) {
-          console.log('h-----', 3)
+        critical = this.translateX + offsetX + tabWidth!
+        if ( critical> 0) {
           offsetXDis = 0
         } else {
-          console.log('h-----', 4)
-          offsetXDis = this.translateX + offsetX + tabWidth!
+          offsetXDis = critical
         }
       }
-      this.doTransition({ x: offsetXDis, y: 0 }, 500)
+      let linePosition = offsetXDis+tabWidth! * activeIndex
+      this.doTabTransition({ x: offsetXDis, y: 0 }, 500 , true)
+      this.doLineTransition({ x: linePosition, y: 0 }, 500 )
+      
+     
+      this.setState({
+        //linePosition:linePosition
+      });
     }
 
     // this.onSlideTo(activeIndex);
@@ -210,20 +267,7 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
   isFirstIndex = () => {
     return this.state.activeIndex <= 0;
   }
-  transitionEnd = () => {
-    console.log('tabHeader-transitionEnd-activeIndex', this.state.activeIndex)
-    const activeIndex = this.state.activeIndex;
-    const dom = this.tabsItems;
 
-    this.translateX = -dom.offsetWidth * (activeIndex);
-    this.translateY = -dom.offsetHeight * (activeIndex);
-    this.doTransition({ x: this.translateX, y: this.translateY }, 0);
-
-    // const { onChangeEnd } = this.props;
-    // if (typeof onChangeEnd === 'function' && this.state.activeIndexChanged) {
-    //   onChangeEnd(activeIndex);
-    // }
-  }
 
   // 滑动到指定编号
   onSlideTo = (index) => {
@@ -236,10 +280,12 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
           onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
           onDragEnd={this.onDragEnd}>
-          <ul role="tablist" ref={(ele) => { this.tabsItems = ele; }}>
+          <ul role="tablist" ref={(ele) => { this.tabsHeaderBar = ele; }}>
             {React.Children.map(children, this.renderTabs)}
           </ul>
-        </Drag>);
+         
+        </Drag>
+        );
     } else {
       return (<ul role="tablist">{React.Children.map(children, this.renderTabs)}</ul>);
     }
@@ -253,7 +299,7 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
       [`${prefixCls}__header__item--disabled`]: disabled || tab.props.disabled,
     });
     const tabItemStyle: CSSProperties = {
-      flexBasis: (useTabPaged && horizontal) ? tabWidth : 'auto',
+      flexBasis: (useTabPaged && horizontal) ? tabWidth : 'unset',
       height: (useTabPaged && !horizontal) ? tabHeight : 'auto'
     };
 
@@ -270,12 +316,37 @@ export default class TabHeader extends PureComponent<TabHeaderProps, any> {
     );
   }
   render() {
-    const { children, useTabPaged } = this.props;
-
+    console.log('tabHeader-render')
+    const { children, useTabPaged,prefixCls,lineWidth } = this.props;
+    const {linePosition} = this.state;
+    const lineStyle: CSSProperties = {
+      width: lineWidth?lineWidth:`${100 / children.length}%`,
+      // left: linePosition?linePosition:`${(this.state.activeIndex / children.length) * 100}%`,
+      // right: `${(children.length - this.state.value - 1) / children.length * 100}%`,
+      // transition: `right 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1) 0.09s`,
+    };
     // const cls = classnames(`${prefixCls}__panel__item`, className, {
     //   [`${prefixCls}__panel__item--active`]: !!this.state.selected,
     // });
-
-    return this.renderHeader(children, useTabPaged);
+    return(
+      <div className={`${prefixCls}__header`}>
+        {this.renderHeader(children, useTabPaged)}
+        <div className={`${prefixCls}__line`} style={lineStyle} ref={(ele) => { this.tabsHeaderline = ele; }}></div>
+      </div>
+    )
   }
+    // transitionEnd = () => {
+  //   console.log('tabHeader-transitionEnd-activeIndex', this.state.activeIndex)
+  //   const activeIndex = this.state.activeIndex;
+  //   const dom = this.tabsHeaderBar;
+
+  //   this.translateX = -dom.offsetWidth * (activeIndex);
+  //   this.translateY = -dom.offsetHeight * (activeIndex);
+  //   this.doTabTransition({ x: this.translateX, y: this.translateY }, 0);
+
+  //   // const { onChangeEnd } = this.props;
+  //   // if (typeof onChangeEnd === 'function' && this.state.activeIndexChanged) {
+  //   //   onChangeEnd(activeIndex);
+  //   // }
+  // }
 }

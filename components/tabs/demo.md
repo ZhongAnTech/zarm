@@ -17,6 +17,8 @@ class Demo extends React.Component {
         page={5}   //Tab分页尺寸
         useTabPaged={true}   //是否使用分页
         tabWidth={80}
+        defaultValue={2}
+        lineWidth={80}
         >
           <Panel title="选项卡1">
             <div className="content">选项卡1内容</div>
@@ -43,6 +45,13 @@ class Demo extends React.Component {
             <div className="content">选项卡8内容</div>
           </Panel>
           <Panel title="选项卡9">
+            <div className="content">选项卡9内容</div>
+          </Panel>
+          <Panel title="选项卡9">
+            <div className="content">选项卡9内容</div>
+          </Panel><Panel title="选项卡9">
+            <div className="content">选项卡9内容</div>
+          </Panel><Panel title="选项卡9">
             <div className="content">选项卡9内容</div>
           </Panel>
         </Tabs>

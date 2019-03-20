@@ -31,7 +31,7 @@
     left: 0;
     bottom: 0;
     height: $--tabs-line-height;
-    transition: left .3s ease-out;
+    // transition: left .3s ease-out;
     background-color: $--theme-primary;
 
     &__inner {

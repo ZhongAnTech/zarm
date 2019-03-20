@@ -7,8 +7,9 @@ export default interface TabBasePropsType {
   canSwipe?: boolean;
   onChange?: (index: number) => void;
   children?: any;
+  defaultValue?:number;
   page?: number;
-  horizontal?: string;
+  horizontal?:  boolean;
   useTabPaged?:boolean;
 
 }
