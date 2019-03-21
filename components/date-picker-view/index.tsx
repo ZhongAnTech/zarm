@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BaseDatePickerViewProps } from './PropsType';
-import defaultLocale from './locale/zh_CN';
 import PickerView from '../picker-view';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -63,18 +63,13 @@ export interface DatePickerViewProps extends BaseDatePickerViewProps {
   className?: any;
 }
 
-export default class DatePickerView extends Component<DatePickerViewProps, any> {
+class DatePickerView extends Component<DatePickerViewProps, any> {
   static defaultProps = {
     visible: true,
-    placeholder: '请选择',
-    title: '请选择',
-    cancelText: '取消',
-    okText: '确定',
     mode: DATE,
     disabled: false,
     value: '',
     defaultValue: '',
-    locale: defaultLocale,
     minuteStep: 1,
     prefixCls: 'za-picker',
     valueMember: 'value',
@@ -477,3 +472,5 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     );
   }
 }
+
+export default LocaleReceiver(DatePickerView, 'DatePickerView');

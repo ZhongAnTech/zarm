@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BaseDatePickerProps } from './PropsType';
 import Popup from '../popup';
 import DatePickerView from '../date-picker-view';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const isExtendDate = (date) => {
   if (date instanceof Date) {
@@ -20,12 +21,8 @@ export interface DatePickerProps extends BaseDatePickerProps {
   className?: any;
 }
 
-export default class DatePicker extends Component<DatePickerProps, any> {
+class DatePicker extends Component<DatePickerProps, any> {
   static defaultProps = {
-    placeholder: '请选择',
-    title: '请选择',
-    cancelText: '取消',
-    okText: '确定',
     mode: 'date',
     disabled: false,
     value: '',
@@ -143,7 +140,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, disabled,
+    const { prefixCls, className, title, okText, cancelText, children, disabled, locale,
        ...others } = this.props;
     const { visible, value } = this.state;
 
@@ -162,9 +159,14 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       >
         <div className={`${prefixCls}-wrapper`} onClick={(e) => {e.stopPropagation(); }}>
           <div className={`${prefixCls}-header`}>
-            <div className={`${prefixCls}-cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
-            <div className={`${prefixCls}-title`}>{title}</div>
-            <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
+            <div
+              className={`${prefixCls}-cancel`}
+              onClick={() => this.onCancel()}
+            >
+              {cancelText || locale.cancelText}
+            </div>
+            <div className={`${prefixCls}-title`}>{title || locale.title}</div>
+            <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText || locale.okText}</div>
           </div>
           <DatePickerView
             prefixCls={prefixCls}
@@ -180,3 +182,5 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     );
   }
 }
+
+export default LocaleReceiver(DatePicker, 'DatePicker');
