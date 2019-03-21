@@ -61,7 +61,7 @@
     @include e(icon) {
       margin-right: r(6);
     }
-  
+
     @include e(body) {
       font-size: $--message-font-size-lg;
     }
