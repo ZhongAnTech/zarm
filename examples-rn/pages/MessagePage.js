@@ -4,7 +4,7 @@ import { Panel, Message } from '../../components/index.native';
 
 const styles = {
   wrap: {
-    margin: 15,
+    padding: 15,
   },
   mb: {
     marginBottom: 15,
