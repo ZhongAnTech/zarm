@@ -8,15 +8,14 @@
   font-size: $--message-font-size-md;
   @include message-theme($--theme-default);
 
-  @include e(icon) {
-    margin-right: r(4);
-    font-size: r(16);
-  }
-
   @include e(header) {
     display: flex;
     align-items: center;
     line-height: 1;
+  }
+
+  @include e(icon) {
+    margin-right: r(4);
   }
 
   @include e(body) {
@@ -34,6 +33,7 @@
 
     @include b(icon) {
       font-size: r(14);
+      cursor: pointer;
     }
   }
 
@@ -61,7 +61,7 @@
     @include e(icon) {
       margin-right: r(6);
     }
-
+  
     @include e(body) {
       font-size: $--message-font-size-lg;
     }
