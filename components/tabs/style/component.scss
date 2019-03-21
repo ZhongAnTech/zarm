@@ -1,7 +1,7 @@
 @include b(tabs) {
   @include e(header) {
     position: relative;
-
+    @include onepx(bottom);
     ul {
       display: flex;
       list-style: none;
@@ -9,7 +9,7 @@
       padding: 0;
       height: $--tabs-height;
       line-height: $--tabs-height;
-      @include onepx(bottom);
+     
     }
 
     &__item {

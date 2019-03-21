@@ -31,10 +31,11 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     hasline: false,
     canSwipe: false,
     page: 5,
-    defaultValue:1,
+    defaultValue:0,
     useTabPaged: false,
     horizontal: true,
-    moveDistanceRatio: 0.5
+    moveDistanceRatio: 0.5,
+    scrollElastic:true
   };
 
   private carousel;
@@ -44,7 +45,6 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     super(props);
     this.state = {
       value: props.value || props.defaultValue || getSelectIndex(props.children) || 0,
-      linePosition:0
     };
   }
 
@@ -85,7 +85,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
 
   render() {
-    const { prefixCls, className, lineWidth, hasline, canSwipe, children, horizontal, useTabPaged } = this.props;
+    const { prefixCls, className, hasline, canSwipe, children, horizontal, useTabPaged } = this.props;
     
     // console.log('Tabs-render-children', children)
     const classes = classnames(prefixCls, className,
@@ -113,7 +113,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     if (canSwipe) {
       contentRender = (
         <Carousel
-          direction="left"
+          direction={horizontal?"left":"right"}
           showPagination={false}
           activeIndex={this.state.value}
           ref={(ele) => { this.carousel = ele; }}
@@ -129,14 +129,13 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     }
     return (
       <div className={classes}>
-          {/* {this.renderHeader(children,useTabPaged)} */}
           <TabHeader
             {...this.props}
             activeIndex={this.state.value}
             onTabHeaderClick={(tab, index) => { this.onTabClick(tab, index) }}
           ></TabHeader>
         <div className={`${prefixCls}__container`}>
-          {contentRender}
+          {contentRender}{this.state.value}
         </div>
       </div>
     );

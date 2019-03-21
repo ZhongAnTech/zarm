@@ -18,7 +18,8 @@ class Demo extends React.Component {
         useTabPaged={true}   //是否使用分页
         tabWidth={80}
         defaultValue={2}
-        lineWidth={80}
+        lineWidth={50}
+        scrollElastic={true}
         >
           <Panel title="选项卡1">
             <div className="content">选项卡1内容</div>
@@ -74,8 +75,9 @@ class Demo extends React.Component {
     return (
       <div>
         <Tabs onChange={(i) => { console.log(i); }} 
-        canSwipe
         page={5}   //Tab分页尺寸
+        defaultValue={1}
+        canSwipe
         >
           <Panel title="选项卡1">
             <div className="content">选项卡1内容</div>
