@@ -22,6 +22,7 @@
     &[type="text"],
     &[type="search"] {
       height: $--input-line-height;
+      line-height: $--input-line-height;
     }
 
     @include placeholder {
@@ -45,6 +46,7 @@
   }
 
   @include e(virtual-input) {
+    display: flex;
     position: absolute;
     left: 0;
     right: 0;
@@ -95,9 +97,6 @@
         &:after {
           content: '';
           display: inline-block;
-          position: relative;
-          right: 0;
-          top: 13%;
           height: $--input-cursor-height;
           border-right: $--input-cursor-width solid $--input-cursor-color;
           transition: opacity 0.1s ease-out;
