@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Panel } from 'zarm';
-import { transform } from 'babel-standalone';
+import { transform } from '@babel/standalone';
 import locale from 'zarm/components/locale-provider/locale/zh_CN';
 import '../../components/style/entry';
 

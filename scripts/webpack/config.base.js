@@ -2,19 +2,6 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const babelConfig = require('../config/babelConfig');
 
-babelConfig.plugins.push([
-  'import',
-  [{
-    libraryName: 'zarm',
-    libraryDirectory: 'components',
-    style: true,
-  },
-  {
-    libraryName: 'dragon-ui',
-    style: true,
-  }],
-]);
-
 module.exports = {
   output: {
     path: path.resolve(__dirname, '../../assets'),
