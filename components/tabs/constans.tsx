@@ -1,0 +1,6 @@
+const CONSTANS =  {
+    ANIMATION_DURATION:300,
+    TAB_WIDTH: 70,
+    TAB_HEIGHT: 40,
+}
+export default CONSTANS

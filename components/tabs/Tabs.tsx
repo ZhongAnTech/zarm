@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent } from 'react';
 import TabBasePropsType from './PropsType';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
@@ -49,7 +49,6 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('Tabs-componentWillReceiveProps-nextProps', nextProps)
     if ('value' in nextProps || getSelectIndex(nextProps.children)) {
       this.setState({
         value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
@@ -61,7 +60,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   onSwipeChange = (value) => {
-    const { onChange } = this.props;
+    const { onChange  } = this.props;
+    
     this.setState({ value });
     if (typeof onChange === 'function') {
       onChange(value);
@@ -87,27 +87,11 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   render() {
     const { prefixCls, className, hasline, canSwipe, children, horizontal, useTabPaged } = this.props;
     
-    // console.log('Tabs-render-children', children)
     const classes = classnames(prefixCls, className,
       { [`${prefixCls}--hasline`]: hasline },
       { [`${prefixCls}--paged`]: useTabPaged },
       `${prefixCls}--${horizontal ? 'horizontal' : 'vertical'}`);
     console.log('Tabs-render-itemCls', classes)
-
-
-    // const headerClasses = classnames()
-    // const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
-    // const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
-    // 渲染选项
-
-    // const tabsRender = React.Children.map(children, this.renderTabs);
-
-    // const tabsRender = (
-    //   <Drag>
-    //   <div>
-    //      {React.Children.map(children, this.renderTabs)}
-    //   </div>
-    // </Drag>);
     // 渲染内容
     let contentRender;
     if (canSwipe) {

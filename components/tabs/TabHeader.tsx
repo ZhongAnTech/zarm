@@ -117,10 +117,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
       webkitTransform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,
       transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`
     })
-    // line.style.transform =  `translate3d(${offset.x}px, ${offset.y}px, 0)`;
-    // line.style.WebkitTransform = `translate3d(${offset.x}px, ${offset.y}px, 0)`;
-    // this.tabsHeaderline.style.WebkitTransformDuration = `${animationDuration}ms`;
-    // line.style.transitionDuration = `${animationDuration}ms`;
   }
 
   // 执行过渡tab动画
@@ -151,12 +147,9 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
       onTabHeaderClick(tab, index)
     }
   }
-  onDragStart = (event) => {
-    console.log('onDragStart', event)
-  }
+
   onDragMove = (event, { offsetX, offsetY }) => {
-    console.log('onDragMove',event, offsetX, offsetY)
-    console.log('this.translateX ', this.translateX)
+   
     const { activeIndex } = this.state
     if (!this.props.scrollElastic) {  //不带弹性滑动
       if (this.isTabScrollingInEnd({ offsetX, offsetY })) {
@@ -166,11 +159,13 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     let linePosition = this.translateX + offsetX + this.props.tabWidth! * activeIndex
     this.doTabTransition({ x: this.translateX + offsetX, y: 0 }, 0, false);
     this.doLineTransition({ x: linePosition, y: 0 }, 0)
+    if (event.cancelable && !event.defaultPrevented) {
+          event.preventDefault();
+    }
     return true
   }
-  onDragEnd = (event, { offsetX, offsetY }) => {
-    console.log('onDragEnd', offsetX, offsetY)
-    console.log('onDragEnd-translateX', this.translateX)
+  onDragEnd = (_event, { offsetX, offsetY }) => {
+   
     if (!offsetX && !offsetY) {
       return;
     }
@@ -189,10 +184,8 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
       let offsetXDis = this.translateX + offsetX!//位移
       //右侧超过最大距离  弹回来
       if (isprev && this.isTabInEnd({ offsetX, offsetY })) {
-        console.log('z最右边了')
         offsetXDis = this.tabInEndCritical
       } else if (!isprev && offsetXDis > 0) {
-        console.log('z最左边了')
         offsetXDis = 0
       }
       this.doTabTransition({ x: offsetXDis, y: 0 }, 500, true)
@@ -204,10 +197,8 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     const { horizontal } = this.props;
     const isprev = (horizontal && offset.offsetX < 0) || (!horizontal && offset.offsetY < 0)  //->right / down
     if (isprev && this.isTabInEnd(offset)) {
-      console.log('在最右边了')
       return true
     } else if (!isprev && this.isTabInFront(offset)) {
-      console.log('在最左边了')
       return true
     }
     return false
@@ -230,7 +221,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     if (useTabPaged) {
       return (
         <Drag
-          onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
           onDragEnd={this.onDragEnd}>
           {innerUlDom}
