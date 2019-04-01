@@ -1,12 +1,17 @@
 module.exports = {
   presets: [
-    ['env', {
+    ['@babel/preset-env', {
       modules: false,
     }],
-    'react',
-    'stage-2',
+    '@babel/preset-react',
   ],
   plugins: [
-    'transform-runtime',
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-proposal-class-properties',
+    ['@babel/plugin-transform-runtime', { corejs: 2 }],
+
+    // plugin-babel-import config
+    ['import', { libraryName: 'zarm', libraryDirectory: 'components', style: true }, 'zarm'],
+    ['import', { libraryName: 'dragon-ui', style: true }, 'dragon-ui'],
   ],
 };
