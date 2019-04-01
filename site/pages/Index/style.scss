@@ -50,7 +50,7 @@
       line-height: 1;
   
       span {
-        color: #12C287;
+        color: #00bc70;
       }
     }
   
@@ -71,7 +71,7 @@
         justify-content: center;
         align-items: center;
         height: 50px;
-        background-color: #12C287;
+        background-color: #00bc70;
         border: 0;
         color: #fff;
         font-size: 18px;
@@ -82,17 +82,17 @@
         padding: 0 30px;
 
         &:hover {
-          background: #10AE79;
+          background: #00a864;
         }
 
         &.ghost {
-          border: 1px solid #12C287;
-          color: #12C287;
+          border: 1px solid #00bc70;
+          color: #00bc70;
           background-color: #fff;
 
           &:hover {
-            border-color: #10AE79;
-            color: #10AE79;
+            border-color: #00a864;
+            color: #00a864;
           }
         }
       }

@@ -1,6 +1,4 @@
-$prefixCls: $prefixCls-checkbox;
-
-.#{$prefixCls} {
+@include b(checkbox) {
   display: inline-block;
   position: relative;
   margin-left: r(10);
@@ -9,12 +7,12 @@ $prefixCls: $prefixCls-checkbox;
     margin-left: 0;
   }
 
-  &-wrapper {
+  @include e(wrapper) {
     display: flex;
     align-items: center;
   }
 
-  &-input {
+  @include e(input) {
     position: absolute;
     left: 0;
     top: 0;
@@ -23,29 +21,26 @@ $prefixCls: $prefixCls-checkbox;
     opacity: 0;
   }
 
-  &-text {
-    color: $color-text;
-  }
-
-  &-inner + &-text {
+  @include e(text) {
+    color: $--color-text;
     margin-left: r(10);
   }
 
-  &-inner {
+  @include e(inner) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $checkbox-size;
-    height: $checkbox-size;
+    width: $--checkbox-size;
+    height: $--checkbox-size;
     border: 1px solid #999;
-    border-radius: $checkbox-size;
+    border-radius: $--checkbox-size;
     background: #fff;
 
     &:before {
-      content: ' ';
-      width: $checkbox-size / 3.5;
-      height: $checkbox-size / 2;
-      border: r(2) solid $theme-primary;
+      content: '';
+      width: $--checkbox-size / 3.5;
+      height: $--checkbox-size / 2;
+      border: r(2) solid $--theme-primary;
       border-top: 0;
       border-left: 0;
       margin-top: r(-2);
@@ -54,51 +49,10 @@ $prefixCls: $prefixCls-checkbox;
     }
   }
 
-  /* 组合 */
-  &-group {
-    &.block {
-      display: flex;
-    }
-
-    &.is-compact {
-      .#{$prefixCls} {
-        margin-left: -1px;
-      }
-
-      &.shape-radius {
-        .#{$prefixCls} {
-          border-radius: 0;
-
-          &:first-child {
-            border-radius: $radius-md 0 0 $radius-md;
-          }
-
-          &:last-child {
-            border-radius: 0 $radius-md $radius-md 0;
-          }
-        }
-      }
-
-      &.shape-round {
-        .#{$prefixCls} {
-          border-radius: 0;
-
-          &:first-child {
-            border-radius: $radius-round 0 0 $radius-round;
-          }
-
-          &:last-child {
-            border-radius: 0 $radius-round $radius-round 0;
-          }
-        }
-      }
-    }
-  }
-
   /* 选中状态 */
-  &.checked {
-    .#{$prefixCls}-inner {
-      border-color: $theme-primary;
+  @include m(checked) {
+    @include e(inner) {
+      border-color: $--theme-primary;
 
       &:before {
         transform: rotate(45deg) scale(1);
@@ -108,20 +62,58 @@ $prefixCls: $prefixCls-checkbox;
   }
 
   /* 禁用状态 */
-  &.disabled {
-    .#{$prefixCls} {
-      &-inner {
-        border-color: $border-disabled;
-        cursor: not-allowed;
+  @include m(disabled) {
+    @include e(inner) {
+      border-color: $--border-disabled;
+      cursor: not-allowed;
 
-        &:before {
-          border-color: $border-disabled;
+      &:before {
+        border-color: $--border-disabled;
+      }
+    }
+
+    @include e(text) {
+      color: $--color-text-disabled;
+    }
+  }
+}
+
+@include b(checkbox-group) {
+  @include m(block) {
+    display: flex;
+  }
+
+  @include m(compact) {
+    @include m(radius) {
+      @include b(button) {
+        border-radius: 0;
+
+        &:first-child {
+          border-radius: $--radius-md 0 0 $--radius-md;
+        }
+
+        &:last-child {
+          border-radius: 0 $--radius-md $--radius-md 0;
         }
       }
+    }
 
-      &-text {
-        color: $color-text-disabled;
+    @include m(round) {
+      @include b(button) {
+        border-radius: 0;
+
+        &:first-child {
+          border-radius: $--radius-round 0 0 $--radius-round;
+        }
+
+        &:last-child {
+          border-radius: 0 $--radius-round $--radius-round 0;
+        }
       }
+    }
+
+    @include b(button) {
+      margin-left: -1px;
     }
   }
 }

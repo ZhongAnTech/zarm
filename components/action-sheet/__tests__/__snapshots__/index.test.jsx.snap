@@ -15,7 +15,7 @@ exports[`ActionSheet renders correctly 1`] = `
       Object {
         "onClick": [MockFunction],
         "text": "操作三",
-        "theme": "error",
+        "theme": "danger",
       },
     ]
   }

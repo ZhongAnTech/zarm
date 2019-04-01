@@ -16,12 +16,12 @@ export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
 
   render() {
     const { prefixCls, className, title, onClose, ...others } = this.props;
-    const cls = classnames(`${prefixCls}-header`, className);
-    const btnClose = onClose && <Icon type="wrong" className={`${prefixCls}-header-close`} onClick={onClose} />;
+    const cls = classnames(`${prefixCls}__header`, className);
+    const btnClose = onClose && <Icon type="wrong" className={`${prefixCls}__header__close`} onClick={onClose} />;
 
     return (
       <div className={cls} {...others}>
-        <div className={`${prefixCls}-header-title`}>{title}</div>
+        <div className={`${prefixCls}__header__title`}>{title}</div>
         {btnClose}
       </div>
     );

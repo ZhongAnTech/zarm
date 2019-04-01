@@ -5,10 +5,10 @@ exports[`Slider defaultValue 1`] = `
   class="za-slider"
 >
   <div
-    class="za-slider-line"
+    class="za-slider__line"
   >
     <div
-      class="za-slider-line-bg"
+      class="za-slider__line__bg"
       style="width:0"
     />
   </div>
@@ -16,12 +16,12 @@ exports[`Slider defaultValue 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="10"
-    class="za-slider-handle"
+    class="za-slider__handle"
     role="slider"
     style="left:0"
   >
     <div
-      class="za-slider-handle-shadow"
+      class="za-slider__handle__shadow"
     />
   </div>
 </div>
@@ -29,13 +29,13 @@ exports[`Slider defaultValue 1`] = `
 
 exports[`Slider disabled 1`] = `
 <div
-  class="za-slider disabled"
+  class="za-slider za-slider--disabled"
 >
   <div
-    class="za-slider-line"
+    class="za-slider__line"
   >
     <div
-      class="za-slider-line-bg"
+      class="za-slider__line__bg"
       style="width:0"
     />
   </div>
@@ -43,12 +43,12 @@ exports[`Slider disabled 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="0"
-    class="za-slider-handle"
+    class="za-slider__handle"
     role="slider"
     style="left:0"
   >
     <div
-      class="za-slider-handle-shadow"
+      class="za-slider__handle__shadow"
     />
   </div>
 </div>
@@ -59,10 +59,10 @@ exports[`Slider max 1`] = `
   class="za-slider"
 >
   <div
-    class="za-slider-line"
+    class="za-slider__line"
   >
     <div
-      class="za-slider-line-bg"
+      class="za-slider__line__bg"
       style="width:0"
     />
   </div>
@@ -70,12 +70,12 @@ exports[`Slider max 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="0"
-    class="za-slider-handle"
+    class="za-slider__handle"
     role="slider"
     style="left:0"
   >
     <div
-      class="za-slider-handle-shadow"
+      class="za-slider__handle__shadow"
     />
   </div>
 </div>
@@ -86,10 +86,10 @@ exports[`Slider min 1`] = `
   class="za-slider"
 >
   <div
-    class="za-slider-line"
+    class="za-slider__line"
   >
     <div
-      class="za-slider-line-bg"
+      class="za-slider__line__bg"
       style="width:0"
     />
   </div>
@@ -97,12 +97,12 @@ exports[`Slider min 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="0"
-    class="za-slider-handle"
+    class="za-slider__handle"
     role="slider"
     style="left:0"
   >
     <div
-      class="za-slider-handle-shadow"
+      class="za-slider__handle__shadow"
     />
   </div>
 </div>
@@ -113,10 +113,10 @@ exports[`Slider renders correctly 1`] = `
   class="za-slider"
 >
   <div
-    class="za-slider-line"
+    class="za-slider__line"
   >
     <div
-      class="za-slider-line-bg"
+      class="za-slider__line__bg"
       style="width:0"
     />
   </div>
@@ -124,12 +124,12 @@ exports[`Slider renders correctly 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="0"
-    class="za-slider-handle"
+    class="za-slider__handle"
     role="slider"
     style="left:0"
   >
     <div
-      class="za-slider-handle-shadow"
+      class="za-slider__handle__shadow"
     />
   </div>
 </div>
@@ -140,10 +140,10 @@ exports[`Slider step 1`] = `
   class="za-slider"
 >
   <div
-    class="za-slider-line"
+    class="za-slider__line"
   >
     <div
-      class="za-slider-line-bg"
+      class="za-slider__line__bg"
       style="width:0"
     />
   </div>
@@ -151,12 +151,12 @@ exports[`Slider step 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="0"
-    class="za-slider-handle"
+    class="za-slider__handle"
     role="slider"
     style="left:0"
   >
     <div
-      class="za-slider-handle-shadow"
+      class="za-slider__handle__shadow"
     />
   </div>
 </div>
@@ -167,10 +167,10 @@ exports[`Slider value 1`] = `
   class="za-slider"
 >
   <div
-    class="za-slider-line"
+    class="za-slider__line"
   >
     <div
-      class="za-slider-line-bg"
+      class="za-slider__line__bg"
       style="width:0"
     />
   </div>
@@ -178,12 +178,12 @@ exports[`Slider value 1`] = `
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="10"
-    class="za-slider-handle"
+    class="za-slider__handle"
     role="slider"
     style="left:0"
   >
     <div
-      class="za-slider-handle-shadow"
+      class="za-slider__handle__shadow"
     />
   </div>
 </div>

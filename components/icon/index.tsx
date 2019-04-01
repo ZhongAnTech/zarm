@@ -15,8 +15,8 @@ export default class Icon extends PureComponent<IconProps, {}> {
   render() {
     const { prefixCls, type, theme, className, ...others } = this.props;
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}-${type}`]: !!type,
-      [`theme-${theme}`]: !!theme,
+      [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${theme}`]: !!theme,
     });
 
     return (

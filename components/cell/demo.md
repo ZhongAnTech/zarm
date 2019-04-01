@@ -163,7 +163,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           title="标题"
-          help={<Message theme="error" icon={<Icon type="info-round" />}>标题不能为空</Message>}
+          help={<Message theme="danger" icon={<Icon type="info-round" />}>标题不能为空</Message>}
         >
           <Input type="text" placeholder="请输入标题" />
         </Cell>

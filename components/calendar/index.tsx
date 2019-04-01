@@ -171,11 +171,11 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
   renderWeekBar() {
     const { prefixCls } = this.props;
     const content = CN_DAY_NAME.map(week => (
-      <li key={week} className={`${prefixCls}-week-bar-item`}>
+      <li key={week} className={`${prefixCls}__bar__item`}>
         {week}
       </li>
     ));
-    return <ul className={`${prefixCls}-week-bar`}>{content}</ul>;
+    return <ul className={`${prefixCls}__bar`}>{content}</ul>;
   }
 
   renderMonth(dateMonth) {
@@ -206,17 +206,13 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
     const content = arr.map((_item, i) =>
       this.renderMonth(DateTool.cloneDate(min, 'm', i)),
     );
-    return (
-      <section className={`${prefixCls}-month-box`}>
-        <div className={`${prefixCls}-month-wrapper`}>{content}</div>
-      </section>
-    );
+    return <section className={`${prefixCls}__body`}>{content}</section>;
   }
 
   render() {
     const { prefixCls, className } = this.props;
     return (
-      <div className={classnames(`${prefixCls}`, className)}>
+      <div className={classnames(prefixCls, className)}>
         {this.renderWeekBar()}
         {this.renderMonths()}
       </div>

@@ -1,18 +1,15 @@
-$prefixCls: $prefixCls-pull;
-
-.#{$prefixCls} {
+@include b(pull) {
   overflow: hidden;
-  min-height: $pull-control-height;
+  min-height: $--pull-control-height;
   // overflow-x: hidden;
   // overflow-y: scroll;
   // height: r(300);
 
-  &-content {
-    transform: translate3d(0, $pull-control-height, 0);
+  @include e(content) {
+    transform: translate3d(0, $--pull-control-height, 0);
   }
 
-  &-refresh,
-  &-load {
+  @include e(refresh, load) {
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -20,28 +17,28 @@ $prefixCls: $prefixCls-pull;
     width: 100%;
   }
 
-  &-refresh {
-    margin-top: -$pull-control-height;
-    height: $pull-control-height;
+  @include e(refresh) {
+    margin-top: - $--pull-control-height;
+    height: $--pull-control-height;
   }
 
-  &-load {
+  @include e(load) {
     height: 0;
 
-    &-show {
-      height: $pull-control-height;
+    @include m(show) {
+      height: $--pull-control-height;
     }
   }
 
-  &-control {
+  @include e(control) {
     display: flex;
     align-items: center;
     padding: r(10) 0;
-    height: $pull-control-height;
-    color: $color-text-caption;
-    font-size: $pull-control-font-size;
+    height: $--pull-control-height;
+    color: $--color-text-caption;
+    font-size: $--pull-control-font-size;
 
-    .#{$prefixCls-icon} {
+    @include b(icon) {
       font-size: r(22);
     }
 

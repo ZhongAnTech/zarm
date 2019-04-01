@@ -24,7 +24,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
   static defaultProps = {
     theme: 'default',
     size: 'md',
-    shape: 'rect',
+    shape: 'radius',
     block: false,
     ghost: false,
     disabled: false,

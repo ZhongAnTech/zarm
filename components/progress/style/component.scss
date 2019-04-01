@@ -1,113 +1,82 @@
-$prefixCls: $prefixCls-progress;
-$themeMap: (
-  default: $theme-primary,
-  primary: $theme-primary,
-  success: $theme-success,
-  warning: $theme-warning,
-  error: $theme-error
-);
+@import "mixins";
 
-@mixin allTheme ($attr) {
-  @each $key, $value in $themeMap {
-    &.theme-#{$key} {
-      #{$attr}: $value;
-    }
-  }
-}
-
-.#{$prefixCls} {
+@include b(progress) {
   display: flex;
   align-items: center;
   position: relative;
 
-  &-text {
+  @include e(text) {
     display: inline-block;
     margin-left: r(5);
     font-size: r(12);
   }
 
-  &.type-line {
+  @include m(line) {
     width: 100%;
     height: r(20);
+    @include progress-theme('background-color');
 
-    .#{$prefixCls} {
-      &-track {
-        width: 100%;
-        height: 100%;
-        background: $progress-background;
-        overflow: hidden;
-      }
+    @include e(track) {
+      width: 100%;
+      height: 100%;
+      background: $--progress-background;
+      overflow: hidden;
+    }
 
-      &-thumb {
-        height: 100%;
-        transition: width .6s ease, background-color .6s ease;
-        @include allTheme('background-color');
-      }
+    @include e(thumb) {
+      height: 100%;
+      transition: width .6s ease, background-color .6s ease;
     }
   }
 
-  &.type-circle {
+  @include m(circle) {
     display: inline-block;
-    width: r(150);
-    height: r(150);
+    width: $--progress-circle-diameter;
+    height: $--progress-circle-diameter;
+    @include progress-type();
+    @include progress-theme('stroke');
 
-    .#{$prefixCls} {
-      svg {
-        width: 100%;
-        height: 100%;
-      }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
 
-      &-text {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-        line-height: 1;
-        transform: translateY(-50%);
-        font-size: r(30);
-      }
+    @include e(text) {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+      transform: translateY(-50%);
+      font-size: r(30);
     }
   }
 
-  &.type-semi-circle {
+  @include m(semi-circle) {
     display: inline-block;
-    width: r(150);
-    height: r(150 / 2);
+    width: $--progress-circle-diameter;
+    height: $--progress-circle-diameter / 2;
+    @include progress-type();
+    @include progress-theme('stroke');
 
-    .#{$prefixCls} {
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-
-      &-text {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-        line-height: 1;
-        font-size: r(30);
-      }
-    }
-  }
-
-  &.type-circle,
-  &.type-semi-circle {
-    .#{$prefixCls}-track {
-      stroke: $progress-background;
-      fill-opacity: 0;
+    svg {
+      width: 100%;
+      height: 100%;
     }
 
-    .#{$prefixCls}-thumb {
-      fill-opacity: 0;
-      transition: stroke-dashoffset .6s ease, stroke .6s ease;
-      @include allTheme('stroke');
+    @include e(text) {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+      font-size: r(30);
     }
   }
 }

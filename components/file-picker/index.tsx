@@ -83,7 +83,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;
 
     const cls = classNames(prefixCls, className, {
-      disabled,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     const content = cloneElement(children, {
@@ -94,7 +94,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     return (
       <div className={cls}>
         <input
-          className={`${prefixCls}-input`}
+          className={`${prefixCls}__input`}
           type="file"
           ref={(ele) => { this.file = ele; }}
           accept={accept}

@@ -10,6 +10,16 @@ exports[`Button block 1`] = `
 </react-native-mock>
 `;
 
+exports[`Button children is valid element 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      foo
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
 exports[`Button circle size 1`] = `
 <react-native-mock>
   <react-native-mock>
@@ -62,22 +72,27 @@ exports[`Button ghost active 1`] = `
         "paddingRight": 16,
       },
       Object {
-        "backgroundColor": "#12c287",
+        "backgroundColor": "#fff",
+        "borderColor": "#e6e6e6",
+        "borderWidth": 1,
       },
       Object {
-        "borderRadius": 0,
+        "borderRadius": 4,
       },
       Object {
-        "backgroundColor": "#10ae79",
+        "backgroundColor": "#e6e6e6",
+        "borderColor": "#e6e6e6",
       },
       Object {
         "backgroundColor": "transparent",
         "borderWidth": 1,
       },
       Object {
-        "borderColor": "#12c287",
+        "backgroundColor": "transparent",
+        "borderColor": "#fff",
       },
       Object {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "borderColor": "#10ae79",
 =======
@@ -88,6 +103,10 @@ exports[`Button ghost active 1`] = `
         "borderColor": "#e6e6e6",
 >>>>>>> b637eda272eb3fc5f486370022d43106ec61503a
 >>>>>>> Stashed changes
+=======
+        "backgroundColor": "transparent",
+        "borderColor": "#e6e6e6",
+>>>>>>> 979e5f76b2d04234bffda90ba4ab94864b098221
       },
       false,
       false,
@@ -113,8 +132,12 @@ exports[`Button ghost active 1`] = `
             "fontSize": 16,
           },
           Object {
-            "color": "#fff",
+            "color": "#464646",
           },
+          Object {
+            "color": "#464646",
+          },
+          false,
           Object {
 <<<<<<< Updated upstream
             "color": "#fff",
@@ -206,14 +229,100 @@ exports[`Button ghost disabled 1`] = `
             "color": "#464646",
 >>>>>>> Stashed changes
           },
-          false,
           Object {
-            "color": "#12c287",
-          },
-          Object {
-            "color": "#10ae79",
+            "color": "#e6e6e6",
           },
           false,
+        ]
+      }
+    >
+      foo
+    </Text>
+  </View>
+</TouchableOpacity>
+`;
+
+exports[`Button ghost disabled 1`] = `
+<TouchableOpacity
+  activeOpacity={1}
+  block={false}
+  disabled={true}
+  onPressIn={[Function]}
+  onPressOut={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 44,
+        "justifyContent": "center",
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "height": 44,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+      },
+      Object {
+        "backgroundColor": "#fff",
+        "borderColor": "#e6e6e6",
+        "borderWidth": 1,
+      },
+      Object {
+        "borderRadius": 4,
+      },
+      false,
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 1,
+      },
+      Object {
+        "backgroundColor": "transparent",
+        "borderColor": "#fff",
+      },
+      false,
+      Object {
+        "opacity": 0.5,
+      },
+      Object {
+        "borderColor": "#bcbcbc",
+        "opacity": 1,
+      },
+      false,
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#464646",
+          },
+          false,
+          Object {
+            "color": "#bcbcbc",
+          },
+          Object {
+            "color": "#fff",
+          },
+          false,
+          Object {
+            "color": "#bcbcbc",
+          },
         ]
       }
     >
@@ -228,7 +337,7 @@ exports[`Button icon 1`] = `
   <react-native-mock>
     <img
       alt=""
-      src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png"
+      src="https://zarm.design/images/logo.ce68565d.svg"
     />
     <react-native-mock>
       foo

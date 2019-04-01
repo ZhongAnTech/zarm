@@ -11,12 +11,11 @@ export interface BaseCheckboxProps {
 }
 
 export interface BaseCheckboxGroupProps {
-  shape?: 'radius' | 'round';
+  shape?: 'rect' | 'radius' | 'round';
   type?: 'button' | 'cell';
   disabled?: boolean;
   block?: boolean;
   onChange?: (value?: number[] | string[]) => void;
   value?: number[] | string[];
   defaultValue?: number[] | string[];
-  compact?: boolean;
 }

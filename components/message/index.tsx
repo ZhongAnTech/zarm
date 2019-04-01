@@ -43,8 +43,8 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
     const { prefixCls, className, theme, size, icon, hasArrow, closable, children } = this.props;
 
     const classes = classnames(prefixCls, className, {
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${size}`]: !!size,
     });
 
     const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;
@@ -54,9 +54,9 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
 
     return this.state.visible && (
       <div className={classes} onClick={this.onClick}>
-        <div className={`${prefixCls}-header`}>{iconRender}</div>
-        <div className={`${prefixCls}-body`}>{children}</div>
-        {!noFooter && <div className={`${prefixCls}-footer`}>{renderArrow}{renderCloseIcon}</div>}
+        <div className={`${prefixCls}__header`}>{iconRender}</div>
+        <div className={`${prefixCls}__body`}>{children}</div>
+        {!noFooter && <div className={`${prefixCls}__footer`}>{renderArrow}{renderCloseIcon}</div>}
       </div>
     );
   }

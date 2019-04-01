@@ -1,9 +1,7 @@
 @import 'mixins';
 
-$prefixCls: $prefixCls-calendar;
-
-.#{$prefixCls} {
-  background-color: $calendar-background;
+@include b(calendar) {
+  background-color: $--calendar-background;
   user-select: none;
 
   ul {
@@ -17,50 +15,57 @@ $prefixCls: $prefixCls-calendar;
 
   li {
     display: inline-block;
-    width: $calendar-day-width;
+    width: $--calendar-day-width;
     text-align: center;
     vertical-align: middle;
   }
 
-  .#{$prefixCls}-week-bar {
+  @include e(bar) {
     display: flex;
     flex-wrap: wrap;
-    color: $calendar-week-bar-color;
-    background-color: $calendar-week-bar-background;
-    font-size: $calendar-week-bar-fontsize;
-    padding: 0 $calendar-section-padding;
+    color: $--calendar-week-bar-color;
+    background-color: $--calendar-week-bar-background;
+    font-size: $--calendar-week-bar-fontsize;
+    padding: 0 $--calendar-section-padding;
+    list-style-type: disc;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
 
-    li {
-      height: $calendar-day-height;
-      line-height: $calendar-day-height;
+    &__item {
+      height: $--calendar-day-height;
+      line-height: $--calendar-day-height;
     }
   }
 
-  .#{$prefixCls}-month-box {
+  @include e(body) {
     padding: r(10) 0;
     overflow: auto;
   }
 
-  .#{$prefixCls}-month-content {
-    padding: 0 $calendar-section-padding;
-    color: $calendar-day-color;
+  @include e(month) {
+    padding: 0 $--calendar-section-padding;
+    color: $--calendar-day-color;
 
     &:before {
       content: attr(title);
       display: block;
       margin: r(15) auto;
-      font-size: $calendar-day-title-fontsize;
+      font-size: $--calendar-day-title-fontsize;
       font-weight: 500;
       padding-left: r(15);
     }
   }
 
-  .#{$prefixCls}-day-item {
+  @include e(day) {
     margin: r(10) 0;
     position: relative;
-    font-size: $calendar-day-fontsize;
+    font-size: $--calendar-day-fontsize;
+    cursor: pointer;
 
-    .#{$prefixCls}-day-detail {
+    &__content {
       width: r(30);
       height: r(30);
       background-color: transparent;
@@ -73,58 +78,35 @@ $prefixCls: $prefixCls-calendar;
 
     @include firstday();
 
-    &:not(.disabled) {
-      cursor: pointer;
-    }
-
-    &.disabled {
-      color: $color-text-disabled;
-    }
-
-    &.today .#{$prefixCls}-day-detail {
-      background-color: $calendar-day-today-background;
-      color: $calendar-day-today-color;
-    }
-
-    &.selected .#{$prefixCls}-day-detail,
-    &.today.selected .#{$prefixCls}-day-detail {
-      background-color: $calendar-day-selected-background;
-      color: $calendar-day-selected-color;
-      box-shadow: 0 r(2) r(5) 0 rgba($calendar-day-selected-background, 0.15);
-    }
-
-    &.range.disabled {
-      .#{$prefixCls}-day-detail {
-        color: $color-text-disabled;
+    @include m(today) {
+      @include e(day__content) {
+        background-color: $--calendar-day-today-background;
+        color: $--calendar-day-today-color;
       }
-      //   &:before,
-      //   &:after {
-      //     content: '';
-      //     display: inline-block;
-      //     position: absolute;
-      //     top: 0;
-      //     width: r(30);
-      //     height: r(30);
-      //     z-index: 1;
-      //   }
-
-      //   &:before {
-      //     right: 95%;
-      //     @include radialgradient(10%);
-      //   }
-
-      //   &:after {
-      //     left: 95%;
-      //     @include radialgradient(90%);
-      //   }
     }
 
-    &.range {
-      background-color: $calendar-day-range-background;
-      color: $calendar-day-range-color;
+    @include m(selected) {
+      @include e(day__content) {
+        background-color: $--calendar-day-selected-background;
+        color: $--calendar-day-selected-color;
+        box-shadow: 0 r(2) r(5) 0 rgba($--calendar-day-selected-background, 0.15);
+      }
+    }
 
-      .#{$prefixCls}-day-detail {
-        background-color: $calendar-day-range-background;
+    @include m(disabled) {
+      cursor: auto;
+
+      @include e(day__content) {
+        color: $--color-text-disabled;
+      }
+    }
+
+    @include m(range) {
+      background-color: $--calendar-day-range-background;
+      color: $--calendar-day-range-color;
+
+      @include e(day__content) {
+        background-color: $--calendar-day-range-background;
       }
 
       &.d6 {

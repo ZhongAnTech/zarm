@@ -24,6 +24,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
     animationType: 'fade',
     animationDuration: 200,
     width: '70%',
+    shape: 'radius',
   };
 
   private modal;
@@ -90,11 +91,11 @@ export default class Modal extends PureComponent<ModalProps, any> {
     const { isShow, isPending, animationState } = this.state;
 
     const cls = {
-      modal: classnames(`${prefixCls}`, className, {
-        [`shape-${shape}`]: !!shape,
+      modal: classnames(prefixCls, className, {
+        [`${prefixCls}--${shape}`]: !!shape,
         [`fade-${animationState}`]: isPending,
       }),
-      dialog: classnames(`${prefixCls}-dialog`, {
+      dialog: classnames(`${prefixCls}__dialog`, {
         [`${animationType}-${animationState}`]: isPending,
       }),
       // mask: classnames({
@@ -127,7 +128,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
 
     return (
       <div className={cls.modal} style={modalStyle} ref={(ele) => { this.modal = ele; }}>
-        <div className={`${prefixCls}-wrapper`}>
+        <div className={`${prefixCls}__wrapper`}>
           <div className={cls.dialog} style={dialogStyle} onClick={stopPropagation}>
             {children}
           </div>

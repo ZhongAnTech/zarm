@@ -107,7 +107,7 @@ describe('Picker', () => {
     );
 
     jest.advanceTimersByTime(1000);
-    wrapper.find('.za-picker-submit').simulate('click');
+    wrapper.find('.za-picker__submit').simulate('click');
     wrapper.find('.za-picker').simulate('click');
     expect(onOkFn).toBeCalled();
     expect(onCancelFn).not.toBeCalled();
@@ -144,7 +144,7 @@ describe('Picker', () => {
       />, { attachTo: window.domNode }
     );
 
-    wrapper.find('.za-picker-cancel').simulate('click');
+    wrapper.find('.za-picker__cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
     expect(onOkFn).not.toBeCalled();
   });

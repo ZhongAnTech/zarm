@@ -143,7 +143,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell title="日期选择">
+        <Cell hasArrow title="日期选择">
           <DateSelect
             title="选择日期"
             placeholder="请选择日期"

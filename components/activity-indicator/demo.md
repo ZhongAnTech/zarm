@@ -25,6 +25,6 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| strokeWidth | number | - | 指示器边框的宽度 |  
-| percent | number | - | 初始百分比 |
+| strokeWidth | number | 5 | 指示器边框的宽度 |  
+| percent | number | 20 | 初始百分比 |
 | size | string | 'md' | 大小，可选值 `md`、`lg` |

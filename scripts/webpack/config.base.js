@@ -1,20 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const browserlist = require('../config/browserlist');
 const babelConfig = require('../config/babelConfig');
-
-babelConfig.plugins.push([
-  'import',
-  [{
-    libraryName: 'zarm',
-    libraryDirectory: 'components',
-    style: true,
-  },
-  {
-    libraryName: 'dragon-ui',
-    style: true,
-  }],
-]);
 
 module.exports = {
   output: {
@@ -64,9 +50,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: [
-                require('autoprefixer')({
-                  browsers: browserlist,
-                }),
+                require('autoprefixer')(),
               ],
             },
           },
@@ -74,7 +58,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              outputStyle: 'compact',
+              implementation: require('sass'),
             },
           },
         ],

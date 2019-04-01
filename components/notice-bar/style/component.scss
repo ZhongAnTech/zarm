@@ -5,7 +5,7 @@
   line-height: $--notice-bar-height;
   overflow: hidden;
 
-  &-body {
+  @include e(body) {
     position: absolute;
     left: 0;
     top: 0;

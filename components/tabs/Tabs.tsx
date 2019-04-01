@@ -24,8 +24,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
   static defaultProps = {
     prefixCls: 'za-tabs',
-    theme: 'primary',
     disabled: false,
+    hasline: false,
     canSwipe: false,
   };
 
@@ -73,10 +73,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
   renderTabs = (tab, index) => {
     const { prefixCls, disabled } = this.props;
-    const itemCls = classnames(`${prefixCls}-header-item`, tab.props.className, {
-      disabled: disabled || tab.props.disabled,
-      active: this.state.value === index,
-      // hasline,
+    const itemCls = classnames(`${prefixCls}__header__item`, tab.props.className, {
+      [`${prefixCls}__header__item--disabled`]: disabled || tab.props.disabled,
     });
 
     return (
@@ -92,10 +90,10 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, lineWidth, canSwipe, children } = this.props;
+    const { prefixCls, className, lineWidth, hasline, canSwipe, children } = this.props;
 
-    const classes = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
+    const classes = classnames(prefixCls, className, {
+      [`${prefixCls}--hasline`]: hasline,
     });
 
     // 渲染选项
@@ -132,16 +130,16 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     let lineInnerRender;
     if (lineWidth) {
       lineStyle.backgroundColor = 'transparent';
-      lineInnerRender = <span className={`${prefixCls}-line-inner`} style={{ width: lineWidth }} />;
+      lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
     }
 
     return (
       <div className={classes}>
-        <div className={`${prefixCls}-header`}>
+        <div className={`${prefixCls}__header`}>
           <ul role="tablist">{tabsRender}</ul>
-          <div className={`${prefixCls}-line`} style={lineStyle}>{lineInnerRender}</div>
+          <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
         </div>
-        <div className={`${prefixCls}-container`}>
+        <div className={`${prefixCls}__container`}>
           {contentRender}
         </div>
       </div>

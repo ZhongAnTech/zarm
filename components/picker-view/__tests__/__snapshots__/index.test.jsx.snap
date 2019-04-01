@@ -2,24 +2,24 @@
 
 exports[`PickerView PickerView render visible 1`] = `
 <div
-  class="za-picker-panel"
+  class="za-picker-view"
 >
   <div
-    class="za-picker-view"
+    class="za-picker-view__content"
   >
     <div
       class="za-wheel"
     >
       <div
-        class="za-wheel-content"
+        class="za-wheel__content"
       >
         <div
-          class="za-wheel-item za-wheel-item-selected"
+          class="za-wheel__item za-wheel__item--selected"
         >
           选项一
         </div>
         <div
-          class="za-wheel-item"
+          class="za-wheel__item"
         >
           选项二
         </div>
@@ -27,10 +27,10 @@ exports[`PickerView PickerView render visible 1`] = `
     </div>
   </div>
   <div
-    class="za-picker-mask-top"
+    class="za-picker-view__mask za-picker-view__mask--top"
   />
   <div
-    class="za-picker-mask-bottom"
+    class="za-picker-view__mask za-picker-view__mask--bottom"
   />
 </div>
 `;

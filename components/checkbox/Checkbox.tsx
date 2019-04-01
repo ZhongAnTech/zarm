@@ -25,6 +25,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
   static defaultProps = {
     prefixCls: 'za-checkbox',
     disabled: false,
+    block: false,
   };
 
   constructor(props) {
@@ -59,25 +60,27 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
     const { prefixCls, className, shape, type, value, block, disabled, id, children } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`shape-${shape}`]: !!shape,
-      checked,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--checked`]: !!checked,
+      [`${prefixCls}--disabled`]: !!disabled,
     });
+
+    const inputRender = <input
+      id={id}
+      type="checkbox"
+      className={`${prefixCls}__input`}
+      value={value}
+      disabled={disabled}
+      checked={checked}
+      onChange={this.onValueChange}
+    />;
 
     const renderCheckbox = (
       <div className={cls}>
-        <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`} />
-          {children && <span className={`${prefixCls}-text`}>{children}</span>}
-          <input
-            id={id}
-            type="checkbox"
-            className={`${prefixCls}-input`}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
+        <div className={`${prefixCls}__wrapper`}>
+          <span className={`${prefixCls}__inner`} />
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
         </div>
       </div>
     );
@@ -101,14 +104,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
           ghost={!checked}
           disabled={disabled}
         >
-          <input
-            type="checkbox"
-            className={`${prefixCls}-input`}
-            value={value}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
+          {inputRender}
           {children}
         </Button>
       );
