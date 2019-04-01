@@ -5,20 +5,19 @@ $prefixCls: $prefixCls-message;
 .#{$prefixCls} {
   display: flex;
   position: relative;
-  padding: $padding-v-md $padding-h-md;
-  min-height: $message-min-height;
-  font-size: $message-font-size;
-  @include message-theme($theme-default);
+  padding: $--message-padding-v-md $--message-padding-h-md;
+  min-height: $--message-min-height-md;
+  font-size: $--message-font-size-md;
+  @include message-theme($--theme-default);
 
-  &-icon {
-    margin-right: r(5);
-    margin-top: r(1);
-    font-size: r(16);
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    line-height: 1;
   }
 
-  &-header,
-  &-footer {
-    line-height: 1;
+  @include e(icon) {
+    margin-right: r(4);
   }
 
   &-body {
@@ -33,6 +32,11 @@ $prefixCls: $prefixCls-message;
     align-items: center;
     text-align: right;
     padding-left: r(10);
+
+    @include b(icon) {
+      font-size: r(14);
+      cursor: pointer;
+    }
   }
 
   &.theme-primary {
@@ -51,17 +55,23 @@ $prefixCls: $prefixCls-message;
     @include message-theme($theme-error);
   }
 
-  &.size-lg {
-    min-height: $message-min-height-lg;
-    padding: $padding-v-lg $padding-h-lg;
+  @include m(lg) {
+    min-height: $--message-min-height-lg;
+    font-size: $--message-font-size-lg;
+    padding: $--message-padding-v-lg $--message-padding-h-lg;
 
-    .#{$prefixCls}-icon {
-      margin-right: r(10);
-      margin-top: r(4);
+    @include e(icon) {
+      margin-right: r(6);
     }
 
     .#{$prefixCls}-body {
       font-size: $message-font-size-lg;
+    }
+
+    @include e(footer) {
+      @include b(icon) {
+        font-size: r(16);
+      }
     }
   }
 }

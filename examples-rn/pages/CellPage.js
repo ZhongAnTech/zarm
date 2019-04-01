@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { ScrollView, View, Text, Image, TextInput } from 'react-native';
-import { Cell, Panel } from '../../components/index.native';
+import { Cell, Panel, Message } from '../../components/index.native';
 
 const styles = {
   iconBigStyle: {
@@ -10,15 +10,6 @@ const styles = {
   iconStyle: {
     width: 24,
     height: 24,
-  },
-  helpViewStyle: {
-    backgroundColor: 'rgba(255, 80, 80, 0.1)',
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-  },
-  helpTextStyle: {
-    color: '#FF5050',
-    fontSize: 12,
   },
   titleStyle: {
     fontSize: 15,
@@ -107,14 +98,9 @@ export default class App extends PureComponent {
         <Panel title="提示信息">
           <Cell
             title="标题"
-            help={
-              <View style={styles.helpViewStyle}>
-                <Text style={styles.helpTextStyle}>标题不能为空</Text>
-              </View>
-            }
+            help={<Message theme="danger">标题不能为空</Message>}
           >
             <TextInput
-              style={{ width: '100%', padding: 0 }}
               underlineColorAndroid="transparent"
               placeholder="请输入标题"
             />

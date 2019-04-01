@@ -31,8 +31,8 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Message hasArrow onClick={() => alert('click this message!')}>链接样式的</Message>
-        <Message closable>可关闭的</Message>
+        <Message hasArrow onClick={() => alert('click this message!')}>链接样式</Message>
+        <Message closable>可关闭</Message>
       </div>
     )
   }

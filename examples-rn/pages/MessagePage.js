@@ -4,7 +4,7 @@ import { Panel, Message } from '../../components/index.native';
 
 const styles = {
   wrap: {
-    margin: 15,
+    padding: 15,
   },
   mb: {
     marginBottom: 15,
@@ -21,7 +21,7 @@ export default class App extends PureComponent {
               <Message>普通</Message>
             </View>
             <View>
-              <Message theme="error">自定义主题</Message>
+              <Message theme="danger">自定义主题</Message>
             </View>
           </View>
         </Panel>
@@ -29,7 +29,7 @@ export default class App extends PureComponent {
         <Panel title="可操作">
           <View style={styles.wrap}>
             <View style={styles.mb}>
-              <Message theme="success" hasArrow onClick={() => Alert.alert('click this message!')} >链接样式</Message>
+              <Message theme="success" hasArrow onClick={() => Alert.alert('click this message!')}>链接样式</Message>
             </View>
             <View>
               <Message theme="warning" closable>可关闭</Message>

@@ -11,7 +11,7 @@ describe('Message', () => {
   });
 
   it('theme', () => {
-    const wrapper = render(<Message theme="error">This is a Message</Message>);
+    const wrapper = render(<Message theme="danger">This is a Message</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

@@ -35,11 +35,8 @@ $prefixCls: $prefixCls-input;
     &[type="date"],
     &[type="text"],
     &[type="search"] {
-      height: $input-line-height;
-    }
-
-    &::-webkit-input-placeholder {
-      color: $color-text-placeholder;
+      height: $--input-line-height;
+      line-height: $--input-line-height;
     }
 
     &:disabled {
@@ -58,7 +55,25 @@ $prefixCls: $prefixCls-input;
     overflow: visible;
   }
 
-  &-placeholder {
+  @include e(content) {
+    position: relative;
+    height: $--input-line-height;
+    line-height: $--input-line-height;
+  }
+
+  @include e(virtual-input) {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  @include e(placeholder) {
     position: absolute;
     left: 0;
     top: 0;
@@ -105,12 +120,10 @@ $prefixCls: $prefixCls-input;
         &:after {
           content: ' ';
           display: inline-block;
-          position: relative;
-          right: 0;
-          top: 13%;
-          height: $input-cursor-height;
-          border-right: $input-cursor-width solid $input-cursor-color;
-          animation: custom-cursor 1s infinite step-start;
+          height: $--input-cursor-height;
+          border-right: $--input-cursor-width solid $--input-cursor-color;
+          transition: opacity 0.1s ease-out;
+          animation: virtual-cursor 1s infinite step-start;
         }
       }
     }

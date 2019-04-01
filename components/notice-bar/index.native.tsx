@@ -1,8 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import {
   Text,
-  View,
-  ViewStyle,
   StyleSheet,
   UIManager,
   ScrollView,
@@ -17,9 +15,13 @@ export interface NoticeBarProps extends PropsType {
   styles?: typeof noticeBarStyle;
 }
 
+export interface NoticeBarState {
+  offset: number;
+}
+
 const noticeBarStyles = StyleSheet.create<any>(noticeBarStyle);
 
-export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
+export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
   static defaultProps = {
     theme: 'warning',
     hasArrow: false,
@@ -32,7 +34,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
   private wrapper;
   private moveInterval;
 
-  constructor(props) {
+  constructor(props: NoticeBarProps) {
     super(props);
     this.state = {
       offset: 0,
@@ -110,13 +112,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
 
     const { offset } = this.state;
 
-    const containerStyle = [
-      styles![`${theme}NoticeBarBg`],
-    ] as ViewStyle;
-
     const textStyle = [
-      styles![`${theme}NoticeBarText`],
-      styles!.noticeBarSize,
+      styles!.textStyle,
+      styles![`${theme}TextStyle`],
     ];
 
     const wrapperProps = {
@@ -129,19 +127,17 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, any> {
     return scrollable ?
     <Message {...wrapperProps} {...others} size="lg">
       <ScrollView
-        ref={view => { this.wrapper = view; }}
         horizontal
+        ref={view => { this.wrapper = view; }}
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
       >
-        <View style={containerStyle}>
-          <Text
-            ref={view => { this.content = view; }}
-            style={[ textStyle, { left: offset } ]}
-          >
-            {children}
-          </Text>
-        </View>
+        <Text
+          ref={view => { this.content = view; }}
+          style={[ textStyle, { left: offset } ]}
+        >
+          {children}
+        </Text>
       </ScrollView>
     </Message>
     : <Message {...wrapperProps} {...others} size="lg">{children}</Message>;

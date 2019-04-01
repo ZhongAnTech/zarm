@@ -19,11 +19,11 @@ $prefixCls: $prefixCls-toast;
 
   &-container {
     position: relative;
-    max-width: $toast-max-width;
-    padding: $padding-v-xl $padding-h-xl;
-    border-radius: $toast-border-radius;
-    background: rgba(0, 0, 0, $opacity-toast);
-    color: $toast-color;
+    max-width: $--toast-max-width;
+    padding: $--padding-v-md $--padding-h-md;
+    border-radius: $--toast-border-radius;
+    background: rgba(0, 0, 0, $--opacity-toast);
+    color: $--toast-color;
     text-align: center;
     font-size: $toast-font-size;
   }

@@ -6,13 +6,13 @@ $theme-warning: #ec9131;                 // 警告
 $theme-error: #ff5050;                   // 失败
 
 // 文字色
-$color-text: #464646;                    // 基本
-$color-text-inverse: #fff;               // 反色
-$color-text-placeholder: #a9a9a9;        // 文本框提示
-$color-text-disabled: #bcbcbc;           // 失效
-$color-text-caption: #909090;            // 辅助描述
-$color-link: $theme-primary;               // 链接
-$color-shadow: rgba(56, 56, 56, .15);    // 阴影色
+$--color-text: #464646;                    // 基本
+$--color-text-inverse: #fff;               // 反色
+$--color-text-placeholder: #a9a9a9;        // 文本框提示
+$--color-text-disabled: #bcbcbc;           // 失效
+$--color-text-caption: #909090;            // 辅助描述
+$--color-link: $--theme-primary;             // 链接
+$--color-shadow: rgba(56, 56, 56, 0.15);    // 阴影色
 
 // 背景色
 $background-active: #e6e6e6;
@@ -30,23 +30,23 @@ $radius-round: r(1000);
 $radius-circle: 50%;
 
 // 水平间距
-$padding-h-sm: r(5);
-$padding-h-md: r(8);
-$padding-h-lg: r(16);
-$padding-h-xl: r(20);
+$--padding-h-xs: r(8);
+$--padding-h-sm: r(12);
+$--padding-h-md: r(16);
+$--padding-h-lg: r(20);
 
 // 垂直间距
-$padding-v-sm: r(2);
-$padding-v-md: r(6);
-$padding-v-lg: r(9);
-$padding-v-xl: r(12);
+$--padding-v-xs: r(4);
+$--padding-v-sm: r(8);
+$--padding-v-md: r(12);
+$--padding-v-lg: r(16);
 
 // 字体大小
-$font-size-xs: r(10);
-$font-size-sm: r(12);
-$font-size-md: r(14);
-$font-size-lg: r(15);
-$font-size-xl: r(18);
+$--font-size-xs: r(10);
+$--font-size-sm: r(12);
+$--font-size-md: r(14);
+$--font-size-lg: r(16);
+$--font-size-xl: r(18);
 
 // 堆叠顺序
 $zindex-mask: 1000;
@@ -127,89 +127,57 @@ $badge-sup-top: r(-4);
 $badge-text-color:#fff;
 
 // Button
-$button-height-xs: r(28);
-$button-height-sm: r(36);
-$button-height-md: r(44);
-$button-height-lg: r(52);
-$button-padding-h-xs: r(10);
-$button-padding-h-sm: r(12);
-$button-padding-h-md: r(16);
-$button-padding-h-lg: r(20);
-$button-font-size-xs: r(12);
-$button-font-size-sm: r(16);
-$button-font-size-md: r(16);
-$button-font-size-lg: r(18);
-$button-icon-size-xs: r(16);
-$button-icon-size-sm: r(18);
-$button-icon-size-md: r(22);
-$button-icon-size-lg: r(26);
-$button-disabled-opacity: $opacity-disabled;
-$button-disabled-color-ghost: #bcbcbc;
+$--button-height-xs: r(28);
+$--button-height-sm: r(36);
+$--button-height-md: r(44);
+$--button-height-lg: r(52);
+$--button-padding-h-xs: $--padding-h-xs;
+$--button-padding-h-sm: $--padding-h-sm;
+$--button-padding-h-md: $--padding-h-md;
+$--button-padding-h-lg: $--padding-h-lg;
+$--button-font-size-xs: r(12);
+$--button-font-size-sm: r(14);
+$--button-font-size-md: r(16);
+$--button-font-size-lg: r(18);
+$--button-icon-size-xs: r(16);
+$--button-icon-size-sm: r(18);
+$--button-icon-size-md: r(22);
+$--button-icon-size-lg: r(26);
+$--button-disabled-opacity: $--opacity-disabled;
+$--button-disabled-color-ghost: $--border-disabled;
 
-$button-default-background: #fff;
-$button-default-border: $background-active;
-$button-default-color: $color-text;
-$button-default-active-background: $background-active;
-$button-default-active-border: $background-active;
-$button-default-active-color: $color-text;
-$button-default-ghost-background: transparent;
-$button-default-ghost-border: $background-active;
-$button-default-ghost-color: $color-text;
-$button-default-ghost-active-background: transparent;
-$button-default-ghost-active-border: $background-active;
-$button-default-ghost-active-color: $color-text;
+$--button-default-background: #fff;
+$--button-default-border: $--theme-default;
+$--button-default-color: $--color-text;
+$--button-default-active-background: $--theme-default;
+$--button-default-active-border: $--theme-default;
+$--button-default-active-color: $--color-text;
+$--button-default-ghost-border: #fff;
+$--button-default-ghost-color: #fff;
+$--button-default-ghost-active-border: $--theme-default;
+$--button-default-ghost-active-color: $--theme-default;
 
-$button-primary-background: $theme-primary;
-$button-primary-border: $theme-primary;
-$button-primary-color: #fff;
-$button-primary-active-background: #10ae79;
-$button-primary-active-border: #10ae79;
-$button-primary-active-color: #fff;
-$button-primary-ghost-background: transparent;
-$button-primary-ghost-border: $theme-primary;
-$button-primary-ghost-color: $theme-primary;
-$button-primary-ghost-active-background: transparent;
-$button-primary-ghost-active-border: #10ae79;
-$button-primary-ghost-active-color: #10ae79;
+$--button-primary-background: $--theme-primary;
+$--button-primary-border: $--theme-primary;
+$--button-primary-color: #fff;
+$--button-primary-active-background: $--theme-primary-press;
+$--button-primary-active-border: $--theme-primary-press;
+$--button-primary-active-color: rgba(#fff, 0.4);
+$--button-primary-ghost-border: $--theme-primary;
+$--button-primary-ghost-color: $--theme-primary;
+$--button-primary-ghost-active-border: $--theme-primary-press;
+$--button-primary-ghost-active-color: $--theme-primary-press;
 
-$button-success-background: $theme-success;
-$button-success-border: $theme-success;
-$button-success-color: #fff;
-$button-success-active-background: #10ae79;
-$button-success-active-border: #10ae79;
-$button-success-active-color: #fff;
-$button-success-ghost-background: transparent;
-$button-success-ghost-border: $theme-success;
-$button-success-ghost-color: $theme-success;
-$button-success-ghost-active-background: transparent;
-$button-success-ghost-active-border: #10ae79;
-$button-success-ghost-active-color: #10ae79;
-
-$button-warning-background: $theme-warning;
-$button-warning-border: $theme-warning;
-$button-warning-color: #fff;
-$button-warning-active-background: #d3822c;
-$button-warning-active-border: #d3822c;
-$button-warning-active-color: #fff;
-$button-warning-ghost-background: transparent;
-$button-warning-ghost-border: $theme-warning;
-$button-warning-ghost-color: $theme-warning;
-$button-warning-ghost-active-background: transparent;
-$button-warning-ghost-active-border: #d3822c;
-$button-warning-ghost-active-color: #d3822c;
-
-$button-error-background: $theme-error;
-$button-error-border: $theme-error;
-$button-error-color: #fff;
-$button-error-active-background: #e54747;
-$button-error-active-border: #e54747;
-$button-error-active-color: #fff;
-$button-error-ghost-background: transparent;
-$button-error-ghost-border: $theme-error;
-$button-error-ghost-color: $theme-error;
-$button-error-ghost-active-background: transparent;
-$button-error-ghost-active-border: #e54747;
-$button-error-ghost-active-color: #e54747;
+$--button-danger-background: $--theme-danger;
+$--button-danger-border: $--theme-danger;
+$--button-danger-color: #fff;
+$--button-danger-active-background: $--theme-danger-press;
+$--button-danger-active-border: $--theme-danger-press;
+$--button-danger-active-color: rgba(#fff, 0.4);
+$--button-danger-ghost-border: $--theme-danger;
+$--button-danger-ghost-color: $--theme-danger;
+$--button-danger-ghost-active-border: $--theme-danger-press;
+$--button-danger-ghost-active-color: $--theme-danger-press;
 
 // Calendar
 $calendar-height: r(45); // 最小高度
@@ -263,10 +231,14 @@ $keyboard-item-font-size: r(30);
 $keyboard-icon-font-size: r(21);
 
 // Message
-$message-min-height: r(30);
-$message-font-size: r(12);
-$message-min-height-lg: r(42);
-$message-font-size-lg: r(15);
+$--message-min-height-md: r(29);
+$--message-min-height-lg: r(40);
+$--message-font-size-md: r(12);
+$--message-font-size-lg: r(14);
+$--message-padding-v-md: r(6);
+$--message-padding-h-md: r(8);
+$--message-padding-v-lg: r(8);
+$--message-padding-h-lg: r(12);
 
 // Modal
 $modal-background: #fff;
@@ -350,9 +322,11 @@ $toast-font-size: r(13);
 $toast-max-width: 70%;
 
 // Tooltip
-$tooltip-font-size: r(12);
-$tooltip-color: #fff;
-$tooltip-arrow-size: r(5);
+$--tooltip-font-size: r(12);
+$--tooltip-color: $--color-text-inverse;
+$--tooltip-arrow-size: r(5);
+$--tooltip-padding-v: $--padding-v-sm;
+$--tooltip-padding-h: $--padding-h-sm;
 
 // NavBar
 $nav-bar-color: #fdfdfd;
@@ -360,14 +334,15 @@ $nav-bar-height: r(44);
 $nav-bar-icon-size: r(24);
 
 // Input
-$input-clear-icon-width: r(16);
-$input-padding-size: r(12);
-$input-cursor-color: #597cf6;
-$input-cursor-width: r(2);
-$input-cursor-height: r(18);
-$input-selection-color: rgba($theme-primary, 0.2);
-$input-length-count-color: $color-text-disabled;
-$input-line-height: r(28);
+$--input-clear-icon-width: r(16);
+$--input-padding-v: $--cell-padding-v;
+$--input-cursor-color: #597cf6;
+$--input-cursor-width: r(2);
+$--input-cursor-height: r(22);
+$--input-selection-color: rgba($--theme-primary, 0.2);
+$--input-length-count-color: $--color-text-disabled;
+$--input-height: r(28);
+$--input-line-height: $--cell-title-line-height;
 
 // Progress
 $progress-background: rgb(238, 238, 238);

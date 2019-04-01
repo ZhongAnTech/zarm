@@ -1,3 +1,5 @@
+import { Locale } from '../locale-provider/PropsType';
+
 export type Action = {
   text: string,
   theme?: 'default' | 'primary' | 'success' | 'warning' | 'error',
@@ -13,4 +15,5 @@ export default interface PropsType {
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;
+  locale: Locale;
 }

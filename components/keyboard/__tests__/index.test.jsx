@@ -37,4 +37,3 @@ describe('Keyboard', () => {
     expect(onKeyClick).toBeCalledWith('ok');
   });
 });
-
