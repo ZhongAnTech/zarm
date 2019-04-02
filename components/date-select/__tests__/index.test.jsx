@@ -5,11 +5,10 @@ import DateSelect from '../index';
 import enLocale from '../../date-picker-view/locale/en_US';
 
 function fakeTimers() {
-  const timer = jest.useFakeTimers();
-  performance.timing = () => {};
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
 }
-
-const timer = fakeTimers();
+fakeTimers();
 
 describe('DateSelect', () => {
   it('DateSelect year', () => {
@@ -74,9 +73,7 @@ describe('DateSelect', () => {
       />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    // jest.useFakeTimers();
     wrapper.setProps({ defaultValue: '2017-11-06 12:00', value: '2017-11-06 12:00' });
-    // jest.runAllTimers();
   });
 
   it('DateSelect wheelDefaultValue', () => {
@@ -92,21 +89,21 @@ describe('DateSelect', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('should trigger onOk when press ok button', () => {
-  //   const onOkFn = jest.fn();
+  it('should trigger onOk when press ok button', () => {
+    const onOkFn = jest.fn();
 
-  //   const wrapper = mount(
-  //     <DateSelect
-  //       mode="date"
-  //       value="2009-3-4"
-  //       visible
-  //       onOk={onOkFn}
-  //     />
-  //   );
+    const wrapper = mount(
+      <DateSelect
+        mode="date"
+        value="2009-3-4"
+        visible
+        onOk={onOkFn}
+      />
+    );
 
-  //   wrapper.find('.za-date-picker__submit').simulate('click');
-  //   expect(onOkFn).toBeCalled();
-  // });
+    wrapper.find('.za-date-picker__submit').simulate('click');
+    expect(onOkFn).toBeCalled();
+  });
 
   it('should trigger onCancel when press cancel button', () => {
     const onCancelFn = jest.fn();

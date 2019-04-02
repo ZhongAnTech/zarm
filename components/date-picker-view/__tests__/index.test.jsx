@@ -2,13 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import DatePickerView from '../index';
-// import enLocale from '../locale/en_US';
 
 function fakeTimers() {
-  const timer = jest.useFakeTimers();
-  performance.timing = () => {};
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
 }
-const timer = fakeTimers();
+fakeTimers();
 
 describe('DatePickerView', () => {
   it('DatePickerView time', () => {

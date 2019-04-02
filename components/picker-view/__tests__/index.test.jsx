@@ -1,13 +1,13 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import PickerView from '../index';
 
 function fakeTimers() {
-  const timer = jest.useFakeTimers();
-  performance.timing = () => {};
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
 }
-const timer = fakeTimers();
+fakeTimers();
 
 describe('PickerView', () => {
   it('PickerView render visible', () => {

@@ -95,191 +95,191 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                           >
                             <div
                               class="za-wheel__content"
-                              style="transform: translate(NaNpx,NaNpx) scale(NaN);"
+                              style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
                             >
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2000
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2001
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2002
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2003
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2004
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2005
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2006
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2007
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2008
                               </div>
                               <div
                                 class="za-wheel__item za-wheel__item--selected"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2009
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2010
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2011
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2012
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2013
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2014
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2015
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2016
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2017
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2018
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2019
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2020
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2021
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2022
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2023
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2024
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2025
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2026
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2027
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2028
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2029
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2030
                               </div>
@@ -290,77 +290,77 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                           >
                             <div
                               class="za-wheel__content"
-                              style="transform: translate(NaNpx,NaNpx) scale(NaN);"
+                              style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
                             >
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 1
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2
                               </div>
                               <div
                                 class="za-wheel__item za-wheel__item--selected"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 3
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 4
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 5
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 6
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 7
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 8
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 9
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 10
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 11
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 12
                               </div>
@@ -371,191 +371,191 @@ exports[`DatePicker DatePicker trigger maskClick 1`] = `
                           >
                             <div
                               class="za-wheel__content"
-                              style="transform: translate(NaNpx,NaNpx) scale(NaN);"
+                              style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
                             >
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 1
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 2
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 3
                               </div>
                               <div
                                 class="za-wheel__item za-wheel__item--selected"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 4
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 5
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 6
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 7
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 8
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 9
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 10
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 11
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 12
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 13
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 14
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 15
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 16
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 17
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 18
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 19
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 20
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 21
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 22
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 23
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 24
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 25
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 26
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 27
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 28
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 29
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 30
                               </div>
                               <div
                                 class="za-wheel__item"
-                                style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
                               >
                                 31
                               </div>

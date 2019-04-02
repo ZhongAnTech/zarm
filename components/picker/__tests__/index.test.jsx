@@ -4,10 +4,10 @@ import toJson from 'enzyme-to-json';
 import Picker from '../index';
 
 function fakeTimers() {
-  const timer = jest.useFakeTimers();
-  performance.timing = () => {};
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
 }
-const timer = fakeTimers();
+fakeTimers();
 
 const District = [
   {
