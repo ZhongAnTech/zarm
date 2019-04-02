@@ -4,13 +4,14 @@ import Popup from '../popup';
 import PickerView from '../picker-view';
 import { BasePickerProps } from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: any;
 }
 
-export default class Picker extends PureComponent<PickerProps, any> {
+class Picker extends PureComponent<PickerProps, any> {
   static defaultProps = {
     dataSource: [],
     prefixCls: 'za-picker',
@@ -109,9 +110,9 @@ export default class Picker extends PureComponent<PickerProps, any> {
       >
         <div className={cls} onClick={(e) => {e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText}</div>
-            <div className={`${prefixCls}__title`}>{title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText}</div>
+            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale.cancelText}</div>
+            <div className={`${prefixCls}__title`}>{title || locale.title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale.okText}</div>
           </div>
           <PickerView
             {...others}
@@ -125,3 +126,5 @@ export default class Picker extends PureComponent<PickerProps, any> {
     );
   }
 }
+
+export default LocaleReceiver(Picker, 'Picker');

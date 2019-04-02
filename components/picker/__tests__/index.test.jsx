@@ -3,6 +3,12 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Picker from '../index';
 
+function fakeTimers() {
+  const timer = jest.useFakeTimers();
+  performance.timing = () => {};
+}
+const timer = fakeTimers();
+
 const District = [
   {
     value: '1',
@@ -24,14 +30,6 @@ const District = [
 
 
 describe('Picker', () => {
-  beforeAll(() => {
-    const div = document.createElement('div');
-    window.domNode = div;
-    document.body.appendChild(div);
-
-    jest.useFakeTimers();
-  });
-
   it('Picker render visible', () => {
     const wrapper = mount(
       <Picker
@@ -77,7 +75,6 @@ describe('Picker', () => {
 
   it('should trigger onOk when press ok button', () => {
     const onOkFn = jest.fn();
-    const onCancelFn = jest.fn();
 
     const wrapper = mount(
       <Picker
@@ -102,19 +99,14 @@ describe('Picker', () => {
         visible
         value={['1', '12']}
         onOk={onOkFn}
-        onCancel={onCancelFn}
-      />, { attachTo: window.domNode }
+      />
     );
 
-    jest.advanceTimersByTime(1000);
     wrapper.find('.za-picker__submit').simulate('click');
-    wrapper.find('.za-picker').simulate('click');
     expect(onOkFn).toBeCalled();
-    expect(onCancelFn).not.toBeCalled();
   });
 
   it('should trigger onCancel when press cancel button', () => {
-    const onOkFn = jest.fn();
     const onCancelFn = jest.fn();
 
     const wrapper = mount(
@@ -139,14 +131,12 @@ describe('Picker', () => {
         ]}
         visible
         defaultValue={['1', '12']}
-        onOk={onOkFn}
         onCancel={onCancelFn}
-      />, { attachTo: window.domNode }
+      />
     );
 
     wrapper.find('.za-picker__cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
-    expect(onOkFn).not.toBeCalled();
   });
 
   // it('should trigger onMaskClick when click mask', () => {

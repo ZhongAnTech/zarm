@@ -3,6 +3,12 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import PickerView from '../index';
 
+function fakeTimers() {
+  const timer = jest.useFakeTimers();
+  performance.timing = () => {};
+}
+const timer = fakeTimers();
+
 describe('PickerView', () => {
   it('PickerView render visible', () => {
     const wrapper = render(

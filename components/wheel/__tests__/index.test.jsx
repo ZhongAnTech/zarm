@@ -3,6 +3,12 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Wheel from '../index';
 
+function fakeTimers() {
+  const timer = jest.useFakeTimers();
+  performance.timing = () => {};
+}
+const timer = fakeTimers();
+
 describe('Wheel', () => {
   it('Wheel render visible', () => {
     const wrapper = mount(

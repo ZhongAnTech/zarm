@@ -67,7 +67,6 @@ class Demo extends React.Component {
         <DatePicker
           visible={date.visible}
           mode="date"
-          title="Select Date"
           value={date.value}
           onOk={(value) => {
             this.setState({
@@ -84,7 +83,6 @@ class Demo extends React.Component {
         <DatePicker
           visible={time.visible}
           mode="time"
-          title="Select Time"
           value={time.value}
           onOk={(value) => {
             this.setState({

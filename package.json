@@ -155,7 +155,6 @@
     "react-router-dom": "^5.0.0",
     "react-test-renderer": "^16.0.0",
     "react-transition-group": "^2.2.1",
-    "sinon": "^7.3.1",
     "sass": "^1.17.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.18.2",

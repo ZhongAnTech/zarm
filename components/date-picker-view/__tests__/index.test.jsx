@@ -4,6 +4,12 @@ import toJson from 'enzyme-to-json';
 import DatePickerView from '../index';
 // import enLocale from '../locale/en_US';
 
+function fakeTimers() {
+  const timer = jest.useFakeTimers();
+  performance.timing = () => {};
+}
+const timer = fakeTimers();
+
 describe('DatePickerView', () => {
   it('DatePickerView time', () => {
     const wrapper = mount(

@@ -1,8 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { findDOMNode } from 'react-dom';
 import toJson from 'enzyme-to-json';
 import DatePicker from '../index';
+
+function fakeTimers() {
+  const timer = jest.useFakeTimers();
+  performance.timing = () => {};
+}
+const timer = fakeTimers();
 
 describe('DatePicker', () => {
   it('DatePicker trigger maskClick', () => {
@@ -31,13 +36,11 @@ describe('DatePicker', () => {
         onOk={onOkFn}
       />
     );
-
     wrapper.find('.za-date-picker__submit').simulate('click');
     expect(onOkFn).toBeCalled();
   });
 
   it('should trigger onCancel when press cancel button', () => {
-    const onOkFn = jest.fn();
     const onCancelFn = jest.fn();
 
     const wrapper = mount(
@@ -51,7 +54,6 @@ describe('DatePicker', () => {
 
     wrapper.find('.za-date-picker__cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
-    expect(onOkFn).not.toBeCalled();
   });
 
   // it('should trigger onMaskClick when click mask', () => {
