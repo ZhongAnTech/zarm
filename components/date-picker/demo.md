@@ -66,8 +66,6 @@ class Demo extends React.Component {
 
         <DatePicker
           visible={date.visible}
-          title="选择日期"
-          placeholder="请选择日期"
           mode="date"
           value={date.value}
           onOk={(value) => {
@@ -84,8 +82,6 @@ class Demo extends React.Component {
 
         <DatePicker
           visible={time.visible}
-          title="选择日期"
-          placeholder="请选择日期"
           mode="time"
           value={time.value}
           onOk={(value) => {
@@ -103,7 +99,8 @@ class Demo extends React.Component {
         <DatePicker
           visible={limitDate.visible}
           title="选择日期"
-          placeholder="请选择日期"
+          okText="确定"
+          cancelText="取消"
           mode="date"
           min="2007-01-03"
           max="2019-11-23"

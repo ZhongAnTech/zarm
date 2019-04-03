@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionSheet renders correctly 1`] = `
-<ActionSheet
+<ForwardRef(forwardRefFactory)
   actions={
     Array [
       Object {
@@ -19,125 +19,175 @@ exports[`ActionSheet renders correctly 1`] = `
       },
     ]
   }
-  cancelText="取消"
   onMaskClick={[MockFunction]}
-  prefixCls="za-action-sheet"
-  spacing={false}
   visible={true}
 >
-  <Popup
+  <LocaleReceiver
+    actions={
+      Array [
+        Object {
+          "onClick": [MockFunction],
+          "text": "操作一",
+        },
+        Object {
+          "onClick": [MockFunction],
+          "text": "操作二",
+        },
+        Object {
+          "onClick": [MockFunction],
+          "text": "操作三",
+          "theme": "danger",
+        },
+      ]
+    }
+    forwardedRef={null}
     onMaskClick={[MockFunction]}
     visible={true}
   >
-    <Portal
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      handlePortalUnmount={[Function]}
-      mask={true}
-      maskType="normal"
+    <ActionSheet
+      actions={
+        Array [
+          Object {
+            "onClick": [MockFunction],
+            "text": "操作一",
+          },
+          Object {
+            "onClick": [MockFunction],
+            "text": "操作二",
+          },
+          Object {
+            "onClick": [MockFunction],
+            "text": "操作三",
+            "theme": "danger",
+          },
+        ]
+      }
+      locale={
+        Object {
+          "cancelText": "Cancel",
+        }
+      }
+      localeCode="en"
       onMaskClick={[MockFunction]}
-      prefixCls="za-popup"
-      stayTime={3000}
+      prefixCls="za-action-sheet"
+      spacing={false}
       visible={true}
     >
-      <Portal
-        containerInfo={
-          <div
-            class=" popup-container"
-          >
-            <div
-              class="za-popup za-popup--bottom za-popup--hidden"
-            >
+      <Popup
+        onMaskClick={[MockFunction]}
+        visible={true}
+      >
+        <Portal
+          animationDuration={200}
+          autoClose={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[MockFunction]}
+          prefixCls="za-popup"
+          stayTime={3000}
+          visible={true}
+        >
+          <Portal
+            containerInfo={
               <div
-                class="za-popup__wrapper"
+                class=" popup-container"
               >
                 <div
-                  class="za-action-sheet"
+                  class="za-popup za-popup--bottom za-popup--hidden"
                 >
                   <div
-                    class="za-action-sheet__actions"
+                    class="za-popup__wrapper"
+                  >
+                    <div
+                      class="za-action-sheet"
+                    >
+                      <div
+                        class="za-action-sheet__actions"
+                      >
+                        <a
+                          class="za-action-sheet__item"
+                        >
+                          操作一
+                        </a>
+                        <a
+                          class="za-action-sheet__item"
+                        >
+                          操作二
+                        </a>
+                        <a
+                          class="za-action-sheet__item za-action-sheet__item--danger"
+                        >
+                          操作三
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          >
+            <div
+              className="za-popup za-popup--bottom za-popup--hidden"
+            >
+              <div
+                className="za-popup__wrapper"
+                style={
+                  Object {
+                    "WebkitTransitionDuration": "200ms",
+                    "transitionDuration": "200ms",
+                  }
+                }
+              >
+                <div
+                  className="za-action-sheet"
+                >
+                  <div
+                    className="za-action-sheet__actions"
                   >
                     <a
-                      class="za-action-sheet__item"
+                      className="za-action-sheet__item"
+                      key="0"
+                      onClick={[MockFunction]}
                     >
                       操作一
                     </a>
                     <a
-                      class="za-action-sheet__item"
+                      className="za-action-sheet__item"
+                      key="1"
+                      onClick={[MockFunction]}
                     >
                       操作二
                     </a>
                     <a
-                      class="za-action-sheet__item za-action-sheet__item--danger"
+                      className="za-action-sheet__item za-action-sheet__item--danger"
+                      key="2"
+                      onClick={[MockFunction]}
                     >
                       操作三
                     </a>
                   </div>
                 </div>
               </div>
+              <Mask
+                className=""
+                onClick={[MockFunction]}
+                prefixCls="za-mask"
+                style={
+                  Object {
+                    "WebkitAnimationDuration": "200ms",
+                    "animationDuration": "200ms",
+                  }
+                }
+                type="normal"
+                visible={false}
+              />
             </div>
-          </div>
-        }
-      >
-        <div
-          className="za-popup za-popup--bottom za-popup--hidden"
-        >
-          <div
-            className="za-popup__wrapper"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
-          >
-            <div
-              className="za-action-sheet"
-            >
-              <div
-                className="za-action-sheet__actions"
-              >
-                <a
-                  className="za-action-sheet__item"
-                  key="0"
-                  onClick={[MockFunction]}
-                >
-                  操作一
-                </a>
-                <a
-                  className="za-action-sheet__item"
-                  key="1"
-                  onClick={[MockFunction]}
-                >
-                  操作二
-                </a>
-                <a
-                  className="za-action-sheet__item za-action-sheet__item--danger"
-                  key="2"
-                  onClick={[MockFunction]}
-                >
-                  操作三
-                </a>
-              </div>
-            </div>
-          </div>
-          <Mask
-            className=""
-            onClick={[MockFunction]}
-            prefixCls="za-mask"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-            type="normal"
-            visible={false}
-          />
-        </div>
-      </Portal>
-    </Portal>
-  </Popup>
-</ActionSheet>
+          </Portal>
+        </Portal>
+      </Popup>
+    </ActionSheet>
+  </LocaleReceiver>
+</ForwardRef(forwardRefFactory)>
 `;

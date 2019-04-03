@@ -1,222 +1,143 @@
 import variables from '../../style/themes/default.native';
+import Color from 'color';
 
 export default {
-  messageWrapper: {
+  wrapper: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: variables.message_height,
+    minHeight: variables.message_min_height_md,
+    paddingHorizontal: variables.message_padding_h_md,
+    paddingVertical: variables.message_padding_v_md,
+    backgroundColor: variables.message_theme_bg_primary,
+  },
+  lgWrapper: {
+    minHeight: variables.message_min_height_lg,
+    paddingHorizontal: variables.message_padding_h_lg,
+    paddingVertical: variables.message_padding_v_lg,
+  },
+  primaryWrapper: {
+    backgroundColor: Color(variables.theme_primary).alpha(0.1),
+  },
+  successWrapper: {
+    backgroundColor: Color(variables.theme_success).alpha(0.1),
+  },
+  warningWrapper: {
+    backgroundColor: Color(variables.theme_warning).alpha(0.1),
+  },
+  dangerWrapper: {
+    backgroundColor: Color(variables.theme_danger).alpha(0.1),
   },
 
-  messageWrapperInner: {
-    paddingHorizontal: variables.message_padding_horizontal,
-    backgroundColor: variables.message_theme_bg_default,
-  },
+  headerStyle: {},
 
-  lgMessageWrapper: {
-    height: variables.message_height_lg,
-    paddingHorizontal: variables.message_padding_horizontal_lg,
-  },
-
-  textBodyStyle: {
+  bodyStyle: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
   },
 
-  wrapperStyle: {
-    flex: 1,
+  footerStyle: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingLeft: 10,
   },
 
-  footerWrapperStyle: {
-    flexDirection: 'row',
+  mdTextStyle: {
+    fontSize: variables.message_font_size_md,
+  },
+  lgTextStyle: {
+    fontSize: variables.message_font_size_lg,
+  },
+  primaryTextStyle: {
+    color: variables.theme_primary,
+  },
+  successTextStyle: {
+    color: variables.theme_success,
+  },
+  warningTextStyle: {
+    color: variables.theme_warning,
+  },
+  dangerTextStyle: {
+    color: variables.theme_danger,
   },
 
-  closeTextStyle: {
-    lineHeight: variables.message_height,
-    textAlign: 'right',
-  },
-
-  lgCloseTextStyle: {
-    lineHeight: variables.message_height_lg,
-    textAlign: 'right',
-  },
-
-  closeWrapperStyle: {
-    alignItems: 'center',
-    width: 10,
-    marginLeft: 2,
-  },
-
-  closeIconWrapper: {
+  // close icon
+  closeIconWrapperStyle: {
     position: 'relative',
-    width: 10,
-    height: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 14,
+    height: 20,
   },
-
+  closeIconStyle: {
+    position: 'absolute',
+    height: 1,
+  },
+  // close icon size
+  mdCloseIconStyle: {
+    width: variables.message_close_length_md,
+  },
+  lgCloseIconStyle: {
+    width: variables.message_close_length_lg,
+  },
+  // close icon theme
+  primaryCloseIconStyle: {
+    backgroundColor: variables.theme_primary,
+  },
+  successCloseIconStyle: {
+    backgroundColor: variables.theme_success,
+  },
+  warningCloseIconStyle: {
+    backgroundColor: variables.theme_warning,
+  },
+  dangerCloseIconStyle: {
+    backgroundColor: variables.theme_danger,
+  },
+  // close icon type
   closeIconLeft: {
-    position: 'absolute',
-    top: 5,
-    width: 10,
-    height: 1,
     transform: [{ rotate: '45deg' }],
   },
-
   closeIconRight: {
-    position: 'absolute',
-    top: 5,
-    width: 10,
-    height: 1,
     transform: [{ rotate: '135deg' }],
   },
 
-  lgCloseIconWrapper: {
+  // arrow
+  arrowWrapperStyle: {
     position: 'relative',
-    width: 12,
-    height: 12,
-  },
-
-  lgCloseIconLeft: {
-    position: 'absolute',
-    top: 6,
-    width: 12,
-    height: 1,
-    transform: [{ rotate: '45deg' }],
-  },
-
-  lgCloseIconRight: {
-    position: 'absolute',
-    top: 6,
-    width: 12,
-    height: 1,
-    transform: [{ rotate: '135deg' }],
-  },
-
-  lgCloseWrapperStyle: {
     alignItems: 'center',
-    width: 12,
-    marginLeft: 2,
+    justifyContent: 'center',
+    width: 14,
+    height: 20,
   },
-
   arrowStyle: {
-    width: variables.message_arrow_length,
-    height: variables.message_arrow_length,
+    position: 'absolute',
     borderTopWidth: variables.message_arrow_border_width,
     borderRightWidth: variables.message_arrow_border_width,
     transform: [{ rotate: '45deg' }],
-    marginLeft: 5,
-    marginRight: 2,
-    alignItems: 'center',
   },
-
+  // arrow size
+  mdArrowStyle: {
+    width: variables.message_arrow_length_md,
+    height: variables.message_arrow_length_md,
+  },
   lgArrowStyle: {
     width: variables.message_arrow_length_lg,
     height: variables.message_arrow_length_lg,
   },
-
-  textChildrenStyle: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-
-  defaultMessageBg: {
-    backgroundColor: variables.message_theme_bg_default,
-  },
-
-  primaryMessageBg: {
-    backgroundColor: variables.message_theme_bg_primary,
-  },
-
-  successMessageBg: {
-    backgroundColor: variables.message_theme_bg_success,
-  },
-
-  warningMessageBg: {
-    backgroundColor: variables.message_theme_bg_warning,
-  },
-
-  dangerMessageBg: {
-    backgroundColor: variables.message_theme_bg_danger,
-  },
-
-  defaultMessageText: {
-    color: variables.message_theme_text_default,
-  },
-
-  primaryMessageText: {
-    color: variables.message_theme_text_primary,
-  },
-
-  successMessageText: {
-    color: variables.message_theme_text_success,
-  },
-
-  warningMessageText: {
-    color: variables.message_theme_text_warning,
-  },
-
-  dangerMessageText: {
-    color: variables.message_theme_text_danger,
-  },
-
-  defaultCloseBg: {
-    backgroundColor: variables.message_theme_text_default,
-  },
-
-  primaryCloseBg: {
-    backgroundColor: variables.message_theme_text_primary,
-  },
-
-  successCloseBg: {
-    backgroundColor: variables.message_theme_text_success,
-  },
-
-  warningCloseBg: {
-    backgroundColor: variables.message_theme_text_warning,
-  },
-
-  dangerCloseBg: {
-    backgroundColor: variables.message_theme_text_danger,
-  },
-
-  activeMessageText: {
-    backgroundColor: variables.message_theme_text_primary,
-  },
-
-  messageTextSize: {
-    fontSize: variables.message_font_size,
-  },
-
-  lgMessageTextSize: {
-    fontSize: variables.message_font_size_lg,
-  },
-
-  defaultMessageArrow: {
+  // arrow theme
+  primaryArrowStyle: {
     borderTopColor: variables.theme_primary,
     borderRightColor: variables.theme_primary,
   },
-
-  primaryMessageArrow: {
-    borderTopColor: variables.theme_primary,
-    borderRightColor: variables.theme_primary,
-  },
-
-  successMessageArrow: {
+  successArrowStyle: {
     borderTopColor: variables.theme_success,
     borderRightColor: variables.theme_success,
   },
-
-  warningMessageArrow: {
+  warningArrowStyle: {
     borderTopColor: variables.theme_warning,
     borderRightColor: variables.theme_warning,
   },
-
-  dangerMessageArrow: {
+  dangerArrowStyle: {
     borderTopColor: variables.theme_danger,
     borderRightColor: variables.theme_danger,
   },

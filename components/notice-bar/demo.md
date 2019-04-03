@@ -11,7 +11,7 @@ class Demo extends React.Component {
     return (
       <div>
         <NoticeBar>普通</NoticeBar>
-        <NoticeBar theme="danger">错误色</NoticeBar>
+        <NoticeBar theme="danger">自定义主题</NoticeBar>
         <NoticeBar icon={<Icon type="wrong-round" />}>自定义图标</NoticeBar>
         <NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
       </div>

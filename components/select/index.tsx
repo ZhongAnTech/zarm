@@ -4,17 +4,17 @@ import { BaseSelectProps } from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import { isArray } from '../utils/validate';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Select extends PureComponent<SelectProps, any> {
+class Select extends PureComponent<SelectProps, any> {
   static defaultProps = {
     prefixCls: 'za-select',
     valueMember: 'value',
-    placeholder: '请选择',
     itemRender: data => data.label,
     cols: Infinity,
     displayRender: selected => selected.map(item => item.label),
@@ -105,7 +105,7 @@ export default class Select extends PureComponent<SelectProps, any> {
   }
 
   render() {
-    const { prefixCls, placeholder, className, disabled, displayRender, value, ...others } = this.props;
+    const { prefixCls, placeholder, className, disabled, displayRender, value, locale, ...others } = this.props;
     const { visible, objValue } = this.state;
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--placeholder`]: !this.isValueValid(value),
@@ -115,7 +115,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
-          {this.isValueValid(value) && displayRender!(objValue || []) || placeholder}
+          {this.isValueValid(value) && displayRender!(objValue || []) || placeholder || locale.placeholder}
         </div>
         <Picker
           {...others}
@@ -130,3 +130,5 @@ export default class Select extends PureComponent<SelectProps, any> {
     );
   }
 }
+
+export default LocaleReceiver(Select, 'Select');

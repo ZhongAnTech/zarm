@@ -15,7 +15,7 @@ config.plugins.push(
     inject: false,
   })
 );
-config.module.rules[0].use[0].options.presets.push('react-hmre');
+config.module.rules[0].use[0].options.plugins.push('react-hot-loader/babel');
 config.devServer = {
   host: '0.0.0.0',
   port: 3000,

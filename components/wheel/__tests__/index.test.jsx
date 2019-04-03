@@ -3,6 +3,12 @@ import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Wheel from '../index';
 
+function fakeTimers() {
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
+}
+fakeTimers();
+
 describe('Wheel', () => {
   it('Wheel render visible', () => {
     const wrapper = mount(
@@ -18,7 +24,6 @@ describe('Wheel', () => {
   });
 
   it('Wheel set props value', () => {
-    // jest.useFakeTimers();
     const wrapper = mount(
       <Wheel
         dataSource={[
@@ -31,12 +36,10 @@ describe('Wheel', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: '2' });
-    // jest.runAllTimers();
     wrapper.unmount();
   });
 
   it('Wheel render defaultValue', () => {
-    // jest.useFakeTimers();
     const wrapper = mount(
       <Wheel
         dataSource={[
@@ -65,7 +68,6 @@ describe('Wheel', () => {
   });
 
   it('Wheel set props disabled', () => {
-    // jest.useFakeTimers();
     const wrapper = mount(
       <Wheel
         dataSource={[
@@ -78,7 +80,6 @@ describe('Wheel', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ disabled: true });
-    // jest.runAllTimers();
     wrapper.unmount();
   });
 

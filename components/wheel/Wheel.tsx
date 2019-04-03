@@ -58,7 +58,9 @@ export default class Wheel extends Component<WheelProps, any> {
     }
 
     this.BScroll.on('scroll', () => {
-      this.props.onTransition!(true);
+      if (typeof this.props.onTransition === 'function') {
+        this.props.onTransition!(true);
+      }
     });
 
     this.BScroll.on('scrollEnd', () => {

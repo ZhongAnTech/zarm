@@ -1,7 +1,13 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import PickerView from '../index';
+
+function fakeTimers() {
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
+}
+fakeTimers();
 
 describe('PickerView', () => {
   it('PickerView render visible', () => {

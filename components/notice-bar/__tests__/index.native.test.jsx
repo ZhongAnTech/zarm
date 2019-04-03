@@ -11,7 +11,7 @@ describe('NoticeBar', () => {
   });
 
   it('theme', () => {
-    const wrapper = render(<NoticeBar theme="error">This is a NoticeBar</NoticeBar>);
+    const wrapper = render(<NoticeBar theme="danger">This is a NoticeBar</NoticeBar>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

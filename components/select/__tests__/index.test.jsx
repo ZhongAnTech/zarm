@@ -3,6 +3,12 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Select from '../index';
 
+function fakeTimers() {
+  const timer = jest.useFakeTimers();
+  performance.timing = () => {};
+}
+const timer = fakeTimers();
+
 describe('Select', () => {
   it('Select', () => {
     const wrapper = mount(

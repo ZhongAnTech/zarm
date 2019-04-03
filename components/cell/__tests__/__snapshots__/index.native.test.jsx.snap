@@ -104,10 +104,10 @@ exports[`Cell help 1`] = `
         </react-native-mock>
       </react-native-mock>
     </react-native-mock>
+  </react-native-mock>
+  <react-native-mock>
     <react-native-mock>
-      <react-native-mock>
-        我是help
-      </react-native-mock>
+      我是help
     </react-native-mock>
   </react-native-mock>
 </react-native-mock>

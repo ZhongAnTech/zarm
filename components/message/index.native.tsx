@@ -16,40 +16,36 @@ export interface MessageProps extends PropsType {
   onClick?: (event: GestureResponderEvent) => void;
 }
 
+export interface MessageState {
+  visible?: boolean;
+}
+
 const messageStyles = StyleSheet.create<any>(messageStyle);
 
-export default class Message extends PureComponent<MessageProps, any> {
+export default class Message extends PureComponent<MessageProps, MessageState> {
   static defaultProps = {
     theme: 'primary',
+    size: 'md',
     hasArrow: false,
     closable: false,
-    size: 'md',
     styles: messageStyles,
   };
 
-  constructor(props) {
+  constructor(props: MessageProps) {
     super(props);
     this.state = {
       visible: true,
-      isActive: false,
     };
   }
 
-  _onPressClose = () => {
+  onPressClose = () => {
     this.setState({ visible: false });
-  }
-
-  onPressIn = () => {
-    this.setState({ isActive: true });
-  }
-
-  onPressOut = () => {
-    this.setState({ isActive: false });
   }
 
   render() {
     const {
       theme,
+      icon,
       hasArrow,
       closable,
       styles,
@@ -59,91 +55,73 @@ export default class Message extends PureComponent<MessageProps, any> {
       size,
     } = this.props;
 
-    const { visible, isActive } = this.state;
+    const { visible } = this.state;
 
     const wrapperStyle = [
-      styles!.messageWrapper,
-      styles!.messageWrapperInner,
-      styles![`${theme}MessageBg`],
-      styles![`${size}MessageWrapper`],
-      isActive && styles![`${theme}MessageBg`],
+      styles!.wrapper,
+      styles![`${theme}Wrapper`],
+      styles![`${size}Wrapper`],
       style,
     ] as ViewStyle;
 
     const textStyle = [
-      styles![`${theme}MessageText`],
-      size ? styles![`${size}MessageTextSize`] : styles!.messageTextSize,
+      styles![`${theme}TextStyle`],
+      styles![`${size}TextStyle`],
     ];
 
     const arrowStyle = [
       styles!.arrowStyle,
-      styles![`${theme}MessageArrow`],
-      size && styles![`${size}ArrowStyle`],
+      styles![`${theme}ArrowStyle`],
+      styles![`${size}ArrowStyle`],
     ];
 
-    const closeWrapperStyle = [
-      styles!.closeWrapperStyle,
-      size && styles![`${size}CloseWrapperStyle`],
+    const closeIconStyle = [
+      styles!.closeIconStyle,
+      styles![`${theme}CloseIconStyle`],
+      styles![`${size}CloseIconStyle`],
     ];
 
-    const closeIconWrapper = [
-      styles!.closeIconWrapper,
-      size && styles![`${size}CloseIconWrapper`],
-    ];
+    const closeRender = closable &&
+      <TouchableWithoutFeedback
+        onPress={this.onPressClose}
+      >
+        <View style={styles!.closeIconWrapperStyle as ViewStyle}>
+          <View style={[closeIconStyle, styles!.closeIconLeft]} />
+          <View style={[closeIconStyle, styles!.closeIconRight]} />
+        </View>
+      </TouchableWithoutFeedback>;
 
-    const closeIconLeftStyle = [
-      styles!.closeIconLeft,
-      styles![`${theme}CloseBg`],
-      size && styles![`${size}CloseIconLeft`],
-    ];
-
-    const closeIconRightStyle = [
-      styles!.closeIconRight,
-      styles![`${theme}CloseBg`],
-      size && styles![`${size}CloseIconRight`],
-    ];
-
-    const closeIconRender = closable &&
-      <View style={closeWrapperStyle}>
-        <TouchableWithoutFeedback
-          onPress={this._onPressClose}
-        >
-          <View style={closeIconWrapper}>
-            <View style={closeIconLeftStyle} />
-            <View style={closeIconRightStyle as ViewStyle} />
-          </View>
-        </TouchableWithoutFeedback>
+    const arrowRender = hasArrow &&
+      <View style={styles!.arrowWrapperStyle as ViewStyle}>
+        <View style={arrowStyle} />
       </View>;
 
-    const arrowRender = hasArrow && <View style={arrowStyle} />;
+    const footerRender = (closable || hasArrow) &&
+      <View style={styles!.footerStyle as ViewStyle}>
+        {closeRender}
+        {arrowRender}
+      </View>;
 
     const messageRender = (
       <View style={wrapperStyle}>
-        <View style={styles!.textBodyStyle as ViewStyle}>
-          <RenderWithText
-            viewStyle={styles!.textChildrenStyle as ViewStyle}
-            textStyle={textStyle}
-            component={children}
-          />
-        </View>
-        <View style={styles!.footerWrapperStyle as ViewStyle}>
-          {closeIconRender}
-          {arrowRender}
-        </View>
+        {icon && <View style={styles!.headerStyle as ViewStyle} />}
+        <RenderWithText
+          viewStyle={styles!.bodyStyle as ViewStyle}
+          textStyle={textStyle}
+          component={children}
+        />
+        {footerRender}
       </View>
     );
 
     const wrapperProps = {
       onPress: onClick,
-      onPressIn: this.onPressIn,
-      onPressOut: this.onPressOut,
     };
 
     return visible && (
-      onClick ?
-      <TouchableWithoutFeedback {...wrapperProps}>
-        {messageRender}
-      </TouchableWithoutFeedback> : messageRender
+      onClick
+        ? <TouchableWithoutFeedback {...wrapperProps}>{messageRender}</TouchableWithoutFeedback>
+        : messageRender
     );
   }
 }

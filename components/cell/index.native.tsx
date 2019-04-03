@@ -94,12 +94,11 @@ export default class Cell extends PureComponent<CellProps, any> {
             />
             {arrowRender}
           </View>
-          <RenderWithText
-            component={help}
-            viewStyle={cellStyles.helpViewStyle}
-            textStyle={cellStyles.helpTextStyle}
-          />
         </View>
+        <RenderWithText
+          component={help}
+          viewStyle={cellStyles.helpViewStyle}
+        />
       </View>
     );
 
