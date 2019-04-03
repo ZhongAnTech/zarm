@@ -4,6 +4,12 @@ import toJson from 'enzyme-to-json';
 import DateSelect from '../index';
 import enLocale from '../../date-picker-view/locale/en_US';
 
+function fakeTimers() {
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
+}
+fakeTimers();
+
 describe('DateSelect', () => {
   it('DateSelect year', () => {
     const wrapper = mount(
@@ -67,9 +73,7 @@ describe('DateSelect', () => {
       />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    jest.useFakeTimers();
     wrapper.setProps({ defaultValue: '2017-11-06 12:00', value: '2017-11-06 12:00' });
-    jest.runAllTimers();
   });
 
   it('DateSelect wheelDefaultValue', () => {
@@ -102,7 +106,6 @@ describe('DateSelect', () => {
   });
 
   it('should trigger onCancel when press cancel button', () => {
-    const onOkFn = jest.fn();
     const onCancelFn = jest.fn();
 
     const wrapper = mount(
@@ -116,7 +119,6 @@ describe('DateSelect', () => {
 
     wrapper.find('.za-date-picker__cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
-    expect(onOkFn).not.toBeCalled();
   });
 
   // it('should trigger onMaskClick when click mask', () => {

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import { BaseDatePickerProps } from './PropsType';
 import Popup from '../popup';
 import DatePickerView from '../date-picker-view';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const isExtendDate = (date) => {
   if (date instanceof Date) {
@@ -20,12 +22,8 @@ export interface DatePickerProps extends BaseDatePickerProps {
   className?: string;
 }
 
-export default class DatePicker extends Component<DatePickerProps, any> {
+class DatePicker extends Component<DatePickerProps, any> {
   static defaultProps = {
-    placeholder: '请选择',
-    title: '请选择',
-    cancelText: '取消',
-    okText: '确定',
     mode: 'date',
     disabled: false,
     value: '',
@@ -77,7 +75,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   // 点击取消
-  onCancel() {
+  onCancel = () => {
     const { onCancel } = this.props;
     this.toggle();
     this.setState({
@@ -143,7 +141,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, disabled, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, children, disabled, locale,
+       ...others } = this.props;
+    const cls = classnames(prefixCls, className);
     const { visible, value } = this.state;
 
     return (
@@ -151,11 +151,16 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         visible={visible}
         onMaskClick={() => this.onMaskClick()}
       >
-        <div className={prefixCls} onClick={(e) => {e.stopPropagation(); }}>
+        <div className={cls} onClick={(e) => {e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={() => this.onCancel()}>{cancelText}</div>
-            <div className={`${prefixCls}__title`}>{title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText}</div>
+            <div
+              className={`${prefixCls}__cancel`}
+              onClick={this.onCancel}
+            >
+              {cancelText || locale.cancelText}
+            </div>
+            <div className={`${prefixCls}__title`}>{title || locale.title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale.okText}</div>
           </div>
           <DatePickerView
             {...others}
@@ -170,3 +175,5 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     );
   }
 }
+
+export default LocaleReceiver(DatePicker, 'DatePicker');

@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { BaseDateSelectProps } from './PropsType';
 import formatFn from '../date-picker-view/utils';
 import DatePicker from '../date-picker';
+import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 const isExtendDate = (date) => {
   if (date instanceof Date) {
@@ -21,12 +22,8 @@ export interface DateSelectProps extends BaseDateSelectProps {
   className?: any;
 }
 
-export default class DateSelect extends PureComponent<DateSelectProps, any> {
+class DateSelect extends PureComponent<DateSelectProps, any> {
   static defaultProps = {
-    placeholder: '请选择',
-    title: '请选择',
-    cancelText: '取消',
-    okText: '确定',
     mode: 'date',
     disabled: false,
     minuteStep: 1,
@@ -111,7 +108,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   render() {
-    const { prefixCls, className, okText, cancelText, placeholder, disabled, onChange, ...others } = this.props;
+    const { prefixCls, className, placeholder, disabled, onChange, locale, ...others } = this.props;
     const { value, visible } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -123,7 +120,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       <div className={cls} onClick={this.handleClick}>
         <input type="hidden" value={formatFn(this, this.state.value)} />
         <div className={`${prefixCls}__input`}>
-          {this.state.value ? formatFn(this, this.state.value) : placeholder}
+          {this.state.value ? formatFn(this, this.state.value) : placeholder || locale.placeholder}
         </div>
         <DatePicker
           {...others}
@@ -137,3 +134,5 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     );
   }
 }
+
+export default LocaleReceiver(DateSelect, 'DateSelect');
