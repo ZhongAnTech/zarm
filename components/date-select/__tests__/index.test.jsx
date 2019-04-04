@@ -100,7 +100,6 @@ describe('DateSelect', () => {
         onOk={onOkFn}
       />
     );
-
     wrapper.find('.za-date-picker__submit').simulate('click');
     expect(onOkFn).toBeCalled();
   });
