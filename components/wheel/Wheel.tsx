@@ -59,7 +59,7 @@ export default class Wheel extends Component<WheelProps, any> {
 
     this.BScroll.on('scroll', () => {
       if (typeof this.props.onTransition === 'function') {
-        this.props.onTransition!(true);
+        this.props.onTransition!(this.BScroll.isInTransition);
       }
     });
 
@@ -67,7 +67,6 @@ export default class Wheel extends Component<WheelProps, any> {
       const { dataSource, valueMember } = this.props;
       const index = this.BScroll.getSelectedIndex();
       const child = dataSource![index];
-
       if (child) {
         this.fireValueChange(child[valueMember!]);
         this.props.onTransition!(this.BScroll.isInTransition);

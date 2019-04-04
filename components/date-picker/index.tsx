@@ -36,7 +36,7 @@ class DatePicker extends Component<DatePickerProps, any> {
   };
 
   private initDate;
-  private isScrolling;
+  private isScrolling = false;
 
   constructor(props) {
     super(props);

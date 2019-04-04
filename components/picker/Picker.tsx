@@ -22,7 +22,7 @@ class Picker extends PureComponent<PickerProps, any> {
 
   private tempValue;
   private tempObjValue;
-  private isScrolling;
+  private isScrolling = false;
 
   constructor(props) {
     super(props);

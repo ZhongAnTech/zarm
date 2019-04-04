@@ -1,7 +1,6 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import mask from '../../mask';
 import DatePicker from '../index';
 
 function fakeTimers() {
