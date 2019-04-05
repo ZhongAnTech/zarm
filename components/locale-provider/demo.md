@@ -20,6 +20,14 @@ const locales = {
       cancelText: 'Cancel',
       okText: 'Ok',
     },
+    Select: {
+      placeholder: 'please select',
+    },
+    Picker: {
+      cancelText: 'Cancel',
+      okText: 'OK',
+      title: 'please select',
+    }
   },
   'zh_CN': {
     locale: 'zh_cn',
@@ -34,6 +42,14 @@ const locales = {
       cancelText: '取消',
       okText: '确定',
     },
+    Select: {
+      placeholder: '请选择',
+    },
+    Picker: {
+      cancelText: '取消',
+      okText: '确定',
+      title: '请选择',
+    }
   },
 };
 
