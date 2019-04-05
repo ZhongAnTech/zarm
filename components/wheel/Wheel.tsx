@@ -82,16 +82,14 @@ export default class Wheel extends Component<WheelProps, any> {
       this.setState({
         value: nextProps.value,
       });
+
+      const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
+      this.BScroll.wheelTo(newIndex);
     }
 
     if (nextProps.disabled) {
       this.BScroll.disable();
     }
-
-    const newIndex = this.getSelectedIndex(nextProps.value, nextProps.dataSource);
-    this.BScroll.wheelTo(newIndex);
-    // setTimeout(() => {
-    // }, 0);
   }
 
   componentDidUpdate() {
@@ -107,9 +105,9 @@ export default class Wheel extends Component<WheelProps, any> {
       return;
     }
 
-    if (!('value' in this.props)) {
-      this.setState({ value });
-    }
+    // if (!('value' in this.props)) {
+    this.setState({ value });
+    // }
 
     const { onChange } = this.props;
     if (typeof onChange === 'function') {

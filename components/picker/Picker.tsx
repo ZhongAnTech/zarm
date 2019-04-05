@@ -4,14 +4,13 @@ import Popup from '../popup';
 import PickerView from '../picker-view';
 import { BasePickerProps } from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: any;
 }
 
-class Picker extends PureComponent<PickerProps, any> {
+export default class Picker extends PureComponent<PickerProps, any> {
   static defaultProps = {
     dataSource: [],
     prefixCls: 'za-picker',
@@ -126,5 +125,3 @@ class Picker extends PureComponent<PickerProps, any> {
     );
   }
 }
-
-export default LocaleReceiver(Picker, 'Picker');
