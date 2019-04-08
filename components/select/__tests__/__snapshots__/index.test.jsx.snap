@@ -169,7 +169,7 @@ exports[`Select Cascader Select 1`] = `
           valueMember="value"
           visible={false}
         >
-          <ForwardRef(forwardRefFactory)
+          <LocaleReceiver
             cols={Infinity}
             dataSource={
               Array [
@@ -214,7 +214,7 @@ exports[`Select Cascader Select 1`] = `
             valueMember="value"
             visible={false}
           >
-            <ForwardRef(forwardRefFactory)
+            <Picker
               cols={Infinity}
               dataSource={
                 Array [
@@ -262,134 +262,29 @@ exports[`Select Cascader Select 1`] = `
               onClick={[Function]}
               onOk={[Function]}
               onTransition={[Function]}
+              prefixCls="za-picker"
               valueMember="value"
               visible={false}
             >
-              <LocaleReceiver
-                cols={Infinity}
-                dataSource={
-                  Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "label": "选项一",
-                          "value": "11",
-                        },
-                        Object {
-                          "label": "选项二",
-                          "value": "12",
-                        },
-                      ],
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "label": "选项一",
-                          "value": "21",
-                        },
-                        Object {
-                          "label": "选项二",
-                          "value": "22",
-                        },
-                      ],
-                      "label": "选项一",
-                      "value": "2",
-                    },
-                  ]
-                }
-                forwardedRef={null}
-                itemRender={[Function]}
-                locale={
-                  Object {
-                    "cancelText": "Cancel",
-                    "okText": "OK",
-                    "title": "please select",
-                  }
-                }
-                localeCode="en"
-                onCancel={[Function]}
-                onChange={[Function]}
-                onClick={[Function]}
-                onOk={[Function]}
-                onTransition={[Function]}
-                valueMember="value"
+              <Popup
+                onMaskClick={[Function]}
                 visible={false}
               >
-                <Picker
-                  cols={Infinity}
-                  dataSource={
-                    Array [
-                      Object {
-                        "children": Array [
-                          Object {
-                            "label": "选项一",
-                            "value": "11",
-                          },
-                          Object {
-                            "label": "选项二",
-                            "value": "12",
-                          },
-                        ],
-                        "label": "选项一",
-                        "value": "1",
-                      },
-                      Object {
-                        "children": Array [
-                          Object {
-                            "label": "选项一",
-                            "value": "21",
-                          },
-                          Object {
-                            "label": "选项二",
-                            "value": "22",
-                          },
-                        ],
-                        "label": "选项一",
-                        "value": "2",
-                      },
-                    ]
-                  }
-                  itemRender={[Function]}
-                  locale={
-                    Object {
-                      "cancelText": "Cancel",
-                      "okText": "OK",
-                      "title": "please select",
-                    }
-                  }
-                  localeCode="en"
-                  onCancel={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onOk={[Function]}
-                  onTransition={[Function]}
-                  prefixCls="za-picker"
-                  valueMember="value"
+                <Portal
+                  animationDuration={200}
+                  autoClose={false}
+                  direction="bottom"
+                  handlePortalUnmount={[Function]}
+                  mask={true}
+                  maskType="normal"
+                  onMaskClick={[Function]}
+                  prefixCls="za-popup"
+                  stayTime={3000}
                   visible={false}
-                >
-                  <Popup
-                    onMaskClick={[Function]}
-                    visible={false}
-                  >
-                    <Portal
-                      animationDuration={200}
-                      autoClose={false}
-                      direction="bottom"
-                      handlePortalUnmount={[Function]}
-                      mask={true}
-                      maskType="normal"
-                      onMaskClick={[Function]}
-                      prefixCls="za-popup"
-                      stayTime={3000}
-                      visible={false}
-                    />
-                  </Popup>
-                </Picker>
-              </LocaleReceiver>
-            </ForwardRef(forwardRefFactory)>
-          </ForwardRef(forwardRefFactory)>
+                />
+              </Popup>
+            </Picker>
+          </LocaleReceiver>
         </ForwardRef(forwardRefFactory)>
       </div>
     </Select>
@@ -595,7 +490,7 @@ exports[`Select Cascader Select init value 1`] = `
           valueMember="value"
           visible={false}
         >
-          <ForwardRef(forwardRefFactory)
+          <LocaleReceiver
             cols={Infinity}
             dataSource={
               Array [
@@ -647,7 +542,7 @@ exports[`Select Cascader Select init value 1`] = `
             valueMember="value"
             visible={false}
           >
-            <ForwardRef(forwardRefFactory)
+            <Picker
               cols={Infinity}
               dataSource={
                 Array [
@@ -696,6 +591,7 @@ exports[`Select Cascader Select init value 1`] = `
               onClick={[Function]}
               onOk={[Function]}
               onTransition={[Function]}
+              prefixCls="za-picker"
               value={
                 Array [
                   "1",
@@ -705,145 +601,25 @@ exports[`Select Cascader Select init value 1`] = `
               valueMember="value"
               visible={false}
             >
-              <LocaleReceiver
-                cols={Infinity}
-                dataSource={
-                  Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "label": "选项一",
-                          "value": "11",
-                        },
-                        Object {
-                          "label": "选项二",
-                          "value": "12",
-                        },
-                      ],
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "label": "选项一",
-                          "value": "21",
-                        },
-                        Object {
-                          "label": "选项二",
-                          "value": "22",
-                        },
-                      ],
-                      "label": "选项一",
-                      "value": "2",
-                    },
-                  ]
-                }
-                displayAddon="-"
-                forwardedRef={null}
-                itemRender={[Function]}
-                locale={
-                  Object {
-                    "cancelText": "Cancel",
-                    "okText": "OK",
-                    "title": "please select",
-                  }
-                }
-                localeCode="en"
-                onCancel={[Function]}
-                onChange={[Function]}
-                onClick={[Function]}
-                onOk={[Function]}
-                onTransition={[Function]}
-                value={
-                  Array [
-                    "1",
-                    "12",
-                  ]
-                }
-                valueMember="value"
+              <Popup
+                onMaskClick={[Function]}
                 visible={false}
               >
-                <Picker
-                  cols={Infinity}
-                  dataSource={
-                    Array [
-                      Object {
-                        "children": Array [
-                          Object {
-                            "label": "选项一",
-                            "value": "11",
-                          },
-                          Object {
-                            "label": "选项二",
-                            "value": "12",
-                          },
-                        ],
-                        "label": "选项一",
-                        "value": "1",
-                      },
-                      Object {
-                        "children": Array [
-                          Object {
-                            "label": "选项一",
-                            "value": "21",
-                          },
-                          Object {
-                            "label": "选项二",
-                            "value": "22",
-                          },
-                        ],
-                        "label": "选项一",
-                        "value": "2",
-                      },
-                    ]
-                  }
-                  displayAddon="-"
-                  itemRender={[Function]}
-                  locale={
-                    Object {
-                      "cancelText": "Cancel",
-                      "okText": "OK",
-                      "title": "please select",
-                    }
-                  }
-                  localeCode="en"
-                  onCancel={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onOk={[Function]}
-                  onTransition={[Function]}
-                  prefixCls="za-picker"
-                  value={
-                    Array [
-                      "1",
-                      "12",
-                    ]
-                  }
-                  valueMember="value"
+                <Portal
+                  animationDuration={200}
+                  autoClose={false}
+                  direction="bottom"
+                  handlePortalUnmount={[Function]}
+                  mask={true}
+                  maskType="normal"
+                  onMaskClick={[Function]}
+                  prefixCls="za-popup"
+                  stayTime={3000}
                   visible={false}
-                >
-                  <Popup
-                    onMaskClick={[Function]}
-                    visible={false}
-                  >
-                    <Portal
-                      animationDuration={200}
-                      autoClose={false}
-                      direction="bottom"
-                      handlePortalUnmount={[Function]}
-                      mask={true}
-                      maskType="normal"
-                      onMaskClick={[Function]}
-                      prefixCls="za-popup"
-                      stayTime={3000}
-                      visible={false}
-                    />
-                  </Popup>
-                </Picker>
-              </LocaleReceiver>
-            </ForwardRef(forwardRefFactory)>
-          </ForwardRef(forwardRefFactory)>
+                />
+              </Popup>
+            </Picker>
+          </LocaleReceiver>
         </ForwardRef(forwardRefFactory)>
       </div>
     </Select>
@@ -940,7 +716,7 @@ exports[`Select Select 1`] = `
           valueMember="value"
           visible={false}
         >
-          <ForwardRef(forwardRefFactory)
+          <LocaleReceiver
             cols={Infinity}
             dataSource={
               Array [
@@ -965,7 +741,7 @@ exports[`Select Select 1`] = `
             valueMember="value"
             visible={false}
           >
-            <ForwardRef(forwardRefFactory)
+            <Picker
               cols={Infinity}
               dataSource={
                 Array [
@@ -993,94 +769,29 @@ exports[`Select Select 1`] = `
               onClick={[Function]}
               onOk={[Function]}
               onTransition={[Function]}
+              prefixCls="za-picker"
               valueMember="value"
               visible={false}
             >
-              <LocaleReceiver
-                cols={Infinity}
-                dataSource={
-                  Array [
-                    Object {
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                    Object {
-                      "label": "选项二",
-                      "value": "2",
-                    },
-                  ]
-                }
-                forwardedRef={null}
-                itemRender={[Function]}
-                locale={
-                  Object {
-                    "cancelText": "Cancel",
-                    "okText": "OK",
-                    "title": "please select",
-                  }
-                }
-                localeCode="en"
-                onCancel={[Function]}
-                onChange={[Function]}
-                onClick={[Function]}
-                onOk={[Function]}
-                onTransition={[Function]}
-                valueMember="value"
+              <Popup
+                onMaskClick={[Function]}
                 visible={false}
               >
-                <Picker
-                  cols={Infinity}
-                  dataSource={
-                    Array [
-                      Object {
-                        "label": "选项一",
-                        "value": "1",
-                      },
-                      Object {
-                        "label": "选项二",
-                        "value": "2",
-                      },
-                    ]
-                  }
-                  itemRender={[Function]}
-                  locale={
-                    Object {
-                      "cancelText": "Cancel",
-                      "okText": "OK",
-                      "title": "please select",
-                    }
-                  }
-                  localeCode="en"
-                  onCancel={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onOk={[Function]}
-                  onTransition={[Function]}
-                  prefixCls="za-picker"
-                  valueMember="value"
+                <Portal
+                  animationDuration={200}
+                  autoClose={false}
+                  direction="bottom"
+                  handlePortalUnmount={[Function]}
+                  mask={true}
+                  maskType="normal"
+                  onMaskClick={[Function]}
+                  prefixCls="za-popup"
+                  stayTime={3000}
                   visible={false}
-                >
-                  <Popup
-                    onMaskClick={[Function]}
-                    visible={false}
-                  >
-                    <Portal
-                      animationDuration={200}
-                      autoClose={false}
-                      direction="bottom"
-                      handlePortalUnmount={[Function]}
-                      mask={true}
-                      maskType="normal"
-                      onMaskClick={[Function]}
-                      prefixCls="za-popup"
-                      stayTime={3000}
-                      visible={false}
-                    />
-                  </Popup>
-                </Picker>
-              </LocaleReceiver>
-            </ForwardRef(forwardRefFactory)>
-          </ForwardRef(forwardRefFactory)>
+                />
+              </Popup>
+            </Picker>
+          </LocaleReceiver>
         </ForwardRef(forwardRefFactory)>
       </div>
     </Select>
@@ -1181,7 +892,7 @@ exports[`Select render defaultValue correctly  1`] = `
           valueMember="value"
           visible={false}
         >
-          <ForwardRef(forwardRefFactory)
+          <LocaleReceiver
             cols={Infinity}
             dataSource={
               Array [
@@ -1207,7 +918,7 @@ exports[`Select render defaultValue correctly  1`] = `
             valueMember="value"
             visible={false}
           >
-            <ForwardRef(forwardRefFactory)
+            <Picker
               cols={Infinity}
               dataSource={
                 Array [
@@ -1236,96 +947,29 @@ exports[`Select render defaultValue correctly  1`] = `
               onClick={[Function]}
               onOk={[Function]}
               onTransition={[Function]}
+              prefixCls="za-picker"
               valueMember="value"
               visible={false}
             >
-              <LocaleReceiver
-                cols={Infinity}
-                dataSource={
-                  Array [
-                    Object {
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                    Object {
-                      "label": "选项二",
-                      "value": "2",
-                    },
-                  ]
-                }
-                defaultValue="2"
-                forwardedRef={null}
-                itemRender={[Function]}
-                locale={
-                  Object {
-                    "cancelText": "Cancel",
-                    "okText": "OK",
-                    "title": "please select",
-                  }
-                }
-                localeCode="en"
-                onCancel={[Function]}
-                onChange={[Function]}
-                onClick={[Function]}
-                onOk={[Function]}
-                onTransition={[Function]}
-                valueMember="value"
+              <Popup
+                onMaskClick={[Function]}
                 visible={false}
               >
-                <Picker
-                  cols={Infinity}
-                  dataSource={
-                    Array [
-                      Object {
-                        "label": "选项一",
-                        "value": "1",
-                      },
-                      Object {
-                        "label": "选项二",
-                        "value": "2",
-                      },
-                    ]
-                  }
-                  defaultValue="2"
-                  itemRender={[Function]}
-                  locale={
-                    Object {
-                      "cancelText": "Cancel",
-                      "okText": "OK",
-                      "title": "please select",
-                    }
-                  }
-                  localeCode="en"
-                  onCancel={[Function]}
-                  onChange={[Function]}
-                  onClick={[Function]}
-                  onOk={[Function]}
-                  onTransition={[Function]}
-                  prefixCls="za-picker"
-                  valueMember="value"
+                <Portal
+                  animationDuration={200}
+                  autoClose={false}
+                  direction="bottom"
+                  handlePortalUnmount={[Function]}
+                  mask={true}
+                  maskType="normal"
+                  onMaskClick={[Function]}
+                  prefixCls="za-popup"
+                  stayTime={3000}
                   visible={false}
-                >
-                  <Popup
-                    onMaskClick={[Function]}
-                    visible={false}
-                  >
-                    <Portal
-                      animationDuration={200}
-                      autoClose={false}
-                      direction="bottom"
-                      handlePortalUnmount={[Function]}
-                      mask={true}
-                      maskType="normal"
-                      onMaskClick={[Function]}
-                      prefixCls="za-popup"
-                      stayTime={3000}
-                      visible={false}
-                    />
-                  </Popup>
-                </Picker>
-              </LocaleReceiver>
-            </ForwardRef(forwardRefFactory)>
-          </ForwardRef(forwardRefFactory)>
+                />
+              </Popup>
+            </Picker>
+          </LocaleReceiver>
         </ForwardRef(forwardRefFactory)>
       </div>
     </Select>
