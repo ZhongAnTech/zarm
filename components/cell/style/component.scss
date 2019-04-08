@@ -3,20 +3,20 @@
 @include b(cell) {
   position: relative;
   overflow: hidden;
-  background-color: $--cell-background;
-  @include cell-theme($--cell-description-color);
+  background-color: var(--cell-background);
+  @include cell-theme(var(--cell-description-color));
   @include onepx(top);
 
   &:after {
-    left: $--cell-line-padding-left;
+    left: var(--cell-line-padding-left);
   }
 
   @include e(inner) {
     display: flex;
     align-items: center;
-    padding: 0 $--cell-padding-h;
-    font-size: $--cell-title-font-size;
-    min-height: $--cell-height;
+    padding: 0 var(--cell-padding-h);
+    font-size: var(--cell-title-font-size);
+    min-height: var(--cell-height);
 
     a,
     a:hover {
@@ -34,7 +34,7 @@
     display: flex;
     justify-content: center;
     text-align: right;
-    font-size: $--cell-description-font-size;
+    font-size: var(--cell-description-font-size);
   }
 
   @include e(arrow) {
@@ -43,18 +43,18 @@
     &:after {
       display: inline-block;
       content: '';
-      border-right: $--cell-arrow-border-width solid $--cell-arrow-color;
-      border-top: $--cell-arrow-border-width solid $--cell-arrow-color;
-      width: $--cell-arrow-length;
-      height: $--cell-arrow-length;
+      border-right: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      border-top: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      width: var(--cell-arrow-length);
+      height: var(--cell-arrow-length);
       transform: rotate(45deg);
     }
   }
 
   @include e(icon) {
     text-align: center;
-    margin-right: $--padding-h-md;
-    padding: $--cell-padding-h 0;
+    margin-right: var(--padding-h-md);
+    padding: var(--cell-padding-h) 0;
 
     img {
       max-width: 100%;
@@ -64,14 +64,14 @@
 
   @include e(title) {
     flex: 1;
-    padding: $--cell-padding-v 0;
+    padding: var(--cell-padding-v) 0;
     overflow: hidden;
-    color: $--cell-title-color;
-    line-height: $--cell-title-line-height;
+    color: var(--cell-title-color);
+    line-height: var(--cell-title-line-height);
 
     @include m(label) {
       flex: none;
-      width: $--cell-label-width;
+      width: var(--cell-label-width);
     }
   }
 
@@ -87,19 +87,19 @@
   }
 
   @include m(primary) {
-    @include cell-theme($--theme-primary);
+    @include cell-theme(var(--theme-primary));
   }
 
   @include m(success) {
-    @include cell-theme($--theme-success);
+    @include cell-theme(var(--theme-success));
   }
 
   @include m(warning) {
-    @include cell-theme($--theme-warning);
+    @include cell-theme(var(--theme-warning));
   }
 
   @include m(danger) {
-    @include cell-theme($--theme-danger);
+    @include cell-theme(var(--theme-danger));
   }
 
   @include m(link) {
@@ -108,14 +108,14 @@
 
     @include e(inner) {
       &:active {
-        background-color: $--background-active;
+        background-color: var(--background-active);
       }
     }
   }
 
   @include m(disabled) {
     @include e(body, footer) {
-      color: $--color-text-disabled;
+      color: var(--color-text-disabled);
     }
   }
 }

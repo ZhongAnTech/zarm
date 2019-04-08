@@ -1,0 +1,95 @@
+@function containsModifier($selector) {
+  $selector: selectorToString($selector);
+  @if str-index($selector, $--modifier-separator) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function containsElement($selector) {
+  $selector: selectorToString($selector);
+  @if str-index($selector, $--element-separator) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@function selectorToString($selector) {
+  $selector: inspect($selector); //cast to string
+  $selector: str-slice($selector, 2, -2); //remove brackets
+  @return $selector;
+}
+
+@function getBlock($selector) {
+  $selector: selectorToString($selector);
+  $start: 0;
+  @if containsElement($selector) {
+    $start: str-index($selector, $--element-separator) - 1;
+  } @else {
+    $start: str-index($selector, $--modifier-separator) - 1;
+  }
+  @return str-slice($selector, 0, $start);
+}
+
+@function getElements($elements) {
+  $selector: &;
+  $currentSelector: '';
+  @if containsModifier($selector) {
+    $selector: getBlock($selector);
+  }
+  @each $unit in $elements {
+    @if containsElement($selector) {
+      $block: getBlock($selector);
+      $currentSelector: #{$currentSelector + $selector} #{$block + $--element-separator + $unit + ','};
+    } @else {
+      $currentSelector: #{$currentSelector + $selector + $--element-separator + $unit + ','};
+    }
+  }
+  @return $currentSelector;
+}
+
+@mixin b($block) {
+  .#{$--namespace + '-' + $block} {
+    @content;
+  }
+}
+
+@mixin e($element...) {
+  $selector: &;
+  $elements: getElements($element);
+  @if containsModifier($selector) {
+    @at-root {
+      #{$selector} {
+        #{$elements} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$elements} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  @if containsModifier($selector) {
+    $selector: getBlock($selector);
+    @at-root {
+      #{&}#{$selector + $--modifier-separator + $modifier} {
+        @content;
+      }
+    }
+  } @else {
+    @at-root {
+      #{$selector + $--modifier-separator + $modifier} {
+        @content;
+      }
+    }
+  }
+}

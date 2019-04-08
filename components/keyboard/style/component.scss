@@ -15,14 +15,14 @@
     position: relative;
     @include button-base();
     @include button-theme(
-      $--button-default-background,
-      $--button-default-border,
-      $--button-default-color,
-      $--button-default-active-background,
-      $--button-default-active-border,
-      $--button-default-active-color,
-      $--button-default-background,
-      $--button-default-border,
+      var(--button-default-background),
+      var(--button-default-border),
+      var(--button-default-color),
+      var(--button-default-active-background),
+      var(--button-default-active-border),
+      var(--button-default-active-color),
+      var(--button-default-background),
+      var(--button-default-border),
       $--color-text-disabled,
       1,
     );
@@ -30,15 +30,15 @@
     @include m(ok) {
       font-size: r(21);
       @include button-theme(
-        $--button-primary-background,
-        $--button-primary-border,
-        $--button-primary-color,
-        $--button-primary-active-background,
-        $--button-primary-active-border,
-        $--button-primary-active-color,
-        $--button-primary-background,
-        $--button-primary-border,
-        $--button-primary-color,
+        var(--button-primary-background),
+        var(--button-primary-border),
+        var(--button-primary-color),
+        var(--button-primary-active-background),
+        var(--button-primary-active-border),
+        var(--button-primary-active-color),
+        var(--button-primary-background),
+        var(--button-primary-border),
+        var(--button-primary-color),
         1,
       );
     }

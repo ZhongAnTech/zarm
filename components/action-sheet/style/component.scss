@@ -1,19 +1,19 @@
 @import "../../button/style/mixins";
 
 @include b(action-sheet) {
-  margin: $--action-sheet-margin;
+  margin: var(--action-sheet-margin);
 
   @include m(spacing) {
     margin: 0 r(10) r(10);
 
     @include e(actions, cancel) {
-      border-radius: $--radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
   @include e(actions, cancel) {
     overflow: hidden;
-    background-color: $--color-text-inverse;
+    background-color: var(--color-text-inverse);
   }
 
   @include e(cancel) {
@@ -22,13 +22,13 @@
 
   @include e(item) {
     display: block;
-    height: $--action-sheet-item-height;
-    line-height: $--action-sheet-item-height;
-    font-size: $--action-sheet-item-font-size;
+    height: var(--action-sheet-item-height);
+    line-height: var(--action-sheet-item-height);
+    font-size: var(--action-sheet-item-font-size);
     @include button-base();
 
     &:active {
-      background-color: $--background-active;
+      background-color: var(--background-active);
     }
 
     &:not(:first-of-type) {
@@ -36,11 +36,11 @@
     }
 
     @include m(primary) {
-      color: $--theme-primary;
+      color: var(--theme-primary);
     }
 
     @include m(danger) {
-      color: $--theme-danger;
+      color: var(--theme-danger);
     }
   }
 }

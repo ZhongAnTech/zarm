@@ -3,117 +3,117 @@
 @include b(button) {
   display: inline-block;
   @include button-base();
-  @include button-shape($--radius-md);
+  @include button-shape(var(--radius-md));
   @include button-size(
-    $--button-height-md,
-    $--button-padding-h-md,
-    $--button-font-size-md,
-    $--button-icon-size-md,
+    var(--button-height-md),
+    var(--button-padding-h-md),
+    var(--button-font-size-md),
+    var(--button-icon-size-md),
   );
   @include button-theme(
-    $--button-default-background,
-    $--button-default-border,
-    $--button-default-color,
-    $--button-default-active-background,
-    $--button-default-active-border,
-    $--button-default-active-color,
-    $--button-default-background,
-    $--button-default-border,
-    $--color-text-disabled,
-    $--button-disabled-opacity,
+    var(--button-default-background),
+    var(--button-default-border),
+    var(--button-default-color),
+    var(--button-default-active-background),
+    var(--button-default-active-border),
+    var(--button-default-active-color),
+    var(--button-default-background),
+    var(--button-default-border),
+    var(--color-text-disabled),
+    var(--button-disabled-opacity),
   );
   @include button-ghost(
-    $--button-default-ghost-border,
-    $--button-default-ghost-color,
-    $--button-default-ghost-active-border,
-    $--button-default-ghost-active-color,
+    var(--button-default-ghost-border),
+    var(--button-default-ghost-color),
+    var(--button-default-ghost-active-border),
+    var(--button-default-ghost-active-color),
   );
   @include button-link(
-    $--button-default-color,
-    $--button-default-active-color,
+    var(--button-default-color),
+    var(--button-default-active-color),
   );
 
   /* Button sizes */
   @include m(lg) {
     @include button-size(
-      $--button-height-lg,
-      $--button-padding-h-lg,
-      $--button-font-size-lg,
-      $--button-icon-size-lg,
+      var(--button-height-lg),
+      var(--button-padding-h-lg),
+      var(--button-font-size-lg),
+      var(--button-icon-size-lg),
     );
   }
 
   @include m(md) {
     @include button-size(
-      $--button-height-md,
-      $--button-padding-h-md,
-      $--button-font-size-md,
-      $--button-icon-size-md,
+      var(--button-height-md),
+      var(--button-padding-h-md),
+      var(--button-font-size-md),
+      var(--button-icon-size-md),
     );
   }
 
   @include m(sm) {
     @include button-size(
-      $--button-height-sm,
-      $--button-padding-h-sm,
-      $--button-font-size-sm,
-      $--button-icon-size-sm,
+      var(--button-height-sm),
+      var(--button-padding-h-sm),
+      var(--button-font-size-sm),
+      var(--button-icon-size-sm),
     );
   }
 
   @include m(xs) {
     @include button-size(
-      $--button-height-xs,
-      $--button-padding-h-xs,
-      $--button-font-size-xs,
-      $--button-icon-size-xs,
+      var(--button-height-xs),
+      var(--button-padding-h-xs),
+      var(--button-font-size-xs),
+      var(--button-icon-size-xs),
     );
   }
 
   /* Button themes */
   @include m(primary) {
     @include button-theme(
-      $--button-primary-background,
-      $--button-primary-border,
-      $--button-primary-color,
-      $--button-primary-active-background,
-      $--button-primary-active-border,
-      $--button-primary-active-color,
-      $--button-primary-background,
-      $--button-primary-border,
-      $--button-primary-color,
-      $--button-disabled-opacity,
+      var(--button-primary-background),
+      var(--button-primary-border),
+      var(--button-primary-color),
+      var(--button-primary-active-background),
+      var(--button-primary-active-border),
+      var(--button-primary-active-color),
+      var(--button-primary-background),
+      var(--button-primary-border),
+      var(--button-primary-color),
+      var(--button-disabled-opacity),
     );
     @include button-ghost(
-      $--button-primary-ghost-border,
-      $--button-primary-ghost-color,
-      $--button-primary-ghost-active-border,
-      $--button-primary-ghost-active-color,
+      var(--button-primary-ghost-border),
+      var(--button-primary-ghost-color),
+      var(--button-primary-ghost-active-border),
+      var(--button-primary-ghost-active-color),
     );
     @include button-link(
-      $--button-primary-ghost-color,
-      $--button-primary-ghost-active-color,
+      var(--button-primary-ghost-color),
+      var(--button-primary-ghost-active-color),
     );
   }
 
   @include m(danger) {
     @include button-theme(
-      $--button-danger-background,
-      $--button-danger-border,
-      $--button-danger-color,
-      $--button-danger-active-background,
-      $--button-danger-active-border,
-      $--button-danger-active-color,
-      $--button-danger-background,
-      $--button-danger-border,
-      $--button-danger-color,
-      $--button-disabled-opacity,
+      var(--button-danger-background),
+      var(--button-danger-border),
+      var(--button-danger-color),
+      var(--button-danger-active-background),
+      var(--button-danger-active-border),
+      var(--button-danger-active-color),
+      var(--button-danger-background),
+      var(--button-danger-border),
+      var(--button-danger-color),
+      var(--button-disabled-opacity),
     );
     @include button-ghost(
-      $--button-danger-ghost-border,
-      $--button-danger-ghost-color,
-      $--button-danger-ghost-active-border,
-      $--button-danger-ghost-active-color,
+      var(--button-danger-ghost-border),
+      var(--button-danger-ghost-color),
+      var(--button-danger-ghost-active-border),
+      var(--button-danger-ghost-active-color),
     );
   }
 
@@ -122,15 +122,15 @@
   }
 
   @include m(radius) {
-    @include button-shape($--radius-md);
+    @include button-shape(var(--radius-md));
   }
 
   @include m(round) {
-    @include button-shape($--radius-round);
+    @include button-shape(var(--radius-round));
   }
 
   @include m(circle) {
-    @include button-shape($--radius-circle);
+    @include button-shape(var(--radius-circle));
   }
 
   @include e(content) {

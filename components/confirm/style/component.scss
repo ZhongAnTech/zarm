@@ -10,14 +10,14 @@
 
     &__button {
       flex: 1;
-      height: $--confirm-button-height;
-      line-height: $--confirm-button-height;
-      font-size: $--confirm-button-font-size;
+      height: var(--confirm-button-height);
+      line-height: var(--confirm-button-height);
+      font-size: var(--confirm-button-font-size);
       @include button-base();
       @include onepx(top);
 
       &:active {
-        background-color: $--background-active;
+        background-color: var(--background-active);
       }
 
       &:not(:first-of-type) {
@@ -25,7 +25,7 @@
       }
 
       @include m(ok) {
-        color: $--theme-primary;
+        color: var(--theme-primary);
       }
     }
   }
