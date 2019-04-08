@@ -18,7 +18,7 @@ const locales = {
     },
     Confirm: {
       cancelText: 'Cancel',
-      okText: 'Ok',
+      okText: 'OK',
     },
     Select: {
       placeholder: 'please select',
