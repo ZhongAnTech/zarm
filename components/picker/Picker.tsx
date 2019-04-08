@@ -12,9 +12,6 @@ export interface PickerProps extends BasePickerProps {
 
 export default class Picker extends PureComponent<PickerProps, any> {
   static defaultProps = {
-    title: '请选择',
-    cancelText: '取消',
-    okText: '确定',
     dataSource: [],
     prefixCls: 'za-picker',
     valueMember: 'value',
@@ -24,7 +21,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   private tempValue;
   private tempObjValue;
-  private isScrolling;
+  private isScrolling = false;
 
   constructor(props) {
     super(props);
@@ -71,18 +68,17 @@ export default class Picker extends PureComponent<PickerProps, any> {
     this.setState({
       value,
       objValue,
+      visible: false,
     });
 
     const { onOk } = this.props;
     if (typeof onOk === 'function') {
       onOk(objValue);
     }
-    this.toggle();
   }
 
   onMaskClick = () => {
     const { onMaskClick } = this.props;
-    this.onCancel();
     if (typeof onMaskClick === 'function') {
       onMaskClick();
     }
@@ -102,9 +98,8 @@ export default class Picker extends PureComponent<PickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, children, locale, ...others } = this.props;
     const { visible, value } = this.state;
-
     const cls = classnames(prefixCls, className);
 
     return (
@@ -114,9 +109,9 @@ export default class Picker extends PureComponent<PickerProps, any> {
       >
         <div className={cls} onClick={(e) => {e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText}</div>
-            <div className={`${prefixCls}__title`}>{title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText}</div>
+            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale.cancelText}</div>
+            <div className={`${prefixCls}__title`}>{title || locale.title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale.okText}</div>
           </div>
           <PickerView
             {...others}
