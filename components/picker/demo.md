@@ -261,25 +261,29 @@ class Demo extends React.Component {
     setTimeout(() => {
       this.setState({
         dataSource: CASCADE_DATA,
-        value: ['1', '12'],
+        // value: ['1', '12'],
       });
     }, 0);
   }
 
   render() {
-    const { visible, visible2, value, dataSource } = this.state;
+    const { visible, value, dataSource } = this.state;
     return (
       <div>
         <Cell hasArrow title="城市">
           <Select
             visible={visible}
-            placeholder="请选择省市区"
             value={value}
             dataSource={dataSource}
             onOk={(selected) => {
               console.log('Select onOk: ', selected);
               this.setState({
                 value: selected.map(item => item.value),
+              });
+            }}
+            onMaskClick={() => {
+              this.setState({
+                visible: false,
               });
             }}
           />

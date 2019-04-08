@@ -71,5 +71,11 @@
         font-size: r(16);
       }
     }
+
+    @include e(footer) {
+      @include b(icon) {
+        font-size: r(16);
+      }
+    }
   }
 }

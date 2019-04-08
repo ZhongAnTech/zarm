@@ -8,6 +8,7 @@ module.exports = {
   ],
   setupTestFrameworkScriptFile: require.resolve('./setup.js'),
   testRegex: '/__tests__/[^.]+\\.test(\\.jsx|[^d]\\.ts)$',
+  // testRegex: 'wheel/__tests__/[^.]+\\.test(\\.jsx|[^d]\\.ts)$',
   collectCoverageFrom: [
     'components/**/*.{ts,tsx}',
     '!components/*/*.native.{ts,tsx}',
