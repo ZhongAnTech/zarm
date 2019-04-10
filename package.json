@@ -67,7 +67,7 @@
     "react-dom": ">=16.0.0"
   },
   "dependencies": {
-    "better-scroll": "1.12.6",
+    "better-scroll": "1.15.1",
     "classnames": "2.2.6",
     "create-react-context": "0.2.3",
     "normalize.css": "8.0.1",

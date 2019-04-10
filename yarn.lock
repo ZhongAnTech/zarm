@@ -3089,10 +3089,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-better-scroll@1.12.6:
-  version "1.12.6"
-  resolved "https://registry.yarnpkg.com/better-scroll/-/better-scroll-1.12.6.tgz#7548860f8b8c08c87e5af062e1da6e2c68c98337"
-  integrity sha512-blo8gDgoJKJphhdNeklkSNT6pWrQvNk+sZ9q9yDo7dQXJZj8aKAMJdSJp+cwU0pxNTtScaYkxYT8yJ5ZttAN/w==
+better-scroll@1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/better-scroll/-/better-scroll-1.15.1.tgz#cd390715704fe2d1654bba0778ddf0fd28015572"
+  integrity sha512-HL+jm6tk2pBylSZBfZLtfdwNhGckLbwiBAEx+Z2+8PrHJ6QAZp96txOVEFWSBgUAwPg5YSioMOxMqws5GdkXKA==
   dependencies:
     babel-runtime "^6.0.0"
 
