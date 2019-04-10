@@ -24,7 +24,9 @@
     border-radius: 50%;
     background-color: $--slider-handle-background;
     box-shadow: $--slider-handle-shadow;
-
+    & > div {
+      display: block;
+    }
     @include e(handle__shadow) {
       width: $--slider-handle-size;
       height: $--slider-handle-size;
