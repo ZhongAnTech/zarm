@@ -13,17 +13,33 @@ exports[`Tooltip direction 1`] = `
   <div
     className="za-tooltip"
   >
-    <div
-      className="za-tooltip-content za-tooltip-placement-top"
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="za-tooltip__content za-tooltip__placement__top"
+          >
+            hello
+            <span
+              class="za-tooltip__arrow"
+              id="za-tooltip-arrow"
+            />
+          </div>
+        </body>
+      }
     >
-      hello
-      <span
-        className="za-tooltip-arrow"
-        id="za-tooltip-arrow"
-      />
-    </div>
+      <div
+        className="za-tooltip__content za-tooltip__placement__top"
+      >
+        hello
+        <span
+          className="za-tooltip__arrow"
+          id="za-tooltip-arrow"
+        />
+      </div>
+    </Portal>
     <span
-      className="za-tooltip-inner"
+      className="za-tooltip__inner"
     >
       <span>
         foo
@@ -46,17 +62,35 @@ exports[`Tooltip visible 1`] = `
   <div
     className="za-tooltip"
   >
-    <div
-      className="za-tooltip-content za-tooltip-content-show za-tooltip-placement-top"
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="za-tooltip__content za-tooltip__content--show za-tooltip__placement__top"
+            style="position: fixed; top: 0px; transform: translate3d(NaNpx, NaNpx, 0); left: 0px;"
+          >
+            hello
+            <span
+              class="za-tooltip__arrow"
+              id="za-tooltip-arrow"
+              style=""
+            />
+          </div>
+        </body>
+      }
     >
-      hello
-      <span
-        className="za-tooltip-arrow"
-        id="za-tooltip-arrow"
-      />
-    </div>
+      <div
+        className="za-tooltip__content za-tooltip__content--show za-tooltip__placement__top"
+      >
+        hello
+        <span
+          className="za-tooltip__arrow"
+          id="za-tooltip-arrow"
+        />
+      </div>
+    </Portal>
     <span
-      className="za-tooltip-inner"
+      className="za-tooltip__inner"
     >
       <span>
         foo

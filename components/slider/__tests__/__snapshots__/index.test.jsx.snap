@@ -5,10 +5,10 @@ exports[`Slider defaultValue 1`] = `
   className="za-slider"
 >
   <div
-    className="za-slider-line"
+    className="za-slider__line"
   >
     <div
-      className="za-slider-line-bg"
+      className="za-slider__line__bg"
       style={
         Object {
           "width": 0,
@@ -25,7 +25,7 @@ exports[`Slider defaultValue 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={10}
-      className="za-slider-handle"
+      className="za-slider__handle"
       role="slider"
       style={
         Object {
@@ -53,13 +53,13 @@ exports[`Slider defaultValue 1`] = `
 
 exports[`Slider disabled 1`] = `
 <div
-  className="za-slider disabled"
+  className="za-slider za-slider--disabled"
 >
   <div
-    className="za-slider-line"
+    className="za-slider__line"
   >
     <div
-      className="za-slider-line-bg"
+      className="za-slider__line__bg"
       style={
         Object {
           "width": 0,
@@ -76,7 +76,7 @@ exports[`Slider disabled 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
-      className="za-slider-handle"
+      className="za-slider__handle"
       role="slider"
       style={
         Object {
@@ -107,10 +107,10 @@ exports[`Slider max 1`] = `
   className="za-slider"
 >
   <div
-    className="za-slider-line"
+    className="za-slider__line"
   >
     <div
-      className="za-slider-line-bg"
+      className="za-slider__line__bg"
       style={
         Object {
           "width": 0,
@@ -127,7 +127,7 @@ exports[`Slider max 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
-      className="za-slider-handle"
+      className="za-slider__handle"
       role="slider"
       style={
         Object {
@@ -158,10 +158,10 @@ exports[`Slider min 1`] = `
   className="za-slider"
 >
   <div
-    className="za-slider-line"
+    className="za-slider__line"
   >
     <div
-      className="za-slider-line-bg"
+      className="za-slider__line__bg"
       style={
         Object {
           "width": 0,
@@ -178,7 +178,7 @@ exports[`Slider min 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
-      className="za-slider-handle"
+      className="za-slider__handle"
       role="slider"
       style={
         Object {
@@ -209,10 +209,10 @@ exports[`Slider shallows correctly 1`] = `
   className="za-slider"
 >
   <div
-    className="za-slider-line"
+    className="za-slider__line"
   >
     <div
-      className="za-slider-line-bg"
+      className="za-slider__line__bg"
       style={
         Object {
           "width": 0,
@@ -229,7 +229,7 @@ exports[`Slider shallows correctly 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
-      className="za-slider-handle"
+      className="za-slider__handle"
       role="slider"
       style={
         Object {
@@ -260,10 +260,10 @@ exports[`Slider step 1`] = `
   className="za-slider"
 >
   <div
-    className="za-slider-line"
+    className="za-slider__line"
   >
     <div
-      className="za-slider-line-bg"
+      className="za-slider__line__bg"
       style={
         Object {
           "width": 0,
@@ -280,7 +280,7 @@ exports[`Slider step 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
-      className="za-slider-handle"
+      className="za-slider__handle"
       role="slider"
       style={
         Object {
@@ -311,10 +311,10 @@ exports[`Slider value 1`] = `
   className="za-slider"
 >
   <div
-    className="za-slider-line"
+    className="za-slider__line"
   >
     <div
-      className="za-slider-line-bg"
+      className="za-slider__line__bg"
       style={
         Object {
           "width": 0,
@@ -331,7 +331,7 @@ exports[`Slider value 1`] = `
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={10}
-      className="za-slider-handle"
+      className="za-slider__handle"
       role="slider"
       style={
         Object {
