@@ -44,7 +44,7 @@ class Demo extends React.Component {
           <Badge theme="warning" />
         </div>
         <div className="box">
-          <Badge theme="error" />
+          <Badge theme="danger" />
         </div>
         <div className="box">
           <Badge shape="round" text="999+" theme="primary" />
@@ -56,7 +56,7 @@ class Demo extends React.Component {
           <Badge shape="round" text="999+" theme="warning" />
         </div>
         <div className="box">
-          <Badge shape="round" text="999+" theme="error" />
+          <Badge shape="round" text="999+" theme="danger" />
         </div>
       </div>
     )
@@ -132,7 +132,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'error' | 设置主题，可选值为 `default`、`primary`、`info`、`success`、`warning`、`error` |
+| theme | string | 'danger' | 设置主题，可选值为 `default`、`primary`、`success`、`warning`、`danger` |
 | shape | string | 'dot' | 设置形状，可选值为 `dot`、`rect` 、`radius`、`round`、`circle`、`leaf` |
 | sup | bool | false | 是否上标位置 |
 | text | string | - | 设置显示的文字 |

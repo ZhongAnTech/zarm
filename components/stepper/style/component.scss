@@ -1,73 +1,65 @@
-@import 'mixins';
-
-$prefixCls: $prefixCls-stepper;
-
-.#{$prefixCls} {
+@include b(stepper) {
   display: flex;
 
-  &-sub,
-  &-plus {
-    &.#{$prefixCls-button} {
-      width: $stepper-height-md;
-      padding: 0;
+  @include e(sub, plus) {
+    width: $--stepper-height-md;
+    padding: 0;
 
-      .#{$prefixCls-icon} {
-        font-size: $stepper-icon-font-size-md;
-      }
+    @include b(icon) {
+      font-size: $--stepper-icon-font-size-md;
     }
   }
 
-  &-input {
+  @include e(input) {
     position: relative;
-    width: $stepper-input-width-md;
-    height: $stepper-height-md;
-    margin: 0 $stepper-input-margin-h-md;
-    padding: 0 $stepper-input-padding-h-md;
-    font-size: $stepper-input-font-size;
-    color: $color-text;
+    width: $--stepper-input-width-md;
+    height: $--stepper-height-md;
+    margin: 0 $--stepper-input-margin-h-md;
+    padding: 0 $--stepper-input-padding-h-md;
+    font-size: $--stepper-input-font-size-md;
+    color: $--color-text;
     text-align: center;
-    border: r(1) solid $border-color;
+    border: r(1) solid $--border-color;
     border-radius: 0;
     outline: 0;
     -webkit-appearance: none;
+  }
 
-    &.disabled {
-      color: $stepper-input-disabled;
-      opacity: $opacity-disabled;
+  @include m(disabled) {
+    @include e(input) {
+      background: #fff;
+      color: $--stepper-input-disabled;
+      opacity: $--opacity-disabled;
     }
   }
 
-  &.shape-radius {
-    .#{$prefixCls}-input {
-      border-radius: $radius-md;
+  @include m(radius) {
+    @include e(input) {
+      border-radius: $--radius-md;
     }
   }
 
-  &.shape-circle {
-    .#{$prefixCls}-input {
-      border-radius: $stepper-height-md;
+  @include m(circle) {
+    @include e(input) {
+      border-radius: $--stepper-height-md;
     }
   }
 
-  &.size-sm {
-    .#{$prefixCls} {
-      &-input {
-        width: $stepper-input-width-sm;
-        height: $stepper-height-sm;
-        margin: 0 $stepper-input-margin-h-sm;
-        padding: 0 $stepper-input-padding-h-sm;
-      }
+  @include m(lg) {
+    @include e(input) {
+      width: $--stepper-input-width-lg;
+      height: $--stepper-height-lg;
+      margin: 0 $--stepper-input-margin-h-lg;
+      padding: 0 $--stepper-input-padding-h-lg;
+      font-size: $--stepper-input-font-size-lg;
+    }
 
-      &-sub,
-      &-plus {
-        &.#{$prefixCls-button} {
-          width: $stepper-height-sm;
-          padding: 0;
+    @include e(sub, plus) {
+      width: $--stepper-height-lg;
+      padding: 0;
 
-          .#{$prefixCls-icon} {
-            font-size: $stepper-icon-font-size-sm;
-          }
-        }
+      @include b(icon) {
+        font-size: $--stepper-icon-font-size-lg;
       }
     }
   }

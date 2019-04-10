@@ -1,68 +1,65 @@
 @import "../../button/style/mixins";
 
-$prefixCls: $prefixCls-keyboard;
-
-.#{$prefixCls} {
+@include b(keyboard) {
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  color: $color-text;
+  color: $--color-text;
   user-select: none;
 
-  &-item {
+  @include e(item) {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: $keyboard-item-font-size;
+    font-size: $--keyboard-item-font-size;
     position: relative;
     @include button-base();
     @include button-theme(
-      $button-default-background,
-      $button-default-border,
-      $button-default-color,
-      $button-default-active-background,
-      $button-default-active-border,
-      $button-default-active-color,
-      $button-default-background,
-      $button-default-border,
-      $color-text-disabled,
-      $button-disabled-opacity
+      $--button-default-background,
+      $--button-default-border,
+      $--button-default-color,
+      $--button-default-active-background,
+      $--button-default-active-border,
+      $--button-default-active-color,
+      $--button-default-background,
+      $--button-default-border,
+      $--color-text-disabled,
+      1,
     );
 
-    &:active {
-      color: $color-text;
-    }
-
-    &-ok {
+    @include m(ok) {
       font-size: r(21);
       @include button-theme(
-        $button-primary-background,
-        $button-primary-border,
-        $button-primary-color,
-        $button-primary-active-background,
-        $button-primary-active-border,
-        $button-primary-active-color,
-        $button-primary-background,
-        $button-primary-border,
-        $button-primary-color,
-        $button-disabled-opacity
+        $--button-primary-background,
+        $--button-primary-border,
+        $--button-primary-color,
+        $--button-primary-active-background,
+        $--button-primary-active-border,
+        $--button-primary-active-color,
+        $--button-primary-background,
+        $--button-primary-border,
+        $--button-primary-color,
+        1,
       );
     }
 
-    &-disabled,
-    &-disabled:active {
+    @include m(disabled) {
       background-color: #fff;
+
+      &:active {
+        background-color: #fff;
+      }
     }
   }
 
-  &-keys {
+  @include e(keys) {
     display: flex;
     flex-wrap: wrap;
     width: 75%;
 
-    .#{$prefixCls}-item {
+    @include e(item) {
       width: 33.333333%;
-      height: $keyboard-item-height;
+      height: $--keyboard-item-height;
       @include onepx(top left);
 
       &:nth-of-type(3n+1) {
@@ -71,12 +68,12 @@ $prefixCls: $prefixCls-keyboard;
     }
   }
 
-  &-handle {
+  @include e(handle) {
     display: flex;
     flex-direction: column;
     width: 25%;
 
-    .#{$prefixCls}-item {
+    @include e(item) {
       flex: 1;
 
       &:first-of-type {
@@ -85,7 +82,7 @@ $prefixCls: $prefixCls-keyboard;
     }
   }
 
-  .#{$prefixCls-icon} {
-    font-size: $keyboard-icon-font-size;
+  @include b(icon) {
+    font-size: $--keyboard-icon-font-size;
   }
 }

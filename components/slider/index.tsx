@@ -154,14 +154,15 @@ export default class Slider extends PureComponent<SliderProps, any> {
   render() {
     const { prefixCls, className, disabled, min, max } = this.props;
     const { value, offset, tooltip } = this.state;
+
     const cls = classnames(prefixCls, className, {
-      disabled,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     return (
       <div className={cls}>
-        <div className={`${prefixCls}-line`} ref={(ele) => { this.line = ele; }}>
-          <div className={`${prefixCls}-line-bg`} style={{ width: offset }} />
+        <div className={`${prefixCls}__line`} ref={(ele) => { this.line = ele; }}>
+          <div className={`${prefixCls}__line__bg`} style={{ width: offset }} />
         </div>
         <Drag
           onDragStart={this.onDragStart}
@@ -169,7 +170,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
           onDragEnd={this.onDragEnd}
         >
           <div
-            className={`${prefixCls}-handle`}
+            className={`${prefixCls}__handle`}
             role="slider"
             aria-valuemin={min}
             aria-valuemax={max}
@@ -177,7 +178,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
             style={{ left: offset }}
           >
             <Tooltip visible={tooltip} title={value} >
-            <div className={`${prefixCls}-handle-shadow`} />
+              <div className={`${prefixCls}-handle-shadow`} />
             </Tooltip>
           </div>
         </Drag>

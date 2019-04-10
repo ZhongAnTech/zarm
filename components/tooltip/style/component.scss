@@ -1,114 +1,83 @@
-$prefixCls: $prefixCls-tooltip;
-$arrow: #{$prefixCls}-arrow;
+@import 'mixins';
 
-.#{$prefixCls} {
+@include b(tooltip) {
   display: inline-block;
 
-  &-content {
-    display: none;
-    z-index: 999; // 动态添加样式 position: fixed / absolute
-    padding: $padding-v-md $padding-h-md;
-    background-color: rgba(0, 0, 0, $opacity-tooltip);
-    border-radius: $radius-md;
-    font-size: $tooltip-font-size;
-    color: $tooltip-color;
-    border: r(1) solid rgba(0, 0, 0, $opacity-tooltip);
-    box-shadow: r(1) r(2) r(3) rgba(0, 0, 0, 0.1);
-
-    &-show {
-      display: block;
-    }
-
-    &-radius {
-      border-radius: r(2);
-    }
-  }
-
-  &-inner {
+  @include e(inner) {
     display: block;
   }
 
-  &-placement-right,
-  &-placement-rightTop,
-  &-placement-rightBottom {
+  @include e(content) {
+    display: none;
+    z-index: $--zindex-modal; // 动态添加样式 position: fixed / absolute
+    padding: $--tooltip-padding-v $--tooltip-padding-h;
+    background-color: rgba(0, 0, 0, $--opacity-tooltip);
+    border-radius: 4px;
+    font-size: $--tooltip-font-size;
+    color: $--tooltip-color;
+    border: r(1) solid rgba(0, 0, 0, $--opacity-tooltip);
+
+    @include m(show) {
+      display: block;
+    }
+  }
+
+  @include e(arrow) {
+    position: absolute;
+    width: $--tooltip-arrow-size;
+    height: $--tooltip-arrow-size;
+    border-width: 0;
+    border-style: solid;
+    background-color: rgba(0, 0, 0, $--opacity-tooltip);
+    border-color: rgb(0, 0, 0);
+    transform: rotate(45deg);
+  }
+
+  &__placement__right,
+  &__placement__rightTop,
+  &__placement__rightBottom {
     margin-left: r(10);
 
-    .za-tooltip-arrow {
+    @include arrow () {
       left: r(-4);
       border-left-width: r(1);
       border-bottom-width: r(1);
     }
   }
 
-  &-placement-top,
-  &-placement-topLeft,
-  &-placement-topRight {
+  &__placement__top,
+  &__placement__topLeft,
+  &__placement__topRight {
     margin-bottom: r(10);
 
-    .za-tooltip-arrow {
+    @include arrow () {
       bottom: r(-4);
       border-right-width: r(1);
       border-bottom-width: r(1);
     }
   }
 
-  &-placement-bottom,
-  &-placement-bottomLeft,
-  &-placement-bottomRight {
+  &__placement__bottom,
+  &__placement__bottomLeft,
+  &__placement__bottomRight {
     margin-top: r(10);
 
-    .za-tooltip-arrow {
+    @include arrow () {
       top: r(-4);
       border-left-width: r(1);
       border-top-width: r(1);
     }
   }
 
-  &-placement-left,
-  &-placement-leftTop,
-  &-placement-leftBottom {
+  &__placement__left,
+  &__placement__leftTop,
+  &__placement__leftBottom {
     margin-right: r(10);
 
-    .za-tooltip-arrow {
+    @include arrow () {
       right: r(-4);
       border-right-width: r(1);
       border-top-width: r(1);
-    }
-  }
-
-  &-arrow {
-    position: absolute;
-    width: r(5);
-    height: r(5);
-    border-width: 0;
-    border-style: solid;
-    background-color: rgba(0, 0, 0, $opacity-tooltip);
-    border-color: rgba(0, 0, 0, $opacity-tooltip);
-    transform: rotate(45deg);
-  }
-
-  &-mask {
-    position: fixed;
-    display: none;
-    z-index: 998;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #000;
-    opacity: 0.2;
-
-    &-show {
-      display: block;
-    }
-  }
-
-  &-actions {
-    padding-top: r(10);
-    text-align: right;
-
-    button {
-      margin-left: r(10);
     }
   }
 }

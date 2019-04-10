@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import SwipeAction from '../index';
 import Button from '../../button/index';
@@ -27,12 +27,12 @@ function createMoveTouchEventObject(props) {
   return moveTouchEvent;
 }
 
-function createMouseEventObject({ x = 0, y = 0, preventDefault = () => {} }) {
-  return {
-    ...createClientXYObject(x, y),
-    preventDefault,
-  };
-}
+// function createMouseEventObject({ x = 0, y = 0, preventDefault = () => {} }) {
+//   return {
+//     ...createClientXYObject(x, y),
+//     preventDefault,
+//   };
+// }
 
 describe('SwipeAction', () => {
   it('renders correctly', () => {
@@ -99,7 +99,7 @@ describe('SwipeAction', () => {
       >
         <Cell>右滑看看</Cell>
       </SwipeAction>
-    ).find('.za-swipe-action-content');
+    ).find('.za-swipe-action__content');
     wrapper.simulate('touchStart', {
       touches: [10, 0],
     });
@@ -128,7 +128,7 @@ describe('SwipeAction', () => {
       >
         <Cell>右滑看看</Cell>
       </SwipeAction>
-    ).find('.za-swipe-action-content');
+    ).find('.za-swipe-action__content');
     wrapper.simulate('touchStart', createStartTouchEventObject({ x: 0, y: 0, preventDefault }));
     wrapper.simulate('touchMove', createMoveTouchEventObject({ x: 10, y: 0, preventDefault }));
     wrapper.simulate('touchEnd', createMoveTouchEventObject({ x: 275, y: 0, preventDefault }));

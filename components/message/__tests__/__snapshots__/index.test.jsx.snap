@@ -2,19 +2,19 @@
 
 exports[`Message closable 1`] = `
 <div
-  className="za-message theme-primary"
+  className="za-message za-message--primary"
   onClick={[Function]}
 >
   <div
-    className="za-message-header"
+    className="za-message__header"
   />
   <div
-    className="za-message-body"
+    className="za-message__body"
   >
     foo
   </div>
   <div
-    className="za-message-footer"
+    className="za-message__footer"
   >
     <Icon
       onClick={[Function]}
@@ -27,19 +27,19 @@ exports[`Message closable 1`] = `
 
 exports[`Message hasArrow 1`] = `
 <div
-  className="za-message theme-primary"
+  className="za-message za-message--primary"
   onClick={[Function]}
 >
   <div
-    className="za-message-header"
+    className="za-message__header"
   />
   <div
-    className="za-message-body"
+    className="za-message__body"
   >
     foo
   </div>
   <div
-    className="za-message-footer"
+    className="za-message__footer"
   >
     <Icon
       prefixCls="za-icon"
@@ -51,13 +51,13 @@ exports[`Message hasArrow 1`] = `
 
 exports[`Message icon 1`] = `
 <div
-  class="za-message theme-primary"
+  class="za-message za-message--primary"
 >
   <div
-    class="za-message-header"
+    class="za-message__header"
   >
     <div
-      class="za-message-icon"
+      class="za-message__icon"
     >
       <img
         alt=""
@@ -66,7 +66,7 @@ exports[`Message icon 1`] = `
     </div>
   </div>
   <div
-    class="za-message-body"
+    class="za-message__body"
   >
     foo
   </div>
@@ -75,13 +75,13 @@ exports[`Message icon 1`] = `
 
 exports[`Message renders correctly 1`] = `
 <div
-  class="za-message theme-primary"
+  class="za-message za-message--primary"
 >
   <div
-    class="za-message-header"
+    class="za-message__header"
   />
   <div
-    class="za-message-body"
+    class="za-message__body"
   >
     foo
   </div>
@@ -90,13 +90,13 @@ exports[`Message renders correctly 1`] = `
 
 exports[`Message theme 1`] = `
 <div
-  class="za-message theme-error"
+  class="za-message za-message--danger"
 >
   <div
-    class="za-message-header"
+    class="za-message__header"
   />
   <div
-    class="za-message-body"
+    class="za-message__body"
   >
     foo
   </div>

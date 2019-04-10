@@ -1,6 +1,6 @@
-import { TouchableHighlight, TouchableOpacity } from 'react-native';
+import { TouchableHighlight, Text } from 'react-native';
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Button from '../index.native';
 
@@ -35,8 +35,13 @@ describe('Button', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('children is valid element', () => {
+    const wrapper = render(<Button><Text>foo</Text></Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('icon', () => {
-    const wrapper = render(<Button icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />}>foo</Button>);
+    const wrapper = render(<Button icon={<img alt="" src="https://zarm.design/images/logo.ce68565d.svg" />}>foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -70,8 +75,13 @@ describe('Button', () => {
   });
 
   it('ghost active', () => {
-    const wrapper = shallow(<Button ghost theme="primary">foo</Button>);
+    const wrapper = shallow(<Button ghost>foo</Button>);
     wrapper.setState({ isActive: true });
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('ghost disabled', () => {
+    const wrapper = shallow(<Button ghost disabled>foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

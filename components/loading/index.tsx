@@ -15,14 +15,12 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   };
 
   static zarmLoading: HTMLElement;
-  static isShow: boolean;
-  static show = (props) => {
+  static show = (props?: LoadingProps) => {
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
     }
     document.body.appendChild(Loading.zarmLoading);
     ReactDOM.render(<Loading {...props} visible />, Loading.zarmLoading);
-    Loading.isShow = true;
   }
 
   static hide = () => {

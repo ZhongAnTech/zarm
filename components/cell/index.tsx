@@ -36,36 +36,36 @@ export default class Cell extends PureComponent<CellProps, {}> {
     } = this.props;
 
     const cls = classnames(prefixCls, className, {
-      disabled,
-      'is-link': !disabled && !!onClick,
-      'has-arrow': hasArrow,
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--link`]: !disabled && !!onClick,
+      [`${prefixCls}--arrow`]: hasArrow,
     });
 
-    const titleCls = classnames(`${prefixCls}-title`, {
-      [`${prefixCls}-title-label`]: !!children,
+    const titleCls = classnames(`${prefixCls}__title`, {
+      [`${prefixCls}__title--label`]: !!children,
     });
 
-    const iconRender = icon && <div className={`${prefixCls}-icon`}>{icon}</div>;
+    const iconRender = icon && <div className={`${prefixCls}__icon`}>{icon}</div>;
     const titleRender = title && <div className={titleCls}>{title}</div>;
-    const contentRender = children && <div className={`${prefixCls}-content`}>{children}</div>;
-    const arrowRender = hasArrow && <div className={`${prefixCls}-arrow`} />;
+    const contentRender = children && <div className={`${prefixCls}__content`}>{children}</div>;
+    const arrowRender = hasArrow && <div className={`${prefixCls}__arrow`} />;
     const helpRender = help && (
-      <div className={`${prefixCls}-help`}>
+      <div className={`${prefixCls}__help`}>
         {help}
       </div>
     );
 
     return (
       <div className={cls} onClick={onClick} onTouchStart={() => {}} {...others}>
-        <div className={`${prefixCls}-inner`}>
-          <div className={`${prefixCls}-header`}>
+        <div className={`${prefixCls}__inner`}>
+          <div className={`${prefixCls}__header`}>
             {iconRender}
           </div>
-          <div className={`${prefixCls}-body`}>
+          <div className={`${prefixCls}__body`}>
             {titleRender}
             {contentRender}
           </div>
-          <div className={`${prefixCls}-footer`}>
+          <div className={`${prefixCls}__footer`}>
             {description}
           </div>
           {arrowRender}

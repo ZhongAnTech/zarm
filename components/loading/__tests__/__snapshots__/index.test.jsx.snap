@@ -2,17 +2,17 @@
 
 exports[`Confirm renders correctly 1`] = `
 <div
-  class="za-loading za-loading-open"
+  class="za-loading za-loading--open"
 >
   <div
-    class="za-loading-container"
+    class="za-loading__container"
   >
     <svg
-      class="za-activity-indicator rotate360 theme-primary size-lg"
+      class="za-activity-indicator rotate360 za-activity-indicator--lg"
       viewBox="0 0 62 62"
     >
       <circle
-        class="za-activity-indicator-path"
+        class="za-activity-indicator__path"
         cx="31"
         cy="31"
         fill="none"
@@ -20,12 +20,12 @@ exports[`Confirm renders correctly 1`] = `
         style="stroke-width:5"
       />
       <circle
-        class="za-activity-indicator-line"
+        class="za-activity-indicator__line"
         cx="31"
         cy="31"
         fill="none"
         r="28.5"
-        style="stroke-dasharray:26.860617188192727 179.0707812546182;stroke-width:5"
+        style="stroke-dasharray:35.81415625092364 179.0707812546182;stroke-width:5"
       />
     </svg>
   </div>

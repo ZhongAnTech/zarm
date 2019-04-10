@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Panel } from 'zarm';
-import { transform } from 'babel-standalone';
+import { transform } from '@babel/standalone';
+import locale from 'zarm/components/locale-provider/locale/zh_CN';
 import '../../components/style/entry';
 
 export default class Demo extends React.Component {
@@ -35,7 +36,8 @@ export default class Demo extends React.Component {
     }).then(({ args, argv }) => {
       value = value
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
-        .replace('mountNode', `document.getElementById('${this.containerId}')`);
+        .replace('mountNode', `document.getElementById('${this.containerId}')`)
+        .replace('<Demo />', `<zarm.LocaleProvider locale={${JSON.stringify(locale)}}><Demo /></zarm.LocaleProvider>`);
 
       const { code } = transform(value, {
         presets: ['es2015', 'react'],

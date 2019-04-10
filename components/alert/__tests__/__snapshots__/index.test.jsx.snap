@@ -2,43 +2,43 @@
 
 exports[`Alert renders correctly 1`] = `
 <div
-  class="za-modal za-alert"
+  class="za-modal za-alert za-modal--radius"
   style="-webkit-animation-duration:200ms;animation-duration:200ms"
 >
   <div
-    class="za-modal-wrapper"
+    class="za-modal__wrapper"
   >
     <div
-      class="za-modal-dialog"
+      class="za-modal__dialog"
       style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms"
     >
       <div
-        class="za-modal-header"
+        class="za-modal__header"
       >
         <div
-          class="za-modal-header-title"
+          class="za-modal__header__title"
         >
           警告
         </div>
       </div>
       <div
-        class="za-modal-body za-alert-body"
+        class="za-modal__body za-alert__body"
       >
         这里是警告信息
       </div>
       <div
-        class="za-modal-footer za-alert-footer"
+        class="za-modal__footer za-alert__footer"
       >
         <a
-          class="za-alert-footer-button"
+          class="za-alert__footer__button"
         >
-          关闭
+          Close
         </a>
       </div>
     </div>
   </div>
   <div
-    class="za-mask type-normal"
+    class="za-mask za-mask--normal"
   />
 </div>
 `;

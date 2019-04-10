@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 import Loadable from 'react-loadable';
 import { Loading } from 'zarm';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -26,7 +27,7 @@ class App extends Component {
   render() {
     const { history, location, match } = this.props;
     const currentKey = location.pathname.split('/')[1] || '/';
-    const { form, feedback, view, navigation } = components;
+    const { form, feedback, view, navigation, other } = components;
 
     return (
       // <TransitionGroup>
@@ -52,7 +53,7 @@ class App extends Component {
       <Switch key={location.pathname} location={location}>
         <Route exact path="/" component={LoadableComponent(() => import('../pages/Index'))} />
         {
-          [...form, ...feedback, ...view, ...navigation].map((component, i) => {
+          [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => {
             return <Route key={+i} path={`/${Format.camel2Dash(component.name)}`} component={LoadableComponent(() => import(`../pages/${component.name}Page`))} />;
           })
         }
@@ -62,4 +63,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default withRouter(hot(module)(App));

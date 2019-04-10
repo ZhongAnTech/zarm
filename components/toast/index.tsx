@@ -18,15 +18,29 @@ export default class Toast extends PureComponent<ToastProps, any> {
   };
 
   static show = (children: any, stayTime?: number, onClose?: () => void) => {
-    ReactDOM.render(
-      <Toast visible stayTime={stayTime} onClose={onClose}>{children}</Toast>
-      , window.zarmToast);
+    if (!Toast.mounted) {
+      Toast.zarmToast = document.createElement('div');
+      document.body.appendChild(Toast.zarmToast);
+      Toast.mounted = true;
+    }
+    if (Toast.zarmToast) {
+      ReactDOM.render(
+        <Toast visible stayTime={stayTime} onClose={onClose}>
+          {children}
+        </Toast>,
+        Toast.zarmToast,
+      );
+    }
   }
 
   static hide = () => {
-    ReactDOM.render(<Toast visible={false} />, window.zarmToast);
+    if (Toast.zarmToast) {
+      ReactDOM.render(<Toast visible={false} />, Toast.zarmToast);
+    }
   }
 
+  private static zarmToast: undefined | HTMLDivElement;
+  private static mounted: boolean = false;
   private timer: number;
 
   constructor(props) {
@@ -91,26 +105,15 @@ export default class Toast extends PureComponent<ToastProps, any> {
     const { prefixCls, className, mask, onMaskClick, children } = this.props;
     const { visible } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`${prefixCls}-open`]: visible,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--open`]: visible,
     });
 
     return (
       <div className={cls}>
-        <div className={`${prefixCls}-container`}>
-          {children}
-        </div>
+        <div className={`${prefixCls}__container`}>{children}</div>
         {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
       </div>
     );
   }
-}
-
-if (typeof window !== 'undefined') {
-  if (!window.zarmToast) {
-    window.zarmToast = document.createElement('div');
-    document.body.appendChild(window.zarmToast);
-  }
-
-  ReactDOM.render(<Toast visible={false} />, window.zarmToast);
 }

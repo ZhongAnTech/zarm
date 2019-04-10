@@ -7,29 +7,10 @@
 import { SearchBar } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: '默认关键字',
-      placeholder: '搜索',
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        value: '默认关键字2',
-        placeholder: '搜索你想购买的保险',
-      });
-    }, 0);
-  }
-
   render() {
     return (
       <div>
         <SearchBar
-          shape="round"
-          placeholder={this.state.placeholder}
           showCancel={false}
           onSubmit={(value) => {
             console.log(`搜索内容为${value}`);
@@ -79,6 +60,7 @@ class Demo extends React.Component {
           showCancel
           value={this.state.value}
           placeholder="搜索"
+          cancelText="取消"
           onChange={(value) => {
             console.log(value);
             this.setState({
@@ -102,6 +84,26 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
+## 多形状
+```jsx
+import { SearchBar } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <SearchBar shape="rect" />
+        <SearchBar shape="round" />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
 ## 手动获取焦点
 ```jsx
 import { SearchBar, Button } from 'zarm';
@@ -110,12 +112,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <SearchBar
-          shape="radius"
-          cancelText="取消"
-          placeholder="搜索"
-          ref={(ref) => { this.manualFocus = ref; }}
-        />
+        <SearchBar ref={(ref) => { this.manualFocus = ref; }} />
         <div className="button-wrap">
           <Button theme="primary" size="xs" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
         </div>
@@ -136,7 +133,7 @@ ReactDOM.render(<Demo />, mountNode);
 | placeholder | string | '搜索' | 占位符 |
 | value | string | - | 值 |
 | defaultValue | string | - | 初始值 |
-| shape | string | - | 形状，可选值 `radius`, `round` |
+| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` |
 | disabled | boolean | false | 是否禁用 |
 | showCancel | boolean | false | 是否一直展示取消按钮 |
 | cancelText | string | '取消' | 取消按钮显示的内容 |

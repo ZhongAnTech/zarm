@@ -1,56 +1,68 @@
-$prefixCls: $prefixCls-popup;
-
-.#{$prefixCls} {
+@include b(popup) {
   position: relative;
 
-  &-wrapper {
+  @include e(wrapper) {
     position: fixed;
     transform: translate(0, 0);
     transition-property: transform;
     overflow: auto;
+    z-index: $--zindex-popup;
     -webkit-overflow-scrolling: touch;
-    z-index: $zindex-popup;
+  }
 
-    &-bottom {
+  @include m(bottom) {
+    @include e(wrapper) {
       left: 0;
       bottom: 0;
       width: 100%;
     }
+  }
 
-    &-top {
+  @include m(top) {
+    @include e(wrapper) {
       left: 0;
       top: 0;
       width: 100%;
     }
+  }
 
-    &-left {
+  @include m(left) {
+    @include e(wrapper) {
       left: 0;
       top: 0;
       height: 100%;
     }
+  }
 
-    &-right {
+  @include m(right) {
+    @include e(wrapper) {
       right: 0;
       top: 0;
       height: 100%;
     }
   }
 
-  &-hidden {
-    .#{$prefixCls}-wrapper {
-      &-bottom {
+  @include m(hidden) {
+    @include m(bottom) {
+      @include e(wrapper) {
         transform: translate(0, 100%);
       }
+    }
 
-      &-top {
+    @include m(top) {
+      @include e(wrapper) {
         transform: translate(0, -100%);
       }
+    }
 
-      &-left {
+    @include m(left) {
+      @include e(wrapper) {
         transform: translate(-100%, 0);
       }
+    }
 
-      &-right {
+    @include m(right) {
+      @include e(wrapper) {
         transform: translate(100%, 0);
       }
     }

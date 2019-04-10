@@ -147,25 +147,20 @@ class Demo extends React.Component {
     };
   }
 
-  open(key) {
+  toggle(key) {
     this.setState({
-      [`${key}`]: true,
-    });
-  }
-
-  close(key) {
-    this.setState({
-      [`${key}`]: false,
+      [`${key}`]: !this.state[key],
     });
   }
 
   render() {
     const { alert, confirm } = this.state;
+
     return (
       <div>
         <Cell
           description={
-            <Button size="xs" theme="warning" onClick={() => this.open('alert')}>开启</Button>
+            <Button size="xs" theme="warning" onClick={() => this.toggle('alert')}>开启</Button>
           }
         >
           警告框 Alert
@@ -173,7 +168,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" theme="warning" onClick={() => this.open('confirm')}>开启</Button>
+            <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
           }
         >
           确认框 Confirm
@@ -184,7 +179,7 @@ class Demo extends React.Component {
           visible={alert}
           title="警告"
           message="这里是警告信息"
-          onCancel={() => this.close('alert')}
+          onCancel={() => this.toggle('alert')}
         />
 
         <Confirm
@@ -192,8 +187,8 @@ class Demo extends React.Component {
           visible={confirm}
           title="确认信息"
           message="你确定要这样做吗？"
-          onOk={() => alert('click ok')}
-          onCancel={() => this.close('confirm')}
+          onOk={() => window.alert('click ok')}
+          onCancel={() => this.toggle('confirm')}
         />
       </div>
     )

@@ -39,7 +39,7 @@ class Demo extends React.Component {
           <Icon
             type="question-round"
             theme="success"
-            onClick={() => window.history.go(1)}
+            onClick={() => window.alert('click icon')}
           />
         }
       />

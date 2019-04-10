@@ -4,8 +4,8 @@ export default interface PropsType {
   onKeyClick?: (key?: string) => void;
 }
 
-declare global {
-  interface Window {
-    zarmKeyboardPicker?: any;
-  }
-}
+// declare global {
+//   interface Window {
+//     zarmKeyboardPicker?: any;
+//   }
+// }

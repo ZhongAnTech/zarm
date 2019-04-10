@@ -12,15 +12,6 @@ class Demo extends React.Component {
         <Cell>
           <div className='tip'>
             <div  style={{'marginLeft':  60}}>
-              {
-                // ['topLeft', 'top', 'topRight'].map(item => {
-                //   return (
-                //     <Tooltip key={item} trigger='click'   title='Tooltip' direction={item}>
-                //       <div  style={{marginRight: 10}}>{item}</div>
-                //     </Tooltip>
-                //   );
-                // })
-              }
               <Tooltip direction="topLeft" title='topLeft text'>
                 <Button block  size="xs">TL</Button>
               </Tooltip>

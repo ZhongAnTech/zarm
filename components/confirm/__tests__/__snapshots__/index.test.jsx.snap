@@ -2,48 +2,48 @@
 
 exports[`Confirm renders correctly 1`] = `
 <div
-  class="za-modal za-confirm"
+  class="za-modal za-confirm za-modal--radius"
   style="-webkit-animation-duration:200ms;animation-duration:200ms"
 >
   <div
-    class="za-modal-wrapper"
+    class="za-modal__wrapper"
   >
     <div
-      class="za-modal-dialog"
+      class="za-modal__dialog"
       style="width:70%;-webkit-animation-duration:200ms;animation-duration:200ms"
     >
       <div
-        class="za-modal-header"
+        class="za-modal__header"
       >
         <div
-          class="za-modal-header-title"
+          class="za-modal__header__title"
         >
           确认信息
         </div>
       </div>
       <div
-        class="za-modal-body za-confirm-body"
+        class="za-modal__body za-confirm__body"
       >
         你确定要这样做吗？
       </div>
       <div
-        class="za-modal-footer za-confirm-footer"
+        class="za-modal__footer za-confirm__footer"
       >
         <a
-          class="za-confirm-footer-button block"
+          class="za-confirm__footer__button"
         >
-          取消
+          Cancel
         </a>
         <a
-          class="za-confirm-footer-button block za-confirm-footer-button-ok"
+          class="za-confirm__footer__button za-confirm__footer__button--ok"
         >
-          确定
+          OK
         </a>
       </div>
     </div>
   </div>
   <div
-    class="za-mask type-normal"
+    class="za-mask za-mask--normal"
   />
 </div>
 `;

@@ -147,7 +147,6 @@ class Tootip extends Component<PropsType, any> {
     if ( !this.reference && !this.pop ) { return false; }
     const { direction } = this.props;
     const { placement } = this.state;
-
     const referenceRc = this.reference.getBoundingClientRect();
     const popRc = this.pop.getBoundingClientRect();
     const dirArray = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
@@ -198,12 +197,12 @@ class Tootip extends Component<PropsType, any> {
       [className!]: !!className,
     });
     const sub = classnames({
-      [`${prefixCls}-inner`]: true,
+      [`${prefixCls}__inner`]: true,
     });
     const contentCls = classnames({
-      [`${prefixCls}-content`]: true,
-      [`${prefixCls}-content-show`]: visible,
-      [`${prefixCls}-placement-${placement}`]: !!placement,
+      [`${prefixCls}__content`]: true,
+      [`${prefixCls}__content--show`]: visible,
+      [`${prefixCls}__placement__${placement}`]: !!placement,
     });
     const inner = () => {
       return (
@@ -213,7 +212,7 @@ class Tootip extends Component<PropsType, any> {
         >
           {popContent}
           <span
-            className={`${prefixCls}-arrow`}
+            className={`${prefixCls}__arrow`}
             id={`${prefixCls}-arrow`}
           />
         </div>

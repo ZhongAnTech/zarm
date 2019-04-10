@@ -11,7 +11,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Message>普通</Message>
-        <Message theme="error">自定义主题</Message>
+        <Message theme="danger">自定义主题</Message>
         <Message icon={<Icon type="wrong-round" />}>自定义图标</Message>
       </div>
     )
@@ -31,8 +31,8 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Message hasArrow onClick={() => alert('click this message!')}>链接样式的</Message>
-        <Message closable>可关闭的</Message>
+        <Message hasArrow onClick={() => alert('click this message!')}>链接样式</Message>
+        <Message closable>可关闭</Message>
       </div>
     )
   }
@@ -47,7 +47,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`、`primary`、`info`、`success`、`warning`、`error` |
+| theme | string | 'primary' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
 | size | string | 'md' | 设置大小，可选值为 `md`、`lg` |
 | icon | ReactNode | - | 设置图标 |
 | closable | boolean | false | 是否显示关闭按钮 |

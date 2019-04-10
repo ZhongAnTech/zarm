@@ -74,14 +74,14 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Checkbox.Group type="button" shape="radius">
+            <Checkbox.Group type="button" shape="rect">
               <Checkbox value="0">选项一</Checkbox>
               <Checkbox value="1">选项二</Checkbox>
               <Checkbox value="2">选项三</Checkbox>
             </Checkbox.Group>
           }
         >
-          圆角
+          直角
         </Cell>
 
         <Cell
@@ -179,11 +179,10 @@ ReactDOM.render(<Demo />, mountNode);
 ### Checkbox
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
-| shape | string | - | 形状，可选值 `radius`, `round` | 
 | type | string | - | 显示类型，可选值 `button`, `cell` |
 | value | string &#124; number | - | 值 |
 | checked | boolean | - | 当前是否选中 |
+| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | defaultChecked | boolean | - | 初始是否选中 |
 | disabled | boolean | false | 是否禁用 |
 | onChange | (checked?: boolean) => void | - | 值变化时触发的回调函数 |
@@ -192,12 +191,10 @@ ReactDOM.render(<Demo />, mountNode);
 ### Checkbox.Group
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `info`, `success`, `warning`, `error` |
-| shape | string | - | 形状，可选值 `radius`, `round` | 
 | type | string | - | 显示类型，可选值 `button`, `cell` |
 | value | number[] \| string[] | [] | 选中值 |
 | defaultValue | number[] \| string[] | [] | 初始选中值 |
+| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | block | boolean | false | 是否为块级元素 |
 | disabled | boolean | false | 是否禁用 |
-| compact | boolean | false | 是否启用紧凑模式 |
 | onChange | (value?: number[] \| string[]) => void | - | 值变化时触发的回调函数 |

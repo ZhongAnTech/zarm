@@ -34,6 +34,7 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
   static defaultProps = {
     prefixCls: 'za-radio-group',
     theme: 'primary',
+    shape: 'radius',
     block: false,
     disabled: false,
     compact: false,
@@ -63,13 +64,12 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
   }
 
   render() {
-    const { prefixCls, className, theme, shape, type, block, disabled, compact, children } = this.props;
+    const { prefixCls, className, shape, type, block, disabled, compact, children } = this.props;
 
     const items = React.Children.map(children, (element: any, index) => {
       return cloneElement(element, {
         key: index,
         type,
-        theme,
         shape,
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
@@ -78,11 +78,12 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
       });
     });
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`shape-${shape}`]: !!shape,
-      'is-compact': compact,
-      block,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--compact`]: compact,
+      [`${prefixCls}--block`]: block,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     return <div className={cls}>{items}</div>;

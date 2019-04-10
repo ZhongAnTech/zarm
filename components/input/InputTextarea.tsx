@@ -36,7 +36,6 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   componentDidUpdate() {
     const { autoHeight } = this.props;
     if (autoHeight) {
-      this.input.style.height = '';
       this.input.style.height = `${this.input.scrollHeight}px`;
     }
     if (this.state.focused) {
@@ -134,40 +133,52 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       className,
       maxLength,
       disabled,
+      readOnly,
       autoHeight,
       showLength,
       focused,
       type,
-      ...others
+      ...rest
     } = this.props;
 
-    const cls = classnames(prefixCls, `${prefixCls}-textarea`, className, {
-      disabled,
+    const cls = classnames(prefixCls, `${prefixCls}--textarea`, className, {
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--readonly`]: readOnly,
     });
 
     const textLengthRender =
       showLength &&
       maxLength &&
       (
-        <div className={`${prefixCls}-length`}>
+        <div className={`${prefixCls}__length`}>
           {`${this.state.length}/${maxLength}`}
         </div>
       );
 
+    const renderInput = (
+      <textarea
+        {...rest}
+        ref={(ele) => { this.input = ele; }}
+        maxLength={maxLength}
+        disabled={disabled}
+        onChange={this.onChange}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onCompositionStart={(e) => { this.handleComposition(e); }}
+        onCompositionUpdate={(e) => { this.handleComposition(e); }}
+        onCompositionEnd={(e) => { this.handleComposition(e); }}
+      />
+    );
+
+    const renderText = (
+      <div className={`${prefixCls}__content`}>
+        {rest.value || rest.defaultValue}
+      </div>
+    );
+
     return (
       <div className={cls}>
-        <textarea
-          {...others}
-          ref={(ele) => { this.input = ele; }}
-          maxLength={maxLength}
-          disabled={disabled}
-          onChange={this.onChange}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onCompositionStart={(e) => { this.handleComposition(e); }}
-          onCompositionUpdate={(e) => { this.handleComposition(e); }}
-          onCompositionEnd={(e) => { this.handleComposition(e); }}
-        />
+        {!readOnly ? renderInput : renderText}
         {textLengthRender}
       </div>
     );

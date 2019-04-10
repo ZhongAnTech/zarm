@@ -17,7 +17,7 @@ const getDaysInMonth = (date) => {
 
 // 补齐格式
 const pad = (n) => {
-  return n < 10 ? `0${n}` : `${n}`;
+  return n < 10 ? `0${n}` : n;
 };
 
 const cloneDate = (date) => {
@@ -60,7 +60,7 @@ const getInitDate = (props) => {
 
 export interface DatePickerViewProps extends BaseDatePickerViewProps {
   prefixCls?: string;
-  className?: any;
+  className?: string;
 }
 
 export default class DatePickerView extends Component<DatePickerViewProps, any> {
@@ -76,7 +76,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     defaultValue: '',
     locale: defaultLocale,
     minuteStep: 1,
-    prefixCls: 'za-picker',
+    prefixCls: 'za-date-picker-view',
     valueMember: 'value',
     onClick: () => {},
     onCancel: () => {},
@@ -186,7 +186,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       if (date > maxDate) {
         return cloneDate(maxDate);
       }
-    } else if (mode === DATE) {
+    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
       if (+date + ONE_DAY <= +minDate) {
         return cloneDate(minDate);
       }
@@ -219,23 +219,23 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     if (mode === YEAR) {
       dataSource = this.getDateData();
-      value = [`${date.getFullYear()}`];
+      value = [date.getFullYear()];
     }
     if (mode === MONTH) {
       dataSource = this.getDateData();
-      value = [`${date.getFullYear()}`, `${date.getMonth()}`];
+      value = [date.getFullYear(), date.getMonth()];
     }
     if (mode === DATE || mode === DATETIME) {
       dataSource = this.getDateData();
-      value = [`${date.getFullYear()}`, `${date.getMonth()}`, `${date.getDate()}`];
+      value = [date.getFullYear(), date.getMonth(), date.getDate()];
     }
     if (mode === DATETIME) {
       dataSource = dataSource.concat(this.getTimeData());
-      value = value.concat([`${date.getHours()}`, `${date.getMinutes()}`]);
+      value = value.concat([date.getHours(), date.getMinutes()]);
     }
     if (mode === TIME) {
       dataSource = this.getTimeData();
-      value = [`${date.getHours()}`, `${date.getMinutes()}`];
+      value = [date.getHours(), date.getMinutes()];
     }
 
     return {
@@ -258,8 +258,8 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minYear; i <= maxYear; i += 1) {
       yearCol.push({
-        label: `${i + locale.year}`,
-        value: `${i}`,
+        label: i + locale.year,
+        value: i,
       });
     }
 
@@ -278,8 +278,8 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minMonth; i <= maxMonth; i += 1) {
       monthCol.push({
-        label: `${i + 1 + locale.month}`,
-        value: `${i}`,
+        label: i + 1 + locale.month,
+        value: i,
       });
     }
 
@@ -300,8 +300,8 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minDay; i <= maxDay; i += 1) {
       dayCol.push({
-        label: `${i + locale.day}`,
-        value: `${i}`,
+        label: i + locale.day,
+        value: i,
       });
     }
 
@@ -367,15 +367,15 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minHour; i <= maxHour; i += 1) {
       hourCol.push({
-        label: locale.hour ? `${i + locale.hour}` : pad(i),
-        value: `${i}`,
+        label: locale.hour ? (i + locale.hour) : pad(i),
+        value: i,
       });
     }
 
     for (let i = minMinute; i <= maxMinute; i += minuteStep!) {
       minuteCol.push({
-        label: locale.minute ? `${i + locale.minute}` : pad(i),
-        value: `${i}`,
+        label: locale.minute ? (i + locale.minute) : pad(i),
+        value: i,
       });
     }
 
@@ -467,9 +467,9 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     const { dataSource, value } = this.getColsValue();
     return (
       <PickerView
-        dataSource={dataSource}
-        prefixCls={prefixCls}
         {...others}
+        prefixCls={prefixCls}
+        dataSource={dataSource}
         value={value}
         onChange={this.onValueChange}
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}

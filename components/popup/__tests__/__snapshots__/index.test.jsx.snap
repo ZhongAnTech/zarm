@@ -19,34 +19,52 @@ exports[`Popup renders correctly 1`] = `
     stayTime={3000}
     visible={false}
   >
-    <div
-      className="za-popup za-popup-hidden"
+    <Portal
+      containerInfo={
+        <div
+          class=" popup-container"
+        >
+          <div
+            class="za-popup za-popup--bottom za-popup--hidden"
+          >
+            <div
+              class="za-popup__wrapper"
+            >
+              foo
+            </div>
+          </div>
+        </div>
+      }
     >
       <div
-        className="za-popup-wrapper za-popup-wrapper-bottom"
-        style={
-          Object {
-            "WebkitTransitionDuration": "200ms",
-            "transitionDuration": "200ms",
-          }
-        }
+        className="za-popup za-popup--bottom za-popup--hidden"
       >
-        foo
-      </div>
-      <Mask
-        className=""
-        onClick={[MockFunction]}
-        prefixCls="za-mask"
-        style={
-          Object {
-            "WebkitAnimationDuration": "200ms",
-            "animationDuration": "200ms",
+        <div
+          className="za-popup__wrapper"
+          style={
+            Object {
+              "WebkitTransitionDuration": "200ms",
+              "transitionDuration": "200ms",
+            }
           }
-        }
-        type="normal"
-        visible={false}
-      />
-    </div>
+        >
+          foo
+        </div>
+        <Mask
+          className=""
+          onClick={[MockFunction]}
+          prefixCls="za-mask"
+          style={
+            Object {
+              "WebkitAnimationDuration": "200ms",
+              "animationDuration": "200ms",
+            }
+          }
+          type="normal"
+          visible={false}
+        />
+      </div>
+    </Portal>
   </Portal>
 </Popup>
 `;

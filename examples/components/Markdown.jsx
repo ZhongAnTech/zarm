@@ -10,6 +10,7 @@ export default class Markdown extends React.Component {
   constructor(props) {
     super(props);
     this.components = new Map();
+    this.nodeList = [];
   }
 
   componentDidMount() {
@@ -26,8 +27,6 @@ export default class Markdown extends React.Component {
     });
   }
 
-  nodeList = [];
-
   renderDOM() {
     // eslint-disable-next-line
     for (const [id, component] of this.components) {
@@ -40,11 +39,10 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const { document, className } = this.document(localStorage.getItem('LANGUAGE') || 'zh-CN');
+    const { document, className } = this.document();
 
     if (typeof document === 'string') {
       this.components.clear();
-
       const html = marked(
         document
           .replace(/## API\s?([^]+)/g, '')

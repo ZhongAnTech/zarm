@@ -23,30 +23,101 @@ exports[`Picker Picker render visible 1`] = `
   valueMember="value"
   visible={true}
 >
-  <div
-    className="za-picker"
+  <Popup
+    onMaskClick={[Function]}
+    visible={true}
   >
-    <Popup
+    <Portal
+      animationDuration={200}
+      autoClose={false}
+      direction="bottom"
+      handlePortalUnmount={[Function]}
+      mask={true}
+      maskType="normal"
       onMaskClick={[Function]}
+      prefixCls="za-popup"
+      stayTime={3000}
       visible={true}
     >
       <Portal
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        handlePortalUnmount={[Function]}
-        mask={true}
-        maskType="normal"
-        onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
-        visible={true}
+        containerInfo={
+          <div
+            class=" popup-container"
+          >
+            <div
+              class="za-popup za-popup--bottom za-popup--hidden"
+            >
+              <div
+                class="za-popup__wrapper"
+              >
+                <div
+                  class="za-picker"
+                >
+                  <div
+                    class="za-picker__header"
+                  >
+                    <div
+                      class="za-picker__cancel"
+                    >
+                      取消
+                    </div>
+                    <div
+                      class="za-picker__title"
+                    >
+                      请选择
+                    </div>
+                    <div
+                      class="za-picker__submit"
+                    >
+                      确定
+                    </div>
+                  </div>
+                  <div
+                    class="za-picker-view"
+                  >
+                    <div
+                      class="za-picker-view__content"
+                    >
+                      <div
+                        class="za-wheel"
+                      >
+                        <div
+                          class="za-wheel__content"
+                          style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
+                        >
+                          <div
+                            class="za-wheel__item za-wheel__item--selected"
+                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
+                          >
+                            选项一
+                          </div>
+                          <div
+                            class="za-wheel__item"
+                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
+                          >
+                            选项二
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="za-picker-view__mask za-picker-view__mask--top"
+                    />
+                    <div
+                      class="za-picker-view__mask za-picker-view__mask--bottom"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
       >
         <div
-          className="za-popup za-popup-hidden"
+          className="za-popup za-popup--bottom za-popup--hidden"
         >
           <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
+            className="za-popup__wrapper"
             style={
               Object {
                 "WebkitTransitionDuration": "200ms",
@@ -55,25 +126,25 @@ exports[`Picker Picker render visible 1`] = `
             }
           >
             <div
-              className="za-picker-wrapper"
+              className="za-picker"
               onClick={[Function]}
             >
               <div
-                className="za-picker-header"
+                className="za-picker__header"
               >
                 <div
-                  className="za-picker-cancel"
+                  className="za-picker__cancel"
                   onClick={[Function]}
                 >
                   取消
                 </div>
                 <div
-                  className="za-picker-title"
+                  className="za-picker__title"
                 >
                   请选择
                 </div>
                 <div
-                  className="za-picker-submit"
+                  className="za-picker__submit"
                   onClick={[Function]}
                 >
                   确定
@@ -97,7 +168,7 @@ exports[`Picker Picker render visible 1`] = `
                 itemRender={[Function]}
                 onChange={[Function]}
                 onTransition={[Function]}
-                prefixCls="za-picker"
+                prefixCls="za-picker-view"
                 value={
                   Array [
                     "1",
@@ -107,10 +178,10 @@ exports[`Picker Picker render visible 1`] = `
                 visible={true}
               >
                 <div
-                  className="za-picker-panel"
+                  className="za-picker-view"
                 >
                   <div
-                    className="za-picker-view"
+                    className="za-picker-view__content"
                   >
                     <Wheel
                       dataSource={
@@ -138,16 +209,16 @@ exports[`Picker Picker render visible 1`] = `
                         className="za-wheel"
                       >
                         <div
-                          className="za-wheel-content"
+                          className="za-wheel__content"
                         >
                           <div
-                            className="za-wheel-item za-wheel-item-selected"
+                            className="za-wheel__item za-wheel__item--selected"
                             key="0"
                           >
                             选项一
                           </div>
                           <div
-                            className="za-wheel-item"
+                            className="za-wheel__item"
                             key="1"
                           >
                             选项二
@@ -157,10 +228,10 @@ exports[`Picker Picker render visible 1`] = `
                     </Wheel>
                   </div>
                   <div
-                    className="za-picker-mask-top"
+                    className="za-picker-view__mask za-picker-view__mask--top"
                   />
                   <div
-                    className="za-picker-mask-bottom"
+                    className="za-picker-view__mask za-picker-view__mask--bottom"
                   />
                 </div>
               </PickerView>
@@ -181,8 +252,8 @@ exports[`Picker Picker render visible 1`] = `
           />
         </div>
       </Portal>
-    </Popup>
-  </div>
+    </Portal>
+  </Popup>
 </Picker>
 `;
 
@@ -228,30 +299,122 @@ exports[`Picker render custom label 1`] = `
   title="请选择"
   valueMember="code"
 >
-  <div
-    className="za-picker"
+  <Popup
+    onMaskClick={[Function]}
+    visible={false}
   >
-    <Popup
+    <Portal
+      animationDuration={200}
+      autoClose={false}
+      direction="bottom"
+      handlePortalUnmount={[Function]}
+      mask={true}
+      maskType="normal"
       onMaskClick={[Function]}
+      prefixCls="za-popup"
+      stayTime={3000}
       visible={false}
     >
       <Portal
-        animationDuration={200}
-        autoClose={false}
-        direction="bottom"
-        handlePortalUnmount={[Function]}
-        mask={true}
-        maskType="normal"
-        onMaskClick={[Function]}
-        prefixCls="za-popup"
-        stayTime={3000}
-        visible={false}
+        containerInfo={
+          <div
+            class=" popup-container"
+          >
+            <div
+              class="za-popup za-popup--bottom za-popup--hidden"
+            >
+              <div
+                class="za-popup__wrapper"
+              >
+                <div
+                  class="za-picker"
+                >
+                  <div
+                    class="za-picker__header"
+                  >
+                    <div
+                      class="za-picker__cancel"
+                    >
+                      取消
+                    </div>
+                    <div
+                      class="za-picker__title"
+                    >
+                      请选择
+                    </div>
+                    <div
+                      class="za-picker__submit"
+                    >
+                      确定
+                    </div>
+                  </div>
+                  <div
+                    class="za-picker-view"
+                  >
+                    <div
+                      class="za-picker-view__content"
+                    >
+                      <div
+                        class="za-wheel"
+                      >
+                        <div
+                          class="za-wheel__content"
+                          style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
+                        >
+                          <div
+                            class="za-wheel__item za-wheel__item--selected"
+                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
+                          >
+                            北京市
+                          </div>
+                          <div
+                            class="za-wheel__item"
+                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
+                          >
+                            上海市
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="za-wheel"
+                      >
+                        <div
+                          class="za-wheel__content"
+                          style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: translate(0px,0px) scale(1) translateZ(0);"
+                        >
+                          <div
+                            class="za-wheel__item za-wheel__item--selected"
+                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
+                          >
+                            海淀区
+                          </div>
+                          <div
+                            class="za-wheel__item"
+                            style="-webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); -webkit-transition-duration: 0ms; -webkit-transform: rotateX(NaNdeg);"
+                          >
+                            西城区
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="za-picker-view__mask za-picker-view__mask--top"
+                    />
+                    <div
+                      class="za-picker-view__mask za-picker-view__mask--bottom"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
       >
         <div
-          className="za-popup za-popup-hidden"
+          className="za-popup za-popup--bottom za-popup--hidden"
         >
           <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
+            className="za-popup__wrapper"
             style={
               Object {
                 "WebkitTransitionDuration": "200ms",
@@ -260,25 +423,25 @@ exports[`Picker render custom label 1`] = `
             }
           >
             <div
-              className="za-picker-wrapper"
+              className="za-picker"
               onClick={[Function]}
             >
               <div
-                className="za-picker-header"
+                className="za-picker__header"
               >
                 <div
-                  className="za-picker-cancel"
+                  className="za-picker__cancel"
                   onClick={[Function]}
                 >
                   取消
                 </div>
                 <div
-                  className="za-picker-title"
+                  className="za-picker__title"
                 >
                   请选择
                 </div>
                 <div
-                  className="za-picker-submit"
+                  className="za-picker__submit"
                   onClick={[Function]}
                 >
                   确定
@@ -322,7 +485,7 @@ exports[`Picker render custom label 1`] = `
                 itemRender={[Function]}
                 onChange={[Function]}
                 onTransition={[Function]}
-                prefixCls="za-picker"
+                prefixCls="za-picker-view"
                 value={
                   Array [
                     "1",
@@ -333,10 +496,10 @@ exports[`Picker render custom label 1`] = `
                 visible={false}
               >
                 <div
-                  className="za-picker-panel"
+                  className="za-picker-view"
                 >
                   <div
-                    className="za-picker-view"
+                    className="za-picker-view__content"
                   >
                     <Wheel
                       dataSource={
@@ -364,16 +527,16 @@ exports[`Picker render custom label 1`] = `
                         className="za-wheel"
                       >
                         <div
-                          className="za-wheel-content"
+                          className="za-wheel__content"
                         >
                           <div
-                            className="za-wheel-item za-wheel-item-selected"
+                            className="za-wheel__item za-wheel__item--selected"
                             key="0"
                           >
                             北京市
                           </div>
                           <div
-                            className="za-wheel-item"
+                            className="za-wheel__item"
                             key="1"
                           >
                             上海市
@@ -407,16 +570,16 @@ exports[`Picker render custom label 1`] = `
                         className="za-wheel"
                       >
                         <div
-                          className="za-wheel-content"
+                          className="za-wheel__content"
                         >
                           <div
-                            className="za-wheel-item za-wheel-item-selected"
+                            className="za-wheel__item za-wheel__item--selected"
                             key="0"
                           >
                             海淀区
                           </div>
                           <div
-                            className="za-wheel-item"
+                            className="za-wheel__item"
                             key="1"
                           >
                             西城区
@@ -426,10 +589,10 @@ exports[`Picker render custom label 1`] = `
                     </Wheel>
                   </div>
                   <div
-                    className="za-picker-mask-top"
+                    className="za-picker-view__mask za-picker-view__mask--top"
                   />
                   <div
-                    className="za-picker-mask-bottom"
+                    className="za-picker-view__mask za-picker-view__mask--bottom"
                   />
                 </div>
               </PickerView>
@@ -450,7 +613,7 @@ exports[`Picker render custom label 1`] = `
           />
         </div>
       </Portal>
-    </Popup>
-  </div>
+    </Portal>
+  </Popup>
 </Picker>
 `;

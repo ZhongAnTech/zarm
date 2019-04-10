@@ -1,11 +1,29 @@
-// 主题色
-const base = {
+import Color from 'color';
+
+const darken = (color, percent) => {
+  const hsl = Color(color).hsl();
+  hsl.color[2] = hsl.color[2] - percent * 100;
+  return hsl.hex();
+};
+
+let base: any = {
   // 主题色
   theme_default: '#e6e6e6',                 // 默认色
-  theme_primary: '#12c287',                 // 主色
-  theme_success: '#12c287',                 // 成功
+  theme_primary: '#00bc70',                 // 主色
+  theme_success: '#00bc70',                 // 成功
   theme_warning: '#ec9131',                 // 警告
-  theme_error: '#ff5050',                   // 失败
+  theme_danger: '#ff5050',                  // 失败
+};
+
+// 主题色
+base = {
+  ...base,
+  // press状态色阶
+  theme_default_press: darken(base.theme_default, 0.04),
+  theme_primary_press: darken(base.theme_primary, 0.04),
+  theme_success_press: darken(base.theme_primary, 0.04),
+  theme_warning_press: darken(base.theme_warning, 0.04),
+  theme_danger_press: darken(base.theme_danger, 0.04),
 
   // 文字色
   color_text: '#464646',                    // 基本
@@ -32,22 +50,22 @@ const base = {
   // radius_circle: '50%',
 
   // 水平间距
-  padding_h_sm: 5,
-  padding_h_md: 8,
-  padding_h_lg: 16,
-  padding_h_xl: 20,
+  padding_h_xs: 8,
+  padding_h_sm: 12,
+  padding_h_md: 16,
+  padding_h_lg: 20,
 
   // 垂直间距
-  padding_v_sm: 2,
-  padding_v_md: 6,
-  padding_v_lg: 9,
-  padding_v_xl: 12,
+  padding_v_xs: 4,
+  padding_v_sm: 8,
+  padding_v_md: 12,
+  padding_v_lg: 16,
 
   // 字体大小
   font_size_xs: 10,
   font_size_sm: 12,
   font_size_md: 14,
-  font_size_lg: 15,
+  font_size_lg: 16,
   font_size_xl: 18,
 
   // 堆叠顺序
@@ -58,7 +76,7 @@ const base = {
   zindex_loading: 1500,
 
   // 透明度
-  opacity_disabled: .6,
+  opacity_disabled: .5,
   opacity_mask: .5,
   opacity_toast: .8,
   opacity_tooltip: .8,
@@ -76,25 +94,25 @@ const components = {
 
   // Badge
   badge_height: 14,
-  badge_font_size: 10,
+  badge_font_size: base.font_size_xs,
   badge_padding_h: 4,
   badge_dot_diameter: 8,
-  badge_rect_radius: 2,
-  badge_round_radius: 1000,
+  badge_border_radius_rect: base.radius_sm,
+  badge_border_radius_round: base.radius_round,
   badge_sup_top: -4,
-  badge_text_color: '#FFF',
+  badge_text_color: '#fff',
 
   // Button
   button_height_xs: 28,
   button_height_sm: 36,
   button_height_md: 44,
   button_height_lg: 52,
-  button_padding_h_xs: 10,
-  button_padding_h_sm: 12,
-  button_padding_h_md: 16,
-  button_padding_h_lg: 20,
+  button_padding_h_xs: base.padding_h_xs,
+  button_padding_h_sm: base.padding_h_sm,
+  button_padding_h_md: base.padding_h_md,
+  button_padding_h_lg: base.padding_h_lg,
   button_font_size_xs: 12,
-  button_font_size_sm: 16,
+  button_font_size_sm: 14,
   button_font_size_md: 16,
   button_font_size_lg: 18,
   button_icon_size_xs: 16,
@@ -102,99 +120,65 @@ const components = {
   button_icon_size_md: 22,
   button_icon_size_lg: 26,
   button_disabled_opacity: base.opacity_disabled,
-  button_disabled_color_ghost: '#bcbcbc',
+  button_disabled_color_ghost: base.border_disabled,
 
   button_default_background: '#fff',
-  button_default_border: base.background_active,
+  button_default_border: base.theme_default,
   button_default_color: base.color_text,
-  button_default_active_background: base.background_active,
-  button_default_active_border: base.background_active,
+  button_default_active_background: base.theme_default,
+  button_default_active_border: base.theme_default,
   button_default_active_color: base.color_text,
-  button_default_ghost_background: 'transparent',
-  button_default_ghost_border: base.background_active,
-  button_default_ghost_color: base.color_text,
-  button_default_ghost_active_background: 'transparent',
-  button_default_ghost_active_border: base.background_active,
-  button_default_ghost_active_color: base.color_text,
+  button_default_ghost_border: '#fff',
+  button_default_ghost_color: '#fff',
+  button_default_ghost_active_border: base.theme_default,
+  button_default_ghost_active_color: base.theme_default,
 
   button_primary_background: base.theme_primary,
   button_primary_border: base.theme_primary,
   button_primary_color: '#fff',
-  button_primary_active_background: '#10ae79',
-  button_primary_active_border: '#10ae79',
-  button_primary_active_color: '#fff',
-  button_primary_ghost_background: 'transparent',
+  button_primary_active_background: base.theme_primary_press,
+  button_primary_active_border: base.theme_primary_press,
+  button_primary_active_color: Color('#fff').alpha(0.4),
   button_primary_ghost_border: base.theme_primary,
   button_primary_ghost_color: base.theme_primary,
-  button_primary_ghost_active_background: 'transparent',
-  button_primary_ghost_active_border: '#10ae79',
-  button_primary_ghost_active_color: '#10ae79',
+  button_primary_ghost_active_border: base.theme_primary_press,
+  button_primary_ghost_active_color: base.theme_primary_press,
 
-  button_success_background: base.theme_success,
-  button_success_border: base.theme_success,
-  button_success_color: '#fff',
-  button_success_active_background: '#10ae79',
-  button_success_active_border: '#10ae79',
-  button_success_active_color: '#fff',
-  button_success_ghost_background: 'transparent',
-  button_success_ghost_border: base.theme_success,
-  button_success_ghost_color: base.theme_success,
-  button_success_ghost_active_background: 'transparent',
-  button_success_ghost_active_border: '#10ae79',
-  button_success_ghost_active_color: '#10ae79',
-
-  button_warning_background: base.theme_warning,
-  button_warning_border: base.theme_warning,
-  button_warning_color: '#fff',
-  button_warning_active_background: '#d3822c',
-  button_warning_active_border: '#d3822c',
-  button_warning_active_color: '#fff',
-  button_warning_ghost_background: 'transparent',
-  button_warning_ghost_border: base.theme_warning,
-  button_warning_ghost_color: base.theme_warning,
-  button_warning_ghost_active_background: 'transparent',
-  button_warning_ghost_active_border: '#d3822c',
-  button_warning_ghost_active_color: '#d3822c',
-
-  button_error_background: base.theme_error,
-  button_error_border: base.theme_error,
-  button_error_color: '#fff',
-  button_error_active_background: '#e54747',
-  button_error_active_border: '#e54747',
-  button_error_active_color: '#fff',
-  button_error_ghost_background: 'transparent',
-  button_error_ghost_border: base.theme_error,
-  button_error_ghost_color: base.theme_error,
-  button_error_ghost_active_background: 'transparent',
-  button_error_ghost_active_border: '#e54747',
-  button_error_ghost_active_color: '#e54747',
-
-  // Collapse
-  collapse_height: 52,
-  collapse_padding: 16,
-  collapse_arrow_color: '#c2c2c2',
-  collapse_arrow_disabled_color: '#eee',
+  button_danger_background: base.theme_danger,
+  button_danger_border: base.theme_danger,
+  button_danger_color: '#fff',
+  button_danger_active_background: base.theme_danger_press,
+  button_danger_active_border: base.theme_danger_press,
+  button_danger_active_color: Color('#fff').alpha(0.4),
+  button_danger_ghost_border: base.theme_danger,
+  button_danger_ghost_color: base.theme_danger,
+  button_danger_ghost_active_border: base.theme_danger_press,
+  button_danger_ghost_active_color: base.theme_danger_press,
 
   // Cell
   cell_height: 52,                                   // 最小度
   cell_background: '#fff',                           // 背景色
   cell_line_padding_left: 16,                        // 分隔线左边距
   cell_padding_h: 16,                                // 水平边内距
-  cell_padding_v: 12,                                // 纵向边内距
+  cell_padding_v: 15,                                // 纵向边内距
   cell_title_color: base.color_text,                 // 标题文字颜色
-  cell_title_line_height: 28,                        // 标题文字行高
   cell_title_font_size: 15,                          // 标题文字大小
+  cell_title_line_height: 22,                        // 标题文字行高
   cell_description_color: base.color_text_caption,   // 标题文字颜色
   cell_description_font_size: 15,                    // 描述文字大小
   cell_label_width: 100,                             // 表单label度
   cell_arrow_color: '#bcbcbc',                       // 箭头颜色
   cell_arrow_length: 10,                             // 箭头长度
   cell_arrow_border_width: 2,                        // 箭头粗细
-  cell_help_color: '#FF5050',                        // 提示文字颜色
-  cell_help_font_size: 10,                           // 提示文字大小
 
   // Checkbox
   checkbox_size: 20,
+
+  // Collapse
+  collapse_height: 52,
+  collapse_padding: 16,
+  collapse_arrow_color: '#bcbcbc',
+  collapse_arrow_disabled_color: '#eee',
 
   // Confirm
   confirm_button_height: 50,
@@ -209,31 +193,19 @@ const components = {
   keyboard_icon_font_size: 21,
 
   // Message
-  message_height: 29,
-  message_font_size: 12,
-  message_padding_horizontal: 8,
-  // message_padding_vertical: 6,
-
-  message_height_lg: 40,
+  message_min_height_md: 29,
+  message_min_height_lg: 40,
+  message_font_size_md: 12,
   message_font_size_lg: 14,
-  message_padding_horizontal_lg: 16,
-
-  message_theme_bg_default: 'rgba(18, 194, 135, 0.2)',               // 默认色
-  message_theme_bg_primary: 'rgba(18, 194, 135, 0.2)',               // 主色
-  message_theme_bg_success: 'rgba(18, 194, 135, 0.2)',               // 成功
-  message_theme_bg_warning: 'rgba(255, 247, 203, 1)',                // 警告
-  message_theme_bg_error: 'rgba(255, 80, 80, 0.1)',                  // 失败
-
-  message_theme_text_default: base.theme_default,                    // 默认色
-  message_theme_text_primary: base.theme_primary,                    // 主色
-  message_theme_text_success: base.theme_primary,                    // 成功
-  message_theme_text_warning: base.theme_warning,                    // 警告
-  message_theme_text_error: base.theme_error,                        // 失败
-
-  message_arrow_color: '#bcbcbc',                                    // 箭头颜色
-  message_arrow_length: 6,                                          // 箭头长度
+  message_padding_v_md: 6,
+  message_padding_v_lg: 8,
+  message_padding_h_md: 8,
+  message_padding_h_lg: 12,
+  message_close_length_md: 12,
+  message_close_length_lg: 14,
+  message_arrow_length_md: 8,
+  message_arrow_length_lg: 10,                                  // 箭头颜色
   message_arrow_border_width: 1,                                     // 箭头粗细
-  message_arrow_length_lg: 8,
 
   // Modal
   modal_background: '#fff',
@@ -246,8 +218,7 @@ const components = {
   panel_header_color: '#999',
   panel_header_font_size: 14,
   panel_body_color: '#333',
-  panel_footer_color: '#999',
-  panel_footer_font_size: 12,
+  panel_body_font_size: 15,
 
   // Pull
   pull_control_height: 50,
@@ -257,7 +228,7 @@ const components = {
   radio_size: 20,
 
   // Slider
-  slider_line_background: '#d6d6d6',
+  slider_line_background: '#e6e6e6',
   slider_line_height: 2,
   slider_handle_size: 28,
   slider_handle_background: '#fff',
@@ -268,10 +239,10 @@ const components = {
   activityIndicator_path_color: '#e6e6e6',
 
   // Stepper
-  stepper_height: 27,
-  stepper_button_font_size: 20,
-  stepper_input_width: 40,
-  stepper_input_font_size: 16,
+  stepper_height_md: 28,
+  stepper_icon_font_size_md: 20,
+  stepper_input_width_md: 40,
+  stepper_input_font_size_md: 16,
 
   // Swipe
   swipe_pagination_dot_size: 8,
@@ -279,7 +250,7 @@ const components = {
   // Switch
   switch_width: 53,
   switch_height: 32,
-  switch_border_color: '#e5e5e5',
+  switch_border_color: '#e6e6e6',
   switch_background: '#fff',
 
   // SwipeAction
@@ -301,12 +272,8 @@ const components = {
   tooltip_font_size: 12,
   tooltip_color: '#fff',
   tooltip_arrow_size: 5,
-
-  // NoticeBar
-  noticeBar_theme_primary_bg: '#fff7cb',
-  noticeBar_theme_primary_text: '#ecc9131',
-  noticeBar_theme_error_bg: '#ffeded',
-  noticeBar_theme_error_text: 'ff5656',
+  tooltip_padding_v: base.padding_v_sm,
+  tooltip_padding_h: base.padding_h_sm,
 };
 
 export default { ...base, ...components };

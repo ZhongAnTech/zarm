@@ -15,7 +15,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="carousel-item-pic" key={+i}>
+      <div className="carousel__item__pic" key={+i}>
         <img src={item} alt="" draggable={false} />
       </div>
     );
@@ -56,7 +56,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="carousel-item-pic" key={+i}>
+      <div className="carousel__item__pic" key={+i}>
         <img src={item} alt="" draggable={false} />
       </div>
     );
@@ -96,7 +96,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="carousel-item-pic" key={+i}>
+      <div className="carousel__item__pic" key={+i}>
         <img src={item} alt="" draggable={false} />
       </div>
     );
@@ -161,7 +161,7 @@ const ITEMS = [
 function contentRender() {
   return ITEMS.map((item, i) => {
     return (
-      <div className="carousel-item-pic" key={+i}>
+      <div className="carousel__item__pic" key={+i}>
         <img src={item} alt="" draggable={false} />
       </div>
     );

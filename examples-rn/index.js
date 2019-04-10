@@ -22,7 +22,7 @@ const getOptions = title => ({
     </View>
   ),
   headerStyle: {
-    backgroundColor: '#12c287',
+    backgroundColor: '#00bc70',
   },
   headerTintColor: 'white',
   headerRight: <View />,

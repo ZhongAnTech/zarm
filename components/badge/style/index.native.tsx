@@ -8,7 +8,7 @@ export default {
   dotBadge: {
     width: variables.badge_dot_diameter,
     height: variables.badge_dot_diameter,
-    borderRadius: variables.badge_round_radius,
+    borderRadius: variables.badge_dot_diameter,
   },
 
   radiusBadge: {
@@ -42,8 +42,8 @@ export default {
     top: variables.badge_sup_top,
   },
 
-  errorBagde: {
-    backgroundColor: variables.theme_error,
+  dangerBagde: {
+    backgroundColor: variables.theme_danger,
   },
 
   successBagde: {

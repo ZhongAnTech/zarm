@@ -31,7 +31,7 @@ describe('FilePicker', () => {
     const myImage = new Image(100, 200);
     myImage.src = './test.jpg';
     const wrapper = mount(<FilePicker {...props} />);
-    wrapper.find('.za-file-picker-input').simulate('change', {
+    wrapper.find('.za-file-picker__input').simulate('change', {
       target: {
         files: [myImage],
       },
@@ -58,7 +58,7 @@ describe('FilePicker', () => {
       type: 'image/jpeg',
     });
     const wrapper = mount(<FilePicker {...props} />);
-    wrapper.find('.za-file-picker-input').simulate('change', {
+    wrapper.find('.za-file-picker__input').simulate('change', {
       target: {
         files: [file],
       },

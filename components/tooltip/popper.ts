@@ -11,6 +11,7 @@ const {
   getScrollTopValue,
   getScrollLeftValue,
   setStyle,
+  getStyleComputedProperty,
 } = domUtil;
 
 let root = {};
@@ -587,6 +588,7 @@ Popper.prototype.modifiers.arrow = function (data) {
   const arrow = this._popper.querySelector(this._options.arrowElement);
   const arrowStyle = {};
   const placement = data.placement.split('-')[0];
+  const placement1 = data.placement.split('-')[1];
   const popper = getPopperClientRect(data.offsets.popper);
   const reference = data.offsets.reference;
   const isVertical = ['left', 'right'].indexOf(placement) !== -1;
@@ -595,6 +597,12 @@ Popper.prototype.modifiers.arrow = function (data) {
   const altSide = isVertical ? 'left' : 'top';
   const opSide = isVertical ? 'bottom' : 'right';
   const arrowSize = getOuterSizes(arrow)[len];
+  const offsetSize = parseFloat (getStyleComputedProperty(this._popper, 'paddingLeft'));
+  const hash = {
+    start: reference[side] + offsetSize,
+    center: reference[side] + reference[len] / 2 - arrowSize / 2,
+    end: reference[opSide] - offsetSize - arrowSize - arrowSize / 2,
+  };
 
   if (reference[opSide] - arrowSize < popper[side]) {
     data.offsets.popper[side] -= popper[side] - (reference[opSide] - arrowSize);
@@ -603,11 +611,10 @@ Popper.prototype.modifiers.arrow = function (data) {
     data.offsets.popper[side] += reference[side] + arrowSize - popper[opSide];
   }
 
-  const center = reference[side] + reference[len] / 2 - arrowSize / 2;
-  let sideValue = center - popper[side];
+  const place = hash[placement1 || 'center'];
+  let sideValue = place - popper[side];
 
-  sideValue = Math.max(Math.min(popper[len] - arrowSize - 6, sideValue), 6);
-  arrowStyle[side] = sideValue;
+  arrowStyle[side] = Math.floor(sideValue);
   arrowStyle[altSide] = '';
 
   data.offsets.arrow = arrowStyle;

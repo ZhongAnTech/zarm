@@ -141,7 +141,7 @@ export default class Portal extends Component<PortalProps, any> {
   getContainer() {
     if (!this.container) {
       const container = document.createElement('div');
-      container.classList.add('popup-container');
+      container.className += ' popup-container';
       this.container = container;
     }
     return this.container;
@@ -151,10 +151,10 @@ export default class Portal extends Component<PortalProps, any> {
     const { prefixCls, className, animationDuration, direction, children } = this.props;
     const { isShow } = this.state;
 
-    const popupCls = classnames(`${prefixCls}`, className, {
-      [`${prefixCls}-hidden`]: !isShow,
+    const popupCls = classnames(prefixCls, className, {
+      [`${prefixCls}--${direction}`]: !!direction,
+      [`${prefixCls}--hidden`]: !isShow,
     });
-    const wrapCls = classnames(`${prefixCls}-wrapper`, `${prefixCls}-wrapper-${direction}`);
 
     const wrapStyle = {
       WebkitTransitionDuration: `${animationDuration}ms`,
@@ -165,7 +165,7 @@ export default class Portal extends Component<PortalProps, any> {
         className={popupCls}
         ref={(popup) => { this.popup = popup; }}
       >
-        <div className={wrapCls} style={wrapStyle}>
+        <div className={`${prefixCls}__wrapper`} style={wrapStyle}>
           {children}
         </div>
         {this.renderMask()}

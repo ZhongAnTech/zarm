@@ -2,8 +2,9 @@
 
 exports[`KeyboardPicker renders correctly 1`] = `
 <KeyboardPicker
-  prefixCls="za-keyboard"
+  prefixCls="za-keyboard-picker"
   type="number"
+  visible={false}
 >
   <Popup
     mask={false}
@@ -20,148 +21,278 @@ exports[`KeyboardPicker renders correctly 1`] = `
       stayTime={3000}
       visible={false}
     >
-      <div
-        className="za-popup za-popup-hidden"
-      >
-        <div
-          className="za-popup-wrapper za-popup-wrapper-bottom"
-          style={
-            Object {
-              "WebkitTransitionDuration": "200ms",
-              "transitionDuration": "200ms",
-            }
-          }
-        >
-          <Keyboard
-            onKeyClick={[Function]}
-            prefixCls="za-keyboard"
-            type="number"
+      <Portal
+        containerInfo={
+          <div
+            class=" popup-container"
           >
             <div
-              className="za-keyboard"
-              onClick={[Function]}
+              class="za-popup za-popup--bottom za-popup--hidden"
             >
               <div
-                className="za-keyboard-keys"
+                class="za-popup__wrapper"
               >
                 <div
-                  className="za-keyboard-item"
-                  key="0"
-                  onClick={[Function]}
+                  class="za-keyboard-picker"
                 >
-                  1
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="1"
-                  onClick={[Function]}
-                >
-                  2
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="2"
-                  onClick={[Function]}
-                >
-                  3
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="3"
-                  onClick={[Function]}
-                >
-                  4
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="4"
-                  onClick={[Function]}
-                >
-                  5
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="5"
-                  onClick={[Function]}
-                >
-                  6
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="6"
-                  onClick={[Function]}
-                >
-                  7
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="7"
-                  onClick={[Function]}
-                >
-                  8
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="8"
-                  onClick={[Function]}
-                >
-                  9
-                </div>
-                <div
-                  className="za-keyboard-item za-keyboard-item-disabled"
-                  key="9"
-                  onClick={[Function]}
-                />
-                <div
-                  className="za-keyboard-item"
-                  key="10"
-                  onClick={[Function]}
-                >
-                  0
-                </div>
-                <div
-                  className="za-keyboard-item"
-                  key="11"
-                  onClick={[Function]}
-                >
-                  <Icon
-                    prefixCls="za-icon"
-                    type="keyboard"
+                  <div
+                    class="za-keyboard"
                   >
-                    <i
-                      className="za-icon za-icon-keyboard"
-                    />
-                  </Icon>
-                </div>
-              </div>
-              <div
-                className="za-keyboard-handle"
-              >
-                <div
-                  className="za-keyboard-item"
-                  onTouchEnd={[Function]}
-                  onTouchStart={[Function]}
-                >
-                  <Icon
-                    prefixCls="za-icon"
-                    type="deletekey"
-                  >
-                    <i
-                      className="za-icon za-icon-deletekey"
-                    />
-                  </Icon>
-                </div>
-                <div
-                  className="za-keyboard-item za-keyboard-item-ok"
-                  onClick={[Function]}
-                >
-                  确定
+                    <div
+                      class="za-keyboard__keys"
+                    >
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        1
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        2
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        3
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        4
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        5
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        6
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        7
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        8
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        9
+                      </div>
+                      <div
+                        class="za-keyboard__item za-keyboard__item--disabled"
+                      />
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        0
+                      </div>
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        <i
+                          class="za-icon za-icon--keyboard"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="za-keyboard__handle"
+                    >
+                      <div
+                        class="za-keyboard__item"
+                      >
+                        <i
+                          class="za-icon za-icon--deletekey"
+                        />
+                      </div>
+                      <div
+                        class="za-keyboard__item za-keyboard__item--ok"
+                      >
+                        OK
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </Keyboard>
+          </div>
+        }
+      >
+        <div
+          className="za-popup za-popup--bottom za-popup--hidden"
+        >
+          <div
+            className="za-popup__wrapper"
+            style={
+              Object {
+                "WebkitTransitionDuration": "200ms",
+                "transitionDuration": "200ms",
+              }
+            }
+          >
+            <div
+              className="za-keyboard-picker"
+            >
+              <ForwardRef(forwardRefFactory)
+                onKeyClick={[Function]}
+                type="number"
+                visible={false}
+              >
+                <LocaleReceiver
+                  forwardedRef={null}
+                  onKeyClick={[Function]}
+                  type="number"
+                  visible={false}
+                >
+                  <Keyboard
+                    locale={
+                      Object {
+                        "okText": "OK",
+                      }
+                    }
+                    localeCode="en"
+                    onKeyClick={[Function]}
+                    prefixCls="za-keyboard"
+                    type="number"
+                    visible={false}
+                  >
+                    <div
+                      className="za-keyboard"
+                    >
+                      <div
+                        className="za-keyboard__keys"
+                      >
+                        <div
+                          className="za-keyboard__item"
+                          key="0"
+                          onClick={[Function]}
+                        >
+                          1
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="1"
+                          onClick={[Function]}
+                        >
+                          2
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="2"
+                          onClick={[Function]}
+                        >
+                          3
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="3"
+                          onClick={[Function]}
+                        >
+                          4
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="4"
+                          onClick={[Function]}
+                        >
+                          5
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="5"
+                          onClick={[Function]}
+                        >
+                          6
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="6"
+                          onClick={[Function]}
+                        >
+                          7
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="7"
+                          onClick={[Function]}
+                        >
+                          8
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="8"
+                          onClick={[Function]}
+                        >
+                          9
+                        </div>
+                        <div
+                          className="za-keyboard__item za-keyboard__item--disabled"
+                          key="9"
+                          onClick={[Function]}
+                        />
+                        <div
+                          className="za-keyboard__item"
+                          key="10"
+                          onClick={[Function]}
+                        >
+                          0
+                        </div>
+                        <div
+                          className="za-keyboard__item"
+                          key="11"
+                          onClick={[Function]}
+                        >
+                          <Icon
+                            prefixCls="za-icon"
+                            type="keyboard"
+                          >
+                            <i
+                              className="za-icon za-icon--keyboard"
+                            />
+                          </Icon>
+                        </div>
+                      </div>
+                      <div
+                        className="za-keyboard__handle"
+                      >
+                        <div
+                          className="za-keyboard__item"
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                        >
+                          <Icon
+                            prefixCls="za-icon"
+                            type="deletekey"
+                          >
+                            <i
+                              className="za-icon za-icon--deletekey"
+                            />
+                          </Icon>
+                        </div>
+                        <div
+                          className="za-keyboard__item za-keyboard__item--ok"
+                          onClick={[Function]}
+                        >
+                          OK
+                        </div>
+                      </div>
+                    </div>
+                  </Keyboard>
+                </LocaleReceiver>
+              </ForwardRef(forwardRefFactory)>
+            </div>
+          </div>
         </div>
-      </div>
+      </Portal>
     </Portal>
   </Popup>
 </KeyboardPicker>

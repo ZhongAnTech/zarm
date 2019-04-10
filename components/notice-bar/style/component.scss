@@ -1,16 +1,14 @@
-$prefixCls: $prefixCls-notice-bar;
-
-.#{$prefixCls} {
-  width: 100%;
-  height: $notice-bar-height;
-  line-height: $notice-bar-height;
+@include b(notice-bar) {
   position: relative;
+  width: 100%;
+  height: $--notice-bar-height;
+  line-height: $--notice-bar-height;
   overflow: hidden;
 
-  &-body {
+  @include e(body) {
     position: absolute;
     left: 0;
-    top: r(2);
+    top: 0;
     white-space: nowrap;
   }
 }
