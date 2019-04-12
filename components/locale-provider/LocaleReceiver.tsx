@@ -3,11 +3,13 @@ import hoistNonReactStatic from 'hoist-non-react-statics';
 import { LocaleContext } from './LocaleProvider';
 import defaultLocaleData from './locale/en_US';
 
-const LocaleReceiverWrapper = (WrappedComponent, name?) => {
-  const LocaleReceiver: any = props => {
+type nameType = keyof (typeof defaultLocaleData);
+
+const LocaleReceiverWrapper = <T extends { new(...args: any[]): any }>(WrappedComponent: T, name?: nameType) => {
+  const LocaleReceiver = (props) => {
     const component = locale => {
       const globalLocale = (locale.locale) ? locale : defaultLocaleData;
-      const componentLocale = globalLocale[name || WrappedComponent.name];
+      const componentLocale = globalLocale[name || WrappedComponent.name as nameType];
       const localeCode = globalLocale.locale;
 
       const { forwardedRef, ...rest } = props;
@@ -29,12 +31,14 @@ const LocaleReceiverWrapper = (WrappedComponent, name?) => {
     );
   };
 
-  const forwardRefFactory = (props, ref) => {
+  const forwardRefFactory = (props: InstanceType<T>['props'], ref: React.Ref<InstanceType<T>>) => {
     return <LocaleReceiver {...props} forwardedRef={ref} />;
   };
 
-  const LocaleReceiverWithRef = forwardRef(forwardRefFactory as RefForwardingComponent<any, any>);
-  hoistNonReactStatic(LocaleReceiver, WrappedComponent);
+  const LocaleReceiverWithRef = forwardRef<InstanceType<T>, InstanceType<T>['props']>(
+    forwardRefFactory as RefForwardingComponent<any, any>,
+  );
+  hoistNonReactStatic(LocaleReceiverWithRef, WrappedComponent);
   return LocaleReceiverWithRef;
 };
 

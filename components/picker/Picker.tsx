@@ -109,9 +109,9 @@ export default class Picker extends PureComponent<PickerProps, any> {
       >
         <div className={cls} onClick={(e) => {e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
-            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale.cancelText}</div>
-            <div className={`${prefixCls}__title`}>{title || locale.title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale.okText}</div>
+            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale!.cancelText}</div>
+            <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale!.okText}</div>
           </div>
           <PickerView
             {...others}
