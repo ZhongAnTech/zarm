@@ -10,5 +10,6 @@ export interface BasePickerProps extends BasePickerViewProps {
   onCancel?: () => void;
   onMaskClick?: () => void;
   children?: any;
-  locale: Locale;
+  onTransition?: (value: boolean) => void;
+  locale?: Locale;
 }
