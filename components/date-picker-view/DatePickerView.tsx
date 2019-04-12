@@ -234,7 +234,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minYear; i <= maxYear; i += 1) {
       yearCol.push({
-        label: i + locale.year,
+        label: i + locale!.year,
         value: i,
       });
     }
@@ -254,7 +254,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minMonth; i <= maxMonth; i += 1) {
       monthCol.push({
-        label: i + 1 + locale.month,
+        label: i + 1 + locale!.month,
         value: i,
       });
     }
@@ -276,7 +276,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minDay; i <= maxDay; i += 1) {
       dayCol.push({
-        label: i + locale.day,
+        label: i + locale!.day,
         value: i,
       });
     }
@@ -343,14 +343,14 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
 
     for (let i = minHour; i <= maxHour; i += 1) {
       hourCol.push({
-        label: locale.hour ? (i + locale.hour) : pad(i),
+        label: locale!.hour ? (i + locale!.hour) : pad(i),
         value: i,
       });
     }
 
     for (let i = minMinute; i <= maxMinute; i += minuteStep!) {
       minuteCol.push({
-        label: locale.minute ? (i + locale.minute) : pad(i),
+        label: locale!.minute ? (i + locale!.minute) : pad(i),
         value: i,
       });
     }

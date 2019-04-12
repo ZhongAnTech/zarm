@@ -147,10 +147,10 @@ export default class DatePicker extends Component<DatePickerProps, any> {
               className={`${prefixCls}__cancel`}
               onClick={this.onCancel}
             >
-              {cancelText || locale.cancelText}
+              {cancelText || locale!.cancelText}
             </div>
-            <div className={`${prefixCls}__title`}>{title || locale.title}</div>
-            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale.okText}</div>
+            <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale!.okText}</div>
           </div>
           <DatePickerView
             {...others}

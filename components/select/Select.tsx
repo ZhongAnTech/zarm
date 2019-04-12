@@ -91,7 +91,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
-          {this.isValueValid(value) && displayRender!(objValue || []) || placeholder || locale.placeholder}
+          {this.isValueValid(value) && displayRender!(objValue || []) || placeholder || locale!.placeholder}
         </div>
         <Picker
           {...others}
