@@ -172,7 +172,7 @@ exports[`ActionSheet renders correctly 1`] = `
               </div>
               <Mask
                 className=""
-                onClick={[MockFunction]}
+                onClick={[Function]}
                 prefixCls="za-mask"
                 style={
                   Object {

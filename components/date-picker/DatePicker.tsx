@@ -64,28 +64,24 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
   }
 
-  // 点击遮罩层
   onMaskClick() {
     const { onMaskClick } = this.props;
-    this.onCancel();
     if (typeof onMaskClick === 'function') {
       onMaskClick();
     }
   }
 
-  // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    this.toggle();
     this.setState({
       value: this.initDate,
+      visible: false,
     });
     if (typeof onCancel === 'function') {
       onCancel();
     }
   }
 
-  // 点击确定
   onOk = () => {
     if (this.isScrolling) {
       return false;
@@ -94,16 +90,11 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     const value = this.state.value || this.initDate;
     this.setState({
       value: value,
+      visible: false,
     });
     if (typeof onOk === 'function') {
       onOk(value);
     }
-    this.toggle();
-  }
-
-  // 切换显示状态
-  toggle = (visible = false) => {
-    this.setState({ visible });
   }
 
   onTransition(isScrolling) {
