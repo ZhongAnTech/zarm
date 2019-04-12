@@ -139,6 +139,7 @@ class Demo extends React.Component {
   }
 
   render() {
+    const { visible } = this.state;
     return (
       <div>
         <Cell hasArrow title="日期选择">
@@ -147,11 +148,17 @@ class Demo extends React.Component {
             placeholder="请选择日期"
             mode="date"
             value={this.state.value}
+            visible={visible}
             onOk={(value) => {
               console.log('DateSelect onOk: ', value);
               this.setState({
                 visible: false,
                 value,
+              });
+            }}
+            onMaskClick={() => {
+              this.setState({
+                visible: false,
               });
             }}
           />
