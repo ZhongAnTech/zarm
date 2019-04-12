@@ -252,7 +252,7 @@ class Demo extends React.Component {
       this.state = {
         visible: false,
         value: [],
-        dataSource: CASCADE_DATA,
+        dataSource: [],
       };
   }
 
@@ -261,7 +261,7 @@ class Demo extends React.Component {
     setTimeout(() => {
       this.setState({
         dataSource: CASCADE_DATA,
-        // value: ['1', '12'],
+        value: ['1', '12'],
       });
     }, 0);
   }

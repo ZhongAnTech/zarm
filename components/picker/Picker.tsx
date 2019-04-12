@@ -50,10 +50,10 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   onCancel = () => {
     const { onCancel } = this.props;
-    this.toggle();
     this.setState({
       value: this.tempValue,
       objValue: this.tempObjValue,
+      visible: false,
     });
     if (typeof onCancel === 'function') {
       onCancel();
@@ -84,11 +84,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
     }
   }
 
-  // 切换显示状态
-  toggle = (visible = false) => {
-    this.setState({ visible });
-  }
-
   onTransition(isScrolling) {
     const { onTransition } = this.props;
     this.isScrolling = isScrolling;
@@ -107,7 +102,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
         visible={visible}
         onMaskClick={this.onMaskClick}
       >
-        <div className={cls} onClick={(e) => {e.stopPropagation(); }}>
+        <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
             <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale.cancelText}</div>
             <div className={`${prefixCls}__title`}>{title || locale.title}</div>
