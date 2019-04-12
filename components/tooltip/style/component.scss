@@ -3,28 +3,28 @@
   justify-content: center;
   position: absolute;
   transform: translateY(-100%);
-  padding-bottom: $--tooltip-arrow-size;
+  padding-bottom: var(--tooltip-arrow-size);
 
   @include e(inner) {
     position: relative;
-    background-color: rgba(0, 0, 0, $--opacity-tooltip);
-    padding: $--tooltip-padding-v $--tooltip-padding-h;
-    border-radius: $--radius-md;
-    font-size: $--tooltip-font-size;
-    color: $--tooltip-color;
-    margin-bottom: $--tooltip-arrow-size;
+    background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
+    border-radius: var(--radius-md);
+    font-size: var(--tooltip-font-size);
+    color: var(--tooltip-color);
+    margin-bottom: var(--tooltip-arrow-size);
 
     &:after {
       content: '';
       position: absolute;
       left: 50%;
-      bottom: - $--tooltip-arrow-size;
+      bottom: calc(var(--tooltip-arrow-size) * -1);
       width: 0;
       height: 0;
       transform: translateX(-50%);
-      border-width: $--tooltip-arrow-size $--tooltip-arrow-size 0;
+      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
       border-color: transparent;
-      border-top-color: rgba(0, 0, 0, $--opacity-tooltip);
+      border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
       border-style: solid;
     }
   }

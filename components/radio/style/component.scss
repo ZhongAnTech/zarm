@@ -23,7 +23,7 @@
   }
 
   @include e(text) {
-    color: $--color-text;
+    color: var(--color-text);
     margin-left: r(10);
   }
 
@@ -31,18 +31,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: $--radio-size;
-    height: $--radio-size;
+    width: var(--radio-size);
+    height: var(--radio-size);
     border: 1px solid #999;
-    border-radius: $--radio-size;
+    border-radius: var(--radio-size);
     background: #fff;
 
     &:before {
       content: '';
-      width: $--radio-size / 2.5;
-      height: $--radio-size / 2.5;
-      border-radius: $--radio-size / 2.5;
-      background-color: $--theme-primary;
+      width: calc(var(--radio-size) / 2.5);
+      height: calc(var(--radio-size) / 2.5);
+      border-radius: calc(var(--radio-size) / 2.5);
+      background-color: var(--theme-primary);
       transform: scale(0);
       transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
@@ -51,7 +51,7 @@
   /* 选中状态 */
   @include m(checked) {
     @include e(inner) {
-      border-color: $--theme-primary;
+      border-color: var(--theme-primary);
 
       &:before {
         transform: scale(1);
@@ -63,16 +63,16 @@
   /* 禁用状态 */
   @include m(disabled) {
     @include e(inner) {
-      border-color: $--border-disabled;
+      border-color: var(--border-disabled);
       cursor: not-allowed;
 
       &:before {
-        background-color: $--background-disabled;
+        background-color: var(--background-disabled);
       }
     }
 
     @include e(text) {
-      color: $--color-text-disabled;
+      color: var(--color-text-disabled);
     }
   }
 }
@@ -88,11 +88,11 @@
         border-radius: 0;
 
         &:first-child {
-          border-radius: $--radius-md 0 0 $--radius-md;
+          border-radius: var(--radius-md) 0 0 var(--radius-md);
         }
 
         &:last-child {
-          border-radius: 0 $--radius-md $--radius-md 0;
+          border-radius: 0 var(--radius-md) var(--radius-md) 0;
         }
       }
     }
@@ -102,11 +102,11 @@
         border-radius: 0;
 
         &:first-child {
-          border-radius: $--radius-round 0 0 $--radius-round;
+          border-radius: var(--radius-round) 0 0 var(--radius-round);
         }
 
         &:last-child {
-          border-radius: 0 $--radius-round $--radius-round 0;
+          border-radius: 0 var(--radius-round) var(--radius-round) 0;
         }
       }
     }

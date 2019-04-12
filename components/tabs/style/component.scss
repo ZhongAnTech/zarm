@@ -7,20 +7,20 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      height: $--tabs-height;
-      line-height: $--tabs-height;
+      height: var(--tabs-height);
+      line-height: var(--tabs-height);
       @include onepx(bottom);
     }
 
     &__item {
       flex: 1;
       text-align: center;
-      color: $--color-text;
-      font-size: $--tabs-item-font-size;
+      color: var(--color-text);
+      font-size: var(--tabs-item-font-size);
       cursor: pointer;
 
       @include m(disabled) {
-        color: $--color-text-disabled;
+        color: var(--color-text-disabled);
         cursor: not-allowed;
       }
     }
@@ -30,15 +30,15 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    height: $--tabs-line-height;
+    height: var(--tabs-line-height);
     transition: left .3s ease-out;
-    background-color: $--theme-primary;
+    background-color: var(--theme-primary);
 
     &__inner {
       display: block;
       margin: auto;
       height: 100%;
-      background-color: $--theme-primary;
+      background-color: var(--theme-primary);
     }
   }
 

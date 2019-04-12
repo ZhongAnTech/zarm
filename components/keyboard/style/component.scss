@@ -4,14 +4,14 @@
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  color: $--color-text;
+  color: var(--color-text);
   user-select: none;
 
   @include e(item) {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: $--keyboard-item-font-size;
+    font-size: var(--keyboard-item-font-size);
     position: relative;
     @include button-base();
     @include button-theme(
@@ -23,7 +23,7 @@
       var(--button-default-active-color),
       var(--button-default-background),
       var(--button-default-border),
-      $--color-text-disabled,
+      var(--color-text-disabled),
       1,
     );
 
@@ -59,7 +59,7 @@
 
     @include e(item) {
       width: 33.333333%;
-      height: $--keyboard-item-height;
+      height: var(--keyboard-item-height);
       @include onepx(top left);
 
       &:nth-of-type(3n+1) {
@@ -83,6 +83,6 @@
   }
 
   @include b(icon) {
-    font-size: $--keyboard-icon-font-size;
+    font-size: var(--keyboard-icon-font-size);
   }
 }

@@ -1,7 +1,10 @@
 @import './bem';
 
 @mixin defineColorHSL($color, $hue, $saturation, $lightness) {
-  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");#{$color}-h: #{$hue};#{$color}-s: #{$saturation};#{$color}-l: #{$lightness};
+  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
 }
 
 @mixin placeholder {
@@ -10,7 +13,7 @@
   }
 }
 
-@mixin onepx($positions: top right bottom left, $border-color: $--border-color, $border-radius: 0) {
+@mixin onepx($positions: top right bottom left, $border-color: var(--border-color), $border-radius: 0) {
   &:after {
     content: '';
     pointer-events: none;

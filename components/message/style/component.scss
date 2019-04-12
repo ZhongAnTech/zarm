@@ -3,10 +3,10 @@
 @include b(message) {
   display: flex;
   position: relative;
-  padding: $--message-padding-v-md $--message-padding-h-md;
-  min-height: $--message-min-height-md;
-  font-size: $--message-font-size-md;
-  @include message-theme($--theme-default);
+  padding: var(--message-padding-v-md) var(--message-padding-h-md);
+  min-height: var(--message-min-height-md);
+  font-size: var(--message-font-size-md);
+  @include message-theme(var(--theme-default));
 
   @include e(header) {
     display: flex;
@@ -38,32 +38,32 @@
   }
 
   @include m(primary) {
-    @include message-theme($--theme-primary);
+    @include message-theme(var(--theme-primary));
   }
 
   @include m(success) {
-    @include message-theme($--theme-success);
+    @include message-theme(var(--theme-success));
   }
 
   @include m(warning) {
-    @include message-theme($--theme-warning);
+    @include message-theme(var(--theme-warning));
   }
 
   @include m(danger) {
-    @include message-theme($--theme-danger);
+    @include message-theme(var(--theme-danger));
   }
 
   @include m(lg) {
-    min-height: $--message-min-height-lg;
-    font-size: $--message-font-size-lg;
-    padding: $--message-padding-v-lg $--message-padding-h-lg;
+    min-height: var(--message-min-height-lg);
+    font-size: var(--message-font-size-lg);
+    padding: var(--message-padding-v-lg) var(--message-padding-h-lg);
 
     @include e(icon) {
       margin-right: r(6);
     }
 
     @include e(body) {
-      font-size: $--message-font-size-lg;
+      font-size: var(--message-font-size-lg);
     }
 
     @include e(footer) {

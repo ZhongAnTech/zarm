@@ -1,8 +1,8 @@
 @include b(notice-bar) {
   position: relative;
   width: 100%;
-  height: $--notice-bar-height;
-  line-height: $--notice-bar-height;
+  height: var(--notice-bar-height);
+  line-height: var(--notice-bar-height);
   overflow: hidden;
 
   @include e(body) {

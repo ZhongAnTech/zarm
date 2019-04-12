@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   height: 100%;
-  padding: $--input-padding-v 0;
-  color: $--color-text;
+  padding: var(--input-padding-v) 0;
+  color: var(--color-text);
 
   input,
   textarea {
@@ -16,23 +16,23 @@
     border: 0;
     outline: 0;
     -webkit-appearance: none;
-    color: $--color-text;
+    color: var(--color-text);
 
     &[type="date"],
     &[type="text"],
     &[type="search"] {
-      height: $--input-line-height;
-      line-height: $--input-line-height;
+      height: var(--input-line-height);
+      line-height: var(--input-line-height);
     }
 
     @include placeholder {
-      color: $--color-text-placeholder;
+      color: var(--color-text-placeholder);
     }
   }
 
   textarea {
     display: block;
-    line-height: $--input-line-height;
+    line-height: var(--input-line-height);
     resize: none;
     word-break: break-all;
     word-wrap: break-word;
@@ -41,8 +41,8 @@
 
   @include e(content) {
     position: relative;
-    height: $--input-line-height;
-    line-height: $--input-line-height;
+    height: var(--input-line-height);
+    line-height: var(--input-line-height);
   }
 
   @include e(virtual-input) {
@@ -63,14 +63,14 @@
     top: 0;
     width: 100%;
     height: 100%;
-    color: $--color-text-placeholder;
+    color: var(--color-text-placeholder);
   }
 
   @include e(clear) {
     position: absolute;
     visibility: hidden;
     color: #bcbcbc;
-    width: $--input-clear-icon-width;
+    width: var(--input-clear-icon-width);
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -85,7 +85,7 @@
 
   @include e(length) {
     text-align: right;
-    color: $--input-length-count-color;
+    color: var(--input-length-count-color);
     font-size: r(12);
   }
 
@@ -97,8 +97,8 @@
         &:after {
           content: '';
           display: inline-block;
-          height: $--input-cursor-height;
-          border-right: $--input-cursor-width solid $--input-cursor-color;
+          height: var(--input-cursor-height);
+          border-right: var(--input-cursor-width) solid var(--input-cursor-color);
           transition: opacity 0.1s ease-out;
           animation: virtual-cursor 1s infinite step-start;
         }
@@ -108,7 +108,7 @@
 
   @include m(clearable) {
     @include m(focus) {
-      padding-right: $--input-clear-icon-width;
+      padding-right: var(--input-clear-icon-width);
     }
   }
 
@@ -127,16 +127,16 @@
     input,
     textarea {
       cursor: not-allowed;
-      color: $--color-text-disabled;
+      color: var(--color-text-disabled);
 
       @include placeholder {
-        color: $--color-text-disabled;
+        color: var(--color-text-disabled);
       }
     }
 
     @include e(content, placeholder) {
       cursor: not-allowed;
-      color: $--color-text-disabled;
+      color: var(--color-text-disabled);
     }
   }
 }

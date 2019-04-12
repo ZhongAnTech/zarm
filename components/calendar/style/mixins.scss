@@ -6,7 +6,7 @@ $--calendar-day-width: 14.28571%;
       to $direction,
       transparent 0,
       transparent 50%,
-      var(--calendar-day-range-background) 50%
+      alpha(var(--theme-primary), 0.2) 50%
     );
 }
 

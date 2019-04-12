@@ -10,11 +10,11 @@
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overflow: auto;
-  z-index: $--zindex-modal;
+  z-index: var(--zindex-modal);
 
   @include m(radius) {
     @include e(dialog) {
-      border-radius: $--radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
@@ -26,10 +26,10 @@
   @include e(dialog) {
     position: relative;
     margin: r(60) auto;
-    background-color: $--modal-background;
-    box-shadow: 0 r(7) r(21) $--color-shadow;
+    background-color: var(--modal-background);
+    box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
-    z-index: $--zindex-modal + 1;
+    z-index: calc(var(--zindex-modal) + 1);
   }
 
   @include e(header) {
@@ -38,7 +38,7 @@
     text-align: center;
 
     &__title {
-      font-size: $--modal-title-font-size;
+      font-size: var(--modal-title-font-size);
       line-height: 1;
       color: #333;
     }
@@ -60,7 +60,7 @@
 
   @include e(body) {
     font-size: r(15);
-    color: $--color-text-caption;
+    color: var(--color-text-caption);
     padding: r(15);
     overflow: auto;
     user-select: auto;

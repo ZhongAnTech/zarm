@@ -1,12 +1,12 @@
 @include b(pull) {
   overflow: hidden;
-  min-height: $--pull-control-height;
+  min-height: var(--pull-control-height);
   // overflow-x: hidden;
   // overflow-y: scroll;
   // height: r(300);
 
   @include e(content) {
-    transform: translate3d(0, $--pull-control-height, 0);
+    transform: translate3d(0, var(--pull-control-height), 0);
   }
 
   @include e(refresh, load) {
@@ -18,15 +18,15 @@
   }
 
   @include e(refresh) {
-    margin-top: - $--pull-control-height;
-    height: $--pull-control-height;
+    margin-top: calc(var(--pull-control-height) * -1);
+    height: var(--pull-control-height);
   }
 
   @include e(load) {
     height: 0;
 
     @include m(show) {
-      height: $--pull-control-height;
+      height: var(--pull-control-height);
     }
   }
 
@@ -34,9 +34,9 @@
     display: flex;
     align-items: center;
     padding: r(10) 0;
-    height: $--pull-control-height;
-    color: $--color-text-caption;
-    font-size: $--pull-control-font-size;
+    height: var(--pull-control-height);
+    color: var(--color-text-caption);
+    font-size: var(--pull-control-font-size);
 
     @include b(icon) {
       font-size: r(22);

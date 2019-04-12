@@ -2,24 +2,24 @@
   display: flex;
 
   @include e(sub, plus) {
-    width: $--stepper-height-md;
+    width: var(--stepper-height-md);
     padding: 0;
 
     @include b(icon) {
-      font-size: $--stepper-icon-font-size-md;
+      font-size: var(--stepper-icon-font-size-md);
     }
   }
 
   @include e(input) {
     position: relative;
-    width: $--stepper-input-width-md;
-    height: $--stepper-height-md;
-    margin: 0 $--stepper-input-margin-h-md;
-    padding: 0 $--stepper-input-padding-h-md;
-    font-size: $--stepper-input-font-size-md;
-    color: $--color-text;
+    width: var(--stepper-input-width-md);
+    height: var(--stepper-height-md);
+    margin: 0 var(--stepper-input-margin-h-md);
+    padding: 0 var(--stepper-input-padding-h-md);
+    font-size: var(--stepper-input-font-size-md);
+    color: var(--color-text);
     text-align: center;
-    border: r(1) solid $--border-color;
+    border: r(1) solid var(--border-color);
     border-radius: 0;
     outline: 0;
     -webkit-appearance: none;
@@ -28,38 +28,38 @@
   @include m(disabled) {
     @include e(input) {
       background: #fff;
-      color: $--stepper-input-disabled;
-      opacity: $--opacity-disabled;
+      color: var(--stepper-input-disabled);
+      opacity: var(--opacity-disabled);
     }
   }
 
   @include m(radius) {
     @include e(input) {
-      border-radius: $--radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
   @include m(circle) {
     @include e(input) {
-      border-radius: $--stepper-height-md;
+      border-radius: var(--stepper-height-md);
     }
   }
 
   @include m(lg) {
     @include e(input) {
-      width: $--stepper-input-width-lg;
-      height: $--stepper-height-lg;
-      margin: 0 $--stepper-input-margin-h-lg;
-      padding: 0 $--stepper-input-padding-h-lg;
-      font-size: $--stepper-input-font-size-lg;
+      width: var(--stepper-input-width-lg);
+      height: var(--stepper-height-lg);
+      margin: 0 var(--stepper-input-margin-h-lg);
+      padding: 0 var(--stepper-input-padding-h-lg);
+      font-size: var(--stepper-input-font-size-lg);
     }
 
     @include e(sub, plus) {
-      width: $--stepper-height-lg;
+      width: var(--stepper-height-lg);
       padding: 0;
 
       @include b(icon) {
-        font-size: $--stepper-icon-font-size-lg;
+        font-size: var(--stepper-icon-font-size-lg);
       }
     }
   }

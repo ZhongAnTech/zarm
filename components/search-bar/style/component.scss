@@ -97,19 +97,19 @@
 
   @include m(radius) {
     @include e(content) {
-      border-radius: $--radius-md;
+      border-radius: var(--radius-md);
     }
   }
 
   @include m(round) {
     @include e(content) {
-      border-radius: $--radius-round;
+      border-radius: var(--radius-round);
     }
   }
 
   @include m(circle) {
     @include e(content) {
-      border-radius: $--radius-circle;
+      border-radius: var(--radius-circle);
     }
   }
 }

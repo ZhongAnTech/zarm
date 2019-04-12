@@ -104,11 +104,11 @@ $--calendar-day-width: 14.28571%;
     }
 
     @include m(range) {
-      background-color: var(--calendar-day-range-background);
+      background-color: alpha(var(--theme-primary), 0.2);
       color: var(--calendar-day-range-color);
 
       @include e(day__content) {
-        background-color: var(--calendar-day-range-background);
+        background-color: alpha(var(--theme-primary), 0.2);
       }
 
       &.d6 {

@@ -6,7 +6,7 @@
     transform: translate(0, 0);
     transition-property: transform;
     overflow: auto;
-    z-index: $--zindex-popup;
+    z-index: var(--zindex-popup);
     -webkit-overflow-scrolling: touch;
   }
 

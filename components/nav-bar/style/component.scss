@@ -6,8 +6,8 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: $--nav-bar-height;
-  background: $--nav-bar-color;
+  height: var(--nav-bar-height);
+  background: var(--nav-bar-color);
 
   @include e(title) {
     position: absolute;
@@ -20,7 +20,7 @@
 
   @include e(side) {
     @include icon-size(
-      $--nav-bar-icon-size
+      var(--nav-bar-icon-size),
     );
 
     @include m(left) {
