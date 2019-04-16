@@ -43,7 +43,7 @@
     "build:ios": "concurrently \"npm run clean\" \"node scripts/native/mkdir\" \"node node_modules/react-native/local-cli/cli.js bundle --platform ios --dev false --entry-file examples-rn/index.js --bundle-output examples-rn/ios/bundle/index.bundle --assets-dest examples-rn/ios/bundle\"",
     "build:android": "concurrently \"npm run clean\" \"node scripts/native/mkdir\" \"node node_modules/react-native/local-cli/cli.js bundle --platform android --dev false --entry-file examples-rn/index.js --bundle-output examples-rn/android/bundle/index.bundle --assets-dest examples-rn/android/bundle\"",
     "build:types": "tsc --outDir types -d --emitDeclarationOnly",
-    "build:es": "babel components --out-dir es --m es6 --extensions \".ts,.tsx\" --presets @babel/typescript,@babel/react",
+    "build:es": "babel components --out-dir es --m es6 --extensions \".ts,.tsx\" --presets @babel/typescript,@babel/react --plugins @babel/plugin-proposal-object-rest-spread",
     "build:lib": "babel components --out-dir lib --m commonjs --extensions \".ts,.tsx\" --presets @babel/env,@babel/react,@babel/typescript --plugins @babel/plugin-proposal-class-properties",
     "build:umd": "webpack --config scripts/webpack/config.umd.js && cross-env NODE_ENV=production webpack --config scripts/webpack/config.umd.js",
     "build:copyCss": "cd scripts/gulp && gulp",
