@@ -31,8 +31,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     onCancel: () => {},
   };
 
-  private isScrolling;
-
   constructor(props) {
     super(props);
 
@@ -61,25 +59,9 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   handleClick = () => {
-    if (this.isScrolling) {
-      return false;
-    }
-    this.toggle();
-  }
-
-  // 切换显示状态
-  toggle() {
-    if (this.props.disabled) {
-      return;
-    }
-
     this.setState({
-      visible: !this.state.visible,
+      visible: true,
     });
-  }
-
-  onTransition(isScrolling) {
-    this.isScrolling = isScrolling;
   }
 
   onChange = (selected) => {
@@ -91,16 +73,15 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
 
   onOk = (selected) => {
     const { onOk } = this.props;
+    this.setState({ visible: false });
     if (typeof onOk === 'function') {
       onOk(selected);
     }
-    this.setState({ visible: false });
   }
 
-  // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    this.toggle();
+    this.setState({ visible: false });
     if (typeof onCancel === 'function') {
       onCancel();
     }
@@ -119,7 +100,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       <div className={cls} onClick={this.handleClick}>
         <input type="hidden" value={formatFn(this, this.state.value)} />
         <div className={`${prefixCls}__input`}>
-          {this.state.value ? formatFn(this, this.state.value) : placeholder || locale.placeholder}
+          {this.state.value ? formatFn(this, this.state.value) : placeholder || locale!.placeholder}
         </div>
         <DatePicker
           {...others}
@@ -127,7 +108,6 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
           value={value}
           onOk={this.onOk}
           onCancel={this.onCancel}
-          onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
         />
       </div>
     );

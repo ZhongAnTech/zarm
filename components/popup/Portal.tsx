@@ -125,8 +125,16 @@ export default class Portal extends Component<PortalProps, any> {
     }
   }
 
+  handleMaskClick(e) {
+    e.stopPropagation();
+    const { onMaskClick } = this.props;
+    if (typeof onMaskClick === 'function') {
+      onMaskClick();
+    }
+  }
+
   renderMask = () => {
-    const { mask, maskType, onMaskClick, animationDuration } = this.props;
+    const { mask, maskType, animationDuration } = this.props;
     const { isPending, animationState, isMaskShow } = this.state;
 
     const maskCls = classnames({
@@ -139,7 +147,13 @@ export default class Portal extends Component<PortalProps, any> {
     };
 
     return mask &&
-      <Mask className={maskCls} style={maskStyle} visible={isMaskShow} type={maskType} onClick={onMaskClick} />;
+      <Mask
+        className={maskCls}
+        style={maskStyle}
+        visible={isMaskShow}
+        type={maskType}
+        onClick={(e) => { this.handleMaskClick(e); }}
+      />;
   }
 
   createContainer() {

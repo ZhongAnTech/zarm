@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import createContext, { Context } from 'create-react-context';
-import { Locale, LocaleProviderProps } from './PropsType';
+import { LocaleProviderProps, Locale } from './PropsType';
 
 export const LocaleContext: Context<Locale> = createContext({});
 
