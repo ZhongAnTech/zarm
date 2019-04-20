@@ -69,7 +69,6 @@ exports[`DateSelect DateSelect date 1`] = `
           >
             <DatePicker
               defaultValue=""
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -196,7 +195,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -317,7 +315,6 @@ exports[`DateSelect DateSelect time 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -429,7 +426,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03"
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -2326,7 +2322,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           >
             <DatePicker
               defaultValue=""
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -4244,7 +4239,6 @@ exports[`DateSelect DateSelect year 1`] = `
           >
             <DatePicker
               defaultValue=""
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",

@@ -134,7 +134,7 @@ class Demo extends React.Component {
     super();
     this.state = {
       visible: false,
-      value: '',
+      value: new Date(),
     };
   }
 
@@ -183,6 +183,7 @@ class Demo extends React.Component {
       <div>
         <DatePickerView
           mode="datetime"
+          disabled
           min="2018-1-13"
           onChange={(value) => {
             console.log('datePickerView => ', value);
