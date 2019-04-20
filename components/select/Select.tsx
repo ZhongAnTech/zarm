@@ -38,6 +38,10 @@ export default class Select extends PureComponent<SelectProps, any> {
   }
 
   handleClick = () => {
+    const { disabled } = this.props;
+    if (disabled) {
+      return false;
+    }
     this.setState({
       visible: true,
     });
