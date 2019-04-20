@@ -35,6 +35,21 @@ describe('DateSelect', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('DateSelect disabled', () => {
+    const wrapper = mount(
+      <DateSelect
+        disabeld
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />
+    );
+
+    wrapper.find('.za-date-select').simulate('click');
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('DateSelect date', () => {
     const wrapper = mount(
       <DateSelect
