@@ -183,7 +183,6 @@ class Demo extends React.Component {
       <div>
         <DatePickerView
           mode="datetime"
-          disabled
           min="2018-1-13"
           onChange={(value) => {
             console.log('datePickerView => ', value);
