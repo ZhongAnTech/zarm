@@ -69,7 +69,6 @@ exports[`DateSelect DateSelect date 1`] = `
           >
             <DatePicker
               defaultValue=""
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -196,7 +195,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -234,6 +232,2002 @@ exports[`DateSelect DateSelect datetime 1`] = `
                   stayTime={3000}
                   visible={false}
                 />
+              </Popup>
+            </DatePicker>
+          </LocaleReceiver>
+        </ForwardRef(forwardRefFactory)>
+      </div>
+    </DateSelect>
+  </LocaleReceiver>
+</ForwardRef(forwardRefFactory)>
+`;
+
+exports[`DateSelect DateSelect disabled 1`] = `
+<ForwardRef(forwardRefFactory)
+  dataSource={
+    Array [
+      Object {
+        "label": "选项一",
+        "value": "1",
+      },
+      Object {
+        "label": "选项二",
+        "value": "2",
+      },
+    ]
+  }
+  disabeld={true}
+>
+  <LocaleReceiver
+    dataSource={
+      Array [
+        Object {
+          "label": "选项一",
+          "value": "1",
+        },
+        Object {
+          "label": "选项二",
+          "value": "2",
+        },
+      ]
+    }
+    disabeld={true}
+    forwardedRef={null}
+  >
+    <DateSelect
+      dataSource={
+        Array [
+          Object {
+            "label": "选项一",
+            "value": "1",
+          },
+          Object {
+            "label": "选项二",
+            "value": "2",
+          },
+        ]
+      }
+      disabeld={true}
+      disabled={false}
+      locale={
+        Object {
+          "placeholder": "please select",
+        }
+      }
+      localeCode="en"
+      minuteStep={1}
+      mode="date"
+      onCancel={[Function]}
+      prefixCls="za-date-select"
+      valueMember="value"
+    >
+      <div
+        className="za-date-select za-date-select--placeholder"
+        onClick={[Function]}
+      >
+        <input
+          type="hidden"
+          value=""
+        />
+        <div
+          className="za-date-select__input"
+        >
+          please select
+        </div>
+        <ForwardRef(forwardRefFactory)
+          dataSource={
+            Array [
+              Object {
+                "label": "选项一",
+                "value": "1",
+              },
+              Object {
+                "label": "选项二",
+                "value": "2",
+              },
+            ]
+          }
+          disabeld={true}
+          localeCode="en"
+          minuteStep={1}
+          mode="date"
+          onCancel={[Function]}
+          onOk={[Function]}
+          valueMember="value"
+          visible={true}
+        >
+          <LocaleReceiver
+            dataSource={
+              Array [
+                Object {
+                  "label": "选项一",
+                  "value": "1",
+                },
+                Object {
+                  "label": "选项二",
+                  "value": "2",
+                },
+              ]
+            }
+            disabeld={true}
+            forwardedRef={null}
+            localeCode="en"
+            minuteStep={1}
+            mode="date"
+            onCancel={[Function]}
+            onOk={[Function]}
+            valueMember="value"
+            visible={true}
+          >
+            <DatePicker
+              dataSource={
+                Array [
+                  Object {
+                    "label": "选项一",
+                    "value": "1",
+                  },
+                  Object {
+                    "label": "选项二",
+                    "value": "2",
+                  },
+                ]
+              }
+              defaultValue=""
+              disabeld={true}
+              locale={
+                Object {
+                  "cancelText": "Cancel",
+                  "okText": "OK",
+                  "title": "please select",
+                }
+              }
+              localeCode="en"
+              minuteStep={1}
+              mode="date"
+              onCancel={[Function]}
+              onInit={[Function]}
+              onOk={[Function]}
+              prefixCls="za-date-picker"
+              value=""
+              valueMember="value"
+              visible={true}
+            >
+              <Popup
+                onMaskClick={[Function]}
+                visible={true}
+              >
+                <Portal
+                  animationDuration={200}
+                  autoClose={false}
+                  direction="bottom"
+                  handlePortalUnmount={[Function]}
+                  mask={true}
+                  maskType="normal"
+                  onMaskClick={[Function]}
+                  prefixCls="za-popup"
+                  stayTime={3000}
+                  visible={true}
+                >
+                  <Portal
+                    containerInfo={
+                      <div
+                        class=" popup-container"
+                      >
+                        <div
+                          class="za-popup za-popup--bottom za-popup--hidden"
+                        >
+                          <div
+                            class="za-popup__wrapper"
+                          >
+                            <div
+                              class="za-date-picker"
+                            >
+                              <div
+                                class="za-date-picker__header"
+                              >
+                                <div
+                                  class="za-date-picker__cancel"
+                                >
+                                  Cancel
+                                </div>
+                                <div
+                                  class="za-date-picker__title"
+                                >
+                                  please select
+                                </div>
+                                <div
+                                  class="za-date-picker__submit"
+                                >
+                                  OK
+                                </div>
+                              </div>
+                              <div
+                                class="za-date-picker-view"
+                              >
+                                <div
+                                  class="za-date-picker-view__content"
+                                >
+                                  <div
+                                    class="za-wheel"
+                                  >
+                                    <div
+                                      class="za-wheel__content"
+                                      style="transform: translate(0px,NaNpx) scale(1);"
+                                    >
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2000
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2001
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2002
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2003
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2004
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2005
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2006
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2007
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2008
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2009
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2010
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2011
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2012
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2013
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2014
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2015
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2016
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2017
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2018
+                                      </div>
+                                      <div
+                                        class="za-wheel__item za-wheel__item--selected"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2019
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2020
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2021
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2022
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2023
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2024
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2025
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2026
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2027
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2028
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2029
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2030
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="za-wheel"
+                                  >
+                                    <div
+                                      class="za-wheel__content"
+                                      style="transform: translate(0px,NaNpx) scale(1);"
+                                    >
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        1
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        3
+                                      </div>
+                                      <div
+                                        class="za-wheel__item za-wheel__item--selected"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        4
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        5
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        6
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        7
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        8
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        9
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        10
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        11
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        12
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="za-wheel"
+                                  >
+                                    <div
+                                      class="za-wheel__content"
+                                      style="transform: translate(0px,NaNpx) scale(1);"
+                                    >
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        1
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        2
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        3
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        4
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        5
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        6
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        7
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        8
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        9
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        10
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        11
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        12
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        13
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        14
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        15
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        16
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        17
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        18
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        19
+                                      </div>
+                                      <div
+                                        class="za-wheel__item za-wheel__item--selected"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        20
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        21
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        22
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        23
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        24
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        25
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        26
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        27
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        28
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        29
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
+                                      >
+                                        30
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                />
+                                <div
+                                  class="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  >
+                    <div
+                      className="za-popup za-popup--bottom za-popup--hidden"
+                    >
+                      <div
+                        className="za-popup__wrapper"
+                        style={
+                          Object {
+                            "WebkitTransitionDuration": "200ms",
+                            "transitionDuration": "200ms",
+                          }
+                        }
+                      >
+                        <div
+                          className="za-date-picker"
+                          onClick={[Function]}
+                        >
+                          <div
+                            className="za-date-picker__header"
+                          >
+                            <div
+                              className="za-date-picker__cancel"
+                              onClick={[Function]}
+                            >
+                              Cancel
+                            </div>
+                            <div
+                              className="za-date-picker__title"
+                            >
+                              please select
+                            </div>
+                            <div
+                              className="za-date-picker__submit"
+                              onClick={[Function]}
+                            >
+                              OK
+                            </div>
+                          </div>
+                          <ForwardRef(forwardRefFactory)
+                            dataSource={
+                              Array [
+                                Object {
+                                  "label": "选项一",
+                                  "value": "1",
+                                },
+                                Object {
+                                  "label": "选项二",
+                                  "value": "2",
+                                },
+                              ]
+                            }
+                            defaultValue=""
+                            disabeld={true}
+                            localeCode="en"
+                            minuteStep={1}
+                            mode="date"
+                            onCancel={[Function]}
+                            onChange={[Function]}
+                            onInit={[Function]}
+                            onOk={[Function]}
+                            onTransition={[Function]}
+                            value=""
+                            valueMember="value"
+                            visible={true}
+                          >
+                            <LocaleReceiver
+                              dataSource={
+                                Array [
+                                  Object {
+                                    "label": "选项一",
+                                    "value": "1",
+                                  },
+                                  Object {
+                                    "label": "选项二",
+                                    "value": "2",
+                                  },
+                                ]
+                              }
+                              defaultValue=""
+                              disabeld={true}
+                              forwardedRef={null}
+                              localeCode="en"
+                              minuteStep={1}
+                              mode="date"
+                              onCancel={[Function]}
+                              onChange={[Function]}
+                              onInit={[Function]}
+                              onOk={[Function]}
+                              onTransition={[Function]}
+                              value=""
+                              valueMember="value"
+                              visible={true}
+                            >
+                              <DatePickerView
+                                dataSource={
+                                  Array [
+                                    Object {
+                                      "label": "选项一",
+                                      "value": "1",
+                                    },
+                                    Object {
+                                      "label": "选项二",
+                                      "value": "2",
+                                    },
+                                  ]
+                                }
+                                defaultValue=""
+                                disabeld={true}
+                                disabled={false}
+                                locale={
+                                  Object {
+                                    "day": "",
+                                    "hour": "",
+                                    "minute": "",
+                                    "month": "",
+                                    "year": "",
+                                  }
+                                }
+                                localeCode="en"
+                                minuteStep={1}
+                                mode="date"
+                                onCancel={[Function]}
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onInit={[Function]}
+                                onOk={[Function]}
+                                onTransition={[Function]}
+                                prefixCls="za-date-picker-view"
+                                value=""
+                                valueMember="value"
+                                visible={true}
+                              >
+                                <PickerView
+                                  cols={Infinity}
+                                  dataSource={
+                                    Array [
+                                      Array [
+                                        Object {
+                                          "label": "2000",
+                                          "value": 2000,
+                                        },
+                                        Object {
+                                          "label": "2001",
+                                          "value": 2001,
+                                        },
+                                        Object {
+                                          "label": "2002",
+                                          "value": 2002,
+                                        },
+                                        Object {
+                                          "label": "2003",
+                                          "value": 2003,
+                                        },
+                                        Object {
+                                          "label": "2004",
+                                          "value": 2004,
+                                        },
+                                        Object {
+                                          "label": "2005",
+                                          "value": 2005,
+                                        },
+                                        Object {
+                                          "label": "2006",
+                                          "value": 2006,
+                                        },
+                                        Object {
+                                          "label": "2007",
+                                          "value": 2007,
+                                        },
+                                        Object {
+                                          "label": "2008",
+                                          "value": 2008,
+                                        },
+                                        Object {
+                                          "label": "2009",
+                                          "value": 2009,
+                                        },
+                                        Object {
+                                          "label": "2010",
+                                          "value": 2010,
+                                        },
+                                        Object {
+                                          "label": "2011",
+                                          "value": 2011,
+                                        },
+                                        Object {
+                                          "label": "2012",
+                                          "value": 2012,
+                                        },
+                                        Object {
+                                          "label": "2013",
+                                          "value": 2013,
+                                        },
+                                        Object {
+                                          "label": "2014",
+                                          "value": 2014,
+                                        },
+                                        Object {
+                                          "label": "2015",
+                                          "value": 2015,
+                                        },
+                                        Object {
+                                          "label": "2016",
+                                          "value": 2016,
+                                        },
+                                        Object {
+                                          "label": "2017",
+                                          "value": 2017,
+                                        },
+                                        Object {
+                                          "label": "2018",
+                                          "value": 2018,
+                                        },
+                                        Object {
+                                          "label": "2019",
+                                          "value": 2019,
+                                        },
+                                        Object {
+                                          "label": "2020",
+                                          "value": 2020,
+                                        },
+                                        Object {
+                                          "label": "2021",
+                                          "value": 2021,
+                                        },
+                                        Object {
+                                          "label": "2022",
+                                          "value": 2022,
+                                        },
+                                        Object {
+                                          "label": "2023",
+                                          "value": 2023,
+                                        },
+                                        Object {
+                                          "label": "2024",
+                                          "value": 2024,
+                                        },
+                                        Object {
+                                          "label": "2025",
+                                          "value": 2025,
+                                        },
+                                        Object {
+                                          "label": "2026",
+                                          "value": 2026,
+                                        },
+                                        Object {
+                                          "label": "2027",
+                                          "value": 2027,
+                                        },
+                                        Object {
+                                          "label": "2028",
+                                          "value": 2028,
+                                        },
+                                        Object {
+                                          "label": "2029",
+                                          "value": 2029,
+                                        },
+                                        Object {
+                                          "label": "2030",
+                                          "value": 2030,
+                                        },
+                                      ],
+                                      Array [
+                                        Object {
+                                          "label": "1",
+                                          "value": 0,
+                                        },
+                                        Object {
+                                          "label": "2",
+                                          "value": 1,
+                                        },
+                                        Object {
+                                          "label": "3",
+                                          "value": 2,
+                                        },
+                                        Object {
+                                          "label": "4",
+                                          "value": 3,
+                                        },
+                                        Object {
+                                          "label": "5",
+                                          "value": 4,
+                                        },
+                                        Object {
+                                          "label": "6",
+                                          "value": 5,
+                                        },
+                                        Object {
+                                          "label": "7",
+                                          "value": 6,
+                                        },
+                                        Object {
+                                          "label": "8",
+                                          "value": 7,
+                                        },
+                                        Object {
+                                          "label": "9",
+                                          "value": 8,
+                                        },
+                                        Object {
+                                          "label": "10",
+                                          "value": 9,
+                                        },
+                                        Object {
+                                          "label": "11",
+                                          "value": 10,
+                                        },
+                                        Object {
+                                          "label": "12",
+                                          "value": 11,
+                                        },
+                                      ],
+                                      Array [
+                                        Object {
+                                          "label": "1",
+                                          "value": 1,
+                                        },
+                                        Object {
+                                          "label": "2",
+                                          "value": 2,
+                                        },
+                                        Object {
+                                          "label": "3",
+                                          "value": 3,
+                                        },
+                                        Object {
+                                          "label": "4",
+                                          "value": 4,
+                                        },
+                                        Object {
+                                          "label": "5",
+                                          "value": 5,
+                                        },
+                                        Object {
+                                          "label": "6",
+                                          "value": 6,
+                                        },
+                                        Object {
+                                          "label": "7",
+                                          "value": 7,
+                                        },
+                                        Object {
+                                          "label": "8",
+                                          "value": 8,
+                                        },
+                                        Object {
+                                          "label": "9",
+                                          "value": 9,
+                                        },
+                                        Object {
+                                          "label": "10",
+                                          "value": 10,
+                                        },
+                                        Object {
+                                          "label": "11",
+                                          "value": 11,
+                                        },
+                                        Object {
+                                          "label": "12",
+                                          "value": 12,
+                                        },
+                                        Object {
+                                          "label": "13",
+                                          "value": 13,
+                                        },
+                                        Object {
+                                          "label": "14",
+                                          "value": 14,
+                                        },
+                                        Object {
+                                          "label": "15",
+                                          "value": 15,
+                                        },
+                                        Object {
+                                          "label": "16",
+                                          "value": 16,
+                                        },
+                                        Object {
+                                          "label": "17",
+                                          "value": 17,
+                                        },
+                                        Object {
+                                          "label": "18",
+                                          "value": 18,
+                                        },
+                                        Object {
+                                          "label": "19",
+                                          "value": 19,
+                                        },
+                                        Object {
+                                          "label": "20",
+                                          "value": 20,
+                                        },
+                                        Object {
+                                          "label": "21",
+                                          "value": 21,
+                                        },
+                                        Object {
+                                          "label": "22",
+                                          "value": 22,
+                                        },
+                                        Object {
+                                          "label": "23",
+                                          "value": 23,
+                                        },
+                                        Object {
+                                          "label": "24",
+                                          "value": 24,
+                                        },
+                                        Object {
+                                          "label": "25",
+                                          "value": 25,
+                                        },
+                                        Object {
+                                          "label": "26",
+                                          "value": 26,
+                                        },
+                                        Object {
+                                          "label": "27",
+                                          "value": 27,
+                                        },
+                                        Object {
+                                          "label": "28",
+                                          "value": 28,
+                                        },
+                                        Object {
+                                          "label": "29",
+                                          "value": 29,
+                                        },
+                                        Object {
+                                          "label": "30",
+                                          "value": 30,
+                                        },
+                                      ],
+                                    ]
+                                  }
+                                  defaultValue=""
+                                  disabeld={true}
+                                  disabled={false}
+                                  itemRender={[Function]}
+                                  locale={
+                                    Object {
+                                      "day": "",
+                                      "hour": "",
+                                      "minute": "",
+                                      "month": "",
+                                      "year": "",
+                                    }
+                                  }
+                                  localeCode="en"
+                                  minuteStep={1}
+                                  mode="date"
+                                  onCancel={[Function]}
+                                  onChange={[Function]}
+                                  onClick={[Function]}
+                                  onOk={[Function]}
+                                  onTransition={[Function]}
+                                  prefixCls="za-date-picker-view"
+                                  value={
+                                    Array [
+                                      2019,
+                                      3,
+                                      20,
+                                    ]
+                                  }
+                                  valueMember="value"
+                                  visible={true}
+                                >
+                                  <div
+                                    className="za-date-picker-view"
+                                  >
+                                    <div
+                                      className="za-date-picker-view__content"
+                                    >
+                                      <Wheel
+                                        dataSource={
+                                          Array [
+                                            Object {
+                                              "label": "2000",
+                                              "value": 2000,
+                                            },
+                                            Object {
+                                              "label": "2001",
+                                              "value": 2001,
+                                            },
+                                            Object {
+                                              "label": "2002",
+                                              "value": 2002,
+                                            },
+                                            Object {
+                                              "label": "2003",
+                                              "value": 2003,
+                                            },
+                                            Object {
+                                              "label": "2004",
+                                              "value": 2004,
+                                            },
+                                            Object {
+                                              "label": "2005",
+                                              "value": 2005,
+                                            },
+                                            Object {
+                                              "label": "2006",
+                                              "value": 2006,
+                                            },
+                                            Object {
+                                              "label": "2007",
+                                              "value": 2007,
+                                            },
+                                            Object {
+                                              "label": "2008",
+                                              "value": 2008,
+                                            },
+                                            Object {
+                                              "label": "2009",
+                                              "value": 2009,
+                                            },
+                                            Object {
+                                              "label": "2010",
+                                              "value": 2010,
+                                            },
+                                            Object {
+                                              "label": "2011",
+                                              "value": 2011,
+                                            },
+                                            Object {
+                                              "label": "2012",
+                                              "value": 2012,
+                                            },
+                                            Object {
+                                              "label": "2013",
+                                              "value": 2013,
+                                            },
+                                            Object {
+                                              "label": "2014",
+                                              "value": 2014,
+                                            },
+                                            Object {
+                                              "label": "2015",
+                                              "value": 2015,
+                                            },
+                                            Object {
+                                              "label": "2016",
+                                              "value": 2016,
+                                            },
+                                            Object {
+                                              "label": "2017",
+                                              "value": 2017,
+                                            },
+                                            Object {
+                                              "label": "2018",
+                                              "value": 2018,
+                                            },
+                                            Object {
+                                              "label": "2019",
+                                              "value": 2019,
+                                            },
+                                            Object {
+                                              "label": "2020",
+                                              "value": 2020,
+                                            },
+                                            Object {
+                                              "label": "2021",
+                                              "value": 2021,
+                                            },
+                                            Object {
+                                              "label": "2022",
+                                              "value": 2022,
+                                            },
+                                            Object {
+                                              "label": "2023",
+                                              "value": 2023,
+                                            },
+                                            Object {
+                                              "label": "2024",
+                                              "value": 2024,
+                                            },
+                                            Object {
+                                              "label": "2025",
+                                              "value": 2025,
+                                            },
+                                            Object {
+                                              "label": "2026",
+                                              "value": 2026,
+                                            },
+                                            Object {
+                                              "label": "2027",
+                                              "value": 2027,
+                                            },
+                                            Object {
+                                              "label": "2028",
+                                              "value": 2028,
+                                            },
+                                            Object {
+                                              "label": "2029",
+                                              "value": 2029,
+                                            },
+                                            Object {
+                                              "label": "2030",
+                                              "value": 2030,
+                                            },
+                                          ]
+                                        }
+                                        disabled={false}
+                                        itemRender={[Function]}
+                                        key="0"
+                                        onChange={[Function]}
+                                        onTransition={[Function]}
+                                        prefixCls="za-wheel"
+                                        value={2019}
+                                        valueMember="value"
+                                      >
+                                        <div
+                                          className="za-wheel"
+                                        >
+                                          <div
+                                            className="za-wheel__content"
+                                          >
+                                            <div
+                                              className="za-wheel__item"
+                                              key="0"
+                                            >
+                                              2000
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="1"
+                                            >
+                                              2001
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="2"
+                                            >
+                                              2002
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="3"
+                                            >
+                                              2003
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="4"
+                                            >
+                                              2004
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="5"
+                                            >
+                                              2005
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="6"
+                                            >
+                                              2006
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="7"
+                                            >
+                                              2007
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="8"
+                                            >
+                                              2008
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="9"
+                                            >
+                                              2009
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="10"
+                                            >
+                                              2010
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="11"
+                                            >
+                                              2011
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="12"
+                                            >
+                                              2012
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="13"
+                                            >
+                                              2013
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="14"
+                                            >
+                                              2014
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="15"
+                                            >
+                                              2015
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="16"
+                                            >
+                                              2016
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="17"
+                                            >
+                                              2017
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="18"
+                                            >
+                                              2018
+                                            </div>
+                                            <div
+                                              className="za-wheel__item za-wheel__item--selected"
+                                              key="19"
+                                            >
+                                              2019
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="20"
+                                            >
+                                              2020
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="21"
+                                            >
+                                              2021
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="22"
+                                            >
+                                              2022
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="23"
+                                            >
+                                              2023
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="24"
+                                            >
+                                              2024
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="25"
+                                            >
+                                              2025
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="26"
+                                            >
+                                              2026
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="27"
+                                            >
+                                              2027
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="28"
+                                            >
+                                              2028
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="29"
+                                            >
+                                              2029
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="30"
+                                            >
+                                              2030
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </Wheel>
+                                      <Wheel
+                                        dataSource={
+                                          Array [
+                                            Object {
+                                              "label": "1",
+                                              "value": 0,
+                                            },
+                                            Object {
+                                              "label": "2",
+                                              "value": 1,
+                                            },
+                                            Object {
+                                              "label": "3",
+                                              "value": 2,
+                                            },
+                                            Object {
+                                              "label": "4",
+                                              "value": 3,
+                                            },
+                                            Object {
+                                              "label": "5",
+                                              "value": 4,
+                                            },
+                                            Object {
+                                              "label": "6",
+                                              "value": 5,
+                                            },
+                                            Object {
+                                              "label": "7",
+                                              "value": 6,
+                                            },
+                                            Object {
+                                              "label": "8",
+                                              "value": 7,
+                                            },
+                                            Object {
+                                              "label": "9",
+                                              "value": 8,
+                                            },
+                                            Object {
+                                              "label": "10",
+                                              "value": 9,
+                                            },
+                                            Object {
+                                              "label": "11",
+                                              "value": 10,
+                                            },
+                                            Object {
+                                              "label": "12",
+                                              "value": 11,
+                                            },
+                                          ]
+                                        }
+                                        disabled={false}
+                                        itemRender={[Function]}
+                                        key="1"
+                                        onChange={[Function]}
+                                        onTransition={[Function]}
+                                        prefixCls="za-wheel"
+                                        value={3}
+                                        valueMember="value"
+                                      >
+                                        <div
+                                          className="za-wheel"
+                                        >
+                                          <div
+                                            className="za-wheel__content"
+                                          >
+                                            <div
+                                              className="za-wheel__item"
+                                              key="0"
+                                            >
+                                              1
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="1"
+                                            >
+                                              2
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="2"
+                                            >
+                                              3
+                                            </div>
+                                            <div
+                                              className="za-wheel__item za-wheel__item--selected"
+                                              key="3"
+                                            >
+                                              4
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="4"
+                                            >
+                                              5
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="5"
+                                            >
+                                              6
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="6"
+                                            >
+                                              7
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="7"
+                                            >
+                                              8
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="8"
+                                            >
+                                              9
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="9"
+                                            >
+                                              10
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="10"
+                                            >
+                                              11
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="11"
+                                            >
+                                              12
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </Wheel>
+                                      <Wheel
+                                        dataSource={
+                                          Array [
+                                            Object {
+                                              "label": "1",
+                                              "value": 1,
+                                            },
+                                            Object {
+                                              "label": "2",
+                                              "value": 2,
+                                            },
+                                            Object {
+                                              "label": "3",
+                                              "value": 3,
+                                            },
+                                            Object {
+                                              "label": "4",
+                                              "value": 4,
+                                            },
+                                            Object {
+                                              "label": "5",
+                                              "value": 5,
+                                            },
+                                            Object {
+                                              "label": "6",
+                                              "value": 6,
+                                            },
+                                            Object {
+                                              "label": "7",
+                                              "value": 7,
+                                            },
+                                            Object {
+                                              "label": "8",
+                                              "value": 8,
+                                            },
+                                            Object {
+                                              "label": "9",
+                                              "value": 9,
+                                            },
+                                            Object {
+                                              "label": "10",
+                                              "value": 10,
+                                            },
+                                            Object {
+                                              "label": "11",
+                                              "value": 11,
+                                            },
+                                            Object {
+                                              "label": "12",
+                                              "value": 12,
+                                            },
+                                            Object {
+                                              "label": "13",
+                                              "value": 13,
+                                            },
+                                            Object {
+                                              "label": "14",
+                                              "value": 14,
+                                            },
+                                            Object {
+                                              "label": "15",
+                                              "value": 15,
+                                            },
+                                            Object {
+                                              "label": "16",
+                                              "value": 16,
+                                            },
+                                            Object {
+                                              "label": "17",
+                                              "value": 17,
+                                            },
+                                            Object {
+                                              "label": "18",
+                                              "value": 18,
+                                            },
+                                            Object {
+                                              "label": "19",
+                                              "value": 19,
+                                            },
+                                            Object {
+                                              "label": "20",
+                                              "value": 20,
+                                            },
+                                            Object {
+                                              "label": "21",
+                                              "value": 21,
+                                            },
+                                            Object {
+                                              "label": "22",
+                                              "value": 22,
+                                            },
+                                            Object {
+                                              "label": "23",
+                                              "value": 23,
+                                            },
+                                            Object {
+                                              "label": "24",
+                                              "value": 24,
+                                            },
+                                            Object {
+                                              "label": "25",
+                                              "value": 25,
+                                            },
+                                            Object {
+                                              "label": "26",
+                                              "value": 26,
+                                            },
+                                            Object {
+                                              "label": "27",
+                                              "value": 27,
+                                            },
+                                            Object {
+                                              "label": "28",
+                                              "value": 28,
+                                            },
+                                            Object {
+                                              "label": "29",
+                                              "value": 29,
+                                            },
+                                            Object {
+                                              "label": "30",
+                                              "value": 30,
+                                            },
+                                          ]
+                                        }
+                                        disabled={false}
+                                        itemRender={[Function]}
+                                        key="2"
+                                        onChange={[Function]}
+                                        onTransition={[Function]}
+                                        prefixCls="za-wheel"
+                                        value={20}
+                                        valueMember="value"
+                                      >
+                                        <div
+                                          className="za-wheel"
+                                        >
+                                          <div
+                                            className="za-wheel__content"
+                                          >
+                                            <div
+                                              className="za-wheel__item"
+                                              key="0"
+                                            >
+                                              1
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="1"
+                                            >
+                                              2
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="2"
+                                            >
+                                              3
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="3"
+                                            >
+                                              4
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="4"
+                                            >
+                                              5
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="5"
+                                            >
+                                              6
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="6"
+                                            >
+                                              7
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="7"
+                                            >
+                                              8
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="8"
+                                            >
+                                              9
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="9"
+                                            >
+                                              10
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="10"
+                                            >
+                                              11
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="11"
+                                            >
+                                              12
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="12"
+                                            >
+                                              13
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="13"
+                                            >
+                                              14
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="14"
+                                            >
+                                              15
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="15"
+                                            >
+                                              16
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="16"
+                                            >
+                                              17
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="17"
+                                            >
+                                              18
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="18"
+                                            >
+                                              19
+                                            </div>
+                                            <div
+                                              className="za-wheel__item za-wheel__item--selected"
+                                              key="19"
+                                            >
+                                              20
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="20"
+                                            >
+                                              21
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="21"
+                                            >
+                                              22
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="22"
+                                            >
+                                              23
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="23"
+                                            >
+                                              24
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="24"
+                                            >
+                                              25
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="25"
+                                            >
+                                              26
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="26"
+                                            >
+                                              27
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="27"
+                                            >
+                                              28
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="28"
+                                            >
+                                              29
+                                            </div>
+                                            <div
+                                              className="za-wheel__item"
+                                              key="29"
+                                            >
+                                              30
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </Wheel>
+                                    </div>
+                                    <div
+                                      className="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                    />
+                                    <div
+                                      className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                    />
+                                  </div>
+                                </PickerView>
+                              </DatePickerView>
+                            </LocaleReceiver>
+                          </ForwardRef(forwardRefFactory)>
+                        </div>
+                      </div>
+                      <Mask
+                        className=""
+                        onClick={[Function]}
+                        prefixCls="za-mask"
+                        style={
+                          Object {
+                            "WebkitAnimationDuration": "200ms",
+                            "animationDuration": "200ms",
+                          }
+                        }
+                        type="normal"
+                        visible={false}
+                      />
+                    </div>
+                  </Portal>
+                </Portal>
               </Popup>
             </DatePicker>
           </LocaleReceiver>
@@ -317,7 +2311,6 @@ exports[`DateSelect DateSelect time 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -429,7 +2422,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03"
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -2326,7 +4318,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           >
             <DatePicker
               defaultValue=""
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",
@@ -4244,7 +6235,6 @@ exports[`DateSelect DateSelect year 1`] = `
           >
             <DatePicker
               defaultValue=""
-              disabled={false}
               locale={
                 Object {
                   "cancelText": "Cancel",

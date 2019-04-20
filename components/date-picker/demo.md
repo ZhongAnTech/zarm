@@ -134,7 +134,7 @@ class Demo extends React.Component {
     super();
     this.state = {
       visible: false,
-      value: '',
+      value: new Date(),
     };
   }
 

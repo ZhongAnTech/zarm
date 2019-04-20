@@ -22,6 +22,37 @@ describe('Select', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('Select disabled', () => {
+    const wrapper = mount(
+      <Select
+        disabeld
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />
+    );
+
+    wrapper.find('.za-select').simulate('click');
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('Select disable visible', () => {
+    const wrapper = mount(
+      <Select
+        disabeld
+        visible={false}
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />
+    );
+    wrapper.find('.za-select').simulate('click');
+    expect(wrapper.props().visible).toBeFalsy();
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('render defaultValue correctly ', () => {
     const wrapper = mount(
       <Select
