@@ -59,6 +59,10 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   handleClick = () => {
+    const { disabled } = this.props;
+    if (disabled) {
+      return false;
+    }
     this.setState({
       visible: true,
     });

@@ -18,5 +18,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+
+    @include m(disabled) {
+      color: $--color-text-disabled;
+    }
   }
 }

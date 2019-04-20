@@ -24,7 +24,6 @@ export interface DatePickerProps extends BaseDatePickerProps {
 export default class DatePicker extends Component<DatePickerProps, any> {
   static defaultProps = {
     mode: 'date',
-    disabled: false,
     value: '',
     defaultValue: '',
     minuteStep: 1,
@@ -131,7 +130,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, disabled, locale,
+    const { prefixCls, className, title, okText, cancelText, children, locale,
        ...others } = this.props;
     const cls = classnames(prefixCls, className);
     const { visible, value } = this.state;
