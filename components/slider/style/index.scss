@@ -1,3 +1,40 @@
 @import "../../style/core/index";
-@import "../../style/themes/default";
-@import "./component";
+
+@include b(slider) {
+  position: relative;
+  width: 100%;
+  margin: calc(var(--slider-handle-size) / 2) 0;
+  padding: 0 calc(var(--slider-handle-size) / 2);
+
+  @include e(line) {
+    flex: 1;
+    height: var(--slider-line-height);
+    background-color: var(--slider-line-background);
+
+    @include e(line__bg) {
+      height: 100%;
+      background-color: var(--theme-primary);
+    }
+  }
+
+  @include e(handle) {
+    position: absolute;
+    left: 0;
+    top: calc(var(--slider-handle-size) / -2);
+    width: var(--slider-handle-size);
+    height: var(--slider-handle-size);
+    border-radius: 50%;
+    background-color: var(--slider-handle-background);
+    box-shadow: var(--slider-handle-shadow);
+
+    @include e(handle__shadow) {
+      width: var(--slider-handle-size);
+      height: var(--slider-handle-size);
+    }
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+  }
+}

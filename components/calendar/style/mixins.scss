@@ -1,12 +1,10 @@
-$--calendar-day-width: 14.28571%;
-
 @mixin linegradient($direction) {
   background-image:
     linear-gradient(
       to $direction,
       transparent 0,
       transparent 50%,
-      alpha(var(--theme-primary), 0.2) 50%
+      var(--theme-primary-lighter) 50%
     );
 }
 

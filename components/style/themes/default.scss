@@ -7,12 +7,6 @@
   @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
   @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
-  @include defineColorHSL(--theme-default-darker, 0, 0%, 90%);
-  @include defineColorHSL(--theme-primary-darker, 156, 100%, 32.9%);
-  @include defineColorHSL(--theme-success-darker, 156, 100%, 32.9%);
-  @include defineColorHSL(--theme-warning-darker, 31, 83.1%, 51.9%);
-  @include defineColorHSL(--theme-danger-darker, 0, 100%, 61.7%);
-
   // 文字色
   --color-text: #464646;                    // 基本
   --color-text-inverse: #fff;               // 反色
@@ -114,7 +108,6 @@
   --button-icon-size-lg: 26px;
   --button-disabled-opacity: var(--opacity-disabled);
   --button-disabled-color-ghost: var(--border-disabled);
-
   --button-default-background: var(--color-text-inverse);
   --button-default-border: var(--theme-default);
   --button-default-color: var(--color-text);
@@ -125,28 +118,26 @@
   --button-default-ghost-color: var(--color-text-inverse);
   --button-default-ghost-active-border: var(--theme-default);
   --button-default-ghost-active-color: var(--theme-default);
-
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);
   --button-primary-color: var(--color-text-inverse);
-  --button-primary-active-background: var(--theme-primary-darker);
-  --button-primary-active-border: var(--theme-primary-darker);
+  --button-primary-active-background: var(--theme-primary-dark);
+  --button-primary-active-border: var(--theme-primary-dark);
   --button-primary-active-color: rgba(255, 255, 255, 0.4);
   --button-primary-ghost-border: var(--theme-primary);
   --button-primary-ghost-color: var(--theme-primary);
-  --button-primary-ghost-active-border: var(--theme-primary-darker);
-  --button-primary-ghost-active-color: var(--theme-primary-darker);
-
+  --button-primary-ghost-active-border: var(--theme-primary-dark);
+  --button-primary-ghost-active-color: var(--theme-primary-dark);
   --button-danger-background: var(--theme-danger);
   --button-danger-border: var(--theme-danger);
   --button-danger-color: var(--color-text-inverse);
-  --button-danger-active-background: var(--theme-danger-darker);
-  --button-danger-active-border: var(--theme-danger-darker);
+  --button-danger-active-background: var(--theme-danger-dark);
+  --button-danger-active-border: var(--theme-danger-dark);
   --button-danger-active-color: rgba(255, 255, 255, 0.4);
   --button-danger-ghost-border: var(--theme-danger);
   --button-danger-ghost-color: var(--theme-danger);
-  --button-danger-ghost-active-border: var(--theme-danger-darker);
-  --button-danger-ghost-active-color: var(--theme-danger-darker);
+  --button-danger-ghost-active-border: var(--theme-danger-dark);
+  --button-danger-ghost-active-color: var(--theme-danger-dark);
 
   // Calendar
   --calendar-height: 45px; // 最小高度
@@ -159,11 +150,11 @@
   --calendar-day-title-fontsize: 17px; // 月份title文字大小
   --calendar-day-background: #fff; // 月份文字背景颜色
   --calendar-day-color: var(--color-text); // 月份文字颜色
-  --calendar-day-today-background: hsla(156, 100%, 36.9%, 0.2); // 日期今天选中背景颜色
+  --calendar-day-today-background: var(--theme-primary-lighter); // 日期今天选中背景颜色
   --calendar-day-today-color: var(--theme-primary); // 日期今天选中颜色
   --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
   --calendar-day-selected-color: #fff; // 日期文字选中颜色
-  --calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
+  --calendar-day-range-background: var(--theme-primary-lighter); // 日期文字范围内背景颜色
   --calendar-day-range-color: var(--theme-primary); // 日期文字范围内颜色
   --calendar-day-height: 40px; // 日期高度
 

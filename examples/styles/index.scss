@@ -1,8 +1,6 @@
-// 自定义主题（关闭babel-plugin-import的style功能后引入）
-// @import "~normalize.css/normalize.css";
-// @import "~zarm/components/style/index.scss";
-// @import "./themes/default.scss";
-// @import "~zarm/components/style/components.scss";
-
-@import "./functions/index.scss";
-@import "./base/index.scss";
+body {
+  font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Helvetica, Microsoft YaHei, Arial;
+  line-height: 1.42857143;
+  color: #464646;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
