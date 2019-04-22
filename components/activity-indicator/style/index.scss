@@ -1,3 +1,38 @@
 @import "../../style/core/index";
-@import "../../style/themes/default";
-@import "./component";
+@import "mixins";
+
+@include b(activity-indicator) {
+  $PI: 3.141592674;
+
+  display: inline-block;
+  position: relative;
+  transform: rotate(-90deg);
+  @include activity-indicator-size(var(--activity-indicator-size-md));
+
+  @include e(path) {
+    stroke: var(--activity-indicator-path-color);
+  }
+
+  @include e(line) {
+    stroke-dasharray: 100 * $PI;
+    stroke: var(--theme-primary);
+  }
+
+  @include e(text) {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    line-height: 1;
+    transform: translateY(-50%);
+    font-size: r(30);
+  }
+
+  /* sizes */
+  @include m(lg) {
+    @include activity-indicator-size(var(--activity-indicator-size-lg));
+  }
+}
