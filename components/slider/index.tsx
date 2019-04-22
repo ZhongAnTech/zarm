@@ -177,7 +177,9 @@ export default class Slider extends PureComponent<SliderProps, any> {
             aria-valuenow={value}
             style={{ left: offset }}
           >
-            <Tooltip visible={tooltip} message={value}><div className={`${prefixCls}__handle__shadow`} /></Tooltip>
+            <Tooltip visible={tooltip} title={value} >
+              <div className={`${prefixCls}-handle-shadow`} />
+            </Tooltip>
           </div>
         </Drag>
       </div>
