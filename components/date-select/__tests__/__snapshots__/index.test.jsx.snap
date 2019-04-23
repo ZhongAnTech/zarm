@@ -857,13 +857,13 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         21
                                       </div>
                                       <div
-                                        class="za-wheel__item za-wheel__item--selected"
+                                        class="za-wheel__item"
                                         style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         22
                                       </div>
                                       <div
-                                        class="za-wheel__item"
+                                        class="za-wheel__item za-wheel__item--selected"
                                         style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         23
@@ -1387,7 +1387,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     Array [
                                       2019,
                                       3,
-                                      22,
+                                      23,
                                     ]
                                   }
                                   valueMember="value"
@@ -2006,7 +2006,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         onChange={[Function]}
                                         onTransition={[Function]}
                                         prefixCls="za-wheel"
-                                        value={22}
+                                        value={23}
                                         valueMember="value"
                                       >
                                         <div
@@ -2142,13 +2142,13 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               21
                                             </div>
                                             <div
-                                              className="za-wheel__item za-wheel__item--selected"
+                                              className="za-wheel__item"
                                               key="21"
                                             >
                                               22
                                             </div>
                                             <div
-                                              className="za-wheel__item"
+                                              className="za-wheel__item za-wheel__item--selected"
                                               key="22"
                                             >
                                               23
