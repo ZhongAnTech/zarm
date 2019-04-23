@@ -257,6 +257,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
     ]
   }
   disabeld={true}
+  value="2019-04-23"
 >
   <LocaleReceiver
     dataSource={
@@ -273,6 +274,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
     }
     disabeld={true}
     forwardedRef={null}
+    value="2019-04-23"
   >
     <DateSelect
       dataSource={
@@ -299,20 +301,21 @@ exports[`DateSelect DateSelect disabled 1`] = `
       mode="date"
       onCancel={[Function]}
       prefixCls="za-date-select"
+      value="2019-04-23"
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder"
+        className="za-date-select"
         onClick={[Function]}
       >
         <input
           type="hidden"
-          value=""
+          value="2019-04-23"
         />
         <div
           className="za-date-select__input"
         >
-          please select
+          2019-04-23
         </div>
         <ForwardRef(forwardRefFactory)
           dataSource={
@@ -333,6 +336,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
           mode="date"
           onCancel={[Function]}
           onOk={[Function]}
+          value={2019-04-23T04:00:00.000Z}
           valueMember="value"
           visible={true}
         >
@@ -356,6 +360,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             mode="date"
             onCancel={[Function]}
             onOk={[Function]}
+            value={2019-04-23T04:00:00.000Z}
             valueMember="value"
             visible={true}
           >
@@ -388,7 +393,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               onInit={[Function]}
               onOk={[Function]}
               prefixCls="za-date-picker"
-              value=""
+              value={2019-04-23T04:00:00.000Z}
               valueMember="value"
               visible={true}
             >
@@ -845,7 +850,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         19
                                       </div>
                                       <div
-                                        class="za-wheel__item za-wheel__item--selected"
+                                        class="za-wheel__item"
                                         style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         20
@@ -863,7 +868,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         22
                                       </div>
                                       <div
-                                        class="za-wheel__item"
+                                        class="za-wheel__item za-wheel__item--selected"
                                         style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         23
@@ -986,7 +991,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                             onInit={[Function]}
                             onOk={[Function]}
                             onTransition={[Function]}
-                            value=""
+                            value={2019-04-23T04:00:00.000Z}
                             valueMember="value"
                             visible={true}
                           >
@@ -1014,7 +1019,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               onInit={[Function]}
                               onOk={[Function]}
                               onTransition={[Function]}
-                              value=""
+                              value={2019-04-23T04:00:00.000Z}
                               valueMember="value"
                               visible={true}
                             >
@@ -1053,7 +1058,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 onOk={[Function]}
                                 onTransition={[Function]}
                                 prefixCls="za-date-picker-view"
-                                value=""
+                                value={2019-04-23T04:00:00.000Z}
                                 valueMember="value"
                                 visible={true}
                               >
@@ -1387,7 +1392,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     Array [
                                       2019,
                                       3,
-                                      20,
+                                      23,
                                     ]
                                   }
                                   valueMember="value"
@@ -2006,7 +2011,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                         onChange={[Function]}
                                         onTransition={[Function]}
                                         prefixCls="za-wheel"
-                                        value={20}
+                                        value={23}
                                         valueMember="value"
                                       >
                                         <div
@@ -2130,7 +2135,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               19
                                             </div>
                                             <div
-                                              className="za-wheel__item za-wheel__item--selected"
+                                              className="za-wheel__item"
                                               key="19"
                                             >
                                               20
@@ -2148,7 +2153,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                               22
                                             </div>
                                             <div
-                                              className="za-wheel__item"
+                                              className="za-wheel__item za-wheel__item--selected"
                                               key="22"
                                             >
                                               23
