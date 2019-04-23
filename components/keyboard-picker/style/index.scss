@@ -1,3 +1,5 @@
 @import "../../style/core/index";
-@import "../../style/themes/default";
-@import "./component";
+
+@include b(keyboard-picker) {
+  // box-shadow: 0 r(4) r(16) 0 #eee;
+}

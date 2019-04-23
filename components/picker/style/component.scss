@@ -11,9 +11,9 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    height: $--picker-header-height;
-    line-height: $--picker-header-height;
-    font-size: $--picker-header-font-size;
+    height: var(--picker-header-height);
+    line-height: var(--picker-header-height);
+    font-size: var(--picker-header-font-size);
     @include onepx(bottom);
   }
 
@@ -25,16 +25,16 @@
 
   @include e(cancel) {
     text-align: left;
-    color: $--color-text-caption;
+    color: var(--color-text-caption);
   }
 
   @include e(submit) {
     text-align: right;
-    color: $--theme-primary;
+    color: var(--theme-primary);
   }
 
   @include e(title) {
-    color: $--color-text;
+    color: var(--color-text);
   }
 
   // &-stack {

@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const config = require('./config.deploy');
 
 config.mode = 'development';
@@ -9,6 +10,7 @@ config.output.publicPath = '/';
 config.optimization.minimize = false;
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
+  new ForkTsCheckerWebpackPlugin(),
   new HtmlWebpackPlugin({
     template: './examples/index_umd.html',
     filename: 'umd.html',
