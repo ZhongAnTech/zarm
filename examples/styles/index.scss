@@ -4,3 +4,18 @@ body {
   color: #464646;
   -webkit-font-smoothing: subpixel-antialiased;
 }
+
+a {
+  color: var(--theme-primary);
+  text-decoration: none;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+img {
+  vertical-align: middle;
+}
