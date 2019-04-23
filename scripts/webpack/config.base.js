@@ -1,6 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const babelConfig = require('../config/babelConfig');
+const babelConfig = require('../babel/config');
 
 module.exports = {
   output: {

@@ -1,1 +1,1 @@
-module.exports = require('../scripts/config/babelConfig.native');
+module.exports = require('../scripts/babel/config.native');
