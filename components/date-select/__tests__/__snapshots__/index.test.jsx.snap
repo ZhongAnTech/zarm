@@ -257,6 +257,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
     ]
   }
   disabeld={true}
+  value="2019-04-23"
 >
   <LocaleReceiver
     dataSource={
@@ -273,6 +274,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
     }
     disabeld={true}
     forwardedRef={null}
+    value="2019-04-23"
   >
     <DateSelect
       dataSource={
@@ -299,20 +301,21 @@ exports[`DateSelect DateSelect disabled 1`] = `
       mode="date"
       onCancel={[Function]}
       prefixCls="za-date-select"
+      value="2019-04-23"
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder"
+        className="za-date-select"
         onClick={[Function]}
       >
         <input
           type="hidden"
-          value=""
+          value="2019-04-23"
         />
         <div
           className="za-date-select__input"
         >
-          please select
+          2019-04-23
         </div>
         <ForwardRef(forwardRefFactory)
           dataSource={
@@ -333,6 +336,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
           mode="date"
           onCancel={[Function]}
           onOk={[Function]}
+          value={2019-04-23T04:00:00.000Z}
           valueMember="value"
           visible={true}
         >
@@ -356,6 +360,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             mode="date"
             onCancel={[Function]}
             onOk={[Function]}
+            value={2019-04-23T04:00:00.000Z}
             valueMember="value"
             visible={true}
           >
@@ -388,7 +393,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               onInit={[Function]}
               onOk={[Function]}
               prefixCls="za-date-picker"
-              value=""
+              value={2019-04-23T04:00:00.000Z}
               valueMember="value"
               visible={true}
             >
@@ -986,7 +991,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                             onInit={[Function]}
                             onOk={[Function]}
                             onTransition={[Function]}
-                            value=""
+                            value={2019-04-23T04:00:00.000Z}
                             valueMember="value"
                             visible={true}
                           >
@@ -1014,7 +1019,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               onInit={[Function]}
                               onOk={[Function]}
                               onTransition={[Function]}
-                              value=""
+                              value={2019-04-23T04:00:00.000Z}
                               valueMember="value"
                               visible={true}
                             >
@@ -1053,7 +1058,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 onOk={[Function]}
                                 onTransition={[Function]}
                                 prefixCls="za-date-picker-view"
-                                value=""
+                                value={2019-04-23T04:00:00.000Z}
                                 valueMember="value"
                                 visible={true}
                               >
