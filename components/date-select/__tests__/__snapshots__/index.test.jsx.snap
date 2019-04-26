@@ -419,7 +419,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                         class=" popup-container"
                       >
                         <div
-                          class="za-popup za-popup--bottom za-popup--hidden"
+                          class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                         >
                           <div
                             class="za-popup__wrapper"
@@ -932,7 +932,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                     }
                   >
                     <div
-                      className="za-popup za-popup--bottom za-popup--hidden"
+                      className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                     >
                       <div
                         className="za-popup__wrapper"
@@ -2467,7 +2467,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         class=" popup-container"
                       >
                         <div
-                          class="za-popup za-popup--bottom za-popup--hidden"
+                          class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                         >
                           <div
                             class="za-popup__wrapper"
@@ -2980,7 +2980,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                     }
                   >
                     <div
-                      className="za-popup za-popup--bottom za-popup--hidden"
+                      className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                     >
                       <div
                         className="za-popup__wrapper"
@@ -4365,7 +4365,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                         class=" popup-container"
                       >
                         <div
-                          class="za-popup za-popup--bottom za-popup--hidden"
+                          class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                         >
                           <div
                             class="za-popup__wrapper"
@@ -4878,7 +4878,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                     }
                   >
                     <div
-                      className="za-popup za-popup--bottom za-popup--hidden"
+                      className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                     >
                       <div
                         className="za-popup__wrapper"

@@ -166,11 +166,12 @@ export default class Portal extends Component<PortalProps, any> {
   }
 
   getComponent() {
-    const { prefixCls, className, animationDuration, direction, children } = this.props;
+    const { prefixCls, className, animationDuration, direction, mask, children } = this.props;
     const { isShow } = this.state;
 
     const popupCls = classnames(prefixCls, className, {
       [`${prefixCls}--${direction}`]: !!direction,
+      [`${prefixCls}--mask`]: mask,
       [`${prefixCls}--hidden`]: !isShow,
     });
 
@@ -178,6 +179,7 @@ export default class Portal extends Component<PortalProps, any> {
       WebkitTransitionDuration: `${animationDuration}ms`,
       transitionDuration: `${animationDuration}ms`,
     };
+
     return (
       <div
         className={popupCls}
