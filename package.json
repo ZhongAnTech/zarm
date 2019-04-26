@@ -69,6 +69,7 @@
     "better-scroll": "1.15.1",
     "classnames": "2.2.6",
     "create-react-context": "0.2.3",
+    "hoist-non-react-statics": "^3.3.0",
     "normalize.css": "8.0.1",
     "react-native-camera-roll-picker": "1.2.3"
   },
