@@ -51,7 +51,7 @@
     "lint:js": "eslint --ext '.js,.jsx' examples examples-rn",
     "lint:style": "stylelint --syntax scss components/**/*.scss components/**/**/*.scss examples/styles/**/*.scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
-    "test:h5": "cross-env TZ=America/New_York jest --config scripts/jest/config.web.js",
+    "test:h5": "cross-env TZ=America/New_York jest --config scripts/jest/config.js",
     "test:rn": "jest --config scripts/jest/config.native.js",
     "test": "rimraf coverage && npm run test:h5 -- --coverage && cp ./coverage/coverage-final.json ./coverage/coverage-h5-final.json && npm run test:rn -- --coverage && cp ./coverage/coverage-final.json ./coverage/coverage-rn-final.json && node ./scripts/jest/mapCoverage.js",
     "coverage": "cat ./coverage/lcov.info | coveralls",
