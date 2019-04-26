@@ -13,6 +13,7 @@ export interface SelectProps extends BaseSelectProps {
 export default class Select extends PureComponent<SelectProps, any> {
   static defaultProps = {
     prefixCls: 'za-select',
+    dataSource: [],
     valueMember: 'value',
     itemRender: data => data.label,
     cols: Infinity,
