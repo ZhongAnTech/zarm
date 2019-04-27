@@ -1,22 +1,17 @@
 @import "../functions/index";
 
 .tooltip-page {
-  .tip {
+  .za-cell__content {
+    justify-content: center;
     padding: r(15) 0;
   }
 
-  .za-cell-content {
-    justify-content: center;
-  }
-
   .za-tooltip {
-    width: r(50);
-    padding: 0;
     margin-right: r(10);
     margin-bottom: r(10);
   }
 
   .za-button {
-    padding: 0;
+    width: r(60);
   }
 }

@@ -81,6 +81,7 @@ class Demo extends React.Component {
         <Popup
           visible={this.state.popBottom}
           direction="bottom"
+          maskType="transparent"
           onMaskClick={() => this.close('popBottom')}
           onOpen={() => console.log('打开')}
           onClose={() => console.log('关闭')}

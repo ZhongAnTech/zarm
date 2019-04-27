@@ -1,9 +1,10 @@
 module.exports = {
   presets: [
-    ['@babel/preset-env', {
+    ['@babel/env', {
       modules: false,
     }],
-    '@babel/preset-react',
+    '@babel/react',
+    '@babel/typescript',
   ],
   plugins: [
     '@babel/plugin-syntax-dynamic-import',

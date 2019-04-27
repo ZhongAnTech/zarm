@@ -128,12 +128,13 @@ export default class Wheel extends Component<WheelProps, any> {
   }
 
   render() {
-    const { prefixCls, className, valueMember, dataSource, itemRender } = this.props;
+    const { prefixCls, className, valueMember, dataSource, itemRender, disabled } = this.props;
 
     const { value } = this.state;
     const items = dataSource!.map((item, index) => {
       const itemCls = classnames(`${prefixCls}__item`, {
         [`${prefixCls}__item--selected`]: value === item[valueMember!],
+        [`${prefixCls}__item--disabled`]: disabled,
       });
 
       return (

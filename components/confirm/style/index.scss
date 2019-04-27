@@ -1,3 +1,33 @@
 @import "../../style/core/index";
-@import "../../style/themes/default";
-@import "./component";
+@import "../../button/style/mixins";
+
+@include b(confirm) {
+  @include e(body) {
+    text-align: center;
+  }
+
+  @include e(footer) {
+    display: flex;
+
+    &__button {
+      flex: 1;
+      height: var(--confirm-button-height);
+      line-height: var(--confirm-button-height);
+      font-size: var(--confirm-button-font-size);
+      @include button-base();
+      @include onepx(top);
+
+      &:active {
+        background-color: var(--background-active);
+      }
+
+      &:not(:first-of-type) {
+        @include onepx(left top);
+      }
+
+      @include m(ok) {
+        color: var(--theme-primary);
+      }
+    }
+  }
+}

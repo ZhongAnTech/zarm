@@ -2,7 +2,6 @@
 
 exports[`Tooltip direction 1`] = `
 <Tootip
-  className={null}
   direction="top"
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"
@@ -51,7 +50,6 @@ exports[`Tooltip direction 1`] = `
 
 exports[`Tooltip visible 1`] = `
 <Tootip
-  className={null}
   direction="top"
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"

@@ -5,7 +5,6 @@ import Portal from './Portal';
 export interface PopupProps extends PropsType {
   prefixCls?: string;
   className?: string;
-  handlePortalUnmount?: () => void;
 }
 export default class Popup extends PureComponent<PopupProps, any> {
   constructor(props) {

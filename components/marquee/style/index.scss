@@ -1,3 +1,15 @@
 @import "../../style/core/index";
-@import "../../style/themes/default";
-@import "./component";
+
+@include b(marquee) {
+  width: 100%;
+  overflow: hidden;
+
+  @include e(body) {
+    white-space: nowrap;
+  }
+
+  @include e(content) {
+    display: inline-block;
+  }
+}
+

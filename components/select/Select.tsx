@@ -22,7 +22,6 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   private tempValue;
   private tempObjValue;
-  private isScrolling;
 
   constructor(props) {
     super(props);
@@ -39,27 +38,13 @@ export default class Select extends PureComponent<SelectProps, any> {
   }
 
   handleClick = () => {
-    if (this.isScrolling) {
+    const { disabled } = this.props;
+    if (disabled) {
       return false;
     }
-
     this.setState({
       visible: true,
     });
-  }
-
-  toggle() {
-    if (this.props.disabled) {
-      return;
-    }
-
-    this.setState({
-      visible: !this.state.visible,
-    });
-  }
-
-  onTransition(isScrolling) {
-    this.isScrolling = isScrolling;
   }
 
   onChange = (selected) => {
@@ -70,10 +55,6 @@ export default class Select extends PureComponent<SelectProps, any> {
   }
 
   onOk = (selected) => {
-    if (this.isScrolling) {
-      return false;
-    }
-    // this.toggle();
     const { onOk, valueMember } = this.props;
     this.setState({
       value: selected.map(item => item[valueMember!]),
@@ -88,10 +69,10 @@ export default class Select extends PureComponent<SelectProps, any> {
   // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    this.toggle();
     this.setState({
       value: this.tempValue,
       objValue: this.tempObjValue,
+      visible: false,
     });
     if (typeof onCancel === 'function') {
       onCancel();
@@ -114,7 +95,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
-          {this.isValueValid(value) && displayRender!(objValue || []) || placeholder || locale.placeholder}
+          {this.isValueValid(value) && displayRender!(objValue || []) || placeholder || locale!.placeholder}
         </div>
         <Picker
           {...others}
@@ -123,7 +104,6 @@ export default class Select extends PureComponent<SelectProps, any> {
           onOk={this.onOk}
           onChange={this.onChange}
           onCancel={this.onCancel}
-          onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
         />
       </div>
     );

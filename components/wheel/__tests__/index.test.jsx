@@ -20,7 +20,6 @@ describe('Wheel', () => {
       />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    wrapper.unmount();
   });
 
   it('Wheel set props value', () => {
