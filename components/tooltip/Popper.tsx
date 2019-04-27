@@ -601,7 +601,7 @@ Popper.prototype.modifiers.arrow = function (data) {
   const hash = {
     start: reference[side] + offsetSize,
     center: reference[side] + reference[len] / 2 - arrowSize / 2,
-    end: reference[opSide] - offsetSize - arrowSize - arrowSize / 2,
+    end: reference[opSide] - offsetSize - arrowSize,
   };
 
   if (reference[opSide] - arrowSize < popper[side]) {
