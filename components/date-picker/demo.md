@@ -1,4 +1,4 @@
-# 日期选择器 DatePicker
+# DatePicker 日期选择器
 
 
 
@@ -125,7 +125,8 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-## 表单选择 DateSelect
+
+## DateSelect 表单日期选择器
 ```jsx
 import { Cell, DateSelect } from 'zarm';
 
@@ -173,7 +174,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 平铺选择 DatePickerView
+## DatePickerView 平铺选择器
 ```jsx
 import { DatePickerView } from 'zarm';
 

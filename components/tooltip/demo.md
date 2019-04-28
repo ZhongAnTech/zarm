@@ -1,4 +1,4 @@
-# 工具提示 Tooltip
+# Tooltip 工具提示
 
 ## 基本用法
 ```jsx
@@ -81,7 +81,6 @@ ReactDOM.render(<Demo />, mountNode);
 ### API
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-toast | 类名前缀 |
 | visible | boolean | false | 是否显示 |
 | title | ReactNode | - | 显示内容 |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |

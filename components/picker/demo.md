@@ -1,4 +1,4 @@
-# 选择器 Picker & Select
+# Picker 选择器
 
 
 
@@ -222,7 +222,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 表单选择 Select
+## Select 表单选择器
 ```jsx
 import { Select, Cell } from 'zarm';
 
@@ -298,7 +298,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 平铺选择 PickerView
+## PickerView 平铺选择器
 ```jsx
 import { PickerView } from 'zarm';
 
