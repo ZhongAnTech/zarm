@@ -1,19 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip renders correctly 1`] = `
-<span>
-  foo
-</span>
+exports[`Tooltip direction 1`] = `
+<Tootip
+  direction="top"
+  onVisibleChange={[Function]}
+  prefixCls="za-tooltip"
+  title="hello"
+  trigger="hover"
+  visible={false}
+>
+  <div
+    className="za-tooltip"
+  >
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="za-tooltip__content za-tooltip__placement__top"
+          >
+            hello
+            <span
+              class="za-tooltip__arrow"
+              id="za-tooltip-arrow"
+            />
+          </div>
+        </body>
+      }
+    >
+      <div
+        className="za-tooltip__content za-tooltip__placement__top"
+      >
+        hello
+        <span
+          className="za-tooltip__arrow"
+          id="za-tooltip-arrow"
+        />
+      </div>
+    </Portal>
+    <span
+      className="za-tooltip__inner"
+    >
+      <span>
+        foo
+      </span>
+    </span>
+  </div>
+</Tootip>
 `;
 
 exports[`Tooltip visible 1`] = `
-<Tooltip
-  message="hello"
+<Tootip
+  direction="top"
+  onVisibleChange={[Function]}
   prefixCls="za-tooltip"
+  title="hello"
+  trigger="hover"
   visible={true}
 >
-  <span>
-    foo
-  </span>
-</Tooltip>
+  <div
+    className="za-tooltip"
+  >
+    <Portal
+      containerInfo={
+        <body>
+          <div
+            class="za-tooltip__content za-tooltip__content--show za-tooltip__placement__top"
+            style="position: fixed; top: 0px; transform: translate3d(NaNpx, NaNpx, 0); left: 0px;"
+          >
+            hello
+            <span
+              class="za-tooltip__arrow"
+              id="za-tooltip-arrow"
+              style=""
+            />
+          </div>
+        </body>
+      }
+    >
+      <div
+        className="za-tooltip__content za-tooltip__content--show za-tooltip__placement__top"
+      >
+        hello
+        <span
+          className="za-tooltip__arrow"
+          id="za-tooltip-arrow"
+        />
+      </div>
+    </Portal>
+    <span
+      className="za-tooltip__inner"
+    >
+      <span>
+        foo
+      </span>
+    </span>
+  </div>
+</Tootip>
 `;

@@ -27,6 +27,10 @@
     background-color: var(--slider-handle-background);
     box-shadow: var(--slider-handle-shadow);
 
+    @include b(tooltip) {
+      display: block;
+    }
+
     @include e(handle__shadow) {
       width: var(--slider-handle-size);
       height: var(--slider-handle-size);

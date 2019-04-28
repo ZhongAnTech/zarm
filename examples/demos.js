@@ -131,6 +131,10 @@ module.exports = {
         name: 'Marquee',
         description: '滚动',
       },
+      {
+        name: 'Tooltip',
+        description: '文字提示',
+      },
     ],
     navigation: [
       {

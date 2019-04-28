@@ -1,37 +1,80 @@
 @import "../../style/core/index";
+@import 'mixins';
 
 @include b(tooltip) {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  transform: translateY(-100%);
-  padding-bottom: var(--tooltip-arrow-size);
+  display: inline-block;
 
   @include e(inner) {
-    position: relative;
-    background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    display: block;
+  }
+
+  @include e(content) {
+    display: none;
     padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
-    border-radius: var(--radius-md);
+    background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    border-radius: r(4);
     font-size: var(--tooltip-font-size);
     color: var(--tooltip-color);
-    margin-bottom: var(--tooltip-arrow-size);
+    z-index: var(--zindex-tooltip);
 
-    &:after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: calc(var(--tooltip-arrow-size) * -1);
-      width: 0;
-      height: 0;
-      transform: translateX(-50%);
-      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-color: transparent;
-      border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
-      border-style: solid;
+    @include m(show) {
+      display: block;
     }
   }
 
-  @include m(hidden) {
-    display: none;
+  @include e(arrow) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+  &__placement__right,
+  &__placement__rightTop,
+  &__placement__rightBottom {
+    margin-left: r(10);
+
+    @include arrow () {
+      left: r(-4);
+      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
+      border-right-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    }
+  }
+
+  &__placement__top,
+  &__placement__topLeft,
+  &__placement__topRight {
+    margin-bottom: r(10);
+
+    @include arrow () {
+      bottom: r(-4);
+      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
+      border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    }
+  }
+
+  &__placement__bottom,
+  &__placement__bottomLeft,
+  &__placement__bottomRight {
+    margin-top: r(10);
+
+    @include arrow () {
+      top: r(-4);
+      border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
+      border-bottom-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    }
+  }
+
+  &__placement__left,
+  &__placement__leftTop,
+  &__placement__leftBottom {
+    margin-right: r(10);
+
+    @include arrow () {
+      right: r(-4);
+      border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
+      border-left-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    }
   }
 }

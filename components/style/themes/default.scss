@@ -38,7 +38,7 @@
   --padding-h-lg: 20px;
 
   // 垂直间距
-  --padding-v-xs: 4px;
+  --padding-v-xs: 6px;
   --padding-v-sm: 8px;
   --padding-v-md: 12px;
   --padding-v-lg: 16px;
@@ -56,6 +56,7 @@
   --zindex-modal: 1400;
   --zindex-toast: 1500;
   --zindex-loading: 1500;
+  --zindex-tooltip: 1500;
 
   // 透明度
   --opacity-disabled: .5;
@@ -300,9 +301,9 @@
   // Tooltip
   --tooltip-font-size: 12px;
   --tooltip-color: var(--color-text-inverse);
-  --tooltip-arrow-size: 5px;
-  --tooltip-padding-v: var(--padding-v-sm);
-  --tooltip-padding-h: var(--padding-h-sm);
+  --tooltip-arrow-size: 4px;
+  --tooltip-padding-v: var(--padding-v-xs);
+  --tooltip-padding-h: var(--padding-h-xs);
 
   // Wheel
   --wheel-item-height: 34px;
