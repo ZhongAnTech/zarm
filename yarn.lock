@@ -4609,6 +4609,11 @@ css-url-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/css-url-regex/-/css-url-regex-1.1.0.tgz#83834230cc9f74c457de59eebd1543feeb83b7ec"
 
+css-vars-ponyfill@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/css-vars-ponyfill/-/css-vars-ponyfill-2.0.2.tgz#f6f91a36da3ce2a38b0d774169bca21aaf348f5f"
+  integrity sha512-x2q/VmPwQFxNOXdQcR+VOJ6GjaLDVo1aqJhZp2ommTwBa7Vlg5ulBcxknIOxvU/mkTOPhsafaXQE1oRnLJjErw==
+
 css-what@2.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.2.tgz#c0876d9d0480927d7d4920dcd72af3595649554d"
