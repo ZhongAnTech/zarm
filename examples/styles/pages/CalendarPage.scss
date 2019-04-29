@@ -9,16 +9,20 @@
 
   .custom {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     width: 100%;
     height: 100%;
 
-    &-text {
+    &__text {
       position: absolute;
+      left: 50%;
       bottom: r(-12);
+      transform: translateX(-50%);
       font-size: r(10);
+      white-space: nowrap;
     }
   }
 }
