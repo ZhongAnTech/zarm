@@ -1,4 +1,4 @@
-import { ReactNode } from 'React';
+import { ReactNode } from 'react';
 
 export interface BasePanelProps {
   title?: ReactNode;

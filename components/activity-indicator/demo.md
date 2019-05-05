@@ -1,4 +1,4 @@
-# 活动指示器 ActivityIndicator
+# ActivityIndicator 活动指示器
 
 ## 基本用法
 

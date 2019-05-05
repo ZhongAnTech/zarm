@@ -1,3 +1,26 @@
 @import "../../style/core/index";
-@import "../../style/themes/default";
-@import "./component";
+@import '../../button/style/mixins';
+
+@include b(alert) {
+  @include e(body) {
+    text-align: center;
+  }
+
+  @include e(footer) {
+    display: flex;
+
+    &__button {
+      flex: 1;
+      height: var(--alert-button-height);
+      line-height: var(--alert-button-height);
+      font-size: var(--alert-button-font-size);
+      color: var(--theme-primary);
+      @include button-base();
+      @include onepx(top);
+
+      &:active {
+        background-color: var(--background-active);
+      }
+    }
+  }
+}

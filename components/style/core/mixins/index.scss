@@ -1,107 +1,35 @@
+@import './bem';
 
-@function containsModifier($selector) {
-  $selector: selectorToString($selector);
-  @if str-index($selector, $--modifier-separator) {
-    @return true;
-  } @else {
-    @return false;
-  }
-}
-
-@function containsElement($selector) {
-  $selector: selectorToString($selector);
-  @if str-index($selector, $--element-separator) {
-    @return true;
-  } @else {
-    @return false;
-  }
-}
-
-@function selectorToString($selector) {
-  $selector: inspect($selector); //cast to string
-  $selector: str-slice($selector, 2, -2); //remove brackets
-  @return $selector;
-}
-
-@function getBlock($selector) {
-  $selector: selectorToString($selector);
-  $start: 0;
-  @if containsElement($selector) {
-    $start: str-index($selector, $--element-separator) - 1;
-  } @else {
-    $start: str-index($selector, $--modifier-separator) - 1;
-  }
-  @return str-slice($selector, 0, $start);
-}
-
-@function getElements($elements) {
-  $selector: &;
-  $currentSelector: '';
-  @if containsModifier($selector) {
-    $selector: getBlock($selector);
-  }
-  @each $unit in $elements {
-    @if containsElement($selector) {
-      $block: getBlock($selector);
-      $currentSelector: #{$currentSelector + $selector} #{$block + $--element-separator + $unit + ','};
-    } @else {
-      $currentSelector: #{$currentSelector + $selector + $--element-separator + $unit + ','};
-    }
-  }
-  @return $currentSelector;
-}
-
-@mixin b($block) {
-  .#{$--namespace + '-' + $block} {
-    @content;
-  }
-}
-
-@mixin e($element...) {
-  $selector: &;
-  $elements: getElements($element);
-  @if containsModifier($selector) {
-    @at-root {
-      #{$selector} {
-        #{$elements} {
-          @content;
-        }
-      }
-    }
-  } @else {
-    @at-root {
-      #{$elements} {
-        @content;
-      }
-    }
-  }
-}
-
-@mixin m($modifier) {
-  $selector: &;
-  @if containsModifier($selector) {
-    $selector: getBlock($selector);
-    @at-root {
-      #{&}#{$selector + $--modifier-separator + $modifier} {
-        @content;
-      }
-    }
-  } @else {
-    @at-root {
-      #{$selector + $--modifier-separator + $modifier} {
-        @content;
-      }
-    }
-  }
+@mixin defineColorHSL($color, $hue, $saturation, $lightness) {
+  #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");
+  #{$color}-h: #{$hue};
+  #{$color}-s: #{$saturation};
+  #{$color}-l: #{$lightness};
+  #{$color}-light: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness + 4})");
+  #{$color}-light-h: #{$hue};
+  #{$color}-light-s: #{$saturation};
+  #{$color}-light-l: #{$lightness + 4};
+  #{$color}-lighter: unquote("hsl(#{$hue}, #{$saturation}, 95%)");
+  #{$color}-lighter-h: #{$hue};
+  #{$color}-lighter-s: #{$saturation};
+  #{$color}-lighter-l: 95%;
+  #{$color}-dark: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness - 4})");
+  #{$color}-dark-h: #{$hue};
+  #{$color}-dark-s: #{$saturation};
+  #{$color}-dark-l: #{$lightness - 4};
+  #{$color}-darker: unquote("hsl(#{$hue}, #{$saturation}, 20%)");
+  #{$color}-darker-h: #{$hue};
+  #{$color}-darker-s: #{$saturation};
+  #{$color}-darker-l: 20%;
 }
 
 @mixin placeholder {
   &::placeholder {
-    @content
+    @content;
   }
 }
 
-@mixin onepx($positions: top right bottom left, $border-color: $--border-color, $border-radius: 0) {
+@mixin onepx($positions: top right bottom left, $border-color: var(--border-color), $border-radius: 0) {
   &:after {
     content: '';
     pointer-events: none;
@@ -111,7 +39,6 @@
     left: 0;
     top: 0;
     border-radius: $border-radius;
-    border-width: 0;
     @each $position in $positions {
       border-#{$position}: 1px solid $border-color;
     }

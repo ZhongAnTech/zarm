@@ -1,8 +1,8 @@
-# 虚拟键盘 Keyboard
+# Keyboard 虚拟键盘
 
 
 
-## 平铺键盘 Keyboard
+## Keyboard 平铺键盘
 ```jsx
 import { Cell, Select, Keyboard } from 'zarm';
 
@@ -43,7 +43,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 键盘触发器 KeyboardPicker
+## KeyboardPicker 键盘触发器
 ```jsx
 import { Cell, Button, KeyboardPicker, Input } from 'zarm';
 

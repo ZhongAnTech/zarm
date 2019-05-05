@@ -1,12 +1,12 @@
-// polyfill
-import 'core-js/es6/map';
-import 'core-js/es6/set';
-import 'core-js/modules/es6.promise';
+import 'core-js/es';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
+import cssVars from 'css-vars-ponyfill';
 import App from './components/App';
+
+cssVars();
 
 ReactDOM.render((
   <HashRouter>

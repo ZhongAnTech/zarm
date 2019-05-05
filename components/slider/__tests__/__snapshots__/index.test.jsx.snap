@@ -34,7 +34,6 @@ exports[`Slider defaultValue 1`] = `
       }
     >
       <Tootip
-        className={null}
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -85,7 +84,6 @@ exports[`Slider disabled 1`] = `
       }
     >
       <Tootip
-        className={null}
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -136,7 +134,6 @@ exports[`Slider max 1`] = `
       }
     >
       <Tootip
-        className={null}
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -187,7 +184,6 @@ exports[`Slider min 1`] = `
       }
     >
       <Tootip
-        className={null}
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -238,7 +234,6 @@ exports[`Slider shallows correctly 1`] = `
       }
     >
       <Tootip
-        className={null}
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -289,7 +284,6 @@ exports[`Slider step 1`] = `
       }
     >
       <Tootip
-        className={null}
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -340,7 +334,6 @@ exports[`Slider value 1`] = `
       }
     >
       <Tootip
-        className={null}
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"

@@ -1,4 +1,4 @@
-# 选择器 Picker & Select
+# Picker 选择器
 
 
 
@@ -222,7 +222,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 表单选择 Select
+## Select 表单选择器
 ```jsx
 import { Select, Cell } from 'zarm';
 
@@ -252,7 +252,7 @@ class Demo extends React.Component {
       this.state = {
         visible: false,
         value: [],
-        dataSource: CASCADE_DATA,
+        dataSource: [],
       };
   }
 
@@ -261,7 +261,7 @@ class Demo extends React.Component {
     setTimeout(() => {
       this.setState({
         dataSource: CASCADE_DATA,
-        // value: ['1', '12'],
+        value: ['1', '12'],
       });
     }, 0);
   }
@@ -298,7 +298,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 平铺选择 PickerView
+## PickerView 平铺选择器
 ```jsx
 import { PickerView } from 'zarm';
 

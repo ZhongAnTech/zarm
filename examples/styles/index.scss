@@ -1,8 +1,21 @@
-// 自定义主题（关闭babel-plugin-import的style功能后引入）
-// @import "~normalize.css/normalize.css";
-// @import "~zarm/components/style/index.scss";
-// @import "./themes/default.scss";
-// @import "~zarm/components/style/components.scss";
+body {
+  font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Helvetica, Microsoft YaHei, Arial;
+  line-height: 1.42857143;
+  color: #464646;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
 
-@import "./functions/index.scss";
-@import "./base/index.scss";
+a {
+  color: var(--theme-primary);
+  text-decoration: none;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+img {
+  vertical-align: middle;
+}

@@ -1,3 +1,3 @@
 import '../../style';
-import '../../wheel/style';
+import '../../picker-view/style';
 import './index.scss';

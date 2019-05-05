@@ -1,5 +1,5 @@
 const babelJest = require('babel-jest');
-const babelConfig = require('../config/babelConfig');
+const babelConfig = require('../babel/config');
 
 babelConfig.plugins.push('@babel/plugin-transform-modules-commonjs');
 

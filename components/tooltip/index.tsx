@@ -1,7 +1,7 @@
 import React, { Component, cloneElement, ReactElement } from 'react';
 import { findDOMNode, createPortal } from 'react-dom';
 import classnames from 'classnames';
-import Popper from './popper';
+import Popper from './Popper';
 import Events from '../utils/events';
 import PropsType from './PropsType';
 
@@ -23,12 +23,10 @@ const directMap = {
 class Tootip extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'za-tooltip',
-    className: null,
     visible: false,
     trigger: 'hover',
     direction: 'top',
     onVisibleChange: () => {},
-    title: null,
   };
 
   private instance;
@@ -51,6 +49,7 @@ class Tootip extends Component<PropsType, any> {
     const { instance, pop } = this;
     const reference = findDOMNode(this.reference);
     const { trigger } = this.props;
+
     if (trigger === 'click') {
       Events.on(reference, 'click', () => {
         this.setState({
@@ -98,9 +97,9 @@ class Tootip extends Component<PropsType, any> {
     }
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     const { visible, arrowElement } = this.state;
-    const { onVisibleChange } = this.props;
+    const { direction, onVisibleChange } = this.props;
     const reference = findDOMNode(this.reference);
 
     if (visible) {
@@ -108,7 +107,7 @@ class Tootip extends Component<PropsType, any> {
         this.popper.update();
       } else {
         this.popper = new Popper(reference, this.pop, {
-          placement: directMap[this.props.direction],
+          placement: directMap[direction],
           arrowElement: arrowElement,
         });
       }
@@ -192,18 +191,15 @@ class Tootip extends Component<PropsType, any> {
       prefixCls,
       className,
     } = this.props;
+
     const popContent = typeof title === 'function' ? title() : title;
-    const cls = classnames(prefixCls, {
-      [className!]: !!className,
-    });
-    const sub = classnames({
-      [`${prefixCls}__inner`]: true,
-    });
-    const contentCls = classnames({
-      [`${prefixCls}__content`]: true,
+    const cls = classnames(prefixCls, className);
+
+    const contentCls = classnames(`${prefixCls}__content`, {
       [`${prefixCls}__content--show`]: visible,
       [`${prefixCls}__placement__${placement}`]: !!placement,
     });
+
     const inner = () => {
       return (
         <div
@@ -218,7 +214,9 @@ class Tootip extends Component<PropsType, any> {
         </div>
       );
     };
-    const subElement = <span className={sub}>{children}</span> as ReactElement<any>;
+
+    const subElement = <span className={`${prefixCls}__inner`}>{children}</span> as ReactElement<any>;
+
     return (
       <div
         className={cls}

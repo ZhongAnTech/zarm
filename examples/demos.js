@@ -93,10 +93,6 @@ module.exports = {
         name: 'ActivityIndicator',
         description: '活动指示器',
       },
-      {
-        name: 'Tooltip',
-        description: '工具提示 Tooltip',
-      },
     ],
     view: [
       {
@@ -134,6 +130,10 @@ module.exports = {
       {
         name: 'Marquee',
         description: '滚动',
+      },
+      {
+        name: 'Tooltip',
+        description: '文字提示',
       },
     ],
     navigation: [

@@ -1,4 +1,4 @@
 import '../../style';
-import '../../button/style/';
-import '../../icon/style/';
+import '../../button/style';
+import '../../icon/style';
 import './index.scss';

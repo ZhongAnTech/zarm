@@ -35,9 +35,9 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
           {message}
         </Modal.Body>
         <Modal.Footer className={`${prefixCls}__footer`}>
-          <a className={`${prefixCls}__footer__button`} onClick={onCancel}>{cancelText || locale.cancelText}</a>
+          <a className={`${prefixCls}__footer__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</a>
           <a className={`${prefixCls}__footer__button ${prefixCls}__footer__button--ok`} onClick={onOk}>
-            {okText || locale.okText}
+            {okText || locale!.okText}
           </a>
         </Modal.Footer>
       </Modal>
