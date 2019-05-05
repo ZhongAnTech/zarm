@@ -637,6 +637,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   className="za-keyboard__item"
                                   onMouseDown={[Function]}
                                   onMouseUp={[Function]}
+                                  onTouchCancel={[Function]}
                                   onTouchEnd={[Function]}
                                   onTouchStart={[Function]}
                                 >
