@@ -1,3 +1,5 @@
+@import "@site/styles/index";
+
 .index-page {
   width: 100%;
   position: absolute;
@@ -14,7 +16,7 @@
     background-color: transparent;
 
     .header-container {
-      max-width: 1400px;
+      max-width: r(1400);
       margin: 0 auto;
       padding: 0 30px;
     }
