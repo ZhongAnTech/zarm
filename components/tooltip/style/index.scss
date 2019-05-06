@@ -29,52 +29,44 @@
     border-color: transparent;
     border-style: solid;
   }
+}
 
-  &__placement__right,
-  &__placement__rightTop,
-  &__placement__rightBottom {
-    margin-left: r(10);
+[x-placement^=right] {
+  margin-left: r(10);
 
-    @include arrow () {
-      left: r(-4);
-      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-right-color: rgba(0, 0, 0, var(--opacity-tooltip));
-    }
+  @include arrow () {
+    left: r(-4);
+    border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
+    border-right-color: rgba(0, 0, 0, var(--opacity-tooltip));
   }
+}
 
-  &__placement__top,
-  &__placement__topLeft,
-  &__placement__topRight {
-    margin-bottom: r(10);
+[x-placement^=top] {
+  margin-bottom: r(10);
 
-    @include arrow () {
-      bottom: r(-4);
-      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
-    }
+  @include arrow () {
+    bottom: r(-4);
+    border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
+    border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
   }
+}
 
-  &__placement__bottom,
-  &__placement__bottomLeft,
-  &__placement__bottomRight {
-    margin-top: r(10);
+[x-placement^=bottom] {
+  margin-top: r(10);
 
-    @include arrow () {
-      top: r(-4);
-      border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-bottom-color: rgba(0, 0, 0, var(--opacity-tooltip));
-    }
+  @include arrow () {
+    top: r(-4);
+    border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
+    border-bottom-color: rgba(0, 0, 0, var(--opacity-tooltip));
   }
+}
 
-  &__placement__left,
-  &__placement__leftTop,
-  &__placement__leftBottom {
-    margin-right: r(10);
+[x-placement^=left] {
+  margin-right: r(10);
 
-    @include arrow () {
-      right: r(-4);
-      border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-left-color: rgba(0, 0, 0, var(--opacity-tooltip));
-    }
+  @include arrow () {
+    right: r(-4);
+    border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
+    border-left-color: rgba(0, 0, 0, var(--opacity-tooltip));
   }
 }
