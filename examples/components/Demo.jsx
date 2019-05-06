@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Panel } from 'zarm';
 import { transform } from '@babel/standalone';
+import { Panel } from 'zarm';
 import locale from 'zarm/components/locale-provider/locale/zh_CN';
-import '../../components/style/entry';
+import '@/components/style/entry';
 
 export default class Demo extends React.Component {
   constructor(props) {

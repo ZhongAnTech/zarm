@@ -6,14 +6,14 @@ import docsearch from 'docsearch.js';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
 
-function initDocSearch() {
+const initDocSearch = () => {
   docsearch({
     apiKey: '44e980b50447a3a5fac9dc2a4808c439',
     indexName: 'zarm',
     inputSelector: '.search input',
     debug: false,
   });
-}
+};
 
 class Header extends PureComponent {
   componentDidMount() {
@@ -60,7 +60,7 @@ class Header extends PureComponent {
           <nav>
             <ul>
               { match.url !== '/' && <li><a href="#/">首页</a></li>}
-              <li><a href="#/documents/quick-start" className={this.activeClassName(['documents', 'components'])}>React 组件</a></li>
+              <li><a href="#/components/quick-start" className={this.activeClassName(['components'])}>React 组件</a></li>
               <li><a href="https://zhongantecheng.github.io/zarm-vue/#/documents/quick-start">Vue 组件</a></li>
               <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
             </ul>

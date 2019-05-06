@@ -81,6 +81,7 @@ config.plugins.push(new HtmlWebpackPlugin({
 config.resolve.alias = {
   zarm: process.cwd(),
   '@': path.resolve(__dirname, '../../'),
+  '@examples': path.resolve(__dirname, '../../examples'),
   '@site': path.resolve(__dirname, '../../site'),
 };
 

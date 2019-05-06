@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Menu } from 'dragon-ui';
-import { components, documents } from '@/examples/demos';
+import { documents, components } from '@/examples/demos';
 import Format from '@site/utils/format';
 import './style.scss';
 
@@ -11,7 +11,7 @@ class SideBar extends PureComponent {
       <Menu.Item
         key={Format.camel2Dash(doc.name)}
       >
-        <a href={`#/documents/${Format.camel2Dash(doc.name)}`}>
+        <a href={`#/components/${Format.camel2Dash(doc.name)}`}>
           {doc.description}
         </a>
       </Menu.Item>

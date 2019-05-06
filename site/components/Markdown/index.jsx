@@ -6,7 +6,7 @@ import './style.scss';
 
 export default class Markdown extends Component {
   render() {
-    const { document, className } = this.document(localStorage.getItem('LANGUAGE') || 'zh-CN');
+    const { document, className } = this.props;
 
     if (typeof document === 'string') {
       const renderer = new marked.Renderer();

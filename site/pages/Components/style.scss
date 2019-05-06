@@ -18,6 +18,10 @@
       overflow: hidden;
       border-left: 1px solid #ebedf0;
       font-size: 16px;
+      
+      &.no-simulator {
+        padding-right: 60px;
+      }
     }
 
     .simulator {

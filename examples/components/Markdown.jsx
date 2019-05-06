@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import marked from 'marked';
 import Demo from './Demo';
-// import Header from './Header';
 import Container from './Container';
 import Footer from './Footer';
 
@@ -39,7 +38,7 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const { document, className } = this.document();
+    const { document, className } = this.props;
 
     if (typeof document === 'string') {
       this.components.clear();

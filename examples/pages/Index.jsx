@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import { Panel, Cell } from 'zarm';
-import { components } from '../demos';
-import Format from '../utils/format';
-import Container from '../components/Container';
-import Footer from '../components/Footer';
-import '../styles/components/Header.scss';
-import '../styles/pages/IndexPage.scss';
+import { components } from '@examples/demos';
+import Format from '@examples/utils/format';
+import Container from '@examples/components/Container';
+import Footer from '@examples/components/Footer';
+import '@examples/styles/pages/IndexPage.scss';
 
 class Page extends PureComponent {
   getMenu = (groupName, key) => {
