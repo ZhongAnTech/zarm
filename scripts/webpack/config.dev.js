@@ -12,8 +12,8 @@ config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
   new ForkTsCheckerWebpackPlugin(),
   new HtmlWebpackPlugin({
-    template: './examples/index_umd.html',
-    filename: 'umd.html',
+    template: './site/demo/index_umd.html',
+    filename: 'demo_umd.html',
     inject: false,
   })
 );
