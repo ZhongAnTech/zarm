@@ -1,12 +1,44 @@
 @import "../../style/core/index";
 
 @include b(slider) {
-  position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
-  margin: calc(var(--slider-handle-size) / 2) 0;
-  padding: 0 calc(var(--slider-handle-size) / 2);
+
+  @include e(content) {
+    position: relative;
+    margin: calc(var(--slider-handle-size) / 2) 0;
+    padding: 0 calc(var(--slider-handle-size) / 2);
+    flex: 1;
+  }
+
+  @include e(marks) {
+    position: absolute;
+    font-size: var(--slider-mark-size);
+    top: 10px;
+    left: 0;
+    right: 0;
+    color: var(--slider-line-background);
+
+    @include e(mark) {
+      position: absolute;
+      transform: translateX(-50%);
+    }
+
+    @include e(mark-active) {
+      position: absolute;
+      color: var(--theme-primary);
+      transform: translateX(-50%);
+    }
+  }
+
+  @include e(limit) {
+    color: var(--theme-primary);
+    font-size: var(--slider-mark-size);
+  }
 
   @include e(line) {
+    position: relative;
     flex: 1;
     height: var(--slider-line-height);
     background-color: var(--slider-line-background);
@@ -14,6 +46,22 @@
     @include e(line__bg) {
       height: 100%;
       background-color: var(--theme-primary);
+    }
+
+    @include e(line__dot) {
+      position: absolute;
+      top: -1.5px;
+      width: 5px;
+      height: 5px;
+      margin-left: -2.5px;
+      background-color: #fff;
+      border: 1px solid var(--slider-line-background);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    @include e(line__dot-active) {
+      border: 1px solid var(--theme-primary);
     }
   }
 

@@ -15,6 +15,13 @@ class Demo extends React.Component {
   }
 
   render() {
+    const marks = {
+      0: '0',
+      26: '26',
+      60: '60',
+      100: '100',
+    }
+  
     return (
       <div>
         <Cell title="普通">
@@ -40,6 +47,16 @@ class Demo extends React.Component {
 
         <Cell title="禁用状态">
           <Slider defaultValue={20} disabled />
+        </Cell>
+        
+        <Cell title="显示区间">
+          <Slider showMark />
+        </Cell>
+        
+        <Cell title="带标签">
+          <Slider 
+            marks={marks} 
+          />
         </Cell>
       </div>
     )

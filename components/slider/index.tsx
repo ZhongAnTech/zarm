@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Events from '../utils/events';
@@ -24,9 +24,11 @@ export default class Slider extends PureComponent<SliderProps, any> {
   static defaultProps = {
     prefixCls: 'za-slider',
     disabled: false,
+    showMark: false,
     step: 1,
     min: 0,
     max: 100,
+    marks: {},
   };
 
   private line;
@@ -151,19 +153,90 @@ export default class Slider extends PureComponent<SliderProps, any> {
     this.setState({ offset });
   }
 
+  /**
+   * 获取标签
+   * @param {object} marks 标签对象
+   * @param {number} value 滑动输入条值
+   * @param {string} prefixCls
+   */
+  renderMarkInfo = (marks, value, prefixCls) => {
+    // 判断是否为空对象
+    if (typeof marks !== 'object' || JSON.stringify(marks) === '{}') {
+      return null;
+    }
+
+    const markKeys = Object.keys(marks || {});
+
+    const markElement = markKeys.map((item) => {
+      const markStyle = classnames(`${prefixCls}__mark`, {
+        [`${prefixCls}__mark-active`]: value >= item,
+      });
+
+      return (
+        <span
+          key={item}
+          className={markStyle}
+          style={{ left: item + '%' }}
+        >
+          {marks[item]}
+        </span>
+      );
+    });
+
+    const marksElement = (
+      <div className={`${prefixCls}__marks`}>
+        {markElement}
+      </div>
+    );
+
+    const lineDot = markKeys.map((item) => {
+      const dotStyle = classnames(`${prefixCls}__line__dot`, {
+        [`${prefixCls}__line__dot-active`]: value >= item,
+      });
+
+      return (
+        <span key={item} className={dotStyle} style={{ left: item + '%' }}/>
+      );
+    });
+
+    return (
+      <Fragment>
+        {lineDot}
+
+        {marksElement}
+      </Fragment>
+    );
+  }
+
   render() {
-    const { prefixCls, className, disabled, min, max } = this.props;
-    const { value, offset, tooltip } = this.state;
+    const {
+      prefixCls,
+      className,
+      disabled,
+      min,
+      max,
+      showMark: showLimit,
+      marks = {},
+    } = this.props;
+
+    const {
+      value,
+      offset = 0,
+      tooltip,
+    } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--disabled`]: disabled,
     });
 
-    return (
-      <div className={cls}>
+    const content = (
+      <div className={`${prefixCls}__content`}>
         <div className={`${prefixCls}__line`} ref={(ele) => { this.line = ele; }}>
-          <div className={`${prefixCls}__line__bg`} style={{ width: offset }} />
+          <div className={`${prefixCls}__line__bg`} style={{ width: offset || 0 }} />
+
+          {this.renderMarkInfo(marks, value, prefixCls)}
         </div>
+
         <Drag
           onDragStart={this.onDragStart}
           onDragMove={this.onDragMove}
@@ -175,13 +248,36 @@ export default class Slider extends PureComponent<SliderProps, any> {
             aria-valuemin={min}
             aria-valuemax={max}
             aria-valuenow={value}
-            style={{ left: offset }}
+            style={{ left: offset || 0 }}
           >
             <Tooltip visible={tooltip} title={value} >
               <div className={`${prefixCls}-handle-shadow`} />
             </Tooltip>
           </div>
         </Drag>
+      </div>
+    );
+
+    // 判断展示区间
+    const contentWrapper = showLimit
+      ? (
+        <Fragment>
+          <div className={`${prefixCls}__limit`}>
+            {min}
+          </div>
+
+          {content}
+
+          <div className={`${prefixCls}__limit`}>
+            {max}
+          </div>
+        </Fragment>
+      )
+      : content;
+
+    return (
+      <div className={cls}>
+        {contentWrapper}
       </div>
     );
   }
