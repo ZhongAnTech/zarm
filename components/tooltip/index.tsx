@@ -24,7 +24,7 @@ class Tootip extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'za-tooltip',
     visible: false,
-    trigger: 'hover',
+    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover',
     direction: 'top',
     onVisibleChange: () => {},
   };
@@ -46,6 +46,12 @@ class Tootip extends Component<PropsType, any> {
   }
 
   componentDidMount() {
+    this.initEvent();
+    Events.on(window, 'resize', this.onSetDirection);
+    this.componentDidUpdate();
+  }
+
+  initEvent () {
     const { instance, pop } = this;
     const reference = findDOMNode(this.reference);
     const { trigger } = this.props;
@@ -84,9 +90,6 @@ class Tootip extends Component<PropsType, any> {
         this.hidePop();
       });
     }
-
-    Events.on(window, 'resize', this.onSetDirection);
-    this.componentDidUpdate();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -111,6 +114,7 @@ class Tootip extends Component<PropsType, any> {
           arrowElement: arrowElement,
         });
       }
+      this.onSetDirection();
     } else {
       if (this.popper) {
         this.popper.destroy();
@@ -138,7 +142,6 @@ class Tootip extends Component<PropsType, any> {
     this.setState({
       visible: true,
     });
-    this.onSetDirection();
   }
 
   // 修正方向
