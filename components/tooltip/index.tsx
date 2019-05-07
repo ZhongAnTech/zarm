@@ -24,7 +24,7 @@ class Tootip extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'za-tooltip',
     visible: false,
-    trigger: 'hover',
+    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover',
     direction: 'top',
     onVisibleChange: () => {},
   };
@@ -46,6 +46,12 @@ class Tootip extends Component<PropsType, any> {
   }
 
   componentDidMount() {
+    this.initEvent();
+    Events.on(window, 'resize', this.onSetDirection);
+    this.componentDidUpdate();
+  }
+
+  initEvent () {
     const { instance, pop } = this;
     const reference = findDOMNode(this.reference);
     const { trigger } = this.props;
@@ -84,9 +90,6 @@ class Tootip extends Component<PropsType, any> {
         this.hidePop();
       });
     }
-
-    Events.on(window, 'resize', this.onSetDirection);
-    this.componentDidUpdate();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -130,7 +133,7 @@ class Tootip extends Component<PropsType, any> {
     delete this.popper;
 
     // 移除绑定事件
-    Events.off(window, 'resize', this.onSetDirection);
+    // Events.off(window, 'resize', this.onSetDirection);
   }
 
   showPop() {
@@ -138,35 +141,34 @@ class Tootip extends Component<PropsType, any> {
     this.setState({
       visible: true,
     });
-    this.onSetDirection();
   }
 
   // 修正方向
-  onSetDirection = () => {
-    if ( !this.reference && !this.pop ) { return false; }
-    const { direction } = this.props;
-    const { placement } = this.state;
-    const referenceRc = this.reference.getBoundingClientRect();
-    const popRc = this.pop.getBoundingClientRect();
-    const dirArray = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
+  // onSetDirection = () => {
+  //   if ( !this.reference && !this.pop ) { return false; }
+  //   const { direction } = this.props;
+  //   const { placement } = this.state;
+  //   const referenceRc = this.reference.getBoundingClientRect();
+  //   const popRc = this.pop.getBoundingClientRect();
+  //   const dirArray = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
 
-    let _direction = !this.abs ? direction : placement;
-    let first = directMap[_direction].split('-')[0];
-    let hash = _direction.replace(/left|right|bottom|top/g, (matched) => {
-      return dirArray[matched];
-    });
+  //   let _direction = !this.abs ? direction : placement;
+  //   let first = directMap[_direction].split('-')[0];
+  //   let hash = _direction.replace(/left|right|bottom|top/g, (matched) => {
+  //     return dirArray[matched];
+  //   });
 
-    const last = dirArray[first];
-    const range = referenceRc[last] - popRc[first];
+  //   const last = dirArray[first];
+  //   const range = referenceRc[last] - popRc[first];
 
-    if (!this.abs) { this.abs = false; }
-    if (Math.abs(range) < 5) {
-      this.abs = true;
-      this.setState({
-        placement: hash,
-      });
-    }
-  }
+  //   if (!this.abs) { this.abs = false; }
+  //   if (Math.abs(range) < 5) {
+  //     this.abs = true;
+  //     this.setState({
+  //       placement: hash,
+  //     });
+  //   }
+  // }
 
   hidePop() {
     const { trigger } = this.props;
@@ -197,7 +199,6 @@ class Tootip extends Component<PropsType, any> {
 
     const contentCls = classnames(`${prefixCls}__content`, {
       [`${prefixCls}__content--show`]: visible,
-      [`${prefixCls}__placement__${placement}`]: !!placement,
     });
 
     const inner = () => {
