@@ -16,7 +16,7 @@ exports[`Tooltip direction 1`] = `
       containerInfo={
         <body>
           <div
-            class="za-tooltip__content za-tooltip__placement__top"
+            class="za-tooltip__content"
           >
             hello
             <span
@@ -28,7 +28,7 @@ exports[`Tooltip direction 1`] = `
       }
     >
       <div
-        className="za-tooltip__content za-tooltip__placement__top"
+        className="za-tooltip__content"
       >
         hello
         <span
@@ -64,8 +64,9 @@ exports[`Tooltip visible 1`] = `
       containerInfo={
         <body>
           <div
-            class="za-tooltip__content za-tooltip__content--show za-tooltip__placement__top"
+            class="za-tooltip__content za-tooltip__content--show"
             style="position: fixed; top: 0px; transform: translate3d(NaNpx, NaNpx, 0); left: 0px;"
+            x-placement="top"
           >
             hello
             <span
@@ -78,7 +79,7 @@ exports[`Tooltip visible 1`] = `
       }
     >
       <div
-        className="za-tooltip__content za-tooltip__content--show za-tooltip__placement__top"
+        className="za-tooltip__content za-tooltip__content--show"
       >
         hello
         <span
