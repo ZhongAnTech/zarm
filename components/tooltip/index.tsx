@@ -34,7 +34,7 @@ class Tootip extends Component<PropsType, any> {
   private reference;
   private popper;
   private timer;
-  private abs;
+  // private abs;
 
   constructor(props) {
     super(props);
@@ -47,7 +47,7 @@ class Tootip extends Component<PropsType, any> {
 
   componentDidMount() {
     this.initEvent();
-    Events.on(window, 'resize', this.onSetDirection);
+    // Events.on(window, 'resize', this.onSetDirection);
     this.componentDidUpdate();
   }
 
@@ -186,7 +186,7 @@ class Tootip extends Component<PropsType, any> {
   }
 
   render() {
-    const { visible, placement } = this.state;
+    const { visible } = this.state;
     const {
       children,
       title,
