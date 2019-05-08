@@ -6,7 +6,7 @@
 ## 超出滑动
 ```jsx
 import { Tabs } from 'zarm';
-const { Panel } = Tabs;
+const  Panel = Tabs.Panel;
 
 class Demo extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class Demo extends React.Component {
         useTabPaged={true}   //是否使用分页
         tabWidth={80}
         defaultValue={2}
-        lineWidth={50}
+        lineWidth={30}
         scrollElastic={true}
         >
           <Panel title="选项卡1">
@@ -65,8 +65,53 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+## selected 默认选项卡
+```jsx
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
 
+class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isSelected: false
+    };
+  }
+  render() {
+    const {isSelected} = this.state
+  if(!isSelected){
+    let timer = setTimeout(()=>{
+      this.setState({
+        isSelected:true
+      })
+    },2000);
+  }
+    return (
+      <div>
+        <Tabs onChange={(i) => { console.log(i); }} 
+        page={5}   //Tab分页尺寸
+        canSwipe={false}
+        >
+          <Panel title="选项卡1">
+            <div className="content">选项卡1内容</div>
+          </Panel>
+          <Panel title="选项卡2" selected={isSelected}>
+            <div className="content">选项卡2内容{isSelected}</div>
+          </Panel>
+          <Panel title="选项卡3">
+            <div className="content">选项卡3内容</div>
+          </Panel>
+          <Panel title="选项卡4">
+            <div className="content">选项卡4内容</div>
+          </Panel>
+        </Tabs>
+      </div>
+    )
+  }
+}
 
+  ReactDOM.render(<Demo />, mountNode);
+```
 ## 基本用法
 ```jsx
 // import { Tabs } from 'zarm';

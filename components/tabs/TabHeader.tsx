@@ -73,26 +73,23 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     let translateDistance = 0;
     const stepDistanceX = -nextIndex * tabWidth! - this.translateX     //需要位移的距离
     let linePosition;
-    if (!useTabPaged) {
+    if (!useTabPaged) {  
       linePosition = window.screen.width / children.length * nextIndex
     } else {
       const isForward = nextIndex - activeIndex > 0
       const criticalCenterDistance = window.screen.width / 2;   //中间点，临界值
       translateDistance = -nextIndex * tabWidth! + criticalCenterDistance   //可以移动距离
-      console.log('onMoveTo-index', nextIndex, criticalCenterDistance)
+      // console.log('onMoveTo-index', nextIndex, criticalCenterDistance)
       //左需不要移动
       if (tabWidth! * nextIndex < criticalCenterDistance || (isForward && this.isTabInFront({ offsetX: stepDistanceX, offsetY: 0 }))) {
-        console.log('onMoveTo-isPrev左需不要移动')
+        // console.log('onMoveTo-isPrev左需不要移动')
         translateDistance = 0;
         //右边不需要移动
         // } else if ((isPrev && this.tabBarWidth - criticalCenterDistance < tabWidth! * nextIndex) || (!isPrev && this.tabBarWidth - criticalCenterDistance < tabWidth! * activeIndex)) {
       } else if (this.tabBarWidth - criticalCenterDistance < tabWidth! * nextIndex || (isForward && this.isTabInEnd({ offsetX: stepDistanceX, offsetY: 0 }))) {
         translateDistance = this.tabInEndCritical;
-        console.log('onMoveTo-isPrev右需不要移动')
-      } else {
-        console.log('左右需要移动tab', this.translateX)
-        //计算是否在临界
-      }
+        // console.log('onMoveTo-isPrev右需不要移动')
+      } 
       const previousIndex = activeIndex
       const activeIndexChanged = previousIndex !== nextIndex;
       linePosition = translateDistance + tabWidth! * nextIndex
@@ -103,7 +100,7 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
         activeIndexChanged: activeIndexChanged
       });
       if (typeof onChange === 'function' && activeIndexChanged) {
-        console.log('调用onChange')
+        // console.log('调用onChange')
         onChange(nextIndex);
       }
     }
@@ -121,7 +118,7 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
 
   // 执行过渡tab动画
   doTabTransition = (offset, animationDuration, update) => {
-    console.log('tabs-header-doTabTransition', offset, animationDuration, update)
+    // console.log('tabs-header-doTabTransition', offset, animationDuration, update)
     let x = 0;
     let y = 0;
     if (this.props.horizontal) {
@@ -149,7 +146,7 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   }
 
   onDragMove = (event, { offsetX, offsetY }) => {
-   
+   console.log('onDragMove',offsetX, offsetY)
     const { activeIndex } = this.state
     if (!this.props.scrollElastic) {  //不带弹性滑动
       if (this.isTabScrollingInEnd({ offsetX, offsetY })) {
@@ -164,20 +161,18 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     }
     return true
   }
-  onDragEnd = (_event, { offsetX, offsetY }) => {
-   
+  onDragEnd = (_event, { offsetX, offsetY }) => {2
     if (!offsetX && !offsetY) {
       return;
     }
-
-    const { scrollElastic, horizontal, tabWidth, tabHeight } = this.props;
+    const { scrollElastic, horizontal, tabWidth } = this.props;
     if (!scrollElastic) {  //不带弹性滑动
       if (this.isTabScrollingInEnd({ offsetX, offsetY })) {
         this.doTabTransition({ x: this.translateX + offsetX, y: 0 }, 500, true)
         return false;
       }
     }
-    console.log(tabWidth, tabHeight)
+    // console.log(tabWidth, tabHeight)
     let { activeIndex } = this.state;
     const isprev = (horizontal && offsetX < 0) || (!horizontal && offsetY < 0)
     if (horizontal) {
@@ -196,11 +191,9 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   isTabScrollingInEnd = (offset) => {
     const { horizontal } = this.props;
     const isprev = (horizontal && offset.offsetX < 0) || (!horizontal && offset.offsetY < 0)  //->right / down
-    if (isprev && this.isTabInEnd(offset)) {
+    if (isprev && this.isTabInEnd(offset) || !isprev && this.isTabInFront(offset)) {
       return true
-    } else if (!isprev && this.isTabInFront(offset)) {
-      return true
-    }
+    } 
     return false
   }
 
