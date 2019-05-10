@@ -14,7 +14,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tabs onChange={(i) => { console.log(i); }} 
+        <Tabs onChange={(i) => {}} 
         defaultValue={1}
         canSwipe
         >
@@ -42,7 +42,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tabs onChange={(i) => { console.log(i); }} 
+        <Tabs onChange={(i) => { }} 
         tabWidth={80}
         canSwipe
         useTabPaged //是否使用分页
@@ -70,7 +70,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tabs onChange={(i) => { console.log(i); }} 
+        <Tabs onChange={(i) => { }} 
         tabWidth={80}
         canSwipe={true}
         useTabPaged   //是否使用分页
