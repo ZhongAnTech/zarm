@@ -35,7 +35,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     useTabPaged: false,
     horizontal: true,
     moveDistanceRatio: 0.5,
-    scrollElastic:true
+    scrollElastic:true,
+    value:0
   };
 
   private carousel;

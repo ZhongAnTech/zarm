@@ -1,6 +1,6 @@
 export default interface TabBasePropsType {
   tabWidth?:  number;
-  tabHeight?: number;
+  // tabHeight?: number;
   lineWidth?:number;
   scrollElastic?: boolean;   //tab弹性滑动
   disabled?: boolean;
@@ -8,6 +8,7 @@ export default interface TabBasePropsType {
   canSwipe?: boolean;
   onChange?: (index: number) => void;
   children?: any;
+  value?:number;
   defaultValue?:number;
   page?: number;
   horizontal?:  boolean;

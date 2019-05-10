@@ -65,6 +65,54 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+## 超出滑动2
+```jsx
+import { Tabs } from 'zarm';
+const  Panel = Tabs.Panel;
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Tabs onChange={(i) => { console.log(i); }} 
+        canSwipe
+        useTabPaged={true}   //是否使用分页
+        tabWidth={100}
+        scrollElastic={false}
+        >
+          <Panel title="选项卡1">
+            <div className="content">选项卡1内容</div>
+          </Panel>
+          <Panel title="选项卡2">
+            <div className="content">选项卡2内容</div>
+          </Panel>
+          <Panel title="选项卡3">
+            <div className="content">选项卡3内容</div>
+          </Panel>
+          <Panel title="选项卡4" disabled>
+            <div className="content">选项卡4内容</div>
+          </Panel>
+          <Panel title="选项卡5">
+            <div className="content">选项卡5内容</div>
+          </Panel>
+          <Panel title="选项卡6">
+            <div className="content">选项卡6内容</div>
+          </Panel>
+          <Panel title="选项卡7">
+            <div className="content">选项卡7内容</div>
+          </Panel>
+          <Panel title="选项卡8">
+            <div className="content">选项卡8内容</div>
+          </Panel>
+        </Tabs>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
 ## selected 默认选项卡
 ```jsx
 import { Tabs } from 'zarm';
@@ -208,60 +256,60 @@ class Demo extends React.Component {
 
 ## 指定线条宽度
 ```jsx
-// import { Tabs } from 'zarm';
-// const { Panel } = Tabs;
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
 
-// class Demo extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Tabs lineWidth={60}>
-//           <Panel title="选项卡1">
-//             <div className="content">选项卡1内容</div>
-//           </Panel>
-//           <Panel title="选项卡2">
-//             <div className="content">选项卡2内容</div>
-//           </Panel>
-//           <Panel title="选项卡3">
-//             <div className="content">选项卡3内容</div>
-//           </Panel>
-//         </Tabs>
-//       </div>
-//     )
-//   }
-// }
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Tabs lineWidth={10} >
+          <Panel title="选项卡1">
+            <div className="content">选项卡1内容</div>
+          </Panel>
+          <Panel title="选项卡2">
+            <div className="content">选项卡2内容</div>
+          </Panel>
+          <Panel title="选项卡3">
+            <div className="content">选项卡3内容</div>
+          </Panel>
+        </Tabs>
+      </div>
+    )
+  }
+}
 
-// ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
 
-## 禁用指定选项
+## 禁用所有选项
 ```jsx
-// import { Tabs } from 'zarm';
-// const { Panel } = Tabs;
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
 
-// class Demo extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Tabs>
-//           <Panel title="选项卡1">
-//             <div className="content">选项卡1内容</div>
-//           </Panel>
-//           <Panel title="选项卡2" disabled>
-//             <div className="content">选项卡2内容</div>
-//           </Panel>
-//           <Panel title="选项卡3">
-//             <div className="content">选项卡3内容</div>
-//           </Panel>
-//         </Tabs>
-//       </div>
-//     )
-//   }
-// }
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Tabs disabled>
+          <Panel title="选项卡1">
+            <div className="content">选项卡1内容</div>
+          </Panel>
+          <Panel title="选项卡2" >
+            <div className="content">选项卡2内容</div>
+          </Panel>
+          <Panel title="选项卡3">
+            <div className="content">选项卡3内容</div>
+          </Panel>
+        </Tabs>
+      </div>
+    )
+  }
+}
 
-// ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
