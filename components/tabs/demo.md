@@ -219,18 +219,18 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
-<!-- ## API
-
-### Tabs
+## API
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | string | - | 值 |
-| defaultValue | string | - | 初始值 |
-| disabled | boolean | false | 是否禁用 |
+| value | number | - | 值 |
+| defaultValue | number | 0 | 初始值 |
+| disabled | boolean | false | 是否禁用所有选项 |
+| useTabPaged | boolean | false | 是否使用超出滚动 |
 | canSwipe | boolean | false | 是否支持滑动切换 |
-| lineWidth | number \| string | - | 线条宽度 |
+| lineWidth | number | - | 线条宽度，默认与tab同宽 |
+| tabWidth | number | 70px | tab宽度 超出为70px，不超出均分容器宽度|
+| scrollElastic | boolean  | false | 末端带弹性滑动 |
+| horizontal | boolean | true | tab方向，目前只支持水平方向 |
 | onChange | (index?: number) => void | - | 值变化时触发的回调函数 |
 
 
@@ -238,4 +238,4 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | disabled | boolean | false | 是否禁用 |
-| title | string | - | 标题 | -->
+| title | string | - | 标题 |
