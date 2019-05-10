@@ -4,16 +4,16 @@ import PropsType from './PropsType';
 import Events from '../utils/events';
 import Drag from '../drag';
 
-export interface TabsCarouselProps extends PropsType {
+export interface CarouselProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class TabsCarousel extends Component<TabsCarouselProps, any> {
+export default class Carousel extends Component<CarouselProps, any> {
   static defaultProps = {
-    prefixCls: 'za-tabs-carousel',
+    prefixCls: 'za-carousel',
     direction: 'left',
-    height: 120,
+    height: 160,
     loop: false,
     activeIndex: 0,
     animationDuration: 300,
@@ -159,9 +159,9 @@ export default class TabsCarousel extends Component<TabsCarouselProps, any> {
         }
       }
     }
-    if (event.cancelable && !event.defaultPrevented) {
-          event.preventDefault();
-    }
+
+    event.preventDefault();
+
     this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
     return true;
   }
@@ -340,7 +340,6 @@ export default class TabsCarousel extends Component<TabsCarouselProps, any> {
     const { prefixCls, className, height, style } = this.props;
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
     const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
-    console.log('tabs-C-render-cls',cls)
     const itemsStyle: CSSProperties = {};
 
     if (!this.isDirectionX()) {

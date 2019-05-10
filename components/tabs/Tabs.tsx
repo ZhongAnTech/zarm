@@ -7,7 +7,6 @@ import Carousel from '../carousel';
 
 
 const getSelectIndex = (children) => {
-  console.log('Tabs-getSelectIndex-children', children)
   let selectIndex;
   React.Children.forEach(children, (item: any, index) => {
     if (item.props && item.props.selected) {
@@ -30,11 +29,9 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     disabled: false,
     hasline: false,
     canSwipe: false,
-    page: 5,
     defaultValue:0,
     useTabPaged: false,
     horizontal: true,
-    moveDistanceRatio: 0.5,
     scrollElastic:true,
     value:0
   };
@@ -86,13 +83,12 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
 
   render() {
-    const { prefixCls, className, hasline, canSwipe, children, horizontal, useTabPaged } = this.props;
+    const { prefixCls, className, hasline, canSwipe, children, horizontal, useTabPaged ,page} = this.props;
     
     const classes = classnames(prefixCls, className,
       { [`${prefixCls}--hasline`]: hasline },
-      { [`${prefixCls}--paged`]: useTabPaged },
+      { [`${prefixCls}--paged`]: page?false:useTabPaged },
       `${prefixCls}--${horizontal ? 'horizontal' : 'vertical'}`);
-    console.log('Tabs-render-itemCls', classes)
     // 渲染内容
     let contentRender;
     if (canSwipe) {
@@ -120,7 +116,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
             onTabHeaderClick={(tab, index) => { this.onTabClick(tab, index) }}
           ></TabHeader>
         <div className={`${prefixCls}__container`}>
-          {contentRender}{this.state.value}
+          {contentRender}
         </div>
       </div>
     );

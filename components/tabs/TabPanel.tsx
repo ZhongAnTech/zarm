@@ -13,7 +13,6 @@ export default class TabPanel extends PureComponent<TabPannelProps, any> {
 
   constructor(props) {
     super(props);
-    console.log('TabPanel',props)
     this.state = {
       selected: props.selected || props.defaultSelected,
     };

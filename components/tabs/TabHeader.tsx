@@ -8,7 +8,6 @@ export interface TabHeaderProps extends TabBasePropsType {
   prefixCls?: string;
   className?: string;
   activeIndex?: number;
-  moveDistanceRatio?: number;
   animationDuration?: number;
   onTabHeaderClick: (tab, index) => void;
 }
@@ -19,8 +18,8 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     animationDuration: CONSTANS.ANIMATION_DURATION,
     tabWidth: CONSTANS.TAB_WIDTH,
     tabHeight: CONSTANS.TAB_HEIGHT,
-
   };
+
   private tabsHeaderBar;
   private tabsHeaderline;
   private translateX: number = 0;
@@ -31,7 +30,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
 
   constructor(props) {
     super(props);
-    console.log('TabHeader-constructor-props', props)
     this.state = {
       activeIndex: props.activeIndex,
       activeIndexChanged: false,
@@ -41,7 +39,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   componentWillMount() {
     const { tabWidth, children, useTabPaged, lineWidth } = this.props
     this.tabLineWidth = lineWidth ? lineWidth : useTabPaged ? tabWidth : `${100 / children.length}%`;
-    
   }
 
   componentDidMount() {
@@ -52,53 +49,45 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     this.onMoveTo(activeIndex, 0)
   }
   componentWillReceiveProps(nextProps) {
-    console.log('TabHeader-componentWillReceiveProps-nextProps', nextProps)
     this.setState({ activeIndex: nextProps.activeIndex })
     this.tabsHeaderBar && this.onMoveTo(nextProps.activeIndex, CONSTANS.ANIMATION_DURATION)
   }
+
   // 移动到指定编号
   onMoveTo = (nextIndex, animationDuration) => {
-    console.log('onMoveTo--------------',this.barWidth)
-   
     const { children, onChange, tabWidth, useTabPaged } = this.props;
     const { activeIndex } = this.state
 
     let translateDistance = 0;
     const stepDistanceX = -nextIndex * tabWidth! - this.translateX     //需要位移的距离
     let linePosition;
-    if (!useTabPaged) { 
-
-      linePosition = this.barWidth / children.length * nextIndex
-    } else {
+    if (useTabPaged) { 
       const isForward = nextIndex - activeIndex > 0
       
       const criticalCenterDistance = this.barWidth  / 2;   //中间点，临界值
       translateDistance = -nextIndex * tabWidth! + criticalCenterDistance   //可以移动距离
-      // console.log('onMoveTo-index', nextIndex, criticalCenterDistance)
       //左需不要移动
        if (tabWidth! * nextIndex < criticalCenterDistance || (isForward && this.isTabInFront({ offsetX: stepDistanceX, offsetY: 0 }))) {
            translateDistance = 0;
-     
       } else if (this.tabBarWidth - criticalCenterDistance < tabWidth! * nextIndex || (isForward && this.isTabInEnd({ offsetX: stepDistanceX, offsetY: 0 }))) {
         translateDistance = this.tabInEndCritical;
-        // console.log('onMoveTo-isPrev右需不要移动')
       } 
-      const previousIndex = activeIndex
-      const activeIndexChanged = previousIndex !== nextIndex;
       linePosition = translateDistance + tabWidth! * nextIndex
       this.doTabTransition({ x: translateDistance, y: 0 }, animationDuration, true);
 
       this.setState({
         activeIndex: nextIndex,
-        activeIndexChanged: activeIndexChanged
       });
-      if (typeof onChange === 'function' && activeIndexChanged) {
+      if (typeof onChange === 'function' && activeIndex !== nextIndex) {
         onChange(nextIndex);
-
       }
+    } else {
+      linePosition = this.barWidth / children.length * nextIndex
     }
+
     this.doLineTransition({ x: linePosition, y: 0 }, animationDuration)
   }
+
   // 执行过渡line动画
   doLineTransition = (offset, animationDuration) => {
     Object.assign(this.tabsHeaderline.style, {
@@ -112,7 +101,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   // 执行过渡tab动画
   doTabTransition = (offset, animationDuration, update) => {
     let x = 0;
-    let y = 0;
     if (this.props.horizontal) {
       x = offset.x;
     } 
@@ -122,8 +110,8 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     Object.assign(this.tabsHeaderBar.style, {
       WebkitTransformDuration: `${animationDuration}ms`,
       transitionDuration: `${animationDuration}ms`,
-      WebkitTransform: `translate3d(${x}px, ${y}px, 0)`,
-      transform: `translate3d(${x}px, ${y}px, 0)`
+      WebkitTransform: `translate3d(${x}px, 0px, 0)`,
+      transform: `translate3d(${x}px, 0px, 0)`
     })
   }
 
@@ -135,7 +123,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   }
 
   onDragMove = (event, { offsetX, offsetY }) => {
-    console.log('onDragMove',offsetX, offsetY)
     const { activeIndex } = this.state
     if (!this.props.scrollElastic) {  //不带弹性滑动
       if (this.isTabScrollingInEnd({ offsetX, offsetY })) {
@@ -151,18 +138,11 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     return true
   }
   onDragEnd = (_event, { offsetX, offsetY }) => {
-    console.log('onDragEnd',offsetX, offsetY)
     if (!offsetX && !offsetY) {
       return;
     }
-     const {  horizontal, tabWidth } = this.props;
-    // if (!scrollElastic) {  //不带弹性滑动
-    //   if (this.isTabScrollingInEnd({ offsetX, offsetY })) {
-    //     this.doTabTransition({ x: this.translateX + offsetX, y: 0 }, 500, true)
-    //     return false;
-    //   }
-    // }
-    // console.log(tabWidth, tabHeight)
+    const {  horizontal, tabWidth } = this.props;
+   
     let { activeIndex } = this.state;
     const isprev = (horizontal && offsetX < 0) 
     if (horizontal) {
@@ -194,15 +174,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
 
   // 判断当前是否否滑动到最后
   isTabInEnd = (offset) => {
-    // if(!this.tabInEndCritical){
-    //   return
-    // }
-    // if(this.translateX===0){
-    //   return
-    // }
-    // if(!offset.offsetX){
-    //   return
-    // }
     return this.tabInEndCritical > this.translateX + offset.offsetX!
   }
 
@@ -225,10 +196,9 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   // 是否横向移动
 
   renderTabs = (tab, index) => {
-    // console.log('TabsHeader-renderTabs-tab',this.props)
     const { prefixCls, disabled, useTabPaged, horizontal, tabWidth } = this.props;
     const itemCls = classnames(`${prefixCls}__header__item`, tab.props.className, {
-      [`${prefixCls}__header__item--disabled`]: disabled || tab.props.disabled,
+      [`${prefixCls}__header__item--disabled`]: (this.state.activeIndex!=index && disabled || tab.props.disabled),
     });
     const tabItemStyle: CSSProperties = {
       flexBasis: (useTabPaged && horizontal) ? tabWidth : 'unset',
@@ -248,7 +218,6 @@ export default class isPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     );
   }
   render() {
-    console.log('tabHeader-render')
     const { children, useTabPaged, prefixCls, lineWidth, tabWidth } = this.props;
     const lineStyle: CSSProperties = {
       width: useTabPaged ? tabWidth : `${100 / children.length}%`

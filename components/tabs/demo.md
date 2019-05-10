@@ -1,261 +1,140 @@
 # 标签页 Tabs
 
-
-
-
-## 超出滑动
-```jsx
-import { Tabs } from 'zarm';
-const  Panel = Tabs.Panel;
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Tabs onChange={(i) => { console.log(i); }} 
-        canSwipe
-        page={5}   //Tab分页尺寸
-        useTabPaged={true}   //是否使用分页
-        tabWidth={80}
-        defaultValue={2}
-        lineWidth={30}
-        scrollElastic={true}
-        >
-          <Panel title="选项卡1">
-            <div className="content">选项卡1内容</div>
-          </Panel>
-          <Panel title="选项卡2">
-            <div className="content">选项卡2内容</div>
-          </Panel>
-          <Panel title="选项卡3">
-            <div className="content">选项卡3内容</div>
-          </Panel>
-          <Panel title="选项卡4" disabled>
-            <div className="content">选项卡4内容</div>
-          </Panel>
-          <Panel title="选项卡5">
-            <div className="content">选项卡5内容</div>
-          </Panel>
-          <Panel title="选项卡6">
-            <div className="content">选项卡6内容</div>
-          </Panel>
-          <Panel title="选项卡7">
-            <div className="content">选项卡7内容</div>
-          </Panel>
-          <Panel title="选项卡8">
-            <div className="content">选项卡8内容</div>
-          </Panel>
-          <Panel title="选项卡9">
-            <div className="content">选项卡9内容</div>
-          </Panel>
-          <Panel title="选项卡10">
-            <div className="content">选项卡10内容</div>
-          </Panel>
-          <Panel title="选项卡11">
-            <div className="content">选项卡11内容</div>
-          </Panel>
-          <Panel title="选项卡12">
-            <div className="content">选项卡12内容</div>
-          </Panel>
-        </Tabs>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
-## 超出滑动2
-```jsx
-import { Tabs } from 'zarm';
-const  Panel = Tabs.Panel;
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Tabs onChange={(i) => { console.log(i); }} 
-        canSwipe
-        useTabPaged={true}   //是否使用分页
-        tabWidth={100}
-        scrollElastic={false}
-        >
-          <Panel title="选项卡1">
-            <div className="content">选项卡1内容</div>
-          </Panel>
-          <Panel title="选项卡2">
-            <div className="content">选项卡2内容</div>
-          </Panel>
-          <Panel title="选项卡3">
-            <div className="content">选项卡3内容</div>
-          </Panel>
-          <Panel title="选项卡4" disabled>
-            <div className="content">选项卡4内容</div>
-          </Panel>
-          <Panel title="选项卡5">
-            <div className="content">选项卡5内容</div>
-          </Panel>
-          <Panel title="选项卡6">
-            <div className="content">选项卡6内容</div>
-          </Panel>
-          <Panel title="选项卡7">
-            <div className="content">选项卡7内容</div>
-          </Panel>
-          <Panel title="选项卡8">
-            <div className="content">选项卡8内容</div>
-          </Panel>
-        </Tabs>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-## selected 默认选项卡
+## 基本用法
 ```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isSelected: false
-    };
-  }
+  createDefaultPanels(l) {
+    return (  Array.from({ length: l }).map((e, i) => {
+      return (<Panel title={`选项卡${i}`} key={i}><div className="content">{ `选项卡内容${i}`}</div></Panel>);
+    }));
+  };
   render() {
-    const {isSelected} = this.state
-  if(!isSelected){
-    let timer = setTimeout(()=>{
-      this.setState({
-        isSelected:true
-      })
-    },2000);
-  }
     return (
       <div>
         <Tabs onChange={(i) => { console.log(i); }} 
-        page={5}   //Tab分页尺寸
-        canSwipe={false}
+        defaultValue={1}
+        canSwipe
         >
-          <Panel title="选项卡1">
-            <div className="content">选项卡1内容</div>
-          </Panel>
-          <Panel title="选项卡2" selected={isSelected}>
-            <div className="content">选项卡2内容{isSelected}</div>
-          </Panel>
-          <Panel title="选项卡3">
-            <div className="content">选项卡3内容</div>
-          </Panel>
-          <Panel title="选项卡4">
-            <div className="content">选项卡4内容</div>
-          </Panel>
+          {this.createDefaultPanels(4)}
+        </Tabs>
+      </div>
+    )
+  }
+}
+ ReactDOM.render(<Demo />, mountNode);
+```
+
+
+## 超出滑动（左右弹性）
+```jsx
+import { Tabs } from 'zarm';
+const  Panel = Tabs.Panel;
+
+class Demo extends React.Component {
+  createDefaultPanels(l) {
+    return (  Array.from({ length: l }).map((e, i) => {
+      return (<Panel title={`选项卡${i}`} key={i}><div className="content">{ `选项卡内容${i}`}</div></Panel>);
+    }));
+  };
+  render() {
+    return (
+      <div>
+        <Tabs onChange={(i) => { console.log(i); }} 
+        tabWidth={80}
+        canSwipe
+        useTabPaged //是否使用分页
+        >
+          {this.createDefaultPanels(10)}
         </Tabs>
       </div>
     )
   }
 }
 
-  ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
-## 基本用法
+## 超出滑动（左右无弹性）
 ```jsx
-// import { Tabs } from 'zarm';
-// const { Panel } = Tabs;
+import { Tabs } from 'zarm';
+const  Panel = Tabs.Panel;
 
-// class Demo extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Tabs onChange={(i) => { console.log(i); }} 
-//         page={5}   //Tab分页尺寸
-//         defaultValue={1}
-//         canSwipe
-//         >
-//           <Panel title="选项卡1">
-//             <div className="content">选项卡1内容</div>
-//           </Panel>
-//           <Panel title="选项卡2">
-//             <div className="content">选项卡2内容</div>
-//           </Panel>
-//           <Panel title="选项卡3">
-//             <div className="content">选项卡3内容</div>
-//           </Panel>
-//           <Panel title="选项卡4">
-//             <div className="content">选项卡4内容</div>
-//           </Panel>
-//         </Tabs>
-//       </div>
-//     )
-//   }
-// }
+class Demo extends React.Component {
+  createDefaultPanels(l) {
+    return (  Array.from({ length: l }).map((e, i) => {
+      return (<Panel title={`选项卡${i}`} key={i}><div className="content">{ `选项卡内容${i}`}</div></Panel>);
+    }));
+  };
+  render() {
+    return (
+      <div>
+        <Tabs onChange={(i) => { console.log(i); }} 
+        tabWidth={80}
+        canSwipe={true}
+        useTabPaged   //是否使用分页
+        scrollElastic={false}
+        >
+          {this.createDefaultPanels(10)}
+        </Tabs>
+      </div>
+    )
+  }
+}
 
-//  ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
-
-
-
-## 可滑动
+## 指定tab宽度 100px
 ```jsx
-// import { Tabs } from 'zarm';
-// const { Panel } = Tabs;
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
 
-// class Demo extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Tabs canSwipe onChange={(i) => { console.log(i); }}>
-//           <Panel title="选项卡1">
-//             <div className="content">试试点我左滑</div>
-//           </Panel>
-//           <Panel title="选项卡2">
-//             <div className="content">试试点我右滑</div>
-//           </Panel>
-//         </Tabs>
-//       </div>
-//     )
-//   }
-// }
-
-// ReactDOM.render(<Demo />, mountNode);
+class Demo extends React.Component {
+  createDefaultPanels(l) {
+    return (  Array.from({ length: l }).map((e, i) => {
+      return (<Panel title={`选项卡${i}`} key={i}><div className="content">{ `选项卡内容${i}`}</div></Panel>);
+    }));
+  };
+  render() {
+    return (
+      <div>
+        <Tabs tabWidth={100} useTabPaged>
+          {this.createDefaultPanels(5)}
+        </Tabs>
+      </div>
+    )
+  }
+}
+ReactDOM.render(<Demo />, mountNode);
 ```
+## 指定线条宽度 50px
+```jsx
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
 
+class Demo extends React.Component {
+  createDefaultPanels(l) {
+    return (  Array.from({ length: l }).map((e, i) => {
+      return (<Panel title={`选项卡${i}`} key={i}><div className="content">{ `选项卡内容${i}`}</div></Panel>);
+    }));
+  };
+  render() {
+    return (
+      <div>
+        <Tabs lineWidth={50} useTabPaged >
+          {this.createDefaultPanels(7)}
+        </Tabs>
+      </div>
+    )
+  }
+}
 
+ReactDOM.render(<Demo />, mountNode);
+```
 
 ## 指定默认选项
 ```jsx
-// import { Tabs } from 'zarm';
-// const { Panel } = Tabs;
-
-// class Demo extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Tabs defaultValue={1}>
-//           <Panel title="选项卡1">
-//             <div className="content">选项卡1内容</div>
-//           </Panel>
-//           <Panel title="选项卡2">
-//             <div className="content">选项卡2内容</div>
-//           </Panel>
-//           <Panel title="选项卡3">
-//             <div className="content">选项卡3内容</div>
-//           </Panel>
-//         </Tabs>
-//       </div>
-//     )
-//   }
-// }
-
-// ReactDOM.render(<Demo />, mountNode);
-```
-
-
-
-## 指定线条宽度
-```jsx
 import { Tabs } from 'zarm';
 const { Panel } = Tabs;
 
@@ -263,12 +142,12 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tabs lineWidth={10} >
-          <Panel title="选项卡1">
+        <Tabs defaultValue={1}>
+          <Panel title="选项卡1" >
             <div className="content">选项卡1内容</div>
           </Panel>
-          <Panel title="选项卡2">
-            <div className="content">选项卡2内容</div>
+          <Panel title="选项卡2" selected>
+            <div className="content">选项卡2内容selected</div>
           </Panel>
           <Panel title="选项卡3">
             <div className="content">选项卡3内容</div>
@@ -283,6 +162,37 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
+
+
+
+
+## 禁用单个选项
+```jsx
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Tabs >
+          <Panel title="选项卡1">
+            <div className="content">选项卡1内容</div>
+          </Panel>
+          <Panel title="选项卡2" disabled>
+            <div className="content">选项卡2内容</div>
+          </Panel>
+          <Panel title="选项卡3">
+            <div className="content">选项卡3内容</div>
+          </Panel>
+        </Tabs>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
 
 ## 禁用所有选项
 ```jsx
@@ -290,20 +200,17 @@ import { Tabs } from 'zarm';
 const { Panel } = Tabs;
 
 class Demo extends React.Component {
+  createDefaultPanels(l) {
+    return (  Array.from({ length: l }).map((e, i) => {
+      return (<Panel title={`选项卡${i}`} key={i}><div className="content">{ `选项卡内容${i}`}</div></Panel>);
+    }));
+  };
   render() {
     return (
       <div>
-        <Tabs disabled>
-          <Panel title="选项卡1">
-            <div className="content">选项卡1内容</div>
-          </Panel>
-          <Panel title="选项卡2" >
-            <div className="content">选项卡2内容</div>
-          </Panel>
-          <Panel title="选项卡3">
-            <div className="content">选项卡3内容</div>
-          </Panel>
-        </Tabs>
+        <Tabs disabled >
+          {this.createDefaultPanels(3)}
+      </Tabs>
       </div>
     )
   }
