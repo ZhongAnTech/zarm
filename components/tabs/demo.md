@@ -16,7 +16,7 @@ class Demo extends React.Component {
       <div>
         <Tabs onChange={(i) => {}} 
         defaultValue={1}
-        canSwipe
+        swipeable
         >
           {this.createDefaultPanels(4)}
         </Tabs>
@@ -52,7 +52,7 @@ class Demo extends React.Component {
       <div>
         <Tabs onChange={(i) => {}} 
         defaultValue={1}
-        canSwipe
+        swipeable
         >
           <Panel title="选项卡1" >
             <div className="content">选项卡1内容</div>
@@ -95,7 +95,7 @@ class Demo extends React.Component {
       <div>
         <Tabs onChange={(i) => { }} 
         tabWidth={80}
-        canSwipe
+        swipeable
         useTabPaged //是否使用分页
         >
           {this.createDefaultPanels(10)}
@@ -123,7 +123,7 @@ class Demo extends React.Component {
       <div>
         <Tabs onChange={(i) => { }} 
         tabWidth={80}
-        canSwipe={true}
+        swipeable={true}
         useTabPaged   //是否使用分页
         scrollElastic={false}
         >
@@ -277,7 +277,7 @@ ReactDOM.render(<Demo />, mountNode);
 | defaultValue | number | 0 | 初始值 |
 | disabled | boolean | false | 是否禁用所有选项 |
 | useTabPaged | boolean | false | 是否使用超出滚动 |
-| canSwipe | boolean | false | 是否支持滑动切换 |
+| swipeable | boolean | false | 是否支持滑动切换 |
 | lineWidth | number | - | 线条宽度，默认与tab同宽 |
 | tabWidth | number | 70px | tab宽度 超出为70px，不超出均分容器宽度|
 | scrollElastic | boolean  | false | 末端带弹性滑动 |
