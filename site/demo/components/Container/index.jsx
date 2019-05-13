@@ -19,7 +19,7 @@ class Container extends Component {
     if (this.props.className !== 'index-page') return;
     const { scrollTop } = this.container;
     window.sessionStorage[this.props.className] = scrollTop;
-  }
+  };
 
   readScrollTop = () => {
     if (this.props.className !== 'index-page') return;
@@ -27,7 +27,7 @@ class Container extends Component {
     if (scrollTop) {
       this.container.scrollTop = scrollTop;
     }
-  }
+  };
 
   render() {
     const { className, children } = this.props;

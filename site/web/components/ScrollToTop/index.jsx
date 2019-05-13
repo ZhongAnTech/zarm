@@ -26,14 +26,15 @@ class ScrollToTop extends PureComponent {
     this.setState({
       visible: this.getScrollTop() > this.props.visibleDistance,
     });
-  }
+  };
 
   getScrollTop = () => document.documentElement.scrollTop || document.body.scrollTop;
 
   getContainer() {
+    const { prefixCls } = this.props;
     if (!this.container) {
       const container = document.createElement('div');
-      container.className += ` ${this.props.prefixCls}-container`;
+      container.className += ` ${prefixCls}-container`;
       this.container = container;
     }
     return this.container;
@@ -50,21 +51,22 @@ class ScrollToTop extends PureComponent {
         clearInterval(timer);
       }
     }, 10);
-  }
+  };
 
   render() {
     const { prefixCls, children } = this.props;
+    const { visible } = this.state;
     const style = {};
 
-    if (!this.state.visible) {
+    if (!visible) {
       style.display = 'none';
     }
 
     return createPortal(
       <div className={prefixCls} style={style} onClick={this.scrollToTop}>
         {children}
-      </div>
-      , this.getContainer()
+      </div>,
+      this.getContainer(),
     );
   }
 }

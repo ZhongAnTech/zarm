@@ -54,7 +54,8 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
   }
 
   onChildChange = (value) => {
-    const values = this.state.value.slice();
+    const { value: valueState } = this.state;
+    const values = valueState.slice();
     const index = values.indexOf(value);
 
     if (index < 0) {
@@ -71,10 +72,11 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
     if (typeof onChange === 'function') {
       onChange(values);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, shape, type, block, disabled, children } = this.props;
+    const { value } = this.state;
 
     const items = React.Children.map(children, (element: any, index) => {
       return cloneElement(element, {
@@ -84,7 +86,7 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
         onChange: () => this.onChildChange(element.props.value),
-        checked: (this.state.value.indexOf(element.props.value) > -1),
+        checked: value.indexOf(element.props.value) > -1,
       });
     });
 

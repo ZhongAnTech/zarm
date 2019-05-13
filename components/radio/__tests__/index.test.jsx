@@ -6,28 +6,28 @@ import Radio from '../index';
 describe('Radio', () => {
   it('renders correctly', () => {
     const wrapper = render(
-      <Radio value="0">选项一</Radio>
+      <Radio value="0">选项一</Radio>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('defaultChecked', () => {
     const wrapper = render(
-      <Radio defaultChecked value="0">选项一</Radio>
+      <Radio defaultChecked value="0">选项一</Radio>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('type is button', () => {
     const wrapper = render(
-      <Radio type="button" value="0">选项一</Radio>
+      <Radio type="button" value="0">选项一</Radio>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('type is cell', () => {
     const wrapper = render(
-      <Radio type="cell" value="0">选项一</Radio>
+      <Radio type="cell" value="0">选项一</Radio>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -35,7 +35,7 @@ describe('Radio', () => {
   it('receive new checked', () => {
     const onChange = jest.fn();
     const wrapper = shallow(
-      <Radio value="0" onChange={onChange}>选项一</Radio>
+      <Radio value="0" onChange={onChange}>选项一</Radio>,
     );
     wrapper.setProps({ checked: true });
     wrapper.find('input[type="radio"]').simulate('change');
@@ -45,7 +45,7 @@ describe('Radio', () => {
   it('disabled', () => {
     const onChange = jest.fn();
     const wrapper = shallow(
-      <Radio value="0" onChange={onChange}>选项一</Radio>
+      <Radio value="0" onChange={onChange}>选项一</Radio>,
     );
     wrapper.setProps({ disabled: true });
     wrapper.find('input[type="radio"]').simulate('change');
@@ -59,7 +59,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -70,7 +70,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     wrapper.setProps({ value: '1' });
   });
@@ -81,7 +81,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -92,7 +92,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1" checked>选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -104,7 +104,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     expect(wrapper.hasClass('za-radio-group--radius')).toBe(true);
   });
@@ -116,7 +116,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     expect(wrapper.hasClass('za-radio-group--round')).toBe(true);
   });
@@ -128,7 +128,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2">选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     expect(wrapper.hasClass('za-radio-group--block')).toBe(true);
   });
@@ -140,7 +140,7 @@ describe('Radio.Group', () => {
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
         <Radio value="2" disabled>选项三</Radio>
-      </Radio.Group>
+      </Radio.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.props().children[0].props.type).toEqual('cell');

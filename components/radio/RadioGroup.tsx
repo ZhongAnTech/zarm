@@ -61,10 +61,11 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
     if (typeof onChange === 'function') {
       onChange(value);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, shape, type, block, disabled, compact, children } = this.props;
+    const { value } = this.state;
 
     const items = React.Children.map(children, (element: any, index) => {
       return cloneElement(element, {
@@ -74,7 +75,7 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
         onChange: () => this.onChildChange(element.props.value),
-        checked: this.state.value === element.props.value || Number(this.state.value) === Number(element.props.value),
+        checked: value === element.props.value || Number(value) === Number(element.props.value),
       });
     });
 

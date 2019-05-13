@@ -10,7 +10,7 @@ const createCarousel = (props, childrenLen = 3) => {
       {
         ITEMS.map((item, index) => {
           return (
-            <div key={index}>{ item }</div>
+            <div key={+index}>{item}</div>
           );
         })
       }
@@ -26,7 +26,7 @@ describe('Carousel', () => {
         { createCarousel({}, 0) }
         { createCarousel({ activeIndex: 1 }, 0) }
         { createCarousel({}, 1) }
-      </div>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -59,7 +59,7 @@ describe('Carousel', () => {
       <div>
         {createCarousel({ showPagination: true })}
         {createCarousel({ showPagination: false })}
-      </div>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -118,7 +118,7 @@ describe('Carousel', () => {
     const wrapper = mount(createCarousel());
     const children = ITEMS.map((item, index) => {
       return (
-        <div key={index}>{ item }</div>
+        <div key={+index}>{item}</div>
       );
     });
 

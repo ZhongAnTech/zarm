@@ -10,7 +10,7 @@ describe('SearchBar', () => {
         shape="round"
         cancelText="取消"
         placeholder="搜索"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -21,7 +21,7 @@ describe('SearchBar', () => {
         shape="round"
         cancelText="取消取消"
         placeholder="搜索"
-      />
+      />,
     );
     wrapper.setProps({ defaultValue: '搜索关键字' });
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -35,7 +35,7 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onFocus={onFocus}
-      />
+      />,
     );
     wrapper.find('input[type="search"]').simulate('focus');
     expect(onFocus).toBeCalled();
@@ -50,7 +50,7 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onChange={onChange}
-      />
+      />,
     );
 
     const input = wrapper.find('input[type="search"]');
@@ -83,7 +83,7 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onCancel={onCancel}
-      />
+      />,
     );
     const input = wrapper.find('input[type="search"]');
     input.simulate('focus');
@@ -99,7 +99,7 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onSubmit={onSubmit}
-      />
+      />,
     );
 
     const input = wrapper.find('input[type="search"]');
@@ -114,7 +114,7 @@ describe('SearchBar', () => {
     const wrapper = mount(
       <SearchBar
         onClear={onClear}
-      />
+      />,
     );
 
     const input = wrapper.find('input[type="search"]');

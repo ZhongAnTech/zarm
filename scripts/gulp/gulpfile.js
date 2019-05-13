@@ -10,20 +10,20 @@ const DIR = {
   es: path.resolve(__dirname, '../../es'),
 };
 
-sass.compiler = require('sass');
+const cssInjection = (content) => {
+  return content
+    .replace(/\/style\/?'/g, "/style/css'")
+    .replace(/\/style\/?"/g, '/style/css"')
+    .replace(/\.scss/g, '.css');
+};
+
 gulp.task('sass', () => {
+  sass.compiler = require('sass');
   return gulp.src(DIR.sass)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(DIR.lib))
     .pipe(gulp.dest(DIR.es));
 });
-
-function cssInjection(content) {
-  return content
-    .replace(/\/style\/?'/g, "/style/css'")
-    .replace(/\/style\/?"/g, '/style/css"')
-    .replace(/\.scss/g, '.css');
-}
 
 gulp.task('css', () => {
   return gulp.src(DIR.js)

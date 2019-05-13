@@ -57,7 +57,6 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
   };
 
   state = {
-    num: 0,
     isShowRoll: false,
     imageList: [],
     selectedImages: [],
@@ -72,7 +71,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       fileType,
       thumbnail,
     };
-  }
+  };
 
   handleShowCameraRoll = () => {
     const {
@@ -87,7 +86,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       selectedImages: [],
       imageList: [],
     }));
-  }
+  };
 
   getSelectedImages = (images) => {
     const {
@@ -98,7 +97,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     if (!images.length) { return; }
 
     if (multiple) {
-      const data = images.map((item) => this.getFileInfo(item));
+      const data = images.map(item => this.getFileInfo(item));
 
       this.setState({
         imageList: data,
@@ -112,20 +111,17 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       this.handleShowCameraRoll();
     }
 
-    this.setState({
-      num: images.length,
-    });
-  }
+    // this.setState({
+    //   num: images.length,
+    // });
+  };
 
   handleConfirm = () => {
-    const {
-      onChange,
-      } = this.props;
+    const { onChange } = this.props;
 
     onChange(this.state.imageList);
-
     this.handleShowCameraRoll();
-  }
+  };
 
   render() {
     const {
@@ -147,26 +143,26 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
       : accept;
 
     const content = disabled
-      ? <View>
+      ? (
+        <View>
           {children}
         </View>
-      : <TouchableOpacity onPress={this.handleShowCameraRoll}>
+      )
+      : (
+        <TouchableOpacity onPress={this.handleShowCameraRoll}>
           {children}
-        </TouchableOpacity>;
+        </TouchableOpacity>
+      );
 
     const cameraRollPicker = (
       <Modal
         visible={isShowRoll}
-        animationType={'slide'}
+        animationType="slide"
         transparent={false}
         onRequestClose={() => {}}
       >
         <View style={{ flex: 1 }}>
-          <NavBar
-            /* showRight={multiple}
-            onClickLeft={this.handleShowCameraRoll}
-            onClickRight={this.handleConfirm} */
-          />
+          <NavBar />
 
           <CameraRollPicker
             {...cameraRollOptions}

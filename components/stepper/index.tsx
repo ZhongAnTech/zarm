@@ -51,7 +51,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     if (typeof onInputChange === 'function') {
       onInputChange(value);
     }
-  }
+  };
 
   onInputBlur = (value) => {
     const { min, max, onChange } = this.props;
@@ -72,7 +72,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     if (typeof onChange === 'function') {
       onChange(value);
     }
-  }
+  };
 
   onSubClick = () => {
     const { step } = this.props;
@@ -83,7 +83,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
 
     const newValue = Number(value) - step;
     this.onInputBlur(newValue);
-  }
+  };
 
   onPlusClick = () => {
     const { step } = this.props;
@@ -94,7 +94,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
 
     const newValue = Number(value) + step;
     this.onInputBlur(newValue);
-  }
+  };
 
   isSubDisabled = () => {
     const { min, disabled } = this.props;
@@ -104,7 +104,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       return false;
     }
     return (value <= min) || disabled;
-  }
+  };
 
   isPlusDisabled = () => {
     const { max, disabled } = this.props;
@@ -114,7 +114,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       return false;
     }
     return (value >= max) || disabled;
-  }
+  };
 
   render() {
     const { prefixCls, className, shape, disabled, size } = this.props;

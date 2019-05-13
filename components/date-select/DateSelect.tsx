@@ -44,6 +44,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { visible } = this.state;
     const date = nextProps.value && isExtendDate(nextProps.value);
     const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
 
@@ -51,7 +52,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
       value: date || defaultDate,
     });
 
-    if ('visible' in nextProps && nextProps.visible !== this.state.visible) {
+    if ('visible' in nextProps && nextProps.visible !== visible) {
       this.setState({
         visible: nextProps.visible,
       });
@@ -66,14 +67,14 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     this.setState({
       visible: true,
     });
-  }
+  };
 
   onChange = (selected) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(selected);
     }
-  }
+  };
 
   onOk = (selected) => {
     const { onOk } = this.props;
@@ -81,7 +82,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     if (typeof onOk === 'function') {
       onOk(selected);
     }
-  }
+  };
 
   onCancel = () => {
     const { onCancel } = this.props;
@@ -89,22 +90,22 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     if (typeof onCancel === 'function') {
       onCancel();
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, placeholder, disabled, onChange, locale, ...others } = this.props;
     const { value, visible } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--placeholder`]: !this.state.value,
+      [`${prefixCls}--placeholder`]: !value,
       [`${prefixCls}--disabled`]: disabled,
     });
 
-    return(
+    return (
       <div className={cls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, this.state.value)} />
+        <input type="hidden" value={formatFn(this, value)} />
         <div className={`${prefixCls}__input`}>
-          {this.state.value ? formatFn(this, this.state.value) : placeholder || locale!.placeholder}
+          {value ? formatFn(this, value) : placeholder || locale!.placeholder}
         </div>
         <DatePicker
           {...others}

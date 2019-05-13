@@ -27,14 +27,16 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.isPropEqual(this.props.activeKey, nextProps.activeKey)) {
+    const { activeKey } = this.props;
+
+    if (!this.isPropEqual(activeKey, nextProps.activeKey)) {
       this.setState({
         activeKey: this.getActiveKey(nextProps),
       });
     }
   }
 
-  onItemChange = key => {
+  onItemChange = (key) => {
     if (!key) {
       return;
     }
@@ -56,34 +58,32 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
       activeKey: newActiveKey,
     });
     onChange(key);
-  }
+  };
 
-  getActiveKey(props) {
+  getActiveKey = (props) => {
     const { activeKey, defaultActiveKey, multiple } = props;
 
     const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
 
     if (defaultKey || defaultKey === 0) {
       if (isArray(defaultKey)) {
-        return !multiple ?
-        [String(defaultKey[0])] : (defaultKey as Array<any>).map(key => String(key));
-      } else {
-        return [String(defaultKey)];
+        return !multiple
+          ? [String(defaultKey[0])]
+          : (defaultKey as Array<any>).map(key => String(key));
       }
+      return [String(defaultKey)];
     }
-
     return [];
-  }
+  };
 
-  isPropEqual(cur, next) {
+  isPropEqual = (cur, next) => {
     if (isArray(next) && isArray(cur)) {
       return next.length === cur.length && next.every((key, i) => key === cur[i]);
     }
-
     return cur === next;
-  }
+  };
 
-  renderItems() {
+  renderItems = () => {
     const { animated } = this.props;
     const { activeKey } = this.state;
 
@@ -100,7 +100,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
         });
       },
     );
-  }
+  };
 
   render() {
     const { prefixCls, className, animated, style } = this.props;

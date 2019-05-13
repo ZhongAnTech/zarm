@@ -17,7 +17,7 @@ describe('Wheel', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -31,7 +31,7 @@ describe('Wheel', () => {
         ]}
         defaultValue="1"
         value="1"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: '2' });
@@ -46,7 +46,7 @@ describe('Wheel', () => {
           { value: '2', label: '选项二' },
         ]}
         defaultValue="1"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
@@ -60,7 +60,7 @@ describe('Wheel', () => {
           { value: '2', label: '选项二' },
         ]}
         disabled
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
@@ -75,7 +75,7 @@ describe('Wheel', () => {
         ]}
         defaultValue="1"
         value="1"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ disabled: true });

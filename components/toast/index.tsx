@@ -31,16 +31,18 @@ export default class Toast extends PureComponent<ToastProps, any> {
         Toast.zarmToast,
       );
     }
-  }
+  };
 
   static hide = () => {
     if (Toast.zarmToast) {
       ReactDOM.render(<Toast visible={false} />, Toast.zarmToast);
     }
-  }
+  };
 
   private static zarmToast: undefined | HTMLDivElement;
+
   private static mounted: boolean = false;
+
   private timer: number;
 
   constructor(props) {
@@ -51,7 +53,8 @@ export default class Toast extends PureComponent<ToastProps, any> {
   }
 
   componentDidMount() {
-    if (this.props.visible) {
+    const { visible } = this.props;
+    if (visible) {
       this.enter(this.props);
     }
   }
@@ -88,7 +91,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
       this.leave(props);
       clearTimeout(this.timer);
     }, stayTime);
-  }
+  };
 
   leave = (props) => {
     this.setState({
@@ -99,7 +102,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
     if (typeof onClose === 'function') {
       onClose();
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, mask, onMaskClick, children } = this.props;

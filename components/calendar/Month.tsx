@@ -1,6 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, isValidElement } from 'react';
 import classnames from 'classnames';
-import { isValidElement } from 'react';
 import { BaseCalendarMonthProps } from './PropsType';
 import CalendarView from './index';
 import DateTool from '../utils/date';
@@ -22,14 +21,19 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
 
   // 月份最小值
   private min?: any;
+
   // 月份最大值
   private max?: any;
+
   // 当前月份dom数据缓存
   private cache?: any;
+
   // 上次是否落点在当前月份内
   private lastIn = false;
+
   // 当前组件是否需要更新
   private isRefresh = true;
+
   // 当前月份的dom
   private node?: any;
 
@@ -56,28 +60,30 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     }
   }
 
-  anchor() {
+  anchor = () => {
     if (this.node && this.node.scrollIntoViewIfNeeded) {
       this.node.scrollIntoViewIfNeeded();
     }
-  }
+  };
 
   // 检查当前是否需要更新
-  checkRefresh(props) {
+  checkRefresh = (props) => {
     const { dateMonth, value, min, max, dateRender, disabledDate } = props;
+    const { dateRender: dateRenderProp, disabledDate: disabledDateProp } = this.props;
+    const { dateMonth: dateMonthState } = this.state;
 
-    if (
-      dateRender !== this.props.dateRender ||
-      disabledDate !== this.props.disabledDate
-    ) {
+    if (dateRender !== dateRenderProp || disabledDate !== disabledDateProp) {
       return true;
     }
+
     if (!this.cache) {
       return true;
     }
-    if (dateMonth - this.state.dateMonth !== 0) {
+
+    if (dateMonth - dateMonthState !== 0) {
       return true;
     }
+
     if (min - this.min !== 0 || max - this.max !== 0) {
       return true;
     }
@@ -93,15 +99,13 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     const result = !(!isIn && !this.lastIn);
     this.lastIn = isIn;
     return result;
-  }
+  };
 
   // 日期状态: 选中，区间
-  checkStatus(date) {
+  checkStatus = (date) => {
     const { min, max, disabledDate } = this.props;
     const { value = [] } = this.state;
-    const disabled =
-      date < DateTool.cloneDate(min, 'd', 0) ||
-      date > DateTool.cloneDate(max, 'd', 0);
+    const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
       isSelected: value.some(item => DateTool.isOneDay(date, item)),
@@ -111,11 +115,10 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     };
     this.lastIn = this.lastIn || res.isSelected || res.isRange;
     return res;
-  }
+  };
 
-  renderDay(day, year, month, firstDay) {
+  renderDay = (day, year, month, firstDay) => {
     const { prefixCls, dateRender, onDateClick } = this.props;
-
     const date = new Date(year, month, day);
     const isToday = CalendarView.cache.now === `${year}-${month}-${day}`;
     const status = this.checkStatus(date);
@@ -151,9 +154,9 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
         {(txt && <div className={`${prefixCls}__day__content`}>{txt}</div>) || ''}
       </li>
     );
-  }
+  };
 
-  renderContent(year, month) {
+  renderContent = (year, month) => {
     let data = CalendarView.cache[`${year}-${month}`];
     if (!data) {
       data = DateTool.getCurrMonthInfo(year, month);
@@ -161,11 +164,8 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     }
 
     const { firstDay, dayCount } = data;
-
-    return Array.from({ length: dayCount }).map((_item, i) =>
-      this.renderDay(i + 1, year, month, firstDay),
-    );
-  }
+    return Array.from({ length: dayCount }).map((_item, i) => this.renderDay(i + 1, year, month, firstDay));
+  };
 
   render() {
     const { prefixCls } = this.props;
@@ -185,7 +185,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
         key={monthkey}
         className={`${prefixCls}__month`}
         title={`${year}年${month + 1}月`}
-        ref={n => (this.node = n)}
+        ref={(n) => { this.node = n; }}
       >
         <ul>{this.renderContent(year, month)}</ul>
       </section>

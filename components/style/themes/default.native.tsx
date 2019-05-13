@@ -2,7 +2,8 @@ import Color from 'color';
 
 const darken = (color, percent) => {
   const hsl = Color(color).hsl();
-  hsl.color[2] = hsl.color[2] - percent * 100;
+  const l = hsl.color[2] - percent * 100;
+  hsl.color[2] = l;
   return hsl.hex();
 };
 
@@ -76,10 +77,10 @@ base = {
   zindex_loading: 1500,
 
   // 透明度
-  opacity_disabled: .5,
-  opacity_mask: .5,
-  opacity_toast: .8,
-  opacity_tooltip: .8,
+  opacity_disabled: 0.5,
+  opacity_mask: 0.5,
+  opacity_toast: 0.8,
+  opacity_tooltip: 0.8,
 };
 
 const components = {

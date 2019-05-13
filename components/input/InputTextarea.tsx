@@ -28,17 +28,9 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   }
 
   componentDidMount() {
-    if (this.props.autoFocus || this.state.focused) {
-      this.input.focus();
-    }
-  }
-
-  componentDidUpdate() {
-    const { autoHeight } = this.props;
-    if (autoHeight) {
-      this.input.style.height = `${this.input.scrollHeight}px`;
-    }
-    if (this.state.focused) {
+    const { autoFocus } = this.props;
+    const { focused } = this.state;
+    if (autoFocus || focused) {
       this.input.focus();
     }
   }
@@ -48,6 +40,18 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       this.setState({
         focused: nextProps.focused,
       });
+    }
+  }
+
+  componentDidUpdate() {
+    const { autoHeight } = this.props;
+    const { focused } = this.state;
+
+    if (autoHeight) {
+      this.input.style.height = `${this.input.scrollHeight}px`;
+    }
+    if (focused) {
+      this.input.focus();
     }
   }
 
@@ -62,7 +66,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     if (typeof onFocus === 'function') {
       onFocus(e.target.value);
     }
-  }
+  };
 
   onBlur = (e) => {
     if (!('focused' in this.props)) {
@@ -74,15 +78,15 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     if (typeof onBlur === 'function') {
       onBlur(e.target.value);
     }
-  }
+  };
 
-  handleComposition(e) {
+  handleComposition = (e) => {
     const { onCompositionStart, onCompositionUpdate, onCompositionEnd, onChange } = this.props;
 
     if (e.type === 'compositionstart') {
-      this.setState({
-        isOnComposition: true,
-      });
+      // this.setState({
+      //   isOnComposition: true,
+      // });
       if (typeof onCompositionStart === 'function') {
         onCompositionStart(e);
       }
@@ -96,10 +100,10 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
 
     if (e.type === 'compositionend') {
       // composition is end
-      this.setState({
-        isOnComposition: false,
-      });
-      const value = e.target.value;
+      // this.setState({
+      //   isOnComposition: false,
+      // });
+      const { value } = e.target;
       if (typeof onCompositionEnd === 'function') {
         onCompositionEnd(e);
       }
@@ -107,17 +111,17 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
         onChange(value);
       }
     }
-  }
+  };
 
   onChange = (e) => {
     const { onChange } = this.props;
-    const value = e.target.value;
+    const { value } = e.target;
     const length = countSymbols(value);
     this.setState({ length });
     if (typeof onChange === 'function') {
       onChange(value);
     }
-  }
+  };
 
   focus() {
     this.input.focus();
@@ -140,18 +144,17 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       type,
       ...rest
     } = this.props;
-
+    const { length } = this.state;
     const cls = classnames(prefixCls, `${prefixCls}--textarea`, className, {
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--readonly`]: readOnly,
     });
 
-    const textLengthRender =
-      showLength &&
-      maxLength &&
-      (
+    const textLengthRender = showLength
+      && maxLength
+      && (
         <div className={`${prefixCls}__length`}>
-          {`${this.state.length}/${maxLength}`}
+          {`${length}/${maxLength}`}
         </div>
       );
 

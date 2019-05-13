@@ -41,11 +41,11 @@ export default class Button extends PureComponent<ButtonProps, any> {
 
   onPressIn = () => {
     this.setState({ isActive: true });
-  }
+  };
 
   onPressOut = () => {
     this.setState({ isActive: false });
-  }
+  };
 
   render() {
     const {
@@ -100,7 +100,7 @@ export default class Button extends PureComponent<ButtonProps, any> {
     ];
 
     const iconRender = loading
-      ? <ActivityIndicator animating style={iconStyle} size="small"/>
+      ? <ActivityIndicator animating style={iconStyle} size="small" />
       : icon;
 
     const contentRender = (

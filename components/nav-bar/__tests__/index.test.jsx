@@ -9,7 +9,7 @@ describe('NavBar', () => {
 
   it('renders correctly', () => {
     const wrapper = render(
-      <NavBar {...props} />
+      <NavBar {...props} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -17,7 +17,7 @@ describe('NavBar', () => {
   it('renders correctly with title', () => {
     props.title = '测试标题';
     const wrapper = render(
-      <NavBar {...props} />
+      <NavBar {...props} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -25,7 +25,7 @@ describe('NavBar', () => {
   it('renders correctly with left content', () => {
     props.left = <Icon type="arrow-left" />;
     const wrapper = render(
-      <NavBar {...props} />
+      <NavBar {...props} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -33,16 +33,21 @@ describe('NavBar', () => {
   it('renders correctly with right content', () => {
     props.right = <Icon type="arrow-right" />;
     const wrapper = render(
-      <NavBar {...props} />
+      <NavBar {...props} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders correctly with multiple icons', () => {
     props.left = <div><Icon type="arrow-left" /></div>;
-    props.right = <div><Icon type="arrow-right" /><Icon type="info-round" /></div>;
+    props.right = (
+      <div>
+        <Icon type="arrow-right" />
+        <Icon type="info-round" />
+      </div>
+    );
     const wrapper = render(
-      <NavBar {...props} />
+      <NavBar {...props} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

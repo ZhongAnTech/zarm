@@ -28,7 +28,7 @@ describe('Pull', () => {
         <div>1</div>
         <div>2</div>
         <div>3</div>
-      </Pull>
+      </Pull>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -39,7 +39,7 @@ describe('Pull', () => {
         <div>1</div>
         <div>2</div>
         <div>3</div>
-      </Pull>
+      </Pull>,
     );
     wrapper.setProps({
       refresh: {
@@ -54,7 +54,7 @@ describe('Pull', () => {
         <div>1</div>
         <div>2</div>
         <div>3</div>
-      </Pull>
+      </Pull>,
     );
     wrapper.setProps({
       load: {
@@ -76,7 +76,11 @@ describe('Pull', () => {
             switch (actionState) {
               case REFRESH_STATE.pull:
                 return (
-                  <div>下拉刷新 {percent}</div>
+                  <div>
+                    下拉刷新
+                    {' '}
+                    {percent}
+                  </div>
                 );
 
               case REFRESH_STATE.drop:
@@ -121,7 +125,7 @@ describe('Pull', () => {
         <div>1</div>
         <div>2</div>
         <div>3</div>
-      </Pull>
+      </Pull>,
     );
     wrapper.setProps({ refresh: { state: REFRESH_STATE.pull } });
     wrapper.setProps({ refresh: { state: REFRESH_STATE.drop } });
@@ -144,7 +148,7 @@ describe('Pull', () => {
         <div>1</div>
         <div>2</div>
         <div>3</div>
-      </Pull>
+      </Pull>,
     );
     wrapper.simulate('touchStart', {
       touches: [0, 0],

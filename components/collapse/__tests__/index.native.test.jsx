@@ -12,7 +12,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual([]);
   });
@@ -24,7 +24,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
@@ -36,7 +36,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
@@ -48,7 +48,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
@@ -60,7 +60,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
@@ -72,7 +72,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
@@ -84,7 +84,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
@@ -100,7 +100,7 @@ describe('Collapse', () => {
         <Collapse.Item title="100元套餐">
           <Text>100元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find(TouchableHighlight).at(0).props().onPress();
     wrapper.find(TouchableHighlight).at(1).props().onPress();
@@ -114,7 +114,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐" {...props}>
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find(TouchableHighlight).props().onPress();
     expect(wrapper.state('activeKey')).toEqual([]);
@@ -128,7 +128,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.state('activeKey')).toEqual(['0']);
   });
@@ -141,7 +141,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find(TouchableHighlight).props().onPress();
     expect(wrapper.state('activeKey')).toEqual([]);
@@ -158,7 +158,7 @@ describe('Collapse', () => {
         <Collapse.Item title="100元套餐">
           <Text>100元套餐内容</Text>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find(TouchableHighlight).at(0).props().onPress();
     wrapper.setProps({

@@ -29,15 +29,12 @@ exports[`Carousel base render correctly 1`] = `
     >
       <div
         class="za-carousel__pagination__item za-carousel__pagination__item--active"
-        role="tab"
       />
       <div
         class="za-carousel__pagination__item"
-        role="tab"
       />
       <div
         class="za-carousel__pagination__item"
-        role="tab"
       />
     </div>
   </div>
@@ -78,7 +75,6 @@ exports[`Carousel base render correctly 1`] = `
     >
       <div
         class="za-carousel__pagination__item za-carousel__pagination__item--active"
-        role="tab"
       />
     </div>
   </div>
@@ -121,11 +117,9 @@ exports[`Carousel componentWillReceiveProps 1`] = `
   >
     <div
       class="za-carousel__pagination__item"
-      role="tab"
     />
     <div
       class="za-carousel__pagination__item za-carousel__pagination__item--active"
-      role="tab"
     />
   </div>
 </div>
@@ -160,15 +154,12 @@ exports[`Carousel height render correctly 1`] = `
   >
     <div
       class="za-carousel__pagination__item za-carousel__pagination__item--active"
-      role="tab"
     />
     <div
       class="za-carousel__pagination__item"
-      role="tab"
     />
     <div
       class="za-carousel__pagination__item"
-      role="tab"
     />
   </div>
 </div>
@@ -203,15 +194,12 @@ exports[`Carousel pagination render correctly 1`] = `
     >
       <div
         class="za-carousel__pagination__item za-carousel__pagination__item--active"
-        role="tab"
       />
       <div
         class="za-carousel__pagination__item"
-        role="tab"
       />
       <div
         class="za-carousel__pagination__item"
-        role="tab"
       />
     </div>
   </div>
@@ -259,7 +247,6 @@ exports[`Carousel prefixCls render correctly 1`] = `
   >
     <div
       class="za-test__pagination__item za-test__pagination__item--active"
-      role="tab"
     />
   </div>
 </div>

@@ -39,7 +39,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1" checked>选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -50,7 +50,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -61,7 +61,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -72,7 +72,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -83,7 +83,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -94,7 +94,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2">选项三</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
     wrapper.setProps({ value: ['0'] });
   });
@@ -106,7 +106,7 @@ describe('Checkbox.Group', () => {
         <Checkbox value="0">选项一</Checkbox>
         <Checkbox value="1">选项二</Checkbox>
         <Checkbox value="2" disabled>选项三</Checkbox>
-      </Checkbox.Group>
+      </Checkbox.Group>,
     );
     const firstCheckbox = wrapper.find(Checkbox).first().dive().find('input[type="checkbox"]');
     firstCheckbox.simulate('change', { target: { checked: true } });

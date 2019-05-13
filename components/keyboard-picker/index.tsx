@@ -50,7 +50,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, K
     if (typeof onKeyClick === 'function') {
       onKeyClick(key);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, ...others } = this.props;

@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
 
 export default class Index extends PureComponent {
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigation: navigationProp } = this.props;
+    const { navigate } = navigationProp;
 
     return (
       <Container style={styles.container}>

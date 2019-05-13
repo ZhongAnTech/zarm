@@ -8,7 +8,7 @@ import './style.scss';
 class Page extends PureComponent {
   state = {
     dropdown: false,
-  }
+  };
 
   componentDidMount() {
     const qr = new QRious({
@@ -20,6 +20,7 @@ class Page extends PureComponent {
 
   render() {
     const { history } = this.props;
+    const { dropdown } = this.state;
 
     return (
       <Container className="index-page">
@@ -29,14 +30,17 @@ class Page extends PureComponent {
             <img src={require('./images/banner@2x.png')} alt="" />
           </div>
           <div className="introduce">
-            <div className="title"><span>Zarm</span> Design</div>
+            <div className="title">
+              <span>Zarm</span>
+              &nbsp;Design
+            </div>
             <div className="description">基于 React / React Native / Vue 的跨平台移动端 UI 组件库，为用户体验而生</div>
             <div className="navigation">
-              <button onClick={() => history.push('/components/quick-start')}>开始使用</button>
+              <button type="button" onClick={() => history.push('/components/quick-start')}>开始使用</button>
               <Dropdown
                 className="btn-try"
                 trigger="hover"
-                visible={this.state.dropdown}
+                visible={dropdown}
                 onVisibleChange={(visible) => {
                   this.setState({
                     dropdown: visible,
@@ -44,7 +48,7 @@ class Page extends PureComponent {
                 }}
                 overlay={<canvas ref={(ele) => { this.qrcode = ele; }} />}
               >
-                <button className="ghost">扫码体验</button>
+                <button type="button" className="ghost">扫码体验</button>
               </Dropdown>
             </div>
           </div>

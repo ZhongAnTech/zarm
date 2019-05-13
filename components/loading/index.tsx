@@ -15,22 +15,23 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   };
 
   static zarmLoading: HTMLElement;
+
   static show = (props?: LoadingProps) => {
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
     }
     document.body.appendChild(Loading.zarmLoading);
     ReactDOM.render(<Loading {...props} visible />, Loading.zarmLoading);
-  }
+  };
 
   static hide = () => {
     ReactDOM.render(<Loading
       visible={false}
       onClose={Loading.unmountNode}
     />, Loading.zarmLoading);
-  }
+  };
 
-  static unmountNode() {
+  static unmountNode = () => {
     const { zarmLoading } = Loading;
     if (zarmLoading) {
       ReactDOM.unmountComponentAtNode(zarmLoading);
@@ -38,7 +39,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
         zarmLoading.parentNode.removeChild(Loading.zarmLoading);
       }
     }
-  }
+  };
 
   render() {
     const { prefixCls, ...others } = this.props;

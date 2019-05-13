@@ -16,7 +16,7 @@ describe('Confirm', () => {
         message="你确定要这样做吗？"
         onOk={onOk}
         onCancel={onCancel}
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

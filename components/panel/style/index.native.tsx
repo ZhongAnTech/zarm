@@ -1,9 +1,10 @@
+import { StyleSheet } from 'react-native';
 import variables from '../../style/themes/default.native';
-import { StyleSheet, ViewStyle } from 'react-native';
+
 export default {
   container: {
     flexDirection: 'column',
-  } as ViewStyle,
+  },
 
   panelHeader: {
     flexDirection: 'row',

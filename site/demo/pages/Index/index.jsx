@@ -16,19 +16,19 @@ class Page extends PureComponent {
             <Cell
               hasArrow
               key={+i}
-              title={
+              title={(
                 <div className="menu-item-content">
                   <span>{component.name}</span>
                   <span className="chinese">{component.description}</span>
                 </div>
-              }
+              )}
               onClick={() => history.push(`/${Format.camel2Dash(component.name)}`)}
             />
           ))
         }
       </Panel>
     );
-  }
+  };
 
   render() {
     return (

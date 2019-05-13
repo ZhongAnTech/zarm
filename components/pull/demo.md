@@ -72,7 +72,6 @@ class Demo extends React.Component {
       const { dataSource } = this.state;
       let loading = LOAD_STATE.success;
 
-      // eslint-disable-next-line
       console.log(`状态: ${randomNum === 0 ? '失败' : (randomNum === 1 ? '完成' : '成功')}`);
 
       if (randomNum === 0) {

@@ -14,7 +14,7 @@ describe('Popup', () => {
         onClose={onClose}
       >
         foo
-      </Popup>
+      </Popup>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -22,7 +22,7 @@ describe('Popup', () => {
   it('visible change false', () => {
     jest.useFakeTimers();
     const wrapper = mount(
-      <Popup visible>foo</Popup>
+      <Popup visible>foo</Popup>,
     );
     wrapper.setProps({ visible: false });
     jest.runAllTimers();
@@ -48,7 +48,7 @@ describe('Popup', () => {
         onClose={onClose}
       >
         foo
-      </Popup>
+      </Popup>,
     );
     wrapper.setProps({ visible: true });
     jest.runAllTimers();

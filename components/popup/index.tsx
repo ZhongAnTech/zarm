@@ -16,7 +16,8 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.visible !== this.props.visible && nextProps.visible === true) {
+    const { visible } = this.props;
+    if (nextProps.visible !== visible && nextProps.visible === true) {
       this.setState({
         renderPortal: true,
       });
@@ -30,6 +31,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   render() {
-    return this.state.renderPortal && <Portal {...this.props} handlePortalUnmount={this.handlePortalUnmount} />;
+    const { renderPortal } = this.state;
+    return renderPortal && <Portal {...this.props} handlePortalUnmount={this.handlePortalUnmount} />;
   }
 }
