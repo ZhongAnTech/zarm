@@ -33,7 +33,7 @@
     left: 0;
     bottom: 0;
     height: var(--tabs-line-height);
-    transition: left .3s ease-out;
+    // transition: left .3s ease-out;
     background-color: var(--theme-primary);
 
     &__inner {
@@ -43,7 +43,7 @@
       background-color: var(--theme-primary);
     }
   }
-
+ 
   @include e(panel) {
     position: relative;
     transition: height .3s;
@@ -76,4 +76,38 @@
       }
     }
   }
+  
+  @include m(horizontal){
+    ul{
+      touch-action: pan-x;
+    }
+  }
+  
+  @include m(vertical){
+    ul{
+      touch-action: pan-y;
+    }
+  }
+  @include m(paged){
+    ul{
+      overflow: visible;
+    }
+    @include e(header__item){
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+  }
+  
 }
+@include b(carousel){
+  @include m(horizontal){
+    @include e(items){
+      display: flex;
+      flex-direction: row;
+    }
+    @include e(item){
+      display: flex;
+      flex-shrink: 0;
+    }
+  }
+} 

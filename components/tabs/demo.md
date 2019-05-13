@@ -36,13 +36,14 @@ const { Panel } = Tabs;
 class Demo extends React.Component {
   
   render() {
-    const panelStyle: CSSProperties = {
-      height: "100px",
+    const panelStyle  = {
+      width:"100%",
       overflowY:"scroll",
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
+      justifyContent: "flexStart"
     }
-    const itemStyle: CSSProperties = {
+    const itemStyle = {
       height: "100px",
       width:'100%',
       flexShrink: 0
@@ -59,10 +60,9 @@ class Demo extends React.Component {
           <Panel title="选项卡2" selected  >
             <div className="content" style={panelStyle}>
             {Array.from({length:3}).map((item,index)=>{
-              const num = 255-index*4
-              itemStyle.backgroundColor = `rgb(${num},${num},${num})`
+              Object.assign(itemStyle,{backgroundColor:`rgb(${255-index*index*5},${255-index*index*3},${255-index*index})`})
               return (
-                <div style={itemStyle} key={index}>index
+                <div style={itemStyle} key={index}>list{index}
               </div>)}
             )}
               
