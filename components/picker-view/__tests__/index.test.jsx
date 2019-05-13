@@ -3,6 +3,12 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import PickerView from '../index';
 
+function fakeTimers() {
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
+}
+fakeTimers();
+
 describe('PickerView', () => {
   it('PickerView render visible', () => {
     const wrapper = render(
@@ -15,6 +21,22 @@ describe('PickerView', () => {
         value="1"
       />
     );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('PickerView disabled', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <PickerView
+        disabled
+        onChange={onChange}
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />
+    );
+    expect(onChange).not.toBeCalled();
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

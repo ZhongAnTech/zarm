@@ -176,7 +176,7 @@ exports[`ActionSheet renders correctly 1`] = `
                 prefixCls="za-mask"
                 style={
                   Object {
-                    "WebkitAnimationDuration": "200ms",
+              "WebkitAnimationDuration": "200ms",
                     "animationDuration": "200ms",
                   }
                 }

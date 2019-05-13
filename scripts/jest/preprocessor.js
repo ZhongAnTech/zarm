@@ -1,6 +1,6 @@
 const babelJest = require('babel-jest');
-const babelConfig = require('../config/babelConfig');
+const babelConfig = require('../babel/config');
 
-babelConfig.plugins.push('transform-es2015-modules-commonjs');
+babelConfig.plugins.push('@babel/plugin-transform-modules-commonjs');
 
 module.exports = babelJest.createTransformer(babelConfig);

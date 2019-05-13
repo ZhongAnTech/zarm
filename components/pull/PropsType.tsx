@@ -1,3 +1,5 @@
+import { Locale } from '../locale-provider/PropsType';
+
 export enum REFRESH_STATE {
   normal,   // 普通
   pull,     // 下拉状态（未满足刷新条件）
@@ -29,4 +31,5 @@ export interface PropsType {
   load: PullAction;
   animationDuration?: number;
   stayTime?: number;
+  locale?: Locale;
 }

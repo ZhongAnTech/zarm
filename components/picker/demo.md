@@ -1,4 +1,4 @@
-# 选择器 Picker & Select
+# Picker 选择器
 
 
 
@@ -222,7 +222,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 表单选择 Select
+## Select 表单选择器
 ```jsx
 import { Select, Cell } from 'zarm';
 
@@ -252,7 +252,7 @@ class Demo extends React.Component {
       this.state = {
         visible: false,
         value: [],
-        dataSource: CASCADE_DATA,
+        dataSource: [],
       };
   }
 
@@ -267,19 +267,23 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { visible, visible2, value, dataSource } = this.state;
+    const { visible, value, dataSource } = this.state;
     return (
       <div>
         <Cell hasArrow title="城市">
           <Select
             visible={visible}
-            placeholder="请选择省市区"
             value={value}
             dataSource={dataSource}
             onOk={(selected) => {
               console.log('Select onOk: ', selected);
               this.setState({
                 value: selected.map(item => item.value),
+              });
+            }}
+            onMaskClick={() => {
+              this.setState({
+                visible: false,
               });
             }}
           />
@@ -294,7 +298,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 平铺选择 PickerView
+## PickerView 平铺选择器
 ```jsx
 import { PickerView } from 'zarm';
 

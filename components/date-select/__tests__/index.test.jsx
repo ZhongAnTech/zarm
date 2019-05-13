@@ -4,6 +4,12 @@ import toJson from 'enzyme-to-json';
 import DateSelect from '../index';
 import enLocale from '../../date-picker-view/locale/en_US';
 
+function fakeTimers() {
+  performance.timing = {};
+  performance.timing.navigationStart = 0;
+}
+fakeTimers();
+
 describe('DateSelect', () => {
   it('DateSelect year', () => {
     const wrapper = mount(
@@ -26,6 +32,22 @@ describe('DateSelect', () => {
         visible
       />
     );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('DateSelect disabled', () => {
+    const wrapper = mount(
+      <DateSelect
+        disabeld
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+        value="2019-04-23"
+      />
+    );
+
+    wrapper.find('.za-date-select').simulate('click');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -67,9 +89,7 @@ describe('DateSelect', () => {
       />
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-    jest.useFakeTimers();
     wrapper.setProps({ defaultValue: '2017-11-06 12:00', value: '2017-11-06 12:00' });
-    jest.runAllTimers();
   });
 
   it('DateSelect wheelDefaultValue', () => {
@@ -96,13 +116,11 @@ describe('DateSelect', () => {
         onOk={onOkFn}
       />
     );
-
     wrapper.find('.za-date-picker__submit').simulate('click');
     expect(onOkFn).toBeCalled();
   });
 
   it('should trigger onCancel when press cancel button', () => {
-    const onOkFn = jest.fn();
     const onCancelFn = jest.fn();
 
     const wrapper = mount(
@@ -116,7 +134,6 @@ describe('DateSelect', () => {
 
     wrapper.find('.za-date-picker__cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
-    expect(onOkFn).not.toBeCalled();
   });
 
   // it('should trigger onMaskClick when click mask', () => {

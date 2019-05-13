@@ -1,4 +1,4 @@
-# 日期选择器 DatePicker
+# DatePicker 日期选择器
 
 
 
@@ -66,8 +66,6 @@ class Demo extends React.Component {
 
         <DatePicker
           visible={date.visible}
-          title="选择日期"
-          placeholder="请选择日期"
           mode="date"
           value={date.value}
           onOk={(value) => {
@@ -84,8 +82,6 @@ class Demo extends React.Component {
 
         <DatePicker
           visible={time.visible}
-          title="选择日期"
-          placeholder="请选择日期"
           mode="time"
           value={time.value}
           onOk={(value) => {
@@ -103,7 +99,8 @@ class Demo extends React.Component {
         <DatePicker
           visible={limitDate.visible}
           title="选择日期"
-          placeholder="请选择日期"
+          okText="确定"
+          cancelText="取消"
           mode="date"
           min="2007-01-03"
           max="2019-11-23"
@@ -128,7 +125,8 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-## 表单选择 DateSelect
+
+## DateSelect 表单日期选择器
 ```jsx
 import { Cell, DateSelect } from 'zarm';
 
@@ -137,11 +135,12 @@ class Demo extends React.Component {
     super();
     this.state = {
       visible: false,
-      value: '',
+      value: new Date(),
     };
   }
 
   render() {
+    const { visible } = this.state;
     return (
       <div>
         <Cell hasArrow title="日期选择">
@@ -150,11 +149,17 @@ class Demo extends React.Component {
             placeholder="请选择日期"
             mode="date"
             value={this.state.value}
+            visible={visible}
             onOk={(value) => {
               console.log('DateSelect onOk: ', value);
               this.setState({
                 visible: false,
                 value,
+              });
+            }}
+            onMaskClick={() => {
+              this.setState({
+                visible: false,
               });
             }}
           />
@@ -169,7 +174,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 平铺选择 DatePickerView
+## DatePickerView 平铺选择器
 ```jsx
 import { DatePickerView } from 'zarm';
 

@@ -29,7 +29,8 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     }, 800);
   }
 
-  onLongPressOut = () => {
+  onLongPressOut = (e) => {
+    e.preventDefault();
     clearInterval(this.longPressTimer);
   }
 
@@ -86,15 +87,16 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
         <div className={`${prefixCls}__handle`}>
           <div
             className={`${prefixCls}__item`}
-            onMouseDown={() => this.onLongPressIn('delete')}
-            onMouseUp={() => this.onLongPressOut()}
             onTouchStart={() => this.onLongPressIn('delete')}
-            onTouchEnd={() => this.onLongPressOut()}
+            onTouchEnd={this.onLongPressOut}
+            onTouchCancel={this.onLongPressOut}
+            onMouseDown={() => this.onLongPressIn('delete')}
+            onMouseUp={this.onLongPressOut}
           >
             <Icon type="deletekey" />
           </div>
           <div className={`${prefixCls}__item ${prefixCls}__item--ok`} onClick={() => this.onKeyClick('ok')}>
-            {locale.okText}
+            {locale!.okText}
           </div>
         </div>
       </div>

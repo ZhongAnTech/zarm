@@ -1,4 +1,2 @@
-@import "~normalize.css/normalize.css";
-@import "~dragon-ui/components/style/index.scss";
-@import "./themes/default.scss";
-@import "~dragon-ui/components/style/components.scss";
+@import "./functions/index";
+@import "./mixins/index";

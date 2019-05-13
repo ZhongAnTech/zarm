@@ -123,7 +123,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     let txt = (date && dateRender && dateRender(date)) || '';
     if (typeof txt === 'object') {
       if (!isValidElement(txt)) {
-        console.error(
+        console.warn(
           'dateRender函数返回数据类型错误，请返回基本数据类型或者reactNode',
         );
         txt = '';

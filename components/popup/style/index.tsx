@@ -1,3 +1,3 @@
-import '../../style/';
-import '../../mask/style/';
+import '../../style';
+import '../../mask/style';
 import './index.scss';

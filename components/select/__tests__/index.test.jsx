@@ -3,6 +3,12 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Select from '../index';
 
+function fakeTimers() {
+  const timer = jest.useFakeTimers();
+  performance.timing = () => {};
+}
+const timer = fakeTimers();
+
 describe('Select', () => {
   it('Select', () => {
     const wrapper = mount(
@@ -13,6 +19,37 @@ describe('Select', () => {
         ]}
       />
     );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('Select disabled', () => {
+    const wrapper = mount(
+      <Select
+        disabeld
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />
+    );
+
+    wrapper.find('.za-select').simulate('click');
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('Select disable visible', () => {
+    const wrapper = mount(
+      <Select
+        disabeld
+        visible={false}
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />
+    );
+    wrapper.find('.za-select').simulate('click');
+    expect(wrapper.props().visible).toBeFalsy();
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

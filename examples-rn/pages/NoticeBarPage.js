@@ -3,9 +3,6 @@ import { ScrollView, Alert, View } from 'react-native';
 import { Panel, NoticeBar } from '../../components/index.native';
 
 const styles = {
-  wrap: {
-    margin: 15,
-  },
   mb: {
     marginBottom: 15,
   },
@@ -16,7 +13,7 @@ export default class App extends PureComponent {
     return (
       <ScrollView>
         <Panel title="基本用法">
-          <View style={styles.wrap}>
+          <View>
             <View style={styles.mb}>
               <NoticeBar>普通</NoticeBar>
             </View>
@@ -29,7 +26,7 @@ export default class App extends PureComponent {
           </View>
         </Panel>
         <Panel title="特定场景">
-          <View style={styles.wrap}>
+          <View>
             <View style={styles.mb}>
               <NoticeBar hasArrow onClick={() => Alert.alert('click this noticeBar!')}>链接样式的</NoticeBar>
             </View>

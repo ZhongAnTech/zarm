@@ -2,189 +2,350 @@
 
 exports[`Slider defaultValue 1`] = `
 <div
-  class="za-slider"
+  className="za-slider"
 >
   <div
-    class="za-slider__line"
+    className="za-slider__line"
   >
     <div
-      class="za-slider__line__bg"
-      style="width:0"
+      className="za-slider__line__bg"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
     />
   </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="10"
-    class="za-slider__handle"
-    role="slider"
-    style="left:0"
+  <Drag
+    onDragEnd={[Function]}
+    onDragMove={[Function]}
+    onDragStart={[Function]}
   >
     <div
-      class="za-slider__handle__shadow"
-    />
-  </div>
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={10}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    >
+      <Tootip
+        direction="top"
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        title={10}
+        trigger="hover"
+        visible={false}
+      >
+        <div
+          className="za-slider-handle-shadow"
+        />
+      </Tootip>
+    </div>
+  </Drag>
 </div>
 `;
 
 exports[`Slider disabled 1`] = `
 <div
-  class="za-slider za-slider--disabled"
+  className="za-slider za-slider--disabled"
 >
   <div
-    class="za-slider__line"
+    className="za-slider__line"
   >
     <div
-      class="za-slider__line__bg"
-      style="width:0"
+      className="za-slider__line__bg"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
     />
   </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
-    class="za-slider__handle"
-    role="slider"
-    style="left:0"
+  <Drag
+    onDragEnd={[Function]}
+    onDragMove={[Function]}
+    onDragStart={[Function]}
   >
     <div
-      class="za-slider__handle__shadow"
-    />
-  </div>
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    >
+      <Tootip
+        direction="top"
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        title={0}
+        trigger="hover"
+        visible={false}
+      >
+        <div
+          className="za-slider-handle-shadow"
+        />
+      </Tootip>
+    </div>
+  </Drag>
 </div>
 `;
 
 exports[`Slider max 1`] = `
 <div
-  class="za-slider"
+  className="za-slider"
 >
   <div
-    class="za-slider__line"
+    className="za-slider__line"
   >
     <div
-      class="za-slider__line__bg"
-      style="width:0"
+      className="za-slider__line__bg"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
     />
   </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
-    class="za-slider__handle"
-    role="slider"
-    style="left:0"
+  <Drag
+    onDragEnd={[Function]}
+    onDragMove={[Function]}
+    onDragStart={[Function]}
   >
     <div
-      class="za-slider__handle__shadow"
-    />
-  </div>
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    >
+      <Tootip
+        direction="top"
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        title={0}
+        trigger="hover"
+        visible={false}
+      >
+        <div
+          className="za-slider-handle-shadow"
+        />
+      </Tootip>
+    </div>
+  </Drag>
 </div>
 `;
 
 exports[`Slider min 1`] = `
 <div
-  class="za-slider"
+  className="za-slider"
 >
   <div
-    class="za-slider__line"
+    className="za-slider__line"
   >
     <div
-      class="za-slider__line__bg"
-      style="width:0"
+      className="za-slider__line__bg"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
     />
   </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
-    class="za-slider__handle"
-    role="slider"
-    style="left:0"
+  <Drag
+    onDragEnd={[Function]}
+    onDragMove={[Function]}
+    onDragStart={[Function]}
   >
     <div
-      class="za-slider__handle__shadow"
-    />
-  </div>
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    >
+      <Tootip
+        direction="top"
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        title={0}
+        trigger="hover"
+        visible={false}
+      >
+        <div
+          className="za-slider-handle-shadow"
+        />
+      </Tootip>
+    </div>
+  </Drag>
 </div>
 `;
 
-exports[`Slider renders correctly 1`] = `
+exports[`Slider shallows correctly 1`] = `
 <div
-  class="za-slider"
+  className="za-slider"
 >
   <div
-    class="za-slider__line"
+    className="za-slider__line"
   >
     <div
-      class="za-slider__line__bg"
-      style="width:0"
+      className="za-slider__line__bg"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
     />
   </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
-    class="za-slider__handle"
-    role="slider"
-    style="left:0"
+  <Drag
+    onDragEnd={[Function]}
+    onDragMove={[Function]}
+    onDragStart={[Function]}
   >
     <div
-      class="za-slider__handle__shadow"
-    />
-  </div>
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    >
+      <Tootip
+        direction="top"
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        title={0}
+        trigger="hover"
+        visible={false}
+      >
+        <div
+          className="za-slider-handle-shadow"
+        />
+      </Tootip>
+    </div>
+  </Drag>
 </div>
 `;
 
 exports[`Slider step 1`] = `
 <div
-  class="za-slider"
+  className="za-slider"
 >
   <div
-    class="za-slider__line"
+    className="za-slider__line"
   >
     <div
-      class="za-slider__line__bg"
-      style="width:0"
+      className="za-slider__line__bg"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
     />
   </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="0"
-    class="za-slider__handle"
-    role="slider"
-    style="left:0"
+  <Drag
+    onDragEnd={[Function]}
+    onDragMove={[Function]}
+    onDragStart={[Function]}
   >
     <div
-      class="za-slider__handle__shadow"
-    />
-  </div>
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={0}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    >
+      <Tootip
+        direction="top"
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        title={0}
+        trigger="hover"
+        visible={false}
+      >
+        <div
+          className="za-slider-handle-shadow"
+        />
+      </Tootip>
+    </div>
+  </Drag>
 </div>
 `;
 
 exports[`Slider value 1`] = `
 <div
-  class="za-slider"
+  className="za-slider"
 >
   <div
-    class="za-slider__line"
+    className="za-slider__line"
   >
     <div
-      class="za-slider__line__bg"
-      style="width:0"
+      className="za-slider__line__bg"
+      style={
+        Object {
+          "width": 0,
+        }
+      }
     />
   </div>
-  <div
-    aria-valuemax="100"
-    aria-valuemin="0"
-    aria-valuenow="10"
-    class="za-slider__handle"
-    role="slider"
-    style="left:0"
+  <Drag
+    onDragEnd={[Function]}
+    onDragMove={[Function]}
+    onDragStart={[Function]}
   >
     <div
-      class="za-slider__handle__shadow"
-    />
-  </div>
+      aria-valuemax={100}
+      aria-valuemin={0}
+      aria-valuenow={10}
+      className="za-slider__handle"
+      role="slider"
+      style={
+        Object {
+          "left": 0,
+        }
+      }
+    >
+      <Tootip
+        direction="top"
+        onVisibleChange={[Function]}
+        prefixCls="za-tooltip"
+        title={10}
+        trigger="hover"
+        visible={false}
+      >
+        <div
+          className="za-slider-handle-shadow"
+        />
+      </Tootip>
+    </div>
+  </Drag>
 </div>
 `;

@@ -28,7 +28,7 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
     const { prefixCls, onCancel, cancelText, locale } = this.props;
     return (typeof onCancel === 'function') && (
       <div className={`${prefixCls}__cancel`}>
-        <a className={`${prefixCls}__item`} onClick={onCancel}>{cancelText || locale.cancelText}</a>
+        <a className={`${prefixCls}__item`} onClick={onCancel}>{cancelText || locale!.cancelText}</a>
       </div>
     );
   }

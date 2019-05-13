@@ -93,7 +93,7 @@ exports[`Button ghost active 1`] = `
       },
       Object {
         "backgroundColor": "transparent",
-        "borderColor": "#DCDCDC",
+        "borderColor": "#e6e6e6",
       },
       false,
       false,
@@ -129,7 +129,7 @@ exports[`Button ghost active 1`] = `
             "color": "#fff",
           },
           Object {
-            "color": "#DCDCDC",
+            "color": "#e6e6e6",
           },
           false,
         ]
@@ -181,7 +181,7 @@ exports[`Button ghost disabled 1`] = `
       },
       false,
       Object {
-        "opacity": 0.6,
+        "opacity": 0.5,
       },
       Object {
         "borderColor": "#bcbcbc",

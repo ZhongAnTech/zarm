@@ -1,8 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import {
   Text,
-  View,
-  ViewStyle,
   StyleSheet,
   UIManager,
   ScrollView,
@@ -114,13 +112,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
     const { offset } = this.state;
 
-    const containerStyle = [
-      styles![`${theme}NoticeBarBg`],
-    ] as ViewStyle;
-
     const textStyle = [
-      styles![`${theme}NoticeBarText`],
-      styles!.noticeBarSize,
+      styles!.textStyle,
+      styles![`${theme}TextStyle`],
     ];
 
     const wrapperProps = {
@@ -138,14 +132,12 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
         scrollEnabled={false}
         showsHorizontalScrollIndicator={false}
       >
-        <View style={containerStyle}>
-          <Text
-            ref={view => { this.content = view; }}
-            style={[ textStyle, { left: offset } ]}
-          >
-            {children}
-          </Text>
-        </View>
+        <Text
+          ref={view => { this.content = view; }}
+          style={[ textStyle, { left: offset } ]}
+        >
+          {children}
+        </Text>
       </ScrollView>
     </Message>
     : <Message {...wrapperProps} {...others} size="lg">{children}</Message>;

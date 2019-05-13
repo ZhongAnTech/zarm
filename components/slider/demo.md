@@ -1,4 +1,4 @@
-# 滑动输入条 Slider
+# Slider 滑动输入条
 
 
 

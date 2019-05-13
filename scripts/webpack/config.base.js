@@ -1,19 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const babelConfig = require('../config/babelConfig');
-
-babelConfig.plugins.push([
-  'import',
-  [{
-    libraryName: 'zarm',
-    libraryDirectory: 'components',
-    style: true,
-  },
-  {
-    libraryName: 'dragon-ui',
-    style: true,
-  }],
-]);
+const babelConfig = require('../babel/config');
 
 module.exports = {
   output: {
@@ -26,21 +13,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: babelConfig,
-          },
-        ],
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'awesome-typescript-loader',
           },
         ],
       },
@@ -71,7 +49,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              outputStyle: 'compact',
+              implementation: require('sass'),
             },
           },
         ],

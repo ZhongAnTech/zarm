@@ -1,205 +1,143 @@
 import variables from '../../style/themes/default.native';
+import Color from 'color';
 
 export default {
-  messageWrapper: {
+  wrapper: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: variables.message_height,
-  },
-
-  messageWrapperInner: {
+    minHeight: variables.message_min_height_md,
     paddingHorizontal: variables.message_padding_h_md,
+    paddingVertical: variables.message_padding_v_md,
     backgroundColor: variables.message_theme_bg_primary,
   },
-
-  lgMessageWrapper: {
-    height: variables.message_height_lg,
+  lgWrapper: {
+    minHeight: variables.message_min_height_lg,
     paddingHorizontal: variables.message_padding_h_lg,
+    paddingVertical: variables.message_padding_v_lg,
+  },
+  primaryWrapper: {
+    backgroundColor: Color(variables.theme_primary).alpha(0.1),
+  },
+  successWrapper: {
+    backgroundColor: Color(variables.theme_success).alpha(0.1),
+  },
+  warningWrapper: {
+    backgroundColor: Color(variables.theme_warning).alpha(0.1),
+  },
+  dangerWrapper: {
+    backgroundColor: Color(variables.theme_danger).alpha(0.1),
   },
 
-  textBodyStyle: {
+  headerStyle: {},
+
+  bodyStyle: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
   },
 
-  wrapperStyle: {
-    flex: 1,
+  footerStyle: {
     flexDirection: 'row',
+    paddingLeft: 10,
+  },
+
+  mdTextStyle: {
+    fontSize: variables.message_font_size_md,
+  },
+  lgTextStyle: {
+    fontSize: variables.message_font_size_lg,
+  },
+  primaryTextStyle: {
+    color: variables.theme_primary,
+  },
+  successTextStyle: {
+    color: variables.theme_success,
+  },
+  warningTextStyle: {
+    color: variables.theme_warning,
+  },
+  dangerTextStyle: {
+    color: variables.theme_danger,
+  },
+
+  // close icon
+  closeIconWrapperStyle: {
+    position: 'relative',
     alignItems: 'center',
     justifyContent: 'center',
+    width: 14,
+    height: 20,
   },
-
-  footerWrapperStyle: {
-    flexDirection: 'row',
+  closeIconStyle: {
+    position: 'absolute',
+    height: 1,
   },
-
-  closeTextStyle: {
-    lineHeight: variables.message_height,
-    textAlign: 'right',
+  // close icon size
+  mdCloseIconStyle: {
+    width: variables.message_close_length_md,
   },
-
-  lgCloseTextStyle: {
-    lineHeight: variables.message_height_lg,
-    textAlign: 'right',
+  lgCloseIconStyle: {
+    width: variables.message_close_length_lg,
   },
-
-  closeWrapperStyle: {
-    alignItems: 'center',
-    width: 10,
-    marginLeft: 2,
+  // close icon theme
+  primaryCloseIconStyle: {
+    backgroundColor: variables.theme_primary,
   },
-
-  closeIconWrapper: {
-    position: 'relative',
-    width: 10,
-    height: 10,
+  successCloseIconStyle: {
+    backgroundColor: variables.theme_success,
   },
-
+  warningCloseIconStyle: {
+    backgroundColor: variables.theme_warning,
+  },
+  dangerCloseIconStyle: {
+    backgroundColor: variables.theme_danger,
+  },
+  // close icon type
   closeIconLeft: {
-    position: 'absolute',
-    top: 5,
-    width: 10,
-    height: 1,
     transform: [{ rotate: '45deg' }],
   },
-
   closeIconRight: {
-    position: 'absolute',
-    top: 5,
-    width: 10,
-    height: 1,
     transform: [{ rotate: '135deg' }],
   },
 
-  lgCloseIconWrapper: {
+  // arrow
+  arrowWrapperStyle: {
     position: 'relative',
-    width: 12,
-    height: 12,
-  },
-
-  lgCloseIconLeft: {
-    position: 'absolute',
-    top: 6,
-    width: 12,
-    height: 1,
-    transform: [{ rotate: '45deg' }],
-  },
-
-  lgCloseIconRight: {
-    position: 'absolute',
-    top: 6,
-    width: 12,
-    height: 1,
-    transform: [{ rotate: '135deg' }],
-  },
-
-  lgCloseWrapperStyle: {
     alignItems: 'center',
-    width: 12,
-    marginLeft: 2,
+    justifyContent: 'center',
+    width: 14,
+    height: 20,
   },
-
   arrowStyle: {
-    width: variables.message_arrow_length,
-    height: variables.message_arrow_length,
+    position: 'absolute',
     borderTopWidth: variables.message_arrow_border_width,
     borderRightWidth: variables.message_arrow_border_width,
     transform: [{ rotate: '45deg' }],
-    marginLeft: 5,
-    marginRight: 2,
-    alignItems: 'center',
   },
-
+  // arrow size
+  mdArrowStyle: {
+    width: variables.message_arrow_length_md,
+    height: variables.message_arrow_length_md,
+  },
   lgArrowStyle: {
     width: variables.message_arrow_length_lg,
     height: variables.message_arrow_length_lg,
   },
-
-  textChildrenStyle: {
-    flex: 1,
-    flexDirection: 'row',
-  },
-
-  primaryMessageBg: {
-    backgroundColor: variables.message_theme_bg_primary,
-  },
-
-  successMessageBg: {
-    backgroundColor: variables.message_theme_bg_success,
-  },
-
-  warningMessageBg: {
-    backgroundColor: variables.message_theme_bg_warning,
-  },
-
-  dangerMessageBg: {
-    backgroundColor: variables.message_theme_bg_danger,
-  },
-
-  primaryMessageText: {
-    color: variables.theme_primary,
-  },
-
-  successMessageText: {
-    color: variables.theme_success,
-  },
-
-  warningMessageText: {
-    color: variables.theme_warning,
-  },
-
-  dangerMessageText: {
-    color: variables.theme_danger,
-  },
-
-  primaryCloseBg: {
-    backgroundColor: variables.theme_primary,
-  },
-
-  successCloseBg: {
-    backgroundColor: variables.theme_success,
-  },
-
-  warningCloseBg: {
-    backgroundColor: variables.theme_warning,
-  },
-
-  dangerCloseBg: {
-    backgroundColor: variables.theme_danger,
-  },
-
-  activeMessageText: {
-    backgroundColor: variables.theme_primary,
-  },
-
-  messageTextSize: {
-    fontSize: variables.message_font_size,
-  },
-
-  lgMessageTextSize: {
-    fontSize: variables.message_font_size_lg,
-  },
-
-  primaryMessageArrow: {
+  // arrow theme
+  primaryArrowStyle: {
     borderTopColor: variables.theme_primary,
     borderRightColor: variables.theme_primary,
   },
-
-  successMessageArrow: {
+  successArrowStyle: {
     borderTopColor: variables.theme_success,
     borderRightColor: variables.theme_success,
   },
-
-  warningMessageArrow: {
+  warningArrowStyle: {
     borderTopColor: variables.theme_warning,
     borderRightColor: variables.theme_warning,
   },
-
-  dangerMessageArrow: {
+  dangerArrowStyle: {
     borderTopColor: variables.theme_danger,
     borderRightColor: variables.theme_danger,
   },

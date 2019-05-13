@@ -1,327 +1,313 @@
-$--namespace: 'za';
-$--element-separator: '__';
-$--modifier-separator: '--';
-$--state-prefix: '--';
+@import "../core/index";
 
-// 主题色
-$--theme-default: #e6e6e6;                  // 默认
-$--theme-primary: #00bc70;                  // 主色
-$--theme-success: #00bc70;                  // 成功
-$--theme-warning: #ec9131;                  // 警告
-$--theme-danger: #ff5050;                   // 失败
+:root {
+  @include defineColorHSL(--theme-default, 0, 0%, 90%);
+  @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-success, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
+  @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
-// press状态色阶
-$--theme-default-press: darken($--theme-default, 4%);
-$--theme-primary-press: darken($--theme-primary, 4%);
-$--theme-success-press: darken($--theme-success, 4%);
-$--theme-warning-press: darken($--theme-warning, 4%);
-$--theme-danger-press: darken($--theme-danger, 4%);
+  // 文字色
+  --color-text: #464646;                    // 基本
+  --color-text-inverse: #fff;               // 反色
+  --color-text-placeholder: #a9a9a9;        // 文本框提示
+  --color-text-disabled: #bcbcbc;           // 失效
+  --color-text-caption: #909090;            // 辅助描述
+  --color-link: var(--theme-primary);         // 链接
+  --color-shadow: rgba(56, 56, 56, 0.15);   // 阴影色
 
-// 文字色
-$--color-text: #464646;                    // 基本
-$--color-text-inverse: #fff;               // 反色
-$--color-text-placeholder: #a9a9a9;        // 文本框提示
-$--color-text-disabled: #bcbcbc;           // 失效
-$--color-text-caption: #909090;            // 辅助描述
-$--color-link: $--theme-primary;             // 链接
-$--color-shadow: rgba(56, 56, 56, 0.15);    // 阴影色
+  // 背景色
+  --background-active: #e6e6e6;
+  --background-disabled: #bcbcbc;
 
-// 背景色
-$--background-active: #e6e6e6;
-$--background-disabled: #bcbcbc;
+  // 边框色
+  --border-color: #e6e6e6;
+  --border-disabled: #bcbcbc;
 
-// 边框色
-$--border-color: #e6e6e6;
-$--border-disabled: #bcbcbc;
+  // 圆角
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-round: 1000px;
+  --radius-circle: 50%;
 
-// 圆角
-$--radius-sm: r(2);
-$--radius-md: r(4);
-$--radius-lg: r(8);
-$--radius-round: r(1000);
-$--radius-circle: 50%;
+  // 水平间距
+  --padding-h-xs: 8px;
+  --padding-h-sm: 12px;
+  --padding-h-md: 16px;
+  --padding-h-lg: 20px;
 
-// 水平间距
-$--padding-h-xs: r(8);
-$--padding-h-sm: r(12);
-$--padding-h-md: r(16);
-$--padding-h-lg: r(20);
+  // 垂直间距
+  --padding-v-xs: 6px;
+  --padding-v-sm: 8px;
+  --padding-v-md: 12px;
+  --padding-v-lg: 16px;
 
-// 垂直间距
-$--padding-v-xs: r(4);
-$--padding-v-sm: r(8);
-$--padding-v-md: r(12);
-$--padding-v-lg: r(16);
+  // 字体大小
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
 
-// 字体大小
-$--font-size-xs: r(10);
-$--font-size-sm: r(12);
-$--font-size-md: r(14);
-$--font-size-lg: r(16);
-$--font-size-xl: r(18);
+  // 堆叠顺序
+  --zindex-mask: 1000;
+  --zindex-popup: 1300;
+  --zindex-modal: 1400;
+  --zindex-toast: 1500;
+  --zindex-loading: 1500;
+  --zindex-tooltip: 1500;
 
-// 堆叠顺序
-$--zindex-mask: 1000;
-$--zindex-popup: 1300;
-$--zindex-modal: 1400;
-$--zindex-toast: 1500;
-$--zindex-loading: 1500;
+  // 透明度
+  --opacity-disabled: .5;
+  --opacity-mask: .5;
+  --opacity-toast: .8;
+  --opacity-tooltip: .8;
 
-// 透明度
-$--opacity-disabled: .5;
-$--opacity-mask: .5;
-$--opacity-toast: .8;
-$--opacity-tooltip: .8;
+  // components
 
-// ActionSheet
-$--action-sheet-margin: 0;
-$--action-sheet-item-height: r(50);
-$--action-sheet-item-font-size: r(16);
+  // ActionSheet
+  --action-sheet-margin: 0;
+  --action-sheet-item-height: 50px;
+  --action-sheet-item-font-size: 16px;
 
-// Alert
-$--alert-button-height: r(50);
-$--alert-button-font-size: r(18);
+  // activity-indicator
+  --activity-indicator-size-md: 20px;
+  --activity-indicator-size-lg: 31px;
+  --activity-indicator-path-color: #e6e6e6;
 
-// Badge
-$--badge-height: r(14);
-$--badge-font-size: $--font-size-xs;
-$--badge-padding-h: r(4);
-$--badge-dot-diameter: r(8);
-$--badge-border-radius-rect: $--radius-sm;
-$--badge-border-radius-round: $--radius-round;
-$--badge-sup-top: r(-4);
-$--badge-text-color:#fff;
+  // Alert
+  --alert-button-height: 50px;
+  --alert-button-font-size: 18px;
 
-// Button
-$--button-height-xs: r(28);
-$--button-height-sm: r(36);
-$--button-height-md: r(44);
-$--button-height-lg: r(52);
-$--button-padding-h-xs: $--padding-h-xs;
-$--button-padding-h-sm: $--padding-h-sm;
-$--button-padding-h-md: $--padding-h-md;
-$--button-padding-h-lg: $--padding-h-lg;
-$--button-font-size-xs: r(12);
-$--button-font-size-sm: r(14);
-$--button-font-size-md: r(16);
-$--button-font-size-lg: r(18);
-$--button-icon-size-xs: r(16);
-$--button-icon-size-sm: r(18);
-$--button-icon-size-md: r(22);
-$--button-icon-size-lg: r(26);
-$--button-disabled-opacity: $--opacity-disabled;
-$--button-disabled-color-ghost: $--border-disabled;
+  // Badge
+  --badge-height: 14px;
+  --badge-font-size: var(--font-size-xs);
+  --badge-padding-h: 4px;
+  --badge-dot-diameter: 8px;
+  --badge-border-radius-rect: var(--radius-sm);
+  --badge-border-radius-round: var(--radius-round);
+  --badge-sup-top: -4px;
+  --badge-text-color: #fff;
 
-$--button-default-background: #fff;
-$--button-default-border: $--theme-default;
-$--button-default-color: $--color-text;
-$--button-default-active-background: $--theme-default;
-$--button-default-active-border: $--theme-default;
-$--button-default-active-color: $--color-text;
-$--button-default-ghost-border: #fff;
-$--button-default-ghost-color: #fff;
-$--button-default-ghost-active-border: $--theme-default;
-$--button-default-ghost-active-color: $--theme-default;
+  // Button
+  --button-height-xs: 28px;
+  --button-height-sm: 36px;
+  --button-height-md: 44px;
+  --button-height-lg: 52px;
+  --button-padding-h-xs: var(--padding-h-xs);
+  --button-padding-h-sm: var(--padding-h-sm);
+  --button-padding-h-md: var(--padding-h-md);
+  --button-padding-h-lg: var(--padding-h-lg);
+  --button-font-size-xs: 12px;
+  --button-font-size-sm: 14px;
+  --button-font-size-md: 16px;
+  --button-font-size-lg: 18px;
+  --button-icon-size-xs: 16px;
+  --button-icon-size-sm: 18px;
+  --button-icon-size-md: 22px;
+  --button-icon-size-lg: 26px;
+  --button-disabled-opacity: var(--opacity-disabled);
+  --button-disabled-color-ghost: var(--border-disabled);
+  --button-default-background: var(--color-text-inverse);
+  --button-default-border: var(--theme-default);
+  --button-default-color: var(--color-text);
+  --button-default-active-background: var(--theme-default);
+  --button-default-active-border: var(--theme-default);
+  --button-default-active-color: var(--color-text);
+  --button-default-ghost-border: var(--color-text-inverse);
+  --button-default-ghost-color: var(--color-text-inverse);
+  --button-default-ghost-active-border: var(--theme-default);
+  --button-default-ghost-active-color: var(--theme-default);
+  --button-primary-background: var(--theme-primary);
+  --button-primary-border: var(--theme-primary);
+  --button-primary-color: var(--color-text-inverse);
+  --button-primary-active-background: var(--theme-primary-dark);
+  --button-primary-active-border: var(--theme-primary-dark);
+  --button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --button-primary-ghost-border: var(--theme-primary);
+  --button-primary-ghost-color: var(--theme-primary);
+  --button-primary-ghost-active-border: var(--theme-primary-dark);
+  --button-primary-ghost-active-color: var(--theme-primary-dark);
+  --button-danger-background: var(--theme-danger);
+  --button-danger-border: var(--theme-danger);
+  --button-danger-color: var(--color-text-inverse);
+  --button-danger-active-background: var(--theme-danger-dark);
+  --button-danger-active-border: var(--theme-danger-dark);
+  --button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --button-danger-ghost-border: var(--theme-danger);
+  --button-danger-ghost-color: var(--theme-danger);
+  --button-danger-ghost-active-border: var(--theme-danger-dark);
+  --button-danger-ghost-active-color: var(--theme-danger-dark);
 
-$--button-primary-background: $--theme-primary;
-$--button-primary-border: $--theme-primary;
-$--button-primary-color: #fff;
-$--button-primary-active-background: $--theme-primary-press;
-$--button-primary-active-border: $--theme-primary-press;
-$--button-primary-active-color: rgba(#fff, 0.4);
-$--button-primary-ghost-border: $--theme-primary;
-$--button-primary-ghost-color: $--theme-primary;
-$--button-primary-ghost-active-border: $--theme-primary-press;
-$--button-primary-ghost-active-color: $--theme-primary-press;
+  // Calendar
+  --calendar-height: 45px; // 最小高度
+  --calendar-background: #fff; // 背景色
+  --calendar-week-bar-fontsize: 14px; // 星期条文字大小
+  --calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
+  --calendar-week-bar-color: var(--color-text-caption); // 星期条文字颜色
+  --calendar-section-padding: 15px; // 两边留白间距
+  --calendar-day-fontsize: 16px; // 月份文字大小
+  --calendar-day-title-fontsize: 17px; // 月份title文字大小
+  --calendar-day-background: #fff; // 月份文字背景颜色
+  --calendar-day-color: var(--color-text); // 月份文字颜色
+  --calendar-day-today-background: var(--theme-primary-lighter); // 日期今天选中背景颜色
+  --calendar-day-today-color: var(--theme-primary); // 日期今天选中颜色
+  --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
+  --calendar-day-selected-color: #fff; // 日期文字选中颜色
+  --calendar-day-range-background: var(--theme-primary-lighter); // 日期文字范围内背景颜色
+  --calendar-day-range-color: var(--theme-primary); // 日期文字范围内颜色
+  --calendar-day-height: 40px; // 日期高度
 
-$--button-danger-background: $--theme-danger;
-$--button-danger-border: $--theme-danger;
-$--button-danger-color: #fff;
-$--button-danger-active-background: $--theme-danger-press;
-$--button-danger-active-border: $--theme-danger-press;
-$--button-danger-active-color: rgba(#fff, 0.4);
-$--button-danger-ghost-border: $--theme-danger;
-$--button-danger-ghost-color: $--theme-danger;
-$--button-danger-ghost-active-border: $--theme-danger-press;
-$--button-danger-ghost-active-color: $--theme-danger-press;
+  // Carousel
+  --carousel-pagination-distance: 8px;
+  --carousel-pagination-rect-width: 19px;
+  --carousel-pagination-rect-height: 4px;
+  --carousel-pagination-rect-border-radius: 1px;
+  --carousel-pagination-rect-step: 2px;
+  --carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
+  --carousel-pagination-rect-color-active: #fff;
 
-// Calendar
-$--calendar-height: r(45); // 最小高度
-$--calendar-background: #fff; // 背景色
-$--calendar-week-bar-fontsize: r(14); // 星期条文字大小
-$--calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
-$--calendar-week-bar-color: $--color-text-caption; // 星期条文字颜色
-$--calendar-section-padding: r(15); // 两边留白间距
-$--calendar-day-fontsize: r(16); // 月份文字大小
-$--calendar-day-title-fontsize: r(17); // 月份title文字大小
-$--calendar-day-background: #fff; // 月份文字背景颜色
-$--calendar-day-color: $--color-text; // 月份文字颜色
-$--calendar-day-today-background: rgba($--theme-primary, 0.2); // 日期今天选中背景颜色
-$--calendar-day-today-color: $--theme-primary; // 日期今天选中颜色
-$--calendar-day-selected-background: $--theme-primary; // 日期文字选中背景颜色
-$--calendar-day-selected-color: #fff; // 日期文字选中颜色
-$--calendar-day-range-background: #d1f3e7; // 日期文字范围内背景颜色
-$--calendar-day-range-color: $--theme-primary; // 日期文字范围内颜色
-$--calendar-day-width: 14.28571%; // 日期宽度
-$--calendar-day-height: r(40); // 日期高度
+  // Cell
+  --cell-height: 52px;                                    // 最小高度
+  --cell-background: #fff;                              // 背景色
+  --cell-line-padding-left: 16px;                         // 分隔线左边距
+  --cell-padding-h: 16px;                                 // 水平边内距
+  --cell-padding-v: 15px;                                 // 纵向边内距
+  --cell-title-color: var(--color-text);                  // 标题文字颜色
+  --cell-title-font-size: 15px;                           // 标题文字大小
+  --cell-title-line-height: 22px;                         // 标题文字行高
+  --cell-description-color: var(--color-text-caption);    // 标题文字颜色
+  --cell-description-font-size: 15px;                     // 描述文字大小
+  --cell-label-width: 100px;                              // 表单label宽度
+  --cell-arrow-color: #bcbcbc;                          // 箭头颜色
+  --cell-arrow-length: 10px;                              // 箭头长度
+  --cell-arrow-border-width: 2px;                         // 箭头粗细
 
-// Cell
-$--cell-height: r(52);                                  // 最小高度
-$--cell-background: #fff;                             // 背景色
-$--cell-line-padding-left: r(16);                       // 分隔线左边距
-$--cell-padding-h: r(16);                               // 水平边内距
-$--cell-padding-v: r(15);                               // 纵向边内距
-$--cell-title-color: $--color-text;                     // 标题文字颜色
-$--cell-title-font-size: r(15);                         // 标题文字大小
-$--cell-title-line-height: r(22);                       // 标题文字行高
-$--cell-description-color: $--color-text-caption;       // 标题文字颜色
-$--cell-description-font-size: r(15);                   // 描述文字大小
-$--cell-label-width: r(100);                            // 表单label宽度
-$--cell-arrow-color: #bcbcbc;                         // 箭头颜色
-$--cell-arrow-length: r(10);                            // 箭头长度
-$--cell-arrow-border-width: r(2);                       // 箭头粗细
+  // Checkbox
+  --checkbox-size: 20px;
 
-// Checkbox
-$--checkbox-size: r(20);
+  // Collapse
+  --collapse-height: 52px;
+  --collapse-padding: 16px;
+  --collapse-arrow-color: #bcbcbc;
+  --collapse-arrow-disabled-color: #eee;
 
-// Collapse
-$--collapse-height: r(52);
-$--collapse-padding: r(16);
-$--collapse-arrow-color: #bcbcbc;
-$--collapse-arrow-disabled-color: #eee;
+  // Confirm
+  --confirm-button-height: 50px;
+  --confirm-button-font-size: 18px;
 
-// Confirm
-$--confirm-button-height: r(50);
-$--confirm-button-font-size: r(18);
+  // Input
+  --input-clear-icon-width: 16px;
+  --input-padding-v: var(--cell-padding-v);
+  --input-cursor-color: #597cf6;
+  --input-cursor-width: 2px;
+  --input-cursor-height: 22px;
+  --input-selection-color: alpha(--theme-primary, 0.2);
+  --input-length-count-color: var(--color-text-disabled);
+  --input-height: 28px;
+  --input-line-height: var(--cell-title-line-height);
 
-// Icon
-$--icon-url: '//at.alicdn.com/t/font_126288_147h8m0m5se5ewmi';
+  // Keyboard
+  --keyboard-item-height: 52px;
+  --keyboard-item-font-size: 30px;
+  --keyboard-icon-font-size: 21px;
 
-// Keyboard
-$--keyboard-item-height: r(52);
-$--keyboard-item-font-size: r(30);
-$--keyboard-icon-font-size: r(21);
+  // Message
+  --message-min-height-md: 29px;
+  --message-min-height-lg: 40px;
+  --message-font-size-md: 12px;
+  --message-font-size-lg: 14px;
+  --message-padding-v-md: 6px;
+  --message-padding-h-md: 8px;
+  --message-padding-v-lg: 8px;
+  --message-padding-h-lg: 12px;
 
-// Message
-$--message-min-height-md: r(29);
-$--message-min-height-lg: r(40);
-$--message-font-size-md: r(12);
-$--message-font-size-lg: r(14);
-$--message-padding-v-md: r(6);
-$--message-padding-h-md: r(8);
-$--message-padding-v-lg: r(8);
-$--message-padding-h-lg: r(12);
+  // Modal
+  --modal-background: #fff;
+  --modal-title-font-size: 18px;
 
-// Modal
-$--modal-background: #fff;
-$--modal-title-font-size: r(18);
+  // NavBar
+  --nav-bar-color: #fdfdfd;
+  --nav-bar-height: 44px;
+  --nav-bar-icon-size: 24px;
 
-// NoticeBar
-$--notice-bar-height: r(24);
+  // NoticeBar
+  --notice-bar-height: 24px;
 
-// Panel
-$--panel-header-color: $--color-text-caption;
-$--panel-header-font-size: r(14);
-$--panel-body-color: $--color-text;
-$--panel-body-font-size: r(15);
+  // Panel
+  --panel-header-color: var(--color-text-caption);
+  --panel-header-font-size: 14px;
+  --panel-body-color: var(--color-text);
+  --panel-body-font-size: 15px;
 
-// Picker
-$--picker-header-height: r(45);
-$--picker-header-font-size: r(16);
-// $--picker-stackitem-height: r(35);
+  // Picker
+  --picker-header-height: 45px;
+  --picker-header-font-size: 16px;
+  // --picker-stackitem-height: r(35);
 
-// Pull
-$--pull-control-height: r(50);
-$--pull-control-font-size: r(14);
+  // Progress
+  --progress-background: #f2f2f2;
+  --progress-circle-diameter: 150px;
 
-// Radio
-$--radio-size: r(20);
+  // Pull
+  --pull-control-height: 50px;
+  --pull-control-font-size: 14px;
 
-// Wheel
-$--wheel-item-height: r(34);
-$--wheel-item-rows: 5;
-$--wheel-item-font-size: r(18);
+  // Radio
+  --radio-size: 20px;
 
-// Slider
-$--slider-line-background: #e6e6e6;
-$--slider-line-height: r(2);
-$--slider-handle-size: r(28);
-$--slider-handle-background: #fff;
-$--slider-handle-shadow: 0 r(1) r(3) rgba(0, 0, 0, 0.4);
+  // Slider
+  --slider-line-background: #e6e6e6;
+  --slider-line-height: 2px;
+  --slider-handle-size: 28px;
+  --slider-handle-background: #fff;
+  --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
-// activity-indicator
-$--activity-indicator-size-md: r(20);
-$--activity-indicator-size-lg: r(31);
-$--activity-indicator-path-color: #e6e6e6;
+  // Stepper
+  --stepper-height-md: 28px;
+  --stepper-height-lg: 36px;
+  --stepper-icon-font-size-md: 12px;
+  --stepper-icon-font-size-lg: 14px;
+  --stepper-input-width-md: 50px;
+  --stepper-input-width-lg: 60px;
+  --stepper-input-disabled: var(--color-text-disabled);
+  --stepper-input-font-size-md: 14px;
+  --stepper-input-font-size-lg: 16px;
+  --stepper-input-margin-h-md: 4px;
+  --stepper-input-margin-h-lg: 4px;
+  --stepper-input-padding-h-md: 8px;
+  --stepper-input-padding-h-lg: 8px;
 
-// Stepper
-$--stepper-height-md: r(28);
-$--stepper-height-lg: r(36);
-$--stepper-icon-font-size-md: r(12);
-$--stepper-icon-font-size-lg: r(14);
-$--stepper-input-width-md: r(50);
-$--stepper-input-width-lg: r(60);
-$--stepper-input-disabled: $--color-text-disabled;
-$--stepper-input-font-size-md: r(14);
-$--stepper-input-font-size-lg: r(16);
-$--stepper-input-margin-h-md: r(4);
-$--stepper-input-margin-h-lg: r(4);
-$--stepper-input-padding-h-md: r(8);
-$--stepper-input-padding-h-lg: r(8);
+  // Switch
+  --switch-width: 53px;
+  --switch-height: 32px;
+  // --switch-width-sm: 41px;
+  // --switch-height-sm: 21px;
+  --switch-border-color: #e6e6e6;
+  --switch-background: #fff;
 
-// Carousel
-$--carousel-pagination-distance: r(8);
-$--carousel-pagination-rect-width: r(19);
-$--carousel-pagination-rect-height: r(4);
-$--carousel-pagination-rect-border-radius: r(1);
-$--carousel-pagination-rect-step: r(2);
-$--carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
-$--carousel-pagination-rect-color-active: rgb(255, 255, 255);
+  // Tabs
+  --tabs-height: 45px;
+  --tabs-item-font-size: var(--font-size-lg);
+  --tabs-line-height: 2px;
+  $--tabs-paged-width: 70px;
 
-// Switch
-$--switch-width: r(53);
-$--switch-height: r(32);
-// $--switch-width-sm: r(41);
-// $--switch-height-sm: r(21);
-$--switch-border-color: #e6e6e6;
-$--switch-background: #fff;
+  // Toast
+  --toast-border-radius: 6px;
+  --toast-color: var(--color-text-inverse);
+  --toast-font-size: 13px;
+  --toast-max-width: 70%;
 
-// Tabs
-$--tabs-height: r(45);
-$--tabs-paged-width: r(70);
-$--tabs-item-font-size: $--font-size-lg;
-$--tabs-line-height: r(2);
+  // Tooltip
+  --tooltip-font-size: 12px;
+  --tooltip-color: var(--color-text-inverse);
+  --tooltip-arrow-size: 4px;
+  --tooltip-padding-v: var(--padding-v-xs);
+  --tooltip-padding-h: var(--padding-h-xs);
 
-// Toast
-$--toast-border-radius: r(6);
-$--toast-color: $--color-text-inverse;
-$--toast-font-size: r(13);
-$--toast-max-width: 70%;
-
-// Tooltip
-$--tooltip-font-size: r(12);
-$--tooltip-color: $--color-text-inverse;
-$--tooltip-arrow-size: r(5);
-
-// NavBar
-$--nav-bar-color: #fdfdfd;
-$--nav-bar-height: r(44);
-$--nav-bar-icon-size: r(24);
-
-// Input
-$--input-clear-icon-width: r(16);
-$--input-padding-v: $--cell-padding-v;
-$--input-cursor-color: #597cf6;
-$--input-cursor-width: r(2);
-$--input-cursor-height: r(16);
-$--input-selection-color: rgba($--theme-primary, 0.2);
-$--input-length-count-color: $--color-text-disabled;
-$--input-height: r(28);
-$--input-line-height: $--cell-title-line-height;
-
-// Progress
-$--progress-background: #f2f2f2;
-$--progress-circle-diameter: r(150);
-
-
-
+  // Wheel
+  --wheel-item-height: 34px;
+  --wheel-item-rows: 5;
+  --wheel-item-font-size: 18px;
+}

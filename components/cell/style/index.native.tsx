@@ -15,7 +15,6 @@ export default {
     flex: 1,
     flexDirection: 'column',
     marginTop: -1,
-    paddingVertical: variables.cell_padding_v,
     paddingHorizontal: variables.cell_padding_h,
   },
   lineContainerStyle: {
@@ -54,6 +53,7 @@ export default {
   },
   titleViewStyle: {
     flex: 1,
+    paddingVertical: variables.cell_padding_v,
   },
   labelTitleViewStyle: {
     flex: 0,
@@ -65,14 +65,14 @@ export default {
     lineHeight: variables.cell_title_line_height,
   },
   helpViewStyle: {
-    paddingTop: variables.padding_v_md,
-  },
-  helpTextStyle: {
-    color: variables.cell_help_color,
-    fontSize: variables.cell_help_font_size,
+    paddingHorizontal: variables.cell_padding_h,
+    paddingTop: 0,
+    paddingBottom: 10,
   },
   childrenViewStyle: {
     flex: 1,
     flexDirection: 'row',
+    paddingVertical: variables.cell_padding_v,
+    paddingHorizontal: 0,
   },
 };

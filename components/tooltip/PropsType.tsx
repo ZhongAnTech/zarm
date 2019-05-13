@@ -1,11 +1,25 @@
-export default interface PropsType {
-  visible?: boolean;
-  message?: any;
-  children?: any;
-}
+import { ReactNode } from 'react';
 
-declare global {
-  interface Window {
-    zarmTooltip?: any;
-  }
+export type direction =
+  | 'topLeft'
+  | 'top'
+  | 'topRight'
+  | 'rightTop'
+  | 'right'
+  | 'rightBottom'
+  | 'bottomLeft'
+  | 'bottom'
+  | 'bottomRight'
+  | 'leftTop'
+  | 'left'
+  | 'leftBottom';
+
+export default interface PropsType {
+  prefixCls?: string;
+  className?: string;
+  trigger?: 'click' | 'hover';
+  visible?: boolean;
+  direction: direction;
+  onVisibleChange?: (visible?: boolean) => void;
+  title?: () => void | ReactNode ;
 }

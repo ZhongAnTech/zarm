@@ -26,13 +26,13 @@ exports[`Wheel Wheel disabled 1`] = `
       className="za-wheel__content"
     >
       <div
-        className="za-wheel__item za-wheel__item--selected"
+        className="za-wheel__item za-wheel__item--selected za-wheel__item--disabled"
         key="0"
       >
         选项一
       </div>
       <div
-        className="za-wheel__item"
+        className="za-wheel__item za-wheel__item--disabled"
         key="1"
       >
         选项二
