@@ -28,6 +28,57 @@ class Demo extends React.Component {
 ```
 
 
+## 基本用法-LIST
+```jsx
+import { Tabs } from 'zarm';
+const { Panel } = Tabs;
+
+class Demo extends React.Component {
+  
+  render() {
+    const panelStyle: CSSProperties = {
+      height: "100px",
+      overflowY:"scroll",
+      display: "flex",
+      flexDirection: "column"
+    }
+    const itemStyle: CSSProperties = {
+      height: "100px",
+      width:'100%',
+      flexShrink: 0
+    }
+    return (
+      <div>
+        <Tabs onChange={(i) => {}} 
+        defaultValue={1}
+        canSwipe
+        >
+          <Panel title="选项卡1" >
+            <div className="content">选项卡1内容</div>
+          </Panel>
+          <Panel title="选项卡2" selected  >
+            <div className="content" style={panelStyle}>
+            {Array.from({length:3}).map((item,index)=>{
+              const num = 255-index*4
+              itemStyle.backgroundColor = `rgb(${num},${num},${num})`
+              return (
+                <div style={itemStyle} key={index}>index
+              </div>)}
+            )}
+              
+            </div>
+          </Panel>
+          <Panel title="选项卡3">
+            <div className="content">选项卡3内容</div>
+          </Panel>
+        </Tabs>
+      </div>
+    )
+  }
+}
+ ReactDOM.render(<Demo />, mountNode);
+```
+
 ## 超出滑动（左右弹性）
 ```jsx
 import { Tabs } from 'zarm';
