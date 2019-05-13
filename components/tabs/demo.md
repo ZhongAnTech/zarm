@@ -273,8 +273,8 @@ ReactDOM.render(<Demo />, mountNode);
 ## API
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | number | - | 值 |
-| defaultValue | number | 0 | 初始值 |
+| activeKey | number | - | 当前激活项 |
+| defaultActiveKey | number | 0 | 初始激活项 |
 | disabled | boolean | false | 是否禁用所有选项 |
 | useTabPaged | boolean | false | 是否使用超出滚动 |
 | swipeable | boolean | false | 是否支持滑动切换 |
