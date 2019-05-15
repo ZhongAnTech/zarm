@@ -5,9 +5,10 @@ import defaultLocaleData from './locale/en_US';
 
 type nameType = keyof (typeof defaultLocaleData);
 
+// eslint-disable-next-line
 const LocaleReceiverWrapper = <T extends { new(...args: any[]): any }>(WrappedComponent: T, name?: nameType) => {
   const LocaleReceiver = (props) => {
-    const component = locale => {
+    const component = (locale) => {
       const globalLocale = (locale.locale) ? locale : defaultLocaleData;
       const componentLocale = globalLocale[name || WrappedComponent.name as nameType];
       const localeCode = globalLocale.locale;

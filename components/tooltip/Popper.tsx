@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import domUtil from '../utils/dom';
 
 const {

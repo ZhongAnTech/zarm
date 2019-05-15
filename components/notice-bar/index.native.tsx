@@ -31,7 +31,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   };
 
   private content;
+
   private wrapper;
+
   private moveInterval;
 
   constructor(props: NoticeBarProps) {
@@ -49,8 +51,8 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
     const asyncWrapper = this.layout(this.wrapper);
     const asyncContent = this.layout(this.content);
-    let wrapperWidth = await asyncWrapper;
-    let contentWidth = await asyncContent;
+    const wrapperWidth = await asyncWrapper;
+    const contentWidth = await asyncContent;
 
     const distance = wrapperWidth - contentWidth;
     if (distance > 0) {
@@ -70,6 +72,12 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
       this.setState({ offset });
     }, 50);
+  }
+
+  componentWillUnmount() {
+    if (this.moveInterval) {
+      clearInterval(this.moveInterval);
+    }
   }
 
   layout = (ref): Promise<number> => {
@@ -93,13 +101,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
         });
       });
     });
-  }
-
-  componentWillUnmount() {
-    if (this.moveInterval) {
-      clearInterval(this.moveInterval);
-    }
-  }
+  };
 
   render() {
     const {
@@ -108,7 +110,8 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
       closable,
       styles,
       children,
-      ...others } = this.props;
+      ...others
+    } = this.props;
 
     const { offset } = this.state;
 
@@ -124,22 +127,28 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
       children,
     };
 
-    return scrollable ?
-    <Message {...wrapperProps} {...others} size="lg">
-      <ScrollView
-        horizontal
-        ref={view => { this.wrapper = view; }}
-        scrollEnabled={false}
-        showsHorizontalScrollIndicator={false}
-      >
-        <Text
-          ref={view => { this.content = view; }}
-          style={[ textStyle, { left: offset } ]}
-        >
-          {children}
-        </Text>
-      </ScrollView>
-    </Message>
-    : <Message {...wrapperProps} {...others} size="lg">{children}</Message>;
+    return (
+      <Message {...wrapperProps} {...others} size="lg">
+        {
+          scrollable
+            ? (
+              <ScrollView
+                horizontal
+                ref={(view) => { this.wrapper = view; }}
+                scrollEnabled={false}
+                showsHorizontalScrollIndicator={false}
+              >
+                <Text
+                  ref={(view) => { this.content = view; }}
+                  style={[textStyle, { left: offset }]}
+                >
+                  {children}
+                </Text>
+              </ScrollView>
+            )
+            : children
+        }
+      </Message>
+    );
   }
 }

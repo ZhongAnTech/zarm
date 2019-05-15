@@ -27,12 +27,12 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
         this.onKeyClick(key);
       }, 100);
     }, 800);
-  }
+  };
 
   onLongPressOut = (e) => {
     e.preventDefault();
     clearInterval(this.longPressTimer);
-  }
+  };
 
   onKeyClick = (key: string) => {
     if (key.length === 0) {
@@ -43,7 +43,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
     if (typeof onKeyClick === 'function') {
       onKeyClick(key);
     }
-  }
+  };
 
   getKeys = () => {
     const { type } = this.props;
@@ -57,7 +57,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
       default:
         return NUMBER_KEYS;
     }
-  }
+  };
 
   renderKey = (text: string, index: number) => {
     const { prefixCls } = this.props;
@@ -75,7 +75,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
         {(text === 'close') ? <Icon type="keyboard" /> : text}
       </div>
     );
-  }
+  };
 
   render() {
     const { prefixCls, locale } = this.props;

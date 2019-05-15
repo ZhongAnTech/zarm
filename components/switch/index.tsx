@@ -39,16 +39,17 @@ export default class Switch extends PureComponent<SwitchProps, any> {
 
   onValueChange = () => {
     const { disabled, onChange } = this.props;
+    const { checked } = this.state;
     if (disabled) {
       return;
     }
 
-    const checked = !this.state.checked;
-    this.setState({ checked });
+    const newChecked = !checked;
+    this.setState({ checked: newChecked });
     if (typeof onChange === 'function') {
-      onChange(checked);
+      onChange(newChecked);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, disabled, style } = this.props;

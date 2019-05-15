@@ -33,11 +33,11 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
 
   onPressIn = (activeIndex) => {
     this.setState({ isActive: true, activeIndex });
-  }
+  };
 
   onPressOut = (activeIndex) => {
     this.setState({ isActive: false, activeIndex });
-  }
+  };
 
   renderActions = (action, index) => {
     const { styles } = this.props;
@@ -65,7 +65,7 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
         <Text style={actionStyle}>{action.text}</Text>
       </TouchableOpacity>
     );
-  }
+  };
 
   renderCancel = () => {
     const { styles, onCancel, cancelText } = this.props;
@@ -93,7 +93,7 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
         <Text style={cancelStyle as ViewStyle}>{cancelText}</Text>
       </TouchableOpacity>
     );
-  }
+  };
 
   render() {
     const { style, styles, spacing, visible, onMaskClick, actions } = this.props;

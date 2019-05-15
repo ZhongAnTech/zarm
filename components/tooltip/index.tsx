@@ -1,5 +1,5 @@
 import React, { Component, cloneElement, ReactElement } from 'react';
-import { findDOMNode, createPortal } from 'react-dom';
+import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Popper from './Popper';
 import Events from '../utils/events';
@@ -20,7 +20,7 @@ const directMap = {
   leftBottom: 'left-end',
 };
 
-class Tootip extends Component<PropsType, any> {
+class Tooltip extends Component<PropsType, any> {
   static defaultProps = {
     prefixCls: 'za-tooltip',
     visible: false,
@@ -30,17 +30,22 @@ class Tootip extends Component<PropsType, any> {
   };
 
   private instance;
+
   private pop;
+
   private reference;
+
   private popper;
+
   private timer;
+
   // private abs;
 
   constructor(props) {
     super(props);
     this.state = {
       visible: !!props.visible,
-      placement: props.direction,
+      // placement: props.direction,
       arrowElement: `#${props.prefixCls}-arrow`,
     };
   }
@@ -51,49 +56,9 @@ class Tootip extends Component<PropsType, any> {
     this.componentDidUpdate();
   }
 
-  initEvent () {
-    const { instance, pop } = this;
-    const reference = findDOMNode(this.reference);
-    const { trigger } = this.props;
-
-    if (trigger === 'click') {
-      Events.on(reference, 'click', () => {
-        this.setState({
-          visible: !this.state.visible,
-        });
-      });
-      Events.on(document, 'click', ({ target }) => {
-        if (
-          !instance ||
-          instance.contains(target) ||
-          !reference ||
-          reference.contains(target) ||
-          !pop ||
-          pop.contains(target) ||
-          !this.popper
-        ) {
-          return;
-        }
-        this.hidePop();
-      });
-    } else {
-      Events.on(reference, 'mouseenter', () => {
-        this.showPop();
-      });
-      Events.on(reference, 'mouseleave', () => {
-        this.hidePop();
-      });
-      Events.on(pop, 'mouseenter', () => {
-        this.showPop();
-      });
-      Events.on(pop, 'mouseleave', () => {
-        this.hidePop();
-      });
-    }
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (this.state.visible !== nextProps.visible) {
+    const { visible } = this.state;
+    if (visible !== nextProps.visible) {
       this.setState({
         visible: !!nextProps.visible,
       });
@@ -103,15 +68,14 @@ class Tootip extends Component<PropsType, any> {
   componentDidUpdate() {
     const { visible, arrowElement } = this.state;
     const { direction, onVisibleChange } = this.props;
-    const reference = findDOMNode(this.reference);
 
     if (visible) {
       if (this.popper) {
         this.popper.update();
       } else {
-        this.popper = new Popper(reference, this.pop, {
+        this.popper = new Popper(this.reference, this.pop, {
           placement: directMap[direction],
-          arrowElement: arrowElement,
+          arrowElement,
         });
       }
     } else {
@@ -121,9 +85,7 @@ class Tootip extends Component<PropsType, any> {
       delete this.popper;
     }
 
-    if (!!onVisibleChange) {
-      onVisibleChange(visible);
-    }
+    onVisibleChange && onVisibleChange(visible);
   }
 
   componentWillUnmount() {
@@ -134,6 +96,46 @@ class Tootip extends Component<PropsType, any> {
 
     // 移除绑定事件
     // Events.off(window, 'resize', this.onSetDirection);
+  }
+
+  initEvent() {
+    const { visible } = this.state;
+    const { trigger } = this.props;
+
+    if (trigger === 'click') {
+      Events.on(this.reference, 'click', () => {
+        this.setState({
+          visible: !visible,
+        });
+      });
+      Events.on(document, 'click', ({ target }) => {
+        if (
+          !this.instance
+          || this.instance.contains(target)
+          || !this.reference
+          || this.reference.contains(target)
+          || !this.pop
+          || this.pop.contains(target)
+          || !this.popper
+        ) {
+          return;
+        }
+        this.hidePop();
+      });
+    } else {
+      Events.on(this.reference, 'mouseenter', () => {
+        this.showPop();
+      });
+      Events.on(this.reference, 'mouseleave', () => {
+        this.hidePop();
+      });
+      Events.on(this.pop, 'mouseenter', () => {
+        this.showPop();
+      });
+      Events.on(this.pop, 'mouseleave', () => {
+        this.hidePop();
+      });
+    }
   }
 
   showPop() {
@@ -224,10 +226,10 @@ class Tootip extends Component<PropsType, any> {
         ref={(instance) => { this.instance = instance; }}
       >
         {createPortal(inner(), document.body)}
-        {cloneElement( subElement, { ref: (reference) => { this.reference = reference; } })}
+        {cloneElement(subElement, { ref: (reference) => { this.reference = reference; } })}
       </div>
     );
   }
 }
 
-export default Tootip;
+export default Tooltip;

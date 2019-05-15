@@ -21,17 +21,17 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
     const actionCls = classnames(`${prefixCls}__item`, {
       [`${prefixCls}__item--${action.theme}`]: !!action.theme,
     });
-    return <a key={+index} className={actionCls} onClick={action.onClick}>{action.text}</a>;
-  }
+    return <div key={+index} className={actionCls} onClick={action.onClick}>{action.text}</div>;
+  };
 
   renderCancel = () => {
     const { prefixCls, onCancel, cancelText, locale } = this.props;
     return (typeof onCancel === 'function') && (
       <div className={`${prefixCls}__cancel`}>
-        <a className={`${prefixCls}__item`} onClick={onCancel}>{cancelText || locale!.cancelText}</a>
+        <div className={`${prefixCls}__item`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>
       </div>
     );
-  }
+  };
 
   render() {
     const { prefixCls, className, spacing, visible, onMaskClick, actions } = this.props;

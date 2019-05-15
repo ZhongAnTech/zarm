@@ -9,7 +9,7 @@ export default class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
-    this.document = this.props.children.match(/([^]*)\n?(```[^]+```)/);
+    this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
     this.title = String(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
   }
@@ -56,8 +56,9 @@ export default class Demo extends React.Component {
   }
 
   render() {
+    const { location } = this.props;
     // Panel的例子特殊处理
-    return (this.props.location.pathname === '/panel')
+    return (location.pathname === '/panel')
       ? <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
       : (
         <Panel title={<span>{this.title}</span>}>

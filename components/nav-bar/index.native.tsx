@@ -62,21 +62,21 @@ export default class NavBar extends PureComponent<NavBarProps, any> {
     ] as ViewStyle;
 
     const leftBtn = (
-      <TouchableOpacity /* onPress={onClickLeft} */>
+      <TouchableOpacity>
         <Text style={[styles!.btn]}>
-          {/* {leftText} */}
           {left}
         </Text>
       </TouchableOpacity>
     );
 
-    const rightBtn = /* showRight */ right
-      ? <TouchableOpacity /* onPress={onClickRight} */>
+    const rightBtn = right
+      ? (
+        <TouchableOpacity>
           <Text style={[styles!.btn, styles!.rightBtn]}>
-            {/* {rightText} */}
             {right}
           </Text>
         </TouchableOpacity>
+      )
       : <Text style={styles!.btn} />;
 
     return (

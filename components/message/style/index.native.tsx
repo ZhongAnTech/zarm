@@ -1,5 +1,5 @@
-import variables from '../../style/themes/default.native';
 import Color from 'color';
+import variables from '../../style/themes/default.native';
 
 export default {
   wrapper: {

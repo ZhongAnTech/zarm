@@ -49,10 +49,10 @@ export default class Markdown extends React.Component {
             const id = parseInt(Math.random() * 1e9, 10).toString(36);
             this.components.set(id, React.createElement(Demo, this.props, p1));
             return `<div id=${id}></div>`;
-          })
-        , {
+          }),
+        {
           renderer: new marked.Renderer(),
-        }
+        },
       );
 
       return (

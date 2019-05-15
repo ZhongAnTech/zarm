@@ -40,7 +40,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     if (typeof onClick === 'function') {
       (onClick as MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
     }
-  }
+  };
 
   render() {
     const {
@@ -75,11 +75,16 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     const childrenRender = children && <span>{children}</span>;
 
     const contentRender = (!!icon || loading)
-      ? <div className={`${prefixCls}__content`}>{iconRender}{childrenRender}</div>
+      ? (
+        <div className={`${prefixCls}__content`}>
+          {iconRender}
+          {childrenRender}
+        </div>
+      )
       : childrenRender;
 
-    const anchorRest = rest as AnchorButtonProps;
-    const { htmlType, ...nativeRest } = rest as NativeButtonProps;
+    const { tabIndex, ...anchorRest } = rest as AnchorButtonProps;
+    const { htmlType = 'button', ...nativeRest } = rest as NativeButtonProps;
 
     if (anchorRest.href !== undefined) {
       classes = classnames(classes, `${prefixCls}--link`);
@@ -87,6 +92,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       return (
         <a
           role="button"
+          tabIndex={tabIndex}
           aria-disabled={disabled}
           className={classes}
           onClick={this.onClick}
@@ -99,10 +105,11 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     }
 
     return (
+      // eslint-disable-next-line
       <button
         role="button"
         aria-disabled={disabled}
-        type={htmlType || 'button'}
+        type={htmlType}
         className={classes}
         onClick={this.onClick}
         onTouchStart={() => {}}

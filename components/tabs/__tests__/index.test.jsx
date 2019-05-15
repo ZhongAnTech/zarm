@@ -13,7 +13,7 @@ describe('Tab', () => {
         <Tabs.Panel title="选项卡2">
           <div>试试点我右滑</div>
         </Tabs.Panel>
-      </Tabs>
+      </Tabs>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -27,7 +27,7 @@ describe('Tab', () => {
         <Tabs.Panel title="选项卡2">
           <div>试试点我右滑</div>
         </Tabs.Panel>
-      </Tabs>
+      </Tabs>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -41,7 +41,7 @@ describe('Tab', () => {
         <Tabs.Panel title="选项卡2">
           <div>试试点我右滑</div>
         </Tabs.Panel>
-      </Tabs>
+      </Tabs>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ lineWidth: 30 });
@@ -58,7 +58,7 @@ describe('Tab', () => {
         <Tabs.Panel title="选项卡2">
           <div>试试点我右滑</div>
         </Tabs.Panel>
-      </Tabs>
+      </Tabs>,
     );
     wrapper.setProps({ value: 1 });
   });
@@ -73,7 +73,7 @@ describe('Tab', () => {
         <Tabs.Panel title="选项卡2">
           <div>试试点我右滑</div>
         </Tabs.Panel>
-      </Tabs>
+      </Tabs>,
     );
     wrapper.find('.za-tabs__header__item').first().simulate('click');
     wrapper.find('.za-tabs__header__item').last().simulate('click');

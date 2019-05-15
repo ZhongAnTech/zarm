@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Select } from 'dragon-ui';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
+import { version } from '@/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
 
@@ -17,10 +18,9 @@ const initDocSearch = () => {
 
 class Header extends PureComponent {
   componentDidMount() {
-    const { searchInput } = this;
     document.addEventListener('keyup', (event) => {
       if (event.keyCode === 83 && event.target === document.body) {
-        searchInput.focus();
+        this.searchInput.focus();
       }
     });
     initDocSearch();
@@ -31,11 +31,10 @@ class Header extends PureComponent {
     return classnames({
       active: keys.indexOf(match.url.split('/')[1] || '/') > -1,
     });
-  }
+  };
 
   render() {
     const { match } = this.props;
-    const { version } = require('@/package.json');
 
     return (
       <header>

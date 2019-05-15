@@ -29,16 +29,16 @@ exports[`Confirm renders correctly 1`] = `
       <div
         class="za-modal__footer za-confirm__footer"
       >
-        <a
+        <div
           class="za-confirm__footer__button"
         >
           Cancel
-        </a>
-        <a
+        </div>
+        <div
           class="za-confirm__footer__button za-confirm__footer__button--ok"
         >
           OK
-        </a>
+        </div>
       </div>
     </div>
   </div>

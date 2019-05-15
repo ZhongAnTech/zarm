@@ -52,40 +52,35 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     if (typeof onItemChange === 'function') {
       onItemChange(itemKey);
     }
-  }
+  };
 
-  isActive(props) {
-    const { isActive } = props;
-    return isActive;
-  }
-
-  setStyle(active) {
-    const { content } = this;
-    let height;
-
+  setStyle = (active) => {
     if (active) {
-      height = content.offsetHeight;
-      content.style.height = `${height}px`;
+      this.content.style.height = `${this.content.offsetHeight}px`;
 
       setTimeout(() => {
-        content.style.height = '0px';
+        this.content.style.height = '0px';
       }, 0);
     } else {
-      content.style.height = '0px';
+      this.content.style.height = '0px';
 
       setTimeout(() => {
-        content.style.height = `${this.getContentHeight(content)}px`;
+        this.content.style.height = `${this.getContentHeight(this.content)}px`;
       }, 0);
     }
-  }
+  };
 
-  getContentHeight(content) {
+  getContentHeight = (content) => {
     const children = [...content.children];
     return children.reduce((res, next) => {
       res += next.offsetHeight;
       return res;
     }, 0);
-  }
+  };
+
+  isActive = (props) => {
+    return props.isActive;
+  };
 
   render() {
     const { title, children, style } = this.props;
@@ -108,7 +103,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
         </div>
         <div
           className={`${prefixCls}__content`}
-          ref={(content) => this.content = content}
+          ref={(content) => { this.content = content; }}
         >
           <div className={`${prefixCls}__content__inner`}>
             {children}

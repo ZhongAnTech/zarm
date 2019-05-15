@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import PropsType from './PropsType';
 import classnames from 'classnames';
+import PropsType from './PropsType';
 import TabPanel from './TabPanel';
 import Carousel from '../carousel';
 
@@ -55,7 +55,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     if (typeof onChange === 'function') {
       onChange(value);
     }
-  }
+  };
 
   onTabClick = (tab, index) => {
     const { disabled, canSwipe, onChange } = this.props;
@@ -69,7 +69,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     if (canSwipe) {
       this.carousel.onSlideTo(index);
     }
-  }
+  };
 
   renderTabs = (tab, index) => {
     const { prefixCls, disabled } = this.props;
@@ -87,10 +87,11 @@ export default class Tabs extends PureComponent<TabsProps, any> {
         {tab.props.title}
       </li>
     );
-  }
+  };
 
   render() {
     const { prefixCls, className, lineWidth, hasline, canSwipe, children } = this.props;
+    const { value } = this.state;
 
     const classes = classnames(prefixCls, className, {
       [`${prefixCls}--hasline`]: hasline,
@@ -107,22 +108,22 @@ export default class Tabs extends PureComponent<TabsProps, any> {
         <Carousel
           direction="left"
           showPagination={false}
-          activeIndex={this.state.value}
+          activeIndex={value}
           ref={(ele) => { this.carousel = ele; }}
-          onChange={(value) => this.onSwipeChange(value)}
+          onChange={v => this.onSwipeChange(v)}
         >
           {React.Children.map(children, (item: any) => <div>{item.props.children}</div>)}
         </Carousel>
       );
     } else {
       contentRender = React.Children.map(children, (item: any, index) => {
-        return <TabPanel {...item.props} selected={this.state.value === index} />;
+        return <TabPanel {...item.props} selected={value === index} />;
       });
     }
 
     const lineStyle: CSSProperties = {
       width: `${100 / children.length}%`,
-      left: `${(this.state.value / children.length) * 100}%`,
+      left: `${(value / children.length) * 100}%`,
       // right: `${(children.length - this.state.value - 1) / children.length * 100}%`,
       // transition: `right 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1) 0.09s`,
     };

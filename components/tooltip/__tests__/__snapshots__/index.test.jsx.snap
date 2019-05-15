@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tooltip direction 1`] = `
-<Tootip
+<Tooltip
   direction="top"
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"
@@ -45,11 +45,11 @@ exports[`Tooltip direction 1`] = `
       </span>
     </span>
   </div>
-</Tootip>
+</Tooltip>
 `;
 
 exports[`Tooltip visible 1`] = `
-<Tootip
+<Tooltip
   direction="top"
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"
@@ -96,5 +96,5 @@ exports[`Tooltip visible 1`] = `
       </span>
     </span>
   </div>
-</Tootip>
+</Tooltip>
 `;

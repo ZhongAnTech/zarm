@@ -49,7 +49,7 @@ describe('SwipeAction', () => {
         ]}
       >
         <div>左右都能滑动</div>
-      </SwipeAction>
+      </SwipeAction>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     jest.runAllTimers();
@@ -65,7 +65,7 @@ describe('SwipeAction', () => {
         ]}
       >
         <div>右滑</div>
-      </SwipeAction>
+      </SwipeAction>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -79,7 +79,7 @@ describe('SwipeAction', () => {
         ]}
       >
         <div>左滑</div>
-      </SwipeAction>
+      </SwipeAction>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -98,7 +98,7 @@ describe('SwipeAction', () => {
         ]}
       >
         <Cell>右滑看看</Cell>
-      </SwipeAction>
+      </SwipeAction>,
     ).find('.za-swipe-action__content');
     wrapper.simulate('touchStart', {
       touches: [10, 0],
@@ -127,7 +127,7 @@ describe('SwipeAction', () => {
         ]}
       >
         <Cell>右滑看看</Cell>
-      </SwipeAction>
+      </SwipeAction>,
     ).find('.za-swipe-action__content');
     wrapper.simulate('touchStart', createStartTouchEventObject({ x: 0, y: 0, preventDefault }));
     wrapper.simulate('touchMove', createMoveTouchEventObject({ x: 10, y: 0, preventDefault }));

@@ -16,7 +16,7 @@ class SideBar extends PureComponent {
         </a>
       </Menu.Item>
     ));
-  }
+  };
 
   getMenus = (groupName, key) => {
     return (
@@ -33,7 +33,7 @@ class SideBar extends PureComponent {
         }
       </Menu.SubMenu>
     );
-  }
+  };
 
   render() {
     const { match } = this.props;

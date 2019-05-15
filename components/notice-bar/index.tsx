@@ -23,7 +23,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   };
 
   private wrapper;
+
   private content;
+
   private moveInterval;
 
   constructor(props: NoticeBarProps) {
@@ -69,6 +71,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
   render() {
     const { prefixCls, children, scrollable, ...others } = this.props;
+    const { offset } = this.state;
 
     return (
       <Message {...others} size="lg">
@@ -76,7 +79,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           <div
             className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
-            style={{ left: this.state.offset }}
+            style={{ left: offset }}
           >
             {children}
           </div>

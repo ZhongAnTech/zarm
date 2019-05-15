@@ -34,6 +34,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   private initDate;
+
   private isScrolling = false;
 
   constructor(props) {
@@ -49,6 +50,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { visible } = this.state;
     const date = nextProps.value && isExtendDate(nextProps.value);
     const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
 
@@ -56,19 +58,19 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       value: date || defaultDate,
     });
 
-    if ('visible' in nextProps && nextProps.visible !== this.state.visible) {
+    if ('visible' in nextProps && nextProps.visible !== visible) {
       this.setState({
         visible: nextProps.visible,
       });
     }
   }
 
-  onMaskClick() {
+  onMaskClick = () => {
     const { onMaskClick } = this.props;
     if (typeof onMaskClick === 'function') {
       onMaskClick();
     }
-  }
+  };
 
   onCancel = () => {
     const { onCancel } = this.props;
@@ -79,36 +81,33 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     if (typeof onCancel === 'function') {
       onCancel();
     }
-  }
+  };
 
   onOk = () => {
     if (this.isScrolling) {
       return false;
     }
+
     const { onOk } = this.props;
-    const value = this.state.value || this.initDate;
+    const { value } = this.state;
+    const newValue = value || this.initDate;
+
     this.setState({
-      value: value,
+      value: newValue,
       visible: false,
     });
     if (typeof onOk === 'function') {
-      onOk(value);
+      onOk(newValue);
     }
-  }
+  };
 
-  onTransition(isScrolling) {
+  onTransition = (isScrolling) => {
     const { onTransition } = this.props;
     this.isScrolling = isScrolling;
     if (typeof onTransition === 'function') {
       onTransition(isScrolling);
     }
-  }
-
-  close(key) {
-    this.setState({
-      [`${key}`]: false,
-    });
-  }
+  };
 
   onInit = (selected) => {
     const { onInit } = this.props;
@@ -116,7 +115,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     if (typeof onInit === 'function') {
       onInit(selected);
     }
-  }
+  };
 
   onValueChange = (newValue) => {
     const { onChange } = this.props;
@@ -127,11 +126,16 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     if (typeof onChange === 'function') {
       onChange(newValue);
     }
-  }
+  };
+
+  close = (key) => {
+    this.setState({
+      [`${key}`]: false,
+    });
+  };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, locale,
-       ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, children, locale, ...others } = this.props;
     const cls = classnames(prefixCls, className);
     const { visible, value } = this.state;
 
@@ -140,7 +144,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         visible={visible}
         onMaskClick={() => this.onMaskClick()}
       >
-        <div className={cls} onClick={(e) => {e.stopPropagation(); }}>
+        <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
             <div
               className={`${prefixCls}__cancel`}

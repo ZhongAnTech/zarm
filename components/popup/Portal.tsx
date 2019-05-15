@@ -1,4 +1,4 @@
-import React, { Component, CSSProperties } from 'react';
+import React, { Component, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
@@ -6,6 +6,7 @@ import Mask from '../mask';
 import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
+
 export interface PortalProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -25,7 +26,9 @@ export default class Portal extends Component<PortalProps, any> {
   };
 
   private timer: number;
+
   private popup;
+
   private _container;
 
   constructor(props) {
@@ -40,17 +43,19 @@ export default class Portal extends Component<PortalProps, any> {
   }
 
   componentDidMount() {
-    if (this.props.visible) {
+    const { visible } = this.props;
+    if (visible) {
       this.showPortal();
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.visible === true && nextProps.visible !== this.props.visible) {
+    const { visible } = this.props;
+    if (nextProps.visible === true && nextProps.visible !== visible) {
       this.showPortal();
     }
 
-    if (nextProps.visible === false && nextProps.visible !== this.props.visible) {
+    if (nextProps.visible === false && nextProps.visible !== visible) {
       this.leave();
     }
   }
@@ -71,7 +76,7 @@ export default class Portal extends Component<PortalProps, any> {
       Events.on(this.popup, 'transitionend', this.animationEnd);
       setTimeout(() => { this.enter(); }, 0);
     });
-  }
+  };
 
   enter = () => {
     const { stayTime, autoClose, onMaskClick } = this.props;
@@ -90,7 +95,7 @@ export default class Portal extends Component<PortalProps, any> {
         clearTimeout(this.timer);
       }, stayTime);
     }
-  }
+  };
 
   leave = () => {
     this.setState({
@@ -98,7 +103,7 @@ export default class Portal extends Component<PortalProps, any> {
       isPending: true,
       animationState: 'leave',
     });
-  }
+  };
 
   animationEnd = (e) => {
     // 防止其他的样式转换触发该事件，如border、background-image
@@ -123,15 +128,7 @@ export default class Portal extends Component<PortalProps, any> {
     } else if (typeof onOpen === 'function') {
       onOpen();
     }
-  }
-
-  handleMaskClick(e) {
-    e.stopPropagation();
-    const { onMaskClick } = this.props;
-    if (typeof onMaskClick === 'function') {
-      onMaskClick();
-    }
-  }
+  };
 
   renderMask = () => {
     const { mask, maskType, animationDuration } = this.props;
@@ -146,26 +143,27 @@ export default class Portal extends Component<PortalProps, any> {
       animationDuration: `${animationDuration}ms`,
     };
 
-    return mask &&
+    return mask && (
       <Mask
         className={maskCls}
         style={maskStyle}
         visible={isMaskShow}
         type={maskType}
         onClick={(e) => { this.handleMaskClick(e); }}
-      />;
-  }
+      />
+    );
+  };
 
-  createContainer() {
+  createContainer = () => {
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += ' popup-container';
       document.body.appendChild(this._container);
     }
     return this._container;
-  }
+  };
 
-  getComponent() {
+  getComponent = () => {
     const { prefixCls, className, animationDuration, direction, mask, children } = this.props;
     const { isShow } = this.state;
 
@@ -191,18 +189,27 @@ export default class Portal extends Component<PortalProps, any> {
         {this.renderMask()}
       </div>
     );
-  }
+  };
 
-  renderPortal() {
+  handleMaskClick = (e) => {
+    e.stopPropagation();
+    const { onMaskClick } = this.props;
+    if (typeof onMaskClick === 'function') {
+      onMaskClick();
+    }
+  };
+
+  renderPortal = (): ReactPortal | null => {
     if (!IS_REACT_16) {
       ReactDOM.unstable_renderSubtreeIntoContainer(this, this.getComponent(), this._container);
       return null;
     }
     return ReactDOM.createPortal(this.getComponent(), this._container);
-  }
+  };
 
   render() {
-    if (!this.state.mounted) {
+    const { mounted } = this.state;
+    if (!mounted) {
       return null;
     }
     return this.renderPortal();

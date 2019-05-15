@@ -29,11 +29,11 @@ exports[`Alert renders correctly 1`] = `
       <div
         class="za-modal__footer za-alert__footer"
       >
-        <a
+        <div
           class="za-alert__footer__button"
         >
           Close
-        </a>
+        </div>
       </div>
     </div>
   </div>

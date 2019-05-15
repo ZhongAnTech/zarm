@@ -16,8 +16,11 @@ export interface ModalProps extends BaseModalProps {
 
 export default class Modal extends PureComponent<ModalProps, any> {
   static Header: any;
+
   static Body: any;
+
   static Footer: any;
+
   static defaultProps = {
     prefixCls: 'za-modal',
     visible: false,
@@ -39,9 +42,10 @@ export default class Modal extends PureComponent<ModalProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.visible && nextProps.visible) {
+    const { visible } = this.props;
+    if (!visible && nextProps.visible) {
       this.enter();
-    } else if (this.props.visible && !nextProps.visible) {
+    } else if (visible && !nextProps.visible) {
       this.leave();
     }
   }
@@ -68,7 +72,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
         isPending: false,
       });
     }
-  }
+  };
 
   enter = () => {
     this.setState({
@@ -76,7 +80,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
       isPending: true,
       animationState: 'enter',
     });
-  }
+  };
 
   leave = () => {
     this.setState({
@@ -84,7 +88,7 @@ export default class Modal extends PureComponent<ModalProps, any> {
       isPending: true,
       animationState: 'leave',
     });
-  }
+  };
 
   render() {
     const { prefixCls, className, shape, animationType, animationDuration, width, onMaskClick, children } = this.props;

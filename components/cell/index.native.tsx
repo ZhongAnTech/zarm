@@ -33,11 +33,11 @@ export default class Cell extends PureComponent<CellProps, any> {
 
   onPressIn = () => {
     this.setState({ isActive: true });
-  }
+  };
 
   onPressOut = () => {
     this.setState({ isActive: false });
-  }
+  };
 
   render() {
     const {
@@ -67,12 +67,12 @@ export default class Cell extends PureComponent<CellProps, any> {
 
     const contentStyle = (!onClick && wrapperStyle) as ViewStyle;
     const iconRender = icon && <View style={styles!.iconStyle}>{icon}</View>;
-    const arrowRender = hasArrow && <View style={styles!.arrowStyle}/>;
+    const arrowRender = hasArrow && <View style={styles!.arrowStyle} />;
 
     const cellRender = (
       <View style={wrapperStyle}>
         <View style={styles!.lineContainerStyle}>
-          <View style={styles!.lineStyle}/>
+          <View style={styles!.lineStyle} />
         </View>
         <View style={styles!.innerStyle as ViewStyle}>
           <View style={styles!.contentStyle as ViewStyle}>
