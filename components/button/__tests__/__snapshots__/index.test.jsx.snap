@@ -45,7 +45,6 @@ exports[`Button href and target 1`] = `
   class="za-button za-button--default za-button--md za-button--radius za-button--link"
   href="https://zarm.design"
   role="button"
-  tabindex="0"
   target="__blank"
 >
   <span>

@@ -83,7 +83,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       )
       : childrenRender;
 
-    const anchorRest = rest as AnchorButtonProps;
+    const { tabIndex, ...anchorRest } = rest as AnchorButtonProps;
     const { htmlType = 'button', ...nativeRest } = rest as NativeButtonProps;
 
     if (anchorRest.href !== undefined) {
@@ -92,7 +92,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       return (
         <a
           role="button"
-          tabIndex={0}
+          tabIndex={tabIndex}
           aria-disabled={disabled}
           className={classes}
           onClick={this.onClick}

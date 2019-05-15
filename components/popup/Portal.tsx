@@ -1,4 +1,4 @@
-import React, { Component, CSSProperties } from 'react';
+import React, { Component, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
@@ -199,7 +199,7 @@ export default class Portal extends Component<PortalProps, any> {
     }
   };
 
-  renderPortal = () => {
+  renderPortal = (): ReactPortal | null => {
     if (!IS_REACT_16) {
       ReactDOM.unstable_renderSubtreeIntoContainer(this, this.getComponent(), this._container);
       return null;
