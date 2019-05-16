@@ -1,100 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip direction 1`] = `
-<Tooltip
+exports[`Tooltip renders correctly 1`] = `
+<Tootip
   direction="top"
+  mouseEnterDelay={0.1}
+  mouseLeaveDelay={0.1}
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"
   title="hello"
   trigger="hover"
-  visible={false}
 >
-  <div
-    className="za-tooltip"
-  >
-    <Portal
-      containerInfo={
-        <body>
-          <div
-            class="za-tooltip__content"
-          >
-            hello
-            <span
-              class="za-tooltip__arrow"
-              id="za-tooltip-arrow"
-            />
-          </div>
-        </body>
+  <Popper
+    direction="top"
+    hasArrow={true}
+    mouseEnterDelay={0.1}
+    mouseLeaveDelay={0.1}
+    onVisibleChange={[Function]}
+    popperOptions={
+      Object {
+        "positionFixed": true,
       }
-    >
-      <div
-        className="za-tooltip__content"
-      >
-        hello
-        <span
-          className="za-tooltip__arrow"
-          id="za-tooltip-arrow"
-        />
-      </div>
-    </Portal>
-    <span
-      className="za-tooltip__inner"
-    >
-      <span>
-        foo
-      </span>
-    </span>
-  </div>
-</Tooltip>
-`;
-
-exports[`Tooltip visible 1`] = `
-<Tooltip
-  direction="top"
-  onVisibleChange={[Function]}
-  prefixCls="za-tooltip"
-  title="hello"
-  trigger="hover"
-  visible={true}
->
-  <div
-    className="za-tooltip"
+    }
+    prefixCls="za-tooltip"
+    title="hello"
+    trigger="hover"
   >
-    <Portal
-      containerInfo={
-        <body>
-          <div
-            class="za-tooltip__content za-tooltip__content--show"
-            style="position: fixed; top: 0px; transform: translate3d(NaNpx, NaNpx, 0); left: 0px;"
-            x-placement="top"
-          >
-            hello
-            <span
-              class="za-tooltip__arrow"
-              id="za-tooltip-arrow"
-              style=""
-            />
-          </div>
-        </body>
-      }
+    <div
+      className="za-tooltip za-tooltip__wrapper"
     >
-      <div
-        className="za-tooltip__content za-tooltip__content--show"
+      <span
+        className="za-tooltip__inner"
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
       >
-        hello
-        <span
-          className="za-tooltip__arrow"
-          id="za-tooltip-arrow"
-        />
-      </div>
-    </Portal>
-    <span
-      className="za-tooltip__inner"
-    >
-      <span>
-        foo
+        <span>
+          foo
+        </span>
       </span>
-    </span>
-  </div>
-</Tooltip>
+    </div>
+  </Popper>
+</Tootip>
 `;

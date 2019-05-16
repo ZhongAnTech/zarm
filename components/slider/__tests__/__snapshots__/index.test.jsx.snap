@@ -33,8 +33,10 @@ exports[`Slider defaultValue 1`] = `
         }
       }
     >
-      <Tooltip
+      <Tootip
         direction="top"
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={10}
@@ -44,7 +46,7 @@ exports[`Slider defaultValue 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tooltip>
+      </Tootip>
     </div>
   </Drag>
 </div>
@@ -83,8 +85,10 @@ exports[`Slider disabled 1`] = `
         }
       }
     >
-      <Tooltip
+      <Tootip
         direction="top"
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -94,7 +98,7 @@ exports[`Slider disabled 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tooltip>
+      </Tootip>
     </div>
   </Drag>
 </div>
@@ -133,8 +137,10 @@ exports[`Slider max 1`] = `
         }
       }
     >
-      <Tooltip
+      <Tootip
         direction="top"
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -144,7 +150,7 @@ exports[`Slider max 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tooltip>
+      </Tootip>
     </div>
   </Drag>
 </div>
@@ -183,8 +189,10 @@ exports[`Slider min 1`] = `
         }
       }
     >
-      <Tooltip
+      <Tootip
         direction="top"
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -194,7 +202,7 @@ exports[`Slider min 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tooltip>
+      </Tootip>
     </div>
   </Drag>
 </div>
@@ -233,8 +241,10 @@ exports[`Slider shallows correctly 1`] = `
         }
       }
     >
-      <Tooltip
+      <Tootip
         direction="top"
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -244,7 +254,7 @@ exports[`Slider shallows correctly 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tooltip>
+      </Tootip>
     </div>
   </Drag>
 </div>
@@ -283,8 +293,10 @@ exports[`Slider step 1`] = `
         }
       }
     >
-      <Tooltip
+      <Tootip
         direction="top"
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -294,7 +306,7 @@ exports[`Slider step 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tooltip>
+      </Tootip>
     </div>
   </Drag>
 </div>
@@ -333,8 +345,10 @@ exports[`Slider value 1`] = `
         }
       }
     >
-      <Tooltip
+      <Tootip
         direction="top"
+        mouseEnterDelay={0.1}
+        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={10}
@@ -344,7 +358,7 @@ exports[`Slider value 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tooltip>
+      </Tootip>
     </div>
   </Drag>
 </div>

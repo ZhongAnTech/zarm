@@ -2,7 +2,7 @@
 
 ## 基本用法
 ```jsx
-import { Tooltip, Cell, Button } from 'zarm';
+import { Tooltip, Cell, Button, Popper } from 'zarm';
 
 class Demo extends React.Component {
 
@@ -13,7 +13,7 @@ class Demo extends React.Component {
           <div>
             <div style={{ marginLeft: 60 }}>
               <Tooltip direction="topLeft" title="topLeft text">
-                <Button block size="xs">TL</Button>
+                <Button block size="xs" onClick={() => console.log(1)}>TL</Button>
               </Tooltip>
 
               <Tooltip direction="top" title="top text">
@@ -25,7 +25,7 @@ class Demo extends React.Component {
               </Tooltip>
             </div>
 
-            <div style={{ width: 60, float: "left" }}>
+            <div style={{ width: 60, float: "left",  clear: 'both' }}>
               <Tooltip direction="leftTop" title="leftTop text">
                 <Button block size="xs">LT</Button>
               </Tooltip>

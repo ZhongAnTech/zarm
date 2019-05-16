@@ -38,6 +38,7 @@ export { default as SwipeAction } from './swipe-action';
 export { default as Switch } from './switch';
 export { default as Tabs } from './tabs';
 export { default as Toast } from './toast';
+export { default as Popper } from './popper';
 export { default as Tooltip } from './tooltip';
 export { default as Wheel } from './wheel';
 export { default as NavBar } from './nav-bar';

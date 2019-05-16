@@ -1,14 +1,14 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Tooltip from '../index';
+import Popper from '../index';
 
-describe('Tooltip', () => {
+describe('Popper', () => {
   it('renders correctly', () => {
-    jest.useFakeTimers();
-    const wrapper = mount(<Tooltip direction="top" title="hello"><span>foo</span></Tooltip>);
+    const onVisibleChange = jest.fn();
+
+    const wrapper = mount(<Popper title="标题" onVisibleChange={onVisibleChange}><p>点我</p></Popper>);
     expect(toJson(wrapper)).toMatchSnapshot();
-    jest.runAllTimers();
     wrapper.unmount();
   });
 });
