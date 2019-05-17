@@ -92,4 +92,22 @@ describe('Slider', () => {
       touches: [200, 0],
     });
   });
+
+  it('mouse event', () => {
+    const onChange = jest.fn();
+
+    const wrapper = mount(<Slider onChange={onChange} />).find('.za-slider__handle');
+    wrapper.simulate('mouseDown', {
+      pageX: 0,
+      pageY: 0,
+    });
+    wrapper.simulate('mouseMove', {
+      pageX: -10,
+      pageY: 0,
+    });
+    wrapper.simulate('mouseUp', {
+      pageX: -20,
+      pageY: 0,
+    });
+  });
 });
