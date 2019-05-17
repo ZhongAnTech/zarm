@@ -23,12 +23,7 @@
     @include e(mark) {
       position: absolute;
       transform: translateX(-50%);
-    }
-
-    @include e(mark-active) {
-      position: absolute;
       color: var(--theme-primary);
-      transform: translateX(-50%);
     }
   }
 

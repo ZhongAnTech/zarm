@@ -166,7 +166,7 @@ exports[`Slider marks 1`] = `
         className="za-slider__marks"
       >
         <span
-          className="za-slider__mark za-slider__mark-active"
+          className="za-slider__mark"
           key="0"
           style={
             Object {

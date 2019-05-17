@@ -173,14 +173,10 @@ export default class Slider extends PureComponent<SliderProps, any> {
     const markKeys = Object.keys(marks || {});
 
     const markElement = markKeys.map((item) => {
-      const markStyle = classnames(`${prefixCls}__mark`, {
-        [`${prefixCls}__mark-active`]: value >= item,
-      });
-
       return (
         <span
           key={item}
-          className={markStyle}
+          className={`${prefixCls}__mark`}
           style={{ left: `${item}%` }}
         >
           {marks[item]}
