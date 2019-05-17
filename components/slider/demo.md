@@ -15,6 +15,13 @@ class Demo extends React.Component {
   }
 
   render() {
+    const marks = {
+      0: '0',
+      26: '26',
+      60: '60',
+      100: '100',
+    }
+  
     return (
       <div>
         <Cell title="普通">
@@ -41,6 +48,16 @@ class Demo extends React.Component {
         <Cell title="禁用状态">
           <Slider defaultValue={20} disabled />
         </Cell>
+        
+        <Cell title="显示区间">
+          <Slider showMark defaultValue={20} />
+        </Cell>
+        
+        <Cell title="带标签">
+          <Slider 
+            marks={marks} 
+          />
+        </Cell>
       </div>
     )
   }
@@ -57,8 +74,10 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | value | number | - | 值 |
 | defaultValue | number | - | 初始值 |
-| min | number | - | 最小值 |
-| max | number | - | 最大值 |
+| min | number | 0 | 最小值 |
+| max | number | 100 | 最大值 |
 | step | number | 1 | 步长 |
+| showMark | boolean | false | 是否显示标记刻度 |
+| marks | boolean | type marks = {[value: number]?: React.ReactNode} | 自定义标记刻度的渲染展示。|
 | disabled | boolean | false | 是否禁用 |
 | onChange | (value?: number) => void | - | 值变化时触发的回调函数 |

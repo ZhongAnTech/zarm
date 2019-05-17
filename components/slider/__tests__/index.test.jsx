@@ -39,6 +39,23 @@ describe('Slider', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('showMark', () => {
+    const wrapper = shallow(<Slider showMark />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('marks', () => {
+    const marks = {
+      0: '0',
+      26: '26',
+      60: '60',
+      100: '100',
+    };
+
+    const wrapper = shallow(<Slider marks={marks} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('set new value', () => {
     jest.useFakeTimers();
     const wrapper = mount(<Slider />);
