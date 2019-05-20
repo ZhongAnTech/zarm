@@ -31,12 +31,10 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
     return (
       <Modal className={cls} {...others}>
         <Modal.Header title={title} />
-        <Modal.Body className={`${prefixCls}__body`}>
-          {message}
-        </Modal.Body>
-        <Modal.Footer className={`${prefixCls}__footer`}>
-          <div className={`${prefixCls}__footer__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>
-          <div className={`${prefixCls}__footer__button ${prefixCls}__footer__button--ok`} onClick={onOk}>
+        <Modal.Body>{message}</Modal.Body>
+        <Modal.Footer>
+          <div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>
+          <div className={`${prefixCls}__button ${prefixCls}__button--ok`} onClick={onOk}>
             {okText || locale!.okText}
           </div>
         </Modal.Footer>

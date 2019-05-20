@@ -12,8 +12,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--keyboard-item-font-size);
     position: relative;
+    font-size: var(--keyboard-item-font-size);
     @include button-base();
     @include button-theme(
       var(--button-default-background),
