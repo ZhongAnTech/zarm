@@ -22,20 +22,20 @@ exports[`Confirm renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="za-modal__body za-confirm__body"
+        class="za-modal__body"
       >
         你确定要这样做吗？
       </div>
       <div
-        class="za-modal__footer za-confirm__footer"
+        class="za-modal__footer"
       >
         <div
-          class="za-confirm__footer__button"
+          class="za-confirm__button"
         >
           Cancel
         </div>
         <div
-          class="za-confirm__footer__button za-confirm__footer__button--ok"
+          class="za-confirm__button za-confirm__button--ok"
         >
           OK
         </div>
