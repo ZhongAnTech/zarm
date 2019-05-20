@@ -25,6 +25,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
     prefixCls: 'za-slider',
     disabled: false,
     showMark: false,
+    vertical: false,
     step: 1,
     min: 0,
     max: 100,
@@ -57,7 +58,63 @@ export default class Slider extends PureComponent<SliderProps, any> {
     }
   }
 
-  onDragStart = () => {
+  /**
+   * 初始化
+   */
+  init = () => {
+    const { value } = this.state;
+    const offset = this.getOffsetByValue(value);
+    this.offsetStart = offset;
+    this.setState({ offset });
+  };
+
+  /**
+   * 通过偏移量确定值
+   * @param  {number} offset 偏移量
+   * @return {number}        值
+   */
+  getValueByOffset = (offset) => {
+    const {
+      min,
+      max,
+      step,
+      marks = {},
+    } = this.props;
+
+    const percent = offset / this.getMaxOffset();
+
+    let value = Math.round((min + ((max - min) * percent)));
+    if (!marks[value]) {
+      value = Math.round((min + ((max - min) * percent)) / step) * step;
+    }
+
+    return Math.max(Math.min(value, max), min);
+  };
+
+  /**
+   * 通过值获取偏移量
+   * @param  {number} value 值
+   * @return {number}       偏移量
+   */
+  getOffsetByValue = (value) => {
+    const { min, max } = this.props;
+    return this.getMaxOffset() * ((value - min) / (max - min));
+  };
+
+  /**
+   * 获取最大偏移量
+   */
+  getMaxOffset = () => {
+    if (this.line) {
+      if (this.props.vertical) {
+        return this.line.offsetHeight;
+      }
+
+      return this.line.offsetWidth;
+    }
+  };
+
+  handleDragStart = () => {
     const { disabled } = this.props;
     if (disabled) {
       return;
@@ -65,8 +122,12 @@ export default class Slider extends PureComponent<SliderProps, any> {
     this.setState({ tooltip: true });
   };
 
-  onDragMove = (event, { offsetX = 0 } = {}) => {
-    const { disabled } = this.props;
+  handleDragMove = (event, { offsetX = 0, offsetY = 0 } = {}) => {
+    const {
+      disabled,
+      vertical,
+    } = this.props;
+
     if (disabled) {
       return false;
     }
@@ -74,7 +135,9 @@ export default class Slider extends PureComponent<SliderProps, any> {
     event.stopPropagation();
     event.preventDefault();
 
-    let offset = (this.offsetStart || 0) + (offsetX || 0);
+    let offset = vertical
+      ? (this.offsetStart || 0) + (offsetY || 0)
+      : (this.offsetStart || 0) + (offsetX || 0);
 
     if (offset < 0) {
       offset = 0;
@@ -86,7 +149,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
       return false;
     }
 
-    const maxOffset = this.maxOffset();
+    const maxOffset = this.getMaxOffset();
     if (offset > maxOffset) {
       offset = maxOffset;
       const newValue = this.getValueByOffset(offset);
@@ -99,74 +162,53 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const value = this.getValueByOffset(offset);
     offset = this.getOffsetByValue(value);
+
     this.setState({ offset, value });
+
     return true;
   };
 
-  onDragEnd = (_event, { offsetX = 0 } = {}) => {
+  handleDragEnd = (_event, { offsetX = 0, offsetY = 0 } = {}) => {
+    const {
+      vertical,
+      onChange,
+    } = this.props;
+
     this.setState({ tooltip: false });
-    if (Number.isNaN(offsetX)) {
+
+    if (vertical) {
+      if (Number.isNaN(offsetY)) {
+        return;
+      }
+    } else if (Number.isNaN(offsetX)) {
       return;
     }
 
-    this.offsetStart += offsetX;
+    this.offsetStart += vertical ? offsetY : offsetX;
 
-    const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(this.state.value);
     }
   };
 
   /**
-   * 通过偏移量确定值
-   * @param  {number} offset 偏移量
-   * @return {number}        值
-   */
-  getValueByOffset = (offset) => {
-    const { min, max, step } = this.props;
-    const percent = offset / this.maxOffset();
-    const value = Math.round((min + ((max - min) * percent)) / step) * step;
-    return Math.max(Math.min(value, max), min);
-  };
-
-  /**
-   * 通过值获取偏移量
-   * @param  {number} value 值
-   * @return {number}       偏移量
-   */
-  getOffsetByValue = (value) => {
-    const { min, max } = this.props;
-    return this.maxOffset() * ((value - min) / (max - min));
-  };
-
-  /**
-   * 获取最大偏移量
-   */
-  maxOffset = () => {
-    return this.line
-      ? this.line.offsetWidth
-      : 0;
-  };
-
-  /**
-   * 初始化
-   */
-  init = () => {
-    const { value } = this.state;
-    const offset = this.getOffsetByValue(value);
-    this.offsetStart = offset;
-    this.setState({ offset });
-  };
-
-  /**
    * 获取标签
+   * @param {boolean} showMark 是否显示标记刻度
    * @param {object} marks 标签对象
    * @param {number} value 滑动输入条值
    * @param {string} prefixCls
    */
-  renderMarkInfo = (marks, value, prefixCls) => {
+  renderMarkInfo = (showMark, marks, value, prefixCls) => {
+    const isEmptyMarks = typeof marks !== 'object' || JSON.stringify(marks) === '{}';
+
+    if (showMark && isEmptyMarks) {
+      console.error('请输入有效的 marks');
+
+      return null;
+    }
+
     // 判断是否为空对象
-    if (typeof marks !== 'object' || JSON.stringify(marks) === '{}') {
+    if (isEmptyMarks) {
       return null;
     }
 
@@ -184,7 +226,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
       );
     });
 
-    const marksElement = (
+    const marksElement = showMark && (
       <div className={`${prefixCls}__marks`}>
         {markElement}
       </div>
@@ -216,8 +258,9 @@ export default class Slider extends PureComponent<SliderProps, any> {
       disabled,
       min,
       max,
-      showMark: showLimit,
+      showMark,
       marks = {},
+      vertical,
     } = this.props;
 
     const {
@@ -228,57 +271,49 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--vertical`]: vertical,
     });
 
-    const content = (
-      <div className={`${prefixCls}__content`}>
-        <div className={`${prefixCls}__line`} ref={(ele) => { this.line = ele; }}>
-          <div className={`${prefixCls}__line__bg`} style={{ width: offset || 0 }} />
+    const handleStyle = {
+      [vertical ? 'top' : 'left']: offset || 0,
+    };
 
-          {this.renderMarkInfo(marks, value, prefixCls)}
-        </div>
-
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={(event, state) => this.onDragMove(event, state)}
-          onDragEnd={this.onDragEnd}
-        >
-          <div
-            className={`${prefixCls}__handle`}
-            role="slider"
-            aria-valuemin={min}
-            aria-valuemax={max}
-            aria-valuenow={value}
-            style={{ left: offset || 0 }}
-          >
-            <Tooltip visible={tooltip} title={value}>
-              <div className={`${prefixCls}-handle-shadow`} />
-            </Tooltip>
-          </div>
-        </Drag>
-      </div>
-    );
-
-    // 判断展示区间
-    const contentWrapper = showLimit
-      ? (
-        <Fragment>
-          <div className={`${prefixCls}__limit`}>
-            {min}
-          </div>
-
-          {content}
-
-          <div className={`${prefixCls}__limit`}>
-            {max}
-          </div>
-        </Fragment>
-      )
-      : content;
+    const lineBg = {
+      [vertical ? 'height' : 'width']: offset || 0,
+    };
 
     return (
       <div className={cls}>
-        {contentWrapper}
+        <div className={`${prefixCls}__content`}>
+          <div className={`${prefixCls}__line`} ref={(ele) => { this.line = ele; }}>
+            <div
+              className={`${prefixCls}__line__bg`}
+              style={lineBg}
+            />
+
+            {this.renderMarkInfo(showMark, marks, value, prefixCls)}
+          </div>
+
+          <Drag
+            onDragStart={this.handleDragStart}
+            onDragMove={(event, state) => this.handleDragMove(event, state)}
+            onDragEnd={this.handleDragEnd}
+          >
+            <div
+              className={`${prefixCls}__handle`}
+              role="slider"
+              aria-valuemin={min}
+              aria-valuemax={max}
+              aria-valuenow={value}
+              aria-orientation={vertical ? 'vertical' : 'horizontal'}
+              style={handleStyle}
+            >
+              <Tooltip visible={tooltip} title={value}>
+                <div className={`${prefixCls}-handle-shadow`} />
+              </Tooltip>
+            </div>
+          </Drag>
+        </div>
       </div>
     );
   }

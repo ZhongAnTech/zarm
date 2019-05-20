@@ -25,6 +25,7 @@ exports[`Slider defaultValue 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={10}
@@ -79,6 +80,7 @@ exports[`Slider disabled 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -162,54 +164,6 @@ exports[`Slider marks 1`] = `
           }
         }
       />
-      <div
-        className="za-slider__marks"
-      >
-        <span
-          className="za-slider__mark"
-          key="0"
-          style={
-            Object {
-              "left": "0%",
-            }
-          }
-        >
-          0
-        </span>
-        <span
-          className="za-slider__mark"
-          key="26"
-          style={
-            Object {
-              "left": "26%",
-            }
-          }
-        >
-          26
-        </span>
-        <span
-          className="za-slider__mark"
-          key="60"
-          style={
-            Object {
-              "left": "60%",
-            }
-          }
-        >
-          60
-        </span>
-        <span
-          className="za-slider__mark"
-          key="100"
-          style={
-            Object {
-              "left": "100%",
-            }
-          }
-        >
-          100
-        </span>
-      </div>
     </div>
     <Drag
       onDragEnd={[Function]}
@@ -217,6 +171,7 @@ exports[`Slider marks 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -271,6 +226,7 @@ exports[`Slider max 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -325,6 +281,7 @@ exports[`Slider min 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -379,6 +336,7 @@ exports[`Slider shallows correctly 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -413,11 +371,6 @@ exports[`Slider showMark 1`] = `
   className="za-slider"
 >
   <div
-    className="za-slider__limit"
-  >
-    0
-  </div>
-  <div
     className="za-slider__content"
   >
     <div
@@ -438,6 +391,7 @@ exports[`Slider showMark 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -463,11 +417,6 @@ exports[`Slider showMark 1`] = `
         </Tooltip>
       </div>
     </Drag>
-  </div>
-  <div
-    className="za-slider__limit"
-  >
-    100
   </div>
 </div>
 `;
@@ -497,6 +446,7 @@ exports[`Slider step 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -551,6 +501,7 @@ exports[`Slider value 1`] = `
       onDragStart={[Function]}
     >
       <div
+        aria-orientation="horizontal"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={10}

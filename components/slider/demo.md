@@ -18,7 +18,7 @@ class Demo extends React.Component {
     const marks = {
       0: '0',
       26: '26',
-      60: '60',
+      60: '65',
       100: '100',
     }
   
@@ -49,13 +49,26 @@ class Demo extends React.Component {
           <Slider defaultValue={20} disabled />
         </Cell>
         
-        <Cell title="显示区间">
-          <Slider showMark defaultValue={20} />
+        <Cell title="带标签">
+          <Slider showMark defaultValue={20} marks={marks} />
         </Cell>
         
-        <Cell title="带标签">
+        <Cell title="显示刻度">
           <Slider 
             marks={marks} 
+          />
+        </Cell>
+        
+        <Cell title="步长+刻度">
+          <Slider 
+            step={10}
+            marks={marks} 
+          />
+        </Cell>
+         
+         <Cell title="垂直" style={{ padding: '15px 0' }}>
+          <Slider 
+            vertical={true} 
           />
         </Cell>
       </div>
