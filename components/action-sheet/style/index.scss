@@ -20,9 +20,9 @@
   @include e(cancel) {
     margin-top: r(10);
 
-      @include e(item) {
-        color: var(--color-text-caption);
-      }
+    @include e(item) {
+      color: var(--color-text-caption);
+    }
   }
 
   @include e(item) {
