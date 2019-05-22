@@ -107,4 +107,5 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | text | string | - | 按钮文字 |
 | theme | string | 'default' | 按钮主题，可选值 `default`、`primary`、`success`、`warning`、`danger`
+| className | string | - | 追加类名
 | onClick | () => void | - | 按钮点击后触发的回调函数 |

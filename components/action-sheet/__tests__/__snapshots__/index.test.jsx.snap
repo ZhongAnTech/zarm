@@ -19,6 +19,7 @@ exports[`ActionSheet renders correctly 1`] = `
       },
     ]
   }
+  onCancel={[MockFunction]}
   onMaskClick={[MockFunction]}
   visible={true}
 >
@@ -41,6 +42,7 @@ exports[`ActionSheet renders correctly 1`] = `
       ]
     }
     forwardedRef={null}
+    onCancel={[MockFunction]}
     onMaskClick={[MockFunction]}
     visible={true}
   >
@@ -68,6 +70,7 @@ exports[`ActionSheet renders correctly 1`] = `
         }
       }
       localeCode="en"
+      onCancel={[MockFunction]}
       onMaskClick={[MockFunction]}
       prefixCls="za-action-sheet"
       spacing={false}
@@ -124,6 +127,15 @@ exports[`ActionSheet renders correctly 1`] = `
                           操作三
                         </div>
                       </div>
+                      <div
+                        class="za-action-sheet__cancel"
+                      >
+                        <div
+                          class="za-action-sheet__item"
+                        >
+                          Cancel
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -170,6 +182,16 @@ exports[`ActionSheet renders correctly 1`] = `
                       onClick={[MockFunction]}
                     >
                       操作三
+                    </div>
+                  </div>
+                  <div
+                    className="za-action-sheet__cancel"
+                  >
+                    <div
+                      className="za-action-sheet__item"
+                      onClick={[MockFunction]}
+                    >
+                      Cancel
                     </div>
                   </div>
                 </div>

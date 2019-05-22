@@ -2,6 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ActionSheet from '../index';
+import zhCN from '../locale/zh_CN';
+import enUS from '../locale/en_US';
 
 describe('ActionSheet', () => {
   const props = {
@@ -22,17 +24,15 @@ describe('ActionSheet', () => {
       },
     ],
     onMaskClick: jest.fn(),
+    onCancel: jest.fn(),
   };
-
   it('renders correctly', () => {
     const wrapper = mount(<ActionSheet {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  // it('click cancel button', () => {
-  //   props.onCancel = jest.fn();
-  //   const wrapper = mount(<ActionSheet {...props} />);
-  //   document.body.find('.za-actionsheet-cancel').childAt(0).simulate('click');
-  //   expect(props.onCancel).toBeCalled();
-  // });
+  it('locale', () => {
+    expect(zhCN.cancelText).toEqual('取消');
+    expect(enUS.cancelText).toEqual('Cancel');
+  });
 });

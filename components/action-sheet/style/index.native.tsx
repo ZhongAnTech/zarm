@@ -29,6 +29,14 @@ export default {
     textAlign: 'center',
   },
 
+  actionCancelItem: {
+    height: variables.actionSheet_item_height,
+    lineHeight: variables.actionSheet_item_height,
+    fontSize: variables.actionSheet_item_font_size,
+    textAlign: 'center',
+    color: variables.color_text_caption,
+  },
+
   actionItemMask: {
     position: 'absolute',
     top: 0,
