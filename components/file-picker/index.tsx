@@ -10,8 +10,8 @@
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
 import React, { PureComponent, cloneElement } from 'react';
-import PropsType from './PropsType';
 import classNames from 'classnames';
+import PropsType from './PropsType';
 import handleFileInfo from './utils/handleFileInfo';
 
 export interface FilePickerProps extends PropsType {
@@ -29,13 +29,6 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
 
   private file;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      fileList: [],
-    };
-  }
-
   handleDefaultInput = (e) => {
     // 防止选择同一张图片两次造成 onChange 事件不触发
     e.target.value = null;
@@ -49,11 +42,11 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     if (onBeforeSelect() === false || disabled) {
       e.preventDefault();
     }
-  }
+  };
 
   handleClick = (e) => {
     this.file.click(e);
-  }
+  };
 
   handleChange = (e) => {
     const { onChange, quality, multiple } = this.props;
@@ -68,16 +61,14 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
           onChange(fileList);
         }
       } else {
-        if (typeof onChange === 'function') {
-          onChange(data);
-        }
+        typeof onChange === 'function' && onChange(data);
       }
     };
 
     if (files) {
       files.map(file => handleFileInfo({ file, quality }, getFileInfo));
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;

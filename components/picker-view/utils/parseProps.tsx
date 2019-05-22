@@ -26,16 +26,15 @@ const normalState = (props) => {
 const cascaderState = (props) => {
   const { valueMember, cols } = props;
   let newValues = getValues(props, []);
-  let newObjValues: any[] = [];
-  let newDateSource: any[] = [];
+  const newObjValues: any[] = [];
+  const newDateSource: any[] = [];
 
-  let parseLevel = ({ level = 0, dataSource }) => {
+  const parseLevel = ({ level = 0, dataSource }) => {
     newDateSource[level] = dataSource.map((item, index) => {
       const { children, ...others } = item;
 
       if (
-        newValues[level] && item[valueMember!] === newValues[level] ||
-        !newValues[level] && index === 0
+        (newValues[level] && item[valueMember!] === newValues[level]) || (!newValues[level] && index === 0)
       ) {
         newValues[level] = item[valueMember!];
         newObjValues[level] = others;

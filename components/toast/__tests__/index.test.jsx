@@ -6,14 +6,14 @@ import Toast from '../index';
 describe('Toast', () => {
   it('renders correctly', () => {
     const wrapper = render(
-      <Toast>foo</Toast>
+      <Toast>foo</Toast>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('visible change false', () => {
     const wrapper = mount(
-      <Toast visible>foo</Toast>
+      <Toast visible>foo</Toast>,
     );
     wrapper.setProps({ visible: false });
   });
@@ -21,7 +21,7 @@ describe('Toast', () => {
   it('stayTime', () => {
     jest.useFakeTimers();
     const wrapper = mount(
-      <Toast stayTime={5000}>foo</Toast>
+      <Toast stayTime={5000}>foo</Toast>,
     );
     wrapper.setProps({ visible: false });
     jest.runAllTimers();
@@ -30,7 +30,7 @@ describe('Toast', () => {
 
   it('stayTime is 0', () => {
     const wrapper = shallow(
-      <Toast stayTime={0}>foo</Toast>
+      <Toast stayTime={0}>foo</Toast>,
     );
     wrapper.setProps({ visible: true });
   });

@@ -1,0 +1,11 @@
+@import "@site/styles/index";
+
+.cell-page {
+  .box {
+    line-height: r(24);
+
+    &-description {
+      color: gray;
+    }
+  }
+}

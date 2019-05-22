@@ -26,6 +26,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
 
   // 标题的高度
   private titleHeight = variables.collapse_height;
+
   // 内容的高度
   private bodyHeight = 0;
 
@@ -49,18 +50,9 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     }
   }
 
-  isActive(props) {
-    const { isActive } = props;
-    return isActive;
-  }
+  getHeight = () => { return this.state.active ? this.titleHeight + this.bodyHeight : this.titleHeight; };
 
-  getHeight = () => {
-    return this.state.active ? this.titleHeight + this.bodyHeight : this.titleHeight;
-  }
-
-  getRotate = () => {
-    return this.state.active ? 1 : 0;
-  }
+  getRotate = () => { return this.state.active ? 1 : 0; };
 
   onPress = () => {
     const { disabled, itemKey, onItemChange, onChange } = this.props;
@@ -70,7 +62,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     const { active } = this.state;
     this.setState({
       active: !active,
-    } , () => {
+    }, () => {
       this.animate();
       if (onChange) {
         onChange(itemKey);
@@ -79,9 +71,21 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
         onItemChange(itemKey);
       }
     });
-  }
+  };
 
-  animate() {
+  onLayoutTrimmedText = (event) => {
+    const { height } = event.nativeEvent.layout;
+    this.bodyHeight = height;
+    this.state.height.setValue(this.getHeight());
+    this.state.rotate.setValue(this.getRotate());
+  };
+
+  isActive = (props) => {
+    const { isActive } = props;
+    return isActive;
+  };
+
+  animate = () => {
     const { animated } = this.props;
     const duration = animated ? 150 : 0;
     const height = this.getHeight();
@@ -97,26 +101,18 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
         duration: 150,
       }),
     ]).start();
-  }
-
-  onLayoutTrimmedText = (event) => {
-    const {
-      height,
-    } = event.nativeEvent.layout;
-    this.bodyHeight = height;
-    this.state.height.setValue(this.getHeight());
-    this.state.rotate.setValue(this.getRotate());
-  }
+  };
 
   render() {
     const { title, children, style, disabled } = this.props;
+    const { height, rotate } = this.state;
 
     const disabledColorStyle = disabled ? collapseStyles!.titleTextDisabledStyle : null;
     const disabledBorderColorStyle = disabled ? collapseStyles!.titleArrowDisabledStyle : null;
 
     const wrapperStyle = [
       collapseStyles!.itemWrapperStyle,
-      { height: this.state.height },
+      { height },
       style,
     ];
 
@@ -138,15 +134,15 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       {
         transform: [
           {
-            rotate: this.state.rotate.interpolate({
+            rotate: rotate.interpolate({
               inputRange: [0, 1],
               outputRange: ['45deg', '-135deg'],
             }),
           },
         ],
-        top: this.state.rotate.interpolate({
+        top: rotate.interpolate({
           inputRange: [0, 1],
-          outputRange: [ 0 , Math.sqrt(50) / 2 ],
+          outputRange: [0, Math.sqrt(50) / 2],
         }),
       },
       disabledBorderColorStyle,
@@ -157,11 +153,11 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     ] as ViewStyle;
 
     return (
-      <Animated.View style={wrapperStyle} >
+      <Animated.View style={wrapperStyle}>
         <TouchableHighlight
           style={collapseStyles!.touchStyle}
           onPress={this.onPress}
-          underlayColor="#EEE"
+          underlayColor="#eee"
           activeOpacity={disabled ? 1 : 0.8}
         >
           <View style={titleStyle}>

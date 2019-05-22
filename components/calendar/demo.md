@@ -19,8 +19,8 @@ class Demo extends React.Component {
         if (/(0|6)/.test(date.getDay())) {
           return (
             <div className="custom">
-              <div className="custom-date">{date.getDate()}</div>
-              <div className="custom-text">休息</div>
+              <div className="custom__date">{date.getDate()}</div>
+              <div className="custom__text">休息</div>
             </div>
           );
         }

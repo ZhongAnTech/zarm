@@ -37,6 +37,7 @@ export default class Page extends PureComponent {
       popRight: false,
     };
   }
+
   open = (key) => {
     this.setState({
       [`${key}`]: true,
@@ -47,9 +48,10 @@ export default class Page extends PureComponent {
     this.setState({
       [`${key}`]: false,
     });
-  }
+  };
 
   render() {
+    const { popTop, popBottom, popLeft, popRight } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <View style={{ padding: 15 }}>
@@ -64,7 +66,7 @@ export default class Page extends PureComponent {
           mask={false}
           onMaskClick={() => this.close('popTop')}
           animationDuration={200}
-          visible={this.state.popTop}
+          visible={popTop}
           onClose={() => console.log('关闭')}
           autoClose
         >
@@ -75,7 +77,7 @@ export default class Page extends PureComponent {
 
         <Popup
           direction="bottom"
-          visible={this.state.popBottom}
+          visible={popBottom}
           onClose={() => console.log('关闭')}
           onMaskClick={() => this.close('popBottom')}
           style={styles.bottomStyle}
@@ -87,7 +89,7 @@ export default class Page extends PureComponent {
 
         <Popup
           direction="left"
-          visible={this.state.popLeft}
+          visible={popLeft}
           onMaskClick={() => this.close('popLeft')}
           style={styles.leftStyle}
         >
@@ -98,7 +100,7 @@ export default class Page extends PureComponent {
 
         <Popup
           direction="right"
-          visible={this.state.popRight}
+          visible={popRight}
           onMaskClick={() => this.close('popRight')}
           style={styles.rightStyle}
         >

@@ -8,6 +8,7 @@
   // height: r(300);
 
   @include e(content) {
+    will-change: transform;
     transform: translate3d(0, var(--pull-control-height), 0);
   }
 

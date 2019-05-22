@@ -33,7 +33,7 @@ exports[`Slider defaultValue 1`] = `
         }
       }
     >
-      <Tootip
+      <Tooltip
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -44,7 +44,7 @@ exports[`Slider defaultValue 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tootip>
+      </Tooltip>
     </div>
   </Drag>
 </div>
@@ -83,7 +83,7 @@ exports[`Slider disabled 1`] = `
         }
       }
     >
-      <Tootip
+      <Tooltip
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -94,7 +94,7 @@ exports[`Slider disabled 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tootip>
+      </Tooltip>
     </div>
   </Drag>
 </div>
@@ -133,7 +133,7 @@ exports[`Slider max 1`] = `
         }
       }
     >
-      <Tootip
+      <Tooltip
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -144,7 +144,7 @@ exports[`Slider max 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tootip>
+      </Tooltip>
     </div>
   </Drag>
 </div>
@@ -183,7 +183,7 @@ exports[`Slider min 1`] = `
         }
       }
     >
-      <Tootip
+      <Tooltip
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -194,7 +194,7 @@ exports[`Slider min 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tootip>
+      </Tooltip>
     </div>
   </Drag>
 </div>
@@ -233,7 +233,7 @@ exports[`Slider shallows correctly 1`] = `
         }
       }
     >
-      <Tootip
+      <Tooltip
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -244,7 +244,7 @@ exports[`Slider shallows correctly 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tootip>
+      </Tooltip>
     </div>
   </Drag>
 </div>
@@ -283,7 +283,7 @@ exports[`Slider step 1`] = `
         }
       }
     >
-      <Tootip
+      <Tooltip
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -294,7 +294,7 @@ exports[`Slider step 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tootip>
+      </Tooltip>
     </div>
   </Drag>
 </div>
@@ -333,7 +333,7 @@ exports[`Slider value 1`] = `
         }
       }
     >
-      <Tootip
+      <Tooltip
         direction="top"
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
@@ -344,7 +344,7 @@ exports[`Slider value 1`] = `
         <div
           className="za-slider-handle-shadow"
         />
-      </Tootip>
+      </Tooltip>
     </div>
   </Drag>
 </div>

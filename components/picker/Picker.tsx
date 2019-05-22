@@ -20,14 +20,18 @@ export default class Picker extends PureComponent<PickerProps, any> {
   };
 
   private tempValue;
+
   private tempObjValue;
+
   private isScrolling = false;
 
   constructor(props) {
     super(props);
     this.state = parseProps.getSource(props);
-    this.tempValue = this.state.value;
-    this.tempObjValue = this.state.objValue;
+
+    const { value, objValue } = this.state;
+    this.tempValue = value;
+    this.tempObjValue = objValue;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,7 +50,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (typeof onChange === 'function') {
       onChange(selected);
     }
-  }
+  };
 
   onCancel = () => {
     const { onCancel } = this.props;
@@ -58,7 +62,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (typeof onCancel === 'function') {
       onCancel();
     }
-  }
+  };
 
   onOk = () => {
     if (this.isScrolling) {
@@ -75,22 +79,22 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (typeof onOk === 'function') {
       onOk(objValue);
     }
-  }
+  };
 
   onMaskClick = () => {
     const { onMaskClick } = this.props;
     if (typeof onMaskClick === 'function') {
       onMaskClick();
     }
-  }
+  };
 
-  onTransition(isScrolling) {
+  onTransition = (isScrolling) => {
     const { onTransition } = this.props;
     this.isScrolling = isScrolling;
     if (typeof onTransition === 'function') {
       onTransition(isScrolling);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, cancelText, okText, title, children, locale, ...others } = this.props;

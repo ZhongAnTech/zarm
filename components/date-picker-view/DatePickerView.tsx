@@ -95,16 +95,17 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     const state = getInitDate(nextProps);
     this.setState(state);
 
-    if (typeof this.props.onInit === 'function') {
-      this.props.onInit(this.getDate());
+    const { onInit } = this.props;
+    if (typeof onInit === 'function') {
+      onInit(this.getDate());
     }
   }
 
   onValueChange = (selected, index) => {
     const { mode, onChange, valueMember } = this.props;
-
+    const selectedItem = selected[index][valueMember!];
     let newValue = cloneDate(this.getDate());
-    let selectedItem = selected[index][valueMember!];
+
     if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
       switch (index) {
         case 0:
@@ -146,44 +147,9 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     if (typeof onChange === 'function') {
       onChange(newValue);
     }
-  }
+  };
 
-  clipDate(date) {
-    const { mode } = this.props;
-    const minDate = this.getMinDate();
-    const maxDate = this.getMaxDate();
-    if (mode === DATETIME) {
-      if (date < minDate) {
-        return cloneDate(minDate);
-      }
-      if (date > maxDate) {
-        return cloneDate(maxDate);
-      }
-    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
-      if (+date + ONE_DAY <= +minDate) {
-        return cloneDate(minDate);
-      }
-      if (date >= +maxDate + ONE_DAY) {
-        return cloneDate(maxDate);
-      }
-    } else {
-      const maxHour = maxDate.getHours();
-      const maxMinutes = maxDate.getMinutes();
-      const minHour = minDate.getHours();
-      const minMinutes = minDate.getMinutes();
-      const hour = date.getHours();
-      const minutes = date.getMinutes();
-      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
-        return cloneDate(minDate);
-      }
-      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
-        return cloneDate(maxDate);
-      }
-    }
-    return date;
-  }
-
-  getColsValue() {
+  getColsValue = () => {
     const { mode } = this.props;
     const date = this.getDate();
 
@@ -215,9 +181,9 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       dataSource,
       value,
     };
-  }
+  };
 
-  getDateData() {
+  getDateData = () => {
     const { locale, mode } = this.props;
     const date = this.getDate();
     const yearCol: object[] = [];
@@ -283,9 +249,9 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     }
 
     return [yearCol, monthCol, dayCol];
-  }
+  };
 
-  getTimeData() {
+  getTimeData = () => {
     const { locale, mode, minuteStep } = this.props;
     const date = this.getDate();
     const hourCol: object[] = [];
@@ -353,13 +319,14 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     }
 
     return [hourCol, minuteCol];
-  }
+  };
 
   getDate() {
-    return this.clipDate(this.state.date || this.state.wheelDefault || this.getDefaultDate());
+    const { date, wheelDefault } = this.state;
+    return this.clipDate(date || wheelDefault || this.getDefaultDate());
   }
 
-  getDefaultDate() {
+  getDefaultDate = () => {
     const { min, mode, minuteStep } = this.props;
     // 存在最小值且毫秒数大于现在
     if (min && this.getMinDate().getTime() >= Date.now()) {
@@ -369,71 +336,106 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       return new Date(new Date().setMinutes(0));
     }
     return new Date();
-  }
+  };
 
-  getMinYear() {
+  getMinYear = () => {
     return this.getMinDate().getFullYear();
-  }
+  };
 
-  getMaxYear() {
+  getMaxYear = () => {
     return this.getMaxDate().getFullYear();
-  }
+  };
 
-  getMinMonth() {
+  getMinMonth = () => {
     return this.getMinDate().getMonth();
-  }
+  };
 
-  getMaxMonth() {
+  getMaxMonth = () => {
     return this.getMaxDate().getMonth();
-  }
+  };
 
-  getMinDay() {
+  getMinDay = () => {
     return this.getMinDate().getDate();
-  }
+  };
 
-  getMaxDay() {
+  getMaxDay = () => {
     return this.getMaxDate().getDate();
-  }
+  };
 
-  getMinHour() {
+  getMinHour = () => {
     return this.getMinDate().getHours();
-  }
+  };
 
-  getMaxHour() {
+  getMaxHour = () => {
     return this.getMaxDate().getHours();
-  }
+  };
 
-  getMinMinute() {
+  getMinMinute = () => {
     return this.getMinDate().getMinutes();
-  }
+  };
 
-  getMaxMinute() {
+  getMaxMinute = () => {
     return this.getMaxDate().getMinutes();
-  }
+  };
 
-  getMinDate() {
+  getMinDate = () => {
     const minDate = isExtendDate(this.props.min);
     return minDate || this.getDefaultMinDate();
-  }
+  };
 
-  getMaxDate() {
+  getMaxDate = () => {
     const maxDate = isExtendDate(this.props.max);
     return maxDate || this.getDefaultMaxDate();
-  }
+  };
 
-  getDefaultMinDate() {
+  getDefaultMinDate = () => {
     return getGregorianCalendar(2000, 0, 1, 0, 0, 0);
-  }
+  };
 
-  getDefaultMaxDate() {
+  getDefaultMaxDate = () => {
     return getGregorianCalendar(2030, 11, 30, 23, 59, 59);
-  }
+  };
 
-  onTransition(isScrolling) {
+  clipDate = (date) => {
+    const { mode } = this.props;
+    const minDate = this.getMinDate();
+    const maxDate = this.getMaxDate();
+    if (mode === DATETIME) {
+      if (date < minDate) {
+        return cloneDate(minDate);
+      }
+      if (date > maxDate) {
+        return cloneDate(maxDate);
+      }
+    } else if (mode === DATE || mode === MONTH || mode === YEAR) {
+      if (+date + ONE_DAY <= +minDate) {
+        return cloneDate(minDate);
+      }
+      if (date >= +maxDate + ONE_DAY) {
+        return cloneDate(maxDate);
+      }
+    } else {
+      const maxHour = maxDate.getHours();
+      const maxMinutes = maxDate.getMinutes();
+      const minHour = minDate.getHours();
+      const minMinutes = minDate.getMinutes();
+      const hour = date.getHours();
+      const minutes = date.getMinutes();
+      if (hour < minHour || (hour === minHour && minutes < minMinutes)) {
+        return cloneDate(minDate);
+      }
+      if (hour > maxHour || (hour === maxHour && minutes > maxMinutes)) {
+        return cloneDate(maxDate);
+      }
+    }
+    return date;
+  };
+
+  onTransition = (isScrolling) => {
     if (typeof this.props.onTransition === 'function') {
       this.props.onTransition!(isScrolling);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, onInit, ...others } = this.props;

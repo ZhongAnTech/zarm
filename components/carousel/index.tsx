@@ -25,8 +25,11 @@ export default class Carousel extends Component<CarouselProps, any> {
   };
 
   private carouselItems;
+
   private moveInterval;
+
   private translateX: number = 0;
+
   private translateY: number = 0;
 
   constructor(props) {
@@ -44,11 +47,13 @@ export default class Carousel extends Component<CarouselProps, any> {
   }
 
   componentDidMount() {
+    const { activeIndex } = this.props;
+
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
 
     // 设置起始位置编号
-    this.onJumpTo(this.props.activeIndex);
+    this.onJumpTo(activeIndex);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -74,12 +79,12 @@ export default class Carousel extends Component<CarouselProps, any> {
   // 滑动到指定编号
   onSlideTo = (index) => {
     this.onMoveTo(index, this.props.animationDuration);
-  }
+  };
 
   // 静默跳到指定编号
   onJumpTo = (index) => {
     this.onMoveTo(index, 0);
-  }
+  };
 
   // 移动到指定编号
   onMoveTo = (index, animationDuration) => {
@@ -107,12 +112,12 @@ export default class Carousel extends Component<CarouselProps, any> {
     if (typeof onChange === 'function' && activeIndexChanged) {
       onChange(index);
     }
-  }
+  };
 
   // 触屏事件
   onDragStart = () => {
     // 跳转到头尾
-    const activeIndex = this.state.activeIndex;
+    const { activeIndex } = this.state;
     const maxLength = this.props.children.length;
 
     if (activeIndex <= 0) {
@@ -123,17 +128,29 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 暂停自动轮播
     this.pauseAutoPlay();
-  }
+  };
 
   onDragMove = (event, { offsetX, offsetY }) => {
     const distanceX = Math.abs(offsetX);
     const distanceY = Math.abs(offsetY);
 
-    if (this.isDirectionX() && (distanceX < 5 || (distanceX >= 5 && distanceY >= 1.73 * distanceX))) {
+    if (
+      this.isDirectionX()
+      && (
+        distanceX < 5
+        || (distanceX >= 5 && distanceY >= 1.73 * distanceX)
+      )
+    ) {
       return false;
     }
 
-    if (!this.isDirectionX() && (distanceY < 5 || (distanceY >= 5 && distanceX >= 1.73 * distanceY))) {
+    if (
+      !this.isDirectionX()
+      && (
+        distanceY < 5
+        || (distanceY >= 5 && distanceX >= 1.73 * distanceY)
+      )
+    ) {
       return false;
     }
 
@@ -142,8 +159,8 @@ export default class Carousel extends Component<CarouselProps, any> {
       // 在尾页时禁止拖动
       if (this.isLastIndex()) {
         if (
-          this.isDirectionX() && offsetX < 0 ||
-          !this.isDirectionX() && offsetY < 0
+          (this.isDirectionX() && offsetX < 0)
+          || (!this.isDirectionX() && offsetY < 0)
         ) {
           return false;
         }
@@ -152,8 +169,8 @@ export default class Carousel extends Component<CarouselProps, any> {
       // 在首页时禁止拖动
       if (this.isFirstIndex()) {
         if (
-          this.isDirectionX() && offsetX > 0 ||
-          !this.isDirectionX() && offsetY > 0
+          (this.isDirectionX() && offsetX > 0)
+          || (!this.isDirectionX() && offsetY > 0)
         ) {
           return false;
         }
@@ -164,7 +181,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     this.doTransition({ x: this.translateX + offsetX, y: this.translateY + offsetY }, 0);
     return true;
-  }
+  };
 
   onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
     if (!offsetX && !offsetY) {
@@ -197,14 +214,14 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 恢复自动轮播
     this.startAutoPlay();
-  }
+  };
 
   // 自动轮播开始
   startAutoPlay = () => {
     const { direction, loop, autoPlay, autoPlayIntervalTime } = this.props;
 
     this.moveInterval = (autoPlay && setInterval(() => {
-      let activeIndex = this.state.activeIndex;
+      let { activeIndex } = this.state;
       const isLeftOrUpDirection = (['left', 'up']).indexOf(direction!) > -1;
 
       activeIndex = isLeftOrUpDirection
@@ -218,14 +235,14 @@ export default class Carousel extends Component<CarouselProps, any> {
       }
       this.onSlideTo(activeIndex);
     }, autoPlayIntervalTime));
-  }
+  };
 
   // 暂停自动轮播
   pauseAutoPlay = () => {
     if (this.moveInterval) {
       clearInterval(this.moveInterval);
     }
-  }
+  };
 
   // 处理节点（首尾拼接）
   parseItems = (props) => {
@@ -247,8 +264,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     const newItems = React.Children.map(items, (element: any, index) => {
       return cloneElement(element, {
         key: index,
-        className: classnames({
-          [`${props.prefixCls}__item`]: true,
+        className: classnames(`${props.prefixCls}__item`, {
           [element.props.className]: !!element.props.className,
         }),
       });
@@ -257,12 +273,12 @@ export default class Carousel extends Component<CarouselProps, any> {
     this.setState({
       items: newItems,
     });
-  }
+  };
 
   // 更新窗口变化的位置偏移
   resize = () => {
     this.onJumpTo(this.state.activeIndex);
-  }
+  };
 
   // 执行过渡动画
   doTransition = (offset, animationDuration) => {
@@ -271,45 +287,45 @@ export default class Carousel extends Component<CarouselProps, any> {
     let y = 0;
 
     if (this.isDirectionX()) {
-      x = offset.x;
+      ({ x } = offset);
     } else {
-      y = offset.y;
+      ({ y } = offset);
     }
 
     dom.style.WebkitTransformDuration = `${animationDuration}ms`;
     dom.style.transitionDuration = `${animationDuration}ms`;
     dom.style.WebkitTransform = `translate3d(${x}px, ${y}px, 0)`;
     dom.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-  }
+  };
 
   transitionEnd = () => {
-    const activeIndex = this.state.activeIndex;
+    const { onChangeEnd } = this.props;
+    const { activeIndex, activeIndexChanged } = this.state;
     const dom = this.carouselItems;
 
     this.translateX = -dom.offsetWidth * (activeIndex + this.props.loop);
     this.translateY = -dom.offsetHeight * (activeIndex + this.props.loop);
     this.doTransition({ x: this.translateX, y: this.translateY }, 0);
 
-    const { onChangeEnd } = this.props;
-    if (typeof onChangeEnd === 'function' && this.state.activeIndexChanged) {
+    if (typeof onChangeEnd === 'function' && activeIndexChanged) {
       onChangeEnd(activeIndex);
     }
-  }
+  };
 
   // 判断当前是否在最后一页
   isLastIndex = () => {
     return this.state.activeIndex >= this.props.children.length - 1;
-  }
+  };
 
   // 判断当前是否在第一页
   isFirstIndex = () => {
     return this.state.activeIndex <= 0;
-  }
+  };
 
   // 是否横向移动
   isDirectionX = () => {
     return (['left', 'right'].indexOf(this.props.direction!) > -1);
-  }
+  };
 
   renderPaginationItem = (_result, index) => {
     const { prefixCls } = this.props;
@@ -319,13 +335,12 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     return (
       <div
-        role="tab"
         key={`pagination-${index}`}
         className={paginationItemCls}
         onClick={() => this.onSlideTo(index)}
       />
     );
-  }
+  };
 
   renderPagination = () => {
     const { prefixCls, showPagination, children } = this.props;
@@ -334,13 +349,15 @@ export default class Carousel extends Component<CarouselProps, any> {
         {Children.map(children, this.renderPaginationItem)}
       </div>
     );
-  }
+  };
 
   render() {
     const { prefixCls, className, height, style } = this.props;
+    const { items } = this.state;
+    const itemsStyle: CSSProperties = {};
+
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
     const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
-    const itemsStyle: CSSProperties = {};
 
     if (!this.isDirectionX()) {
       itemsStyle.height = height;
@@ -359,7 +376,7 @@ export default class Carousel extends Component<CarouselProps, any> {
             onTransitionEnd={this.transitionEnd}
             style={itemsStyle}
           >
-            {this.state.items}
+            {items}
           </div>
         </Drag>
         {this.renderPagination()}

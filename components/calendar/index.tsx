@@ -44,10 +44,17 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
     this.getState(nextProps);
   }
 
-  getState(props) {
-    const state = this.state || {};
-    let { value, defaultValue, multiple } = props;
+  componentDidUpdate(_prevProps, prevState) {
+    const { refresh } = this.state;
+    if (refresh !== prevState.refresh) {
+      this.anchor();
+    }
+  }
 
+  getState = (props) => {
+    const state = this.state || {};
+    const { defaultValue, multiple } = props;
+    let { value } = props;
     let tmpValue;
     let min;
     let max;
@@ -55,14 +62,13 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
     let endMonth;
 
     value = value || defaultValue;
-    value =
-      Object.prototype.toString.call(value) === '[object Array]'
-        ? value
-        : (value && [value]) || [];
+    value = Object.prototype.toString.call(value) === '[object Array]'
+      ? value
+      : (value && [value]) || [];
 
     if (
-      JSON.stringify(value) !== JSON.stringify(state.value) ||
-      multiple !== state.multiple
+      JSON.stringify(value) !== JSON.stringify(state.value)
+      || multiple !== state.multiple
     ) {
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
       // tmpValue = value.map(item => DateTool.parseDay(item));
@@ -126,30 +132,10 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
     } else {
       this.setState(tmp);
     }
-  }
-
-  componentDidUpdate(_prevProps, prevState) {
-    if (this.state.refresh !== prevState.refresh) {
-      this.anchor();
-    }
-  }
-
-  // 月历定位
-  anchor() {
-    const { value } = this.state;
-    const target = value[0] || CalendarView.now;
-    const key = `${target.getFullYear()}-${target.getMonth()}`;
-    const node = this.nodes![key];
-    if (
-      node &&
-      Object.prototype.toString.call(node.anchor) === '[object Function]'
-    ) {
-      node.anchor();
-    }
-  }
+  };
 
   // 日期点击事件，注意排序
-  onDateClick = date => {
+  onDateClick = (date) => {
     const { step, steps, value } = this.state;
     const { onChange } = this.props;
     if (step === 1) {
@@ -165,10 +151,21 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
       },
       () => step >= steps && typeof onChange === 'function' && onChange(value),
     );
-  }
+  };
+
+  // 月历定位
+  anchor = () => {
+    const { value } = this.state;
+    const target = value[0] || CalendarView.now;
+    const key = `${target.getFullYear()}-${target.getMonth()}`;
+    const node = this.nodes![key];
+    if (node && Object.prototype.toString.call(node.anchor) === '[object Function]') {
+      node.anchor();
+    }
+  };
 
   // 生成星期条
-  renderWeekBar() {
+  renderWeekBar = () => {
     const { prefixCls } = this.props;
     const content = CN_DAY_NAME.map(week => (
       <li key={week} className={`${prefixCls}__bar__item`}>
@@ -176,9 +173,9 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
       </li>
     ));
     return <ul className={`${prefixCls}__bar`}>{content}</ul>;
-  }
+  };
 
-  renderMonth(dateMonth) {
+  renderMonth = (dateMonth) => {
     const { value, min, max } = this.state;
     const { prefixCls, dateRender, disabledDate } = this.props;
     const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth()}`;
@@ -193,19 +190,17 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
         dateRender={dateRender}
         disabledDate={disabledDate}
         onDateClick={this.onDateClick}
-        ref={n => (this.nodes![key] = n)}
+        ref={(n) => { this.nodes![key] = n; }}
       />
     );
-  }
+  };
 
   // 生成日历内容
   renderMonths() {
     const { prefixCls } = this.props;
     const { min, max } = this.state;
     const arr = Array.from({ length: DateTool.getMonthCount(min, max) });
-    const content = arr.map((_item, i) =>
-      this.renderMonth(DateTool.cloneDate(min, 'm', i)),
-    );
+    const content = arr.map((_item, i) => this.renderMonth(DateTool.cloneDate(min, 'm', i)));
     return <section className={`${prefixCls}__body`}>{content}</section>;
   }
 

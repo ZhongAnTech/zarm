@@ -1,5 +1,5 @@
-import variables from '../../style/themes/default.native';
 import { Dimensions } from 'react-native';
+import variables from '../../style/themes/default.native';
 
 export default {
   wrapperStyle: {
@@ -14,6 +14,6 @@ export default {
     backgroundColor: 'rgba(0, 0, 0, 0)',
   },
   normalWrapper: {
-    backgroundColor: 'rgba(0, 0, 0, ' + variables.opacity_mask + ')',
+    backgroundColor: `rgba(0, 0, 0, ${variables.opacity_mask})`,
   },
 };

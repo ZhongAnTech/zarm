@@ -22,13 +22,16 @@ export default class Select extends PureComponent<SelectProps, any> {
   };
 
   private tempValue;
+
   private tempObjValue;
 
   constructor(props) {
     super(props);
     this.state = parseProps.getSource(props);
-    this.tempValue = this.state.value;
-    this.tempObjValue = this.state.objValue;
+
+    const { value, objValue } = this.state;
+    this.tempValue = value;
+    this.tempObjValue = objValue;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,14 +49,14 @@ export default class Select extends PureComponent<SelectProps, any> {
     this.setState({
       visible: true,
     });
-  }
+  };
 
   onChange = (selected) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(selected);
     }
-  }
+  };
 
   onOk = (selected) => {
     const { onOk, valueMember } = this.props;
@@ -65,7 +68,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     if (typeof onOk === 'function') {
       onOk(selected);
     }
-  }
+  };
 
   // 点击取消
   onCancel = () => {
@@ -78,12 +81,11 @@ export default class Select extends PureComponent<SelectProps, any> {
     if (typeof onCancel === 'function') {
       onCancel();
     }
-  }
+  };
 
-  isValueValid(value) {
-    return Object.prototype.toString.call(value) === '[object String]' && !!value.trim()
-    || isArray(value) && value.length > 0 && value.some(item => !!item);
-  }
+  isValueValid = (value) => {
+    return (Object.prototype.toString.call(value) === '[object String]' && !!value.trim()) || (isArray(value) && value.length > 0 && value.some(item => !!item));
+  };
 
   render() {
     const { prefixCls, placeholder, className, disabled, displayRender, value, locale, ...others } = this.props;
@@ -96,7 +98,7 @@ export default class Select extends PureComponent<SelectProps, any> {
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
-          {this.isValueValid(value) && displayRender!(objValue || []) || placeholder || locale!.placeholder}
+          {(this.isValueValid(value) && displayRender!(objValue || [])) || placeholder || locale!.placeholder}
         </div>
         <Picker
           {...others}

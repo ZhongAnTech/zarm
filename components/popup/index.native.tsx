@@ -28,14 +28,15 @@ export default class Popup extends PureComponent<PopupProps, any> {
     animationDuration: 200,
     styles: popupStyles,
   };
+
   private timer: number;
 
   constructor(props) {
     super(props);
     this.state = {
-      isMaskShow: props.visible || false,
+      // isMaskShow: props.visible || false,
       isPending: false,
-      isShow: false,
+      // isShow: false,
       animationState: 'enter',
       directionStyle: {},
       transfromStyle: {},
@@ -44,19 +45,17 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   componentDidMount() {
-    this.state.translateValue.addListener((value) => {
+    const { translateValue } = this.state;
+    // const { visible } = this.props;
+    translateValue.addListener((value) => {
       this.animationEnd(value);
     });
-    if (this.props.visible) {
-      // this.enter(this.props);
-      this.setState({
-        isShow: true,
-      });
-    }
-  }
-
-  componentWillUnmount() {
-    this.state.translateValue.removeAllListeners();
+    // if (visible) {
+    //   this.enter(this.props);
+    //   this.setState({
+    //     isShow: true,
+    //   });
+    // }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -66,6 +65,11 @@ export default class Popup extends PureComponent<PopupProps, any> {
     } else {
       this.leave(nextProps);
     }
+  }
+
+  componentWillUnmount() {
+    const { translateValue } = this.state;
+    translateValue.removeAllListeners();
   }
 
   enter = ({ stayTime, autoClose, onMaskClick, direction, animationDuration }) => {
@@ -85,10 +89,10 @@ export default class Popup extends PureComponent<PopupProps, any> {
       newValue = this.state.directionStyle[direction];
     }
     this.setState({
-      isMaskShow: true,
+      // isMaskShow: true,
       isPending: true,
       animationState: 'enter',
-      transfromStyle: transfromStyle,
+      transfromStyle,
     });
 
     Animated.timing(
@@ -97,20 +101,21 @@ export default class Popup extends PureComponent<PopupProps, any> {
         toValue: newValue,
         duration: animationDuration,
         easing: Easing.linear,
-      }).start();
+      },
+    ).start();
     if (stayTime > 0 && autoClose) {
       this.timer = setTimeout(() => {
         onMaskClick();
         clearTimeout(this.timer);
       }, stayTime);
     }
-  }
+  };
 
-  leave = ({ animationDuration, visible }) => {
+  leave = ({ animationDuration }) => {
     this.setState({
-      // isPending: false,
       animationState: 'leave',
-      isMaskShow: visible || false,
+      // isPending: false,
+      // isMaskShow: visible || false,
     });
     Animated.timing(
       this.state.translateValue,
@@ -118,8 +123,9 @@ export default class Popup extends PureComponent<PopupProps, any> {
         toValue: 0,
         duration: animationDuration,
         easing: Easing.linear,
-      }).start();
-  }
+      },
+    ).start();
+  };
 
   animationEnd = (value) => {
     const { onClose } = this.props;
@@ -132,7 +138,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
         onClose();
       }
     }
-  }
+  };
 
   renderMask = () => {
     return null;
@@ -149,23 +155,23 @@ export default class Popup extends PureComponent<PopupProps, any> {
     //       style={maskStyle}
     //     />
     //   );
-  }
+  };
 
   onLayout = (e, direction, that) => {
-    let directionStyle = {};
-    UIManager.measure(e.target, (_x, _y, width, height, _pageX, _pageY) => {
+    const directionStyle = {};
+    UIManager.measure(e.target, (_x, _y, width, height) => {
       if (direction === 'bottom' || direction === 'top') {
         directionStyle[direction] = -height;
       } else {
         directionStyle[direction] = -width;
       }
-      that.setState({ directionStyle: directionStyle });
+      that.setState({ directionStyle });
       if (that.state.isShow) {
         that.enter(that.props);
         that.setState({ isShow: false });
       }
     });
-  }
+  };
 
   render() {
     const { direction, styles, children, style } = this.props;
@@ -186,7 +192,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
 
     return (
       <View style={invisibleStyle}>
-        <Animated.View style={popUpStyle} onLayout={(e) => this.onLayout(e, direction, this)}>
+        <Animated.View style={popUpStyle} onLayout={e => this.onLayout(e, direction, this)}>
           {children}
         </Animated.View>
         {this.renderMask()}

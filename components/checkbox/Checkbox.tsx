@@ -4,7 +4,7 @@ import { BaseCheckboxProps } from './PropsType';
 import Cell from '../cell';
 import Button from '../button';
 
-function getChecked(props, defaultChecked) {
+const getChecked = (props, defaultChecked) => {
   if ('checked' in props && props.checked) {
     return props.checked;
   }
@@ -12,7 +12,7 @@ function getChecked(props, defaultChecked) {
     return props.defaultChecked;
   }
   return defaultChecked;
-}
+};
 
 export interface CheckboxProps extends BaseCheckboxProps {
   prefixCls?: string;
@@ -45,16 +45,18 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
 
   onValueChange = () => {
     const { disabled, onChange } = this.props;
+    const { checked } = this.state;
+
     if (disabled) {
       return;
     }
 
-    const checked = !this.state.checked;
-    this.setState({ checked });
+    const newChecked = !checked;
+    this.setState({ checked: newChecked });
     if (typeof onChange === 'function') {
-      onChange(checked);
+      onChange(newChecked);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, shape, type, value, block, disabled, id, children } = this.props;
@@ -65,15 +67,17 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
       [`${prefixCls}--disabled`]: !!disabled,
     });
 
-    const inputRender = <input
-      id={id}
-      type="checkbox"
-      className={`${prefixCls}__input`}
-      value={value}
-      disabled={disabled}
-      checked={checked}
-      onChange={this.onValueChange}
-    />;
+    const inputRender = (
+      <input
+        id={id}
+        type="checkbox"
+        className={`${prefixCls}__input`}
+        value={value}
+        disabled={disabled}
+        checked={checked}
+        onChange={this.onValueChange}
+      />
+    );
 
     const renderCheckbox = (
       <div className={cls}>

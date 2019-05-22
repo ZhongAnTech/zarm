@@ -1,8 +1,4 @@
-
-/* eslint-disable */
-/* tslint-disable */
 const domUtil = {
-
   // 获取元素的纵坐标（相对于窗口）
   getTop: (e) => {
     let offset = e.offsetTop;
@@ -31,9 +27,9 @@ const domUtil = {
 
     // 解决ie下的兼容问题
     const isIE = navigator.userAgent.indexOf('MSIE') !== -1;
-    const rectTop = isIE && e.tagName === 'HTML' ?
-      -e.scrollTop :
-      rect.top;
+    const rectTop = isIE && e.tagName === 'HTML'
+      ? -e.scrollTop
+      : rect.top;
 
     return {
       left: rect.left,
@@ -47,12 +43,12 @@ const domUtil = {
 
   // 设置元素行内样式
   setStyle: (e, styles) => {
-    function is_numeric(n) {
-      return (n !== '' && !isNaN(parseFloat(n)) && isFinite(n));
-    }
+    const isNumeric = (n) => {
+      return (n !== '' && !Number.isNaN(parseFloat(n)) && Number.isFinite(n));
+    };
     Object.keys(styles).forEach((prop) => {
       let unit = '';
-      if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && is_numeric(styles[prop])) {
+      if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
         unit = 'px';
       }
       e.style[prop] = styles[prop] + unit;
@@ -100,7 +96,7 @@ const domUtil = {
 
   // 获取元素的offsetParent
   getOffsetParent: (e) => {
-    const offsetParent = e.offsetParent;
+    const { offsetParent } = e;
     return offsetParent === window.document.body || !offsetParent ? window.document.documentElement : offsetParent;
   },
 
@@ -118,9 +114,9 @@ const domUtil = {
       return window.document.documentElement;
     }
     if (
-      ['scroll', 'auto'].indexOf(domUtil.getStyleComputedProperty(parent, 'overflow')) !== -1 ||
-      ['scroll', 'auto'].indexOf(domUtil.getStyleComputedProperty(parent, 'overflow-x')) !== -1 ||
-      ['scroll', 'auto'].indexOf(domUtil.getStyleComputedProperty(parent, 'overflow-y')) !== -1
+      ['scroll', 'auto'].indexOf(domUtil.getStyleComputedProperty(parent, 'overflow')) !== -1
+      || ['scroll', 'auto'].indexOf(domUtil.getStyleComputedProperty(parent, 'overflow-x')) !== -1
+      || ['scroll', 'auto'].indexOf(domUtil.getStyleComputedProperty(parent, 'overflow-y')) !== -1
     ) {
       return parent;
     }
@@ -147,7 +143,6 @@ const domUtil = {
   },
 
   getScrollLeftValue: (e) => {
-   // tslint:disable-next-line
     return e === document.body ? Math.max(document.documentElement.scrollLeft, document.body.scrollLeft) : e.scrollLeft;
   },
 };

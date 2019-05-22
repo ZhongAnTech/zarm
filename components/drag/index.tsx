@@ -1,32 +1,30 @@
 import { PureComponent, cloneElement, ReactElement } from 'react';
 import PropsType from './PropsType';
 
-export interface DragProps extends PropsType {}
+export type DragProps = PropsType;
 
 export default class Drag extends PureComponent<DragProps, {}> {
   private dragState = Object.create(null);
 
   onTouchStart = (event) => {
-    const dragState = this.dragState;
-    dragState.startTime = new Date();
+    this.dragState.startTime = new Date();
 
     if (!event.touches) {
-      dragState.startX = event.clientX;
-      dragState.startY = event.clientY;
+      this.dragState.startX = event.clientX;
+      this.dragState.startY = event.clientY;
     } else {
       const touch = event.touches[0];
-      dragState.startX = touch.pageX;
-      dragState.startY = touch.pageY;
+      this.dragState.startX = touch.pageX;
+      this.dragState.startY = touch.pageY;
     }
 
     const { onDragStart } = this.props;
     if (typeof onDragStart === 'function') {
-      onDragStart(event, dragState);
+      onDragStart(event, this.dragState);
     }
-  }
+  };
 
   onTouchMove = (event) => {
-    const dragState = this.dragState;
     let currentX: number;
     let currentY: number;
 
@@ -39,11 +37,11 @@ export default class Drag extends PureComponent<DragProps, {}> {
       currentY = touch.pageY;
     }
 
-    const offsetX = currentX - dragState.startX;
-    const offsetY = currentY - dragState.startY;
+    const offsetX = currentX - this.dragState.startX;
+    const offsetY = currentY - this.dragState.startY;
 
     const state = {
-      ...dragState,
+      ...this.dragState,
       offsetX,
       offsetY,
       currentX,
@@ -56,16 +54,15 @@ export default class Drag extends PureComponent<DragProps, {}> {
     }
 
     this.dragState = state;
-  }
+  };
 
   onTouchEnd = (event) => {
-    const dragState = this.dragState;
     const { onDragEnd } = this.props;
     if (typeof onDragEnd === 'function') {
-      onDragEnd(event, dragState);
+      onDragEnd(event, this.dragState);
     }
     this.dragState = Object.create(null);
-  }
+  };
 
   render() {
     const { children } = this.props;

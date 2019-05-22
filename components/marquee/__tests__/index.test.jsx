@@ -19,7 +19,7 @@ describe('Marquee', () => {
     const wrapper = render(
       <div>
         { createMarquee({ height: 150, direction: 'right', width: '100%', loop: false, animationDuration: 6000, animationDelay: 5000, prefix: 'zarm-marquee' }) }
-      </div>
+      </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

@@ -3,13 +3,12 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Select from '../index';
 
-function fakeTimers() {
-  const timer = jest.useFakeTimers();
-  performance.timing = () => {};
-}
-const timer = fakeTimers();
-
 describe('Select', () => {
+  const fakeTimers = () => {
+    performance.timing = () => {};
+  };
+  fakeTimers();
+
   it('Select', () => {
     const wrapper = mount(
       <Select
@@ -17,7 +16,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -30,7 +29,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
 
     wrapper.find('.za-select').simulate('click');
@@ -46,7 +45,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     wrapper.find('.za-select').simulate('click');
     expect(wrapper.props().visible).toBeFalsy();
@@ -61,7 +60,7 @@ describe('Select', () => {
           { value: '2', label: '选项二' },
         ]}
         defaultValue="2"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -88,7 +87,7 @@ describe('Select', () => {
             ],
           },
         ]}
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: ['1', '12'] });
@@ -120,7 +119,7 @@ describe('Select', () => {
         ]}
         value={['1', '12']}
         displayAddon="-"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -132,7 +131,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     wrapper.setProps({
       dataSource: [
@@ -150,7 +149,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     wrapper.setProps({ value: '1' });
   });
@@ -176,7 +175,7 @@ describe('Select', () => {
             ],
           },
         ]}
-      />
+      />,
     );
 
     wrapper.setProps({
@@ -229,7 +228,7 @@ describe('Select', () => {
         value={['1', '12']}
         onOk={onOkFn}
         onCancel={onCancelFn}
-      />
+      />,
     );
 
     wrapper.find('.za-picker__submit').simulate('click');
@@ -266,7 +265,7 @@ describe('Select', () => {
         defaultValue={['1', '12']}
         onOk={onOkFn}
         onCancel={onCancelFn}
-      />
+      />,
     );
 
     wrapper.find('.za-picker__cancel').simulate('click');

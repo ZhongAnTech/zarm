@@ -1,6 +1,6 @@
 import React from 'react';
-import BaseNavbarProps from './PropsType';
 import classnames from 'classnames';
+import BaseNavbarProps from './PropsType';
 
 export interface NavBarProps extends BaseNavbarProps {
   prefixCls?: string;
