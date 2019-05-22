@@ -78,9 +78,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   constructor(props) {
     super(props);
     const state = getInitDate(props);
-    // const date = props.value && isExtendDate(props.value);
-    // const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-    // const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
 
     this.state = state;
 
@@ -359,7 +356,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   }
 
   getDate() {
-    return this.state.date || this.state.wheelDefault || this.getDefaultDate();
+    return this.clipDate(this.state.date || this.state.wheelDefault || this.getDefaultDate());
   }
 
   getDefaultDate() {

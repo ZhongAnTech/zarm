@@ -86,7 +86,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       return false;
     }
     const { onOk } = this.props;
-    const value = this.state.value || this.initDate;
+    const value = this.initDate;
     this.setState({
       value: value,
       visible: false,
