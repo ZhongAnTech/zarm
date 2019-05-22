@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 export default class FilePickerPage extends React.Component {
   state = {
     files: [],
@@ -67,7 +66,7 @@ export default class FilePickerPage extends React.Component {
     this.setState({
       files,
     });
-  }
+  };
 
   onSelectMulti = (files) => {
     console.log('multiFiles === ', files);
@@ -79,7 +78,7 @@ export default class FilePickerPage extends React.Component {
     this.setState({
       multiFiles,
     });
-  }
+  };
 
   renderImgs = (files) => {
     return this.state[files].map(({ thumbnail }, index) => {
@@ -99,7 +98,7 @@ export default class FilePickerPage extends React.Component {
         </View>
       );
     });
-  }
+  };
 
   render() {
     return (

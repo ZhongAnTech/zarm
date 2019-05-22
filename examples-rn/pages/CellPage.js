@@ -85,12 +85,12 @@ export default class App extends PureComponent {
           <Cell
             icon={<Image style={styles.iconBigStyle} source={{ uri: 'https://static.zhongan.com/website/health/zarm/images/icons/state.png' }} />}
             onClick={noop}
-            title={
+            title={(
               <View>
                 <Text style={styles.titleStyle}>标题文字</Text>
                 <Text style={styles.descriptionStyle}>描述文字</Text>
               </View>
-            }
+            )}
             description="附加提示"
             hasArrow
           />

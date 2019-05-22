@@ -1,0 +1,23 @@
+@import "@site/styles/index";
+
+.pull-page {
+  .za-pull-load {
+    position: relative;
+    left: r(15);
+    @include onepx(top);
+  }
+
+  .custom-control {
+    display: flex;
+    align-items: center;
+    padding: r(10) 0;
+    height: r(50);
+    color: #999;
+    font-size: r(13);
+
+    img {
+      width: r(40);
+      height: r(40);
+    }
+  }
+}

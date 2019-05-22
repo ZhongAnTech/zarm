@@ -12,7 +12,8 @@ export const RenderWithText = (props) => {
         <Text style={textStyle}>{component}</Text>
       </View>
     );
-  } else {
-    return <View style={viewStyle}>{component}</View>;
   }
+  return <View style={viewStyle}>{component}</View>;
 };
+
+export default RenderWithText;

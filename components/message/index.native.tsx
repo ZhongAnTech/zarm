@@ -40,7 +40,7 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
 
   onPressClose = () => {
     this.setState({ visible: false });
-  }
+  };
 
   render() {
     const {
@@ -81,7 +81,7 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
       styles![`${size}CloseIconStyle`],
     ];
 
-    const closeRender = closable &&
+    const closeRender = closable && (
       <TouchableWithoutFeedback
         onPress={this.onPressClose}
       >
@@ -89,18 +89,21 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
           <View style={[closeIconStyle, styles!.closeIconLeft]} />
           <View style={[closeIconStyle, styles!.closeIconRight]} />
         </View>
-      </TouchableWithoutFeedback>;
+      </TouchableWithoutFeedback>
+    );
 
-    const arrowRender = hasArrow &&
+    const arrowRender = hasArrow && (
       <View style={styles!.arrowWrapperStyle as ViewStyle}>
         <View style={arrowStyle} />
-      </View>;
+      </View>
+    );
 
-    const footerRender = (closable || hasArrow) &&
+    const footerRender = (closable || hasArrow) && (
       <View style={styles!.footerStyle as ViewStyle}>
         {closeRender}
         {arrowRender}
-      </View>;
+      </View>
+    );
 
     const messageRender = (
       <View style={wrapperStyle}>

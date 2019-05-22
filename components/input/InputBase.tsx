@@ -13,7 +13,9 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   };
 
   private input;
+
   private onBlurTimeout;
+
   private blurFromClear;
 
   constructor(props) {
@@ -25,14 +27,17 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   componentDidMount() {
-    if (this.props.autoFocus || this.state.focused) {
+    const { autoFocus } = this.props;
+    const { focused } = this.state;
+
+    if (autoFocus || focused) {
       this.input.focus();
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const { value } = this.state;
-    if ('value' in nextProps && value !== nextProps.value ) {
+    if ('value' in nextProps && value !== nextProps.value) {
       this.setState({
         value: nextProps.value,
       });
@@ -55,11 +60,12 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     if (typeof onFocus === 'function') {
       onFocus(e.target.value);
     }
-  }
+  };
 
   onBlur = (e) => {
     const { onBlur } = this.props;
-    const value = e.target.value;
+    const { value } = e.target;
+
     this.onBlurTimeout = setTimeout(() => {
       if (!this.blurFromClear && document.activeElement !== this.input) {
         this.setState({
@@ -72,9 +78,38 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       }
       this.blurFromClear = false;
     }, 0);
-  }
+  };
 
-  handleComposition(e) {
+  onChange = (e) => {
+    const { onChange } = this.props;
+    if (!this.state.focused) {
+      this.setState({
+        focused: true,
+      });
+    }
+    this.setState({
+      value: e.target.value,
+    });
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  };
+
+  onClear = () => {
+    const { isOnComposition } = this.state;
+    const { onChange, onClear } = this.props;
+
+    this.blurFromClear = true;
+    this.setState({
+      value: '',
+    });
+
+    !isOnComposition && this.focus();
+    typeof onChange === 'function' && onChange('');
+    typeof onClear === 'function' && onClear('');
+  };
+
+  handleComposition = (e) => {
     const { onCompositionStart, onCompositionUpdate, onCompositionEnd, onChange } = this.props;
 
     if (e.type === 'compositionstart') {
@@ -93,11 +128,11 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
 
     if (e.type === 'compositionend') {
+      const { value } = e.target;
       // composition is end
       this.setState({
         isOnComposition: false,
       });
-      const value = e.target.value;
       if (typeof onCompositionEnd === 'function') {
         onCompositionEnd(e);
       }
@@ -105,46 +140,15 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
         onChange(value);
       }
     }
-  }
+  };
 
-  onChange = (e) => {
-    const { onChange } = this.props;
-    if (!this.state.focused) {
-      this.setState({
-        focused: true,
-      });
-    }
-    this.setState({
-      value: e.target.value,
-    });
-    if (onChange) {
-      onChange(e.target.value);
-    }
-  }
-
-  onClear() {
-    this.blurFromClear = true;
-    this.setState({
-      value: '',
-    });
-    if (!this.state.isOnComposition) {
-      this.focus();
-    }
-    if (this.props.onChange) {
-      this.props.onChange('');
-    }
-    if (this.props.onClear) {
-      this.props.onClear('');
-    }
-  }
-
-  focus() {
+  focus = () => {
     this.input.focus();
-  }
+  };
 
-  blur() {
+  blur = () => {
     this.input.blur();
-  }
+  };
 
   render() {
     const {
@@ -158,8 +162,8 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       ...rest
     } = this.props;
 
-    const valueState = this.state.value;
-    const focused = this.state.focused;
+    const { value } = this.state;
+    const { focused } = this.state;
     const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
 
     const cls = classnames(prefixCls, className, {
@@ -171,7 +175,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
     const valueProps: any = {};
     if ('value' in this.props) {
-      valueProps.value = valueState;
+      valueProps.value = value;
     }
 
     const renderInput = (
@@ -191,11 +195,11 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       />
     );
 
-    const renderText = <div className={`${prefixCls}__content`}>{valueState}</div>;
+    const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
 
     // clear icon
     const clearCls = classnames(`${prefixCls}__clear`, {
-      [`${prefixCls}__clear--show`]: focused && valueState && valueState.length > 0,
+      [`${prefixCls}__clear--show`]: focused && value && value.length > 0,
     });
     const renderClearIcon = showClearIcon
       && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />;

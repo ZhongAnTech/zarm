@@ -28,19 +28,20 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
     };
   }
 
-  onClick: MouseEventHandler<HTMLDivElement> = e => {
+  onClick: MouseEventHandler<HTMLDivElement> = (e) => {
     const { hasArrow, onClick } = this.props;
     if (hasArrow && typeof onClick === 'function') {
       onClick(e);
     }
-  }
+  };
 
   onClose: MouseEventHandler<HTMLDivElement> = () => {
     this.setState({ visible: false });
-  }
+  };
 
   render() {
     const { prefixCls, className, theme, size, icon, hasArrow, closable, children } = this.props;
+    const { visible } = this.state;
 
     const classes = classnames(prefixCls, className, {
       [`${prefixCls}--${theme}`]: !!theme,
@@ -52,11 +53,18 @@ export default class Message extends PureComponent<MessageProps, MessageState> {
     const renderArrow = hasArrow && <Icon type="arrow-right" />;
     const noFooter = !closable && !hasArrow;
 
-    return this.state.visible && (
+    return visible && (
       <div className={classes} onClick={this.onClick}>
         <div className={`${prefixCls}__header`}>{iconRender}</div>
         <div className={`${prefixCls}__body`}>{children}</div>
-        {!noFooter && <div className={`${prefixCls}__footer`}>{renderArrow}{renderCloseIcon}</div>}
+        {
+          !noFooter && (
+            <div className={`${prefixCls}__footer`}>
+              {renderArrow}
+              {renderCloseIcon}
+            </div>
+          )
+        }
       </div>
     );
   }

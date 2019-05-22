@@ -8,7 +8,7 @@ describe('Panel', () => {
     const wrapper = render(
       <Panel title="title" more="more">
         body
-      </Panel>
+      </Panel>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

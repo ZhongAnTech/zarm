@@ -5,7 +5,7 @@ import swipeActionStyle from './style/index.native';
 
 const styles = StyleSheet.create<any>(swipeActionStyle);
 
-export interface SwipeActionProps extends PropsType {}
+export type SwipeActionProps = PropsType;
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   static defaultProps = {
@@ -20,11 +20,17 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   };
 
   private isOpen = false;
+
   private touchEnd = true;
+
   private btnsLeftWidth = 0;
+
   private btnsRightWidth = 0;
+
   private startTime;
+
   private offsetLeft;
+
   private panResponder;
 
   constructor(props) {
@@ -47,7 +53,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     this.startTime = new Date();
     this.touchEnd = true;
     return true;
-  }
+  };
 
   handlePanResponderMove = (_event, { dx, dy }) => {
     const { disabled } = this.props;
@@ -58,11 +64,10 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
 
     // 拖动距离达到上限
     const { offset } = this.props;
-    const btnsLeftWidth = this.btnsLeftWidth;
-    const btnsRightWidth = this.btnsRightWidth;
+
     if (
-      dx > 0 && (!btnsLeftWidth || dx >= btnsLeftWidth + offset) ||
-      dx < 0 && (!btnsRightWidth || dx <= -btnsRightWidth - offset)
+      (dx > 0 && (!this.btnsLeftWidth || dx >= this.btnsLeftWidth + offset))
+      || (dx < 0 && (!this.btnsRightWidth || dx <= -this.btnsRightWidth - offset))
     ) {
       return false;
     }
@@ -75,22 +80,20 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     }
 
     this.doTransition({ offsetLeft: dx, animationDuration: 0 });
-  }
+  };
 
   handlePanResponderRelease = (_event, { dx }) => {
     const { animationDuration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - this.startTime.getTime();
-    const btnsLeftWidth = this.btnsLeftWidth;
-    const btnsRightWidth = this.btnsRightWidth;
 
     let distanceX = 0;
     let isOpen = false;
 
-    if ((dx / btnsLeftWidth > moveDistanceRatio) || (dx > 0 && timeSpan <= moveTimeSpan)) {
-      distanceX = btnsLeftWidth;
+    if ((dx / this.btnsLeftWidth > moveDistanceRatio) || (dx > 0 && timeSpan <= moveTimeSpan)) {
+      distanceX = this.btnsLeftWidth;
       isOpen = true;
-    } else if ((dx / btnsRightWidth < -moveDistanceRatio) || (dx < 0 && timeSpan <= moveTimeSpan)) {
-      distanceX = -btnsRightWidth;
+    } else if ((dx / this.btnsRightWidth < -moveDistanceRatio) || (dx < 0 && timeSpan <= moveTimeSpan)) {
+      distanceX = -this.btnsRightWidth;
       isOpen = true;
     }
 
@@ -104,33 +107,8 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       // 还原
       this.doTransition({ offsetLeft: distanceX, animationDuration });
     }
-  }
+  };
 
-  open(offsetLeft) {
-    const { animationDuration, onOpen } = this.props;
-    this.isOpen = true;
-    this.doTransition({ offsetLeft, animationDuration });
-    if (typeof onOpen === 'function') {
-      onOpen();
-    }
-  }
-
-  close() {
-    const { animationDuration, onClose } = this.props;
-    this.isOpen = false;
-    this.doTransition({ offsetLeft: 0, animationDuration });
-    if (typeof onClose === 'function') {
-      onClose();
-    }
-  }
-
-  doTransition({ offsetLeft, animationDuration }) {
-    Animated.timing(this.offsetLeft, {
-      toValue: offsetLeft,
-      duration: animationDuration,
-      // useNativeDriver: true
-    }).start();
-  }
   getBtnsWidth = ({ nativeEvent }, direction) => {
     const { layout: { width } } = nativeEvent;
 
@@ -139,7 +117,33 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     } else {
       this.btnsRightWidth = width;
     }
-  }
+  };
+
+  open = (offsetLeft) => {
+    const { animationDuration, onOpen } = this.props;
+    this.isOpen = true;
+    this.doTransition({ offsetLeft, animationDuration });
+    if (typeof onOpen === 'function') {
+      onOpen();
+    }
+  };
+
+  close = () => {
+    const { animationDuration, onClose } = this.props;
+    this.isOpen = false;
+    this.doTransition({ offsetLeft: 0, animationDuration });
+    if (typeof onClose === 'function') {
+      onClose();
+    }
+  };
+
+  doTransition = ({ offsetLeft, animationDuration }) => {
+    Animated.timing(this.offsetLeft, {
+      toValue: offsetLeft,
+      duration: animationDuration,
+      // useNativeDriver: true
+    }).start();
+  };
 
   renderButton = (button, index) => {
     return cloneElement(button, {
@@ -151,7 +155,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
         }),
       },
       onClick: (e) => {
-        const onClick = button.props.onClick;
+        const { onClick } = button.props;
 
         if (onClick) {
           onClick(e);
@@ -162,9 +166,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
         }
       },
     });
-  }
+  };
 
-  renderButtons(buttons, direction) {
+  renderButtons = (buttons, direction) => {
     if (!buttons || buttons.length === 0) {
       return;
     }
@@ -172,12 +176,12 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     return (
       <View
         style={btnStyle}
-        onLayout={(e) => this.getBtnsWidth(e, direction)}
+        onLayout={e => this.getBtnsWidth(e, direction)}
       >
         {buttons.map(this.renderButton)}
       </View>
     );
-  }
+  };
 
   render() {
     const viewStyle = {
@@ -187,18 +191,18 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     };
     const { left, right, children } = this.props;
     return (left || right)
-    ? (
-      <View style={styles.wrapper}>
-        {this.renderButtons(left, 'left')}
-        {this.renderButtons(right, 'right')}
-        <Animated.View
-          style={[styles.content, viewStyle]}
-          {...this.panResponder.panHandlers}
-        >
-          {children}
-        </Animated.View>
-      </View>
-    )
-    : children;
+      ? (
+        <View style={styles.wrapper}>
+          {this.renderButtons(left, 'left')}
+          {this.renderButtons(right, 'right')}
+          <Animated.View
+            style={[styles.content, viewStyle]}
+            {...this.panResponder.panHandlers}
+          >
+            {children}
+          </Animated.View>
+        </View>
+      )
+      : children;
   }
 }

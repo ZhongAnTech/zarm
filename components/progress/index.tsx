@@ -40,21 +40,22 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     this.resetStrokeWidth(weight);
   }
 
+  getBaseStrokeWidth = (weight) => {
+    return weight === 'normal' ? 8 : 4;
+  };
+
   resetStrokeWidth(weight) {
     const baseWidth = 32;
-    const clientWidth = this.progressElement.clientWidth;
+    const { clientWidth } = this.progressElement;
     const baseStrokeWidth = this.getBaseStrokeWidth(weight);
     this.setState({
       strokeWidth: baseWidth / clientWidth * baseStrokeWidth,
     });
   }
 
-  getBaseStrokeWidth(weight) {
-    return weight === 'normal' ? 8 : 4;
-  }
-
   render() {
     const { theme, percent, shape, type, weight, style, prefixCls, className, children } = this.props;
+    const { strokeWidth } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${type}`]: !!type,
@@ -63,13 +64,13 @@ export default class Progress extends PureComponent<ProgressProps, any> {
 
     const diameter = 32;
     const radius = diameter / 2;
-    const strokeWidth = this.state.strokeWidth;
     const extendRadius = radius + strokeWidth / 2;
     const strokeLinecap = shape === 'round' ? 'round' : 'butt';
 
     const viewBox = type === 'circle'
       ? `0 0 ${diameter + strokeWidth} ${diameter + strokeWidth}`
       : `0 0 ${diameter + strokeWidth} ${(diameter + strokeWidth) / 2}`;
+
     const path = type === 'circle'
       ? `
         M${extendRadius}, ${extendRadius}
@@ -80,9 +81,11 @@ export default class Progress extends PureComponent<ProgressProps, any> {
         M${extendRadius}, ${extendRadius}
         m${-radius} 0
         a${radius} ${radius} 0 0 1 ${diameter} 0`;
+
     const dasharray = type === 'circle'
       ? Math.PI * diameter
       : Math.PI * diameter / 2;
+
     const roundInner = (type === 'circle' || type === 'semi-circle')
       && (
         <svg viewBox={viewBox}>
@@ -107,6 +110,7 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     const borderRadius = shape === 'round' ? `${lineStrokeWidth}px` : '0';
     const lineTrackStyle = { height: `${lineStrokeWidth}px`, borderRadius };
     const lineThumbStyle = { width: `${percent}%`, borderRadius };
+
     const rectInner = (
       type === 'line'
       && (

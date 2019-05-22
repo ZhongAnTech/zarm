@@ -13,10 +13,6 @@ export default class Input extends PureComponent<InputProps, {}> {
 
   private input;
 
-  constructor(props) {
-    super(props);
-  }
-
   focus() {
     if (this.input) {
       this.input.focus();
@@ -30,23 +26,25 @@ export default class Input extends PureComponent<InputProps, {}> {
   }
 
   render() {
-    if (this.props.type === 'text' && 'rows' in this.props) {
-      return <InputTextarea ref={ele => (this.input = ele)} {...this.props} />;
+    const { type } = this.props;
+
+    if (type === 'text' && 'rows' in this.props) {
+      return <InputTextarea type={type} ref={(ele) => { this.input = ele; }} {...this.props} />;
     }
 
-    switch (this.props.type) {
+    switch (type) {
       case 'idcard':
       case 'price':
       case 'number':
-        return <InputNumber ref={ele => (this.input = ele)} {...this.props} />;
+        return <InputNumber type={type} ref={(ele) => { this.input = ele; }} {...this.props as InputNumberProps} />;
 
       case 'text':
       case 'search':
       case 'password':
-        return <InputBase ref={ele => (this.input = ele)} {...this.props} />;
+        return <InputBase type={type} ref={(ele) => { this.input = ele; }} {...this.props as InputBaseProps} />;
 
       default:
-        return <InputBase ref={ele => (this.input = ele)} {...this.props as InputBaseProps} />;
+        return <InputBase type={type} ref={(ele) => { this.input = ele; }} {...this.props as InputBaseProps} />;
     }
   }
 }

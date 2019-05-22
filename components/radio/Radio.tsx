@@ -57,7 +57,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
     if (typeof onChange === 'function') {
       onChange(checked);
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, type, shape, block, value, disabled, children } = this.props;
@@ -68,14 +68,16 @@ export default class Radio extends PureComponent<RadioProps, any> {
       [`${prefixCls}--disabled`]: !!disabled,
     });
 
-    const inputRender = <input
-      type="radio"
-      className={`${prefixCls}__input`}
-      value={value}
-      disabled={disabled}
-      checked={checked}
-      onChange={this.onValueChange}
-    />;
+    const inputRender = (
+      <input
+        type="radio"
+        className={`${prefixCls}__input`}
+        value={value}
+        disabled={disabled}
+        checked={checked}
+        onChange={this.onValueChange}
+      />
+    );
 
     if (type === 'cell') {
       return (

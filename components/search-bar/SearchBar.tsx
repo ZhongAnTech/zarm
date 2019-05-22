@@ -21,10 +21,15 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   };
 
   private searchForm;
+
   private searchContainer;
+
   private cancelRef;
+
   private cancelOuterWidth;
+
   private initPos;
+
   private inputRef;
 
   constructor(props) {
@@ -43,7 +48,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   componentWillReceiveProps(nextProps) {
     const { cancelText, placeholder } = this.props;
     const { value } = this.state;
-    if ('value' in nextProps && value !== nextProps.value ) {
+    if ('value' in nextProps && value !== nextProps.value) {
       this.setState({
         value: nextProps.value,
       });
@@ -61,44 +66,65 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     shouldUpdatePosition = false;
   }
 
-  // 初始化搜索提示文字的位置
-  calculatePositon(props) {
-    const { showCancel } = props;
-    const formWidth = this.searchForm.getBoundingClientRect().width;
-    const containerWidth = this.searchContainer.getBoundingClientRect().width;
-    const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
-    this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
-    if (!showCancel) {
-      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
-      this.initPos = (formWidth / 2) - (containerWidth / 2);
-    } else {
-      this.initPos = (formWidth / 2) - (this.cancelOuterWidth / 2) - (containerWidth / 2);
-    }
-
-    if (!this.state.value) {
-      this.searchContainer.style.transform = `translate3d(${this.initPos}px, 0, 0)`;
-      this.searchContainer.style.webkitTransform = `translate3d(${this.initPos}px, 0, 0)`;
-    } else {
-      this.focusAnim(0);
-    }
-  }
-
   onFocus() {
-    this.setState({
-      focus: true,
-    });
+    const { onFocus } = this.props;
+    this.setState({ focus: true });
     this.focusAnim();
-    if (this.props.onFocus) {
-      this.props.onFocus();
-    }
+    onFocus && onFocus();
   }
 
   onChange(value) {
     const { onChange } = this.props;
+    const { isOnComposition } = this.state;
+
     this.setState({ value });
-    if (!this.state.isOnComposition && onChange) {
+    if (!isOnComposition && onChange) {
       onChange(value);
     }
+  }
+
+  onBlur() {
+    const { onBlur } = this.props;
+    const { value } = this.state;
+
+    this.setState({ focus: false });
+    !value && this.blurAnim();
+    onBlur && onBlur();
+  }
+
+  onClear() {
+    const { onClear, onChange } = this.props;
+    this.setState({
+      value: '',
+      isOnComposition: false,
+    }, () => {
+      // this.setState({ focus: true });
+      this.focus();
+    });
+    onClear && onClear('');
+    onChange && onChange('');
+  }
+
+  onCancel() {
+    const { showCancel, onCancel } = this.props;
+    if (!showCancel) {
+      this.setState({
+        value: '',
+        isOnComposition: false,
+      }, () => {
+        this.onBlur();
+      });
+    }
+    onCancel && onCancel();
+  }
+
+  onSubmit(e) {
+    const { onSubmit } = this.props;
+    const { value } = this.state;
+
+    e.preventDefault();
+    this.inputRef.blur();
+    onSubmit && onSubmit(value);
   }
 
   handleComposition(e) {
@@ -113,74 +139,41 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
       this.setState({
         isOnComposition: false,
       });
-      const value = e.target.value;
-      if (this.props.onChange) {
-        this.props.onChange(value);
-      }
+
+      const { onChange } = this.props;
+      const { value } = e.target;
+      onChange && onChange(value);
     }
   }
 
-  onBlur() {
+  // 初始化搜索提示文字的位置
+  calculatePositon(props) {
+    const { showCancel } = props;
     const { value } = this.state;
-    this.setState({
-      focus: false,
-    });
-    if (!value) {
-      this.blurAnim();
-    }
 
-    if (this.props.onBlur) {
-      this.props.onBlur();
-    }
-  }
+    const formWidth = this.searchForm.getBoundingClientRect().width;
+    const containerWidth = this.searchContainer.getBoundingClientRect().width;
+    const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
 
-  onClear() {
-    this.setState({
-      value: '',
-      isOnComposition: false,
-    }, () => {
-      // this.setState({ focus: true });
-      this.focus();
-    });
-
-    if (this.props.onClear) {
-      this.props.onClear('');
-    }
-
-    if (this.props.onChange) {
-      this.props.onChange('');
-    }
-  }
-
-  onCancel() {
-    const { showCancel } = this.props;
+    this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
     if (!showCancel) {
-      this.setState({
-        value: '',
-        isOnComposition: false,
-      }, () => {
-        this.onBlur();
-      });
+      this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
+      this.initPos = (formWidth / 2) - (containerWidth / 2);
+    } else {
+      this.initPos = (formWidth / 2) - (this.cancelOuterWidth / 2) - (containerWidth / 2);
     }
 
-    if (this.props.onCancel) {
-      this.props.onCancel();
-    }
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-    const { value } = this.state;
-    this.inputRef.blur();
-
-    if (this.props.onSubmit) {
-      this.props.onSubmit(value);
+    if (!value) {
+      this.searchContainer.style.transform = `translate3d(${this.initPos}px, 0, 0)`;
+      this.searchContainer.style.webkitTransform = `translate3d(${this.initPos}px, 0, 0)`;
+    } else {
+      this.focusAnim(0);
     }
   }
 
   focusAnim(transition = 300) {
     this.searchContainer.style.cssText += `transform: translate3d(10px, 0, 0);transition: ${transition}ms;`;
-    this.cancelRef.style.cssText = `margin-right: 0px;`;
+    this.cancelRef.style.cssText = 'margin-right: 0px;';
     this.cancelRef.className += ' animation-ease';
   }
 

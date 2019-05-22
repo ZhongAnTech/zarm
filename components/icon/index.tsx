@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import PropsType from './PropsType';
 import classnames from 'classnames';
+import PropsType from './PropsType';
 
 export interface IconProps extends PropsType {
   prefixCls?: string;

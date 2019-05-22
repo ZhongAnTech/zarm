@@ -7,14 +7,14 @@ describe('Stepper', () => {
   it('renders correctly', () => {
     const onChange = jest.fn();
     const wrapper = render(
-      <Stepper onChange={onChange} />
+      <Stepper onChange={onChange} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('defaultValue', () => {
     const wrapper = shallow(
-      <Stepper defaultValue={2} />
+      <Stepper defaultValue={2} />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -22,7 +22,7 @@ describe('Stepper', () => {
   it('receive new value', () => {
     const onChange = jest.fn();
     const wrapper = shallow(
-      <Stepper onChange={onChange} />
+      <Stepper onChange={onChange} />,
     );
     wrapper.setProps({ value: 10 });
   });
@@ -31,7 +31,7 @@ describe('Stepper', () => {
     const onChange = jest.fn();
     const onInputChange = jest.fn();
     const wrapper = shallow(
-      <Stepper onChange={onChange} onInputChange={onInputChange} />
+      <Stepper onChange={onChange} onInputChange={onInputChange} />,
     );
     wrapper.find('input').simulate('change', { target: { value: 10 } });
     expect(onInputChange).toBeCalled();

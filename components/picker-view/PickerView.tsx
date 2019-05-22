@@ -44,13 +44,14 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     if (typeof onChange === 'function') {
       onChange(newState.objValue, level);
     }
-  }
+  };
 
-  onTransition(isScrolling) {
-    if (typeof this.props.onTransition === 'function') {
-      this.props.onTransition!(isScrolling);
+  onTransition = (isScrolling) => {
+    const { onTransition } = this.props;
+    if (typeof onTransition === 'function') {
+      onTransition!(isScrolling);
     }
-  }
+  };
 
   renderWheel = (item, index) => {
     const { valueMember, itemRender, disabled } = this.props;
@@ -68,7 +69,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
     );
-  }
+  };
 
   render() {
     const { prefixCls, className } = this.props;

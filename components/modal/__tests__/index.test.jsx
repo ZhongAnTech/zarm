@@ -12,7 +12,7 @@ describe('Modal', () => {
       <Modal visible onMaskClick={onMaskClick}>
         <Modal.Header title="标题" onClose={onClose} />
         <Modal.Body>foo</Modal.Body>
-      </Modal>
+      </Modal>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.unmount();
@@ -24,7 +24,7 @@ describe('Modal', () => {
       <Modal visible>
         <Modal.Header title="标题" onClose={onClose} />
         <Modal.Body>foo</Modal.Body>
-      </Modal>
+      </Modal>,
     );
     wrapper.find(Modal.Header).dive().find('.za-modal__header__close').simulate('click');
     expect(onClose).toBeCalled();

@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import domUtil from '../utils/dom';
 
 const {
@@ -148,6 +148,9 @@ function Popper(reference, popper, options) {
   this._options = { ...DEFAULTS, ...options };
   this._options.modifiers = this._options.modifiers.map(
     (modifier) => {
+      if (modifier === 'applyStyle') {
+        this._popper.setAttribute('x-placement', this._options.placement);
+      }
       return this.modifiers[modifier] || modifier;
     },
   );
@@ -169,6 +172,7 @@ function Popper(reference, popper, options) {
  * 销毁
  */
 Popper.prototype.destroy = function () {
+  this._popper.removeAttribute('x-placement');
   this._popper.style.left = '';
   this._popper.style.position = '';
   this._popper.style.top = '';
@@ -397,6 +401,9 @@ Popper.prototype.modifiers.applyStyle = function (data) {
     styles.top = top;
   }
   setStyle(this._popper, styles);
+
+   // 给气泡框添加属性选择器，用于定位arrow
+  this._popper.setAttribute('x-placement', data.placement);
 
   // 设置arrow定位样式
   if (data.offsets.arrow) {

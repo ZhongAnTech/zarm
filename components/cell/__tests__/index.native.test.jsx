@@ -1,6 +1,6 @@
-import { TouchableHighlight, View, Image } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 import React from 'react';
-import { render, mount, shallow } from 'enzyme';
+import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Cell from '../index.native';
 

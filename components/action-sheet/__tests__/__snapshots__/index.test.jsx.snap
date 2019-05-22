@@ -96,9 +96,11 @@ exports[`ActionSheet renders correctly 1`] = `
               >
                 <div
                   class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                  role="dialog"
                 >
                   <div
                     class="za-popup__wrapper"
+                    role="document"
                   >
                     <div
                       class="za-action-sheet"
@@ -106,21 +108,21 @@ exports[`ActionSheet renders correctly 1`] = `
                       <div
                         class="za-action-sheet__actions"
                       >
-                        <a
+                        <div
                           class="za-action-sheet__item"
                         >
                           操作一
-                        </a>
-                        <a
+                        </div>
+                        <div
                           class="za-action-sheet__item"
                         >
                           操作二
-                        </a>
-                        <a
+                        </div>
+                        <div
                           class="za-action-sheet__item za-action-sheet__item--danger"
                         >
                           操作三
-                        </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -130,9 +132,11 @@ exports[`ActionSheet renders correctly 1`] = `
           >
             <div
               className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+              role="dialog"
             >
               <div
                 className="za-popup__wrapper"
+                role="document"
                 style={
                   Object {
                     "WebkitTransitionDuration": "200ms",
@@ -146,27 +150,27 @@ exports[`ActionSheet renders correctly 1`] = `
                   <div
                     className="za-action-sheet__actions"
                   >
-                    <a
+                    <div
                       className="za-action-sheet__item"
                       key="0"
                       onClick={[MockFunction]}
                     >
                       操作一
-                    </a>
-                    <a
+                    </div>
+                    <div
                       className="za-action-sheet__item"
                       key="1"
                       onClick={[MockFunction]}
                     >
                       操作二
-                    </a>
-                    <a
+                    </div>
+                    <div
                       className="za-action-sheet__item za-action-sheet__item--danger"
                       key="2"
                       onClick={[MockFunction]}
                     >
                       操作三
-                    </a>
+                    </div>
                   </div>
                 </div>
               </div>

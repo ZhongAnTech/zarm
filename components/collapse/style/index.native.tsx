@@ -1,5 +1,5 @@
-import variables from '../../style/themes/default.native';
 import { StyleSheet } from 'react-native';
+import variables from '../../style/themes/default.native';
 
 const border = {
   borderBottomWidth: StyleSheet.hairlineWidth,

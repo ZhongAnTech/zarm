@@ -3,33 +3,13 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Picker from '../index';
 
-function fakeTimers() {
-  performance.timing = {};
-  performance.timing.navigationStart = 0;
-}
-fakeTimers();
-
-const District = [
-  {
-    value: '1',
-    label: '北京市',
-    children: [
-      { value: '11', label: '海淀区' },
-      { value: '12', label: '西城区' },
-    ],
-  },
-  {
-    value: '2',
-    label: '上海市',
-    children: [
-      { value: '21', label: '杨浦区' },
-      { value: '22', label: '静安区' },
-    ],
-  },
-];
-
-
 describe('Picker', () => {
+  const fakeTimers = () => {
+    performance.timing = {};
+    performance.timing.navigationStart = 0;
+  };
+  fakeTimers();
+
   it('Picker render visible', () => {
     const wrapper = mount(
       <Picker
@@ -39,7 +19,7 @@ describe('Picker', () => {
           { value: '2', label: '选项二' },
         ]}
         visible
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -67,7 +47,7 @@ describe('Picker', () => {
         ]}
         valueMember="code"
         itemRender={data => data.name}
-      />
+      />,
     );
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -99,7 +79,7 @@ describe('Picker', () => {
         visible
         value={['1', '12']}
         onOk={onOkFn}
-      />
+      />,
     );
 
     wrapper.find('.za-picker__submit').simulate('click');
@@ -132,7 +112,7 @@ describe('Picker', () => {
         visible
         defaultValue={['1', '12']}
         onCancel={onCancelFn}
-      />
+      />,
     );
 
     wrapper.find('.za-picker__cancel').simulate('click');
@@ -199,7 +179,7 @@ describe('Picker', () => {
         visible
         defaultValue={['1', '12']}
         onChange={onChange}
-      />
+      />,
     ).find('.za-wheel').at(0);
 
     // wrapper.simulate('touchStart', {
@@ -222,7 +202,7 @@ describe('Picker', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     wrapper.setProps({
       dataSource: [
@@ -240,7 +220,7 @@ describe('Picker', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     wrapper.setProps({ value: '1' });
   });
@@ -266,7 +246,7 @@ describe('Picker', () => {
             ],
           },
         ]}
-      />
+      />,
     );
 
     wrapper.setProps({

@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 import DatePicker from '../index';
 
 function fakeTimers() {
@@ -33,7 +32,7 @@ describe('DatePicker', () => {
         value="2009-3-4"
         visible
         onOk={onOkFn}
-      />
+      />,
     );
     wrapper.find('.za-date-picker__submit').simulate('click');
     expect(onOkFn).toBeCalled();
@@ -48,7 +47,7 @@ describe('DatePicker', () => {
         value="2009-3-4"
         visible
         onCancel={onCancelFn}
-      />
+      />,
     );
 
     wrapper.find('.za-date-picker__cancel').simulate('click');

@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
-import { REFRESH_STATE, LOAD_STATE, PropsType } from './PropsType';
 import classnames from 'classnames';
+import { REFRESH_STATE, LOAD_STATE, PropsType } from './PropsType';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
 import Drag from '../drag';
@@ -29,7 +29,9 @@ export default class Pull extends PureComponent<PullProps, any> {
   };
 
   private pull;
+
   private wrap;
+
   private throttledScroll;
 
   constructor(props) {
@@ -50,11 +52,13 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('refresh' in nextProps && nextProps.refresh.state !== this.props.refresh.state) {
+    const { refresh, load } = this.props;
+
+    if ('refresh' in nextProps && nextProps.refresh.state !== refresh.state) {
       this.doRefreshAction(nextProps.refresh.state);
     }
 
-    if ('load' in nextProps && nextProps.load.state !== this.props.load.state) {
+    if ('load' in nextProps && nextProps.load.state !== load.state) {
       this.doLoadAction(nextProps.load.state);
     }
   }
@@ -65,16 +69,16 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   getScrollContainer = () => {
-    return (node => {
+    return ((node) => {
       while (node && node.parentNode && node.parentNode !== document.body) {
         const style = window.getComputedStyle(node);
-        if (['scroll', 'auto'].indexOf(style.overflowY || '') > - 1) {
+        if (['scroll', 'auto'].indexOf(style.overflowY || '') > -1) {
           return node;
         }
         node = node.parentNode;
       }
     })(this.pull) || document.documentElement;
-  }
+  };
 
   onScroll = () => {
     const { refreshState, loadState } = this.state;
@@ -83,33 +87,33 @@ export default class Pull extends PureComponent<PullProps, any> {
     const { handler, distance } = load;
 
     if (
-      typeof handler !== 'function' ||
-      refreshState !== REFRESH_STATE.normal ||
-      loadState !== LOAD_STATE.normal ||
-      scrollHeight <= clientHeight ||
+      typeof handler !== 'function'
+      || refreshState !== REFRESH_STATE.normal
+      || loadState !== LOAD_STATE.normal
+      || scrollHeight <= clientHeight
 
       // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度
-      scrollHeight - (scrollTop + document.body.scrollTop) - distance! > clientHeight
+      || scrollHeight - (scrollTop + document.body.scrollTop) - distance! > clientHeight
     ) {
       return;
     }
     handler();
-  }
+  };
 
   onDragMove = (event, { offsetY }) => {
     const { handler } = this.props.refresh;
     if (
       // 未设置刷新事件
-      !handler ||
+      !handler
 
       // 上拉
-      offsetY <= 0 ||
+      || offsetY <= 0
 
       // 未滚动到顶部
-      offsetY > 0 && (this.wrap.scrollTop + document.body.scrollTop) > 0 ||
+      || (offsetY > 0 && (this.wrap.scrollTop + document.body.scrollTop) > 0)
 
       // 已经触发过加载状态
-      this.state.refreshState >= REFRESH_STATE.loading
+      || this.state.refreshState >= REFRESH_STATE.loading
     ) {
       return false;
     }
@@ -128,7 +132,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
     this.doRefreshAction(action, offset);
     return true;
-  }
+  };
 
   onDragEnd = (_event, { offsetY }) => {
     // 没有产生位移
@@ -148,7 +152,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     if (typeof handler === 'function') {
       handler();
     }
-  }
+  };
 
   /**
    * 执行动画
@@ -157,7 +161,7 @@ export default class Pull extends PureComponent<PullProps, any> {
    */
   doTransition = ({ offsetY, animationDuration }) => {
     this.setState({ offsetY, animationDuration });
-  }
+  };
 
   /**
    * 执行刷新动作
@@ -190,7 +194,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       default:
         this.doTransition({ offsetY: 0, animationDuration });
     }
-  }
+  };
 
   /**
    * 执行加载动作
@@ -213,7 +217,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       default:
     }
-  }
+  };
 
   /**
    * 渲染刷新节点
@@ -284,7 +288,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       default:
     }
-  }
+  };
 
   /**
    * 渲染加载节点
@@ -327,7 +331,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       default:
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, children } = this.props;

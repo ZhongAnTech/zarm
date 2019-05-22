@@ -12,7 +12,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -24,7 +24,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -36,7 +36,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -51,7 +51,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -66,7 +66,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -81,7 +81,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -96,7 +96,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -111,7 +111,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -126,7 +126,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -141,7 +141,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.setProps({ activeKey: 1 });
 
@@ -158,7 +158,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.setProps({ activeKey: [1] });
 
@@ -176,7 +176,7 @@ describe('Collapse', () => {
         <Collapse.Item className="item1" itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
   });
@@ -188,7 +188,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐" {...props}>
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').simulate('click');
     expect(props.onChange).toBeCalled();
@@ -201,7 +201,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐" disabled {...props}>
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').simulate('click');
     expect(props.onChange).not.toBeCalled();
@@ -214,7 +214,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').simulate('click');
     setTimeout(() => {
@@ -230,7 +230,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').simulate('click');
     setTimeout(() => {
@@ -247,7 +247,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="0" title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').simulate('click');
     setTimeout(() => {
@@ -268,7 +268,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').at(0).simulate('click');
     expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
@@ -287,7 +287,7 @@ describe('Collapse', () => {
         <Collapse.Item itemKey="1" title="100元套餐">
           <div>100元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').at(1).simulate('click');
     expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
@@ -300,7 +300,7 @@ describe('Collapse', () => {
         <Collapse.Item title="50元套餐">
           <div>50元套餐内容</div>
         </Collapse.Item>
-      </Collapse>
+      </Collapse>,
     );
     wrapper.find('.za-collapse-item__title').simulate('click');
     expect(props.onChange).not.toBeCalled();

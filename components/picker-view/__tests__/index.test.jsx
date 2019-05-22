@@ -3,13 +3,13 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import PickerView from '../index';
 
-function fakeTimers() {
-  performance.timing = {};
-  performance.timing.navigationStart = 0;
-}
-fakeTimers();
-
 describe('PickerView', () => {
+  const fakeTimers = () => {
+    performance.timing = {};
+    performance.timing.navigationStart = 0;
+  };
+  fakeTimers();
+
   it('PickerView render visible', () => {
     const wrapper = render(
       <PickerView
@@ -19,7 +19,7 @@ describe('PickerView', () => {
         ]}
         defaultValue="1"
         value="1"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -34,7 +34,7 @@ describe('PickerView', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     expect(onChange).not.toBeCalled();
     expect(toJson(wrapper)).toMatchSnapshot();

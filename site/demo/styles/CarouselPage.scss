@@ -1,0 +1,23 @@
+@import "@site/styles/index";
+
+.carousel-page {
+  .carousel__item__pic {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .controls {
+    display: flex;
+    padding: r(10) r(15);
+
+    .za-button {
+      margin-right: r(10);
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}

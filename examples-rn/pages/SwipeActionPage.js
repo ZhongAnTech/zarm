@@ -11,7 +11,7 @@ const showWarning = () => {
       { text: '确定', onPress: () => console.log('OK Pressed') },
       { text: '取消', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
     ],
-    { cancelable: false }
+    { cancelable: false },
   );
 };
 

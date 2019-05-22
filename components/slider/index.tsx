@@ -30,6 +30,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
   };
 
   private line;
+
   private offsetStart: number = 0;
 
   constructor(props) {
@@ -48,7 +49,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
-      const value = nextProps.value;
+      const { value } = nextProps;
       const offset = this.getOffsetByValue(value);
       this.setState({ value, offset });
     }
@@ -60,7 +61,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
       return;
     }
     this.setState({ tooltip: true });
-  }
+  };
 
   onDragMove = (event, { offsetX }) => {
     const { disabled } = this.props;
@@ -95,11 +96,11 @@ export default class Slider extends PureComponent<SliderProps, any> {
     offset = this.getOffsetByValue(value);
     this.setState({ offset, value });
     return true;
-  }
+  };
 
   onDragEnd = (_event, { offsetX }) => {
     this.setState({ tooltip: false });
-    if (isNaN(offsetX)) {
+    if (Number.isNaN(offsetX)) {
       return;
     }
 
@@ -109,7 +110,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
     if (typeof onChange === 'function') {
       onChange(this.state.value);
     }
-  }
+  };
 
   /**
    * 通过偏移量确定值
@@ -121,7 +122,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
     const percent = offset / this.maxOffset();
     const value = Math.round((min + ((max - min) * percent)) / step) * step;
     return Math.max(Math.min(value, max), min);
-  }
+  };
 
   /**
    * 通过值获取偏移量
@@ -131,7 +132,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
   getOffsetByValue = (value) => {
     const { min, max } = this.props;
     return this.maxOffset() * ((value - min) / (max - min));
-  }
+  };
 
   /**
    * 获取最大偏移量
@@ -140,16 +141,17 @@ export default class Slider extends PureComponent<SliderProps, any> {
     return this.line
       ? this.line.offsetWidth
       : 0;
-  }
+  };
 
   /**
    * 初始化
    */
   init = () => {
-    const offset = this.getOffsetByValue(this.state.value);
+    const { value } = this.state;
+    const offset = this.getOffsetByValue(value);
     this.offsetStart = offset;
     this.setState({ offset });
-  }
+  };
 
   render() {
     const { prefixCls, className, disabled, min, max } = this.props;
@@ -177,7 +179,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
             aria-valuenow={value}
             style={{ left: offset }}
           >
-            <Tooltip visible={tooltip} title={value} >
+            <Tooltip visible={tooltip} title={value}>
               <div className={`${prefixCls}-handle-shadow`} />
             </Tooltip>
           </div>
