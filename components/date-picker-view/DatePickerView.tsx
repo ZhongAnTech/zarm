@@ -78,9 +78,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   constructor(props) {
     super(props);
     const state = getInitDate(props);
-    // const date = props.value && isExtendDate(props.value);
-    // const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-    // const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
 
     this.state = state;
 
@@ -105,44 +102,8 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   }
 
   onValueChange = (selected, index) => {
-    const { mode, onChange, valueMember } = this.props;
-    const selectedItem = selected[index][valueMember!];
-    let newValue = cloneDate(this.getDate());
-
-    if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
-      switch (index) {
-        case 0:
-          newValue.setFullYear(selectedItem);
-          break;
-        case 1:
-          setMonth(newValue, selectedItem);
-          break;
-        case 2:
-          newValue.setDate(selectedItem);
-          break;
-        case 3:
-          newValue.setHours(selectedItem);
-          break;
-        case 4:
-          newValue.setMinutes(selectedItem);
-          break;
-        default:
-          break;
-      }
-    } else {
-      switch (index) {
-        case 0:
-          newValue.setHours(selectedItem);
-          break;
-        case 1:
-          newValue.setMinutes(selectedItem);
-          break;
-        default:
-          break;
-      }
-    }
-
-    newValue = this.clipDate(newValue);
+    const { onChange } = this.props;
+    const newValue = this.getNewDate(selected, index);
     this.setState({
       date: newValue,
     });
@@ -150,6 +111,45 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     if (typeof onChange === 'function') {
       onChange(newValue);
     }
+  };
+
+  getNewDate = (values, index) => {
+    const { mode, valueMember } = this.props;
+    const value = parseInt(values[index][valueMember!], 10);
+    const newValue = cloneDate(this.getDate());
+    if (mode === YEAR || mode === MONTH || mode === DATE || mode === DATETIME) {
+      switch (index) {
+        case 0:
+          newValue.setFullYear(value);
+          break;
+        case 1:
+          setMonth(newValue, value);
+          break;
+        case 2:
+          newValue.setDate(value);
+          break;
+        case 3:
+          newValue.setHours(value);
+          break;
+        case 4:
+          newValue.setMinutes(value);
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (index) {
+        case 0:
+          newValue.setHours(value);
+          break;
+        case 1:
+          newValue.setMinutes(value);
+          break;
+        default:
+          break;
+      }
+    }
+    return this.clipDate(newValue);
   };
 
   getColsValue = () => {
@@ -324,9 +324,10 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     return [hourCol, minuteCol];
   };
 
-  getDate = () => {
-    return this.state.date || this.state.wheelDefault || this.getDefaultDate();
-  };
+  getDate() {
+    const { date, wheelDefault } = this.state;
+    return this.clipDate(date || wheelDefault || this.getDefaultDate());
+  }
 
   getDefaultDate = () => {
     const { min, mode, minuteStep } = this.props;
