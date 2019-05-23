@@ -1,17 +1,12 @@
 import React from 'react';
-import { render, shallow, mount, spyOn } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Toast from '../index';
 
 describe('Toast', () => {
-  const props = {
-    mask: true,
-    stayTime: 1,
-    onMaskClick: jest.fn(),
-  };
   it('renders correctly', () => {
     const wrapper = render(
-      <Toast {...props}>foo</Toast>,
+      <Toast>foo</Toast>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -25,10 +20,10 @@ describe('Toast', () => {
 
   it('stayTime', () => {
     jest.useFakeTimers();
-    props.onClose = jest.fn();
     const wrapper = mount(
-      <Toast stayTime={5000} visible {...props}>foo</Toast>,
+      <Toast stayTime={5000}>foo</Toast>,
     );
+    wrapper.setProps({ visible: false });
     jest.runAllTimers();
     wrapper.unmount();
   });
@@ -38,15 +33,5 @@ describe('Toast', () => {
       <Toast stayTime={0}>foo</Toast>,
     );
     wrapper.setProps({ visible: true });
-  });
-
-  it('static function show', () => {
-    const wrapper = Toast.show();
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('static function hide', () => {
-    const wrapper = Toast.hide();
-    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -11,7 +11,3 @@ exports[`Toast renders correctly 1`] = `
   </div>
 </div>
 `;
-
-exports[`Toast static function hide 1`] = `undefined`;
-
-exports[`Toast static function show 1`] = `undefined`;
