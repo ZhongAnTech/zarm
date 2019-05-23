@@ -56,8 +56,9 @@ export default class Wheel extends Component<WheelProps, any> {
         onTransition!(this.BScroll.isInTransition);
       }
     });
-
     this.BScroll.on('scrollEnd', () => {
+      // eslint-disable-next-line
+      const { dataSource } = this.props;
       if (this.isChangedByProps) {
         this.isChangedByProps = false;
         return;
@@ -69,7 +70,6 @@ export default class Wheel extends Component<WheelProps, any> {
         this.fireValueChange(child[valueMember!]);
       }
       // else if (console.warn) {
-      //   this.props.onTransition!(this.BScroll.isInTransition);
       //   console.warn('child not found', dataSource, index);
       // }
     });
@@ -114,8 +114,6 @@ export default class Wheel extends Component<WheelProps, any> {
     if (value === currentValue) {
       return;
     }
-
-    // this.setState({ value });
 
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
