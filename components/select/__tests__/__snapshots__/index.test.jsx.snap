@@ -970,7 +970,6 @@ exports[`Select Select disable visible 1`] = `
                           <div
                             class="za-popup__wrapper"
                             role="document"
-                            style="transition-duration: 200ms;"
                           >
                             <div
                               class="za-picker"
@@ -1005,17 +1004,17 @@ exports[`Select Select disable visible 1`] = `
                                   >
                                     <div
                                       class="za-wheel__content"
-                                      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: translate(0px,NaNpx) scale(1);"
+                                      style="transform: translate(NaNpx,NaNpx) scale(NaN);"
                                     >
                                       <div
                                         class="za-wheel__item za-wheel__item--selected"
-                                        style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         选项一
                                       </div>
                                       <div
                                         class="za-wheel__item"
-                                        style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         选项二
                                       </div>
@@ -1369,7 +1368,6 @@ exports[`Select Select disabled 1`] = `
                           <div
                             class="za-popup__wrapper"
                             role="document"
-                            style="transition-duration: 200ms;"
                           >
                             <div
                               class="za-picker"
@@ -1404,17 +1402,17 @@ exports[`Select Select disabled 1`] = `
                                   >
                                     <div
                                       class="za-wheel__content"
-                                      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: translate(0px,NaNpx) scale(1);"
+                                      style="transform: translate(NaNpx,NaNpx) scale(NaN);"
                                     >
                                       <div
                                         class="za-wheel__item za-wheel__item--selected"
-                                        style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         选项一
                                       </div>
                                       <div
                                         class="za-wheel__item"
-                                        style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                        style="transform: rotateX(NaNdeg); pointer-events: none;"
                                       >
                                         选项二
                                       </div>
