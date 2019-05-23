@@ -31,7 +31,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
   }
 
   onValueChange = (selected, level) => {
-    const { value } = this.state;
+    const value = this.state.value.slice();
     const { dataSource, onChange, valueMember, cols } = this.props;
 
     value[level] = selected;

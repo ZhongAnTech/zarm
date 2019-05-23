@@ -89,15 +89,13 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
 
     const { onOk } = this.props;
-    const { value } = this.state;
-    const newValue = value || this.initDate;
-
+    const value = this.initDate;
     this.setState({
-      value: newValue,
+      value,
       visible: false,
     });
     if (typeof onOk === 'function') {
-      onOk(newValue);
+      onOk(value);
     }
   };
 

@@ -135,7 +135,7 @@ class Demo extends React.Component {
     super();
     this.state = {
       visible: false,
-      value: new Date(),
+      value: "",
     };
   }
 
@@ -148,6 +148,8 @@ class Demo extends React.Component {
             title="选择日期"
             placeholder="请选择日期"
             mode="date"
+            min="1974-05-16"
+            max="2027-05-15"
             value={this.state.value}
             visible={visible}
             onOk={(value) => {

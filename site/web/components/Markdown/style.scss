@@ -15,7 +15,9 @@ pre {
   border-radius: 3px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: normal;
   color: #1f2d3d;
 }
@@ -59,7 +61,13 @@ code {
 }
 
 table.grid {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
+    monospace;
   width: 100%;
   font-size: 14px;
   margin-bottom: 45px;
