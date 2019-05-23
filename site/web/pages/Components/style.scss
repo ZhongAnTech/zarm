@@ -2,14 +2,14 @@
   header {
     box-shadow: 0 2px 8px #f0f1f2;
   }
-  
+
   main {
     min-width: 1200px;
     margin: 80px auto 15px;
     padding-top: 40px;
     background-color: #fff;
     overflow: hidden;
-  
+
     .main-container {
       position: relative;
       min-height: 500px;
@@ -18,7 +18,7 @@
       overflow: hidden;
       border-left: 1px solid #ebedf0;
       font-size: 16px;
-      
+
       &.no-simulator {
         padding-right: 60px;
       }
@@ -51,14 +51,14 @@
   font-size: 20px;
   border-radius: 30px;
   background-color: #fff;
-  opacity: .9;
-  box-shadow:0px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
   z-index: 11;
 
   &:hover {
     background-color: #00bc70;
     color: #fff;
-    box-shadow:0px 2px 10px 0px rgba(18, 194, 135, 0.3);
+    box-shadow: 0 2px 10px 0 rgba(18, 194, 135, 0.3);
   }
 }
 

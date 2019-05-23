@@ -420,9 +420,11 @@ exports[`DateSelect DateSelect disabled 1`] = `
                       >
                         <div
                           class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                          role="dialog"
                         >
                           <div
                             class="za-popup__wrapper"
+                            role="document"
                           >
                             <div
                               class="za-date-picker"
@@ -933,9 +935,11 @@ exports[`DateSelect DateSelect disabled 1`] = `
                   >
                     <div
                       className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                      role="dialog"
                     >
                       <div
                         className="za-popup__wrapper"
+                        role="document"
                         style={
                           Object {
                             "WebkitTransitionDuration": "200ms",
@@ -2468,9 +2472,11 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                       >
                         <div
                           class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                          role="dialog"
                         >
                           <div
                             class="za-popup__wrapper"
+                            role="document"
                           >
                             <div
                               class="za-date-picker"
@@ -2981,9 +2987,11 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                   >
                     <div
                       className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                      role="dialog"
                     >
                       <div
                         className="za-popup__wrapper"
+                        role="document"
                         style={
                           Object {
                             "WebkitTransitionDuration": "200ms",
@@ -4366,9 +4374,11 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                       >
                         <div
                           class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                          role="dialog"
                         >
                           <div
                             class="za-popup__wrapper"
+                            role="document"
                           >
                             <div
                               class="za-date-picker"
@@ -4879,9 +4889,11 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                   >
                     <div
                       className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                      role="dialog"
                     >
                       <div
                         className="za-popup__wrapper"
+                        role="document"
                         style={
                           Object {
                             "WebkitTransitionDuration": "200ms",
