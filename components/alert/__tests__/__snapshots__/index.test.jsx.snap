@@ -22,15 +22,15 @@ exports[`Alert renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="za-modal__body za-alert__body"
+        class="za-modal__body"
       >
         这里是警告信息
       </div>
       <div
-        class="za-modal__footer za-alert__footer"
+        class="za-modal__footer"
       >
         <div
-          class="za-alert__footer__button"
+          class="za-alert__button"
         >
           Close
         </div>

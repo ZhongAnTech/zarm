@@ -180,10 +180,11 @@ export default class Portal extends Component<PortalProps, any> {
 
     return (
       <div
+        role="dialog"
         className={popupCls}
         ref={(popup) => { this.popup = popup; }}
       >
-        <div className={`${prefixCls}__wrapper`} style={wrapStyle}>
+        <div className={`${prefixCls}__wrapper`} style={wrapStyle} role="document">
           {children}
         </div>
         {this.renderMask()}

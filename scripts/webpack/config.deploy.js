@@ -57,7 +57,7 @@ config.plugins.push(
   }),
   new webpack.optimize.RuntimeChunkPlugin({
     name: 'manifest',
-  })
+  }),
 );
 // Object.keys(config.entry).forEach((key) => {
 //   config.plugins.push(new HtmlWebpackPlugin({

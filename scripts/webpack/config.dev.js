@@ -15,7 +15,7 @@ config.plugins.push(
     template: './site/demo/index_umd.html',
     filename: 'demo_umd.html',
     inject: false,
-  })
+  }),
 );
 config.module.rules[0].use[0].options.plugins.push('react-hot-loader/babel');
 config.devServer = {

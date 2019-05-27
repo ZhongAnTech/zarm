@@ -105,6 +105,7 @@ ReactDOM.render(<Demo />, mountNode);
 ### Action 类型定义
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| text | string | - | 按钮文字 |
-| theme | string | 'default' | 按钮主题，可选值 `default`、`primary`、`success`、`warning`、`danger`
+| text | ReactNode | - | 按钮文字 |
+| theme | string | 'default' | 按钮主题，可选值 `default`、`primary`、`danger`
+| className | string | - | 追加类名
 | onClick | () => void | - | 按钮点击后触发的回调函数 |

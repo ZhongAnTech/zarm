@@ -2,25 +2,24 @@
 @import '../../button/style/mixins';
 
 @include b(alert) {
-  @include e(body) {
-    text-align: center;
+  @include b(modal) {
+    @include e(body) {
+      text-align: center;
+    }
   }
 
-  @include e(footer) {
-    display: flex;
+  @include e(button) {
+    flex: 1;
+    position: relative;
+    height: var(--alert-button-height);
+    line-height: var(--alert-button-height);
+    font-size: var(--alert-button-font-size);
+    color: var(--theme-primary);
+    @include button-base();
+    @include onepx(top);
 
-    &__button {
-      flex: 1;
-      height: var(--alert-button-height);
-      line-height: var(--alert-button-height);
-      font-size: var(--alert-button-font-size);
-      color: var(--theme-primary);
-      @include button-base();
-      @include onepx(top);
-
-      &:active {
-        background-color: var(--background-active);
-      }
+    &:active {
+      background-color: var(--background-active);
     }
   }
 }

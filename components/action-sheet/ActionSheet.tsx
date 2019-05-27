@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Popup from '../popup';
 
+
 export interface ActionSheetProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -18,7 +19,7 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
 
   renderActions = (action, index) => {
     const { prefixCls } = this.props;
-    const actionCls = classnames(`${prefixCls}__item`, {
+    const actionCls = classnames(`${prefixCls}__item`, action.className, {
       [`${prefixCls}__item--${action.theme}`]: !!action.theme,
     });
     return <div key={+index} className={actionCls} onClick={action.onClick}>{action.text}</div>;

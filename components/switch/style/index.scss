@@ -1,5 +1,4 @@
 @import "../../style/core/index";
-@import "mixins";
 
 @include b(switch) {
   @include e(input) {

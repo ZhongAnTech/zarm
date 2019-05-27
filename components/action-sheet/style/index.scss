@@ -18,11 +18,12 @@
   }
 
   @include e(cancel) {
-    margin-top: r(7);
+    margin-top: r(10);
   }
 
   @include e(item) {
     display: block;
+    position: relative;
     height: var(--action-sheet-item-height);
     line-height: var(--action-sheet-item-height);
     font-size: var(--action-sheet-item-font-size);

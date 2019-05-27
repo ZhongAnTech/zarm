@@ -19,6 +19,7 @@ exports[`ActionSheet renders correctly 1`] = `
       },
     ]
   }
+  onCancel={[MockFunction]}
   onMaskClick={[MockFunction]}
   visible={true}
 >
@@ -41,6 +42,7 @@ exports[`ActionSheet renders correctly 1`] = `
       ]
     }
     forwardedRef={null}
+    onCancel={[MockFunction]}
     onMaskClick={[MockFunction]}
     visible={true}
   >
@@ -68,6 +70,7 @@ exports[`ActionSheet renders correctly 1`] = `
         }
       }
       localeCode="en"
+      onCancel={[MockFunction]}
       onMaskClick={[MockFunction]}
       prefixCls="za-action-sheet"
       spacing={false}
@@ -96,9 +99,12 @@ exports[`ActionSheet renders correctly 1`] = `
               >
                 <div
                   class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                  role="dialog"
                 >
                   <div
                     class="za-popup__wrapper"
+                    role="document"
+                    style="transition-duration: 200ms;"
                   >
                     <div
                       class="za-action-sheet"
@@ -122,6 +128,15 @@ exports[`ActionSheet renders correctly 1`] = `
                           操作三
                         </div>
                       </div>
+                      <div
+                        class="za-action-sheet__cancel"
+                      >
+                        <div
+                          class="za-action-sheet__item"
+                        >
+                          Cancel
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -130,9 +145,11 @@ exports[`ActionSheet renders correctly 1`] = `
           >
             <div
               className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+              role="dialog"
             >
               <div
                 className="za-popup__wrapper"
+                role="document"
                 style={
                   Object {
                     "WebkitTransitionDuration": "200ms",
@@ -166,6 +183,16 @@ exports[`ActionSheet renders correctly 1`] = `
                       onClick={[MockFunction]}
                     >
                       操作三
+                    </div>
+                  </div>
+                  <div
+                    className="za-action-sheet__cancel"
+                  >
+                    <div
+                      className="za-action-sheet__item"
+                      onClick={[MockFunction]}
+                    >
+                      Cancel
                     </div>
                   </div>
                 </div>
