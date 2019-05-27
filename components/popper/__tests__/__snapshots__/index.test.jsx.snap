@@ -16,7 +16,7 @@ exports[`Popper renders correctly 1`] = `
   <div
     className="za-popper za-popper__wrapper"
   >
-    <span
+    <div
       className="za-popper__inner"
       onMouseLeave={[Function]}
       onMouseOver={[Function]}
@@ -24,7 +24,7 @@ exports[`Popper renders correctly 1`] = `
       <p>
         点我
       </p>
-    </span>
+    </div>
   </div>
 </Popper>
 `;

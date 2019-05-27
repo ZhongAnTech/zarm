@@ -35,8 +35,6 @@ exports[`Slider defaultValue 1`] = `
     >
       <Tootip
         direction="top"
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={10}
@@ -87,8 +85,6 @@ exports[`Slider disabled 1`] = `
     >
       <Tootip
         direction="top"
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -139,8 +135,6 @@ exports[`Slider max 1`] = `
     >
       <Tootip
         direction="top"
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -191,8 +185,6 @@ exports[`Slider min 1`] = `
     >
       <Tootip
         direction="top"
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -243,8 +235,6 @@ exports[`Slider shallows correctly 1`] = `
     >
       <Tootip
         direction="top"
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -295,8 +285,6 @@ exports[`Slider step 1`] = `
     >
       <Tootip
         direction="top"
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={0}
@@ -347,8 +335,6 @@ exports[`Slider value 1`] = `
     >
       <Tootip
         direction="top"
-        mouseEnterDelay={0.1}
-        mouseLeaveDelay={0.1}
         onVisibleChange={[Function]}
         prefixCls="za-tooltip"
         title={10}

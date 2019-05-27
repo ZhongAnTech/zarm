@@ -1,6 +1,4 @@
-import PopperJS from 'popper.js';
-
-export type TooltipPlacement =
+export type PopperPlacement =
   | 'top'
   | 'left'
   | 'right'
@@ -14,7 +12,7 @@ export type TooltipPlacement =
   | 'rightTop'
   | 'rightBottom';
 
-export type TooltipTrigger = 'hover' | 'focus' | 'click' | 'manual';
+export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual';
 
 export interface PopperProps {
   prefixCls?: string;
@@ -23,10 +21,10 @@ export interface PopperProps {
   children: React.ReactNode;
   visible?: boolean;
   hasArrow?: boolean;
-  direction?: TooltipPlacement;
-  trigger?: TooltipTrigger;
-  popperOptions?: PopperJS.PopperOptions;
-  modifiers?: PopperJS.Modifiers;
+  direction?: PopperPlacement;
+  trigger?: PopperTrigger;
+  // popperOptions?: PopperJS.PopperOptions;
+  // modifiers?: PopperJS.Modifiers;
   title?: React.ReactNode;
   content?: React.ReactNode;
   mouseEnterDelay?: number;

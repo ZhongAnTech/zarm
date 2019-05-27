@@ -131,12 +131,9 @@ class Popper extends React.Component<PopperProps, any> {
 
   componentDidUpdate(prevProps, prevState) {
     const { visible } = this.state;
-    const { direction, popperOptions, modifiers } = this.props;
+    const { direction } = this.props;
     if (
-      (!prevState.visible && prevState.visible !== visible)
-      || (prevProps.direction !== direction)
-      || (prevProps.popperOptions !== popperOptions)
-      || (prevProps.modifiers !== modifiers)
+      (!prevState.visible && prevState.visible !== visible) || (prevProps.direction !== direction)
     ) {
       this.handleOpen();
     }
@@ -156,7 +153,7 @@ class Popper extends React.Component<PopperProps, any> {
   }
 
   handleOpen = () => {
-    const { direction, popperOptions = {}, modifiers = {}, onVisibleChange } = this.props;
+    const { direction, onVisibleChange } = this.props;
     const { visible } = this.state;
     const reference: any = ReactDOM.findDOMNode(this.reference); // eslint-disable-line
     const popperNode: any = ReactDOM.findDOMNode(this.popperNode); // eslint-disable-line
@@ -172,7 +169,6 @@ class Popper extends React.Component<PopperProps, any> {
 
     this.popper = new PopperJS(reference, popperNode, {
       placement: directionMap[direction!] as any,
-      ...popperOptions,
       modifiers: {
         preventOverflow: {
           boundariesElement: 'window',
@@ -182,8 +178,6 @@ class Popper extends React.Component<PopperProps, any> {
           element: this.arrowRef,
           fn: customArrowOffsetFn,
         },
-        ...modifiers,
-        ...popperOptions.modifiers,
       },
       onCreate: this.handlePopperUpdate,
       onUpdate: this.handlePopperUpdate,
@@ -265,7 +259,7 @@ class Popper extends React.Component<PopperProps, any> {
       direction,
     } = this.state;
 
-    const child = <span className={`${prefixCls}__inner`}>{children}</span>;
+    const child = <div className={`${prefixCls}__inner`}>{children}</div>;
     const wrapperCls = classnames(prefixCls, `${prefixCls}__wrapper`, className);
     const innerCls = classnames(`${prefixCls}__content-wrapper`, `${prefixCls}__placement__${direction}`);
     const childrenProps: any = {

@@ -3,8 +3,6 @@
 exports[`Tooltip renders correctly 1`] = `
 <Tootip
   direction="top"
-  mouseEnterDelay={0.1}
-  mouseLeaveDelay={0.1}
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"
   title="hello"
@@ -14,14 +12,9 @@ exports[`Tooltip renders correctly 1`] = `
     content=""
     direction="top"
     hasArrow={true}
-    mouseEnterDelay={0.1}
-    mouseLeaveDelay={0.1}
+    mouseEnterDelay={100}
+    mouseLeaveDelay={100}
     onVisibleChange={[Function]}
-    popperOptions={
-      Object {
-        "positionFixed": true,
-      }
-    }
     prefixCls="za-tooltip"
     title="hello"
     trigger="hover"
@@ -30,7 +23,7 @@ exports[`Tooltip renders correctly 1`] = `
     <div
       className="za-tooltip za-tooltip__wrapper"
     >
-      <span
+      <div
         className="za-tooltip__inner"
         onMouseLeave={[Function]}
         onMouseOver={[Function]}
@@ -38,7 +31,7 @@ exports[`Tooltip renders correctly 1`] = `
         <span>
           foo
         </span>
-      </span>
+      </div>
     </div>
   </Popper>
 </Tootip>
