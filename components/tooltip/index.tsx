@@ -1,5 +1,6 @@
 import React from 'react';
-import Popper, { PopperProps, TooltipPlacement, TooltipTrigger } from '../popper';
+import Popper from '../popper';
+import { PopperProps, TooltipPlacement, TooltipTrigger } from '../popper/PropsType';
 
 class Tootip extends React.Component<PopperProps, any> {
   static defaultProps = {

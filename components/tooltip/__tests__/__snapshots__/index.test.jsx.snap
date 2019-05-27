@@ -11,6 +11,7 @@ exports[`Tooltip renders correctly 1`] = `
   trigger="hover"
 >
   <Popper
+    content=""
     direction="top"
     hasArrow={true}
     mouseEnterDelay={0.1}
@@ -24,6 +25,7 @@ exports[`Tooltip renders correctly 1`] = `
     prefixCls="za-tooltip"
     title="hello"
     trigger="hover"
+    visible={false}
   >
     <div
       className="za-tooltip za-tooltip__wrapper"

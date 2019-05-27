@@ -2,6 +2,7 @@
 
 exports[`Popper renders correctly 1`] = `
 <Popper
+  content=""
   direction="top"
   hasArrow={true}
   mouseEnterDelay={100}
@@ -10,6 +11,7 @@ exports[`Popper renders correctly 1`] = `
   prefixCls="za-popper"
   title="标题"
   trigger="hover"
+  visible={false}
 >
   <div
     className="za-popper za-popper__wrapper"

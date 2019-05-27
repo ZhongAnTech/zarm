@@ -13,7 +13,7 @@ class Demo extends React.Component {
           <div>
             <div style={{ marginLeft: 60 }}>
               <Tooltip direction="topLeft" title="topLeft text">
-                <Button block size="xs" onClick={() => console.log(1)}>TL</Button>
+                <Button block size="xs">TL</Button>
               </Tooltip>
 
               <Tooltip direction="top" title="top text">

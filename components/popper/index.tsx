@@ -6,55 +6,61 @@ import classnames from 'classnames';
 
 import ClickOutside from '../utils/clickOutside';
 import { invertKeyValues } from '../utils';
+import { PopperProps, directionMap } from './PropsType';
 
-export type TooltipPlacement =
-  | 'top'
-  | 'left'
-  | 'right'
-  | 'bottom'
-  | 'topLeft'
-  | 'topRight'
-  | 'bottomLeft'
-  | 'bottomRight'
-  | 'leftTop'
-  | 'leftBottom'
-  | 'rightTop'
-  | 'rightBottom';
+function getOuterSizes(element: HTMLElement) {
+  const _display = element.style.display;
+  const _visibility = element.style.visibility;
+  element.style.display = 'block';
+  element.style.visibility = 'hidden';
 
-export type TooltipTrigger = 'hover' | 'focus' | 'click' | 'manual';
+  const styles = window.getComputedStyle(element, null);
+  const x = parseFloat(styles.marginTop as string) + parseFloat(styles.marginBottom as string);
+  const y = parseFloat(styles.marginLeft as string) + parseFloat(styles.marginRight as string);
+  const result = {
+    width: element.offsetWidth + y,
+    height: element.offsetHeight + x,
+  };
 
-export interface PopperProps {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children: React.ReactNode;
-  visible?: boolean;
-  hasArrow?: boolean;
-  direction?: TooltipPlacement;
-  trigger?: TooltipTrigger;
-  popperOptions?: PopperJS.PopperOptions;
-  modifiers?: PopperJS.Modifiers;
-  title?: React.ReactNode;
-  content?: React.ReactNode;
-  mouseEnterDelay?: number;
-  mouseLeaveDelay?: number;
-  onVisibleChange?: (visible: boolean) => void;
+  element.style.display = _display;
+  element.style.visibility = _visibility;
+  return result;
 }
 
-export const directionMap = {
-  top: 'top',
-  topLeft: 'top-start',
-  topRight: 'top-end',
-  right: 'right',
-  rightTop: 'right-start',
-  rightBottom: 'right-end',
-  bottom: 'bottom',
-  bottomLeft: 'bottom-start',
-  bottomRight: 'bottom-end',
-  left: 'left',
-  leftTop: 'left-start',
-  leftBottom: 'left-end',
-};
+function getPopperClientRect(popperOffsets) {
+  const offsets = { ...popperOffsets };
+  offsets.right = offsets.left + offsets.width;
+  offsets.bottom = offsets.top + offsets.height;
+  return offsets;
+}
+
+function customArrowOffsetFn(data: PopperJS.Data) {
+  const placement = data.placement.split('-')[0];
+  const placement1 = data.placement.split('-')[1];
+  const arrow: any = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element;
+  const { offsets: { reference } } = data;
+  const popper = getPopperClientRect(data.offsets.popper);
+  const isVertical = ['left', 'right'].indexOf(placement) !== -1;
+  const len = isVertical ? 'height' : 'width';
+  const side = isVertical ? 'top' : 'left';
+  const altSide = isVertical ? 'left' : 'top';
+  const opSide = isVertical ? 'bottom' : 'right';
+  const arrowSize = getOuterSizes(arrow as HTMLElement)[len];
+  const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft as any);
+  const hashMap = {
+    start: reference[side] + offsetSize,
+    center: reference[side] + reference[len] / 2 - arrowSize / 2,
+    end: reference[opSide] - offsetSize - arrowSize,
+  };
+  const place = hashMap[placement1 || 'center'];
+  const sideValue = place - popper[side];
+
+  data.arrowElement = arrow;
+  data.arrowStyles[side] = Math.floor(sideValue) as any;
+  data.arrowStyles[altSide] = '';
+
+  return data;
+}
 
 class Popper extends React.Component<PopperProps, any> {
   static defaultProps = {
@@ -174,6 +180,7 @@ class Popper extends React.Component<PopperProps, any> {
         arrow: {
           enabled: Boolean(this.arrowRef),
           element: this.arrowRef,
+          fn: customArrowOffsetFn,
         },
         ...modifiers,
         ...popperOptions.modifiers,
