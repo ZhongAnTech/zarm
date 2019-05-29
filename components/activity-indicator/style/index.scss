@@ -42,9 +42,11 @@ $activity-indicator-spinner-item : 12;
     @include m(loading) {
       display: inline-block;
       @include activity-indicator-size(var(--activity-indicator-size-md));
+     
       svg {
         vertical-align: top;
       }
+
       circle {
         animation: rotate-circular 1.5s ease-in-out infinite;
         stroke-linecap: round;
@@ -57,7 +59,7 @@ $activity-indicator-spinner-item : 12;
     animation: rotate360 .8s linear infinite;
     animation-timing-function: steps($activity-indicator-spinner-item);
     @for $i from 1 through $activity-indicator-spinner-item {
-      div{
+      div {
         position: absolute;
         top: 0;
         left: 0;
