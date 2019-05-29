@@ -3,6 +3,16 @@ $--element-separator: '__';
 $--modifier-separator: '--';
 $--state-prefix: '--';
 
+// 反向查找
+@function str-reverse($string) {
+  $result: "";
+  @for $i from str-length($string) through 1 {
+    $result: $result + str-slice($string, $i, $i);
+  }
+  @return $result;
+}
+
+// 是否包含Modifier
 @function containsModifier($selector) {
   $selector: selectorToString($selector);
   @if str-index($selector, $--modifier-separator) {
@@ -12,6 +22,7 @@ $--state-prefix: '--';
   }
 }
 
+// 是否包含Element
 @function containsElement($selector) {
   $selector: selectorToString($selector);
   @if str-index($selector, $--element-separator) {
@@ -21,23 +32,28 @@ $--state-prefix: '--';
   }
 }
 
+// 选择器转字符串
 @function selectorToString($selector) {
   $selector: inspect($selector); //cast to string
   $selector: str-slice($selector, 2, -2); //remove brackets
   @return $selector;
 }
 
+// 获取块名
 @function getBlock($selector) {
   $selector: selectorToString($selector);
-  $start: 0;
-  @if containsElement($selector) {
-    $start: str-index($selector, $--element-separator) - 1;
-  } @else {
-    $start: str-index($selector, $--modifier-separator) - 1;
+  $parent: str-slice($selector, str-length($selector) - str-index(str-reverse($selector), '.') + 1);
+  $start: -2;
+
+  @if containsElement($parent) {
+    $start: str-index($parent, $--element-separator) - 1;
+  } @else if containsModifier($parent) {
+    $start: str-index($parent, $--modifier-separator) - 1;
   }
-  @return str-slice($selector, 0, $start);
+  @return str-slice($parent, 0, $start);
 }
 
+// 获取节点列表
 @function getElements($elements) {
   $selector: &;
   $currentSelector: '';
