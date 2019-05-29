@@ -78,7 +78,7 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
       isActive && activeIndex === 'cancel' && styles!.actionItemActive,
     ];
     const cancelStyle = [
-      styles!.actionItem,
+      styles!.actionCancelItem,
     ];
 
     return (typeof onCancel === 'function') && (
