@@ -1,6 +1,8 @@
 @import "../../style/core/index";
 @import "mixins";
 
+$activity-indicator-spinner-item : 12;
+
 @include b(activity-indicator) {
   $PI: 3.141592674;
 
@@ -34,5 +36,66 @@
   /* sizes */
   @include m(lg) {
     @include activity-indicator-size(var(--activity-indicator-size-lg));
+  }
+
+  @include e(circular) {
+    @include m(loading) {
+      display: inline-block;
+      @include activity-indicator-size(var(--activity-indicator-size-md));
+      svg {
+        vertical-align: top;
+      }
+      circle {
+        animation: rotate-circular 1.5s ease-in-out infinite;
+        stroke-linecap: round;
+        stroke: var(--theme-primary);
+      }
+    }
+  }
+
+  @include e(spinner) {
+    animation: rotate360 .8s linear infinite;
+    animation-timing-function: steps($activity-indicator-spinner-item);
+    @for $i from 1 through $activity-indicator-spinner-item {
+      div{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &:nth-of-type(#{$i}) {
+          transform: rotate($i * 30deg);
+          opacity: 1 - (0.75 / $activity-indicator-spinner-item) * ($i - 1);
+        }
+
+        &::before {
+          display: block;
+          width: 2px;
+          height: 25%;
+          margin: 0 auto;
+          background-color: var(--theme-primary);
+          border-radius: 40%;
+          content: ' ';
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate-circular {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 120, 200;
+    stroke-dashoffset: -60;
+  }
+
+  100% {
+    stroke-dasharray: 120, 200;
+    stroke-dashoffset: -180;
   }
 }
