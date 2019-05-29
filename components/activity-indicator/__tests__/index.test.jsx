@@ -9,7 +9,7 @@ describe('ActivityIndicator', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders spiiner correctly', () => {
+  it('renders spinner correctly', () => {
     const wrapper = render(<ActivityIndicator type="spinner" />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
