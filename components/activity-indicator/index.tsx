@@ -11,8 +11,7 @@ export interface ActivityIndicatorProps extends PropsType {
 
 const Circular = (props: ActivityIndicatorProps) => {
   const { prefixCls, className, size, percent, strokeWidth, loading } = props;
-  const cls = classnames(className, {
-    [`${prefixCls}`]: !loading,
+  const cls = classnames(className, `${prefixCls}`, {
     [`${prefixCls}--${size}`]: !!size,
     [`${prefixCls}__circular--loading`]: loading,
   });
