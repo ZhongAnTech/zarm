@@ -25,9 +25,13 @@ const Circular = (props: ActivityIndicatorProps) => {
     strokeWidth,
   };
   if (loading) {
+    const circularCls = classnames({
+      [`${prefixCls}__circular`]: !size,
+      [`${prefixCls}__circular--${size}`]: !!size,
+    });
     return (
       <span className={cls}>
-        <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`} className={`${prefixCls}__circular`}>
+        <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`} className={circularCls}>
           <circle cx={DIAMETER} cy={DIAMETER} r={r} fill="none" style={{ strokeWidth }} />
         </svg>
       </span>
@@ -47,7 +51,7 @@ const Spinner = (props: ActivityIndicatorProps) => {
     [`${prefixCls}--${size}`]: !!size,
     [`${prefixCls}__spinner`]: true,
   });
-  const spinner: any [] = [];
+  const spinner: any[] = [];
   for (let i = 0; i < 12; i++) {
     spinner.push(<div key={i} />);
   }
