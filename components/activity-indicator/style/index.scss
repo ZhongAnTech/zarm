@@ -42,7 +42,7 @@ $activity-indicator-spinner-item : 12;
     @include m(loading) {
       display: inline-block;
       @include activity-indicator-size(var(--activity-indicator-size-md));
-     
+
       svg {
         vertical-align: top;
       }

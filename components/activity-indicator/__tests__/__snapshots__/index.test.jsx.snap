@@ -24,7 +24,7 @@ exports[`ActivityIndicator renders correctly 1`] = `
 </svg>
 `;
 
-exports[`ActivityIndicator renders spiiner correctly 1`] = `
+exports[`ActivityIndicator renders spinner correctly 1`] = `
 <div
   class="za-activity-indicator za-activity-indicator__spinner"
 >

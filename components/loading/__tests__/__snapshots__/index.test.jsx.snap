@@ -8,11 +8,11 @@ exports[`Confirm renders correctly 1`] = `
     class="za-loading__container"
   >
     <span
-      class="za-activity-indicator za-activity-indicator--lg za-activity-indicator__circular--loading"
+      class="za-activity-indicator--lg za-activity-indicator__circular--loading"
     >
       <svg
         class="za-activity-indicator__circular"
-        viewBox="31, 31 62 62"
+        viewBox="31 31 62 62"
       >
         <circle
           cx="62"
