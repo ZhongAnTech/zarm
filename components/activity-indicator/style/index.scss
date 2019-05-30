@@ -44,7 +44,7 @@ $activity-indicator-spinner-item : 12;
     @include m(loading) {
       animation: rotate360 1.5s linear infinite;
       display: inline-block;
-      
+
       svg {
         vertical-align: top;
       }
