@@ -9,6 +9,9 @@
   }
 
   @include e(button) {
+    display: block;
+    position: relative;
+    width: 100%;
     @include button-base();
     @include button-size(
       var(--button-height-lg),
@@ -17,9 +20,6 @@
       var(--button-icon-size-lg),
     );
     @include onepx(top);
-    display: block;
-    position: relative;
-    width: 100%;
 
     &:active {
       background-color: var(--background-active);
