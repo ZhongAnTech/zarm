@@ -9,13 +9,17 @@
   }
 
   @include e(button) {
-    flex: 1;
-    position: relative;
-    height: var(--confirm-button-height);
-    line-height: var(--confirm-button-height);
-    font-size: var(--confirm-button-font-size);
     @include button-base();
+    @include button-size(
+      var(--button-height-lg),
+      var(--button-padding-h-lg),
+      var(--button-font-size-lg),
+      var(--button-icon-size-lg),
+    );
     @include onepx(top);
+    display: block;
+    position: relative;
+    width: 100%;
 
     &:active {
       background-color: var(--background-active);

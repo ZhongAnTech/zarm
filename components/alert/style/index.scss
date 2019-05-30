@@ -9,15 +9,18 @@
   }
 
   @include e(button) {
-    flex: 1;
-    position: relative;
-    height: var(--alert-button-height);
-    line-height: var(--alert-button-height);
-    font-size: var(--alert-button-font-size);
-    color: var(--theme-primary);
     @include button-base();
+    @include button-size(
+      var(--button-height-lg),
+      var(--button-padding-h-lg),
+      var(--button-font-size-lg),
+      var(--button-icon-size-lg),
+    );
     @include onepx(top);
-
+    display: block;
+    position: relative;
+    width: 100%;
+    
     &:active {
       background-color: var(--background-active);
     }
