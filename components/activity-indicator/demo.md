@@ -10,7 +10,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell description={<ActivityIndicator loading={false} />}>普通</Cell>
-        <Cell description={<ActivityIndicator percent={40} />}>旋转动画</Cell>
+        <Cell description={<ActivityIndicator />}>旋转动画</Cell>
         <Cell description={<ActivityIndicator size="lg" loading={false} />}>大号</Cell>
         <Cell description={<ActivityIndicator type="spinner" />}>Spinner</Cell>
         <Cell description={<ActivityIndicator type="spinner" size="lg" />}>大号Spinner</Cell>
@@ -30,5 +30,5 @@ ReactDOM.render(<Demo />, mountNode);
 | type | string | 'circular' | ，可选值 `circular` 圆环形状、`spinner` 传统菊花形状|
 | loading | boolean | ture | 是否执行动画 |
 | strokeWidth | number | 5 | 指示器边框的宽度 |  
-| percent | number | 20 | 初始百分比 |
+| percent | number | 20 | 初始百分比, 圆环状为动画状态下可用 |
 | size | string | 'md' | 大小，可选值 `md`、`lg` |

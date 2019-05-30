@@ -39,9 +39,11 @@ $activity-indicator-spinner-item : 12;
   }
 
   @include e(circular) {
+    @include activity-indicator-size(var(--activity-indicator-size-md));
+
     @include m(loading) {
+      animation: rotate360 1.5s linear infinite;
       display: inline-block;
-      @include activity-indicator-size(var(--activity-indicator-size-md));
 
       svg {
         vertical-align: top;
@@ -52,6 +54,9 @@ $activity-indicator-spinner-item : 12;
         stroke-linecap: round;
         stroke: var(--theme-primary);
       }
+    }
+    @include m(lg) {
+      @include activity-indicator-size(var(--activity-indicator-size-lg));
     }
   }
 
@@ -76,7 +81,7 @@ $activity-indicator-spinner-item : 12;
           width: 2px;
           height: 25%;
           margin: 0 auto;
-          background-color: var(--theme-primary);
+          background-color: #989697;
           border-radius: 40%;
           content: ' ';
         }
