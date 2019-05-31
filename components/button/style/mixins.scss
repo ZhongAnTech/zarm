@@ -138,7 +138,6 @@
   padding: 0;
   font-weight: normal;
   text-align: center;
-  vertical-align: middle;
   overflow: hidden;
   color: var(--color-text);
   // transition-property: background-color, border-color, color;
@@ -165,8 +164,8 @@
 
   /* block Button */
   @include m(block) {
-    width: 100%;
     display: block;
+    width: 100%;
   }
 }
 

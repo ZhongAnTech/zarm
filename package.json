@@ -62,8 +62,8 @@
     "release": "bash scripts/release.sh"
   },
   "peerDependencies": {
-    "react": ">=16.3.0",
-    "react-dom": ">=16.3.0"
+    "react": ">=16.3.1",
+    "react-dom": ">=16.3.1"
   },
   "dependencies": {
     "better-scroll": "1.15.1",
@@ -98,8 +98,8 @@
     "@types/classnames": "^2.2.3",
     "@types/enzyme-to-json": "^1.5.0",
     "@types/jest": "^23.1.4",
-    "@types/react": "^16.4.10",
-    "@types/react-dom": "^16.0.7",
+    "@types/react": "^16.8.18",
+    "@types/react-dom": "^16.8.4",
     "@types/react-native": "^0.51.9",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "autoprefixer": "^9.5.1",
@@ -152,8 +152,8 @@
     "prop-types": "^15.6.2",
     "qrious": "^4.0.2",
     "raw-loader": "^0.5.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.0",
     "react-loadable": "^5.5.0",
     "react-native": "^0.55.2",
@@ -174,7 +174,7 @@
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "webpack": "^4.29.6",
-    "webpack-bundle-analyzer": "^3.1.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
   },

@@ -12,19 +12,23 @@ class Page extends PureComponent {
     return (
       <Panel title={`${groupName}（${components[key].length}）`}>
         {
-          components[key].map((component, i) => (
-            <Cell
-              hasArrow
-              key={+i}
-              title={(
-                <div className="menu-item-content">
-                  <span>{component.name}</span>
-                  <span className="chinese">{component.description}</span>
-                </div>
-              )}
-              onClick={() => history.push(`/${Format.camel2Dash(component.name)}`)}
-            />
-          ))
+          components[key]
+            .sort((a, b) => {
+              return a.name.localeCompare(b.name);
+            })
+            .map((component, i) => (
+              <Cell
+                hasArrow
+                key={+i}
+                title={(
+                  <div className="menu-item-content">
+                    <span>{component.name}</span>
+                    <span className="chinese">{component.description}</span>
+                  </div>
+                )}
+                onClick={() => history.push(`/${Format.camel2Dash(component.name)}`)}
+              />
+            ))
         }
       </Panel>
     );
