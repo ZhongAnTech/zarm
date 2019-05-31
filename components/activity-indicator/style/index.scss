@@ -20,19 +20,6 @@ $activity-indicator-spinner-item : 12;
     stroke: var(--theme-primary);
   }
 
-  @include e(text) {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    line-height: 1;
-    transform: translateY(-50%);
-    font-size: r(30);
-  }
-
   /* sizes */
   @include m(lg) {
     @include activity-indicator-size(var(--activity-indicator-size-lg));
@@ -77,13 +64,13 @@ $activity-indicator-spinner-item : 12;
         }
 
         &::before {
+          content: '';
           display: block;
           width: 2px;
           height: 25%;
           margin: 0 auto;
           background-color: #989697;
           border-radius: 40%;
-          content: ' ';
         }
       }
     }
