@@ -5,6 +5,37 @@ import { Panel } from 'zarm';
 import locale from 'zarm/components/locale-provider/locale/zh_CN';
 import '@/components/style/entry';
 
+function attachTouchEvent() {
+  let startPoint = null;
+
+  function getBodyScrollTop() {
+    const el = document.scrollingElement || document.documentElement;
+    return el.scrollTop;
+  }
+
+  document.body.addEventListener('touchstart', (e) => {
+    startPoint = e.touches ? e.touches[0].pageY : e.pageY;
+  });
+
+  document.body.addEventListener('touchend', () => {
+    startPoint = null;
+  });
+
+  document.body.addEventListener('touchmove', (e) => {
+    const endPoint = e.touches ? e.touches[0].pageY : e.pageY;
+    const scrollTop = getBodyScrollTop();
+    if (endPoint - startPoint > 0 && scrollTop <= 0) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+}
+
+function romoveTouchEvent() {
+  document.body.removeEventListener('touchmove');
+  document.body.removeEventListener('touchstart');
+  document.body.removeEventListener('touchend');
+}
+
 export default class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +49,9 @@ export default class Demo extends React.Component {
     this.renderSource(this.source[2]);
     const { location } = this.props;
     if (location.pathname === '/pull') {
-      document.body.style['overscroll-behavior-y'] = 'contain';
+      attachTouchEvent();
+    } else {
+      romoveTouchEvent();
     }
   }
 
@@ -26,6 +59,7 @@ export default class Demo extends React.Component {
     if (this.containerElem) {
       ReactDOM.unmountComponentAtNode(this.containerElem);
     }
+    romoveTouchEvent();
   }
 
   renderSource(value) {
