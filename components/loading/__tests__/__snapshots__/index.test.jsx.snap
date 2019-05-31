@@ -8,7 +8,7 @@ exports[`Confirm renders correctly 1`] = `
     class="za-loading__container"
   >
     <div
-      class="za-activity-indicator za-activity-indicator--lg za-activity-indicator__spinner"
+      class="za-activity-indicator za-activity-indicator__spinner za-activity-indicator--lg"
     >
       <div />
       <div />
