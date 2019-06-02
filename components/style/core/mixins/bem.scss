@@ -1,100 +1,135 @@
+@import '../functions/string.scss';
+
 $--namespace: 'za';
+$--block-separator: '-';
 $--element-separator: '__';
 $--modifier-separator: '--';
-$--state-prefix: '--';
 
+// 是否包含Modifier
 @function containsModifier($selector) {
-  $selector: selectorToString($selector);
-  @if str-index($selector, $--modifier-separator) {
-    @return true;
-  } @else {
-    @return false;
-  }
+  @return str-contains(str-selector($selector), $--modifier-separator);
 }
 
+// 是否包含Element
 @function containsElement($selector) {
-  $selector: selectorToString($selector);
-  @if str-index($selector, $--element-separator) {
-    @return true;
-  } @else {
-    @return false;
-  }
+  @return str-contains(str-selector($selector), $--element-separator);
 }
 
-@function selectorToString($selector) {
-  $selector: inspect($selector); //cast to string
-  $selector: str-slice($selector, 2, -2); //remove brackets
-  @return $selector;
-}
-
+// 获取块名
 @function getBlock($selector) {
-  $selector: selectorToString($selector);
-  $start: 0;
-  @if containsElement($selector) {
-    $start: str-index($selector, $--element-separator) - 1;
-  } @else {
-    $start: str-index($selector, $--modifier-separator) - 1;
+  $selector: str-selector($selector);
+  $parent: str-slice($selector, str-index-reverse($selector, '.'));
+  $start: -2;
+  @if containsElement($parent) {
+    $start: str-index($parent, $--element-separator) - 1;
+  } @else if containsModifier($parent) {
+    $start: str-index($parent, $--modifier-separator) - 1;
   }
-  @return str-slice($selector, 0, $start);
+  $block: str-slice($parent, 0, $start);
+  // @debug $block;
+  @return $block;
 }
 
+// 获取节点列表
 @function getElements($elements) {
-  $selector: &;
-  $currentSelector: '';
-  @if containsModifier($selector) {
-    $selector: getBlock($selector);
-  }
+  $result: '';
+  $block: getBlock(&);
+  $selector: if(containsModifier(&), getBlock(&), &);
   @each $unit in $elements {
+    $element: selector-append($selector, $--element-separator + $unit);
     @if containsElement($selector) {
-      $block: getBlock($selector);
-      $currentSelector: #{$currentSelector + $selector} #{$block + $--element-separator + $unit + ','};
-    } @else {
-      $currentSelector: #{$currentSelector + $selector + $--element-separator + $unit + ','};
+      $element: selector-nest($selector, selector-append($block, $--element-separator + $unit));
     }
+    $result: $result + $element + ',';
   }
-  @return $currentSelector;
+  @return $result;
 }
 
+/**
+ * block define
+ * @param $name     block name
+ * @examples
+ * 
+ *    @include b(button) { ... }
+ *    =>
+ *    .za-button { ... }
+ * 
+ * 
+ *    @include b(checkbox-group) { ... }
+ *    =>
+ *    .za-checkbox-group { ... }
+ */
 @mixin b($block) {
-  .#{$--namespace + '-' + $block} {
+  $block: selector-append($--namespace, $--block-separator + $block);
+  // @debug $block;
+  .#{$block} {
     @content;
   }
 }
 
-@mixin e($element...) {
-  $selector: &;
-  $elements: getElements($element);
-  @if containsModifier($selector) {
-    @at-root {
-      #{$selector} {
-        #{$elements} {
-          @content;
-        }
-      }
-    }
-  } @else {
-    @at-root {
-      #{$elements} {
-        @content;
-      }
+/**
+ * element define
+ * @param $list     list of element names
+ * @examples
+ * 
+ *    @include b(button) {
+ *      @include e(icon) { ... }
+ *    }
+ *    =>
+ *    .za-button__icon { ... }
+ * 
+ * 
+ *    @include b(dialog) {
+ *      @include e(header, footer) { ... }
+ *    }
+ *    =>
+ *    .za-dialog__header, .za-dialog__footer { ... }
+ */
+@mixin e($elements...) {
+  $elements: getElements($elements);
+  $selector: if(containsModifier(&), selector-nest(&, $elements), $elements);
+  @at-root {
+    #{$selector} {
+      @content;
     }
   }
 }
 
+/**
+ * modifier define
+ * @param $modifier     modifier name
+ * @examples
+ * 
+ *    @include b(button) {
+ *      @include m(danger) { ... }
+ *    }
+ *    =>
+ *    .za-button--danger { ... }
+ * 
+ * 
+ *    @include b(button) {
+ *      @include m(danger) {
+ *        @include e(content) { ... }
+ *      }
+ *    }
+ *    =>
+ *    .za-button--danger .za-button__content { ... }
+ * 
+ * 
+ *    @include b(button) {
+ *      @include e(content) {
+ *        @include m(danger) { ... }
+ *      }
+ *    }
+ *    =>
+ *    ..za-button__content--danger { ... }
+ */
 @mixin m($modifier) {
-  $selector: &;
-  @if containsModifier($selector) {
-    $selector: getBlock($selector);
-    @at-root {
-      #{&}#{$selector + $--modifier-separator + $modifier} {
-        @content;
-      }
-    }
-  } @else {
-    @at-root {
-      #{$selector + $--modifier-separator + $modifier} {
-        @content;
-      }
+  $parent: if(containsModifier(&), & + getBlock(&), &);
+  $selector: selector-append($parent, $--modifier-separator + $modifier);
+  @at-root {
+    #{$selector} {
+      @content;
     }
   }
 }

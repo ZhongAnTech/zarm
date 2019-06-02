@@ -249,7 +249,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.pull:
         return (
           <div className={cls}>
-            <ActivityIndicator percent={percent} />
+            <ActivityIndicator loading={false} percent={percent} />
             <span>{locale!.pullText}</span>
           </div>
         );
@@ -257,7 +257,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.drop:
         return (
           <div className={cls}>
-            <ActivityIndicator percent={100} />
+            <ActivityIndicator loading={false} percent={100} />
             <span>{locale!.dropText}</span>
           </div>
         );
@@ -265,7 +265,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.loading:
         return (
           <div className={cls}>
-            <ActivityIndicator className="rotate360" />
+            <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
         );
@@ -309,7 +309,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case LOAD_STATE.loading:
         return (
           <div className={cls}>
-            <ActivityIndicator className="rotate360" />
+            <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
         );

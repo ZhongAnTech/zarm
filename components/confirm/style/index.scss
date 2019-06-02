@@ -9,12 +9,16 @@
   }
 
   @include e(button) {
-    flex: 1;
+    display: block;
     position: relative;
-    height: var(--confirm-button-height);
-    line-height: var(--confirm-button-height);
-    font-size: var(--confirm-button-font-size);
+    width: 100%;
     @include button-base();
+    @include button-size(
+      var(--button-height-lg),
+      var(--button-padding-h-lg),
+      var(--button-font-size-lg),
+      var(--button-icon-size-lg),
+    );
     @include onepx(top);
 
     &:active {

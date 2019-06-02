@@ -69,7 +69,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     });
 
     const iconRender = loading
-      ? <ActivityIndicator className="rotate360" />
+      ? <ActivityIndicator />
       : icon;
 
     const childrenRender = children && <span>{children}</span>;

@@ -42,7 +42,7 @@ class Page extends PureComponent {
           {
             isComponentPage(match.params.component) && (
               <div className="simulator">
-                <iframe src={`${window.location.protocol}//${window.location.host}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+                <iframe src={`${window.location.protocol}//${window.location.host}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" />
               </div>
             )
           }

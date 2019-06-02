@@ -47,7 +47,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
     return (
       <Toast prefixCls={prefixCls} {...others} stayTime={0}>
-        <ActivityIndicator size="lg" className="rotate360" />
+        <ActivityIndicator type="spinner" size="lg" />
       </Toast>
     );
   }

@@ -113,7 +113,7 @@ class Demo extends React.Component {
             //     case REFRESH_STATE.pull:
             //       return (
             //         <div className={cls}>
-            //           <ActivityIndicator percent={percent} />
+            //           <ActivityIndicator loading={false} percent={percent} />
             //           <span>下拉刷新</span>
             //         </div>
             //       );
@@ -121,7 +121,7 @@ class Demo extends React.Component {
             //     case REFRESH_STATE.drop:
             //       return (
             //         <div className={cls}>
-            //           <ActivityIndicator percent={100} />
+            //           <ActivityIndicator loading={false} percent={100} />
             //           <span>释放立即刷新</span>
             //         </div>
             //       );
@@ -129,7 +129,7 @@ class Demo extends React.Component {
             //     case REFRESH_STATE.loading:
             //       return (
             //         <div className={cls}>
-            //           <ActivityIndicator className="rotate360" />
+            //           <ActivityIndicator type="spinner" />
             //           <span>加载中</span>
             //         </div>
             //       );
@@ -162,7 +162,7 @@ class Demo extends React.Component {
             //   const cls = 'custom-control';
             //   switch (loadState) {
             //     case LOAD_STATE.loading:
-            //       return <div className={cls}><ActivityIndicator className="rotate360" /></div>;
+            //       return <div className={cls}><ActivityIndicator type="spinner" /></div>;
 
             //     case LOAD_STATE.failure:
             //       return <div className={cls}>加载失败</div>;
