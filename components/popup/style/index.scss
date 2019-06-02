@@ -6,7 +6,7 @@
   @include e(wrapper) {
     position: fixed;
     transform: translate(0, 0);
-    transition-property: transform;
+    // transition-property: transform;
     overflow: auto;
     z-index: var(--zindex-popup);
     -webkit-overflow-scrolling: touch;
@@ -18,6 +18,12 @@
     top: 0;
     width: 100%;
     height: 100%;
+  }
+
+  @include m(center) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   @include m(bottom) {

@@ -67,6 +67,7 @@ exports[`Picker Picker render visible 1`] = `
       >
         <Portal
           animationDuration={200}
+          animationType="fade"
           autoClose={false}
           direction="bottom"
           handlePortalUnmount={[Function]}
@@ -157,6 +158,7 @@ exports[`Picker Picker render visible 1`] = `
             <div
               className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
               role="dialog"
+              style={Object {}}
             >
               <div
                 className="za-popup__wrapper"
@@ -429,6 +431,7 @@ exports[`Picker render custom label 1`] = `
       >
         <Portal
           animationDuration={200}
+          animationType="fade"
           autoClose={false}
           direction="bottom"
           handlePortalUnmount={[Function]}

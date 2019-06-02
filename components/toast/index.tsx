@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
+import Popup from '../popup';
 import Mask from '../mask';
 
 export interface ToastProps extends PropsType {
@@ -33,90 +34,89 @@ export default class Toast extends PureComponent<ToastProps, any> {
     }
   };
 
-  static hide = () => {
+  static hide = (onClose?: () => void) => {
     if (Toast.zarmToast) {
-      ReactDOM.render(<Toast visible={false} />, Toast.zarmToast);
+      ReactDOM.render(<Toast visible={false} onClose={onClose} />, Toast.zarmToast);
     }
   };
 
-  private static zarmToast: undefined | HTMLDivElement;
+  private static zarmToast: null | HTMLDivElement;
 
   private static mounted: boolean = false;
 
   private timer: number;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: props.visible || false,
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   console.log(props);
+  //   this.state = {
+  //     visible: props.visible || false,
+  //   };
+  // }
 
-  componentDidMount() {
-    const { visible } = this.props;
-    if (visible) {
-      this.enter(this.props);
+  // componentDidMount() {
+  //   const { visible } = this.props;
+
+  //   if (visible) {
+  //     this.enter(this.props);
+  //   }
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   clearTimeout(this.timer);
+
+  //   if (nextProps.visible) {
+  //     this.enter(nextProps);
+  //   } else {
+  //     this.leave(nextProps);
+  //   }
+  // }
+
+  // componentWillUnmount() {
+  //   clearTimeout(this.timer);
+  // }
+
+  onClose = () => {
+    const { onClose } = this.props;
+    if (Toast.zarmToast) {
+      Toast.mounted = false;
+      document.body.removeChild(Toast.zarmToast);
+      Toast.zarmToast = null;
     }
-  }
 
-  componentWillReceiveProps(nextProps) {
-    clearTimeout(this.timer);
-
-    if (nextProps.visible) {
-      this.enter(nextProps);
-    } else {
-      this.leave(nextProps);
-    }
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
-
-  enter = (props) => {
-    const { stayTime, onMaskClick } = props;
-
-    this.setState({
-      visible: true,
-    });
-
-    if (stayTime === 0) {
-      return;
-    }
-
-    this.timer = setTimeout(() => {
-      if (typeof onMaskClick === 'function') {
-        onMaskClick();
-      }
-      this.leave(props);
-      clearTimeout(this.timer);
-    }, stayTime);
-  };
-
-  leave = (props) => {
-    this.setState({
-      visible: false,
-    });
-
-    const { onClose } = props;
     if (typeof onClose === 'function') {
       onClose();
     }
   };
 
   render() {
-    const { prefixCls, className, mask, onMaskClick, children } = this.props;
-    const { visible } = this.state;
+    const { prefixCls, visible, className, stayTime, children, ...others } = this.props;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--open`]: visible,
     });
 
+    // return (
+    //   <div className={cls}>
+    //     <div className={`${prefixCls}__container`}>{children}</div>
+    //     {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
+    //   </div>
+    // );
+
     return (
-      <div className={cls}>
-        <div className={`${prefixCls}__container`}>{children}</div>
-        {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
-      </div>
+      <Popup
+        visible={visible}
+        direction="center"
+        maskType="transparent"
+        autoClose={stayTime !== 0}
+        width="70%"
+        {...others}
+        onClose={this.onClose}
+      >
+        <div className={cls}>
+          <div className={`${prefixCls}__container`}>{children}</div>
+        </div>
+      </Popup>
     );
   }
 }

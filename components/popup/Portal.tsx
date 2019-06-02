@@ -21,23 +21,23 @@ export default class Portal extends Component<PortalProps, any> {
     direction: 'bottom',
     autoClose: false,
     stayTime: 3000,
+    animationType: 'fade',
     animationDuration: 200,
     maskType: Mask.defaultProps.type,
   };
 
   private timer: number;
 
-  private popup;
+  private popup: HTMLDivElement | null;
 
-  private _container;
+  private _container: HTMLDivElement;
 
   constructor(props) {
     super(props);
     this.state = {
       isShow: false,
-      isMaskShow: false,
       isPending: false,
-      animationState: 'enter',
+      animationState: 'leave',
       mounted: false,
     };
   }
@@ -64,7 +64,10 @@ export default class Portal extends Component<PortalProps, any> {
     if (this.popup) {
       Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
       Events.off(this.popup, 'transitionend', this.animationEnd);
+      Events.off(this.popup, 'webkitAnimationEnd', this.animationEnd);
+      Events.off(this.popup, 'animationend', this.animationEnd);
     }
+    clearTimeout(this.timer);
   }
 
   showPortal = () => {
@@ -74,6 +77,8 @@ export default class Portal extends Component<PortalProps, any> {
     }, () => {
       Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
       Events.on(this.popup, 'transitionend', this.animationEnd);
+      Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
+      Events.on(this.popup, 'animationend', this.animationEnd);
       setTimeout(() => { this.enter(); }, 0);
     });
   };
@@ -82,7 +87,6 @@ export default class Portal extends Component<PortalProps, any> {
     const { stayTime, autoClose, onMaskClick } = this.props;
     this.setState({
       isShow: true,
-      isMaskShow: true,
       isPending: true,
       animationState: 'enter',
     });
@@ -92,6 +96,7 @@ export default class Portal extends Component<PortalProps, any> {
         if (typeof onMaskClick === 'function') {
           onMaskClick();
         }
+        this.leave();
         clearTimeout(this.timer);
       }, stayTime);
     }
@@ -99,24 +104,22 @@ export default class Portal extends Component<PortalProps, any> {
 
   leave = () => {
     this.setState({
-      isShow: false,
+      isShow: true,
       isPending: true,
       animationState: 'leave',
     });
   };
 
   animationEnd = (e) => {
-    // 防止其他的样式转换触发该事件，如border、background-image
-    if (!/transform/i.test(e.propertyName)) {
-      return;
-    }
+    e.stopPropagation();
 
     const { onClose, onOpen, handlePortalUnmount } = this.props;
     const { animationState } = this.state;
 
     if (animationState === 'leave') {
       this.setState({
-        isMaskShow: false,
+        isShow: false,
+        isPending: false,
       });
       if (typeof onClose === 'function') {
         onClose();
@@ -132,10 +135,9 @@ export default class Portal extends Component<PortalProps, any> {
 
   renderMask = () => {
     const { mask, maskType, animationDuration } = this.props;
-    const { isPending, animationState, isMaskShow } = this.state;
-
+    const { animationState, isShow } = this.state;
     const maskCls = classnames({
-      [`fade-${animationState}`]: isPending,
+      [`fade-${animationState}`]: isShow,
     });
 
     const maskStyle: CSSProperties = {
@@ -147,7 +149,7 @@ export default class Portal extends Component<PortalProps, any> {
       <Mask
         className={maskCls}
         style={maskStyle}
-        visible={isMaskShow}
+        visible={isShow}
         type={maskType}
         onClick={(e) => { this.handleMaskClick(e); }}
       />
@@ -157,34 +159,58 @@ export default class Portal extends Component<PortalProps, any> {
   createContainer = () => {
     if (!this._container) {
       this._container = document.createElement('div');
-      this._container.className += ' popup-container';
+      this._container.className += 'popup-container';
       document.body.appendChild(this._container);
     }
     return this._container;
   };
 
   getComponent = () => {
-    const { prefixCls, className, animationDuration, direction, mask, children } = this.props;
-    const { isShow } = this.state;
+    const { prefixCls, className, animationType, animationDuration, direction, mask, children, width } = this.props;
+    const { isShow, animationState, isPending } = this.state;
 
-    const popupCls = classnames(prefixCls, className, {
-      [`${prefixCls}--${direction}`]: !!direction,
-      [`${prefixCls}--mask`]: mask,
-      [`${prefixCls}--hidden`]: !isShow,
-    });
-
-    const wrapStyle = {
-      WebkitTransitionDuration: `${animationDuration}ms`,
-      transitionDuration: `${animationDuration}ms`,
+    const cls = {
+      popupCls: classnames(prefixCls, className, {
+        [`${prefixCls}--${direction}`]: !!direction,
+        [`${prefixCls}--mask`]: isShow,
+        [`${prefixCls}--hidden`]: animationState === 'leave',
+        [`fade-${animationState}`]: direction === 'center' && isPending,
+      }),
+      wrapper: classnames(`${prefixCls}__wrapper`, {
+        [`${animationType}-${animationState}`]: direction === 'center' && isPending,
+      }),
     };
+
+    const popupStyle: CSSProperties = direction === 'center'
+      ? {
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      }
+      : {};
+
+    const wrapStyle: CSSProperties = direction === 'center'
+      ? {
+        width,
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      }
+      : {
+        WebkitTransitionDuration: `${animationDuration}ms`,
+        transitionDuration: `${animationDuration}ms`,
+      };
+
+    if (direction === 'center' && !isShow) {
+      popupStyle.display = 'none';
+    }
 
     return (
       <div
         role="dialog"
-        className={popupCls}
+        className={cls.popupCls}
+        style={popupStyle}
         ref={(popup) => { this.popup = popup; }}
       >
-        <div className={`${prefixCls}__wrapper`} style={wrapStyle} role="document">
+        <div className={cls.wrapper} style={wrapStyle} role="document">
           {children}
         </div>
         {this.renderMask()}

@@ -207,6 +207,7 @@ exports[`Input.Idcard renders correctly 1`] = `
           >
             <Portal
               animationDuration={200}
+              animationType="fade"
               autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}
@@ -264,6 +265,7 @@ exports[`Input.Number renders correctly 1`] = `
           >
             <Portal
               animationDuration={200}
+              animationType="fade"
               autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}
@@ -383,6 +385,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
           >
             <Portal
               animationDuration={200}
+              animationType="fade"
               autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}
@@ -502,6 +505,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                 <div
                   className="za-popup za-popup--bottom za-popup--hidden"
                   role="dialog"
+                  style={Object {}}
                 >
                   <div
                     className="za-popup__wrapper"
@@ -730,6 +734,7 @@ exports[`Input.Price renders correctly 1`] = `
           >
             <Portal
               animationDuration={200}
+              animationType="fade"
               autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}

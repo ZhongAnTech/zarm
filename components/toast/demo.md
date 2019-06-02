@@ -7,6 +7,12 @@
 import { Toast, Cell, Button, Icon } from 'zarm';
 
 class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      visible: false,
+    }
+  }
   render() {
     return (
       <div>
@@ -15,7 +21,9 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('默认3秒自动关闭');
+                this.setState({
+                  visible: true,
+                })
               }}
             >
               开启
@@ -30,7 +38,7 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('指定10秒后自动关闭', 10000);
+                Toast.show('指定10秒后自动关闭', 3000);
               }}
             >
               开启
@@ -61,6 +69,13 @@ class Demo extends React.Component {
         >
           自定义内容
         </Cell>
+
+        <Toast
+          visible={this.state.visible}
+          onClose={() => { this.setState({ visible: false }) }}
+          stayTime="10000">
+          默认3秒自动关闭
+        </Toast>
       </div>
     )
   }
@@ -85,9 +100,9 @@ class Demo extends React.Component {
               size="xs"
               onClick={() => {
                 Loading.show();
-                setTimeout(()=>{
-                  Loading.hide();
-                }, 1100);
+                // setTimeout(()=>{
+                //   Loading.hide();
+                // }, 1100);
               }}
             >
               开启

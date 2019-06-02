@@ -17,17 +17,18 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   static zarmLoading: HTMLElement;
 
   static show = (props?: LoadingProps) => {
-    if (!Loading.zarmLoading) {
-      Loading.zarmLoading = document.createElement('div');
-    }
-    document.body.appendChild(Loading.zarmLoading);
-    ReactDOM.render(<Loading {...props} visible />, Loading.zarmLoading);
+    // if (!Loading.zarmLoading) {
+    //   Loading.zarmLoading = document.createElement('div');
+    // }
+    // document.body.appendChild(Loading.zarmLoading);
+    // ReactDOM.render(<Loading {...props} visible />, Loading.zarmLoading);
+    Toast.show(<ActivityIndicator size="lg" className="rotate360" />, 3000);
   };
 
   static hide = () => {
     ReactDOM.render(<Loading
       visible={false}
-      onClose={Loading.unmountNode}
+      // onClose={Loading.unmountNode}
     />, Loading.zarmLoading);
   };
 

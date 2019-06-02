@@ -10,82 +10,146 @@ exports[`Modal renders correctly 1`] = `
   visible={true}
   width="70%"
 >
-  <div
+  <Popup
+    animationDuration={200}
+    animationType="fade"
     className="za-modal za-modal--radius"
-    style={
-      Object {
-        "WebkitAnimationDuration": "200ms",
-        "animationDuration": "200ms",
-      }
-    }
+    direction="center"
+    onMaskClick={[MockFunction]}
+    visible={true}
+    width="70%"
   >
-    <div
-      className="za-modal__wrapper"
+    <Portal
+      animationDuration={200}
+      animationType="fade"
+      autoClose={false}
+      className="za-modal za-modal--radius"
+      direction="center"
+      handlePortalUnmount={[Function]}
+      mask={true}
+      maskType="normal"
+      onMaskClick={[MockFunction]}
+      prefixCls="za-popup"
+      stayTime={3000}
+      visible={true}
+      width="70%"
     >
-      <div
-        className="za-modal__dialog"
-        onClick={[Function]}
-        style={
-          Object {
-            "WebkitAnimationDuration": "200ms",
-            "animationDuration": "200ms",
-            "width": "70%",
-          }
-        }
-      >
-        <ModalHeader
-          onClose={[MockFunction]}
-          prefixCls="za-modal"
-          title="标题"
-        >
+      <Portal
+        containerInfo={
           <div
-            className="za-modal__header"
+            class=" popup-container"
           >
             <div
-              className="za-modal__header__title"
+              class="za-popup za-modal za-modal--radius za-popup--center za-popup--mask za-popup--hidden"
+              role="dialog"
+              style="animation-duration: 200ms; display: none;"
             >
-              标题
+              <div
+                class="za-popup__wrapper"
+                role="document"
+                style="width: 70%; animation-duration: 200ms;"
+              >
+                <div
+                  class="za-modal__header"
+                >
+                  <div
+                    class="za-modal__header__title"
+                  >
+                    标题
+                  </div>
+                  <i
+                    class="za-icon za-modal__header__close za-icon--wrong"
+                  />
+                </div>
+                <div
+                  class="za-modal__body"
+                >
+                  foo
+                </div>
+              </div>
             </div>
-            <Icon
-              className="za-modal__header__close"
-              onClick={[MockFunction]}
-              prefixCls="za-icon"
-              type="wrong"
-            >
-              <i
-                className="za-icon za-modal__header__close za-icon--wrong"
-                onClick={[MockFunction]}
-              />
-            </Icon>
           </div>
-        </ModalHeader>
-        <ModalBody
-          prefixCls="za-modal"
+        }
+      >
+        <div
+          className="za-popup za-modal za-modal--radius za-popup--center za-popup--mask za-popup--hidden"
+          role="dialog"
+          style={
+            Object {
+              "WebkitAnimationDuration": "200ms",
+              "animationDuration": "200ms",
+              "display": "none",
+            }
+          }
         >
           <div
-            className="za-modal__body"
+            className="za-popup__wrapper"
+            role="document"
             style={
               Object {
-                "height": undefined,
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+                "width": "70%",
               }
             }
           >
-            foo
+            <ModalHeader
+              onClose={[MockFunction]}
+              prefixCls="za-modal"
+              title="标题"
+            >
+              <div
+                className="za-modal__header"
+              >
+                <div
+                  className="za-modal__header__title"
+                >
+                  标题
+                </div>
+                <Icon
+                  className="za-modal__header__close"
+                  onClick={[MockFunction]}
+                  prefixCls="za-icon"
+                  type="wrong"
+                >
+                  <i
+                    className="za-icon za-modal__header__close za-icon--wrong"
+                    onClick={[MockFunction]}
+                  />
+                </Icon>
+              </div>
+            </ModalHeader>
+            <ModalBody
+              prefixCls="za-modal"
+            >
+              <div
+                className="za-modal__body"
+                style={
+                  Object {
+                    "height": undefined,
+                  }
+                }
+              >
+                foo
+              </div>
+            </ModalBody>
           </div>
-        </ModalBody>
-      </div>
-    </div>
-    <Mask
-      onClick={[MockFunction]}
-      prefixCls="za-mask"
-      type="normal"
-      visible={true}
-    >
-      <div
-        className="za-mask za-mask--normal"
-        onClick={[MockFunction]}
-      />
-    </Mask>
-  </div>
+          <Mask
+            className=""
+            onClick={[Function]}
+            prefixCls="za-mask"
+            style={
+              Object {
+                "WebkitAnimationDuration": "200ms",
+                "animationDuration": "200ms",
+              }
+            }
+            type="normal"
+            visible={false}
+          />
+        </div>
+      </Portal>
+    </Portal>
+  </Popup>
 </Modal>
 `;

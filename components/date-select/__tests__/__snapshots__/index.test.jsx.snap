@@ -94,6 +94,7 @@ exports[`DateSelect DateSelect date 1`] = `
               >
                 <Portal
                   animationDuration={200}
+                  animationType="fade"
                   autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
@@ -222,6 +223,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               >
                 <Portal
                   animationDuration={200}
+                  animationType="fade"
                   autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
@@ -403,6 +405,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               >
                 <Portal
                   animationDuration={200}
+                  animationType="fade"
                   autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
@@ -937,6 +940,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                     <div
                       className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                       role="dialog"
+                      style={Object {}}
                     >
                       <div
                         className="za-popup__wrapper"
@@ -2346,6 +2350,7 @@ exports[`DateSelect DateSelect time 1`] = `
               >
                 <Portal
                   animationDuration={200}
+                  animationType="fade"
                   autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
@@ -2456,6 +2461,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               >
                 <Portal
                   animationDuration={200}
+                  animationType="fade"
                   autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
@@ -2990,6 +2996,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                     <div
                       className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                       role="dialog"
+                      style={Object {}}
                     >
                       <div
                         className="za-popup__wrapper"
@@ -4359,6 +4366,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               >
                 <Portal
                   animationDuration={200}
+                  animationType="fade"
                   autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
@@ -4893,6 +4901,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                     <div
                       className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
                       role="dialog"
+                      style={Object {}}
                     >
                       <div
                         className="za-popup__wrapper"
@@ -6280,6 +6289,7 @@ exports[`DateSelect DateSelect year 1`] = `
               >
                 <Portal
                   animationDuration={200}
+                  animationType="fade"
                   autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
