@@ -76,7 +76,7 @@ class Demo extends React.Component {
           autoClose
           visible={this.state.popTop}
           direction="top"
-          stayTime={10000}
+          stayTime={3000}
           mask={false}
           // onMaskClick={() => this.close('popTop')}
           onClose={() => { console.log('关闭'); this.close('popTop'); }}

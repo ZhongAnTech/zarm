@@ -16,13 +16,13 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
   static zarmLoading: HTMLElement;
 
-  static show = (props?: LoadingProps) => {
+  static show = () => {
     // if (!Loading.zarmLoading) {
     //   Loading.zarmLoading = document.createElement('div');
     // }
     // document.body.appendChild(Loading.zarmLoading);
     // ReactDOM.render(<Loading {...props} visible />, Loading.zarmLoading);
-    Toast.show(<ActivityIndicator size="lg" className="rotate360" />, 3000);
+    Toast.show(<ActivityIndicator size="lg" className="rotate360" />, 0);
   };
 
   static hide = () => {

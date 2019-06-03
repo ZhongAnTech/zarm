@@ -38,14 +38,14 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('指定10秒后自动关闭', 3000);
+                Toast.show('指定10秒后自动关闭', 3000, false);
               }}
             >
               开启
             </Button>
           }
         >
-          指定停留时间
+          指定停留时间（无遮罩层）
         </Cell>
 
         <Cell
@@ -73,7 +73,8 @@ class Demo extends React.Component {
         <Toast
           visible={this.state.visible}
           onClose={() => { this.setState({ visible: false }) }}
-          stayTime="10000">
+          mask={false}
+          stayTime={3000}>
           默认3秒自动关闭
         </Toast>
       </div>

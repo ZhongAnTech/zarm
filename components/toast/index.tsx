@@ -1,24 +1,23 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Popup from '../popup';
-import Mask from '../mask';
 
 export interface ToastProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Toast extends PureComponent<ToastProps, any> {
+export default class Toast extends Component<ToastProps, any> {
   static defaultProps = {
     prefixCls: 'za-toast',
     visible: false,
     stayTime: 3000,
-    mask: false,
+    mask: true,
   };
 
-  static show = (children: any, stayTime?: number, onClose?: () => void) => {
+  static show = (children: any, stayTime?: number, mask?: boolean, onClose?: () => void) => {
     if (!Toast.mounted) {
       Toast.zarmToast = document.createElement('div');
       document.body.appendChild(Toast.zarmToast);
@@ -26,7 +25,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
     }
     if (Toast.zarmToast) {
       ReactDOM.render(
-        <Toast visible stayTime={stayTime} onClose={onClose}>
+        <Toast visible stayTime={stayTime} mask={mask} onClose={onClose}>
           {children}
         </Toast>,
         Toast.zarmToast,
@@ -43,38 +42,6 @@ export default class Toast extends PureComponent<ToastProps, any> {
   private static zarmToast: null | HTMLDivElement;
 
   private static mounted: boolean = false;
-
-  private timer: number;
-
-  // constructor(props) {
-  //   super(props);
-  //   console.log(props);
-  //   this.state = {
-  //     visible: props.visible || false,
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   const { visible } = this.props;
-
-  //   if (visible) {
-  //     this.enter(this.props);
-  //   }
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   clearTimeout(this.timer);
-
-  //   if (nextProps.visible) {
-  //     this.enter(nextProps);
-  //   } else {
-  //     this.leave(nextProps);
-  //   }
-  // }
-
-  // componentWillUnmount() {
-  //   clearTimeout(this.timer);
-  // }
 
   onClose = () => {
     const { onClose } = this.props;
@@ -109,6 +76,7 @@ export default class Toast extends PureComponent<ToastProps, any> {
         direction="center"
         maskType="transparent"
         autoClose={stayTime !== 0}
+        stayTime={stayTime}
         width="70%"
         {...others}
         onClose={this.onClose}
