@@ -32,6 +32,7 @@ config.devServer = {
   noInfo: true,
   inline: true,
   hot: true,
+  progress: true,
 };
 
 module.exports = config;
