@@ -13,27 +13,31 @@ function attachTouchEvent() {
     return el.scrollTop;
   }
 
-  document.body.addEventListener('touchstart', (e) => {
+  function touchstart(e) {
     startPoint = e.touches ? e.touches[0].pageY : e.pageY;
-  });
+  }
 
-  document.body.addEventListener('touchend', () => {
+  function touchend() {
     startPoint = null;
-  });
+  }
 
-  document.body.addEventListener('touchmove', (e) => {
+  function touchmove(e) {
     const endPoint = e.touches ? e.touches[0].pageY : e.pageY;
     const scrollTop = getBodyScrollTop();
     if (endPoint - startPoint > 0 && scrollTop <= 0) {
       e.preventDefault();
     }
-  }, { passive: false });
-}
+  }
 
-function romoveTouchEvent() {
-  document.body.removeEventListener('touchmove');
-  document.body.removeEventListener('touchstart');
-  document.body.removeEventListener('touchend');
+  document.body.addEventListener('touchstart', touchstart);
+  document.body.addEventListener('touchend', touchend);
+  document.body.addEventListener('touchmove', touchmove, { passive: false });
+
+  return () => {
+    document.body.removeEventListener('touchmove', touchmove);
+    document.body.removeEventListener('touchstart', touchstart);
+    document.body.removeEventListener('touchend', touchend);
+  };
 }
 
 export default class Demo extends React.Component {
@@ -43,15 +47,16 @@ export default class Demo extends React.Component {
     this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
     this.title = String(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
+    this.romoveTouchEvent = null;
   }
 
   componentDidMount() {
     this.renderSource(this.source[2]);
     const { location } = this.props;
     if (location.pathname === '/pull') {
-      attachTouchEvent();
+      this.romoveTouchEvent = attachTouchEvent();
     } else {
-      romoveTouchEvent();
+      this.romoveTouchEvent && this.romoveTouchEvent();
     }
   }
 
@@ -59,7 +64,7 @@ export default class Demo extends React.Component {
     if (this.containerElem) {
       ReactDOM.unmountComponentAtNode(this.containerElem);
     }
-    romoveTouchEvent();
+    this.romoveTouchEvent && this.romoveTouchEvent();
   }
 
   renderSource(value) {
