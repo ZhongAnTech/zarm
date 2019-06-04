@@ -11,8 +11,8 @@ config.mode = 'production';
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
 config.entry = {
-  index: './site/web/index.js',
-  demo: './site/demo/index.js',
+  index: ['./site/web/index.js'],
+  demo: ['./site/demo/index.js'],
 };
 config.optimization = {
   minimizer: [
