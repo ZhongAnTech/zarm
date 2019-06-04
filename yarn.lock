@@ -5370,10 +5370,10 @@ eslint-config-airbnb@^17.1.0:
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
-eslint-config-za@^2.0.0-alpha.8:
-  version "2.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.0.0-alpha.8.tgz#c34ca6d6ec42ec9723ce85f8a37b905e807e8a26"
-  integrity sha512-hRx7JwZ6BUuTGDq2wXrlosDII+FY8i18acuM126RMQDUJ3qh+bpnMTJRPvLWkAf1BYYhLg6HfWHXjPNu2mvKKw==
+eslint-config-za@^2.0.0-alpha.9:
+  version "2.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.0.0-alpha.9.tgz#3237c7590ce47a418527e9be1990af68e958968c"
+  integrity sha512-f89x5XOoNDRa+mIAjGoI8SUQNAdacKCSfbg0GPOIkxp5yK50HqgUm8aE96uVIUbwGN191pyaQBqdvbM/8q19Bw==
   dependencies:
     eslint-config-airbnb "^17.1.0"
 
@@ -13868,6 +13868,13 @@ stylelint-config-standard@^16.0.0:
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-16.0.0.tgz#bb7387bff1d7dd7186a52b3ebf885b2405d691bf"
   integrity sha1-u3OHv/HX3XGGpSs+v4hbJAXWkb8=
+
+stylelint-config-za@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-za/-/stylelint-config-za-0.1.0.tgz#87c6393cf12ac3ee454797e2e96794ba4bc076ee"
+  integrity sha512-/fKom1PF+Fjw9O663Apst2NtICxVYxrtZhnb4kvz6+xh816Prds3h2dASWcJ8FZUPiy8hnfAhlgUDnTYNXmm0w==
+  dependencies:
+    stylelint-config-standard "^16.0.0"
 
 stylelint@^7.12.0:
   version "7.13.0"
