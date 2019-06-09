@@ -51,12 +51,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   componentWillReceiveProps(nextProps) {
     const { visible } = this.props;
-    // console.log(nextProps.visible);
     if (nextProps.visible !== visible) {
       nextProps.visible === true ? this.showPortal() : this.leave();
-    } else {
-      clearTimeout(this.timer);
-      nextProps.visible === true && this.showPortal();
     }
   }
 
@@ -68,6 +64,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
       Events.off(this.popup, 'animationend', this.animationEnd);
     }
     clearTimeout(this.timer);
+    if (this._container) { // todo: 保存自动更新后触发componentWillUnmount
+      document.body.removeChild(this._container);
+    }
   }
 
   animationEnd = (e) => {
@@ -86,7 +85,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
       }
       if (typeof handlePortalUnmount === 'function') {
         handlePortalUnmount();
-        document.body.removeChild(this._container);
+        // document.body.removeChild(this._container);
       }
     } else if (typeof onOpen === 'function') {
       onOpen();
@@ -240,7 +239,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     if (!mounted) {
       return null;
     }
-    console.log(this.props);
     return this.renderPortal();
   }
 }

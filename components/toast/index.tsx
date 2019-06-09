@@ -17,12 +17,23 @@ export default class Toast extends Component<ToastProps, any> {
     mask: true,
   };
 
-  static show = (children: any, stayTime?: number, mask?: boolean, onClose?: () => void) => {
+  private static zarmToast: null | HTMLDivElement;
+
+  private static mounted: boolean = false;
+
+  static show = (
+    children: any,
+    stayTime?: number,
+    mask?: boolean,
+    onClose?: () => void,
+  ) => {
+    Toast.unmountNode();
     if (!Toast.mounted) {
       Toast.zarmToast = document.createElement('div');
       document.body.appendChild(Toast.zarmToast);
       Toast.mounted = true;
     }
+
     if (Toast.zarmToast) {
       ReactDOM.render(
         <Toast visible stayTime={stayTime} mask={mask} onClose={onClose}>
@@ -33,15 +44,42 @@ export default class Toast extends Component<ToastProps, any> {
     }
   };
 
-  static hide = (onClose?: () => void) => {
-    if (Toast.zarmToast) {
-      ReactDOM.render(<Toast visible={false} onClose={onClose} />, Toast.zarmToast);
+  static _hide: () => void;
+
+  static hide = () => {
+    if (Toast._hide) {
+      Toast._hide();
     }
   };
 
-  private static zarmToast: null | HTMLDivElement;
+  static unmountNode = () => {
+    const { zarmToast } = Toast;
+    if (zarmToast) {
+      ReactDOM.unmountComponentAtNode(zarmToast);
+    }
+  };
 
-  private static mounted: boolean = false;
+  state = {
+    visible: this.props.visible,
+  };
+
+  componentDidMount() {
+    Toast._hide = this._hide;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { visible } = this.props;
+
+    if (nextProps.visible !== visible) {
+      if (nextProps.visible === true) {
+        this.setState({
+          visible: true,
+        });
+      } else {
+        this._hide();
+      }
+    }
+  }
 
   onClose = () => {
     const { onClose } = this.props;
@@ -56,29 +94,36 @@ export default class Toast extends Component<ToastProps, any> {
     }
   };
 
+  _hide = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
   render() {
-    const { prefixCls, visible, className, stayTime, children, ...others } = this.props;
+    const {
+      prefixCls,
+      className,
+      stayTime,
+      children,
+      ...others
+    } = this.props;
+
+    const { visible } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--open`]: visible,
+      // [`${prefixCls}--open`]: visible,
     });
-
-    // return (
-    //   <div className={cls}>
-    //     <div className={`${prefixCls}__container`}>{children}</div>
-    //     {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
-    //   </div>
-    // );
 
     return (
       <Popup
-        visible={visible}
         direction="center"
         maskType="transparent"
         autoClose={stayTime !== 0}
         stayTime={stayTime}
         width="70%"
         {...others}
+        visible={visible}
         onClose={this.onClose}
       >
         <div className={cls}>
