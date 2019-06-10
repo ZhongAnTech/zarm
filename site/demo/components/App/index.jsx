@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 import { Loading } from 'zarm';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -89,4 +89,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(withRouter(App));
+export default hot(withRouter(App));

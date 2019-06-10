@@ -27,8 +27,8 @@ export interface PullAction {
 }
 
 export interface PropsType {
-  refresh: PullAction;
-  load: PullAction;
+  refresh?: PullAction;
+  load?: PullAction;
   animationDuration?: number;
   stayTime?: number;
   locale?: Locale;
