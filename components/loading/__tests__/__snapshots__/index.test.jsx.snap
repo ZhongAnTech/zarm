@@ -1,28 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Confirm renders correctly 1`] = `
-<div
-  class="za-loading za-loading--open"
->
-  <div
-    class="za-loading__container"
-  >
-    <div
-      class="za-activity-indicator za-activity-indicator__spinner za-activity-indicator--lg"
-    >
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-    </div>
-  </div>
-</div>
-`;
+exports[`Confirm renders correctly 1`] = `null`;

@@ -37,7 +37,7 @@ exports[`Modal renders correctly 1`] = `
       <Portal
         containerInfo={
           <div
-            class=" popup-container"
+            class="popup-container"
           >
             <div
               class="za-popup za-modal za-modal--radius za-popup--center za-popup--mask za-popup--hidden"

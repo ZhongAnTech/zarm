@@ -96,10 +96,10 @@ exports[`ActionSheet renders correctly 1`] = `
           <Portal
             containerInfo={
               <div
-                class=" popup-container"
+                class="popup-container"
               >
                 <div
-                  class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                  class="za-popup za-popup--bottom za-popup--hidden"
                   role="dialog"
                 >
                   <div
@@ -145,7 +145,7 @@ exports[`ActionSheet renders correctly 1`] = `
             }
           >
             <div
-              className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+              className="za-popup za-popup--bottom za-popup--hidden"
               role="dialog"
               style={Object {}}
             >

@@ -398,7 +398,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
               <Portal
                 containerInfo={
                   <div
-                    class=" popup-container"
+                    class="popup-container"
                   >
                     <div
                       class="za-popup za-popup--bottom za-popup--hidden"
