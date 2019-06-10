@@ -1,12 +1,34 @@
 @import "../../style/core/index";
 
 @include b(slider) {
-  position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
-  margin: calc(var(--slider-handle-size) / 2) 0;
-  padding: 0 calc(var(--slider-handle-size) / 2);
+
+  @include e(content) {
+    position: relative;
+    margin: calc(var(--slider-handle-size) / 2) 0;
+    padding: 0 calc(var(--slider-handle-size) / 2);
+    flex: 1;
+  }
+
+  @include e(marks) {
+    position: absolute;
+    font-size: var(--slider-mark-size);
+    top: 10px;
+    left: 0;
+    right: 0;
+    color: var(--slider-line-background);
+
+    @include e(mark) {
+      position: absolute;
+      transform: translateX(-50%);
+      color: var(--theme-primary);
+    }
+  }
 
   @include e(line) {
+    position: relative;
     flex: 1;
     height: var(--slider-line-height);
     background-color: var(--slider-line-background);
@@ -14,6 +36,22 @@
     @include e(line__bg) {
       height: 100%;
       background-color: var(--theme-primary);
+    }
+
+    @include e(line__dot) {
+      position: absolute;
+      top: -1.5px;
+      width: 5px;
+      height: 5px;
+      margin-left: -2.5px;
+      background-color: #fff;
+      border: 1px solid var(--slider-line-background);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    @include e(line__dot-active) {
+      border: 1px solid var(--theme-primary);
     }
   }
 
@@ -40,5 +78,43 @@
   @include m(disabled) {
     cursor: not-allowed;
     opacity: var(--opacity-disabled);
+  }
+
+  @include m(vertical) {
+    flex-direction: column-reverse;
+    width: var(--slider-handle-size);
+    height: calc(var(--slider-vertical-line-height) + var(--slider-handle-size));
+    align-items: initial;
+
+    @include e(content) {
+      margin: 0 calc(var(--slider-handle-size) / 2);
+      padding: calc(var(--slider-handle-size) / 2) 0;
+    }
+
+    @include e(marks) {
+      top: 0;
+      left: 15px;
+      width: 20px;
+      height: 100%;
+    }
+
+    @include e(mark) {
+      transform: translateY(-50%);
+    }
+
+    @include e(line) {
+      width: var(--slider-vertical-line-width);
+      height: var(--slider-vertical-line-height);
+    }
+
+    @include e(line__dot) {
+      margin-top: -2.5px;
+      margin-left: -1.5px;
+    }
+
+    @include e(handle) {
+      left: calc(var(--slider-handle-size) / -2);
+      top: 0;
+    }
   }
 }
