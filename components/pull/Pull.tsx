@@ -7,6 +7,35 @@ import Drag from '../drag';
 import ActivityIndicator from '../activity-indicator';
 import Icon from '../icon';
 
+function bodyTouchEvent(scrollElement) {
+  let startPoint = 0;
+
+  function touchstart(e) {
+    startPoint = e.touches ? e.touches[0].pageY : e.pageY;
+  }
+
+  function touchend() {
+    startPoint = 0;
+  }
+
+  function touchmove(e) {
+    const endPoint = e.touches ? e.touches[0].pageY : e.pageY;
+    if (endPoint - startPoint > 0 && scrollElement.scrollTop <= 0) {
+      e.preventDefault();
+    }
+  }
+
+  Events.on(document.body, 'touchstart', touchstart);
+  Events.on(document.body, 'touchend', touchend);
+  Events.on(document.body, 'touchmove', touchmove);
+
+  return () => {
+    Events.off(document.body, 'touchmove', touchmove);
+    Events.off(document.body, 'touchstart', touchstart);
+    Events.off(document.body, 'touchend', touchend);
+  };
+}
+
 export interface PullProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -34,6 +63,8 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   private throttledScroll;
 
+  private romoveBodyTouchEvent;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -49,6 +80,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     this.wrap = this.getScrollContainer();
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
     Events.on(scroller, 'scroll', this.throttledScroll);
+    this.romoveBodyTouchEvent = bodyTouchEvent(this.wrap);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -66,6 +98,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   componentWillUnmount() {
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
     Events.off(scroller, 'scroll', this.throttledScroll);
+    this.romoveBodyTouchEvent && this.romoveBodyTouchEvent();
   }
 
   getScrollContainer = () => {
@@ -114,6 +147,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       // 已经触发过加载状态
       || this.state.refreshState >= REFRESH_STATE.loading
+
     ) {
       return false;
     }
