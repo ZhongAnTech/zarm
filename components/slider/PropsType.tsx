@@ -1,3 +1,9 @@
+import { ReactNode } from 'react';
+
+export interface SliderMarks {
+  [key: number]: ReactNode;
+}
+
 export default interface PropsType {
   value?: number;
   defaultValue?: number;
@@ -5,5 +11,8 @@ export default interface PropsType {
   min: number;
   max: number;
   disabled?: boolean;
+  showMark?: boolean;
+  vertical?: boolean;
+  marks?: SliderMarks;
   onChange?: (value: number) => void;
 }

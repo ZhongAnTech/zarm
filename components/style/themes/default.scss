@@ -260,7 +260,11 @@
   // Slider
   --slider-line-background: #e6e6e6;
   --slider-line-height: 2px;
-  --slider-handle-size: 28px;
+  --slider-vertical-line-width: 2px;
+  --slider-vertical-line-height: 100px;
+  --slider-handle-size: 24px;
+  --slider-mark-handle: 24px;
+  --slider-mark-size: 15px;
   --slider-handle-background: #fff;
   --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
