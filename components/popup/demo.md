@@ -64,14 +64,22 @@ class Demo extends React.Component {
           从右侧弹出
         </Cell>
 
+        <Cell
+          description={
+            <Button size="xs" onClick={() => this.open('popCenter')}>开启</Button>
+          }
+        >
+          从中间弹出
+        </Cell>
+
         <Popup
           autoClose
           visible={this.state.popTop}
           direction="top"
-          duration={3000}
+          stayTime={3000}
           mask={false}
-          onMaskClick={() => this.close('popTop')}
-          onClose={() => console.log('关闭')}
+          // onMaskClick={() => this.close('popTop')}
+          onClose={() => { console.log('关闭'); this.close('popTop'); }}
         >
           <div className="popup-box-top">
             更新成功
@@ -110,6 +118,18 @@ class Demo extends React.Component {
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => this.close('popRight')}>关闭弹层</Button>
+          </div>
+        </Popup>
+
+        <Popup
+          visible={this.state.popCenter}
+          onMaskClick={() => this.close('popCenter')}
+          direction="center"
+          width="70%"
+          onClose={() => console.log('关闭')}
+        >
+          <div className="popup-box">
+            <Button size="xs" onClick={() => this.close('popCenter')}>关闭弹层</Button>
           </div>
         </Popup>
       </div>

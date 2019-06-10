@@ -7,6 +7,13 @@
 import { Toast, Cell, Button, Icon } from 'zarm';
 
 class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      visible: false,
+      test: false,
+    }
+  }
   render() {
     return (
       <div>
@@ -15,7 +22,9 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('默认3秒自动关闭');
+                this.setState({
+                  visible: true,
+                })
               }}
             >
               开启
@@ -30,14 +39,14 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('指定10秒后自动关闭', 10000);
+                Toast.show('指定10秒后自动关闭', 10000, false);
               }}
             >
               开启
             </Button>
           }
         >
-          指定停留时间
+          指定停留时间（无遮罩层）
         </Cell>
 
         <Cell
@@ -61,6 +70,14 @@ class Demo extends React.Component {
         >
           自定义内容
         </Cell>
+
+        <Toast
+          visible={this.state.visible}
+          onClose={() => { this.setState({ visible: false }) }}
+          mask={false}
+          stayTime={3000}>
+          默认3秒自动关闭{this.state.test}
+        </Toast>
       </div>
     )
   }
@@ -76,6 +93,13 @@ ReactDOM.render(<Demo />, mountNode);
 import { Loading, Cell, Button } from 'zarm';
 
 class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      visible: false,
+      test: false,
+    }
+  }
   render() {
     return (
       <div>
@@ -84,18 +108,64 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Loading.show();
-                setTimeout(()=>{
-                  Loading.hide();
-                }, 1100);
+                this.setState({
+                  visible: true,
+                })
+                // setTimeout(() => {
+                //   this.setState({
+                //     visible: false,
+                //   });
+                // }, 1000);
               }}
             >
               开启
             </Button>
           }
         >
-          Loading
+          普通
         </Cell>
+        <Cell
+          description={
+            <Button
+              size="xs"
+              onClick={() => {
+                Loading.show(null, 2000, false, () => {
+                  console.log('loading已关闭')
+                });
+                // setTimeout(()=>{
+                //   Loading.hide();
+                // }, 2000);
+              }}
+            >
+              开启
+            </Button>
+          }
+        >
+          Loading（无遮罩层）
+        </Cell>
+
+        <Cell
+          description={
+            <Button
+              size="xs"
+              onClick={() => {
+                Loading.show('wait');
+                setTimeout(()=>{
+                  Loading.hide();
+                }, 3000);
+              }}
+            >
+              开启
+            </Button>
+          }
+        >
+          Loading（自定义）
+        </Cell>
+
+        <Loading
+          visible={this.state.visible}
+          onClose={() => { this.setState({ visible: false }); }}
+          stayTime={3000} />
       </div>
     )
   }

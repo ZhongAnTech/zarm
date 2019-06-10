@@ -1,31 +1,42 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Mask from '../mask';
+import Popup from '../popup';
 
 export interface ToastProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Toast extends PureComponent<ToastProps, any> {
+export default class Toast extends Component<ToastProps, any> {
   static defaultProps = {
     prefixCls: 'za-toast',
     visible: false,
     stayTime: 3000,
-    mask: false,
+    mask: true,
   };
 
-  static show = (children: any, stayTime?: number, onClose?: () => void) => {
+  private static zarmToast: null | HTMLDivElement;
+
+  private static mounted: boolean = false;
+
+  static show = (
+    children: any,
+    stayTime?: number,
+    mask?: boolean,
+    onClose?: () => void,
+  ) => {
+    Toast.unmountNode();
     if (!Toast.mounted) {
       Toast.zarmToast = document.createElement('div');
       document.body.appendChild(Toast.zarmToast);
       Toast.mounted = true;
     }
+
     if (Toast.zarmToast) {
       ReactDOM.render(
-        <Toast visible stayTime={stayTime} onClose={onClose}>
+        <Toast visible stayTime={stayTime} mask={mask} onClose={onClose}>
           {children}
         </Toast>,
         Toast.zarmToast,
@@ -33,90 +44,92 @@ export default class Toast extends PureComponent<ToastProps, any> {
     }
   };
 
+  static _hide: () => void;
+
   static hide = () => {
-    if (Toast.zarmToast) {
-      ReactDOM.render(<Toast visible={false} />, Toast.zarmToast);
+    if (Toast._hide) {
+      Toast._hide();
     }
   };
 
-  private static zarmToast: undefined | HTMLDivElement;
+  static unmountNode = () => {
+    const { zarmToast } = Toast;
+    if (zarmToast) {
+      ReactDOM.unmountComponentAtNode(zarmToast);
+    }
+  };
 
-  private static mounted: boolean = false;
-
-  private timer: number;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: props.visible || false,
-    };
-  }
+  state = {
+    visible: this.props.visible,
+  };
 
   componentDidMount() {
-    const { visible } = this.props;
-    if (visible) {
-      this.enter(this.props);
-    }
+    Toast._hide = this._hide;
   }
 
   componentWillReceiveProps(nextProps) {
-    clearTimeout(this.timer);
+    const { visible } = this.props;
 
-    if (nextProps.visible) {
-      this.enter(nextProps);
-    } else {
-      this.leave(nextProps);
-    }
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
-
-  enter = (props) => {
-    const { stayTime, onMaskClick } = props;
-
-    this.setState({
-      visible: true,
-    });
-
-    if (stayTime === 0) {
-      return;
-    }
-
-    this.timer = setTimeout(() => {
-      if (typeof onMaskClick === 'function') {
-        onMaskClick();
+    if (nextProps.visible !== visible) {
+      if (nextProps.visible === true) {
+        this.setState({
+          visible: true,
+        });
+      } else {
+        this._hide();
       }
-      this.leave(props);
-      clearTimeout(this.timer);
-    }, stayTime);
-  };
+    }
+  }
 
-  leave = (props) => {
-    this.setState({
-      visible: false,
-    });
+  onClose = () => {
+    const { onClose } = this.props;
+    if (Toast.zarmToast) {
+      Toast.mounted = false;
+      document.body.removeChild(Toast.zarmToast);
+      Toast.zarmToast = null;
+    }
 
-    const { onClose } = props;
     if (typeof onClose === 'function') {
       onClose();
     }
   };
 
+  _hide = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
   render() {
-    const { prefixCls, className, mask, onMaskClick, children } = this.props;
+    const {
+      prefixCls,
+      className,
+      stayTime,
+      children,
+      ...others
+    } = this.props;
+
     const { visible } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--open`]: visible,
+      // [`${prefixCls}--open`]: visible,
     });
 
     return (
-      <div className={cls}>
-        <div className={`${prefixCls}__container`}>{children}</div>
-        {mask && <Mask visible={visible} type="transparent" onClick={onMaskClick} />}
-      </div>
+      <Popup
+        direction="center"
+        maskType="transparent"
+        autoClose={stayTime !== 0}
+        stayTime={stayTime}
+        width="70%"
+        {...others}
+        visible={visible}
+        onClose={this.onClose}
+      >
+        <div className={cls}>
+          <div className={`${prefixCls}__container`}>{children}</div>
+        </div>
+      </Popup>
     );
   }
 }

@@ -5,9 +5,9 @@
 
   @include e(wrapper) {
     position: fixed;
-    transform: translate(0, 0);
-    transition-property: transform;
-    overflow: auto;
+    // transform: translate(0, 0);
+    // transition-property: transform;
+    // overflow: auto;
     z-index: var(--zindex-popup);
     -webkit-overflow-scrolling: touch;
   }
@@ -18,6 +18,24 @@
     top: 0;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include m(nomask) {
+    position: fixed;
+    display: block;
+    max-width: 50%;
+    width: auto;
+    left: 50%;
+    top: 50%;
+
+    @include b(popup) {
+      &__wrapper {
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
   }
 
   @include m(bottom) {

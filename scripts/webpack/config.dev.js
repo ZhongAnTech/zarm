@@ -17,7 +17,14 @@ config.plugins.push(
     inject: false,
   }),
 );
+
+// hot-loader
+Object.keys(config.entry).forEach((key) => {
+  config.entry[key].unshift('react-hot-loader/patch');
+});
 config.module.rules[0].use[0].options.plugins.push('react-hot-loader/babel');
+
+// dev-server
 config.devServer = {
   host: '0.0.0.0',
   port: 3000,
@@ -25,6 +32,7 @@ config.devServer = {
   noInfo: true,
   inline: true,
   hot: true,
+  progress: true,
 };
 
 module.exports = config;
