@@ -5,7 +5,6 @@ import { Panel } from 'zarm';
 import locale from 'zarm/components/locale-provider/locale/zh_CN';
 import '@/components/style/entry';
 
-
 export default class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +12,6 @@ export default class Demo extends React.Component {
     this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
     this.title = String(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
-    this.romoveTouchEvent = null;
   }
 
   componentDidMount() {
@@ -24,7 +22,6 @@ export default class Demo extends React.Component {
     if (this.containerElem) {
       ReactDOM.unmountComponentAtNode(this.containerElem);
     }
-    this.romoveTouchEvent && this.romoveTouchEvent();
   }
 
   renderSource(value) {
