@@ -5,40 +5,6 @@ import { Panel } from 'zarm';
 import locale from 'zarm/components/locale-provider/locale/zh_CN';
 import '@/components/style/entry';
 
-function attachTouchEvent() {
-  let startPoint = null;
-
-  function getBodyScrollTop() {
-    const el = document.scrollingElement || document.documentElement;
-    return el.scrollTop;
-  }
-
-  function touchstart(e) {
-    startPoint = e.touches ? e.touches[0].pageY : e.pageY;
-  }
-
-  function touchend() {
-    startPoint = null;
-  }
-
-  function touchmove(e) {
-    const endPoint = e.touches ? e.touches[0].pageY : e.pageY;
-    const scrollTop = getBodyScrollTop();
-    if (endPoint - startPoint > 0 && scrollTop <= 0) {
-      e.preventDefault();
-    }
-  }
-
-  document.body.addEventListener('touchstart', touchstart);
-  document.body.addEventListener('touchend', touchend);
-  document.body.addEventListener('touchmove', touchmove, { passive: false });
-
-  return () => {
-    document.body.removeEventListener('touchmove', touchmove);
-    document.body.removeEventListener('touchstart', touchstart);
-    document.body.removeEventListener('touchend', touchend);
-  };
-}
 
 export default class Demo extends React.Component {
   constructor(props) {
@@ -52,12 +18,6 @@ export default class Demo extends React.Component {
 
   componentDidMount() {
     this.renderSource(this.source[2]);
-    const { location } = this.props;
-    if (location.pathname === '/pull') {
-      this.romoveTouchEvent = attachTouchEvent();
-    } else {
-      this.romoveTouchEvent && this.romoveTouchEvent();
-    }
   }
 
   componentWillUnmount() {

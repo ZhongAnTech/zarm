@@ -3,16 +3,58 @@ import classnames from 'classnames';
 import Events from '@site/utils/events';
 import './style.scss';
 
+function attachTouchEvent() {
+  let startPoint = null;
+
+  function getScrollTop() {
+    const el = document.querySelectorAll('.pull-page')[0];
+    return el.scrollTop;
+  }
+
+  function touchstart(e) {
+    startPoint = e.touches ? e.touches[0].pageY : e.pageY;
+  }
+
+  function touchend() {
+    startPoint = null;
+  }
+
+  function touchmove(e) {
+    const endPoint = e.touches ? e.touches[0].pageY : e.pageY;
+    const scrollTop = getScrollTop();
+    if (endPoint - startPoint > 0 && scrollTop <= 0) {
+      e.preventDefault();
+    }
+  }
+
+  document.body.addEventListener('touchstart', touchstart);
+  document.body.addEventListener('touchend', touchend);
+  document.body.addEventListener('touchmove', touchmove, { passive: false });
+
+  return () => {
+    document.body.removeEventListener('touchmove', touchmove);
+    document.body.removeEventListener('touchstart', touchstart);
+    document.body.removeEventListener('touchend', touchend);
+  };
+}
 class Container extends Component {
   componentDidMount() {
     this.readScrollTop();
     Events.on(this.container, 'scroll', () => {
       this.saveScrollTop();
     });
+    const { className } = this.props;
+    this.romoveTouchEvent = null;
+    if (className === 'pull-page') {
+      this.romoveTouchEvent = attachTouchEvent();
+    } else {
+      this.romoveTouchEvent && this.romoveTouchEvent();
+    }
   }
 
   componentWillUnmount() {
     this.saveScrollTop();
+    this.romoveTouchEvent && this.romoveTouchEvent();
   }
 
   saveScrollTop = () => {
