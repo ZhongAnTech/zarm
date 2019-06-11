@@ -75,6 +75,12 @@
     }
   }
 
+  @include e(handle__small) {
+    top: calc(var(--slider-handle-size-small) / -2);
+    width: var(--slider-handle-size-small);
+    height: var(--slider-handle-size-small);
+  }
+
   @include m(disabled) {
     cursor: not-allowed;
     opacity: var(--opacity-disabled);
@@ -114,6 +120,11 @@
 
     @include e(handle) {
       left: calc(var(--slider-handle-size) / -2);
+      top: 0;
+    }
+
+    @include e(handle__small) {
+      left: calc(var(--slider-handle-size-small) / -2);
       top: 0;
     }
   }
