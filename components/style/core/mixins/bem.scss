@@ -6,7 +6,7 @@ $--element-separator: '__';
 $--modifier-separator: '--';
 
 // 是否包含Modifier
-@function containsModifier($selector) {
+@function contains-modifier($selector) {
   @return str-contains(str-selector($selector), $--modifier-separator);
 }
 
@@ -16,13 +16,14 @@ $--modifier-separator: '--';
 }
 
 // 获取块名
-@function getBlock($selector) {
+@function get-block($selector) {
   $selector: str-selector($selector);
   $parent: str-slice($selector, str-index-reverse($selector, '.'));
   $start: -2;
   @if containsElement($parent) {
     $start: str-index($parent, $--element-separator) - 1;
-  } @else if containsModifier($parent) {
+  }
+  @else if contains-modifier($parent) {
     $start: str-index($parent, $--modifier-separator) - 1;
   }
   $block: str-slice($parent, 0, $start);
@@ -31,10 +32,10 @@ $--modifier-separator: '--';
 }
 
 // 获取节点列表
-@function getElements($elements) {
+@function get-elements($elements) {
   $result: '';
-  $block: getBlock(&);
-  $selector: if(containsModifier(&), getBlock(&), &);
+  $block: get-block(&);
+  $selector: if(contains-modifier(&), get-block(&), &);
   @each $unit in $elements {
     $element: selector-append($selector, $--element-separator + $unit);
     @if containsElement($selector) {
@@ -49,12 +50,12 @@ $--modifier-separator: '--';
  * block define
  * @param $name     block name
  * @examples
- * 
+ *
  *    @include b(button) { ... }
  *    =>
  *    .za-button { ... }
- * 
- * 
+ *
+ *
  *    @include b(checkbox-group) { ... }
  *    =>
  *    .za-checkbox-group { ... }
@@ -71,14 +72,14 @@ $--modifier-separator: '--';
  * element define
  * @param $list     list of element names
  * @examples
- * 
+ *
  *    @include b(button) {
  *      @include e(icon) { ... }
  *    }
  *    =>
  *    .za-button__icon { ... }
- * 
- * 
+ *
+ *
  *    @include b(dialog) {
  *      @include e(header, footer) { ... }
  *    }
@@ -86,8 +87,8 @@ $--modifier-separator: '--';
  *    .za-dialog__header, .za-dialog__footer { ... }
  */
 @mixin e($elements...) {
-  $elements: getElements($elements);
-  $selector: if(containsModifier(&), selector-nest(&, $elements), $elements);
+  $elements: get-elements($elements);
+  $selector: if(contains-modifier(&), selector-nest(&, $elements), $elements);
   @at-root {
     #{$selector} {
       @content;
@@ -99,14 +100,14 @@ $--modifier-separator: '--';
  * modifier define
  * @param $modifier     modifier name
  * @examples
- * 
+ *
  *    @include b(button) {
  *      @include m(danger) { ... }
  *    }
  *    =>
  *    .za-button--danger { ... }
- * 
- * 
+ *
+ *
  *    @include b(button) {
  *      @include m(danger) {
  *        @include e(content) { ... }
@@ -114,8 +115,8 @@ $--modifier-separator: '--';
  *    }
  *    =>
  *    .za-button--danger .za-button__content { ... }
- * 
- * 
+ *
+ *
  *    @include b(button) {
  *      @include e(content) {
  *        @include m(danger) { ... }
@@ -125,7 +126,7 @@ $--modifier-separator: '--';
  *    ..za-button__content--danger { ... }
  */
 @mixin m($modifier) {
-  $parent: if(containsModifier(&), & + getBlock(&), &);
+  $parent: if(contains-modifier(&), & + get-block(&), &);
   $selector: selector-append($parent, $--modifier-separator + $modifier);
   @at-root {
     #{$selector} {
