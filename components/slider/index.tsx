@@ -1,5 +1,4 @@
 import React, { Fragment, PureComponent } from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -35,8 +34,7 @@ function getClosestPoint(val, { marks, step, min, max }) {
   if (step !== null) {
     const maxSteps = Math.floor((max - min) / step);
     const steps = Math.min((val - min) / step, maxSteps);
-    const closestStep =
-      Math.round(steps) * step + min;
+    const closestStep = Math.round(steps) * step + min;
     points.push(closestStep);
   }
   const diffs = points.map(point => Math.abs(val - point));
@@ -46,9 +44,10 @@ function getClosestPoint(val, { marks, step, min, max }) {
 
 function ensureValuePrecision(val, props) {
   const { step } = props;
-  const closestPoint = isFinite(getClosestPoint(val, props)) ? getClosestPoint(val, props) : 0;
-  return step === null ? closestPoint :
-    parseFloat(closestPoint.toFixed(getPrecision(step)));
+  const closestPoint = isFinite(getClosestPoint(val, props)) ? getClosestPoint(val, props) : 0; // eslint-disable-line
+  return step === null
+    ? closestPoint
+    : parseFloat(closestPoint.toFixed(getPrecision(step)));
 }
 
 export interface SliderProps extends PropsType {
@@ -119,9 +118,9 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const percent = offset / this.getMaxOffset();
 
-    let value = Math.round((min + ((max - min) * percent)));
+    const value = Math.round((min + ((max - min) * percent)));
 
-    return ensureValuePrecision(value, this.props)
+    return ensureValuePrecision(value, this.props);
   };
 
   /**
@@ -224,8 +223,8 @@ export default class Slider extends PureComponent<SliderProps, any> {
     }
   };
 
-  handleRef = ref => {
-    const nextContainer = ReactDOM.findDOMNode(ref);
+  handleRef = (ref) => {
+    const nextContainer = ref;
     const prevContainer = this.container;
 
     if (prevContainer !== nextContainer) {
@@ -325,6 +324,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
       min,
       max,
       vertical,
+      showMark,
     } = this.props;
 
     const {
@@ -346,6 +346,10 @@ export default class Slider extends PureComponent<SliderProps, any> {
       [vertical ? 'height' : 'width']: offset || 0,
     };
 
+    const handleClass = classnames(`${prefixCls}__handle`, {
+      [`${prefixCls}__handle__small`]: showMark,
+    });
+
     return (
       <div className={cls} ref={this.handleRef}>
         <div className={`${prefixCls}__content`}>
@@ -364,7 +368,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
             onDragEnd={this.handleDragEnd}
           >
             <div
-              className={`${prefixCls}__handle`}
+              className={handleClass}
               role="slider"
               aria-valuemin={min}
               aria-valuemax={max}
