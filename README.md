@@ -79,7 +79,7 @@ import 'zarm/lib/Button/style';
 
 通过修改css变量定义达到定制主题的效果
 ```js
-document.body.style.setProperty('--theme-primary', '#108ee9');
+document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 变量名可参考 [default.scss](https://github.com/ZhonganTechENG/zarm/blob/master/components/style/themes/default.scss)
 
