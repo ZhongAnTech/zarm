@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, shallow } from 'enzyme';
+import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Pull from '../index';
+import zhCN from '../locale/zh_CN';
+import enUS from '../locale/en_US';
 
 describe('Pull', () => {
   const REFRESH_STATE = {
