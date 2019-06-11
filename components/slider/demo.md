@@ -15,13 +15,6 @@ class Demo extends React.Component {
   }
 
   render() {
-    const marks = {
-      0: '0',
-      26: '26',
-      65: '65',
-      100: '100',
-    }
-  
     return (
       <div>
         <Cell title="普通">
@@ -41,22 +34,55 @@ class Demo extends React.Component {
           <Slider min={-100} max={100} defaultValue={0} />
         </Cell>
 
-        <Cell title="设置步长">
-          <Slider step={10} />
-        </Cell>
-
         <Cell title="禁用状态">
           <Slider defaultValue={20} disabled />
         </Cell>
-        
-        <Cell title="带标签">
-          <Slider showMark defaultValue={20} marks={marks} />
-        </Cell>
-        
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 刻度与标记
+```jsx
+import { Cell, Slider } from 'zarm';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+    };
+  }
+
+  render() {
+    const marks = {
+      0: '0',
+      26: '26',
+      65: '65',
+      100: '100',
+    }
+  
+    return (
+      <div>
         <Cell title="显示刻度">
           <Slider 
             marks={marks} 
           />
+        </Cell>
+        
+        <Cell title="显示标签" style={{ paddingBottom: '15px' }}>
+          <Slider 
+            showMark 
+            defaultValue={20} 
+            marks={marks} 
+          />
+        </Cell>
+        
+        <Cell title="设置步长">
+          <Slider step={10} />
         </Cell>
         
         <Cell title="步长+刻度">
@@ -65,8 +91,37 @@ class Demo extends React.Component {
             marks={marks} 
           />
         </Cell>
-         
-         <Cell title="垂直" style={{ padding: '15px 0' }}>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 垂直方向
+```jsx
+import { Cell, Slider } from 'zarm';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+    };
+  }
+
+  render() {
+    const marks = {
+      0: '0',
+      26: '26',
+      65: '65',
+      100: '100',
+    }
+  
+    return (
+      <div>
+        <Cell title="垂直" style={{ padding: '15px 0' }}>
           <Slider
             showMark
             marks={marks}
@@ -80,7 +135,6 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-
 
 
 ## API
