@@ -77,7 +77,6 @@ export default class Slider extends PureComponent<SliderProps, any> {
     super(props);
     this.state = {
       value: getValue(props, 0),
-      offset: 0,
       tooltip: false,
     };
   }
@@ -90,8 +89,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       const { value } = nextProps;
-      const offset = this.getOffsetByValue(value);
-      this.setState({ value, offset });
+      this.setState({ value });
     }
   }
 
@@ -100,9 +98,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
    */
   init = () => {
     const { value } = this.state;
-    const offset = this.getOffsetByValue(value);
-    this.offsetStart = offset;
-    this.setState({ offset });
+    this.offsetStart = this.getOffsetByValue(value);
   };
 
   /**
@@ -121,6 +117,16 @@ export default class Slider extends PureComponent<SliderProps, any> {
     const value = Math.round((min + ((max - min) * percent)));
 
     return ensureValuePrecision(value, this.props);
+  };
+
+  /**
+   * 获取偏移量百分比
+   * @param value
+   */
+  getOffsetPercent = (value) => {
+    const { min, max } = this.props;
+    const ratio = (value - min) / (max - min);
+    return `${ratio * 100}%`;
   };
 
   /**
@@ -175,7 +181,6 @@ export default class Slider extends PureComponent<SliderProps, any> {
       offset = 0;
       const newValue = this.getValueByOffset(offset);
       this.setState({
-        offset,
         value: newValue,
       });
       return false;
@@ -186,16 +191,14 @@ export default class Slider extends PureComponent<SliderProps, any> {
       offset = maxOffset;
       const newValue = this.getValueByOffset(offset);
       this.setState({
-        offset,
         value: newValue,
       });
       return false;
     }
 
     const value = this.getValueByOffset(offset);
-    offset = this.getOffsetByValue(value);
 
-    this.setState({ offset, value });
+    this.setState({ value });
 
     return true;
   };
@@ -295,7 +298,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const lineDot = markKeys.map((item) => {
       const dotStyle = classnames(`${prefixCls}__line__dot`, {
-        [`${prefixCls}__line__dot-active`]: value >= item,
+        [`${prefixCls}__line__dot--active`]: value >= item,
       });
 
       const markStyle = {
@@ -329,13 +332,16 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const {
       value,
-      offset = 0,
       tooltip,
     } = this.state;
 
+    const offset = this.getOffsetPercent(value);
+
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--mark`]: showMark && !vertical,
       [`${prefixCls}--vertical`]: vertical,
+      [`${prefixCls}--vertical--mark`]: vertical && showMark,
     });
 
     const handleStyle = {
@@ -345,10 +351,6 @@ export default class Slider extends PureComponent<SliderProps, any> {
     const lineBg = {
       [vertical ? 'height' : 'width']: offset || 0,
     };
-
-    const handleClass = classnames(`${prefixCls}__handle`, {
-      [`${prefixCls}__handle__small`]: showMark,
-    });
 
     return (
       <div className={cls} ref={this.handleRef}>
@@ -368,7 +370,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
             onDragEnd={this.handleDragEnd}
           >
             <div
-              className={handleClass}
+              className={`${prefixCls}__handle`}
               role="slider"
               aria-valuemin={min}
               aria-valuemax={max}
