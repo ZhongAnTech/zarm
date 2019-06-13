@@ -59,10 +59,10 @@ class Demo extends React.Component {
 
   render() {
     const marks = {
-      0: '0',
-      26: '26',
-      65: '65',
-      100: '100',
+      0: '0°C',
+      26: '26°C',
+      65: '65°C',
+      100: '100°C',
     }
   
     return (
@@ -73,21 +73,24 @@ class Demo extends React.Component {
           />
         </Cell>
         
-        <Cell title="显示标签" style={{ paddingBottom: '15px' }}>
-          <Slider 
+        <Cell title="显示标记" style={{ paddingBottom: 15 }}>
+          <Slider
             showMark 
-            defaultValue={20} 
             marks={marks} 
           />
         </Cell>
         
-        <Cell title="设置步长">
-          <Slider step={10} />
+        <Cell title="步长为10" style={{ paddingBottom: 15 }}>
+          <Slider
+            showMark 
+            step={10}
+            marks={marks} />
         </Cell>
         
-        <Cell title="步长+刻度">
-          <Slider 
-            step={10}
+        <Cell title="步长为null" style={{ paddingBottom: 15 }}>
+          <Slider
+            showMark
+            step={null}
             marks={marks} 
           />
         </Cell>
@@ -99,7 +102,7 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 垂直方向
+## 方向
 ```jsx
 import { Cell, Slider } from 'zarm';
 
@@ -113,20 +116,22 @@ class Demo extends React.Component {
 
   render() {
     const marks = {
-      0: '0',
-      26: '26',
-      65: '65',
-      100: '100',
+      0: '0°C',
+      26: '26°C',
+      65: '65°C',
+      100: '100°C',
     }
   
     return (
       <div>
-        <Cell title="垂直" style={{ padding: '15px 0' }}>
-          <Slider
-            showMark
-            marks={marks}
-            vertical={true} 
-          />
+        <Cell title="垂直方向" style={{ padding: '15px 0' }}>
+          <div style={{ height: 200 }}>
+            <Slider
+              showMark
+              marks={marks}
+              vertical={true} 
+            />
+          </div>
         </Cell>
       </div>
     )
