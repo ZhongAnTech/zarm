@@ -32,6 +32,7 @@
 
       iframe {
         box-sizing: content-box;
+        background: #f6f6f6;
         border: 1px solid #eaeefb;
         width: 375px;
         height: 667px;
@@ -57,8 +58,8 @@
   z-index: 11;
 
   &:hover {
-    background-color: #00bc70;
-    color: #fff;
+    // background-color: #00bc70;
+    // color: #fff;
     box-shadow: 0 2px 10px 0 rgba(18, 194, 135, 0.3);
   }
 }
@@ -104,6 +105,10 @@
 
       .main-container {
         padding: 0 20px;
+
+        &.no-simulator {
+          padding-right: 20px;
+        }
       }
 
       .simulator {
