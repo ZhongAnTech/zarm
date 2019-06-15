@@ -168,10 +168,57 @@ class Demo extends React.Component {
 
         <Cell
           description={
+            <Button size="xs" theme="warning" onClick={() => {
+              Alert.show({
+                title: '警告',
+                message: '通过传参或promise调用均可关闭',
+                // onCancel: () => { 
+                //   Alert.hide();
+                // },
+              }).then((res) => {
+                console.log(res);
+                Alert.hide();
+              })
+            }}>开启</Button>
+          }
+        >
+          确认框 Alert（静态调用返回promise对象）
+        </Cell>
+
+        <Cell
+          description={
             <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
           }
         >
           确认框 Confirm
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" theme="warning" onClick={() => {
+              Confirm.show({
+                title: '确认信息',
+                message: '通过传参或promise调用均可关闭',
+                // onOk: () => { 
+                //   window.alert('click ok');
+                //   Confirm.hide();
+                // },
+                // onCancel: () => { 
+                //   Confirm.hide();
+                // },
+              }).then((res) => {
+                console.log(res);
+                if(res) {
+                  window.alert('click ok');
+                  Confirm.hide();
+                } else {
+                  Confirm.hide();
+                }
+              })
+            }}>开启</Button>
+          }
+        >
+          确认框 Confirm（静态调用返回promise对象）
         </Cell>
 
         <Alert
@@ -187,7 +234,10 @@ class Demo extends React.Component {
           visible={confirm}
           title="确认信息"
           message="你确定要这样做吗？"
-          onOk={() => window.alert('click ok')}
+          onOk={() => {
+            window.alert('click ok');
+            this.toggle('confirm');
+          }}
           onCancel={() => this.toggle('confirm')}
         />
       </div>
@@ -209,4 +259,5 @@ ReactDOM.render(<Demo />, mountNode);
 | animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | '70%' | 宽度 |
+| afterClose | () => void | - | 模态框关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |

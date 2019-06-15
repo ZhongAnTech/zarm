@@ -270,14 +270,12 @@ exports[`Select Cascader Select 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>
@@ -603,14 +601,12 @@ exports[`Select Cascader Select init value 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>
@@ -773,14 +769,12 @@ exports[`Select Select 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>
@@ -952,14 +946,12 @@ exports[`Select Select disable visible 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={true}
                 >
                   <Portal
@@ -1353,14 +1345,12 @@ exports[`Select Select disabled 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={true}
                 >
                   <Portal
@@ -1754,14 +1744,12 @@ exports[`Select render defaultValue correctly  1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>

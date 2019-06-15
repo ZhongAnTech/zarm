@@ -95,14 +95,12 @@ exports[`DateSelect DateSelect date 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>
@@ -224,14 +222,12 @@ exports[`DateSelect DateSelect datetime 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>
@@ -406,14 +402,12 @@ exports[`DateSelect DateSelect disabled 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={true}
                 >
                   <Portal
@@ -2351,14 +2345,12 @@ exports[`DateSelect DateSelect time 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>
@@ -2462,14 +2454,12 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={true}
                 >
                   <Portal
@@ -4367,14 +4357,12 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={true}
                 >
                   <Portal
@@ -6290,14 +6278,12 @@ exports[`DateSelect DateSelect year 1`] = `
                 <Portal
                   animationDuration={200}
                   animationType="fade"
-                  autoClose={false}
                   direction="bottom"
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  stayTime={3000}
                   visible={false}
                 />
               </Popup>

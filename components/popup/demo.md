@@ -34,7 +34,12 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('popTop')}>开启</Button>
+            <Button size="xs" onClick={() => {
+              this.open('popTop');
+              setTimeout(() => {
+                this.close('popTop');
+              }, 3000);
+            }}>开启</Button>
           }
         >
           从上方弹出
@@ -76,10 +81,9 @@ class Demo extends React.Component {
           autoClose
           visible={this.state.popTop}
           direction="top"
-          stayTime={3000}
           mask={false}
           // onMaskClick={() => this.close('popTop')}
-          onClose={() => { console.log('关闭'); this.close('popTop'); }}
+          onClose={() => { console.log('关闭'); }}
         >
           <div className="popup-box-top">
             更新成功
@@ -147,10 +151,12 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
-| autoClose | boolean | false | 是否自动关闭 |
-| direction | string | 'bottom' | 弹出方向，可选值 `top`, `bottom`, `left`, `right` |
-| stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
+| direction | string | 'bottom' | 弹出方向，可选值 `top`, `bottom`, `left`, `right`, `center` |
+| animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight`，当direction等于“center”时生效 |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
-| maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `light`, `normal`, `dark` |
+| width | string &#124; number | - | 弹层宽度 |
+| mask | boolean | true | 是否展示遮罩层 |
+| maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
+| afterOpen | () => void | - | 弹层展示后的回调 |
+| afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
-| onClose | () => void | - | 关闭后触发的回调函数 |

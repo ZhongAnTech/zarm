@@ -19,24 +19,21 @@ export default class Toast extends Component<ToastProps, any> {
 
   private static zarmToast: null | HTMLDivElement;
 
-  private static mounted: boolean = false;
-
   static show = (
     children: any,
     stayTime?: number,
     mask?: boolean,
-    onClose?: () => void,
+    afterClose?: () => void,
   ) => {
     Toast.unmountNode();
-    if (!Toast.mounted) {
+    if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
       document.body.appendChild(Toast.zarmToast);
-      Toast.mounted = true;
     }
 
     if (Toast.zarmToast) {
       ReactDOM.render(
-        <Toast visible stayTime={stayTime} mask={mask} onClose={onClose}>
+        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
           {children}
         </Toast>,
         Toast.zarmToast,
@@ -59,12 +56,15 @@ export default class Toast extends Component<ToastProps, any> {
     }
   };
 
+  private timer;
+
   state = {
     visible: this.props.visible,
   };
 
   componentDidMount() {
     Toast._hide = this._hide;
+    this.autoClose();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -75,22 +75,26 @@ export default class Toast extends Component<ToastProps, any> {
         this.setState({
           visible: true,
         });
+        this.autoClose();
       } else {
         this._hide();
       }
     }
   }
 
-  onClose = () => {
-    const { onClose } = this.props;
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  afterClose = () => {
+    const { afterClose } = this.props;
     if (Toast.zarmToast) {
-      Toast.mounted = false;
       document.body.removeChild(Toast.zarmToast);
       Toast.zarmToast = null;
     }
 
-    if (typeof onClose === 'function') {
-      onClose();
+    if (typeof afterClose === 'function') {
+      afterClose();
     }
   };
 
@@ -99,6 +103,17 @@ export default class Toast extends Component<ToastProps, any> {
       visible: false,
     });
   };
+
+  autoClose() {
+    const { stayTime } = this.props;
+
+    if ((stayTime as number) > 0) {
+      this.timer = setTimeout(() => {
+        this._hide();
+        clearTimeout(this.timer);
+      }, stayTime);
+    }
+  }
 
   render() {
     const {
@@ -119,12 +134,10 @@ export default class Toast extends Component<ToastProps, any> {
       <Popup
         direction="center"
         maskType="transparent"
-        autoClose={stayTime !== 0}
-        stayTime={stayTime}
         width="70%"
         {...others}
         visible={visible}
-        onClose={this.onClose}
+        afterClose={this.afterClose}
       >
         <div className={cls}>
           <div className={`${prefixCls}__container`}>{children}</div>

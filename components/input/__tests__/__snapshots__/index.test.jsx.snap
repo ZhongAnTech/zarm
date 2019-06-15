@@ -208,13 +208,11 @@ exports[`Input.Idcard renders correctly 1`] = `
             <Portal
               animationDuration={200}
               animationType="fade"
-              autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}
               mask={false}
               maskType="normal"
               prefixCls="za-popup"
-              stayTime={3000}
               visible={false}
             />
           </Popup>
@@ -266,13 +264,11 @@ exports[`Input.Number renders correctly 1`] = `
             <Portal
               animationDuration={200}
               animationType="fade"
-              autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}
               mask={false}
               maskType="normal"
               prefixCls="za-popup"
-              stayTime={3000}
               visible={false}
             />
           </Popup>
@@ -386,13 +382,11 @@ exports[`Input.Number renders onClear called correctly 1`] = `
             <Portal
               animationDuration={200}
               animationType="fade"
-              autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}
               mask={false}
               maskType="normal"
               prefixCls="za-popup"
-              stayTime={3000}
               visible={true}
             >
               <Portal
@@ -735,13 +729,11 @@ exports[`Input.Price renders correctly 1`] = `
             <Portal
               animationDuration={200}
               animationType="fade"
-              autoClose={false}
               direction="bottom"
               handlePortalUnmount={[Function]}
               mask={false}
               maskType="normal"
               prefixCls="za-popup"
-              stayTime={3000}
               visible={false}
             />
           </Popup>
