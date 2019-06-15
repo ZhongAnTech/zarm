@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import marked from 'marked';
+// import { NavBar, Radio, Icon } from 'zarm';
 import Demo from './Demo';
 import Container from './Container';
 import Footer from './Footer';
@@ -55,9 +56,33 @@ export default class Markdown extends React.Component {
         },
       );
 
+      // const leftControl = (
+      //   <Icon
+      //     type="arrow-left"
+      //     theme="success"
+      //     onClick={() => window.history.back()}
+      //   />
+      // );
+
+      // const rightControl = (
+      //   <Radio.Group
+      //     compact
+      //     type="button"
+      //   >
+      //     <Radio value="zh_CN">中文</Radio>
+      //     <Radio value="en_US">EN</Radio>
+      //   </Radio.Group>
+      // );
+
       return (
         <Container className={className}>
           <main dangerouslySetInnerHTML={{ __html: html }} />
+          {/* <NavBar
+            style={{ position: 'fixed', top: 0 }}
+            title="zarm"
+            left={leftControl}
+            right={rightControl}
+          /> */}
           <Footer />
         </Container>
       );

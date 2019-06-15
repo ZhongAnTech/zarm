@@ -33,13 +33,19 @@ const LoadableComponent = (component) => {
 
   return Loadable.Map({
     loader,
-    render: (loaded, props) => (
-      <Markdown
-        document={loaded.page.default}
-        className={`${Format.camel2Dash(component.name)}-page`}
-        {...props}
-      />
-    ),
+    render: (loaded, props) => {
+      return (
+        <Markdown
+          document={loaded.page.default}
+          // data={{
+          //   name: component.name,
+          //   description: component.description,
+          // }}
+          className={`${Format.camel2Dash(component.name)}-page`}
+          {...props}
+        />
+      );
+    },
     loading: () => <Loading visible />,
   });
 };

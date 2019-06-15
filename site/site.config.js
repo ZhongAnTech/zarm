@@ -193,4 +193,11 @@ module.exports = {
       },
     ],
   },
+  design: [
+    {
+      name: 'Download',
+      description: '设计资源下载',
+      module: () => import('@/site/web/pages/Design/Download'),
+    },
+  ],
 };
