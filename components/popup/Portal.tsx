@@ -19,8 +19,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     visible: false,
     mask: true,
     direction: 'bottom',
-    autoClose: false,
-    stayTime: 3000,
     animationType: 'fade',
     animationDuration: 200,
     maskType: Mask.defaultProps.type,
@@ -64,7 +62,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
       Events.off(this.popup, 'animationend', this.animationEnd);
     }
     clearTimeout(this.timer);
-    if (this._container) { // todo: 保存自动更新后触发componentWillUnmount
+    if (this._container) {
       document.body.removeChild(this._container);
     }
   }
@@ -72,7 +70,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   animationEnd = (e) => {
     e.stopPropagation();
 
-    const { onClose, onOpen, handlePortalUnmount } = this.props;
+    const { afterClose, afterOpen, handlePortalUnmount } = this.props;
     const { animationState } = this.state;
 
     if (animationState === 'leave') {
@@ -80,15 +78,14 @@ export default class Portal extends PureComponent<PortalProps, any> {
         isShow: false,
         isPending: false,
       });
-      if (typeof onClose === 'function') {
-        onClose();
+      if (typeof afterClose === 'function') {
+        afterClose();
       }
       if (typeof handlePortalUnmount === 'function') {
         handlePortalUnmount();
-        // document.body.removeChild(this._container);
       }
-    } else if (typeof onOpen === 'function') {
-      onOpen();
+    } else if (typeof afterOpen === 'function') {
+      afterOpen();
     }
   };
 
@@ -200,22 +197,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
   }
 
   enter() {
-    const { stayTime, autoClose, onMaskClick } = this.props;
     this.setState({
       isShow: true,
       isPending: true,
       animationState: 'enter',
     });
-
-    if ((stayTime as number) > 0 && autoClose) {
-      this.timer = setTimeout(() => {
-        if (typeof onMaskClick === 'function') {
-          onMaskClick();
-        }
-        this.leave();
-        clearTimeout(this.timer);
-      }, stayTime);
-    }
   }
 
   leave() {

@@ -21,7 +21,6 @@ export default class Modal extends Component<ModalProps, any> {
     animationType: 'fade',
     animationDuration: 200,
     width: '70%',
-    shape: 'radius',
   };
 
   render() {
@@ -31,6 +30,7 @@ export default class Modal extends Component<ModalProps, any> {
       modal: classnames(prefixCls, className, {
         [`${prefixCls}--${shape}`]: !!shape,
       }),
+      dialog: classnames(`${prefixCls}__dialog`),
     };
 
     return (
@@ -39,7 +39,9 @@ export default class Modal extends Component<ModalProps, any> {
         direction="center"
         {...others}
       >
-        {children}
+        <div className={cls.dialog}>
+          {children}
+        </div>
       </Popup>
     );
   }

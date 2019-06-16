@@ -14,19 +14,17 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     prefixCls: 'za-loading',
   };
 
-  private static mounted: boolean = false;
-
   static zarmLoading: null | HTMLElement;
 
-  static show = (children: any, stayTime?: number, mask?: boolean, onClose?: () => void) => {
-    if (!Loading.mounted) {
+  static show = (children: any, stayTime?: number, mask?: boolean, afterClose?: () => void) => {
+    Loading.unmountNode();
+    if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
       document.body.appendChild(Loading.zarmLoading);
-      Loading.mounted = true;
     }
     if (Loading.zarmLoading) {
       ReactDOM.render(
-        <Loading visible stayTime={stayTime} mask={mask} onClose={onClose}>
+        <Loading visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
           {children}
         </Loading>,
         Loading.zarmLoading,
@@ -42,12 +40,22 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     }
   };
 
+  static unmountNode = () => {
+    const { zarmLoading } = Loading;
+    if (zarmLoading) {
+      ReactDOM.unmountComponentAtNode(zarmLoading);
+    }
+  };
+
+  private timer;
+
   state = {
     visible: this.props.visible,
   };
 
   componentDidMount() {
     Loading._hide = this._hide;
+    this.autoClose();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -58,22 +66,26 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
         this.setState({
           visible: true,
         });
+        this.autoClose();
       } else {
         this._hide();
       }
     }
   }
 
-  onClose = () => {
-    const { onClose } = this.props;
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  afterClose = () => {
+    const { afterClose } = this.props;
     if (Loading.zarmLoading) {
-      Loading.mounted = false;
       document.body.removeChild(Loading.zarmLoading);
       Loading.zarmLoading = null;
     }
 
-    if (typeof onClose === 'function') {
-      onClose();
+    if (typeof afterClose === 'function') {
+      afterClose();
     }
   };
 
@@ -83,11 +95,22 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     });
   };
 
+  autoClose() {
+    const { stayTime } = this.props;
+
+    if ((stayTime as number) > 0) {
+      this.timer = setTimeout(() => {
+        this._hide();
+        clearTimeout(this.timer);
+      }, stayTime);
+    }
+  }
+
   render() {
     const { prefixCls, children, stayTime, ...others } = this.props;
     const { visible } = this.state;
     return (
-      <Toast prefixCls={prefixCls} stayTime={stayTime || 0} {...others} visible={visible} onClose={this.onClose}>
+      <Toast prefixCls={prefixCls} stayTime={stayTime || 0} {...others} visible={visible} afterClose={this.afterClose}>
         {children || <ActivityIndicator type="spinner" size="lg" />}
       </Toast>
     );

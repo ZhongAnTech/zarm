@@ -15,6 +15,7 @@ export default interface PropsType {
   message?: ReactNode;
   cancelText?: string;
   onCancel?: () => void;
+  afterClose?: () => void;
   locale?: Locale;
 }
 

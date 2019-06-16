@@ -39,7 +39,9 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('指定10秒后自动关闭', 10000, false);
+                Toast.show('指定5秒后自动关闭', 5000, false, () => {
+                  console.log('Toast已关闭');
+                });
               }}
             >
               开启
@@ -73,7 +75,7 @@ class Demo extends React.Component {
 
         <Toast
           visible={this.state.visible}
-          onClose={() => { this.setState({ visible: false }) }}
+          afterClose={() => { this.setState({ visible: false }) }}
           mask={false}
           stayTime={3000}>
           默认3秒自动关闭{this.state.test}
@@ -129,12 +131,9 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Loading.show(null, 2000, false, () => {
+                Loading.show(null, 5000, false, () => {
                   console.log('loading已关闭')
                 });
-                // setTimeout(()=>{
-                //   Loading.hide();
-                // }, 2000);
               }}
             >
               开启

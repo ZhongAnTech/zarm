@@ -16,7 +16,8 @@ export default interface PropsType {
   onOk?: () => void;
   cancelText?: string;
   onCancel?: () => void;
-  locale?: Locale;
+  afterClose?: () => void;
+  locale: Locale;
 }
 
 declare global {

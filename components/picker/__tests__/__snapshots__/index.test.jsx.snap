@@ -68,14 +68,12 @@ exports[`Picker Picker render visible 1`] = `
         <Portal
           animationDuration={200}
           animationType="fade"
-          autoClose={false}
           direction="bottom"
           handlePortalUnmount={[Function]}
           mask={true}
           maskType="normal"
           onMaskClick={[Function]}
           prefixCls="za-popup"
-          stayTime={3000}
           visible={true}
         >
           <Portal
@@ -432,14 +430,12 @@ exports[`Picker render custom label 1`] = `
         <Portal
           animationDuration={200}
           animationType="fade"
-          autoClose={false}
           direction="bottom"
           handlePortalUnmount={[Function]}
           mask={true}
           maskType="normal"
           onMaskClick={[Function]}
           prefixCls="za-popup"
-          stayTime={3000}
           visible={false}
         />
       </Popup>

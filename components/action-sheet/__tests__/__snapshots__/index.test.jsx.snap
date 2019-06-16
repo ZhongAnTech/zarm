@@ -83,14 +83,12 @@ exports[`ActionSheet renders correctly 1`] = `
         <Portal
           animationDuration={200}
           animationType="fade"
-          autoClose={false}
           direction="bottom"
           handlePortalUnmount={[Function]}
           mask={true}
           maskType="normal"
           onMaskClick={[MockFunction]}
           prefixCls="za-popup"
-          stayTime={3000}
           visible={true}
         >
           <Portal

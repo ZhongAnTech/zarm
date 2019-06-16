@@ -9,7 +9,6 @@ exports[`Popup renders correctly 1`] = `
   <Portal
     animationDuration={200}
     animationType="fade"
-    autoClose={false}
     direction="bottom"
     handlePortalUnmount={[Function]}
     mask={true}
@@ -17,7 +16,6 @@ exports[`Popup renders correctly 1`] = `
     onClose={[MockFunction]}
     onMaskClick={[MockFunction]}
     prefixCls="za-popup"
-    stayTime={3000}
     visible={false}
   />
 </Popup>

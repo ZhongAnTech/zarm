@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Modal from '../modal';
+import alertLocale from './locale/zh_CN';
+
 
 export interface AlertProps extends PropsType {
   prefixCls?: string;
@@ -14,22 +16,95 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     prefixCls: 'za-alert',
     animationType: 'zoom',
     message: '',
+    locale: alertLocale,
   };
 
-  // static show = (props) => {
-  //   ReactDOM.render(<Alert {...props} visible />, window.zarmAlert);
-  // }
+  private static alertContainer;
 
-  // static hide = () => {
-  //   ReactDOM.render(<Alert visible={false} />, window.zarmAlert);
-  // }
+  static show = (props: AlertProps) => {
+    const { defaultProps } = Alert;
+    let _props: any;
+
+    if (typeof props === 'object') {
+      _props = { ...defaultProps, ...props };
+    } else {
+      _props = { ...defaultProps };
+    }
+
+    Alert.alertContainer = document.createElement('div');
+    document.body.appendChild(Alert.alertContainer);
+    return new Promise((resolve) => {
+      ReactDOM.render(
+        <Alert
+          {..._props}
+          visible
+          onCancel={() => {
+            if (typeof _props.onCancel === 'function') {
+              _props.onCancel();
+            }
+            resolve(false);
+          }}
+        />,
+        Alert.alertContainer,
+      );
+    });
+  };
+
+  static hide = () => {
+    if (Alert._hide) {
+      Alert._hide();
+    }
+  };
+
+  static _hide: () => void;
+
+  state = {
+    visible: this.props.visible,
+  };
+
+  componentDidMount() {
+    Alert._hide = this._hide;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { visible } = this.props;
+
+    if (nextProps.visible !== visible) {
+      if (nextProps.visible === true) {
+        this.setState({
+          visible: true,
+        });
+      } else {
+        this._hide();
+      }
+    }
+  }
+
+  _hide = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
+  afterClose = () => {
+    const { afterClose } = this.props;
+    if (Alert.alertContainer) {
+      document.body.removeChild(Alert.alertContainer);
+      Alert.alertContainer = null;
+    }
+
+    if (typeof afterClose === 'function') {
+      afterClose();
+    }
+  };
 
   render() {
     const { prefixCls, className, title, message, cancelText, onCancel, locale, ...others } = this.props;
+    const { visible } = this.state;
     const cls = classnames(prefixCls, className);
 
     return (
-      <Modal className={cls} {...others}>
+      <Modal className={cls} {...others} visible={visible} afterClose={this.afterClose}>
         <Modal.Header title={title} />
         <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
@@ -39,12 +114,3 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     );
   }
 }
-
-// if (typeof window !== 'undefined') {
-//   if (!window.zarmAlert) {
-//     window.zarmAlert = document.createElement('div');
-//     document.body.appendChild(window.zarmAlert);
-//   }
-
-//   ReactDOM.render(<Alert visible={false} />, window.zarmAlert);
-// }
