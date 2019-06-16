@@ -4,7 +4,12 @@
 
 ## 基本用法
 ```jsx
-import { Popup, Cell, Button } from 'zarm';
+import { Popup, Cell, Button, Picker, Toast } from 'zarm';
+
+const SINGLE_DATA = [
+  { value: '1', label: '选项一' },
+  { value: '2', label: '选项二' },
+];
 
 class Demo extends React.Component {
   constructor(props) {
@@ -14,6 +19,11 @@ class Demo extends React.Component {
       popTop: false,
       popLeft: false,
       popRight: false,
+      single: {
+        visible: false,
+        value: '',
+        dataSource: SINGLE_DATA,
+      },
     };
   }
 
@@ -29,7 +39,14 @@ class Demo extends React.Component {
     });
   }
 
+  toggle(key) {
+    const state = this.state[key];
+    state.visible = !state.visible;
+    this.setState({ [`${key}`]: state });
+  }
+
   render() {
+    const { single } = this.state;
     return (
       <div>
         <Cell
@@ -93,15 +110,28 @@ class Demo extends React.Component {
         <Popup
           visible={this.state.popBottom}
           direction="bottom"
-          maskType="transparent"
           onMaskClick={() => this.close('popBottom')}
           onOpen={() => console.log('打开')}
           onClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="xs" onClick={() => { this.close('popBottom'); }}>关闭弹层</Button>
+            <Button size="xs" onClick={() => { this.toggle('single'); }}>打开Picker</Button>
           </div>
         </Popup>
+
+        <Picker
+          visible={single.visible}
+          value={single.value}
+          dataSource={single.dataSource}
+          onOk={(selected) => {
+            console.log('Picker onOk: ', selected);
+            single.value = selected.map(item => item.value);
+            this.setState({ single });
+            Toast.show(JSON.stringify(selected));
+            this.toggle('single');
+          }}
+          onCancel={() => this.toggle('single')}
+        />
 
         <Popup
           visible={this.state.popLeft}

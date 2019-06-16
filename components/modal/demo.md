@@ -32,7 +32,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { modal1, modal2, modal3, modal4, modal5, animationType } = this.state;
+    const { modal1, modal2, modal3, modal4, modal5, animationType, single } = this.state;
     return (
       <div>
         <Cell
@@ -102,13 +102,16 @@ class Demo extends React.Component {
 
         <Modal visible={modal1}>
           <Modal.Header title="标题" onClose={() => this.close('modal1')} />
-          <Modal.Body>模态框内容</Modal.Body>
+          <Modal.Body>
+            模态框内容
+          </Modal.Body>
         </Modal>
 
         <Modal visible={modal2} onMaskClick={() => this.close('modal2')}>
           <Modal.Header title="标题" />
           <Modal.Body>点击遮罩层关闭</Modal.Body>
         </Modal>
+        
 
         <Modal shape="radius" visible={modal3}>
           <Modal.Header title="标题" onClose={() => this.close('modal3')} />

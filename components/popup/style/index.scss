@@ -2,6 +2,7 @@
 
 @include b(popup) {
   position: relative;
+  z-index: 1;
 
   @include e(wrapper) {
     position: fixed;

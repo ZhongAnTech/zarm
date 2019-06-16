@@ -39,7 +39,7 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('指定10秒后自动关闭', 3000, false, () => {
+                Toast.show('指定5秒后自动关闭', 5000, false, () => {
                   console.log('Toast已关闭');
                 });
               }}

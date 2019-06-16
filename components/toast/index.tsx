@@ -106,7 +106,6 @@ export default class Toast extends Component<ToastProps, any> {
 
   autoClose() {
     const { stayTime } = this.props;
-
     if ((stayTime as number) > 0) {
       this.timer = setTimeout(() => {
         this._hide();
