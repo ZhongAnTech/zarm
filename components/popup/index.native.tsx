@@ -23,7 +23,6 @@ export default class Popup extends PureComponent<PopupProps, any> {
     visible: false,
     mask: true,
     direction: 'bottom',
-    autoClose: false,
     stayTime: 3000,
     animationDuration: 200,
     styles: popupStyles,
@@ -72,7 +71,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
     translateValue.removeAllListeners();
   }
 
-  enter = ({ stayTime, autoClose, onMaskClick, direction, animationDuration }) => {
+  enter = ({ stayTime, onMaskClick, direction, animationDuration }) => {
     let transfromStyle = {};
     let newValue;
     if (direction === 'bottom') {
@@ -103,12 +102,12 @@ export default class Popup extends PureComponent<PopupProps, any> {
         easing: Easing.linear,
       },
     ).start();
-    if (stayTime > 0 && autoClose) {
-      this.timer = setTimeout(() => {
-        onMaskClick();
-        clearTimeout(this.timer);
-      }, stayTime);
-    }
+    // if (stayTime > 0 && autoClose) {
+    //   this.timer = setTimeout(() => {
+    //     onMaskClick();
+    //     clearTimeout(this.timer);
+    //   }, stayTime);
+    // }
   };
 
   leave = ({ animationDuration }) => {
@@ -128,14 +127,14 @@ export default class Popup extends PureComponent<PopupProps, any> {
   };
 
   animationEnd = (value) => {
-    const { onClose } = this.props;
+    const { afterClose } = this.props;
 
     if (this.state.animationState === 'leave' && value.value === 0 && this.state.isPending) {
       this.setState({
         isPending: false,
       });
-      if (typeof onClose === 'function') {
-        onClose();
+      if (typeof afterClose === 'function') {
+        afterClose();
       }
     }
   };

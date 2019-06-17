@@ -95,7 +95,6 @@ class Demo extends React.Component {
         </Cell>
 
         <Popup
-          autoClose
           visible={this.state.popTop}
           direction="top"
           mask={false}
