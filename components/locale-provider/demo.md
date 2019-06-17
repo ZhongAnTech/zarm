@@ -57,7 +57,7 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      locale: 'en_US',
+      locale: 'zh_CN',
       alert: false,
       confirm: false,
     };
@@ -86,8 +86,8 @@ class Demo extends React.Component {
             <Select
               value={this.state.locale}
               dataSource={[
-                { value: 'en_US', label: 'English' },
                 { value: 'zh_CN', label: '中文' },
+                { value: 'en_US', label: 'English' },
               ]}
               onOk={this.onOk}
             />
@@ -142,4 +142,4 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| locale | Object | - | 语言包配置，语言包可到 zarm/lib/locale-provider/locale 目录下寻找 |
+| locale | Object | - | 语言包配置，默认为中文，语言包可到 zarm/lib/locale-provider/locale 目录下寻找 |
