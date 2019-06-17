@@ -48,7 +48,7 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
           }
         >
-          圆角
+          直角
         </Cell>
 
         <Cell
@@ -113,7 +113,7 @@ class Demo extends React.Component {
         </Modal>
         
 
-        <Modal shape="radius" visible={modal3}>
+        <Modal shape="rect" visible={modal3}>
           <Modal.Header title="标题" onClose={() => this.close('modal3')} />
           <Modal.Body>模态框内容</Modal.Body>
         </Modal>
@@ -137,7 +137,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 特定场景
+## 警告框 Alert
 ```jsx
 import { Cell, Button, Alert, Confirm  } from 'zarm';
 
@@ -166,7 +166,7 @@ class Demo extends React.Component {
             <Button size="xs" theme="warning" onClick={() => this.toggle('alert')}>开启</Button>
           }
         >
-          警告框 Alert
+          普通调用
         </Cell>
 
         <Cell
@@ -185,15 +185,55 @@ class Demo extends React.Component {
             }}>开启</Button>
           }
         >
-          确认框 Alert（静态调用返回promise对象）
+          静态调用（返回promise对象）
         </Cell>
 
+        <Alert
+          shape="radius"
+          visible={alert}
+          title="警告"
+          message="这里是警告信息"
+          onCancel={() => this.toggle('alert')}
+        />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+## 确认框 Confirm
+```jsx
+import { Cell, Button, Confirm  } from 'zarm';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: false,
+      confirm: false,
+    };
+  }
+
+  toggle(key) {
+    this.setState({
+      [`${key}`]: !this.state[key],
+    });
+  }
+
+  render() {
+    const { alert, confirm } = this.state;
+
+    return (
+      <div>
         <Cell
           description={
             <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
           }
         >
-          确认框 Confirm
+          普通调用
         </Cell>
 
         <Cell
@@ -221,16 +261,8 @@ class Demo extends React.Component {
             }}>开启</Button>
           }
         >
-          确认框 Confirm（静态调用返回promise对象）
+          静态调用（返回promise对象）
         </Cell>
-
-        <Alert
-          shape="radius"
-          visible={alert}
-          title="警告"
-          message="这里是警告信息"
-          onCancel={() => this.toggle('alert')}
-        />
 
         <Confirm
           shape="radius"
@@ -250,7 +282,6 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-
 
 
 ## API

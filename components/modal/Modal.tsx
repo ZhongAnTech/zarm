@@ -21,6 +21,7 @@ export default class Modal extends Component<ModalProps, any> {
     animationType: 'fade',
     animationDuration: 200,
     width: '70%',
+    shape: 'radius',
   };
 
   render() {

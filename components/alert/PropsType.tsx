@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Locale } from '../locale-provider/PropsType';
 
 export default interface PropsType {
-  shape?: 'radius';
+  shape?: 'rect';
   visible?: boolean;
   animationType?:
     'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |

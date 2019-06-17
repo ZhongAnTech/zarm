@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface BaseModalProps {
-  shape?: 'radius';
+  shape?: 'rect';
   visible?: boolean;
   animationType?:
     'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
