@@ -6,13 +6,14 @@ exports[`Modal renders correctly 1`] = `
   animationType="fade"
   onMaskClick={[MockFunction]}
   prefixCls="za-modal"
+  shape="radius"
   visible={true}
   width="70%"
 >
   <Popup
     animationDuration={200}
     animationType="fade"
-    className="za-modal"
+    className="za-modal za-modal--radius"
     direction="center"
     onMaskClick={[MockFunction]}
     visible={true}
@@ -21,7 +22,7 @@ exports[`Modal renders correctly 1`] = `
     <Portal
       animationDuration={200}
       animationType="fade"
-      className="za-modal"
+      className="za-modal za-modal--radius"
       direction="center"
       handlePortalUnmount={[Function]}
       mask={true}
@@ -37,7 +38,7 @@ exports[`Modal renders correctly 1`] = `
             class="popup-container"
           >
             <div
-              class="za-popup za-modal za-popup--center za-popup--mask za-popup--hidden"
+              class="za-popup za-modal za-modal--radius za-popup--center za-popup--mask za-popup--hidden"
               role="dialog"
               style="animation-duration: 200ms; display: none;"
             >
@@ -73,7 +74,7 @@ exports[`Modal renders correctly 1`] = `
         }
       >
         <div
-          className="za-popup za-modal za-popup--center za-popup--mask za-popup--hidden"
+          className="za-popup za-modal za-modal--radius za-popup--center za-popup--mask za-popup--hidden"
           role="dialog"
           style={
             Object {
