@@ -2,18 +2,18 @@
 
 exports[`Popup renders correctly 1`] = `
 <Popup
+  afterClose={[MockFunction]}
   direction="bottom"
-  onClose={[MockFunction]}
   onMaskClick={[MockFunction]}
 >
   <Portal
+    afterClose={[MockFunction]}
     animationDuration={200}
     animationType="fade"
     direction="bottom"
     handlePortalUnmount={[Function]}
     mask={true}
     maskType="normal"
-    onClose={[MockFunction]}
     onMaskClick={[MockFunction]}
     prefixCls="za-popup"
     visible={false}
