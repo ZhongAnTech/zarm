@@ -24,8 +24,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     maskType: Mask.defaultProps.type,
   };
 
-  private timer: number;
-
   private enterTimer: number;
 
   private popup: HTMLDivElement | null;
@@ -65,7 +63,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
 
     clearTimeout(this.enterTimer);
-    clearTimeout(this.timer);
     if (this._container) {
       document.body.removeChild(this._container);
     }
