@@ -2,14 +2,11 @@
 
 @include b(popup) {
   position: relative;
-  z-index: 1;
+  z-index: var(--zindex-popup);
 
   @include e(wrapper) {
     position: fixed;
-    // transform: translate(0, 0);
-    // transition-property: transform;
-    // overflow: auto;
-    z-index: var(--zindex-popup);
+    z-index: calc(var(--zindex-popup) + 1);
     -webkit-overflow-scrolling: touch;
   }
 
@@ -32,10 +29,8 @@
     left: 50%;
     top: 50%;
 
-    @include b(popup) {
-      &__wrapper {
-        transform: translateX(-50%) translateY(-50%);
-      }
+    @include e(wrapper) {
+      transform: translateX(-50%) translateY(-50%);
     }
   }
 
