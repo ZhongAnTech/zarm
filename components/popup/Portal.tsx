@@ -24,7 +24,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     maskType: Mask.defaultProps.type,
   };
 
-  private timer: number;
+  private enterTimer: number;
 
   private popup: HTMLDivElement | null;
 
@@ -61,7 +61,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
       Events.off(this.popup, 'webkitAnimationEnd', this.animationEnd);
       Events.off(this.popup, 'animationend', this.animationEnd);
     }
-    clearTimeout(this.timer);
+
+    clearTimeout(this.enterTimer);
     if (this._container) {
       document.body.removeChild(this._container);
     }
@@ -192,7 +193,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
       Events.on(this.popup, 'transitionend', this.animationEnd);
       Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
       Events.on(this.popup, 'animationend', this.animationEnd);
-      setTimeout(() => { this.enter(); }, 0);
+      this.enterTimer = setTimeout(() => { this.enter(); }, 0);
     });
   }
 
