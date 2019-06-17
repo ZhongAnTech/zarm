@@ -71,7 +71,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
     translateValue.removeAllListeners();
   }
 
-  enter = ({ stayTime, onMaskClick, direction, animationDuration }) => {
+  enter = ({ direction, animationDuration }) => {
     let transfromStyle = {};
     let newValue;
     if (direction === 'bottom') {

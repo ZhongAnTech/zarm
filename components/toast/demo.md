@@ -39,7 +39,7 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('指定5秒后自动关闭', 5000, false, () => {
+                Toast.show('指定5秒后自动关闭', 5000, true, () => {
                   console.log('Toast已关闭');
                 });
               }}
@@ -48,7 +48,24 @@ class Demo extends React.Component {
             </Button>
           }
         >
-          指定停留时间（无遮罩层）
+          指定停留时间
+        </Cell>
+
+        <Cell
+          description={
+            <Button
+              size="xs"
+              onClick={() => {
+                Toast.show('可同时进行其他交互', 5000, false, () => {
+                  console.log('Toast已关闭');
+                });
+              }}
+            >
+              开启
+            </Button>
+          }
+        >
+          无遮罩层
         </Cell>
 
         <Cell
@@ -90,7 +107,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 加载中
+## 加载中 Loading
 ```jsx
 import { Loading, Cell, Button } from 'zarm';
 
@@ -126,22 +143,6 @@ class Demo extends React.Component {
         >
           普通
         </Cell>
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Loading.show(null, 5000, false, () => {
-                  console.log('loading已关闭')
-                });
-              }}
-            >
-              开启
-            </Button>
-          }
-        >
-          Loading（无遮罩层）
-        </Cell>
 
         <Cell
           description={
@@ -158,12 +159,12 @@ class Demo extends React.Component {
             </Button>
           }
         >
-          Loading（自定义）
+          自定义内容
         </Cell>
 
         <Loading
           visible={this.state.visible}
-          onClose={() => { this.setState({ visible: false }); }}
+          afterClose={() => { this.setState({ visible: false }); }}
           stayTime={3000} />
       </div>
     )
