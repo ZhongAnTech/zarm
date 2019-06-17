@@ -32,12 +32,12 @@ exports[`Confirm renders correctly 1`] = `
         <div
           class="za-confirm__button"
         >
-          Cancel
+          取消
         </div>
         <div
           class="za-confirm__button za-confirm__button--ok"
         >
-          OK
+          确定
         </div>
       </div>
     </div>

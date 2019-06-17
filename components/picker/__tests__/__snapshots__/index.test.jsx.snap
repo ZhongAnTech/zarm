@@ -51,12 +51,12 @@ exports[`Picker Picker render visible 1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "okText": "OK",
-          "title": "please select",
+          "cancelText": "取消",
+          "okText": "确定",
+          "title": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       prefixCls="za-picker"
       valueMember="value"
       visible={true}
@@ -100,17 +100,17 @@ exports[`Picker Picker render visible 1`] = `
                         <div
                           class="za-picker__cancel"
                         >
-                          Cancel
+                          取消
                         </div>
                         <div
                           class="za-picker__title"
                         >
-                          please select
+                          请选择
                         </div>
                         <div
                           class="za-picker__submit"
                         >
-                          OK
+                          确定
                         </div>
                       </div>
                       <div
@@ -179,18 +179,18 @@ exports[`Picker Picker render visible 1`] = `
                       className="za-picker__cancel"
                       onClick={[Function]}
                     >
-                      Cancel
+                      取消
                     </div>
                     <div
                       className="za-picker__title"
                     >
-                      please select
+                      请选择
                     </div>
                     <div
                       className="za-picker__submit"
                       onClick={[Function]}
                     >
-                      OK
+                      确定
                     </div>
                   </div>
                   <PickerView
@@ -209,7 +209,7 @@ exports[`Picker Picker render visible 1`] = `
                     }
                     disabled={false}
                     itemRender={[Function]}
-                    localeCode="en"
+                    localeCode="zh-cn"
                     onChange={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker-view"
@@ -414,12 +414,12 @@ exports[`Picker render custom label 1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "okText": "OK",
-          "title": "please select",
+          "cancelText": "取消",
+          "okText": "确定",
+          "title": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       prefixCls="za-picker"
       valueMember="code"
     >

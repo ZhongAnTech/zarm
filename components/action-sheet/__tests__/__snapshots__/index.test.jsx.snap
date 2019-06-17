@@ -66,10 +66,10 @@ exports[`ActionSheet renders correctly 1`] = `
       }
       locale={
         Object {
-          "cancelText": "Cancel",
+          "cancelText": "取消",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onCancel={[MockFunction]}
       onMaskClick={[MockFunction]}
       prefixCls="za-action-sheet"
@@ -134,7 +134,7 @@ exports[`ActionSheet renders correctly 1`] = `
                         <div
                           class="za-action-sheet__item"
                         >
-                          Cancel
+                          取消
                         </div>
                       </div>
                     </div>
@@ -192,7 +192,7 @@ exports[`ActionSheet renders correctly 1`] = `
                       className="za-action-sheet__item"
                       onClick={[MockFunction]}
                     >
-                      Cancel
+                      取消
                     </div>
                   </div>
                 </div>
