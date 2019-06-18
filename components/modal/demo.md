@@ -295,3 +295,51 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | '70%' | 宽度 |
 | afterClose | () => void | - | 模态框关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+
+
+## 静态方法
+
+```js
+// 显示警告框
+Alert.show({
+  title,
+  message,
+  cancelText,
+  onCancel: () => { 
+    Alert.hide();
+  },
+});
+
+// 显示确认框
+Confirm.show({
+  title,
+  message,
+  okText,
+  cancelText,
+}).then((res) => {
+  console.log(res); // true or false，需要注意promise状态不可逆
+  Confirm.hide();
+});
+
+```
+
+  
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| title | ReactNode | - | 弹出框的标题 |
+| message | ReactNode | - | 弹出框的内容 |
+| cancelText | ReactNode | 关闭(Alert)/取消(Confirm) | 取消按钮的内容 |
+| okText | ReactNode | 确认 | 确认按钮的内容 |
+| onOk | () => void | - | 点击“确认”后的回调函数(Confirm) |
+| onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
+| animationType | string | 'zoom' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
+| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
+
+
+```js
+// 隐藏警告框
+Alert.hide();
+
+// 隐藏确认框
+Confirm.hide();
+```

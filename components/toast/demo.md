@@ -109,7 +109,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 加载中 Loading
 ```jsx
-import { Loading, Cell, Button } from 'zarm';
+import { Loading, Cell, Button, ActivityIndicator } from 'zarm';
 
 class Demo extends React.Component {
   constructor() {
@@ -130,11 +130,6 @@ class Demo extends React.Component {
                 this.setState({
                   visible: true,
                 })
-                // setTimeout(() => {
-                //   this.setState({
-                //     visible: false,
-                //   });
-                // }, 1000);
               }}
             >
               开启
@@ -149,7 +144,7 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Loading.show('wait');
+                Loading.show(<ActivityIndicator size="lg"/>);
                 setTimeout(()=>{
                   Loading.hide();
                 }, 3000);
@@ -184,3 +179,25 @@ ReactDOM.render(<Demo />, mountNode);
 | stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
 | onClose | () => void | - | 关闭时触发的回调函数 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+
+## 静态方法
+
+```js
+// 显示轻提示
+Toast.show(children, stayTime, mask, afterClose);
+Loading.show(children, stayTime, mask, afterClose);
+```
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| children | ReactNode | - | 显示的内容 |
+| stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
+| mask | boolean | true | 是否展示遮罩层 |
+| afterClose | () => void | - | 轻提示隐藏后的回调函数 |
+
+
+```js
+// 隐藏轻提示
+Toast.hide();
+Loading.hide();
+```

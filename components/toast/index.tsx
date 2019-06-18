@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
@@ -20,7 +20,7 @@ export default class Toast extends Component<ToastProps, any> {
   private static zarmToast: null | HTMLDivElement;
 
   static show = (
-    children: any,
+    children: ReactNode,
     stayTime?: number,
     mask?: boolean,
     afterClose?: () => void,
