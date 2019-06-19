@@ -12,6 +12,8 @@ export interface TabBarProps {
 }
 
 class TabBar extends PureComponent<TabBarProps, any> {
+  static Item: any;
+
   static defaultProps: TabBarProps = {
     prefixCls: 'za-tab-bar',
     visble: true,
