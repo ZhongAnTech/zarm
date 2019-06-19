@@ -23,13 +23,13 @@
 
   @include m(active) {
     @include e(title) {
-      color: var(--tabbar-item-active-color)
+      color: var(--tabbar-item-active-color);
     }
   }
 
   @include e(item) {
-    flex: 1;   
-    
+    flex: 1;
+
     @include e(title) {
       font-size: var(--tabbar-item-font-size);
       line-height: 1;
@@ -42,5 +42,5 @@
       width: 24px;
       height: 24px;
     }
-  } 
+  }
 }
