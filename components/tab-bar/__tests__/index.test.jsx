@@ -7,7 +7,7 @@ const icon = (
   <div style={{
     width: '24px',
     height: '24px',
-    background: 'url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat'
+    background: 'url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat',
   }}
   />
 );
@@ -16,10 +16,10 @@ const activeIcon = (
   <div style={{
     width: '24px',
     height: '24px',
-    background: 'url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat'
+    background: 'url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat',
   }}
   />
-)
+);
 
 describe('ActivityIndicator', () => {
   const onChange = jest.fn();
