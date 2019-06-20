@@ -10,9 +10,9 @@ type nameType = keyof Omit<GetContextInnerType<typeof LocaleContext>, 'locale'>;
 
 type ComponentType = new (...args: any[]) => any;
 
-function LocaleReceiverWrapper(name?: nameType) {
+const LocaleReceiverWrapper = (name?: nameType) => {
   return function InnerWrapper<T extends ComponentType>(WrappedComponent: T) {
-    function LocaleReceiver(props: any) {
+    const LocaleReceiver = (props: any) => {
       return (
         <LocaleContext.Consumer>
           {
@@ -34,7 +34,7 @@ function LocaleReceiverWrapper(name?: nameType) {
           }
         </LocaleContext.Consumer>
       );
-    }
+    };
     const forwardRef = (props: InstanceType<T>['props'], ref: React.Ref<InstanceType<T>>) => {
       return <LocaleReceiver {...props} forwardedRef={ref} />;
     };
@@ -42,6 +42,6 @@ function LocaleReceiverWrapper(name?: nameType) {
     hoistNonReactStatic(LocaleReceiverWithRef, WrappedComponent);
     return LocaleReceiverWithRef as (T & typeof LocaleReceiverWithRef);
   };
-}
+};
 
 export default LocaleReceiverWrapper;
