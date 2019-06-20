@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { BaseDatePickerProps } from './PropsType';
+import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
 import DatePickerView from '../date-picker-view';
 

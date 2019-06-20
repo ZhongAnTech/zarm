@@ -18,9 +18,3 @@ export default interface PropsType {
   afterClose?: () => void;
   locale?: Locale['Alert'];
 }
-
-declare global {
-  interface Window {
-    zarmAlert?: any;
-  }
-}

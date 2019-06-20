@@ -1,4 +1,4 @@
-export interface BasePickerViewProps {
+export default interface BasePickerViewProps {
   value?: string | string[] | number[];
   defaultValue?: string | string[] | number[] | object;
   valueMember?: string;

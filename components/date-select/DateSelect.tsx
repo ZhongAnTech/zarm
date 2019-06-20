@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseDateSelectProps } from './PropsType';
+import BaseDateSelectProps from './PropsType';
 import formatFn from '../date-picker-view/utils';
 import DatePicker from '../date-picker';
 

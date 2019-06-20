@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BasePickerViewProps } from './PropsType';
+import BasePickerViewProps from './PropsType';
 import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';

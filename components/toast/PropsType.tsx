@@ -5,9 +5,3 @@ export default interface PropsType {
   mask?: boolean;
   onMaskClick?: () => void;
 }
-
-declare global {
-  interface Window {
-    zarmToast?: any;
-  }
-}
