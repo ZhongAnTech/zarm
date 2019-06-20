@@ -5,7 +5,7 @@ export interface TabBarProps {
   prefixCls?: string;
   className?: string;
   onChange?: Function;
-  visble?: boolean;
+  visible?: boolean;
   defaultActiveKey?: string | number;
   activeKey?: string | number;
   style?: React.CSSProperties;
@@ -16,7 +16,7 @@ class TabBar extends PureComponent<TabBarProps, any> {
 
   static defaultProps: TabBarProps = {
     prefixCls: 'za-tab-bar',
-    visble: true,
+    visible: true,
   };
 
   onChildChange = (value) => {
@@ -38,10 +38,10 @@ class TabBar extends PureComponent<TabBarProps, any> {
   };
 
   render() {
-    const { visble, prefixCls, children, style } = this.props;
+    const { visible, prefixCls, children, style } = this.props;
     const cls = classnames({
       [`${prefixCls}`]: true,
-      [`${prefixCls}--hidden`]: !visble,
+      [`${prefixCls}--hidden`]: !visible,
     });
     const items = React.Children.map(children, (element: JSX.Element, index) => {
       return cloneElement(element, {
