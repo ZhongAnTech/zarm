@@ -11,7 +11,7 @@ export interface BaseDatePickerViewProps {
   minuteStep?: number;
   min?: object | string;
   max?: object | string;
-  locale?: Locale;
+  locale?: Locale['DatePickerView'] & Locale['DatePicker'] & Locale['DateSelect'];
   valueMember?: string;
   onTransition?: (value: boolean) => void;
 }
