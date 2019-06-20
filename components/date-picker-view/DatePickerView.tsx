@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BaseDatePickerViewProps } from './PropsType';
+import BaseDatePickerViewProps from './PropsType';
 import PickerView from '../picker-view';
 
 const DATETIME = 'datetime';

@@ -111,9 +111,9 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
         <Modal.Header title={title} />
         <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
-          <div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale.cancelText}</div>
+          <div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>
           <div className={`${prefixCls}__button ${prefixCls}__button--ok`} onClick={onOk}>
-            {okText || locale.okText}
+            {okText || locale!.okText}
           </div>
         </Modal.Footer>
       </Modal>

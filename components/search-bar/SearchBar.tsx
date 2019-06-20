@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseSearchBarProps } from './PropsType';
+import BaseSearchBarProps from './PropsType';
 import Icon from '../icon';
 import InputBase from '../input/InputBase';
 

@@ -1,6 +1,6 @@
 import { Locale } from '../locale-provider/PropsType';
 
-export interface BaseSearchBarProps {
+export default interface BaseSearchBarProps {
   disabled?: boolean;
   defaultValue?: string;
   value?: string;
@@ -16,5 +16,5 @@ export interface BaseSearchBarProps {
   onBlur?: () => void;
   onClear?: (value?: string) => void;
   onCancel?: () => void;
-  locale: Locale;
+  locale: Locale['SearchBar'];
 }

@@ -52,7 +52,7 @@ exports[`SearchBar renders correctly 1`] = `
 `;
 
 exports[`SearchBar renders defaultValue correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   cancelText="取消取消"
   defaultValue="搜索关键字"
   placeholder="搜索"
@@ -176,11 +176,11 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onCancel called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onCancel={
     [MockFunction] {
       "calls": Array [
@@ -337,11 +337,11 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onChange called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onChange={
     [MockFunction] {
       "calls": Array [
@@ -504,11 +504,11 @@ exports[`SearchBar renders onChange called correctly 1`] = `
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onClear called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onClear={
     [MockFunction] {
       "calls": Array [
@@ -666,11 +666,11 @@ exports[`SearchBar renders onClear called correctly 1`] = `
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onFocus called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onFocus={
     [MockFunction] {
       "calls": Array [
@@ -827,11 +827,11 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onSubmit called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onSubmit={
     [MockFunction] {
       "calls": Array [
@@ -994,5 +994,5 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

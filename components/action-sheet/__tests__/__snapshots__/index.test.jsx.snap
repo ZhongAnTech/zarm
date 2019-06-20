@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionSheet renders correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   actions={
     Array [
       Object {
@@ -216,5 +216,5 @@ exports[`ActionSheet renders correctly 1`] = `
       </Popup>
     </ActionSheet>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

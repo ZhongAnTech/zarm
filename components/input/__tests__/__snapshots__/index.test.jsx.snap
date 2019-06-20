@@ -514,7 +514,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                     <div
                       className="za-keyboard-picker"
                     >
-                      <ForwardRef(forwardRefFactory)
+                      <ForwardRef(forwardRef)
                         onKeyClick={[Function]}
                         type="number"
                         visible={true}
@@ -663,7 +663,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                             </div>
                           </Keyboard>
                         </LocaleReceiver>
-                      </ForwardRef(forwardRefFactory)>
+                      </ForwardRef(forwardRef)>
                     </div>
                   </div>
                 </div>

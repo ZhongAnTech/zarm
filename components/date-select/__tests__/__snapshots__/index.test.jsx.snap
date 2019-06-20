@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateSelect DateSelect date 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   mode="date"
   placeholder="请选择日期"
   title="选择日期"
@@ -44,7 +44,7 @@ exports[`DateSelect DateSelect date 1`] = `
         >
           2017-09-06
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -106,15 +106,15 @@ exports[`DateSelect DateSelect date 1`] = `
               </Popup>
             </DatePicker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DateSelect DateSelect datetime 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   defaultValue="2017-11-03 15:00"
   max="2017-11-02 14:00"
   min="2017-11-02 11:00"
@@ -163,7 +163,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
         >
           2017-11-03 15:00
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
           localeCode="zh-cn"
           max="2017-11-02 14:00"
@@ -233,15 +233,15 @@ exports[`DateSelect DateSelect datetime 1`] = `
               </Popup>
             </DatePicker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DateSelect DateSelect disabled 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -315,7 +315,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
         >
           2019-04-23
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           dataSource={
             Array [
               Object {
@@ -971,7 +971,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               确定
                             </div>
                           </div>
-                          <ForwardRef(forwardRefFactory)
+                          <ForwardRef(forwardRef)
                             dataSource={
                               Array [
                                 Object {
@@ -2217,7 +2217,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 </PickerView>
                               </DatePickerView>
                             </LocaleReceiver>
-                          </ForwardRef(forwardRefFactory)>
+                          </ForwardRef(forwardRef)>
                         </div>
                       </div>
                       <Mask
@@ -2239,15 +2239,15 @@ exports[`DateSelect DateSelect disabled 1`] = `
               </Popup>
             </DatePicker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DateSelect DateSelect time 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   defaultValue="2017-11-03 15:00"
   minuteStep={15}
   mode="time"
@@ -2292,7 +2292,7 @@ exports[`DateSelect DateSelect time 1`] = `
         >
           15:00
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
           localeCode="zh-cn"
           minuteStep={15}
@@ -2356,15 +2356,15 @@ exports[`DateSelect DateSelect time 1`] = `
               </Popup>
             </DatePicker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DateSelect DateSelect trigger visible 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   defaultValue="2017-11-03"
   mode="date"
   visible={true}
@@ -2404,7 +2404,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
         >
           2017-11-03
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           defaultValue="2017-11-03"
           localeCode="zh-cn"
           minuteStep={1}
@@ -3023,7 +3023,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                               确定
                             </div>
                           </div>
-                          <ForwardRef(forwardRefFactory)
+                          <ForwardRef(forwardRef)
                             defaultValue="2017-11-03"
                             localeCode="zh-cn"
                             minuteStep={1}
@@ -4229,7 +4229,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                                 </PickerView>
                               </DatePickerView>
                             </LocaleReceiver>
-                          </ForwardRef(forwardRefFactory)>
+                          </ForwardRef(forwardRef)>
                         </div>
                       </div>
                       <Mask
@@ -4251,15 +4251,15 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               </Popup>
             </DatePicker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   mode="date"
   placeholder="请选择日期"
   title="选择日期"
@@ -4305,7 +4305,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
         >
           请选择日期
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -4926,7 +4926,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                               确定
                             </div>
                           </div>
-                          <ForwardRef(forwardRefFactory)
+                          <ForwardRef(forwardRef)
                             defaultValue=""
                             localeCode="zh-cn"
                             minuteStep={1}
@@ -6136,7 +6136,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                                 </PickerView>
                               </DatePickerView>
                             </LocaleReceiver>
-                          </ForwardRef(forwardRefFactory)>
+                          </ForwardRef(forwardRef)>
                         </div>
                       </div>
                       <Mask
@@ -6158,15 +6158,15 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               </Popup>
             </DatePicker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DateSelect DateSelect year 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   locale={
     Object {
       "day": "",
@@ -6227,7 +6227,7 @@ exports[`DateSelect DateSelect year 1`] = `
         >
           2016年
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           localeCode="zh-cn"
           minuteStep={1}
           mode="year"
@@ -6289,9 +6289,9 @@ exports[`DateSelect DateSelect year 1`] = `
               </Popup>
             </DatePicker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

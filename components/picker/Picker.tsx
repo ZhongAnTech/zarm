@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Popup from '../popup';
 import PickerView from '../picker-view';
-import { BasePickerProps } from './PropsType';
+import BasePickerProps from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
 
 export interface PickerProps extends BasePickerProps {
