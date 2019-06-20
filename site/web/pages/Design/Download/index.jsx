@@ -5,15 +5,21 @@ import './style.scss';
 const RESOURCES = [
   {
     icon: require('./images/icon-zarm.png'),
-    title: 'Zarm Design',
+    title: 'Zarm',
     description: '移动端组件 Sketch 模板',
     url: 'https://static-health-cdn.zhongan.com/zarm/design/Zarm.2.0.0-alpha.37.sketch',
   },
   {
     icon: require('./images/icon-zarm-web.png'),
-    title: 'Zarm-Web Design',
+    title: 'Zarm-Web',
     description: '桌面端组件 Sketch 模板',
     url: 'https://static-health-cdn.zhongan.com/zarm/design/Zarm-Web.0.0.1-alpha.1.zip',
+  },
+  {
+    icon: require('./images/icon-zarm-frame.png'),
+    title: 'Zarm-Web-Frame',
+    description: '中后台框架 Sketch 模板',
+    url: 'https://static-health-cdn.zhongan.com/zarm/design/Zarm-Web-Frame.0.0.1.sketch',
   },
 ];
 

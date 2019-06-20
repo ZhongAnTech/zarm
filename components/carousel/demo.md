@@ -200,6 +200,7 @@ ReactDOM.render(<Demo />, mountNode);
 | height | number \| string | 160 | 设置轮播区域高度 |
 | activeIndex | number | 0 | 当前页面的索引 |
 | loop | boolean | false | 是否循环 |
+| swipeable | boolean | true | 是否支持拖拽滑动 |
 | autoPlay | boolean | false | 是否自动轮播 |
 | autoPlayIntervalTime | number | 3000 | 自动轮播时间间隔，单位：毫秒 |
 | moveDistanceRatio | number | 0.5 | 移动距离比例临界点 |

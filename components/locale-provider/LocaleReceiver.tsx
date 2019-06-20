@@ -1,7 +1,7 @@
 import React, { forwardRef, RefForwardingComponent } from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 import { LocaleContext } from './LocaleProvider';
-import defaultLocaleData from './locale/en_US';
+import defaultLocaleData from './locale/zh_CN';
 
 type nameType = keyof (typeof defaultLocaleData);
 

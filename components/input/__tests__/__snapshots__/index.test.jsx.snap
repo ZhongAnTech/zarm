@@ -486,7 +486,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                               <div
                                 class="za-keyboard__item za-keyboard__item--ok"
                               >
-                                OK
+                                确定
                               </div>
                             </div>
                           </div>
@@ -528,10 +528,10 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                           <Keyboard
                             locale={
                               Object {
-                                "okText": "OK",
+                                "okText": "确定",
                               }
                             }
-                            localeCode="en"
+                            localeCode="zh-cn"
                             onKeyClick={[Function]}
                             prefixCls="za-keyboard"
                             type="number"
@@ -657,7 +657,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   className="za-keyboard__item za-keyboard__item--ok"
                                   onClick={[Function]}
                                 >
-                                  OK
+                                  确定
                                 </div>
                               </div>
                             </div>

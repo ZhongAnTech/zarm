@@ -108,10 +108,10 @@ exports[`Select Cascader Select 1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "placeholder": "please select",
+          "placeholder": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -123,7 +123,7 @@ exports[`Select Cascader Select 1`] = `
         <div
           className="za-select__input"
         >
-          please select
+          请选择
         </div>
         <ForwardRef(forwardRefFactory)
           cols={Infinity}
@@ -160,7 +160,7 @@ exports[`Select Cascader Select 1`] = `
             ]
           }
           itemRender={[Function]}
-          localeCode="en"
+          localeCode="zh-cn"
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -204,7 +204,7 @@ exports[`Select Cascader Select 1`] = `
             }
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="en"
+            localeCode="zh-cn"
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -249,12 +249,12 @@ exports[`Select Cascader Select 1`] = `
               itemRender={[Function]}
               locale={
                 Object {
-                  "cancelText": "Cancel",
-                  "okText": "OK",
-                  "title": "please select",
+                  "cancelText": "取消",
+                  "okText": "确定",
+                  "title": "请选择",
                 }
               }
-              localeCode="en"
+              localeCode="zh-cn"
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -411,10 +411,10 @@ exports[`Select Cascader Select init value 1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "placeholder": "please select",
+          "placeholder": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onClick={[Function]}
       prefixCls="za-select"
       value={
@@ -471,7 +471,7 @@ exports[`Select Cascader Select init value 1`] = `
           }
           displayAddon="-"
           itemRender={[Function]}
-          localeCode="en"
+          localeCode="zh-cn"
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -522,7 +522,7 @@ exports[`Select Cascader Select init value 1`] = `
             displayAddon="-"
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="en"
+            localeCode="zh-cn"
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -574,12 +574,12 @@ exports[`Select Cascader Select init value 1`] = `
               itemRender={[Function]}
               locale={
                 Object {
-                  "cancelText": "Cancel",
-                  "okText": "OK",
-                  "title": "please select",
+                  "cancelText": "取消",
+                  "okText": "确定",
+                  "title": "请选择",
                 }
               }
-              localeCode="en"
+              localeCode="zh-cn"
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -667,10 +667,10 @@ exports[`Select Select 1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "placeholder": "please select",
+          "placeholder": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -682,7 +682,7 @@ exports[`Select Select 1`] = `
         <div
           className="za-select__input"
         >
-          please select
+          请选择
         </div>
         <ForwardRef(forwardRefFactory)
           cols={Infinity}
@@ -699,7 +699,7 @@ exports[`Select Select 1`] = `
             ]
           }
           itemRender={[Function]}
-          localeCode="en"
+          localeCode="zh-cn"
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -723,7 +723,7 @@ exports[`Select Select 1`] = `
             }
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="en"
+            localeCode="zh-cn"
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -748,12 +748,12 @@ exports[`Select Select 1`] = `
               itemRender={[Function]}
               locale={
                 Object {
-                  "cancelText": "Cancel",
-                  "okText": "OK",
-                  "title": "please select",
+                  "cancelText": "取消",
+                  "okText": "确定",
+                  "title": "请选择",
                 }
               }
-              localeCode="en"
+              localeCode="zh-cn"
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -840,10 +840,10 @@ exports[`Select Select disable visible 1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "placeholder": "please select",
+          "placeholder": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -856,7 +856,7 @@ exports[`Select Select disable visible 1`] = `
         <div
           className="za-select__input"
         >
-          please select
+          请选择
         </div>
         <ForwardRef(forwardRefFactory)
           cols={Infinity}
@@ -874,7 +874,7 @@ exports[`Select Select disable visible 1`] = `
           }
           disabeld={true}
           itemRender={[Function]}
-          localeCode="en"
+          localeCode="zh-cn"
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -899,7 +899,7 @@ exports[`Select Select disable visible 1`] = `
             disabeld={true}
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="en"
+            localeCode="zh-cn"
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -925,12 +925,12 @@ exports[`Select Select disable visible 1`] = `
               itemRender={[Function]}
               locale={
                 Object {
-                  "cancelText": "Cancel",
-                  "okText": "OK",
-                  "title": "please select",
+                  "cancelText": "取消",
+                  "okText": "确定",
+                  "title": "请选择",
                 }
               }
-              localeCode="en"
+              localeCode="zh-cn"
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -977,17 +977,17 @@ exports[`Select Select disable visible 1`] = `
                                 <div
                                   class="za-picker__cancel"
                                 >
-                                  Cancel
+                                  取消
                                 </div>
                                 <div
                                   class="za-picker__title"
                                 >
-                                  please select
+                                  请选择
                                 </div>
                                 <div
                                   class="za-picker__submit"
                                 >
-                                  OK
+                                  确定
                                 </div>
                               </div>
                               <div
@@ -1057,18 +1057,18 @@ exports[`Select Select disable visible 1`] = `
                               className="za-picker__cancel"
                               onClick={[Function]}
                             >
-                              Cancel
+                              取消
                             </div>
                             <div
                               className="za-picker__title"
                             >
-                              please select
+                              请选择
                             </div>
                             <div
                               className="za-picker__submit"
                               onClick={[Function]}
                             >
-                              OK
+                              确定
                             </div>
                           </div>
                           <PickerView
@@ -1088,7 +1088,7 @@ exports[`Select Select disable visible 1`] = `
                             disabeld={true}
                             disabled={false}
                             itemRender={[Function]}
-                            localeCode="en"
+                            localeCode="zh-cn"
                             onCancel={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -1240,10 +1240,10 @@ exports[`Select Select disabled 1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "placeholder": "please select",
+          "placeholder": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -1255,7 +1255,7 @@ exports[`Select Select disabled 1`] = `
         <div
           className="za-select__input"
         >
-          please select
+          请选择
         </div>
         <ForwardRef(forwardRefFactory)
           cols={Infinity}
@@ -1273,7 +1273,7 @@ exports[`Select Select disabled 1`] = `
           }
           disabeld={true}
           itemRender={[Function]}
-          localeCode="en"
+          localeCode="zh-cn"
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -1298,7 +1298,7 @@ exports[`Select Select disabled 1`] = `
             disabeld={true}
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="en"
+            localeCode="zh-cn"
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -1324,12 +1324,12 @@ exports[`Select Select disabled 1`] = `
               itemRender={[Function]}
               locale={
                 Object {
-                  "cancelText": "Cancel",
-                  "okText": "OK",
-                  "title": "please select",
+                  "cancelText": "取消",
+                  "okText": "确定",
+                  "title": "请选择",
                 }
               }
-              localeCode="en"
+              localeCode="zh-cn"
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -1376,17 +1376,17 @@ exports[`Select Select disabled 1`] = `
                                 <div
                                   class="za-picker__cancel"
                                 >
-                                  Cancel
+                                  取消
                                 </div>
                                 <div
                                   class="za-picker__title"
                                 >
-                                  please select
+                                  请选择
                                 </div>
                                 <div
                                   class="za-picker__submit"
                                 >
-                                  OK
+                                  确定
                                 </div>
                               </div>
                               <div
@@ -1456,18 +1456,18 @@ exports[`Select Select disabled 1`] = `
                               className="za-picker__cancel"
                               onClick={[Function]}
                             >
-                              Cancel
+                              取消
                             </div>
                             <div
                               className="za-picker__title"
                             >
-                              please select
+                              请选择
                             </div>
                             <div
                               className="za-picker__submit"
                               onClick={[Function]}
                             >
-                              OK
+                              确定
                             </div>
                           </div>
                           <PickerView
@@ -1487,7 +1487,7 @@ exports[`Select Select disabled 1`] = `
                             disabeld={true}
                             disabled={false}
                             itemRender={[Function]}
-                            localeCode="en"
+                            localeCode="zh-cn"
                             onCancel={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
@@ -1639,10 +1639,10 @@ exports[`Select render defaultValue correctly  1`] = `
       itemRender={[Function]}
       locale={
         Object {
-          "placeholder": "please select",
+          "placeholder": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -1654,7 +1654,7 @@ exports[`Select render defaultValue correctly  1`] = `
         <div
           className="za-select__input"
         >
-          please select
+          请选择
         </div>
         <ForwardRef(forwardRefFactory)
           cols={Infinity}
@@ -1672,7 +1672,7 @@ exports[`Select render defaultValue correctly  1`] = `
           }
           defaultValue="2"
           itemRender={[Function]}
-          localeCode="en"
+          localeCode="zh-cn"
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -1697,7 +1697,7 @@ exports[`Select render defaultValue correctly  1`] = `
             defaultValue="2"
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="en"
+            localeCode="zh-cn"
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -1723,12 +1723,12 @@ exports[`Select render defaultValue correctly  1`] = `
               itemRender={[Function]}
               locale={
                 Object {
-                  "cancelText": "Cancel",
-                  "okText": "OK",
-                  "title": "please select",
+                  "cancelText": "取消",
+                  "okText": "确定",
+                  "title": "请选择",
                 }
               }
-              localeCode="en"
+              localeCode="zh-cn"
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
