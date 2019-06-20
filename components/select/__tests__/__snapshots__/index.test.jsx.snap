@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select Cascader Select 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -125,7 +125,7 @@ exports[`Select Cascader Select 1`] = `
         >
           请选择
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
             Array [
@@ -281,15 +281,15 @@ exports[`Select Cascader Select 1`] = `
               </Popup>
             </Picker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </Select>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Select Cascader Select init value 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -435,7 +435,7 @@ exports[`Select Cascader Select init value 1`] = `
           选项一
           选项二
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
             Array [
@@ -612,15 +612,15 @@ exports[`Select Cascader Select init value 1`] = `
               </Popup>
             </Picker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </Select>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Select Select 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -684,7 +684,7 @@ exports[`Select Select 1`] = `
         >
           请选择
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
             Array [
@@ -780,15 +780,15 @@ exports[`Select Select 1`] = `
               </Popup>
             </Picker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </Select>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Select Select disable visible 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -858,7 +858,7 @@ exports[`Select Select disable visible 1`] = `
         >
           请选择
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
             Array [
@@ -1182,15 +1182,15 @@ exports[`Select Select disable visible 1`] = `
               </Popup>
             </Picker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </Select>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Select Select disabled 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -1257,7 +1257,7 @@ exports[`Select Select disabled 1`] = `
         >
           请选择
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
             Array [
@@ -1581,15 +1581,15 @@ exports[`Select Select disabled 1`] = `
               </Popup>
             </Picker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </Select>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Select render defaultValue correctly  1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -1656,7 +1656,7 @@ exports[`Select render defaultValue correctly  1`] = `
         >
           请选择
         </div>
-        <ForwardRef(forwardRefFactory)
+        <ForwardRef(forwardRef)
           cols={Infinity}
           dataSource={
             Array [
@@ -1755,9 +1755,9 @@ exports[`Select render defaultValue correctly  1`] = `
               </Popup>
             </Picker>
           </LocaleReceiver>
-        </ForwardRef(forwardRefFactory)>
+        </ForwardRef(forwardRef)>
       </div>
     </Select>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

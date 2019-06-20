@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DatePickerView DatePickerView time 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   defaultValue="2017-9-6 12:00"
   mode="datetime"
   placeholder="请选择时间"
@@ -2418,11 +2418,11 @@ exports[`DatePickerView DatePickerView time 1`] = `
       </PickerView>
     </DatePickerView>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DatePickerView DatePickerView time 2`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   max="2019-11-23 21:00"
   min="2007-01-03 11:00"
   mode="datetime"
@@ -4595,5 +4595,5 @@ exports[`DatePickerView DatePickerView time 2`] = `
       </PickerView>
     </DatePickerView>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
