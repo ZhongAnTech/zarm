@@ -99,7 +99,7 @@ class Demo extends React.Component {
           direction="top"
           mask={false}
           // onMaskClick={() => this.close('popTop')}
-          onClose={() => { console.log('关闭'); }}
+          afterClose={() => { console.log('关闭'); }}
         >
           <div className="popup-box-top">
             更新成功
@@ -110,8 +110,8 @@ class Demo extends React.Component {
           visible={this.state.popBottom}
           direction="bottom"
           onMaskClick={() => this.close('popBottom')}
-          onOpen={() => console.log('打开')}
-          onClose={() => console.log('关闭')}
+          afterOpen={() => console.log('打开')}
+          afterClose={() => console.log('关闭')}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => { this.toggle('single'); }}>打开Picker</Button>
@@ -136,7 +136,7 @@ class Demo extends React.Component {
           visible={this.state.popLeft}
           onMaskClick={() => this.close('popLeft')}
           direction="left"
-          onClose={() => console.log('关闭')}
+          afterClose={() => console.log('关闭')}
         >
           <div className="popup-box-left">
             <Button size="xs" onClick={() => this.close('popLeft')}>关闭弹层</Button>
@@ -147,7 +147,7 @@ class Demo extends React.Component {
           visible={this.state.popRight}
           onMaskClick={() => this.close('popRight')}
           direction="right"
-          onClose={() => console.log('关闭')}
+          afterClose={() => console.log('关闭')}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => this.close('popRight')}>关闭弹层</Button>
@@ -159,7 +159,7 @@ class Demo extends React.Component {
           onMaskClick={() => this.close('popCenter')}
           direction="center"
           width="70%"
-          onClose={() => console.log('关闭')}
+          afterClose={() => console.log('关闭')}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => this.close('popCenter')}>关闭弹层</Button>
