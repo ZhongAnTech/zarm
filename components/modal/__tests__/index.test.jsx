@@ -41,6 +41,6 @@ describe('Modal', () => {
 
   it('click dialog', () => {
     const wrapper = mount(<Modal visible>foo</Modal>);
-    wrapper.find('.za-modal__dialog').simulate('click');
+    wrapper.find('.za-popup__wrapper').simulate('click');
   });
 });
