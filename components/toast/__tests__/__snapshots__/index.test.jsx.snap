@@ -1,16 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toast renders correctly 1`] = `
-<div
-  class="za-toast"
->
-  <div
-    class="za-toast__container"
-  >
-    foo
-  </div>
-</div>
-`;
+exports[`Toast renders correctly 1`] = `null`;
 
 exports[`Toast static function hide 1`] = `undefined`;
 

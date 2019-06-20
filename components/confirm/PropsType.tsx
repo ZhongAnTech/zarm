@@ -1,7 +1,7 @@
 import { Locale } from '../locale-provider/PropsType';
 
 export default interface PropsType {
-  shape?: 'radius';
+  shape?: 'rect';
   visible?: boolean;
   animationType?:
     'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
@@ -16,7 +16,8 @@ export default interface PropsType {
   onOk?: () => void;
   cancelText?: string;
   onCancel?: () => void;
-  locale?: Locale;
+  afterClose?: () => void;
+  locale: Locale;
 }
 
 declare global {

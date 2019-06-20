@@ -1,12 +1,15 @@
 export default interface PropsType {
   visible?: boolean;
-  direction?: 'top' | 'right' | 'bottom' | 'left';
-  autoClose?: boolean;
-  stayTime?: number;
+  direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
+  animationType?:
+    'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
+    'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' |
+    'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
-  onOpen?: () => void;
-  onClose?: () => void;
+  afterOpen?: () => void;
+  afterClose?: () => void;
   mask?: boolean;
+  width?: string | number;
   maskType?: 'transparent' | 'normal';
   onMaskClick?: () => void;
 }

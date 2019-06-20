@@ -6,12 +6,12 @@ import Popup from '../index';
 describe('Popup', () => {
   it('renders correctly', () => {
     const onMaskClick = jest.fn();
-    const onClose = jest.fn();
+    const afterClose = jest.fn();
     const wrapper = mount(
       <Popup
         direction="bottom"
         onMaskClick={onMaskClick}
-        onClose={onClose}
+        afterClose={afterClose}
       >
         foo
       </Popup>,
@@ -36,21 +36,21 @@ describe('Popup', () => {
   //   wrapper.setProps({ visible: true });
   // });
 
-  it('autoClose', () => {
-    jest.useFakeTimers();
-    const onMaskClick = jest.fn();
-    const onClose = jest.fn();
-    const wrapper = mount(
-      <Popup
-        visible
-        autoClose
-        onMaskClick={onMaskClick}
-        onClose={onClose}
-      >
-        foo
-      </Popup>,
-    );
-    wrapper.setProps({ visible: true });
-    jest.runAllTimers();
-  });
+  // it('autoClose', () => {
+  //   jest.useFakeTimers();
+  //   const onMaskClick = jest.fn();
+  //   const onClose = jest.fn();
+  //   const wrapper = mount(
+  //     <Popup
+  //       visible
+  //       autoClose
+  //       onMaskClick={onMaskClick}
+  //       onClose={onClose}
+  //     >
+  //       foo
+  //     </Popup>,
+  //   );
+  //   wrapper.setProps({ visible: true });
+  //   jest.runAllTimers();
+  // });
 });
