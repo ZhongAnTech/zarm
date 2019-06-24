@@ -110,11 +110,14 @@ export default class Slider extends PureComponent<SliderProps, any> {
     const {
       min = 0,
       max,
+      vertical,
     } = this.props;
 
     const percent = offset / this.getMaxOffset();
 
-    const value = Math.round((min + ((max - min) * percent)));
+    const value = vertical
+      ? (1 - percent) * (max - min) + min
+      : Math.round((min + ((max - min) * percent)));
 
     return ensureValuePrecision(value, this.props);
   };
@@ -135,8 +138,18 @@ export default class Slider extends PureComponent<SliderProps, any> {
    * @return {number}       偏移量
    */
   getOffsetByValue = (value) => {
-    const { min, max } = this.props;
-    return this.getMaxOffset() * ((value - min) / (max - min));
+    const {
+      vertical,
+      min,
+      max,
+    } = this.props;
+
+    const maxOffset = this.getMaxOffset();
+    const range = max - min;
+
+    return vertical
+      ? maxOffset * ((max - value) / (range))
+      : maxOffset * ((value - min) / (range));
   };
 
   /**
@@ -174,7 +187,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
     event.preventDefault();
 
     let offset = vertical
-      ? (this.offsetStart || 0) + (offsetY || 0)
+      ? (this.offsetStart || this.getMaxOffset()) + (offsetY || 0)
       : (this.offsetStart || 0) + (offsetX || 0);
 
     if (offset < 0) {
@@ -276,7 +289,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const markElement = markKeys.map((item) => {
       const markStyle = {
-        [vertical ? 'top' : 'left']: `${item}%`,
+        [vertical ? 'bottom' : 'left']: `${item}%`,
       };
 
       return (
@@ -302,7 +315,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
       });
 
       const markStyle = {
-        [vertical ? 'top' : 'left']: `${item}%`,
+        [vertical ? 'bottom' : 'left']: `${item}%`,
       };
 
       return (
@@ -339,13 +352,12 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--mark`]: showMark && !vertical,
       [`${prefixCls}--vertical`]: vertical,
-      [`${prefixCls}--vertical--mark`]: vertical && showMark,
+      [`${prefixCls}--marked`]: showMark,
     });
 
     const handleStyle = {
-      [vertical ? 'top' : 'left']: offset || 0,
+      [vertical ? 'bottom' : 'left']: offset || 0,
     };
 
     const lineBg = {

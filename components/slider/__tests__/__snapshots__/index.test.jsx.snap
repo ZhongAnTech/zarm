@@ -203,7 +203,7 @@ exports[`Slider marks 1`] = `
 
 exports[`Slider marks error 1`] = `
 <div
-  className="za-slider za-slider--mark"
+  className="za-slider za-slider--marked"
 >
   <div
     className="za-slider__content"
@@ -423,7 +423,7 @@ exports[`Slider shallows correctly 1`] = `
 
 exports[`Slider showMark 1`] = `
 <div
-  className="za-slider za-slider--mark"
+  className="za-slider za-slider--marked"
 >
   <div
     className="za-slider__content"
@@ -703,7 +703,7 @@ exports[`Slider vertical 1`] = `
         role="slider"
         style={
           Object {
-            "top": "0%",
+            "bottom": "0%",
           }
         }
       >
