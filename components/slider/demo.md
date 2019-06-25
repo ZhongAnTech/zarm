@@ -34,12 +34,106 @@ class Demo extends React.Component {
           <Slider min={-100} max={100} defaultValue={0} />
         </Cell>
 
-        <Cell title="设置步长">
-          <Slider step={10} />
-        </Cell>
-
         <Cell title="禁用状态">
-          <Slider defaultValue={20} disabled />
+          <Slider disabled defaultValue={20} />
+        </Cell>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 刻度与标记
+```jsx
+import { Cell, Slider } from 'zarm';
+
+const MARKS = {
+  0: '0°C',
+  26: '26°C',
+  65: '65°C',
+  100: '100°C',
+}
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Cell title="显示刻度">
+          <Slider 
+            marks={MARKS} 
+          />
+        </Cell>
+        
+        <Cell title="显示标记" style={{ paddingBottom: 15 }}>
+          <Slider
+            showMark 
+            marks={MARKS} 
+          />
+        </Cell>
+        
+        <Cell title="步长为10" style={{ paddingBottom: 15 }}>
+          <Slider
+            showMark 
+            step={10}
+            marks={MARKS} />
+        </Cell>
+        
+        <Cell title="步长为null" style={{ paddingBottom: 15 }}>
+          <Slider
+            showMark
+            step={null}
+            marks={MARKS} 
+          />
+        </Cell>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
+## 方向
+```jsx
+import { Cell, Slider } from 'zarm';
+
+const MARKS = {
+  0: '0°C',
+  26: '26°C',
+  65: '65°C',
+  100: '100°C',
+}
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Cell title="垂直方向" style={{ padding: '15px 0' }}>
+          <div style={{ height: 200 }}>
+            <Slider
+              vertical
+              showMark
+              marks={MARKS}
+            />
+          </div>
         </Cell>
       </div>
     )
@@ -57,8 +151,11 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | value | number | - | 值 |
 | defaultValue | number | - | 初始值 |
-| min | number | - | 最小值 |
-| max | number | - | 最大值 |
-| step | number | 1 | 步长 |
+| min | number | 0 | 最小值 |
+| max | number | 100 | 最大值 |
 | disabled | boolean | false | 是否禁用 |
+| step | number | 1 | 步长 |
+| vertical | boolean | false | 是否为纵向 |
+| showMark | boolean | false | 是否显示标记刻度 |
+| marks | { [key: number]: React.ReactNode } | {} | 自定义标记刻度的渲染展示 |
 | onChange | (value?: number) => void | - | 值变化时触发的回调函数 |

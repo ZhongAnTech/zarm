@@ -4,6 +4,13 @@ import toJson from 'enzyme-to-json';
 import Slider from '../index';
 
 describe('Slider', () => {
+  const marks = {
+    0: '0',
+    26: '26',
+    60: '60',
+    100: '100',
+  };
+
   it('shallows correctly', () => {
     const wrapper = shallow(<Slider />);
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -36,6 +43,26 @@ describe('Slider', () => {
 
   it('value', () => {
     const wrapper = shallow(<Slider value={10} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('showMark', () => {
+    const wrapper = shallow(<Slider showMark marks={marks} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('marks', () => {
+    const wrapper = shallow(<Slider marks={marks} />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('marks error', () => {
+    const wrapper = shallow(<Slider showMark />);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('vertical', () => {
+    const wrapper = shallow(<Slider vertical />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -73,6 +100,42 @@ describe('Slider', () => {
     });
     wrapper.simulate('touchEnd', {
       touches: [200, 0],
+    });
+  });
+
+  it('mouse event', () => {
+    const onChange = jest.fn();
+
+    const wrapper = mount(<Slider onChange={onChange} />).find('.za-slider__handle');
+    wrapper.simulate('mouseDown', {
+      pageX: 0,
+      pageY: 0,
+    });
+    wrapper.simulate('mouseMove', {
+      pageX: -10,
+      pageY: 0,
+    });
+    wrapper.simulate('mouseUp', {
+      pageX: -20,
+      pageY: 0,
+    });
+  });
+
+  it('mouse event', () => {
+    const onChange = jest.fn();
+
+    const wrapper = mount(<Slider onChange={onChange} step={5.5} vertical />).find('.za-slider__handle');
+    wrapper.simulate('mouseDown', {
+      pageX: 0,
+      pageY: 0,
+    });
+    wrapper.simulate('mouseMove', {
+      pageX: -10,
+      pageY: 0,
+    });
+    wrapper.simulate('mouseUp', {
+      pageX: -20,
+      pageY: 0,
     });
   });
 });
