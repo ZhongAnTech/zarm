@@ -184,6 +184,11 @@ module.exports = {
         description: '导航栏',
         module: () => import('@/components/nav-bar/demo.md'),
       },
+      {
+        name: 'TabBar',
+        description: '标签栏',
+        module: () => import('@/components/tab-bar/demo.md'),
+      },
     ],
     other: [
       {
