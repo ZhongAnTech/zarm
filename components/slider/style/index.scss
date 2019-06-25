@@ -12,22 +12,6 @@
     flex: 1;
   }
 
-  // 标签
-  @include e(marks) {
-    position: absolute;
-    font-size: var(--slider-mark-size);
-    top: 10px;
-    left: 0;
-    right: 0;
-    color: var(--slider-line-background);
-
-    @include e(mark) {
-      position: absolute;
-      transform: translateX(-50%);
-      color: var(--theme-primary);
-    }
-  }
-
   // 线
   @include e(line) {
     position: relative;
@@ -43,18 +27,18 @@
     // 刻度
     @include e(line__dot) {
       position: absolute;
-      top: -1.5px;
-      width: 5px;
-      height: 5px;
-      margin-left: -2.5px;
+      width: var(--slider-line-dot-width);
+      height: var(--slider-line-dot-width);
+      margin-top: calc((var(--slider-line-dot-width) + var(--slider-line-height)) / -2);
+      margin-left: calc(var(--slider-line-dot-width) / -2);
       background-color: #fff;
       border: 1px solid var(--slider-line-background);
       border-radius: 50%;
       cursor: pointer;
-    }
 
-    @include e(line__dot--active) {
-      border: 1px solid var(--theme-primary);
+      @include m(active) {
+        border: 1px solid var(--theme-primary);
+      }
     }
   }
 
@@ -62,7 +46,7 @@
   @include e(handle) {
     position: absolute;
     left: 0;
-    top: calc(var(--slider-handle-size) / -2);
+    margin-top: calc((var(--slider-handle-size) + var(--slider-line-height)) / -2);
     margin-left: calc(var(--slider-handle-size) / -2);
     width: var(--slider-handle-size);
     height: var(--slider-handle-size);
@@ -80,6 +64,36 @@
     }
   }
 
+  // 标签
+  @include e(marks) {
+    position: absolute;
+    font-size: var(--slider-mark-size);
+    top: 10px;
+    left: 0;
+    right: 0;
+    color: var(--slider-line-background);
+
+    @include e(mark) {
+      position: absolute;
+      transform: translateX(-50%);
+      color: var(--theme-primary);
+    }
+  }
+
+  // 横向显示标签
+  @include m(marked) {
+    @include e(content) {
+      margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
+    }
+
+    @include e(handle) {
+      width: var(--slider-handle-size-small);
+      height: var(--slider-handle-size-small);
+      margin-top: calc((var(--slider-handle-size-small) + var(--slider-line-height)) / -2);
+      margin-left: calc(var(--slider-handle-size-small) / -2);
+    }
+  }
+
   // 禁用状态
   @include m(disabled) {
     cursor: not-allowed;
@@ -89,7 +103,7 @@
   // 垂直
   @include m(vertical) {
     flex-direction: column-reverse;
-    width: var(--slider-handle-size);
+    width: auto;
     height: 100%;
     align-items: initial;
 
@@ -100,57 +114,47 @@
     @include e(line) {
       width: var(--slider-vertical-line-width);
       height: 100%;
+
+      @include e(line__bg) {
+        position: absolute;
+        bottom: 0;
+        width: var(--slider-line-height);
+      }
     }
 
     @include e(line__dot) {
-      margin-top: -2.5px;
-      margin-left: -1.5px;
+      margin-bottom: calc(var(--slider-line-dot-width) / -2);
+      margin-left: calc((var(--slider-line-dot-width) - var(--slider-line-height)) / -2);
     }
 
     @include e(handle) {
       margin-top: calc(var(--slider-handle-size) / -2);
-      top: 0;
-    }
-  }
-
-  // 横向显示标签
-  @include m(mark) {
-    @include e(content) {
-      margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
     }
 
-    @include e(handle) {
-      top: calc(var(--slider-handle-size-small) / -2);
-      width: var(--slider-handle-size-small);
-      height: var(--slider-handle-size-small);
-      margin-left: calc(var(--slider-handle-size-small) / -2);
-    }
-  }
+    // 垂直显示标签
+    @include m(marked) {
+      @include e(content) {
+        margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
+      }
 
-  // 垂直显示标签
-  @include m(vertical--mark) {
-    width: var(--slider-handle-size-small);
+      @include e(marks) {
+        top: 0;
+        left: 15px;
+        width: 20px;
+        height: 100%;
+      }
 
-    @include e(content) {
-      margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
-    }
+      @include e(mark) {
+        transform: translateY(50%);
+      }
 
-    @include e(marks) {
-      top: 0;
-      left: 15px;
-      width: 20px;
-      height: 100%;
-    }
-
-    @include e(mark) {
-      transform: translateY(-50%);
-    }
-
-    @include e(handle) {
-      margin-left: calc(var(--slider-handle-size-small) / -2);
-      margin-top: calc(var(--slider-handle-size-small) / -2);
-      width: var(--slider-handle-size-small);
-      height: var(--slider-handle-size-small);
+      @include e(handle) {
+        margin-top: 0;
+        margin-bottom: calc(var(--slider-handle-size-small) / -2);
+        margin-left: calc((var(--slider-handle-size-small) - var(--slider-line-height)) / -2);
+        width: var(--slider-handle-size-small);
+        height: var(--slider-handle-size-small);
+      }
     }
   }
 }
