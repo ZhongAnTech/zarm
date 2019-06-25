@@ -4,7 +4,7 @@ import Badge from '../badge';
 import { BaseTabBarItemProps } from './PropsType';
 
 export interface TabBarItemProps extends BaseTabBarItemProps {
-  prefixCls?: String;
+  prefixCls?: string;
 }
 
 class TabBarItem extends PureComponent<TabBarItemProps, any> {

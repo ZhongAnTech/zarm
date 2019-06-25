@@ -36,7 +36,7 @@ class Demo extends React.Component {
           <TabBar.Item
             itemKey="home"
             title="主页"
-            icon={ <div style={{
+            icon={<div style={{
               width: '24px',
               height: '24px',
               background: 'url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat'}}></div>
@@ -50,21 +50,22 @@ class Demo extends React.Component {
           <TabBar.Item
             itemKey="found"
             title="发现"
-            icon={ <div style={{
+            icon={<div style={{
               width: '24px',
               height: '24px',
               background: 'url(//cdn-health.zhongan.com/zarm/find-active.svg) top left / 24px 24px no-repeat'}}></div>
             }
-            activeIcon={ <div style={{
+            activeIcon={<div style={{
               width: '24px',
               height: '24px',
               background: 'url(//cdn-health.zhongan.com/zarm/find.svg) top left / 24px 24px no-repeat'}}></div>
             }
+            badge={{ sup: true, shape: 'circle', text: '3' }}
           />
           <TabBar.Item
             itemKey="me"
             title="我的"
-            icon={ <div style={{
+            icon={<div style={{
               width: '24px',
               height: '24px',
               background: 'url(//cdn-health.zhongan.com/zarm/my-active.svg) top left / 24px 24px no-repeat'}}></div>
@@ -73,8 +74,8 @@ class Demo extends React.Component {
               width: '24px',
               height: '24px',
               background: 'url(//cdn-health.zhongan.com/zarm/my.svg) top left / 24px 24px no-repeat'}}></div>
-            }       
-            badge={{sup: true, shape: 'circle', text: '3'}}
+            }
+            badge={{ sup: true, shape: 'dot' }}
           />
         </TabBar>
       </div>  
@@ -84,6 +85,8 @@ class Demo extends React.Component {
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+
 
 ## API
 
@@ -101,7 +104,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| itemKey | number \| string | - | 对应`activeKey` |
+| itemKey | number \| string | - | 唯一标识，对应`activeKey` |
 | title | React.ReactNode | - | 标题文字 |
 | icon | React.ReactNode | - | 图标 |
 | activeIcon | React.ReactNode | - | 选中时图标 |

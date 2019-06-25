@@ -1,6 +1,7 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import { BaseTabBarProps } from './PropsType';
+import TabBarItem from './TabBarItem';
 
 export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
@@ -8,7 +9,7 @@ export interface TabBarProps extends BaseTabBarProps {
 }
 
 class TabBar extends PureComponent<TabBarProps, any> {
-  static Item: any;
+  static Item: typeof TabBarItem;
 
   static defaultProps: TabBarProps = {
     prefixCls: 'za-tab-bar',
@@ -22,7 +23,7 @@ class TabBar extends PureComponent<TabBarProps, any> {
     }
   };
 
-  getselected = (index, itemKey) => {
+  getSelected = (index, itemKey) => {
     const { activeKey, defaultActiveKey } = this.props;
     if (!activeKey) {
       if (!defaultActiveKey && index === 0) {
@@ -48,10 +49,10 @@ class TabBar extends PureComponent<TabBarProps, any> {
         icon: element.props.icon,
         itemKey: element.props.itemKey || index,
         style: element.props.style,
-        selected: this.getselected(index, element.props.itemKey),
+        selected: this.getSelected(index, element.props.itemKey),
       });
     });
-    return (<div className={cls} style={style}>{items}</div>);
+    return <div className={cls} style={style}>{items}</div>;
   }
 }
 
