@@ -32,7 +32,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { modal1, modal2, modal3, modal4, modal5, animationType } = this.state;
+    const { modal1, modal2, modal3, modal4, modal5, animationType, single } = this.state;
     return (
       <div>
         <Cell
@@ -48,7 +48,7 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
           }
         >
-          圆角
+          直角
         </Cell>
 
         <Cell
@@ -102,15 +102,18 @@ class Demo extends React.Component {
 
         <Modal visible={modal1}>
           <Modal.Header title="标题" onClose={() => this.close('modal1')} />
-          <Modal.Body>模态框内容</Modal.Body>
+          <Modal.Body>
+            模态框内容
+          </Modal.Body>
         </Modal>
 
         <Modal visible={modal2} onMaskClick={() => this.close('modal2')}>
           <Modal.Header title="标题" />
           <Modal.Body>点击遮罩层关闭</Modal.Body>
         </Modal>
+        
 
-        <Modal shape="radius" visible={modal3}>
+        <Modal shape="rect" visible={modal3}>
           <Modal.Header title="标题" onClose={() => this.close('modal3')} />
           <Modal.Body>模态框内容</Modal.Body>
         </Modal>
@@ -134,7 +137,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 特定场景
+## 警告框 Alert
 ```jsx
 import { Cell, Button, Alert, Confirm  } from 'zarm';
 
@@ -163,15 +166,26 @@ class Demo extends React.Component {
             <Button size="xs" theme="warning" onClick={() => this.toggle('alert')}>开启</Button>
           }
         >
-          警告框 Alert
+          普通调用
         </Cell>
 
         <Cell
           description={
-            <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
+            <Button size="xs" theme="warning" onClick={() => {
+              Alert.show({
+                title: '警告',
+                message: '通过传参或promise调用均可关闭',
+                // onCancel: () => { 
+                //   Alert.hide();
+                // },
+              }).then((res) => {
+                console.log(res);
+                Alert.hide();
+              })
+            }}>开启</Button>
           }
         >
-          确认框 Confirm
+          静态调用（返回promise对象）
         </Cell>
 
         <Alert
@@ -181,13 +195,84 @@ class Demo extends React.Component {
           message="这里是警告信息"
           onCancel={() => this.toggle('alert')}
         />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+## 确认框 Confirm
+```jsx
+import { Cell, Button, Confirm  } from 'zarm';
+
+class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: false,
+      confirm: false,
+    };
+  }
+
+  toggle(key) {
+    this.setState({
+      [`${key}`]: !this.state[key],
+    });
+  }
+
+  render() {
+    const { alert, confirm } = this.state;
+
+    return (
+      <div>
+        <Cell
+          description={
+            <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
+          }
+        >
+          普通调用
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" theme="warning" onClick={() => {
+              Confirm.show({
+                title: '确认信息',
+                message: '通过传参或promise调用均可关闭',
+                // onOk: () => { 
+                //   window.alert('click ok');
+                //   Confirm.hide();
+                // },
+                // onCancel: () => { 
+                //   Confirm.hide();
+                // },
+              }).then((res) => {
+                console.log(res);
+                if(res) {
+                  window.alert('click ok');
+                  Confirm.hide();
+                } else {
+                  Confirm.hide();
+                }
+              })
+            }}>开启</Button>
+          }
+        >
+          静态调用（返回promise对象）
+        </Cell>
 
         <Confirm
           shape="radius"
           visible={confirm}
           title="确认信息"
           message="你确定要这样做吗？"
-          onOk={() => window.alert('click ok')}
+          onOk={() => {
+            window.alert('click ok');
+            this.toggle('confirm');
+          }}
           onCancel={() => this.toggle('confirm')}
         />
       </div>
@@ -199,7 +284,6 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-
 ## API
 
 | 属性 | 类型 | 默认值 | 说明 |
@@ -209,4 +293,53 @@ ReactDOM.render(<Demo />, mountNode);
 | animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | '70%' | 宽度 |
+| afterClose | () => void | - | 模态框关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+
+
+## 静态方法
+
+```js
+// 显示警告框
+Alert.show({
+  title,
+  message,
+  cancelText,
+  onCancel: () => { 
+    Alert.hide();
+  },
+});
+
+// 显示确认框
+Confirm.show({
+  title,
+  message,
+  okText,
+  cancelText,
+}).then((res) => {
+  console.log(res); // true or false，需要注意promise状态不可逆
+  Confirm.hide();
+});
+
+```
+
+  
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| title | ReactNode | - | 弹出框的标题 |
+| message | ReactNode | - | 弹出框的内容 |
+| cancelText | ReactNode | 关闭(Alert)/取消(Confirm) | 取消按钮的内容 |
+| okText | ReactNode | 确认 | 确认按钮的内容 |
+| onOk | () => void | - | 点击“确认”后的回调函数(Confirm) |
+| onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
+| animationType | string | 'zoom' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
+| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
+
+
+```js
+// 隐藏警告框
+Alert.hide();
+
+// 隐藏确认框
+Confirm.hide();
+```

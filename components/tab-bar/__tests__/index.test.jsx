@@ -3,7 +3,7 @@ import { render, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import TabBar from '../index';
 
-const icon = (
+const activeIcon = (
   <div style={{
     width: '24px',
     height: '24px',
@@ -12,7 +12,7 @@ const icon = (
   />
 );
 
-const activeIcon = (
+const icon = (
   <div style={{
     width: '24px',
     height: '24px',

@@ -81,7 +81,7 @@ exports[`Keyboard renders correctly 1`] = `
     <div
       class="za-keyboard__item za-keyboard__item--ok"
     >
-      OK
+      确定
     </div>
   </div>
 </div>
@@ -170,7 +170,7 @@ exports[`Keyboard type is idcard 1`] = `
     <div
       class="za-keyboard__item za-keyboard__item--ok"
     >
-      OK
+      确定
     </div>
   </div>
 </div>
@@ -259,7 +259,7 @@ exports[`Keyboard type is price 1`] = `
     <div
       class="za-keyboard__item za-keyboard__item--ok"
     >
-      OK
+      确定
     </div>
   </div>
 </div>

@@ -11,7 +11,7 @@ exports[`ActivityIndicator renders correctly 1`] = `
       class="za-tab-bar__icon"
     >
       <div
-        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat"
+        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat"
       />
     </div>
     <div
@@ -34,7 +34,7 @@ exports[`ActivityIndicator with activeKey 1`] = `
       class="za-tab-bar__icon"
     >
       <div
-        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat"
+        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat"
       />
     </div>
     <div
@@ -57,7 +57,7 @@ exports[`ActivityIndicator with defaultActiveKey 1`] = `
       class="za-tab-bar__icon"
     >
       <div
-        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat"
+        style="width:24px;height:24px;background:url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat"
       />
     </div>
     <div

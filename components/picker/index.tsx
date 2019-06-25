@@ -4,4 +4,4 @@ import LocaleReceiver from '../locale-provider/LocaleReceiver';
 
 // Picker.Stack = Stack;
 
-export default LocaleReceiver(Picker, 'Picker');
+export default LocaleReceiver('Picker')(Picker);

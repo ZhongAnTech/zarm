@@ -1,14 +1,10 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
+import { BaseTabBarProps } from './PropsType';
 
-export interface TabBarProps {
+export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
   className?: string;
-  onChange?: Function;
-  visible?: boolean;
-  defaultActiveKey?: string | number;
-  activeKey?: string | number;
-  style?: React.CSSProperties;
 }
 
 class TabBar extends PureComponent<TabBarProps, any> {
@@ -39,8 +35,7 @@ class TabBar extends PureComponent<TabBarProps, any> {
 
   render() {
     const { visible, prefixCls, children, style } = this.props;
-    const cls = classnames({
-      [`${prefixCls}`]: true,
+    const cls = classnames(prefixCls, {
       [`${prefixCls}--hidden`]: !visible,
     });
     const items = React.Children.map(children, (element: JSX.Element, index) => {

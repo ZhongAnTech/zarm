@@ -11,11 +11,11 @@ class Demo extends React.Component {
     super(props);
     this.state = {
       activeKey: 'home',
-      visble: true
+      visible: true
     }
   }
   render() {
-    const { visble, activeKey } = this.state;
+    const { visible, activeKey } = this.state;
     return (
       <div>
       <Cell
@@ -23,16 +23,16 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                this.setState({visble: !visble})
+                this.setState({visible: !visible})
               }}
             >
-              { visble ? '隐藏' : '展示'}
+              { visible ? '隐藏' : '展示'}
             </Button>
           }
         >
          隐藏 | 展示
         </Cell>
-        <TabBar onChange={(value) => this.setState({activeKey: value})} activeKey={activeKey} visble={visble} >
+        <TabBar onChange={(value) => this.setState({activeKey: value})} activeKey={activeKey} visible={visible} >
           <TabBar.Item
             itemKey="home"
             title="主页"
@@ -94,7 +94,7 @@ ReactDOM.render(<Demo />, mountNode);
 | activeKey | number \| string | - | 当前选中项 |
 | defaultActiveKey | number \| string | - | 初始选中项, 默认第一个选中 |
 | onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
-| visble | boolean | `true` | 是否显示 |
+| visible | boolean | `true` | 是否显示 |
 
 
 ### TabBar.Item

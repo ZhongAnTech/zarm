@@ -1,6 +1,6 @@
 import TabBar from './TabBar';
-import Item from './Item';
+import TabBarItem from './TabBarItem';
 
-TabBar.Item = Item;
+TabBar.Item = TabBarItem;
 
 export default TabBar;

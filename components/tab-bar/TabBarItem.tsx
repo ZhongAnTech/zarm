@@ -1,24 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Badge from '../badge';
+import { BaseTabBarItemProps } from './PropsType';
 
-export interface TabBarItemProps {
+export interface TabBarItemProps extends BaseTabBarItemProps {
   prefixCls?: String;
-  itemKey?: string | number;
-  title?: React.ReactNode;
-  icon?: React.ReactNode;
-  activeIcon?: React.ReactNode;
-  badge?: {
-    shape: 'dot' | 'radius' | 'round' | 'rect' | 'circle' | 'leaf';
-    sup: boolean;
-    text: string;
-  };
-  selected?: boolean;
-  style?: React.CSSProperties;
-  onChange?: (value?: number | string) => void;
 }
 
-class Item extends PureComponent<TabBarItemProps, any> {
+class TabBarItem extends PureComponent<TabBarItemProps, any> {
   static defaultProps: TabBarItemProps = {
     prefixCls: 'za-tab-bar',
   };
@@ -32,8 +21,7 @@ class Item extends PureComponent<TabBarItemProps, any> {
 
   render() {
     const { prefixCls, title, icon, badge, style, itemKey, selected, activeIcon } = this.props;
-    const cls = classnames({
-      [`${prefixCls}__item`]: true,
+    const cls = classnames(`${prefixCls}__item`, {
       [`${prefixCls}--active`]: selected,
     });
     if (badge) {
@@ -55,4 +43,4 @@ class Item extends PureComponent<TabBarItemProps, any> {
   }
 }
 
-export default Item;
+export default TabBarItem;

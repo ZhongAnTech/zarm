@@ -52,7 +52,7 @@ exports[`SearchBar renders correctly 1`] = `
 `;
 
 exports[`SearchBar renders defaultValue correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   cancelText="取消取消"
   defaultValue="搜索关键字"
   placeholder="搜索"
@@ -72,11 +72,11 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
       disabled={false}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "placeholder": "Search",
+          "cancelText": "取消",
+          "placeholder": "搜索",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       placeholder="搜索"
       prefixCls="za-search-bar"
       shape="round"
@@ -176,11 +176,11 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onCancel called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onCancel={
     [MockFunction] {
       "calls": Array [
@@ -220,11 +220,11 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
       disabled={false}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "placeholder": "Search",
+          "cancelText": "取消",
+          "placeholder": "搜索",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onCancel={
         [MockFunction] {
           "calls": Array [
@@ -331,17 +331,17 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
             className="za-search-bar__cancel"
             onClick={[Function]}
           >
-            Cancel
+            取消
           </div>
         </form>
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onChange called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onChange={
     [MockFunction] {
       "calls": Array [
@@ -385,11 +385,11 @@ exports[`SearchBar renders onChange called correctly 1`] = `
       disabled={false}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "placeholder": "Search",
+          "cancelText": "取消",
+          "placeholder": "搜索",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onChange={
         [MockFunction] {
           "calls": Array [
@@ -498,17 +498,17 @@ exports[`SearchBar renders onChange called correctly 1`] = `
             className="za-search-bar__cancel za-search-bar__cancel--show"
             onClick={[Function]}
           >
-            Cancel
+            取消
           </div>
         </form>
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onClear called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onClear={
     [MockFunction] {
       "calls": Array [
@@ -548,11 +548,11 @@ exports[`SearchBar renders onClear called correctly 1`] = `
       disabled={false}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "placeholder": "Search",
+          "cancelText": "取消",
+          "placeholder": "搜索",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onClear={
         [MockFunction] {
           "calls": Array [
@@ -605,7 +605,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                     }
                   }
                 >
-                  Search
+                  搜索
                 </span>
               </div>
             </div>
@@ -620,7 +620,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
               onCompositionStart={[Function]}
               onCompositionUpdate={[Function]}
               onFocus={[Function]}
-              placeholder="Search"
+              placeholder="搜索"
               prefixCls="za-input"
               readOnly={false}
               type="search"
@@ -638,7 +638,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                   onCompositionStart={[Function]}
                   onCompositionUpdate={[Function]}
                   onFocus={[Function]}
-                  placeholder="Search"
+                  placeholder="搜索"
                   type="search"
                   value=""
                 />
@@ -660,17 +660,17 @@ exports[`SearchBar renders onClear called correctly 1`] = `
             className="za-search-bar__cancel"
             onClick={[Function]}
           >
-            Cancel
+            取消
           </div>
         </form>
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onFocus called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onFocus={
     [MockFunction] {
       "calls": Array [
@@ -710,11 +710,11 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
       disabled={false}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "placeholder": "Search",
+          "cancelText": "取消",
+          "placeholder": "搜索",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onFocus={
         [MockFunction] {
           "calls": Array [
@@ -821,17 +821,17 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
             className="za-search-bar__cancel za-search-bar__cancel--show"
             onClick={[Function]}
           >
-            Cancel
+            取消
           </div>
         </form>
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`SearchBar renders onSubmit called correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   onSubmit={
     [MockFunction] {
       "calls": Array [
@@ -875,11 +875,11 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
       disabled={false}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "placeholder": "Search",
+          "cancelText": "取消",
+          "placeholder": "搜索",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onSubmit={
         [MockFunction] {
           "calls": Array [
@@ -988,11 +988,11 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
             className="za-search-bar__cancel za-search-bar__cancel--show"
             onClick={[Function]}
           >
-            Cancel
+            取消
           </div>
         </form>
       </div>
     </SearchBar>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

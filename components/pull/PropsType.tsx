@@ -31,5 +31,5 @@ export interface PropsType {
   load?: PullAction;
   animationDuration?: number;
   stayTime?: number;
-  locale?: Locale;
+  locale?: Locale['Pull'];
 }
