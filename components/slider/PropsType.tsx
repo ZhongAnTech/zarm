@@ -11,8 +11,8 @@ export default interface PropsType {
   min: number;
   max: number;
   disabled?: boolean;
-  showMark?: boolean;
   vertical?: boolean;
+  showMark?: boolean;
   marks?: SliderMarks;
   onChange?: (value: number) => void;
 }

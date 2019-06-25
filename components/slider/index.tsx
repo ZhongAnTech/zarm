@@ -44,7 +44,7 @@ function getClosestPoint(val, { marks, step, min, max }) {
 
 function ensureValuePrecision(val, props) {
   const { step } = props;
-  const closestPoint = isFinite(getClosestPoint(val, props)) ? getClosestPoint(val, props) : 0; // eslint-disable-line
+  const closestPoint = Number.isFinite(getClosestPoint(val, props)) ? getClosestPoint(val, props) : 0;
   return step === null
     ? closestPoint
     : parseFloat(closestPoint.toFixed(getPrecision(step)));
@@ -210,9 +210,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
     }
 
     const value = this.getValueByOffset(offset);
-
     this.setState({ value });
-
     return true;
   };
 
@@ -276,7 +274,6 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     if (showMark && isEmptyMarks) {
       console.error('请输入有效的 marks');
-
       return null;
     }
 
@@ -326,7 +323,6 @@ export default class Slider extends PureComponent<SliderProps, any> {
     return (
       <Fragment>
         {lineDot}
-
         {marksElement}
       </Fragment>
     );
