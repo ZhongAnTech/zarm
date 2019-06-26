@@ -9,13 +9,13 @@ import { Icon } from 'zarm';
 const ICONS = [
   'right', 'right-round', 'right-round-fill',
   'wrong', 'wrong-round', 'wrong-round-fill',
-  'info-round', 'info-round-fill',
-  'question-round', 'question-round-fill',
-  'warning-round', 'warning-round-fill',
-  'arrow-left', 'arrow-right', 'arrow-top', 'arrow-bottom',
-  'add', 'add-round', 'add-round-fill',
-  'minus', 'minus-round', 'minus-round-fill',
-  'broadcast', 'search',
+  'info-round', 
+  'arrow-right', 
+  'add', 
+  'minus', 
+   'search',
+   'broadcast',
+   'keyboard'
 ];
 
 class Demo extends React.Component {
@@ -26,7 +26,7 @@ class Demo extends React.Component {
           ICONS.sort().map((icon, i) => {
             return (
               <div className="grid-column" key={+i}>
-                <Icon className="icon" theme="primary" type={icon} />
+                <Icon className="icon" theme="primary" type={icon}/>
                 <span className="icon-name">{icon}</span>
               </div>
             );
@@ -40,6 +40,58 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+ ### 颜色主题
+```js
+
+import { Icon } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+       <div className="grid">
+        <div className="grid-column" key={'2-1'}>
+          <Icon type="wrong" theme="warning"/>
+          <span>wrong</span>
+        </div>
+        <div className="grid-column" key={'2-2'}>
+          <Icon type="search" style={{color: '#f50'}}/>
+          <span>search</span>
+        </div>
+       </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode)
+```
+
+### 尺寸主题
+```js
+import { Icon } from 'zarm';
+
+class Demo3 extends React.Component {
+  render() {
+    return (
+       <div className="grid">
+        <div className="grid-column" key={'3-1'}>
+           <Icon type="info-round" theme="primary" size={24}/>
+           <span>info-round</span>
+        </div>
+        <div className="grid-column" key={'3-2'}>
+           <Icon type="info-round" theme="primary" style={{fontSize: '32px'}}/>
+           <span>info-round</span>
+        </div>
+        <div className="grid-column" key={'3-3'}>
+           <Icon type="info-round" theme="primary" size='lg'/>
+           <span>info-round</span>
+        </div>
+       </div>
+    )
+  }
+}
+
+ReactDOM.render(<Demo3 />, mountNode)
+```
 
 
 ## API
