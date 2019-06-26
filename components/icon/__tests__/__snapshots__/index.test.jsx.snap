@@ -2,6 +2,25 @@
 
 exports[`Icon renders correctly 1`] = `
 <i
-  class="za-icon za-icon--right"
-/>
+  class="za-icon za-icon-arrow-right za-icon--theme-default"
+  prefixcls="za-icon"
+  theme="default"
+  type="arrow-right"
+>
+  <svg
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    viewBox="0 0 18 32"
+    width="1em"
+  >
+    <path
+      d="M1 1l14.99 14.928L1 30.538"
+      fill="none"
+      fill-rule="evenodd"
+      stroke="currentColor"
+      stroke-width="2.6"
+    />
+  </svg>
+</i>
 `;

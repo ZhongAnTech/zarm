@@ -1,26 +1,49 @@
-import React, { PureComponent } from 'react';
+
+import React, { ReactNode } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import IconProps from './PropsType';
+import SvgComponents from './component';
 
-export interface IconProps extends PropsType {
-  prefixCls?: string;
-  className?: string;
+function Icon(props: IconProps) {
+  const { type = '' } = props;
+  const SvgComponent = SvgComponents[type];
+  const newProps = formatIconProps(props);
+  return generateIcon(<SvgComponent />, newProps);
 }
 
-export default class Icon extends PureComponent<IconProps, {}> {
-  static defaultProps = {
-    prefixCls: 'za-icon',
-  };
+export function formatIconProps(props: IconProps) {
+  const {
+    prefixcls = 'za-icon', type = '', theme = 'default', size, className = '', style = {}, ...rest
+  } = props;
+  const needSizeClass = typeof size !== 'number';
+  const cls = classnames({
+    [prefixcls]: true,
+    [`${prefixcls}-${type}`]: !!type,
+    [`${prefixcls}--theme-${theme}`]: !!theme,
+    [`${prefixcls}--size-${size}`]: needSizeClass && !!size,
+    [className]: !!className,
+  });
 
-  render() {
-    const { prefixCls, type, theme, className, ...others } = this.props;
-    const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--${type}`]: !!type,
-      [`${prefixCls}--${theme}`]: !!theme,
-    });
-
-    return (
-      <i {...others} className={cls} />
-    );
+  if (!needSizeClass && size) {
+    style['fontSize'] = size;
   }
+  return {
+    className: cls,
+    style,
+    prefixcls,
+    type,
+    theme,
+    size,
+    ...rest
+  };
 }
+
+export function generateIcon(svgComponent: ReactNode, props: IconProps) {
+  return (
+    <i {...props}>
+      {svgComponent}
+    </i>
+  );
+}
+
+export default Icon;
