@@ -6,6 +6,7 @@ import ActivityIndicator from '../activity-indicator';
 
 export interface BaseButtonPropsType extends BasePropsType {
   prefixCls?: string;
+  htmlType: 'button' | 'submit' | 'reset';
 }
 
 export type AnchorButtonProps = {
@@ -15,7 +16,6 @@ export type AnchorButtonProps = {
 } & BaseButtonPropsType & AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export type NativeButtonProps = {
-  htmlType?: 'button' | 'submit' | 'reset';
   onClick?: MouseEventHandler<HTMLButtonElement>;
 } & BaseButtonPropsType & ButtonHTMLAttributes<HTMLButtonElement>;
 
