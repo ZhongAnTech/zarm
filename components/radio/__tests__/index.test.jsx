@@ -145,4 +145,18 @@ describe('Radio.Group', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
     expect(wrapper.props().children[0].props.type).toEqual('cell');
   });
+
+  it('radio group onChange event', () => {
+    const onChange = jest.fn();
+    const wrapper = shallow(
+      <Radio.Group shape="round" onChange={onChange}>
+        <Radio value="0">选项一</Radio>
+        <Radio value="1">选项二</Radio>
+        <Radio value="2">选项三</Radio>
+      </Radio.Group>,
+    );
+    wrapper.setProps({ checked: true });
+    wrapper.childAt(0).simulate('change');
+    expect(onChange).toBeCalled();
+  });
 });
