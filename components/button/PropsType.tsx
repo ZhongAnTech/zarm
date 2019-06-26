@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export default interface PropsType {
   theme?: 'default' | 'primary' | 'danger';
-  size?: 'lg' | 'sm' | 'xs';
+  size?: 'lg' | 'md' | 'sm' | 'xs';
   shape?: 'radius' | 'rect' | 'round' | 'circle';
   block?: boolean;
   ghost?: boolean;
@@ -10,4 +10,5 @@ export default interface PropsType {
   disabled?: boolean;
   loading?: boolean;
   icon?: ReactNode;
+  children?: ReactNode;
 }
