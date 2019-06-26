@@ -108,34 +108,38 @@ describe('Slider', () => {
 
     const wrapper = mount(<Slider onChange={onChange} />).find('.za-slider__handle');
     wrapper.simulate('mouseDown', {
-      pageX: 0,
-      pageY: 0,
+      clientX: 0,
+      clientY: 0,
     });
     wrapper.simulate('mouseMove', {
-      pageX: -10,
-      pageY: 0,
+      clientX: 10,
+      clientY: 0,
     });
     wrapper.simulate('mouseUp', {
-      pageX: -20,
-      pageY: 0,
+      clientX: 30,
+      clientY: 0,
     });
+
+    expect(onChange).toBeCalled();
   });
 
-  it('mouse event', () => {
+  it('vertical mouse event', () => {
     const onChange = jest.fn();
 
     const wrapper = mount(<Slider onChange={onChange} step={5.5} vertical />).find('.za-slider__handle');
     wrapper.simulate('mouseDown', {
-      pageX: 0,
-      pageY: 0,
+      clientX: 0,
+      clientY: 0,
     });
     wrapper.simulate('mouseMove', {
-      pageX: -10,
-      pageY: 0,
+      clientX: 0,
+      clientY: -10,
     });
     wrapper.simulate('mouseUp', {
-      pageX: -20,
-      pageY: 0,
+      clientX: 0,
+      clientY: -20,
     });
+
+    expect(onChange).toBeCalled();
   });
 });
