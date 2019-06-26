@@ -1,7 +1,6 @@
 import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import { Omit } from '../utils/types';
 
 export type HTMLDivProps = Omit<
   HTMLAttributes<HTMLDivElement>,

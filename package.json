@@ -169,7 +169,7 @@
     "stylelint-config-za": "^0.1.0",
     "through2": "^3.0.1",
     "ts-jest": "^22.4.6",
-    "typescript": "^3.4.5",
+    "typescript": "^3.5.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
     "webpack": "^4.29.6",
