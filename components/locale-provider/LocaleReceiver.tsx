@@ -1,7 +1,6 @@
 import React from 'react';
 import { Context } from 'create-react-context';
 import hoistNonReactStatic from 'hoist-non-react-statics';
-import { Omit } from '../utils/types';
 import { LocaleContext } from './LocaleProvider';
 import defaultLocaleData from './locale/zh_CN';
 
