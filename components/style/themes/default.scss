@@ -310,6 +310,13 @@
   --tooltip-padding-v: var(--padding-v-xs);
   --tooltip-padding-h: var(--padding-h-xs);
 
+  // Tabbar
+  --tabbar-height: 50px;
+  --tabbar-hidden-bottom: -50px;
+  --tabbar-background: #fff;
+  --tabbar-item-font-size: 12px;
+  --tabbar-item-active-color: var(--theme-primary);
+
   // Wheel
   --wheel-item-height: 34px;
   --wheel-item-rows: 5;

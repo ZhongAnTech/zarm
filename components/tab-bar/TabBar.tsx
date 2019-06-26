@@ -1,22 +1,19 @@
 import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
+import { BaseTabBarProps } from './PropsType';
+import TabBarItem from './TabBarItem';
 
-export interface TabBarProps {
+export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
   className?: string;
-  onChange?: Function;
-  visble?: boolean;
-  defaultActiveKey?: string | number;
-  activeKey?: string | number;
-  style?: React.CSSProperties;
 }
 
 class TabBar extends PureComponent<TabBarProps, any> {
-  static Item: any;
+  static Item: typeof TabBarItem;
 
   static defaultProps: TabBarProps = {
     prefixCls: 'za-tab-bar',
-    visble: true,
+    visible: true,
   };
 
   onChildChange = (value) => {
@@ -26,7 +23,7 @@ class TabBar extends PureComponent<TabBarProps, any> {
     }
   };
 
-  getselected = (index, itemKey) => {
+  getSelected = (index, itemKey) => {
     const { activeKey, defaultActiveKey } = this.props;
     if (!activeKey) {
       if (!defaultActiveKey && index === 0) {
@@ -38,9 +35,9 @@ class TabBar extends PureComponent<TabBarProps, any> {
   };
 
   render() {
-    const { visble, prefixCls, children, style } = this.props;
+    const { visible, prefixCls, children, style } = this.props;
     const cls = classnames(prefixCls, {
-      [`${prefixCls}--hidden`]: !visble,
+      [`${prefixCls}--hidden`]: !visible,
     });
     const items = React.Children.map(children, (element: JSX.Element, index) => {
       return cloneElement(element, {
@@ -52,10 +49,10 @@ class TabBar extends PureComponent<TabBarProps, any> {
         icon: element.props.icon,
         itemKey: element.props.itemKey || index,
         style: element.props.style,
-        selected: this.getselected(index, element.props.itemKey),
+        selected: this.getSelected(index, element.props.itemKey),
       });
     });
-    return (<div className={cls} style={style}>{items}</div>);
+    return <div className={cls} style={style}>{items}</div>;
   }
 }
 
