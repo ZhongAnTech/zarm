@@ -535,7 +535,9 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 >
                                   <svg
                                     class="deletekey_svg__icon"
+                                    fill="currentColor"
                                     height="1em"
+                                    stroke="currentColor"
                                     viewBox="0 0 1385 1024"
                                     width="1em"
                                   >
@@ -742,7 +744,9 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                       <SvgDeletekey>
                                         <svg
                                           className="deletekey_svg__icon"
+                                          fill="currentColor"
                                           height="1em"
+                                          stroke="currentColor"
                                           viewBox="0 0 1385 1024"
                                           width="1em"
                                         >

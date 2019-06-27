@@ -254,6 +254,7 @@ exports[`Icon renders all Icons 1`] = `
       <path
         d="M1 17L16.161 2 31 17"
         fill="none"
+        fill-rule="evenodd"
         stroke="currentColor"
         stroke-width="2.6"
       />
@@ -317,6 +318,7 @@ exports[`Icon renders all Icons 1`] = `
       <path
         d="M1.726 1.274l14.928 14.99 14.61-14.99"
         fill="none"
+        fill-rule="evenodd"
         stroke="currentColor"
         stroke-width="2.6"
       />
@@ -359,6 +361,7 @@ exports[`Icon renders all Icons 1`] = `
       <path
         d="M1 1l14.99 14.928L1 30.538"
         fill="none"
+        fill-rule="evenodd"
         stroke="currentColor"
         stroke-width="2.6"
       />
@@ -391,7 +394,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="brush_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -431,7 +436,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="deletekey_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1385 1024"
       width="1em"
     >
@@ -449,7 +456,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="empty-fill_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -467,7 +476,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="folder_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -485,7 +496,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="folder-fill_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -597,7 +610,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="minus-round_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -647,7 +662,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="required_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -780,7 +797,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="time-circle_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -801,7 +820,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="user_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >
@@ -822,7 +843,9 @@ exports[`Icon renders all Icons 1`] = `
   >
     <svg
       class="user-fill_svg__icon"
+      fill="currentColor"
       height="1em"
+      stroke="currentColor"
       viewBox="0 0 1024 1024"
       width="1em"
     >

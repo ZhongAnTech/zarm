@@ -112,6 +112,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
           <path
             d="M1 1l14.99 14.928L1 30.538"
             fill="none"
+            fill-rule="evenodd"
             stroke="currentColor"
             stroke-width="2.6"
           />
@@ -207,6 +208,7 @@ exports[`NavBar renders correctly with right content 1`] = `
         <path
           d="M1 1l14.99 14.928L1 30.538"
           fill="none"
+          fill-rule="evenodd"
           stroke="currentColor"
           stroke-width="2.6"
         />
