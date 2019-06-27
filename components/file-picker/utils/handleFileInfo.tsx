@@ -35,7 +35,9 @@ export default function handleFileInfo({ file, quality }, callback) {
       file,
       quality,
       fileType,
-    }, callbackFunc);
+    })
+      .then(url => callbackFunc(url))
+      .catch(e => console.error(e));
   } else {
     callback(fileDetail);
   }
