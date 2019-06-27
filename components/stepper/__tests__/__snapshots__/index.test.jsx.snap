@@ -17,7 +17,6 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
-      prefixCls="za-icon"
       type="minus"
     />
   </Button>
@@ -42,7 +41,6 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
-      prefixCls="za-icon"
       type="add"
     />
   </Button>
@@ -61,8 +59,27 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon--minus"
-      />
+        class="za-icon za-icon-minus za-icon--theme-default"
+        prefixcls="za-icon"
+        theme="default"
+        type="minus"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          viewBox="0 0 30 4"
+          width="1em"
+        >
+          <path
+            d="M29.66 2H0"
+            fill="none"
+            fill-rule="evenodd"
+            stroke="currentColor"
+            stroke-width="2.6"
+          />
+        </svg>
+      </i>
     </span>
   </button>
   <input
@@ -78,8 +95,27 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon--add"
-      />
+        class="za-icon za-icon-add za-icon--theme-default"
+        prefixcls="za-icon"
+        theme="default"
+        type="add"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <path
+            d="M15.59 0v31.18m15.59-15.59H0"
+            fill="none"
+            fill-rule="evenodd"
+            stroke="currentColor"
+            stroke-width="2.6"
+          />
+        </svg>
+      </i>
     </span>
   </button>
 </span>
