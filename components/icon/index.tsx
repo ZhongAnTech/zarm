@@ -4,13 +4,6 @@ import classnames from 'classnames';
 import IconProps from './PropsType';
 import SvgComponents from './component';
 
-function Icon(props: IconProps) {
-  const { type = '' } = props;
-  const SvgComponent = SvgComponents[type];
-  const newProps = formatIconProps(props);
-  return generateIcon(<SvgComponent />, newProps);
-}
-
 export function formatIconProps(props: IconProps) {
   const {
     prefixcls = 'za-icon', type = '', theme = 'default', size, className = '', style = {}, ...rest
@@ -25,7 +18,7 @@ export function formatIconProps(props: IconProps) {
   });
 
   if (!needSizeClass && size) {
-    style['fontSize'] = size;
+    style.fontSize = size;
   }
   return {
     className: cls,
@@ -34,7 +27,7 @@ export function formatIconProps(props: IconProps) {
     type,
     theme,
     size,
-    ...rest
+    ...rest,
   };
 }
 
@@ -44,6 +37,13 @@ export function generateIcon(svgComponent: ReactNode, props: IconProps) {
       {svgComponent}
     </i>
   );
+}
+
+function Icon(props: IconProps) {
+  const { type = '' } = props;
+  const SvgComponent = SvgComponents[type];
+  const newProps = formatIconProps(props);
+  return generateIcon(<SvgComponent />, newProps);
 }
 
 export default Icon;

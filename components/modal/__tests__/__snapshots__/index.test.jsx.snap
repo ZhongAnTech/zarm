@@ -59,8 +59,27 @@ exports[`Modal renders correctly 1`] = `
                       标题
                     </div>
                     <i
-                      class="za-icon za-modal__header__close za-icon--wrong"
-                    />
+                      class="za-icon za-icon-wrong za-icon--theme-default za-modal__header__close"
+                      prefixcls="za-icon"
+                      theme="default"
+                      type="wrong"
+                    >
+                      <svg
+                        fill="currentColor"
+                        height="1em"
+                        stroke="currentColor"
+                        viewBox="0 0 26 26"
+                        width="1em"
+                      >
+                        <path
+                          d="M1 1l23.884 23.884m0-23.884L1 24.884"
+                          fill="none"
+                          fill-rule="evenodd"
+                          stroke="currentColor"
+                          stroke-width="2.6"
+                        />
+                      </svg>
+                    </i>
                   </div>
                   <div
                     class="za-modal__body"
@@ -114,13 +133,34 @@ exports[`Modal renders correctly 1`] = `
                   <Icon
                     className="za-modal__header__close"
                     onClick={[MockFunction]}
-                    prefixCls="za-icon"
                     type="wrong"
                   >
                     <i
-                      className="za-icon za-modal__header__close za-icon--wrong"
+                      className="za-icon za-icon-wrong za-icon--theme-default za-modal__header__close"
                       onClick={[MockFunction]}
-                    />
+                      prefixcls="za-icon"
+                      style={Object {}}
+                      theme="default"
+                      type="wrong"
+                    >
+                      <SvgWrong>
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          stroke="currentColor"
+                          viewBox="0 0 26 26"
+                          width="1em"
+                        >
+                          <path
+                            d="M1 1l23.884 23.884m0-23.884L1 24.884"
+                            fill="none"
+                            fillRule="evenodd"
+                            stroke="currentColor"
+                            strokeWidth={2.6}
+                          />
+                        </svg>
+                      </SvgWrong>
+                    </i>
                   </Icon>
                 </div>
               </ModalHeader>

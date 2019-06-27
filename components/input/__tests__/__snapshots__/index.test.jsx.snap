@@ -138,13 +138,43 @@ exports[`Input renders onClear called correctly 1`] = `
       <Icon
         className="za-input__clear"
         onClick={[Function]}
-        prefixCls="za-icon"
         type="wrong-round-fill"
       >
         <i
-          className="za-icon za-input__clear za-icon--wrong-round-fill"
+          className="za-icon za-icon-wrong-round-fill za-icon--theme-default za-input__clear"
           onClick={[Function]}
-        />
+          prefixcls="za-icon"
+          style={Object {}}
+          theme="default"
+          type="wrong-round-fill"
+        >
+          <SvgWrongRoundFill>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              viewBox="0 0 37 37"
+              width="1em"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth={2.6}
+              >
+                <path
+                  d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                />
+                <path
+                  d="M13 13l11 11m0-11L13 24"
+                  stroke="#FFF"
+                />
+              </g>
+            </svg>
+          </SvgWrongRoundFill>
+        </i>
       </Icon>
     </div>
   </InputBase>
@@ -469,8 +499,26 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon--keyboard"
-                                />
+                                  class="za-icon za-icon-keyboard za-icon--theme-default"
+                                  prefixcls="za-icon"
+                                  theme="default"
+                                  type="keyboard"
+                                >
+                                  <svg
+                                    fill="currentColor"
+                                    height="1em"
+                                    stroke="currentColor"
+                                    viewBox="0 0 1416 1024"
+                                    width="1em"
+                                  >
+                                    <defs>
+                                      <style />
+                                    </defs>
+                                    <path
+                                      d="M0 0h1416.17v849.702H0V0zm87.149 87.149v675.404H1329.02V87.15H87.15zm130.723 108.936H326.81v108.936H217.872V196.085zm174.298 0h108.936v108.936H392.17V196.085zm174.298 0h108.936v108.936H566.468V196.085zm174.298 0h108.936v108.936H740.766V196.085zm174.298 0H1024v108.936H915.064V196.085zm174.298 0h108.936v108.936h-108.936V196.085zm-784.34 174.298h108.935v108.936H305.021V370.383zm174.297 0h108.936v108.936H479.32V370.383zm174.298 0h108.936v108.936H653.617V370.383zm174.298 0H936.85v108.936H827.915V370.383zm174.298 0h108.936v108.936h-108.936V370.383zm-784.34 174.298h108.936v108.936H217.872V544.681zm871.489 0h108.936v108.936h-108.936V544.681zm-697.192 0H1024v108.936H392.17V544.681zm196.085 348.596h261.447L718.98 1024 588.255 893.277z"
+                                    />
+                                  </svg>
+                                </i>
                               </div>
                             </div>
                             <div
@@ -480,8 +528,27 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon--deletekey"
-                                />
+                                  class="za-icon za-icon-deletekey za-icon--theme-default"
+                                  prefixcls="za-icon"
+                                  theme="default"
+                                  type="deletekey"
+                                >
+                                  <svg
+                                    class="deletekey_svg__icon"
+                                    fill="currentColor"
+                                    height="1em"
+                                    stroke="currentColor"
+                                    viewBox="0 0 1385 1024"
+                                    width="1em"
+                                  >
+                                    <defs>
+                                      <style />
+                                    </defs>
+                                    <path
+                                      d="M843.294 561.544l178.086 178.085 49.543-49.543L892.838 512l178.085-178.086-49.543-49.543-178.086 178.085-178.086-178.085-49.543 49.543L793.75 512 615.665 690.086l49.543 49.543 178.086-178.085zm299.008-471.191c84.21 0 152.757 67.554 152.757 150.588V783.06c0 83.034-68.518 150.588-152.757 150.588H572.235a154.564 154.564 0 0 1-110.2-46.32l-354.123-353.16-.573-.603-.572-.572a29.064 29.064 0 0 1-8.855-21.022c0-5.572 1.536-13.764 8.855-21.022l.572-.572.573-.603 354.123-353.13a154.504 154.504 0 0 1 110.2-46.35h570.067v.06zm0-90.353H596.6a244.134 244.134 0 0 0-174.953 73.668L43.16 426.828a119.657 119.657 0 0 0 0 170.375l378.488 353.16A244.134 244.134 0 0 0 596.6 1024.03h545.702c134.265 0 243.11-107.881 243.11-240.941V240.97c0-133.089-108.845-240.97-243.11-240.97z"
+                                    />
+                                  </svg>
+                                </i>
                               </div>
                               <div
                                 class="za-keyboard__item za-keyboard__item--ok"
@@ -624,12 +691,32 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onClick={[Function]}
                                 >
                                   <Icon
-                                    prefixCls="za-icon"
                                     type="keyboard"
                                   >
                                     <i
-                                      className="za-icon za-icon--keyboard"
-                                    />
+                                      className="za-icon za-icon-keyboard za-icon--theme-default"
+                                      prefixcls="za-icon"
+                                      style={Object {}}
+                                      theme="default"
+                                      type="keyboard"
+                                    >
+                                      <SvgKeyboard>
+                                        <svg
+                                          fill="currentColor"
+                                          height="1em"
+                                          stroke="currentColor"
+                                          viewBox="0 0 1416 1024"
+                                          width="1em"
+                                        >
+                                          <defs>
+                                            <style />
+                                          </defs>
+                                          <path
+                                            d="M0 0h1416.17v849.702H0V0zm87.149 87.149v675.404H1329.02V87.15H87.15zm130.723 108.936H326.81v108.936H217.872V196.085zm174.298 0h108.936v108.936H392.17V196.085zm174.298 0h108.936v108.936H566.468V196.085zm174.298 0h108.936v108.936H740.766V196.085zm174.298 0H1024v108.936H915.064V196.085zm174.298 0h108.936v108.936h-108.936V196.085zm-784.34 174.298h108.935v108.936H305.021V370.383zm174.297 0h108.936v108.936H479.32V370.383zm174.298 0h108.936v108.936H653.617V370.383zm174.298 0H936.85v108.936H827.915V370.383zm174.298 0h108.936v108.936h-108.936V370.383zm-784.34 174.298h108.936v108.936H217.872V544.681zm871.489 0h108.936v108.936h-108.936V544.681zm-697.192 0H1024v108.936H392.17V544.681zm196.085 348.596h261.447L718.98 1024 588.255 893.277z"
+                                          />
+                                        </svg>
+                                      </SvgKeyboard>
+                                    </i>
                                   </Icon>
                                 </div>
                               </div>
@@ -645,12 +732,33 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onTouchStart={[Function]}
                                 >
                                   <Icon
-                                    prefixCls="za-icon"
                                     type="deletekey"
                                   >
                                     <i
-                                      className="za-icon za-icon--deletekey"
-                                    />
+                                      className="za-icon za-icon-deletekey za-icon--theme-default"
+                                      prefixcls="za-icon"
+                                      style={Object {}}
+                                      theme="default"
+                                      type="deletekey"
+                                    >
+                                      <SvgDeletekey>
+                                        <svg
+                                          className="deletekey_svg__icon"
+                                          fill="currentColor"
+                                          height="1em"
+                                          stroke="currentColor"
+                                          viewBox="0 0 1385 1024"
+                                          width="1em"
+                                        >
+                                          <defs>
+                                            <style />
+                                          </defs>
+                                          <path
+                                            d="M843.294 561.544l178.086 178.085 49.543-49.543L892.838 512l178.085-178.086-49.543-49.543-178.086 178.085-178.086-178.085-49.543 49.543L793.75 512 615.665 690.086l49.543 49.543 178.086-178.085zm299.008-471.191c84.21 0 152.757 67.554 152.757 150.588V783.06c0 83.034-68.518 150.588-152.757 150.588H572.235a154.564 154.564 0 0 1-110.2-46.32l-354.123-353.16-.573-.603-.572-.572a29.064 29.064 0 0 1-8.855-21.022c0-5.572 1.536-13.764 8.855-21.022l.572-.572.573-.603 354.123-353.13a154.504 154.504 0 0 1 110.2-46.35h570.067v.06zm0-90.353H596.6a244.134 244.134 0 0 0-174.953 73.668L43.16 426.828a119.657 119.657 0 0 0 0 170.375l378.488 353.16A244.134 244.134 0 0 0 596.6 1024.03h545.702c134.265 0 243.11-107.881 243.11-240.941V240.97c0-133.089-108.845-240.97-243.11-240.97z"
+                                          />
+                                        </svg>
+                                      </SvgDeletekey>
+                                    </i>
                                   </Icon>
                                 </div>
                                 <div
@@ -675,13 +783,43 @@ exports[`Input.Number renders onClear called correctly 1`] = `
       <Icon
         className="za-input__clear"
         onClick={[Function]}
-        prefixCls="za-icon"
         type="wrong-round-fill"
       >
         <i
-          className="za-icon za-input__clear za-icon--wrong-round-fill"
+          className="za-icon za-icon-wrong-round-fill za-icon--theme-default za-input__clear"
           onClick={[Function]}
-        />
+          prefixcls="za-icon"
+          style={Object {}}
+          theme="default"
+          type="wrong-round-fill"
+        >
+          <SvgWrongRoundFill>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              viewBox="0 0 37 37"
+              width="1em"
+            >
+              <g
+                fill="none"
+                fillRule="evenodd"
+                stroke="none"
+                strokeWidth={2.6}
+              >
+                <path
+                  d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
+                  fill="currentColor"
+                  stroke="currentColor"
+                />
+                <path
+                  d="M13 13l11 11m0-11L13 24"
+                  stroke="#FFF"
+                />
+              </g>
+            </svg>
+          </SvgWrongRoundFill>
+        </i>
       </Icon>
     </div>
   </InputNumber>
