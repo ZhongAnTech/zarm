@@ -1,4 +1,6 @@
-.main-container {
+.markdown {
+  color: #1f2d3d;
+
   .hljs {
     background-color: transparent;
   }
@@ -18,9 +20,9 @@
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     font-weight: normal;
-    color: #1f2d3d;
   }
 
   h1 {
@@ -37,14 +39,9 @@
     margin-top: 50px;
   }
 
-  h4 {
-    font-size: 14px;
-    font-weight: normal;
-    color: #1f2d3d;
-  }
-
+  h4,
   p {
-    color: #666;
+    font-size: 14px;
   }
 
   blockquote {
@@ -62,13 +59,7 @@
   }
 
   table.grid {
-    font-family:
-      "SFMono-Regular",
-      Consolas,
-      "Liberation Mono",
-      Menlo,
-      Courier,
-      monospace;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     width: 100%;
     min-width: 600px;
     font-size: 14px;

@@ -40,16 +40,16 @@ npm install zarm --save
 
 ## Usage 使用
 
-#### 全组件引入
+### 全组件引入
 
 ```js
 import { Button, Cell } from 'zarm';
 import 'zarm/dist/zarm.min.css';
 ```
 
-#### 按需加载
+### 按需加载
 
-* 方法一（推荐）
+- 方法一（推荐）
 
 > 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载Sass文件
 
@@ -64,27 +64,32 @@ import 'zarm/dist/zarm.min.css';
     ]
   }
 ```
+
 ```js
 import { Button, Cell } from 'zarm';
 ```
 
-* 方法二：
+- 方法二：
 
 ```js
 import Button from 'zarm/lib/Button';
 import 'zarm/lib/Button/style';
 ```
 
-#### 定制主题
+### 定制主题
 
 通过修改css变量定义达到定制主题的效果
+
 ```js
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
+
 变量名可参考 [default.scss](https://github.com/ZhonganTechENG/zarm/blob/master/components/style/themes/default.scss)
 
 ## Changelog 更新日志
+
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
 
 ## License
+
 MIT
