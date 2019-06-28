@@ -239,49 +239,6 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon-arrow-top za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="arrow-top"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 32 18"
-      width="1em"
-    >
-      <path
-        d="M1 17L16.161 2 31 17"
-        fill="none"
-        fill-rule="evenodd"
-        stroke="currentColor"
-        stroke-width="2.6"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-arrow-top-fill za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="arrow-top-fill"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 25 14"
-      width="1em"
-    >
-      <path
-        d="M.488 11.097L10.536.781a2.592 2.592 0 0 1 3.689-.02l10.273 10.321c1.074 1.079.311 2.918-1.21 2.918H1.71C.2 14-.566 12.18.488 11.097"
-        fill="currentColor"
-        fill-rule="evenodd"
-        stroke="none"
-      />
-    </svg>
-  </i>
-  <i
     class="za-icon za-icon-arrow-left za-icon--theme-primary"
     prefixcls="za-icon"
     theme="primary"
@@ -325,27 +282,6 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon-arrow-bottom-fill za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="arrow-bottom-fill"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 25 14"
-      width="1em"
-    >
-      <path
-        d="M24.524 2.903L14.47 13.219a2.594 2.594 0 0 1-3.69.02L.501 2.918C-.572 1.839.191 0 1.712 0h21.59c1.51 0 2.277 1.82 1.222 2.903"
-        fill="currentColor"
-        fill-rule="evenodd"
-        stroke="none"
-      />
-    </svg>
-  </i>
-  <i
     class="za-icon za-icon-arrow-right za-icon--theme-primary"
     prefixcls="za-icon"
     theme="primary"
@@ -383,26 +319,6 @@ exports[`Icon renders all Icons 1`] = `
       <defs />
       <path
         d="M879.014 918.287c-9.427 0-18.854-3.283-26.444-9.879a39.544 39.544 0 0 1-3.764-56.109c80.564-91.075 155.106-195.252 155.106-340.54 0-145.257-74.542-249.495-155.106-340.48a39.575 39.575 0 0 1 3.764-56.17 40.418 40.418 0 0 1 56.622 3.645c86.588 97.822 175.043 220.973 175.043 393.035 0 172.032-88.546 295.213-175.013 392.945a40.358 40.358 0 0 1-30.208 13.553zM742.4 783.21c-8.102 0-16.324-2.409-23.401-7.469a39.605 39.605 0 0 1-9.216-55.567l15.932-21.564c41.562-55.808 77.432-104.057 77.432-186.88 0-85.835-31.804-127.458-72.101-180.164-7.138-9.306-14.216-18.673-21.263-28.31a39.575 39.575 0 0 1 9.216-55.567 40.358 40.358 0 0 1 56.079 9.125c6.565 9.126 13.342 18.01 20.028 26.745 43.43 56.892 88.305 115.712 88.305 228.201 0 108.966-49.393 175.435-93.064 234.135l-15.3 20.78c-7.83 10.843-20.148 16.535-32.647 16.535zM120.47 314.278a40.056 40.056 0 0 0-40.146 39.755v315.392c0 21.956 18.04 39.785 40.147 39.785h120.47c10.632 0 20.872 4.187 28.371 11.656l241.001 200.433c4.277 4.216 8.132 7.71 11.716 10.661V91.558a189.29 189.29 0 0 0-11.776 10.722L269.312 302.562c-7.53 7.53-17.74 11.686-28.37 11.686H120.47zM540.13 1024c-26.293 0-52.887-18.1-86.528-46.411L224.316 788.78H120.471C54.06 788.751 0 735.232 0 669.395V354.033c0-65.807 54.061-119.356 120.47-119.356h103.846L453.481 46.02C487.243 17.288 513.385 0 539.92 0c28.793 0 62.434 19.456 62.434 74.15v875.218c0 55.086-33.521 74.632-62.223 74.632z"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-brush za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="brush"
-  >
-    <svg
-      class="brush_svg__icon"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <defs />
-      <path
-        d="M766.88 435.264l-176.608-176.64 66.72-66.752 176.544 176.704-66.656 66.688zM401.44 800.96l-176.8-176.768.256.064 320.128-320.352 176.64 176.64L401.376 800.96zm-177.44.96v-87.872l87.712 87.68-87.68.192zm655.04-478.528L702.272 146.656A60.96 60.96 0 0 0 656.96 128a63.968 63.968 0 0 0-45.12 18.848l-432.256 432.16a63.936 63.936 0 0 0-17.92 54.368c-.768 2.688-1.696 5.312-1.696 8.256V801.92c0 35.136 28.576 63.68 63.712 63.68H384c2.88 0 5.504-.896 8.192-1.632 2.976.416 5.952.832 8.96.832 16.416 0 32.896-6.272 45.44-18.816l432.16-432.16a64 64 0 0 0 .224-90.432z"
       />
     </svg>
   </i>
@@ -449,66 +365,6 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon-empty-fill za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="empty-fill"
-  >
-    <svg
-      class="empty-fill_svg__icon"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <defs />
-      <path
-        d="M821.344 197.248l-126.752 17.824-11.904-84.512a36.48 36.48 0 0 0-14.464-24.192c-16.416-12.384-41.376-11.072-54.688-9.152l-253.792 35.648c-46.624 6.56-60.16 30.688-57.312 51.072l11.008 78.24.896 6.336-76.128 10.688-50.656 7.136a32 32 0 1 0 8.928 63.36l23.552-3.328 18.176-2.528 4.224-.608 50.752-7.136 63.936-8.992 73.088-10.272 192-26.976 192-27.008 16.032-2.24c17.504-2.432 29.696-18.624 27.232-36.128s-18.528-29.76-36.128-27.232zm-423.136 256.96a32 32 0 0 1 64 0v210.496a32 32 0 0 1-64 0V454.208zm192 0a32 32 0 0 1 64 0v210.496a32 32 0 0 1-64 0V454.208zm-352-40.736v392.704c0 20.608 9.984 38.816 25.184 50.56 10.816 8.32 24.192 13.44 38.848 13.44h447.936a63.36 63.36 0 0 0 38.816-13.44c15.232-11.712 25.216-29.888 25.216-50.56v-412H237.344l.864 19.328z"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-folder za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="folder"
-  >
-    <svg
-      class="folder_svg__icon"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <defs />
-      <path
-        d="M880 298.4H521L403.7 186.2c-1.5-1.4-3.5-2.2-5.5-2.2H144c-17.7 0-32 14.3-32 32v592c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V330.4c0-17.7-14.3-32-32-32zM840 768H184V256h188.5l119.6 114.4H840V768z"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-folder-fill za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="folder-fill"
-  >
-    <svg
-      class="folder-fill_svg__icon"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <defs />
-      <path
-        d="M880 298.4H521L403.7 186.2c-1.5-1.4-3.5-2.2-5.5-2.2H144c-17.7 0-32 14.3-32 32v592c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V330.4c0-17.7-14.3-32-32-32z"
-      />
-    </svg>
-  </i>
-  <i
     class="za-icon za-icon-info-round za-icon--theme-primary"
     prefixcls="za-icon"
     theme="primary"
@@ -541,6 +397,39 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
+    class="za-icon za-icon-info-round-fill za-icon--theme-primary"
+    prefixcls="za-icon"
+    theme="primary"
+    type="info-round-fill"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      stroke="currentColor"
+      viewBox="0 0 37 37"
+      width="1em"
+    >
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        stroke="none"
+      >
+        <path
+          d="M35 18.5C35 9.387 27.613 2 18.5 2S2 9.387 2 18.5 9.387 35 18.5 35 35 27.613 35 18.5z"
+          fill="currentColor"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.6"
+        />
+        <path
+          d="M18.103 13.793c-.61 0-1.103.494-1.103 1.104v12a1.103 1.103 0 1 0 2.207 0v-12c0-.61-.493-1.104-1.104-1.104m0-4.002c-.143 0-.286.033-.419.088A1.108 1.108 0 0 0 17 10.894c0 .298.12.574.32.784.11.1.22.187.364.243.408.165.894.066 1.203-.243.199-.21.32-.486.32-.784 0-.143-.033-.286-.088-.419a1.09 1.09 0 0 0-.232-.353 1.122 1.122 0 0 0-.784-.331"
+          fill="#FFF"
+        />
+      </g>
+    </svg>
+  </i>
+  <i
     class="za-icon za-icon-keyboard za-icon--theme-primary"
     prefixcls="za-icon"
     theme="primary"
@@ -556,27 +445,6 @@ exports[`Icon renders all Icons 1`] = `
       <defs />
       <path
         d="M0 0h1416.17v849.702H0V0zm87.149 87.149v675.404H1329.02V87.15H87.15zm130.723 108.936H326.81v108.936H217.872V196.085zm174.298 0h108.936v108.936H392.17V196.085zm174.298 0h108.936v108.936H566.468V196.085zm174.298 0h108.936v108.936H740.766V196.085zm174.298 0H1024v108.936H915.064V196.085zm174.298 0h108.936v108.936h-108.936V196.085zm-784.34 174.298h108.935v108.936H305.021V370.383zm174.297 0h108.936v108.936H479.32V370.383zm174.298 0h108.936v108.936H653.617V370.383zm174.298 0H936.85v108.936H827.915V370.383zm174.298 0h108.936v108.936h-108.936V370.383zm-784.34 174.298h108.936v108.936H217.872V544.681zm871.489 0h108.936v108.936h-108.936V544.681zm-697.192 0H1024v108.936H392.17V544.681zm196.085 348.596h261.447L718.98 1024 588.255 893.277z"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-loading za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="loading"
-  >
-    <svg
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 31 32"
-      width="1em"
-    >
-      <path
-        d="M15.013 3.847a2.518 2.518 0 1 0-4.277-2.659 2.518 2.518 0 0 0 4.277 2.659M9.79 5.422a2.379 2.379 0 1 0-4.72-.597 2.379 2.379 0 0 0 4.72.597M5.842 8.965a2.239 2.239 0 1 0-4.295 1.265 2.239 2.239 0 0 0 4.295-1.265m-2.141 4.92a2.099 2.099 0 1 0-3.204 2.711A2.099 2.099 0 0 0 3.7 13.885m.188 5.623a1.96 1.96 0 1 0-1.66 3.553 1.96 1.96 0 0 0 1.66-3.553m2.507 4.877a1.822 1.822 0 1 0-.063 3.643 1.822 1.822 0 0 0 .063-3.643m4.274 3.335a1.683 1.683 0 1 0 1.277 3.115 1.683 1.683 0 0 0-1.277-3.115m5.401 1.272a1.544 1.544 0 1 0 2.228 2.14 1.544 1.544 0 0 0-2.227-2.14m5.631-1.218a1.404 1.404 0 1 0 2.648.943 1.405 1.405 0 0 0-2.648-.943m4.413-3.379a1.268 1.268 0 1 0 2.531-.157 1.268 1.268 0 0 0-2.531.157m2.608-4.912a1.13 1.13 0 1 0 2.029-.998 1.13 1.13 0 0 0-2.03.998m.294-5.777"
-        fill="currentColor"
-        fill-rule="evenodd"
-        stroke="none"
       />
     </svg>
   </i>
@@ -599,26 +467,6 @@ exports[`Icon renders all Icons 1`] = `
         fill-rule="evenodd"
         stroke="currentColor"
         stroke-width="2.6"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-minus-round za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="minus-round"
-  >
-    <svg
-      class="minus-round_svg__icon"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <defs />
-      <path
-        d="M512 62c248.737 0 450 201.263 450 450S760.737 962 512 962 62 760.737 62 512 263.263 62 512 62zm0 844.622c217.097 0 393.75-177.553 393.75-394.622S729.097 118.25 512 118.25 118.25 294.903 118.25 512 294.903 906.622 512 906.622zm-30.769-366.497H315.125C299.291 540.125 287 527.806 287 512s12.319-28.125 28.125-28.125h393.75C724.709 483.875 737 496.194 737 512s-12.319 28.125-28.125 28.125H481.231z"
       />
     </svg>
   </i>
@@ -809,49 +657,6 @@ exports[`Icon renders all Icons 1`] = `
       />
       <path
         d="M686.7 638.6L544.1 535.5V288c0-4.4-3.6-8-8-8H488c-4.4 0-8 3.6-8 8v275.4c0 2.6 1.2 5 3.3 6.5l165.4 120.6c3.6 2.6 8.6 1.8 11.2-1.7l28.6-39c2.6-3.7 1.8-8.7-1.8-11.2z"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-user za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="user"
-  >
-    <svg
-      class="user_svg__icon"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <defs />
-      <path
-        d="M515.479 14.23c-274.026 0-496.942 222.946-496.942 496.942 0 274.01 222.916 496.926 496.942 496.926 273.98 0 496.926-222.916 496.926-496.926 0-273.996-222.931-496.941-496.926-496.941zm286.464 864.513C787.29 733.56 664.41 619.896 515.463 619.896c-148.946 0-271.826 113.68-286.463 258.847-109.373-85.43-179.863-218.368-179.863-367.571 0-257.145 209.212-466.387 466.357-466.387 257.13 0 466.341 209.242 466.341 466.387-.015 149.203-70.505 282.172-179.892 367.57z"
-      />
-      <path
-        d="M511.714 241.83c-89.766 0-162.816 73.065-162.816 162.816s73.065 162.8 162.816 162.8c89.72 0 162.786-73.035 162.786-162.8S601.434 241.83 511.714 241.83z"
-      />
-    </svg>
-  </i>
-  <i
-    class="za-icon za-icon-user-fill za-icon--theme-primary"
-    prefixcls="za-icon"
-    theme="primary"
-    type="user-fill"
-  >
-    <svg
-      class="user-fill_svg__icon"
-      fill="currentColor"
-      height="1em"
-      stroke="currentColor"
-      viewBox="0 0 1024 1024"
-      width="1em"
-    >
-      <defs />
-      <path
-        d="M512 1024C229.205 1024 0 794.795 0 512S229.205 0 512 0s512 229.205 512 512-229.205 512-512 512zm0-496.47a170.667 170.667 0 1 0 0-341.333 170.667 170.667 0 0 0 0 341.334zm263.765 263.723a263.765 263.765 0 1 0-527.53 0h527.53z"
       />
     </svg>
   </i>

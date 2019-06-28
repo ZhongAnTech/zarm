@@ -2,12 +2,10 @@ import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
-import { Icon } from 'dragon-ui';
 import { documents, components } from '@site/site.config';
 import Format from '@site/utils/format';
 import Container from '@site/web/components/Container';
 import Header from '@site/web/components/Header';
-import Footer from '@site/web/components/Footer';
 import SideBar from '@site/web/components/SideBar';
 import ScrollToTop from '@site/web/components/ScrollToTop';
 import Markdown from '@site/web/components/Markdown';
@@ -25,6 +23,12 @@ const LoadableComponent = (component) => {
     loading: () => null,
   });
 };
+
+const arrowTopSvg = (
+  <i style={{ fontSize: '14px', color: 'var(--theme-danger)' }}>
+    <svg viewBox="0 0 32 18" width="1em" height="1em" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 17L16.161 2 31 17" stroke="currentColor" strokeWidth="2.6" fill="none" fillRule="evenodd" /></svg>
+  </i>
+);
 
 class Page extends PureComponent {
   render() {
@@ -64,7 +68,7 @@ class Page extends PureComponent {
           </div>
           <ScrollToTop>
             <div className="scroll-to-top">
-              <Icon type="arrow-top" />
+              {arrowTopSvg}
             </div>
           </ScrollToTop>
         </main>

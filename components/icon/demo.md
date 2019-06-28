@@ -7,7 +7,7 @@
 import { Icon } from 'zarm';
 
 const ICONS = [
- 'add','arrow-bottom-fill','arrow-bottom','arrow-left','arrow-right','arrow-top-fill','arrow-top','broadcast','brush','date','deletekey','empty-fill','folder-fill','folder','info-round-fill','info-round','keyboard','loading','minus-round','minus','question-round','required','right-round-fill','right-round','right','search','time-circle','user-fill','user','warning-round-fill','warning-round','wrong-round-fill','wrong-round','wrong'
+ 'add','arrow-bottom','arrow-left','arrow-right','broadcast','date','deletekey','info-round-fill','info-round','keyboard','minus','question-round','required','right-round-fill','right-round','right','search','time-circle','warning-round-fill','warning-round','wrong-round-fill','wrong-round','wrong'
 ];
 
 class Demo extends React.Component {
@@ -91,4 +91,4 @@ ReactDOM.render(<Demo3 />, mountNode)
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'default' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
-| type | string | - | 图标类型，可选值 `add`、`arrow-bottom-fill`、`arrow-bottom`、`arrow-left`、`arrow-right`、`arrow-top-fill`、`arrow-top`、`broadcast`、`brush`、`date`、`deletekey`、`empty-fill`、`folder-fill`、`folder`、`info-round-fill`、`info-round`、`keyboard`、`loading`、`minus-round`、`minus`、`question-round`、`required`、`right-round-fill`、`right-round`、`right`、`search`、`time-circle`、`user-fill`、`user`、`warning-round-fill`、`warning-round`、`wrong-round-fill`、`wrong-round`、`wrong` |
+| type | string | - | 图标类型，可选值  `add`、`arrow-bottom`、`arrow-left`、`arrow-right`、`broadcast`、`date`、`deletekey`、`info-round-fill`、`info-round`、`keyboard`、`minus`、`question-round`、`required`、`right-round-fill`、`right-round`、`right`、`search`、`time-circle`、`warning-round-fill`、`warning-round`、`wrong-round-fill`、`wrong-round`、`wrong`|
