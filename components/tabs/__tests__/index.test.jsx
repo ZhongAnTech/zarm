@@ -81,9 +81,4 @@ describe('Tab', () => {
       }, { }])
     );
   });
-  it('tab disabled', () => {
-    mount(
-      createTabs({ disabled: true }, createDefaultChild(3))
-    ).find('.za-tabs__header__item').at(1).simulate('click');
-  });
 });

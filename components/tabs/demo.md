@@ -15,7 +15,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Tabs onChange={(i) => {}} 
-        defaultValue={1}
+        defaultActiveKey={1}
         swipeable
         >
           {this.createDefaultPanels(4)}
@@ -51,7 +51,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Tabs onChange={(i) => {}} 
-        defaultValue={1}
+        defaultActiveKey={1}
         swipeable
         >
           <Panel title="选项卡1" >
@@ -193,7 +193,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Tabs defaultValue={1}>
+        <Tabs defaultActiveKey={1}>
           <Panel title="选项卡1" >
             <div className="content">选项卡1内容</div>
           </Panel>

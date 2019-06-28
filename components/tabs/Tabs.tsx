@@ -5,7 +5,6 @@ import TabPanel from './TabPanel';
 import TabHeader from './TabHeader';
 import Carousel from '../carousel';
 
-
 const getSelectIndex = (children) => {
   let selectIndex;
   React.Children.forEach(children, (item: any, index) => {
@@ -29,15 +28,14 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     disabled: false,
     hasline: false,
     swipeable: false,
-    defaultActiveKey:0,
+    defaultActiveKey: 0,
     useTabPaged: false,
     horizontal: true,
-    scrollElastic:true,
-    activeKey:0
+    scrollElastic: true,
+    activeKey: 0,
   };
 
   private carousel;
-
 
   constructor(props) {
     super(props);
@@ -58,8 +56,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   onSwipeChange = (activeKey) => {
-    const { onChange  } = this.props;
-    
+    const { onChange } = this.props;
+
     this.setState({ activeKey });
     if (typeof onChange === 'function') {
       onChange(activeKey);
@@ -67,8 +65,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   onTabClick = (tab, index) => {
-    const { disabled, swipeable, onChange } = this.props;
-    if (disabled || tab.props.disabled) {
+    const { swipeable, onChange } = this.props;
+    if (tab.props.disabled) {
       return;
     }
     this.setState({ activeKey: index });
@@ -80,21 +78,19 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     }
   }
 
-
-
   render() {
-    const { prefixCls, className, hasline, swipeable, children, horizontal, useTabPaged ,page} = this.props;
-    
+    const { prefixCls, className, hasline, swipeable, children, horizontal, useTabPaged, page } = this.props;
+
     const classes = classnames(prefixCls, className,
       { [`${prefixCls}--hasline`]: hasline },
-      { [`${prefixCls}--paged`]: page?false:useTabPaged },
+      { [`${prefixCls}--paged`]: page ? false : useTabPaged },
       `${prefixCls}--${horizontal ? 'horizontal' : 'vertical'}`);
     // 渲染内容
     let contentRender;
     if (swipeable) {
       contentRender = (
         <Carousel
-          direction={horizontal?"left":"right"}
+          direction={horizontal ? 'left' : 'right'}
           showPagination={false}
           activeIndex={this.state.activeKey}
           ref={(ele) => { this.carousel = ele; }}
@@ -110,11 +106,11 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     }
     return (
       <div className={classes}>
-          <TabHeader
-            {...this.props}
-            activeIndex={this.state.activeKey}
-            onTabHeaderClick={(tab, index) => { this.onTabClick(tab, index) }}
-          ></TabHeader>
+        <TabHeader
+          {...this.props}
+          activeIndex={this.state.activeKey}
+          onTabHeaderClick={(tab, index) => { this.onTabClick(tab, index); }}
+        />
         <div className={`${prefixCls}__container`}>
           {contentRender}
         </div>
