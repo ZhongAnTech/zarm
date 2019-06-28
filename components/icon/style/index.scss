@@ -6,6 +6,9 @@ $size: 'size-';
 $theme: 'theme-';
 
 @include b(icon) {
+  line-height: 1em;
+  width: 1em;
+  height: 1em;
 
   @include icon-size(var(--icon-font-size));
 
