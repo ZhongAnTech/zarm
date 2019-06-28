@@ -51,11 +51,6 @@ const LoadableComponent = (component) => {
 };
 
 class App extends Component {
-  // componentDidMount() {
-  //   Events.on(window, 'resize', window.__setFontSize__);
-  //   FastClick.attach(document.body);
-  // }
-
   render() {
     const { history, location, match } = this.props;
     const currentKey = location.pathname.split('/')[1] || '/';
