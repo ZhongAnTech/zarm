@@ -58,7 +58,7 @@ class Header extends PureComponent {
           </div>
           <nav>
             <ul>
-              <li><a href="#/">首页</a></li>
+              {match.url !== '/' && <li><a href="#/">首页</a></li>}
               <li><a href="#/components/quick-start" className={this.activeClassName(['components'])}>React 组件</a></li>
               <li><a href="https://zhongantecheng.github.io/zarm-vue/#/documents/quick-start">Vue 组件</a></li>
               <li><a href="#/design/download" className={this.activeClassName(['design'])}>设计</a></li>
