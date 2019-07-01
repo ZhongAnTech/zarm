@@ -1,5 +1,7 @@
 import getFileDetail from './getFileDetail';
 import createThumbnail from './createThumbnail';
+import { IFileDetail } from '../index';
+
 
 /**
  * handle single file and get file info
@@ -8,7 +10,7 @@ import createThumbnail from './createThumbnail';
  * @param quality
  * @param callback
  */
-export default function handleFileInfo({ file, quality }, callback) {
+export default function handleFileInfo({ file, quality }: { file: File; quality?: number }, callback: (data: IFileDetail) => void) {
   const {
     fileSize,
     fileType,
@@ -24,7 +26,7 @@ export default function handleFileInfo({ file, quality }, callback) {
     thumbnail: '',
   };
 
-  const callbackFunc = (url) => {
+  const callbackFunc = (url: string) => {
     fileDetail.thumbnail = url;
 
     callback(fileDetail);

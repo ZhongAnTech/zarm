@@ -10,9 +10,9 @@ export default interface PropsType {
   step: number;
   min: number;
   max: number;
-  disabled?: boolean;
-  vertical?: boolean;
-  showMark?: boolean;
-  marks?: SliderMarks;
+  disabled: boolean;
+  vertical: boolean;
+  showMark: boolean;
+  marks: SliderMarks;
   onChange?: (value: number) => void;
 }

@@ -5,7 +5,7 @@ import Cell from '../cell';
 import Button from '../button';
 import Icon from '../icon';
 
-const getChecked = (props, defaultChecked) => {
+const getChecked = (props: RadioProps, defaultChecked: boolean) => {
   if ('checked' in props && props.checked) {
     return props.checked;
   }
@@ -20,7 +20,11 @@ export interface RadioProps extends BaseRadioProps {
   className?: string;
 }
 
-export default class Radio extends PureComponent<RadioProps, any> {
+export interface RadioStates {
+  checked: boolean;
+}
+
+export default class Radio extends PureComponent<RadioProps, RadioStates> {
   static Group: any;
 
   static defaultProps = {
@@ -30,14 +34,14 @@ export default class Radio extends PureComponent<RadioProps, any> {
     block: false,
   };
 
-  constructor(props) {
+  constructor(props: RadioProps) {
     super(props);
     this.state = {
       checked: getChecked(props, false),
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: RadioProps) {
     if ('checked' in nextProps) {
       this.setState({
         checked: !!nextProps.checked,

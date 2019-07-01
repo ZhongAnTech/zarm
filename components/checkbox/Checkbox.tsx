@@ -4,7 +4,7 @@ import { BaseCheckboxProps } from './PropsType';
 import Cell from '../cell';
 import Button from '../button';
 
-const getChecked = (props, defaultChecked) => {
+const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
   if ('checked' in props && props.checked) {
     return props.checked;
   }
@@ -19,8 +19,12 @@ export interface CheckboxProps extends BaseCheckboxProps {
   className?: string;
 }
 
-export default class Checkbox extends PureComponent<CheckboxProps, any> {
-  static Group: any;
+export interface CheckboxStates {
+  checked: boolean;
+}
+
+export default class Checkbox extends PureComponent<CheckboxProps, CheckboxStates> {
+  static displayName = 'Checkbox';
 
   static defaultProps = {
     prefixCls: 'za-checkbox',
@@ -28,14 +32,14 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
     block: false,
   };
 
-  constructor(props) {
+  constructor(props: CheckboxProps) {
     super(props);
     this.state = {
       checked: getChecked(props, false),
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: CheckboxProps) {
     if ('checked' in nextProps) {
       this.setState({
         checked: !!nextProps.checked,

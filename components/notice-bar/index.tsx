@@ -13,6 +13,8 @@ export interface NoticeBarState {
 }
 
 export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
+  static displayName = 'NoticeBar';
+
   static defaultProps = {
     prefixCls: 'za-notice-bar',
     theme: 'warning',
@@ -22,11 +24,11 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     scrollable: false,
   };
 
-  private wrapper;
+  private wrapper: HTMLDivElement | null = null;
 
-  private content;
+  private content: HTMLDivElement | null = null;
 
-  private moveInterval;
+  private moveInterval?: number;
 
   constructor(props: NoticeBarProps) {
     super(props);
@@ -41,7 +43,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
       return;
     }
 
-    const distance = this.wrapper.offsetWidth - this.content.offsetWidth;
+    const distance = this.wrapper!.offsetWidth - this.content!.offsetWidth;
     if (distance > 0) {
       return;
     }
@@ -79,7 +81,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           <div
             className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
-            style={{ left: offset }}
+            style={{
+              left: offset,
+            }}
           >
             {children}
           </div>

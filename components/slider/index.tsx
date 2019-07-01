@@ -6,21 +6,21 @@ import Events from '../utils/events';
 import Drag from '../drag';
 import Tooltip from '../tooltip';
 
-const getValue = (props, defaultValue) => {
-  if ('value' in props) {
+const getValue = (props: Slider['props'], defaultValue: number) => {
+  if (typeof props.value !== 'undefined') {
     return props.value;
   }
-  if ('defaultValue' in props) {
-    return props.defaultValue;
+  if (typeof props.defaultValue !== 'undefined') {
+    return props.defaultValue || defaultValue;
   }
   return defaultValue;
 };
 
-function preventDefault(event) {
+function preventDefault(event: MouseEvent) {
   event.preventDefault();
 }
 
-function getPrecision(step) {
+function getPrecision(step: number) {
   const stepString = step.toString();
   let precision = 0;
   if (stepString.indexOf('.') >= 0) {
@@ -29,8 +29,8 @@ function getPrecision(step) {
   return precision;
 }
 
-function getClosestPoint(val, { marks, step, min, max }) {
-  const points = Object.keys(marks).map(parseFloat);
+function getClosestPoint(val: number, { marks, step, min, max }: Pick<SliderProps, 'marks' | 'step' | 'min' | 'max'>) {
+  const points = Object.keys(marks || {}).map(parseFloat);
   if (step !== null) {
     const maxSteps = Math.floor((max - min) / step);
     const steps = Math.min((val - min) / step, maxSteps);
@@ -42,7 +42,7 @@ function getClosestPoint(val, { marks, step, min, max }) {
   return points[diffs.indexOf(Math.min(...diffs))];
 }
 
-function ensureValuePrecision(val, props) {
+function ensureValuePrecision(val: number, props: SliderProps) {
   const { step } = props;
   const closestPoint = Number.isFinite(getClosestPoint(val, props)) ? getClosestPoint(val, props) : 0;
   return step === null
@@ -55,7 +55,12 @@ export interface SliderProps extends PropsType {
   className?: string;
 }
 
-export default class Slider extends PureComponent<SliderProps, any> {
+export interface SliderStates {
+  value: number;
+  tooltip: boolean;
+}
+
+export default class Slider extends PureComponent<SliderProps, SliderStates> {
   static defaultProps = {
     prefixCls: 'za-slider',
     disabled: false,
@@ -67,13 +72,15 @@ export default class Slider extends PureComponent<SliderProps, any> {
     marks: {},
   };
 
-  private line;
+  private line: HTMLDivElement | null = null;
 
-  private container;
+  private container: HTMLDivElement | null = null;
 
   private offsetStart: number = 0;
 
-  constructor(props) {
+  state: SliderStates;
+
+  constructor(props: SliderProps) {
     super(props);
     this.state = {
       value: getValue(props, 0),
@@ -86,8 +93,8 @@ export default class Slider extends PureComponent<SliderProps, any> {
     Events.on(window, 'resize', this.init);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
+  componentWillReceiveProps(nextProps: this['props']) {
+    if ('value' in nextProps && typeof nextProps.value !== 'undefined') {
       const { value } = nextProps;
       this.setState({ value });
     }
@@ -106,7 +113,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
    * @param  {number} offset 偏移量
    * @return {number}        值
    */
-  getValueByOffset = (offset) => {
+  getValueByOffset = (offset: number) => {
     const {
       min = 0,
       max,
@@ -126,7 +133,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
    * 获取偏移量百分比
    * @param value
    */
-  getOffsetPercent = (value) => {
+  getOffsetPercent = (value: number) => {
     const { min, max } = this.props;
     const ratio = (value - min) / (max - min);
     return `${ratio * 100}%`;
@@ -137,7 +144,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
    * @param  {number} value 值
    * @return {number}       偏移量
    */
-  getOffsetByValue = (value) => {
+  getOffsetByValue = (value: number) => {
     const {
       vertical,
       min,
@@ -163,6 +170,8 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
       return this.line.offsetWidth;
     }
+
+    return 0;
   };
 
   handleDragStart = () => {
@@ -173,7 +182,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
     this.setState({ tooltip: true });
   };
 
-  handleDragMove = (event, { offsetX = 0, offsetY = 0 } = {}) => {
+  handleDragMove = (event: React.DragEvent<HTMLDivElement>, { offsetX = 0, offsetY = 0 } = {}) => {
     const {
       disabled,
       vertical,
@@ -214,7 +223,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
     return true;
   };
 
-  handleDragEnd = (_event, { offsetX = 0, offsetY = 0 } = {}) => {
+  handleDragEnd = (_event: React.DragEvent<HTMLDivElement>, { offsetX = 0, offsetY = 0 } = {}) => {
     const {
       vertical,
       onChange,
@@ -237,13 +246,14 @@ export default class Slider extends PureComponent<SliderProps, any> {
     }
   };
 
-  handleRef = (ref) => {
+  handleRef = (ref: HTMLDivElement) => {
     const nextContainer = ref;
     const prevContainer = this.container;
 
     if (prevContainer !== nextContainer) {
       if (prevContainer) {
         prevContainer.removeEventListener('touchstart', preventDefault, {
+          // @ts-ignore
           passive: false,
         });
       }
@@ -295,7 +305,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
           className={`${prefixCls}__mark`}
           style={markStyle}
         >
-          {marks[item]}
+          {marks[+item]}
         </span>
       );
     });
@@ -308,7 +318,7 @@ export default class Slider extends PureComponent<SliderProps, any> {
 
     const lineDot = markKeys.map((item) => {
       const dotStyle = classnames(`${prefixCls}__line__dot`, {
-        [`${prefixCls}__line__dot--active`]: value >= item,
+        [`${prefixCls}__line__dot--active`]: value >= +item,
       });
 
       const markStyle = {

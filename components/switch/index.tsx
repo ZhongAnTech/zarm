@@ -2,7 +2,7 @@ import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
-const getChecked = (props, defaultChecked) => {
+const getChecked = (props: SwitchProps, defaultChecked: boolean) => {
   if ('checked' in props && props.checked) {
     return props.checked;
   }
@@ -16,20 +16,26 @@ export type SwitchProps = {
   prefixCls?: string;
 } & HTMLAttributes<HTMLSpanElement> & PropsType;
 
-export default class Switch extends PureComponent<SwitchProps, any> {
+export interface SwitchStates {
+  checked: boolean;
+}
+
+export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
+  static displayName = 'Switch';
+
   static defaultProps = {
     prefixCls: 'za-switch',
     disabled: false,
   };
 
-  constructor(props) {
+  constructor(props: SwitchProps) {
     super(props);
     this.state = {
       checked: getChecked(props, false),
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: SwitchProps) {
     if ('checked' in nextProps) {
       this.setState({
         checked: !!nextProps.checked,

@@ -8,6 +8,8 @@ export interface NavBarProps extends BaseNavbarProps {
 }
 
 export default class NavBar extends React.PureComponent<NavBarProps> {
+  static displayName = 'NavBar';
+
   static defaultProps = {
     prefixCls: 'za-nav-bar',
   };
