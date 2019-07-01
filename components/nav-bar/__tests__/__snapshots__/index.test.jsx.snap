@@ -24,7 +24,7 @@ exports[`NavBar renders correctly with left content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon-arrow-left za-icon--theme-default"
+      class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
       prefixcls="za-icon"
       theme="default"
       type="arrow-left"
@@ -65,7 +65,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon-arrow-left za-icon--theme-default"
+        class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
         prefixcls="za-icon"
         theme="default"
         type="arrow-left"
@@ -97,7 +97,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon-arrow-right za-icon--theme-default"
+        class="za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md"
         prefixcls="za-icon"
         theme="default"
         type="arrow-right"
@@ -119,7 +119,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
         </svg>
       </i>
       <i
-        style="font-size:14px;color:var(--theme-danger)"
+        style="font-size:14px;color:var(--theme-danger);width:1em;height:1em;line-height:1em;display:inline-block"
       >
         <svg
           fill="currentColor"
@@ -164,7 +164,7 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon-arrow-left za-icon--theme-default"
+      class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
       prefixcls="za-icon"
       theme="default"
       type="arrow-left"
@@ -194,7 +194,7 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--right"
   >
     <i
-      class="za-icon za-icon-arrow-right za-icon--theme-default"
+      class="za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md"
       prefixcls="za-icon"
       theme="default"
       type="arrow-right"

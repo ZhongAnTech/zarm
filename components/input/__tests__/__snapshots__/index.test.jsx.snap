@@ -138,12 +138,17 @@ exports[`Input renders onClear called correctly 1`] = `
       <Icon
         className="za-input__clear"
         onClick={[Function]}
+        prefixCls="za-icon"
+        size="md"
+        theme="default"
         type="wrong-round-fill"
       >
         <i
-          className="za-icon za-icon-wrong-round-fill za-icon--theme-default za-input__clear"
+          className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
           onClick={[Function]}
+          prefixCls="za-icon"
           prefixcls="za-icon"
+          size="md"
           style={Object {}}
           theme="default"
           type="wrong-round-fill"
@@ -499,7 +504,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon-keyboard za-icon--theme-default"
+                                  class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-md"
                                   prefixcls="za-icon"
                                   theme="default"
                                   type="keyboard"
@@ -528,7 +533,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon-deletekey za-icon--theme-default"
+                                  class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-md"
                                   prefixcls="za-icon"
                                   theme="default"
                                   type="deletekey"
@@ -691,11 +696,18 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onClick={[Function]}
                                 >
                                   <Icon
+                                    onClick={[Function]}
+                                    prefixCls="za-icon"
+                                    size="md"
+                                    theme="default"
                                     type="keyboard"
                                   >
                                     <i
-                                      className="za-icon za-icon-keyboard za-icon--theme-default"
+                                      className="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-md"
+                                      onClick={[Function]}
+                                      prefixCls="za-icon"
                                       prefixcls="za-icon"
+                                      size="md"
                                       style={Object {}}
                                       theme="default"
                                       type="keyboard"
@@ -732,11 +744,18 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onTouchStart={[Function]}
                                 >
                                   <Icon
+                                    onClick={[Function]}
+                                    prefixCls="za-icon"
+                                    size="md"
+                                    theme="default"
                                     type="deletekey"
                                   >
                                     <i
-                                      className="za-icon za-icon-deletekey za-icon--theme-default"
+                                      className="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-md"
+                                      onClick={[Function]}
+                                      prefixCls="za-icon"
                                       prefixcls="za-icon"
+                                      size="md"
                                       style={Object {}}
                                       theme="default"
                                       type="deletekey"
@@ -783,12 +802,17 @@ exports[`Input.Number renders onClear called correctly 1`] = `
       <Icon
         className="za-input__clear"
         onClick={[Function]}
+        prefixCls="za-icon"
+        size="md"
+        theme="default"
         type="wrong-round-fill"
       >
         <i
-          className="za-icon za-icon-wrong-round-fill za-icon--theme-default za-input__clear"
+          className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
           onClick={[Function]}
+          prefixCls="za-icon"
           prefixcls="za-icon"
+          size="md"
           style={Object {}}
           theme="default"
           type="wrong-round-fill"

@@ -65,16 +65,12 @@ class Demo3 extends React.Component {
   render() {
     return (
        <div className="grid">
-        <div className="grid-column" key={'3-1'}>
-           <Icon type="info-round" theme="primary" size={18}/>
-           <span>info-round</span>
-        </div>
         <div className="grid-column" key={'3-2'}>
-           <Icon type="info-round" theme="primary" style={{fontSize: '26px'}}/>
+           <Icon type="info-round" theme="primary" style={{fontSize: '20px'}}/>
            <span>info-round</span>
         </div>
         <div className="grid-column" key={'3-3'}>
-           <Icon type="info-round" theme="primary" size='xl'/>
+           <Icon type="info-round" theme="primary" size='lg'/>
            <span>info-round</span>
         </div>
        </div>
@@ -91,4 +87,5 @@ ReactDOM.render(<Demo3 />, mountNode)
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | theme | string | 'default' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
+| size | string | 'md' | 主题，可选值 `sm`、`md`、`lg` |
 | type | string | - | 图标类型，可选值  `add`、`arrow-bottom`、`arrow-left`、`arrow-right`、`broadcast`、`date`、`deletekey`、`info-round-fill`、`info-round`、`keyboard`、`minus`、`question-round`、`required`、`right-round-fill`、`right-round`、`right`、`search`、`time-circle`、`warning-round-fill`、`warning-round`、`wrong-round-fill`、`wrong-round`、`wrong`|
