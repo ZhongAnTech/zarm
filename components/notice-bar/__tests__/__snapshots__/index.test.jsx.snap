@@ -39,10 +39,6 @@ exports[`NoticeBar renders correctly 1`] = `
   hasArrow={false}
   icon={
     <Icon
-      onClick={[Function]}
-      prefixCls="za-icon"
-      size="md"
-      theme="default"
       type="broadcast"
     />
   }
@@ -55,10 +51,6 @@ exports[`NoticeBar renders correctly 1`] = `
     hasArrow={false}
     icon={
       <Icon
-        onClick={[Function]}
-        prefixCls="za-icon"
-        size="md"
-        theme="default"
         type="broadcast"
       />
     }
@@ -77,18 +69,11 @@ exports[`NoticeBar renders correctly 1`] = `
           className="za-message__icon"
         >
           <Icon
-            onClick={[Function]}
-            prefixCls="za-icon"
-            size="md"
-            theme="default"
             type="broadcast"
           >
             <i
-              className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-              onClick={[Function]}
-              prefixCls="za-icon"
+              className="za-icon za-icon-broadcast za-icon--theme-default"
               prefixcls="za-icon"
-              size="md"
               style={Object {}}
               theme="default"
               type="broadcast"
@@ -142,10 +127,6 @@ exports[`NoticeBar scrollable 1`] = `
   hasArrow={false}
   icon={
     <Icon
-      onClick={[Function]}
-      prefixCls="za-icon"
-      size="md"
-      theme="default"
       type="broadcast"
     />
   }
@@ -158,10 +139,6 @@ exports[`NoticeBar scrollable 1`] = `
     hasArrow={false}
     icon={
       <Icon
-        onClick={[Function]}
-        prefixCls="za-icon"
-        size="md"
-        theme="default"
         type="broadcast"
       />
     }
@@ -180,18 +157,11 @@ exports[`NoticeBar scrollable 1`] = `
           className="za-message__icon"
         >
           <Icon
-            onClick={[Function]}
-            prefixCls="za-icon"
-            size="md"
-            theme="default"
             type="broadcast"
           >
             <i
-              className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-              onClick={[Function]}
-              prefixCls="za-icon"
+              className="za-icon za-icon-broadcast za-icon--theme-default"
               prefixcls="za-icon"
-              size="md"
               style={Object {}}
               theme="default"
               type="broadcast"
@@ -250,7 +220,7 @@ exports[`NoticeBar theme 1`] = `
       class="za-message__icon"
     >
       <i
-        class="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon-broadcast za-icon--theme-default"
         prefixcls="za-icon"
         theme="default"
         type="broadcast"

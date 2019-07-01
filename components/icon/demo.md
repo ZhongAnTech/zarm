@@ -66,12 +66,12 @@ class Demo3 extends React.Component {
     return (
        <div className="grid">
         <div className="grid-column" key={'3-2'}>
-           <Icon type="info-round" theme="primary" style={{fontSize: '20px'}}/>
-           <span>info-round</span>
+           <Icon type="warning-round" theme="primary" style={{fontSize: '20px'}}/>
+           <span>warning-round</span>
         </div>
         <div className="grid-column" key={'3-3'}>
-           <Icon type="info-round" theme="primary" size='lg'/>
-           <span>info-round</span>
+           <Icon type="warning-round" theme="primary" size='lg'/>
+           <span>warning-round</span>
         </div>
        </div>
     )

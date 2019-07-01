@@ -17,10 +17,6 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
-      onClick={[Function]}
-      prefixCls="za-icon"
-      size="md"
-      theme="default"
       type="minus"
     />
   </Button>
@@ -45,10 +41,6 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
-      onClick={[Function]}
-      prefixCls="za-icon"
-      size="md"
-      theme="default"
       type="add"
     />
   </Button>
@@ -67,7 +59,7 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon-minus za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon-minus za-icon--theme-default"
         prefixcls="za-icon"
         theme="default"
         type="minus"
@@ -103,7 +95,7 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon-add za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon-add za-icon--theme-default"
         prefixcls="za-icon"
         theme="default"
         type="add"

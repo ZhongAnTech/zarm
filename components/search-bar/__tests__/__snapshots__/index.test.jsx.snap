@@ -18,7 +18,7 @@ exports[`SearchBar renders correctly 1`] = `
           class="za-search-bar__mock__container"
         >
           <i
-            class="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
+            class="za-icon za-icon-search za-icon--theme-default"
             prefixcls="za-icon"
             theme="default"
             type="search"
@@ -65,7 +65,7 @@ exports[`SearchBar renders correctly 1`] = `
           value=""
         />
         <i
-          class="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
+          class="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
           prefixcls="za-icon"
           theme="default"
           type="wrong-round-fill"
@@ -155,18 +155,11 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    onClick={[Function]}
-                    prefixCls="za-icon"
+                    className="za-icon za-icon-search za-icon--theme-default"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -246,17 +239,12 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
                     onClick={[Function]}
-                    prefixCls="za-icon"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="wrong-round-fill"
@@ -387,18 +375,11 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    onClick={[Function]}
-                    prefixCls="za-icon"
+                    className="za-icon za-icon-search za-icon--theme-default"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -478,17 +459,12 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
                     onClick={[Function]}
-                    prefixCls="za-icon"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="wrong-round-fill"
@@ -625,18 +601,11 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    onClick={[Function]}
-                    prefixCls="za-icon"
+                    className="za-icon za-icon-search za-icon--theme-default"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -716,17 +685,12 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                 <Icon
                   className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
+                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default"
                     onClick={[Function]}
-                    prefixCls="za-icon"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="wrong-round-fill"
@@ -858,18 +822,11 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    onClick={[Function]}
-                    prefixCls="za-icon"
+                    className="za-icon za-icon-search za-icon--theme-default"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -949,17 +906,12 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
                     onClick={[Function]}
-                    prefixCls="za-icon"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="wrong-round-fill"
@@ -1090,18 +1042,11 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    onClick={[Function]}
-                    prefixCls="za-icon"
+                    className="za-icon za-icon-search za-icon--theme-default"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -1181,17 +1126,12 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
+                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
                     onClick={[Function]}
-                    prefixCls="za-icon"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="wrong-round-fill"
@@ -1328,18 +1268,11 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    onClick={[Function]}
-                    prefixCls="za-icon"
+                    className="za-icon za-icon-search za-icon--theme-default"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -1419,17 +1352,12 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                 <Icon
                   className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
-                  prefixCls="za-icon"
-                  size="md"
-                  theme="default"
                   type="wrong-round-fill"
                 >
                   <i
-                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
+                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default"
                     onClick={[Function]}
-                    prefixCls="za-icon"
                     prefixcls="za-icon"
-                    size="md"
                     style={Object {}}
                     theme="default"
                     type="wrong-round-fill"
