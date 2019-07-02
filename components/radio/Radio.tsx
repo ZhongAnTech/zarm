@@ -6,10 +6,10 @@ import Button from '../button';
 import Icon from '../icon';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
-  if ('checked' in props && props.checked) {
+  if (typeof props.checked !== 'undefined') {
     return props.checked;
   }
-  if ('defaultChecked' in props && props.defaultChecked) {
+  if (typeof props.defaultChecked !== 'undefined') {
     return props.defaultChecked;
   }
   return defaultChecked;

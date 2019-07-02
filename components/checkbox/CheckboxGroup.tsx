@@ -17,10 +17,10 @@ const getChildChecked = (children: ReactNode) => {
 };
 
 const getValue = (props: CheckboxGroup['props'], defaultValue: BaseCheckboxGroupProps['defaultValue']) => {
-  if ('value' in props) {
+  if (typeof props.value !== 'undefined') {
     return props.value;
   }
-  if ('defaultValue' in props) {
+  if (typeof props.defaultValue !== 'undefined') {
     return props.defaultValue;
   }
   if (getChildChecked(props.children).length > 0) {

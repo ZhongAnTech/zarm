@@ -12,11 +12,11 @@ const getChildChecked = (children) => {
   return checkedValue;
 };
 
-const getValue = (props, defaultValue) => {
-  if ('value' in props) {
+const getValue = (props: RadioGroup['props'], defaultValue: null) => {
+  if (typeof props.value !== 'undefined') {
     return props.value;
   }
-  if ('defaultValue' in props) {
+  if (typeof props.defaultValue !== 'undefined') {
     return props.defaultValue;
   }
   if (getChildChecked(props.children)) {
