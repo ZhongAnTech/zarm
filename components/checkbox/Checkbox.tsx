@@ -32,12 +32,9 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     block: false,
   };
 
-  constructor(props: CheckboxProps) {
-    super(props);
-    this.state = {
-      checked: getChecked(props, false),
-    };
-  }
+  state: CheckboxStates = {
+    checked: getChecked(this.props, false),
+  };
 
   componentWillReceiveProps(nextProps: CheckboxProps) {
     if ('checked' in nextProps) {

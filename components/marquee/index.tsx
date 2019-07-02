@@ -13,6 +13,8 @@ const ANIMATION_DURATION = 6000;
 const ANIMATION_DELAY = 0;
 const LOOP = true;
 
+const CLIENT_RECT = { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0 };
+
 export default class Marquee extends PureComponent<MarqueeProps, {}> {
   static displayName = 'CheckboxGroup';
 
@@ -24,13 +26,13 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
     animationDelay: ANIMATION_DELAY,
   };
 
-  private container: HTMLDivElement | null;
+  private container: HTMLDivElement | null = null;
 
-  private scrollItem: HTMLDivElement | null;
+  private scrollItem: HTMLDivElement | null = null;
 
-  private containerBoundingRect: ClientRect;
+  private containerBoundingRect: ClientRect = CLIENT_RECT;
 
-  private boundingRect: ClientRect;
+  private boundingRect: ClientRect = CLIENT_RECT;
 
   componentDidMount() {
     this.containerBoundingRect = this.container!.getBoundingClientRect();

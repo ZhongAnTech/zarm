@@ -30,12 +30,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
   private moveInterval?: number;
 
-  constructor(props: NoticeBarProps) {
-    super(props);
-    this.state = {
-      offset: 0,
-    };
-  }
+  state: NoticeBarState = {
+    offset: 0,
+  };
 
   componentDidMount() {
     const { scrollable } = this.props;

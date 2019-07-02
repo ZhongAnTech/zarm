@@ -28,12 +28,9 @@ export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
     disabled: false,
   };
 
-  constructor(props: SwitchProps) {
-    super(props);
-    this.state = {
-      checked: getChecked(props, false),
-    };
-  }
+  state: SwitchStates = {
+    checked: getChecked(this.props, false),
+  };
 
   componentWillReceiveProps(nextProps: SwitchProps) {
     if ('checked' in nextProps) {

@@ -78,15 +78,10 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
   private offsetStart: number = 0;
 
-  state: SliderStates;
-
-  constructor(props: SliderProps) {
-    super(props);
-    this.state = {
-      value: getValue(props, 0),
-      tooltip: false,
-    };
-  }
+  state: SliderStates = {
+    value: getValue(this.props, 0),
+    tooltip: false,
+  };
 
   componentDidMount() {
     this.init();

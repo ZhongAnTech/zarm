@@ -34,12 +34,9 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     block: false,
   };
 
-  constructor(props: RadioProps) {
-    super(props);
-    this.state = {
-      checked: getChecked(props, false),
-    };
-  }
+  state: RadioStates = {
+    checked: getChecked(this.props, false),
+  };
 
   componentWillReceiveProps(nextProps: RadioProps) {
     if ('checked' in nextProps) {
