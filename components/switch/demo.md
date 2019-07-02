@@ -18,6 +18,8 @@ class Demo extends React.Component {
     this.setState({
       value,
     });
+    
+    console.log(value);
   }
 
   render() {
@@ -29,6 +31,8 @@ class Demo extends React.Component {
               checked={this.state.value}
               onChange={(value) => {
                 this.setState({ value });
+                
+                console.log(value);
               }}
             />
           }

@@ -32,12 +32,14 @@ export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
     checked: getChecked(this.props, false),
   };
 
-  componentWillReceiveProps(nextProps: SwitchProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
+  static getDerivedStateFromProps(nextProps: SwitchProps) {
+    if (typeof nextProps.checked !== 'undefined') {
+      return {
+        checked: nextProps.checked,
+      };
     }
+
+    return null;
   }
 
   onValueChange = () => {
@@ -59,7 +61,7 @@ export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--disabled`]: !!disabled,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     return (

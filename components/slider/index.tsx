@@ -88,11 +88,20 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     Events.on(window, 'resize', this.init);
   }
 
-  componentWillReceiveProps(nextProps: this['props']) {
-    if ('value' in nextProps && typeof nextProps.value !== 'undefined') {
+  static getDerivedStateFromProps(nextProps: SliderProps, prevState: SliderStates) {
+    if ('value' in nextProps
+      && typeof nextProps.value !== 'undefined'
+      && nextProps.value !== prevState.value
+    ) {
       const { value } = nextProps;
-      this.setState({ value });
+
+      return {
+        ...prevState,
+        value,
+      };
     }
+
+    return null;
   }
 
   /**

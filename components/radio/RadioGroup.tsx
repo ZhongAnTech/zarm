@@ -53,12 +53,14 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
     value: getValue(this.props, null),
   };
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
     if ('value' in nextProps || getChildChecked(nextProps.children)) {
-      this.setState({
+      return {
         value: nextProps.value || getChildChecked(nextProps.children),
-      });
+      };
     }
+
+    return null;
   }
 
   onChildChange = (value: string | number) => {

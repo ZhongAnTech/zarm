@@ -36,12 +36,14 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     checked: getChecked(this.props, false),
   };
 
-  componentWillReceiveProps(nextProps: CheckboxProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
+  static getDerivedStateFromProps(nextProps: CheckboxProps) {
+    if (typeof nextProps.checked !== 'undefined') {
+      return {
+        checked: nextProps.checked,
+      };
     }
+
+    return null;
   }
 
   onValueChange = () => {
@@ -64,8 +66,8 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--checked`]: !!checked,
-      [`${prefixCls}--disabled`]: !!disabled,
+      [`${prefixCls}--checked`]: checked,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     const inputRender = (

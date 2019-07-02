@@ -23,6 +23,10 @@ class Demo extends React.Component {
             <Stepper
               value={this.state.value}
               onChange={(value) => {
+                this.setState({
+                  value,
+                })
+                
                 console.log(value);
               }}
             />
