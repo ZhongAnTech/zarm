@@ -79,10 +79,9 @@ exports[`Icon renders Icons of different size correctly 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon-broadcast za-icon--theme-primary"
+    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-20"
     prefixcls="za-icon"
     size="20"
-    style="font-size:20px"
     theme="primary"
     type="broadcast"
   >

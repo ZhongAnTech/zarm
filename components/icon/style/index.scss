@@ -10,7 +10,7 @@ $theme: 'theme-';
   width: 1em;
   height: 1em;
 
-  @include icon-size(var(--icon-font-size));
+  @include icon-size(var(--icon-font-size-md));
 
   /* icon themes */
   @include m($theme + 'default') {
@@ -30,16 +30,13 @@ $theme: 'theme-';
   }
 
   /* icon sizes */
-  @include m($size + xs) {
-    @include icon-size(var(--icon-font-size-xs));
-  }
   @include m($size + sm) {
     @include icon-size(var(--icon-font-size-sm));
   }
+  @include m($size + md) {
+    @include icon-size(var(--icon-font-size-md));
+  }
   @include m($size + lg) {
     @include icon-size(var(--icon-font-size-lg));
-  }
-  @include m($size + xl) {
-    @include icon-size(var(--icon-font-size-xl));
   }
 }
