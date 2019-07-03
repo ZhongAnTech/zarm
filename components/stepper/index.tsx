@@ -21,6 +21,7 @@ export interface StepperProps extends PropsType {
 
 export interface StepperStates {
   value: number;
+  prevPropsValue: number;
   lastValue: number;
 }
 
@@ -36,14 +37,24 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
 
   state: StepperStates = {
     value: getValue(this.props, 0),
+    prevPropsValue: getValue(this.props, 0),
     lastValue: getValue(this.props, 0),
   };
 
-  static getDerivedStateFromProps(nextProps: StepperProps) {
-    if ('value' in nextProps) {
+  static getDerivedStateFromProps(nextProps: StepperProps, prevState: StepperStates) {
+    const {
+      value,
+    } = nextProps;
+
+    if (typeof value !== 'undefined'
+      && value !== prevState.prevPropsValue
+    ) {
+      const _value = Number(getValue(nextProps, 0));
+
       return {
-        value: Number(getValue(nextProps, 0)),
-        lastValue: Number(getValue(nextProps, 0)),
+        value: _value,
+        lastValue: _value,
+        prevPropsValue: _value,
       };
     }
 
