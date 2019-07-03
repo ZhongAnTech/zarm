@@ -57,6 +57,7 @@ export interface SliderProps extends PropsType {
 
 export interface SliderStates {
   value: number;
+  prevPropsValue: number;
   tooltip: boolean;
 }
 
@@ -80,6 +81,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
   state: SliderStates = {
     value: getValue(this.props, 0),
+    prevPropsValue: getValue(this.props, 0),
     tooltip: false,
   };
 
@@ -89,15 +91,17 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
   }
 
   static getDerivedStateFromProps(nextProps: SliderProps, prevState: SliderStates) {
-    if ('value' in nextProps
-      && typeof nextProps.value !== 'undefined'
-      && nextProps.value !== prevState.value
-    ) {
-      const { value } = nextProps;
+    const {
+      value,
+    } = nextProps;
 
+    if (typeof value !== 'undefined'
+      && value !== prevState.prevPropsValue
+    ) {
       return {
         ...prevState,
         value,
+        prevPropsValue: value,
       };
     }
 
