@@ -76,6 +76,9 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
     const {
       defaultValue,
       multiple,
+    } = props;
+
+    let {
       value,
     } = props;
 
@@ -85,11 +88,11 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
     let startMonth!: Date;
     let endMonth!: Date;
 
-    let _value = value || defaultValue;
-    _value = (
+    value = value || defaultValue;
+    value = (
       Object.prototype.toString.call(value) === '[object Array]'
-        ? _value
-        : (_value && [_value]) || []
+        ? value
+        : (value && [value]) || []
     ) as Date[];
 
     if (
@@ -98,7 +101,7 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
     ) {
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
       // tmpValue = value.map(item => DateTool.parseDay(item));
-      tmpValue = _value
+      tmpValue = value
         .slice(0, multiple ? 2 : 1)
         .map((item: Date) => DateTool.parseDay(item));
       // 排序过滤
