@@ -1,22 +1,25 @@
-import React, { PureComponent, cloneElement } from 'react';
+import React, { PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
 import classnames from 'classnames';
 import { BaseRadioGroupProps } from './PropsType';
 
-const getChildChecked = (children) => {
+const getChildChecked = (children: ReactNode) => {
   let checkedValue = null;
-  React.Children.forEach(children, (element: any) => {
-    if (element.props && element.props.checked) {
+  React.Children.forEach(children, (element: ReactNode) => {
+    if (isValidElement(element)
+      && element.props
+      && element.props.checked
+    ) {
       checkedValue = element.props.value;
     }
   });
   return checkedValue;
 };
 
-const getValue = (props, defaultValue) => {
-  if ('value' in props) {
+const getValue = (props: RadioGroup['props'], defaultValue: null) => {
+  if (typeof props.value !== 'undefined') {
     return props.value;
   }
-  if ('defaultValue' in props) {
+  if (typeof props.defaultValue !== 'undefined') {
     return props.defaultValue;
   }
   if (getChildChecked(props.children)) {
@@ -30,7 +33,13 @@ export interface RadioGroupProps extends BaseRadioGroupProps {
   className?: string;
 }
 
-export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
+export interface RadioGroupStates {
+  value?: string | number | null;
+}
+
+export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGroupStates> {
+  static displayName = 'RadioGroup';
+
   static defaultProps = {
     prefixCls: 'za-radio-group',
     theme: 'primary',
@@ -40,22 +49,21 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
     compact: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: getValue(props, null),
-    };
-  }
+  state: RadioGroupStates = {
+    value: getValue(this.props, null),
+  };
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
     if ('value' in nextProps || getChildChecked(nextProps.children)) {
-      this.setState({
+      return {
         value: nextProps.value || getChildChecked(nextProps.children),
-      });
+      };
     }
+
+    return null;
   }
 
-  onChildChange = (value) => {
+  onChildChange = (value: string | number) => {
     this.setState({ value });
     const { onChange } = this.props;
     if (typeof onChange === 'function') {

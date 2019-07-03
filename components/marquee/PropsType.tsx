@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface PropsType {
+export default interface PropsType {
   direction: 'left' | 'right' | 'up' | 'down';
   width?: number | string;
   height?: number | string;

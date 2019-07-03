@@ -11,12 +11,32 @@ export interface CalendarProps extends BaseCalendarProps {
   className?: string;
 }
 
-export default class CalendarView extends PureComponent<CalendarProps, any> {
+export interface CalendarStates {
+  value: Date[];
+  min: Date;
+  max: Date;
+  startMonth: Date;
+  endMonth: Date;
+  // 是否是入参更新(主要是月份跨度更新，需要重新定位)
+  refresh: boolean;
+  // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
+  // steps:Math.max(tmp.value.length; tmp.defaultValue.length);
+  // steps 是总的选择的个数 via zouhuan
+  steps: number;
+  // 初始化点击步数
+  // step 是为了扩展的，以后如果是三选，四选之类的，用这个，step 标注每次事件是第几次选择 via zouhuan
+  step: number;
+  multiple: boolean;
+}
+
+export default class CalendarView extends PureComponent<CalendarProps, CalendarStates> {
+  static displayName = 'CalendarView';
+
   static defaultProps = {
     prefixCls: 'za-calendar',
     multiple: false,
     min: new Date(),
-    dateRender: date => date.getDate(),
+    dateRender: (date: Date) => date.getDate(),
     disabledDate: () => false,
   };
 
@@ -30,7 +50,7 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
   // 当前月份dom数据缓存
   private nodes?: object;
 
-  constructor(props) {
+  constructor(props: CalendarProps) {
     super(props);
     this.nodes = {};
     this.getState(props);
@@ -40,31 +60,37 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
     this.anchor();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: CalendarProps) {
     this.getState(nextProps);
   }
 
-  componentDidUpdate(_prevProps, prevState) {
+  componentDidUpdate(_prevProps: CalendarProps, prevState: CalendarStates) {
     const { refresh } = this.state;
     if (refresh !== prevState.refresh) {
       this.anchor();
     }
   }
 
-  getState = (props) => {
+  getState = (props: CalendarProps) => {
     const state = this.state || {};
-    const { defaultValue, multiple } = props;
-    let { value } = props;
-    let tmpValue;
-    let min;
-    let max;
-    let startMonth;
-    let endMonth;
+    const {
+      defaultValue,
+      multiple,
+      value,
+    } = props;
 
-    value = value || defaultValue;
-    value = Object.prototype.toString.call(value) === '[object Array]'
-      ? value
-      : (value && [value]) || [];
+    let tmpValue!: Date[];
+    let min!: Date;
+    let max!: Date | null;
+    let startMonth!: Date;
+    let endMonth!: Date;
+
+    let _value = value || defaultValue;
+    _value = (
+      Object.prototype.toString.call(value) === '[object Array]'
+        ? _value
+        : (_value && [_value]) || []
+    ) as Date[];
 
     if (
       JSON.stringify(value) !== JSON.stringify(state.value)
@@ -72,11 +98,11 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
     ) {
       // 注掉该逻辑，强制根据 multiple 控制节点个数，后面改进
       // tmpValue = value.map(item => DateTool.parseDay(item));
-      tmpValue = value
+      tmpValue = _value
         .slice(0, multiple ? 2 : 1)
-        .map(item => DateTool.parseDay(item));
+        .map((item: Date) => DateTool.parseDay(item));
       // 排序过滤
-      tmpValue = tmpValue.sort((item1, item2) => item1 - item2);
+      tmpValue = tmpValue!.sort((item1: Date, item2: Date) => +item1 - +item2);
     }
 
     if (!DateTool.isOneDay(props.min, state.min)) {
@@ -103,7 +129,7 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
 
     // min、max 排序
     const duration = [min || state.min, max || state.max].sort(
-      (item1, item2) => item1 - item2,
+      (item1: Date, item2: Date) => +item1 - +item2,
     );
 
     const tmp = {
@@ -119,6 +145,7 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
       steps: multiple ? 2 : 1,
       // 初始化点击步数
       step: !this.state ? 1 : state.step,
+      multiple,
     };
 
     if (JSON.stringify(tmp) === JSON.stringify(this.state)) {
@@ -135,14 +162,14 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
   };
 
   // 日期点击事件，注意排序
-  onDateClick = (date) => {
+  handleDateClick = (date: Date) => {
     const { step, steps, value } = this.state;
     const { onChange } = this.props;
     if (step === 1) {
       value.splice(0, value.length);
     }
     value[step - 1] = date;
-    value.sort((item1, item2) => item1 - item2);
+    value.sort((item1: Date, item2: Date) => +item1 - +item2);
 
     this.setState(
       {
@@ -175,7 +202,7 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
     return <ul className={`${prefixCls}__bar`}>{content}</ul>;
   };
 
-  renderMonth = (dateMonth) => {
+  renderMonth = (dateMonth: Date) => {
     const { value, min, max } = this.state;
     const { prefixCls, dateRender, disabledDate } = this.props;
     const key = `${dateMonth.getFullYear()}-${dateMonth.getMonth()}`;
@@ -189,7 +216,7 @@ export default class CalendarView extends PureComponent<CalendarProps, any> {
         dateMonth={dateMonth}
         dateRender={dateRender}
         disabledDate={disabledDate}
-        onDateClick={this.onDateClick}
+        onDateClick={this.handleDateClick}
         ref={(n) => { this.nodes![key] = n; }}
       />
     );
