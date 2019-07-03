@@ -30,7 +30,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell title="标题文字" description="描述文字" />
-        <Cell title="标题文字" description={<Icon type="right" />} />
+        <Cell title="标题文字" description={<Icon type="right" size="sm" />} />
       </div>
     )
   }
@@ -51,7 +51,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell title="标题文字" icon={<Icon type="right" />} />
+        <Cell title="标题文字" icon={<Icon type="right" size="sm" />} />
         <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: 24, height: 24 }} />} />
       </div>
     )
@@ -117,7 +117,7 @@ class Demo extends React.Component {
           hasArrow
           title="标题文字"
           description="描述文字"
-          icon={<Icon type="right" />}
+          icon={<Icon type="right" size="sm" />}
           onClick={() => {}}
         />
 

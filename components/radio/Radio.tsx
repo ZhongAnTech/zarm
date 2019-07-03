@@ -84,7 +84,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
         <Cell
           className={cls}
           disabled={disabled}
-          description={checked && <Icon type="right" theme={disabled ? undefined : 'primary'} />}
+          description={checked && <Icon type="right" theme={disabled ? 'default' : 'primary'} />}
           onClick={() => {}}
         >
           {inputRender}

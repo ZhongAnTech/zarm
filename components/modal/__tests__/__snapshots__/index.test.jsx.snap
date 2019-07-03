@@ -59,7 +59,7 @@ exports[`Modal renders correctly 1`] = `
                       标题
                     </div>
                     <i
-                      class="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default"
+                      class="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default za-icon--size-sm"
                       prefixcls="za-icon"
                       theme="default"
                       type="wrong"
@@ -133,12 +133,14 @@ exports[`Modal renders correctly 1`] = `
                   <Icon
                     className="za-modal__header__close"
                     onClick={[MockFunction]}
+                    size="sm"
                     type="wrong"
                   >
                     <i
-                      className="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default"
+                      className="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default za-icon--size-sm"
                       onClick={[MockFunction]}
                       prefixcls="za-icon"
+                      size="sm"
                       style={Object {}}
                       theme="default"
                       type="wrong"

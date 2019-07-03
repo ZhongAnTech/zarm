@@ -18,7 +18,7 @@ exports[`SearchBar renders correctly 1`] = `
           class="za-search-bar__mock__container"
         >
           <i
-            class="za-icon za-icon-search za-icon--theme-default"
+            class="za-icon za-icon-search za-icon--theme-default za-icon--size-sm"
             prefixcls="za-icon"
             theme="default"
             type="search"
@@ -155,11 +155,13 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  size="sm"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default"
+                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-sm"
                     prefixcls="za-icon"
+                    size="sm"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -375,11 +377,13 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  size="sm"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default"
+                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-sm"
                     prefixcls="za-icon"
+                    size="sm"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -601,11 +605,13 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  size="sm"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default"
+                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-sm"
                     prefixcls="za-icon"
+                    size="sm"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -822,11 +828,13 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  size="sm"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default"
+                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-sm"
                     prefixcls="za-icon"
+                    size="sm"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -1042,11 +1050,13 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  size="sm"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default"
+                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-sm"
                     prefixcls="za-icon"
+                    size="sm"
                     style={Object {}}
                     theme="default"
                     type="search"
@@ -1268,11 +1278,13 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  size="sm"
                   type="search"
                 >
                   <i
-                    className="za-icon za-icon-search za-icon--theme-default"
+                    className="za-icon za-icon-search za-icon--theme-default za-icon--size-sm"
                     prefixcls="za-icon"
+                    size="sm"
                     style={Object {}}
                     theme="default"
                     type="search"
