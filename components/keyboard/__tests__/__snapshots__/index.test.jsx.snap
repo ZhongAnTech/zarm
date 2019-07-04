@@ -64,7 +64,7 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard za-icon--theme-default"
+        class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
         prefixcls="za-icon"
         theme="default"
         type="keyboard"
@@ -91,7 +91,7 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey za-icon--theme-default"
+        class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
         prefixcls="za-icon"
         theme="default"
         type="deletekey"
@@ -186,7 +186,7 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard za-icon--theme-default"
+        class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
         prefixcls="za-icon"
         theme="default"
         type="keyboard"
@@ -213,7 +213,7 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey za-icon--theme-default"
+        class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
         prefixcls="za-icon"
         theme="default"
         type="deletekey"
@@ -308,7 +308,7 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-keyboard za-icon--theme-default"
+        class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
         prefixcls="za-icon"
         theme="default"
         type="keyboard"
@@ -335,7 +335,7 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon-deletekey za-icon--theme-default"
+        class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
         prefixcls="za-icon"
         theme="default"
         type="deletekey"

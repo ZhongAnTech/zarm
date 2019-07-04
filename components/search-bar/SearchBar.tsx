@@ -230,7 +230,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
                 className={`${prefixCls}__mock__container`}
                 ref={(searchContainer) => { this.searchContainer = searchContainer; }}
               >
-                <Icon type="search" size="sm" />
+                <Icon type="search" />
                 <span
                   className={`${prefixCls}__mock__placeholder`}
                   style={{ visibility: value || isOnComposition ? 'hidden' : 'visible' }}

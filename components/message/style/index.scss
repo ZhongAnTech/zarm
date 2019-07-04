@@ -19,7 +19,7 @@
     margin-right: r(4);
 
     @include b(icon) {
-      font-size: r(14);
+      font-size: var(--message-font-size-md);
       cursor: pointer;
     }
   }
@@ -38,7 +38,7 @@
     padding-left: r(10);
 
     @include b(icon) {
-      font-size: r(12);
+      font-size: var(--message-font-size-md);
       cursor: pointer;
     }
   }
@@ -114,6 +114,10 @@
 
     @include e(icon) {
       margin-right: r(6);
+
+      @include b(icon) {
+        font-size: var(--message-font-size-lg);
+      }
     }
 
     @include e(body) {
@@ -122,7 +126,7 @@
 
     @include e(footer) {
       @include b(icon) {
-        font-size: r(14);
+        font-size: var(--message-font-size-lg);
       }
     }
   }

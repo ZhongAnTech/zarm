@@ -82,8 +82,4 @@
       }
     }
   }
-
-  @include b(icon) {
-    font-size: var(--keyboard-icon-font-size);
-  }
 }

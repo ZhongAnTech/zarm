@@ -7,7 +7,7 @@
 import { Icon } from 'zarm';
 
 const ICONS = [
- 'add','arrow-bottom','arrow-left','arrow-right','broadcast','date','deletekey','info-round-fill','info-round','keyboard','minus','question-round','required','right-round-fill','right-round','right','search','time-circle','warning-round-fill','warning-round','wrong-round-fill','wrong-round','wrong'
+ 'add','arrow-top','arrow-bottom','arrow-left','arrow-right','broadcast','date','deletekey','info-round-fill','info-round','keyboard','minus','question-round','required','right-round-fill','right-round','right','search','time-circle','warning-round-fill','warning-round','wrong-round-fill','wrong-round','wrong'
 ];
 
 class Demo extends React.Component {
@@ -18,8 +18,8 @@ class Demo extends React.Component {
           ICONS.sort().map((icon, i) => {
             return (
               <div className="grid-column" key={+i}>
-                <Icon className="icon" theme="primary" type={icon}/>
-                <span className="icon-name">{icon}</span>
+                <Icon type={icon} theme="primary" size="lg" />
+                <span>{icon}</span>
               </div>
             );
           })
@@ -32,22 +32,27 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
- ### 颜色主题
-```js
 
+
+## 颜色主题
+```jsx
 import { Icon } from 'zarm';
 
 class Demo extends React.Component {
   render() {
     return (
        <div className="grid">
-        <div className="grid-column" key={'2-1'}>
-          <Icon type="wrong" theme="warning"/>
-          <span>wrong</span>
+        <div className="grid-column">
+          <Icon type="info-round" theme="warning" />
+          <span>warning</span>
         </div>
-        <div className="grid-column" key={'2-2'}>
-          <Icon type="search" style={{color: '#f50'}}/>
-          <span>search</span>
+        <div className="grid-column">
+          <Icon type="info-round" theme="danger" />
+          <span>danger</span>
+        </div>
+        <div className="grid-column">
+          <Icon type="search" style={{ color: '#1890ff' }}/>
+          <span>custom color</span>
         </div>
        </div>
     )
@@ -57,29 +62,36 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode)
 ```
 
-### 尺寸主题
-```js
+
+
+## 尺寸大小
+```jsx
 import { Icon } from 'zarm';
 
-class Demo3 extends React.Component {
+class Demo extends React.Component {
   render() {
     return (
        <div className="grid">
-        <div className="grid-column" key={'3-2'}>
-           <Icon type="warning-round" theme="primary" style={{fontSize: '20px'}}/>
-           <span>warning-round</span>
+        <div className="grid-column">
+           <Icon type="warning-round" theme="primary" size="sm" />
+           <span>sm</span>
         </div>
-        <div className="grid-column" key={'3-3'}>
-           <Icon type="warning-round" theme="primary" size='lg'/>
-           <span>warning-round</span>
+        <div className="grid-column">
+           <Icon type="warning-round" theme="primary" />
+           <span>md</span>
+        </div>
+        <div className="grid-column">
+           <Icon type="warning-round" theme="primary" size="lg" />
+           <span>lg</span>
         </div>
        </div>
     )
   }
 }
 
-ReactDOM.render(<Demo3 />, mountNode)
+ReactDOM.render(<Demo />, mountNode)
 ```
+
 
 
 ## API
@@ -88,4 +100,4 @@ ReactDOM.render(<Demo3 />, mountNode)
 | :--- | :--- | :--- | :--- |
 | theme | string | 'default' | 主题，可选值 `default`、`primary`、`success`、`warning`、`danger` |
 | size | string | 'md' | 主题，可选值 `sm`、`md`、`lg` |
-| type | string | - | 图标类型，可选值  `add`、`arrow-bottom`、`arrow-left`、`arrow-right`、`broadcast`、`date`、`deletekey`、`info-round-fill`、`info-round`、`keyboard`、`minus`、`question-round`、`required`、`right-round-fill`、`right-round`、`right`、`search`、`time-circle`、`warning-round-fill`、`warning-round`、`wrong-round-fill`、`wrong-round`、`wrong`|
+| type | string | - | 图标类型，可选值  `add`、`arrow-top`、`arrow-bottom`、`arrow-left`、`arrow-right`、`broadcast`、`date`、`deletekey`、`info-round-fill`、`info-round`、`keyboard`、`minus`、`question-round`、`required`、`right-round-fill`、`right-round`、`right`、`search`、`time-circle`、`warning-round-fill`、`warning-round`、`wrong-round-fill`、`wrong-round`、`wrong`|

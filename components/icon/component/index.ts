@@ -1,4 +1,5 @@
 import Add from './Add';
+import ArrowTop from './ArrowTop';
 import ArrowBottom from './ArrowBottom';
 import ArrowLeft from './ArrowLeft';
 import ArrowRight from './ArrowRight';
@@ -24,6 +25,7 @@ import TimeCircle from './TimeCircle';
 
 export default {
   add: Add,
+  'arrow-top': ArrowTop,
   'arrow-bottom': ArrowBottom,
   'arrow-left': ArrowLeft,
   'arrow-right': ArrowRight,

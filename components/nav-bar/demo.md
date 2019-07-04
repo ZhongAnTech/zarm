@@ -13,7 +13,6 @@ class Demo extends React.Component {
         left={<Icon
           type="arrow-left"
           theme="success"
-          style={{fontSize: '20px'}}
           onClick={() => window.history.back()}
         />}
         title="这是标题"
@@ -40,7 +39,6 @@ class Demo extends React.Component {
           <Icon
             type="question-round"
             theme="success"
-            style={{fontSize: '22px'}}
             onClick={() => window.alert('click icon')}
           />
         }
@@ -66,20 +64,20 @@ class Demo extends React.Component {
           <Icon 
             type="arrow-left"
             theme="success"
-            style={{fontSize: '20px'}}
             onClick={() => window.history.back()}
           />
         }
         title="这是标题"
-        right={<div>
-          <Icon type="add" theme="success" onClick={() => alert('click icon1')} style={{fontSize: '20px', marginRight: '16px'}} />
-          <Icon
-            type="question-round"
-            theme="success"
-            style={{fontSize: '22px'}}
-            onClick={() => alert('click icon2')}
-          />
-        </div>}
+        right={
+          <>
+            <Icon type="add" theme="success" onClick={() => alert('click icon1')} style={{ marginRight: 16 }} />
+            <Icon
+              type="question-round"
+              theme="success"
+              onClick={() => alert('click icon2')}
+            />
+          </>
+        }
       />
     )
   }

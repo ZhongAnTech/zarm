@@ -20,9 +20,8 @@
   }
 
   @include e(side) {
-    @include icon-size(
-      var(--nav-bar-icon-size),
-    );
+    display: flex;
+    justify-content: center;
 
     @include m(left) {
       margin-left: r(16);

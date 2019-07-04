@@ -1,13 +1,12 @@
 @import "@site/styles/index";
 
 .icon-page {
-  .icon {
+  .za-icon {
     display: block;
     margin-bottom: r(15);
-    font-size: r(36);
 
-    &-name {
-      font-size: r(13);
+    & + span {
+      font-size: r(12);
     }
   }
 

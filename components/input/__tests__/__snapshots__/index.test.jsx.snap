@@ -499,7 +499,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon-keyboard za-icon--theme-default"
+                                  class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
                                   prefixcls="za-icon"
                                   theme="default"
                                   type="keyboard"
@@ -528,7 +528,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon-deletekey za-icon--theme-default"
+                                  class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
                                   prefixcls="za-icon"
                                   theme="default"
                                   type="deletekey"
@@ -691,11 +691,13 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onClick={[Function]}
                                 >
                                   <Icon
+                                    size="lg"
                                     type="keyboard"
                                   >
                                     <i
-                                      className="za-icon za-icon-keyboard za-icon--theme-default"
+                                      className="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
                                       prefixcls="za-icon"
+                                      size="lg"
                                       style={Object {}}
                                       theme="default"
                                       type="keyboard"
@@ -732,11 +734,13 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onTouchStart={[Function]}
                                 >
                                   <Icon
+                                    size="lg"
                                     type="deletekey"
                                   >
                                     <i
-                                      className="za-icon za-icon-deletekey za-icon--theme-default"
+                                      className="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
                                       prefixcls="za-icon"
+                                      size="lg"
                                       style={Object {}}
                                       theme="default"
                                       type="deletekey"

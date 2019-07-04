@@ -32,7 +32,7 @@ export function generateIcon(svgComponent: ReactNode, props: IconProps) {
   );
 }
 
-class Icon extends Component<IconProps> {
+class Icon extends Component<IconProps, {}> {
   static displayName = 'Icon';
 
   static defaultProps = {

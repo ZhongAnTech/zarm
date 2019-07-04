@@ -49,11 +49,9 @@ describe('Icon', () => {
   it('renders Icons of different size correctly', () => {
     const wrapper = render(
       <div>
-        <Icon size="xl" theme="primary" type="broadcast" />
         <Icon size="lg" theme="primary" type="broadcast" />
+        <Icon size="md" theme="primary" type="broadcast" />
         <Icon size="sm" theme="primary" type="broadcast" />
-        <Icon size="xs" theme="primary" type="broadcast" />
-        <Icon size={20} theme="primary" type="broadcast" />
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();

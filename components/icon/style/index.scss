@@ -5,9 +5,6 @@ $size: 'size-';
 $theme: 'theme-';
 
 @include b(icon) {
-  width: 1em;
-  height: 1em;
-  font-size: var(--icon-font-size-md);
   display: inline-block;
   color: inherit;
   font-style: normal;
@@ -17,6 +14,7 @@ $theme: 'theme-';
   vertical-align: -0.125em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   @include icon-size(var(--icon-font-size-md));
 
