@@ -1,5 +1,11 @@
+import { MouseEvent, CSSProperties } from 'react';
+
 export default interface PropsType {
-  type?: string;
+  prefixcls?: string;
+  type: string;
   theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
-  onClick?: (e: any) => void;
+  size?: 'sm' | 'md' | 'lg';
+  style?: CSSProperties;
+  className?: string;
+  onClick?: (e: MouseEvent<HTMLElement>) => void;
 }

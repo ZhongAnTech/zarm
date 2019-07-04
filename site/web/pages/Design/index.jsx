@@ -17,6 +17,12 @@ const LoadableComponent = (component) => {
   });
 };
 
+const arrowTopSvg = (
+  <i style={{ fontSize: '14px', color: 'var(--theme-danger)', width: '1em', height: '1em', lineHeight: '1em', display: 'inline-block' }}>
+    <svg viewBox="0 0 32 18" width="1em" height="1em" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 17L16.161 2 31 17" stroke="currentColor" strokeWidth="2.6" fill="none" fillRule="evenodd" /></svg>
+  </i>
+);
+
 class Page extends PureComponent {
   render() {
     return (
@@ -35,7 +41,7 @@ class Page extends PureComponent {
           </div>
           <ScrollToTop>
             <div className="scroll-to-top">
-              <Icon type="arrow-top" />
+              {arrowTopSvg}
             </div>
           </ScrollToTop>
         </main>

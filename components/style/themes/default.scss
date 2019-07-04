@@ -211,7 +211,6 @@
   // Keyboard
   --keyboard-item-height: 52px;
   --keyboard-item-font-size: 30px;
-  --keyboard-icon-font-size: 21px;
 
   // Message
   --message-min-height-md: 29px;
@@ -256,6 +255,9 @@
 
   // Radio
   --radio-size: 20px;
+
+  // SearchBar
+  --search-bar-font-size: 14px;
 
   // Slider
   --slider-line-background: #e6e6e6;
@@ -321,4 +323,10 @@
   --wheel-item-height: 34px;
   --wheel-item-rows: 5;
   --wheel-item-font-size: 18px;
+
+  // Icon
+  --icon-font-size-sm: 14px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
 }

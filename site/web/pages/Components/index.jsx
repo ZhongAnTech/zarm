@@ -2,12 +2,11 @@ import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
-import { Icon } from 'dragon-ui';
+import { Icon } from 'zarm';
 import { documents, components } from '@site/site.config';
 import Format from '@site/utils/format';
 import Container from '@site/web/components/Container';
 import Header from '@site/web/components/Header';
-import Footer from '@site/web/components/Footer';
 import SideBar from '@site/web/components/SideBar';
 import ScrollToTop from '@site/web/components/ScrollToTop';
 import Markdown from '@site/web/components/Markdown';
@@ -64,7 +63,7 @@ class Page extends PureComponent {
           </div>
           <ScrollToTop>
             <div className="scroll-to-top">
-              <Icon type="arrow-top" />
+              <Icon type="arrow-top" size="sm" />
             </div>
           </ScrollToTop>
         </main>
