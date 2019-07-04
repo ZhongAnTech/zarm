@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
+import CheckboxGroup from './CheckboxGroup';
 import Cell from '../cell';
 import Button from '../button';
 
@@ -24,6 +25,8 @@ export interface CheckboxStates {
 }
 
 export default class Checkbox extends PureComponent<CheckboxProps, CheckboxStates> {
+  static Group: typeof CheckboxGroup;
+
   static displayName = 'Checkbox';
 
   static defaultProps = {

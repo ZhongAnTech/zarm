@@ -42,19 +42,16 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
   };
 
   static getDerivedStateFromProps(nextProps: StepperProps, prevState: StepperStates) {
-    const {
-      value,
-    } = nextProps;
-
-    if (typeof value !== 'undefined'
-      && value !== prevState.prevPropsValue
+    if (
+      typeof nextProps.value !== 'undefined'
+      && nextProps.value !== prevState.prevPropsValue
     ) {
-      const _value = Number(getValue(nextProps, 0));
+      const value = Number(getValue(nextProps, 0));
 
       return {
-        value: _value,
-        lastValue: _value,
-        prevPropsValue: _value,
+        value,
+        lastValue: value,
+        prevPropsValue: value,
       };
     }
 

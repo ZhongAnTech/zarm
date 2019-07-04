@@ -50,6 +50,7 @@ function ensureValuePrecision(val: number, props: SliderProps) {
     : parseFloat(closestPoint.toFixed(getPrecision(step)));
 }
 
+
 export interface SliderProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -91,11 +92,10 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
   }
 
   static getDerivedStateFromProps(nextProps: SliderProps, prevState: SliderStates) {
-    const {
-      value,
-    } = nextProps;
+    const { value } = nextProps;
 
-    if (typeof value !== 'undefined'
+    if (
+      typeof value !== 'undefined'
       && value !== prevState.prevPropsValue
     ) {
       return {
