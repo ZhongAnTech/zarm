@@ -22,12 +22,14 @@ class Demo extends React.Component {
           description={
             <Stepper
               value={this.state.value}
+              onInputChange={(value) => {
+                console.log('onInputChange:', value);
+              }}
               onChange={(value) => {
                 this.setState({
                   value,
                 })
-                
-                console.log(value);
+                console.log('onChange:', value);
               }}
             />
           }

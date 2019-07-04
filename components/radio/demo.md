@@ -44,7 +44,10 @@ class Demo extends React.Component {
             <Radio.Group
               type="button"
               value={this.state.radio}
-              onChange={value => console.log(`radio to ${value}`)}
+              onChange={value => {
+                this.setState({ radio: value });
+                console.log(`radio to ${value}`)
+              }}
             >
               <Radio value="0">选项一</Radio>
               <Radio value="1">选项二</Radio>

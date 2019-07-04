@@ -21,7 +21,7 @@ class Demo extends React.Component {
           <Slider
             value={this.state.value}
             onChange={(value) => {
-              this.setState({ value: value })
+              this.setState({ value })
               console.log(value);
             }}
           />

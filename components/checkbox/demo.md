@@ -33,12 +33,24 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Checkbox } from 'zarm';
 
 class Demo extends React.Component {
+  state = {
+    value: [],
+  }
+
   render() {
+    const { value } = this.state;
+
     return (
       <div>
         <Cell
           description={
-            <Checkbox.Group type="button">
+            <Checkbox.Group
+              type="button"
+              value={this.state.value}
+              onChange={(value) => {
+                this.setState({ value });
+                console.log(`radio to ${value}`)
+              }}>
               <Checkbox value="0">选项一</Checkbox>
               <Checkbox value="1">选项二</Checkbox>
               <Checkbox value="2">选项三</Checkbox>

@@ -31,7 +31,6 @@ class Demo extends React.Component {
               checked={this.state.value}
               onChange={(value) => {
                 this.setState({ value });
-                
                 console.log(value);
               }}
             />
