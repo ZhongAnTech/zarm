@@ -211,7 +211,7 @@
   // Keyboard
   --keyboard-item-height: 52px;
   --keyboard-item-font-size: 30px;
-  --keyboard-icon-font-size: 21px;
+  --keyboard-icon-font-size: 30px;
 
   // Message
   --message-min-height-md: 29px;
@@ -326,5 +326,5 @@
   --icon-font-size-sm: 14px;
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
-  --icon-theme-default: #000;
+  --icon-theme-default: var(--color-text);
 }

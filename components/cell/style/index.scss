@@ -117,6 +117,9 @@
   @include m(disabled) {
     @include e(body, footer) {
       color: var(--color-text-disabled);
+      @include b(icon) {
+        color: var(--color-text-disabled);
+      }
     }
   }
 }

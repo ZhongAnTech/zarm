@@ -1,20 +1,28 @@
 @import "../../style/core/index";
-@import "../../style/themes/default";
 @import 'mixins';
 
 $size: 'size-';
 $theme: 'theme-';
 
 @include b(icon) {
-  line-height: 1em;
   width: 1em;
   height: 1em;
+  font-size: var(--icon-font-size-md);
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 
   @include icon-size(var(--icon-font-size-md));
 
   /* icon themes */
   @include m($theme + 'default') {
-    @include icon-theme(var(--theme-default));
+    @include icon-theme(var(--icon-theme-default));
   }
   @include m($theme + 'primary') {
     @include icon-theme(var(--theme-primary));
