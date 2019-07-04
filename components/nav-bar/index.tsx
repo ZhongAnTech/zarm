@@ -1,13 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
-import BaseNavbarProps from './PropsType';
+import BaseNavBarProps from './PropsType';
 
-export interface NavBarProps extends BaseNavbarProps {
+export interface NavBarProps extends BaseNavBarProps {
   prefixCls?: string;
   className?: string;
 }
 
 export default class NavBar extends React.PureComponent<NavBarProps> {
+  static displayName = 'NavBar';
+
   static defaultProps = {
     prefixCls: 'za-nav-bar',
   };

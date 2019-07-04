@@ -1,6 +1,8 @@
+import PropsType from './PropsType';
+
 import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
 
-const getHorizontal = (distance, key) => {
+const getHorizontal = (distance: number, key: string) => {
   return `@-webkit-keyframes ${key} {
       100% {
         -webkit-transform: translate3d(${distance}px, 0, 0);
@@ -15,7 +17,7 @@ const getHorizontal = (distance, key) => {
     }`;
 };
 
-const getVertical = (distance, key) => {
+const getVertical = (distance: number, key: string) => {
   return `@-webkit-keyframes ${key} {
     100% {
       -webkit-transform: translate3d(0, ${distance}px, 0);
@@ -30,28 +32,28 @@ const getVertical = (distance, key) => {
   }`;
 };
 
-const directionLeft = (distance, key) => {
+const directionLeft = (distance: number, key: string) => {
   return getHorizontal(-distance, key);
 };
 
-const directionRight = (distance, key) => {
+const directionRight = (distance: number, key: string) => {
   return getHorizontal(distance, key);
 };
 
-const directionUp = (distance, key) => {
+const directionUp = (distance: number, key: string) => {
   return getVertical(-distance, key);
 };
 
-const directionDown = (distance, key) => {
+const directionDown = (distance: number, key: string) => {
   return getVertical(distance, key);
 };
 
-const animationModifier = (duration, loop, delay, key) => {
+const animationModifier = (duration: number, loop: boolean, delay: number, key: string) => {
   const infinite = loop ? 'infinite' : 1;
   return `${duration}ms ${key} ${delay}ms linear ${infinite}`;
 };
 
-const getKeyFrameModifier = (direction) => {
+const getKeyFrameModifier = (direction: PropsType['direction']) => {
   const dir = direction.toLowerCase();
   switch (dir) {
     case DIRECTION_LEFT:

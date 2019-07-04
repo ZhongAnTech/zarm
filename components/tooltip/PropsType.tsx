@@ -21,5 +21,5 @@ export default interface PropsType {
   visible?: boolean;
   direction: direction;
   onVisibleChange?: (visible?: boolean) => void;
-  title?: () => void | ReactNode ;
+  title?: (() => void) | ReactNode;
 }

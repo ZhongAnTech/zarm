@@ -9,7 +9,7 @@
  * onChange: () => { file, fileType, fileSize, fileName, thumbnail }。
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
-import React, { PureComponent, cloneElement } from 'react';
+import React, { PureComponent, cloneElement, MouseEventHandler, ChangeEventHandler } from 'react';
 import classNames from 'classnames';
 import PropsType from './PropsType';
 import handleFileInfo from './utils/handleFileInfo';
@@ -19,7 +19,15 @@ export interface FilePickerProps extends PropsType {
   className?: string;
 }
 
-export default class FilePicker extends PureComponent<FilePickerProps, any> {
+export interface IFileDetail {
+  file: File;
+  fileType: string;
+  fileSize: number;
+  fileName: string;
+  thumbnail: string;
+}
+
+export default class FilePicker extends PureComponent<FilePickerProps, {}> {
   static defaultProps = {
     prefixCls: 'za-file-picker',
     disabled: false,
@@ -27,11 +35,11 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     onBeforeSelect: () => true,
   };
 
-  private file;
+  private file: HTMLInputElement | null = null;
 
-  handleDefaultInput = (e) => {
+  handleDefaultInput: MouseEventHandler<HTMLInputElement> = (e) => {
     // 防止选择同一张图片两次造成 onChange 事件不触发
-    e.target.value = null;
+    e.currentTarget.value = '';
 
     const { onBeforeSelect, disabled } = this.props;
     if (typeof onBeforeSelect !== 'function') {
@@ -44,16 +52,16 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     }
   };
 
-  handleClick = (e) => {
-    this.file.click(e);
+  handleClick = () => {
+    this.file!.click();
   };
 
-  handleChange = (e) => {
+  handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { onChange, quality, multiple } = this.props;
-    const files = [].slice.call(e.target.files);
-    const fileList: any[] = [];
+    const files: Array<File> = [].slice.call(e.target.files);
+    const fileList: Array<IFileDetail> = [];
 
-    const getFileInfo = (data) => {
+    const getFileInfo = (data: IFileDetail) => {
       if (multiple) {
         fileList.push(data);
 

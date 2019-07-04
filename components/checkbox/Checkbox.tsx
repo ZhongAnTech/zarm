@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
+import CheckboxGroup from './CheckboxGroup';
 import Cell from '../cell';
 import Button from '../button';
 
-const getChecked = (props, defaultChecked) => {
-  if ('checked' in props && props.checked) {
+const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
+  if (typeof props.checked !== 'undefined') {
     return props.checked;
   }
-  if ('defaultChecked' in props && props.defaultChecked) {
+  if (typeof props.defaultChecked !== 'undefined') {
     return props.defaultChecked;
   }
   return defaultChecked;
@@ -19,8 +20,14 @@ export interface CheckboxProps extends BaseCheckboxProps {
   className?: string;
 }
 
-export default class Checkbox extends PureComponent<CheckboxProps, any> {
-  static Group: any;
+export interface CheckboxStates {
+  checked: boolean;
+}
+
+export default class Checkbox extends PureComponent<CheckboxProps, CheckboxStates> {
+  static Group: typeof CheckboxGroup;
+
+  static displayName = 'Checkbox';
 
   static defaultProps = {
     prefixCls: 'za-checkbox',
@@ -28,19 +35,18 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
     block: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: getChecked(props, false),
-    };
-  }
+  state: CheckboxStates = {
+    checked: getChecked(this.props, false),
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
+  static getDerivedStateFromProps(nextProps: CheckboxProps) {
+    if (typeof nextProps.checked !== 'undefined') {
+      return {
+        checked: nextProps.checked,
+      };
     }
+
+    return null;
   }
 
   onValueChange = () => {
@@ -63,8 +69,8 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--checked`]: !!checked,
-      [`${prefixCls}--disabled`]: !!disabled,
+      [`${prefixCls}--checked`]: checked,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     const inputRender = (

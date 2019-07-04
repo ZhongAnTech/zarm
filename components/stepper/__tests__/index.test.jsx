@@ -67,6 +67,7 @@ describe('Stepper', () => {
     wrapper.find('.za-stepper__sub').simulate('click');
     expect(onChange).toBeCalledWith(9);
 
+    wrapper.setProps({ value: 9 });
     wrapper.find('.za-stepper__plus').simulate('click');
     expect(onChange).toBeCalledWith(10);
   });

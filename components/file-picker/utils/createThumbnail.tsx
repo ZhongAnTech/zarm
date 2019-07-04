@@ -1,5 +1,13 @@
 import changeImageSize from './changeImageSize';
 
+export interface IFileProps {
+  file: File;
+  quality?: number;
+  fileType: string;
+  maxWidth?: number | string;
+  maxHeight?: number | string;
+}
+
 /**
  * generate preview image
  * modify image quality
@@ -11,14 +19,14 @@ import changeImageSize from './changeImageSize';
  * @param maxHeight
  * @param callback
  */
-export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }: any) {
-  return new Promise((resolve) => {
+export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }: IFileProps) {
+  return new Promise<string>((resolve) => {
     const img = document.createElement('img');
 
     window.URL = window.URL || (window as any).webkitURL;
 
     img.onload = () => {
-      let imgUrl;
+      let imgUrl: string;
 
       if (quality || maxWidth || maxHeight) {
         imgUrl = changeImageSize(img, quality, fileType);
