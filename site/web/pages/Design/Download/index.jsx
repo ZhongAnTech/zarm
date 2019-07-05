@@ -26,7 +26,7 @@ const RESOURCES = [
 class Page extends PureComponent {
   render() {
     return (
-      <div className="download-page">
+      <div className="download-page markdown">
         <h1>设计资源下载</h1>
         <p>这里提供 Zarm Design 相关设计资源和设计工具的下载，更多设计资源正在整理和完善中。</p>
         <div className="resource-cards">
