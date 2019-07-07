@@ -34,7 +34,7 @@ const touchXtouches = (offsetx) => {
 describe('Tab', () => {
   it('点击到两边界限 swipeable', () => {
     const onChange = jest.fn();
-    const props = { useTabPaged: true, swipeable: true, tabWidth: 80, scrollElastic: true };
+    const props = { scrollThreshold: 3, swipeable: true, tabWidth: 80 };
     const wrapper = mount(
       createTabs({ ...props, onChange }, createDefaultChild(10))
     );
@@ -42,9 +42,9 @@ describe('Tab', () => {
     wrapper.find('.za-tabs__header__item').at(8).simulate('click');
   });
 
-  it('scrollElastic 允许弹性 left right ,page', () => {
+  it('scrollElastic 不允许弹性 left right ', () => {
     const onChange = jest.fn();
-    const props = { useTabPaged: true, swipeable: true, scrollElastic: true };
+    const props = { scrollThreshold: 3, swipeable: true, scrollElastic: true };
     const wrapper = mount(
       createTabs({ ...props, onChange }, createDefaultChild(8))
     );
@@ -67,16 +67,16 @@ describe('Tab', () => {
       .simulate('touchEnd');
   });
 
-  it('tabindexchange, valuechange, lineWidth, tabWidth', () => {
+  it('tabindexchange, valuechange, tabWidth', () => {
     const wrapper = mount(
-      createTabs({ lineWidth: 80, tabWidth: 80 }, createDefaultChild(10))
+      createTabs({ tabWidth: 80 }, createDefaultChild(10))
     );
     wrapper.find('.za-tabs__header__item').at(4).simulate('click');
     wrapper.setProps({ activeKey: 1 });
   });
   it('activeKey selected, not useTabPaged, not horizontal', () => {
     mount(
-      createTabs({ useTabPaged: false, horizontal: false }, [{
+      createTabs({ direction: 'left' }, [{
         selected: true,
       }, { }])
     );

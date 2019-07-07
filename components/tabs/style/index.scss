@@ -3,7 +3,7 @@
 @include b(tabs) {
   @include e(header) {
     position: relative;
-
+    @include onepx(bottom);
     ul {
       display: flex;
       list-style: none;
@@ -11,7 +11,6 @@
       padding: 0;
       height: var(--tabs-height);
       line-height: var(--tabs-height);
-      @include onepx(bottom);
     }
 
     &__item {
@@ -92,6 +91,7 @@
     ul{
       overflow: visible;
     }
+   
     @include e(header__item){
       cursor: pointer;
       flex-shrink: 0;

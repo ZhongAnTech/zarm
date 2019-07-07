@@ -26,13 +26,11 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   static defaultProps = {
     prefixCls: 'za-tabs',
     disabled: false,
-    hasline: false,
     swipeable: false,
     defaultActiveKey: 0,
-    useTabPaged: false,
-    horizontal: true,
-    scrollElastic: true,
+    direction: 'top',
     activeKey: 0,
+    scrollThreshold: 4,
   };
 
   private carousel;
@@ -79,18 +77,16 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   }
 
   render() {
-    const { prefixCls, className, hasline, swipeable, children, horizontal, useTabPaged, page } = this.props;
-
+    const { prefixCls, className, swipeable, children, direction, scrollThreshold } = this.props;
     const classes = classnames(prefixCls, className,
-      { [`${prefixCls}--hasline`]: hasline },
-      { [`${prefixCls}--paged`]: page ? false : useTabPaged },
-      `${prefixCls}--${horizontal ? 'horizontal' : 'vertical'}`);
+      { [`${prefixCls}--paged`] : scrollThreshold ? (children.length > scrollThreshold) : false },
+      `${prefixCls}--${direction === 'top' ? 'horizontal' : 'vertical'}`);
     // 渲染内容
     let contentRender;
     if (swipeable) {
       contentRender = (
         <Carousel
-          direction={horizontal ? 'left' : 'right'}
+          direction={direction === 'top' ? 'left' : 'right'}
           showPagination={false}
           activeIndex={this.state.activeKey}
           ref={(ele) => { this.carousel = ele; }}

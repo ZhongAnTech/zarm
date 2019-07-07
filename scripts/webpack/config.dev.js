@@ -19,7 +19,7 @@ config.plugins.push(
 );
 config.module.rules[0].use[0].options.plugins.push('react-hot-loader/babel');
 config.devServer = {
-  host: '192.168.32.64',
+  host: '192.168.1.5',
   port: 3000,
   compress: true,
   noInfo: true,

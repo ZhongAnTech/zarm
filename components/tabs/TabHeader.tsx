@@ -15,9 +15,9 @@ export interface TabHeaderProps extends TabBasePropsType {
 export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> {
   static defaultProps = {
     prefixCls: 'za-tabs',
-    animationDuration: CONSTANS.ANIMATION_DURATION,
     tabWidth: CONSTANS.TAB_WIDTH,
     tabHeight: CONSTANS.TAB_HEIGHT,
+    scrollThreshold: 4,
   };
 
   private tabsHeaderBar;
@@ -25,20 +25,14 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   private translateX: number = 0;
   private tabBarWidth: number = 0;
   private barWidth: number = 0;
-  private tabLineWidth: any = 0;
   private tabInEndCritical: number = 0;  // tab滑动右侧临界值
 
   constructor(props) {
     super(props);
     this.state = {
       activeIndex: props.activeIndex,
-      activeIndexChanged: false,
       linePosition: 0,
     };
-  }
-  componentWillMount() {
-    const { tabWidth, children, useTabPaged, lineWidth } = this.props;
-    this.tabLineWidth = lineWidth ? lineWidth : useTabPaged ? tabWidth : `${100 / children.length}%`;
   }
 
   componentDidMount() {
@@ -57,13 +51,13 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
 
   // 移动到指定编号
   onMoveTo = (nextIndex, animationDuration) => {
-    const { children, onChange, tabWidth, useTabPaged } = this.props;
+    const { children, onChange, tabWidth, scrollThreshold } = this.props;
     const { activeIndex } = this.state;
 
     let translateDistance = 0;
     const sdX = - nextIndex * tabWidth! - this.translateX;     // 需要位移的距离 stepDistanceX
     let linePosition;
-    if (useTabPaged) {
+    if (scrollThreshold && children.length > scrollThreshold) {
       const isF = nextIndex - activeIndex > 0;   // isF = isForward
 
       const cd = this.barWidth / 2;   // 中间点，临界值 cd = criticalCenterDistance
@@ -104,7 +98,7 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
   // 执行过渡tab动画
   doTabTransition = (offset, animationDuration, update) => {
     let x = 0;
-    if (this.props.horizontal) {
+    if (this.props.direction === 'top') {
       x = offset.x;
     }
     if (update) {
@@ -127,11 +121,11 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
 
   onDragMove = (event, { offsetX, offsetY }) => {
     const { activeIndex } = this.state;
-    if (!this.props.scrollElastic) {  // 不带弹性滑动
-      if (this.isTabScrollingInEnd({ offsetX, offsetY })) {
-        return false;
-      }
+    // if (!this.props.scrollElastic) {  // 不带弹性滑动
+    if (this.isTabScrollingInEnd({ offsetX, offsetY })) {
+      return false;
     }
+    // }
     let linePosition = this.translateX + offsetX + this.props.tabWidth! * activeIndex;
     this.doTabTransition({ x: this.translateX + offsetX, y: 0 }, 0, false);
     this.doLineTransition({ x: linePosition, y: 0 }, 0);
@@ -144,26 +138,18 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     if (!offsetX && !offsetY) {
       return;
     }
-    const { horizontal, tabWidth } = this.props;
-
+    const { direction, tabWidth } = this.props;
     let { activeIndex } = this.state;
-    const isprev = (horizontal && offsetX < 0);
-    if (horizontal) {
+    if (direction === 'top') {
       let offsetXDis = this.translateX + offsetX!; // 位移
-      // 右侧超过最大距离  弹回来
-      if (isprev && this.isTabInEnd({ offsetX, offsetY })) {
-        offsetXDis = this.tabInEndCritical;
-      } else if (!isprev && offsetXDis > 0) {
-        offsetXDis = 0;
-      }
       this.doTabTransition({ x: offsetXDis, y: 0 }, 500, true);
       this.doLineTransition({ x: offsetXDis + tabWidth! * activeIndex, y: 0 }, 500);
     }
   }
   // tab 是否滑动到了头部or尾部
   isTabScrollingInEnd = (offset) => {
-    const { horizontal } = this.props;
-    const isprev = (horizontal && offset.offsetX < 0); // ->right / down
+    const { direction } = this.props;
+    const isprev = (direction === 'top' && offset.offsetX < 0); // ->right / down
     if ((isprev && this.isTabInEnd(offset)) || (!isprev && this.isTabInFront(offset))) {
       return true;
     }
@@ -180,11 +166,11 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     return this.tabInEndCritical > this.translateX + offset.offsetX!;
   }
 
-  renderHeader = (children, useTabPaged) => {
+  renderHeader = (children, scrollThreshold) => {
     const innerUlDom = (<ul role="tablist" ref={(ele) => { this.tabsHeaderBar = ele; }}>
       {React.Children.map(children, this.renderTabs)}
     </ul>);
-    if (useTabPaged) {
+    if (scrollThreshold && children.length > scrollThreshold) {
       return (
         <Drag
           onDragMove={this.onDragMove}
@@ -200,12 +186,13 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
 
   // 是否横向移动
   renderTabs = (tab, index) => {
-    const { prefixCls, useTabPaged, horizontal, tabWidth } = this.props;
+    const { prefixCls, direction, tabWidth, scrollThreshold, children } = this.props;
     const itemCls = classnames(`${prefixCls}__header__item`, tab.props.className, {
       [`${prefixCls}__header__item--disabled`]: tab.props.disabled,
     });
+    const ifUseTabWidth = scrollThreshold && children.length > scrollThreshold && direction === 'top';
     const tabItemStyle: CSSProperties = {
-      flexBasis: (useTabPaged && horizontal) ? tabWidth : 'unset',
+      flexBasis: ifUseTabWidth ? tabWidth : 'unset',
       height: 'auto',
     };
 
@@ -222,18 +209,16 @@ export default class IsPrevTabHeader extends PureComponent<TabHeaderProps, any> 
     );
   }
   render() {
-    const { children, useTabPaged, prefixCls, lineWidth, tabWidth } = this.props;
+    const { children, prefixCls, tabWidth, scrollThreshold } = this.props;
+    const usePage = scrollThreshold && children.length > scrollThreshold;
     const lineStyle: CSSProperties = {
-      width: useTabPaged ? tabWidth : `${100 / children.length}%`,
+      width: usePage ? tabWidth : `${100 / children.length}%`,
     };
-    let lineInnerRender;
-    if (lineWidth) {
-      lineStyle.backgroundColor = 'transparent';
-      lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: this.tabLineWidth }} />;
-    }
+    lineStyle.backgroundColor = 'transparent';
+    let lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: '80%' }} />;
     return (
       <div className={`${prefixCls}__header`}>
-        {this.renderHeader(children, useTabPaged)}
+        {this.renderHeader(children, scrollThreshold)}
         <div className={`${prefixCls}__line`} style={lineStyle} ref={(ele) => { this.tabsHeaderline = ele; }}>
           {lineInnerRender}
         </div>
