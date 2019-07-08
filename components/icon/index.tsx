@@ -1,53 +1,86 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import IconProps from './PropsType';
-import SvgComponents from './component';
+import createFromIconfont from './IconFont';
 
-export function formatIconProps(props: IconProps) {
-  const { prefixcls = 'za-icon', type = '', theme = 'default', size, className = '', style = {}, ...rest } = props;
-
-  const cls = classnames(prefixcls, className, {
-    [`${prefixcls}-${type}`]: !!type,
-    [`${prefixcls}--theme-${theme}`]: !!theme,
-    [`${prefixcls}--size-${size}`]: !!size,
-  });
-
-  return {
-    className: cls,
-    style,
-    prefixcls,
-    type,
-    theme,
-    size,
-    ...rest,
-  };
-}
-
-export function generateIcon(svgComponent: ReactNode, props: IconProps) {
-  return (
-    <i {...props}>
-      {svgComponent}
-    </i>
-  );
-}
+const innerSvgProps = {
+  width: '1em',
+  height: '1em',
+  fill: 'currentColor',
+  viewBox: '0 0 1024 1024',
+};
 
 class Icon extends Component<IconProps, {}> {
   static displayName = 'Icon';
 
   static defaultProps = {
-    type: 'add',
+    prefixCls: 'za-button',
+    theme: 'default',
+    size: 'md',
+    children: undefined,
+    className: '',
+    onClick: undefined,
   };
 
   static propTypes = {
-    type: PropTypes.string,
+    /** 类名前缀 */
+    prefixCls: PropTypes.string,
+
+    /** 设置主题 */
+    theme: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger']),
+
+    /** 设置大小 */
+    size: PropTypes.oneOf(['lg', 'md', 'sm']),
+
+    /** 内容 */
+    children: PropTypes.node,
+
+    /** 自定义css类 */
+    className: PropTypes.string,
+
+    /** 点击事件 */
+    onClick: PropTypes.func,
   };
 
+  static createFromIconfont = createFromIconfont;
+
   render() {
-    const { type = '' } = this.props;
-    const SvgComponent = SvgComponents[type];
-    const newProps = formatIconProps(this.props);
-    return generateIcon(<SvgComponent />, newProps);
+    const { prefixcls = 'za-icon', type = '', theme = 'default', size, className = '', style = {}, children, component: SvgComponent, ...rest } = this.props;
+
+    const cls = classnames(prefixcls, className, {
+      [`${prefixcls}-${type}`]: !!type,
+      [`${prefixcls}--theme-${theme}`]: !!theme,
+      [`${prefixcls}--size-${size}`]: !!size,
+    });
+
+    const newProps = {
+      className: cls,
+      style,
+      prefixcls,
+      type,
+      theme,
+      size,
+      ...rest,
+    };
+
+    let innerNode: React.ReactNode;
+
+    if (SvgComponent) {
+      innerNode = (<SvgComponent {...innerSvgProps}>{children}</SvgComponent>);
+    } else if (children) {
+      innerNode = (
+        <svg {...innerSvgProps}>
+          {children}
+        </svg>
+      );
+    }
+
+    return (
+      <i {...newProps}>
+        {innerNode}
+      </i>
+    );
   }
 }
 

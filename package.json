@@ -65,11 +65,13 @@
     "react-dom": ">=16.3.1"
   },
   "dependencies": {
+    "@svgr/webpack": "^4.3.1",
     "better-scroll": "1.15.1",
     "classnames": "2.2.6",
     "create-react-context": "0.2.3",
     "hoist-non-react-statics": "^3.3.0",
     "normalize.css": "8.0.1",
+    "react-inlinesvg": "^0.8.4",
     "react-native-camera-roll-picker": "1.2.3"
   },
   "devDependencies": {
