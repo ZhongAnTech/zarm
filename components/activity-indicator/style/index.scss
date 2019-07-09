@@ -29,7 +29,7 @@ $activity-indicator-spinner-item : 12;
     @include activity-indicator-size(var(--activity-indicator-size-md));
 
     @include m(loading) {
-      animation: rotate360 1.5s linear infinite;
+      animation: za-rotate360 1.5s linear infinite;
       display: inline-block;
 
       svg {
@@ -37,7 +37,7 @@ $activity-indicator-spinner-item : 12;
       }
 
       circle {
-        animation: rotate-circular 1.5s ease-in-out infinite;
+        animation: za-rotate-circular 1.5s ease-in-out infinite;
         stroke-linecap: round;
         stroke: var(--theme-primary);
       }
@@ -48,7 +48,7 @@ $activity-indicator-spinner-item : 12;
   }
 
   @include e(spinner) {
-    animation: rotate360 .8s linear infinite;
+    animation: za-rotate360 .8s linear infinite;
     animation-timing-function: steps($activity-indicator-spinner-item);
     @for $i from 1 through $activity-indicator-spinner-item {
       div {
@@ -77,7 +77,7 @@ $activity-indicator-spinner-item : 12;
   }
 }
 
-@keyframes rotate-circular {
+@keyframes za-rotate-circular {
   0% {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
@@ -91,5 +91,15 @@ $activity-indicator-spinner-item : 12;
   100% {
     stroke-dasharray: 120, 200;
     stroke-dashoffset: -180;
+  }
+}
+
+@keyframes za-rotate360 {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

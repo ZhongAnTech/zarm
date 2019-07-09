@@ -1,4 +1,4 @@
-@keyframes door-enter {
+@keyframes za-door-enter {
   from {
     transform: scale3d(0, 1, 1);
   }
@@ -8,11 +8,11 @@
   }
 }
 
-.door-enter {
-  animation: door-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.za-door-enter {
+  animation: za-door-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@keyframes door-leave {
+@keyframes za-door-leave {
   from {
     transform: scale3d(1, 1, 1);
   }
@@ -26,6 +26,6 @@
   }
 }
 
-.door-leave {
-  animation: door-leave both;
+.za-door-leave {
+  animation: za-door-leave both;
 }

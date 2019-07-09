@@ -1,5 +1,4 @@
-/* moveUp */
-@keyframes moveUp-enter {
+@keyframes za-moveUp-enter {
   from {
     transform: translate3d(0, 100%, 0);
   }
@@ -9,11 +8,11 @@
   }
 }
 
-.moveUp-enter {
-  animation: moveUp-enter both ease-in;
+.za-moveUp-enter {
+  animation: za-moveUp-enter both ease-in;
 }
 
-@keyframes moveUp-leave {
+@keyframes za-moveUp-leave {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -23,8 +22,8 @@
   }
 }
 
-.moveUp-leave {
-  animation: moveUp-leave both ease-out;
+.za-moveUp-leave {
+  animation: za-moveUp-leave both ease-out;
 }
 
 /* moveDown */

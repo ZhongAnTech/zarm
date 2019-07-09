@@ -94,7 +94,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { mask, maskType, animationDuration } = this.props;
     const { animationState, isShow } = this.state;
     const maskCls = classnames({
-      [`fade-${animationState}`]: isShow,
+      [`za-fade-${animationState}`]: isShow,
     });
 
     const maskStyle: CSSProperties = {
@@ -132,10 +132,10 @@ export default class Portal extends PureComponent<PortalProps, any> {
         [`${prefixCls}--mask`]: direction === 'center' && mask,
         [`${prefixCls}--nomask`]: direction === 'center' && !mask,
         [`${prefixCls}--hidden`]: animationState === 'leave',
-        [`fade-${animationState}`]: direction === 'center' && isPending,
+        [`za-fade-${animationState}`]: direction === 'center' && isPending,
       }),
       wrapper: classnames(`${prefixCls}__wrapper`, {
-        [`${animationType}-${animationState}`]: direction === 'center' && isPending,
+        [`za-${animationType}-${animationState}`]: direction === 'center' && isPending,
       }),
     };
 
