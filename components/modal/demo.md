@@ -163,7 +163,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="xs" theme="warning" onClick={() => this.toggle('alert')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
           }
         >
           普通调用
@@ -171,7 +171,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" theme="warning" onClick={() => {
+            <Button size="xs" onClick={() => {
               Alert.show({
                 title: '警告',
                 message: '通过传参或promise调用均可关闭',
@@ -230,7 +230,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           description={
-            <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('confirm')}>开启</Button>
           }
         >
           普通调用
@@ -238,7 +238,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" theme="warning" onClick={() => {
+            <Button size="xs" onClick={() => {
               Confirm.show({
                 title: '确认信息',
                 message: '通过传参或promise调用均可关闭',

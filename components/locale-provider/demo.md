@@ -97,7 +97,7 @@ class Demo extends React.Component {
 
           <Cell
             description={
-              <Button size="xs" theme="warning" onClick={() => this.toggle('alert')}>开启</Button>
+              <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
             }
           >
             警告框 Alert
@@ -105,7 +105,7 @@ class Demo extends React.Component {
 
           <Cell
             description={
-              <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
+              <Button size="xs" onClick={() => this.toggle('confirm')}>开启</Button>
             }
           >
             确认框 Confirm
