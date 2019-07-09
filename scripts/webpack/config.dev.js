@@ -24,6 +24,19 @@ Object.keys(config.entry).forEach((key) => {
 });
 config.module.rules[0].use[0].options.plugins.push('react-hot-loader/babel');
 
+
+const svgrSetting = {
+  test: /\.svg$/,
+  use: ['@svgr/webpack'],
+};
+config.module.rules.splice(1, 0, svgrSetting);
+
+for (let i = 0; i < config.module.rules.length; i += 1) {
+  const item = config.module.rules[i];
+  console.log(item);
+  console.log('--------------');
+}
+
 // dev-server
 config.devServer = {
   host: '0.0.0.0',
