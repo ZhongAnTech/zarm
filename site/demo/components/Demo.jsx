@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Panel } from 'zarm';
-import locale from 'zarm/components/locale-provider/locale/zh_CN';
 import '@/components/style/entry';
 
 export default class Demo extends React.Component {
@@ -34,6 +33,9 @@ export default class Demo extends React.Component {
         argv,
       };
     }).then(({ args, argv }) => {
+      const locale = window.localStorage.language === 'en_US'
+        ? require('zarm/components/locale-provider/locale/en_US')
+        : require('zarm/components/locale-provider/locale/zh_CN');
       value = value
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
         .replace('mountNode', `document.getElementById('${this.containerId}')`)

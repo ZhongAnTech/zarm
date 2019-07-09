@@ -40,7 +40,6 @@ export default class Markdown extends React.Component {
 
   render() {
     const { document, className } = this.props;
-
     if (typeof document === 'string') {
       this.components.clear();
       const html = marked(
@@ -79,9 +78,8 @@ export default class Markdown extends React.Component {
           <main dangerouslySetInnerHTML={{ __html: html }} />
           {/* <NavBar
             style={{ position: 'fixed', top: 0 }}
-            title="zarm"
+            title={`${data.name} ${data.description}`}
             left={leftControl}
-            right={rightControl}
           /> */}
           <Footer />
         </Container>
