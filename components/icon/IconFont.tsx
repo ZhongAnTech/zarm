@@ -31,13 +31,9 @@ export default function create(options: CustomIconOptions): React.FunctionCompon
   const Iconfont: React.FunctionComponent<IconProps> = (props) => {
     const { type, children, ...restProps } = props;
 
-    // children > type
     let content: ReactNode;
     if (type) {
       content = <use xlinkHref={`#${type}`} />;
-    }
-    if (children) {
-      content = children;
     }
     return (
       <Icon {...restProps}>

@@ -39,6 +39,10 @@ exports[`NoticeBar renders correctly 1`] = `
   hasArrow={false}
   icon={
     <Icon
+      className=""
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
       type="broadcast"
     />
   }
@@ -51,6 +55,10 @@ exports[`NoticeBar renders correctly 1`] = `
     hasArrow={false}
     icon={
       <Icon
+        className=""
+        prefixCls="za-icon"
+        size="md"
+        theme="default"
         type="broadcast"
       />
     }
@@ -69,32 +77,51 @@ exports[`NoticeBar renders correctly 1`] = `
           className="za-message__icon"
         >
           <Icon
+            className=""
+            prefixCls="za-icon"
+            size="md"
+            theme="default"
             type="broadcast"
           >
-            <i
-              className="za-icon za-icon-broadcast za-icon--theme-default"
+            <Iconfont
+              className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+              prefixCls="za-icon"
               prefixcls="za-icon"
+              size="md"
               style={Object {}}
               theme="default"
               type="broadcast"
             >
-              <SvgBroadcast>
-                <svg
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  viewBox="0 0 1084 1024"
-                  width="1em"
+              <Icon
+                className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+                prefixCls="za-icon"
+                prefixcls="za-icon"
+                size="md"
+                style={Object {}}
+                theme="default"
+              >
+                <i
+                  className="za-icon za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                  prefixCls="za-icon"
+                  prefixcls="za-icon"
+                  size="md"
+                  style={Object {}}
+                  theme="default"
+                  type=""
                 >
-                  <defs>
-                    <style />
-                  </defs>
-                  <path
-                    d="M879.014 918.287c-9.427 0-18.854-3.283-26.444-9.879a39.544 39.544 0 0 1-3.764-56.109c80.564-91.075 155.106-195.252 155.106-340.54 0-145.257-74.542-249.495-155.106-340.48a39.575 39.575 0 0 1 3.764-56.17 40.418 40.418 0 0 1 56.622 3.645c86.588 97.822 175.043 220.973 175.043 393.035 0 172.032-88.546 295.213-175.013 392.945a40.358 40.358 0 0 1-30.208 13.553zM742.4 783.21c-8.102 0-16.324-2.409-23.401-7.469a39.605 39.605 0 0 1-9.216-55.567l15.932-21.564c41.562-55.808 77.432-104.057 77.432-186.88 0-85.835-31.804-127.458-72.101-180.164-7.138-9.306-14.216-18.673-21.263-28.31a39.575 39.575 0 0 1 9.216-55.567 40.358 40.358 0 0 1 56.079 9.125c6.565 9.126 13.342 18.01 20.028 26.745 43.43 56.892 88.305 115.712 88.305 228.201 0 108.966-49.393 175.435-93.064 234.135l-15.3 20.78c-7.83 10.843-20.148 16.535-32.647 16.535zM120.47 314.278a40.056 40.056 0 0 0-40.146 39.755v315.392c0 21.956 18.04 39.785 40.147 39.785h120.47c10.632 0 20.872 4.187 28.371 11.656l241.001 200.433c4.277 4.216 8.132 7.71 11.716 10.661V91.558a189.29 189.29 0 0 0-11.776 10.722L269.312 302.562c-7.53 7.53-17.74 11.686-28.37 11.686H120.47zM540.13 1024c-26.293 0-52.887-18.1-86.528-46.411L224.316 788.78H120.471C54.06 788.751 0 735.232 0 669.395V354.033c0-65.807 54.061-119.356 120.47-119.356h103.846L453.481 46.02C487.243 17.288 513.385 0 539.92 0c28.793 0 62.434 19.456 62.434 74.15v875.218c0 55.086-33.521 74.632-62.223 74.632z"
-                  />
-                </svg>
-              </SvgBroadcast>
-            </i>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#broadcast"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
           </Icon>
         </div>
       </div>
@@ -127,6 +154,10 @@ exports[`NoticeBar scrollable 1`] = `
   hasArrow={false}
   icon={
     <Icon
+      className=""
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
       type="broadcast"
     />
   }
@@ -139,6 +170,10 @@ exports[`NoticeBar scrollable 1`] = `
     hasArrow={false}
     icon={
       <Icon
+        className=""
+        prefixCls="za-icon"
+        size="md"
+        theme="default"
         type="broadcast"
       />
     }
@@ -157,32 +192,51 @@ exports[`NoticeBar scrollable 1`] = `
           className="za-message__icon"
         >
           <Icon
+            className=""
+            prefixCls="za-icon"
+            size="md"
+            theme="default"
             type="broadcast"
           >
-            <i
-              className="za-icon za-icon-broadcast za-icon--theme-default"
+            <Iconfont
+              className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+              prefixCls="za-icon"
               prefixcls="za-icon"
+              size="md"
               style={Object {}}
               theme="default"
               type="broadcast"
             >
-              <SvgBroadcast>
-                <svg
-                  fill="currentColor"
-                  height="1em"
-                  stroke="currentColor"
-                  viewBox="0 0 1084 1024"
-                  width="1em"
+              <Icon
+                className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+                prefixCls="za-icon"
+                prefixcls="za-icon"
+                size="md"
+                style={Object {}}
+                theme="default"
+              >
+                <i
+                  className="za-icon za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                  prefixCls="za-icon"
+                  prefixcls="za-icon"
+                  size="md"
+                  style={Object {}}
+                  theme="default"
+                  type=""
                 >
-                  <defs>
-                    <style />
-                  </defs>
-                  <path
-                    d="M879.014 918.287c-9.427 0-18.854-3.283-26.444-9.879a39.544 39.544 0 0 1-3.764-56.109c80.564-91.075 155.106-195.252 155.106-340.54 0-145.257-74.542-249.495-155.106-340.48a39.575 39.575 0 0 1 3.764-56.17 40.418 40.418 0 0 1 56.622 3.645c86.588 97.822 175.043 220.973 175.043 393.035 0 172.032-88.546 295.213-175.013 392.945a40.358 40.358 0 0 1-30.208 13.553zM742.4 783.21c-8.102 0-16.324-2.409-23.401-7.469a39.605 39.605 0 0 1-9.216-55.567l15.932-21.564c41.562-55.808 77.432-104.057 77.432-186.88 0-85.835-31.804-127.458-72.101-180.164-7.138-9.306-14.216-18.673-21.263-28.31a39.575 39.575 0 0 1 9.216-55.567 40.358 40.358 0 0 1 56.079 9.125c6.565 9.126 13.342 18.01 20.028 26.745 43.43 56.892 88.305 115.712 88.305 228.201 0 108.966-49.393 175.435-93.064 234.135l-15.3 20.78c-7.83 10.843-20.148 16.535-32.647 16.535zM120.47 314.278a40.056 40.056 0 0 0-40.146 39.755v315.392c0 21.956 18.04 39.785 40.147 39.785h120.47c10.632 0 20.872 4.187 28.371 11.656l241.001 200.433c4.277 4.216 8.132 7.71 11.716 10.661V91.558a189.29 189.29 0 0 0-11.776 10.722L269.312 302.562c-7.53 7.53-17.74 11.686-28.37 11.686H120.47zM540.13 1024c-26.293 0-52.887-18.1-86.528-46.411L224.316 788.78H120.471C54.06 788.751 0 735.232 0 669.395V354.033c0-65.807 54.061-119.356 120.47-119.356h103.846L453.481 46.02C487.243 17.288 513.385 0 539.92 0c28.793 0 62.434 19.456 62.434 74.15v875.218c0 55.086-33.521 74.632-62.223 74.632z"
-                  />
-                </svg>
-              </SvgBroadcast>
-            </i>
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#broadcast"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
           </Icon>
         </div>
       </div>
@@ -220,21 +274,19 @@ exports[`NoticeBar theme 1`] = `
       class="za-message__icon"
     >
       <i
-        class="za-icon za-icon-broadcast za-icon--theme-default"
+        class="za-icon za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
         prefixcls="za-icon"
         theme="default"
-        type="broadcast"
+        type=""
       >
         <svg
           fill="currentColor"
           height="1em"
-          stroke="currentColor"
-          viewBox="0 0 1084 1024"
+          viewBox="0 0 32 32"
           width="1em"
         >
-          <defs />
-          <path
-            d="M879.014 918.287c-9.427 0-18.854-3.283-26.444-9.879a39.544 39.544 0 0 1-3.764-56.109c80.564-91.075 155.106-195.252 155.106-340.54 0-145.257-74.542-249.495-155.106-340.48a39.575 39.575 0 0 1 3.764-56.17 40.418 40.418 0 0 1 56.622 3.645c86.588 97.822 175.043 220.973 175.043 393.035 0 172.032-88.546 295.213-175.013 392.945a40.358 40.358 0 0 1-30.208 13.553zM742.4 783.21c-8.102 0-16.324-2.409-23.401-7.469a39.605 39.605 0 0 1-9.216-55.567l15.932-21.564c41.562-55.808 77.432-104.057 77.432-186.88 0-85.835-31.804-127.458-72.101-180.164-7.138-9.306-14.216-18.673-21.263-28.31a39.575 39.575 0 0 1 9.216-55.567 40.358 40.358 0 0 1 56.079 9.125c6.565 9.126 13.342 18.01 20.028 26.745 43.43 56.892 88.305 115.712 88.305 228.201 0 108.966-49.393 175.435-93.064 234.135l-15.3 20.78c-7.83 10.843-20.148 16.535-32.647 16.535zM120.47 314.278a40.056 40.056 0 0 0-40.146 39.755v315.392c0 21.956 18.04 39.785 40.147 39.785h120.47c10.632 0 20.872 4.187 28.371 11.656l241.001 200.433c4.277 4.216 8.132 7.71 11.716 10.661V91.558a189.29 189.29 0 0 0-11.776 10.722L269.312 302.562c-7.53 7.53-17.74 11.686-28.37 11.686H120.47zM540.13 1024c-26.293 0-52.887-18.1-86.528-46.411L224.316 788.78H120.471C54.06 788.751 0 735.232 0 669.395V354.033c0-65.807 54.061-119.356 120.47-119.356h103.846L453.481 46.02C487.243 17.288 513.385 0 539.92 0c28.793 0 62.434 19.456 62.434 74.15v875.218c0 55.086-33.521 74.632-62.223 74.632z"
+          <use
+            href="#broadcast"
           />
         </svg>
       </i>
