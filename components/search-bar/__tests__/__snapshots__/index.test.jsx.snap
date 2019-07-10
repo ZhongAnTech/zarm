@@ -18,33 +18,19 @@ exports[`SearchBar renders correctly 1`] = `
           class="za-search-bar__mock__container"
         >
           <i
-            class="za-icon za-icon-search za-icon--theme-default"
-            prefixcls="za-icon"
+            class="za-icon za-icon--search za-icon--default za-icon--md"
             theme="default"
             type="search"
           >
             <svg
               fill="currentColor"
               height="1em"
-              stroke="currentColor"
-              viewBox="0 0 36 36"
+              viewBox="0 0 32 32"
               width="1em"
             >
-              <g
-                fill="none"
-                fill-rule="evenodd"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2.6"
-              >
-                <path
-                  d="M34.045 30.935l-3.1 3.1-7.957-7.958 3.15-3.049z"
-                />
-                <path
-                  d="M15.146 1.96c7.281 0 13.185 5.904 13.185 13.186 0 7.283-5.904 13.185-13.185 13.185-7.283 0-13.187-5.902-13.187-13.185C1.96 7.864 7.865 1.96 15.146 1.96z"
-                />
-              </g>
+              <use
+                href="#search"
+              />
             </svg>
           </i>
           <span
@@ -65,34 +51,19 @@ exports[`SearchBar renders correctly 1`] = `
           value=""
         />
         <i
-          class="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
-          prefixcls="za-icon"
+          class="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
           theme="default"
           type="wrong-round-fill"
         >
           <svg
             fill="currentColor"
             height="1em"
-            stroke="currentColor"
-            viewBox="0 0 37 37"
+            viewBox="0 0 32 32"
             width="1em"
           >
-            <g
-              fill="none"
-              fill-rule="evenodd"
-              stroke="none"
-              stroke-width="2.6"
-            >
-              <path
-                d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
-                fill="currentColor"
-                stroke="currentColor"
-              />
-              <path
-                d="M13 13l11 11m0-11L13 24"
-                stroke="#FFF"
-              />
-            </g>
+            <use
+              href="#wrong-round-fill"
+            />
           </svg>
         </i>
       </div>
@@ -155,41 +126,45 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-icon-search za-icon--theme-default"
-                    prefixcls="za-icon"
-                    style={Object {}}
+                  <Iconfont
+                    className="za-icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
                     theme="default"
                     type="search"
                   >
-                    <SvgSearch>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 36 36"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-icon--search za-icon--default za-icon--md"
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-icon--search za-icon--default za-icon--md"
+                        size="md"
+                        theme="default"
+                        type="search"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M34.045 30.935l-3.1 3.1-7.957-7.958 3.15-3.049z"
+                          <use
+                            xlinkHref="#search"
                           />
-                          <path
-                            d="M15.146 1.96c7.281 0 13.185 5.904 13.185 13.186 0 7.283-5.904 13.185-13.185 13.185-7.283 0-13.187-5.902-13.187-13.185C1.96 7.864 7.865 1.96 15.146 1.96z"
-                          />
-                        </g>
-                      </svg>
-                    </SvgSearch>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
                 <span
                   className="za-search-bar__mock__placeholder"
@@ -239,43 +214,48 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
+                  <Iconfont
+                    className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
                     onClick={[Function]}
-                    prefixcls="za-icon"
-                    style={Object {}}
+                    size="md"
                     theme="default"
                     type="wrong-round-fill"
                   >
-                    <SvgWrongRoundFill>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 37 37"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="none"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
-                            fill="currentColor"
-                            stroke="currentColor"
+                          <use
+                            xlinkHref="#wrong-round-fill"
                           />
-                          <path
-                            d="M13 13l11 11m0-11L13 24"
-                            stroke="#FFF"
-                          />
-                        </g>
-                      </svg>
-                    </SvgWrongRoundFill>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
               </div>
             </InputBase>
@@ -375,41 +355,45 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-icon-search za-icon--theme-default"
-                    prefixcls="za-icon"
-                    style={Object {}}
+                  <Iconfont
+                    className="za-icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
                     theme="default"
                     type="search"
                   >
-                    <SvgSearch>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 36 36"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-icon--search za-icon--default za-icon--md"
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-icon--search za-icon--default za-icon--md"
+                        size="md"
+                        theme="default"
+                        type="search"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M34.045 30.935l-3.1 3.1-7.957-7.958 3.15-3.049z"
+                          <use
+                            xlinkHref="#search"
                           />
-                          <path
-                            d="M15.146 1.96c7.281 0 13.185 5.904 13.185 13.186 0 7.283-5.904 13.185-13.185 13.185-7.283 0-13.187-5.902-13.187-13.185C1.96 7.864 7.865 1.96 15.146 1.96z"
-                          />
-                        </g>
-                      </svg>
-                    </SvgSearch>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
                 <span
                   className="za-search-bar__mock__placeholder"
@@ -459,43 +443,48 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
+                  <Iconfont
+                    className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
                     onClick={[Function]}
-                    prefixcls="za-icon"
-                    style={Object {}}
+                    size="md"
                     theme="default"
                     type="wrong-round-fill"
                   >
-                    <SvgWrongRoundFill>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 37 37"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="none"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
-                            fill="currentColor"
-                            stroke="currentColor"
+                          <use
+                            xlinkHref="#wrong-round-fill"
                           />
-                          <path
-                            d="M13 13l11 11m0-11L13 24"
-                            stroke="#FFF"
-                          />
-                        </g>
-                      </svg>
-                    </SvgWrongRoundFill>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
               </div>
             </InputBase>
@@ -601,41 +590,45 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-icon-search za-icon--theme-default"
-                    prefixcls="za-icon"
-                    style={Object {}}
+                  <Iconfont
+                    className="za-icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
                     theme="default"
                     type="search"
                   >
-                    <SvgSearch>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 36 36"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-icon--search za-icon--default za-icon--md"
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-icon--search za-icon--default za-icon--md"
+                        size="md"
+                        theme="default"
+                        type="search"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M34.045 30.935l-3.1 3.1-7.957-7.958 3.15-3.049z"
+                          <use
+                            xlinkHref="#search"
                           />
-                          <path
-                            d="M15.146 1.96c7.281 0 13.185 5.904 13.185 13.186 0 7.283-5.904 13.185-13.185 13.185-7.283 0-13.187-5.902-13.187-13.185C1.96 7.864 7.865 1.96 15.146 1.96z"
-                          />
-                        </g>
-                      </svg>
-                    </SvgSearch>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
                 <span
                   className="za-search-bar__mock__placeholder"
@@ -685,43 +678,48 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                 <Icon
                   className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default"
+                  <Iconfont
+                    className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill za-icon--default za-icon--md"
                     onClick={[Function]}
-                    prefixcls="za-icon"
-                    style={Object {}}
+                    size="md"
                     theme="default"
                     type="wrong-round-fill"
                   >
-                    <SvgWrongRoundFill>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 37 37"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="none"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
-                            fill="currentColor"
-                            stroke="currentColor"
+                          <use
+                            xlinkHref="#wrong-round-fill"
                           />
-                          <path
-                            d="M13 13l11 11m0-11L13 24"
-                            stroke="#FFF"
-                          />
-                        </g>
-                      </svg>
-                    </SvgWrongRoundFill>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
               </div>
             </InputBase>
@@ -822,41 +820,45 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-icon-search za-icon--theme-default"
-                    prefixcls="za-icon"
-                    style={Object {}}
+                  <Iconfont
+                    className="za-icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
                     theme="default"
                     type="search"
                   >
-                    <SvgSearch>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 36 36"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-icon--search za-icon--default za-icon--md"
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-icon--search za-icon--default za-icon--md"
+                        size="md"
+                        theme="default"
+                        type="search"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M34.045 30.935l-3.1 3.1-7.957-7.958 3.15-3.049z"
+                          <use
+                            xlinkHref="#search"
                           />
-                          <path
-                            d="M15.146 1.96c7.281 0 13.185 5.904 13.185 13.186 0 7.283-5.904 13.185-13.185 13.185-7.283 0-13.187-5.902-13.187-13.185C1.96 7.864 7.865 1.96 15.146 1.96z"
-                          />
-                        </g>
-                      </svg>
-                    </SvgSearch>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
                 <span
                   className="za-search-bar__mock__placeholder"
@@ -906,43 +908,48 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
+                  <Iconfont
+                    className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
                     onClick={[Function]}
-                    prefixcls="za-icon"
-                    style={Object {}}
+                    size="md"
                     theme="default"
                     type="wrong-round-fill"
                   >
-                    <SvgWrongRoundFill>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 37 37"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="none"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
-                            fill="currentColor"
-                            stroke="currentColor"
+                          <use
+                            xlinkHref="#wrong-round-fill"
                           />
-                          <path
-                            d="M13 13l11 11m0-11L13 24"
-                            stroke="#FFF"
-                          />
-                        </g>
-                      </svg>
-                    </SvgWrongRoundFill>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
               </div>
             </InputBase>
@@ -1042,41 +1049,45 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-icon-search za-icon--theme-default"
-                    prefixcls="za-icon"
-                    style={Object {}}
+                  <Iconfont
+                    className="za-icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
                     theme="default"
                     type="search"
                   >
-                    <SvgSearch>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 36 36"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-icon--search za-icon--default za-icon--md"
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-icon--search za-icon--default za-icon--md"
+                        size="md"
+                        theme="default"
+                        type="search"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M34.045 30.935l-3.1 3.1-7.957-7.958 3.15-3.049z"
+                          <use
+                            xlinkHref="#search"
                           />
-                          <path
-                            d="M15.146 1.96c7.281 0 13.185 5.904 13.185 13.186 0 7.283-5.904 13.185-13.185 13.185-7.283 0-13.187-5.902-13.187-13.185C1.96 7.864 7.865 1.96 15.146 1.96z"
-                          />
-                        </g>
-                      </svg>
-                    </SvgSearch>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
                 <span
                   className="za-search-bar__mock__placeholder"
@@ -1126,43 +1137,48 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default"
+                  <Iconfont
+                    className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
                     onClick={[Function]}
-                    prefixcls="za-icon"
-                    style={Object {}}
+                    size="md"
                     theme="default"
                     type="wrong-round-fill"
                   >
-                    <SvgWrongRoundFill>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 37 37"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="none"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
-                            fill="currentColor"
-                            stroke="currentColor"
+                          <use
+                            xlinkHref="#wrong-round-fill"
                           />
-                          <path
-                            d="M13 13l11 11m0-11L13 24"
-                            stroke="#FFF"
-                          />
-                        </g>
-                      </svg>
-                    </SvgWrongRoundFill>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
               </div>
             </InputBase>
@@ -1268,41 +1284,45 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-icon-search za-icon--theme-default"
-                    prefixcls="za-icon"
-                    style={Object {}}
+                  <Iconfont
+                    className="za-icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
                     theme="default"
                     type="search"
                   >
-                    <SvgSearch>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 36 36"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-icon--search za-icon--default za-icon--md"
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-icon--search za-icon--default za-icon--md"
+                        size="md"
+                        theme="default"
+                        type="search"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M34.045 30.935l-3.1 3.1-7.957-7.958 3.15-3.049z"
+                          <use
+                            xlinkHref="#search"
                           />
-                          <path
-                            d="M15.146 1.96c7.281 0 13.185 5.904 13.185 13.186 0 7.283-5.904 13.185-13.185 13.185-7.283 0-13.187-5.902-13.187-13.185C1.96 7.864 7.865 1.96 15.146 1.96z"
-                          />
-                        </g>
-                      </svg>
-                    </SvgSearch>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
                 <span
                   className="za-search-bar__mock__placeholder"
@@ -1352,43 +1372,48 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                 <Icon
                   className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
-                  <i
-                    className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default"
+                  <Iconfont
+                    className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill za-icon--default za-icon--md"
                     onClick={[Function]}
-                    prefixcls="za-icon"
-                    style={Object {}}
+                    size="md"
                     theme="default"
                     type="wrong-round-fill"
                   >
-                    <SvgWrongRoundFill>
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        stroke="currentColor"
-                        viewBox="0 0 37 37"
-                        width="1em"
+                    <Icon
+                      className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      prefixCls="za-icon"
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
+                    >
+                      <i
+                        className="za-icon za-input__clear za-input__clear--show za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
                       >
-                        <g
-                          fill="none"
-                          fillRule="evenodd"
-                          stroke="none"
-                          strokeWidth={2.6}
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
                         >
-                          <path
-                            d="M35 18.5C35 27.613 27.613 35 18.5 35S2 27.613 2 18.5 9.387 2 18.5 2 35 9.387 35 18.5z"
-                            fill="currentColor"
-                            stroke="currentColor"
+                          <use
+                            xlinkHref="#wrong-round-fill"
                           />
-                          <path
-                            d="M13 13l11 11m0-11L13 24"
-                            stroke="#FFF"
-                          />
-                        </g>
-                      </svg>
-                    </SvgWrongRoundFill>
-                  </i>
+                        </svg>
+                      </i>
+                    </Icon>
+                  </Iconfont>
                 </Icon>
               </div>
             </InputBase>

@@ -24,23 +24,18 @@ exports[`NavBar renders correctly with left content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon-arrow-left za-icon--theme-default"
-      prefixcls="za-icon"
+      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
       theme="default"
       type="arrow-left"
     >
       <svg
         fill="currentColor"
         height="1em"
-        stroke="currentColor"
-        viewBox="0 0 18 32"
+        viewBox="0 0 32 32"
         width="1em"
       >
-        <path
-          d="M16.99 1L2 15.928l14.99 14.61"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.6"
+        <use
+          href="#arrow-left"
         />
       </svg>
     </i>
@@ -65,23 +60,18 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon-arrow-left za-icon--theme-default"
-        prefixcls="za-icon"
+        class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
         theme="default"
         type="arrow-left"
       >
         <svg
           fill="currentColor"
           height="1em"
-          stroke="currentColor"
-          viewBox="0 0 18 32"
+          viewBox="0 0 32 32"
           width="1em"
         >
-          <path
-            d="M16.99 1L2 15.928l14.99 14.61"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.6"
+          <use
+            href="#arrow-left"
           />
         </svg>
       </i>
@@ -97,24 +87,18 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon-arrow-right za-icon--theme-default"
-        prefixcls="za-icon"
+        class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
         theme="default"
         type="arrow-right"
       >
         <svg
           fill="currentColor"
           height="1em"
-          stroke="currentColor"
-          viewBox="0 0 18 32"
+          viewBox="0 0 32 32"
           width="1em"
         >
-          <path
-            d="M1 1l14.99 14.928L1 30.538"
-            fill="none"
-            fill-rule="evenodd"
-            stroke="currentColor"
-            stroke-width="2.6"
+          <use
+            href="#arrow-right"
           />
         </svg>
       </i>
@@ -164,23 +148,18 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon-arrow-left za-icon--theme-default"
-      prefixcls="za-icon"
+      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
       theme="default"
       type="arrow-left"
     >
       <svg
         fill="currentColor"
         height="1em"
-        stroke="currentColor"
-        viewBox="0 0 18 32"
+        viewBox="0 0 32 32"
         width="1em"
       >
-        <path
-          d="M16.99 1L2 15.928l14.99 14.61"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.6"
+        <use
+          href="#arrow-left"
         />
       </svg>
     </i>
@@ -194,24 +173,18 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--right"
   >
     <i
-      class="za-icon za-icon-arrow-right za-icon--theme-default"
-      prefixcls="za-icon"
+      class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
       theme="default"
       type="arrow-right"
     >
       <svg
         fill="currentColor"
         height="1em"
-        stroke="currentColor"
-        viewBox="0 0 18 32"
+        viewBox="0 0 32 32"
         width="1em"
       >
-        <path
-          d="M1 1l14.99 14.928L1 30.538"
-          fill="none"
-          fill-rule="evenodd"
-          stroke="currentColor"
-          stroke-width="2.6"
+        <use
+          href="#arrow-right"
         />
       </svg>
     </i>

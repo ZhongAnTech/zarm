@@ -18,7 +18,11 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
       type="minus"
+      viewBox="0 0 32 32"
     />
   </Button>
   <input
@@ -43,7 +47,11 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
       type="add"
+      viewBox="0 0 32 32"
     />
   </Button>
 </span>
@@ -60,24 +68,18 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon-minus za-icon--theme-default"
-        prefixcls="za-icon"
+        class="za-icon za-icon--minus za-icon--default za-icon--md"
         theme="default"
         type="minus"
       >
         <svg
           fill="currentColor"
           height="1em"
-          stroke="currentColor"
-          viewBox="0 0 30 4"
+          viewBox="0 0 32 32"
           width="1em"
         >
-          <path
-            d="M29.66 2H0"
-            fill="none"
-            fill-rule="evenodd"
-            stroke="currentColor"
-            stroke-width="2.6"
+          <use
+            href="#minus"
           />
         </svg>
       </i>
@@ -95,24 +97,18 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon-add za-icon--theme-default"
-        prefixcls="za-icon"
+        class="za-icon za-icon--add za-icon--default za-icon--md"
         theme="default"
         type="add"
       >
         <svg
           fill="currentColor"
           height="1em"
-          stroke="currentColor"
           viewBox="0 0 32 32"
           width="1em"
         >
-          <path
-            d="M15.59 0v31.18m15.59-15.59H0"
-            fill="none"
-            fill-rule="evenodd"
-            stroke="currentColor"
-            stroke-width="2.6"
+          <use
+            href="#add"
           />
         </svg>
       </i>
