@@ -164,7 +164,6 @@ exports[`Icon renders Icons using svg component 1`] = `
   <i
     class="za-icon za-icon--theme-primary za-icon--size-lg"
     theme="primary"
-    type=""
   >
     <svg
       fill="currentColor"
