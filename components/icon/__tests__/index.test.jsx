@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Icon from '../index';
+import Right from './Right';
 
 describe('Icon', () => {
   it('renders all Icons', () => {
@@ -64,6 +65,16 @@ describe('Icon', () => {
     const wrapper = render(
       <div>
         <MyIcon size="lg" theme="primary" type="icon-empty_fill" />
+        <MyIcon size="lg" theme="primary" type="icon-caidan07" />
+      </div>,
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders Icons using svg component', () => {
+    const wrapper = render(
+      <div>
+        <Icon size="lg" theme="primary" component={Right} />
       </div>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();

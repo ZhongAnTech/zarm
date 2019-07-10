@@ -64,10 +64,9 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-        prefixcls="za-icon"
+        class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
         theme="default"
-        type=""
+        type="keyboard"
       >
         <svg
           fill="currentColor"
@@ -89,10 +88,9 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-        prefixcls="za-icon"
+        class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
         theme="default"
-        type=""
+        type="deletekey"
       >
         <svg
           fill="currentColor"
@@ -181,10 +179,9 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-        prefixcls="za-icon"
+        class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
         theme="default"
-        type=""
+        type="keyboard"
       >
         <svg
           fill="currentColor"
@@ -206,10 +203,9 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-        prefixcls="za-icon"
+        class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
         theme="default"
-        type=""
+        type="deletekey"
       >
         <svg
           fill="currentColor"
@@ -298,10 +294,9 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-        prefixcls="za-icon"
+        class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
         theme="default"
-        type=""
+        type="keyboard"
       >
         <svg
           fill="currentColor"
@@ -323,10 +318,9 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-        prefixcls="za-icon"
+        class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
         theme="default"
-        type=""
+        type="deletekey"
       >
         <svg
           fill="currentColor"
