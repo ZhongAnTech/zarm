@@ -1,10 +1,6 @@
 @import "../../style/core/index";
 
 @include b(toast) {
-  // display: none;
-  // position: fixed;
-  // left: 0;
-  // top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,15 +10,8 @@
   user-select: none;
   z-index: var(--zindex-toast);
 
-  // @include m(open) {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  // }
-
   @include e(container) {
     position: relative;
-    max-width: var(--toast-max-width);
     padding: var(--padding-v-md) var(--padding-h-md);
     border-radius: var(--toast-border-radius);
     background: rgba(0, 0, 0, var(--opacity-toast));

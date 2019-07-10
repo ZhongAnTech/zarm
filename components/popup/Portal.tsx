@@ -127,26 +127,25 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { isShow, animationState, isPending } = this.state;
 
     const cls = {
-      popupCls: classnames(prefixCls, className, {
-        [`${prefixCls}--${direction}`]: !!direction,
-        [`${prefixCls}--mask`]: direction === 'center' && mask,
-        [`${prefixCls}--nomask`]: direction === 'center' && !mask,
-        [`${prefixCls}--hidden`]: animationState === 'leave',
+      wrapper: classnames(`${prefixCls}__wrapper`, className, {
         [`za-fade-${animationState}`]: direction === 'center' && isPending,
       }),
-      wrapper: classnames(`${prefixCls}__wrapper`, {
+      popup: classnames(prefixCls, {
+        [`${prefixCls}--${direction}`]: !!direction,
+        [`${prefixCls}--nomask`]: direction === 'center' && !mask,
+        [`${prefixCls}--hidden`]: animationState === 'leave',
         [`za-${animationType}-${animationState}`]: direction === 'center' && isPending,
       }),
     };
 
-    const popupStyle: CSSProperties = direction === 'center'
+    const wrapStyle: CSSProperties = direction === 'center'
       ? {
         WebkitAnimationDuration: `${animationDuration}ms`,
         animationDuration: `${animationDuration}ms`,
       }
       : {};
 
-    const wrapStyle: CSSProperties = direction === 'center'
+    const popupStyle: CSSProperties = direction === 'center'
       ? {
         width,
         WebkitAnimationDuration: `${animationDuration}ms`,
@@ -161,14 +160,27 @@ export default class Portal extends PureComponent<PortalProps, any> {
       popupStyle.display = 'none';
     }
 
+    if (!mask) {
+      return (
+        <div
+          className={cls.popup}
+          style={popupStyle}
+          role="dialog"
+          ref={(popup) => { this.popup = popup; }}
+        >
+          {children}
+        </div>
+      );
+    }
+
     return (
       <div
         role="dialog"
-        className={cls.popupCls}
-        style={popupStyle}
+        className={cls.wrapper}
+        style={wrapStyle}
         ref={(popup) => { this.popup = popup; }}
       >
-        <div className={cls.wrapper} style={wrapStyle} role="document">
+        <div className={cls.popup} style={popupStyle} role="document">
           {children}
         </div>
         {this.renderMask()}

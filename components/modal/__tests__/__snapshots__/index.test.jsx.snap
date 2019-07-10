@@ -38,14 +38,14 @@ exports[`Modal renders correctly 1`] = `
             class="popup-container"
           >
             <div
-              class="za-popup za-modal za-modal--radius za-popup--center za-popup--mask za-popup--hidden"
+              class="za-popup__wrapper za-modal za-modal--radius"
               role="dialog"
-              style="animation-duration: 200ms; display: none;"
+              style="animation-duration: 200ms;"
             >
               <div
-                class="za-popup__wrapper"
+                class="za-popup za-popup--center za-popup--hidden"
                 role="document"
-                style="width: 70%; animation-duration: 200ms;"
+                style="width: 70%; animation-duration: 200ms; display: none;"
               >
                 <div
                   class="za-modal__dialog"
@@ -87,23 +87,23 @@ exports[`Modal renders correctly 1`] = `
         }
       >
         <div
-          className="za-popup za-modal za-modal--radius za-popup--center za-popup--mask za-popup--hidden"
+          className="za-popup__wrapper za-modal za-modal--radius"
           role="dialog"
           style={
             Object {
               "WebkitAnimationDuration": "200ms",
               "animationDuration": "200ms",
-              "display": "none",
             }
           }
         >
           <div
-            className="za-popup__wrapper"
+            className="za-popup za-popup--center za-popup--hidden"
             role="document"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
                 "animationDuration": "200ms",
+                "display": "none",
                 "width": "70%",
               }
             }

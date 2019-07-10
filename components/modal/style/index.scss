@@ -15,21 +15,17 @@
   z-index: var(--zindex-modal);
 
   @include b(popup) {
-    @include e(wrapper) {
-      position: relative;
-      margin: r(60) auto;
-      background-color: var(--modal-background);
-      box-shadow: 0 r(7) r(21) var(--color-shadow);
-      overflow: hidden;
-      z-index: calc(var(--zindex-modal) + 1);
-    }
+    position: relative;
+    margin: r(60) auto;
+    background-color: var(--modal-background);
+    box-shadow: 0 r(7) r(21) var(--color-shadow);
+    overflow: hidden;
+    z-index: calc(var(--zindex-modal) + 1);
   }
 
   @include m(radius) {
     @include b(popup) {
-      &__wrapper {
-        border-radius: var(--radius-md);
-      }
+      border-radius: var(--radius-md);
     }
   }
 
