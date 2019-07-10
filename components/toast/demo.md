@@ -7,13 +7,6 @@
 import { Toast, Cell, Button, Icon } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      visible: false,
-      test: false,
-    }
-  }
   render() {
     return (
       <div>
@@ -22,9 +15,7 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                this.setState({
-                  visible: true,
-                })
+                Toast.show('默认3秒自动关闭');
               }}
             >
               开启
@@ -39,7 +30,7 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('指定5秒后自动关闭', 5000, true, () => {
+                Toast.show('指定5秒后自动关闭', 5000, false, () => {
                   console.log('Toast已关闭');
                 });
               }}
@@ -56,7 +47,7 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Toast.show('可同时进行其他交互', 5000, false, () => {
+                Toast.show('不可同时进行其他交互', 5000, true, () => {
                   console.log('Toast已关闭');
                 });
               }}
@@ -65,7 +56,7 @@ class Demo extends React.Component {
             </Button>
           }
         >
-          无遮罩层
+          有遮罩层
         </Cell>
 
         <Cell
@@ -89,14 +80,6 @@ class Demo extends React.Component {
         >
           自定义内容
         </Cell>
-
-        <Toast
-          visible={this.state.visible}
-          afterClose={() => { this.setState({ visible: false }) }}
-          mask={false}
-          stayTime={3000}>
-          默认3秒自动关闭{this.state.test}
-        </Toast>
       </div>
     )
   }
@@ -116,7 +99,6 @@ class Demo extends React.Component {
     super();
     this.state = {
       visible: false,
-      test: false,
     }
   }
   render() {
@@ -144,8 +126,8 @@ class Demo extends React.Component {
             <Button
               size="xs"
               onClick={() => {
-                Loading.show(<ActivityIndicator size="lg"/>);
-                setTimeout(()=>{
+                Loading.show(<ActivityIndicator size="lg" />);
+                setTimeout(() => {
                   Loading.hide();
                 }, 3000);
               }}
