@@ -39,7 +39,7 @@ exports[`NoticeBar renders correctly 1`] = `
   hasArrow={false}
   icon={
     <Icon
-      prefixcls="za-icon"
+      prefixCls="za-icon"
       size="md"
       theme="default"
       type="broadcast"
@@ -55,7 +55,7 @@ exports[`NoticeBar renders correctly 1`] = `
     hasArrow={false}
     icon={
       <Icon
-        prefixcls="za-icon"
+        prefixCls="za-icon"
         size="md"
         theme="default"
         type="broadcast"
@@ -77,32 +77,29 @@ exports[`NoticeBar renders correctly 1`] = `
           className="za-message__icon"
         >
           <Icon
-            prefixcls="za-icon"
+            prefixCls="za-icon"
             size="md"
             theme="default"
             type="broadcast"
             viewBox="0 0 32 32"
           >
             <Iconfont
-              className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+              className="za-icon za-icon--broadcast za-icon--default za-icon--md"
               size="md"
-              style={Object {}}
               theme="default"
               type="broadcast"
             >
               <Icon
-                className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-                prefixcls="za-icon"
+                className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+                prefixCls="za-icon"
                 size="md"
-                style={Object {}}
                 theme="default"
                 type="broadcast"
                 viewBox="0 0 32 32"
               >
                 <i
-                  className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+                  className="za-icon za-icon--broadcast za-icon--default za-icon--md"
                   size="md"
-                  style={Object {}}
                   theme="default"
                   type="broadcast"
                 >
@@ -151,7 +148,7 @@ exports[`NoticeBar scrollable 1`] = `
   hasArrow={false}
   icon={
     <Icon
-      prefixcls="za-icon"
+      prefixCls="za-icon"
       size="md"
       theme="default"
       type="broadcast"
@@ -167,7 +164,7 @@ exports[`NoticeBar scrollable 1`] = `
     hasArrow={false}
     icon={
       <Icon
-        prefixcls="za-icon"
+        prefixCls="za-icon"
         size="md"
         theme="default"
         type="broadcast"
@@ -189,32 +186,29 @@ exports[`NoticeBar scrollable 1`] = `
           className="za-message__icon"
         >
           <Icon
-            prefixcls="za-icon"
+            prefixCls="za-icon"
             size="md"
             theme="default"
             type="broadcast"
             viewBox="0 0 32 32"
           >
             <Iconfont
-              className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+              className="za-icon za-icon--broadcast za-icon--default za-icon--md"
               size="md"
-              style={Object {}}
               theme="default"
               type="broadcast"
             >
               <Icon
-                className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-                prefixcls="za-icon"
+                className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+                prefixCls="za-icon"
                 size="md"
-                style={Object {}}
                 theme="default"
                 type="broadcast"
                 viewBox="0 0 32 32"
               >
                 <i
-                  className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+                  className="za-icon za-icon--broadcast za-icon--default za-icon--md"
                   size="md"
-                  style={Object {}}
                   theme="default"
                   type="broadcast"
                 >
@@ -268,7 +262,7 @@ exports[`NoticeBar theme 1`] = `
       class="za-message__icon"
     >
       <i
-        class="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon--broadcast za-icon--default za-icon--md"
         theme="default"
         type="broadcast"
       >

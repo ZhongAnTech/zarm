@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Icon renders Icons of different size correctly 1`] = `
-<div>
+Array [
   <i
-    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-lg"
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--lg"
     theme="primary"
     type="broadcast"
   >
@@ -17,9 +17,9 @@ exports[`Icon renders Icons of different size correctly 1`] = `
         href="#broadcast"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--md"
     theme="primary"
     type="broadcast"
   >
@@ -33,9 +33,9 @@ exports[`Icon renders Icons of different size correctly 1`] = `
         href="#broadcast"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-sm"
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--sm"
     theme="primary"
     type="broadcast"
   >
@@ -49,14 +49,14 @@ exports[`Icon renders Icons of different size correctly 1`] = `
         href="#broadcast"
       />
     </svg>
-  </i>
-</div>
+  </i>,
+]
 `;
 
 exports[`Icon renders Icons of different theme correctly 1`] = `
-<div>
+Array [
   <i
-    class="za-icon za-icon-right za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--right za-icon--primary za-icon--md"
     theme="primary"
     type="right"
   >
@@ -70,9 +70,9 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
         href="#right"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-add za-icon--theme-success za-icon--size-md"
+    class="za-icon za-icon--add za-icon--success za-icon--md"
     theme="success"
     type="add"
   >
@@ -86,9 +86,9 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
         href="#add"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-info-round za-icon--theme-warning za-icon--size-md"
+    class="za-icon za-icon--info-round za-icon--warning za-icon--md"
     theme="warning"
     type="info-round"
   >
@@ -102,9 +102,9 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
         href="#info-round"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-wrong-round-fill za-icon--theme-danger za-icon--size-md"
+    class="za-icon za-icon--wrong-round-fill za-icon--danger za-icon--md"
     theme="danger"
     type="wrong-round-fill"
   >
@@ -118,14 +118,14 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
         href="#wrong-round-fill"
       />
     </svg>
-  </i>
-</div>
+  </i>,
+]
 `;
 
 exports[`Icon renders Icons using iconfont 1`] = `
-<div>
+Array [
   <i
-    class="za-icon za-icon-icon-empty_fill za-icon--theme-primary za-icon--size-lg"
+    class="za-icon za-icon--icon-empty_fill za-icon--primary za-icon--lg"
     theme="primary"
     type="icon-empty_fill"
   >
@@ -139,9 +139,9 @@ exports[`Icon renders Icons using iconfont 1`] = `
         href="#icon-empty_fill"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-icon-caidan07 za-icon--theme-primary za-icon--size-lg"
+    class="za-icon za-icon--icon-caidan07 za-icon--primary za-icon--lg"
     theme="primary"
     type="icon-caidan07"
   >
@@ -155,39 +155,36 @@ exports[`Icon renders Icons using iconfont 1`] = `
         href="#icon-caidan07"
       />
     </svg>
-  </i>
-</div>
+  </i>,
+]
 `;
 
 exports[`Icon renders Icons using svg component 1`] = `
-<div>
-  <i
-    class="za-icon za-icon--theme-primary za-icon--size-lg"
-    theme="primary"
-    type=""
+<i
+  class="za-icon za-icon--primary za-icon--lg"
+  theme="primary"
+>
+  <svg
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    viewBox="0 0 32 32"
+    width="1em"
   >
-    <svg
-      fill="currentColor"
-      height="1em"
+    <path
+      d="M1 12.376l8.8 9.114L30.431 1.568"
+      fill="none"
       stroke="currentColor"
-      viewBox="0 0 32 32"
-      width="1em"
-    >
-      <path
-        d="M1 12.376l8.8 9.114L30.431 1.568"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.6"
-      />
-    </svg>
-  </i>
-</div>
+      stroke-width="2.6"
+    />
+  </svg>
+</i>
 `;
 
 exports[`Icon renders all Icons 1`] = `
-<div>
+Array [
   <i
-    class="za-icon za-icon-add za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--add za-icon--primary za-icon--md"
     theme="primary"
     type="add"
   >
@@ -201,9 +198,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#add"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-arrow-left za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--arrow-left za-icon--primary za-icon--md"
     theme="primary"
     type="arrow-left"
   >
@@ -217,9 +214,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#arrow-left"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-arrow-bottom za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--arrow-bottom za-icon--primary za-icon--md"
     theme="primary"
     type="arrow-bottom"
   >
@@ -233,9 +230,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#arrow-bottom"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-arrow-right za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--arrow-right za-icon--primary za-icon--md"
     theme="primary"
     type="arrow-right"
   >
@@ -249,9 +246,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#arrow-right"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--md"
     theme="primary"
     type="broadcast"
   >
@@ -265,9 +262,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#broadcast"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-date za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--date za-icon--primary za-icon--md"
     theme="primary"
     type="date"
   >
@@ -281,9 +278,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#date"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-deletekey za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--deletekey za-icon--primary za-icon--md"
     theme="primary"
     type="deletekey"
   >
@@ -297,9 +294,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#deletekey"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-info-round za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--info-round za-icon--primary za-icon--md"
     theme="primary"
     type="info-round"
   >
@@ -313,9 +310,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#info-round"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-info-round-fill za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--info-round-fill za-icon--primary za-icon--md"
     theme="primary"
     type="info-round-fill"
   >
@@ -329,9 +326,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#info-round-fill"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-keyboard za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--keyboard za-icon--primary za-icon--md"
     theme="primary"
     type="keyboard"
   >
@@ -345,9 +342,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#keyboard"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-minus za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--minus za-icon--primary za-icon--md"
     theme="primary"
     type="minus"
   >
@@ -361,9 +358,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#minus"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-question-round za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--question-round za-icon--primary za-icon--md"
     theme="primary"
     type="question-round"
   >
@@ -377,9 +374,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#question-round"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-required za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--required za-icon--primary za-icon--md"
     theme="primary"
     type="required"
   >
@@ -393,9 +390,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#required"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-right-round-fill za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--right-round-fill za-icon--primary za-icon--md"
     theme="primary"
     type="right-round-fill"
   >
@@ -409,9 +406,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#right-round-fill"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-right-round za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--right-round za-icon--primary za-icon--md"
     theme="primary"
     type="right-round"
   >
@@ -425,9 +422,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#right-round"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-right za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--right za-icon--primary za-icon--md"
     theme="primary"
     type="right"
   >
@@ -441,9 +438,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#right"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-search za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--search za-icon--primary za-icon--md"
     theme="primary"
     type="search"
   >
@@ -457,9 +454,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#search"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-time-circle za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--time-circle za-icon--primary za-icon--md"
     theme="primary"
     type="time-circle"
   >
@@ -473,9 +470,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#time-circle"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-warning-round-fill za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--warning-round-fill za-icon--primary za-icon--md"
     theme="primary"
     type="warning-round-fill"
   >
@@ -489,9 +486,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#warning-round-fill"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-wrong-round-fill za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--wrong-round-fill za-icon--primary za-icon--md"
     theme="primary"
     type="wrong-round-fill"
   >
@@ -505,9 +502,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#wrong-round-fill"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-wrong-round za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--wrong-round za-icon--primary za-icon--md"
     theme="primary"
     type="wrong-round"
   >
@@ -521,9 +518,9 @@ exports[`Icon renders all Icons 1`] = `
         href="#wrong-round"
       />
     </svg>
-  </i>
+  </i>,
   <i
-    class="za-icon za-icon-wrong za-icon--theme-primary za-icon--size-md"
+    class="za-icon za-icon--wrong za-icon--primary za-icon--md"
     theme="primary"
     type="wrong"
   >
@@ -537,6 +534,6 @@ exports[`Icon renders all Icons 1`] = `
         href="#wrong"
       />
     </svg>
-  </i>
-</div>
+  </i>,
+]
 `;

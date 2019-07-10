@@ -59,7 +59,7 @@ exports[`Modal renders correctly 1`] = `
                       标题
                     </div>
                     <i
-                      class="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default za-icon--size-sm"
+                      class="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
                       theme="default"
                       type="wrong"
                     >
@@ -127,35 +127,32 @@ exports[`Modal renders correctly 1`] = `
                   <Icon
                     className="za-modal__header__close"
                     onClick={[MockFunction]}
-                    prefixcls="za-icon"
+                    prefixCls="za-icon"
                     size="sm"
                     theme="default"
                     type="wrong"
                     viewBox="0 0 32 32"
                   >
                     <Iconfont
-                      className="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default za-icon--size-sm"
+                      className="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
                       onClick={[MockFunction]}
                       size="sm"
-                      style={Object {}}
                       theme="default"
                       type="wrong"
                     >
                       <Icon
-                        className="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default za-icon--size-sm"
+                        className="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
                         onClick={[MockFunction]}
-                        prefixcls="za-icon"
+                        prefixCls="za-icon"
                         size="sm"
-                        style={Object {}}
                         theme="default"
                         type="wrong"
                         viewBox="0 0 32 32"
                       >
                         <i
-                          className="za-icon za-modal__header__close za-icon-wrong za-icon--theme-default za-icon--size-sm"
+                          className="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
                           onClick={[MockFunction]}
                           size="sm"
-                          style={Object {}}
                           theme="default"
                           type="wrong"
                         >

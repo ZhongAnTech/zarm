@@ -1,10 +1,9 @@
-import React, { ReactNode } from 'react';
-import Icon from './index';
-import { IconPropsType } from './PropsType';
+import React, { ReactNode, FunctionComponent } from 'react';
+import Icon, { IconPropsType } from './index';
 
 const customCache = new Set<string>();
 
-export default function create(scriptUrl: string): React.FunctionComponent<IconPropsType> {
+export default function createFromIconfont(scriptUrl: string): FunctionComponent<IconPropsType> {
   /**
    * DOM API required.
    * Make sure in browser environment.
@@ -26,7 +25,9 @@ export default function create(scriptUrl: string): React.FunctionComponent<IconP
     document.body.appendChild(script);
   }
 
-  const Iconfont: React.FunctionComponent<IconPropsType> = (props) => {
+  const Iconfont: FunctionComponent<IconPropsType> = (props) => {
+    Iconfont.displayName = 'Iconfont';
+
     const { type } = props;
 
     let content: ReactNode;
@@ -39,8 +40,6 @@ export default function create(scriptUrl: string): React.FunctionComponent<IconP
       </Icon>
     );
   };
-
-  Iconfont.displayName = 'Iconfont';
 
   return Iconfont;
 }

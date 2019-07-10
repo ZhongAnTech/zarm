@@ -24,7 +24,7 @@ exports[`NavBar renders correctly with left content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
+      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
       theme="default"
       type="arrow-left"
     >
@@ -60,7 +60,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
         theme="default"
         type="arrow-left"
       >
@@ -87,7 +87,7 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
         theme="default"
         type="arrow-right"
       >
@@ -148,7 +148,7 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
+      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
       theme="default"
       type="arrow-left"
     >
@@ -173,7 +173,7 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--right"
   >
     <i
-      class="za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md"
+      class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
       theme="default"
       type="arrow-right"
     >

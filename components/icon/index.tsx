@@ -1,31 +1,36 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames/dedupe';
 import PropTypes from 'prop-types';
-import { IconPropsType } from './PropsType';
+import BasePropsType from './PropsType';
 import createFromIconfont from './IconFont';
 
-const innerSvgProps = {
+const INNER_SVG_PROPS = {
   width: '1em',
   height: '1em',
   fill: 'currentColor',
   viewBox: '0 0 32 32',
 };
 
+export type IconPropsType = {
+  prefixCls?: string;
+} & BasePropsType & HTMLAttributes<HTMLElement>;
+
+
 class Icon extends PureComponent<IconPropsType, {}> {
   static displayName = 'Icon';
 
   static defaultProps = {
-    prefixcls: 'za-icon',
+    prefixCls: 'za-icon',
     theme: 'default',
     size: 'md',
     children: undefined,
-    viewBox: '0 0 32 32',
+    viewBox: INNER_SVG_PROPS.viewBox,
     onClick: undefined,
   };
 
   static propTypes = {
     /** 类名前缀 */
-    prefixcls: PropTypes.string,
+    prefixCls: PropTypes.string,
 
     /** 设置主题 */
     theme: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger']),
@@ -33,10 +38,10 @@ class Icon extends PureComponent<IconPropsType, {}> {
     /** 设置大小 */
     size: PropTypes.oneOf(['lg', 'md', 'sm']),
 
-    /** 当使用iconfont方式，需要传进来的孩子节点 */
+    /** SVG 内容 */
     children: PropTypes.node,
 
-    /** 当传进svg component, 需要设置svg的viewBox */
+    /** viewBox */
     viewBox: PropTypes.string,
 
     /** 点击事件 */
@@ -46,11 +51,11 @@ class Icon extends PureComponent<IconPropsType, {}> {
   static createFromIconfont = createFromIconfont;
 
   render() {
-    const { className, type = '', style = {}, prefixcls, theme, size, children, component: SvgComponent, viewBox, ...rest } = this.props;
-    const cls = classnames(prefixcls, className, {
-      [`${prefixcls}-${type}`]: !!type,
-      [`${prefixcls}--theme-${theme}`]: !!theme,
-      [`${prefixcls}--size-${size}`]: !!size,
+    const { className, type, style, prefixCls, theme, size, children, component: SvgComponent, viewBox, ...rest } = this.props;
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${size}`]: !!size,
     });
 
     const newProps = {
@@ -66,16 +71,16 @@ class Icon extends PureComponent<IconPropsType, {}> {
 
     // svg component > children by iconfont > type
     if (SvgComponent) {
-      delete innerSvgProps.viewBox;
+      delete INNER_SVG_PROPS.viewBox;
       iconNode = (
         <i {...newProps}>
-          <SvgComponent {...innerSvgProps} viewBox={viewBox}>{children}</SvgComponent>
+          <SvgComponent {...INNER_SVG_PROPS} viewBox={viewBox}>{children}</SvgComponent>
         </i>
       );
     } else if (children) {
       iconNode = (
         <i {...newProps}>
-          <svg {...innerSvgProps}>
+          <svg {...INNER_SVG_PROPS}>
             {children}
           </svg>
         </i>

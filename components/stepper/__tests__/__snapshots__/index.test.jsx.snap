@@ -18,7 +18,7 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
-      prefixcls="za-icon"
+      prefixCls="za-icon"
       size="md"
       theme="default"
       type="minus"
@@ -47,7 +47,7 @@ exports[`Stepper defaultValue 1`] = `
     theme="default"
   >
     <Icon
-      prefixcls="za-icon"
+      prefixCls="za-icon"
       size="md"
       theme="default"
       type="add"
@@ -68,7 +68,7 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon-minus za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon--minus za-icon--default za-icon--md"
         theme="default"
         type="minus"
       >
@@ -97,7 +97,7 @@ exports[`Stepper renders correctly 1`] = `
   >
     <span>
       <i
-        class="za-icon za-icon-add za-icon--theme-default za-icon--size-md"
+        class="za-icon za-icon--add za-icon--default za-icon--md"
         theme="default"
         type="add"
       >

@@ -23,30 +23,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.svg$/,
-        issuer: {
-          test: /\.jsx?$/,
-        },
-        include: /components/,
-        use: [{
-          loader: 'babel-loader',
-          options: babelConfig,
-        }, {
-          loader: '@svgr/webpack',
-          options: {
-            icon: true,
-            babel: false,
-            svgoConfig: {
-              plugins: {
-                removeViewBox: false,
-              },
-            },
-          },
-        },
-        'url-loader?limit=1&name=images/[name].[hash:8].[ext]',
-      ],
-      },
-      {
         test: /\.(css|scss)$/,
         use: [
           {

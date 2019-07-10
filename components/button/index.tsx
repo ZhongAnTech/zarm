@@ -21,6 +21,7 @@ export type NativeButtonProps = {
 
 export type ButtonProps = AnchorButtonProps | NativeButtonProps;
 
+
 export default class Button extends PureComponent<ButtonProps, {}> {
   static displayName = 'Button';
 
