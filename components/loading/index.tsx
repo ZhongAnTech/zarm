@@ -12,6 +12,7 @@ export interface LoadingProps extends PropsType {
 export default class Loading extends PureComponent<LoadingProps, {}> {
   static defaultProps = {
     prefixCls: 'za-loading',
+    mask: true,
   };
 
   static zarmLoading: null | HTMLElement;

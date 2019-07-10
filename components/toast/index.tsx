@@ -14,7 +14,7 @@ export default class Toast extends Component<ToastProps, any> {
     prefixCls: 'za-toast',
     visible: false,
     stayTime: 3000,
-    mask: true,
+    mask: false,
   };
 
   private static zarmToast: null | HTMLDivElement;
@@ -125,9 +125,7 @@ export default class Toast extends Component<ToastProps, any> {
 
     const { visible } = this.state;
 
-    const cls = classnames(prefixCls, className, {
-      // [`${prefixCls}--open`]: visible,
-    });
+    const cls = classnames(prefixCls, className);
 
     return (
       <Popup
