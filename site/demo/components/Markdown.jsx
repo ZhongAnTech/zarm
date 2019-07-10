@@ -45,7 +45,7 @@ export default class Markdown extends React.Component {
       const html = marked(
         document
           .replace(/## 自定义 Iconfont 图标\s?([^]+)/g, '') // 排除无法展示示例的情况
-          .replace(/## API\s?([^]+?)((?=##)|$)/g, '') // 排除API显示
+          .replace(/## API\s?([^]+)/g, '') // 排除API显示
           .replace(/##\s?([^]+?)((?=##)|$)/g, (match, p1) => {
             const id = parseInt(Math.random() * 1e9, 10).toString(36);
             this.components.set(id, React.createElement(Demo, this.props, p1));
