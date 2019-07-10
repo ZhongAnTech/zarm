@@ -24,10 +24,9 @@ exports[`NavBar renders correctly with left content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-      prefixcls="za-icon"
+      class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
       theme="default"
-      type=""
+      type="arrow-left"
     >
       <svg
         fill="currentColor"
@@ -61,10 +60,9 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-        prefixcls="za-icon"
+        class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
         theme="default"
-        type=""
+        type="arrow-left"
       >
         <svg
           fill="currentColor"
@@ -89,10 +87,9 @@ exports[`NavBar renders correctly with multiple icons 1`] = `
   >
     <div>
       <i
-        class="za-icon za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-        prefixcls="za-icon"
+        class="za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md"
         theme="default"
-        type=""
+        type="arrow-right"
       >
         <svg
           fill="currentColor"
@@ -151,10 +148,9 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--left"
   >
     <i
-      class="za-icon za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-      prefixcls="za-icon"
+      class="za-icon za-icon-arrow-left za-icon--theme-default za-icon--size-md"
       theme="default"
-      type=""
+      type="arrow-left"
     >
       <svg
         fill="currentColor"
@@ -177,10 +173,9 @@ exports[`NavBar renders correctly with right content 1`] = `
     class="za-nav-bar__side za-nav-bar__side--right"
   >
     <i
-      class="za-icon za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-      prefixcls="za-icon"
+      class="za-icon za-icon-arrow-right za-icon--theme-default za-icon--size-md"
       theme="default"
-      type=""
+      type="arrow-right"
     >
       <svg
         fill="currentColor"

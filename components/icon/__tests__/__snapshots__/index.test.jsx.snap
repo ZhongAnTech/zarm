@@ -3,10 +3,9 @@
 exports[`Icon renders Icons of different size correctly 1`] = `
 <div>
   <i
-    class="za-icon za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-lg za-icon--theme-primary za-icon--size-lg"
-    prefixcls="za-icon"
+    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-lg"
     theme="primary"
-    type=""
+    type="broadcast"
   >
     <svg
       fill="currentColor"
@@ -20,10 +19,9 @@ exports[`Icon renders Icons of different size correctly 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="broadcast"
   >
     <svg
       fill="currentColor"
@@ -37,10 +35,9 @@ exports[`Icon renders Icons of different size correctly 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-sm za-icon--theme-primary za-icon--size-sm"
-    prefixcls="za-icon"
+    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-sm"
     theme="primary"
-    type=""
+    type="broadcast"
   >
     <svg
       fill="currentColor"
@@ -59,10 +56,9 @@ exports[`Icon renders Icons of different size correctly 1`] = `
 exports[`Icon renders Icons of different theme correctly 1`] = `
 <div>
   <i
-    class="za-icon za-icon za-icon-right za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-right za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="right"
   >
     <svg
       fill="currentColor"
@@ -76,10 +72,9 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-add za-icon--theme-success za-icon--size-md za-icon--theme-success za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-add za-icon--theme-success za-icon--size-md"
     theme="success"
-    type=""
+    type="add"
   >
     <svg
       fill="currentColor"
@@ -93,10 +88,9 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-info-round za-icon--theme-warning za-icon--size-md za-icon--theme-warning za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-info-round za-icon--theme-warning za-icon--size-md"
     theme="warning"
-    type=""
+    type="info-round"
   >
     <svg
       fill="currentColor"
@@ -110,10 +104,9 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-wrong-round-fill za-icon--theme-danger za-icon--size-md za-icon--theme-danger za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-wrong-round-fill za-icon--theme-danger za-icon--size-md"
     theme="danger"
-    type=""
+    type="wrong-round-fill"
   >
     <svg
       fill="currentColor"
@@ -132,10 +125,9 @@ exports[`Icon renders Icons of different theme correctly 1`] = `
 exports[`Icon renders Icons using iconfont 1`] = `
 <div>
   <i
-    class="za-icon za-icon--theme-primary za-icon--size-lg"
-    prefixcls="za-icon"
+    class="za-icon za-icon-icon-empty_fill za-icon--theme-primary za-icon--size-lg"
     theme="primary"
-    type=""
+    type="icon-empty_fill"
   >
     <svg
       fill="currentColor"
@@ -148,16 +140,56 @@ exports[`Icon renders Icons using iconfont 1`] = `
       />
     </svg>
   </i>
+  <i
+    class="za-icon za-icon-icon-caidan07 za-icon--theme-primary za-icon--size-lg"
+    theme="primary"
+    type="icon-caidan07"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#icon-caidan07"
+      />
+    </svg>
+  </i>
+</div>
+`;
+
+exports[`Icon renders Icons using svg component 1`] = `
+<div>
+  <i
+    class="za-icon za-icon--theme-primary za-icon--size-lg"
+    theme="primary"
+    type=""
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      stroke="currentColor"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <path
+        d="M1 12.376l8.8 9.114L30.431 1.568"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.6"
+      />
+    </svg>
+  </i>
 </div>
 `;
 
 exports[`Icon renders all Icons 1`] = `
 <div>
   <i
-    class="za-icon za-icon za-icon-add za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-add za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="add"
   >
     <svg
       fill="currentColor"
@@ -171,10 +203,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-arrow-left za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-arrow-left za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="arrow-left"
   >
     <svg
       fill="currentColor"
@@ -188,10 +219,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-arrow-bottom za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-arrow-bottom za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="arrow-bottom"
   >
     <svg
       fill="currentColor"
@@ -205,10 +235,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-arrow-right za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-arrow-right za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="arrow-right"
   >
     <svg
       fill="currentColor"
@@ -222,10 +251,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-broadcast za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="broadcast"
   >
     <svg
       fill="currentColor"
@@ -239,10 +267,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-date za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-date za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="date"
   >
     <svg
       fill="currentColor"
@@ -256,10 +283,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-deletekey za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-deletekey za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="deletekey"
   >
     <svg
       fill="currentColor"
@@ -273,10 +299,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-info-round za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-info-round za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="info-round"
   >
     <svg
       fill="currentColor"
@@ -290,10 +315,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-info-round-fill za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-info-round-fill za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="info-round-fill"
   >
     <svg
       fill="currentColor"
@@ -307,10 +331,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-keyboard za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-keyboard za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="keyboard"
   >
     <svg
       fill="currentColor"
@@ -324,10 +347,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-minus za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-minus za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="minus"
   >
     <svg
       fill="currentColor"
@@ -341,10 +363,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-question-round za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-question-round za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="question-round"
   >
     <svg
       fill="currentColor"
@@ -358,10 +379,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-required za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-required za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="required"
   >
     <svg
       fill="currentColor"
@@ -375,10 +395,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-right-round-fill za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-right-round-fill za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="right-round-fill"
   >
     <svg
       fill="currentColor"
@@ -392,10 +411,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-right-round za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-right-round za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="right-round"
   >
     <svg
       fill="currentColor"
@@ -409,10 +427,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-right za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-right za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="right"
   >
     <svg
       fill="currentColor"
@@ -426,10 +443,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-search za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-search za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="search"
   >
     <svg
       fill="currentColor"
@@ -443,10 +459,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-time-circle za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-time-circle za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="time-circle"
   >
     <svg
       fill="currentColor"
@@ -460,10 +475,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-warning-round-fill za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-warning-round-fill za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="warning-round-fill"
   >
     <svg
       fill="currentColor"
@@ -477,10 +491,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-wrong-round-fill za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-wrong-round-fill za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="wrong-round-fill"
   >
     <svg
       fill="currentColor"
@@ -494,10 +507,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-wrong-round za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-wrong-round za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="wrong-round"
   >
     <svg
       fill="currentColor"
@@ -511,10 +523,9 @@ exports[`Icon renders all Icons 1`] = `
     </svg>
   </i>
   <i
-    class="za-icon za-icon za-icon-wrong za-icon--theme-primary za-icon--size-md za-icon--theme-primary za-icon--size-md"
-    prefixcls="za-icon"
+    class="za-icon za-icon-wrong za-icon--theme-primary za-icon--size-md"
     theme="primary"
-    type=""
+    type="wrong"
   >
     <svg
       fill="currentColor"

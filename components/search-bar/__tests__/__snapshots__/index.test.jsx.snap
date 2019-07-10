@@ -18,10 +18,9 @@ exports[`SearchBar renders correctly 1`] = `
           class="za-search-bar__mock__container"
         >
           <i
-            class="za-icon za-icon za-icon-search za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-            prefixcls="za-icon"
+            class="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
             theme="default"
-            type=""
+            type="search"
           >
             <svg
               fill="currentColor"
@@ -52,10 +51,9 @@ exports[`SearchBar renders correctly 1`] = `
           value=""
         />
         <i
-          class="za-icon za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-          prefixcls="za-icon"
+          class="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
           theme="default"
-          type=""
+          type="wrong-round-fill"
         >
           <svg
             fill="currentColor"
@@ -128,16 +126,14 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  className=""
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -145,20 +141,19 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                   >
                     <Icon
                       className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-icon-search za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
+                        className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="search"
                       >
                         <svg
                           fill="currentColor"
@@ -222,16 +217,15 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -240,21 +234,20 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
                     <Icon
                       className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                       onClick={[Function]}
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                        className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="wrong-round-fill"
                       >
                         <svg
                           fill="currentColor"
@@ -368,16 +361,14 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  className=""
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -385,20 +376,19 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                   >
                     <Icon
                       className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-icon-search za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
+                        className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="search"
                       >
                         <svg
                           fill="currentColor"
@@ -462,16 +452,15 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -480,21 +469,20 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
                     <Icon
                       className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                       onClick={[Function]}
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                        className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="wrong-round-fill"
                       >
                         <svg
                           fill="currentColor"
@@ -614,16 +602,14 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  className=""
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -631,20 +617,19 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                   >
                     <Icon
                       className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-icon-search za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
+                        className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="search"
                       >
                         <svg
                           fill="currentColor"
@@ -708,16 +693,15 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                 <Icon
                   className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -726,21 +710,20 @@ exports[`SearchBar renders onChange called correctly 1`] = `
                     <Icon
                       className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                       onClick={[Function]}
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                        className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="wrong-round-fill"
                       >
                         <svg
                           fill="currentColor"
@@ -855,16 +838,14 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  className=""
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -872,20 +853,19 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                   >
                     <Icon
                       className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-icon-search za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
+                        className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="search"
                       >
                         <svg
                           fill="currentColor"
@@ -949,16 +929,15 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -967,21 +946,20 @@ exports[`SearchBar renders onClear called correctly 1`] = `
                     <Icon
                       className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                       onClick={[Function]}
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                        className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="wrong-round-fill"
                       >
                         <svg
                           fill="currentColor"
@@ -1095,16 +1073,14 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  className=""
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -1112,20 +1088,19 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                   >
                     <Icon
                       className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-icon-search za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
+                        className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="search"
                       >
                         <svg
                           fill="currentColor"
@@ -1189,16 +1164,15 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                 <Icon
                   className="za-input__clear"
                   onClick={[Function]}
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -1207,21 +1181,20 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
                     <Icon
                       className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                       onClick={[Function]}
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                        className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="wrong-round-fill"
                       >
                         <svg
                           fill="currentColor"
@@ -1341,16 +1314,14 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                 className="za-search-bar__mock__container"
               >
                 <Icon
-                  className=""
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="search"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -1358,20 +1329,19 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                   >
                     <Icon
                       className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="search"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-icon-search za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
+                        className="za-icon za-icon-search za-icon--theme-default za-icon--size-md"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="search"
                       >
                         <svg
                           fill="currentColor"
@@ -1435,16 +1405,15 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                 <Icon
                   className="za-input__clear za-input__clear--show"
                   onClick={[Function]}
-                  prefixCls="za-icon"
+                  prefixcls="za-icon"
                   size="md"
                   theme="default"
                   type="wrong-round-fill"
+                  viewBox="0 0 32 32"
                 >
                   <Iconfont
                     className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                     onClick={[Function]}
-                    prefixCls="za-icon"
-                    prefixcls="za-icon"
                     size="md"
                     style={Object {}}
                     theme="default"
@@ -1453,21 +1422,20 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
                     <Icon
                       className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                       onClick={[Function]}
-                      prefixCls="za-icon"
                       prefixcls="za-icon"
                       size="md"
                       style={Object {}}
                       theme="default"
+                      type="wrong-round-fill"
+                      viewBox="0 0 32 32"
                     >
                       <i
-                        className="za-icon za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+                        className="za-icon za-input__clear za-input__clear--show za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
                         onClick={[Function]}
-                        prefixCls="za-icon"
-                        prefixcls="za-icon"
                         size="md"
                         style={Object {}}
                         theme="default"
-                        type=""
+                        type="wrong-round-fill"
                       >
                         <svg
                           fill="currentColor"

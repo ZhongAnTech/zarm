@@ -138,16 +138,15 @@ exports[`Input renders onClear called correctly 1`] = `
       <Icon
         className="za-input__clear"
         onClick={[Function]}
-        prefixCls="za-icon"
+        prefixcls="za-icon"
         size="md"
         theme="default"
         type="wrong-round-fill"
+        viewBox="0 0 32 32"
       >
         <Iconfont
           className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
           onClick={[Function]}
-          prefixCls="za-icon"
-          prefixcls="za-icon"
           size="md"
           style={Object {}}
           theme="default"
@@ -156,21 +155,20 @@ exports[`Input renders onClear called correctly 1`] = `
           <Icon
             className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
             onClick={[Function]}
-            prefixCls="za-icon"
             prefixcls="za-icon"
             size="md"
             style={Object {}}
             theme="default"
+            type="wrong-round-fill"
+            viewBox="0 0 32 32"
           >
             <i
-              className="za-icon za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+              className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
               onClick={[Function]}
-              prefixCls="za-icon"
-              prefixcls="za-icon"
               size="md"
               style={Object {}}
               theme="default"
-              type=""
+              type="wrong-round-fill"
             >
               <svg
                 fill="currentColor"
@@ -509,10 +507,9 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-                                  prefixcls="za-icon"
+                                  class="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
                                   theme="default"
-                                  type=""
+                                  type="keyboard"
                                 >
                                   <svg
                                     fill="currentColor"
@@ -534,10 +531,9 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                 class="za-keyboard__item"
                               >
                                 <i
-                                  class="za-icon za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-                                  prefixcls="za-icon"
+                                  class="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
                                   theme="default"
-                                  type=""
+                                  type="deletekey"
                                 >
                                   <svg
                                     fill="currentColor"
@@ -692,16 +688,14 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onClick={[Function]}
                                 >
                                   <Icon
-                                    className=""
-                                    prefixCls="za-icon"
+                                    prefixcls="za-icon"
                                     size="lg"
                                     theme="default"
                                     type="keyboard"
+                                    viewBox="0 0 32 32"
                                   >
                                     <Iconfont
                                       className="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
-                                      prefixCls="za-icon"
-                                      prefixcls="za-icon"
                                       size="lg"
                                       style={Object {}}
                                       theme="default"
@@ -709,20 +703,19 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                     >
                                       <Icon
                                         className="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
-                                        prefixCls="za-icon"
                                         prefixcls="za-icon"
                                         size="lg"
                                         style={Object {}}
                                         theme="default"
+                                        type="keyboard"
+                                        viewBox="0 0 32 32"
                                       >
                                         <i
-                                          className="za-icon za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-                                          prefixCls="za-icon"
-                                          prefixcls="za-icon"
+                                          className="za-icon za-icon-keyboard za-icon--theme-default za-icon--size-lg"
                                           size="lg"
                                           style={Object {}}
                                           theme="default"
-                                          type=""
+                                          type="keyboard"
                                         >
                                           <svg
                                             fill="currentColor"
@@ -752,16 +745,14 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                   onTouchStart={[Function]}
                                 >
                                   <Icon
-                                    className=""
-                                    prefixCls="za-icon"
+                                    prefixcls="za-icon"
                                     size="lg"
                                     theme="default"
                                     type="deletekey"
+                                    viewBox="0 0 32 32"
                                   >
                                     <Iconfont
                                       className="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
-                                      prefixCls="za-icon"
-                                      prefixcls="za-icon"
                                       size="lg"
                                       style={Object {}}
                                       theme="default"
@@ -769,20 +760,19 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                                     >
                                       <Icon
                                         className="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
-                                        prefixCls="za-icon"
                                         prefixcls="za-icon"
                                         size="lg"
                                         style={Object {}}
                                         theme="default"
+                                        type="deletekey"
+                                        viewBox="0 0 32 32"
                                       >
                                         <i
-                                          className="za-icon za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg za-icon--theme-default za-icon--size-lg"
-                                          prefixCls="za-icon"
-                                          prefixcls="za-icon"
+                                          className="za-icon za-icon-deletekey za-icon--theme-default za-icon--size-lg"
                                           size="lg"
                                           style={Object {}}
                                           theme="default"
-                                          type=""
+                                          type="deletekey"
                                         >
                                           <svg
                                             fill="currentColor"
@@ -821,16 +811,15 @@ exports[`Input.Number renders onClear called correctly 1`] = `
       <Icon
         className="za-input__clear"
         onClick={[Function]}
-        prefixCls="za-icon"
+        prefixcls="za-icon"
         size="md"
         theme="default"
         type="wrong-round-fill"
+        viewBox="0 0 32 32"
       >
         <Iconfont
           className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
           onClick={[Function]}
-          prefixCls="za-icon"
-          prefixcls="za-icon"
           size="md"
           style={Object {}}
           theme="default"
@@ -839,21 +828,20 @@ exports[`Input.Number renders onClear called correctly 1`] = `
           <Icon
             className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
             onClick={[Function]}
-            prefixCls="za-icon"
             prefixcls="za-icon"
             size="md"
             style={Object {}}
             theme="default"
+            type="wrong-round-fill"
+            viewBox="0 0 32 32"
           >
             <i
-              className="za-icon za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
+              className="za-icon za-input__clear za-icon-wrong-round-fill za-icon--theme-default za-icon--size-md"
               onClick={[Function]}
-              prefixCls="za-icon"
-              prefixcls="za-icon"
               size="md"
               style={Object {}}
               theme="default"
-              type=""
+              type="wrong-round-fill"
             >
               <svg
                 fill="currentColor"

@@ -1,12 +1,10 @@
 import React, { ReactNode } from 'react';
 import Icon from './index';
-import IconProps, { CustomIconOptions } from './PropsType';
+import { IconPropsType } from './PropsType';
 
 const customCache = new Set<string>();
 
-export default function create(options: CustomIconOptions): React.FunctionComponent<IconProps> {
-  const { scriptUrl } = options;
-
+export default function create(scriptUrl: string): React.FunctionComponent<IconPropsType> {
   /**
    * DOM API required.
    * Make sure in browser environment.
@@ -28,15 +26,15 @@ export default function create(options: CustomIconOptions): React.FunctionCompon
     document.body.appendChild(script);
   }
 
-  const Iconfont: React.FunctionComponent<IconProps> = (props) => {
-    const { type, children, ...restProps } = props;
+  const Iconfont: React.FunctionComponent<IconPropsType> = (props) => {
+    const { type } = props;
 
     let content: ReactNode;
     if (type) {
       content = <use xlinkHref={`#${type}`} />;
     }
     return (
-      <Icon {...restProps}>
+      <Icon {...props}>
         {content}
       </Icon>
     );

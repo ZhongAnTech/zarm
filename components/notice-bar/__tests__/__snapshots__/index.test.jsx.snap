@@ -39,11 +39,11 @@ exports[`NoticeBar renders correctly 1`] = `
   hasArrow={false}
   icon={
     <Icon
-      className=""
-      prefixCls="za-icon"
+      prefixcls="za-icon"
       size="md"
       theme="default"
       type="broadcast"
+      viewBox="0 0 32 32"
     />
   }
   prefixCls="za-notice-bar"
@@ -55,11 +55,11 @@ exports[`NoticeBar renders correctly 1`] = `
     hasArrow={false}
     icon={
       <Icon
-        className=""
-        prefixCls="za-icon"
+        prefixcls="za-icon"
         size="md"
         theme="default"
         type="broadcast"
+        viewBox="0 0 32 32"
       />
     }
     prefixCls="za-message"
@@ -77,16 +77,14 @@ exports[`NoticeBar renders correctly 1`] = `
           className="za-message__icon"
         >
           <Icon
-            className=""
-            prefixCls="za-icon"
+            prefixcls="za-icon"
             size="md"
             theme="default"
             type="broadcast"
+            viewBox="0 0 32 32"
           >
             <Iconfont
               className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-              prefixCls="za-icon"
-              prefixcls="za-icon"
               size="md"
               style={Object {}}
               theme="default"
@@ -94,20 +92,19 @@ exports[`NoticeBar renders correctly 1`] = `
             >
               <Icon
                 className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-                prefixCls="za-icon"
                 prefixcls="za-icon"
                 size="md"
                 style={Object {}}
                 theme="default"
+                type="broadcast"
+                viewBox="0 0 32 32"
               >
                 <i
-                  className="za-icon za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                  prefixCls="za-icon"
-                  prefixcls="za-icon"
+                  className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
                   size="md"
                   style={Object {}}
                   theme="default"
-                  type=""
+                  type="broadcast"
                 >
                   <svg
                     fill="currentColor"
@@ -154,11 +151,11 @@ exports[`NoticeBar scrollable 1`] = `
   hasArrow={false}
   icon={
     <Icon
-      className=""
-      prefixCls="za-icon"
+      prefixcls="za-icon"
       size="md"
       theme="default"
       type="broadcast"
+      viewBox="0 0 32 32"
     />
   }
   prefixCls="za-notice-bar"
@@ -170,11 +167,11 @@ exports[`NoticeBar scrollable 1`] = `
     hasArrow={false}
     icon={
       <Icon
-        className=""
-        prefixCls="za-icon"
+        prefixcls="za-icon"
         size="md"
         theme="default"
         type="broadcast"
+        viewBox="0 0 32 32"
       />
     }
     prefixCls="za-message"
@@ -192,16 +189,14 @@ exports[`NoticeBar scrollable 1`] = `
           className="za-message__icon"
         >
           <Icon
-            className=""
-            prefixCls="za-icon"
+            prefixcls="za-icon"
             size="md"
             theme="default"
             type="broadcast"
+            viewBox="0 0 32 32"
           >
             <Iconfont
               className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-              prefixCls="za-icon"
-              prefixcls="za-icon"
               size="md"
               style={Object {}}
               theme="default"
@@ -209,20 +204,19 @@ exports[`NoticeBar scrollable 1`] = `
             >
               <Icon
                 className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
-                prefixCls="za-icon"
                 prefixcls="za-icon"
                 size="md"
                 style={Object {}}
                 theme="default"
+                type="broadcast"
+                viewBox="0 0 32 32"
               >
                 <i
-                  className="za-icon za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-                  prefixCls="za-icon"
-                  prefixcls="za-icon"
+                  className="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
                   size="md"
                   style={Object {}}
                   theme="default"
-                  type=""
+                  type="broadcast"
                 >
                   <svg
                     fill="currentColor"
@@ -274,10 +268,9 @@ exports[`NoticeBar theme 1`] = `
       class="za-message__icon"
     >
       <i
-        class="za-icon za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md za-icon--theme-default za-icon--size-md"
-        prefixcls="za-icon"
+        class="za-icon za-icon-broadcast za-icon--theme-default za-icon--size-md"
         theme="default"
-        type=""
+        type="broadcast"
       >
         <svg
           fill="currentColor"
