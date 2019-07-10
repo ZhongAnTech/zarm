@@ -40,15 +40,15 @@ class Demo extends React.Component {
     return (
        <div className="grid">
         <div className="grid-column">
-          <Icon type="warning-round-fill" theme="warning" />
+          <Icon type="warning-round" theme="warning" />
           <span>warning</span>
         </div>
         <div className="grid-column">
-          <Icon type="warning-round-fill" theme="danger" />
+          <Icon type="wrong-round" theme="danger" />
           <span>danger</span>
         </div>
         <div className="grid-column">
-          <Icon type="warning-round-fill" style={{ color: '#1890ff' }}/>
+          <Icon type="info-round" style={{ color: '#1890ff' }}/>
           <span>custom color</span>
         </div>
        </div>
