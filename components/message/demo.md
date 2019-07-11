@@ -11,8 +11,8 @@ class Demo extends React.Component {
     return (
       <div>
         <Message>普通</Message>
-        <Message theme="warning">自定义主题</Message>
-        <Message theme="danger" icon={<Icon type="wrong-round" />}>自定义图标</Message>
+        <Message theme="danger">自定义主题</Message>
+        <Message theme="warning" icon={<Icon type="warning-round" />}>自定义图标</Message>
       </div>
     )
   }
