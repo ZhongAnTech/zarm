@@ -34,7 +34,7 @@
     width: r(10);
     height: r(10);
     top: r(17);
-    right: var(--collapse-padding);
+    right: calc(var(--collapse-padding) + 2px);
     border-right: r(2) solid var(--collapse-arrow-color);
     border-bottom: r(2) solid var(--collapse-arrow-color);
     transform: rotate(45deg);
