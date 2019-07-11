@@ -98,7 +98,6 @@ class Demo extends React.Component {
           visible={this.state.popTop}
           direction="top"
           mask={false}
-          // onMaskClick={() => this.close('popTop')}
           afterClose={() => { console.log('关闭'); }}
         >
           <div className="popup-box-top">

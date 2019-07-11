@@ -4,14 +4,14 @@
   .box {
     width: r(70);
 
+    &-icon,
+    &-text {
+      margin: r(5) 0;
+    }
+
     &-icon {
       font-size: r(50);
       color: #fff;
-      margin-bottom: r(10);
-    }
-
-    &-text {
-      margin-bottom: r(5);
     }
   }
 }

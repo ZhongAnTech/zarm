@@ -7,6 +7,7 @@ import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
+
 export interface PortalProps extends PropsType {
   prefixCls?: string;
   className?: string;

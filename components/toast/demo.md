@@ -159,6 +159,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
 | stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
+| mask | boolean | false | 是否展示遮罩层 |
 | onClose | () => void | - | 关闭时触发的回调函数 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 
@@ -174,7 +175,7 @@ Loading.show(children, stayTime, mask, afterClose);
 | :--- | :--- | :--- | :--- |
 | children | ReactNode | - | 显示的内容 |
 | stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
-| mask | boolean | true | 是否展示遮罩层 |
+| mask | boolean | false | 是否展示遮罩层 |
 | afterClose | () => void | - | 轻提示隐藏后的回调函数 |
 
 
