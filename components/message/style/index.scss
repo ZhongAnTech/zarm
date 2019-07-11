@@ -19,7 +19,7 @@
     margin-right: r(4);
 
     @include b(icon) {
-      font-size: var(--message-font-size-md);
+      font-size: var(--message-icon-size-md);
       cursor: pointer;
     }
   }
@@ -38,7 +38,7 @@
     padding-left: r(10);
 
     @include b(icon) {
-      font-size: var(--message-font-size-md);
+      font-size: var(--message-icon-size-md);
       cursor: pointer;
     }
   }
@@ -116,7 +116,7 @@
       margin-right: r(6);
 
       @include b(icon) {
-        font-size: var(--message-font-size-lg);
+        font-size: var(--message-icon-size-lg);
       }
     }
 
@@ -126,7 +126,7 @@
 
     @include e(footer) {
       @include b(icon) {
-        font-size: var(--message-font-size-lg);
+        font-size: var(--message-icon-size-lg);
       }
     }
   }

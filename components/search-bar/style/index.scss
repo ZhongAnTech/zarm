@@ -71,8 +71,8 @@
 
     @include b(icon) {
       vertical-align: middle;
-      margin-right: r(4);
-      font-size: var(--search-bar-font-size);
+      margin-right: r(2);
+      font-size: var(--search-bar-icon-size);
       color: var(--color-text-placeholder);
     }
   }

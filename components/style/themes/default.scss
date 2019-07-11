@@ -217,6 +217,8 @@
   --message-min-height-lg: 40px;
   --message-font-size-md: 12px;
   --message-font-size-lg: 14px;
+  --message-icon-size-md: 14px;
+  --message-icon-size-lg: 16px;
   --message-padding-v-md: 6px;
   --message-padding-h-md: 8px;
   --message-padding-v-lg: 8px;
@@ -258,6 +260,7 @@
 
   // SearchBar
   --search-bar-font-size: 14px;
+  --search-bar-icon-size: 18px;
 
   // Slider
   --slider-line-background: #e6e6e6;
@@ -324,7 +327,7 @@
   --wheel-item-font-size: 18px;
 
   // Icon
-  --icon-font-size-sm: 14px;
+  --icon-font-size-sm: 16px;
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
