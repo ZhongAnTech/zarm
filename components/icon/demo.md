@@ -7,7 +7,15 @@
 import { Icon } from 'zarm';
 
 const ICONS = [
-  'add','arrow-top','arrow-bottom','arrow-left','arrow-right','broadcast','date','deletekey','info-round-fill','info-round','keyboard','minus','question-round','required','right-round-fill','right-round','right','search','time','warning-round-fill','warning-round','wrong-round-fill','wrong-round','wrong'
+  'add', 'add-round', 'add-round-fill', 
+  'minus', 'minus-round', 'minus-round-fill',
+  'arrow-top', 'arrow-bottom', 'arrow-left', 'arrow-right',
+  'info-round', 'info-round-fill',
+  'warning-round', 'warning-round-fill',
+  'right', 'right-round', 'right-round-fill',
+  'wrong', 'wrong-round', 'wrong-round-fill',
+  'question-round', 'question-round-fill',
+  'required', 'broadcast', 'deletekey', 'keyboard', 'search', 'date', 'time',
 ];
 
 class Demo extends React.Component {
