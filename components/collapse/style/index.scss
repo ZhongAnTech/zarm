@@ -25,11 +25,8 @@
     position: relative;
     height: 0;
     overflow: hidden;
+    font-size: r(13);
     @include onepx(bottom);
-
-    &__inner {
-      padding: var(--padding-v-lg) var(--collapse-padding);
-    }
   }
 
   @include e(arrow) {

@@ -4,7 +4,7 @@
 
 ## 基本用法
 ```jsx
-import { Collapse } from 'zarm';
+import { Collapse, Cell } from 'zarm';
 
 class Demo extends React.Component {
   render() {
@@ -12,22 +12,19 @@ class Demo extends React.Component {
       <div>
         <Collapse>
           <Collapse.Item itemKey="1" title="50元套餐">
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
+            <div className="content">
+              <div>我是内容1</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey={2} title="100元套餐">
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
+            <div className="content">
+              <div>我是内容2</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="3" title="200元套餐">
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
+            <div className="content">
+              <div>我是内容3</div>
+            </div>
           </Collapse.Item>
         </Collapse>
       </div>
@@ -50,22 +47,28 @@ class Demo extends React.Component {
       <div>
         <Collapse animated>
           <Collapse.Item itemKey="test1" title="50元套餐">
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
+            <div className="content">
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test2" title="100元套餐">
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
+            <div className="content">
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test3" title="200元套餐">
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
+            <div className="content">
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+            </div>
           </Collapse.Item>
         </Collapse>
       </div>
@@ -88,22 +91,28 @@ class Demo extends React.Component {
       <div>
         <Collapse defaultActiveKey={['test1', 'test2']} animated>
           <Collapse.Item itemKey="test1" title="50元套餐">
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
+            <div className="content">
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test2" title="100元套餐">
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
+            <div className="content">
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test3" title="200元套餐">
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
+            <div className="content">
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+            </div>
           </Collapse.Item>
         </Collapse>
       </div>
@@ -127,22 +136,28 @@ class Demo extends React.Component {
       <div>
         <Collapse animated multiple defaultActiveKey={['test1', 'test3']}>
           <Collapse.Item itemKey="test1" title="50元套餐">
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
+            <div className="content">
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test2" title="100元套餐">
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
+            <div className="content">
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test3" title="200元套餐">
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
+            <div className="content">
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+            </div>
           </Collapse.Item>
         </Collapse>
       </div>
@@ -169,22 +184,28 @@ class Demo extends React.Component {
           onChange={key => console.log(key)}
         >
           <Collapse.Item itemKey="test1" title="50元套餐">
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
-            <div>我是50元套餐内容</div>
+            <div className="content">
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+              <div>我是50元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test2" title="100元套餐" disabled>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
-            <div>我是100元套餐内容</div>
+            <div className="content">
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+              <div>我是100元套餐内容</div>
+            </div>
           </Collapse.Item>
           <Collapse.Item itemKey="test3" title="200元套餐" disabled>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
-            <div>我是200元套餐内容</div>
+            <div className="content">
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+              <div>我是200元套餐内容</div>
+            </div>
           </Collapse.Item>
         </Collapse>
       </div>

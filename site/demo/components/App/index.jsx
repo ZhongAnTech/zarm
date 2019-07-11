@@ -11,7 +11,7 @@ import Markdown from '@site/demo/components/Markdown';
 import './style.scss';
 
 const HAS_STYLE_COMPONENT = [
-  'Badge', 'Button', 'Calendar', 'Carousel',
+  'Badge', 'Button', 'Calendar', 'Carousel', 'Collapse',
   'Cell', 'Checkbox', 'FilePicker', 'Icon', 'Message',
   'NoticeBar', 'Panel', 'Picker', 'Popup', 'Progress',
   'Pull', 'Radio', 'SearchBar', 'Tabs', 'Toast', 'Tooltip',
