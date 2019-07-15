@@ -27,7 +27,7 @@
 }
 
 /* slideDown */
-@keyframes slideDown-enter {
+@keyframes za-slideDown-enter {
   from {
     transform: translate3d(0, -100px, 0);
   }
@@ -37,11 +37,11 @@
   }
 }
 
-.slideDown-enter {
-  animation: slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.za-slideDown-enter {
+  animation: za-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@keyframes slideDown-leave {
+@keyframes za-slideDown-leave {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -51,12 +51,12 @@
   }
 }
 
-.slideDown-leave {
-  animation: slideDown-leave both;
+.za-slideDown-leave {
+  animation: za-slideDown-leave both;
 }
 
 /* slideLeft */
-@keyframes slideLeft-enter {
+@keyframes za-slideLeft-enter {
   from {
     transform: translate3d(150px, 0, 0);
   }
@@ -66,11 +66,11 @@
   }
 }
 
-.slideLeft-enter {
-  animation: slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.za-slideLeft-enter {
+  animation: za-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@keyframes slideLeft-leave {
+@keyframes za-slideLeft-leave {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -80,12 +80,12 @@
   }
 }
 
-.slideLeft-leave {
-  animation: slideLeft-leave both;
+.za-slideLeft-leave {
+  animation: za-slideLeft-leave both;
 }
 
 /* slideRight */
-@keyframes slideRight-enter {
+@keyframes za-slideRight-enter {
   from {
     transform: translate3d(-150px, 0, 0);
   }
@@ -95,11 +95,11 @@
   }
 }
 
-.slideRight-enter {
-  animation: slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.za-slideRight-enter {
+  animation: za-slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@keyframes slideRight-leave {
+@keyframes za-slideRight-leave {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -109,6 +109,6 @@
   }
 }
 
-.slideRight-leave {
-  animation: slideRight-leave both;
+.za-slideRight-leave {
+  animation: za-slideRight-leave both;
 }
