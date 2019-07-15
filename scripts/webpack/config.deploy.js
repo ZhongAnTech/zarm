@@ -26,7 +26,11 @@ config.optimization = {
         },
       },
     }),
-    new OptimizeCSSAssetsPlugin({}),
+    new OptimizeCSSAssetsPlugin({
+      cssProcessorPluginOptions: {
+        preset: ['default', { reduceTransforms: false }],
+      },
+    }),
   ],
 };
 config.plugins.push(
