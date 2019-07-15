@@ -26,7 +26,6 @@
   animation: za-slideUp-leave both;
 }
 
-/* slideDown */
 @keyframes za-slideDown-enter {
   from {
     transform: translate3d(0, -100px, 0);
@@ -55,7 +54,6 @@
   animation: za-slideDown-leave both;
 }
 
-/* slideLeft */
 @keyframes za-slideLeft-enter {
   from {
     transform: translate3d(150px, 0, 0);
@@ -84,7 +82,6 @@
   animation: za-slideLeft-leave both;
 }
 
-/* slideRight */
 @keyframes za-slideRight-enter {
   from {
     transform: translate3d(-150px, 0, 0);
