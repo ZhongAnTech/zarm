@@ -180,7 +180,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
 | direction | string | 'bottom' | 弹出方向，可选值 `top`, `bottom`, `left`, `right`, `center` |
-| animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight`，当direction等于“center”时生效 |
+| animationType | string | 'fade' | 当弹出方向为中间位置（direction="center"）时的动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | - | 弹层宽度 |
 | mask | boolean | true | 是否展示遮罩层 |

@@ -131,7 +131,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| shape | string | 'rect' | 形状，可选值 `rect`, `radius`, `circle` |
+| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `circle` |
 | size | string | 'md' | 大小，可选值 `md`、`lg` |
 | value | number | - | 值 |
 | defaultValue | number | - | 初始值 |

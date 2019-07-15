@@ -328,8 +328,8 @@ Confirm.show({
 | :--- | :--- | :--- | :--- |
 | title | ReactNode | - | 弹出框的标题 |
 | message | ReactNode | - | 弹出框的内容 |
-| cancelText | ReactNode | 关闭(Alert)/取消(Confirm) | 取消按钮的内容 |
-| okText | ReactNode | 确认 | 确认按钮的内容 |
+| cancelText | ReactNode | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容 |
+| okText | ReactNode | '确认' | 确认按钮的内容 |
 | onOk | () => void | - | 点击“确认”后的回调函数(Confirm) |
 | onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
 | animationType | string | 'zoom' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
