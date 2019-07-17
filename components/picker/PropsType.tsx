@@ -1,7 +1,7 @@
-import { BasePickerViewProps } from '../picker-view/PropsType';
+import BasePickerViewProps from '../picker-view/PropsType';
 import { Locale } from '../locale-provider/PropsType';
 
-export interface BasePickerProps extends BasePickerViewProps {
+export default interface BasePickerProps extends BasePickerViewProps {
   visible?: boolean;
   title?: string;
   okText?: string;
@@ -11,5 +11,5 @@ export interface BasePickerProps extends BasePickerViewProps {
   onMaskClick?: () => void;
   children?: any;
   onTransition?: (value: boolean) => void;
-  locale?: Locale;
+  locale?: Locale['Picker'] & Locale['Select'];
 }

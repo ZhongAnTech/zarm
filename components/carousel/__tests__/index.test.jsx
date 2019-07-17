@@ -69,6 +69,11 @@ describe('Carousel', () => {
     expect(wrapper.state('activeIndex')).toEqual(1);
   });
 
+  it('swipeable', () => {
+    const wrapper = mount(createCarousel({ swipeable: false }));
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('autoPlay', () => {
     jest.useFakeTimers();
     const onChange = jest.fn();

@@ -4,7 +4,7 @@
  * @param fileType
  * @returns {boolean}
  */
-export default function isImage(fileType) {
+export default function isImage(fileType: string) {
   const imageType = /image.*/;
 
   return !!fileType.match(imageType);

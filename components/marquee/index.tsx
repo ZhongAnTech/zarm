@@ -1,6 +1,6 @@
 import React, { PureComponent, HTMLAttributes } from 'react';
 import classnames from 'classnames';
-import { PropsType } from './PropsType';
+import PropsType from './PropsType';
 import { DIRECTION_LEFT, DIRECTION_RIGHT, DIRECTION_UP, DIRECTION_DOWN } from './constants';
 import { getKeyFrameModifier, animationModifier } from './modifiers';
 
@@ -9,34 +9,42 @@ export interface MarqueeProps extends HTMLAttributes<HTMLDivElement>, PropsType 
   className?: string;
 }
 
+const ANIMATION_DURATION = 6000;
+const ANIMATION_DELAY = 0;
+const LOOP = true;
+
+const CLIENT_RECT = { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0 };
+
 export default class Marquee extends PureComponent<MarqueeProps, {}> {
+  static displayName = 'CheckboxGroup';
+
   static defaultProps = {
     prefixCls: 'za-marquee',
     direction: 'left',
-    loop: true,
-    animationDuration: 6000,
-    animationDelay: 0,
+    loop: LOOP,
+    animationDuration: ANIMATION_DURATION,
+    animationDelay: ANIMATION_DELAY,
   };
 
-  private container;
+  private container: HTMLDivElement | null = null;
 
-  private scrollItem;
+  private scrollItem: HTMLDivElement | null = null;
 
-  private conatinerBoundingRect;
+  private containerBoundingRect: ClientRect = CLIENT_RECT;
 
-  private boundingRect;
+  private boundingRect: ClientRect = CLIENT_RECT;
 
   componentDidMount() {
-    this.conatinerBoundingRect = this.container.getBoundingClientRect();
-    this.boundingRect = this.scrollItem.getBoundingClientRect();
-    this.setScrollItemPostion();
+    this.containerBoundingRect = this.container!.getBoundingClientRect();
+    this.boundingRect = this.scrollItem!.getBoundingClientRect();
+    this.setScrollItemPosition();
     this.animationLoop();
   }
 
-  setScrollItemPostion = () => {
+  setScrollItemPosition = () => {
     const { direction } = this.props;
     const dir = direction.toLowerCase();
-    const container = this.conatinerBoundingRect;
+    const container = this.containerBoundingRect;
     const rect = this.boundingRect;
     let modifier = '';
 
@@ -56,8 +64,8 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
       default:
         modifier = `translate3d(${rect.width}px, 0, 0)`;
     }
-    this.container.style.transform = modifier;
-    this.container.style.WebkitTransform = modifier;
+    this.container!.style.transform = modifier;
+    this.container!.style.webkitTransform = modifier;
   };
 
   getDistance() {
@@ -68,7 +76,7 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
       case DIRECTION_LEFT:
         return this.boundingRect.width;
       case DIRECTION_RIGHT:
-        return this.conatinerBoundingRect.width;
+        return this.containerBoundingRect.width;
       case DIRECTION_UP:
         return this.boundingRect.height;
       case DIRECTION_DOWN:
@@ -78,23 +86,30 @@ export default class Marquee extends PureComponent<MarqueeProps, {}> {
     }
   }
 
-  genKey = () => {
+  generateKey = () => {
     const { prefixCls, direction } = this.props;
     const id = Date.now();
     return `${prefixCls}-${direction}-${id}`.toUpperCase();
   };
 
   animationLoop = () => {
-    const key = this.genKey();
-    const { direction, loop, animationDuration, animationDelay } = this.props;
+    const {
+      direction,
+      loop = LOOP,
+      animationDuration = ANIMATION_DURATION,
+      animationDelay = ANIMATION_DELAY,
+    } = this.props;
+
+    const key = this.generateKey();
+
     const modifier = getKeyFrameModifier(direction);
     const style = document.createElement('style');
     style.type = 'text/css';
     style.innerHTML = modifier(this.getDistance(), key);
     document.getElementsByTagName('head')[0].appendChild(style);
     const animation = animationModifier(animationDuration, loop, animationDelay, key);
-    this.container.style.animation = animation;
-    this.container.style.WebkitAnimation = animation;
+    this.container!.style.animation = animation;
+    this.container!.style.webkitTransform = animation;
   };
 
   render() {

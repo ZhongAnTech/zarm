@@ -22,14 +22,18 @@ class SideBar extends PureComponent {
     return (
       <Menu.SubMenu title={groupName} key={key}>
         {
-          components[key].map(component => (
-            <Menu.Item key={Format.camel2Dash(component.name)}>
-              <a href={`#/components/${Format.camel2Dash(component.name)}`}>
-                <span>{component.name}</span>
-                <span className="chinese">{component.description}</span>
-              </a>
-            </Menu.Item>
-          ))
+          components[key]
+            .sort((a, b) => {
+              return a.name.localeCompare(b.name);
+            })
+            .map(component => (
+              <Menu.Item key={Format.camel2Dash(component.name)}>
+                <a href={`#/components/${Format.camel2Dash(component.name)}`}>
+                  <span>{component.name}</span>
+                  <span className="chinese">{component.description}</span>
+                </a>
+              </Menu.Item>
+            ))
         }
       </Menu.SubMenu>
     );

@@ -12,41 +12,107 @@ export interface LoadingProps extends PropsType {
 export default class Loading extends PureComponent<LoadingProps, {}> {
   static defaultProps = {
     prefixCls: 'za-loading',
+    mask: true,
   };
 
-  static zarmLoading: HTMLElement;
+  static zarmLoading: null | HTMLElement;
 
-  static show = (props?: LoadingProps) => {
+  static show = (children: any, stayTime?: number, mask?: boolean, afterClose?: () => void) => {
+    Loading.unmountNode();
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
+      document.body.appendChild(Loading.zarmLoading);
     }
-    document.body.appendChild(Loading.zarmLoading);
-    ReactDOM.render(<Loading {...props} visible />, Loading.zarmLoading);
+    if (Loading.zarmLoading) {
+      ReactDOM.render(
+        <Loading visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
+          {children}
+        </Loading>,
+        Loading.zarmLoading,
+      );
+    }
   };
 
+  static _hide: () => void;
+
   static hide = () => {
-    ReactDOM.render(<Loading
-      visible={false}
-      onClose={Loading.unmountNode}
-    />, Loading.zarmLoading);
+    if (Loading._hide) {
+      Loading._hide();
+    }
   };
 
   static unmountNode = () => {
     const { zarmLoading } = Loading;
     if (zarmLoading) {
       ReactDOM.unmountComponentAtNode(zarmLoading);
-      if (zarmLoading.parentNode) {
-        zarmLoading.parentNode.removeChild(Loading.zarmLoading);
-      }
     }
   };
 
-  render() {
-    const { prefixCls, ...others } = this.props;
+  private timer;
 
+  state = {
+    visible: this.props.visible,
+  };
+
+  componentDidMount() {
+    Loading._hide = this._hide;
+    this.autoClose();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { visible } = this.props;
+
+    if (nextProps.visible !== visible) {
+      if (nextProps.visible === true) {
+        this.setState({
+          visible: true,
+        });
+        this.autoClose();
+      } else {
+        this._hide();
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  afterClose = () => {
+    const { afterClose } = this.props;
+    if (Loading.zarmLoading) {
+      document.body.removeChild(Loading.zarmLoading);
+      Loading.zarmLoading = null;
+    }
+
+    if (typeof afterClose === 'function') {
+      afterClose();
+    }
+  };
+
+  _hide = () => {
+    this.setState({
+      visible: false,
+    });
+  };
+
+  autoClose() {
+    const { stayTime } = this.props;
+
+    if ((stayTime as number) > 0) {
+      this.timer = setTimeout(() => {
+        this._hide();
+        clearTimeout(this.timer);
+      }, stayTime);
+    }
+  }
+
+  render() {
+    const { prefixCls, children, stayTime, ...others } = this.props;
+    const { visible } = this.state;
     return (
-      <Toast prefixCls={prefixCls} {...others} stayTime={0}>
-        <ActivityIndicator size="lg" className="rotate360" />
+      <Toast prefixCls={prefixCls} stayTime={stayTime || 0} {...others} visible={visible} afterClose={this.afterClose}>
+        {children || <ActivityIndicator type="spinner" size="lg" />}
       </Toast>
     );
   }

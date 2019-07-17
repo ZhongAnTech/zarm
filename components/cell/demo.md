@@ -30,7 +30,7 @@ class Demo extends React.Component {
     return (
       <div>
         <Cell title="标题文字" description="描述文字" />
-        <Cell title="标题文字" description={<Icon type="right" />} />
+        <Cell title="标题文字" description={<Icon type="add" theme="primary" size="sm" />} />
       </div>
     )
   }
@@ -51,7 +51,7 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell title="标题文字" icon={<Icon type="right" />} />
+        <Cell title="标题文字" icon={<Icon type="broadcast" theme="primary" />} />
         <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: 24, height: 24 }} />} />
       </div>
     )
@@ -117,7 +117,7 @@ class Demo extends React.Component {
           hasArrow
           title="标题文字"
           description="描述文字"
-          icon={<Icon type="right" />}
+          icon={<Icon type="broadcast" theme="primary" />}
           onClick={() => {}}
         />
 
@@ -126,7 +126,7 @@ class Demo extends React.Component {
           title="标题文字"
           description="描述文字"
           icon={
-            <img alt="" src={img} style={{ width: '24px', height: '24px' }} />
+            <img alt="" src={img} style={{ width: 24, height: 24 }} />
           }
           onClick={() => {}}
         />
@@ -140,7 +140,7 @@ class Demo extends React.Component {
             </div>
           }
           description="附加提示"
-          icon={<img alt="" src={img} style={{ width: '48px', height: '48px' }} />}
+          icon={<img alt="" src={img} style={{ width: 48, height: 48 }} />}
           onClick={() => {}}
         />
       </div>
@@ -163,7 +163,7 @@ class Demo extends React.Component {
       <div>
         <Cell
           title="标题"
-          help={<Message theme="danger" icon={<Icon type="info-round" />}>标题不能为空</Message>}
+          help={<Message theme="danger" icon={<Icon type="warning-round" size="sm" />}>标题不能为空</Message>}
         >
           <Input type="text" placeholder="请输入标题" />
         </Cell>

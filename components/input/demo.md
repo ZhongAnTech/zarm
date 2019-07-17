@@ -188,8 +188,8 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | type | string | 'text' | 类型，可选值 `text`、`number`、`idcard`、`price`、`password`、`search` |
-| value | number | string | - | 值 |
-| defaultValue | number | string | - | 初始值 |
+| value | number \| string | - | 值 |
+| defaultValue | number \| string | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
 | readOnly | boolean | false | 是否只读 |
 | rows | number | 2 | 多行文本时的显示行数。type为text类型时有效。 |

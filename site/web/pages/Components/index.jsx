@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
-import { Icon } from 'dragon-ui';
+import { Icon } from 'zarm';
 import { documents, components } from '@site/site.config';
 import Format from '@site/utils/format';
 import Container from '@site/web/components/Container';
@@ -42,7 +42,7 @@ class Page extends PureComponent {
           {
             isComponentPage(match.params.component) && (
               <div className="simulator">
-                <iframe src={`${window.location.protocol}//${window.location.host}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" style={{ width: 375, height: 667 }} />
+                <iframe src={`${window.location.protocol}//${window.location.host}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" />
               </div>
             )
           }
@@ -63,10 +63,11 @@ class Page extends PureComponent {
           </div>
           <ScrollToTop>
             <div className="scroll-to-top">
-              <Icon type="arrow-top" />
+              <Icon type="arrow-top" size="sm" />
             </div>
           </ScrollToTop>
         </main>
+        {/* <Footer /> */}
       </Container>
     );
   }

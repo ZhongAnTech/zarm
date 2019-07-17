@@ -73,7 +73,7 @@
 
   // activity-indicator
   --activity-indicator-size-md: 20px;
-  --activity-indicator-size-lg: 31px;
+  --activity-indicator-size-lg: 32px;
   --activity-indicator-path-color: #e6e6e6;
 
   // Alert
@@ -211,13 +211,14 @@
   // Keyboard
   --keyboard-item-height: 52px;
   --keyboard-item-font-size: 30px;
-  --keyboard-icon-font-size: 21px;
 
   // Message
   --message-min-height-md: 29px;
   --message-min-height-lg: 40px;
   --message-font-size-md: 12px;
   --message-font-size-lg: 14px;
+  --message-icon-size-md: 14px;
+  --message-icon-size-lg: 16px;
   --message-padding-v-md: 6px;
   --message-padding-h-md: 8px;
   --message-padding-v-lg: 8px;
@@ -257,10 +258,19 @@
   // Radio
   --radio-size: 20px;
 
+  // SearchBar
+  --search-bar-font-size: 14px;
+  --search-bar-icon-size: 18px;
+
   // Slider
   --slider-line-background: #e6e6e6;
   --slider-line-height: 2px;
-  --slider-handle-size: 28px;
+  --slider-line-dot-width: 6px;
+  --slider-vertical-line-width: 2px;
+  --slider-handle-size: 24px;
+  --slider-handle-size-small: 16px;
+  --slider-mark-handle: 24px;
+  --slider-mark-size: 15px;
   --slider-handle-background: #fff;
   --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
@@ -296,7 +306,6 @@
   --toast-border-radius: 6px;
   --toast-color: var(--color-text-inverse);
   --toast-font-size: 13px;
-  --toast-max-width: 70%;
 
   // Tooltip
   --tooltip-font-size: 12px;
@@ -305,8 +314,21 @@
   --tooltip-padding-v: var(--padding-v-xs);
   --tooltip-padding-h: var(--padding-h-xs);
 
+  // Tabbar
+  --tabbar-height: 50px;
+  --tabbar-hidden-bottom: -50px;
+  --tabbar-background: #fff;
+  --tabbar-item-font-size: 12px;
+  --tabbar-item-active-color: var(--theme-primary);
+
   // Wheel
   --wheel-item-height: 34px;
   --wheel-item-rows: 5;
   --wheel-item-font-size: 18px;
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
 }

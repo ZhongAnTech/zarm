@@ -3,6 +3,7 @@
 
 @include b(button) {
   display: inline-block;
+  vertical-align: middle;
   @include button-base();
   @include button-shape(var(--radius-md));
   @include button-size(
@@ -142,4 +143,3 @@
     justify-content: center;
   }
 }
-

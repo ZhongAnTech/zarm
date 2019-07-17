@@ -265,3 +265,68 @@ exports[`Carousel style render correctly 1`] = `
   />
 </div>
 `;
+
+exports[`Carousel swipeable 1`] = `
+<Carousel
+  activeIndex={0}
+  animationDuration={300}
+  autoPlay={false}
+  autoPlayIntervalTime={3000}
+  direction="left"
+  height={160}
+  loop={false}
+  moveDistanceRatio={0.5}
+  moveTimeSpan={300}
+  prefixCls="za-carousel"
+  showPagination={true}
+  swipeable={false}
+>
+  <div
+    className="za-carousel za-carousel--horizontal"
+  >
+    <div
+      className="za-carousel__items"
+      onTransitionEnd={[Function]}
+      style={Object {}}
+    >
+      <div
+        className="za-carousel__item"
+        key=".$0"
+      >
+        0
+      </div>
+      <div
+        className="za-carousel__item"
+        key=".$1"
+      >
+        1
+      </div>
+      <div
+        className="za-carousel__item"
+        key=".$2"
+      >
+        2
+      </div>
+    </div>
+    <div
+      className="za-carousel__pagination"
+    >
+      <div
+        className="za-carousel__pagination__item za-carousel__pagination__item--active"
+        key="pagination-0/.$0"
+        onClick={[Function]}
+      />
+      <div
+        className="za-carousel__pagination__item"
+        key="pagination-1/.$1"
+        onClick={[Function]}
+      />
+      <div
+        className="za-carousel__pagination__item"
+        key="pagination-2/.$2"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</Carousel>
+`;

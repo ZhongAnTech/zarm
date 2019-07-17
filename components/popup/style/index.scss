@@ -1,80 +1,73 @@
 @import "../../style/core/index";
 
 @include b(popup) {
-  position: relative;
+  z-index: var(--zindex-popup);
+  -webkit-overflow-scrolling: touch;
 
   @include e(wrapper) {
-    position: fixed;
-    transform: translate(0, 0);
-    transition-property: transform;
-    overflow: auto;
-    z-index: var(--zindex-popup);
-    -webkit-overflow-scrolling: touch;
-  }
-
-  @include m(mask) {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include m(nomask) {
+    position: fixed;
+
+    @include m(center) {
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
   }
 
   @include m(bottom) {
-    @include e(wrapper) {
-      left: 0;
-      bottom: 0;
-      width: 100%;
-    }
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
 
   @include m(top) {
-    @include e(wrapper) {
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 
   @include m(left) {
-    @include e(wrapper) {
-      left: 0;
-      top: 0;
-      height: 100%;
-    }
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
   }
 
   @include m(right) {
-    @include e(wrapper) {
-      right: 0;
-      top: 0;
-      height: 100%;
-    }
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
   }
 
   @include m(hidden) {
     @include m(bottom) {
-      @include e(wrapper) {
-        transform: translate(0, 100%);
-      }
+      transform: translate(0, 100%);
     }
 
     @include m(top) {
-      @include e(wrapper) {
-        transform: translate(0, -100%);
-      }
+      transform: translate(0, -100%);
     }
 
     @include m(left) {
-      @include e(wrapper) {
-        transform: translate(-100%, 0);
-      }
+      transform: translate(-100%, 0);
     }
 
     @include m(right) {
-      @include e(wrapper) {
-        transform: translate(100%, 0);
-      }
+      transform: translate(100%, 0);
     }
   }
 }

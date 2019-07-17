@@ -1,13 +1,12 @@
 @import "@site/styles/index";
 
 .icon-page {
-  .icon {
+  .za-icon {
     display: block;
     margin-bottom: r(15);
-    font-size: r(45);
 
-    &-name {
-      font-size: r(13);
+    & + span {
+      font-size: r(12);
     }
   }
 
@@ -23,10 +22,10 @@
       position: relative;
       width: 33.33%;
       height: r(125);
-      @include onepx(top right);
+      @include onepx(bottom right);
 
       &:nth-of-type(3n) {
-        @include onepx(top);
+        @include onepx(bottom);
       }
     }
   }

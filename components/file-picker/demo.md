@@ -33,7 +33,7 @@ class Demo extends React.Component {
             className="file-picker-btn"
             onChange={selected => this.onSelect(selected)}
           >
-            <Icon type="add" />
+            <Icon type="add" size="lg" />
           </FilePicker>
         </div>
       </div>
@@ -91,7 +91,7 @@ class Demo extends React.Component {
           sup
           className="file-picker-item"
           shape="circle"
-          text={<Icon type="wrong" />}
+          text={<Icon type="wrong-round-fill" size="sm" theme="danger" />}
           onClick={() => this.remove(index)}
         >
           <div className="file-picker-item-img">
@@ -118,7 +118,7 @@ class Demo extends React.Component {
                 onBeforeSelect={onBeforeSelect}
                 onChange={selected => this.onSelect(selected)}
               >
-                <Icon type="add" />
+                <Icon type="add" size="lg" />
               </FilePicker>
             )
           }
@@ -142,7 +142,7 @@ class Demo extends React.Component {
     return (
       <div className="file-picker-wrapper">
         <FilePicker className="file-picker-btn" disabled>
-          <Icon type="add" />
+          <Icon type="add" size="lg" />
         </FilePicker>
       </div>
     )

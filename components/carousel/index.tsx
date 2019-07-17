@@ -17,6 +17,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     loop: false,
     activeIndex: 0,
     animationDuration: 300,
+    swipeable: true,
     autoPlay: false,
     autoPlayIntervalTime: 3000,
     moveDistanceRatio: 0.5,
@@ -264,9 +265,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     const newItems = React.Children.map(items, (element: any, index) => {
       return cloneElement(element, {
         key: index,
-        className: classnames(`${props.prefixCls}__item`, {
-          [element.props.className]: !!element.props.className,
-        }),
+        className: classnames(`${props.prefixCls}__item`, element.props.className),
       });
     });
 
@@ -352,7 +351,7 @@ export default class Carousel extends Component<CarouselProps, any> {
   };
 
   render() {
-    const { prefixCls, className, height, style } = this.props;
+    const { prefixCls, className, swipeable, height, style } = this.props;
     const { items } = this.state;
     const itemsStyle: CSSProperties = {};
 
@@ -363,22 +362,32 @@ export default class Carousel extends Component<CarouselProps, any> {
       itemsStyle.height = height;
     }
 
+    const content = (
+      <div
+        ref={(ele) => { this.carouselItems = ele; }}
+        className={`${prefixCls}__items`}
+        onTransitionEnd={this.transitionEnd}
+        style={itemsStyle}
+      >
+        {items}
+      </div>
+    );
+
     return (
       <div className={cls} style={style}>
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}
-        >
-          <div
-            ref={(ele) => { this.carouselItems = ele; }}
-            className={`${prefixCls}__items`}
-            onTransitionEnd={this.transitionEnd}
-            style={itemsStyle}
-          >
-            {items}
-          </div>
-        </Drag>
+        {
+          swipeable
+            ? (
+              <Drag
+                onDragStart={this.onDragStart}
+                onDragMove={this.onDragMove}
+                onDragEnd={this.onDragEnd}
+              >
+                {content}
+              </Drag>
+            )
+            : content
+        }
         {this.renderPagination()}
       </div>
     );

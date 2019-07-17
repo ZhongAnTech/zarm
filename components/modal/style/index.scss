@@ -14,24 +14,19 @@
   overflow: auto;
   z-index: var(--zindex-modal);
 
-  @include m(radius) {
-    @include e(dialog) {
-      border-radius: var(--radius-md);
-    }
-  }
-
-  @include e(wrapper) {
-    width: 100%;
-    margin: auto 0;
-  }
-
-  @include e(dialog) {
+  @include b(popup) {
     position: relative;
     margin: r(60) auto;
     background-color: var(--modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
     z-index: calc(var(--zindex-modal) + 1);
+  }
+
+  @include m(radius) {
+    @include b(popup) {
+      border-radius: var(--radius-md);
+    }
   }
 
   @include e(header) {
@@ -51,7 +46,6 @@
       right: r(15);
       line-height: r(15);
       color: #ccc;
-      font-size: r(20);
       cursor: pointer;
 
       &:hover {
@@ -77,4 +71,3 @@
     }
   }
 }
-

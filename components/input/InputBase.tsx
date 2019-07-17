@@ -36,8 +36,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { value } = this.state;
-    if ('value' in nextProps && value !== nextProps.value) {
+    if ('value' in nextProps) {
       this.setState({
         value: nextProps.value,
       });

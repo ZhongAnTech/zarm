@@ -5,11 +5,11 @@ import Cell from '../cell';
 import Button from '../button';
 import Icon from '../icon';
 
-const getChecked = (props, defaultChecked) => {
-  if ('checked' in props && props.checked) {
+const getChecked = (props: RadioProps, defaultChecked: boolean) => {
+  if (typeof props.checked !== 'undefined') {
     return props.checked;
   }
-  if ('defaultChecked' in props && props.defaultChecked) {
+  if (typeof props.defaultChecked !== 'undefined') {
     return props.defaultChecked;
   }
   return defaultChecked;
@@ -20,7 +20,11 @@ export interface RadioProps extends BaseRadioProps {
   className?: string;
 }
 
-export default class Radio extends PureComponent<RadioProps, any> {
+export interface RadioStates {
+  checked: boolean;
+}
+
+export default class Radio extends PureComponent<RadioProps, RadioStates> {
   static Group: any;
 
   static defaultProps = {
@@ -30,19 +34,18 @@ export default class Radio extends PureComponent<RadioProps, any> {
     block: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: getChecked(props, false),
-    };
-  }
+  state: RadioStates = {
+    checked: getChecked(this.props, false),
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
+  static getDerivedStateFromProps(nextProps: RadioProps) {
+    if (typeof nextProps.checked !== 'undefined') {
+      return {
+        checked: nextProps.checked,
+      };
     }
+
+    return null;
   }
 
   onValueChange = () => {
@@ -84,7 +87,7 @@ export default class Radio extends PureComponent<RadioProps, any> {
         <Cell
           className={cls}
           disabled={disabled}
-          description={checked && <Icon type="right" theme={disabled ? undefined : 'primary'} />}
+          description={checked && <Icon type="right" size="sm" theme={disabled ? 'default' : 'primary'} />}
           onClick={() => {}}
         >
           {inputRender}

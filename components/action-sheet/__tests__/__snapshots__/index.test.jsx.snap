@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionSheet renders correctly 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   actions={
     Array [
       Object {
@@ -66,10 +66,10 @@ exports[`ActionSheet renders correctly 1`] = `
       }
       locale={
         Object {
-          "cancelText": "Cancel",
+          "cancelText": "取消",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       onCancel={[MockFunction]}
       onMaskClick={[MockFunction]}
       prefixCls="za-action-sheet"
@@ -82,27 +82,26 @@ exports[`ActionSheet renders correctly 1`] = `
       >
         <Portal
           animationDuration={200}
-          autoClose={false}
+          animationType="fade"
           direction="bottom"
           handlePortalUnmount={[Function]}
           mask={true}
           maskType="normal"
           onMaskClick={[MockFunction]}
           prefixCls="za-popup"
-          stayTime={3000}
           visible={true}
         >
           <Portal
             containerInfo={
               <div
-                class=" popup-container"
+                class="popup-container"
               >
                 <div
-                  class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                  class="za-popup__wrapper"
                   role="dialog"
                 >
                   <div
-                    class="za-popup__wrapper"
+                    class="za-popup za-popup--bottom za-popup--hidden"
                     role="document"
                     style="transition-duration: 200ms;"
                   >
@@ -134,7 +133,7 @@ exports[`ActionSheet renders correctly 1`] = `
                         <div
                           class="za-action-sheet__item"
                         >
-                          Cancel
+                          取消
                         </div>
                       </div>
                     </div>
@@ -144,11 +143,12 @@ exports[`ActionSheet renders correctly 1`] = `
             }
           >
             <div
-              className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+              className="za-popup__wrapper"
               role="dialog"
+              style={Object {}}
             >
               <div
-                className="za-popup__wrapper"
+                className="za-popup za-popup--bottom za-popup--hidden"
                 role="document"
                 style={
                   Object {
@@ -192,7 +192,7 @@ exports[`ActionSheet renders correctly 1`] = `
                       className="za-action-sheet__item"
                       onClick={[MockFunction]}
                     >
-                      Cancel
+                      取消
                     </div>
                   </div>
                 </div>
@@ -216,5 +216,5 @@ exports[`ActionSheet renders correctly 1`] = `
       </Popup>
     </ActionSheet>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

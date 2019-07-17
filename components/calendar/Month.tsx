@@ -8,36 +8,43 @@ export interface CalendarMonthProps extends BaseCalendarMonthProps {
   prefixCls?: string;
 }
 
-export default class CalendarMonthView extends PureComponent<CalendarMonthProps, any> {
+export interface CalendarMonthState {
+  value: Date[];
+  dateMonth: Date;
+}
+
+export default class CalendarMonthView extends PureComponent<CalendarMonthProps, CalendarMonthState> {
+  static displayName = 'CalendarMonthView';
+
   static defaultProps = {
     prefixCls: 'za-calendar',
     value: [],
     dateMonth: new Date(),
     min: new Date(),
     max: new Date(),
-    dateRender: date => date.getDate(),
+    dateRender: (date: Date) => date.getDate(),
     disabledDate: () => false,
   };
 
   // 月份最小值
-  private min?: any;
+  private min: Date;
 
   // 月份最大值
-  private max?: any;
+  private max: Date;
 
   // 当前月份dom数据缓存
-  private cache?: any;
+  private cache: JSX.Element | null = null;
 
   // 上次是否落点在当前月份内
-  private lastIn = false;
+  private lastIn?: boolean = false;
 
   // 当前组件是否需要更新
-  private isRefresh = true;
+  private isRefresh: boolean = true;
 
   // 当前月份的dom
   private node?: any;
 
-  constructor(props) {
+  constructor(props: CalendarMonthProps) {
     super(props);
     this.min = props.min;
     this.max = props.max;
@@ -47,7 +54,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps: CalendarMonthProps) {
     this.isRefresh = this.checkRefresh(nextProps);
 
     if (this.isRefresh) {
@@ -67,7 +74,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
   };
 
   // 检查当前是否需要更新
-  checkRefresh = (props) => {
+  checkRefresh = (props: CalendarMonthProps) => {
     const { dateMonth, value, min, max, dateRender, disabledDate } = props;
     const { dateRender: dateRenderProp, disabledDate: disabledDateProp } = this.props;
     const { dateMonth: dateMonthState } = this.state;
@@ -80,15 +87,15 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
       return true;
     }
 
-    if (dateMonth - dateMonthState !== 0) {
+    if ((+dateMonth - +dateMonthState) !== 0) {
       return true;
     }
 
-    if (min - this.min !== 0 || max - this.max !== 0) {
+    if ((+min - +this.min !== 0) || (+max - +this.max !== 0)) {
       return true;
     }
 
-    let isIn;
+    let isIn!: boolean;
 
     if (value.length > 0) {
       const currMonth = DateTool.cloneDate(dateMonth, 'dd', 1);
@@ -102,7 +109,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
   };
 
   // 日期状态: 选中，区间
-  checkStatus = (date) => {
+  checkStatus = (date: Date) => {
     const { min, max, disabledDate } = this.props;
     const { value = [] } = this.state;
     const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
@@ -117,7 +124,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     return res;
   };
 
-  renderDay = (day, year, month, firstDay) => {
+  renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const { prefixCls, dateRender, onDateClick } = this.props;
     const date = new Date(year, month, day);
     const isToday = CalendarView.cache.now === `${year}-${month}-${day}`;
@@ -156,7 +163,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     );
   };
 
-  renderContent = (year, month) => {
+  renderContent = (year: number, month: number) => {
     let data = CalendarView.cache[`${year}-${month}`];
     if (!data) {
       data = DateTool.getCurrMonthInfo(year, month);
@@ -178,11 +185,11 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
       return this.cache;
     }
 
-    const monthkey = `${year}-${month}`;
+    const monthKey = `${year}-${month}`;
 
     this.cache = (
       <section
-        key={monthkey}
+        key={monthKey}
         className={`${prefixCls}__month`}
         title={`${year}年${month + 1}月`}
         ref={(n) => { this.node = n; }}

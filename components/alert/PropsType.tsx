@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Locale } from '../locale-provider/PropsType';
 
 export default interface PropsType {
-  shape?: 'radius';
+  shape?: 'rect';
   visible?: boolean;
   animationType?:
     'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
@@ -15,11 +15,6 @@ export default interface PropsType {
   message?: ReactNode;
   cancelText?: string;
   onCancel?: () => void;
-  locale?: Locale;
-}
-
-declare global {
-  interface Window {
-    zarmAlert?: any;
-  }
+  afterClose?: () => void;
+  locale?: Locale['Alert'];
 }

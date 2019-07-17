@@ -4,11 +4,11 @@ import PropsType from './PropsType';
 import Button from '../button';
 import Icon from '../icon';
 
-const getValue = (props, defaultValue) => {
-  if ('value' in props) {
+const getValue = (props: StepperProps, defaultValue: number) => {
+  if (typeof props.value !== 'undefined') {
     return props.value;
   }
-  if ('defaultValue' in props) {
+  if (typeof props.defaultValue !== 'undefined') {
     return props.defaultValue;
   }
   return defaultValue;
@@ -19,7 +19,15 @@ export interface StepperProps extends PropsType {
   className?: string;
 }
 
-export default class Stepper extends PureComponent<StepperProps, any> {
+export interface StepperStates {
+  value: number;
+  prevPropsValue: number;
+  lastValue: number;
+}
+
+export default class Stepper extends PureComponent<StepperProps, StepperStates> {
+  static displayName = 'Stepper';
+
   static defaultProps = {
     prefixCls: 'za-stepper',
     shape: 'radius',
@@ -27,36 +35,42 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     step: 1,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: getValue(props, 0),
-      lastValue: getValue(props, 0),
-    };
-  }
+  state: StepperStates = {
+    value: getValue(this.props, 0),
+    prevPropsValue: getValue(this.props, 0),
+    lastValue: getValue(this.props, 0),
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
-      this.setState({
-        value: Number(getValue(nextProps, 0)),
-        lastValue: Number(getValue(nextProps, 0)),
-      });
+  static getDerivedStateFromProps(nextProps: StepperProps, prevState: StepperStates) {
+    if (
+      typeof nextProps.value !== 'undefined'
+      && nextProps.value !== prevState.prevPropsValue
+    ) {
+      const value = Number(getValue(nextProps, 0));
+
+      return {
+        value,
+        lastValue: value,
+        prevPropsValue: value,
+      };
     }
+
+    return null;
   }
 
-  onInputChange = (value) => {
-    value = Number(value);
+  onInputChange = (value: string) => {
+    const _value = Number(value);
     const { onInputChange } = this.props;
-    this.setState({ value });
+    this.setState({ value: _value });
     if (typeof onInputChange === 'function') {
-      onInputChange(value);
+      onInputChange(_value);
     }
   };
 
-  onInputBlur = (value) => {
+  onInputBlur = (value: number | string) => {
     const { min, max, onChange } = this.props;
     value = Number(value);
-    if (value === '' || Number.isNaN(Number(value))) {
+    if (Number.isNaN(value)) {
       value = this.state.lastValue;
     }
     if (min !== null && value < min) {

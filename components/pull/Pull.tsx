@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
-import { REFRESH_STATE, LOAD_STATE, PropsType } from './PropsType';
+import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
 import Drag from '../drag';
@@ -13,7 +13,7 @@ export interface PullProps extends PropsType {
 }
 
 export default class Pull extends PureComponent<PullProps, any> {
-  static defaultProps = {
+  static defaultProps: PullProps = {
     prefixCls: 'za-pull',
     refresh: {
       state: REFRESH_STATE.normal,
@@ -54,11 +54,11 @@ export default class Pull extends PureComponent<PullProps, any> {
   componentWillReceiveProps(nextProps) {
     const { refresh, load } = this.props;
 
-    if ('refresh' in nextProps && nextProps.refresh.state !== refresh.state) {
+    if ('refresh' in nextProps && nextProps.refresh.state !== refresh!.state) {
       this.doRefreshAction(nextProps.refresh.state);
     }
 
-    if ('load' in nextProps && nextProps.load.state !== load.state) {
+    if ('load' in nextProps && nextProps.load.state !== load!.state) {
       this.doLoadAction(nextProps.load.state);
     }
   }
@@ -83,7 +83,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   onScroll = () => {
     const { refreshState, loadState } = this.state;
     const { scrollHeight, scrollTop, clientHeight } = this.wrap;
-    const load = { ...Pull.defaultProps.load, ...this.props.load };
+    const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
     const { handler, distance } = load;
 
     if (
@@ -101,7 +101,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   };
 
   onDragMove = (event, { offsetY }) => {
-    const { handler } = this.props.refresh;
+    const { handler } = this.props.refresh!;
     if (
       // 未设置刷新事件
       !handler
@@ -121,7 +121,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     // 解决低端安卓系统只触发一次touchmove事件的bug
     event.preventDefault();
 
-    const refresh = { ...Pull.defaultProps.refresh, ...this.props.refresh };
+    const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
     const { startDistance, distance } = refresh;
     const offset = offsetY / 2; // 移动距离为拖动距离的一半
 
@@ -148,7 +148,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     }
 
     // 执行外部触发刷新的回调
-    const { handler } = this.props.refresh;
+    const { handler } = this.props.refresh!;
     if (typeof handler === 'function') {
       handler();
     }
@@ -223,19 +223,19 @@ export default class Pull extends PureComponent<PullProps, any> {
    * 渲染刷新节点
    */
   renderRefresh = () => {
-    const refresh = { ...Pull.defaultProps.refresh, ...this.props.refresh };
+    const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
     const { startDistance, distance, render } = refresh;
     const { refreshState, offsetY } = this.state;
 
     let percent = 0;
-    if (offsetY >= startDistance) {
+    if (offsetY >= startDistance!) {
       percent = (
         (
-          (offsetY - startDistance) < distance
-            ? offsetY - startDistance
+          (offsetY - startDistance!) < distance!
+            ? offsetY - startDistance!
             : distance
-        ) * 100
-      ) / distance;
+        )! * 100
+      ) / distance!;
     }
 
     if (typeof render === 'function') {
@@ -249,7 +249,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.pull:
         return (
           <div className={cls}>
-            <ActivityIndicator percent={percent} />
+            <ActivityIndicator loading={false} percent={percent} />
             <span>{locale!.pullText}</span>
           </div>
         );
@@ -257,7 +257,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.drop:
         return (
           <div className={cls}>
-            <ActivityIndicator percent={100} />
+            <ActivityIndicator loading={false} percent={100} />
             <span>{locale!.dropText}</span>
           </div>
         );
@@ -265,7 +265,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.loading:
         return (
           <div className={cls}>
-            <ActivityIndicator className="rotate360" />
+            <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
         );
@@ -294,7 +294,7 @@ export default class Pull extends PureComponent<PullProps, any> {
    * 渲染加载节点
    */
   renderLoad = () => {
-    const load = { ...Pull.defaultProps.load, ...this.props.load };
+    const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
     const { render } = load;
     const { loadState } = this.state;
 
@@ -309,7 +309,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case LOAD_STATE.loading:
         return (
           <div className={cls}>
-            <ActivityIndicator className="rotate360" />
+            <ActivityIndicator type="spinner" />
             <span>{locale!.loadingText}</span>
           </div>
         );

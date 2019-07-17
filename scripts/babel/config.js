@@ -15,4 +15,11 @@ module.exports = {
     ['import', { libraryName: 'zarm', libraryDirectory: 'components', style: true }, 'zarm'],
     ['import', { libraryName: 'dragon-ui', style: true }, 'dragon-ui'],
   ],
+  env: {
+    test: {
+      plugins: [
+        '@babel/plugin-transform-modules-commonjs',
+      ],
+    },
+  },
 };

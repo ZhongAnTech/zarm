@@ -184,6 +184,11 @@ module.exports = {
         description: '导航栏',
         module: () => import('@/components/nav-bar/demo.md'),
       },
+      {
+        name: 'TabBar',
+        description: '标签栏',
+        module: () => import('@/components/tab-bar/demo.md'),
+      },
     ],
     other: [
       {
@@ -193,4 +198,11 @@ module.exports = {
       },
     ],
   },
+  design: [
+    {
+      name: 'Download',
+      description: '设计资源下载',
+      module: () => import('@/site/web/pages/Design/Download'),
+    },
+  ],
 };

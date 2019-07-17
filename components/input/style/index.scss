@@ -78,7 +78,6 @@
     transform: translateY(-50%);
     right: 0;
     font-size: r(16);
-    line-height: r(20);
 
     @include m(show) {
       visibility: visible;

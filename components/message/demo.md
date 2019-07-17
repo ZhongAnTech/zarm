@@ -12,7 +12,7 @@ class Demo extends React.Component {
       <div>
         <Message>普通</Message>
         <Message theme="danger">自定义主题</Message>
-        <Message icon={<Icon type="wrong-round" />}>自定义图标</Message>
+        <Message theme="warning" icon={<Icon type="warning-round" />}>自定义图标</Message>
       </div>
     )
   }

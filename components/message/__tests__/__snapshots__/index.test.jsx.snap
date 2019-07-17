@@ -19,7 +19,10 @@ exports[`Message closable 1`] = `
     <Icon
       onClick={[Function]}
       prefixCls="za-icon"
+      size="md"
+      theme="default"
       type="wrong"
+      viewBox="0 0 32 32"
     />
   </div>
 </div>
@@ -43,7 +46,10 @@ exports[`Message hasArrow 1`] = `
   >
     <Icon
       prefixCls="za-icon"
+      size="md"
+      theme="default"
       type="arrow-right"
+      viewBox="0 0 32 32"
     />
   </div>
 </div>

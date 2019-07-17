@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-gist.css';
@@ -41,7 +42,7 @@ export default class Markdown extends Component {
       // };
 
       const html = marked(document, { renderer });
-      return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+      return <div className={classnames(className, 'markdown')} dangerouslySetInnerHTML={{ __html: html }} />;
     }
 
     return <span />;

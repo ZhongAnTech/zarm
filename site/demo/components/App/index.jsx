@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 import { Loading } from 'zarm';
 // import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -11,7 +11,7 @@ import Markdown from '@site/demo/components/Markdown';
 import './style.scss';
 
 const HAS_STYLE_COMPONENT = [
-  'Badge', 'Button', 'Calendar', 'Carousel',
+  'Badge', 'Button', 'Calendar', 'Carousel', 'Collapse',
   'Cell', 'Checkbox', 'FilePicker', 'Icon', 'Message',
   'NoticeBar', 'Panel', 'Picker', 'Popup', 'Progress',
   'Pull', 'Radio', 'SearchBar', 'Tabs', 'Toast', 'Tooltip',
@@ -33,23 +33,24 @@ const LoadableComponent = (component) => {
 
   return Loadable.Map({
     loader,
-    render: (loaded, props) => (
-      <Markdown
-        document={loaded.page.default}
-        className={`${Format.camel2Dash(component.name)}-page`}
-        {...props}
-      />
-    ),
+    render: (loaded, props) => {
+      return (
+        <Markdown
+          document={loaded.page.default}
+          // data={{
+          //   name: component.name,
+          //   description: component.description,
+          // }}
+          className={`${Format.camel2Dash(component.name)}-page`}
+          {...props}
+        />
+      );
+    },
     loading: () => <Loading visible />,
   });
 };
 
 class App extends Component {
-  // componentDidMount() {
-  //   Events.on(window, 'resize', window.__setFontSize__);
-  //   FastClick.attach(document.body);
-  // }
-
   render() {
     const { history, location, match } = this.props;
     const currentKey = location.pathname.split('/')[1] || '/';
@@ -89,4 +90,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(withRouter(App));
+export default hot(withRouter(App));

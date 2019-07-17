@@ -212,7 +212,6 @@ describe('Input.Textarea', () => {
     textarea.simulate('compositionend');
     expect(onCompositionEnd).toBeCalled();
     expect(onChange).toBeCalled();
-    // expect(wrapper.state('isOnComposition')).toBe(false);
   });
 });
 

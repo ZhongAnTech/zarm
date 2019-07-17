@@ -6,12 +6,13 @@
  * @param fileType
  * @returns {string}
  */
-export default function changeImageSize(img, quality, fileType) {
+export default function changeImageSize(img: HTMLImageElement, quality: number | undefined, fileType: string) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
   if (!ctx) {
-    return img;
+    console.error('请使用高版本浏览器，该版本浏览器不支持生成缩略图');
+    return '';
   }
 
   // const MAX_WIDTH = 800;
@@ -38,7 +39,7 @@ export default function changeImageSize(img, quality, fileType) {
   ctx.drawImage(img, 0, 0, width, height);
 
   // 是否有效的压缩比例（0 - 1）
-  if (!(quality > 0 && quality <= 1)) {
+  if (quality && !(quality > 0 && quality <= 1)) {
     console.error('请输入有效的压缩比例, 没有将默认使用 0.92');
   }
 

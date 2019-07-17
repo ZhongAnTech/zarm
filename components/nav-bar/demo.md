@@ -68,15 +68,16 @@ class Demo extends React.Component {
           />
         }
         title="这是标题"
-        right={<div>
-          <Icon type="add" theme="success" onClick={() => alert('click icon1')} />
-          <Icon
-            style={{ marginLeft: 16 }}
-            type="question-round"
-            theme="success"
-            onClick={() => alert('click icon2')}
-          />
-        </div>}
+        right={
+          <>
+            <Icon type="add" theme="success" onClick={() => alert('click icon1')} style={{ marginRight: 16 }} />
+            <Icon
+              type="question-round"
+              theme="success"
+              onClick={() => alert('click icon2')}
+            />
+          </>
+        }
       />
     )
   }
