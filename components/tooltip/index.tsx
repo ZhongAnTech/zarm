@@ -2,7 +2,7 @@ import React from 'react';
 import Popper from '../popper';
 import { PopperProps, PopperPlacement, PopperTrigger } from '../popper/PropsType';
 
-class Tootip extends React.Component<PopperProps, any> {
+class Tooltip extends React.Component<PopperProps, any> {
   static defaultProps = {
     prefixCls: 'za-tooltip',
     direction: 'top' as PopperPlacement,
@@ -25,4 +25,4 @@ class Tootip extends React.Component<PopperProps, any> {
 }
 
 
-export default Tootip;
+export default Tooltip;

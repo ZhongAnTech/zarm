@@ -4,28 +4,10 @@ import PropTypes from 'prop-types';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
 
-import ClickOutside from '../utils/clickOutside';
+import ClickOutside from '../click-outside/clickOutside';
 import { invertKeyValues } from '../utils';
+import domUtil from '../utils/dom';
 import { PopperProps, directionMap } from './PropsType';
-
-function getOuterSizes(element: HTMLElement) {
-  const _display = element.style.display;
-  const _visibility = element.style.visibility;
-  element.style.display = 'block';
-  element.style.visibility = 'hidden';
-
-  const styles = window.getComputedStyle(element, null);
-  const x = parseFloat(styles.marginTop as string) + parseFloat(styles.marginBottom as string);
-  const y = parseFloat(styles.marginLeft as string) + parseFloat(styles.marginRight as string);
-  const result = {
-    width: element.offsetWidth + y,
-    height: element.offsetHeight + x,
-  };
-
-  element.style.display = _display;
-  element.style.visibility = _visibility;
-  return result;
-}
 
 function getPopperClientRect(popperOffsets) {
   const offsets = { ...popperOffsets };
@@ -35,8 +17,7 @@ function getPopperClientRect(popperOffsets) {
 }
 
 function customArrowOffsetFn(data: PopperJS.Data) {
-  const placement = data.placement.split('-')[0];
-  const placement1 = data.placement.split('-')[1];
+  const [placement, placement1] = data.placement.split('-');
   const arrow: any = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element;
   const { offsets: { reference } } = data;
   const popper = getPopperClientRect(data.offsets.popper);
@@ -45,7 +26,7 @@ function customArrowOffsetFn(data: PopperJS.Data) {
   const side = isVertical ? 'top' : 'left';
   const altSide = isVertical ? 'left' : 'top';
   const opSide = isVertical ? 'bottom' : 'right';
-  const arrowSize = getOuterSizes(arrow as HTMLElement)[len];
+  const arrowSize = domUtil.getOuterSizes(arrow as HTMLElement)[len];
   const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft as any);
   const hashMap = {
     start: reference[side] + offsetSize,
@@ -101,7 +82,7 @@ class Popper extends React.Component<PopperProps, any> {
     onVisibleChange: PropTypes.func,
   };
 
-  static getDerivedStateFromProps(props: PopperProps, state) {
+  static getDerivedStateFromProps(props: PopperProps, state: any) {
     if ('visible' in props && props.trigger === 'manual') {
       return {
         ...state,
@@ -129,7 +110,7 @@ class Popper extends React.Component<PopperProps, any> {
 
   private leaveTimer: any;
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: PopperProps, prevState: any) {
     const { visible } = this.state;
     const { direction } = this.props;
     if (
@@ -169,6 +150,7 @@ class Popper extends React.Component<PopperProps, any> {
 
     this.popper = new PopperJS(reference, popperNode, {
       placement: directionMap[direction!] as any,
+      positionFixed: true,
       modifiers: {
         preventOverflow: {
           boundariesElement: 'window',
@@ -205,7 +187,7 @@ class Popper extends React.Component<PopperProps, any> {
   };
 
   handleClick = () => {
-    this.setState(preState => ({ visible: !preState.visible }));
+    this.setState((preState: any) => ({ visible: !preState.visible }));
   };
 
   handleEnter = (event) => {

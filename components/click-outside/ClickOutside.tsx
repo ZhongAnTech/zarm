@@ -1,14 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Events from './events';
+import ClickOutsideProps from './PropsType';
+import Events from '../utils/events';
 
-export interface IProps {
-  onClickOutside: (event: React.SyntheticEvent) => void;
-  disabled?: boolean;
-}
-
-export default class ClickOutside extends React.Component<IProps> {
+export default class ClickOutside extends React.Component<ClickOutsideProps> {
   static propTypes = {
     onClickOutside: PropTypes.func.isRequired,
     disabled: PropTypes.bool,

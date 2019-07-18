@@ -62,7 +62,7 @@ class Demo extends React.Component {
                 <Button block size="xs">Bottom</Button>
               </Tooltip>
 
-              <Tooltip direction="bottomRight" title="bottomRight">
+              <Tooltip direction="bottomRight" title="bottomRight text">
                 <Button block size="xs">BR</Button>
               </Tooltip>
             </div>
