@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
 
-import ClickOutside from '../click-outside/clickOutside';
+import ClickOutside from '../click-outside';
 import { invertKeyValues } from '../utils';
 import domUtil from '../utils/dom';
 import { PopperProps, directionMap } from './PropsType';
