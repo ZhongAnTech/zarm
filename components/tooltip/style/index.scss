@@ -8,18 +8,13 @@
     display: block;
   }
 
-  @include e(content) {
-    display: none;
+  @include e(content-wrapper) {
     padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
     background-color: rgba(0, 0, 0, var(--opacity-tooltip));
     border-radius: r(4);
     font-size: var(--tooltip-font-size);
     color: var(--tooltip-color);
     z-index: var(--zindex-tooltip);
-
-    @include m(show) {
-      display: block;
-    }
   }
 
   @include e(arrow) {
