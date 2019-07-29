@@ -9,6 +9,7 @@ import Footer from './Footer';
 export default class Markdown extends React.Component {
   constructor(props) {
     super(props);
+    // this.style = null;
     this.components = new Map();
     this.nodeList = [];
   }
@@ -36,12 +37,24 @@ export default class Markdown extends React.Component {
         ReactDOM.render(component, div);
       }
     }
+
+    // 加载样式
+    // const head = document.getElementsByTagName('head')[0];
+    // const style = document.createElement('style');
+    // style.type = 'text/css';
+    // style.appendChild(document.createTextNode(this.style));
+    // head.appendChild(style);
   }
 
   render() {
     const { document, className } = this.props;
     if (typeof document === 'string') {
       this.components.clear();
+
+      // document.replace(/<style>\s?([^]+?)(<\/style>)/g, (match, p1) => {
+      //   this.style = p1;
+      // });
+
       const html = marked(
         document
           .replace(/## 自定义 Iconfont 图标\s?([^]+)/g, '') // 排除无法展示示例的情况
