@@ -1,0 +1,44 @@
+@import "@site/styles/index";
+
+.popper-page {
+  @at-root .common-popper,
+    .za-popper__wrapper {
+    padding: 6px 12px;
+    background: #fff;
+    box-shadow: 2px 2px #eee;
+    border: 1px solid #e5e5e5;
+  }
+
+  .za-popper {
+    display: inline-block;
+  }
+
+  .za-cell__content {
+    justify-content: start;
+    padding: r(15) 0;
+  }
+
+  .za-popper {
+    margin-right: r(10);
+    margin-bottom: r(10);
+  }
+
+  .za-button {
+    width: r(60);
+  }
+
+  @at-root [x-placement^=top] {
+    margin-bottom: r(10);
+
+    .za-popper__arrow {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      bottom: r(-4);
+      border-width: r(4) r(4) 0;
+      border-top-color: rgba(0, 0, 0, .8);
+    }
+  }
+}

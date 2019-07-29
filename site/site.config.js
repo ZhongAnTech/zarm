@@ -163,6 +163,11 @@ module.exports = {
         module: () => import('@/components/marquee/demo.md'),
       },
       {
+        name: 'Popper',
+        description: '弹层',
+        module: () => import('@/components/popper/demo.md'),
+      },
+      {
         name: 'Tooltip',
         description: '文字提示',
         module: () => import('@/components/tooltip/demo.md'),

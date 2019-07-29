@@ -8,7 +8,7 @@
     display: block;
   }
 
-  @include e(content-wrapper) {
+  @include e(wrapper) {
     padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
     background-color: rgba(0, 0, 0, var(--opacity-tooltip));
     border-radius: r(4);

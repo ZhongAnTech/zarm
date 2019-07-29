@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import ClickOutside from '../click-outside';
 import { invertKeyValues } from '../utils';
 import domUtil from '../utils/dom';
-import { PopperProps, directionMap } from './PropsType';
+import { PopperState, PopperProps, directionMap } from './PropsType';
 
 function getPopperClientRect(popperOffsets) {
   const offsets = { ...popperOffsets };
@@ -18,7 +18,7 @@ function getPopperClientRect(popperOffsets) {
 
 function customArrowOffsetFn(data: PopperJS.Data) {
   const [placement, placement1] = data.placement.split('-');
-  const arrow: any = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element;
+  const arrow = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element as Element;
   const { offsets: { reference } } = data;
   const popper = getPopperClientRect(data.offsets.popper);
   const isVertical = ['left', 'right'].indexOf(placement) !== -1;
@@ -27,7 +27,7 @@ function customArrowOffsetFn(data: PopperJS.Data) {
   const altSide = isVertical ? 'left' : 'top';
   const opSide = isVertical ? 'bottom' : 'right';
   const arrowSize = domUtil.getOuterSizes(arrow as HTMLElement)[len];
-  const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft as any);
+  const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft!);
   const hashMap = {
     start: reference[side] + offsetSize,
     center: reference[side] + reference[len] / 2 - arrowSize / 2,
@@ -36,17 +36,17 @@ function customArrowOffsetFn(data: PopperJS.Data) {
   const place = hashMap[placement1 || 'center'];
   const sideValue = place - popper[side];
 
-  data.arrowElement = arrow;
-  data.arrowStyles[side] = Math.floor(sideValue) as any;
+  data.arrowElement = arrow!;
+  data.arrowStyles[side] = Math.floor(sideValue).toString();
   data.arrowStyles[altSide] = '';
 
   return data;
 }
 
-class Popper extends React.Component<PopperProps, any> {
+class Popper extends React.Component<PopperProps, PopperState> {
   static defaultProps = {
     prefixCls: 'za-popper',
-    hasArrow: true,
+    hasArrow: false,
     trigger: 'hover',
     direction: 'top',
     mouseEnterDelay: 100,
@@ -82,7 +82,7 @@ class Popper extends React.Component<PopperProps, any> {
     onVisibleChange: PropTypes.func,
   };
 
-  static getDerivedStateFromProps(props: PopperProps, state: any) {
+  static getDerivedStateFromProps(props: PopperProps, state: PopperState) {
     if ('visible' in props && props.trigger === 'manual') {
       return {
         ...state,
@@ -92,25 +92,25 @@ class Popper extends React.Component<PopperProps, any> {
     return null;
   }
 
-  state = {
+  state: PopperState = {
     visible: false,
-    direction: this.props.direction,
+    direction: this.props.direction!,
     arrowRef: null,
   };
 
-  private popper: any;
+  private popper: PopperJS | null;
 
-  private popperNode: any;
+  private popperNode: HTMLDivElement;
 
-  private reference: any;
+  private reference: HTMLElement;
 
-  private arrowRef: any;
+  private arrowRef: HTMLSpanElement;
 
   private enterTimer: any;
 
   private leaveTimer: any;
 
-  componentDidUpdate(prevProps: PopperProps, prevState: any) {
+  componentDidUpdate(prevProps: PopperProps, prevState: PopperState) {
     const { visible } = this.state;
     const { direction } = this.props;
     if (
@@ -136,8 +136,8 @@ class Popper extends React.Component<PopperProps, any> {
   handleOpen = () => {
     const { direction, onVisibleChange } = this.props;
     const { visible } = this.state;
-    const reference: any = ReactDOM.findDOMNode(this.reference); // eslint-disable-line
-    const popperNode: any = ReactDOM.findDOMNode(this.popperNode); // eslint-disable-line
+    const reference = ReactDOM.findDOMNode(this.reference) as Element; // eslint-disable-line
+    const popperNode = ReactDOM.findDOMNode(this.popperNode) as Element; // eslint-disable-line
 
     if (!popperNode || !visible) {
       return;
@@ -149,7 +149,7 @@ class Popper extends React.Component<PopperProps, any> {
     }
 
     this.popper = new PopperJS(reference, popperNode, {
-      placement: directionMap[direction!] as any,
+      placement: directionMap[direction!],
       positionFixed: true,
       modifiers: {
         preventOverflow: {
@@ -187,7 +187,7 @@ class Popper extends React.Component<PopperProps, any> {
   };
 
   handleClick = () => {
-    this.setState((preState: any) => ({ visible: !preState.visible }));
+    this.setState((preState: PopperState) => ({ visible: !preState.visible }));
   };
 
   handleEnter = (event) => {
@@ -232,6 +232,7 @@ class Popper extends React.Component<PopperProps, any> {
       prefixCls,
       style,
       className,
+      wrapperCls,
       trigger,
       hasArrow,
     } = this.props;
@@ -242,9 +243,9 @@ class Popper extends React.Component<PopperProps, any> {
     } = this.state;
 
     const child = <div className={`${prefixCls}__inner`}>{children}</div>;
-    const wrapperCls = classnames(prefixCls, `${prefixCls}__wrapper`, className);
-    const innerCls = classnames(`${prefixCls}__content-wrapper`, `${prefixCls}__placement__${direction}`);
-    const childrenProps: any = {
+    const outerCls = classnames(prefixCls, className);
+    const innerCls = classnames(`${prefixCls}__wrapper`, wrapperCls, `${prefixCls}--${direction}`);
+    const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
       ref: (node) => { this.reference = node; },
     };
     const event: React.DOMAttributes<HTMLDivElement> = {};
@@ -262,7 +263,6 @@ class Popper extends React.Component<PopperProps, any> {
       childrenProps.onBlur = this.handleLeave;
     }
 
-    // @ts-ignore
     const childElement = React.cloneElement(child, childrenProps);
     const toolTip = (
       <ClickOutside onClickOutside={this.handleClose} disabled={trigger === 'manual'}>
@@ -270,19 +270,19 @@ class Popper extends React.Component<PopperProps, any> {
           role="tooltip"
           style={{ position: 'absolute' }}
           className={innerCls}
-          ref={(node) => { this.popperNode = node; }}
+          ref={(node) => { this.popperNode = node!; }}
           {...event}
         >
           {title && <div className={`${prefixCls}__title`}>{title}</div>}
           <div className={`${prefixCls}__content`}>{content}</div>
-          {hasArrow && <span className={`${prefixCls}__arrow`} ref={(el) => { this.arrowRef = el; }} />}
+          {hasArrow && <span className={`${prefixCls}__arrow`} ref={(el) => { this.arrowRef = el!; }} />}
         </div>
       </ClickOutside>
     );
 
     return (
       <React.Fragment>
-        <div className={wrapperCls} style={style}>
+        <div className={outerCls} style={style}>
           {visible ? createPortal(toolTip, document.body) : null}
           {childElement}
         </div>

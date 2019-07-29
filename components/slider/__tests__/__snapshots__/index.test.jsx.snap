@@ -39,6 +39,7 @@ exports[`Slider defaultValue 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={10}
@@ -94,6 +95,7 @@ exports[`Slider disabled 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -185,6 +187,7 @@ exports[`Slider marks 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -240,6 +243,7 @@ exports[`Slider marks error 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -295,6 +299,7 @@ exports[`Slider max 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -350,6 +355,7 @@ exports[`Slider min 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -405,6 +411,7 @@ exports[`Slider shallows correctly 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -544,6 +551,7 @@ exports[`Slider showMark 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -599,6 +607,7 @@ exports[`Slider step 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
@@ -654,6 +663,7 @@ exports[`Slider value 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={10}
@@ -709,6 +719,7 @@ exports[`Slider vertical 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
