@@ -106,9 +106,9 @@ class Popper extends React.Component<PopperProps, PopperState> {
 
   private arrowRef: HTMLSpanElement;
 
-  private enterTimer: any;
+  private enterTimer: number;
 
-  private leaveTimer: any;
+  private leaveTimer: number;
 
   componentDidUpdate(prevProps: PopperProps, prevState: PopperState) {
     const { visible } = this.state;

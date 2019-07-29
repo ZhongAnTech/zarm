@@ -14,15 +14,9 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     disabled: false,
   };
 
-  private isTouch: boolean;
+  private isTouch: boolean = false;
 
   private container: HTMLElement;
-
-  constructor(props) {
-    super(props);
-
-    this.isTouch = false;
-  }
 
   componentDidMount() {
     const { disabled } = this.props;
