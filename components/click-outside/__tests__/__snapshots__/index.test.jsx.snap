@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClickOutside renders correctly 1`] = `
+<div>
+  <div>
+    test
+  </div>
+</div>
+`;

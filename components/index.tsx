@@ -24,6 +24,7 @@ export { default as NoticeBar } from './notice-bar';
 export { default as Panel } from './panel';
 export { default as Picker } from './picker';
 export { default as PickerView } from './picker-view';
+export { default as Popper } from './popper';
 export { default as Popup } from './popup';
 export { default as Progress } from './progress';
 export { default as Pull } from './pull';
