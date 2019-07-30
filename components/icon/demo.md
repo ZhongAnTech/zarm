@@ -64,7 +64,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />,mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -94,7 +94,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />,mountNode)
+ReactDOM.render(<Demo />, mountNode)
 ```
 
 ## 自定义 Iconfont 图标
@@ -127,7 +127,7 @@ class Demo extends React.Component {
   }
 }
 
-ReactDOM.render(<Demo />,mountNode)
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 ## 自定义 SVG 图标

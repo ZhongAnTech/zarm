@@ -6,18 +6,12 @@
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button>default</Button>
-        <Button theme="primary">primary</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button>default</Button>
+    <Button theme="primary">primary</Button>
+  </>
+, mountNode);
 ```
 
 
@@ -26,20 +20,14 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button block>default</Button>
-        <Button block disabled>default disabled</Button>
-        <Button block theme="primary">primary</Button>
-        <Button block disabled theme="primary">primary disabled</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button block>default</Button>
+    <Button block disabled>default disabled</Button>
+    <Button block theme="primary">primary</Button>
+    <Button block disabled theme="primary">primary disabled</Button>
+  </>
+, mountNode);
 ```
 
 
@@ -48,19 +36,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button>default</Button>
-        <Button theme="primary">primary</Button>
-        <Button theme="danger">danger</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button>default</Button>
+    <Button theme="primary">primary</Button>
+    <Button theme="danger">danger</Button>
+  </>
+, mountNode);
 ```
 
 
@@ -69,20 +51,14 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button size="lg">lg</Button>
-        <Button>md</Button>
-        <Button size="sm">sm</Button>
-        <Button size="xs">xs</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button size="lg">lg</Button>
+    <Button>md</Button>
+    <Button size="sm">sm</Button>
+    <Button size="xs">xs</Button>
+  </>
+, mountNode);
 ```
 
 
@@ -91,21 +67,15 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Button, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button shape="rect" theme="primary">rect</Button>
-        <Button theme="primary">radius</Button>
-        <Button shape="round" theme="primary">round</Button>
-        <Button shape="circle" theme="primary">circle</Button>
-        <Button shape="circle" icon={<Icon type="right" />} />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button shape="rect" theme="primary">rect</Button>
+    <Button theme="primary">radius</Button>
+    <Button shape="round" theme="primary">round</Button>
+    <Button shape="circle" theme="primary">circle</Button>
+    <Button shape="circle" icon={<Icon type="right" />} />
+  </>
+, mountNode);
 ```
 
 
@@ -114,19 +84,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Button, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button icon={<Icon type="wrong-round" theme="danger" />}>错误</Button>
-        <Button loading>加载中</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button icon={<Icon type="right-round" theme="success" />}>正确</Button>
+    <Button icon={<Icon type="wrong-round" theme="danger" />}>错误</Button>
+    <Button loading>加载中</Button>
+  </>
+, mountNode);
 ```
 
 
@@ -135,19 +99,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button href="https://zarm.design">default</Button>
-        <Button theme="primary" href="https://zarm.design">primary</Button>
-        <Button disabled theme="primary" href="https://zarm.design">disabled</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button href="https://zarm.design">default</Button>
+    <Button theme="primary" href="https://zarm.design">primary</Button>
+    <Button disabled theme="primary" href="https://zarm.design">disabled</Button>
+  </>
+, mountNode);
 ```
 
 
@@ -156,20 +114,14 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button block ghost>default</Button>
-        <Button block ghost theme="primary">primary</Button>
-        <Button block ghost theme="danger">danger</Button>
-        <Button block ghost disabled>disabled</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button block ghost>default</Button>
+    <Button block ghost theme="primary">primary</Button>
+    <Button block ghost theme="danger">danger</Button>
+    <Button block ghost disabled>disabled</Button>
+  </>
+, mountNode);
 ```
 
 

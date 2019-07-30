@@ -4,6 +4,7 @@ import { transform } from '@babel/standalone';
 import { Panel } from 'zarm';
 import '@/components/style/entry';
 
+
 export default class Demo extends React.Component {
   constructor(props) {
     super(props);
@@ -38,8 +39,14 @@ export default class Demo extends React.Component {
         : require('zarm/components/locale-provider/locale/zh_CN');
       value = value
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
-        .replace('mountNode', `document.getElementById('${this.containerId}')`)
-        .replace('<Demo />', `<zarm.LocaleProvider locale={${JSON.stringify(locale)}}><Demo /></zarm.LocaleProvider>`);
+        .replace(/ReactDOM.render\(\s?([^]+?),\s?([^]+?)\)/g, `
+          ReactDOM.render(
+            <zarm.LocaleProvider locale={${JSON.stringify(locale)}}>
+              $1
+            </zarm.LocaleProvider>,
+            document.getElementById('${this.containerId}'),
+          );
+        `);
 
       const { code } = transform(value, {
         presets: ['es2015', 'react'],
@@ -64,7 +71,7 @@ export default class Demo extends React.Component {
     return (location.pathname === '/panel')
       ? <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
       : (
-        <Panel title={<span>{this.title}</span>}>
+        <Panel title={this.title}>
           <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
         </Panel>
       );
