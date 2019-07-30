@@ -24,22 +24,20 @@ const LOAD_STATE = {
   complete: 5, // 加载完成（无新数据）
 };
 
-function getRandomNum(min, max) {
+const getRandomNum = (min, max) => {
   const Range = max - min;
   const Rand = Math.random();
   return (min + Math.round(Rand * Range));
 }
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.mounted = true;
-    this.state = {
-      refreshing: REFRESH_STATE.normal,
-      loading: LOAD_STATE.normal,
-      dataSource: [],
-    };
-  }
+  mounted = true;
+
+  state = {
+    refreshing: REFRESH_STATE.normal,
+    loading: LOAD_STATE.normal,
+    dataSource: [],
+  };
 
   componentDidMount() {
     this.appendData(20);
@@ -50,7 +48,7 @@ class Demo extends React.Component {
   }
 
   // 模拟请求数据
-  refreshData() {
+  refreshData = () => {
     this.setState({ refreshing: REFRESH_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
@@ -63,7 +61,7 @@ class Demo extends React.Component {
   }
 
   // 模拟加载更多数据
-  loadData() {
+  loadData = () => {
     this.setState({ loading: LOAD_STATE.loading });
     setTimeout(() => {
       if (!this.mounted) return;
@@ -82,9 +80,7 @@ class Demo extends React.Component {
         this.appendData(20);
       }
 
-      this.setState({
-        loading,
-      });
+      this.setState({ loading });
     }, 2000);
   }
 
@@ -94,88 +90,84 @@ class Demo extends React.Component {
     for (let i = startIndex; i < startIndex + length; i++) {
       dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
     }
-    this.setState({
-      dataSource,
-    });
+    this.setState({ dataSource });
   }
 
   render() {
     const { refreshing, loading, dataSource } = this.state;
     return (
-      <div>
-        <Pull
-          refresh={{
-            state: refreshing,
-            handler: () => this.refreshData(),
-            // render: (refreshState, percent) => {
-            //   const cls = 'custom-control';
-            //   switch (refreshState) {
-            //     case REFRESH_STATE.pull:
-            //       return (
-            //         <div className={cls}>
-            //           <ActivityIndicator loading={false} percent={percent} />
-            //           <span>下拉刷新</span>
-            //         </div>
-            //       );
+      <Pull
+        refresh={{
+          state: refreshing,
+          handler: this.refreshData,
+          // render: (refreshState, percent) => {
+          //   const cls = 'custom-control';
+          //   switch (refreshState) {
+          //     case REFRESH_STATE.pull:
+          //       return (
+          //         <div className={cls}>
+          //           <ActivityIndicator loading={false} percent={percent} />
+          //           <span>下拉刷新</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.drop:
-            //       return (
-            //         <div className={cls}>
-            //           <ActivityIndicator loading={false} percent={100} />
-            //           <span>释放立即刷新</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.drop:
+          //       return (
+          //         <div className={cls}>
+          //           <ActivityIndicator loading={false} percent={100} />
+          //           <span>释放立即刷新</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.loading:
-            //       return (
-            //         <div className={cls}>
-            //           <ActivityIndicator type="spinner" />
-            //           <span>加载中</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.loading:
+          //       return (
+          //         <div className={cls}>
+          //           <ActivityIndicator type="spinner" />
+          //           <span>加载中</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.success:
-            //       return (
-            //         <div className={cls}>
-            //           <Icon type="right-round" theme="success" />
-            //           <span>加载成功</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.success:
+          //       return (
+          //         <div className={cls}>
+          //           <Icon type="right-round" theme="success" />
+          //           <span>加载成功</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.failure:
-            //       return (
-            //         <div className={cls}>
-            //           <Icon type="wrong-round" theme="danger" />
-            //           <span>加载失败</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.failure:
+          //       return (
+          //         <div className={cls}>
+          //           <Icon type="wrong-round" theme="danger" />
+          //           <span>加载失败</span>
+          //         </div>
+          //       );
 
-            //     default:
-            //   }
-            // },
-          }}
-          load={{
-            state: loading,
-            distance: 200,
-            handler: () => this.loadData(),
-            // render: (loadState) => {
-            //   const cls = 'custom-control';
-            //   switch (loadState) {
-            //     case LOAD_STATE.loading:
-            //       return <div className={cls}><ActivityIndicator type="spinner" /></div>;
+          //     default:
+          //   }
+          // },
+        }}
+        load={{
+          state: loading,
+          distance: 200,
+          handler: this.loadData,
+          // render: (loadState) => {
+          //   const cls = 'custom-control';
+          //   switch (loadState) {
+          //     case LOAD_STATE.loading:
+          //       return <div className={cls}><ActivityIndicator type="spinner" /></div>;
 
-            //     case LOAD_STATE.failure:
-            //       return <div className={cls}>加载失败</div>;
+          //     case LOAD_STATE.failure:
+          //       return <div className={cls}>加载失败</div>;
 
-            //     case LOAD_STATE.complete:
-            //       return <div className={cls}>我是有底线的</div>;
-            //   }
-            // },
-          }}
-        >
-          {dataSource}
-        </Pull>
-      </div>
+          //     case LOAD_STATE.complete:
+          //       return <div className={cls}>我是有底线的</div>;
+          //   }
+          // },
+        }}
+      >
+        {dataSource}
+      </Pull>
     )
   }
 }

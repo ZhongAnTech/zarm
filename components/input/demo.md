@@ -8,33 +8,30 @@
 import { Input, Cell } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      inputValue: '',
-    }
-  }
+  state = {
+    inputValue: '',
+  };
 
-  handleInputChange(value) {
+  handleInputChange = (value) => {
     this.setState({
       inputValue: value,
-    })
+    });
   }
 
   render() {
     return (
-      <div>
+      <>
         <Cell title="单行文本">
           <Input
             clearable
             type="text"
             placeholder="请输入"
             value={this.state.inputValue}
-            onChange={this.handleInputChange.bind(this)}
+            onChange={this.handleInputChange}
           />
         </Cell>
         <Cell title="多行文本"><Input type="text" rows={3} placeholder="请输入" /></Cell>
-      </div>
+      </>
     )
   }
 }
@@ -48,17 +45,14 @@ ReactDOM.render(<Demo />, mountNode);
 import { Input, Cell, Button } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false,
-      number: '',
-    };
-  }
+  state = {
+    focused: false,
+    number: '',
+  };
 
   render() {
     return (
-      <div>
+      <>
         <Cell title="数字">
           <Input
             ref={(ref) => { this.manualFocus = ref; }}
@@ -83,7 +77,7 @@ class Demo extends React.Component {
         <Cell>
           <Button size="xs" theme="primary" onClick={() => this.manualFocus.focus()}>click to focus the first input</Button>
         </Cell>
-      </div>
+      </>
     )
   }
 }
@@ -98,28 +92,22 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell title="单行文本">
-          <Input readOnly type="text" defaultValue="我是只读状态" />
-        </Cell>
-        <Cell title="单行文本">
-          <Input disabled type="text" value="我是禁用状态" />
-        </Cell>
-        <Cell title="多行文本">
-          <Input readOnly type="text" rows={3} value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。" />
-        </Cell>
-        <Cell title="多行文本">
-          <Input disabled type="text" rows={3} value="我是禁用状态，我是禁用状态，我是禁用状态，我是禁用状态。" />
-        </Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell title="单行文本">
+      <Input readOnly type="text" defaultValue="我是只读状态" />
+    </Cell>
+    <Cell title="单行文本">
+      <Input disabled type="text" value="我是禁用状态" />
+    </Cell>
+    <Cell title="多行文本">
+      <Input readOnly type="text" rows={3} value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。" />
+    </Cell>
+    <Cell title="多行文本">
+      <Input disabled type="text" rows={3} value="我是禁用状态，我是禁用状态，我是禁用状态，我是禁用状态。" />
+    </Cell>
+  </>
+, mountNode);
 ```
 
 
@@ -129,17 +117,11 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell title="多行文本"><Input autoHeight type="text" rows={3} placeholder="写点啥..." /></Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Cell title="多行文本">
+    <Input autoHeight type="text" rows={3} placeholder="写点啥..." />
+  </Cell>
+, mountNode);
 ```
 
 
@@ -148,18 +130,12 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell><Input type="text" placeholder="标题" /></Cell>
-        <Cell><Input autoHeight type="text" rows={4} maxLength={200} placeholder="摘要" /></Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell><Input type="text" placeholder="标题" /></Cell>
+    <Cell><Input autoHeight type="text" rows={4} maxLength={200} placeholder="摘要" /></Cell>
+  </>
+, mountNode);
 ```
 
 
@@ -168,17 +144,18 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell><Input autoHeight showLength type="text" rows={4} maxLength={200} placeholder="摘要" /></Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Cell>
+    <Input
+      autoHeight
+      showLength
+      type="text"
+      rows={4}
+      maxLength={200}
+      placeholder="摘要"
+    />
+  </Cell>
+, mountNode);
 ```
 
 

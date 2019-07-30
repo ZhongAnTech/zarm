@@ -7,16 +7,13 @@
 import { Cell, Select, Keyboard } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: 'number',
-    };
-  }
+  state = {
+    type: 'number',
+  };
 
   render() {
     return (
-      <div>
+      <>
         <Cell hasArrow title="键盘类型">
           <Select
             value={this.state.type}
@@ -33,7 +30,7 @@ class Demo extends React.Component {
           />
         </Cell>
         <Keyboard type={this.state.type} onKeyClick={(key) => console.log(key)} />
-      </div>
+      </>
     )
   }
 }
@@ -48,13 +45,10 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Button, KeyboardPicker, Input } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-      value: '',
-    };
-  }
+  state = {
+    visible: false,
+    value: '',
+  };
 
   toggle() {
     this.setState({ visible: !this.state.visible });
@@ -80,7 +74,7 @@ class Demo extends React.Component {
   render() {
     const { visible } = this.state;
     return (
-      <div>
+      <>
         <Cell
           description={
             <Button size="xs" onClick={() => this.toggle()}>{visible ? '关闭' : '开启'}</Button>
@@ -93,7 +87,7 @@ class Demo extends React.Component {
           visible={visible}
           onKeyClick={(key) => this.onKeyClick(key)}
         />
-      </div>
+      </>
     )
   }
 }

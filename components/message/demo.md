@@ -6,19 +6,13 @@
 ```jsx
 import { Message, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Message>普通</Message>
-        <Message theme="danger">自定义主题</Message>
-        <Message theme="warning" icon={<Icon type="warning-round" />}>自定义图标</Message>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Message>普通</Message>
+    <Message theme="danger">自定义主题</Message>
+    <Message theme="warning" icon={<Icon type="warning-round" />}>自定义图标</Message>
+  </>
+, mountNode);
 ```
 
 
@@ -27,18 +21,12 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Message } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Message hasArrow onClick={() => alert('click this message!')}>链接样式</Message>
-        <Message closable>可关闭</Message>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Message hasArrow onClick={() => alert('click this message!')}>链接样式</Message>
+    <Message closable>可关闭</Message>
+  </>
+, mountNode);
 ```
 
 

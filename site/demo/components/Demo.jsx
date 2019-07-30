@@ -39,13 +39,13 @@ export default class Demo extends React.Component {
         : require('zarm/components/locale-provider/locale/zh_CN');
       value = value
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
-        .replace(/ReactDOM.render\(\s?([^]+?),\s?([^]+?)\)/g, `
+        .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
           ReactDOM.render(
             <zarm.LocaleProvider locale={${JSON.stringify(locale)}}>
               $1
             </zarm.LocaleProvider>,
             document.getElementById('${this.containerId}'),
-          );
+          )
         `);
 
       const { code } = transform(value, {

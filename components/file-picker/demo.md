@@ -7,12 +7,9 @@
 import { Cell, FilePicker, Icon } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      files: [],
-    };
-  }
+  state = {
+    files: [],
+  };
 
   onSelect(file) {
     console.log(file);
@@ -52,17 +49,14 @@ import { Cell, FilePicker, Icon, Toast, Badge } from 'zarm';
 
 const MAX_FILES_COUNT = 5;
 
-function onBeforeSelect() {
+const onBeforeSelect = () => {
   alert('执行 onBeforeSelect 方法');
 }
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      files: [],
-    };
-  }
+  state = {
+    files: [],
+  };
 
   onSelect(selFiles) {
     let { files } = this.state;
@@ -137,19 +131,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { FilePicker, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div className="file-picker-wrapper">
-        <FilePicker className="file-picker-btn" disabled>
-          <Icon type="add" size="lg" />
-        </FilePicker>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <div className="file-picker-wrapper">
+    <FilePicker className="file-picker-btn" disabled>
+      <Icon type="add" size="lg" />
+    </FilePicker>
+  </div>
+, mountNode);
 ```
 
 

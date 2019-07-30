@@ -63,37 +63,33 @@ const DIY_DATA = [
 ];
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      single: {
-        visible: false,
-        value: '',
-        dataSource: SINGLE_DATA,
-      },
-      multi: {
-        visible: false,
-        value: [],
-        dataSource: MULTI_DATA,
-      },
-      cascade: {
-        visible: false,
-        value: [],
-        dataSource: [],
-      },
-      diy: {
-        visible: false,
-        value: [],
-        dataSource: DIY_DATA,
-      },
-    };
-  }
+  state = {
+    single: {
+      visible: false,
+      value: '',
+      dataSource: SINGLE_DATA,
+    },
+    multi: {
+      visible: false,
+      value: [],
+      dataSource: MULTI_DATA,
+    },
+    cascade: {
+      visible: false,
+      value: [],
+      dataSource: [],
+    },
+    diy: {
+      visible: false,
+      value: [],
+      dataSource: DIY_DATA,
+    },
+  };
 
   componentDidMount() {
     // 异步加载数据源测试
     setTimeout(() => {
       const { cascade } = this.state;
-
       cascade.dataSource = CASCADE_DATA;
       cascade.value = ['1', '12'];
       cascade.valueMember = "code";
@@ -101,22 +97,16 @@ class Demo extends React.Component {
     }, 0);
   }
 
-  toggle(key) {
+  toggle = (key) => {
     const state = this.state[key];
     state.visible = !state.visible;
     this.setState({ [`${key}`]: state });
   }
 
   render() {
-    const {
-      single,
-      multi,
-      cascade,
-      diy,
-    } = this.state;
-
+    const { single, multi, cascade, diy } = this.state;
     return (
-      <div>
+      <>
         <Cell
           description={
             <Button size="xs" onClick={() => this.toggle('single')}>选择</Button>
@@ -212,7 +202,7 @@ class Demo extends React.Component {
           }}
           onCancel={() => this.toggle('diy')}
         />
-      </div>
+      </>
     )
   }
 }
@@ -247,14 +237,11 @@ const CASCADE_DATA = [
 ];
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-      this.state = {
-        visible: false,
-        value: [],
-        dataSource: [],
-      };
-  }
+  state = {
+    visible: false,
+    value: [],
+    dataSource: [],
+  };
 
   componentDidMount() {
     // 异步加载数据源测试
@@ -269,26 +256,24 @@ class Demo extends React.Component {
   render() {
     const { visible, value, dataSource } = this.state;
     return (
-      <div>
-        <Cell hasArrow title="城市">
-          <Select
-            visible={visible}
-            value={value}
-            dataSource={dataSource}
-            onOk={(selected) => {
-              console.log('Select onOk: ', selected);
-              this.setState({
-                value: selected.map(item => item.value),
-              });
-            }}
-            onMaskClick={() => {
-              this.setState({
-                visible: false,
-              });
-            }}
-          />
-        </Cell>
-      </div>
+      <Cell hasArrow title="城市">
+        <Select
+          visible={visible}
+          value={value}
+          dataSource={dataSource}
+          onOk={(selected) => {
+            console.log('Select onOk: ', selected);
+            this.setState({
+              value: selected.map(item => item.value),
+            });
+          }}
+          onMaskClick={() => {
+            this.setState({
+              visible: false,
+            });
+          }}
+        />
+      </Cell>
     )
   }
 }
@@ -323,13 +308,10 @@ const CASCADE_DATA = [
 ];
 
 class Demo extends React.Component {
-    constructor(props) {
-    super(props);
-    this.state = {
-      value: [],
-      dataSource: CASCADE_DATA,
-    };
-  }
+  state = {
+    value: [],
+    dataSource: CASCADE_DATA,
+  };
 
   componentDidMount() {
     setTimeout(() => {
@@ -360,14 +342,12 @@ class Demo extends React.Component {
 
   render() {
     return (
-      <div>
-        <PickerView
-          value={this.state.value}
-          valueMember="code"
-          dataSource={this.state.dataSource}
-          onChange={selected => console.log('PickerView onChange: ', selected)}
-        />
-      </div>
+      <PickerView
+        value={this.state.value}
+        valueMember="code"
+        dataSource={this.state.dataSource}
+        onChange={selected => console.log('PickerView onChange: ', selected)}
+      />
     )
   }
 }

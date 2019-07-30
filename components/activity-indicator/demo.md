@@ -5,20 +5,14 @@
 ```jsx
 import { Cell, ActivityIndicator } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell description={<ActivityIndicator />}>普通</Cell>
-        <Cell description={<ActivityIndicator size="lg"/>}>大号</Cell>
-        <Cell description={<ActivityIndicator loading={false} />}>无旋转动画</Cell>
-        <Cell description={<ActivityIndicator loading={false} percent={75} />}>指定百分比</Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell description={<ActivityIndicator />}>普通</Cell>
+    <Cell description={<ActivityIndicator size="lg"/>}>大号</Cell>
+    <Cell description={<ActivityIndicator loading={false} />}>无旋转动画</Cell>
+    <Cell description={<ActivityIndicator loading={false} percent={75} />}>指定百分比</Cell>
+  </>
+, mountNode);
 ```
 
 
@@ -28,18 +22,12 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell, ActivityIndicator } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell description={<ActivityIndicator type="spinner" />}>普通</Cell>
-        <Cell description={<ActivityIndicator type="spinner" size="lg" />}>大号</Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell description={<ActivityIndicator type="spinner" />}>普通</Cell>
+    <Cell description={<ActivityIndicator type="spinner" size="lg" />}>大号</Cell>
+  </>
+, mountNode);
 ```
 
 

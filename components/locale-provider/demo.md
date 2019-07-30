@@ -54,31 +54,26 @@ const locales = {
 };
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      locale: 'zh_CN',
-      alert: false,
-      confirm: false,
-    };
-    this.onOk = this.onOk.bind(this);
-  }
+  state = {
+    locale: 'zh_CN',
+    alert: false,
+    confirm: false,
+  };
 
-  toggle(key) {
+  toggle = (key) => {
     this.setState({
       [`${key}`]: !this.state[key],
     });
   }
 
-  onOk(selected) {
+  onOk = (selected) => {
     this.setState({
       locale: selected[0].value,
     });
   }
 
   render() {
-    const { alert, confirm } = this.state;
-
+    const { alert, confirm } = this.state
     return (
       <LocaleProvider locale={locales[this.state.locale]}>
         <div>

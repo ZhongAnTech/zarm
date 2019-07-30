@@ -12,7 +12,7 @@ const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
 ];
 
-function contentRender() {
+const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
@@ -22,23 +22,15 @@ function contentRender() {
   });
 }
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Carousel
-          onChange={(index) => {
-            console.log(`onChange: ${index}`);
-          }}
-        >
-          {contentRender()}
-        </Carousel>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Carousel
+    onChange={(index) => {
+      console.log(`onChange: ${index}`);
+    }}
+  >
+    {contentRender()}
+  </Carousel>
+, mountNode);
 ```
 
 
@@ -53,7 +45,7 @@ const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
 ];
 
-function contentRender() {
+const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
@@ -63,22 +55,9 @@ function contentRender() {
   });
 }
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Carousel
-          direction="up"
-          height="48vw"
-        >
-          {contentRender()}
-        </Carousel>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Carousel direction="up" height="48vw">{contentRender()}</Carousel>
+, mountNode);
 ```
 
 
@@ -93,7 +72,7 @@ const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
 ];
 
-function contentRender() {
+const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
@@ -158,7 +137,7 @@ const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
 ];
 
-function contentRender() {
+const contentRender = () => {
   return ITEMS.map((item, i) => {
     return (
       <div className="carousel__item__pic" key={+i}>
@@ -168,26 +147,18 @@ function contentRender() {
   });
 }
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Carousel
-          autoPlay
-          loop
-          direction="left"
-          onChangeEnd={(index) => {
-            console.log(`onChangeEnd: ${index}`);
-          }}
-        >
-          {contentRender()}
-        </Carousel>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Carousel
+    autoPlay
+    loop
+    direction="left"
+    onChangeEnd={(index) => {
+      console.log(`onChangeEnd: ${index}`);
+    }}
+  >
+    {contentRender()}
+  </Carousel>
+, mountNode);
 ```
 
 

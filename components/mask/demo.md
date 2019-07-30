@@ -7,26 +7,23 @@
 import { Cell, Button, Mask } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      visible: false,
-    }
-  }
+  state = {
+    visible: false,
+  };
 
-  toggle() {
+  toggle = () => {
     this.setState({ visible: !this.state.visible });
   }
 
   render() {
     return (
-      <div>
+      <>
         <Cell
           title="默认"
           description={<Button size="sm" onClick={() => this.toggle()}>开启</Button>}
         />
         <Mask visible={this.state.visible} onClick={() => this.toggle()} />
-      </div>
+      </>
     )
   }
 }

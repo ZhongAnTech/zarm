@@ -6,20 +6,14 @@
 ```jsx
 import { NoticeBar, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <NoticeBar>普通</NoticeBar>
-        <NoticeBar theme="danger">自定义主题</NoticeBar>
-        <NoticeBar icon={<Icon type="wrong-round" />}>自定义图标</NoticeBar>
-        <NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <NoticeBar>普通</NoticeBar>
+    <NoticeBar theme="danger">自定义主题</NoticeBar>
+    <NoticeBar icon={<Icon type="wrong-round" />}>自定义图标</NoticeBar>
+    <NoticeBar scrollable>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
+  </>
+, mountNode);
 ```
 
 
@@ -28,18 +22,12 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { NoticeBar  } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <NoticeBar hasArrow onClick={() => alert('click this notice!')}>链接样式的</NoticeBar>
-        <NoticeBar closable>可关闭的</NoticeBar>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <NoticeBar hasArrow onClick={() => alert('click this notice!')}>链接样式的</NoticeBar>
+    <NoticeBar closable>可关闭的</NoticeBar>
+  </>
+, mountNode);
 ```
 
 

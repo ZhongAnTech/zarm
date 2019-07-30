@@ -7,16 +7,13 @@
 import { Cell, Slider } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
-    };
-  }
+  state = {
+    value: 0,
+  };
 
   render() {
     return (
-      <div>
+      <>
         <Cell title="普通">
           <Slider
             value={this.state.value}
@@ -38,7 +35,7 @@ class Demo extends React.Component {
         <Cell title="禁用状态">
           <Slider disabled defaultValue={20} />
         </Cell>
-      </div>
+      </>
     )
   }
 }
@@ -57,50 +54,25 @@ const MARKS = {
   100: '100°C',
 }
 
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <Cell title="显示刻度">
-          <Slider 
-            marks={MARKS} 
-          />
-        </Cell>
-        
-        <Cell title="显示标记" style={{ paddingBottom: 15 }}>
-          <Slider
-            showMark 
-            marks={MARKS} 
-          />
-        </Cell>
-        
-        <Cell title="步长为10" style={{ paddingBottom: 15 }}>
-          <Slider
-            showMark 
-            step={10}
-            marks={MARKS} />
-        </Cell>
-        
-        <Cell title="步长为null" style={{ paddingBottom: 15 }}>
-          <Slider
-            showMark
-            step={null}
-            marks={MARKS} 
-          />
-        </Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell title="显示刻度">
+      <Slider marks={MARKS} />
+    </Cell>
+    
+    <Cell title="显示标记" style={{ paddingBottom: 15 }}>
+      <Slider showMark marks={MARKS} />
+    </Cell>
+    
+    <Cell title="步长为10" style={{ paddingBottom: 15 }}>
+      <Slider showMark step={10} marks={MARKS} />
+    </Cell>
+    
+    <Cell title="步长为null" style={{ paddingBottom: 15 }}>
+      <Slider showMark step={null} marks={MARKS} />
+    </Cell>
+  </>
+, mountNode);
 ```
 
 
@@ -116,32 +88,13 @@ const MARKS = {
   100: '100°C',
 }
 
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <Cell title="垂直方向" style={{ padding: '15px 0' }}>
-          <div style={{ height: 200 }}>
-            <Slider
-              vertical
-              showMark
-              marks={MARKS}
-            />
-          </div>
-        </Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Cell title="垂直方向" style={{ padding: '15px 0' }}>
+    <div style={{ height: 200 }}>
+      <Slider vertical showMark marks={MARKS} />
+    </div>
+  </Cell>
+, mountNode);
 ```
 
 

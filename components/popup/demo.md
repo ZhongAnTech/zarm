@@ -12,49 +12,33 @@ const SINGLE_DATA = [
 ];
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
+    visible: {
       popBottom: false,
       popTop: false,
       popLeft: false,
       popRight: false,
-      single: {
-        visible: false,
-        value: '',
-        dataSource: SINGLE_DATA,
-      },
-    };
-  }
+      picker: false,
+    },
+    value: '',
+  };
 
-  open(key) {
-    this.setState({
-      [`${key}`]: true,
-    });
-  }
-
-  close(key) {
-    this.setState({
-      [`${key}`]: false,
-    });
-  }
-
-  toggle(key) {
-    const state = this.state[key];
-    state.visible = !state.visible;
-    this.setState({ [`${key}`]: state });
+  toggle = (key) => {
+    const visible = this.state.visible;
+    visible[key] = !visible[key];
+    this.setState({ visible });
   }
 
   render() {
-    const { single } = this.state;
+    const { visible, value } = this.state;
     return (
       <div>
         <Cell
           description={
             <Button size="xs" onClick={() => {
-              this.open('popTop');
+              this.toggle('popTop');
               setTimeout(() => {
-                this.close('popTop');
+                this.toggle('popTop');
               }, 3000);
             }}>开启</Button>
           }
@@ -64,7 +48,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('popBottom')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('popBottom')}>开启</Button>
           }
         >
           从下方弹出
@@ -72,7 +56,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('popLeft')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('popLeft')}>开启</Button>
           }
         >
           从左侧弹出
@@ -80,7 +64,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('popRight')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('popRight')}>开启</Button>
           }
         >
           从右侧弹出
@@ -88,14 +72,14 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('popCenter')}>开启</Button>
+            <Button size="xs" onClick={() => this.toggle('popCenter')}>开启</Button>
           }
         >
           从中间弹出
         </Cell>
 
         <Popup
-          visible={this.state.popTop}
+          visible={visible.popTop}
           direction="top"
           mask={false}
           afterClose={() => { console.log('关闭'); }}
@@ -106,62 +90,62 @@ class Demo extends React.Component {
         </Popup>
 
         <Popup
-          visible={this.state.popBottom}
+          visible={visible.popBottom}
           direction="bottom"
-          onMaskClick={() => this.close('popBottom')}
+          onMaskClick={() => this.toggle('popBottom')}
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="xs" onClick={() => { this.toggle('single'); }}>打开Picker</Button>
+            <Button size="xs" onClick={() => { this.toggle('picker'); }}>打开Picker</Button>
           </div>
         </Popup>
 
         <Picker
-          visible={single.visible}
-          value={single.value}
-          dataSource={single.dataSource}
+          visible={visible.picker}
+          value={value}
+          dataSource={SINGLE_DATA}
           onOk={(selected) => {
             console.log('Picker onOk: ', selected);
-            single.value = selected.map(item => item.value);
-            this.setState({ single });
+            value = selected.map(item => item.value);
+            this.setState({ value });
             Toast.show(JSON.stringify(selected));
-            this.toggle('single');
+            this.toggle('picker');
           }}
-          onCancel={() => this.toggle('single')}
+          onCancel={() => this.toggle('picker')}
         />
 
         <Popup
-          visible={this.state.popLeft}
-          onMaskClick={() => this.close('popLeft')}
+          visible={visible.popLeft}
+          onMaskClick={() => this.toggle('popLeft')}
           direction="left"
           afterClose={() => console.log('关闭')}
         >
           <div className="popup-box-left">
-            <Button size="xs" onClick={() => this.close('popLeft')}>关闭弹层</Button>
+            <Button size="xs" onClick={() => this.toggle('popLeft')}>关闭弹层</Button>
           </div>
         </Popup>
 
         <Popup
-          visible={this.state.popRight}
-          onMaskClick={() => this.close('popRight')}
+          visible={visible.popRight}
+          onMaskClick={() => this.toggle('popRight')}
           direction="right"
           afterClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="xs" onClick={() => this.close('popRight')}>关闭弹层</Button>
+            <Button size="xs" onClick={() => this.toggle('popRight')}>关闭弹层</Button>
           </div>
         </Popup>
 
         <Popup
-          visible={this.state.popCenter}
-          onMaskClick={() => this.close('popCenter')}
+          visible={visible.popCenter}
+          onMaskClick={() => this.toggle('popCenter')}
           direction="center"
           width="70%"
           afterClose={() => console.log('关闭')}
         >
           <div className="popup-box">
-            <Button size="xs" onClick={() => this.close('popCenter')}>关闭弹层</Button>
+            <Button size="xs" onClick={() => this.toggle('popCenter')}>关闭弹层</Button>
           </div>
         </Popup>
       </div>

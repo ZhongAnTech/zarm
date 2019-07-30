@@ -7,25 +7,22 @@
 import { Modal, Cell, Button, Select } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal1: false,
-      modal2: false,
-      modal3: false,
-      modal4: false,
-      modal5: false,
-      animationType: 'fade',
-    };
-  }
+  state = {
+    modal1: false,
+    modal2: false,
+    modal3: false,
+    modal4: false,
+    modal5: false,
+    animationType: 'fade',
+  };
 
-  open(key) {
+  open = (key) => {
     this.setState({
       [`${key}`]: true,
     });
   }
 
-  close(key) {
+  close = (key) => {
     this.setState({
       [`${key}`]: false,
     });
@@ -34,7 +31,7 @@ class Demo extends React.Component {
   render() {
     const { modal1, modal2, modal3, modal4, modal5, animationType, single } = this.state;
     return (
-      <div>
+      <>
         <Cell
           description={
             <Button size="xs" onClick={() => this.open('modal1')}>开启</Button>
@@ -70,9 +67,7 @@ class Demo extends React.Component {
         <Cell
           title="动画效果"
           description={
-            <div>
-              <Button size="xs" onClick={() => this.open('modal5')}>开启</Button>
-            </div>
+            <Button size="xs" onClick={() => this.open('modal5')}>开启</Button>
           }
         >
           <Select
@@ -127,7 +122,7 @@ class Demo extends React.Component {
             <div style={{ height: 100 }}>当前使用的动画类型animationType：'{animationType}'</div>
           </Modal.Body>
         </Modal>
-      </div>
+      </>
     )
   }
 }
@@ -142,15 +137,12 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Button, Alert, Confirm  } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      alert: false,
-      confirm: false,
-    };
-  }
+  state = {
+    alert: false,
+    confirm: false,
+  };
 
-  toggle(key) {
+  toggle = (key) => {
     this.setState({
       [`${key}`]: !this.state[key],
     });
@@ -160,7 +152,7 @@ class Demo extends React.Component {
     const { alert, confirm } = this.state;
 
     return (
-      <div>
+      <>
         <Cell
           description={
             <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
@@ -195,7 +187,7 @@ class Demo extends React.Component {
           message="这里是警告信息"
           onCancel={() => this.toggle('alert')}
         />
-      </div>
+      </>
     )
   }
 }
@@ -209,15 +201,12 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Button, Confirm  } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      alert: false,
-      confirm: false,
-    };
-  }
+  state = {
+    alert: false,
+    confirm: false,
+  };
 
-  toggle(key) {
+  toggle = (key) => {
     this.setState({
       [`${key}`]: !this.state[key],
     });
@@ -225,9 +214,8 @@ class Demo extends React.Component {
 
   render() {
     const { alert, confirm } = this.state;
-
     return (
-      <div>
+      <>
         <Cell
           description={
             <Button size="xs" onClick={() => this.toggle('confirm')}>开启</Button>
@@ -275,7 +263,7 @@ class Demo extends React.Component {
           }}
           onCancel={() => this.toggle('confirm')}
         />
-      </div>
+      </>
     )
   }
 }

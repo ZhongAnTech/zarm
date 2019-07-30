@@ -6,84 +6,80 @@
 ```jsx
 import { Toast, Cell, Button, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Toast.show('默认3秒自动关闭');
-              }}
-            >
-              开启
-            </Button>
-          }
+const Demo = () => (
+  <>
+    <Cell
+      description={
+        <Button
+          size="xs"
+          onClick={() => {
+            Toast.show('默认3秒自动关闭');
+          }}
         >
-          普通
-        </Cell>
+          开启
+        </Button>
+      }
+    >
+      普通
+    </Cell>
 
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Toast.show('指定5秒后自动关闭', 5000, false, () => {
-                  console.log('Toast已关闭');
-                });
-              }}
-            >
-              开启
-            </Button>
-          }
+    <Cell
+      description={
+        <Button
+          size="xs"
+          onClick={() => {
+            Toast.show('指定5秒后自动关闭', 5000, false, () => {
+              console.log('Toast已关闭');
+            });
+          }}
         >
-          指定停留时间
-        </Cell>
+          开启
+        </Button>
+      }
+    >
+      指定停留时间
+    </Cell>
 
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Toast.show('不可同时进行其他交互', 5000, true, () => {
-                  console.log('Toast已关闭');
-                });
-              }}
-            >
-              开启
-            </Button>
-          }
+    <Cell
+      description={
+        <Button
+          size="xs"
+          onClick={() => {
+            Toast.show('不可同时进行其他交互', 5000, true, () => {
+              console.log('Toast已关闭');
+            });
+          }}
         >
-          有遮罩层
-        </Cell>
+          开启
+        </Button>
+      }
+    >
+      有遮罩层
+    </Cell>
 
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Toast.show(
-                  <div className="box">
-                    <Icon className="box-icon" type="right-round-fill" />
-                    <div className="box-text">
-                      预约成功
-                    </div>
-                  </div>
-                );
-              }}
-            >
-              开启
-            </Button>
-          }
+    <Cell
+      description={
+        <Button
+          size="xs"
+          onClick={() => {
+            Toast.show(
+              <div className="box">
+                <Icon className="box-icon" type="right-round-fill" />
+                <div className="box-text">
+                  预约成功
+                </div>
+              </div>
+            );
+          }}
         >
-          自定义内容
-        </Cell>
-      </div>
-    )
-  }
-}
+          开启
+        </Button>
+      }
+    >
+      自定义内容
+    </Cell>
+  </>
+);
 
 ReactDOM.render(<Demo />, mountNode);
 ```
@@ -95,15 +91,13 @@ ReactDOM.render(<Demo />, mountNode);
 import { Loading, Cell, Button, ActivityIndicator } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      visible: false,
-    }
-  }
+  state = {
+    visible: false,
+  };
+
   render() {
     return (
-      <div>
+      <>
         <Cell
           description={
             <Button
@@ -143,7 +137,7 @@ class Demo extends React.Component {
           visible={this.state.visible}
           afterClose={() => { this.setState({ visible: false }); }}
           stayTime={3000} />
-      </div>
+      </>
     )
   }
 }

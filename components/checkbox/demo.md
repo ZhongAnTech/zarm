@@ -6,24 +6,18 @@
 ```jsx
 import { Cell, Checkbox } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell><Checkbox>普通</Checkbox></Cell>
-        <Cell><Checkbox defaultChecked>默认选中</Checkbox></Cell>
-        <Cell><Checkbox disabled>禁用</Checkbox></Cell>
-        <Cell><Checkbox defaultChecked disabled>选中且禁用</Checkbox></Cell>
-        <Cell className="agreement-box">
-          <Checkbox id="agreement" />
-          <label htmlFor="agreement">阅读并同意<a href="/#" onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX条款》</a>中的相关规定</label>
-        </Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell><Checkbox>普通</Checkbox></Cell>
+    <Cell><Checkbox defaultChecked>默认选中</Checkbox></Cell>
+    <Cell><Checkbox disabled>禁用</Checkbox></Cell>
+    <Cell><Checkbox defaultChecked disabled>选中且禁用</Checkbox></Cell>
+    <Cell className="agreement-box">
+      <Checkbox id="agreement" />
+      <label htmlFor="agreement">阅读并同意<a href="/#" onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX条款》</a>中的相关规定</label>
+    </Cell>
+  </>
+, mountNode);
 ```
 
 
@@ -121,21 +115,15 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Checkbox } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div className="block-box">
-        <Checkbox.Group block type="button">
-          <Checkbox value="0">选项一</Checkbox>
-          <Checkbox value="1">选项二</Checkbox>
-          <Checkbox value="2">选项三</Checkbox>
-        </Checkbox.Group>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <div className="block-box">
+    <Checkbox.Group block type="button">
+      <Checkbox value="0">选项一</Checkbox>
+      <Checkbox value="1">选项二</Checkbox>
+      <Checkbox value="2">选项三</Checkbox>
+    </Checkbox.Group>
+  </div>
+, mountNode);
 ```
 
 
@@ -144,21 +132,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Checkbox } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Checkbox.Group type="cell">
-          <Checkbox value="0">选项一</Checkbox>
-          <Checkbox value="1">选项二</Checkbox>
-          <Checkbox value="2" disabled>选项三（禁止选择）</Checkbox>
-        </Checkbox.Group>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Checkbox.Group type="cell">
+    <Checkbox value="0">选项一</Checkbox>
+    <Checkbox value="1">选项二</Checkbox>
+    <Checkbox value="2" disabled>选项三（禁止选择）</Checkbox>
+  </Checkbox.Group>
+, mountNode);
 ```
 
 
@@ -167,21 +147,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Checkbox } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Checkbox.Group disabled type="cell">
-          <Checkbox value="0">选项一</Checkbox>
-          <Checkbox value="1">选项二</Checkbox>
-          <Checkbox value="2">选项三</Checkbox>
-        </Checkbox.Group>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Checkbox.Group disabled type="cell">
+    <Checkbox value="0">选项一</Checkbox>
+    <Checkbox value="1">选项二</Checkbox>
+    <Checkbox value="2">选项三</Checkbox>
+  </Checkbox.Group>
+, mountNode);
 ```
 
 

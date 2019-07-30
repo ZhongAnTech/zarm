@@ -7,16 +7,13 @@
 import { Cell, Stepper } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 1,
-    };
-  }
+  state = {
+    value: 1,
+  };
 
   render() {
     return (
-      <div>
+      <>
         <Cell
           title="普通"
           description={
@@ -62,7 +59,7 @@ class Demo extends React.Component {
             <Stepper disabled />
           }
         />
-      </div>
+      </>
     )
   }
 }
@@ -76,29 +73,23 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell, Stepper } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell
-          title="直角"
-          description={
-            <Stepper shape="rect" />
-          }
-        />
+ReactDOM.render(
+  <>
+    <Cell
+      title="直角"
+      description={
+        <Stepper shape="rect" />
+      }
+    />
 
-        <Cell
-          title="圆形"
-          description={
-            <Stepper shape="circle" />
-          }
-        />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+    <Cell
+      title="圆形"
+      description={
+        <Stepper shape="circle" />
+      }
+    />
+  </>
+, mountNode);
 ```
 
 
@@ -107,22 +98,14 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell, Stepper } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell
-          title="大号"
-          description={
-            <Stepper size="lg" />
-          }
-        />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Cell
+    title="大号"
+    description={
+      <Stepper size="lg" />
+    }
+  />
+, mountNode);
 ```
 
 

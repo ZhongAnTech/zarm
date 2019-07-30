@@ -6,19 +6,27 @@
 ```jsx
 import { TabBar, Cell, Button } from 'zarm';
 
+const tabIcon = (key) => (
+  <div
+    style={{
+      width: 24,
+      height: 24,
+      background: `url(//cdn-health.zhongan.com/zarm/${key}.svg) top left / 24px 24px no-repeat`,
+    }}
+  />
+);
+
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeKey: 'home',
-      visible: true
-    }
-  }
+  state = {
+    activeKey: 'home',
+    visible: true
+  };
+
   render() {
     const { visible, activeKey } = this.state;
     return (
-      <div>
-      <Cell
+      <>
+        <Cell
           description={
             <Button
               size="xs"
@@ -32,53 +40,33 @@ class Demo extends React.Component {
         >
          隐藏 | 展示
         </Cell>
-        <TabBar onChange={(value) => this.setState({activeKey: value})} activeKey={activeKey} visible={visible} >
+
+        <TabBar
+          visible={visible}
+          activeKey={activeKey}
+          onChange={(value) => this.setState({activeKey: value})}>
           <TabBar.Item
             itemKey="home"
             title="主页"
-            icon={<div style={{
-              width: '24px',
-              height: '24px',
-              background: 'url(//cdn-health.zhongan.com/zarm/home-active.svg) top left / 24px 24px no-repeat'}}></div>
-            }
-            activeIcon={<div style={{
-              width: '24px',
-              height: '24px',
-              background: 'url(//cdn-health.zhongan.com/zarm/home.svg) top left / 24px 24px no-repeat'}}></div>
-            }
+            icon={tabIcon('home-active')}
+            activeIcon={tabIcon('home')}
           />
           <TabBar.Item
             itemKey="found"
             title="发现"
-            icon={<div style={{
-              width: '24px',
-              height: '24px',
-              background: 'url(//cdn-health.zhongan.com/zarm/find-active.svg) top left / 24px 24px no-repeat'}}></div>
-            }
-            activeIcon={<div style={{
-              width: '24px',
-              height: '24px',
-              background: 'url(//cdn-health.zhongan.com/zarm/find.svg) top left / 24px 24px no-repeat'}}></div>
-            }
+            icon={tabIcon('find-active')}
+            activeIcon={tabIcon('find')}
             badge={{ sup: true, shape: 'circle', text: '3' }}
           />
           <TabBar.Item
             itemKey="me"
             title="我的"
-            icon={<div style={{
-              width: '24px',
-              height: '24px',
-              background: 'url(//cdn-health.zhongan.com/zarm/my-active.svg) top left / 24px 24px no-repeat'}}></div>
-            }
-            activeIcon={<div style={{
-              width: '24px',
-              height: '24px',
-              background: 'url(//cdn-health.zhongan.com/zarm/my.svg) top left / 24px 24px no-repeat'}}></div>
-            }
+            icon={tabIcon('my-active')}
+            activeIcon={tabIcon('my')}
             badge={{ sup: true, shape: 'dot' }}
           />
         </TabBar>
-      </div>  
+      </>  
     )
   }
 }
