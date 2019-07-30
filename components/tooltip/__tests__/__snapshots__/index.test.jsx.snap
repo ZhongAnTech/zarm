@@ -7,7 +7,6 @@ exports[`Tooltip renders correctly 1`] = `
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"
   title="hello"
-  trigger="hover"
 >
   <Popper
     content=""

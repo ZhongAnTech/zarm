@@ -1,4 +1,50 @@
-# Popper 弹层
+# Popper 气泡层
+
+## 基本用法
+```jsx
+import { Cell, Button, Popper } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Cell description={
+          <Popper title="我是一段文案" className="common-popper">
+            <Button block size="xs">显示</Button>
+          </Popper>
+        }>
+          基本用法
+        </Cell>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+## 显示箭头
+```jsx
+import { Cell, Button, Popper } from 'zarm';
+
+class Demo extends React.Component {
+  render() {
+    return (
+      <div>
+        <Cell description={
+          <Popper title="我是一段文案" hasArrow className="common-popper">
+            <Button block size="xs">显示</Button>
+          </Popper>
+        }>
+          显示箭头
+        </Cell>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
 
 ## 触发方式 默认为hover
 ```jsx
@@ -13,25 +59,22 @@ class Demo extends React.Component {
   }
 
   render() {
+    const { visible } = this.state
+
     return (
       <div>
         <Cell description={
-          <Popper title="我是一段文案" wrapperCls="common-popper">
-            <Button block size="xs">显示</Button>
-          </Popper>
-        }>
-          默认触发方式
-        </Cell>
-        <Cell description={
-          <Popper title="我是一段文案" trigger="click" wrapperCls="common-popper">
+          <Popper title="我是一段文案" trigger="click" className="common-popper">
             <Button block size="xs">显示</Button>
           </Popper>
         }>
           点击方式触发
         </Cell>
         <Cell description={
-          <Popper title="我是一段文案" trigger="manual" visible={this.state.visible} wrapperCls="common-popper">
-            <Button block size="xs" onClick={() => this.setState({ visible: !this.state.visible })}>显示</Button>
+          <Popper title="我是一段文案" trigger="manual" visible={visible} className="common-popper">
+            <Button block size="xs" onClick={() => this.setState({ visible: !visible })}>
+              {visible ? '隐藏' : '显示'}
+            </Button>
           </Popper>
         }>
             手动控制显示隐藏
@@ -53,18 +96,18 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <Cell>
+        <Cell className="direction">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper hasArrow direction="topLeft" title="topLeft text">
+              <Popper direction="topLeft" title="topLeft text">
                 <Button block size="xs">TL</Button>
               </Popper>
 
-              <Popper hasArrow direction="top" title="top text">
+              <Popper direction="top" title="top text">
                 <Button block size="xs">Top</Button>
               </Popper>
 
-              <Popper hasArrow direction="topRight" title="topRight text">
+              <Popper direction="topRight" title="topRight text">
                 <Button block size="xs">TR</Button>
               </Popper>
             </div>
@@ -128,7 +171,7 @@ ReactDOM.render(<Demo />, mountNode);
 | visible | boolean | false | 是否显示 |
 | title | ReactNode | - | 显示标题 |
 | content | ReactNode | - | 显示内容 |
-| hasArrow | boolean | true | 是否带有箭头 |
+| hasArrow | boolean | false | 是否带有箭头 |
 | wrapperCls | string | - | popper wrapper的类名自定义 |
 | className | string | - | popper 的类名自定义 |
 | mouseEnterDelay | number | 100ms | 鼠标移入后延时多少才显示 Popper，单位：毫秒 |

@@ -5,7 +5,6 @@
     .za-popper__wrapper {
     padding: 6px 12px;
     background: #fff;
-    box-shadow: 2px 2px #eee;
     border: 1px solid #e5e5e5;
   }
 
@@ -14,8 +13,13 @@
   }
 
   .za-cell__content {
-    justify-content: start;
     padding: r(15) 0;
+  }
+
+  .direction {
+    .za-cell__content {
+      justify-content: center;
+    }
   }
 
   .za-popper {
@@ -36,9 +40,9 @@
       height: 0;
       border-color: transparent;
       border-style: solid;
-      bottom: r(-4);
-      border-width: r(4) r(4) 0;
-      border-top-color: rgba(0, 0, 0, .8);
+      bottom: r(-6);
+      border-width: r(6) r(6) 0;
+      border-top-color: #fff;
     }
   }
 }

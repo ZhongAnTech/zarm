@@ -23,7 +23,6 @@ export interface PopperState {
 export interface PopperProps {
   prefixCls?: string;
   className?: string;
-  wrapperCls?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
   visible?: boolean;

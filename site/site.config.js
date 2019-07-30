@@ -164,7 +164,7 @@ module.exports = {
       },
       {
         name: 'Popper',
-        description: '弹层',
+        description: '气泡层',
         module: () => import('@/components/popper/demo.md'),
       },
       {

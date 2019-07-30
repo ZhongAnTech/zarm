@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import ClickOutside from '../click-outside';
 import { invertKeyValues } from '../utils';
 import domUtil from '../utils/dom';
-import { PopperState, PopperProps, directionMap } from './PropsType';
+import { PopperState, PopperProps, PopperTrigger, directionMap } from './PropsType';
 
 function getPopperClientRect(popperOffsets) {
   const offsets = { ...popperOffsets };
@@ -47,7 +47,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
   static defaultProps = {
     prefixCls: 'za-popper',
     hasArrow: false,
-    trigger: 'hover',
+    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
     direction: 'top',
     mouseEnterDelay: 100,
     mouseLeaveDelay: 100,
@@ -110,15 +110,16 @@ class Popper extends React.Component<PopperProps, PopperState> {
 
   private leaveTimer: number;
 
-  componentDidUpdate(prevProps: PopperProps, prevState: PopperState) {
-    const { visible } = this.state;
-    const { direction } = this.props;
+  componentDidUpdate(prevProps: PopperProps) {
+    const { direction, visible } = this.props;
+
     if (
-      (!prevState.visible && prevState.visible !== visible) || (prevProps.direction !== direction)
+      prevProps.visible !== visible
+      || prevProps.direction !== direction
     ) {
       this.handleOpen();
     }
-    if (prevState.visible && prevState.visible !== visible) {
+    if (prevProps.visible !== visible && !visible) {
       this.handleClose();
     }
   }
@@ -180,6 +181,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
     if (!this.popper) {
       return;
     }
+
     this.popper.destroy();
     this.popper = null;
     this.setState({ visible: false });
@@ -187,7 +189,15 @@ class Popper extends React.Component<PopperProps, PopperState> {
   };
 
   handleClick = () => {
-    this.setState((preState: PopperState) => ({ visible: !preState.visible }));
+    this.setState((preState: PopperState) => {
+      return { visible: !preState.visible };
+    }, () => {
+      if (this.state.visible) {
+        this.handleOpen();
+      } else {
+        this.handleClose();
+      }
+    });
   };
 
   handleEnter = (event) => {
@@ -232,7 +242,6 @@ class Popper extends React.Component<PopperProps, PopperState> {
       prefixCls,
       style,
       className,
-      wrapperCls,
       trigger,
       hasArrow,
     } = this.props;
@@ -243,8 +252,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
     } = this.state;
 
     const child = <div className={`${prefixCls}__inner`}>{children}</div>;
-    const outerCls = classnames(prefixCls, className);
-    const innerCls = classnames(`${prefixCls}__wrapper`, wrapperCls, `${prefixCls}--${direction}`);
+    const innerCls = classnames(`${prefixCls}__wrapper`, className, `${prefixCls}--${direction}`);
     const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
       ref: (node) => { this.reference = node; },
     };
@@ -265,7 +273,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
 
     const childElement = React.cloneElement(child, childrenProps);
     const toolTip = (
-      <ClickOutside onClickOutside={this.handleClose} disabled={trigger === 'manual'}>
+      <ClickOutside onClickOutside={this.handleClose} ignoredNode={this.reference} disabled={trigger === 'manual'}>
         <div
           role="tooltip"
           style={{ position: 'absolute' }}
@@ -282,7 +290,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
 
     return (
       <React.Fragment>
-        <div className={outerCls} style={style}>
+        <div className={prefixCls} style={style}>
           {visible ? createPortal(toolTip, document.body) : null}
           {childElement}
         </div>
