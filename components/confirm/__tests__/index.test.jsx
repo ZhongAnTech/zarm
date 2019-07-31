@@ -31,7 +31,6 @@ describe('Confirm', () => {
     document.querySelector('.za-confirm__button').click();
 
     expect(onCancel).toBeCalledTimes(1);
-
     return expect(promise).resolves.toBe(false);
   });
 });
