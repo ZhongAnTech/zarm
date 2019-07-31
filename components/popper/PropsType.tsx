@@ -12,7 +12,13 @@ export type PopperPlacement =
   | 'rightTop'
   | 'rightBottom';
 
-export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual';
+export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
+
+export interface PopperState {
+  visible: boolean;
+  direction: PopperPlacement;
+  arrowRef: any;
+}
 
 export interface PopperProps {
   prefixCls?: string;
@@ -33,16 +39,16 @@ export interface PopperProps {
 }
 
 export const directionMap = {
-  top: 'top',
-  topLeft: 'top-start',
-  topRight: 'top-end',
-  right: 'right',
-  rightTop: 'right-start',
-  rightBottom: 'right-end',
-  bottom: 'bottom',
-  bottomLeft: 'bottom-start',
-  bottomRight: 'bottom-end',
-  left: 'left',
-  leftTop: 'left-start',
-  leftBottom: 'left-end',
+  top: 'top' as const,
+  topLeft: 'top-start' as const,
+  topRight: 'top-end' as const,
+  right: 'right' as const,
+  rightTop: 'right-start' as const,
+  rightBottom: 'right-end' as const,
+  bottom: 'bottom' as const,
+  bottomLeft: 'bottom-start' as const,
+  bottomRight: 'bottom-end' as const,
+  left: 'left' as const,
+  leftTop: 'left-start' as const,
+  leftBottom: 'left-end' as const,
 };

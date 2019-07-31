@@ -3,10 +3,10 @@
 exports[`Tooltip renders correctly 1`] = `
 <Tooltip
   direction="top"
+  hasArrow={true}
   onVisibleChange={[Function]}
   prefixCls="za-tooltip"
   title="hello"
-  trigger="hover"
 >
   <Popper
     content=""
@@ -21,7 +21,7 @@ exports[`Tooltip renders correctly 1`] = `
     visible={false}
   >
     <div
-      className="za-tooltip za-tooltip__wrapper"
+      className="za-tooltip"
     >
       <div
         className="za-tooltip__inner"

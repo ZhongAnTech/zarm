@@ -39,10 +39,10 @@ exports[`Slider defaultValue 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={10}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -94,10 +94,10 @@ exports[`Slider disabled 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -185,10 +185,10 @@ exports[`Slider marks 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -240,10 +240,10 @@ exports[`Slider marks error 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -295,10 +295,10 @@ exports[`Slider max 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -350,10 +350,10 @@ exports[`Slider min 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -405,10 +405,10 @@ exports[`Slider shallows correctly 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -544,10 +544,10 @@ exports[`Slider showMark 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -599,10 +599,10 @@ exports[`Slider step 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -654,10 +654,10 @@ exports[`Slider value 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={10}
-          trigger="hover"
           visible={false}
         >
           <div
@@ -709,10 +709,10 @@ exports[`Slider vertical 1`] = `
       >
         <Tooltip
           direction="top"
+          hasArrow={true}
           onVisibleChange={[Function]}
           prefixCls="za-tooltip"
           title={0}
-          trigger="hover"
           visible={false}
         >
           <div

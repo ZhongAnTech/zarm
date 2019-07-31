@@ -47,14 +47,15 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
 
     if (event.type === 'click' && this.isTouch) return;
 
-    const { onClickOutside } = this.props;
+    const { onClickOutside, ignoredNode } = this.props;
     const el = this.container;
 
+    if (ignoredNode && ignoredNode.contains(event.target)) return;
     if (el && !el.contains(event.target)) onClickOutside(event);
   };
 
   render() {
-    const { onClickOutside, disabled, children, ...rest } = this.props;
+    const { onClickOutside, disabled, children, ignoredNode, ...rest } = this.props;
 
     return <div ref={this.getContainer} {...rest}>{children}</div>;
   }

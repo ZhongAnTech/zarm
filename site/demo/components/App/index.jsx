@@ -15,6 +15,7 @@ const HAS_STYLE_COMPONENT = [
   'Cell', 'Checkbox', 'FilePicker', 'Icon', 'Message',
   'NoticeBar', 'Panel', 'Picker', 'Popup', 'Progress',
   'Pull', 'Radio', 'SearchBar', 'Tabs', 'Toast', 'Tooltip',
+  'Popper',
 ];
 
 const LoadablePage = (loader) => {
