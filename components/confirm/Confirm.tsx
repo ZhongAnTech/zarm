@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Modal from '../modal';
 import confirmLocale from './locale/zh_CN';
+import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
 
 export interface ConfirmProps extends PropsType {
   prefixCls?: string;
@@ -29,6 +30,10 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
       _props = { ...defaultProps };
     }
 
+    const runTimeLocale = getRunTimeLocale();
+    if (runTimeLocale && runTimeLocale.Confirm) {
+      _props = { ..._props, locale: runTimeLocale.Confirm };
+    }
     Confirm.confirmContainer = document.createElement('div');
     document.body.appendChild(Confirm.confirmContainer);
     return new Promise((resolve) => {
