@@ -20,4 +20,18 @@ describe('Confirm', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('works with static methods', () => {
+    const onCancel = jest.fn();
+    const promise = Confirm.show({
+      title: '警告',
+      message: '这是警告信息',
+      onCancel,
+    });
+    document.querySelector('.za-confirm__button').click();
+
+    expect(onCancel).toBeCalledTimes(1);
+
+    return expect(promise).resolves.toBe(false);
+  });
 });
