@@ -12,7 +12,7 @@ export type PopperPlacement =
   | 'rightTop'
   | 'rightBottom';
 
-export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual';
+export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
 
 export interface PopperState {
   visible: boolean;

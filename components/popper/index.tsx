@@ -29,9 +29,9 @@ function customArrowOffsetFn(data: PopperJS.Data) {
   const arrowSize = domUtil.getOuterSizes(arrow as HTMLElement)[len];
   const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft!);
   const hashMap = {
-    start: reference[side] + offsetSize,
+    start: side === 'left' ? (reference[side] + offsetSize) : (reference[opSide] - offsetSize - arrowSize),
     center: reference[side] + reference[len] / 2 - arrowSize / 2,
-    end: reference[opSide] - offsetSize - arrowSize,
+    end: side === 'left' ? (reference[opSide] - offsetSize - arrowSize) : (reference[side] + offsetSize),
   };
   const place = hashMap[placement1 || 'center'];
   const sideValue = place - popper[side];
@@ -61,7 +61,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
     children: PropTypes.element.isRequired,
     visible: PropTypes.bool,
     hasArrow: PropTypes.bool,
-    trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual']),
+    trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual', 'contextMenu']),
     content: PropTypes.node,
     direction: PropTypes.oneOf([
       'top',
@@ -188,7 +188,11 @@ class Popper extends React.Component<PopperProps, PopperState> {
     this.props.onVisibleChange!(false);
   };
 
-  handleClick = () => {
+  handleClick = (event) => {
+    const { trigger } = this.props;
+
+    if (trigger === 'contextMenu') event.preventDefault();
+
     this.setState((preState: PopperState) => {
       return { visible: !preState.visible };
     }, () => {
@@ -211,7 +215,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
     this.enterTimer = setTimeout(() => {
-      this.setState({ visible: true });
+      this.setState({ visible: true }, this.handleOpen);
     }, mouseEnterDelay);
   };
 
@@ -230,7 +234,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
     this.leaveTimer = setTimeout(() => {
-      this.setState({ visible: false });
+      this.setState({ visible: false }, this.handleClose);
     }, mouseLeaveDelay);
   };
 
@@ -260,6 +264,9 @@ class Popper extends React.Component<PopperProps, PopperState> {
     if (trigger === 'click') {
       childrenProps.onClick = this.handleClick;
     }
+    if (trigger === 'contextMenu') {
+      childrenProps.onContextMenu = this.handleClick;
+    }
     if (trigger === 'hover') {
       childrenProps.onMouseOver = this.handleEnter;
       childrenProps.onMouseLeave = this.handleLeave;
@@ -267,13 +274,18 @@ class Popper extends React.Component<PopperProps, PopperState> {
       event.onMouseLeave = this.handleLeave;
     }
     if (trigger === 'focus') {
-      childrenProps.onFocus = this.handleEnter;
-      childrenProps.onBlur = this.handleLeave;
+      childrenProps.onFocus = this.handleClick;
+      // childrenProps.onBlur = this.handleLeave;
     }
 
     const childElement = React.cloneElement(child, childrenProps);
     const toolTip = (
-      <ClickOutside onClickOutside={this.handleClose} ignoredNode={this.reference} disabled={trigger === 'manual'}>
+      <ClickOutside
+        onClickOutside={this.handleClose}
+        ignoredNode={this.reference}
+        className="popper-container"
+        disabled={trigger === 'manual'}
+      >
         <div
           role="tooltip"
           style={{ position: 'absolute' }}

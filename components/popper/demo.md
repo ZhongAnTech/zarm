@@ -23,29 +23,6 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-## 显示箭头
-```jsx
-import { Cell, Button, Popper } from 'zarm';
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell description={
-          <Popper title="我是一段文案" hasArrow className="common-popper">
-            <Button block size="xs">显示</Button>
-          </Popper>
-        }>
-          显示箭头
-        </Cell>
-      </div>
-    );
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-
 ## 触发方式 默认为hover
 ```jsx
 import { Cell, Button, Popper } from 'zarm';
@@ -70,6 +47,20 @@ class Demo extends React.Component {
         }>
           点击方式触发
         </Cell>
+        {/* <Cell description={
+          <Popper title="我是一段文案" trigger="contextMenu" className="common-popper">
+            <Button size="xs">右键点我</Button>
+          </Popper>
+        }>
+          鼠标右键方式触发
+        </Cell>
+        <Cell description={
+          <Popper title="我是一段文案" trigger="focus" className="common-popper">
+            <Button size="xs">点我</Button>
+          </Popper>
+        }>
+          focus方式触发
+        </Cell> */}
         <Cell description={
           <Popper title="我是一段文案" trigger="manual" visible={visible} className="common-popper">
             <Button block size="xs" onClick={() => this.setState({ visible: !visible })}>
@@ -99,57 +90,57 @@ class Demo extends React.Component {
         <Cell className="direction">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper direction="topLeft" title="topLeft text">
+              <Popper className="direction-popper" hasArrow direction="topLeft" title="topLeft text">
                 <Button block size="xs">TL</Button>
               </Popper>
 
-              <Popper direction="top" title="top text">
+              <Popper className="direction-popper" hasArrow direction="top" title="top text">
                 <Button block size="xs">Top</Button>
               </Popper>
 
-              <Popper direction="topRight" title="topRight text">
+              <Popper className="direction-popper" hasArrow direction="topRight" title="topRight text">
                 <Button block size="xs">TR</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, float: "left",  clear: 'both' }}>
-              <Popper direction="leftTop" title="leftTop text">
+              <Popper className="direction-popper" hasArrow direction="leftTop" title="leftTop text">
                 <Button block size="xs">LT</Button>
               </Popper>
 
-              <Popper direction="left" title="left text">
+              <Popper className="direction-popper" hasArrow direction="left" title="left text">
                 <Button block size="xs">Left</Button>
               </Popper>
 
-              <Popper direction="leftBottom" title="leftBottom text">
+              <Popper className="direction-popper" hasArrow direction="leftBottom" title="leftBottom text">
                 <Button block size="xs">LB</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, marginLeft: 60 * 4 }}>
-              <Popper direction="rightTop" title="rightTop text">
+              <Popper className="direction-popper" hasArrow direction="rightTop" title="rightTop text">
                 <Button block size="xs">RT</Button>
               </Popper>
 
-              <Popper direction="right" title="right text">
+              <Popper className="direction-popper" hasArrow direction="right" title="right text">
                 <Button block size="xs">Right</Button>
               </Popper>
 
-              <Popper direction="rightBottom" title="rightBottom text">
+              <Popper className="direction-popper" hasArrow direction="rightBottom" title="rightBottom text">
                 <Button block size="xs">RB</Button>
               </Popper>
             </div>
 
             <div style={{ marginLeft: 60, clear: 'both' }}>
-              <Popper direction="bottomLeft" title="bottomLeft text">
+              <Popper className="direction-popper" hasArrow direction="bottomLeft" title="bottomLeft text">
                 <Button block size="xs">BL</Button>
               </Popper>
 
-              <Popper direction="bottom" title="bottom text">
+              <Popper className="direction-popper" hasArrow direction="bottom" title="bottom text">
                 <Button block size="xs">Bottom</Button>
               </Popper>
 
-              <Popper direction="bottomRight" title="bottomRight text">
+              <Popper className="direction-popper" hasArrow direction="bottomRight" title="bottomRight text">
                 <Button block size="xs">BR</Button>
               </Popper>
             </div>
@@ -172,10 +163,9 @@ ReactDOM.render(<Demo />, mountNode);
 | title | ReactNode | - | 显示标题 |
 | content | ReactNode | - | 显示内容 |
 | hasArrow | boolean | false | 是否带有箭头 |
-| wrapperCls | string | - | popper wrapper的类名自定义 |
-| className | string | - | popper 的类名自定义 |
+| className | string | - | popper wrapper 的类名自定义 |
 | mouseEnterDelay | number | 100ms | 鼠标移入后延时多少才显示 Popper，单位：毫秒 |
 | mouseLeaveDelay | number | 100ms | 鼠标移出后延时多少才显示 Popper，单位：毫秒 |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
-| trigger | string | 'click' | 触发方式，PC端默认值为'hover', 可选址为 `click`、`hover`、`manual` |
+| trigger | string | 'click' | 触发方式，PC端默认值为'hover', 可选址为 `click`、`hover`、`manual`、`contextMenu`、`focus` |
 | onVisibleChange | (visible?: boolean) => void | noop | 显示/隐藏触发的事件 |
