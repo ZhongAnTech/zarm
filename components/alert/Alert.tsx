@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Modal from '../modal';
 import alertLocale from './locale/zh_CN';
-
+import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
 
 export interface AlertProps extends PropsType {
   prefixCls?: string;
@@ -31,6 +31,10 @@ export default class Alert extends PureComponent<AlertProps, {}> {
       _props = { ...defaultProps };
     }
 
+    const runTimeLocale = getRunTimeLocale();
+    if (runTimeLocale && runTimeLocale.Alert) {
+      _props = { ..._props, locale: runTimeLocale.Alert };
+    }
     Alert.alertContainer = document.createElement('div');
     document.body.appendChild(Alert.alertContainer);
     return new Promise((resolve) => {
