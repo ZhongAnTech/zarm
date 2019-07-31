@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import ClickOutside from '../click-outside';
 import { invertKeyValues } from '../utils';
 import domUtil from '../utils/dom';
-import { PopperProps, directionMap } from './PropsType';
+import { PopperState, PopperProps, PopperTrigger, directionMap } from './PropsType';
 
 function getPopperClientRect(popperOffsets) {
   const offsets = { ...popperOffsets };
@@ -18,7 +18,7 @@ function getPopperClientRect(popperOffsets) {
 
 function customArrowOffsetFn(data: PopperJS.Data) {
   const [placement, placement1] = data.placement.split('-');
-  const arrow: any = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element;
+  const arrow = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element as Element;
   const { offsets: { reference } } = data;
   const popper = getPopperClientRect(data.offsets.popper);
   const isVertical = ['left', 'right'].indexOf(placement) !== -1;
@@ -27,27 +27,27 @@ function customArrowOffsetFn(data: PopperJS.Data) {
   const altSide = isVertical ? 'left' : 'top';
   const opSide = isVertical ? 'bottom' : 'right';
   const arrowSize = domUtil.getOuterSizes(arrow as HTMLElement)[len];
-  const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft as any);
+  const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft!);
   const hashMap = {
-    start: reference[side] + offsetSize,
+    start: side === 'left' ? (reference[side] + offsetSize) : (reference[opSide] - offsetSize - arrowSize),
     center: reference[side] + reference[len] / 2 - arrowSize / 2,
-    end: reference[opSide] - offsetSize - arrowSize,
+    end: side === 'left' ? (reference[opSide] - offsetSize - arrowSize) : (reference[side] + offsetSize),
   };
   const place = hashMap[placement1 || 'center'];
   const sideValue = place - popper[side];
 
-  data.arrowElement = arrow;
-  data.arrowStyles[side] = Math.floor(sideValue) as any;
+  data.arrowElement = arrow!;
+  data.arrowStyles[side] = Math.floor(sideValue).toString();
   data.arrowStyles[altSide] = '';
 
   return data;
 }
 
-class Popper extends React.Component<PopperProps, any> {
+class Popper extends React.Component<PopperProps, PopperState> {
   static defaultProps = {
     prefixCls: 'za-popper',
-    hasArrow: true,
-    trigger: 'hover',
+    hasArrow: false,
+    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
     direction: 'top',
     mouseEnterDelay: 100,
     mouseLeaveDelay: 100,
@@ -61,7 +61,7 @@ class Popper extends React.Component<PopperProps, any> {
     children: PropTypes.element.isRequired,
     visible: PropTypes.bool,
     hasArrow: PropTypes.bool,
-    trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual']),
+    trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual', 'contextMenu']),
     content: PropTypes.node,
     direction: PropTypes.oneOf([
       'top',
@@ -82,7 +82,7 @@ class Popper extends React.Component<PopperProps, any> {
     onVisibleChange: PropTypes.func,
   };
 
-  static getDerivedStateFromProps(props: PopperProps, state: any) {
+  static getDerivedStateFromProps(props: PopperProps, state: PopperState) {
     if ('visible' in props && props.trigger === 'manual') {
       return {
         ...state,
@@ -92,33 +92,34 @@ class Popper extends React.Component<PopperProps, any> {
     return null;
   }
 
-  state = {
+  state: PopperState = {
     visible: false,
-    direction: this.props.direction,
+    direction: this.props.direction!,
     arrowRef: null,
   };
 
-  private popper: any;
+  private popper: PopperJS | null;
 
-  private popperNode: any;
+  private popperNode: HTMLDivElement;
 
-  private reference: any;
+  private reference: HTMLElement;
 
-  private arrowRef: any;
+  private arrowRef: HTMLSpanElement;
 
-  private enterTimer: any;
+  private enterTimer: number;
 
-  private leaveTimer: any;
+  private leaveTimer: number;
 
-  componentDidUpdate(prevProps: PopperProps, prevState: any) {
-    const { visible } = this.state;
-    const { direction } = this.props;
+  componentDidUpdate(prevProps: PopperProps) {
+    const { direction, visible } = this.props;
+
     if (
-      (!prevState.visible && prevState.visible !== visible) || (prevProps.direction !== direction)
+      prevProps.visible !== visible
+      || prevProps.direction !== direction
     ) {
       this.handleOpen();
     }
-    if (prevState.visible && prevState.visible !== visible) {
+    if (prevProps.visible !== visible && !visible) {
       this.handleClose();
     }
   }
@@ -136,8 +137,8 @@ class Popper extends React.Component<PopperProps, any> {
   handleOpen = () => {
     const { direction, onVisibleChange } = this.props;
     const { visible } = this.state;
-    const reference: any = ReactDOM.findDOMNode(this.reference); // eslint-disable-line
-    const popperNode: any = ReactDOM.findDOMNode(this.popperNode); // eslint-disable-line
+    const reference = ReactDOM.findDOMNode(this.reference) as Element; // eslint-disable-line
+    const popperNode = ReactDOM.findDOMNode(this.popperNode) as Element; // eslint-disable-line
 
     if (!popperNode || !visible) {
       return;
@@ -149,7 +150,7 @@ class Popper extends React.Component<PopperProps, any> {
     }
 
     this.popper = new PopperJS(reference, popperNode, {
-      placement: directionMap[direction!] as any,
+      placement: directionMap[direction!],
       positionFixed: true,
       modifiers: {
         preventOverflow: {
@@ -180,14 +181,27 @@ class Popper extends React.Component<PopperProps, any> {
     if (!this.popper) {
       return;
     }
+
     this.popper.destroy();
     this.popper = null;
     this.setState({ visible: false });
     this.props.onVisibleChange!(false);
   };
 
-  handleClick = () => {
-    this.setState((preState: any) => ({ visible: !preState.visible }));
+  handleClick = (event) => {
+    const { trigger } = this.props;
+
+    if (trigger === 'contextMenu') event.preventDefault();
+
+    this.setState((preState: PopperState) => {
+      return { visible: !preState.visible };
+    }, () => {
+      if (this.state.visible) {
+        this.handleOpen();
+      } else {
+        this.handleClose();
+      }
+    });
   };
 
   handleEnter = (event) => {
@@ -201,7 +215,7 @@ class Popper extends React.Component<PopperProps, any> {
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
     this.enterTimer = setTimeout(() => {
-      this.setState({ visible: true });
+      this.setState({ visible: true }, this.handleOpen);
     }, mouseEnterDelay);
   };
 
@@ -220,7 +234,7 @@ class Popper extends React.Component<PopperProps, any> {
     clearTimeout(this.enterTimer);
     clearTimeout(this.leaveTimer);
     this.leaveTimer = setTimeout(() => {
-      this.setState({ visible: false });
+      this.setState({ visible: false }, this.handleClose);
     }, mouseLeaveDelay);
   };
 
@@ -242,14 +256,16 @@ class Popper extends React.Component<PopperProps, any> {
     } = this.state;
 
     const child = <div className={`${prefixCls}__inner`}>{children}</div>;
-    const wrapperCls = classnames(prefixCls, `${prefixCls}__wrapper`, className);
-    const innerCls = classnames(`${prefixCls}__content-wrapper`, `${prefixCls}__placement__${direction}`);
-    const childrenProps: any = {
+    const innerCls = classnames(`${prefixCls}__wrapper`, className, `${prefixCls}--${direction}`);
+    const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
       ref: (node) => { this.reference = node; },
     };
     const event: React.DOMAttributes<HTMLDivElement> = {};
     if (trigger === 'click') {
       childrenProps.onClick = this.handleClick;
+    }
+    if (trigger === 'contextMenu') {
+      childrenProps.onContextMenu = this.handleClick;
     }
     if (trigger === 'hover') {
       childrenProps.onMouseOver = this.handleEnter;
@@ -258,31 +274,35 @@ class Popper extends React.Component<PopperProps, any> {
       event.onMouseLeave = this.handleLeave;
     }
     if (trigger === 'focus') {
-      childrenProps.onFocus = this.handleEnter;
-      childrenProps.onBlur = this.handleLeave;
+      childrenProps.onFocus = this.handleClick;
+      // childrenProps.onBlur = this.handleLeave;
     }
 
-    // @ts-ignore
     const childElement = React.cloneElement(child, childrenProps);
     const toolTip = (
-      <ClickOutside onClickOutside={this.handleClose} disabled={trigger === 'manual'}>
+      <ClickOutside
+        onClickOutside={this.handleClose}
+        ignoredNode={this.reference}
+        className="popper-container"
+        disabled={trigger === 'manual'}
+      >
         <div
           role="tooltip"
           style={{ position: 'absolute' }}
           className={innerCls}
-          ref={(node) => { this.popperNode = node; }}
+          ref={(node) => { this.popperNode = node!; }}
           {...event}
         >
           {title && <div className={`${prefixCls}__title`}>{title}</div>}
           <div className={`${prefixCls}__content`}>{content}</div>
-          {hasArrow && <span className={`${prefixCls}__arrow`} ref={(el) => { this.arrowRef = el; }} />}
+          {hasArrow && <span className={`${prefixCls}__arrow`} ref={(el) => { this.arrowRef = el!; }} />}
         </div>
       </ClickOutside>
     );
 
     return (
       <React.Fragment>
-        <div className={wrapperCls} style={style}>
+        <div className={prefixCls} style={style}>
           {visible ? createPortal(toolTip, document.body) : null}
           {childElement}
         </div>

@@ -4,7 +4,7 @@ exports[`Popper renders correctly 1`] = `
 <Popper
   content=""
   direction="top"
-  hasArrow={true}
+  hasArrow={false}
   mouseEnterDelay={100}
   mouseLeaveDelay={100}
   onVisibleChange={[MockFunction]}
@@ -14,7 +14,7 @@ exports[`Popper renders correctly 1`] = `
   visible={false}
 >
   <div
-    className="za-popper za-popper__wrapper"
+    className="za-popper"
   >
     <div
       className="za-popper__inner"

@@ -47,7 +47,7 @@ describe('Popper', () => {
 
     const div = wrapper.find('#hello').at(0);
     div.simulate('click');
-    expect(wrapper.find('.za-tooltip__arrow')).not.toHaveLength(1);
+    expect(wrapper.find('.za-popper__arrow')).not.toHaveLength(1);
   });
 
   it('check onVisibleChange func prop', () => {
