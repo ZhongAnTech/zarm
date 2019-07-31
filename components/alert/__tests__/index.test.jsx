@@ -18,4 +18,17 @@ describe('Alert', () => {
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('works with static methods', () => {
+    const onCancel = jest.fn();
+    const promise = Alert.show({
+      title: '警告',
+      message: '这是警告信息',
+      onCancel,
+    });
+    document.querySelector('.za-alert__button').click();
+
+    expect(onCancel).toBeCalledTimes(1);
+    return expect(promise).resolves.toBe(false);
+  });
 });
