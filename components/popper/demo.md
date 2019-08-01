@@ -180,13 +180,13 @@ ReactDOM.render(<Demo />, mountNode);
 ### API
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| visible | boolean | false | 是否显示 |
-| content | ReactNode | - | 显示内容 |
-| hasArrow | boolean | false | 是否带有箭头 |
-| arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | className | string | - | 气泡层类名追加 |
-| mouseEnterDelay | number | 100ms | 鼠标移入后延时多少才显示气泡层，单位：毫秒 |
-| mouseLeaveDelay | number | 100ms | 鼠标移出后延时多少才隐藏气泡层，单位：毫秒 |
+| content | ReactNode | - | 显示内容 |
+| hasArrow | boolean | false | 是否显示箭头节点<font color="red">（注：需要自行定义箭头样式）</font> |
+| arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
+| mouseEnterDelay | number | 100 | 鼠标移入显示气泡层的延时时间（单位：毫秒） |
+| mouseLeaveDelay | number | 100 | 鼠标移出隐藏气泡层的延时时间（单位：毫秒） |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
-| trigger | string | 'click' | 触发方式，PC端默认值为 'hover', 可选值为：点击触发`click`、hover状态触发`hover`、聚焦状态触发`focus`、受控触发`manual`、右键触发`contextMenu` |
-| onVisibleChange | (visible?: boolean) => void | noop | 显示/隐藏触发的事件 |
+| trigger | string | 移动端为'click' <br /> 桌面端为'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` hover状态触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发 |
+| visible | boolean | false | 是否显示，`trigger='manual'` 时有效 |
+| onVisibleChange | (visible?: boolean) => void | noop | 显示/隐藏 气泡层触发的事件 |
