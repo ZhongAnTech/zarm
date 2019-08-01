@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import ReactDOM, { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import PopperJS from 'popper.js';
@@ -7,7 +7,12 @@ import classnames from 'classnames';
 import ClickOutside from '../click-outside';
 import { invertKeyValues } from '../utils';
 import domUtil from '../utils/dom';
-import { PopperState, PopperProps, PopperTrigger, directionMap } from './PropsType';
+import BasePopperProps, { PopperState, PopperTrigger, directionMap } from './PropsType';
+
+export interface PopperProps extends BasePopperProps {
+  prefixCls?: string;
+  className?: string;
+}
 
 function getPopperClientRect(popperOffsets) {
   const offsets = { ...popperOffsets };
@@ -45,7 +50,7 @@ function customArrowOffsetFn(data: PopperJS.Data) {
 
 const popperInstances: Set<PopperJS> = new Set();
 
-class Popper extends React.Component<PopperProps, PopperState> {
+class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperState> {
   static defaultProps = {
     prefixCls: 'za-popper',
     hasArrow: false,

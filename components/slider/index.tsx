@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent, createRef } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -79,8 +79,6 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
   private container: HTMLDivElement | null = null;
 
   private offsetStart: number = 0;
-
-  private tooltipInstance: any = createRef();
 
   state: SliderStates = {
     value: getValue(this.props, 0),
@@ -403,7 +401,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
               aria-orientation={vertical ? 'vertical' : 'horizontal'}
               style={handleStyle}
             >
-              <Tooltip ref={this.tooltipInstance} trigger="manual" arrowPointAtCenter visible={tooltip} content={value}>
+              <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={value}>
                 <div className={`${prefixCls}-handle-shadow`} />
               </Tooltip>
             </div>

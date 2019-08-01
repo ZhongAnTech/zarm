@@ -20,11 +20,7 @@ export interface PopperState {
   arrowRef: any;
 }
 
-export interface PopperProps {
-  prefixCls?: string;
-  className?: string;
-  style?: React.CSSProperties;
-  children: React.ReactNode;
+export default interface BasePopperProps {
   visible?: boolean;
   hasArrow?: boolean;
   arrowPointAtCenter?: boolean;
