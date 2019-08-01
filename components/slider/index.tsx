@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment, PureComponent, createRef } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -79,6 +79,8 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
   private container: HTMLDivElement | null = null;
 
   private offsetStart: number = 0;
+
+  private tooltipInstance: any = createRef();
 
   state: SliderStates = {
     value: getValue(this.props, 0),
@@ -200,6 +202,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
       return false;
     }
 
+    Tooltip.updateAll();
     event.stopPropagation();
     event.preventDefault();
 
@@ -260,16 +263,12 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
     if (prevContainer !== nextContainer) {
       if (prevContainer) {
-        prevContainer.removeEventListener('touchstart', preventDefault, {
-          // @ts-ignore
-          passive: false,
-        });
+        prevContainer.removeEventListener('touchstart', preventDefault);
       }
       if (nextContainer) {
         nextContainer.addEventListener('touchstart', preventDefault, { passive: false });
       }
     }
-
     this.container = nextContainer;
   };
 
@@ -404,7 +403,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
               aria-orientation={vertical ? 'vertical' : 'horizontal'}
               style={handleStyle}
             >
-              <Tooltip visible={tooltip} title={value}>
+              <Tooltip ref={this.tooltipInstance} trigger="manual" arrowPointAtCenter visible={tooltip} content={value}>
                 <div className={`${prefixCls}-handle-shadow`} />
               </Tooltip>
             </div>

@@ -27,11 +27,11 @@ export interface PopperProps {
   children: React.ReactNode;
   visible?: boolean;
   hasArrow?: boolean;
+  arrowPointAtCenter?: boolean;
   direction?: PopperPlacement;
   trigger?: PopperTrigger;
   // popperOptions?: PopperJS.PopperOptions;
   // modifiers?: PopperJS.Modifiers;
-  title?: React.ReactNode;
   content?: React.ReactNode;
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;

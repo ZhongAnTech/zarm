@@ -53,6 +53,7 @@
     border-radius: 50%;
     background-color: var(--slider-handle-background);
     box-shadow: var(--slider-handle-shadow);
+    touch-action: none;
 
     @include b(tooltip) {
       display: block;

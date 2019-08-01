@@ -9,6 +9,7 @@ exports[`Tooltip renders correctly 1`] = `
   title="hello"
 >
   <Popper
+    arrowPointAtCenter={false}
     content=""
     direction="top"
     hasArrow={true}

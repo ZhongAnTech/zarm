@@ -43,10 +43,13 @@ function customArrowOffsetFn(data: PopperJS.Data) {
   return data;
 }
 
+const popperInstances: Set<PopperJS> = new Set();
+
 class Popper extends React.Component<PopperProps, PopperState> {
   static defaultProps = {
     prefixCls: 'za-popper',
     hasArrow: false,
+    arrowPointAtCenter: false,
     trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
     direction: 'top',
     mouseEnterDelay: 100,
@@ -61,6 +64,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
     children: PropTypes.element.isRequired,
     visible: PropTypes.bool,
     hasArrow: PropTypes.bool,
+    arrowPointAtCenter: PropTypes.bool,
     trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual', 'contextMenu']),
     content: PropTypes.node,
     direction: PropTypes.oneOf([
@@ -81,6 +85,10 @@ class Popper extends React.Component<PopperProps, PopperState> {
     mouseLeaveDelay: PropTypes.number,
     onVisibleChange: PropTypes.func,
   };
+
+  static update() {
+    popperInstances.forEach(popperInstance => popperInstance.scheduleUpdate());
+  }
 
   static getDerivedStateFromProps(props: PopperProps, state: PopperState) {
     if ('visible' in props && props.trigger === 'manual') {
@@ -135,7 +143,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
   }
 
   handleOpen = () => {
-    const { direction, onVisibleChange } = this.props;
+    const { direction, hasArrow, arrowPointAtCenter, onVisibleChange } = this.props;
     const { visible } = this.state;
     const reference = ReactDOM.findDOMNode(this.reference) as Element; // eslint-disable-line
     const popperNode = ReactDOM.findDOMNode(this.popperNode) as Element; // eslint-disable-line
@@ -146,6 +154,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
 
     if (this.popper) {
       this.popper.destroy();
+      popperInstances.delete(this.popper);
       this.popper = null;
     }
 
@@ -159,12 +168,14 @@ class Popper extends React.Component<PopperProps, PopperState> {
         arrow: {
           enabled: Boolean(this.arrowRef),
           element: this.arrowRef,
-          fn: customArrowOffsetFn,
+          ...(!(hasArrow && arrowPointAtCenter) && { fn: customArrowOffsetFn }),
         },
       },
       onCreate: this.handlePopperUpdate,
       onUpdate: this.handlePopperUpdate,
     });
+
+    popperInstances.add(this.popper);
 
     onVisibleChange!(true);
   };
@@ -183,6 +194,7 @@ class Popper extends React.Component<PopperProps, PopperState> {
     }
 
     this.popper.destroy();
+    popperInstances.delete(this.popper);
     this.popper = null;
     this.setState({ visible: false });
     this.props.onVisibleChange!(false);
@@ -241,7 +253,6 @@ class Popper extends React.Component<PopperProps, PopperState> {
   render() {
     const {
       children,
-      title,
       content,
       prefixCls,
       style,
@@ -293,7 +304,6 @@ class Popper extends React.Component<PopperProps, PopperState> {
           ref={(node) => { this.popperNode = node!; }}
           {...event}
         >
-          {title && <div className={`${prefixCls}__title`}>{title}</div>}
           <div className={`${prefixCls}__content`}>{content}</div>
           {hasArrow && <span className={`${prefixCls}__arrow`} ref={(el) => { this.arrowRef = el!; }} />}
         </div>

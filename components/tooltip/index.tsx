@@ -10,9 +10,12 @@ class Tooltip extends React.Component<PopperProps, any> {
     onVisibleChange: () => {},
   };
 
+  static updateAll() {
+    Popper.update();
+  }
+
   render() {
     const { children, ...others } = this.props;
-    delete others.content;
 
     return (
       <Popper
