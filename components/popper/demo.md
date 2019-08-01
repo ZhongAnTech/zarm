@@ -19,11 +19,11 @@ class Demo extends React.Component {
       <>
         <Cell className="basic-demo">
           <Popper
-            title="我是一段文案"
+            content="我是气泡层的内容"
             visible={visible}
             trigger={trigger}
             direction={direction}
-            className="custom-popper"
+            className="custom-content"
           >
             <Button theme="primary" size="xs" onClick={() => trigger === 'manual' && this.setState({ visible: !visible })}>
               点击{visible ? '隐藏' : '显示'}
@@ -82,74 +82,93 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 自定义箭头
 ```jsx
-import { Cell, Button, Popper } from 'zarm';
+import { Cell, Button, Popper, Radio } from 'zarm';
 
 class Demo extends React.Component {
+  state = {
+    arrow: '0'
+  }
 
   render() {
+    const { arrow } = this.state
+
     return (
-      <div>
+      <>
+        <Cell description={
+          <Radio.Group
+            compact
+            type="button"
+            value={this.state.arrow}
+            onChange={value => {
+              this.setState({ arrow: value });
+            }}
+          >
+            <Radio value="0">跟随方向</Radio>
+            <Radio value="1">元素中心</Radio>
+          </Radio.Group>
+        }>
+          箭头位置
+        </Cell>
         <Cell className="direction-demo">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper className="custom-arrow-popper" hasArrow direction="topLeft" title="topLeft text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
                 <Button block size="xs">TL</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="top" title="top text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="top" content="top text">
                 <Button block size="xs">Top</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="topRight" title="topRight text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topRight" content="topRight text">
                 <Button block size="xs">TR</Button>
               </Popper>
             </div>
 
-            <div style={{ width: 60, float: "left",  clear: 'both' }}>
-              <Popper className="custom-arrow-popper" hasArrow direction="leftTop" title="leftTop text">
+            <div style={{ width: 60, float: 'left', clear: 'both' }}>
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftTop" content="leftTop text">
                 <Button block size="xs">LT</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="left" title="left text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="left" content="left text">
                 <Button block size="xs">Left</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="leftBottom" title="leftBottom text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftBottom" content="leftBottom text">
                 <Button block size="xs">LB</Button>
               </Popper>
             </div>
 
-            <div style={{ width: 60, marginLeft: 60 * 4 }}>
-              <Popper className="custom-arrow-popper" hasArrow direction="rightTop" title="rightTop text">
+            <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightTop" content="rightTop text">
                 <Button block size="xs">RT</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="right" title="right text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="right" content="right text">
                 <Button block size="xs">Right</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="rightBottom" title="rightBottom text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightBottom" content="rightBottom text">
                 <Button block size="xs">RB</Button>
               </Popper>
             </div>
 
             <div style={{ marginLeft: 60, clear: 'both' }}>
-              <Popper className="custom-arrow-popper" hasArrow direction="bottomLeft" title="bottomLeft text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomLeft" content="bottomLeft text">
                 <Button block size="xs">BL</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="bottom" title="bottom text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottom" content="bottom text">
                 <Button block size="xs">Bottom</Button>
               </Popper>
 
-              <Popper className="custom-arrow-popper" hasArrow direction="bottomRight" title="bottomRight text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomRight" content="bottomRight text">
                 <Button block size="xs">BR</Button>
               </Popper>
             </div>
-
           </div>
         </Cell>
-      </div>
+      </>
     );
   }
 }
@@ -162,9 +181,9 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
-| title | ReactNode | - | 显示标题 |
 | content | ReactNode | - | 显示内容 |
 | hasArrow | boolean | false | 是否带有箭头 |
+| arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | className | string | - | 气泡层类名追加 |
 | mouseEnterDelay | number | 100ms | 鼠标移入后延时多少才显示气泡层，单位：毫秒 |
 | mouseLeaveDelay | number | 100ms | 鼠标移出后延时多少才隐藏气泡层，单位：毫秒 |

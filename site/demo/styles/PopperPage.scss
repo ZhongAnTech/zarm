@@ -13,8 +13,8 @@
   }
 
   @at-root {
-    .custom-popper,
-    .custom-arrow-popper {
+    .custom-content,
+    .custom-arrow-content {
       padding: r(6) r(12);
       background: #ddd;
       font-size: r(12);
@@ -23,7 +23,7 @@
     }
 
     // 自定义箭头
-    .custom-arrow-popper {
+    .custom-arrow-content {
       .za-popper__arrow {
         position: absolute;
         width: 0;

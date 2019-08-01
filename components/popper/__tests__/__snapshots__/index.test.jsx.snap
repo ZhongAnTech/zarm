@@ -2,6 +2,7 @@
 
 exports[`Popper renders correctly 1`] = `
 <Popper
+  arrowPointAtCenter={false}
   content=""
   direction="top"
   hasArrow={false}
