@@ -16,14 +16,14 @@ class Demo extends React.Component {
     const { visible, direction, trigger } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         <Cell className="basic-demo">
           <Popper
-            content="我是一段文案"
+            content="我是气泡层的内容"
             visible={visible}
             trigger={trigger}
             direction={direction}
-            className="custom-popper"
+            className="custom-content"
           >
             <Button theme="primary" size="xs" onClick={() => trigger === 'manual' && this.setState({ visible: !visible })}>
               点击{visible ? '隐藏' : '显示'}
@@ -72,7 +72,7 @@ class Demo extends React.Component {
             }}
           />
         </Cell>
-      </React.Fragment>
+      </>
     );
   }
 }
@@ -86,88 +86,89 @@ import { Cell, Button, Popper, Radio } from 'zarm';
 
 class Demo extends React.Component {
   state = {
-    radio: '0'
+    arrow: '0'
   }
 
   render() {
-    const { radio } = this.state
+    const { arrow } = this.state
 
     return (
-      <div>
+      <>
         <Cell description={
-           <Radio.Group
-             value={this.state.radio}
-             onChange={value => {
-               this.setState({ radio: value });
-             }}
-           >
-             <Radio value="0">跟随方向</Radio>
-             <Radio value="1">元素中心</Radio>
-           </Radio.Group>
+          <Radio.Group
+            compact
+            type="button"
+            value={this.state.arrow}
+            onChange={value => {
+              this.setState({ arrow: value });
+            }}
+          >
+            <Radio value="0">跟随方向</Radio>
+            <Radio value="1">元素中心</Radio>
+          </Radio.Group>
         }>
           箭头位置
         </Cell>
         <Cell className="direction-demo">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="topLeft" content="topLeft text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
                 <Button block size="xs">TL</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="top" content="top text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="top" content="top text">
                 <Button block size="xs">Top</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="topRight" content="topRight text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topRight" content="topRight text">
                 <Button block size="xs">TR</Button>
               </Popper>
             </div>
 
-            <div style={{ width: 60, float: "left",  clear: 'both' }}>
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="leftTop" content="leftTop text">
+            <div style={{ width: 60, float: 'left', clear: 'both' }}>
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftTop" content="leftTop text">
                 <Button block size="xs">LT</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="left" content="left text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="left" content="left text">
                 <Button block size="xs">Left</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="leftBottom" content="leftBottom text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftBottom" content="leftBottom text">
                 <Button block size="xs">LB</Button>
               </Popper>
             </div>
 
-            <div style={{ width: 60, marginLeft: 60 * 4 }}>
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="rightTop" content="rightTop text">
+            <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightTop" content="rightTop text">
                 <Button block size="xs">RT</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="right" content="right text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="right" content="right text">
                 <Button block size="xs">Right</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="rightBottom" content="rightBottom text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightBottom" content="rightBottom text">
                 <Button block size="xs">RB</Button>
               </Popper>
             </div>
 
             <div style={{ marginLeft: 60, clear: 'both' }}>
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="bottomLeft" content="bottomLeft text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomLeft" content="bottomLeft text">
                 <Button block size="xs">BL</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="bottom" content="bottom text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottom" content="bottom text">
                 <Button block size="xs">Bottom</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={radio === '1'} className="custom-arrow-popper" hasArrow direction="bottomRight" content="bottomRight text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomRight" content="bottomRight text">
                 <Button block size="xs">BR</Button>
               </Popper>
             </div>
-
           </div>
         </Cell>
-      </div>
+      </>
     );
   }
 }
