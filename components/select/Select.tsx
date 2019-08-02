@@ -21,28 +21,24 @@ export default class Select extends PureComponent<SelectProps, any> {
     onClick: () => {},
   };
 
-  private tempValue;
-
-  private tempObjValue;
-
   constructor(props) {
     super(props);
-    this.state = parseProps.getSource(props);
-    const { value, objValue } = this.state;
-    this.tempValue = value;
-    this.tempObjValue = objValue;
+    const state: any = parseProps.getSource(props);
+    state.tempValue = state.value;
+    state.tempObjValue = state.objValue;
+    state.prevVisible = state.visible;
+    this.state = state;
   }
 
-  componentWillReceiveProps(nextProps) {
-    const state = parseProps.getSource(nextProps);
-    const { visible } = this.props;
-    const { visible: stateVisible } = this.state;
-    if (nextProps.visible === visible) {
-      state.visible = stateVisible;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const state: any = parseProps.getSource(nextProps);
+    state.tempValue = state.value;
+    state.tempObjValue = state.objValue;
+    state.prevVisible = state.visible;
+    if (nextProps.visible === prevState.prevVisible) {
+      state.visible = prevState.visible;
     }
-    this.tempValue = state.value;
-    this.tempObjValue = state.objValue;
-    this.setState(state);
+    return state;
   }
 
   handleClick = () => {
@@ -78,9 +74,10 @@ export default class Select extends PureComponent<SelectProps, any> {
   // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
+    const { tempValue, tempObjValue } = this.state;
     this.setState({
-      value: this.tempValue,
-      objValue: this.tempObjValue,
+      value: tempValue,
+      objValue: tempObjValue,
       visible: false,
     }, () => {
       if (typeof onCancel === 'function') {
@@ -94,8 +91,8 @@ export default class Select extends PureComponent<SelectProps, any> {
   };
 
   render() {
-    const { prefixCls, placeholder, className, disabled, displayRender, value, locale, ...others } = this.props;
-    const { visible, objValue } = this.state;
+    const { prefixCls, placeholder, className, disabled, displayRender, locale, ...others } = this.props;
+    const { visible, objValue, value } = this.state;
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--placeholder`]: !this.isValueValid(value),
       [`${prefixCls}--disabled`]: disabled,
