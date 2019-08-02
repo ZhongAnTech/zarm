@@ -28,7 +28,6 @@ export default class Select extends PureComponent<SelectProps, any> {
   constructor(props) {
     super(props);
     this.state = parseProps.getSource(props);
-
     const { value, objValue } = this.state;
     this.tempValue = value;
     this.tempObjValue = objValue;
@@ -36,6 +35,11 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   componentWillReceiveProps(nextProps) {
     const state = parseProps.getSource(nextProps);
+    const { visible } = this.props;
+    const { visible: stateVisible } = this.state;
+    if (nextProps.visible === visible) {
+      state.visible = stateVisible;
+    }
     this.tempValue = state.value;
     this.tempObjValue = state.objValue;
     this.setState(state);
@@ -64,10 +68,11 @@ export default class Select extends PureComponent<SelectProps, any> {
       value: selected.map(item => item[valueMember!]),
       objValue: selected,
       visible: false,
+    }, () => {
+      if (typeof onOk === 'function') {
+        onOk(selected);
+      }
     });
-    if (typeof onOk === 'function') {
-      onOk(selected);
-    }
   };
 
   // 点击取消
@@ -77,10 +82,11 @@ export default class Select extends PureComponent<SelectProps, any> {
       value: this.tempValue,
       objValue: this.tempObjValue,
       visible: false,
+    }, () => {
+      if (typeof onCancel === 'function') {
+        onCancel();
+      }
     });
-    if (typeof onCancel === 'function') {
-      onCancel();
-    }
   };
 
   isValueValid = (value) => {
