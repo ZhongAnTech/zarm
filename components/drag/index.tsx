@@ -1,7 +1,5 @@
 import { PureComponent, cloneElement, ReactElement } from 'react';
-
 import Events from '../utils/events';
-
 import PropsType from './PropsType';
 
 export type DragProps = PropsType;
