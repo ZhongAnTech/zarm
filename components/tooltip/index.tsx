@@ -1,11 +1,21 @@
 import React from 'react';
 import Popper from '../popper';
-import { PopperProps, PopperPlacement } from '../popper/PropsType';
+import BaseTooltipProps from './PropsType';
+import { PopperPlacement, PopperTrigger } from '../popper/PropsType';
 
-class Tooltip extends React.Component<PopperProps, any> {
+export interface TooltipProps extends BaseTooltipProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+export type TooltipPlacement = PopperPlacement;
+
+export type TooltipTrigger = PopperTrigger;
+
+class Tooltip extends React.Component<TooltipProps, any> {
   static defaultProps = {
     prefixCls: 'za-tooltip',
-    direction: 'top' as PopperPlacement,
+    direction: 'top' as TooltipPlacement,
     hasArrow: true,
     onVisibleChange: () => {},
   };
