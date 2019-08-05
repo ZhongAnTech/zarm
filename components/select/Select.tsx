@@ -19,18 +19,8 @@ export default class Select extends PureComponent<SelectProps, any> {
     cols: Infinity,
     displayRender: selected => selected.map(item => item.label),
     onClick: () => {},
+    visible: false,
   };
-
-  constructor(props) {
-    super(props);
-    const propsToState = parseProps.getSource(props);
-    this.state = {
-      ...propsToState,
-      tempValue: propsToState.value,
-      tempObjValue: propsToState.objValue,
-      prevVisible: propsToState.visible,
-    };
-  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const propsToState = parseProps.getSource(nextProps);
@@ -38,7 +28,7 @@ export default class Select extends PureComponent<SelectProps, any> {
       ...propsToState,
       tempValue: propsToState.value,
       tempObjValue: propsToState.objValue,
-      prveVisible: propsToState.visible,
+      prevVisible: propsToState.visible,
     };
     if (nextProps.visible === prevState.prevVisible) {
       state.visible = prevState.visible;

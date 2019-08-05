@@ -203,6 +203,7 @@ describe('Select', () => {
   it('should trigger onOk when press ok button', () => {
     const onOkFn = jest.fn();
     const onCancelFn = jest.fn();
+    const onChange = jest.fn();
 
     const wrapper = mount(
       <Select
