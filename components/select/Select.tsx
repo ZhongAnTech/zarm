@@ -22,6 +22,8 @@ export default class Select extends PureComponent<SelectProps, any> {
     visible: false,
   };
 
+  state = parseProps.getSource(this.props);
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const propsToState = parseProps.getSource(nextProps);
     const state = {
