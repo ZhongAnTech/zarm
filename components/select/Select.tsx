@@ -23,18 +23,23 @@ export default class Select extends PureComponent<SelectProps, any> {
 
   constructor(props) {
     super(props);
-    const state: any = parseProps.getSource(props);
-    state.tempValue = state.value;
-    state.tempObjValue = state.objValue;
-    state.prevVisible = state.visible;
-    this.state = state;
+    const propsToState = parseProps.getSource(props);
+    this.state = {
+      ...propsToState,
+      tempValue: propsToState.value,
+      tempObjValue: propsToState.objValue,
+      prevVisible: propsToState.visible,
+    };
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const state: any = parseProps.getSource(nextProps);
-    state.tempValue = state.value;
-    state.tempObjValue = state.objValue;
-    state.prevVisible = state.visible;
+    const propsToState = parseProps.getSource(nextProps);
+    const state = {
+      ...propsToState,
+      tempValue: propsToState.value,
+      tempObjValue: propsToState.objValue,
+      prveVisible: propsToState.visible,
+    };
     if (nextProps.visible === prevState.prevVisible) {
       state.visible = prevState.visible;
     }
