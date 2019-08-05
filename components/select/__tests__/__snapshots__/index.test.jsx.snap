@@ -115,6 +115,7 @@ exports[`Select Cascader Select 1`] = `
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
+      visible={false}
     >
       <div
         className="za-select"
@@ -443,6 +444,7 @@ exports[`Select Cascader Select init value 1`] = `
         ]
       }
       valueMember="value"
+      visible={false}
     >
       <div
         className="za-select"
@@ -693,6 +695,7 @@ exports[`Select Select 1`] = `
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
+      visible={false}
     >
       <div
         className="za-select"
@@ -1296,6 +1299,7 @@ exports[`Select Select disabled 1`] = `
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
+      visible={false}
     >
       <div
         className="za-select"
@@ -1333,7 +1337,7 @@ exports[`Select Select disabled 1`] = `
             ]
           }
           valueMember="value"
-          visible={false}
+          visible={true}
         >
           <LocaleReceiver
             cols={Infinity}
@@ -1363,7 +1367,7 @@ exports[`Select Select disabled 1`] = `
               ]
             }
             valueMember="value"
-            visible={false}
+            visible={true}
           >
             <Picker
               cols={Infinity}
@@ -1400,11 +1404,11 @@ exports[`Select Select disabled 1`] = `
                 ]
               }
               valueMember="value"
-              visible={false}
+              visible={true}
             >
               <Popup
                 onMaskClick={[Function]}
-                visible={false}
+                visible={true}
               >
                 <Portal
                   animationDuration={200}
@@ -1415,8 +1419,233 @@ exports[`Select Select disabled 1`] = `
                   maskType="normal"
                   onMaskClick={[Function]}
                   prefixCls="za-popup"
-                  visible={false}
-                />
+                  visible={true}
+                >
+                  <Portal
+                    containerInfo={
+                      <div
+                        class="popup-container"
+                      >
+                        <div
+                          class="za-popup__wrapper"
+                          role="dialog"
+                        >
+                          <div
+                            class="za-popup za-popup--bottom za-popup--hidden"
+                            role="document"
+                            style="transition-duration: 200ms;"
+                          >
+                            <div
+                              class="za-picker"
+                            >
+                              <div
+                                class="za-picker__header"
+                              >
+                                <div
+                                  class="za-picker__cancel"
+                                >
+                                  取消
+                                </div>
+                                <div
+                                  class="za-picker__title"
+                                >
+                                  请选择
+                                </div>
+                                <div
+                                  class="za-picker__submit"
+                                >
+                                  确定
+                                </div>
+                              </div>
+                              <div
+                                class="za-picker-view"
+                              >
+                                <div
+                                  class="za-picker-view__content"
+                                >
+                                  <div
+                                    class="za-wheel"
+                                  >
+                                    <div
+                                      class="za-wheel__content"
+                                      style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: translate(0px,NaNpx) scale(1);"
+                                    >
+                                      <div
+                                        class="za-wheel__item za-wheel__item--selected"
+                                        style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                      >
+                                        选项一
+                                      </div>
+                                      <div
+                                        class="za-wheel__item"
+                                        style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                                      >
+                                        选项二
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="za-picker-view__mask za-picker-view__mask--top"
+                                />
+                                <div
+                                  class="za-picker-view__mask za-picker-view__mask--bottom"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  >
+                    <div
+                      className="za-popup__wrapper"
+                      role="dialog"
+                      style={Object {}}
+                    >
+                      <div
+                        className="za-popup za-popup--bottom za-popup--hidden"
+                        role="document"
+                        style={
+                          Object {
+                            "WebkitTransitionDuration": "200ms",
+                            "transitionDuration": "200ms",
+                          }
+                        }
+                      >
+                        <div
+                          className="za-picker"
+                          onClick={[Function]}
+                        >
+                          <div
+                            className="za-picker__header"
+                          >
+                            <div
+                              className="za-picker__cancel"
+                              onClick={[Function]}
+                            >
+                              取消
+                            </div>
+                            <div
+                              className="za-picker__title"
+                            >
+                              请选择
+                            </div>
+                            <div
+                              className="za-picker__submit"
+                              onClick={[Function]}
+                            >
+                              确定
+                            </div>
+                          </div>
+                          <PickerView
+                            cols={Infinity}
+                            dataSource={
+                              Array [
+                                Object {
+                                  "label": "选项一",
+                                  "value": "1",
+                                },
+                                Object {
+                                  "label": "选项二",
+                                  "value": "2",
+                                },
+                              ]
+                            }
+                            disabeld={true}
+                            disabled={false}
+                            itemRender={[Function]}
+                            localeCode="zh-cn"
+                            onCancel={[Function]}
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onOk={[Function]}
+                            onTransition={[Function]}
+                            prefixCls="za-picker-view"
+                            value={
+                              Array [
+                                "1",
+                              ]
+                            }
+                            valueMember="value"
+                            visible={true}
+                          >
+                            <div
+                              className="za-picker-view"
+                            >
+                              <div
+                                className="za-picker-view__content"
+                              >
+                                <Wheel
+                                  dataSource={
+                                    Array [
+                                      Object {
+                                        "label": "选项一",
+                                        "value": "1",
+                                      },
+                                      Object {
+                                        "label": "选项二",
+                                        "value": "2",
+                                      },
+                                    ]
+                                  }
+                                  disabled={false}
+                                  itemRender={[Function]}
+                                  key="0"
+                                  onChange={[Function]}
+                                  onTransition={[Function]}
+                                  prefixCls="za-wheel"
+                                  value="1"
+                                  valueMember="value"
+                                >
+                                  <div
+                                    className="za-wheel"
+                                  >
+                                    <div
+                                      className="za-wheel__content"
+                                    >
+                                      <div
+                                        className="za-wheel__item za-wheel__item--selected"
+                                        key="0"
+                                      >
+                                        选项一
+                                      </div>
+                                      <div
+                                        className="za-wheel__item"
+                                        key="1"
+                                      >
+                                        选项二
+                                      </div>
+                                    </div>
+                                  </div>
+                                </Wheel>
+                              </div>
+                              <div
+                                className="za-picker-view__mask za-picker-view__mask--top"
+                              />
+                              <div
+                                className="za-picker-view__mask za-picker-view__mask--bottom"
+                              />
+                            </div>
+                          </PickerView>
+                        </div>
+                      </div>
+                      <Mask
+                        className=""
+                        onClick={[Function]}
+                        prefixCls="za-mask"
+                        style={
+                          Object {
+                            "WebkitAnimationDuration": "200ms",
+                            "animationDuration": "200ms",
+                          }
+                        }
+                        type="normal"
+                        visible={false}
+                      />
+                    </div>
+                  </Portal>
+                </Portal>
               </Popup>
             </Picker>
           </LocaleReceiver>
@@ -1485,6 +1714,7 @@ exports[`Select render defaultValue correctly  1`] = `
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
+      visible={false}
     >
       <div
         className="za-select"
