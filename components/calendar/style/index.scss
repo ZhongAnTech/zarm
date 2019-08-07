@@ -92,7 +92,7 @@ $--calendar-day-width: 14.28571%;
       @include e(day__content) {
         background-color: var(--calendar-day-selected-background);
         color: var(--calendar-day-selected-color);
-        box-shadow: 0 r(2) r(5) 0 rgba(var(--calendar-day-selected-background, 0.15));
+        box-shadow: 0 r(2) r(5) 0 rgba(var(--calendar-day-selected-background), 0.15);
       }
     }
 
