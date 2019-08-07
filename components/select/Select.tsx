@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseSelectProps } from './PropsType';
+import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import { isArray } from '../utils/validate';
@@ -9,8 +9,17 @@ export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
 }
+export interface SelectStates {
+  value?: string | string[] | number[];
+  objValue?: [];
+  dataSource: [];
+  visible?: boolean;
+  tempValue?: string | string[] | number[];
+  tempObjValue?: [];
+  prevVisible?: boolean;
+}
 
-export default class Select extends PureComponent<SelectProps, any> {
+export default class Select extends PureComponent<SelectProps, SelectStates> {
   static defaultProps = {
     prefixCls: 'za-select',
     dataSource: [],
@@ -22,11 +31,11 @@ export default class Select extends PureComponent<SelectProps, any> {
     visible: false,
   };
 
-  state = parseProps.getSource(this.props);
+  state: SelectStates = parseProps.getSource(this.props);
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const propsToState = parseProps.getSource(nextProps);
-    const state = {
+    const state: SelectStates = {
       ...propsToState,
       tempValue: propsToState.value,
       tempObjValue: propsToState.objValue,

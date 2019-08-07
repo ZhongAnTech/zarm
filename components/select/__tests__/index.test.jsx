@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Select from '../index';
+import zhCN from '../locale/zh_CN';
+import enUS from '../locale/en_US';
 
 describe('Select', () => {
   const fakeTimers = () => {
@@ -203,7 +205,6 @@ describe('Select', () => {
   it('should trigger onOk when press ok button', () => {
     const onOkFn = jest.fn();
     const onCancelFn = jest.fn();
-    const onChange = jest.fn();
 
     const wrapper = mount(
       <Select
@@ -270,8 +271,14 @@ describe('Select', () => {
     );
 
     wrapper.find('.za-picker__cancel').simulate('click');
+    wrapper.find('.za-picker').simulate('scroll');
     expect(onCancelFn).toBeCalled();
     expect(onOkFn).not.toBeCalled();
+  });
+
+  it('locale', () => {
+    expect(zhCN.placeholder).toEqual('请选择');
+    expect(enUS.placeholder).toEqual('please select');
   });
 
   // it('should trigger onMaskClick when click mask', () => {
