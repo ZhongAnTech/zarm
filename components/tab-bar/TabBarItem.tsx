@@ -7,7 +7,7 @@ export interface TabBarItemProps extends BaseTabBarItemProps {
   prefixCls?: string;
 }
 
-class TabBarItem extends PureComponent<TabBarItemProps, any> {
+class TabBarItem extends PureComponent<TabBarItemProps, {}> {
   static defaultProps: TabBarItemProps = {
     prefixCls: 'za-tab-bar',
   };
@@ -20,24 +20,26 @@ class TabBarItem extends PureComponent<TabBarItemProps, any> {
   };
 
   render() {
-    const { prefixCls, title, icon, badge, style, itemKey, selected, activeIcon } = this.props;
+    const { prefixCls, title, icon, badge, style, itemKey, selected, activeIcon = icon } = this.props;
+
     const cls = classnames(`${prefixCls}__item`, {
       [`${prefixCls}--active`]: selected,
     });
-    if (badge) {
-      return (
-        <div className={cls} style={style} onClick={() => { this.change(itemKey); }}>
-          <Badge {...badge}>
-            <div className={`${prefixCls}__icon`}>{selected ? icon : activeIcon}</div>
-            <div className={`${prefixCls}__title`}>{title}</div>
-          </Badge>
-        </div>
-      );
-    }
+
+    const contentRender = (
+      <>
+        <div className={`${prefixCls}__icon`}>{selected ? activeIcon : icon}</div>
+        <div className={`${prefixCls}__title`}>{title}</div>
+      </>
+    );
+
     return (
       <div className={cls} style={style} onClick={() => { this.change(itemKey); }}>
-        <div className={`${prefixCls}__icon`}>{selected ? icon : activeIcon}</div>
-        <div className={`${prefixCls}__title`}>{title}</div>
+        {
+          badge
+            ? <Badge {...badge}>{contentRender}</Badge>
+            : contentRender
+        }
       </div>
     );
   }
