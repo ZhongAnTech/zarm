@@ -19,9 +19,9 @@
   }
 
   /* icon themes */
-  @include m(default) {
-    @include icon-theme(var(--icon-theme-default));
-  }
+  // @include m(default) {
+  //   @include icon-theme(var(--icon-theme-default));
+  // }
   @include m(primary) {
     @include icon-theme(var(--theme-primary));
   }
