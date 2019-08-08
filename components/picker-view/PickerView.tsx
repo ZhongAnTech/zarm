@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import BasePickerViewProps from './PropsType';
+import { BasePickerViewProps, BasePickerViewState } from './PropsType';
 import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
@@ -10,7 +10,7 @@ export interface PickerViewProps extends BasePickerViewProps {
   className?: string;
 }
 
-export default class PickerView extends PureComponent<PickerViewProps, any> {
+export default class PickerView extends PureComponent<PickerViewProps, BasePickerViewState> {
   static defaultProps = {
     prefixCls: 'za-picker-view',
     dataSource: [],
@@ -20,15 +20,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     disabled: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = parseProps.getSource(props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const state = parseProps.getSource(nextProps);
-    this.setState(state);
-  }
+  state: BasePickerViewState = parseProps.getSource(this.props);
 
   onValueChange = (selected, level) => {
     const value = this.state.value.slice();

@@ -1114,7 +1114,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={8}
+              value={11}
               valueMember="value"
             >
               <div
@@ -1172,7 +1172,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     8月
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="8"
                   >
                     9月
@@ -1190,7 +1190,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     11月
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="11"
                   >
                     12月
@@ -1321,6 +1321,10 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     "label": "30日",
                     "value": 30,
                   },
+                  Object {
+                    "label": "31日",
+                    "value": 31,
+                  },
                 ]
               }
               disabled={false}
@@ -1329,7 +1333,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={6}
+              value={3}
               valueMember="value"
             >
               <div
@@ -1351,7 +1355,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     2日
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="2"
                   >
                     3日
@@ -1369,7 +1373,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     5日
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="5"
                   >
                     6日
@@ -1518,6 +1522,12 @@ exports[`DatePickerView DatePickerView time 1`] = `
                   >
                     30日
                   </div>
+                  <div
+                    className="za-wheel__item"
+                    key="30"
+                  >
+                    31日
+                  </div>
                 </div>
               </div>
             </Wheel>
@@ -1628,7 +1638,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={12}
+              value={14}
               valueMember="value"
             >
               <div
@@ -1710,7 +1720,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     11时
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="12"
                   >
                     12时
@@ -1722,7 +1732,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     13时
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="14"
                   >
                     14时
@@ -3142,7 +3152,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={2017}
+              value={2019}
               valueMember="value"
             >
               <div
@@ -3212,7 +3222,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     2016年
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="10"
                   >
                     2017年
@@ -3224,7 +3234,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     2018年
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="12"
                   >
                     2019年
@@ -3279,10 +3289,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     "label": "11月",
                     "value": 10,
                   },
-                  Object {
-                    "label": "12月",
-                    "value": 11,
-                  },
                 ]
               }
               disabled={false}
@@ -3291,7 +3297,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={8}
+              value={7}
               valueMember="value"
             >
               <div
@@ -3343,13 +3349,13 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     7月
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="7"
                   >
                     8月
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="8"
                   >
                     9月
@@ -3365,12 +3371,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     key="10"
                   >
                     11月
-                  </div>
-                  <div
-                    className="za-wheel__item"
-                    key="11"
-                  >
-                    12月
                   </div>
                 </div>
               </div>
@@ -3498,6 +3498,10 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     "label": "30日",
                     "value": 30,
                   },
+                  Object {
+                    "label": "31日",
+                    "value": 31,
+                  },
                 ]
               }
               disabled={false}
@@ -3506,7 +3510,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={6}
+              value={8}
               valueMember="value"
             >
               <div
@@ -3546,7 +3550,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     5日
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="5"
                   >
                     6日
@@ -3558,7 +3562,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     7日
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="7"
                   >
                     8日
@@ -3695,6 +3699,12 @@ exports[`DatePickerView DatePickerView time 2`] = `
                   >
                     30日
                   </div>
+                  <div
+                    className="za-wheel__item"
+                    key="30"
+                  >
+                    31日
+                  </div>
                 </div>
               </div>
             </Wheel>
@@ -3805,7 +3815,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={12}
+              value={5}
               valueMember="value"
             >
               <div
@@ -3845,7 +3855,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     4时
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="5"
                   >
                     5时
@@ -3887,7 +3897,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     11时
                   </div>
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="12"
                   >
                     12时
@@ -4212,7 +4222,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
               onChange={[Function]}
               onTransition={[Function]}
               prefixCls="za-wheel"
-              value={0}
+              value={54}
               valueMember="value"
             >
               <div
@@ -4222,7 +4232,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                   className="za-wheel__content"
                 >
                   <div
-                    className="za-wheel__item za-wheel__item--selected"
+                    className="za-wheel__item"
                     key="0"
                   >
                     0分
@@ -4546,7 +4556,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     53分
                   </div>
                   <div
-                    className="za-wheel__item"
+                    className="za-wheel__item za-wheel__item--selected"
                     key="54"
                   >
                     54分

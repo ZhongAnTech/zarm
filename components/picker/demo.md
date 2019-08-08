@@ -91,7 +91,7 @@ class Demo extends React.Component {
     setTimeout(() => {
       const { cascade } = this.state;
       cascade.dataSource = CASCADE_DATA;
-      cascade.value = ['1', '12'];
+      cascade.value = ['2', '21'];
       cascade.valueMember = "code";
       this.setState({ cascade });
     }, 0);

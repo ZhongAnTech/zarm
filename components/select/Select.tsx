@@ -3,23 +3,16 @@ import classnames from 'classnames';
 import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
+import { BasePickerState } from '../picker/PropsType';
 import { isArray } from '../utils/validate';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
 }
-export interface SelectStates {
-  value?: string | string[] | number[];
-  objValue?: [];
-  dataSource: [];
-  visible?: boolean;
-  tempValue?: string | string[] | number[];
-  tempObjValue?: [];
-  prevVisible?: boolean;
-}
 
-export default class Select extends PureComponent<SelectProps, SelectStates> {
+
+export default class Select extends PureComponent<SelectProps, BasePickerState> {
   static defaultProps = {
     prefixCls: 'za-select',
     dataSource: [],
@@ -31,20 +24,21 @@ export default class Select extends PureComponent<SelectProps, SelectStates> {
     visible: false,
   };
 
-  state: SelectStates = parseProps.getSource(this.props);
+  state: BasePickerState = parseProps.getSource(this.props);
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const propsToState = parseProps.getSource(nextProps);
-    const state: SelectStates = {
-      ...propsToState,
-      tempValue: propsToState.value,
-      tempObjValue: propsToState.objValue,
-      prevVisible: propsToState.visible,
-    };
-    if (nextProps.visible === prevState.prevVisible) {
-      state.visible = prevState.visible;
+    if (nextProps !== prevState) {
+      const propsToState = parseProps.getSource(nextProps);
+      const state: BasePickerState = {
+        ...propsToState,
+        tempValue: propsToState.value,
+        tempObjValue: propsToState.objValue,
+        visible: prevState.prevVisible === nextProps.visible ? prevState.visible : nextProps.visible,
+        prevVisible: propsToState.visible,
+      };
+      return state;
     }
-    return state;
+    return null;
   }
 
   handleClick = () => {
@@ -80,7 +74,7 @@ export default class Select extends PureComponent<SelectProps, SelectStates> {
   // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    const { tempValue, tempObjValue } = this.state;
+    const { tempValue = [], tempObjValue = [] } = this.state;
     this.setState({
       value: tempValue,
       objValue: tempObjValue,

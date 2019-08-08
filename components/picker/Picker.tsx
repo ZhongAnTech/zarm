@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Popup from '../popup';
 import PickerView from '../picker-view';
-import BasePickerProps from './PropsType';
+import { BasePickerProps, BasePickerState } from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
 
 export interface PickerProps extends BasePickerProps {
@@ -10,33 +10,31 @@ export interface PickerProps extends BasePickerProps {
   className?: any;
 }
 
-export default class Picker extends PureComponent<PickerProps, any> {
+export default class Picker extends PureComponent<PickerProps, BasePickerState> {
   static defaultProps = {
     dataSource: [],
     prefixCls: 'za-picker',
     valueMember: 'value',
     cols: Infinity,
     itemRender: data => data.label,
+    visible: false,
   };
-
-  private tempValue;
-
-  private tempObjValue;
 
   private isScrolling = false;
 
-  constructor(props) {
-    super(props);
-    this.state = parseProps.getSource(props);
+  state: BasePickerState = parseProps.getSource(this.props);
 
-    const { value, objValue } = this.state;
-    this.tempValue = value;
-    this.tempObjValue = objValue;
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const state = parseProps.getSource(nextProps);
-    this.setState(state);
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.visible !== prevState.visible) {
+      const propsToState = parseProps.getSource(nextProps);
+      const state: BasePickerState = {
+        ...propsToState,
+        tempValue: propsToState.value,
+        tempObjValue: propsToState.objValue,
+      };
+      return state;
+    }
+    return null;
   }
 
   onChange = (selected) => {
@@ -46,7 +44,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
       value,
       objValue: selected,
     });
-
     if (typeof onChange === 'function') {
       onChange(selected);
     }
@@ -54,9 +51,10 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   onCancel = () => {
     const { onCancel } = this.props;
+    const { tempValue = [], tempObjValue = [] } = this.state;
     this.setState({
-      value: this.tempValue,
-      objValue: this.tempObjValue,
+      value: tempValue,
+      objValue: tempObjValue,
       visible: false,
     });
     if (typeof onCancel === 'function') {
@@ -68,7 +66,7 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (this.isScrolling) {
       return false;
     }
-    const { value, objValue } = this.state;
+    const { value, objValue = [] } = this.state;
     this.setState({
       value,
       objValue,
@@ -100,7 +98,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
     const { prefixCls, className, cancelText, okText, title, children, locale, ...others } = this.props;
     const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
-
     return (
       <Popup
         visible={visible}

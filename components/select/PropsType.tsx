@@ -1,4 +1,4 @@
-import BasePickerProps from '../picker/PropsType';
+import { BasePickerProps } from '../picker/PropsType';
 
 export default interface BaseSelectProps extends BasePickerProps {
   placeholder?: string;
