@@ -271,7 +271,6 @@ describe('Select', () => {
     );
 
     wrapper.find('.za-picker__cancel').simulate('click');
-    wrapper.find('.za-picker').simulate('scroll');
     expect(onCancelFn).toBeCalled();
     expect(onOkFn).not.toBeCalled();
   });
