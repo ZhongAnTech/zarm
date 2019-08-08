@@ -1,8 +1,8 @@
 import React from 'react';
 import { Context } from 'create-react-context';
 import hoistNonReactStatic from 'hoist-non-react-statics';
-import { LocaleContext } from './LocaleProvider';
-import defaultLocaleData from './locale/zh_CN';
+import { LocaleContext } from '../locale-provider/LocaleProvider';
+import defaultLocaleData from '../locale-provider/locale/zh_CN';
 
 type GetContextInnerType<T extends Context<any>> = T extends Context<infer R> ? R : never;
 type nameType = keyof Omit<GetContextInnerType<typeof LocaleContext>, 'locale'>;

@@ -1,4 +1,4 @@
 import Pull from './Pull';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
+import LocaleReceiver from '../locale-receiver';
 
 export default LocaleReceiver('Pull')(Pull);
