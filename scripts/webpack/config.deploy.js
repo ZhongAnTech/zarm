@@ -28,9 +28,16 @@ config.optimization = {
       },
     }),
     new OptimizeCSSAssetsPlugin({
-      cssProcessorPluginOptions: {
+      cssProcessorOptions: {
         parser: safePostCssParser,
-        preset: ['default', { reduceTransforms: false }],
+      },
+      cssProcessorPluginOptions: {
+        preset: ['default', {
+          reduceTransforms: false,
+          discardComments: {
+            removeAll: true,
+          },
+        }],
       },
     }),
   ],
