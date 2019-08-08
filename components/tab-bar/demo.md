@@ -4,17 +4,9 @@
 
 ## 基本用法
 ```jsx
-import { TabBar, Cell, Button } from 'zarm';
+import { Icon, TabBar, Cell, Button } from 'zarm';
 
-const tabIcon = (key) => (
-  <div
-    style={{
-      width: 24,
-      height: 24,
-      background: `url(//cdn-health.zhongan.com/zarm/${key}.svg) top left / 24px 24px no-repeat`,
-    }}
-  />
-);
+const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_4p9b5skcr79.js');
 
 class Demo extends React.Component {
   state = {
@@ -48,21 +40,18 @@ class Demo extends React.Component {
           <TabBar.Item
             itemKey="home"
             title="主页"
-            icon={tabIcon('home-active')}
-            activeIcon={tabIcon('home')}
+            icon={<TabIcon type="home" />}
           />
           <TabBar.Item
             itemKey="found"
-            title="发现"
-            icon={tabIcon('find-active')}
-            activeIcon={tabIcon('find')}
+            title="保险"
+            icon={<TabIcon type="insurance" />}
             badge={{ sup: true, shape: 'circle', text: '3' }}
           />
           <TabBar.Item
             itemKey="me"
             title="我的"
-            icon={tabIcon('my-active')}
-            activeIcon={tabIcon('my')}
+            icon={<TabIcon type="user" />}
             badge={{ sup: true, shape: 'dot' }}
           />
         </TabBar>
@@ -95,5 +84,5 @@ ReactDOM.render(<Demo />, mountNode);
 | itemKey | number \| string | - | 唯一标识，对应`activeKey` |
 | title | React.ReactNode | - | 标题文字 |
 | icon | React.ReactNode | - | 图标 |
-| activeIcon | React.ReactNode | - | 选中时图标 |
+| activeIcon | React.ReactNode | - | 选中时图标，不设置等同icon属性的值 |
 | badge | Object | - | 参考`Badge`组件 |
