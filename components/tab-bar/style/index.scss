@@ -22,7 +22,7 @@
   }
 
   @include m(active) {
-    @include e(title) {
+    @include e(title, icon) {
       color: var(--tabbar-item-active-color);
     }
   }
@@ -33,14 +33,15 @@
     @include e(title) {
       font-size: var(--tabbar-item-font-size);
       line-height: 1;
-      margin-top: 2px;
+      margin-top: r(2);
     }
 
     @include e(icon) {
       display: inline-block;
       vertical-align: middle;
-      width: 24px;
-      height: 24px;
+      width: r(24);
+      height: r(24);
+      font-size: r(18);
     }
   }
 }
