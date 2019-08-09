@@ -1,4 +1,6 @@
 
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+
 export default interface BasePickerViewProps {
   value?: string | string[] | number[];
   defaultValue?: string | string[] | number[] | object;
