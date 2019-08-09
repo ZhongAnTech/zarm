@@ -26,19 +26,16 @@ export default class Select extends PureComponent<SelectProps, BasePickerState> 
 
   state: BasePickerState = parseProps.getSource(this.props);
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps !== prevState) {
-      const propsToState = parseProps.getSource(nextProps);
-      const state: BasePickerState = {
-        ...propsToState,
-        tempValue: propsToState.value,
-        tempObjValue: propsToState.objValue,
-        visible: prevState.prevVisible === nextProps.visible ? prevState.visible : nextProps.visible,
-        prevVisible: propsToState.visible,
-      };
-      return state;
+  componentWillReceiveProps(nextProps) {
+    const state: BasePickerState = parseProps.getSource(nextProps);
+    const { visible } = this.props;
+    const { visible: stateVisible } = this.state;
+    if (visible === nextProps.visible) {
+      state.visible = stateVisible;
     }
-    return null;
+    state.tempObjValue = state.objValue;
+    state.tempValue = state.value;
+    this.setState(state);
   }
 
   handleClick = () => {

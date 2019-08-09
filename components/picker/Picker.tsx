@@ -24,17 +24,11 @@ export default class Picker extends PureComponent<PickerProps, BasePickerState> 
 
   state: BasePickerState = parseProps.getSource(this.props);
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.visible !== prevState.visible) {
-      const propsToState = parseProps.getSource(nextProps);
-      const state: BasePickerState = {
-        ...propsToState,
-        tempValue: propsToState.value,
-        tempObjValue: propsToState.objValue,
-      };
-      return state;
-    }
-    return null;
+  componentWillReceiveProps(props) {
+    const state: BasePickerState = parseProps.getSource(props);
+    state.tempValue = state.value;
+    state.tempObjValue = state.tempObjValue;
+    this.setState(state);
   }
 
   onChange = (selected) => {

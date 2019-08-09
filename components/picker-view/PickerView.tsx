@@ -22,10 +22,14 @@ export default class PickerView extends PureComponent<PickerViewProps, BasePicke
 
   state: BasePickerViewState = parseProps.getSource(this.props);
 
+  componentWillReceiveProps(props) {
+    const state: BasePickerViewState = parseProps.getSource(props);
+    this.setState(state);
+  }
+
   onValueChange = (selected, level) => {
     const value = this.state.value.slice();
     const { dataSource, onChange, valueMember, cols } = this.props;
-
     value[level] = selected;
     if (isCascader({ dataSource })) {
       value.length = level + 1;
