@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import Popup from '../popup';
 import PickerView from '../picker-view';
-import { BasePickerProps, BasePickerState } from './PropsType';
+import BasePickerProps from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
 
 export interface PickerProps extends BasePickerProps {
@@ -10,7 +10,18 @@ export interface PickerProps extends BasePickerProps {
   className?: any;
 }
 
-export default class Picker extends PureComponent<PickerProps, BasePickerState> {
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+
+export interface PickerState {
+  value: string[] | number[];
+  objValue?: string[] | number[];
+  dataSource: DataSource;
+  visible: boolean;
+  tempObjValue?: string[] | number[];
+  tempValue?: string[] | number[];
+}
+
+export default class Picker extends PureComponent<PickerProps, PickerState> {
   static defaultProps = {
     dataSource: [],
     prefixCls: 'za-picker',
@@ -22,10 +33,10 @@ export default class Picker extends PureComponent<PickerProps, BasePickerState> 
 
   private isScrolling = false;
 
-  state: BasePickerState = parseProps.getSource(this.props);
+  state: PickerState = parseProps.getSource(this.props);
 
   componentWillReceiveProps(props) {
-    const state: BasePickerState = parseProps.getSource(props);
+    const state: PickerState = parseProps.getSource(props);
     state.tempValue = state.value;
     state.tempObjValue = state.tempObjValue;
     this.setState(state);

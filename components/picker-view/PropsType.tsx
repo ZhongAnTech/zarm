@@ -1,6 +1,5 @@
-type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
 
-export interface BasePickerViewProps {
+export default interface BasePickerViewProps {
   value?: string | string[] | number[];
   defaultValue?: string | string[] | number[] | object;
   valueMember?: string;
@@ -11,9 +10,4 @@ export interface BasePickerViewProps {
   disabled?: boolean;
   visible?: boolean;
   onTransition?: (value: boolean) => void;
-}
-
-export interface BasePickerViewState {
-  value: string[] | number[];
-  dataSource: DataSource;
 }

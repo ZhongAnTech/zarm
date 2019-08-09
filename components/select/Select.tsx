@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
-import { BasePickerState } from '../picker/PropsType';
 import { isArray } from '../utils/validate';
 
 export interface SelectProps extends BaseSelectProps {
@@ -11,8 +10,18 @@ export interface SelectProps extends BaseSelectProps {
   className?: string;
 }
 
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
 
-export default class Select extends PureComponent<SelectProps, BasePickerState> {
+export interface SelectState {
+  value: string[] | number[];
+  objValue?: string[] | number[];
+  dataSource: DataSource;
+  visible: boolean;
+  tempObjValue?: string[] | number[];
+  tempValue?: string[] | number[];
+}
+
+export default class Select extends PureComponent<SelectProps, SelectState> {
   static defaultProps = {
     prefixCls: 'za-select',
     dataSource: [],
@@ -24,10 +33,10 @@ export default class Select extends PureComponent<SelectProps, BasePickerState> 
     visible: false,
   };
 
-  state: BasePickerState = parseProps.getSource(this.props);
+  state: SelectState = parseProps.getSource(this.props);
 
   componentWillReceiveProps(nextProps) {
-    const state: BasePickerState = parseProps.getSource(nextProps);
+    const state: SelectState = parseProps.getSource(nextProps);
     const { visible } = this.props;
     const { visible: stateVisible } = this.state;
     if (visible === nextProps.visible) {
