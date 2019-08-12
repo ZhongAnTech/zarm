@@ -40,11 +40,13 @@
 
     &:before {
       content: '';
-      width: calc(var(--radio-size) / 2.5);
-      height: calc(var(--radio-size) / 2.5);
-      border-radius: calc(var(--radio-size) / 2.5);
-      background-color: var(--theme-primary);
-      transform: scale(0);
+      width: calc(var(--checkbox-size) / 3.5);
+      height: calc(var(--checkbox-size) / 2);
+      border: r(2) solid var(--theme-primary);
+      border-top: 0;
+      border-left: 0;
+      margin-top: r(-2);
+      transform: rotate(45deg) scale(0);
       transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
@@ -55,7 +57,7 @@
       border-color: var(--theme-primary);
 
       &:before {
-        transform: scale(1);
+        transform: rotate(45deg) scale(1);
         transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
       }
     }
@@ -68,7 +70,7 @@
       cursor: not-allowed;
 
       &:before {
-        background-color: var(--background-disabled);
+        border-color: var(--border-disabled);
       }
     }
 
