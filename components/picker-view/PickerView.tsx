@@ -27,10 +27,10 @@ export default class PickerView extends PureComponent<PickerViewProps, PickerVie
     disabled: false,
   };
 
-  state: BasePickerViewState = parseProps.getSource(this.props);
+  state: PickerViewState = parseProps.getSource(this.props);
 
   componentWillReceiveProps(props) {
-    const state: BasePickerViewState = parseProps.getSource(props);
+    const state: PickerViewState = parseProps.getSource(props);
     this.setState(state);
   }
 

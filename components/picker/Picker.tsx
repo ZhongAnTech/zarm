@@ -14,10 +14,10 @@ export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
 
 export interface PickerState {
   value: string[] | number[];
-  objValue?: string[] | number[];
+  objValue?: Array<{ [key: string]: any }>;
   dataSource: DataSource;
   visible: boolean;
-  tempObjValue?: string[] | number[];
+  tempObjValue?: Array<{ [key: string]: any }>;
   tempValue?: string[] | number[];
 }
 
@@ -38,7 +38,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
   componentWillReceiveProps(props) {
     const state: PickerState = parseProps.getSource(props);
     state.tempValue = state.value;
-    state.tempObjValue = state.tempObjValue;
+    state.tempObjValue = state.objValue;
     this.setState(state);
   }
 
