@@ -36,15 +36,15 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   state: SelectState = parseProps.getSource(this.props);
 
   componentWillReceiveProps(nextProps) {
-    const state: SelectState = parseProps.getSource(nextProps);
+    const propsToState: SelectState = parseProps.getSource(nextProps);
     const { visible } = this.props;
     const { visible: stateVisible } = this.state;
     if (visible === nextProps.visible) {
-      state.visible = stateVisible;
+      propsToState.visible = stateVisible;
     }
-    state.tempObjValue = state.objValue;
-    state.tempValue = state.value;
-    this.setState(state);
+    propsToState.tempObjValue = propsToState.objValue;
+    propsToState.tempValue = propsToState.value;
+    this.setState(propsToState);
   }
 
   handleClick = () => {
@@ -92,6 +92,19 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     });
   };
 
+  onMaskClick = () => {
+    const { onMaskClick } = this.props;
+    const { tempValue = [], tempObjValue = [] } = this.state;
+    this.setState({
+      value: tempValue,
+      objValue: tempObjValue,
+      visible: false,
+    });
+    if (typeof onMaskClick === 'function') {
+      onMaskClick();
+    }
+  };
+
   isValueValid = (value) => {
     return (Object.prototype.toString.call(value) === '[object String]' && !!value.trim()) || (isArray(value) && value.length > 0 && value.some(item => !!item));
   };
@@ -116,6 +129,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
           onOk={this.onOk}
           onChange={this.onChange}
           onCancel={this.onCancel}
+          onMaskClick={this.onMaskClick}
         />
       </div>
     );

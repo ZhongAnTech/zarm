@@ -275,11 +275,6 @@ describe('Select', () => {
     expect(onOkFn).not.toBeCalled();
   });
 
-  it('locale', () => {
-    expect(zhCN.placeholder).toEqual('请选择');
-    expect(enUS.placeholder).toEqual('please select');
-  });
-
   // it('should trigger onMaskClick when click mask', () => {
   //   const onOkFn = jest.fn();
   //   const onMaskClick = jest.fn();
