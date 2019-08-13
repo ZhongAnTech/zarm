@@ -99,10 +99,11 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
       value: tempValue,
       objValue: tempObjValue,
       visible: false,
+    }, () => {
+      if (typeof onMaskClick === 'function') {
+        onMaskClick();
+      }
     });
-    if (typeof onMaskClick === 'function') {
-      onMaskClick();
-    }
   };
 
   isValueValid = (value) => {
