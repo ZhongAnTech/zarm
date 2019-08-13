@@ -113,7 +113,7 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
     const cls = classnames(prefixCls, className);
     return (
       <Modal className={cls} {...others} visible={visible} afterClose={this.afterClose}>
-        <Modal.Header title={title} />
+        {title && <Modal.Header title={title} />}
         <Modal.Body>{message}</Modal.Body>
         <Modal.Footer>
           <div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>
