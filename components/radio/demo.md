@@ -112,7 +112,7 @@ import { Radio } from 'zarm';
 
 ReactDOM.render(
   <div className="block-box">
-    <Radio.Group block compact type="button" shape="radius">
+    <Radio.Group block type="button" shape="radius">
       <Radio value="0">选项一</Radio>
       <Radio value="1">选项二</Radio>
       <Radio value="2">选项三</Radio>
@@ -175,5 +175,4 @@ ReactDOM.render(
 | shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | block | boolean | false | 是否为块级元素 |
 | disabled | boolean | false | 是否禁用 |
-| compact | boolean | false | 是否启用紧凑模式 |
 | onChange | (value?: string \| number) => void | - | 值变化时触发的回调函数 |

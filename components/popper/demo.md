@@ -96,7 +96,6 @@ class Demo extends React.Component {
       <>
         <Cell description={
           <Radio.Group
-            compact
             type="button"
             value={this.state.arrow}
             onChange={value => {

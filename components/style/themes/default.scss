@@ -25,7 +25,8 @@
   --border-disabled: #bcbcbc;
 
   // 圆角
-  --radius-sm: 2px;
+  --radius-xs: 4px;
+  --radius-sm: 4px;
   --radius-md: 4px;
   --radius-lg: 8px;
   --radius-round: 1000px;
@@ -186,6 +187,9 @@
 
   // Checkbox
   --checkbox-size: 18px;
+  --checkbox-background: #fff;
+  --checkbox-border: #bcbcbc;
+  --checkbox-color: #909090;
 
   // Collapse
   --collapse-height: 52px;
@@ -257,6 +261,9 @@
 
   // Radio
   --radio-size: 18px;
+  --radio-background: #fff;
+  --radio-border: #bcbcbc;
+  --radio-color: #909090;
 
   // SearchBar
   --search-bar-font-size: 14px;

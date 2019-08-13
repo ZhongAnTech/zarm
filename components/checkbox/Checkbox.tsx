@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
 import CheckboxGroup from './CheckboxGroup';
 import Cell from '../cell';
-import Button from '../button';
 
 const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
   if (typeof props.checked !== 'undefined') {
@@ -14,6 +13,7 @@ const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
   }
   return defaultChecked;
 };
+
 
 export interface CheckboxProps extends BaseCheckboxProps {
   prefixCls?: string;
@@ -65,7 +65,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
   };
 
   render() {
-    const { prefixCls, className, shape, type, value, block, disabled, id, children } = this.props;
+    const { prefixCls, className, type, value, disabled, id, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -105,18 +105,10 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
 
     if (type === 'button') {
       return (
-        <Button
-          className={cls}
-          theme="primary"
-          shape={shape}
-          size="xs"
-          block={block}
-          ghost={!checked}
-          disabled={disabled}
-        >
+        <div className={cls}>
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
           {inputRender}
-          {children}
-        </Button>
+        </div>
       );
     }
 

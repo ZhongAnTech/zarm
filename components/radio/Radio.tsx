@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseRadioProps } from './PropsType';
 import Cell from '../cell';
-import Button from '../button';
 import Icon from '../icon';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
@@ -14,6 +13,7 @@ const getChecked = (props: RadioProps, defaultChecked: boolean) => {
   }
   return defaultChecked;
 };
+
 
 export interface RadioProps extends BaseRadioProps {
   prefixCls?: string;
@@ -63,7 +63,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
   };
 
   render() {
-    const { prefixCls, className, type, shape, block, value, disabled, children } = this.props;
+    const { prefixCls, className, type, value, disabled, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -98,18 +98,10 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'button') {
       return (
-        <Button
-          className={cls}
-          theme="primary"
-          shape={shape}
-          size="xs"
-          block={block}
-          ghost={!checked}
-          disabled={disabled}
-        >
+        <div className={cls}>
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
           {inputRender}
-          {children}
-        </Button>
+        </div>
       );
     }
 

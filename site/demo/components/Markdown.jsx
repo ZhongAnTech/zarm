@@ -78,10 +78,7 @@ export default class Markdown extends React.Component {
       // );
 
       // const rightControl = (
-      //   <Radio.Group
-      //     compact
-      //     type="button"
-      //   >
+      //   <Radio.Group type="button">
       //     <Radio value="zh_CN">中文</Radio>
       //     <Radio value="en_US">EN</Radio>
       //   </Radio.Group>
