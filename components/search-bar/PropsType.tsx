@@ -4,7 +4,7 @@ export default interface BaseSearchBarProps {
   disabled?: boolean;
   defaultValue?: string;
   value?: string;
-  shape?: 'rect' | 'radius' | 'circle';
+  shape?: 'rect' | 'radius' | 'circle' | 'round';
   cancelText?: string;
   placeholder?: string;
   showCancel?: boolean;
