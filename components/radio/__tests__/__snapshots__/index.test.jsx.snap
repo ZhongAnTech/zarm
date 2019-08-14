@@ -50,20 +50,20 @@ exports[`Radio renders correctly 1`] = `
 `;
 
 exports[`Radio type is button 1`] = `
-<button
-  aria-disabled="false"
-  class="za-button za-radio za-button--primary za-button--xs za-button--radius za-button--ghost"
-  type="button"
+<div
+  class="za-radio"
 >
-  <span>
-    <input
-      class="za-radio__input"
-      type="radio"
-      value="0"
-    />
+  <span
+    class="za-radio__text"
+  >
     选项一
   </span>
-</button>
+  <input
+    class="za-radio__input"
+    type="radio"
+    value="0"
+  />
+</div>
 `;
 
 exports[`Radio type is cell 1`] = `

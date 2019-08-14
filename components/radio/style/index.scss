@@ -1,9 +1,11 @@
 @import "../../style/core/index";
+@import '../../button/style/mixins';
 
 @include b(radio) {
   display: inline-block;
   position: relative;
   margin-left: r(10);
+  color: var(--color-text);
 
   &:first-child {
     margin-left: 0;
@@ -24,7 +26,6 @@
   }
 
   @include e(text) {
-    color: var(--color-text);
     margin-left: r(10);
   }
 
@@ -34,14 +35,14 @@
     justify-content: center;
     width: var(--radio-size);
     height: var(--radio-size);
-    border: 1px solid #999;
+    border: 1px solid var(--radio-border);
     border-radius: var(--radio-size);
-    background: #fff;
+    background: var(--radio-background);
 
     &:before {
       content: '';
-      width: calc(var(--checkbox-size) / 3.5);
-      height: calc(var(--checkbox-size) / 2);
+      width: calc(var(--radio-size) / 3.5);
+      height: calc(var(--radio-size) / 2);
       border: r(2) solid var(--theme-primary);
       border-top: 0;
       border-left: 0;
@@ -83,39 +84,66 @@
 @include b(radio-group) {
   @include m(block) {
     display: flex;
+
+    @include b(radio) {
+      width: 100%;
+    }
   }
 
-  @include m(compact) {
+  // 按钮样式
+  @include m(button) {
+    @include b(radio) {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      @include button-base();
+      @include button-shape(var(--radius-xs));
+      @include button-size(
+        var(--button-height-xs),
+        var(--button-padding-h-xs),
+        var(--button-font-size-xs),
+        var(--button-icon-size-xs),
+      );
+      @include button-ghost(
+        var(--radio-border),
+        var(--radio-color),
+        var(--radio-border),
+        var(--radio-color),
+      );
+
+      @include e(text) {
+        margin-left: 0;
+      }
+
+      @include m(checked) {
+        border-color: var(--button-primary-border);
+        background-color: var(--button-primary-background);
+        color: var(--color-text-inverse);
+      }
+    }
+
+    @include m(rect) {
+      @include b(radio) {
+        @include button-shape(0);
+      }
+    }
+
     @include m(radius) {
-      @include b(button) {
-        border-radius: 0;
-
-        &:first-child {
-          border-radius: var(--radius-md) 0 0 var(--radius-md);
-        }
-
-        &:last-child {
-          border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
+      @include b(radio) {
+        @include button-shape(var(--radius-md));
       }
     }
 
     @include m(round) {
-      @include b(button) {
-        border-radius: 0;
-
-        &:first-child {
-          border-radius: var(--radius-round) 0 0 var(--radius-round);
-        }
-
-        &:last-child {
-          border-radius: 0 var(--radius-round) var(--radius-round) 0;
-        }
+      @include b(radio) {
+        @include button-shape(var(--radius-round));
       }
     }
 
-    @include b(button) {
-      margin-left: -1px;
+    @include m(circle) {
+      @include b(radio) {
+        @include button-shape(var(--radius-circle));
+      }
     }
   }
 

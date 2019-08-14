@@ -48,7 +48,6 @@ class Container extends Component {
         </a>
         {/* <div className="lang">
           <Radio.Group
-            compact
             type="button"
             value={language}
             onChange={(value) => {

@@ -103,6 +103,7 @@ ReactDOM.render(
   <>
     <Button href="https://zarm.design">default</Button>
     <Button theme="primary" href="https://zarm.design">primary</Button>
+    <Button theme="danger" href="https://zarm.design">danger</Button>
     <Button disabled theme="primary" href="https://zarm.design">disabled</Button>
   </>
 , mountNode);
