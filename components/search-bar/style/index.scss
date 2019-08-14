@@ -108,10 +108,4 @@
       border-radius: var(--radius-round);
     }
   }
-
-  @include m(circle) {
-    @include e(content) {
-      border-radius: var(--radius-circle);
-    }
-  }
 }
