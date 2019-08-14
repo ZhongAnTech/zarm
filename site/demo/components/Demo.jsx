@@ -41,7 +41,7 @@ export default class Demo extends React.Component {
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
         .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
           ReactDOM.render(
-            <zarm.LocaleProvider locale={${JSON.stringify(locale)}}>
+            <zarm.LocaleProvider locale={${JSON.stringify(locale.default)}}>
               $1
             </zarm.LocaleProvider>,
             document.getElementById('${this.containerId}'),

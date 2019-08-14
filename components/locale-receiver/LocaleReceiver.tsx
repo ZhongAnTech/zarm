@@ -9,14 +9,14 @@ type nameType = keyof Omit<GetContextInnerType<typeof LocaleContext>, 'locale'>;
 
 type ComponentType = new (...args: any[]) => any;
 
-const LocaleReceiverWrapper = (name?: nameType) => {
+const LocaleReceiverWrapper = (name?: nameType, defaultLocale?: typeof defaultLocaleData) => {
   return function InnerWrapper<T extends ComponentType>(WrappedComponent: T) {
     const LocaleReceiver = (props: any) => {
       return (
         <LocaleContext.Consumer>
           {
             (locale) => {
-              const globalLocale = (locale.locale) ? locale : defaultLocaleData;
+              const globalLocale = (locale.locale) ? locale : (defaultLocale || defaultLocaleData);
               const componentLocale = globalLocale[name || WrappedComponent.name as nameType];
               const localeCode = globalLocale.locale;
               const { forwardedRef, ...rest } = props;
