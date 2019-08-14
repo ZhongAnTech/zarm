@@ -6,6 +6,7 @@ export default interface PropsType {
   shape?: 'radius' | 'rect' | 'round' | 'circle';
   block?: boolean;
   ghost?: boolean;
+  shadow?: boolean;
   focus?: boolean;
   disabled?: boolean;
   loading?: boolean;

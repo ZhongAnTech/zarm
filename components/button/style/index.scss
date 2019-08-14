@@ -17,6 +17,7 @@
     var(--button-default-border),
     var(--color-text-disabled),
     var(--button-disabled-opacity),
+    var(--button-default-shadow-color),
   );
 
   @include m(link) {
@@ -85,6 +86,7 @@
       var(--button-primary-border),
       var(--button-primary-color),
       var(--button-disabled-opacity),
+      var(--button-primary-shadow-color),
     );
 
     @include m(link) {
@@ -116,6 +118,7 @@
       var(--button-danger-border),
       var(--button-danger-color),
       var(--button-disabled-opacity),
+      var(--button-danger-shadow-color),
     );
 
     @include m(link) {

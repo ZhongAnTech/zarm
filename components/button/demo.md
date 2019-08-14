@@ -80,6 +80,21 @@ ReactDOM.render(
 
 
 
+## 带阴影
+```jsx
+import { Button } from 'zarm';
+
+ReactDOM.render(
+  <>
+    <Button shadow>default</Button>
+    <Button shadow theme="primary">primary</Button>
+    <Button shadow theme="danger">danger</Button>
+  </>
+, mountNode);
+```
+
+
+
 ## 图标按钮
 ```jsx
 import { Button, Icon } from 'zarm';
@@ -136,6 +151,7 @@ ReactDOM.render(
 | shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round`、`circle` |
 | block | boolean | false | 是否块级元素 |
 | ghost | boolean | false | 是否幽灵按钮 |
+| shadow | boolean | false | 是否带阴影 |
 | disabled | boolean | false | 是否禁用 |
 | loading | boolean | false | 是否加载中状态 |
 | icon | ReactNode | - | 设置图标 |

@@ -120,6 +120,7 @@
   --button-default-ghost-color: var(--color-text-inverse);
   --button-default-ghost-active-border: var(--theme-default);
   --button-default-ghost-active-color: var(--theme-default);
+  --button-default-shadow-color: rgba(230, 230, 230, 0.3);
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);
   --button-primary-color: var(--color-text-inverse);
@@ -130,6 +131,7 @@
   --button-primary-ghost-color: var(--theme-primary);
   --button-primary-ghost-active-border: var(--theme-primary-dark);
   --button-primary-ghost-active-color: var(--theme-primary-dark);
+  --button-primary-shadow-color: rgba(0, 188, 112, 0.3);
   --button-danger-background: var(--theme-danger);
   --button-danger-border: var(--theme-danger);
   --button-danger-color: var(--color-text-inverse);
@@ -140,6 +142,7 @@
   --button-danger-ghost-color: var(--theme-danger);
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
+  --button-danger-shadow-color: rgba(255, 80, 80, 0.3);
 
   // Calendar
   --calendar-height: 45px; // 最小高度
@@ -207,7 +210,7 @@
   --input-cursor-color: #597cf6;
   --input-cursor-width: 2px;
   --input-cursor-height: 22px;
-  --input-selection-color: alpha(--theme-primary, 0.2);
+  --input-selection-color: alpha(var(--theme-primary), 0.2);
   --input-length-count-color: var(--color-text-disabled);
   --input-height: 28px;
   --input-line-height: var(--cell-title-line-height);
