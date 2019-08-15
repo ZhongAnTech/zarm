@@ -5,10 +5,15 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SentryCliPlugin = require('@sentry/webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
 
+const env = process.env.NODE_ENV;
+const { version } = require('../../package.json');
+
 config.mode = 'production';
+config.devtool = 'source-map';
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
 config.entry = {
@@ -71,7 +76,29 @@ config.plugins.push(
   new webpack.optimize.RuntimeChunkPlugin({
     name: 'manifest',
   }),
+
+  new HtmlWebpackPlugin({
+    template: './site/web/index.html',
+    filename: 'index.html',
+    chunks: ['manifest', 'index'],
+    favicon: './site/favicon.ico',
+  }),
+  new HtmlWebpackPlugin({
+    template: './site/demo/index.html',
+    filename: 'demo.html',
+    chunks: ['manifest', 'demo'],
+    favicon: './site/favicon.ico',
+  }),
 );
+
+if (env === 'production') {
+  config.plugins.push(new SentryCliPlugin({
+    release: version,
+    include: './assets',
+    sourceMapReference: false,
+  }));
+}
+
 // Object.keys(config.entry).forEach((key) => {
 //   config.plugins.push(new HtmlWebpackPlugin({
 //     template: config.entry[key],
@@ -79,18 +106,7 @@ config.plugins.push(
 //     chunks: ['manifest', key],
 //   }));
 // });
-config.plugins.push(new HtmlWebpackPlugin({
-  template: './site/web/index.html',
-  filename: 'index.html',
-  chunks: ['manifest', 'index'],
-  favicon: './site/favicon.ico',
-}));
-config.plugins.push(new HtmlWebpackPlugin({
-  template: './site/demo/index.html',
-  filename: 'demo.html',
-  chunks: ['manifest', 'demo'],
-  favicon: './site/favicon.ico',
-}));
+
 config.resolve.alias = {
   zarm: process.cwd(),
   '@': path.resolve(__dirname, '../../'),
