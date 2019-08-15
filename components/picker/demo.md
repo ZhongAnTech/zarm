@@ -238,7 +238,6 @@ const CASCADE_DATA = [
 
 class Demo extends React.Component {
   state = {
-    visible: false,
     value: [],
     dataSource: [],
   };
@@ -254,11 +253,10 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { visible, value, dataSource } = this.state;
+    const { value, dataSource } = this.state;
     return (
       <Cell hasArrow title="城市">
         <Select
-          visible={visible}
           value={value}
           dataSource={dataSource}
           onOk={(selected) => {
@@ -268,9 +266,7 @@ class Demo extends React.Component {
             });
           }}
           onMaskClick={() => {
-            this.setState({
-              visible: false,
-            });
+            console.log('maskClick')
           }}
         />
       </Cell>
@@ -373,13 +369,18 @@ ReactDOM.render(<Demo />, mountNode);
 ### 仅 Picker & Select 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| visible | boolean | false | 是否展示 |
 | title | string | '请选择' | 选择器标题 |
 | okText | string | '确定' | 确定栏文字 |
 | cancelText | string | '取消' | 取消栏文字 |
 | onOk | (selected?: object) => void | - | 点击确定时触发的回调函数 |
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+
+
+### 仅 Picker 支持的属性
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| visible | boolean | false | 是否展示 |
 
 ### 仅 Select 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |

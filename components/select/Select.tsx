@@ -1,16 +1,27 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseSelectProps } from './PropsType';
+import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
-import { isArray } from '../utils/validate';
+import { isArray, isString } from '../utils/validate';
 
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Select extends PureComponent<SelectProps, any> {
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+
+export interface SelectState {
+  value: string[] | number[];
+  objValue?: string[] | number[];
+  dataSource: DataSource;
+  visible: boolean;
+  tempObjValue?: string[] | number[];
+  tempValue?: string[] | number[];
+}
+
+export default class Select extends PureComponent<SelectProps, SelectState> {
   static defaultProps = {
     prefixCls: 'za-select',
     dataSource: [],
@@ -21,24 +32,16 @@ export default class Select extends PureComponent<SelectProps, any> {
     onClick: () => {},
   };
 
-  private tempValue;
-
-  private tempObjValue;
-
-  constructor(props) {
-    super(props);
-    this.state = parseProps.getSource(props);
-
-    const { value, objValue } = this.state;
-    this.tempValue = value;
-    this.tempObjValue = objValue;
-  }
+  state: SelectState = {
+    ...parseProps.getSource(this.props),
+    visible: false,
+  };
 
   componentWillReceiveProps(nextProps) {
-    const state = parseProps.getSource(nextProps);
-    this.tempValue = state.value;
-    this.tempObjValue = state.objValue;
-    this.setState(state);
+    const propsToState: SelectState = parseProps.getSource(nextProps);
+    propsToState.tempObjValue = propsToState.objValue;
+    propsToState.tempValue = propsToState.value;
+    this.setState(propsToState);
   }
 
   handleClick = () => {
@@ -59,32 +62,46 @@ export default class Select extends PureComponent<SelectProps, any> {
   };
 
   onOk = (selected) => {
-    const { onOk, valueMember } = this.props;
+    const { onOk } = this.props;
     this.setState({
-      value: selected.map(item => item[valueMember!]),
       objValue: selected,
       visible: false,
+    }, () => {
+      if (typeof onOk === 'function') {
+        onOk(selected);
+      }
     });
-    if (typeof onOk === 'function') {
-      onOk(selected);
-    }
   };
 
   // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
+    const { tempObjValue = [] } = this.state;
     this.setState({
-      value: this.tempValue,
-      objValue: this.tempObjValue,
+      objValue: tempObjValue,
       visible: false,
+    }, () => {
+      if (typeof onCancel === 'function') {
+        onCancel();
+      }
     });
-    if (typeof onCancel === 'function') {
-      onCancel();
-    }
+  };
+
+  onMaskClick = () => {
+    const { onMaskClick } = this.props;
+    const { tempObjValue = [] } = this.state;
+    this.setState({
+      objValue: tempObjValue,
+      visible: false,
+    }, () => {
+      if (typeof onMaskClick === 'function') {
+        onMaskClick();
+      }
+    });
   };
 
   isValueValid = (value) => {
-    return (Object.prototype.toString.call(value) === '[object String]' && !!value.trim()) || (isArray(value) && value.length > 0 && value.some(item => !!item));
+    return (isString(value) && !!value.trim()) || (isArray(value) && value.length > 0 && value.some(item => !!item));
   };
 
   render() {
@@ -107,6 +124,7 @@ export default class Select extends PureComponent<SelectProps, any> {
           onOk={this.onOk}
           onChange={this.onChange}
           onCancel={this.onCancel}
+          onMaskClick={this.onMaskClick}
         />
       </div>
     );
