@@ -265,9 +265,6 @@ class Demo extends React.Component {
               value: selected.map(item => item.value),
             });
           }}
-          onMaskClick={() => {
-            console.log('maskClick')
-          }}
         />
       </Cell>
     )
@@ -372,9 +369,9 @@ ReactDOM.render(<Demo />, mountNode);
 | title | string | '请选择' | 选择器标题 |
 | okText | string | '确定' | 确定栏文字 |
 | cancelText | string | '取消' | 取消栏文字 |
+| maskClosable | boolean | true | 是否点击遮罩层时关闭，默认是 |
 | onOk | (selected?: object) => void | - | 点击确定时触发的回调函数 |
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
-| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 
 
 ### 仅 Picker 支持的属性

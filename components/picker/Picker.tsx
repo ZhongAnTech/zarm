@@ -27,6 +27,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
     prefixCls: 'za-picker',
     valueMember: 'value',
     cols: Infinity,
+    maskClosable: true,
     itemRender: data => data.label,
   };
 
@@ -82,13 +83,6 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
     }
   };
 
-  onMaskClick = () => {
-    const { onMaskClick } = this.props;
-    if (typeof onMaskClick === 'function') {
-      onMaskClick();
-    }
-  };
-
   onTransition = (isScrolling) => {
     const { onTransition } = this.props;
     this.isScrolling = isScrolling;
@@ -98,14 +92,14 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, children, locale, ...others } = this.props;
-    const { visible, value } = this.state;
+    const { prefixCls, className, cancelText, okText, title, children, value, locale, maskClosable, ...others } = this.props;
+    const { visible } = this.state;
     const cls = classnames(prefixCls, className);
-
+    const noop = () => {};
     return (
       <Popup
         visible={visible}
-        onMaskClick={this.onMaskClick}
+        onMaskClick={maskClosable ? this.onCancel : noop}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
@@ -115,7 +109,6 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
           </div>
           <PickerView
             {...others}
-            visible={visible}
             value={value}
             onChange={this.onChange}
             onTransition={(isScrolling) => { this.onTransition(isScrolling); }}

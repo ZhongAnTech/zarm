@@ -28,6 +28,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     valueMember: 'value',
     itemRender: data => data.label,
     cols: Infinity,
+    maskClosable: true,
     displayRender: selected => selected.map(item => item.label),
     onClick: () => {},
   };
@@ -87,19 +88,6 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     });
   };
 
-  onMaskClick = () => {
-    const { onMaskClick } = this.props;
-    const { tempObjValue = [] } = this.state;
-    this.setState({
-      objValue: tempObjValue,
-      visible: false,
-    }, () => {
-      if (typeof onMaskClick === 'function') {
-        onMaskClick();
-      }
-    });
-  };
-
   isValueValid = (value) => {
     return (isString(value) && !!value.trim()) || (isArray(value) && value.length > 0 && value.some(item => !!item));
   };
@@ -111,7 +99,6 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
       [`${prefixCls}--placeholder`]: !this.isValueValid(value),
       [`${prefixCls}--disabled`]: disabled,
     });
-
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
@@ -124,7 +111,6 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
           onOk={this.onOk}
           onChange={this.onChange}
           onCancel={this.onCancel}
-          onMaskClick={this.onMaskClick}
         />
       </div>
     );

@@ -112,6 +112,7 @@ exports[`Select Cascader Select 1`] = `
         }
       }
       localeCode="zh-cn"
+      maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -161,10 +162,10 @@ exports[`Select Cascader Select 1`] = `
           }
           itemRender={[Function]}
           localeCode="zh-cn"
+          maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
-          onMaskClick={[Function]}
           onOk={[Function]}
           valueMember="value"
           visible={false}
@@ -206,10 +207,10 @@ exports[`Select Cascader Select 1`] = `
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
+            maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
-            onMaskClick={[Function]}
             onOk={[Function]}
             valueMember="value"
             visible={false}
@@ -257,10 +258,10 @@ exports[`Select Cascader Select 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
-              onMaskClick={[Function]}
               onOk={[Function]}
               prefixCls="za-picker"
               valueMember="value"
@@ -418,6 +419,7 @@ exports[`Select Cascader Select init value 1`] = `
         }
       }
       localeCode="zh-cn"
+      maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
       value={
@@ -475,10 +477,10 @@ exports[`Select Cascader Select init value 1`] = `
           displayAddon="-"
           itemRender={[Function]}
           localeCode="zh-cn"
+          maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
-          onMaskClick={[Function]}
           onOk={[Function]}
           value={
             Array [
@@ -527,10 +529,10 @@ exports[`Select Cascader Select init value 1`] = `
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
+            maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
-            onMaskClick={[Function]}
             onOk={[Function]}
             value={
               Array [
@@ -585,10 +587,10 @@ exports[`Select Cascader Select init value 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
-              onMaskClick={[Function]}
               onOk={[Function]}
               prefixCls="za-picker"
               value={
@@ -677,6 +679,7 @@ exports[`Select Select 1`] = `
         }
       }
       localeCode="zh-cn"
+      maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -706,10 +709,10 @@ exports[`Select Select 1`] = `
           }
           itemRender={[Function]}
           localeCode="zh-cn"
+          maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
-          onMaskClick={[Function]}
           onOk={[Function]}
           valueMember="value"
           visible={false}
@@ -731,10 +734,10 @@ exports[`Select Select 1`] = `
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
+            maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
-            onMaskClick={[Function]}
             onOk={[Function]}
             valueMember="value"
             visible={false}
@@ -762,10 +765,10 @@ exports[`Select Select 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
-              onMaskClick={[Function]}
               onOk={[Function]}
               prefixCls="za-picker"
               valueMember="value"
@@ -851,6 +854,7 @@ exports[`Select Select disabled 1`] = `
         }
       }
       localeCode="zh-cn"
+      maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -881,10 +885,10 @@ exports[`Select Select disabled 1`] = `
           disabeld={true}
           itemRender={[Function]}
           localeCode="zh-cn"
+          maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
-          onMaskClick={[Function]}
           onOk={[Function]}
           valueMember="value"
           visible={true}
@@ -907,10 +911,10 @@ exports[`Select Select disabled 1`] = `
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
+            maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
-            onMaskClick={[Function]}
             onOk={[Function]}
             valueMember="value"
             visible={true}
@@ -939,10 +943,10 @@ exports[`Select Select disabled 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
-              onMaskClick={[Function]}
               onOk={[Function]}
               prefixCls="za-picker"
               valueMember="value"
@@ -1101,15 +1105,9 @@ exports[`Select Select disabled 1`] = `
                             onCancel={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
-                            onMaskClick={[Function]}
                             onOk={[Function]}
                             onTransition={[Function]}
                             prefixCls="za-picker-view"
-                            value={
-                              Array [
-                                "1",
-                              ]
-                            }
                             valueMember="value"
                             visible={true}
                           >
@@ -1254,6 +1252,7 @@ exports[`Select render defaultValue correctly  1`] = `
         }
       }
       localeCode="zh-cn"
+      maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
       valueMember="value"
@@ -1284,10 +1283,10 @@ exports[`Select render defaultValue correctly  1`] = `
           defaultValue="2"
           itemRender={[Function]}
           localeCode="zh-cn"
+          maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
           onClick={[Function]}
-          onMaskClick={[Function]}
           onOk={[Function]}
           valueMember="value"
           visible={false}
@@ -1310,10 +1309,10 @@ exports[`Select render defaultValue correctly  1`] = `
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
+            maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
             onClick={[Function]}
-            onMaskClick={[Function]}
             onOk={[Function]}
             valueMember="value"
             visible={false}
@@ -1342,10 +1341,10 @@ exports[`Select render defaultValue correctly  1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
               onClick={[Function]}
-              onMaskClick={[Function]}
               onOk={[Function]}
               prefixCls="za-picker"
               valueMember="value"

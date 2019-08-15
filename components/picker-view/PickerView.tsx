@@ -65,7 +65,7 @@ export default class PickerView extends PureComponent<PickerViewProps, PickerVie
       <Wheel
         key={+index}
         dataSource={item}
-        value={value[index]}
+        value={value![index]}
         valueMember={valueMember}
         itemRender={itemRender}
         disabled={disabled}
