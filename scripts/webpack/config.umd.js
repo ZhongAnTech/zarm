@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./config.base');
 
 const env = process.env.NODE_ENV;
-const version = process.env.VERSION || require('../../package.json').version;
+const { version } = require('../../package.json');
 
 config.mode = 'development';
 config.devtool = 'source-map';
@@ -72,6 +72,7 @@ if (env === 'production') {
             discardComments: {
               removeAll: true,
             },
+            calc: false,
           }],
         },
       }),

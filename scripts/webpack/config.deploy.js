@@ -42,6 +42,7 @@ config.optimization = {
           discardComments: {
             removeAll: true,
           },
+          calc: false,
         }],
       },
     }),
