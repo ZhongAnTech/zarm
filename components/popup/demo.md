@@ -107,8 +107,7 @@ class Demo extends React.Component {
           dataSource={SINGLE_DATA}
           onOk={(selected) => {
             console.log('Picker onOk: ', selected);
-            value = selected.map(item => item.value);
-            this.setState({ value });
+            this.setState({ value: selected.map(item => item.value) });
             Toast.show(JSON.stringify(selected));
             this.toggle('picker');
           }}
