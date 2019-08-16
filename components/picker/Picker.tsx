@@ -10,33 +10,36 @@ export interface PickerProps extends BasePickerProps {
   className?: any;
 }
 
-export default class Picker extends PureComponent<PickerProps, any> {
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+
+export interface PickerState {
+  value: string[] | number[];
+  objValue?: Array<{ [key: string]: any }>;
+  dataSource: DataSource;
+  visible: boolean;
+  tempObjValue?: Array<{ [key: string]: any }>;
+  tempValue?: string[] | number[];
+}
+
+export default class Picker extends PureComponent<PickerProps, PickerState> {
   static defaultProps = {
     dataSource: [],
     prefixCls: 'za-picker',
     valueMember: 'value',
     cols: Infinity,
+    maskClosable: true,
     itemRender: data => data.label,
   };
 
-  private tempValue;
-
-  private tempObjValue;
-
   private isScrolling = false;
 
-  constructor(props) {
-    super(props);
-    this.state = parseProps.getSource(props);
+  state: PickerState = parseProps.getSource(this.props);
 
-    const { value, objValue } = this.state;
-    this.tempValue = value;
-    this.tempObjValue = objValue;
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const state = parseProps.getSource(nextProps);
-    this.setState(state);
+  componentWillReceiveProps(props) {
+    const propsToState: PickerState = parseProps.getSource(props);
+    propsToState.tempValue = propsToState.value;
+    propsToState.tempObjValue = propsToState.objValue;
+    this.setState(propsToState);
   }
 
   onChange = (selected) => {
@@ -54,10 +57,10 @@ export default class Picker extends PureComponent<PickerProps, any> {
 
   onCancel = () => {
     const { onCancel } = this.props;
+    const { tempValue = [], tempObjValue = [] } = this.state;
     this.setState({
-      value: this.tempValue,
-      objValue: this.tempObjValue,
-      visible: false,
+      value: tempValue,
+      objValue: tempObjValue,
     });
     if (typeof onCancel === 'function') {
       onCancel();
@@ -68,23 +71,15 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (this.isScrolling) {
       return false;
     }
-    const { value, objValue } = this.state;
+    const { value, objValue = [] } = this.state;
     this.setState({
       value,
       objValue,
-      visible: false,
     });
 
     const { onOk } = this.props;
     if (typeof onOk === 'function') {
       onOk(objValue);
-    }
-  };
-
-  onMaskClick = () => {
-    const { onMaskClick } = this.props;
-    if (typeof onMaskClick === 'function') {
-      onMaskClick();
     }
   };
 
@@ -97,14 +92,14 @@ export default class Picker extends PureComponent<PickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, children, locale, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, children, locale, maskClosable, ...others } = this.props;
     const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
-
+    const noop = () => {};
     return (
       <Popup
         visible={visible}
-        onMaskClick={this.onMaskClick}
+        onMaskClick={maskClosable ? this.onCancel : noop}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
@@ -114,7 +109,6 @@ export default class Picker extends PureComponent<PickerProps, any> {
           </div>
           <PickerView
             {...others}
-            visible={visible}
             value={value}
             onChange={this.onChange}
             onTransition={(isScrolling) => { this.onTransition(isScrolling); }}

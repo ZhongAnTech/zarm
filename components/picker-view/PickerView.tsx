@@ -10,7 +10,14 @@ export interface PickerViewProps extends BasePickerViewProps {
   className?: string;
 }
 
-export default class PickerView extends PureComponent<PickerViewProps, any> {
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+
+export interface PickerViewState {
+  value: string[] | number[];
+  dataSource: DataSource;
+}
+
+export default class PickerView extends PureComponent<PickerViewProps, PickerViewState> {
   static defaultProps = {
     prefixCls: 'za-picker-view',
     dataSource: [],
@@ -20,14 +27,11 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     disabled: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = parseProps.getSource(props);
-  }
+  state: PickerViewState = parseProps.getSource(this.props);
 
-  componentWillReceiveProps(nextProps) {
-    const state = parseProps.getSource(nextProps);
-    this.setState(state);
+  componentWillReceiveProps(props) {
+    const propsToState: PickerViewState = parseProps.getSource(props);
+    this.setState(propsToState);
   }
 
   onValueChange = (selected, level) => {
@@ -61,7 +65,7 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
       <Wheel
         key={+index}
         dataSource={item}
-        value={value[index]}
+        value={value![index]}
         valueMember={valueMember}
         itemRender={itemRender}
         disabled={disabled}
