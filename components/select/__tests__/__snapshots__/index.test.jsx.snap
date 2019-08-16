@@ -1108,6 +1108,11 @@ exports[`Select Select disabled 1`] = `
                             onOk={[Function]}
                             onTransition={[Function]}
                             prefixCls="za-picker-view"
+                            value={
+                              Array [
+                                "1",
+                              ]
+                            }
                             valueMember="value"
                             visible={true}
                           >

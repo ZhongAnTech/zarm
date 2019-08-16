@@ -214,6 +214,11 @@ exports[`Picker Picker render visible 1`] = `
                     onChange={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker-view"
+                    value={
+                      Array [
+                        "1",
+                      ]
+                    }
                     valueMember="value"
                     visible={true}
                   >

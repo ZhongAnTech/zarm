@@ -92,8 +92,8 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, children, value, locale, maskClosable, ...others } = this.props;
-    const { visible } = this.state;
+    const { prefixCls, className, cancelText, okText, title, children, locale, maskClosable, ...others } = this.props;
+    const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
     const noop = () => {};
     return (
