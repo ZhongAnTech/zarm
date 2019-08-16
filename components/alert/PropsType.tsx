@@ -13,7 +13,7 @@ export default interface PropsType {
   onMaskClick?: () => void;
   title?: ReactNode;
   message?: ReactNode;
-  cancelText?: string;
+  cancelText?: ReactNode;
   onCancel?: () => void;
   afterClose?: () => void;
   locale?: Locale['Alert'];
