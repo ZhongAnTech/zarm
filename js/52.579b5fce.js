@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[52],{708:function(n,e){n.exports='# Panel 面板\n\n\n\n## 基本用法\n```jsx\nimport { Panel } from \'zarm\';\n\nReactDOM.render(\n  <Panel\n    title="标题"\n    more={<a href="#" onClick={() => alert(\'click more\')}>更多</a>}\n  >\n    <div className="box">内容</div>\n  </Panel>\n, mountNode);\n```\n\n\n\n## API\n\n| 属性 | 类型 | 默认值 | 说明 |\n| :--- | :--- | :--- | :--- |\n| title | ReactNode | - | 标题渲染 |\n| more | ReactNode | - | 更多渲染 |\n'}}]);
-//# sourceMappingURL=52.579b5fce.js.map
