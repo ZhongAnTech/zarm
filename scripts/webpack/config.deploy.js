@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const isWsl = require('is-wsl');
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -22,15 +23,29 @@ config.entry = {
 };
 config.optimization = {
   minimizer: [
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true,
-      uglifyOptions: {
+    new TerserPlugin({
+      terserOptions: {
+        parse: {
+          ecma: 8,
+        },
+        compress: {
+          ecma: 5,
+          warnings: false,
+          comparisons: false,
+          inline: 2,
+        },
+        mangle: {
+          safari10: true,
+        },
         output: {
+          ecma: 5,
           comments: false,
+          ascii_only: true,
         },
       },
+      parallel: !isWsl,
+      cache: true,
+      sourceMap: true,
     }),
     new OptimizeCSSAssetsPlugin({
       cssProcessorOptions: {
