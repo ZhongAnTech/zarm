@@ -99,6 +99,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
     return (
       <Popup
         visible={visible}
+        mask={false}
         onMaskClick={maskClosable ? this.onCancel : noop}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
