@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseRadioProps } from './PropsType';
 import Cell from '../cell';
-import Icon from '../icon';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
   if (typeof props.checked !== 'undefined') {
@@ -82,16 +81,20 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
       />
     );
 
+    const radioRender = (
+      <div className={cls}>
+        <div className={`${prefixCls}__wrapper`}>
+          <span className={`${prefixCls}__inner`} />
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
+        </div>
+      </div>
+    );
+
     if (type === 'cell') {
       return (
-        <Cell
-          className={cls}
-          disabled={disabled}
-          description={checked && <Icon type="right" size="sm" theme={disabled ? 'default' : 'primary'} />}
-          onClick={() => {}}
-        >
-          {inputRender}
-          {children}
+        <Cell disabled={disabled} onClick={this.onValueChange}>
+          {radioRender}
         </Cell>
       );
     }
@@ -105,14 +108,6 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
       );
     }
 
-    return (
-      <div className={cls}>
-        <div className={`${prefixCls}__wrapper`}>
-          <span className={`${prefixCls}__inner`} />
-          {children && <span className={`${prefixCls}__text`}>{children}</span>}
-          {inputRender}
-        </div>
-      </div>
-    );
+    return radioRender;
   }
 }

@@ -20,6 +20,7 @@
       var(--button-icon-size-lg),
     );
     @include onepx(top);
+    color: var(--theme-primary);
 
     &:active {
       background-color: var(--background-active);

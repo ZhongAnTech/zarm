@@ -43,7 +43,7 @@
       content: '';
       width: calc(var(--radio-size) / 3.5);
       height: calc(var(--radio-size) / 2);
-      border: r(2) solid var(--theme-primary);
+      border: r(2) solid var(--color-text-inverse);
       border-top: 0;
       border-left: 0;
       margin-top: r(-2);
@@ -56,6 +56,7 @@
   @include m(checked) {
     @include e(inner) {
       border-color: var(--theme-primary);
+      background-color: var(--theme-primary);
 
       &:before {
         transform: rotate(45deg) scale(1);
@@ -67,16 +68,19 @@
   /* 禁用状态 */
   @include m(disabled) {
     @include e(inner) {
-      border-color: var(--border-disabled);
+      opacity: var(--opacity-disabled);
       cursor: not-allowed;
-
-      &:before {
-        border-color: var(--border-disabled);
-      }
     }
 
     @include e(text) {
       color: var(--color-text-disabled);
+    }
+
+    @include m(checked) {
+      @include e(inner) {
+        border-color: var(--border-disabled);
+        background-color: var(--background-disabled);
+      }
     }
   }
 }

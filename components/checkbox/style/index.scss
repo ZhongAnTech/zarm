@@ -36,7 +36,7 @@
     width: var(--checkbox-size);
     height: var(--checkbox-size);
     border: 1px solid var(--checkbox-border);
-    border-radius: var(--checkbox-size);
+    border-radius: var(--radius-md);
     background: var(--checkbox-background);
 
     &:before {
