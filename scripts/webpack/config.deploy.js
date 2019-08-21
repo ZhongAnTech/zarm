@@ -92,13 +92,13 @@ config.plugins.push(
   }),
 );
 
-if (env === 'production') {
-  config.plugins.push(new SentryCliPlugin({
-    release: version,
-    include: './assets',
-    sourceMapReference: false,
-  }));
-}
+// if (env === 'production') {
+//   config.plugins.push(new SentryCliPlugin({
+//     release: version,
+//     include: './assets',
+//     sourceMapReference: false,
+//   }));
+// }
 
 // Object.keys(config.entry).forEach((key) => {
 //   config.plugins.push(new HtmlWebpackPlugin({
