@@ -35,18 +35,18 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     super(props);
     this.state = {
       value: props.value || props.defaultValue || getSelectIndex(props.children) || 0,
+      prevValue: null,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getSelectIndex(nextProps.children)) {
-      this.setState({
-        value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
-      });
-      if (typeof nextProps.onChange === 'function') {
-        nextProps.onChange(nextProps.value);
-      }
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+      return {
+        value: nextProps.value,
+        prevValue: nextProps.value,
+      };
     }
+    return null;
   }
 
   onSwipeChange = (value) => {
