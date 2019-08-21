@@ -127,6 +127,9 @@ config.resolve.alias = {
   zarm: process.cwd(),
   '@': path.resolve(__dirname, '../../'),
   '@site': path.resolve(__dirname, '../../site'),
+  // react-devtools support to profiling
+  'react-dom$': 'react-dom/profiling',
+  'scheduler/tracing': 'scheduler/tracing-profiling',
 };
 
 module.exports = config;
