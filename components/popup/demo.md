@@ -12,6 +12,8 @@ const SINGLE_DATA = [
 ];
 
 class Demo extends React.Component {
+  myRef = React.createRef();
+
   state = {
     visible: {
       popBottom: false,
@@ -19,6 +21,7 @@ class Demo extends React.Component {
       popLeft: false,
       popRight: false,
       picker: false,
+      popSpec: false,
     },
     value: '',
   };
@@ -76,6 +79,14 @@ class Demo extends React.Component {
           }
         >
           从中间弹出
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={() => this.toggle('popSpec')}>开启</Button>
+          }
+        >
+          自定义挂载节点
         </Cell>
 
         <Popup
@@ -136,6 +147,7 @@ class Demo extends React.Component {
           </div>
         </Popup>
 
+
         <Popup
           visible={visible.popCenter}
           onMaskClick={() => this.toggle('popCenter')}
@@ -147,6 +159,23 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => this.toggle('popCenter')}>关闭弹层</Button>
           </div>
         </Popup>
+
+        <Popup
+          visible={visible.popSpec}
+          onMaskClick={() => this.toggle('popSpec')}
+          afterClose={() => console.log('关闭')}
+          getContainer={() => this.myRef.current}
+        >
+          <div className="popup-box">
+            <Button size="xs" onClick={() => this.toggle('popCenter')}>打开弹层</Button>
+          </div>
+        </Popup>
+
+        <div
+          id="test-div"
+          style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 1 }}
+          ref={this.myRef}
+        />
       </div>
     )
   }
@@ -171,3 +200,4 @@ ReactDOM.render(<Demo />, mountNode);
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popup 挂载的 HTML 节点 |

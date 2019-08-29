@@ -22,7 +22,13 @@ class Demo extends React.Component {
         visible: false,
         value: '2017-09-13',
       },
+      specDOM: {
+        visible: false,
+        value: '',
+      }
     };
+
+    this.myRef = React.createRef();
   }
 
   toggle(key) {
@@ -36,6 +42,7 @@ class Demo extends React.Component {
       date,
       time,
       limitDate,
+      specDOM,
     } = this.state;
 
     return (
@@ -62,6 +69,14 @@ class Demo extends React.Component {
           }
         >
           选择日期(自定义)
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={() => this.toggle('specDOM')}>选择</Button>
+          }
+        >
+          挂载到指定dom节点
         </Cell>
 
         <DatePicker
@@ -116,6 +131,28 @@ class Demo extends React.Component {
           }}
           onCancel={() => this.toggle('limitDate')}
         />
+
+        <DatePicker
+          visible={specDOM.visible}
+          value={specDOM.value}
+          onOk={(value) => {
+            this.setState({
+              specDOM: {
+                visible: false,
+                value,
+              },
+            });
+            Toast.show(JSON.stringify(value));
+          }}
+          onCancel={() => this.toggle('specDOM')}
+          getContainer={() => this.myRef.current}
+        />
+
+        <div
+          id="test-div"
+          style={{ position: 'relative', zIndex: 1 }}
+          ref={this.myRef} 
+          />
       </div>
     )
   }
@@ -225,6 +262,7 @@ ReactDOM.render(<Demo />, mountNode);
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
+| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点 |
 
 ### 仅 DateSelect 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |

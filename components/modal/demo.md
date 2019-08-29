@@ -13,8 +13,11 @@ class Demo extends React.Component {
     modal3: false,
     modal4: false,
     modal5: false,
+    specModal: false,
     animationType: 'fade',
   };
+
+  myRef = React.createRef();
 
   open = (key) => {
     this.setState({
@@ -29,7 +32,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { modal1, modal2, modal3, modal4, modal5, animationType, single } = this.state;
+    const { modal1, modal2, modal3, modal4, modal5, animationType, specModal } = this.state;
     return (
       <>
         <Cell
@@ -95,6 +98,14 @@ class Demo extends React.Component {
           />
         </Cell>
 
+        <Cell
+          description={
+            <Button size="xs" onClick={() => this.open('specModal')}>开启</Button>
+          }
+        >
+          挂载到指定dom节点
+        </Cell>
+
         <Modal visible={modal1}>
           <Modal.Header title="标题" onClose={() => this.close('modal1')} />
           <Modal.Body>
@@ -122,6 +133,20 @@ class Demo extends React.Component {
             <div style={{ height: 100 }}>当前使用的动画类型animationType：'{animationType}'</div>
           </Modal.Body>
         </Modal>
+
+        <Modal
+          visible={specModal}
+          onMaskClick={() => this.close('specModal')}
+          getContainer={() => this.myRef.current}
+        >
+          <Modal.Body>挂载到指定dom节点</Modal.Body>
+        </Modal>
+
+        <div
+          id="test-div"
+          style={{ position: 'relative', zIndex: 1 }}
+          ref={this.myRef} 
+          />
       </>
     )
   }
@@ -187,6 +212,12 @@ class Demo extends React.Component {
           message="这里是警告信息"
           onCancel={() => this.toggle('alert')}
         />
+
+        <div
+          id="test-div"
+          style={{ position: 'relative', zIndex: 1 }}
+          ref={this.myRef} 
+          />
       </>
     )
   }
@@ -283,6 +314,7 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | '70%' | 宽度 |
 | afterClose | () => void | - | 模态框关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Modal 挂载的 HTML 节点 |
 
 
 ## 静态方法

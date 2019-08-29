@@ -84,7 +84,14 @@ class Demo extends React.Component {
       value: [],
       dataSource: DIY_DATA,
     },
+    specDOM: {
+      visible: false,
+      value: '',
+      dataSource: SINGLE_DATA,
+    }
   };
+
+  myRef = React.createRef();
 
   componentDidMount() {
     // 异步加载数据源测试
@@ -104,7 +111,7 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { single, multi, cascade, diy } = this.state;
+    const { single, multi, cascade, diy, specDOM } = this.state;
     return (
       <>
         <Cell
@@ -137,6 +144,14 @@ class Demo extends React.Component {
           }
         >
           自定义
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={() => this.toggle('specDOM')}>选择</Button>
+          }
+        >
+          挂载到指定dom节点
         </Cell>
 
         <Picker
@@ -202,6 +217,27 @@ class Demo extends React.Component {
           }}
           onCancel={() => this.toggle('diy')}
         />
+
+        <Picker
+          visible={specDOM.visible}
+          value={specDOM.value}
+          dataSource={specDOM.dataSource}
+          onOk={(selected) => {
+            console.log('Picker onOk: ', selected);
+            specDOM.value = selected.map(item => item.value);
+            this.setState({ specDOM });
+            Toast.show(JSON.stringify(selected));
+            this.toggle('specDOM');
+          }}
+          onCancel={() => this.toggle('specDOM')}
+          getContainer={() => this.myRef.current}
+        />
+
+        <div
+          id="test-div"
+          style={{ position: 'relative', zIndex: 1 }}
+          ref={this.myRef} 
+          />
       </>
     )
   }
@@ -372,6 +408,7 @@ ReactDOM.render(<Demo />, mountNode);
 | maskClosable | boolean | true | 是否点击遮罩层时关闭，默认是 |
 | onOk | (selected?: object) => void | - | 点击确定时触发的回调函数 |
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
+| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Picker 挂载的 HTML 节点 |
 
 
 ### 仅 Picker 支持的属性
