@@ -1,3 +1,5 @@
+type getContainerFunc = () => HTMLElement;
+
 export default interface PropsType {
   visible?: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
@@ -8,6 +10,7 @@ export default interface PropsType {
   animationDuration?: number;
   afterOpen?: () => void;
   afterClose?: () => void;
+  getContainer?: HTMLElement | getContainerFunc;
   mask?: boolean;
   width?: string | number;
   maskType?: 'transparent' | 'normal';

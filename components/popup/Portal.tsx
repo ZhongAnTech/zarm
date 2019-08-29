@@ -29,6 +29,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private popup: HTMLDivElement | null;
 
+  private parent: HTMLElement;
+
   private _container: HTMLDivElement;
 
   constructor(props) {
@@ -65,7 +67,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
     clearTimeout(this.enterTimer);
     if (this._container) {
-      document.body.removeChild(this._container);
+      // const parent = this.getParent();
+      this.parent.removeChild(this._container);
     }
   }
 
@@ -114,11 +117,25 @@ export default class Portal extends PureComponent<PortalProps, any> {
     );
   };
 
+  getParent = () => {
+    const { getContainer } = this.props;
+    if (getContainer) {
+      if (typeof getContainer === 'function') {
+        return getContainer();
+      }
+      if (typeof getContainer === 'object' && getContainer instanceof HTMLElement) {
+        return getContainer;
+      }
+    }
+    return document.body;
+  };
+
   createContainer = () => {
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += 'popup-container';
-      document.body.appendChild(this._container);
+      this.parent = this.getParent();
+      this.parent.appendChild(this._container);
     }
     return this._container;
   };

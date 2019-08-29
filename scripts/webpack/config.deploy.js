@@ -46,10 +46,10 @@ config.plugins.push(
   // new BundleAnalyzerPlugin({
   //   analyzerMode: 'static',
   // }),
-  new MiniCssExtractPlugin({
-    filename: 'stylesheet/[name].[contenthash:8].css',
-    chunkFilename: 'stylesheet/[id].[contenthash:8].css',
-  }),
+  // new MiniCssExtractPlugin({
+  //   filename: 'stylesheet/[name].[contenthash:8].css',
+  //   chunkFilename: 'stylesheet/[id].[contenthash:8].css',
+  // }),
   new webpack.optimize.SplitChunksPlugin({
     chunks: 'async',
     minSize: 30000,
