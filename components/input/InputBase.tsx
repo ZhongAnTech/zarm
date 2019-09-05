@@ -14,10 +14,6 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
   private input;
 
-  private onBlurTimeout;
-
-  private blurFromClear;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -35,19 +31,13 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
-      this.setState({
-        value: nextProps.value,
-      });
+  static getDerivedStateFromProps(props) {
+    if ('value' in props) {
+      return {
+        value: props.value,
+      };
     }
-  }
-
-  componentWillUnmount() {
-    if (this.onBlurTimeout) {
-      clearTimeout(this.onBlurTimeout);
-      this.onBlurTimeout = null;
-    }
+    return null;
   }
 
   onFocus = (e) => {
@@ -64,19 +54,9 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   onBlur = (e) => {
     const { onBlur } = this.props;
     const { value } = e.target;
-
-    this.onBlurTimeout = setTimeout(() => {
-      if (!this.blurFromClear && document.activeElement !== this.input) {
-        this.setState({
-          focused: false,
-        });
-
-        if (typeof onBlur === 'function') {
-          onBlur(value);
-        }
-      }
-      this.blurFromClear = false;
-    }, 0);
+    if (typeof onBlur === 'function') {
+      onBlur(value);
+    }
   };
 
   onChange = (e) => {
@@ -98,11 +78,9 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     const { isOnComposition } = this.state;
     const { onChange, onClear } = this.props;
 
-    this.blurFromClear = true;
     this.setState({
       value: '',
     });
-
     !isOnComposition && this.focus();
     typeof onChange === 'function' && onChange('');
     typeof onClear === 'function' && onClear('');
