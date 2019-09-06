@@ -107,13 +107,13 @@ config.plugins.push(
   }),
 );
 
-// if (env === 'production') {
-//   config.plugins.push(new SentryCliPlugin({
-//     release: version,
-//     include: './assets',
-//     sourceMapReference: false,
-//   }));
-// }
+if (env === 'production') {
+  config.plugins.push(new SentryCliPlugin({
+    release: version,
+    include: './assets',
+    sourceMapReference: false,
+  }));
+}
 
 // Object.keys(config.entry).forEach((key) => {
 //   config.plugins.push(new HtmlWebpackPlugin({
@@ -127,6 +127,9 @@ config.resolve.alias = {
   zarm: process.cwd(),
   '@': path.resolve(__dirname, '../../'),
   '@site': path.resolve(__dirname, '../../site'),
+  // react-devtools support to profiling
+  'react-dom$': 'react-dom/profiling',
+  'scheduler/tracing': 'scheduler/tracing-profiling',
 };
 
 module.exports = config;
