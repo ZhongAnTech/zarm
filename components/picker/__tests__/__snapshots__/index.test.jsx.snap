@@ -57,6 +57,7 @@ exports[`Picker Picker render visible 1`] = `
         }
       }
       localeCode="zh-cn"
+      maskClosable={true}
       prefixCls="za-picker"
       valueMember="value"
       visible={true}
@@ -420,6 +421,7 @@ exports[`Picker render custom label 1`] = `
         }
       }
       localeCode="zh-cn"
+      maskClosable={true}
       prefixCls="za-picker"
       valueMember="code"
     >

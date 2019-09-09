@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const isWsl = require('is-wsl');
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -8,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = require('./config.base');
 
 const env = process.env.NODE_ENV;
-const version = process.env.VERSION || require('../../package.json').version;
+const { version } = require('../../package.json');
 
 config.mode = 'development';
 config.devtool = 'source-map';
@@ -52,15 +53,29 @@ if (env === 'production') {
   config.output.filename = '[name].min.js';
   config.optimization = {
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        uglifyOptions: {
+      new TerserPlugin({
+        terserOptions: {
+          parse: {
+            ecma: 8,
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false,
+            inline: 2,
+          },
+          mangle: {
+            safari10: true,
+          },
           output: {
+            ecma: 5,
             comments: false,
+            ascii_only: true,
           },
         },
+        parallel: !isWsl,
+        cache: true,
+        sourceMap: true,
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
@@ -72,6 +87,7 @@ if (env === 'production') {
             discardComments: {
               removeAll: true,
             },
+            calc: false,
           }],
         },
       }),

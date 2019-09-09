@@ -6,7 +6,9 @@ module.exports = {
   setupFiles: [
     require.resolve('./environment.js'),
   ],
-  setupTestFrameworkScriptFile: require.resolve('./setup.js'),
+  setupFilesAfterEnv: [
+    require.resolve('./setup.js'),
+  ],
   testRegex: '/__tests__/[^.]+\\.test(\\.jsx|[^d]\\.ts)$',
   transform: {
     '^.+\\.jsx?$': require.resolve('./preprocessor'),

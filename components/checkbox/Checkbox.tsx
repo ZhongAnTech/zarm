@@ -85,7 +85,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
       />
     );
 
-    const renderCheckbox = (
+    const checkboxRender = (
       <div className={cls}>
         <div className={`${prefixCls}__wrapper`}>
           <span className={`${prefixCls}__inner`} />
@@ -98,7 +98,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     if (type === 'cell') {
       return (
         <Cell disabled={disabled} onClick={this.onValueChange}>
-          {renderCheckbox}
+          {checkboxRender}
         </Cell>
       );
     }
@@ -112,6 +112,6 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
       );
     }
 
-    return renderCheckbox;
+    return checkboxRender;
   }
 }

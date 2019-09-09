@@ -1,14 +1,20 @@
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const isWsl = require('is-wsl');
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const SentryCliPlugin = require('@sentry/webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const config = require('./config.base');
 
+const env = process.env.NODE_ENV;
+const { version } = require('../../package.json');
+
 config.mode = 'production';
+config.devtool = 'source-map';
 config.output.filename = 'js/[name].[chunkhash:8].js';
 config.output.publicPath = './';
 config.entry = {
@@ -17,15 +23,29 @@ config.entry = {
 };
 config.optimization = {
   minimizer: [
-    new UglifyJsPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true,
-      uglifyOptions: {
+    new TerserPlugin({
+      terserOptions: {
+        parse: {
+          ecma: 8,
+        },
+        compress: {
+          ecma: 5,
+          warnings: false,
+          comparisons: false,
+          inline: 2,
+        },
+        mangle: {
+          safari10: true,
+        },
         output: {
+          ecma: 5,
           comments: false,
+          ascii_only: true,
         },
       },
+      parallel: !isWsl,
+      cache: true,
+      sourceMap: true,
     }),
     new OptimizeCSSAssetsPlugin({
       cssProcessorOptions: {
@@ -37,6 +57,7 @@ config.optimization = {
           discardComments: {
             removeAll: true,
           },
+          calc: false,
         }],
       },
     }),
@@ -71,7 +92,29 @@ config.plugins.push(
   new webpack.optimize.RuntimeChunkPlugin({
     name: 'manifest',
   }),
+
+  new HtmlWebpackPlugin({
+    template: './site/web/index.html',
+    filename: 'index.html',
+    chunks: ['manifest', 'index'],
+    favicon: './site/favicon.ico',
+  }),
+  new HtmlWebpackPlugin({
+    template: './site/demo/index.html',
+    filename: 'demo.html',
+    chunks: ['manifest', 'demo'],
+    favicon: './site/favicon.ico',
+  }),
 );
+
+if (env === 'production') {
+  config.plugins.push(new SentryCliPlugin({
+    release: version,
+    include: './assets',
+    sourceMapReference: false,
+  }));
+}
+
 // Object.keys(config.entry).forEach((key) => {
 //   config.plugins.push(new HtmlWebpackPlugin({
 //     template: config.entry[key],
@@ -79,22 +122,14 @@ config.plugins.push(
 //     chunks: ['manifest', key],
 //   }));
 // });
-config.plugins.push(new HtmlWebpackPlugin({
-  template: './site/web/index.html',
-  filename: 'index.html',
-  chunks: ['manifest', 'index'],
-  favicon: './site/favicon.ico',
-}));
-config.plugins.push(new HtmlWebpackPlugin({
-  template: './site/demo/index.html',
-  filename: 'demo.html',
-  chunks: ['manifest', 'demo'],
-  favicon: './site/favicon.ico',
-}));
+
 config.resolve.alias = {
   zarm: process.cwd(),
   '@': path.resolve(__dirname, '../../'),
   '@site': path.resolve(__dirname, '../../site'),
+  // react-devtools support to profiling
+  'react-dom$': 'react-dom/profiling',
+  'scheduler/tracing': 'scheduler/tracing-profiling',
 };
 
 module.exports = config;

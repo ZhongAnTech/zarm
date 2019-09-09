@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { BaseModalProps } from './PropsType';
 import Popup from '../popup';
+import ModalHeader from './ModalHeader';
+import ModalBody from './ModalBody';
+import ModalFooter from './ModalFooter';
 
 export interface ModalProps extends BaseModalProps {
   prefixCls?: string;
@@ -9,11 +12,9 @@ export interface ModalProps extends BaseModalProps {
 }
 
 export default class Modal extends Component<ModalProps, any> {
-  static Header: any;
+  static alert;
 
-  static Body: any;
-
-  static Footer: any;
+  static confirm;
 
   static defaultProps = {
     prefixCls: 'za-modal',
@@ -25,7 +26,7 @@ export default class Modal extends Component<ModalProps, any> {
   };
 
   render() {
-    const { prefixCls, className, shape, children, getContainer, ...others } = this.props;
+    const { prefixCls, className, shape, children, getContainer, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
 
     const cls = {
       modal: classnames(prefixCls, className, {
@@ -34,15 +35,21 @@ export default class Modal extends Component<ModalProps, any> {
       dialog: classnames(`${prefixCls}__dialog`),
     };
 
+    const showHeader = title || closable;
+    const noop = () => {};
+
     return (
       <Popup
         className={cls.modal}
         direction="center"
+        onMaskClick={maskClosable ? onCancel : noop}
         getContainer={getContainer}
         {...others}
       >
         <div className={cls.dialog}>
-          {children}
+          {showHeader && <ModalHeader title={title} closable={closable} onCancel={onCancel} />}
+          <ModalBody>{children}</ModalBody>
+          {footer && <ModalFooter>{footer}</ModalFooter>}
         </div>
       </Popup>
     );

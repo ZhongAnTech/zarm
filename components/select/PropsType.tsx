@@ -1,9 +1,8 @@
 import BasePickerProps from '../picker/PropsType';
 
-type getContainerFunc = () => HTMLElement;
+type pickerPropsWithoutVisible = Omit<BasePickerProps, 'visible'>;
 
-export interface BaseSelectProps extends BasePickerProps {
+export default interface BaseSelectProps extends pickerPropsWithoutVisible {
   placeholder?: string;
-  getContainer?: HTMLElement | getContainerFunc;
   displayRender?: (data?: object) => string;
 }

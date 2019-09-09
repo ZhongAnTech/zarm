@@ -19,56 +19,56 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     locale: alertLocale,
   };
 
-  private static alertContainer;
+  // private static alertContainer;
 
-  static show = (props: AlertProps) => {
-    const { defaultProps } = Alert;
-    let _props: any;
+  // static show = (props: AlertProps) => {
+  //   const { defaultProps } = Alert;
+  //   let _props: any;
 
-    if (typeof props === 'object') {
-      _props = { ...defaultProps, ...props };
-    } else {
-      _props = { ...defaultProps };
-    }
+  //   if (typeof props === 'object') {
+  //     _props = { ...defaultProps, ...props };
+  //   } else {
+  //     _props = { ...defaultProps };
+  //   }
 
-    const runTimeLocale = getRunTimeLocale();
-    if (runTimeLocale && runTimeLocale.Alert) {
-      _props = { ..._props, locale: runTimeLocale.Alert };
-    }
-    Alert.alertContainer = document.createElement('div');
-    document.body.appendChild(Alert.alertContainer);
-    return new Promise((resolve) => {
-      ReactDOM.render(
-        <Alert
-          {..._props}
-          visible
-          onCancel={() => {
-            if (typeof _props.onCancel === 'function') {
-              _props.onCancel();
-            }
-            resolve(false);
-          }}
-        />,
-        Alert.alertContainer,
-      );
-    });
-  };
+  //   const runTimeLocale = getRunTimeLocale();
+  //   if (runTimeLocale && runTimeLocale.Alert) {
+  //     _props = { ..._props, locale: runTimeLocale.Alert };
+  //   }
+  //   Alert.alertContainer = document.createElement('div');
+  //   document.body.appendChild(Alert.alertContainer);
+  //   return new Promise((resolve) => {
+  //     ReactDOM.render(
+  //       <Alert
+  //         {..._props}
+  //         visible
+  //         onCancel={() => {
+  //           if (typeof _props.onCancel === 'function') {
+  //             _props.onCancel();
+  //           }
+  //           resolve(false);
+  //         }}
+  //       />,
+  //       Alert.alertContainer,
+  //     );
+  //   });
+  // };
 
-  static hide = () => {
-    if (Alert._hide) {
-      Alert._hide();
-    }
-  };
+  // static hide = () => {
+  //   if (Alert._hide) {
+  //     Alert._hide();
+  //   }
+  // };
 
-  static _hide: () => void;
+  // static _hide: () => void;
 
   state = {
     visible: this.props.visible,
   };
 
-  componentDidMount() {
-    Alert._hide = this._hide;
-  }
+  // componentDidMount() {
+  //   Alert._hide = this._hide;
+  // }
 
   componentWillReceiveProps(nextProps) {
     const { visible } = this.props;
@@ -92,10 +92,10 @@ export default class Alert extends PureComponent<AlertProps, {}> {
 
   afterClose = () => {
     const { afterClose } = this.props;
-    if (Alert.alertContainer) {
-      document.body.removeChild(Alert.alertContainer);
-      Alert.alertContainer = null;
-    }
+    // if (Alert.alertContainer) {
+    //   document.body.removeChild(Alert.alertContainer);
+    //   Alert.alertContainer = null;
+    // }
 
     if (typeof afterClose === 'function') {
       afterClose();
@@ -103,17 +103,19 @@ export default class Alert extends PureComponent<AlertProps, {}> {
   };
 
   render() {
-    const { prefixCls, className, title, message, cancelText, onCancel, locale, ...others } = this.props;
+    const { prefixCls, className, message, cancelText, onCancel, locale, ...others } = this.props;
     const { visible } = this.state;
     const cls = classnames(prefixCls, className);
 
     return (
-      <Modal className={cls} {...others} visible={visible} afterClose={this.afterClose}>
-        {title && <Modal.Header title={title} />}
-        <Modal.Body>{message}</Modal.Body>
-        <Modal.Footer>
-          <div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>
-        </Modal.Footer>
+      <Modal
+        className={cls}
+        {...others}
+        visible={visible}
+        afterClose={this.afterClose}
+        footer={<div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>}
+      >
+        {message}
       </Modal>
     );
   }
