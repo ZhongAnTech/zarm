@@ -31,6 +31,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
+    transform: translate(0, 100%);
   }
 
   @include m(top) {
@@ -38,6 +39,7 @@
     left: 0;
     top: 0;
     width: 100%;
+    transform: translate(0, -100%);
   }
 
   @include m(left) {
@@ -45,6 +47,7 @@
     left: 0;
     top: 0;
     height: 100%;
+    transform: translate(-100%, 0);
   }
 
   @include m(right) {
@@ -52,23 +55,24 @@
     right: 0;
     top: 0;
     height: 100%;
+    transform: translate(100%, 0);
   }
 
-  @include m(hidden) {
+  @include m(show) {
     @include m(bottom) {
-      transform: translate(0, 100%);
+      transform: translate(0, 0);
     }
 
     @include m(top) {
-      transform: translate(0, -100%);
+      transform: translate(0, 0);
     }
 
     @include m(left) {
-      transform: translate(-100%, 0);
+      transform: translate(0, 0);
     }
 
     @include m(right) {
-      transform: translate(100%, 0);
+      transform: translate(0, 0);
     }
   }
 }

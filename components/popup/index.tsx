@@ -10,7 +10,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      renderPortal: true,
+      renderPortal: false,
     };
     this.handlePortalUnmount = this.handlePortalUnmount.bind(this);
   }
