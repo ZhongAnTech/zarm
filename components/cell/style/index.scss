@@ -8,9 +8,10 @@
   @include cell-theme(var(--cell-description-color));
   @include onepx(top);
 
-  &:first-of-type:after {
-    border-top: none;
-  }
+  // SwipeAction will hidden one px line
+  // &:first-of-type:after {
+  //   border-top: none;
+  // }
 
   &:after {
     left: var(--cell-line-padding-left);
