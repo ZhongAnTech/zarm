@@ -67,11 +67,12 @@ export default class Toast extends Component<ToastProps, any> {
     this.autoClose();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { visible } = this.props;
 
-    if (nextProps.visible !== visible) {
-      if (nextProps.visible === true) {
+    if (prevProps.visible !== visible) {
+      if (visible === true) {
+        // eslint-disable-next-line
         this.setState({
           visible: true,
         });

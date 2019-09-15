@@ -101,7 +101,7 @@ exports[`ActionSheet renders correctly 1`] = `
                   role="dialog"
                 >
                   <div
-                    class="za-popup za-popup--bottom za-popup--hidden"
+                    class="za-popup za-popup--bottom za-popup--show"
                     role="document"
                     style="transition-duration: 200ms;"
                   >
@@ -138,6 +138,10 @@ exports[`ActionSheet renders correctly 1`] = `
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="za-mask za-fade-enter za-mask--normal"
+                    style="animation-duration: 200ms;"
+                  />
                 </div>
               </div>
             }
@@ -148,7 +152,7 @@ exports[`ActionSheet renders correctly 1`] = `
               style={Object {}}
             >
               <div
-                className="za-popup za-popup--bottom za-popup--hidden"
+                className="za-popup za-popup--bottom"
                 role="document"
                 style={
                   Object {
@@ -198,7 +202,7 @@ exports[`ActionSheet renders correctly 1`] = `
                 </div>
               </div>
               <Mask
-                className=""
+                className="za-fade-enter"
                 onClick={[Function]}
                 prefixCls="za-mask"
                 style={
@@ -208,8 +212,19 @@ exports[`ActionSheet renders correctly 1`] = `
                   }
                 }
                 type="normal"
-                visible={false}
-              />
+                visible={true}
+              >
+                <div
+                  className="za-mask za-fade-enter za-mask--normal"
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "WebkitAnimationDuration": "200ms",
+                      "animationDuration": "200ms",
+                    }
+                  }
+                />
+              </Mask>
             </div>
           </Portal>
         </Portal>
