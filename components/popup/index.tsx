@@ -15,14 +15,25 @@ export default class Popup extends PureComponent<PopupProps, any> {
     this.handlePortalUnmount = this.handlePortalUnmount.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidMount() {
     const { visible } = this.props;
-    if (nextProps.visible !== visible && nextProps.visible === true) {
+    if (visible) {
       this.setState({
         renderPortal: true,
       });
     }
   }
+
+  componentDidUpdate(prevProps) {
+    const { visible } = this.props;
+    if (prevProps.visible !== visible && visible === true) {
+      // eslint-disable-next-line
+      this.setState({
+        renderPortal: true,
+      });
+    }
+  }
+
 
   handlePortalUnmount() {
     this.setState({

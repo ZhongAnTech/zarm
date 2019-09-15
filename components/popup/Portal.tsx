@@ -7,6 +7,10 @@ import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
+function canUseDOM() {
+  return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+}
+
 export interface PortalProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -26,8 +30,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private enterTimer: number;
 
-  // private wrapper: HTMLDivElement | null;
-
   private popup: HTMLDivElement | null;
 
   private parent: HTMLElement;
@@ -37,9 +39,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      // isShow: false,
       isPending: false,
-      // animationState: 'leave',
     };
 
     this.createContainer();
@@ -189,10 +189,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
         transitionDuration: `${animationDuration}ms`,
       };
 
-    // if (direction === 'center' && !isShow) {
-    //   popupStyle.display = 'none';
-    // }
-
     if (!mask) {
       return (
         <div
@@ -230,7 +226,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   handleAnimation() {
-    const { visible, prefixCls, animationDuration } = this.props;
+    const { visible, prefixCls } = this.props;
     if (visible) {
       if (this.popup) {
         this.setState({
@@ -247,41 +243,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
   }
 
-  // showPortal() {
-  //   this.createContainer();
-  //   this.setState(
-  //     {
-  //       mounted: true,
-  //     },
-  //     () => {
-  //       Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
-  //       Events.on(this.popup, 'transitionend', this.animationEnd);
-  //       Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
-  //       Events.on(this.popup, 'animationend', this.animationEnd);
-  //       this.enterTimer = setTimeout(() => {
-  //         this.enter();
-  //       }, 0);
-  //     },
-  //   );
-  // }
-
-  // enter() {
-  //   this.setState({
-  //     isShow: true,
-  //     isPending: true,
-  //     animationState: 'enter',
-  //   });
-  // }
-
-  // leave() {
-  //   this.setState({
-  //     isShow: true,
-  //     isPending: true,
-  //     animationState: 'leave',
-  //   });
-  // }
 
   renderPortal = (): ReactPortal | null => {
+    if (!canUseDOM()) {
+      return null;
+    }
     if (!IS_REACT_16) {
       ReactDOM.unstable_renderSubtreeIntoContainer(
         this,
@@ -304,10 +270,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
   }
 
   render() {
-    // const { mounted } = this.state;
-    // if (!mounted) {
-    //   return null;
-    // }
     return this.renderPortal();
   }
 }

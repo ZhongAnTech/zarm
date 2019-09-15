@@ -9,17 +9,6 @@ exports[`KeyboardPicker renders correctly 1`] = `
   <Popup
     mask={false}
     visible={false}
-  >
-    <Portal
-      animationDuration={200}
-      animationType="fade"
-      direction="bottom"
-      handlePortalUnmount={[Function]}
-      mask={false}
-      maskType="normal"
-      prefixCls="za-popup"
-      visible={false}
-    />
-  </Popup>
+  />
 </KeyboardPicker>
 `;

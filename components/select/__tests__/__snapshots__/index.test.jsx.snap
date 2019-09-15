@@ -270,19 +270,7 @@ exports[`Select Cascader Select 1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </Picker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>
@@ -605,19 +593,7 @@ exports[`Select Cascader Select init value 1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </Picker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>
@@ -777,19 +753,7 @@ exports[`Select Select 1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </Picker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>
@@ -977,7 +941,7 @@ exports[`Select Select disabled 1`] = `
                           role="dialog"
                         >
                           <div
-                            class="za-popup za-popup--bottom za-popup--hidden"
+                            class="za-popup za-popup--bottom za-popup--show"
                             role="document"
                             style="transition-duration: 200ms;"
                           >
@@ -1040,6 +1004,10 @@ exports[`Select Select disabled 1`] = `
                               </div>
                             </div>
                           </div>
+                          <div
+                            class="za-mask za-fade-enter za-mask--normal"
+                            style="animation-duration: 200ms;"
+                          />
                         </div>
                       </div>
                     }
@@ -1050,7 +1018,7 @@ exports[`Select Select disabled 1`] = `
                       style={Object {}}
                     >
                       <div
-                        className="za-popup za-popup--bottom za-popup--hidden"
+                        className="za-popup za-popup--bottom"
                         role="document"
                         style={
                           Object {
@@ -1177,7 +1145,7 @@ exports[`Select Select disabled 1`] = `
                         </div>
                       </div>
                       <Mask
-                        className=""
+                        className="za-fade-enter"
                         onClick={[Function]}
                         prefixCls="za-mask"
                         style={
@@ -1187,8 +1155,19 @@ exports[`Select Select disabled 1`] = `
                           }
                         }
                         type="normal"
-                        visible={false}
-                      />
+                        visible={true}
+                      >
+                        <div
+                          className="za-mask za-fade-enter za-mask--normal"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "WebkitAnimationDuration": "200ms",
+                              "animationDuration": "200ms",
+                            }
+                          }
+                        />
+                      </Mask>
                     </div>
                   </Portal>
                 </Portal>
@@ -1358,19 +1337,7 @@ exports[`Select render defaultValue correctly  1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </Picker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>
