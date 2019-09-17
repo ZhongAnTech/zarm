@@ -64,7 +64,6 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   onBlur = (e) => {
     const { onBlur } = this.props;
     const { value } = e.target;
-
     this.onBlurTimeout = setTimeout(() => {
       if (!this.blurFromClear && document.activeElement !== this.input) {
         this.setState({
@@ -76,7 +75,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
         }
       }
       this.blurFromClear = false;
-    }, 0);
+    }, 200);
   };
 
   onChange = (e) => {
