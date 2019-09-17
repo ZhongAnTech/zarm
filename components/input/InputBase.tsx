@@ -14,6 +14,10 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
   private input;
 
+  private onBlurTimeout;
+
+  private blurFromClear;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,13 +35,19 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
   }
 
-  static getDerivedStateFromProps(props) {
-    if ('value' in props) {
-      return {
-        value: props.value,
-      };
+  componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps) {
+      this.setState({
+        value: nextProps.value,
+      });
     }
-    return null;
+  }
+
+  componentWillUnmount() {
+    if (this.onBlurTimeout) {
+      clearTimeout(this.onBlurTimeout);
+      this.onBlurTimeout = null;
+    }
   }
 
   onFocus = (e) => {
@@ -54,9 +64,18 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   onBlur = (e) => {
     const { onBlur } = this.props;
     const { value } = e.target;
-    if (typeof onBlur === 'function') {
-      onBlur(value);
-    }
+    this.onBlurTimeout = setTimeout(() => {
+      if (!this.blurFromClear && document.activeElement !== this.input) {
+        this.setState({
+          focused: false,
+        });
+
+        if (typeof onBlur === 'function') {
+          onBlur(value);
+        }
+      }
+      this.blurFromClear = false;
+    }, 200);
   };
 
   onChange = (e) => {
@@ -78,9 +97,11 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     const { isOnComposition } = this.state;
     const { onChange, onClear } = this.props;
 
+    this.blurFromClear = true;
     this.setState({
       value: '',
     });
+
     !isOnComposition && this.focus();
     typeof onChange === 'function' && onChange('');
     typeof onClear === 'function' && onClear('');
@@ -179,7 +200,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       [`${prefixCls}__clear--show`]: focused && value && value.length > 0,
     });
     const renderClearIcon = showClearIcon
-      && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />;
+      && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} size="lg" />;
 
     return (
       <div className={cls}>
