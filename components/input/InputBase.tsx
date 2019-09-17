@@ -200,7 +200,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       [`${prefixCls}__clear--show`]: focused && value && value.length > 0,
     });
     const renderClearIcon = showClearIcon
-      && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} size="lg" />;
+      && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />;
 
     return (
       <div className={cls}>
