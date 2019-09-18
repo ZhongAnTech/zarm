@@ -82,7 +82,7 @@
     "@types/react-native": "^0.60.7",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
-    "@zarm-design/cli": "^0.0.6",
+    "@zarm-design/cli": "^0.0.7",
     "babel-eslint": "^10.0.1",
     "browserslist": "^4.6.6",
     "color": "^3.1.0",
