@@ -1981,10 +1981,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zarm-design/cli@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.4.tgz#87e28e039696a57ea0f6d00e6b3b36207adc2baf"
-  integrity sha512-9nRWBorsEe75TOE/TY0rgGiQFDPhRVAs6sQ92RWLVZciHSFNxUa27ftJU5W/Ar7HDlQBRiQAv/Ehm5C/8iFxYQ==
+"@zarm-design/cli@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.6.tgz#5c075730c1d37dbe8a86f27c901876c686f395d0"
+  integrity sha512-rYj/omUjWMqC1eVTwpYBATCxDzIvn0CDfHLqe8pCxqO7B6b/nDcJ+hHZeSPm0W8487gWSTyxl/BuJZ6leF4CkA==
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
