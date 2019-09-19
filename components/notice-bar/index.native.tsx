@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import PropsType from './PropsType';
 import noticeBarStyle from './style/index.native';
-import Message from '../message';
+import Message from '../message/index.native';
 
 export interface NoticeBarProps extends PropsType {
   style?: CSSProperties;

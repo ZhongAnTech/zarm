@@ -1,9 +1,9 @@
 import React, { ReactNode, FunctionComponent } from 'react';
-import Icon, { IconPropsType } from './index';
+import Icon, { IconProps } from './index';
 
 const customCache = new Set<string>();
 
-export default function createFromIconfont(scriptUrl: string): FunctionComponent<IconPropsType> {
+export default function createFromIconfont(scriptUrl: string): FunctionComponent<IconProps> {
   /**
    * DOM API required.
    * Make sure in browser environment.
@@ -25,7 +25,7 @@ export default function createFromIconfont(scriptUrl: string): FunctionComponent
     document.body.appendChild(script);
   }
 
-  const Iconfont: FunctionComponent<IconPropsType> = (props) => {
+  const Iconfont: FunctionComponent<IconProps> = (props) => {
     Iconfont.displayName = 'Iconfont';
 
     const { type } = props;

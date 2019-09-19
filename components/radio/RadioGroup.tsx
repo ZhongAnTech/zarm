@@ -81,8 +81,11 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
         shape,
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
-        onChange: () => this.onChildChange(element.props.value),
         checked: value === element.props.value || Number(value) === Number(element.props.value),
+        onChange: (checked: boolean) => {
+          typeof element.props.onChange === 'function' && element.props.onChange(checked);
+          this.onChildChange(element.props.value);
+        },
       });
     });
 

@@ -101,7 +101,10 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
           block: block || element.props.block,
           disabled: disabled || element.props.disabled,
           checked: value!.indexOf(element.props.value) > -1,
-          onChange: () => this.onChildChange(element.props.value),
+          onChange: (checked: boolean) => {
+            typeof element.props.onChange === 'function' && element.props.onChange(checked);
+            this.onChildChange(element.props.value);
+          },
         });
       }
 

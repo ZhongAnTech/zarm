@@ -29,9 +29,9 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   private moveInterval;
 
-  private translateX: number = 0;
+  private translateX = 0;
 
-  private translateY: number = 0;
+  private translateY = 0;
 
   constructor(props) {
     super(props);
