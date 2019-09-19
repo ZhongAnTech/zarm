@@ -12,7 +12,7 @@
   height: 100%;
   overflow: auto;
   user-select: none;
-  z-index: var(--zindex-loading);
+  // z-index: var(--zindex-loading);
 
   @include m(open) {
     display: flex;

@@ -38,14 +38,14 @@ exports[`Modal renders correctly 1`] = `
             class="popup-container"
           >
             <div
-              class="za-popup__wrapper za-modal za-modal--radius"
+              class="za-popup__wrapper za-modal za-modal--radius za-fade-enter"
               role="dialog"
               style="animation-duration: 200ms;"
             >
               <div
-                class="za-popup za-popup--center za-popup--hidden"
+                class="za-popup za-popup--center za-fade-enter"
                 role="document"
-                style="width: 70%; animation-duration: 200ms; display: none;"
+                style="width: 70%; animation-duration: 200ms;"
               >
                 <div
                   class="za-modal__dialog"
@@ -82,12 +82,16 @@ exports[`Modal renders correctly 1`] = `
                   </div>
                 </div>
               </div>
+              <div
+                class="za-mask za-fade-enter za-mask--normal"
+                style="animation-duration: 200ms;"
+              />
             </div>
           </div>
         }
       >
         <div
-          className="za-popup__wrapper za-modal za-modal--radius"
+          className="za-popup__wrapper za-modal za-modal--radius za-fade-enter"
           role="dialog"
           style={
             Object {
@@ -97,13 +101,12 @@ exports[`Modal renders correctly 1`] = `
           }
         >
           <div
-            className="za-popup za-popup--center za-popup--hidden"
+            className="za-popup za-popup--center za-fade-enter"
             role="document"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
                 "animationDuration": "200ms",
-                "display": "none",
                 "width": "70%",
               }
             }
@@ -189,7 +192,7 @@ exports[`Modal renders correctly 1`] = `
             </div>
           </div>
           <Mask
-            className=""
+            className="za-fade-enter"
             onClick={[Function]}
             prefixCls="za-mask"
             style={
@@ -199,8 +202,19 @@ exports[`Modal renders correctly 1`] = `
               }
             }
             type="normal"
-            visible={false}
-          />
+            visible={true}
+          >
+            <div
+              className="za-mask za-fade-enter za-mask--normal"
+              onClick={[Function]}
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+            />
+          </Mask>
         </div>
       </Portal>
     </Portal>

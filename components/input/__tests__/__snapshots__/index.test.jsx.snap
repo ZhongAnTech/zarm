@@ -239,18 +239,7 @@ exports[`Input.Idcard renders correctly 1`] = `
           <Popup
             mask={false}
             visible={false}
-          >
-            <Portal
-              animationDuration={200}
-              animationType="fade"
-              direction="bottom"
-              handlePortalUnmount={[Function]}
-              mask={false}
-              maskType="normal"
-              prefixCls="za-popup"
-              visible={false}
-            />
-          </Popup>
+          />
         </KeyboardPicker>
       </div>
     </div>
@@ -295,18 +284,7 @@ exports[`Input.Number renders correctly 1`] = `
           <Popup
             mask={false}
             visible={false}
-          >
-            <Portal
-              animationDuration={200}
-              animationType="fade"
-              direction="bottom"
-              handlePortalUnmount={[Function]}
-              mask={false}
-              maskType="normal"
-              prefixCls="za-popup"
-              visible={false}
-            />
-          </Popup>
+          />
         </KeyboardPicker>
       </div>
     </div>
@@ -430,7 +408,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                     class="popup-container"
                   >
                     <div
-                      class="za-popup za-popup--bottom za-popup--hidden"
+                      class="za-popup za-popup--bottom za-popup--show"
                       role="dialog"
                       style="transition-duration: 200ms;"
                     >
@@ -553,7 +531,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                 }
               >
                 <div
-                  className="za-popup za-popup--bottom za-popup--hidden"
+                  className="za-popup za-popup--bottom"
                   role="dialog"
                   style={
                     Object {
@@ -876,18 +854,7 @@ exports[`Input.Price renders correctly 1`] = `
           <Popup
             mask={false}
             visible={false}
-          >
-            <Portal
-              animationDuration={200}
-              animationType="fade"
-              direction="bottom"
-              handlePortalUnmount={[Function]}
-              mask={false}
-              maskType="normal"
-              prefixCls="za-popup"
-              visible={false}
-            />
-          </Popup>
+          />
         </KeyboardPicker>
       </div>
     </div>

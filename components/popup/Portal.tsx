@@ -7,6 +7,9 @@ import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
+function canUseDOM() {
+  return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+}
 
 export interface PortalProps extends PropsType {
   prefixCls?: string;
@@ -29,29 +32,31 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private popup: HTMLDivElement | null;
 
+  private parent: HTMLElement;
+
   private _container: HTMLDivElement;
 
   constructor(props) {
     super(props);
     this.state = {
-      isShow: false,
       isPending: false,
-      animationState: 'leave',
-      mounted: false,
     };
+
+    this.createContainer();
   }
 
   componentDidMount() {
-    const { visible } = this.props;
-    if (visible) {
-      this.showPortal();
-    }
+    Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
+    Events.on(this.popup, 'transitionend', this.animationEnd);
+    Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
+    Events.on(this.popup, 'animationend', this.animationEnd);
+    this.handleAnimation();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { visible } = this.props;
-    if (nextProps.visible !== visible) {
-      nextProps.visible === true ? this.showPortal() : this.leave();
+    if (prevProps.visible !== visible) {
+      this.handleAnimation();
     }
   }
 
@@ -65,19 +70,32 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
     clearTimeout(this.enterTimer);
     if (this._container) {
-      document.body.removeChild(this._container);
+      this.parent.removeChild(this._container);
     }
+  }
+
+  getParent() {
+    const { getContainer } = this.props;
+    if (getContainer) {
+      if (typeof getContainer === 'function') {
+        return getContainer();
+      }
+      if (
+        typeof getContainer === 'object'
+        && getContainer instanceof HTMLElement
+      ) {
+        return getContainer;
+      }
+    }
+    return document.body;
   }
 
   animationEnd = (e) => {
     e.stopPropagation();
-
-    const { afterClose, afterOpen, handlePortalUnmount } = this.props;
-    const { animationState } = this.state;
-
+    const { afterClose, afterOpen, handlePortalUnmount, visible } = this.props;
+    const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
       this.setState({
-        isShow: false,
         isPending: false,
       });
       if (typeof afterClose === 'function') {
@@ -92,40 +110,54 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   renderMask = () => {
-    const { mask, maskType, animationDuration } = this.props;
-    const { animationState, isShow } = this.state;
+    const { mask, maskType, animationDuration, visible } = this.props;
+    const { isPending } = this.state;
+    const animationState = visible ? 'enter' : 'leave';
     const maskCls = classnames({
-      [`za-fade-${animationState}`]: isShow,
+      [`za-fade-${animationState}`]: isPending,
     });
 
     const maskStyle: CSSProperties = {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };
-
-    return mask && (
-      <Mask
-        className={maskCls}
-        style={maskStyle}
-        visible={isShow}
-        type={maskType}
-        onClick={(e) => { this.handleMaskClick(e); }}
-      />
+    return (
+      mask && (
+        <Mask
+          className={maskCls}
+          style={maskStyle}
+          visible
+          type={maskType}
+          onClick={(e) => {
+            this.handleMaskClick(e);
+          }}
+        />
+      )
     );
   };
 
-  createContainer = () => {
-    if (!this._container) {
-      this._container = document.createElement('div');
-      this._container.className += 'popup-container';
-      document.body.appendChild(this._container);
+  handleMaskClick = (e) => {
+    e.stopPropagation();
+    const { onMaskClick } = this.props;
+    if (typeof onMaskClick === 'function') {
+      onMaskClick();
     }
-    return this._container;
   };
 
   getComponent = () => {
-    const { prefixCls, className, animationType, animationDuration, direction, mask, children, width } = this.props;
-    const { isShow, animationState, isPending } = this.state;
+    const {
+      prefixCls,
+      className,
+      animationType,
+      animationDuration,
+      direction,
+      mask,
+      children,
+      width,
+      visible,
+    } = this.props;
+    const { isPending } = this.state;
+    const animationState = visible ? 'enter' : 'leave';
 
     const cls = {
       wrapper: classnames(`${prefixCls}__wrapper`, className, {
@@ -134,8 +166,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
       popup: classnames(prefixCls, {
         [`${prefixCls}--${direction}`]: !!direction,
         [`${prefixCls}--nomask`]: direction === 'center' && !mask,
-        [`${prefixCls}--hidden`]: animationState === 'leave',
-        [`za-${animationType}-${animationState}`]: direction === 'center' && isPending,
+        [`za-${animationType}-${animationState}`]:
+          direction === 'center' && isPending,
       }),
     };
 
@@ -157,17 +189,15 @@ export default class Portal extends PureComponent<PortalProps, any> {
         transitionDuration: `${animationDuration}ms`,
       };
 
-    if (direction === 'center' && !isShow) {
-      popupStyle.display = 'none';
-    }
-
     if (!mask) {
       return (
         <div
           className={cls.popup}
           style={popupStyle}
           role="dialog"
-          ref={(popup) => { this.popup = popup; }}
+          ref={(popup) => {
+            this.popup = popup;
+          }}
         >
           {children}
         </div>
@@ -179,9 +209,15 @@ export default class Portal extends PureComponent<PortalProps, any> {
         role="dialog"
         className={cls.wrapper}
         style={wrapStyle}
-        ref={(popup) => { this.popup = popup; }}
       >
-        <div className={cls.popup} style={popupStyle} role="document">
+        <div
+          ref={(popup) => {
+            this.popup = popup;
+          }}
+          className={cls.popup}
+          style={popupStyle}
+          role="document"
+        >
           {children}
         </div>
         {this.renderMask()}
@@ -189,56 +225,51 @@ export default class Portal extends PureComponent<PortalProps, any> {
     );
   };
 
-  handleMaskClick = (e) => {
-    e.stopPropagation();
-    const { onMaskClick } = this.props;
-    if (typeof onMaskClick === 'function') {
-      onMaskClick();
+  handleAnimation() {
+    const { visible, prefixCls } = this.props;
+    if (visible) {
+      if (this.popup) {
+        this.setState({
+          isPending: true,
+        });
+        this.popup.focus();
+        this.popup.classList.add(`${prefixCls}--show`);
+      }
+    } else {
+      this.setState({
+        isPending: true,
+      });
+      this.popup!.classList.remove(`${prefixCls}--show`);
     }
-  };
-
-  showPortal() {
-    this.createContainer();
-    this.setState({
-      mounted: true,
-    }, () => {
-      Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
-      Events.on(this.popup, 'transitionend', this.animationEnd);
-      Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
-      Events.on(this.popup, 'animationend', this.animationEnd);
-      this.enterTimer = setTimeout(() => { this.enter(); }, 0);
-    });
   }
 
-  enter() {
-    this.setState({
-      isShow: true,
-      isPending: true,
-      animationState: 'enter',
-    });
-  }
-
-  leave() {
-    this.setState({
-      isShow: true,
-      isPending: true,
-      animationState: 'leave',
-    });
-  }
 
   renderPortal = (): ReactPortal | null => {
+    if (!canUseDOM()) {
+      return null;
+    }
     if (!IS_REACT_16) {
-      ReactDOM.unstable_renderSubtreeIntoContainer(this, this.getComponent(), this._container);
+      ReactDOM.unstable_renderSubtreeIntoContainer(
+        this,
+        this.getComponent(),
+        this._container,
+      );
       return null;
     }
     return ReactDOM.createPortal(this.getComponent(), this._container);
   };
 
-  render() {
-    const { mounted } = this.state;
-    if (!mounted) {
-      return null;
+  createContainer() {
+    if (!this._container) {
+      this._container = document.createElement('div');
+      this._container.className += 'popup-container';
+      this.parent = this.getParent();
+      this.parent.appendChild(this._container);
     }
+    return this._container;
+  }
+
+  render() {
     return this.renderPortal();
   }
 }

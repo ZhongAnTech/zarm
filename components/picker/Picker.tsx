@@ -92,7 +92,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, children, locale, maskClosable, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, children, locale, maskClosable, getContainer, ...others } = this.props;
     const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
     const noop = () => {};
@@ -100,6 +100,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
       <Popup
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
+        getContainer={getContainer}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
