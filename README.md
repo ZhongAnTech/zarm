@@ -84,7 +84,7 @@ import 'zarm/lib/Button/style';
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 
-变量名可参考 [default.scss](https://github.com/ZhonganTechENG/zarm/blob/master/components/style/themes/default.scss)
+变量名可参考 [default.scss](https://github.com/ZhonganTechENG/zarm/blob/dev/components/style/themes/default.scss)
 
 ## Changelog 更新日志
 

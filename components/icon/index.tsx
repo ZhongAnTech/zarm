@@ -11,12 +11,12 @@ const INNER_SVG_PROPS = {
   viewBox: '0 0 32 32',
 };
 
-export type IconPropsType = {
+export type IconProps = {
   prefixCls?: string;
 } & BasePropsType & HTMLAttributes<HTMLElement>;
 
 
-class Icon extends PureComponent<IconPropsType, {}> {
+class Icon extends PureComponent<IconProps, {}> {
   static displayName = 'Icon';
 
   static defaultProps = {
