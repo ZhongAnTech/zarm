@@ -4,7 +4,7 @@
 
 ## 基本用法
 ```jsx
-import { Popup, Cell, Button, Picker, Toast } from 'zarm';
+import { Popup, Cell, Button, Picker, Toast, Modal, Loading } from 'zarm';
 
 const SINGLE_DATA = [
   { value: '1', label: '选项一' },
@@ -146,7 +146,6 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => this.toggle('popRight')}>关闭弹层</Button>
           </div>
         </Popup>
-
 
         <Popup
           visible={visible.popCenter}

@@ -25,20 +25,16 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          // {
-          //   loader: MiniCssExtractPlugin.loader,
-          //   options: {
-          //     publicPath: '../',
-          //   },
-          // },
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+            },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
-              sourceMap: true,
             },
           },
           {
