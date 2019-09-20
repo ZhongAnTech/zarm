@@ -133,7 +133,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, locale, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, children, locale, getContainer, ...others } = this.props;
     const cls = classnames(prefixCls, className);
     const { visible, value } = this.state;
 
@@ -141,6 +141,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
       <Popup
         visible={visible}
         onMaskClick={() => this.onMaskClick()}
+        getContainer={getContainer}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>

@@ -91,19 +91,7 @@ exports[`DateSelect DateSelect date 1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </DatePicker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>
@@ -218,19 +206,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </DatePicker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>
@@ -420,7 +396,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                           role="dialog"
                         >
                           <div
-                            class="za-popup za-popup--bottom za-popup--hidden"
+                            class="za-popup za-popup--bottom za-popup--show"
                             role="document"
                             style="transition-duration: 200ms;"
                           >
@@ -927,6 +903,10 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               </div>
                             </div>
                           </div>
+                          <div
+                            class="za-mask za-fade-enter za-mask--normal"
+                            style="animation-duration: 200ms;"
+                          />
                         </div>
                       </div>
                     }
@@ -937,7 +917,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                       style={Object {}}
                     >
                       <div
-                        className="za-popup za-popup--bottom za-popup--hidden"
+                        className="za-popup za-popup--bottom"
                         role="document"
                         style={
                           Object {
@@ -2221,7 +2201,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                         </div>
                       </div>
                       <Mask
-                        className=""
+                        className="za-fade-enter"
                         onClick={[Function]}
                         prefixCls="za-mask"
                         style={
@@ -2231,8 +2211,19 @@ exports[`DateSelect DateSelect disabled 1`] = `
                           }
                         }
                         type="normal"
-                        visible={false}
-                      />
+                        visible={true}
+                      >
+                        <div
+                          className="za-mask za-fade-enter za-mask--normal"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "WebkitAnimationDuration": "200ms",
+                              "animationDuration": "200ms",
+                            }
+                          }
+                        />
+                      </Mask>
                     </div>
                   </Portal>
                 </Portal>
@@ -2341,19 +2332,7 @@ exports[`DateSelect DateSelect time 1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </DatePicker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>
@@ -2472,7 +2451,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                           role="dialog"
                         >
                           <div
-                            class="za-popup za-popup--bottom za-popup--hidden"
+                            class="za-popup za-popup--bottom za-popup--show"
                             role="document"
                             style="transition-duration: 200ms;"
                           >
@@ -2979,6 +2958,10 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                               </div>
                             </div>
                           </div>
+                          <div
+                            class="za-mask za-fade-enter za-mask--normal"
+                            style="animation-duration: 200ms;"
+                          />
                         </div>
                       </div>
                     }
@@ -2989,7 +2972,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                       style={Object {}}
                     >
                       <div
-                        className="za-popup za-popup--bottom za-popup--hidden"
+                        className="za-popup za-popup--bottom"
                         role="document"
                         style={
                           Object {
@@ -4233,7 +4216,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         </div>
                       </div>
                       <Mask
-                        className=""
+                        className="za-fade-enter"
                         onClick={[Function]}
                         prefixCls="za-mask"
                         style={
@@ -4243,8 +4226,19 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                           }
                         }
                         type="normal"
-                        visible={false}
-                      />
+                        visible={true}
+                      >
+                        <div
+                          className="za-mask za-fade-enter za-mask--normal"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "WebkitAnimationDuration": "200ms",
+                              "animationDuration": "200ms",
+                            }
+                          }
+                        />
+                      </Mask>
                     </div>
                   </Portal>
                 </Portal>
@@ -4375,7 +4369,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                           role="dialog"
                         >
                           <div
-                            class="za-popup za-popup--bottom za-popup--hidden"
+                            class="za-popup za-popup--bottom za-popup--show"
                             role="document"
                             style="transition-duration: 200ms;"
                           >
@@ -4882,6 +4876,10 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                               </div>
                             </div>
                           </div>
+                          <div
+                            class="za-mask za-fade-enter za-mask--normal"
+                            style="animation-duration: 200ms;"
+                          />
                         </div>
                       </div>
                     }
@@ -4892,7 +4890,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                       style={Object {}}
                     >
                       <div
-                        className="za-popup za-popup--bottom za-popup--hidden"
+                        className="za-popup za-popup--bottom"
                         role="document"
                         style={
                           Object {
@@ -6140,7 +6138,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                         </div>
                       </div>
                       <Mask
-                        className=""
+                        className="za-fade-enter"
                         onClick={[Function]}
                         prefixCls="za-mask"
                         style={
@@ -6150,8 +6148,19 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                           }
                         }
                         type="normal"
-                        visible={false}
-                      />
+                        visible={true}
+                      >
+                        <div
+                          className="za-mask za-fade-enter za-mask--normal"
+                          onClick={[Function]}
+                          style={
+                            Object {
+                              "WebkitAnimationDuration": "200ms",
+                              "animationDuration": "200ms",
+                            }
+                          }
+                        />
+                      </Mask>
                     </div>
                   </Portal>
                 </Portal>
@@ -6274,19 +6283,7 @@ exports[`DateSelect DateSelect year 1`] = `
               <Popup
                 onMaskClick={[Function]}
                 visible={false}
-              >
-                <Portal
-                  animationDuration={200}
-                  animationType="fade"
-                  direction="bottom"
-                  handlePortalUnmount={[Function]}
-                  mask={true}
-                  maskType="normal"
-                  onMaskClick={[Function]}
-                  prefixCls="za-popup"
-                  visible={false}
-                />
-              </Popup>
+              />
             </DatePicker>
           </LocaleReceiver>
         </ForwardRef(forwardRef)>

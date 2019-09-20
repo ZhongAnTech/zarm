@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+type getContainerFunc = () => HTMLElement;
+
 export interface BaseModalProps {
   shape?: 'radius' | 'rect';
   visible?: boolean;
@@ -11,6 +13,7 @@ export interface BaseModalProps {
   width?: string | number;
   afterClose?: () => void;
   onMaskClick?: () => void;
+  getContainer?: HTMLElement | getContainerFunc;
 }
 
 export interface BaseModalHeaderProps {

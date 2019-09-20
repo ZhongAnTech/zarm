@@ -25,7 +25,7 @@ export default class Modal extends Component<ModalProps, any> {
   };
 
   render() {
-    const { prefixCls, className, shape, children, ...others } = this.props;
+    const { prefixCls, className, shape, children, getContainer, ...others } = this.props;
 
     const cls = {
       modal: classnames(prefixCls, className, {
@@ -38,6 +38,7 @@ export default class Modal extends Component<ModalProps, any> {
       <Popup
         className={cls.modal}
         direction="center"
+        getContainer={getContainer}
         {...others}
       >
         <div className={cls.dialog}>

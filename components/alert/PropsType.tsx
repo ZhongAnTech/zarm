@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { Locale } from '../locale-provider/PropsType';
 
+type getContainerFunc = () => HTMLElement;
+
 export default interface PropsType {
   shape?: 'rect';
   visible?: boolean;
@@ -17,4 +19,5 @@ export default interface PropsType {
   onCancel?: () => void;
   afterClose?: () => void;
   locale?: Locale['Alert'];
+  getContainer?: HTMLElement | getContainerFunc;
 }
