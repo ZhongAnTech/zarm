@@ -39,22 +39,14 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { value, visible } = this.state;
-    // if ('focused' in nextProps || 'autoFocus' in nextProps) {
-    //   if (nextProps.focused || nextProps.autoFocus) {
-    //     this.onFocus();
-    //   } else {
-    //     this.onBlur();
-    //   }
-    // }
-
-    if ('value' in nextProps && value !== nextProps.value) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+      return {
         value: nextProps.value,
-        visible,
-      });
+        prevValue: nextProps.value,
+      };
     }
+    return null;
   }
 
   componentWillUnmount() {

@@ -35,12 +35,13 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if ('focused' in nextProps) {
-      this.setState({
+      return {
         focused: nextProps.focused,
-      });
+      };
     }
+    return null;
   }
 
   componentDidUpdate() {

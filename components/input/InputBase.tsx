@@ -35,12 +35,13 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps) {
     if ('value' in nextProps) {
-      this.setState({
+      return {
         value: nextProps.value,
-      });
+      };
     }
+    return null;
   }
 
   componentWillUnmount() {
