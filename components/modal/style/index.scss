@@ -12,7 +12,7 @@
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overflow: auto;
-  z-index: var(--zindex-modal);
+  // z-index: var(--zindex-modal);
 
   @include b(popup) {
     position: relative;
@@ -20,7 +20,7 @@
     background-color: var(--modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
-    z-index: calc(var(--zindex-modal) + 1);
+    // z-index: calc(var(--zindex-modal) + 1);
   }
 
   @include m(radius) {

@@ -13,6 +13,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   static defaultProps = {
     prefixCls: 'za-loading',
     mask: true,
+    disableBodyScroll: false,
   };
 
   static zarmLoading: null | HTMLElement;
@@ -59,11 +60,12 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     this.autoClose();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { visible } = this.props;
 
-    if (nextProps.visible !== visible) {
-      if (nextProps.visible === true) {
+    if (prevProps.visible !== visible) {
+      if (visible === true) {
+        // eslint-disable-next-line
         this.setState({
           visible: true,
         });

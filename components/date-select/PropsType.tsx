@@ -5,4 +5,5 @@ type datePickerPropsWithoutVisible = Omit<BaseDatePickerProps, 'visible'>;
 export default interface BaseDateSelectProps extends datePickerPropsWithoutVisible {
   placeholder?: string;
   format?: string;
+  disableBodyScroll: boolean;
 }

@@ -14,4 +14,5 @@ export default interface BasePickerProps extends BasePickerViewProps {
   getContainer?: HTMLElement | getContainerFunc;
   children?: any;
   locale?: Locale['Picker'] & Locale['Select'];
+  disableBodyScroll: boolean;
 }

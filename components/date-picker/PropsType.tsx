@@ -12,4 +12,5 @@ export default interface BaseDatePickerProps extends BaseDatePickerViewProps {
   maskClosable?: boolean;
   getContainer?: HTMLElement | getContainerFunc;
   children?: any;
+  disableBodyScroll: boolean;
 }

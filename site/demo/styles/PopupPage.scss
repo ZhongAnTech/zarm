@@ -6,6 +6,7 @@
     height: 100%;
     padding: r(20) r(20) r(300);
     background: #fff;
+    -webkit-overflow-scrolling: touch;
   }
 
   @at-root .popup-box-left {

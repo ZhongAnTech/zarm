@@ -1,11 +1,10 @@
 import React, { HTMLAttributes } from 'react';
-import ReactDOM, { createPortal } from 'react-dom';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
 
 import ClickOutside from '../click-outside';
-import { invertKeyValues } from '../utils';
 import domUtil from '../utils/dom';
 import BasePopperProps, { PopperState, PopperTrigger, directionMap } from './PropsType';
 
@@ -14,14 +13,23 @@ export interface PopperProps extends BasePopperProps {
   className?: string;
 }
 
-function getPopperClientRect(popperOffsets) {
+const invertKeyValues = (obj: object, fn?) => {
+  return Object.keys(obj).reduce((acc, key) => {
+    const val = fn ? fn(obj[key]) : obj[key];
+    acc[val] = acc[val] || [];
+    acc[val].push(key);
+    return acc as object;
+  }, {});
+};
+
+const getPopperClientRect = (popperOffsets) => {
   const offsets = { ...popperOffsets };
   offsets.right = offsets.left + offsets.width;
   offsets.bottom = offsets.top + offsets.height;
   return offsets;
-}
+};
 
-function customArrowOffsetFn(data: PopperJS.Data) {
+const customArrowOffsetFn = (data: PopperJS.Data) => {
   const [placement, placement1] = data.placement.split('-');
   const arrow = data.instance.options.modifiers && data.instance.options.modifiers!.arrow!.element as Element;
   const { offsets: { reference } } = data;
@@ -46,7 +54,7 @@ function customArrowOffsetFn(data: PopperJS.Data) {
   data.arrowStyles[altSide] = '';
 
   return data;
-}
+};
 
 const popperInstances: Set<PopperJS> = new Set();
 
@@ -150,8 +158,8 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
   handleOpen = () => {
     const { direction, hasArrow, arrowPointAtCenter, onVisibleChange } = this.props;
     const { visible } = this.state;
-    const reference = ReactDOM.findDOMNode(this.reference) as Element; // eslint-disable-line
-    const popperNode = ReactDOM.findDOMNode(this.popperNode) as Element; // eslint-disable-line
+    const reference = this.reference as Element;
+    const popperNode = this.popperNode as Element;
 
     if (!popperNode || !visible) {
       return;

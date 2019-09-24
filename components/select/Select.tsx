@@ -26,11 +26,12 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     prefixCls: 'za-select',
     dataSource: [],
     valueMember: 'value',
-    itemRender: data => data.label,
+    itemRender: data => data && data.label,
     cols: Infinity,
     maskClosable: true,
-    displayRender: selected => selected.map(item => item.label),
+    displayRender: selected => selected.map(item => item && item.label),
     onClick: () => {},
+    disableBodyScroll: true,
   };
 
   state: SelectState = {

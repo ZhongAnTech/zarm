@@ -1,8 +1,17 @@
 @import "../../style/core/index";
 
+.ReactModal__Body--open {
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 @include b(popup) {
   z-index: var(--zindex-popup);
   -webkit-overflow-scrolling: touch;
+  margin: auto;
 
   @include e(wrapper) {
     position: fixed;
@@ -10,10 +19,12 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: var(--zindex-mask);
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   @include m(nomask) {
@@ -31,6 +42,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
+    transform: translate(0, 100%);
   }
 
   @include m(top) {
@@ -38,6 +50,7 @@
     left: 0;
     top: 0;
     width: 100%;
+    transform: translate(0, -100%);
   }
 
   @include m(left) {
@@ -45,6 +58,7 @@
     left: 0;
     top: 0;
     height: 100%;
+    transform: translate(-100%, 0);
   }
 
   @include m(right) {
@@ -52,23 +66,24 @@
     right: 0;
     top: 0;
     height: 100%;
+    transform: translate(100%, 0);
   }
 
-  @include m(hidden) {
+  @include m(show) {
     @include m(bottom) {
-      transform: translate(0, 100%);
+      transform: translate(0, 0);
     }
 
     @include m(top) {
-      transform: translate(0, -100%);
+      transform: translate(0, 0);
     }
 
     @include m(left) {
-      transform: translate(-100%, 0);
+      transform: translate(0, 0);
     }
 
     @include m(right) {
-      transform: translate(100%, 0);
+      transform: translate(0, 0);
     }
   }
 }

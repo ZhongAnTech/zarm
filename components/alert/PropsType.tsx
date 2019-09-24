@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { Locale } from '../locale-provider/PropsType';
 
 type getContainerFunc = () => HTMLElement;
+
 export default interface PropsType {
   shape?: 'rect';
   visible?: boolean;

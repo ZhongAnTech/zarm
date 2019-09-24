@@ -20,9 +20,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     offset: 10,
   };
 
-  private isOpen: boolean = false;
+  private isOpen = false;
 
-  private touchEnd: boolean = true;
+  private touchEnd = true;
 
   private wrap;
 

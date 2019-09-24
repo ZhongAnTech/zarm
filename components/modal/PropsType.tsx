@@ -18,6 +18,7 @@ export interface BaseModalProps {
   title?: ReactNode;
   footer?: ReactNode;
   onCancel?: () => void;
+  disableBodyScroll: boolean;
 }
 
 export interface BaseModalHeaderProps {

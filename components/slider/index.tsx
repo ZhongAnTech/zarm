@@ -78,7 +78,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
   private container: HTMLDivElement | null = null;
 
-  private offsetStart: number = 0;
+  private offsetStart = 0;
 
   state: SliderStates = {
     value: getValue(this.props, 0),

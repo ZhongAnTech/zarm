@@ -5,4 +5,5 @@ type pickerPropsWithoutVisible = Omit<BasePickerProps, 'visible'>;
 export default interface BaseSelectProps extends pickerPropsWithoutVisible {
   placeholder?: string;
   displayRender?: (data?: object) => string;
+  disableBodyScroll: boolean;
 }

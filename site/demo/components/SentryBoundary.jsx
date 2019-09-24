@@ -4,7 +4,7 @@ import { version } from '@/package.json';
 
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
-    dsn: 'https://65316bddbfa64862bf282ccf5740d686@ets.zhonganinfo.com/44',
+    dsn: 'https://65316bddbfa64862bf282ccf5740d686@ets.zhongan.io/44',
     release: version,
     environment: 'prd',
   });

@@ -39,7 +39,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
   private lastIn?: boolean = false;
 
   // 当前组件是否需要更新
-  private isRefresh: boolean = true;
+  private isRefresh = true;
 
   // 当前月份的dom
   private node?: any;

@@ -31,6 +31,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     valueMember: 'value',
     onCancel: () => {},
     onInit: () => {},
+    disableBodyScroll: true,
   };
 
   private initDate;
@@ -126,7 +127,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, locale, getContainer, maskClosable, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, children, locale, getContainer, maskClosable, disableBodyScroll, ...others } = this.props;
     const cls = classnames(prefixCls, className);
     const { visible, value } = this.state;
     const noop = () => {};
@@ -136,6 +137,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
         getContainer={getContainer}
+        disableBodyScroll={disableBodyScroll}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
