@@ -12,6 +12,7 @@ export default class Demo extends React.Component {
     this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
     this.title = String(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
+    this.containerElem = null;
   }
 
   componentDidMount() {

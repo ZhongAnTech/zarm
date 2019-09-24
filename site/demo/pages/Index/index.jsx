@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Panel, Cell } from 'zarm';
 import { components } from '@site/site.config';
-import Format from '@site/utils/format';
+import ChangeCase from 'change-case';
 import Container from '@site/demo/components/Container';
 import Footer from '@site/demo/components/Footer';
 import './style.scss';
@@ -14,7 +14,7 @@ class Page extends PureComponent {
         {
           components[key]
             .sort((a, b) => {
-              return a.name.localeCompare(b.name);
+              return a.key.localeCompare(b.key);
             })
             .map((component, i) => (
               <Cell
@@ -22,11 +22,11 @@ class Page extends PureComponent {
                 key={+i}
                 title={(
                   <div className="menu-item-content">
-                    <span>{component.name}</span>
-                    <span className="chinese">{component.description}</span>
+                    <span>{ChangeCase.pascalCase(component.key)}</span>
+                    <span className="chinese">{component.name}</span>
                   </div>
                 )}
-                onClick={() => history.push(`/${Format.camel2Dash(component.name)}`)}
+                onClick={() => history.push(`/${component.key}`)}
               />
             ))
         }

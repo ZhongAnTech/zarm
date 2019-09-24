@@ -1,12 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import { Icon } from 'dragon-ui';
 import { design } from '@site/site.config';
-import Format from '@site/utils/format';
 import Container from '@site/web/components/Container';
 import Header from '@site/web/components/Header';
-import Footer from '@site/web/components/Footer';
 import ScrollToTop from '@site/web/components/ScrollToTop';
 import './style.scss';
 
@@ -33,7 +30,7 @@ class Page extends PureComponent {
             <Switch>
               {
                 design.map((doc, i) => (
-                  <Route key={+i} path={`/design/${Format.camel2Dash(doc.name)}`} component={LoadableComponent(doc)} />
+                  <Route key={+i} path={`/design/${doc.key}`} component={LoadableComponent(doc)} />
                 ))
               }
               <Redirect to="/" />
