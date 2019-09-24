@@ -1,9 +1,9 @@
 import BaseDatePickerProps from '../date-picker/PropsType';
 
-type getContainerFunc = () => HTMLElement;
+type datePickerPropsWithoutVisible = Omit<BaseDatePickerProps, 'visible'>;
 
-export default interface BaseDateSelectProps extends BaseDatePickerProps {
+export default interface BaseDateSelectProps extends datePickerPropsWithoutVisible {
   placeholder?: string;
   format?: string;
-  getContainer: HTMLElement | getContainerFunc;
+  disableBodyScroll: boolean;
 }

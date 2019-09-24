@@ -6,6 +6,9 @@
     @include e(body) {
       text-align: center;
     }
+    @include e(footer) {
+      padding-bottom: 0;
+    }
   }
 
   @include e(button) {

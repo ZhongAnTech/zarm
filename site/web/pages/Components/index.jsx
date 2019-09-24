@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import Loadable from 'react-loadable';
 import { Icon } from 'zarm';
 import { documents, components } from '@site/site.config';
-import Format from '@site/utils/format';
 import Container from '@site/web/components/Container';
 import Header from '@site/web/components/Header';
 import SideBar from '@site/web/components/SideBar';
@@ -19,7 +18,7 @@ const LoadableComponent = (component) => {
     loader: component.module,
     render: (loaded, props) => {
       const C = loaded.default;
-      return <Markdown document={C} className={`${Format.camel2Dash(component.name)}-page`} {...props} />;
+      return <Markdown document={C} component={component} {...props} />;
     },
     loading: () => null,
   });
@@ -50,12 +49,12 @@ class Page extends PureComponent {
             <Switch>
               {
                 documents.map((doc, i) => (
-                  <Route key={+i} path={`/components/${Format.camel2Dash(doc.name)}`} component={LoadableComponent(doc)} />
+                  <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
                 ))
               }
               {
                 [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
-                  <Route key={+i} path={`/components/${Format.camel2Dash(component.name)}`} component={LoadableComponent(component)} />
+                  <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
                 ))
               }
               <Redirect to="/" />

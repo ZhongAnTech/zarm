@@ -12,19 +12,25 @@ export interface BaseModalProps {
   animationDuration?: number;
   width?: string | number;
   afterClose?: () => void;
-  onMaskClick?: () => void;
+  maskClosable?: boolean;
+  closable?: boolean;
   getContainer?: HTMLElement | getContainerFunc;
+  title?: ReactNode;
+  footer?: ReactNode;
+  onCancel?: () => void;
+  disableBodyScroll: boolean;
 }
 
 export interface BaseModalHeaderProps {
   title?: ReactNode;
-  onClose?: () => void;
+  closable?: boolean;
+  onCancel?: () => void;
 }
 
-export interface BaseModalBodyProps {
-  height?: string | number;
-}
+// export interface BaseModalBodyProps {
+//   height?: string | number;
+// }
 
-export interface BaseModalFooterProps {
-  block?: boolean;
-}
+// export interface BaseModalFooterProps {
+//   block?: boolean;
+// }

@@ -1,10 +1,115 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Modal from './Modal';
-import ModalHeader from './ModalHeader';
-import ModalBody from './ModalBody';
-import ModalFooter from './ModalFooter';
+import Alert from '../alert';
+import Confirm from '../confirm';
 
-Modal.Header = ModalHeader;
-Modal.Body = ModalBody;
-Modal.Footer = ModalFooter;
+
+function modalType(props, type) {
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+
+  let resolveFn = (result: boolean) => result;
+  const { onCancel, onOk } = props;
+
+  function _onCancel(renderFn) {
+    if (!onCancel) {
+      renderFn(false);
+      resolveFn(true);
+      return;
+    }
+    const cancelResult = onCancel();
+    if (cancelResult instanceof Promise) {
+      cancelResult.then((res) => {
+        if (res === false) {
+          return;
+        }
+        renderFn(false);
+        resolveFn(true);
+      });
+    } else {
+      if (cancelResult === false) {
+        return;
+      }
+      renderFn(false);
+      resolveFn(true);
+    }
+  }
+
+  function _onOk(renderFn) {
+    if (!onOk) {
+      renderFn(false);
+      resolveFn(true);
+      return;
+    }
+    const okResult = onOk();
+    if (okResult instanceof Promise) {
+      okResult.then((res) => {
+        if (res === false) {
+          return;
+        }
+        renderFn(false);
+        resolveFn(true);
+      });
+    } else {
+      if (okResult === false) {
+        return;
+      }
+      renderFn(false);
+      resolveFn(true);
+    }
+  }
+
+  function _afterClose() {
+    if (div.parentNode) {
+      div.parentNode.removeChild(div);
+    }
+  }
+
+  function render(visible) {
+    if (type === 'alert') {
+      ReactDOM.render(
+        <Alert {...props} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
+        div,
+      );
+    } else {
+      ReactDOM.render(
+        <Confirm {...props} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
+        div,
+      );
+    }
+  }
+
+  const returnResult = new Promise((resolve) => {
+    resolveFn = resolve as typeof resolveFn;
+    render(true);
+  });
+
+  return {
+    hide: () => {
+      render(false);
+      resolveFn(true);
+    },
+    then: (resolve) => {
+      return returnResult.then((res) => {
+        resolve(res);
+      });
+    },
+    catch: (resolve, reject) => {
+      return returnResult.catch((res) => {
+        reject(res);
+      });
+    },
+  };
+}
+
+
+Modal.alert = function alert(props) {
+  return modalType(props, 'alert');
+};
+
+Modal.confirm = function alert(props) {
+  return modalType(props, 'confirm');
+};
 
 export default Modal;

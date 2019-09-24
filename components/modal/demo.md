@@ -45,15 +45,15 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal2')}>开启</Button>
           }
         >
-          直角
+          有底部按钮
         </Cell>
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('modal2')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
           }
         >
           遮罩层可关闭
@@ -64,7 +64,7 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => this.open('modal4')}>开启</Button>
           }
         >
-          无头部
+          无头部，无底部
         </Cell>
 
         <Cell
@@ -106,47 +106,74 @@ class Demo extends React.Component {
           挂载到指定dom节点
         </Cell>
 
-        <Modal visible={modal1}>
-          <Modal.Header title="标题" onClose={() => this.close('modal1')} />
-          <Modal.Body>
-            模态框内容
-          </Modal.Body>
+        <Modal
+          visible={modal1}
+          title="标题"
+          closable
+          onCancel={() => this.close('modal1')}
+        >
+          模态框内容
         </Modal>
 
-        <Modal visible={modal2} onMaskClick={() => this.close('modal2')}>
-          <Modal.Header title="标题" />
-          <Modal.Body>点击遮罩层关闭</Modal.Body>
+        <Modal
+          title="标题"
+          visible={modal2}
+          closable
+          onCancel={() => this.close('modal2')}
+          footer={
+            <Button
+              block
+              theme="primary"
+              onClick={() => this.close('modal2')}
+            >确认</Button>
+          }
+        >
+          模态框内容
         </Modal>
-        
 
-        <Modal shape="rect" visible={modal3}>
-          <Modal.Header title="标题" onClose={() => this.close('modal3')} />
-          <Modal.Body>模态框内容</Modal.Body>
+        <Modal
+          visible={modal3}
+          title="标题"
+          maskClosable
+          onCancel={() => this.close('modal3')}
+        >
+          点击遮罩层关闭
         </Modal>
 
-        <Modal visible={modal4} onMaskClick={() => this.close('modal4')}>
-          <Modal.Body>无头部</Modal.Body>
+        <Modal
+          visible={modal4}
+          maskClosable
+          onCancel={() => this.close('modal4')}
+        >
+          无头部，无底部
         </Modal>
 
-        <Modal visible={modal5} animationType={animationType} onMaskClick={() => this.close('modal5')}>
-          <Modal.Body>
-            <div style={{ height: 100 }}>当前使用的动画类型animationType：'{animationType}'</div>
-          </Modal.Body>
+        <Modal
+          visible={modal5}
+          animationType={animationType}
+          maskClosable
+          onCancel={() => this.close('modal5')}
+        >
+            <div style={{ height: 100 }}>
+              当前使用的动画类型animationType：'{animationType}'
+            </div>
         </Modal>
 
         <Modal
           visible={specModal}
-          onMaskClick={() => this.close('specModal')}
+          maskClosable
+          onCancel={() => this.close('specModal')}
           getContainer={() => this.myRef.current}
         >
-          <Modal.Body>挂载到指定dom节点</Modal.Body>
+          挂载到指定dom节点
         </Modal>
 
         <div
           id="test-div"
           style={{ position: 'relative', zIndex: 1 }}
           ref={this.myRef} 
-          />
+        />
+        
       </>
     )
   }
@@ -155,11 +182,9 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 警告框 Alert
 ```jsx
-import { Cell, Button, Alert, Confirm  } from 'zarm';
+import { Cell, Button, Alert, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
   state = {
@@ -173,14 +198,32 @@ class Demo extends React.Component {
     });
   }
 
-  render() {
+   render() {
     const { alert, confirm } = this.state;
 
     return (
       <>
         <Cell
           description={
-            <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
+            <Button size="xs" onClick={
+              async() => {
+                const modal = Modal.alert({
+                  title: '静态调用的title',
+                  message: '静态调用的body',
+                  onCancel: () => {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                    }).catch(() => {
+                      window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                      return false; // 返回false，可使弹窗无法关闭
+                    })
+                  }
+                });
+
+                if (await modal) {
+                  console.log('关闭');
+                }
+            }}>开启</Button>
           }
         >
           普通调用
@@ -226,7 +269,6 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
 ## 确认框 Confirm
 ```jsx
 import { Cell, Button, Confirm  } from 'zarm';
@@ -258,6 +300,11 @@ class Demo extends React.Component {
         <Cell
           description={
             <Button size="xs" onClick={() => {
+              const modal1 = modal.confirm();
+
+              modal1.destroy().then(() => {
+                
+              })
               Confirm.show({
                 title: '确认信息',
                 message: '通过传参或promise调用均可关闭',
@@ -363,3 +410,6 @@ Alert.hide();
 // 隐藏确认框
 Confirm.hide();
 ```
+
+
+

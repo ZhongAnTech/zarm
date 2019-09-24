@@ -47,7 +47,7 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const { document, className } = this.props;
+    const { document, component } = this.props;
     if (typeof document === 'string') {
       this.components.clear();
 
@@ -85,7 +85,7 @@ export default class Markdown extends React.Component {
       // );
 
       return (
-        <Container className={className}>
+        <Container className={`${component.key}-page`}>
           <main dangerouslySetInnerHTML={{ __html: html }} />
           {/* <NavBar
             style={{ position: 'fixed', top: 0 }}

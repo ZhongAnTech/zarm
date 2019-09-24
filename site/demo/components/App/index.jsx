@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 import { Loading } from 'zarm';
-import Format from '@site/utils/format';
+import ChangeCase from 'change-case';
 import { components } from '@site/site.config';
 import SentryBoundary from '@site/demo/components/SentryBoundary';
 import Markdown from '@site/demo/components/Markdown';
@@ -26,9 +26,9 @@ const LoadablePage = (loader) => {
 
 const LoadableComponent = (component) => {
   const loader = { page: component.module };
-
-  if (HAS_STYLE_COMPONENT.indexOf(component.name) > -1) {
-    loader.style = () => import(`@site/demo/styles/${component.name}Page`);
+  const compName = ChangeCase.pascalCase(component.key);
+  if (HAS_STYLE_COMPONENT.indexOf(compName) > -1) {
+    loader.style = () => import(`@site/demo/styles/${compName}Page`);
   }
 
   return Loadable.Map({
@@ -37,11 +37,7 @@ const LoadableComponent = (component) => {
       return (
         <Markdown
           document={loaded.page.default}
-          // data={{
-          //   name: component.name,
-          //   description: component.description,
-          // }}
-          className={`${Format.camel2Dash(component.name)}-page`}
+          component={component}
           {...props}
         />
       );
@@ -61,7 +57,7 @@ class App extends Component {
           <Route exact path="/" component={LoadablePage(() => import('@site/demo/pages/Index'))} />
           {
             [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
-              <Route key={+i} path={`/${Format.camel2Dash(component.name)}`} component={LoadableComponent(component)} />
+              <Route key={+i} path={`/${component.key}`} component={LoadableComponent(component)} />
             ))
           }
           <Route component={LoadablePage(() => import('@site/demo/pages/NotFoundPage'))} />

@@ -200,11 +200,10 @@ describe('picture thumbnail', () => {
     },
   });
 
-  let drawImageCallback = null;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function hookDrawImageCall(callback) {
-    drawImageCallback = callback;
-  }
+  const drawImageCallback = null;
+  // function hookDrawImageCall(callback) {
+  //   drawImageCallback = callback;
+  // }
   const canvasSpy = spyElementPrototypes(HTMLCanvasElement, {
     getContext: () => ({
       drawImage: (...args) => {

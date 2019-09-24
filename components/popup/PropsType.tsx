@@ -15,4 +15,5 @@ export default interface PropsType {
   width?: string | number;
   maskType?: 'transparent' | 'normal';
   onMaskClick?: () => void;
+  disableBodyScroll: boolean;
 }

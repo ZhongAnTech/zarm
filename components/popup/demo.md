@@ -103,7 +103,7 @@ class Demo extends React.Component {
         <Popup
           visible={visible.popBottom}
           direction="bottom"
-          onMaskClick={() => this.toggle('popBottom')}
+          onMaskClick={() => { console.log(123); this.toggle('popBottom')}}
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
         >
@@ -149,7 +149,6 @@ class Demo extends React.Component {
 
         <Popup
           visible={visible.popCenter}
-          onMaskClick={() => this.toggle('popCenter')}
           direction="center"
           width="70%"
           afterClose={() => console.log('关闭')}
@@ -175,6 +174,8 @@ class Demo extends React.Component {
           style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 1 }}
           ref={this.myRef}
         />
+
+        <p style={{ height: '500px' }}>撑开高度</p>
       </div>
     )
   }
