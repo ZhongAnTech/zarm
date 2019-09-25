@@ -28,8 +28,12 @@ class Demo extends React.Component {
 
   toggle = (key) => {
     const visible = this.state.visible;
-    visible[key] = !visible[key];
-    this.setState({ visible });
+    this.setState({ 
+      visible:{
+        ...visible,
+        [key]: !visible[key]
+      }
+    });
   }
 
   render() {
@@ -51,7 +55,10 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.toggle('popBottom')}>开启</Button>
+            <Button size="xs" onClick={() => { this.toggle('popBottom'); 
+              setTimeout(() => {
+                this.toggle('popBottom');
+              }, 3000); }}>开启</Button>
           }
         >
           从下方弹出
@@ -94,6 +101,7 @@ class Demo extends React.Component {
           direction="top"
           mask={false}
           afterClose={() => { console.log('关闭'); }}
+          // destroy={true}
         >
           <div className="popup-box-top">
             更新成功
@@ -103,9 +111,10 @@ class Demo extends React.Component {
         <Popup
           visible={visible.popBottom}
           direction="bottom"
-          onMaskClick={() => { console.log(123); this.toggle('popBottom')}}
+          onMaskClick={() => { this.toggle('popBottom')}}
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
+          // destroy={true}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => { this.toggle('picker'); }}>打开Picker</Button>

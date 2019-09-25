@@ -52,7 +52,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private enableScrollElement: HTMLElement | null;
 
-
   enableScrollTarget = React.createRef<HTMLElement>();
 
   constructor(props) {
@@ -60,7 +59,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     this.state = {
       isPending: false,
     };
-
     this.createContainer();
   }
 
@@ -119,12 +117,20 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   animationEnd = (e) => {
     e.stopPropagation();
-    const { afterClose, afterOpen, handlePortalUnmount, visible } = this.props;
+    const { afterClose, afterOpen, handlePortalUnmount, visible, destroy } = this.props;
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
-      this.setState({
-        isPending: false,
-      });
+      if (destroy) {
+        this.setState({
+          isPending: true,
+        });
+      } else {
+        // this.setState({
+        //   isPending: false,
+        // });
+        this._container.classList.add('_hidden');
+      }
+
       if (typeof afterClose === 'function') {
         afterClose();
       }
@@ -211,6 +217,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
       : {
         WebkitTransitionDuration: `${animationDuration}ms`,
         transitionDuration: `${animationDuration}ms`,
+        WebkitTransitionProperty: 'transform',
+        transitionProperty: 'transform',
       };
 
     if (!mask) {
@@ -266,6 +274,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { visible, prefixCls, disableBodyScroll } = this.props;
     if (visible) {
       if (this.popup) {
+        this._container.classList.remove('_hidden');
         this.setState({
           isPending: true,
         });
