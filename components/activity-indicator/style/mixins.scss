@@ -7,6 +7,7 @@
   $selector: selector-append(get-block(&), $--keyframes-separator + $name);
   $selector: str-selector($selector);
   $selector: str-slice($selector, 2, str-length($selector) - 1);
+
   @at-root {
     @keyframes #{$selector} {
       @content;
@@ -18,5 +19,6 @@
   $selector: selector-append(get-block(&), $--keyframes-separator + $name);
   $selector: str-selector($selector);
   $selector: str-slice($selector, 2, str-length($selector) - 1);
+
   animation: $selector $value;
 }
