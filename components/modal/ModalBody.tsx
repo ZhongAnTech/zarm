@@ -1,6 +1,5 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseModalBodyProps } from './PropsType';
 
 interface ModalBodyProps {
   prefixCls?: string;

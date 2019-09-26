@@ -8,8 +8,10 @@ export interface PopupProps extends PropsType {
 }
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps = {
-    destroy: false,
+    destroy: true,
   };
+
+  private portalRef: Portal | null;
 
   constructor(props) {
     super(props);
@@ -33,7 +35,6 @@ export default class Popup extends PureComponent<PopupProps, any> {
   componentDidUpdate(prevProps) {
     const { visible } = this.props;
     if (prevProps.visible !== visible) {
-      console.log('prevProps.visible -> ', prevProps.visible, 'visible -> ', visible);
       if (visible) {
         // eslint-disable-next-line
         this.setState({
@@ -66,7 +67,6 @@ export default class Popup extends PureComponent<PopupProps, any> {
 
   render() {
     const { renderPortal, portalVisible } = this.state;
-    console.log('portalVisible', portalVisible);
-    return renderPortal && <Portal {...this.props} visible={portalVisible} handlePortalUnmount={this.handlePortalUnmount} />;
+    return renderPortal && <Portal ref={(ref) => { this.portalRef = ref; }} {...this.props} visible={portalVisible} handlePortalUnmount={this.handlePortalUnmount} />;
   }
 }

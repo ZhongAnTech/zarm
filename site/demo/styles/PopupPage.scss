@@ -24,4 +24,10 @@
     font-size: r(14);
     text-align: center;
   }
+
+  @at-root .popup-box-bottom {
+    height: r(450);
+    padding: r(20) r(20) r(100);
+    background: #fff;
+  }
 }

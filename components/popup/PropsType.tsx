@@ -8,13 +8,13 @@ export default interface PropsType {
     'moveUp' | 'moveDown' | 'moveLeft' | 'moveRight' |
     'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
-  afterOpen?: () => void;
-  afterClose?: () => void;
-  getContainer?: HTMLElement | getContainerFunc;
-  mask?: boolean;
   width?: string | number;
+  mask?: boolean;
   maskType?: 'transparent' | 'normal';
-  onMaskClick?: () => void;
   disableBodyScroll: boolean;
   destroy: boolean;
+  afterOpen?: () => void;
+  afterClose?: () => void;
+  onMaskClick?: () => void;
+  getContainer?: HTMLElement | getContainerFunc;
 }

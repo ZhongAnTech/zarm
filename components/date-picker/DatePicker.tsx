@@ -29,9 +29,11 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     minuteStep: 1,
     prefixCls: 'za-date-picker',
     valueMember: 'value',
+    disableBodyScroll: true,
+    maskClosable: true,
+    destroy: false,
     onCancel: () => {},
     onInit: () => {},
-    disableBodyScroll: true,
   };
 
   private initDate;
@@ -127,7 +129,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, children, locale, getContainer, maskClosable, disableBodyScroll, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, disableBodyScroll, destroy, ...others } = this.props;
     const cls = classnames(prefixCls, className);
     const { visible, value } = this.state;
     const noop = () => {};
@@ -138,6 +140,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         onMaskClick={maskClosable ? this.onCancel : noop}
         getContainer={getContainer}
         disableBodyScroll={disableBodyScroll}
+        destroy={destroy}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>

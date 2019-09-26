@@ -52,6 +52,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private enableScrollElement: HTMLElement | null;
 
+
   enableScrollTarget = React.createRef<HTMLElement>();
 
   constructor(props) {
@@ -94,8 +95,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
     disableBodyScroll && unlockBodyScroll(this.enableScrollElement);
 
-    Portal.unmountModalInstance(this, () => {
-      disableBodyScroll && clearAllBodyScrollLocks();
+    disableBodyScroll && Portal.unmountModalInstance(this, () => {
+      clearAllBodyScrollLocks();
     });
   }
 
@@ -117,20 +118,10 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   animationEnd = (e) => {
     e.stopPropagation();
-    const { afterClose, afterOpen, handlePortalUnmount, visible, destroy } = this.props;
+    const { afterClose, afterOpen, handlePortalUnmount, visible } = this.props;
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
-      if (destroy) {
-        this.setState({
-          isPending: true,
-        });
-      } else {
-        // this.setState({
-        //   isPending: false,
-        // });
-        this._container.classList.add('_hidden');
-      }
-
+      this._container.classList.add('_hidden');
       if (typeof afterClose === 'function') {
         afterClose();
       }
@@ -227,8 +218,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
           className={cls.popup}
           style={popupStyle}
           role="dialog"
-          ref={(popup) => {
-            this.popup = popup;
+          ref={(ref) => {
+            this.popup = ref;
           }}
         >
           {
@@ -252,8 +243,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
           }}
         >
           <div
-            ref={(popup) => {
-              this.popup = popup;
+            ref={(ref) => {
+              this.popup = ref;
             }}
             className={cls.popup}
             style={popupStyle}
@@ -281,13 +272,16 @@ export default class Portal extends PureComponent<PortalProps, any> {
         this.popup.focus();
         this.popup.classList.add(`${prefixCls}--show`);
         disableBodyScroll && lockBodyScroll(this.enableScrollElement);
-        Portal.instanceList.push(this);
+        disableBodyScroll && Portal.instanceList.push(this);
       }
     } else {
       this.setState({
         isPending: true,
       });
       this.popup!.classList.remove(`${prefixCls}--show`);
+      disableBodyScroll && Portal.unmountModalInstance(this, () => {
+        clearAllBodyScrollLocks();
+      });
     }
   }
 
