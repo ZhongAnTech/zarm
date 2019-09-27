@@ -14,7 +14,12 @@ export default interface PropsType {
   width?: string | number;
   title?: ReactNode;
   message?: ReactNode;
+  mask: boolean;
+  maskType?: 'transparent' | 'normal';
+  maskClosable?: boolean;
   cancelText?: string;
+  destroy: boolean;
+  disableBodyScroll: boolean;
   onCancel?: () => void;
   afterClose?: () => void;
   locale?: Locale['Alert'];

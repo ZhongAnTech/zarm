@@ -11,7 +11,7 @@ export interface BaseModalProps {
     'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
   width?: string | number;
-  mask?: boolean;
+  mask: boolean;
   maskType?: 'transparent' | 'normal';
   maskClosable?: boolean;
   closable?: boolean;

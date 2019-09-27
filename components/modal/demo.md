@@ -225,13 +225,12 @@ class Demo extends React.Component {
             }}>开启</Button>
           }
         >
-          静态调用（静态关闭，可不传onCancel）
+          静态调用（静态关闭）
         </Cell>
 
         <Cell
           description={
-            <Button size="xs" onClick={
-              async() => {
+            <Button size="xs" onClick={() => {
                 const modal = Modal.alert({
                   title: '静态调用的title',
                   message: '静态调用的body，使用promise关闭',
@@ -245,10 +244,6 @@ class Demo extends React.Component {
                     })
                   }
                 });
-
-                if (await modal) {
-                  console.log('关闭');
-                }
             }}>开启</Button>
           }
         >
@@ -320,30 +315,25 @@ class Demo extends React.Component {
             }}>开启</Button>
           }
         >
-          静态调用（静态关闭，可不传onCancel和onOk）
+          静态调用（静态关闭）
         </Cell>
 
         <Cell
           description={
-            <Button size="xs" onClick={
-              async() => {
-                const modal = Modal.confirm({
-                  title: '静态调用的title',
-                  message: '静态调用的body，使用promise关闭',
-                  onCancel: () => {
-                    return new Promise((resolve, reject) => {
-                      resolve();
-                      // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
-                    }).catch(() => {
-                      window.alert('出错啦，弹窗无法关闭，继续点击试试');
-                      return false; // 返回false，可使弹窗无法关闭
-                    })
-                  }
-                });
-
-                if (await modal) {
-                  console.log('关闭');
+            <Button size="xs" onClick={() => {
+              const modal = Modal.confirm({
+                title: '静态调用的title',
+                message: '静态调用的body，使用promise关闭',
+                onCancel: () => {
+                  return new Promise((resolve, reject) => {
+                    resolve();
+                    // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                  }).catch(() => {
+                    window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                    return false; // 返回false，可使弹窗无法关闭
+                  })
                 }
+              });
             }}>开启</Button>
           }
         >
@@ -379,10 +369,19 @@ ReactDOM.render(<Demo />, mountNode);
 | animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | '70%' | 宽度 |
+| mask | boolean | true | 是否展示遮罩层 |
+| maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
+| maskClosable | boolean | false | 是否点击遮罩层时关闭，默认是 |
+| closable | boolean | false | 右上角是否显示关闭按钮 |
+| title | ReactNode | - | 标题 |
+| footer | ReactNode | - | 弹窗底部内容 |
+| disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
+| destroy | boolean | true | 弹层关闭后是否移除节点 |
+| onCancel | () => void | - | 如果maskClosable或closable为true，那么点击遮罩或者右上角关闭按钮会调用此函数 |
+| afterOpen | () => void | - | 模态框打开后的回调 |
 | afterClose | () => void | - | 模态框关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Modal 挂载的 HTML 节点 |
-
 
 ## 静态方法
 
@@ -431,8 +430,6 @@ const modal = Modal.confirm({
 | okText | ReactNode | '确认' | 确认按钮的内容 |
 | onOk | () => void | - | 点击“确认”后的回调函数(Confirm) |
 | onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
-| animationType | string | 'zoom' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
-| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 
 
 
