@@ -189,8 +189,8 @@
 
   // Checkbox
   --checkbox-size: 18px;
-  --checkbox-background: #fff;
-  --checkbox-border: #bcbcbc;
+  --checkbox-radius: var(--radius-md);
+  --checkbox-border-color: #bcbcbc;
   --checkbox-color: #909090;
 
   // Collapse
@@ -263,8 +263,8 @@
 
   // Radio
   --radio-size: 18px;
-  --radio-background: #fff;
-  --radio-border: #bcbcbc;
+  --radio-radius: var(--radius-round);
+  --radio-border-color: #bcbcbc;
   --radio-color: #909090;
 
   // SearchBar

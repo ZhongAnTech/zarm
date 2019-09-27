@@ -35,9 +35,9 @@
     justify-content: center;
     width: var(--checkbox-size);
     height: var(--checkbox-size);
-    border: 1px solid var(--checkbox-border);
-    border-radius: var(--radius-md);
-    background: var(--checkbox-background);
+    border: 1px solid var(--checkbox-border-color);
+    border-radius: var(--checkbox-radius);
+    background: var(--color-text-inverse);
 
     &:before {
       content: '';
@@ -109,9 +109,9 @@
         var(--button-icon-size-xs),
       );
       @include button-ghost(
-        var(--checkbox-border),
+        var(--checkbox-border-color),
         var(--checkbox-color),
-        var(--checkbox-border),
+        var(--checkbox-border-color),
         var(--checkbox-color),
       );
 
@@ -134,7 +134,7 @@
 
     @include m(radius) {
       @include b(checkbox) {
-        @include button-shape(var(--radius-md));
+        @include button-shape(var(--checkbox-radius));
       }
     }
 
