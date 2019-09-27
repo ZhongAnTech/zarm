@@ -11,14 +11,18 @@ export interface BaseModalProps {
     'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
   width?: string | number;
-  afterClose?: () => void;
+  mask?: boolean;
+  maskType?: 'transparent' | 'normal';
   maskClosable?: boolean;
   closable?: boolean;
   getContainer?: HTMLElement | getContainerFunc;
   title?: ReactNode;
   footer?: ReactNode;
-  onCancel?: () => void;
+  destroy: boolean;
   disableBodyScroll: boolean;
+  afterOpen?: () => void;
+  onCancel?: () => void;
+  afterClose?: () => void;
 }
 
 export interface BaseModalHeaderProps {

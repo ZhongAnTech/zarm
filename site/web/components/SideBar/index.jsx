@@ -12,7 +12,7 @@ class SideBar extends PureComponent {
         key={doc.key}
       >
         <a href={`#/components/${doc.key}`}>
-          {doc.description}
+          {doc.name}
         </a>
       </Menu.Item>
     ));

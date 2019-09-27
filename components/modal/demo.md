@@ -205,14 +205,40 @@ class Demo extends React.Component {
       <>
         <Cell
           description={
+            <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
+          }
+        >
+          普通调用
+        </Cell>
+
+        <Cell
+          description={
             <Button size="xs" onClick={
-              async() => {
+              () => {
                 const modal = Modal.alert({
                   title: '静态调用的title',
                   message: '静态调用的body',
                   onCancel: () => {
+                    modal.hide();
+                  }
+                });
+            }}>开启</Button>
+          }
+        >
+          静态调用（静态关闭，可不传onCancel）
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={
+              async() => {
+                const modal = Modal.alert({
+                  title: '静态调用的title',
+                  message: '静态调用的body，使用promise关闭',
+                  onCancel: () => {
                     return new Promise((resolve, reject) => {
-                      setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                      resolve();
+                      // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
                     }).catch(() => {
                       window.alert('出错啦，弹窗无法关闭，继续点击试试');
                       return false; // 返回false，可使弹窗无法关闭
@@ -226,26 +252,7 @@ class Demo extends React.Component {
             }}>开启</Button>
           }
         >
-          普通调用
-        </Cell>
-
-        <Cell
-          description={
-            <Button size="xs" onClick={() => {
-              Alert.show({
-                title: '警告',
-                message: '通过传参或promise调用均可关闭',
-                // onCancel: () => { 
-                //   Alert.hide();
-                // },
-              }).then((res) => {
-                console.log(res);
-                Alert.hide();
-              })
-            }}>开启</Button>
-          }
-        >
-          静态调用（返回promise对象）
+          静态调用（使用promise关闭）
         </Cell>
 
         <Alert
@@ -271,7 +278,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 确认框 Confirm
 ```jsx
-import { Cell, Button, Confirm  } from 'zarm';
+import { Cell, Button, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
   state = {
@@ -300,34 +307,47 @@ class Demo extends React.Component {
         <Cell
           description={
             <Button size="xs" onClick={() => {
-              const modal1 = modal.confirm();
-
-              modal1.destroy().then(() => {
-                
-              })
-              Confirm.show({
+              const modal = Modal.confirm({
                 title: '确认信息',
-                message: '通过传参或promise调用均可关闭',
-                // onOk: () => { 
-                //   window.alert('click ok');
-                //   Confirm.hide();
-                // },
-                // onCancel: () => { 
-                //   Confirm.hide();
-                // },
-              }).then((res) => {
-                console.log(res);
-                if(res) {
-                  window.alert('click ok');
-                  Confirm.hide();
-                } else {
-                  Confirm.hide();
+                message: '静态调用的body',
+                onCancel: () => {
+                  console.log('点击cancel');
+                },
+                onOk: () => {
+                  console.log('点击ok');
                 }
-              })
+              });
             }}>开启</Button>
           }
         >
-          静态调用（返回promise对象）
+          静态调用（静态关闭，可不传onCancel和onOk）
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={
+              async() => {
+                const modal = Modal.confirm({
+                  title: '静态调用的title',
+                  message: '静态调用的body，使用promise关闭',
+                  onCancel: () => {
+                    return new Promise((resolve, reject) => {
+                      resolve();
+                      // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                    }).catch(() => {
+                      window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                      return false; // 返回false，可使弹窗无法关闭
+                    })
+                  }
+                });
+
+                if (await modal) {
+                  console.log('关闭');
+                }
+            }}>开启</Button>
+          }
+        >
+          静态调用（使用promise关闭）
         </Cell>
 
         <Confirm
@@ -367,25 +387,37 @@ ReactDOM.render(<Demo />, mountNode);
 ## 静态方法
 
 ```js
-// 显示警告框
-Alert.show({
-  title,
-  message,
-  cancelText,
-  onCancel: () => { 
-    Alert.hide();
-  },
+// 显示警告框，不传onCancel也可关闭，如需做更多操作，参考下方confirm的例子
+const modal = Modal.alert({
+  title: '静态调用的title',
+  message: '静态调用的body',
+  // onCancel: () => {
+  //   modal.hide();
+  // }
 });
 
-// 显示确认框
-Confirm.show({
-  title,
-  message,
-  okText,
-  cancelText,
-}).then((res) => {
-  console.log(res); // true or false，需要注意promise状态不可逆
-  Confirm.hide();
+// 显示确认框，若关闭时需要promise，onOk、onCancel均支持promise
+const modal = Modal.confirm({
+  title: '静态调用的title',
+  message: '静态调用的body，使用promise关闭',
+  onOk: () => {
+    return fetch.get('xxx.api').then((res) => {
+      if(res.code === 0) { 
+        return true; // return true 关闭弹窗
+      } else { 
+        return false; // return false 会阻止关闭弹窗
+      }
+    }).catch(...);
+  },
+  // onCancel: () => {
+  //   return fetch.get('xxx.api').then((res) => {
+  //     if(res.code === 0) { 
+  //       return true; // return true 关闭弹窗
+  //     } else { 
+  //       return false; // return false 会阻止关闭弹窗
+  //     }
+  //   }).catch(...);
+  // }
 });
 
 ```
@@ -401,15 +433,6 @@ Confirm.show({
 | onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
 | animationType | string | 'zoom' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
-
-
-```js
-// 隐藏警告框
-Alert.hide();
-
-// 隐藏确认框
-Confirm.hide();
-```
 
 
 

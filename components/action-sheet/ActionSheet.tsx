@@ -15,6 +15,8 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
     visible: false,
     spacing: false,
     actions: [],
+    disableBodyScroll: true,
+    destroy: true,
   };
 
   renderActions = (action, index) => {
@@ -35,13 +37,13 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
   };
 
   render() {
-    const { prefixCls, className, spacing, visible, onMaskClick, actions } = this.props;
+    const { prefixCls, className, spacing, visible, onMaskClick, actions, disableBodyScroll, destroy } = this.props;
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--spacing`]: spacing,
     });
 
     return (
-      <Popup visible={visible} onMaskClick={onMaskClick}>
+      <Popup visible={visible} onMaskClick={onMaskClick} disableBodyScroll={disableBodyScroll} destroy={destroy}>
         <div className={cls}>
           <div className={`${prefixCls}__actions`}>
             {actions.map(this.renderActions)}

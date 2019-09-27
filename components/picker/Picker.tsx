@@ -30,6 +30,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
     maskClosable: true,
     itemRender: data => data.label,
     disableBodyScroll: true,
+    destroy: false,
   };
 
   private isScrolling = false;
@@ -93,7 +94,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, children, locale, maskClosable, getContainer, disableBodyScroll, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, disableBodyScroll, destroy, ...others } = this.props;
     const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
     const noop = () => {};
@@ -103,6 +104,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
         onMaskClick={maskClosable ? this.onCancel : noop}
         getContainer={getContainer}
         disableBodyScroll={disableBodyScroll}
+        destroy={destroy}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>

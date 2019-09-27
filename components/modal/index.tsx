@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import Alert from '../alert';
 import Confirm from '../confirm';
+import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
 
 
 function modalType(props, type) {
@@ -67,14 +68,23 @@ function modalType(props, type) {
   }
 
   function render(visible) {
+    const runTimeLocale = getRunTimeLocale();
     if (type === 'alert') {
+      let _props: any;
+      if (runTimeLocale && runTimeLocale.Alert) {
+        _props = { ...props, locale: runTimeLocale.Alert };
+      }
       ReactDOM.render(
-        <Alert {...props} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
+        <Alert {..._props} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
         div,
       );
     } else {
+      let _props: any;
+      if (runTimeLocale && runTimeLocale.Confirm) {
+        _props = { ...props, locale: runTimeLocale.Confirm };
+      }
       ReactDOM.render(
-        <Confirm {...props} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
+        <Confirm {..._props} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
         div,
       );
     }
@@ -95,7 +105,7 @@ function modalType(props, type) {
         resolve(res);
       });
     },
-    catch: (resolve, reject) => {
+    catch: (_resolve, reject) => {
       return returnResult.catch((res) => {
         reject(res);
       });

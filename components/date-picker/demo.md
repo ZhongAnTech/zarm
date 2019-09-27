@@ -256,6 +256,8 @@ ReactDOM.render(<Demo />, mountNode);
 | onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
 | maskClosable | boolean | true | 是否点击遮罩层时关闭，默认是 |
+| disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
+| destroy | boolean | false | 弹层关闭后是否移除节点 |
 | wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点 |
 

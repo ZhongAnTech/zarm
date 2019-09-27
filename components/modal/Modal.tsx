@@ -24,6 +24,7 @@ export default class Modal extends Component<ModalProps, any> {
     width: '70%',
     shape: 'radius',
     disableBodyScroll: true,
+    destroy: true,
   };
 
   render() {
