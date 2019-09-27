@@ -36,15 +36,10 @@ export default class Carousel extends Component<CarouselProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      // items: [],
       activeIndex: props.activeIndex,
       activeIndexChanged: false,
     };
-  }
-
-  componentWillMount() {
-    this.parseItems(this.props);
-    this.startAutoPlay();
   }
 
   componentDidMount() {
@@ -52,18 +47,15 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
-
+    this.startAutoPlay();
     // 设置起始位置编号
     this.onJumpTo(activeIndex);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('children' in nextProps) {
-      this.parseItems(nextProps);
-    }
-
-    if ('activeIndex' in nextProps) {
-      this.onJumpTo(nextProps.activeIndex);
+  componentDidUpdate(prevProps) {
+    const { activeIndex } = this.props;
+    if (activeIndex !== prevProps.activeIndex) {
+      this.onJumpTo(activeIndex);
     }
   }
 
@@ -268,10 +260,7 @@ export default class Carousel extends Component<CarouselProps, any> {
         className: classnames(`${props.prefixCls}__item`, element.props.className),
       });
     });
-
-    this.setState({
-      items: newItems,
-    });
+    return newItems;
   };
 
   // 更新窗口变化的位置偏移
@@ -352,7 +341,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   render() {
     const { prefixCls, className, swipeable, height, style } = this.props;
-    const { items } = this.state;
+    const items = this.parseItems(this.props);
     const itemsStyle: CSSProperties = {};
 
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
