@@ -7,7 +7,7 @@
       text-align: center;
     }
     @include e(footer) {
-      padding-bottom: 0;
+      padding: 0;
     }
   }
 
