@@ -1,4 +1,4 @@
-import React, { PureComponent, Children, cloneElement, ReactElement } from 'react';
+import React, { Component, Children, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
 import { BaseCollapseProps } from './PropsType';
 import { isArray } from '../utils/validate';
@@ -9,7 +9,30 @@ export interface CollapseProps extends BaseCollapseProps {
   className?: string;
 }
 
-export default class Collapse extends PureComponent<CollapseProps, any> {
+const isPropEqual = (cur, next) => {
+  if (isArray(next) && isArray(cur)) {
+    return next.length === cur.length && next.every((key, i) => key === cur[i]);
+  }
+  return cur === next;
+};
+
+const getActiveKey = (props) => {
+  const { activeKey, defaultActiveKey, multiple } = props;
+
+  const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
+
+  if (defaultKey || defaultKey === 0) {
+    if (isArray(defaultKey)) {
+      return !multiple
+        ? [String(defaultKey[0])]
+        : (defaultKey as Array<any>).map(key => String(key));
+    }
+    return [String(defaultKey)];
+  }
+  return [];
+};
+
+export default class Collapse extends Component<CollapseProps, any> {
   static defaultProps = {
     prefixCls: 'za-collapse',
     multiple: false,
@@ -22,18 +45,27 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      activeKey: this.getActiveKey(props),
+      activeKey: getActiveKey(props),
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { activeKey } = this.props;
-
-    if (!this.isPropEqual(activeKey, nextProps.activeKey)) {
-      this.setState({
-        activeKey: this.getActiveKey(nextProps),
-      });
+  static getDerivedStateFromProps(nextProps, state) {
+    const newState: any = {};
+    if ('activeKey' in nextProps && nextProps.activeKey !== state.prevActiveKey) {
+      newState.activeKey = getActiveKey(nextProps);
+      newState.prevActiveKey = nextProps.activeKey;
     }
+    if ('animated' in nextProps) {
+      newState.animated = nextProps.animated;
+    }
+    if ('multiple' in nextProps) {
+      newState.multiple = nextProps.multiple;
+    }
+    return newState.activeKey || newState.animated || newState.multiple ? newState : null;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return !isPropEqual(this.props, nextProps) || !isPropEqual(this.state, nextState);
   }
 
   onItemChange = (key) => {
@@ -60,33 +92,8 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     onChange(key);
   };
 
-  getActiveKey = (props) => {
-    const { activeKey, defaultActiveKey, multiple } = props;
-
-    const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
-
-    if (defaultKey || defaultKey === 0) {
-      if (isArray(defaultKey)) {
-        return !multiple
-          ? [String(defaultKey[0])]
-          : (defaultKey as Array<any>).map(key => String(key));
-      }
-      return [String(defaultKey)];
-    }
-    return [];
-  };
-
-  isPropEqual = (cur, next) => {
-    if (isArray(next) && isArray(cur)) {
-      return next.length === cur.length && next.every((key, i) => key === cur[i]);
-    }
-    return cur === next;
-  };
-
   renderItems = () => {
-    const { animated } = this.props;
-    const { activeKey } = this.state;
-
+    const { animated, activeKey } = this.state;
     return Children.map(
       this.props.children,
       (ele: ReactElement<CollapseItemProps>) => {

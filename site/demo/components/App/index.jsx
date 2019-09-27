@@ -9,14 +9,6 @@ import SentryBoundary from '@site/demo/components/SentryBoundary';
 import Markdown from '@site/demo/components/Markdown';
 import './style.scss';
 
-const HAS_STYLE_COMPONENT = [
-  'Badge', 'Button', 'Calendar', 'Carousel', 'Collapse',
-  'Cell', 'Checkbox', 'FilePicker', 'Icon', 'Message',
-  'NoticeBar', 'Panel', 'Picker', 'Popup', 'Progress',
-  'Pull', 'Radio', 'SearchBar', 'Tabs', 'Toast', 'Tooltip',
-  'Popper',
-];
-
 const LoadablePage = (loader) => {
   return Loadable({
     loader,
@@ -27,7 +19,8 @@ const LoadablePage = (loader) => {
 const LoadableComponent = (component) => {
   const loader = { page: component.module };
   const compName = ChangeCase.pascalCase(component.key);
-  if (HAS_STYLE_COMPONENT.indexOf(compName) > -1) {
+
+  if (component.style) {
     loader.style = () => import(`@site/demo/styles/${compName}Page`);
   }
 

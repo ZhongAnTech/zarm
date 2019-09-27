@@ -4,6 +4,7 @@ $--namespace: 'za';
 $--block-separator: '-';
 $--element-separator: '__';
 $--modifier-separator: '--';
+$--keyframes-separator: '_';
 
 // 是否包含Modifier
 @function contains-modifier($selector) {
