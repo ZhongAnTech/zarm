@@ -56,7 +56,6 @@ ReactDOM.render(
 
 
 
-
 ## 上标位置
 ```jsx
 import { Badge } from 'zarm';
@@ -64,22 +63,22 @@ import { Badge } from 'zarm';
 ReactDOM.render(
   <div className="custom-panel">
     <div className="box">
-      <Badge sup shape="dot"><div className="box-item" /></Badge>
+      <Badge shape="dot"><div className="box-item" /></Badge>
     </div>
     <div className="box">
-      <Badge sup shape="rect" text="免费"><div className="box-item" /></Badge>
+      <Badge shape="rect" text="免费"><div className="box-item" /></Badge>
     </div>
     <div className="box">
-      <Badge sup shape="radius" text="new"><div className="box-item" /></Badge>
+      <Badge shape="radius" text="new"><div className="box-item" /></Badge>
     </div>
     <div className="box">
-      <Badge sup shape="round" text="999+"><div className="box-item" /></Badge>
+      <Badge shape="round" text="999+"><div className="box-item" /></Badge>
     </div>
     <div className="box">
-      <Badge sup shape="circle" text="3"><div className="box-item" /></Badge>
+      <Badge shape="circle" text="3"><div className="box-item" /></Badge>
     </div>
     <div className="box">
-      <Badge sup shape="leaf" text="新品"><div className="box-item" /></Badge>
+      <Badge shape="leaf" text="新品"><div className="box-item" /></Badge>
     </div>
   </div>
 , mountNode);
@@ -94,14 +93,15 @@ import { Badge } from 'zarm';
 ReactDOM.render(
   <div className="text-panel">
     <div className="box">
-      <Badge sup shape="dot"><span className="box-text">邀请有奖</span></Badge>
+      <Badge shape="dot"><span className="box-text">邀请有奖</span></Badge>
     </div>
     <div className="box">
-      <span className="box-text">邀请有奖</span><Badge sup shape="dot"/>
+      <span className="box-text">邀请有奖</span><Badge shape="dot"/>
     </div>
   </div>
 , mountNode);
 ```
+
 
 
 ## API
@@ -110,6 +110,5 @@ ReactDOM.render(
 | :--- | :--- | :--- | :--- |
 | theme | string | 'danger' | 设置主题，可选值为 `default`、`primary`、`success`、`warning`、`danger` |
 | shape | string | 'dot' | 设置形状，可选值为 `dot`、`rect` 、`radius`、`round`、`circle`、`leaf` |
-| sup | bool | false | 是否上标位置 |
 | text | ReactNode | - | 设置显示的文字 |
 
