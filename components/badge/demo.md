@@ -108,7 +108,7 @@ ReactDOM.render(
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'danger' | 设置主题，可选值为 `default`、`primary`、`success`、`warning`、`danger` |
+| theme | string | 'danger' | 设置主题，可选值为 `primary`、`success`、`warning`、`danger` |
 | shape | string | 'dot' | 设置形状，可选值为 `dot`、`rect` 、`radius`、`round`、`circle`、`leaf` |
 | text | ReactNode | - | 设置显示的文字 |
 
