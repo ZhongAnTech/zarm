@@ -371,7 +371,7 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | '70%' | 宽度 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
-| maskClosable | boolean | false | 是否点击遮罩层时关闭，默认是 |
+| maskClosable | boolean | false | 是否点击遮罩层时关闭 |
 | closable | boolean | false | 右上角是否显示关闭按钮 |
 | title | ReactNode | - | 标题 |
 | footer | ReactNode | - | 弹窗底部内容 |
