@@ -10,6 +10,7 @@ export interface PopupProps extends PropsType {
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps = {
     destroy: true,
+    disableBodyScroll: true,
   };
 
   portalRef: Portal | null;
