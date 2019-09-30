@@ -35,9 +35,9 @@
     justify-content: center;
     width: var(--radio-size);
     height: var(--radio-size);
-    border: 1px solid var(--radio-border);
-    border-radius: var(--radio-size);
-    background: var(--radio-background);
+    border: 1px solid var(--radio-border-color);
+    border-radius: var(--radio-radius);
+    background: var(--color-text-inverse);
 
     &:before {
       content: '';
@@ -109,9 +109,9 @@
         var(--button-icon-size-xs),
       );
       @include button-ghost(
-        var(--radio-border),
+        var(--radio-border-color),
         var(--radio-color),
-        var(--radio-border),
+        var(--radio-border-color),
         var(--radio-color),
       );
 
