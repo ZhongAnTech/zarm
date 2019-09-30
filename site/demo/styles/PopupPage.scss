@@ -6,6 +6,7 @@
     height: 100%;
     padding: r(20) r(20) r(300);
     background: #fff;
+    -webkit-overflow-scrolling: touch;
   }
 
   @at-root .popup-box-left {
@@ -22,5 +23,11 @@
     color: #fff;
     font-size: r(14);
     text-align: center;
+  }
+
+  @at-root .popup-box-bottom {
+    height: r(450);
+    padding: r(20) r(20) r(100);
+    background: #fff;
   }
 }

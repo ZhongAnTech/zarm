@@ -45,15 +45,15 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal2')}>开启</Button>
           }
         >
-          直角
+          有底部按钮
         </Cell>
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.open('modal2')}>开启</Button>
+            <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
           }
         >
           遮罩层可关闭
@@ -64,7 +64,7 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => this.open('modal4')}>开启</Button>
           }
         >
-          无头部
+          无头部，无底部
         </Cell>
 
         <Cell
@@ -106,47 +106,74 @@ class Demo extends React.Component {
           挂载到指定dom节点
         </Cell>
 
-        <Modal visible={modal1}>
-          <Modal.Header title="标题" onClose={() => this.close('modal1')} />
-          <Modal.Body>
-            模态框内容
-          </Modal.Body>
+        <Modal
+          visible={modal1}
+          title="标题"
+          closable
+          onCancel={() => this.close('modal1')}
+        >
+          模态框内容
         </Modal>
 
-        <Modal visible={modal2} onMaskClick={() => this.close('modal2')}>
-          <Modal.Header title="标题" />
-          <Modal.Body>点击遮罩层关闭</Modal.Body>
+        <Modal
+          title="标题"
+          visible={modal2}
+          closable
+          onCancel={() => this.close('modal2')}
+          footer={
+            <Button
+              block
+              theme="primary"
+              onClick={() => this.close('modal2')}
+            >确认</Button>
+          }
+        >
+          模态框内容
         </Modal>
-        
 
-        <Modal shape="rect" visible={modal3}>
-          <Modal.Header title="标题" onClose={() => this.close('modal3')} />
-          <Modal.Body>模态框内容</Modal.Body>
+        <Modal
+          visible={modal3}
+          title="标题"
+          maskClosable
+          onCancel={() => this.close('modal3')}
+        >
+          点击遮罩层关闭
         </Modal>
 
-        <Modal visible={modal4} onMaskClick={() => this.close('modal4')}>
-          <Modal.Body>无头部</Modal.Body>
+        <Modal
+          visible={modal4}
+          maskClosable
+          onCancel={() => this.close('modal4')}
+        >
+          无头部，无底部
         </Modal>
 
-        <Modal visible={modal5} animationType={animationType} onMaskClick={() => this.close('modal5')}>
-          <Modal.Body>
-            <div style={{ height: 100 }}>当前使用的动画类型animationType：'{animationType}'</div>
-          </Modal.Body>
+        <Modal
+          visible={modal5}
+          animationType={animationType}
+          maskClosable
+          onCancel={() => this.close('modal5')}
+        >
+            <div style={{ height: 100 }}>
+              当前使用的动画类型animationType：'{animationType}'
+            </div>
         </Modal>
 
         <Modal
           visible={specModal}
-          onMaskClick={() => this.close('specModal')}
+          maskClosable
+          onCancel={() => this.close('specModal')}
           getContainer={() => this.myRef.current}
         >
-          <Modal.Body>挂载到指定dom节点</Modal.Body>
+          挂载到指定dom节点
         </Modal>
 
         <div
           id="test-div"
           style={{ position: 'relative', zIndex: 1 }}
           ref={this.myRef} 
-          />
+        />
+        
       </>
     )
   }
@@ -155,11 +182,9 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
-
 ## 警告框 Alert
 ```jsx
-import { Cell, Button, Alert, Confirm  } from 'zarm';
+import { Cell, Button, Alert, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
   state = {
@@ -173,7 +198,7 @@ class Demo extends React.Component {
     });
   }
 
-  render() {
+   render() {
     const { alert, confirm } = this.state;
 
     return (
@@ -188,21 +213,41 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => {
-              Alert.show({
-                title: '警告',
-                message: '通过传参或promise调用均可关闭',
-                // onCancel: () => { 
-                //   Alert.hide();
-                // },
-              }).then((res) => {
-                console.log(res);
-                Alert.hide();
-              })
+            <Button size="xs" onClick={
+              () => {
+                const modal = Modal.alert({
+                  title: '静态调用的title',
+                  message: '静态调用的body',
+                  onCancel: () => {
+                    modal.hide();
+                  }
+                });
             }}>开启</Button>
           }
         >
-          静态调用（返回promise对象）
+          静态调用（静态关闭）
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={() => {
+                const modal = Modal.alert({
+                  title: '静态调用的title',
+                  message: '静态调用的body，使用promise关闭',
+                  onCancel: () => {
+                    return new Promise((resolve, reject) => {
+                      resolve();
+                      // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                    }).catch(() => {
+                      window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                      return false; // 返回false，可使弹窗无法关闭
+                    })
+                  }
+                });
+            }}>开启</Button>
+          }
+        >
+          静态调用（使用promise关闭）
         </Cell>
 
         <Alert
@@ -226,10 +271,9 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
-
 ## 确认框 Confirm
 ```jsx
-import { Cell, Button, Confirm  } from 'zarm';
+import { Cell, Button, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
   state = {
@@ -258,29 +302,42 @@ class Demo extends React.Component {
         <Cell
           description={
             <Button size="xs" onClick={() => {
-              Confirm.show({
+              const modal = Modal.confirm({
                 title: '确认信息',
-                message: '通过传参或promise调用均可关闭',
-                // onOk: () => { 
-                //   window.alert('click ok');
-                //   Confirm.hide();
-                // },
-                // onCancel: () => { 
-                //   Confirm.hide();
-                // },
-              }).then((res) => {
-                console.log(res);
-                if(res) {
-                  window.alert('click ok');
-                  Confirm.hide();
-                } else {
-                  Confirm.hide();
+                message: '静态调用的body',
+                onCancel: () => {
+                  console.log('点击cancel');
+                },
+                onOk: () => {
+                  console.log('点击ok');
                 }
-              })
+              });
             }}>开启</Button>
           }
         >
-          静态调用（返回promise对象）
+          静态调用（静态关闭）
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={() => {
+              const modal = Modal.confirm({
+                title: '静态调用的title',
+                message: '静态调用的body，使用promise关闭',
+                onCancel: () => {
+                  return new Promise((resolve, reject) => {
+                    resolve();
+                    // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                  }).catch(() => {
+                    window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                    return false; // 返回false，可使弹窗无法关闭
+                  })
+                }
+              });
+            }}>开启</Button>
+          }
+        >
+          静态调用（使用promise关闭）
         </Cell>
 
         <Confirm
@@ -312,33 +369,54 @@ ReactDOM.render(<Demo />, mountNode);
 | animationType | string | 'fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | width | string &#124; number | '70%' | 宽度 |
+| mask | boolean | true | 是否展示遮罩层 |
+| maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
+| maskClosable | boolean | false | 是否点击遮罩层时关闭 |
+| closable | boolean | false | 右上角是否显示关闭按钮 |
+| title | ReactNode | - | 标题 |
+| footer | ReactNode | - | 弹窗底部内容 |
+| disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
+| destroy | boolean | true | 弹层关闭后是否移除节点 |
+| onCancel | () => void | - | 如果maskClosable或closable为true，那么点击遮罩或者右上角关闭按钮会调用此函数 |
+| afterOpen | () => void | - | 模态框打开后的回调 |
 | afterClose | () => void | - | 模态框关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Modal 挂载的 HTML 节点 |
 
-
 ## 静态方法
 
 ```js
-// 显示警告框
-Alert.show({
-  title,
-  message,
-  cancelText,
-  onCancel: () => { 
-    Alert.hide();
-  },
+// 显示警告框，不传onCancel也可关闭，如需做更多操作，参考下方confirm的例子
+const modal = Modal.alert({
+  title: '静态调用的title',
+  message: '静态调用的body',
+  // onCancel: () => {
+  //   modal.hide();
+  // }
 });
 
-// 显示确认框
-Confirm.show({
-  title,
-  message,
-  okText,
-  cancelText,
-}).then((res) => {
-  console.log(res); // true or false，需要注意promise状态不可逆
-  Confirm.hide();
+// 显示确认框，若关闭时需要promise，onOk、onCancel均支持promise
+const modal = Modal.confirm({
+  title: '静态调用的title',
+  message: '静态调用的body，使用promise关闭',
+  onOk: () => {
+    return fetch.get('xxx.api').then((res) => {
+      if(res.code === 0) { 
+        return true; // return true 关闭弹窗
+      } else { 
+        return false; // return false 会阻止关闭弹窗
+      }
+    }).catch(...);
+  },
+  // onCancel: () => {
+  //   return fetch.get('xxx.api').then((res) => {
+  //     if(res.code === 0) { 
+  //       return true; // return true 关闭弹窗
+  //     } else { 
+  //       return false; // return false 会阻止关闭弹窗
+  //     }
+  //   }).catch(...);
+  // }
 });
 
 ```
@@ -352,14 +430,6 @@ Confirm.show({
 | okText | ReactNode | '确认' | 确认按钮的内容 |
 | onOk | () => void | - | 点击“确认”后的回调函数(Confirm) |
 | onCancel | () => void | - | 点击“关闭/取消”后的回调函数 |
-| animationType | string | 'zoom' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
-| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 
 
-```js
-// 隐藏警告框
-Alert.hide();
 
-// 隐藏确认框
-Confirm.hide();
-```

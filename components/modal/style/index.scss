@@ -57,17 +57,18 @@
   @include e(body) {
     font-size: r(15);
     color: var(--color-text-caption);
-    padding: r(15);
+    padding: r(20);
     overflow: auto;
     user-select: auto;
   }
 
   @include e(footer) {
     display: flex;
+    padding: 0 r(15) r(20);
     width: 100%;
 
-    @include m(block) {
-      flex-direction: column;
-    }
+    // @include m(block) {
+    //   flex-direction: column;
+    // }
   }
 }

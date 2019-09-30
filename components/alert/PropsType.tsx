@@ -12,10 +12,14 @@ export default interface PropsType {
     'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
   width?: string | number;
-  onMaskClick?: () => void;
   title?: ReactNode;
   message?: ReactNode;
+  mask: boolean;
+  maskType?: 'transparent' | 'normal';
+  maskClosable?: boolean;
   cancelText?: string;
+  destroy: boolean;
+  disableBodyScroll: boolean;
   onCancel?: () => void;
   afterClose?: () => void;
   locale?: Locale['Alert'];

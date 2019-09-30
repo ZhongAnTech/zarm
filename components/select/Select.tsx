@@ -31,6 +31,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     maskClosable: true,
     displayRender: selected => selected.map(item => item && item.label),
     onClick: () => {},
+    disableBodyScroll: true,
   };
 
   state: SelectState = {

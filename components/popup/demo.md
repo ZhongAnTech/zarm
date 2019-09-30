@@ -12,8 +12,6 @@ const SINGLE_DATA = [
 ];
 
 class Demo extends React.Component {
-  myRef = React.createRef();
-
   state = {
     visible: {
       popBottom: false,
@@ -22,14 +20,19 @@ class Demo extends React.Component {
       popRight: false,
       picker: false,
       popSpec: false,
+      popCenterSpec: false,
     },
     value: '',
   };
 
   toggle = (key) => {
     const visible = this.state.visible;
-    visible[key] = !visible[key];
-    this.setState({ visible });
+    this.setState({ 
+      visible:{
+        ...visible,
+        [key]: !visible[key]
+      }
+    });
   }
 
   render() {
@@ -51,7 +54,7 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Button size="xs" onClick={() => this.toggle('popBottom')}>开启</Button>
+            <Button size="xs" onClick={() => { this.toggle('popBottom'); }}>开启</Button>
           }
         >
           从下方弹出
@@ -103,7 +106,7 @@ class Demo extends React.Component {
         <Popup
           visible={visible.popBottom}
           direction="bottom"
-          onMaskClick={() => this.toggle('popBottom')}
+          onMaskClick={() => { this.toggle('popBottom')}}
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
         >
@@ -149,7 +152,6 @@ class Demo extends React.Component {
 
         <Popup
           visible={visible.popCenter}
-          onMaskClick={() => this.toggle('popCenter')}
           direction="center"
           width="70%"
           afterClose={() => console.log('关闭')}
@@ -160,21 +162,31 @@ class Demo extends React.Component {
         </Popup>
 
         <Popup
-          visible={visible.popSpec}
-          onMaskClick={() => this.toggle('popSpec')}
+          visible={visible.popCenterSpec}
+          direction="center"
+          width="70%"
           afterClose={() => console.log('关闭')}
-          getContainer={() => this.myRef.current}
+          getContainer={() => {
+            return this.popupRef.portalRef.popup
+          }}
         >
           <div className="popup-box">
-            <Button size="xs" onClick={() => this.toggle('popCenter')}>打开弹层</Button>
+            <Button size="xs" onClick={() => this.toggle('popCenterSpec')}>关闭弹层</Button>
           </div>
         </Popup>
 
-        <div
-          id="test-div"
-          style={{ position: 'fixed', bottom: 0, width: '100%', zIndex: 1 }}
-          ref={this.myRef}
-        />
+        <Popup
+          visible={visible.popSpec}
+          onMaskClick={() => this.toggle('popSpec')}
+          afterClose={() => console.log('关闭')}
+          ref={ref => this.popupRef = ref}
+        >
+          <div className="popup-box-bottom">
+            <Button size="xs" onClick={() => this.toggle('popCenterSpec')}>打开弹层</Button>
+            <p>打开的modal挂载此popup上</p>
+          </div>
+        </Popup>
+
       </div>
     )
   }
@@ -196,6 +208,8 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | - | 弹层宽度 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
+| disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
+| destroy | boolean | true | 弹层关闭后是否移除节点 |
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |

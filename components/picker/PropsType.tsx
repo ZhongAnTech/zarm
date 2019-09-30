@@ -9,9 +9,10 @@ export default interface BasePickerProps extends BasePickerViewProps {
   okText?: string;
   cancelText?: string;
   maskClosable?: boolean;
+  disableBodyScroll: boolean;
+  destroy: boolean;
   onOk?: (value: Array<{ [key: string]: any }>) => void;
   onCancel?: () => void;
   getContainer?: HTMLElement | getContainerFunc;
-  children?: any;
   locale?: Locale['Picker'] & Locale['Select'];
 }

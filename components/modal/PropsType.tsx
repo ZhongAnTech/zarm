@@ -11,20 +11,30 @@ export interface BaseModalProps {
     'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
   width?: string | number;
-  afterClose?: () => void;
-  onMaskClick?: () => void;
+  mask: boolean;
+  maskType?: 'transparent' | 'normal';
+  maskClosable?: boolean;
+  closable?: boolean;
   getContainer?: HTMLElement | getContainerFunc;
+  title?: ReactNode;
+  footer?: ReactNode;
+  destroy: boolean;
+  disableBodyScroll: boolean;
+  afterOpen?: () => void;
+  onCancel?: () => void;
+  afterClose?: () => void;
 }
 
 export interface BaseModalHeaderProps {
   title?: ReactNode;
-  onClose?: () => void;
+  closable?: boolean;
+  onCancel?: () => void;
 }
 
-export interface BaseModalBodyProps {
-  height?: string | number;
-}
+// export interface BaseModalBodyProps {
+//   height?: string | number;
+// }
 
-export interface BaseModalFooterProps {
-  block?: boolean;
-}
+// export interface BaseModalFooterProps {
+//   block?: boolean;
+// }

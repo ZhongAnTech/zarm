@@ -15,6 +15,8 @@ export default class Toast extends Component<ToastProps, any> {
     visible: false,
     stayTime: 3000,
     mask: false,
+    disableBodyScroll: false,
+    destroy: true,
   };
 
   private static zarmToast: null | HTMLDivElement;

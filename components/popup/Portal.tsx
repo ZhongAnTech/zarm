@@ -2,6 +2,7 @@ import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
+import { lockBodyScroll, unlockBodyScroll, clearAllBodyScrollLocks } from '../utils/bodyScrollLock';
 import Mask from '../mask';
 import PropsType from './PropsType';
 
@@ -26,7 +27,20 @@ export default class Portal extends PureComponent<PortalProps, any> {
     animationType: 'fade',
     animationDuration: 200,
     maskType: Mask.defaultProps.type,
+    disableBodyScroll: true,
   };
+
+  static instanceList: Portal[] = [];
+
+  private static unmountModalInstance(instance: Portal, callback: () => void) {
+    const instanceIndex = Portal.instanceList.findIndex(item => item === instance);
+    if (instanceIndex >= 0) {
+      Portal.instanceList.splice(instanceIndex, 1);
+    }
+    if (Portal.instanceList.length === 0) {
+      callback();
+    }
+  }
 
   private enterTimer: number;
 
@@ -36,12 +50,16 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private _container: HTMLDivElement;
 
+  private enableScrollElement: HTMLElement | null;
+
+
+  enableScrollTarget = React.createRef<HTMLElement>();
+
   constructor(props) {
     super(props);
     this.state = {
       isPending: false,
     };
-
     this.createContainer();
   }
 
@@ -50,6 +68,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     Events.on(this.popup, 'transitionend', this.animationEnd);
     Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
     Events.on(this.popup, 'animationend', this.animationEnd);
+    this.enableScrollElement = this.enableScrollTarget.current;
     this.handleAnimation();
   }
 
@@ -61,6 +80,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   }
 
   componentWillUnmount() {
+    const { disableBodyScroll } = this.props;
     if (this.popup) {
       Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
       Events.off(this.popup, 'transitionend', this.animationEnd);
@@ -72,6 +92,12 @@ export default class Portal extends PureComponent<PortalProps, any> {
     if (this._container) {
       this.parent.removeChild(this._container);
     }
+
+    disableBodyScroll && unlockBodyScroll(this.enableScrollElement);
+
+    disableBodyScroll && Portal.unmountModalInstance(this, () => {
+      clearAllBodyScrollLocks();
+    });
   }
 
   getParent() {
@@ -95,9 +121,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { afterClose, afterOpen, handlePortalUnmount, visible } = this.props;
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
-      this.setState({
-        isPending: false,
-      });
+      this._container.classList.add('_hidden');
       if (typeof afterClose === 'function') {
         afterClose();
       }
@@ -128,9 +152,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
           style={maskStyle}
           visible
           type={maskType}
-          onClick={(e) => {
-            this.handleMaskClick(e);
-          }}
         />
       )
     );
@@ -139,7 +160,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   handleMaskClick = (e) => {
     e.stopPropagation();
     const { onMaskClick } = this.props;
-    if (typeof onMaskClick === 'function') {
+    if (typeof onMaskClick === 'function' && this.popup !== e.target && this.popup && !this.popup.contains(e.target)) {
       onMaskClick();
     }
   };
@@ -187,6 +208,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
       : {
         WebkitTransitionDuration: `${animationDuration}ms`,
         transitionDuration: `${animationDuration}ms`,
+        WebkitTransitionProperty: 'transform',
+        transitionProperty: 'transform',
       };
 
     if (!mask) {
@@ -195,51 +218,70 @@ export default class Portal extends PureComponent<PortalProps, any> {
           className={cls.popup}
           style={popupStyle}
           role="dialog"
-          ref={(popup) => {
-            this.popup = popup;
+          ref={(ref) => {
+            this.popup = ref;
           }}
         >
-          {children}
+          {
+            React.isValidElement(children) ? React.cloneElement(children, {
+              ref: this.enableScrollTarget,
+            }) : children
+          }
         </div>
       );
     }
 
     return (
-      <div
-        role="dialog"
-        className={cls.wrapper}
-        style={wrapStyle}
-      >
-        <div
-          ref={(popup) => {
-            this.popup = popup;
-          }}
-          className={cls.popup}
-          style={popupStyle}
-          role="document"
-        >
-          {children}
-        </div>
+      <>
         {this.renderMask()}
-      </div>
+        <div
+          role="dialog"
+          className={cls.wrapper}
+          style={wrapStyle}
+          onClick={(e) => {
+            this.handleMaskClick(e);
+          }}
+        >
+          <div
+            ref={(ref) => {
+              this.popup = ref;
+            }}
+            className={cls.popup}
+            style={popupStyle}
+            role="document"
+          >
+            {
+              React.isValidElement(children) ? React.cloneElement(children, {
+                ref: this.enableScrollTarget,
+              }) : children
+            }
+          </div>
+        </div>
+      </>
     );
   };
 
   handleAnimation() {
-    const { visible, prefixCls } = this.props;
+    const { visible, prefixCls, disableBodyScroll } = this.props;
     if (visible) {
       if (this.popup) {
+        this._container.classList.remove('_hidden');
         this.setState({
           isPending: true,
         });
         this.popup.focus();
         this.popup.classList.add(`${prefixCls}--show`);
+        disableBodyScroll && lockBodyScroll(this.enableScrollElement);
+        disableBodyScroll && Portal.instanceList.push(this);
       }
     } else {
       this.setState({
         isPending: true,
       });
       this.popup!.classList.remove(`${prefixCls}--show`);
+      disableBodyScroll && Portal.unmountModalInstance(this, () => {
+        clearAllBodyScrollLocks();
+      });
     }
   }
 

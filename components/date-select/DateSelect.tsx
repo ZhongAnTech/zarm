@@ -29,6 +29,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     prefixCls: 'za-date-select',
     valueMember: 'value',
     onCancel: () => {},
+    disableBodyScroll: true,
   };
 
   constructor(props) {
