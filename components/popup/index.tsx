@@ -6,12 +6,13 @@ export interface PopupProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
+
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps = {
     destroy: true,
   };
 
-  private portalRef: Portal | null;
+  portalRef: Portal | null;
 
   constructor(props) {
     super(props);
