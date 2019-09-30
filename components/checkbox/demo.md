@@ -181,4 +181,4 @@ ReactDOM.render(
 | shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | block | boolean | false | 是否为块级元素 |
 | disabled | boolean | false | 是否禁用 |
-| onChange | (value?: number[] \| string[]) => void | - | 值变化时触发的回调函数 |
+| onChange | (values?: number[] \| string[]) => void | - | 值变化时触发的回调函数 |

@@ -18,7 +18,6 @@ const badgeStyles = StyleSheet.create<any>(badgeStyle);
 export default class Badge extends PureComponent<BadgeProps, {}> {
   static defaultProps = {
     theme: 'danger',
-    sup: false,
     styles: badgeStyles,
   };
 
@@ -40,7 +39,6 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     const {
       theme,
       shape,
-      sup,
       text,
       style,
       children,
@@ -62,7 +60,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
     const iconStyle = [
       styles![`${shape}Badge`],
       styles![`${theme}Bagde`],
-      sup && [badgeStyles.sup],
+      !!children && [badgeStyles.sup],
       shape === undefined && styles!.dotBadge,
     ] as ViewStyle;
 
@@ -71,7 +69,7 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
         {children}
         <View
           onLayout={({ nativeEvent: e }) => this.layout(e)}
-          style={[iconStyle, { right: sup ? dotWidth : 0 }]}
+          style={[iconStyle, { right: children ? dotWidth : 0 }]}
         >
           <Text style={badgeText}>{text}</Text>
         </View>

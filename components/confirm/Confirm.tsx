@@ -75,18 +75,14 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
     Confirm._hide = this._hide;
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { visible } = this.props;
-
-    if (nextProps.visible !== visible) {
-      if (nextProps.visible === true) {
-        this.setState({
-          visible: true,
-        });
-      } else {
-        this._hide();
-      }
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('visible' in nextProps && nextProps.visible !== state.prevVisible) {
+      return {
+        visible: nextProps.visible,
+        prevVisible: nextProps.visible,
+      };
     }
+    return null;
   }
 
   _hide = () => {
