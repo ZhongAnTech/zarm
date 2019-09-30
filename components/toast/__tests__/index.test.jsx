@@ -40,6 +40,17 @@ describe('Toast', () => {
     wrapper.setProps({ visible: true });
   });
 
+  it('afterClose', () => {
+    jest.useFakeTimers();
+    const afterClose = jest.fn();
+    const wrapper = mount(
+      <Toast stayTime={5000} visible {...props} afterClose={afterClose}>foo</Toast>,
+    );
+    jest.runAllTimers();
+    // expect(afterClose).toHaveBeenCalled();
+    wrapper.unmount();
+  });
+
   it('static function show', () => {
     const wrapper = Toast.show();
     expect(wrapper).toMatchSnapshot();

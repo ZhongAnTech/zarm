@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Popup from '../index';
 
@@ -19,6 +19,23 @@ describe('Popup', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('renders mount node correctly', () => {
+    const onMaskClick = jest.fn();
+    const afterClose = jest.fn();
+    const wrapper = mount(
+      <Popup
+        visible
+        direction="bottom"
+        onMaskClick={onMaskClick}
+        afterClose={afterClose}
+        getContainer={() => document.body}
+      >
+        foo
+      </Popup>,
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('visible change false', () => {
     jest.useFakeTimers();
     const wrapper = mount(
@@ -26,7 +43,7 @@ describe('Popup', () => {
     );
     wrapper.setProps({ visible: false });
     jest.runAllTimers();
-    wrapper.unmount();
+    // wrapper.unmount();
   });
 
   // it('stayTime is 0', () => {
