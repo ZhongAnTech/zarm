@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
+import memoizeOne from 'memoize-one';
+import isDeepEqual from 'lodash.isequal';
 import BasePickerViewProps from './PropsType';
 import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
@@ -44,6 +46,7 @@ export default class PickerView extends PureComponent<PickerViewProps, PickerVie
     }
 
     const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
+    console.log(newState);
     this.setState(newState);
     if (typeof onChange === 'function') {
       onChange(newState.objValue, level);

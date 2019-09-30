@@ -2,11 +2,15 @@
 
 exports[`KeyboardPicker renders correctly 1`] = `
 <KeyboardPicker
+  destroy={true}
+  disableBodyScroll={false}
   prefixCls="za-keyboard-picker"
   type="number"
   visible={false}
 >
   <Popup
+    destroy={true}
+    disableBodyScroll={false}
     mask={false}
     visible={false}
   />

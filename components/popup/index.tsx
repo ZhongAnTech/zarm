@@ -11,6 +11,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
     destroy: true,
   };
 
+  // @ts-ignore
   private portalRef: Portal | null;
 
   constructor(props) {
