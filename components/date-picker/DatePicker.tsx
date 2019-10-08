@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import _ from 'lodash';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
 import DatePickerView from '../date-picker-view';
+import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 
 const isExtendDate = (date) => {
   if (date instanceof Date) {
@@ -14,6 +16,16 @@ const isExtendDate = (date) => {
   }
 
   return new Date(date.toString().replace(/-/g, '/'));
+};
+
+const parseState = (props) => {
+  const date = props.value && isExtendDate(props.value);
+  const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
+
+  return {
+    value: date || defaultDate,
+    visible: props.visible || false,
+  };
 };
 
 export interface DatePickerProps extends BaseDatePickerProps {
@@ -36,6 +48,23 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     onInit: () => {},
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+      return {
+        prevProps: props,
+        ...parseState(props),
+      };
+    }
+
+    if (!_.isEqual(state.value, state.prevValue)) {
+      return {
+        prevValue: state.value,
+        value: state.value,
+      };
+    }
+    return null;
+  }
+
   private initDate;
 
   private isScrolling = false;
@@ -43,30 +72,24 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   constructor(props) {
     super(props);
 
-    const date = props.value && isExtendDate(props.value);
-    const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-
-    this.state = {
-      visible: props.visible || false,
-      value: defaultDate || date,
-    };
+    this.state = parseState(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { visible } = this.state;
-    const date = nextProps.value && isExtendDate(nextProps.value);
-    const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
+  // componentWillReceiveProps(nextProps) {
+  //   const { visible } = this.state;
+  //   const date = nextProps.value && isExtendDate(nextProps.value);
+  //   const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
 
-    this.setState({
-      value: date || defaultDate,
-    });
+  //   this.setState({
+  //     value: date || defaultDate,
+  //   });
 
-    if ('visible' in nextProps && nextProps.visible !== visible) {
-      this.setState({
-        visible: nextProps.visible,
-      });
-    }
-  }
+  //   if ('visible' in nextProps && nextProps.visible !== visible) {
+  //     this.setState({
+  //       visible: nextProps.visible,
+  //     });
+  //   }
+  // }
 
   onCancel = () => {
     const { onCancel } = this.props;
@@ -85,7 +108,8 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
 
     const { onOk } = this.props;
-    const value = this.initDate;
+    const { value } = this.state;
+    // const value = this.initDate;
     this.setState({
       value,
       visible: false,
@@ -105,7 +129,10 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   onInit = (selected) => {
     const { onInit } = this.props;
-    this.initDate = selected;
+    // this.initDate = selected;
+    this.setState({
+      value: selected,
+    });
     if (typeof onInit === 'function') {
       onInit(selected);
     }
@@ -129,7 +156,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, disableBodyScroll, destroy, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, disableBodyScroll, destroy, onOk, onCancel, onInit, ...others } = this.props;
     const cls = classnames(prefixCls, className);
     const { visible, value } = this.state;
     const noop = () => {};

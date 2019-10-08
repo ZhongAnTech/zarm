@@ -31,6 +31,16 @@ class Demo extends React.Component {
     this.myRef = React.createRef();
   }
 
+  componentDidMount() {
+    // this.interval = setInterval(
+    //   () =>
+    //     this.setState(prevState => ({
+    //       count: prevState.count + 1
+    //     })),
+    //   1000
+    // );
+  }
+
   toggle(key) {
     const state = this.state[key];
     state.visible = !state.visible;
@@ -213,11 +223,28 @@ ReactDOM.render(<Demo />, mountNode);
 import { DatePickerView } from 'zarm';
 
 class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value: "",
+    };
+  }
+
+  componentDidMount() {
+    // this.interval = setInterval(
+    //   () =>
+    //     this.setState(prevState => ({
+    //       count: prevState.count + 1
+    //     })),
+    //   1000
+    // );
+  }
   render() {
     return (
       <div>
         <DatePickerView
           mode="datetime"
+          value={this.state.value}
           min="2018-1-13"
           onChange={(value) => {
             console.log('datePickerView => ', value);

@@ -180,6 +180,7 @@ class Demo extends React.Component {
           onMaskClick={() => this.toggle('popSpec')}
           afterClose={() => console.log('关闭')}
           ref={ref => this.popupRef = ref}
+          destroy={false}
         >
           <div className="popup-box-bottom">
             <Button size="xs" onClick={() => this.toggle('popCenterSpec')}>打开弹层</Button>

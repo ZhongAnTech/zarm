@@ -88,12 +88,20 @@ class Demo extends React.Component {
       visible: false,
       value: '',
       dataSource: SINGLE_DATA,
-    }
+    },
+    count: 0,
   };
 
   myRef = React.createRef();
 
   componentDidMount() {
+    // this.interval = setInterval(
+    //   () =>
+    //     this.setState(prevState => ({
+    //       count: prevState.count + 1
+    //     })),
+    //   1000
+    // );
     // 异步加载数据源测试
     setTimeout(() => {
       const { cascade } = this.state;
@@ -317,24 +325,7 @@ ReactDOM.render(<Demo />, mountNode);
 import { PickerView } from 'zarm';
 
 // 级联数据
-const CASCADE_DATA = [
-  {
-    code: '1',
-    label: '北京市',
-    children: [
-      { code: '11', label: '海淀区' },
-      { code: '12', label: '西城区' },
-    ],
-  },
-  {
-    code: '2',
-    label: '上海市',
-    children: [
-      { code: '21', label: '杨浦区' },
-      { code: '22', label: '静安区' },
-    ],
-  },
-];
+const CASCADE_DATA = [];
 
 class Demo extends React.Component {
   state = {
@@ -366,7 +357,7 @@ class Demo extends React.Component {
         ],
         valueMember: 'code'
       })
-    })
+    }, 0)
   }
 
   render() {
@@ -375,7 +366,12 @@ class Demo extends React.Component {
         value={this.state.value}
         valueMember="code"
         dataSource={this.state.dataSource}
-        onChange={selected => console.log('PickerView onChange: ', selected)}
+        onChange={selected => {
+          this.setState({
+            value: selected.map(item => item.code),
+          });
+          console.log('PickerView onChange: ', selected);
+        }}
       />
     )
   }

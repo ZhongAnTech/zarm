@@ -1,9 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
+import _ from 'lodash';
 import Popup from '../popup';
 import PickerView from '../picker-view';
 import BasePickerProps from './PropsType';
 import parseProps from '../picker-view/utils/parseProps';
+import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
@@ -21,7 +23,7 @@ export interface PickerState {
   tempValue?: string[] | number[];
 }
 
-export default class Picker extends PureComponent<PickerProps, PickerState> {
+export default class Picker extends Component<PickerProps, PickerState> {
   static defaultProps = {
     dataSource: [],
     prefixCls: 'za-picker',
@@ -37,11 +39,23 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
 
   state: PickerState = parseProps.getSource(this.props);
 
-  componentWillReceiveProps(props) {
-    const propsToState: PickerState = parseProps.getSource(props);
-    propsToState.tempValue = propsToState.value;
-    propsToState.tempObjValue = propsToState.objValue;
-    this.setState(propsToState);
+  static getDerivedStateFromProps(props, state) {
+    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+      return {
+        prevProps: props,
+        ...parseProps.getSource(props),
+        tempValue: parseProps.getSource(props).value,
+        tempObjValue: parseProps.getSource(props).objValue,
+      };
+    }
+
+    if (!_.isEqual(state.value, state.prevValue)) {
+      return {
+        prevValue: state.value,
+        ...parseProps.getSource({ ...props, value: state.value }),
+      };
+    }
+    return null;
   }
 
   onChange = (selected) => {
@@ -94,7 +108,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, disableBodyScroll, destroy, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, disableBodyScroll, destroy, onOk, onCancel, ...others } = this.props;
     const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
     const noop = () => {};
