@@ -389,36 +389,24 @@ ReactDOM.render(<Demo />, mountNode);
 
 ```js
 // 显示警告框，不传onCancel也可关闭，如需做更多操作，参考下方confirm的例子
-const modal = Modal.alert({
+const alert = Modal.alert({
   title: '静态调用的title',
   message: '静态调用的body',
-  // onCancel: () => {
-  //   modal.hide();
-  // }
 });
 
 // 显示确认框，若关闭时需要promise，onOk、onCancel均支持promise
-const modal = Modal.confirm({
+const confirm = Modal.confirm({
   title: '静态调用的title',
   message: '静态调用的body，使用promise关闭',
   onOk: () => {
     return fetch.get('xxx.api').then((res) => {
       if(res.code === 0) { 
-        return true; // return true 关闭弹窗
+        return true; // 关闭弹窗
       } else { 
-        return false; // return false 会阻止关闭弹窗
+        return false; // 阻止弹窗关闭
       }
     }).catch(...);
-  },
-  // onCancel: () => {
-  //   return fetch.get('xxx.api').then((res) => {
-  //     if(res.code === 0) { 
-  //       return true; // return true 关闭弹窗
-  //     } else { 
-  //       return false; // return false 会阻止关闭弹窗
-  //     }
-  //   }).catch(...);
-  // }
+  }
 });
 
 ```
