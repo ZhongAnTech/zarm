@@ -44,7 +44,6 @@ export default class PickerView extends PureComponent<PickerViewProps, PickerVie
     }
 
     const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
-
     this.setState(newState);
     if (typeof onChange === 'function') {
       onChange(newState.objValue, level);
