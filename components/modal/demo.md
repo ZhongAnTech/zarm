@@ -255,6 +255,7 @@ class Demo extends React.Component {
           visible={alert}
           title="警告"
           message="这里是警告信息"
+          afterClose={() => { console.log('alert已关闭'); }}
           onCancel={() => this.toggle('alert')}
         />
 
@@ -350,6 +351,7 @@ class Demo extends React.Component {
             this.toggle('confirm');
           }}
           onCancel={() => this.toggle('confirm')}
+          afterClose={() => { console.log('confirm已关闭'); }}
         />
       </>
     )
