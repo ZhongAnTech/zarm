@@ -89,7 +89,7 @@ describe('ActivityIndicator', () => {
           title="主页"
           icon={icon}
           activeIcon={activeIcon}
-          badge={{ sup: true, shape: 'circle', text: '3' }}
+          badge={{ shape: 'circle', text: '3' }}
         />
       </TabBar>,
     );

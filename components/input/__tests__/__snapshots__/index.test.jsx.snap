@@ -231,12 +231,16 @@ exports[`Input.Idcard renders correctly 1`] = `
           value=""
         />
         <KeyboardPicker
+          destroy={true}
+          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="idcard"
           visible={false}
         >
           <Popup
+            destroy={true}
+            disableBodyScroll={false}
             mask={false}
             visible={false}
           />
@@ -276,12 +280,16 @@ exports[`Input.Number renders correctly 1`] = `
           value=""
         />
         <KeyboardPicker
+          destroy={true}
+          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="number"
           visible={false}
         >
           <Popup
+            destroy={true}
+            disableBodyScroll={false}
             mask={false}
             visible={false}
           />
@@ -383,19 +391,25 @@ exports[`Input.Number renders onClear called correctly 1`] = `
           value=""
         />
         <KeyboardPicker
+          destroy={true}
+          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="number"
           visible={true}
         >
           <Popup
+            destroy={true}
+            disableBodyScroll={false}
             mask={false}
             visible={true}
           >
             <Portal
               animationDuration={200}
               animationType="fade"
+              destroy={true}
               direction="bottom"
+              disableBodyScroll={false}
               handlePortalUnmount={[Function]}
               mask={false}
               maskType="normal"
@@ -410,7 +424,7 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                     <div
                       class="za-popup za-popup--bottom za-popup--show"
                       role="dialog"
-                      style="transition-duration: 200ms;"
+                      style="transition-duration: 200ms; transition-property: transform;"
                     >
                       <div
                         class="za-keyboard-picker"
@@ -536,7 +550,9 @@ exports[`Input.Number renders onClear called correctly 1`] = `
                   style={
                     Object {
                       "WebkitTransitionDuration": "200ms",
+                      "WebkitTransitionProperty": "transform",
                       "transitionDuration": "200ms",
+                      "transitionProperty": "transform",
                     }
                   }
                 >
@@ -846,12 +862,16 @@ exports[`Input.Price renders correctly 1`] = `
           value=""
         />
         <KeyboardPicker
+          destroy={true}
+          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="price"
           visible={false}
         >
           <Popup
+            destroy={true}
+            disableBodyScroll={false}
             mask={false}
             visible={false}
           />

@@ -48,6 +48,8 @@ exports[`Picker Picker render visible 1`] = `
           },
         ]
       }
+      destroy={false}
+      disableBodyScroll={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -63,13 +65,17 @@ exports[`Picker Picker render visible 1`] = `
       visible={true}
     >
       <Popup
+        destroy={false}
+        disableBodyScroll={true}
         onMaskClick={[Function]}
         visible={true}
       >
         <Portal
           animationDuration={200}
           animationType="fade"
+          destroy={false}
           direction="bottom"
+          disableBodyScroll={true}
           handlePortalUnmount={[Function]}
           mask={true}
           maskType="normal"
@@ -83,13 +89,17 @@ exports[`Picker Picker render visible 1`] = `
                 class="popup-container"
               >
                 <div
+                  class="za-mask za-fade-enter za-mask--normal"
+                  style="animation-duration: 200ms;"
+                />
+                <div
                   class="za-popup__wrapper"
                   role="dialog"
                 >
                   <div
                     class="za-popup za-popup--bottom za-popup--show"
                     role="document"
-                    style="transition-duration: 200ms;"
+                    style="transition-duration: 200ms; transition-property: transform;"
                   >
                     <div
                       class="za-picker"
@@ -150,16 +160,35 @@ exports[`Picker Picker render visible 1`] = `
                       </div>
                     </div>
                   </div>
-                  <div
-                    class="za-mask za-fade-enter za-mask--normal"
-                    style="animation-duration: 200ms;"
-                  />
                 </div>
               </div>
             }
           >
+            <Mask
+              className="za-fade-enter"
+              prefixCls="za-mask"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+              type="normal"
+              visible={true}
+            >
+              <div
+                className="za-mask za-fade-enter za-mask--normal"
+                style={
+                  Object {
+                    "WebkitAnimationDuration": "200ms",
+                    "animationDuration": "200ms",
+                  }
+                }
+              />
+            </Mask>
             <div
               className="za-popup__wrapper"
+              onClick={[Function]}
               role="dialog"
               style={Object {}}
             >
@@ -169,7 +198,9 @@ exports[`Picker Picker render visible 1`] = `
                 style={
                   Object {
                     "WebkitTransitionDuration": "200ms",
+                    "WebkitTransitionProperty": "transform",
                     "transitionDuration": "200ms",
+                    "transitionProperty": "transform",
                   }
                 }
               >
@@ -286,30 +317,6 @@ exports[`Picker Picker render visible 1`] = `
                   </PickerView>
                 </div>
               </div>
-              <Mask
-                className="za-fade-enter"
-                onClick={[Function]}
-                prefixCls="za-mask"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-                type="normal"
-                visible={true}
-              >
-                <div
-                  className="za-mask za-fade-enter za-mask--normal"
-                  onClick={[Function]}
-                  style={
-                    Object {
-                      "WebkitAnimationDuration": "200ms",
-                      "animationDuration": "200ms",
-                    }
-                  }
-                />
-              </Mask>
             </div>
           </Portal>
         </Portal>
@@ -427,6 +434,8 @@ exports[`Picker render custom label 1`] = `
           },
         ]
       }
+      destroy={false}
+      disableBodyScroll={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -441,6 +450,8 @@ exports[`Picker render custom label 1`] = `
       valueMember="code"
     >
       <Popup
+        destroy={false}
+        disableBodyScroll={true}
         onMaskClick={[Function]}
         visible={false}
       />

@@ -3,7 +3,9 @@
 exports[`Popup renders correctly 1`] = `
 <Popup
   afterClose={[MockFunction]}
+  destroy={true}
   direction="bottom"
+  disableBodyScroll={true}
   onMaskClick={[MockFunction]}
 />
 `;
