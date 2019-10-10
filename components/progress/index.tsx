@@ -9,6 +9,8 @@ export interface ProgressProps extends PropsType {
 }
 
 export default class Progress extends PureComponent<ProgressProps, any> {
+  private progressElement;
+
   static defaultProps = {
     theme: 'default',
     percent: 0,
@@ -17,8 +19,6 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     weight: 'normal',
     prefixCls: 'za-progress',
   };
-
-  private progressElement;
 
   constructor(props) {
     super(props);
@@ -48,8 +48,9 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     const baseWidth = 32;
     const { clientWidth } = this.progressElement;
     const baseStrokeWidth = this.getBaseStrokeWidth(weight);
+
     this.setState({
-      strokeWidth: baseWidth / clientWidth * baseStrokeWidth,
+      strokeWidth: (baseWidth / clientWidth) * baseStrokeWidth,
     });
   }
 
@@ -84,7 +85,7 @@ export default class Progress extends PureComponent<ProgressProps, any> {
 
     const dasharray = type === 'circle'
       ? Math.PI * diameter
-      : Math.PI * diameter / 2;
+      : (Math.PI * diameter) / 2;
 
     const roundInner = (type === 'circle' || type === 'semi-circle')
       && (
@@ -101,7 +102,7 @@ export default class Progress extends PureComponent<ProgressProps, any> {
             strokeWidth={strokeWidth}
             strokeLinecap={strokeLinecap}
             strokeDasharray={dasharray}
-            strokeDashoffset={dasharray * (100 - percent!) / 100}
+            strokeDashoffset={(dasharray * (100 - percent!)) / 100}
           />
         </svg>
       );

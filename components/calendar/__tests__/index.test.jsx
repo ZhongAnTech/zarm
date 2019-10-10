@@ -50,10 +50,10 @@ describe('Calendar', () => {
 
     wrapper.setProps({ value: ['2018-09-05', '2018-09-08'] });
 
-    wrapper.setProps({ disabledDate: date => date.getDate() % 2 === 1 });
+    wrapper.setProps({ disabledDate: (date) => date.getDate() % 2 === 1 });
 
-    wrapper.setProps({ dateRender: date => `$${date.getDate()}` });
+    wrapper.setProps({ dateRender: (date) => `$${date.getDate()}` });
 
-    // wrapper.setProps({ dateRender: date => date });
+    // wrapper.setProps({ dateRender: (date) => date });
   });
 });

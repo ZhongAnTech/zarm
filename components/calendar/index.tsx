@@ -197,7 +197,7 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
   // 生成星期条
   renderWeekBar = () => {
     const { prefixCls } = this.props;
-    const content = CN_DAY_NAME.map(week => (
+    const content = CN_DAY_NAME.map((week) => (
       <li key={week} className={`${prefixCls}__bar__item`}>
         {week}
       </li>

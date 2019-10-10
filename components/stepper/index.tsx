@@ -158,7 +158,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
           type="tel"
           value={value}
           disabled={disabled}
-          onChange={e => !disabled && this.onInputChange(e.target.value)}
+          onChange={(e) => !disabled && this.onInputChange(e.target.value)}
           onBlur={() => !disabled && this.onInputBlur(value)}
         />
         <Button

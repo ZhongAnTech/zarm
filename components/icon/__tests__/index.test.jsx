@@ -3,7 +3,7 @@ import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Icon from '../index';
 
-const Right = props => (
+const Right = (props) => (
   <svg
     viewBox="0 0 32 24"
     fill="currentColor"

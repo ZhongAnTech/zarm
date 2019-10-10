@@ -12,14 +12,6 @@ export interface SearchBarProps extends BaseSearchBarProps {
 }
 
 export default class SearchBar extends PureComponent<SearchBarProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-search-bar',
-    shape: 'radius',
-    disabled: false,
-    showCancel: false,
-    clearable: true,
-  };
-
   private searchForm;
 
   private searchContainer;
@@ -31,6 +23,14 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   private initPos;
 
   private inputRef;
+
+  static defaultProps = {
+    prefixCls: 'za-search-bar',
+    shape: 'radius',
+    disabled: false,
+    showCancel: false,
+    clearable: true,
+  };
 
   constructor(props) {
     super(props);

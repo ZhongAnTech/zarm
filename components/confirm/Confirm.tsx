@@ -20,6 +20,8 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
 
   private static confirmContainer;
 
+  static _hide: () => void;
+
   static show = (props: ConfirmProps) => {
     const { defaultProps } = Confirm;
     let _props: any;
@@ -64,8 +66,6 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
       Confirm._hide();
     }
   };
-
-  static _hide: () => void;
 
   state = {
     visible: this.props.visible,

@@ -10,14 +10,7 @@ export interface ToastProps extends PropsType {
 }
 
 export default class Toast extends Component<ToastProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-toast',
-    visible: false,
-    stayTime: 3000,
-    mask: false,
-    disableBodyScroll: false,
-    destroy: true,
-  };
+  static hideHelper: () => void;
 
   private static zarmToast: null | HTMLDivElement;
 
@@ -43,11 +36,9 @@ export default class Toast extends Component<ToastProps, any> {
     }
   };
 
-  static _hide: () => void;
-
   static hide = () => {
-    if (Toast._hide) {
-      Toast._hide();
+    if (Toast.hideHelper) {
+      Toast.hideHelper();
     }
   };
 
@@ -60,12 +51,21 @@ export default class Toast extends Component<ToastProps, any> {
 
   private timer;
 
+  static defaultProps = {
+    prefixCls: 'za-toast',
+    visible: false,
+    stayTime: 3000,
+    mask: false,
+    disableBodyScroll: false,
+    destroy: true,
+  };
+
   state = {
     visible: this.props.visible,
   };
 
   componentDidMount() {
-    Toast._hide = this._hide;
+    Toast.hideHelper = this._hide;
     this.autoClose();
   }
 

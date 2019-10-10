@@ -46,7 +46,7 @@ describe('Picker', () => {
           },
         ]}
         valueMember="code"
-        itemRender={data => data.name}
+        itemRender={(data) => data.name}
       />,
     );
 

@@ -26,10 +26,10 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     prefixCls: 'za-select',
     dataSource: [],
     valueMember: 'value',
-    itemRender: data => data && data.label,
+    itemRender: (data) => data && data.label,
     cols: Infinity,
     maskClosable: true,
-    displayRender: selected => selected.map(item => item && item.label),
+    displayRender: (selected) => selected.map((item) => item && item.label),
     onClick: () => {},
     disableBodyScroll: true,
   };
@@ -90,7 +90,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   };
 
   isValueValid = (value) => {
-    return (isString(value) && !!value.trim()) || (isArray(value) && value.length > 0 && value.some(item => !!item));
+    return (isString(value) && !!value.trim()) || (isArray(value) && value.length > 0 && value.some((item) => !!item));
   };
 
   render() {

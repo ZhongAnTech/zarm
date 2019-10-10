@@ -28,7 +28,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
     valueMember: 'value',
     cols: Infinity,
     maskClosable: true,
-    itemRender: data => data.label,
+    itemRender: (data) => data.label,
     disableBodyScroll: true,
     destroy: false,
   };
@@ -46,7 +46,7 @@ export default class Picker extends PureComponent<PickerProps, PickerState> {
 
   onChange = (selected) => {
     const { valueMember, onChange } = this.props;
-    const value = selected.map(item => item[valueMember!]);
+    const value = selected.map((item) => item[valueMember!]);
     this.setState({
       value,
       objValue: selected,

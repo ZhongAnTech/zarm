@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 class Meta extends PureComponent {
+  static propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+  };
+
+  static defaultProps = {
+    title: '',
+    description: '',
+  };
+
   render() {
     const { title, description } = this.props;
     return (
@@ -17,15 +27,5 @@ class Meta extends PureComponent {
     );
   }
 }
-
-Meta.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-};
-
-Meta.defaultProps = {
-  title: '',
-  description: '',
-};
 
 export default Meta;

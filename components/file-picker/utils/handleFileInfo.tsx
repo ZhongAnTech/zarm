@@ -38,8 +38,8 @@ export default function handleFileInfo({ file, quality }: { file: File; quality?
       quality,
       fileType,
     })
-      .then(url => callbackFunc(url))
-      .catch(e => console.error(e));
+      .then((url) => callbackFunc(url))
+      .catch((e) => console.error(e));
   } else {
     callback(fileDetail);
   }

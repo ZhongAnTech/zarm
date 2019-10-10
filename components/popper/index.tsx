@@ -100,7 +100,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
   };
 
   static update() {
-    popperInstances.forEach(popperInstance => popperInstance.scheduleUpdate());
+    popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
   }
 
   static getDerivedStateFromProps(props: PopperProps, state: PopperState) {
@@ -324,12 +324,12 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     );
 
     return (
-      <React.Fragment>
+      <>
         <div className={prefixCls} style={style}>
-          {visible ? createPortal(toolTip, document.body) : null}
+          {visible && createPortal(toolTip, document.body)}
           {childElement}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }

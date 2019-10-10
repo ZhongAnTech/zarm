@@ -19,21 +19,10 @@ export interface PortalProps extends PropsType {
 }
 
 export default class Portal extends PureComponent<PortalProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-popup',
-    visible: false,
-    mask: true,
-    direction: 'bottom',
-    animationType: 'fade',
-    animationDuration: 200,
-    maskType: Mask.defaultProps.type,
-    disableBodyScroll: true,
-  };
-
   static instanceList: Portal[] = [];
 
   private static unmountModalInstance(instance: Portal, callback: () => void) {
-    const instanceIndex = Portal.instanceList.findIndex(item => item === instance);
+    const instanceIndex = Portal.instanceList.findIndex((item) => item === instance);
     if (instanceIndex >= 0) {
       Portal.instanceList.splice(instanceIndex, 1);
     }
@@ -44,16 +33,27 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private enterTimer: number;
 
-  private popup: HTMLDivElement | null;
-
   private parent: HTMLElement;
 
   private _container: HTMLDivElement;
 
   private enableScrollElement: HTMLElement | null;
 
+  private popup: HTMLDivElement | null;
+
 
   enableScrollTarget = React.createRef<HTMLElement>();
+
+  static defaultProps = {
+    prefixCls: 'za-popup',
+    visible: false,
+    mask: true,
+    direction: 'bottom',
+    animationType: 'fade',
+    animationDuration: 200,
+    maskType: Mask.defaultProps.type,
+    disableBodyScroll: true,
+  };
 
   constructor(props) {
     super(props);
@@ -100,7 +100,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     });
   }
 
-  getParent() {
+  getParent = () => {
     const { getContainer } = this.props;
     if (getContainer) {
       if (typeof getContainer === 'function') {
@@ -114,7 +114,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
       }
     }
     return document.body;
-  }
+  };
 
   animationEnd = (e) => {
     e.stopPropagation();
@@ -261,7 +261,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     );
   };
 
-  handleAnimation() {
+  handleAnimation = () => {
     const { visible, prefixCls, disableBodyScroll } = this.props;
     if (visible) {
       if (this.popup) {
@@ -283,8 +283,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
         clearAllBodyScrollLocks();
       });
     }
-  }
-
+  };
 
   renderPortal = (): ReactPortal | null => {
     if (!canUseDOM()) {
@@ -301,7 +300,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     return ReactDOM.createPortal(this.getComponent(), this._container);
   };
 
-  createContainer() {
+  createContainer = () => {
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += 'popup-container';
@@ -309,7 +308,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
       this.parent.appendChild(this._container);
     }
     return this._container;
-  }
+  };
 
   render() {
     return this.renderPortal();

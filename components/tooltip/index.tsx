@@ -13,16 +13,16 @@ export type TooltipPlacement = PopperPlacement;
 export type TooltipTrigger = PopperTrigger;
 
 class Tooltip extends React.Component<TooltipProps, any> {
+  static updateAll() {
+    Popper.update();
+  }
+
   static defaultProps = {
     prefixCls: 'za-tooltip',
     direction: 'top' as TooltipPlacement,
     hasArrow: true,
     onVisibleChange: () => {},
   };
-
-  static updateAll() {
-    Popper.update();
-  }
 
   render() {
     const { children, ...others } = this.props;
