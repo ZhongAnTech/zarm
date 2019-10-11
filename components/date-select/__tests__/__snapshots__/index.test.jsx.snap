@@ -15,6 +15,7 @@ exports[`DateSelect DateSelect date 1`] = `
     value="2017-09-06"
   >
     <DateSelect
+      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -45,6 +46,7 @@ exports[`DateSelect DateSelect date 1`] = `
           2017-09-06
         </div>
         <ForwardRef(forwardRef)
+          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -56,6 +58,7 @@ exports[`DateSelect DateSelect date 1`] = `
           visible={false}
         >
           <LocaleReceiver
+            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -69,6 +72,8 @@ exports[`DateSelect DateSelect date 1`] = `
           >
             <DatePicker
               defaultValue=""
+              destroy={false}
+              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -77,6 +82,7 @@ exports[`DateSelect DateSelect date 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
@@ -89,6 +95,8 @@ exports[`DateSelect DateSelect date 1`] = `
               visible={false}
             >
               <Popup
+                destroy={false}
+                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -121,6 +129,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <DateSelect
       defaultValue="2017-11-03 15:00"
+      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -153,6 +162,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
+          disableBodyScroll={true}
           localeCode="zh-cn"
           max="2017-11-02 14:00"
           min="2017-11-02 11:00"
@@ -167,6 +177,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
         >
           <LocaleReceiver
             defaultValue="2017-11-03 15:00"
+            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             max="2017-11-02 14:00"
@@ -182,6 +193,8 @@ exports[`DateSelect DateSelect datetime 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
+              destroy={false}
+              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -190,6 +203,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               max="2017-11-02 14:00"
               min="2017-11-02 11:00"
               minuteStep={1}
@@ -204,6 +218,8 @@ exports[`DateSelect DateSelect datetime 1`] = `
               visible={false}
             >
               <Popup
+                destroy={false}
+                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -264,6 +280,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
         ]
       }
       disabeld={true}
+      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -305,6 +322,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             ]
           }
           disabeld={true}
+          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -328,6 +346,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               ]
             }
             disabeld={true}
+            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -352,7 +371,9 @@ exports[`DateSelect DateSelect disabled 1`] = `
                 ]
               }
               defaultValue=""
+              destroy={false}
               disabeld={true}
+              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -361,6 +382,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
@@ -372,13 +394,17 @@ exports[`DateSelect DateSelect disabled 1`] = `
               visible={true}
             >
               <Popup
+                destroy={false}
+                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={true}
               >
                 <Portal
                   animationDuration={200}
                   animationType="fade"
+                  destroy={false}
                   direction="bottom"
+                  disableBodyScroll={true}
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
@@ -392,13 +418,17 @@ exports[`DateSelect DateSelect disabled 1`] = `
                         class="popup-container"
                       >
                         <div
+                          class="za-mask za-fade-enter za-mask--normal"
+                          style="animation-duration: 200ms;"
+                        />
+                        <div
                           class="za-popup__wrapper"
                           role="dialog"
                         >
                           <div
                             class="za-popup za-popup--bottom za-popup--show"
                             role="document"
-                            style="transition-duration: 200ms;"
+                            style="transition-duration: 200ms; transition-property: transform;"
                           >
                             <div
                               class="za-date-picker"
@@ -903,16 +933,35 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               </div>
                             </div>
                           </div>
-                          <div
-                            class="za-mask za-fade-enter za-mask--normal"
-                            style="animation-duration: 200ms;"
-                          />
                         </div>
                       </div>
                     }
                   >
+                    <Mask
+                      className="za-fade-enter"
+                      prefixCls="za-mask"
+                      style={
+                        Object {
+                          "WebkitAnimationDuration": "200ms",
+                          "animationDuration": "200ms",
+                        }
+                      }
+                      type="normal"
+                      visible={true}
+                    >
+                      <div
+                        className="za-mask za-fade-enter za-mask--normal"
+                        style={
+                          Object {
+                            "WebkitAnimationDuration": "200ms",
+                            "animationDuration": "200ms",
+                          }
+                        }
+                      />
+                    </Mask>
                     <div
                       className="za-popup__wrapper"
+                      onClick={[Function]}
                       role="dialog"
                       style={Object {}}
                     >
@@ -922,7 +971,9 @@ exports[`DateSelect DateSelect disabled 1`] = `
                         style={
                           Object {
                             "WebkitTransitionDuration": "200ms",
+                            "WebkitTransitionProperty": "transform",
                             "transitionDuration": "200ms",
+                            "transitionProperty": "transform",
                           }
                         }
                       >
@@ -2200,30 +2251,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                           </ForwardRef(forwardRef)>
                         </div>
                       </div>
-                      <Mask
-                        className="za-fade-enter"
-                        onClick={[Function]}
-                        prefixCls="za-mask"
-                        style={
-                          Object {
-                            "WebkitAnimationDuration": "200ms",
-                            "animationDuration": "200ms",
-                          }
-                        }
-                        type="normal"
-                        visible={true}
-                      >
-                        <div
-                          className="za-mask za-fade-enter za-mask--normal"
-                          onClick={[Function]}
-                          style={
-                            Object {
-                              "WebkitAnimationDuration": "200ms",
-                              "animationDuration": "200ms",
-                            }
-                          }
-                        />
-                      </Mask>
                     </div>
                   </Portal>
                 </Portal>
@@ -2255,6 +2282,7 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <DateSelect
       defaultValue="2017-11-03 15:00"
+      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -2285,6 +2313,7 @@ exports[`DateSelect DateSelect time 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
+          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={15}
           mode="time"
@@ -2297,6 +2326,7 @@ exports[`DateSelect DateSelect time 1`] = `
         >
           <LocaleReceiver
             defaultValue="2017-11-03 15:00"
+            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={15}
@@ -2310,6 +2340,8 @@ exports[`DateSelect DateSelect time 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
+              destroy={false}
+              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -2318,6 +2350,7 @@ exports[`DateSelect DateSelect time 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               minuteStep={15}
               mode="time"
               onCancel={[Function]}
@@ -2330,6 +2363,8 @@ exports[`DateSelect DateSelect time 1`] = `
               visible={false}
             >
               <Popup
+                destroy={false}
+                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -2356,6 +2391,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   >
     <DateSelect
       defaultValue="2017-11-03"
+      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -2385,6 +2421,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03"
+          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -2396,6 +2433,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
         >
           <LocaleReceiver
             defaultValue="2017-11-03"
+            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -2408,6 +2446,8 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03"
+              destroy={false}
+              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -2416,6 +2456,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
@@ -2427,13 +2468,17 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               visible={true}
             >
               <Popup
+                destroy={false}
+                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={true}
               >
                 <Portal
                   animationDuration={200}
                   animationType="fade"
+                  destroy={false}
                   direction="bottom"
+                  disableBodyScroll={true}
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
@@ -2447,13 +2492,17 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         class="popup-container"
                       >
                         <div
+                          class="za-mask za-fade-enter za-mask--normal"
+                          style="animation-duration: 200ms;"
+                        />
+                        <div
                           class="za-popup__wrapper"
                           role="dialog"
                         >
                           <div
                             class="za-popup za-popup--bottom za-popup--show"
                             role="document"
-                            style="transition-duration: 200ms;"
+                            style="transition-duration: 200ms; transition-property: transform;"
                           >
                             <div
                               class="za-date-picker"
@@ -2958,16 +3007,35 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                               </div>
                             </div>
                           </div>
-                          <div
-                            class="za-mask za-fade-enter za-mask--normal"
-                            style="animation-duration: 200ms;"
-                          />
                         </div>
                       </div>
                     }
                   >
+                    <Mask
+                      className="za-fade-enter"
+                      prefixCls="za-mask"
+                      style={
+                        Object {
+                          "WebkitAnimationDuration": "200ms",
+                          "animationDuration": "200ms",
+                        }
+                      }
+                      type="normal"
+                      visible={true}
+                    >
+                      <div
+                        className="za-mask za-fade-enter za-mask--normal"
+                        style={
+                          Object {
+                            "WebkitAnimationDuration": "200ms",
+                            "animationDuration": "200ms",
+                          }
+                        }
+                      />
+                    </Mask>
                     <div
                       className="za-popup__wrapper"
+                      onClick={[Function]}
                       role="dialog"
                       style={Object {}}
                     >
@@ -2977,7 +3045,9 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                         style={
                           Object {
                             "WebkitTransitionDuration": "200ms",
+                            "WebkitTransitionProperty": "transform",
                             "transitionDuration": "200ms",
+                            "transitionProperty": "transform",
                           }
                         }
                       >
@@ -4215,30 +4285,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                           </ForwardRef(forwardRef)>
                         </div>
                       </div>
-                      <Mask
-                        className="za-fade-enter"
-                        onClick={[Function]}
-                        prefixCls="za-mask"
-                        style={
-                          Object {
-                            "WebkitAnimationDuration": "200ms",
-                            "animationDuration": "200ms",
-                          }
-                        }
-                        type="normal"
-                        visible={true}
-                      >
-                        <div
-                          className="za-mask za-fade-enter za-mask--normal"
-                          onClick={[Function]}
-                          style={
-                            Object {
-                              "WebkitAnimationDuration": "200ms",
-                              "animationDuration": "200ms",
-                            }
-                          }
-                        />
-                      </Mask>
                     </div>
                   </Portal>
                 </Portal>
@@ -4269,6 +4315,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
     wheelDefaultValue="2017-11-03 15:00"
   >
     <DateSelect
+      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -4300,6 +4347,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           请选择日期
         </div>
         <ForwardRef(forwardRef)
+          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -4311,6 +4359,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           wheelDefaultValue="2017-11-03 15:00"
         >
           <LocaleReceiver
+            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -4324,6 +4373,8 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           >
             <DatePicker
               defaultValue=""
+              destroy={false}
+              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -4332,6 +4383,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               minuteStep={1}
               mode="date"
               onCancel={[Function]}
@@ -4345,13 +4397,17 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               wheelDefaultValue="2017-11-03 15:00"
             >
               <Popup
+                destroy={false}
+                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={true}
               >
                 <Portal
                   animationDuration={200}
                   animationType="fade"
+                  destroy={false}
                   direction="bottom"
+                  disableBodyScroll={true}
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
@@ -4365,13 +4421,17 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                         class="popup-container"
                       >
                         <div
+                          class="za-mask za-fade-enter za-mask--normal"
+                          style="animation-duration: 200ms;"
+                        />
+                        <div
                           class="za-popup__wrapper"
                           role="dialog"
                         >
                           <div
                             class="za-popup za-popup--bottom za-popup--show"
                             role="document"
-                            style="transition-duration: 200ms;"
+                            style="transition-duration: 200ms; transition-property: transform;"
                           >
                             <div
                               class="za-date-picker"
@@ -4876,16 +4936,35 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                               </div>
                             </div>
                           </div>
-                          <div
-                            class="za-mask za-fade-enter za-mask--normal"
-                            style="animation-duration: 200ms;"
-                          />
                         </div>
                       </div>
                     }
                   >
+                    <Mask
+                      className="za-fade-enter"
+                      prefixCls="za-mask"
+                      style={
+                        Object {
+                          "WebkitAnimationDuration": "200ms",
+                          "animationDuration": "200ms",
+                        }
+                      }
+                      type="normal"
+                      visible={true}
+                    >
+                      <div
+                        className="za-mask za-fade-enter za-mask--normal"
+                        style={
+                          Object {
+                            "WebkitAnimationDuration": "200ms",
+                            "animationDuration": "200ms",
+                          }
+                        }
+                      />
+                    </Mask>
                     <div
                       className="za-popup__wrapper"
+                      onClick={[Function]}
                       role="dialog"
                       style={Object {}}
                     >
@@ -4895,7 +4974,9 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                         style={
                           Object {
                             "WebkitTransitionDuration": "200ms",
+                            "WebkitTransitionProperty": "transform",
                             "transitionDuration": "200ms",
+                            "transitionProperty": "transform",
                           }
                         }
                       >
@@ -6137,30 +6218,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                           </ForwardRef(forwardRef)>
                         </div>
                       </div>
-                      <Mask
-                        className="za-fade-enter"
-                        onClick={[Function]}
-                        prefixCls="za-mask"
-                        style={
-                          Object {
-                            "WebkitAnimationDuration": "200ms",
-                            "animationDuration": "200ms",
-                          }
-                        }
-                        type="normal"
-                        visible={true}
-                      >
-                        <div
-                          className="za-mask za-fade-enter za-mask--normal"
-                          onClick={[Function]}
-                          style={
-                            Object {
-                              "WebkitAnimationDuration": "200ms",
-                              "animationDuration": "200ms",
-                            }
-                          }
-                        />
-                      </Mask>
                     </div>
                   </Portal>
                 </Portal>
@@ -6207,6 +6264,7 @@ exports[`DateSelect DateSelect year 1`] = `
     value="2017"
   >
     <DateSelect
+      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -6237,6 +6295,7 @@ exports[`DateSelect DateSelect year 1`] = `
           2016年
         </div>
         <ForwardRef(forwardRef)
+          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="year"
@@ -6248,6 +6307,7 @@ exports[`DateSelect DateSelect year 1`] = `
           visible={false}
         >
           <LocaleReceiver
+            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -6261,6 +6321,8 @@ exports[`DateSelect DateSelect year 1`] = `
           >
             <DatePicker
               defaultValue=""
+              destroy={false}
+              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -6269,6 +6331,7 @@ exports[`DateSelect DateSelect year 1`] = `
                 }
               }
               localeCode="zh-cn"
+              maskClosable={true}
               minuteStep={1}
               mode="year"
               onCancel={[Function]}
@@ -6281,6 +6344,8 @@ exports[`DateSelect DateSelect year 1`] = `
               visible={false}
             >
               <Popup
+                destroy={false}
+                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />

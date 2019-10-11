@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Confirm renders correctly 1`] = `null`;
+
+exports[`Confirm static function hide 1`] = `undefined`;
+
+exports[`Confirm static function show 1`] = `undefined`;
