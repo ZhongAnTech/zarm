@@ -61,11 +61,15 @@ describe('Popper', () => {
 
     const div = wrapper.find('#hello').at(0);
     div.simulate('click');
-    expect(onVisibleChange).toBeCalled();
+    setTimeout(() => {
+      expect(onVisibleChange).toBeCalled();
+    });
     expect(wrapper.instance().props.visible).toBe(false);
 
     div.simulate('click');
-    expect(onVisibleChange).toBeCalled();
+    setTimeout(() => {
+      expect(onVisibleChange).toBeCalled();
+    });
     expect(wrapper.instance().props.visible).toBe(false);
   });
 });

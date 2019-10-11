@@ -9,6 +9,8 @@ exports[`Tooltip renders correctly 1`] = `
   title="hello"
 >
   <Popper
+    animationDuration={200}
+    animationType="zoom-fade"
     arrowPointAtCenter={false}
     content=""
     direction="top"
