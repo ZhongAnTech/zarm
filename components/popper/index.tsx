@@ -6,8 +6,17 @@ import classnames from 'classnames';
 
 import ClickOutside from '../click-outside';
 import domUtil from '../utils/dom';
-import BasePopperProps, { PopperState, PopperTrigger, directionMap } from './PropsType';
+import BasePopperProps, { PopperTrigger, directionMap, PopperPlacement } from './PropsType';
 import Events from '../utils/events';
+
+export interface PopperState {
+  show: boolean;
+  direction: PopperPlacement;
+  arrowRef: any;
+  mounted: boolean;
+  isPending: boolean;
+  animationState: 'leave' | 'enter';
+}
 
 export interface PopperProps extends BasePopperProps {
   prefixCls?: string;
@@ -117,7 +126,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
       return {
         ...state,
         show: props.visible,
-        mounted: true,
+        ...(props.visible && { mounted: true }),
       };
     }
     return null;

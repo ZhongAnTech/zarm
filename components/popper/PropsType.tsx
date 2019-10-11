@@ -14,15 +14,6 @@ export type PopperPlacement =
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
 
-export interface PopperState {
-  show: boolean;
-  direction: PopperPlacement;
-  arrowRef: any;
-  mounted: boolean;
-  isPending: boolean;
-  animationState: 'leave' | 'enter';
-}
-
 export default interface BasePopperProps {
   visible?: boolean;
   hasArrow?: boolean;
