@@ -8,17 +8,6 @@ const styles = StyleSheet.create<any>(swipeActionStyle);
 export type SwipeActionProps = PropsType;
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
-  static defaultProps = {
-    left: [],
-    right: [],
-    moveDistanceRatio: 0.5,
-    moveTimeSpan: 300,
-    animationDuration: 300,
-    offset: 10,
-    autoClose: true,
-    disabled: false,
-  };
-
   private isOpen = false;
 
   private touchEnd = true;
@@ -32,6 +21,17 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   private offsetLeft;
 
   private panResponder;
+
+  static defaultProps = {
+    left: [],
+    right: [],
+    moveDistanceRatio: 0.5,
+    moveTimeSpan: 300,
+    animationDuration: 300,
+    offset: 10,
+    autoClose: true,
+    disabled: false,
+  };
 
   constructor(props) {
     super(props);
@@ -176,7 +176,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     return (
       <View
         style={btnStyle}
-        onLayout={e => this.getBtnsWidth(e, direction)}
+        onLayout={(e) => this.getBtnsWidth(e, direction)}
       >
         {buttons.map(this.renderButton)}
       </View>

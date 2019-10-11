@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -37,7 +37,7 @@ function getClosestPoint(val: number, { marks, step, min, max }: Pick<SliderProp
     const closestStep = Math.round(steps) * step + min;
     points.push(closestStep);
   }
-  const diffs = points.map(point => Math.abs(val - point));
+  const diffs = points.map((point) => Math.abs(val - point));
 
   return points[diffs.indexOf(Math.min(...diffs))];
 }
@@ -63,6 +63,12 @@ export interface SliderStates {
 }
 
 export default class Slider extends PureComponent<SliderProps, SliderStates> {
+  private line: HTMLDivElement | null = null;
+
+  private container: HTMLDivElement | null = null;
+
+  private offsetStart = 0;
+
   static defaultProps = {
     prefixCls: 'za-slider',
     disabled: false,
@@ -73,12 +79,6 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     max: 100,
     marks: {},
   };
-
-  private line: HTMLDivElement | null = null;
-
-  private container: HTMLDivElement | null = null;
-
-  private offsetStart = 0;
 
   state: SliderStates = {
     value: getValue(this.props, 0),
@@ -336,10 +336,10 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     });
 
     return (
-      <Fragment>
+      <>
         {lineDot}
         {marksElement}
-      </Fragment>
+      </>
     );
   };
 

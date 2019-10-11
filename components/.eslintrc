@@ -1,7 +1,25 @@
 {
   "root": true,
-  "extends": ["za/react", "za/typescript"],
+  "extends": ["za/typescript-react"],
   "env": {
     "jest": true
+  },
+  "rules": {
+    "react/no-deprecated": "off",
+    "react/sort-comp": ["error", {
+      "order": [
+        "static-variables",
+        "static-methods",
+        "instance-variables",
+        "lifecycle",
+        "/^on.+$/",
+        "getters",
+        "setters",
+        "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+        "instance-methods",
+        "everything-else",
+        "rendering"
+      ]
+    }]
   }
 }

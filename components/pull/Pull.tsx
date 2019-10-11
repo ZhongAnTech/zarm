@@ -13,6 +13,12 @@ export interface PullProps extends PropsType {
 }
 
 export default class Pull extends PureComponent<PullProps, any> {
+  private pull;
+
+  private wrap;
+
+  private throttledScroll;
+
   static defaultProps: PullProps = {
     prefixCls: 'za-pull',
     refresh: {
@@ -27,12 +33,6 @@ export default class Pull extends PureComponent<PullProps, any> {
     animationDuration: 400,
     stayTime: 1000,
   };
-
-  private pull;
-
-  private wrap;
-
-  private throttledScroll;
 
   constructor(props) {
     super(props);

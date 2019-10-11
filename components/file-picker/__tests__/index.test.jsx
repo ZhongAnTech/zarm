@@ -145,7 +145,7 @@ describe('file picker disabled', () => {
     accept: 'image/jpg, image/jpeg, image/gif, image/png',
     onChange: jest.fn(),
     onBeforeSelect: jest.fn(),
-    children: <button />,
+    children: <button>foo</button>,
   };
 
   it('on before select return false', () => {

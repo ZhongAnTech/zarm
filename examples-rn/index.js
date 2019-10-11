@@ -6,7 +6,7 @@ import { form, feedback, view, navigation } from './demos';
 
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
-const getOptions = title => ({
+const getOptions = (title) => ({
   headerTitle: (
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <Text

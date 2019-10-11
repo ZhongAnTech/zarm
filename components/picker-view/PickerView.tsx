@@ -23,7 +23,7 @@ export default class PickerView extends PureComponent<PickerViewProps, PickerVie
     dataSource: [],
     cols: Infinity,
     valueMember: 'value',
-    itemRender: data => data.label,
+    itemRender: (data) => data.label,
     disabled: false,
   };
 
@@ -69,7 +69,7 @@ export default class PickerView extends PureComponent<PickerViewProps, PickerVie
         valueMember={valueMember}
         itemRender={itemRender}
         disabled={disabled}
-        onChange={selected => this.onValueChange(selected, index)}
+        onChange={(selected) => this.onValueChange(selected, index)}
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
     );

@@ -25,7 +25,7 @@ const getActiveKey = (props) => {
     if (isArray(defaultKey)) {
       return !multiple
         ? [String(defaultKey[0])]
-        : (defaultKey as Array<any>).map(key => String(key));
+        : (defaultKey as Array<any>).map((key) => String(key));
     }
     return [String(defaultKey)];
   }
@@ -78,7 +78,7 @@ export default class Collapse extends Component<CollapseProps, any> {
     let newActiveKey: Array<string> = [];
     if (multiple) {
       if (hasKey) {
-        newActiveKey = activeKey.filter(i => i !== key);
+        newActiveKey = activeKey.filter((i) => i !== key);
       } else {
         newActiveKey = activeKey.slice(0);
         newActiveKey.push(key);

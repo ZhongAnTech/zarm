@@ -115,7 +115,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
-      isSelected: value.some(item => DateTool.isOneDay(date, item)),
+      isSelected: value.some((item) => DateTool.isOneDay(date, item)),
       isRange: value.length > 1 && date > value[0] && date < value[value.length - 1],
       rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]),
       rangeEnd: value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),

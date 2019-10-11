@@ -97,7 +97,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     if (!images.length) { return; }
 
     if (multiple) {
-      const data = images.map(item => this.getFileInfo(item));
+      const data = images.map((item) => this.getFileInfo(item));
 
       this.setState({
         imageList: data,

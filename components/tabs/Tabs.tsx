@@ -22,14 +22,14 @@ export interface TabsProps extends PropsType {
 export default class Tabs extends PureComponent<TabsProps, any> {
   static Panel: any;
 
+  private carousel;
+
   static defaultProps = {
     prefixCls: 'za-tabs',
     disabled: false,
     hasline: false,
     canSwipe: false,
   };
-
-  private carousel;
 
   constructor(props) {
     super(props);
@@ -110,7 +110,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
           showPagination={false}
           activeIndex={value}
           ref={(ele) => { this.carousel = ele; }}
-          onChange={v => this.onSwipeChange(v)}
+          onChange={(v) => this.onSwipeChange(v)}
         >
           {React.Children.map(children, (item: any) => <div>{item.props.children}</div>)}
         </Carousel>

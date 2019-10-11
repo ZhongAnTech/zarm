@@ -18,6 +18,8 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
   static zarmLoading: null | HTMLElement;
 
+  static _hide: () => void;
+
   static show = (children: any, stayTime?: number, mask?: boolean, afterClose?: () => void) => {
     Loading.unmountNode();
     if (!Loading.zarmLoading) {
@@ -33,8 +35,6 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       );
     }
   };
-
-  static _hide: () => void;
 
   static hide = () => {
     if (Loading._hide) {

@@ -4,7 +4,7 @@ import ChangeCase from 'change-case';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-gist.css';
-import Helmet from 'react-helmet';
+import Meta from '@site/web/components/Meta';
 import './style.scss';
 
 export default class Markdown extends Component {
@@ -49,14 +49,7 @@ export default class Markdown extends Component {
 
       return (
         <>
-          <Helmet encodeSpecialCharacters={false}>
-            <html lang="zh" />
-            <title>{title}</title>
-            <meta name="description" content={component.description || component.name} />
-            <meta property="og:title" content={title} />
-            <meta property="og:type" content="website" />
-            <meta property="og:image" content="https://zarm.design/images/logo.ce68565d.svg" />
-          </Helmet>
+          <Meta title={title} description={component.description || component.name} />
           <div className={cls} dangerouslySetInnerHTML={{ __html: html }} />
         </>
       );
