@@ -118,7 +118,7 @@ Modal.alert = function alert(props) {
   return modalType(props, 'alert');
 };
 
-Modal.confirm = function alert(props) {
+Modal.confirm = function confirm(props) {
   return modalType(props, 'confirm');
 };
 
