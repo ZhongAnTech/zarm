@@ -78,8 +78,8 @@ ReactDOM.render(<Demo />, mountNode);
 | hasArrow | boolean | false | 是否带有箭头 |
 | arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | className | string | - | 气泡层类名追加 |
-| mouseEnterDelay | number | 100ms | 鼠标移入后延时多少才显示气泡层，单位：毫秒 |
-| mouseLeaveDelay | number | 100ms | 鼠标移出后延时多少才隐藏气泡层，单位：毫秒 |
+| mouseEnterDelay | number | 100 | 鼠标移入后延时多少才显示气泡层，单位：毫秒 |
+| mouseLeaveDelay | number | 100 | 鼠标移出后延时多少才隐藏气泡层，单位：毫秒 |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
 | trigger | string | 'click' | 触发方式，PC端默认值为 'hover', 可选值为：点击触发`click`、hover状态触发`hover`、聚焦状态触发`focus`、受控触发`manual`、右键触发`contextMenu` |
 | onVisibleChange | (visible?: boolean) => void | noop | 显示/隐藏触发的事件 |
