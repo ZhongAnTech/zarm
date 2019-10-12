@@ -13,7 +13,7 @@ export interface PopperState {
   show: boolean;
   direction: PopperPlacement;
   arrowRef: any;
-  mounted: boolean;
+  mounted?: boolean;
   isPending: boolean;
   animationState: 'leave' | 'enter';
 }
@@ -76,6 +76,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
   static defaultProps = {
     prefixCls: 'za-popper',
     hasArrow: false,
+    destroy: true,
     arrowPointAtCenter: false,
     trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
     direction: 'top',
@@ -92,6 +93,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     prefixCls: PropTypes.string,
     children: PropTypes.element.isRequired,
     visible: PropTypes.bool,
+    destroy: PropTypes.bool,
     hasArrow: PropTypes.bool,
     arrowPointAtCenter: PropTypes.bool,
     trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual', 'contextMenu']),
@@ -181,6 +183,19 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     return this.popperNode;
   }
 
+  getContainer() {
+    const { getContainer } = this.props;
+    if (getContainer) {
+      if (typeof getContainer === 'function') {
+        return getContainer();
+      }
+      if (typeof getContainer === 'object' && getContainer instanceof HTMLElement) {
+        return getContainer;
+      }
+    }
+    return document.body;
+  }
+
   setTransformOrigin() {
     const placementMap = {
       top: 'bottom',
@@ -239,16 +254,19 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     e.stopPropagation();
 
     const { animationState } = this.state;
+    const { destroy } = this.props;
 
     if (animationState === 'leave') {
       this.setState({
         show: false,
         isPending: false,
+        ...(destroy && { mounted: false }),
       }, () => {
         this.destroy();
         this.props.onVisibleChange!(false);
       });
     } else {
+      this.setState({ mounted: true });
       this.props.onVisibleChange!(true);
     }
   };
@@ -419,7 +437,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     return (
       <>
         <div className={prefixCls} style={style}>
-          {mounted && createPortal(toolTip, document.body)}
+          {mounted && createPortal(toolTip, this.getContainer())}
           {childElement}
         </div>
       </>
