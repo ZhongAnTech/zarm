@@ -14,18 +14,14 @@ export type PopperPlacement =
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
 
-export interface PopperState {
-  visible: boolean;
-  direction: PopperPlacement;
-  arrowRef: any;
-}
-
 export default interface BasePopperProps {
   visible?: boolean;
   hasArrow?: boolean;
   arrowPointAtCenter?: boolean;
   direction?: PopperPlacement;
   trigger?: PopperTrigger;
+  animationType?: string;
+  animationDuration?: number;
   // popperOptions?: PopperJS.PopperOptions;
   // modifiers?: PopperJS.Modifiers;
   content?: React.ReactNode;

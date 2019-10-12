@@ -182,6 +182,8 @@ ReactDOM.render(<Demo />, mountNode);
 | className | string | - | 气泡层类名追加 |
 | content | ReactNode | - | 显示内容 |
 | hasArrow | boolean | false | 是否显示箭头节点<font color="red">（注：需要自行定义箭头样式）</font> |
+| animationType | string | 'zoom-fade' | 动画效果，可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
+| animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | mouseEnterDelay | number | 100 | 鼠标移入显示气泡层的延时时间（单位：毫秒） |
 | mouseLeaveDelay | number | 100 | 鼠标移出隐藏气泡层的延时时间（单位：毫秒） |
