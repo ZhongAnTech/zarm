@@ -23,10 +23,17 @@ export default class Panel extends PureComponent<PanelProps, {}> {
 
     return (
       <div className={cls}>
-        <div className={`${prefixCls}__header`}>
-          {title && <div className={`${prefixCls}__header__title`}>{title}</div>}
-          {more && <div className={`${prefixCls}__header__more`}>{more}</div>}
-        </div>
+        {
+          (title 
+          || more)
+          && (
+            <div className={`${prefixCls}__header`}>
+              {title && <div className={`${prefixCls}__header__title`}>{title}</div>}
+              {more && <div className={`${prefixCls}__header__more`}>{more}</div>}
+            </div>
+          )
+        }
+        
         <div className={`${prefixCls}__body`}>{children}</div>
       </div>
     );
