@@ -223,9 +223,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
           }}
         >
           {
-            React.isValidElement(children) ? React.cloneElement(children, {
-              ref: this.enableScrollTarget,
-            }) : children
+            React.isValidElement(children)
+              ? React.cloneElement(children, {
+                ref: this.enableScrollTarget,
+              })
+              : children
           }
         </div>
       );
@@ -251,9 +253,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
             role="document"
           >
             {
-              React.isValidElement(children) ? React.cloneElement(children, {
-                ref: this.enableScrollTarget,
-              }) : children
+              React.isValidElement(children)
+                ? React.cloneElement(children, {
+                  ref: this.enableScrollTarget,
+                })
+                : children
             }
           </div>
         </div>

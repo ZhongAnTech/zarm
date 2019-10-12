@@ -5,7 +5,8 @@
     "jest": true
   },
   "rules": {
-    "react/no-deprecated": "off",
+    "react/no-deprecated": "warn",
+    "multiline-ternary": ["error", "always-multiline"],
     "react/sort-comp": ["error", {
       "order": [
         "static-variables",

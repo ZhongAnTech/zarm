@@ -67,7 +67,8 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     if (defaultKey || defaultKey === 0) {
       if (isArray(defaultKey)) {
         return !multiple
-          ? [String(defaultKey[0])] : (defaultKey as Array<any>).map((key) => String(key));
+          ? [String(defaultKey[0])]
+          : (defaultKey as Array<any>).map((key) => String(key));
       }
       return [String(defaultKey)];
     }
