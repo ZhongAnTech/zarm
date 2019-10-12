@@ -3,6 +3,17 @@ import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Slider from '../index';
 
+if (global.document) {
+  document.createRange = () => ({
+    setStart: () => {},
+    setEnd: () => {},
+    commonAncestorContainer: {
+      nodeName: 'BODY',
+      ownerDocument: document,
+    },
+  });
+}
+
 describe('Slider', () => {
   const marks = {
     0: '0',
