@@ -6,21 +6,21 @@ import classnames from 'classnames';
 
 import ClickOutside from '../click-outside';
 import domUtil from '../utils/dom';
-import BasePopperProps, { PopperTrigger, directionMap, PopperPlacement } from './PropsType';
+import BasePopperProps, { PopperTrigger, PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
 
-export interface PopperState {
+export interface PopperProps extends BasePopperProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+interface PopperStates {
   show: boolean;
   direction: PopperPlacement;
   arrowRef: any;
   mounted?: boolean;
   isPending: boolean;
   animationState: 'leave' | 'enter';
-}
-
-export interface PopperProps extends BasePopperProps {
-  prefixCls?: string;
-  className?: string;
 }
 
 const invertKeyValues = (obj: object, fn?) => {
@@ -72,22 +72,22 @@ const customArrowOffsetFn = (data: PopperJS.Data) => {
 
 const popperInstances: Set<PopperJS> = new Set();
 
-class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperState> {
-  static defaultProps = {
-    prefixCls: 'za-popper',
-    hasArrow: false,
-    destroy: true,
-    arrowPointAtCenter: false,
-    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
-    direction: 'top',
-    mouseEnterDelay: 100,
-    mouseLeaveDelay: 100,
-    visible: false,
-    content: '',
-    animationType: 'zoom-fade',
-    animationDuration: 200,
-    onVisibleChange: () => {},
-  };
+class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperStates> {
+  static update() {
+    popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
+  }
+
+  private popper: PopperJS | null;
+
+  private popperNode: HTMLDivElement;
+
+  private reference: HTMLElement;
+
+  private arrowRef: HTMLSpanElement;
+
+  private enterTimer: number;
+
+  private leaveTimer: number;
 
   static propTypes = {
     prefixCls: PropTypes.string,
@@ -119,11 +119,23 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     onVisibleChange: PropTypes.func,
   };
 
-  static update() {
-    popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
-  }
+  static defaultProps = {
+    prefixCls: 'za-popper',
+    hasArrow: false,
+    destroy: true,
+    arrowPointAtCenter: false,
+    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
+    direction: 'top',
+    mouseEnterDelay: 100,
+    mouseLeaveDelay: 100,
+    visible: false,
+    content: '',
+    animationType: 'zoom-fade',
+    animationDuration: 200,
+    onVisibleChange: () => {},
+  };
 
-  static getDerivedStateFromProps(props: PopperProps, state: PopperState) {
+  static getDerivedStateFromProps(props: PopperProps, state: PopperStates) {
     if ('visible' in props && props.trigger === 'manual') {
       return {
         ...state,
@@ -134,7 +146,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     return null;
   }
 
-  state: PopperState = {
+  state: PopperStates = {
     show: false,
     direction: this.props.direction!,
     arrowRef: null,
@@ -142,18 +154,6 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     isPending: false,
     animationState: 'leave',
   };
-
-  private popper: PopperJS | null;
-
-  private popperNode: HTMLDivElement;
-
-  private reference: HTMLElement;
-
-  private arrowRef: HTMLSpanElement;
-
-  private enterTimer: number;
-
-  private leaveTimer: number;
 
   componentDidUpdate(prevProps: PopperProps) {
     const { direction, visible } = this.props;
