@@ -6,21 +6,21 @@ import classnames from 'classnames';
 
 import ClickOutside from '../click-outside';
 import domUtil from '../utils/dom';
-import BasePopperProps, { PopperTrigger, directionMap, PopperPlacement } from './PropsType';
+import BasePopperProps, { PopperTrigger, PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
 
-export interface PopperState {
+export interface PopperProps extends BasePopperProps {
+  prefixCls?: string;
+  className?: string;
+}
+
+interface PopperStates {
   show: boolean;
   direction: PopperPlacement;
   arrowRef: any;
   mounted: boolean;
   isPending: boolean;
   animationState: 'leave' | 'enter';
-}
-
-export interface PopperProps extends BasePopperProps {
-  prefixCls?: string;
-  className?: string;
 }
 
 const invertKeyValues = (obj: object, fn?) => {
@@ -72,7 +72,7 @@ const customArrowOffsetFn = (data: PopperJS.Data) => {
 
 const popperInstances: Set<PopperJS> = new Set();
 
-class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperState> {
+class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperStates> {
   static defaultProps = {
     prefixCls: 'za-popper',
     hasArrow: false,
@@ -121,7 +121,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
   }
 
-  static getDerivedStateFromProps(props: PopperProps, state: PopperState) {
+  static getDerivedStateFromProps(props: PopperProps, state: PopperStates) {
     if ('visible' in props && props.trigger === 'manual') {
       return {
         ...state,
@@ -132,7 +132,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     return null;
   }
 
-  state: PopperState = {
+  state: PopperStates = {
     show: false,
     direction: this.props.direction!,
     arrowRef: null,
