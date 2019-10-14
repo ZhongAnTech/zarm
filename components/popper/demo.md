@@ -20,6 +20,7 @@ class Demo extends React.Component {
         <Cell className="basic-demo">
           <Popper
             content="我是气泡层的内容"
+            destroy={false}
             visible={visible}
             trigger={trigger}
             direction={direction}

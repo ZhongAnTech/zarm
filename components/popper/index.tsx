@@ -157,11 +157,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
   componentDidUpdate(prevProps: PopperProps) {
     const { direction, visible } = this.props;
-
-    if (
-      prevProps.visible !== visible
-      || prevProps.direction !== direction
-    ) {
+    if (visible && (prevProps.visible !== visible || prevProps.direction !== direction)) {
       this.handleOpen();
     }
     if (prevProps.visible !== visible && !visible) {
@@ -266,7 +262,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
         this.props.onVisibleChange!(false);
       });
     } else {
-      this.setState({ mounted: true });
+      // this.setState({ mounted: true });
       this.props.onVisibleChange!(true);
     }
   };
