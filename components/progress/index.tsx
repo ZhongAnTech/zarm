@@ -35,20 +35,9 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     }
   }
 
-  static getDerivedStateFromProps(nextProps, state) {
-    const { weight } = nextProps;
-    if ('weight' in nextProps && weight !== state.prevWeight) {
-      return {
-        weight,
-        prevWeight: weight,
-      };
-    }
-    return null;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { weight } = this.props;
-    if (prevState.prevWeight !== weight) {
+    if (prevProps.weight !== weight) {
       this.resetStrokeWidth(weight);
     }
   }
