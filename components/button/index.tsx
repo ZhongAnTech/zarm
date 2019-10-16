@@ -5,18 +5,15 @@ import ActivityIndicator from '../activity-indicator';
 
 export interface BaseButtonPropsType extends BasePropsType {
   prefixCls?: string;
-  htmlType: 'button' | 'submit' | 'reset';
 }
 
 export type AnchorButtonProps = {
-  href: string;
-  target?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
-} & BaseButtonPropsType & AnchorHTMLAttributes<HTMLAnchorElement>;
+  onClick?: MouseEventHandler<HTMLElement>;
+} & BaseButtonPropsType & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'onClick'>;
 
 export type NativeButtonProps = {
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-} & BaseButtonPropsType & ButtonHTMLAttributes<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLElement>;
+} & BaseButtonPropsType & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'>;
 
 export type ButtonProps = AnchorButtonProps | NativeButtonProps;
 
@@ -33,7 +30,6 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     shadow: false,
     disabled: false,
     loading: false,
-    htmlType: 'button',
   };
 
   onClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = (e) => {
@@ -89,10 +85,9 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       )
       : childrenRender;
 
-    const { htmlType: excludeProp, ...anchorRest } = rest as AnchorButtonProps;
-    const { htmlType, ...nativeRest } = rest as NativeButtonProps;
+    const { href, ...anchorRest } = rest as AnchorButtonProps;
 
-    if (anchorRest.href !== undefined) {
+    if (href !== undefined) {
       cls = classnames(cls, `${prefixCls}--link`);
 
       return (
@@ -111,11 +106,10 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     return (
       <button
         aria-disabled={disabled}
-        type={htmlType}
         className={cls}
         onClick={this.onClick}
         onTouchStart={() => {}}
-        {...nativeRest}
+        {...rest as NativeButtonProps}
       >
         {contentRender}
       </button>
