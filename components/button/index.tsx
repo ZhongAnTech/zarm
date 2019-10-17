@@ -31,6 +31,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     shadow: false,
     disabled: false,
     loading: false,
+    htmlType: 'button',
   };
 
   onClick: ButtonProps['onClick'] = (e) => {
