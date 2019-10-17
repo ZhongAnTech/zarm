@@ -35,9 +35,11 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { weight } = nextProps;
-    this.resetStrokeWidth(weight);
+  componentDidUpdate(prevProps) {
+    const { weight } = this.props;
+    if (prevProps.weight !== weight) {
+      this.resetStrokeWidth(weight);
+    }
   }
 
   getBaseStrokeWidth = (weight) => {

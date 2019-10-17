@@ -14,6 +14,8 @@ export type PopperPlacement =
 
 export type PopperTrigger = 'hover' | 'focus' | 'click' | 'manual' | 'contextMenu';
 
+export type getContainerFunc = () => HTMLElement;
+
 export default interface BasePopperProps {
   visible?: boolean;
   hasArrow?: boolean;
@@ -25,6 +27,8 @@ export default interface BasePopperProps {
   // popperOptions?: PopperJS.PopperOptions;
   // modifiers?: PopperJS.Modifiers;
   content?: React.ReactNode;
+  destroy?: boolean;
+  getContainer?: HTMLElement | getContainerFunc;
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;
   onVisibleChange?: (visible: boolean) => void;

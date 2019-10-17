@@ -18,7 +18,7 @@ interface PopperStates {
   show: boolean;
   direction: PopperPlacement;
   arrowRef: any;
-  mounted: boolean;
+  mounted?: boolean;
   isPending: boolean;
   animationState: 'leave' | 'enter';
 }
@@ -73,25 +73,27 @@ const customArrowOffsetFn = (data: PopperJS.Data) => {
 const popperInstances: Set<PopperJS> = new Set();
 
 class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperStates> {
-  static defaultProps = {
-    prefixCls: 'za-popper',
-    hasArrow: false,
-    arrowPointAtCenter: false,
-    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
-    direction: 'top',
-    mouseEnterDelay: 100,
-    mouseLeaveDelay: 100,
-    visible: false,
-    content: '',
-    animationType: 'zoom-fade',
-    animationDuration: 200,
-    onVisibleChange: () => {},
-  };
+  static update() {
+    popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
+  }
+
+  private popper: PopperJS | null;
+
+  private popperNode: HTMLDivElement;
+
+  private reference: HTMLElement;
+
+  private arrowRef: HTMLSpanElement;
+
+  private enterTimer: number;
+
+  private leaveTimer: number;
 
   static propTypes = {
     prefixCls: PropTypes.string,
     children: PropTypes.element.isRequired,
     visible: PropTypes.bool,
+    destroy: PropTypes.bool,
     hasArrow: PropTypes.bool,
     arrowPointAtCenter: PropTypes.bool,
     trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual', 'contextMenu']),
@@ -117,9 +119,21 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     onVisibleChange: PropTypes.func,
   };
 
-  static update() {
-    popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
-  }
+  static defaultProps = {
+    prefixCls: 'za-popper',
+    hasArrow: false,
+    destroy: true,
+    arrowPointAtCenter: false,
+    trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
+    direction: 'top',
+    mouseEnterDelay: 100,
+    mouseLeaveDelay: 100,
+    visible: false,
+    content: '',
+    animationType: 'zoom-fade',
+    animationDuration: 200,
+    onVisibleChange: () => {},
+  };
 
   static getDerivedStateFromProps(props: PopperProps, state: PopperStates) {
     if ('visible' in props && props.trigger === 'manual') {
@@ -141,25 +155,9 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     animationState: 'leave',
   };
 
-  private popper: PopperJS | null;
-
-  private popperNode: HTMLDivElement;
-
-  private reference: HTMLElement;
-
-  private arrowRef: HTMLSpanElement;
-
-  private enterTimer: number;
-
-  private leaveTimer: number;
-
   componentDidUpdate(prevProps: PopperProps) {
     const { direction, visible } = this.props;
-
-    if (
-      prevProps.visible !== visible
-      || prevProps.direction !== direction
-    ) {
+    if (visible && (prevProps.visible !== visible || prevProps.direction !== direction)) {
       this.handleOpen();
     }
     if (prevProps.visible !== visible && !visible) {
@@ -179,6 +177,19 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
   getPopperDomNode() {
     return this.popperNode;
+  }
+
+  getContainer() {
+    const { getContainer } = this.props;
+    if (getContainer) {
+      if (typeof getContainer === 'function') {
+        return getContainer();
+      }
+      if (typeof getContainer === 'object' && getContainer instanceof HTMLElement) {
+        return getContainer;
+      }
+    }
+    return document.body;
   }
 
   setTransformOrigin() {
@@ -239,16 +250,19 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     e.stopPropagation();
 
     const { animationState } = this.state;
+    const { destroy } = this.props;
 
     if (animationState === 'leave') {
       this.setState({
         show: false,
         isPending: false,
+        ...(destroy && { mounted: false }),
       }, () => {
         this.destroy();
         this.props.onVisibleChange!(false);
       });
     } else {
+      // this.setState({ mounted: true });
       this.props.onVisibleChange!(true);
     }
   };
@@ -419,7 +433,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     return (
       <>
         <div className={prefixCls} style={style}>
-          {mounted && createPortal(toolTip, document.body)}
+          {mounted && createPortal(toolTip, this.getContainer())}
           {childElement}
         </div>
       </>
