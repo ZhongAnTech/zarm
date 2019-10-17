@@ -15,6 +15,7 @@ coverage
 dist
 es
 lib
+types
 bundle
 
 examples-rn/ios/build
