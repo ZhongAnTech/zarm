@@ -155,8 +155,9 @@ ReactDOM.render(
 | disabled | boolean | false | 是否禁用 |
 | loading | boolean | false | 是否加载中状态 |
 | icon | ReactNode | - | 设置图标 |
-| onClick | MouseEventHandler&lt;HTMLAnchorElement&gt; \| MouseEventHandler&lt;HTMLButtonElement&gt; | - | 点击后触发的回调函数 |
-| htmlType | string | 'button' | 设置`button`原生的`type`值，可选值为 `button`、`submit`、`reset` |
-| href | string | - | 点击跳转的地址，指定此属性`button`的行为和`a`链接一致 |
-| target | string | - | 相当于 a 链接的 target 属性，href 存在时生效 |
+| onClick | MouseEventHandler&lt;Element&gt; | - | 点击后触发的回调函数 |
+| htmlType | string | 'button' | 设置原生 button 的`type`值，可选值为`button`、`submit`、`reset` |
+| href | string | - | 点击跳转的地址，指定此属性`button`的行为和 a 标签一致 |
+| target | string | - | 规定在何处打开链接文档，相当于 a 标签的`target`属性，`href`属性存在时生效 |
+| mimeType | string | - | 链接中指向的文档的 mime 类型，相当于 a 标签的`type`属性，`href`属性存在时生效 |
 
