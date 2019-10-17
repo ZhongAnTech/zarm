@@ -1,6 +1,5 @@
-import React, { PureComponent, HTMLAttributes } from 'react';
+import React, { PureComponent, HTMLAttributes, ReactNode } from 'react';
 import classnames from 'classnames/dedupe';
-import PropTypes from 'prop-types';
 import BasePropsType from './PropsType';
 import createFromIconfont from './IconFont';
 
@@ -19,33 +18,11 @@ export type IconProps = {
 class Icon extends PureComponent<IconProps, {}> {
   static displayName = 'Icon';
 
-  static defaultProps = {
+  static defaultProps: IconProps = {
     prefixCls: 'za-icon',
     theme: 'default',
     size: 'md',
-    children: undefined,
     viewBox: INNER_SVG_PROPS.viewBox,
-    onClick: undefined,
-  };
-
-  static propTypes = {
-    /** 类名前缀 */
-    prefixCls: PropTypes.string,
-
-    /** 设置主题 */
-    theme: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger']),
-
-    /** 设置大小 */
-    size: PropTypes.oneOf(['lg', 'md', 'sm']),
-
-    /** SVG 内容 */
-    children: PropTypes.node,
-
-    /** viewBox */
-    viewBox: PropTypes.string,
-
-    /** 点击事件 */
-    onClick: PropTypes.func,
   };
 
   static createFromIconfont = createFromIconfont;
@@ -67,7 +44,7 @@ class Icon extends PureComponent<IconProps, {}> {
       ...rest,
     };
 
-    let iconNode: React.ReactNode;
+    let iconNode: ReactNode;
     // svg component > children by iconfont > type
     if (SvgComponent) {
       delete INNER_SVG_PROPS.viewBox;
