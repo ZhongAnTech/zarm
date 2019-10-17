@@ -13,6 +13,7 @@ exports[`Tooltip renders correctly 1`] = `
     animationType="zoom-fade"
     arrowPointAtCenter={false}
     content=""
+    destroy={true}
     direction="top"
     hasArrow={true}
     mouseEnterDelay={100}

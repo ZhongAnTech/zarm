@@ -137,7 +137,6 @@ exports[`SwipeAction renders correctly 1`] = `
           aria-disabled={false}
           className="za-button za-button--primary za-button--md za-button--radius"
           onClick={[Function]}
-          onTouchStart={[Function]}
           type="button"
         >
           <span>
@@ -163,7 +162,6 @@ exports[`SwipeAction renders correctly 1`] = `
           aria-disabled={false}
           className="za-button za-button--danger za-button--md za-button--radius"
           onClick={[Function]}
-          onTouchStart={[Function]}
           type="button"
         >
           <span>
@@ -193,7 +191,6 @@ exports[`SwipeAction renders correctly 1`] = `
           aria-disabled={false}
           className="za-button za-button--primary za-button--md za-button--radius"
           onClick={[Function]}
-          onTouchStart={[Function]}
           type="button"
         >
           <span>
@@ -219,7 +216,6 @@ exports[`SwipeAction renders correctly 1`] = `
           aria-disabled={false}
           className="za-button za-button--danger za-button--md za-button--radius"
           onClick={[Function]}
-          onTouchStart={[Function]}
           type="button"
         >
           <span>
