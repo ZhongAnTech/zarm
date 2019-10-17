@@ -71,7 +71,6 @@ const parseState = (props: CalendarProps) => {
     // steps:Math.max(tmp.value.length, tmp.defaultValue.length);
     steps: multiple ? 2 : 1,
     // 初始化点击步数
-    step: 1,
     multiple,
   };
 
@@ -102,10 +101,12 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
   constructor(props: CalendarProps) {
     super(props);
     this.nodes = {};
-    // this.getState(props);
   }
 
-  state = parseState(this.props);
+  state = {
+    ...parseState(this.props),
+    step: 1,
+  };
 
   componentDidMount() {
     this.anchor();
@@ -113,14 +114,19 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
-      ('value' in nextProps && nextProps.value !== prevState.value)
-      || ('multiple' in nextProps && nextProps.multiple !== prevState.multiple)
-      || ('min' in nextProps && nextProps.min !== prevState.min)
-      || ('max' in nextProps && nextProps.max !== prevState.max)
+      ('value' in nextProps && nextProps.value !== prevState.prevValue)
+      || ('multiple' in nextProps && nextProps.multiple !== prevState.prevMultiple)
+      || ('min' in nextProps && nextProps.min !== prevState.prevMin)
+      || ('max' in nextProps && nextProps.max !== prevState.prevMax)
     ) {
       return {
         ...parseState(nextProps),
+        step: prevState.step ? 1 : prevState.step,
         refresh: !prevState.refresh,
+        prevValue: nextProps.value,
+        prevMax: nextProps.max,
+        prevMin: nextProps.min,
+        prevMultiple: nextProps.multiple,
       };
     }
     return null;
@@ -142,13 +148,16 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
     }
     value[step - 1] = date;
     value.sort((item1: Date, item2: Date) => +item1 - +item2);
-
     this.setState(
       {
         value,
         step: step >= steps ? 1 : step + 1,
       },
-      () => step >= steps && typeof onChange === 'function' && onChange(value),
+      () => {
+        if (step >= steps && typeof onChange === 'function') {
+          onChange(value);
+        }
+      },
     );
   };
 
