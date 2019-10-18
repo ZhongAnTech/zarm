@@ -95,7 +95,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     const { onCancel } = this.props;
     this.setState({
       value: this.initDate,
-      visible: false,
     });
     if (typeof onCancel === 'function') {
       onCancel();

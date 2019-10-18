@@ -373,16 +373,15 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | '70%' | 宽度 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
-| maskClosable | boolean | false | 是否点击遮罩层时关闭 |
-| closable | boolean | false | 右上角是否显示关闭按钮 |
+| maskClosable | boolean | false | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
+| closable | boolean | false | 右上角是否显示关闭按钮，需要和onCancel一起使用 |
+| onCancel | () => void | - | 如果maskClosable或closable为true，那么点击遮罩或者右上角关闭按钮会调用此函数 |
 | title | ReactNode | - | 标题 |
 | footer | ReactNode | - | 弹窗底部内容 |
 | disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
 | destroy | boolean | true | 弹层关闭后是否移除节点 |
-| onCancel | () => void | - | 如果maskClosable或closable为true，那么点击遮罩或者右上角关闭按钮会调用此函数 |
 | afterOpen | () => void | - | 模态框打开后的回调 |
 | afterClose | () => void | - | 模态框关闭后的回调 |
-| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Modal 挂载的 HTML 节点 |
 
 ## 静态方法

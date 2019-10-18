@@ -22,7 +22,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   static instanceList: Portal[] = [];
 
   private static unmountModalInstance(instance: Portal, callback: () => void) {
-    const instanceIndex = Portal.instanceList.findIndex((item) => item === instance);
+    const instanceIndex = Portal.instanceList.findIndex(item => item === instance);
     if (instanceIndex >= 0) {
       Portal.instanceList.splice(instanceIndex, 1);
     }
@@ -118,10 +118,10 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   animationEnd = (e) => {
     e.stopPropagation();
-    const { afterClose, afterOpen, handlePortalUnmount, visible } = this.props;
+    const { afterClose, afterOpen, handlePortalUnmount, visible, prefixCls } = this.props;
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
-      this._container.classList.add('_hidden');
+      this._container.classList.add(`${prefixCls}--hidden`);
       if (typeof afterClose === 'function') {
         afterClose();
       }
@@ -269,7 +269,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { visible, prefixCls, disableBodyScroll } = this.props;
     if (visible) {
       if (this.popup) {
-        this._container.classList.remove('_hidden');
+        this._container.classList.remove(`${prefixCls}--hidden`);
         this.setState({
           isPending: true,
         });

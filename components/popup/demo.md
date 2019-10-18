@@ -109,6 +109,7 @@ class Demo extends React.Component {
           onMaskClick={() => { this.toggle('popBottom')}}
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
+          destroy={false}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => { this.toggle('picker'); }}>打开Picker</Button>
