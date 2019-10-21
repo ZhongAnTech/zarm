@@ -11,10 +11,10 @@ class Demo extends React.Component {
     this.state = {
       visible: false,
       multiple: true,
-      defaultValue: ['2018-11-21', '2018-12-7'],
+      defaultValue: ['2019-10-12', '2019-10-18'],
       value: '',
-      min: '2018-5-12',
-      max: '2019-5-11',
+      min: '2019-9-12',
+      max: '2019-10-30',
       dateRender: date => {
         if (/(0|6)/.test(date.getDay())) {
           return (
@@ -80,7 +80,7 @@ class Demo extends React.Component {
           <Calendar
             {...this.state}
             onChange={value => {
-              this.setState({ value });
+              // this.setState({ value });
               console.log('onChange', value);
             }}
           />
