@@ -4,8 +4,6 @@ import BaseSearchBarProps from './PropsType';
 import Icon from '../icon';
 import InputBase from '../input/InputBase';
 
-let shouldUpdatePosition = false;
-
 export interface SearchBarProps extends BaseSearchBarProps {
   prefixCls?: string;
   className?: string;
@@ -45,25 +43,23 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     this.calculatePositon(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { cancelText, placeholder } = this.props;
-    const { value } = this.state;
-    if ('value' in nextProps && value !== nextProps.value) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+      return {
         value: nextProps.value,
-      });
+        preValue: nextProps.value,
+      };
     }
-    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
-    if (cancelText !== nextProps.cancelText || placeholder !== nextProps.placeholder) {
-      shouldUpdatePosition = true;
-    }
+    return null;
   }
 
+
   componentDidUpdate(prevProps) {
-    if (shouldUpdatePosition) {
+    const { cancelText, placeholder } = this.props;
+    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
+    if (cancelText !== prevProps.cancelText || placeholder !== prevProps.placeholder) {
       this.calculatePositon(prevProps);
     }
-    shouldUpdatePosition = false;
   }
 
   onFocus() {
