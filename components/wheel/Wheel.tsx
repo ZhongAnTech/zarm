@@ -57,12 +57,14 @@ export default class Wheel extends Component<WheelProps, any> {
       }
     });
     this.BScroll.on('scrollEnd', () => {
+      const { dataSource: curDataSource } = this.props;
       if (this.isChangedByProps) {
         this.isChangedByProps = false;
         return;
       }
       const index = this.BScroll.getSelectedIndex();
-      const child = dataSource![index];
+      const child = curDataSource![index];
+
       onTransition!(this.BScroll.isInTransition);
       if (child) {
         this.fireValueChange(child[valueMember!]);
