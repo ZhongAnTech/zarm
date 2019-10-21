@@ -66,7 +66,7 @@ class Demo extends React.Component {
     setTimeout(() => {
       if (!this.mounted) return;
 
-      const randomNum = 1;
+      const randomNum = getRandomNum(0, 5);
       const { dataSource } = this.state;
       let loading = LOAD_STATE.success;
 
