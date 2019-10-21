@@ -51,15 +51,30 @@ export default class Pull extends PureComponent<PullProps, any> {
     Events.on(scroller, 'scroll', this.throttledScroll);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { refresh, load } = this.props;
-
-    if ('refresh' in nextProps && nextProps.refresh.state !== refresh!.state) {
-      this.doRefreshAction(nextProps.refresh.state);
+  static getDerivedStateFromProps(nextProps, state) {
+    const { load, refresh } = nextProps;
+    const { prevLoad = {}, prevRefresh } = state;
+    if (
+      ('load' in nextProps && load.state !== prevLoad.state)
+      || ('refresh' in nextProps && refresh.state !== prevRefresh.state)
+    ) {
+      return {
+        loadState: load.state,
+        prevLoad: load,
+        refreshState: refresh.state,
+        prevRefresh: refresh,
+      };
     }
+    return null;
+  }
 
-    if ('load' in nextProps && nextProps.load.state !== load!.state) {
-      this.doLoadAction(nextProps.load.state);
+  componentDidUpdate(prevProps) {
+    const { load, refresh } = this.props;
+    if (prevProps.load!.state !== load!.state) {
+      this.doLoadAction(load!.state);
+    }
+    if (prevProps.refresh!.state !== refresh!.state) {
+      this.doRefreshAction(refresh!.state);
     }
   }
 
