@@ -41,8 +41,6 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
 
   componentWillReceiveProps(nextProps) {
     const propsToState: SelectState = parseProps.getSource(nextProps);
-    propsToState.tempObjValue = propsToState.objValue;
-    propsToState.tempValue = propsToState.value;
     this.setState(propsToState);
   }
 
@@ -78,9 +76,9 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    const { tempObjValue = [] } = this.state;
+    const { objValue = [] } = this.state;
     this.setState({
-      objValue: tempObjValue,
+      objValue,
       visible: false,
     }, () => {
       if (typeof onCancel === 'function') {
