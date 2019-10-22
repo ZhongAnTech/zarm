@@ -53,14 +53,16 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   static getDerivedStateFromProps(nextProps, state) {
     const { load, refresh } = nextProps;
-    const { prevLoad = {}, prevRefresh } = state;
-    if (
-      ('load' in nextProps && load.state !== prevLoad.state)
-      || ('refresh' in nextProps && refresh.state !== prevRefresh.state)
-    ) {
+    const { prevLoad = {}, prevRefresh = {} } = state;
+    if ('load' in nextProps && load.state !== prevLoad.state) {
       return {
         loadState: load.state,
         prevLoad: load,
+      };
+    }
+
+    if ('refresh' in nextProps && refresh.state !== prevRefresh.state) {
+      return {
         refreshState: refresh.state,
         prevRefresh: refresh,
       };
