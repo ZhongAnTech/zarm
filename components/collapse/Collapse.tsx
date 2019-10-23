@@ -68,12 +68,12 @@ export default class Collapse extends Component<CollapseProps, any> {
     return !isPropEqual(this.props, nextProps) || !isPropEqual(this.state, nextState);
   }
 
-  onItemChange = (key) => {
+  onItemChange = (onItemChange, key) => {
     if (!key) {
       return;
     }
-    const { onChange, multiple } = this.props;
     const { activeKey } = this.state;
+    const { onChange, multiple } = this.props;
     const hasKey = activeKey.indexOf(key) > -1;
     let newActiveKey: Array<string> = [];
     if (multiple) {
@@ -86,10 +86,16 @@ export default class Collapse extends Component<CollapseProps, any> {
     } else {
       newActiveKey = hasKey ? [] : [key];
     }
+    if (typeof onItemChange === 'function') {
+      const isActive = newActiveKey.indexOf(key) > -1;
+      onItemChange(isActive);
+    }
     this.setState({
       activeKey: newActiveKey,
     });
-    onChange(key);
+    if (typeof onChange === 'function') {
+      onChange(key);
+    }
   };
 
   renderItems = () => {
@@ -97,13 +103,15 @@ export default class Collapse extends Component<CollapseProps, any> {
     return Children.map(
       this.props.children,
       (ele: ReactElement<CollapseItemProps>) => {
-        const { disabled, itemKey } = ele.props;
-        const key = itemKey && String(itemKey);
-        const isActive = activeKey.indexOf(key) > -1;
+        const { disabled, onChange } = ele.props;
+        const { key } = ele;
+        const currentKey = key && String(key);
+        const isActive = activeKey.indexOf(currentKey) > -1;
         return cloneElement(ele, {
           animated,
+          itemKey: key,
           isActive,
-          onItemChange: disabled ? () => {} : () => this.onItemChange(key),
+          onItemChange: disabled ? () => { } : () => this.onItemChange(onChange, currentKey),
         });
       },
     );

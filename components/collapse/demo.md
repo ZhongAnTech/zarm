@@ -8,17 +8,17 @@ import { Collapse, Cell } from 'zarm';
 
 ReactDOM.render(
   <Collapse>
-    <Collapse.Item itemKey="1" title="50元套餐">
+    <Collapse.Item key="1" title="50元套餐" onChange={(active) => console.log(active)}>
       <div className="content">
         <div>我是内容1</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey={2} title="100元套餐">
+    <Collapse.Item key={2} title="100元套餐">
       <div className="content">
         <div>我是内容2</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="3" title="200元套餐">
+    <Collapse.Item key="3" title="200元套餐">
       <div className="content">
         <div>我是内容3</div>
       </div>
@@ -35,7 +35,7 @@ import { Collapse } from 'zarm';
 
 ReactDOM.render(
   <Collapse animated>
-    <Collapse.Item itemKey="test1" title="50元套餐">
+    <Collapse.Item key="test1" title="50元套餐">
       <div className="content">
         <div>我是50元套餐内容</div>
         <div>我是50元套餐内容</div>
@@ -43,7 +43,7 @@ ReactDOM.render(
         <div>我是50元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test2" title="100元套餐">
+    <Collapse.Item key="test2" title="100元套餐">
       <div className="content">
         <div>我是100元套餐内容</div>
         <div>我是100元套餐内容</div>
@@ -51,7 +51,7 @@ ReactDOM.render(
         <div>我是100元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test3" title="200元套餐">
+    <Collapse.Item key="test3" title="200元套餐">
       <div className="content">
         <div>我是200元套餐内容</div>
         <div>我是200元套餐内容</div>
@@ -71,7 +71,7 @@ import { Collapse } from 'zarm';
 
 ReactDOM.render(
   <Collapse defaultActiveKey={['test1', 'test2']} animated>
-    <Collapse.Item itemKey="test1" title="50元套餐">
+    <Collapse.Item key="test1" title="50元套餐">
       <div className="content">
         <div>我是50元套餐内容</div>
         <div>我是50元套餐内容</div>
@@ -79,7 +79,7 @@ ReactDOM.render(
         <div>我是50元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test2" title="100元套餐">
+    <Collapse.Item key="test2" title="100元套餐">
       <div className="content">
         <div>我是100元套餐内容</div>
         <div>我是100元套餐内容</div>
@@ -87,7 +87,7 @@ ReactDOM.render(
         <div>我是100元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test3" title="200元套餐">
+    <Collapse.Item key="test3" title="200元套餐">
       <div className="content">
         <div>我是200元套餐内容</div>
         <div>我是200元套餐内容</div>
@@ -107,7 +107,7 @@ import { Collapse } from 'zarm';
 
 ReactDOM.render(
   <Collapse animated multiple defaultActiveKey={['test1', 'test3']}>
-    <Collapse.Item itemKey="test1" title="50元套餐">
+    <Collapse.Item key="test1" title="50元套餐">
       <div className="content">
         <div>我是50元套餐内容</div>
         <div>我是50元套餐内容</div>
@@ -115,7 +115,7 @@ ReactDOM.render(
         <div>我是50元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test2" title="100元套餐">
+    <Collapse.Item key="test2" title="100元套餐">
       <div className="content">
         <div>我是100元套餐内容</div>
         <div>我是100元套餐内容</div>
@@ -123,7 +123,7 @@ ReactDOM.render(
         <div>我是100元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test3" title="200元套餐">
+    <Collapse.Item key="test3" title="200元套餐">
       <div className="content">
         <div>我是200元套餐内容</div>
         <div>我是200元套餐内容</div>
@@ -147,7 +147,7 @@ ReactDOM.render(
     activeKey={['test2']}
     onChange={key => console.log(key)}
   >
-    <Collapse.Item itemKey="test1" title="50元套餐">
+    <Collapse.Item key="test1" title="50元套餐">
       <div className="content">
         <div>我是50元套餐内容</div>
         <div>我是50元套餐内容</div>
@@ -155,7 +155,7 @@ ReactDOM.render(
         <div>我是50元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test2" title="100元套餐" disabled>
+    <Collapse.Item key="test2" title="100元套餐" disabled>
       <div className="content">
         <div>我是100元套餐内容</div>
         <div>我是100元套餐内容</div>
@@ -163,7 +163,7 @@ ReactDOM.render(
         <div>我是100元套餐内容</div>
       </div>
     </Collapse.Item>
-    <Collapse.Item itemKey="test3" title="200元套餐" disabled>
+    <Collapse.Item key="test3" title="200元套餐" disabled>
       <div className="content">
         <div>我是200元套餐内容</div>
         <div>我是200元套餐内容</div>
@@ -192,6 +192,6 @@ ReactDOM.render(
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | title | ReactNode | - | 每一项的名称 |
-| itemKey | string \| number | - | 对应activeKey |
+| key | string \| number | - | 对应activeKey |
 | disabled | boolean | false | 是否禁用 |
-| onItemChange | (itemKey?: string \| number) => void | - | 点击某一项的回调函数 |
+| onChange | (active?: boolean) => void | - | 点击某一项的回调函数 |
