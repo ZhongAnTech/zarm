@@ -145,7 +145,7 @@
 
     @include m(radius) {
       @include b(checkbox) {
-        @include button-shape(var(--checkbox-radius));
+        @include button-shape(var(--radius-md));
       }
     }
 
