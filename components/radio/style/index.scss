@@ -28,7 +28,7 @@
   @include e(text) {
     margin-left: r(10);
   }
-
+ 
   @include e(inner) {
     display: flex;
     align-items: center;
@@ -78,6 +78,7 @@
 
     @include m(checked) {
       @include e(inner) {
+        color: var(--color-text-inverse);
         border-color: var(--border-disabled);
         background-color: var(--background-disabled);
       }
@@ -123,6 +124,16 @@
         border-color: var(--button-primary-border);
         background-color: var(--button-primary-background);
         color: var(--color-text-inverse);
+
+        @include m(disabled) {
+          border-color: var(--button-primary-border);
+          background-color: var(--button-primary-background);
+          color: var(--color-text-inverse);
+
+          @include e(text) {
+            color: var(--color-text-inverse);
+          }
+        }
       }
     }
 
@@ -148,13 +159,6 @@
       @include b(radio) {
         @include button-shape(var(--radius-circle));
       }
-    }
-  }
-
-  @include m(cell) {
-    @include b(cell) {
-      display: block;
-      margin-left: 0;
     }
   }
 }
