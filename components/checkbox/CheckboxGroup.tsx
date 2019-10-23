@@ -57,6 +57,7 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
 
   static getDerivedStateFromProps(nextProps: CheckboxGroup['props']) {
     if ('value' in nextProps || getChildChecked(nextProps.children).length > 0) {
+      console.log('------------------------>');
       return {
         value: nextProps.value || getChildChecked(nextProps.children),
       };
