@@ -2,34 +2,6 @@
 
 
 
-## 基本用法
-```jsx
-import { SearchBar } from 'zarm';
-
-ReactDOM.render(
-  <SearchBar
-    showCancel={false}
-    onSubmit={(value) => {
-      console.log(`搜索内容为${value}`);
-    }}
-    onFocus={() => {
-      console.log('获取焦点');
-    }}
-    onChange={(value) => {
-      console.log(value);
-    }}
-    onBlur={() => {
-      console.log('失去焦点');
-    }}
-    onClear={() => {
-      console.log('点击了清除');
-    }}
-    onCancel={() => {
-      console.log('点击了取消');
-    }}
-  />
-, mountNode);
-```
 
 
 
@@ -40,13 +12,18 @@ import { SearchBar } from 'zarm';
 class Demo extends React.Component {
   state = {
     value: '',
+    showCancel: false,
   };
-
+  componentDidMount() {
+    this.setState({
+      showCancel: true
+    })
+  }
   render() {
     return (
       <>
         <SearchBar
-          showCancel
+          showCancel={this.state.showCancel}
           value={this.state.value}
           placeholder="搜索"
           cancelText="取消"
@@ -73,39 +50,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 多形状
-```jsx
-import { SearchBar } from 'zarm';
 
-ReactDOM.render(
-  <>
-    <SearchBar shape="rect" />
-    <SearchBar shape="round" />
-  </>
-, mountNode);
-```
-
-
-
-## 手动获取焦点
-```jsx
-import { SearchBar, Button } from 'zarm';
-
-class Demo extends React.Component {
-  render() {
-    return (
-      <>
-        <SearchBar ref={(ref) => { this.manualFocus = ref; }} />
-        <div className="button-wrap">
-          <Button theme="primary" size="xs" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
-        </div>
-      </>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
 
 
 
