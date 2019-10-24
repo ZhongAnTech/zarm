@@ -92,10 +92,11 @@ export default class Collapse extends Component<CollapseProps, any> {
     }
     this.setState({
       activeKey: newActiveKey,
+    }, () => {
+      if (typeof onChange === 'function') {
+        onChange(newActiveKey);
+      }
     });
-    if (typeof onChange === 'function') {
-      onChange(key);
-    }
   };
 
   renderItems = () => {
@@ -109,9 +110,9 @@ export default class Collapse extends Component<CollapseProps, any> {
         const isActive = activeKey.indexOf(currentKey) > -1;
         return cloneElement(ele, {
           animated,
-          itemKey: key,
+          itemKey: key!,
           isActive,
-          onItemChange: disabled ? () => { } : () => this.onItemChange(onChange, currentKey),
+          onChange: disabled ? () => { } : () => this.onItemChange(onChange, currentKey),
         });
       },
     );

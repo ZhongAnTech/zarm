@@ -42,12 +42,13 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   }
 
   onClickItem = () => {
-    const { itemKey, onItemChange, disabled } = this.props;
+    const { onChange, disabled } = this.props;
+    const { active } = this.state;
     if (disabled) {
       return;
     }
-    if (typeof onItemChange === 'function') {
-      onItemChange(itemKey);
+    if (typeof onChange === 'function') {
+      onChange(active);
     }
   };
 

@@ -7,7 +7,7 @@
 import { Collapse, Cell } from 'zarm';
 
 ReactDOM.render(
-  <Collapse>
+  <Collapse onChange={(key) => console.log(key)}>
     <Collapse.Item key="1" title="50元套餐" onChange={(active) => console.log(active)}>
       <div className="content">
         <div>我是内容1</div>
@@ -186,7 +186,7 @@ ReactDOM.render(
 | animated | boolean | false | 是否添加展开动画 |
 | activeKey | string \| number \| string[] \| number[] | [] | 动态更新展开项的索引数组或字符串或数字 |
 | defaultActiveKey | string \| number \| string[] \| number[] | [] | 初始化默认展开项的索引数组或字符串或数字 |
-| onChange | (activeKey?: string \| number) => void | - | 点击某一项的回调函数 |
+| onChange | (activeKey?: string[] \| number[]) => void | - | 点击某一项的回调函数,返回选中的项 |
 
 ## Collapse.Item
 | 属性 | 类型 | 默认值 | 说明 |
