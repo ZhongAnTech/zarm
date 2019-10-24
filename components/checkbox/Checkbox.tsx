@@ -39,10 +39,11 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     checked: getChecked(this.props, false),
   };
 
-  static getDerivedStateFromProps(nextProps: CheckboxProps) {
-    if (typeof nextProps.checked !== 'undefined') {
+  static getDerivedStateFromProps(nextProps: CheckboxProps, state) {
+    if ('checked' in nextProps && nextProps.checked !== state.prevChecked) {
       return {
         checked: nextProps.checked,
+        prevChecked: nextProps.checked,
       };
     }
 
@@ -52,7 +53,6 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
   onValueChange = () => {
     const { disabled, onChange } = this.props;
     const { checked } = this.state;
-
     if (disabled) {
       return;
     }

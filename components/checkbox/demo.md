@@ -43,7 +43,7 @@ class Demo extends React.Component {
               value={this.state.value}
               onChange={(value) => {
                 this.setState({ value });
-                console.log(`radio to ${value}`)
+                console.log(`checked to ${value}`)
               }}>
               <Checkbox value="0">选项一</Checkbox>
               <Checkbox value="1">选项二</Checkbox>
@@ -68,10 +68,10 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Checkbox.Group type="button" defaultValue={['2']}>
+            <Checkbox.Group type="button">
               <Checkbox value="0">选项一</Checkbox>
               <Checkbox value="1" disabled>选项二</Checkbox>
-              <Checkbox value="2" disabled>选项三</Checkbox>
+              <Checkbox value="2" disabled checked>选项三</Checkbox>
             </Checkbox.Group>
           }
         >

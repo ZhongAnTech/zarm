@@ -5790,10 +5790,10 @@ eslint-config-airbnb@^18.0.1:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-eslint-config-za@^2.1.0-alpha.6:
-  version "2.1.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.1.0-alpha.6.tgz#94f8e309e3a608bb36458ff77991bc48e051a362"
-  integrity sha512-DTQYiHtVNxyiK3r4mdqOZdbKJZGtPwV27WaU1Ui+z5Ma30jbWDb4UjL801IqpQyynNOaYbtTH1iPc/WjnZqNOQ==
+eslint-config-za@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.1.0.tgz#83189e0bf22c802f9d3e0ae5176835f5fae215ca"
+  integrity sha512-Lgb0bYcBbWqXkjzI5elJzWU58cJ1nJYqhLUAOJNzxM6tb5cyT401wTo29MQoijl/SfymBghDc5dn9oomyIIvwg==
   dependencies:
     eslint-config-airbnb "^18.0.1"
 
