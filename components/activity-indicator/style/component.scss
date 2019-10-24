@@ -1,10 +1,9 @@
 @import 'mixins';
 
+$PI: 3.141592674;
 $activity-indicator-spinner-item : 12;
 
 @include b(activity-indicator) {
-  $PI: 3.141592674;
-
   display: inline-block;
   position: relative;
   transform: rotate(-90deg);
@@ -25,8 +24,6 @@ $activity-indicator-spinner-item : 12;
   }
 
   @include e(circular) {
-    @include activity-indicator-size(var(--activity-indicator-size-md));
-
     @include m(loading) {
       @include animation(rotate360, 1.5s linear infinite);
       // animation: za-rotate360 1.5s linear infinite;
@@ -42,10 +39,6 @@ $activity-indicator-spinner-item : 12;
         stroke-linecap: round;
         stroke: var(--theme-primary);
       }
-    }
-
-    @include m(lg) {
-      @include activity-indicator-size(var(--activity-indicator-size-lg));
     }
   }
 

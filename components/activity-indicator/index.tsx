@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 
@@ -7,11 +7,12 @@ const DIAMETER = 62;
 export interface ActivityIndicatorProps extends PropsType {
   prefixCls?: string;
   className?: string;
+  style?: CSSProperties;
 }
 
 const Circular = (props: ActivityIndicatorProps) => {
-  const { prefixCls, className, size, percent, strokeWidth, loading } = props;
-  const cls = classnames(className, `${prefixCls}`, {
+  const { prefixCls, className, size, percent, strokeWidth, loading, style } = props;
+  const cls = classnames(className, prefixCls, {
     [`${prefixCls}--${size}`]: !!size,
     [`${prefixCls}__circular--loading`]: loading,
   });
@@ -19,7 +20,7 @@ const Circular = (props: ActivityIndicatorProps) => {
   const half = DIAMETER / 2;
   const r = half - (strokeWidth as number / 2);
   const round = 2 * Math.PI * r;
-  const style = {
+  const lineStyle = {
     strokeDasharray: `${(round * (percent as number)) / 100} ${round}`,
     strokeWidth,
   };
@@ -31,7 +32,7 @@ const Circular = (props: ActivityIndicatorProps) => {
     });
 
     return (
-      <span className={cls}>
+      <span className={cls} style={style}>
         <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`} className={circularCls}>
           <circle cx={DIAMETER} cy={DIAMETER} r={r} fill="none" style={{ strokeWidth }} />
         </svg>
@@ -40,15 +41,17 @@ const Circular = (props: ActivityIndicatorProps) => {
   }
 
   return (
-    <svg className={cls} viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
-      <circle className={`${prefixCls}__path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
-      <circle className={`${prefixCls}__line`} cx={half} cy={half} r={r} fill="none" style={style} />
-    </svg>
+    <span className={cls} style={style}>
+      <svg viewBox={`0 0 ${DIAMETER} ${DIAMETER}`}>
+        <circle className={`${prefixCls}__path`} cx={half} cy={half} r={r} fill="none" style={{ strokeWidth }} />
+        <circle className={`${prefixCls}__line`} cx={half} cy={half} r={r} fill="none" style={lineStyle} />
+      </svg>
+    </span>
   );
 };
 
 const Spinner = (props: ActivityIndicatorProps) => {
-  const { prefixCls, className, size } = props;
+  const { prefixCls, className, size, style } = props;
   const cls = classnames(prefixCls, `${prefixCls}__spinner`, className, {
     [`${prefixCls}--${size}`]: !!size,
   });
@@ -59,7 +62,7 @@ const Spinner = (props: ActivityIndicatorProps) => {
   }
 
   return (
-    <div className={cls}>{spinner}</div>
+    <div className={cls} style={style}>{spinner}</div>
   );
 };
 
