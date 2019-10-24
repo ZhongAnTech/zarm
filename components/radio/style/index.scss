@@ -43,10 +43,10 @@
       content: '';
       width: calc(var(--radio-size) / 3.5);
       height: calc(var(--radio-size) / 2);
-      border: r(2) solid var(--color-text-inverse);
+      border: calc(var(--checkbox-size) / 9) solid var(--color-text-inverse);
       border-top: 0;
       border-left: 0;
-      margin-top: r(-2);
+      margin-top: calc(var(--checkbox-size) / -9);
       transform: rotate(45deg) scale(0);
       transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
