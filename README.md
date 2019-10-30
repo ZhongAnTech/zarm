@@ -9,7 +9,7 @@
 <div align="center">
 
   [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm)
-  [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm?branch=master)
+  [![Financial Contributors on Open Collective](https://opencollective.com/zarm/all/badge.svg?label=financial+contributors)](https://opencollective.com/zarm) [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm?branch=master)
   [![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
   [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm) 
   ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
@@ -89,6 +89,36 @@ document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ## Changelog 更新日志
 
 [CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/ZhonganTechENG/zarm/graphs/contributors"><img src="https://opencollective.com/zarm/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/zarm/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/zarm"><img src="https://opencollective.com/zarm/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/zarm/contribute)]
+
+<a href="https://opencollective.com/zarm/organization/0/website"><img src="https://opencollective.com/zarm/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/1/website"><img src="https://opencollective.com/zarm/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/2/website"><img src="https://opencollective.com/zarm/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/3/website"><img src="https://opencollective.com/zarm/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/4/website"><img src="https://opencollective.com/zarm/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/5/website"><img src="https://opencollective.com/zarm/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/6/website"><img src="https://opencollective.com/zarm/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/7/website"><img src="https://opencollective.com/zarm/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/8/website"><img src="https://opencollective.com/zarm/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/zarm/organization/9/website"><img src="https://opencollective.com/zarm/organization/9/avatar.svg"></a>
 
 ## License
 
