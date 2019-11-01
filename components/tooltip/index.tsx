@@ -25,15 +25,15 @@ class Tooltip extends React.Component<TooltipProps, any> {
   };
 
   render() {
-    const { children, ...others } = this.props;
+    const { children, content, ...others } = this.props;
 
-    return (
+    return content ? (
       <Popper
         {...others}
       >
         {children}
       </Popper>
-    );
+    ) : children;
   }
 }
 
