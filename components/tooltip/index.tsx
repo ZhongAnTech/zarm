@@ -32,7 +32,7 @@ class Tooltip extends React.Component<TooltipProps, any> {
         content={content}
         {...others}
       >
-        {React.isValidElement(children) ? children : <span>{children}</span>}
+        {children}
       </Popper>
     ) : children;
   }
