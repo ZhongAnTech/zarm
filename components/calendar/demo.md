@@ -11,10 +11,10 @@ class Demo extends React.Component {
     this.state = {
       visible: false,
       multiple: true,
-      defaultValue: ['2019-10-12', '2019-10-18'],
+      defaultValue: ['2019-10-11', '2019-10-17'],
       value: '',
       min: '2019-9-12',
-      max: '2019-10-30',
+      max: '2019-11-11',
       dateRender: date => {
         if (/(0|6)/.test(date.getDay())) {
           return (
