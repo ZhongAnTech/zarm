@@ -289,8 +289,9 @@ exports[`Checkbox.Group type is button 1`] = `
 <div
   class="za-checkbox-group za-checkbox-group--button za-checkbox-group--radius"
 >
-  <div
+  <button
     class="za-checkbox"
+    type="button"
   >
     <span
       class="za-checkbox__text"
@@ -302,9 +303,10 @@ exports[`Checkbox.Group type is button 1`] = `
       type="checkbox"
       value="0"
     />
-  </div>
-  <div
+  </button>
+  <button
     class="za-checkbox"
+    type="button"
   >
     <span
       class="za-checkbox__text"
@@ -316,9 +318,10 @@ exports[`Checkbox.Group type is button 1`] = `
       type="checkbox"
       value="1"
     />
-  </div>
-  <div
+  </button>
+  <button
     class="za-checkbox"
+    type="button"
   >
     <span
       class="za-checkbox__text"
@@ -330,7 +333,7 @@ exports[`Checkbox.Group type is button 1`] = `
       type="checkbox"
       value="2"
     />
-  </div>
+  </button>
 </div>
 `;
 

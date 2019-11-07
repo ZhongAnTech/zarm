@@ -101,10 +101,10 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'button') {
       return (
-        <div className={cls}>
+        <button type="button" className={cls}>
           {children && <span className={`${prefixCls}__text`}>{children}</span>}
           {inputRender}
-        </div>
+        </button>
       );
     }
 

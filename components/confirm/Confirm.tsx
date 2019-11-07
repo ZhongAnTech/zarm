@@ -25,10 +25,10 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
         {...others}
         footer={(
           <>
-            <div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>
-            <div className={`${prefixCls}__button ${prefixCls}__button--ok`} onClick={onOk}>
+            <button type="button" className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</button>
+            <button type="button" className={`${prefixCls}__button ${prefixCls}__button--ok`} onClick={onOk}>
               {okText || locale!.okText}
-            </div>
+            </button>
           </>
         )}
       >
