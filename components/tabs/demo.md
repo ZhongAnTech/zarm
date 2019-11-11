@@ -127,5 +127,6 @@ ReactDOM.render(
 ### Panel
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
+| title | ReactNode | - | 标题 |
+| children | ReactNode | - | 内容 |
 | disabled | boolean | false | 是否禁用 |
-| title | string | - | 标题 |
