@@ -17,7 +17,7 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
   };
 
   render() {
-    const { prefixCls, className, message, okText, cancelText, onOk, onCancel, locale, ...others } = this.props;
+    const { prefixCls, className, content, okText, cancelText, onOk, onCancel, locale, ...others } = this.props;
     const cls = classnames(prefixCls, className);
     return (
       <Modal
@@ -32,7 +32,7 @@ export default class Confirm extends PureComponent<ConfirmProps, {}> {
           </>
         )}
       >
-        {message}
+        {content}
       </Modal>
     );
   }

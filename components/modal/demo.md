@@ -217,7 +217,7 @@ class Demo extends React.Component {
               () => {
                 const modal = Modal.alert({
                   title: '静态调用的title',
-                  message: '静态调用的body',
+                  content: '静态调用的body',
                   onCancel: () => {
                     modal.hide();
                   }
@@ -233,7 +233,7 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => {
                 const modal = Modal.alert({
                   title: '静态调用的title',
-                  message: '静态调用的body，使用promise关闭',
+                  content: '静态调用的body，使用promise关闭',
                   onCancel: () => {
                     return new Promise((resolve, reject) => {
                       resolve();
@@ -254,7 +254,7 @@ class Demo extends React.Component {
           shape="radius"
           visible={alert}
           title="警告"
-          message="这里是警告信息"
+          content="这里是警告信息"
           afterClose={() => { console.log('alert已关闭'); }}
           onCancel={() => this.toggle('alert')}
         />
@@ -305,7 +305,7 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => {
               const modal = Modal.confirm({
                 title: '确认信息',
-                message: '静态调用的body',
+                content: '静态调用的body',
                 onCancel: () => {
                   console.log('点击cancel');
                 },
@@ -324,7 +324,7 @@ class Demo extends React.Component {
             <Button size="xs" onClick={() => {
               const modal = Modal.confirm({
                 title: '静态调用的title',
-                message: '静态调用的body，使用promise关闭',
+                content: '静态调用的body，使用promise关闭',
                 onCancel: () => {
                   return new Promise((resolve, reject) => {
                     resolve();
@@ -345,7 +345,7 @@ class Demo extends React.Component {
           shape="radius"
           visible={confirm}
           title="确认信息"
-          message="你确定要这样做吗？"
+          content="你确定要这样做吗？"
           onOk={() => {
             window.alert('click ok');
             this.toggle('confirm');
@@ -391,13 +391,13 @@ ReactDOM.render(<Demo />, mountNode);
 // 显示警告框，不传onCancel也可关闭，如需做更多操作，参考下方confirm的例子
 const alert = Modal.alert({
   title: '静态调用的title',
-  message: '静态调用的body',
+  content: '静态调用的body',
 });
 
 // 显示确认框，若关闭时需要promise，onOk、onCancel均支持promise
 const confirm = Modal.confirm({
   title: '静态调用的title',
-  message: '静态调用的body，使用promise关闭',
+  content: '静态调用的body，使用promise关闭',
   onOk: () => {
     return fetch.get('xxx.api').then((res) => {
       if(res.code === 0) { 
@@ -415,7 +415,7 @@ const confirm = Modal.confirm({
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | title | ReactNode | - | 弹出框的标题 |
-| message | ReactNode | - | 弹出框的内容 |
+| content | ReactNode | - | 弹出框的内容 |
 | cancelText | ReactNode | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容 |
 | okText | ReactNode | '确认' | 确认按钮的内容 |
 | onOk | () => void | - | 点击“确认”后的回调函数(Confirm) |

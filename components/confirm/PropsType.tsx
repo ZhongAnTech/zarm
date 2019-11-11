@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { Locale } from '../locale-provider/PropsType';
 
 type getContainerFunc = () => HTMLElement;
@@ -12,8 +13,8 @@ export default interface PropsType {
   animationDuration?: number;
   width?: string | number;
   onMaskClick?: () => void;
-  title?: any;
-  message?: any;
+  title?: ReactNode;
+  content?: ReactNode;
   okText?: string;
   onOk?: () => void;
   cancelText?: string;
