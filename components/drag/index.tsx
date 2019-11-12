@@ -1,5 +1,4 @@
 import { PureComponent, cloneElement, ReactElement } from 'react';
-import Events from '../utils/events';
 import PropsType from './PropsType';
 
 export type DragProps = PropsType;
@@ -13,9 +12,6 @@ export default class Drag extends PureComponent<DragProps, {}> {
     if (!event.touches) {
       this.dragState.startX = event.clientX;
       this.dragState.startY = event.clientY;
-
-      Events.on(document.body, 'mousemove', this.onTouchMove);
-      Events.on(document.body, 'mouseup', this.onTouchEnd);
     } else {
       const touch = event.touches[0];
       this.dragState.startX = touch.pageX;
@@ -61,11 +57,6 @@ export default class Drag extends PureComponent<DragProps, {}> {
   };
 
   onTouchEnd = (event) => {
-    if (event && !event.touches) {
-      Events.off(document.body, 'mousemove', this.onTouchMove);
-      Events.off(document.body, 'mouseup', this.onTouchEnd);
-    }
-
     const { onDragEnd } = this.props;
     if (typeof onDragEnd === 'function') {
       onDragEnd(event, this.dragState);

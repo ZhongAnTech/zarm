@@ -90,9 +90,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   };
 
   onDragEnd = (_event, { offsetX, startTime }) => {
-    if (!startTime) {
-      return false;
-    }
+    // if (!startTime) {
+    //   return false;
+    // }
     const { animationDuration, moveDistanceRatio, moveTimeSpan } = this.props;
     const timeSpan = new Date().getTime() - startTime.getTime();
     const btnsLeftWidth = this.left && this.left.offsetWidth;
