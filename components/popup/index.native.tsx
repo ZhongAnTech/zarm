@@ -28,7 +28,6 @@ export default class Popup extends PureComponent<PopupProps, any> {
     stayTime: 3000,
     animationDuration: 200,
     destroy: true,
-    disableBodyScroll: true,
     styles: popupStyles,
   };
 

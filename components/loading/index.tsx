@@ -13,7 +13,6 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   static defaultProps = {
     prefixCls: 'za-loading',
     mask: true,
-    disableBodyScroll: false,
   };
 
   static zarmLoading: null | HTMLElement;

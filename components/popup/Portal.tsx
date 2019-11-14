@@ -22,7 +22,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   static instanceList: Portal[] = [];
 
   private static unmountModalInstance(instance: Portal, callback: () => void) {
-    const instanceIndex = Portal.instanceList.findIndex(item => item === instance);
+    const instanceIndex = Portal.instanceList.findIndex((item) => item === instance);
     if (instanceIndex >= 0) {
       Portal.instanceList.splice(instanceIndex, 1);
     }
@@ -52,7 +52,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     animationType: 'fade',
     animationDuration: 200,
     maskType: Mask.defaultProps.type,
-    disableBodyScroll: true,
   };
 
   constructor(props) {
@@ -80,7 +79,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
   }
 
   componentWillUnmount() {
-    const { disableBodyScroll } = this.props;
     if (this.popup) {
       Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
       Events.off(this.popup, 'transitionend', this.animationEnd);
@@ -92,12 +90,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     if (this._container) {
       this.parent.removeChild(this._container);
     }
-
-    disableBodyScroll && unlockBodyScroll(this.enableScrollElement);
-
-    disableBodyScroll && Portal.unmountModalInstance(this, () => {
-      clearAllBodyScrollLocks();
-    });
   }
 
   getParent = () => {
@@ -266,7 +258,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   handleAnimation = () => {
-    const { visible, prefixCls, disableBodyScroll } = this.props;
+    const { visible, prefixCls } = this.props;
     if (visible) {
       if (this.popup) {
         this._container.classList.remove(`${prefixCls}--hidden`);
@@ -275,17 +267,12 @@ export default class Portal extends PureComponent<PortalProps, any> {
         });
         this.popup.focus();
         this.popup.classList.add(`${prefixCls}--show`);
-        disableBodyScroll && lockBodyScroll(this.enableScrollElement);
-        disableBodyScroll && Portal.instanceList.push(this);
       }
     } else {
       this.setState({
         isPending: true,
       });
       this.popup!.classList.remove(`${prefixCls}--show`);
-      disableBodyScroll && Portal.unmountModalInstance(this, () => {
-        clearAllBodyScrollLocks();
-      });
     }
   };
 

@@ -30,8 +30,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
     valueMember: 'value',
     cols: Infinity,
     maskClosable: true,
-    itemRender: data => data.label,
-    disableBodyScroll: true,
+    itemRender: (data) => data.label,
     destroy: false,
   };
 
@@ -60,7 +59,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
 
   onChange = (selected) => {
     const { valueMember, onChange } = this.props;
-    const value = selected.map(item => item[valueMember!]);
+    const value = selected.map((item) => item[valueMember!]);
     this.setState({
       value,
       objValue: selected,
@@ -108,7 +107,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, disableBodyScroll, destroy, onOk, onCancel, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, destroy, onOk, onCancel, ...others } = this.props;
     const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
     const noop = () => {};
@@ -117,7 +116,6 @@ export default class Picker extends Component<PickerProps, PickerState> {
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
         getContainer={getContainer}
-        disableBodyScroll={disableBodyScroll}
         destroy={destroy}
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>

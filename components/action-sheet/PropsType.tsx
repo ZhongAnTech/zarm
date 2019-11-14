@@ -14,7 +14,6 @@ export default interface PropsType {
   cancelText?: string;
   onMaskClick?: () => void;
   onCancel?: () => void;
-  disableBodyScroll: boolean;
   destroy: boolean;
   locale?: Locale['ActionSheet'];
 }

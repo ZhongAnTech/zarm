@@ -27,7 +27,6 @@ export default class Modal extends Component<ModalProps, any> {
     shape: 'radius',
     closable: false,
     maskClosable: false,
-    disableBodyScroll: true,
     destroy: true,
   };
 

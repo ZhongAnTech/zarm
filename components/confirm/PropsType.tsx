@@ -12,7 +12,6 @@ export default interface PropsType {
     'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
   width?: string | number;
-  onMaskClick?: () => void;
   title?: ReactNode;
   content?: ReactNode;
   okText?: string;

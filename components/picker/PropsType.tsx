@@ -9,7 +9,6 @@ export default interface BasePickerProps extends BasePickerViewProps {
   okText?: string;
   cancelText?: string;
   maskClosable?: boolean;
-  disableBodyScroll: boolean;
   destroy: boolean;
   onChange?: (selected: Array<{ [key: string]: any }>) => void;
   onOk?: (value: Array<{ [key: string]: any }>) => void;
