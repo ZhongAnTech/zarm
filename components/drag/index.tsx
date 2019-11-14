@@ -62,6 +62,7 @@ export default class Drag extends PureComponent<DragProps, {}> {
   };
 
   onTouchEnd = (event) => {
+    if (this.dragState.startX === undefined) return false;
     if (event && !event.touches) {
       Events.off(document.body, 'mousemove', this.onTouchMove);
       Events.off(document.body, 'mouseup', this.onTouchEnd);
