@@ -31,6 +31,16 @@ class Demo extends React.Component {
     this.myRef = React.createRef();
   }
 
+  componentDidMount() {
+    // this.interval = setInterval(
+    //   () =>
+    //     this.setState(prevState => ({
+    //       count: prevState.count + 1
+    //     })),
+    //   1000
+    // );
+  }
+
   toggle(key) {
     const state = this.state[key];
     state.visible = !state.visible;
@@ -213,11 +223,28 @@ ReactDOM.render(<Demo />, mountNode);
 import { DatePickerView } from 'zarm';
 
 class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value: "",
+    };
+  }
+
+  componentDidMount() {
+    // this.interval = setInterval(
+    //   () =>
+    //     this.setState(prevState => ({
+    //       count: prevState.count + 1
+    //     })),
+    //   1000
+    // );
+  }
   render() {
     return (
       <div>
         <DatePickerView
           mode="datetime"
+          value={this.state.value}
           min="2018-1-13"
           onChange={(value) => {
             console.log('datePickerView => ', value);
@@ -253,12 +280,12 @@ ReactDOM.render(<Demo />, mountNode);
 | title | string | '请选择' | 选择器标题 |
 | cancelText | string | '取消' | 取消栏文字 |
 | okText | string | '确定' | 确定栏文字 |
-| onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
-| onCancel | () => void | - | 点击取消时触发的回调函数 |
-| maskClosable | boolean | true | 是否点击遮罩层时关闭 |
+| maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
 | disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
 | destroy | boolean | false | 弹层关闭后是否移除节点 |
 | wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
+| onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
+| onCancel | () => void | - | 点击取消时触发的回调函数 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点 |
 
 ### 仅 DateSelect 支持的属性

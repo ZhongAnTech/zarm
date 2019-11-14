@@ -15,8 +15,14 @@
     align-items: center;
     justify-content: center;
     z-index: var(--zindex-mask);
-    overflow: scroll;
+    overflow: auto;
+    padding: 60px 0;
     -webkit-overflow-scrolling: touch;
+  }
+
+  @include m(hidden) {
+    opacity: 0;
+    visibility: hidden;
   }
 
   @include m(nomask) {
@@ -78,10 +84,4 @@
       transform: translate(0, 0);
     }
   }
-}
-
-._hidden {
-  opacity: 0;
-  visibility: hidden;
-  // display: none;
 }

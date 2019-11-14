@@ -91,7 +91,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
   static propTypes = {
     prefixCls: PropTypes.string,
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     visible: PropTypes.bool,
     destroy: PropTypes.bool,
     hasArrow: PropTypes.bool,
@@ -301,7 +301,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     const { children, mouseEnterDelay } = this.props;
     const childrenProps = (children as React.ReactElement<any>).props;
 
-    if (event.type === 'mouseover' && childrenProps.onMouseOver) {
+    if (React.isValidElement(children) && event.type === 'mouseover' && childrenProps.onMouseOver) {
       childrenProps.onMouseOver(event);
     }
 
@@ -316,11 +316,11 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     const { children, mouseLeaveDelay } = this.props;
     const childrenProps = (children as React.ReactElement<any>).props;
 
-    if (event.type === 'blur' && childrenProps.onBlur) {
+    if (React.isValidElement(children) && event.type === 'blur' && childrenProps.onBlur) {
       childrenProps.onBlur(event);
     }
 
-    if (event.type === 'mouseleave' && childrenProps.onMouseLeave) {
+    if (React.isValidElement(children) && event.type === 'mouseleave' && childrenProps.onMouseLeave) {
       childrenProps.onMouseLeave(event);
     }
 

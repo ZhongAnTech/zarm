@@ -19,7 +19,6 @@ export default interface PropsType {
   maskClosable?: boolean;
   cancelText?: string;
   destroy: boolean;
-  disableBodyScroll: boolean;
   onCancel?: () => void;
   afterClose?: () => void;
   locale?: Locale['Alert'];

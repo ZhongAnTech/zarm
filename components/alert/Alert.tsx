@@ -16,7 +16,6 @@ export default class Alert extends PureComponent<AlertProps, {}> {
     animationType: 'zoom',
     locale: alertLocale,
     destroy: true,
-    disableBodyScroll: true,
   };
 
   render() {

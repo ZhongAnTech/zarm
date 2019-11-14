@@ -19,7 +19,6 @@ export interface BaseModalProps {
   title?: ReactNode;
   footer?: ReactNode;
   destroy: boolean;
-  disableBodyScroll: boolean;
   afterOpen?: () => void;
   onCancel?: () => void;
   afterClose?: () => void;

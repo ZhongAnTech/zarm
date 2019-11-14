@@ -187,30 +187,9 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Button, Alert, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
-  state = {
-    alert: false,
-    confirm: false,
-  };
-
-  toggle = (key) => {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
-  }
-
    render() {
-    const { alert, confirm } = this.state;
-
     return (
       <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
-          }
-        >
-          普通调用
-        </Cell>
-
         <Cell
           description={
             <Button size="xs" onClick={
@@ -250,15 +229,6 @@ class Demo extends React.Component {
           静态调用（使用promise关闭）
         </Cell>
 
-        <Alert
-          shape="radius"
-          visible={alert}
-          title="警告"
-          content="这里是警告信息"
-          afterClose={() => { console.log('alert已关闭'); }}
-          onCancel={() => this.toggle('alert')}
-        />
-
         <div
           id="test-div"
           style={{ position: 'relative', zIndex: 1 }}
@@ -277,29 +247,9 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Button, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
-  state = {
-    alert: false,
-    confirm: false,
-  };
-
-  toggle = (key) => {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
-  }
-
   render() {
-    const { alert, confirm } = this.state;
     return (
       <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('confirm')}>开启</Button>
-          }
-        >
-          普通调用
-        </Cell>
-
         <Cell
           description={
             <Button size="xs" onClick={() => {
@@ -340,19 +290,6 @@ class Demo extends React.Component {
         >
           静态调用（使用promise关闭）
         </Cell>
-
-        <Confirm
-          shape="radius"
-          visible={confirm}
-          title="确认信息"
-          content="你确定要这样做吗？"
-          onOk={() => {
-            window.alert('click ok');
-            this.toggle('confirm');
-          }}
-          onCancel={() => this.toggle('confirm')}
-          afterClose={() => { console.log('confirm已关闭'); }}
-        />
       </>
     )
   }
@@ -373,16 +310,15 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | '70%' | 宽度 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
-| maskClosable | boolean | false | 是否点击遮罩层时关闭 |
-| closable | boolean | false | 右上角是否显示关闭按钮 |
+| maskClosable | boolean | false | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
+| closable | boolean | false | 右上角是否显示关闭按钮，需要和onCancel一起使用 |
+| onCancel | () => void | - | 如果maskClosable或closable为true，那么点击遮罩或者右上角关闭按钮会调用此函数 |
 | title | ReactNode | - | 标题 |
 | footer | ReactNode | - | 弹窗底部内容 |
 | disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
 | destroy | boolean | true | 弹层关闭后是否移除节点 |
-| onCancel | () => void | - | 如果maskClosable或closable为true，那么点击遮罩或者右上角关闭按钮会调用此函数 |
 | afterOpen | () => void | - | 模态框打开后的回调 |
 | afterClose | () => void | - | 模态框关闭后的回调 |
-| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Modal 挂载的 HTML 节点 |
 
 ## 静态方法

@@ -3,7 +3,6 @@ export default interface PropsType {
   type?: 'number' | 'price' | 'idcard';
   onKeyClick?: (key?: string) => void;
   destroy: boolean;
-  disableBodyScroll: boolean;
 }
 
 // declare global {

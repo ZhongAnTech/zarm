@@ -53,9 +53,9 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
   };
 
   static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
-    if ('value' in nextProps || getChildChecked(nextProps.children)) {
+    if ('value' in nextProps) {
       return {
-        value: nextProps.value || getChildChecked(nextProps.children),
+        value: nextProps.value,
       };
     }
 

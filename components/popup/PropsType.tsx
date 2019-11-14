@@ -11,7 +11,6 @@ export default interface PropsType {
   width?: string | number;
   mask?: boolean;
   maskType?: 'transparent' | 'normal';
-  disableBodyScroll?: boolean;
   destroy?: boolean;
   afterOpen?: () => void;
   afterClose?: () => void;

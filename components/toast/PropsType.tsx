@@ -4,5 +4,4 @@ export default interface PropsType {
   afterClose?: () => void;
   mask?: boolean;
   onMaskClick?: () => void;
-  disableBodyScroll: boolean;
 }
