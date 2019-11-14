@@ -2,7 +2,6 @@ import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import { lockBodyScroll, unlockBodyScroll, clearAllBodyScrollLocks } from '../utils/bodyScrollLock';
 import Mask from '../mask';
 import PropsType from './PropsType';
 
@@ -19,30 +18,13 @@ export interface PortalProps extends PropsType {
 }
 
 export default class Portal extends PureComponent<PortalProps, any> {
-  static instanceList: Portal[] = [];
-
-  private static unmountModalInstance(instance: Portal, callback: () => void) {
-    const instanceIndex = Portal.instanceList.findIndex((item) => item === instance);
-    if (instanceIndex >= 0) {
-      Portal.instanceList.splice(instanceIndex, 1);
-    }
-    if (Portal.instanceList.length === 0) {
-      callback();
-    }
-  }
-
   private enterTimer: number;
 
   private parent: HTMLElement;
 
   private _container: HTMLDivElement;
 
-  private enableScrollElement: HTMLElement | null;
-
   private popup: HTMLDivElement | null;
-
-
-  enableScrollTarget = React.createRef<HTMLElement>();
 
   static defaultProps = {
     prefixCls: 'za-popup',
@@ -67,7 +49,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
     Events.on(this.popup, 'transitionend', this.animationEnd);
     Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
     Events.on(this.popup, 'animationend', this.animationEnd);
-    this.enableScrollElement = this.enableScrollTarget.current;
     this.handleAnimation();
   }
 
@@ -214,13 +195,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
             this.popup = ref;
           }}
         >
-          {
-            React.isValidElement(children)
-              ? React.cloneElement(children, {
-                ref: this.enableScrollTarget,
-              })
-              : children
-          }
+          {children}
         </div>
       );
     }
@@ -244,13 +219,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
             style={popupStyle}
             role="document"
           >
-            {
-              React.isValidElement(children)
-                ? React.cloneElement(children, {
-                  ref: this.enableScrollTarget,
-                })
-                : children
-            }
+            {children}
           </div>
         </div>
       </>

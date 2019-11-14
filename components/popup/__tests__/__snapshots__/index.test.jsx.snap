@@ -5,7 +5,6 @@ exports[`Popup renders correctly 1`] = `
   afterClose={[MockFunction]}
   destroy={true}
   direction="bottom"
-  disableBodyScroll={true}
   onMaskClick={[MockFunction]}
 />
 `;
@@ -15,10 +14,6 @@ exports[`Popup renders mount node correctly 1`] = `
   afterClose={[MockFunction]}
   destroy={true}
   direction="bottom"
-<<<<<<< HEAD
-=======
-  disableBodyScroll={true}
->>>>>>> upstream/dev
   getContainer={[Function]}
   onMaskClick={[MockFunction]}
   visible={true}
@@ -29,7 +24,6 @@ exports[`Popup renders mount node correctly 1`] = `
     animationType="fade"
     destroy={true}
     direction="bottom"
-    disableBodyScroll={true}
     getContainer={[Function]}
     handlePortalUnmount={[Function]}
     mask={true}

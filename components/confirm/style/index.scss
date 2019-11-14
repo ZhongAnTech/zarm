@@ -24,6 +24,8 @@
     );
     @include onepx(top);
 
+    background-color: var(--button-default-background);
+
     &:active {
       background-color: var(--background-active);
     }

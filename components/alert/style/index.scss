@@ -25,6 +25,7 @@
     @include onepx(top);
 
     color: var(--theme-primary);
+    background-color: var(--button-default-background);
 
     &:active {
       background-color: var(--background-active);

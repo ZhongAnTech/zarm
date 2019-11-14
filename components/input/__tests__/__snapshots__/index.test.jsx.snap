@@ -232,7 +232,6 @@ exports[`Input.Idcard renders correctly 1`] = `
         />
         <KeyboardPicker
           destroy={true}
-          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="idcard"
@@ -240,7 +239,6 @@ exports[`Input.Idcard renders correctly 1`] = `
         >
           <Popup
             destroy={true}
-            disableBodyScroll={false}
             mask={false}
             visible={false}
           />
@@ -281,7 +279,6 @@ exports[`Input.Number renders correctly 1`] = `
         />
         <KeyboardPicker
           destroy={true}
-          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="number"
@@ -289,7 +286,6 @@ exports[`Input.Number renders correctly 1`] = `
         >
           <Popup
             destroy={true}
-            disableBodyScroll={false}
             mask={false}
             visible={false}
           />
@@ -392,7 +388,6 @@ exports[`Input.Number renders onClear called correctly 1`] = `
         />
         <KeyboardPicker
           destroy={true}
-          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="number"
@@ -400,7 +395,6 @@ exports[`Input.Number renders onClear called correctly 1`] = `
         >
           <Popup
             destroy={true}
-            disableBodyScroll={false}
             mask={false}
             visible={true}
           >
@@ -409,7 +403,6 @@ exports[`Input.Number renders onClear called correctly 1`] = `
               animationType="fade"
               destroy={true}
               direction="bottom"
-              disableBodyScroll={false}
               handlePortalUnmount={[Function]}
               mask={false}
               maskType="normal"
@@ -863,7 +856,6 @@ exports[`Input.Price renders correctly 1`] = `
         />
         <KeyboardPicker
           destroy={true}
-          disableBodyScroll={false}
           onKeyClick={[Function]}
           prefixCls="za-keyboard-picker"
           type="price"
@@ -871,7 +863,6 @@ exports[`Input.Price renders correctly 1`] = `
         >
           <Popup
             destroy={true}
-            disableBodyScroll={false}
             mask={false}
             visible={false}
           />

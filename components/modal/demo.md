@@ -187,30 +187,9 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Button, Alert, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
-  state = {
-    alert: false,
-    confirm: false,
-  };
-
-  toggle = (key) => {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
-  }
-
    render() {
-    const { alert, confirm } = this.state;
-
     return (
       <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
-          }
-        >
-          普通调用
-        </Cell>
-
         <Cell
           description={
             <Button size="xs" onClick={
@@ -250,15 +229,6 @@ class Demo extends React.Component {
           静态调用（使用promise关闭）
         </Cell>
 
-        <Alert
-          shape="radius"
-          visible={alert}
-          title="警告"
-          content="这里是警告信息"
-          afterClose={() => { console.log('alert已关闭'); }}
-          onCancel={() => this.toggle('alert')}
-        />
-
         <div
           id="test-div"
           style={{ position: 'relative', zIndex: 1 }}
@@ -277,29 +247,9 @@ ReactDOM.render(<Demo />, mountNode);
 import { Cell, Button, Confirm, Modal  } from 'zarm';
 
 class Demo extends React.Component {
-  state = {
-    alert: false,
-    confirm: false,
-  };
-
-  toggle = (key) => {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
-  }
-
   render() {
-    const { alert, confirm } = this.state;
     return (
       <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('confirm')}>开启</Button>
-          }
-        >
-          普通调用
-        </Cell>
-
         <Cell
           description={
             <Button size="xs" onClick={() => {
@@ -340,19 +290,6 @@ class Demo extends React.Component {
         >
           静态调用（使用promise关闭）
         </Cell>
-
-        <Confirm
-          shape="radius"
-          visible={confirm}
-          title="确认信息"
-          content="你确定要这样做吗？"
-          onOk={() => {
-            window.alert('click ok');
-            this.toggle('confirm');
-          }}
-          onCancel={() => this.toggle('confirm')}
-          afterClose={() => { console.log('confirm已关闭'); }}
-        />
       </>
     )
   }

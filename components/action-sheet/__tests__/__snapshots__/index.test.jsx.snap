@@ -65,7 +65,6 @@ exports[`ActionSheet renders correctly 1`] = `
         ]
       }
       destroy={true}
-      disableBodyScroll={true}
       locale={
         Object {
           "cancelText": "取消",
@@ -80,7 +79,6 @@ exports[`ActionSheet renders correctly 1`] = `
     >
       <Popup
         destroy={true}
-        disableBodyScroll={true}
         onMaskClick={[MockFunction]}
         visible={true}
       >
@@ -89,7 +87,6 @@ exports[`ActionSheet renders correctly 1`] = `
           animationType="fade"
           destroy={true}
           direction="bottom"
-          disableBodyScroll={true}
           handlePortalUnmount={[Function]}
           mask={true}
           maskType="normal"
