@@ -65,8 +65,8 @@ class Demo extends React.Component {
           description={
             <Radio.Group type="button">
               <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2" disabled>选项三</Radio>
+              <Radio value="1" disabled>选项二</Radio>
+              <Radio value="2" disabled checked>选项三</Radio>
             </Radio.Group>
           }
         >

@@ -74,7 +74,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, {}> {
     };
 
     if (files) {
-      files.map(file => handleFileInfo({ file, quality }, getFileInfo));
+      files.map((file) => handleFileInfo({ file, quality }, getFileInfo));
     }
   };
 

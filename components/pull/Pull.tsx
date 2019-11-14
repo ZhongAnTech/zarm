@@ -13,6 +13,12 @@ export interface PullProps extends PropsType {
 }
 
 export default class Pull extends PureComponent<PullProps, any> {
+  private pull;
+
+  private wrap;
+
+  private throttledScroll;
+
   static defaultProps: PullProps = {
     prefixCls: 'za-pull',
     refresh: {
@@ -27,12 +33,6 @@ export default class Pull extends PureComponent<PullProps, any> {
     animationDuration: 400,
     stayTime: 1000,
   };
-
-  private pull;
-
-  private wrap;
-
-  private throttledScroll;
 
   constructor(props) {
     super(props);
@@ -51,15 +51,32 @@ export default class Pull extends PureComponent<PullProps, any> {
     Events.on(scroller, 'scroll', this.throttledScroll);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { refresh, load } = this.props;
-
-    if ('refresh' in nextProps && nextProps.refresh.state !== refresh!.state) {
-      this.doRefreshAction(nextProps.refresh.state);
+  static getDerivedStateFromProps(nextProps, state) {
+    const { load, refresh } = nextProps;
+    const { prevLoad = {}, prevRefresh = {} } = state;
+    if ('load' in nextProps && load.state !== prevLoad.state) {
+      return {
+        loadState: load.state,
+        prevLoad: load,
+      };
     }
 
-    if ('load' in nextProps && nextProps.load.state !== load!.state) {
-      this.doLoadAction(nextProps.load.state);
+    if ('refresh' in nextProps && refresh.state !== prevRefresh.state) {
+      return {
+        refreshState: refresh.state,
+        prevRefresh: refresh,
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps) {
+    const { load, refresh } = this.props;
+    if (prevProps.load!.state !== load!.state) {
+      this.doLoadAction(load!.state);
+    }
+    if (prevProps.refresh!.state !== refresh!.state) {
+      this.doRefreshAction(refresh!.state);
     }
   }
 

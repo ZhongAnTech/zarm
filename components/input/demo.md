@@ -169,7 +169,7 @@ ReactDOM.render(
 | defaultValue | number \| string | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
 | readOnly | boolean | false | 是否只读 |
-| rows | number | 2 | 多行文本时的显示行数。type为text类型时有效。 |
+| rows | number | - | 多行文本时的显示行数。type为text类型时有效。 |
 | autoHeight | boolean | false | 是否高度自适应 |
 | maxLength | number | - | 输入字数上限 |
 | showLength | boolean | false | 是否显示输入字数。多行文本（type="text"且包含rows属性）时有效。 |

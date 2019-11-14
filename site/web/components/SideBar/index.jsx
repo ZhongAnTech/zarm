@@ -7,7 +7,7 @@ import './style.scss';
 
 class SideBar extends PureComponent {
   getDocs = () => {
-    return documents.map(doc => (
+    return documents.map((doc) => (
       <Menu.Item
         key={doc.key}
       >
@@ -26,7 +26,7 @@ class SideBar extends PureComponent {
             .sort((a, b) => {
               return a.key.localeCompare(b.key);
             })
-            .map(component => (
+            .map((component) => (
               <Menu.Item key={component.key}>
                 <a href={`#/components/${component.key}`}>
                   <span>{ChangeCase.pascalCase(component.key)}</span>

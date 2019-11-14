@@ -134,7 +134,7 @@ ReactDOM.render(
 | :--- | :--- | :--- | :--- |
 | hasArrow | boolean | false | 是否显示箭头 |
 | icon | ReactNode | - | 设置图标 |
-| titile | ReactNode | - | 设置标题区域内容 |
+| title | ReactNode | - | 设置标题区域内容 |
 | description | ReactNode | - | 设置描述区域内容 |
 | help | ReactNode | - | 设置下方提示信息区域内容，通常配合 `Message` 组件使用 |
 | onClick | () => void | - | 点击后触发的回调函数 |

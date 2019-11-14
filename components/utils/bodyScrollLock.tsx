@@ -1,4 +1,4 @@
-import Events from '../utils/events';
+import Events from './events';
 // @flow
 // Adopted and modified solution from Bohdan Didukh (2017)
 // https://stackoverflow.com/questions/41594997/ios-10-safari-prevent-scrolling-behind-a-fixed-overlay-and-maintain-scroll-posi
@@ -126,12 +126,11 @@ export const lockBodyScroll = (targetElement: any, options?: BodyScrollOptions):
     // targetElement must be provided, and lockBodyScroll must not have been
     // called on this targetElement before.
     if (!targetElement) {
-      // eslint-disable-next-line no-console
       console.error('lockBodyScroll unsuccessful - targetElement must be provided when calling lockBodyScroll on IOS devices.');
       return;
     }
 
-    if (targetElement && !locks.some(lock => lock.targetElement === targetElement)) {
+    if (targetElement && !locks.some((lock) => lock.targetElement === targetElement)) {
       const lock = {
         targetElement,
         options: options || {},
@@ -196,7 +195,6 @@ export const clearAllBodyScrollLocks = (): void => {
 export const unlockBodyScroll = (targetElement: any): void => {
   if (isIosDevice) {
     if (!targetElement) {
-      // eslint-disable-next-line no-console
       console.error('unlockBodyScroll unsuccessful - targetElement must be provided when calling unlockBodyScroll on IOS devices.');
       return;
     }
@@ -204,7 +202,7 @@ export const unlockBodyScroll = (targetElement: any): void => {
     targetElement.ontouchstart = null;
     targetElement.ontouchmove = null;
 
-    locks = locks.filter(lock => lock.targetElement !== targetElement);
+    locks = locks.filter((lock) => lock.targetElement !== targetElement);
 
     if (documentListenerAdded && locks.length === 0) {
       // document.removeEventListener('touchmove', preventDefault, hasPassiveEvents ? { passive: false } : undefined);
@@ -213,7 +211,7 @@ export const unlockBodyScroll = (targetElement: any): void => {
       documentListenerAdded = false;
     }
   } else {
-    locks = locks.filter(lock => lock.targetElement !== targetElement);
+    locks = locks.filter((lock) => lock.targetElement !== targetElement);
     if (!locks.length) {
       restoreOverflowSetting();
     }

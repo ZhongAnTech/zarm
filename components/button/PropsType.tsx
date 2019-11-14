@@ -11,5 +11,4 @@ export default interface PropsType {
   disabled?: boolean;
   loading?: boolean;
   icon?: ReactNode;
-  children?: ReactNode;
 }

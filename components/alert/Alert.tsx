@@ -14,23 +14,22 @@ export default class Alert extends PureComponent<AlertProps, {}> {
   static defaultProps = {
     prefixCls: 'za-alert',
     animationType: 'zoom',
-    message: '',
     locale: alertLocale,
     destroy: true,
     disableBodyScroll: true,
   };
 
   render() {
-    const { prefixCls, className, message, cancelText, onCancel, locale, ...others } = this.props;
+    const { prefixCls, className, content, cancelText, onCancel, locale, ...others } = this.props;
     const cls = classnames(prefixCls, className);
 
     return (
       <Modal
         className={cls}
         {...others}
-        footer={<div className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</div>}
+        footer={<button type="button" className={`${prefixCls}__button`} onClick={onCancel}>{cancelText || locale!.cancelText}</button>}
       >
-        {message}
+        {content}
       </Modal>
     );
   }

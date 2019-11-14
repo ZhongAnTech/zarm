@@ -5,6 +5,21 @@ import Events from '@site/utils/events';
 import Throttle from '@site/utils/throttle';
 
 class ScrollToTop extends PureComponent {
+  static propTypes = {
+    // 类名前缀
+    prefixCls: PropTypes.string,
+    // 每10毫秒滑动的距离
+    speed: PropTypes.number,
+    // 离滚动条顶部的可视距离
+    visibleDistance: PropTypes.number,
+  };
+
+  static defaultProps = {
+    prefixCls: 'za-scroll-to-top',
+    speed: 120,
+    visibleDistance: 300,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -70,20 +85,5 @@ class ScrollToTop extends PureComponent {
     );
   }
 }
-
-ScrollToTop.propTypes = {
-  // 类名前缀
-  prefixCls: PropTypes.string,
-  // 每10毫秒滑动的距离
-  speed: PropTypes.number,
-  // 离滚动条顶部的可视距离
-  visibleDistance: PropTypes.number,
-};
-
-ScrollToTop.defaultProps = {
-  prefixCls: 'za-scroll-to-top',
-  speed: 120,
-  visibleDistance: 300,
-};
 
 export default ScrollToTop;

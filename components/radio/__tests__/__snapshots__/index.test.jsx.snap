@@ -50,8 +50,9 @@ exports[`Radio renders correctly 1`] = `
 `;
 
 exports[`Radio type is button 1`] = `
-<div
+<button
   class="za-radio"
+  type="button"
 >
   <span
     class="za-radio__text"
@@ -63,7 +64,7 @@ exports[`Radio type is button 1`] = `
     type="radio"
     value="0"
   />
-</div>
+</button>
 `;
 
 exports[`Radio type is cell 1`] = `

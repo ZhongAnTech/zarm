@@ -55,7 +55,7 @@
   padding: 0 $padding;
   font-size: $font-size;
   height: $height;
-  line-height: $height;
+  line-height: 1.5;
 
   @include m(circle) {
     width: $height;
@@ -137,15 +137,16 @@
 // 基础
 @mixin button-base() {
   padding: 0;
+  border: none;
   font-weight: normal;
   text-align: center;
   overflow: hidden;
   color: var(--color-text);
   // transition: all 0.2s ease-out;
-  cursor: pointer;
   outline: 0 none;
-  -webkit-appearance: none;
   user-select: none;
+  cursor: pointer;
+  -webkit-appearance: none;
 
   &,
   &:active,

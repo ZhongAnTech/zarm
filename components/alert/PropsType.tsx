@@ -13,7 +13,7 @@ export default interface PropsType {
   animationDuration?: number;
   width?: string | number;
   title?: ReactNode;
-  message?: ReactNode;
+  content?: ReactNode;
   mask: boolean;
   maskType?: 'transparent' | 'normal';
   maskClosable?: boolean;

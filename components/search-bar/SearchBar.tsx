@@ -4,22 +4,12 @@ import BaseSearchBarProps from './PropsType';
 import Icon from '../icon';
 import InputBase from '../input/InputBase';
 
-let shouldUpdatePosition = false;
-
 export interface SearchBarProps extends BaseSearchBarProps {
   prefixCls?: string;
   className?: string;
 }
 
 export default class SearchBar extends PureComponent<SearchBarProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-search-bar',
-    shape: 'radius',
-    disabled: false,
-    showCancel: false,
-    clearable: true,
-  };
-
   private searchForm;
 
   private searchContainer;
@@ -31,6 +21,14 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   private initPos;
 
   private inputRef;
+
+  static defaultProps = {
+    prefixCls: 'za-search-bar',
+    shape: 'radius',
+    disabled: false,
+    showCancel: false,
+    clearable: true,
+  };
 
   constructor(props) {
     super(props);
@@ -45,25 +43,26 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     this.calculatePositon(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { cancelText, placeholder } = this.props;
-    const { value } = this.state;
-    if ('value' in nextProps && value !== nextProps.value) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+      return {
         value: nextProps.value,
-      });
+        preValue: nextProps.value,
+      };
     }
-    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
-    if (cancelText !== nextProps.cancelText || placeholder !== nextProps.placeholder) {
-      shouldUpdatePosition = true;
-    }
+    return null;
   }
 
+
   componentDidUpdate(prevProps) {
-    if (shouldUpdatePosition) {
-      this.calculatePositon(prevProps);
+    const { cancelText, placeholder, showCancel } = this.props;
+    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
+    if (cancelText !== prevProps.cancelText
+      || placeholder !== prevProps.placeholder
+      || showCancel !== prevProps.showCancel
+    ) {
+      this.calculatePositon(this.props);
     }
-    shouldUpdatePosition = false;
   }
 
   onFocus() {
@@ -160,6 +159,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
       this.initPos = (formWidth / 2) - (containerWidth / 2);
     } else {
+      this.cancelRef.style.cssText = 'margin-right: 0px;';
       this.initPos = (formWidth / 2) - (this.cancelOuterWidth / 2) - (containerWidth / 2);
     }
 

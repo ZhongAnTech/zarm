@@ -46,13 +46,13 @@ class Demo extends React.Component {
             itemKey="found"
             title="保险"
             icon={<TabIcon type="insurance" />}
-            badge={{ sup: true, shape: 'circle', text: '3' }}
+            badge={{ shape: 'circle', text: '3' }}
           />
           <TabBar.Item
             itemKey="me"
             title="我的"
             icon={<TabIcon type="user" />}
-            badge={{ sup: true, shape: 'dot' }}
+            badge={{ shape: 'dot' }}
           />
         </TabBar>
       </>  

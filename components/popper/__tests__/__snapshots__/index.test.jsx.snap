@@ -2,8 +2,11 @@
 
 exports[`Popper renders correctly 1`] = `
 <Popper
+  animationDuration={200}
+  animationType="zoom-fade"
   arrowPointAtCenter={false}
   content=""
+  destroy={true}
   direction="top"
   hasArrow={false}
   mouseEnterDelay={100}

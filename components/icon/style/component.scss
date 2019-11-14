@@ -11,16 +11,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @include icon-size(var(--icon-font-size-md));
 
   &[type=search] {
     -webkit-appearance: initial !important;
   }
 
   /* icon themes */
-  // @include m(default) {
-  //   @include icon-theme(var(--icon-theme-default));
-  // }
   @include m(primary) {
     @include icon-theme(var(--theme-primary));
   }

@@ -3,27 +3,25 @@ import classnames from 'classnames';
 import BasePropsType from './PropsType';
 import ActivityIndicator from '../activity-indicator';
 
-export interface BaseButtonPropsType extends BasePropsType {
+interface BaseButtonPropsType extends BasePropsType {
   prefixCls?: string;
-  htmlType: 'button' | 'submit' | 'reset';
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
 export type AnchorButtonProps = {
-  href: string;
-  target?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
-} & BaseButtonPropsType & AnchorHTMLAttributes<HTMLAnchorElement>;
+  mimeType?: string;
+} & BaseButtonPropsType & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
 
 export type NativeButtonProps = {
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-} & BaseButtonPropsType & ButtonHTMLAttributes<HTMLButtonElement>;
+  htmlType?: 'button' | 'submit' | 'reset';
+} & BaseButtonPropsType & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
-export type ButtonProps = AnchorButtonProps | NativeButtonProps;
+export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
 export default class Button extends PureComponent<ButtonProps, {}> {
   static displayName = 'Button';
 
-  static defaultProps = {
+  static defaultProps: ButtonProps = {
     prefixCls: 'za-button',
     theme: 'default',
     size: 'md',
@@ -36,13 +34,13 @@ export default class Button extends PureComponent<ButtonProps, {}> {
     htmlType: 'button',
   };
 
-  onClick: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement> = (e) => {
+  onClick: ButtonProps['onClick'] = (e) => {
     const { disabled, onClick } = this.props;
     if (disabled) {
       return;
     }
     if (typeof onClick === 'function') {
-      (onClick as MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
+      onClick(e);
     }
   };
 
@@ -89,33 +87,34 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       )
       : childrenRender;
 
-    const { htmlType: excludeProp, ...anchorRest } = rest as AnchorButtonProps;
-    const { htmlType, ...nativeRest } = rest as NativeButtonProps;
-
-    if (anchorRest.href !== undefined) {
+    if ((rest as AnchorButtonProps).href !== undefined) {
+      const { htmlType, ...filteredRest } = rest;
+      const { mimeType, ...anchorRest } = filteredRest as AnchorButtonProps;
       cls = classnames(cls, `${prefixCls}--link`);
 
       return (
         <a
+          {...anchorRest}
+          type={mimeType}
           aria-disabled={disabled}
           className={cls}
           onClick={this.onClick}
-          onTouchStart={() => {}}
-          {...anchorRest}
         >
           {contentRender}
         </a>
       );
     }
 
+    const { mimeType, target, ...filteredRest } = rest;
+    const { htmlType, ...nativeRest } = filteredRest as NativeButtonProps;
+
     return (
       <button
-        aria-disabled={disabled}
+        {...nativeRest}
         type={htmlType}
+        aria-disabled={disabled}
         className={cls}
         onClick={this.onClick}
-        onTouchStart={() => {}}
-        {...nativeRest}
       >
         {contentRender}
       </button>

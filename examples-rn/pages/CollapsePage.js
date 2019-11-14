@@ -8,19 +8,19 @@ export default class Page extends PureComponent {
       <ScrollView>
         <Panel title="基本用法">
           <Collapse>
-            <Collapse.Item itemKey="1" title="50元套餐" onItemChange={key => console.log(key)}>
+            <Collapse.Item itemKey="1" title="50元套餐" onItemChange={(key) => console.log(key)}>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
               <Text>我是50元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item itemKey={2} title="100元套餐" onItemChange={key => console.log(key)}>
+            <Collapse.Item itemKey={2} title="100元套餐" onItemChange={(key) => console.log(key)}>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
               <Text>我是100元套餐内容</Text>
             </Collapse.Item>
-            <Collapse.Item itemKey="3" title="200元套餐" onItemChange={key => console.log(key)}>
+            <Collapse.Item itemKey="3" title="200元套餐" onItemChange={(key) => console.log(key)}>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
               <Text>我是200元套餐内容</Text>
@@ -102,7 +102,7 @@ export default class Page extends PureComponent {
           <Collapse
             multiple
             activeKey={['test2']}
-            onChange={key => console.log(key)}
+            onChange={(key) => console.log(key)}
           >
             <Collapse.Item itemKey="test1" title="50元套餐">
               <Text>我是50元套餐内容</Text>

@@ -23,18 +23,18 @@ export interface WheelProps extends BaseWheelProps {
 }
 
 export default class Wheel extends Component<WheelProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-wheel',
-    dataSource: [],
-    valueMember: 'value',
-    itemRender: item => item.label,
-  };
-
   private BScroll;
 
   private wrapper;
 
   private isChangedByProps;
+
+  static defaultProps = {
+    prefixCls: 'za-wheel',
+    dataSource: [],
+    valueMember: 'value',
+    itemRender: (item) => item.label,
+  };
 
   componentDidMount() {
     const { prefixCls, dataSource, disabled, onTransition, valueMember } = this.props;
@@ -63,7 +63,7 @@ export default class Wheel extends Component<WheelProps, any> {
         return;
       }
       const index = this.BScroll.getSelectedIndex();
-      const child = curDataSource![index];
+      const child = curDataSource[index];
       onTransition!(this.BScroll.isInTransition);
       if (child) {
         this.fireValueChange(child[valueMember!]);

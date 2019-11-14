@@ -29,8 +29,6 @@ describe('Modal', () => {
         模态框内容
       </Modal>,
     );
-    console.log(wrapper);
-    console.log(wrapper.find('.za-modal__header__close').at(0));
     wrapper.find('.za-modal__header__close').at(0).simulate('click');
     expect(onCancel).toBeCalled();
   });

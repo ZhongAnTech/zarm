@@ -8,32 +8,8 @@ exports[`Tooltip renders correctly 1`] = `
   prefixCls="za-tooltip"
   title="hello"
 >
-  <Popper
-    arrowPointAtCenter={false}
-    content=""
-    direction="top"
-    hasArrow={true}
-    mouseEnterDelay={100}
-    mouseLeaveDelay={100}
-    onVisibleChange={[Function]}
-    prefixCls="za-tooltip"
-    title="hello"
-    trigger="hover"
-    visible={false}
-  >
-    <div
-      className="za-tooltip"
-    >
-      <div
-        className="za-tooltip__inner"
-        onMouseLeave={[Function]}
-        onMouseOver={[Function]}
-      >
-        <span>
-          foo
-        </span>
-      </div>
-    </div>
-  </Popper>
+  <span>
+    foo
+  </span>
 </Tooltip>
 `;

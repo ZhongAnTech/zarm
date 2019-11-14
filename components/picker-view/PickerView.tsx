@@ -12,7 +12,7 @@ export interface PickerViewProps extends BasePickerViewProps {
   className?: string;
 }
 
-export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }[]>;
 
 export interface PickerViewState {
   value: string[] | number[];
@@ -25,7 +25,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
     dataSource: [],
     cols: Infinity,
     valueMember: 'value',
-    itemRender: data => data.label,
+    itemRender: (data) => data.label,
     disabled: false,
   };
 
@@ -82,7 +82,7 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
         valueMember={valueMember}
         itemRender={itemRender}
         disabled={disabled}
-        onChange={selected => this.onValueChange(selected, index)}
+        onChange={(selected) => this.onValueChange(selected, index)}
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
     ));

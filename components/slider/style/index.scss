@@ -114,6 +114,8 @@
 
     @include e(line) {
       width: var(--slider-vertical-line-width);
+      position: absolute;
+      top: 0;
       height: 100%;
 
       @include e(line__bg) {

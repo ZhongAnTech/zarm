@@ -10,16 +10,6 @@ export interface SwipeActionProps extends PropsType {
 }
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-swipe-action',
-    left: [],
-    right: [],
-    moveDistanceRatio: 0.5,
-    moveTimeSpan: 300,
-    animationDuration: 300,
-    offset: 10,
-  };
-
   private isOpen = false;
 
   private touchEnd = true;
@@ -29,6 +19,16 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   private left;
 
   private right;
+
+  static defaultProps = {
+    prefixCls: 'za-swipe-action',
+    left: [],
+    right: [],
+    moveDistanceRatio: 0.5,
+    moveTimeSpan: 300,
+    animationDuration: 300,
+    offset: 10,
+  };
 
   constructor(props) {
     super(props);

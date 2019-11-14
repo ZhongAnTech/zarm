@@ -3,6 +3,7 @@ import { Dropdown } from 'dragon-ui';
 import QRious from 'qrious';
 import Container from '@site/web/components/Container';
 import Header from '@site/web/components/Header';
+import Meta from '@site/web/components/Meta';
 import './style.scss';
 
 class Page extends PureComponent {
@@ -24,6 +25,7 @@ class Page extends PureComponent {
 
     return (
       <Container className="index-page">
+        <Meta title="Zarm Design - 众安科技移动端组件库" />
         <Header />
         <main>
           <div className="banner">

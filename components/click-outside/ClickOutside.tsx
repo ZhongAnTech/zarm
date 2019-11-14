@@ -22,8 +22,19 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     const { disabled } = this.props;
 
     if (!disabled) {
-      Events.on(document, 'click', this.handle);
-      Events.on(document, 'touchend', this.handle);
+      this.bindEvent();
+    }
+  }
+
+  componentDidUpdate(prevProps: ClickOutsideProps) {
+    const { disabled } = this.props;
+
+    if (prevProps.disabled !== disabled) {
+      if (disabled) {
+        this.unBindEvent();
+      } else {
+        this.bindEvent();
+      }
     }
   }
 
@@ -31,8 +42,7 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     const { disabled } = this.props;
 
     if (!disabled) {
-      Events.off(document, 'click', this.handle);
-      Events.off(document, 'touchend', this.handle);
+      this.unBindEvent();
     }
   }
 
@@ -53,6 +63,16 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     if (ignoredNode && ignoredNode.contains(event.target)) return;
     if (el && !el.contains(event.target)) onClickOutside(event);
   };
+
+  bindEvent() {
+    Events.on(document, 'click', this.handle);
+    Events.on(document, 'touchend', this.handle);
+  }
+
+  unBindEvent() {
+    Events.off(document, 'click', this.handle);
+    Events.off(document, 'touchend', this.handle);
+  }
 
   render() {
     const { onClickOutside, disabled, children, ignoredNode, ...rest } = this.props;

@@ -19,16 +19,18 @@ export interface PopupProps extends PropsType {
 const popupStyles = StyleSheet.create<any>(popupStyle);
 
 export default class Popup extends PureComponent<PopupProps, any> {
+  private timer: number;
+
   static defaultProps = {
     visible: false,
     mask: true,
     direction: 'bottom',
     stayTime: 3000,
     animationDuration: 200,
+    destroy: true,
+    disableBodyScroll: true,
     styles: popupStyles,
   };
-
-  private timer: number;
 
   constructor(props) {
     super(props);
@@ -191,7 +193,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
 
     return (
       <View style={invisibleStyle}>
-        <Animated.View style={popUpStyle} onLayout={e => this.onLayout(e, direction, this)}>
+        <Animated.View style={popUpStyle} onLayout={(e) => this.onLayout(e, direction, this)}>
           {children}
         </Animated.View>
         {this.renderMask()}
