@@ -29,6 +29,7 @@ export default class Drag extends PureComponent<DragProps, {}> {
   };
 
   onTouchMove = (event) => {
+    if (this.dragState.startX === undefined) return false;
     let currentX: number;
     let currentY: number;
 
