@@ -65,7 +65,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     }, () => {
       this.animate();
       if (onChange) {
-        onChange(this.state.active);
+        onChange(active);
       }
     });
   };

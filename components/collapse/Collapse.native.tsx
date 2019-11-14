@@ -40,7 +40,7 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     }
   }
 
-  onChange = (key) => {
+  onChange = (onItemChange, key) => {
     const { multiple, onChange } = this.props;
     const { activeKey } = this.state;
     const hasKey = activeKey.indexOf(key) > -1;
@@ -55,6 +55,12 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     } else {
       newactiveKey = hasKey ? [] : [key];
     }
+
+    if (typeof onItemChange === 'function') {
+      const isActive = newactiveKey.indexOf(key) > -1;
+      onItemChange(isActive);
+    }
+
     this.setState({
       activeKey: newactiveKey,
     });
@@ -87,14 +93,14 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     const { activeKey } = this.state;
 
     return Children.map(children, (ele: ReactElement<CollapseItemProps>, index) => {
-      const { itemKey } = ele.props;
+      const { itemKey, disabled, onChange } = ele.props;
       const key = Object.prototype.toString.call(itemKey) !== '[object Undefined]' ? String(itemKey) : String(index);
       const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele, {
         itemKey: key,
         isActive,
         animated,
-        onChange: this.onChange,
+        onChange: disabled ? () => { } : () => this.onChange(onChange, key),
       });
     });
   }
