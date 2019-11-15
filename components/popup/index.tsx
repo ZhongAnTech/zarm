@@ -10,10 +10,24 @@ export interface PopupProps extends PropsType {
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps = {
     destroy: true,
-    disableBodyScroll: true,
   };
 
   portalRef: Portal | null;
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.visible !== state.prevVisible) {
+      if (props.visible) {
+        return {
+          renderPortal: true,
+          portalVisible: true,
+        };
+      }
+      return {
+        portalVisible: false,
+      };
+    }
+    return null;
+  }
 
   constructor(props) {
     super(props);
@@ -33,25 +47,6 @@ export default class Popup extends PureComponent<PopupProps, any> {
       });
     }
   }
-
-  componentDidUpdate(prevProps) {
-    const { visible } = this.props;
-    if (prevProps.visible !== visible) {
-      if (visible) {
-        // eslint-disable-next-line
-        this.setState({
-          renderPortal: true,
-          portalVisible: true,
-        });
-      } else {
-        // eslint-disable-next-line
-        this.setState({
-          portalVisible: false,
-        });
-      }
-    }
-  }
-
 
   handlePortalUnmount() {
     const { destroy } = this.props;

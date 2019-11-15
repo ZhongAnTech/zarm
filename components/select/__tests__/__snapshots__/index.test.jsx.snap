@@ -104,7 +104,6 @@ exports[`Select Cascader Select 1`] = `
           },
         ]
       }
-      disableBodyScroll={true}
       displayRender={[Function]}
       itemRender={[Function]}
       locale={
@@ -161,7 +160,6 @@ exports[`Select Cascader Select 1`] = `
               },
             ]
           }
-          disableBodyScroll={true}
           itemRender={[Function]}
           localeCode="zh-cn"
           maskClosable={true}
@@ -206,7 +204,6 @@ exports[`Select Cascader Select 1`] = `
                 },
               ]
             }
-            disableBodyScroll={true}
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
@@ -253,7 +250,6 @@ exports[`Select Cascader Select 1`] = `
                 ]
               }
               destroy={false}
-              disableBodyScroll={true}
               itemRender={[Function]}
               locale={
                 Object {
@@ -274,7 +270,6 @@ exports[`Select Cascader Select 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -405,7 +400,6 @@ exports[`Select Cascader Select init value 1`] = `
           },
         ]
       }
-      disableBodyScroll={true}
       displayAddon="-"
       displayRender={[Function]}
       itemRender={[Function]}
@@ -470,7 +464,6 @@ exports[`Select Cascader Select init value 1`] = `
               },
             ]
           }
-          disableBodyScroll={true}
           displayAddon="-"
           itemRender={[Function]}
           localeCode="zh-cn"
@@ -522,7 +515,6 @@ exports[`Select Cascader Select init value 1`] = `
                 },
               ]
             }
-            disableBodyScroll={true}
             displayAddon="-"
             forwardedRef={null}
             itemRender={[Function]}
@@ -576,7 +568,6 @@ exports[`Select Cascader Select init value 1`] = `
                 ]
               }
               destroy={false}
-              disableBodyScroll={true}
               displayAddon="-"
               itemRender={[Function]}
               locale={
@@ -604,7 +595,6 @@ exports[`Select Cascader Select init value 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -661,7 +651,6 @@ exports[`Select Select 1`] = `
           },
         ]
       }
-      disableBodyScroll={true}
       displayRender={[Function]}
       itemRender={[Function]}
       locale={
@@ -698,7 +687,6 @@ exports[`Select Select 1`] = `
               },
             ]
           }
-          disableBodyScroll={true}
           itemRender={[Function]}
           localeCode="zh-cn"
           maskClosable={true}
@@ -723,7 +711,6 @@ exports[`Select Select 1`] = `
                 },
               ]
             }
-            disableBodyScroll={true}
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
@@ -750,7 +737,6 @@ exports[`Select Select 1`] = `
                 ]
               }
               destroy={false}
-              disableBodyScroll={true}
               itemRender={[Function]}
               locale={
                 Object {
@@ -771,7 +757,6 @@ exports[`Select Select 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -831,7 +816,6 @@ exports[`Select Select disabled 1`] = `
         ]
       }
       disabeld={true}
-      disableBodyScroll={true}
       displayRender={[Function]}
       itemRender={[Function]}
       locale={
@@ -869,7 +853,6 @@ exports[`Select Select disabled 1`] = `
             ]
           }
           disabeld={true}
-          disableBodyScroll={true}
           itemRender={[Function]}
           localeCode="zh-cn"
           maskClosable={true}
@@ -895,7 +878,6 @@ exports[`Select Select disabled 1`] = `
               ]
             }
             disabeld={true}
-            disableBodyScroll={true}
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
@@ -923,7 +905,6 @@ exports[`Select Select disabled 1`] = `
               }
               destroy={false}
               disabeld={true}
-              disableBodyScroll={true}
               itemRender={[Function]}
               locale={
                 Object {
@@ -944,7 +925,6 @@ exports[`Select Select disabled 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={true}
               >
@@ -953,7 +933,6 @@ exports[`Select Select disabled 1`] = `
                   animationType="fade"
                   destroy={false}
                   direction="bottom"
-                  disableBodyScroll={true}
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
@@ -1125,10 +1104,8 @@ exports[`Select Select disabled 1`] = `
                             disabled={false}
                             itemRender={[Function]}
                             localeCode="zh-cn"
-                            onCancel={[Function]}
                             onChange={[Function]}
                             onClick={[Function]}
-                            onOk={[Function]}
                             onTransition={[Function]}
                             prefixCls="za-picker-view"
                             value={
@@ -1259,7 +1236,6 @@ exports[`Select render defaultValue correctly  1`] = `
         ]
       }
       defaultValue="2"
-      disableBodyScroll={true}
       displayRender={[Function]}
       itemRender={[Function]}
       locale={
@@ -1297,7 +1273,6 @@ exports[`Select render defaultValue correctly  1`] = `
             ]
           }
           defaultValue="2"
-          disableBodyScroll={true}
           itemRender={[Function]}
           localeCode="zh-cn"
           maskClosable={true}
@@ -1323,7 +1298,6 @@ exports[`Select render defaultValue correctly  1`] = `
               ]
             }
             defaultValue="2"
-            disableBodyScroll={true}
             forwardedRef={null}
             itemRender={[Function]}
             localeCode="zh-cn"
@@ -1351,7 +1325,6 @@ exports[`Select render defaultValue correctly  1`] = `
               }
               defaultValue="2"
               destroy={false}
-              disableBodyScroll={true}
               itemRender={[Function]}
               locale={
                 Object {
@@ -1372,7 +1345,6 @@ exports[`Select render defaultValue correctly  1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />

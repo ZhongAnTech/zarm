@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import BaseDatePickerViewProps from './PropsType';
 import PickerView from '../picker-view';
+import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+
 
 const DATETIME = 'datetime';
 const DATE = 'date';
@@ -45,7 +48,7 @@ const isExtendDate = (date) => {
   return new Date(date.toString().replace(/-/g, '/'));
 };
 
-const getInitDate = (props) => {
+const parseDate = (props) => {
   const date = props.value && isExtendDate(props.value);
   const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
   const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
@@ -71,29 +74,28 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     minuteStep: 1,
     prefixCls: 'za-date-picker-view',
     valueMember: 'value',
-    onClick: () => {},
-    onCancel: () => {},
   };
+
+  static getDerivedStateFromProps(props, state) {
+    if (!_.isEqual(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']))) {
+      return {
+        prevProps: props,
+        ...parseDate(props),
+      };
+    }
+
+    if (!_.isEqual(state.date, state.prevDate)) {
+      return {
+        prevDate: state.date,
+        date: state.date,
+      };
+    }
+    return null;
+  }
 
   constructor(props) {
     super(props);
-    const state = getInitDate(props);
-
-    this.state = state;
-
-    if (typeof props.onInit === 'function') {
-      props.onInit(this.getDate());
-    }
-  }
-
-  componentDidMount() {
-    const state = getInitDate(this.props);
-    this.setState(state);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const state = getInitDate(nextProps);
-    this.setState(state);
+    this.state = parseDate(props);
 
     const { onInit } = this.props;
     if (typeof onInit === 'function') {

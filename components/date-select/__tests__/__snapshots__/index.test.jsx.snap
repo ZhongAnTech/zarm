@@ -15,7 +15,6 @@ exports[`DateSelect DateSelect date 1`] = `
     value="2017-09-06"
   >
     <DateSelect
-      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -46,7 +45,6 @@ exports[`DateSelect DateSelect date 1`] = `
           2017-09-06
         </div>
         <ForwardRef(forwardRef)
-          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -58,7 +56,6 @@ exports[`DateSelect DateSelect date 1`] = `
           visible={false}
         >
           <LocaleReceiver
-            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -73,7 +70,6 @@ exports[`DateSelect DateSelect date 1`] = `
             <DatePicker
               defaultValue=""
               destroy={false}
-              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -96,7 +92,6 @@ exports[`DateSelect DateSelect date 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -129,7 +124,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
   >
     <DateSelect
       defaultValue="2017-11-03 15:00"
-      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -162,7 +156,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
-          disableBodyScroll={true}
           localeCode="zh-cn"
           max="2017-11-02 14:00"
           min="2017-11-02 11:00"
@@ -177,7 +170,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
         >
           <LocaleReceiver
             defaultValue="2017-11-03 15:00"
-            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             max="2017-11-02 14:00"
@@ -194,7 +186,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
             <DatePicker
               defaultValue="2017-11-03 15:00"
               destroy={false}
-              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -219,7 +210,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -280,7 +270,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
         ]
       }
       disabeld={true}
-      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -322,7 +311,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
             ]
           }
           disabeld={true}
-          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -346,7 +334,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
               ]
             }
             disabeld={true}
-            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -373,7 +360,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
               defaultValue=""
               destroy={false}
               disabeld={true}
-              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -395,7 +381,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={true}
               >
@@ -404,7 +389,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                   animationType="fade"
                   destroy={false}
                   direction="bottom"
-                  disableBodyScroll={true}
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
@@ -1020,10 +1004,8 @@ exports[`DateSelect DateSelect disabled 1`] = `
                             localeCode="zh-cn"
                             minuteStep={1}
                             mode="date"
-                            onCancel={[Function]}
                             onChange={[Function]}
                             onInit={[Function]}
-                            onOk={[Function]}
                             onTransition={[Function]}
                             value={2019-04-23T04:00:00.000Z}
                             valueMember="value"
@@ -1048,10 +1030,8 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               localeCode="zh-cn"
                               minuteStep={1}
                               mode="date"
-                              onCancel={[Function]}
                               onChange={[Function]}
                               onInit={[Function]}
-                              onOk={[Function]}
                               onTransition={[Function]}
                               value={2019-04-23T04:00:00.000Z}
                               valueMember="value"
@@ -1085,11 +1065,8 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 localeCode="zh-cn"
                                 minuteStep={1}
                                 mode="date"
-                                onCancel={[Function]}
                                 onChange={[Function]}
-                                onClick={[Function]}
                                 onInit={[Function]}
-                                onOk={[Function]}
                                 onTransition={[Function]}
                                 prefixCls="za-date-picker-view"
                                 value={2019-04-23T04:00:00.000Z}
@@ -1416,10 +1393,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                   localeCode="zh-cn"
                                   minuteStep={1}
                                   mode="date"
-                                  onCancel={[Function]}
                                   onChange={[Function]}
-                                  onClick={[Function]}
-                                  onOk={[Function]}
                                   onTransition={[Function]}
                                   prefixCls="za-date-picker-view"
                                   value={
@@ -2282,7 +2256,6 @@ exports[`DateSelect DateSelect time 1`] = `
   >
     <DateSelect
       defaultValue="2017-11-03 15:00"
-      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -2313,7 +2286,6 @@ exports[`DateSelect DateSelect time 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
-          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={15}
           mode="time"
@@ -2326,7 +2298,6 @@ exports[`DateSelect DateSelect time 1`] = `
         >
           <LocaleReceiver
             defaultValue="2017-11-03 15:00"
-            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={15}
@@ -2341,7 +2312,6 @@ exports[`DateSelect DateSelect time 1`] = `
             <DatePicker
               defaultValue="2017-11-03 15:00"
               destroy={false}
-              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -2364,7 +2334,6 @@ exports[`DateSelect DateSelect time 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />
@@ -2391,7 +2360,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   >
     <DateSelect
       defaultValue="2017-11-03"
-      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -2421,7 +2389,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03"
-          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -2433,7 +2400,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
         >
           <LocaleReceiver
             defaultValue="2017-11-03"
-            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -2447,7 +2413,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
             <DatePicker
               defaultValue="2017-11-03"
               destroy={false}
-              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -2469,7 +2434,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={true}
               >
@@ -2478,7 +2442,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                   animationType="fade"
                   destroy={false}
                   direction="bottom"
-                  disableBodyScroll={true}
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
@@ -3081,10 +3044,8 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                             localeCode="zh-cn"
                             minuteStep={1}
                             mode="date"
-                            onCancel={[Function]}
                             onChange={[Function]}
                             onInit={[Function]}
-                            onOk={[Function]}
                             onTransition={[Function]}
                             value={2017-11-03T04:00:00.000Z}
                             valueMember="value"
@@ -3096,10 +3057,8 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                               localeCode="zh-cn"
                               minuteStep={1}
                               mode="date"
-                              onCancel={[Function]}
                               onChange={[Function]}
                               onInit={[Function]}
-                              onOk={[Function]}
                               onTransition={[Function]}
                               value={2017-11-03T04:00:00.000Z}
                               valueMember="value"
@@ -3120,11 +3079,8 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                                 localeCode="zh-cn"
                                 minuteStep={1}
                                 mode="date"
-                                onCancel={[Function]}
                                 onChange={[Function]}
-                                onClick={[Function]}
                                 onInit={[Function]}
-                                onOk={[Function]}
                                 onTransition={[Function]}
                                 prefixCls="za-date-picker-view"
                                 value={2017-11-03T04:00:00.000Z}
@@ -3450,10 +3406,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                                   localeCode="zh-cn"
                                   minuteStep={1}
                                   mode="date"
-                                  onCancel={[Function]}
                                   onChange={[Function]}
-                                  onClick={[Function]}
-                                  onOk={[Function]}
                                   onTransition={[Function]}
                                   prefixCls="za-date-picker-view"
                                   value={
@@ -4315,7 +4268,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
     wheelDefaultValue="2017-11-03 15:00"
   >
     <DateSelect
-      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -4347,7 +4299,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           请选择日期
         </div>
         <ForwardRef(forwardRef)
-          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="date"
@@ -4359,7 +4310,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           wheelDefaultValue="2017-11-03 15:00"
         >
           <LocaleReceiver
-            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -4374,7 +4324,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             <DatePicker
               defaultValue=""
               destroy={false}
-              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -4398,7 +4347,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={true}
               >
@@ -4407,7 +4355,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                   animationType="fade"
                   destroy={false}
                   direction="bottom"
-                  disableBodyScroll={true}
                   handlePortalUnmount={[Function]}
                   mask={true}
                   maskType="normal"
@@ -5010,12 +4957,10 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                             localeCode="zh-cn"
                             minuteStep={1}
                             mode="date"
-                            onCancel={[Function]}
                             onChange={[Function]}
                             onInit={[Function]}
-                            onOk={[Function]}
                             onTransition={[Function]}
-                            value=""
+                            value={2017-11-03T19:00:00.000Z}
                             valueMember="value"
                             visible={true}
                             wheelDefaultValue="2017-11-03 15:00"
@@ -5026,12 +4971,10 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                               localeCode="zh-cn"
                               minuteStep={1}
                               mode="date"
-                              onCancel={[Function]}
                               onChange={[Function]}
                               onInit={[Function]}
-                              onOk={[Function]}
                               onTransition={[Function]}
-                              value=""
+                              value={2017-11-03T19:00:00.000Z}
                               valueMember="value"
                               visible={true}
                               wheelDefaultValue="2017-11-03 15:00"
@@ -5051,14 +4994,11 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                                 localeCode="zh-cn"
                                 minuteStep={1}
                                 mode="date"
-                                onCancel={[Function]}
                                 onChange={[Function]}
-                                onClick={[Function]}
                                 onInit={[Function]}
-                                onOk={[Function]}
                                 onTransition={[Function]}
                                 prefixCls="za-date-picker-view"
-                                value=""
+                                value={2017-11-03T19:00:00.000Z}
                                 valueMember="value"
                                 visible={true}
                                 wheelDefaultValue="2017-11-03 15:00"
@@ -5382,10 +5322,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                                   localeCode="zh-cn"
                                   minuteStep={1}
                                   mode="date"
-                                  onCancel={[Function]}
                                   onChange={[Function]}
-                                  onClick={[Function]}
-                                  onOk={[Function]}
                                   onTransition={[Function]}
                                   prefixCls="za-date-picker-view"
                                   value={
@@ -6264,7 +6201,6 @@ exports[`DateSelect DateSelect year 1`] = `
     value="2017"
   >
     <DateSelect
-      disableBodyScroll={true}
       disabled={false}
       locale={
         Object {
@@ -6295,7 +6231,6 @@ exports[`DateSelect DateSelect year 1`] = `
           2016年
         </div>
         <ForwardRef(forwardRef)
-          disableBodyScroll={true}
           localeCode="zh-cn"
           minuteStep={1}
           mode="year"
@@ -6307,7 +6242,6 @@ exports[`DateSelect DateSelect year 1`] = `
           visible={false}
         >
           <LocaleReceiver
-            disableBodyScroll={true}
             forwardedRef={null}
             localeCode="zh-cn"
             minuteStep={1}
@@ -6322,7 +6256,6 @@ exports[`DateSelect DateSelect year 1`] = `
             <DatePicker
               defaultValue=""
               destroy={false}
-              disableBodyScroll={true}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -6345,7 +6278,6 @@ exports[`DateSelect DateSelect year 1`] = `
             >
               <Popup
                 destroy={false}
-                disableBodyScroll={true}
                 onMaskClick={[Function]}
                 visible={false}
               />

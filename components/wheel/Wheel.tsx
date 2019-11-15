@@ -63,8 +63,7 @@ export default class Wheel extends Component<WheelProps, any> {
         return;
       }
       const index = this.BScroll.getSelectedIndex();
-      const child = curDataSource![index];
-
+      const child = curDataSource[index];
       onTransition!(this.BScroll.isInTransition);
       if (child) {
         this.fireValueChange(child[valueMember!]);
@@ -75,14 +74,15 @@ export default class Wheel extends Component<WheelProps, any> {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.disabled) {
-      this.BScroll.disable();
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.disabled) {
+  //     this.BScroll.disable();
+  //   }
+  // }
 
   componentDidUpdate(prevProps) {
-    const { value, dataSource } = this.props;
+    const { value, dataSource, disabled } = this.props;
+    disabled && this.BScroll.disable();
     this.BScroll.refresh();
     const oldIndex = this.getSelectedIndex(prevProps.value, prevProps.dataSource);
     const newIndex = this.getSelectedIndex(value, dataSource);

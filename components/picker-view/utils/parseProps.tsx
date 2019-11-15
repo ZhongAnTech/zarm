@@ -32,7 +32,6 @@ const cascaderState = (props) => {
   const parseLevel = ({ level = 0, dataSource }) => {
     newDateSource[level] = dataSource.map((item, index) => {
       const { children, ...others } = item;
-
       if (
         (newValues[level] && item[valueMember!] === newValues[level]) || (!newValues[level] && index === 0)
       ) {
@@ -41,8 +40,8 @@ const cascaderState = (props) => {
 
         if (isArray(children) && children.length > 0 && level + 1 < cols!) {
           parseLevel({
-            dataSource: children,
             level: level + 1,
+            dataSource: children,
           });
         }
       }

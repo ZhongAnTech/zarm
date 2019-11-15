@@ -66,6 +66,7 @@
     "classnames": "2.2.6",
     "create-react-context": "0.2.3",
     "hoist-non-react-statics": "^3.3.0",
+    "lodash": "^4.17.15",
     "normalize.css": "8.0.1",
     "popper.js": "^1.15.0",
     "react-native-camera-roll-picker": "1.2.3"

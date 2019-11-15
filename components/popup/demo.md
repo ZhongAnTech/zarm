@@ -109,6 +109,7 @@ class Demo extends React.Component {
           onMaskClick={() => { this.toggle('popBottom')}}
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
+          destroy={false}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => { this.toggle('picker'); }}>打开Picker</Button>
@@ -180,6 +181,7 @@ class Demo extends React.Component {
           onMaskClick={() => this.toggle('popSpec')}
           afterClose={() => console.log('关闭')}
           ref={ref => this.popupRef = ref}
+          destroy={false}
         >
           <div className="popup-box-bottom">
             <Button size="xs" onClick={() => this.toggle('popCenterSpec')}>打开弹层</Button>
@@ -208,7 +210,6 @@ ReactDOM.render(<Demo />, mountNode);
 | width | string &#124; number | - | 弹层宽度 |
 | mask | boolean | true | 是否展示遮罩层 |
 | maskType | string | 'normal' | 遮罩层的类型，可选值 `transparent`, `normal` |
-| disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
 | destroy | boolean | true | 弹层关闭后是否移除节点 |
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
