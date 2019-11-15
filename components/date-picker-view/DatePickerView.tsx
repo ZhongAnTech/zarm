@@ -49,7 +49,6 @@ const isExtendDate = (date) => {
 };
 
 const parseDate = (props) => {
-  console.log('重新计算');
   const date = props.value && isExtendDate(props.value);
   const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
   const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
@@ -78,7 +77,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   };
 
   static getDerivedStateFromProps(props, state) {
-    // console.log(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition', 'onCancel', 'onClick']));
     if (!_.isEqual(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']))) {
       return {
         prevProps: props,
