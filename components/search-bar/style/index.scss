@@ -20,6 +20,7 @@
       line-height: r(20);
       background-color: transparent;
       border: 0;
+      caret-color: var(--search-bar-caret-color);
 
       &::-webkit-search-cancel-button {
         display: none;
@@ -93,6 +94,8 @@
       input {
         opacity: 1;
         padding: 0 r(28) 0 r(26);
+        height: r(20);
+        line-height: r(20);
       }
     }
   }
