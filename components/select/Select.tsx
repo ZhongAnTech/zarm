@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
+import _ from 'lodash';
 import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
+import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isArray, isString } from '../utils/validate';
 
 export interface SelectProps extends BaseSelectProps {
@@ -38,9 +40,15 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     visible: false,
   };
 
-  componentWillReceiveProps(nextProps) {
-    const propsToState: SelectState = parseProps.getSource(nextProps);
-    this.setState(propsToState);
+  static getDerivedStateFromProps(props, state) {
+    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+      return {
+        prevProps: props,
+        ...parseProps.getSource(props),
+      };
+    }
+
+    return null;
   }
 
   handleClick = () => {

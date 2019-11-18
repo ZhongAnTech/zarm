@@ -1,20 +1,11 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
+import _ from 'lodash';
 import BaseDateSelectProps from './PropsType';
-import formatFn from '../date-picker-view/utils';
+import formatFn from '../date-picker-view/utils/format';
 import DatePicker from '../date-picker';
-
-const isExtendDate = (date) => {
-  if (date instanceof Date) {
-    return date;
-  }
-
-  if (!date) {
-    return '';
-  }
-
-  return new Date(date.toString().replace(/-/g, '/'));
-};
+import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import { parseState } from '../date-picker-view/utils/parseState';
 
 export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
@@ -31,33 +22,20 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     onCancel: () => {},
   };
 
-  constructor(props) {
-    super(props);
-
-    const date = props.value && isExtendDate(props.value);
-    const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-
-    this.state = {
-      value: defaultDate || date,
-      visible: props.visible || false,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { visible } = this.state;
-    const date = nextProps.value && isExtendDate(nextProps.value);
-    const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
-
-    this.setState({
-      value: date || defaultDate,
-    });
-
-    if ('visible' in nextProps && nextProps.visible !== visible) {
-      this.setState({
-        visible: nextProps.visible,
-      });
+  static getDerivedStateFromProps(props, state) {
+    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+      return {
+        prevProps: props,
+        ...parseState(props),
+      };
     }
+
+    return null;
   }
+
+  state = {
+    visible: false,
+  };
 
   handleClick = () => {
     const { disabled } = this.props;
@@ -93,8 +71,8 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   };
 
   render() {
-    const { prefixCls, className, placeholder, disabled, onChange, locale, ...others } = this.props;
-    const { value, visible } = this.state;
+    const { prefixCls, className, placeholder, disabled, onChange, locale, value, ...others } = this.props;
+    const { visible } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--placeholder`]: !value,

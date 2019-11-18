@@ -19,7 +19,6 @@ const normalState = (props) => {
     value,
     objValue: props.dataSource.map((item, index) => item.filter((d) => d[valueMember!] === value[index])[0]),
     dataSource: props.dataSource,
-    visible: props.visible || false,
   };
 };
 
@@ -58,7 +57,6 @@ const cascaderState = (props) => {
     value: newValues,
     objValue: newObjValues,
     dataSource: newDateSource,
-    visible: props.visible || false,
   };
 };
 

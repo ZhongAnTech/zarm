@@ -18,7 +18,6 @@ export interface PickerState {
   value: string[] | number[];
   objValue?: Array<{ [key: string]: any }>;
   dataSource: DataSource;
-  visible: boolean;
   tempObjValue?: Array<{ [key: string]: any }>;
   tempValue?: string[] | number[];
 }
@@ -107,8 +106,8 @@ export default class Picker extends Component<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, destroy, onOk, onCancel, ...others } = this.props;
-    const { visible, value } = this.state;
+    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, destroy, onOk, onCancel, visible, ...others } = this.props;
+    const { value } = this.state;
     const cls = classnames(prefixCls, className);
     const noop = () => {};
     return (
