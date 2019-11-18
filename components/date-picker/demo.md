@@ -13,6 +13,7 @@ class Demo extends React.Component {
       date: {
         visible: false,
         value: '',
+        wheelDefaultValue: '2018-09-13',
       },
       time: {
         visible: false,
@@ -93,6 +94,7 @@ class Demo extends React.Component {
           visible={date.visible}
           mode="date"
           value={date.value}
+          wheelDefaultValue={date.wheelDefaultValue}
           onOk={(value) => {
             this.setState({
               date: {
@@ -175,13 +177,13 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## DateSelect 表单日期选择器
 ```jsx
-import { Cell, DateSelect } from 'zarm';
+import { Cell, DateSelect, Icon } from 'zarm';
 
 class Demo extends React.Component {
   constructor() {
     super();
     this.state = {
-      visible: false,
+      visible: true,
       value: "",
     };
   }
@@ -190,7 +192,7 @@ class Demo extends React.Component {
     const { visible } = this.state;
     return (
       <div>
-        <Cell hasArrow title="日期选择">
+        <Cell title="日期选择" description={<Icon type="arrow-bottom" size="sm" />}>
           <DateSelect
             title="选择日期"
             placeholder="请选择日期"
@@ -281,7 +283,6 @@ ReactDOM.render(<Demo />, mountNode);
 | cancelText | string | '取消' | 取消栏文字 |
 | okText | string | '确定' | 确定栏文字 |
 | maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
-| disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
 | destroy | boolean | false | 弹层关闭后是否移除节点 |
 | wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
 | onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 

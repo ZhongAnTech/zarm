@@ -5,28 +5,7 @@ import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
 import DatePickerView from '../date-picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-
-const isExtendDate = (date) => {
-  if (date instanceof Date) {
-    return date;
-  }
-
-  if (!date) {
-    return '';
-  }
-
-  return new Date(date.toString().replace(/-/g, '/'));
-};
-
-const parseState = (props) => {
-  const date = props.value && isExtendDate(props.value);
-  const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-
-  return {
-    value: date || defaultDate,
-    visible: props.visible || false,
-  };
-};
+import { parseState } from '../date-picker-view/utils/parseState';
 
 export interface DatePickerProps extends BaseDatePickerProps {
   prefixCls?: string;
@@ -68,27 +47,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   private isScrolling = false;
 
-  constructor(props) {
-    super(props);
-
-    this.state = parseState(props);
-  }
-
-  // componentWillReceiveProps(nextProps) {
-  //   const { visible } = this.state;
-  //   const date = nextProps.value && isExtendDate(nextProps.value);
-  //   const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
-
-  //   this.setState({
-  //     value: date || defaultDate,
-  //   });
-
-  //   if ('visible' in nextProps && nextProps.visible !== visible) {
-  //     this.setState({
-  //       visible: nextProps.visible,
-  //     });
-  //   }
-  // }
+  state = {
+    value: '',
+  };
 
   onCancel = () => {
     const { onCancel } = this.props;
@@ -108,9 +69,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     const { onOk } = this.props;
     const { value } = this.state;
     // const value = this.initDate;
+
     this.setState({
       value,
-      visible: false,
     });
     if (typeof onOk === 'function') {
       onOk(value);
@@ -154,9 +115,10 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, destroy, onOk, onCancel, onInit, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, destroy, onOk, onCancel, onInit, visible, ...others } = this.props;
     const cls = classnames(prefixCls, className);
-    const { visible, value } = this.state;
+    const { value } = this.state;
+    console.log('datePicker value:', value);
     const noop = () => {};
 
     return (
