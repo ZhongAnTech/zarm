@@ -10,15 +10,9 @@ export interface SearchBarProps extends BaseSearchBarProps {
 }
 
 export default class SearchBar extends PureComponent<SearchBarProps, any> {
-  private searchForm;
-
-  private searchContainer;
-
   private cancelRef;
 
   private cancelOuterWidth;
-
-  private initPos;
 
   private inputRef;
 
@@ -44,7 +38,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   }
 
   static getDerivedStateFromProps(nextProps, state) {
-    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+    if ('value' in nextProps && nextProps.value !== state.preValue) {
       return {
         value: nextProps.value,
         preValue: nextProps.value,
@@ -150,17 +144,13 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     const { showCancel } = props;
     const { value } = this.state;
 
-    const formWidth = this.searchForm.getBoundingClientRect().width;
-    const containerWidth = this.searchContainer.getBoundingClientRect().width;
     const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
 
     this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
     if (!showCancel) {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
-      this.initPos = (formWidth / 2) - (containerWidth / 2);
     } else {
       this.cancelRef.style.cssText = 'margin-right: 0px;';
-      this.initPos = (formWidth / 2) - (this.cancelOuterWidth / 2) - (containerWidth / 2);
     }
 
     if (value) {
@@ -217,13 +207,11 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
           action="#"
           className={`${prefixCls}__form`}
           onSubmit={(e) => { this.onSubmit(e); }}
-          ref={(searchForm) => { this.searchForm = searchForm; }}
         >
           <div className={`${prefixCls}__content`}>
             <div className={`${prefixCls}__mock`}>
               <div
                 className={`${prefixCls}__mock__container`}
-                ref={(searchContainer) => { this.searchContainer = searchContainer; }}
               >
                 <Icon type="search" />
                 <span

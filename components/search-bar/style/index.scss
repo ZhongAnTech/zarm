@@ -4,12 +4,12 @@
   background: #fff;
 
   @include e(input) {
-    padding: r(10) 0;
+    padding: 0;
 
     input {
       -webkit-appearance: none;
       position: absolute;
-      left: r(0);
+      left: r(6);
       top: r(0);
       opacity: 0;
       width: 100%;
@@ -69,7 +69,7 @@
       position: relative;
       top: 50%;
       transform: translateY(-50%);
-      margin-right: r(2);
+      margin-right: r(6);
       font-size: var(--search-bar-icon-size);
       color: var(--color-text-placeholder);
     }
