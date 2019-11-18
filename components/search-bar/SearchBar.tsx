@@ -163,23 +163,18 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
       this.initPos = (formWidth / 2) - (this.cancelOuterWidth / 2) - (containerWidth / 2);
     }
 
-    if (!value) {
-      this.searchContainer.style.transform = `translate3d(${this.initPos}px, 0, 0)`;
-      this.searchContainer.style.webkitTransform = `translate3d(${this.initPos}px, 0, 0)`;
-    } else {
-      this.focusAnim(0);
+    if (value) {
+      this.focusAnim();
     }
   }
 
-  focusAnim(transition = 300) {
-    this.searchContainer.style.cssText += `transform: translate3d(10px, 0, 0);transition: ${transition}ms;`;
+  focusAnim() {
     this.cancelRef.style.cssText = 'margin-right: 0px;';
     this.cancelRef.className += ' animation-ease';
   }
 
   blurAnim() {
     const { showCancel } = this.props;
-    this.searchContainer.style.cssText += `transform: translate3d(${this.initPos}px, 0, 0);transition: 300ms;`;
     if (!showCancel) {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
     }
