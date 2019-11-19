@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties, Children, cloneElement, ReactElement } from 'react';
+import React, { Component, CSSProperties, Children, cloneElement, ReactElement } from 'react';
 import { StyleSheet, View, ViewStyle } from 'react-native';
 import { BaseCollapseProps } from './PropsType';
 import collapaseStyle from './style/index.native';
@@ -13,6 +13,7 @@ export interface CollapseProps extends BaseCollapseProps {
 
 const collapseStyles = StyleSheet.create<any>(collapaseStyle);
 
+
 const isPropEqual = (cur, next) => {
   if (isArray(next) && isArray(cur)) {
     return next.length === cur.length && next.every((key, i) => key === cur[i]);
@@ -20,9 +21,11 @@ const isPropEqual = (cur, next) => {
   return cur === next;
 };
 
-const getactiveKey = (props) => {
+const getActiveKey = (props) => {
   const { activeKey, defaultActiveKey, multiple } = props;
+
   const defaultKey = (activeKey || activeKey === 0) ? activeKey : defaultActiveKey;
+
   if (defaultKey || defaultKey === 0) {
     if (isArray(defaultKey)) {
       return !multiple
@@ -34,12 +37,12 @@ const getactiveKey = (props) => {
   return [];
 };
 
-export default class Collapse extends PureComponent<CollapseProps, any> {
+export default class Collapse extends Component<CollapseProps, any> {
   static defaultProps = {
     multiple: false,
     animated: false,
     styles: collapseStyles,
-    onChange: () => {},
+    onChange: () => { },
   };
 
   static Item: any;
@@ -47,19 +50,10 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      activeKey: getactiveKey(props),
+      activeKey: getActiveKey(props),
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   const { activeKey } = this.props;
-
-  //   if (!this.isPropEqual(activeKey, nextProps.activeKey)) {
-  //     this.setState({
-  //       activeKey: this.getactiveKey(nextProps),
-  //     });
-  //   }
-  // }
   static getDerivedStateFromProps(nextProps, state) {
     const newState: any = {};
     if ('activeKey' in nextProps && nextProps.activeKey !== state.prevActiveKey) {
@@ -103,8 +97,10 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
     this.setState({
       activeKey: newactiveKey,
     });
+    console.warn(newactiveKey)
     onChange(key);
   };
+
 
   renderItems() {
     const { animated, children } = this.props;
@@ -112,10 +108,10 @@ export default class Collapse extends PureComponent<CollapseProps, any> {
 
     return Children.map(children, (ele: ReactElement<CollapseItemProps>, index) => {
       const { itemKey, disabled, onChange } = ele.props;
-      const key = Object.prototype.toString.call(itemKey) !== '[object Undefined]' ? String(itemKey) : String(index);
+      const { key } = ele;
       const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele, {
-        itemKey: key,
+        itemKey: key!,
         isActive,
         animated,
         onChange: disabled ? () => { } : () => this.onChange(onChange, key),

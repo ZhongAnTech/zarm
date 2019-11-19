@@ -19,7 +19,6 @@ export interface PopupProps extends PropsType {
 const popupStyles = StyleSheet.create<any>(popupStyle);
 
 export default class Popup extends PureComponent<PopupProps, any> {
-  private timer: number;
 
   static defaultProps = {
     visible: false,
@@ -28,6 +27,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
     stayTime: 3000,
     animationDuration: 200,
     destroy: true,
+    disableBodyScroll: true,
     styles: popupStyles,
   };
 
@@ -58,12 +58,14 @@ export default class Popup extends PureComponent<PopupProps, any> {
     // }
   }
 
-  componentWillReceiveProps(nextProps) {
-    clearTimeout(this.timer);
-    if (nextProps.visible) {
-      this.enter(nextProps);
-    } else {
-      this.leave(nextProps);
+  componentDidUpdate(nextProps) {
+    const { props } = this;
+    if (nextProps.visible !== props.visible) {
+      if (props.visible) {
+        this.enter(props);
+      } else {
+        this.leave(props);
+      }
     }
   }
 
