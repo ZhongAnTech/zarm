@@ -157,7 +157,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
         style={inputStyle}
         keyboardType="numeric"
         value={this.state.value.toString()}
-        onChangeText={value => this.onInputChange(value)}
+        onChangeText={(value) => this.onInputChange(value)}
         onEndEditing={() => this.onInputBlur(this.state.value)}
         editable={!disabled}
         underlineColorAndroid="transparent"

@@ -35,13 +35,13 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { value } = this.state;
-    if ('value' in nextProps && value !== nextProps.value) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps) {
+    if ('value' in nextProps) {
+      return {
         value: nextProps.value,
-      });
+      };
     }
+    return null;
   }
 
   componentWillUnmount() {
@@ -65,7 +65,6 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   onBlur = (e) => {
     const { onBlur } = this.props;
     const { value } = e.target;
-
     this.onBlurTimeout = setTimeout(() => {
       if (!this.blurFromClear && document.activeElement !== this.input) {
         this.setState({
@@ -77,7 +76,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
         }
       }
       this.blurFromClear = false;
-    }, 0);
+    }, 200);
   };
 
   onChange = (e) => {

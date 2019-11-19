@@ -12,26 +12,21 @@
   -webkit-overflow-scrolling: touch;
   user-select: none;
   overflow: auto;
-  z-index: var(--zindex-modal);
+  // z-index: var(--zindex-modal);
 
-  @include m(radius) {
-    @include e(dialog) {
-      border-radius: var(--radius-md);
-    }
-  }
-
-  @include e(wrapper) {
-    width: 100%;
-    margin: auto 0;
-  }
-
-  @include e(dialog) {
+  @include b(popup) {
     position: relative;
     margin: r(60) auto;
     background-color: var(--modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
-    z-index: calc(var(--zindex-modal) + 1);
+    // z-index: calc(var(--zindex-modal) + 1);
+  }
+
+  @include m(radius) {
+    @include b(popup) {
+      border-radius: var(--radius-md);
+    }
   }
 
   @include e(header) {
@@ -51,7 +46,6 @@
       right: r(15);
       line-height: r(15);
       color: #ccc;
-      font-size: r(20);
       cursor: pointer;
 
       &:hover {
@@ -63,18 +57,18 @@
   @include e(body) {
     font-size: r(15);
     color: var(--color-text-caption);
-    padding: r(15);
+    padding: r(20);
     overflow: auto;
     user-select: auto;
   }
 
   @include e(footer) {
     display: flex;
+    padding: 0 r(15) r(20);
     width: 100%;
 
-    @include m(block) {
-      flex-direction: column;
-    }
+    // @include m(block) {
+    //   flex-direction: column;
+    // }
   }
 }
-

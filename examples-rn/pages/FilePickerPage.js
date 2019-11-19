@@ -88,8 +88,8 @@ export default class FilePickerPage extends React.Component {
           style={[
             styles.avatar,
             styles.pickerItem,
-            { marginBottom: 20 }]
-          }
+            { marginBottom: 20 },
+          ]}
         >
           <Image
             style={styles.avatar}

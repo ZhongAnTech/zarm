@@ -1,6 +1,8 @@
-import { BasePickerProps } from '../picker/PropsType';
+import BasePickerProps from '../picker/PropsType';
 
-export interface BaseSelectProps extends BasePickerProps {
+type pickerPropsWithoutVisible = Omit<BasePickerProps, 'visible'>;
+
+export default interface BaseSelectProps extends pickerPropsWithoutVisible {
   placeholder?: string;
   displayRender?: (data?: object) => string;
 }

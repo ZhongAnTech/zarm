@@ -1,4 +1,4 @@
-@keyframes fade-enter {
+@keyframes za-fade-enter {
   from {
     opacity: 0;
   }
@@ -8,11 +8,11 @@
   }
 }
 
-.fade-enter {
-  animation: fade-enter both ease-in;
+.za-fade-enter {
+  animation: za-fade-enter both ease-in;
 }
 
-@keyframes fade-leave {
+@keyframes za-fade-leave {
   from {
     opacity: 1;
   }
@@ -22,6 +22,6 @@
   }
 }
 
-.fade-leave {
-  animation: fade-leave both ease-out;
+.za-fade-leave {
+  animation: za-fade-leave both ease-out;
 }

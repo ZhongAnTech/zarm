@@ -7,28 +7,27 @@
 import { Switch, Cell } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: false,
-    };
-  }
+  state = {
+    value: false,
+  };
 
-  toggle(value) {
+  toggle = (value) => {
     this.setState({
       value,
     });
+    console.log(value);
   }
 
   render() {
     return (
-      <div>
+      <>
         <Cell
           description={
             <Switch
               checked={this.state.value}
               onChange={(value) => {
                 this.setState({ value });
+                console.log(value);
               }}
             />
           }
@@ -38,7 +37,7 @@ class Demo extends React.Component {
         <Cell description={<Switch defaultChecked />}>默认开</Cell>
         <Cell description={<Switch disabled />}>禁用的开关（默认关）</Cell>
         <Cell description={<Switch defaultChecked disabled />}>禁用的开关（默认开）</Cell>
-      </div>
+      </>
     )
   }
 }

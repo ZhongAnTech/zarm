@@ -7,12 +7,9 @@
 import { Cell, FilePicker, Icon } from 'zarm';
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      files: [],
-    };
-  }
+  state = {
+    files: [],
+  };
 
   onSelect(file) {
     console.log(file);
@@ -33,7 +30,7 @@ class Demo extends React.Component {
             className="file-picker-btn"
             onChange={selected => this.onSelect(selected)}
           >
-            <Icon type="add" />
+            <Icon type="add" size="lg" />
           </FilePicker>
         </div>
       </div>
@@ -52,17 +49,14 @@ import { Cell, FilePicker, Icon, Toast, Badge } from 'zarm';
 
 const MAX_FILES_COUNT = 5;
 
-function onBeforeSelect() {
+const onBeforeSelect = () => {
   alert('执行 onBeforeSelect 方法');
 }
 
 class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      files: [],
-    };
-  }
+  state = {
+    files: [],
+  };
 
   onSelect(selFiles) {
     let { files } = this.state;
@@ -91,7 +85,7 @@ class Demo extends React.Component {
           sup
           className="file-picker-item"
           shape="circle"
-          text={<Icon type="wrong" />}
+          text={<Icon type="wrong-round-fill" size="sm" theme="danger" />}
           onClick={() => this.remove(index)}
         >
           <div className="file-picker-item-img">
@@ -118,7 +112,7 @@ class Demo extends React.Component {
                 onBeforeSelect={onBeforeSelect}
                 onChange={selected => this.onSelect(selected)}
               >
-                <Icon type="add" />
+                <Icon type="add" size="lg" />
               </FilePicker>
             )
           }
@@ -137,19 +131,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { FilePicker, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div className="file-picker-wrapper">
-        <FilePicker className="file-picker-btn" disabled>
-          <Icon type="add" />
-        </FilePicker>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <div className="file-picker-wrapper">
+    <FilePicker className="file-picker-btn" disabled>
+      <Icon type="add" size="lg" />
+    </FilePicker>
+  </div>
+, mountNode);
 ```
 
 

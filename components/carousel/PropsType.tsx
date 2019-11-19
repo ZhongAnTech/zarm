@@ -6,6 +6,7 @@ export default interface PropsType {
   loop?: boolean;
   activeIndex?: number;
   animationDuration?: number;
+  swipeable?: boolean;
   autoPlay?: boolean;
   autoPlayIntervalTime?: number;
   moveDistanceRatio?: number;

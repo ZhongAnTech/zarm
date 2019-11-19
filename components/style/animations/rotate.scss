@@ -1,19 +1,4 @@
-@keyframes rotate360 {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.rotate360 {
-  animation: rotate360 1s linear infinite;
-}
-
-/* rotate */
-@keyframes rotate-enter {
+@keyframes za-rotate-enter {
   from {
     transform-origin: center;
     transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
@@ -25,11 +10,11 @@
   }
 }
 
-.rotate-enter {
-  animation: rotate-enter both;
+.za-rotate-enter {
+  animation: za-rotate-enter both;
 }
 
-@keyframes rotate-leave {
+@keyframes za-rotate-leave {
   from {
     transform-origin: center;
   }
@@ -40,6 +25,6 @@
   }
 }
 
-.rotate-leave {
-  animation: rotate-leave both;
+.za-rotate-leave {
+  animation: za-rotate-leave both;
 }

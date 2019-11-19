@@ -1,4 +1,4 @@
 import DateSelect from './DateSelect';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
+import LocaleReceiver from '../locale-receiver';
 
-export default LocaleReceiver(DateSelect, 'DateSelect');
+export default LocaleReceiver('DateSelect')(DateSelect);

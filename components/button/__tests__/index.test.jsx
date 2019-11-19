@@ -79,7 +79,7 @@ describe('Button', () => {
   });
 
   it('href and target', () => {
-    const wrapper = render(<Button href="https://zarm.design" target="__blank">foo</Button>);
+    const wrapper = render(<Button href="https://zarm.design" target="_blank">foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

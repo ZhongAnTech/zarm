@@ -8,7 +8,7 @@
   @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
 
   // 文字色
-  --color-text: #464646;                    // 基本
+  --color-text: #343434;                    // 基本
   --color-text-inverse: #fff;               // 反色
   --color-text-placeholder: #a9a9a9;        // 文本框提示
   --color-text-disabled: #bcbcbc;           // 失效
@@ -25,7 +25,8 @@
   --border-disabled: #bcbcbc;
 
   // 圆角
-  --radius-sm: 2px;
+  --radius-xs: 4px;
+  --radius-sm: 4px;
   --radius-md: 4px;
   --radius-lg: 8px;
   --radius-round: 1000px;
@@ -52,10 +53,7 @@
 
   // 堆叠顺序
   --zindex-mask: 1000;
-  --zindex-popup: 1300;
-  --zindex-modal: 1400;
-  --zindex-toast: 1500;
-  --zindex-loading: 1500;
+  --zindex-popup: 1500;
   --zindex-tooltip: 1500;
 
   // 透明度
@@ -119,6 +117,7 @@
   --button-default-ghost-color: var(--color-text-inverse);
   --button-default-ghost-active-border: var(--theme-default);
   --button-default-ghost-active-color: var(--theme-default);
+  --button-default-shadow-color: rgba(230, 230, 230, 0.3);
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);
   --button-primary-color: var(--color-text-inverse);
@@ -129,6 +128,7 @@
   --button-primary-ghost-color: var(--theme-primary);
   --button-primary-ghost-active-border: var(--theme-primary-dark);
   --button-primary-ghost-active-color: var(--theme-primary-dark);
+  --button-primary-shadow-color: rgba(0, 188, 112, 0.3);
   --button-danger-background: var(--theme-danger);
   --button-danger-border: var(--theme-danger);
   --button-danger-color: var(--color-text-inverse);
@@ -139,6 +139,7 @@
   --button-danger-ghost-color: var(--theme-danger);
   --button-danger-ghost-active-border: var(--theme-danger-dark);
   --button-danger-ghost-active-color: var(--theme-danger-dark);
+  --button-danger-shadow-color: rgba(255, 80, 80, 0.3);
 
   // Calendar
   --calendar-height: 45px; // 最小高度
@@ -155,6 +156,7 @@
   --calendar-day-today-color: var(--theme-primary); // 日期今天选中颜色
   --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
   --calendar-day-selected-color: #fff; // 日期文字选中颜色
+  --calendar-day-selected-shadow: rgba(0, 188, 112, 0.3);
   --calendar-day-range-background: var(--theme-primary-lighter); // 日期文字范围内背景颜色
   --calendar-day-range-color: var(--theme-primary); // 日期文字范围内颜色
   --calendar-day-height: 40px; // 日期高度
@@ -185,7 +187,10 @@
   --cell-arrow-border-width: 2px;                         // 箭头粗细
 
   // Checkbox
-  --checkbox-size: 20px;
+  --checkbox-size: 18px;
+  --checkbox-radius: var(--radius-md);
+  --checkbox-border-color: #bcbcbc;
+  --checkbox-color: #909090;
 
   // Collapse
   --collapse-height: 52px;
@@ -203,7 +208,7 @@
   --input-cursor-color: #597cf6;
   --input-cursor-width: 2px;
   --input-cursor-height: 22px;
-  --input-selection-color: alpha(--theme-primary, 0.2);
+  --input-selection-color: alpha(var(--theme-primary), 0.2);
   --input-length-count-color: var(--color-text-disabled);
   --input-height: 28px;
   --input-line-height: var(--cell-title-line-height);
@@ -211,13 +216,14 @@
   // Keyboard
   --keyboard-item-height: 52px;
   --keyboard-item-font-size: 30px;
-  --keyboard-icon-font-size: 21px;
 
   // Message
   --message-min-height-md: 29px;
   --message-min-height-lg: 40px;
   --message-font-size-md: 12px;
   --message-font-size-lg: 14px;
+  --message-icon-size-md: 14px;
+  --message-icon-size-lg: 16px;
   --message-padding-v-md: 6px;
   --message-padding-h-md: 8px;
   --message-padding-v-lg: 8px;
@@ -255,12 +261,24 @@
   --pull-control-font-size: 14px;
 
   // Radio
-  --radio-size: 20px;
+  --radio-size: 18px;
+  --radio-radius: var(--radius-round);
+  --radio-border-color: #bcbcbc;
+  --radio-color: #909090;
+
+  // SearchBar
+  --search-bar-font-size: 14px;
+  --search-bar-icon-size: 18px;
 
   // Slider
   --slider-line-background: #e6e6e6;
   --slider-line-height: 2px;
-  --slider-handle-size: 28px;
+  --slider-line-dot-width: 6px;
+  --slider-vertical-line-width: 2px;
+  --slider-handle-size: 24px;
+  --slider-handle-size-small: 16px;
+  --slider-mark-handle: 24px;
+  --slider-mark-size: 15px;
   --slider-handle-background: #fff;
   --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
@@ -296,7 +314,6 @@
   --toast-border-radius: 6px;
   --toast-color: var(--color-text-inverse);
   --toast-font-size: 13px;
-  --toast-max-width: 70%;
 
   // Tooltip
   --tooltip-font-size: 12px;
@@ -305,8 +322,21 @@
   --tooltip-padding-v: var(--padding-v-xs);
   --tooltip-padding-h: var(--padding-h-xs);
 
+  // Tabbar
+  --tabbar-height: 50px;
+  --tabbar-hidden-bottom: -50px;
+  --tabbar-background: #fff;
+  --tabbar-item-font-size: 12px;
+  --tabbar-item-active-color: var(--theme-primary);
+
   // Wheel
   --wheel-item-height: 34px;
   --wheel-item-rows: 5;
   --wheel-item-font-size: 18px;
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
 }

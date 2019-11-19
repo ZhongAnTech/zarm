@@ -1,9 +1,11 @@
 @import "../../style/core/index";
+@import '../../button/style/mixins';
 
 @include b(checkbox) {
   display: inline-block;
   position: relative;
   margin-left: r(10);
+  color: var(--color-text);
 
   &:first-child {
     margin-left: 0;
@@ -24,7 +26,6 @@
   }
 
   @include e(text) {
-    color: var(--color-text);
     margin-left: r(10);
   }
 
@@ -34,18 +35,18 @@
     justify-content: center;
     width: var(--checkbox-size);
     height: var(--checkbox-size);
-    border: 1px solid #999;
-    border-radius: var(--checkbox-size);
-    background: #fff;
+    border: 1px solid var(--checkbox-border-color);
+    border-radius: var(--checkbox-radius);
+    background: var(--color-text-inverse);
 
     &:before {
       content: '';
       width: calc(var(--checkbox-size) / 3.5);
       height: calc(var(--checkbox-size) / 2);
-      border: r(2) solid var(--theme-primary);
+      border: calc(var(--checkbox-size) / 9) solid var(--color-text-inverse);
       border-top: 0;
       border-left: 0;
-      margin-top: r(-2);
+      margin-top: calc(var(--checkbox-size) / -9);
       transform: rotate(45deg) scale(0);
       transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
@@ -55,6 +56,7 @@
   @include m(checked) {
     @include e(inner) {
       border-color: var(--theme-primary);
+      background-color: var(--theme-primary);
 
       &:before {
         transform: rotate(45deg) scale(1);
@@ -66,16 +68,20 @@
   /* 禁用状态 */
   @include m(disabled) {
     @include e(inner) {
-      border-color: var(--border-disabled);
+      opacity: var(--opacity-disabled);
       cursor: not-allowed;
-
-      &:before {
-        border-color: var(--border-disabled);
-      }
     }
 
     @include e(text) {
       color: var(--color-text-disabled);
+    }
+
+    @include m(checked) {
+      @include e(inner) {
+        color: var(--color-text-inverse);
+        border-color: var(--border-disabled);
+        background-color: var(--background-disabled);
+      }
     }
   }
 }
@@ -83,39 +89,76 @@
 @include b(checkbox-group) {
   @include m(block) {
     display: flex;
+
+    @include b(checkbox) {
+      width: 100%;
+    }
   }
 
-  @include m(compact) {
+  // 按钮样式
+  @include m(button) {
+    @include b(checkbox) {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      @include button-base();
+      @include button-shape(var(--radius-xs));
+      @include button-size(
+        var(--button-height-xs),
+        var(--button-padding-h-xs),
+        var(--button-font-size-xs),
+        var(--button-icon-size-xs),
+      );
+      @include button-ghost(
+        var(--checkbox-border-color),
+        var(--checkbox-color),
+        var(--checkbox-border-color),
+        var(--checkbox-color),
+      );
+
+      @include e(text) {
+        margin-left: 0;
+      }
+
+      @include m(checked) {
+        border-color: var(--button-primary-border);
+        background-color: var(--button-primary-background);
+        color: var(--color-text-inverse);
+
+        @include m(disabled) {
+          border-color: var(--button-primary-border);
+          background-color: var(--button-primary-background);
+          color: var(--color-text-inverse);
+
+          @include e(text) {
+            color: var(--color-text-inverse);
+          }
+        }
+      }
+    }
+
+    @include m(rect) {
+      @include b(checkbox) {
+        @include button-shape(0);
+      }
+    }
+
     @include m(radius) {
-      @include b(button) {
-        border-radius: 0;
-
-        &:first-child {
-          border-radius: var(--radius-md) 0 0 var(--radius-md);
-        }
-
-        &:last-child {
-          border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
+      @include b(checkbox) {
+        @include button-shape(var(--radius-md));
       }
     }
 
     @include m(round) {
-      @include b(button) {
-        border-radius: 0;
-
-        &:first-child {
-          border-radius: var(--radius-round) 0 0 var(--radius-round);
-        }
-
-        &:last-child {
-          border-radius: 0 var(--radius-round) var(--radius-round) 0;
-        }
+      @include b(checkbox) {
+        @include button-shape(var(--radius-round));
       }
     }
 
-    @include b(button) {
-      margin-left: -1px;
+    @include m(circle) {
+      @include b(checkbox) {
+        @include button-shape(var(--radius-circle));
+      }
     }
   }
 }

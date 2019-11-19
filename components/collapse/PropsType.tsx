@@ -6,16 +6,15 @@ export interface BaseCollapseProps {
   multiple?: boolean;
   animated?: boolean;
   style?: CSSProperties;
-  onChange: (activeKey?: string | number) => void;
+  onChange: (activeKey?: string[] | number[]) => void;
 }
 
 export interface BaseCollapseItemProps {
   title?: ReactNode;
-  itemKey: string | number;
-  animated?: boolean;
+  isActive: boolean;
+  itemKey?: string | number;
   disabled?: boolean;
-  isActive?: boolean;
-  onItemChange?: (itemKey?: string | number) => void;
-  onChange?: (itemKey?: string | number) => void;
+  animated: boolean;
+  onChange?: (active?: boolean) => void;
   style?: CSSProperties;
 }

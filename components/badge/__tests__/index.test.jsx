@@ -15,7 +15,7 @@ describe('Badge', () => {
   });
 
   it('sup', () => {
-    const wrapper = render(<Badge sup />);
+    const wrapper = render(<Badge>foo</Badge>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

@@ -6,37 +6,29 @@
 ```jsx
 import { SearchBar } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <SearchBar
-          showCancel={false}
-          onSubmit={(value) => {
-            console.log(`搜索内容为${value}`);
-          }}
-          onFocus={() => {
-            console.log('获取焦点');
-          }}
-          onChange={(value) => {
-            console.log(value);
-          }}
-          onBlur={() => {
-            console.log('失去焦点');
-          }}
-          onClear={() => {
-            console.log('点击了清除');
-          }}
-          onCancel={() => {
-            console.log('点击了取消');
-          }}
-        />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <SearchBar
+    showCancel={false}
+    onSubmit={(value) => {
+      console.log(`搜索内容为${value}`);
+    }}
+    onFocus={() => {
+      console.log('获取焦点');
+    }}
+    onChange={(value) => {
+      console.log(value);
+    }}
+    onBlur={() => {
+      console.log('失去焦点');
+    }}
+    onClear={() => {
+      console.log('点击了清除');
+    }}
+    onCancel={() => {
+      console.log('点击了取消');
+    }}
+  />
+, mountNode);
 ```
 
 
@@ -46,16 +38,13 @@ ReactDOM.render(<Demo />, mountNode);
 import { SearchBar } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-    };
-  }
+  state = {
+    value: '',
+  };
 
   render() {
     return (
-      <div>
+      <>
         <SearchBar
           showCancel
           value={this.state.value}
@@ -74,7 +63,7 @@ class Demo extends React.Component {
             });
           }}
         />
-      </div>
+      </>
     )
   }
 }
@@ -88,18 +77,12 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { SearchBar } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <SearchBar shape="rect" />
-        <SearchBar shape="round" />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <SearchBar shape="rect" />
+    <SearchBar shape="round" />
+  </>
+, mountNode);
 ```
 
 
@@ -111,12 +94,12 @@ import { SearchBar, Button } from 'zarm';
 class Demo extends React.Component {
   render() {
     return (
-      <div>
+      <>
         <SearchBar ref={(ref) => { this.manualFocus = ref; }} />
         <div className="button-wrap">
           <Button theme="primary" size="xs" shape="radius" onClick={() => { this.manualFocus.focus(); }}>点击获取焦点</Button>
         </div>
-      </div>
+      </>
     )
   }
 }

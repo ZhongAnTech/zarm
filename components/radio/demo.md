@@ -6,20 +6,14 @@
 ```jsx
 import { Radio, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell><Radio>普通</Radio></Cell>
-        <Cell><Radio defaultChecked>默认选中</Radio></Cell>
-        <Cell><Radio disabled>禁用</Radio></Cell>
-        <Cell><Radio defaultChecked disabled>选中且禁用</Radio></Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell><Radio>普通</Radio></Cell>
+    <Cell><Radio defaultChecked>默认选中</Radio></Cell>
+    <Cell><Radio disabled>禁用</Radio></Cell>
+    <Cell><Radio defaultChecked disabled>选中且禁用</Radio></Cell>
+  </>
+, mountNode);
 ```
 
 
@@ -29,22 +23,22 @@ ReactDOM.render(<Demo />, mountNode);
 import { Radio, Cell } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      radio: '0',
-    };
-  }
+  state = {
+    radio: '0',
+  };
 
   render() {
     return (
-      <div>
+      <>
         <Cell
           description={
             <Radio.Group
               type="button"
               value={this.state.radio}
-              onChange={value => console.log(`radio to ${value}`)}
+              onChange={value => {
+                this.setState({ radio: value });
+                console.log(`radio to ${value}`)
+              }}
             >
               <Radio value="0">选项一</Radio>
               <Radio value="1">选项二</Radio>
@@ -71,8 +65,8 @@ class Demo extends React.Component {
           description={
             <Radio.Group type="button">
               <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2" disabled>选项三</Radio>
+              <Radio value="1" disabled>选项二</Radio>
+              <Radio value="2" disabled checked>选项三</Radio>
             </Radio.Group>
           }
         >
@@ -102,7 +96,7 @@ class Demo extends React.Component {
         >
           椭圆角
         </Cell>
-      </div>
+      </>
     )
   }
 }
@@ -116,21 +110,15 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Radio } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div className="block-box">
-        <Radio.Group block compact type="button" shape="radius">
-          <Radio value="0">选项一</Radio>
-          <Radio value="1">选项二</Radio>
-          <Radio value="2">选项三</Radio>
-        </Radio.Group>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <div className="block-box">
+    <Radio.Group block type="button" shape="radius">
+      <Radio value="0">选项一</Radio>
+      <Radio value="1">选项二</Radio>
+      <Radio value="2">选项三</Radio>
+    </Radio.Group>
+  </div>
+, mountNode);
 ```
 
 
@@ -139,21 +127,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Radio } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Radio.Group type="cell">
-          <Radio value="0">选项一</Radio>
-          <Radio value="1">选项二</Radio>
-          <Radio value="2" disabled>选项三（禁止选择）</Radio>
-        </Radio.Group>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Radio.Group type="cell">
+    <Radio value="0">选项一</Radio>
+    <Radio value="1">选项二</Radio>
+    <Radio value="2" disabled>选项三（禁止选择）</Radio>
+  </Radio.Group>
+, mountNode);
 ```
 
 
@@ -162,21 +142,13 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Radio } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Radio.Group disabled type="cell">
-          <Radio value="0">选项一</Radio>
-          <Radio value="1">选项二</Radio>
-          <Radio value="2">选项三</Radio>
-        </Radio.Group>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Radio.Group disabled type="cell">
+    <Radio value="0">选项一</Radio>
+    <Radio value="1">选项二</Radio>
+    <Radio value="2">选项三</Radio>
+  </Radio.Group>
+, mountNode);
 ```
 
 
@@ -203,5 +175,4 @@ ReactDOM.render(<Demo />, mountNode);
 | shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | block | boolean | false | 是否为块级元素 |
 | disabled | boolean | false | 是否禁用 |
-| compact | boolean | false | 是否启用紧凑模式 |
 | onChange | (value?: string \| number) => void | - | 值变化时触发的回调函数 |

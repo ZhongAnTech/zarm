@@ -21,7 +21,7 @@ export default class Page extends PureComponent {
 
     return (
       <View style={{ padding: 15 }}>
-        <Stepper style={styles.mb} value={value} onChange={v => console.log(v)} />
+        <Stepper style={styles.mb} value={value} onChange={(v) => console.log(v)} />
         <Stepper style={styles.mb} defaultValue={2} />
         <Stepper style={styles.mb} max={3} min={-3} />
         <Stepper style={styles.mb} step={5} />

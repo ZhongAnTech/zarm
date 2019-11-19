@@ -6,7 +6,7 @@ import isImage from './isImage';
  * @param file
  * @returns {{fileName, fileSize, fileType: string, isPic: boolean}}
  */
-export default function getFileDetail(file) {
+export default function getFileDetail(file: File) {
   const fileSize = file.size;
 
   const fileName = file.name;

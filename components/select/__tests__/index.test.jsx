@@ -36,22 +36,6 @@ describe('Select', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('Select disable visible', () => {
-    const wrapper = mount(
-      <Select
-        disabeld
-        visible={false}
-        dataSource={[
-          { value: '1', label: '选项一' },
-          { value: '2', label: '选项二' },
-        ]}
-      />,
-    );
-    wrapper.find('.za-select').simulate('click');
-    expect(wrapper.props().visible).toBeFalsy();
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
   it('render defaultValue correctly ', () => {
     const wrapper = mount(
       <Select
@@ -224,15 +208,15 @@ describe('Select', () => {
             ],
           },
         ]}
-        visible
         value={['1', '12']}
         onOk={onOkFn}
         onCancel={onCancelFn}
       />,
     );
 
+    wrapper.find('.za-select').simulate('click');
+    jest.useFakeTimers();
     wrapper.find('.za-picker__submit').simulate('click');
-    wrapper.find('.za-picker').simulate('click');
     expect(onOkFn).toBeCalled();
     expect(onCancelFn).not.toBeCalled();
   });
@@ -261,13 +245,13 @@ describe('Select', () => {
             ],
           },
         ]}
-        visible
         defaultValue={['1', '12']}
         onOk={onOkFn}
         onCancel={onCancelFn}
       />,
     );
-
+    wrapper.find('.za-select').simulate('click');
+    jest.useFakeTimers();
     wrapper.find('.za-picker__cancel').simulate('click');
     expect(onCancelFn).toBeCalled();
     expect(onOkFn).not.toBeCalled();

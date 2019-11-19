@@ -9,6 +9,7 @@
 .stylelintrc
 .travis.yml
 *.log
+netlify.toml
 yarn.lock
 node_modules
 tsconfig.json

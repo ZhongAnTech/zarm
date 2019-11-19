@@ -1,4 +1,4 @@
-import React, { Component, CSSProperties, ReactPortal } from 'react';
+import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
@@ -7,56 +7,55 @@ import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
+function canUseDOM() {
+  return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+}
+
 export interface PortalProps extends PropsType {
   prefixCls?: string;
   className?: string;
   handlePortalUnmount?: () => void;
 }
 
-export default class Portal extends Component<PortalProps, any> {
+export default class Portal extends PureComponent<PortalProps, any> {
+  private enterTimer: number;
+
+  private parent: HTMLElement;
+
+  private _container: HTMLDivElement;
+
+  private popup: HTMLDivElement | null;
+
   static defaultProps = {
     prefixCls: 'za-popup',
     visible: false,
     mask: true,
     direction: 'bottom',
-    autoClose: false,
-    stayTime: 3000,
+    animationType: 'fade',
     animationDuration: 200,
     maskType: Mask.defaultProps.type,
   };
 
-  private timer: number;
-
-  private popup;
-
-  private _container;
-
   constructor(props) {
     super(props);
     this.state = {
-      isShow: false,
-      isMaskShow: false,
       isPending: false,
-      animationState: 'enter',
-      mounted: false,
     };
+    this.createContainer();
   }
 
   componentDidMount() {
-    const { visible } = this.props;
-    if (visible) {
-      this.showPortal();
-    }
+    Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
+    Events.on(this.popup, 'transitionend', this.animationEnd);
+    Events.on(this.popup, 'webkitAnimationEnd', this.animationEnd);
+    Events.on(this.popup, 'animationend', this.animationEnd);
+    this.handleAnimation();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { visible } = this.props;
-    if (nextProps.visible === true && nextProps.visible !== visible) {
-      this.showPortal();
-    }
-
-    if (nextProps.visible === false && nextProps.visible !== visible) {
-      this.leave();
+    if (prevProps.visible !== visible) {
+      this.handleAnimation();
     }
   }
 
@@ -64,155 +63,214 @@ export default class Portal extends Component<PortalProps, any> {
     if (this.popup) {
       Events.off(this.popup, 'webkitTransitionEnd', this.animationEnd);
       Events.off(this.popup, 'transitionend', this.animationEnd);
+      Events.off(this.popup, 'webkitAnimationEnd', this.animationEnd);
+      Events.off(this.popup, 'animationend', this.animationEnd);
+    }
+
+    clearTimeout(this.enterTimer);
+    if (this._container) {
+      this.parent.removeChild(this._container);
     }
   }
 
-  showPortal = () => {
-    this.createContainer();
-    this.setState({
-      mounted: true,
-    }, () => {
-      Events.on(this.popup, 'webkitTransitionEnd', this.animationEnd);
-      Events.on(this.popup, 'transitionend', this.animationEnd);
-      setTimeout(() => { this.enter(); }, 0);
-    });
-  };
-
-  enter = () => {
-    const { stayTime, autoClose, onMaskClick } = this.props;
-    this.setState({
-      isShow: true,
-      isMaskShow: true,
-      isPending: true,
-      animationState: 'enter',
-    });
-
-    if ((stayTime as number) > 0 && autoClose) {
-      this.timer = setTimeout(() => {
-        if (typeof onMaskClick === 'function') {
-          onMaskClick();
-        }
-        clearTimeout(this.timer);
-      }, stayTime);
+  getParent = () => {
+    const { getContainer } = this.props;
+    if (getContainer) {
+      if (typeof getContainer === 'function') {
+        return getContainer();
+      }
+      if (
+        typeof getContainer === 'object'
+        && getContainer instanceof HTMLElement
+      ) {
+        return getContainer;
+      }
     }
-  };
-
-  leave = () => {
-    this.setState({
-      isShow: false,
-      isPending: true,
-      animationState: 'leave',
-    });
+    return document.body;
   };
 
   animationEnd = (e) => {
-    // 防止其他的样式转换触发该事件，如border、background-image
-    if (!/transform/i.test(e.propertyName)) {
-      return;
-    }
-
-    const { onClose, onOpen, handlePortalUnmount } = this.props;
-    const { animationState } = this.state;
-
+    e.stopPropagation();
+    const { afterClose, afterOpen, handlePortalUnmount, visible, prefixCls } = this.props;
+    const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
-      this.setState({
-        isMaskShow: false,
-      });
-      if (typeof onClose === 'function') {
-        onClose();
+      this._container.classList.add(`${prefixCls}--hidden`);
+      if (typeof afterClose === 'function') {
+        afterClose();
       }
       if (typeof handlePortalUnmount === 'function') {
         handlePortalUnmount();
-        document.body.removeChild(this._container);
       }
-    } else if (typeof onOpen === 'function') {
-      onOpen();
+    } else if (typeof afterOpen === 'function') {
+      afterOpen();
     }
   };
 
   renderMask = () => {
-    const { mask, maskType, animationDuration } = this.props;
-    const { isPending, animationState, isMaskShow } = this.state;
-
+    const { mask, maskType, animationDuration, visible } = this.props;
+    const { isPending } = this.state;
+    const animationState = visible ? 'enter' : 'leave';
     const maskCls = classnames({
-      [`fade-${animationState}`]: isPending,
+      [`za-fade-${animationState}`]: isPending,
     });
 
     const maskStyle: CSSProperties = {
       WebkitAnimationDuration: `${animationDuration}ms`,
       animationDuration: `${animationDuration}ms`,
     };
-
-    return mask && (
-      <Mask
-        className={maskCls}
-        style={maskStyle}
-        visible={isMaskShow}
-        type={maskType}
-        onClick={(e) => { this.handleMaskClick(e); }}
-      />
-    );
-  };
-
-  createContainer = () => {
-    if (!this._container) {
-      this._container = document.createElement('div');
-      this._container.className += ' popup-container';
-      document.body.appendChild(this._container);
-    }
-    return this._container;
-  };
-
-  getComponent = () => {
-    const { prefixCls, className, animationDuration, direction, mask, children } = this.props;
-    const { isShow } = this.state;
-
-    const popupCls = classnames(prefixCls, className, {
-      [`${prefixCls}--${direction}`]: !!direction,
-      [`${prefixCls}--mask`]: mask,
-      [`${prefixCls}--hidden`]: !isShow,
-    });
-
-    const wrapStyle = {
-      WebkitTransitionDuration: `${animationDuration}ms`,
-      transitionDuration: `${animationDuration}ms`,
-    };
-
     return (
-      <div
-        role="dialog"
-        className={popupCls}
-        ref={(popup) => { this.popup = popup; }}
-      >
-        <div className={`${prefixCls}__wrapper`} style={wrapStyle} role="document">
-          {children}
-        </div>
-        {this.renderMask()}
-      </div>
+      mask && (
+        <Mask
+          className={maskCls}
+          style={maskStyle}
+          visible
+          type={maskType}
+        />
+      )
     );
   };
 
   handleMaskClick = (e) => {
     e.stopPropagation();
     const { onMaskClick } = this.props;
-    if (typeof onMaskClick === 'function') {
+    if (typeof onMaskClick === 'function' && this.popup !== e.target && this.popup && !this.popup.contains(e.target)) {
       onMaskClick();
     }
   };
 
+  getComponent = () => {
+    const {
+      prefixCls,
+      className,
+      animationType,
+      animationDuration,
+      direction,
+      mask,
+      children,
+      width,
+      visible,
+    } = this.props;
+    const { isPending } = this.state;
+    const animationState = visible ? 'enter' : 'leave';
+
+    const cls = {
+      wrapper: classnames(`${prefixCls}__wrapper`, className, {
+        [`za-fade-${animationState}`]: direction === 'center' && isPending,
+      }),
+      popup: classnames(prefixCls, {
+        [`${prefixCls}--${direction}`]: !!direction,
+        [`${prefixCls}--nomask`]: direction === 'center' && !mask,
+        [`za-${animationType}-${animationState}`]:
+          direction === 'center' && isPending,
+      }),
+    };
+
+    const wrapStyle: CSSProperties = direction === 'center'
+      ? {
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      }
+      : {};
+
+    const popupStyle: CSSProperties = direction === 'center'
+      ? {
+        width,
+        WebkitAnimationDuration: `${animationDuration}ms`,
+        animationDuration: `${animationDuration}ms`,
+      }
+      : {
+        WebkitTransitionDuration: `${animationDuration}ms`,
+        transitionDuration: `${animationDuration}ms`,
+        WebkitTransitionProperty: 'transform',
+        transitionProperty: 'transform',
+      };
+
+    if (!mask) {
+      return (
+        <div
+          className={cls.popup}
+          style={popupStyle}
+          role="dialog"
+          ref={(ref) => {
+            this.popup = ref;
+          }}
+        >
+          {children}
+        </div>
+      );
+    }
+
+    return (
+      <>
+        {this.renderMask()}
+        <div
+          role="dialog"
+          className={cls.wrapper}
+          style={wrapStyle}
+          onClick={(e) => {
+            this.handleMaskClick(e);
+          }}
+        >
+          <div
+            ref={(ref) => {
+              this.popup = ref;
+            }}
+            className={cls.popup}
+            style={popupStyle}
+            role="document"
+          >
+            {children}
+          </div>
+        </div>
+      </>
+    );
+  };
+
+  handleAnimation = () => {
+    const { visible, prefixCls } = this.props;
+    if (visible) {
+      if (this.popup) {
+        this._container.classList.remove(`${prefixCls}--hidden`);
+        this.setState({
+          isPending: true,
+        });
+        this.popup.focus();
+        this.popup.classList.add(`${prefixCls}--show`);
+      }
+    } else {
+      this.setState({
+        isPending: true,
+      });
+      this.popup!.classList.remove(`${prefixCls}--show`);
+    }
+  };
+
   renderPortal = (): ReactPortal | null => {
+    if (!canUseDOM()) {
+      return null;
+    }
     if (!IS_REACT_16) {
-      ReactDOM.unstable_renderSubtreeIntoContainer(this, this.getComponent(), this._container);
+      ReactDOM.unstable_renderSubtreeIntoContainer(
+        this,
+        this.getComponent(),
+        this._container,
+      );
       return null;
     }
     return ReactDOM.createPortal(this.getComponent(), this._container);
   };
 
-  render() {
-    const { mounted } = this.state;
-    if (!mounted) {
-      return null;
+  createContainer = () => {
+    if (!this._container) {
+      this._container = document.createElement('div');
+      this._container.className += 'popup-container';
+      this.parent = this.getParent();
+      this.parent.appendChild(this._container);
     }
+    return this._container;
+  };
+
+  render() {
     return this.renderPortal();
   }
 }

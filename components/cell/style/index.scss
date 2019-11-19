@@ -8,6 +8,11 @@
   @include cell-theme(var(--cell-description-color));
   @include onepx(top);
 
+  // SwipeAction will hidden one px line
+  // &:first-of-type:after {
+  //   border-top: none;
+  // }
+
   &:after {
     left: var(--cell-line-padding-left);
   }
@@ -117,6 +122,9 @@
   @include m(disabled) {
     @include e(body, footer) {
       color: var(--color-text-disabled);
+      @include b(icon) {
+        color: var(--color-text-disabled);
+      }
     }
   }
 }

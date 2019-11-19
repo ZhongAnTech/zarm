@@ -1,44 +1,46 @@
 import React, { PureComponent, MouseEventHandler, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import BasePropsType from './PropsType';
 import ActivityIndicator from '../activity-indicator';
 
-export interface BaseButtonPropsType extends PropsType {
+interface BaseButtonPropsType extends BasePropsType {
   prefixCls?: string;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
 export type AnchorButtonProps = {
-  href: string;
-  target?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
-} & BaseButtonPropsType & AnchorHTMLAttributes<HTMLAnchorElement>;
+  mimeType?: string;
+} & BaseButtonPropsType & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
 
 export type NativeButtonProps = {
   htmlType?: 'button' | 'submit' | 'reset';
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-} & BaseButtonPropsType & ButtonHTMLAttributes<HTMLButtonElement>;
+} & BaseButtonPropsType & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
 
-export type ButtonProps = AnchorButtonProps | NativeButtonProps;
+export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
 
 export default class Button extends PureComponent<ButtonProps, {}> {
-  static defaultProps = {
+  static displayName = 'Button';
+
+  static defaultProps: ButtonProps = {
     prefixCls: 'za-button',
     theme: 'default',
     size: 'md',
     shape: 'radius',
     block: false,
     ghost: false,
+    shadow: false,
     disabled: false,
     loading: false,
+    htmlType: 'button',
   };
 
-  onClick = (e) => {
+  onClick: ButtonProps['onClick'] = (e) => {
     const { disabled, onClick } = this.props;
     if (disabled) {
       return;
     }
     if (typeof onClick === 'function') {
-      (onClick as MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)(e);
+      onClick(e);
     }
   };
 
@@ -52,6 +54,7 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       icon,
       block,
       ghost,
+      shadow,
       disabled,
       loading,
       onClick,
@@ -59,12 +62,13 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       ...rest
     } = this.props;
 
-    let classes = classnames(prefixCls, className, {
+    let cls = classnames(prefixCls, className, {
       [`${prefixCls}--${theme}`]: !!theme,
       [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--${shape}`]: !!shape,
       [`${prefixCls}--block`]: !!block,
       [`${prefixCls}--ghost`]: !!ghost,
+      [`${prefixCls}--shadow`]: !!shadow,
       [`${prefixCls}--disabled`]: !!disabled,
     });
 
@@ -83,37 +87,34 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       )
       : childrenRender;
 
-    const { tabIndex, ...anchorRest } = rest as AnchorButtonProps;
-    const { htmlType = 'button', ...nativeRest } = rest as NativeButtonProps;
-
-    if (anchorRest.href !== undefined) {
-      classes = classnames(classes, `${prefixCls}--link`);
+    if ((rest as AnchorButtonProps).href !== undefined) {
+      const { htmlType, ...filteredRest } = rest;
+      const { mimeType, ...anchorRest } = filteredRest as AnchorButtonProps;
+      cls = classnames(cls, `${prefixCls}--link`);
 
       return (
         <a
-          role="button"
-          tabIndex={tabIndex}
-          aria-disabled={disabled}
-          className={classes}
-          onClick={this.onClick}
-          onTouchStart={() => {}}
           {...anchorRest}
+          type={mimeType}
+          aria-disabled={disabled}
+          className={cls}
+          onClick={this.onClick}
         >
           {contentRender}
         </a>
       );
     }
 
+    const { mimeType, target, ...filteredRest } = rest;
+    const { htmlType, ...nativeRest } = filteredRest as NativeButtonProps;
+
     return (
-      // eslint-disable-next-line
       <button
-        role="button"
-        aria-disabled={disabled}
-        type={htmlType}
-        className={classes}
-        onClick={this.onClick}
-        onTouchStart={() => {}}
         {...nativeRest}
+        type={htmlType}
+        aria-disabled={disabled}
+        className={cls}
+        onClick={this.onClick}
       >
         {contentRender}
       </button>

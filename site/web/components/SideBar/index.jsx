@@ -1,18 +1,18 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
+import ChangeCase from 'change-case';
 import { Menu } from 'dragon-ui';
 import { documents, components } from '@site/site.config';
-import Format from '@site/utils/format';
 import './style.scss';
 
 class SideBar extends PureComponent {
   getDocs = () => {
-    return documents.map(doc => (
+    return documents.map((doc) => (
       <Menu.Item
-        key={Format.camel2Dash(doc.name)}
+        key={doc.key}
       >
-        <a href={`#/components/${Format.camel2Dash(doc.name)}`}>
-          {doc.description}
+        <a href={`#/components/${doc.key}`}>
+          {doc.name}
         </a>
       </Menu.Item>
     ));
@@ -24,13 +24,13 @@ class SideBar extends PureComponent {
         {
           components[key]
             .sort((a, b) => {
-              return a.name.localeCompare(b.name);
+              return a.key.localeCompare(b.key);
             })
-            .map(component => (
-              <Menu.Item key={Format.camel2Dash(component.name)}>
-                <a href={`#/components/${Format.camel2Dash(component.name)}`}>
-                  <span>{component.name}</span>
-                  <span className="chinese">{component.description}</span>
+            .map((component) => (
+              <Menu.Item key={component.key}>
+                <a href={`#/components/${component.key}`}>
+                  <span>{ChangeCase.pascalCase(component.key)}</span>
+                  <span className="chinese">{component.name}</span>
                 </a>
               </Menu.Item>
             ))

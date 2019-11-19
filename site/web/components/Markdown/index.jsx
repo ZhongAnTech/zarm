@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
+import ChangeCase from 'change-case';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-gist.css';
+import Meta from '@site/web/components/Meta';
 import './style.scss';
 
 export default class Markdown extends Component {
   render() {
-    const { document, className } = this.props;
+    const { document, component } = this.props;
 
     if (typeof document === 'string') {
       const renderer = new marked.Renderer();
@@ -41,7 +44,15 @@ export default class Markdown extends Component {
       // };
 
       const html = marked(document, { renderer });
-      return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+      const cls = classnames(`${component.key}-page`, 'markdown');
+      const title = `${component.name} ${ChangeCase.pascalCase(component.key)} - Zarm Design`;
+
+      return (
+        <>
+          <Meta title={title} description={component.description || component.name} />
+          <div className={cls} dangerouslySetInnerHTML={{ __html: html }} />
+        </>
+      );
     }
 
     return <span />;

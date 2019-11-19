@@ -23,18 +23,18 @@ export interface WheelProps extends BaseWheelProps {
 }
 
 export default class Wheel extends Component<WheelProps, any> {
-  static defaultProps = {
-    prefixCls: 'za-wheel',
-    dataSource: [],
-    valueMember: 'value',
-    itemRender: item => item.label,
-  };
-
   private BScroll;
 
   private wrapper;
 
   private isChangedByProps;
+
+  static defaultProps = {
+    prefixCls: 'za-wheel',
+    dataSource: [],
+    valueMember: 'value',
+    itemRender: (item) => item.label,
+  };
 
   componentDidMount() {
     const { prefixCls, dataSource, disabled, onTransition, valueMember } = this.props;
@@ -57,14 +57,13 @@ export default class Wheel extends Component<WheelProps, any> {
       }
     });
     this.BScroll.on('scrollEnd', () => {
-      // eslint-disable-next-line
-      const { dataSource } = this.props;
+      const { dataSource: curDataSource } = this.props;
       if (this.isChangedByProps) {
         this.isChangedByProps = false;
         return;
       }
       const index = this.BScroll.getSelectedIndex();
-      const child = dataSource![index];
+      const child = curDataSource[index];
       onTransition!(this.BScroll.isInTransition);
       if (child) {
         this.fireValueChange(child[valueMember!]);
@@ -75,14 +74,15 @@ export default class Wheel extends Component<WheelProps, any> {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.disabled) {
-      this.BScroll.disable();
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.disabled) {
+  //     this.BScroll.disable();
+  //   }
+  // }
 
   componentDidUpdate(prevProps) {
-    const { value, dataSource } = this.props;
+    const { value, dataSource, disabled } = this.props;
+    disabled && this.BScroll.disable();
     this.BScroll.refresh();
     const oldIndex = this.getSelectedIndex(prevProps.value, prevProps.dataSource);
     const newIndex = this.getSelectedIndex(value, dataSource);

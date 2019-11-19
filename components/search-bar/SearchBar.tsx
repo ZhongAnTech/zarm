@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseSearchBarProps } from './PropsType';
+import BaseSearchBarProps from './PropsType';
 import Icon from '../icon';
 import InputBase from '../input/InputBase';
-
-let shouldUpdatePosition = false;
 
 export interface SearchBarProps extends BaseSearchBarProps {
   prefixCls?: string;
@@ -12,6 +10,12 @@ export interface SearchBarProps extends BaseSearchBarProps {
 }
 
 export default class SearchBar extends PureComponent<SearchBarProps, any> {
+  private cancelRef;
+
+  private cancelOuterWidth;
+
+  private inputRef;
+
   static defaultProps = {
     prefixCls: 'za-search-bar',
     shape: 'radius',
@@ -19,18 +23,6 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     showCancel: false,
     clearable: true,
   };
-
-  private searchForm;
-
-  private searchContainer;
-
-  private cancelRef;
-
-  private cancelOuterWidth;
-
-  private initPos;
-
-  private inputRef;
 
   constructor(props) {
     super(props);
@@ -45,25 +37,26 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     this.calculatePositon(this.props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { cancelText, placeholder } = this.props;
-    const { value } = this.state;
-    if ('value' in nextProps && value !== nextProps.value) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.preValue) {
+      return {
         value: nextProps.value,
-      });
+        preValue: nextProps.value,
+      };
     }
-    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
-    if (cancelText !== nextProps.cancelText || placeholder !== nextProps.placeholder) {
-      shouldUpdatePosition = true;
-    }
+    return null;
   }
 
+
   componentDidUpdate(prevProps) {
-    if (shouldUpdatePosition) {
-      this.calculatePositon(prevProps);
+    const { cancelText, placeholder, showCancel } = this.props;
+    // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
+    if (cancelText !== prevProps.cancelText
+      || placeholder !== prevProps.placeholder
+      || showCancel !== prevProps.showCancel
+    ) {
+      this.calculatePositon(this.props);
     }
-    shouldUpdatePosition = false;
   }
 
   onFocus() {
@@ -151,35 +144,27 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     const { showCancel } = props;
     const { value } = this.state;
 
-    const formWidth = this.searchForm.getBoundingClientRect().width;
-    const containerWidth = this.searchContainer.getBoundingClientRect().width;
     const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
 
     this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
     if (!showCancel) {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
-      this.initPos = (formWidth / 2) - (containerWidth / 2);
     } else {
-      this.initPos = (formWidth / 2) - (this.cancelOuterWidth / 2) - (containerWidth / 2);
+      this.cancelRef.style.cssText = 'margin-right: 0px;';
     }
 
-    if (!value) {
-      this.searchContainer.style.transform = `translate3d(${this.initPos}px, 0, 0)`;
-      this.searchContainer.style.webkitTransform = `translate3d(${this.initPos}px, 0, 0)`;
-    } else {
-      this.focusAnim(0);
+    if (value) {
+      this.focusAnim();
     }
   }
 
-  focusAnim(transition = 300) {
-    this.searchContainer.style.cssText += `transform: translate3d(10px, 0, 0);transition: ${transition}ms;`;
+  focusAnim() {
     this.cancelRef.style.cssText = 'margin-right: 0px;';
     this.cancelRef.className += ' animation-ease';
   }
 
   blurAnim() {
     const { showCancel } = this.props;
-    this.searchContainer.style.cssText += `transform: translate3d(${this.initPos}px, 0, 0);transition: 300ms;`;
     if (!showCancel) {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
     }
@@ -222,13 +207,11 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
           action="#"
           className={`${prefixCls}__form`}
           onSubmit={(e) => { this.onSubmit(e); }}
-          ref={(searchForm) => { this.searchForm = searchForm; }}
         >
           <div className={`${prefixCls}__content`}>
             <div className={`${prefixCls}__mock`}>
               <div
                 className={`${prefixCls}__mock__container`}
-                ref={(searchContainer) => { this.searchContainer = searchContainer; }}
               >
                 <Icon type="search" />
                 <span

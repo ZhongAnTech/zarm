@@ -1,44 +1,61 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
-import { BasePickerViewProps } from './PropsType';
+import _ from 'lodash';
+import BasePickerViewProps from './PropsType';
 import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
 import parseProps from './utils/parseProps';
+import removeFnFromProps from './utils/removeFnFromProps';
 
 export interface PickerViewProps extends BasePickerViewProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class PickerView extends PureComponent<PickerViewProps, any> {
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }[]>;
+
+export interface PickerViewState {
+  value: string[] | number[];
+  dataSource: DataSource;
+}
+
+export default class PickerView extends Component<PickerViewProps, PickerViewState> {
   static defaultProps = {
     prefixCls: 'za-picker-view',
     dataSource: [],
     cols: Infinity,
     valueMember: 'value',
-    itemRender: data => data.label,
+    itemRender: (data) => data.label,
     disabled: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = parseProps.getSource(props);
-  }
+  state: PickerViewState = parseProps.getSource(this.props);
 
-  componentWillReceiveProps(nextProps) {
-    const state = parseProps.getSource(nextProps);
-    this.setState(state);
+  static getDerivedStateFromProps(props, state) {
+    if (!_.isEqual(removeFnFromProps(props, ['onChange', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onTransition']))) {
+      return {
+        prevProps: props,
+        ...parseProps.getSource(props),
+      };
+    }
+
+    if (!_.isEqual(state.value, state.prevValue)) {
+      return {
+        prevValue: state.value,
+        ...parseProps.getSource({ ...props, value: state.value }),
+      };
+    }
+    return null;
   }
 
   onValueChange = (selected, level) => {
     const value = this.state.value.slice();
     const { dataSource, onChange, valueMember, cols } = this.props;
 
-    value[level] = selected;
     if (isCascader({ dataSource })) {
       value.length = level + 1;
     }
-
+    value[level] = selected;
     const newState = parseProps.getSource({ dataSource, value, valueMember, cols });
     this.setState(newState);
     if (typeof onChange === 'function') {
@@ -53,32 +70,31 @@ export default class PickerView extends PureComponent<PickerViewProps, any> {
     }
   };
 
-  renderWheel = (item, index) => {
+  renderWheel = () => {
     const { valueMember, itemRender, disabled } = this.props;
-    const { value } = this.state;
+    const { dataSource, value } = this.state;
 
-    return (
+    return dataSource.map((item, index) => (
       <Wheel
         key={+index}
         dataSource={item}
-        value={value[index]}
+        value={value![index]}
         valueMember={valueMember}
         itemRender={itemRender}
         disabled={disabled}
-        onChange={selected => this.onValueChange(selected, index)}
+        onChange={(selected) => this.onValueChange(selected, index)}
         onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
       />
-    );
+    ));
   };
 
   render() {
     const { prefixCls, className } = this.props;
-    const { dataSource } = this.state;
     const cls = classnames(prefixCls, className);
     return (
       <div className={cls}>
         <div className={classnames(`${prefixCls}__content`, className)}>
-          {dataSource.map(this.renderWheel)}
+          {this.renderWheel()}
         </div>
         <div className={`${prefixCls}__mask ${prefixCls}__mask--top`} />
         <div className={`${prefixCls}__mask ${prefixCls}__mask--bottom`} />

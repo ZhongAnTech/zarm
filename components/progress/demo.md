@@ -7,21 +7,17 @@
 import { Progress, Cell, Select, Stepper } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      percent: 10,
-      theme: 'primary',
-      shape: 'round',
-      weight: 'normal'
-    };
-  }
+  state = {
+    percent: 10,
+    theme: 'primary',
+    shape: 'round',
+    weight: 'normal'
+  };
 
   render() {
     const { percent, theme, shape, weight } = this.state;
-
     return (
-      <div>
+      <>
         <div className="progress">
           <Progress
             percent={percent}
@@ -122,7 +118,7 @@ class Demo extends React.Component {
             }}
           />
         </Cell>
-      </div>
+      </>
     )
   }
 }

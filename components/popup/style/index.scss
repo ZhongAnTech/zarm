@@ -1,80 +1,87 @@
 @import "../../style/core/index";
 
 @include b(popup) {
-  position: relative;
+  z-index: var(--zindex-popup);
+  -webkit-overflow-scrolling: touch;
+  margin: auto;
 
   @include e(wrapper) {
     position: fixed;
-    transform: translate(0, 0);
-    transition-property: transform;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--zindex-mask);
     overflow: auto;
-    z-index: var(--zindex-popup);
+    padding: 60px 0;
     -webkit-overflow-scrolling: touch;
   }
 
-  @include m(mask) {
+  @include m(hidden) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @include m(nomask) {
+    position: fixed;
+
+    @include m(center) {
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  @include m(bottom) {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transform: translate(0, 100%);
+  }
+
+  @include m(top) {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
-  }
-
-  @include m(bottom) {
-    @include e(wrapper) {
-      left: 0;
-      bottom: 0;
-      width: 100%;
-    }
-  }
-
-  @include m(top) {
-    @include e(wrapper) {
-      left: 0;
-      top: 0;
-      width: 100%;
-    }
+    transform: translate(0, -100%);
   }
 
   @include m(left) {
-    @include e(wrapper) {
-      left: 0;
-      top: 0;
-      height: 100%;
-    }
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translate(-100%, 0);
   }
 
   @include m(right) {
-    @include e(wrapper) {
-      right: 0;
-      top: 0;
-      height: 100%;
-    }
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    transform: translate(100%, 0);
   }
 
-  @include m(hidden) {
+  @include m(show) {
     @include m(bottom) {
-      @include e(wrapper) {
-        transform: translate(0, 100%);
-      }
+      transform: translate(0, 0);
     }
 
     @include m(top) {
-      @include e(wrapper) {
-        transform: translate(0, -100%);
-      }
+      transform: translate(0, 0);
     }
 
     @include m(left) {
-      @include e(wrapper) {
-        transform: translate(-100%, 0);
-      }
+      transform: translate(0, 0);
     }
 
     @include m(right) {
-      @include e(wrapper) {
-        transform: translate(100%, 0);
-      }
+      transform: translate(0, 0);
     }
   }
 }

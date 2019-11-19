@@ -22,6 +22,8 @@ export interface TabsProps extends PropsType {
 export default class Tabs extends PureComponent<TabsProps, any> {
   static Panel: any;
 
+  private carousel;
+
   static defaultProps = {
     prefixCls: 'za-tabs',
     disabled: false,
@@ -29,24 +31,22 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     canSwipe: false,
   };
 
-  private carousel;
-
   constructor(props) {
     super(props);
     this.state = {
       value: props.value || props.defaultValue || getSelectIndex(props.children) || 0,
+      prevValue: null,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getSelectIndex(nextProps.children)) {
-      this.setState({
-        value: nextProps.value || nextProps.defaultValue || getSelectIndex(nextProps.children) || 0,
-      });
-      if (typeof nextProps.onChange === 'function') {
-        nextProps.onChange(nextProps.value);
-      }
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+      return {
+        value: nextProps.value,
+        prevValue: nextProps.value,
+      };
     }
+    return null;
   }
 
   onSwipeChange = (value) => {
@@ -110,7 +110,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
           showPagination={false}
           activeIndex={value}
           ref={(ele) => { this.carousel = ele; }}
-          onChange={v => this.onSwipeChange(v)}
+          onChange={(v) => this.onSwipeChange(v)}
         >
           {React.Children.map(children, (item: any) => <div>{item.props.children}</div>)}
         </Carousel>

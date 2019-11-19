@@ -22,7 +22,23 @@ class Demo extends React.Component {
         visible: false,
         value: '2017-09-13',
       },
+      specDOM: {
+        visible: false,
+        value: '',
+      }
     };
+
+    this.myRef = React.createRef();
+  }
+
+  componentDidMount() {
+    // this.interval = setInterval(
+    //   () =>
+    //     this.setState(prevState => ({
+    //       count: prevState.count + 1
+    //     })),
+    //   1000
+    // );
   }
 
   toggle(key) {
@@ -36,6 +52,7 @@ class Demo extends React.Component {
       date,
       time,
       limitDate,
+      specDOM,
     } = this.state;
 
     return (
@@ -62,6 +79,14 @@ class Demo extends React.Component {
           }
         >
           选择日期(自定义)
+        </Cell>
+
+        <Cell
+          description={
+            <Button size="xs" onClick={() => this.toggle('specDOM')}>选择</Button>
+          }
+        >
+          挂载到指定dom节点
         </Cell>
 
         <DatePicker
@@ -116,6 +141,28 @@ class Demo extends React.Component {
           }}
           onCancel={() => this.toggle('limitDate')}
         />
+
+        <DatePicker
+          visible={specDOM.visible}
+          value={specDOM.value}
+          onOk={(value) => {
+            this.setState({
+              specDOM: {
+                visible: false,
+                value,
+              },
+            });
+            Toast.show(JSON.stringify(value));
+          }}
+          onCancel={() => this.toggle('specDOM')}
+          getContainer={() => this.myRef.current}
+        />
+
+        <div
+          id="test-div"
+          style={{ position: 'relative', zIndex: 1 }}
+          ref={this.myRef} 
+          />
       </div>
     )
   }
@@ -159,11 +206,6 @@ class Demo extends React.Component {
                 value,
               });
             }}
-            onMaskClick={() => {
-              this.setState({
-                visible: false,
-              });
-            }}
           />
         </Cell>
       </div>
@@ -181,11 +223,28 @@ ReactDOM.render(<Demo />, mountNode);
 import { DatePickerView } from 'zarm';
 
 class Demo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      value: "",
+    };
+  }
+
+  componentDidMount() {
+    // this.interval = setInterval(
+    //   () =>
+    //     this.setState(prevState => ({
+    //       count: prevState.count + 1
+    //     })),
+    //   1000
+    // );
+  }
   render() {
     return (
       <div>
         <DatePickerView
           mode="datetime"
+          value={this.state.value}
           min="2018-1-13"
           onChange={(value) => {
             console.log('datePickerView => ', value);
@@ -221,10 +280,13 @@ ReactDOM.render(<Demo />, mountNode);
 | title | string | '请选择' | 选择器标题 |
 | cancelText | string | '取消' | 取消栏文字 |
 | okText | string | '确定' | 确定栏文字 |
+| maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
+| disableBodyScroll | boolean | true | 弹层展示后是否禁止body滚动 |
+| destroy | boolean | false | 弹层关闭后是否移除节点 |
+| wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
 | onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
-| onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
-| wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
+| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点 |
 
 ### 仅 DateSelect 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |

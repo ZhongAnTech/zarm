@@ -18,5 +18,4 @@ export interface BaseRadioGroupProps {
   onChange?: (value?: string | number) => void;
   value?: number | string;
   defaultValue?: number | string;
-  compact?: boolean;
 }

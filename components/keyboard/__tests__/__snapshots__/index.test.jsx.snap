@@ -64,8 +64,21 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--keyboard"
-      />
+        class="za-icon za-icon--keyboard za-icon--default za-icon--lg"
+        theme="default"
+        type="keyboard"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#keyboard"
+          />
+        </svg>
+      </i>
     </div>
   </div>
   <div
@@ -75,13 +88,26 @@ exports[`Keyboard renders correctly 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--deletekey"
-      />
+        class="za-icon za-icon--deletekey za-icon--default za-icon--lg"
+        theme="default"
+        type="deletekey"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#deletekey"
+          />
+        </svg>
+      </i>
     </div>
     <div
       class="za-keyboard__item za-keyboard__item--ok"
     >
-      OK
+      确定
     </div>
   </div>
 </div>
@@ -153,8 +179,21 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--keyboard"
-      />
+        class="za-icon za-icon--keyboard za-icon--default za-icon--lg"
+        theme="default"
+        type="keyboard"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#keyboard"
+          />
+        </svg>
+      </i>
     </div>
   </div>
   <div
@@ -164,13 +203,26 @@ exports[`Keyboard type is idcard 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--deletekey"
-      />
+        class="za-icon za-icon--deletekey za-icon--default za-icon--lg"
+        theme="default"
+        type="deletekey"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#deletekey"
+          />
+        </svg>
+      </i>
     </div>
     <div
       class="za-keyboard__item za-keyboard__item--ok"
     >
-      OK
+      确定
     </div>
   </div>
 </div>
@@ -242,8 +294,21 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--keyboard"
-      />
+        class="za-icon za-icon--keyboard za-icon--default za-icon--lg"
+        theme="default"
+        type="keyboard"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#keyboard"
+          />
+        </svg>
+      </i>
     </div>
   </div>
   <div
@@ -253,13 +318,26 @@ exports[`Keyboard type is price 1`] = `
       class="za-keyboard__item"
     >
       <i
-        class="za-icon za-icon--deletekey"
-      />
+        class="za-icon za-icon--deletekey za-icon--default za-icon--lg"
+        theme="default"
+        type="deletekey"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#deletekey"
+          />
+        </svg>
+      </i>
     </div>
     <div
       class="za-keyboard__item za-keyboard__item--ok"
     >
-      OK
+      确定
     </div>
   </div>
 </div>

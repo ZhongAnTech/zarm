@@ -290,49 +290,49 @@ exports[`Checkbox.Group type is button 1`] = `
   class="za-checkbox-group za-checkbox-group--button za-checkbox-group--radius"
 >
   <button
-    aria-disabled="false"
-    class="za-button za-checkbox za-button--primary za-button--xs za-button--radius za-button--ghost"
-    role="button"
+    class="za-checkbox"
     type="button"
   >
-    <span>
-      <input
-        class="za-checkbox__input"
-        type="checkbox"
-        value="0"
-      />
+    <span
+      class="za-checkbox__text"
+    >
       选项一
     </span>
+    <input
+      class="za-checkbox__input"
+      type="checkbox"
+      value="0"
+    />
   </button>
   <button
-    aria-disabled="false"
-    class="za-button za-checkbox za-button--primary za-button--xs za-button--radius za-button--ghost"
-    role="button"
+    class="za-checkbox"
     type="button"
   >
-    <span>
-      <input
-        class="za-checkbox__input"
-        type="checkbox"
-        value="1"
-      />
+    <span
+      class="za-checkbox__text"
+    >
       选项二
     </span>
+    <input
+      class="za-checkbox__input"
+      type="checkbox"
+      value="1"
+    />
   </button>
   <button
-    aria-disabled="false"
-    class="za-button za-checkbox za-button--primary za-button--xs za-button--radius za-button--ghost"
-    role="button"
+    class="za-checkbox"
     type="button"
   >
-    <span>
-      <input
-        class="za-checkbox__input"
-        type="checkbox"
-        value="2"
-      />
+    <span
+      class="za-checkbox__text"
+    >
       选项三
     </span>
+    <input
+      class="za-checkbox__input"
+      type="checkbox"
+      value="2"
+    />
   </button>
 </div>
 `;

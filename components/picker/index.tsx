@@ -1,7 +1,7 @@
 import Picker from './Picker';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
+import LocaleReceiver from '../locale-receiver';
 // import Stack from './StackPicker';
 
 // Picker.Stack = Stack;
 
-export default LocaleReceiver(Picker, 'Picker');
+export default LocaleReceiver('Picker')(Picker);

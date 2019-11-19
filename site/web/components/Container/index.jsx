@@ -19,11 +19,11 @@ class Container extends Component {
   // }
 
   render() {
-    const { className, children } = this.props;
+    const { className, children, ...others } = this.props;
     const cls = classnames('app-container', className);
 
     return (
-      <div className={cls}>
+      <div className={cls} {...others}>
         {children}
       </div>
     );

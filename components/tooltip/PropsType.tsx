@@ -1,25 +1,15 @@
-import { ReactNode } from 'react';
-
-export type direction =
-  | 'topLeft'
-  | 'top'
-  | 'topRight'
-  | 'rightTop'
-  | 'right'
-  | 'rightBottom'
-  | 'bottomLeft'
-  | 'bottom'
-  | 'bottomRight'
-  | 'leftTop'
-  | 'left'
-  | 'leftBottom';
+import { PopperPlacement, PopperTrigger } from '../popper/PropsType';
 
 export default interface PropsType {
-  prefixCls?: string;
-  className?: string;
-  trigger?: 'click' | 'hover';
   visible?: boolean;
-  direction: direction;
-  onVisibleChange?: (visible?: boolean) => void;
-  title?: () => void | ReactNode ;
+  hasArrow?: boolean;
+  arrowPointAtCenter?: boolean;
+  direction?: PopperPlacement;
+  trigger?: PopperTrigger;
+  // popperOptions?: PopperJS.PopperOptions;
+  // modifiers?: PopperJS.Modifiers;
+  content?: React.ReactNode;
+  mouseEnterDelay?: number;
+  mouseLeaveDelay?: number;
+  onVisibleChange?: (visible: boolean) => void;
 }

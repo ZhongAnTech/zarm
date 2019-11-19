@@ -6,12 +6,6 @@
   vertical-align: middle;
   @include button-base();
   @include button-shape(var(--radius-md));
-  @include button-size(
-    var(--button-height-md),
-    var(--button-padding-h-md),
-    var(--button-font-size-md),
-    var(--button-icon-size-md),
-  );
   @include button-theme(
     var(--button-default-background),
     var(--button-default-border),
@@ -23,17 +17,24 @@
     var(--button-default-border),
     var(--color-text-disabled),
     var(--button-disabled-opacity),
+    var(--button-default-shadow-color),
   );
-  @include button-ghost(
-    var(--button-default-ghost-border),
-    var(--button-default-ghost-color),
-    var(--button-default-ghost-active-border),
-    var(--button-default-ghost-active-color),
-  );
-  @include button-link(
-    var(--button-default-color),
-    var(--button-default-active-color),
-  );
+
+  @include m(link) {
+    @include button-link(
+      var(--button-default-color),
+      var(--button-default-active-color),
+    );
+  }
+
+  @include m(ghost) {
+    @include button-ghost(
+      var(--button-default-ghost-border),
+      var(--button-default-ghost-color),
+      var(--button-default-ghost-active-border),
+      var(--button-default-ghost-active-color),
+    );
+  }
 
   /* Button sizes */
   @include m(lg) {
@@ -85,17 +86,24 @@
       var(--button-primary-border),
       var(--button-primary-color),
       var(--button-disabled-opacity),
+      var(--button-primary-shadow-color),
     );
-    @include button-ghost(
-      var(--button-primary-ghost-border),
-      var(--button-primary-ghost-color),
-      var(--button-primary-ghost-active-border),
-      var(--button-primary-ghost-active-color),
-    );
-    @include button-link(
-      var(--button-primary-ghost-color),
-      var(--button-primary-ghost-active-color),
-    );
+
+    @include m(link) {
+      @include button-link(
+        var(--button-primary-ghost-color),
+        var(--button-primary-ghost-active-color),
+      );
+    }
+
+    @include m(ghost) {
+      @include button-ghost(
+        var(--button-primary-ghost-border),
+        var(--button-primary-ghost-color),
+        var(--button-primary-ghost-active-border),
+        var(--button-primary-ghost-active-color),
+      );
+    }
   }
 
   @include m(danger) {
@@ -110,13 +118,24 @@
       var(--button-danger-border),
       var(--button-danger-color),
       var(--button-disabled-opacity),
+      var(--button-danger-shadow-color),
     );
-    @include button-ghost(
-      var(--button-danger-ghost-border),
-      var(--button-danger-ghost-color),
-      var(--button-danger-ghost-active-border),
-      var(--button-danger-ghost-active-color),
-    );
+
+    @include m(link) {
+      @include button-link(
+        var(--button-danger-ghost-color),
+        var(--button-danger-ghost-active-color),
+      );
+    }
+
+    @include m(ghost) {
+      @include button-ghost(
+        var(--button-danger-ghost-border),
+        var(--button-danger-ghost-color),
+        var(--button-danger-ghost-active-border),
+        var(--button-danger-ghost-active-color),
+      );
+    }
   }
 
   @include m(rect) {
@@ -143,4 +162,3 @@
     justify-content: center;
   }
 }
-

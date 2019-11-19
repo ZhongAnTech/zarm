@@ -18,6 +18,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, K
     prefixCls: 'za-keyboard-picker',
     visible: false,
     type: 'number',
+    destroy: true,
   };
 
   static getDerivedStateFromProps(nextProps: KeyboardPickerProps) {
@@ -53,7 +54,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, K
   };
 
   render() {
-    const { prefixCls, className, ...others } = this.props;
+    const { prefixCls, className, destroy, ...others } = this.props;
     const { visible } = this.state;
     const cls = classnames(prefixCls, className);
 
@@ -61,6 +62,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, K
       <Popup
         visible={visible}
         mask={false}
+        destroy={destroy}
       >
         <div className={cls}>
           <Keyboard {...others} onKeyClick={this.onKeyClick} />

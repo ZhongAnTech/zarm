@@ -17,6 +17,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     loop: false,
     activeIndex: 0,
     animationDuration: 300,
+    swipeable: true,
     autoPlay: false,
     autoPlayIntervalTime: 3000,
     moveDistanceRatio: 0.5,
@@ -28,22 +29,17 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   private moveInterval;
 
-  private translateX: number = 0;
+  private translateX = 0;
 
-  private translateY: number = 0;
+  private translateY = 0;
 
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      // items: [],
       activeIndex: props.activeIndex,
       activeIndexChanged: false,
     };
-  }
-
-  componentWillMount() {
-    this.parseItems(this.props);
-    this.startAutoPlay();
   }
 
   componentDidMount() {
@@ -51,18 +47,15 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     // 监听窗口变化
     Events.on(window, 'resize', this.resize);
-
+    this.startAutoPlay();
     // 设置起始位置编号
     this.onJumpTo(activeIndex);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('children' in nextProps) {
-      this.parseItems(nextProps);
-    }
-
-    if ('activeIndex' in nextProps) {
-      this.onJumpTo(nextProps.activeIndex);
+  componentDidUpdate(prevProps) {
+    const { activeIndex } = this.props;
+    if (activeIndex !== prevProps.activeIndex) {
+      this.onJumpTo(activeIndex);
     }
   }
 
@@ -264,15 +257,10 @@ export default class Carousel extends Component<CarouselProps, any> {
     const newItems = React.Children.map(items, (element: any, index) => {
       return cloneElement(element, {
         key: index,
-        className: classnames(`${props.prefixCls}__item`, {
-          [element.props.className]: !!element.props.className,
-        }),
+        className: classnames(`${props.prefixCls}__item`, element.props.className),
       });
     });
-
-    this.setState({
-      items: newItems,
-    });
+    return newItems;
   };
 
   // 更新窗口变化的位置偏移
@@ -352,8 +340,8 @@ export default class Carousel extends Component<CarouselProps, any> {
   };
 
   render() {
-    const { prefixCls, className, height, style } = this.props;
-    const { items } = this.state;
+    const { prefixCls, className, swipeable, height, style } = this.props;
+    const items = this.parseItems(this.props);
     const itemsStyle: CSSProperties = {};
 
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
@@ -363,22 +351,32 @@ export default class Carousel extends Component<CarouselProps, any> {
       itemsStyle.height = height;
     }
 
+    const content = (
+      <div
+        ref={(ele) => { this.carouselItems = ele; }}
+        className={`${prefixCls}__items`}
+        onTransitionEnd={this.transitionEnd}
+        style={itemsStyle}
+      >
+        {items}
+      </div>
+    );
+
     return (
       <div className={cls} style={style}>
-        <Drag
-          onDragStart={this.onDragStart}
-          onDragMove={this.onDragMove}
-          onDragEnd={this.onDragEnd}
-        >
-          <div
-            ref={(ele) => { this.carouselItems = ele; }}
-            className={`${prefixCls}__items`}
-            onTransitionEnd={this.transitionEnd}
-            style={itemsStyle}
-          >
-            {items}
-          </div>
-        </Drag>
+        {
+          swipeable
+            ? (
+              <Drag
+                onDragStart={this.onDragStart}
+                onDragMove={this.onDragMove}
+                onDragEnd={this.onDragEnd}
+              >
+                {content}
+              </Drag>
+            )
+            : content
+        }
         {this.renderPagination()}
       </div>
     );

@@ -19,17 +19,17 @@ export interface PopupProps extends PropsType {
 const popupStyles = StyleSheet.create<any>(popupStyle);
 
 export default class Popup extends PureComponent<PopupProps, any> {
+  private timer: number;
+
   static defaultProps = {
     visible: false,
     mask: true,
     direction: 'bottom',
-    autoClose: false,
     stayTime: 3000,
     animationDuration: 200,
+    destroy: true,
     styles: popupStyles,
   };
-
-  private timer: number;
 
   constructor(props) {
     super(props);
@@ -72,7 +72,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
     translateValue.removeAllListeners();
   }
 
-  enter = ({ stayTime, autoClose, onMaskClick, direction, animationDuration }) => {
+  enter = ({ direction, animationDuration }) => {
     let transfromStyle = {};
     let newValue;
     if (direction === 'bottom') {
@@ -103,12 +103,12 @@ export default class Popup extends PureComponent<PopupProps, any> {
         easing: Easing.linear,
       },
     ).start();
-    if (stayTime > 0 && autoClose) {
-      this.timer = setTimeout(() => {
-        onMaskClick();
-        clearTimeout(this.timer);
-      }, stayTime);
-    }
+    // if (stayTime > 0 && autoClose) {
+    //   this.timer = setTimeout(() => {
+    //     onMaskClick();
+    //     clearTimeout(this.timer);
+    //   }, stayTime);
+    // }
   };
 
   leave = ({ animationDuration }) => {
@@ -128,14 +128,14 @@ export default class Popup extends PureComponent<PopupProps, any> {
   };
 
   animationEnd = (value) => {
-    const { onClose } = this.props;
+    const { afterClose } = this.props;
 
     if (this.state.animationState === 'leave' && value.value === 0 && this.state.isPending) {
       this.setState({
         isPending: false,
       });
-      if (typeof onClose === 'function') {
-        onClose();
+      if (typeof afterClose === 'function') {
+        afterClose();
       }
     }
   };
@@ -192,7 +192,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
 
     return (
       <View style={invisibleStyle}>
-        <Animated.View style={popUpStyle} onLayout={e => this.onLayout(e, direction, this)}>
+        <Animated.View style={popUpStyle} onLayout={(e) => this.onLayout(e, direction, this)}>
           {children}
         </Animated.View>
         {this.renderMask()}

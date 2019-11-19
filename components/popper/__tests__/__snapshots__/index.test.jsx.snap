@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popper renders correctly 1`] = `
+<Popper
+  animationDuration={200}
+  animationType="zoom-fade"
+  arrowPointAtCenter={false}
+  content=""
+  destroy={true}
+  direction="top"
+  hasArrow={false}
+  mouseEnterDelay={100}
+  mouseLeaveDelay={100}
+  onVisibleChange={[MockFunction]}
+  prefixCls="za-popper"
+  title="标题"
+  trigger="hover"
+  visible={false}
+>
+  <div
+    className="za-popper"
+  >
+    <div
+      className="za-popper__inner"
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+    >
+      <p>
+        点我
+      </p>
+    </div>
+  </div>
+</Popper>
+`;

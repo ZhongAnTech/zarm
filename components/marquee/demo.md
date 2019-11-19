@@ -6,48 +6,42 @@
 ```jsx
 import { Marquee, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell>
-          <Marquee animationDelay={2000} animationDuration={30000}>
-            <div>我延迟执行2秒，从右向左滚动，字有点多，我走慢点</div>
-          </Marquee>
-        </Cell>
-        <Cell>
-          <Marquee direction="right" width="100%">
-            <div>我从左向右滚动</div>
-          </Marquee>
-        </Cell>
-        <Cell>
-          <Marquee direction="up" height={60}>
-            <div>我</div>
-            <div>从</div>
-            <div>下</div>
-            <div>往</div>
-            <div>上</div>
-            <div>滚</div>
-            <div>动</div>
-          </Marquee>
-        </Cell>
-         <Cell>
-          <Marquee direction="down" height={60}>
-            <div>我</div>
-            <div>从</div>
-            <div>上</div>
-            <div>往</div>
-            <div>下</div>
-            <div>滚</div>
-            <div>动</div>
-          </Marquee>
-        </Cell>
-     </div>   
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell>
+      <Marquee animationDelay={2000} animationDuration={30000}>
+        <div>我延迟执行2秒，从右向左滚动，字有点多，我走慢点</div>
+      </Marquee>
+    </Cell>
+    <Cell>
+      <Marquee direction="right" width="100%">
+        <div>我从左向右滚动</div>
+      </Marquee>
+    </Cell>
+    <Cell>
+      <Marquee direction="up" height={60}>
+        <div>我</div>
+        <div>从</div>
+        <div>下</div>
+        <div>往</div>
+        <div>上</div>
+        <div>滚</div>
+        <div>动</div>
+      </Marquee>
+    </Cell>
+      <Cell>
+      <Marquee direction="down" height={60}>
+        <div>我</div>
+        <div>从</div>
+        <div>上</div>
+        <div>往</div>
+        <div>下</div>
+        <div>滚</div>
+        <div>动</div>
+      </Marquee>
+    </Cell>
+  </>
+, mountNode);
 ```
 
 

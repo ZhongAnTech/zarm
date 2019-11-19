@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DatePickerView DatePickerView time 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   defaultValue="2017-9-6 12:00"
   mode="datetime"
   placeholder="请选择时间"
@@ -19,18 +19,16 @@ exports[`DatePickerView DatePickerView time 1`] = `
       disabled={false}
       locale={
         Object {
-          "day": "",
-          "hour": "",
-          "minute": "",
-          "month": "",
-          "year": "",
+          "day": "日",
+          "hour": "时",
+          "minute": "分",
+          "month": "月",
+          "year": "年",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       minuteStep={1}
       mode="datetime"
-      onCancel={[Function]}
-      onClick={[Function]}
       placeholder="请选择时间"
       prefixCls="za-date-picker-view"
       title="选择时间"
@@ -44,639 +42,639 @@ exports[`DatePickerView DatePickerView time 1`] = `
           Array [
             Array [
               Object {
-                "label": "2000",
+                "label": "2000年",
                 "value": 2000,
               },
               Object {
-                "label": "2001",
+                "label": "2001年",
                 "value": 2001,
               },
               Object {
-                "label": "2002",
+                "label": "2002年",
                 "value": 2002,
               },
               Object {
-                "label": "2003",
+                "label": "2003年",
                 "value": 2003,
               },
               Object {
-                "label": "2004",
+                "label": "2004年",
                 "value": 2004,
               },
               Object {
-                "label": "2005",
+                "label": "2005年",
                 "value": 2005,
               },
               Object {
-                "label": "2006",
+                "label": "2006年",
                 "value": 2006,
               },
               Object {
-                "label": "2007",
+                "label": "2007年",
                 "value": 2007,
               },
               Object {
-                "label": "2008",
+                "label": "2008年",
                 "value": 2008,
               },
               Object {
-                "label": "2009",
+                "label": "2009年",
                 "value": 2009,
               },
               Object {
-                "label": "2010",
+                "label": "2010年",
                 "value": 2010,
               },
               Object {
-                "label": "2011",
+                "label": "2011年",
                 "value": 2011,
               },
               Object {
-                "label": "2012",
+                "label": "2012年",
                 "value": 2012,
               },
               Object {
-                "label": "2013",
+                "label": "2013年",
                 "value": 2013,
               },
               Object {
-                "label": "2014",
+                "label": "2014年",
                 "value": 2014,
               },
               Object {
-                "label": "2015",
+                "label": "2015年",
                 "value": 2015,
               },
               Object {
-                "label": "2016",
+                "label": "2016年",
                 "value": 2016,
               },
               Object {
-                "label": "2017",
+                "label": "2017年",
                 "value": 2017,
               },
               Object {
-                "label": "2018",
+                "label": "2018年",
                 "value": 2018,
               },
               Object {
-                "label": "2019",
+                "label": "2019年",
                 "value": 2019,
               },
               Object {
-                "label": "2020",
+                "label": "2020年",
                 "value": 2020,
               },
               Object {
-                "label": "2021",
+                "label": "2021年",
                 "value": 2021,
               },
               Object {
-                "label": "2022",
+                "label": "2022年",
                 "value": 2022,
               },
               Object {
-                "label": "2023",
+                "label": "2023年",
                 "value": 2023,
               },
               Object {
-                "label": "2024",
+                "label": "2024年",
                 "value": 2024,
               },
               Object {
-                "label": "2025",
+                "label": "2025年",
                 "value": 2025,
               },
               Object {
-                "label": "2026",
+                "label": "2026年",
                 "value": 2026,
               },
               Object {
-                "label": "2027",
+                "label": "2027年",
                 "value": 2027,
               },
               Object {
-                "label": "2028",
+                "label": "2028年",
                 "value": 2028,
               },
               Object {
-                "label": "2029",
+                "label": "2029年",
                 "value": 2029,
               },
               Object {
-                "label": "2030",
+                "label": "2030年",
                 "value": 2030,
               },
             ],
             Array [
               Object {
-                "label": "1",
+                "label": "1月",
                 "value": 0,
               },
               Object {
-                "label": "2",
+                "label": "2月",
                 "value": 1,
               },
               Object {
-                "label": "3",
+                "label": "3月",
                 "value": 2,
               },
               Object {
-                "label": "4",
+                "label": "4月",
                 "value": 3,
               },
               Object {
-                "label": "5",
+                "label": "5月",
                 "value": 4,
               },
               Object {
-                "label": "6",
+                "label": "6月",
                 "value": 5,
               },
               Object {
-                "label": "7",
+                "label": "7月",
                 "value": 6,
               },
               Object {
-                "label": "8",
+                "label": "8月",
                 "value": 7,
               },
               Object {
-                "label": "9",
+                "label": "9月",
                 "value": 8,
               },
               Object {
-                "label": "10",
+                "label": "10月",
                 "value": 9,
               },
               Object {
-                "label": "11",
+                "label": "11月",
                 "value": 10,
               },
               Object {
-                "label": "12",
+                "label": "12月",
                 "value": 11,
               },
             ],
             Array [
               Object {
-                "label": "1",
+                "label": "1日",
                 "value": 1,
               },
               Object {
-                "label": "2",
+                "label": "2日",
                 "value": 2,
               },
               Object {
-                "label": "3",
+                "label": "3日",
                 "value": 3,
               },
               Object {
-                "label": "4",
+                "label": "4日",
                 "value": 4,
               },
               Object {
-                "label": "5",
+                "label": "5日",
                 "value": 5,
               },
               Object {
-                "label": "6",
+                "label": "6日",
                 "value": 6,
               },
               Object {
-                "label": "7",
+                "label": "7日",
                 "value": 7,
               },
               Object {
-                "label": "8",
+                "label": "8日",
                 "value": 8,
               },
               Object {
-                "label": "9",
+                "label": "9日",
                 "value": 9,
               },
               Object {
-                "label": "10",
+                "label": "10日",
                 "value": 10,
               },
               Object {
-                "label": "11",
+                "label": "11日",
                 "value": 11,
               },
               Object {
-                "label": "12",
+                "label": "12日",
                 "value": 12,
               },
               Object {
-                "label": "13",
+                "label": "13日",
                 "value": 13,
               },
               Object {
-                "label": "14",
+                "label": "14日",
                 "value": 14,
               },
               Object {
-                "label": "15",
+                "label": "15日",
                 "value": 15,
               },
               Object {
-                "label": "16",
+                "label": "16日",
                 "value": 16,
               },
               Object {
-                "label": "17",
+                "label": "17日",
                 "value": 17,
               },
               Object {
-                "label": "18",
+                "label": "18日",
                 "value": 18,
               },
               Object {
-                "label": "19",
+                "label": "19日",
                 "value": 19,
               },
               Object {
-                "label": "20",
+                "label": "20日",
                 "value": 20,
               },
               Object {
-                "label": "21",
+                "label": "21日",
                 "value": 21,
               },
               Object {
-                "label": "22",
+                "label": "22日",
                 "value": 22,
               },
               Object {
-                "label": "23",
+                "label": "23日",
                 "value": 23,
               },
               Object {
-                "label": "24",
+                "label": "24日",
                 "value": 24,
               },
               Object {
-                "label": "25",
+                "label": "25日",
                 "value": 25,
               },
               Object {
-                "label": "26",
+                "label": "26日",
                 "value": 26,
               },
               Object {
-                "label": "27",
+                "label": "27日",
                 "value": 27,
               },
               Object {
-                "label": "28",
+                "label": "28日",
                 "value": 28,
               },
               Object {
-                "label": "29",
+                "label": "29日",
                 "value": 29,
               },
               Object {
-                "label": "30",
+                "label": "30日",
                 "value": 30,
               },
             ],
             Array [
               Object {
-                "label": "00",
+                "label": "0时",
                 "value": 0,
               },
               Object {
-                "label": "01",
+                "label": "1时",
                 "value": 1,
               },
               Object {
-                "label": "02",
+                "label": "2时",
                 "value": 2,
               },
               Object {
-                "label": "03",
+                "label": "3时",
                 "value": 3,
               },
               Object {
-                "label": "04",
+                "label": "4时",
                 "value": 4,
               },
               Object {
-                "label": "05",
+                "label": "5时",
                 "value": 5,
               },
               Object {
-                "label": "06",
+                "label": "6时",
                 "value": 6,
               },
               Object {
-                "label": "07",
+                "label": "7时",
                 "value": 7,
               },
               Object {
-                "label": "08",
+                "label": "8时",
                 "value": 8,
               },
               Object {
-                "label": "09",
+                "label": "9时",
                 "value": 9,
               },
               Object {
-                "label": 10,
+                "label": "10时",
                 "value": 10,
               },
               Object {
-                "label": 11,
+                "label": "11时",
                 "value": 11,
               },
               Object {
-                "label": 12,
+                "label": "12时",
                 "value": 12,
               },
               Object {
-                "label": 13,
+                "label": "13时",
                 "value": 13,
               },
               Object {
-                "label": 14,
+                "label": "14时",
                 "value": 14,
               },
               Object {
-                "label": 15,
+                "label": "15时",
                 "value": 15,
               },
               Object {
-                "label": 16,
+                "label": "16时",
                 "value": 16,
               },
               Object {
-                "label": 17,
+                "label": "17时",
                 "value": 17,
               },
               Object {
-                "label": 18,
+                "label": "18时",
                 "value": 18,
               },
               Object {
-                "label": 19,
+                "label": "19时",
                 "value": 19,
               },
               Object {
-                "label": 20,
+                "label": "20时",
                 "value": 20,
               },
               Object {
-                "label": 21,
+                "label": "21时",
                 "value": 21,
               },
               Object {
-                "label": 22,
+                "label": "22时",
                 "value": 22,
               },
               Object {
-                "label": 23,
+                "label": "23时",
                 "value": 23,
               },
             ],
             Array [
               Object {
-                "label": "00",
+                "label": "0分",
                 "value": 0,
               },
               Object {
-                "label": "01",
+                "label": "1分",
                 "value": 1,
               },
               Object {
-                "label": "02",
+                "label": "2分",
                 "value": 2,
               },
               Object {
-                "label": "03",
+                "label": "3分",
                 "value": 3,
               },
               Object {
-                "label": "04",
+                "label": "4分",
                 "value": 4,
               },
               Object {
-                "label": "05",
+                "label": "5分",
                 "value": 5,
               },
               Object {
-                "label": "06",
+                "label": "6分",
                 "value": 6,
               },
               Object {
-                "label": "07",
+                "label": "7分",
                 "value": 7,
               },
               Object {
-                "label": "08",
+                "label": "8分",
                 "value": 8,
               },
               Object {
-                "label": "09",
+                "label": "9分",
                 "value": 9,
               },
               Object {
-                "label": 10,
+                "label": "10分",
                 "value": 10,
               },
               Object {
-                "label": 11,
+                "label": "11分",
                 "value": 11,
               },
               Object {
-                "label": 12,
+                "label": "12分",
                 "value": 12,
               },
               Object {
-                "label": 13,
+                "label": "13分",
                 "value": 13,
               },
               Object {
-                "label": 14,
+                "label": "14分",
                 "value": 14,
               },
               Object {
-                "label": 15,
+                "label": "15分",
                 "value": 15,
               },
               Object {
-                "label": 16,
+                "label": "16分",
                 "value": 16,
               },
               Object {
-                "label": 17,
+                "label": "17分",
                 "value": 17,
               },
               Object {
-                "label": 18,
+                "label": "18分",
                 "value": 18,
               },
               Object {
-                "label": 19,
+                "label": "19分",
                 "value": 19,
               },
               Object {
-                "label": 20,
+                "label": "20分",
                 "value": 20,
               },
               Object {
-                "label": 21,
+                "label": "21分",
                 "value": 21,
               },
               Object {
-                "label": 22,
+                "label": "22分",
                 "value": 22,
               },
               Object {
-                "label": 23,
+                "label": "23分",
                 "value": 23,
               },
               Object {
-                "label": 24,
+                "label": "24分",
                 "value": 24,
               },
               Object {
-                "label": 25,
+                "label": "25分",
                 "value": 25,
               },
               Object {
-                "label": 26,
+                "label": "26分",
                 "value": 26,
               },
               Object {
-                "label": 27,
+                "label": "27分",
                 "value": 27,
               },
               Object {
-                "label": 28,
+                "label": "28分",
                 "value": 28,
               },
               Object {
-                "label": 29,
+                "label": "29分",
                 "value": 29,
               },
               Object {
-                "label": 30,
+                "label": "30分",
                 "value": 30,
               },
               Object {
-                "label": 31,
+                "label": "31分",
                 "value": 31,
               },
               Object {
-                "label": 32,
+                "label": "32分",
                 "value": 32,
               },
               Object {
-                "label": 33,
+                "label": "33分",
                 "value": 33,
               },
               Object {
-                "label": 34,
+                "label": "34分",
                 "value": 34,
               },
               Object {
-                "label": 35,
+                "label": "35分",
                 "value": 35,
               },
               Object {
-                "label": 36,
+                "label": "36分",
                 "value": 36,
               },
               Object {
-                "label": 37,
+                "label": "37分",
                 "value": 37,
               },
               Object {
-                "label": 38,
+                "label": "38分",
                 "value": 38,
               },
               Object {
-                "label": 39,
+                "label": "39分",
                 "value": 39,
               },
               Object {
-                "label": 40,
+                "label": "40分",
                 "value": 40,
               },
               Object {
-                "label": 41,
+                "label": "41分",
                 "value": 41,
               },
               Object {
-                "label": 42,
+                "label": "42分",
                 "value": 42,
               },
               Object {
-                "label": 43,
+                "label": "43分",
                 "value": 43,
               },
               Object {
-                "label": 44,
+                "label": "44分",
                 "value": 44,
               },
               Object {
-                "label": 45,
+                "label": "45分",
                 "value": 45,
               },
               Object {
-                "label": 46,
+                "label": "46分",
                 "value": 46,
               },
               Object {
-                "label": 47,
+                "label": "47分",
                 "value": 47,
               },
               Object {
-                "label": 48,
+                "label": "48分",
                 "value": 48,
               },
               Object {
-                "label": 49,
+                "label": "49分",
                 "value": 49,
               },
               Object {
-                "label": 50,
+                "label": "50分",
                 "value": 50,
               },
               Object {
-                "label": 51,
+                "label": "51分",
                 "value": 51,
               },
               Object {
-                "label": 52,
+                "label": "52分",
                 "value": 52,
               },
               Object {
-                "label": 53,
+                "label": "53分",
                 "value": 53,
               },
               Object {
-                "label": 54,
+                "label": "54分",
                 "value": 54,
               },
               Object {
-                "label": 55,
+                "label": "55分",
                 "value": 55,
               },
               Object {
-                "label": 56,
+                "label": "56分",
                 "value": 56,
               },
               Object {
-                "label": 57,
+                "label": "57分",
                 "value": 57,
               },
               Object {
-                "label": 58,
+                "label": "58分",
                 "value": 58,
               },
               Object {
-                "label": 59,
+                "label": "59分",
                 "value": 59,
               },
             ],
@@ -687,19 +685,17 @@ exports[`DatePickerView DatePickerView time 1`] = `
         itemRender={[Function]}
         locale={
           Object {
-            "day": "",
-            "hour": "",
-            "minute": "",
-            "month": "",
-            "year": "",
+            "day": "日",
+            "hour": "时",
+            "minute": "分",
+            "month": "月",
+            "year": "年",
           }
         }
-        localeCode="en"
+        localeCode="zh-cn"
         minuteStep={1}
         mode="datetime"
-        onCancel={[Function]}
         onChange={[Function]}
-        onClick={[Function]}
         onTransition={[Function]}
         placeholder="请选择时间"
         prefixCls="za-date-picker-view"
@@ -726,127 +722,127 @@ exports[`DatePickerView DatePickerView time 1`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "2000",
+                    "label": "2000年",
                     "value": 2000,
                   },
                   Object {
-                    "label": "2001",
+                    "label": "2001年",
                     "value": 2001,
                   },
                   Object {
-                    "label": "2002",
+                    "label": "2002年",
                     "value": 2002,
                   },
                   Object {
-                    "label": "2003",
+                    "label": "2003年",
                     "value": 2003,
                   },
                   Object {
-                    "label": "2004",
+                    "label": "2004年",
                     "value": 2004,
                   },
                   Object {
-                    "label": "2005",
+                    "label": "2005年",
                     "value": 2005,
                   },
                   Object {
-                    "label": "2006",
+                    "label": "2006年",
                     "value": 2006,
                   },
                   Object {
-                    "label": "2007",
+                    "label": "2007年",
                     "value": 2007,
                   },
                   Object {
-                    "label": "2008",
+                    "label": "2008年",
                     "value": 2008,
                   },
                   Object {
-                    "label": "2009",
+                    "label": "2009年",
                     "value": 2009,
                   },
                   Object {
-                    "label": "2010",
+                    "label": "2010年",
                     "value": 2010,
                   },
                   Object {
-                    "label": "2011",
+                    "label": "2011年",
                     "value": 2011,
                   },
                   Object {
-                    "label": "2012",
+                    "label": "2012年",
                     "value": 2012,
                   },
                   Object {
-                    "label": "2013",
+                    "label": "2013年",
                     "value": 2013,
                   },
                   Object {
-                    "label": "2014",
+                    "label": "2014年",
                     "value": 2014,
                   },
                   Object {
-                    "label": "2015",
+                    "label": "2015年",
                     "value": 2015,
                   },
                   Object {
-                    "label": "2016",
+                    "label": "2016年",
                     "value": 2016,
                   },
                   Object {
-                    "label": "2017",
+                    "label": "2017年",
                     "value": 2017,
                   },
                   Object {
-                    "label": "2018",
+                    "label": "2018年",
                     "value": 2018,
                   },
                   Object {
-                    "label": "2019",
+                    "label": "2019年",
                     "value": 2019,
                   },
                   Object {
-                    "label": "2020",
+                    "label": "2020年",
                     "value": 2020,
                   },
                   Object {
-                    "label": "2021",
+                    "label": "2021年",
                     "value": 2021,
                   },
                   Object {
-                    "label": "2022",
+                    "label": "2022年",
                     "value": 2022,
                   },
                   Object {
-                    "label": "2023",
+                    "label": "2023年",
                     "value": 2023,
                   },
                   Object {
-                    "label": "2024",
+                    "label": "2024年",
                     "value": 2024,
                   },
                   Object {
-                    "label": "2025",
+                    "label": "2025年",
                     "value": 2025,
                   },
                   Object {
-                    "label": "2026",
+                    "label": "2026年",
                     "value": 2026,
                   },
                   Object {
-                    "label": "2027",
+                    "label": "2027年",
                     "value": 2027,
                   },
                   Object {
-                    "label": "2028",
+                    "label": "2028年",
                     "value": 2028,
                   },
                   Object {
-                    "label": "2029",
+                    "label": "2029年",
                     "value": 2029,
                   },
                   Object {
-                    "label": "2030",
+                    "label": "2030年",
                     "value": 2030,
                   },
                 ]
@@ -870,187 +866,187 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    2000
+                    2000年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    2001
+                    2001年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    2002
+                    2002年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    2003
+                    2003年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    2004
+                    2004年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    2005
+                    2005年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    2006
+                    2006年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    2007
+                    2007年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    2008
+                    2008年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    2009
+                    2009年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    2010
+                    2010年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    2011
+                    2011年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="12"
                   >
-                    2012
+                    2012年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    2013
+                    2013年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    2014
+                    2014年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    2015
+                    2015年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    2016
+                    2016年
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="17"
                   >
-                    2017
+                    2017年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    2018
+                    2018年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    2019
+                    2019年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    2020
+                    2020年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    2021
+                    2021年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    2022
+                    2022年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    2023
+                    2023年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="24"
                   >
-                    2024
+                    2024年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="25"
                   >
-                    2025
+                    2025年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="26"
                   >
-                    2026
+                    2026年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="27"
                   >
-                    2027
+                    2027年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="28"
                   >
-                    2028
+                    2028年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="29"
                   >
-                    2029
+                    2029年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="30"
                   >
-                    2030
+                    2030年
                   </div>
                 </div>
               </div>
@@ -1059,51 +1055,51 @@ exports[`DatePickerView DatePickerView time 1`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "1",
+                    "label": "1月",
                     "value": 0,
                   },
                   Object {
-                    "label": "2",
+                    "label": "2月",
                     "value": 1,
                   },
                   Object {
-                    "label": "3",
+                    "label": "3月",
                     "value": 2,
                   },
                   Object {
-                    "label": "4",
+                    "label": "4月",
                     "value": 3,
                   },
                   Object {
-                    "label": "5",
+                    "label": "5月",
                     "value": 4,
                   },
                   Object {
-                    "label": "6",
+                    "label": "6月",
                     "value": 5,
                   },
                   Object {
-                    "label": "7",
+                    "label": "7月",
                     "value": 6,
                   },
                   Object {
-                    "label": "8",
+                    "label": "8月",
                     "value": 7,
                   },
                   Object {
-                    "label": "9",
+                    "label": "9月",
                     "value": 8,
                   },
                   Object {
-                    "label": "10",
+                    "label": "10月",
                     "value": 9,
                   },
                   Object {
-                    "label": "11",
+                    "label": "11月",
                     "value": 10,
                   },
                   Object {
-                    "label": "12",
+                    "label": "12月",
                     "value": 11,
                   },
                 ]
@@ -1127,73 +1123,73 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    1
+                    1月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    2
+                    2月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    3
+                    3月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    4
+                    4月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    5
+                    5月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    6
+                    6月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    7
+                    7月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    8
+                    8月
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="8"
                   >
-                    9
+                    9月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    10
+                    10月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    11
+                    11月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    12
+                    12月
                   </div>
                 </div>
               </div>
@@ -1202,123 +1198,123 @@ exports[`DatePickerView DatePickerView time 1`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "1",
+                    "label": "1日",
                     "value": 1,
                   },
                   Object {
-                    "label": "2",
+                    "label": "2日",
                     "value": 2,
                   },
                   Object {
-                    "label": "3",
+                    "label": "3日",
                     "value": 3,
                   },
                   Object {
-                    "label": "4",
+                    "label": "4日",
                     "value": 4,
                   },
                   Object {
-                    "label": "5",
+                    "label": "5日",
                     "value": 5,
                   },
                   Object {
-                    "label": "6",
+                    "label": "6日",
                     "value": 6,
                   },
                   Object {
-                    "label": "7",
+                    "label": "7日",
                     "value": 7,
                   },
                   Object {
-                    "label": "8",
+                    "label": "8日",
                     "value": 8,
                   },
                   Object {
-                    "label": "9",
+                    "label": "9日",
                     "value": 9,
                   },
                   Object {
-                    "label": "10",
+                    "label": "10日",
                     "value": 10,
                   },
                   Object {
-                    "label": "11",
+                    "label": "11日",
                     "value": 11,
                   },
                   Object {
-                    "label": "12",
+                    "label": "12日",
                     "value": 12,
                   },
                   Object {
-                    "label": "13",
+                    "label": "13日",
                     "value": 13,
                   },
                   Object {
-                    "label": "14",
+                    "label": "14日",
                     "value": 14,
                   },
                   Object {
-                    "label": "15",
+                    "label": "15日",
                     "value": 15,
                   },
                   Object {
-                    "label": "16",
+                    "label": "16日",
                     "value": 16,
                   },
                   Object {
-                    "label": "17",
+                    "label": "17日",
                     "value": 17,
                   },
                   Object {
-                    "label": "18",
+                    "label": "18日",
                     "value": 18,
                   },
                   Object {
-                    "label": "19",
+                    "label": "19日",
                     "value": 19,
                   },
                   Object {
-                    "label": "20",
+                    "label": "20日",
                     "value": 20,
                   },
                   Object {
-                    "label": "21",
+                    "label": "21日",
                     "value": 21,
                   },
                   Object {
-                    "label": "22",
+                    "label": "22日",
                     "value": 22,
                   },
                   Object {
-                    "label": "23",
+                    "label": "23日",
                     "value": 23,
                   },
                   Object {
-                    "label": "24",
+                    "label": "24日",
                     "value": 24,
                   },
                   Object {
-                    "label": "25",
+                    "label": "25日",
                     "value": 25,
                   },
                   Object {
-                    "label": "26",
+                    "label": "26日",
                     "value": 26,
                   },
                   Object {
-                    "label": "27",
+                    "label": "27日",
                     "value": 27,
                   },
                   Object {
-                    "label": "28",
+                    "label": "28日",
                     "value": 28,
                   },
                   Object {
-                    "label": "29",
+                    "label": "29日",
                     "value": 29,
                   },
                   Object {
-                    "label": "30",
+                    "label": "30日",
                     "value": 30,
                   },
                 ]
@@ -1342,181 +1338,181 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    1
+                    1日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    2
+                    2日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    3
+                    3日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    4
+                    4日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    5
+                    5日
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="5"
                   >
-                    6
+                    6日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    7
+                    7日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    8
+                    8日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    9
+                    9日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    10
+                    10日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    11
+                    11日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    12
+                    12日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="12"
                   >
-                    13
+                    13日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    14
+                    14日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    15
+                    15日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    16
+                    16日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    17
+                    17日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="17"
                   >
-                    18
+                    18日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    19
+                    19日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    20
+                    20日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    21
+                    21日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    22
+                    22日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    23
+                    23日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    24
+                    24日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="24"
                   >
-                    25
+                    25日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="25"
                   >
-                    26
+                    26日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="26"
                   >
-                    27
+                    27日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="27"
                   >
-                    28
+                    28日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="28"
                   >
-                    29
+                    29日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="29"
                   >
-                    30
+                    30日
                   </div>
                 </div>
               </div>
@@ -1525,99 +1521,99 @@ exports[`DatePickerView DatePickerView time 1`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "00",
+                    "label": "0时",
                     "value": 0,
                   },
                   Object {
-                    "label": "01",
+                    "label": "1时",
                     "value": 1,
                   },
                   Object {
-                    "label": "02",
+                    "label": "2时",
                     "value": 2,
                   },
                   Object {
-                    "label": "03",
+                    "label": "3时",
                     "value": 3,
                   },
                   Object {
-                    "label": "04",
+                    "label": "4时",
                     "value": 4,
                   },
                   Object {
-                    "label": "05",
+                    "label": "5时",
                     "value": 5,
                   },
                   Object {
-                    "label": "06",
+                    "label": "6时",
                     "value": 6,
                   },
                   Object {
-                    "label": "07",
+                    "label": "7时",
                     "value": 7,
                   },
                   Object {
-                    "label": "08",
+                    "label": "8时",
                     "value": 8,
                   },
                   Object {
-                    "label": "09",
+                    "label": "9时",
                     "value": 9,
                   },
                   Object {
-                    "label": 10,
+                    "label": "10时",
                     "value": 10,
                   },
                   Object {
-                    "label": 11,
+                    "label": "11时",
                     "value": 11,
                   },
                   Object {
-                    "label": 12,
+                    "label": "12时",
                     "value": 12,
                   },
                   Object {
-                    "label": 13,
+                    "label": "13时",
                     "value": 13,
                   },
                   Object {
-                    "label": 14,
+                    "label": "14时",
                     "value": 14,
                   },
                   Object {
-                    "label": 15,
+                    "label": "15时",
                     "value": 15,
                   },
                   Object {
-                    "label": 16,
+                    "label": "16时",
                     "value": 16,
                   },
                   Object {
-                    "label": 17,
+                    "label": "17时",
                     "value": 17,
                   },
                   Object {
-                    "label": 18,
+                    "label": "18时",
                     "value": 18,
                   },
                   Object {
-                    "label": 19,
+                    "label": "19时",
                     "value": 19,
                   },
                   Object {
-                    "label": 20,
+                    "label": "20时",
                     "value": 20,
                   },
                   Object {
-                    "label": 21,
+                    "label": "21时",
                     "value": 21,
                   },
                   Object {
-                    "label": 22,
+                    "label": "22时",
                     "value": 22,
                   },
                   Object {
-                    "label": 23,
+                    "label": "23时",
                     "value": 23,
                   },
                 ]
@@ -1641,145 +1637,145 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    00
+                    0时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    01
+                    1时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    02
+                    2时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    03
+                    3时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    04
+                    4时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    05
+                    5时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    06
+                    6时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    07
+                    7时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    08
+                    8时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    09
+                    9时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    10
+                    10时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    11
+                    11时
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="12"
                   >
-                    12
+                    12时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    13
+                    13时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    14
+                    14时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    15
+                    15时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    16
+                    16时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="17"
                   >
-                    17
+                    17时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    18
+                    18时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    19
+                    19时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    20
+                    20时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    21
+                    21时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    22
+                    22时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    23
+                    23时
                   </div>
                 </div>
               </div>
@@ -1788,243 +1784,243 @@ exports[`DatePickerView DatePickerView time 1`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "00",
+                    "label": "0分",
                     "value": 0,
                   },
                   Object {
-                    "label": "01",
+                    "label": "1分",
                     "value": 1,
                   },
                   Object {
-                    "label": "02",
+                    "label": "2分",
                     "value": 2,
                   },
                   Object {
-                    "label": "03",
+                    "label": "3分",
                     "value": 3,
                   },
                   Object {
-                    "label": "04",
+                    "label": "4分",
                     "value": 4,
                   },
                   Object {
-                    "label": "05",
+                    "label": "5分",
                     "value": 5,
                   },
                   Object {
-                    "label": "06",
+                    "label": "6分",
                     "value": 6,
                   },
                   Object {
-                    "label": "07",
+                    "label": "7分",
                     "value": 7,
                   },
                   Object {
-                    "label": "08",
+                    "label": "8分",
                     "value": 8,
                   },
                   Object {
-                    "label": "09",
+                    "label": "9分",
                     "value": 9,
                   },
                   Object {
-                    "label": 10,
+                    "label": "10分",
                     "value": 10,
                   },
                   Object {
-                    "label": 11,
+                    "label": "11分",
                     "value": 11,
                   },
                   Object {
-                    "label": 12,
+                    "label": "12分",
                     "value": 12,
                   },
                   Object {
-                    "label": 13,
+                    "label": "13分",
                     "value": 13,
                   },
                   Object {
-                    "label": 14,
+                    "label": "14分",
                     "value": 14,
                   },
                   Object {
-                    "label": 15,
+                    "label": "15分",
                     "value": 15,
                   },
                   Object {
-                    "label": 16,
+                    "label": "16分",
                     "value": 16,
                   },
                   Object {
-                    "label": 17,
+                    "label": "17分",
                     "value": 17,
                   },
                   Object {
-                    "label": 18,
+                    "label": "18分",
                     "value": 18,
                   },
                   Object {
-                    "label": 19,
+                    "label": "19分",
                     "value": 19,
                   },
                   Object {
-                    "label": 20,
+                    "label": "20分",
                     "value": 20,
                   },
                   Object {
-                    "label": 21,
+                    "label": "21分",
                     "value": 21,
                   },
                   Object {
-                    "label": 22,
+                    "label": "22分",
                     "value": 22,
                   },
                   Object {
-                    "label": 23,
+                    "label": "23分",
                     "value": 23,
                   },
                   Object {
-                    "label": 24,
+                    "label": "24分",
                     "value": 24,
                   },
                   Object {
-                    "label": 25,
+                    "label": "25分",
                     "value": 25,
                   },
                   Object {
-                    "label": 26,
+                    "label": "26分",
                     "value": 26,
                   },
                   Object {
-                    "label": 27,
+                    "label": "27分",
                     "value": 27,
                   },
                   Object {
-                    "label": 28,
+                    "label": "28分",
                     "value": 28,
                   },
                   Object {
-                    "label": 29,
+                    "label": "29分",
                     "value": 29,
                   },
                   Object {
-                    "label": 30,
+                    "label": "30分",
                     "value": 30,
                   },
                   Object {
-                    "label": 31,
+                    "label": "31分",
                     "value": 31,
                   },
                   Object {
-                    "label": 32,
+                    "label": "32分",
                     "value": 32,
                   },
                   Object {
-                    "label": 33,
+                    "label": "33分",
                     "value": 33,
                   },
                   Object {
-                    "label": 34,
+                    "label": "34分",
                     "value": 34,
                   },
                   Object {
-                    "label": 35,
+                    "label": "35分",
                     "value": 35,
                   },
                   Object {
-                    "label": 36,
+                    "label": "36分",
                     "value": 36,
                   },
                   Object {
-                    "label": 37,
+                    "label": "37分",
                     "value": 37,
                   },
                   Object {
-                    "label": 38,
+                    "label": "38分",
                     "value": 38,
                   },
                   Object {
-                    "label": 39,
+                    "label": "39分",
                     "value": 39,
                   },
                   Object {
-                    "label": 40,
+                    "label": "40分",
                     "value": 40,
                   },
                   Object {
-                    "label": 41,
+                    "label": "41分",
                     "value": 41,
                   },
                   Object {
-                    "label": 42,
+                    "label": "42分",
                     "value": 42,
                   },
                   Object {
-                    "label": 43,
+                    "label": "43分",
                     "value": 43,
                   },
                   Object {
-                    "label": 44,
+                    "label": "44分",
                     "value": 44,
                   },
                   Object {
-                    "label": 45,
+                    "label": "45分",
                     "value": 45,
                   },
                   Object {
-                    "label": 46,
+                    "label": "46分",
                     "value": 46,
                   },
                   Object {
-                    "label": 47,
+                    "label": "47分",
                     "value": 47,
                   },
                   Object {
-                    "label": 48,
+                    "label": "48分",
                     "value": 48,
                   },
                   Object {
-                    "label": 49,
+                    "label": "49分",
                     "value": 49,
                   },
                   Object {
-                    "label": 50,
+                    "label": "50分",
                     "value": 50,
                   },
                   Object {
-                    "label": 51,
+                    "label": "51分",
                     "value": 51,
                   },
                   Object {
-                    "label": 52,
+                    "label": "52分",
                     "value": 52,
                   },
                   Object {
-                    "label": 53,
+                    "label": "53分",
                     "value": 53,
                   },
                   Object {
-                    "label": 54,
+                    "label": "54分",
                     "value": 54,
                   },
                   Object {
-                    "label": 55,
+                    "label": "55分",
                     "value": 55,
                   },
                   Object {
-                    "label": 56,
+                    "label": "56分",
                     "value": 56,
                   },
                   Object {
-                    "label": 57,
+                    "label": "57分",
                     "value": 57,
                   },
                   Object {
-                    "label": 58,
+                    "label": "58分",
                     "value": 58,
                   },
                   Object {
-                    "label": 59,
+                    "label": "59分",
                     "value": 59,
                   },
                 ]
@@ -2048,361 +2044,361 @@ exports[`DatePickerView DatePickerView time 1`] = `
                     className="za-wheel__item za-wheel__item--selected"
                     key="0"
                   >
-                    00
+                    0分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    01
+                    1分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    02
+                    2分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    03
+                    3分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    04
+                    4分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    05
+                    5分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    06
+                    6分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    07
+                    7分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    08
+                    8分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    09
+                    9分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    10
+                    10分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    11
+                    11分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="12"
                   >
-                    12
+                    12分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    13
+                    13分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    14
+                    14分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    15
+                    15分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    16
+                    16分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="17"
                   >
-                    17
+                    17分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    18
+                    18分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    19
+                    19分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    20
+                    20分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    21
+                    21分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    22
+                    22分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    23
+                    23分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="24"
                   >
-                    24
+                    24分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="25"
                   >
-                    25
+                    25分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="26"
                   >
-                    26
+                    26分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="27"
                   >
-                    27
+                    27分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="28"
                   >
-                    28
+                    28分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="29"
                   >
-                    29
+                    29分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="30"
                   >
-                    30
+                    30分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="31"
                   >
-                    31
+                    31分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="32"
                   >
-                    32
+                    32分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="33"
                   >
-                    33
+                    33分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="34"
                   >
-                    34
+                    34分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="35"
                   >
-                    35
+                    35分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="36"
                   >
-                    36
+                    36分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="37"
                   >
-                    37
+                    37分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="38"
                   >
-                    38
+                    38分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="39"
                   >
-                    39
+                    39分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="40"
                   >
-                    40
+                    40分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="41"
                   >
-                    41
+                    41分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="42"
                   >
-                    42
+                    42分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="43"
                   >
-                    43
+                    43分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="44"
                   >
-                    44
+                    44分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="45"
                   >
-                    45
+                    45分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="46"
                   >
-                    46
+                    46分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="47"
                   >
-                    47
+                    47分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="48"
                   >
-                    48
+                    48分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="49"
                   >
-                    49
+                    49分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="50"
                   >
-                    50
+                    50分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="51"
                   >
-                    51
+                    51分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="52"
                   >
-                    52
+                    52分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="53"
                   >
-                    53
+                    53分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="54"
                   >
-                    54
+                    54分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="55"
                   >
-                    55
+                    55分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="56"
                   >
-                    56
+                    56分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="57"
                   >
-                    57
+                    57分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="58"
                   >
-                    58
+                    58分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="59"
                   >
-                    59
+                    59分
                   </div>
                 </div>
               </div>
@@ -2418,11 +2414,11 @@ exports[`DatePickerView DatePickerView time 1`] = `
       </PickerView>
     </DatePickerView>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`DatePickerView DatePickerView time 2`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   max="2019-11-23 21:00"
   min="2007-01-03 11:00"
   mode="datetime"
@@ -2444,20 +2440,18 @@ exports[`DatePickerView DatePickerView time 2`] = `
       disabled={false}
       locale={
         Object {
-          "day": "",
-          "hour": "",
-          "minute": "",
-          "month": "",
-          "year": "",
+          "day": "日",
+          "hour": "时",
+          "minute": "分",
+          "month": "月",
+          "year": "年",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
       max="2019-11-23 21:00"
       min="2007-01-03 11:00"
       minuteStep={1}
       mode="datetime"
-      onCancel={[Function]}
-      onClick={[Function]}
       placeholder="请选择日期"
       prefixCls="za-date-picker-view"
       title="选择日期"
@@ -2471,567 +2465,567 @@ exports[`DatePickerView DatePickerView time 2`] = `
           Array [
             Array [
               Object {
-                "label": "2007",
+                "label": "2007年",
                 "value": 2007,
               },
               Object {
-                "label": "2008",
+                "label": "2008年",
                 "value": 2008,
               },
               Object {
-                "label": "2009",
+                "label": "2009年",
                 "value": 2009,
               },
               Object {
-                "label": "2010",
+                "label": "2010年",
                 "value": 2010,
               },
               Object {
-                "label": "2011",
+                "label": "2011年",
                 "value": 2011,
               },
               Object {
-                "label": "2012",
+                "label": "2012年",
                 "value": 2012,
               },
               Object {
-                "label": "2013",
+                "label": "2013年",
                 "value": 2013,
               },
               Object {
-                "label": "2014",
+                "label": "2014年",
                 "value": 2014,
               },
               Object {
-                "label": "2015",
+                "label": "2015年",
                 "value": 2015,
               },
               Object {
-                "label": "2016",
+                "label": "2016年",
                 "value": 2016,
               },
               Object {
-                "label": "2017",
+                "label": "2017年",
                 "value": 2017,
               },
               Object {
-                "label": "2018",
+                "label": "2018年",
                 "value": 2018,
               },
               Object {
-                "label": "2019",
+                "label": "2019年",
                 "value": 2019,
               },
             ],
             Array [
               Object {
-                "label": "1",
+                "label": "1月",
                 "value": 0,
               },
               Object {
-                "label": "2",
+                "label": "2月",
                 "value": 1,
               },
               Object {
-                "label": "3",
+                "label": "3月",
                 "value": 2,
               },
               Object {
-                "label": "4",
+                "label": "4月",
                 "value": 3,
               },
               Object {
-                "label": "5",
+                "label": "5月",
                 "value": 4,
               },
               Object {
-                "label": "6",
+                "label": "6月",
                 "value": 5,
               },
               Object {
-                "label": "7",
+                "label": "7月",
                 "value": 6,
               },
               Object {
-                "label": "8",
+                "label": "8月",
                 "value": 7,
               },
               Object {
-                "label": "9",
+                "label": "9月",
                 "value": 8,
               },
               Object {
-                "label": "10",
+                "label": "10月",
                 "value": 9,
               },
               Object {
-                "label": "11",
+                "label": "11月",
                 "value": 10,
               },
               Object {
-                "label": "12",
+                "label": "12月",
                 "value": 11,
               },
             ],
             Array [
               Object {
-                "label": "1",
+                "label": "1日",
                 "value": 1,
               },
               Object {
-                "label": "2",
+                "label": "2日",
                 "value": 2,
               },
               Object {
-                "label": "3",
+                "label": "3日",
                 "value": 3,
               },
               Object {
-                "label": "4",
+                "label": "4日",
                 "value": 4,
               },
               Object {
-                "label": "5",
+                "label": "5日",
                 "value": 5,
               },
               Object {
-                "label": "6",
+                "label": "6日",
                 "value": 6,
               },
               Object {
-                "label": "7",
+                "label": "7日",
                 "value": 7,
               },
               Object {
-                "label": "8",
+                "label": "8日",
                 "value": 8,
               },
               Object {
-                "label": "9",
+                "label": "9日",
                 "value": 9,
               },
               Object {
-                "label": "10",
+                "label": "10日",
                 "value": 10,
               },
               Object {
-                "label": "11",
+                "label": "11日",
                 "value": 11,
               },
               Object {
-                "label": "12",
+                "label": "12日",
                 "value": 12,
               },
               Object {
-                "label": "13",
+                "label": "13日",
                 "value": 13,
               },
               Object {
-                "label": "14",
+                "label": "14日",
                 "value": 14,
               },
               Object {
-                "label": "15",
+                "label": "15日",
                 "value": 15,
               },
               Object {
-                "label": "16",
+                "label": "16日",
                 "value": 16,
               },
               Object {
-                "label": "17",
+                "label": "17日",
                 "value": 17,
               },
               Object {
-                "label": "18",
+                "label": "18日",
                 "value": 18,
               },
               Object {
-                "label": "19",
+                "label": "19日",
                 "value": 19,
               },
               Object {
-                "label": "20",
+                "label": "20日",
                 "value": 20,
               },
               Object {
-                "label": "21",
+                "label": "21日",
                 "value": 21,
               },
               Object {
-                "label": "22",
+                "label": "22日",
                 "value": 22,
               },
               Object {
-                "label": "23",
+                "label": "23日",
                 "value": 23,
               },
               Object {
-                "label": "24",
+                "label": "24日",
                 "value": 24,
               },
               Object {
-                "label": "25",
+                "label": "25日",
                 "value": 25,
               },
               Object {
-                "label": "26",
+                "label": "26日",
                 "value": 26,
               },
               Object {
-                "label": "27",
+                "label": "27日",
                 "value": 27,
               },
               Object {
-                "label": "28",
+                "label": "28日",
                 "value": 28,
               },
               Object {
-                "label": "29",
+                "label": "29日",
                 "value": 29,
               },
               Object {
-                "label": "30",
+                "label": "30日",
                 "value": 30,
               },
             ],
             Array [
               Object {
-                "label": "00",
+                "label": "0时",
                 "value": 0,
               },
               Object {
-                "label": "01",
+                "label": "1时",
                 "value": 1,
               },
               Object {
-                "label": "02",
+                "label": "2时",
                 "value": 2,
               },
               Object {
-                "label": "03",
+                "label": "3时",
                 "value": 3,
               },
               Object {
-                "label": "04",
+                "label": "4时",
                 "value": 4,
               },
               Object {
-                "label": "05",
+                "label": "5时",
                 "value": 5,
               },
               Object {
-                "label": "06",
+                "label": "6时",
                 "value": 6,
               },
               Object {
-                "label": "07",
+                "label": "7时",
                 "value": 7,
               },
               Object {
-                "label": "08",
+                "label": "8时",
                 "value": 8,
               },
               Object {
-                "label": "09",
+                "label": "9时",
                 "value": 9,
               },
               Object {
-                "label": 10,
+                "label": "10时",
                 "value": 10,
               },
               Object {
-                "label": 11,
+                "label": "11时",
                 "value": 11,
               },
               Object {
-                "label": 12,
+                "label": "12时",
                 "value": 12,
               },
               Object {
-                "label": 13,
+                "label": "13时",
                 "value": 13,
               },
               Object {
-                "label": 14,
+                "label": "14时",
                 "value": 14,
               },
               Object {
-                "label": 15,
+                "label": "15时",
                 "value": 15,
               },
               Object {
-                "label": 16,
+                "label": "16时",
                 "value": 16,
               },
               Object {
-                "label": 17,
+                "label": "17时",
                 "value": 17,
               },
               Object {
-                "label": 18,
+                "label": "18时",
                 "value": 18,
               },
               Object {
-                "label": 19,
+                "label": "19时",
                 "value": 19,
               },
               Object {
-                "label": 20,
+                "label": "20时",
                 "value": 20,
               },
               Object {
-                "label": 21,
+                "label": "21时",
                 "value": 21,
               },
               Object {
-                "label": 22,
+                "label": "22时",
                 "value": 22,
               },
               Object {
-                "label": 23,
+                "label": "23时",
                 "value": 23,
               },
             ],
             Array [
               Object {
-                "label": "00",
+                "label": "0分",
                 "value": 0,
               },
               Object {
-                "label": "01",
+                "label": "1分",
                 "value": 1,
               },
               Object {
-                "label": "02",
+                "label": "2分",
                 "value": 2,
               },
               Object {
-                "label": "03",
+                "label": "3分",
                 "value": 3,
               },
               Object {
-                "label": "04",
+                "label": "4分",
                 "value": 4,
               },
               Object {
-                "label": "05",
+                "label": "5分",
                 "value": 5,
               },
               Object {
-                "label": "06",
+                "label": "6分",
                 "value": 6,
               },
               Object {
-                "label": "07",
+                "label": "7分",
                 "value": 7,
               },
               Object {
-                "label": "08",
+                "label": "8分",
                 "value": 8,
               },
               Object {
-                "label": "09",
+                "label": "9分",
                 "value": 9,
               },
               Object {
-                "label": 10,
+                "label": "10分",
                 "value": 10,
               },
               Object {
-                "label": 11,
+                "label": "11分",
                 "value": 11,
               },
               Object {
-                "label": 12,
+                "label": "12分",
                 "value": 12,
               },
               Object {
-                "label": 13,
+                "label": "13分",
                 "value": 13,
               },
               Object {
-                "label": 14,
+                "label": "14分",
                 "value": 14,
               },
               Object {
-                "label": 15,
+                "label": "15分",
                 "value": 15,
               },
               Object {
-                "label": 16,
+                "label": "16分",
                 "value": 16,
               },
               Object {
-                "label": 17,
+                "label": "17分",
                 "value": 17,
               },
               Object {
-                "label": 18,
+                "label": "18分",
                 "value": 18,
               },
               Object {
-                "label": 19,
+                "label": "19分",
                 "value": 19,
               },
               Object {
-                "label": 20,
+                "label": "20分",
                 "value": 20,
               },
               Object {
-                "label": 21,
+                "label": "21分",
                 "value": 21,
               },
               Object {
-                "label": 22,
+                "label": "22分",
                 "value": 22,
               },
               Object {
-                "label": 23,
+                "label": "23分",
                 "value": 23,
               },
               Object {
-                "label": 24,
+                "label": "24分",
                 "value": 24,
               },
               Object {
-                "label": 25,
+                "label": "25分",
                 "value": 25,
               },
               Object {
-                "label": 26,
+                "label": "26分",
                 "value": 26,
               },
               Object {
-                "label": 27,
+                "label": "27分",
                 "value": 27,
               },
               Object {
-                "label": 28,
+                "label": "28分",
                 "value": 28,
               },
               Object {
-                "label": 29,
+                "label": "29分",
                 "value": 29,
               },
               Object {
-                "label": 30,
+                "label": "30分",
                 "value": 30,
               },
               Object {
-                "label": 31,
+                "label": "31分",
                 "value": 31,
               },
               Object {
-                "label": 32,
+                "label": "32分",
                 "value": 32,
               },
               Object {
-                "label": 33,
+                "label": "33分",
                 "value": 33,
               },
               Object {
-                "label": 34,
+                "label": "34分",
                 "value": 34,
               },
               Object {
-                "label": 35,
+                "label": "35分",
                 "value": 35,
               },
               Object {
-                "label": 36,
+                "label": "36分",
                 "value": 36,
               },
               Object {
-                "label": 37,
+                "label": "37分",
                 "value": 37,
               },
               Object {
-                "label": 38,
+                "label": "38分",
                 "value": 38,
               },
               Object {
-                "label": 39,
+                "label": "39分",
                 "value": 39,
               },
               Object {
-                "label": 40,
+                "label": "40分",
                 "value": 40,
               },
               Object {
-                "label": 41,
+                "label": "41分",
                 "value": 41,
               },
               Object {
-                "label": 42,
+                "label": "42分",
                 "value": 42,
               },
               Object {
-                "label": 43,
+                "label": "43分",
                 "value": 43,
               },
               Object {
-                "label": 44,
+                "label": "44分",
                 "value": 44,
               },
               Object {
-                "label": 45,
+                "label": "45分",
                 "value": 45,
               },
               Object {
-                "label": 46,
+                "label": "46分",
                 "value": 46,
               },
               Object {
-                "label": 47,
+                "label": "47分",
                 "value": 47,
               },
               Object {
-                "label": 48,
+                "label": "48分",
                 "value": 48,
               },
               Object {
-                "label": 49,
+                "label": "49分",
                 "value": 49,
               },
               Object {
-                "label": 50,
+                "label": "50分",
                 "value": 50,
               },
               Object {
-                "label": 51,
+                "label": "51分",
                 "value": 51,
               },
               Object {
-                "label": 52,
+                "label": "52分",
                 "value": 52,
               },
               Object {
-                "label": 53,
+                "label": "53分",
                 "value": 53,
               },
               Object {
-                "label": 54,
+                "label": "54分",
                 "value": 54,
               },
               Object {
-                "label": 55,
+                "label": "55分",
                 "value": 55,
               },
               Object {
-                "label": 56,
+                "label": "56分",
                 "value": 56,
               },
               Object {
-                "label": 57,
+                "label": "57分",
                 "value": 57,
               },
               Object {
-                "label": 58,
+                "label": "58分",
                 "value": 58,
               },
               Object {
-                "label": 59,
+                "label": "59分",
                 "value": 59,
               },
             ],
@@ -3042,21 +3036,19 @@ exports[`DatePickerView DatePickerView time 2`] = `
         itemRender={[Function]}
         locale={
           Object {
-            "day": "",
-            "hour": "",
-            "minute": "",
-            "month": "",
-            "year": "",
+            "day": "日",
+            "hour": "时",
+            "minute": "分",
+            "month": "月",
+            "year": "年",
           }
         }
-        localeCode="en"
+        localeCode="zh-cn"
         max="2019-11-23 21:00"
         min="2007-01-03 11:00"
         minuteStep={1}
         mode="datetime"
-        onCancel={[Function]}
         onChange={[Function]}
-        onClick={[Function]}
         onTransition={[Function]}
         placeholder="请选择日期"
         prefixCls="za-date-picker-view"
@@ -3083,55 +3075,55 @@ exports[`DatePickerView DatePickerView time 2`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "2007",
+                    "label": "2007年",
                     "value": 2007,
                   },
                   Object {
-                    "label": "2008",
+                    "label": "2008年",
                     "value": 2008,
                   },
                   Object {
-                    "label": "2009",
+                    "label": "2009年",
                     "value": 2009,
                   },
                   Object {
-                    "label": "2010",
+                    "label": "2010年",
                     "value": 2010,
                   },
                   Object {
-                    "label": "2011",
+                    "label": "2011年",
                     "value": 2011,
                   },
                   Object {
-                    "label": "2012",
+                    "label": "2012年",
                     "value": 2012,
                   },
                   Object {
-                    "label": "2013",
+                    "label": "2013年",
                     "value": 2013,
                   },
                   Object {
-                    "label": "2014",
+                    "label": "2014年",
                     "value": 2014,
                   },
                   Object {
-                    "label": "2015",
+                    "label": "2015年",
                     "value": 2015,
                   },
                   Object {
-                    "label": "2016",
+                    "label": "2016年",
                     "value": 2016,
                   },
                   Object {
-                    "label": "2017",
+                    "label": "2017年",
                     "value": 2017,
                   },
                   Object {
-                    "label": "2018",
+                    "label": "2018年",
                     "value": 2018,
                   },
                   Object {
-                    "label": "2019",
+                    "label": "2019年",
                     "value": 2019,
                   },
                 ]
@@ -3155,79 +3147,79 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    2007
+                    2007年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    2008
+                    2008年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    2009
+                    2009年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    2010
+                    2010年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    2011
+                    2011年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    2012
+                    2012年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    2013
+                    2013年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    2014
+                    2014年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    2015
+                    2015年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    2016
+                    2016年
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="10"
                   >
-                    2017
+                    2017年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    2018
+                    2018年
                   </div>
                   <div
                     className="za-wheel__item"
                     key="12"
                   >
-                    2019
+                    2019年
                   </div>
                 </div>
               </div>
@@ -3236,51 +3228,51 @@ exports[`DatePickerView DatePickerView time 2`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "1",
+                    "label": "1月",
                     "value": 0,
                   },
                   Object {
-                    "label": "2",
+                    "label": "2月",
                     "value": 1,
                   },
                   Object {
-                    "label": "3",
+                    "label": "3月",
                     "value": 2,
                   },
                   Object {
-                    "label": "4",
+                    "label": "4月",
                     "value": 3,
                   },
                   Object {
-                    "label": "5",
+                    "label": "5月",
                     "value": 4,
                   },
                   Object {
-                    "label": "6",
+                    "label": "6月",
                     "value": 5,
                   },
                   Object {
-                    "label": "7",
+                    "label": "7月",
                     "value": 6,
                   },
                   Object {
-                    "label": "8",
+                    "label": "8月",
                     "value": 7,
                   },
                   Object {
-                    "label": "9",
+                    "label": "9月",
                     "value": 8,
                   },
                   Object {
-                    "label": "10",
+                    "label": "10月",
                     "value": 9,
                   },
                   Object {
-                    "label": "11",
+                    "label": "11月",
                     "value": 10,
                   },
                   Object {
-                    "label": "12",
+                    "label": "12月",
                     "value": 11,
                   },
                 ]
@@ -3304,73 +3296,73 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    1
+                    1月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    2
+                    2月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    3
+                    3月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    4
+                    4月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    5
+                    5月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    6
+                    6月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    7
+                    7月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    8
+                    8月
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="8"
                   >
-                    9
+                    9月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    10
+                    10月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    11
+                    11月
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    12
+                    12月
                   </div>
                 </div>
               </div>
@@ -3379,123 +3371,123 @@ exports[`DatePickerView DatePickerView time 2`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "1",
+                    "label": "1日",
                     "value": 1,
                   },
                   Object {
-                    "label": "2",
+                    "label": "2日",
                     "value": 2,
                   },
                   Object {
-                    "label": "3",
+                    "label": "3日",
                     "value": 3,
                   },
                   Object {
-                    "label": "4",
+                    "label": "4日",
                     "value": 4,
                   },
                   Object {
-                    "label": "5",
+                    "label": "5日",
                     "value": 5,
                   },
                   Object {
-                    "label": "6",
+                    "label": "6日",
                     "value": 6,
                   },
                   Object {
-                    "label": "7",
+                    "label": "7日",
                     "value": 7,
                   },
                   Object {
-                    "label": "8",
+                    "label": "8日",
                     "value": 8,
                   },
                   Object {
-                    "label": "9",
+                    "label": "9日",
                     "value": 9,
                   },
                   Object {
-                    "label": "10",
+                    "label": "10日",
                     "value": 10,
                   },
                   Object {
-                    "label": "11",
+                    "label": "11日",
                     "value": 11,
                   },
                   Object {
-                    "label": "12",
+                    "label": "12日",
                     "value": 12,
                   },
                   Object {
-                    "label": "13",
+                    "label": "13日",
                     "value": 13,
                   },
                   Object {
-                    "label": "14",
+                    "label": "14日",
                     "value": 14,
                   },
                   Object {
-                    "label": "15",
+                    "label": "15日",
                     "value": 15,
                   },
                   Object {
-                    "label": "16",
+                    "label": "16日",
                     "value": 16,
                   },
                   Object {
-                    "label": "17",
+                    "label": "17日",
                     "value": 17,
                   },
                   Object {
-                    "label": "18",
+                    "label": "18日",
                     "value": 18,
                   },
                   Object {
-                    "label": "19",
+                    "label": "19日",
                     "value": 19,
                   },
                   Object {
-                    "label": "20",
+                    "label": "20日",
                     "value": 20,
                   },
                   Object {
-                    "label": "21",
+                    "label": "21日",
                     "value": 21,
                   },
                   Object {
-                    "label": "22",
+                    "label": "22日",
                     "value": 22,
                   },
                   Object {
-                    "label": "23",
+                    "label": "23日",
                     "value": 23,
                   },
                   Object {
-                    "label": "24",
+                    "label": "24日",
                     "value": 24,
                   },
                   Object {
-                    "label": "25",
+                    "label": "25日",
                     "value": 25,
                   },
                   Object {
-                    "label": "26",
+                    "label": "26日",
                     "value": 26,
                   },
                   Object {
-                    "label": "27",
+                    "label": "27日",
                     "value": 27,
                   },
                   Object {
-                    "label": "28",
+                    "label": "28日",
                     "value": 28,
                   },
                   Object {
-                    "label": "29",
+                    "label": "29日",
                     "value": 29,
                   },
                   Object {
-                    "label": "30",
+                    "label": "30日",
                     "value": 30,
                   },
                 ]
@@ -3519,181 +3511,181 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    1
+                    1日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    2
+                    2日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    3
+                    3日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    4
+                    4日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    5
+                    5日
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="5"
                   >
-                    6
+                    6日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    7
+                    7日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    8
+                    8日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    9
+                    9日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    10
+                    10日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    11
+                    11日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    12
+                    12日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="12"
                   >
-                    13
+                    13日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    14
+                    14日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    15
+                    15日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    16
+                    16日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    17
+                    17日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="17"
                   >
-                    18
+                    18日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    19
+                    19日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    20
+                    20日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    21
+                    21日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    22
+                    22日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    23
+                    23日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    24
+                    24日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="24"
                   >
-                    25
+                    25日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="25"
                   >
-                    26
+                    26日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="26"
                   >
-                    27
+                    27日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="27"
                   >
-                    28
+                    28日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="28"
                   >
-                    29
+                    29日
                   </div>
                   <div
                     className="za-wheel__item"
                     key="29"
                   >
-                    30
+                    30日
                   </div>
                 </div>
               </div>
@@ -3702,99 +3694,99 @@ exports[`DatePickerView DatePickerView time 2`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "00",
+                    "label": "0时",
                     "value": 0,
                   },
                   Object {
-                    "label": "01",
+                    "label": "1时",
                     "value": 1,
                   },
                   Object {
-                    "label": "02",
+                    "label": "2时",
                     "value": 2,
                   },
                   Object {
-                    "label": "03",
+                    "label": "3时",
                     "value": 3,
                   },
                   Object {
-                    "label": "04",
+                    "label": "4时",
                     "value": 4,
                   },
                   Object {
-                    "label": "05",
+                    "label": "5时",
                     "value": 5,
                   },
                   Object {
-                    "label": "06",
+                    "label": "6时",
                     "value": 6,
                   },
                   Object {
-                    "label": "07",
+                    "label": "7时",
                     "value": 7,
                   },
                   Object {
-                    "label": "08",
+                    "label": "8时",
                     "value": 8,
                   },
                   Object {
-                    "label": "09",
+                    "label": "9时",
                     "value": 9,
                   },
                   Object {
-                    "label": 10,
+                    "label": "10时",
                     "value": 10,
                   },
                   Object {
-                    "label": 11,
+                    "label": "11时",
                     "value": 11,
                   },
                   Object {
-                    "label": 12,
+                    "label": "12时",
                     "value": 12,
                   },
                   Object {
-                    "label": 13,
+                    "label": "13时",
                     "value": 13,
                   },
                   Object {
-                    "label": 14,
+                    "label": "14时",
                     "value": 14,
                   },
                   Object {
-                    "label": 15,
+                    "label": "15时",
                     "value": 15,
                   },
                   Object {
-                    "label": 16,
+                    "label": "16时",
                     "value": 16,
                   },
                   Object {
-                    "label": 17,
+                    "label": "17时",
                     "value": 17,
                   },
                   Object {
-                    "label": 18,
+                    "label": "18时",
                     "value": 18,
                   },
                   Object {
-                    "label": 19,
+                    "label": "19时",
                     "value": 19,
                   },
                   Object {
-                    "label": 20,
+                    "label": "20时",
                     "value": 20,
                   },
                   Object {
-                    "label": 21,
+                    "label": "21时",
                     "value": 21,
                   },
                   Object {
-                    "label": 22,
+                    "label": "22时",
                     "value": 22,
                   },
                   Object {
-                    "label": 23,
+                    "label": "23时",
                     "value": 23,
                   },
                 ]
@@ -3818,145 +3810,145 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     className="za-wheel__item"
                     key="0"
                   >
-                    00
+                    0时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    01
+                    1时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    02
+                    2时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    03
+                    3时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    04
+                    4时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    05
+                    5时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    06
+                    6时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    07
+                    7时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    08
+                    8时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    09
+                    9时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    10
+                    10时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    11
+                    11时
                   </div>
                   <div
                     className="za-wheel__item za-wheel__item--selected"
                     key="12"
                   >
-                    12
+                    12时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    13
+                    13时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    14
+                    14时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    15
+                    15时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    16
+                    16时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="17"
                   >
-                    17
+                    17时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    18
+                    18时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    19
+                    19时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    20
+                    20时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    21
+                    21时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    22
+                    22时
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    23
+                    23时
                   </div>
                 </div>
               </div>
@@ -3965,243 +3957,243 @@ exports[`DatePickerView DatePickerView time 2`] = `
               dataSource={
                 Array [
                   Object {
-                    "label": "00",
+                    "label": "0分",
                     "value": 0,
                   },
                   Object {
-                    "label": "01",
+                    "label": "1分",
                     "value": 1,
                   },
                   Object {
-                    "label": "02",
+                    "label": "2分",
                     "value": 2,
                   },
                   Object {
-                    "label": "03",
+                    "label": "3分",
                     "value": 3,
                   },
                   Object {
-                    "label": "04",
+                    "label": "4分",
                     "value": 4,
                   },
                   Object {
-                    "label": "05",
+                    "label": "5分",
                     "value": 5,
                   },
                   Object {
-                    "label": "06",
+                    "label": "6分",
                     "value": 6,
                   },
                   Object {
-                    "label": "07",
+                    "label": "7分",
                     "value": 7,
                   },
                   Object {
-                    "label": "08",
+                    "label": "8分",
                     "value": 8,
                   },
                   Object {
-                    "label": "09",
+                    "label": "9分",
                     "value": 9,
                   },
                   Object {
-                    "label": 10,
+                    "label": "10分",
                     "value": 10,
                   },
                   Object {
-                    "label": 11,
+                    "label": "11分",
                     "value": 11,
                   },
                   Object {
-                    "label": 12,
+                    "label": "12分",
                     "value": 12,
                   },
                   Object {
-                    "label": 13,
+                    "label": "13分",
                     "value": 13,
                   },
                   Object {
-                    "label": 14,
+                    "label": "14分",
                     "value": 14,
                   },
                   Object {
-                    "label": 15,
+                    "label": "15分",
                     "value": 15,
                   },
                   Object {
-                    "label": 16,
+                    "label": "16分",
                     "value": 16,
                   },
                   Object {
-                    "label": 17,
+                    "label": "17分",
                     "value": 17,
                   },
                   Object {
-                    "label": 18,
+                    "label": "18分",
                     "value": 18,
                   },
                   Object {
-                    "label": 19,
+                    "label": "19分",
                     "value": 19,
                   },
                   Object {
-                    "label": 20,
+                    "label": "20分",
                     "value": 20,
                   },
                   Object {
-                    "label": 21,
+                    "label": "21分",
                     "value": 21,
                   },
                   Object {
-                    "label": 22,
+                    "label": "22分",
                     "value": 22,
                   },
                   Object {
-                    "label": 23,
+                    "label": "23分",
                     "value": 23,
                   },
                   Object {
-                    "label": 24,
+                    "label": "24分",
                     "value": 24,
                   },
                   Object {
-                    "label": 25,
+                    "label": "25分",
                     "value": 25,
                   },
                   Object {
-                    "label": 26,
+                    "label": "26分",
                     "value": 26,
                   },
                   Object {
-                    "label": 27,
+                    "label": "27分",
                     "value": 27,
                   },
                   Object {
-                    "label": 28,
+                    "label": "28分",
                     "value": 28,
                   },
                   Object {
-                    "label": 29,
+                    "label": "29分",
                     "value": 29,
                   },
                   Object {
-                    "label": 30,
+                    "label": "30分",
                     "value": 30,
                   },
                   Object {
-                    "label": 31,
+                    "label": "31分",
                     "value": 31,
                   },
                   Object {
-                    "label": 32,
+                    "label": "32分",
                     "value": 32,
                   },
                   Object {
-                    "label": 33,
+                    "label": "33分",
                     "value": 33,
                   },
                   Object {
-                    "label": 34,
+                    "label": "34分",
                     "value": 34,
                   },
                   Object {
-                    "label": 35,
+                    "label": "35分",
                     "value": 35,
                   },
                   Object {
-                    "label": 36,
+                    "label": "36分",
                     "value": 36,
                   },
                   Object {
-                    "label": 37,
+                    "label": "37分",
                     "value": 37,
                   },
                   Object {
-                    "label": 38,
+                    "label": "38分",
                     "value": 38,
                   },
                   Object {
-                    "label": 39,
+                    "label": "39分",
                     "value": 39,
                   },
                   Object {
-                    "label": 40,
+                    "label": "40分",
                     "value": 40,
                   },
                   Object {
-                    "label": 41,
+                    "label": "41分",
                     "value": 41,
                   },
                   Object {
-                    "label": 42,
+                    "label": "42分",
                     "value": 42,
                   },
                   Object {
-                    "label": 43,
+                    "label": "43分",
                     "value": 43,
                   },
                   Object {
-                    "label": 44,
+                    "label": "44分",
                     "value": 44,
                   },
                   Object {
-                    "label": 45,
+                    "label": "45分",
                     "value": 45,
                   },
                   Object {
-                    "label": 46,
+                    "label": "46分",
                     "value": 46,
                   },
                   Object {
-                    "label": 47,
+                    "label": "47分",
                     "value": 47,
                   },
                   Object {
-                    "label": 48,
+                    "label": "48分",
                     "value": 48,
                   },
                   Object {
-                    "label": 49,
+                    "label": "49分",
                     "value": 49,
                   },
                   Object {
-                    "label": 50,
+                    "label": "50分",
                     "value": 50,
                   },
                   Object {
-                    "label": 51,
+                    "label": "51分",
                     "value": 51,
                   },
                   Object {
-                    "label": 52,
+                    "label": "52分",
                     "value": 52,
                   },
                   Object {
-                    "label": 53,
+                    "label": "53分",
                     "value": 53,
                   },
                   Object {
-                    "label": 54,
+                    "label": "54分",
                     "value": 54,
                   },
                   Object {
-                    "label": 55,
+                    "label": "55分",
                     "value": 55,
                   },
                   Object {
-                    "label": 56,
+                    "label": "56分",
                     "value": 56,
                   },
                   Object {
-                    "label": 57,
+                    "label": "57分",
                     "value": 57,
                   },
                   Object {
-                    "label": 58,
+                    "label": "58分",
                     "value": 58,
                   },
                   Object {
-                    "label": 59,
+                    "label": "59分",
                     "value": 59,
                   },
                 ]
@@ -4225,361 +4217,361 @@ exports[`DatePickerView DatePickerView time 2`] = `
                     className="za-wheel__item za-wheel__item--selected"
                     key="0"
                   >
-                    00
+                    0分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="1"
                   >
-                    01
+                    1分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="2"
                   >
-                    02
+                    2分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="3"
                   >
-                    03
+                    3分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="4"
                   >
-                    04
+                    4分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="5"
                   >
-                    05
+                    5分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="6"
                   >
-                    06
+                    6分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="7"
                   >
-                    07
+                    7分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="8"
                   >
-                    08
+                    8分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="9"
                   >
-                    09
+                    9分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="10"
                   >
-                    10
+                    10分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="11"
                   >
-                    11
+                    11分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="12"
                   >
-                    12
+                    12分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="13"
                   >
-                    13
+                    13分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="14"
                   >
-                    14
+                    14分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="15"
                   >
-                    15
+                    15分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="16"
                   >
-                    16
+                    16分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="17"
                   >
-                    17
+                    17分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="18"
                   >
-                    18
+                    18分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="19"
                   >
-                    19
+                    19分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="20"
                   >
-                    20
+                    20分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="21"
                   >
-                    21
+                    21分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="22"
                   >
-                    22
+                    22分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="23"
                   >
-                    23
+                    23分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="24"
                   >
-                    24
+                    24分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="25"
                   >
-                    25
+                    25分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="26"
                   >
-                    26
+                    26分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="27"
                   >
-                    27
+                    27分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="28"
                   >
-                    28
+                    28分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="29"
                   >
-                    29
+                    29分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="30"
                   >
-                    30
+                    30分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="31"
                   >
-                    31
+                    31分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="32"
                   >
-                    32
+                    32分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="33"
                   >
-                    33
+                    33分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="34"
                   >
-                    34
+                    34分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="35"
                   >
-                    35
+                    35分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="36"
                   >
-                    36
+                    36分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="37"
                   >
-                    37
+                    37分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="38"
                   >
-                    38
+                    38分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="39"
                   >
-                    39
+                    39分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="40"
                   >
-                    40
+                    40分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="41"
                   >
-                    41
+                    41分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="42"
                   >
-                    42
+                    42分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="43"
                   >
-                    43
+                    43分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="44"
                   >
-                    44
+                    44分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="45"
                   >
-                    45
+                    45分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="46"
                   >
-                    46
+                    46分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="47"
                   >
-                    47
+                    47分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="48"
                   >
-                    48
+                    48分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="49"
                   >
-                    49
+                    49分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="50"
                   >
-                    50
+                    50分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="51"
                   >
-                    51
+                    51分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="52"
                   >
-                    52
+                    52分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="53"
                   >
-                    53
+                    53分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="54"
                   >
-                    54
+                    54分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="55"
                   >
-                    55
+                    55分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="56"
                   >
-                    56
+                    56分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="57"
                   >
-                    57
+                    57分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="58"
                   >
-                    58
+                    58分
                   </div>
                   <div
                     className="za-wheel__item"
                     key="59"
                   >
-                    59
+                    59分
                   </div>
                 </div>
               </div>
@@ -4595,5 +4587,5 @@ exports[`DatePickerView DatePickerView time 2`] = `
       </PickerView>
     </DatePickerView>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

@@ -6,12 +6,11 @@ import Modal from '../index';
 describe('Modal', () => {
   it('renders correctly', () => {
     const onMaskClick = jest.fn();
-    const onClose = jest.fn();
+    const onCancel = jest.fn();
 
     const wrapper = mount(
-      <Modal visible onMaskClick={onMaskClick}>
-        <Modal.Header title="标题" onClose={onClose} />
-        <Modal.Body>foo</Modal.Body>
+      <Modal visible onMaskClick={onMaskClick} closable title="标题" onCancel={onCancel}>
+        foo
       </Modal>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -19,15 +18,19 @@ describe('Modal', () => {
   });
 
   it('onClose', () => {
-    const onClose = jest.fn();
-    const wrapper = shallow(
-      <Modal visible>
-        <Modal.Header title="标题" onClose={onClose} />
-        <Modal.Body>foo</Modal.Body>
+    const onCancel = jest.fn();
+    const wrapper = mount(
+      <Modal
+        visible
+        title="标题"
+        closable
+        onCancel={onCancel}
+      >
+        模态框内容
       </Modal>,
     );
-    wrapper.find(Modal.Header).dive().find('.za-modal__header__close').simulate('click');
-    expect(onClose).toBeCalled();
+    wrapper.find('.za-modal__header__close').at(0).simulate('click');
+    expect(onCancel).toBeCalled();
   });
 
   it('receive new visible', () => {
@@ -41,6 +44,6 @@ describe('Modal', () => {
 
   it('click dialog', () => {
     const wrapper = mount(<Modal visible>foo</Modal>);
-    wrapper.find('.za-modal__dialog').simulate('click');
+    wrapper.find('.za-popup__wrapper').simulate('click');
   });
 });

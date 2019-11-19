@@ -1,22 +1,26 @@
-import React, { PureComponent, cloneElement } from 'react';
+import React, { PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxGroupProps } from './PropsType';
 
-const getChildChecked = (children) => {
-  const checkedValue: any[] = [];
-  React.Children.map(children, (element: any) => {
-    if (element.props && element.props.checked) {
+const getChildChecked = (children: ReactNode) => {
+  const checkedValue: Array<number | string> = [];
+
+  React.Children.map(children, (element: ReactNode) => {
+    if (React.isValidElement(element)
+      && element.props
+      && element.props.checked) {
       checkedValue.push(element.props.value);
     }
   });
+
   return checkedValue;
 };
 
-const getValue = (props, defaultValue) => {
-  if ('value' in props) {
+const getValue = (props: CheckboxGroup['props'], defaultValue: BaseCheckboxGroupProps['defaultValue']) => {
+  if (typeof props.value !== 'undefined') {
     return props.value;
   }
-  if ('defaultValue' in props) {
+  if (typeof props.defaultValue !== 'undefined') {
     return props.defaultValue;
   }
   if (getChildChecked(props.children).length > 0) {
@@ -30,7 +34,13 @@ export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
   className?: string;
 }
 
-export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any> {
+export interface CheckboxGroupStates {
+  value?: Array<number | string>;
+}
+
+export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, CheckboxGroupStates> {
+  static displayName = 'CheckboxGroup';
+
   static defaultProps = {
     prefixCls: 'za-checkbox-group',
     shape: 'radius',
@@ -38,24 +48,28 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
     disabled: false,
   };
 
-  constructor(props) {
+  constructor(props: CheckboxGroup['props']) {
     super(props);
     this.state = {
       value: getValue(props, []),
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  static getDerivedStateFromProps(nextProps: CheckboxGroup['props']) {
     if ('value' in nextProps || getChildChecked(nextProps.children).length > 0) {
-      this.setState({
+      return {
         value: nextProps.value || getChildChecked(nextProps.children),
-      });
+      };
     }
+
+    return null;
   }
 
-  onChildChange = (value) => {
+  onChildChange = (value: string | number) => {
     const { value: valueState } = this.state;
-    const values = valueState.slice();
+
+    const values = valueState!.slice();
+
     const index = values.indexOf(value);
 
     if (index < 0) {
@@ -78,16 +92,23 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, any
     const { prefixCls, className, shape, type, block, disabled, children } = this.props;
     const { value } = this.state;
 
-    const items = React.Children.map(children, (element: any, index) => {
-      return cloneElement(element, {
-        key: index,
-        type,
-        shape,
-        block: block || element.props.block,
-        disabled: disabled || element.props.disabled,
-        onChange: () => this.onChildChange(element.props.value),
-        checked: value.indexOf(element.props.value) > -1,
-      });
+    const items = React.Children.map(children, (element: ReactNode, index) => {
+      if (isValidElement(element)) {
+        return cloneElement(element, {
+          key: index,
+          type,
+          shape,
+          block: block || element.props.block,
+          disabled: disabled || element.props.disabled,
+          checked: value!.indexOf(element.props.value) > -1,
+          onChange: (checked: boolean) => {
+            typeof element.props.onChange === 'function' && element.props.onChange(checked);
+            this.onChildChange(element.props.value);
+          },
+        });
+      }
+
+      return null;
     });
 
     const cls = classnames(prefixCls, className, {

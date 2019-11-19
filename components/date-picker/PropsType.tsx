@@ -1,12 +1,15 @@
-import { BaseDatePickerViewProps } from '../date-picker-view/PropsType';
+import BaseDatePickerViewProps from '../date-picker-view/PropsType';
 
-export interface BaseDatePickerProps extends BaseDatePickerViewProps {
+type getContainerFunc = () => HTMLElement;
+
+export default interface BaseDatePickerProps extends BaseDatePickerViewProps {
   visible?: boolean;
   title?: string;
   okText?: string;
   cancelText?: string;
+  destroy: boolean;
   onOk?: (value?: object) => void;
   onCancel?: () => void;
-  onMaskClick?: () => void;
-  children?: any;
+  maskClosable?: boolean;
+  getContainer?: HTMLElement | getContainerFunc;
 }

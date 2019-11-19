@@ -4,19 +4,19 @@
   background: #fff;
 
   @include e(input) {
-    padding: r(10) 0;
+    padding: 0;
 
     input {
       -webkit-appearance: none;
       position: absolute;
-      left: r(0);
+      left: r(6);
       top: r(0);
       opacity: 0;
       width: 100%;
       text-align: left;
       color: #000;
       height: r(20);
-      font-size: r(14);
+      font-size: var(--search-bar-font-size);
       line-height: r(20);
       background-color: transparent;
       border: 0;
@@ -45,8 +45,8 @@
     flex: 1;
     width: 100%;
     height: r(28);
-    padding: r(4);
-    background: #eee;
+    padding: r(3);
+    background: #f2f2f2;
     overflow: hidden;
   }
 
@@ -54,10 +54,10 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: r(20);
-    line-height: r(20);
-    font-size: r(14);
-    color: #7e7e7e;
+    height: r(22);
+    line-height: r(22);
+    font-size: var(--search-bar-font-size);
+    color: var(--color-text-placeholder);
 
     @include e(mock__container) {
       display: inline-block;
@@ -65,20 +65,19 @@
       transform: translate3d(r(10), 0, 0);
     }
 
-    @include e(mock__placeholder) {
-      vertical-align: middle;
-    }
-
     @include b(icon) {
-      font-size: r(17);
-      vertical-align: middle;
-      margin-right: r(3);
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: r(6);
+      font-size: var(--search-bar-icon-size);
+      color: var(--color-text-placeholder);
     }
   }
 
   @include e(cancel) {
-    font-size: r(14);
-    color: #333;
+    font-size: var(--search-bar-font-size);
+    color: var(--color-text);
     margin-left: r(15);
 
     @include m(show) {
@@ -105,12 +104,6 @@
   @include m(round) {
     @include e(content) {
       border-radius: var(--radius-round);
-    }
-  }
-
-  @include m(circle) {
-    @include e(content) {
-      border-radius: var(--radius-circle);
     }
   }
 }

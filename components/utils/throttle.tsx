@@ -2,7 +2,7 @@ const throttle = (func, delay) => {
   let timer: number;
   let startTime = Date.now();
 
-  return (...args) => {
+  return (...args: any[]) => {
     const curTime = Date.now();
     const remaining = delay - (curTime - startTime);
 

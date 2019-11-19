@@ -1,9 +1,11 @@
 @import "../../style/core/index";
+@import '../../button/style/mixins';
 
 @include b(radio) {
   display: inline-block;
   position: relative;
   margin-left: r(10);
+  color: var(--color-text);
 
   &:first-child {
     margin-left: 0;
@@ -24,7 +26,6 @@
   }
 
   @include e(text) {
-    color: var(--color-text);
     margin-left: r(10);
   }
 
@@ -34,17 +35,19 @@
     justify-content: center;
     width: var(--radio-size);
     height: var(--radio-size);
-    border: 1px solid #999;
-    border-radius: var(--radio-size);
-    background: #fff;
+    border: 1px solid var(--radio-border-color);
+    border-radius: var(--radio-radius);
+    background: var(--color-text-inverse);
 
     &:before {
       content: '';
-      width: calc(var(--radio-size) / 2.5);
-      height: calc(var(--radio-size) / 2.5);
-      border-radius: calc(var(--radio-size) / 2.5);
-      background-color: var(--theme-primary);
-      transform: scale(0);
+      width: calc(var(--radio-size) / 3.5);
+      height: calc(var(--radio-size) / 2);
+      border: calc(var(--checkbox-size) / 9) solid var(--color-text-inverse);
+      border-top: 0;
+      border-left: 0;
+      margin-top: calc(var(--checkbox-size) / -9);
+      transform: rotate(45deg) scale(0);
       transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
     }
   }
@@ -53,9 +56,10 @@
   @include m(checked) {
     @include e(inner) {
       border-color: var(--theme-primary);
+      background-color: var(--theme-primary);
 
       &:before {
-        transform: scale(1);
+        transform: rotate(45deg) scale(1);
         transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
       }
     }
@@ -64,16 +68,20 @@
   /* 禁用状态 */
   @include m(disabled) {
     @include e(inner) {
-      border-color: var(--border-disabled);
+      opacity: var(--opacity-disabled);
       cursor: not-allowed;
-
-      &:before {
-        background-color: var(--background-disabled);
-      }
     }
 
     @include e(text) {
       color: var(--color-text-disabled);
+    }
+
+    @include m(checked) {
+      @include e(inner) {
+        color: var(--color-text-inverse);
+        border-color: var(--border-disabled);
+        background-color: var(--background-disabled);
+      }
     }
   }
 }
@@ -81,46 +89,76 @@
 @include b(radio-group) {
   @include m(block) {
     display: flex;
+
+    @include b(radio) {
+      width: 100%;
+    }
   }
 
-  @include m(compact) {
+  // 按钮样式
+  @include m(button) {
+    @include b(radio) {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      @include button-base();
+      @include button-shape(var(--radius-xs));
+      @include button-size(
+        var(--button-height-xs),
+        var(--button-padding-h-xs),
+        var(--button-font-size-xs),
+        var(--button-icon-size-xs),
+      );
+      @include button-ghost(
+        var(--radio-border-color),
+        var(--radio-color),
+        var(--radio-border-color),
+        var(--radio-color),
+      );
+
+      @include e(text) {
+        margin-left: 0;
+      }
+
+      @include m(checked) {
+        border-color: var(--button-primary-border);
+        background-color: var(--button-primary-background);
+        color: var(--color-text-inverse);
+
+        @include m(disabled) {
+          border-color: var(--button-primary-border);
+          background-color: var(--button-primary-background);
+          color: var(--color-text-inverse);
+
+          @include e(text) {
+            color: var(--color-text-inverse);
+          }
+        }
+      }
+    }
+
+    @include m(rect) {
+      @include b(radio) {
+        @include button-shape(0);
+      }
+    }
+
     @include m(radius) {
-      @include b(button) {
-        border-radius: 0;
-
-        &:first-child {
-          border-radius: var(--radius-md) 0 0 var(--radius-md);
-        }
-
-        &:last-child {
-          border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        }
+      @include b(radio) {
+        @include button-shape(var(--radius-md));
       }
     }
 
     @include m(round) {
-      @include b(button) {
-        border-radius: 0;
-
-        &:first-child {
-          border-radius: var(--radius-round) 0 0 var(--radius-round);
-        }
-
-        &:last-child {
-          border-radius: 0 var(--radius-round) var(--radius-round) 0;
-        }
+      @include b(radio) {
+        @include button-shape(var(--radius-round));
       }
     }
 
-    @include b(button) {
-      margin-left: -1px;
-    }
-  }
-
-  @include m(cell) {
-    @include b(cell) {
-      display: block;
-      margin-left: 0;
+    @include m(circle) {
+      @include b(radio) {
+        @include button-shape(var(--radius-circle));
+      }
     }
   }
 }

@@ -14,10 +14,10 @@ const getValues = (props, defaultValue?: any) => {
 
 const normalState = (props) => {
   const { valueMember, dataSource } = props;
-  const value = getValues(props, dataSource!.map(item => item[0] && item[0][valueMember!]));
+  const value = getValues(props, dataSource!.map((item) => item[0] && item[0][valueMember!]));
   return {
     value,
-    objValue: props.dataSource.map((item, index) => item.filter(d => d[valueMember!] === value[index])[0]),
+    objValue: props.dataSource.map((item, index) => item.filter((d) => d[valueMember!] === value[index])[0]),
     dataSource: props.dataSource,
     visible: props.visible || false,
   };
@@ -32,7 +32,6 @@ const cascaderState = (props) => {
   const parseLevel = ({ level = 0, dataSource }) => {
     newDateSource[level] = dataSource.map((item, index) => {
       const { children, ...others } = item;
-
       if (
         (newValues[level] && item[valueMember!] === newValues[level]) || (!newValues[level] && index === 0)
       ) {
@@ -41,8 +40,8 @@ const cascaderState = (props) => {
 
         if (isArray(children) && children.length > 0 && level + 1 < cols!) {
           parseLevel({
-            dataSource: children,
             level: level + 1,
+            dataSource: children,
           });
         }
       }

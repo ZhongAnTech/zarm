@@ -1,4 +1,4 @@
 import SearchBar from './SearchBar';
-import LocaleReceiver from '../locale-provider/LocaleReceiver';
+import LocaleReceiver from '../locale-receiver';
 
-export default LocaleReceiver(SearchBar, 'SearchBar');
+export default LocaleReceiver('SearchBar')(SearchBar);

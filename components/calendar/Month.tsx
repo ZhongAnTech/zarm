@@ -1,4 +1,4 @@
-import React, { PureComponent, isValidElement } from 'react';
+import React, { Component, isValidElement } from 'react';
 import classnames from 'classnames';
 import { BaseCalendarMonthProps } from './PropsType';
 import CalendarView from './index';
@@ -8,28 +8,32 @@ export interface CalendarMonthProps extends BaseCalendarMonthProps {
   prefixCls?: string;
 }
 
-export default class CalendarMonthView extends PureComponent<CalendarMonthProps, any> {
+export interface CalendarMonthState {
+  value: Date[];
+  dateMonth: Date;
+}
+
+export default class CalendarMonthView extends Component<CalendarMonthProps, CalendarMonthState> {
+  static displayName = 'CalendarMonthView';
+
   static defaultProps = {
     prefixCls: 'za-calendar',
     value: [],
     dateMonth: new Date(),
     min: new Date(),
     max: new Date(),
-    dateRender: date => date.getDate(),
+    dateRender: (date: Date) => date.getDate(),
     disabledDate: () => false,
   };
 
   // 月份最小值
-  private min?: any;
+  private min: Date;
 
   // 月份最大值
-  private max?: any;
-
-  // 当前月份dom数据缓存
-  private cache?: any;
+  private max: Date;
 
   // 上次是否落点在当前月份内
-  private lastIn = false;
+  private lastIn?: boolean = false;
 
   // 当前组件是否需要更新
   private isRefresh = true;
@@ -37,7 +41,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
   // 当前月份的dom
   private node?: any;
 
-  constructor(props) {
+  constructor(props: CalendarMonthProps) {
     super(props);
     this.min = props.min;
     this.max = props.max;
@@ -47,18 +51,28 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.isRefresh = this.checkRefresh(nextProps);
+  static getDerivedStateFromProps(nextProps, state) {
+    if (
+      ('value' in nextProps && nextProps.value !== state.value)
+      || ('dateMonth' in nextProps && nextProps.dateMonth !== state.dateMonth)
+    ) {
+      return {
+        value: nextProps.value,
+        dateMonth: nextProps.dateMonth,
+      };
+    }
+    return null;
+  }
 
+  shouldComponentUpdate(nextProps) {
+    this.isRefresh = this.checkRefresh(nextProps);
     if (this.isRefresh) {
       this.min = nextProps.min;
       this.max = nextProps.max;
-      this.setState({
-        value: nextProps.value,
-        dateMonth: nextProps.dateMonth,
-      });
     }
+    return this.isRefresh;
   }
+
 
   anchor = () => {
     if (this.node && this.node.scrollIntoViewIfNeeded) {
@@ -67,7 +81,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
   };
 
   // 检查当前是否需要更新
-  checkRefresh = (props) => {
+  checkRefresh = (props: CalendarMonthProps) => {
     const { dateMonth, value, min, max, dateRender, disabledDate } = props;
     const { dateRender: dateRenderProp, disabledDate: disabledDateProp } = this.props;
     const { dateMonth: dateMonthState } = this.state;
@@ -76,19 +90,15 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
       return true;
     }
 
-    if (!this.cache) {
+    if ((+dateMonth - +dateMonthState) !== 0) {
       return true;
     }
 
-    if (dateMonth - dateMonthState !== 0) {
+    if ((+min - +this.min !== 0) || (+max - +this.max !== 0)) {
       return true;
     }
 
-    if (min - this.min !== 0 || max - this.max !== 0) {
-      return true;
-    }
-
-    let isIn;
+    let isIn!: boolean;
 
     if (value.length > 0) {
       const currMonth = DateTool.cloneDate(dateMonth, 'dd', 1);
@@ -102,13 +112,13 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
   };
 
   // 日期状态: 选中，区间
-  checkStatus = (date) => {
+  checkStatus = (date: Date) => {
     const { min, max, disabledDate } = this.props;
     const { value = [] } = this.state;
     const disabled = date < DateTool.cloneDate(min, 'd', 0) || date > DateTool.cloneDate(max, 'd', 0);
     const res = {
       disabled: disabled || (disabledDate && disabledDate(date)),
-      isSelected: value.some(item => DateTool.isOneDay(date, item)),
+      isSelected: value.some((item) => DateTool.isOneDay(date, item)),
       isRange: value.length > 1 && date > value[0] && date < value[value.length - 1],
       rangeStart: value.length > 1 && DateTool.isOneDay(date, value[0]),
       rangeEnd: value.length > 1 && DateTool.isOneDay(date, value[value.length - 1]),
@@ -117,7 +127,7 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     return res;
   };
 
-  renderDay = (day, year, month, firstDay) => {
+  renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const { prefixCls, dateRender, onDateClick } = this.props;
     const date = new Date(year, month, day);
     const isToday = CalendarView.cache.now === `${year}-${month}-${day}`;
@@ -156,13 +166,8 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
     );
   };
 
-  renderContent = (year, month) => {
-    let data = CalendarView.cache[`${year}-${month}`];
-    if (!data) {
-      data = DateTool.getCurrMonthInfo(year, month);
-      CalendarView.cache[`${year}-${month}`] = data;
-    }
-
+  renderContent = (year: number, month: number) => {
+    const data = DateTool.getCurrMonthInfo(year, month);
     const { firstDay, dayCount } = data;
     return Array.from({ length: dayCount }).map((_item, i) => this.renderDay(i + 1, year, month, firstDay));
   };
@@ -173,16 +178,11 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
 
     const year = dateMonth.getFullYear();
     const month = dateMonth.getMonth();
+    const monthKey = `${year}-${month}`;
 
-    if (!this.isRefresh) {
-      return this.cache;
-    }
-
-    const monthkey = `${year}-${month}`;
-
-    this.cache = (
+    return (
       <section
-        key={monthkey}
+        key={monthKey}
         className={`${prefixCls}__month`}
         title={`${year}年${month + 1}月`}
         ref={(n) => { this.node = n; }}
@@ -190,7 +190,5 @@ export default class CalendarMonthView extends PureComponent<CalendarMonthProps,
         <ul>{this.renderContent(year, month)}</ul>
       </section>
     );
-
-    return this.cache;
   }
 }

@@ -2,25 +2,15 @@
 
 exports[`KeyboardPicker renders correctly 1`] = `
 <KeyboardPicker
+  destroy={true}
   prefixCls="za-keyboard-picker"
   type="number"
   visible={false}
 >
   <Popup
+    destroy={true}
     mask={false}
     visible={false}
-  >
-    <Portal
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      handlePortalUnmount={[Function]}
-      mask={false}
-      maskType="normal"
-      prefixCls="za-popup"
-      stayTime={3000}
-      visible={false}
-    />
-  </Popup>
+  />
 </KeyboardPicker>
 `;

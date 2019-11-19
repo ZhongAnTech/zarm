@@ -54,31 +54,26 @@ const locales = {
 };
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      locale: 'en_US',
-      alert: false,
-      confirm: false,
-    };
-    this.onOk = this.onOk.bind(this);
-  }
+  state = {
+    locale: 'zh_CN',
+    alert: false,
+    confirm: false,
+  };
 
-  toggle(key) {
+  toggle = (key) => {
     this.setState({
       [`${key}`]: !this.state[key],
     });
   }
 
-  onOk(selected) {
+  onOk = (selected) => {
     this.setState({
       locale: selected[0].value,
     });
   }
 
   render() {
-    const { alert, confirm } = this.state;
-
+    const { alert, confirm } = this.state
     return (
       <LocaleProvider locale={locales[this.state.locale]}>
         <div>
@@ -86,8 +81,8 @@ class Demo extends React.Component {
             <Select
               value={this.state.locale}
               dataSource={[
-                { value: 'en_US', label: 'English' },
                 { value: 'zh_CN', label: '中文' },
+                { value: 'en_US', label: 'English' },
               ]}
               onOk={this.onOk}
             />
@@ -97,7 +92,7 @@ class Demo extends React.Component {
 
           <Cell
             description={
-              <Button size="xs" theme="warning" onClick={() => this.toggle('alert')}>开启</Button>
+              <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
             }
           >
             警告框 Alert
@@ -105,7 +100,7 @@ class Demo extends React.Component {
 
           <Cell
             description={
-              <Button size="xs" theme="warning" onClick={() => this.toggle('confirm')}>开启</Button>
+              <Button size="xs" onClick={() => this.toggle('confirm')}>开启</Button>
             }
           >
             确认框 Confirm
@@ -142,4 +137,4 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| locale | Object | - | 语言包配置，语言包可到 zarm/lib/locale-provider/locale 目录下寻找 |
+| locale | Object | - | 语言包配置，默认为中文，语言包可到 zarm/lib/locale-provider/locale 目录下寻找 |

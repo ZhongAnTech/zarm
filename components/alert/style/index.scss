@@ -6,6 +6,9 @@
     @include e(body) {
       text-align: center;
     }
+    @include e(footer) {
+      padding: 0;
+    }
   }
 
   @include e(button) {
@@ -20,6 +23,9 @@
       var(--button-icon-size-lg),
     );
     @include onepx(top);
+
+    color: var(--theme-primary);
+    background-color: var(--button-default-background);
 
     &:active {
       background-color: var(--background-active);

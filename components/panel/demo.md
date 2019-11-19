@@ -6,22 +6,14 @@
 ```jsx
 import { Panel } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Panel
-          title="标题"
-          more={<a href="#" onClick={() => alert('click more')}>更多</a>}
-        >
-          <div className="box">内容</div>
-        </Panel>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Panel
+    title="标题"
+    more={<a href="#" onClick={() => alert('click more')}>更多</a>}
+  >
+    <div className="box">内容</div>
+  </Panel>
+, mountNode);
 ```
 
 

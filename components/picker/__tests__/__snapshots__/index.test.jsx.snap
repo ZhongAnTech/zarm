@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Picker Picker render visible 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -48,48 +48,55 @@ exports[`Picker Picker render visible 1`] = `
           },
         ]
       }
+      destroy={false}
       itemRender={[Function]}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "okText": "OK",
-          "title": "please select",
+          "cancelText": "取消",
+          "okText": "确定",
+          "title": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
+      maskClosable={true}
       prefixCls="za-picker"
       valueMember="value"
       visible={true}
     >
       <Popup
+        destroy={false}
         onMaskClick={[Function]}
         visible={true}
       >
         <Portal
           animationDuration={200}
-          autoClose={false}
+          animationType="fade"
+          destroy={false}
           direction="bottom"
           handlePortalUnmount={[Function]}
           mask={true}
           maskType="normal"
           onMaskClick={[Function]}
           prefixCls="za-popup"
-          stayTime={3000}
           visible={true}
         >
           <Portal
             containerInfo={
               <div
-                class=" popup-container"
+                class="popup-container"
               >
                 <div
-                  class="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
+                  class="za-mask za-fade-enter za-mask--normal"
+                  style="animation-duration: 200ms;"
+                />
+                <div
+                  class="za-popup__wrapper"
                   role="dialog"
                 >
                   <div
-                    class="za-popup__wrapper"
+                    class="za-popup za-popup--bottom za-popup--show"
                     role="document"
-                    style="transition-duration: 200ms;"
+                    style="transition-duration: 200ms; transition-property: transform;"
                   >
                     <div
                       class="za-picker"
@@ -100,17 +107,17 @@ exports[`Picker Picker render visible 1`] = `
                         <div
                           class="za-picker__cancel"
                         >
-                          Cancel
+                          取消
                         </div>
                         <div
                           class="za-picker__title"
                         >
-                          please select
+                          请选择
                         </div>
                         <div
                           class="za-picker__submit"
                         >
-                          OK
+                          确定
                         </div>
                       </div>
                       <div
@@ -154,17 +161,43 @@ exports[`Picker Picker render visible 1`] = `
               </div>
             }
           >
-            <div
-              className="za-popup za-popup--bottom za-popup--mask za-popup--hidden"
-              role="dialog"
+            <Mask
+              className="za-fade-enter"
+              prefixCls="za-mask"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+              type="normal"
+              visible={true}
             >
               <div
-                className="za-popup__wrapper"
+                className="za-mask za-fade-enter za-mask--normal"
+                style={
+                  Object {
+                    "WebkitAnimationDuration": "200ms",
+                    "animationDuration": "200ms",
+                  }
+                }
+              />
+            </Mask>
+            <div
+              className="za-popup__wrapper"
+              onClick={[Function]}
+              role="dialog"
+              style={Object {}}
+            >
+              <div
+                className="za-popup za-popup--bottom"
                 role="document"
                 style={
                   Object {
                     "WebkitTransitionDuration": "200ms",
+                    "WebkitTransitionProperty": "transform",
                     "transitionDuration": "200ms",
+                    "transitionProperty": "transform",
                   }
                 }
               >
@@ -179,18 +212,18 @@ exports[`Picker Picker render visible 1`] = `
                       className="za-picker__cancel"
                       onClick={[Function]}
                     >
-                      Cancel
+                      取消
                     </div>
                     <div
                       className="za-picker__title"
                     >
-                      please select
+                      请选择
                     </div>
                     <div
                       className="za-picker__submit"
                       onClick={[Function]}
                     >
-                      OK
+                      确定
                     </div>
                   </div>
                   <PickerView
@@ -209,7 +242,7 @@ exports[`Picker Picker render visible 1`] = `
                     }
                     disabled={false}
                     itemRender={[Function]}
-                    localeCode="en"
+                    localeCode="zh-cn"
                     onChange={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker-view"
@@ -281,30 +314,17 @@ exports[`Picker Picker render visible 1`] = `
                   </PickerView>
                 </div>
               </div>
-              <Mask
-                className=""
-                onClick={[Function]}
-                prefixCls="za-mask"
-                style={
-                  Object {
-                    "WebkitAnimationDuration": "200ms",
-                    "animationDuration": "200ms",
-                  }
-                }
-                type="normal"
-                visible={false}
-              />
             </div>
           </Portal>
         </Portal>
       </Popup>
     </Picker>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Picker render custom label 1`] = `
-<ForwardRef(forwardRefFactory)
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -411,36 +431,26 @@ exports[`Picker render custom label 1`] = `
           },
         ]
       }
+      destroy={false}
       itemRender={[Function]}
       locale={
         Object {
-          "cancelText": "Cancel",
-          "okText": "OK",
-          "title": "please select",
+          "cancelText": "取消",
+          "okText": "确定",
+          "title": "请选择",
         }
       }
-      localeCode="en"
+      localeCode="zh-cn"
+      maskClosable={true}
       prefixCls="za-picker"
       valueMember="code"
     >
       <Popup
+        destroy={false}
         onMaskClick={[Function]}
         visible={false}
-      >
-        <Portal
-          animationDuration={200}
-          autoClose={false}
-          direction="bottom"
-          handlePortalUnmount={[Function]}
-          mask={true}
-          maskType="normal"
-          onMaskClick={[Function]}
-          prefixCls="za-popup"
-          stayTime={3000}
-          visible={false}
-        />
-      </Popup>
+      />
     </Picker>
   </LocaleReceiver>
-</ForwardRef(forwardRefFactory)>
+</ForwardRef(forwardRef)>
 `;

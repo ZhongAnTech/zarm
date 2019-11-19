@@ -55,22 +55,20 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
   getRotate = () => { return this.state.active ? 1 : 0; };
 
   onPress = () => {
-    const { disabled, itemKey, onItemChange, onChange } = this.props;
+    const { disabled, onChange } = this.props;
     if (disabled) {
       return null;
     }
     const { active } = this.state;
-    this.setState({
-      active: !active,
-    }, () => {
-      this.animate();
-      if (onChange) {
-        onChange(itemKey);
-      }
-      if (onItemChange) {
-        onItemChange(itemKey);
-      }
-    });
+    if (onChange) {
+      onChange(active);
+    }
+    // this.setState({
+    //   active: !active,
+    // }, () => {
+    //   this.animate();
+     
+    // });
   };
 
   onLayoutTrimmedText = (event) => {

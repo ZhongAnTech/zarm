@@ -6,17 +6,7 @@
 ```jsx
 import { Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell title="标题文字" />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(<Cell title="标题文字" />, mountNode);
 ```
 
 
@@ -25,18 +15,12 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell title="标题文字" description="描述文字" />
-        <Cell title="标题文字" description={<Icon type="right" />} />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell title="标题文字" description="描述文字" />
+    <Cell title="标题文字" description={<Icon type="add" theme="primary" size="sm" />} />
+  </>
+, mountNode);
 ```
 
 
@@ -47,18 +31,12 @@ import { Cell, Icon } from 'zarm';
 
 const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell title="标题文字" icon={<Icon type="right" />} />
-        <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: 24, height: 24 }} />} />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell title="标题文字" icon={<Icon type="broadcast" theme="primary" />} />
+    <Cell title="标题文字" icon={<img alt="" src={img} style={{ width: 24, height: 24 }} />} />
+  </>
+, mountNode);
 ```
 
 
@@ -67,38 +45,25 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell title="标题文字" onClick={() => {}} />
-        <Cell title="标题文字" onClick={() => {}} />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell title="标题文字" onClick={() => {}} />
+    <Cell title="标题文字" onClick={() => {}} />
+  </>
+, mountNode);
 ```
-
 
 
 ## 带描述、箭头、跳转
 ```jsx
 import { Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
-        <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
+    <Cell hasArrow title="标题文字" description="描述文字" onClick={() => {}} />
+  </>
+, mountNode);
 ```
 
 
@@ -109,46 +74,40 @@ import { Cell, Icon } from 'zarm';
 
 const img = 'https://static.zhongan.com/website/health/zarm/images/icons/state.png';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell
-          hasArrow
-          title="标题文字"
-          description="描述文字"
-          icon={<Icon type="right" />}
-          onClick={() => {}}
-        />
+ReactDOM.render(
+  <>
+    <Cell
+      hasArrow
+      title="标题文字"
+      description="描述文字"
+      icon={<Icon type="broadcast" theme="primary" />}
+      onClick={() => {}}
+    />
 
-        <Cell 
-          hasArrow
-          title="标题文字"
-          description="描述文字"
-          icon={
-            <img alt="" src={img} style={{ width: '24px', height: '24px' }} />
-          }
-          onClick={() => {}}
-        />
+    <Cell 
+      hasArrow
+      title="标题文字"
+      description="描述文字"
+      icon={
+        <img alt="" src={img} style={{ width: 24, height: 24 }} />
+      }
+      onClick={() => {}}
+    />
 
-        <Cell
-          hasArrow
-          title={
-            <div className="box">
-              <div className="box-title">标题文字</div>
-              <div className="box-description">描述文字</div>
-            </div>
-          }
-          description="附加提示"
-          icon={<img alt="" src={img} style={{ width: '48px', height: '48px' }} />}
-          onClick={() => {}}
-        />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+    <Cell
+      hasArrow
+      title={
+        <div className="box">
+          <div className="box-title">标题文字</div>
+          <div className="box-description">描述文字</div>
+        </div>
+      }
+      description="附加提示"
+      icon={<img alt="" src={img} style={{ width: 48, height: 48 }} />}
+      onClick={() => {}}
+    />
+  </>
+, mountNode);
 ```
 
 
@@ -157,22 +116,14 @@ ReactDOM.render(<Demo />, mountNode);
 ```jsx
 import { Cell, Message, Icon, Input } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell
-          title="标题"
-          help={<Message theme="danger" icon={<Icon type="info-round" />}>标题不能为空</Message>}
-        >
-          <Input type="text" placeholder="请输入标题" />
-        </Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Cell
+    title="标题"
+    help={<Message theme="danger" icon={<Icon type="warning-round" size="sm" />}>标题不能为空</Message>}
+  >
+    <Input type="text" placeholder="请输入标题" />
+  </Cell>
+, mountNode);
 ```
 
 
@@ -183,7 +134,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | hasArrow | boolean | false | 是否显示箭头 |
 | icon | ReactNode | - | 设置图标 |
-| titile | ReactNode | - | 设置标题区域内容 |
+| title | ReactNode | - | 设置标题区域内容 |
 | description | ReactNode | - | 设置描述区域内容 |
 | help | ReactNode | - | 设置下方提示信息区域内容，通常配合 `Message` 组件使用 |
 | onClick | () => void | - | 点击后触发的回调函数 |

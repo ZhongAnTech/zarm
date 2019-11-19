@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Panel } from 'zarm';
-import locale from 'zarm/components/locale-provider/locale/zh_CN';
 import '@/components/style/entry';
+
 
 export default class Demo extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ export default class Demo extends React.Component {
     this.document = props.children.match(/([^]*)\n?(```[^]+```)/);
     this.title = String(this.document[1]);
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/);
+    this.containerElem = null;
   }
 
   componentDidMount() {
@@ -38,13 +39,23 @@ export default class Demo extends React.Component {
         argv,
       };
     }).then(({ args, argv }) => {
+      const locale = window.localStorage.language === 'en_US'
+        ? require('zarm/locale-provider/locale/en_US')
+        : require('zarm/locale-provider/locale/zh_CN');
       value = value
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
-        .replace('mountNode', `document.getElementById('${this.containerId}')`)
-        .replace('<Demo />', `<zarm.LocaleProvider locale={${JSON.stringify(locale)}}><Demo /></zarm.LocaleProvider>`);
+        .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
+          ReactDOM.render(
+            <zarm.LocaleProvider locale={${JSON.stringify(locale.default)}}>
+              $1
+            </zarm.LocaleProvider>,
+            document.getElementById('${this.containerId}'),
+          )
+        `);
 
       const { code } = transform(value, {
         presets: ['es2015', 'react'],
+        plugins: ['proposal-class-properties'],
       });
 
       args.push(code);
@@ -65,7 +76,7 @@ export default class Demo extends React.Component {
     return (location.pathname === '/panel')
       ? <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
       : (
-        <Panel title={<span>{this.title}</span>}>
+        <Panel title={this.title}>
           <div id={this.containerId} ref={(elem) => { this.containerElem = elem; }} />
         </Panel>
       );

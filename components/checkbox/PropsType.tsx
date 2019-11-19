@@ -1,21 +1,25 @@
+export type CheckboxType = 'normal' | 'button' | 'cell';
+export type CheckboxShape = 'rect' | 'radius' | 'round';
+export type CheckboxValue = number | string;
+
 export interface BaseCheckboxProps {
-  shape?: 'radius' | 'round';
-  type?: 'button' | 'cell';
+  shape?: CheckboxShape;
+  type?: CheckboxType;
   disabled?: boolean;
   block?: boolean;
   onChange?: (checked?: boolean) => void;
   id?: string;
   checked?: boolean;
   defaultChecked?: boolean;
-  value?: number | string;
+  value?: CheckboxValue;
 }
 
 export interface BaseCheckboxGroupProps {
-  shape?: 'rect' | 'radius' | 'round';
-  type?: 'button' | 'cell';
+  shape?: CheckboxShape;
+  type?: CheckboxType;
   disabled?: boolean;
   block?: boolean;
-  onChange?: (value?: number[] | string[]) => void;
-  value?: number[] | string[];
-  defaultValue?: number[] | string[];
+  value?: Array<CheckboxValue>;
+  defaultValue?: Array<CheckboxValue>;
+  onChange?: (value?: Array<CheckboxValue>) => void;
 }
