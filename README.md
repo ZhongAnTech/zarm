@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://zarm.design">
-    <img width="200" src="https://zarm.design/images/logo.ce68565d.svg">
+    <img width="200" src="https://zarm.design/images/logo.732d9561.svg">
   </a>
 </p>
 
