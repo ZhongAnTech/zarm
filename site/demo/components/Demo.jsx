@@ -17,10 +17,6 @@ export default class Demo extends React.Component {
 
   componentDidMount() {
     this.renderSource(this.source[2]);
-    const { location } = this.props;
-    if (location.pathname === '/pull') {
-      document.body.style['overscroll-behavior-y'] = 'contain';
-    }
   }
 
   componentWillUnmount() {
