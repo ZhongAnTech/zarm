@@ -1,8 +1,0 @@
-@mixin switch-theme($color) {
-  .#{$prefixCls-switch}-input {
-    &:checked {
-      border-color: $color;
-      background-color: $color;
-    }
-  }
-}

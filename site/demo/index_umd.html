@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <title>Zarm - 众安科技移动端组件库</title>
+  <link rel="stylesheet" href="../dist/zarm.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="https://unpkg.com/react@latest/umd/react.production.min.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/react-dom@latest/umd/react-dom.production.min.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+  <script src="../dist/zarm.js" type="text/javascript"></script>
+  <script type="text/babel">
+    console.log(window.zarm)
+    const { Button } = window.zarm;
+    ReactDOM.render(<Button block theme="primary">按钮</Button>, document.getElementById('app'));
+  </script>
+</body>
+
+</html>

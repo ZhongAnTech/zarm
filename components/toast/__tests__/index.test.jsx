@@ -4,34 +4,60 @@ import toJson from 'enzyme-to-json';
 import Toast from '../index';
 
 describe('Toast', () => {
+  const props = {
+    mask: true,
+    stayTime: 1,
+    onMaskClick: jest.fn(),
+  };
   it('renders correctly', () => {
     const wrapper = render(
-      <Toast>foo</Toast>
+      <Toast {...props}>foo</Toast>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('visible change false', () => {
     const wrapper = mount(
-      <Toast visible>foo</Toast>
+      <Toast visible>foo</Toast>,
     );
     wrapper.setProps({ visible: false });
   });
 
   it('stayTime', () => {
     jest.useFakeTimers();
+    props.onClose = jest.fn();
     const wrapper = mount(
-      <Toast stayTime={5000}>foo</Toast>
+      <Toast stayTime={5000} visible {...props}>foo</Toast>,
     );
-    wrapper.setProps({ visible: false });
     jest.runAllTimers();
     wrapper.unmount();
   });
 
   it('stayTime is 0', () => {
     const wrapper = shallow(
-      <Toast stayTime={0}>foo</Toast>
+      <Toast stayTime={0}>foo</Toast>,
     );
     wrapper.setProps({ visible: true });
+  });
+
+  it('afterClose', () => {
+    jest.useFakeTimers();
+    const afterClose = jest.fn();
+    const wrapper = mount(
+      <Toast stayTime={5000} visible {...props} afterClose={afterClose}>foo</Toast>,
+    );
+    jest.runAllTimers();
+    // expect(afterClose).toHaveBeenCalled();
+    wrapper.unmount();
+  });
+
+  it('static function show', () => {
+    const wrapper = Toast.show();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('static function hide', () => {
+    const wrapper = Toast.hide();
+    expect(wrapper).toMatchSnapshot();
   });
 });

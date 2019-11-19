@@ -1,0 +1,32 @@
+@import "@site/styles/index";
+
+.icon-page {
+  .za-icon {
+    display: block;
+    margin-bottom: r(15);
+
+    & + span {
+      font-size: r(12);
+    }
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    &-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+      width: 33.33%;
+      height: r(125);
+      @include onepx(bottom right);
+
+      &:nth-of-type(3n) {
+        @include onepx(bottom);
+      }
+    }
+  }
+}

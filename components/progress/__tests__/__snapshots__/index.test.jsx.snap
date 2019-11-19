@@ -2,15 +2,15 @@
 
 exports[`Progress renders correctly 1`] = `
 <div
-  class="za-progress theme-primary shape-line"
+  class="za-progress za-progress--line za-progress--default"
 >
   <div
-    class="za-progress-inner"
-    style="height:5px"
+    class="za-progress__track"
+    style="height:8px;border-radius:8px"
   >
     <div
-      class="za-progress-bg"
-      style="width:10%"
+      class="za-progress__thumb"
+      style="width:10%;border-radius:8px"
     />
   </div>
 </div>
@@ -18,56 +18,140 @@ exports[`Progress renders correctly 1`] = `
 
 exports[`Progress renders has children correctly 1`] = `
 <div
-  class="za-progress theme-primary shape-line"
+  class="za-progress za-progress--line za-progress--default"
 >
   <div
-    class="za-progress-inner"
-    style="height:5px"
+    class="za-progress__track"
+    style="height:4px;border-radius:4px"
   >
     <div
-      class="za-progress-bg"
-      style="width:10%"
+      class="za-progress__thumb"
+      style="width:10%;border-radius:4px"
     />
   </div>
   <div
-    class="za-progress-text"
+    class="za-progress__text"
   >
     foo
   </div>
 </div>
 `;
 
-exports[`Progress renders shape is circle correctly 1`] = `
-<div
-  class="za-progress theme-primary shape-circle"
+exports[`Progress renders percent correctly 1`] = `
+<Progress
+  percent={50}
+  prefixCls="za-progress"
+  shape="round"
+  theme="default"
+  type="circle"
+  weight="normal"
 >
   <div
-    class="za-progress-inner"
+    className="za-progress za-progress--circle za-progress--default"
   >
     <svg
-      class="za-spinner theme-primary"
-      viewBox="0 0 62 62"
+      viewBox="0 0 Infinity Infinity"
     >
-      <circle
-        class="za-spinner-path"
-        cx="31"
-        cy="31"
-        fill="none"
-        r="28.5"
-        style="stroke-width:5"
+      <path
+        className="za-progress__track"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeLinecap="round"
+        strokeWidth={Infinity}
       />
-      <circle
-        class="za-spinner-line"
-        cx="31"
-        cy="31"
-        fill="none"
-        r="28.5"
-        style="stroke-dasharray:17.90707812546182 179.0707812546182;stroke-width:5"
+      <path
+        className="za-progress__thumb"
+        d="
+        MInfinity, Infinity
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+        strokeDasharray={100.53096491487338}
+        strokeDashoffset={50.26548245743669}
+        strokeLinecap="round"
+        strokeWidth={Infinity}
       />
     </svg>
+    <div
+      className="za-progress__text"
+    >
+      foo
+    </div>
   </div>
+</Progress>
+`;
+
+exports[`Progress renders shape is circle correctly 1`] = `
+<div
+  class="za-progress za-progress--circle za-progress--default"
+>
+  <svg
+    viewBox="0 0 40 40"
+  >
+    <path
+      class="za-progress__track"
+      d="
+        M20, 20
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+      stroke-linecap="butt"
+      stroke-width="8"
+    />
+    <path
+      class="za-progress__thumb"
+      d="
+        M20, 20
+        m0 -16
+        a16 16 0 1 1 0 32
+        a16 16 0 1 1 0 -32"
+      stroke-dasharray="100.53096491487338"
+      stroke-dashoffset="90.47786842338604"
+      stroke-linecap="butt"
+      stroke-width="8"
+    />
+  </svg>
   <div
-    class="za-progress-text"
+    class="za-progress__text"
+  >
+    foo
+  </div>
+</div>
+`;
+
+exports[`Progress renders shape is semi-circle correctly 1`] = `
+<div
+  class="za-progress za-progress--semi-circle za-progress--default"
+>
+  <svg
+    viewBox="0 0 40 20"
+  >
+    <path
+      class="za-progress__track"
+      d="
+        M20, 20
+        m-16 0
+        a16 16 0 0 1 32 0"
+      stroke-linecap="round"
+      stroke-width="8"
+    />
+    <path
+      class="za-progress__thumb"
+      d="
+        M20, 20
+        m-16 0
+        a16 16 0 0 1 32 0"
+      stroke-dasharray="50.26548245743669"
+      stroke-dashoffset="45.23893421169302"
+      stroke-linecap="round"
+      stroke-width="8"
+    />
+  </svg>
+  <div
+    class="za-progress__text"
   >
     foo
   </div>

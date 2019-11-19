@@ -1,0 +1,47 @@
+@import "../../style/core/index";
+
+@include b(tab-bar) {
+  display: flex;
+  width: 100%;
+  background: var(--tabbar-background);
+  height: var(--tabbar-height);
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transition-duration: .2s;
+  transition-property: height bottom;
+  overflow: hidden;
+
+  @include m(hidden) {
+    bottom: var(--tabbar-hidden-bottom);
+    height: 0;
+  }
+
+  @include m(active) {
+    @include e(title, icon) {
+      color: var(--tabbar-item-active-color);
+    }
+  }
+
+  @include e(item) {
+    flex: 1;
+
+    @include e(title) {
+      font-size: var(--tabbar-item-font-size);
+      line-height: 1;
+      margin-top: r(2);
+    }
+
+    @include e(icon) {
+      display: inline-block;
+      vertical-align: middle;
+      width: r(24);
+      height: r(24);
+      font-size: r(18);
+    }
+  }
+}

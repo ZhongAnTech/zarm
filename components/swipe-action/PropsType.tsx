@@ -1,6 +1,6 @@
 export default interface PropsType {
-  left?: Array<Object>;
-  right?: Array<Object>;
+  left?: object[];
+  right?: object[];
   moveDistanceRatio: number;
   moveTimeSpan: number;
   animationDuration?: number;

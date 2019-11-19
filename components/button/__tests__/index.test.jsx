@@ -19,8 +19,8 @@ describe('Button', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('bordered', () => {
-    const wrapper = render(<Button bordered>foo</Button>);
+  it('ghost', () => {
+    const wrapper = render(<Button ghost>foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -35,7 +35,7 @@ describe('Button', () => {
   });
 
   it('icon', () => {
-    const wrapper = render(<Button icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />}>foo</Button>);
+    const wrapper = render(<Button icon={<img alt="" src="https://zarm.design/images/logo.ce68565d.svg" />}>foo</Button>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -49,10 +49,37 @@ describe('Button', () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
+  it('htmlType', () => {
+    const wrapper = render(<Button htmlType="submit">foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
   it('onClick', () => {
     const onClick = jest.fn();
     const wrapper = shallow(<Button onClick={onClick}>foo</Button>);
     wrapper.simulate('click');
     expect(onClick).toBeCalled();
+  });
+
+  it('onClick when disabled', () => {
+    const onClick = jest.fn();
+    const wrapper = shallow(<Button disabled onClick={onClick}>foo</Button>);
+    wrapper.simulate('click');
+    expect(onClick).not.toBeCalled();
+  });
+
+  it('onTouchStart in NativeButton', () => {
+    const wrapper = shallow(<Button>foo</Button>);
+    wrapper.simulate('touchstart');
+  });
+
+  it('onTouchStart in AnchorButton', () => {
+    const wrapper = shallow(<Button href="https://zarm.design">foo</Button>);
+    wrapper.simulate('touchstart');
+  });
+
+  it('href and target', () => {
+    const wrapper = render(<Button href="https://zarm.design" target="_blank">foo</Button>);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

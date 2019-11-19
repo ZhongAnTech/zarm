@@ -1,0 +1,13 @@
+@import "@site/styles/index";
+
+.search-bar-page {
+  .button-wrap {
+    // text-align: center;
+    padding: r(2) 0 r(10) r(15);
+  }
+
+  .search-bar-wrap {
+    display: flex;
+    align-items: center;
+  }
+}

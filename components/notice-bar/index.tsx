@@ -3,39 +3,44 @@ import PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
 
-export interface MessageProps extends PropsType {
+export interface NoticeBarProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class NoticeBar extends PureComponent<MessageProps, any> {
+export interface NoticeBarState {
+  offset: number;
+}
+
+export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
+  static displayName = 'NoticeBar';
+
   static defaultProps = {
-    prefixCls: 'za-noticebar',
+    prefixCls: 'za-notice-bar',
     theme: 'warning',
     icon: <Icon type="broadcast" />,
     hasArrow: false,
-    hasClosable: false,
-    autoscroll: false,
+    closable: false,
+    scrollable: false,
   };
 
-  private wrapper;
-  private content;
-  private moveInterval;
+  private wrapper: HTMLDivElement | null = null;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      offset: 0,
-    };
-  }
+  private content: HTMLDivElement | null = null;
+
+  private moveInterval?: number;
+
+  state: NoticeBarState = {
+    offset: 0,
+  };
 
   componentDidMount() {
-    const { autoscroll } = this.props;
-    if (!autoscroll) {
+    const { scrollable } = this.props;
+    if (!scrollable) {
       return;
     }
 
-    const distance = this.wrapper.offsetWidth - this.content.offsetWidth;
+    const distance = this.wrapper!.offsetWidth - this.content!.offsetWidth;
     if (distance > 0) {
       return;
     }
@@ -64,15 +69,18 @@ export default class NoticeBar extends PureComponent<MessageProps, any> {
   }
 
   render() {
-    const { prefixCls, children, autoscroll, ...others } = this.props;
+    const { prefixCls, children, scrollable, ...others } = this.props;
+    const { offset } = this.state;
 
     return (
       <Message {...others} size="lg">
         <div className={prefixCls} ref={(ele) => { this.wrapper = ele; }}>
           <div
-            className={`${prefixCls}-body`}
+            className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
-            style={{ left: this.state.offset }}
+            style={{
+              left: offset,
+            }}
           >
             {children}
           </div>

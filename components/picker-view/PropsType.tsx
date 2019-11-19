@@ -1,10 +1,11 @@
-export interface BasePickerViewProps {
-  value?: string | string[] | number[];
+
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
+
+export default interface BasePickerViewProps {
+  value: string | string[] | number[];
   defaultValue?: string | string[] | number[] | object;
-  firstObjValue?: object[];
   valueMember?: string;
-  dataSource?: object[];
-  onInit?: (value?: object[], i?: number) => void;
+  dataSource: DataSource;
   onChange?: (value?: object[], i?: number) => void;
   itemRender?: (item?: object) => string;
   cols?: number;

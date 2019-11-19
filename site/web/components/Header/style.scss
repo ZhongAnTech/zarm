@@ -1,0 +1,169 @@
+header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 65px;
+  background-color: #fff;
+
+  .header-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .logo {
+    float: left;
+    width: 280px;
+    height: 100%;
+    text-align: center;
+    white-space: nowrap;
+
+    a {
+      display: block;
+      height: 65px;
+      line-height: 65px;
+      color: #333;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      outline: none;
+    }
+
+    img {
+      height: 32px;
+      margin-right: 10px;
+      margin-top: -5px;
+    }
+  }
+
+  .search {
+    float: left;
+    margin-top: 16px;
+    margin-left: 50px;
+
+    input {
+      display: inline-block;
+      background: transparent;
+      border: 0;
+      outline: 0 none;
+      width: 200px;
+      height: 33px;
+      padding: 0 8px;
+    }
+
+    .algolia-autocomplete {
+      .ds-dropdown-menu {
+        border: none;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
+
+        [class^="ds-dataset-"] {
+          border: none;
+        }
+
+        &:before {
+          display: none;
+        }
+      }
+
+      .algolia-docsearch-suggestion--title {
+        color: #464646;
+      }
+
+      .algolia-docsearch-suggestion--highlight {
+        color: #00bc70;
+      }
+    }
+  }
+
+  .version {
+    float: right;
+    height: 65px;
+    line-height: 65px;
+    margin: 0 30px 0 80px;
+
+    .tag-input-box {
+      width: 130px;
+      background: #fff;
+
+      &:hover {
+        border-color: #00bc70;
+      }
+
+      &-active {
+        border-color: #00bc70;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(18, 194, 135, 0.6);
+      }
+    }
+  }
+
+  nav {
+    float: right;
+    height: 65px;
+    line-height: 65px;
+    margin-right: 30px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+
+      li {
+        float: left;
+        padding: 0 30px;
+        text-align: center;
+        font-size: 16px;
+        color: #999;
+
+        a {
+          display: block;
+          color: #333;
+          cursor: pointer;
+
+          &.active,
+          &:hover {
+            color: #00bc70;
+          }
+        }
+
+        svg {
+          height: 20px;
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+}
+
+.ui-option-list {
+  &:hover,
+  &.checked {
+    color: #333;
+    background: rgba(18, 194, 135, 0.1);
+
+    .ui-icon.theme-info {
+      color: #00bc70;
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  header {
+    .search,
+    .version {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  header {
+    .logo {
+      width: 100%;
+    }
+
+    nav {
+      display: none;
+    }
+  }
+}

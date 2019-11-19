@@ -1,54 +1,86 @@
-import React, { PureComponent } from 'react';
+import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import PropsType from './PropsType';
-import Mask from '../mask';
+import Popup from '../popup';
 
 export interface ToastProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Toast extends PureComponent<ToastProps, any> {
+export default class Toast extends Component<ToastProps, any> {
+  static hideHelper: () => void;
+
+  private static zarmToast: null | HTMLDivElement;
+
+  static show = (
+    children: ReactNode,
+    stayTime?: number,
+    mask?: boolean,
+    afterClose?: () => void,
+  ) => {
+    Toast.unmountNode();
+    if (!Toast.zarmToast) {
+      Toast.zarmToast = document.createElement('div');
+      document.body.appendChild(Toast.zarmToast);
+    }
+
+    if (Toast.zarmToast) {
+      ReactDOM.render(
+        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
+          {children}
+        </Toast>,
+        Toast.zarmToast,
+      );
+    }
+  };
+
+  static hide = () => {
+    if (Toast.hideHelper) {
+      Toast.hideHelper();
+    }
+  };
+
+  static unmountNode = () => {
+    const { zarmToast } = Toast;
+    if (zarmToast) {
+      ReactDOM.unmountComponentAtNode(zarmToast);
+    }
+  };
+
+  private timer;
+
   static defaultProps = {
     prefixCls: 'za-toast',
     visible: false,
     stayTime: 3000,
     mask: false,
+    destroy: true,
   };
 
-  static show = (children: any, stayTime?: number, onClose?: () => void) => {
-    ReactDOM.render(
-      <Toast visible stayTime={stayTime} onClose={onClose}>{children}</Toast>
-    , window.zarmToast);
-  }
-
-  static hide = () => {
-    ReactDOM.render(<Toast visible={false} />, window.zarmToast);
-  }
-
-  private timer: number;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: props.visible || false,
-    };
-  }
+  state = {
+    visible: this.props.visible,
+  };
 
   componentDidMount() {
-    if (this.props.visible) {
-      this.enter(this.props);
-    }
+    Toast.hideHelper = this._hide;
+    this.autoClose();
   }
 
-  componentWillReceiveProps(nextProps) {
-    clearTimeout(this.timer);
+  componentDidUpdate(prevProps) {
+    const { visible } = this.props;
 
-    if (nextProps.visible) {
-      this.enter(nextProps);
-    } else {
-      this.leave();
+    if (prevProps.visible !== visible) {
+      if (visible === true) {
+        // eslint-disable-next-line
+        this.setState({
+          visible: true,
+        });
+        this.autoClose();
+      } else {
+        this._hide();
+      }
     }
   }
 
@@ -56,61 +88,60 @@ export default class Toast extends PureComponent<ToastProps, any> {
     clearTimeout(this.timer);
   }
 
-  enter = (props) => {
-    const { stayTime, onMaskClick } = props;
-
-    this.setState({
-      visible: true,
-    });
-
-    if (stayTime === 0) {
-      return;
+  afterClose = () => {
+    const { afterClose } = this.props;
+    if (Toast.zarmToast) {
+      document.body.removeChild(Toast.zarmToast);
+      Toast.zarmToast = null;
     }
 
-    this.timer = setTimeout(() => {
-      if (typeof onMaskClick === 'function') {
-        onMaskClick();
-      }
-      this.leave();
-      clearTimeout(this.timer);
-    }, stayTime);
-  }
+    if (typeof afterClose === 'function') {
+      afterClose();
+    }
+  };
 
-  leave = () => {
+  _hide = () => {
     this.setState({
       visible: false,
     });
+  };
 
-    const { onClose } = this.props;
-    if (typeof onClose === 'function') {
-      onClose();
+  autoClose() {
+    const { stayTime } = this.props;
+    if ((stayTime as number) > 0) {
+      this.timer = setTimeout(() => {
+        this._hide();
+        clearTimeout(this.timer);
+      }, stayTime);
     }
   }
 
   render() {
-    const { prefixCls, className, mask, onMaskClick, children } = this.props;
+    const {
+      prefixCls,
+      className,
+      stayTime,
+      children,
+      ...others
+    } = this.props;
+
     const { visible } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`${prefixCls}-open`]: visible,
-    });
+    const cls = classnames(prefixCls, className);
 
     return (
-      <div className={cls}>
-        <div className={`${prefixCls}-container`}>
-          {children}
+      <Popup
+        direction="center"
+        maskType="transparent"
+        width="70%"
+        {...others}
+        visible={visible}
+        afterClose={this.afterClose}
+      >
+        <div className={cls}>
+          <div className={`${prefixCls}__container`}>{children}</div>
         </div>
-        {mask && <Mask type="transparent" onClose={onMaskClick} />}
-      </div>
+      </Popup>
     );
   }
-}
-
-if (typeof window !== 'undefined') {
-  if (!window.zarmToast) {
-    window.zarmToast = document.createElement('div');
-    document.body.appendChild(window.zarmToast);
-  }
-
-  ReactDOM.render(<Toast visible={false} />, window.zarmToast);
 }

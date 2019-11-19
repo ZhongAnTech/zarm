@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseInputTextareaProps } from './PropsType';
+import { InputTextareaProps } from './PropsType';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
 const countSymbols = (text = '') => {
   return text.replace(regexAstralSymbols, '_').length;
 };
-
-export interface InputTextareaProps extends BaseInputTextareaProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputTextarea extends PureComponent<InputTextareaProps, any> {
   static defaultProps = {
@@ -20,7 +15,6 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     autoHeight: false,
     showLength: false,
     focused: false,
-    clearable: false,
   };
 
   private input;
@@ -34,31 +28,35 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   }
 
   componentDidMount() {
-    if (this.props.autoFocus || this.state.focused) {
+    const { autoFocus } = this.props;
+    const { focused } = this.state;
+    if (autoFocus || focused) {
       this.input.focus();
     }
+  }
+
+  static getDerivedStateFromProps(nextProps) {
+    if ('focused' in nextProps) {
+      return {
+        focused: nextProps.focused,
+      };
+    }
+    return null;
   }
 
   componentDidUpdate() {
     const { autoHeight } = this.props;
+    const { focused } = this.state;
+
     if (autoHeight) {
-      this.input.style.height = '';
       this.input.style.height = `${this.input.scrollHeight}px`;
     }
-    if (this.state.focused) {
+    if (focused) {
       this.input.focus();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('focused' in nextProps) {
-      this.setState({
-        focused: nextProps.focused,
-      });
-    }
-  }
-
-  onInputFocus = (e) => {
+  onFocus = (e) => {
     if (!('focused' in this.props)) {
       this.setState({
         focused: true,
@@ -69,9 +67,9 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     if (typeof onFocus === 'function') {
       onFocus(e.target.value);
     }
-  }
+  };
 
-  onInputBlur = (e) => {
+  onBlur = (e) => {
     if (!('focused' in this.props)) {
       this.setState({
         focused: false,
@@ -81,16 +79,57 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     if (typeof onBlur === 'function') {
       onBlur(e.target.value);
     }
-  }
+  };
 
-  onInputChange = (e) => {
+  handleComposition = (e) => {
+    const { onCompositionStart, onCompositionUpdate, onCompositionEnd, onChange } = this.props;
+
+    if (e.type === 'compositionstart') {
+      // this.setState({
+      //   isOnComposition: true,
+      // });
+      if (typeof onCompositionStart === 'function') {
+        onCompositionStart(e);
+      }
+    }
+
+    if (e.type === 'compositionupdate') {
+      if (typeof onCompositionUpdate === 'function') {
+        onCompositionUpdate(e);
+      }
+    }
+
+    if (e.type === 'compositionend') {
+      // composition is end
+      // this.setState({
+      //   isOnComposition: false,
+      // });
+      const { value } = e.target;
+      if (typeof onCompositionEnd === 'function') {
+        onCompositionEnd(e);
+      }
+      if (typeof onChange === 'function') {
+        onChange(value);
+      }
+    }
+  };
+
+  onChange = (e) => {
     const { onChange } = this.props;
-    const value = e.target.value;
-    const length = countSymbols(value) + (value ? value.length : 0);
+    const { value } = e.target;
+    const length = countSymbols(value);
     this.setState({ length });
     if (typeof onChange === 'function') {
       onChange(value);
     }
+  };
+
+  focus() {
+    this.input.focus();
+  }
+
+  blur() {
+    this.input.blur();
   }
 
   render() {
@@ -99,38 +138,51 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       className,
       maxLength,
       disabled,
+      readOnly,
       autoHeight,
       showLength,
       focused,
-      clearable,
-      ...others,
+      type,
+      ...rest
     } = this.props;
-
-    const cls = classnames(prefixCls, `${prefixCls}-textarea`, className, {
-      disabled,
-      clearable,
+    const { length } = this.state;
+    const cls = classnames(prefixCls, `${prefixCls}--textarea`, className, {
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--readonly`]: readOnly,
     });
 
-    const textLengthRender =
-      showLength &&
-      maxLength &&
-      (
-        <div className={`${prefixCls}-length`}>
-          {`${this.state.length}/${maxLength}`}
+    const textLengthRender = showLength
+      && maxLength
+      && (
+        <div className={`${prefixCls}__length`}>
+          {`${length}/${maxLength}`}
         </div>
       );
 
+    const renderInput = (
+      <textarea
+        {...rest}
+        ref={(ele) => { this.input = ele; }}
+        maxLength={maxLength}
+        disabled={disabled}
+        onChange={this.onChange}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onCompositionStart={(e) => { this.handleComposition(e); }}
+        onCompositionUpdate={(e) => { this.handleComposition(e); }}
+        onCompositionEnd={(e) => { this.handleComposition(e); }}
+      />
+    );
+
+    const renderText = (
+      <div className={`${prefixCls}__content`}>
+        {rest.value || rest.defaultValue}
+      </div>
+    );
+
     return (
       <div className={cls}>
-        <textarea
-          {...others}
-          ref={(ele) => { this.input = ele; }}
-          disabled={disabled}
-          maxLength={maxLength}
-          onChange={this.onInputChange}
-          onFocus={this.onInputFocus}
-          onBlur={this.onInputBlur}
-        />
+        {!readOnly ? renderInput : renderText}
         {textLengthRender}
       </div>
     );

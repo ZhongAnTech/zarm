@@ -2,25 +2,28 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseRadioProps } from './PropsType';
 import Cell from '../cell';
-import Button from '../button';
-import Icon from '../icon';
 
-const getChecked = (props, defaultChecked) => {
-  if ('checked' in props && props.checked) {
+const getChecked = (props: RadioProps, defaultChecked: boolean) => {
+  if (typeof props.checked !== 'undefined') {
     return props.checked;
   }
-  if ('defaultChecked' in props && props.defaultChecked) {
+  if (typeof props.defaultChecked !== 'undefined') {
     return props.defaultChecked;
   }
   return defaultChecked;
 };
+
 
 export interface RadioProps extends BaseRadioProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Radio extends PureComponent<RadioProps, any> {
+export interface RadioStates {
+  checked: boolean;
+}
+
+export default class Radio extends PureComponent<RadioProps, RadioStates> {
   static Group: any;
 
   static defaultProps = {
@@ -30,19 +33,18 @@ export default class Radio extends PureComponent<RadioProps, any> {
     block: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: getChecked(props, false),
-    };
-  }
+  state: RadioStates = {
+    checked: getChecked(this.props, false),
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
+  static getDerivedStateFromProps(nextProps: RadioProps) {
+    if (typeof nextProps.checked !== 'undefined') {
+      return {
+        checked: nextProps.checked,
+      };
     }
+
+    return null;
   }
 
   onValueChange = () => {
@@ -57,77 +59,55 @@ export default class Radio extends PureComponent<RadioProps, any> {
     if (typeof onChange === 'function') {
       onChange(checked);
     }
-  }
+  };
 
   render() {
-    const { prefixCls, className, type, theme, shape, block, value, disabled, children } = this.props;
+    const { prefixCls, className, type, value, disabled, children } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
-      [`shape-${shape}`]: !!shape,
-      checked,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--checked`]: !!checked,
+      [`${prefixCls}--disabled`]: !!disabled,
     });
+
+    const inputRender = (
+      <input
+        type="radio"
+        className={`${prefixCls}__input`}
+        value={value}
+        disabled={disabled}
+        checked={checked}
+        onChange={this.onValueChange}
+      />
+    );
+
+    const radioRender = (
+      <div className={cls}>
+        <div className={`${prefixCls}__wrapper`}>
+          <span className={`${prefixCls}__inner`} />
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
+        </div>
+      </div>
+    );
 
     if (type === 'cell') {
       return (
-        <Cell
-          disabled={disabled}
-          description={checked && <Icon type="right" theme={disabled ? undefined : theme} />}
-          onClick={() => {}}
-        >
-          <input
-            type="radio"
-            className={`${prefixCls}-input`}
-            value={value}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
-          {children}
+        <Cell disabled={disabled} onClick={this.onValueChange}>
+          {radioRender}
         </Cell>
       );
     }
 
     if (type === 'button') {
       return (
-        <Button
-          className={cls}
-          theme={theme}
-          shape={shape}
-          size="sm"
-          block={block}
-          bordered={!checked}
-          disabled={disabled}
-        >
-          <input
-            type="radio"
-            className={`${prefixCls}-input`}
-            value={value}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
-          {children}
-        </Button>
+        <button type="button" className={cls}>
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
+        </button>
       );
     }
 
-    return (
-      <div className={cls}>
-        <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`} />
-          {children && <span className={`${prefixCls}-text`}>{children}</span>}
-          <input
-            type="radio"
-            className={`${prefixCls}-input`}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
-        </div>
-      </div>
-    );
+    return radioRender;
   }
 }

@@ -1,77 +1,65 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
+import _ from 'lodash';
 import Popup from '../popup';
 import PickerView from '../picker-view';
-import { BasePickerProps } from './PropsType';
-
-const getValue = (props, defaultValue?: any) => {
-  if ('value' in props && props.value.length > 0) {
-    return [].concat(props.value);
-  }
-
-  if ('defaultValue' in props && props.defaultValue.length > 0) {
-    return [].concat(props.defaultValue);
-  }
-
-  return defaultValue;
-};
+import BasePickerProps from './PropsType';
+import parseProps from '../picker-view/utils/parseProps';
+import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
   className?: any;
 }
 
-export default class Picker extends PureComponent<PickerProps, any> {
-  static Stack: any;
+export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
 
+export interface PickerState {
+  value: string[] | number[];
+  objValue?: Array<{ [key: string]: any }>;
+  dataSource: DataSource;
+  visible: boolean;
+  tempObjValue?: Array<{ [key: string]: any }>;
+  tempValue?: string[] | number[];
+}
+
+export default class Picker extends Component<PickerProps, PickerState> {
   static defaultProps = {
-    title: '请选择',
-    cancelText: '取消',
-    okText: '确定',
     dataSource: [],
     prefixCls: 'za-picker',
     valueMember: 'value',
-    itemRender: data => data.label,
+    cols: Infinity,
+    maskClosable: true,
+    itemRender: (data) => data.label,
+    destroy: false,
   };
 
-  private tempValue;
-  private tempObjValue;
-  private isScrolling;
+  private isScrolling = false;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: props.visible || false,
-      value: getValue(props, []),
-      objValue: [],
-    };
+  state: PickerState = parseProps.getSource(this.props);
 
-    this.tempValue = this.state.value;
-    this.tempObjValue = this.state.objValue;
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      visible: nextProps.visible,
-      value: getValue(nextProps, []),
-    });
-  }
-
-  onInit = (selected) => {
-    const { valueMember, onInit } = this.props;
-    this.setState({
-      firstValue: selected.map(item => item[valueMember!]),
-      firstObjValue: selected,
-    });
-
-    if (typeof onInit === 'function') {
-      onInit(selected);
+  static getDerivedStateFromProps(props, state) {
+    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+      return {
+        prevProps: props,
+        ...parseProps.getSource(props),
+        tempValue: parseProps.getSource(props).value,
+        tempObjValue: parseProps.getSource(props).objValue,
+      };
     }
+
+    if (!_.isEqual(state.value, state.prevValue)) {
+      return {
+        prevValue: state.value,
+        ...parseProps.getSource({ ...props, value: state.value }),
+      };
+    }
+    return null;
   }
 
   onChange = (selected) => {
     const { valueMember, onChange } = this.props;
-    const value = selected.map(item => item[valueMember!]);
+    const value = selected.map((item) => item[valueMember!]);
     this.setState({
       value,
       objValue: selected,
@@ -80,26 +68,25 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (typeof onChange === 'function') {
       onChange(selected);
     }
-  }
+  };
 
   onCancel = () => {
     const { onCancel } = this.props;
-    this.toggle();
+    const { tempValue = [], tempObjValue = [] } = this.state;
     this.setState({
-      value: this.tempValue,
-      objValue: this.tempObjValue,
+      value: tempValue,
+      objValue: tempObjValue,
     });
     if (typeof onCancel === 'function') {
       onCancel();
     }
-  }
+  };
 
   onOk = () => {
     if (this.isScrolling) {
       return false;
     }
-    const value = this.state.value.length === 0 ? this.state.firstValue : this.state.value;
-    const objValue = this.state.objValue.length === 0 ? this.state.firstObjValue : this.state.objValue;
+    const { value, objValue = [] } = this.state;
     this.setState({
       value,
       objValue,
@@ -109,63 +96,42 @@ export default class Picker extends PureComponent<PickerProps, any> {
     if (typeof onOk === 'function') {
       onOk(objValue);
     }
-    this.toggle();
-  }
+  };
 
-  onMaskClick = () => {
-    const { onMaskClick } = this.props;
-    this.onCancel();
-    if (typeof onMaskClick === 'function') {
-      onMaskClick();
-    }
-  }
-
-  // 切换显示状态
-  toggle = (visible = false) => {
-    this.setState({ visible });
-  }
-
-  onTransition(isScrolling) {
+  onTransition = (isScrolling) => {
     const { onTransition } = this.props;
     this.isScrolling = isScrolling;
     if (typeof onTransition === 'function') {
       onTransition(isScrolling);
     }
-  }
+  };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, children, ...others } = this.props;
-    const { visible, value, firstObjValue } = this.state;
-
+    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, destroy, onOk, onCancel, ...others } = this.props;
+    const { visible, value } = this.state;
     const cls = classnames(prefixCls, className);
-    // const content = children && cloneElement(children, {
-    //   onClick: () => this.toggle(true),
-    // });
-
+    const noop = () => {};
     return (
-      <div className={cls}>
-        <Popup
-          visible={visible}
-          onMaskClick={this.onMaskClick}
-        >
-          <div className={`${prefixCls}-wrapper`} onClick={(e) => {e.stopPropagation(); }}>
-            <div className={`${prefixCls}-header`}>
-              <div className={`${prefixCls}-cancel`} onClick={this.onCancel}>{cancelText}</div>
-              <div className={`${prefixCls}-title`}>{title}</div>
-              <div className={`${prefixCls}-submit`} onClick={this.onOk}>{okText}</div>
-            </div>
-            <PickerView
-              {...others}
-              prefixCls={prefixCls}
-              value={value}
-              firstObjValue={firstObjValue}
-              onInit={this.onInit}
-              onChange={this.onChange}
-              onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
-            />
+      <Popup
+        visible={visible}
+        onMaskClick={maskClosable ? this.onCancel : noop}
+        getContainer={getContainer}
+        destroy={destroy}
+      >
+        <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
+          <div className={`${prefixCls}__header`}>
+            <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale!.cancelText}</div>
+            <div className={`${prefixCls}__title`}>{title || locale!.title}</div>
+            <div className={`${prefixCls}__submit`} onClick={this.onOk}>{okText || locale!.okText}</div>
           </div>
-        </Popup>
-      </div>
+          <PickerView
+            {...others}
+            value={value}
+            onChange={this.onChange}
+            onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
+          />
+        </div>
+      </Popup>
     );
   }
 }

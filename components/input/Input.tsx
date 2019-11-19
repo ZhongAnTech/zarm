@@ -1,49 +1,50 @@
 import React, { PureComponent } from 'react';
-import { BaseInputProps } from './PropsType';
+import { InputBaseProps, InputNumberProps, InputTextareaProps } from './PropsType';
 import InputNumber from './InputNumber';
 import InputBase from './InputBase';
 import InputTextarea from './InputTextarea';
 
-export interface InputProps extends BaseInputProps {
-}
+export type InputProps = InputBaseProps | InputNumberProps | InputTextareaProps;
 
-export default class Input extends PureComponent<BaseInputProps, {}> {
+export default class Input extends PureComponent<InputProps, {}> {
   static defaultProps = {
     type: 'text',
   };
 
   private input;
-  private inputNumber;
-
-  constructor(props) {
-    super(props);
-  }
 
   focus() {
-    if (this.inputNumber) {
-      this.inputNumber.focus();
+    if (this.input) {
+      this.input.focus();
     }
   }
 
   blur() {
-    if (this.inputNumber) {
-      this.inputNumber.blur();
+    if (this.input) {
+      this.input.blur();
     }
   }
 
   render() {
-    const { type, ...others } = this.props;
+    const { type } = this.props;
+
+    if (type === 'text' && 'rows' in this.props) {
+      return <InputTextarea type={type} ref={(ele) => { this.input = ele; }} {...this.props} />;
+    }
+
     switch (type) {
       case 'idcard':
       case 'price':
       case 'number':
-        return <InputNumber ref={ele => (this.inputNumber = ele)} {...others} type={type} />;
+        return <InputNumber type={type} ref={(ele) => { this.input = ele; }} {...this.props as InputNumberProps} />;
 
-      case 'textarea':
-        return <InputTextarea ref={ele => (this.input = ele)} {...others} />;
+      case 'text':
+      case 'search':
+      case 'password':
+        return <InputBase type={type} ref={(ele) => { this.input = ele; }} {...this.props as InputBaseProps} />;
 
       default:
-        return <InputBase ref={ele => (this.input = ele)} {...others} type={type} />;
+        return <InputBase type={type} ref={(ele) => { this.input = ele; }} {...this.props as InputBaseProps} />;
     }
   }
 }

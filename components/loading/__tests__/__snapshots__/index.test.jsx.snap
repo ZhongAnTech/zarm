@@ -1,33 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Confirm renders correctly 1`] = `
-<div
-  class="za-loading za-loading-open"
->
-  <div
-    class="za-loading-container"
-  >
-    <svg
-      class="za-spinner rotate360 theme-primary size-lg"
-      viewBox="0 0 62 62"
-    >
-      <circle
-        class="za-spinner-path"
-        cx="31"
-        cy="31"
-        fill="none"
-        r="28.5"
-        style="stroke-width:5"
-      />
-      <circle
-        class="za-spinner-line"
-        cx="31"
-        cy="31"
-        fill="none"
-        r="28.5"
-        style="stroke-dasharray:26.860617188192727 179.0707812546182;stroke-width:5"
-      />
-    </svg>
-  </div>
-</div>
-`;
+exports[`Confirm renders correctly 1`] = `null`;
+
+exports[`Confirm static function hide 1`] = `undefined`;
+
+exports[`Confirm static function show 1`] = `undefined`;

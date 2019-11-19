@@ -10,26 +10,23 @@ export interface BadgeProps extends PropsType {
 export default class Badge extends PureComponent<BadgeProps, {}> {
   static defaultProps = {
     prefixCls: 'za-badge',
-    theme: 'error',
-    sup: false,
+    shape: 'dot',
+    theme: 'danger',
   };
 
   render() {
-    const { prefixCls, className, theme, shape, sup, text, children, ...others } = this.props;
+    const { prefixCls, className, theme, shape, text, children, ...others } = this.props;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
-      [`shape-${shape}`]: !!shape,
-    });
-
-    const supCls = classnames(`${prefixCls}-sup`, {
-      [`${prefixCls}-sup-up`]: sup,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${shape}`]: shape,
+      [`${prefixCls}--sup`]: !!children,
     });
 
     return (
       <span className={cls}>
         {children}
-        <sup className={supCls} {...others}>{text}</sup>
+        <sup className={`${prefixCls}__content`} {...others}>{shape !== 'dot' && text}</sup>
       </span>
     );
   }

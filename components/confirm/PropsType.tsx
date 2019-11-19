@@ -1,5 +1,10 @@
+import { ReactNode } from 'react';
+import { Locale } from '../locale-provider/PropsType';
+
+type getContainerFunc = () => HTMLElement;
+
 export default interface PropsType {
-  shape?: 'radius';
+  shape?: 'rect';
   visible?: boolean;
   animationType?:
     'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
@@ -7,17 +12,13 @@ export default interface PropsType {
     'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight';
   animationDuration?: number;
   width?: string | number;
-  onMaskClick?: () => void;
-  title?: any;
-  message?: any;
+  title?: ReactNode;
+  content?: ReactNode;
   okText?: string;
   onOk?: () => void;
   cancelText?: string;
   onCancel?: () => void;
-}
-
-declare global {
-  interface Window {
-    zarmConfirm?: any;
-  }
+  afterClose?: () => void;
+  locale?: Locale['Confirm'];
+  getContainer?: HTMLElement | getContainerFunc;
 }

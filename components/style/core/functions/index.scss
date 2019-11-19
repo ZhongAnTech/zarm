@@ -1,29 +1,23 @@
+@import './string';
+
 @function r($px) {
   @return $px * 1px;
 }
 
-/*
-$ratio: 750/640;
-@function r($px) {
-  @if $px != 0 {
-    @return $px / $ratio / $base-fontSize * 1rem;
-  }
-  @else {
-    @return 0;
-  }
+@function alpha($color, $opacity) {
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color+'-h'});
+  $color-s: var(#{$color+'-s'});
+  $color-l: var(#{$color+'-l'});
+  @return hsla($color-h, $color-s, $color-l, $opacity);
 }
-*/
 
-/*
-  阿里flexible方案，详见 https://github.com/amfe/lib-flexible
-*/
-/*
-@function r($px) {
-  @if $px != 0 {
-    @return $px * 2 / 75 * 1rem;
-  }
-  @else {
-    @return 0;
-  }
+@function lightness($color, $lightnessMultiplier) {
+  $color: str-replace($color, 'var(');
+  $color: str-replace($color, ')');
+  $color-h: var(#{$color+'-h'});
+  $color-s: var(#{$color+'-s'});
+  $color-l: var(#{$color+'-l'});
+  @return hsl($color-h, $color-s, calc(#{$color-l} * #{$lightnessMultiplier}));
 }
-*/

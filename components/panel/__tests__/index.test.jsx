@@ -6,11 +6,9 @@ import Panel from '../index';
 describe('Panel', () => {
   it('renders correctly', () => {
     const wrapper = render(
-      <Panel>
-        <Panel.Header title="title" more="more" />
-        <Panel.Body>body</Panel.Body>
-        <Panel.Footer title="title" more="more" />
-      </Panel>
+      <Panel title="title" more="more">
+        body
+      </Panel>,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });

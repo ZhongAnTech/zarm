@@ -1,0 +1,31 @@
+@import "@site/styles/index";
+
+.app-container {
+  position: relative;
+  background-color: #f6f6f6;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch;
+
+  .github {
+    position: absolute;
+    right: r(10);
+    top: r(10);
+    width: r(32);
+    height: r(32);
+  }
+
+  .lang {
+    position: absolute;
+    right: r(10);
+    top: r(10);
+  }
+
+  h1 {
+    margin: 0;
+    padding: r(15);
+    font-size: r(16);
+    font-weight: 400;
+  }
+}

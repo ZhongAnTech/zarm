@@ -1,171 +1,163 @@
-## 按钮 Button
+# Button 按钮
 
-:::demo 基本用法
+
+
+## 基本用法
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button>default</Button>
-        <Button theme="primary">primary</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button>default</Button>
+    <Button theme="primary">primary</Button>
+  </>
+, mountNode);
 ```
-:::
 
 
-:::demo 块级按钮
+
+## 块级按钮
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button block>default</Button>
-        <Button block disabled>disabled default</Button>
-        <Button block theme="primary">primary</Button>
-        <Button block disabled theme="primary">disabled primary</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button block>default</Button>
+    <Button block disabled>default disabled</Button>
+    <Button block theme="primary">primary</Button>
+    <Button block disabled theme="primary">primary disabled</Button>
+  </>
+, mountNode);
 ```
-:::
 
 
-:::demo 幽灵按钮
+
+## 按钮主题
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button block bordered>default</Button>
-        <Button block bordered disabled>disabled default</Button>
-        <Button block bordered theme="primary">primary</Button>
-        <Button block bordered disabled theme="primary">disabled primary</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button>default</Button>
+    <Button theme="primary">primary</Button>
+    <Button theme="danger">danger</Button>
+  </>
+, mountNode);
 ```
-:::
 
 
-:::demo 主题
+
+## 按钮尺寸
 ```jsx
 import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button theme="default">default</Button>
-        <Button theme="primary">primary</Button>
-        <Button theme="success">success</Button>
-        <Button theme="warning">warning</Button>
-        <Button theme="error">error</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button size="lg">lg</Button>
+    <Button>md</Button>
+    <Button size="sm">sm</Button>
+    <Button size="xs">xs</Button>
+  </>
+, mountNode);
 ```
-:::
 
 
-:::demo 大小
-```jsx
-import { Button } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button theme="primary" size="lg">lg</Button>
-        <Button theme="primary">md</Button>
-        <Button theme="primary" size="sm">sm</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
-```
-:::
-
-
-:::demo 形状
+## 按钮形状
 ```jsx
 import { Button, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button shape="radius" theme="primary">圆角按钮</Button>
-        <Button shape="round" theme="primary">椭圆角按钮</Button>
-        <Button bordered shape="circle" theme="primary">GO</Button>
-        <Button shape="circle" icon={<Icon type="right" />} />
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button shape="rect" theme="primary">rect</Button>
+    <Button theme="primary">radius</Button>
+    <Button shape="round" theme="primary">round</Button>
+    <Button shape="circle" theme="primary">circle</Button>
+    <Button shape="circle" icon={<Icon type="right" />} />
+  </>
+, mountNode);
 ```
-:::
 
 
-:::demo 图标按钮
+
+## 带阴影
+```jsx
+import { Button } from 'zarm';
+
+ReactDOM.render(
+  <>
+    <Button shadow>default</Button>
+    <Button shadow theme="primary">primary</Button>
+    <Button shadow theme="danger">danger</Button>
+  </>
+, mountNode);
+```
+
+
+
+## 图标按钮
 ```jsx
 import { Button, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Button bordered shape="radius" icon={<Icon type="right-round" theme="success" />}>正确</Button>
-        <Button bordered shape="radius" icon={<Icon type="wrong-round" theme="error" />}>错误</Button>
-        <Button bordered loading shape="radius">加载中</Button>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Button icon={<Icon type="right-round" theme="success" />}>正确</Button>
+    <Button icon={<Icon type="wrong-round" theme="danger" />}>错误</Button>
+    <Button loading>加载中</Button>
+  </>
+, mountNode);
 ```
-:::
 
 
 
-:::api API
+## 链接按钮
+```jsx
+import { Button } from 'zarm';
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-button | | 类名前缀 |
-| className | string | | | 追加类名 |
-| theme | string | `default` | `default`, `primary`, `info`, `success`, `warning`, `error` | 主题 |
-| size | string | | `xl`, `lg`, `sm`, `xs` | 大小 |
-| shape | string | | `radius`, `round`, `circle` | 形状 |
-| block | boolean | false | | 是否为块级元素 |
-| bordered | boolean | false | | 是否是幽灵按钮 |
-| disabled | boolean | false | | 是否禁用 |
-| loading | boolean | falxse | | 是否显示加载中 |
-| icon | JSX.Element | | | icon |
-| onClick | <code>(e?: any) => void</code> | noop | | 点击后触发的回调函数 |
+ReactDOM.render(
+  <>
+    <Button href="https://zarm.design">default</Button>
+    <Button theme="primary" href="https://zarm.design">primary</Button>
+    <Button theme="danger" href="https://zarm.design">danger</Button>
+    <Button disabled theme="primary" href="https://zarm.design">disabled</Button>
+  </>
+, mountNode);
+```
 
-:::
+
+
+## 幽灵按钮
+```jsx
+import { Button } from 'zarm';
+
+ReactDOM.render(
+  <>
+    <Button block ghost>default</Button>
+    <Button block ghost theme="primary">primary</Button>
+    <Button block ghost theme="danger">danger</Button>
+    <Button block ghost disabled>disabled</Button>
+  </>
+, mountNode);
+```
+
+
+
+## API
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| theme | string | 'default' | 设置主题，可选值为 `default`、`primary`、`danger` |
+| size | string | 'md' | 设置大小，可选值为 `md`、`lg`、`sm`、`xs` |
+| shape | string | 'radius' | 设置形状，可选值为 `rect`、`radius`、`round`、`circle` |
+| block | boolean | false | 是否块级元素 |
+| ghost | boolean | false | 是否幽灵按钮 |
+| shadow | boolean | false | 是否带阴影 |
+| disabled | boolean | false | 是否禁用 |
+| loading | boolean | false | 是否加载中状态 |
+| icon | ReactNode | - | 设置图标 |
+| onClick | MouseEventHandler&lt;Element&gt; | - | 点击后触发的回调函数 |
+| htmlType | string | 'button' | 设置原生 button 的`type`值，可选值为`button`、`submit`、`reset` |
+| href | string | - | 点击跳转的地址，指定此属性`button`的行为和 a 标签一致 |
+| target | string | - | 规定在何处打开链接文档，相当于 a 标签的`target`属性，`href`属性存在时生效 |
+| mimeType | string | - | 链接中指向的文档的 mime 类型，相当于 a 标签的`type`属性，`href`属性存在时生效 |
+

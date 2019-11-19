@@ -1,2 +1,3 @@
-import '../../style/';
-import '../../picker-view/style/';
+import '../../style';
+import '../../picker-view/style';
+import './index.scss';

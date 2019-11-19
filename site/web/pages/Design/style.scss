@@ -1,0 +1,38 @@
+.design-page {
+  header {
+    box-shadow: 0 2px 8px #f0f1f2;
+  }
+
+  main {
+    position: relative;
+    min-width: 1200px;
+    margin: 110px auto 15px;
+    background-color: #fff;
+    overflow: hidden;
+
+    .main-container {
+      min-height: 500px;
+      margin-left: -1px;
+      padding: 0 60px 140px 340px;
+      overflow: hidden;
+      border-left: 1px solid #ebedf0;
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .side-bar {
+    display: none;
+  }
+
+  .components-page {
+    main {
+      min-width: 100%;
+
+      .main-container {
+        padding: 0 20px;
+      }
+    }
+  }
+}

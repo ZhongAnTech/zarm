@@ -10,7 +10,7 @@ describe('SearchBar', () => {
         shape="round"
         cancelText="取消"
         placeholder="搜索"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -21,7 +21,7 @@ describe('SearchBar', () => {
         shape="round"
         cancelText="取消取消"
         placeholder="搜索"
-      />
+      />,
     );
     wrapper.setProps({ defaultValue: '搜索关键字' });
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -35,7 +35,7 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onFocus={onFocus}
-      />
+      />,
     );
     wrapper.find('input[type="search"]').simulate('focus');
     expect(onFocus).toBeCalled();
@@ -50,7 +50,7 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onChange={onChange}
-      />
+      />,
     );
 
     const input = wrapper.find('input[type="search"]');
@@ -83,11 +83,11 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onCancel={onCancel}
-      />
+      />,
     );
     const input = wrapper.find('input[type="search"]');
     input.simulate('focus');
-    wrapper.find('.za-searchbar-cancel').simulate('click');
+    wrapper.find('.za-search-bar__cancel').simulate('click');
     expect(onCancel).toHaveBeenCalled();
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -99,13 +99,29 @@ describe('SearchBar', () => {
         shape="round"
         placeholder="搜索"
         onSubmit={onSubmit}
-      />
+      />,
     );
 
     const input = wrapper.find('input[type="search"]');
     input.simulate('change', { target: { value: 'My new value' } });
-    wrapper.find('.za-searchbar-form').simulate('submit');
+    wrapper.find('.za-search-bar__form').simulate('submit');
     expect(onSubmit).toHaveBeenCalled();
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders onClear called correctly', () => {
+    const onClear = jest.fn();
+    const wrapper = mount(
+      <SearchBar
+        onClear={onClear}
+      />,
+    );
+
+    const input = wrapper.find('input[type="search"]');
+    input.simulate('change', { target: { value: 'My new value' } });
+    wrapper.find('i.za-input__clear').simulate('click');
+    expect(onClear).toHaveBeenCalled();
+    expect(input.instance().value).toEqual('');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

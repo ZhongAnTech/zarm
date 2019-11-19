@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
-import { BaseInputNumberProps } from './PropsType';
+import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
 import Icon from '../icon';
 
 declare const document;
-
-export interface InputNumberProps extends BaseInputNumberProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps = {
@@ -21,7 +15,9 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   };
 
   private content;
+
   private picker;
+
   private container;
 
   constructor(props) {
@@ -34,31 +30,27 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentDidMount() {
+    const { autoFocus, focused } = this.props;
+    Events.on(document.body, 'touchstart', this.onMaskClick);
     Events.on(document.body, 'click', this.onMaskClick);
-    if (this.props.autoFocus || this.props.focused) {
+
+    if (autoFocus || focused) {
       this.onFocus();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { value } = this.state;
-    // if ('focused' in nextProps || 'autoFocus' in nextProps) {
-    //   if (nextProps.focused || nextProps.autoFocus) {
-    //     this.onFocus();
-    //   } else {
-    //     this.onBlur();
-    //   }
-    // }
-
-    if ('value' in nextProps && value !== nextProps.value ) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+      return {
         value: nextProps.value,
-        visible: this.state.visible,
-      });
+        prevValue: nextProps.value,
+      };
     }
+    return null;
   }
 
   componentWillUnmount() {
+    Events.off(document.body, 'touchstart', this.onMaskClick);
     Events.off(document.body, 'click', this.onMaskClick);
   }
 
@@ -69,10 +61,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     }
 
     const cNode = ((node) => {
-      const picker = findDOMNode(this.picker) as HTMLElement;
-      const container = findDOMNode(this.container) as HTMLElement;
       while (node.parentNode && node.parentNode !== document.body) {
-        if (node === picker || node === container || clsRegExp.test(node.className)) {
+        if (node === this.picker || node === this.container || clsRegExp.test(node.className)) {
           return node;
         }
         node = node.parentNode;
@@ -82,7 +72,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     if (!cNode) {
       this.onBlur();
     }
-  }
+  };
 
   onKeyClick = (key) => {
     if (['close', 'ok'].indexOf(key) > -1) {
@@ -90,7 +80,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       return;
     }
 
-    const value = this.state.value;
+    const { value } = this.state;
     const newValue = (key === 'delete')
       ? value.slice(0, value.length - 1)
       : value + key;
@@ -103,92 +93,81 @@ export default class InputNumber extends Component<InputNumberProps, any> {
         onChange(newValue);
       }
     }
-  }
-
-  scrollToStart = () => {
-    this.content.scrollLeft = 0;
-  }
-
-  scrollToEnd = () => {
-    this.content.scrollLeft = this.content.scrollWidth;
-  }
+  };
 
   onFocus = () => {
-    if (this.state.visible) {
+    const { disabled, readOnly, onFocus } = this.props;
+    if (disabled || readOnly || this.state.visible) {
       return;
     }
-    this.setState({ visible: true });
-    this.scrollToEnd();
-    const { onFocus } = this.props;
+
+    // 定位到文本尾部
+    this.setState({ visible: true }, this.scrollToEnd);
+
     if (typeof onFocus === 'function') {
       onFocus(this.state.value);
     }
-  }
+  };
 
   onBlur = () => {
     if (!this.state.visible) {
       return;
     }
 
-    this.setState({ visible: false });
-    this.scrollToStart();
+    // 定位到文本首部
+    this.setState({ visible: false }, this.scrollToStart);
+
     const { onBlur } = this.props;
     if (typeof onBlur === 'function') {
       onBlur(this.state.value);
     }
-  }
+  };
 
-  onClear() {
-    const { value } = this.state;
+  onClear = () => {
     const { onChange, onClear } = this.props;
     this.setState({
       value: '',
     }, this.onFocus);
     if (onClear) {
-      onClear(value);
+      onClear('');
     }
     if (typeof onChange === 'function') {
       onChange('');
     }
-  }
+  };
 
-  focus() {
+  scrollToStart = () => {
+    this.content.scrollLeft = 0;
+  };
+
+  scrollToEnd = () => {
+    this.content.scrollLeft = this.content.scrollWidth;
+  };
+
+  focus = () => {
     this.onFocus();
-  }
+  };
 
-  blur() {
+  blur = () => {
     this.onBlur();
-  }
-
-  renderClear() {
-    const { prefixCls, clearable } = this.props;
-    const { visible, value } = this.state;
-
-    const clearCls = classnames(`${prefixCls}-clear`, {
-      [`${prefixCls}-clear-show`]: !!(visible && value && value.length > 0),
-    });
-    return clearable &&
-      <Icon
-        type="wrong-round-fill"
-        className={clearCls}
-        onClick={(e) => { e.stopPropagation(); this.onClear(); }}
-      />;
-  }
+  };
 
   render() {
-    const { prefixCls, className, type, disabled, placeholder, clearable } = this.props;
+    const { prefixCls, className, type, clearable, disabled, readOnly, placeholder } = this.props;
     const { visible, value } = this.state;
+    const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
 
-    const cls = classnames(prefixCls, `${prefixCls}-number`, className, {
-      disabled,
-      focus: visible,
-      clearable,
+    const cls = classnames(prefixCls, `${prefixCls}--number`, className, {
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--focus`]: visible,
+      [`${prefixCls}--clearable`]: showClearIcon,
+      [`${prefixCls}--readonly`]: readOnly,
     });
 
-    return (
-      <div className={cls} onClick={this.onFocus} ref={(ele) => { this.container = ele; }}>
-        {!value && <div className={`${prefixCls}-placeholder`}>{placeholder}</div>}
-        <div className={`${prefixCls}-content`} ref={(ele) => { this.content = ele; }}>{value}</div>
+    const renderInput = (
+      <div className={`${prefixCls}__content`}>
+        {!value && !readOnly && <div className={`${prefixCls}__placeholder`}>{placeholder}</div>}
+        <div className={`${prefixCls}__virtual-input`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input
           type="hidden"
           value={value}
@@ -200,7 +179,28 @@ export default class InputNumber extends Component<InputNumberProps, any> {
           type={type}
           onKeyClick={this.onKeyClick}
         />
-        {this.renderClear()}
+      </div>
+    );
+
+    const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
+
+    // clear icon
+    const clearCls = classnames(`${prefixCls}__clear`, {
+      [`${prefixCls}__clear--show`]: visible && value && value.length > 0,
+    });
+
+    const renderClearIcon = showClearIcon && (
+      <Icon
+        type="wrong-round-fill"
+        className={clearCls}
+        onClick={(e) => { e.stopPropagation(); this.onClear(); }}
+      />
+    );
+
+    return (
+      <div className={cls} onClick={this.onFocus} ref={(ele) => { this.container = ele; }}>
+        {readOnly ? renderText : renderInput}
+        {renderClearIcon}
       </div>
     );
   }

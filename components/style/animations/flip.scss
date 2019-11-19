@@ -1,4 +1,4 @@
-@keyframes flip-enter {
+@keyframes za-flip-enter {
   from {
     transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
   }
@@ -12,12 +12,12 @@
   }
 }
 
-.flip-enter {
-  animation: flip-enter both ease-in;
+.za-flip-enter {
+  animation: za-flip-enter both ease-in;
   backface-visibility: visible !important;
 }
 
-@keyframes flip-leave {
+@keyframes za-flip-leave {
   from {
     transform: perspective(400px);
   }
@@ -31,7 +31,7 @@
   }
 }
 
-.flip-leave {
-  animation: flip-leave both;
+.za-flip-leave {
+  animation: za-flip-leave both;
   backface-visibility: visible !important;
 }

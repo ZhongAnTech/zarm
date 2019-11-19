@@ -1,12 +1,12 @@
-import 'core-js/es6/map';
-import 'core-js/es6/set';
 import React from 'react';
-import { AppRegistry, View, Text } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { YellowBox, AppRegistry, View, Text } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 import IndexPage from './pages/IndexPage';
-import { UIFORM, UICONROL, UIVIEW, UIDATA } from './demoList';
+import { form, feedback, view, navigation } from './demos';
 
-const getOptions = title => ({
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+
+const getOptions = (title) => ({
   headerTitle: (
     <View style={{ flex: 1, flexDirection: 'row' }}>
       <Text
@@ -22,7 +22,7 @@ const getOptions = title => ({
     </View>
   ),
   headerStyle: {
-    backgroundColor: '#12c287',
+    backgroundColor: '#00bc70',
   },
   headerTintColor: 'white',
   headerRight: <View />,
@@ -38,14 +38,14 @@ const scenes = {
   },
 };
 
-[...UIFORM, ...UICONROL, ...UIVIEW, ...UIDATA].forEach((component) => {
+[...form, ...feedback, ...view, ...navigation].forEach((component) => {
   scenes[component.title] = {
     screen: component.module.default,
     navigationOptions: getOptions(component.title),
   };
 });
 
-const App = StackNavigator(scenes);
+const App = createStackNavigator(scenes);
 
 AppRegistry.registerComponent('zarm', () => App);
 

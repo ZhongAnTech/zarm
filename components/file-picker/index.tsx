@@ -9,9 +9,9 @@
  * onChange: () => { file, fileType, fileSize, fileName, thumbnail }。
  * onBeforeSelect: () => boolean，返回 false 的时候阻止后续的选择事件。
  */
-import React, { PureComponent, cloneElement } from 'react';
-import PropsType from './PropsType';
+import React, { PureComponent, cloneElement, MouseEventHandler, ChangeEventHandler } from 'react';
 import classNames from 'classnames';
+import PropsType from './PropsType';
 import handleFileInfo from './utils/handleFileInfo';
 
 export interface FilePickerProps extends PropsType {
@@ -19,26 +19,27 @@ export interface FilePickerProps extends PropsType {
   className?: string;
 }
 
-export default class FilePicker extends PureComponent<FilePickerProps, any> {
+export interface IFileDetail {
+  file: File;
+  fileType: string;
+  fileSize: number;
+  fileName: string;
+  thumbnail: string;
+}
+
+export default class FilePicker extends PureComponent<FilePickerProps, {}> {
   static defaultProps = {
-    prefixCls: 'za-filepicker',
+    prefixCls: 'za-file-picker',
     disabled: false,
     multiple: false,
-    onBeforeSelect() { return true; },
+    onBeforeSelect: () => true,
   };
 
-  private file;
+  private file: HTMLInputElement | null = null;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      fileList: [],
-    };
-  }
-
-  handleDefaultInput = (e) => {
+  handleDefaultInput: MouseEventHandler<HTMLInputElement> = (e) => {
     // 防止选择同一张图片两次造成 onChange 事件不触发
-    e.target.value = null;
+    e.currentTarget.value = '';
 
     const { onBeforeSelect, disabled } = this.props;
     if (typeof onBeforeSelect !== 'function') {
@@ -49,18 +50,18 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     if (onBeforeSelect() === false || disabled) {
       e.preventDefault();
     }
-  }
+  };
 
-  handleClick = (e) => {
-    this.file.click(e);
-  }
+  handleClick = () => {
+    this.file!.click();
+  };
 
-  handleChange = (e) => {
+  handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const { onChange, quality, multiple } = this.props;
-    const files = [].slice.call(e.target.files);
-    const fileList: any[] = [];
+    const files: Array<File> = [].slice.call(e.target.files);
+    const fileList: Array<IFileDetail> = [];
 
-    const getFileInfo = (data) => {
+    const getFileInfo = (data: IFileDetail) => {
       if (multiple) {
         fileList.push(data);
 
@@ -68,22 +69,20 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
           onChange(fileList);
         }
       } else {
-        if (typeof onChange === 'function') {
-          onChange(data);
-        }
+        typeof onChange === 'function' && onChange(data);
       }
     };
 
     if (files) {
-      files.map(file => handleFileInfo({ file, quality }, getFileInfo));
+      files.map((file) => handleFileInfo({ file, quality }, getFileInfo));
     }
-  }
+  };
 
   render() {
     const { prefixCls, className, multiple, accept, capture, disabled, children } = this.props;
 
     const cls = classNames(prefixCls, className, {
-      disabled,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     const content = cloneElement(children, {
@@ -94,7 +93,7 @@ export default class FilePicker extends PureComponent<FilePickerProps, any> {
     return (
       <div className={cls}>
         <input
-          className={`${prefixCls}-input`}
+          className={`${prefixCls}__input`}
           type="file"
           ref={(ele) => { this.file = ele; }}
           accept={accept}

@@ -15,79 +15,109 @@ export default {
   },
   textStyle: {
     fontSize: variables.button_font_size_md,
-    color: variables.color_text_inverse,
   },
   iconStyle: {
     marginRight: variables.button_padding_h_md / 2,
   },
 
-  // theme
   defaultWrapper: {
-    backgroundColor: variables.theme_default,
-  },
-  defaultActiveWrapper: {
-    backgroundColor: '#c9c9c9',
-  },
-  defaultBorderedWrapper: {
-    borderColor: variables.theme_default,
+    borderWidth: 1,
+    backgroundColor: variables.button_default_background,
+    borderColor: variables.button_default_border,
   },
   defaultText: {
-    color: variables.color_text,
+    color: variables.button_default_color,
+  },
+  defaultActiveWrapper: {
+    backgroundColor: variables.button_default_active_background,
+    borderColor: variables.button_default_active_border,
+  },
+  defaultActiveText: {
+    color: variables.button_default_active_color,
+  },
+  defaultDisabledText: {
+    color: variables.button_disabled_color_ghost,
+  },
+  defaultGhostWrapper: {
+    backgroundColor: 'transparent',
+    borderColor: variables.button_default_ghost_border,
+  },
+  defaultGhostText: {
+    color: variables.button_default_ghost_color,
+  },
+  defaultGhostActiveWrapper: {
+    backgroundColor: 'transparent',
+    borderColor: variables.button_default_ghost_active_border,
+  },
+  defaultGhostActiveText: {
+    color: variables.button_default_ghost_active_color,
   },
 
   primaryWrapper: {
-    backgroundColor: variables.theme_primary,
+    backgroundColor: variables.button_primary_background,
+  },
+  primaryText: {
+    color: variables.button_primary_color,
   },
   primaryActiveWrapper: {
-    backgroundColor: '#0f9d6d',
+    backgroundColor: variables.button_primary_active_background,
   },
-  primaryBorderedWrapper: {
-    borderColor: variables.theme_primary,
+  primaryActiveText: {
+    color: variables.button_primary_active_color,
   },
-  primaryBorderedText: {
-    color: variables.theme_primary,
+  primaryGhostWrapper: {
+    borderColor: variables.button_primary_ghost_border,
   },
-
-  successWrapper: {
-    backgroundColor: variables.theme_success,
+  primaryGhostText: {
+    color: variables.button_primary_ghost_color,
   },
-  successActiveWrapper: {
-    backgroundColor: '#4cbe46',
+  primaryGhostActiveWrapper: {
+    borderColor: variables.button_primary_ghost_active_color,
   },
-  successBorderedWrapper: {
-    borderColor: variables.theme_success,
-  },
-  successBorderedText: {
-    color: variables.theme_success,
+  primaryGhostActiveText: {
+    color: variables.button_primary_ghost_active_color,
   },
 
-  warningWrapper: {
-    backgroundColor: variables.theme_warning,
+  dangerWrapper: {
+    backgroundColor: variables.button_danger_background,
   },
-  warningActiveWrapper: {
-    backgroundColor: '#e09415',
+  dangerText: {
+    color: variables.button_danger_color,
   },
-  warningBorderedWrapper: {
-    borderColor: variables.theme_warning,
+  dangerActiveWrapper: {
+    backgroundColor: variables.button_danger_active_background,
   },
-  warningBorderedText: {
-    color: variables.theme_warning,
+  dangerActiveText: {
+    color: variables.button_danger_active_color,
   },
-
-  errorWrapper: {
-    backgroundColor: variables.theme_error,
+  dangerGhostWrapper: {
+    borderColor: variables.button_danger_ghost_border,
   },
-  errorActiveWrapper: {
-    backgroundColor: '#e03422',
+  dangerGhostText: {
+    color: variables.button_danger_ghost_color,
   },
-  errorBorderedWrapper: {
-    borderColor: variables.theme_error,
+  dangerGhostActiveWrapper: {
+    borderColor: variables.button_danger_ghost_active_color,
   },
-  errorBorderedText: {
-    color: variables.theme_error,
+  dangerGhostActiveText: {
+    color: variables.button_danger_ghost_active_color,
   },
 
   // size
+  mdWrapper: {
+    height: variables.button_height_md,
+    paddingLeft: variables.button_padding_h_md,
+    paddingRight: variables.button_padding_h_md,
+  },
+  mdCircleWrapper: {
+    width: variables.button_height_md,
+  },
+  mdText: {
+    fontSize: variables.button_font_size_md,
+  },
+  mdIcon: {
+    marginRight: variables.button_padding_h_md / 2,
+  },
   lgWrapper: {
     height: variables.button_height_lg,
     paddingLeft: variables.button_padding_h_lg,
@@ -116,10 +146,27 @@ export default {
   smIcon: {
     marginRight: variables.button_padding_h_sm / 2,
   },
+  xsWrapper: {
+    height: variables.button_height_xs,
+    paddingLeft: variables.button_padding_h_xs,
+    paddingRight: variables.button_padding_h_xs,
+  },
+  xsCircleWrapper: {
+    width: variables.button_height_xs,
+  },
+  xsText: {
+    fontSize: variables.button_font_size_xs,
+  },
+  xsIcon: {
+    marginRight: variables.button_padding_h_xs / 2,
+  },
 
   // shape
   radiusWrapper: {
     borderRadius: variables.radius_md,
+  },
+  rectWrapper: {
+    borderRadius: 0,
   },
   roundWrapper: {
     borderRadius: variables.radius_round,
@@ -131,19 +178,29 @@ export default {
     paddingRight: 0,
   },
 
-  // bordered
-  borderedWrapper: {
+  // ghost
+  ghostWrapper: {
     borderWidth: 1,
     backgroundColor: 'transparent',
   },
 
   // disabled
   disabledWrapper: {
-    opacity: 0.5,
+    opacity: variables.button_disabled_opacity,
   },
 
-  // active
-  activeText: {
-    opacity: 0.6,
+  disabledText: {
+    color: variables.color_text_disabled,
+  },
+
+  // disabled ghost
+  disabledGhostWrapper: {
+    opacity: 1,
+    borderColor: variables.button_disabled_color_ghost,
+  },
+
+  // disabled ghost text
+  disabledGhostText: {
+    color: variables.button_disabled_color_ghost,
   },
 };

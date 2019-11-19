@@ -1,0 +1,137 @@
+@import '../functions/string';
+
+$--namespace: 'za';
+$--block-separator: '-';
+$--element-separator: '__';
+$--modifier-separator: '--';
+$--keyframes-separator: '_';
+
+// 是否包含Modifier
+@function contains-modifier($selector) {
+  @return str-contains(str-selector($selector), $--modifier-separator);
+}
+
+// 是否包含Element
+@function containsElement($selector) {
+  @return str-contains(str-selector($selector), $--element-separator);
+}
+
+// 获取块名
+@function get-block($selector) {
+  $selector: str-selector($selector);
+  $parent: str-slice($selector, str-index-reverse($selector, '.'));
+  $start: -2;
+  @if containsElement($parent) {
+    $start: str-index($parent, $--element-separator) - 1;
+  }
+  @else if contains-modifier($parent) {
+    $start: str-index($parent, $--modifier-separator) - 1;
+  }
+  $block: str-slice($parent, 0, $start);
+  // @debug $block;
+  @return $block;
+}
+
+// 获取节点列表
+@function get-elements($elements) {
+  $result: '';
+  $block: get-block(&);
+  $selector: if(contains-modifier(&), get-block(&), &);
+  @each $unit in $elements {
+    $element: selector-append($selector, $--element-separator + $unit);
+    @if containsElement($selector) {
+      $element: selector-nest($selector, selector-append($block, $--element-separator + $unit));
+    }
+    $result: $result + $element + ',';
+  }
+  @return $result;
+}
+
+/**
+ * block define
+ * @param $name     block name
+ * @examples
+ *
+ *    @include b(button) { ... }
+ *    =>
+ *    .za-button { ... }
+ *
+ *
+ *    @include b(checkbox-group) { ... }
+ *    =>
+ *    .za-checkbox-group { ... }
+ */
+@mixin b($block) {
+  $block: selector-append($--namespace, $--block-separator + $block);
+  // @debug $block;
+  .#{$block} {
+    @content;
+  }
+}
+
+/**
+ * element define
+ * @param $list     list of element names
+ * @examples
+ *
+ *    @include b(button) {
+ *      @include e(icon) { ... }
+ *    }
+ *    =>
+ *    .za-button__icon { ... }
+ *
+ *
+ *    @include b(dialog) {
+ *      @include e(header, footer) { ... }
+ *    }
+ *    =>
+ *    .za-dialog__header, .za-dialog__footer { ... }
+ */
+@mixin e($elements...) {
+  $elements: get-elements($elements);
+  $selector: if(contains-modifier(&), selector-nest(&, $elements), $elements);
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+/**
+ * modifier define
+ * @param $modifier     modifier name
+ * @examples
+ *
+ *    @include b(button) {
+ *      @include m(danger) { ... }
+ *    }
+ *    =>
+ *    .za-button--danger { ... }
+ *
+ *
+ *    @include b(button) {
+ *      @include m(danger) {
+ *        @include e(content) { ... }
+ *      }
+ *    }
+ *    =>
+ *    .za-button--danger .za-button__content { ... }
+ *
+ *
+ *    @include b(button) {
+ *      @include e(content) {
+ *        @include m(danger) { ... }
+ *      }
+ *    }
+ *    =>
+ *    ..za-button__content--danger { ... }
+ */
+@mixin m($modifier) {
+  $parent: if(contains-modifier(&), & + get-block(&), &);
+  $selector: selector-append($parent, $--modifier-separator + $modifier);
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}

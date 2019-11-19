@@ -4,11 +4,7 @@ import { Panel } from '../../components/index.native';
 
 const styles = {
   moreHeaderColor: {
-    color: '#12c287',
-  },
-  moreFooterColor: {
-    color: '#999999',
-    fontSize: 12,
+    color: '#00bc70',
   },
   box: {
     paddingTop: 10,
@@ -30,10 +26,15 @@ export default class App extends PureComponent {
     return (
       <ScrollView>
         <View>
-          <Panel style={{ marginBottom: 10 }}>
-            <Panel.Header title="标题" more={<Text style={styles.moreHeaderColor} onPress={clickHandle}>更多</Text>} />
-            <Panel.Body style={styles.box}><Text style={styles.bodyColor}>内容</Text></Panel.Body>
-            <Panel.Footer title="底部左侧" more="底部右侧" />
+          <Panel
+            title="标题"
+            more={
+              <Text style={styles.moreHeaderColor} onPress={clickHandle}>更多</Text>
+            }
+          >
+            <View style={styles.box}>
+              <Text style={styles.bodyColor}>内容</Text>
+            </View>
           </Panel>
         </View>
       </ScrollView>

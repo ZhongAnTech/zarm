@@ -1,8 +1,0 @@
-{
-  "pluginsConfig": {
-    "editlink": {
-      "base": "https://github.com/ZhonganTechENG/zarm/tree/master/docs/zh-cn",
-      "label": "编辑此页面"
-    }
-  }
-}

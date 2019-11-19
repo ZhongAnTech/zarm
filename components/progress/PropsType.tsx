@@ -1,6 +1,10 @@
+import { CSSProperties } from 'react';
+
 export default interface PropsType {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
-  strokeWidth?: number;
+  theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
   percent?: number;
-  shape?: 'line' | 'circle';
+  type?: 'line' | 'circle' | 'semi-circle';
+  shape?: 'round' | 'rect';
+  weight?: 'normal' | 'thin';
+  style?: CSSProperties;
 }

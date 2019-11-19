@@ -1,0 +1,27 @@
+@mixin linegradient($direction) {
+  background-image:
+    linear-gradient(
+      to $direction,
+      transparent 0,
+      transparent 50%,
+      var(--theme-primary-lighter) 50%
+    );
+}
+
+@mixin radialgradient($deg) {
+  background-image:
+    radial-gradient(
+      100% 100% at $deg,
+      transparent,
+      transparent 50%,
+      white 50%
+    );
+}
+
+@mixin firstday() {
+  @each $num in 1, 2, 3, 4, 5, 6 {
+    &.firstday-#{$num} {
+      margin-left: $--calendar-day-width * $num;
+    }
+  }
+}

@@ -10,8 +10,18 @@ export interface SwipeActionProps extends PropsType {
 }
 
 export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
+  private isOpen = false;
+
+  private touchEnd = true;
+
+  private wrap;
+
+  private left;
+
+  private right;
+
   static defaultProps = {
-    prefixCls: 'za-swipeaction',
+    prefixCls: 'za-swipe-action',
     left: [],
     right: [],
     moveDistanceRatio: 0.5,
@@ -19,12 +29,6 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     animationDuration: 300,
     offset: 10,
   };
-
-  private isOpen: boolean = false;
-  private touchEnd: boolean = true;
-  private wrap;
-  private left;
-  private right;
 
   constructor(props) {
     super(props);
@@ -34,11 +38,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
   }
 
   componentDidMount() {
-    Events.on(document.body, 'touchstart', e => this.onCloseSwipe(e));
+    Events.on(document.body, 'touchstart', this.onCloseSwipe);
+    Events.on(document.body, 'click', this.onCloseSwipe);
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'touchstart', e => this.onCloseSwipe(e));
+    Events.off(document.body, 'touchstart', this.onCloseSwipe);
+    Events.off(document.body, 'click', this.onCloseSwipe);
   }
 
   onDragStart = () => {
@@ -48,13 +54,13 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       return;
     }
     this.touchEnd = true;
-  }
+  };
 
   onDragMove = (event, { offsetX, offsetY }) => {
     const { disabled } = this.props;
 
     if (!this.touchEnd || disabled) {
-      return;
+      return false;
     }
 
     // 拖动距离达到上限
@@ -62,10 +68,12 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const { offsetLeft } = this.state;
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
-    if (
-      offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset) ||
-      offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)
-    ) {
+
+    if (offsetX > 0 && (!btnsLeftWidth || offsetLeft >= btnsLeftWidth + offset)) {
+      return false;
+    }
+
+    if (offsetX < 0 && (!btnsRightWidth || offsetLeft <= -btnsRightWidth - offset)) {
       return false;
     }
 
@@ -77,10 +85,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     }
 
     event.preventDefault();
-
     this.doTransition({ offsetLeft: offsetX, animationDuration: 0 });
     return true;
-  }
+  };
 
   onDragEnd = (_event, { offsetX, startTime }) => {
     const { animationDuration, moveDistanceRatio, moveTimeSpan } = this.props;
@@ -88,6 +95,9 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     const btnsLeftWidth = this.left && this.left.offsetWidth;
     const btnsRightWidth = this.right && this.right.offsetWidth;
 
+    // if (this.left.offsetWidth) {
+    //   this.props.onOpen!();
+    // }
     let distanceX = 0;
     let isOpen = false;
 
@@ -109,7 +119,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
       // 还原
       this.doTransition({ offsetLeft: distanceX, animationDuration });
     }
-  }
+  };
 
   onCloseSwipe = (e) => {
     if (!this.wrap) {
@@ -132,7 +142,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
         this.close();
       }
     }
-  }
+  };
 
   open = (offsetLeft) => {
     const { animationDuration, onOpen } = this.props;
@@ -141,7 +151,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     if (typeof onOpen === 'function') {
       onOpen();
     }
-  }
+  };
 
   close = () => {
     const { animationDuration, onClose } = this.props;
@@ -150,47 +160,44 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
     if (typeof onClose === 'function') {
       onClose();
     }
-  }
+  };
 
   doTransition = ({ offsetLeft, animationDuration }) => {
     this.setState({ offsetLeft, animationDuration });
-  }
+  };
 
   renderButton = (button, index) => {
     return cloneElement(button, {
       key: +index,
       onClick: (e) => {
-        const onClick = button.props.onClick;
-
-        if (onClick) {
-          onClick(e);
-        }
-
+        const { onClick } = button.props;
+        onClick && onClick(e);
         if (this.props.autoClose) {
           this.close();
         }
       },
     });
-  }
+  };
 
   renderButtons = (buttons, direction) => {
-    const { prefixCls } = this.props;
-
     if (!buttons || buttons.length === 0) {
       return;
     }
 
+    const { prefixCls } = this.props;
+    const cls = classnames(`${prefixCls}__actions`, `${prefixCls}__actions--${direction}`);
+
     return (
-      <div className={`${prefixCls}-actions-${direction}`} ref={(el) => { this[direction] = el; }}>
+      <div className={cls} ref={(el) => { this[direction] = el; }}>
         {buttons.map(this.renderButton)}
       </div>
     );
-  }
+  };
 
   render() {
     const { prefixCls, className, left, right, children } = this.props;
     const { offsetLeft, animationDuration } = this.state;
-    const cls = classnames(`${prefixCls}`, className);
+    const cls = classnames(prefixCls, className);
     const style = {
       WebkitTransitionDuration: `${animationDuration}ms`,
       transitionDuration: `${animationDuration}ms`,
@@ -208,7 +215,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
             onDragMove={this.onDragMove}
             onDragEnd={this.onDragEnd}
           >
-            <div className={`${prefixCls}-content`} style={style}>
+            <div className={`${prefixCls}__content`} style={style}>
               {children}
             </div>
           </Drag>

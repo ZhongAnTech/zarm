@@ -1,16 +1,16 @@
+import { StyleSheet } from 'react-native';
 import variables from '../../style/themes/default.native';
-import { StyleSheet, ViewStyle } from 'react-native';
+
 export default {
   container: {
     flexDirection: 'column',
-  } as ViewStyle,
+  },
 
   panelHeader: {
     flexDirection: 'row',
     paddingTop: 25,
     paddingBottom: 7,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingHorizontal: 15,
   },
   panelHeaderTitle: {
     flex: 1,
@@ -23,28 +23,11 @@ export default {
 
   },
   panelBody: {
-    flexDirection: 'row',
     backgroundColor: '#ffffff',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderStyle: 'solid',
     borderColor: '#dddddd',
     flex: 1,
-  },
-  panelFooter: {
-    flexDirection: 'row',
-    paddingTop: 7,
-    paddingBottom: 7,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
-  panelFooterTitle: {
-    flex: 1,
-  },
-  panelFooterTitleText: {
-    fontSize: variables.panel_footer_font_size,
-    color: variables.color_text_caption,
-  },
-  panelFooterMore: {
   },
 };

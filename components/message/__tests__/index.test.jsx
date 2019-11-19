@@ -1,5 +1,4 @@
 import React from 'react';
-import * as ReactDOM from 'react-dom';
 import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Message from '../index';
@@ -11,7 +10,7 @@ describe('Message', () => {
   });
 
   it('theme', () => {
-    const wrapper = render(<Message theme="error">foo</Message>);
+    const wrapper = render(<Message theme="danger">foo</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -28,8 +27,8 @@ describe('Message', () => {
     expect(onClick).toBeCalled();
   });
 
-  it('hasClosable', () => {
-    const wrapper = shallow(<Message hasClosable>foo</Message>);
+  it('closable', () => {
+    const wrapper = shallow(<Message closable>foo</Message>);
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.find('Icon').simulate('click');
     expect(wrapper.state('visible')).toEqual(false);

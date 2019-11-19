@@ -1,23 +1,47 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, MouseEventHandler, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
-import Spinner from '../spinner';
+import BasePropsType from './PropsType';
+import ActivityIndicator from '../activity-indicator';
 
-export interface ButtonProps extends PropsType {
+interface BaseButtonPropsType extends BasePropsType {
   prefixCls?: string;
-  className?: string;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
+export type AnchorButtonProps = {
+  mimeType?: string;
+} & BaseButtonPropsType & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'type' | 'onClick'>;
+
+export type NativeButtonProps = {
+  htmlType?: 'button' | 'submit' | 'reset';
+} & BaseButtonPropsType & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'onClick'>;
+
+export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;
+
 export default class Button extends PureComponent<ButtonProps, {}> {
-  static defaultProps = {
+  static displayName = 'Button';
+
+  static defaultProps: ButtonProps = {
     prefixCls: 'za-button',
     theme: 'default',
+    size: 'md',
+    shape: 'radius',
     block: false,
-    bordered: false,
-    active: false,
+    ghost: false,
+    shadow: false,
     disabled: false,
     loading: false,
-    onClick() {},
+    htmlType: 'button',
+  };
+
+  onClick: ButtonProps['onClick'] = (e) => {
+    const { disabled, onClick } = this.props;
+    if (disabled) {
+      return;
+    }
+    if (typeof onClick === 'function') {
+      onClick(e);
+    }
   };
 
   render() {
@@ -29,46 +53,71 @@ export default class Button extends PureComponent<ButtonProps, {}> {
       shape,
       icon,
       block,
-      active,
-      bordered,
+      ghost,
+      shadow,
       disabled,
       loading,
       onClick,
       children,
-      ...others,
+      ...rest
     } = this.props;
 
-    const classes = classnames(`${prefixCls}`, className, {
-      [`theme-${theme}`]: !!theme,
-      [`size-${size}`]: !!size,
-      [`shape-${shape}`]: !!shape,
-      block,
-      bordered,
-      active,
-      disabled,
+    let cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--block`]: !!block,
+      [`${prefixCls}--ghost`]: !!ghost,
+      [`${prefixCls}--shadow`]: !!shadow,
+      [`${prefixCls}--disabled`]: !!disabled,
     });
 
     const iconRender = loading
-      ? <Spinner className="rotate360" />
+      ? <ActivityIndicator />
       : icon;
 
     const childrenRender = children && <span>{children}</span>;
 
     const contentRender = (!!icon || loading)
-      ? <div className={`${prefixCls}-content`}>{iconRender}{childrenRender}</div>
+      ? (
+        <div className={`${prefixCls}__content`}>
+          {iconRender}
+          {childrenRender}
+        </div>
+      )
       : childrenRender;
 
+    if ((rest as AnchorButtonProps).href !== undefined) {
+      const { htmlType, ...filteredRest } = rest;
+      const { mimeType, ...anchorRest } = filteredRest as AnchorButtonProps;
+      cls = classnames(cls, `${prefixCls}--link`);
+
+      return (
+        <a
+          {...anchorRest}
+          type={mimeType}
+          aria-disabled={disabled}
+          className={cls}
+          onClick={this.onClick}
+        >
+          {contentRender}
+        </a>
+      );
+    }
+
+    const { mimeType, target, ...filteredRest } = rest;
+    const { htmlType, ...nativeRest } = filteredRest as NativeButtonProps;
+
     return (
-      <a
-        role="button"
+      <button
+        {...nativeRest}
+        type={htmlType}
         aria-disabled={disabled}
-        className={classes}
-        onClick={e => !disabled && typeof onClick === 'function' && onClick(e)}
-        onTouchStart={() => {}}
-        {...others}
+        className={cls}
+        onClick={this.onClick}
       >
         {contentRender}
-      </a>
+      </button>
     );
   }
 }

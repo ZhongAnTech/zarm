@@ -1,83 +1,96 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
+import CheckboxGroup from './CheckboxGroup';
 import Cell from '../cell';
-import Button from '../button';
 
-function getChecked(props, defaultChecked) {
-  if ('checked' in props && props.checked) {
+const getChecked = (props: CheckboxProps, defaultChecked: boolean) => {
+  if (typeof props.checked !== 'undefined') {
     return props.checked;
   }
-  if ('defaultChecked' in props && props.defaultChecked) {
+  if (typeof props.defaultChecked !== 'undefined') {
     return props.defaultChecked;
   }
   return defaultChecked;
-}
+};
+
 
 export interface CheckboxProps extends BaseCheckboxProps {
   prefixCls?: string;
   className?: string;
 }
 
-export default class Checkbox extends PureComponent<CheckboxProps, any> {
-  static Group: any;
+export interface CheckboxStates {
+  checked: boolean;
+}
+
+export default class Checkbox extends PureComponent<CheckboxProps, CheckboxStates> {
+  static Group: typeof CheckboxGroup;
+
+  static displayName = 'Checkbox';
 
   static defaultProps = {
     prefixCls: 'za-checkbox',
     disabled: false,
+    block: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: getChecked(props, false),
-    };
-  }
+  state: CheckboxStates = {
+    checked: getChecked(this.props, false),
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if ('checked' in nextProps) {
-      this.setState({
-        checked: !!nextProps.checked,
-      });
+  static getDerivedStateFromProps(nextProps: CheckboxProps, state) {
+    if ('checked' in nextProps && nextProps.checked !== state.prevChecked) {
+      return {
+        checked: nextProps.checked,
+        prevChecked: nextProps.checked,
+      };
     }
+
+    return null;
   }
 
   onValueChange = () => {
     const { disabled, onChange } = this.props;
+    const { checked } = this.state;
     if (disabled) {
       return;
     }
 
-    const checked = !this.state.checked;
-    this.setState({ checked });
+    const newChecked = !checked;
+    this.setState({ checked: newChecked });
     if (typeof onChange === 'function') {
-      onChange(checked);
+      onChange(newChecked);
     }
-  }
+  };
 
   render() {
-    const { prefixCls, className, shape, type, value, block, disabled, id, children } = this.props;
+    const { prefixCls, className, type, value, disabled, id, children } = this.props;
     const { checked } = this.state;
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`shape-${shape}`]: !!shape,
-      checked,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--checked`]: checked,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
-    const renderCheckbox = (
+    const inputRender = (
+      <input
+        id={id}
+        type="checkbox"
+        className={`${prefixCls}__input`}
+        value={value}
+        disabled={disabled}
+        checked={checked}
+        onChange={this.onValueChange}
+      />
+    );
+
+    const checkboxRender = (
       <div className={cls}>
-        <div className={`${prefixCls}-wrapper`}>
-          <span className={`${prefixCls}-inner`} />
-          {children && <span className={`${prefixCls}-text`}>{children}</span>}
-          <input
-            id={id}
-            type="checkbox"
-            className={`${prefixCls}-input`}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
+        <div className={`${prefixCls}__wrapper`}>
+          <span className={`${prefixCls}__inner`} />
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
         </div>
       </div>
     );
@@ -85,35 +98,20 @@ export default class Checkbox extends PureComponent<CheckboxProps, any> {
     if (type === 'cell') {
       return (
         <Cell disabled={disabled} onClick={this.onValueChange}>
-          {renderCheckbox}
+          {checkboxRender}
         </Cell>
       );
     }
 
     if (type === 'button') {
       return (
-        <Button
-          className={cls}
-          theme="primary"
-          shape={shape}
-          size="sm"
-          block={block}
-          bordered={!checked}
-          disabled={disabled}
-        >
-          <input
-            type="checkbox"
-            className={`${prefixCls}-input`}
-            value={value}
-            disabled={disabled}
-            checked={checked}
-            onChange={this.onValueChange}
-          />
-          {children}
-        </Button>
+        <button type="button" className={cls}>
+          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+          {inputRender}
+        </button>
       );
     }
 
-    return renderCheckbox;
+    return checkboxRender;
   }
 }

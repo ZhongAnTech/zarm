@@ -1,9 +1,10 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import {
-    StyleSheet,
-    View,
-    ViewStyle,
-    TouchableWithoutFeedback,
+  StyleSheet,
+  View,
+  ViewStyle,
+  TouchableWithoutFeedback,
+  GestureResponderEvent,
 } from 'react-native';
 import PropsType from './PropsType';
 import maskStyle from './style/index.native';
@@ -11,6 +12,7 @@ import maskStyle from './style/index.native';
 export interface MaskProps extends PropsType {
   style?: CSSProperties;
   styles?: typeof maskStyle;
+  onClick?: (event: GestureResponderEvent) => void;
 }
 
 const maskStyles = StyleSheet.create<any>(maskStyle);
@@ -22,13 +24,13 @@ export default class Mask extends PureComponent<MaskProps, any> {
     styles: maskStyles,
   };
 
-  render(): any {
+  render() {
     const {
       visible,
       styles,
       type,
       style,
-      onClose,
+      onClick,
     } = this.props;
 
     const popupCls = [
@@ -38,6 +40,6 @@ export default class Mask extends PureComponent<MaskProps, any> {
     ] as ViewStyle;
 
     return visible
-      && <TouchableWithoutFeedback onPress={onClose}><View style={[popupCls]} /></TouchableWithoutFeedback>;
+      && <TouchableWithoutFeedback onPress={onClick}><View style={[popupCls]} /></TouchableWithoutFeedback>;
   }
 }

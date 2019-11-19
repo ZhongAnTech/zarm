@@ -1,5 +1,13 @@
 import changeImageSize from './changeImageSize';
 
+export interface IFileProps {
+  file: File;
+  quality?: number;
+  fileType: string;
+  maxWidth?: number | string;
+  maxHeight?: number | string;
+}
+
 /**
  * generate preview image
  * modify image quality
@@ -11,23 +19,26 @@ import changeImageSize from './changeImageSize';
  * @param maxHeight
  * @param callback
  */
-export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }: any, callback) {
-  const img = document.createElement('img');
+export default function createThumbnail({ file, quality, fileType, maxWidth, maxHeight }: IFileProps) {
+  return new Promise<string>((resolve) => {
+    const img = document.createElement('img');
 
-  window.URL = window.URL || (window as any).webkitURL;
-  img.src = window.URL.createObjectURL(file);
+    window.URL = window.URL || (window as any).webkitURL;
 
-  img.onload = () => {
-    let imgUrl;
+    img.onload = () => {
+      let imgUrl: string;
 
-    if (quality || maxWidth || maxHeight) {
-      imgUrl = changeImageSize(img, quality, fileType);
-    } else {
-      imgUrl = img.src;
-    }
+      if (quality || maxWidth || maxHeight) {
+        imgUrl = changeImageSize(img, quality, fileType);
+      } else {
+        imgUrl = img.src;
+      }
 
-    callback(imgUrl);
-  };
+      resolve(imgUrl || '');
+    };
+
+    img.src = window.URL.createObjectURL(file);
+  });
 }
 
 // FileReader

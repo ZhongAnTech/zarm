@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Picker Picker render visible 1`] = `
-<Picker
-  cancelText="取消"
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -15,193 +14,317 @@ exports[`Picker Picker render visible 1`] = `
       },
     ]
   }
-  itemRender={[Function]}
-  okText="确定"
   prefixCls="za-picker"
-  title="请选择"
-  valueMember="value"
   visible={true}
 >
-  <div
-    className="za-picker"
+  <LocaleReceiver
+    dataSource={
+      Array [
+        Object {
+          "label": "选项一",
+          "value": "1",
+        },
+        Object {
+          "label": "选项二",
+          "value": "2",
+        },
+      ]
+    }
+    forwardedRef={null}
+    prefixCls="za-picker"
+    visible={true}
   >
-    <Popup
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      mask={true}
-      maskType="normal"
-      onMaskClick={[Function]}
-      prefixCls="za-popup"
-      stayTime={3000}
+    <Picker
+      cols={Infinity}
+      dataSource={
+        Array [
+          Object {
+            "label": "选项一",
+            "value": "1",
+          },
+          Object {
+            "label": "选项二",
+            "value": "2",
+          },
+        ]
+      }
+      destroy={false}
+      itemRender={[Function]}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "okText": "确定",
+          "title": "请选择",
+        }
+      }
+      localeCode="zh-cn"
+      maskClosable={true}
+      prefixCls="za-picker"
+      valueMember="value"
       visible={true}
     >
-      <Portal
-        getContainer={[Function]}
+      <Popup
+        destroy={false}
+        onMaskClick={[Function]}
+        visible={true}
       >
-        <div
-          className="za-popup"
+        <Portal
+          animationDuration={200}
+          animationType="fade"
+          destroy={false}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          visible={true}
         >
-          <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
-          >
-            <div
-              className="za-picker-wrapper"
-              onClick={[Function]}
-            >
+          <Portal
+            containerInfo={
               <div
-                className="za-picker-header"
+                class="popup-container"
               >
                 <div
-                  className="za-picker-cancel"
-                  onClick={[Function]}
-                >
-                  取消
-                </div>
+                  class="za-mask za-fade-enter za-mask--normal"
+                  style="animation-duration: 200ms;"
+                />
                 <div
-                  className="za-picker-title"
-                >
-                  请选择
-                </div>
-                <div
-                  className="za-picker-submit"
-                  onClick={[Function]}
-                >
-                  确定
-                </div>
-              </div>
-              <PickerView
-                cols={Infinity}
-                dataSource={
-                  Array [
-                    Object {
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                    Object {
-                      "label": "选项二",
-                      "value": "2",
-                    },
-                  ]
-                }
-                disabled={false}
-                firstObjValue={
-                  Array [
-                    Object {
-                      "label": "选项一",
-                      "value": "1",
-                    },
-                  ]
-                }
-                itemRender={[Function]}
-                onChange={[Function]}
-                onInit={[Function]}
-                onTransition={[Function]}
-                prefixCls="za-picker"
-                value={Array []}
-                valueMember="value"
-                visible={true}
-              >
-                <div
-                  className="za-picker-panel"
+                  class="za-popup__wrapper"
+                  role="dialog"
                 >
                   <div
-                    className="za-picker-view"
+                    class="za-popup za-popup--bottom za-popup--show"
+                    role="document"
+                    style="transition-duration: 200ms; transition-property: transform;"
                   >
-                    <Wheel
-                      dataSource={
-                        Array [
-                          Object {
-                            "label": "选项一",
-                            "value": "1",
-                          },
-                          Object {
-                            "label": "选项二",
-                            "value": "2",
-                          },
-                        ]
-                      }
-                      disabled={false}
-                      itemRender={[Function]}
-                      key="0"
-                      onChange={[Function]}
-                      onTransition={[Function]}
-                      prefixCls="za-wheel"
-                      value="1"
-                      valueMember="value"
+                    <div
+                      class="za-picker"
                     >
                       <div
-                        className="za-wheel"
+                        class="za-picker__header"
                       >
                         <div
-                          className="za-wheel-content"
+                          class="za-picker__cancel"
                         >
-                          <div
-                            className="za-wheel-item za-wheel-item-selected"
-                            key="0"
-                          >
-                            选项一
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="1"
-                          >
-                            选项二
-                          </div>
+                          取消
+                        </div>
+                        <div
+                          class="za-picker__title"
+                        >
+                          请选择
+                        </div>
+                        <div
+                          class="za-picker__submit"
+                        >
+                          确定
                         </div>
                       </div>
-                    </Wheel>
+                      <div
+                        class="za-picker-view"
+                      >
+                        <div
+                          class="za-picker-view__content"
+                        >
+                          <div
+                            class="za-wheel"
+                          >
+                            <div
+                              class="za-wheel__content"
+                              style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: translate(0px,NaNpx) scale(1);"
+                            >
+                              <div
+                                class="za-wheel__item za-wheel__item--selected"
+                                style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                              >
+                                选项一
+                              </div>
+                              <div
+                                class="za-wheel__item"
+                                style="pointer-events: none; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 800ms; transform: rotateX(NaNdeg);"
+                              >
+                                选项二
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="za-picker-view__mask za-picker-view__mask--top"
+                        />
+                        <div
+                          class="za-picker-view__mask za-picker-view__mask--bottom"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div
-                    className="za-picker-mask-top"
-                  />
-                  <div
-                    className="za-picker-mask-bottom"
-                  />
                 </div>
-              </PickerView>
-            </div>
-          </div>
-          <Mask
-            className=""
-            onClose={[Function]}
-            prefixCls="za-mask"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
+              </div>
             }
-            type="normal"
-            visible={true}
           >
-            <div
-              className="za-mask normal"
-              onClick={[Function]}
+            <Mask
+              className="za-fade-enter"
+              prefixCls="za-mask"
               style={
                 Object {
                   "WebkitAnimationDuration": "200ms",
                   "animationDuration": "200ms",
                 }
               }
-            />
-          </Mask>
-        </div>
-      </Portal>
-    </Popup>
-  </div>
-</Picker>
+              type="normal"
+              visible={true}
+            >
+              <div
+                className="za-mask za-fade-enter za-mask--normal"
+                style={
+                  Object {
+                    "WebkitAnimationDuration": "200ms",
+                    "animationDuration": "200ms",
+                  }
+                }
+              />
+            </Mask>
+            <div
+              className="za-popup__wrapper"
+              onClick={[Function]}
+              role="dialog"
+              style={Object {}}
+            >
+              <div
+                className="za-popup za-popup--bottom"
+                role="document"
+                style={
+                  Object {
+                    "WebkitTransitionDuration": "200ms",
+                    "WebkitTransitionProperty": "transform",
+                    "transitionDuration": "200ms",
+                    "transitionProperty": "transform",
+                  }
+                }
+              >
+                <div
+                  className="za-picker"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="za-picker__header"
+                  >
+                    <div
+                      className="za-picker__cancel"
+                      onClick={[Function]}
+                    >
+                      取消
+                    </div>
+                    <div
+                      className="za-picker__title"
+                    >
+                      请选择
+                    </div>
+                    <div
+                      className="za-picker__submit"
+                      onClick={[Function]}
+                    >
+                      确定
+                    </div>
+                  </div>
+                  <PickerView
+                    cols={Infinity}
+                    dataSource={
+                      Array [
+                        Object {
+                          "label": "选项一",
+                          "value": "1",
+                        },
+                        Object {
+                          "label": "选项二",
+                          "value": "2",
+                        },
+                      ]
+                    }
+                    disabled={false}
+                    itemRender={[Function]}
+                    localeCode="zh-cn"
+                    onChange={[Function]}
+                    onTransition={[Function]}
+                    prefixCls="za-picker-view"
+                    value={
+                      Array [
+                        "1",
+                      ]
+                    }
+                    valueMember="value"
+                    visible={true}
+                  >
+                    <div
+                      className="za-picker-view"
+                    >
+                      <div
+                        className="za-picker-view__content"
+                      >
+                        <Wheel
+                          dataSource={
+                            Array [
+                              Object {
+                                "label": "选项一",
+                                "value": "1",
+                              },
+                              Object {
+                                "label": "选项二",
+                                "value": "2",
+                              },
+                            ]
+                          }
+                          disabled={false}
+                          itemRender={[Function]}
+                          key="0"
+                          onChange={[Function]}
+                          onTransition={[Function]}
+                          prefixCls="za-wheel"
+                          value="1"
+                          valueMember="value"
+                        >
+                          <div
+                            className="za-wheel"
+                          >
+                            <div
+                              className="za-wheel__content"
+                            >
+                              <div
+                                className="za-wheel__item za-wheel__item--selected"
+                                key="0"
+                              >
+                                选项一
+                              </div>
+                              <div
+                                className="za-wheel__item"
+                                key="1"
+                              >
+                                选项二
+                              </div>
+                            </div>
+                          </div>
+                        </Wheel>
+                      </div>
+                      <div
+                        className="za-picker-view__mask za-picker-view__mask--top"
+                      />
+                      <div
+                        className="za-picker-view__mask za-picker-view__mask--bottom"
+                      />
+                    </div>
+                  </PickerView>
+                </div>
+              </div>
+            </div>
+          </Portal>
+        </Portal>
+      </Popup>
+    </Picker>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
 `;
 
 exports[`Picker render custom label 1`] = `
-<Picker
-  cancelText="取消"
+<ForwardRef(forwardRef)
   dataSource={
     Array [
       Object {
@@ -235,239 +358,99 @@ exports[`Picker render custom label 1`] = `
     ]
   }
   itemRender={[Function]}
-  okText="确定"
-  prefixCls="za-picker"
-  title="请选择"
   valueMember="code"
 >
-  <div
-    className="za-picker"
+  <LocaleReceiver
+    dataSource={
+      Array [
+        Object {
+          "children": Array [
+            Object {
+              "code": "11",
+              "name": "海淀区",
+            },
+            Object {
+              "code": "12",
+              "name": "西城区",
+            },
+          ],
+          "code": "1",
+          "name": "北京市",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "code": "21",
+              "name": "黄埔区",
+            },
+            Object {
+              "code": "22",
+              "name": "虹口区",
+            },
+          ],
+          "code": "2",
+          "name": "上海市",
+        },
+      ]
+    }
+    forwardedRef={null}
+    itemRender={[Function]}
+    valueMember="code"
   >
-    <Popup
-      animationDuration={200}
-      autoClose={false}
-      direction="bottom"
-      mask={true}
-      maskType="normal"
-      onMaskClick={[Function]}
-      prefixCls="za-popup"
-      stayTime={3000}
-      visible={false}
+    <Picker
+      cols={Infinity}
+      dataSource={
+        Array [
+          Object {
+            "children": Array [
+              Object {
+                "code": "11",
+                "name": "海淀区",
+              },
+              Object {
+                "code": "12",
+                "name": "西城区",
+              },
+            ],
+            "code": "1",
+            "name": "北京市",
+          },
+          Object {
+            "children": Array [
+              Object {
+                "code": "21",
+                "name": "黄埔区",
+              },
+              Object {
+                "code": "22",
+                "name": "虹口区",
+              },
+            ],
+            "code": "2",
+            "name": "上海市",
+          },
+        ]
+      }
+      destroy={false}
+      itemRender={[Function]}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "okText": "确定",
+          "title": "请选择",
+        }
+      }
+      localeCode="zh-cn"
+      maskClosable={true}
+      prefixCls="za-picker"
+      valueMember="code"
     >
-      <Portal
-        getContainer={[Function]}
-      >
-        <div
-          className="za-popup za-popup-hidden"
-        >
-          <div
-            className="za-popup-wrapper za-popup-wrapper-bottom"
-            style={
-              Object {
-                "WebkitTransitionDuration": "200ms",
-                "transitionDuration": "200ms",
-              }
-            }
-          >
-            <div
-              className="za-picker-wrapper"
-              onClick={[Function]}
-            >
-              <div
-                className="za-picker-header"
-              >
-                <div
-                  className="za-picker-cancel"
-                  onClick={[Function]}
-                >
-                  取消
-                </div>
-                <div
-                  className="za-picker-title"
-                >
-                  请选择
-                </div>
-                <div
-                  className="za-picker-submit"
-                  onClick={[Function]}
-                >
-                  确定
-                </div>
-              </div>
-              <PickerView
-                cols={Infinity}
-                dataSource={
-                  Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "code": "11",
-                          "name": "海淀区",
-                        },
-                        Object {
-                          "code": "12",
-                          "name": "西城区",
-                        },
-                      ],
-                      "code": "1",
-                      "name": "北京市",
-                    },
-                    Object {
-                      "children": Array [
-                        Object {
-                          "code": "21",
-                          "name": "黄埔区",
-                        },
-                        Object {
-                          "code": "22",
-                          "name": "虹口区",
-                        },
-                      ],
-                      "code": "2",
-                      "name": "上海市",
-                    },
-                  ]
-                }
-                disabled={false}
-                firstObjValue={
-                  Array [
-                    Object {
-                      "code": "1",
-                      "name": "北京市",
-                    },
-                    Object {
-                      "code": "11",
-                      "name": "海淀区",
-                    },
-                  ]
-                }
-                itemRender={[Function]}
-                onChange={[Function]}
-                onInit={[Function]}
-                onTransition={[Function]}
-                prefixCls="za-picker"
-                value={Array []}
-                valueMember="code"
-              >
-                <div
-                  className="za-picker-panel"
-                >
-                  <div
-                    className="za-picker-view"
-                  >
-                    <Wheel
-                      dataSource={
-                        Array [
-                          Object {
-                            "code": "1",
-                            "name": "北京市",
-                          },
-                          Object {
-                            "code": "2",
-                            "name": "上海市",
-                          },
-                        ]
-                      }
-                      disabled={false}
-                      itemRender={[Function]}
-                      key="0"
-                      onChange={[Function]}
-                      onTransition={[Function]}
-                      prefixCls="za-wheel"
-                      value="1"
-                      valueMember="code"
-                    >
-                      <div
-                        className="za-wheel"
-                      >
-                        <div
-                          className="za-wheel-content"
-                        >
-                          <div
-                            className="za-wheel-item za-wheel-item-selected"
-                            key="0"
-                          >
-                            北京市
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="1"
-                          >
-                            上海市
-                          </div>
-                        </div>
-                      </div>
-                    </Wheel>
-                    <Wheel
-                      dataSource={
-                        Array [
-                          Object {
-                            "code": "11",
-                            "name": "海淀区",
-                          },
-                          Object {
-                            "code": "12",
-                            "name": "西城区",
-                          },
-                        ]
-                      }
-                      disabled={false}
-                      itemRender={[Function]}
-                      key="1"
-                      onChange={[Function]}
-                      onTransition={[Function]}
-                      prefixCls="za-wheel"
-                      value="11"
-                      valueMember="code"
-                    >
-                      <div
-                        className="za-wheel"
-                      >
-                        <div
-                          className="za-wheel-content"
-                        >
-                          <div
-                            className="za-wheel-item za-wheel-item-selected"
-                            key="0"
-                          >
-                            海淀区
-                          </div>
-                          <div
-                            className="za-wheel-item"
-                            key="1"
-                          >
-                            西城区
-                          </div>
-                        </div>
-                      </div>
-                    </Wheel>
-                  </div>
-                  <div
-                    className="za-picker-mask-top"
-                  />
-                  <div
-                    className="za-picker-mask-bottom"
-                  />
-                </div>
-              </PickerView>
-            </div>
-          </div>
-          <Mask
-            className=""
-            onClose={[Function]}
-            prefixCls="za-mask"
-            style={
-              Object {
-                "WebkitAnimationDuration": "200ms",
-                "animationDuration": "200ms",
-              }
-            }
-            type="normal"
-            visible={false}
-          />
-        </div>
-      </Portal>
-    </Popup>
-  </div>
-</Picker>
+      <Popup
+        destroy={false}
+        onMaskClick={[Function]}
+        visible={false}
+      />
+    </Picker>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
 `;

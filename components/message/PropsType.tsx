@@ -1,8 +1,9 @@
+import { ReactNode } from 'react';
+
 export default interface PropsType {
-  theme?: 'primary' | 'success' | 'warning' | 'error';
-  size?: 'lg';
-  icon?: any;
+  theme?: 'default' |'primary' | 'success' | 'warning' | 'danger';
+  icon?: ReactNode;
+  closable?: boolean;
   hasArrow?: boolean;
-  hasClosable?: boolean;
-  onClick?: () => void;
+  size?: 'md' | 'lg';
 }

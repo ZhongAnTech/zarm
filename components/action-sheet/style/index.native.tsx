@@ -1,17 +1,14 @@
-import variables from '../../style/themes/default.native';
 import { StyleSheet } from 'react-native';
+import variables from '../../style/themes/default.native';
 
 export default {
   wrapper: {
-    margin: variables.actionsheet_margin,
+    margin: variables.actionSheet_margin,
   },
 
   wrapperSpacing: {
     margin: 10,
     marginTop: 0,
-  },
-
-  radiusShape: {
     borderRadius: variables.radius_md,
     overflow: 'hidden',
   },
@@ -26,10 +23,18 @@ export default {
   },
 
   actionItem: {
-    height: variables.actionsheet_item_height,
-    lineHeight: variables.actionsheet_item_height,
-    fontSize: variables.actionsheet_item_font_size,
+    height: variables.actionSheet_item_height,
+    lineHeight: variables.actionSheet_item_height,
+    fontSize: variables.actionSheet_item_font_size,
     textAlign: 'center',
+  },
+
+  actionCancelItem: {
+    height: variables.actionSheet_item_height,
+    lineHeight: variables.actionSheet_item_height,
+    fontSize: variables.actionSheet_item_font_size,
+    textAlign: 'center',
+    color: variables.color_text_caption,
   },
 
   actionItemMask: {
@@ -61,7 +66,7 @@ export default {
     color: variables.theme_warning,
   },
 
-  'theme-error': {
-    color: variables.theme_error,
+  'theme-danger': {
+    color: variables.theme_danger,
   },
 };

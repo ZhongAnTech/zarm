@@ -5,37 +5,23 @@ exports[`Panel renders correctly 1`] = `
   class="za-panel"
 >
   <div
-    class="za-panel-header"
+    class="za-panel__header"
   >
     <div
-      class="za-panel-title"
+      class="za-panel__header__title"
     >
       title
     </div>
     <div
-      class="za-panel-more"
+      class="za-panel__header__more"
     >
       more
     </div>
   </div>
   <div
-    class="za-panel-body"
+    class="za-panel__body"
   >
     body
-  </div>
-  <div
-    class="za-panel-footer"
-  >
-    <div
-      class="za-panel-title"
-    >
-      title
-    </div>
-    <div
-      class="za-panel-more"
-    >
-      more
-    </div>
   </div>
 </div>
 `;

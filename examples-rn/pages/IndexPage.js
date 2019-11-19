@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { UIFORM, UICONROL, UIVIEW, UIDATA } from '../demoList';
+import { StyleSheet, Text, View } from 'react-native';
+import { Panel, Cell } from '../../components/index.native';
+import { form, feedback, view, navigation } from '../demos';
 import Container from '../components/Container';
 import Footer from '../components/Footer';
 
@@ -12,8 +13,8 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   brand: {
-    padding: 30,
-    paddingBottom: 0,
+    padding: 45,
+    paddingBottom: 15,
   },
   brandTitle: {
     fontSize: 30,
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
 
 export default class Index extends PureComponent {
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigation: navigationProp } = this.props;
+    const { navigate } = navigationProp;
 
     return (
       <Container style={styles.container}>
@@ -35,15 +37,34 @@ export default class Index extends PureComponent {
           <Text style={styles.brandDescription}>众安科技移动端组件库</Text>
         </View>
         <View style={styles.main}>
-          {
-            [...UIFORM, ...UICONROL, ...UIVIEW, ...UIDATA].map((component, i) => (
-              <Button
-                key={+i}
-                onPress={() => navigate(component.title)}
-                title={`${component.description} ${component.title}`}
-              />
-            ))
-          }
+          <Panel title={`数据录入（${form.length}）`}>
+            {
+              form.map((component, i) => (
+                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
+              ))
+            }
+          </Panel>
+          <Panel title={`操作反馈（${feedback.length}）`}>
+            {
+              feedback.map((component, i) => (
+                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
+              ))
+            }
+          </Panel>
+          <Panel title={`数据展示（${view.length}）`}>
+            {
+              view.map((component, i) => (
+                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
+              ))
+            }
+          </Panel>
+          <Panel title={`导航（${navigation.length}）`}>
+            {
+              navigation.map((component, i) => (
+                <Cell key={+i} hasArrow title={component.description} onClick={() => navigate(component.title)} />
+              ))
+            }
+          </Panel>
         </View>
         <Footer />
       </Container>

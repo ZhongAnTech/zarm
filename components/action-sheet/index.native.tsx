@@ -33,11 +33,11 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
 
   onPressIn = (activeIndex) => {
     this.setState({ isActive: true, activeIndex });
-  }
+  };
 
   onPressOut = (activeIndex) => {
     this.setState({ isActive: false, activeIndex });
-  }
+  };
 
   renderActions = (action, index) => {
     const { styles } = this.props;
@@ -65,21 +65,20 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
         <Text style={actionStyle}>{action.text}</Text>
       </TouchableOpacity>
     );
-  }
+  };
 
   renderCancel = () => {
-    const { styles, shape, onCancel, cancelText } = this.props;
+    const { styles, onCancel, cancelText } = this.props;
     const { isActive, activeIndex } = this.state;
     const cancelWrapperStyle = [
       styles!.wrapperCacnel,
-      styles![`${shape}Shape`],
     ];
     const cancelMaskStyle = [
       styles!.actionItemMask,
       isActive && activeIndex === 'cancel' && styles!.actionItemActive,
     ];
     const cancelStyle = [
-      styles!.actionItem,
+      styles!.actionCancelItem,
     ];
 
     return (typeof onCancel === 'function') && (
@@ -94,26 +93,24 @@ export default class ActionSheet extends PureComponent<ButtonProps, any> {
         <Text style={cancelStyle as ViewStyle}>{cancelText}</Text>
       </TouchableOpacity>
     );
-  }
+  };
 
   render() {
-    const { style, styles, shape, spacing, visible, onMaskClick, actions } = this.props;
+    const { style, styles, spacing, visible, onMaskClick, actions } = this.props;
     const wrapperStyle = [
       styles!.wrapper,
       spacing && styles!.wrapperSpacing,
-      styles![`${shape}Shape`],
       style,
     ];
 
     const actionsStyle = [
       styles!.wrapperActions,
-      styles![`${shape}Shape`],
       { margin: 0 },
     ];
 
     return (
       <Popup visible={visible} onMaskClick={onMaskClick}>
-        <View style={wrapperStyle}>
+        <View style={wrapperStyle as ViewStyle}>
           <View style={actionsStyle}>
             {actions.map(this.renderActions)}
           </View>

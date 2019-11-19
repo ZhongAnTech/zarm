@@ -4,6 +4,11 @@ import toJson from 'enzyme-to-json';
 import Select from '../index';
 
 describe('Select', () => {
+  const fakeTimers = () => {
+    performance.timing = () => {};
+  };
+  fakeTimers();
+
   it('Select', () => {
     const wrapper = mount(
       <Select
@@ -11,8 +16,23 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('Select disabled', () => {
+    const wrapper = mount(
+      <Select
+        disabeld
+        dataSource={[
+          { value: '1', label: '选项一' },
+          { value: '2', label: '选项二' },
+        ]}
+      />,
+    );
+
+    wrapper.find('.za-select').simulate('click');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -24,7 +44,7 @@ describe('Select', () => {
           { value: '2', label: '选项二' },
         ]}
         defaultValue="2"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
   });
@@ -51,7 +71,7 @@ describe('Select', () => {
             ],
           },
         ]}
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
     wrapper.setProps({ value: ['1', '12'] });
@@ -83,74 +103,9 @@ describe('Select', () => {
         ]}
         value={['1', '12']}
         displayAddon="-"
-      />
+      />,
     );
     expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('should trigger onOk when press ok button', () => {
-    const onChangeFn = jest.fn();
-
-    const wrapper = mount(
-      <Select
-        dataSource={[
-          {
-            value: '1',
-            label: '选项一',
-            children: [
-              { value: '11', label: '选项一' },
-              { value: '12', label: '选项二' },
-            ],
-          },
-          {
-            value: '2',
-            label: '选项一',
-            children: [
-              { value: '21', label: '选项一' },
-              { value: '22', label: '选项二' },
-            ],
-          },
-        ]}
-        value={['1', '12']}
-        onOk={onChangeFn}
-      />
-    );
-
-    // wrapper.find('.za-picker-submit').simulate('click');
-    // expect(onChangeFn).toBeCalled();
-  });
-
-  it('should trigger onCancel when press cancel button', () => {
-    const onOkFn = jest.fn();
-
-    const wrapper = mount(
-      <Select
-        dataSource={[
-          {
-            value: '1',
-            label: '选项一',
-            children: [
-              { value: '11', label: '选项一' },
-              { value: '12', label: '选项二' },
-            ],
-          },
-          {
-            value: '2',
-            label: '选项一',
-            children: [
-              { value: '21', label: '选项一' },
-              { value: '22', label: '选项二' },
-            ],
-          },
-        ]}
-        value={['1', '12']}
-        displayAddon="-"
-        onOk={onOkFn}
-      />
-    );
-
-    // wrapper.find('.za-picker-cancel').simulate('click');
-    // expect(onOkFn).not.toBeCalled();
   });
 
   it('receive new dataSource', () => {
@@ -160,7 +115,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     wrapper.setProps({
       dataSource: [
@@ -178,7 +133,7 @@ describe('Select', () => {
           { value: '1', label: '选项一' },
           { value: '2', label: '选项二' },
         ]}
-      />
+      />,
     );
     wrapper.setProps({ value: '1' });
   });
@@ -204,7 +159,7 @@ describe('Select', () => {
             ],
           },
         ]}
-      />
+      />,
     );
 
     wrapper.setProps({
@@ -229,19 +184,111 @@ describe('Select', () => {
     });
   });
 
-  it('should trigger maskClick when click mask', () => {
-    const onMaskClick = jest.fn();
+  it('should trigger onOk when press ok button', () => {
+    const onOkFn = jest.fn();
+    const onCancelFn = jest.fn();
+
     const wrapper = mount(
       <Select
         dataSource={[
-          { value: '1', label: '选项一' },
-          { value: '2', label: '选项二' },
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
         ]}
-        onMaskClick={onMaskClick}
-      />
+        value={['1', '12']}
+        onOk={onOkFn}
+        onCancel={onCancelFn}
+      />,
     );
-    // wrapper.find('.za-select').simulate('click');
-    // wrapper.find('.za-mask').simulate('click');
-    // expect(onMaskClick).toBeCalled();
+
+    wrapper.find('.za-select').simulate('click');
+    jest.useFakeTimers();
+    wrapper.find('.za-picker__submit').simulate('click');
+    expect(onOkFn).toBeCalled();
+    expect(onCancelFn).not.toBeCalled();
   });
+
+  it('should trigger onCancel when press cancel button', () => {
+    const onOkFn = jest.fn();
+    const onCancelFn = jest.fn();
+
+    const wrapper = mount(
+      <Select
+        dataSource={[
+          {
+            value: '1',
+            label: '选项一',
+            children: [
+              { value: '11', label: '选项一' },
+              { value: '12', label: '选项二' },
+            ],
+          },
+          {
+            value: '2',
+            label: '选项一',
+            children: [
+              { value: '21', label: '选项一' },
+              { value: '22', label: '选项二' },
+            ],
+          },
+        ]}
+        defaultValue={['1', '12']}
+        onOk={onOkFn}
+        onCancel={onCancelFn}
+      />,
+    );
+    wrapper.find('.za-select').simulate('click');
+    jest.useFakeTimers();
+    wrapper.find('.za-picker__cancel').simulate('click');
+    expect(onCancelFn).toBeCalled();
+    expect(onOkFn).not.toBeCalled();
+  });
+
+  // it('should trigger onMaskClick when click mask', () => {
+  //   const onOkFn = jest.fn();
+  //   const onMaskClick = jest.fn();
+
+  //   const wrapper = mount(
+  //     <Select
+  //       dataSource={[
+  //         {
+  //           value: '1',
+  //           label: '选项一',
+  //           children: [
+  //             { value: '11', label: '选项一' },
+  //             { value: '12', label: '选项二' },
+  //           ],
+  //         },
+  //         {
+  //           value: '2',
+  //           label: '选项一',
+  //           children: [
+  //             { value: '21', label: '选项一' },
+  //             { value: '22', label: '选项二' },
+  //           ],
+  //         },
+  //       ]}
+  //       visible
+  //       defaultValue={['1', '12']}
+  //       onOk={onOkFn}
+  //       onMaskClick={onMaskClick}
+  //     />
+  //   );
+
+  //   wrapper.find('.za-mask').simulate('click');
+  //   expect(onMaskClick).toBeCalled();
+  // });
 });

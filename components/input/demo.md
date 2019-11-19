@@ -1,128 +1,178 @@
-## 文本框 Input
+# Input 文本框
 
-:::demo 基本用法
+
+
+## 基本用法
+
 ```jsx
 import { Input, Cell } from 'zarm';
 
 class Demo extends React.Component {
+  state = {
+    inputValue: '',
+  };
+
+  handleInputChange = (value) => {
+    this.setState({
+      inputValue: value,
+    });
+  }
+
   render() {
     return (
-      <div>
-        <Cell title="单行文本"><Input type="text" placeholder="请输入" /></Cell>
-        <Cell title="多行文本"><Input type="textarea" rows={3} placeholder="请输入" /></Cell>
-      </div>
+      <>
+        <Cell title="单行文本">
+          <Input
+            clearable
+            type="text"
+            placeholder="请输入"
+            value={this.state.inputValue}
+            onChange={this.handleInputChange}
+          />
+        </Cell>
+        <Cell title="多行文本"><Input type="text" rows={3} placeholder="请输入" /></Cell>
+      </>
     )
   }
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
+## 输入类型
 
-:::demo 输入类型
 ```jsx
-import { Input, Cell } from 'zarm';
+import { Input, Cell, Button } from 'zarm';
 
 class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false,
-      number: '',
-    };
-  }
+  state = {
+    focused: false,
+    number: '',
+  };
 
   render() {
     return (
-      <div>
-        <Cell title="数字"><Input ref={(ref) => { this.manualFocus = ref; }} type="number" placeholder="type is number" value={this.state.number} focused={this.state.focused} onFocus={value => console.log(`onFocus: ${value}`)} onBlur={value => console.log(`onBlur: ${value}`)} onClear={(value) => { this.setState({ number: '' }); console.log('清除了', value); }} /></Cell>
-        <Cell title="金额"><Input type="price" placeholder="type is price" /></Cell>
-        <Cell title="身份证"><Input type="idcard" placeholder="type is idcard" /></Cell>
-        <Cell><button onClick={() => this.manualFocus.focus()}>click to focus the first input</button></Cell>
-      </div>
+      <>
+        <Cell title="数字">
+          <Input
+            ref={(ref) => { this.manualFocus = ref; }}
+            type="number"
+            placeholder="type is number"
+            value={this.state.number}
+            focused={this.state.focused}
+            onFocus={value => console.log(`onFocus: ${value}`)}
+            onBlur={value => console.log(`onBlur: ${value}`)}
+            onChange={value => console.log(`onChange: ${value}`)}
+          />
+        </Cell>
+
+        <Cell title="金额">
+          <Input type="price" placeholder="type is price" />
+        </Cell>
+
+        <Cell title="身份证">
+          <Input type="idcard" placeholder="type is idcard" />
+        </Cell>
+
+        <Cell>
+          <Button size="xs" theme="primary" onClick={() => this.manualFocus.focus()}>click to focus the first input</Button>
+        </Cell>
+      </>
     )
   }
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
-:::
 
 
-:::demo 高度自适应
+
+## 只读 / 禁用状态
+
 ```jsx
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell title="多行文本"><Input autoHeight type="textarea" rows={3} placeholder="写点啥..." /></Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell title="单行文本">
+      <Input readOnly type="text" defaultValue="我是只读状态" />
+    </Cell>
+    <Cell title="单行文本">
+      <Input disabled type="text" value="我是禁用状态" />
+    </Cell>
+    <Cell title="多行文本">
+      <Input readOnly type="text" rows={3} value="我是只读状态，我是只读状态，我是只读状态，我是只读状态。" />
+    </Cell>
+    <Cell title="多行文本">
+      <Input disabled type="text" rows={3} value="我是禁用状态，我是禁用状态，我是禁用状态，我是禁用状态。" />
+    </Cell>
+  </>
+, mountNode);
 ```
-:::
 
 
-:::demo 无标签栏
+
+## 高度自适应
+
 ```jsx
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell><Input type="text" placeholder="标题" /></Cell>
-        <Cell><Input autoHeight type="textarea" rows={4} maxLength={200} placeholder="摘要" /></Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <Cell title="多行文本">
+    <Input autoHeight type="text" rows={3} placeholder="写点啥..." />
+  </Cell>
+, mountNode);
 ```
-:::
 
 
-:::demo 显示输入字数
+
+## 无标签栏
 ```jsx
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Cell><Input autoHeight showLength type="textarea" rows={4} maxLength={200} placeholder="摘要" /></Cell>
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<Demo />, mountNode);
+ReactDOM.render(
+  <>
+    <Cell><Input type="text" placeholder="标题" /></Cell>
+    <Cell><Input autoHeight type="text" rows={4} maxLength={200} placeholder="摘要" /></Cell>
+  </>
+, mountNode);
 ```
-:::
 
 
-:::api API
 
-| 属性 | 类型 | 默认值 | 可选值／参数 | 说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| prefixCls | string | za-input | | 类名前缀 |
-| className | string | | | 追加类名 |
-| type | string | `text` | `text`, `textarea` | 显示类型 |
-| value | string |  | | 值 |
-| defaultValue | string |  | | 初始值 |
-| disabled | boolean | false | | 是否禁用 |
-| rows | number | | | 多行文本时的显示行数 |
-| autoHeight | boolean | false | | 是否高度自适应 |
-| maxLength | number | | | 输入字数上限 |
-| showLength | boolean | false | | 是否显示输入字数 |
-| clearable | boolean | true | | 是否显示清除按钮(仅type不为textarea的input组件) |
-| onChange | <code>(value: string) => void</code> | noop | \(value: string\) | 值变化时触发的回调函数 |
+## 显示输入字数
+```jsx
+import { Input, Cell } from 'zarm';
 
-:::
+ReactDOM.render(
+  <Cell>
+    <Input
+      autoHeight
+      showLength
+      type="text"
+      rows={4}
+      maxLength={200}
+      placeholder="摘要"
+    />
+  </Cell>
+, mountNode);
+```
+
+
+
+## API
+
+| 属性 | 类型 | 默认值 | 说明 |
+| :--- | :--- | :--- | :--- |
+| type | string | 'text' | 类型，可选值 `text`、`number`、`idcard`、`price`、`password`、`search` |
+| value | number \| string | - | 值 |
+| defaultValue | number \| string | - | 初始值 |
+| disabled | boolean | false | 是否禁用 |
+| readOnly | boolean | false | 是否只读 |
+| rows | number | - | 多行文本时的显示行数。type为text类型时有效。 |
+| autoHeight | boolean | false | 是否高度自适应 |
+| maxLength | number | - | 输入字数上限 |
+| showLength | boolean | false | 是否显示输入字数。多行文本（type="text"且包含rows属性）时有效。 |
+| clearable | boolean | true | 是否显示清除按钮。多行文本（type="text"且包含rows属性）时无效。必须为受控组件（属性包含value、onChange）时方可生效。 |
+| onChange | (value?: number \| string) => void | - | 值变化时触发的回调函数 |
+

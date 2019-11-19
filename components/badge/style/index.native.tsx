@@ -1,81 +1,76 @@
 import variables from '../../style/themes/default.native';
 
 export default {
-  TextStyle: {
+  textStyle: {
     flexDirection: 'row',
   },
 
-  Shape: {
-    height: 16,
-  },
-
-  dotShape: {
-    width: 8,
-    height: 8,
-    borderRadius: 1000,
-    display: 'flex',
-  },
-
-  dotSup: {
-    position: 'absolute',
-    top: -4,
-  },
-
-  radiusShape: {
-    borderRadius: 4,
-    height: 16,
-  },
-
-  radiusSup: {
-    position: 'absolute',
-    top: -8,
-  },
-
-  roundShape: {
+  dotBadge: {
+    width: variables.badge_dot_diameter,
+    height: variables.badge_dot_diameter,
     borderRadius: variables.badge_dot_diameter,
-    height: 16,
   },
 
-  roundSup: {
+  radiusBadge: {
+    borderRadius: variables.badge_rect_radius,
+    height: variables.badge_height,
+  },
+
+  roundBadge: {
+    borderRadius: variables.badge_dot_diameter,
+    height: variables.badge_height,
+  },
+
+  rectBadge: {
+    height: variables.badge_height,
+  },
+
+  circleBadge: {
+    borderRadius: variables.badge_dot_diameter,
+    height: variables.badge_height,
+  },
+
+  leafBadge: {
+    borderTopLeftRadius: variables.badge_dot_diameter,
+    borderTopRightRadius: variables.badge_dot_diameter,
+    borderBottomRightRadius: variables.badge_dot_diameter,
+    height: variables.badge_height,
+  },
+
+  sup: {
     position: 'absolute',
-    top: -8,
+    top: variables.badge_sup_top,
   },
 
-  circleShape: {
-    borderRadius: 1000,
-    height: 16,
+  dangerBagde: {
+    backgroundColor: variables.theme_danger,
   },
 
-  circleSup: {
-    position: 'absolute',
-    top: -8,
-  },
-
-  errorTheme: {
-    backgroundColor: variables.theme_error,
-  },
-
-  successTheme: {
+  successBagde: {
     backgroundColor: variables.theme_success,
   },
 
-  warningTheme: {
+  warningBagde: {
     backgroundColor: variables.theme_warning,
   },
 
-  primaryTheme: {
+  primaryBagde: {
     backgroundColor: variables.theme_primary,
   },
 
-  defaultTheme: {
+  defaultBagde: {
     backgroundColor: variables.theme_default,
   },
 
-  dotText: {
-    color: 'white',
+  badgeText: {
+    color: variables.badge_text_color,
     display: 'flex',
     fontSize: variables.badge_font_size,
-    lineHeight: 16,
-    paddingHorizontal: variables.padding_h_sm,
+    lineHeight: variables.badge_height,
+    paddingHorizontal: variables.badge_padding_h,
+  },
+
+  dotText: {
+    width: 0,
   },
 };

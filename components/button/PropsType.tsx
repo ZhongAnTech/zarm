@@ -1,13 +1,14 @@
+import { ReactNode } from 'react';
+
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'success' | 'warning' | 'error';
-  size?: 'xl' | 'lg' | 'sm' | 'xs';
-  shape?: 'radius' | 'round' | 'circle';
+  theme?: 'default' | 'primary' | 'danger';
+  size?: 'lg' | 'md' | 'sm' | 'xs';
+  shape?: 'radius' | 'rect' | 'round' | 'circle';
   block?: boolean;
-  bordered?: boolean;
-  active?: boolean;
+  ghost?: boolean;
+  shadow?: boolean;
   focus?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  icon?: JSX.Element;
-  onClick?: (e?: any) => void;
+  icon?: ReactNode;
 }

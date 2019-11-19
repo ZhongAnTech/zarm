@@ -17,8 +17,7 @@ const badgeStyles = StyleSheet.create<any>(badgeStyle);
 
 export default class Badge extends PureComponent<BadgeProps, {}> {
   static defaultProps = {
-    theme: 'error',
-    sup: false,
+    theme: 'danger',
     styles: badgeStyles,
   };
 
@@ -27,38 +26,42 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
   };
 
   layout = (e) => {
-    let dotWidth = -parseInt(e.layout.width, 10) / 2;
+    const dotWidth = (this.props.shape === 'dot' || this.props.shape === undefined)
+      ? -(parseInt(e.layout.width, 10) - 4)
+      : -(parseInt(e.layout.width, 10) - 8);
+
     this.setState({
       dotWidth,
     });
-  }
+  };
 
   render() {
-    const { styles } = this.props;
-
     const {
       theme,
       shape,
-      sup,
       text,
       style,
       children,
+      styles,
     } = this.props;
+    const { dotWidth } = this.state;
 
     const bagdeWrapper = [
-      styles!.TextStyle,
+      styles!.textStyle,
       style,
     ] as ViewStyle;
 
-    const dotText = [
-      styles!.dotText,
+    const badgeText = [
+      styles!.badgeText,
       styles![`${shape}Text`],
+      shape === undefined && styles!.dotText,
     ];
 
-    const shapeStyle = [
-      styles![`${shape}Shape`],
-      styles![`${theme}Theme`],
-      sup && styles![`${shape}Sup`],
+    const iconStyle = [
+      styles![`${shape}Badge`],
+      styles![`${theme}Bagde`],
+      !!children && [badgeStyles.sup],
+      shape === undefined && styles!.dotBadge,
     ] as ViewStyle;
 
     return (
@@ -66,9 +69,9 @@ export default class Badge extends PureComponent<BadgeProps, {}> {
         {children}
         <View
           onLayout={({ nativeEvent: e }) => this.layout(e)}
-          style={[shapeStyle, { right: sup ? this.state.dotWidth : 0 }]}
+          style={[iconStyle, { right: children ? dotWidth : 0 }]}
         >
-          <Text style={dotText}>{text}</Text>
+          <Text style={badgeText}>{text}</Text>
         </View>
       </View>
     );

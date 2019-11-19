@@ -1,22 +1,25 @@
-import React, { PureComponent, cloneElement } from 'react';
+import React, { PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
 import classnames from 'classnames';
 import { BaseRadioGroupProps } from './PropsType';
 
-const getChildChecked = (children) => {
+const getChildChecked = (children: ReactNode) => {
   let checkedValue = null;
-  React.Children.forEach(children, (element: any) => {
-    if (element.props && element.props.checked) {
+  React.Children.forEach(children, (element: ReactNode) => {
+    if (isValidElement(element)
+      && element.props
+      && element.props.checked
+    ) {
       checkedValue = element.props.value;
     }
   });
   return checkedValue;
 };
 
-const getValue = (props, defaultValue) => {
-  if ('value' in props) {
+const getValue = (props: RadioGroup['props'], defaultValue: null) => {
+  if (typeof props.value !== 'undefined') {
     return props.value;
   }
-  if ('defaultValue' in props) {
+  if (typeof props.defaultValue !== 'undefined') {
     return props.defaultValue;
   }
   if (getChildChecked(props.children)) {
@@ -30,59 +33,67 @@ export interface RadioGroupProps extends BaseRadioGroupProps {
   className?: string;
 }
 
-export default class RadioGroup extends PureComponent<RadioGroupProps, any> {
+export interface RadioGroupStates {
+  value?: string | number | null;
+}
+
+export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGroupStates> {
+  static displayName = 'RadioGroup';
+
   static defaultProps = {
     prefixCls: 'za-radio-group',
     theme: 'primary',
+    shape: 'radius',
     block: false,
     disabled: false,
-    compact: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: getValue(props, null),
-    };
-  }
+  state: RadioGroupStates = {
+    value: getValue(this.props, null),
+  };
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps || getChildChecked(nextProps.children)) {
-      this.setState({
-        value: nextProps.value || getChildChecked(nextProps.children),
-      });
+  static getDerivedStateFromProps(nextProps: RadioGroup['props']) {
+    if ('value' in nextProps) {
+      return {
+        value: nextProps.value,
+      };
     }
+
+    return null;
   }
 
-  onChildChange = (value) => {
+  onChildChange = (value: string | number) => {
     this.setState({ value });
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(value);
     }
-  }
+  };
 
   render() {
-    const { prefixCls, className, theme, shape, type, block, disabled, compact, children } = this.props;
+    const { prefixCls, className, shape, type, block, disabled, children } = this.props;
+    const { value } = this.state;
 
     const items = React.Children.map(children, (element: any, index) => {
       return cloneElement(element, {
         key: index,
         type,
-        theme,
         shape,
         block: block || element.props.block,
         disabled: disabled || element.props.disabled,
-        onChange: () => this.onChildChange(element.props.value),
-        checked: this.state.value === element.props.value || Number(this.state.value) === Number(element.props.value),
+        checked: value === element.props.value || Number(value) === Number(element.props.value),
+        onChange: (checked: boolean) => {
+          typeof element.props.onChange === 'function' && element.props.onChange(checked);
+          this.onChildChange(element.props.value);
+        },
       });
     });
 
-    const cls = classnames(`${prefixCls}`, className, {
-      [`shape-${shape}`]: !!shape,
-      'is-compact': compact,
-      block,
-      disabled,
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${shape}`]: !!shape,
+      [`${prefixCls}--block`]: block,
+      [`${prefixCls}--disabled`]: disabled,
     });
 
     return <div className={cls}>{items}</div>;

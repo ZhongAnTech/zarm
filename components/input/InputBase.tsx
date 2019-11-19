@@ -1,12 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import { BaseInputBaseProps } from './PropsType';
+import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
-
-export interface InputBaseProps extends BaseInputBaseProps {
-  prefixCls?: string;
-  className?: string;
-}
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
   static defaultProps = {
@@ -14,39 +9,39 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     disabled: false,
     type: 'text',
     clearable: true,
+    readOnly: false,
   };
 
   private input;
+
   private onBlurTimeout;
+
   private blurFromClear;
 
   constructor(props) {
     super(props);
     this.state = {
-      focused: props.focused || false,
+      focused: false,
       value: props.defaultValue || props.value || '',
     };
   }
 
   componentDidMount() {
-    if (this.props.autoFocus || this.state.focused) {
+    const { autoFocus } = this.props;
+    const { focused } = this.state;
+
+    if (autoFocus || focused) {
       this.input.focus();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { value } = this.state;
-    if ('focused' in nextProps) {
-      this.setState({
-        focused: nextProps.focused,
-      });
-    }
-
-    if ('value' in nextProps && value !== nextProps.value ) {
-      this.setState({
+  static getDerivedStateFromProps(nextProps) {
+    if ('value' in nextProps) {
+      return {
         value: nextProps.value,
-      });
+      };
     }
+    return null;
   }
 
   componentWillUnmount() {
@@ -57,22 +52,19 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   }
 
   onFocus = (e) => {
-    const value = e.target.value;
-    if (!('focused' in this.props)) {
-      this.setState({
-        focused: true,
-      });
-    }
+    this.setState({
+      focused: true,
+    });
 
     const { onFocus } = this.props;
     if (typeof onFocus === 'function') {
-      onFocus(value);
+      onFocus(e.target.value);
     }
-  }
+  };
 
   onBlur = (e) => {
     const { onBlur } = this.props;
-    const value = e.target.value;
+    const { value } = e.target;
     this.onBlurTimeout = setTimeout(() => {
       if (!this.blurFromClear && document.activeElement !== this.input) {
         this.setState({
@@ -84,39 +76,8 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
         }
       }
       this.blurFromClear = false;
-    }, 0);
-  }
-
-  handleComposition(e) {
-    if (e.type === 'compositionstart') {
-      this.setState({
-        isOnComposition: true,
-      });
-      if (this.props.onCompositionStart) {
-        this.props.onCompositionStart(e);
-      }
-    }
-
-    if (e.type === 'compositionupdate') {
-      if (this.props.onCompositionUpdate) {
-        this.props.onCompositionUpdate(e);
-      }
-    }
-
-    if (e.type === 'compositionend') {
-      // composition is end
-      this.setState({
-        isOnComposition: false,
-      });
-      const value = e.target.value;
-      if (this.props.onCompositionEnd) {
-        this.props.onCompositionEnd(e);
-      }
-      if (this.props.onChange) {
-        this.props.onChange(value);
-      }
-    }
-  }
+    }, 200);
+  };
 
   onChange = (e) => {
     const { onChange } = this.props;
@@ -131,57 +92,121 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     if (onChange) {
       onChange(e.target.value);
     }
-  }
+  };
 
-  onClear() {
+  onClear = () => {
+    const { isOnComposition } = this.state;
+    const { onChange, onClear } = this.props;
+
     this.blurFromClear = true;
-    const { value } = this.state;
     this.setState({
       value: '',
     });
-    if (!this.state.isOnComposition) {
-      this.focus();
-    }
-    if (this.props.onClear) {
-      this.props.onClear(value);
-    }
-  }
 
-  focus() {
+    !isOnComposition && this.focus();
+    typeof onChange === 'function' && onChange('');
+    typeof onClear === 'function' && onClear('');
+  };
+
+  handleComposition = (e) => {
+    const { onCompositionStart, onCompositionUpdate, onCompositionEnd, onChange } = this.props;
+
+    if (e.type === 'compositionstart') {
+      this.setState({
+        isOnComposition: true,
+      });
+      if (typeof onCompositionStart === 'function') {
+        onCompositionStart(e);
+      }
+    }
+
+    if (e.type === 'compositionupdate') {
+      if (typeof onCompositionUpdate === 'function') {
+        onCompositionUpdate(e);
+      }
+    }
+
+    if (e.type === 'compositionend') {
+      const { value } = e.target;
+      // composition is end
+      this.setState({
+        isOnComposition: false,
+      });
+      if (typeof onCompositionEnd === 'function') {
+        onCompositionEnd(e);
+      }
+      if (typeof onChange === 'function') {
+        onChange(value);
+      }
+    }
+  };
+
+  focus = () => {
     this.input.focus();
-  }
+  };
 
-  blur() {
+  blur = () => {
     this.input.blur();
-  }
+  };
 
   render() {
-    const { prefixCls, className, disabled, onClear, clearable, type, ...others } = this.props;
-    const { value, focused } = this.state;
-    const cls = classnames(prefixCls, `${prefixCls}-${type}`, className, {
+    const {
+      prefixCls,
+      className,
       disabled,
       clearable,
+      readOnly,
+      type,
+      onClear,
+      ...rest
+    } = this.props;
+
+    const { value } = this.state;
+    const { focused } = this.state;
+    const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
+
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--focus`]: focused,
+      [`${prefixCls}--clearable`]: showClearIcon,
+      [`${prefixCls}--readonly`]: readOnly,
     });
-    const clearCls = classnames(`${prefixCls}-clear`, {
-      [`${prefixCls}-clear-show`]: !!(focused && value && value.length > 0),
+
+    const valueProps: any = {};
+    if ('value' in this.props) {
+      valueProps.value = value;
+    }
+
+    const renderInput = (
+      <input
+        {...rest}
+        {...valueProps}
+        autoComplete="off"
+        ref={(ele) => { this.input = ele; }}
+        type={type}
+        disabled={disabled}
+        onChange={this.onChange}
+        onBlur={this.onBlur}
+        onFocus={this.onFocus}
+        onCompositionStart={(e) => { this.handleComposition(e); }}
+        onCompositionUpdate={(e) => { this.handleComposition(e); }}
+        onCompositionEnd={(e) => { this.handleComposition(e); }}
+      />
+    );
+
+    const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
+
+    // clear icon
+    const clearCls = classnames(`${prefixCls}__clear`, {
+      [`${prefixCls}__clear--show`]: focused && value && value.length > 0,
     });
+    const renderClearIcon = showClearIcon
+      && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />;
+
     return (
       <div className={cls}>
-        <input
-          {...others}
-          autoComplete="off"
-          ref={(ele) => { this.input = ele; }}
-          type={type}
-          disabled={disabled}
-          value={value}
-          onChange={this.onChange}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
-          onCompositionStart={(e) => { this.handleComposition(e); }}
-          onCompositionUpdate={(e) => { this.handleComposition(e); }}
-          onCompositionEnd={(e) => { this.handleComposition(e); }}
-        />
-        {clearable && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />}
+        {readOnly ? renderText : renderInput}
+        {renderClearIcon}
       </div>
     );
   }
