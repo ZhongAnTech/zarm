@@ -35,13 +35,16 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
-      this.setState({
-        value: getValue(nextProps, 0),
-        lastValue: getValue(nextProps, 0),
-      });
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('value' in nextProps && nextProps.value !== state.prevValue) {
+      const value = getValue(nextProps, 0);
+      return {
+        value,
+        lastValue: value,
+        prevValue: value,
+      };
     }
+    return null;
   }
 
   onInputChange = (value) => {
