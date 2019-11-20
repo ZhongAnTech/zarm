@@ -105,8 +105,8 @@ export default class Collapse extends Component<CollapseProps, any> {
     const { animated, children } = this.props;
     const { activeKey } = this.state;
 
-    return Children.map(children, (ele: ReactElement<CollapseItemProps>, index) => {
-      const { itemKey, disabled, onChange } = ele.props;
+    return Children.map(children, (ele: ReactElement<CollapseItemProps>) => {
+      const { disabled, onChange } = ele.props;
       const { key } = ele;
       const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele, {

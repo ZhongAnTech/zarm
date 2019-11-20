@@ -60,9 +60,9 @@ export default class Popup extends PureComponent<PopupProps, any> {
     const { props } = this;
     if (nextProps.visible !== props.visible) {
       if (props.visible) {
-        this.enter(props);
+        this.enter();
       } else {
-        this.leave(props);
+        this.leave();
       }
     }
   }
@@ -72,7 +72,8 @@ export default class Popup extends PureComponent<PopupProps, any> {
     translateValue.removeAllListeners();
   }
 
-  enter = ({ direction, animationDuration }) => {
+  enter = () => {
+    const { direction, animationDuration } = this.props;
     let transfromStyle = {};
     let newValue;
     if (direction === 'bottom') {
@@ -111,7 +112,8 @@ export default class Popup extends PureComponent<PopupProps, any> {
     // }
   };
 
-  leave = ({ animationDuration }) => {
+  leave = () => {
+    const { animationDuration } = this.props;
     this.setState({
       animationState: 'leave',
       // isPending: false,
@@ -167,7 +169,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       }
       that.setState({ directionStyle });
       if (that.state.isShow) {
-        that.enter(that.props);
+        that.enter();
         that.setState({ isShow: false });
       }
     });
