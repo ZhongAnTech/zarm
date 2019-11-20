@@ -1,20 +1,9 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import BaseDateSelectProps from './PropsType';
-import formatFn from '../date-picker-view/utils';
+import formatFn from '../date-picker-view/utils/format';
 import DatePicker from '../date-picker';
-
-const isExtendDate = (date) => {
-  if (date instanceof Date) {
-    return date;
-  }
-
-  if (!date) {
-    return '';
-  }
-
-  return new Date(date.toString().replace(/-/g, '/'));
-};
+import Icon from '../icon';
 
 export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
@@ -31,32 +20,18 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     onCancel: () => {},
   };
 
-  constructor(props) {
-    super(props);
-
-    const date = props.value && isExtendDate(props.value);
-    const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-
-    this.state = {
-      value: defaultDate || date,
-      visible: props.visible || false,
+  static getDerivedStateFromProps(props) {
+    return {
+      selectValue: props.value,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { visible } = this.state;
-    const date = nextProps.value && isExtendDate(nextProps.value);
-    const defaultDate = nextProps.defaultValue && isExtendDate(nextProps.defaultValue);
-
-    this.setState({
-      value: date || defaultDate,
-    });
-
-    if ('visible' in nextProps && nextProps.visible !== visible) {
-      this.setState({
-        visible: nextProps.visible,
-      });
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      selectValue: props.value,
+    };
   }
 
   handleClick = () => {
@@ -78,7 +53,11 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
 
   onOk = (selected) => {
     const { onOk } = this.props;
-    this.setState({ visible: false });
+    this.setState({
+      visible: false,
+      selectValue: selected,
+    });
+
     if (typeof onOk === 'function') {
       onOk(selected);
     }
@@ -93,24 +72,25 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
   };
 
   render() {
-    const { prefixCls, className, placeholder, disabled, onChange, locale, ...others } = this.props;
-    const { value, visible } = this.state;
+    const { prefixCls, className, placeholder, disabled, onChange, locale, value, ...others } = this.props;
+    const { visible, selectValue } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--placeholder`]: !value,
+      [`${prefixCls}--placeholder`]: !selectValue,
       [`${prefixCls}--disabled`]: disabled,
     });
 
     return (
       <div className={cls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, value)} />
+        <input type="hidden" value={formatFn(this, selectValue)} />
         <div className={`${prefixCls}__input`}>
-          {value ? formatFn(this, value) : placeholder || locale!.placeholder}
+          <div className={`${prefixCls}__value`}>{formatFn(this, selectValue) || placeholder || locale!.placeholder}</div>
+          <Icon type="arrow-bottom" size="sm" />
         </div>
         <DatePicker
           {...others}
           visible={visible}
-          value={value}
+          value={selectValue}
           onOk={this.onOk}
           onCancel={this.onCancel}
         />

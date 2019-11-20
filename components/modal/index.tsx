@@ -70,7 +70,7 @@ function modalType(props, type) {
   function render(visible) {
     const runTimeLocale = getRunTimeLocale();
     if (type === 'alert') {
-      let _props: any;
+      let _props: any = props;
       if (runTimeLocale && runTimeLocale.Alert) {
         _props = { ...props, locale: runTimeLocale.Alert };
       }
@@ -79,7 +79,7 @@ function modalType(props, type) {
         div,
       );
     } else {
-      let _props: any;
+      let _props: any = props;
       if (runTimeLocale && runTimeLocale.Confirm) {
         _props = { ...props, locale: runTimeLocale.Confirm };
       }

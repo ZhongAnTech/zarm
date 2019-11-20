@@ -9,6 +9,12 @@
     width: 100%;
     padding: r(12) 0;
     line-height: r(28);
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(value) {
+    flex: 1;
   }
 
   @include m(placeholder) {

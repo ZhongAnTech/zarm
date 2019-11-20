@@ -124,7 +124,52 @@ exports[`Select Cascader Select 1`] = `
         <div
           className="za-select__input"
         >
-          请选择
+          <div
+            className="za-select__value"
+          >
+            请选择
+          </div>
+          <Icon
+            prefixCls="za-icon"
+            size="sm"
+            theme="default"
+            type="arrow-bottom"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+              size="sm"
+              theme="default"
+              type="arrow-bottom"
+            >
+              <Icon
+                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                prefixCls="za-icon"
+                size="sm"
+                theme="default"
+                type="arrow-bottom"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                  size="sm"
+                  theme="default"
+                  type="arrow-bottom"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-bottom"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -427,8 +472,53 @@ exports[`Select Cascader Select init value 1`] = `
         <div
           className="za-select__input"
         >
-          选项一
-          选项二
+          <div
+            className="za-select__value"
+          >
+            选项一
+            选项二
+          </div>
+          <Icon
+            prefixCls="za-icon"
+            size="sm"
+            theme="default"
+            type="arrow-bottom"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+              size="sm"
+              theme="default"
+              type="arrow-bottom"
+            >
+              <Icon
+                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                prefixCls="za-icon"
+                size="sm"
+                theme="default"
+                type="arrow-bottom"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                  size="sm"
+                  theme="default"
+                  type="arrow-bottom"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-bottom"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -671,7 +761,52 @@ exports[`Select Select 1`] = `
         <div
           className="za-select__input"
         >
-          请选择
+          <div
+            className="za-select__value"
+          >
+            请选择
+          </div>
+          <Icon
+            prefixCls="za-icon"
+            size="sm"
+            theme="default"
+            type="arrow-bottom"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+              size="sm"
+              theme="default"
+              type="arrow-bottom"
+            >
+              <Icon
+                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                prefixCls="za-icon"
+                size="sm"
+                theme="default"
+                type="arrow-bottom"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                  size="sm"
+                  theme="default"
+                  type="arrow-bottom"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-bottom"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -836,7 +971,52 @@ exports[`Select Select disabled 1`] = `
         <div
           className="za-select__input"
         >
-          请选择
+          <div
+            className="za-select__value"
+          >
+            请选择
+          </div>
+          <Icon
+            prefixCls="za-icon"
+            size="sm"
+            theme="default"
+            type="arrow-bottom"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+              size="sm"
+              theme="default"
+              type="arrow-bottom"
+            >
+              <Icon
+                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                prefixCls="za-icon"
+                size="sm"
+                theme="default"
+                type="arrow-bottom"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                  size="sm"
+                  theme="default"
+                  type="arrow-bottom"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-bottom"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -1114,7 +1294,6 @@ exports[`Select Select disabled 1`] = `
                               ]
                             }
                             valueMember="value"
-                            visible={true}
                           >
                             <div
                               className="za-picker-view"
@@ -1256,7 +1435,52 @@ exports[`Select render defaultValue correctly  1`] = `
         <div
           className="za-select__input"
         >
-          请选择
+          <div
+            className="za-select__value"
+          >
+            请选择
+          </div>
+          <Icon
+            prefixCls="za-icon"
+            size="sm"
+            theme="default"
+            type="arrow-bottom"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+              size="sm"
+              theme="default"
+              type="arrow-bottom"
+            >
+              <Icon
+                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                prefixCls="za-icon"
+                size="sm"
+                theme="default"
+                type="arrow-bottom"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
+                  size="sm"
+                  theme="default"
+                  type="arrow-bottom"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#arrow-bottom"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
