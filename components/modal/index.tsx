@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
-import Alert from '../alert';
-import Confirm from '../confirm';
+import Alert from '../alert/Alert';
+import Confirm from '../confirm/Confirm';
 import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
 
 
