@@ -19,8 +19,6 @@ export interface PopupProps extends PropsType {
 const popupStyles = StyleSheet.create<any>(popupStyle);
 
 export default class Popup extends PureComponent<PopupProps, any> {
-  private timer: number;
-
   static defaultProps = {
     visible: false,
     mask: true,
@@ -58,12 +56,14 @@ export default class Popup extends PureComponent<PopupProps, any> {
     // }
   }
 
-  componentWillReceiveProps(nextProps) {
-    clearTimeout(this.timer);
-    if (nextProps.visible) {
-      this.enter(nextProps);
-    } else {
-      this.leave(nextProps);
+  componentDidUpdate(nextProps) {
+    const { props } = this;
+    if (nextProps.visible !== props.visible) {
+      if (props.visible) {
+        this.enter();
+      } else {
+        this.leave();
+      }
     }
   }
 
@@ -72,7 +72,8 @@ export default class Popup extends PureComponent<PopupProps, any> {
     translateValue.removeAllListeners();
   }
 
-  enter = ({ direction, animationDuration }) => {
+  enter = () => {
+    const { direction = 'top', animationDuration } = this.props;
     let transfromStyle = {};
     let newValue;
     if (direction === 'bottom') {
@@ -84,7 +85,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
     } else if (direction === 'left') {
       transfromStyle = { transform: [{ translateX: this.state.translateValue }] };
       newValue = -this.state.directionStyle[direction];
-    } else {
+    } else if (direction === 'right') {
       transfromStyle = { transform: [{ translateX: this.state.translateValue }] };
       newValue = this.state.directionStyle[direction];
     }
@@ -111,7 +112,8 @@ export default class Popup extends PureComponent<PopupProps, any> {
     // }
   };
 
-  leave = ({ animationDuration }) => {
+  leave = () => {
+    const { animationDuration } = this.props;
     this.setState({
       animationState: 'leave',
       // isPending: false,
@@ -167,7 +169,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
       }
       that.setState({ directionStyle });
       if (that.state.isShow) {
-        that.enter(that.props);
+        that.enter();
         that.setState({ isShow: false });
       }
     });
