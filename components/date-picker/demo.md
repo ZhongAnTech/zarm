@@ -183,16 +183,14 @@ class Demo extends React.Component {
   constructor() {
     super();
     this.state = {
-      visible: true,
       value: "",
     };
   }
 
   render() {
-    const { visible } = this.state;
     return (
       <div>
-        <Cell title="日期选择" description={<Icon type="arrow-bottom" size="sm" />}>
+        <Cell title="日期选择">
           <DateSelect
             title="选择日期"
             placeholder="请选择日期"
@@ -200,11 +198,9 @@ class Demo extends React.Component {
             min="1974-05-16"
             max="2027-05-15"
             value={this.state.value}
-            visible={visible}
             onOk={(value) => {
               console.log('DateSelect onOk: ', value);
               this.setState({
-                visible: false,
                 value,
               });
             }}
@@ -232,15 +228,6 @@ class Demo extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // this.interval = setInterval(
-    //   () =>
-    //     this.setState(prevState => ({
-    //       count: prevState.count + 1
-    //     })),
-    //   1000
-    // );
-  }
   render() {
     return (
       <div>
@@ -283,7 +270,6 @@ ReactDOM.render(<Demo />, mountNode);
 | cancelText | string | '取消' | 取消栏文字 |
 | okText | string | '确定' | 确定栏文字 |
 | maskClosable | boolean | true | 是否点击遮罩层时关闭，需要和onCancel一起使用 |
-| destroy | boolean | false | 弹层关闭后是否移除节点 |
 | wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
 | onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
 | onCancel | () => void | - | 点击取消时触发的回调函数 |

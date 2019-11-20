@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import _ from 'lodash';
 import BaseDateSelectProps from './PropsType';
 import formatFn from '../date-picker-view/utils/format';
 import DatePicker from '../date-picker';
-import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-import { parseState } from '../date-picker-view/utils/parseState';
+import Icon from '../icon';
 
 export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
@@ -22,20 +20,19 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     onCancel: () => {},
   };
 
-  static getDerivedStateFromProps(props, state) {
-    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
-      return {
-        prevProps: props,
-        ...parseState(props),
-      };
-    }
-
-    return null;
+  static getDerivedStateFromProps(props) {
+    return {
+      selectValue: props.value,
+    };
   }
 
-  state = {
-    visible: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      selectValue: props.value,
+    };
+  }
 
   handleClick = () => {
     const { disabled } = this.props;
@@ -56,7 +53,11 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
 
   onOk = (selected) => {
     const { onOk } = this.props;
-    this.setState({ visible: false });
+    this.setState({
+      visible: false,
+      selectValue: selected,
+    });
+
     if (typeof onOk === 'function') {
       onOk(selected);
     }
@@ -72,23 +73,24 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
 
   render() {
     const { prefixCls, className, placeholder, disabled, onChange, locale, value, ...others } = this.props;
-    const { visible } = this.state;
+    const { visible, selectValue } = this.state;
 
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--placeholder`]: !value,
+      [`${prefixCls}--placeholder`]: !selectValue,
       [`${prefixCls}--disabled`]: disabled,
     });
 
     return (
       <div className={cls} onClick={this.handleClick}>
-        <input type="hidden" value={formatFn(this, value)} />
+        <input type="hidden" value={formatFn(this, selectValue)} />
         <div className={`${prefixCls}__input`}>
-          {value ? formatFn(this, value) : placeholder || locale!.placeholder}
+          <div className={`${prefixCls}__value`}>{formatFn(this, selectValue) || placeholder || locale!.placeholder}</div>
+          <Icon type="arrow-bottom" size="sm" />
         </div>
         <DatePicker
           {...others}
           visible={visible}
-          value={value}
+          value={selectValue}
           onOk={this.onOk}
           onCancel={this.onCancel}
         />

@@ -47,12 +47,6 @@ export default class Picker extends Component<PickerProps, PickerState> {
       };
     }
 
-    if (!_.isEqual(state.value, state.prevValue)) {
-      return {
-        prevValue: state.value,
-        ...parseProps.getSource({ ...props, value: state.value }),
-      };
-    }
     return null;
   }
 

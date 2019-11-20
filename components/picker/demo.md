@@ -299,7 +299,7 @@ class Demo extends React.Component {
   render() {
     const { value, dataSource } = this.state;
     return (
-      <Cell title="城市" description={<Icon type="arrow-bottom" size="sm" />}>
+      <Cell title="城市">
         <Select
           value={value}
           dataSource={dataSource}

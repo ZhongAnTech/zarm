@@ -39,12 +39,12 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
       };
     }
 
-    if (!_.isEqual(state.value, state.prevValue)) {
-      return {
-        prevValue: state.value,
-        ...parseProps.getSource({ ...props, value: state.value }),
-      };
-    }
+    // if (!_.isEqual(state.value, state.prevValue)) {
+    //   return {
+    //     prevValue: state.value,
+    //     ...parseProps.getSource({ ...props, value: state.value }),
+    //   };
+    // }
     return null;
   }
 

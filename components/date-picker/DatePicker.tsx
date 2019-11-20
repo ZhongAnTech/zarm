@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import _ from 'lodash';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
-import DatePickerView from '../date-picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import DatePickerView from '../date-picker-view';
 import { parseState } from '../date-picker-view/utils/parseState';
 
 export interface DatePickerProps extends BaseDatePickerProps {
@@ -15,8 +15,6 @@ export interface DatePickerProps extends BaseDatePickerProps {
 export default class DatePicker extends Component<DatePickerProps, any> {
   static defaultProps = {
     mode: 'date',
-    value: '',
-    defaultValue: '',
     minuteStep: 1,
     prefixCls: 'za-date-picker',
     valueMember: 'value',
@@ -33,29 +31,18 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         ...parseState(props),
       };
     }
-
-    if (!_.isEqual(state.value, state.prevValue)) {
-      return {
-        prevValue: state.value,
-        value: state.value,
-      };
-    }
     return null;
   }
 
-  private initDate;
-
   private isScrolling = false;
 
-  state = {
-    value: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = parseState(props);
+  }
 
   onCancel = () => {
     const { onCancel } = this.props;
-    this.setState({
-      value: this.initDate,
-    });
     if (typeof onCancel === 'function') {
       onCancel();
     }
@@ -67,14 +54,13 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
 
     const { onOk } = this.props;
-    const { value } = this.state;
-    // const value = this.initDate;
+    const { date } = this.state;
 
     this.setState({
-      value,
+      date,
     });
     if (typeof onOk === 'function') {
-      onOk(value);
+      onOk(date);
     }
   };
 
@@ -87,20 +73,15 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   onInit = (selected) => {
-    const { onInit } = this.props;
-    // this.initDate = selected;
     this.setState({
-      value: selected,
+      date: selected,
     });
-    if (typeof onInit === 'function') {
-      onInit(selected);
-    }
   };
 
   onValueChange = (newValue) => {
     const { onChange } = this.props;
     this.setState({
-      value: newValue,
+      date: newValue,
     });
 
     if (typeof onChange === 'function') {
@@ -115,10 +96,9 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, destroy, onOk, onCancel, onInit, visible, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
     const cls = classnames(prefixCls, className);
-    const { value } = this.state;
-    console.log('datePicker value:', value);
+    const { date } = this.state;
     const noop = () => {};
 
     return (
@@ -126,7 +106,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
         getContainer={getContainer}
-        destroy={destroy}
+        destroy
       >
         <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
@@ -142,7 +122,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
           <DatePickerView
             {...others}
             className={className}
-            value={value}
+            value={date}
             onInit={this.onInit}
             onChange={this.onValueChange}
             onTransition={(isScrolling) => { this.onTransition(isScrolling); }}
