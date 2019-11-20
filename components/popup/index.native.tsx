@@ -73,7 +73,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   }
 
   enter = () => {
-    const { direction, animationDuration } = this.props;
+    const { direction = 'top', animationDuration } = this.props;
     let transfromStyle = {};
     let newValue;
     if (direction === 'bottom') {
@@ -85,7 +85,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
     } else if (direction === 'left') {
       transfromStyle = { transform: [{ translateX: this.state.translateValue }] };
       newValue = -this.state.directionStyle[direction];
-    } else {
+    } else if (direction === 'right') {
       transfromStyle = { transform: [{ translateX: this.state.translateValue }] };
       newValue = this.state.directionStyle[direction];
     }
