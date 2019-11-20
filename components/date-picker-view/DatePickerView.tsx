@@ -61,12 +61,6 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
       };
     }
 
-    if (!_.isEqual(state.date, state.prevDate)) {
-      return {
-        prevDate: state.date,
-        date: state.date,
-      };
-    }
     return null;
   }
 

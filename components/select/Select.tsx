@@ -3,10 +3,14 @@ import classnames from 'classnames';
 import _ from 'lodash';
 import BaseSelectProps from './PropsType';
 import Picker from '../picker';
+import Icon from '../icon';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isArray, isString } from '../utils/validate';
 
+const isValueValid = (value) => {
+  return (isString(value) && !!value.trim()) || (isArray(value) && value.length > 0 && value.some((item) => !!item));
+};
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
@@ -15,12 +19,8 @@ export interface SelectProps extends BaseSelectProps {
 export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
 
 export interface SelectState {
-  value: string[] | number[];
-  objValue?: string[] | number[];
-  dataSource: DataSource;
+  selectValue: string[] | number[];
   visible: boolean;
-  tempObjValue?: string[] | number[];
-  tempValue?: string[] | number[];
 }
 
 export default class Select extends PureComponent<SelectProps, SelectState> {
@@ -35,16 +35,19 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     onClick: () => {},
   };
 
-  state: SelectState = {
-    ...parseProps.getSource(this.props),
-    visible: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+      selectValue: isValueValid(props.value) && parseProps.getSource(props).objValue,
+    };
+  }
 
   static getDerivedStateFromProps(props, state) {
     if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
       return {
         prevProps: props,
-        ...parseProps.getSource(props),
+        selectValue: isValueValid(props.value) && parseProps.getSource(props).objValue,
       };
     }
 
@@ -71,7 +74,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   onOk = (selected) => {
     const { onOk } = this.props;
     this.setState({
-      objValue: selected,
+      selectValue: selected,
       visible: false,
     }, () => {
       if (typeof onOk === 'function') {
@@ -83,32 +86,27 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   // 点击取消
   onCancel = () => {
     const { onCancel } = this.props;
-    const { objValue = [] } = this.state;
     this.setState({
-      objValue,
       visible: false,
-    }, () => {
-      if (typeof onCancel === 'function') {
-        onCancel();
-      }
     });
-  };
 
-  isValueValid = (value) => {
-    return (isString(value) && !!value.trim()) || (isArray(value) && value.length > 0 && value.some((item) => !!item));
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
   };
 
   render() {
-    const { prefixCls, placeholder, className, disabled, displayRender, value, locale, ...others } = this.props;
-    const { visible, objValue } = this.state;
+    const { prefixCls, placeholder, className, disabled, displayRender, locale, value, ...others } = this.props;
+    const { visible, selectValue } = this.state;
     const cls = classnames(prefixCls, className, {
-      [`${prefixCls}--placeholder`]: !this.isValueValid(value),
+      [`${prefixCls}--placeholder`]: !selectValue.length,
       [`${prefixCls}--disabled`]: disabled,
     });
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
-          {(this.isValueValid(value) && displayRender!(objValue || [])) || placeholder || locale!.placeholder}
+          <div className={`${prefixCls}__value`}>{(selectValue.length && displayRender!(selectValue || [])) || placeholder || locale!.placeholder}</div>
+          <Icon type="arrow-bottom" size="sm" />
         </div>
         <Picker
           {...others}
