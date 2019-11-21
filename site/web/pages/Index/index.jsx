@@ -36,7 +36,7 @@ class Page extends PureComponent {
               <span>Zarm</span>
               &nbsp;Design
             </div>
-            <div className="description">高质量移动端 UI 组件库，为用户体验而生</div>
+            <div className="description">基于 React / React Native / Vue 的跨平台移动端 UI 组件库，为用户体验而生</div>
             <div className="navigation">
               <button type="button" onClick={() => history.push('/components/quick-start')}>开始使用</button>
               <Dropdown
