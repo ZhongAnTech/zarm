@@ -84,7 +84,7 @@ class Demo extends React.Component {
     return (
       <LocaleProvider locale={locales[this.state.locale]}>
         <div>
-          <Cell hasArrow title="切换语言包">
+          <Cell title="切换语言包">
             <Select
               value={this.state.locale}
               dataSource={[

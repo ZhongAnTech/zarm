@@ -72,7 +72,7 @@ class Demo extends React.Component {
           />
         </Cell>
 
-        <Cell hasArrow title="主题">
+        <Cell title="主题">
           <Select
             value={theme}
             dataSource={[
@@ -89,7 +89,7 @@ class Demo extends React.Component {
           />
         </Cell>
 
-        <Cell hasArrow title="线条形状">
+        <Cell title="线条形状">
           <Select
             value={shape}
             dataSource={[
@@ -104,7 +104,7 @@ class Demo extends React.Component {
           />
         </Cell>
 
-        <Cell hasArrow title="线条粗细">
+        <Cell title="线条粗细">
           <Select
             value={weight}
             dataSource={[
