@@ -6,11 +6,25 @@
   background: #fff;
 
   @include e(input) {
+    position: relative;
     width: 100%;
-    padding: r(12) 0;
+    padding: r(12) var(--cell-arrow-length) r(12) 0;
     line-height: r(28);
     display: flex;
     align-items: center;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: var(--cell-arrow-length);
+      height: var(--cell-arrow-length);
+      top: calc(var(--collapse-padding) + 3px);
+      right: calc(var(--collapse-padding) + 2px);
+      border-right: r(2) solid var(--collapse-arrow-color);
+      border-bottom: r(2) solid var(--collapse-arrow-color);
+      transform: rotate(45deg);
+      transform-origin: 50% 50%;
+    }
   }
 
   @include e(value) {
