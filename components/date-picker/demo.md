@@ -279,4 +279,5 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |
+| hasArrow | boolean | true | 是否显示箭头 |
 | format | string | - | 格式化显示值。例：format="yyyy年MM月dd日"<br /> 年:`yyyy`, 月:`MM`, 日:`dd`, 时:`hh`, 分:`mm`。 |
