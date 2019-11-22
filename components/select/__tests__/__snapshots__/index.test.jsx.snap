@@ -105,6 +105,7 @@ exports[`Select Cascader Select 1`] = `
         ]
       }
       displayRender={[Function]}
+      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -118,7 +119,7 @@ exports[`Select Cascader Select 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder"
+        className="za-select za-select--placeholder za-select--arrow"
         onClick={[Function]}
       >
         <div
@@ -129,47 +130,6 @@ exports[`Select Cascader Select 1`] = `
           >
             请选择
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -447,6 +407,7 @@ exports[`Select Cascader Select init value 1`] = `
       }
       displayAddon="-"
       displayRender={[Function]}
+      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -466,7 +427,7 @@ exports[`Select Cascader Select init value 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select"
+        className="za-select za-select--arrow"
         onClick={[Function]}
       >
         <div
@@ -478,47 +439,6 @@ exports[`Select Cascader Select init value 1`] = `
             选项一
             选项二
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -742,6 +662,7 @@ exports[`Select Select 1`] = `
         ]
       }
       displayRender={[Function]}
+      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -755,7 +676,7 @@ exports[`Select Select 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder"
+        className="za-select za-select--placeholder za-select--arrow"
         onClick={[Function]}
       >
         <div
@@ -766,47 +687,6 @@ exports[`Select Select 1`] = `
           >
             请选择
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -952,6 +832,7 @@ exports[`Select Select disabled 1`] = `
       }
       disabeld={true}
       displayRender={[Function]}
+      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -965,7 +846,7 @@ exports[`Select Select disabled 1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder"
+        className="za-select za-select--placeholder za-select--arrow"
         onClick={[Function]}
       >
         <div
@@ -976,47 +857,6 @@ exports[`Select Select disabled 1`] = `
           >
             请选择
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}
@@ -1416,6 +1256,7 @@ exports[`Select render defaultValue correctly  1`] = `
       }
       defaultValue="2"
       displayRender={[Function]}
+      hasArrow={true}
       itemRender={[Function]}
       locale={
         Object {
@@ -1429,7 +1270,7 @@ exports[`Select render defaultValue correctly  1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder"
+        className="za-select za-select--placeholder za-select--arrow"
         onClick={[Function]}
       >
         <div
@@ -1440,47 +1281,6 @@ exports[`Select render defaultValue correctly  1`] = `
           >
             请选择
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           cols={Infinity}

@@ -16,6 +16,7 @@ exports[`DateSelect DateSelect date 1`] = `
   >
     <DateSelect
       disabled={false}
+      hasArrow={true}
       locale={
         Object {
           "placeholder": "请选择",
@@ -32,7 +33,7 @@ exports[`DateSelect DateSelect date 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select"
+        className="za-date-select za-date-select--arrow"
         onClick={[Function]}
       >
         <input
@@ -47,47 +48,6 @@ exports[`DateSelect DateSelect date 1`] = `
           >
             2017-09-06
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           localeCode="zh-cn"
@@ -169,6 +129,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
     <DateSelect
       defaultValue="2017-11-03 15:00"
       disabled={false}
+      hasArrow={true}
       locale={
         Object {
           "placeholder": "请选择",
@@ -186,7 +147,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder"
+        className="za-date-select za-date-select--placeholder za-date-select--arrow"
         onClick={[Function]}
       >
         <input
@@ -201,47 +162,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
           >
             请选择时间
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
@@ -357,6 +277,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
       }
       disabeld={true}
       disabled={false}
+      hasArrow={true}
       locale={
         Object {
           "placeholder": "请选择",
@@ -371,7 +292,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select"
+        className="za-date-select za-date-select--arrow"
         onClick={[Function]}
       >
         <input
@@ -386,47 +307,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
           >
             2019-04-23
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           dataSource={
@@ -2387,6 +2267,7 @@ exports[`DateSelect DateSelect time 1`] = `
     <DateSelect
       defaultValue="2017-11-03 15:00"
       disabled={false}
+      hasArrow={true}
       locale={
         Object {
           "placeholder": "请选择",
@@ -2402,7 +2283,7 @@ exports[`DateSelect DateSelect time 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder"
+        className="za-date-select za-date-select--placeholder za-date-select--arrow"
         onClick={[Function]}
       >
         <input
@@ -2417,47 +2298,6 @@ exports[`DateSelect DateSelect time 1`] = `
           >
             请选择时间
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
@@ -2531,6 +2371,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
     <DateSelect
       defaultValue="2017-11-03"
       disabled={false}
+      hasArrow={true}
       locale={
         Object {
           "placeholder": "请选择",
@@ -2544,7 +2385,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select za-date-select--placeholder"
+        className="za-date-select za-date-select--placeholder za-date-select--arrow"
         onClick={[Function]}
       >
         <input
@@ -2559,47 +2400,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           >
             请选择
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03"
@@ -2673,6 +2473,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   >
     <DateSelect
       disabled={false}
+      hasArrow={true}
       locale={
         Object {
           "placeholder": "请选择",
@@ -2689,7 +2490,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
       wheelDefaultValue="2017-11-03 15:00"
     >
       <div
-        className="za-date-select za-date-select--placeholder"
+        className="za-date-select za-date-select--placeholder za-date-select--arrow"
         onClick={[Function]}
       >
         <input
@@ -2704,47 +2505,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           >
             请选择日期
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           localeCode="zh-cn"
@@ -2839,6 +2599,7 @@ exports[`DateSelect DateSelect year 1`] = `
   >
     <DateSelect
       disabled={false}
+      hasArrow={true}
       locale={
         Object {
           "placeholder": "请选择",
@@ -2855,7 +2616,7 @@ exports[`DateSelect DateSelect year 1`] = `
       valueMember="value"
     >
       <div
-        className="za-date-select"
+        className="za-date-select za-date-select--arrow"
         onClick={[Function]}
       >
         <input
@@ -2870,47 +2631,6 @@ exports[`DateSelect DateSelect year 1`] = `
           >
             2017
           </div>
-          <Icon
-            prefixCls="za-icon"
-            size="sm"
-            theme="default"
-            type="arrow-bottom"
-            viewBox="0 0 32 32"
-          >
-            <Iconfont
-              className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-              size="sm"
-              theme="default"
-              type="arrow-bottom"
-            >
-              <Icon
-                className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                prefixCls="za-icon"
-                size="sm"
-                theme="default"
-                type="arrow-bottom"
-                viewBox="0 0 32 32"
-              >
-                <i
-                  className="za-icon za-icon--arrow-bottom za-icon--default za-icon--sm"
-                  size="sm"
-                  theme="default"
-                  type="arrow-bottom"
-                >
-                  <svg
-                    fill="currentColor"
-                    height="1em"
-                    viewBox="0 0 32 32"
-                    width="1em"
-                  >
-                    <use
-                      xlinkHref="#arrow-bottom"
-                    />
-                  </svg>
-                </i>
-              </Icon>
-            </Iconfont>
-          </Icon>
         </div>
         <ForwardRef(forwardRef)
           localeCode="zh-cn"
