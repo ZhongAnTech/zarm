@@ -45,6 +45,7 @@
 
   @include e(arrow) {
     margin-left: r(5);
+    margin-right: r(2);
 
     &:after {
       display: inline-block;

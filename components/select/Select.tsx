@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import _ from 'lodash';
 import BaseSelectProps from './PropsType';
 import Picker from '../picker';
-import Icon from '../icon';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isArray, isString } from '../utils/validate';
@@ -30,6 +29,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     valueMember: 'value',
     itemRender: (data) => data && data.label,
     cols: Infinity,
+    hasArrow: true,
     maskClosable: true,
     displayRender: (selected) => selected.map((item) => item && item.label),
     onClick: () => {},
@@ -96,17 +96,17 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   };
 
   render() {
-    const { prefixCls, placeholder, className, disabled, displayRender, locale, value, ...others } = this.props;
-    const { visible, selectValue } = this.state;
+    const { prefixCls, placeholder, className, disabled, displayRender, locale, value, hasArrow, ...others } = this.props;
+    const { visible, selectValue = [] } = this.state;
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--placeholder`]: !selectValue.length,
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--arrow`]: hasArrow,
     });
     return (
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
           <div className={`${prefixCls}__value`}>{(selectValue.length && displayRender!(selectValue || [])) || placeholder || locale!.placeholder}</div>
-          <Icon type="arrow-bottom" size="sm" />
         </div>
         <Picker
           {...others}

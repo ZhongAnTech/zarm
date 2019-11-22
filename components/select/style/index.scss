@@ -6,20 +6,32 @@
   background: #fff;
 
   @include e(input) {
+    position: relative;
     width: 100%;
     padding: r(12) 0;
     line-height: r(28);
-    display: flex;
-    align-items: center;
-  }
-
-  @include e(value) {
-    flex: 1;
   }
 
   @include m(placeholder) {
     @include e(input) {
       color: var(--color-text-placeholder);
+    }
+  }
+
+  @include m(arrow) {
+    @include e(input) {
+      &:after {
+        content: '';
+        position: absolute;
+        width: var(--cell-arrow-length);
+        height: var(--cell-arrow-length);
+        top: calc(var(--collapse-padding) + 3px);
+        right: r(2);
+        border-right: r(2) solid var(--collapse-arrow-color);
+        border-bottom: r(2) solid var(--collapse-arrow-color);
+        transform: rotate(45deg);
+        transform-origin: 50% 50%;
+      }
     }
   }
 
