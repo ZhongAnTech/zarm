@@ -26,7 +26,7 @@
         width: var(--cell-arrow-length);
         height: var(--cell-arrow-length);
         top: calc(var(--collapse-padding) + 3px);
-        right: calc(var(--collapse-padding) + 2px);
+        right: r(2);
         border-right: r(2) solid var(--collapse-arrow-color);
         border-bottom: r(2) solid var(--collapse-arrow-color);
         transform: rotate(45deg);
