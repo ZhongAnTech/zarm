@@ -417,4 +417,5 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |
+| hasArrow | boolean | true | 是否显示箭头 |
 | displayRender | (selected?: object) => string | selected => selected.map(item => item.label) | 所选值的展示 |
