@@ -106,7 +106,6 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
       <div className={cls} onClick={this.handleClick}>
         <div className={`${prefixCls}__input`}>
           <div className={`${prefixCls}__value`}>{(selectValue.length && displayRender!(selectValue || [])) || placeholder || locale!.placeholder}</div>
-          <Icon type="arrow-bottom" size="sm" />
         </div>
         <Picker
           {...others}
