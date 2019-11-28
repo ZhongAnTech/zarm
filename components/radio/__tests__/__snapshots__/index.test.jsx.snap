@@ -332,7 +332,7 @@ exports[`Radio.Group type is cell 1`] = `
 >
   <Radio
     block={false}
-    checked={true}
+    checked={false}
     disabled={false}
     key="0/.0"
     onChange={[Function]}
