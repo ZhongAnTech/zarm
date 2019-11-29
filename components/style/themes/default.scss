@@ -271,7 +271,7 @@
   --search-bar-icon-size: 18px;
 
   // Slider
-  --slider-line-background: #e6e6e6;
+  --slider-line-background: var(--border-color);
   --slider-line-height: 2px;
   --slider-line-dot-width: 6px;
   --slider-vertical-line-width: 2px;
@@ -302,7 +302,7 @@
   --switch-height: 32px;
   // --switch-width-sm: 41px;
   // --switch-height-sm: 21px;
-  --switch-border-color: #e6e6e6;
+  --switch-border-color: var(--border-color);
   --switch-background: #fff;
 
   // Tabs
