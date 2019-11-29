@@ -4,12 +4,7 @@
 @include b(checkbox) {
   display: inline-block;
   position: relative;
-  margin-left: r(10);
   color: var(--color-text);
-
-  &:first-child {
-    margin-left: 0;
-  }
 
   @include e(wrapper) {
     display: flex;
@@ -88,6 +83,13 @@
 }
 
 @include b(checkbox-group) {
+  margin-right: r(-10);
+  margin-bottom: r(-10);
+
+  @include e(wrapper) {
+    overflow: hidden;
+  }
+
   @include m(block) {
     display: flex;
 
@@ -102,6 +104,8 @@
       display: inline-block;
       vertical-align: middle;
       position: relative;
+      margin-right: r(10);
+      margin-bottom: r(10);
       @include button-base();
       @include button-shape(var(--radius-xs));
       @include button-size(

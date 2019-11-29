@@ -96,6 +96,6 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
       [`${prefixCls}--disabled`]: disabled,
     });
 
-    return <div className={cls}>{items}</div>;
+    return <div className={`${prefixCls}__wrapper`}><div className={cls}>{items}</div></div>;
   }
 }

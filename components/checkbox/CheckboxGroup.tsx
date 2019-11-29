@@ -118,6 +118,6 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
       [`${prefixCls}--disabled`]: disabled,
     });
 
-    return <div className={cls}>{items}</div>;
+    return <div className={`${prefixCls}__wrapper`}><div className={cls}>{items}</div></div>;
   }
 }
