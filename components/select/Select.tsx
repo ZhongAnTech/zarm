@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
-import _ from 'lodash';
+import isEqual from 'lodash.isequal';
 import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
@@ -44,7 +44,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+    if (!isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
       return {
         prevProps: props,
         selectValue: isValueValid(props.value) && parseProps.getSource(props).objValue,
