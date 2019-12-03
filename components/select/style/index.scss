@@ -20,6 +20,8 @@
 
   @include m(arrow) {
     @include e(input) {
+      padding-right: r(20);
+
       &:after {
         content: '';
         position: absolute;
