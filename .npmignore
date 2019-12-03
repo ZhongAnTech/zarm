@@ -8,6 +8,7 @@
 .npmignore
 .stylelintrc
 .travis.yml
+.sentryclirc
 *.log
 netlify.toml
 yarn.lock
@@ -22,3 +23,4 @@ examples
 examples-rn
 site
 scripts
+zarm.config.js

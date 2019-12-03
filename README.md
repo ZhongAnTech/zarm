@@ -86,9 +86,11 @@ document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 
 变量名可参考 [default.scss](https://github.com/ZhonganTechENG/zarm/blob/dev/components/style/themes/default.scss)
 
-## Changelog 更新日志
+## Community
 
-[CHANGELOG.md](https://github.com/ZhonganTechENG/zarm/blob/master/CHANGELOG.md)
+| issue | gitter | 微信群 |
+| :--- | :--- | :--- |
+| [github issue](https://github.com/ZhonganTechENG/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://user-images.githubusercontent.com/9812721/69521400-d3708100-0f99-11ea-9669-2cea28ec66f7.png" width="60" /> |
 
 ## License
 
