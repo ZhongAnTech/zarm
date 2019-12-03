@@ -106,7 +106,7 @@ describe('Radio.Group', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(wrapper.hasClass('za-radio-group--radius')).toBe(true);
+    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--radius')).toBe(true);
   });
 
   // 椭圆角
@@ -118,7 +118,7 @@ describe('Radio.Group', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(wrapper.hasClass('za-radio-group--round')).toBe(true);
+    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--round')).toBe(true);
   });
 
   // 块级样式
@@ -130,7 +130,7 @@ describe('Radio.Group', () => {
         <Radio value="2">选项三</Radio>
       </Radio.Group>,
     );
-    expect(wrapper.hasClass('za-radio-group--block')).toBe(true);
+    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--block')).toBe(true);
   });
 
   // 列表样式
@@ -142,8 +142,7 @@ describe('Radio.Group', () => {
         <Radio value="2" disabled>选项三</Radio>
       </Radio.Group>,
     );
-    expect(toJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.props().children[0].props.type).toEqual('cell');
+    expect(wrapper.find('.za-radio-group').hasClass('za-radio-group--cell')).toBe(true);
   });
 
   it('radio group onChange event', () => {
@@ -152,11 +151,11 @@ describe('Radio.Group', () => {
       <Radio.Group shape="round" onChange={onChange}>
         <Radio value="0">选项一</Radio>
         <Radio value="1">选项二</Radio>
-        <Radio value="2">选项三</Radio>
+        <Radio value="2" disabled>选项三</Radio>
       </Radio.Group>,
     );
-    wrapper.setProps({ checked: true });
-    wrapper.childAt(0).simulate('change');
-    expect(onChange).toBeCalled();
+    const firstCheckbox = wrapper.find(Radio).first().dive().find('input[type="radio"]');
+    firstCheckbox.simulate('change', { target: { checked: true } });
+    expect(onChange).toBeCalledWith('0');
   });
 });
