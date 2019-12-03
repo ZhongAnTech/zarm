@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import isEqual from 'lodash.isequal';
+import isEqual from 'lodash/isequal';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
