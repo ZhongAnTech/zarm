@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import _ from 'lodash';
+import isEqual from 'lodash/isequal';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
@@ -25,7 +25,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+    if (!isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
       return {
         prevProps: props,
         ...parseState(props),

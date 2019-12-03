@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import isEqual from 'lodash/isequal';
 import BaseDatePickerViewProps from './PropsType';
 import PickerView from '../picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
@@ -54,7 +54,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (!_.isEqual(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']))) {
+    if (!isEqual(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']))) {
       return {
         prevProps: props,
         ...parseState(props),

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import _ from 'lodash';
+import isEqual from 'lodash/isequal';
 import Popup from '../popup';
 import PickerView from '../picker-view';
 import BasePickerProps from './PropsType';
@@ -38,7 +38,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
   state: PickerState = parseProps.getSource(this.props);
 
   static getDerivedStateFromProps(props, state) {
-    if (!_.isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
+    if (!isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
       return {
         prevProps: props,
         ...parseProps.getSource(props),
