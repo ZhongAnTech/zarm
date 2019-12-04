@@ -16,9 +16,9 @@
     background-color: transparent;
 
     .header-container {
-      max-width: r(1400);
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 30px;
+      padding: 0 24px;
     }
 
     .logo {
@@ -33,9 +33,9 @@
 
   main {
     position: relative;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 30px;
+    padding: 100px 24px;
     height: 100%;
   }
 
@@ -58,7 +58,7 @@
 
     .description {
       margin-top: 30px;
-      font-size: 18px;
+      font-size: 20px;
       line-height: 1.5;
     }
 
