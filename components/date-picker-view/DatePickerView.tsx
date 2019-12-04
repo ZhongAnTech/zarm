@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import isEqual from 'lodash/isequal';
+import isEqual from 'lodash/isEqual';
 import BaseDatePickerViewProps from './PropsType';
 import PickerView from '../picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
