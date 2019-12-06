@@ -60,6 +60,21 @@
     }
   }
 
+  /* 未全选状态 */
+  @include m(indeterminate) {
+    @include e(inner) {
+      &:before {
+        transform: scale(1);
+        width: calc(var(--checkbox-size) / 3);
+        height: calc(var(--checkbox-size) / 3);
+        margin-top: 0;
+        margin-left: 0;
+        border: none;
+        background-color: var(--theme-primary);
+      }
+    }
+  }
+
   /* 选中状态 */
   @include m(checked) {
     @include e(inner) {
@@ -200,6 +215,7 @@
 
     @include b(checkbox) {
       &__wrapper {
+        position: static;
         margin-right: 0;
         margin-bottom: 0;
       }

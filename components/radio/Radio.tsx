@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, ChangeEvent } from 'react';
 import classnames from 'classnames';
 import { BaseRadioProps } from './PropsType';
 import RadioGroup from './RadioGroup';
@@ -30,7 +30,6 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
   static defaultProps = {
     prefixCls: 'za-radio',
     disabled: false,
-    block: false,
   };
 
   state: RadioStates = {
@@ -48,7 +47,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     return null;
   }
 
-  onValueChange = () => {
+  onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { disabled, onChange } = this.props;
     const { checked } = this.state;
 
@@ -60,7 +59,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     this.setState({ checked: newChecked });
 
     if (typeof onChange === 'function') {
-      onChange(newChecked);
+      onChange(e);
     }
   };
 
@@ -101,7 +100,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} onClick={this.onValueChange}>
+        <Cell disabled={disabled} onClick={() => {}}>
           {radioRender}
         </Cell>
       );

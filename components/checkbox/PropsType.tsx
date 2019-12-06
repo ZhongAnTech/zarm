@@ -1,22 +1,24 @@
-export type CheckboxType = 'normal' | 'button' | 'cell';
+import { ChangeEvent } from 'react';
+
+export type CheckboxType = 'button' | 'cell';
 export type CheckboxShape = 'rect' | 'radius' | 'round';
 export type CheckboxValue = number | string;
 
 export interface BaseCheckboxProps {
-  shape?: CheckboxShape;
   type?: CheckboxType;
+  shape?: CheckboxShape;
   disabled?: boolean;
-  block?: boolean;
-  onChange?: (checked?: boolean) => void;
-  id?: string;
+  value?: CheckboxValue;
   checked?: boolean;
   defaultChecked?: boolean;
-  value?: CheckboxValue;
+  indeterminate?: boolean;
+  id?: string;
+  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface BaseCheckboxGroupProps {
-  shape?: CheckboxShape;
   type?: CheckboxType;
+  shape?: CheckboxShape;
   disabled?: boolean;
   block?: boolean;
   value?: Array<CheckboxValue>;

@@ -125,16 +125,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 块级样式
 ```jsx
-import { Radio } from 'zarm';
+import { Cell, Radio } from 'zarm';
 
 ReactDOM.render(
-  <div className="block-box">
+  <Cell>
     <Radio.Group block type="button" shape="radius">
       <Radio value="0">选项一</Radio>
       <Radio value="1">选项二</Radio>
       <Radio value="2">选项三</Radio>
     </Radio.Group>
-  </div>
+  </Cell>
 , mountNode);
 ```
 

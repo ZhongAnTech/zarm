@@ -1,22 +1,26 @@
+import { ChangeEvent } from 'react';
+
+export type RadioType = 'button' | 'cell';
+export type RadioShape = 'rect' | 'radius' | 'round';
+export type RadioValue = number | string;
+
 export interface BaseRadioProps {
-  shape?: 'rect' | 'radius' | 'round';
-  type?: 'button' | 'cell';
+  type?: RadioType;
+  shape?: RadioShape;
   disabled?: boolean;
-  block?: boolean;
-  onChange?: (checked?: boolean) => void;
-  id?: string;
   checked?: boolean;
   defaultChecked?: boolean;
-  value?: number | string;
+  value?: RadioValue;
+  id?: string;
+  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface BaseRadioGroupProps {
-  shape?: 'rect' | 'radius' | 'round';
-  size?: 'lg';
-  type?: 'button' | 'cell';
+  type?: RadioType;
+  shape?: RadioShape;
   disabled?: boolean;
   block?: boolean;
-  onChange?: (value?: string | number) => void;
-  value?: number | string;
-  defaultValue?: number | string;
+  value?: RadioValue;
+  defaultValue?: RadioValue;
+  onChange?: (value?: RadioValue) => void;
 }

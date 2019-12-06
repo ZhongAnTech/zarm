@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, ChangeEvent } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
 import CheckboxGroup from './CheckboxGroup';
@@ -32,7 +32,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
   static defaultProps = {
     prefixCls: 'za-checkbox',
     disabled: false,
-    block: false,
+    indeterminate: false,
   };
 
   state: CheckboxStates = {
@@ -50,7 +50,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     return null;
   }
 
-  onValueChange = () => {
+  onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { disabled, onChange } = this.props;
     const { checked } = this.state;
 
@@ -62,17 +62,18 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     this.setState({ checked: newChecked });
 
     if (typeof onChange === 'function') {
-      onChange(newChecked);
+      onChange(e);
     }
   };
 
   render() {
-    const { prefixCls, className, type, value, disabled, id, children } = this.props;
+    const { prefixCls, className, type, value, disabled, id, indeterminate, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--indeterminate`]: indeterminate,
     });
 
     const textCls = classnames(`${prefixCls}__text`, {
@@ -103,7 +104,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} onClick={this.onValueChange}>
+        <Cell disabled={disabled} onClick={() => {}}>
           {checkboxRender}
         </Cell>
       );
