@@ -1,0 +1,208 @@
+@import '../../button/style/mixins';
+
+@include b(checkbox) {
+  display: inline-block;
+  vertical-align: middle;
+
+  @include e(wrapper) {
+    position: relative;
+    display: inline-block;
+    color: var(--color-text);
+    font-size: r(14);
+    cursor: pointer;
+    // &:hover {
+    //   @include e(inner) {
+    //     border-color: var(--theme-primary);
+    //   }
+    // }
+  }
+
+  @include e(input) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  @include e(text) {
+    vertical-align: middle;
+    margin: 0 r(8);
+
+    @include m(disabled) {
+      color: var(--color-text-disabled);
+    }
+  }
+
+  @include e(inner) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    border: 1px solid var(--checkbox-border-color);
+    border-radius: var(--checkbox-radius);
+    background: var(--color-text-inverse);
+
+    &:before {
+      content: '';
+      width: calc(var(--checkbox-size) / 3.5);
+      height: calc(var(--checkbox-size) / 2);
+      border: calc(var(--checkbox-size) / 9) solid var(--color-text-inverse);
+      border-top: 0;
+      border-left: 0;
+      margin-top: calc(var(--checkbox-size) / -12);
+      margin-left: calc(var(--checkbox-size) / 18);
+      transform: rotate(45deg) scale(0);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    }
+  }
+
+  /* 选中状态 */
+  @include m(checked) {
+    @include e(inner) {
+      border-color: var(--theme-primary);
+      background-color: var(--theme-primary);
+
+      &:before {
+        transform: rotate(45deg) scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  /* 禁用状态 */
+  @include m(disabled) {
+    @include e(inner) {
+      opacity: var(--opacity-disabled);
+      cursor: not-allowed;
+    }
+
+    @include m(checked) {
+      @include e(inner) {
+        color: var(--color-text-inverse);
+        border-color: var(--border-disabled);
+        background-color: var(--checkbox-border-color);
+      }
+    }
+  }
+}
+
+@include b(checkbox-group) {
+  margin-right: r(-24);
+  margin-bottom: r(-8);
+
+  @include e(wrapper) {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @include b(checkbox) {
+    &__wrapper {
+      margin-right: r(24);
+      margin-bottom: r(8);
+    }
+  }
+
+  @include m(block) {
+    display: flex;
+
+    @include b(checkbox) {
+      &__wrapper {
+        flex: 1;
+      }
+    }
+  }
+
+  // 按钮样式
+  @include m(button) {
+    margin-right: r(-8);
+    margin-bottom: r(-8);
+
+    @include b(checkbox) {
+      display: inline-block;
+      position: relative;
+      vertical-align: middle;
+      margin-right: r(8);
+      margin-bottom: r(8);
+      @include button-base();
+      @include button-shape(var(--radius-xs));
+      @include button-size(
+        var(--button-height-xs),
+        var(--button-padding-h-xs),
+        var(--button-font-size-xs),
+        var(--button-icon-size-xs),
+      );
+      @include button-ghost(
+        var(--checkbox-border-color),
+        var(--checkbox-color),
+        var(--checkbox-border-color),
+        var(--checkbox-color),
+      );
+
+      @include e(text) {
+        margin: 0;
+      }
+
+      @include m(checked) {
+        border-color: var(--button-primary-border);
+        background-color: var(--button-primary-background);
+        color: var(--color-text-inverse);
+
+        @include m(disabled) {
+          border-color: var(--button-primary-border);
+          background-color: var(--button-primary-background);
+          color: var(--color-text-inverse);
+
+          @include e(text) {
+            color: var(--color-text-inverse);
+          }
+        }
+      }
+    }
+
+    @include m(block) {  
+      @include b(checkbox) {
+        flex: 1;
+      }
+    }
+
+    @include m(rect) {
+      @include b(checkbox) {
+        @include button-shape(0);
+      }
+    }
+
+    @include m(radius) {
+      @include b(checkbox) {
+        @include button-shape(var(--radius-md));
+      }
+    }
+
+    @include m(round) {
+      @include b(checkbox) {
+        @include button-shape(var(--radius-round));
+      }
+    }
+
+    @include m(circle) {
+      @include b(checkbox) {
+        @include button-shape(var(--radius-circle));
+      }
+    }
+  }
+
+  @include m(cell) {
+    margin-right: 0;
+    margin-bottom: 0;
+
+    @include b(checkbox) {
+      &__wrapper {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

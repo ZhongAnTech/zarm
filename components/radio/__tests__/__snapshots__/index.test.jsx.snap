@@ -2,19 +2,14 @@
 
 exports[`Radio defaultChecked 1`] = `
 <div
-  class="za-radio za-radio--checked"
+  class="za-radio__wrapper"
 >
   <div
-    class="za-radio__wrapper"
+    class="za-radio za-radio--checked"
   >
     <span
       class="za-radio__inner"
     />
-    <span
-      class="za-radio__text"
-    >
-      选项一
-    </span>
     <input
       checked=""
       class="za-radio__input"
@@ -22,30 +17,35 @@ exports[`Radio defaultChecked 1`] = `
       value="0"
     />
   </div>
+  <span
+    class="za-radio__text"
+  >
+    选项一
+  </span>
 </div>
 `;
 
 exports[`Radio renders correctly 1`] = `
 <div
-  class="za-radio"
+  class="za-radio__wrapper"
 >
   <div
-    class="za-radio__wrapper"
+    class="za-radio"
   >
     <span
       class="za-radio__inner"
     />
-    <span
-      class="za-radio__text"
-    >
-      选项一
-    </span>
     <input
       class="za-radio__input"
       type="radio"
       value="0"
     />
   </div>
+  <span
+    class="za-radio__text"
+  >
+    选项一
+  </span>
 </div>
 `;
 
@@ -84,25 +84,25 @@ exports[`Radio type is cell 1`] = `
         class="za-cell__content"
       >
         <div
-          class="za-radio"
+          class="za-radio__wrapper"
         >
           <div
-            class="za-radio__wrapper"
+            class="za-radio"
           >
             <span
               class="za-radio__inner"
             />
-            <span
-              class="za-radio__text"
-            >
-              选项一
-            </span>
             <input
               class="za-radio__input"
               type="radio"
               value="0"
             />
           </div>
+          <span
+            class="za-radio__text"
+          >
+            选项一
+          </span>
         </div>
       </div>
     </div>
@@ -121,40 +121,35 @@ exports[`Radio.Group Radio checked 1`] = `
     class="za-radio-group za-radio-group--radius"
   >
     <div
-      class="za-radio"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项一
-        </span>
         <input
           class="za-radio__input"
           type="radio"
           value="0"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项一
+      </span>
     </div>
     <div
-      class="za-radio za-radio--checked"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio za-radio--checked"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项二
-        </span>
         <input
           checked=""
           class="za-radio__input"
@@ -162,27 +157,32 @@ exports[`Radio.Group Radio checked 1`] = `
           value="1"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项二
+      </span>
     </div>
     <div
-      class="za-radio"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项三
-        </span>
         <input
           class="za-radio__input"
           type="radio"
           value="2"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项三
+      </span>
     </div>
   </div>
 </div>
@@ -196,40 +196,35 @@ exports[`Radio.Group defaultValue 1`] = `
     class="za-radio-group za-radio-group--radius"
   >
     <div
-      class="za-radio"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项一
-        </span>
         <input
           class="za-radio__input"
           type="radio"
           value="0"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项一
+      </span>
     </div>
     <div
-      class="za-radio za-radio--checked"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio za-radio--checked"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项二
-        </span>
         <input
           checked=""
           class="za-radio__input"
@@ -237,27 +232,32 @@ exports[`Radio.Group defaultValue 1`] = `
           value="1"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项二
+      </span>
     </div>
     <div
-      class="za-radio"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项三
-        </span>
         <input
           class="za-radio__input"
           type="radio"
           value="2"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项三
+      </span>
     </div>
   </div>
 </div>
@@ -271,19 +271,14 @@ exports[`Radio.Group renders correctly 1`] = `
     class="za-radio-group za-radio-group--radius"
   >
     <div
-      class="za-radio za-radio--checked"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio za-radio--checked"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项一
-        </span>
         <input
           checked=""
           class="za-radio__input"
@@ -291,48 +286,53 @@ exports[`Radio.Group renders correctly 1`] = `
           value="0"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项一
+      </span>
     </div>
     <div
-      class="za-radio"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项二
-        </span>
         <input
           class="za-radio__input"
           type="radio"
           value="1"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项二
+      </span>
     </div>
     <div
-      class="za-radio"
+      class="za-radio__wrapper"
     >
       <div
-        class="za-radio__wrapper"
+        class="za-radio"
       >
         <span
           class="za-radio__inner"
         />
-        <span
-          class="za-radio__text"
-        >
-          选项三
-        </span>
         <input
           class="za-radio__input"
           type="radio"
           value="2"
         />
       </div>
+      <span
+        class="za-radio__text"
+      >
+        选项三
+      </span>
     </div>
   </div>
 </div>

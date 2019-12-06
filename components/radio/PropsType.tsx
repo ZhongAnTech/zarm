@@ -4,6 +4,7 @@ export interface BaseRadioProps {
   disabled?: boolean;
   block?: boolean;
   onChange?: (checked?: boolean) => void;
+  id?: string;
   checked?: boolean;
   defaultChecked?: boolean;
   value?: number | string;

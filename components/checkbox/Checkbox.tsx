@@ -53,12 +53,14 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
   onValueChange = () => {
     const { disabled, onChange } = this.props;
     const { checked } = this.state;
+
     if (disabled) {
       return;
     }
 
     const newChecked = !checked;
     this.setState({ checked: newChecked });
+
     if (typeof onChange === 'function') {
       onChange(newChecked);
     }
@@ -71,6 +73,10 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,
+    });
+
+    const textCls = classnames(`${prefixCls}__text`, {
+      [`${prefixCls}__text--disabled`]: disabled,
     });
 
     const inputRender = (
@@ -86,13 +92,13 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     );
 
     const checkboxRender = (
-      <div className={cls}>
-        <div className={`${prefixCls}__wrapper`}>
+      <span className={`${prefixCls}__wrapper`}>
+        <span className={cls}>
           <span className={`${prefixCls}__inner`} />
-          {children && <span className={`${prefixCls}__text`}>{children}</span>}
           {inputRender}
-        </div>
-      </div>
+        </span>
+        {children && <span className={textCls}>{children}</span>}
+      </span>
     );
 
     if (type === 'cell') {

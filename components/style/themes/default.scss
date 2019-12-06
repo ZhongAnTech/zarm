@@ -18,7 +18,7 @@
 
   // 背景色
   --background-active: #e6e6e6;
-  --background-disabled: #bcbcbc;
+  --background-disabled: #f2f2f2;
 
   // 边框色
   --border-color: #e6e6e6;
@@ -191,7 +191,8 @@
   --checkbox-radius: var(--radius-md);
   --checkbox-border-color: #bcbcbc;
   --checkbox-color: #909090;
-
+  --checkbox-icon-width: 2px;
+  
   // Collapse
   --collapse-height: 52px;
   --collapse-padding: 16px;
@@ -265,7 +266,8 @@
   --radio-radius: var(--radius-round);
   --radio-border-color: #bcbcbc;
   --radio-color: #909090;
-
+  --radio-icon-width: 2px;
+  
   // SearchBar
   --search-bar-font-size: 14px;
   --search-bar-icon-size: 18px;

@@ -18,6 +18,23 @@ ReactDOM.render(
 
 
 
+## 组合使用
+```jsx
+import { Cell, Radio } from 'zarm';
+
+ReactDOM.render(
+  <Cell>
+    <Radio.Group>
+      <Radio value="0">选项一</Radio>
+      <Radio value="1">选项二</Radio>
+      <Radio value="2">选项三</Radio>
+    </Radio.Group>
+  </Cell>
+, mountNode);
+```
+
+
+
 ## 按钮样式
 ```jsx
 import { Radio, Cell } from 'zarm';

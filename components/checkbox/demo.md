@@ -22,6 +22,23 @@ ReactDOM.render(
 
 
 
+## 组合使用
+```jsx
+import { Cell, Checkbox } from 'zarm';
+
+ReactDOM.render(
+  <Cell>
+    <Checkbox.Group>
+      <Checkbox value="0">选项一</Checkbox>
+      <Checkbox value="1">选项二</Checkbox>
+      <Checkbox value="2">选项三</Checkbox>
+    </Checkbox.Group>
+  </Cell>
+, mountNode);
+```
+
+
+
 ## 按钮样式
 ```jsx
 import { Cell, Checkbox } from 'zarm';
@@ -113,16 +130,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 块级样式
 ```jsx
-import { Checkbox } from 'zarm';
+import { Cell, Checkbox } from 'zarm';
 
 ReactDOM.render(
-  <div className="block-box">
+  <Cell>
     <Checkbox.Group block type="button">
       <Checkbox value="0">选项一</Checkbox>
       <Checkbox value="1">选项二</Checkbox>
       <Checkbox value="2">选项三</Checkbox>
     </Checkbox.Group>
-  </div>
+  </Cell>
 , mountNode);
 ```
 
@@ -151,7 +168,7 @@ ReactDOM.render(
   <Checkbox.Group disabled type="cell">
     <Checkbox value="0">选项一</Checkbox>
     <Checkbox value="1">选项二</Checkbox>
-    <Checkbox value="2">选项三</Checkbox>
+    <Checkbox value="2" checked>选项三</Checkbox>
   </Checkbox.Group>
 , mountNode);
 ```
