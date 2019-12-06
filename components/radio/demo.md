@@ -181,7 +181,7 @@ ReactDOM.render(
 | shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | defaultChecked | boolean | - | 初始是否选中 |
 | disabled | boolean | false | 是否禁用 |
-| onChange | (checked?: boolean) => void | - | 值变化时触发的回调函数 |
+| onChange | (e: ChangeEvent<HTMLInputElement>) => void | - | 值变化时触发的回调函数 |
 
 ### Radio.Group
 | 属性 | 类型 | 默认值 | 说明 |

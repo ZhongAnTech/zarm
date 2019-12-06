@@ -12,7 +12,7 @@ export interface BaseRadioProps {
   defaultChecked?: boolean;
   value?: RadioValue;
   id?: string;
-  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface BaseRadioGroupProps {
