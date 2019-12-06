@@ -163,7 +163,7 @@
       }
     }
 
-    @include m(block) {  
+    @include m(block) {
       @include b(checkbox) {
         flex: 1;
       }

@@ -47,7 +47,7 @@
     "deploy": "npm run deploy:build -- -p && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && gh-pages -d assets",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx components site examples-rn",
-    "lint:style": "stylelint **/*.scss --syntax scss",
+    "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "test:h5": "cross-env TZ=America/New_York zarm test -s scripts/jest/setup.js",
     "test:rn": "zarm test -m native -s scripts/jest/setup.js",
