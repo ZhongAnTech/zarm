@@ -3,18 +3,19 @@
 @include b(checkbox) {
   display: inline-block;
   vertical-align: middle;
+  position: relative;
+  color: var(--color-text);
+  font-size: r(14);
 
-  @include e(wrapper) {
-    position: relative;
+  &:not(&--disabled):hover {
+    @include e(inner) {
+      border-color: var(--theme-primary);
+    }
+  }
+
+  @include e(widget) {
     display: inline-block;
-    color: var(--color-text);
-    font-size: r(14);
-    cursor: pointer;
-    // &:hover {
-    //   @include e(inner) {
-    //     border-color: var(--theme-primary);
-    //   }
-    // }
+    vertical-align: middle;
   }
 
   @include e(input) {
@@ -30,10 +31,6 @@
   @include e(text) {
     vertical-align: middle;
     margin: 0 r(8);
-
-    @include m(disabled) {
-      color: var(--color-text-disabled);
-    }
   }
 
   @include e(inner) {
@@ -60,7 +57,7 @@
     }
   }
 
-  /* 未全选状态 */
+  // 未全选状态
   @include m(indeterminate) {
     @include e(inner) {
       &:before {
@@ -75,7 +72,7 @@
     }
   }
 
-  /* 选中状态 */
+  // 选中状态
   @include m(checked) {
     @include e(inner) {
       border-color: var(--theme-primary);
@@ -88,11 +85,18 @@
     }
   }
 
-  /* 禁用状态 */
+  // 禁用状态
   @include m(disabled) {
+    @include e(input) {
+      cursor: not-allowed;
+    }
+
+    @include e(text) {
+      color: var(--color-text-disabled);
+    }
+
     @include e(inner) {
       opacity: var(--opacity-disabled);
-      cursor: not-allowed;
     }
 
     @include m(checked) {
@@ -103,43 +107,46 @@
       }
     }
   }
+
+  // 无文本状态
+  @include m(untext) {
+    line-height: 1;
+  }
 }
 
 @include b(checkbox-group) {
-  margin-right: r(-24);
-  margin-bottom: r(-8);
-
-  @include e(wrapper) {
-    width: 100%;
-    overflow: hidden;
+  @include e(inner) {
+    margin-right: r(-24);
+    margin-bottom: r(-8);
   }
 
   @include b(checkbox) {
-    &__wrapper {
-      margin-right: r(24);
-      margin-bottom: r(8);
-    }
+    margin-right: r(24);
+    margin-bottom: r(8);
   }
 
+  // 通栏样式
   @include m(block) {
-    display: flex;
+    width: 100%;
+    overflow: hidden;
+
+    @include e(inner) {
+      display: flex;
+    }
 
     @include b(checkbox) {
-      &__wrapper {
-        flex: 1;
-      }
+      flex: 1;
     }
   }
 
   // 按钮样式
   @include m(button) {
-    margin-right: r(-8);
-    margin-bottom: r(-8);
+    @include e(inner) {
+      margin-right: r(-8);
+      margin-bottom: r(-8);
+    }
 
     @include b(checkbox) {
-      display: inline-block;
-      position: relative;
-      vertical-align: middle;
       margin-right: r(8);
       margin-bottom: r(8);
       @include button-base();
@@ -210,15 +217,15 @@
   }
 
   @include m(cell) {
-    margin-right: 0;
-    margin-bottom: 0;
+    @include e(inner) {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
 
     @include b(checkbox) {
-      &__wrapper {
-        position: static;
-        margin-right: 0;
-        margin-bottom: 0;
-      }
+      position: static;
+      margin-right: 0;
+      margin-bottom: 0;
     }
   }
 }

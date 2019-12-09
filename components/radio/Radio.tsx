@@ -70,10 +70,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--checked`]: !!checked,
       [`${prefixCls}--disabled`]: !!disabled,
-    });
-
-    const textCls = classnames(`${prefixCls}__text`, {
-      [`${prefixCls}__text--disabled`]: disabled,
+      [`${prefixCls}--untext`]: !children,
     });
 
     const inputRender = (
@@ -89,13 +86,13 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     );
 
     const radioRender = (
-      <div className={`${prefixCls}__wrapper`}>
-        <div className={cls}>
+      <span className={cls}>
+        <span className={`${prefixCls}__widget`}>
           <span className={`${prefixCls}__inner`} />
-          {inputRender}
-        </div>
-        {children && <span className={textCls}>{children}</span>}
-      </div>
+        </span>
+        {children && <span className={`${prefixCls}__text`}>{children}</span>}
+        {inputRender}
+      </span>
     );
 
     if (type === 'cell') {

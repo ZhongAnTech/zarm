@@ -74,10 +74,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--indeterminate`]: indeterminate,
-    });
-
-    const textCls = classnames(`${prefixCls}__text`, {
-      [`${prefixCls}__text--disabled`]: disabled,
+      [`${prefixCls}--untext`]: !children,
     });
 
     const inputRender = (
@@ -93,12 +90,12 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     );
 
     const checkboxRender = (
-      <span className={`${prefixCls}__wrapper`}>
-        <span className={cls}>
+      <span className={cls}>
+        <span className={`${prefixCls}__widget`}>
           <span className={`${prefixCls}__inner`} />
-          {inputRender}
         </span>
-        {children && <span className={textCls}>{children}</span>}
+        {children && <span className={`${prefixCls}__text`}>{children}</span>}
+        {inputRender}
       </span>
     );
 
