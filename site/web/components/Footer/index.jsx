@@ -8,7 +8,7 @@ class Footer extends Component {
         <div className="group">
           <h2>相关资源</h2>
           <ul>
-            <li><a href="https://zhongantecheng.github.io/zarm-vue/#/documents/quick-start">Zarm Vue</a> - Zarm of Vue</li>
+            <li><a href="https://ZhongAnTech.github.io/zarm-vue/#/documents/quick-start">Zarm Vue</a> - Zarm of Vue</li>
             <li><a href="https://jeromelin.github.io/zarm-web">Zarm Web</a></li>
             <li><a href="/#/design/download">设计资源下载</a></li>
           </ul>

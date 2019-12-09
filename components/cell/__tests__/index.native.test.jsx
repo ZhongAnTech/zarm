@@ -21,7 +21,7 @@ describe('Cell', () => {
   });
 
   it('icon', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />}>我是Cell</Cell>);
+    const wrapper = render(<Cell title="标题文字" description="描述文字" icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />}>我是Cell</Cell>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -31,7 +31,7 @@ describe('Cell', () => {
   });
 
   it('help', () => {
-    const wrapper = render(<Cell title="标题文字" description="描述文字" help="我是help" icon={<img alt="" src="https://zhongantecheng.github.io/zarm/images/state.18e78939.png" />} />);
+    const wrapper = render(<Cell title="标题文字" description="描述文字" help="我是help" icon={<img alt="" src="\\static.zhongan.com/website/health/zarm/images/icons/state.png" />} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
