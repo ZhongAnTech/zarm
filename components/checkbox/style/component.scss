@@ -62,8 +62,8 @@
     @include e(inner) {
       &:before {
         transform: scale(1);
-        width: calc(var(--checkbox-size) / 3);
-        height: calc(var(--checkbox-size) / 3);
+        width: calc(var(--checkbox-size) / 2.33);
+        height: calc(var(--checkbox-size) / 2.33);
         margin-top: 0;
         margin-left: 0;
         border: none;
@@ -101,7 +101,6 @@
 
     @include m(checked) {
       @include e(inner) {
-        color: var(--color-text-inverse);
         border-color: var(--border-disabled);
         background-color: var(--checkbox-border-color);
       }
