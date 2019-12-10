@@ -8,8 +8,8 @@
 
 <div align="center">
 
-  [![Build Status](https://www.travis-ci.org/ZhonganTechENG/zarm.svg?branch=master)](https://www.travis-ci.org/ZhonganTechENG/zarm)
-  [![Coverage Status](https://img.shields.io/coveralls/ZhonganTechENG/zarm/master.svg)](https://coveralls.io/github/ZhonganTechENG/zarm?branch=master)
+  [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=master)](https://www.travis-ci.org/ZhongAnTech/zarm)
+  [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/master.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=master)
   [![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
   [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm) 
   ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
@@ -84,13 +84,13 @@ import 'zarm/lib/Button/style';
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 
-变量名可参考 [default.scss](https://github.com/ZhonganTechENG/zarm/blob/dev/components/style/themes/default.scss)
+变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/dev/components/style/themes/default.scss)
 
 ## Community
 
 | issue | gitter | 微信群 |
 | :--- | :--- | :--- |
-| [github issue](https://github.com/ZhonganTechENG/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://user-images.githubusercontent.com/9812721/69521400-d3708100-0f99-11ea-9669-2cea28ec66f7.png" width="60" /> |
+| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://user-images.githubusercontent.com/9812721/69521400-d3708100-0f99-11ea-9669-2cea28ec66f7.png" width="60" /> |
 
 ## License
 
