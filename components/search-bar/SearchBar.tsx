@@ -78,11 +78,14 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
 
   onBlur() {
     const { onBlur } = this.props;
-    const { value } = this.state;
+    const { value, focus } = this.state;
 
-    this.setState({ focus: false });
-    !value && this.blurAnim();
-    onBlur && onBlur();
+    this.setState({
+      focus: false,
+    }, () => {
+      !value && this.blurAnim();
+      focus && onBlur && onBlur();
+    });
   }
 
   onClear() {
@@ -91,7 +94,6 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
       value: '',
       isOnComposition: false,
     }, () => {
-      // this.setState({ focus: true });
       this.focus();
     });
     onClear && onClear('');
@@ -99,15 +101,13 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   }
 
   onCancel() {
-    const { showCancel, onCancel } = this.props;
-    if (!showCancel) {
-      this.setState({
-        value: '',
-        isOnComposition: false,
-      }, () => {
-        this.onBlur();
-      });
-    }
+    const { onCancel } = this.props;
+    this.setState({
+      value: '',
+      isOnComposition: false,
+    }, () => {
+      this.onBlur();
+    });
     onCancel && onCancel();
   }
 
@@ -175,15 +175,11 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   }
 
   renderCancel() {
-    const { prefixCls, cancelText, showCancel, locale } = this.props;
-    const { value, focus } = this.state;
-    const cancelCls = classnames(`${prefixCls}__cancel`, {
-      [`${prefixCls}__cancel--show`]: !!(showCancel || focus || (value && value.length > 0)),
-    });
+    const { prefixCls, cancelText, locale } = this.props;
 
     return (
       <div
-        className={cancelCls}
+        className={`${prefixCls}__cancel`}
         ref={(cancelRef) => { this.cancelRef = cancelRef; }}
         onClick={() => { this.onCancel(); }}
       >
@@ -193,12 +189,12 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
   }
 
   render() {
-    const { prefixCls, className, shape, placeholder, disabled, clearable, maxLength, locale } = this.props;
-    const { value, focus, isOnComposition } = this.state;
+    const { prefixCls, className, shape, placeholder, disabled, clearable, showCancel, maxLength, locale } = this.props;
+    const { value, focus } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${shape}`]: !!shape,
-      [`${prefixCls}--focus`]: !!(focus || (value && value.length > 0)),
+      [`${prefixCls}--focus`]: !!(showCancel || focus || (value && value.length > 0)),
     });
 
     return (
@@ -209,36 +205,26 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
           onSubmit={(e) => { this.onSubmit(e); }}
         >
           <div className={`${prefixCls}__content`}>
+            <Icon type="search" className={`${prefixCls}__icon`} />
             <div className={`${prefixCls}__mock`}>
-              <div
-                className={`${prefixCls}__mock__container`}
-              >
-                <Icon type="search" />
-                <span
-                  className={`${prefixCls}__mock__placeholder`}
-                  style={{ visibility: value || isOnComposition ? 'hidden' : 'visible' }}
-                >
-                  {placeholder || locale.placeholder}
-                </span>
-              </div>
+              <InputBase
+                className={`${prefixCls}__input`}
+                type="search"
+                placeholder={placeholder || locale.placeholder}
+                value={value}
+                maxLength={maxLength}
+                onFocus={() => { this.onFocus(); }}
+                onCompositionStart={(e) => { this.handleComposition(e); }}
+                onCompositionUpdate={(e) => { this.handleComposition(e); }}
+                onCompositionEnd={(e) => { this.handleComposition(e); }}
+                onChange={(val) => { this.onChange(val); }}
+                onBlur={() => { this.onBlur(); }}
+                onClear={() => { this.onClear(); }}
+                disabled={disabled}
+                clearable={clearable}
+                ref={(inputRef) => { this.inputRef = inputRef; }}
+              />
             </div>
-            <InputBase
-              className={`${prefixCls}__input`}
-              type="search"
-              placeholder={placeholder || locale.placeholder}
-              value={value}
-              maxLength={maxLength}
-              onFocus={() => { this.onFocus(); }}
-              onCompositionStart={(e) => { this.handleComposition(e); }}
-              onCompositionUpdate={(e) => { this.handleComposition(e); }}
-              onCompositionEnd={(e) => { this.handleComposition(e); }}
-              onChange={(val) => { this.onChange(val); }}
-              onBlur={() => { this.onBlur(); }}
-              onClear={() => { this.onClear(); }}
-              disabled={disabled}
-              clearable={clearable}
-              ref={(inputRef) => { this.inputRef = inputRef; }}
-            />
           </div>
           {this.renderCancel()}
         </form>
