@@ -121,7 +121,7 @@ exports[`Input renders onClear called correctly 1`] = `
     value=""
   >
     <div
-      className="za-input za-input--focus za-input--clearable"
+      className="za-input za-input--clearable"
     >
       <input
         autoComplete="off"
