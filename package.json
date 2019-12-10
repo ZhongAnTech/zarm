@@ -24,9 +24,9 @@
     "mobile"
   ],
   "license": "MIT",
-  "repository": "git://github.com/ZhonganTechENG/zarm",
+  "repository": "git://github.com/ZhongAnTech/zarm",
   "bugs": {
-    "url": "https://github.com/ZhonganTechENG/zarm/issues"
+    "url": "https://github.com/ZhongAnTech/zarm/issues"
   },
   "module": "es/index.js",
   "main": "lib/index.js",
