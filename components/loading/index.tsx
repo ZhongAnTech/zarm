@@ -15,7 +15,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     mask: true,
   };
 
-  static zarmLoading: null | HTMLElement;
+  static zarmLoading: HTMLElement;
 
   static _hide: () => void;
 
@@ -27,7 +27,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     }
     if (Loading.zarmLoading) {
       ReactDOM.render(
-        <Loading visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
+        <Loading visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={() => Loading.zarmLoading}>
           {children}
         </Loading>,
         Loading.zarmLoading,
@@ -83,7 +83,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     const { afterClose } = this.props;
     if (Loading.zarmLoading) {
       document.body.removeChild(Loading.zarmLoading);
-      Loading.zarmLoading = null;
+      // Loading.zarmLoading = null;
     }
 
     if (typeof afterClose === 'function') {

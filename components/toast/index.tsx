@@ -12,7 +12,7 @@ export interface ToastProps extends PropsType {
 export default class Toast extends Component<ToastProps, any> {
   static hideHelper: () => void;
 
-  private static zarmToast: null | HTMLDivElement;
+  private static zarmToast: HTMLDivElement;
 
   static show = (
     children: ReactNode,
@@ -20,15 +20,17 @@ export default class Toast extends Component<ToastProps, any> {
     mask?: boolean,
     afterClose?: () => void,
   ) => {
-    Toast.unmountNode();
+    // Toast.unmountNode();
+    // console.log(Toast.zarmToast);
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
-      document.body.appendChild(Toast.zarmToast);
+      Toast.zarmToast.id = 'toast-container';
+      // Toast.zarmToast.classList.add('toast-container');
     }
-
+    document.body.appendChild(Toast.zarmToast);
     if (Toast.zarmToast) {
       ReactDOM.render(
-        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
+        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={() => Toast.zarmToast}>
           {children}
         </Toast>,
         Toast.zarmToast,
@@ -45,7 +47,8 @@ export default class Toast extends Component<ToastProps, any> {
   static unmountNode = () => {
     const { zarmToast } = Toast;
     if (zarmToast) {
-      ReactDOM.unmountComponentAtNode(zarmToast);
+      // ReactDOM.unmountComponentAtNode(zarmToast);
+      // document.body.removeChild(Toast.zarmToast);
     }
   };
 
@@ -91,8 +94,10 @@ export default class Toast extends Component<ToastProps, any> {
   afterClose = () => {
     const { afterClose } = this.props;
     if (Toast.zarmToast) {
+      // console.log(document.getElementById('toast-container'));
+      // console.log(Toast.zarmToast);
+      ReactDOM.unmountComponentAtNode(Toast.zarmToast);
       document.body.removeChild(Toast.zarmToast);
-      Toast.zarmToast = null;
     }
 
     if (typeof afterClose === 'function') {
