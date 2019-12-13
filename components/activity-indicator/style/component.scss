@@ -24,23 +24,24 @@ $activity-indicator-spinner-count : 12;
   }
 
   @include m(circular) {
-    @include animation(rotate360, 2s linear infinite);
     display: inline-block;
+    @include animation(rotate360, 2s linear infinite);
 
     svg {
       vertical-align: top;
     }
 
     circle {
-      @include animation(rotate-circular, 1.5s ease-in-out infinite);
       stroke-linecap: round;
       stroke: var(--theme-primary);
+      @include animation(rotate-circular, 1.5s ease-in-out infinite);
     }
   }
 
   @include m(spinner) {
-    @include animation(rotate360, .8s linear infinite);
     animation-timing-function: steps($activity-indicator-spinner-count);
+    @include animation(rotate360, .8s linear infinite);
+
     @for $i from 1 through $activity-indicator-spinner-count {
       div {
         position: absolute;
