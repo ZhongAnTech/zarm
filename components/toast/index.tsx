@@ -12,7 +12,7 @@ export interface ToastProps extends PropsType {
 export default class Toast extends Component<ToastProps, any> {
   static hideHelper: () => void;
 
-  private static zarmToast: HTMLDivElement;
+  private static zarmToast: HTMLDivElement | null;
 
   static show = (
     children: ReactNode,
@@ -20,17 +20,15 @@ export default class Toast extends Component<ToastProps, any> {
     mask?: boolean,
     afterClose?: () => void,
   ) => {
-    // Toast.unmountNode();
-    // console.log(Toast.zarmToast);
+    Toast.unmountNode();
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
-      Toast.zarmToast.id = 'toast-container';
-      // Toast.zarmToast.classList.add('toast-container');
+      Toast.zarmToast.classList.add('toast-container');
     }
     document.body.appendChild(Toast.zarmToast);
     if (Toast.zarmToast) {
       ReactDOM.render(
-        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={() => Toast.zarmToast}>
+        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={Toast.zarmToast}>
           {children}
         </Toast>,
         Toast.zarmToast,
@@ -47,6 +45,7 @@ export default class Toast extends Component<ToastProps, any> {
   static unmountNode = () => {
     const { zarmToast } = Toast;
     if (zarmToast) {
+      ReactDOM.render(null, zarmToast);
       // ReactDOM.unmountComponentAtNode(zarmToast);
       // document.body.removeChild(Toast.zarmToast);
     }
@@ -74,12 +73,15 @@ export default class Toast extends Component<ToastProps, any> {
   componentDidUpdate(prevProps) {
     const { visible } = this.props;
 
+    console.log('componentDidUpdate');
+
     if (prevProps.visible !== visible) {
       if (visible === true) {
         // eslint-disable-next-line
         this.setState({
           visible: true,
         });
+        clearTimeout(this.timer);
         this.autoClose();
       } else {
         this._hide();
@@ -89,15 +91,19 @@ export default class Toast extends Component<ToastProps, any> {
 
   componentWillUnmount() {
     clearTimeout(this.timer);
+    console.log('componentWillUnmount');
   }
 
   afterClose = () => {
+    alert('afterClose');
     const { afterClose } = this.props;
     if (Toast.zarmToast) {
       // console.log(document.getElementById('toast-container'));
       // console.log(Toast.zarmToast);
-      ReactDOM.unmountComponentAtNode(Toast.zarmToast);
+      // ReactDOM.unmountComponentAtNode(Toast.zarmToast);
+      // ReactDOM.render(null, Toast.zarmToast);
       document.body.removeChild(Toast.zarmToast);
+      Toast.zarmToast = null;
     }
 
     if (typeof afterClose === 'function') {
