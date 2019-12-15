@@ -35,7 +35,7 @@ class Demo extends React.Component {
     if(!e.target.checked) {
       Modal.confirm({
         content: '是否要取消选择',
-        cancelText: '关闭',
+        cancelText: '不取消',
       }).then((res) => {
         if(res) {
           this.setState({
