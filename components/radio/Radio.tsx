@@ -29,8 +29,6 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
   static defaultProps = {
     prefixCls: 'za-radio',
-    defaultChecked: false,
-    checked: false,
     disabled: false,
     shape: 'radius',
   };

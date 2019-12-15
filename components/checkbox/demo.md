@@ -9,7 +9,7 @@ import { Cell, Checkbox } from 'zarm';
 ReactDOM.render(
   <>
     <Cell><Checkbox>普通</Checkbox></Cell>
-    <Cell><Checkbox defaultChecked>默认选中</Checkbox></Cell>
+    <Cell><Checkbox checked>默认选中</Checkbox></Cell>
     <Cell><Checkbox disabled>禁用</Checkbox></Cell>
     <Cell><Checkbox defaultChecked disabled>选中且禁用</Checkbox></Cell>
     <Cell>
@@ -22,6 +22,50 @@ ReactDOM.render(
 , mountNode);
 ```
 
+## 受控使用
+```jsx
+import { Cell, Checkbox, Modal } from 'zarm';
+
+class Demo extends React.Component {
+  state = {
+    isChecked: false,
+  }
+
+  onChange = (e) => {
+    if(!e.target.checked) {
+      Modal.confirm({
+        content: '是否要取消选择',
+        cancelText: '不取消',
+      }).then((res) => {
+        if(res) {
+          this.setState({
+            isChecked: false
+          })
+        }
+      })
+    } else {
+      this.setState({
+        isChecked: true
+      })
+    }
+  }
+
+  render() {
+    const { isChecked } = this.state;
+
+    return (
+      <>
+        <Cell>
+          <Checkbox checked={isChecked} onChange={this.onChange}>取消勾选前确认</Checkbox>
+        </Cell>
+      </>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
 
 
 ## 组合使用
@@ -30,7 +74,7 @@ import { Cell, Checkbox } from 'zarm';
 
 class Demo extends React.Component {
   state = {
-    value: [],
+    value: ['0'],
   }
 
   onCheckAll = (e) => {
