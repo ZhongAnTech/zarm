@@ -39,9 +39,6 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     checked: getChecked(this.props, false),
   };
 
-  // props有checked的情况下，通过onchange改变props的checked，从而改变内部state。
-  // props没有checked的情况下，通过内部setState改变。
-
   static getDerivedStateFromProps(nextProps: CheckboxProps, state) {
     if ('checked' in nextProps && nextProps.checked !== state.prevChecked) {
       return {

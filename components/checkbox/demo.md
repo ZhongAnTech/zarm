@@ -9,7 +9,7 @@ import { Cell, Checkbox } from 'zarm';
 ReactDOM.render(
   <>
     <Cell><Checkbox>普通</Checkbox></Cell>
-    <Cell><Checkbox checked>默认选中</Checkbox></Cell>
+    <Cell><Checkbox defaultChecked>默认选中</Checkbox></Cell>
     <Cell><Checkbox disabled>禁用</Checkbox></Cell>
     <Cell><Checkbox defaultChecked disabled>选中且禁用</Checkbox></Cell>
     <Cell>
@@ -74,7 +74,7 @@ import { Cell, Checkbox } from 'zarm';
 
 class Demo extends React.Component {
   state = {
-    value: ['0'],
+    value: [],
   }
 
   onCheckAll = (e) => {
