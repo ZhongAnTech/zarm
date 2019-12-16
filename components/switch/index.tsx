@@ -50,7 +50,10 @@ export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
     }
 
     const newChecked = !checked;
-    this.setState({ checked: newChecked });
+    if (!('checked' in this.props)) {
+      this.setState({ checked: newChecked });
+    }
+
     if (typeof onChange === 'function') {
       onChange(newChecked);
     }
