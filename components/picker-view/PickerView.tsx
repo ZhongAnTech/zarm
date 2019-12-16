@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
 import BasePickerViewProps from './PropsType';
 import Wheel from '../wheel';
 import { isCascader } from '../utils/validate';
@@ -32,19 +32,19 @@ export default class PickerView extends Component<PickerViewProps, PickerViewSta
   state: PickerViewState = parseProps.getSource(this.props);
 
   static getDerivedStateFromProps(props, state) {
-    if (!_.isEqual(removeFnFromProps(props, ['onChange', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onTransition']))) {
+    if (!isEqual(removeFnFromProps(props, ['onChange', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onTransition']))) {
       return {
         prevProps: props,
         ...parseProps.getSource(props),
       };
     }
 
-    if (!_.isEqual(state.value, state.prevValue)) {
-      return {
-        prevValue: state.value,
-        ...parseProps.getSource({ ...props, value: state.value }),
-      };
-    }
+    // if (!_.isEqual(state.value, state.prevValue)) {
+    //   return {
+    //     prevValue: state.value,
+    //     ...parseProps.getSource({ ...props, value: state.value }),
+    //   };
+    // }
     return null;
   }
 

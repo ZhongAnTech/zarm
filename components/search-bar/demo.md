@@ -8,7 +8,6 @@ import { SearchBar } from 'zarm';
 
 ReactDOM.render(
   <SearchBar
-    showCancel={false}
     onSubmit={(value) => {
       console.log(`搜索内容为${value}`);
     }}

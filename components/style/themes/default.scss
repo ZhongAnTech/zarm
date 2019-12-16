@@ -18,7 +18,7 @@
 
   // 背景色
   --background-active: #e6e6e6;
-  --background-disabled: #bcbcbc;
+  --background-disabled: #f2f2f2;
 
   // 边框色
   --border-color: #e6e6e6;
@@ -191,6 +191,7 @@
   --checkbox-radius: var(--radius-md);
   --checkbox-border-color: #bcbcbc;
   --checkbox-color: #909090;
+  --checkbox-icon-width: 2px;
 
   // Collapse
   --collapse-height: 52px;
@@ -265,13 +266,14 @@
   --radio-radius: var(--radius-round);
   --radio-border-color: #bcbcbc;
   --radio-color: #909090;
+  --radio-icon-width: 2px;
 
   // SearchBar
   --search-bar-font-size: 14px;
   --search-bar-icon-size: 18px;
 
   // Slider
-  --slider-line-background: #e6e6e6;
+  --slider-line-background: var(--border-color);
   --slider-line-height: 2px;
   --slider-line-dot-width: 6px;
   --slider-vertical-line-width: 2px;
@@ -302,7 +304,7 @@
   --switch-height: 32px;
   // --switch-width-sm: 41px;
   // --switch-height-sm: 21px;
-  --switch-border-color: #e6e6e6;
+  --switch-border-color: var(--border-color);
   --switch-background: #fff;
 
   // Tabs

@@ -39,15 +39,17 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { active } = this.state;
-    if (active !== this.isActive(nextProps)) {
-      this.setState({
-        active: !active,
-      }, () => {
-        this.animate();
-      });
+  static getDerivedStateFromProps(nextProps) {
+    if ('isActive' in nextProps) {
+      return {
+        active: nextProps.isActive,
+      };
     }
+    return null;
+  }
+
+  componentDidUpdate() {
+    this.animate();
   }
 
   getHeight = () => { return this.state.active ? this.titleHeight + this.bodyHeight : this.titleHeight; };
@@ -60,14 +62,9 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       return null;
     }
     const { active } = this.state;
-    this.setState({
-      active: !active,
-    }, () => {
-      this.animate();
-      if (onChange) {
-        onChange(active);
-      }
-    });
+    if (typeof onChange === 'function') {
+      onChange(active);
+    }
   };
 
   onLayoutTrimmedText = (event) => {

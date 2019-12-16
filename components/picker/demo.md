@@ -258,7 +258,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## Select 表单选择器
 ```jsx
-import { Select, Cell } from 'zarm';
+import { Select, Cell, Icon } from 'zarm';
 
 // 级联数据
 const CASCADE_DATA = [
@@ -299,7 +299,7 @@ class Demo extends React.Component {
   render() {
     const { value, dataSource } = this.state;
     return (
-      <Cell hasArrow title="城市">
+      <Cell title="城市">
         <Select
           value={value}
           dataSource={dataSource}
@@ -417,4 +417,5 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | placeholder | string | '请选择' | 输入提示信息 |
+| hasArrow | boolean | true | 是否显示箭头 |
 | displayRender | (selected?: object) => string | selected => selected.map(item => item.label) | 所选值的展示 |

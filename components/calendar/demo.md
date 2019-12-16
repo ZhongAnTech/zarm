@@ -36,7 +36,7 @@ class Demo extends React.Component {
     return (
       <div>
         <div>
-          <Cell hasArrow title="multiple">
+          <Cell title="multiple">
             <Select
               visible={visible}
               placeholder="multiple"

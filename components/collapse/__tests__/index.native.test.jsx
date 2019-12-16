@@ -94,10 +94,10 @@ describe('Collapse', () => {
     props.activeKey = [0, 1];
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item title="50元套餐" key={0}>
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item title="100元套餐" key={1}>
           <Text>100元套餐内容</Text>
         </Collapse.Item>
       </Collapse>,
@@ -138,7 +138,7 @@ describe('Collapse', () => {
     props.activeKey = [0];
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item title="50元套餐" key={0}>
           <Text>50元套餐内容</Text>
         </Collapse.Item>
       </Collapse>,
@@ -152,10 +152,10 @@ describe('Collapse', () => {
     props.activeKey = [0];
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item title="50元套餐">
+        <Collapse.Item title="50元套餐" key={0}>
           <Text>50元套餐内容</Text>
         </Collapse.Item>
-        <Collapse.Item title="100元套餐">
+        <Collapse.Item title="100元套餐" key={1}>
           <Text>100元套餐内容</Text>
         </Collapse.Item>
       </Collapse>,

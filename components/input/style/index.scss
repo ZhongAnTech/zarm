@@ -3,8 +3,6 @@
 @include b(input) {
   position: relative;
   width: 100%;
-  height: 100%;
-  padding: var(--input-padding-v) 0;
   color: var(--color-text);
 
   input,
@@ -13,7 +11,7 @@
     display: inline-block;
     width: 100%;
     padding: 0;
-    background-color: #fff;
+    background-color: transparent;
     background-image: none;
     border: 0;
     outline: 0;
@@ -78,10 +76,6 @@
     transform: translateY(-50%);
     right: 0;
     font-size: r(16);
-
-    @include m(show) {
-      visibility: visible;
-    }
   }
 
   @include e(length) {
@@ -110,6 +104,10 @@
   @include m(clearable) {
     @include m(focus) {
       padding-right: var(--input-clear-icon-width);
+
+      @include e(clear) {
+        visibility: visible;
+      }
     }
   }
 

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
 import BaseDatePickerViewProps from './PropsType';
 import PickerView from '../picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
+import { isExtendDate, parseState } from './utils/parseState';
 
 
 const DATETIME = 'datetime';
@@ -35,30 +36,6 @@ const getGregorianCalendar = (year, month, day, hour, minutes, seconds) => {
   return new Date(year, month, day, hour, minutes, seconds);
 };
 
-// 转成Date格式
-const isExtendDate = (date) => {
-  if (date instanceof Date) {
-    return date;
-  }
-
-  if (!date) {
-    return '';
-  }
-
-  return new Date(date.toString().replace(/-/g, '/'));
-};
-
-const parseDate = (props) => {
-  const date = props.value && isExtendDate(props.value);
-  const defaultDate = props.defaultValue && isExtendDate(props.defaultValue);
-  const wheelDefault = props.wheelDefaultValue && isExtendDate(props.wheelDefaultValue);
-
-  return {
-    date: date || defaultDate,
-    wheelDefault,
-  };
-};
-
 export interface DatePickerViewProps extends BaseDatePickerViewProps {
   prefixCls?: string;
   className?: string;
@@ -77,26 +54,19 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (!_.isEqual(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']))) {
+    if (!isEqual(removeFnFromProps(props, ['onChange', 'onInit', 'onTransition']), removeFnFromProps(state.prevProps, ['onChange', 'onInit', 'onTransition']))) {
       return {
         prevProps: props,
-        ...parseDate(props),
+        ...parseState(props),
       };
     }
 
-    if (!_.isEqual(state.date, state.prevDate)) {
-      return {
-        prevDate: state.date,
-        date: state.date,
-      };
-    }
     return null;
   }
 
   constructor(props) {
     super(props);
-    this.state = parseDate(props);
-
+    this.state = parseState(props);
     const { onInit } = this.props;
     if (typeof onInit === 'function') {
       onInit(this.getDate());

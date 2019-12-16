@@ -31,7 +31,7 @@ class Demo extends React.Component {
             </Button>
           </Popper>
         </Cell>
-        <Cell hasArrow title="显示方向">
+        <Cell title="显示方向">
           <Select
             value={direction}
             dataSource={[
@@ -55,7 +55,7 @@ class Demo extends React.Component {
             }}
           />
         </Cell>
-        <Cell hasArrow title="触发方式">
+        <Cell title="触发方式">
           <Select
             value={trigger}
             dataSource={[

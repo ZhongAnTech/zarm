@@ -3,75 +3,43 @@
 @include b(search-bar) {
   background: #fff;
 
-  @include e(input) {
-    padding: 0;
-
-    input {
-      -webkit-appearance: none;
-      position: absolute;
-      left: r(6);
-      top: r(0);
-      opacity: 0;
-      width: 100%;
-      text-align: left;
-      color: #000;
-      height: r(20);
-      font-size: var(--search-bar-font-size);
-      line-height: r(20);
-      background-color: transparent;
-      border: 0;
-
-      &::-webkit-search-cancel-button {
-        display: none;
-      }
-
-      @include placeholder {
-        color: transparent;
-      }
-    }
-  }
-
   @include e(form) {
     height: r(44);
     margin: 0 r(15);
     display: flex;
     align-items: center;
-    background: #fff;
     overflow: hidden;
   }
 
   @include e(content) {
-    position: relative;
     flex: 1;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 r(8);
     height: r(28);
-    padding: r(3);
     background: #f2f2f2;
     overflow: hidden;
+
+    @include e(icon) {
+      margin-right: r(4);
+      font-size: var(--search-bar-icon-size);
+      color: var(--color-text-placeholder);
+    }
   }
 
   @include e(mock) {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: r(22);
-    line-height: r(22);
+    flex: 1;
     font-size: var(--search-bar-font-size);
-    color: var(--color-text-placeholder);
 
-    @include e(mock__container) {
-      display: inline-block;
-      height: 100%;
-      transform: translate3d(r(10), 0, 0);
-    }
+    @include b(input) {
+      background-color: transparent;
 
-    @include b(icon) {
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-right: r(6);
-      font-size: var(--search-bar-icon-size);
-      color: var(--color-text-placeholder);
+      input {
+        &::-webkit-search-cancel-button {
+          display: none;
+        }
+      }
     }
   }
 
@@ -79,19 +47,12 @@
     font-size: var(--search-bar-font-size);
     color: var(--color-text);
     margin-left: r(15);
-
-    @include m(show) {
-      transition: all .2s;
-      margin-right: 0;
-    }
   }
 
   @include m(focus) {
-    @include e(input) {
-      input {
-        opacity: 1;
-        padding: 0 r(28) 0 r(26);
-      }
+    @include e(cancel) {
+      transition: all .2s;
+      margin-right: 0;
     }
   }
 

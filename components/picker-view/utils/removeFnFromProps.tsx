@@ -1,7 +1,7 @@
-import _ from 'lodash';
+import omit from 'lodash/omit';
 
 const removeFnFromProps = (props, fnList) => {
-  return _.omit(props, fnList);
+  return omit(props, fnList);
 };
 
 export default removeFnFromProps;

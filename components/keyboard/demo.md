@@ -14,7 +14,7 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-        <Cell hasArrow title="键盘类型">
+        <Cell title="键盘类型">
           <Select
             value={this.state.type}
             dataSource={[
@@ -108,5 +108,4 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否展示 |
-| disableBodyScroll | boolean | false | 弹层展示后是否禁止body滚动 |
 | destroy | boolean | true | 弹层关闭后是否移除节点 |

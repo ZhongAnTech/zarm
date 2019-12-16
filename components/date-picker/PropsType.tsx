@@ -7,9 +7,9 @@ export default interface BaseDatePickerProps extends BaseDatePickerViewProps {
   title?: string;
   okText?: string;
   cancelText?: string;
-  destroy: boolean;
-  onOk?: (value?: object) => void;
+  onOk?: (value: Date) => void;
   onCancel?: () => void;
+  onChange?: (value: Date) => void;
   maskClosable?: boolean;
   getContainer?: HTMLElement | getContainerFunc;
 }

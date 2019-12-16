@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, ChangeEvent } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxProps } from './PropsType';
 import CheckboxGroup from './CheckboxGroup';
@@ -32,7 +32,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
   static defaultProps = {
     prefixCls: 'za-checkbox',
     disabled: false,
-    block: false,
+    indeterminate: false,
   };
 
   state: CheckboxStates = {
@@ -50,27 +50,33 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     return null;
   }
 
-  onValueChange = () => {
+  onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { disabled, onChange } = this.props;
     const { checked } = this.state;
+
     if (disabled) {
       return;
     }
 
     const newChecked = !checked;
-    this.setState({ checked: newChecked });
+    if (this.props.checked === undefined) {
+      this.setState({ checked: newChecked });
+    }
+
     if (typeof onChange === 'function') {
-      onChange(newChecked);
+      onChange(e);
     }
   };
 
   render() {
-    const { prefixCls, className, type, value, disabled, id, children } = this.props;
+    const { prefixCls, className, type, value, disabled, id, indeterminate, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--checked`]: checked,
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--indeterminate`]: indeterminate,
+      [`${prefixCls}--untext`]: !children,
     });
 
     const inputRender = (
@@ -86,18 +92,18 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     );
 
     const checkboxRender = (
-      <div className={cls}>
-        <div className={`${prefixCls}__wrapper`}>
+      <span className={cls}>
+        <span className={`${prefixCls}__widget`}>
           <span className={`${prefixCls}__inner`} />
-          {children && <span className={`${prefixCls}__text`}>{children}</span>}
-          {inputRender}
-        </div>
-      </div>
+        </span>
+        {children && <span className={`${prefixCls}__text`}>{children}</span>}
+        {inputRender}
+      </span>
     );
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} onClick={this.onValueChange}>
+        <Cell disabled={disabled} onClick={() => {}}>
           {checkboxRender}
         </Cell>
       );

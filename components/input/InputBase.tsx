@@ -167,7 +167,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--disabled`]: disabled,
-      [`${prefixCls}--focus`]: focused,
+      [`${prefixCls}--focus`]: focused && value && value.length > 0,
       [`${prefixCls}--clearable`]: showClearIcon,
       [`${prefixCls}--readonly`]: readOnly,
     });
@@ -197,11 +197,8 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
 
     // clear icon
-    const clearCls = classnames(`${prefixCls}__clear`, {
-      [`${prefixCls}__clear--show`]: focused && value && value.length > 0,
-    });
     const renderClearIcon = showClearIcon
-      && <Icon type="wrong-round-fill" className={clearCls} onClick={() => { this.onClear(); }} />;
+      && <Icon type="wrong-round-fill" className={`${prefixCls}__clear`} onClick={() => { this.onClear(); }} />;
 
     return (
       <div className={cls}>

@@ -4,7 +4,7 @@
 
 ## 基本用法
 ```jsx
-import { Cell, LocaleProvider, Button, SearchBar, Alert, Confirm, Select } from 'zarm';
+import { Cell, LocaleProvider, Button, SearchBar, Modal, Select } from 'zarm';
 
 const locales = {
   'en_US': {
@@ -56,14 +56,22 @@ const locales = {
 class Demo extends React.Component {
   state = {
     locale: 'zh_CN',
-    alert: false,
-    confirm: false,
   };
 
-  toggle = (key) => {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
+  show = (key) => {
+    if (key === 'alert') {
+      Modal.alert({
+        title: '警告',
+        content: '这里是警告信息',
+        shape: 'radius'
+      });
+    } else {
+      Modal.confirm({
+        title: '确认信息',
+        content: '你确定要这样做吗？',
+        shape: 'radius'
+      })
+    }
   }
 
   onOk = (selected) => {
@@ -73,11 +81,10 @@ class Demo extends React.Component {
   }
 
   render() {
-    const { alert, confirm } = this.state
     return (
       <LocaleProvider locale={locales[this.state.locale]}>
         <div>
-          <Cell hasArrow title="切换语言包">
+          <Cell title="切换语言包">
             <Select
               value={this.state.locale}
               dataSource={[
@@ -92,7 +99,7 @@ class Demo extends React.Component {
 
           <Cell
             description={
-              <Button size="xs" onClick={() => this.toggle('alert')}>开启</Button>
+              <Button size="xs" onClick={() => this.show('alert')}>开启</Button>
             }
           >
             警告框 Alert
@@ -100,28 +107,11 @@ class Demo extends React.Component {
 
           <Cell
             description={
-              <Button size="xs" onClick={() => this.toggle('confirm')}>开启</Button>
+              <Button size="xs" onClick={() => this.show('confirm')}>开启</Button>
             }
           >
             确认框 Confirm
           </Cell>
-
-          <Alert
-            shape="radius"
-            visible={alert}
-            title="警告"
-            message="这里是警告信息"
-            onCancel={() => this.toggle('alert')}
-          />
-
-          <Confirm
-            shape="radius"
-            visible={confirm}
-            title="确认信息"
-            message="你确定要这样做吗？"
-            onOk={() => window.alert('click ok')}
-            onCancel={() => this.toggle('confirm')}
-          />
         </div>
       </LocaleProvider>
     )

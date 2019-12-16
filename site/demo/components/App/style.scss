@@ -11,6 +11,7 @@ body {
   line-height: 1.5;
   color: #343434;
   -webkit-font-smoothing: subpixel-antialiased;
+  font-feature-settings: 'tnum';
 }
 
 a {

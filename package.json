@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.0.0-alpha.61",
+  "version": "2.0.0-alpha.72",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -24,9 +24,9 @@
     "mobile"
   ],
   "license": "MIT",
-  "repository": "git://github.com/ZhonganTechENG/zarm",
+  "repository": "git://github.com/ZhongAnTech/zarm",
   "bugs": {
-    "url": "https://github.com/ZhonganTechENG/zarm/issues"
+    "url": "https://github.com/ZhongAnTech/zarm/issues"
   },
   "module": "es/index.js",
   "main": "lib/index.js",
@@ -36,10 +36,10 @@
     "dev": "zarm dev",
     "dev:ios": "concurrently \"zarm dev --mode native\" \"react-native run-ios --project-path examples-rn/ios\"",
     "dev:android": "concurrently \"zarm dev --mode native\" \"react-native run-android --root examples-rn\"",
-    "build:es": "rimraf es && zarm build --mode es && rimraf types && tsc --outDir es -d --emitDeclarationOnly",
-    "build:lib": "rimraf lib && zarm build --mode lib && rimraf types && tsc --outDir lib -d --emitDeclarationOnly",
-    "build:umd": "rimraf dist && zarm build --mode umd",
-    "build:rn": "rimraf components/**/*.js components/**/**/*.js && zarm build --mode native",
+    "build:es": "rimraf es && zarm build --mode es --path components --out-dir es --copy-files --build-css && tsc --outDir es -d --emitDeclarationOnly",
+    "build:lib": "rimraf lib && zarm build --mode lib --path components --out-dir lib --copy-files --build-css && tsc --outDir lib -d --emitDeclarationOnly",
+    "build:umd": "rimraf dist && zarm build --mode umd --path components/style/entry.tsx,components/index.tsx --out-dir dist && zarm build --mode umd-ugly --path components/style/entry.tsx,components/index.tsx --out-dir dist",
+    "build:rn": "rimraf components/**/*.js components/**/**/*.js && zarm build --mode native --path components",
     "build:ios": "rimraf bundle/ios/* && node scripts/native/mkdir && npm run build:rn && react-native bundle --platform ios --dev false --entry-file examples-rn/index.js --bundle-output bundle/ios/index.bundle --assets-dest bundle/ios",
     "build:android": "rimraf bundle/android/* && node scripts/native/mkdir && npm run build:rn && react-native bundle --platform android --dev false --entry-file examples-rn/index.js --bundle-output bundle/android/index.bundle --assets-dest bundle/android",
     "build": "npm run build:lib && npm run build:es && npm run build:umd",
@@ -47,7 +47,7 @@
     "deploy": "npm run deploy:build -- -p && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && gh-pages -d assets",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx components site examples-rn",
-    "lint:style": "stylelint **/*.scss --syntax scss",
+    "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "test:h5": "cross-env TZ=America/New_York zarm test -s scripts/jest/setup.js",
     "test:rn": "zarm test -m native -s scripts/jest/setup.js",
@@ -82,8 +82,9 @@
     "@types/react-native": "^0.60.7",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "@zarm-design/cli": "^0.0.11",
+    "@zarm-design/cli": "^0.0.17",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.13.0",
     "browserslist": "^4.6.6",
     "change-case": "^3.1.0",
     "color": "^3.1.0",
@@ -105,7 +106,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
     "gh-pages": "^1.0.0",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "^9.17.1",
     "history": "^4.7.2",
     "husky": "^2.3.0",
     "is-wsl": "^2.1.0",

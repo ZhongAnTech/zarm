@@ -23,7 +23,7 @@ describe('Checkbox', () => {
     const onChange = jest.fn();
     const wrapper = shallow(<Checkbox onChange={onChange}>foo</Checkbox>);
     wrapper.find('input').simulate('change', { target: { checked: true } });
-    expect(onChange).toBeCalledWith(true);
+    expect(onChange).toBeCalledWith({ target: { checked: true } });
   });
 
   it('receive new checked', () => {

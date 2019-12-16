@@ -252,7 +252,6 @@ exports[`Picker Picker render visible 1`] = `
                       ]
                     }
                     valueMember="value"
-                    visible={true}
                   >
                     <div
                       className="za-picker-view"
@@ -448,7 +447,6 @@ exports[`Picker render custom label 1`] = `
       <Popup
         destroy={false}
         onMaskClick={[Function]}
-        visible={false}
       />
     </Picker>
   </LocaleReceiver>

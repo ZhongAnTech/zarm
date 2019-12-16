@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, ChangeEvent } from 'react';
 import classnames from 'classnames';
 import { BaseRadioProps } from './PropsType';
+import RadioGroup from './RadioGroup';
 import Cell from '../cell';
 
 const getChecked = (props: RadioProps, defaultChecked: boolean) => {
@@ -24,54 +25,58 @@ export interface RadioStates {
 }
 
 export default class Radio extends PureComponent<RadioProps, RadioStates> {
-  static Group: any;
+  static Group: typeof RadioGroup;
 
   static defaultProps = {
     prefixCls: 'za-radio',
-    theme: 'primary',
     disabled: false,
-    block: false,
+    shape: 'radius',
   };
 
   state: RadioStates = {
     checked: getChecked(this.props, false),
   };
 
-  static getDerivedStateFromProps(nextProps: RadioProps) {
-    if (typeof nextProps.checked !== 'undefined') {
+  static getDerivedStateFromProps(nextProps: RadioProps, state) {
+    if ('checked' in nextProps && nextProps.checked !== state.prevChecked) {
       return {
         checked: nextProps.checked,
+        prevChecked: nextProps.checked,
       };
     }
 
     return null;
   }
 
-  onValueChange = () => {
+  onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { disabled, onChange } = this.props;
+    const { checked } = this.state;
 
     if (disabled) {
       return;
     }
 
-    const checked = true;
-    this.setState({ checked });
+    const newChecked = !checked;
+    this.setState({ checked: newChecked });
+
     if (typeof onChange === 'function') {
-      onChange(checked);
+      onChange(e);
     }
   };
 
   render() {
-    const { prefixCls, className, type, value, disabled, children } = this.props;
+    const { prefixCls, className, type, value, disabled, id, children } = this.props;
     const { checked } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--checked`]: !!checked,
       [`${prefixCls}--disabled`]: !!disabled,
+      [`${prefixCls}--untext`]: !children,
     });
 
     const inputRender = (
       <input
+        id={id}
         type="radio"
         className={`${prefixCls}__input`}
         value={value}
@@ -82,18 +87,18 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     );
 
     const radioRender = (
-      <div className={cls}>
-        <div className={`${prefixCls}__wrapper`}>
+      <span className={cls}>
+        <span className={`${prefixCls}__widget`}>
           <span className={`${prefixCls}__inner`} />
-          {children && <span className={`${prefixCls}__text`}>{children}</span>}
-          {inputRender}
-        </div>
-      </div>
+        </span>
+        {children && <span className={`${prefixCls}__text`}>{children}</span>}
+        {inputRender}
+      </span>
     );
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} onClick={this.onValueChange}>
+        <Cell disabled={disabled} onClick={() => {}}>
           {radioRender}
         </Cell>
       );
