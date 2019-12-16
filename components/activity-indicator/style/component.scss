@@ -25,10 +25,10 @@ $activity-indicator-spinner-count : 12;
 
   @include m(circular) {
     display: inline-block;
-    @include animation(rotate360, 2s linear infinite);
 
     svg {
       vertical-align: top;
+      @include animation(rotate360, 2s linear infinite);
     }
 
     circle {
@@ -39,8 +39,8 @@ $activity-indicator-spinner-count : 12;
   }
 
   @include m(spinner) {
-    animation-timing-function: steps($activity-indicator-spinner-count);
     @include animation(rotate360, .8s linear infinite);
+    animation-timing-function: steps($activity-indicator-spinner-count);
 
     @for $i from 1 through $activity-indicator-spinner-count {
       div {
