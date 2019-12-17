@@ -22,6 +22,8 @@ ReactDOM.render(
 , mountNode);
 ```
 
+
+
 ## 受控使用
 ```jsx
 import { Cell, Checkbox, Modal } from 'zarm';
@@ -32,33 +34,32 @@ class Demo extends React.Component {
   }
 
   onChange = (e) => {
-    if(!e.target.checked) {
+    if (!e.target.checked) {
       Modal.confirm({
         content: '是否要取消选择',
         cancelText: '不取消',
       }).then((res) => {
-        if(res) {
+        if (res) {
           this.setState({
-            isChecked: false
-          })
+            isChecked: false,
+          });
         }
-      })
-    } else {
-      this.setState({
-        isChecked: true
-      })
+      });
+      return;
     }
+
+    this.setState({
+      isChecked: true,
+    });
   }
 
   render() {
     const { isChecked } = this.state;
 
     return (
-      <>
-        <Cell>
-          <Checkbox checked={isChecked} onChange={this.onChange}>取消勾选前确认</Checkbox>
-        </Cell>
-      </>
+      <Cell>
+        <Checkbox checked={isChecked} onChange={this.onChange}>取消勾选前确认</Checkbox>
+      </Cell>
     );
   }
 }
