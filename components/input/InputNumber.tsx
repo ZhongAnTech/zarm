@@ -155,7 +155,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   render() {
     const { prefixCls, className, type, clearable, disabled, readOnly, placeholder } = this.props;
     const { visible, value } = this.state;
-    const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
+    const showClearIcon = clearable && ('value' in this.props) && value.length > 0 && ('onChange' in this.props);
 
     const cls = classnames(prefixCls, `${prefixCls}--number`, className, {
       [`${prefixCls}--disabled`]: disabled,
@@ -184,16 +184,14 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
     const renderText = <div className={`${prefixCls}__content`}>{value}</div>;
 
-    // clear icon
-    const clearCls = classnames(`${prefixCls}__clear`, {
-      [`${prefixCls}__clear--show`]: visible && value && value.length > 0,
-    });
-
     const renderClearIcon = showClearIcon && (
       <Icon
         type="wrong-round-fill"
-        className={clearCls}
-        onClick={(e) => { e.stopPropagation(); this.onClear(); }}
+        className={`${prefixCls}__clear`}
+        onClick={(e) => {
+          e.stopPropagation();
+          this.onClear();
+        }}
       />
     );
 
