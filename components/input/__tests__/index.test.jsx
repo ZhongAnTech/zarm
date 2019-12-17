@@ -69,10 +69,10 @@ describe('Input', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <Input
+        clearable
         value=""
         onClear={onClear}
         onChange={onChange}
-        clearable
       />,
     );
 
@@ -237,6 +237,7 @@ describe('Input.Number', () => {
     const onChange = jest.fn();
     const wrapper = mount(
       <Input
+        clearable
         type="number"
         value=""
         onClear={onClear}
@@ -246,10 +247,12 @@ describe('Input.Number', () => {
 
     const input = wrapper.find('input[type="hidden"]');
     input.simulate('change', { target: { value: 'My new value' } });
-    wrapper.find('i.za-input__clear').simulate('click');
-    expect(onClear).toHaveBeenCalled();
-    expect(input.instance().value).toEqual('');
-    expect(toJson(wrapper)).toMatchSnapshot();
+    setTimeout(() => {
+      wrapper.find('i.za-input__clear').simulate('click');
+      expect(onClear).toHaveBeenCalled();
+      expect(input.instance().value).toEqual('');
+      expect(toJson(wrapper)).toMatchSnapshot();
+    }, 3000);
   });
 
   it('enter number', () => {
