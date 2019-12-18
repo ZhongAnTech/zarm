@@ -78,7 +78,7 @@ class Demo extends React.Component {
     value: [],
   }
 
-  onCheckAll = (e) => {
+  onCheckedAll = (e) => {
     this.setState({
       value: e.target.checked ? ['0', '1', '2'] : [],
     });
@@ -97,9 +97,9 @@ class Demo extends React.Component {
           <Checkbox
             checked={value.length === 3}
             indeterminate={value.length < 3 && value.length > 0}
-            onChange={this.onCheckAll}
+            onChange={this.onCheckedAll}
           >
-            是否全选
+            全选 / 反选
           </Checkbox>
         </Cell>
         <Cell>
@@ -139,8 +139,7 @@ class Demo extends React.Component {
               type="button"
               value={this.state.value}
               onChange={(value) => {
-                this.setState({ value });
-                console.log(`checked to ${value}`)
+                this.setState({ value }, () => console.log(`checked to ${value}`));
               }}>
               <Checkbox value="0">选项一</Checkbox>
               <Checkbox value="1">选项二</Checkbox>

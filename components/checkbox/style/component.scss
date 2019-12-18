@@ -114,6 +114,8 @@
 }
 
 @include b(checkbox-group) {
+  display: inline-block;
+
   @include e(inner) {
     margin-right: r(-24);
     margin-bottom: r(-8);
@@ -127,7 +129,6 @@
   // 通栏样式
   @include m(block) {
     width: 100%;
-    overflow: hidden;
 
     @include e(inner) {
       display: flex;
@@ -216,10 +217,7 @@
   }
 
   @include m(cell) {
-    @include e(inner) {
-      margin-right: 0;
-      margin-bottom: 0;
-    }
+    display: block;
 
     @include b(checkbox) {
       position: static;
