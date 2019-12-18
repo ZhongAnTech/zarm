@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: install
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
@@ -52,7 +52,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: node_modules-${{ hashFiles('**/package-temp-dir/package-lock.json') }}
+          key: node_modules-${{ hashFiles('**/package-temp-dir/yarn.lock') }}
 
       - name: lint
         run: npm run lint
