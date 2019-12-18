@@ -14,7 +14,7 @@ const Circular = (props: ActivityIndicatorProps) => {
   const { prefixCls, className, size, percent, strokeWidth, loading, style } = props;
   const cls = classnames(className, prefixCls, {
     [`${prefixCls}--${size}`]: !!size,
-    [`${prefixCls}__circular--loading`]: loading,
+    [`${prefixCls}--circular`]: loading,
   });
 
   const half = DIAMETER / 2;
@@ -26,14 +26,9 @@ const Circular = (props: ActivityIndicatorProps) => {
   };
 
   if (loading) {
-    const circularCls = classnames({
-      [`${prefixCls}__circular`]: !size,
-      [`${prefixCls}__circular--${size}`]: !!size,
-    });
-
     return (
       <span className={cls} style={style}>
-        <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`} className={circularCls}>
+        <svg viewBox={`${DIAMETER / 2} ${DIAMETER / 2} ${DIAMETER} ${DIAMETER}`}>
           <circle cx={DIAMETER} cy={DIAMETER} r={r} fill="none" style={{ strokeWidth }} />
         </svg>
       </span>
@@ -52,7 +47,7 @@ const Circular = (props: ActivityIndicatorProps) => {
 
 const Spinner = (props: ActivityIndicatorProps) => {
   const { prefixCls, className, size, style } = props;
-  const cls = classnames(prefixCls, `${prefixCls}__spinner`, className, {
+  const cls = classnames(prefixCls, `${prefixCls}--spinner`, className, {
     [`${prefixCls}--${size}`]: !!size,
   });
   const spinner: any[] = [];

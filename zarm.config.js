@@ -28,7 +28,7 @@ module.exports = {
   banner: `
     ${name} v${version}
 
-    Github: https://github.com/ZhonganTechENG/${name}
+    Github: https://github.com/ZhongAnTech/${name}
 
     Copyright (c) 2013-present, ZhonganTech, Inc.
 

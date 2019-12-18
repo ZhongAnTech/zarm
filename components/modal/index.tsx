@@ -16,7 +16,7 @@ function modalType(props, type) {
   function _onCancel(renderFn) {
     if (!onCancel) {
       renderFn(false);
-      resolveFn(true);
+      resolveFn(false);
       return;
     }
     const cancelResult = onCancel();

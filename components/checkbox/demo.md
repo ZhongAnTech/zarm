@@ -24,6 +24,51 @@ ReactDOM.render(
 
 
 
+## 受控使用
+```jsx
+import { Cell, Checkbox, Modal } from 'zarm';
+
+class Demo extends React.Component {
+  state = {
+    isChecked: false,
+  }
+
+  onChange = (e) => {
+    if (!e.target.checked) {
+      Modal.confirm({
+        content: '是否要取消选择',
+        cancelText: '不取消',
+      }).then((res) => {
+        if (res) {
+          this.setState({
+            isChecked: false,
+          });
+        }
+      });
+      return;
+    }
+
+    this.setState({
+      isChecked: true,
+    });
+  }
+
+  render() {
+    const { isChecked } = this.state;
+
+    return (
+      <Cell>
+        <Checkbox checked={isChecked} onChange={this.onChange}>取消勾选前确认</Checkbox>
+      </Cell>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+
 ## 组合使用
 ```jsx
 import { Cell, Checkbox } from 'zarm';
@@ -33,7 +78,7 @@ class Demo extends React.Component {
     value: [],
   }
 
-  onCheckAll = (e) => {
+  onCheckedAll = (e) => {
     this.setState({
       value: e.target.checked ? ['0', '1', '2'] : [],
     });
@@ -52,9 +97,9 @@ class Demo extends React.Component {
           <Checkbox
             checked={value.length === 3}
             indeterminate={value.length < 3 && value.length > 0}
-            onChange={this.onCheckAll}
+            onChange={this.onCheckedAll}
           >
-            是否全选
+            全选 / 反选
           </Checkbox>
         </Cell>
         <Cell>
@@ -94,8 +139,7 @@ class Demo extends React.Component {
               type="button"
               value={this.state.value}
               onChange={(value) => {
-                this.setState({ value });
-                console.log(`checked to ${value}`)
+                this.setState({ value }, () => console.log(`checked to ${value}`));
               }}>
               <Checkbox value="0">选项一</Checkbox>
               <Checkbox value="1">选项二</Checkbox>

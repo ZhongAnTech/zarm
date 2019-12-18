@@ -30,6 +30,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
   static defaultProps = {
     prefixCls: 'za-radio',
     disabled: false,
+    shape: 'radius',
   };
 
   state: RadioStates = {
@@ -56,7 +57,9 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
     }
 
     const newChecked = !checked;
-    this.setState({ checked: newChecked });
+    if (!('checked' in this.props)) {
+      this.setState({ checked: newChecked });
+    }
 
     if (typeof onChange === 'function') {
       onChange(e);

@@ -15,8 +15,7 @@ yarn.lock
 node_modules
 tsconfig.json
 tslint.json
-components/**/*.js
-components/*.js
+components
 assets
 coverage
 examples

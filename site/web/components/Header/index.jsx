@@ -62,7 +62,7 @@ class Header extends PureComponent {
               <li><a href="#/components/quick-start" className={this.activeClassName(['components'])}>React 组件</a></li>
               <li><a href="https://ZhongAnTech.github.io/zarm-vue/#/documents/quick-start">Vue 组件</a></li>
               <li><a href="#/design/download" className={this.activeClassName(['design'])}>设计</a></li>
-              <li><a href="https://github.com/ZhonganTechENG/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
+              <li><a href="https://github.com/ZhongAnTech/zarm" target="_blank" rel="noopener noreferrer">Github</a></li>
             </ul>
           </nav>
         </div>

@@ -29,7 +29,7 @@ exports[`ActivityIndicator renders correctly 1`] = `
 
 exports[`ActivityIndicator renders spinner correctly 1`] = `
 <div
-  class="za-activity-indicator za-activity-indicator__spinner"
+  class="za-activity-indicator za-activity-indicator--spinner"
 >
   <div />
   <div />

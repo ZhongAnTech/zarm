@@ -111,7 +111,7 @@ module.exports = {
         key: 'modal',
         name: '模态框',
         module: () => import('@/components/modal/demo.md'),
-        style: false,
+        style: true,
       },
       {
         key: 'toast',
