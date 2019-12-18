@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@dev
+        uses: actions/checkout@master
 
       - name: cache yarn.lock
         uses: actions/cache@v1
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@dev
+        uses: actions/checkout@master
 
       - name: restore cache from yarn.lock
         uses: actions/cache@v1
