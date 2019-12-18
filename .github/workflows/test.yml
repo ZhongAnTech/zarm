@@ -15,9 +15,6 @@ jobs:
           path: package-temp-dir
           key: lock-${{ github.sha }}
 
-      - name: create yarn.lock
-        run: yarn --ignore-engines
-
       - name: hack for singe file
         run: |
           if [ ! -d "package-temp-dir" ]; then
@@ -34,7 +31,7 @@ jobs:
 
       - name: install
         if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
-        run: yarn ci
+        run: yarn
 
   lint:
     runs-on: ubuntu-latest
