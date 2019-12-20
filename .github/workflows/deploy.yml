@@ -4,6 +4,7 @@ on:
     types: [published]
     branches:
       - master
+      - dev
 
 jobs:
   build-and-deploy:
