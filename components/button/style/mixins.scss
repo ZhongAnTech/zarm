@@ -12,10 +12,7 @@
   $disabled-opacity,
   $shadow-color: rgba(var(--theme-default), 0.3)
 ) {
-  background-color: $background;
-  border-color: $border;
-  color: $color;
-
+  &,
   &:hover {
     background-color: $background;
     border-color: $border;
@@ -29,20 +26,8 @@
   }
 
   @include m(disabled) {
-    background-color: $disabled-background;
-    border-color: $disabled-border;
-    color: $disabled-color;
     opacity: $disabled-opacity;
     cursor: not-allowed;
-
-    &:active,
-    &:focus,
-    &:hover,
-    &:visited {
-      background-color: $disabled-background;
-      border-color: $disabled-border;
-      color: $disabled-color;
-    }
   }
 
   @include m(shadow) {
@@ -102,20 +87,25 @@
 
 // 幽灵按钮
 @mixin button-ghost(
+  $background,
   $border,
   $color,
+  $active-background,
   $active-border,
-  $active-color
+  $active-color,
+  $disabled-background,
+  $disabled-border,
+  $disabled-color
 ) {
   &,
   &:hover {
-    background-color: transparent;
+    background-color: $background;
     border-color: $border;
     color: $color;
   }
 
   &:active {
-    background-color: transparent;
+    background-color: $active-background;
     border-color: $active-border;
     color: $active-color;
   }
@@ -126,9 +116,9 @@
     &:hover,
     &:focus,
     &:visited {
-      background-color: transparent;
-      border-color: var(--border-disabled);
-      color: var(--color-text-disabled);
+      background-color: $disabled-background;
+      border-color: $disabled-border;
+      color: $disabled-color;
       cursor: not-allowed;
     }
   }

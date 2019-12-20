@@ -1,8 +1,10 @@
 import { ChangeEvent } from 'react';
+import { ButtonSize } from '../button/PropsType';
 
 export type RadioType = 'button' | 'cell';
 export type RadioShape = 'rect' | 'radius' | 'round';
 export type RadioValue = number | string;
+export type RadioGroupSize = ButtonSize;
 
 export interface BaseRadioProps {
   type?: RadioType;
@@ -17,9 +19,12 @@ export interface BaseRadioProps {
 
 export interface BaseRadioGroupProps {
   type?: RadioType;
+  size?: RadioGroupSize;
   shape?: RadioShape;
   disabled?: boolean;
   block?: boolean;
+  compact?: boolean;
+  ghost?: boolean;
   value?: RadioValue;
   defaultValue?: RadioValue;
   onChange?: (value?: RadioValue) => void;

@@ -46,6 +46,9 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
     shape: 'radius',
     block: false,
     disabled: false,
+    compact: false,
+    ghost: false,
+    size: 'xs',
   };
 
   state: RadioGroupStates = {
@@ -71,7 +74,7 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
   };
 
   render() {
-    const { prefixCls, className, shape, type, block, disabled, children } = this.props;
+    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children } = this.props;
     const { value } = this.state;
 
     const items = React.Children.map(children, (element: any, index) => {
@@ -91,9 +94,12 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--${shape}`]: !!shape,
       [`${prefixCls}--block`]: block,
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--compact`]: compact,
+      [`${prefixCls}--ghost`]: ghost,
     });
 
     return <div className={cls}><div className={`${prefixCls}__inner`}>{items}</div></div>;
