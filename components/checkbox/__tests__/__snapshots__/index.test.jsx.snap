@@ -74,7 +74,7 @@ exports[`Checkbox renders correctly 1`] = `
 
 exports[`Checkbox.Group render defaultValue correctly 1`] = `
 <div
-  class="za-checkbox-group za-checkbox-group--radius"
+  class="za-checkbox-group za-checkbox-group--xs za-checkbox-group--radius"
 >
   <div
     class="za-checkbox-group__inner"
@@ -149,7 +149,7 @@ exports[`Checkbox.Group render defaultValue correctly 1`] = `
 
 exports[`Checkbox.Group render value correctly 1`] = `
 <div
-  class="za-checkbox-group za-checkbox-group--radius"
+  class="za-checkbox-group za-checkbox-group--xs za-checkbox-group--radius"
 >
   <div
     class="za-checkbox-group__inner"
@@ -224,7 +224,7 @@ exports[`Checkbox.Group render value correctly 1`] = `
 
 exports[`Checkbox.Group renders correctly 1`] = `
 <div
-  class="za-checkbox-group za-checkbox-group--radius"
+  class="za-checkbox-group za-checkbox-group--xs za-checkbox-group--radius"
 >
   <div
     class="za-checkbox-group__inner"
@@ -299,7 +299,7 @@ exports[`Checkbox.Group renders correctly 1`] = `
 
 exports[`Checkbox.Group type is button 1`] = `
 <div
-  class="za-checkbox-group za-checkbox-group--button za-checkbox-group--radius"
+  class="za-checkbox-group za-checkbox-group--button za-checkbox-group--xs za-checkbox-group--radius"
 >
   <div
     class="za-checkbox-group__inner"
@@ -308,11 +308,7 @@ exports[`Checkbox.Group type is button 1`] = `
       class="za-checkbox"
       type="button"
     >
-      <span
-        class="za-checkbox__text"
-      >
-        选项一
-      </span>
+      选项一
       <input
         class="za-checkbox__input"
         type="checkbox"
@@ -323,11 +319,7 @@ exports[`Checkbox.Group type is button 1`] = `
       class="za-checkbox"
       type="button"
     >
-      <span
-        class="za-checkbox__text"
-      >
-        选项二
-      </span>
+      选项二
       <input
         class="za-checkbox__input"
         type="checkbox"
@@ -338,11 +330,7 @@ exports[`Checkbox.Group type is button 1`] = `
       class="za-checkbox"
       type="button"
     >
-      <span
-        class="za-checkbox__text"
-      >
-        选项三
-      </span>
+      选项三
       <input
         class="za-checkbox__input"
         type="checkbox"
@@ -355,7 +343,7 @@ exports[`Checkbox.Group type is button 1`] = `
 
 exports[`Checkbox.Group type is cell 1`] = `
 <div
-  class="za-checkbox-group za-checkbox-group--cell za-checkbox-group--radius"
+  class="za-checkbox-group za-checkbox-group--cell za-checkbox-group--xs za-checkbox-group--radius"
 >
   <div
     class="za-checkbox-group__inner"
