@@ -197,6 +197,18 @@ class Demo extends React.Component {
         >
           椭圆角
         </Cell>
+
+        <Cell
+          description={
+            <Checkbox.Group ghost type="button" defaultValue={['0']}>
+              <Checkbox value="0">选项一</Checkbox>
+              <Checkbox value="1">选项二</Checkbox>
+              <Checkbox value="2">选项三</Checkbox>
+            </Checkbox.Group>
+          }
+        >
+          幽灵按钮
+        </Cell>
       </div>
     )
   }
@@ -260,7 +272,6 @@ ReactDOM.render(
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | type | string | - | 显示类型，可选值 `button`, `cell` |
-| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | disabled | boolean | false | 是否禁用 |
 | value | string &#124; number | - | 值 |
 | checked | boolean | - | 当前是否选中 |
@@ -273,9 +284,11 @@ ReactDOM.render(
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | type | string | - | 显示类型，可选值 `button`, `cell` |
-| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
-| block | boolean | false | 是否为块级元素 |
-| disabled | boolean | false | 是否禁用 |
 | value | number[] \| string[] | [] | 选中值 |
 | defaultValue | number[] \| string[] | [] | 初始选中值 |
+| disabled | boolean | false | 是否禁用 |
+| block | boolean | false | 子项是否为块级元素 |
 | onChange | (values?: number[] \| string[]) => void | - | 值变化时触发的回调函数 |
+| size | string | 'xs' | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs` |
+| shape | string | 'radius' | 按钮类型时的形状，可选值 `rect`, `radius`, `round` | 
+| ghost | boolean | false | 按钮类型时，选中项样式是否为幽灵按钮 |

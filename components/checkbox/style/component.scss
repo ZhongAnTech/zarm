@@ -101,7 +101,7 @@
 
     @include m(checked) {
       @include e(inner) {
-        border-color: var(--border-disabled);
+        border-color: var(--checkbox-border-color);
         background-color: var(--checkbox-border-color);
       }
     }
@@ -115,6 +115,7 @@
 
 @include b(checkbox-group) {
   display: inline-block;
+  overflow: hidden;
 
   @include e(inner) {
     margin-right: r(-24);
@@ -151,17 +152,18 @@
       margin-bottom: r(8);
       @include button-base();
       @include button-shape(var(--radius-xs));
-      @include button-size(
-        var(--button-height-xs),
-        var(--button-padding-h-xs),
-        var(--button-font-size-xs),
-        var(--button-icon-size-xs),
-      );
-      @include button-ghost(
-        var(--checkbox-border-color),
-        var(--checkbox-color),
-        var(--checkbox-border-color),
-        var(--checkbox-color),
+      @include button-theme(
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-disabled-opacity),
+        var(--button-default-shadow-color),
       );
 
       @include e(text) {
@@ -169,19 +171,19 @@
       }
 
       @include m(checked) {
-        border-color: var(--button-primary-border);
-        background-color: var(--button-primary-background);
-        color: var(--color-text-inverse);
-
-        @include m(disabled) {
-          border-color: var(--button-primary-border);
-          background-color: var(--button-primary-background);
-          color: var(--color-text-inverse);
-
-          @include e(text) {
-            color: var(--color-text-inverse);
-          }
-        }
+        @include button-theme(
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-primary-active-background),
+          var(--button-primary-active-border),
+          var(--button-primary-active-color),
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-disabled-opacity),
+          var(--button-primary-shadow-color),
+        );
       }
     }
 
@@ -214,10 +216,105 @@
         @include button-shape(var(--radius-circle));
       }
     }
+
+    // sizes
+    @include m(lg) {
+      @include b(checkbox) {
+        @include button-size(
+          var(--button-height-lg),
+          var(--button-padding-h-lg),
+          var(--button-font-size-lg),
+          var(--button-icon-size-lg),
+        );
+      }
+    }
+
+    @include m(md) {
+      @include b(checkbox) {
+        @include button-size(
+          var(--button-height-md),
+          var(--button-padding-h-md),
+          var(--button-font-size-md),
+          var(--button-icon-size-md),
+        );
+      }
+    }
+
+    @include m(sm) {
+      @include b(checkbox) {
+        @include button-size(
+          var(--button-height-sm),
+          var(--button-padding-h-sm),
+          var(--button-font-size-sm),
+          var(--button-icon-size-sm),
+        );
+      }
+    }
+
+    @include m(xs) {
+      @include b(checkbox) {
+        @include button-size(
+          var(--button-height-xs),
+          var(--button-padding-h-xs),
+          var(--button-font-size-xs),
+          var(--button-icon-size-xs),
+        );
+      }
+    }
+  }
+
+  @include m(ghost) {
+    @include b(checkbox) {
+      @include m(checked) {
+        @include button-ghost(
+          transparent,
+          var(--theme-primary),
+          var(--theme-primary),
+          transparent,
+          var(--theme-primary),
+          var(--theme-primary),
+          transparent,
+          var(--theme-primary),
+          var(--theme-primary),
+        );
+      }
+    }
+  }
+
+  @include m(compact) {
+    @include b(checkbox) {
+      &:not(:last-child) {
+        margin-right: -1px;
+      }
+
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+      }
+
+      @include m(checked) {
+        z-index: 1;
+      }
+    }
   }
 
   @include m(cell) {
     display: block;
+    overflow: visible;
+
+    @include e(inner) {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
 
     @include b(checkbox) {
       position: static;

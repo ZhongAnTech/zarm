@@ -21,8 +21,8 @@
   --background-disabled: #f2f2f2;
 
   // 边框色
-  --border-color: #e6e6e6;
-  --border-disabled: #bcbcbc;
+  --border-color: #dcdcdc;
+  --border-disabled: #e6e6e6;
 
   // 圆角
   --radius-xs: 4px;
@@ -110,13 +110,13 @@
   --button-default-background: var(--color-text-inverse);
   --button-default-border: var(--theme-default);
   --button-default-color: var(--color-text);
-  --button-default-active-background: var(--theme-default);
-  --button-default-active-border: var(--theme-default);
+  --button-default-active-background: var(--background-active);
+  --button-default-active-border: var(--background-active);
   --button-default-active-color: var(--color-text);
   --button-default-ghost-border: var(--color-text-inverse);
   --button-default-ghost-color: var(--color-text-inverse);
-  --button-default-ghost-active-border: var(--theme-default);
-  --button-default-ghost-active-color: var(--theme-default);
+  --button-default-ghost-active-border: var(--background-active);
+  --button-default-ghost-active-color: var(--background-active);
   --button-default-shadow-color: rgba(230, 230, 230, 0.3);
   --button-primary-background: var(--theme-primary);
   --button-primary-border: var(--theme-primary);
@@ -189,8 +189,8 @@
   // Checkbox
   --checkbox-size: 18px;
   --checkbox-radius: var(--radius-md);
-  --checkbox-border-color: #bcbcbc;
-  --checkbox-color: #909090;
+  --checkbox-border-color: var(--border-color);
+  --checkbox-color: #616161;
   --checkbox-icon-width: 2px;
 
   // Collapse
@@ -264,8 +264,8 @@
   // Radio
   --radio-size: 18px;
   --radio-radius: var(--radius-round);
-  --radio-border-color: #bcbcbc;
-  --radio-color: #909090;
+  --radio-border-color: var(--border-color);
+  --radio-color: #616161;
   --radio-icon-width: 2px;
 
   // SearchBar

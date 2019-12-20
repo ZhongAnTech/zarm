@@ -111,8 +111,8 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
 
     if (type === 'button') {
       return (
-        <button type="button" className={cls}>
-          {children && <span className={`${prefixCls}__text`}>{children}</span>}
+        <button type="button" disabled={disabled} className={cls}>
+          {children}
           {inputRender}
         </button>
       );

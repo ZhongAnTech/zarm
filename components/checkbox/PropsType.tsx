@@ -1,8 +1,10 @@
 import { ChangeEvent } from 'react';
+import { ButtonSize } from '../button/PropsType';
 
 export type CheckboxType = 'button' | 'cell';
 export type CheckboxShape = 'rect' | 'radius' | 'round';
 export type CheckboxValue = number | string;
+export type CheckboxGroupSize = ButtonSize;
 
 export interface BaseCheckboxProps {
   type?: CheckboxType;
@@ -18,9 +20,12 @@ export interface BaseCheckboxProps {
 
 export interface BaseCheckboxGroupProps {
   type?: CheckboxType;
+  size?: CheckboxGroupSize;
   shape?: CheckboxShape;
   disabled?: boolean;
   block?: boolean;
+  compact?: boolean;
+  ghost?: boolean;
   value?: Array<CheckboxValue>;
   defaultValue?: Array<CheckboxValue>;
   onChange?: (value?: Array<CheckboxValue>) => void;
