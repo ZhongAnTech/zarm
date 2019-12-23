@@ -200,10 +200,10 @@ class Demo extends React.Component {
 
         <Cell
           description={
-            <Checkbox.Group ghost type="button" defaultValue={['0']}>
+            <Checkbox.Group ghost type="button" defaultValue={['2']}>
               <Checkbox value="0">选项一</Checkbox>
               <Checkbox value="1">选项二</Checkbox>
-              <Checkbox value="2">选项三</Checkbox>
+              <Checkbox value="2" disabled>选项三</Checkbox>
             </Checkbox.Group>
           }
         >
