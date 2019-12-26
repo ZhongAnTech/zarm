@@ -199,7 +199,6 @@ ReactDOM.render(
 ### Radio
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| type | string | - | 显示类型，可选值 `button`, `cell` |
 | value | string \| number | - | 值 |
 | checked | boolean | - | 当前是否选中 |
 | defaultChecked | boolean | - | 初始是否选中 |
