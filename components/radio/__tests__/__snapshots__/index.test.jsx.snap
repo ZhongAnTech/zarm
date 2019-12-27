@@ -54,11 +54,7 @@ exports[`Radio type is button 1`] = `
   class="za-radio"
   type="button"
 >
-  <span
-    class="za-radio__text"
-  >
-    选项一
-  </span>
+  选项一
   <input
     class="za-radio__input"
     type="radio"
@@ -115,7 +111,7 @@ exports[`Radio type is cell 1`] = `
 
 exports[`Radio.Group Radio checked 1`] = `
 <div
-  class="za-radio-group za-radio-group--radius"
+  class="za-radio-group za-radio-group--xs za-radio-group--radius"
 >
   <div
     class="za-radio-group__inner"
@@ -190,7 +186,7 @@ exports[`Radio.Group Radio checked 1`] = `
 
 exports[`Radio.Group defaultValue 1`] = `
 <div
-  class="za-radio-group za-radio-group--radius"
+  class="za-radio-group za-radio-group--xs za-radio-group--radius"
 >
   <div
     class="za-radio-group__inner"
@@ -265,7 +261,7 @@ exports[`Radio.Group defaultValue 1`] = `
 
 exports[`Radio.Group renders correctly 1`] = `
 <div
-  class="za-radio-group za-radio-group--radius"
+  class="za-radio-group za-radio-group--xs za-radio-group--radius"
 >
   <div
     class="za-radio-group__inner"

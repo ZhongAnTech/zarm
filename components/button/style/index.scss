@@ -29,10 +29,15 @@
 
   @include m(ghost) {
     @include button-ghost(
+      transparent,
       var(--button-default-ghost-border),
       var(--button-default-ghost-color),
+      transparent,
       var(--button-default-ghost-active-border),
       var(--button-default-ghost-active-color),
+      transparent,
+      var(--border-disabled),
+      var(--color-text-disabled),
     );
   }
 
@@ -98,10 +103,15 @@
 
     @include m(ghost) {
       @include button-ghost(
+        transparent,
         var(--button-primary-ghost-border),
         var(--button-primary-ghost-color),
+        transparent,
         var(--button-primary-ghost-active-border),
         var(--button-primary-ghost-active-color),
+        transparent,
+        var(--border-disabled),
+        var(--color-text-disabled),
       );
     }
   }
@@ -130,10 +140,15 @@
 
     @include m(ghost) {
       @include button-ghost(
+        transparent,
         var(--button-danger-ghost-border),
         var(--button-danger-ghost-color),
+        transparent,
         var(--button-danger-ghost-active-border),
         var(--button-danger-ghost-active-color),
+        transparent,
+        var(--border-disabled),
+        var(--color-text-disabled),
       );
     }
   }

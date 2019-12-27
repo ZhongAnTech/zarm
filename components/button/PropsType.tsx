@@ -1,9 +1,13 @@
 import { ReactNode } from 'react';
 
+export type ButtonTheme = 'default' | 'primary' | 'danger';
+export type ButtonSize = 'lg' | 'md' | 'sm' | 'xs';
+export type ButtonShape = 'radius' | 'rect' | 'round' | 'circle';
+
 export default interface PropsType {
-  theme?: 'default' | 'primary' | 'danger';
-  size?: 'lg' | 'md' | 'sm' | 'xs';
-  shape?: 'radius' | 'rect' | 'round' | 'circle';
+  theme?: ButtonTheme;
+  size?: ButtonSize;
+  shape?: ButtonShape;
   block?: boolean;
   ghost?: boolean;
   shadow?: boolean;

@@ -113,6 +113,30 @@ class Demo extends React.Component {
         >
           椭圆角
         </Cell>
+
+        <Cell
+          description={
+            <Radio.Group compact type="button" defaultValue="0">
+              <Radio value="0">选项一</Radio>
+              <Radio value="1">选项二</Radio>
+              <Radio value="2">选项三</Radio>
+            </Radio.Group>
+          }
+        >
+          紧凑模式
+        </Cell>
+
+        <Cell
+          description={
+            <Radio.Group compact ghost type="button" defaultValue="0">
+              <Radio value="0">选项一</Radio>
+              <Radio value="1">选项二</Radio>
+              <Radio value="2">选项三</Radio>
+            </Radio.Group>
+          }
+        >
+          幽灵按钮
+        </Cell>
       </>
     )
   }
@@ -129,7 +153,7 @@ import { Cell, Radio } from 'zarm';
 
 ReactDOM.render(
   <Cell>
-    <Radio.Group block type="button" shape="radius">
+    <Radio.Group block type="button">
       <Radio value="0">选项一</Radio>
       <Radio value="1">选项二</Radio>
       <Radio value="2">选项三</Radio>
@@ -175,10 +199,8 @@ ReactDOM.render(
 ### Radio
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| type | string | - | 显示类型，可选值 `button`, `cell` |
 | value | string \| number | - | 值 |
 | checked | boolean | - | 当前是否选中 |
-| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
 | defaultChecked | boolean | - | 初始是否选中 |
 | disabled | boolean | false | 是否禁用 |
 | onChange | (e: ChangeEvent<HTMLInputElement>) => void | - | 值变化时触发的回调函数 |
@@ -189,7 +211,10 @@ ReactDOM.render(
 | type | string | - | 显示类型，可选值 `button`, `cell` |
 | value | string \| number | - | 选中值 |
 | defaultValue | string \| number | - | 初始选中值 |
-| shape | string | 'radius' | 形状，可选值 `rect`, `radius`, `round` | 
-| block | boolean | false | 是否为块级元素 |
 | disabled | boolean | false | 是否禁用 |
+| block | boolean | false | 子项是否为块级元素 |
 | onChange | (value?: string \| number) => void | - | 值变化时触发的回调函数 |
+| size | string | 'xs' | 按钮类型时的大小，可选值为 `lg`、`md`、`sm`、`xs` |
+| shape | string | 'radius' | 按钮类型时的形状，可选值 `rect`, `radius`, `round` | 
+| ghost | boolean | false | 按钮类型时，选中项样式是否为幽灵按钮 |
+| compact | boolean | false | 按钮类型时，是否为紧凑模式 |

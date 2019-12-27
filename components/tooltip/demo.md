@@ -2,68 +2,71 @@
 
 ## 基本用法
 ```jsx
-import { Tooltip, Cell, Button, Popper } from 'zarm';
+import { Tooltip, Cell, Button, Message, Icon } from 'zarm';
 
 const Demo = () => (
-  <Cell>
-    <div>
-      <div style={{ marginLeft: 60 }}>
-        <Tooltip direction="topLeft" content="topLeft text">
-          <Button block size="xs">TL</Button>
-        </Tooltip>
+  <>
+    <Cell>
+      <div>
+        <div style={{ marginLeft: 60 }}>
+          <Tooltip direction="topLeft" content="topLeft text">
+            <Button block size="xs">TL</Button>
+          </Tooltip>
 
-        <Tooltip direction="top" content="top text">
-          <Button block size="xs">Top</Button>
-        </Tooltip>
+          <Tooltip direction="top" content="top text">
+            <Button block size="xs">Top</Button>
+          </Tooltip>
 
-        <Tooltip direction="topRight" content="topRight text">
-          <Button block size="xs">TR</Button>
-        </Tooltip>
+          <Tooltip direction="topRight" content="topRight text">
+            <Button block size="xs">TR</Button>
+          </Tooltip>
+        </div>
+
+        <div style={{ width: 60, float: 'left', clear: 'both' }}>
+          <Tooltip direction="leftTop" content="leftTop text">
+            <Button block size="xs">LT</Button>
+          </Tooltip>
+
+          <Tooltip direction="left" content="left text">
+            <Button block size="xs">Left</Button>
+          </Tooltip>
+
+          <Tooltip direction="leftBottom" content="leftBottom text">
+            <Button block size="xs">LB</Button>
+          </Tooltip>
+        </div>
+
+        <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
+          <Tooltip direction="rightTop" content="rightTop text">
+            <Button block size="xs">RT</Button>
+          </Tooltip>
+
+          <Tooltip direction="right" content="right text">
+            <Button block size="xs">Right</Button>
+          </Tooltip>
+
+          <Tooltip direction="rightBottom" content="rightBottom text">
+            <Button block size="xs">RB</Button>
+          </Tooltip>
+        </div>
+
+        <div style={{ marginLeft: 60, clear: 'both' }}>
+          <Tooltip direction="bottomLeft" content="bottomLeft text">
+            <Button block size="xs">BL</Button>
+          </Tooltip>
+
+          <Tooltip direction="bottom" content="bottom text">
+            <Button block size="xs">Bottom</Button>
+          </Tooltip>
+
+          <Tooltip direction="bottomRight" content="bottomRight text">
+            <Button block size="xs">BR</Button>
+          </Tooltip>
+        </div>
+        <Message theme="warning" icon={<Icon type="warning-round" />}>左右两侧显示位置不足会自动调整为反向显示</Message>
       </div>
-
-      <div style={{ width: 60, float: "left",  clear: 'both' }}>
-        <Tooltip direction="leftTop" content="leftTop text">
-          <Button block size="xs">LT</Button>
-        </Tooltip>
-
-        <Tooltip direction="left" content="left text">
-          <Button block size="xs">Left</Button>
-        </Tooltip>
-
-        <Tooltip direction="leftBottom" content="leftBottom text">
-          <Button block size="xs">LB</Button>
-        </Tooltip>
-      </div>
-
-      <div style={{ width: 60, marginLeft: 60 * 4 }}>
-        <Tooltip direction="rightTop" content="rightTop text">
-          <Button block size="xs">RT</Button>
-        </Tooltip>
-
-        <Tooltip direction="right" content="right text">
-          <Button block size="xs">Right</Button>
-        </Tooltip>
-
-        <Tooltip direction="rightBottom" content="rightBottom text">
-          <Button block size="xs">RB</Button>
-        </Tooltip>
-      </div>
-
-      <div style={{ marginLeft: 60, clear: 'both' }}>
-        <Tooltip direction="bottomLeft" content="bottomLeft text">
-          <Button block size="xs">BL</Button>
-        </Tooltip>
-
-        <Tooltip direction="bottom" content="bottom text">
-          <Button block size="xs">Bottom</Button>
-        </Tooltip>
-
-        <Tooltip direction="bottomRight" content="bottomRight text">
-          <Button block size="xs">BR</Button>
-        </Tooltip>
-      </div>
-    </div>
-  </Cell>
+    </Cell>
+  </>
 );
 
 ReactDOM.render(<Demo />, mountNode);

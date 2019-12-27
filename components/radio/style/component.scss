@@ -58,19 +58,19 @@
   }
 
   // 未全选状态
-  // @include m(indeterminate) {
-  //   @include e(inner) {
-  //     &:before {
-  //       transform: scale(1);
-  //       width: calc(var(--radio-size) / 3);
-  //       height: calc(var(--radio-size) / 3);
-  //       margin-top: 0;
-  //       margin-left: 0;
-  //       border: none;
-  //       background-color: var(--theme-primary);
-  //     }
-  //   }
-  // }
+  @include m(indeterminate) {
+    @include e(inner) {
+      &:before {
+        transform: scale(1);
+        width: calc(var(--radio-size) / 2.33);
+        height: calc(var(--radio-size) / 2.33);
+        margin-top: 0;
+        margin-left: 0;
+        border: none;
+        background-color: var(--theme-primary);
+      }
+    }
+  }
 
   // 选中状态
   @include m(checked) {
@@ -101,8 +101,7 @@
 
     @include m(checked) {
       @include e(inner) {
-        color: var(--color-text-inverse);
-        border-color: var(--border-disabled);
+        border-color: var(--radio-border-color);
         background-color: var(--radio-border-color);
       }
     }
@@ -115,6 +114,9 @@
 }
 
 @include b(radio-group) {
+  display: inline-block;
+  overflow: hidden;
+
   @include e(inner) {
     margin-right: r(-24);
     margin-bottom: r(-8);
@@ -128,7 +130,6 @@
   // 通栏样式
   @include m(block) {
     width: 100%;
-    overflow: hidden;
 
     @include e(inner) {
       display: flex;
@@ -151,17 +152,18 @@
       margin-bottom: r(8);
       @include button-base();
       @include button-shape(var(--radius-xs));
-      @include button-size(
-        var(--button-height-xs),
-        var(--button-padding-h-xs),
-        var(--button-font-size-xs),
-        var(--button-icon-size-xs),
-      );
-      @include button-ghost(
-        var(--radio-border-color),
-        var(--radio-color),
-        var(--radio-border-color),
-        var(--radio-color),
+      @include button-theme(
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-disabled-opacity),
+        var(--button-default-shadow-color),
       );
 
       @include e(text) {
@@ -169,19 +171,19 @@
       }
 
       @include m(checked) {
-        border-color: var(--button-primary-border);
-        background-color: var(--button-primary-background);
-        color: var(--color-text-inverse);
-
-        @include m(disabled) {
-          border-color: var(--button-primary-border);
-          background-color: var(--button-primary-background);
-          color: var(--color-text-inverse);
-
-          @include e(text) {
-            color: var(--color-text-inverse);
-          }
-        }
+        @include button-theme(
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-primary-active-background),
+          var(--button-primary-active-border),
+          var(--button-primary-active-color),
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-disabled-opacity),
+          var(--button-primary-shadow-color),
+        );
       }
     }
 
@@ -214,9 +216,101 @@
         @include button-shape(var(--radius-circle));
       }
     }
+
+    // sizes
+    @include m(lg) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-lg),
+          var(--button-padding-h-lg),
+          var(--button-font-size-lg),
+          var(--button-icon-size-lg),
+        );
+      }
+    }
+
+    @include m(md) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-md),
+          var(--button-padding-h-md),
+          var(--button-font-size-md),
+          var(--button-icon-size-md),
+        );
+      }
+    }
+
+    @include m(sm) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-sm),
+          var(--button-padding-h-sm),
+          var(--button-font-size-sm),
+          var(--button-icon-size-sm),
+        );
+      }
+    }
+
+    @include m(xs) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-xs),
+          var(--button-padding-h-xs),
+          var(--button-font-size-xs),
+          var(--button-icon-size-xs),
+        );
+      }
+    }
+
+    @include m(ghost) {
+      @include b(radio) {
+        @include m(checked) {
+          @include button-ghost(
+            transparent,
+            var(--theme-primary),
+            var(--theme-primary),
+            transparent,
+            var(--theme-primary),
+            var(--theme-primary),
+            transparent,
+            var(--theme-primary),
+            var(--theme-primary),
+          );
+        }
+      }
+    }
+
+    @include m(compact) {
+      @include b(radio) {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+
+        &:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        &:not(:first-child):not(:last-child) {
+          border-radius: 0;
+        }
+
+        @include m(checked) {
+          z-index: 1;
+        }
+      }
+    }
   }
 
   @include m(cell) {
+    display: block;
+    overflow: visible;
+
     @include e(inner) {
       margin-right: 0;
       margin-bottom: 0;

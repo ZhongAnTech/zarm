@@ -46,6 +46,9 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
     shape: 'radius',
     block: false,
     disabled: false,
+    compact: false,
+    ghost: false,
+    size: 'xs',
   };
 
   constructor(props: CheckboxGroup['props']) {
@@ -89,7 +92,7 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
   };
 
   render() {
-    const { prefixCls, className, shape, type, block, disabled, children } = this.props;
+    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children } = this.props;
     const { value } = this.state;
 
     const items = React.Children.map(children, (element: ReactNode, index) => {
@@ -113,9 +116,12 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${type}`]: !!type,
+      [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--${shape}`]: !!shape,
       [`${prefixCls}--block`]: block,
       [`${prefixCls}--disabled`]: disabled,
+      [`${prefixCls}--compact`]: compact,
+      [`${prefixCls}--ghost`]: ghost,
     });
 
     return <div className={cls}><div className={`${prefixCls}__inner`}>{items}</div></div>;
