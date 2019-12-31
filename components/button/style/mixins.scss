@@ -29,10 +29,9 @@
     opacity: $disabled-opacity;
     cursor: not-allowed;
 
-    &:active,	
-    &:focus,	
-    &:hover,	
-    &:visited {	
+    &:active,
+    &:focus,
+    &:visited {
       background-color: $background;
       border-color: $border;
       color: $color;
