@@ -57,13 +57,13 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       this.content.style.height = `${this.content.offsetHeight}px`;
 
       setTimeout(() => {
-        this.content.style.height = '0px';
+        this.content && (this.content.style.height = '0px');
       }, 0);
     } else {
       this.content.style.height = '0px';
 
       setTimeout(() => {
-        this.content.style.height = `${this.getContentHeight(this.content)}px`;
+        this.content && (this.content.style.height = `${this.getContentHeight(this.content)}px`);
       }, 0);
     }
   };
