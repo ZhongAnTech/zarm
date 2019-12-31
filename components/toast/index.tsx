@@ -26,14 +26,16 @@ export default class Toast extends Component<ToastProps, any> {
       Toast.zarmToast.classList.add('toast-container');
     }
     document.body.appendChild(Toast.zarmToast);
-    if (Toast.zarmToast) {
-      ReactDOM.render(
-        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={Toast.zarmToast}>
-          {children}
-        </Toast>,
-        Toast.zarmToast,
-      );
-    }
+    setTimeout(() => {
+      if (Toast.zarmToast) {
+        ReactDOM.render(
+          <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={Toast.zarmToast}>
+            {children}
+          </Toast>,
+          Toast.zarmToast,
+        );
+      }
+    }, 0);
   };
 
   static hide = () => {
@@ -45,9 +47,7 @@ export default class Toast extends Component<ToastProps, any> {
   static unmountNode = () => {
     const { zarmToast } = Toast;
     if (zarmToast) {
-      ReactDOM.render(null, zarmToast);
-      // ReactDOM.unmountComponentAtNode(zarmToast);
-      // document.body.removeChild(Toast.zarmToast);
+      ReactDOM.render(<></>, Toast.zarmToast);
     }
   };
 
