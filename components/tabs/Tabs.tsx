@@ -6,7 +6,7 @@ import Carousel from '../carousel';
 
 const getSelectIndex = (children) => {
   let selectIndex;
-  React.Children.forEach(children, (item: any, index) => {
+  React.Children.forEach(children, (item: TabPanel, index) => {
     if (item.props && item.props.selected) {
       selectIndex = index;
     }
@@ -20,7 +20,7 @@ export interface TabsProps extends PropsType {
 }
 
 export default class Tabs extends PureComponent<TabsProps, any> {
-  static Panel: any;
+  static Panel: typeof TabPanel;
 
   private carousel;
 
@@ -73,8 +73,8 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
   renderTabs = (tab, index) => {
     const { prefixCls, disabled } = this.props;
-    const itemCls = classnames(`${prefixCls}__header__item`, tab.props.className, {
-      [`${prefixCls}__header__item--disabled`]: disabled || tab.props.disabled,
+    const itemCls = classnames(`${prefixCls}__tab`, tab.props.className, {
+      [`${prefixCls}__tab--disabled`]: disabled || tab.props.disabled,
     });
 
     return (
@@ -112,19 +112,19 @@ export default class Tabs extends PureComponent<TabsProps, any> {
           ref={(ele) => { this.carousel = ele; }}
           onChange={(v) => this.onSwipeChange(v)}
         >
-          {React.Children.map(children, (item: any) => <div>{item.props.children}</div>)}
+          {React.Children.map(children, (item: TabPanel) => <div>{item.props.children}</div>)}
         </Carousel>
       );
     } else {
-      contentRender = React.Children.map(children, (item: any, index) => {
-        return <TabPanel {...item.props} selected={value === index} />;
+      contentRender = React.Children.map(children, (item: TabPanel, index) => {
+        return item.props.children && <TabPanel {...item.props} selected={value === index} />;
       });
     }
 
     const lineStyle: CSSProperties = {
-      width: `${100 / children.length}%`,
-      left: `${(value / children.length) * 100}%`,
-      // right: `${(children.length - this.state.value - 1) / children.length * 100}%`,
+      width: `${100 / React.Children.count(children)}%`,
+      left: `${(value / React.Children.count(children)) * 100}%`,
+      // right: `${(React.Children.count(children) - this.state.value - 1) / React.Children.count(children) * 100}%`,
       // transition: `right 0.3s cubic-bezier(0.35, 0, 0.25, 1), left 0.3s cubic-bezier(0.35, 0, 0.25, 1) 0.09s`,
     };
 
@@ -140,7 +140,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
           <ul role="tablist">{tabsRender}</ul>
           <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
         </div>
-        <div className={`${prefixCls}__container`}>
+        <div className={`${prefixCls}__body`}>
           {contentRender}
         </div>
       </div>

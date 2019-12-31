@@ -4,5 +4,4 @@ export default interface PropsType {
   hasline?: boolean;
   canSwipe?: boolean;
   onChange?: (index: number) => void;
-  children?: any;
 }

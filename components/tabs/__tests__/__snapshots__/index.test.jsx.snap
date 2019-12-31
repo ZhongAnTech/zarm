@@ -11,13 +11,13 @@ exports[`Tab canSwipe 1`] = `
       role="tablist"
     >
       <li
-        class="za-tabs__header__item"
+        class="za-tabs__tab"
         role="tab"
       >
         选项卡1
       </li>
       <li
-        class="za-tabs__header__item"
+        class="za-tabs__tab"
         role="tab"
       >
         选项卡2
@@ -29,7 +29,7 @@ exports[`Tab canSwipe 1`] = `
     />
   </div>
   <div
-    class="za-tabs__container"
+    class="za-tabs__body"
   >
     <div
       class="za-carousel za-carousel--horizontal"
@@ -68,7 +68,7 @@ exports[`Tab lineWidth is auto 1`] = `
       role="tablist"
     >
       <li
-        className="za-tabs__header__item"
+        className="za-tabs__tab"
         key="0/.0"
         onClick={[Function]}
         role="tab"
@@ -76,7 +76,7 @@ exports[`Tab lineWidth is auto 1`] = `
         选项卡1
       </li>
       <li
-        className="za-tabs__header__item"
+        className="za-tabs__tab"
         key="1/.1"
         onClick={[Function]}
         role="tab"
@@ -105,7 +105,7 @@ exports[`Tab lineWidth is auto 1`] = `
     </div>
   </div>
   <div
-    className="za-tabs__container"
+    className="za-tabs__body"
   >
     <TabPanel
       key=".0"
@@ -142,7 +142,7 @@ exports[`Tab lineWidth is auto 2`] = `
       role="tablist"
     >
       <li
-        className="za-tabs__header__item"
+        className="za-tabs__tab"
         key="0/.0"
         onClick={[Function]}
         role="tab"
@@ -150,7 +150,7 @@ exports[`Tab lineWidth is auto 2`] = `
         选项卡1
       </li>
       <li
-        className="za-tabs__header__item"
+        className="za-tabs__tab"
         key="1/.1"
         onClick={[Function]}
         role="tab"
@@ -179,7 +179,7 @@ exports[`Tab lineWidth is auto 2`] = `
     </div>
   </div>
   <div
-    className="za-tabs__container"
+    className="za-tabs__body"
   >
     <TabPanel
       key=".0"
@@ -216,13 +216,13 @@ exports[`Tab renders correctly 1`] = `
       role="tablist"
     >
       <li
-        class="za-tabs__header__item"
+        class="za-tabs__tab"
         role="tab"
       >
         选项卡1
       </li>
       <li
-        class="za-tabs__header__item"
+        class="za-tabs__tab"
         role="tab"
       >
         选项卡2
@@ -234,10 +234,10 @@ exports[`Tab renders correctly 1`] = `
     />
   </div>
   <div
-    class="za-tabs__container"
+    class="za-tabs__body"
   >
     <div
-      class="za-tabs__panel__item za-tabs__panel__item--active"
+      class="za-tabs__panel za-tabs__panel--active"
       role="tabpanel"
     >
       <div>
@@ -245,7 +245,7 @@ exports[`Tab renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="za-tabs__panel__item"
+      class="za-tabs__panel"
       role="tabpanel"
     >
       <div>
