@@ -93,14 +93,10 @@ export default class Progress extends PureComponent<ProgressProps, any> {
     return weight || (Progress.sizeToWeight[size || 'md'] as ProgressWeight);
   }
 
-  // 线条宽度系数
+  // 线条宽度系数 (weight 不同 width)
   get strokeWeight() {
     return Progress.weights[this.preferWeight];
   }
-
-  getBaseStrokeWidth = (weight) => {
-    return Progress.weights[weight as ProgressWeight];
-  };
 
   resetStrokeWidth() {
     const baseWidth = 32;
@@ -167,8 +163,7 @@ export default class Progress extends PureComponent<ProgressProps, any> {
         </svg>
       );
 
-    const lineStrokeWidth = this.getBaseStrokeWidth(weight);
-    const borderRadius = shape === 'round' ? `${lineStrokeWidth}px` : '0';
+    const borderRadius = shape === 'round' ? `${this.strokeWeight}px` : '0';
     const lineThumbStyle = { width: `${percent}%`, borderRadius };
 
     const rectInner = (
