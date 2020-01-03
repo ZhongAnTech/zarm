@@ -130,10 +130,16 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## API
 
+当不设置`weight`属性时，`weight`属性会自动根据设置的`size`属性变换。
++ `size`为`lg`时，`weight`的值为`bold`；
++ `size`为`md`时，`weight`的值为`normal`；
++ `size`为`sm`时，`weight`的值为`thin`；
+
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | 'primary' | 主题，可选值 `default`, `primary`, `success`, `warning`, `danger` |
+| theme | string | `primary` | 主题，可选值 `default`, `primary`, `success`, `warning`, `danger` |
 | percent | number | 0 | 进度百分比（范围：0～100） |
-| type | string | 'line' | 类型，可选值 `line`, `circle`, `semi-circle` |
-| shape | string | 'round' | 线条形状，可选值 `round`, `rect` |
-| weight | string | 'normal' | 线条粗细，可选值 `normal`, `thin` |
+| type | string | `line` | 类型，可选值 `line`, `circle`, `semi-circle` |
+| shape | string | `round` | 线条形状，可选值 `round`, `rect` |
+| size | string | `md` | 组件大小，可启迪组件的`weight`属性 |
+| weight | string | 'normal' | 线条粗细，可选值 `bold`, `normal`, `thin` |

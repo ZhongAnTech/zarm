@@ -30,4 +30,11 @@ describe('Progress', () => {
     expect(wrapper.props().percent).toEqual(50);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('size=lg & type=line & theme=primary as expected', () => {
+    const wrapper = render(<Progress type="line" percent={10}>percentText</Progress>);
+    wrapper.setProps({ size: 'lg' });
+    expect(wrapper.props().size).toEqual('lg');
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });

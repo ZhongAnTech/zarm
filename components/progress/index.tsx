@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import PropsType, { ProgressWeight, ProgressSize } from './PropsType';
 
 export interface ProgressProps extends PropsType {
   prefixCls?: string;
@@ -8,61 +8,119 @@ export interface ProgressProps extends PropsType {
   style?: CSSProperties;
 }
 
-export default class Progress extends PureComponent<ProgressProps, any> {
-  private progressElement;
+type WeightMap = {
+  [weight in ProgressWeight]: number;
+};
 
-  static defaultProps = {
+type SizeToWeight = {
+  [size in ProgressSize]: ProgressWeight
+};
+
+export default class Progress extends PureComponent<ProgressProps, any> {
+  static defaultProps: ProgressProps = {
     theme: 'default',
+    size: 'md',
     percent: 0,
     type: 'line',
     shape: 'round',
-    weight: 'normal',
     prefixCls: 'za-progress',
   };
 
+  // 线条粗细表
+  static weights: WeightMap = {
+    bold: 10,
+    normal: 8,
+    thin: 4,
+  };
+
+  // 尺寸到线条粗细的映射表
+  // 使用size是因为它的可描述范围更广
+  // 保留weight是因为需要兼容以前的API
+  static sizeToWeight: SizeToWeight = {
+    lg: 'bold',
+    md: 'normal',
+    sm: 'thin',
+  };
+
+  private static cssVariablesPicked = false;
+
+  // 线条的宽度，共有两处配置
+  // e.g.  --progress-weight-lg && Progress.weights.bold
+  // 策略就是，当有Progress在BOM中渲染了后，如果BOM中有window.getComputedStyle这个API，就会把配置从css往js里拷一遍
+  // 根据奥卡姆剃刀定律，这就是最佳策略
+  static syncVariablesFromStyles(): void {
+    if (Progress.cssVariablesPicked) return;
+    Object.keys(Progress.weights).forEach((size) => {
+      const weightValue = Progress.pickVariable(`--progress-weight-${size}`);
+      if (weightValue) {
+        const weightName = Progress.sizeToWeight[size];
+        Progress.weights[weightName] = weightValue;
+      }
+    });
+    Progress.cssVariablesPicked = true;
+  }
+
+  static pickVariable(name: string): string {
+    return window!.getComputedStyle(document!.querySelector(':root') as Element)!.getPropertyValue(name);
+  }
+
+  private progressElement;
+
   constructor(props) {
     super(props);
-    const { weight } = this.props;
     this.state = {
-      strokeWidth: this.getBaseStrokeWidth(weight),
+      strokeWidth: this.strokeWeight,
     };
   }
 
   componentDidMount() {
-    const { type, weight } = this.props;
+    const { type } = this.props;
     if (type === 'circle' || type === 'semi-circle') {
-      this.resetStrokeWidth(weight);
+      this.resetStrokeWidth();
     }
   }
 
   componentDidUpdate(prevProps) {
     const { weight } = this.props;
     if (prevProps.weight !== weight) {
-      this.resetStrokeWidth(weight);
+      // preferWeight change only weight changed.
+      this.resetStrokeWidth();
     }
   }
 
+  get preferWeight() {
+    const { weight, size } = this.props;
+    return weight || (Progress.sizeToWeight[size || 'md'] as ProgressWeight);
+  }
+
+  // 线条宽度系数
+  get strokeWeight() {
+    return Progress.weights[this.preferWeight];
+  }
+
   getBaseStrokeWidth = (weight) => {
-    return weight === 'normal' ? 8 : 4;
+    return Progress.weights[weight as ProgressWeight];
   };
 
-  resetStrokeWidth(weight) {
+  resetStrokeWidth() {
     const baseWidth = 32;
     const { clientWidth } = this.progressElement;
-    const baseStrokeWidth = this.getBaseStrokeWidth(weight);
 
     this.setState({
-      strokeWidth: (baseWidth / clientWidth) * baseStrokeWidth,
+      strokeWidth: (baseWidth / clientWidth) * this.strokeWeight,
     });
   }
 
   render() {
-    const { theme, percent, shape, type, weight, style, prefixCls, className, children } = this.props;
+    const { theme, percent, shape, type, size, style, prefixCls, className, children } = this.props;
+    const weight = this.preferWeight;
     const { strokeWidth } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${type}`]: !!type,
       [`${prefixCls}--${theme}`]: !!theme,
+      [`${prefixCls}--${size}`]: !!size,
+      [`${prefixCls}--${weight}`]: !!weight,
     });
 
     const diameter = 32;
@@ -111,13 +169,12 @@ export default class Progress extends PureComponent<ProgressProps, any> {
 
     const lineStrokeWidth = this.getBaseStrokeWidth(weight);
     const borderRadius = shape === 'round' ? `${lineStrokeWidth}px` : '0';
-    const lineTrackStyle = { height: `${lineStrokeWidth}px`, borderRadius };
     const lineThumbStyle = { width: `${percent}%`, borderRadius };
 
     const rectInner = (
       type === 'line'
       && (
-        <div className={`${prefixCls}__track`} style={lineTrackStyle}>
+        <div className={`${prefixCls}__track`}>
           <div className={`${prefixCls}__thumb`} style={lineThumbStyle} />
         </div>
       )
