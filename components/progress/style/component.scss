@@ -31,33 +31,6 @@
       overflow: hidden;
     }
 
-    @include m(bold) {
-      height: var(--progress-weight-lg);
-
-      @include e(track) {
-        height: var(--progress-weight-lg);
-        border-radius: var(--progress-weight-lg);
-      }
-    }
-
-    @include m(normal) {
-      height: var(--progress-weight-md);
-
-      @include e(track) {
-        height: var(--progress-weight-md);
-        border-radius: var(--progress-weight-md);
-      }
-    }
-
-    @include m(thin) {
-      height: var(--progress-weight-sm);
-
-      @include e(track) {
-        height: var(--progress-weight-sm);
-        border-radius: var(--progress-weight-sm);
-      }
-    }
-
     @include e(thumb) {
       height: 100%;
       transition: width .6s ease, background-color .6s ease;
@@ -66,8 +39,6 @@
 
   @include m(circle) {
     display: inline-block;
-    width: var(--progress-circle-diameter);
-    height: var(--progress-circle-diameter);
     @include progress-type();
     @include progress-theme('stroke');
 
