@@ -27,7 +27,6 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   static defaultProps = {
     prefixCls: 'za-tabs',
     disabled: false,
-    hasline: false,
     canSwipe: false,
   };
 
@@ -49,26 +48,25 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     return null;
   }
 
-  onSwipeChange = (value) => {
+  onTabChange = (value) => {
     const { onChange } = this.props;
-    this.setState({ value });
-    if (typeof onChange === 'function') {
-      onChange(value);
+    if (!('value' in this.props)) {
+      this.setState({ value });
     }
+    typeof onChange === 'function' && onChange(value);
   };
 
+
   onTabClick = (tab, index) => {
-    const { disabled, canSwipe, onChange } = this.props;
+    const { disabled, canSwipe } = this.props;
     if (disabled || tab.props.disabled) {
       return;
     }
-    this.setState({ value: index });
-    if (typeof onChange === 'function') {
-      onChange(index);
-    }
     if (canSwipe) {
       this.carousel.onSlideTo(index);
+      return;
     }
+    this.onTabChange(index);
   };
 
   renderTabs = (tab, index) => {
@@ -90,12 +88,9 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   };
 
   render() {
-    const { prefixCls, className, lineWidth, hasline, canSwipe, children } = this.props;
+    const { prefixCls, className, lineWidth, canSwipe, children } = this.props;
     const { value } = this.state;
-
-    const classes = classnames(prefixCls, className, {
-      [`${prefixCls}--hasline`]: hasline,
-    });
+    const classes = classnames(prefixCls, className);
 
     // 渲染选项
     const tabsRender = React.Children.map(children, this.renderTabs);
@@ -110,7 +105,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
           showPagination={false}
           activeIndex={value}
           ref={(ele) => { this.carousel = ele; }}
-          onChange={(v) => this.onSwipeChange(v)}
+          onChange={(v) => this.onTabChange(v)}
         >
           {React.Children.map(children, (item: TabPanel) => <div>{item.props.children}</div>)}
         </Carousel>
