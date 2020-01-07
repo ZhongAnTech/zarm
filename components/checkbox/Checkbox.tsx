@@ -59,7 +59,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
     }
 
     const newChecked = !checked;
-    if (this.props.checked === undefined) {
+    if (!('checked' in this.props)) {
       this.setState({ checked: newChecked });
     }
 

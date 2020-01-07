@@ -70,9 +70,8 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
 
   onChildChange = (value: string | number) => {
     const { value: valueState } = this.state;
-
+    const { onChange } = this.props;
     const values = valueState!.slice();
-
     const index = values.indexOf(value);
 
     if (index < 0) {
@@ -81,14 +80,8 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
       values.splice(index, 1);
     }
 
-    this.setState({
-      value: values,
-    });
-
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(values);
-    }
+    this.setState({ value: values });
+    typeof onChange === 'function' && onChange(values);
   };
 
   render() {
