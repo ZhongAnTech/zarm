@@ -24,10 +24,10 @@ const getActiveKey = (props) => {
   if (defaultKey || defaultKey === 0) {
     if (isArray(defaultKey)) {
       return !multiple
-        ? [String(defaultKey[0])]
+        ? String(defaultKey[0])
         : (defaultKey as Array<any>).map((key) => String(key));
     }
-    return [String(defaultKey)];
+    return String(defaultKey);
   }
   return [];
 };
@@ -72,31 +72,39 @@ export default class Collapse extends Component<CollapseProps, any> {
     if (!key) {
       return;
     }
+
     const { activeKey } = this.state;
     const { onChange, multiple } = this.props;
-    const hasKey = activeKey.indexOf(key) > -1;
-    let newActiveKey: Array<string> = [];
+    let isActive;
+    let newActiveKey;
+
     if (multiple) {
-      if (hasKey) {
-        newActiveKey = activeKey.filter((i) => i !== key);
+      const hasKey = activeKey.indexOf(key) > -1;
+      newActiveKey = [];
+      if (multiple) {
+        if (hasKey) {
+          newActiveKey = activeKey.filter((i) => i !== key);
+        } else {
+          newActiveKey = activeKey.slice(0);
+          newActiveKey.push(key);
+        }
       } else {
-        newActiveKey = activeKey.slice(0);
-        newActiveKey.push(key);
+        newActiveKey = hasKey ? [] : [key];
       }
+      isActive = newActiveKey.indexOf(key) > -1;
     } else {
-      newActiveKey = hasKey ? [] : [key];
+      newActiveKey = activeKey === key ? '' : key;
+      isActive = activeKey === key;
     }
-    if (typeof onItemChange === 'function') {
-      const isActive = newActiveKey.indexOf(key) > -1;
-      onItemChange(isActive);
+
+    if (!('activeKey' in this.props)) {
+      this.setState({
+        activeKey: newActiveKey,
+      });
     }
-    this.setState({
-      activeKey: newActiveKey,
-    }, () => {
-      if (typeof onChange === 'function') {
-        onChange(newActiveKey);
-      }
-    });
+
+    typeof onItemChange === 'function' && onItemChange(isActive);
+    typeof onChange === 'function' && onChange(newActiveKey);
   };
 
   renderItems = () => {
@@ -112,7 +120,7 @@ export default class Collapse extends Component<CollapseProps, any> {
           animated,
           itemKey: key!,
           isActive,
-          onChange: disabled ? () => { } : () => this.onItemChange(onChange, currentKey),
+          onChange: () => !disabled && this.onItemChange(onChange, currentKey),
         });
       },
     );
