@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { HTMLAttributes, ChangeEvent } from 'react';
 import { ButtonSize } from '../button/PropsType';
 
 export type CheckboxType = 'button' | 'cell';
@@ -18,7 +18,7 @@ export interface BaseCheckboxProps {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface BaseCheckboxGroupProps {
+export interface BaseCheckboxGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'> {
   type?: CheckboxType;
   size?: CheckboxGroupSize;
   shape?: CheckboxShape;

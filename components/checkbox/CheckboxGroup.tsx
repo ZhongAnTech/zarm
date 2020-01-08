@@ -1,4 +1,4 @@
-import React, { PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
+import React, { PureComponent, cloneElement, ReactNode, isValidElement, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxGroupProps } from './PropsType';
 
@@ -85,7 +85,7 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
   };
 
   render() {
-    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children } = this.props;
+    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children, ...rest } = this.props;
     const { value } = this.state;
 
     const items = React.Children.map(children, (element: ReactNode, index) => {
@@ -117,6 +117,6 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
       [`${prefixCls}--ghost`]: ghost,
     });
 
-    return <div className={cls}><div className={`${prefixCls}__inner`}>{items}</div></div>;
+    return <div className={cls} {...rest as HTMLAttributes<HTMLDivElement>}><div className={`${prefixCls}__inner`}>{items}</div></div>;
   }
 }
