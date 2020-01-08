@@ -104,7 +104,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} className={cls} onClick={() => {}} {...rest as CheckboxCellProps}>
+        <Cell disabled={disabled} className={className} onClick={() => {}} {...rest as CheckboxCellProps}>
           {checkboxRender}
         </Cell>
       );

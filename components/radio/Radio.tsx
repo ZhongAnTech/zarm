@@ -102,7 +102,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
 
     if (type === 'cell') {
       return (
-        <Cell disabled={disabled} className={cls} onClick={() => {}} {...rest as RadioCellProps}>
+        <Cell disabled={disabled} className={className} onClick={() => {}} {...rest as RadioCellProps}>
           {radioRender}
         </Cell>
       );
