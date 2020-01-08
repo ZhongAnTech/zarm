@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export type CollapseItemKey = string | number;
 
@@ -10,15 +10,13 @@ export interface BaseCollapseProps {
   multiple?: boolean;
   animated?: boolean;
   onChange: (activeKey?: CollapseActiveKey) => void;
-  style?: CSSProperties;
 }
 
 export interface BaseCollapseItemProps {
+  key?: CollapseItemKey;
   title?: ReactNode;
   isActive: boolean;
-  itemKey?: CollapseItemKey;
   disabled?: boolean;
   animated: boolean;
   onChange?: (active?: boolean) => void;
-  style?: CSSProperties;
 }

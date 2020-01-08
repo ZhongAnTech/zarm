@@ -4,11 +4,13 @@
 
 ## 基本用法
 ```jsx
-import { Collapse } from 'zarm';
+import { Cell, Switch, Collapse, Checkbox } from 'zarm';
 
 class Demo extends React.Component {
   state = {
-    activeKey: 1,
+    animated: false,
+    multiple: false,
+    activeKey: '1',
   }
 
   onChange = (activeKey) => {
@@ -17,18 +19,25 @@ class Demo extends React.Component {
   }
 
   render() {
+    const { animated, multiple, activeKey } = this.state;
     return (
-      <Collapse activeKey={this.state.activeKey} onChange={this.onChange}>
-        <Collapse.Item key={1} title="Header of Item1">
-          This is content of item1. This is content of item1. This is content of item1.
-        </Collapse.Item>
-        <Collapse.Item key={2} title="Header of Item2">
-          This is content of item2. This is content of item2. This is content of item2.
-        </Collapse.Item>
-        <Collapse.Item key={3} title="Header of Item3">
-          This is content of item3. This is content of item3. This is content of item3.
-        </Collapse.Item>
-      </Collapse>
+      <>
+        <Checkbox.Group block style={{ padding: '8px 16px 8px 16px' }}>
+          <Checkbox value="animated" checked={animated} onChange={(e) => { this.setState({ animated: e.target.checked })}}>开启切换动画</Checkbox>
+          <Checkbox value="multiple" checked={multiple} onChange={(e) => { this.setState({ multiple: e.target.checked, activeKey: e.target.checked ? [] : undefined })}}>允许展开多项</Checkbox>
+        </Checkbox.Group>
+        <Collapse disabled activeKey={activeKey} animated={animated} multiple={multiple} onChange={this.onChange}>
+          <Collapse.Item key="1" title="Header of Item1">
+            This is content of item1. This is content of item1. This is content of item1.
+          </Collapse.Item>
+          <Collapse.Item key="2" title="Header of Item2">
+            This is content of item2. This is content of item2. This is content of item2.
+          </Collapse.Item>
+          <Collapse.Item key="3" title="Header of Item3">
+            This is content of item3. This is content of item3. This is content of item3.
+          </Collapse.Item>
+        </Collapse>
+      </>
     );
   }
 }
@@ -38,82 +47,19 @@ ReactDOM.render(<Demo />, mountNode);
 
 
 
-## 基本用法
-```jsx
-import { Collapse, Cell } from 'zarm';
-
-ReactDOM.render(
-  <Collapse>
-    <Collapse.Item key="1" title="Header of Item1">
-      This is content of item1. This is content of item1. This is content of item1.
-    </Collapse.Item>
-    <Collapse.Item key="2" title="Header of Item2">
-      This is content of item2. This is content of item2. This is content of item2.
-    </Collapse.Item>
-    <Collapse.Item key="3" title="Header of Item3">
-      This is content of item3. This is content of item3. This is content of item3.
-    </Collapse.Item>
-  </Collapse>
-, mountNode);
-```
-
-
-
-## 手风琴模式
-```jsx
-import { Collapse } from 'zarm';
-
-ReactDOM.render(
-  <Collapse animated>
-    <Collapse.Item key="test1" title="Header of Item1">
-      This is content of item1. This is content of item1. This is content of item1.
-    </Collapse.Item>
-    <Collapse.Item key="test2" title="Header of Item2">
-      This is content of item2. This is content of item2. This is content of item2.
-    </Collapse.Item>
-    <Collapse.Item key="test3" title="Header of Item3">
-      This is content of item3. This is content of item3. This is content of item3.
-    </Collapse.Item>
-  </Collapse>
-, mountNode);
-```
-
-
-
 ## 默认展开项
 ```jsx
 import { Collapse } from 'zarm';
 
 ReactDOM.render(
-  <Collapse defaultActiveKey={['test1', 'test2']} animated>
-    <Collapse.Item key="test1" title="Header of Item1">
+  <Collapse multiple defaultActiveKey={['0', '1']}>
+    <Collapse.Item key="0" title="Header of Item1">
       This is content of item1. This is content of item1. This is content of item1.
     </Collapse.Item>
-    <Collapse.Item key="test2" title="Header of Item2">
+    <Collapse.Item key="1" title="Header of Item2">
       This is content of item2. This is content of item2. This is content of item2.
     </Collapse.Item>
-    <Collapse.Item key="test3" title="Header of Item3">
-      This is content of item3. This is content of item3. This is content of item3.
-    </Collapse.Item>
-  </Collapse>
-, mountNode);
-```
-
-
-
-## 允许展开多项
-```jsx
-import { Collapse } from 'zarm';
-
-ReactDOM.render(
-  <Collapse animated multiple defaultActiveKey={['test1', 'test3']} onChange={(activeKey) => console.log(activeKey)}>
-    <Collapse.Item key="test1" title="Header of Item1" onChange={(active) => console.log(`active: ${active}`)}>
-      This is content of item1. This is content of item1. This is content of item1.
-    </Collapse.Item>
-    <Collapse.Item key="test2" title="Header of Item2">
-      This is content of item2. This is content of item2. This is content of item2.
-    </Collapse.Item>
-    <Collapse.Item key="test3" title="Header of Item3">
+    <Collapse.Item key="2" title="Header of Item3">
       This is content of item3. This is content of item3. This is content of item3.
     </Collapse.Item>
   </Collapse>
