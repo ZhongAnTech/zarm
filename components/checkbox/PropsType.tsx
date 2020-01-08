@@ -1,10 +1,10 @@
-import { HTMLAttributes, ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { ButtonSize } from '../button/PropsType';
 
 export type CheckboxType = 'button' | 'cell';
 export type CheckboxShape = 'rect' | 'radius' | 'round';
 export type CheckboxValue = number | string;
-export type CheckboxGroupSize = ButtonSize;
+export type CheckboxSize = ButtonSize;
 
 export interface BaseCheckboxProps {
   type?: CheckboxType;
@@ -18,9 +18,9 @@ export interface BaseCheckboxProps {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface BaseCheckboxGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'> {
+export interface BaseCheckboxGroupProps {
   type?: CheckboxType;
-  size?: CheckboxGroupSize;
+  size?: CheckboxSize;
   shape?: CheckboxShape;
   disabled?: boolean;
   block?: boolean;

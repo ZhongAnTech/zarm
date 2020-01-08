@@ -1,4 +1,4 @@
-import React, { PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
+import React, { HTMLAttributes, PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
 import classnames from 'classnames';
 import { BaseRadioGroupProps } from './PropsType';
 
@@ -28,9 +28,8 @@ const getValue = (props: RadioGroup['props'], defaultValue: null) => {
   return defaultValue;
 };
 
-export interface RadioGroupProps extends BaseRadioGroupProps {
+export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>, BaseRadioGroupProps {
   prefixCls?: string;
-  className?: string;
 }
 
 export interface RadioGroupStates {
@@ -74,17 +73,16 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
   };
 
   render() {
-    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children } = this.props;
-    const { value } = this.state;
+    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children, onChange, defaultValue, value, ...rest } = this.props;
+    const { value: valueState } = this.state;
 
     const items = React.Children.map(children, (element: any, index) => {
       return cloneElement(element, {
         key: index,
         type,
         shape,
-        block: block || element.props.block,
         disabled: disabled || element.props.disabled,
-        checked: value === element.props.value,
+        checked: valueState === element.props.value,
         onChange: (checked: boolean) => {
           typeof element.props.onChange === 'function' && element.props.onChange(checked);
           this.onChildChange(element.props.value);
@@ -102,6 +100,6 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
       [`${prefixCls}--ghost`]: ghost,
     });
 
-    return <div className={cls}><div className={`${prefixCls}__inner`}>{items}</div></div>;
+    return <div className={cls} {...rest}><div className={`${prefixCls}__inner`}>{items}</div></div>;
   }
 }

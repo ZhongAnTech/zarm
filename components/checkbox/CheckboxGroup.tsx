@@ -29,9 +29,8 @@ const getValue = (props: CheckboxGroup['props'], defaultValue: BaseCheckboxGroup
   return defaultValue;
 };
 
-export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
+export interface CheckboxGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>, BaseCheckboxGroupProps {
   prefixCls?: string;
-  className?: string;
 }
 
 export interface CheckboxGroupStates {
@@ -85,8 +84,8 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
   };
 
   render() {
-    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children, ...rest } = this.props;
-    const { value } = this.state;
+    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children, onChange, defaultValue, value, ...rest } = this.props;
+    const { value: valueState } = this.state;
 
     const items = React.Children.map(children, (element: ReactNode, index) => {
       if (isValidElement(element)) {
@@ -94,9 +93,8 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
           key: index,
           type,
           shape,
-          block: block || element.props.block,
           disabled: disabled || element.props.disabled,
-          checked: value!.indexOf(element.props.value) > -1,
+          checked: valueState!.indexOf(element.props.value) > -1,
           onChange: (checked: boolean) => {
             typeof element.props.onChange === 'function' && element.props.onChange(checked);
             this.onChildChange(element.props.value);
@@ -117,6 +115,6 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
       [`${prefixCls}--ghost`]: ghost,
     });
 
-    return <div className={cls} {...rest as HTMLAttributes<HTMLDivElement>}><div className={`${prefixCls}__inner`}>{items}</div></div>;
+    return <div className={cls} {...rest}><div className={`${prefixCls}__inner`}>{items}</div></div>;
   }
 }

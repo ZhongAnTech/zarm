@@ -17,7 +17,6 @@ exports[`Checkbox defaultChecked 1`] = `
     foo
   </span>
   <input
-    checked=""
     class="za-checkbox__input"
     type="checkbox"
   />
@@ -349,7 +348,7 @@ exports[`Checkbox.Group type is cell 1`] = `
     class="za-checkbox-group__inner"
   >
     <div
-      class="za-cell za-cell--link"
+      class="za-cell za-checkbox za-cell--link"
     >
       <div
         class="za-cell__inner"
@@ -392,7 +391,7 @@ exports[`Checkbox.Group type is cell 1`] = `
       </div>
     </div>
     <div
-      class="za-cell za-cell--link"
+      class="za-cell za-checkbox za-cell--link"
     >
       <div
         class="za-cell__inner"
@@ -435,7 +434,7 @@ exports[`Checkbox.Group type is cell 1`] = `
       </div>
     </div>
     <div
-      class="za-cell za-cell--link"
+      class="za-cell za-checkbox za-cell--link"
     >
       <div
         class="za-cell__inner"
