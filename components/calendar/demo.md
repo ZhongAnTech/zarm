@@ -11,11 +11,10 @@ class Demo extends React.Component {
     this.state = {
       visible: false,
       multiple: true,
-      defaultValue: ['2019-10-11', '2019-10-17'],
-      value: '',
+      value: ['2019-10-11', '2019-10-17'],
       min: '2019-9-12',
       max: '2019-11-11',
-      dateRender: date => {
+      dateRender: (date) => {
         if (/(0|6)/.test(date.getDay())) {
           return (
             <div className="custom">
@@ -26,7 +25,7 @@ class Demo extends React.Component {
         }
         return date.getDate();
       },
-      disabledDate: date => /(0|6)/.test(date.getDay())
+      disabledDate: (date) => /(0|6)/.test(date.getDay())
     };
   }
 
@@ -51,7 +50,7 @@ class Demo extends React.Component {
                   label: '双选'
                 }
               ]}
-              onOk={selected => {
+              onOk={(selected) => {
                 this.setState({
                   multiple: selected[0].value === 'true',
                   visible: false
@@ -79,8 +78,8 @@ class Demo extends React.Component {
         <div>
           <Calendar
             {...this.state}
-            onChange={value => {
-              // this.setState({ value });
+            onChange={(value) => {
+              this.setState({ value });
               console.log('onChange', value);
             }}
           />

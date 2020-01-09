@@ -148,17 +148,13 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
     }
     value[step - 1] = date;
     value.sort((item1: Date, item2: Date) => +item1 - +item2);
-    this.setState(
-      {
-        value,
-        step: step >= steps ? 1 : step + 1,
-      },
-      () => {
-        if (step >= steps && typeof onChange === 'function') {
-          onChange(value);
-        }
-      },
-    );
+
+    this.setState({
+      value,
+      step: step >= steps ? 1 : step + 1,
+    }, () => {
+      step >= steps && typeof onChange === 'function' && onChange(value);
+    });
   };
 
   // 月历定位
