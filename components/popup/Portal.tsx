@@ -90,6 +90,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   animationEnd = (e) => {
+    if (e.target !== this.popup) {
+      return;
+    }
     e.stopPropagation();
     const { afterClose, afterOpen, handlePortalUnmount, visible, prefixCls } = this.props;
     const animationState = visible ? 'enter' : 'leave';
