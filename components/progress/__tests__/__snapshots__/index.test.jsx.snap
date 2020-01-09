@@ -13,6 +13,11 @@ exports[`Progress renders correctly 1`] = `
       style="width:10%;border-radius:8px"
     />
   </div>
+  <div
+      class="za-progress__text"
+    >
+      10%
+    </div>
 </div>
 `;
 
@@ -22,11 +27,11 @@ exports[`Progress renders has children correctly 1`] = `
 >
   <div
     class="za-progress__track"
-    style="height:4px;border-radius:4px"
+    style="height:8px;border-radius:8px"
   >
     <div
       class="za-progress__thumb"
-      style="width:10%;border-radius:4px"
+      style="width:10%;border-radius:8px"
     />
   </div>
   <div
@@ -158,11 +163,38 @@ exports[`Progress renders shape is semi-circle correctly 1`] = `
 </div>
 `;
 
-exports[`size=lg & type=line & theme=primary as expected 1`] = `
-<div class="za-progress za-progress--line za-progress--primary za-progress--lg za-progress--bold">
-  <div class="za-progress__track">
-    <div class="za-progress__thumb" style="width: 10%; border-radius: 10px;"></div>
+exports[`Progress renders size is lg correctly 1`] = `
+<div class="za-progress za-progress--line za-progress--primary za-progress--lg">
+  <div class="za-progress__track" style="height:10px;border-radius:10px">
+    <div class="za-progress__thumb" style="width:10%;border-radius:10px"></div>
   </div>
-  <div class="za-progress__text">percentText</div>
+  <div class="za-progress__text">
+    10%
+  </div>
 </div>
 `;
+
+
+exports[`Progress renders size is md correctly 1`] = `
+<div class="za-progress za-progress--line za-progress--primary za-progress--md">
+  <div class="za-progress__track" style="height:8px;border-radius:8px">
+    <div class="za-progress__thumb" style="width:10%;border-radius:8px"></div>
+  </div>
+  <div class="za-progress__text">
+    10%
+  </div>
+</div>
+`;
+
+exports[`Progress renders size is sm correctly 1`] = `
+<div class="za-progress za-progress--line za-progress--primary za-progress--sm">
+  <div class="za-progress__track" style="height:4px;border-radius:4px">
+    <div class="za-progress__thumb" style="width:10%;border-radius:4px"></div>
+  </div>
+  <div class="za-progress__text">
+    10%
+  </div>
+</div>
+`;
+
+
