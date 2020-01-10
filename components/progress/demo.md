@@ -11,7 +11,7 @@ class Demo extends React.Component {
     percent: 10,
     theme: 'primary',
     strokeShape: 'round',
-    strokeWidth: null,
+    strokeWidth: '',
   };
 
   render() {
@@ -92,7 +92,6 @@ class Demo extends React.Component {
 
         <Cell title="线条形状">
           <Radio.Group
-            ghost
             compact
             type="button"
             value={strokeShape}
