@@ -1,0 +1,142 @@
+@include b(progress) {
+  display: inline-block;
+  position: relative;
+
+  @include e(outer) {
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(text) {
+    display: inline-block;
+    margin-left: r(5);
+    font-size: r(14);
+  }
+
+  @include m(line) {
+    @include progress-theme('background-color');
+
+    @include m(lg) {
+      width: var(--progress-width-lg);
+    }
+
+    @include m(md) {
+      width: var(--progress-width-md);
+    }
+
+    @include m(sm) {
+      width: var(--progress-width-sm);
+    }
+
+    @include e(track) {
+      width: 100%;
+      height: 100%;
+      background: var(--progress-background);
+      overflow: hidden;
+    }
+
+    @include e(thumb) {
+      height: 100%;
+      transition: width .6s ease, background-color .6s ease;
+    }
+  }
+
+  @include m(circle) {
+    display: inline-block;
+    @include progress-type();
+    @include progress-theme('stroke');
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include e(text) {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+      transform: translateY(-50%);
+    }
+
+    @include m(lg) {
+      width: var(--progress-size-lg);
+      height: var(--progress-size-lg);
+
+      @include e(text) {
+        font-size: var(--progress-font-size-circle-lg);
+      }
+    }
+
+    @include m(md) {
+      width: var(--progress-size-md);
+      height: var(--progress-size-md);
+
+      @include e(text) {
+        font-size: var(--progress-font-size-circle-md);
+      }
+    }
+
+    @include m(sm) {
+      width: var(--progress-size-sm);
+      height: var(--progress-size-sm);
+
+      @include e(text) {
+        font-size: var(--progress-font-size-circle-sm);
+      }
+    }
+  }
+
+  @include m(semi-circle) {
+    display: inline-block;
+    @include progress-type();
+    @include progress-theme('stroke');
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include e(text) {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+    }
+
+    @include m(lg) {
+      width: var(--progress-size-lg);
+      height: calc(var(--progress-size-lg) / 2);
+
+      @include e(text) {
+        font-size: var(--progress-font-size-circle-lg);
+      }
+    }
+
+    @include m(md) {
+      width: var(--progress-size-md);
+      height: calc(var(--progress-size-md) / 2);
+
+      @include e(text) {
+        font-size: var(--progress-font-size-circle-md);
+      }
+    }
+
+    @include m(sm) {
+      width: var(--progress-size-sm);
+      height: calc(var(--progress-size-sm) / 2);
+
+      @include e(text) {
+        font-size: var(--progress-font-size-circle-sm);
+      }
+    }
+  }
+}

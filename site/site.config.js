@@ -1,9 +1,15 @@
 module.exports = {
   documents: [
     {
+      key: 'introduce',
+      name: '关于 Zarm',
+      module: () => import('@site/web/docs/introduce.md'),
+      style: false,
+    },
+    {
       key: 'quick-start',
       name: '快速上手',
-      module: () => import('@/README.md'),
+      module: () => import('@site/web/docs/quick-start.md'),
       style: false,
     },
     {

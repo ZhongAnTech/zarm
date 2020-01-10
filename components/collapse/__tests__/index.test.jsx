@@ -4,13 +4,17 @@ import toJson from 'enzyme-to-json';
 import Collapse from '../index';
 
 describe('Collapse', () => {
-  const props = {};
-
   it('renders correctly', () => {
     const wrapper = render(
-      <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+      <Collapse>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -18,11 +22,18 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with collapse mode', () => {
+    const props = {};
     props.multiple = true;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -30,11 +41,18 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with animated', () => {
+    const props = {};
     props.animated = true;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -42,29 +60,18 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with defaultActiveKey', () => {
-    props.defaultActiveKey = [1];
-    const wrapper = render(
-      <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
-        </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
-        </Collapse.Item>
-      </Collapse>,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('renders correctly with string defaultActiveKey', () => {
+    const props = {};
     props.defaultActiveKey = '1';
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -72,14 +79,38 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with number defaultActiveKey', () => {
+    const props = {};
     props.defaultActiveKey = 0;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
+        </Collapse.Item>
+      </Collapse>,
+    );
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders correctly with array defaultActiveKey', () => {
+    const props = {};
+    props.multiple = true;
+    props.defaultActiveKey = ['1'];
+    const wrapper = render(
+      <Collapse {...props}>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -87,29 +118,18 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with activeKey', () => {
-    props.activeKey = [0];
+    const props = {};
+    props.activeKey = '0';
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
         </Collapse.Item>
-      </Collapse>,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('renders correctly with string activeKey', () => {
-    props.activeKey = '1';
-    const wrapper = render(
-      <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
-        </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -117,14 +137,18 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with number activeKey', () => {
-    props.activeKey = 0;
+    const props = {};
+    props.activeKey = 1;
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key={0} title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key={1} title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key={2} title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -132,49 +156,60 @@ describe('Collapse', () => {
   });
 
   it('renders correctly with dynamic activeKey', () => {
-    props.activeKey = [0];
+    const props = {};
+    props.activeKey = '0';
     const wrapper = shallow(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.setProps({ activeKey: 1 });
-
-    expect(wrapper.state('activeKey')).toEqual(['1']);
+    wrapper.setProps({ activeKey: '1' });
+    expect(wrapper.state('activeKey')).toEqual('1');
   });
 
   it('renders correctly with dynamic array activeKey', () => {
-    props.activeKey = [0];
+    const props = {};
+    props.multiple = true;
+    props.activeKey = ['0'];
     const wrapper = shallow(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.setProps({ activeKey: [1] });
-
+    wrapper.setProps({ activeKey: ['1'] });
     expect(wrapper.state('activeKey')).toEqual(['1']);
   });
 
   it('renders correctly with defaultActiveKey and activeKey', () => {
-    props.defaultActiveKey = 0;
-    props.activeKey = 1;
+    const props = {};
+    props.defaultActiveKey = '0';
+    props.activeKey = '1';
     const wrapper = render(
       <Collapse {...props}>
-        <Collapse.Item className="item0" key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item className="item1" key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -182,41 +217,61 @@ describe('Collapse', () => {
   });
 
   it('click collapse item correctly', () => {
-    props.onChange = jest.fn();
+    const onChange = jest.fn();
     const wrapper = mount(
-      <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐" {...props}>
-          <div>50元套餐内容</div>
+      <Collapse onChange={onChange}>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').simulate('click');
-    expect(props.onChange).toBeCalled();
+    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
+    expect(onChange).toBeCalled();
   });
 
   it('click collapse item correctly with disabled mode', () => {
+    const props = {};
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐" disabled {...props}>
-          <div>50元套餐内容</div>
+        <Collapse.Item disabled key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').simulate('click');
+    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
     expect(props.onChange).not.toBeCalled();
   });
 
   it('collapse items toggle correctly with animated', (done) => {
+    const props = {};
     props.animated = true;
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').simulate('click');
+    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
     setTimeout(() => {
       expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
       done();
@@ -224,15 +279,22 @@ describe('Collapse', () => {
   });
 
   it('negative item toggle correctly with animated', (done) => {
+    const props = {};
     props.animated = true;
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').simulate('click');
+    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
     setTimeout(() => {
       expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
       done();
@@ -240,33 +302,44 @@ describe('Collapse', () => {
   });
 
   it('active item toggle correctly with animated', (done) => {
+    const props = {};
     props.animated = true;
-    props.activeKey = '0';
+    props.defaultActiveKey = '0';
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').simulate('click');
+    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
     setTimeout(() => {
-      expect(wrapper.find('.active').length).toBe(0);
+      expect(wrapper.find('.za-collapse-item--active').length).toBe(0);
       done();
     }, 0);
   });
 
   it('collapse items toggle correctly without multiple mode', () => {
+    const props = {};
     props.multiple = false;
-    props.activeKey = [1];
+    props.activeKey = '1';
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
@@ -275,25 +348,29 @@ describe('Collapse', () => {
   });
 
   it('collapse items toggle correctly with multiple mode', () => {
+    const props = {};
     props.multiple = true;
-    props.activeKey = [0, 1];
-    props.onChange = jest.fn();
+    props.defaultActiveKey = ['0', '1'];
 
     const wrapper = mount(
       <Collapse {...props}>
-        <Collapse.Item key="0" title="50元套餐">
-          <div>50元套餐内容</div>
+        <Collapse.Item key="0" title="Header of Item1">
+          This is content of item1.
         </Collapse.Item>
-        <Collapse.Item key="1" title="100元套餐">
-          <div>100元套餐内容</div>
+        <Collapse.Item key="1" title="Header of Item2">
+          This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item3">
+          This is content of item3.
         </Collapse.Item>
       </Collapse>,
     );
-    wrapper.find('.za-collapse-item__title').at(1).simulate('click');
+    wrapper.find('.za-collapse-item__title').at(0).simulate('click');
     expect(wrapper.find('.za-collapse-item--active').length).toBe(1);
   });
 
   it('click should not trigger callback without key', () => {
+    const props = {};
     props.onChange = jest.fn();
     const wrapper = mount(
       <Collapse {...props}>

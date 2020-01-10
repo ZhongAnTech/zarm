@@ -8,16 +8,31 @@ import { Tabs } from 'zarm';
 
 const { Panel } = Tabs;
 
-ReactDOM.render(
-  <Tabs onChange={(i) => { console.log(i); }}>
-    <Panel title="选项卡1">
-      <div className="content">选项卡1内容</div>
-    </Panel>
-    <Panel title="选项卡2">
-      <div className="content">选项卡2内容</div>
-    </Panel>
-  </Tabs>
-, mountNode);
+class Demo extends React.Component {
+  state = {
+    value: 0,
+  }
+
+  onChange = (index) => {
+    console.log(index);
+    this.setState({ value: index })
+  }
+
+  render() {
+    return (
+      <Tabs value={this.state.value} onChange={this.onChange}>
+        <Panel title="选项卡1">
+          <div className="content">选项卡1内容</div>
+        </Panel>
+        <Panel title="选项卡2">
+          <div className="content">选项卡2内容</div>
+        </Panel>
+      </Tabs>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
@@ -116,8 +131,8 @@ ReactDOM.render(
 ### Tabs
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| value | string | - | 值 |
-| defaultValue | string | - | 初始值 |
+| value | number | - | 值 |
+| defaultValue | number | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
 | canSwipe | boolean | false | 是否支持滑动切换 |
 | lineWidth | number \| string | - | 线条宽度 |

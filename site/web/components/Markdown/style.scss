@@ -10,6 +10,7 @@
   }
 
   pre {
+    margin: 0;
     padding: 16px;
     overflow: auto;
     font-size: 14px;
@@ -30,13 +31,14 @@
   }
 
   h2 {
-    font-size: 20px;
-    margin-top: 50px;
+    font-size: 24px;
+    line-height: 32px;
+    margin: 1.6em 0 0.6em;
   }
 
   h3 {
-    font-size: 16px;
-    margin-top: 50px;
+    font-size: 18px;
+    margin: 1.6em 0 0.6em;
   }
 
   h4,
@@ -63,7 +65,6 @@
     width: 100%;
     min-width: 600px;
     font-size: 14px;
-    margin-bottom: 45px;
     border-collapse: collapse;
     border-spacing: 0;
 

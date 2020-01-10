@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
@@ -8,13 +8,6 @@ import { components } from '@site/site.config';
 import SentryBoundary from '@site/demo/components/SentryBoundary';
 import Markdown from '@site/demo/components/Markdown';
 import './style.scss';
-
-const LoadablePage = (loader) => {
-  return Loadable({
-    loader,
-    loading: () => <Loading visible />,
-  });
-};
 
 const LoadableComponent = (component) => {
   const loader = { page: component.module };
@@ -46,15 +39,17 @@ class App extends Component {
 
     return (
       <SentryBoundary>
-        <Switch key={location.pathname} location={location}>
-          <Route exact path="/" component={LoadablePage(() => import('@site/demo/pages/Index'))} />
-          {
-            [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
-              <Route key={+i} path={`/${component.key}`} component={LoadableComponent(component)} />
-            ))
-          }
-          <Route component={LoadablePage(() => import('@site/demo/pages/NotFoundPage'))} />
-        </Switch>
+        <Suspense fallback={<Loading visible />}>
+          <Switch key={location.pathname} location={location}>
+            <Route exact path="/" component={lazy(() => import('@site/demo/pages/Index'))} />
+            {
+              [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
+                <Route key={+i} path={`/${component.key}`} component={LoadableComponent(component)} />
+              ))
+            }
+            <Route component={lazy(() => import('@site/demo/pages/NotFoundPage'))} />
+          </Switch>
+        </Suspense>
       </SentryBoundary>
     );
   }

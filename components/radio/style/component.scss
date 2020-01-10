@@ -42,6 +42,7 @@
     border: 1px solid var(--radio-border-color);
     border-radius: var(--radio-radius);
     background: var(--color-text-inverse);
+    transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
 
     &:before {
       content: '';
@@ -114,7 +115,6 @@
 }
 
 @include b(radio-group) {
-  display: inline-block;
   overflow: hidden;
 
   @include e(inner) {
@@ -133,6 +133,7 @@
 
     @include e(inner) {
       display: flex;
+      flex-wrap: wrap;
     }
 
     @include b(radio) {

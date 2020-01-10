@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 
-export interface TabPannelProps {
+export interface TabPanelProps {
   prefixCls?: string;
   className?: string;
+  selected?: boolean;
 }
 
-export default class TabPanel extends PureComponent<TabPannelProps, any> {
+export default class TabPanel extends PureComponent<TabPanelProps, any> {
   static defaultProps = {
     prefixCls: 'za-tabs',
   };
@@ -31,8 +32,8 @@ export default class TabPanel extends PureComponent<TabPannelProps, any> {
     const { prefixCls, className, children } = this.props;
     const { selected } = this.state;
 
-    const cls = classnames(`${prefixCls}__panel__item`, className, {
-      [`${prefixCls}__panel__item--active`]: selected,
+    const cls = classnames(`${prefixCls}__panel`, className, {
+      [`${prefixCls}__panel--active`]: selected,
     });
 
     return <div className={cls} role="tabpanel">{children}</div>;

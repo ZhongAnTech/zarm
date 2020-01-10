@@ -55,7 +55,7 @@ export default class Carousel extends Component<CarouselProps, any> {
   componentDidUpdate(prevProps) {
     const { activeIndex } = this.props;
     if (activeIndex !== prevProps.activeIndex) {
-      this.onJumpTo(activeIndex);
+      this.onSlideTo(activeIndex);
     }
   }
 

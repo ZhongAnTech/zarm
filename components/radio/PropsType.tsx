@@ -4,7 +4,7 @@ import { ButtonSize } from '../button/PropsType';
 export type RadioType = 'button' | 'cell';
 export type RadioShape = 'rect' | 'radius' | 'round';
 export type RadioValue = number | string;
-export type RadioGroupSize = ButtonSize;
+export type RadioSize = ButtonSize;
 
 export interface BaseRadioProps {
   type?: RadioType;
@@ -19,7 +19,7 @@ export interface BaseRadioProps {
 
 export interface BaseRadioGroupProps {
   type?: RadioType;
-  size?: RadioGroupSize;
+  size?: RadioSize;
   shape?: RadioShape;
   disabled?: boolean;
   block?: boolean;

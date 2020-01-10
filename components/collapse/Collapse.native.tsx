@@ -110,7 +110,7 @@ export default class Collapse extends Component<CollapseProps, any> {
       const { key } = ele;
       const isActive = activeKey.indexOf(key) > -1;
       return cloneElement(ele, {
-        itemKey: key!,
+        key: key!,
         isActive,
         animated,
         onChange: disabled ? () => { } : () => this.onChange(onChange, key),

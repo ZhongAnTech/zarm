@@ -11,7 +11,7 @@ exports[`Collapse renders correctly 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        50元套餐
+        Header of Item1
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -23,41 +23,7 @@ exports[`Collapse renders correctly 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          50元套餐内容
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Collapse renders correctly with activeKey 1`] = `
-<div
-  class="za-collapse za-collapse--animated"
->
-  <div
-    class="za-collapse-item za-collapse-item--active"
-  >
-    <div
-      class="za-collapse-item__title"
-    >
-      <div>
-        50元套餐
-      </div>
-      <div
-        class="za-collapse-item__arrow"
-      />
-    </div>
-    <div
-      class="za-collapse-item__content"
-    >
-      <div
-        class="za-collapse-item__content__inner"
-      >
-        <div>
-          50元套餐内容
-        </div>
+        This is content of item1.
       </div>
     </div>
   </div>
@@ -68,7 +34,7 @@ exports[`Collapse renders correctly with activeKey 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        100元套餐
+        Header of Item2
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -80,9 +46,106 @@ exports[`Collapse renders correctly with activeKey 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          100元套餐内容
-        </div>
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with activeKey 1`] = `
+<div
+  class="za-collapse"
+>
+  <div
+    class="za-collapse-item za-collapse-item--active"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
       </div>
     </div>
   </div>
@@ -100,7 +163,7 @@ exports[`Collapse renders correctly with animated 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        50元套餐
+        Header of Item1
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -112,9 +175,130 @@ exports[`Collapse renders correctly with animated 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          50元套餐内容
-        </div>
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
+<div
+  class="za-collapse"
+  multiple=""
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item za-collapse-item--active"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
       </div>
     </div>
   </div>
@@ -122,6 +306,83 @@ exports[`Collapse renders correctly with animated 1`] = `
 `;
 
 exports[`Collapse renders correctly with collapse mode 1`] = `
+<div
+  class="za-collapse"
+  multiple=""
+>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item1
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item1.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item2
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapse renders correctly with defaultActiveKey 1`] = `
 <div
   class="za-collapse"
 >
@@ -132,7 +393,7 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        50元套餐
+        Header of Item1
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -144,41 +405,7 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          50元套餐内容
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Collapse renders correctly with defaultActiveKey 1`] = `
-<div
-  class="za-collapse za-collapse--animated"
->
-  <div
-    class="za-collapse-item"
-  >
-    <div
-      class="za-collapse-item__title"
-    >
-      <div>
-        50元套餐
-      </div>
-      <div
-        class="za-collapse-item__arrow"
-      />
-    </div>
-    <div
-      class="za-collapse-item__content"
-    >
-      <div
-        class="za-collapse-item__content__inner"
-      >
-        <div>
-          50元套餐内容
-        </div>
+        This is content of item1.
       </div>
     </div>
   </div>
@@ -189,7 +416,7 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        100元套餐
+        Header of Item2
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -201,9 +428,30 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          100元套餐内容
-        </div>
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
       </div>
     </div>
   </div>
@@ -212,16 +460,16 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
 
 exports[`Collapse renders correctly with number activeKey 1`] = `
 <div
-  class="za-collapse za-collapse--animated"
+  class="za-collapse"
 >
   <div
-    class="za-collapse-item za-collapse-item--active"
+    class="za-collapse-item"
   >
     <div
       class="za-collapse-item__title"
     >
       <div>
-        50元套餐
+        Header of Item1
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -233,9 +481,7 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          50元套餐内容
-        </div>
+        This is content of item1.
       </div>
     </div>
   </div>
@@ -246,7 +492,7 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        100元套餐
+        Header of Item2
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -258,9 +504,30 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          100元套餐内容
-        </div>
+        This is content of item2.
+      </div>
+    </div>
+  </div>
+  <div
+    class="za-collapse-item"
+  >
+    <div
+      class="za-collapse-item__title"
+    >
+      <div>
+        Header of Item3
+      </div>
+      <div
+        class="za-collapse-item__arrow"
+      />
+    </div>
+    <div
+      class="za-collapse-item__content"
+    >
+      <div
+        class="za-collapse-item__content__inner"
+      >
+        This is content of item3.
       </div>
     </div>
   </div>
@@ -269,16 +536,16 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
 
 exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
 <div
-  class="za-collapse za-collapse--animated"
+  class="za-collapse"
 >
   <div
-    class="za-collapse-item za-collapse-item--active"
+    class="za-collapse-item"
   >
     <div
       class="za-collapse-item__title"
     >
       <div>
-        50元套餐
+        Header of Item1
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -290,9 +557,7 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          50元套餐内容
-        </div>
+        This is content of item1.
       </div>
     </div>
   </div>
@@ -303,7 +568,7 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        100元套餐
+        Header of Item2
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -315,19 +580,10 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          100元套餐内容
-        </div>
+        This is content of item2.
       </div>
     </div>
   </div>
-</div>
-`;
-
-exports[`Collapse renders correctly with string activeKey 1`] = `
-<div
-  class="za-collapse za-collapse--animated"
->
   <div
     class="za-collapse-item"
   >
@@ -335,7 +591,7 @@ exports[`Collapse renders correctly with string activeKey 1`] = `
       class="za-collapse-item__title"
     >
       <div>
-        50元套餐
+        Header of Item3
       </div>
       <div
         class="za-collapse-item__arrow"
@@ -347,91 +603,7 @@ exports[`Collapse renders correctly with string activeKey 1`] = `
       <div
         class="za-collapse-item__content__inner"
       >
-        <div>
-          50元套餐内容
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="za-collapse-item za-collapse-item--active"
-  >
-    <div
-      class="za-collapse-item__title"
-    >
-      <div>
-        100元套餐
-      </div>
-      <div
-        class="za-collapse-item__arrow"
-      />
-    </div>
-    <div
-      class="za-collapse-item__content"
-    >
-      <div
-        class="za-collapse-item__content__inner"
-      >
-        <div>
-          100元套餐内容
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Collapse renders correctly with string defaultActiveKey 1`] = `
-<div
-  class="za-collapse za-collapse--animated"
->
-  <div
-    class="za-collapse-item"
-  >
-    <div
-      class="za-collapse-item__title"
-    >
-      <div>
-        50元套餐
-      </div>
-      <div
-        class="za-collapse-item__arrow"
-      />
-    </div>
-    <div
-      class="za-collapse-item__content"
-    >
-      <div
-        class="za-collapse-item__content__inner"
-      >
-        <div>
-          50元套餐内容
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="za-collapse-item za-collapse-item--active"
-  >
-    <div
-      class="za-collapse-item__title"
-    >
-      <div>
-        100元套餐
-      </div>
-      <div
-        class="za-collapse-item__arrow"
-      />
-    </div>
-    <div
-      class="za-collapse-item__content"
-    >
-      <div
-        class="za-collapse-item__content__inner"
-      >
-        <div>
-          100元套餐内容
-        </div>
+        This is content of item3.
       </div>
     </div>
   </div>

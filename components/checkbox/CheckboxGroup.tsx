@@ -1,4 +1,4 @@
-import React, { PureComponent, cloneElement, ReactNode, isValidElement } from 'react';
+import React, { PureComponent, cloneElement, ReactNode, isValidElement, HTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { BaseCheckboxGroupProps } from './PropsType';
 
@@ -29,9 +29,8 @@ const getValue = (props: CheckboxGroup['props'], defaultValue: BaseCheckboxGroup
   return defaultValue;
 };
 
-export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
+export interface CheckboxGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'value' | 'onChange'>, BaseCheckboxGroupProps {
   prefixCls?: string;
-  className?: string;
 }
 
 export interface CheckboxGroupStates {
@@ -70,9 +69,8 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
 
   onChildChange = (value: string | number) => {
     const { value: valueState } = this.state;
-
+    const { onChange } = this.props;
     const values = valueState!.slice();
-
     const index = values.indexOf(value);
 
     if (index < 0) {
@@ -81,19 +79,13 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
       values.splice(index, 1);
     }
 
-    this.setState({
-      value: values,
-    });
-
-    const { onChange } = this.props;
-    if (typeof onChange === 'function') {
-      onChange(values);
-    }
+    this.setState({ value: values });
+    typeof onChange === 'function' && onChange(values);
   };
 
   render() {
-    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children } = this.props;
-    const { value } = this.state;
+    const { prefixCls, className, size, shape, type, block, disabled, compact, ghost, children, onChange, defaultValue, value, ...rest } = this.props;
+    const { value: valueState } = this.state;
 
     const items = React.Children.map(children, (element: ReactNode, index) => {
       if (isValidElement(element)) {
@@ -101,9 +93,8 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
           key: index,
           type,
           shape,
-          block: block || element.props.block,
           disabled: disabled || element.props.disabled,
-          checked: value!.indexOf(element.props.value) > -1,
+          checked: valueState!.indexOf(element.props.value) > -1,
           onChange: (checked: boolean) => {
             typeof element.props.onChange === 'function' && element.props.onChange(checked);
             this.onChildChange(element.props.value);
@@ -124,6 +115,6 @@ export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, Che
       [`${prefixCls}--ghost`]: ghost,
     });
 
-    return <div className={cls}><div className={`${prefixCls}__inner`}>{items}</div></div>;
+    return <div className={cls} {...rest}><div className={`${prefixCls}__inner`}>{items}</div></div>;
   }
 }

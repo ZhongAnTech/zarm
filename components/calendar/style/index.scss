@@ -9,11 +9,8 @@ $--calendar-day-width: 14.28571%;
 
   ul {
     list-style-type: disc;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    -webkit-padding-start: 0;
+    margin: 0;
+    padding: 0;
   }
 
   li {
@@ -29,13 +26,9 @@ $--calendar-day-width: 14.28571%;
     color: var(--calendar-week-bar-color);
     background-color: var(--calendar-week-bar-background);
     font-size: var(--calendar-week-bar-fontsize);
+    margin: 0;
     padding: 0 var(--calendar-section-padding);
     list-style-type: disc;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    -webkit-padding-start: 0;
 
     &__item {
       height: var(--calendar-day-height);

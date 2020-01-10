@@ -13,18 +13,18 @@
       line-height: var(--tabs-height);
       @include onepx(bottom);
     }
+  }
 
-    &__item {
-      flex: 1;
-      text-align: center;
-      color: var(--color-text);
-      font-size: var(--tabs-item-font-size);
-      cursor: pointer;
+  @include e(tab) {
+    flex: 1;
+    text-align: center;
+    color: var(--color-text);
+    font-size: var(--tabs-item-font-size);
+    cursor: pointer;
 
-      @include m(disabled) {
-        color: var(--color-text-disabled);
-        cursor: not-allowed;
-      }
+    @include m(disabled) {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
     }
   }
 
@@ -47,33 +47,10 @@
   @include e(panel) {
     position: relative;
     transition: height .3s;
+    display: none;
 
-    &__item {
-      display: none;
-
-      @include m(active) {
-        display: block;
-      }
-    }
-  }
-
-  @include m(hasline) {
-    @include e(header__item) {
-      &:nth-of-type(n+2) {
-        position: relative;
-
-        &:after {
-          content: '';
-          display: inline-block;
-          position: absolute;
-          top: 50%;
-          left: 0;
-          width: 1px;
-          height: r(14);
-          margin-top: r(-7);
-          background: #e9e9e9;
-        }
-      }
+    @include m(active) {
+      display: block;
     }
   }
 }

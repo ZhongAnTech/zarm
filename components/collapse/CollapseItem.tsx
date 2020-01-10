@@ -1,71 +1,60 @@
-import React, { PureComponent } from 'react';
+import React, { HTMLAttributes, PureComponent } from 'react';
 import classnames from 'classnames';
 import { BaseCollapseItemProps } from './PropsType';
 
-export interface CollapseItemProps extends BaseCollapseItemProps {
+export interface CollapseItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'key' | 'title' | 'onChange'>, BaseCollapseItemProps {
   prefixCls?: string;
-  className?: string;
 }
 
-export default class CollapseItem extends PureComponent<CollapseItemProps, any> {
+interface CollapseItemStates {
+  active?: boolean;
+  prevActive?: boolean;
+}
+
+export default class CollapseItem extends PureComponent<CollapseItemProps, CollapseItemStates> {
   static defaultProps = {
     prefixCls: 'za-collapse-item',
     animated: false,
     disabled: false,
   };
 
-  private content;
+  private content: HTMLDivElement | null;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: this.isActive(props),
-    };
-  }
+  state: CollapseItemStates = {
+    active: this.props.isActive,
+  };
 
-  static getDerivedStateFromProps(nextProps) {
-    if ('isActive' in nextProps) {
+  static getDerivedStateFromProps(nextProps, state) {
+    if ('isActive' in nextProps && nextProps.isActive !== state.prevActive) {
       return {
         active: nextProps.isActive,
         prevActive: nextProps.isActive,
       };
     }
+
     return null;
   }
 
+  componentDidMount() {
+    this.setStyle();
+  }
+
   componentDidUpdate() {
-    const { animated } = this.props;
-    const { active } = this.state;
-    if (animated) {
-      this.setStyle(active);
-    }
+    this.setStyle();
   }
 
   onClickItem = () => {
     const { onChange, disabled } = this.props;
     const { active } = this.state;
-    if (disabled) {
-      return;
-    }
-    if (typeof onChange === 'function') {
-      onChange(active);
-    }
+    if (disabled) return;
+    typeof onChange === 'function' && onChange(active);
   };
 
-  setStyle = (active) => {
-    if (!active) {
-      this.content.style.height = `${this.content.offsetHeight}px`;
+  setStyle = () => {
+    if (!this.content) return;
 
-      setTimeout(() => {
-        this.content.style.height = '0px';
-      }, 0);
-    } else {
-      this.content.style.height = '0px';
-
-      setTimeout(() => {
-        this.content.style.height = `${this.getContentHeight(this.content)}px`;
-      }, 0);
-    }
+    const { active } = this.state;
+    this.content.style.height = active ? `${this.getContentHeight(this.content)}px` : '0px';
   };
 
   getContentHeight = (content) => {
@@ -76,13 +65,8 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
     }, 0);
   };
 
-  isActive = (props) => {
-    return props.isActive;
-  };
-
   render() {
-    const { title, children, style } = this.props;
-    const { prefixCls, className, disabled } = this.props;
+    const { prefixCls, title, className, disabled, animated, isActive, children, onChange, ...rest } = this.props;
     const { active } = this.state;
 
     const cls = classnames(prefixCls, className, {
@@ -90,7 +74,7 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, any> 
       [`${prefixCls}--disabled`]: disabled,
     });
     return (
-      <div className={cls} style={style}>
+      <div className={cls} {...rest}>
         <div
           className={`${prefixCls}__title`}
           onClick={this.onClickItem}
