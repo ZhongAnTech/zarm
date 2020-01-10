@@ -1,4 +1,4 @@
-@import "../core/index";
+@import "../core/index.scss";
 
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
@@ -252,7 +252,23 @@
 
   // Progress
   --progress-background: #f2f2f2;
-  --progress-circle-diameter: 150px;
+  //--progress-circle-diameter: 150px;
+  // -height-#{size} 仅针对type: 'line'
+  --progress-width-lg: 100%;
+  --progress-width-md: 100%;
+  --progress-width-sm: 140px;
+  // -size-#{size} 同时针对type: 'semi-circle' | 'circle'
+  --progress-size-lg: 200px;
+  --progress-size-md: 150px;
+  --progress-size-sm: 80px;
+  // -width-#{size} 针对 weight: 'bold' | 'normal' | 'thin'
+  //--progress-weight-lg: 10px;
+  //--progress-weight-md: 8px;
+  //--progress-weight-sm: 4px;
+  // 同时针对type: 'circle' 和 'semi-circle'
+  --progress-font-size-circle-lg: 30px;
+  --progress-font-size-circle-md: 24px;
+  --progress-font-size-circle-sm: 18px;
 
   // Pull
   --pull-control-height: 50px;
