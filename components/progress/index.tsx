@@ -68,7 +68,7 @@ export default class Progress extends PureComponent<ProgressProps, any> {
   }
 
   render() {
-    const { theme, percent, strokeShape/* 进度条线的形状 */, shape, size, style, prefixCls, className, children, text: format } = this.props;
+    const { theme, percent, strokeShape, shape, size, style, prefixCls, className, children, text: format } = this.props;
     const { state } = this;
     const strokeWidth = this.useSVG ? state.svgStrokeWidth : this.strokeWidth;
     const hasKnownSize = size && (size in Progress.strokeWeights);
@@ -118,8 +118,14 @@ export default class Progress extends PureComponent<ProgressProps, any> {
       ? Math.PI * diameter
       : (Math.PI * diameter) / 2;
 
-    const roundInner = (shape === 'circle' || shape === 'semi-circle')
-      && (
+    const borderRadius = strokeShape === 'round' ? `${this.strokeWidth}px` : '0';
+    const lineTrackStyle = { height: `${strokeWidth}`, borderRadius };
+    const lineThumbStyle = { width: `${percent}%`, height: `${strokeWidth}px`, borderRadius };
+    const formattedPercent = format ? format(percent || 0) : null;
+    const hasIndicator = children || formattedPercent;
+
+    const roundInner = (shape === 'circle' || shape === 'semi-circle') && (
+      <>
         <svg viewBox={viewBox}>
           <path
             className={`${prefixCls}__track`}
@@ -136,23 +142,21 @@ export default class Progress extends PureComponent<ProgressProps, any> {
             strokeDashoffset={(dasharray * (100 - percent!)) / 100}
           />
         </svg>
-      );
-
-    const borderRadius = strokeShape === 'round' ? `${this.strokeWidth}px` : '0';
-    const lineTrackStyle = { height: `${strokeWidth}`, borderRadius };
-    const lineThumbStyle = { width: `${percent}%`, height: `${strokeWidth}px`, borderRadius };
+        {hasIndicator && <div className={`${prefixCls}__text`}>{children || formattedPercent}</div>}
+      </>
+    );
 
     const rectInner = (
       shape === 'line'
       && (
-        <div className={`${prefixCls}__track`} style={lineTrackStyle}>
-          <div className={`${prefixCls}__thumb`} style={lineThumbStyle} />
+        <div className={`${prefixCls}__outer`}>
+          <div className={`${prefixCls}__track`} style={lineTrackStyle}>
+            <div className={`${prefixCls}__thumb`} style={lineThumbStyle} />
+          </div>
+          {hasIndicator && <div className={`${prefixCls}__text`}>{children || formattedPercent}</div>}
         </div>
       )
     );
-
-    const formattedPercent = format ? format(percent || 0) : null;
-    const hasIndicator = children || formattedPercent;
 
     return (
       <div
@@ -161,7 +165,6 @@ export default class Progress extends PureComponent<ProgressProps, any> {
         ref={(ele) => { this.progressElement = ele; }}
       >
         {shape === 'line' ? rectInner : roundInner}
-        {hasIndicator && <div className={`${prefixCls}__text`}>{children || formattedPercent}</div>}
       </div>
     );
   }

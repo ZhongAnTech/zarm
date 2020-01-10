@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export type KnownSize = 'lg' | 'md' | 'sm';
 export type ProgressTheme = 'primary' | 'success' | 'warning' | 'danger';
@@ -6,7 +6,7 @@ export type ProgressSize = KnownSize | number | string;
 export type ProgressShape = 'line' | 'circle' | 'semi-circle';
 export type ProgressStrokeShape = 'round' | 'rect';
 export type ProgressPercent = number;
-export type PercentFormatter = (percent: number) => string;
+export type PercentFormatter = (percent?: number) => ReactNode;
 
 export default interface PropsType {
   // 类名前缀

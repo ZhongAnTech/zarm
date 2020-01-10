@@ -4,14 +4,14 @@
 
 ## 基本用法
 ```jsx
-import { Progress, Cell, Select, Stepper, Input } from 'zarm';
+import { Progress, Cell, Select, Radio, Stepper } from 'zarm';
 
 class Demo extends React.Component {
   state = {
     percent: 10,
     theme: 'primary',
     strokeShape: 'round',
-    strokeWidth: 5
+    strokeWidth: null,
   };
 
   render() {
@@ -25,9 +25,7 @@ class Demo extends React.Component {
             theme={theme}
             strokeShape={strokeShape}
             strokeWidth={strokeWidth}
-          >
-            {percent}%
-          </Progress>
+          />
         </div>
         <div className="progress">
           <Progress
@@ -36,12 +34,13 @@ class Demo extends React.Component {
             theme={theme}
             strokeShape={strokeShape}
             strokeWidth={strokeWidth}
-          >
-            <div className="progress-content">
-              <span className="progress-text">{percent}</span>
-              <span className="progress-percent">%</span>
-            </div>
-          </Progress>
+            text={(percent) => (
+              <div className="progress-content">
+                <span className="progress-text">{percent}</span>
+                <span className="progress-percent">%</span>
+              </div>
+            )}
+          />
         </div>
         <div className="progress">
           <Progress
@@ -50,12 +49,13 @@ class Demo extends React.Component {
             theme={theme}
             strokeShape={strokeShape}
             strokeWidth={strokeWidth}
-          >
-            <div className="progress-content">
-              <span className="progress-text">{percent}</span>
-              <span className="progress-percent">%</span>
-            </div>
-          </Progress>
+            text={(percent) => (
+              <div className="progress-content">
+                <span className="progress-text">{percent}</span>
+                <span className="progress-percent">%</span>
+              </div>
+            )}
+          />
         </div>
 
         <Cell title="进度">
@@ -91,22 +91,33 @@ class Demo extends React.Component {
         </Cell>
 
         <Cell title="线条形状">
-          <Select
+          <Radio.Group
+            ghost
+            compact
+            type="button"
             value={strokeShape}
-            dataSource={[
-              { value: 'round', label: 'round' },
-              { value: 'rect', label: 'rect' },
-            ]}
-            onOk={(selected) => {
+            onChange={(value) => {
               this.setState({
-                strokeShape: selected[0].value,
+                strokeShape: value,
               });
-            }}
-          />
+            }}>
+            <Radio value="round">round</Radio>
+            <Radio value="rect">rect</Radio>
+          </Radio.Group>
         </Cell>
 
         <Cell title="线条粗细">
-          <input type="number" value={strokeWidth} onChange={(event) => this.setState({strokeWidth: event.target.value})} />
+          <Stepper
+            step={1}
+            min={0}
+            value={strokeWidth}
+            onChange={(value) => {
+              if (Number.isNaN(Number(value))) return;
+              this.setState({
+                strokeWidth: value,
+              });
+            }}
+          />
         </Cell>
       </>
     )
@@ -122,10 +133,10 @@ ReactDOM.render(<Demo />, mountNode);
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| theme | string | `primary` | 主题，可选值 `primary`, `success`, `warning`, `danger` |
+| theme | string | 'primary' | 主题，可选值 `primary`, `success`, `warning`, `danger` |
+| size | string | 'md' | 大小，可选值 `lg`, `md`, `sm`，number类型的值，或者任何合法的css宽度值 |
+| shape | string | 'line' | 形状，可选值 `line`, `circle`, `semi-circle` |
 | percent | number | 0 | 进度百分比（范围：0～100） |
-| shape | string | `line` | 类型，可选值 `line`, `circle`, `semi-circle` |
-| strokeShape | string | `round` | 线条形状，可选值 `round`, `rect` |
-| size | string | `md` | 组件大小，可选值 `lg`, `md`, `sm`，number类型的值，或者任何合法的css宽度值 |
-| strokeWidth | number | 8 | 线条粗细 |
-| text | (percent: number) => string | `(percent) => percent + '%'` | 进度百分比的格式化函数，children会覆盖它 |
+| text | (percent?: number) => ReactNode | (percent) => \`${percent}%\` | 进度文本显示 |
+| strokeShape | string | 'round' | 线条形状，可选值 `round`, `rect` |
+| strokeWidth | number | - | 线条粗细，单位: px，不设置则根据大小自动调整 |

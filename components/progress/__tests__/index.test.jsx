@@ -32,21 +32,21 @@ describe('Progress', () => {
   });
 
   it('renders size is lg correctly', () => {
-    const wrapper = render(<Progress shape="line" percent={10} />);
+    const wrapper = mount(<Progress shape="line" percent={10} />);
     wrapper.setProps({ size: 'lg' });
     expect(wrapper.props().size).toEqual('lg');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders size is md correctly', () => {
-    const wrapper = render(<Progress shape="line" percent={10} />);
+    const wrapper = mount(<Progress shape="line" percent={10} />);
     wrapper.setProps({ size: 'md' });
     expect(wrapper.props().size).toEqual('md');
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
   it('renders size is sm correctly', () => {
-    const wrapper = render(<Progress shape="line" percent={10} />);
+    const wrapper = mount(<Progress shape="line" percent={10} />);
     wrapper.setProps({ size: 'sm' });
     expect(wrapper.props().size).toEqual('sm');
     expect(toJson(wrapper)).toMatchSnapshot();

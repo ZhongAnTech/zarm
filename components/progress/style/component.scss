@@ -1,12 +1,16 @@
 @include b(progress) {
-  display: flex;
-  align-items: center;
+  display: inline-block;
   position: relative;
+
+  @include e(outer) {
+    display: flex;
+    align-items: center;
+  }
 
   @include e(text) {
     display: inline-block;
     margin-left: r(5);
-    font-size: r(12);
+    font-size: r(14);
   }
 
   @include m(line) {
