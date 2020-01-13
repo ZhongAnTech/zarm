@@ -115,6 +115,8 @@
 }
 
 @include b(radio-group) {
+  display: inline-block;
+  vertical-align: middle;
   overflow: hidden;
 
   @include e(inner) {
