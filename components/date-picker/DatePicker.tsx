@@ -89,12 +89,6 @@ export default class DatePicker extends Component<DatePickerProps, any> {
     }
   };
 
-  close = (key) => {
-    this.setState({
-      [`${key}`]: false,
-    });
-  };
-
   render() {
     const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
     const cls = classnames(prefixCls, className);
