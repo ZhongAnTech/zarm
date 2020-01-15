@@ -1,11 +1,19 @@
 import { PureComponent, cloneElement, ReactElement } from 'react';
 import Events from '../utils/events';
-import PropsType from './PropsType';
+import DragProps, { DragEvent, DragState } from './PropsType';
 
-export type DragProps = PropsType;
+export { DragProps, DragEvent, DragState };
 
 export default class Drag extends PureComponent<DragProps, {}> {
-  private dragState = Object.create(null);
+  private currentX?: number;
+
+  private currentY?: number;
+
+  private dragState: DragState = Object.create(null);
+
+  get isDragStart() {
+    return this.dragState.startX !== undefined && this.dragState.startY !== undefined;
+  }
 
   onTouchStart = (event) => {
     this.dragState.startTime = new Date();
@@ -22,35 +30,37 @@ export default class Drag extends PureComponent<DragProps, {}> {
       this.dragState.startY = touch.pageY;
     }
 
+    const state: DragState = {
+      ...this.dragState,
+    };
+
     const { onDragStart } = this.props;
     if (typeof onDragStart === 'function') {
-      onDragStart(event, this.dragState);
+      onDragStart(event, state);
     }
   };
 
   onTouchMove = (event) => {
-    if (this.dragState.startX === undefined) return false;
-    let currentX: number;
-    let currentY: number;
+    if (!this.isDragStart) return false;
 
     if (!event.touches) {
-      currentX = event.clientX;
-      currentY = event.clientY;
+      this.currentX = event.clientX;
+      this.currentY = event.clientY;
     } else {
       const touch = event.touches[0];
-      currentX = touch.pageX;
-      currentY = touch.pageY;
+      this.currentX = touch.pageX;
+      this.currentY = touch.pageY;
     }
 
-    const offsetX = currentX - this.dragState.startX;
-    const offsetY = currentY - this.dragState.startY;
+    const offsetX = this.currentX! - this.dragState.startX!;
+    const offsetY = this.currentY! - this.dragState.startY!;
 
-    const state = {
+    const state: DragState = {
       ...this.dragState,
       offsetX,
       offsetY,
-      currentX,
-      currentY,
+      // currentX: this.currentX,
+      // currentY: this.currentY,
     };
 
     const { onDragMove } = this.props;
@@ -62,7 +72,8 @@ export default class Drag extends PureComponent<DragProps, {}> {
   };
 
   onTouchEnd = (event) => {
-    if (this.dragState.startX === undefined) return false;
+    if (!this.isDragStart) return false;
+
     if (event && !event.touches) {
       Events.off(document.body, 'mousemove', this.onTouchMove);
       Events.off(document.body, 'mouseup', this.onTouchEnd);
