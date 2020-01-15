@@ -20,6 +20,20 @@ module.exports = {
     },
   ],
   components: {
+    general: [
+      {
+        key: 'button',
+        name: '按钮',
+        module: () => import('@/components/button/demo.md'),
+        style: true,
+      },
+      {
+        key: 'icon',
+        name: '图标',
+        module: () => import('@/components/icon/demo.md'),
+        style: true,
+      },
+    ],
     form: [
       {
         key: 'input',
@@ -96,12 +110,6 @@ module.exports = {
     ],
     feedback: [
       {
-        key: 'button',
-        name: '按钮',
-        module: () => import('@/components/button/demo.md'),
-        style: true,
-      },
-      {
         key: 'action-sheet',
         name: '动作面板',
         module: () => import('@/components/action-sheet/demo.md'),
@@ -143,6 +151,18 @@ module.exports = {
         module: () => import('@/components/activity-indicator/demo.md'),
         style: false,
       },
+      {
+        key: 'popup',
+        name: '弹出框',
+        module: () => import('@/components/popup/demo.md'),
+        style: true,
+      },
+      {
+        key: 'popper',
+        name: '气泡层',
+        module: () => import('@/components/popper/demo.md'),
+        style: true,
+      },
     ],
     view: [
       {
@@ -161,12 +181,6 @@ module.exports = {
         key: 'cell',
         name: '列表项',
         module: () => import('@/components/cell/demo.md'),
-        style: true,
-      },
-      {
-        key: 'icon',
-        name: '图标',
-        module: () => import('@/components/icon/demo.md'),
         style: true,
       },
       {
@@ -200,12 +214,6 @@ module.exports = {
         style: false,
       },
       {
-        key: 'popper',
-        name: '气泡层',
-        module: () => import('@/components/popper/demo.md'),
-        style: true,
-      },
-      {
         key: 'tooltip',
         name: '文字提示',
         module: () => import('@/components/tooltip/demo.md'),
@@ -213,12 +221,6 @@ module.exports = {
       },
     ],
     navigation: [
-      {
-        key: 'popup',
-        name: '弹出框',
-        module: () => import('@/components/popup/demo.md'),
-        style: true,
-      },
       {
         key: 'tabs',
         name: '标签页',
@@ -243,6 +245,12 @@ module.exports = {
         key: 'locale-provider',
         name: '国际化',
         module: () => import('@/components/locale-provider/demo.md'),
+        style: false,
+      },
+      {
+        key: 'drag',
+        name: '拖拽',
+        module: () => import('@/components/drag/demo.md'),
         style: false,
       },
     ],

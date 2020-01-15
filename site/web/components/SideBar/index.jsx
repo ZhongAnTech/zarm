@@ -19,10 +19,12 @@ class SideBar extends PureComponent {
   };
 
   getMenus = (groupName, key) => {
+    const list = components[key] || [];
+
     return (
       <Menu.SubMenu title={groupName} key={key}>
         {
-          components[key]
+          list
             .sort((a, b) => {
               return a.key.localeCompare(b.key);
             })
@@ -45,11 +47,12 @@ class SideBar extends PureComponent {
       <div className="side-bar">
         <div className="menu">
           <Menu
-            defaultOpenKeys={['components', 'form', 'feedback', 'view', 'navigation', 'other']}
+            defaultOpenKeys={['components', 'general', 'form', 'feedback', 'view', 'navigation', 'other']}
             selectedKeys={[match.params.document, match.params.component]}
           >
             {this.getDocs()}
             <Menu.SubMenu title="组件" key="components">
+              {this.getMenus('通用', 'general')}
               {this.getMenus('数据录入', 'form')}
               {this.getMenus('操作反馈', 'feedback')}
               {this.getMenus('数据展示', 'view')}

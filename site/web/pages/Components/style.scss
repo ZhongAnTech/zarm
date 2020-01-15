@@ -13,7 +13,7 @@
     .main-container {
       min-height: 500px;
       margin-left: -1px;
-      padding: 0 560px 140px 340px;
+      padding: 0 480px 140px 340px;
       overflow: hidden;
       border-left: 1px solid #ebedf0;
 
@@ -24,9 +24,9 @@
 
     .simulator {
       position: fixed;
-      top: 110px;
+      top: 120px;
       right: 0;
-      width: 500px;
+      width: 420px;
       z-index: 10;
 
       iframe {

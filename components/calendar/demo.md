@@ -101,6 +101,6 @@ ReactDOM.render(<Demo />, mountNode);
 | min | Date | new Date() | 最小可选日期 |
 | max | Date | min + 1 年 | 最大可选日期 |
 | multiple | boolean | false | 是否双选 |
-| dateRender | (date?: Date) => void | date => date.getDate() | 日期渲染函数 |
+| dateRender | (date?: Date) => void | (date) => date.getDate() | 日期渲染函数 |
 | disabledDate | (date?: Date) => boolean | () => false | 日期是否禁止选择 |
 | onChange | (value?: Date[]) => void | - | 日期选择发生变化时触发的回调函数 |

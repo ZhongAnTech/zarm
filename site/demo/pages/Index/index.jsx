@@ -7,12 +7,14 @@ import Footer from '@site/demo/components/Footer';
 import './style.scss';
 
 class Page extends PureComponent {
-  getMenu = (groupName, key) => {
+  getMenus = (groupName, key) => {
     const { history } = this.props;
+    const list = components[key] || [];
+
     return (
-      <Panel title={`${groupName}（${components[key].length}）`}>
+      <Panel title={`${groupName}（${list.length}）`}>
         {
-          components[key]
+          list
             .sort((a, b) => {
               return a.key.localeCompare(b.key);
             })
@@ -44,11 +46,12 @@ class Page extends PureComponent {
           </section>
         </header>
         <main>
-          {this.getMenu('数据录入', 'form')}
-          {this.getMenu('操作反馈', 'feedback')}
-          {this.getMenu('数据展示', 'view')}
-          {this.getMenu('导航', 'navigation')}
-          {this.getMenu('其他', 'other')}
+          {this.getMenus('通用', 'general')}
+          {this.getMenus('数据录入', 'form')}
+          {this.getMenus('操作反馈', 'feedback')}
+          {this.getMenus('数据展示', 'view')}
+          {this.getMenus('导航', 'navigation')}
+          {this.getMenus('其他', 'other')}
         </main>
         <Footer />
       </Container>

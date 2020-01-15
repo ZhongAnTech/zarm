@@ -27,7 +27,7 @@ const LoadableComponent = (component) => {
 class Page extends PureComponent {
   render() {
     const { match } = this.props;
-    const { form, feedback, view, navigation, other } = components;
+    const { general, form, feedback, view, navigation, other } = components;
 
     const containerCls = classnames('main-container', {
       'no-simulator': !isComponentPage(match.params.component),
@@ -53,7 +53,7 @@ class Page extends PureComponent {
                 ))
               }
               {
-                [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
+                [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
                   <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
                 ))
               }
