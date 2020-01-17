@@ -54,8 +54,8 @@ class SideBar extends PureComponent {
             <Menu.SubMenu title="组件" key="components">
               {this.getMenus('通用', 'general')}
               {this.getMenus('数据录入', 'form')}
-              {this.getMenus('操作反馈', 'feedback')}
               {this.getMenus('数据展示', 'view')}
+              {this.getMenus('操作反馈', 'feedback')}
               {this.getMenus('导航', 'navigation')}
               {this.getMenus('其他', 'other')}
             </Menu.SubMenu>

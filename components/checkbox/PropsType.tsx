@@ -15,7 +15,7 @@ export interface BaseCheckboxProps {
   defaultChecked?: boolean;
   indeterminate?: boolean;
   id?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event?: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface BaseCheckboxGroupProps {
