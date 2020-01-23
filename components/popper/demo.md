@@ -83,7 +83,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 自定义箭头
 ```jsx
-import { Cell, Button, Popper, Radio } from 'zarm';
+import { Cell, Button, Popper, Radio, Message, Icon } from 'zarm';
 
 class Demo extends React.Component {
   state = {
@@ -97,6 +97,7 @@ class Demo extends React.Component {
       <>
         <Cell description={
           <Radio.Group
+            compact
             type="button"
             value={this.state.arrow}
             onChange={value => {
@@ -166,6 +167,8 @@ class Demo extends React.Component {
                 <Button block size="xs">BR</Button>
               </Popper>
             </div>
+
+            <Message theme="warning" icon={<Icon type="warning-round" />}>左右两侧显示位置不足会自动调整为反向显示</Message>
           </div>
         </Cell>
       </>

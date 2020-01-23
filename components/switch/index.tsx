@@ -9,12 +9,13 @@ const getChecked = (props: SwitchProps, defaultChecked: boolean) => {
   if (typeof props.defaultChecked !== 'undefined') {
     return props.defaultChecked;
   }
+
   return defaultChecked;
 };
 
 export type SwitchProps = {
   prefixCls?: string;
-} & HTMLAttributes<HTMLSpanElement> & PropsType;
+} & Omit<HTMLAttributes<HTMLSpanElement>, 'onChange'> & PropsType;
 
 export interface SwitchStates {
   checked: boolean;

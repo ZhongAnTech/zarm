@@ -12,7 +12,7 @@ export interface ToastProps extends PropsType {
 export default class Toast extends Component<ToastProps, any> {
   static hideHelper: () => void;
 
-  private static zarmToast: null | HTMLDivElement;
+  private static zarmToast: HTMLDivElement | null;
 
   static show = (
     children: ReactNode,
@@ -23,17 +23,19 @@ export default class Toast extends Component<ToastProps, any> {
     Toast.unmountNode();
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
+      Toast.zarmToast.classList.add('toast-container');
       document.body.appendChild(Toast.zarmToast);
     }
-
-    if (Toast.zarmToast) {
-      ReactDOM.render(
-        <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
-          {children}
-        </Toast>,
-        Toast.zarmToast,
-      );
-    }
+    setTimeout(() => {
+      if (Toast.zarmToast) {
+        ReactDOM.render(
+          <Toast visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={Toast.zarmToast}>
+            {children}
+          </Toast>,
+          Toast.zarmToast,
+        );
+      }
+    }, 0);
   };
 
   static hide = () => {
@@ -45,7 +47,7 @@ export default class Toast extends Component<ToastProps, any> {
   static unmountNode = () => {
     const { zarmToast } = Toast;
     if (zarmToast) {
-      ReactDOM.unmountComponentAtNode(zarmToast);
+      ReactDOM.render(<></>, zarmToast);
     }
   };
 
@@ -77,6 +79,7 @@ export default class Toast extends Component<ToastProps, any> {
         this.setState({
           visible: true,
         });
+        clearTimeout(this.timer);
         this.autoClose();
       } else {
         this._hide();
