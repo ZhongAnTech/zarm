@@ -1,63 +1,49 @@
 import React from 'react';
-import { render, shallow, mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import { mount } from 'enzyme';
 import Toast from '../index';
 
 describe('Toast', () => {
-  const props = {
-    mask: true,
-    stayTime: 1,
-    onMaskClick: jest.fn(),
-  };
   it('renders correctly', () => {
-    const wrapper = render(
-      <Toast {...props}>foo</Toast>,
-    );
-    expect(toJson(wrapper)).toMatchSnapshot();
-  });
-
-  it('visible change false', () => {
     const wrapper = mount(
       <Toast visible>foo</Toast>,
     );
-    wrapper.setProps({ visible: false });
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it('stayTime', () => {
-    jest.useFakeTimers();
-    props.onClose = jest.fn();
+  it('visible change true', () => {
     const wrapper = mount(
-      <Toast stayTime={5000} visible {...props}>foo</Toast>,
-    );
-    jest.runAllTimers();
-    wrapper.unmount();
-  });
-
-  it('stayTime is 0', () => {
-    const wrapper = shallow(
-      <Toast stayTime={0}>foo</Toast>,
+      <Toast />,
     );
     wrapper.setProps({ visible: true });
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it('afterClose', () => {
-    jest.useFakeTimers();
+  it('visible change false', () => {
     const afterClose = jest.fn();
-    const wrapper = mount(
-      <Toast stayTime={5000} visible {...props} afterClose={afterClose}>foo</Toast>,
-    );
-    jest.runAllTimers();
-    // expect(afterClose).toHaveBeenCalled();
-    wrapper.unmount();
+    const wrapper = mount(<Toast visible afterClose={afterClose} />);
+    wrapper.setProps({ visible: false });
+    wrapper.simulate('transitionEnd');
+    wrapper.simulate('animationEnd');
+    expect(wrapper.state('visible')).toEqual(false);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('static function show', () => {
-    const wrapper = Toast.show();
-    expect(wrapper).toMatchSnapshot();
+    jest.useFakeTimers();
+    Toast.show();
+    jest.runAllTimers();
+    const toastContainer = document.getElementsByClassName('toast-container');
+    expect(toastContainer.length).toEqual(1);
   });
 
   it('static function hide', () => {
-    const wrapper = Toast.hide();
-    expect(wrapper).toMatchSnapshot();
+    jest.useFakeTimers();
+    Toast.show();
+    jest.runAllTimers();
+    Toast.hide();
+    // todo：实现静态方法的动画结束
+    // const toastContainer = document.getElementsByClassName('toast-container');
+    // do sth to travel transform
+    // expect(toastContainer.length).toEqual(0);
   });
 });

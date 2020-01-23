@@ -24,8 +24,8 @@ export default class Toast extends Component<ToastProps, any> {
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
       Toast.zarmToast.classList.add('toast-container');
+      document.body.appendChild(Toast.zarmToast);
     }
-    document.body.appendChild(Toast.zarmToast);
     setTimeout(() => {
       if (Toast.zarmToast) {
         ReactDOM.render(
@@ -47,7 +47,7 @@ export default class Toast extends Component<ToastProps, any> {
   static unmountNode = () => {
     const { zarmToast } = Toast;
     if (zarmToast) {
-      ReactDOM.render(<></>, Toast.zarmToast);
+      ReactDOM.render(<></>, zarmToast);
     }
   };
 
@@ -73,8 +73,6 @@ export default class Toast extends Component<ToastProps, any> {
   componentDidUpdate(prevProps) {
     const { visible } = this.props;
 
-    console.log('componentDidUpdate');
-
     if (prevProps.visible !== visible) {
       if (visible === true) {
         // eslint-disable-next-line
@@ -91,17 +89,11 @@ export default class Toast extends Component<ToastProps, any> {
 
   componentWillUnmount() {
     clearTimeout(this.timer);
-    console.log('componentWillUnmount');
   }
 
   afterClose = () => {
-    alert('afterClose');
     const { afterClose } = this.props;
     if (Toast.zarmToast) {
-      // console.log(document.getElementById('toast-container'));
-      // console.log(Toast.zarmToast);
-      // ReactDOM.unmountComponentAtNode(Toast.zarmToast);
-      // ReactDOM.render(null, Toast.zarmToast);
       document.body.removeChild(Toast.zarmToast);
       Toast.zarmToast = null;
     }
