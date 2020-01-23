@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
+import classnames from 'classnames';
 import PropsType from './PropsType';
-import Toast from '../toast';
+import Popup from '../popup';
 import ActivityIndicator from '../activity-indicator';
 
 export interface LoadingProps extends PropsType {
@@ -15,36 +16,39 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     mask: true,
   };
 
-  static zarmLoading: HTMLElement;
+  static zarmLoading: HTMLElement | null;
 
-  static _hide: () => void;
+  static hideHelper: () => void;
 
   static show = (children: any, stayTime?: number, mask?: boolean, afterClose?: () => void) => {
     Loading.unmountNode();
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
+      Loading.zarmLoading.classList.add('loading-container');
       document.body.appendChild(Loading.zarmLoading);
     }
-    if (Loading.zarmLoading) {
-      ReactDOM.render(
-        <Loading visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={() => Loading.zarmLoading}>
-          {children}
-        </Loading>,
-        Loading.zarmLoading,
-      );
-    }
+    setTimeout(() => {
+      if (Loading.zarmLoading) {
+        ReactDOM.render(
+          <Loading visible stayTime={stayTime} mask={mask} afterClose={afterClose} getContainer={Loading.zarmLoading}>
+            {children}
+          </Loading>,
+          Loading.zarmLoading,
+        );
+      }
+    }, 0);
   };
 
   static hide = () => {
-    if (Loading._hide) {
-      Loading._hide();
+    if (Loading.hideHelper) {
+      Loading.hideHelper();
     }
   };
 
   static unmountNode = () => {
     const { zarmLoading } = Loading;
     if (zarmLoading) {
-      ReactDOM.unmountComponentAtNode(zarmLoading);
+      ReactDOM.render(<></>, zarmLoading);
     }
   };
 
@@ -55,7 +59,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   };
 
   componentDidMount() {
-    Loading._hide = this._hide;
+    Loading.hideHelper = this._hide;
     this.autoClose();
   }
 
@@ -83,7 +87,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     const { afterClose } = this.props;
     if (Loading.zarmLoading) {
       document.body.removeChild(Loading.zarmLoading);
-      // Loading.zarmLoading = null;
+      Loading.zarmLoading = null;
     }
 
     if (typeof afterClose === 'function') {
@@ -109,12 +113,22 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   }
 
   render() {
-    const { prefixCls, children, stayTime, ...others } = this.props;
+    const { prefixCls, children, stayTime, className, ...others } = this.props;
     const { visible } = this.state;
+    const cls = classnames(prefixCls, className);
     return (
-      <Toast prefixCls={prefixCls} stayTime={stayTime || 0} {...others} visible={visible} afterClose={this.afterClose}>
-        {children || <ActivityIndicator type="spinner" size="lg" />}
-      </Toast>
+      <Popup
+        direction="center"
+        maskType="transparent"
+        width="70%"
+        {...others}
+        visible={visible}
+        afterClose={this.afterClose}
+      >
+        <div className={cls}>
+          <div className={`${prefixCls}__container`}>{children || <ActivityIndicator type="spinner" size="lg" />}</div>
+        </div>
+      </Popup>
     );
   }
 }
