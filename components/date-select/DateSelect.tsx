@@ -6,7 +6,7 @@ import DatePicker from '../date-picker';
 
 export interface DateSelectProps extends BaseDateSelectProps {
   prefixCls?: string;
-  className?: any;
+  className?: string;
 }
 
 export default class DateSelect extends PureComponent<DateSelectProps, any> {

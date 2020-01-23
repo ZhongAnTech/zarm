@@ -163,6 +163,10 @@ ReactDOM.render(<Demo />, mountNode);
 // 显示轻提示
 Toast.show(children, stayTime, mask, afterClose);
 Loading.show(children, stayTime, mask, afterClose);
+
+// 隐藏轻提示
+Toast.hide();
+Loading.hide();
 ```
 
 | 属性 | 类型 | 默认值 | 说明 |
@@ -171,10 +175,3 @@ Loading.show(children, stayTime, mask, afterClose);
 | stayTime | number | 3000 | 自动关闭前停留的时间（单位：毫秒） |
 | mask | boolean | false | 是否展示遮罩层 |
 | afterClose | () => void | - | 轻提示隐藏后的回调函数 |
-
-
-```js
-// 隐藏轻提示
-Toast.hide();
-Loading.hide();
-```

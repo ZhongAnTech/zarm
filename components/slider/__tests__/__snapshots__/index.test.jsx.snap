@@ -48,7 +48,7 @@ exports[`Slider defaultValue 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -105,7 +105,7 @@ exports[`Slider disabled 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -198,7 +198,7 @@ exports[`Slider marks 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -255,7 +255,7 @@ exports[`Slider marks error 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -312,7 +312,7 @@ exports[`Slider max 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -369,7 +369,7 @@ exports[`Slider min 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -426,7 +426,7 @@ exports[`Slider shallows correctly 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -567,7 +567,7 @@ exports[`Slider showMark 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -624,7 +624,7 @@ exports[`Slider step 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -681,7 +681,7 @@ exports[`Slider value 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>
@@ -738,7 +738,7 @@ exports[`Slider vertical 1`] = `
           visible={false}
         >
           <div
-            className="za-slider-handle-shadow"
+            className="za-slider__handle__shadow"
           />
         </Tooltip>
       </div>

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 
 import Events from '../utils/events';
-import Drag from '../drag';
+import Drag, { DragEvent, DragState } from '../drag';
 import Tooltip from '../tooltip';
 
 const getValue = (props: Slider['props'], defaultValue: number) => {
@@ -190,7 +190,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     this.setState({ tooltip: true });
   };
 
-  handleDragMove = (event: React.DragEvent<HTMLDivElement>, { offsetX = 0, offsetY = 0 } = {}) => {
+  handleDragMove = (event?: DragEvent, dragState?: DragState) => {
     const {
       disabled,
       vertical,
@@ -201,9 +201,10 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     }
 
     Tooltip.updateAll();
-    event.stopPropagation();
-    event.preventDefault();
+    event!.stopPropagation();
+    event!.preventDefault();
 
+    const { offsetX, offsetY } = dragState!;
     let offset = vertical
       ? (this.offsetStart) + (offsetY || 0)
       : (this.offsetStart || 0) + (offsetX || 0);
@@ -232,23 +233,21 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
     return true;
   };
 
-  handleDragEnd = (_event: React.DragEvent<HTMLDivElement>, { offsetX = 0, offsetY = 0 } = {}) => {
-    const {
-      vertical,
-      onChange,
-    } = this.props;
+  handleDragEnd = (_event?: DragEvent, dragState?: DragState) => {
+    const { vertical, onChange } = this.props;
+    const { offsetX, offsetY } = dragState!;
 
     this.setState({ tooltip: false });
 
     if (vertical) {
-      if (Number.isNaN(offsetY)) {
+      if (Number.isNaN(offsetY!)) {
         return;
       }
-    } else if (Number.isNaN(offsetX)) {
+    } else if (Number.isNaN(offsetX!)) {
       return;
     }
 
-    this.offsetStart += vertical ? offsetY : offsetX;
+    this.offsetStart += vertical ? offsetY! : offsetX!;
 
     if (typeof onChange === 'function') {
       onChange(this.state.value);
@@ -389,7 +388,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
           <Drag
             onDragStart={this.handleDragStart}
-            onDragMove={(event, state) => this.handleDragMove(event, state)}
+            onDragMove={this.handleDragMove}
             onDragEnd={this.handleDragEnd}
           >
             <div
@@ -402,7 +401,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
               style={handleStyle}
             >
               <Tooltip trigger="manual" arrowPointAtCenter visible={tooltip} content={value}>
-                <div className={`${prefixCls}-handle-shadow`} />
+                <div className={`${prefixCls}__handle__shadow`} />
               </Tooltip>
             </div>
           </Drag>

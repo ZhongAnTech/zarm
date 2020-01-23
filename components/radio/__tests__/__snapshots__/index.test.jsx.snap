@@ -111,7 +111,6 @@ exports[`Radio type is cell 1`] = `
 exports[`Radio.Group Radio checked 1`] = `
 <div
   class="za-radio-group za-radio-group--xs za-radio-group--radius"
-  theme="primary"
 >
   <div
     class="za-radio-group__inner"
@@ -187,7 +186,6 @@ exports[`Radio.Group Radio checked 1`] = `
 exports[`Radio.Group defaultValue 1`] = `
 <div
   class="za-radio-group za-radio-group--xs za-radio-group--radius"
-  theme="primary"
 >
   <div
     class="za-radio-group__inner"
@@ -263,7 +261,6 @@ exports[`Radio.Group defaultValue 1`] = `
 exports[`Radio.Group renders correctly 1`] = `
 <div
   class="za-radio-group za-radio-group--xs za-radio-group--radius"
-  theme="primary"
 >
   <div
     class="za-radio-group__inner"

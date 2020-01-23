@@ -279,7 +279,7 @@ ReactDOM.render(
 | defaultChecked | boolean | - | 初始是否选中 |
 | indeterminate | boolean | false | 当前是否为未全选状态 |
 | id | string | - | 方便外部带有for属性的label标签控制当前checkbox |
-| onChange | (e: ChangeEvent<HTMLInputElement>) => void | - | 值变化时触发的回调函数 |
+| onChange | (event?: ChangeEvent<HTMLInputElement>) => void | - | 值变化时触发的回调函数 |
 
 ### Checkbox.Group
 | 属性 | 类型 | 默认值 | 说明 |

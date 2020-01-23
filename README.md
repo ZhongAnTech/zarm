@@ -9,12 +9,16 @@
 <div align="center">
 
   [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=dev)](https://www.travis-ci.org/ZhongAnTech/zarm)
-  [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm?ref=badge_shield)
   [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/dev.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=dev)
-  [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm) 
   ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@beta/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
   ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@beta/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
+  [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm) 
+  [![dependencies Status](https://david-dm.org/ZhongAnTech/zarm/status.svg)](https://david-dm.org/ZhongAnTech/zarm)
+  [![peerDependencies Status](https://david-dm.org/ZhongAnTech/zarm/peer-status.svg)](https://david-dm.org/ZhongAnTech/zarm?type=peer)
+  [![devDependencies Status](https://david-dm.org/ZhongAnTech/zarm/dev-status.svg)](https://david-dm.org/ZhongAnTech/zarm?type=dev)
   [![Netlify Status](https://api.netlify.com/api/v1/badges/7afc45a9-dcac-4475-9903-d3896bc200ed/deploy-status)](https://app.netlify.com/sites/zarm/deploys)
+  [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FZhongAnTech%2Fzarm?ref=badge_shield)
+  [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ZhongAnTech/zarm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
   众安科技基于 React、React-Native 研发的一款适用于企业级的移动端UI组件库。
 </div>

@@ -41,7 +41,6 @@ export default class RadioGroup extends PureComponent<RadioGroupProps, RadioGrou
 
   static defaultProps = {
     prefixCls: 'za-radio-group',
-    theme: 'primary',
     shape: 'radius',
     block: false,
     disabled: false,

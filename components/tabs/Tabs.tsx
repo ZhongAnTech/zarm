@@ -88,7 +88,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
   };
 
   render() {
-    const { prefixCls, className, lineWidth, canSwipe, children } = this.props;
+    const { prefixCls, className, lineWidth, canSwipe, children, disabled } = this.props;
     const { value } = this.state;
     const classes = classnames(prefixCls, className);
 
@@ -101,6 +101,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     if (canSwipe) {
       contentRender = (
         <Carousel
+          swipeable={!disabled}
           direction="left"
           showPagination={false}
           activeIndex={value}

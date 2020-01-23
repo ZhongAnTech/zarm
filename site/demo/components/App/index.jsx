@@ -35,7 +35,7 @@ const LoadableComponent = (component) => {
 class App extends Component {
   render() {
     const { location } = this.props;
-    const { form, feedback, view, navigation, other } = components;
+    const { general, form, feedback, view, navigation, other } = components;
 
     return (
       <SentryBoundary>
@@ -43,7 +43,7 @@ class App extends Component {
           <Switch key={location.pathname} location={location}>
             <Route exact path="/" component={lazy(() => import('@site/demo/pages/Index'))} />
             {
-              [...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
+              [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
                 <Route key={+i} path={`/${component.key}`} component={LoadableComponent(component)} />
               ))
             }
