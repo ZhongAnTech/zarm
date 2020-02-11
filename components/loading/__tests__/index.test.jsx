@@ -36,6 +36,16 @@ describe('Loading', () => {
     expect(LoadingContainer.length).toEqual(1);
   });
 
+  it('static function pass params', () => {
+    jest.useFakeTimers();
+    Loading.show({
+      content: <div>loading...</div>,
+    });
+    jest.runAllTimers();
+    const LoadingContainer = document.getElementsByClassName('loading-container');
+    expect(LoadingContainer.length).toEqual(1);
+  });
+
   it('static function hide', () => {
     jest.useFakeTimers();
     Loading.show();

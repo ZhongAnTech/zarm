@@ -126,6 +126,12 @@ module.exports = {
         style: true,
       },
       {
+        key: 'loading',
+        name: '加载',
+        module: () => import('@/components/loading/demo.md'),
+        style: true,
+      },
+      {
         key: 'pull',
         name: '上拉加载下拉刷新',
         module: () => import('@/components/pull/demo.md'),

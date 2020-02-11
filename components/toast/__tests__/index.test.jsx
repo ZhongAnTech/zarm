@@ -30,7 +30,17 @@ describe('Toast', () => {
 
   it('static function show', () => {
     jest.useFakeTimers();
-    Toast.show();
+    Toast.show('toast内容');
+    jest.runAllTimers();
+    const toastContainer = document.getElementsByClassName('toast-container');
+    expect(toastContainer.length).toEqual(1);
+  });
+
+  it('static function pass params', () => {
+    jest.useFakeTimers();
+    Toast.show({
+      content: 'toast内容',
+    });
     jest.runAllTimers();
     const toastContainer = document.getElementsByClassName('toast-container');
     expect(toastContainer.length).toEqual(1);
