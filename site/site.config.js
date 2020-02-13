@@ -137,7 +137,7 @@ module.exports = {
         key: 'loading',
         name: '加载',
         module: () => import('@/components/loading/demo.md'),
-        style: true,
+        style: false,
       },
       {
         key: 'pull',

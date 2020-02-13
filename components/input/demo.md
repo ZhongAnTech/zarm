@@ -62,7 +62,7 @@ class Demo extends React.Component {
             focused={this.state.focused}
             onFocus={value => console.log(`onFocus: ${value}`)}
             onBlur={value => console.log(`onBlur: ${value}`)}
-            onChange={value => {console.log(`onChange: ${value}`)}}
+            onChange={value => console.log(`onChange: ${value}`)}
           />
         </Cell>
 
