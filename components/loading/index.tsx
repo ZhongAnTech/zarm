@@ -1,8 +1,28 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
+import classnames from 'classnames';
 import PropsType from './PropsType';
-import Toast from '../toast';
+import Popup from '../popup';
 import ActivityIndicator from '../activity-indicator';
+
+const getParent = (props) => {
+  if (props) {
+    const { getContainer } = props;
+    if (getContainer) {
+      if (typeof getContainer === 'function') {
+        return getContainer();
+      }
+      if (
+        typeof getContainer === 'object'
+        && getContainer instanceof HTMLElement
+      ) {
+        return getContainer;
+      }
+    }
+    return document.body;
+  }
+  return document.body;
+};
 
 export interface LoadingProps extends PropsType {
   prefixCls?: string;
@@ -15,36 +35,43 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     mask: true,
   };
 
-  static zarmLoading: null | HTMLElement;
+  static zarmLoading: HTMLElement | null;
 
-  static _hide: () => void;
+  private static loadingContainer: HTMLElement;
 
-  static show = (children: any, stayTime?: number, mask?: boolean, afterClose?: () => void) => {
+  static hideHelper: () => void;
+
+  static show = (content: LoadingProps) => {
     Loading.unmountNode();
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
-      document.body.appendChild(Loading.zarmLoading);
+      Loading.zarmLoading.classList.add('loading-container');
+      Loading.loadingContainer = getParent(content);
+      Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
-    if (Loading.zarmLoading) {
-      ReactDOM.render(
-        <Loading visible stayTime={stayTime} mask={mask} afterClose={afterClose}>
-          {children}
-        </Loading>,
-        Loading.zarmLoading,
-      );
-    }
+    setTimeout(() => {
+      if (Loading.zarmLoading) {
+        const props = { ...Loading.defaultProps, ...content as LoadingProps, ...{ visible: true, getContainer: Loading.zarmLoading } };
+        ReactDOM.render(
+          <Loading {...props} />,
+          Loading.zarmLoading,
+        );
+      }
+    }, 0);
   };
 
   static hide = () => {
-    if (Loading._hide) {
-      Loading._hide();
+    if (Loading.hideHelper) {
+      Loading.hideHelper();
     }
   };
 
   static unmountNode = () => {
     const { zarmLoading } = Loading;
     if (zarmLoading) {
-      ReactDOM.unmountComponentAtNode(zarmLoading);
+      ReactDOM.render(<></>, zarmLoading);
+      Loading.loadingContainer.removeChild(zarmLoading);
+      Loading.zarmLoading = null;
     }
   };
 
@@ -55,7 +82,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   };
 
   componentDidMount() {
-    Loading._hide = this._hide;
+    Loading.hideHelper = this._hide;
     this.autoClose();
   }
 
@@ -82,7 +109,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   afterClose = () => {
     const { afterClose } = this.props;
     if (Loading.zarmLoading) {
-      document.body.removeChild(Loading.zarmLoading);
+      Loading.loadingContainer.removeChild(Loading.zarmLoading);
       Loading.zarmLoading = null;
     }
 
@@ -109,12 +136,22 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   }
 
   render() {
-    const { prefixCls, children, stayTime, ...others } = this.props;
+    const { prefixCls, content, stayTime, className, ...others } = this.props;
     const { visible } = this.state;
+    const cls = classnames(prefixCls, className);
     return (
-      <Toast prefixCls={prefixCls} stayTime={stayTime || 0} {...others} visible={visible} afterClose={this.afterClose}>
-        {children || <ActivityIndicator type="spinner" size="lg" />}
-      </Toast>
+      <Popup
+        direction="center"
+        maskType="transparent"
+        width="70%"
+        {...others}
+        visible={visible}
+        afterClose={this.afterClose}
+      >
+        <div className={cls}>
+          <div className={`${prefixCls}__container`}>{content || <ActivityIndicator type="spinner" size="lg" />}</div>
+        </div>
+      </Popup>
     );
   }
 }
