@@ -44,5 +44,6 @@ export { default as Wheel } from './wheel';
 export { default as NavBar } from './nav-bar';
 export { default as Marquee } from './marquee';
 export { default as TabBar } from './tab-bar';
+export { default as ImagePreview } from './image-preview';
 export { default as LocaleProvider } from './locale-provider';
 export { default as LocaleReceiver } from './locale-receiver';

@@ -225,6 +225,12 @@ module.exports = {
         module: () => import('@/components/tooltip/demo.md'),
         style: true,
       },
+      {
+        key: 'image-preview',
+        name: '图片预览',
+        module: () => import('@/components/image-preview/demo.md'),
+        style: true,
+      },
     ],
     navigation: [
       {
