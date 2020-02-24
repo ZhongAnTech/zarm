@@ -18,6 +18,7 @@
 
   @include e(item) {
     text-align: center;
+
     img {
       max-width: 100%;
     }
@@ -44,7 +45,6 @@
     }
   }
 
-
   @include e(loading) {
     vertical-align: middle;
     display: inline-block;
@@ -62,5 +62,4 @@
     height: var(--button-height-xs);
     line-height: var(--button-height-xs);
   }
-
 }
