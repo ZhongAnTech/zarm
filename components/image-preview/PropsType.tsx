@@ -6,4 +6,6 @@ export default interface PropsType {
   visible: boolean;
   activeIndex?: number;
   onHide?: Function;
+  maxScale?: number;
+  minScale?: number;
 }

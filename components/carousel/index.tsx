@@ -109,6 +109,10 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 触屏事件
   onDragStart = () => {
+    const { swipeable } = this.props;
+    if (!swipeable) {
+      return false;
+    }
     // 跳转到头尾
     const { activeIndex } = this.state;
     const maxLength = this.props.children.length;
@@ -124,6 +128,10 @@ export default class Carousel extends Component<CarouselProps, any> {
   };
 
   onDragMove = (event, { offsetX, offsetY }) => {
+    const { swipeable } = this.props;
+    if (!swipeable) {
+      return false;
+    }
     const distanceX = Math.abs(offsetX);
     const distanceY = Math.abs(offsetY);
 
@@ -177,6 +185,10 @@ export default class Carousel extends Component<CarouselProps, any> {
   };
 
   onDragEnd = (_event, { offsetX, offsetY, startTime }) => {
+    const { swipeable } = this.props;
+    if (!swipeable) {
+      return false;
+    }
     if (!offsetX && !offsetY) {
       return;
     }
@@ -364,19 +376,13 @@ export default class Carousel extends Component<CarouselProps, any> {
 
     return (
       <div className={cls} style={style}>
-        {
-          swipeable
-            ? (
-              <Drag
-                onDragStart={this.onDragStart}
-                onDragMove={this.onDragMove}
-                onDragEnd={this.onDragEnd}
-              >
-                {content}
-              </Drag>
-            )
-            : content
-        }
+        <Drag
+          onDragStart={this.onDragStart}
+          onDragMove={this.onDragMove}
+          onDragEnd={this.onDragEnd}
+        >
+          {content}
+        </Drag>
         {this.renderPagination()}
       </div>
     );

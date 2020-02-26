@@ -3,6 +3,7 @@ import isEqual from 'lodash/isEqual';
 import PropsType, { Iimage } from './PropsType';
 import Popup from '../popup';
 import Carousel from '../carousel';
+import PinchZoom from '../pinch-zoom';
 import ActivityIndicator from '../activity-indicator';
 import { isObject, isString } from '../utils/validate';
 import LocaleReceiver from '../locale-receiver';
@@ -12,6 +13,11 @@ export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
   className?: string;
   locale?: Locale['ImagePreview'];
+}
+
+export interface Point {
+  x: number;
+  y: number;
 }
 
 enum LoadStatus {
@@ -52,6 +58,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     this.state = {
       ...this.props,
       images: formatImages(props.images),
+      swipeable: true,
     };
   }
 
@@ -129,13 +136,30 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return false;
   };
 
+  pinchChange = ({ scale }) => {
+    let flag = true;
+    if (scale !== 1) {
+      flag = false;
+    }
+    const { swipeable } = this.state;
+    if (swipeable === flag) return false;
+    this.setState({
+      swipeable: flag,
+    });
+  };
+
   renderImages = () => {
     const { prefixCls } = this.props;
     const { images = [] } = this.state;
     return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
-          <img src={item.url} alt="" draggable={false} />
+          <PinchZoom
+            className={`${prefixCls}__item__img`}
+            onChange={this.pinchChange}
+          >
+            <img src={item.url} alt="" draggable={false} />
+          </PinchZoom>
         </div>
       );
     });
@@ -143,7 +167,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   render() {
     const { prefixCls, title, locale } = this.props;
-    const { activeIndex = 0, visible, images } = this.state;
+    const { activeIndex = 0, visible, images, swipeable } = this.state;
     const { loaded } = images[activeIndex];
 
     return (
@@ -154,6 +178,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
             showPagination={false}
             onChange={this.onChange}
             activeIndex={activeIndex}
+            swipeable={swipeable}
           >
             {this.renderImages()}
           </Carousel>

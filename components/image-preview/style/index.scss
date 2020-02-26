@@ -11,6 +11,7 @@
 
   @include e(content) {
     height: 100%;
+    width: 100%;
     flex: 1;
     display: flex;
     align-items: center;
@@ -18,10 +19,35 @@
 
   @include e(item) {
     text-align: center;
+    position: relative;
+    // width: 375px;
+    // display: block;
+    // float: left;
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0;
 
     img {
-      max-width: 100%;
+      // isplay: block;
+      // width: 100%;
+      // height: 100%;
+      // object-fit: contain;
+      width: 100%;
+
+      // height: 100%;
     }
+  }
+
+  @include e(item__img) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
   }
 
   @include e(footer) {
@@ -61,5 +87,25 @@
     padding: 0 var(--padding-h-sm);
     height: var(--button-height-xs);
     line-height: var(--button-height-xs);
+  }
+
+  &.za-popup__wrapper {
+    padding: 0;
+  }
+
+  .za-carousel {
+    // overflow: auto;
+    height: 100%;
+    width: 100%;
+
+    &__items {
+      height: 100%;
+      // width: 1125px;
+    }
+
+    // &__item {
+    //   display: block;
+    //   float: left;
+    // }
   }
 }

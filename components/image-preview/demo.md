@@ -63,7 +63,7 @@ class Demo extends React.Component {
             有查看原始图片功能
         </Cell>
         <ImagePreview visible={origin} title="图片预览" images={originImages} onHide={() => this.hide('origin')} /> 
-        <ImagePreview visible={common} title="普通图片预览" images={commonImages} onHide={() => this.hide('common')} /> 
+        <ImagePreview visible={true} title="普通图片预览" images={commonImages} onHide={() => this.hide('common')} /> 
       </>
     );  
   }
