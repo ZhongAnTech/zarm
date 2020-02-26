@@ -269,7 +269,7 @@ describe('Carousel', () => {
   });
 
   it('unswipeable touchStart', () => {
-    const wrapper = mount(createCarousel());
+    const wrapper = mount(createCarousel({ swipeable: false }));
     const wrapperTouchStart = (wrapperTouch) => {
       wrapperTouch
         .find('.za-carousel__items')
@@ -291,7 +291,7 @@ describe('Carousel', () => {
 
   it('unswipeabletouchMove', () => {
     const wrapperDirectionX = mount(createCarousel());
-    const wrapperDirectionY = mount(createCarousel({ direction: 'bottom' }));
+    const wrapperDirectionY = mount(createCarousel({ direction: 'bottom', swipeable: false }));
     const wrapperTouchMove = (wrapper) => {
       wrapper.find('.za-carousel__items')
         .simulate('touchStart', {
@@ -357,7 +357,7 @@ describe('Carousel', () => {
   it('unswipeable touchEnd', () => {
     const moveDistanceRatio = 1;
     const moveTimeSpan = 200;
-    const props = { moveDistanceRatio, moveTimeSpan };
+    const props = { moveDistanceRatio, moveTimeSpan, swipeable: false };
     const wrapper = mount(createCarousel(props));
     const wrapperTouchEnd = ({
       direction = 'left',
