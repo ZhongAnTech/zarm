@@ -352,7 +352,7 @@ export default class Carousel extends Component<CarouselProps, any> {
   };
 
   render() {
-    const { prefixCls, className, swipeable, height, style } = this.props;
+    const { prefixCls, className, height, style } = this.props;
     const items = this.parseItems(this.props);
     const itemsStyle: CSSProperties = {};
 
