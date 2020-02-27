@@ -268,6 +268,136 @@ describe('Carousel', () => {
     expect(wrapper.state('activeIndex')).toEqual(1);
   });
 
+  it('unswipeable touchStart', () => {
+    const wrapper = mount(createCarousel({ swipeable: false }));
+    const wrapperTouchStart = (wrapperTouch) => {
+      wrapperTouch
+        .find('.za-carousel__items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+            },
+          ],
+        });
+    };
+    wrapperTouchStart(wrapper);
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    wrapper.setProps({ activeIndex: 2 });
+    wrapperTouchStart(wrapper);
+    expect(wrapper.state('activeIndex')).toEqual(2);
+  });
+
+  it('unswipeabletouchMove', () => {
+    const wrapperDirectionX = mount(createCarousel());
+    const wrapperDirectionY = mount(createCarousel({ direction: 'bottom', swipeable: false }));
+    const wrapperTouchMove = (wrapper) => {
+      wrapper.find('.za-carousel__items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: -4,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: -5,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 4,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: 4,
+              pageY: 4 + 5,
+            },
+          ],
+        });
+    };
+
+    Array.of(wrapperDirectionX, wrapperDirectionY).forEach((wrapper) => {
+      wrapperTouchMove(wrapper);
+      expect(wrapper.state('activeIndex')).toEqual(0);
+
+      wrapper.setProps({ activeIndex: 2 });
+      wrapperTouchMove(wrapper);
+      expect(wrapper.state('activeIndex')).toEqual(2);
+    });
+  });
+
+  it('unswipeable touchEnd', () => {
+    const moveDistanceRatio = 1;
+    const moveTimeSpan = 200;
+    const props = { moveDistanceRatio, moveTimeSpan, swipeable: false };
+    const wrapper = mount(createCarousel(props));
+    const wrapperTouchEnd = ({
+      direction = 'left',
+      offset = 100,
+      activeIndex = 0,
+    }) => {
+      wrapper
+        .setProps({ direction, activeIndex })
+        .find('.za-carousel__items')
+        .simulate('touchStart', {
+          touches: [
+            {
+              pageX: 0,
+              pageY: 0,
+            },
+          ],
+        })
+        .simulate('touchMove', {
+          touches: [
+            {
+              pageX: ['left', 'right'].includes(direction) ? offset : 0,
+              pageY: ['top', 'bottom'].includes(direction) ? offset : 0,
+            },
+          ],
+        })
+        .simulate('touchEnd');
+    };
+    wrapperTouchEnd({ offset: 0 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    wrapperTouchEnd({ offset: -100 });
+    expect(wrapper.state('activeIndex')).toEqual(0);
+
+    // wrapperTouchEnd({ activeIndex: 1, offset: 100 });
+    // expect(wrapper.state('activeIndex')).toEqual(0);
+
+    // wrapperTouchEnd({ direction: 'top', offset: -100 });
+    // expect(wrapper.state('activeIndex')).toEqual(1);
+  });
+
   it('resize event', () => {
     // reference: https://github.com/airbnb/enzyme/issues/426#issuecomment-225912455
     const eventMap = {};
