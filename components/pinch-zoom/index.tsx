@@ -35,12 +35,24 @@ function getMidpoint(a: Point, b?: Point): Point {
   };
 }
 
+function range(num: number, min: number, max: number): number {
+  return Math.min(Math.max(num, min), max);
+}
+
 export interface PinchZoomProps {
   prefixCls?: string;
   className?: string;
   onChange?: Function;
+  minScale: number;
+  maxScale: number;
 }
 export default class PinchZoom extends Component<PinchZoomProps, any> {
+  static defaultProps = {
+    prefixCls: 'za-pinch-zoom',
+    minScale: 1,
+    maxScale: 3,
+  };
+
   private _container;
 
   private _transform: SVGMatrix = createMatrix();
@@ -64,13 +76,10 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
         event.preventDefault();
         return true;
       },
-      move: (previousPointers, _changePointers) => {
-        // event.stopPropagation();
-        if (this.scale === 1) return;
+      move: (previousPointers) => {
+        // if (this.scale === 1) return;
         this._onPointerMove(previousPointers, pointerTracker.currentPointers);
-        // return fasle
       },
-      // end: ()
     });
     this._container.current.addEventListener('wheel', (event) => this._onWheel(event));
   }
@@ -138,6 +147,10 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
 
     // Ensure _positioningEl can't move beyond out-of-bounds.
     // Correct for x
+    console.log(thisBounds, positioningElBounds);
+    // console.log('topLeft:', topLeft);
+    // console.log('bottomRight', bottomRight);
+    // return false;
     if (topLeft.x > thisBounds.width) {
       x += thisBounds.width - topLeft.x;
     } else if (bottomRight.x < 0) {
@@ -151,16 +164,9 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       y += -bottomRight.y;
     }
 
-    let x1 = x;
-    let y1 = y;
-    let s = scale;
-    if (s <= 1) {
-      s = 1;
-      x1 = 0;
-      y1 = 0;
-    }
-
-    this._updateTransform(s, x1, y1);
+    const { minScale, maxScale } = this.props;
+    const zoom = range(scale, minScale, maxScale);
+    this._updateTransform(zoom, zoom !== minScale ? x : 0, zoom !== minScale ? y : 0);
   }
 
   _onWheel = (event) => {
@@ -178,18 +184,19 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     // ctrlKey is true when pinch-zooming on a trackpad.
     const divisor = ctrlKey ? 100 : 300;
     const scaleDiff = 1 - deltaY / divisor;
-    this.applyChange({
+    this._applyChange({
       scaleDiff,
       originX: event.clientX - currentRect.left,
       originY: event.clientY - currentRect.top,
-      allowChangeEvent: true,
     });
   };
 
-  applyChange = (opts) => {
+  _applyChange = (opts) => {
     const {
-      panX = 0, panY = 0,
-      originX = 0, originY = 0,
+      panX = 0,
+      panY = 0,
+      originX = 0,
+      originY = 0,
       scaleDiff = 1,
     } = opts;
 
@@ -205,6 +212,11 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       // Apply current scale.
       .scale(this.scale);
 
+    const { maxScale } = this.props;
+    if (matrix.a > maxScale) {
+      return false;
+    }
+    // const scale = range(matrix.a, minScale, maxScale);
     // Convert the transform into basic translate & scale.
     this.setTransform({
       scale: matrix.a,
@@ -231,7 +243,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     const prevDistance = getDistance(previousPointers[0], previousPointers[1]);
     const newDistance = getDistance(currentPointers[0], currentPointers[1]);
     const scaleDiff = prevDistance ? newDistance / prevDistance : 1;
-    this.applyChange({
+    this._applyChange({
       originX,
       originY,
       scaleDiff,

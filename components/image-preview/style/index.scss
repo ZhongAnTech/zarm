@@ -4,9 +4,18 @@
   display: flex;
   height: 100%;
   flex-direction: column;
+  padding: 0;
 
   @include e(title) {
     text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: var(--color-text-inverse);
+    height: 60px;
+    line-height: 60px;
+    font-size: var(--font-size-lg);
   }
 
   @include e(content) {
@@ -20,23 +29,9 @@
   @include e(item) {
     text-align: center;
     position: relative;
-    // width: 375px;
-    // display: block;
-    // float: left;
-    // position: absolute;
-    // top: 0;
-    // right: 0;
-    // bottom: 0;
-    // left: 0;
 
     img {
-      // isplay: block;
-      // width: 100%;
-      // height: 100%;
-      // object-fit: contain;
-      width: 100%;
-
-      // height: 100%;
+      max-width: 100%;
     }
   }
 
@@ -48,15 +43,22 @@
     right: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   @include e(footer) {
     text-align: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 0;
   }
 
   @include e(index) {
     text-align: center;
     color: var(--color-text-inverse);
+    padding: var(--padding-v-lg);
+    font-size: var(--font-size-lg);
   }
 
   @include b(popup) {
@@ -89,23 +91,14 @@
     line-height: var(--button-height-xs);
   }
 
-  &.za-popup__wrapper {
-    padding: 0;
+
+  @include b(carousel) {
+     height: 100%;
+     width: 100%;
   }
 
-  .za-carousel {
-    // overflow: auto;
+  @include b(carousel__items) {
     height: 100%;
-    width: 100%;
-
-    &__items {
-      height: 100%;
-      // width: 1125px;
-    }
-
-    // &__item {
-    //   display: block;
-    //   float: left;
-    // }
   }
+
 }
