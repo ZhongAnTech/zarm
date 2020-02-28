@@ -77,7 +77,6 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
         return true;
       },
       move: (previousPointers) => {
-        // if (this.scale === 1) return;
         this._onPointerMove(previousPointers, pointerTracker.currentPointers);
       },
     });
@@ -102,6 +101,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
   setTransform(opts) {
     const {
       scale = this.scale,
+      // moveChange,
     } = opts;
 
     let {
@@ -147,10 +147,6 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
 
     // Ensure _positioningEl can't move beyond out-of-bounds.
     // Correct for x
-    console.log(thisBounds, positioningElBounds);
-    // console.log('topLeft:', topLeft);
-    // console.log('bottomRight', bottomRight);
-    // return false;
     if (topLeft.x > thisBounds.width) {
       x += thisBounds.width - topLeft.x;
     } else if (bottomRight.x < 0) {
@@ -166,6 +162,33 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
 
     const { minScale, maxScale } = this.props;
     const zoom = range(scale, minScale, maxScale);
+
+    // if (x > (positioningElBounds.width - thisBounds.width) / 2) {
+    //   x = (positioningElBounds.width - thisBounds.width) / 2;
+    // }
+
+    // console.log('x:', x, 'x1:', (this._positioningEl.width - thisBounds.width) * -1)
+    if (x > 0) {
+      x = 0;
+    }
+
+    if (x < (positioningElBounds.width - thisBounds.width) * -1) {
+      x = (positioningElBounds.width - thisBounds.width) * -1;
+    }
+
+    // if (positioningElBounds.height < thisBounds.height) {
+    //   if (moveChange) {
+    //     y = this.y;
+    //   }
+    // }
+
+    // console.log(positioningElBounds)
+    // console.log(positioningElBounds.height - thisBounds.height,  y)
+    // if (y < positioningElBounds.height - thisBounds.height) {
+    //   y = positioningElBounds.height - thisBounds.height;
+    // }
+    // todo
+
     this._updateTransform(zoom, zoom !== minScale ? x : 0, zoom !== minScale ? y : 0);
   }
 
@@ -189,6 +212,10 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       originX: event.clientX - currentRect.left,
       originY: event.clientY - currentRect.top,
     });
+    // const { onPinchZoomEnd } = this.props;
+    // if (typeof onPinchZoomEnd === 'function') {
+    //   onPinchZoomEnd(true);
+    // }
   };
 
   _applyChange = (opts) => {
@@ -198,6 +225,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       originX = 0,
       originY = 0,
       scaleDiff = 1,
+      moveChange,
     } = opts;
 
     const matrix = createMatrix()
@@ -222,6 +250,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       scale: matrix.a,
       x: matrix.e,
       y: matrix.f,
+      moveChange,
     });
   };
 
@@ -239,6 +268,8 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     const originX = prevMidpoint.clientX - currentRect.left;
     const originY = prevMidpoint.clientY - currentRect.top;
 
+    console.log(originX, originY);
+
     // Calculate the desired change in scale
     const prevDistance = getDistance(previousPointers[0], previousPointers[1]);
     const newDistance = getDistance(currentPointers[0], currentPointers[1]);
@@ -249,6 +280,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       scaleDiff,
       panX: newMidpoint.clientX - prevMidpoint.clientX,
       panY: newMidpoint.clientY - prevMidpoint.clientY,
+      moveChange: currentPointers.length !== 2,
     });
   }
 
@@ -277,6 +309,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
         x,
         y,
         scale,
+        end: false,
       });
     }
   }

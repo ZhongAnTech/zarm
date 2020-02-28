@@ -53,6 +53,12 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     activeIndex: 0,
   };
 
+  doubleClickTimer;
+
+  touchStartTime: number;
+
+  moving: boolean;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -78,6 +84,10 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return null;
   }
 
+  componentDidMount() {
+    // console.log(this.popup)
+  }
+
   shouldComponentUpdate(_nextProps, nextState) {
     const { images } = this.state;
     return isEqual(images, nextState.images);
@@ -90,9 +100,11 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   close = () => {
-    const { onHide } = this.props;
-    if (typeof onHide === 'function') {
-      onHide();
+    if (!('ontouchend' in document)) {
+      const { onHide } = this.props;
+      if (typeof onHide === 'function') {
+        onHide();
+      }
     }
   };
 
@@ -136,17 +148,57 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return false;
   };
 
-  pinchChange = ({ scale }) => {
+  onWrapperTouchStart = () => {
+    this.touchStartTime = Date.now();
+    this.moving = false;
+  };
+
+  onWrapperTouchEnd = (e) => {
+    const { onHide } = this.props;
+    const deltaTime = Date.now() - this.touchStartTime;
+    // prevent long tap to close component
+    if (deltaTime < 300 && !this.moving) {
+      if (!this.doubleClickTimer) {
+        this.doubleClickTimer = setTimeout(() => {
+          this.doubleClickTimer = null;
+          if (typeof onHide === 'function') {
+            onHide();
+          }
+        }, 300);
+      } else {
+        clearTimeout(this.doubleClickTimer);
+        this.doubleClickTimer = null;
+      }
+    }
+
+    if (e && !e.touches) {
+      if (typeof onHide === 'function') {
+        onHide();
+      }
+    }
+  };
+
+  onWrapperTouchMove = () => {
+    this.moving = true;
+  };
+
+  pinchChange = ({ scale, x, y }) => {
     let flag = true;
-    if (scale !== 1) {
+    const { swipeable } = this.state;
+    if (scale !== 1 || x !== 0 || y !== 0) {
       flag = false;
     }
-    const { swipeable } = this.state;
     if (swipeable === flag) return false;
     this.setState({
       swipeable: flag,
     });
   };
+
+  // pinchZoom = (flag) => {
+  //   this.setState({
+  //     pinchZoom: flag,
+  //   });
+  // };
 
   renderImages = () => {
     const { prefixCls } = this.props;
@@ -173,12 +225,22 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
         {title ? <div className={`${prefixCls}__title`}>{title}</div> : ''}
-        <div className={`${prefixCls}__content`} onClick={this.close}>
+        <div
+          className={`${prefixCls}__content`}
+          onTouchStart={this.onWrapperTouchStart}
+          onTouchEnd={this.onWrapperTouchEnd}
+          onTouchMove={this.onWrapperTouchMove}
+          onClick={this.close}
+          // ref={(ref) => {
+          //   this.popup = ref;
+          // }}
+        >
           <Carousel
             showPagination={false}
             onChange={this.onChange}
             activeIndex={activeIndex}
             swipeable={swipeable}
+            // onClick={this.close}
           >
             {this.renderImages()}
           </Carousel>

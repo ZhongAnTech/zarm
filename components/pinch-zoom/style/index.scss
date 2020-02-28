@@ -8,6 +8,6 @@
     transform: translate(var(--x), var(--y)) scale(var(--scale));
     transform-origin: 0 0;
     will-change: transform;
-    max-width: 100%;
+    // max-width: 100%;
   }
 }
