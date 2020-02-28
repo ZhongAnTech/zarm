@@ -91,14 +91,12 @@
     line-height: var(--button-height-xs);
   }
 
-
   @include b(carousel) {
-     height: 100%;
-     width: 100%;
+    height: 100%;
+    width: 100%;
   }
 
   @include b(carousel__items) {
     height: 100%;
   }
-
 }
