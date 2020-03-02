@@ -59,6 +59,8 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   moving: boolean;
 
+  carousel;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -66,6 +68,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
       images: formatImages(props.images),
       swipeable: true,
     };
+    this.carousel = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -95,7 +98,8 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   onChange = (index) => {
     this.setState({
-      activeIndex: index,
+      // activeIndex: index,
+      currentIndex: index,
     });
     this.moving = true;
   };
@@ -223,9 +227,9 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   render() {
-    const { prefixCls, title, locale } = this.props;
-    const { activeIndex = 0, visible, images, swipeable } = this.state;
-    const { loaded } = images[activeIndex];
+    const { prefixCls, title, locale, activeIndex } = this.props;
+    const { currentIndex = 0, visible, images, swipeable } = this.state;
+    const { loaded } = images[currentIndex];
 
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
@@ -243,6 +247,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
             activeIndex={activeIndex}
             swipeable={swipeable}
             onChangeEnd={this.onChangeEnd}
+            // ref={this.carousel}
             // onClick={this.close}
           >
             {this.renderImages()}
@@ -256,7 +261,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
                 { locale![loaded]}
               </button>
             ) : ''}
-          {images && images.length ? <div className={`${prefixCls}__index`}>{activeIndex + 1}/{images.length}</div> : ''}
+          {images && images.length ? <div className={`${prefixCls}__index`}>{currentIndex + 1}/{images.length}</div> : ''}
         </div>
       </Popup>
     );
