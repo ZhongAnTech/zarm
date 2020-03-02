@@ -46,6 +46,12 @@ export interface PinchZoomProps {
   minScale: number;
   maxScale: number;
 }
+
+export interface Position {
+  x: number;
+  y: number;
+}
+
 export default class PinchZoom extends Component<PinchZoomProps, any> {
   static defaultProps = {
     prefixCls: 'za-pinch-zoom',
@@ -59,6 +65,8 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
 
   private _positioningEl?: Element;
 
+  // private _originPosition: Position;
+
   constructor(props) {
     super(props);
     this._container = React.createRef();
@@ -70,10 +78,16 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     const [el] = children;
     this._positioningEl = el;
     const pointerTracker: PointerTracker = new PointerTracker(current, {
-      start: (_pointer, event) => {
+      start: () => {
         // We only want to track 2 pointers at most
+        // const positioningElBounds = el.getBoundingClientRect();
+        // const { x, y } = positioningElBounds;
+        // this._originPosition = {
+        //   x,
+        //   y,
+        // };
         if (pointerTracker.currentPointers.length === 2 || !this._positioningEl) return false;
-        event.preventDefault();
+        // event.preventDefault();
         return true;
       },
       move: (previousPointers) => {
@@ -176,6 +190,10 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       x = (positioningElBounds.width - thisBounds.width) * -1;
     }
 
+    // if (!moveChange) {
+
+    // }
+
     // if (positioningElBounds.height < thisBounds.height) {
     //   if (moveChange) {
     //     y = this.y;
@@ -193,6 +211,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
   }
 
   _onWheel = (event) => {
+    // console.log(event.type)
     event.preventDefault();
 
     const currentRect = this._positioningEl!.getBoundingClientRect();
@@ -268,8 +287,6 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     const originX = prevMidpoint.clientX - currentRect.left;
     const originY = prevMidpoint.clientY - currentRect.top;
 
-    console.log(originX, originY);
-
     // Calculate the desired change in scale
     const prevDistance = getDistance(previousPointers[0], previousPointers[1]);
     const newDistance = getDistance(currentPointers[0], currentPointers[1]);
@@ -315,7 +332,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
   }
 
   render() {
-    const { children, className } = this.props;
-    return (<div ref={this._container} className={`${className} za-pinch-zoom`}>{children}</div>);
+    const { children, className, prefixCls } = this.props;
+    return (<div ref={this._container} className={`${className} ${prefixCls}`}>{children}</div>);
   }
 }

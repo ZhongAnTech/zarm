@@ -97,10 +97,15 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     this.setState({
       activeIndex: index,
     });
+    this.moving = true;
+  };
+
+  onChangeEnd = () => {
+    this.moving = false;
   };
 
   close = () => {
-    if (!('ontouchend' in document)) {
+    if (!('ontouchend' in document) && !this.moving) {
       const { onHide } = this.props;
       if (typeof onHide === 'function') {
         onHide();
@@ -231,15 +236,13 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
           onTouchEnd={this.onWrapperTouchEnd}
           onTouchMove={this.onWrapperTouchMove}
           onClick={this.close}
-          // ref={(ref) => {
-          //   this.popup = ref;
-          // }}
         >
           <Carousel
             showPagination={false}
             onChange={this.onChange}
             activeIndex={activeIndex}
             swipeable={swipeable}
+            onChangeEnd={this.onChangeEnd}
             // onClick={this.close}
           >
             {this.renderImages()}
