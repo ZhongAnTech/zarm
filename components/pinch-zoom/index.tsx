@@ -1,10 +1,10 @@
-/* https://github.com/GoogleChromeLabs/pinch-zoom */
+/* istanbul ignore file */
 import React, { Component } from 'react';
 import PointerTracker, { Pointer } from 'pointer-tracker';
 import { Point } from './PropsType';
+/* https://github.com/GoogleChromeLabs/pinch-zoom */
 
 let cachedSvg: SVGSVGElement;
-
 function getSVG(): SVGSVGElement {
   if (cachedSvg) {
     return cachedSvg;
@@ -190,18 +190,11 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       x = (positioningElBounds.width - thisBounds.width) * -1;
     }
 
-    // if (!moveChange) {
-
-    // }
-
     // if (positioningElBounds.height < thisBounds.height) {
     //   if (moveChange) {
     //     y = this.y;
     //   }
     // }
-
-    // console.log(positioningElBounds)
-    // console.log(positioningElBounds.height - thisBounds.height,  y)
     // if (y < positioningElBounds.height - thisBounds.height) {
     //   y = positioningElBounds.height - thisBounds.height;
     // }
@@ -211,7 +204,6 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
   }
 
   _onWheel = (event) => {
-    // console.log(event.type)
     event.preventDefault();
 
     const currentRect = this._positioningEl!.getBoundingClientRect();
@@ -231,10 +223,6 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
       originX: event.clientX - currentRect.left,
       originY: event.clientY - currentRect.top,
     });
-    // const { onPinchZoomEnd } = this.props;
-    // if (typeof onPinchZoomEnd === 'function') {
-    //   onPinchZoomEnd(true);
-    // }
   };
 
   _applyChange = (opts) => {
@@ -326,7 +314,6 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
         x,
         y,
         scale,
-        end: false,
       });
     }
   }

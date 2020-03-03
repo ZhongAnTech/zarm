@@ -87,10 +87,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return null;
   }
 
-  componentDidMount() {
-    // console.log(this.popup)
-  }
-
   shouldComponentUpdate(_nextProps, nextState) {
     const { images } = this.state;
     return isEqual(images, nextState.images);
@@ -209,7 +205,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   renderImages = () => {
     const { prefixCls } = this.props;
-    const { images = [] } = this.state;
+    const { images } = this.state;
     return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
@@ -259,7 +255,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
                 { locale![loaded]}
               </button>
             ) : ''}
-          {images && images.length ? <div className={`${prefixCls}__index`}>{currentIndex + 1}/{images.length}</div> : ''}
+          {images && images.length && <div className={`${prefixCls}__index`}>{currentIndex + 1}/{images.length}</div>}
         </div>
       </Popup>
     );
