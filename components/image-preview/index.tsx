@@ -104,16 +104,10 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     this.moving = true;
   };
 
-  onChangeEnd = () => {
-    this.moving = false;
-  };
-
   close = () => {
-    if (!('ontouchend' in document) && !this.moving) {
-      const { onHide } = this.props;
-      if (typeof onHide === 'function') {
-        onHide();
-      }
+    const { onHide } = this.props;
+    if (typeof onHide === 'function' && !this.moving) {
+      onHide();
     }
   };
 
@@ -187,8 +181,18 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     }
   };
 
+  onWrapperMouseUp = () => {
+    setTimeout(() => {
+      this.moving = false;
+    }, 200);
+  };
+
   onWrapperTouchMove = () => {
     this.moving = true;
+  };
+
+  onWrapperMouseDown = () => {
+    this.moving = false;
   };
 
   pinchChange = ({ scale, x, y }) => {
@@ -202,12 +206,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
       swipeable: flag,
     });
   };
-
-  // pinchZoom = (flag) => {
-  //   this.setState({
-  //     pinchZoom: flag,
-  //   });
-  // };
 
   renderImages = () => {
     const { prefixCls } = this.props;
@@ -239,6 +237,9 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
           onTouchStart={this.onWrapperTouchStart}
           onTouchEnd={this.onWrapperTouchEnd}
           onTouchMove={this.onWrapperTouchMove}
+          onMouseMove={this.onWrapperTouchMove}
+          onMouseUp={this.onWrapperMouseUp}
+          onMouseDown={this.onWrapperMouseDown}
           onClick={this.close}
         >
           <Carousel
@@ -246,9 +247,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
             onChange={this.onChange}
             activeIndex={activeIndex}
             swipeable={swipeable}
-            onChangeEnd={this.onChangeEnd}
-            // ref={this.carousel}
-            // onClick={this.close}
           >
             {this.renderImages()}
           </Carousel>
