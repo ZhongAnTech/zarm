@@ -5,7 +5,8 @@ export default interface PropsType {
   title?: string;
   visible: boolean;
   activeIndex?: number;
-  onHide?: Function;
   maxScale?: number;
   minScale?: number;
+  onChange?: Function;
+  onClose?: Function;
 }

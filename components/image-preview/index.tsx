@@ -93,40 +93,47 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   }
 
   onChange = (index) => {
+    const { onChange } = this.props;
     this.setState({
-      // activeIndex: index,
       currentIndex: index,
+    }, () => {
+      if (typeof onChange === 'function') {
+        onChange(index);
+      }
     });
     this.moving = true;
   };
 
   close = () => {
-    const { onHide } = this.props;
-    if (typeof onHide === 'function' && !this.moving) {
-      onHide();
+    if (this.moving) {
+      return false;
+    }
+    const { onClose } = this.props;
+    if (typeof onClose === 'function') {
+      onClose();
     }
   };
 
   loadOrigin = () => {
-    const { activeIndex = 0, images } = this.state;
-    const { originUrl, loaded } = images[activeIndex];
+    const { currentIndex = 0, images } = this.state;
+    const { originUrl, loaded } = images[currentIndex];
     if (loaded !== LoadStatus.before) {
       return;
     }
-    images[activeIndex].loaded = LoadStatus.start;
+    images[currentIndex].loaded = LoadStatus.start;
     this.setState({
       images,
     });
 
     const img = new Image();
     img.onload = () => {
-      images[activeIndex].loaded = LoadStatus.end;
-      images[activeIndex].url = originUrl;
+      images[currentIndex].loaded = LoadStatus.end;
+      images[currentIndex].url = originUrl;
       this.setState({
         images,
       });
       setTimeout(() => {
-        images[activeIndex].loaded = LoadStatus.after;
+        images[currentIndex].loaded = LoadStatus.after;
         this.setState({
           images,
         });
@@ -153,16 +160,13 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   onWrapperTouchEnd = (e) => {
-    const { onHide } = this.props;
     const deltaTime = Date.now() - this.touchStartTime;
     // prevent long tap to close component
     if (deltaTime < 300 && !this.moving) {
       if (!this.doubleClickTimer) {
         this.doubleClickTimer = setTimeout(() => {
           this.doubleClickTimer = null;
-          if (typeof onHide === 'function') {
-            onHide();
-          }
+          this.close();
         }, 300);
       } else {
         clearTimeout(this.doubleClickTimer);
@@ -171,9 +175,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     }
 
     if (e && !e.touches) {
-      if (typeof onHide === 'function') {
-        onHide();
-      }
+      this.close();
     }
   };
 
@@ -204,7 +206,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   renderImages = () => {
-    const { prefixCls } = this.props;
+    const { prefixCls, minScale, maxScale } = this.props;
     const { images } = this.state;
     return images.map((item, i) => {
       return (
@@ -212,6 +214,8 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
           <PinchZoom
             className={`${prefixCls}__item__img`}
             onChange={this.pinchChange}
+            minScale={minScale}
+            maxScale={maxScale}
           >
             <img src={item.url} alt="" draggable={false} />
           </PinchZoom>

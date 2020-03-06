@@ -62,8 +62,8 @@ class Demo extends React.Component {
           >
             有查看原始图片功能
         </Cell>
-        <ImagePreview visible={origin} title="图片预览" images={originImages} onHide={() => this.hide('origin')} /> 
-        <ImagePreview visible={common} title="普通图片预览" images={commonImages} onHide={() => this.hide('common')} /> 
+        <ImagePreview visible={origin} title="图片预览" images={originImages} onClose={() => this.hide('origin')} /> 
+        <ImagePreview visible={common} title="普通图片预览" images={commonImages} onClose={() => this.hide('common')} /> 
       </>
     );  
   }
@@ -74,7 +74,11 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | title | string | - | 标题 |
-| visible | boolean | 否 | 是否显示 |
+| visible | boolean | false | 是否显示 |
+| minScale | number | 1 | 图片最小缩放比例，1 为最小值 |
+| maxScale | number | 3 | 图片最大缩放比例 |
 | images | Array<string> \| Array<{url: string; originUrl: string;}> | - | 图片地址 |
-| activeIndex | number | '关闭'(Alert)/'取消'(Confirm) | 取消按钮的内容 |
-| onHide | () => void | - | 关闭回调函数 |
+| activeIndex | number | 0 | 当前展示的图片是第几张，从0开始 |
+| onChange | (activeIndex?: number) => void | - | 图片切换时候回调 |
+| onClose | () => void | - | 关闭时候回调 |
+
