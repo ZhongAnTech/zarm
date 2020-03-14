@@ -144,7 +144,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
   getComponent = () => {
     const {
       prefixCls,
-      className,
       animationType,
       animationDuration,
       direction,
@@ -157,7 +156,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const animationState = visible ? 'enter' : 'leave';
 
     const cls = {
-      wrapper: classnames(`${prefixCls}__wrapper`, className, {
+      wrapper: classnames(`${prefixCls}__wrapper`, {
         [`za-fade-${animationState}`]: direction === 'center' && isPending,
       }),
       popup: classnames(prefixCls, {
@@ -264,9 +263,10 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   createContainer = () => {
+    const { className = '' } = this.props;
     if (!this._container) {
       this._container = document.createElement('div');
-      this._container.className += 'popup-container';
+      this._container.className += `popup-container ${className}`;
       this.parent = this.getParent();
       this.parent.appendChild(this._container);
     }
