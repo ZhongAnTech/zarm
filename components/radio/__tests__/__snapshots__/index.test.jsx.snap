@@ -17,6 +17,7 @@ exports[`Radio defaultChecked 1`] = `
     选项一
   </span>
   <input
+    checked=""
     class="za-radio__input"
     type="radio"
     value="0"
