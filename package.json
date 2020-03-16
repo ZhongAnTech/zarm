@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -44,7 +44,7 @@
     "build:android": "rimraf bundle/android/* && node scripts/native/mkdir && npm run build:rn && react-native bundle --platform android --dev false --entry-file examples-rn/index.js --bundle-output bundle/android/index.bundle --assets-dest bundle/android",
     "build": "npm run build:lib && npm run build:es && npm run build:umd",
     "deploy:build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
-    "deploy": "npm run deploy:build -- -p && gh-pages -d assets",
+    "deploy": "npm run deploy:build && gh-pages -d assets",
     "lint:ts": "eslint --ext .ts,.tsx components",
     "lint:js": "eslint --ext .js,.jsx components site examples-rn",
     "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
