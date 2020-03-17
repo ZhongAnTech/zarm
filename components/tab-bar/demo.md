@@ -82,7 +82,7 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | itemKey | number \| string | - | 唯一标识，对应`activeKey` |
-| title | React.ReactNode | - | 标题文字 |
-| icon | React.ReactNode | - | 图标 |
-| activeIcon | React.ReactNode | - | 选中时图标，不设置等同icon属性的值 |
+| title | ReactNode | - | 标题文字 |
+| icon | ReactNode | - | 图标 |
+| activeIcon | ReactNode | - | 选中时图标，不设置等同icon属性的值 |
 | badge | Object | - | 参考`Badge`组件 |
