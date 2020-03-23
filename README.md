@@ -8,8 +8,8 @@
 
 <div align="center">
 
-  [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=dev)](https://www.travis-ci.org/ZhongAnTech/zarm)
-  [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/dev.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=dev)
+  [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=master)](https://www.travis-ci.org/ZhongAnTech/zarm)
+  [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/master.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=master)
   ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
   ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
   [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm) 
@@ -100,7 +100,7 @@ import 'zarm/lib/button/style/css'; // 加载css
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 
-变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/dev/components/style/themes/default.scss)
+变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss)
 
 ## 社区
 
