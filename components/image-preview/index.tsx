@@ -59,8 +59,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   moving: boolean;
 
-  carousel;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +66,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
       images: formatImages(props.images),
       swipeable: true,
     };
-    this.carousel = React.createRef();
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -161,12 +158,15 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   onWrapperTouchEnd = (e) => {
     const deltaTime = Date.now() - this.touchStartTime;
+    const { onClose } = this.props;
     // prevent long tap to close component
     if (deltaTime < 300 && !this.moving) {
       if (!this.doubleClickTimer) {
         this.doubleClickTimer = setTimeout(() => {
           this.doubleClickTimer = null;
-          this.close();
+          if (typeof onClose === 'function') {
+            onClose();
+          }
         }, 300);
       } else {
         clearTimeout(this.doubleClickTimer);
@@ -175,14 +175,18 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     }
 
     if (e && !e.touches) {
-      this.close();
+      if (typeof onClose === 'function') {
+        onClose();
+      }
     }
   };
 
   onWrapperMouseUp = () => {
-    setTimeout(() => {
-      this.moving = false;
-    }, 200);
+    if (!('ontouchend' in document)) {
+      setTimeout(() => {
+        this.moving = false;
+      }, 200);
+    }
   };
 
   onWrapperTouchMove = () => {
@@ -190,7 +194,9 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   onWrapperMouseDown = () => {
-    this.moving = false;
+    if (!('ontouchend' in document)) {
+      this.moving = false;
+    }
   };
 
   pinchChange = ({ scale, x, y }) => {
