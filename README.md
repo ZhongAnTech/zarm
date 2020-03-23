@@ -10,8 +10,8 @@
 
   [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=dev)](https://www.travis-ci.org/ZhongAnTech/zarm)
   [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/dev.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=dev)
-  ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@beta/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
-  ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@beta/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
+  ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
+  ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
   [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm) 
   [![dependencies Status](https://david-dm.org/ZhongAnTech/zarm/status.svg)](https://david-dm.org/ZhongAnTech/zarm)
   [![peerDependencies Status](https://david-dm.org/ZhongAnTech/zarm/peer-status.svg)](https://david-dm.org/ZhongAnTech/zarm?type=peer)
@@ -27,12 +27,11 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ## 版本
 
-- 稳定版：[![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
-- 开发版：[![npm package](https://img.shields.io/npm/v/zarm/beta.svg)](https://www.npmjs.org/package/zarm)
+- [![npm package](https://img.shields.io/npm/v/zarm/latest.svg)](https://www.npmjs.org/package/zarm)
 
 ## 浏览器支持
 
-- ios
+- IOS
 - Android 4.0+
 
 ## 安装
@@ -41,17 +40,17 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ```bash
 # npm
-npm install zarm@beta --save
+npm install zarm --save
 
 # yarn
-yarn add zarm@beta
+yarn add zarm
 ```
 
 ### 或者通过 link 和 script 标签分别引入样式文件和js脚本文件（不推荐）
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/zarm@beta/dist/zarm.min.css">
-<script type="text/javascript" src="https://unpkg.com/zarm@beta/dist/zarm.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/zarm/dist/zarm.min.css">
+<script type="text/javascript" src="https://unpkg.com/zarm/dist/zarm.min.js"></script>
 ```
 
 ## 使用
