@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mask renders correctly 1`] = `
+<div
+  class="za-mask za-mask--normal"
+/>
+`;
+
+exports[`Mask type is transparent 1`] = `
+<div
+  class="za-mask za-mask--transparent"
+/>
+`;

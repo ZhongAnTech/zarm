@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar renders correctly 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--left"
+  />
+  <div
+    class="za-nav-bar__title"
+  />
+  <div
+    class="za-nav-bar__side za-nav-bar__side--right"
+  />
+</div>
+`;
+
+exports[`NavBar renders correctly with left content 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--left"
+  >
+    <i
+      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
+      theme="default"
+      type="arrow-left"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-left"
+        />
+      </svg>
+    </i>
+  </div>
+  <div
+    class="za-nav-bar__title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--right"
+  />
+</div>
+`;
+
+exports[`NavBar renders correctly with multiple icons 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--left"
+  >
+    <div>
+      <i
+        class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
+        theme="default"
+        type="arrow-left"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#arrow-left"
+          />
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="za-nav-bar__title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--right"
+  >
+    <div>
+      <i
+        class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
+        theme="default"
+        type="arrow-right"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#arrow-right"
+          />
+        </svg>
+      </i>
+      <i
+        style="font-size:14px;color:var(--theme-danger);width:1em;height:1em;line-height:1em;display:inline-block"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          viewBox="0 0 37 37"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="none"
+          >
+            <path
+              d="M35 18.5C35 9.387 27.613 2 18.5 2S2 9.387 2 18.5 9.387 35 18.5 35 35 27.613 35 18.5z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.6"
+            />
+            <g
+              fill="currentColor"
+            >
+              <path
+                d="M18.103 13.793c-.61 0-1.103.494-1.103 1.104v12a1.103 1.103 0 1 0 2.207 0v-12c0-.61-.493-1.104-1.104-1.104M18.103 9.791c-.143 0-.286.033-.419.088A1.108 1.108 0 0 0 17 10.894c0 .298.12.574.32.784.11.1.22.187.364.243.408.165.894.066 1.203-.243.199-.21.32-.486.32-.784 0-.143-.033-.286-.088-.419a1.09 1.09 0 0 0-.232-.353 1.122 1.122 0 0 0-.784-.331"
+              />
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NavBar renders correctly with right content 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--left"
+  >
+    <i
+      class="za-icon za-icon--arrow-left za-icon--default za-icon--md"
+      theme="default"
+      type="arrow-left"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-left"
+        />
+      </svg>
+    </i>
+  </div>
+  <div
+    class="za-nav-bar__title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--right"
+  >
+    <i
+      class="za-icon za-icon--arrow-right za-icon--default za-icon--md"
+      theme="default"
+      type="arrow-right"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 32 32"
+        width="1em"
+      >
+        <use
+          href="#arrow-right"
+        />
+      </svg>
+    </i>
+  </div>
+</div>
+`;
+
+exports[`NavBar renders correctly with title 1`] = `
+<div
+  class="za-nav-bar"
+>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--left"
+  />
+  <div
+    class="za-nav-bar__title"
+  >
+    测试标题
+  </div>
+  <div
+    class="za-nav-bar__side za-nav-bar__side--right"
+  />
+</div>
+`;

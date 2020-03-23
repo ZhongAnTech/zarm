@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoticeBar icon 1`] = `
+<div
+  class="za-message za-message--warning za-message--lg"
+>
+  <div
+    class="za-message__header"
+  >
+    <div
+      class="za-message__icon"
+    >
+      <img
+        alt=""
+        src="\\\\\\\\static.zhongan.com/website/health/zarm/images/icons/state.png"
+      />
+    </div>
+  </div>
+  <div
+    class="za-message__body"
+  >
+    <div
+      class="za-notice-bar"
+    >
+      <div
+        class="za-notice-bar__body"
+        style="left:0"
+      >
+        foo
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`NoticeBar renders correctly 1`] = `
+<NoticeBar
+  closable={false}
+  hasArrow={false}
+  icon={
+    <Icon
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
+      type="broadcast"
+      viewBox="0 0 32 32"
+    />
+  }
+  prefixCls="za-notice-bar"
+  scrollable={false}
+  theme="warning"
+>
+  <Message
+    closable={false}
+    hasArrow={false}
+    icon={
+      <Icon
+        prefixCls="za-icon"
+        size="md"
+        theme="default"
+        type="broadcast"
+        viewBox="0 0 32 32"
+      />
+    }
+    prefixCls="za-message"
+    size="lg"
+    theme="warning"
+  >
+    <div
+      className="za-message za-message--warning za-message--lg"
+      onClick={[Function]}
+    >
+      <div
+        className="za-message__header"
+      >
+        <div
+          className="za-message__icon"
+        >
+          <Icon
+            prefixCls="za-icon"
+            size="md"
+            theme="default"
+            type="broadcast"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+              size="md"
+              theme="default"
+              type="broadcast"
+            >
+              <Icon
+                className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+                prefixCls="za-icon"
+                size="md"
+                theme="default"
+                type="broadcast"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+                  size="md"
+                  theme="default"
+                  type="broadcast"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#broadcast"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </div>
+      </div>
+      <div
+        className="za-message__body"
+      >
+        <div
+          className="za-notice-bar"
+        >
+          <div
+            className="za-notice-bar__body"
+            style={
+              Object {
+                "left": 0,
+              }
+            }
+          >
+            foo
+          </div>
+        </div>
+      </div>
+    </div>
+  </Message>
+</NoticeBar>
+`;
+
+exports[`NoticeBar scrollable 1`] = `
+<NoticeBar
+  closable={false}
+  hasArrow={false}
+  icon={
+    <Icon
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
+      type="broadcast"
+      viewBox="0 0 32 32"
+    />
+  }
+  prefixCls="za-notice-bar"
+  scrollable={true}
+  theme="warning"
+>
+  <Message
+    closable={false}
+    hasArrow={false}
+    icon={
+      <Icon
+        prefixCls="za-icon"
+        size="md"
+        theme="default"
+        type="broadcast"
+        viewBox="0 0 32 32"
+      />
+    }
+    prefixCls="za-message"
+    size="lg"
+    theme="warning"
+  >
+    <div
+      className="za-message za-message--warning za-message--lg"
+      onClick={[Function]}
+    >
+      <div
+        className="za-message__header"
+      >
+        <div
+          className="za-message__icon"
+        >
+          <Icon
+            prefixCls="za-icon"
+            size="md"
+            theme="default"
+            type="broadcast"
+            viewBox="0 0 32 32"
+          >
+            <Iconfont
+              className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+              size="md"
+              theme="default"
+              type="broadcast"
+            >
+              <Icon
+                className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+                prefixCls="za-icon"
+                size="md"
+                theme="default"
+                type="broadcast"
+                viewBox="0 0 32 32"
+              >
+                <i
+                  className="za-icon za-icon--broadcast za-icon--default za-icon--md"
+                  size="md"
+                  theme="default"
+                  type="broadcast"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    viewBox="0 0 32 32"
+                    width="1em"
+                  >
+                    <use
+                      xlinkHref="#broadcast"
+                    />
+                  </svg>
+                </i>
+              </Icon>
+            </Iconfont>
+          </Icon>
+        </div>
+      </div>
+      <div
+        className="za-message__body"
+      >
+        <div
+          className="za-notice-bar"
+        >
+          <div
+            className="za-notice-bar__body"
+            style={
+              Object {
+                "left": 0,
+              }
+            }
+          >
+            各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。
+          </div>
+        </div>
+      </div>
+    </div>
+  </Message>
+</NoticeBar>
+`;
+
+exports[`NoticeBar theme 1`] = `
+<div
+  class="za-message za-message--danger za-message--lg"
+>
+  <div
+    class="za-message__header"
+  >
+    <div
+      class="za-message__icon"
+    >
+      <i
+        class="za-icon za-icon--broadcast za-icon--default za-icon--md"
+        theme="default"
+        type="broadcast"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#broadcast"
+          />
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="za-message__body"
+  >
+    <div
+      class="za-notice-bar"
+    >
+      <div
+        class="za-notice-bar__body"
+        style="left:0"
+      >
+        foo
+      </div>
+    </div>
+  </div>
+</div>
+`;

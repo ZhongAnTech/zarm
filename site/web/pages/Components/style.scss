@@ -1,0 +1,131 @@
+.components-page {
+  header {
+    box-shadow: 0 2px 8px #f0f1f2;
+  }
+
+  main {
+    position: relative;
+    min-width: 1200px;
+    margin: 110px auto 15px;
+    background-color: #fff;
+    overflow: hidden;
+
+    .main-container {
+      min-height: 500px;
+      margin-left: -1px;
+      padding: 0 480px 140px 340px;
+      overflow: hidden;
+      border-left: 1px solid #ebedf0;
+
+      &.no-simulator {
+        padding-right: 60px;
+      }
+    }
+
+    .simulator {
+      position: fixed;
+      top: 120px;
+      right: 0;
+      width: 420px;
+      z-index: 10;
+
+      iframe {
+        box-sizing: content-box;
+        background: #f6f6f6;
+        border: 1px solid #eaeefb;
+        width: 375px;
+        height: 667px;
+      }
+    }
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: 30px;
+  bottom: 50px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #999;
+  font-size: 20px;
+  border-radius: 30px;
+  background-color: #fff;
+  opacity: 0.9;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+  z-index: 11;
+
+  &:hover {
+    // background-color: #00bc70;
+    // color: #fff;
+    box-shadow: 0 2px 10px 0 rgba(18, 194, 135, 0.3);
+  }
+
+  .za-icon {
+    color: #999;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-height: 800px) {
+  .components-page {
+    main {
+      .main-container {
+        padding-right: 505px;
+      }
+
+      .simulator {
+        width: 445px;
+
+        iframe {
+          width: 320px;
+          height: 568px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .components-page {
+    main {
+      .simulator {
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .side-bar {
+    display: none;
+  }
+
+  .components-page {
+    main {
+      min-width: 100%;
+
+      .main-container {
+        padding: 0 20px;
+
+        &.no-simulator {
+          padding-right: 20px;
+        }
+      }
+
+      .simulator {
+        position: static;
+        width: auto;
+        text-align: center;
+        margin-bottom: 40px;
+
+        iframe {
+          width: 320px;
+          height: 568px;
+        }
+      }
+    }
+  }
+}

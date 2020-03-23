@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell children 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            标题文字
+          </react-native-mock>
+        </react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            我是Cell
+          </react-native-mock>
+        </react-native-mock>
+      </react-native-mock>
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Cell description 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            标题文字
+          </react-native-mock>
+        </react-native-mock>
+      </react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          描述文字
+        </react-native-mock>
+      </react-native-mock>
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Cell hasArrow 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            标题文字
+          </react-native-mock>
+        </react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            我是Cell
+          </react-native-mock>
+        </react-native-mock>
+      </react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          描述文字
+        </react-native-mock>
+      </react-native-mock>
+      <react-native-mock />
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Cell help 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        <img
+          alt=""
+          src="\\\\\\\\static.zhongan.com/website/health/zarm/images/icons/state.png"
+        />
+      </react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            标题文字
+          </react-native-mock>
+        </react-native-mock>
+      </react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          描述文字
+        </react-native-mock>
+      </react-native-mock>
+    </react-native-mock>
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      我是help
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Cell icon 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        <img
+          alt=""
+          src="\\\\\\\\static.zhongan.com/website/health/zarm/images/icons/state.png"
+        />
+      </react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            标题文字
+          </react-native-mock>
+        </react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            我是Cell
+          </react-native-mock>
+        </react-native-mock>
+      </react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          描述文字
+        </react-native-mock>
+      </react-native-mock>
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;
+
+exports[`Cell renders correctly 1`] = `
+<react-native-mock>
+  <react-native-mock>
+    <react-native-mock />
+  </react-native-mock>
+  <react-native-mock>
+    <react-native-mock>
+      <react-native-mock>
+        <react-native-mock>
+          <react-native-mock>
+            标题文字
+          </react-native-mock>
+        </react-native-mock>
+      </react-native-mock>
+    </react-native-mock>
+  </react-native-mock>
+</react-native-mock>
+`;

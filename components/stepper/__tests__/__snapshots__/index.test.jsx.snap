@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper defaultValue 1`] = `
+<span
+  className="za-stepper za-stepper--radius"
+>
+  <Button
+    block={false}
+    className="za-stepper__sub"
+    disabled={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    prefixCls="za-button"
+    shadow={false}
+    shape="radius"
+    size="xs"
+    theme="default"
+  >
+    <Icon
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
+      type="minus"
+      viewBox="0 0 32 32"
+    />
+  </Button>
+  <input
+    className="za-stepper__input"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    type="tel"
+    value={2}
+  />
+  <Button
+    block={false}
+    className="za-stepper__plus"
+    disabled={false}
+    ghost={false}
+    htmlType="button"
+    loading={false}
+    onClick={[Function]}
+    prefixCls="za-button"
+    shadow={false}
+    shape="radius"
+    size="xs"
+    theme="default"
+  >
+    <Icon
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
+      type="add"
+      viewBox="0 0 32 32"
+    />
+  </Button>
+</span>
+`;
+
+exports[`Stepper renders correctly 1`] = `
+<span
+  class="za-stepper za-stepper--radius"
+>
+  <button
+    aria-disabled="false"
+    class="za-button za-stepper__sub za-button--default za-button--xs za-button--radius"
+    type="button"
+  >
+    <span>
+      <i
+        class="za-icon za-icon--minus za-icon--default za-icon--md"
+        theme="default"
+        type="minus"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#minus"
+          />
+        </svg>
+      </i>
+    </span>
+  </button>
+  <input
+    class="za-stepper__input"
+    type="tel"
+    value="0"
+  />
+  <button
+    aria-disabled="false"
+    class="za-button za-stepper__plus za-button--default za-button--xs za-button--radius"
+    type="button"
+  >
+    <span>
+      <i
+        class="za-icon za-icon--add za-icon--default za-icon--md"
+        theme="default"
+        type="add"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#add"
+          />
+        </svg>
+      </i>
+    </span>
+  </button>
+</span>
+`;

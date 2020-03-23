@@ -1,0 +1,48 @@
+@import "../../style/core/index.scss";
+@import "../../button/style/mixins";
+
+@include b(action-sheet) {
+  margin: var(--action-sheet-margin);
+
+  @include m(spacing) {
+    margin: 0 r(10) r(10);
+
+    @include e(actions, cancel) {
+      border-radius: var(--radius-md);
+    }
+  }
+
+  @include e(actions, cancel) {
+    overflow: hidden;
+    background-color: var(--color-text-inverse);
+  }
+
+  @include e(cancel) {
+    margin-top: r(10);
+  }
+
+  @include e(item) {
+    display: block;
+    position: relative;
+    height: var(--action-sheet-item-height);
+    line-height: var(--action-sheet-item-height);
+    font-size: var(--action-sheet-item-font-size);
+    @include button-base();
+
+    &:active {
+      background-color: var(--background-active);
+    }
+
+    &:not(:first-of-type) {
+      @include onepx(top);
+    }
+
+    @include m(primary) {
+      color: var(--theme-primary);
+    }
+
+    @include m(danger) {
+      color: var(--theme-danger);
+    }
+  }
+}

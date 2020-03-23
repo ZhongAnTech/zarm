@@ -1,0 +1,20 @@
+@import "@site/styles/index";
+
+.button-page {
+  .za-panel__body {
+    overflow: hidden;
+    padding: r(15) r(15) 0 r(15);
+    background: #fff;
+  }
+
+  main > div:last-child {
+    .za-panel__body {
+      background-color: #333;
+    }
+  }
+
+  .za-button {
+    margin-bottom: r(15);
+    margin-right: r(15);
+  }
+}

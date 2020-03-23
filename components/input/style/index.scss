@@ -1,0 +1,155 @@
+@import "../../style/core/index";
+
+@include b(input) {
+  position: relative;
+  width: 100%;
+  color: var(--color-text);
+
+  input,
+  textarea {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    color: var(--color-text);
+
+    &[type="date"],
+    &[type="text"],
+    &[type="search"] {
+      height: var(--input-line-height);
+      line-height: var(--input-line-height);
+    }
+
+    @include placeholder {
+      color: var(--color-text-placeholder);
+    }
+  }
+
+  textarea {
+    display: block;
+    line-height: var(--input-line-height);
+    resize: none;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow: visible;
+  }
+
+  @include e(content) {
+    position: relative;
+    height: var(--input-line-height);
+    line-height: var(--input-line-height);
+  }
+
+  @include e(virtual-input) {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  @include e(placeholder) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-text-placeholder);
+  }
+
+  @include e(clear) {
+    position: absolute;
+    visibility: hidden;
+    color: #bcbcbc;
+    width: var(--input-clear-icon-width);
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    font-size: r(16);
+  }
+
+  @include e(length) {
+    text-align: right;
+    color: var(--input-length-count-color);
+    font-size: r(12);
+  }
+
+  @include m(number) {
+    @include m(focus) {
+      @include e(virtual-input) {
+        transform: translate3d(0, 0, 0);
+
+        &:after {
+          content: '';
+          display: inline-block;
+          height: var(--input-cursor-height);
+          border-right: var(--input-cursor-width) solid var(--input-cursor-color);
+          transition: opacity 0.1s ease-out;
+          animation: virtual-cursor 1s infinite step-start;
+        }
+      }
+    }
+  }
+
+  @include m(clearable) {
+    @include m(focus) {
+      padding-right: var(--input-clear-icon-width);
+
+      @include e(clear) {
+        visibility: visible;
+      }
+    }
+  }
+
+  @include m(readonly) {
+    @include e(content) {
+      height: auto;
+    }
+
+    @include e(virtual-input) {
+      position: static;
+      white-space: normal;
+    }
+  }
+
+  @include m(disabled) {
+    input,
+    textarea {
+      cursor: not-allowed;
+      color: var(--color-text-disabled);
+
+      @include placeholder {
+        color: var(--color-text-disabled);
+      }
+    }
+
+    @include e(content, placeholder) {
+      cursor: not-allowed;
+      color: var(--color-text-disabled);
+    }
+  }
+}
+
+@keyframes virtual-cursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

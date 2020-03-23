@@ -1,0 +1,135 @@
+@import "../../style/core/index";
+@import "mixins";
+
+@include b(cell) {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--cell-background);
+  @include cell-theme(var(--cell-description-color));
+  @include onepx(top);
+
+  // SwipeAction will hidden one px line
+  // &:first-of-type:after {
+  //   border-top: none;
+  // }
+
+  &:after {
+    left: var(--cell-line-padding-left);
+  }
+
+  @include e(inner) {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--cell-padding-h);
+    font-size: var(--cell-title-font-size);
+    min-height: var(--cell-height);
+
+    a,
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include e(body) {
+    width: 100%;
+    flex: 1;
+    display: flex;
+  }
+
+  @include e(footer) {
+    display: flex;
+    justify-content: center;
+    text-align: right;
+    font-size: var(--cell-description-font-size);
+  }
+
+  @include e(arrow) {
+    margin-left: r(5);
+    margin-right: r(2);
+
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      border-top: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      width: var(--cell-arrow-length);
+      height: var(--cell-arrow-length);
+      transform: rotate(45deg);
+    }
+  }
+
+  @include e(icon) {
+    text-align: center;
+    margin-right: var(--padding-h-md);
+    padding: var(--cell-padding-v) 0;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  @include e(title) {
+    flex: 1;
+    padding: var(--cell-padding-v) 0;
+    overflow: hidden;
+    color: var(--cell-title-color);
+    line-height: var(--cell-title-line-height);
+
+    @include m(label) {
+      flex: none;
+      width: var(--cell-label-width);
+    }
+  }
+
+  @include e(content) {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    @include b(input) {
+      padding: var(--cell-padding-v) 0;
+    }
+  }
+
+  @include e(help) {
+    padding: 0 r(15) r(10) r(15);
+  }
+
+  @include m(primary) {
+    @include cell-theme(var(--theme-primary));
+  }
+
+  @include m(success) {
+    @include cell-theme(var(--theme-success));
+  }
+
+  @include m(warning) {
+    @include cell-theme(var(--theme-warning));
+  }
+
+  @include m(danger) {
+    @include cell-theme(var(--theme-danger));
+  }
+
+  @include m(link) {
+    cursor: pointer;
+    user-select: none;
+
+    @include e(inner) {
+      &:active {
+        background-color: var(--background-active);
+      }
+    }
+  }
+
+  @include m(disabled) {
+    @include e(body, footer) {
+      color: var(--color-text-disabled);
+      @include b(icon) {
+        color: var(--color-text-disabled);
+      }
+    }
+  }
+}

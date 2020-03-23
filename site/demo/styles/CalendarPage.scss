@@ -1,0 +1,28 @@
+@import "@site/styles/index";
+
+.calendar-page {
+  .za-calendar {
+    &__body {
+      max-height: 50vh;
+    }
+  }
+
+  .custom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &__text {
+      position: absolute;
+      left: 50%;
+      bottom: r(-12);
+      transform: translateX(-50%);
+      font-size: r(10);
+      white-space: nowrap;
+    }
+  }
+}

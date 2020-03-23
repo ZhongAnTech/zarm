@@ -1,0 +1,55 @@
+@import "../../style/core/index";
+
+@include b(date-picker-view) {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: r(210);
+  padding: r(20) 0;
+  background: #fff;
+
+  @include e(mask) {
+    width: 100%;
+    height: r(88);
+    pointer-events: none;
+    transform: translateZ(0);
+
+    @include m(top) {
+      position: absolute;
+      top: 0;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-bottom: 1px solid #ebebeb;
+        transform-origin: 0 bottom;
+      }
+    }
+
+    @include m(bottom) {
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        border-top: 1px solid #ebebeb;
+        left: 0;
+        top: 0;
+        width: 100%;
+        transform-origin: 0 top;
+      }
+    }
+  }
+
+  @include e(content) {
+    display: flex;
+  }
+}

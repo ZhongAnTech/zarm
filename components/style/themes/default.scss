@@ -1,0 +1,355 @@
+@import "../core/index.scss";
+
+:root {
+  @include defineColorHSL(--theme-default, 0, 0%, 90%);
+  @include defineColorHSL(--theme-primary, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-success, 156, 100%, 36.9%);
+  @include defineColorHSL(--theme-warning, 31, 83.1%, 55.9%);
+  @include defineColorHSL(--theme-danger, 0, 100%, 65.7%);
+
+  // 文字色
+  --color-text: #343434;                    // 基本
+  --color-text-inverse: #fff;               // 反色
+  --color-text-placeholder: #a9a9a9;        // 文本框提示
+  --color-text-disabled: #bcbcbc;           // 失效
+  --color-text-caption: #909090;            // 辅助描述
+  --color-link: var(--theme-primary);         // 链接
+  --color-shadow: rgba(56, 56, 56, 0.15);   // 阴影色
+
+  // 背景色
+  --background-active: #e6e6e6;
+  --background-disabled: #f2f2f2;
+
+  // 边框色
+  --border-color: #dcdcdc;
+  --border-disabled: #e6e6e6;
+
+  // 圆角
+  --radius-xs: 4px;
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-round: 1000px;
+  --radius-circle: 50%;
+
+  // 水平间距
+  --padding-h-xs: 8px;
+  --padding-h-sm: 12px;
+  --padding-h-md: 16px;
+  --padding-h-lg: 20px;
+
+  // 垂直间距
+  --padding-v-xs: 6px;
+  --padding-v-sm: 8px;
+  --padding-v-md: 12px;
+  --padding-v-lg: 16px;
+
+  // 字体大小
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+
+  // 堆叠顺序
+  --zindex-mask: 1000;
+  --zindex-popup: 1500;
+  --zindex-tooltip: 1500;
+
+  // 透明度
+  --opacity-disabled: .5;
+  --opacity-mask: .5;
+  --opacity-toast: .8;
+  --opacity-tooltip: .8;
+
+  // components
+
+  // ActionSheet
+  --action-sheet-margin: 0;
+  --action-sheet-item-height: 50px;
+  --action-sheet-item-font-size: 16px;
+
+  // activity-indicator
+  --activity-indicator-size-md: 20px;
+  --activity-indicator-size-lg: 32px;
+  --activity-indicator-path-color: #e6e6e6;
+
+  // Alert
+  --alert-button-height: 50px;
+  --alert-button-font-size: 18px;
+
+  // Badge
+  --badge-height: 14px;
+  --badge-font-size: var(--font-size-xs);
+  --badge-padding-h: 4px;
+  --badge-dot-diameter: 8px;
+  --badge-border-radius-rect: var(--radius-sm);
+  --badge-border-radius-round: var(--radius-round);
+  --badge-sup-top: -4px;
+  --badge-text-color: #fff;
+
+  // Button
+  --button-height-xs: 28px;
+  --button-height-sm: 36px;
+  --button-height-md: 44px;
+  --button-height-lg: 52px;
+  --button-padding-h-xs: var(--padding-h-xs);
+  --button-padding-h-sm: var(--padding-h-sm);
+  --button-padding-h-md: var(--padding-h-md);
+  --button-padding-h-lg: var(--padding-h-lg);
+  --button-font-size-xs: 12px;
+  --button-font-size-sm: 14px;
+  --button-font-size-md: 16px;
+  --button-font-size-lg: 18px;
+  --button-icon-size-xs: 16px;
+  --button-icon-size-sm: 18px;
+  --button-icon-size-md: 22px;
+  --button-icon-size-lg: 26px;
+  --button-disabled-opacity: var(--opacity-disabled);
+  --button-disabled-color-ghost: var(--border-disabled);
+  --button-default-background: var(--color-text-inverse);
+  --button-default-border: var(--theme-default);
+  --button-default-color: var(--color-text);
+  --button-default-active-background: var(--background-active);
+  --button-default-active-border: var(--background-active);
+  --button-default-active-color: var(--color-text);
+  --button-default-ghost-border: var(--color-text-inverse);
+  --button-default-ghost-color: var(--color-text-inverse);
+  --button-default-ghost-active-border: var(--background-active);
+  --button-default-ghost-active-color: var(--background-active);
+  --button-default-shadow-color: rgba(230, 230, 230, 0.3);
+  --button-primary-background: var(--theme-primary);
+  --button-primary-border: var(--theme-primary);
+  --button-primary-color: var(--color-text-inverse);
+  --button-primary-active-background: var(--theme-primary-dark);
+  --button-primary-active-border: var(--theme-primary-dark);
+  --button-primary-active-color: rgba(255, 255, 255, 0.4);
+  --button-primary-ghost-border: var(--theme-primary);
+  --button-primary-ghost-color: var(--theme-primary);
+  --button-primary-ghost-active-border: var(--theme-primary-dark);
+  --button-primary-ghost-active-color: var(--theme-primary-dark);
+  --button-primary-shadow-color: rgba(0, 188, 112, 0.3);
+  --button-danger-background: var(--theme-danger);
+  --button-danger-border: var(--theme-danger);
+  --button-danger-color: var(--color-text-inverse);
+  --button-danger-active-background: var(--theme-danger-dark);
+  --button-danger-active-border: var(--theme-danger-dark);
+  --button-danger-active-color: rgba(255, 255, 255, 0.4);
+  --button-danger-ghost-border: var(--theme-danger);
+  --button-danger-ghost-color: var(--theme-danger);
+  --button-danger-ghost-active-border: var(--theme-danger-dark);
+  --button-danger-ghost-active-color: var(--theme-danger-dark);
+  --button-danger-shadow-color: rgba(255, 80, 80, 0.3);
+
+  // Calendar
+  --calendar-height: 45px; // 最小高度
+  --calendar-background: #fff; // 背景色
+  --calendar-week-bar-fontsize: 14px; // 星期条文字大小
+  --calendar-week-bar-background: #f2f2f2; // 星期条文字背景色
+  --calendar-week-bar-color: var(--color-text-caption); // 星期条文字颜色
+  --calendar-section-padding: 15px; // 两边留白间距
+  --calendar-day-fontsize: 16px; // 月份文字大小
+  --calendar-day-title-fontsize: 17px; // 月份title文字大小
+  --calendar-day-background: #fff; // 月份文字背景颜色
+  --calendar-day-color: var(--color-text); // 月份文字颜色
+  --calendar-day-today-background: var(--theme-primary-lighter); // 日期今天选中背景颜色
+  --calendar-day-today-color: var(--theme-primary); // 日期今天选中颜色
+  --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
+  --calendar-day-selected-color: #fff; // 日期文字选中颜色
+  --calendar-day-selected-shadow: rgba(0, 188, 112, 0.3);
+  --calendar-day-range-background: var(--theme-primary-lighter); // 日期文字范围内背景颜色
+  --calendar-day-range-color: var(--theme-primary); // 日期文字范围内颜色
+  --calendar-day-height: 40px; // 日期高度
+
+  // Carousel
+  --carousel-pagination-distance: 8px;
+  --carousel-pagination-rect-width: 19px;
+  --carousel-pagination-rect-height: 4px;
+  --carousel-pagination-rect-border-radius: 1px;
+  --carousel-pagination-rect-step: 2px;
+  --carousel-pagination-rect-color: rgba(255, 255, 255, 0.6);
+  --carousel-pagination-rect-color-active: #fff;
+
+  // Cell
+  --cell-height: 52px;                                    // 最小高度
+  --cell-background: #fff;                              // 背景色
+  --cell-line-padding-left: 16px;                         // 分隔线左边距
+  --cell-padding-h: 16px;                                 // 水平边内距
+  --cell-padding-v: 15px;                                 // 纵向边内距
+  --cell-title-color: var(--color-text);                  // 标题文字颜色
+  --cell-title-font-size: 15px;                           // 标题文字大小
+  --cell-title-line-height: 22px;                         // 标题文字行高
+  --cell-description-color: var(--color-text-caption);    // 标题文字颜色
+  --cell-description-font-size: 15px;                     // 描述文字大小
+  --cell-label-width: 100px;                              // 表单label宽度
+  --cell-arrow-color: #bcbcbc;                          // 箭头颜色
+  --cell-arrow-length: 10px;                              // 箭头长度
+  --cell-arrow-border-width: 2px;                         // 箭头粗细
+
+  // Checkbox
+  --checkbox-size: 18px;
+  --checkbox-radius: var(--radius-md);
+  --checkbox-border-color: var(--border-color);
+
+  // Collapse
+  --collapse-height: 52px;
+  --collapse-padding: 16px;
+  --collapse-arrow-color: #bcbcbc;
+  --collapse-arrow-disabled-color: #eee;
+
+  // Confirm
+  --confirm-button-height: 50px;
+  --confirm-button-font-size: 18px;
+
+  // Input
+  --input-clear-icon-width: 16px;
+  --input-padding-v: var(--cell-padding-v);
+  --input-cursor-color: #597cf6;
+  --input-cursor-width: 2px;
+  --input-cursor-height: 22px;
+  --input-length-count-color: var(--color-text-disabled);
+  --input-height: 28px;
+  --input-line-height: var(--cell-title-line-height);
+
+  // Keyboard
+  --keyboard-item-height: 52px;
+  --keyboard-item-font-size: 30px;
+
+  // Message
+  --message-min-height-md: 29px;
+  --message-min-height-lg: 40px;
+  --message-font-size-md: 12px;
+  --message-font-size-lg: 14px;
+  --message-icon-size-md: 14px;
+  --message-icon-size-lg: 16px;
+  --message-padding-v-md: 6px;
+  --message-padding-h-md: 8px;
+  --message-padding-v-lg: 8px;
+  --message-padding-h-lg: 12px;
+
+  // Modal
+  --modal-background: #fff;
+  --modal-title-font-size: 18px;
+
+  // NavBar
+  --nav-bar-color: #fdfdfd;
+  --nav-bar-height: 44px;
+  --nav-bar-icon-size: 24px;
+
+  // NoticeBar
+  --notice-bar-height: 24px;
+
+  // Panel
+  --panel-header-color: var(--color-text-caption);
+  --panel-header-font-size: 14px;
+  --panel-body-color: var(--color-text);
+  --panel-body-font-size: 15px;
+
+  // Picker
+  --picker-header-height: 45px;
+  --picker-header-font-size: 16px;
+  // --picker-stackitem-height: r(35);
+
+  // Progress
+  --progress-background: #f2f2f2;
+  //--progress-circle-diameter: 150px;
+  // -height-#{size} 仅针对type: 'line'
+  --progress-width-lg: 100%;
+  --progress-width-md: 100%;
+  --progress-width-sm: 140px;
+  // -size-#{size} 同时针对type: 'semi-circle' | 'circle'
+  --progress-size-lg: 200px;
+  --progress-size-md: 150px;
+  --progress-size-sm: 80px;
+  // -width-#{size} 针对 weight: 'bold' | 'normal' | 'thin'
+  //--progress-weight-lg: 10px;
+  //--progress-weight-md: 8px;
+  //--progress-weight-sm: 4px;
+  // 同时针对type: 'circle' 和 'semi-circle'
+  --progress-font-size-circle-lg: 30px;
+  --progress-font-size-circle-md: 24px;
+  --progress-font-size-circle-sm: 18px;
+
+  // Pull
+  --pull-control-height: 50px;
+  --pull-control-font-size: 14px;
+
+  // Radio
+  --radio-size: 18px;
+  --radio-radius: var(--radius-circle);
+  --radio-border-color: var(--border-color);
+
+  // SearchBar
+  --search-bar-font-size: 14px;
+  --search-bar-icon-size: 18px;
+
+  // Slider
+  --slider-line-background: var(--border-color);
+  --slider-line-height: 2px;
+  --slider-line-dot-width: 6px;
+  --slider-vertical-line-width: 2px;
+  --slider-handle-size: 24px;
+  --slider-handle-size-small: 16px;
+  --slider-mark-handle: 24px;
+  --slider-mark-size: 15px;
+  --slider-handle-background: #fff;
+  --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+
+  // Stepper
+  --stepper-height-md: 28px;
+  --stepper-height-lg: 36px;
+  --stepper-icon-font-size-md: 12px;
+  --stepper-icon-font-size-lg: 14px;
+  --stepper-input-width-md: 50px;
+  --stepper-input-width-lg: 60px;
+  --stepper-input-disabled: var(--color-text-disabled);
+  --stepper-input-font-size-md: 14px;
+  --stepper-input-font-size-lg: 16px;
+  --stepper-input-margin-h-md: 4px;
+  --stepper-input-margin-h-lg: 4px;
+  --stepper-input-padding-h-md: 8px;
+  --stepper-input-padding-h-lg: 8px;
+
+  // Switch
+  --switch-width: 53px;
+  --switch-height: 32px;
+  // --switch-width-sm: 41px;
+  // --switch-height-sm: 21px;
+  --switch-border-color: var(--border-color);
+  --switch-background: #fff;
+
+  // Tabs
+  --tabs-height: 45px;
+  --tabs-item-font-size: var(--font-size-lg);
+  --tabs-line-height: 2px;
+
+  // Toast
+  --toast-border-radius: 6px;
+  --toast-color: var(--color-text-inverse);
+  --toast-font-size: 13px;
+
+  // Tooltip
+  --tooltip-font-size: 12px;
+  --tooltip-color: var(--color-text-inverse);
+  --tooltip-arrow-size: 4px;
+  --tooltip-padding-v: var(--padding-v-xs);
+  --tooltip-padding-h: var(--padding-h-xs);
+
+  // Tabbar
+  --tabbar-height: 50px;
+  --tabbar-hidden-bottom: -50px;
+  --tabbar-background: #fff;
+  --tabbar-item-font-size: 12px;
+  --tabbar-item-active-color: var(--theme-primary);
+
+  // Wheel
+  --wheel-item-height: 34px;
+  --wheel-item-rows: 5;
+  --wheel-item-font-size: 18px;
+
+  // Icon
+  --icon-font-size-sm: 16px;
+  --icon-font-size-md: 24px;
+  --icon-font-size-lg: 32px;
+  --icon-theme-default: var(--color-text);
+}

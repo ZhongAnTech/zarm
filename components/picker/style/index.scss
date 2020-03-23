@@ -1,0 +1,124 @@
+@import "../../style/core/index";
+// @import "mixins";
+// $stackitemHeight: $picker-stackitem-height;
+
+@include b(picker) {
+  background: #fff;
+
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: var(--picker-header-height);
+    line-height: var(--picker-header-height);
+    font-size: var(--picker-header-font-size);
+    @include onepx(bottom);
+  }
+
+  @include e(cancel, submit) {
+    flex: 1;
+    padding: 0 r(20);
+    cursor: pointer;
+  }
+
+  @include e(cancel) {
+    text-align: left;
+    color: var(--color-text-caption);
+  }
+
+  @include e(submit) {
+    text-align: right;
+    color: var(--theme-primary);
+  }
+
+  @include e(title) {
+    color: var(--color-text);
+  }
+
+  // &-stack {
+  //   &-group {
+  //     position: relative;
+  //     height: 8 * $stackitemHeight;
+  //     overflow: hidden;
+  //   }
+
+  //   &-column {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     right: 0;
+  //     bottom: 0;
+  //     transform: translate(0, 0);
+  //     transition: transform .3s;
+
+  //     &.lower-hidden {
+  //       ~ .#{$prefixCls}-stack-column {
+  //         transform: translate(100%, 0);
+  //       }
+
+  //       .#{$prefixCls}-stack-item {
+  //         padding-left: r(20);
+  //       }
+  //     }
+
+  //     @include pickerStackColumn(5);
+
+  //     &:not(:last-child) {
+  //       .#{$prefixCls}-stack-item {
+  //         padding-right: r(40);
+
+  //         &:before {
+  //           position: absolute;
+  //           right: r(15);
+  //           top: 50%;
+  //           content: '';
+  //           width: r(9);
+  //           height: r(9);
+  //           margin-top: r(-4);
+  //           border-right: r(2) solid #c7c7cc;
+  //           border-top: r(2) solid #c7c7cc;
+  //           transform: rotate(45deg);
+  //         }
+  //       }
+  //     }
+
+  //     &:first-child:last-child,
+  //     &:nth-child(2):last-child {
+  //       .#{$prefixCls}-stack-item {
+  //         padding-left: r(20);
+  //       }
+  //     }
+  //   }
+
+  //   &-column-wrapper {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     right: r(-20);
+  //     bottom: 0;
+  //     padding-right: r(20);
+  //     overflow-y: scroll;
+  //     background: #fff;
+  //     box-shadow: 0 0 r(10) rgba(0, 0, 0, .3);
+  //   }
+
+  //   &-item {
+  //     position: relative;
+  //     padding: 0 r(10);
+  //     line-height: $stackitemHeight;
+  //     font-size: r(16);
+  //     color: #333;
+  //     transition: padding-left .4s;
+  //     white-space: nowrap;
+  //     text-overflow: ellipsis;
+  //     overflow: hidden;
+  //     @include onepx(bottom);
+
+  //     &.active {
+  //       color: $theme-primary;
+  //     }
+  //   }
+  // }
+}

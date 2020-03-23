@@ -1,0 +1,25 @@
+@mixin pickerStackColumn($count) {
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      z-index: $i * 2;
+
+      @if ($i > 2) {
+        left: r(60 * ($i - 2));
+      }
+
+      .#{$prefixCls-picker}-stack-column-wrapper {
+        z-index: $i * 2 + 1;
+
+        @if ($i > 1) {
+          left: r(60);
+        }
+      }
+
+      .#{$prefixCls-picker}-stack-item {
+        @if ($i > 2) {
+          padding-left: r(10);
+        }
+      }
+    }
+  }
+}

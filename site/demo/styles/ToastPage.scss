@@ -1,0 +1,21 @@
+@import "@site/styles/index";
+
+.toast-page {
+  @at-root {
+    .za-toast {
+      .box {
+        width: r(70);
+
+        &-icon,
+        &-text {
+          margin: r(5) 0;
+        }
+
+        &-icon {
+          font-size: r(50);
+          color: #fff;
+        }
+      }
+    }
+  }
+}

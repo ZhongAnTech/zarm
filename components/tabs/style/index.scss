@@ -1,0 +1,56 @@
+@import "../../style/core/index";
+
+@include b(tabs) {
+  @include e(header) {
+    position: relative;
+
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: var(--tabs-height);
+      line-height: var(--tabs-height);
+      @include onepx(bottom);
+    }
+  }
+
+  @include e(tab) {
+    flex: 1;
+    text-align: center;
+    color: var(--color-text);
+    font-size: var(--tabs-item-font-size);
+    cursor: pointer;
+
+    @include m(disabled) {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(line) {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: var(--tabs-line-height);
+    transition: left .3s ease-out;
+    background-color: var(--theme-primary);
+
+    &__inner {
+      display: block;
+      margin: auto;
+      height: 100%;
+      background-color: var(--theme-primary);
+    }
+  }
+
+  @include e(panel) {
+    position: relative;
+    transition: height .3s;
+    display: none;
+
+    @include m(active) {
+      display: block;
+    }
+  }
+}

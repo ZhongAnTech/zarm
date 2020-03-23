@@ -1,0 +1,16 @@
+@import "../../style/core/index";
+
+@include b(notice-bar) {
+  position: relative;
+  width: 100%;
+  height: var(--notice-bar-height);
+  line-height: var(--notice-bar-height);
+  overflow: hidden;
+
+  @include e(body) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+  }
+}

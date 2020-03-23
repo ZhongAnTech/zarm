@@ -1,0 +1,11 @@
+@import "../../style/core/index";
+
+@include b(file-picker) {
+  @include e(input) {
+    display: none;
+  }
+
+  @include m(disabled) {
+    opacity: var(--opacity-disabled);
+  }
+}

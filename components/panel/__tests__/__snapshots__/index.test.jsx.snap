@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel renders correctly 1`] = `
+<div
+  class="za-panel"
+>
+  <div
+    class="za-panel__header"
+  >
+    <div
+      class="za-panel__header__title"
+    >
+      title
+    </div>
+    <div
+      class="za-panel__header__more"
+    >
+      more
+    </div>
+  </div>
+  <div
+    class="za-panel__body"
+  >
+    body
+  </div>
+</div>
+`;

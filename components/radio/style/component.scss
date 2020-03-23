@@ -1,0 +1,328 @@
+@import '../../button/style/mixins';
+
+@include b(radio) {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  color: var(--color-text);
+  font-size: r(14);
+
+  &:not(&--disabled):hover {
+    @include e(inner) {
+      border-color: var(--theme-primary);
+    }
+  }
+
+  @include e(widget) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @include e(input) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  @include e(text) {
+    vertical-align: middle;
+    margin: 0 r(8);
+  }
+
+  @include e(inner) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--radio-size);
+    height: var(--radio-size);
+    border: 1px solid var(--radio-border-color);
+    border-radius: var(--radio-radius);
+    background: var(--color-text-inverse);
+    transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+
+    &:before {
+      content: '';
+      width: calc(var(--radio-size) / 3.5);
+      height: calc(var(--radio-size) / 2);
+      border: calc(var(--radio-size) / 9) solid var(--color-text-inverse);
+      border-top: 0;
+      border-left: 0;
+      margin-top: calc(var(--radio-size) / -12);
+      margin-left: calc(var(--radio-size) / 18);
+      transform: rotate(45deg) scale(0);
+      transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
+    }
+  }
+
+  // 未全选状态
+  @include m(indeterminate) {
+    @include e(inner) {
+      &:before {
+        transform: scale(1);
+        width: calc(var(--radio-size) / 2.33);
+        height: calc(var(--radio-size) / 2.33);
+        margin-top: 0;
+        margin-left: 0;
+        border: none;
+        background-color: var(--theme-primary);
+      }
+    }
+  }
+
+  // 选中状态
+  @include m(checked) {
+    @include e(inner) {
+      border-color: var(--theme-primary);
+      background-color: var(--theme-primary);
+
+      &:before {
+        transform: rotate(45deg) scale(1);
+        transition: all .2s cubic-bezier(.12, .4, .29, 1.46) .1s;
+      }
+    }
+  }
+
+  // 禁用状态
+  @include m(disabled) {
+    @include e(input) {
+      cursor: not-allowed;
+    }
+
+    @include e(text) {
+      color: var(--color-text-disabled);
+    }
+
+    @include e(inner) {
+      opacity: var(--opacity-disabled);
+    }
+
+    @include m(checked) {
+      @include e(inner) {
+        border-color: var(--radio-border-color);
+        background-color: var(--radio-border-color);
+      }
+    }
+  }
+
+  // 无文本状态
+  @include m(untext) {
+    line-height: 1;
+  }
+}
+
+@include b(radio-group) {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+
+  @include e(inner) {
+    margin-right: r(-24);
+    margin-bottom: r(-8);
+  }
+
+  @include b(radio) {
+    margin-right: r(24);
+    margin-bottom: r(8);
+  }
+
+  // 通栏样式
+  @include m(block) {
+    width: 100%;
+
+    @include e(inner) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include b(radio) {
+      flex: 1;
+    }
+  }
+
+  // 按钮样式
+  @include m(button) {
+    @include e(inner) {
+      margin-right: r(-8);
+      margin-bottom: r(-8);
+    }
+
+    @include b(radio) {
+      margin-right: r(8);
+      margin-bottom: r(8);
+      @include button-base();
+      @include button-shape(var(--radius-xs));
+      @include button-theme(
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-default-background),
+        var(--button-default-border),
+        var(--button-default-color),
+        var(--button-disabled-opacity),
+        var(--button-default-shadow-color),
+      );
+
+      @include e(text) {
+        margin: 0;
+      }
+
+      @include m(checked) {
+        @include button-theme(
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-primary-active-background),
+          var(--button-primary-active-border),
+          var(--button-primary-active-color),
+          var(--button-primary-background),
+          var(--button-primary-border),
+          var(--button-primary-color),
+          var(--button-disabled-opacity),
+          var(--button-primary-shadow-color),
+        );
+      }
+    }
+
+    @include m(block) {
+      @include b(radio) {
+        flex: 1;
+      }
+    }
+
+    @include m(rect) {
+      @include b(radio) {
+        @include button-shape(0);
+      }
+    }
+
+    @include m(radius) {
+      @include b(radio) {
+        @include button-shape(var(--radius-md));
+      }
+    }
+
+    @include m(round) {
+      @include b(radio) {
+        @include button-shape(var(--radius-round));
+      }
+    }
+
+    @include m(circle) {
+      @include b(radio) {
+        @include button-shape(var(--radius-circle));
+      }
+    }
+
+    // sizes
+    @include m(lg) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-lg),
+          var(--button-padding-h-lg),
+          var(--button-font-size-lg),
+          var(--button-icon-size-lg),
+        );
+      }
+    }
+
+    @include m(md) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-md),
+          var(--button-padding-h-md),
+          var(--button-font-size-md),
+          var(--button-icon-size-md),
+        );
+      }
+    }
+
+    @include m(sm) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-sm),
+          var(--button-padding-h-sm),
+          var(--button-font-size-sm),
+          var(--button-icon-size-sm),
+        );
+      }
+    }
+
+    @include m(xs) {
+      @include b(radio) {
+        @include button-size(
+          var(--button-height-xs),
+          var(--button-padding-h-xs),
+          var(--button-font-size-xs),
+          var(--button-icon-size-xs),
+        );
+      }
+    }
+
+    @include m(ghost) {
+      @include b(radio) {
+        @include m(checked) {
+          @include button-ghost(
+            transparent,
+            var(--theme-primary),
+            var(--theme-primary),
+            transparent,
+            var(--theme-primary),
+            var(--theme-primary),
+            transparent,
+            var(--theme-primary),
+            var(--theme-primary),
+          );
+        }
+      }
+    }
+
+    @include m(compact) {
+      @include b(radio) {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+
+        &:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        &:last-child {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        &:not(:first-child):not(:last-child) {
+          border-radius: 0;
+        }
+
+        @include m(checked) {
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  @include m(cell) {
+    display: block;
+    overflow: visible;
+
+    @include e(inner) {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+
+    @include b(radio) {
+      position: static;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+  }
+}

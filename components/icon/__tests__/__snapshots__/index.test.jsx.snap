@@ -1,0 +1,539 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon renders Icons of different size correctly 1`] = `
+Array [
+  <i
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--lg"
+    theme="primary"
+    type="broadcast"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#broadcast"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--md"
+    theme="primary"
+    type="broadcast"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#broadcast"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--sm"
+    theme="primary"
+    type="broadcast"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#broadcast"
+      />
+    </svg>
+  </i>,
+]
+`;
+
+exports[`Icon renders Icons of different theme correctly 1`] = `
+Array [
+  <i
+    class="za-icon za-icon--right za-icon--primary za-icon--md"
+    theme="primary"
+    type="right"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#right"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--add za-icon--success za-icon--md"
+    theme="success"
+    type="add"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#add"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--info-round za-icon--warning za-icon--md"
+    theme="warning"
+    type="info-round"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#info-round"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--wrong-round-fill za-icon--danger za-icon--md"
+    theme="danger"
+    type="wrong-round-fill"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#wrong-round-fill"
+      />
+    </svg>
+  </i>,
+]
+`;
+
+exports[`Icon renders Icons using iconfont 1`] = `
+Array [
+  <i
+    class="za-icon za-icon--icon-empty_fill za-icon--primary za-icon--lg"
+    theme="primary"
+    type="icon-empty_fill"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#icon-empty_fill"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--icon-caidan07 za-icon--primary za-icon--lg"
+    theme="primary"
+    type="icon-caidan07"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#icon-caidan07"
+      />
+    </svg>
+  </i>,
+]
+`;
+
+exports[`Icon renders Icons using svg component 1`] = `
+<i
+  class="za-icon za-icon--primary za-icon--lg"
+  theme="primary"
+>
+  <svg
+    fill="currentColor"
+    height="1em"
+    stroke="currentColor"
+    viewBox="0 0 32 32"
+    width="1em"
+  >
+    <path
+      d="M1 12.376l8.8 9.114L30.431 1.568"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.6"
+    />
+  </svg>
+</i>
+`;
+
+exports[`Icon renders all Icons 1`] = `
+Array [
+  <i
+    class="za-icon za-icon--add za-icon--primary za-icon--md"
+    theme="primary"
+    type="add"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#add"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--arrow-left za-icon--primary za-icon--md"
+    theme="primary"
+    type="arrow-left"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#arrow-left"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--arrow-bottom za-icon--primary za-icon--md"
+    theme="primary"
+    type="arrow-bottom"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#arrow-bottom"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--arrow-right za-icon--primary za-icon--md"
+    theme="primary"
+    type="arrow-right"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#arrow-right"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--broadcast za-icon--primary za-icon--md"
+    theme="primary"
+    type="broadcast"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#broadcast"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--date za-icon--primary za-icon--md"
+    theme="primary"
+    type="date"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#date"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--deletekey za-icon--primary za-icon--md"
+    theme="primary"
+    type="deletekey"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#deletekey"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--info-round za-icon--primary za-icon--md"
+    theme="primary"
+    type="info-round"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#info-round"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--info-round-fill za-icon--primary za-icon--md"
+    theme="primary"
+    type="info-round-fill"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#info-round-fill"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--keyboard za-icon--primary za-icon--md"
+    theme="primary"
+    type="keyboard"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#keyboard"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--minus za-icon--primary za-icon--md"
+    theme="primary"
+    type="minus"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#minus"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--question-round za-icon--primary za-icon--md"
+    theme="primary"
+    type="question-round"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#question-round"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--required za-icon--primary za-icon--md"
+    theme="primary"
+    type="required"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#required"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--right-round-fill za-icon--primary za-icon--md"
+    theme="primary"
+    type="right-round-fill"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#right-round-fill"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--right-round za-icon--primary za-icon--md"
+    theme="primary"
+    type="right-round"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#right-round"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--right za-icon--primary za-icon--md"
+    theme="primary"
+    type="right"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#right"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--search za-icon--primary za-icon--md"
+    theme="primary"
+    type="search"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#search"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--time-circle za-icon--primary za-icon--md"
+    theme="primary"
+    type="time-circle"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#time-circle"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--warning-round-fill za-icon--primary za-icon--md"
+    theme="primary"
+    type="warning-round-fill"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#warning-round-fill"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--wrong-round-fill za-icon--primary za-icon--md"
+    theme="primary"
+    type="wrong-round-fill"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#wrong-round-fill"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--wrong-round za-icon--primary za-icon--md"
+    theme="primary"
+    type="wrong-round"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#wrong-round"
+      />
+    </svg>
+  </i>,
+  <i
+    class="za-icon za-icon--wrong za-icon--primary za-icon--md"
+    theme="primary"
+    type="wrong"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      viewBox="0 0 32 32"
+      width="1em"
+    >
+      <use
+        href="#wrong"
+      />
+    </svg>
+  </i>,
+]
+`;

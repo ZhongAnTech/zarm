@@ -1,0 +1,392 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input renders correctly 1`] = `
+<div
+  class="za-input"
+>
+  <input
+    autocomplete="off"
+    type="text"
+  />
+</div>
+`;
+
+exports[`Input renders correctly if type isn't valid 1`] = `
+<div
+  class="za-input"
+>
+  <input
+    autocomplete="off"
+    type="xxx"
+  />
+</div>
+`;
+
+exports[`Input renders correctly if type=text and props includes rows 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <textarea
+    rows="1"
+  />
+</div>
+`;
+
+exports[`Input renders onClear called correctly 1`] = `
+<Input
+  clearable={true}
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "My new value",
+        ],
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  onClear={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  type="text"
+  value=""
+>
+  <InputBase
+    clearable={true}
+    disabled={false}
+    onChange={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "My new value",
+          ],
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    onClear={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    prefixCls="za-input"
+    readOnly={false}
+    type="text"
+    value=""
+  >
+    <div
+      className="za-input za-input--clearable"
+    >
+      <input
+        autoComplete="off"
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
+        onFocus={[Function]}
+        type="text"
+        value=""
+      />
+      <Icon
+        className="za-input__clear"
+        onClick={[Function]}
+        prefixCls="za-icon"
+        size="md"
+        theme="default"
+        type="wrong-round-fill"
+        viewBox="0 0 32 32"
+      >
+        <Iconfont
+          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+          onClick={[Function]}
+          size="md"
+          theme="default"
+          type="wrong-round-fill"
+        >
+          <Icon
+            className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+            onClick={[Function]}
+            prefixCls="za-icon"
+            size="md"
+            theme="default"
+            type="wrong-round-fill"
+            viewBox="0 0 32 32"
+          >
+            <i
+              className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+              onClick={[Function]}
+              size="md"
+              theme="default"
+              type="wrong-round-fill"
+            >
+              <svg
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 32 32"
+                width="1em"
+              >
+                <use
+                  xlinkHref="#wrong-round-fill"
+                />
+              </svg>
+            </i>
+          </Icon>
+        </Iconfont>
+      </Icon>
+    </div>
+  </InputBase>
+</Input>
+`;
+
+exports[`Input showLength 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <textarea
+    maxlength="100"
+    rows="4"
+  />
+  <div
+    class="za-input__length"
+  >
+    0/100
+  </div>
+</div>
+`;
+
+exports[`Input.Idcard renders correctly 1`] = `
+<Input
+  type="idcard"
+>
+  <InputNumber
+    clearable={true}
+    disabled={false}
+    prefixCls="za-input"
+    type="idcard"
+  >
+    <div
+      className="za-input za-input--number"
+      onClick={[Function]}
+    >
+      <div
+        className="za-input__content"
+      >
+        <div
+          className="za-input__placeholder"
+        />
+        <div
+          className="za-input__virtual-input"
+        />
+        <input
+          disabled={false}
+          type="hidden"
+          value=""
+        />
+        <KeyboardPicker
+          destroy={true}
+          onKeyClick={[Function]}
+          prefixCls="za-keyboard-picker"
+          type="idcard"
+          visible={false}
+        >
+          <Popup
+            destroy={true}
+            mask={false}
+            visible={false}
+          />
+        </KeyboardPicker>
+      </div>
+    </div>
+  </InputNumber>
+</Input>
+`;
+
+exports[`Input.Number renders correctly 1`] = `
+<Input
+  type="number"
+>
+  <InputNumber
+    clearable={true}
+    disabled={false}
+    prefixCls="za-input"
+    type="number"
+  >
+    <div
+      className="za-input za-input--number"
+      onClick={[Function]}
+    >
+      <div
+        className="za-input__content"
+      >
+        <div
+          className="za-input__placeholder"
+        />
+        <div
+          className="za-input__virtual-input"
+        />
+        <input
+          disabled={false}
+          type="hidden"
+          value=""
+        />
+        <KeyboardPicker
+          destroy={true}
+          onKeyClick={[Function]}
+          prefixCls="za-keyboard-picker"
+          type="number"
+          visible={false}
+        >
+          <Popup
+            destroy={true}
+            mask={false}
+            visible={false}
+          />
+        </KeyboardPicker>
+      </div>
+    </div>
+  </InputNumber>
+</Input>
+`;
+
+exports[`Input.Price renders correctly 1`] = `
+<Input
+  type="price"
+>
+  <InputNumber
+    clearable={true}
+    disabled={false}
+    prefixCls="za-input"
+    type="price"
+  >
+    <div
+      className="za-input za-input--number"
+      onClick={[Function]}
+    >
+      <div
+        className="za-input__content"
+      >
+        <div
+          className="za-input__placeholder"
+        />
+        <div
+          className="za-input__virtual-input"
+        />
+        <input
+          disabled={false}
+          type="hidden"
+          value=""
+        />
+        <KeyboardPicker
+          destroy={true}
+          onKeyClick={[Function]}
+          prefixCls="za-keyboard-picker"
+          type="price"
+          visible={false}
+        >
+          <Popup
+            destroy={true}
+            mask={false}
+            visible={false}
+          />
+        </KeyboardPicker>
+      </div>
+    </div>
+  </InputNumber>
+</Input>
+`;
+
+exports[`Input.Textarea autoHeight 1`] = `
+<Input
+  autoHeight={true}
+  onChange={[MockFunction]}
+  rows={4}
+  type="text"
+  value="foo"
+>
+  <InputTextarea
+    autoHeight={true}
+    disabled={false}
+    focused={false}
+    onChange={[MockFunction]}
+    prefixCls="za-input"
+    rows={4}
+    showLength={false}
+    type="text"
+    value="foo"
+  >
+    <div
+      className="za-input za-input--textarea"
+    >
+      <textarea
+        disabled={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onCompositionUpdate={[Function]}
+        onFocus={[Function]}
+        rows={4}
+        value="foo"
+      />
+    </div>
+  </InputTextarea>
+</Input>
+`;
+
+exports[`Input.Textarea renders correctly 1`] = `
+<div
+  class="za-input za-input--textarea"
+>
+  <textarea
+    rows="4"
+  />
+</div>
+`;

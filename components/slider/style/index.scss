@@ -1,0 +1,163 @@
+@import "../../style/core/index";
+
+@include b(slider) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  // 横向
+  @include e(content) {
+    position: relative;
+    margin: calc(var(--slider-handle-size) / 2) calc(var(--slider-handle-size) / 2);
+    flex: 1;
+  }
+
+  // 线
+  @include e(line) {
+    position: relative;
+    flex: 1;
+    height: var(--slider-line-height);
+    background-color: var(--slider-line-background);
+
+    @include e(line__bg) {
+      height: 100%;
+      background-color: var(--theme-primary);
+    }
+
+    // 刻度
+    @include e(line__dot) {
+      position: absolute;
+      width: var(--slider-line-dot-width);
+      height: var(--slider-line-dot-width);
+      margin-top: calc((var(--slider-line-dot-width) + var(--slider-line-height)) / -2);
+      margin-left: calc(var(--slider-line-dot-width) / -2);
+      background-color: #fff;
+      border: 1px solid var(--slider-line-background);
+      border-radius: 50%;
+      cursor: pointer;
+
+      @include m(active) {
+        border: 1px solid var(--theme-primary);
+      }
+    }
+  }
+
+  // 滑动控制器
+  @include e(handle) {
+    position: absolute;
+    left: 0;
+    margin-top: calc((var(--slider-handle-size) + var(--slider-line-height)) / -2);
+    margin-left: calc(var(--slider-handle-size) / -2);
+    width: var(--slider-handle-size);
+    height: var(--slider-handle-size);
+    border-radius: 50%;
+    background-color: var(--slider-handle-background);
+    box-shadow: var(--slider-handle-shadow);
+    touch-action: none;
+
+    @include b(tooltip) {
+      display: block;
+    }
+
+    @include e(handle__shadow) {
+      width: var(--slider-handle-size);
+      height: var(--slider-handle-size);
+    }
+  }
+
+  // 标签
+  @include e(marks) {
+    position: absolute;
+    font-size: var(--slider-mark-size);
+    top: 10px;
+    left: 0;
+    right: 0;
+    color: var(--slider-line-background);
+
+    @include e(mark) {
+      position: absolute;
+      transform: translateX(-50%);
+      color: var(--theme-primary);
+    }
+  }
+
+  // 横向显示标签
+  @include m(marked) {
+    @include e(content) {
+      margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
+    }
+
+    @include e(handle) {
+      width: var(--slider-handle-size-small);
+      height: var(--slider-handle-size-small);
+      margin-top: calc((var(--slider-handle-size-small) + var(--slider-line-height)) / -2);
+      margin-left: calc(var(--slider-handle-size-small) / -2);
+    }
+  }
+
+  // 禁用状态
+  @include m(disabled) {
+    cursor: not-allowed;
+    opacity: var(--opacity-disabled);
+  }
+
+  // 垂直
+  @include m(vertical) {
+    flex-direction: column-reverse;
+    width: auto;
+    height: 100%;
+    align-items: initial;
+
+    @include e(content) {
+      margin: calc(var(--slider-handle-size) / 2) calc(var(--slider-handle-size) / 2);
+    }
+
+    @include e(line) {
+      width: var(--slider-vertical-line-width);
+      position: absolute;
+      top: 0;
+      height: 100%;
+
+      @include e(line__bg) {
+        position: absolute;
+        bottom: 0;
+        width: var(--slider-line-height);
+      }
+    }
+
+    @include e(line__dot) {
+      margin-bottom: calc(var(--slider-line-dot-width) / -2);
+      margin-left: calc((var(--slider-line-dot-width) - var(--slider-line-height)) / -2);
+    }
+
+    @include e(handle) {
+      margin-top: calc(var(--slider-handle-size) / -2);
+    }
+
+    // 垂直显示标签
+    @include m(marked) {
+      @include e(content) {
+        margin: calc(var(--slider-handle-size-small) / 2) calc(var(--slider-handle-size-small) / 2);
+      }
+
+      @include e(marks) {
+        top: 0;
+        left: 15px;
+        width: 20px;
+        height: 100%;
+      }
+
+      @include e(mark) {
+        transform: translateY(50%);
+      }
+
+      @include e(handle) {
+        margin-top: 0;
+        margin-bottom: calc(var(--slider-handle-size-small) / -2);
+        margin-left: calc((var(--slider-handle-size-small) - var(--slider-line-height)) / -2);
+        width: var(--slider-handle-size-small);
+        height: var(--slider-handle-size-small);
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@import "../../style/core/index";
+
+@include b(search-bar) {
+  background: #fff;
+
+  @include e(form) {
+    height: r(44);
+    margin: 0 r(15);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  @include e(content) {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 r(8);
+    height: r(28);
+    background: #f2f2f2;
+    overflow: hidden;
+
+    @include e(icon) {
+      margin-right: r(4);
+      font-size: var(--search-bar-icon-size);
+      color: var(--color-text-placeholder);
+    }
+  }
+
+  @include e(mock) {
+    flex: 1;
+    font-size: var(--search-bar-font-size);
+
+    @include b(input) {
+      background-color: transparent;
+
+      input {
+        &::-webkit-search-cancel-button {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include e(cancel) {
+    font-size: var(--search-bar-font-size);
+    color: var(--color-text);
+    margin-left: r(15);
+  }
+
+  @include m(focus) {
+    @include e(cancel) {
+      transition: all .2s;
+      margin-right: 0;
+    }
+  }
+
+  @include m(radius) {
+    @include e(content) {
+      border-radius: var(--radius-md);
+    }
+  }
+
+  @include m(round) {
+    @include e(content) {
+      border-radius: var(--radius-round);
+    }
+  }
+}

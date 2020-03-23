@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch defaultChecked 1`] = `
+<span
+  class="za-switch"
+>
+  <input
+    checked=""
+    class="za-switch__input"
+    type="checkbox"
+    value="on"
+  />
+</span>
+`;
+
+exports[`Switch renders correctly 1`] = `
+<span
+  class="za-switch"
+>
+  <input
+    class="za-switch__input"
+    type="checkbox"
+    value="off"
+  />
+</span>
+`;

@@ -1,7 +1,13 @@
 sudo: false
 language: node_js
 node_js:
-  - 6
+  - 8
+  - 10
+before_install:
+  - export TZ=America/New_York
+cache: yarn
+install:
+  - yarn --ignore-engines
 script:
   - npm run lint
   - npm run test

@@ -1,0 +1,15 @@
+@import "@site/styles/index";
+
+.checkbox-page {
+  .block-box {
+    padding: r(10);
+    background: #fff;
+  }
+
+  .agreement-box {
+    label {
+      margin-left: r(8);
+      font-size: r(14);
+    }
+  }
+}

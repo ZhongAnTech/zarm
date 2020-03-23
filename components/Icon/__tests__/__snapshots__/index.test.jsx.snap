@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Icon renders correctly 1`] = `
-<i
-  class="za-icon za-icon-right"
-/>
-`;

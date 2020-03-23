@@ -1,0 +1,80 @@
+@import "../../style/core/index";
+
+@include b(collapse) {
+  @include m(animated) {
+    @include b(collapse-item) {
+      &__content {
+        transition: all 0.15s ease-out;
+      }
+    }
+  }
+}
+
+@include b(collapse-item) {
+  font-size: r(15);
+
+  &:first-child {
+    @include b(collapse-item) {
+      @include e(title) {
+        @include onepx(top bottom);
+      }
+    }
+  }
+
+  @include e(title) {
+    position: relative;
+    height: var(--collapse-height);
+    line-height: var(--collapse-height);
+    padding: 0 var(--collapse-padding);
+    @include onepx(bottom);
+  }
+
+  @include e(content) {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    font-size: r(13);
+    @include onepx(bottom);
+  }
+
+  @include e(arrow) {
+    position: absolute;
+    width: r(10);
+    height: r(10);
+    top: r(17);
+    right: calc(var(--collapse-padding) + 2px);
+    border-right: r(2) solid var(--collapse-arrow-color);
+    border-bottom: r(2) solid var(--collapse-arrow-color);
+    transform: rotate(45deg);
+    transform-origin: 50% 50%;
+    transition: transform 0.15s ease-out;
+  }
+
+  @include m(disabled) {
+    @include e(arrow) {
+      border-right: r(2) solid var(--collapse-arrow-disabled-color);
+      border-bottom: r(2) solid var(--collapse-arrow-disabled-color);
+    }
+  }
+
+  @include m(active) {
+    @include e(content) {
+      height: auto;
+    }
+
+    @include e(arrow) {
+      transform: rotate(-135deg);
+      transform-origin: 60% 75%;
+    }
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
+    @include e(title, content) {
+      &:after {
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
+      }
+    }
+  }
+}

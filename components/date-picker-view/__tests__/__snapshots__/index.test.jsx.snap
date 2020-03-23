@@ -1,0 +1,4591 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePickerView DatePickerView time 1`] = `
+<ForwardRef(forwardRef)
+  defaultValue="2017-9-6 12:00"
+  mode="datetime"
+  placeholder="请选择时间"
+  title="选择时间"
+>
+  <LocaleReceiver
+    defaultValue="2017-9-6 12:00"
+    forwardedRef={null}
+    mode="datetime"
+    placeholder="请选择时间"
+    title="选择时间"
+  >
+    <DatePickerView
+      defaultValue="2017-9-6 12:00"
+      disabled={false}
+      locale={
+        Object {
+          "day": "日",
+          "hour": "时",
+          "minute": "分",
+          "month": "月",
+          "year": "年",
+        }
+      }
+      localeCode="zh-cn"
+      minuteStep={1}
+      mode="datetime"
+      placeholder="请选择时间"
+      prefixCls="za-date-picker-view"
+      title="选择时间"
+      value=""
+      valueMember="value"
+      visible={true}
+    >
+      <PickerView
+        cols={Infinity}
+        dataSource={
+          Array [
+            Array [
+              Object {
+                "label": "2000年",
+                "value": 2000,
+              },
+              Object {
+                "label": "2001年",
+                "value": 2001,
+              },
+              Object {
+                "label": "2002年",
+                "value": 2002,
+              },
+              Object {
+                "label": "2003年",
+                "value": 2003,
+              },
+              Object {
+                "label": "2004年",
+                "value": 2004,
+              },
+              Object {
+                "label": "2005年",
+                "value": 2005,
+              },
+              Object {
+                "label": "2006年",
+                "value": 2006,
+              },
+              Object {
+                "label": "2007年",
+                "value": 2007,
+              },
+              Object {
+                "label": "2008年",
+                "value": 2008,
+              },
+              Object {
+                "label": "2009年",
+                "value": 2009,
+              },
+              Object {
+                "label": "2010年",
+                "value": 2010,
+              },
+              Object {
+                "label": "2011年",
+                "value": 2011,
+              },
+              Object {
+                "label": "2012年",
+                "value": 2012,
+              },
+              Object {
+                "label": "2013年",
+                "value": 2013,
+              },
+              Object {
+                "label": "2014年",
+                "value": 2014,
+              },
+              Object {
+                "label": "2015年",
+                "value": 2015,
+              },
+              Object {
+                "label": "2016年",
+                "value": 2016,
+              },
+              Object {
+                "label": "2017年",
+                "value": 2017,
+              },
+              Object {
+                "label": "2018年",
+                "value": 2018,
+              },
+              Object {
+                "label": "2019年",
+                "value": 2019,
+              },
+              Object {
+                "label": "2020年",
+                "value": 2020,
+              },
+              Object {
+                "label": "2021年",
+                "value": 2021,
+              },
+              Object {
+                "label": "2022年",
+                "value": 2022,
+              },
+              Object {
+                "label": "2023年",
+                "value": 2023,
+              },
+              Object {
+                "label": "2024年",
+                "value": 2024,
+              },
+              Object {
+                "label": "2025年",
+                "value": 2025,
+              },
+              Object {
+                "label": "2026年",
+                "value": 2026,
+              },
+              Object {
+                "label": "2027年",
+                "value": 2027,
+              },
+              Object {
+                "label": "2028年",
+                "value": 2028,
+              },
+              Object {
+                "label": "2029年",
+                "value": 2029,
+              },
+              Object {
+                "label": "2030年",
+                "value": 2030,
+              },
+            ],
+            Array [
+              Object {
+                "label": "1月",
+                "value": 0,
+              },
+              Object {
+                "label": "2月",
+                "value": 1,
+              },
+              Object {
+                "label": "3月",
+                "value": 2,
+              },
+              Object {
+                "label": "4月",
+                "value": 3,
+              },
+              Object {
+                "label": "5月",
+                "value": 4,
+              },
+              Object {
+                "label": "6月",
+                "value": 5,
+              },
+              Object {
+                "label": "7月",
+                "value": 6,
+              },
+              Object {
+                "label": "8月",
+                "value": 7,
+              },
+              Object {
+                "label": "9月",
+                "value": 8,
+              },
+              Object {
+                "label": "10月",
+                "value": 9,
+              },
+              Object {
+                "label": "11月",
+                "value": 10,
+              },
+              Object {
+                "label": "12月",
+                "value": 11,
+              },
+            ],
+            Array [
+              Object {
+                "label": "1日",
+                "value": 1,
+              },
+              Object {
+                "label": "2日",
+                "value": 2,
+              },
+              Object {
+                "label": "3日",
+                "value": 3,
+              },
+              Object {
+                "label": "4日",
+                "value": 4,
+              },
+              Object {
+                "label": "5日",
+                "value": 5,
+              },
+              Object {
+                "label": "6日",
+                "value": 6,
+              },
+              Object {
+                "label": "7日",
+                "value": 7,
+              },
+              Object {
+                "label": "8日",
+                "value": 8,
+              },
+              Object {
+                "label": "9日",
+                "value": 9,
+              },
+              Object {
+                "label": "10日",
+                "value": 10,
+              },
+              Object {
+                "label": "11日",
+                "value": 11,
+              },
+              Object {
+                "label": "12日",
+                "value": 12,
+              },
+              Object {
+                "label": "13日",
+                "value": 13,
+              },
+              Object {
+                "label": "14日",
+                "value": 14,
+              },
+              Object {
+                "label": "15日",
+                "value": 15,
+              },
+              Object {
+                "label": "16日",
+                "value": 16,
+              },
+              Object {
+                "label": "17日",
+                "value": 17,
+              },
+              Object {
+                "label": "18日",
+                "value": 18,
+              },
+              Object {
+                "label": "19日",
+                "value": 19,
+              },
+              Object {
+                "label": "20日",
+                "value": 20,
+              },
+              Object {
+                "label": "21日",
+                "value": 21,
+              },
+              Object {
+                "label": "22日",
+                "value": 22,
+              },
+              Object {
+                "label": "23日",
+                "value": 23,
+              },
+              Object {
+                "label": "24日",
+                "value": 24,
+              },
+              Object {
+                "label": "25日",
+                "value": 25,
+              },
+              Object {
+                "label": "26日",
+                "value": 26,
+              },
+              Object {
+                "label": "27日",
+                "value": 27,
+              },
+              Object {
+                "label": "28日",
+                "value": 28,
+              },
+              Object {
+                "label": "29日",
+                "value": 29,
+              },
+              Object {
+                "label": "30日",
+                "value": 30,
+              },
+            ],
+            Array [
+              Object {
+                "label": "0时",
+                "value": 0,
+              },
+              Object {
+                "label": "1时",
+                "value": 1,
+              },
+              Object {
+                "label": "2时",
+                "value": 2,
+              },
+              Object {
+                "label": "3时",
+                "value": 3,
+              },
+              Object {
+                "label": "4时",
+                "value": 4,
+              },
+              Object {
+                "label": "5时",
+                "value": 5,
+              },
+              Object {
+                "label": "6时",
+                "value": 6,
+              },
+              Object {
+                "label": "7时",
+                "value": 7,
+              },
+              Object {
+                "label": "8时",
+                "value": 8,
+              },
+              Object {
+                "label": "9时",
+                "value": 9,
+              },
+              Object {
+                "label": "10时",
+                "value": 10,
+              },
+              Object {
+                "label": "11时",
+                "value": 11,
+              },
+              Object {
+                "label": "12时",
+                "value": 12,
+              },
+              Object {
+                "label": "13时",
+                "value": 13,
+              },
+              Object {
+                "label": "14时",
+                "value": 14,
+              },
+              Object {
+                "label": "15时",
+                "value": 15,
+              },
+              Object {
+                "label": "16时",
+                "value": 16,
+              },
+              Object {
+                "label": "17时",
+                "value": 17,
+              },
+              Object {
+                "label": "18时",
+                "value": 18,
+              },
+              Object {
+                "label": "19时",
+                "value": 19,
+              },
+              Object {
+                "label": "20时",
+                "value": 20,
+              },
+              Object {
+                "label": "21时",
+                "value": 21,
+              },
+              Object {
+                "label": "22时",
+                "value": 22,
+              },
+              Object {
+                "label": "23时",
+                "value": 23,
+              },
+            ],
+            Array [
+              Object {
+                "label": "0分",
+                "value": 0,
+              },
+              Object {
+                "label": "1分",
+                "value": 1,
+              },
+              Object {
+                "label": "2分",
+                "value": 2,
+              },
+              Object {
+                "label": "3分",
+                "value": 3,
+              },
+              Object {
+                "label": "4分",
+                "value": 4,
+              },
+              Object {
+                "label": "5分",
+                "value": 5,
+              },
+              Object {
+                "label": "6分",
+                "value": 6,
+              },
+              Object {
+                "label": "7分",
+                "value": 7,
+              },
+              Object {
+                "label": "8分",
+                "value": 8,
+              },
+              Object {
+                "label": "9分",
+                "value": 9,
+              },
+              Object {
+                "label": "10分",
+                "value": 10,
+              },
+              Object {
+                "label": "11分",
+                "value": 11,
+              },
+              Object {
+                "label": "12分",
+                "value": 12,
+              },
+              Object {
+                "label": "13分",
+                "value": 13,
+              },
+              Object {
+                "label": "14分",
+                "value": 14,
+              },
+              Object {
+                "label": "15分",
+                "value": 15,
+              },
+              Object {
+                "label": "16分",
+                "value": 16,
+              },
+              Object {
+                "label": "17分",
+                "value": 17,
+              },
+              Object {
+                "label": "18分",
+                "value": 18,
+              },
+              Object {
+                "label": "19分",
+                "value": 19,
+              },
+              Object {
+                "label": "20分",
+                "value": 20,
+              },
+              Object {
+                "label": "21分",
+                "value": 21,
+              },
+              Object {
+                "label": "22分",
+                "value": 22,
+              },
+              Object {
+                "label": "23分",
+                "value": 23,
+              },
+              Object {
+                "label": "24分",
+                "value": 24,
+              },
+              Object {
+                "label": "25分",
+                "value": 25,
+              },
+              Object {
+                "label": "26分",
+                "value": 26,
+              },
+              Object {
+                "label": "27分",
+                "value": 27,
+              },
+              Object {
+                "label": "28分",
+                "value": 28,
+              },
+              Object {
+                "label": "29分",
+                "value": 29,
+              },
+              Object {
+                "label": "30分",
+                "value": 30,
+              },
+              Object {
+                "label": "31分",
+                "value": 31,
+              },
+              Object {
+                "label": "32分",
+                "value": 32,
+              },
+              Object {
+                "label": "33分",
+                "value": 33,
+              },
+              Object {
+                "label": "34分",
+                "value": 34,
+              },
+              Object {
+                "label": "35分",
+                "value": 35,
+              },
+              Object {
+                "label": "36分",
+                "value": 36,
+              },
+              Object {
+                "label": "37分",
+                "value": 37,
+              },
+              Object {
+                "label": "38分",
+                "value": 38,
+              },
+              Object {
+                "label": "39分",
+                "value": 39,
+              },
+              Object {
+                "label": "40分",
+                "value": 40,
+              },
+              Object {
+                "label": "41分",
+                "value": 41,
+              },
+              Object {
+                "label": "42分",
+                "value": 42,
+              },
+              Object {
+                "label": "43分",
+                "value": 43,
+              },
+              Object {
+                "label": "44分",
+                "value": 44,
+              },
+              Object {
+                "label": "45分",
+                "value": 45,
+              },
+              Object {
+                "label": "46分",
+                "value": 46,
+              },
+              Object {
+                "label": "47分",
+                "value": 47,
+              },
+              Object {
+                "label": "48分",
+                "value": 48,
+              },
+              Object {
+                "label": "49分",
+                "value": 49,
+              },
+              Object {
+                "label": "50分",
+                "value": 50,
+              },
+              Object {
+                "label": "51分",
+                "value": 51,
+              },
+              Object {
+                "label": "52分",
+                "value": 52,
+              },
+              Object {
+                "label": "53分",
+                "value": 53,
+              },
+              Object {
+                "label": "54分",
+                "value": 54,
+              },
+              Object {
+                "label": "55分",
+                "value": 55,
+              },
+              Object {
+                "label": "56分",
+                "value": 56,
+              },
+              Object {
+                "label": "57分",
+                "value": 57,
+              },
+              Object {
+                "label": "58分",
+                "value": 58,
+              },
+              Object {
+                "label": "59分",
+                "value": 59,
+              },
+            ],
+          ]
+        }
+        defaultValue="2017-9-6 12:00"
+        disabled={false}
+        itemRender={[Function]}
+        locale={
+          Object {
+            "day": "日",
+            "hour": "时",
+            "minute": "分",
+            "month": "月",
+            "year": "年",
+          }
+        }
+        localeCode="zh-cn"
+        minuteStep={1}
+        mode="datetime"
+        onChange={[Function]}
+        onTransition={[Function]}
+        placeholder="请选择时间"
+        prefixCls="za-date-picker-view"
+        title="选择时间"
+        value={
+          Array [
+            2017,
+            8,
+            6,
+            12,
+            0,
+          ]
+        }
+        valueMember="value"
+        visible={true}
+      >
+        <div
+          className="za-date-picker-view"
+        >
+          <div
+            className="za-date-picker-view__content"
+          >
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "2000年",
+                    "value": 2000,
+                  },
+                  Object {
+                    "label": "2001年",
+                    "value": 2001,
+                  },
+                  Object {
+                    "label": "2002年",
+                    "value": 2002,
+                  },
+                  Object {
+                    "label": "2003年",
+                    "value": 2003,
+                  },
+                  Object {
+                    "label": "2004年",
+                    "value": 2004,
+                  },
+                  Object {
+                    "label": "2005年",
+                    "value": 2005,
+                  },
+                  Object {
+                    "label": "2006年",
+                    "value": 2006,
+                  },
+                  Object {
+                    "label": "2007年",
+                    "value": 2007,
+                  },
+                  Object {
+                    "label": "2008年",
+                    "value": 2008,
+                  },
+                  Object {
+                    "label": "2009年",
+                    "value": 2009,
+                  },
+                  Object {
+                    "label": "2010年",
+                    "value": 2010,
+                  },
+                  Object {
+                    "label": "2011年",
+                    "value": 2011,
+                  },
+                  Object {
+                    "label": "2012年",
+                    "value": 2012,
+                  },
+                  Object {
+                    "label": "2013年",
+                    "value": 2013,
+                  },
+                  Object {
+                    "label": "2014年",
+                    "value": 2014,
+                  },
+                  Object {
+                    "label": "2015年",
+                    "value": 2015,
+                  },
+                  Object {
+                    "label": "2016年",
+                    "value": 2016,
+                  },
+                  Object {
+                    "label": "2017年",
+                    "value": 2017,
+                  },
+                  Object {
+                    "label": "2018年",
+                    "value": 2018,
+                  },
+                  Object {
+                    "label": "2019年",
+                    "value": 2019,
+                  },
+                  Object {
+                    "label": "2020年",
+                    "value": 2020,
+                  },
+                  Object {
+                    "label": "2021年",
+                    "value": 2021,
+                  },
+                  Object {
+                    "label": "2022年",
+                    "value": 2022,
+                  },
+                  Object {
+                    "label": "2023年",
+                    "value": 2023,
+                  },
+                  Object {
+                    "label": "2024年",
+                    "value": 2024,
+                  },
+                  Object {
+                    "label": "2025年",
+                    "value": 2025,
+                  },
+                  Object {
+                    "label": "2026年",
+                    "value": 2026,
+                  },
+                  Object {
+                    "label": "2027年",
+                    "value": 2027,
+                  },
+                  Object {
+                    "label": "2028年",
+                    "value": 2028,
+                  },
+                  Object {
+                    "label": "2029年",
+                    "value": 2029,
+                  },
+                  Object {
+                    "label": "2030年",
+                    "value": 2030,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="0"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={2017}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    2000年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    2001年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    2002年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    2003年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    2004年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    2005年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    2006年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    2007年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    2008年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    2009年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    2010年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    2011年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="12"
+                  >
+                    2012年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="13"
+                  >
+                    2013年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="14"
+                  >
+                    2014年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="15"
+                  >
+                    2015年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="16"
+                  >
+                    2016年
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="17"
+                  >
+                    2017年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="18"
+                  >
+                    2018年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="19"
+                  >
+                    2019年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="20"
+                  >
+                    2020年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="21"
+                  >
+                    2021年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="22"
+                  >
+                    2022年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="23"
+                  >
+                    2023年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="24"
+                  >
+                    2024年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="25"
+                  >
+                    2025年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="26"
+                  >
+                    2026年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="27"
+                  >
+                    2027年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="28"
+                  >
+                    2028年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="29"
+                  >
+                    2029年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="30"
+                  >
+                    2030年
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "1月",
+                    "value": 0,
+                  },
+                  Object {
+                    "label": "2月",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "3月",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "4月",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "5月",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "6月",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "7月",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "8月",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "9月",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "10月",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "11月",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "12月",
+                    "value": 11,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="1"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={8}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    1月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    2月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    3月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    4月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    5月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    6月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    7月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    8月
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="8"
+                  >
+                    9月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    10月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    11月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    12月
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "1日",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "2日",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "3日",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "4日",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "5日",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "6日",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "7日",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "8日",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "9日",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "10日",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "11日",
+                    "value": 11,
+                  },
+                  Object {
+                    "label": "12日",
+                    "value": 12,
+                  },
+                  Object {
+                    "label": "13日",
+                    "value": 13,
+                  },
+                  Object {
+                    "label": "14日",
+                    "value": 14,
+                  },
+                  Object {
+                    "label": "15日",
+                    "value": 15,
+                  },
+                  Object {
+                    "label": "16日",
+                    "value": 16,
+                  },
+                  Object {
+                    "label": "17日",
+                    "value": 17,
+                  },
+                  Object {
+                    "label": "18日",
+                    "value": 18,
+                  },
+                  Object {
+                    "label": "19日",
+                    "value": 19,
+                  },
+                  Object {
+                    "label": "20日",
+                    "value": 20,
+                  },
+                  Object {
+                    "label": "21日",
+                    "value": 21,
+                  },
+                  Object {
+                    "label": "22日",
+                    "value": 22,
+                  },
+                  Object {
+                    "label": "23日",
+                    "value": 23,
+                  },
+                  Object {
+                    "label": "24日",
+                    "value": 24,
+                  },
+                  Object {
+                    "label": "25日",
+                    "value": 25,
+                  },
+                  Object {
+                    "label": "26日",
+                    "value": 26,
+                  },
+                  Object {
+                    "label": "27日",
+                    "value": 27,
+                  },
+                  Object {
+                    "label": "28日",
+                    "value": 28,
+                  },
+                  Object {
+                    "label": "29日",
+                    "value": 29,
+                  },
+                  Object {
+                    "label": "30日",
+                    "value": 30,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="2"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={6}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    1日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    2日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    3日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    4日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    5日
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="5"
+                  >
+                    6日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    7日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    8日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    9日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    10日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    11日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    12日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="12"
+                  >
+                    13日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="13"
+                  >
+                    14日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="14"
+                  >
+                    15日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="15"
+                  >
+                    16日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="16"
+                  >
+                    17日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="17"
+                  >
+                    18日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="18"
+                  >
+                    19日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="19"
+                  >
+                    20日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="20"
+                  >
+                    21日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="21"
+                  >
+                    22日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="22"
+                  >
+                    23日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="23"
+                  >
+                    24日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="24"
+                  >
+                    25日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="25"
+                  >
+                    26日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="26"
+                  >
+                    27日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="27"
+                  >
+                    28日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="28"
+                  >
+                    29日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="29"
+                  >
+                    30日
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "0时",
+                    "value": 0,
+                  },
+                  Object {
+                    "label": "1时",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "2时",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "3时",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "4时",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "5时",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "6时",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "7时",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "8时",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "9时",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "10时",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "11时",
+                    "value": 11,
+                  },
+                  Object {
+                    "label": "12时",
+                    "value": 12,
+                  },
+                  Object {
+                    "label": "13时",
+                    "value": 13,
+                  },
+                  Object {
+                    "label": "14时",
+                    "value": 14,
+                  },
+                  Object {
+                    "label": "15时",
+                    "value": 15,
+                  },
+                  Object {
+                    "label": "16时",
+                    "value": 16,
+                  },
+                  Object {
+                    "label": "17时",
+                    "value": 17,
+                  },
+                  Object {
+                    "label": "18时",
+                    "value": 18,
+                  },
+                  Object {
+                    "label": "19时",
+                    "value": 19,
+                  },
+                  Object {
+                    "label": "20时",
+                    "value": 20,
+                  },
+                  Object {
+                    "label": "21时",
+                    "value": 21,
+                  },
+                  Object {
+                    "label": "22时",
+                    "value": 22,
+                  },
+                  Object {
+                    "label": "23时",
+                    "value": 23,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="3"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={12}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    0时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    1时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    2时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    3时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    4时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    5时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    6时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    7时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    8时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    9时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    10时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    11时
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="12"
+                  >
+                    12时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="13"
+                  >
+                    13时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="14"
+                  >
+                    14时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="15"
+                  >
+                    15时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="16"
+                  >
+                    16时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="17"
+                  >
+                    17时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="18"
+                  >
+                    18时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="19"
+                  >
+                    19时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="20"
+                  >
+                    20时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="21"
+                  >
+                    21时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="22"
+                  >
+                    22时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="23"
+                  >
+                    23时
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "0分",
+                    "value": 0,
+                  },
+                  Object {
+                    "label": "1分",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "2分",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "3分",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "4分",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "5分",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "6分",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "7分",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "8分",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "9分",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "10分",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "11分",
+                    "value": 11,
+                  },
+                  Object {
+                    "label": "12分",
+                    "value": 12,
+                  },
+                  Object {
+                    "label": "13分",
+                    "value": 13,
+                  },
+                  Object {
+                    "label": "14分",
+                    "value": 14,
+                  },
+                  Object {
+                    "label": "15分",
+                    "value": 15,
+                  },
+                  Object {
+                    "label": "16分",
+                    "value": 16,
+                  },
+                  Object {
+                    "label": "17分",
+                    "value": 17,
+                  },
+                  Object {
+                    "label": "18分",
+                    "value": 18,
+                  },
+                  Object {
+                    "label": "19分",
+                    "value": 19,
+                  },
+                  Object {
+                    "label": "20分",
+                    "value": 20,
+                  },
+                  Object {
+                    "label": "21分",
+                    "value": 21,
+                  },
+                  Object {
+                    "label": "22分",
+                    "value": 22,
+                  },
+                  Object {
+                    "label": "23分",
+                    "value": 23,
+                  },
+                  Object {
+                    "label": "24分",
+                    "value": 24,
+                  },
+                  Object {
+                    "label": "25分",
+                    "value": 25,
+                  },
+                  Object {
+                    "label": "26分",
+                    "value": 26,
+                  },
+                  Object {
+                    "label": "27分",
+                    "value": 27,
+                  },
+                  Object {
+                    "label": "28分",
+                    "value": 28,
+                  },
+                  Object {
+                    "label": "29分",
+                    "value": 29,
+                  },
+                  Object {
+                    "label": "30分",
+                    "value": 30,
+                  },
+                  Object {
+                    "label": "31分",
+                    "value": 31,
+                  },
+                  Object {
+                    "label": "32分",
+                    "value": 32,
+                  },
+                  Object {
+                    "label": "33分",
+                    "value": 33,
+                  },
+                  Object {
+                    "label": "34分",
+                    "value": 34,
+                  },
+                  Object {
+                    "label": "35分",
+                    "value": 35,
+                  },
+                  Object {
+                    "label": "36分",
+                    "value": 36,
+                  },
+                  Object {
+                    "label": "37分",
+                    "value": 37,
+                  },
+                  Object {
+                    "label": "38分",
+                    "value": 38,
+                  },
+                  Object {
+                    "label": "39分",
+                    "value": 39,
+                  },
+                  Object {
+                    "label": "40分",
+                    "value": 40,
+                  },
+                  Object {
+                    "label": "41分",
+                    "value": 41,
+                  },
+                  Object {
+                    "label": "42分",
+                    "value": 42,
+                  },
+                  Object {
+                    "label": "43分",
+                    "value": 43,
+                  },
+                  Object {
+                    "label": "44分",
+                    "value": 44,
+                  },
+                  Object {
+                    "label": "45分",
+                    "value": 45,
+                  },
+                  Object {
+                    "label": "46分",
+                    "value": 46,
+                  },
+                  Object {
+                    "label": "47分",
+                    "value": 47,
+                  },
+                  Object {
+                    "label": "48分",
+                    "value": 48,
+                  },
+                  Object {
+                    "label": "49分",
+                    "value": 49,
+                  },
+                  Object {
+                    "label": "50分",
+                    "value": 50,
+                  },
+                  Object {
+                    "label": "51分",
+                    "value": 51,
+                  },
+                  Object {
+                    "label": "52分",
+                    "value": 52,
+                  },
+                  Object {
+                    "label": "53分",
+                    "value": 53,
+                  },
+                  Object {
+                    "label": "54分",
+                    "value": 54,
+                  },
+                  Object {
+                    "label": "55分",
+                    "value": 55,
+                  },
+                  Object {
+                    "label": "56分",
+                    "value": 56,
+                  },
+                  Object {
+                    "label": "57分",
+                    "value": 57,
+                  },
+                  Object {
+                    "label": "58分",
+                    "value": 58,
+                  },
+                  Object {
+                    "label": "59分",
+                    "value": 59,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="4"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={0}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="0"
+                  >
+                    0分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    1分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    2分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    3分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    4分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    5分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    6分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    7分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    8分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    9分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    10分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    11分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="12"
+                  >
+                    12分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="13"
+                  >
+                    13分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="14"
+                  >
+                    14分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="15"
+                  >
+                    15分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="16"
+                  >
+                    16分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="17"
+                  >
+                    17分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="18"
+                  >
+                    18分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="19"
+                  >
+                    19分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="20"
+                  >
+                    20分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="21"
+                  >
+                    21分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="22"
+                  >
+                    22分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="23"
+                  >
+                    23分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="24"
+                  >
+                    24分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="25"
+                  >
+                    25分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="26"
+                  >
+                    26分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="27"
+                  >
+                    27分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="28"
+                  >
+                    28分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="29"
+                  >
+                    29分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="30"
+                  >
+                    30分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="31"
+                  >
+                    31分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="32"
+                  >
+                    32分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="33"
+                  >
+                    33分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="34"
+                  >
+                    34分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="35"
+                  >
+                    35分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="36"
+                  >
+                    36分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="37"
+                  >
+                    37分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="38"
+                  >
+                    38分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="39"
+                  >
+                    39分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="40"
+                  >
+                    40分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="41"
+                  >
+                    41分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="42"
+                  >
+                    42分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="43"
+                  >
+                    43分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="44"
+                  >
+                    44分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="45"
+                  >
+                    45分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="46"
+                  >
+                    46分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="47"
+                  >
+                    47分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="48"
+                  >
+                    48分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="49"
+                  >
+                    49分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="50"
+                  >
+                    50分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="51"
+                  >
+                    51分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="52"
+                  >
+                    52分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="53"
+                  >
+                    53分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="54"
+                  >
+                    54分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="55"
+                  >
+                    55分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="56"
+                  >
+                    56分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="57"
+                  >
+                    57分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="58"
+                  >
+                    58分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="59"
+                  >
+                    59分
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+          </div>
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--top"
+          />
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+          />
+        </div>
+      </PickerView>
+    </DatePickerView>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`DatePickerView DatePickerView time 2`] = `
+<ForwardRef(forwardRef)
+  max="2019-11-23 21:00"
+  min="2007-01-03 11:00"
+  mode="datetime"
+  placeholder="请选择日期"
+  title="选择日期"
+  value="2017-9-6 12:00"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    max="2019-11-23 21:00"
+    min="2007-01-03 11:00"
+    mode="datetime"
+    placeholder="请选择日期"
+    title="选择日期"
+    value="2017-9-6 12:00"
+  >
+    <DatePickerView
+      defaultValue=""
+      disabled={false}
+      locale={
+        Object {
+          "day": "日",
+          "hour": "时",
+          "minute": "分",
+          "month": "月",
+          "year": "年",
+        }
+      }
+      localeCode="zh-cn"
+      max="2019-11-23 21:00"
+      min="2007-01-03 11:00"
+      minuteStep={1}
+      mode="datetime"
+      placeholder="请选择日期"
+      prefixCls="za-date-picker-view"
+      title="选择日期"
+      value="2017-9-6 12:00"
+      valueMember="value"
+      visible={true}
+    >
+      <PickerView
+        cols={Infinity}
+        dataSource={
+          Array [
+            Array [
+              Object {
+                "label": "2007年",
+                "value": 2007,
+              },
+              Object {
+                "label": "2008年",
+                "value": 2008,
+              },
+              Object {
+                "label": "2009年",
+                "value": 2009,
+              },
+              Object {
+                "label": "2010年",
+                "value": 2010,
+              },
+              Object {
+                "label": "2011年",
+                "value": 2011,
+              },
+              Object {
+                "label": "2012年",
+                "value": 2012,
+              },
+              Object {
+                "label": "2013年",
+                "value": 2013,
+              },
+              Object {
+                "label": "2014年",
+                "value": 2014,
+              },
+              Object {
+                "label": "2015年",
+                "value": 2015,
+              },
+              Object {
+                "label": "2016年",
+                "value": 2016,
+              },
+              Object {
+                "label": "2017年",
+                "value": 2017,
+              },
+              Object {
+                "label": "2018年",
+                "value": 2018,
+              },
+              Object {
+                "label": "2019年",
+                "value": 2019,
+              },
+            ],
+            Array [
+              Object {
+                "label": "1月",
+                "value": 0,
+              },
+              Object {
+                "label": "2月",
+                "value": 1,
+              },
+              Object {
+                "label": "3月",
+                "value": 2,
+              },
+              Object {
+                "label": "4月",
+                "value": 3,
+              },
+              Object {
+                "label": "5月",
+                "value": 4,
+              },
+              Object {
+                "label": "6月",
+                "value": 5,
+              },
+              Object {
+                "label": "7月",
+                "value": 6,
+              },
+              Object {
+                "label": "8月",
+                "value": 7,
+              },
+              Object {
+                "label": "9月",
+                "value": 8,
+              },
+              Object {
+                "label": "10月",
+                "value": 9,
+              },
+              Object {
+                "label": "11月",
+                "value": 10,
+              },
+              Object {
+                "label": "12月",
+                "value": 11,
+              },
+            ],
+            Array [
+              Object {
+                "label": "1日",
+                "value": 1,
+              },
+              Object {
+                "label": "2日",
+                "value": 2,
+              },
+              Object {
+                "label": "3日",
+                "value": 3,
+              },
+              Object {
+                "label": "4日",
+                "value": 4,
+              },
+              Object {
+                "label": "5日",
+                "value": 5,
+              },
+              Object {
+                "label": "6日",
+                "value": 6,
+              },
+              Object {
+                "label": "7日",
+                "value": 7,
+              },
+              Object {
+                "label": "8日",
+                "value": 8,
+              },
+              Object {
+                "label": "9日",
+                "value": 9,
+              },
+              Object {
+                "label": "10日",
+                "value": 10,
+              },
+              Object {
+                "label": "11日",
+                "value": 11,
+              },
+              Object {
+                "label": "12日",
+                "value": 12,
+              },
+              Object {
+                "label": "13日",
+                "value": 13,
+              },
+              Object {
+                "label": "14日",
+                "value": 14,
+              },
+              Object {
+                "label": "15日",
+                "value": 15,
+              },
+              Object {
+                "label": "16日",
+                "value": 16,
+              },
+              Object {
+                "label": "17日",
+                "value": 17,
+              },
+              Object {
+                "label": "18日",
+                "value": 18,
+              },
+              Object {
+                "label": "19日",
+                "value": 19,
+              },
+              Object {
+                "label": "20日",
+                "value": 20,
+              },
+              Object {
+                "label": "21日",
+                "value": 21,
+              },
+              Object {
+                "label": "22日",
+                "value": 22,
+              },
+              Object {
+                "label": "23日",
+                "value": 23,
+              },
+              Object {
+                "label": "24日",
+                "value": 24,
+              },
+              Object {
+                "label": "25日",
+                "value": 25,
+              },
+              Object {
+                "label": "26日",
+                "value": 26,
+              },
+              Object {
+                "label": "27日",
+                "value": 27,
+              },
+              Object {
+                "label": "28日",
+                "value": 28,
+              },
+              Object {
+                "label": "29日",
+                "value": 29,
+              },
+              Object {
+                "label": "30日",
+                "value": 30,
+              },
+            ],
+            Array [
+              Object {
+                "label": "0时",
+                "value": 0,
+              },
+              Object {
+                "label": "1时",
+                "value": 1,
+              },
+              Object {
+                "label": "2时",
+                "value": 2,
+              },
+              Object {
+                "label": "3时",
+                "value": 3,
+              },
+              Object {
+                "label": "4时",
+                "value": 4,
+              },
+              Object {
+                "label": "5时",
+                "value": 5,
+              },
+              Object {
+                "label": "6时",
+                "value": 6,
+              },
+              Object {
+                "label": "7时",
+                "value": 7,
+              },
+              Object {
+                "label": "8时",
+                "value": 8,
+              },
+              Object {
+                "label": "9时",
+                "value": 9,
+              },
+              Object {
+                "label": "10时",
+                "value": 10,
+              },
+              Object {
+                "label": "11时",
+                "value": 11,
+              },
+              Object {
+                "label": "12时",
+                "value": 12,
+              },
+              Object {
+                "label": "13时",
+                "value": 13,
+              },
+              Object {
+                "label": "14时",
+                "value": 14,
+              },
+              Object {
+                "label": "15时",
+                "value": 15,
+              },
+              Object {
+                "label": "16时",
+                "value": 16,
+              },
+              Object {
+                "label": "17时",
+                "value": 17,
+              },
+              Object {
+                "label": "18时",
+                "value": 18,
+              },
+              Object {
+                "label": "19时",
+                "value": 19,
+              },
+              Object {
+                "label": "20时",
+                "value": 20,
+              },
+              Object {
+                "label": "21时",
+                "value": 21,
+              },
+              Object {
+                "label": "22时",
+                "value": 22,
+              },
+              Object {
+                "label": "23时",
+                "value": 23,
+              },
+            ],
+            Array [
+              Object {
+                "label": "0分",
+                "value": 0,
+              },
+              Object {
+                "label": "1分",
+                "value": 1,
+              },
+              Object {
+                "label": "2分",
+                "value": 2,
+              },
+              Object {
+                "label": "3分",
+                "value": 3,
+              },
+              Object {
+                "label": "4分",
+                "value": 4,
+              },
+              Object {
+                "label": "5分",
+                "value": 5,
+              },
+              Object {
+                "label": "6分",
+                "value": 6,
+              },
+              Object {
+                "label": "7分",
+                "value": 7,
+              },
+              Object {
+                "label": "8分",
+                "value": 8,
+              },
+              Object {
+                "label": "9分",
+                "value": 9,
+              },
+              Object {
+                "label": "10分",
+                "value": 10,
+              },
+              Object {
+                "label": "11分",
+                "value": 11,
+              },
+              Object {
+                "label": "12分",
+                "value": 12,
+              },
+              Object {
+                "label": "13分",
+                "value": 13,
+              },
+              Object {
+                "label": "14分",
+                "value": 14,
+              },
+              Object {
+                "label": "15分",
+                "value": 15,
+              },
+              Object {
+                "label": "16分",
+                "value": 16,
+              },
+              Object {
+                "label": "17分",
+                "value": 17,
+              },
+              Object {
+                "label": "18分",
+                "value": 18,
+              },
+              Object {
+                "label": "19分",
+                "value": 19,
+              },
+              Object {
+                "label": "20分",
+                "value": 20,
+              },
+              Object {
+                "label": "21分",
+                "value": 21,
+              },
+              Object {
+                "label": "22分",
+                "value": 22,
+              },
+              Object {
+                "label": "23分",
+                "value": 23,
+              },
+              Object {
+                "label": "24分",
+                "value": 24,
+              },
+              Object {
+                "label": "25分",
+                "value": 25,
+              },
+              Object {
+                "label": "26分",
+                "value": 26,
+              },
+              Object {
+                "label": "27分",
+                "value": 27,
+              },
+              Object {
+                "label": "28分",
+                "value": 28,
+              },
+              Object {
+                "label": "29分",
+                "value": 29,
+              },
+              Object {
+                "label": "30分",
+                "value": 30,
+              },
+              Object {
+                "label": "31分",
+                "value": 31,
+              },
+              Object {
+                "label": "32分",
+                "value": 32,
+              },
+              Object {
+                "label": "33分",
+                "value": 33,
+              },
+              Object {
+                "label": "34分",
+                "value": 34,
+              },
+              Object {
+                "label": "35分",
+                "value": 35,
+              },
+              Object {
+                "label": "36分",
+                "value": 36,
+              },
+              Object {
+                "label": "37分",
+                "value": 37,
+              },
+              Object {
+                "label": "38分",
+                "value": 38,
+              },
+              Object {
+                "label": "39分",
+                "value": 39,
+              },
+              Object {
+                "label": "40分",
+                "value": 40,
+              },
+              Object {
+                "label": "41分",
+                "value": 41,
+              },
+              Object {
+                "label": "42分",
+                "value": 42,
+              },
+              Object {
+                "label": "43分",
+                "value": 43,
+              },
+              Object {
+                "label": "44分",
+                "value": 44,
+              },
+              Object {
+                "label": "45分",
+                "value": 45,
+              },
+              Object {
+                "label": "46分",
+                "value": 46,
+              },
+              Object {
+                "label": "47分",
+                "value": 47,
+              },
+              Object {
+                "label": "48分",
+                "value": 48,
+              },
+              Object {
+                "label": "49分",
+                "value": 49,
+              },
+              Object {
+                "label": "50分",
+                "value": 50,
+              },
+              Object {
+                "label": "51分",
+                "value": 51,
+              },
+              Object {
+                "label": "52分",
+                "value": 52,
+              },
+              Object {
+                "label": "53分",
+                "value": 53,
+              },
+              Object {
+                "label": "54分",
+                "value": 54,
+              },
+              Object {
+                "label": "55分",
+                "value": 55,
+              },
+              Object {
+                "label": "56分",
+                "value": 56,
+              },
+              Object {
+                "label": "57分",
+                "value": 57,
+              },
+              Object {
+                "label": "58分",
+                "value": 58,
+              },
+              Object {
+                "label": "59分",
+                "value": 59,
+              },
+            ],
+          ]
+        }
+        defaultValue=""
+        disabled={false}
+        itemRender={[Function]}
+        locale={
+          Object {
+            "day": "日",
+            "hour": "时",
+            "minute": "分",
+            "month": "月",
+            "year": "年",
+          }
+        }
+        localeCode="zh-cn"
+        max="2019-11-23 21:00"
+        min="2007-01-03 11:00"
+        minuteStep={1}
+        mode="datetime"
+        onChange={[Function]}
+        onTransition={[Function]}
+        placeholder="请选择日期"
+        prefixCls="za-date-picker-view"
+        title="选择日期"
+        value={
+          Array [
+            2017,
+            8,
+            6,
+            12,
+            0,
+          ]
+        }
+        valueMember="value"
+        visible={true}
+      >
+        <div
+          className="za-date-picker-view"
+        >
+          <div
+            className="za-date-picker-view__content"
+          >
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "2007年",
+                    "value": 2007,
+                  },
+                  Object {
+                    "label": "2008年",
+                    "value": 2008,
+                  },
+                  Object {
+                    "label": "2009年",
+                    "value": 2009,
+                  },
+                  Object {
+                    "label": "2010年",
+                    "value": 2010,
+                  },
+                  Object {
+                    "label": "2011年",
+                    "value": 2011,
+                  },
+                  Object {
+                    "label": "2012年",
+                    "value": 2012,
+                  },
+                  Object {
+                    "label": "2013年",
+                    "value": 2013,
+                  },
+                  Object {
+                    "label": "2014年",
+                    "value": 2014,
+                  },
+                  Object {
+                    "label": "2015年",
+                    "value": 2015,
+                  },
+                  Object {
+                    "label": "2016年",
+                    "value": 2016,
+                  },
+                  Object {
+                    "label": "2017年",
+                    "value": 2017,
+                  },
+                  Object {
+                    "label": "2018年",
+                    "value": 2018,
+                  },
+                  Object {
+                    "label": "2019年",
+                    "value": 2019,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="0"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={2017}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    2007年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    2008年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    2009年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    2010年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    2011年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    2012年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    2013年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    2014年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    2015年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    2016年
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="10"
+                  >
+                    2017年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    2018年
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="12"
+                  >
+                    2019年
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "1月",
+                    "value": 0,
+                  },
+                  Object {
+                    "label": "2月",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "3月",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "4月",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "5月",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "6月",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "7月",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "8月",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "9月",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "10月",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "11月",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "12月",
+                    "value": 11,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="1"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={8}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    1月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    2月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    3月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    4月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    5月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    6月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    7月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    8月
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="8"
+                  >
+                    9月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    10月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    11月
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    12月
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "1日",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "2日",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "3日",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "4日",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "5日",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "6日",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "7日",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "8日",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "9日",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "10日",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "11日",
+                    "value": 11,
+                  },
+                  Object {
+                    "label": "12日",
+                    "value": 12,
+                  },
+                  Object {
+                    "label": "13日",
+                    "value": 13,
+                  },
+                  Object {
+                    "label": "14日",
+                    "value": 14,
+                  },
+                  Object {
+                    "label": "15日",
+                    "value": 15,
+                  },
+                  Object {
+                    "label": "16日",
+                    "value": 16,
+                  },
+                  Object {
+                    "label": "17日",
+                    "value": 17,
+                  },
+                  Object {
+                    "label": "18日",
+                    "value": 18,
+                  },
+                  Object {
+                    "label": "19日",
+                    "value": 19,
+                  },
+                  Object {
+                    "label": "20日",
+                    "value": 20,
+                  },
+                  Object {
+                    "label": "21日",
+                    "value": 21,
+                  },
+                  Object {
+                    "label": "22日",
+                    "value": 22,
+                  },
+                  Object {
+                    "label": "23日",
+                    "value": 23,
+                  },
+                  Object {
+                    "label": "24日",
+                    "value": 24,
+                  },
+                  Object {
+                    "label": "25日",
+                    "value": 25,
+                  },
+                  Object {
+                    "label": "26日",
+                    "value": 26,
+                  },
+                  Object {
+                    "label": "27日",
+                    "value": 27,
+                  },
+                  Object {
+                    "label": "28日",
+                    "value": 28,
+                  },
+                  Object {
+                    "label": "29日",
+                    "value": 29,
+                  },
+                  Object {
+                    "label": "30日",
+                    "value": 30,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="2"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={6}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    1日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    2日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    3日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    4日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    5日
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="5"
+                  >
+                    6日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    7日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    8日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    9日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    10日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    11日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    12日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="12"
+                  >
+                    13日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="13"
+                  >
+                    14日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="14"
+                  >
+                    15日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="15"
+                  >
+                    16日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="16"
+                  >
+                    17日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="17"
+                  >
+                    18日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="18"
+                  >
+                    19日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="19"
+                  >
+                    20日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="20"
+                  >
+                    21日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="21"
+                  >
+                    22日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="22"
+                  >
+                    23日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="23"
+                  >
+                    24日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="24"
+                  >
+                    25日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="25"
+                  >
+                    26日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="26"
+                  >
+                    27日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="27"
+                  >
+                    28日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="28"
+                  >
+                    29日
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="29"
+                  >
+                    30日
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "0时",
+                    "value": 0,
+                  },
+                  Object {
+                    "label": "1时",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "2时",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "3时",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "4时",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "5时",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "6时",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "7时",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "8时",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "9时",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "10时",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "11时",
+                    "value": 11,
+                  },
+                  Object {
+                    "label": "12时",
+                    "value": 12,
+                  },
+                  Object {
+                    "label": "13时",
+                    "value": 13,
+                  },
+                  Object {
+                    "label": "14时",
+                    "value": 14,
+                  },
+                  Object {
+                    "label": "15时",
+                    "value": 15,
+                  },
+                  Object {
+                    "label": "16时",
+                    "value": 16,
+                  },
+                  Object {
+                    "label": "17时",
+                    "value": 17,
+                  },
+                  Object {
+                    "label": "18时",
+                    "value": 18,
+                  },
+                  Object {
+                    "label": "19时",
+                    "value": 19,
+                  },
+                  Object {
+                    "label": "20时",
+                    "value": 20,
+                  },
+                  Object {
+                    "label": "21时",
+                    "value": 21,
+                  },
+                  Object {
+                    "label": "22时",
+                    "value": 22,
+                  },
+                  Object {
+                    "label": "23时",
+                    "value": 23,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="3"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={12}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item"
+                    key="0"
+                  >
+                    0时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    1时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    2时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    3时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    4时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    5时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    6时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    7时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    8时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    9时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    10时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    11时
+                  </div>
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="12"
+                  >
+                    12时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="13"
+                  >
+                    13时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="14"
+                  >
+                    14时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="15"
+                  >
+                    15时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="16"
+                  >
+                    16时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="17"
+                  >
+                    17时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="18"
+                  >
+                    18时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="19"
+                  >
+                    19时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="20"
+                  >
+                    20时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="21"
+                  >
+                    21时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="22"
+                  >
+                    22时
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="23"
+                  >
+                    23时
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+            <Wheel
+              dataSource={
+                Array [
+                  Object {
+                    "label": "0分",
+                    "value": 0,
+                  },
+                  Object {
+                    "label": "1分",
+                    "value": 1,
+                  },
+                  Object {
+                    "label": "2分",
+                    "value": 2,
+                  },
+                  Object {
+                    "label": "3分",
+                    "value": 3,
+                  },
+                  Object {
+                    "label": "4分",
+                    "value": 4,
+                  },
+                  Object {
+                    "label": "5分",
+                    "value": 5,
+                  },
+                  Object {
+                    "label": "6分",
+                    "value": 6,
+                  },
+                  Object {
+                    "label": "7分",
+                    "value": 7,
+                  },
+                  Object {
+                    "label": "8分",
+                    "value": 8,
+                  },
+                  Object {
+                    "label": "9分",
+                    "value": 9,
+                  },
+                  Object {
+                    "label": "10分",
+                    "value": 10,
+                  },
+                  Object {
+                    "label": "11分",
+                    "value": 11,
+                  },
+                  Object {
+                    "label": "12分",
+                    "value": 12,
+                  },
+                  Object {
+                    "label": "13分",
+                    "value": 13,
+                  },
+                  Object {
+                    "label": "14分",
+                    "value": 14,
+                  },
+                  Object {
+                    "label": "15分",
+                    "value": 15,
+                  },
+                  Object {
+                    "label": "16分",
+                    "value": 16,
+                  },
+                  Object {
+                    "label": "17分",
+                    "value": 17,
+                  },
+                  Object {
+                    "label": "18分",
+                    "value": 18,
+                  },
+                  Object {
+                    "label": "19分",
+                    "value": 19,
+                  },
+                  Object {
+                    "label": "20分",
+                    "value": 20,
+                  },
+                  Object {
+                    "label": "21分",
+                    "value": 21,
+                  },
+                  Object {
+                    "label": "22分",
+                    "value": 22,
+                  },
+                  Object {
+                    "label": "23分",
+                    "value": 23,
+                  },
+                  Object {
+                    "label": "24分",
+                    "value": 24,
+                  },
+                  Object {
+                    "label": "25分",
+                    "value": 25,
+                  },
+                  Object {
+                    "label": "26分",
+                    "value": 26,
+                  },
+                  Object {
+                    "label": "27分",
+                    "value": 27,
+                  },
+                  Object {
+                    "label": "28分",
+                    "value": 28,
+                  },
+                  Object {
+                    "label": "29分",
+                    "value": 29,
+                  },
+                  Object {
+                    "label": "30分",
+                    "value": 30,
+                  },
+                  Object {
+                    "label": "31分",
+                    "value": 31,
+                  },
+                  Object {
+                    "label": "32分",
+                    "value": 32,
+                  },
+                  Object {
+                    "label": "33分",
+                    "value": 33,
+                  },
+                  Object {
+                    "label": "34分",
+                    "value": 34,
+                  },
+                  Object {
+                    "label": "35分",
+                    "value": 35,
+                  },
+                  Object {
+                    "label": "36分",
+                    "value": 36,
+                  },
+                  Object {
+                    "label": "37分",
+                    "value": 37,
+                  },
+                  Object {
+                    "label": "38分",
+                    "value": 38,
+                  },
+                  Object {
+                    "label": "39分",
+                    "value": 39,
+                  },
+                  Object {
+                    "label": "40分",
+                    "value": 40,
+                  },
+                  Object {
+                    "label": "41分",
+                    "value": 41,
+                  },
+                  Object {
+                    "label": "42分",
+                    "value": 42,
+                  },
+                  Object {
+                    "label": "43分",
+                    "value": 43,
+                  },
+                  Object {
+                    "label": "44分",
+                    "value": 44,
+                  },
+                  Object {
+                    "label": "45分",
+                    "value": 45,
+                  },
+                  Object {
+                    "label": "46分",
+                    "value": 46,
+                  },
+                  Object {
+                    "label": "47分",
+                    "value": 47,
+                  },
+                  Object {
+                    "label": "48分",
+                    "value": 48,
+                  },
+                  Object {
+                    "label": "49分",
+                    "value": 49,
+                  },
+                  Object {
+                    "label": "50分",
+                    "value": 50,
+                  },
+                  Object {
+                    "label": "51分",
+                    "value": 51,
+                  },
+                  Object {
+                    "label": "52分",
+                    "value": 52,
+                  },
+                  Object {
+                    "label": "53分",
+                    "value": 53,
+                  },
+                  Object {
+                    "label": "54分",
+                    "value": 54,
+                  },
+                  Object {
+                    "label": "55分",
+                    "value": 55,
+                  },
+                  Object {
+                    "label": "56分",
+                    "value": 56,
+                  },
+                  Object {
+                    "label": "57分",
+                    "value": 57,
+                  },
+                  Object {
+                    "label": "58分",
+                    "value": 58,
+                  },
+                  Object {
+                    "label": "59分",
+                    "value": 59,
+                  },
+                ]
+              }
+              disabled={false}
+              itemRender={[Function]}
+              key="4"
+              onChange={[Function]}
+              onTransition={[Function]}
+              prefixCls="za-wheel"
+              value={0}
+              valueMember="value"
+            >
+              <div
+                className="za-wheel"
+              >
+                <div
+                  className="za-wheel__content"
+                >
+                  <div
+                    className="za-wheel__item za-wheel__item--selected"
+                    key="0"
+                  >
+                    0分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="1"
+                  >
+                    1分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="2"
+                  >
+                    2分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="3"
+                  >
+                    3分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="4"
+                  >
+                    4分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="5"
+                  >
+                    5分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="6"
+                  >
+                    6分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="7"
+                  >
+                    7分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="8"
+                  >
+                    8分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="9"
+                  >
+                    9分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="10"
+                  >
+                    10分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="11"
+                  >
+                    11分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="12"
+                  >
+                    12分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="13"
+                  >
+                    13分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="14"
+                  >
+                    14分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="15"
+                  >
+                    15分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="16"
+                  >
+                    16分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="17"
+                  >
+                    17分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="18"
+                  >
+                    18分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="19"
+                  >
+                    19分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="20"
+                  >
+                    20分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="21"
+                  >
+                    21分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="22"
+                  >
+                    22分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="23"
+                  >
+                    23分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="24"
+                  >
+                    24分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="25"
+                  >
+                    25分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="26"
+                  >
+                    26分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="27"
+                  >
+                    27分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="28"
+                  >
+                    28分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="29"
+                  >
+                    29分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="30"
+                  >
+                    30分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="31"
+                  >
+                    31分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="32"
+                  >
+                    32分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="33"
+                  >
+                    33分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="34"
+                  >
+                    34分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="35"
+                  >
+                    35分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="36"
+                  >
+                    36分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="37"
+                  >
+                    37分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="38"
+                  >
+                    38分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="39"
+                  >
+                    39分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="40"
+                  >
+                    40分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="41"
+                  >
+                    41分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="42"
+                  >
+                    42分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="43"
+                  >
+                    43分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="44"
+                  >
+                    44分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="45"
+                  >
+                    45分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="46"
+                  >
+                    46分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="47"
+                  >
+                    47分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="48"
+                  >
+                    48分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="49"
+                  >
+                    49分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="50"
+                  >
+                    50分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="51"
+                  >
+                    51分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="52"
+                  >
+                    52分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="53"
+                  >
+                    53分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="54"
+                  >
+                    54分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="55"
+                  >
+                    55分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="56"
+                  >
+                    56分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="57"
+                  >
+                    57分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="58"
+                  >
+                    58分
+                  </div>
+                  <div
+                    className="za-wheel__item"
+                    key="59"
+                  >
+                    59分
+                  </div>
+                </div>
+              </div>
+            </Wheel>
+          </div>
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--top"
+          />
+          <div
+            className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+          />
+        </div>
+      </PickerView>
+    </DatePickerView>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;

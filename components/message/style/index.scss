@@ -1,0 +1,85 @@
+@import "../../style/core/index";
+@import "mixins";
+
+@include b(message) {
+  display: flex;
+  position: relative;
+  padding: var(--message-padding-v-md) var(--message-padding-h-md);
+  min-height: var(--message-min-height-md);
+  font-size: var(--message-font-size-md);
+  @include message-theme(var(--theme-default));
+
+  @include e(header) {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  @include e(icon) {
+    margin-right: r(4);
+
+    @include b(icon) {
+      font-size: var(--message-icon-size-md);
+      cursor: pointer;
+    }
+  }
+
+  @include e(body) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(footer) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    padding-left: r(10);
+
+    @include b(icon) {
+      font-size: var(--message-icon-size-md);
+      cursor: pointer;
+    }
+  }
+
+  @include m(primary) {
+    @include message-theme(var(--theme-primary));
+  }
+
+  @include m(success) {
+    @include message-theme(var(--theme-success));
+  }
+
+  @include m(warning) {
+    @include message-theme(var(--theme-warning));
+  }
+
+  @include m(danger) {
+    @include message-theme(var(--theme-danger));
+  }
+
+  @include m(lg) {
+    min-height: var(--message-min-height-lg);
+    font-size: var(--message-font-size-lg);
+    padding: var(--message-padding-v-lg) var(--message-padding-h-lg);
+
+    @include e(icon) {
+      margin-right: r(6);
+
+      @include b(icon) {
+        font-size: var(--message-icon-size-lg);
+      }
+    }
+
+    @include e(body) {
+      font-size: var(--message-font-size-lg);
+    }
+
+    @include e(footer) {
+      @include b(icon) {
+        font-size: var(--message-icon-size-lg);
+      }
+    }
+  }
+}

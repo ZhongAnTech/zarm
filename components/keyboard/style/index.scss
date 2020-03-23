@@ -1,0 +1,85 @@
+@import "../../style/core/index";
+@import "../../button/style/mixins";
+
+@include b(keyboard) {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  color: var(--color-text);
+  user-select: none;
+
+  @include e(item) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: var(--keyboard-item-font-size);
+    @include button-base();
+    @include button-theme(
+      var(--button-default-background),
+      var(--button-default-border),
+      var(--button-default-color),
+      var(--button-default-active-background),
+      var(--button-default-active-border),
+      var(--button-default-active-color),
+      var(--button-default-background),
+      var(--button-default-border),
+      var(--color-text-disabled),
+      1,
+    );
+
+    @include m(ok) {
+      font-size: r(21);
+      @include button-theme(
+        var(--button-primary-background),
+        var(--button-primary-border),
+        var(--button-primary-color),
+        var(--button-primary-active-background),
+        var(--button-primary-active-border),
+        var(--button-primary-active-color),
+        var(--button-primary-background),
+        var(--button-primary-border),
+        var(--button-primary-color),
+        1,
+      );
+    }
+
+    @include m(disabled) {
+      background-color: #fff;
+
+      &:active {
+        background-color: #fff;
+      }
+    }
+  }
+
+  @include e(keys) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+
+    @include e(item) {
+      width: 33.333333%;
+      height: var(--keyboard-item-height);
+      @include onepx(top left);
+
+      &:nth-of-type(3n+1) {
+        @include onepx(top);
+      }
+    }
+  }
+
+  @include e(handle) {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+
+    @include e(item) {
+      flex: 1;
+
+      &:first-of-type {
+        @include onepx(top left);
+      }
+    }
+  }
+}

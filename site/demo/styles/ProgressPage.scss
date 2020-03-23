@@ -1,0 +1,12 @@
+@import "@site/styles/index";
+
+.progress-page {
+  .progress {
+    padding: r(30);
+    text-align: center;
+
+    &-percent {
+      font-size: r(14);
+    }
+  }
+}

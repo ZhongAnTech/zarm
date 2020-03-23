@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell children 1`] = `
+<div
+  class="za-cell"
+>
+  <div
+    class="za-cell__inner"
+  >
+    <div
+      class="za-cell__header"
+    />
+    <div
+      class="za-cell__body"
+    >
+      <div
+        class="za-cell__content"
+      >
+        this is children!
+      </div>
+    </div>
+    <div
+      class="za-cell__footer"
+    />
+  </div>
+</div>
+`;
+
+exports[`Cell description 1`] = `
+<div
+  class="za-cell"
+>
+  <div
+    class="za-cell__inner"
+  >
+    <div
+      class="za-cell__header"
+    />
+    <div
+      class="za-cell__body"
+    >
+      <div
+        class="za-cell__title"
+      >
+        标题文字
+      </div>
+    </div>
+    <div
+      class="za-cell__footer"
+    >
+      描述文字
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Cell help 1`] = `
+<div
+  class="za-cell"
+>
+  <div
+    class="za-cell__inner"
+  >
+    <div
+      class="za-cell__header"
+    />
+    <div
+      class="za-cell__body"
+    >
+      <div
+        class="za-cell__title"
+      >
+        标题文字
+      </div>
+    </div>
+    <div
+      class="za-cell__footer"
+    >
+      描述文字
+    </div>
+  </div>
+  <div
+    class="za-cell__help"
+  >
+    <span>
+      message
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Cell icon 1`] = `
+<div
+  class="za-cell"
+>
+  <div
+    class="za-cell__inner"
+  >
+    <div
+      class="za-cell__header"
+    >
+      <div
+        class="za-cell__icon"
+      >
+        <img
+          alt=""
+          src="\\\\\\\\static.zhongan.com/website/health/zarm/images/icons/state.png"
+        />
+      </div>
+    </div>
+    <div
+      class="za-cell__body"
+    >
+      <div
+        class="za-cell__title"
+      >
+        标题文字
+      </div>
+    </div>
+    <div
+      class="za-cell__footer"
+    >
+      描述文字
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Cell onClick 1`] = `
+<div
+  className="za-cell za-cell--link za-cell--arrow"
+  onClick={[MockFunction]}
+  onTouchStart={[Function]}
+>
+  <div
+    className="za-cell__inner"
+  >
+    <div
+      className="za-cell__header"
+    />
+    <div
+      className="za-cell__body"
+    >
+      <div
+        className="za-cell__title"
+      >
+        标题文字
+      </div>
+    </div>
+    <div
+      className="za-cell__footer"
+    >
+      描述文字
+    </div>
+    <div
+      className="za-cell__arrow"
+    />
+  </div>
+</div>
+`;
+
+exports[`Cell renders correctly 1`] = `
+<div
+  class="za-cell"
+>
+  <div
+    class="za-cell__inner"
+  >
+    <div
+      class="za-cell__header"
+    />
+    <div
+      class="za-cell__body"
+    >
+      <div
+        class="za-cell__title"
+      >
+        标题文字
+      </div>
+    </div>
+    <div
+      class="za-cell__footer"
+    />
+  </div>
+</div>
+`;

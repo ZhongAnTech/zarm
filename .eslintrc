@@ -1,47 +1,7 @@
 {
-  "extends": ["eslint-config-airbnb"],
-  "parser": "babel-eslint",
+  "root": true,
+  "extends": ["za/react"],
   "env": {
-    "browser": true,
-    "node": true,
-    "jest": true,
-    "es6": true
-  },
-  "rules": {
-    "linebreak-style": "off",
-    "func-names": ["error", "as-needed"],
-    "prefer-arrow-callback": "warn",
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-    "no-multi-assign": "warn",
-    "no-param-reassign": "off",
-    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
-    "consistent-return": "off",
-    "no-unused-vars": "warn",
-    "global-require": "off",
-    "max-len": ["warn", 200],
-    "no-case-declarations": "off",
-    "no-console": ["warn", { "allow": ["debug", "info", "warn", "error"] }],
-    "no-bitwise": ["error", { "allow": ["~"] }],
-    "no-underscore-dangle": "off",
-    "arrow-body-style": "off",
-    "default-case": "off",
-    "comma-dangle": ["error", {
-      "arrays": "always-multiline",
-      "objects": "always-multiline",
-      "imports": "always-multiline",
-      "exports": "always-multiline",
-      "functions": "never"
-    }],
-    "import/no-extraneous-dependencies": "off",
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
-    "import/prefer-default-export": "warn",
-    "jsx-a11y/no-static-element-interactions": "off",
-    "react/require-default-props": "off",
-    "react/prefer-stateless-function": "off",
-    "react/prop-types": "off",
-    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
-    "react/jsx-closing-bracket-location": ["error", { "selfClosing": "props-aligned", "nonEmpty": "after-props" }],
-    "react/no-array-index-key": "warn"
+    "jest": true
   }
 }

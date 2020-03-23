@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip renders correctly 1`] = `
+<Tooltip
+  direction="top"
+  hasArrow={true}
+  onVisibleChange={[Function]}
+  prefixCls="za-tooltip"
+  title="hello"
+>
+  <span>
+    foo
+  </span>
+</Tooltip>
+`;

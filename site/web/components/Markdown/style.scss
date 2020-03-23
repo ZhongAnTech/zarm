@@ -1,0 +1,97 @@
+.markdown {
+  color: #1f2d3d;
+
+  .hljs {
+    background-color: transparent;
+  }
+
+  .grid-container {
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+
+  pre {
+    margin: 0;
+    padding: 16px;
+    overflow: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: normal;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 1.6em 0 0.6em;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin: 1.6em 0 0.6em;
+  }
+
+  h4,
+  p {
+    font-size: 14px;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: 0 20px;
+    color: #6a737d;
+    border-left: 4px solid #dfe2e5;
+  }
+
+  code {
+    background-color: #f1f1f1;
+    padding: 2px 6px;
+    margin: 0 1px;
+    border-radius: 3px;
+  }
+
+  table.grid {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    width: 100%;
+    min-width: 600px;
+    font-size: 14px;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    strong {
+      font-weight: normal;
+    }
+
+    th {
+      text-align: left;
+      border-top: 1px solid #eaeefb;
+      background-color: #f9fafc;
+      white-space: nowrap;
+      font-weight: normal;
+      color: #999;
+    }
+
+    td,
+    th {
+      border-bottom: 1px solid #eaeefb;
+      padding: 10px;
+      max-width: 250px;
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-left: 15px;
+    }
+  }
+}

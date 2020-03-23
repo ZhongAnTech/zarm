@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message closable 1`] = `
+<div
+  className="za-message za-message--primary"
+  onClick={[Function]}
+>
+  <div
+    className="za-message__header"
+  />
+  <div
+    className="za-message__body"
+  >
+    foo
+  </div>
+  <div
+    className="za-message__footer"
+  >
+    <Icon
+      onClick={[Function]}
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
+      type="wrong"
+      viewBox="0 0 32 32"
+    />
+  </div>
+</div>
+`;
+
+exports[`Message hasArrow 1`] = `
+<div
+  className="za-message za-message--primary"
+  onClick={[Function]}
+>
+  <div
+    className="za-message__header"
+  />
+  <div
+    className="za-message__body"
+  >
+    foo
+  </div>
+  <div
+    className="za-message__footer"
+  >
+    <Icon
+      prefixCls="za-icon"
+      size="md"
+      theme="default"
+      type="arrow-right"
+      viewBox="0 0 32 32"
+    />
+  </div>
+</div>
+`;
+
+exports[`Message icon 1`] = `
+<div
+  class="za-message za-message--primary"
+>
+  <div
+    class="za-message__header"
+  >
+    <div
+      class="za-message__icon"
+    >
+      <img
+        alt=""
+        src="\\\\\\\\static.zhongan.com/website/health/zarm/images/icons/state.png"
+      />
+    </div>
+  </div>
+  <div
+    class="za-message__body"
+  >
+    foo
+  </div>
+</div>
+`;
+
+exports[`Message renders correctly 1`] = `
+<div
+  class="za-message za-message--primary"
+>
+  <div
+    class="za-message__header"
+  />
+  <div
+    class="za-message__body"
+  >
+    foo
+  </div>
+</div>
+`;
+
+exports[`Message theme 1`] = `
+<div
+  class="za-message za-message--danger"
+>
+  <div
+    class="za-message__header"
+  />
+  <div
+    class="za-message__body"
+  >
+    foo
+  </div>
+</div>
+`;

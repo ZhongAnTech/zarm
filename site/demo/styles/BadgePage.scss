@@ -1,0 +1,40 @@
+@import "@site/styles/index";
+
+.badge-page {
+  .custom-panel {
+    display: flex;
+    justify-content: flex-start;
+    padding: r(25) 0 0 0;
+    background: #fff;
+    width: 100%;
+    flex-flow: wrap;
+
+    .box {
+      width: 25%;
+      margin-bottom: r(25);
+      text-align: center;
+
+      &-item {
+        width: r(24);
+        height: r(24);
+        background: #ddd;
+      }
+    }
+  }
+
+  .text-panel {
+    padding: r(25) r(30);
+    display: flex;
+    justify-content: flex-start;
+
+    .box {
+      margin-right: r(25);
+      display: flex;
+      align-items: center;
+
+      &-text {
+        padding-right: r(10);
+      }
+    }
+  }
+}

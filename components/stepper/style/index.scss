@@ -1,0 +1,68 @@
+@import "../../style/core/index";
+
+@include b(stepper) {
+  display: flex;
+
+  @include e(sub, plus) {
+    width: var(--stepper-height-md);
+    padding: 0;
+
+    @include b(icon) {
+      font-size: var(--stepper-icon-font-size-md);
+    }
+  }
+
+  @include e(input) {
+    position: relative;
+    width: var(--stepper-input-width-md);
+    height: var(--stepper-height-md);
+    margin: 0 var(--stepper-input-margin-h-md);
+    padding: 0 var(--stepper-input-padding-h-md);
+    font-size: var(--stepper-input-font-size-md);
+    color: var(--color-text);
+    text-align: center;
+    border: r(1) solid var(--border-color);
+    border-radius: 0;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+
+  @include m(disabled) {
+    @include e(input) {
+      background: #fff;
+      color: var(--stepper-input-disabled);
+      opacity: var(--opacity-disabled);
+    }
+  }
+
+  @include m(radius) {
+    @include e(input) {
+      border-radius: var(--radius-md);
+    }
+  }
+
+  @include m(circle) {
+    @include e(input) {
+      border-radius: var(--stepper-height-md);
+    }
+  }
+
+  @include m(lg) {
+    @include e(input) {
+      width: var(--stepper-input-width-lg);
+      height: var(--stepper-height-lg);
+      margin: 0 var(--stepper-input-margin-h-lg);
+      padding: 0 var(--stepper-input-padding-h-lg);
+      font-size: var(--stepper-input-font-size-lg);
+    }
+
+    @include e(sub, plus) {
+      width: var(--stepper-height-lg);
+      padding: 0;
+
+      @include b(icon) {
+        font-size: var(--stepper-icon-font-size-lg);
+      }
+    }
+  }
+}

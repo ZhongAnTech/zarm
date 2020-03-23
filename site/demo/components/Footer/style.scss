@@ -1,0 +1,19 @@
+@import "@site/styles/index";
+
+footer {
+  text-align: center;
+}
+
+.copyright {
+  display: inline-block;
+  margin: r(30) auto r(50) auto;
+  color: #ccc;
+
+  &-cn {
+    font-size: r(14);
+  }
+
+  &-en {
+    font-size: r(12);
+  }
+}

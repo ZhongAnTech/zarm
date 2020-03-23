@@ -1,0 +1,28 @@
+@import "../../style/core/index";
+
+@include b(wheel) {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: calc(var(--wheel-item-rows) * var(--wheel-item-height));
+  overflow: hidden;
+
+  @include e(content) {
+    margin-top: calc(var(--wheel-item-height) * 2);
+  }
+
+  @include e(item) {
+    text-align: center;
+    font-size: var(--wheel-item-font-size);
+    line-height: var(--wheel-item-height);
+    height: var(--wheel-item-height);
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @include m(disabled) {
+      color: var(--color-text-disabled);
+    }
+  }
+}

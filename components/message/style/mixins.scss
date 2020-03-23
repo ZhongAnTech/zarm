@@ -1,0 +1,4 @@
+@mixin message-theme($color) {
+  color: $color;
+  background-color: alpha($color, .1);
+}

@@ -1,0 +1,1344 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar renders correctly 1`] = `
+<div
+  class="za-search-bar za-search-bar--round"
+>
+  <form
+    action="#"
+    class="za-search-bar__form"
+  >
+    <div
+      class="za-search-bar__content"
+    >
+      <i
+        class="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+        theme="default"
+        type="search"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 32 32"
+          width="1em"
+        >
+          <use
+            href="#search"
+          />
+        </svg>
+      </i>
+      <div
+        class="za-search-bar__mock"
+      >
+        <div
+          class="za-input za-search-bar__input za-input--clearable"
+        >
+          <input
+            autocomplete="off"
+            placeholder="搜索"
+            type="search"
+            value=""
+          />
+          <i
+            class="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+            theme="default"
+            type="wrong-round-fill"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 32 32"
+              width="1em"
+            >
+              <use
+                href="#wrong-round-fill"
+              />
+            </svg>
+          </i>
+        </div>
+      </div>
+    </div>
+    <div
+      class="za-search-bar__cancel"
+    >
+      取消
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SearchBar renders defaultValue correctly 1`] = `
+<ForwardRef(forwardRef)
+  cancelText="取消取消"
+  defaultValue="搜索关键字"
+  placeholder="搜索"
+  shape="round"
+>
+  <LocaleReceiver
+    cancelText="取消取消"
+    defaultValue="搜索关键字"
+    forwardedRef={null}
+    placeholder="搜索"
+    shape="round"
+  >
+    <SearchBar
+      cancelText="取消取消"
+      clearable={true}
+      defaultValue="搜索关键字"
+      disabled={false}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "placeholder": "搜索",
+        }
+      }
+      localeCode="zh-cn"
+      placeholder="搜索"
+      prefixCls="za-search-bar"
+      shape="round"
+      showCancel={false}
+    >
+      <div
+        className="za-search-bar za-search-bar--round"
+      >
+        <form
+          action="#"
+          className="za-search-bar__form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="za-search-bar__content"
+          >
+            <Icon
+              className="za-search-bar__icon"
+              prefixCls="za-icon"
+              size="md"
+              theme="default"
+              type="search"
+              viewBox="0 0 32 32"
+            >
+              <Iconfont
+                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                size="md"
+                theme="default"
+                type="search"
+              >
+                <Icon
+                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
+                  type="search"
+                  viewBox="0 0 32 32"
+                >
+                  <i
+                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
+                    theme="default"
+                    type="search"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      viewBox="0 0 32 32"
+                      width="1em"
+                    >
+                      <use
+                        xlinkHref="#search"
+                      />
+                    </svg>
+                  </i>
+                </Icon>
+              </Iconfont>
+            </Icon>
+            <div
+              className="za-search-bar__mock"
+            >
+              <InputBase
+                className="za-search-bar__input"
+                clearable={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClear={[Function]}
+                onCompositionEnd={[Function]}
+                onCompositionStart={[Function]}
+                onCompositionUpdate={[Function]}
+                onFocus={[Function]}
+                placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                type="search"
+                value=""
+              >
+                <div
+                  className="za-input za-search-bar__input za-input--clearable"
+                >
+                  <input
+                    autoComplete="off"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onCompositionEnd={[Function]}
+                    onCompositionStart={[Function]}
+                    onCompositionUpdate={[Function]}
+                    onFocus={[Function]}
+                    placeholder="搜索"
+                    type="search"
+                    value=""
+                  />
+                  <Icon
+                    className="za-input__clear"
+                    onClick={[Function]}
+                    prefixCls="za-icon"
+                    size="md"
+                    theme="default"
+                    type="wrong-round-fill"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                    >
+                      <Icon
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        prefixCls="za-icon"
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                          onClick={[Function]}
+                          size="md"
+                          theme="default"
+                          type="wrong-round-fill"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#wrong-round-fill"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputBase>
+            </div>
+          </div>
+          <div
+            className="za-search-bar__cancel"
+            onClick={[Function]}
+          >
+            取消取消
+          </div>
+        </form>
+      </div>
+    </SearchBar>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`SearchBar renders onCancel called correctly 1`] = `
+<ForwardRef(forwardRef)
+  onCancel={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder="搜索"
+  shape="round"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    onCancel={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    placeholder="搜索"
+    shape="round"
+  >
+    <SearchBar
+      clearable={true}
+      disabled={false}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "placeholder": "搜索",
+        }
+      }
+      localeCode="zh-cn"
+      onCancel={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      placeholder="搜索"
+      prefixCls="za-search-bar"
+      shape="round"
+      showCancel={false}
+    >
+      <div
+        className="za-search-bar za-search-bar--round"
+      >
+        <form
+          action="#"
+          className="za-search-bar__form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="za-search-bar__content"
+          >
+            <Icon
+              className="za-search-bar__icon"
+              prefixCls="za-icon"
+              size="md"
+              theme="default"
+              type="search"
+              viewBox="0 0 32 32"
+            >
+              <Iconfont
+                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                size="md"
+                theme="default"
+                type="search"
+              >
+                <Icon
+                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
+                  type="search"
+                  viewBox="0 0 32 32"
+                >
+                  <i
+                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
+                    theme="default"
+                    type="search"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      viewBox="0 0 32 32"
+                      width="1em"
+                    >
+                      <use
+                        xlinkHref="#search"
+                      />
+                    </svg>
+                  </i>
+                </Icon>
+              </Iconfont>
+            </Icon>
+            <div
+              className="za-search-bar__mock"
+            >
+              <InputBase
+                className="za-search-bar__input"
+                clearable={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClear={[Function]}
+                onCompositionEnd={[Function]}
+                onCompositionStart={[Function]}
+                onCompositionUpdate={[Function]}
+                onFocus={[Function]}
+                placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                type="search"
+                value=""
+              >
+                <div
+                  className="za-input za-search-bar__input za-input--clearable"
+                >
+                  <input
+                    autoComplete="off"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onCompositionEnd={[Function]}
+                    onCompositionStart={[Function]}
+                    onCompositionUpdate={[Function]}
+                    onFocus={[Function]}
+                    placeholder="搜索"
+                    type="search"
+                    value=""
+                  />
+                  <Icon
+                    className="za-input__clear"
+                    onClick={[Function]}
+                    prefixCls="za-icon"
+                    size="md"
+                    theme="default"
+                    type="wrong-round-fill"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                    >
+                      <Icon
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        prefixCls="za-icon"
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                          onClick={[Function]}
+                          size="md"
+                          theme="default"
+                          type="wrong-round-fill"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#wrong-round-fill"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputBase>
+            </div>
+          </div>
+          <div
+            className="za-search-bar__cancel"
+            onClick={[Function]}
+          >
+            取消
+          </div>
+        </form>
+      </div>
+    </SearchBar>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`SearchBar renders onChange called correctly 1`] = `
+<ForwardRef(forwardRef)
+  onChange={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "测试值",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder="搜索"
+  shape="round"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    onChange={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "测试值",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    placeholder="搜索"
+    shape="round"
+  >
+    <SearchBar
+      clearable={true}
+      disabled={false}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "placeholder": "搜索",
+        }
+      }
+      localeCode="zh-cn"
+      onChange={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "测试值",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      placeholder="搜索"
+      prefixCls="za-search-bar"
+      shape="round"
+      showCancel={false}
+    >
+      <div
+        className="za-search-bar za-search-bar--round za-search-bar--focus"
+      >
+        <form
+          action="#"
+          className="za-search-bar__form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="za-search-bar__content"
+          >
+            <Icon
+              className="za-search-bar__icon"
+              prefixCls="za-icon"
+              size="md"
+              theme="default"
+              type="search"
+              viewBox="0 0 32 32"
+            >
+              <Iconfont
+                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                size="md"
+                theme="default"
+                type="search"
+              >
+                <Icon
+                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
+                  type="search"
+                  viewBox="0 0 32 32"
+                >
+                  <i
+                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
+                    theme="default"
+                    type="search"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      viewBox="0 0 32 32"
+                      width="1em"
+                    >
+                      <use
+                        xlinkHref="#search"
+                      />
+                    </svg>
+                  </i>
+                </Icon>
+              </Iconfont>
+            </Icon>
+            <div
+              className="za-search-bar__mock"
+            >
+              <InputBase
+                className="za-search-bar__input"
+                clearable={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClear={[Function]}
+                onCompositionEnd={[Function]}
+                onCompositionStart={[Function]}
+                onCompositionUpdate={[Function]}
+                onFocus={[Function]}
+                placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                type="search"
+                value="测试值"
+              >
+                <div
+                  className="za-input za-search-bar__input za-input--focus za-input--clearable"
+                >
+                  <input
+                    autoComplete="off"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onCompositionEnd={[Function]}
+                    onCompositionStart={[Function]}
+                    onCompositionUpdate={[Function]}
+                    onFocus={[Function]}
+                    placeholder="搜索"
+                    type="search"
+                    value="测试值"
+                  />
+                  <Icon
+                    className="za-input__clear"
+                    onClick={[Function]}
+                    prefixCls="za-icon"
+                    size="md"
+                    theme="default"
+                    type="wrong-round-fill"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                    >
+                      <Icon
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        prefixCls="za-icon"
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                          onClick={[Function]}
+                          size="md"
+                          theme="default"
+                          type="wrong-round-fill"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#wrong-round-fill"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputBase>
+            </div>
+          </div>
+          <div
+            className="za-search-bar__cancel"
+            onClick={[Function]}
+          >
+            取消
+          </div>
+        </form>
+      </div>
+    </SearchBar>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`SearchBar renders onClear called correctly 1`] = `
+<ForwardRef(forwardRef)
+  onClear={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    onClear={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  >
+    <SearchBar
+      clearable={true}
+      disabled={false}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "placeholder": "搜索",
+        }
+      }
+      localeCode="zh-cn"
+      onClear={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      prefixCls="za-search-bar"
+      shape="radius"
+      showCancel={false}
+    >
+      <div
+        className="za-search-bar za-search-bar--radius"
+      >
+        <form
+          action="#"
+          className="za-search-bar__form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="za-search-bar__content"
+          >
+            <Icon
+              className="za-search-bar__icon"
+              prefixCls="za-icon"
+              size="md"
+              theme="default"
+              type="search"
+              viewBox="0 0 32 32"
+            >
+              <Iconfont
+                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                size="md"
+                theme="default"
+                type="search"
+              >
+                <Icon
+                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
+                  type="search"
+                  viewBox="0 0 32 32"
+                >
+                  <i
+                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
+                    theme="default"
+                    type="search"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      viewBox="0 0 32 32"
+                      width="1em"
+                    >
+                      <use
+                        xlinkHref="#search"
+                      />
+                    </svg>
+                  </i>
+                </Icon>
+              </Iconfont>
+            </Icon>
+            <div
+              className="za-search-bar__mock"
+            >
+              <InputBase
+                className="za-search-bar__input"
+                clearable={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClear={[Function]}
+                onCompositionEnd={[Function]}
+                onCompositionStart={[Function]}
+                onCompositionUpdate={[Function]}
+                onFocus={[Function]}
+                placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                type="search"
+                value=""
+              >
+                <div
+                  className="za-input za-search-bar__input za-input--clearable"
+                >
+                  <input
+                    autoComplete="off"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onCompositionEnd={[Function]}
+                    onCompositionStart={[Function]}
+                    onCompositionUpdate={[Function]}
+                    onFocus={[Function]}
+                    placeholder="搜索"
+                    type="search"
+                    value=""
+                  />
+                  <Icon
+                    className="za-input__clear"
+                    onClick={[Function]}
+                    prefixCls="za-icon"
+                    size="md"
+                    theme="default"
+                    type="wrong-round-fill"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                    >
+                      <Icon
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        prefixCls="za-icon"
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                          onClick={[Function]}
+                          size="md"
+                          theme="default"
+                          type="wrong-round-fill"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#wrong-round-fill"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputBase>
+            </div>
+          </div>
+          <div
+            className="za-search-bar__cancel"
+            onClick={[Function]}
+          >
+            取消
+          </div>
+        </form>
+      </div>
+    </SearchBar>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`SearchBar renders onFocus called correctly 1`] = `
+<ForwardRef(forwardRef)
+  onFocus={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder="搜索"
+  shape="round"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    onFocus={
+      [MockFunction] {
+        "calls": Array [
+          Array [],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    placeholder="搜索"
+    shape="round"
+  >
+    <SearchBar
+      clearable={true}
+      disabled={false}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "placeholder": "搜索",
+        }
+      }
+      localeCode="zh-cn"
+      onFocus={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      placeholder="搜索"
+      prefixCls="za-search-bar"
+      shape="round"
+      showCancel={false}
+    >
+      <div
+        className="za-search-bar za-search-bar--round za-search-bar--focus"
+      >
+        <form
+          action="#"
+          className="za-search-bar__form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="za-search-bar__content"
+          >
+            <Icon
+              className="za-search-bar__icon"
+              prefixCls="za-icon"
+              size="md"
+              theme="default"
+              type="search"
+              viewBox="0 0 32 32"
+            >
+              <Iconfont
+                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                size="md"
+                theme="default"
+                type="search"
+              >
+                <Icon
+                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
+                  type="search"
+                  viewBox="0 0 32 32"
+                >
+                  <i
+                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
+                    theme="default"
+                    type="search"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      viewBox="0 0 32 32"
+                      width="1em"
+                    >
+                      <use
+                        xlinkHref="#search"
+                      />
+                    </svg>
+                  </i>
+                </Icon>
+              </Iconfont>
+            </Icon>
+            <div
+              className="za-search-bar__mock"
+            >
+              <InputBase
+                className="za-search-bar__input"
+                clearable={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClear={[Function]}
+                onCompositionEnd={[Function]}
+                onCompositionStart={[Function]}
+                onCompositionUpdate={[Function]}
+                onFocus={[Function]}
+                placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                type="search"
+                value=""
+              >
+                <div
+                  className="za-input za-search-bar__input za-input--clearable"
+                >
+                  <input
+                    autoComplete="off"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onCompositionEnd={[Function]}
+                    onCompositionStart={[Function]}
+                    onCompositionUpdate={[Function]}
+                    onFocus={[Function]}
+                    placeholder="搜索"
+                    type="search"
+                    value=""
+                  />
+                  <Icon
+                    className="za-input__clear"
+                    onClick={[Function]}
+                    prefixCls="za-icon"
+                    size="md"
+                    theme="default"
+                    type="wrong-round-fill"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                    >
+                      <Icon
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        prefixCls="za-icon"
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                          onClick={[Function]}
+                          size="md"
+                          theme="default"
+                          type="wrong-round-fill"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#wrong-round-fill"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputBase>
+            </div>
+          </div>
+          <div
+            className="za-search-bar__cancel"
+            onClick={[Function]}
+          >
+            取消
+          </div>
+        </form>
+      </div>
+    </SearchBar>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;
+
+exports[`SearchBar renders onSubmit called correctly 1`] = `
+<ForwardRef(forwardRef)
+  onSubmit={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          "My new value",
+        ],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  placeholder="搜索"
+  shape="round"
+>
+  <LocaleReceiver
+    forwardedRef={null}
+    onSubmit={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            "My new value",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
+    placeholder="搜索"
+    shape="round"
+  >
+    <SearchBar
+      clearable={true}
+      disabled={false}
+      locale={
+        Object {
+          "cancelText": "取消",
+          "placeholder": "搜索",
+        }
+      }
+      localeCode="zh-cn"
+      onSubmit={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "My new value",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      placeholder="搜索"
+      prefixCls="za-search-bar"
+      shape="round"
+      showCancel={false}
+    >
+      <div
+        className="za-search-bar za-search-bar--round za-search-bar--focus"
+      >
+        <form
+          action="#"
+          className="za-search-bar__form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="za-search-bar__content"
+          >
+            <Icon
+              className="za-search-bar__icon"
+              prefixCls="za-icon"
+              size="md"
+              theme="default"
+              type="search"
+              viewBox="0 0 32 32"
+            >
+              <Iconfont
+                className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                size="md"
+                theme="default"
+                type="search"
+              >
+                <Icon
+                  className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                  prefixCls="za-icon"
+                  size="md"
+                  theme="default"
+                  type="search"
+                  viewBox="0 0 32 32"
+                >
+                  <i
+                    className="za-icon za-search-bar__icon za-icon--search za-icon--default za-icon--md"
+                    size="md"
+                    theme="default"
+                    type="search"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="1em"
+                      viewBox="0 0 32 32"
+                      width="1em"
+                    >
+                      <use
+                        xlinkHref="#search"
+                      />
+                    </svg>
+                  </i>
+                </Icon>
+              </Iconfont>
+            </Icon>
+            <div
+              className="za-search-bar__mock"
+            >
+              <InputBase
+                className="za-search-bar__input"
+                clearable={true}
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClear={[Function]}
+                onCompositionEnd={[Function]}
+                onCompositionStart={[Function]}
+                onCompositionUpdate={[Function]}
+                onFocus={[Function]}
+                placeholder="搜索"
+                prefixCls="za-input"
+                readOnly={false}
+                type="search"
+                value="My new value"
+              >
+                <div
+                  className="za-input za-search-bar__input za-input--focus za-input--clearable"
+                >
+                  <input
+                    autoComplete="off"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onCompositionEnd={[Function]}
+                    onCompositionStart={[Function]}
+                    onCompositionUpdate={[Function]}
+                    onFocus={[Function]}
+                    placeholder="搜索"
+                    type="search"
+                    value="My new value"
+                  />
+                  <Icon
+                    className="za-input__clear"
+                    onClick={[Function]}
+                    prefixCls="za-icon"
+                    size="md"
+                    theme="default"
+                    type="wrong-round-fill"
+                    viewBox="0 0 32 32"
+                  >
+                    <Iconfont
+                      className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                      onClick={[Function]}
+                      size="md"
+                      theme="default"
+                      type="wrong-round-fill"
+                    >
+                      <Icon
+                        className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                        onClick={[Function]}
+                        prefixCls="za-icon"
+                        size="md"
+                        theme="default"
+                        type="wrong-round-fill"
+                        viewBox="0 0 32 32"
+                      >
+                        <i
+                          className="za-icon za-input__clear za-icon--wrong-round-fill za-icon--default za-icon--md"
+                          onClick={[Function]}
+                          size="md"
+                          theme="default"
+                          type="wrong-round-fill"
+                        >
+                          <svg
+                            fill="currentColor"
+                            height="1em"
+                            viewBox="0 0 32 32"
+                            width="1em"
+                          >
+                            <use
+                              xlinkHref="#wrong-round-fill"
+                            />
+                          </svg>
+                        </i>
+                      </Icon>
+                    </Iconfont>
+                  </Icon>
+                </div>
+              </InputBase>
+            </div>
+          </div>
+          <div
+            className="za-search-bar__cancel"
+            onClick={[Function]}
+          >
+            取消
+          </div>
+        </form>
+      </div>
+    </SearchBar>
+  </LocaleReceiver>
+</ForwardRef(forwardRef)>
+`;

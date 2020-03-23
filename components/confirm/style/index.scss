@@ -1,0 +1,41 @@
+@import "../../style/core/index";
+@import "../../button/style/mixins";
+
+@include b(confirm) {
+  @include b(modal) {
+    @include e(body) {
+      text-align: center;
+    }
+    @include e(footer) {
+      padding: 0;
+    }
+  }
+
+  @include e(button) {
+    display: block;
+    position: relative;
+    width: 100%;
+    @include button-base();
+    @include button-size(
+      var(--button-height-lg),
+      var(--button-padding-h-lg),
+      var(--button-font-size-lg),
+      var(--button-icon-size-lg),
+    );
+    @include onepx(top);
+
+    background-color: var(--button-default-background);
+
+    &:active {
+      background-color: var(--background-active);
+    }
+
+    &:not(:first-of-type) {
+      @include onepx(left top);
+    }
+
+    @include m(ok) {
+      color: var(--theme-primary);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocaleProvider renders correctly with en_US 1`] = `null`;
+
+exports[`LocaleProvider renders correctly with zh_CN 1`] = `null`;
