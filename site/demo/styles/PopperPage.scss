@@ -8,18 +8,14 @@
     }
   }
 
-  .za-popper {
-    display: inline-block;
-  }
-
   @at-root {
     .custom-content,
     .custom-arrow-content {
       padding: r(6) r(12);
       background: #ddd;
       font-size: r(12);
-      width: r(100);
-      height: r(50);
+      width: r(200);
+      height: r(160);
     }
 
     // 自定义箭头
@@ -76,7 +72,8 @@
 
   // 显示方向
   .direction-demo {
-    .za-popper {
+    .za-button {
+      width: r(60);
       margin-right: r(10);
       margin-bottom: r(10);
     }
@@ -90,10 +87,6 @@
     .za-cell__content {
       padding: r(15) 0;
       justify-content: center;
-    }
-
-    .za-button {
-      width: r(60);
     }
   }
 }
