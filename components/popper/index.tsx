@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { createPortal } from 'react-dom';
+import ReactDOM, { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
@@ -12,6 +12,7 @@ import Events from '../utils/events';
 export interface PopperProps extends BasePopperProps {
   prefixCls?: string;
   className?: string;
+  children: React.ReactNode;
 }
 
 interface PopperStates {
@@ -37,6 +38,25 @@ const getPopperClientRect = (popperOffsets) => {
   offsets.right = offsets.left + offsets.width;
   offsets.bottom = offsets.top + offsets.height;
   return offsets;
+};
+
+const setTransformOrigin = (domNode) => {
+  const placement = domNode.getAttribute('x-placement');
+  const transformOrigin = {
+    'top-start': 'left bottom',
+    top: 'center bottom',
+    'top-end': 'right bottom',
+    'left-start': 'right top',
+    left: 'right center',
+    'left-end': 'right bottom',
+    'bottom-start': 'left top',
+    bottom: 'center top',
+    'bottom-end': 'right top',
+    'right-start': 'left top',
+    right: 'left center',
+    'right-end': 'left bottom',
+  };
+  domNode.style.transformOrigin = transformOrigin[placement];
 };
 
 const customArrowOffsetFn = (data: PopperJS.Data) => {
@@ -126,12 +146,12 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     arrowPointAtCenter: false,
     trigger: /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover' as PopperTrigger,
     direction: 'top',
-    mouseEnterDelay: 100,
+    mouseEnterDelay: 150,
     mouseLeaveDelay: 100,
     visible: false,
     content: '',
     animationType: 'zoom-fade',
-    animationDuration: 200,
+    animationDuration: 300,
     onVisibleChange: () => {},
   };
 
@@ -192,18 +212,17 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     return document.body;
   }
 
-  setTransformOrigin() {
-    const placementMap = {
-      top: 'bottom',
-      bottom: 'top',
-      left: 'right',
-      right: 'left',
-    };
-    const placement = this.popperNode!.getAttribute('x-placement')!.split('-')[0];
-    const origin = placementMap[placement];
-    this.popperNode!.style.transformOrigin = ['top', 'bottom'].indexOf(placement) > -1
-      ? `center ${origin}`
-      : `${origin} center`;
+  getTransitionName(animationType, animationState) {
+    if (this.popperNode) {
+      if (animationType === 'menu-slide') {
+        const placement = this.popperNode!.getAttribute('x-placement');
+        if (placement!.includes('top')) {
+          return `za-${animationType}-down-${animationState}`;
+        }
+        return `za-${animationType}-up-${animationState}`;
+      }
+      return `za-${animationType}-${animationState}`;
+    }
   }
 
   handleOpen = () => {
@@ -262,13 +281,13 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
         this.props.onVisibleChange!(false);
       });
     } else {
-      // this.setState({ mounted: true });
       this.props.onVisibleChange!(true);
     }
   };
 
   handlePopperUpdate = (data) => {
-    this.setTransformOrigin();
+    const { animationType } = this.props;
+    if (animationType !== 'menu-slide') setTransformOrigin(this.popperNode);
     if (data.placement !== this.state.direction) {
       this.setState({
         direction: invertKeyValues(directionMap)[data.placement],
@@ -360,7 +379,6 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
       children,
       content,
       prefixCls,
-      style,
       className,
       trigger,
       hasArrow,
@@ -374,19 +392,19 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
       animationState,
       isPending,
     } = this.state;
-
-    const child = <div className={`${prefixCls}__inner`}>{children}</div>;
+    const transitionName = this.getTransitionName(animationType, animationState);
     const innerCls = classnames(
       className,
-      `${prefixCls}__wrapper`,
+      prefixCls,
       `${prefixCls}--${direction}`,
       {
         [`${prefixCls}--hidden`]: animationState === 'leave',
-        [`za-${animationType}-${animationState}`]: isPending,
+        [transitionName!]: isPending,
       },
     );
+    const child = React.isValidElement(children) ? children : <span>{children}</span>;
     const childrenProps: React.RefAttributes<any> & React.HTMLAttributes<any> = {
-      ref: (node) => { this.reference = node; },
+      ...(children && (children as React.ReactElement).props),
     };
     const event: React.DOMAttributes<HTMLDivElement> = {};
     if (trigger === 'click') {
@@ -406,12 +424,11 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
       // childrenProps.onBlur = this.handleLeave;
     }
 
-    const childElement = React.cloneElement(child, childrenProps);
     const toolTip = (
       <ClickOutside
         onClickOutside={this.handleClose}
         ignoredNode={this.reference}
-        className="popper-container"
+        className={`${prefixCls}-container`}
         disabled={trigger === 'manual'}
       >
         <div
@@ -432,10 +449,14 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
     return (
       <>
-        <div className={prefixCls} style={style}>
-          {mounted && createPortal(toolTip, this.getContainer())}
-          {childElement}
-        </div>
+        {mounted && createPortal(toolTip, this.getContainer())}
+        {React.cloneElement(child, {
+          ref: (node) => {
+            // eslint-disable-next-line react/no-find-dom-node
+            this.reference = ReactDOM.findDOMNode(node) as HTMLElement;
+          },
+          ...childrenProps,
+        })}
       </>
     );
   }
