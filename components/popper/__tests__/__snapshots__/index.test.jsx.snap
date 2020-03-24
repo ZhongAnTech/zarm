@@ -2,14 +2,14 @@
 
 exports[`Popper renders correctly 1`] = `
 <Popper
-  animationDuration={200}
+  animationDuration={300}
   animationType="zoom-fade"
   arrowPointAtCenter={false}
   content=""
   destroy={true}
   direction="top"
   hasArrow={false}
-  mouseEnterDelay={100}
+  mouseEnterDelay={150}
   mouseLeaveDelay={100}
   onVisibleChange={[MockFunction]}
   prefixCls="za-popper"
@@ -17,18 +17,11 @@ exports[`Popper renders correctly 1`] = `
   trigger="hover"
   visible={false}
 >
-  <div
-    className="za-popper"
+  <p
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
-    <div
-      className="za-popper__inner"
-      onMouseLeave={[Function]}
-      onMouseOver={[Function]}
-    >
-      <p>
-        点我
-      </p>
-    </div>
-  </div>
+    点我
+  </p>
 </Popper>
 `;
