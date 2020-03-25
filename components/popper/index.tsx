@@ -214,9 +214,10 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
   getTransitionName(animationType, animationState) {
     if (this.popperNode) {
-      if (animationType === 'menu-slide') {
-        const placement = this.popperNode!.getAttribute('x-placement');
-        if (placement!.includes('top')) {
+      const placement = this.popperNode!.getAttribute('x-placement');
+
+      if (animationType === 'menu-slide' && placement) {
+        if (placement.includes('top')) {
           return `za-${animationType}-down-${animationState}`;
         }
         return `za-${animationType}-up-${animationState}`;
@@ -384,6 +385,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
       hasArrow,
       animationType,
       animationDuration,
+      style,
     } = this.props;
 
     const {
@@ -436,6 +438,8 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
           style={{
             position: 'absolute',
             animationDuration: `${animationDuration}ms`,
+            ...(animationState === 'leave' && !isPending && { display: 'none' }),
+            ...style,
           }}
           className={innerCls}
           ref={(node) => { this.popperNode = node!; }}

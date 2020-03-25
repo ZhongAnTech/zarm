@@ -14,8 +14,8 @@
       padding: r(6) r(12);
       background: #ddd;
       font-size: r(12);
-      width: r(200);
-      height: r(160);
+      width: r(100);
+      height: r(50);
     }
 
     // 自定义箭头
@@ -79,7 +79,7 @@
     }
 
     @at-root {
-      .za-popper__wrapper {
+      .za-popper {
         z-index: 1500;
       }
     }

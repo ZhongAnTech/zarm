@@ -24,6 +24,7 @@ class Demo extends React.Component {
             visible={visible}
             trigger={trigger}
             direction={direction}
+            animationType="menu-slide"
             className="custom-content"
           >
             <Button theme="primary" size="xs" onClick={() => trigger === 'manual' && this.setState({ visible: !visible })}>
@@ -113,7 +114,7 @@ class Demo extends React.Component {
         <Cell className="direction-demo">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" direction="topLeft" content="topLeft text">
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
                 <Button size="xs">TL</Button>
               </Popper>
 
