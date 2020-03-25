@@ -10,10 +10,11 @@ class Demo extends React.Component {
     visible: false,
     direction: 'top',
     trigger: 'click',
+    animationType: 'zoom-fade',
   }
 
   render() {
-    const { visible, direction, trigger } = this.state;
+    const { visible, direction, trigger, animationType } = this.state;
 
     return (
       <>
@@ -24,7 +25,7 @@ class Demo extends React.Component {
             visible={visible}
             trigger={trigger}
             direction={direction}
-            animationType="menu-slide"
+            animationType={animationType}
             className="custom-content"
           >
             <Button theme="primary" size="xs" onClick={() => trigger === 'manual' && this.setState({ visible: !visible })}>
@@ -56,15 +57,42 @@ class Demo extends React.Component {
             }}
           />
         </Cell>
+        <Cell title="动画效果">
+          <Select
+            value={animationType}
+            dataSource={[
+              { value: 'zoom-fade', label: '缩放渐显(zoom-fade)' },
+              { value: 'menu-slide', label: '菜单拉伸(menu-slide)' },
+              { value: 'fade', label: '淡出淡入效果(fade)' },
+              { value: 'zoom', label: '缩放效果(zoom)' },
+              { value: 'rotate', label: '旋转效果(rotate)' },
+              { value: 'door', label: '开关门效果(door)' },
+              { value: 'flip', label: '翻转效果(flip)' },
+              { value: 'moveUp', label: '移出移入效果(moveUp)' },
+              { value: 'moveDown', label: '移出移入效果(moveDown)' },
+              { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
+              { value: 'moveRight', label: '移出移入效果(moveRight)' },
+              { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
+              { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
+              { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
+              { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
+            ]}
+            onOk={(selected) => {
+              this.setState({
+                animationType: selected[0].value,
+              });
+            }}
+          />
+        </Cell>
         <Cell title="触发方式">
           <Select
             value={trigger}
             dataSource={[
-              { value: 'click', label: 'click（点击状态触发）' },
-              { value: 'hover', label: 'hover（hover状态触发）' },
-              { value: 'focus', label: 'focus（聚焦状态触发）' },
-              { value: 'manual', label: 'manual（受控触发）' },
-              { value: 'contextMenu', label: 'contextMenu（右键触发）' },
+              { value: 'click', label: '点击状态触发(click)' },
+              { value: 'focus', label: '聚焦状态触发(focus)' },
+              { value: 'hover', label: '鼠标经过触发(hover)' },
+              { value: 'manual', label: '受控触发(manual)' },
+              { value: 'contextMenu', label: '右键触发(contextMenu)' },
             ]}
             onOk={(selected) => {
               this.setState({
@@ -195,6 +223,6 @@ ReactDOM.render(<Demo />, mountNode);
 | mouseEnterDelay | number | 100 | 鼠标移入显示气泡层的延时时间（单位：毫秒） |
 | mouseLeaveDelay | number | 100 | 鼠标移出隐藏气泡层的延时时间（单位：毫秒） |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
-| trigger | string | 移动端为'click' <br /> 桌面端为'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` hover状态触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发 |
+| trigger | string | 移动端为'click' <br /> 桌面端为'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` 鼠标经过触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发 |
 | visible | boolean | false | 是否显示，`trigger='manual'` 时有效 |
 | onVisibleChange | (visible?: boolean) => void | noop | 显示/隐藏 气泡层触发的事件 |
