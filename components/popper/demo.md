@@ -113,58 +113,58 @@ class Demo extends React.Component {
         <Cell className="direction-demo">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
-                <Button block size="xs">TL</Button>
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" direction="topLeft" content="topLeft text">
+                <Button size="xs">TL</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="top" content="top text">
-                <Button block size="xs">Top</Button>
+                <Button size="xs">Top</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topRight" content="topRight text">
-                <Button block size="xs">TR</Button>
+                <Button size="xs">TR</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, float: 'left', clear: 'both' }}>
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftTop" content="leftTop text">
-                <Button block size="xs">LT</Button>
+                <Button size="xs">LT</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="left" content="left text">
-                <Button block size="xs">Left</Button>
+                <Button size="xs">Left</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftBottom" content="leftBottom text">
-                <Button block size="xs">LB</Button>
+                <Button size="xs">LB</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightTop" content="rightTop text">
-                <Button block size="xs">RT</Button>
+                <Button size="xs">RT</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="right" content="right text">
-                <Button block size="xs">Right</Button>
+                <Button size="xs">Right</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightBottom" content="rightBottom text">
-                <Button block size="xs">RB</Button>
+                <Button size="xs">RB</Button>
               </Popper>
             </div>
 
             <div style={{ marginLeft: 60, clear: 'both' }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomLeft" content="bottomLeft text">
-                <Button block size="xs">BL</Button>
+              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" direction="bottomLeft" content="bottomLeft text">
+                <Button size="xs">BL</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottom" content="bottom text">
-                <Button block size="xs">Bottom</Button>
+                <Button size="xs">Bottom</Button>
               </Popper>
 
               <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomRight" content="bottomRight text">
-                <Button block size="xs">BR</Button>
+                <Button size="xs">BR</Button>
               </Popper>
             </div>
 
