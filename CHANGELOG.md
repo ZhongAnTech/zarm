@@ -7,7 +7,7 @@
   - 新增支持组件的 按需加载（可配合`babel-plugin-import`插件实现）
   - 新增`Toast`单例模式的应用。
   - 新增组件：`Keyboard`、`KeyboardPicker`、`Tooltip`、`Collapse`、`SearchBar`。
-  - 增加组件国际化，**默认英文**。
+  - 增加组件国际化，**默认中文**。
 
 - Break Change
   - 调整主题样式变量名及引入方式，具体参考README使用帮助。
@@ -15,9 +15,9 @@
   - 优化`Button`组件active状态的交互
   - 调整`Picker`组件的使用方式，拆分成`PickerView`、`Picker`、`Select`三种场景的实现。
   - 调整`DatePicker`组件的使用方式，拆分成`DatePickerView`、`DatePicker`、`DateSelect`三种场景的实现。
-  - 调整`Pull`组件的API。详见[文档](https://github.com/ZhongAnTech/zarm/blob/master/docs/zh-cn/components/Pull.md)
+  - 调整`Pull`组件的API。
   - 调整`ActionSheet`组件的默认样式。
-  - 组件更名：文件选择器`Uploader`组件更名为`FilePicker`，手风琴`Accordion`组件更名为`Collapse`, 活动指示器`Spinner`组件更名为`ActivityIndicator`, 标签页`Tab`组件更名为`Tabs`。
+  - 组件更名：文件选择器`Uploader`组件更名为`FilePicker`，手风琴`Accordion`组件更名为`Collapse`, 活动指示器`Spinner`组件更名为`ActivityIndicator`, 标签页`Tab`组件更名为`Tabs`, 走马灯`Swipe`组件更名为`Carousel`。
 
 - Bug Fix
   - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[6f6ccd6](https://github.com/ZhongAnTech/zarm/commit/cc6924b4f4c3cb0717fd5bf24e3cd94ac7695f59)）
