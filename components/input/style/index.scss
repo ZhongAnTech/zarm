@@ -39,6 +39,10 @@
     overflow: visible;
   }
 
+  @include m(textarea--placeholder) {
+    color: var(--color-text-placeholder);
+  }
+
   @include e(content) {
     position: relative;
     height: var(--input-line-height);

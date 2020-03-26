@@ -45,11 +45,14 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   }
 
   componentDidUpdate() {
-    const { autoHeight } = this.props;
+    const { autoHeight, rows, readOnly } = this.props;
     const { focused } = this.state;
 
-    if (autoHeight) {
+    if (autoHeight && !readOnly) {
       this.input.style.height = `${this.input.scrollHeight}px`;
+    }
+    if (autoHeight && readOnly && rows) {
+      this.input.style.height = `${this.input.scrollHeight * rows}px`;
     }
     if (focused) {
       this.input.focus();
@@ -175,8 +178,8 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     );
 
     const renderText = (
-      <div className={`${prefixCls}__content`}>
-        {rest.value || rest.defaultValue}
+      <div className={`${prefixCls}__content ${prefixCls}--textarea--placeholder`} ref={(ele) => { this.input = ele; }}>
+        {rest.value || rest.defaultValue || rest.placeholder}
       </div>
     );
 
