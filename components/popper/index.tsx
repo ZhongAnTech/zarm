@@ -150,7 +150,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     mouseLeaveDelay: 100,
     visible: false,
     content: '',
-    animationType: 'zoom-fade',
+    animationType: 'zoomFade',
     animationDuration: 300,
     onVisibleChange: () => {},
   };
@@ -216,7 +216,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     if (this.popperNode) {
       const placement = this.popperNode!.getAttribute('x-placement');
 
-      if (animationType === 'menu-slide' && placement) {
+      if (animationType === 'menuSlide' && placement) {
         if (placement.includes('top')) {
           return `za-${animationType}-down-${animationState}`;
         }
@@ -288,7 +288,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
   handlePopperUpdate = (data) => {
     const { animationType } = this.props;
-    if (animationType !== 'menu-slide') setTransformOrigin(this.popperNode);
+    if (animationType !== 'menuSlide') setTransformOrigin(this.popperNode);
     if (data.placement !== this.state.direction) {
       this.setState({
         direction: invertKeyValues(directionMap)[data.placement],

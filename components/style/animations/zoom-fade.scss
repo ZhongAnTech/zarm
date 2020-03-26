@@ -10,10 +10,6 @@
   }
 }
 
-.za-zoom-fade-enter {
-  animation: za-zoom-fade-enter both cubic-bezier(0.08, 0.82, 0.17, 1);
-}
-
 @keyframes za-zoom-fade-leave {
   0% {
     transform: scale(1);
@@ -25,6 +21,10 @@
   }
 }
 
-.za-zoom-fade-leave {
+.za-zoomFade-enter {
+  animation: za-zoom-fade-enter both cubic-bezier(0.08, 0.82, 0.17, 1);
+}
+
+.za-zoomFade-leave {
   animation: za-zoom-fade-leave both cubic-bezier(0.78, 0.14, 0.15, 0.86);
 }
