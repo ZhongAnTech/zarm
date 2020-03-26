@@ -116,11 +116,11 @@ import { Cell, Button, Popper, Radio, Message, Icon } from 'zarm';
 
 class Demo extends React.Component {
   state = {
-    arrow: '0'
+    arrowPointAtCenter: false,
   }
 
   render() {
-    const { arrow } = this.state
+    const { arrowPointAtCenter } = this.state;
 
     return (
       <>
@@ -128,13 +128,13 @@ class Demo extends React.Component {
           <Radio.Group
             compact
             type="button"
-            value={this.state.arrow}
-            onChange={value => {
-              this.setState({ arrow: value });
+            value={arrowPointAtCenter}
+            onChange={(value) => {
+              this.setState({ arrowPointAtCenter: value });
             }}
           >
-            <Radio value="0">跟随方向</Radio>
-            <Radio value="1">元素中心</Radio>
+            <Radio value={false}>跟随方向</Radio>
+            <Radio value={true}>元素中心</Radio>
           </Radio.Group>
         }>
           箭头位置
@@ -142,57 +142,57 @@ class Demo extends React.Component {
         <Cell className="direction-demo">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
                 <Button size="xs">TL</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="top" content="top text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="top" content="top text">
                 <Button size="xs">Top</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topRight" content="topRight text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="topRight" content="topRight text">
                 <Button size="xs">TR</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, float: 'left', clear: 'both' }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftTop" content="leftTop text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="leftTop" content="leftTop text">
                 <Button size="xs">LT</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="left" content="left text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="left" content="left text">
                 <Button size="xs">Left</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftBottom" content="leftBottom text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="leftBottom" content="leftBottom text">
                 <Button size="xs">LB</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightTop" content="rightTop text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="rightTop" content="rightTop text">
                 <Button size="xs">RT</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="right" content="right text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="right" content="right text">
                 <Button size="xs">Right</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightBottom" content="rightBottom text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="rightBottom" content="rightBottom text">
                 <Button size="xs">RB</Button>
               </Popper>
             </div>
 
             <div style={{ marginLeft: 60, clear: 'both' }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" direction="bottomLeft" content="bottomLeft text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" direction="bottomLeft" content="bottomLeft text">
                 <Button size="xs">BL</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottom" content="bottom text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="bottom" content="bottom text">
                 <Button size="xs">Bottom</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomRight" content="bottomRight text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="bottomRight" content="bottomRight text">
                 <Button size="xs">BR</Button>
               </Popper>
             </div>
@@ -217,7 +217,7 @@ ReactDOM.render(<Demo />, mountNode);
 | hasArrow | boolean | false | 是否显示箭头节点<font color="red">（注：需要自行定义箭头样式）</font> |
 | destroy | boolean | true | 气泡层关闭后是否移除节点 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popper 挂载的 HTML 节点 |
-| animationType | string | 'zoom-fade' | 可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
+| animationType | string | 'zoom-fade' | 可选值 `zoom-fade`, `menu-slide`, `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | mouseEnterDelay | number | 100 | 鼠标移入显示气泡层的延时时间（单位：毫秒） |
