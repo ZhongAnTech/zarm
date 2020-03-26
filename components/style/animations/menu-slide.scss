@@ -54,18 +54,18 @@
   }
 }
 
-.za-menu-slide-up-enter {
+.za-menuSlide-up-enter {
   animation: za-menu-slide-up-enter both cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.za-menu-slide-up-leave {
+.za-menuSlide-up-leave {
   animation: za-menu-slide-up-leave both cubic-bezier(0.755, 0.05, 0.855, 0.06);
 }
 
-.za-menu-slide-down-enter {
+.za-menuSlide-down-enter {
   animation: za-menu-slide-down-enter both cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.za-menu-slide-down-leave {
+.za-menuSlide-down-leave {
   animation: za-menu-slide-down-leave both cubic-bezier(0.755, 0.05, 0.855, 0.06);
 }

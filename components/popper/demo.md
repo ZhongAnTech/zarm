@@ -10,7 +10,7 @@ class Demo extends React.Component {
     visible: false,
     direction: 'top',
     trigger: 'click',
-    animationType: 'zoom-fade',
+    animationType: 'zoomFade',
   }
 
   render() {
@@ -61,8 +61,8 @@ class Demo extends React.Component {
           <Select
             value={animationType}
             dataSource={[
-              { value: 'zoom-fade', label: '缩放渐显(zoom-fade)' },
-              { value: 'menu-slide', label: '菜单拉伸(menu-slide)' },
+              { value: 'zoomFade', label: '缩放渐显(zoomFade)' },
+              { value: 'menuSlide', label: '菜单拉伸(menuSlide)' },
               { value: 'fade', label: '淡出淡入效果(fade)' },
               { value: 'zoom', label: '缩放效果(zoom)' },
               { value: 'rotate', label: '旋转效果(rotate)' },
@@ -217,7 +217,7 @@ ReactDOM.render(<Demo />, mountNode);
 | hasArrow | boolean | false | 是否显示箭头节点<font color="red">（注：需要自行定义箭头样式）</font> |
 | destroy | boolean | true | 气泡层关闭后是否移除节点 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popper 挂载的 HTML 节点 |
-| animationType | string | 'zoom-fade' | 可选值 `zoom-fade`, `menu-slide`, `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
+| animationType | string | 'zoomFade' | 可选值 `zoomFade`, `menuSlide`, `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | mouseEnterDelay | number | 100 | 鼠标移入显示气泡层的延时时间（单位：毫秒） |
