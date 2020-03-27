@@ -179,8 +179,8 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     );
 
     const renderText = (
-      <div className={`${prefixCls}__content ${prefixCls}--textarea--placeholder`} ref={(ele) => { this.input = ele; }}>
-        {rest.value || rest.defaultValue || rest.placeholder}
+      <div className={`${prefixCls}__content ${prefixCls}--readonly`} ref={(ele) => { this.input = ele; }}>
+        {rest.value || rest.defaultValue}
       </div>
     );
 
