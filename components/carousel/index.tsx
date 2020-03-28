@@ -359,9 +359,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     const direction = this.isDirectionX() ? 'horizontal' : 'vertical';
     const cls = classnames(prefixCls, className, `${prefixCls}--${direction}`);
 
-    if (!this.isDirectionX()) {
-      itemsStyle.height = height;
-    }
+    itemsStyle.height = height;
 
     const content = (
       <div
