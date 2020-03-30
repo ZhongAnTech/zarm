@@ -1,13 +1,34 @@
 # 版本更新日志 
 
+## v2.1.0
+- Feature
+  - [Popper] 优化气泡层动画，增加菜单拉伸 `menuSlide` 动画。https://github.com/ZhongAnTech/zarm/commit/8a06a296f91a496d79894e4dd6554b8e9b6a5b64
+
+- Break Change
+  - [Checkbox, Radio] 调整禁用状态下的样式，变更为浅灰色背景框，深灰色勾选。https://github.com/ZhongAnTech/zarm/commit/ed04500a1199394e979fc86663932f0281ce2662
+
+- Bug Fix
+  - [Input] 修复多行文本修改`readonly`属性导致组件崩溃的bug。#404
+  - [SearchBar] 修复切换英文语言后，搜索框的取消按钮不能完全隐藏的bug。#405
+  - [Input] 修复多行文本直接通过`value`属性修改值时, 字数不会重新计算的bug。#406
+  - [Input] 修复禁用状态下，手机端无法显示值的bug。#410
+
 
 ## v2.0.0
 - Feature
   - 新增对typescript的支持。
   - 新增支持组件的 按需加载（可配合`babel-plugin-import`插件实现）
   - 新增`Toast`单例模式的应用。
-  - 新增组件：`Keyboard`、`KeyboardPicker`、`Tooltip`、`Collapse`、`SearchBar`。
-  - 增加组件国际化，**默认中文**。
+  - 新增组件：
+      - 模拟键盘 `Keyboard`
+      - 模拟键盘拾取器 `KeyboardPicker`
+      - 工具提示 `Tooltip`
+      - 折叠面板 `Collapse`
+      - 搜索框 `SearchBar`
+      - 日历 `Calendar`
+      - 导航栏 `NavBar`
+      - 标签栏 `TabBar`
+      - 国际化组件 `LocaleProvider`
 
 - Break Change
   - 调整主题样式变量名及引入方式，具体参考README使用帮助。
@@ -17,7 +38,13 @@
   - 调整`DatePicker`组件的使用方式，拆分成`DatePickerView`、`DatePicker`、`DateSelect`三种场景的实现。
   - 调整`Pull`组件的API。
   - 调整`ActionSheet`组件的默认样式。
-  - 组件更名：文件选择器`Uploader`组件更名为`FilePicker`，手风琴`Accordion`组件更名为`Collapse`, 活动指示器`Spinner`组件更名为`ActivityIndicator`, 标签页`Tab`组件更名为`Tabs`, 走马灯`Swipe`组件更名为`Carousel`。
+  - `Alert`和`Confirm`组件挂在到`Modal`组件的静态方法下，`Modal.alert()`和`Modal.confirm()`。
+  - 组件更名：
+    - 文件选择器 `Uploader` 组件更名为 `FilePicker`
+    - 手风琴 `Accordion` 组件更名为 `Collapse`
+    - 活动指示器 `Spinner` 组件更名为 `ActivityIndicator`
+    - 标签页 `Tab` 组件更名为 `Tabs`
+    - 走马灯 `Swipe` 组件更名为 `Carousel`
 
 - Bug Fix
   - 修复组件`Input`类型为textarea时内容换行符字符数计算错误的bug。（[6f6ccd6](https://github.com/ZhongAnTech/zarm/commit/cc6924b4f4c3cb0717fd5bf24e3cd94ac7695f59)）
