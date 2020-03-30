@@ -24,7 +24,7 @@ exports[`NoticeBar icon 1`] = `
     >
       <div
         class="za-notice-bar__body"
-        style="left:0"
+        style="animation:notice-bar-scrolling 0s linear infinite both;padding-left:0"
       >
         foo
       </div>
@@ -129,7 +129,8 @@ exports[`NoticeBar renders correctly 1`] = `
             className="za-notice-bar__body"
             style={
               Object {
-                "left": 0,
+                "animation": "notice-bar-scrolling 0s linear infinite both",
+                "paddingLeft": 0,
               }
             }
           >
@@ -238,7 +239,8 @@ exports[`NoticeBar scrollable 1`] = `
             className="za-notice-bar__body"
             style={
               Object {
-                "left": 0,
+                "animation": "notice-bar-scrolling 0s linear infinite both",
+                "paddingLeft": 0,
               }
             }
           >
@@ -287,7 +289,7 @@ exports[`NoticeBar theme 1`] = `
     >
       <div
         class="za-notice-bar__body"
-        style="left:0"
+        style="animation:notice-bar-scrolling 0s linear infinite both;padding-left:0"
       >
         foo
       </div>
