@@ -10,24 +10,36 @@ $ yarn
 
 Then, you can runs Zarm Design website locally.
 ```
-npm run dev
+$ yarn dev
 ```
 
 
 ## Lint
 checks the code style.
+
 ```
-npm run lint
+$ yarn lint
 ```
 
 ## Test
 runs the complete test suite.
+
 ```
-npm test
+$ yarn test
+
+# Test specified h5
+$ yarn test:h5
+
+# Test specified react-native
+$ yarn test:rn
+
+# Generate coverage
+$ yarn test:h5 --coverage
 ```
 
 ## Build
 compiles TypeScript code to the lib and es directory, and creates UMD build of zarm in dist directory.
+
 ```
-npm run build
+$ yarn build
 ```
