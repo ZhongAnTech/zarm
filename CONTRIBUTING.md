@@ -27,7 +27,7 @@ npm test
 ```
 
 ## Build
-compiles TypeScript code to the lib and es directory, creates UMD build of zarm.
+compiles TypeScript code to the lib and es directory, and creates UMD build of zarm in dist directory.
 ```
 npm run build
 ```
