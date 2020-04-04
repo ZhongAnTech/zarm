@@ -185,6 +185,7 @@ ReactDOM.render(<Demo />, mountNode);
 | load | Action | - | 上拉加载的参数配置 |
 | animationDuration | number | 400 | 动画执行时间，单位：毫秒 |
 | stayTime | number | 1000 | 加载成功停留时间 |
+| useBodyScroll | boolean | false | 使用 html 的 `body` 作为滚动容器 |
 
 ### Action 类型定义
 | 属性 | 类型 | 默认值 | 说明 |

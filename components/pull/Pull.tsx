@@ -32,6 +32,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     },
     animationDuration: 400,
     stayTime: 1000,
+    useBodyScroll: false,
   };
 
   constructor(props) {
@@ -86,6 +87,9 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   getScrollContainer = () => {
+    if (this.props.useBodyScroll) {
+      return document.documentElement;
+    }
     return ((node) => {
       while (node && node.parentNode && node.parentNode !== document.body) {
         const style = window.getComputedStyle(node);

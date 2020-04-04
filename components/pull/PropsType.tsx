@@ -32,4 +32,5 @@ export interface PropsType {
   animationDuration?: number;
   stayTime?: number;
   locale?: Locale['Pull'];
+  useBodyScroll?: boolean;
 }
