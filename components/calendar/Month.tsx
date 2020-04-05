@@ -1,7 +1,6 @@
 import React, { Component, isValidElement } from 'react';
 import classnames from 'classnames';
 import { BaseCalendarMonthProps } from './PropsType';
-import CalendarView from './index';
 import DateTool from '../utils/date';
 
 export interface CalendarMonthProps extends BaseCalendarMonthProps {
@@ -24,6 +23,13 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     max: new Date(),
     dateRender: (date: Date) => date.getDate(),
     disabledDate: () => false,
+  };
+
+  static now = new Date();
+
+  // 月份缓存数据
+  static cache = {
+    now: `${CalendarMonthView.now.getFullYear()}-${CalendarMonthView.now.getMonth()}-${CalendarMonthView.now.getDate()}`,
   };
 
   // 月份最小值
@@ -130,7 +136,7 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
   renderDay = (day: number, year: number, month: number, firstDay: number) => {
     const { prefixCls, dateRender, onDateClick } = this.props;
     const date = new Date(year, month, day);
-    const isToday = CalendarView.cache.now === `${year}-${month}-${day}`;
+    const isToday = CalendarMonthView.cache.now === `${year}-${month}-${day}`;
     const status = this.checkStatus(date);
 
     let txt = (date && dateRender && dateRender(date)) || '';
