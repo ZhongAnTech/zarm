@@ -23,7 +23,6 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     icon: <Icon type="broadcast" />,
     hasArrow: false,
     closable: false,
-    scrollable: false,
   };
 
   private wrapper: HTMLDivElement | null = null;
@@ -43,8 +42,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   updateScrolling() {
     const wrapWidth = this.wrapper!.getBoundingClientRect().width;
     const offsetWidth = this.content!.getBoundingClientRect().width;
-    const { scrollable } = this.props;
-    if (scrollable && offsetWidth > wrapWidth) {
+    if (offsetWidth > wrapWidth) {
       const duration = offsetWidth / NOTICEBAR_SCROLL_SPEED;
       this.setState({
         paddingLeft: wrapWidth,
@@ -54,7 +52,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   }
 
   render() {
-    const { prefixCls, children, scrollable, ...others } = this.props;
+    const { prefixCls, children, ...others } = this.props;
     const { duration = 0, paddingLeft = 0 } = this.state;
 
     return (
@@ -63,10 +61,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           <div
             className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
-            style={{
-              animation: `notice-bar-scrolling ${duration}s linear infinite both`,
-              paddingLeft,
-            }}
+            style={
+              duration > 0 ? { animation: `notice-bar-scrolling ${duration}s linear infinite both`, paddingLeft } : undefined
+            }
           >
             {children}
           </div>
