@@ -6,10 +6,10 @@
 
 ```bash
 # npm
-npm install zarm --save
+$ npm install zarm --save
 
 # yarn
-yarn add zarm
+$ yarn add zarm
 ```
 
 ### 或者通过 link 和 script 标签分别引入样式文件和js脚本文件（不推荐）
