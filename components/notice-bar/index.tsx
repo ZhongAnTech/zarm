@@ -10,7 +10,7 @@ export interface NoticeBarProps extends PropsType {
 }
 
 export interface NoticeBarState {
-  paddingLeft?: number;
+  // paddingLeft?: number;
   duration?: number;
 }
 
@@ -45,7 +45,6 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     if (offsetWidth > wrapWidth) {
       const duration = offsetWidth / NOTICEBAR_SCROLL_SPEED;
       this.setState({
-        paddingLeft: wrapWidth,
         duration,
       });
     }
@@ -53,7 +52,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
   render() {
     const { prefixCls, children, ...others } = this.props;
-    const { duration = 0, paddingLeft = 0 } = this.state;
+    const { duration = 0 } = this.state;
 
     return (
       <Message {...others} size="lg">
@@ -62,7 +61,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
             className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
             style={
-              duration > 0 ? { animation: `notice-bar-scrolling ${duration}s linear infinite both`, paddingLeft } : undefined
+              duration > 0 ? { animation: `notice-bar-scrolling ${duration}s linear infinite both` } : undefined
             }
           >
             {children}

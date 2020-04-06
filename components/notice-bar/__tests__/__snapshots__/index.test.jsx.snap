@@ -24,7 +24,6 @@ exports[`NoticeBar icon 1`] = `
     >
       <div
         class="za-notice-bar__body"
-        style="animation:notice-bar-scrolling 0s linear infinite both;padding-left:0"
       >
         foo
       </div>
@@ -47,7 +46,6 @@ exports[`NoticeBar renders correctly 1`] = `
     />
   }
   prefixCls="za-notice-bar"
-  scrollable={false}
   theme="warning"
 >
   <Message
@@ -127,12 +125,6 @@ exports[`NoticeBar renders correctly 1`] = `
         >
           <div
             className="za-notice-bar__body"
-            style={
-              Object {
-                "animation": "notice-bar-scrolling 0s linear infinite both",
-                "paddingLeft": 0,
-              }
-            }
           >
             foo
           </div>
@@ -173,6 +165,7 @@ exports[`NoticeBar scrollable 1`] = `
       />
     }
     prefixCls="za-message"
+    scrollable={true}
     size="lg"
     theme="warning"
   >
@@ -237,12 +230,6 @@ exports[`NoticeBar scrollable 1`] = `
         >
           <div
             className="za-notice-bar__body"
-            style={
-              Object {
-                "animation": "notice-bar-scrolling 0s linear infinite both",
-                "paddingLeft": 0,
-              }
-            }
           >
             各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。
           </div>
@@ -289,7 +276,6 @@ exports[`NoticeBar theme 1`] = `
     >
       <div
         class="za-notice-bar__body"
-        style="animation:notice-bar-scrolling 0s linear infinite both;padding-left:0"
       >
         foo
       </div>
