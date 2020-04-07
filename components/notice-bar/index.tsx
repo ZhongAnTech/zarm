@@ -3,7 +3,7 @@ import PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
 
-const NOTICEBAR_SCROLL_SPEED = 50;
+const NOTICEBAR_SCROLL_SPEED = 30;
 export interface NoticeBarProps extends PropsType {
   prefixCls?: string;
   className?: string;
