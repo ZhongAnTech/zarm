@@ -44,6 +44,7 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     const offsetWidth = this.content!.getBoundingClientRect().width;
     if (offsetWidth > wrapWidth) {
       const duration = offsetWidth / NOTICEBAR_SCROLL_SPEED;
+      this.wrapper!.style.setProperty('--translateX', `${-(offsetWidth - wrapWidth)}px`);
       this.setState({
         duration,
       });
