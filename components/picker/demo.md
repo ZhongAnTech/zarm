@@ -387,8 +387,8 @@ ReactDOM.render(<Demo />, mountNode);
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | dataSource | object[] | [] | 数据源 |
-| value | string &#124; string[] &#124; number &#124; number[] &#124; boolean  | - | 值 |
-| defaultValue | string &#124; string[] &#124; number &#124; number[] &#124; boolean | - | 初始值 |
+| value | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 值 |
+| defaultValue | string \| number \| boolean \| Array<string &#124; number &#124; boolean> | - | 初始值 |
 | valueMember | string | 'value' | 值字段对应的key 
 | itemRender | (data?: object) => data.label | (data?: object) => data.label | 单个选项的展示 |
 | disabled | boolean | false | 是否禁用 |
