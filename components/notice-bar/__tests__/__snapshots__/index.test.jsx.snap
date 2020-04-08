@@ -24,7 +24,6 @@ exports[`NoticeBar icon 1`] = `
     >
       <div
         class="za-notice-bar__body"
-        style="left:0"
       >
         foo
       </div>
@@ -36,6 +35,7 @@ exports[`NoticeBar icon 1`] = `
 exports[`NoticeBar renders correctly 1`] = `
 <NoticeBar
   closable={false}
+  delay={2000}
   hasArrow={false}
   icon={
     <Icon
@@ -47,11 +47,12 @@ exports[`NoticeBar renders correctly 1`] = `
     />
   }
   prefixCls="za-notice-bar"
-  scrollable={false}
+  speed={50}
   theme="warning"
 >
   <Message
     closable={false}
+    delay={2000}
     hasArrow={false}
     icon={
       <Icon
@@ -64,6 +65,7 @@ exports[`NoticeBar renders correctly 1`] = `
     }
     prefixCls="za-message"
     size="lg"
+    speed={50}
     theme="warning"
   >
     <div
@@ -127,11 +129,6 @@ exports[`NoticeBar renders correctly 1`] = `
         >
           <div
             className="za-notice-bar__body"
-            style={
-              Object {
-                "left": 0,
-              }
-            }
           >
             foo
           </div>
@@ -145,6 +142,7 @@ exports[`NoticeBar renders correctly 1`] = `
 exports[`NoticeBar scrollable 1`] = `
 <NoticeBar
   closable={false}
+  delay={2000}
   hasArrow={false}
   icon={
     <Icon
@@ -157,10 +155,12 @@ exports[`NoticeBar scrollable 1`] = `
   }
   prefixCls="za-notice-bar"
   scrollable={true}
+  speed={50}
   theme="warning"
 >
   <Message
     closable={false}
+    delay={2000}
     hasArrow={false}
     icon={
       <Icon
@@ -172,7 +172,9 @@ exports[`NoticeBar scrollable 1`] = `
       />
     }
     prefixCls="za-message"
+    scrollable={true}
     size="lg"
+    speed={50}
     theme="warning"
   >
     <div
@@ -236,11 +238,6 @@ exports[`NoticeBar scrollable 1`] = `
         >
           <div
             className="za-notice-bar__body"
-            style={
-              Object {
-                "left": 0,
-              }
-            }
           >
             各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。
           </div>
@@ -287,7 +284,6 @@ exports[`NoticeBar theme 1`] = `
     >
       <div
         class="za-notice-bar__body"
-        style="left:0"
       >
         foo
       </div>

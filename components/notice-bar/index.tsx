@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react';
 import PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
+import { addKeyframe, removeKeyframe, existKeyframe } from '../utils/keyframes';
+
+const NOTICEBAR_KEYFRAME_NAME = 'za-notice-bar-scrolling';
 
 export interface NoticeBarProps extends PropsType {
   prefixCls?: string;
@@ -9,7 +12,7 @@ export interface NoticeBarProps extends PropsType {
 }
 
 export interface NoticeBarState {
-  offset: number;
+  animationDuration?: number;
 }
 
 export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
@@ -21,56 +24,63 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     icon: <Icon type="broadcast" />,
     hasArrow: false,
     closable: false,
-    scrollable: false,
+    speed: 50,
+    delay: 2000,
   };
 
   private wrapper: HTMLDivElement | null = null;
 
   private content: HTMLDivElement | null = null;
 
-  private moveInterval?: number;
-
   state: NoticeBarState = {
-    offset: 0,
+    animationDuration: 0,
   };
 
   componentDidMount() {
-    const { scrollable } = this.props;
-    if (!scrollable) {
-      return;
-    }
-
-    const distance = this.wrapper!.offsetWidth - this.content!.offsetWidth;
-    if (distance > 0) {
-      return;
-    }
-
-    let delay = 1000;
-    this.moveInterval = setInterval(() => {
-      let { offset } = this.state;
-      if ((offset < distance || offset >= 0) && delay > 0) {
-        delay -= 50;
-        return;
-      }
-
-      delay = 1000;
-      offset = (offset < distance)
-        ? 0
-        : (offset - 1);
-
-      this.setState({ offset });
-    }, 50);
+    this.updateScrolling();
   }
 
-  componentWillUnmount() {
-    if (this.moveInterval) {
-      clearInterval(this.moveInterval);
+  componentDidUpdate() {
+    this.updateScrolling();
+  }
+
+  updateScrolling() {
+    const { speed, delay } = this.props;
+    const wrapWidth = this.wrapper!.getBoundingClientRect().width;
+    const offsetWidth = this.content!.getBoundingClientRect().width;
+
+    if (offsetWidth > wrapWidth) {
+      // 完整的执行时间 = 前后停留时间 + 移动时间
+      const animationDuration = Math.round(delay! * 2 + (offsetWidth / speed!) * 1000);
+
+      // 计算停留时间占总时间的百分比
+      const delayPercent = Math.round((delay! * 100) / animationDuration);
+
+      // 删除之前的 keyframe 定义
+      if (existKeyframe(NOTICEBAR_KEYFRAME_NAME)) {
+        removeKeyframe(NOTICEBAR_KEYFRAME_NAME);
+      }
+
+      // 增加重新计算后的 keyframe
+      addKeyframe(NOTICEBAR_KEYFRAME_NAME, `
+        0%, ${delayPercent}% {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+        }
+      
+        ${100 - delayPercent}%, 100% {
+          -webkit-transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
+          transform: translate3d(${-(offsetWidth - wrapWidth)}px, 0, 0);
+        }
+      `);
+
+      this.setState({ animationDuration });
     }
   }
 
   render() {
-    const { prefixCls, children, scrollable, ...others } = this.props;
-    const { offset } = this.state;
+    const { prefixCls, children, ...others } = this.props;
+    const { animationDuration } = this.state;
 
     return (
       <Message {...others} size="lg">
@@ -78,9 +88,14 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           <div
             className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
-            style={{
-              left: offset,
-            }}
+            style={
+              animationDuration! > 0
+                ? {
+                  WebkitAnimation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                  animation: `${NOTICEBAR_KEYFRAME_NAME} ${animationDuration}ms linear infinite`,
+                }
+                : undefined
+            }
           >
             {children}
           </div>
