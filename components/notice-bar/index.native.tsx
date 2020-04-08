@@ -26,7 +26,6 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     theme: 'warning',
     hasArrow: false,
     closable: false,
-    scrollable: false,
     styles: noticeBarStyles,
   };
 
@@ -44,11 +43,6 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   }
 
   async componentDidMount() {
-    const { scrollable } = this.props;
-    if (!scrollable) {
-      return;
-    }
-
     const asyncWrapper = this.layout(this.wrapper);
     const asyncContent = this.layout(this.content);
     const wrapperWidth = await asyncWrapper;
@@ -106,7 +100,6 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
   render() {
     const {
       theme,
-      scrollable,
       closable,
       styles,
       children,
@@ -122,32 +115,25 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
 
     const wrapperProps = {
       theme,
-      scrollable,
       closable,
       children,
     };
 
     return (
       <Message {...wrapperProps} {...others} size="lg">
-        {
-          scrollable
-            ? (
-              <ScrollView
-                horizontal
-                ref={(view) => { this.wrapper = view; }}
-                scrollEnabled={false}
-                showsHorizontalScrollIndicator={false}
-              >
-                <Text
-                  ref={(view) => { this.content = view; }}
-                  style={[textStyle, { left: offset }]}
-                >
-                  {children}
-                </Text>
-              </ScrollView>
-            )
-            : children
-        }
+        <ScrollView
+          horizontal
+          ref={(view) => { this.wrapper = view; }}
+          scrollEnabled={false}
+          showsHorizontalScrollIndicator={false}
+        >
+          <Text
+            ref={(view) => { this.content = view; }}
+            style={[textStyle, { left: offset }]}
+          >
+            {children}
+          </Text>
+        </ScrollView>
       </Message>
     );
   }

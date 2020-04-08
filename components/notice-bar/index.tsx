@@ -3,13 +3,15 @@ import PropsType from './PropsType';
 import Message from '../message';
 import Icon from '../icon';
 
+const NOTICEBAR_SCROLL_SPEED = 50;
 export interface NoticeBarProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
 export interface NoticeBarState {
-  offset: number;
+  // paddingLeft?: number;
+  duration?: number;
 }
 
 export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
@@ -21,56 +23,37 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
     icon: <Icon type="broadcast" />,
     hasArrow: false,
     closable: false,
-    scrollable: false,
   };
 
   private wrapper: HTMLDivElement | null = null;
 
   private content: HTMLDivElement | null = null;
 
-  private moveInterval?: number;
-
-  state: NoticeBarState = {
-    offset: 0,
-  };
+  state: NoticeBarState = {};
 
   componentDidMount() {
-    const { scrollable } = this.props;
-    if (!scrollable) {
-      return;
-    }
-
-    const distance = this.wrapper!.offsetWidth - this.content!.offsetWidth;
-    if (distance > 0) {
-      return;
-    }
-
-    let delay = 1000;
-    this.moveInterval = setInterval(() => {
-      let { offset } = this.state;
-      if ((offset < distance || offset >= 0) && delay > 0) {
-        delay -= 50;
-        return;
-      }
-
-      delay = 1000;
-      offset = (offset < distance)
-        ? 0
-        : (offset - 1);
-
-      this.setState({ offset });
-    }, 50);
+    this.updateScrolling();
   }
 
-  componentWillUnmount() {
-    if (this.moveInterval) {
-      clearInterval(this.moveInterval);
+  componentDidUpdate() {
+    this.updateScrolling();
+  }
+
+  updateScrolling() {
+    const wrapWidth = this.wrapper!.getBoundingClientRect().width;
+    const offsetWidth = this.content!.getBoundingClientRect().width;
+    if (offsetWidth > wrapWidth) {
+      const duration = offsetWidth / NOTICEBAR_SCROLL_SPEED;
+      this.wrapper!.style.setProperty('--translateX', `${-(offsetWidth - wrapWidth)}px`);
+      this.setState({
+        duration,
+      });
     }
   }
 
   render() {
-    const { prefixCls, children, scrollable, ...others } = this.props;
-    const { offset } = this.state;
+    const { prefixCls, children, ...others } = this.props;
+    const { duration = 0 } = this.state;
 
     return (
       <Message {...others} size="lg">
@@ -78,9 +61,9 @@ export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarSt
           <div
             className={`${prefixCls}__body`}
             ref={(ele) => { this.content = ele; }}
-            style={{
-              left: offset,
-            }}
+            style={
+              duration > 0 ? { animation: `notice-bar-scrolling ${duration}s linear infinite both` } : undefined
+            }
           >
             {children}
           </div>
