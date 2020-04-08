@@ -14,17 +14,3 @@
     white-space: nowrap;
   }
 }
-
-@keyframes notice-bar-scrolling {
-  10% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  90% {
-    transform: translate3d(var(--translateX), 0, 0);
-  }
-
-  100% {
-    transform: translate3d(var(--translateX), 0, 0);
-  }
-}

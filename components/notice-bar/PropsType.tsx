@@ -5,4 +5,6 @@ export default interface PropsType {
   icon?: ReactNode;
   closable?: boolean;
   hasArrow?: boolean;
+  speed?: number;
+  delay?: number;
 }

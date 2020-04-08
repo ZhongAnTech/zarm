@@ -11,7 +11,7 @@ ReactDOM.render(
     <NoticeBar>普通</NoticeBar>
     <NoticeBar theme="danger">自定义主题</NoticeBar>
     <NoticeBar icon={<Icon type="wrong-round" />}>自定义图标</NoticeBar>
-    <NoticeBar>各位zarmer请注意，本组件使用了自动滚动功能，更多用法请参见使用文档。</NoticeBar>
+    <NoticeBar>各位zarmer请注意，当前文本超出了屏幕宽度，组件会自动开启滚动功能，前后停留时间和滚动速度可以自定义设置，更多用法请参见使用文档。</NoticeBar>
   </>
 , mountNode);
 ```
@@ -40,4 +40,7 @@ ReactDOM.render(
 | icon | ReactNode | - | 设置图标 |
 | closable | boolean | false | 是否显示关闭按钮 |
 | hasArrow | boolean | false | 是否显示箭头 |
+| speed | number | 50 | 滚动时的速度（单位：px/s） |
+| delay | number | 2000 | 开启滚动功能时前后停留的时间（单位：ms） |
 | onClick | () => void | - | 点击后触发的回调函数 |
+
