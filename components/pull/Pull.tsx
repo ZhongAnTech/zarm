@@ -46,9 +46,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentDidMount() {
-    this.wrap = this.getScrollContainer();
-    const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
-    Events.on(scroller, 'scroll', this.throttledScroll);
+    this.addScrollEvent();
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -71,6 +69,10 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentDidUpdate(prevProps) {
+    if (this.wrap !== this.getScrollContainer()) {
+      this.addScrollEvent();
+    }
+
     const { load, refresh } = this.props;
     if (prevProps.load!.state !== load!.state) {
       this.doLoadAction(load!.state);
@@ -89,12 +91,23 @@ export default class Pull extends PureComponent<PullProps, any> {
     return ((node) => {
       while (node && node.parentNode && node.parentNode !== document.body) {
         const style = window.getComputedStyle(node);
-        if (['scroll', 'auto'].indexOf(style.overflowY || '') > -1) {
+        if (
+          // overflow 或者 overflowY 值为 scroll/auto
+          (['scroll', 'auto'].indexOf(style.overflowY!) > -1 || ['scroll', 'auto'].indexOf(style.overflow!) > -1)
+          // height 或者 max-height 值大于 0
+          && (parseInt(style.height!, 10) > 0 || parseInt(style.maxHeight!, 10) > 0)
+        ) {
           return node;
         }
         node = node.parentNode;
       }
     })(this.pull) || document.documentElement;
+  };
+
+  addScrollEvent = () => {
+    this.wrap = this.getScrollContainer();
+    const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
+    Events.on(scroller, 'scroll', this.throttledScroll);
   };
 
   onScroll = () => {
@@ -351,7 +364,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   };
 
   render() {
-    const { prefixCls, className, children } = this.props;
+    const { prefixCls, className, style, children } = this.props;
     const { offsetY, animationDuration, refreshState, loadState } = this.state;
     const cls = classnames(prefixCls, className);
 
@@ -374,7 +387,7 @@ export default class Pull extends PureComponent<PullProps, any> {
         onDragMove={this.onDragMove}
         onDragEnd={this.onDragEnd}
       >
-        <div className={cls}>
+        <div className={cls} style={style}>
           <div className={`${prefixCls}__content`} style={contentStyle} ref={(ele) => { this.pull = ele; }}>
             <div className={`${prefixCls}__refresh`}>
               {this.renderRefresh()}
