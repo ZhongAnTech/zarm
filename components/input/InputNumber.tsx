@@ -82,7 +82,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
     const { value } = this.state;
     const newValue = (key === 'delete')
-      ? value.slice(0, value.length - 1)
+      ? String(value).slice(0, String(value).length - 1)
       : value + key;
 
     if (newValue !== value) {
