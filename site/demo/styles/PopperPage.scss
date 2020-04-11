@@ -8,10 +8,6 @@
     }
   }
 
-  .za-popper {
-    display: inline-block;
-  }
-
   @at-root {
     .custom-content,
     .custom-arrow-content {
@@ -76,13 +72,14 @@
 
   // 显示方向
   .direction-demo {
-    .za-popper {
+    .za-button {
+      width: r(60);
       margin-right: r(10);
       margin-bottom: r(10);
     }
 
     @at-root {
-      .za-popper__wrapper {
+      .za-popper {
         z-index: 1500;
       }
     }
@@ -90,10 +87,6 @@
     .za-cell__content {
       padding: r(15) 0;
       justify-content: center;
-    }
-
-    .za-button {
-      width: r(60);
     }
   }
 }

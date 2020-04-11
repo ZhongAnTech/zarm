@@ -8,10 +8,10 @@
 
 <div align="center">
 
-  [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=dev)](https://www.travis-ci.org/ZhongAnTech/zarm)
-  [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/dev.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=dev)
-  ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@beta/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
-  ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@beta/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
+  [![Build Status](https://www.travis-ci.org/ZhongAnTech/zarm.svg?branch=master)](https://www.travis-ci.org/ZhongAnTech/zarm)
+  [![Coverage Status](https://img.shields.io/coveralls/ZhongAnTech/zarm/master.svg)](https://coveralls.io/github/ZhongAnTech/zarm?branch=master)
+  ![JS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.js?compression=gzip&label=gzip%20size:%20JS)
+  ![CSS gzip size](https://img.badgesize.io/https://unpkg.com/zarm@latest/dist/zarm.min.css?compression=gzip&label=gzip%20size:%20CSS)
   [![NPM downloads](https://img.shields.io/npm/dm/zarm.svg)](https://npmjs.org/package/zarm) 
   [![dependencies Status](https://david-dm.org/ZhongAnTech/zarm/status.svg)](https://david-dm.org/ZhongAnTech/zarm)
   [![peerDependencies Status](https://david-dm.org/ZhongAnTech/zarm/peer-status.svg)](https://david-dm.org/ZhongAnTech/zarm?type=peer)
@@ -27,12 +27,11 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ## 版本
 
-- 稳定版：[![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
-- 开发版：[![npm package](https://img.shields.io/npm/v/zarm/beta.svg)](https://www.npmjs.org/package/zarm)
+- [![npm package](https://img.shields.io/npm/v/zarm/latest.svg)](https://www.npmjs.org/package/zarm)
 
 ## 浏览器支持
 
-- ios
+- iOS
 - Android 4.0+
 
 ## 安装
@@ -41,17 +40,17 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ```bash
 # npm
-npm install zarm@beta --save
+npm install zarm --save
 
 # yarn
-yarn add zarm@beta
+yarn add zarm
 ```
 
 ### 或者通过 link 和 script 标签分别引入样式文件和js脚本文件（不推荐）
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/zarm@beta/dist/zarm.min.css">
-<script type="text/javascript" src="https://unpkg.com/zarm@beta/dist/zarm.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/zarm/dist/zarm.min.css">
+<script type="text/javascript" src="https://unpkg.com/zarm/dist/zarm.min.js"></script>
 ```
 
 ## 使用
@@ -101,13 +100,13 @@ import 'zarm/lib/button/style/css'; // 加载css
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 
-变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/dev/components/style/themes/default.scss)
+变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss)
 
 ## 社区
 
 | issue | gitter | 微信群 |
 | :--- | :--- | :--- |
-| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://user-images.githubusercontent.com/9812721/69521400-d3708100-0f99-11ea-9669-2cea28ec66f7.png" width="60" /> |
+| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://cdn-health.zhongan.com/zarm/qr.png" width="60" /> |
 
 ## 开源协议
 

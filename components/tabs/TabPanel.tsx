@@ -1,10 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, ReactNode } from 'react';
 import classnames from 'classnames';
 
 export interface TabPanelProps {
   prefixCls?: string;
   className?: string;
   selected?: boolean;
+  title?: ReactNode;
+  disabled?: boolean;
 }
 
 export default class TabPanel extends PureComponent<TabPanelProps, any> {

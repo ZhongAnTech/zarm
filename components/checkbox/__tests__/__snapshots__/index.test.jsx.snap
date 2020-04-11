@@ -17,6 +17,7 @@ exports[`Checkbox defaultChecked 1`] = `
     foo
   </span>
   <input
+    checked=""
     class="za-checkbox__input"
     type="checkbox"
   />

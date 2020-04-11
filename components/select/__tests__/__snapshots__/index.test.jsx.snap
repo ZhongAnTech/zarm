@@ -1270,7 +1270,7 @@ exports[`Select render defaultValue correctly  1`] = `
       valueMember="value"
     >
       <div
-        className="za-select za-select--placeholder za-select--arrow"
+        className="za-select za-select--arrow"
         onClick={[Function]}
       >
         <div
@@ -1279,7 +1279,7 @@ exports[`Select render defaultValue correctly  1`] = `
           <div
             className="za-select__value"
           >
-            请选择
+            选项二
           </div>
         </div>
         <ForwardRef(forwardRef)

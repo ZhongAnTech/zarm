@@ -10,10 +10,11 @@ class Demo extends React.Component {
     visible: false,
     direction: 'top',
     trigger: 'click',
+    animationType: 'zoomFade',
   }
 
   render() {
-    const { visible, direction, trigger } = this.state;
+    const { visible, direction, trigger, animationType } = this.state;
 
     return (
       <>
@@ -24,6 +25,7 @@ class Demo extends React.Component {
             visible={visible}
             trigger={trigger}
             direction={direction}
+            animationType={animationType}
             className="custom-content"
           >
             <Button theme="primary" size="xs" onClick={() => trigger === 'manual' && this.setState({ visible: !visible })}>
@@ -55,15 +57,42 @@ class Demo extends React.Component {
             }}
           />
         </Cell>
+        <Cell title="动画效果">
+          <Select
+            value={animationType}
+            dataSource={[
+              { value: 'zoomFade', label: '缩放渐显(zoomFade)' },
+              { value: 'menuSlide', label: '菜单拉伸(menuSlide)' },
+              { value: 'fade', label: '淡出淡入效果(fade)' },
+              { value: 'zoom', label: '缩放效果(zoom)' },
+              { value: 'rotate', label: '旋转效果(rotate)' },
+              { value: 'door', label: '开关门效果(door)' },
+              { value: 'flip', label: '翻转效果(flip)' },
+              { value: 'moveUp', label: '移出移入效果(moveUp)' },
+              { value: 'moveDown', label: '移出移入效果(moveDown)' },
+              { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
+              { value: 'moveRight', label: '移出移入效果(moveRight)' },
+              { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
+              { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
+              { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
+              { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
+            ]}
+            onOk={(selected) => {
+              this.setState({
+                animationType: selected[0].value,
+              });
+            }}
+          />
+        </Cell>
         <Cell title="触发方式">
           <Select
             value={trigger}
             dataSource={[
-              { value: 'click', label: 'click（点击状态触发）' },
-              { value: 'hover', label: 'hover（hover状态触发）' },
-              { value: 'focus', label: 'focus（聚焦状态触发）' },
-              { value: 'manual', label: 'manual（受控触发）' },
-              { value: 'contextMenu', label: 'contextMenu（右键触发）' },
+              { value: 'click', label: '点击状态触发(click)' },
+              { value: 'focus', label: '聚焦状态触发(focus)' },
+              { value: 'hover', label: '鼠标经过触发(hover)' },
+              { value: 'manual', label: '受控触发(manual)' },
+              { value: 'contextMenu', label: '右键触发(contextMenu)' },
             ]}
             onOk={(selected) => {
               this.setState({
@@ -87,11 +116,11 @@ import { Cell, Button, Popper, Radio, Message, Icon } from 'zarm';
 
 class Demo extends React.Component {
   state = {
-    arrow: '0'
+    arrowPointAtCenter: false,
   }
 
   render() {
-    const { arrow } = this.state
+    const { arrowPointAtCenter } = this.state;
 
     return (
       <>
@@ -99,13 +128,13 @@ class Demo extends React.Component {
           <Radio.Group
             compact
             type="button"
-            value={this.state.arrow}
-            onChange={value => {
-              this.setState({ arrow: value });
+            value={arrowPointAtCenter}
+            onChange={(value) => {
+              this.setState({ arrowPointAtCenter: value });
             }}
           >
-            <Radio value="0">跟随方向</Radio>
-            <Radio value="1">元素中心</Radio>
+            <Radio value={false}>跟随方向</Radio>
+            <Radio value={true}>元素中心</Radio>
           </Radio.Group>
         }>
           箭头位置
@@ -113,58 +142,58 @@ class Demo extends React.Component {
         <Cell className="direction-demo">
           <div>
             <div style={{ marginLeft: 60 }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
-                <Button block size="xs">TL</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="topLeft" content="topLeft text">
+                <Button size="xs">TL</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="top" content="top text">
-                <Button block size="xs">Top</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="top" content="top text">
+                <Button size="xs">Top</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="topRight" content="topRight text">
-                <Button block size="xs">TR</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="topRight" content="topRight text">
+                <Button size="xs">TR</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, float: 'left', clear: 'both' }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftTop" content="leftTop text">
-                <Button block size="xs">LT</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="leftTop" content="leftTop text">
+                <Button size="xs">LT</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="left" content="left text">
-                <Button block size="xs">Left</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="left" content="left text">
+                <Button size="xs">Left</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="leftBottom" content="leftBottom text">
-                <Button block size="xs">LB</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="leftBottom" content="leftBottom text">
+                <Button size="xs">LB</Button>
               </Popper>
             </div>
 
             <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightTop" content="rightTop text">
-                <Button block size="xs">RT</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="rightTop" content="rightTop text">
+                <Button size="xs">RT</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="right" content="right text">
-                <Button block size="xs">Right</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="right" content="right text">
+                <Button size="xs">Right</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="rightBottom" content="rightBottom text">
-                <Button block size="xs">RB</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="rightBottom" content="rightBottom text">
+                <Button size="xs">RB</Button>
               </Popper>
             </div>
 
             <div style={{ marginLeft: 60, clear: 'both' }}>
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomLeft" content="bottomLeft text">
-                <Button block size="xs">BL</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" direction="bottomLeft" content="bottomLeft text">
+                <Button size="xs">BL</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottom" content="bottom text">
-                <Button block size="xs">Bottom</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="bottom" content="bottom text">
+                <Button size="xs">Bottom</Button>
               </Popper>
 
-              <Popper arrowPointAtCenter={arrow === '1'} className="custom-arrow-content" hasArrow direction="bottomRight" content="bottomRight text">
-                <Button block size="xs">BR</Button>
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="bottomRight" content="bottomRight text">
+                <Button size="xs">BR</Button>
               </Popper>
             </div>
 
@@ -188,12 +217,12 @@ ReactDOM.render(<Demo />, mountNode);
 | hasArrow | boolean | false | 是否显示箭头节点<font color="red">（注：需要自行定义箭头样式）</font> |
 | destroy | boolean | true | 气泡层关闭后是否移除节点 |
 | getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popper 挂载的 HTML 节点 |
-| animationType | string | 'zoom-fade' | 可选值 `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
+| animationType | string | 'zoomFade' | 可选值 `zoomFade`, `menuSlide`, `fade`, `door`, `flip`, `rotate`, `zoom`,`moveUp`, `moveDown`, `moveLeft`, `moveRight`,`slideUp`, `slideDown`, `slideLeft`, `slideRight` |
 | animationDuration | number | 200 | 动画执行时间（单位：毫秒） |
 | arrowPointAtCenter | boolean | false | 箭头是否指向目标元素中心 |
 | mouseEnterDelay | number | 100 | 鼠标移入显示气泡层的延时时间（单位：毫秒） |
 | mouseLeaveDelay | number | 100 | 鼠标移出隐藏气泡层的延时时间（单位：毫秒） |
 | direction | string | 'top' | 显示方向，可选值 `topLeft`、`top`、`topRight`、`rightTop`、`right`、`rightBottom`、`bottomLeft`、`bottom`、`bottomRight`、`leftTop`、`left`、`leftBottom` |
-| trigger | string | 移动端为'click' <br /> 桌面端为'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` hover状态触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发 |
+| trigger | string | 移动端为'click' <br /> 桌面端为'hover' | 触发方式，可选值为：`click` 点击触发状态、`hover` 鼠标经过触发、`focus` 聚焦状态触发、`manual` 受控触发、`contextMenu` 右键触发 |
 | visible | boolean | false | 是否显示，`trigger='manual'` 时有效 |
 | onVisibleChange | (visible?: boolean) => void | noop | 显示/隐藏 气泡层触发的事件 |

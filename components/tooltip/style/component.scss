@@ -1,58 +1,50 @@
 @import 'mixins';
 
 @include b(tooltip) {
-  display: inline-block;
+  padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
+  background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+  border-radius: r(4);
+  font-size: var(--tooltip-font-size);
+  color: var(--tooltip-color);
+  z-index: var(--zindex-tooltip);
 
-  @include e(inner) {
-    display: block;
+  &[x-placement^=right] {
+    margin-left: r(10);
+
+    @include arrow () {
+      left: r(-4);
+      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
+      border-right-color: rgba(0, 0, 0, var(--opacity-tooltip));
+    }
   }
 
-  @include e(wrapper) {
-    padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
-    background-color: rgba(0, 0, 0, var(--opacity-tooltip));
-    border-radius: r(4);
-    font-size: var(--tooltip-font-size);
-    color: var(--tooltip-color);
-    z-index: var(--zindex-tooltip);
+  &[x-placement^=top] {
+    margin-bottom: r(10);
 
-    &[x-placement^=right] {
-      margin-left: r(10);
-
-      @include arrow () {
-        left: r(-4);
-        border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-        border-right-color: rgba(0, 0, 0, var(--opacity-tooltip));
-      }
+    @include arrow () {
+      bottom: r(-4);
+      border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
+      border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
     }
+  }
 
-    &[x-placement^=top] {
-      margin-bottom: r(10);
+  &[x-placement^=bottom] {
+    margin-top: r(10);
 
-      @include arrow () {
-        bottom: r(-4);
-        border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-        border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
-      }
+    @include arrow () {
+      top: r(-4);
+      border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
+      border-bottom-color: rgba(0, 0, 0, var(--opacity-tooltip));
     }
+  }
 
-    &[x-placement^=bottom] {
-      margin-top: r(10);
+  &[x-placement^=left] {
+    margin-right: r(10);
 
-      @include arrow () {
-        top: r(-4);
-        border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-        border-bottom-color: rgba(0, 0, 0, var(--opacity-tooltip));
-      }
-    }
-
-    &[x-placement^=left] {
-      margin-right: r(10);
-
-      @include arrow () {
-        right: r(-4);
-        border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-        border-left-color: rgba(0, 0, 0, var(--opacity-tooltip));
-      }
+    @include arrow () {
+      right: r(-4);
+      border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
+      border-left-color: rgba(0, 0, 0, var(--opacity-tooltip));
     }
   }
 

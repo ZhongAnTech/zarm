@@ -85,7 +85,7 @@ export default class Radio extends PureComponent<RadioProps, RadioStates> {
         className={`${prefixCls}__input`}
         value={value}
         disabled={disabled}
-        checked={checked}
+        checked={checkedState}
         onChange={this.onValueChange}
       />
     );
