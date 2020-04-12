@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import classnames from 'classnames';
 import PropsType from './PropsType';
 import Popup from '../popup';
 import ActivityIndicator from '../activity-indicator';
@@ -46,6 +45,9 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
       Loading.zarmLoading.classList.add('loading-container');
+      if (content && content.className) {
+        Loading.zarmLoading.classList.add(content.className);
+      }
       Loading.loadingContainer = getParent(content);
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
@@ -138,7 +140,6 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   render() {
     const { prefixCls, content, stayTime, className, ...others } = this.props;
     const { visible } = this.state;
-    const cls = classnames(prefixCls, className);
     return (
       <Popup
         direction="center"
@@ -148,7 +149,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
         visible={visible}
         afterClose={this.afterClose}
       >
-        <div className={cls}>
+        <div className={prefixCls}>
           <div className={`${prefixCls}__container`}>{content || <ActivityIndicator type="spinner" size="lg" />}</div>
         </div>
       </Popup>

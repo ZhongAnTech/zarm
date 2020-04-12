@@ -1,6 +1,5 @@
 import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import classnames from 'classnames';
 import PropsType from './PropsType';
 import Popup from '../popup';
 
@@ -23,6 +22,8 @@ const getParent = (props) => {
   return document.body;
 };
 
+const contentIsToastProps = (content): content is ToastProps => typeof content === 'object' && 'content' in content;
+
 export interface ToastProps extends PropsType {
   prefixCls?: string;
   className?: string;
@@ -42,21 +43,23 @@ export default class Toast extends Component<ToastProps, any> {
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
       Toast.zarmToast.classList.add('toast-container');
+      if (contentIsToastProps(content) && content.className) {
+        Toast.zarmToast.classList.add(content.className);
+      }
       Toast.toastContainer = getParent(content);
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
-    Promise.resolve().then(() => {
-      if (Toast.zarmToast) {
-        const contentIsReactNode = React.isValidElement(content) || (content && typeof content !== 'object') || !content;
-        const props = contentIsReactNode
-          ? { ...Toast.defaultProps, ...{ visible: true, getContainer: Toast.zarmToast, content } }
-          : { ...Toast.defaultProps, ...content as ToastProps, ...{ visible: true, getContainer: Toast.zarmToast } };
-        ReactDOM.render(
-          <Toast {...props} />,
-          Toast.zarmToast,
-        );
-      }
-    });
+    // Promise.resolve().then(() => {
+    if (Toast.zarmToast) {
+      const props = contentIsToastProps(content)
+        ? { ...Toast.defaultProps, ...content, ...{ visible: true, getContainer: Toast.zarmToast } }
+        : { ...Toast.defaultProps, ...{ visible: true, getContainer: Toast.zarmToast, content } };
+      ReactDOM.render(
+        <Toast {...props} />,
+        Toast.zarmToast,
+      );
+    }
+    // });
   };
 
   static hide = () => {
@@ -153,8 +156,6 @@ export default class Toast extends Component<ToastProps, any> {
 
     const { visible } = this.state;
 
-    const cls = classnames(prefixCls, className);
-
     return (
       <Popup
         direction="center"
@@ -164,7 +165,7 @@ export default class Toast extends Component<ToastProps, any> {
         visible={visible}
         afterClose={this.afterClose}
       >
-        <div className={cls}>
+        <div className={prefixCls}>
           <div className={`${prefixCls}__container`}>{content}</div>
         </div>
       </Popup>

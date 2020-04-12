@@ -94,7 +94,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
   render() {
     const { prefixCls, placeholder, className, disabled, displayRender, locale, value, hasArrow, ...others } = this.props;
     const { visible, selectValue = [] } = this.state;
-    const cls = classnames(prefixCls, className, {
+    const cls = classnames(prefixCls, {
       [`${prefixCls}--placeholder`]: !selectValue.length,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--arrow`]: hasArrow,
@@ -106,6 +106,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
         </div>
         <Picker
           {...others}
+          className={className}
           visible={visible}
           value={value}
           onOk={this.onOk}
