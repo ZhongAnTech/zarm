@@ -49,15 +49,13 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       Loading.loadingContainer = getParent(content);
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
-    Promise.resolve().then(() => {
-      if (Loading.zarmLoading) {
-        const props = { ...Loading.defaultProps, ...content as LoadingProps, ...{ visible: true, getContainer: Loading.zarmLoading } };
-        ReactDOM.render(
-          <Loading {...props} />,
-          Loading.zarmLoading,
-        );
-      }
-    });
+    if (Loading.zarmLoading) {
+      const props = { ...Loading.defaultProps, ...content as LoadingProps, ...{ visible: true, getContainer: Loading.zarmLoading } };
+      ReactDOM.render(
+        <Loading {...props} />,
+        Loading.zarmLoading,
+      );
+    }
   };
 
   static hide = () => {
