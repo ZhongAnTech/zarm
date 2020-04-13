@@ -7,7 +7,7 @@
 
 - Break Change
   - [Checkbox, Radio] 调整禁用状态下的样式，变更为浅灰色背景框，深灰色勾选。[ed04500](https://github.com/ZhongAnTech/zarm/commit/ed04500a1199394e979fc86663932f0281ce2662)
-  - [NoticeBar] 删除`scrollable`属性，内容宽度超过屏幕宽度会默认支持自动滚动，否则为固定展示。[#420](https://github.com/ZhongAnTech/zarm/pull/420)
+  - [NoticeBar] 删除`scrollable`属性，内容宽度超过NoticeBar的宽度会默认支持自动滚动，否则为固定展示。[#420](https://github.com/ZhongAnTech/zarm/pull/420)
 
 - Bug Fix
   - [Input] 修复多行文本修改 `readonly` 属性导致组件崩溃的bug。[#407](https://github.com/ZhongAnTech/zarm/pull/407)
