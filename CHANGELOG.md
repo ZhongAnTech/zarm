@@ -2,16 +2,24 @@
 
 ## v2.1.0
 - Feature
-  - [Popper] 优化气泡层动画，增加菜单拉伸 `menuSlide` 动画。[8a06a29](https://github.com/ZhongAnTech/zarm/commit/8a06a296f91a496d79894e4dd6554b8e9b6a5b64)
+  - [Popper] 优化气泡层动画，增加菜单拉伸 `menuSlide` 动画。[#400](https://github.com/ZhongAnTech/zarm/pull/400)
+  - [Select] 支持数字和布尔值类型的值。[#418](https://github.com/ZhongAnTech/zarm/pull/418)
 
 - Break Change
   - [Checkbox, Radio] 调整禁用状态下的样式，变更为浅灰色背景框，深灰色勾选。[ed04500](https://github.com/ZhongAnTech/zarm/commit/ed04500a1199394e979fc86663932f0281ce2662)
+  - [NoticeBar] 删除`scrollable`属性，内容宽度超过NoticeBar的宽度会默认支持自动滚动，否则为固定展示。[#420](https://github.com/ZhongAnTech/zarm/pull/420)
 
 - Bug Fix
-  - [Input] 修复多行文本修改`readonly`属性导致组件崩溃的bug。#404
-  - [SearchBar] 修复切换英文语言后，搜索框的取消按钮不能完全隐藏的bug。#405
-  - [Input] 修复多行文本直接通过`value`属性修改值时, 字数不会重新计算的bug。#406
-  - [Input] 修复禁用状态下，手机端无法显示值的bug。#410
+  - [Input] 修复多行文本修改 `readonly` 属性导致组件崩溃的bug。[#407](https://github.com/ZhongAnTech/zarm/pull/407)
+  - [Input] 修复多行文本直接通过 `value` 属性修改值时, 字数不会重新计算的bug。[510deb6](https://github.com/ZhongAnTech/zarm/commit/510deb68ed1d4955f86cec254474f08c061ae59a)
+  - [Input] 修复禁用状态下，手机端无法显示值的bug。[593b974](https://github.com/ZhongAnTech/zarm/commit/593b974b5665acda02685756def9d43b972f8602)
+  - [Input] 修复数字、金额输入框，值为number类型时无法删除的bug。[#428](https://github.com/ZhongAnTech/zarm/pull/428)
+  - [Pull] 修复获取滚动容器节点的计算在某些场景下不正确。[#421](https://github.com/ZhongAnTech/zarm/pull/421)
+  - [SearchBar] 修复切换英文语言后，搜索框的取消按钮不能完全隐藏的bug。[1de1596](https://github.com/ZhongAnTech/zarm/commit/1de159696a5fbb68aa496b3c4ad923740eb7c337)
+  - [Tabs] 修复 Tabs.Panel 的类型定义错误。[#415](https://github.com/ZhongAnTech/zarm/pull/415)[@vdfor]
+
+- Documentation Updated
+  - [#399](https://github.com/ZhongAnTech/zarm/pull/399)[@xueqingxiao]
 
 
 ## v2.0.0

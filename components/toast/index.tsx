@@ -49,7 +49,6 @@ export default class Toast extends Component<ToastProps, any> {
       Toast.toastContainer = getParent(content);
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
-    // Promise.resolve().then(() => {
     if (Toast.zarmToast) {
       const props = contentIsToastProps(content)
         ? { ...Toast.defaultProps, ...content, ...{ visible: true, getContainer: Toast.zarmToast } }
@@ -59,7 +58,6 @@ export default class Toast extends Component<ToastProps, any> {
         Toast.zarmToast,
       );
     }
-    // });
   };
 
   static hide = () => {
