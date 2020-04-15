@@ -61,8 +61,11 @@ export default class Toast extends Component<ToastProps, any> {
   };
 
   static hide = () => {
-    if (Toast.hideHelper) {
-      Toast.hideHelper();
+    if (Toast.zarmToast) {
+      ReactDOM.render(
+        <Toast visible={false} />,
+        Toast.zarmToast,
+      );
     }
   };
 

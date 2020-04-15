@@ -61,8 +61,11 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   };
 
   static hide = () => {
-    if (Loading.hideHelper) {
-      Loading.hideHelper();
+    if (Loading.zarmLoading) {
+      ReactDOM.render(
+        <Loading visible={false} />,
+        Loading.zarmLoading,
+      );
     }
   };
 
