@@ -263,10 +263,10 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   createContainer = () => {
-    const { className = '' } = this.props;
+    const { className = '', prefixCls } = this.props;
     if (!this._container) {
       this._container = document.createElement('div');
-      this._container.className += `popup-container ${className}`;
+      this._container.className += `${prefixCls}-container ${className}`;
       this.parent = this.getParent();
       this.parent.appendChild(this._container);
     }
