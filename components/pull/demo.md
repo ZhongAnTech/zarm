@@ -117,7 +117,7 @@ class Demo extends React.Component {
     return (
       <>
         <Message theme="warning" icon={<Icon type="warning-round" />}>
-          当前使用的是 `{useBodyScroll ? 'Body' : 'Div Element' }` 作为滚动容器。
+          当前使用的是 `{useBodyScroll ? 'Body' : 'Div' }` 作为滚动容器。
           <Button theme="primary" size="xs" onClick={this.toggleScrollContainer}>点击切换</Button>
         </Message>
         <Pull
