@@ -47,6 +47,9 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   componentDidMount() {
     this.addScrollEvent();
+    // Events.on(document.body, 'touchmove', (event) => {
+    //   event.preventDefault();
+    // }, { passive: false });
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -108,6 +111,21 @@ export default class Pull extends PureComponent<PullProps, any> {
     this.wrap = this.getScrollContainer();
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
     Events.on(scroller, 'scroll', this.throttledScroll);
+    let startY = 0;
+    Events.on(this.wrap, 'touchstart', (event) => {
+      const touch = event.touches[0];
+      startY = touch.pageY;
+    });
+    Events.on(this.wrap, 'touchmove', (event) => {
+      const touch = event.touches[0];
+      const currentY = touch.pageY;
+      if (currentY - startY > 0 && event.cancelable && this.wrap.scrollTop === 0) {
+        event.preventDefault();
+      }
+    });
+    Events.on(document.body, 'touchEnd', () => {
+      startY = 0;
+    });
   };
 
   onScroll = () => {
