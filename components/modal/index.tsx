@@ -7,8 +7,9 @@ import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
 
 
 function modalType(props, type) {
-  const div = document.createElement('div');
-  document.body.appendChild(div);
+  const container = document.createElement('div');
+  container.classList.add(`za-${type}-container`);
+  document.body.appendChild(container);
 
   let resolveFn = (result: boolean) => result;
   const { onCancel, onOk } = props;
@@ -62,8 +63,8 @@ function modalType(props, type) {
   }
 
   function _afterClose() {
-    if (div.parentNode) {
-      div.parentNode.removeChild(div);
+    if (container.parentNode) {
+      container.parentNode.removeChild(container);
     }
   }
 
@@ -75,8 +76,8 @@ function modalType(props, type) {
         _props = { ...props, locale: runTimeLocale.Alert };
       }
       ReactDOM.render(
-        <Alert {..._props} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
-        div,
+        <Alert {..._props} getContainer={container} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
+        container,
       );
     } else {
       let _props: any = props;
@@ -85,7 +86,7 @@ function modalType(props, type) {
       }
       ReactDOM.render(
         <Confirm {..._props} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
-        div,
+        container,
       );
     }
   }
