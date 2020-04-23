@@ -2,7 +2,7 @@
 
 ## v2.1.1
 - Feature
-  - [Cell] 优化设置了 `help` 属性后，提示信息区域的样式显示。
+  - [Cell] 优化设置了 `help` 属性后，提示信息区域的样式显示。[#439](https://github.com/ZhongAnTech/zarm/pull/439)
 
 - Bug Fix
   - [Loading, Toast] 修复异步执行无法关闭的bug。[#429](https://github.com/ZhongAnTech/zarm/pull/429)
