@@ -19,6 +19,8 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   private throttledScroll;
 
+  private wrapTouchstartY;
+
   static defaultProps: PullProps = {
     prefixCls: 'za-pull',
     refresh: {
@@ -47,6 +49,9 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   componentDidMount() {
     this.addScrollEvent();
+    Events.on(this.wrap, 'touchstart', this.wrapTouchstart);
+    Events.on(this.wrap, 'touchmove', this.wrapTouchmove);
+    Events.on(this.wrap, 'touchend', this.wrapTouchEnd);
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -85,7 +90,27 @@ export default class Pull extends PureComponent<PullProps, any> {
   componentWillUnmount() {
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
     Events.off(scroller, 'scroll', this.throttledScroll);
+    Events.off(this.wrap, 'touchstart', this.wrapTouchstart);
+    Events.off(this.wrap, 'touchmove', this.wrapTouchmove);
+    Events.off(this.wrap, 'touchend', this.wrapTouchEnd);
   }
+
+  wrapTouchstart = (event) => {
+    const touch = event.touches[0];
+    this.wrapTouchstartY = touch.pageY;
+  };
+
+  wrapTouchmove = (event) => {
+    const touch = event.touches[0];
+    const currentY = touch.pageY;
+    if (currentY - this.wrapTouchstartY > 0 && event.cancelable && this.wrap.scrollTop === 0) {
+      event.preventDefault();
+    }
+  };
+
+  wrapTouchEnd = () => {
+    this.wrapTouchstartY = 0;
+  };
 
   getScrollContainer = () => {
     return ((node) => {
