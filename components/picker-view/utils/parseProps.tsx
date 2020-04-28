@@ -1,11 +1,16 @@
 import { isArray, isCascader } from '../../utils/validate';
 
+const isValueValid = (value) => {
+  const valueArray = [].concat(value);
+  return valueArray.some((item) => !!item || item === 0 || item === false);
+};
+
 const getValues = (props, defaultValue?: any) => {
-  if ('value' in props && props.value && props.value.length > 0) {
+  if ('value' in props && isValueValid(props.value)) {
     return [].concat(props.value);
   }
 
-  if ('defaultValue' in props && props.defaultValue && props.defaultValue.length > 0) {
+  if ('defaultValue' in props && isValueValid(props.defaultValue)) {
     return [].concat(props.defaultValue);
   }
 
@@ -32,7 +37,7 @@ const cascaderState = (props) => {
     newDateSource[level] = dataSource.map((item, index) => {
       const { children, ...others } = item;
       if (
-        (newValues[level] && item[valueMember!] === newValues[level]) || (!newValues[level] && index === 0)
+        (isValueValid(newValues[level]) && item[valueMember!] === newValues[level]) || (!isValueValid(newValues[level]) && index === 0)
       ) {
         newValues[level] = item[valueMember!];
         newObjValues[level] = others;
@@ -66,4 +71,5 @@ export default {
       ? cascaderState(props)
       : normalState(props);
   },
+  isValueValid,
 };

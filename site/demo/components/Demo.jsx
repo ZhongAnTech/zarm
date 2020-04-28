@@ -39,6 +39,7 @@ export default class Demo extends React.Component {
         ? require('zarm/locale-provider/locale/en_US')
         : require('zarm/locale-provider/locale/zh_CN');
       value = value
+        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
         .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
           ReactDOM.render(

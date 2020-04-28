@@ -95,6 +95,10 @@
 
   @include e(help) {
     padding: 0 r(15) r(10) r(15);
+
+    &:empty {
+      display: none;
+    }
   }
 
   @include m(primary) {

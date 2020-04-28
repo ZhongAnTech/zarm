@@ -6,17 +6,17 @@
 
 ```bash
 # npm
-npm install zarm@beta --save
+$ npm install zarm --save
 
 # yarn
-yarn add zarm@beta
+$ yarn add zarm
 ```
 
 ### 或者通过 link 和 script 标签分别引入样式文件和js脚本文件（不推荐）
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/zarm@beta/dist/zarm.min.css">
-<script type="text/javascript" src="https://unpkg.com/zarm@beta/dist/zarm.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/zarm/dist/zarm.min.css">
+<script type="text/javascript" src="https://unpkg.com/zarm/dist/zarm.min.js"></script>
 ```
 
 ## 使用

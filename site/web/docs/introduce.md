@@ -16,12 +16,11 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 ## 版本
 
-- 稳定版：[![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
-- 开发版：[![npm package](https://img.shields.io/npm/v/zarm/beta.svg)](https://www.npmjs.org/package/zarm)
+- [![npm package](https://img.shields.io/npm/v/zarm.svg)](https://www.npmjs.org/package/zarm)
 
 ## 浏览器支持
 
-- ios
+- IOS
 - Android 4.0+
 
 ## 谁在使用
@@ -35,7 +34,7 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 
 | issue | gitter | 微信群 |
 | :--- | :--- | :--- |
-| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://user-images.githubusercontent.com/9812721/69521400-d3708100-0f99-11ea-9669-2cea28ec66f7.png" width="60" /> |
+| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://cdn-health.zhongan.com/zarm/qr.jpeg" width="60" /> |
 
 ## 开源协议
 
