@@ -259,6 +259,12 @@ module.exports = {
         module: () => import('@/components/drag/demo.md'),
         style: false,
       },
+      {
+        key: 'back-to-top',
+        name: '返回顶部',
+        module: () => import('@/components/back-to-top/demo.md'),
+        style: false,
+      },
     ],
   },
   design: [

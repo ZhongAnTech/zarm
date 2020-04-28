@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge renders correctly 1`] = `
+<BackToTop
+  prefixCls="za-back-to-top"
+  scrollContainer={[Window]}
+  speed={100}
+  visibleDistance={400}
+>
+  <Portal
+    containerInfo={
+      <div
+        class="za-back-to-top-container"
+      >
+        <div
+          class="za-back-to-top"
+          style="display: none;"
+        >
+          Up
+        </div>
+      </div>
+    }
+  >
+    <div
+      className="za-back-to-top"
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      Up
+    </div>
+  </Portal>
+</BackToTop>
+`;
