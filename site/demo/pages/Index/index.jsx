@@ -4,9 +4,29 @@ import { components } from '@site/site.config';
 import ChangeCase from 'change-case';
 import Container from '@site/demo/components/Container';
 import Footer from '@site/demo/components/Footer';
+import Events from '@site/utils/events';
 import './style.scss';
 
 class Page extends PureComponent {
+  componentDidMount() {
+    this.loadPageScroll();
+    Events.on(window, 'scroll', this.setPageScroll);
+  }
+
+  componentWillUnmount() {
+    Events.off(window, 'scroll', this.setPageScroll);
+  }
+
+  setPageScroll = () => {
+    window.sessionStorage['index-page'] = window.scrollY;
+  };
+
+  loadPageScroll = () => {
+    const scrollY = window.sessionStorage['index-page'];
+    if (!scrollY) return;
+    window.scrollTo(0, scrollY);
+  };
+
   getMenus = (groupName, key) => {
     const { history } = this.props;
     const list = components[key] || [];
