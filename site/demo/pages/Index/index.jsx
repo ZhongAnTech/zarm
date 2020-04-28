@@ -18,11 +18,11 @@ class Page extends PureComponent {
   }
 
   setPageScroll = () => {
-    window.sessionStorage['index-page'] = window.scrollY;
+    window.sessionStorage.indexPageScroll = window.scrollY;
   };
 
   loadPageScroll = () => {
-    const scrollY = window.sessionStorage['index-page'];
+    const scrollY = window.sessionStorage.indexPageScroll;
     if (!scrollY) return;
     window.scrollTo(0, scrollY);
   };
