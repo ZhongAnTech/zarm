@@ -1,5 +1,16 @@
 # 版本更新日志 
 
+## v2.1.1
+- Feature
+  - [Cell] 优化设置了 `help` 属性后，提示信息区域的样式显示。[#439](https://github.com/ZhongAnTech/zarm/pull/439)
+
+- Bug Fix
+  - [Loading, Toast] 修复异步执行无法关闭的bug。[#429](https://github.com/ZhongAnTech/zarm/pull/429)
+  - [Loading, Toast] 修复切换路由后不会消失的bug。[#436](https://github.com/ZhongAnTech/zarm/pull/436)
+  - [Popper] 修复非浏览器环境下使用报错问题。[#435](https://github.com/ZhongAnTech/zarm/pull/435)
+  - [Pull] 修复vivo手机中使用 `Div` 作为容器，下拉操作会把整个网页一起拖动的bug。[#444](https://github.com/ZhongAnTech/zarm/pull/444)
+
+
 ## v2.1.0
 - Feature
   - [Popper] 优化气泡层动画，增加菜单拉伸 `menuSlide` 动画。[#400](https://github.com/ZhongAnTech/zarm/pull/400)

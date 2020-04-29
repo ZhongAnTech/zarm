@@ -112,20 +112,6 @@ ReactDOM.render(
 
 
 
-## 高度自适应
-
-```jsx
-import { Input, Cell } from 'zarm';
-
-ReactDOM.render(
-  <Cell title="多行文本">
-    <Input autoHeight type="text" rows={3} placeholder="写点啥..." />
-  </Cell>
-, mountNode);
-```
-
-
-
 ## 无标签栏
 ```jsx
 import { Input, Cell } from 'zarm';
@@ -140,22 +126,67 @@ ReactDOM.render(
 
 
 
-## 显示输入字数
+## 高度自适应
+
 ```jsx
 import { Input, Cell } from 'zarm';
 
-ReactDOM.render(
-  <Cell>
-    <Input
-      autoHeight
-      showLength
-      type="text"
-      rows={4}
-      maxLength={200}
-      placeholder="摘要"
-    />
-  </Cell>
-, mountNode);
+class Demo extends React.Component {
+  state = {
+    inputValue: '',
+  };
+
+  handleInputChange = (value) => {
+    this.setState({
+      inputValue: value,
+    });
+  }
+
+  render() {
+    return (
+      <Cell title="多行文本">
+        <Input
+          autoHeight
+          type="text"
+          rows={3}
+          placeholder="请输入"
+          value={this.state.inputValue}
+          onChange={this.handleInputChange}
+        />
+      </Cell>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
+
+
+## 显示输入字数
+```jsx
+import { useState } from 'react';
+import { Input, Cell } from 'zarm';
+
+const Demo = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <Cell title="多行文本">
+      <Input
+        autoHeight
+        showLength
+        maxLength={200}
+        type="text"
+        rows={3}
+        placeholder="请输入"
+        value={value}
+        onChange={setValue}
+      />
+    </Cell>
+  );
+};
+
+ReactDOM.render(<Demo />, mountNode);
 ```
 
 
