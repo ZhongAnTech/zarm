@@ -54,9 +54,11 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
   }
 
   onScroll = () => {
-    this.setState({
-      visible: this.getScrollTop > this.props.visibleDistance!,
-    });
+    Throttle(() => {
+      this.setState({
+        visible: this.getScrollTop > this.props.visibleDistance!,
+      });
+    }, 250);
   };
 
   get getParentElement(): Element {
@@ -123,7 +125,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
   bindEvent() {
     if (this.getScrollContainer) {
       this.getParentElement instanceof HTMLElement && this.getParentElement.appendChild(this.container);
-      Events.on(this.getScrollContainer, 'scroll', Throttle(this.onScroll, 250));
+      Events.on(this.getScrollContainer, 'scroll', this.onScroll);
     }
   }
 
@@ -131,7 +133,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     clearInterval(this.timer);
     if (this.getScrollContainer) {
       this.getParentElement instanceof HTMLElement && this.getParentElement.removeChild(this.container);
-      Events.off(this.getScrollContainer, 'scroll', Throttle(this.onScroll, 250));
+      Events.off(this.getScrollContainer, 'scroll', this.onScroll);
     }
   }
 
