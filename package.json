@@ -123,7 +123,7 @@
     "react-native": "^0.60.5",
     "react-native-mock-render": "0.1.5",
     "react-navigation": "^4.0.3",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^5.1.2",
     "rimraf": "^2.6.3",
     "stylelint": "^13.0.0",
     "stylelint-config-za": "^0.1.0",
