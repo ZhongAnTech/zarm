@@ -45,23 +45,24 @@ export default class Toast extends Component<ToastProps, any> {
       Toast.toastContainer = getParent(content);
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
-    setTimeout(() => {
-      if (Toast.zarmToast) {
-        const contentIsReactNode = React.isValidElement(content) || (content && typeof content !== 'object') || !content;
-        const props = contentIsReactNode
-          ? { ...Toast.defaultProps, ...{ visible: true, getContainer: Toast.zarmToast, content } }
-          : { ...Toast.defaultProps, ...content as ToastProps, ...{ visible: true, getContainer: Toast.zarmToast } };
-        ReactDOM.render(
-          <Toast {...props} />,
-          Toast.zarmToast,
-        );
-      }
-    }, 0);
+    if (Toast.zarmToast) {
+      const contentIsReactNode = React.isValidElement(content) || (content && typeof content !== 'object') || !content;
+      const props = contentIsReactNode
+        ? { ...Toast.defaultProps, ...{ visible: true, getContainer: Toast.zarmToast, content } }
+        : { ...Toast.defaultProps, ...content as ToastProps, ...{ visible: true, getContainer: Toast.zarmToast } };
+      ReactDOM.render(
+        <Toast {...props} />,
+        Toast.zarmToast,
+      );
+    }
   };
 
   static hide = () => {
-    if (Toast.hideHelper) {
-      Toast.hideHelper();
+    if (Toast.zarmToast) {
+      ReactDOM.render(
+        <Toast visible={false} />,
+        Toast.zarmToast,
+      );
     }
   };
 

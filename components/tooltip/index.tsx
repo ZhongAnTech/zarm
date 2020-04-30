@@ -6,6 +6,7 @@ import { PopperPlacement, PopperTrigger } from '../popper/PropsType';
 export interface TooltipProps extends BaseTooltipProps {
   prefixCls?: string;
   className?: string;
+  children: React.ReactElement;
 }
 
 export type TooltipPlacement = PopperPlacement;

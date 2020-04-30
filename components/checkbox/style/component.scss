@@ -62,13 +62,22 @@
   @include m(indeterminate) {
     @include e(inner) {
       &:before {
-        transform: scale(1);
+        transform: rotate(0) scale(1);
         width: calc(var(--checkbox-size) / 2.33);
         height: calc(var(--checkbox-size) / 2.33);
         margin-top: 0;
         margin-left: 0;
         border: none;
         background-color: var(--theme-primary);
+      }
+    }
+
+    @include m(disabled) {
+      @include e(inner) {
+        &:before {
+          transform: rotate(0) scale(1);
+          background-color: var(--checkbox-disabled-color);
+        }
       }
     }
   }
@@ -97,13 +106,17 @@
     }
 
     @include e(inner) {
-      opacity: var(--opacity-disabled);
+      background-color: var(--background-disabled);
     }
 
     @include m(checked) {
       @include e(inner) {
         border-color: var(--checkbox-border-color);
-        background-color: var(--checkbox-border-color);
+        background-color: var(--background-disabled);
+
+        &:before {
+          border-color: var(--checkbox-disabled-color);
+        }
       }
     }
   }

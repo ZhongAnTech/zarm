@@ -87,7 +87,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
         className={`${prefixCls}__input`}
         value={value}
         disabled={disabled}
-        checked={checked}
+        checked={checkedState}
         onChange={this.onValueChange}
       />
     );

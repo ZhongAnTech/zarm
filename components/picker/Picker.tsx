@@ -9,7 +9,7 @@ import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 
 export interface PickerProps extends BasePickerProps {
   prefixCls?: string;
-  className?: any;
+  className?: string;
 }
 
 export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;

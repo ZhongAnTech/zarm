@@ -1,7 +1,7 @@
 [auth]
-token=e74468a1602f4996a0ae4af909ca26ea7276acce8e5b4a45b48346c0a36906ce
+token=eef8b336ec354c18bbc6f29c2de49a11dfa77f55602d46968f6d22da57b8bf0b
 
 [defaults]
 org=health
 project=zarm
-url=https://ets.zhongan.io
+url=https://ets.zhonganinfo.com

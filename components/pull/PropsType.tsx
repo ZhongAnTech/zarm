@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react';
 import { Locale } from '../locale-provider/PropsType';
 
 export enum REFRESH_STATE {
@@ -27,6 +28,7 @@ export interface PullAction {
 }
 
 export interface PropsType {
+  style?: CSSProperties;
   refresh?: PullAction;
   load?: PullAction;
   animationDuration?: number;

@@ -49,11 +49,11 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
 
 
   componentDidUpdate(prevProps) {
-    const { cancelText, placeholder, showCancel } = this.props;
+    const { cancelText, showCancel, locale } = this.props;
     // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
     if (cancelText !== prevProps.cancelText
-      || placeholder !== prevProps.placeholder
       || showCancel !== prevProps.showCancel
+      || locale.cancelText !== prevProps.locale.cancelText
     ) {
       this.calculatePositon(this.props);
     }
@@ -145,8 +145,8 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     const { value } = this.state;
 
     const ml = parseInt(window.getComputedStyle(this.cancelRef, '')['margin-left'].split('px')[0], 10);
+    this.cancelOuterWidth = Math.ceil(ml + this.cancelRef.getBoundingClientRect().width);
 
-    this.cancelOuterWidth = Math.ceil(ml + parseInt(this.cancelRef.getBoundingClientRect().width, 10));
     if (!showCancel) {
       this.cancelRef.style.cssText = `margin-right: -${this.cancelOuterWidth}px;`;
     } else {

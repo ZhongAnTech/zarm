@@ -5,11 +5,7 @@ import BaseSelectProps from './PropsType';
 import Picker from '../picker';
 import parseProps from '../picker-view/utils/parseProps';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
-import { isArray, isString } from '../utils/validate';
 
-const isValueValid = (value) => {
-  return (isString(value) && !!value.trim()) || (isArray(value) && value.length > 0 && value.some((item) => !!item));
-};
 export interface SelectProps extends BaseSelectProps {
   prefixCls?: string;
   className?: string;
@@ -39,7 +35,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     super(props);
     this.state = {
       visible: false,
-      selectValue: isValueValid(props.value) && parseProps.getSource(props).objValue,
+      selectValue: parseProps.isValueValid(props.defaultValue || props.value) && parseProps.getSource(props).objValue,
     };
   }
 
@@ -47,7 +43,7 @@ export default class Select extends PureComponent<SelectProps, SelectState> {
     if (!isEqual(removeFnFromProps(props, ['onOk', 'onCancel', 'onChange']), removeFnFromProps(state.prevProps, ['onOk', 'onCancel', 'onChange']))) {
       return {
         prevProps: props,
-        selectValue: isValueValid(props.value) && parseProps.getSource(props).objValue,
+        selectValue: parseProps.isValueValid(props.defaultValue || props.value) && parseProps.getSource(props).objValue,
       };
     }
 

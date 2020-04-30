@@ -4,7 +4,9 @@ exports[`NoticeBar closable 1`] = `
 <react-native-mock>
   <react-native-mock>
     <react-native-mock>
-      可关闭
+      <react-native-mock>
+        可关闭
+      </react-native-mock>
     </react-native-mock>
   </react-native-mock>
   <react-native-mock>
@@ -23,7 +25,9 @@ exports[`NoticeBar onClick 1`] = `
   <react-native-mock>
     <react-native-mock>
       <react-native-mock>
-        NoticeBar
+        <react-native-mock>
+          NoticeBar
+        </react-native-mock>
       </react-native-mock>
     </react-native-mock>
   </react-native-mock>
@@ -34,7 +38,9 @@ exports[`NoticeBar renders correctly 1`] = `
 <react-native-mock>
   <react-native-mock>
     <react-native-mock>
-      错误色
+      <react-native-mock>
+        错误色
+      </react-native-mock>
     </react-native-mock>
   </react-native-mock>
 </react-native-mock>
@@ -56,7 +62,9 @@ exports[`NoticeBar theme 1`] = `
 <react-native-mock>
   <react-native-mock>
     <react-native-mock>
-      This is a NoticeBar
+      <react-native-mock>
+        This is a NoticeBar
+      </react-native-mock>
     </react-native-mock>
   </react-native-mock>
 </react-native-mock>
