@@ -53,13 +53,9 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     this.unBindEvent();
   }
 
-  onScroll = () => {
-    Throttle(() => {
-      this.setState({
-        visible: this.getScrollTop > this.props.visibleDistance!,
-      });
-    }, 250);
-  };
+  onScroll = () => Throttle(this.setState({
+    visible: this.getScrollTop > this.props.visibleDistance!,
+  }), 250);;
 
   get getParentElement(): Element {
     if (typeof this.getScrollContainer === 'object' && this.getScrollContainer instanceof Window) {
