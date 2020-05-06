@@ -14,7 +14,7 @@ exports[`Badge renders correctly 1`] = `
       >
         <div
           class="za-back-to-top"
-          style="display: none;"
+          style="display: none; position: fixed; bottom: 50px; right: 50px;"
         >
           Up
         </div>
@@ -26,7 +26,10 @@ exports[`Badge renders correctly 1`] = `
       onClick={[Function]}
       style={
         Object {
+          "bottom": 50,
           "display": "none",
+          "position": "fixed",
+          "right": 50,
         }
       }
     >
