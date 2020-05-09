@@ -54,6 +54,7 @@ class Demo extends React.Component {
 
   componentWillUnmount() {
     this.mounted = false;
+    document.body.style.overflow = 'auto';
   }
 
   // 模拟请求数据
