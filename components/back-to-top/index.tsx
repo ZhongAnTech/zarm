@@ -1,11 +1,10 @@
 
-import React, { PureComponent, MouseEvent, CSSProperties } from 'react';
+import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
-import Events from '../utils/events';
-import Throttle from '../utils/throttle';
-
-type getContainerFunc = () => HTMLElement;
+import Scroller from '../scroller';
+import { ContainerType } from '../scroller/ScrollContainer';
+import canUseDOM from '../utils/canUseDom';
 
 export interface BackToTopProps {
   prefixCls?: string;
@@ -13,8 +12,8 @@ export interface BackToTopProps {
   style?: CSSProperties;
   speed?: number;
   visibleDistance?: number;
-  scrollContainer?: HTMLElement | getContainerFunc;
-  onClick: (event?: MouseEvent<HTMLDivElement>) => void;
+  scrollContainer?: ContainerType;
+  onClick: (event?: MouseEvent<HTMLElement>) => void;
 }
 
 export interface BackToTopStates {
@@ -35,69 +34,95 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     visible: false,
   };
 
-  private container: HTMLDivElement;
-
   private timer: number;
 
+  private portalContainer: HTMLDivElement;
+
+  private scroller: Scroller | null;
+
   componentDidMount() {
-    this.bindEvent();
+    this.parent.appendChild(this.getPortalContainer);
   }
 
   componentDidUpdate(prevProps: BackToTopProps) {
     const { scrollContainer } = this.props;
+
     if (prevProps.scrollContainer !== scrollContainer) {
-      this.bindEvent();
+      this.parent.appendChild(this.portalContainer);
+      this.onScroll(this.scrollTop);
     }
   }
 
   componentWillUnmount() {
-    this.unBindEvent();
+    clearInterval(this.timer);
+    this.parent.removeChild(this.portalContainer);
   }
 
-  onScroll = (): void => {
-    Throttle(this.setState({
-      visible: this.getScrollTop > this.props.visibleDistance!,
-    }), 250);
-  };
-
-  get getParentElement(): Element {
-    if (typeof this.getScrollContainer === 'object' && this.getScrollContainer instanceof Window) {
+  get parent(): HTMLElement {
+    if (!canUseDOM || this.container === window) {
       return document.body;
     }
-    return this.getScrollContainer;
+    return this.container as HTMLElement;
   }
 
-  get getScrollContainer(): HTMLElement | Window {
-    const { scrollContainer } = this.props;
-    if (scrollContainer) {
-      if (typeof scrollContainer === 'function') {
-        return scrollContainer();
-      }
-      if (typeof scrollContainer === 'object' && scrollContainer instanceof HTMLElement) {
-        return scrollContainer;
-      }
-    }
-    return window;
+  get container(): HTMLElement | Window {
+    return this.scroller
+      ? this.scroller!.scrollContainer
+      : window;
   }
 
-  get getScrollTop(): number {
-    return this.getScrollContainer !== window
-      ? (this.getScrollContainer as HTMLElement).scrollTop
-      : document.documentElement.scrollTop + document.body.scrollTop;
+  get scrollTop(): number {
+    return this.scroller
+      ? this.scroller!.scrollTop
+      : 0;
   }
 
-  get getContainer(): HTMLElement {
+  get renderPortal(): ReactPortal | null {
+    const { prefixCls, style, scrollContainer, children } = this.props;
+    const { visible } = this.state;
+
+    const containerStyle: CSSProperties = {
+      display: !visible ? 'none' : 'inline',
+      position: this.container !== window ? 'absolute' : 'fixed',
+      bottom: 50,
+      right: 50,
+      ...style,
+    };
+
+    return createPortal(
+      <>
+        <div className={prefixCls} style={containerStyle} onClick={this.scrollToTop}>
+          {children}
+        </div>
+        <Scroller
+          ref={(ele) => { this.scroller = ele; }}
+          container={scrollContainer}
+          onScroll={this.onScroll}
+        />
+      </>,
+      this.getPortalContainer,
+    );
+  }
+
+  get getPortalContainer(): HTMLDivElement {
     const { prefixCls, className } = this.props;
-    if (!this.container) {
+    if (!this.portalContainer) {
       const container = document.createElement('div');
-      container.className = classnames(`${prefixCls}-container`, className);
-      this.container = container;
+      container.className = classnames(`${prefixCls!}-container`, className);
+      this.portalContainer = container;
     }
-    return this.container;
+    return this.portalContainer;
   }
 
-  scrollToTop = (e: MouseEvent<HTMLDivElement>): void => {
+  onScroll = (scrollTop: number): void => {
+    this.setState({
+      visible: scrollTop > this.props.visibleDistance!,
+    });
+  };
+
+  scrollToTop = (e: MouseEvent<HTMLElement>): void => {
     const { speed, onClick } = this.props;
+    const { container } = this;
 
     if (typeof onClick === 'function') {
       onClick(e);
@@ -105,54 +130,27 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
 
     // 速度设置为0或者无穷大时，直接到顶
     if (speed === 0 || speed === Infinity) {
-      this.getScrollContainer.scrollTo(0, 0);
+      container.scrollTo(0, 0);
       return;
     }
 
     this.timer = setInterval(() => {
-      let st = this.getScrollTop;
+      let st = this.scrollTop;
       st -= speed!;
       if (st > 0) {
-        this.getScrollContainer.scrollTo(0, st);
+        container.scrollTo(0, st);
       } else {
-        this.getScrollContainer.scrollTo(0, 0);
+        container.scrollTo(0, 0);
         clearInterval(this.timer);
       }
     }, 10);
   };
 
-  bindEvent = (): void => {
-    if (this.getScrollContainer) {
-      this.getParentElement instanceof HTMLElement && this.getParentElement.appendChild(this.container);
-      Events.on(this.getScrollContainer, 'scroll', this.onScroll);
-    }
-  };
-
-  unBindEvent = (): void => {
-    clearInterval(this.timer);
-    if (this.getScrollContainer) {
-      this.getParentElement instanceof HTMLElement && this.getParentElement.removeChild(this.container);
-      Events.off(this.getScrollContainer, 'scroll', this.onScroll);
-    }
-  };
-
   render() {
-    const { prefixCls, style, children } = this.props;
-    const { visible } = this.state;
+    if (!canUseDOM) {
+      return null;
+    }
 
-    const containerStyle: CSSProperties = {
-      display: !visible ? 'none' : 'inline',
-      position: this.getScrollContainer !== window ? 'absolute' : 'fixed',
-      bottom: 50,
-      right: 50,
-      ...style,
-    };
-
-    return createPortal(
-      <div className={prefixCls} style={containerStyle} onClick={this.scrollToTop}>
-        {children}
-      </div>,
-      this.getContainer,
-    );
+    return this.renderPortal;
   }
 }
