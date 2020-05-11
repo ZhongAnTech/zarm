@@ -120,7 +120,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     });
   };
 
-  scrollToTop = (e: MouseEvent<HTMLElement>): void => {
+  scrollToTop = (e): void => {
     const { speed, onClick } = this.props;
     const { container } = this;
 
