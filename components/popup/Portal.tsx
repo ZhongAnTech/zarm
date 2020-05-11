@@ -4,12 +4,9 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 import Mask from '../mask';
 import PropsType from './PropsType';
+import canUseDOM from '../utils/canUseDom';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
-
-function canUseDOM() {
-  return !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-}
 
 export interface PortalProps extends PropsType {
   prefixCls?: string;
@@ -249,7 +246,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   renderPortal = (): ReactPortal | null => {
-    if (!canUseDOM()) {
+    if (!canUseDOM) {
       return null;
     }
     if (!IS_REACT_16) {
