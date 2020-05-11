@@ -1,5 +1,14 @@
 # 版本更新日志 
 
+## v2.2.0
+- Feature
+  - [Input] 多行文本设置高度自适应时，删除内容支持自动缩小高度。[#445](https://github.com/ZhongAnTech/zarm/pull/445)
+  - [BackToTop] 新增 `BackToTop` 返回顶部组件。[#449](https://github.com/ZhongAnTech/zarm/pull/449)
+
+- Documentation Updated
+  - 样例支持 React Hooks。[#446](https://github.com/ZhongAnTech/zarm/pull/446)
+
+
 ## v2.1.1
 - Feature
   - [Cell] 优化设置了 `help` 属性后，提示信息区域的样式显示。[#439](https://github.com/ZhongAnTech/zarm/pull/439)
