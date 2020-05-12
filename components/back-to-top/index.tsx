@@ -3,7 +3,7 @@ import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 're
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Scroller from '../scroller';
-import { ContainerType } from '../scroller/ScrollContainer';
+import { ContainerType, scrollTo } from '../scroller/ScrollContainer';
 import canUseDOM from '../utils/canUseDom';
 
 export interface BackToTopProps {
@@ -130,7 +130,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
 
     // 速度设置为0或者无穷大时，直接到顶
     if (speed === 0 || speed === Infinity) {
-      container.scrollTo(0, 0);
+      scrollTo(container, 0);
       return;
     }
 
@@ -138,9 +138,9 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
       let st = this.scrollTop;
       st -= speed!;
       if (st > 0) {
-        container.scrollTo(0, st);
+        scrollTo(container, st);
       } else {
-        container.scrollTo(0, 0);
+        scrollTo(container, 0);
         clearInterval(this.timer);
       }
     }, 10);
