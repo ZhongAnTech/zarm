@@ -108,7 +108,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
           ref={(ele) => { this.carousel = ele; }}
           onChange={(v) => this.onTabChange(v)}
         >
-          {React.Children.map(children, (item: TabPanel) => <div>{item.props.children}</div>)}
+          {React.Children.toArray(children).map((item: TabPanel, index: number) => <div key={+index}>{item.props.children}</div>)}
         </Carousel>
       );
     } else {
