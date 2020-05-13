@@ -19,3 +19,11 @@ export const getScrollTop = (container?: ContainerType): number => {
     ? (scrollContainer as HTMLElement).scrollTop
     : document.documentElement.scrollTop + document.body.scrollTop;
 };
+
+export const scrollTo = (container, scrollTop) => {
+  if (container === window) {
+    container.scrollTo(0, scrollTop);
+  } else {
+    container.scrollTop = scrollTop;
+  }
+};
