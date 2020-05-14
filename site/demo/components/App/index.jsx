@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
 import Loadable from 'react-loadable';
 import { Loading } from 'zarm';
-import ChangeCase from 'change-case';
+import { pascalCase } from 'change-case';
 import { components } from '@site/site.config';
 import SentryBoundary from '@site/demo/components/SentryBoundary';
 import Markdown from '@site/demo/components/Markdown';
@@ -11,7 +11,7 @@ import './style.scss';
 
 const LoadableComponent = (component) => {
   const loader = { page: component.module };
-  const compName = ChangeCase.pascalCase(component.key);
+  const compName = pascalCase(component.key);
 
   if (component.style) {
     loader.style = () => import(`@site/demo/styles/${compName}Page`);

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Panel, Cell } from 'zarm';
 import { components } from '@site/site.config';
-import ChangeCase from 'change-case';
+import { pascalCase } from 'change-case';
 import Container from '@site/demo/components/Container';
 import Footer from '@site/demo/components/Footer';
 import Events from '@site/utils/events';
@@ -44,7 +44,7 @@ class Page extends PureComponent {
                 key={+i}
                 title={(
                   <div className="menu-item-content">
-                    <span>{ChangeCase.pascalCase(component.key)}</span>
+                    <span>{pascalCase(component.key)}</span>
                     <span className="chinese">{component.name}</span>
                   </div>
                 )}

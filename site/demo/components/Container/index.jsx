@@ -8,6 +8,10 @@ class Container extends Component {
   //   language: window.localStorage.language || 'zh_CN',
   // };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const { className, children } = this.props;
     const cls = classnames('app-container', className);

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import ChangeCase from 'change-case';
+import { pascalCase } from 'change-case';
 import { Menu } from 'dragon-ui';
 import { documents, components } from '@site/site.config';
 import './style.scss';
@@ -31,7 +31,7 @@ class SideBar extends PureComponent {
             .map((component) => (
               <Menu.Item key={component.key}>
                 <a href={`#/components/${component.key}`}>
-                  <span>{ChangeCase.pascalCase(component.key)}</span>
+                  <span>{pascalCase(component.key)}</span>
                   <span className="chinese">{component.name}</span>
                 </a>
               </Menu.Item>
