@@ -26,7 +26,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     Loading.unmountNode();
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
-      Loading.zarmLoading.classList.add('loading-container');
+      Loading.zarmLoading.classList.add('za-loading-container');
       if (content && content.className) {
         Loading.zarmLoading.classList.add(content.className);
       }

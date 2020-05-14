@@ -113,7 +113,6 @@ class Demo extends React.Component {
         />
 
         <Modal
-          className="test-modal"
           visible={modal1}
           title="标题"
           closable
@@ -123,7 +122,6 @@ class Demo extends React.Component {
         </Modal>
 
         <Modal
-          className="test-modal"
           title="标题"
           visible={modal2}
           closable
