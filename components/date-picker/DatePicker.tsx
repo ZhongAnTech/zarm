@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';

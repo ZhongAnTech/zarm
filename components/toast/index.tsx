@@ -2,25 +2,7 @@ import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Popup from '../popup';
-
-const getParent = (props) => {
-  if (props) {
-    const { getContainer } = props;
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
-      }
-      if (
-        typeof getContainer === 'object'
-        && getContainer instanceof HTMLElement
-      ) {
-        return getContainer;
-      }
-    }
-    return document.body;
-  }
-  return document.body;
-};
+import getMountNode from '../utils/getMountNode';
 
 const contentIsToastProps = (content): content is ToastProps => typeof content === 'object' && 'content' in content;
 
@@ -42,11 +24,11 @@ export default class Toast extends Component<ToastProps, any> {
     Toast.unmountNode();
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
-      Toast.zarmToast.classList.add('toast-container');
+      Toast.zarmToast.classList.add('za-toast-container');
       if (contentIsToastProps(content) && content.className) {
         Toast.zarmToast.classList.add(content.className);
       }
-      Toast.toastContainer = getParent(content);
+      Toast.toastContainer = getMountNode(content);
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
     if (Toast.zarmToast) {

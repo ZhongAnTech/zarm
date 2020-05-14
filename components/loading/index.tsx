@@ -2,26 +2,8 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Popup from '../popup';
+import getMountNode from '../utils/getMountNode';
 import ActivityIndicator from '../activity-indicator';
-
-const getParent = (props) => {
-  if (props) {
-    const { getContainer } = props;
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
-      }
-      if (
-        typeof getContainer === 'object'
-        && getContainer instanceof HTMLElement
-      ) {
-        return getContainer;
-      }
-    }
-    return document.body;
-  }
-  return document.body;
-};
 
 export interface LoadingProps extends PropsType {
   prefixCls?: string;
@@ -48,7 +30,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       if (content && content.className) {
         Loading.zarmLoading.classList.add(content.className);
       }
-      Loading.loadingContainer = getParent(content);
+      Loading.loadingContainer = getMountNode(content);
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
     if (Loading.zarmLoading) {

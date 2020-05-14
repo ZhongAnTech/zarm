@@ -192,6 +192,7 @@ class Demo extends React.Component {
       <div>
         <Cell title="日期选择">
           <DateSelect
+            className="test-dateSelect"
             title="选择日期"
             placeholder="请选择日期"
             mode="date"

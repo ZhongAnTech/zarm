@@ -2,6 +2,7 @@ import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
+import getMountNode from '../utils/getMountNode';
 import Mask from '../mask';
 import PropsType from './PropsType';
 
@@ -20,7 +21,7 @@ export interface PortalProps extends PropsType {
 export default class Portal extends PureComponent<PortalProps, any> {
   private enterTimer: number;
 
-  private parent: HTMLElement;
+  private mountNode: HTMLElement;
 
   private _container: HTMLDivElement;
 
@@ -69,25 +70,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
     clearTimeout(this.enterTimer);
     if (this._container) {
-      this.parent.removeChild(this._container);
+      this.mountNode.removeChild(this._container);
     }
   }
-
-  getParent = () => {
-    const { getContainer } = this.props;
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
-      }
-      if (
-        typeof getContainer === 'object'
-        && getContainer instanceof HTMLElement
-      ) {
-        return getContainer;
-      }
-    }
-    return document.body;
-  };
 
   animationEnd = (e) => {
     if (e.target !== this.popup) {
@@ -267,8 +252,8 @@ export default class Portal extends PureComponent<PortalProps, any> {
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += `${prefixCls}-container ${className}`;
-      this.parent = this.getParent();
-      this.parent.appendChild(this._container);
+      this.mountNode = getMountNode(this.props);
+      this.mountNode.appendChild(this._container);
     }
     return this._container;
   };
