@@ -418,6 +418,7 @@ export default class DatePickerView extends Component<DatePickerViewProps, any> 
     return (
       <PickerView
         {...others}
+        className={className}
         prefixCls={prefixCls}
         dataSource={dataSource}
         value={value}

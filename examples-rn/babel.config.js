@@ -1,1 +1,1 @@
-module.exports = require('../scripts/babel/config.native');
+module.exports = require('@zarm-design/cli/lib/config/babelConfig/native');

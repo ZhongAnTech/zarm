@@ -1,12 +1,32 @@
 import React, { PureComponent } from 'react';
 import { Panel, Cell } from 'zarm';
 import { components } from '@site/site.config';
-import ChangeCase from 'change-case';
+import { pascalCase } from 'change-case';
 import Container from '@site/demo/components/Container';
 import Footer from '@site/demo/components/Footer';
+import Events from '@site/utils/events';
 import './style.scss';
 
 class Page extends PureComponent {
+  componentDidMount() {
+    this.loadPageScroll();
+    Events.on(window, 'scroll', this.setPageScroll);
+  }
+
+  componentWillUnmount() {
+    Events.off(window, 'scroll', this.setPageScroll);
+  }
+
+  setPageScroll = () => {
+    window.sessionStorage.indexPageScroll = window.scrollY;
+  };
+
+  loadPageScroll = () => {
+    const scrollY = window.sessionStorage.indexPageScroll;
+    if (!scrollY) return;
+    window.scrollTo(0, scrollY);
+  };
+
   getMenus = (groupName, key) => {
     const { history } = this.props;
     const list = components[key] || [];
@@ -24,7 +44,7 @@ class Page extends PureComponent {
                 key={+i}
                 title={(
                   <div className="menu-item-content">
-                    <span>{ChangeCase.pascalCase(component.key)}</span>
+                    <span>{pascalCase(component.key)}</span>
                     <span className="chinese">{component.name}</span>
                   </div>
                 )}

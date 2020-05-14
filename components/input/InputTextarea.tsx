@@ -49,7 +49,9 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     const { autoHeight, rows, readOnly } = this.props;
     const { focused } = this.state;
 
-    if (autoHeight && !readOnly) {
+    if (autoHeight) {
+      this.input.style.height = 'auto';
+      this.input.scrollTop = 0;
       this.input.style.height = `${this.input.scrollHeight}px`;
     }
     if (autoHeight && readOnly && rows) {

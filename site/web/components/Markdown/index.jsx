@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import ChangeCase from 'change-case';
+import { pascalCase } from 'change-case';
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-gist.css';
@@ -45,7 +45,7 @@ export default class Markdown extends Component {
 
       const html = marked(document, { renderer });
       const cls = classnames(`${component.key}-page`, 'markdown');
-      const title = `${component.name} ${ChangeCase.pascalCase(component.key)} - Zarm Design`;
+      const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
 
       return (
         <>

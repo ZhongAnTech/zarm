@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
@@ -91,18 +90,18 @@ export default class DatePicker extends Component<DatePickerProps, any> {
 
   render() {
     const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
-    const cls = classnames(prefixCls, className);
     const { date } = this.state;
     const noop = () => {};
 
     return (
       <Popup
+        className={className}
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
         getContainer={getContainer}
         destroy
       >
-        <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
+        <div className={prefixCls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
             <div
               className={`${prefixCls}__cancel`}

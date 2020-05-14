@@ -32,7 +32,7 @@ describe('Loading', () => {
     jest.useFakeTimers();
     Loading.show();
     jest.runAllTimers();
-    const LoadingContainer = document.getElementsByClassName('loading-container');
+    const LoadingContainer = document.getElementsByClassName('za-loading-container');
     expect(LoadingContainer.length).toEqual(1);
   });
 
@@ -42,7 +42,7 @@ describe('Loading', () => {
       content: <div>loading...</div>,
     });
     jest.runAllTimers();
-    const LoadingContainer = document.getElementsByClassName('loading-container');
+    const LoadingContainer = document.getElementsByClassName('za-loading-container');
     expect(LoadingContainer.length).toEqual(1);
   });
 
