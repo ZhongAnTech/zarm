@@ -58,7 +58,7 @@ export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, K
 
     return (
       <Popup
-        className="className"
+        className={className}
         visible={visible}
         mask={false}
         destroy={destroy}

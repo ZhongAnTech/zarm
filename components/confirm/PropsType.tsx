@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { Locale } from '../locale-provider/PropsType';
-
-type getContainerFunc = () => HTMLElement;
+import { ContainerType } from '../popup/PropsType';
 
 export default interface PropsType {
   shape?: 'rect';
@@ -20,5 +19,5 @@ export default interface PropsType {
   onCancel?: () => void;
   afterClose?: () => void;
   locale?: Locale['Confirm'];
-  getContainer?: HTMLElement | getContainerFunc;
+  getContainer?: ContainerType;
 }
