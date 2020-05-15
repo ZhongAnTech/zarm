@@ -238,7 +238,6 @@ exports[`Input.Idcard renders correctly 1`] = `
           visible={false}
         >
           <Popup
-            className="className"
             destroy={true}
             mask={false}
             visible={false}
@@ -286,7 +285,6 @@ exports[`Input.Number renders correctly 1`] = `
           visible={false}
         >
           <Popup
-            className="className"
             destroy={true}
             mask={false}
             visible={false}
@@ -334,7 +332,6 @@ exports[`Input.Price renders correctly 1`] = `
           visible={false}
         >
           <Popup
-            className="className"
             destroy={true}
             mask={false}
             visible={false}

@@ -8,7 +8,6 @@ exports[`KeyboardPicker renders correctly 1`] = `
   visible={false}
 >
   <Popup
-    className="className"
     destroy={true}
     mask={false}
     visible={false}
