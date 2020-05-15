@@ -184,7 +184,7 @@ class Demo extends React.Component {
             </div>
 
             <div style={{ marginLeft: 60, clear: 'both' }}>
-              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" direction="bottomLeft" content="bottomLeft text">
+              <Popper arrowPointAtCenter={arrowPointAtCenter} className="custom-arrow-content" hasArrow direction="bottomLeft" content="bottomLeft text">
                 <Button size="xs">BL</Button>
               </Popper>
 
