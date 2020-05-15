@@ -30,7 +30,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       if (content && content.className) {
         Loading.zarmLoading.classList.add(content.className);
       }
-      Loading.loadingContainer = domUtil.getMountNode(content.getContainer);
+      Loading.loadingContainer = content ? domUtil.getMountNode(content.getContainer) : domUtil.getMountNode();
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
     if (Loading.zarmLoading) {
