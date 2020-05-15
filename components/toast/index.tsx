@@ -2,7 +2,7 @@ import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Popup from '../popup';
-import getMountNode from '../utils/getMountNode';
+import domUtil from '../utils/dom';
 
 const contentIsToastProps = (content): content is ToastProps => typeof content === 'object' && 'content' in content;
 
@@ -28,7 +28,7 @@ export default class Toast extends Component<ToastProps, any> {
       if (contentIsToastProps(content) && content.className) {
         Toast.zarmToast.classList.add(content.className);
       }
-      Toast.toastContainer = getMountNode(content);
+      Toast.toastContainer = contentIsToastProps(content) ? domUtil.getMountNode(content.getContainer) : domUtil.getMountNode();
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
     if (Toast.zarmToast) {

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropsType from './PropsType';
 import Popup from '../popup';
-import getMountNode from '../utils/getMountNode';
+import domUtil from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
 
 export interface LoadingProps extends PropsType {
@@ -30,7 +30,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       if (content && content.className) {
         Loading.zarmLoading.classList.add(content.className);
       }
-      Loading.loadingContainer = getMountNode(content);
+      Loading.loadingContainer = domUtil.getMountNode(content.getContainer);
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
     if (Loading.zarmLoading) {
