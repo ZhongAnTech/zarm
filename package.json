@@ -78,6 +78,7 @@
     "@commitlint/config-conventional": "^8.0.0",
     "@sentry/browser": "^5.6.1",
     "@types/classnames": "^2.2.3",
+    "@types/lodash": "^4.14.151",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.9.0",
     "@types/react-native": "^0.60.7",
