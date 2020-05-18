@@ -5,81 +5,83 @@
 ## 基本用法
 
 ```jsx
+import { useState } from 'react';
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    inputValue: '',
-  };
+const Demo = () => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
-  handleInputChange = (value) => {
-    this.setState({
-      inputValue: value,
-    });
-  }
-
-  render() {
-    return (
-      <>
-        <Cell title="单行文本">
-          <Input
-            clearable
-            type="text"
-            placeholder="请输入"
-            value={this.state.inputValue}
-            onChange={this.handleInputChange}
-          />
-        </Cell>
-        <Cell title="多行文本"><Input type="text" rows={3} placeholder="请输入" /></Cell>
-      </>
-    )
-  }
+  return (
+    <>
+      <Cell title="单行文本">
+        <Input
+          clearable
+          type="text"
+          placeholder="请输入"
+          value={title}
+          onChange={(value) => {
+            setTitle(value);
+            console.log(`onChange: ${value}`);
+          }}
+          onBlur={(value) => console.log(`onBlur: ${value}`)}
+        />
+      </Cell>
+      <Cell title="多行文本">
+        <Input
+          type="text"
+          rows={3}
+          placeholder="请输入"
+          type="text"
+          placeholder="请输入"
+          value={content}
+          onChange={setContent}
+        />
+      </Cell>
+    </>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+
+
 ## 输入类型
 
 ```jsx
+import { useState, useRef } from 'react';
 import { Input, Cell, Button } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    focused: false,
-    number: '',
-  };
+const Demo = () => {
+  const focusInput = useRef();
+  const [value, setValue] = useState('');
 
-  render() {
-    return (
-      <>
-        <Cell title="数字">
-          <Input
-            ref={(ref) => { this.manualFocus = ref; }}
-            type="number"
-            placeholder="type is number"
-            value={this.state.number}
-            focused={this.state.focused}
-            onFocus={value => console.log(`onFocus: ${value}`)}
-            onBlur={value => console.log(`onBlur: ${value}`)}
-            onChange={value => console.log(`onChange: ${value}`)}
-          />
-        </Cell>
+  return (
+    <>
+      <Cell title="数字">
+        <Input
+          ref={focusInput}
+          type="number"
+          placeholder="type is number"
+          value={value}
+          onChange={setValue}
+        />
+      </Cell>
 
-        <Cell title="金额">
-          <Input type="price" placeholder="type is price" />
-        </Cell>
+      <Cell title="金额">
+        <Input type="price" placeholder="type is price" defaultValue={value} />
+      </Cell>
 
-        <Cell title="身份证">
-          <Input type="idcard" placeholder="type is idcard" />
-        </Cell>
+      <Cell title="身份证">
+        <Input type="idcard" placeholder="type is idcard" />
+      </Cell>
 
-        <Cell>
-          <Button size="xs" theme="primary" onClick={() => this.manualFocus.focus()}>click to focus the first input</Button>
-        </Cell>
-      </>
-    )
-  }
+      <Cell>
+        <Button size="xs" theme="primary" onClick={() => focusInput.current.focus()}>click to focus the first input</Button>
+      </Cell>
+    </>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -129,37 +131,29 @@ ReactDOM.render(
 ## 高度自适应
 
 ```jsx
+import { useState } from 'react';
 import { Input, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    inputValue: '',
-  };
+const Demo = () => {
+  const [value, setValue] = useState('');
 
-  handleInputChange = (value) => {
-    this.setState({
-      inputValue: value,
-    });
-  }
-
-  render() {
-    return (
-      <Cell title="多行文本">
-        <Input
-          autoHeight
-          type="text"
-          rows={3}
-          placeholder="请输入"
-          value={this.state.inputValue}
-          onChange={this.handleInputChange}
-        />
-      </Cell>
-    );
-  }
+  return (
+    <Cell title="多行文本">
+      <Input
+        autoHeight
+        type="text"
+        rows={3}
+        placeholder="请输入"
+        value={value}
+        onChange={setValue}
+      />
+    </Cell>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
 
 
 ## 显示输入字数

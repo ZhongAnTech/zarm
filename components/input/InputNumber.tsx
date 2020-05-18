@@ -42,8 +42,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   static getDerivedStateFromProps(nextProps, state) {
     if ('value' in nextProps && nextProps.value !== state.prevValue) {
       return {
-        value: nextProps.value,
-        prevValue: nextProps.value,
+        value: nextProps.value || nextProps.defaultValue || '',
+        prevValue: nextProps.value || nextProps.defaultValue || '',
       };
     }
     return null;
@@ -85,13 +85,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       ? String(value).slice(0, String(value).length - 1)
       : value + key;
 
-    if (newValue !== value) {
-      const { onChange } = this.props;
+    if (!('value' in this.props)) {
       this.setState({ value: newValue }, () => this.scrollToEnd());
+    }
 
-      if (typeof onChange === 'function') {
-        onChange(newValue);
-      }
+    const { onChange } = this.props;
+    if (typeof onChange === 'function') {
+      onChange(newValue);
     }
   };
 
