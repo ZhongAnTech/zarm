@@ -3,7 +3,7 @@
 ## v2.3.0
 - Bug Fix
   - [BackToTop] 修复点击返回顶部时触发的 `onScroll` 事件，在安卓低版本不兼容的问题。[#455](https://github.com/ZhongAnTech/zarm/pull/455)
-  - [Input] 修复Input值为undefined时的异常显示，以及成为受控组件时的bug。[#459](https://github.com/ZhongAnTech/zarm/pull/459)
+  - [Input] 修复Input值为undefined时异常显示的bug。[#459](https://github.com/ZhongAnTech/zarm/pull/459)
   - [Input] 修复Input作为受控组件时出现异常的bug。[#459](https://github.com/ZhongAnTech/zarm/pull/459)
 
 - Break Change
