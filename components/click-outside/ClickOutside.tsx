@@ -46,7 +46,7 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     }
   }
 
-  getContainer = (node) => {
+  mountContainer = (node) => {
     this.container = node;
   };
 
@@ -77,6 +77,6 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
   render() {
     const { onClickOutside, disabled, children, ignoredNode, ...rest } = this.props;
 
-    return <div ref={this.getContainer} {...rest}>{children}</div>;
+    return <div ref={this.mountContainer} {...rest}>{children}</div>;
   }
 }

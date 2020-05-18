@@ -110,7 +110,7 @@ class Demo extends React.Component {
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
           destroy={false}
-          className="test-popup"
+          getContainer={() => document.body}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => { this.toggle('picker'); }}>打开Picker</Button>
@@ -168,7 +168,7 @@ class Demo extends React.Component {
           direction="center"
           width="70%"
           afterClose={() => console.log('关闭')}
-          getContainer={() => {
+          mountContainer={() => {
             return this.popupRef.portalRef.popup
           }}
         >
@@ -215,4 +215,4 @@ ReactDOM.render(<Demo />, mountNode);
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
-| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popup 挂载的 HTML 节点 |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popup 挂载的 HTML 节点 |

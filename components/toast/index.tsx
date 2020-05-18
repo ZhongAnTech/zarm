@@ -28,13 +28,13 @@ export default class Toast extends Component<ToastProps, any> {
       if (contentIsToastProps(content) && content.className) {
         Toast.zarmToast.classList.add(content.className);
       }
-      Toast.toastContainer = contentIsToastProps(content) ? domUtil.getMountNode(content.getContainer) : domUtil.getMountNode();
+      Toast.toastContainer = contentIsToastProps(content) ? domUtil.getMountContainer(content.mountContainer) : domUtil.getMountContainer();
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
     if (Toast.zarmToast) {
       const props = contentIsToastProps(content)
-        ? { ...Toast.defaultProps, ...content, ...{ visible: true, getContainer: Toast.zarmToast } }
-        : { ...Toast.defaultProps, ...{ visible: true, getContainer: Toast.zarmToast, content } };
+        ? { ...Toast.defaultProps, ...content, ...{ visible: true, mountContainer: Toast.zarmToast } }
+        : { ...Toast.defaultProps, ...{ visible: true, mountContainer: Toast.zarmToast, content } };
       ReactDOM.render(
         <Toast {...props} />,
         Toast.zarmToast,

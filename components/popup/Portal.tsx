@@ -245,11 +245,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   createContainer = () => {
-    const { className = '', prefixCls, getContainer } = this.props;
+    const { className = '', prefixCls, mountContainer } = this.props;
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += `${prefixCls}-container ${className}`;
-      this.mountNode = domUtil.getMountNode(getContainer);
+      this.mountNode = domUtil.getMountContainer(mountContainer);
       this.mountNode.appendChild(this._container);
     }
     return this._container;

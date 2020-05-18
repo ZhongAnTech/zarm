@@ -99,7 +99,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, destroy, onOk, onCancel, visible, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, mountContainer, destroy, onOk, onCancel, visible, ...others } = this.props;
     const { value } = this.state;
     const noop = () => {};
     return (
@@ -107,7 +107,7 @@ export default class Picker extends Component<PickerProps, PickerState> {
         className={className}
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
-        getContainer={getContainer}
+        mountContainer={mountContainer}
         destroy={destroy}
       >
         <div className={prefixCls} onClick={(e) => { e.stopPropagation(); }}>

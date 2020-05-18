@@ -14,7 +14,7 @@ exports[`Popup renders mount node correctly 1`] = `
   afterClose={[MockFunction]}
   destroy={true}
   direction="bottom"
-  getContainer={[Function]}
+  mountContainer={[Function]}
   onMaskClick={[MockFunction]}
   visible={true}
 >
@@ -24,7 +24,7 @@ exports[`Popup renders mount node correctly 1`] = `
     animationType="fade"
     destroy={true}
     direction="bottom"
-    getContainer={[Function]}
+    mountContainer={[Function]}
     handlePortalUnmount={[Function]}
     mask={true}
     maskType="normal"

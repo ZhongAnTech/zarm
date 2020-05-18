@@ -36,6 +36,8 @@ module.exports = {
     LICENSE file in the root directory of this source tree.
   `,
   setBabelOptions: (options) => {
+    options.plugins.unshift(['@babel/plugin-proposal-decorators', { legacy: true }]);
+    console.log(options.plugins);
     options.plugins.push(['import', { libraryName: 'dragon-ui', style: true }, 'dragon-ui']);
   },
   setRules: (rules) => {

@@ -200,19 +200,6 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     return this.popperNode;
   }
 
-  getContainer() {
-    const { getContainer } = this.props;
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
-      }
-      if (typeof getContainer === 'object' && getContainer instanceof HTMLElement) {
-        return getContainer;
-      }
-    }
-    return document.body;
-  }
-
   getTransitionName(animationType, animationState) {
     if (this.popperNode) {
       const placement = this.popperNode!.getAttribute('x-placement');
@@ -352,6 +339,19 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     }, mouseLeaveDelay);
   };
 
+  mountContainer() {
+    const { mountContainer } = this.props;
+    if (mountContainer) {
+      if (typeof mountContainer === 'function') {
+        return mountContainer();
+      }
+      if (typeof mountContainer === 'object' && mountContainer instanceof HTMLElement) {
+        return mountContainer;
+      }
+    }
+    return document.body;
+  }
+
   enter() {
     this.setState({
       show: true,
@@ -454,7 +454,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
     return (
       <>
-        {mounted && createPortal(toolTip, this.getContainer())}
+        {mounted && createPortal(toolTip, this.mountContainer())}
         {React.cloneElement(child, {
           ref: (node) => {
             // eslint-disable-next-line react/no-find-dom-node

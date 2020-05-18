@@ -45,16 +45,6 @@ class ScrollToTop extends PureComponent {
 
   getScrollTop = () => document.documentElement.scrollTop || document.body.scrollTop;
 
-  getContainer() {
-    const { prefixCls } = this.props;
-    if (!this.container) {
-      const container = document.createElement('div');
-      container.className += ` ${prefixCls}-container`;
-      this.container = container;
-    }
-    return this.container;
-  }
-
   scrollToTop = () => {
     const timer = setInterval(() => {
       let st = this.getScrollTop();
@@ -67,6 +57,16 @@ class ScrollToTop extends PureComponent {
       }
     }, 10);
   };
+
+  mountContainer() {
+    const { prefixCls } = this.props;
+    if (!this.container) {
+      const container = document.createElement('div');
+      container.className += ` ${prefixCls}-container`;
+      this.container = container;
+    }
+    return this.container;
+  }
 
   render() {
     const { prefixCls, children } = this.props;
@@ -81,7 +81,7 @@ class ScrollToTop extends PureComponent {
       <div className={prefixCls} style={style} onClick={this.scrollToTop}>
         {children}
       </div>,
-      this.getContainer(),
+      this.mountContainer(),
     );
   }
 }
