@@ -91,7 +91,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       this.setState({ value });
     }
 
-    if (onChange) {
+    if (typeof onChange === 'function') {
       onChange(value);
     }
   };
