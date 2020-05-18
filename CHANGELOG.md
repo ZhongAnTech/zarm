@@ -1,5 +1,18 @@
 # 版本更新日志 
 
+## v2.3.0
+- Bug Fix
+  - [BackToTop] 修复点击返回顶部时触发的 `onScroll` 事件，在安卓低版本不兼容的问题。[#455](https://github.com/ZhongAnTech/zarm/pull/455)
+  - [Input] 修复Input值为undefined时的异常显示，以及成为受控组件时的bug。[#459](https://github.com/ZhongAnTech/zarm/pull/459)
+  - [Input] 修复Input作为受控组件时出现异常的bug。[#459](https://github.com/ZhongAnTech/zarm/pull/459)
+
+- Break Change
+  - [ActionSheet, Alert, Confirm, Popup, Pciker, Select, DatePicker, DateSelect, KeyboardPicker, Loading, Modal, Toast] 修复包含挂载容器的组件，设置自定义className属性时挂载位置不正确的bug，修改为统一挂载外层容器中。[#456](https://github.com/ZhongAnTech/zarm/pull/456)
+
+- Perf
+  - 优化es模块打包编译。[#e3e451a](https://github.com/ZhongAnTech/zarm/commit/e3e451a861e7f7587433c490d865e2a3e4d820cd)
+
+
 ## v2.2.0
 - Feature
   - [Input] 多行文本设置高度自适应时，删除内容支持自动缩小高度。[#445](https://github.com/ZhongAnTech/zarm/pull/445)
