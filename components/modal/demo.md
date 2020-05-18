@@ -106,6 +106,12 @@ class Demo extends React.Component {
           挂载到指定dom节点
         </Cell>
 
+        <div
+          id="test-div"
+          style={{ position: 'relative', zIndex: 1 }}
+          ref={this.myRef} 
+        />
+
         <Modal
           visible={modal1}
           title="标题"
@@ -128,7 +134,7 @@ class Demo extends React.Component {
             >确认</Button>
           }
         >
-          模态框内容
+          <p>模态框内容</p> 
         </Modal>
 
         <Modal
@@ -167,13 +173,6 @@ class Demo extends React.Component {
         >
           挂载到指定dom节点
         </Modal>
-
-        <div
-          id="test-div"
-          style={{ position: 'relative', zIndex: 1 }}
-          ref={this.myRef} 
-        />
-        
       </>
     )
   }
@@ -228,12 +227,6 @@ class Demo extends React.Component {
         >
           静态调用（使用promise关闭）
         </Cell>
-
-        <div
-          id="test-div"
-          style={{ position: 'relative', zIndex: 1 }}
-          ref={this.myRef} 
-          />
       </>
     )
   }
@@ -261,7 +254,7 @@ class Demo extends React.Component {
                 },
                 onOk: () => {
                   console.log('点击ok');
-                }
+                },
               });
             }}>开启</Button>
           }

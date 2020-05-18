@@ -86,7 +86,7 @@ const Demo = () => (
       自定义内容
     </Cell>
   </>
-);
+)
 
 ReactDOM.render(<Demo />, mountNode);
 ```

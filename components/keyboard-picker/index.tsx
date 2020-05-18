@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import classnames from 'classnames';
 import PropsType from './PropsType';
 import Keyboard from '../keyboard';
 import Popup from '../popup';
@@ -56,15 +55,15 @@ export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, K
   render() {
     const { prefixCls, className, destroy, ...others } = this.props;
     const { visible } = this.state;
-    const cls = classnames(prefixCls, className);
 
     return (
       <Popup
+        className={className}
         visible={visible}
         mask={false}
         destroy={destroy}
       >
-        <div className={cls}>
+        <div className={prefixCls}>
           <Keyboard {...others} onKeyClick={this.onKeyClick} />
         </div>
       </Popup>

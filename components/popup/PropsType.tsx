@@ -1,5 +1,4 @@
-type getContainerFunc = () => HTMLElement;
-
+export type ContainerType = HTMLElement | (() => HTMLElement);
 export default interface PropsType {
   visible?: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
@@ -15,5 +14,5 @@ export default interface PropsType {
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
-  getContainer?: HTMLElement | getContainerFunc;
+  getContainer?: ContainerType;
 }

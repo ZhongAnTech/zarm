@@ -1,27 +1,10 @@
 import React, { Component, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import classnames from 'classnames';
 import PropsType from './PropsType';
 import Popup from '../popup';
+import domUtil from '../utils/dom';
 
-const getParent = (props) => {
-  if (props) {
-    const { getContainer } = props;
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
-      }
-      if (
-        typeof getContainer === 'object'
-        && getContainer instanceof HTMLElement
-      ) {
-        return getContainer;
-      }
-    }
-    return document.body;
-  }
-  return document.body;
-};
+const contentIsToastProps = (content): content is ToastProps => typeof content === 'object' && 'content' in content;
 
 export interface ToastProps extends PropsType {
   prefixCls?: string;
@@ -41,15 +24,17 @@ export default class Toast extends Component<ToastProps, any> {
     Toast.unmountNode();
     if (!Toast.zarmToast) {
       Toast.zarmToast = document.createElement('div');
-      Toast.zarmToast.classList.add('toast-container');
-      Toast.toastContainer = getParent(content);
+      Toast.zarmToast.classList.add('za-toast-container');
+      if (contentIsToastProps(content) && content.className) {
+        Toast.zarmToast.classList.add(content.className);
+      }
+      Toast.toastContainer = contentIsToastProps(content) ? domUtil.getMountNode(content.getContainer) : domUtil.getMountNode();
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
     if (Toast.zarmToast) {
-      const contentIsReactNode = React.isValidElement(content) || (content && typeof content !== 'object') || !content;
-      const props = contentIsReactNode
-        ? { ...Toast.defaultProps, ...{ visible: true, getContainer: Toast.zarmToast, content } }
-        : { ...Toast.defaultProps, ...content as ToastProps, ...{ visible: true, getContainer: Toast.zarmToast } };
+      const props = contentIsToastProps(content)
+        ? { ...Toast.defaultProps, ...content, ...{ visible: true, getContainer: Toast.zarmToast } }
+        : { ...Toast.defaultProps, ...{ visible: true, getContainer: Toast.zarmToast, content } };
       ReactDOM.render(
         <Toast {...props} />,
         Toast.zarmToast,
@@ -154,8 +139,6 @@ export default class Toast extends Component<ToastProps, any> {
 
     const { visible } = this.state;
 
-    const cls = classnames(prefixCls, className);
-
     return (
       <Popup
         direction="center"
@@ -165,7 +148,7 @@ export default class Toast extends Component<ToastProps, any> {
         visible={visible}
         afterClose={this.afterClose}
       >
-        <div className={cls}>
+        <div className={prefixCls}>
           <div className={`${prefixCls}__container`}>{content}</div>
         </div>
       </Popup>

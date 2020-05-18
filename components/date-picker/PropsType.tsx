@@ -1,6 +1,5 @@
 import BaseDatePickerViewProps from '../date-picker-view/PropsType';
-
-type getContainerFunc = () => HTMLElement;
+import { ContainerType } from '../popup/PropsType';
 
 export default interface BaseDatePickerProps extends BaseDatePickerViewProps {
   visible?: boolean;
@@ -11,5 +10,5 @@ export default interface BaseDatePickerProps extends BaseDatePickerViewProps {
   onCancel?: () => void;
   onChange?: (value: Date) => void;
   maskClosable?: boolean;
-  getContainer?: HTMLElement | getContainerFunc;
+  getContainer?: ContainerType;
 }

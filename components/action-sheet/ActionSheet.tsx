@@ -37,12 +37,12 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
 
   render() {
     const { prefixCls, className, spacing, visible, onMaskClick, actions, destroy } = this.props;
-    const cls = classnames(prefixCls, className, {
+    const cls = classnames(prefixCls, {
       [`${prefixCls}--spacing`]: spacing,
     });
 
     return (
-      <Popup visible={visible} onMaskClick={onMaskClick} destroy={destroy}>
+      <Popup className={className} visible={visible} onMaskClick={onMaskClick} destroy={destroy}>
         <div className={cls}>
           <div className={`${prefixCls}__actions`}>
             {actions.map(this.renderActions)}

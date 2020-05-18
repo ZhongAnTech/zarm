@@ -1,28 +1,9 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import classnames from 'classnames';
 import PropsType from './PropsType';
 import Popup from '../popup';
+import domUtil from '../utils/dom';
 import ActivityIndicator from '../activity-indicator';
-
-const getParent = (props) => {
-  if (props) {
-    const { getContainer } = props;
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
-      }
-      if (
-        typeof getContainer === 'object'
-        && getContainer instanceof HTMLElement
-      ) {
-        return getContainer;
-      }
-    }
-    return document.body;
-  }
-  return document.body;
-};
 
 export interface LoadingProps extends PropsType {
   prefixCls?: string;
@@ -45,8 +26,11 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     Loading.unmountNode();
     if (!Loading.zarmLoading) {
       Loading.zarmLoading = document.createElement('div');
-      Loading.zarmLoading.classList.add('loading-container');
-      Loading.loadingContainer = getParent(content);
+      Loading.zarmLoading.classList.add('za-loading-container');
+      if (content && content.className) {
+        Loading.zarmLoading.classList.add(content.className);
+      }
+      Loading.loadingContainer = content ? domUtil.getMountNode(content.getContainer) : domUtil.getMountNode();
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
     if (Loading.zarmLoading) {
@@ -139,7 +123,6 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
   render() {
     const { prefixCls, content, stayTime, className, ...others } = this.props;
     const { visible } = this.state;
-    const cls = classnames(prefixCls, className);
     return (
       <Popup
         direction="center"
@@ -149,7 +132,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
         visible={visible}
         afterClose={this.afterClose}
       >
-        <div className={cls}>
+        <div className={prefixCls}>
           <div className={`${prefixCls}__container`}>{content || <ActivityIndicator type="spinner" size="lg" />}</div>
         </div>
       </Popup>

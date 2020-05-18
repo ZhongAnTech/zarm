@@ -4,11 +4,14 @@ import Modal from './Modal';
 import Alert from '../alert/Alert';
 import Confirm from '../confirm/Confirm';
 import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
-
+import domUtil from '../utils/dom';
 
 function modalType(props, type) {
-  const div = document.createElement('div');
-  document.body.appendChild(div);
+  const { className = '', getContainer } = props;
+  const container = document.createElement('div');
+  container.className += `za-${type}-container ${className}`;
+  const mountNode = domUtil.getMountNode(getContainer);
+  mountNode.appendChild(container);
 
   let resolveFn = (result: boolean) => result;
   const { onCancel, onOk } = props;
@@ -62,8 +65,8 @@ function modalType(props, type) {
   }
 
   function _afterClose() {
-    if (div.parentNode) {
-      div.parentNode.removeChild(div);
+    if (mountNode) {
+      mountNode.removeChild(container);
     }
   }
 
@@ -72,20 +75,20 @@ function modalType(props, type) {
     if (type === 'alert') {
       let _props: any = props;
       if (runTimeLocale && runTimeLocale.Alert) {
-        _props = { ...props, locale: runTimeLocale.Alert };
+        _props = { ...props, className: '', locale: runTimeLocale.Alert };
       }
       ReactDOM.render(
-        <Alert {..._props} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
-        div,
+        <Alert {..._props} getContainer={container} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
+        container,
       );
     } else {
       let _props: any = props;
       if (runTimeLocale && runTimeLocale.Confirm) {
-        _props = { ...props, locale: runTimeLocale.Confirm };
+        _props = { ...props, className: '', locale: runTimeLocale.Confirm };
       }
       ReactDOM.render(
-        <Confirm {..._props} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
-        div,
+        <Confirm {..._props} getContainer={container} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
+        container,
       );
     }
   }
