@@ -2,12 +2,11 @@ import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
-import { Icon } from 'zarm';
+import { Icon, BackToTop } from 'zarm';
 import { documents, components } from '@site/site.config';
 import Container from '@site/web/components/Container';
 import Header from '@site/web/components/Header';
 import SideBar from '@site/web/components/SideBar';
-import ScrollToTop from '@site/web/components/ScrollToTop';
 import Markdown from '@site/web/components/Markdown';
 import './style.scss';
 
@@ -60,11 +59,9 @@ class Page extends PureComponent {
               <Redirect to="/" />
             </Switch>
           </div>
-          <ScrollToTop>
-            <div className="scroll-to-top">
-              <Icon type="arrow-top" size="sm" />
-            </div>
-          </ScrollToTop>
+          <BackToTop className="scroll-to-top">
+            <Icon type="arrow-top" size="sm" />
+          </BackToTop>
         </main>
         {/* <Footer /> */}
       </Container>
