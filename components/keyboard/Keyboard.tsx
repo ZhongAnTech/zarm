@@ -3,9 +3,11 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import Icon from '../icon';
 
-const NUMBER_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'close'];
-const PRICE_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'close'];
-const IDCARD_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', 'close'];
+const KEYS = {
+  number: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'close'],
+  price: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'close'],
+  idcard: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'X', '0', 'close'],
+};
 
 export interface KeyboardProps extends PropsType {
   prefixCls?: string;
@@ -47,16 +49,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
 
   getKeys = () => {
     const { type } = this.props;
-    switch (type) {
-      case 'price':
-        return PRICE_KEYS;
-
-      case 'idcard':
-        return IDCARD_KEYS;
-
-      default:
-        return NUMBER_KEYS;
-    }
+    return type ? KEYS[type] : KEYS.number;
   };
 
   renderKey = (text: string, index: number) => {
