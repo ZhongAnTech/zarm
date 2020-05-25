@@ -2,71 +2,69 @@
 
 ## 基本用法
 ```jsx
-import { Tooltip, Cell, Button, Message, Icon } from 'zarm';
+import { Tooltip, Button, Message, Icon } from 'zarm';
 
 const Demo = () => (
-  <>
-    <Cell>
-      <div>
-        <div style={{ marginLeft: 60 }}>
-          <Tooltip direction="topLeft" content="topLeft text">
-            <Button size="xs">TL</Button>
-          </Tooltip>
+  <div className="direction-demo">
+    <div>
+      <div style={{ marginLeft: 60 }}>
+        <Tooltip direction="topLeft" content="topLeft text">
+          <Button size="xs">TL</Button>
+        </Tooltip>
 
-          <Tooltip direction="top" content="top text">
-            <Button size="xs">Top</Button>
-          </Tooltip>
+        <Tooltip direction="top" content="top text">
+          <Button size="xs">Top</Button>
+        </Tooltip>
 
-          <Tooltip direction="topRight" content="topRight text">
-            <Button  size="xs">TR</Button>
-          </Tooltip>
-        </div>
-
-        <div style={{ width: 60, float: 'left', clear: 'both' }}>
-          <Tooltip direction="leftTop" content="leftTop text">
-            <Button size="xs">LT</Button>
-          </Tooltip>
-
-          <Tooltip direction="left" content="left text">
-            <Button size="xs">Left</Button>
-          </Tooltip>
-
-          <Tooltip direction="leftBottom" content="leftBottom text">
-            <Button size="xs">LB</Button>
-          </Tooltip>
-        </div>
-
-        <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
-          <Tooltip direction="rightTop" content="rightTop text">
-            <Button size="xs">RT</Button>
-          </Tooltip>
-
-          <Tooltip direction="right" content="right text">
-            <Button size="xs">Right</Button>
-          </Tooltip>
-
-          <Tooltip direction="rightBottom" content="rightBottom text">
-            <Button size="xs">RB</Button>
-          </Tooltip>
-        </div>
-
-        <div style={{ marginLeft: 60, clear: 'both' }}>
-          <Tooltip direction="bottomLeft" content="bottomLeft text">
-            <Button size="xs">BL</Button>
-          </Tooltip>
-
-          <Tooltip direction="bottom" content="bottom text">
-            <Button size="xs">Bottom</Button>
-          </Tooltip>
-
-          <Tooltip direction="bottomRight" content="bottomRight text">
-            <Button size="xs">BR</Button>
-          </Tooltip>
-        </div>
-        <Message theme="warning" icon={<Icon type="warning-round" />}>左右两侧显示位置不足会自动调整为反向显示</Message>
+        <Tooltip direction="topRight" content="topRight text">
+          <Button  size="xs">TR</Button>
+        </Tooltip>
       </div>
-    </Cell>
-  </>
+
+      <div style={{ width: 60, float: 'left', clear: 'both' }}>
+        <Tooltip direction="leftTop" content="leftTop text">
+          <Button size="xs">LT</Button>
+        </Tooltip>
+
+        <Tooltip direction="left" content="left text">
+          <Button size="xs">Left</Button>
+        </Tooltip>
+
+        <Tooltip direction="leftBottom" content="leftBottom text">
+          <Button size="xs">LB</Button>
+        </Tooltip>
+      </div>
+
+      <div style={{ width: 60, marginLeft: 60 * 4 + 20 }}>
+        <Tooltip direction="rightTop" content="rightTop text">
+          <Button size="xs">RT</Button>
+        </Tooltip>
+
+        <Tooltip direction="right" content="right text">
+          <Button size="xs">Right</Button>
+        </Tooltip>
+
+        <Tooltip direction="rightBottom" content="rightBottom text">
+          <Button size="xs">RB</Button>
+        </Tooltip>
+      </div>
+
+      <div style={{ marginLeft: 60, clear: 'both' }}>
+        <Tooltip direction="bottomLeft" content="bottomLeft text">
+          <Button size="xs">BL</Button>
+        </Tooltip>
+
+        <Tooltip direction="bottom" content="bottom text">
+          <Button size="xs">Bottom</Button>
+        </Tooltip>
+
+        <Tooltip direction="bottomRight" content="bottomRight text">
+          <Button size="xs">BR</Button>
+        </Tooltip>
+      </div>
+      <Message theme="warning" icon={<Icon type="warning-round" />}>左右两侧显示位置不足会自动调整为反向显示</Message>
+    </div>
+  </div>
 );
 
 ReactDOM.render(<Demo />, mountNode);
