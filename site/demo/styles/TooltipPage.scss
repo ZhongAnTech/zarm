@@ -1,7 +1,8 @@
 @import "@site/styles/index";
 
 .tooltip-page {
-  .za-cell__content {
+  .direction-demo {
+    display: flex;
     justify-content: center;
     padding: r(15) 0;
   }
