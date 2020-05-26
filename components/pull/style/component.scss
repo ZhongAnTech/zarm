@@ -1,0 +1,50 @@
+@include b(pull) {
+  overflow: hidden;
+  min-height: var(--pull-control-height);
+  // overflow-x: hidden;
+  // overflow-y: scroll;
+  // height: r(300);
+
+  @include e(content) {
+    will-change: transform;
+    transform: translate3d(0, var(--pull-control-height), 0);
+  }
+
+  @include e(refresh, load) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  @include e(refresh) {
+    margin-top: calc(var(--pull-control-height) * -1);
+    height: var(--pull-control-height);
+  }
+
+  @include e(load) {
+    height: 0;
+
+    @include m(show) {
+      height: var(--pull-control-height);
+    }
+  }
+
+  @include e(control) {
+    display: flex;
+    align-items: center;
+    padding: r(10) 0;
+    height: var(--pull-control-height);
+    color: var(--color-text-caption);
+    font-size: var(--pull-control-font-size);
+
+    @include b(icon) {
+      font-size: r(22);
+    }
+
+    * + span {
+      margin-left: r(8);
+    }
+  }
+}
