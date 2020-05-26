@@ -2644,10 +2644,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zarm-design/cli@^0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.20.tgz#8224bb75783369258c641b044816fea1d44628be"
-  integrity sha512-FsVEeciD2cTDFM6cE/ogLP+KnwB3yK87ATJn1E6omEEm4TVHj3kI+jvQiL5zfHPCBCw5ZUZ+Efbbuhp44/U9ag==
+"@zarm-design/cli@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@zarm-design/cli/-/cli-0.0.22.tgz#1ba543bde82131be70158fd580f9325b15d0d2fe"
+  integrity sha512-ztDxjnQILEfQiKXjrT6VxajvCMkNVFae/xzXuGx6qBsHMc34mkm/NMEbta5qZ5HszmPtP5y+dv7eCRUVyYT/og==
   dependencies:
     "@babel/cli" "^7.5.5"
     "@babel/core" "^7.5.5"
@@ -2671,7 +2671,7 @@
     glob "^7.1.4"
     gulp "^4.0.2"
     gulp-babel "^8.0.0"
-    gulp-sass "^4.0.2"
+    gulp-sass "^4.1.0"
     html-webpack-plugin "^3.2.0"
     import-local "^3.0.2"
     is-wsl "^2.1.0"
@@ -7670,13 +7670,13 @@ gulp-cli@^2.2.0:
     v8flags "^3.0.1"
     yargs "^7.1.0"
 
-gulp-sass@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-4.0.2.tgz#cfb1e3eff2bd9852431c7ce87f43880807d8d505"
-  integrity sha512-q8psj4+aDrblJMMtRxihNBdovfzGrXJp1l4JU0Sz4b/Mhsi2DPrKFYCGDwjIWRENs04ELVHxdOJQ7Vs98OFohg==
+gulp-sass@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-4.1.0.tgz#486d7443c32d42bf31a6b1573ebbdaa361de7427"
+  integrity sha512-xIiwp9nkBLcJDpmYHbEHdoWZv+j+WtYaKD6Zil/67F3nrAaZtWYN5mDwerdo7EvcdBenSAj7Xb2hx2DqURLGdA==
   dependencies:
     chalk "^2.3.0"
-    lodash.clonedeep "^4.3.2"
+    lodash "^4.17.11"
     node-sass "^4.8.3"
     plugin-error "^1.0.1"
     replace-ext "^1.0.0"
@@ -9789,11 +9789,6 @@ lodash._reinterpolate@^3.0.0, lodash._reinterpolate@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
-
-lodash.clonedeep@^4.3.2:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
-  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
 
 lodash.escape@^4.0.1:
   version "4.0.1"
