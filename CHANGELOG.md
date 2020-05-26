@@ -1,5 +1,10 @@
 # 版本更新日志 
 
+## v2.3.1
+- Bug Fix
+  - [Keyboard] 修复身份证号类型的键盘问题，`x` 的改为大写 `X`。[#460](https://github.com/ZhongAnTech/zarm/pull/460)
+
+
 ## v2.3.0
 - Bug Fix
   - [BackToTop] 修复点击返回顶部时触发的 `onScroll` 事件，在安卓低版本不兼容的问题。[#455](https://github.com/ZhongAnTech/zarm/pull/455)
