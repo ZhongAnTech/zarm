@@ -1,0 +1,13 @@
+@include b(mask) {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, var(--opacity-mask));
+  z-index: var(--zindex-mask);
+
+  @include m(transparent) {
+    background-color: transparent;
+  }
+}

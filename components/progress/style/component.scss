@@ -1,3 +1,5 @@
+@import 'mixins';
+
 @include b(progress) {
   display: inline-block;
   position: relative;
