@@ -14,7 +14,8 @@
       "classnames",
       "react",
       "react-dom",
-      "react-native"
+      "react-native",
+      "node"
     ]
   },
   "include": [

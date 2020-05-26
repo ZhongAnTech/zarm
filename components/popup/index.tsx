@@ -1,14 +1,16 @@
 import React, { PureComponent } from 'react';
 import PropsType from './PropsType';
 import Portal from './Portal';
-import apiDetect from '../utils/apiDetect';
+import warnIfDeprecated from '../utils/warnIfDeprecated';
 
 export interface PopupProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
-@apiDetect([{ deprecated: 'getContainer', recommended: 'mountContainer' }])
+@warnIfDeprecated([
+  { oldProp: 'getContainer', newProp: 'mountContainer' },
+])
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps = {
     destroy: true,
