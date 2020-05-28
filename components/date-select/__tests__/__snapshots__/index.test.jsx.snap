@@ -97,6 +97,7 @@ exports[`DateSelect DateSelect date 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -217,6 +218,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -392,6 +394,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={true}
               >
                 <Portal
@@ -2347,6 +2350,7 @@ exports[`DateSelect DateSelect time 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -2446,6 +2450,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -2554,6 +2559,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>
@@ -2680,6 +2686,7 @@ exports[`DateSelect DateSelect year 1`] = `
               <Popup
                 destroy={true}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </DatePicker>

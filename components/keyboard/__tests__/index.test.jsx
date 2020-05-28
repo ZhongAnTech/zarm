@@ -33,7 +33,7 @@ describe('Keyboard', () => {
     const handles = wrapper.find('.za-keyboard__handle');
     handles.childAt(0).simulate('touchstart');
     expect(onKeyClick).toBeCalledWith('delete');
-    handles.childAt(1).simulate('click');
+    handles.childAt(1).simulate('touchstart');
     expect(onKeyClick).toBeCalledWith('ok');
   });
 });

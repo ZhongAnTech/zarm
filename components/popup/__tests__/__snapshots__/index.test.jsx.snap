@@ -6,6 +6,7 @@ exports[`Popup renders correctly 1`] = `
   destroy={true}
   direction="bottom"
   onMaskClick={[MockFunction]}
+  prefixCls="za-popup"
 />
 `;
 
@@ -16,6 +17,7 @@ exports[`Popup renders mount node correctly 1`] = `
   direction="bottom"
   getContainer={[Function]}
   onMaskClick={[MockFunction]}
+  prefixCls="za-popup"
   visible={true}
 >
   <Portal

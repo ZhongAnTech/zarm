@@ -276,6 +276,7 @@ exports[`Select Cascader Select 1`] = `
               <Popup
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </Picker>
@@ -606,6 +607,7 @@ exports[`Select Cascader Select init value 1`] = `
               <Popup
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </Picker>
@@ -773,6 +775,7 @@ exports[`Select Select 1`] = `
               <Popup
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </Picker>
@@ -946,6 +949,7 @@ exports[`Select Select disabled 1`] = `
               <Popup
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={true}
               >
                 <Portal
@@ -1370,6 +1374,7 @@ exports[`Select render defaultValue correctly  1`] = `
               <Popup
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               />
             </Picker>

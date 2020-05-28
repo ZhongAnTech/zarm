@@ -10,6 +10,7 @@ exports[`KeyboardPicker renders correctly 1`] = `
   <Popup
     destroy={true}
     mask={false}
+    prefixCls="za-popup"
     visible={false}
   />
 </KeyboardPicker>

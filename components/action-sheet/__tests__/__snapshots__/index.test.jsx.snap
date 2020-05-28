@@ -80,6 +80,7 @@ exports[`ActionSheet renders correctly 1`] = `
       <Popup
         destroy={true}
         onMaskClick={[MockFunction]}
+        prefixCls="za-popup"
         visible={true}
       >
         <Portal
