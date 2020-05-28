@@ -260,7 +260,7 @@ describe('Input.Number', () => {
     const wrapper = mount(<Input type="number" focused onChange={onChange} />);
     wrapper.find('input').simulate('focus');
     const keys = wrapper.find('.za-keyboard__keys');
-    keys.childAt(0).simulate('click');
+    keys.childAt(0).simulate('touchStart');
     expect(onChange).toBeCalledWith('1');
     wrapper.unmount();
   });
@@ -270,7 +270,7 @@ describe('Input.Number', () => {
     const wrapper = mount(<Input type="number" focused onBlur={onBlur} />);
     wrapper.find('input').simulate('focus');
     const keys = wrapper.find('.za-keyboard__keys');
-    keys.childAt(11).simulate('click');
+    keys.childAt(11).simulate('touchStart');
     expect(onBlur).toBeCalled();
     wrapper.unmount();
   });

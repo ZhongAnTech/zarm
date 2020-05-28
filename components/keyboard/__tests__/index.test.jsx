@@ -24,10 +24,10 @@ describe('Keyboard', () => {
     const wrapper = mount(<Keyboard onKeyClick={onKeyClick} />);
     const keys = wrapper.find('.za-keyboard__keys');
     expect(keys.childAt(0).text()).toBe('1');
-    keys.childAt(0).simulate('click');
+    keys.childAt(0).simulate('touchStart');
     expect(onKeyClick).toBeCalledWith('1');
-    keys.childAt(9).simulate('click');
-    keys.childAt(11).simulate('click');
+    keys.childAt(9).simulate('touchStart');
+    keys.childAt(11).simulate('touchStart');
     expect(onKeyClick).toBeCalledWith('close');
 
     const handles = wrapper.find('.za-keyboard__handle');
