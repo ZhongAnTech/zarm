@@ -9,6 +9,7 @@ export interface PopupProps extends PropsType {
 
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps = {
+    prefixCls: 'za-popup',
     destroy: true,
   };
 
