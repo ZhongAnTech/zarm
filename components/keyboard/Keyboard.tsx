@@ -63,7 +63,7 @@ export default class Keyboard extends PureComponent<KeyboardProps, {}> {
       <div
         className={keyCls}
         key={+index}
-        onClick={() => this.onKeyClick(text)}
+        onTouchStart={() => this.onKeyClick(text)}
       >
         {(text === 'close') ? <Icon type="keyboard" size="lg" /> : text}
       </div>
