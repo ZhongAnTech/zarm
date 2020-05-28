@@ -128,7 +128,7 @@
     "rimraf": "^3.0.2",
     "stylelint": "^13.0.0",
     "stylelint-config-za": "^0.1.0",
-    "typescript": "^3.9.3"
+    "typescript": "3.6.4"
   },
   "lint-staged": {
     "components/**/*.{ts,tsx}": "eslint",
