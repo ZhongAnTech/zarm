@@ -10,7 +10,7 @@ export interface ActionSheetProps extends PropsType {
 }
 
 export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
-  static defaultProps = {
+  static defaultProps: ActionSheetProps = {
     prefixCls: 'za-action-sheet',
     visible: false,
     spacing: false,

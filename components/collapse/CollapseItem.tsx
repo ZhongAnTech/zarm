@@ -12,7 +12,7 @@ interface CollapseItemStates {
 }
 
 export default class CollapseItem extends PureComponent<CollapseItemProps, CollapseItemStates> {
-  static defaultProps = {
+  static defaultProps: CollapseItemProps = {
     prefixCls: 'za-collapse-item',
     animated: false,
     disabled: false,

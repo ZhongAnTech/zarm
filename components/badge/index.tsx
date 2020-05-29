@@ -8,7 +8,7 @@ export interface BadgeProps extends PropsType {
 }
 
 export default class Badge extends PureComponent<BadgeProps, {}> {
-  static defaultProps = {
+  static defaultProps: BadgeProps = {
     prefixCls: 'za-badge',
     shape: 'dot',
     theme: 'danger',

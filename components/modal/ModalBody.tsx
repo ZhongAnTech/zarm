@@ -7,7 +7,7 @@ interface ModalBodyProps {
 }
 
 export default class ModalBody extends PureComponent<ModalBodyProps, {}> {
-  static defaultProps = {
+  static defaultProps: ModalBodyProps = {
     prefixCls: 'za-modal',
   };
 

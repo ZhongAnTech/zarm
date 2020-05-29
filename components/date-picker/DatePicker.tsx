@@ -12,13 +12,12 @@ export interface DatePickerProps extends BaseDatePickerProps {
 }
 
 export default class DatePicker extends Component<DatePickerProps, any> {
-  static defaultProps = {
+  static defaultProps: DatePickerProps = {
     mode: 'date',
     minuteStep: 1,
     prefixCls: 'za-date-picker',
     valueMember: 'value',
     maskClosable: true,
-    destroy: false,
     onCancel: () => {},
     onInit: () => {},
   };

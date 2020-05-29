@@ -62,12 +62,11 @@ export default class Toast extends Component<ToastProps, any> {
 
   private timer;
 
-  static defaultProps = {
+  static defaultProps: ToastProps = {
     prefixCls: 'za-toast',
     visible: false,
     stayTime: 3000,
     mask: false,
-    destroy: true,
   };
 
   state = {

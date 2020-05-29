@@ -4,7 +4,7 @@ import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
-  static defaultProps = {
+  static defaultProps: InputBaseProps = {
     prefixCls: 'za-input',
     disabled: false,
     type: 'text',

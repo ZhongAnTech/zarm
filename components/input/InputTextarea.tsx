@@ -9,7 +9,7 @@ const countSymbols = (text = '') => {
 };
 
 export default class InputTextarea extends PureComponent<InputTextareaProps, any> {
-  static defaultProps = {
+  static defaultProps: InputTextareaProps = {
     prefixCls: 'za-input',
     disabled: false,
     autoHeight: false,

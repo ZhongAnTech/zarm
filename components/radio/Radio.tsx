@@ -29,7 +29,7 @@ export interface RadioStates {
 export default class Radio extends PureComponent<RadioProps, RadioStates> {
   static Group: typeof RadioGroup;
 
-  static defaultProps = {
+  static defaultProps: RadioProps = {
     prefixCls: 'za-radio',
     disabled: false,
     shape: 'radius',

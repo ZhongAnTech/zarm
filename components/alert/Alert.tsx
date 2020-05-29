@@ -11,11 +11,10 @@ export interface AlertProps extends PropsType {
 }
 
 export default class Alert extends PureComponent<AlertProps, {}> {
-  static defaultProps = {
+  static defaultProps: AlertProps = {
     prefixCls: 'za-alert',
     animationType: 'zoom',
     locale: alertLocale,
-    destroy: true,
   };
 
   render() {

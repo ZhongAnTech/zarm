@@ -32,7 +32,7 @@ export default class Checkbox extends PureComponent<CheckboxProps, CheckboxState
 
   static displayName = 'Checkbox';
 
-  static defaultProps = {
+  static defaultProps: CheckboxProps = {
     prefixCls: 'za-checkbox',
     disabled: false,
     indeterminate: false,

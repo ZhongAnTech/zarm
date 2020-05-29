@@ -1,5 +1,5 @@
 
-export type ContainerType = HTMLElement | (() => HTMLElement);
+export type ContainerType = Window | HTMLElement | (() => HTMLElement);
 
 export const getScrollContainer = (container?: ContainerType): HTMLElement | Window => {
   if (container) {
