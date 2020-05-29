@@ -1,5 +1,10 @@
 # 版本更新日志 
 
+## v2.3.2
+- Bug Fix
+  - [Input] 修复数字键盘因点击过快导致出现卡顿，丢失输入数据的bug。[#464](https://github.com/ZhongAnTech/zarm/pull/464)
+
+
 ## v2.3.1
 - Bug Fix
   - [Keyboard] 修复身份证号类型的键盘问题，`x` 的改为大写 `X`。[#460](https://github.com/ZhongAnTech/zarm/pull/460)
