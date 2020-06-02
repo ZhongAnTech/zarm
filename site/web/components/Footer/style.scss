@@ -1,21 +1,20 @@
 
 footer {
   display: flex;
-  min-height: 220px;
+  min-height: 260px;
   margin-left: 280px;
-  padding: 30px 56px;
-  padding-right: 280px;
-  // background: #000;
-  // background-image: linear-gradient(to right bottom, #333 50%, #000 50%);
+  padding: 30px 50px;
   background-image: linear-gradient(to right bottom, #12c287 50%, #0db77e 50%);
 
   .group {
     flex: 1;
+    margin-bottom: 40px;
 
     h2 {
       font-weight: 500;
       font-size: 16px;
       color: #fff;
+      margin-top: 0;
       margin-bottom: 20px;
     }
 

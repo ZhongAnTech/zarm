@@ -1,0 +1,25 @@
+.scroll-to-top {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #999;
+  font-size: 20px;
+  border-radius: 30px;
+  background-color: #fff;
+  opacity: 0.9;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+
+  .za-icon {
+    color: #ccc;
+    font-size: 20px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+
+    .za-icon {
+      color: #999;
+    }
+  }
+}
