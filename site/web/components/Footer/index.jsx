@@ -27,7 +27,7 @@ class Footer extends Component {
             <li><a href="/#/components/change-log">更新日志</a></li>
             <li><a href="https://github.com/ZhongAnTech/zarm/issues/new" rel="noopener noreferrer" target="_blank">报告 Bug</a></li>
             <li><a href="https://github.com/ZhongAnTech/zarm/issues" rel="noopener noreferrer" target="_blank">Bug 列表</a></li>
-            <li><a href="hhttps://gitter.im/ZhonganTech/zarm" rel="noopener noreferrer" target="_blank">在线讨论</a></li>
+            <li><a href="https://gitter.im/ZhonganTech/zarm" rel="noopener noreferrer" target="_blank">在线讨论</a></li>
           </ul>
         </div>
       </footer>
