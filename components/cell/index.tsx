@@ -13,7 +13,7 @@ export interface CellProps extends HTMLDivProps, PropsType {
 }
 
 export default class Cell extends PureComponent<CellProps, {}> {
-  static defaultProps = {
+  static defaultProps: CellProps = {
     prefixCls: 'za-cell',
     hasArrow: false,
     disabled: false,

@@ -8,7 +8,7 @@ import Icon from '../icon';
 declare const document;
 
 export default class InputNumber extends Component<InputNumberProps, any> {
-  static defaultProps = {
+  static defaultProps: InputNumberProps = {
     prefixCls: 'za-input',
     disabled: false,
     clearable: true,

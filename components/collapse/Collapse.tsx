@@ -33,7 +33,7 @@ const getActiveKey = (props: CollapseProps) => {
 };
 
 export default class Collapse extends Component<CollapseProps, CollapseStates> {
-  static defaultProps = {
+  static defaultProps: CollapseProps = {
     prefixCls: 'za-collapse',
     multiple: false,
     animated: false,

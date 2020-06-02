@@ -1,7 +1,6 @@
-import React, { PureComponent } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
-import { Icon, BackToTop } from 'zarm';
 import { design } from '@site/site.config';
 import Container from '@site/web/components/Container';
 import Header from '@site/web/components/Header';
@@ -14,30 +13,25 @@ const LoadableComponent = (component) => {
   });
 };
 
-class Page extends PureComponent {
-  render() {
-    return (
-      <Container className="design-page">
-        <Header />
-        <main>
-          <div className="main-container">
-            <Switch>
-              {
-                design.map((doc, i) => (
-                  <Route key={+i} path={`/design/${doc.key}`} component={LoadableComponent(doc)} />
-                ))
-              }
-              <Redirect to="/" />
-            </Switch>
-          </div>
-          <BackToTop className="scroll-to-top">
-            <Icon type="arrow-top" size="sm" />
-          </BackToTop>
-        </main>
-        {/* <Footer /> */}
-      </Container>
-    );
-  }
-}
+const Page = () => {
+  return (
+    <Container className="design-page">
+      <Header />
+      <main>
+        <div className="main-container">
+          <Switch>
+            {
+              design.map((doc, i) => (
+                <Route key={+i} path={`/design/${doc.key}`} component={LoadableComponent(doc)} />
+              ))
+            }
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </main>
+      {/* <Footer /> */}
+    </Container>
+  );
+};
 
-export default withRouter(Page);
+export default Page;

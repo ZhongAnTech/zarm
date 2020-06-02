@@ -73,7 +73,6 @@ exports[`DateSelect DateSelect date 1`] = `
             visible={false}
           >
             <DatePicker
-              destroy={false}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -193,7 +192,6 @@ exports[`DateSelect DateSelect datetime 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
-              destroy={false}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -370,7 +368,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                   },
                 ]
               }
-              destroy={false}
               disabeld={true}
               locale={
                 Object {
@@ -1012,7 +1009,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 },
                               ]
                             }
-                            destroy={false}
                             disabeld={true}
                             localeCode="zh-cn"
                             minuteStep={1}
@@ -1036,7 +1032,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                   },
                                 ]
                               }
-                              destroy={false}
                               disabeld={true}
                               forwardedRef={null}
                               localeCode="zh-cn"
@@ -1062,7 +1057,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                   ]
                                 }
                                 defaultValue=""
-                                destroy={false}
                                 disabeld={true}
                                 disabled={false}
                                 locale={
@@ -1083,7 +1077,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                 prefixCls="za-date-picker-view"
                                 value={2019-04-23T04:00:00.000Z}
                                 valueMember="value"
-                                visible={true}
                               >
                                 <PickerView
                                   cols={Infinity}
@@ -1390,7 +1383,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     ]
                                   }
                                   defaultValue=""
-                                  destroy={false}
                                   disabeld={true}
                                   disabled={false}
                                   itemRender={[Function]}
@@ -1417,7 +1409,6 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     ]
                                   }
                                   valueMember="value"
-                                  visible={true}
                                 >
                                   <div
                                     className="za-date-picker-view"
@@ -2327,7 +2318,6 @@ exports[`DateSelect DateSelect time 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03 15:00"
-              destroy={false}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -2428,7 +2418,6 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           >
             <DatePicker
               defaultValue="2017-11-03"
-              destroy={false}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -2535,7 +2524,6 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
             wheelDefaultValue="2017-11-03 15:00"
           >
             <DatePicker
-              destroy={false}
               locale={
                 Object {
                   "cancelText": "取消",
@@ -2662,7 +2650,6 @@ exports[`DateSelect DateSelect year 1`] = `
             visible={false}
           >
             <DatePicker
-              destroy={false}
               locale={
                 Object {
                   "cancelText": "取消",

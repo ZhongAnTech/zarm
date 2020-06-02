@@ -40,7 +40,7 @@ export interface CheckboxGroupStates {
 export default class CheckboxGroup extends PureComponent<CheckboxGroupProps, CheckboxGroupStates> {
   static displayName = 'CheckboxGroup';
 
-  static defaultProps = {
+  static defaultProps: CheckboxGroupProps = {
     prefixCls: 'za-checkbox-group',
     shape: 'radius',
     block: false,

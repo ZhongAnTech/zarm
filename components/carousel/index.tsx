@@ -10,7 +10,7 @@ export interface CarouselProps extends PropsType {
 }
 
 export default class Carousel extends Component<CarouselProps, any> {
-  static defaultProps = {
+  static defaultProps: CarouselProps = {
     prefixCls: 'za-carousel',
     direction: 'left',
     height: 160,
@@ -84,7 +84,7 @@ export default class Carousel extends Component<CarouselProps, any> {
     const dom = this.carouselItems;
 
     const { loop, children, onChange } = this.props;
-    const maxLength = children.length;
+    const maxLength = children!.length;
     const previousIndex = this.state.activeIndex;
 
     this.translateX = -dom.offsetWidth * (index + loop);
@@ -109,13 +109,13 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 触屏事件
   onDragStart = () => {
-    const { swipeable } = this.props;
+    const { swipeable, children } = this.props;
     if (!swipeable) {
       return false;
     }
     // 跳转到头尾
     const { activeIndex } = this.state;
-    const maxLength = this.props.children.length;
+    const maxLength = children!.length;
 
     if (activeIndex <= 0) {
       this.onJumpTo(0);
@@ -314,7 +314,7 @@ export default class Carousel extends Component<CarouselProps, any> {
 
   // 判断当前是否在最后一页
   isLastIndex = () => {
-    return this.state.activeIndex >= this.props.children.length - 1;
+    return this.state.activeIndex >= this.props.children!.length - 1;
   };
 
   // 判断当前是否在第一页

@@ -3345,6 +3345,11 @@ async-settle@^1.0.0:
   dependencies:
     async-done "^1.2.2"
 
+async-validator@^1.10.1:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/async-validator/-/async-validator-1.12.2.tgz#beae671e7174d2938b7b4b69d2fb7e722b7fd72c"
+  integrity sha512-57EETfCPFiB7M4QscvQzWSGNsmtkjjzZv318SK1CBlstk+hycV72ocjriMOOM48HjvmoAoJGpJNjC7Z76RlnZA==
+
 async@^2.4.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.2.tgz#18330ea7e6e313887f5d2f2a904bac6fe4dd5381"
@@ -5119,6 +5124,14 @@ create-react-context@0.2.3:
     fbjs "^0.8.0"
     gud "^1.0.0"
 
+create-react-context@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.3.0.tgz#546dede9dc422def0d3fc2fe03afe0bc0f4f7d8c"
+  integrity sha512-dNldIoSuNSvlTJ7slIKC/ZFGKexBMBrrcc+TTe1NdmROnaASuLPvqpwj9v4XS4uXZ8+YPu0sNmShX2rXI5LNsw==
+  dependencies:
+    gud "^1.0.0"
+    warning "^4.0.3"
+
 cross-env@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.2.tgz#bd5ed31339a93a3418ac4f3ca9ca3403082ae5f9"
@@ -5860,17 +5873,6 @@ dot-prop@^4.1.1:
   integrity sha512-tUMXrxlExSW6U2EXiiKGSBVdYgtV8qlHL+C10TsW4PURY/ic+eaysnSkwB4kA/mBlCyy/IKDJ+Lc3wbWeaXtuQ==
   dependencies:
     is-obj "^1.0.0"
-
-dragon-ui@1.0.0-alpha.18:
-  version "1.0.0-alpha.18"
-  resolved "https://registry.yarnpkg.com/dragon-ui/-/dragon-ui-1.0.0-alpha.18.tgz#1665ad5b17ada1efc8584064622b9d6ae35605d5"
-  integrity sha512-npdOYAK5746LG6sU1c1j34tQgEDCqrh59Ii9pbrPBfzIfB1WdSiYZpJUV1HdPGcGHAr9H4hq/TCWzOjQAh78NQ==
-  dependencies:
-    classnames "^2.2.5"
-    css-animation "^1.2.5"
-    hoist-non-react-statics "^3.0.1"
-    rc-animate "^3.0.0-rc.5"
-    tslib "^1.9.3"
 
 duplexer@^0.1.1:
   version "0.1.1"
@@ -16299,6 +16301,13 @@ warning@^2.1.0:
   dependencies:
     loose-envify "^1.0.0"
 
+warning@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
+  dependencies:
+    loose-envify "^1.0.0"
+
 watchpack@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"
@@ -16879,6 +16888,35 @@ yargs@^9.0.0:
     which-module "^2.0.0"
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
+
+zarm-web@0.0.1-alpha.10:
+  version "0.0.1-alpha.10"
+  resolved "https://registry.yarnpkg.com/zarm-web/-/zarm-web-0.0.1-alpha.10.tgz#1c7738f55b63518b8fc3ce32eef3929bf1cb00a8"
+  integrity sha512-U2vgird+37FOo5sVpNpuCDeIOEtB5YDyRg4rXszTopY74jNu1exBAdS6il+CeRrVXBzO5ya/uiEyPZP2PJ3ftQ==
+  dependencies:
+    async-validator "^1.10.1"
+    classnames "2.2.6"
+    color "^3.1.0"
+    create-react-context "^0.3.0"
+    css-animation "^1.2.5"
+    normalize.css "8.0.1"
+    rc-animate "^3.0.0-rc.5"
+    zarm "2.3.3"
+
+zarm@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/zarm/-/zarm-2.3.3.tgz#af8e2683ab95d20fc13768796510cc30199ec387"
+  integrity sha512-pqISTMjBGFGMByD9Jz/QI0PUdxhpd9F3LuBURBBeFILgjYpWsnbfTcqfTtsu5eS7J1UwRECMSPuQjczHHdnH+A==
+  dependencies:
+    better-scroll "1.15.1"
+    classnames "2.2.6"
+    color "^3.1.0"
+    create-react-context "0.2.3"
+    hoist-non-react-statics "^3.3.0"
+    lodash "^4.17.15"
+    normalize.css "8.0.1"
+    popper.js "^1.15.0"
+    react-native-camera-roll-picker "1.2.3"
 
 zepto@^1.2.0:
   version "1.2.0"

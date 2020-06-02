@@ -80,7 +80,7 @@ const parseState = (props: CalendarProps) => {
 export default class CalendarView extends PureComponent<CalendarProps, CalendarStates> {
   static displayName = 'CalendarView';
 
-  static defaultProps = {
+  static defaultProps: CalendarProps = {
     prefixCls: 'za-calendar',
     multiple: false,
     min: new Date(),

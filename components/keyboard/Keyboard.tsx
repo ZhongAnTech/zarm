@@ -15,7 +15,7 @@ export interface KeyboardProps extends PropsType {
 }
 
 export default class Keyboard extends PureComponent<KeyboardProps, {}> {
-  static defaultProps = {
+  static defaultProps: KeyboardProps = {
     prefixCls: 'za-keyboard',
     type: 'number',
   };

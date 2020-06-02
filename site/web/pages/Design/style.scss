@@ -6,32 +6,30 @@
   main {
     position: relative;
     min-width: 1200px;
-    margin: 110px auto 15px;
+    margin: 100px auto 15px;
     background-color: #fff;
     overflow: hidden;
 
     .main-container {
       min-height: 500px;
-      margin-left: -1px;
-      padding: 0 60px 140px 340px;
+      margin: 0 60px 60px 340px;
       overflow: hidden;
-      border-left: 1px solid #ebedf0;
       font-size: 16px;
     }
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .side-bar {
     display: none;
   }
 
-  .components-page {
+  .design-page {
     main {
       min-width: 100%;
 
       .main-container {
-        padding: 0 20px;
+        margin: 0 20px;
       }
     }
   }

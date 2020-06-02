@@ -95,7 +95,6 @@
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "docsearch.js": "^2.6.1",
-    "dragon-ui": "1.0.0-alpha.18",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
@@ -128,7 +127,8 @@
     "rimraf": "^3.0.2",
     "stylelint": "^13.0.0",
     "stylelint-config-za": "^0.1.0",
-    "typescript": "3.6.4"
+    "typescript": "3.6.4",
+    "zarm-web": "0.0.1-alpha.10"
   },
   "lint-staged": {
     "components/**/*.{ts,tsx}": "eslint",

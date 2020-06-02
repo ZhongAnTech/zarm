@@ -22,6 +22,7 @@ class Demo extends React.Component {
     return (
       <>
         <Cell
+          title="普通"
           description={
             <Switch
               checked={this.state.value}
@@ -31,12 +32,10 @@ class Demo extends React.Component {
               }}
             />
           }
-        >
-          普通
-        </Cell>
-        <Cell description={<Switch defaultChecked />}>默认开</Cell>
-        <Cell description={<Switch disabled />}>禁用的开关（默认关）</Cell>
-        <Cell description={<Switch defaultChecked disabled />}>禁用的开关（默认开）</Cell>
+        />
+        <Cell title="默认开" description={<Switch defaultChecked />} />
+        <Cell title="禁用的开关（默认关）" description={<Switch disabled />} />
+        <Cell title="禁用的开关（默认开）" description={<Switch defaultChecked disabled />} />
       </>
     )
   }
