@@ -6,7 +6,7 @@
 ```jsx
 import { Icon, TabBar, Cell, Button } from 'zarm';
 
-const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_a2hs6y6hbr8.js');
+const TabIcon = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
 class Demo extends React.Component {
   state = {

@@ -16,8 +16,8 @@ class Footer extends Component {
         <div className="group">
           <h2>社区</h2>
           <ul>
+            <li><a href="https://zhuanlan.zhihu.com/c_135293309" rel="noopener noreferrer" target="_blank">众安前端知乎专栏</a></li>
             <li><a href="https://app.mokahr.com/apply/zhongan/320" rel="noopener noreferrer" target="_blank">加入我们</a></li>
-            <li><a href="https://zhuanlan.zhihu.com/c_135293309" rel="noopener noreferrer" target="_blank">众安前端专栏（知乎）</a></li>
           </ul>
         </div>
         <div className="group">

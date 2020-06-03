@@ -23,7 +23,7 @@ const LoadableComponent = (component) => {
   });
 };
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_jg2hhwrcth8.js');
+const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
 const Page = () => {
   const { general, form, feedback, view, navigation, other } = components;

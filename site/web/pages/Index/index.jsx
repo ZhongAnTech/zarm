@@ -12,17 +12,18 @@ const Page = () => {
   const [dropdown, setDropdown] = useState(false);
   const [mounted, setMounted] = useState(false);
   const history = useHistory();
+  const demoURL = `${window.location.origin}/demo.html`;
 
   useEffect(() => {
     if (!dropdown || mounted) return;
 
     const qr = new QRious({
       element: qrcode.current,
-      value: `${window.location.origin}/demo.html`,
+      value: demoURL,
       size: 134,
     });
     setMounted(true);
-  }, [dropdown, mounted]);
+  }, [demoURL, dropdown, mounted]);
 
   return (
     <Container className="index-page">
@@ -45,7 +46,11 @@ const Page = () => {
               visible={dropdown}
               onVisibleChange={setDropdown}
               direction="bottom"
-              content={<canvas ref={qrcode} />}
+              content={(
+                <a href={demoURL}>
+                  <canvas ref={qrcode} />
+                </a>
+              )}
               destroy={false}
             >
               <button type="button" className="ghost">扫码体验</button>
