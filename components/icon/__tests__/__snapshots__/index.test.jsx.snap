@@ -125,9 +125,9 @@ Array [
 exports[`Icon renders Icons using iconfont 1`] = `
 Array [
   <i
-    class="za-icon za-icon--icon-empty_fill za-icon--primary za-icon--lg"
-    theme="primary"
-    type="icon-empty_fill"
+    class="za-icon za-icon--home za-icon--default za-icon--md"
+    theme="default"
+    type="home"
   >
     <svg
       fill="currentColor"
@@ -136,14 +136,14 @@ Array [
       width="1em"
     >
       <use
-        href="#icon-empty_fill"
+        href="#home"
       />
     </svg>
   </i>,
   <i
-    class="za-icon za-icon--icon-caidan07 za-icon--primary za-icon--lg"
-    theme="primary"
-    type="icon-caidan07"
+    class="za-icon za-icon--user za-icon--default za-icon--md"
+    theme="default"
+    type="user"
   >
     <svg
       fill="currentColor"
@@ -152,7 +152,7 @@ Array [
       width="1em"
     >
       <use
-        href="#icon-caidan07"
+        href="#user"
       />
     </svg>
   </i>,
