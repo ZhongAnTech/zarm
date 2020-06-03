@@ -150,6 +150,12 @@
 
 @media only screen and (max-width: 768px) {
   .index-page {
+    header {
+      .header-container {
+        padding-right: 0;
+      }
+    }
+
     .banner {
       float: none;
       width: 100%;
