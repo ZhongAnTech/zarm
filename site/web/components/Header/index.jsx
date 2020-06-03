@@ -12,12 +12,6 @@ import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
 import '@/components/style/entry';
 
-const NAV_ITEMS = [
-  { key: 'components', link: '#/components/quick-start', title: '组件' },
-  { key: 'design', link: '#/design/download', title: '资源' },
-  { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
-];
-
 const initDocSearch = () => {
   docsearch({
     apiKey: '44e980b50447a3a5fac9dc2a4808c439',
@@ -48,13 +42,19 @@ const Header = () => {
     });
   };
 
+  const NAV_ITEMS = [
+    { key: 'components', link: '#/components/quick-start', title: '组件' },
+    { key: 'design', link: '#/design/download', title: '资源' },
+    { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
+  ];
+
+  if (document.location.host.indexOf('gitee') > -1) {
+    NAV_ITEMS.pop();
+  }
+
   useEffect(() => {
     Events.on(document, 'keyup', keyupEvent);
     initDocSearch();
-
-    if (document.location.host.indexOf('gitee') > -1) {
-      NAV_ITEMS.pop();
-    }
 
     return () => {
       Events.off(document, 'keyup', keyupEvent);
