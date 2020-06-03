@@ -49,8 +49,12 @@ const Header = () => {
   };
 
   useEffect(() => {
-    initDocSearch();
     Events.on(document, 'keyup', keyupEvent);
+    initDocSearch();
+
+    if (document.location.host.indexOf('gitee') < 0) {
+      NAV_ITEMS.pop();
+    }
 
     return () => {
       Events.off(document, 'keyup', keyupEvent);
@@ -88,11 +92,7 @@ const Header = () => {
         content={(
           <div className="header-nav">
             <Menu selectedKeys={[currentPageKey]}>
-              {NAV_ITEMS.map((item) => {
-                return item.key === 'gitee'
-                  ? document.location.host.indexOf('gitee') < 0 && <Menu.Item key={item.key}><a href={item.link}>{item.title}</a></Menu.Item>
-                  : <Menu.Item key={item.key}><a href={item.link}>{item.title}</a></Menu.Item>;
-              })}
+              {NAV_ITEMS.map((item) => <Menu.Item key={item.key}><a href={item.link}>{item.title}</a></Menu.Item>)}
             </Menu>
           </div>
         )}
@@ -120,13 +120,7 @@ const Header = () => {
             <input placeholder="搜索组件..." ref={searchInput} />
           </div>
           <ul>
-            {
-              NAV_ITEMS.map((item) => {
-                return item.key === 'gitee'
-                  ? document.location.host.indexOf('gitee') < 0 && <li key={item.key}><a href={item.link}>{item.title}</a></li>
-                  : <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>;
-              })
-            }
+            {NAV_ITEMS.map((item) => <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>)}
           </ul>
           {/* <div className="version">
             <Select
