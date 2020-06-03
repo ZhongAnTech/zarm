@@ -8,6 +8,7 @@ header {
 
   .header-container {
     display: flex;
+    height: 100%;
   }
 
   .logo {
@@ -47,7 +48,6 @@ header {
     padding: 0 6px;
 
     .za-icon {
-      margin-top: 3px;
       color: #999;
       font-size: 18px;
     }
@@ -67,6 +67,7 @@ header {
 
     .algolia-autocomplete {
       flex: auto;
+      line-height: 1;
 
       .ds-dropdown-menu {
         border: none;
@@ -141,12 +142,49 @@ header {
       }
     }
   }
+
+  .header-icon {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    &-menu,
+    &-more {
+      width: 65px;
+    }
+  }
+}
+
+.header-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  background-color: #fff;
+  padding: 30px 0 50px;
+  overflow-y: scroll;
+
+  // &__close {
+  //   position: absolute;
+  //   top: 30px;
+  //   right: -40px;
+  //   width: 40px;
+  //   height: 40px;
+  //   border-radius: 8px;
+  //   background: #fff;
+  // }
+}
+
+.header-nav {
+  width: 150px;
+  background-color: #fff;
 }
 
 @media (max-width: 1000px) {
   header {
     .logo {
-      width: 100%;
+      flex: 1;
     }
 
     .search {
@@ -156,5 +194,18 @@ header {
     nav {
       display: none;
     }
+
+    .header-icon {
+      display: flex;
+    }
+  }
+}
+
+.a {
+  width: 100%;
+  display: flex;
+
+  .b {
+    flex: 1;
   }
 }

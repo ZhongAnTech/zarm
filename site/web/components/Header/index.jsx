@@ -1,13 +1,22 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 // import { Select } from 'dragon-ui';
-import { Icon, Badge } from 'zarm';
+import { Icon, Popup } from 'zarm';
+import { Dropdown, Menu } from 'zarm-web';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
+import MenuComponent from '@site/web/components/Menu';
 import Events from '@site/utils/events';
 import { version } from '@/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
+import '@/components/style/entry';
+
+const NAV_ITEMS = [
+  { key: 'components', link: '#/components/quick-start', title: '组件' },
+  { key: 'design', link: '#/design/download', title: '资源' },
+  { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
+];
 
 const initDocSearch = () => {
   docsearch({
@@ -18,9 +27,14 @@ const initDocSearch = () => {
   });
 };
 
+const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_a2hs6y6hbr8.js');
+
 const Header = () => {
   const searchInput = useRef();
   const location = useLocation();
+  const [menu, toggleMenu] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+  const currentPageKey = location.pathname.split('/')[1] || '/';
 
   const keyupEvent = (event) => {
     if (event.keyCode === 83 && event.target === document.body) {
@@ -30,7 +44,7 @@ const Header = () => {
 
   const activeClassName = (keys) => {
     return classnames({
-      active: keys.indexOf(location.pathname.split('/')[1] || '/') > -1,
+      active: keys.indexOf(currentPageKey) > -1,
     });
   };
 
@@ -43,9 +57,55 @@ const Header = () => {
     };
   }, []);
 
+  const menuRender = currentPageKey !== '/' && (
+    <div className="header-icon header-icon-menu">
+      {
+        currentPageKey === 'components' && (
+          <>
+            <Icons type="list" onClick={() => toggleMenu(!menu)} />
+            <Popup
+              visible={menu}
+              direction="left"
+              onMaskClick={() => toggleMenu(!menu)}
+            >
+              <div className="header-menu">
+                {/* <div className="header-menu__close"><Icon type="close" /></div> */}
+                <MenuComponent />
+              </div>
+            </Popup>
+          </>
+        )
+      }
+    </div>
+  );
+
+  const moreRender = (
+    <div className="header-icon header-icon-more">
+      <Dropdown
+        visible={dropdown}
+        onVisibleChange={setDropdown}
+        direction="bottom"
+        content={(
+          <div className="header-nav">
+            <Menu selectedKeys={[currentPageKey]}>
+              {NAV_ITEMS.map((item) => {
+                return item.key === 'gitee'
+                  ? document.location.host.indexOf('gitee') < 0 && <Menu.Item key={item.key}><a href={item.link}>{item.title}</a></Menu.Item>
+                  : <Menu.Item key={item.key}><a href={item.link}>{item.title}</a></Menu.Item>;
+              })}
+            </Menu>
+          </div>
+        )}
+      >
+        <Icons type="more" />
+      </Dropdown>
+    </div>
+  );
+
   return (
     <header>
       <div className="header-container">
+        {menuRender}
         <div className="logo">
           <a href="#/">
             <img alt="logo" src={require('./images/logo.svg')} />
@@ -53,15 +113,20 @@ const Header = () => {
             <sup className="logo-version">v{version}</sup>
           </a>
         </div>
+        {moreRender}
         <nav>
           <div className="search">
             <Icon type="search" />
             <input placeholder="搜索组件..." ref={searchInput} />
           </div>
           <ul>
-            <li><a href="#/components/quick-start" className={activeClassName(['components'])}>组件</a></li>
-            <li><a href="#/design/download" className={activeClassName(['design'])}>资源</a></li>
-            {document.location.host.indexOf('gitee') < 0 && <li><a href="https://zarm.gitee.io">国内镜像</a></li>}
+            {
+              NAV_ITEMS.map((item) => {
+                return item.key === 'gitee'
+                  ? document.location.host.indexOf('gitee') < 0 && <li key={item.key}><a href={item.link}>{item.title}</a></li>
+                  : <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>;
+              })
+            }
           </ul>
           {/* <div className="version">
             <Select

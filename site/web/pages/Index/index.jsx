@@ -44,7 +44,6 @@ const Page = () => {
               className="btn-try"
               visible={dropdown}
               onVisibleChange={setDropdown}
-              trigger="hover"
               direction="bottom"
               content={<canvas ref={qrcode} />}
               destroy={false}
