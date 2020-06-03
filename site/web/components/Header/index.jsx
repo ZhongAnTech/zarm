@@ -52,7 +52,7 @@ const Header = () => {
     Events.on(document, 'keyup', keyupEvent);
     initDocSearch();
 
-    if (document.location.host.indexOf('gitee') < 0) {
+    if (document.location.host.indexOf('gitee') > -1) {
       NAV_ITEMS.pop();
     }
 
