@@ -7,10 +7,16 @@ exports[`KeyboardPicker renders correctly 1`] = `
   type="number"
   visible={false}
 >
-  <Popup
+  <WarnIfDeprecatedComp
     destroy={true}
     mask={false}
     visible={false}
-  />
+  >
+    <Popup
+      destroy={true}
+      mask={false}
+      visible={false}
+    />
+  </WarnIfDeprecatedComp>
 </KeyboardPicker>
 `;
