@@ -62,7 +62,7 @@ const Spinner = (props: ActivityIndicatorProps) => {
 };
 
 export default class ActivityIndicator extends PureComponent<ActivityIndicatorProps, any> {
-  static defaultProps = {
+  static defaultProps: ActivityIndicatorProps = {
     prefixCls: 'za-activity-indicator',
     strokeWidth: 5,
     percent: 20,

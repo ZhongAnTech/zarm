@@ -66,11 +66,13 @@ exports[`Picker Picker render visible 1`] = `
       <WarnIfDeprecatedComp
         destroy={false}
         onMaskClick={[Function]}
+        prefixCls="za-popup"
         visible={true}
       >
         <Popup
           destroy={false}
           onMaskClick={[Function]}
+          prefixCls="za-popup"
           visible={true}
         >
           <Portal
@@ -453,10 +455,12 @@ exports[`Picker render custom label 1`] = `
       <WarnIfDeprecatedComp
         destroy={false}
         onMaskClick={[Function]}
+        prefixCls="za-popup"
       >
         <Popup
           destroy={false}
           onMaskClick={[Function]}
+          prefixCls="za-popup"
         />
       </WarnIfDeprecatedComp>
     </Picker>

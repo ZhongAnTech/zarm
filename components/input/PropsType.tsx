@@ -41,7 +41,7 @@ export interface InputTextareaProps extends BaseInputProps {
   type?: 'text';
   value?: string;
   defaultValue?: string;
-  rows: number;
+  rows?: number;
   autoHeight?: boolean;
   showLength?: boolean;
   onChange?: (value?: string) => void;

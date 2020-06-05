@@ -7,8 +7,6 @@
 import { Cell, Stepper } from 'zarm';
 
 class Demo extends React.Component {
-  container = null;
-
   state = {
     value: 1,
   };
@@ -16,36 +14,23 @@ class Demo extends React.Component {
   render() {
     return (
       <>
-          <Cell
-            onClick={(e) => {
-              console.log(e.currentTarget);
-              console.log(e.target);
-              let curNode = e.target;
-              while(e.currentTarget.contains(curNode)) {
-                if(curNode.classList.contains("za-stepper")) {
-                  return;
-                }
-                curNode = curNode.parentNode;
-              }
-              console.log('123');
-            }}
-            title="普通"
-            description={
-              <Stepper
-                ref={(node) => { this.container = node; }}
-                value={this.state.value}
-                onInputChange={(value) => {
-                  console.log('onInputChange:', value);
-                }}
-                onChange={(value) => {
-                  this.setState({
-                    value,
-                  })
-                  console.log('onChange:', value);
-                }}
-              />
-            }
-          />
+        <Cell
+          title="普通"
+          description={
+            <Stepper
+              value={this.state.value}
+              onInputChange={(value) => {
+                console.log('onInputChange:', value);
+              }}
+              onChange={(value) => {
+                this.setState({
+                  value,
+                })
+                console.log('onChange:', value);
+              }}
+            />
+          }
+        />
 
         <Cell
           title="设置默认值"

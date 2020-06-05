@@ -28,7 +28,7 @@ export interface StepperStates {
 export default class Stepper extends PureComponent<StepperProps, StepperStates> {
   static displayName = 'Stepper';
 
-  static defaultProps = {
+  static defaultProps: StepperProps = {
     prefixCls: 'za-stepper',
     shape: 'radius',
     disabled: false,
@@ -73,11 +73,11 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (Number.isNaN(value)) {
       value = this.state.lastValue;
     }
-    if (min !== null && value < min) {
-      value = min;
+    if (min !== null && value < min!) {
+      value = min!;
     }
-    if (max !== null && value > max) {
-      value = max;
+    if (max !== null && value > max!) {
+      value = max!;
     }
     this.setState({
       value,
@@ -95,7 +95,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       return;
     }
 
-    const newValue = Number(value) - step;
+    const newValue = Number(value) - step!;
     this.onInputBlur(newValue);
   };
 
@@ -106,7 +106,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       return;
     }
 
-    const newValue = Number(value) + step;
+    const newValue = Number(value) + step!;
     this.onInputBlur(newValue);
   };
 
@@ -117,7 +117,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (min === null) {
       return false;
     }
-    return (value <= min) || disabled;
+    return (value <= min!) || disabled;
   };
 
   isPlusDisabled = () => {
@@ -127,7 +127,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (max === null) {
       return false;
     }
-    return (value >= max) || disabled;
+    return (value >= max!) || disabled;
   };
 
   render() {

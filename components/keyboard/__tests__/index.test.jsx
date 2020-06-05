@@ -31,7 +31,7 @@ describe('Keyboard', () => {
     expect(onKeyClick).toBeCalledWith('close');
 
     const handles = wrapper.find('.za-keyboard__handle');
-    handles.childAt(0).simulate('touchstart');
+    handles.childAt(0).simulate('touchStart');
     expect(onKeyClick).toBeCalledWith('delete');
     handles.childAt(1).simulate('click');
     expect(onKeyClick).toBeCalledWith('ok');

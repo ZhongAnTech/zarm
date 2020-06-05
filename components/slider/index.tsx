@@ -69,7 +69,7 @@ export default class Slider extends PureComponent<SliderProps, SliderStates> {
 
   private offsetStart = 0;
 
-  static defaultProps = {
+  static defaultProps: SliderProps = {
     prefixCls: 'za-slider',
     disabled: false,
     showMark: false,

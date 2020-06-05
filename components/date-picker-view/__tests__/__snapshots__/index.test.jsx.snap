@@ -34,7 +34,6 @@ exports[`DatePickerView DatePickerView time 1`] = `
       title="选择时间"
       value=""
       valueMember="value"
-      visible={true}
     >
       <PickerView
         cols={Infinity}
@@ -710,7 +709,6 @@ exports[`DatePickerView DatePickerView time 1`] = `
           ]
         }
         valueMember="value"
-        visible={true}
       >
         <div
           className="za-date-picker-view"
@@ -2457,7 +2455,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
       title="选择日期"
       value="2017-9-6 12:00"
       valueMember="value"
-      visible={true}
     >
       <PickerView
         cols={Infinity}
@@ -3063,7 +3060,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
           ]
         }
         valueMember="value"
-        visible={true}
       >
         <div
           className="za-date-picker-view"

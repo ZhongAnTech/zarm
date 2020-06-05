@@ -6,11 +6,10 @@ import Events from '../utils/events';
 
 export default class ClickOutside extends React.Component<ClickOutsideProps> {
   static propTypes = {
-    onClickOutside: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
   };
 
-  static defaultProps = {
+  static defaultProps: ClickOutsideProps = {
     disabled: false,
   };
 
@@ -61,7 +60,7 @@ export default class ClickOutside extends React.Component<ClickOutsideProps> {
     const el = this.container;
 
     if (ignoredNode && ignoredNode.contains(event.target)) return;
-    if (el && !el.contains(event.target)) onClickOutside(event);
+    if (el && !el.contains(event.target)) onClickOutside!(event);
   };
 
   bindEvent() {

@@ -37,8 +37,7 @@ module.exports = {
   `,
   setBabelOptions: (options) => {
     options.plugins.unshift(['@babel/plugin-proposal-decorators', { legacy: true }]);
-    console.log(options.plugins);
-    options.plugins.push(['import', { libraryName: 'dragon-ui', style: true }, 'dragon-ui']);
+    options.plugins.push(['import', { libraryName: 'zarm-web', style: true }, 'zarm-web']);
   },
   setRules: (rules) => {
     rules.push({

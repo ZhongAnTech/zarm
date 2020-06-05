@@ -1,4 +1,4 @@
-export type ContainerType = HTMLElement | (() => HTMLElement);
+export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
 
 const domUtil = {
   // 获取元素的纵坐标（相对于窗口）

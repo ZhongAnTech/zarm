@@ -29,11 +29,11 @@ export default class Wheel extends Component<WheelProps, any> {
 
   private isChangedByProps;
 
-  static defaultProps = {
+  static defaultProps: WheelProps = {
     prefixCls: 'za-wheel',
     dataSource: [],
     valueMember: 'value',
-    itemRender: (item) => item.label,
+    itemRender: (item) => item!.label,
   };
 
   componentDidMount() {

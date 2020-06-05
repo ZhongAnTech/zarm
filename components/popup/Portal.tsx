@@ -23,7 +23,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
 
   private popup: HTMLDivElement | null;
 
-  static defaultProps = {
+  static defaultProps: PortalProps = {
     prefixCls: 'za-popup',
     visible: false,
     mask: true,

@@ -14,7 +14,7 @@ export interface ScrollerProps {
 export default class Scroller extends PureComponent<ScrollerProps, {}> {
   static displayName = 'Scroller';
 
-  static defaultProps = {
+  static defaultProps: Partial<ScrollerProps> = {
     prefixCls: 'za-scroller',
     container: window,
   };

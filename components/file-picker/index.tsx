@@ -28,7 +28,7 @@ export interface IFileDetail {
 }
 
 export default class FilePicker extends PureComponent<FilePickerProps, {}> {
-  static defaultProps = {
+  static defaultProps: FilePickerProps = {
     prefixCls: 'za-file-picker',
     disabled: false,
     multiple: false,

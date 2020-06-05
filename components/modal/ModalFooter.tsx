@@ -6,7 +6,7 @@ interface ModalFooterProps {
 }
 
 export default class ModalFooter extends PureComponent<ModalFooterProps, {}> {
-  static defaultProps = {
+  static defaultProps: ModalFooterProps = {
     prefixCls: 'za-modal',
   };
 

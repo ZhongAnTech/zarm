@@ -80,11 +80,13 @@ exports[`ActionSheet renders correctly 1`] = `
       <WarnIfDeprecatedComp
         destroy={true}
         onMaskClick={[MockFunction]}
+        prefixCls="za-popup"
         visible={true}
       >
         <Popup
           destroy={true}
           onMaskClick={[MockFunction]}
+          prefixCls="za-popup"
           visible={true}
         >
           <Portal

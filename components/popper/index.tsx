@@ -9,10 +9,10 @@ import domUtil from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
 
-export interface PopperProps extends BasePopperProps {
+export interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 interface PopperStates {
@@ -92,7 +92,7 @@ const customArrowOffsetFn = (data: PopperJS.Data) => {
 
 const popperInstances: Set<PopperJS> = new Set();
 
-class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperStates> {
+class Popper extends React.Component<PopperProps, PopperStates> {
   static update() {
     popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
   }
@@ -139,7 +139,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     onVisibleChange: PropTypes.func,
   };
 
-  static defaultProps = {
+  static defaultProps: PopperProps = {
     prefixCls: 'za-popper',
     hasArrow: false,
     destroy: true,

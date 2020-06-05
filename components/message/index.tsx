@@ -14,7 +14,7 @@ export interface MessageState {
 }
 
 export default class Message extends PureComponent<MessageProps, MessageState> {
-  static defaultProps = {
+  static defaultProps: MessageProps = {
     prefixCls: 'za-message',
     theme: 'primary',
     hasArrow: false,

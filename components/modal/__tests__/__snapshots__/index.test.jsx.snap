@@ -26,6 +26,7 @@ exports[`Modal renders correctly 1`] = `
     mask={true}
     maskType="normal"
     onMaskClick={[MockFunction]}
+    prefixCls="za-popup"
     visible={true}
     width="70%"
   >
@@ -38,6 +39,7 @@ exports[`Modal renders correctly 1`] = `
       mask={true}
       maskType="normal"
       onMaskClick={[MockFunction]}
+      prefixCls="za-popup"
       visible={true}
       width="70%"
     >

@@ -12,7 +12,8 @@ export interface PopupProps extends PropsType {
   { oldProp: 'getContainer', newProp: 'mountContainer' },
 ])
 export default class Popup extends PureComponent<PopupProps, any> {
-  static defaultProps = {
+  static defaultProps: PopupProps = {
+    prefixCls: 'za-popup',
     destroy: true,
   };
 

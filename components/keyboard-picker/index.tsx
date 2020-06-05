@@ -13,7 +13,7 @@ export interface KeyboardPickerState {
 }
 
 export default class KeyboardPicker extends PureComponent<KeyboardPickerProps, KeyboardPickerState> {
-  static defaultProps = {
+  static defaultProps: KeyboardPickerProps = {
     prefixCls: 'za-keyboard-picker',
     visible: false,
     type: 'number',

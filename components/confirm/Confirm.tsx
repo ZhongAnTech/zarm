@@ -10,7 +10,7 @@ export interface ConfirmProps extends PropsType {
 }
 
 export default class Confirm extends PureComponent<ConfirmProps, {}> {
-  static defaultProps = {
+  static defaultProps: ConfirmProps = {
     prefixCls: 'za-confirm',
     animationType: 'zoom',
     locale: confirmLocale,

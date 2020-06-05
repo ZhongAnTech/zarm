@@ -16,7 +16,7 @@ export default class Modal extends Component<ModalProps, any> {
 
   static confirm;
 
-  static defaultProps = {
+  static defaultProps: ModalProps = {
     prefixCls: 'za-modal',
     visible: false,
     animationType: 'fade',

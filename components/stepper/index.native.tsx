@@ -62,10 +62,10 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     if (value === '' || Number.isNaN(value)) {
       value = this.state.lastValue;
     }
-    if (min !== null && value < min) {
+    if (min !== null && value < min!) {
       value = min;
     }
-    if (max !== null && value > max) {
+    if (max !== null && value > max!) {
       value = max;
     }
     this.setState({
@@ -84,7 +84,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       return;
     }
 
-    const newValue = Number(value) - step;
+    const newValue = Number(value) - step!;
     this.onInputBlur(newValue);
   };
 
@@ -95,7 +95,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
       return;
     }
 
-    const newValue = Number(value) + step;
+    const newValue = Number(value) + step!;
     this.onInputBlur(newValue);
   };
 
@@ -106,7 +106,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     if (min === null) {
       return false;
     }
-    return (value <= min) || disabled;
+    return (value <= min!) || disabled;
   };
 
   isPlusDisabled = () => {
@@ -116,7 +116,7 @@ export default class Stepper extends PureComponent<StepperProps, any> {
     if (max === null) {
       return false;
     }
-    return (value >= max) || disabled;
+    return (value >= max!) || disabled;
   };
 
   renderButton = (type) => {

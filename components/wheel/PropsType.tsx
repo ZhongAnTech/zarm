@@ -4,7 +4,7 @@ export interface BaseWheelProps {
   valueMember?: string;
   dataSource: Array<{ [key: string]: any }>;
   onChange?: (value?: string | number) => void;
-  itemRender?: (item?: object) => string;
+  itemRender?: (item?: { [key: string]: any }) => string;
   disabled?: boolean;
   onTransition?: (value: boolean) => void;
 }

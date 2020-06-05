@@ -10,11 +10,11 @@ export interface DateSelectProps extends BaseDateSelectProps {
 }
 
 export default class DateSelect extends PureComponent<DateSelectProps, any> {
-  static defaultProps = {
+  static defaultProps: DateSelectProps = {
+    prefixCls: 'za-date-select',
     mode: 'date',
     disabled: false,
     minuteStep: 1,
-    prefixCls: 'za-date-select',
     valueMember: 'value',
     hasArrow: true,
     onCancel: () => {},

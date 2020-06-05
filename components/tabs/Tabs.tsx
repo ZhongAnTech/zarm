@@ -24,7 +24,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
 
   private carousel;
 
-  static defaultProps = {
+  static defaultProps: TabsProps = {
     prefixCls: 'za-tabs',
     disabled: false,
     canSwipe: false,

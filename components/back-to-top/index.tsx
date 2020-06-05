@@ -14,7 +14,7 @@ export interface BackToTopProps {
   speed?: number;
   visibleDistance?: number;
   scrollContainer?: ContainerType;
-  onClick: (event?: MouseEvent<HTMLElement>) => void;
+  onClick?: (event?: MouseEvent<HTMLElement>) => void;
 }
 
 export interface BackToTopStates {
@@ -24,7 +24,7 @@ export interface BackToTopStates {
 export default class BackToTop extends PureComponent<BackToTopProps, BackToTopStates> {
   static displayName = 'BackToTop';
 
-  static defaultProps = {
+  static defaultProps: BackToTopProps = {
     prefixCls: 'za-back-to-top',
     speed: 100,
     visibleDistance: 400,

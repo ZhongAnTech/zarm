@@ -276,11 +276,13 @@ exports[`Select Cascader Select 1`] = `
               <WarnIfDeprecatedComp
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               >
                 <Popup
                   destroy={false}
                   onMaskClick={[Function]}
+                  prefixCls="za-popup"
                   visible={false}
                 />
               </WarnIfDeprecatedComp>
@@ -612,11 +614,13 @@ exports[`Select Cascader Select init value 1`] = `
               <WarnIfDeprecatedComp
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               >
                 <Popup
                   destroy={false}
                   onMaskClick={[Function]}
+                  prefixCls="za-popup"
                   visible={false}
                 />
               </WarnIfDeprecatedComp>
@@ -785,11 +789,13 @@ exports[`Select Select 1`] = `
               <WarnIfDeprecatedComp
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               >
                 <Popup
                   destroy={false}
                   onMaskClick={[Function]}
+                  prefixCls="za-popup"
                   visible={false}
                 />
               </WarnIfDeprecatedComp>
@@ -964,11 +970,13 @@ exports[`Select Select disabled 1`] = `
               <WarnIfDeprecatedComp
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={true}
               >
                 <Popup
                   destroy={false}
                   onMaskClick={[Function]}
+                  prefixCls="za-popup"
                   visible={true}
                 >
                   <Portal
@@ -1394,11 +1402,13 @@ exports[`Select render defaultValue correctly  1`] = `
               <WarnIfDeprecatedComp
                 destroy={false}
                 onMaskClick={[Function]}
+                prefixCls="za-popup"
                 visible={false}
               >
                 <Popup
                   destroy={false}
                   onMaskClick={[Function]}
+                  prefixCls="za-popup"
                   visible={false}
                 />
               </WarnIfDeprecatedComp>

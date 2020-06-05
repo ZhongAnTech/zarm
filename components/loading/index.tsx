@@ -11,7 +11,7 @@ export interface LoadingProps extends PropsType {
 }
 
 export default class Loading extends PureComponent<LoadingProps, {}> {
-  static defaultProps = {
+  static defaultProps: LoadingProps = {
     prefixCls: 'za-loading',
     mask: true,
   };

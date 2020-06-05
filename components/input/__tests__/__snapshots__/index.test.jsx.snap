@@ -240,11 +240,13 @@ exports[`Input.Idcard renders correctly 1`] = `
           <WarnIfDeprecatedComp
             destroy={true}
             mask={false}
+            prefixCls="za-popup"
             visible={false}
           >
             <Popup
               destroy={true}
               mask={false}
+              prefixCls="za-popup"
               visible={false}
             />
           </WarnIfDeprecatedComp>
@@ -293,11 +295,13 @@ exports[`Input.Number renders correctly 1`] = `
           <WarnIfDeprecatedComp
             destroy={true}
             mask={false}
+            prefixCls="za-popup"
             visible={false}
           >
             <Popup
               destroy={true}
               mask={false}
+              prefixCls="za-popup"
               visible={false}
             />
           </WarnIfDeprecatedComp>
@@ -346,11 +350,13 @@ exports[`Input.Price renders correctly 1`] = `
           <WarnIfDeprecatedComp
             destroy={true}
             mask={false}
+            prefixCls="za-popup"
             visible={false}
           >
             <Popup
               destroy={true}
               mask={false}
+              prefixCls="za-popup"
               visible={false}
             />
           </WarnIfDeprecatedComp>
