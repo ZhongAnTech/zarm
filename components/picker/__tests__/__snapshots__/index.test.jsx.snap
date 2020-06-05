@@ -57,7 +57,7 @@ exports[`Picker Picker render visible 1`] = `
           "title": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       maskClosable={true}
       prefixCls="za-picker"
       valueMember="value"
@@ -243,7 +243,7 @@ exports[`Picker Picker render visible 1`] = `
                     }
                     disabled={false}
                     itemRender={[Function]}
-                    localeCode="zh-cn"
+                    localeCode="zh-CN"
                     onChange={[Function]}
                     onTransition={[Function]}
                     prefixCls="za-picker-view"
@@ -440,7 +440,7 @@ exports[`Picker render custom label 1`] = `
           "title": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       maskClosable={true}
       prefixCls="za-picker"
       valueMember="code"

@@ -22,7 +22,7 @@ exports[`DateSelect DateSelect date 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={1}
       mode="date"
       onCancel={[Function]}
@@ -50,7 +50,7 @@ exports[`DateSelect DateSelect date 1`] = `
           </div>
         </div>
         <ForwardRef(forwardRef)
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
@@ -62,7 +62,7 @@ exports[`DateSelect DateSelect date 1`] = `
         >
           <LocaleReceiver
             forwardedRef={null}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
@@ -80,7 +80,7 @@ exports[`DateSelect DateSelect date 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               minuteStep={1}
               mode="date"
@@ -135,7 +135,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       max="2017-11-02 14:00"
       min="2017-11-02 11:00"
       minuteStep={1}
@@ -165,7 +165,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           max="2017-11-02 14:00"
           min="2017-11-02 11:00"
           minuteStep={1}
@@ -179,7 +179,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           <LocaleReceiver
             defaultValue="2017-11-03 15:00"
             forwardedRef={null}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             max="2017-11-02 14:00"
             min="2017-11-02 11:00"
             minuteStep={1}
@@ -199,7 +199,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               max="2017-11-02 14:00"
               min="2017-11-02 11:00"
@@ -283,7 +283,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={1}
       mode="date"
       onCancel={[Function]}
@@ -322,7 +322,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             ]
           }
           disabeld={true}
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
@@ -346,7 +346,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
             }
             disabeld={true}
             forwardedRef={null}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
@@ -376,7 +376,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               minuteStep={1}
               mode="date"
@@ -1010,7 +1010,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               ]
                             }
                             disabeld={true}
-                            localeCode="zh-cn"
+                            localeCode="zh-CN"
                             minuteStep={1}
                             mode="date"
                             onChange={[Function]}
@@ -1034,7 +1034,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                               }
                               disabeld={true}
                               forwardedRef={null}
-                              localeCode="zh-cn"
+                              localeCode="zh-CN"
                               minuteStep={1}
                               mode="date"
                               onChange={[Function]}
@@ -1068,7 +1068,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     "year": "年",
                                   }
                                 }
-                                localeCode="zh-cn"
+                                localeCode="zh-CN"
                                 minuteStep={1}
                                 mode="date"
                                 onChange={[Function]}
@@ -1395,7 +1395,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                       "year": "年",
                                     }
                                   }
-                                  localeCode="zh-cn"
+                                  localeCode="zh-CN"
                                   minuteStep={1}
                                   mode="date"
                                   onChange={[Function]}
@@ -2267,7 +2267,7 @@ exports[`DateSelect DateSelect time 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={15}
       mode="time"
       onCancel={[Function]}
@@ -2295,7 +2295,7 @@ exports[`DateSelect DateSelect time 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03 15:00"
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           minuteStep={15}
           mode="time"
           onCancel={[Function]}
@@ -2307,7 +2307,7 @@ exports[`DateSelect DateSelect time 1`] = `
           <LocaleReceiver
             defaultValue="2017-11-03 15:00"
             forwardedRef={null}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             minuteStep={15}
             mode="time"
             onCancel={[Function]}
@@ -2325,7 +2325,7 @@ exports[`DateSelect DateSelect time 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               minuteStep={15}
               mode="time"
@@ -2371,7 +2371,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={1}
       mode="date"
       onCancel={[Function]}
@@ -2397,7 +2397,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
         </div>
         <ForwardRef(forwardRef)
           defaultValue="2017-11-03"
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
@@ -2408,7 +2408,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           <LocaleReceiver
             defaultValue="2017-11-03"
             forwardedRef={null}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
@@ -2425,7 +2425,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               minuteStep={1}
               mode="date"
@@ -2473,7 +2473,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={1}
       mode="date"
       onCancel={[Function]}
@@ -2501,7 +2501,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           </div>
         </div>
         <ForwardRef(forwardRef)
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           minuteStep={1}
           mode="date"
           onCancel={[Function]}
@@ -2513,7 +2513,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
         >
           <LocaleReceiver
             forwardedRef={null}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             minuteStep={1}
             mode="date"
             onCancel={[Function]}
@@ -2531,7 +2531,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               minuteStep={1}
               mode="date"
@@ -2599,7 +2599,7 @@ exports[`DateSelect DateSelect year 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={1}
       mode="year"
       onCancel={[Function]}
@@ -2627,7 +2627,7 @@ exports[`DateSelect DateSelect year 1`] = `
           </div>
         </div>
         <ForwardRef(forwardRef)
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           minuteStep={1}
           mode="year"
           onCancel={[Function]}
@@ -2639,7 +2639,7 @@ exports[`DateSelect DateSelect year 1`] = `
         >
           <LocaleReceiver
             forwardedRef={null}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             minuteStep={1}
             mode="year"
             onCancel={[Function]}
@@ -2657,7 +2657,7 @@ exports[`DateSelect DateSelect year 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               minuteStep={1}
               mode="year"

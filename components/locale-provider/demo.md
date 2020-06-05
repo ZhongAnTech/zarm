@@ -8,7 +8,7 @@ import { Cell, LocaleProvider, Button, SearchBar, Modal, Select } from 'zarm';
 
 const locales = {
   'en_US': {
-    locale: 'en',
+    locale: 'en-US',
     SearchBar: {
       placeholder: 'Search',
       cancelText: 'Cancel',
@@ -30,7 +30,7 @@ const locales = {
     }
   },
   'zh_CN': {
-    locale: 'zh_cn',
+    locale: 'zh-CN',
     SearchBar: {
       placeholder: '搜索',
       cancelText: '取消',

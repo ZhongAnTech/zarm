@@ -112,7 +112,7 @@ exports[`Select Cascader Select 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
@@ -166,7 +166,7 @@ exports[`Select Cascader Select 1`] = `
             ]
           }
           itemRender={[Function]}
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
@@ -211,7 +211,7 @@ exports[`Select Cascader Select 1`] = `
             }
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
@@ -263,7 +263,7 @@ exports[`Select Cascader Select 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
@@ -415,7 +415,7 @@ exports[`Select Cascader Select init value 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
@@ -477,7 +477,7 @@ exports[`Select Cascader Select init value 1`] = `
           }
           displayAddon="-"
           itemRender={[Function]}
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
@@ -529,7 +529,7 @@ exports[`Select Cascader Select init value 1`] = `
             displayAddon="-"
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
@@ -588,7 +588,7 @@ exports[`Select Cascader Select init value 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
@@ -671,7 +671,7 @@ exports[`Select Select 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
@@ -705,7 +705,7 @@ exports[`Select Select 1`] = `
             ]
           }
           itemRender={[Function]}
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
@@ -730,7 +730,7 @@ exports[`Select Select 1`] = `
             }
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
@@ -762,7 +762,7 @@ exports[`Select Select 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
@@ -842,7 +842,7 @@ exports[`Select Select disabled 1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
@@ -877,7 +877,7 @@ exports[`Select Select disabled 1`] = `
           }
           disabeld={true}
           itemRender={[Function]}
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
@@ -903,7 +903,7 @@ exports[`Select Select disabled 1`] = `
             disabeld={true}
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
@@ -936,7 +936,7 @@ exports[`Select Select disabled 1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
@@ -1127,7 +1127,7 @@ exports[`Select Select disabled 1`] = `
                             disabeld={true}
                             disabled={false}
                             itemRender={[Function]}
-                            localeCode="zh-cn"
+                            localeCode="zh-CN"
                             onChange={[Function]}
                             onClick={[Function]}
                             onTransition={[Function]}
@@ -1267,7 +1267,7 @@ exports[`Select render defaultValue correctly  1`] = `
           "placeholder": "请选择",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       maskClosable={true}
       onClick={[Function]}
       prefixCls="za-select"
@@ -1302,7 +1302,7 @@ exports[`Select render defaultValue correctly  1`] = `
           }
           defaultValue="2"
           itemRender={[Function]}
-          localeCode="zh-cn"
+          localeCode="zh-CN"
           maskClosable={true}
           onCancel={[Function]}
           onChange={[Function]}
@@ -1328,7 +1328,7 @@ exports[`Select render defaultValue correctly  1`] = `
             defaultValue="2"
             forwardedRef={null}
             itemRender={[Function]}
-            localeCode="zh-cn"
+            localeCode="zh-CN"
             maskClosable={true}
             onCancel={[Function]}
             onChange={[Function]}
@@ -1361,7 +1361,7 @@ exports[`Select render defaultValue correctly  1`] = `
                   "title": "请选择",
                 }
               }
-              localeCode="zh-cn"
+              localeCode="zh-CN"
               maskClosable={true}
               onCancel={[Function]}
               onChange={[Function]}
