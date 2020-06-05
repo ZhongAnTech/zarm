@@ -237,11 +237,19 @@ exports[`Input.Idcard renders correctly 1`] = `
           type="idcard"
           visible={false}
         >
-          <Popup
+          <WarnIfDeprecatedComp
             destroy={true}
             mask={false}
+            prefixCls="za-popup"
             visible={false}
-          />
+          >
+            <Popup
+              destroy={true}
+              mask={false}
+              prefixCls="za-popup"
+              visible={false}
+            />
+          </WarnIfDeprecatedComp>
         </KeyboardPicker>
       </div>
     </div>
@@ -284,11 +292,19 @@ exports[`Input.Number renders correctly 1`] = `
           type="number"
           visible={false}
         >
-          <Popup
+          <WarnIfDeprecatedComp
             destroy={true}
             mask={false}
+            prefixCls="za-popup"
             visible={false}
-          />
+          >
+            <Popup
+              destroy={true}
+              mask={false}
+              prefixCls="za-popup"
+              visible={false}
+            />
+          </WarnIfDeprecatedComp>
         </KeyboardPicker>
       </div>
     </div>
@@ -331,11 +347,19 @@ exports[`Input.Price renders correctly 1`] = `
           type="price"
           visible={false}
         >
-          <Popup
+          <WarnIfDeprecatedComp
             destroy={true}
             mask={false}
+            prefixCls="za-popup"
             visible={false}
-          />
+          >
+            <Popup
+              destroy={true}
+              mask={false}
+              prefixCls="za-popup"
+              visible={false}
+            />
+          </WarnIfDeprecatedComp>
         </KeyboardPicker>
       </div>
     </div>

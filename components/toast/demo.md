@@ -103,7 +103,7 @@ ReactDOM.render(<Demo />, mountNode);
 | mask | boolean | false | 是否展示遮罩层 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | afterClose | () => void | - | Toast隐藏后的回调函数 |
-| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定Toast挂载的HTML节点 |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定Toast挂载的HTML节点 |
 
 ## 静态方法
 

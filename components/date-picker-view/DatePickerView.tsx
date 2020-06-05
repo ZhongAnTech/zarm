@@ -42,14 +42,13 @@ export interface DatePickerViewProps extends BaseDatePickerViewProps {
 }
 
 export default class DatePickerView extends Component<DatePickerViewProps, any> {
-  static defaultProps = {
-    visible: true,
+  static defaultProps: DatePickerViewProps = {
+    prefixCls: 'za-date-picker-view',
     mode: DATE,
     disabled: false,
     value: '',
     defaultValue: '',
     minuteStep: 1,
-    prefixCls: 'za-date-picker-view',
     valueMember: 'value',
   };
 

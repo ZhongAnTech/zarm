@@ -17,7 +17,7 @@ exports[`Modal renders correctly 1`] = `
   visible={true}
   width="70%"
 >
-  <Popup
+  <WarnIfDeprecatedComp
     animationDuration={200}
     animationType="fade"
     className="za-modal za-modal--radius"
@@ -26,16 +26,16 @@ exports[`Modal renders correctly 1`] = `
     mask={true}
     maskType="normal"
     onMaskClick={[MockFunction]}
+    prefixCls="za-popup"
     visible={true}
     width="70%"
   >
-    <Portal
+    <Popup
       animationDuration={200}
       animationType="fade"
       className="za-modal za-modal--radius"
       destroy={true}
       direction="center"
-      handlePortalUnmount={[Function]}
       mask={true}
       maskType="normal"
       onMaskClick={[MockFunction]}
@@ -44,186 +44,201 @@ exports[`Modal renders correctly 1`] = `
       width="70%"
     >
       <Portal
-        containerInfo={
-          <div
-            class="za-popup-container za-modal za-modal--radius"
-          >
+        animationDuration={200}
+        animationType="fade"
+        className="za-modal za-modal--radius"
+        destroy={true}
+        direction="center"
+        handlePortalUnmount={[Function]}
+        mask={true}
+        maskType="normal"
+        onMaskClick={[MockFunction]}
+        prefixCls="za-popup"
+        visible={true}
+        width="70%"
+      >
+        <Portal
+          containerInfo={
             <div
-              class="za-mask za-fade-enter za-mask--normal"
-              style="animation-duration: 200ms;"
-            />
-            <div
-              class="za-popup__wrapper za-fade-enter"
-              role="dialog"
-              style="animation-duration: 200ms;"
+              class="za-popup-container za-modal za-modal--radius"
             >
               <div
-                class="za-popup za-popup--center za-fade-enter"
-                role="document"
-                style="width: 70%; animation-duration: 200ms;"
+                class="za-mask za-fade-enter za-mask--normal"
+                style="animation-duration: 200ms;"
+              />
+              <div
+                class="za-popup__wrapper za-fade-enter"
+                role="dialog"
+                style="animation-duration: 200ms;"
               >
                 <div
-                  class="za-modal__dialog"
+                  class="za-popup za-popup--center za-fade-enter"
+                  role="document"
+                  style="width: 70%; animation-duration: 200ms;"
                 >
                   <div
-                    class="za-modal__header"
+                    class="za-modal__dialog"
                   >
                     <div
-                      class="za-modal__header__title"
+                      class="za-modal__header"
                     >
-                      标题
-                    </div>
-                    <i
-                      class="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
-                      theme="default"
-                      type="wrong"
-                    >
-                      <svg
-                        fill="currentColor"
-                        height="1em"
-                        viewBox="0 0 32 32"
-                        width="1em"
+                      <div
+                        class="za-modal__header__title"
                       >
-                        <use
-                          xlink:href="#wrong"
-                        />
-                      </svg>
-                    </i>
-                  </div>
-                  <div
-                    class="za-modal__body"
-                  >
-                    foo
+                        标题
+                      </div>
+                      <i
+                        class="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
+                        theme="default"
+                        type="wrong"
+                      >
+                        <svg
+                          fill="currentColor"
+                          height="1em"
+                          viewBox="0 0 32 32"
+                          width="1em"
+                        >
+                          <use
+                            xlink:href="#wrong"
+                          />
+                        </svg>
+                      </i>
+                    </div>
+                    <div
+                      class="za-modal__body"
+                    >
+                      foo
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        }
-      >
-        <Mask
-          className="za-fade-enter"
-          prefixCls="za-mask"
-          style={
-            Object {
-              "WebkitAnimationDuration": "200ms",
-              "animationDuration": "200ms",
-            }
           }
-          type="normal"
-          visible={true}
         >
-          <div
-            className="za-mask za-fade-enter za-mask--normal"
+          <Mask
+            className="za-fade-enter"
+            prefixCls="za-mask"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
                 "animationDuration": "200ms",
               }
             }
-          />
-        </Mask>
-        <div
-          className="za-popup__wrapper za-fade-enter"
-          onClick={[Function]}
-          role="dialog"
-          style={
-            Object {
-              "WebkitAnimationDuration": "200ms",
-              "animationDuration": "200ms",
-            }
-          }
-        >
+            type="normal"
+            visible={true}
+          >
+            <div
+              className="za-mask za-fade-enter za-mask--normal"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+            />
+          </Mask>
           <div
-            className="za-popup za-popup--center za-fade-enter"
-            role="document"
+            className="za-popup__wrapper za-fade-enter"
+            onClick={[Function]}
+            role="dialog"
             style={
               Object {
                 "WebkitAnimationDuration": "200ms",
                 "animationDuration": "200ms",
-                "width": "70%",
               }
             }
           >
             <div
-              className="za-modal__dialog"
+              className="za-popup za-popup--center za-fade-enter"
+              role="document"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                  "width": "70%",
+                }
+              }
             >
-              <ModalHeader
-                closable={true}
-                onCancel={[MockFunction]}
-                prefixCls="za-modal"
-                title="标题"
+              <div
+                className="za-modal__dialog"
               >
-                <div
-                  className="za-modal__header"
+                <ModalHeader
+                  closable={true}
+                  onCancel={[MockFunction]}
+                  prefixCls="za-modal"
+                  title="标题"
                 >
                   <div
-                    className="za-modal__header__title"
+                    className="za-modal__header"
                   >
-                    标题
-                  </div>
-                  <Icon
-                    className="za-modal__header__close"
-                    onClick={[MockFunction]}
-                    prefixCls="za-icon"
-                    size="sm"
-                    theme="default"
-                    type="wrong"
-                    viewBox="0 0 32 32"
-                  >
-                    <Iconfont
-                      className="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
+                    <div
+                      className="za-modal__header__title"
+                    >
+                      标题
+                    </div>
+                    <Icon
+                      className="za-modal__header__close"
                       onClick={[MockFunction]}
+                      prefixCls="za-icon"
                       size="sm"
                       theme="default"
                       type="wrong"
+                      viewBox="0 0 32 32"
                     >
-                      <Icon
+                      <Iconfont
                         className="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
                         onClick={[MockFunction]}
-                        prefixCls="za-icon"
                         size="sm"
                         theme="default"
                         type="wrong"
-                        viewBox="0 0 32 32"
                       >
-                        <i
+                        <Icon
                           className="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
                           onClick={[MockFunction]}
+                          prefixCls="za-icon"
                           size="sm"
                           theme="default"
                           type="wrong"
+                          viewBox="0 0 32 32"
                         >
-                          <svg
-                            fill="currentColor"
-                            height="1em"
-                            viewBox="0 0 32 32"
-                            width="1em"
+                          <i
+                            className="za-icon za-modal__header__close za-icon--wrong za-icon--default za-icon--sm"
+                            onClick={[MockFunction]}
+                            size="sm"
+                            theme="default"
+                            type="wrong"
                           >
-                            <use
-                              xlinkHref="#wrong"
-                            />
-                          </svg>
-                        </i>
-                      </Icon>
-                    </Iconfont>
-                  </Icon>
-                </div>
-              </ModalHeader>
-              <ModalBody
-                prefixCls="za-modal"
-              >
-                <div
-                  className="za-modal__body"
+                            <svg
+                              fill="currentColor"
+                              height="1em"
+                              viewBox="0 0 32 32"
+                              width="1em"
+                            >
+                              <use
+                                xlinkHref="#wrong"
+                              />
+                            </svg>
+                          </i>
+                        </Icon>
+                      </Iconfont>
+                    </Icon>
+                  </div>
+                </ModalHeader>
+                <ModalBody
+                  prefixCls="za-modal"
                 >
-                  foo
-                </div>
-              </ModalBody>
+                  <div
+                    className="za-modal__body"
+                  >
+                    foo
+                  </div>
+                </ModalBody>
+              </div>
             </div>
           </div>
-        </div>
+        </Portal>
       </Portal>
-    </Portal>
-  </Popup>
+    </Popup>
+  </WarnIfDeprecatedComp>
 </Modal>
 `;

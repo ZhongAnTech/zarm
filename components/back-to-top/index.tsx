@@ -3,8 +3,9 @@ import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 're
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Scroller from '../scroller';
-import { ContainerType, scrollTo } from '../scroller/ScrollContainer';
-import canUseDOM from '../utils/canUseDom';
+import { scrollTo } from '../scroller/ScrollContainer';
+import domUtil, { ContainerType } from '../utils/dom';
+
 
 export interface BackToTopProps {
   prefixCls?: string;
@@ -13,7 +14,7 @@ export interface BackToTopProps {
   speed?: number;
   visibleDistance?: number;
   scrollContainer?: ContainerType;
-  onClick: (event?: MouseEvent<HTMLElement>) => void;
+  onClick?: (event?: MouseEvent<HTMLElement>) => void;
 }
 
 export interface BackToTopStates {
@@ -23,7 +24,7 @@ export interface BackToTopStates {
 export default class BackToTop extends PureComponent<BackToTopProps, BackToTopStates> {
   static displayName = 'BackToTop';
 
-  static defaultProps = {
+  static defaultProps: BackToTopProps = {
     prefixCls: 'za-back-to-top',
     speed: 100,
     visibleDistance: 400,
@@ -34,7 +35,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     visible: false,
   };
 
-  private timer: number;
+  private timer;
 
   private portalContainer: HTMLDivElement;
 
@@ -59,7 +60,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
   }
 
   get parent(): HTMLElement {
-    if (!canUseDOM || this.container === window) {
+    if (!domUtil.canUseDOM || this.container === window) {
       return document.body;
     }
     return this.container as HTMLElement;
@@ -147,7 +148,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
   };
 
   render() {
-    if (!canUseDOM) {
+    if (!domUtil.canUseDOM) {
       return null;
     }
 

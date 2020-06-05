@@ -9,7 +9,7 @@ export interface ModalHeaderProps extends BaseModalHeaderProps {
 }
 
 export default class ModalHeader extends PureComponent<ModalHeaderProps, {}> {
-  static defaultProps = {
+  static defaultProps: ModalHeaderProps = {
     prefixCls: 'za-modal',
   };
 

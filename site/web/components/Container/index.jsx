@@ -1,33 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
+import { Icon, BackToTop } from 'zarm';
+import './style.scss';
 
-class Container extends Component {
-  // componentDidMount() {
-  //   if (this.props.className !== 'index-page') return;
+const Container = ({ className, children, ...others }) => {
+  const cls = classnames('app-container', 'markdown', className);
 
-  //   const scrollTop = window.sessionStorage[this.props.className];
-  //   if (scrollTop) {
-  //     this.container.scrollTop = scrollTop;
-  //   }
-  // }
-
-  // componentWillUnmount() {
-  //   if (this.props.className !== 'index-page') return;
-
-  //   const { scrollTop } = this.container;
-  //   window.sessionStorage[this.props.className] = scrollTop;
-  // }
-
-  render() {
-    const { className, children, ...others } = this.props;
-    const cls = classnames('app-container', className);
-
-    return (
-      <div className={cls} {...others}>
-        {children}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={cls} {...others}>
+      {children}
+      <BackToTop>
+        <div className="scroll-to-top">
+          <Icon type="arrow-top" size="sm" />
+        </div>
+      </BackToTop>
+    </div>
+  );
+};
 
 export default Container;

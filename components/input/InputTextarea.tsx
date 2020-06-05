@@ -9,7 +9,7 @@ const countSymbols = (text = '') => {
 };
 
 export default class InputTextarea extends PureComponent<InputTextareaProps, any> {
-  static defaultProps = {
+  static defaultProps: InputTextareaProps = {
     prefixCls: 'za-input',
     disabled: false,
     autoHeight: false,
@@ -22,7 +22,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   constructor(props) {
     super(props);
     this.state = {
-      length: (props.value || props.defaultValue || '').length,
+      value: props.value || props.defaultValue || '',
       focused: props.focused || false,
     };
   }
@@ -38,8 +38,8 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   static getDerivedStateFromProps(nextProps) {
     if ('focused' in nextProps || 'value' in nextProps) {
       return {
-        focused: nextProps.focused,
-        length: (nextProps.value || nextProps.defaultValue || '').length,
+        value: nextProps.value || nextProps.defaultValue || '',
+        focused: nextProps.focused || false,
       };
     }
     return null;
@@ -123,8 +123,11 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   onChange = (e) => {
     const { onChange } = this.props;
     const { value } = e.target;
-    const length = countSymbols(value);
-    this.setState({ length });
+
+    if (!('value' in this.props)) {
+      this.setState({ value });
+    }
+
     if (typeof onChange === 'function') {
       onChange(value);
     }
@@ -151,11 +154,14 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
       type,
       ...rest
     } = this.props;
-    const { length } = this.state;
+
     const cls = classnames(prefixCls, `${prefixCls}--textarea`, className, {
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--readonly`]: readOnly,
     });
+
+    const { value } = this.state;
+    const length = countSymbols(value);
 
     const textLengthRender = showLength
       && maxLength
@@ -168,6 +174,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
     const renderInput = (
       <textarea
         {...rest}
+        value={('value' in this.props) ? value : undefined}
         ref={(ele) => { this.input = ele; }}
         maxLength={maxLength}
         disabled={disabled}
@@ -182,7 +189,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
 
     const renderText = (
       <div className={`${prefixCls}__content`} ref={(ele) => { this.input = ele; }}>
-        {rest.value || rest.defaultValue}
+        {value}
       </div>
     );
 

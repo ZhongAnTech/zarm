@@ -43,14 +43,18 @@ export default class Markdown extends Component {
       //     </h${level}>`;
       // };
 
-      const html = marked(document, { renderer });
-      const cls = classnames(`${component.key}-page`, 'markdown');
+      const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''), { renderer });
+      const api = document.match(/## API\s?([^]+)/g);
+      const apiHTML = marked(Object.prototype.toString.call(api) === '[object Array]' ? api[0] : '', { renderer });
       const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
 
       return (
         <>
           <Meta title={title} description={component.description || component.name} />
-          <div className={cls} dangerouslySetInnerHTML={{ __html: html }} />
+          <div className={`${component.key}-page`}>
+            <div className="demo" dangerouslySetInnerHTML={{ __html: demoHTML }} />
+            <div className="api" dangerouslySetInnerHTML={{ __html: apiHTML }} />
+          </div>
         </>
       );
     }

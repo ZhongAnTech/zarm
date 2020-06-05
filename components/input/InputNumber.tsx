@@ -8,7 +8,7 @@ import Icon from '../icon';
 declare const document;
 
 export default class InputNumber extends Component<InputNumberProps, any> {
-  static defaultProps = {
+  static defaultProps: InputNumberProps = {
     prefixCls: 'za-input',
     disabled: false,
     clearable: true,
@@ -31,7 +31,6 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   componentDidMount() {
     const { autoFocus, focused } = this.props;
-    Events.on(document.body, 'touchstart', this.onMaskClick);
     Events.on(document.body, 'click', this.onMaskClick);
 
     if (autoFocus || focused) {
@@ -42,15 +41,14 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   static getDerivedStateFromProps(nextProps, state) {
     if ('value' in nextProps && nextProps.value !== state.prevValue) {
       return {
-        value: nextProps.value,
-        prevValue: nextProps.value,
+        value: nextProps.value || nextProps.defaultValue || '',
+        prevValue: nextProps.value || nextProps.defaultValue || '',
       };
     }
     return null;
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'touchstart', this.onMaskClick);
     Events.off(document.body, 'click', this.onMaskClick);
   }
 
@@ -85,13 +83,13 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       ? String(value).slice(0, String(value).length - 1)
       : value + key;
 
-    if (newValue !== value) {
-      const { onChange } = this.props;
+    if (!('value' in this.props)) {
       this.setState({ value: newValue }, () => this.scrollToEnd());
+    }
 
-      if (typeof onChange === 'function') {
-        onChange(newValue);
-      }
+    const { onChange } = this.props;
+    if (typeof onChange === 'function') {
+      onChange(newValue);
     }
   };
 

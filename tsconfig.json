@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "react",
@@ -13,7 +14,8 @@
       "classnames",
       "react",
       "react-dom",
-      "react-native"
+      "react-native",
+      "node"
     ]
   },
   "include": [

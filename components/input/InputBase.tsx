@@ -4,7 +4,7 @@ import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
-  static defaultProps = {
+  static defaultProps: InputBaseProps = {
     prefixCls: 'za-input',
     disabled: false,
     type: 'text',
@@ -21,16 +21,15 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      focused: false,
-      value: props.defaultValue || props.value || '',
+      focused: props.autoFocus || false,
+      value: props.value || props.defaultValue || '',
     };
   }
 
   componentDidMount() {
-    const { autoFocus } = this.props;
     const { focused } = this.state;
 
-    if (autoFocus || focused) {
+    if (focused) {
       this.input.focus();
     }
   }
@@ -38,7 +37,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   static getDerivedStateFromProps(nextProps) {
     if ('value' in nextProps) {
       return {
-        value: nextProps.value,
+        value: nextProps.value || nextProps.defaultValue || '',
       };
     }
     return null;
@@ -81,16 +80,19 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
 
   onChange = (e) => {
     const { onChange } = this.props;
-    if (!this.state.focused) {
-      this.setState({
-        focused: true,
-      });
+    const { focused } = this.state;
+    const { value } = e.target;
+
+    if (!focused) {
+      this.setState({ focused: true });
     }
-    this.setState({
-      value: e.target.value,
-    });
-    if (onChange) {
-      onChange(e.target.value);
+
+    if (!('value' in this.props)) {
+      this.setState({ value });
+    }
+
+    if (typeof onChange === 'function') {
+      onChange(value);
     }
   };
 
@@ -161,8 +163,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       ...rest
     } = this.props;
 
-    const { value } = this.state;
-    const { focused } = this.state;
+    const { value, focused } = this.state;
     const showClearIcon = clearable && ('value' in this.props) && ('onChange' in this.props);
 
     const cls = classnames(prefixCls, className, {
@@ -172,15 +173,10 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
       [`${prefixCls}--readonly`]: readOnly,
     });
 
-    const valueProps: any = {};
-    if ('value' in this.props) {
-      valueProps.value = value;
-    }
-
     const renderInput = (
       <input
         {...rest}
-        {...valueProps}
+        value={('value' in this.props) ? value : undefined}
         autoComplete="off"
         ref={(ele) => { this.input = ele; }}
         type={type}

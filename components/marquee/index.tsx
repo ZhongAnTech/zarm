@@ -18,7 +18,7 @@ const CLIENT_RECT = { bottom: 0, height: 0, left: 0, right: 0, top: 0, width: 0 
 export default class Marquee extends PureComponent<MarqueeProps, {}> {
   static displayName = 'CheckboxGroup';
 
-  static defaultProps = {
+  static defaultProps: MarqueeProps = {
     prefixCls: 'za-marquee',
     direction: 'left',
     loop: LOOP,

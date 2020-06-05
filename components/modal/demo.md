@@ -169,7 +169,7 @@ class Demo extends React.Component {
           visible={specModal}
           maskClosable
           onCancel={() => this.close('specModal')}
-          getContainer={() => this.myRef.current}
+          mountContainer={() => this.myRef.current}
         >
           挂载到指定dom节点
         </Modal>
@@ -311,7 +311,7 @@ ReactDOM.render(<Demo />, mountNode);
 | destroy | boolean | true | 弹层关闭后是否移除节点 |
 | afterOpen | () => void | - | 模态框打开后的回调 |
 | afterClose | () => void | - | 模态框关闭后的回调 |
-| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Modal 挂载的 HTML 节点 |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Modal 挂载的 HTML 节点 |
 
 ## 静态方法
 

@@ -157,7 +157,7 @@ class Demo extends React.Component {
             Toast.show(JSON.stringify(value));
           }}
           onCancel={() => this.toggle('specDOM')}
-          getContainer={() => this.myRef.current}
+          mountContainer={() => this.myRef.current}
         />
 
         <div
@@ -274,7 +274,7 @@ ReactDOM.render(<Demo />, mountNode);
 | wheelDefaultValue | string \| Date | - | 滚轮默认停留的日期位置 |
 | onOk | (value?: Date) => void | - | 点击确定时触发的回调函数 | 
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
-| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点 |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 DatePicker 挂载的 HTML 节点 |
 
 ### 仅 DateSelect 支持的属性
 | 属性 | 类型 | 默认值 | 说明 |
