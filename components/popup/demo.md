@@ -110,7 +110,7 @@ class Demo extends React.Component {
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
           destroy={false}
-          getContainer={() => document.body}
+          mountContainer={() => document.body}
         >
           <div className="popup-box">
             <Button size="xs" onClick={() => { this.toggle('picker'); }}>打开Picker</Button>
