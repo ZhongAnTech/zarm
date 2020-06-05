@@ -8,7 +8,6 @@ import ClickOutside from '../click-outside';
 import domUtil from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
-import canUseDom from '../utils/canUseDom';
 
 export interface PopperProps extends BasePopperProps {
   prefixCls?: string;
@@ -145,7 +144,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     hasArrow: false,
     destroy: true,
     arrowPointAtCenter: false,
-    trigger: (canUseDom && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover') || 'click',
+    trigger: (domUtil.canUseDOM && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover') || 'click',
     direction: 'top',
     mouseEnterDelay: 150,
     mouseLeaveDelay: 100,

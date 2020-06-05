@@ -162,7 +162,7 @@ const domUtil = {
     return document.body;
   },
 
-  canUseDom: () => !!(typeof window !== 'undefined' && window.document && window.document.createElement),
+  canUseDOM: () => !!(typeof window !== 'undefined' && window.document && window.document.createElement),
 
 };
 

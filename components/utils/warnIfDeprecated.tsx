@@ -1,13 +1,13 @@
 import React from 'react';
 
+type classType = new (...args: any[]) => any;
+
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
-type classType = new (...args: any[]) => any;
-
 export default function (deprecations: Array<{ oldProp: string; newProp: string }>) {
-  return function Warpper<T extends classType>(WrappedComponent: T): T {
+  return function Wrapper<T extends classType>(WrappedComponent: T): T {
     class WarnIfDeprecatedComp extends WrappedComponent {
       constructor(...props: any[]) {
         super(...props);

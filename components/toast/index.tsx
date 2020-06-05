@@ -60,7 +60,7 @@ export default class Toast extends Component<ToastProps, any> {
     }
   };
 
-  private timer;
+  private timer: number;
 
   static defaultProps = {
     prefixCls: 'za-toast',
