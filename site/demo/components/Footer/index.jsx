@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { IntlProvider, FormattedMessage } from 'react-intl';
-import { Context } from '@site/demo/components/Container';
+import Context from '@site/utils/context';
 import Locale from '@site/locale';
 import './style.scss';
 

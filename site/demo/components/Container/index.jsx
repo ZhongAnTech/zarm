@@ -1,12 +1,11 @@
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { Icon, Radio, Popper } from 'zarm';
 import { darken } from '@site/utils/color';
+import Context from '@site/utils/context';
 import './style.scss';
 
 const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
-
-export const Context = createContext({});
 
 const Container = (props) => {
   const [lang, setLang] = useState(window.sessionStorage.language || 'zhCN');
@@ -54,6 +53,7 @@ const Container = (props) => {
                       style={{ backgroundColor: color }}
                       onClick={() => {
                         setTheme(color);
+                        setCssVar(color);
                         window.sessionStorage.theme = color;
                       }}
                     />
