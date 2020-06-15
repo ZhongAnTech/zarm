@@ -92,7 +92,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
           "placeholder": "搜索",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       placeholder="搜索"
       prefixCls="za-search-bar"
       shape="round"
@@ -295,7 +295,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
           "placeholder": "搜索",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       onCancel={
         [MockFunction] {
           "calls": Array [
@@ -515,7 +515,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
           "placeholder": "搜索",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       onChange={
         [MockFunction] {
           "calls": Array [
@@ -733,7 +733,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
           "placeholder": "搜索",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       onClear={
         [MockFunction] {
           "calls": Array [
@@ -950,7 +950,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
           "placeholder": "搜索",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       onFocus={
         [MockFunction] {
           "calls": Array [
@@ -1170,7 +1170,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
           "placeholder": "搜索",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       onSubmit={
         [MockFunction] {
           "calls": Array [

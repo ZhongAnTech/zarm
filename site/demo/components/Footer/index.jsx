@@ -1,17 +1,21 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import { IntlProvider, FormattedMessage } from 'react-intl';
+import Context from '@site/utils/context';
+import Locale from '@site/locale';
 import './style.scss';
 
-class Footer extends Component {
-  render() {
-    return (
+const Footer = () => {
+  const { lang } = useContext(Context);
+
+  return (
+    <IntlProvider locale="zh-CN" messages={Locale[lang]}>
       <footer>
         <div className="copyright">
-          <div className="copyright-cn">众安·体验设计中心</div>
-          <div className="copyright-en">ZhongAn UX Design</div>
+          <FormattedMessage id="app.demo.footer.copyright" />
         </div>
       </footer>
-    );
-  }
-}
+    </IntlProvider>
+  );
+};
 
 export default Footer;

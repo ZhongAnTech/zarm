@@ -19,7 +19,7 @@ class Demo extends React.Component {
           return (
             <div className="custom">
               <div className="custom__date">{date.getDate()}</div>
-              <div className="custom__text">休息</div>
+              <div className="custom__text">Closed</div>
             </div>
           );
         }
@@ -61,7 +61,7 @@ class Demo extends React.Component {
           <Cell title="min">
             <Input
               type="text"
-              placeholder="请输入日历起始日期"
+              placeholder="Please input start date"
               value={min}
               onBlur={e => this.setState({ min: e })}
             />
@@ -69,7 +69,7 @@ class Demo extends React.Component {
           <Cell title="max">
             <Input
               type="text"
-              placeholder="请输入日历终止日期"
+              placeholder="Please input end date"
               value={max}
               onBlur={e => this.setState({ max: e })}
             />

@@ -11,7 +11,7 @@ import Select from '../../select/locale/zh_CN';
 import Keyboard from '../../keyboard/locale/zh_CN';
 
 export default {
-  locale: 'zh-cn',
+  locale: 'zh-CN',
   ActionSheet,
   Alert,
   Confirm,

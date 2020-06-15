@@ -11,7 +11,7 @@ import Select from '../../select/locale/en_US';
 import Keyboard from '../../keyboard/locale/en_US';
 
 export default {
-  locale: 'en',
+  locale: 'en-US',
   ActionSheet,
   Alert,
   Confirm,
