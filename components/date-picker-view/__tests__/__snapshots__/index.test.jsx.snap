@@ -26,7 +26,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
           "year": "年",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={1}
       mode="datetime"
       placeholder="请选择时间"
@@ -691,7 +691,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
             "year": "年",
           }
         }
-        localeCode="zh-cn"
+        localeCode="zh-CN"
         minuteStep={1}
         mode="datetime"
         onChange={[Function]}
@@ -2445,7 +2445,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
           "year": "年",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       max="2019-11-23 21:00"
       min="2007-01-03 11:00"
       minuteStep={1}
@@ -3040,7 +3040,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
             "year": "年",
           }
         }
-        localeCode="zh-cn"
+        localeCode="zh-CN"
         max="2019-11-23 21:00"
         min="2007-01-03 11:00"
         minuteStep={1}

@@ -5,6 +5,8 @@ import Loadable from 'react-loadable';
 import { Loading } from 'zarm';
 import { pascalCase } from 'change-case';
 import { components } from '@site/site.config';
+import Container from '@site/demo/components/Container';
+import Footer from '@site/demo/components/Footer';
 import SentryBoundary from '@site/demo/components/SentryBoundary';
 import Markdown from '@site/demo/components/Markdown';
 import './style.scss';
@@ -21,11 +23,14 @@ const LoadableComponent = (component) => {
     loader,
     render: (loaded, props) => {
       return (
-        <Markdown
-          content={loaded.page.default}
-          component={component}
-          {...props}
-        />
+        <Container className={`${component.key}-page`}>
+          <Markdown
+            content={loaded.page.default}
+            component={component}
+            {...props}
+          />
+          <Footer />
+        </Container>
       );
     },
     loading: () => <Loading visible />,
