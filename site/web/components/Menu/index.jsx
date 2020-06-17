@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { pascalCase } from 'change-case';
 import { Menu } from 'zarm-web';
+import { FormattedMessage } from 'react-intl';
+import Context from '@site/utils/context';
 import { documents, components } from '@site/site.config';
 import './style.scss';
 
-const getDocs = () => {
+const getDocs = (lang) => {
   return documents.map((doc) => (
     <Menu.Item
       key={doc.key}
     >
-      <a href={`#/components/${doc.key}`}>{doc.name}</a>
+      <a href={`#/components/${doc.key}`}>{lang === 'zhCN' ? doc.name : pascalCase(doc.key)}</a>
     </Menu.Item>
   ));
 };
 
-const getMenus = (groupName, key) => {
+const getMenus = (lang, key) => {
   const list = components[key] || [];
   return (
-    <Menu.ItemGroup title={groupName} key={key}>
+    <Menu.ItemGroup title={<FormattedMessage id={`app.components.type.${key}`} />} key={key}>
       {
         list
           .sort((a, b) => {
@@ -28,7 +30,7 @@ const getMenus = (groupName, key) => {
             <Menu.Item key={component.key}>
               <a href={`#/components/${component.key}`}>
                 <span>{pascalCase(component.key)}</span>
-                <span className="chinese">{component.name}</span>
+                {lang === 'zhCN' && <span className="chinese">{component.name}</span>}
               </a>
             </Menu.Item>
           ))
@@ -39,6 +41,7 @@ const getMenus = (groupName, key) => {
 
 const MenuComponent = () => {
   const params = useParams();
+  const { lang } = useContext(Context);
 
   return (
     <div className="menu">
@@ -46,14 +49,14 @@ const MenuComponent = () => {
         defaultOpenKeys={['components', 'general', 'form', 'feedback', 'view', 'navigation', 'other']}
         selectedKeys={[params.document, params.component]}
       >
-        {getDocs()}
-        <Menu.SubMenu title="组件" key="components">
-          {getMenus('通用', 'general')}
-          {getMenus('数据录入', 'form')}
-          {getMenus('数据展示', 'view')}
-          {getMenus('操作反馈', 'feedback')}
-          {getMenus('导航', 'navigation')}
-          {getMenus('其他', 'other')}
+        {getDocs(lang)}
+        <Menu.SubMenu title={<FormattedMessage id="app.components" />} key="components">
+          {getMenus(lang, 'general')}
+          {getMenus(lang, 'form')}
+          {getMenus(lang, 'view')}
+          {getMenus(lang, 'feedback')}
+          {getMenus(lang, 'navigation')}
+          {getMenus(lang, 'other')}
         </Menu.SubMenu>
       </Menu>
     </div>

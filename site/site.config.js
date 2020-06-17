@@ -2,7 +2,7 @@ module.exports = {
   documents: [
     {
       key: 'introduce',
-      name: '关于 Zarm',
+      name: '关于Zarm',
       module: () => import('@site/web/docs/introduce.md'),
       style: false,
     },

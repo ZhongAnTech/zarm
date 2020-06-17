@@ -21,7 +21,7 @@ const Child = () => {
     return (
       <Panel title={(
         <>
-          <FormattedMessage id={`app.demo.components.type.${key}`} />
+          <FormattedMessage id={`app.components.type.${key}`} />
           （{list.length}）
         </>
       )}
@@ -54,7 +54,7 @@ const Child = () => {
       <header>
         <section className="brand">
           <div className="brand-title">Zarm</div>
-          <div className="brand-description"><FormattedMessage id="app.demo.title" /></div>
+          <div className="brand-description"><FormattedMessage id="app.title" /></div>
         </section>
       </header>
       <main>

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { Route, Switch, Redirect, useParams } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
+import { FormattedMessage } from 'react-intl';
 import { Icon } from 'zarm';
 import { documents, components } from '@site/site.config';
+import Context from '@site/utils/context';
 import Container from '@site/web/components/Container';
-import Header from '@site/web/components/Header';
 import SideBar from '@site/web/components/SideBar';
 import Footer from '@site/web/components/Footer';
 import Markdown from '@site/web/components/Markdown';
@@ -25,32 +26,49 @@ const LoadableComponent = (component) => {
 
 const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
-const Page = () => {
-  const { general, form, feedback, view, navigation, other } = components;
+const Simulator = () => {
   const params = useParams();
+  const simulatorRef = useRef();
+  const { lang } = useContext(Context);
   const [affix, setAffix] = useState(true);
-
-  const containerCls = classnames('main-container', {
-    'no-simulator': !isComponentPage(params.component),
-  });
 
   const simulatorCls = classnames('simulator', {
     'simulator--affix': affix,
   });
 
+  useEffect(() => {
+    simulatorRef.current.contentWindow.postMessage({ lang });
+  }, [lang]);
+
+  return (
+    <div className={simulatorCls}>
+      <FormattedMessage id={`app.home.components.simulator.${affix ? 'unaffix' : 'affix'}`}>
+        {(txt) => (
+          <div className="simulator__control" onClick={() => setAffix(!affix)} title={txt}>
+            <Icons type="affix" size="sm" />
+          </div>
+        )}
+      </FormattedMessage>
+      <iframe ref={simulatorRef} src={`${window.location.protocol}//${window.location.host}/demo.html#/${params.component}`} title="simulator" frameBorder="0" />
+    </div>
+  );
+};
+
+const Page = () => {
+  const { general, form, feedback, view, navigation, other } = components;
+  const params = useParams();
+
+  const containerCls = classnames('main-container', {
+    'no-simulator': !isComponentPage(params.component),
+  });
+
   return (
     <Container className="components-page">
-      <Header />
       <main>
         <SideBar />
         {
           isComponentPage(params.component) && (
-            <div className={simulatorCls}>
-              <div className="simulator__control" onClick={() => setAffix(!affix)} title={affix ? '取消悬浮' : '设置悬浮'}>
-                <Icons type="affix" size="sm" />
-              </div>
-              <iframe src={`${window.location.protocol}//${window.location.host}/demo.html#/${params.component}`} title="simulator" frameBorder="0" />
-            </div>
+            <Simulator />
           )
         }
         <div className={containerCls}>

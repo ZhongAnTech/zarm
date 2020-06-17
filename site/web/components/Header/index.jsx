@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { Select } from 'dragon-ui';
-import { Icon, Popup } from 'zarm';
+import { IntlProvider, FormattedMessage } from 'react-intl';
+import { Icon, Popup, Radio } from 'zarm';
 import { Dropdown, Menu } from 'zarm-web';
 import classnames from 'classnames';
 import docsearch from 'docsearch.js';
 import MenuComponent from '@site/web/components/Menu';
 import Events from '@site/utils/events';
+import Context from '@site/utils/context';
+import Locale from '@site/locale';
 import { version } from '@/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
@@ -23,11 +25,12 @@ const initDocSearch = () => {
 
 const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
-const Header = () => {
+const Header = ({ children }) => {
   const searchInput = useRef();
   const location = useLocation();
   const [menu, toggleMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [lang, setLang] = useState(window.sessionStorage.language || 'zhCN');
   const currentPageKey = location.pathname.split('/')[1] || '/';
 
   const keyupEvent = (event) => {
@@ -43,12 +46,12 @@ const Header = () => {
   };
 
   const NAV_ITEMS = [
-    { key: 'components', link: '#/components/quick-start', title: '组件' },
-    { key: 'design', link: '#/design/download', title: '资源' },
+    { key: 'components', link: '#/components/quick-start', title: <FormattedMessage id="app.home.nav.components" /> },
+    { key: 'design', link: '#/design/download', title: <FormattedMessage id="app.home.nav.resources" /> },
     { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
   ];
 
-  if (document.location.host.indexOf('gitee') > -1) {
+  if (document.location.host.indexOf('gitee') > -1 || lang === 'enUS') {
     NAV_ITEMS.pop();
   }
 
@@ -108,31 +111,54 @@ const Header = () => {
   );
 
   return (
-    <header>
-      <div className="header-container">
-        {menuRender}
-        <div className="logo">
-          <a href="#/">
-            <img alt="logo" src={require('./images/logo.svg')} />
+    <IntlProvider locale="zh-CN" messages={Locale[lang]}>
+      <Context.Provider value={{ lang }}>
+        <header>
+          <div className="header-container">
+            {menuRender}
+            <div className="logo">
+              <a href="#/">
+                <img alt="logo" src={require('./images/logo.svg')} />
             Zarm
-            <sup className="logo-version">v{version}</sup>
-          </a>
-        </div>
-        {moreRender}
-        <nav>
-          <div className="search">
-            <Icon type="search" />
-            <input placeholder="搜索组件..." ref={searchInput} />
+                <sup className="logo-version">v{version}</sup>
+              </a>
+            </div>
+            {moreRender}
+            <nav>
+              <div className="search">
+                <Icon type="search" />
+                <FormattedMessage id="app.home.nav.search">
+                  {(txt) => (
+                    <input placeholder={txt} ref={searchInput} />
+                  )}
+                </FormattedMessage>
+              </div>
+              <ul>
+                {NAV_ITEMS.map((item) => <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>)}
+              </ul>
+              <div className="lang">
+                <Radio.Group
+                  compact
+                  type="button"
+                  value={lang}
+                  onChange={(value) => {
+                    setLang(value);
+                    window.sessionStorage.language = value;
+                  }}
+                >
+                  <Radio value="zhCN">中文</Radio>
+                  <Radio value="enUS">EN</Radio>
+                </Radio.Group>
+              </div>
+              <a className="github" href="https://github.com/ZhongAnTech/zarm" target="_blank" rel="noopener noreferrer">
+                <Icons type="github" />
+              </a>
+            </nav>
           </div>
-          <ul>
-            {NAV_ITEMS.map((item) => <li key={item.key}><a href={item.link} className={activeClassName([item.key])}>{item.title}</a></li>)}
-          </ul>
-          <a className="github" href="https://github.com/ZhongAnTech/zarm" target="_blank" rel="noopener noreferrer">
-            <Icons type="github" />
-          </a>
-        </nav>
-      </div>
-    </header>
+        </header>
+        {children}
+      </Context.Provider>
+    </IntlProvider>
   );
 };
 

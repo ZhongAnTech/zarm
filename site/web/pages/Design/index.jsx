@@ -16,7 +16,6 @@ const LoadableComponent = (component) => {
 const Page = () => {
   return (
     <Container className="design-page">
-      <Header />
       <main>
         <div className="main-container">
           <Switch>
