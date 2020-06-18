@@ -35,15 +35,15 @@ import 'zarm/dist/zarm.min.css';
 - 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 自动加载Sass文件（推荐）
 
 ```js
-  // .babelrc or babel-loader option
-  {
-    "plugins": [
-      ['import', {
-        libraryName: 'zarm',
-        style: true, // or 'css'
-      }],
-    ]
-  }
+// .babelrc or babel-loader option
+{
+  "plugins": [
+    ['import', {
+      libraryName: 'zarm',
+      style: true, // or 'css'
+    }],
+  ]
+}
 ```
 
 ```js
@@ -53,9 +53,8 @@ import { Button, Cell } from 'zarm';
 - 手动引入
 
 ```js
-import Button from 'zarm/lib/button'; // 加载js
-import 'zarm/lib/button/style/css'; // 加载css
-// import 'zarm/lib/button/style'; // 加载scss
+import { Button } from 'zarm'; // 加载js
+import 'zarm/dist/zarm.min.css'; // 加载css
 ```
 
 ### 定制主题
@@ -66,4 +65,4 @@ import 'zarm/lib/button/style/css'; // 加载css
 document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 ```
 
-变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/dev/components/style/themes/default.scss)
+变量名可参考 [default.scss](https://github.com/ZhongAnTech/zarm/blob/master/components/style/themes/default.scss)

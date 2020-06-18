@@ -58,7 +58,7 @@ const Page = () => {
   const { general, form, feedback, view, navigation, other } = components;
   const params = useParams();
 
-  const containerCls = classnames('main-container', {
+  const containerCls = classnames('main-container', 'markdown', {
     'no-simulator': !isComponentPage(params.component),
   });
 

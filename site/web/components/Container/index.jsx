@@ -5,7 +5,7 @@ import Header from '@site/web/components/Header';
 import './style.scss';
 
 const Container = ({ className, children, ...others }) => {
-  const cls = classnames('app-container', 'markdown', className);
+  const cls = classnames('app-container', className);
 
   return (
     <div className={cls} {...others}>
