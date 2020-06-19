@@ -26,42 +26,30 @@ ReactDOM.render(
 
 ## 受控使用
 ```jsx
+import { useState } from 'react';
 import { Cell, Checkbox, Modal } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    isChecked: false,
-  }
+const Demo = () => {
+  const [checked, setChecked] = useState(false);
 
-  onChange = (e) => {
+  const onChange = (e) => {
     if (!e.target.checked) {
       Modal.confirm({
         content: '是否要取消选择',
         cancelText: '不取消',
       }).then((res) => {
-        if (res) {
-          this.setState({
-            isChecked: false,
-          });
-        }
+        res && setChecked(false);
       });
       return;
     }
-
-    this.setState({
-      isChecked: true,
-    });
+    setChecked(true);
   }
 
-  render() {
-    const { isChecked } = this.state;
-
-    return (
-      <Cell>
-        <Checkbox checked={isChecked} onChange={this.onChange}>取消勾选前确认</Checkbox>
-      </Cell>
-    );
-  }
+  return (
+    <Cell>
+      <Checkbox checked={checked} onChange={onChange}>取消勾选前确认</Checkbox>
+    </Cell>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -71,48 +59,36 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 组合使用
 ```jsx
+import { useState } from 'react';
 import { Cell, Checkbox } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    value: [],
+const Demo = () => {
+  const [value, setValue] = useState([]);
+
+  const onCheckedAll = (e) => {
+    setValue(e.target.checked ? ['0', '1', '2'] : [])
   }
 
-  onCheckedAll = (e) => {
-    this.setState({
-      value: e.target.checked ? ['0', '1', '2'] : [],
-    });
-  }
-
-  onChange = (value) => {
-    console.log(value);
-    this.setState({ value });
-  }
-
-  render() {
-    const { value } = this.state;
-
-    return (
-      <>
-        <Cell>
-          <Checkbox
-            checked={value.length === 3}
-            indeterminate={value.length < 3 && value.length > 0}
-            onChange={this.onCheckedAll}
-          >
-            全选 / 反选
-          </Checkbox>
-        </Cell>
-        <Cell>
-          <Checkbox.Group value={value} onChange={this.onChange}>
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2">选项三</Checkbox>
-          </Checkbox.Group>
-        </Cell>
-      </>
-    );
-  }
+  return (
+    <>
+      <Cell>
+        <Checkbox
+          checked={value.length === 3}
+          indeterminate={value.length < 3 && value.length > 0}
+          onChange={onCheckedAll}
+        >
+          全选 / 反选
+        </Checkbox>
+      </Cell>
+      <Cell>
+        <Checkbox.Group value={value} onChange={setValue}>
+          <Checkbox value="0">选项一</Checkbox>
+          <Checkbox value="1">选项二</Checkbox>
+          <Checkbox value="2">选项三</Checkbox>
+        </Checkbox.Group>
+      </Cell>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -122,97 +98,93 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 按钮样式
 ```jsx
+import { useState } from 'react';
 import { Cell, Checkbox } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    value: [],
-  }
+const Demo = () => {
+  const [value, setValue] = useState([]);
 
-  render() {
-    const { value } = this.state;
+  return (
+    <div>
+      <Cell
+        description={
+          <Checkbox.Group
+            type="button"
+            value={value}
+            onChange={(value) => {
+              setValue(value);
+              console.log(`checked to ${value}`);
+            }}>
+            <Checkbox value="0">选项一</Checkbox>
+            <Checkbox value="1">选项二</Checkbox>
+            <Checkbox value="2">选项三</Checkbox>
+          </Checkbox.Group>
+        }
+      >
+        普通
+      </Cell>
 
-    return (
-      <div>
-        <Cell
-          description={
-            <Checkbox.Group
-              type="button"
-              value={this.state.value}
-              onChange={(value) => {
-                this.setState({ value }, () => console.log(`checked to ${value}`));
-              }}>
-              <Checkbox value="0">选项一</Checkbox>
-              <Checkbox value="1">选项二</Checkbox>
-              <Checkbox value="2">选项三</Checkbox>
-            </Checkbox.Group>
-          }
-        >
-          普通
-        </Cell>
+      <Cell
+        description={
+          <Checkbox.Group type="button" defaultValue={['0', '1']}>
+            <Checkbox value="0">选项一</Checkbox>
+            <Checkbox value="1">选项二</Checkbox>
+            <Checkbox value="2">选项三</Checkbox>
+          </Checkbox.Group>
+        }
+      >
+        指定默认值
+      </Cell>
 
-        <Cell
-          description={
-            <Checkbox.Group type="button" defaultValue={['0', '1']}>
-              <Checkbox value="0">选项一</Checkbox>
-              <Checkbox value="1">选项二</Checkbox>
-              <Checkbox value="2">选项三</Checkbox>
-            </Checkbox.Group>
-          }
-        >
-          指定默认值
-        </Cell>
+      <Cell
+        description={
+          <Checkbox.Group type="button">
+            <Checkbox value="0">选项一</Checkbox>
+            <Checkbox value="1" disabled>选项二</Checkbox>
+            <Checkbox value="2" disabled checked>选项三</Checkbox>
+          </Checkbox.Group>
+        }
+      >
+        禁用指定项
+      </Cell>
 
-        <Cell
-          description={
-            <Checkbox.Group type="button">
-              <Checkbox value="0">选项一</Checkbox>
-              <Checkbox value="1" disabled>选项二</Checkbox>
-              <Checkbox value="2" disabled checked>选项三</Checkbox>
-            </Checkbox.Group>
-          }
-        >
-          禁用指定项
-        </Cell>
+      <Cell
+        description={
+          <Checkbox.Group type="button" shape="rect">
+            <Checkbox value="0">选项一</Checkbox>
+            <Checkbox value="1">选项二</Checkbox>
+            <Checkbox value="2">选项三</Checkbox>
+          </Checkbox.Group>
+        }
+      >
+        直角
+      </Cell>
 
-        <Cell
-          description={
-            <Checkbox.Group type="button" shape="rect">
-              <Checkbox value="0">选项一</Checkbox>
-              <Checkbox value="1">选项二</Checkbox>
-              <Checkbox value="2">选项三</Checkbox>
-            </Checkbox.Group>
-          }
-        >
-          直角
-        </Cell>
+      <Cell
+        description={
+          <Checkbox.Group type="button" shape="round">
+            <Checkbox value="0">选项一</Checkbox>
+            <Checkbox value="1">选项二</Checkbox>
+            <Checkbox value="2">选项三</Checkbox>
+          </Checkbox.Group>
+        }
+      >
+        椭圆角
+      </Cell>
 
-        <Cell
-          description={
-            <Checkbox.Group type="button" shape="round">
-              <Checkbox value="0">选项一</Checkbox>
-              <Checkbox value="1">选项二</Checkbox>
-              <Checkbox value="2">选项三</Checkbox>
-            </Checkbox.Group>
-          }
-        >
-          椭圆角
-        </Cell>
-
-        <Cell
-          description={
-            <Checkbox.Group ghost type="button" defaultValue={['2']}>
-              <Checkbox value="0">选项一</Checkbox>
-              <Checkbox value="1">选项二</Checkbox>
-              <Checkbox value="2" disabled>选项三</Checkbox>
-            </Checkbox.Group>
-          }
-        >
-          幽灵按钮
-        </Cell>
-      </div>
-    )
-  }
+      <Cell
+        description={
+          <Checkbox.Group ghost type="button" defaultValue={['2']}>
+            <Checkbox value="0">选项一</Checkbox>
+            <Checkbox value="1">选项二</Checkbox>
+            <Checkbox value="2" disabled>选项三</Checkbox>
+          </Checkbox.Group>
+        }
+      >
+        幽灵按钮
+      </Cell>
+    </div>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

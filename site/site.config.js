@@ -247,6 +247,12 @@ module.exports = {
       },
     ],
     other: [
+      // {
+      //   key: 'mask',
+      //   name: '遮罩层',
+      //   module: () => import('@/components/mask/demo.md'),
+      //   style: false,
+      // },
       {
         key: 'locale-provider',
         name: '国际化',
