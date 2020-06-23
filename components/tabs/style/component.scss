@@ -1,15 +1,27 @@
 @include b(tabs) {
   @include e(header) {
     position: relative;
+    overflow: hidden;
+    @include onepx(bottom);
 
     ul {
+      position: relative;
       display: flex;
       list-style: none;
       margin: 0;
       padding: 0;
       height: var(--tabs-height);
       line-height: var(--tabs-height);
-      @include onepx(bottom);
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &.za-tabs__scroll {
+      ul {
+        overflow-x: auto;
+      }
     }
   }
 
@@ -18,6 +30,9 @@
     text-align: center;
     color: var(--color-text);
     font-size: var(--tabs-item-font-size);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     cursor: pointer;
 
     @include m(disabled) {
@@ -31,7 +46,7 @@
     left: 0;
     bottom: 0;
     height: var(--tabs-line-height);
-    transition: left .3s ease-out;
+    transition: transform .3s ease-out;
     background-color: var(--theme-primary);
 
     &__inner {
