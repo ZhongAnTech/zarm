@@ -4,248 +4,285 @@
 
 ## 基本用法
 ```jsx
+import { useState, useRef, useReducer } from 'react';
 import { Modal, Cell, Button, Select } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    modal1: false,
-    modal2: false,
-    modal3: false,
-    modal4: false,
-    modal5: false,
-    specModal: false,
+const initState = {
+  normal: {
+    visible: false,
+  },
+  hasFooter: {
+    visible: false,
+  },
+  closable: {
+    visible: false,
+  },
+  onlyBody: {
+    visible: false,
+  },
+  animation: {
+    visible: false,
     animationType: 'fade',
+  },
+  customContainer: {
+    visible: false,
+  },
+}
+
+const reducer = (state, action) => {
+  const { type, key, visible, animationType } = action;
+
+  switch (type) {
+    case 'visible':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          visible: !state[key].visible,
+        }
+      };
+    
+    case 'animation':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          animationType,
+        }
+      };
+  }
+};
+
+const Demo = () => {
+  const myRef = useRef();
+  const [state, dispatch] = useReducer(reducer, initState);
+
+  const toggle = (key) => {
+    dispatch({ type: 'visible', key });
   };
 
-  myRef = React.createRef();
+  return (
+    <>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('normal')}>开启</Button>
+        }
+      >
+        普通
+      </Cell>
 
-  open = (key) => {
-    this.setState({
-      [`${key}`]: true,
-    });
-  }
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('hasFooter')}>开启</Button>
+        }
+      >
+        有底部按钮
+      </Cell>
 
-  close = (key) => {
-    this.setState({
-      [`${key}`]: false,
-    });
-  }
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('closable')}>开启</Button>
+        }
+      >
+        遮罩层可关闭
+      </Cell>
 
-  render() {
-    const { modal1, modal2, modal3, modal4, modal5, animationType, specModal } = this.state;
-    return (
-      <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.open('modal1')}>开启</Button>
-          }
-        >
-          普通
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('onlyBody')}>开启</Button>
+        }
+      >
+        无头部，无底部
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.open('modal2')}>开启</Button>
-          }
-        >
-          有底部按钮
-        </Cell>
-
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.open('modal3')}>开启</Button>
-          }
-        >
-          遮罩层可关闭
-        </Cell>
-
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.open('modal4')}>开启</Button>
-          }
-        >
-          无头部，无底部
-        </Cell>
-
-        <Cell
-          title="动画效果"
-          description={
-            <Button size="xs" onClick={() => this.open('modal5')}>开启</Button>
-          }
-        >
-          <Select
-            value={animationType}
-            dataSource={[
-              { value: 'fade', label: '淡出淡入效果(fade)' },
-              { value: 'zoom', label: '缩放效果(zoom)' },
-              { value: 'rotate', label: '旋转效果(rotate)' },
-              { value: 'door', label: '开关门效果(door)' },
-              { value: 'flip', label: '翻转效果(flip)' },
-              { value: 'moveUp', label: '移出移入效果(moveUp)' },
-              { value: 'moveDown', label: '移出移入效果(moveDown)' },
-              { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
-              { value: 'moveRight', label: '移出移入效果(moveRight)' },
-              { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
-              { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
-              { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
-              { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
-            ]}
-            onOk={(selected) => {
-              this.setState({
-                animationType: selected.map(item => item.value),
-              });
-            }}
-          />
-        </Cell>
-
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.open('specModal')}>开启</Button>
-          }
-        >
-          挂载到指定dom节点
-        </Cell>
-
-        <div
-          id="test-div"
-          style={{ position: 'relative', zIndex: 1 }}
-          ref={this.myRef} 
+      <Cell
+        title="动画效果"
+        description={
+          <Button size="xs" onClick={() => toggle('animation')}>开启</Button>
+        }
+      >
+        <Select
+          value={state.animation.animationType}
+          dataSource={[
+            { value: 'fade', label: '淡出淡入效果(fade)' },
+            { value: 'zoom', label: '缩放效果(zoom)' },
+            { value: 'rotate', label: '旋转效果(rotate)' },
+            { value: 'door', label: '开关门效果(door)' },
+            { value: 'flip', label: '翻转效果(flip)' },
+            { value: 'moveUp', label: '移出移入效果(moveUp)' },
+            { value: 'moveDown', label: '移出移入效果(moveDown)' },
+            { value: 'moveLeft', label: '移出移入效果(moveLeft)' },
+            { value: 'moveRight', label: '移出移入效果(moveRight)' },
+            { value: 'slideUp', label: '滑出滑入效果(slideUp)' },
+            { value: 'slideDown', label: '滑出滑入效果(slideDown)' },
+            { value: 'slideLeft', label: '滑出滑入效果(slideLeft)' },
+            { value: 'slideRight', label: '滑出滑入效果(slideRight)' },
+          ]}
+          onOk={(selected) => {
+            dispatch({
+              type: 'animation',
+              key: 'animation',
+              animationType: selected.map(item => item.value),
+            });
+          }}
         />
+      </Cell>
 
-        <Modal
-          visible={modal1}
-          title="标题"
-          closable
-          onCancel={() => this.close('modal1')}
-        >
-          模态框内容
-        </Modal>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('customContainer')}>开启</Button>
+        }
+      >
+        挂载到指定dom节点
+      </Cell>
 
-        <Modal
-          title="标题"
-          visible={modal2}
-          closable
-          onCancel={() => this.close('modal2')}
-          footer={
-            <Button
-              block
-              theme="primary"
-              onClick={() => this.close('modal2')}
-            >确认</Button>
-          }
-        >
-          <p>模态框内容</p> 
-        </Modal>
+      <div
+        id="test-div"
+        style={{ position: 'relative', zIndex: 1 }}
+        ref={myRef} 
+      />
 
-        <Modal
-          visible={modal3}
-          title="标题"
-          maskClosable
-          onCancel={() => this.close('modal3')}
-        >
-          点击遮罩层关闭
-        </Modal>
+      <Modal
+        visible={state.normal.visible}
+        title="标题"
+        closable
+        onCancel={() => toggle('normal')}
+      >
+        模态框内容
+      </Modal>
 
-        <Modal
-          visible={modal4}
-          maskClosable
-          onCancel={() => this.close('modal4')}
-        >
-          无头部，无底部
-        </Modal>
+      <Modal
+        title="标题"
+        visible={state.hasFooter.visible}
+        closable
+        onCancel={() => toggle('hasFooter')}
+        footer={
+          <Button
+            block
+            theme="primary"
+            onClick={() => toggle('hasFooter')}
+          >确认</Button>
+        }
+      >
+        <p>模态框内容</p> 
+      </Modal>
 
-        <Modal
-          visible={modal5}
-          animationType={animationType}
-          maskClosable
-          onCancel={() => this.close('modal5')}
-        >
-            <div style={{ height: 100 }}>
-              当前使用的动画类型animationType：'{animationType}'
-            </div>
-        </Modal>
+      <Modal
+        visible={state.closable.visible}
+        title="标题"
+        maskClosable
+        onCancel={() => toggle('closable')}
+      >
+        点击遮罩层关闭
+      </Modal>
 
-        <Modal
-          visible={specModal}
-          maskClosable
-          onCancel={() => this.close('specModal')}
-          mountContainer={() => this.myRef.current}
-        >
-          挂载到指定dom节点
-        </Modal>
-      </>
-    )
-  }
+      <Modal
+        visible={state.onlyBody.visible}
+        maskClosable
+        onCancel={() => toggle('onlyBody')}
+      >
+        无头部，无底部
+      </Modal>
+
+      <Modal
+        visible={state.animation.visible}
+        animationType={state.animation.animationType}
+        maskClosable
+        onCancel={() => toggle('animation')}
+      >
+          <div style={{ height: 100 }}>
+            当前使用的动画类型animationType：'{state.animation.animationType}'
+          </div>
+      </Modal>
+
+      <Modal
+        visible={state.customContainer.visible}
+        maskClosable
+        onCancel={() => toggle('customContainer')}
+        getContainer={() => myRef.current}
+      >
+        挂载到指定dom节点
+      </Modal>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+
 
 ## 警告框 Alert
 ```jsx
 import { Cell, Button, Alert, Confirm, Modal  } from 'zarm';
 
-class Demo extends React.Component {
-   render() {
-    return (
-      <>
-        <Cell
-          description={
-            <Button size="xs" onClick={
-              () => {
-                const modal = Modal.alert({
-                  title: '静态调用的title',
-                  content: '静态调用的body',
-                  onCancel: () => {
-                    modal.hide();
-                  }
-                });
-            }}>开启</Button>
-          }
-        >
-          静态调用（静态关闭）
-        </Cell>
+const Demo = () => {
+  return (
+    <>
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              const modal = Modal.alert({
+                title: '静态调用的title',
+                content: '静态调用的body',
+                onCancel: () => {
+                  modal.hide();
+                }
+              });
+            }}
+          >开启</Button>
+        }
+      >
+        静态调用（静态关闭）
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => {
-                const modal = Modal.alert({
-                  title: '静态调用的title',
-                  content: '静态调用的body，使用promise关闭',
-                  onCancel: () => {
-                    return new Promise((resolve, reject) => {
-                      resolve();
-                      // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
-                    }).catch(() => {
-                      window.alert('出错啦，弹窗无法关闭，继续点击试试');
-                      return false; // 返回false，可使弹窗无法关闭
-                    })
-                  }
-                });
-            }}>开启</Button>
-          }
-        >
-          静态调用（使用promise关闭）
-        </Cell>
-      </>
-    )
-  }
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
+              const modal = Modal.alert({
+                title: '静态调用的title',
+                content: '静态调用的body，使用promise关闭',
+                onCancel: () => {
+                  return new Promise((resolve, reject) => {
+                    resolve();
+                    // setTimeout(Math.random() > 0.5 ? resolve : reject, 500);
+                  }).catch(() => {
+                    window.alert('出错啦，弹窗无法关闭，继续点击试试');
+                    return false; // 返回false，可使弹窗无法关闭
+                  })
+                }
+              });
+            }}
+          >开启</Button>
+        }
+      >
+        静态调用（使用promise关闭）
+      </Cell>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+
+
 ## 确认框 Confirm
 ```jsx
 import { Cell, Button, Confirm, Modal  } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => {
+const Demo = () => {
+  return (
+    <>
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
               const modal = Modal.confirm({
                 title: '确认信息',
                 content: '静态调用的body',
@@ -256,15 +293,18 @@ class Demo extends React.Component {
                   console.log('点击ok');
                 },
               });
-            }}>开启</Button>
-          }
-        >
-          静态调用（静态关闭）
-        </Cell>
+            }}
+          >开启</Button>
+        }
+      >
+        静态调用（静态关闭）
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => {
+      <Cell
+        description={
+          <Button
+            size="xs"
+            onClick={() => {
               const modal = Modal.confirm({
                 title: '静态调用的title',
                 content: '静态调用的body，使用promise关闭',
@@ -278,14 +318,14 @@ class Demo extends React.Component {
                   })
                 }
               });
-            }}>开启</Button>
-          }
-        >
-          静态调用（使用promise关闭）
-        </Cell>
-      </>
-    )
-  }
+            }}
+          >开启</Button>
+        }
+      >
+        静态调用（使用promise关闭）
+      </Cell>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

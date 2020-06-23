@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import { design } from '@site/site.config';
 import Container from '@site/web/components/Container';
-import Header from '@site/web/components/Header';
+// import Footer from '@site/web/components/Footer';
 import './style.scss';
 
 const LoadableComponent = (component) => {
@@ -16,7 +16,6 @@ const LoadableComponent = (component) => {
 const Page = () => {
   return (
     <Container className="design-page">
-      <Header />
       <main>
         <div className="main-container">
           <Switch>

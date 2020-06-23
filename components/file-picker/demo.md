@@ -4,38 +4,31 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Cell, FilePicker, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    files: [],
+const Demo = () => {
+  const [files, setFiles] = useState([]);
+
+  const onSelect = (file) => {
+    console.log(file)
+    const newFiles = files.concat(file);
+    setFiles(newFiles);
   };
 
-  onSelect(file) {
-    console.log(file);
-    const { files } = this.state;
-    files.push(file);
-
-    this.setState({
-      files,
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.files.map((item, index) => <Cell key={+index}>{item.fileName}</Cell>)}
-        <div className="file-picker-wrapper">
-          <FilePicker
-            className="file-picker-btn"
-            onChange={selected => this.onSelect(selected)}
-          >
-            <Icon type="add" size="lg" />
-          </FilePicker>
-        </div>
+  return (
+    <>
+      {files.map((item, index) => <Cell key={+index}>{item.fileName}</Cell>)}
+      <div className="file-picker-wrapper">
+        <FilePicker
+          className="file-picker-btn"
+          onChange={onSelect}
+        >
+          <Icon type="add" size="lg" />
+        </FilePicker>
       </div>
-    )
-  }
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -45,6 +38,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 多选模式
 ```jsx
+import { useState } from 'react';
 import { Cell, FilePicker, Icon, Toast, Badge } from 'zarm';
 
 const MAX_FILES_COUNT = 5;
@@ -53,40 +47,38 @@ const onBeforeSelect = () => {
   alert('执行 onBeforeSelect 方法');
 }
 
-class Demo extends React.Component {
-  state = {
-    files: [],
-  };
+const Demo = () => {
+  const [files, setFiles] = useState([]);
 
-  onSelect(selFiles) {
-    let { files } = this.state;
-    files = files.concat(selFiles);
-    if (files.length > MAX_FILES_COUNT) {
+  const onSelect = (selFiles) => {
+    const newFiles = files.concat(selFiles);
+    if (newFiles.length > MAX_FILES_COUNT) {
       Toast.show('最多只能选择5张图片')
       return;
     }
-    this.setState({ files });
+    setFiles(newFiles);
   }
 
-  remove(index) {
-    const { files } = this.state;
-    files.splice(index, 1);
-    this.setState({ files });
+  const remove = (index) => {
+    const newFiles = [].concat(files);
+    newFiles.splice(index, 1);
+    setFiles(newFiles);
     Toast.show('删除成功');
-  }
+  };
 
-  imgRender() {
-    const { files } = this.state;
-
+  const imgRender = () => {
     return files.map((item, index) => {
       return (
         <Badge
           key={+index}
-          sup
           className="file-picker-item"
           shape="circle"
-          text={<Icon type="wrong-round-fill" size="sm" theme="danger" />}
-          onClick={() => this.remove(index)}
+          text={(
+            <span className="file-picker-closebtn">
+              <Icon type="wrong" />
+            </span>
+          )}
+          onClick={() => remove(index)}
         >
           <div className="file-picker-item-img">
             <a href={item.thumbnail} target="_blank" rel="noopener noreferrer">
@@ -98,28 +90,24 @@ class Demo extends React.Component {
     });
   }
 
-  render() {
-    return (
-      <div>
-        <div className="file-picker-wrapper">
-          {this.imgRender()}
-          {
-            (this.state.files.length < MAX_FILES_COUNT) && (
-              <FilePicker
-                multiple
-                className="file-picker-btn"
-                accept="image/*"
-                onBeforeSelect={onBeforeSelect}
-                onChange={selected => this.onSelect(selected)}
-              >
-                <Icon type="add" size="lg" />
-              </FilePicker>
-            )
-          }
-        </div>
-      </div>
-    )
-  }
+  return (
+    <div className="file-picker-wrapper">
+      {imgRender()}
+      {
+        (files.length < MAX_FILES_COUNT) && (
+          <FilePicker
+            multiple
+            className="file-picker-btn"
+            accept="image/*"
+            onBeforeSelect={onBeforeSelect}
+            onChange={onSelect}
+          >
+            <Icon type="add" size="lg" />
+          </FilePicker>
+        )
+      }
+    </div>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
