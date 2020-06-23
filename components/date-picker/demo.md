@@ -4,170 +4,163 @@
 
 ## 基本用法
 ```jsx
+import { useRef, useReducer } from 'react';
 import { Cell, Button, DatePicker, Toast } from 'zarm';
 
-class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      date: {
-        visible: false,
-        value: '',
-        wheelDefaultValue: '2018-09-13',
-      },
-      time: {
-        visible: false,
-        value: '',
-      },
-      limitDate: {
-        visible: false,
-        value: '2017-09-13',
-      },
-      specDOM: {
-        visible: false,
-        value: '',
-      }
-    };
-
-    this.myRef = React.createRef();
+const initState = {
+  date: {
+    visible: false,
+    value: '',
+    wheelDefaultValue: '2018-09-13',
+  },
+  time: {
+    visible: false,
+    value: '',
+  },
+  limitDate: {
+    visible: false,
+    value: '2017-09-13',
+  },
+  specDOM: {
+    visible: false,
+    value: '',
   }
+}
 
-  componentDidMount() {
-    // this.interval = setInterval(
-    //   () =>
-    //     this.setState(prevState => ({
-    //       count: prevState.count + 1
-    //     })),
-    //   1000
-    // );
+const reducer = (state, action) => {
+  const { type, key, visible, value } = action;
+
+  switch (type) {
+    case 'visible':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          visible: !state[key].visible,
+        }
+      };
+    
+    case 'value':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          value,
+        }
+      };
   }
+};
 
-  toggle(key) {
-    const state = this.state[key];
-    state.visible = !state.visible;
-    this.setState({ [`${key}`]: state });
-  }
+const Demo = () => {
+  const myRef = useRef();
+  const [state, dispatch] = useReducer(reducer, initState);
 
-  render() {
-    const {
-      date,
-      time,
-      limitDate,
-      specDOM,
-    } = this.state;
+  const setValue = (key, value) => {
+    dispatch({ type: 'value', key, value });
+  };
 
-    return (
-      <div>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('date')}>选择</Button>
-          }
-        >
-          选择日期
-        </Cell>
+  const toggle = (key) => {
+    dispatch({
+      type: 'visible',
+      key,
+    });
+  };
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('time')}>选择</Button>
-          }
-        >
-          选择时间
-        </Cell>
+  return (
+    <div>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('date')}>选择</Button>
+        }
+      >
+        选择日期
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('limitDate')}>选择</Button>
-          }
-        >
-          选择日期(自定义)
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('time')}>选择</Button>
+        }
+      >
+        选择时间
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('specDOM')}>选择</Button>
-          }
-        >
-          挂载到指定dom节点
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('limitDate')}>选择</Button>
+        }
+      >
+        选择日期(自定义)
+      </Cell>
 
-        <DatePicker
-          visible={date.visible}
-          mode="date"
-          value={date.value}
-          wheelDefaultValue={date.wheelDefaultValue}
-          onOk={(value) => {
-            this.setState({
-              date: {
-                visible: false,
-                value,
-              },
-            });
-            Toast.show(JSON.stringify(value));
-          }}
-          onCancel={() => this.toggle('date')}
-        />
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('specDOM')}>选择</Button>
+        }
+      >
+        挂载到指定dom节点
+      </Cell>
 
-        <DatePicker
-          visible={time.visible}
-          mode="time"
-          value={time.value}
-          onOk={(value) => {
-            this.setState({
-              time: {
-                visible: false,
-                value,
-              },
-            });
-            Toast.show(JSON.stringify(value));
-          }}
-          onCancel={() => this.toggle('time')}
-        />
+      <DatePicker
+        visible={state.date.visible}
+        mode="date"
+        value={state.date.value}
+        wheelDefaultValue={state.date.wheelDefaultValue}
+        onOk={(value) => {
+          setValue('date', value);
+          toggle('date');
+          Toast.show(JSON.stringify(value));
+        }}
+        onCancel={() => toggle('date')}
+      />
 
-        <DatePicker
-          visible={limitDate.visible}
-          title="选择日期"
-          okText="确定"
-          cancelText="取消"
-          mode="date"
-          min="2007-01-03"
-          max="2019-11-23"
-          value={limitDate.value}
-          onOk={(value) => {
-            this.setState({
-              limitDate: {
-                visible: false,
-                value,
-              },
-            });
-            Toast.show(JSON.stringify(value));
-          }}
-          onCancel={() => this.toggle('limitDate')}
-        />
+      <DatePicker
+        visible={state.time.visible}
+        mode="time"
+        value={state.time.value}
+        onOk={(value) => {
+          setValue('time', value);
+          toggle('time');
+          Toast.show(JSON.stringify(value));
+        }}
+        onCancel={() => toggle('time')}
+      />
 
-        <DatePicker
-          visible={specDOM.visible}
-          value={specDOM.value}
-          onOk={(value) => {
-            this.setState({
-              specDOM: {
-                visible: false,
-                value,
-              },
-            });
-            Toast.show(JSON.stringify(value));
-          }}
-          onCancel={() => this.toggle('specDOM')}
-          mountContainer={() => this.myRef.current}
-        />
+      <DatePicker
+        visible={state.limitDate.visible}
+        title="选择日期"
+        okText="确定"
+        cancelText="取消"
+        mode="date"
+        min="2007-01-03"
+        max="2019-11-23"
+        value={state.limitDate.value}
+        onOk={(value) => {
+          setValue('limitDate', value);
+          toggle('limitDate');
+          Toast.show(JSON.stringify(value));
+        }}
+        onCancel={() => toggle('limitDate')}
+      />
 
-        <div
-          id="test-div"
-          style={{ position: 'relative', zIndex: 1 }}
-          ref={this.myRef} 
-          />
-      </div>
-    )
-  }
+      <DatePicker
+        visible={state.specDOM.visible}
+        value={state.specDOM.value}
+        onOk={(value) => {
+          setValue('specDOM', value);
+          toggle('specDOM');
+          Toast.show(JSON.stringify(value));
+        }}
+        onCancel={() => toggle('specDOM')}
+        getContainer={() => myRef.current}
+      />
+
+      <div
+        ref={myRef} 
+        id="test-div"
+        style={{ position: 'relative', zIndex: 1 }}
+      />
+    </div>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -177,39 +170,29 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## DateSelect 表单日期选择器
 ```jsx
+import { useState } from 'react';
 import { Cell, DateSelect, Icon } from 'zarm';
 
-class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: "",
-    };
-  }
+const Demo = () => {
+  const [value, setValue] = useState('');
 
-  render() {
-    return (
-      <div>
-        <Cell title="日期选择">
-          <DateSelect
-            className="test-dateSelect"
-            title="选择日期"
-            placeholder="请选择日期"
-            mode="date"
-            min="1974-05-16"
-            max="2027-05-15"
-            value={this.state.value}
-            onOk={(value) => {
-              console.log('DateSelect onOk: ', value);
-              this.setState({
-                value,
-              });
-            }}
-          />
-        </Cell>
-      </div>
-    )
-  }
+  return (
+    <Cell title="日期选择">
+      <DateSelect
+        className="test-dateSelect"
+        title="选择日期"
+        placeholder="请选择日期"
+        mode="date"
+        min="1974-05-16"
+        max="2027-05-15"
+        value={value}
+        onOk={(value) => {
+          console.log('DateSelect onOk: ', value);
+          setValue(value);
+        }}
+      />
+    </Cell>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -219,30 +202,23 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## DatePickerView 平铺选择器
 ```jsx
+import { useState } from 'react';
 import { DatePickerView } from 'zarm';
 
-class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: "",
-    };
-  }
+const Demo = () => {
+  const [value, setValue] = useState('');
 
-  render() {
-    return (
-      <div>
-        <DatePickerView
-          mode="datetime"
-          value={this.state.value}
-          min="2018-1-13"
-          onChange={(value) => {
-            console.log('datePickerView => ', value);
-          }}
-        />
-      </div>
-    )
-  }
+  return (
+    <DatePickerView
+      mode="datetime"
+      value={value}
+      min="2018-1-13"
+      onChange={(value) => {
+        console.log('datePickerView => ', value);
+        setValue(value);
+      }}
+    />
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

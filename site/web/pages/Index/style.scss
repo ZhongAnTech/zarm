@@ -72,16 +72,19 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 50px;
+        min-height: 50px;
         background-color: #00bc70;
         border: 0;
         color: #fff;
         font-size: 18px;
         border-radius: 25px;
         outline: none;
-        margin-right: 15px;
         margin-bottom: 10px;
         padding: 0 30px;
+
+        &:not(:last-child) {
+          margin-right: 15px;
+        }
 
         &:hover {
           background: #00a864;
@@ -160,11 +163,19 @@
       float: none;
       width: 100%;
       height: auto;
+
+      img {
+        margin-top: 60px;
+      }
     }
 
     .introduce {
+      position: fixed;
+      left: 0;
+      bottom: 0;
       width: 100%;
       height: auto;
+      padding: 0 24px;
       text-align: center;
 
       .title {
@@ -178,7 +189,11 @@
       .navigation {
         display: flex;
         justify-content: center;
-        margin: 20px 0;
+        margin: 30px 0;
+
+        button {
+          font-size: 16px;
+        }
       }
     }
   }

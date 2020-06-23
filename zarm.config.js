@@ -36,7 +36,6 @@ module.exports = {
     LICENSE file in the root directory of this source tree.
   `,
   setBabelOptions: (options) => {
-    options.plugins.unshift(['@babel/plugin-proposal-decorators', { legacy: true }]);
     options.plugins.push(['import', { libraryName: 'zarm-web', style: true }, 'zarm-web']);
   },
   setRules: (rules) => {

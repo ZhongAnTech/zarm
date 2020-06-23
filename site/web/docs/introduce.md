@@ -28,7 +28,7 @@ Zarm 的命名，灵感来源于众安保险秉承的理念：做有温度的保
 - [众安保险](https://www.zhongan.com)
 - [众安科技](https://www.zhongan.io)
 - [最福利](https://zuifuli.com)
-- [保险中介云平台](https://www.iyunbao.com)
+- [i云保](https://www.iyunbao.com)
 
 ## 社区
 
