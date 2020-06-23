@@ -1,12 +1,16 @@
-import React, { PureComponent, cloneElement } from 'react';
+import React, { PureComponent, cloneElement, ReactElement } from 'react';
 import classnames from 'classnames';
 import { BaseTabBarProps } from './PropsType';
 import TabBarItem from './TabBarItem';
 
+type TypeAndArrType<T> = T[] |T;
+
 export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
   className?: string;
+  children?: null | TypeAndArrType<ReactElement<TabBarItem['props'], typeof TabBarItem>>;
 }
+
 
 class TabBar extends PureComponent<TabBarProps, any> {
   static Item: typeof TabBarItem;
@@ -16,14 +20,14 @@ class TabBar extends PureComponent<TabBarProps, any> {
     visible: true,
   };
 
-  onChildChange = (value) => {
+  onChildChange = (value: string | number) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(value);
     }
   };
 
-  getSelected = (index, itemKey) => {
+  getSelected = (index: number, itemKey: string | number) => {
     const { activeKey, defaultActiveKey } = this.props;
     if (!activeKey) {
       if (!defaultActiveKey && index === 0) {
@@ -39,7 +43,8 @@ class TabBar extends PureComponent<TabBarProps, any> {
     const cls = classnames(prefixCls, {
       [`${prefixCls}--hidden`]: !visible,
     });
-    const items = React.Children.map(children, (element: JSX.Element, index) => {
+    const items = React.Children.map(children, (element, index) => {
+      if (!React.isValidElement(element)) return null;
       return cloneElement(element, {
         key: index,
         disabled: element.props.disabled,

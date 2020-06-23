@@ -8,11 +8,11 @@ export interface TabBarItemProps extends BaseTabBarItemProps {
 }
 
 class TabBarItem extends PureComponent<TabBarItemProps, {}> {
-  static defaultProps: TabBarItemProps = {
+  static defaultProps = {
     prefixCls: 'za-tab-bar',
   };
 
-  change = (value) => {
+  change = (value: string | number) => {
     const { onChange } = this.props;
     if (typeof onChange === 'function') {
       onChange(value);
