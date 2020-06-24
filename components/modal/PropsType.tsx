@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ContainerType } from '../popup/PropsType';
+import { ContainerType } from '../utils/dom';
 
 export interface BaseModalProps {
   shape?: 'radius' | 'rect';
@@ -14,7 +14,7 @@ export interface BaseModalProps {
   maskType?: 'transparent' | 'normal';
   maskClosable?: boolean;
   closable?: boolean;
-  getContainer?: ContainerType;
+  mountContainer?: ContainerType;
   title?: ReactNode;
   footer?: ReactNode;
   destroy: boolean;

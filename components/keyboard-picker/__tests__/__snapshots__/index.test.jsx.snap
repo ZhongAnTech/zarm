@@ -7,11 +7,18 @@ exports[`KeyboardPicker renders correctly 1`] = `
   type="number"
   visible={false}
 >
-  <Popup
+  <WarnIfDeprecatedComp
     destroy={true}
     mask={false}
     prefixCls="za-popup"
     visible={false}
-  />
+  >
+    <Popup
+      destroy={true}
+      mask={false}
+      prefixCls="za-popup"
+      visible={false}
+    />
+  </WarnIfDeprecatedComp>
 </KeyboardPicker>
 `;

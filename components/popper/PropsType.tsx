@@ -1,4 +1,4 @@
-import { ContainerType } from '../popup/PropsType';
+import { ContainerType } from '../utils/dom';
 
 export type PopperPlacement =
   | 'top'
@@ -29,7 +29,7 @@ export default interface BasePopperProps {
   // modifiers?: PopperJS.Modifiers;
   content?: React.ReactNode;
   destroy?: boolean;
-  getContainer?: ContainerType;
+  mountContainer?: ContainerType;
   mouseEnterDelay?: number;
   mouseLeaveDelay?: number;
   onVisibleChange?: (visible: boolean) => void;

@@ -7,10 +7,10 @@ import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
 import domUtil from '../utils/dom';
 
 function modalType(props, type) {
-  const { className = '', getContainer } = props;
+  const { className = '', mountContainer } = props;
   const container = document.createElement('div');
   container.className += `za-${type}-container ${className}`;
-  const mountNode = domUtil.getMountNode(getContainer);
+  const mountNode = domUtil.getMountContainer(mountContainer);
   mountNode.appendChild(container);
 
   let resolveFn = (result: boolean) => result;
@@ -78,7 +78,7 @@ function modalType(props, type) {
         _props = { ...props, className: '', locale: runTimeLocale.Alert };
       }
       ReactDOM.render(
-        <Alert {..._props} getContainer={container} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
+        <Alert {..._props} mountContainer={container} onCancel={() => { _onCancel(render); }} afterClose={_afterClose} visible={visible} />,
         container,
       );
     } else {
@@ -87,7 +87,7 @@ function modalType(props, type) {
         _props = { ...props, className: '', locale: runTimeLocale.Confirm };
       }
       ReactDOM.render(
-        <Confirm {..._props} getContainer={container} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
+        <Confirm {..._props} mountContainer={container} onCancel={() => { _onCancel(render); }} onOk={() => { _onOk(render); }} afterClose={_afterClose} visible={visible} />,
         container,
       );
     }

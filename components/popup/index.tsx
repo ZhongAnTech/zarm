@@ -1,12 +1,16 @@
 import React, { PureComponent } from 'react';
 import PropsType from './PropsType';
 import Portal from './Portal';
+import warnIfDeprecated from '../utils/warnIfDeprecated';
 
 export interface PopupProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
+@warnIfDeprecated([
+  { oldProp: 'getContainer', newProp: 'mountContainer' },
+])
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps: PopupProps = {
     prefixCls: 'za-popup',
