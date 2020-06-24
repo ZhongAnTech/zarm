@@ -199,7 +199,7 @@ const Demo = () => {
         visible={state.customContainer.visible}
         maskClosable
         onCancel={() => toggle('customContainer')}
-        getContainer={() => myRef.current}
+        mountContainer={() => myRef.current}
       >
         挂载到指定dom节点
       </Modal>
