@@ -73,10 +73,39 @@ describe('Tab', () => {
         <Tabs.Panel title="选项卡2">
           <div>试试点我右滑</div>
         </Tabs.Panel>
+        <Tabs.Panel title="选项卡3">
+          <div>试试点我右滑</div>
+        </Tabs.Panel>
       </Tabs>,
     );
-    wrapper.find('.za-tabs__tab').first().simulate('click');
-    wrapper.find('.za-tabs__tab').last().simulate('click');
+    wrapper.find('.za-tabs__tab').at(1).simulate('click');
     expect(onChange).toBeCalledWith(1);
+    wrapper.find('.za-tabs__tab').last().simulate('click');
+    expect(onChange).toBeCalledWith(2);
+  });
+
+  it('scroll tabs', () => {
+    const onChange = jest.fn();
+    const wrapper = mount(
+      <Tabs canSwipe onChange={onChange} scrollThreshold={3}>
+        <Tabs.Panel title="选项卡1" disabled>
+          <div>试试点我左滑</div>
+        </Tabs.Panel>
+        <Tabs.Panel title="选项卡2">
+          <div>试试点我右滑</div>
+        </Tabs.Panel>
+        <Tabs.Panel title="选项卡3">
+          <div>试试点我右滑</div>
+        </Tabs.Panel>
+        <Tabs.Panel title="选项卡4">
+          <div>试试点我右滑</div>
+        </Tabs.Panel>
+        <Tabs.Panel title="选项卡5">
+          <div>试试点我右滑</div>
+        </Tabs.Panel>
+      </Tabs>,
+    );
+    wrapper.find('.za-tabs__tab').last().simulate('click');
+    expect(onChange).toBeCalledWith(4);
   });
 });
