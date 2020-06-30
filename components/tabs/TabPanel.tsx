@@ -1,4 +1,4 @@
-import React, { PureComponent, ReactNode, Component } from 'react';
+import React, { PureComponent, ReactNode } from 'react';
 import classnames from 'classnames';
 
 export interface TabPanelProps {

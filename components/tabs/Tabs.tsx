@@ -1,4 +1,4 @@
-import React, { PureComponent, CSSProperties, Component, ReactElement } from 'react';
+import React, { PureComponent, CSSProperties, ReactElement } from 'react';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import TabPanel, { TabPanelProps } from './TabPanel';
