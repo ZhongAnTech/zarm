@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "react",
     "noUnusedParameters": true,
