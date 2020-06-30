@@ -1,14 +1,14 @@
 let prev = Date.now();
 
+const root = window as Window;
+
 function fallback(fn: FrameRequestCallback): number {
   const curr = Date.now();
   const ms = Math.max(0, 16 - (curr - prev));
-  const id = setTimeout(fn, ms);
+  const id = root.setTimeout(fn, ms);
   prev = curr + ms;
   return id;
 }
-
-const root = window as Window;
 
 const iRaf = root.requestAnimationFrame || fallback;
 
