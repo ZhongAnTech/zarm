@@ -30,6 +30,7 @@ module.exports = {
   'app.home.resources.type.zarm': '移动端组件 Sketch 模板',
   'app.home.resources.type.zarm-web': '桌面端组件 Sketch 模板',
   'app.home.resources.type.zarm-web-frame': '中后台框架 Sketch 模板',
+  'app.home.resources.type.zarm-axure': '移动端组件 Axure 元件库',
   'app.home.resources.type.zarm-web-axure': '桌面端组件 Axure 元件库',
 
   'app.demo.footer.copyright': '众安·体验设计中心',
