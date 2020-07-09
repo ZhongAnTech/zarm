@@ -14,14 +14,14 @@ export default class TabPanel extends PureComponent<TabPanelProps, any> {
     prefixCls: 'za-tabs',
   };
 
-  constructor(props) {
+  constructor(props: TabPanel['props']) {
     super(props);
     this.state = {
       selected: props.selected,
     };
   }
 
-  static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps: TabPanel['props']) {
     if ('selected' in nextProps) {
       return {
         selected: nextProps.selected,
