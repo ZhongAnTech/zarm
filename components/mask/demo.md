@@ -10,9 +10,7 @@ import { Cell, Button, Mask } from 'zarm';
 const Demo = () => {
   const [visible, setVisible] = useState(false);
 
-  const toggle = () => {
-    setVisible(!visible);
-  };
+  const toggle = () => setVisible(!visible);
 
   return (
     <>
