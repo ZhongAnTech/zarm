@@ -30,7 +30,7 @@ const Simulator = () => {
   const params = useParams();
   const simulatorRef = useRef();
   const { lang } = useContext(Context);
-  const [affix, setAffix] = useState(true);
+  const [affix, setAffix] = useState(false);
 
   const simulatorCls = classnames('simulator', {
     'simulator--affix': affix,
