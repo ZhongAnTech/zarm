@@ -9,6 +9,10 @@ export interface TabPanelProps {
   disabled?: boolean;
 }
 
+interface TabPanelStates {
+  selected: boolean;
+}
+
 export default class TabPanel extends PureComponent<TabPanelProps, any> {
   static defaultProps: TabPanelProps = {
     prefixCls: 'za-tabs',
@@ -33,7 +37,6 @@ export default class TabPanel extends PureComponent<TabPanelProps, any> {
   render() {
     const { prefixCls, className, children } = this.props;
     const { selected } = this.state;
-
     const cls = classnames(`${prefixCls}__panel`, className, {
       [`${prefixCls}__panel--active`]: selected,
     });
