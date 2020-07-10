@@ -5,17 +5,19 @@ import TabPanel, { TabPanelProps } from './TabPanel';
 import Carousel from '../carousel';
 import { getTransformPropValue, getPxStyle, scrollLeftTo } from './util/index';
 
-type childrenGeneric<T> = T[] |T;
-type childrenType = childrenGeneric<React.ReactElement<TabPanel['props'], typeof TabPanel>>;
 
 export interface TabsProps extends PropsType {
   prefixCls?: string;
   className?: string;
   scrollThreshold: number;
-  children: childrenType;
 }
 
-const getSelectIndex = (children: childrenType) => {
+interface TabsStates {
+  value: number;
+  prevValue?: number;
+}
+
+const getSelectIndex = (children) => {
   let selectIndex;
   React.Children.forEach(children, (item, index) => {
     if (item.props && item.props.selected) {
@@ -30,15 +32,13 @@ const scrollTabTotalWidth = 94;
 
 const defaultScrollThreshold = 3;
 
-type carouselType = Carousel | null;
 
-
-export default class Tabs extends PureComponent<TabsProps, any> {
+export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   static Panel: typeof TabPanel;
 
-  private carousel: carouselType | undefined;
+  private carousel?: Carousel;
 
-  private layout: HTMLUListElement | undefined;
+  private layout?: HTMLUListElement;
 
   static defaultProps = {
     prefixCls: 'za-tabs',
@@ -52,7 +52,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     super(props);
     this.state = {
       value: props.value || props.defaultValue || getSelectIndex(props.children) || 0,
-      prevValue: null,
+      // prevValue: null,
     };
   }
 
@@ -78,7 +78,7 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     this.layout = ref;
   };
 
-  setCarouselRef = (ref: carouselType) => {
+  setCarouselRef = (ref: Carousel) => {
     this.carousel = ref;
   };
 
@@ -134,121 +134,121 @@ export default class Tabs extends PureComponent<TabsProps, any> {
     return ChildCount > scrollThreshold;
   };
 
- /**
+  /**
  * @description: 计算每个item width
  */
- calculateItemWidth = () => {
-   const { scrollThreshold } = this.props;
+  calculateItemWidth = () => {
+    const { scrollThreshold } = this.props;
 
-   const itemSize = scrollTabTotalWidth / scrollThreshold;
-   return itemSize;
- };
+    const itemSize = scrollTabTotalWidth / scrollThreshold;
+    return itemSize;
+  };
 
 
- /**
- * @description: 计算 line 大小 和位置
+  /**
+ * @description: 计算 line 大小和位置
  */
 
- caclLineSizePos = () => {
-   const { value } = this.state;
-   const { children, scrollThreshold } = this.props;
-   const ChildCount = React.Children.count(children);
-   const isScroll = this.isScroll();
-   const size = isScroll ? scrollTabTotalWidth / scrollThreshold : 100 / ChildCount;
+  caclLineSizePos = () => {
+    const { value } = this.state;
+    const { children, scrollThreshold } = this.props;
+    const ChildCount = React.Children.count(children);
+    const isScroll = this.isScroll();
+    const size = isScroll ? scrollTabTotalWidth / scrollThreshold : 100 / ChildCount;
 
-   const pos = value * 100;
+    const pos = value * 100;
 
-   const transformValue = getPxStyle(pos, '%');
+    const transformValue = getPxStyle(pos, '%');
 
-   const styleUl = getTransformPropValue(transformValue);
-   return {
-     width: `${size}%`,
-     ...styleUl,
-   };
- };
+    const styleUl = getTransformPropValue(transformValue);
+    return {
+      width: `${size}%`,
+      ...styleUl,
+    };
+  };
 
 
- /**
+  /**
  * @description: 计算滚动条移动位置
  */
 
- calculateScorllLeftLocation = () => {
-   const screenWidth = document.body.clientWidth;
-   const { children, scrollThreshold } = this.props;
-   const { value } = this.state;
-   const isScroll = this.isScroll();
-   const ChildCount = React.Children.count(children);
-   // --- https://github.com/react-component/m-tabs/blob/master/src/DefaultTabBar.tsx
-   const size = this.getTabSize(scrollThreshold, ChildCount);
-   const center = scrollThreshold / 2;
-   const pos = Math.min(value, ChildCount - center - 0.5);
-   const skipSize = Math.min(-(pos - center + 0.5) * size, 0);
-   const scrollPos = (screenWidth * skipSize) / 100;
-   // ---
-   if (isScroll) {
-     if (this.layout) {
-       scrollLeftTo(this.layout, Math.abs(scrollPos), 0.3);
-     }
-   }
- };
+  calculateScorllLeftLocation = () => {
+    const screenWidth = document.body.clientWidth;
+    const { children, scrollThreshold } = this.props;
+    const { value } = this.state;
+    const isScroll = this.isScroll();
+    const ChildCount = React.Children.count(children);
+    // --- https://github.com/react-component/m-tabs/blob/master/src/DefaultTabBar.tsx
+    const size = this.getTabSize(scrollThreshold, ChildCount);
+    const center = scrollThreshold / 2;
+    const pos = Math.min(value, ChildCount - center - 0.5);
+    const skipSize = Math.min(-(pos - center + 0.5) * size, 0);
+    const scrollPos = (screenWidth * skipSize) / 100;
+    // ---
+    if (isScroll) {
+      if (this.layout) {
+        scrollLeftTo(this.layout, Math.abs(scrollPos), 0.3);
+      }
+    }
+  };
 
 
- render() {
-   const { prefixCls, className, lineWidth, canSwipe, children, disabled, scrollThreshold } = this.props;
-   const { value } = this.state;
-   const classes = classnames(prefixCls, className);
-   // 渲染选项
-   const tabsRender = React.Children.map(children, this.renderTabs);
+  render() {
+    const { prefixCls, className, lineWidth, canSwipe, children, disabled, scrollThreshold } = this.props;
+    const { value } = this.state;
+    const classes = classnames(prefixCls, className);
+    // 渲染选项
+    const tabsRender = React.Children.map(children, this.renderTabs);
 
-   // 渲染内容
-   let contentRender;
+    // 渲染内容
+    let contentRender;
 
-   if (canSwipe) {
-     contentRender = (
-       <Carousel
-         swipeable={!disabled}
-         direction="left"
-         showPagination={false}
-         activeIndex={value}
-         ref={this.setCarouselRef}
-         onChange={(v: number) => {
-           this.onTabChange(v);
-         }}
-       >
-         {React.Children.map(children, (item: ReactElement<TabPanel['props'], typeof TabPanel>, index: number) => <div key={+index}>{item.props.children}</div>)}
-       </Carousel>
-     );
-   } else {
-     contentRender = React.Children.map(children, (item: ReactElement<TabPanel['props'], typeof TabPanel>, index) => {
-       return item.props.children && <TabPanel {...item.props} selected={value === index} />;
-     });
-   }
+    if (canSwipe) {
+      contentRender = (
+        <Carousel
+          swipeable={!disabled}
+          direction="left"
+          showPagination={false}
+          activeIndex={value}
+          ref={this.setCarouselRef}
+          onChange={(v: number) => {
+            this.onTabChange(v);
+          }}
+        >
+          {React.Children.map(children, (item: ReactElement<TabPanel['props'], typeof TabPanel>, index: number) => <div key={+index}>{item.props.children}</div>)}
+        </Carousel>
+      );
+    } else {
+      contentRender = React.Children.map(children, (item: ReactElement<TabPanel['props'], typeof TabPanel>, index) => {
+        return item.props.children && <TabPanel {...item.props} selected={value === index} />;
+      });
+    }
 
-   const ChildCount = React.Children.count(children);
-   const lineStyle: CSSProperties = this.caclLineSizePos();
-   let lineInnerRender;
-   if (lineWidth) {
-     lineStyle.backgroundColor = 'transparent';
-     lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
-   }
+    const ChildCount = React.Children.count(children);
+    const lineStyle: CSSProperties = this.caclLineSizePos();
+    let lineInnerRender;
+    if (lineWidth) {
+      lineStyle.backgroundColor = 'transparent';
+      lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
+    }
 
 
-   const headerCls = classnames({
-     [`${prefixCls}__scroll`]: ChildCount > scrollThreshold,
-     [`${prefixCls}__header`]: true,
-   });
-   return (
-     <div className={classes}>
-       <div className={headerCls}>
-         <ul role="tablist" ref={this.setTablistRef}>
-           {tabsRender}
-           <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
-         </ul>
-       </div>
-       <div className={`${prefixCls}__body`}>
-         {contentRender}
-       </div>
-     </div>
-   );
- }
+    const headerCls = classnames({
+      [`${prefixCls}__scroll`]: ChildCount > scrollThreshold,
+      [`${prefixCls}__header`]: true,
+    });
+    return (
+      <div className={classes}>
+        <div className={headerCls}>
+          <ul role="tablist" ref={this.setTablistRef}>
+            {tabsRender}
+            <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
+          </ul>
+        </div>
+        <div className={`${prefixCls}__body`}>
+          {contentRender}
+        </div>
+      </div>
+    );
+  }
 }
