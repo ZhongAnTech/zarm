@@ -1,18 +1,20 @@
+export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
+
 const domUtil = {
   // 获取元素的纵坐标（相对于窗口）
-  getTop: (e) => {
-    let offset = e.offsetTop;
-    if (e.offsetParent != null) {
-      offset += domUtil.getTop(e.offsetParent);
+  getTop: (ele) => {
+    let offset = ele.offsetTop;
+    if (ele.offsetParent != null) {
+      offset += domUtil.getTop(ele.offsetParent);
     }
     return offset;
   },
 
   // 获取元素的横坐标（相对于窗口）
-  getLeft: (e) => {
-    let offset = e.offsetLeft;
-    if (e.offsetParent != null) {
-      offset += domUtil.getLeft(e.offsetParent);
+  getLeft: (ele) => {
+    let offset = ele.offsetLeft;
+    if (ele.offsetParent != null) {
+      offset += domUtil.getLeft(ele.offsetParent);
     }
     return offset;
   },
@@ -22,13 +24,13 @@ const domUtil = {
   },
 
   // 获取元素大小以及相对窗口的位置
-  getBoundingClientRect: (e) => {
-    const rect = e.getBoundingClientRect();
+  getBoundingClientRect: (ele) => {
+    const rect = ele.getBoundingClientRect();
 
     // 解决ie下的兼容问题
     const isIE = navigator.userAgent.indexOf('MSIE') !== -1;
-    const rectTop = isIE && e.tagName === 'HTML'
-      ? -e.scrollTop
+    const rectTop = isIE && ele.tagName === 'HTML'
+      ? -ele.scrollTop
       : rect.top;
 
     return {
@@ -42,7 +44,7 @@ const domUtil = {
   },
 
   // 设置元素行内样式
-  setStyle: (e, styles) => {
+  setStyle: (ele, styles) => {
     const isNumeric = (n) => {
       return (n !== '' && !Number.isNaN(parseFloat(n)) && Number.isFinite(n));
     };
@@ -51,61 +53,61 @@ const domUtil = {
       if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
         unit = 'px';
       }
-      e.style[prop] = styles[prop] + unit;
+      ele.style[prop] = styles[prop] + unit;
     });
   },
 
   // 获取元素css的某一个计算后属性值
-  getStyleComputedProperty: (e, property: string): string => {
-    const css = window.getComputedStyle(e, null);
+  getStyleComputedProperty: (ele, property: string): string => {
+    const css = window.getComputedStyle(ele, null);
     return css[property];
   },
 
   // 判断元素是否固定定位或者是否在固定定位元素内
-  isFixed: (e) => {
-    if (e === window.document.body) {
+  isFixed: (ele) => {
+    if (ele === window.document.body) {
       return false;
     }
-    if (domUtil.getStyleComputedProperty(e, 'position') === 'fixed') {
+    if (domUtil.getStyleComputedProperty(ele, 'position') === 'fixed') {
       return true;
     }
-    return e.parentNode ? domUtil.isFixed(e.parentNode) : e;
+    return ele.parentNode ? domUtil.isFixed(ele.parentNode) : ele;
   },
 
   // 获取元素完整尺寸(offset size + margin)
-  getOuterSizes: (e) => {
-    const _display = e.style.display;
-    const _visibility = e.style.visibility;
-    e.style.display = 'block';
-    e.style.visibility = 'hidden';
+  getOuterSizes: (ele) => {
+    const _display = ele.style.display;
+    const _visibility = ele.style.visibility;
+    ele.style.display = 'block';
+    ele.style.visibility = 'hidden';
     // const calcWidthToForceRepaint = e.offsetWidth;
 
-    const styles = window.getComputedStyle(e);
+    const styles = window.getComputedStyle(ele);
     const x = parseFloat(styles.marginTop as string) + parseFloat(styles.marginBottom as string);
     const y = parseFloat(styles.marginLeft as string) + parseFloat(styles.marginRight as string);
     const result = {
-      width: e.offsetWidth + y,
-      height: e.offsetHeight + x,
+      width: ele.offsetWidth + y,
+      height: ele.offsetHeight + x,
     };
 
     // reset
-    e.style.display = _display;
-    e.style.visibility = _visibility;
+    ele.style.display = _display;
+    ele.style.visibility = _visibility;
     return result;
   },
 
   // 获取元素的offsetParent
-  getOffsetParent: (e) => {
-    const { offsetParent } = e;
+  getOffsetParent: (ele) => {
+    const { offsetParent } = ele;
     return offsetParent === window.document.body || !offsetParent ? window.document.documentElement : offsetParent;
   },
 
   // 获取指定元素可滚动的父元素
-  getScrollParent(e) {
-    const parent = e.parentNode;
+  getScrollParent: (ele): HTMLElement => {
+    const parent = ele.parentNode;
 
     if (!parent) {
-      return e;
+      return ele;
     }
     if (parent === window.document) {
       if (window.document.body.scrollTop) {
@@ -120,7 +122,7 @@ const domUtil = {
     ) {
       return parent;
     }
-    return domUtil.getScrollParent(e.parentNode);
+    return domUtil.getScrollParent(ele.parentNode);
   },
 
   // 获取浏览器支持的带前缀属性名
@@ -137,14 +139,31 @@ const domUtil = {
   },
 
   // 获取元素scrollTop
-  getScrollTopValue: (e) => {
-    // tslint:disable-next-line
-    return e === document.body ? Math.max(document.documentElement.scrollTop, document.body.scrollTop) : e.scrollTop;
+  getScrollTop: (ele): number => {
+    return ele === document.body ? Math.max(document.documentElement.scrollTop, document.body.scrollTop) : ele.scrollTop;
   },
 
-  getScrollLeftValue: (e) => {
-    return e === document.body ? Math.max(document.documentElement.scrollLeft, document.body.scrollLeft) : e.scrollLeft;
+  getScrollLeft: (ele) => {
+    return ele === document.body ? Math.max(document.documentElement.scrollLeft, document.body.scrollLeft) : ele.scrollLeft;
   },
+
+  getMountContainer: (mountContainer?: ContainerType): HTMLElement => {
+    if (mountContainer) {
+      if (typeof mountContainer === 'function') {
+        return mountContainer();
+      }
+      if (
+        typeof mountContainer === 'object'
+        && mountContainer instanceof HTMLElement
+      ) {
+        return mountContainer;
+      }
+    }
+    return document.body;
+  },
+
+  canUseDOM: () => !!(typeof window !== 'undefined' && window.document && window.document.createElement),
+
 };
 
 export default domUtil;

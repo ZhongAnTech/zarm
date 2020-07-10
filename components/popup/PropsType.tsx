@@ -1,4 +1,4 @@
-type getContainerFunc = () => HTMLElement;
+import { ContainerType } from '../utils/dom';
 
 export default interface PropsType {
   visible?: boolean;
@@ -15,5 +15,5 @@ export default interface PropsType {
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
-  getContainer?: HTMLElement | getContainerFunc;
+  mountContainer?: ContainerType;
 }

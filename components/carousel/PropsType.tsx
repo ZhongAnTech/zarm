@@ -14,6 +14,6 @@ export default interface PropsType {
   showPagination?: boolean;
   onChange?: (activeIndex?: number) => void;
   onChangeEnd?: (activeIndex?: number) => void;
-  children: ReactNode[];
   style?: CSSProperties;
+  children?: ReactNode[];
 }

@@ -32,7 +32,7 @@ describe('Toast', () => {
     jest.useFakeTimers();
     Toast.show('toast内容');
     jest.runAllTimers();
-    const toastContainer = document.getElementsByClassName('toast-container');
+    const toastContainer = document.getElementsByClassName('za-toast-container');
     expect(toastContainer.length).toEqual(1);
   });
 
@@ -42,7 +42,7 @@ describe('Toast', () => {
       content: 'toast内容',
     });
     jest.runAllTimers();
-    const toastContainer = document.getElementsByClassName('toast-container');
+    const toastContainer = document.getElementsByClassName('za-toast-container');
     expect(toastContainer.length).toEqual(1);
   });
 

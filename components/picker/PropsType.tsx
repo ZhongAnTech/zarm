@@ -1,7 +1,6 @@
 import BasePickerViewProps from '../picker-view/PropsType';
 import { Locale } from '../locale-provider/PropsType';
-
-type getContainerFunc = () => HTMLElement;
+import { ContainerType } from '../utils/dom';
 
 export default interface BasePickerProps extends BasePickerViewProps {
   visible?: boolean;
@@ -13,6 +12,6 @@ export default interface BasePickerProps extends BasePickerViewProps {
   onChange?: (selected: Array<{ [key: string]: any }>) => void;
   onOk?: (value: Array<{ [key: string]: any }>) => void;
   onCancel?: () => void;
-  getContainer?: HTMLElement | getContainerFunc;
+  mountContainer?: ContainerType;
   locale?: Locale['Picker'] & Locale['Select'];
 }

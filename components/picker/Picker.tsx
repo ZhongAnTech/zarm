@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import Popup from '../popup';
 import PickerView from '../picker-view';
@@ -100,18 +99,18 @@ export default class Picker extends Component<PickerProps, PickerState> {
   };
 
   render() {
-    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, getContainer, destroy, onOk, onCancel, visible, ...others } = this.props;
+    const { prefixCls, className, cancelText, okText, title, locale, maskClosable, mountContainer, destroy, onOk, onCancel, visible, ...others } = this.props;
     const { value } = this.state;
-    const cls = classnames(prefixCls, className);
     const noop = () => {};
     return (
       <Popup
+        className={className}
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
-        getContainer={getContainer}
+        mountContainer={mountContainer}
         destroy={destroy}
       >
-        <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
+        <div className={prefixCls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
             <div className={`${prefixCls}__cancel`} onClick={this.onCancel}>{cancelText || locale!.cancelText}</div>
             <div className={`${prefixCls}__title`}>{title || locale!.title}</div>

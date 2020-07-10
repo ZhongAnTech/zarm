@@ -7,7 +7,7 @@ export interface MaskProps extends HTMLAttributes<HTMLDivElement>, PropsType {
 }
 
 export default class Mask extends PureComponent<MaskProps, {}> {
-  static defaultProps = {
+  static defaultProps: MaskProps = {
     prefixCls: 'za-mask',
     visible: false,
     type: 'normal',

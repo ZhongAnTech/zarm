@@ -12,7 +12,7 @@ import Keyboard from '../../keyboard/locale/en_US';
 import ImagePreview from '../../image-preview/locale/en_US';
 
 export default {
-  locale: 'en',
+  locale: 'en-US',
   ActionSheet,
   Alert,
   Confirm,

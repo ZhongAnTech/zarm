@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 import isEqual from 'lodash/isEqual';
 import BaseDatePickerProps from './PropsType';
 import Popup from '../popup';
@@ -13,13 +12,12 @@ export interface DatePickerProps extends BaseDatePickerProps {
 }
 
 export default class DatePicker extends Component<DatePickerProps, any> {
-  static defaultProps = {
+  static defaultProps: DatePickerProps = {
     mode: 'date',
     minuteStep: 1,
     prefixCls: 'za-date-picker',
     valueMember: 'value',
     maskClosable: true,
-    destroy: false,
     onCancel: () => {},
     onInit: () => {},
   };
@@ -90,19 +88,19 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
-    const cls = classnames(prefixCls, className);
+    const { prefixCls, className, title, okText, cancelText, locale, mountContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
     const { date } = this.state;
     const noop = () => {};
 
     return (
       <Popup
+        className={className}
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
-        getContainer={getContainer}
+        mountContainer={mountContainer}
         destroy
       >
-        <div className={cls} onClick={(e) => { e.stopPropagation(); }}>
+        <div className={prefixCls} onClick={(e) => { e.stopPropagation(); }}>
           <div className={`${prefixCls}__header`}>
             <div
               className={`${prefixCls}__cancel`}

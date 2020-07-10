@@ -1,5 +1,41 @@
 # 版本更新日志 
 
+## v2.3.4
+- Bug Fix
+  - [pull] 修复在 iOS 12 版本下出现无法上滑拖动滚动条的bug。[#472](https://github.com/ZhongAnTech/zarm/pull/472)
+
+## v2.3.3
+- Bug Fix
+  - [Input] 修复数字键盘因点击过快导致出现卡顿，丢失输入数据的bug。[#464](https://github.com/ZhongAnTech/zarm/pull/464)
+
+
+## v2.3.1
+- Bug Fix
+  - [Keyboard] 修复身份证号类型的键盘问题，`x` 的改为大写 `X`。[#460](https://github.com/ZhongAnTech/zarm/pull/460)
+
+
+## v2.3.0
+- Bug Fix
+  - [BackToTop] 修复点击返回顶部时触发的 `onScroll` 事件，在安卓低版本不兼容的问题。[#455](https://github.com/ZhongAnTech/zarm/pull/455)
+  - [Input] 修复Input值为undefined时异常显示的bug。[#459](https://github.com/ZhongAnTech/zarm/pull/459)
+  - [Input] 修复Input作为受控组件时出现异常的bug。[#459](https://github.com/ZhongAnTech/zarm/pull/459)
+
+- Break Change
+  - [ActionSheet, Alert, Confirm, Popup, Pciker, Select, DatePicker, DateSelect, KeyboardPicker, Loading, Modal, Toast] 修复包含挂载容器的组件，设置自定义className属性时挂载位置不正确的bug，修改为统一挂载外层容器中。[#456](https://github.com/ZhongAnTech/zarm/pull/456)
+
+- Perf
+  - 优化es模块打包编译。[#e3e451a](https://github.com/ZhongAnTech/zarm/commit/e3e451a861e7f7587433c490d865e2a3e4d820cd)
+
+
+## v2.2.0
+- Feature
+  - [Input] 多行文本设置高度自适应时，删除内容支持自动缩小高度。[#445](https://github.com/ZhongAnTech/zarm/pull/445)
+  - [BackToTop] 新增 `BackToTop` 返回顶部组件。[#449](https://github.com/ZhongAnTech/zarm/pull/449)
+
+- Documentation Updated
+  - 样例支持 React Hooks。[#446](https://github.com/ZhongAnTech/zarm/pull/446)
+
+
 ## v2.1.1
 - Feature
   - [Cell] 优化设置了 `help` 属性后，提示信息区域的样式显示。[#439](https://github.com/ZhongAnTech/zarm/pull/439)

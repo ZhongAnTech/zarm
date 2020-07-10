@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
-
-type getContainerFunc = () => HTMLElement;
+import { ContainerType } from '../utils/dom';
 
 export default interface PropsType {
   visible?: boolean;
   stayTime?: number;
   content?: ReactNode;
-  getContainer?: HTMLElement | getContainerFunc;
+  mountContainer?: ContainerType;
   afterClose?: () => void;
   mask?: boolean;
   onMaskClick?: () => void;

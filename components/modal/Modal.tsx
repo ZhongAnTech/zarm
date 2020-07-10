@@ -16,7 +16,7 @@ export default class Modal extends Component<ModalProps, any> {
 
   static confirm;
 
-  static defaultProps = {
+  static defaultProps: ModalProps = {
     prefixCls: 'za-modal',
     visible: false,
     animationType: 'fade',
@@ -31,7 +31,7 @@ export default class Modal extends Component<ModalProps, any> {
   };
 
   render() {
-    const { prefixCls, className, shape, children, getContainer, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
+    const { prefixCls, className, shape, children, mountContainer, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
 
     const cls = {
       modal: classnames(prefixCls, className, {
@@ -48,7 +48,7 @@ export default class Modal extends Component<ModalProps, any> {
         className={cls.modal}
         direction="center"
         onMaskClick={maskClosable ? onCancel : noop}
-        getContainer={getContainer}
+        mountContainer={mountContainer}
         {...others}
       >
         <div className={cls.dialog}>

@@ -10,11 +10,11 @@ export interface DateSelectProps extends BaseDateSelectProps {
 }
 
 export default class DateSelect extends PureComponent<DateSelectProps, any> {
-  static defaultProps = {
+  static defaultProps: DateSelectProps = {
+    prefixCls: 'za-date-select',
     mode: 'date',
     disabled: false,
     minuteStep: 1,
-    prefixCls: 'za-date-select',
     valueMember: 'value',
     hasArrow: true,
     onCancel: () => {},
@@ -75,7 +75,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
     const { prefixCls, className, placeholder, disabled, onChange, locale, value, hasArrow, ...others } = this.props;
     const { visible, selectValue } = this.state;
 
-    const cls = classnames(prefixCls, className, {
+    const cls = classnames(prefixCls, {
       [`${prefixCls}--placeholder`]: !selectValue,
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--arrow`]: hasArrow,
@@ -89,6 +89,7 @@ export default class DateSelect extends PureComponent<DateSelectProps, any> {
         </div>
         <DatePicker
           {...others}
+          className={className}
           visible={visible}
           value={selectValue}
           onOk={this.onOk}

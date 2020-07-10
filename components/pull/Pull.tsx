@@ -103,13 +103,18 @@ export default class Pull extends PureComponent<PullProps, any> {
   wrapTouchmove = (event) => {
     const touch = event.touches[0];
     const currentY = touch.pageY;
-    if (currentY - this.wrapTouchstartY > 0 && event.cancelable && this.wrap.scrollTop === 0) {
+    if (currentY - this.wrapTouchstartY > 0 && event.cancelable && this.getWrapScrollTop() === 0) {
       event.preventDefault();
     }
   };
 
   wrapTouchEnd = () => {
     this.wrapTouchstartY = 0;
+  };
+
+  getWrapScrollTop = () => {
+    const el = (this.wrap === document.documentElement) ? (document.scrollingElement || document.documentElement) : this.wrap;
+    return el.scrollTop;
   };
 
   getScrollContainer = () => {
@@ -127,6 +132,7 @@ export default class Pull extends PureComponent<PullProps, any> {
         node = node.parentNode;
       }
     })(this.pull) || document.documentElement;
+    // 由于在ios12版本中，document.scrollingElement.clientHeight计算结果与document.documentElement.clientHeight不一致，故无法替换。
   };
 
   addScrollEvent = () => {
@@ -137,7 +143,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   onScroll = () => {
     const { refreshState, loadState } = this.state;
-    const { scrollHeight, scrollTop, clientHeight } = this.wrap;
+    const { scrollHeight, clientHeight } = this.wrap;
     const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
     const { handler, distance } = load;
 
@@ -148,7 +154,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       || scrollHeight <= clientHeight
 
       // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度
-      || scrollHeight - (scrollTop + document.body.scrollTop) - distance! > clientHeight
+      || scrollHeight - this.getWrapScrollTop() - distance! > clientHeight
     ) {
       return;
     }
@@ -165,7 +171,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       || offsetY <= 0
 
       // 未滚动到顶部
-      || (offsetY > 0 && (this.wrap.scrollTop + document.body.scrollTop) > 0)
+      || (offsetY > 0 && this.getWrapScrollTop() > 0)
 
       // 已经触发过加载状态
       || this.state.refreshState >= REFRESH_STATE.loading

@@ -10,7 +10,7 @@ export interface ActionSheetProps extends PropsType {
 }
 
 export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
-  static defaultProps = {
+  static defaultProps: ActionSheetProps = {
     prefixCls: 'za-action-sheet',
     visible: false,
     spacing: false,
@@ -37,12 +37,12 @@ export default class ActionSheet extends PureComponent<ActionSheetProps, {}> {
 
   render() {
     const { prefixCls, className, spacing, visible, onMaskClick, actions, destroy } = this.props;
-    const cls = classnames(prefixCls, className, {
+    const cls = classnames(prefixCls, {
       [`${prefixCls}--spacing`]: spacing,
     });
 
     return (
-      <Popup visible={visible} onMaskClick={onMaskClick} destroy={destroy}>
+      <Popup className={className} visible={visible} onMaskClick={onMaskClick} destroy={destroy}>
         <div className={cls}>
           <div className={`${prefixCls}__actions`}>
             {actions.map(this.renderActions)}

@@ -13,7 +13,7 @@ export interface PanelProps extends HTMLDivProps, BasePanelProps {
 }
 
 export default class Panel extends PureComponent<PanelProps, {}> {
-  static defaultProps = {
+  static defaultProps: PanelProps = {
     prefixCls: 'za-panel',
   };
 

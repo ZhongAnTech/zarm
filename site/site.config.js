@@ -2,7 +2,7 @@ module.exports = {
   documents: [
     {
       key: 'introduce',
-      name: '关于 Zarm',
+      name: '关于Zarm',
       module: () => import('@site/web/docs/introduce.md'),
       style: false,
     },
@@ -253,6 +253,12 @@ module.exports = {
       },
     ],
     other: [
+      // {
+      //   key: 'mask',
+      //   name: '遮罩层',
+      //   module: () => import('@/components/mask/demo.md'),
+      //   style: false,
+      // },
       {
         key: 'locale-provider',
         name: '国际化',
@@ -263,6 +269,12 @@ module.exports = {
         key: 'drag',
         name: '拖拽',
         module: () => import('@/components/drag/demo.md'),
+        style: false,
+      },
+      {
+        key: 'back-to-top',
+        name: '返回顶部',
+        module: () => import('@/components/back-to-top/demo.md'),
         style: false,
       },
     ],

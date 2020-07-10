@@ -101,9 +101,9 @@ import { Button, Icon } from 'zarm';
 
 ReactDOM.render(
   <>
-    <Button icon={<Icon type="right-round" theme="success" />}>正确</Button>
-    <Button icon={<Icon type="wrong-round" theme="danger" />}>错误</Button>
-    <Button loading>加载中</Button>
+    <Button icon={<Icon type="right-round" theme="success" />}>success</Button>
+    <Button icon={<Icon type="wrong-round" theme="danger" />}>danger</Button>
+    <Button loading>loading</Button>
   </>
 , mountNode);
 ```

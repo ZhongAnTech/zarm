@@ -6,49 +6,45 @@
 ```jsx
 import { Loading, Cell, Button, ActivityIndicator } from 'zarm';
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <>
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Loading.show();
-                setTimeout(() => {
-                  Loading.hide();
-                }, 3000);
-              }}
-            >
-              开启
-            </Button>
-          }
+const Demo = () => (
+  <>
+    <Cell
+      description={
+        <Button
+          size="xs"
+          onClick={() => {
+            Loading.show();
+            setTimeout(() => {
+              Loading.hide();
+            }, 3000);
+          }}
         >
-          普通
-        </Cell>
+          开启
+        </Button>
+      }
+    >
+      普通
+    </Cell>
 
-        <Cell
-          description={
-            <Button
-              size="xs"
-              onClick={() => {
-                Loading.show({
-                  content: <ActivityIndicator size="lg" />,
-                  stayTime: 3000,
-                });
-              }}
-            >
-              开启
-            </Button>
-          }
+    <Cell
+      description={
+        <Button
+          size="xs"
+          onClick={() => {
+            Loading.show({
+              content: <ActivityIndicator size="lg" />,
+              stayTime: 3000,
+            });
+          }}
         >
-          自定义内容
-        </Cell>
-      </>
-    )
-  }
-}
+          开启
+        </Button>
+      }
+    >
+      自定义内容
+    </Cell>
+  </>
+)
 
 ReactDOM.render(<Demo />, mountNode);
 ```
@@ -65,7 +61,7 @@ ReactDOM.render(<Demo />, mountNode);
 | mask | boolean | true | 是否展示遮罩层 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | afterClose | () => void | - | Loading隐藏后的回调函数 |
-| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Loading 挂载的 HTML 节点 |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Loading 挂载的 HTML 节点 |
 
 ## 静态方法
 

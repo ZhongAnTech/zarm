@@ -16,7 +16,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
 
   private inputRef;
 
-  static defaultProps = {
+  static defaultProps: SearchBarProps = {
     prefixCls: 'za-search-bar',
     shape: 'radius',
     disabled: false,
@@ -53,7 +53,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置
     if (cancelText !== prevProps.cancelText
       || showCancel !== prevProps.showCancel
-      || locale.cancelText !== prevProps.locale.cancelText
+      || locale!.cancelText !== prevProps.locale.cancelText
     ) {
       this.calculatePositon(this.props);
     }
@@ -183,7 +183,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
         ref={(cancelRef) => { this.cancelRef = cancelRef; }}
         onClick={() => { this.onCancel(); }}
       >
-        {cancelText || locale.cancelText}
+        {cancelText || locale!.cancelText}
       </div>
     );
   }
@@ -210,7 +210,7 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
               <InputBase
                 className={`${prefixCls}__input`}
                 type="search"
-                placeholder={placeholder || locale.placeholder}
+                placeholder={placeholder || locale!.placeholder}
                 value={value}
                 maxLength={maxLength}
                 onFocus={() => { this.onFocus(); }}

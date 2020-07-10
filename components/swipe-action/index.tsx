@@ -20,7 +20,7 @@ export default class SwipeAction extends PureComponent<SwipeActionProps, any> {
 
   private right;
 
-  static defaultProps = {
+  static defaultProps: SwipeActionProps = {
     prefixCls: 'za-swipe-action',
     left: [],
     right: [],
