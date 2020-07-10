@@ -8,25 +8,31 @@ const RESOURCES = [
     icon: require('./images/icon-zarm.png'),
     title: 'Zarm',
     description: <FormattedMessage id="app.home.resources.type.zarm" />,
-    url: 'https://static-health-cdn.zhongan.com/zarm/design/Zarm.2.0.0-alpha.37.sketch',
+    url: 'https://nstatic.zhongan.com/hfe-static/zarm/resources/Zarm.2.0.0-alpha.37.sketch',
   },
   {
     icon: require('./images/icon-zarm-web.png'),
     title: 'Zarm Web',
     description: <FormattedMessage id="app.home.resources.type.zarm-web" />,
-    url: 'https://static-health-cdn.zhongan.com/zarm/design/Zarm-Web.0.0.1-alpha.1.zip',
+    url: 'https://nstatic.zhongan.com/hfe-static/zarm/resources/Zarm-Web.0.0.1-alpha.1.zip',
   },
   {
     icon: require('./images/icon-zarm-frame.png'),
     title: 'Zarm Web Frame',
     description: <FormattedMessage id="app.home.resources.type.zarm-web-frame" />,
-    url: 'https://static-health-cdn.zhongan.com/zarm/design/Zarm-Web-Frame.0.0.1.sketch',
+    url: 'https://nstatic.zhongan.com/hfe-static/zarm/resources/Zarm-Web-Frame.0.0.1.sketch',
+  },
+  {
+    icon: require('./images/icon-axure.png'),
+    title: 'Zarm Library For Axure',
+    description: <FormattedMessage id="app.home.resources.type.zarm-axure" />,
+    url: 'https://nstatic.zhongan.com/hfe-static/zarm/resources/Zarm-Mobile-Library.rplib',
   },
   {
     icon: require('./images/icon-axure.png'),
     title: 'Zarm Web Library For Axure',
     description: <FormattedMessage id="app.home.resources.type.zarm-web-axure" />,
-    url: 'https://static-health-cdn.zhongan.com/zarm/design/Zarm-Web-Library.rplib',
+    url: 'https://nstatic.zhongan.com/hfe-static/zarm/resources/Zarm-Web-Library.rplib',
   },
 ];
 

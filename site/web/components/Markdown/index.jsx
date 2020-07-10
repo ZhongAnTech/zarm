@@ -1,15 +1,16 @@
 import React from 'react';
 import { pascalCase } from 'change-case';
 import marked from 'marked';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/github-gist.css';
+import hljs from 'highlight.js/lib/core';
 import Meta from '@site/web/components/Meta';
+
+import 'highlight.js/styles/github-gist.css';
 import './style.scss';
 
 export default (props) => {
   const { document, component } = props;
 
-  if (typeof document === 'string') {
+  const getRenderer = () => {
     const renderer = new marked.Renderer();
 
     // 表格
@@ -41,9 +42,17 @@ export default (props) => {
     //     </h${level}>`;
     // };
 
-    const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''), { renderer });
+    return renderer;
+  };
+
+  if (typeof document === 'string') {
+    hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
+    hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
+    hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
+
+    const demoHTML = marked(document.replace(/## API\s?([^]+)/g, ''), { renderer: getRenderer() });
     const api = document.match(/## API\s?([^]+)/g);
-    const apiHTML = marked(Object.prototype.toString.call(api) === '[object Array]' ? api[0] : '', { renderer });
+    const apiHTML = marked(Object.prototype.toString.call(api) === '[object Array]' ? api[0] : '', { renderer: getRenderer() });
     const title = `${component.name} ${pascalCase(component.key)} - Zarm Design`;
 
     return (

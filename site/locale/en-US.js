@@ -30,6 +30,7 @@ module.exports = {
   'app.home.resources.type.zarm': 'Sketch Symbol for zarm',
   'app.home.resources.type.zarm-web': 'Sketch Symbol for zarm-web',
   'app.home.resources.type.zarm-web-frame': 'Sketch Symbol for zarm-web-frame',
+  'app.home.resources.type.zarm-axure': 'Axure library for zarm',
   'app.home.resources.type.zarm-web-axure': 'Axure library for zarm-web',
 
   'app.demo.footer.copyright': 'ZhongAn UX Design',
