@@ -1,14 +1,12 @@
-import React, { PureComponent, cloneElement, ReactElement } from 'react';
+import React, { PureComponent, cloneElement } from 'react';
 import classnames from 'classnames';
 import { BaseTabBarProps } from './PropsType';
 import TabBarItem from './TabBarItem';
 
-type TypeAndArrType<T> = T[] |T;
 
 export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
   className?: string;
-  children?: null | TypeAndArrType<ReactElement<TabBarItem['props'], typeof TabBarItem>>;
 }
 
 
