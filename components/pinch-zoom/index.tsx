@@ -78,7 +78,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     const [el] = children;
     this._positioningEl = el;
     const pointerTracker: PointerTracker = new PointerTracker(current, {
-      start: () => {
+      start: (event) => {
         // We only want to track 2 pointers at most
         // const positioningElBounds = el.getBoundingClientRect();
         // const { x, y } = positioningElBounds;
@@ -87,7 +87,6 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
         //   y,
         // };
         if (pointerTracker.currentPointers.length === 2 || !this._positioningEl) return false;
-        // event.preventDefault();
         return true;
       },
       move: (previousPointers) => {

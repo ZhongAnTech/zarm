@@ -24,7 +24,7 @@ enum LoadStatus {
   before = 'loadBefore',
   start = 'loadStart',
   end = 'loadEnd',
-  after = '',
+  after = 'loadAfter',
 }
 
 type Images = Array<Partial<Iimage> & { loaded?: LoadStatus }>;
@@ -59,12 +59,18 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   moving: boolean;
 
+  pinchData: {
+    scale?: number;
+    x?: number;
+    y?: number;
+  } = {};
+
   constructor(props) {
     super(props);
     this.state = {
       ...this.props,
       images: formatImages(props.images),
-      swipeable: true,
+      swipeable: false,
     };
   }
 
@@ -151,7 +157,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return false;
   };
 
-  onWrapperTouchStart = () => {
+  onWrapperTouchStart = (e) => {
     this.touchStartTime = Date.now();
     this.moving = false;
   };
@@ -160,8 +166,8 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     const deltaTime = Date.now() - this.touchStartTime;
     const { onClose } = this.props;
     // prevent long tap to close component
-    if (deltaTime < 300 && !this.moving) {
-      if (!this.doubleClickTimer) {
+    if (deltaTime < 300) {
+      if (!this.doubleClickTimer && !this.moving) {
         this.doubleClickTimer = setTimeout(() => {
           this.doubleClickTimer = null;
           if (typeof onClose === 'function') {
@@ -173,11 +179,11 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
         this.doubleClickTimer = null;
       }
     }
-
-    if (e && !e.touches) {
-      if (typeof onClose === 'function') {
-        onClose();
-      }
+    const { scale, x, y } = this.pinchData;
+    if (scale === 1 && x === 0 && y === 0) {
+      this.setState({
+        swipeable: true,
+      });
     }
   };
 
@@ -189,7 +195,17 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     }
   };
 
-  onWrapperTouchMove = () => {
+  onWrapperTouchMove = (e) => {
+    const { scale = 1, x = 0, y = 0 } = this.pinchData;
+    if (scale !== 1 || x !== 0 || y !== 0) {
+      this.setState({
+        swipeable: false,
+      });
+    } else {
+      this.setState({
+        swipeable: true,
+      });
+    }
     this.moving = true;
   };
 
@@ -200,15 +216,21 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   pinchChange = ({ scale, x, y }) => {
-    let flag = true;
-    const { swipeable } = this.state;
-    if (scale !== 1 || x !== 0 || y !== 0) {
-      flag = false;
-    }
-    if (swipeable === flag) return false;
-    this.setState({
-      swipeable: flag,
-    });
+    // console.log(scale, x, y)
+    // let flag = false;
+    // const { swipeable } = this.state;
+    // if (scale === 1 || x === 0 || y === 0) {
+    //   flag = true;
+    // }
+    // if (swipeable === flag) return false;
+    // this.setState({
+    //   swipeable: flag,
+    // });
+    this.pinchData = {
+      scale,
+      x,
+      y,
+    };
   };
 
   renderImages = () => {
@@ -247,18 +269,19 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
           onMouseUp={this.onWrapperMouseUp}
           onMouseDown={this.onWrapperMouseDown}
           onClick={this.close}
+          // ref={(el) => { this.bindEvent(el); }}
         >
           <Carousel
             showPagination={false}
             onChange={this.onChange}
-            activeIndex={activeIndex}
+            activeIndex={currentIndex}
             swipeable={swipeable}
           >
             {this.renderImages()}
           </Carousel>
         </div>
         <div className={`${prefixCls}__footer`}>
-          {this.showOriginButton(images, activeIndex) && loaded !== LoadStatus.after
+          {this.showOriginButton(images, activeIndex) && (loaded !== LoadStatus.after)
             ? (
               <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
                 {loaded === LoadStatus.start ? <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" /> : ''}
