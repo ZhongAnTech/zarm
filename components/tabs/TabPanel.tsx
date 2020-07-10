@@ -10,10 +10,10 @@ export interface TabPanelProps {
 }
 
 interface TabPanelStates {
-  selected: boolean;
+  selected?: boolean;
 }
 
-export default class TabPanel extends PureComponent<TabPanelProps, any> {
+export default class TabPanel extends PureComponent<TabPanelProps, TabPanelStates> {
   static defaultProps: TabPanelProps = {
     prefixCls: 'za-tabs',
   };
