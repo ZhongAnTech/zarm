@@ -12,7 +12,7 @@ export default interface PropsType {
   moveDistanceRatio?: number;
   moveTimeSpan?: number;
   showPagination?: boolean;
-  onChange?: (activeIndex: number) => void;
+  onChange?: (activeIndex?: number) => void;
   onChangeEnd?: (activeIndex?: number) => void;
   style?: CSSProperties;
   children?: ReactNode[];

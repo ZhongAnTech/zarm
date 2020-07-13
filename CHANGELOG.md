@@ -1,6 +1,10 @@
 # 版本更新日志 
 
-## v2.3.2
+## v2.3.4
+- Bug Fix
+  - [pull] 修复在 iOS 12 版本下出现无法上滑拖动滚动条的bug。[#472](https://github.com/ZhongAnTech/zarm/pull/472)
+
+## v2.3.3
 - Bug Fix
   - [Input] 修复数字键盘因点击过快导致出现卡顿，丢失输入数据的bug。[#464](https://github.com/ZhongAnTech/zarm/pull/464)
 
