@@ -1,6 +1,6 @@
 import React, { PureComponent, CSSProperties, ReactElement } from 'react';
 import classnames from 'classnames';
-import PropsType from './PropsType';
+import PropsType, { TabsStates } from './PropsType';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import Carousel from '../carousel';
 import { getTransformPropValue, getPxStyle, scrollLeftTo } from './util/index';
@@ -9,13 +9,8 @@ import { getTransformPropValue, getPxStyle, scrollLeftTo } from './util/index';
 export interface TabsProps extends PropsType {
   prefixCls?: string;
   className?: string;
-  scrollThreshold: number;
 }
 
-interface TabsStates {
-  value: number;
-  prevValue?: number;
-}
 
 const getSelectIndex = (children) => {
   let selectIndex;
