@@ -17,11 +17,11 @@
         display: none;
       }
     }
+  }
 
-    &.za-tabs__scroll {
-      ul {
-        overflow-x: auto;
-      }
+  @include e(scroll) {
+    ul {
+      overflow-x: auto;
     }
   }
 
