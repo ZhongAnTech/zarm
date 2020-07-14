@@ -60,6 +60,12 @@ module.exports = {
         style: true,
       },
       {
+        key: 'stack-picker',
+        name: '层叠选择器',
+        module: () => import('@/components/stack-picker/demo.md'),
+        style: false,
+      },
+      {
         key: 'date-picker',
         name: '日期选择器',
         module: () => import('@/components/date-picker/demo.md'),

@@ -364,4 +364,12 @@
   --icon-font-size-md: 24px;
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
+
+  //StackPicker
+  --stack-picker-error: #ff5050;
+  --stack-picker-stack-item-font-size: 16px;
+  --stack-picker-crumbs-line-height: 24px;
+  --stack-picker-stack-item-height: 35px;
+  --stack-picker-padding: 20px;
+  --stack-picker-left: 60px;
 }
