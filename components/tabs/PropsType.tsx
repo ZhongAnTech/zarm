@@ -7,9 +7,3 @@ export default interface PropsType {
   canSwipe?: boolean;
   onChange?: (index?: number) => void;
 }
-
-
-export interface TabsStates {
-  value: number;
-  prevValue?: number;
-}

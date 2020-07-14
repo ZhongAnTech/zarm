@@ -28,8 +28,8 @@ export function scrollLeftTo(
   const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
   function animate() {
     scroller.scrollLeft += (to - from) / frames;
-    // eslint-disable-next-line no-plusplus
-    if (++count < frames) {
+    count += 1;
+    if (count < frames) {
       scrollLeftRafId = raf(animate);
     }
   }

@@ -1,16 +1,19 @@
 import React, { PureComponent, CSSProperties, ReactElement } from 'react';
 import classnames from 'classnames';
-import PropsType, { TabsStates } from './PropsType';
+import PropsType from './PropsType';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import Carousel from '../carousel';
 import { getTransformPropValue, getPxStyle, scrollLeftTo } from './util/index';
-
 
 export interface TabsProps extends PropsType {
   prefixCls?: string;
   className?: string;
 }
 
+interface TabsStates {
+  value: number;
+  prevValue?: number;
+}
 
 const getSelectIndex = (children) => {
   let selectIndex;
@@ -24,9 +27,7 @@ const getSelectIndex = (children) => {
 
 // 这里用 94 因为如果当前的 tab 需要滚动 能方便能让用户，看出来是可以滚动的
 const scrollTabTotalWidth = 94;
-
 const defaultScrollThreshold = 3;
-
 
 export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   static Panel: typeof TabPanel;
@@ -41,7 +42,6 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     canSwipe: false,
     scrollThreshold: defaultScrollThreshold,
   };
-
 
   constructor(props: Tabs['props']) {
     super(props);
@@ -61,11 +61,9 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     return null;
   }
 
-
   componentDidUpdate() {
     this.calculateScorllLeftLocation();
   }
-
 
   getTabSize = (scrollThreshold: number, tabLength: number) => scrollTabTotalWidth / Math.min(scrollThreshold, tabLength);
 
@@ -84,7 +82,6 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     }
     typeof onChange === 'function' && onChange(value);
   };
-
 
   onTabClick = (tab: ReactElement<TabPanel['props'], typeof TabPanel>, index: number) => {
     const { disabled, canSwipe } = this.props;
@@ -120,9 +117,8 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   /**
- * @description: 判断当前 child 是否大于 scrollThreshold
- */
-
+   * @description: 判断当前 child 是否大于 scrollThreshold
+   */
   isScroll = () => {
     const { children, scrollThreshold } = this.props;
     const ChildCount = React.Children.count(children);
@@ -130,43 +126,36 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   /**
- * @description: 计算每个item width
- */
+   * @description: 计算每个item width
+   */
   calculateItemWidth = () => {
     const { scrollThreshold } = this.props;
-
     const itemSize = scrollTabTotalWidth / scrollThreshold;
     return itemSize;
   };
 
-
   /**
- * @description: 计算 line 大小和位置
- */
-
+   * @description: 计算 line 大小和位置
+   */
   caclLineSizePos = () => {
     const { value } = this.state;
     const { children, scrollThreshold } = this.props;
     const ChildCount = React.Children.count(children);
     const isScroll = this.isScroll();
     const size = isScroll ? scrollTabTotalWidth / scrollThreshold : 100 / ChildCount;
-
     const pos = value * 100;
-
     const transformValue = getPxStyle(pos, '%');
-
     const styleUl = getTransformPropValue(transformValue);
+
     return {
       width: `${size}%`,
       ...styleUl,
     };
   };
 
-
   /**
- * @description: 计算滚动条移动位置
- */
-
+   * @description: 计算滚动条移动位置
+   */
   calculateScorllLeftLocation = () => {
     const screenWidth = document.body.clientWidth;
     const { children, scrollThreshold } = this.props;
@@ -174,8 +163,8 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const isScroll = this.isScroll();
     const ChildCount = React.Children.count(children);
     // --- https://github.com/react-component/m-tabs/blob/master/src/DefaultTabBar.tsx
-    const size = this.getTabSize(scrollThreshold, ChildCount);
-    const center = scrollThreshold / 2;
+    const size = this.getTabSize(scrollThreshold!, ChildCount);
+    const center = scrollThreshold! / 2;
     const pos = Math.min(value, ChildCount - center - 0.5);
     const skipSize = Math.min(-(pos - center + 0.5) * size, 0);
     const scrollPos = (screenWidth * skipSize) / 100;
@@ -186,7 +175,6 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       }
     }
   };
-
 
   render() {
     const { prefixCls, className, lineWidth, canSwipe, children, disabled, scrollThreshold } = this.props;
@@ -227,11 +215,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
     }
 
-
     const headerCls = classnames({
-      [`${prefixCls}__scroll`]: ChildCount > scrollThreshold,
+      [`${prefixCls}__scroll`]: ChildCount > scrollThreshold!,
       [`${prefixCls}__header`]: true,
     });
+
     return (
       <div className={classes}>
         <div className={headerCls}>

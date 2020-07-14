@@ -77,6 +77,9 @@ ReactDOM.render(
   </Tabs>
 , mountNode);
 ```
+
+
+
 ## 标签栏滚动
 
 ```jsx
@@ -86,14 +89,15 @@ import { Tabs } from 'zarm';
 const { Panel } = Tabs;
 
 const Demo = () => {
-  const [value,setValue] = useState(0);
+  const [value, setValue] = useState(0);
+
   return (
-      <>
-      <Tabs 
-        value={value} onChange={(index)=>{
-          setValue(index)
-        }} 
-        scrollThreshold={4}>
+    <>
+      <Tabs
+        value={value}
+        onChange={setValue} 
+        scrollThreshold={4}
+      >
         <Panel title="选项卡1">
           <div className="content">选项卡1内容</div>
         </Panel>
@@ -113,14 +117,13 @@ const Demo = () => {
           <div className="content">选项卡6内容</div>
         </Panel>
       </Tabs>
-      </>
-  )
+    </>
+  );
 }
 
-ReactDOM.render(
-  <Demo />
-, mountNode);
+ReactDOM.render(<Demo />, mountNode);
 ```
+
 
 
 ## 指定线条宽度
