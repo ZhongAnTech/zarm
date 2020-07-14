@@ -1,8 +1,15 @@
 # 版本更新日志 
 
+## v2.4.0
+- Feature
+  - [Tabs] 支持通过左右滚动展示超出屏幕宽度的标签页。[#470](https://github.com/ZhongAnTech/zarm/pull/470)
+  - [StackPicker] 新增层叠选择器组件。[#474](https://github.com/ZhongAnTech/zarm/pull/474)
+
+
 ## v2.3.4
 - Bug Fix
-  - [pull] 修复在 iOS 12 版本下出现无法上滑拖动滚动条的bug。[#472](https://github.com/ZhongAnTech/zarm/pull/472)
+  - [Pull] 修复在 iOS 12 版本下出现无法上滑拖动滚动条的bug。[#472](https://github.com/ZhongAnTech/zarm/pull/472)
+
 
 ## v2.3.3
 - Bug Fix
