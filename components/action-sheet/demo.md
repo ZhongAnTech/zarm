@@ -4,6 +4,7 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { ActionSheet, Cell, Button } from 'zarm';
 
 const BUTTONS = [
@@ -23,68 +24,55 @@ const BUTTONS = [
   },
 ];
 
-class Demo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible1: false,
-      visible2: false,
-      visible3: false,
-    };
-  }
+const Demo = () => {
+  const [visible1, setVisible1] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
 
-  toggle(key) {
-    this.setState({
-      [`${key}`]: !this.state[key],
-    });
-  }
+  return (
+    <>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible1(true)}>开启</Button>
+        }
+      >
+        普通
+      </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible2(true)}>开启</Button>
+        }
+      >
+        带取消操作
+      </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible3(true)}>开启</Button>
+        }
+      >
+        圆角、留边
+      </Cell>
 
-  render() {
-    return (
-      <div>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('visible1')}>开启</Button>
-          }
-        >
-          普通
-        </Cell>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('visible2')}>开启</Button>
-          }
-        >
-          带取消操作
-        </Cell>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('visible3')}>开启</Button>
-          }
-        >
-          圆角、留边
-        </Cell>
-
-        <ActionSheet
-          visible={this.state.visible1}
-          actions={BUTTONS}
-          onMaskClick={() => this.toggle('visible1')}
-        />
-        <ActionSheet
-          visible={this.state.visible2}
-          actions={BUTTONS}
-          onMaskClick={() => this.toggle('visible2')}
-          onCancel={() => this.toggle('visible2')}
-        />
-        <ActionSheet
-          spacing
-          visible={this.state.visible3}
-          actions={BUTTONS}
-          onMaskClick={() => this.toggle('visible3')}
-          onCancel={() => this.toggle('visible3')}
-        />
-      </div>
-    )
-  }
+      <ActionSheet
+        visible={visible1}
+        actions={BUTTONS}
+        onMaskClick={() => setVisible1(!visible1)}
+      />
+      <ActionSheet
+        visible={visible2}
+        actions={BUTTONS}
+        onMaskClick={() => setVisible2(!visible2)}
+        onCancel={() => setVisible2(!visible2)}
+      />
+      <ActionSheet
+        spacing
+        visible={visible3}
+        actions={BUTTONS}
+        onMaskClick={() => setVisible3(!visible3)}
+        onCancel={() => setVisible3(!visible3)}
+      />
+    </>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode);

@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import marked from 'marked';
 // import { NavBar, Radio, Icon } from 'zarm';
 import { useLocation } from 'react-router-dom';
+import Context from '@site/utils/context';
 import Demo from './Demo';
-import Container from './Container';
-import Footer from './Footer';
 
 export default (props) => {
-  const { content, component } = props;
+  const { lang } = useContext(Context);
+  const { content } = props;
   const components = new Map();
   const nodeList = [];
 
@@ -52,7 +52,7 @@ export default (props) => {
       .replace(/## API\s?([^]+)/g, '') // 排除API显示
       .replace(/##\s?([^]+?)((?=##)|$)/g, (match, p1) => {
         const id = parseInt(Math.random() * 1e9, 10).toString(36);
-        components.set(id, React.createElement(Demo, { ...props, location: useLocation() }, p1));
+        components.set(id, React.createElement(Demo, { ...props, lang, location: useLocation() }, p1));
         return `<div id=${id}></div>`;
       }),
     {
@@ -61,14 +61,11 @@ export default (props) => {
   );
 
   return (
-    <Container className={`${component.key}-page`}>
-      <main dangerouslySetInnerHTML={{ __html: html }} />
-      {/* <NavBar
-    style={{ position: 'fixed', top: 0 }}
-    title={`${data.name} ${data.description}`}
-    left={leftControl}
-  /> */}
-      <Footer />
-    </Container>
+    <main dangerouslySetInnerHTML={{ __html: html }} />
+  //     <NavBar
+  //   style={{ position: 'fixed', top: 0 }}
+  //   title={`${data.name} ${data.description}`}
+  //   left={leftControl}
+  // />
   );
 };

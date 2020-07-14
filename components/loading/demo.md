@@ -61,7 +61,7 @@ ReactDOM.render(<Demo />, mountNode);
 | mask | boolean | true | 是否展示遮罩层 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
 | afterClose | () => void | - | Loading隐藏后的回调函数 |
-| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Loading 挂载的 HTML 节点 |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Loading 挂载的 HTML 节点 |
 
 ## 静态方法
 

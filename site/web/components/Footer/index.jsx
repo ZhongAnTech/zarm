@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import './style.scss';
 
 class Footer extends Component {
@@ -6,26 +7,56 @@ class Footer extends Component {
     return (
       <footer>
         <div className="group">
-          <h2>相关资源</h2>
+          <h2><FormattedMessage id="app.home.footer.resources" /></h2>
           <ul>
-            <li><a href="https://ZhongAnTech.github.io/zarm-vue/#/documents/quick-start">Zarm Vue</a> - Zarm of Vue</li>
-            <li><a href="https://jeromelin.github.io/zarm-web">Zarm Web</a></li>
-            <li><a href="/#/design/download">设计资源下载</a></li>
+            <li><a href="https://ZhongAnTech.github.io/zarm-vue/#/documents/quick-start" rel="noopener noreferrer" target="_blank">Zarm Vue</a> - Zarm of Vue</li>
+            <li><a href="https://jeromelin.github.io/zarm-web" rel="noopener noreferrer" target="_blank">Zarm Web</a></li>
+            <li>
+              <a href="/#/design/download">
+                <FormattedMessage id="app.home.resources" />
+              </a>
+            </li>
           </ul>
         </div>
         <div className="group">
-          <h2>社区</h2>
+          <h2><FormattedMessage id="app.home.footer.community" /></h2>
           <ul>
-            <li><a href="https://app.mokahr.com/apply/zhongan/320">加入我们</a></li>
+            <li>
+              <a href="https://zhuanlan.zhihu.com/c_135293309" rel="noopener noreferrer" target="_blank">
+                <FormattedMessage id="app.home.footer.community.zhihu" />
+              </a>
+            </li>
+            <li>
+              <a href="https://app.mokahr.com/apply/zhongan/320" rel="noopener noreferrer" target="_blank">
+                <FormattedMessage id="app.home.footer.community.joinus" />
+              </a>
+            </li>
           </ul>
         </div>
         <div className="group">
-          <h2>帮助</h2>
+          <h2><FormattedMessage id="app.home.footer.help" /></h2>
           <ul>
-            <li><a href="https://github.com/ZhongAnTech/zarm">Github</a></li>
-            <li><a href="/#/components/change-log">更新日志</a></li>
-            <li><a href="https://github.com/ZhongAnTech/zarm/issues">在线讨论</a></li>
-            <li><a href="https://github.com/ZhongAnTech/zarm/issues/new">报告 Bug</a></li>
+            <li><a href="https://github.com/ZhongAnTech/zarm" rel="noopener noreferrer" target="_blank">Github</a></li>
+            <li>
+              <a href="/#/components/change-log">
+                <FormattedMessage id="app.home.footer.help.changelog" />
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ZhongAnTech/zarm/issues/new" rel="noopener noreferrer" target="_blank">
+                <FormattedMessage id="app.home.footer.help.bug-report" />
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ZhongAnTech/zarm/issues" rel="noopener noreferrer" target="_blank">
+                <FormattedMessage id="app.home.footer.help.bug-list" />
+              </a>
+            </li>
+            <li>
+              <a href="https://gitter.im/ZhonganTech/zarm" rel="noopener noreferrer" target="_blank">
+                <FormattedMessage id="app.home.footer.help.chat" />
+              </a>
+            </li>
           </ul>
         </div>
       </footer>

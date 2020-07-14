@@ -18,7 +18,7 @@ export interface NoticeBarState {
 export default class NoticeBar extends PureComponent<NoticeBarProps, NoticeBarState> {
   static displayName = 'NoticeBar';
 
-  static defaultProps = {
+  static defaultProps: NoticeBarProps = {
     prefixCls: 'za-notice-bar',
     theme: 'warning',
     icon: <Icon type="broadcast" />,

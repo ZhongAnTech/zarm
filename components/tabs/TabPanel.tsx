@@ -9,19 +9,23 @@ export interface TabPanelProps {
   disabled?: boolean;
 }
 
-export default class TabPanel extends PureComponent<TabPanelProps, any> {
-  static defaultProps = {
+interface TabPanelStates {
+  selected?: boolean;
+}
+
+export default class TabPanel extends PureComponent<TabPanelProps, TabPanelStates> {
+  static defaultProps: TabPanelProps = {
     prefixCls: 'za-tabs',
   };
 
-  constructor(props) {
+  constructor(props: TabPanel['props']) {
     super(props);
     this.state = {
       selected: props.selected,
     };
   }
 
-  static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps: TabPanel['props']) {
     if ('selected' in nextProps) {
       return {
         selected: nextProps.selected,
@@ -33,7 +37,6 @@ export default class TabPanel extends PureComponent<TabPanelProps, any> {
   render() {
     const { prefixCls, className, children } = this.props;
     const { selected } = this.state;
-
     const cls = classnames(`${prefixCls}__panel`, className, {
       [`${prefixCls}__panel--active`]: selected,
     });

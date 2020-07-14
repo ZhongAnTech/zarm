@@ -8,7 +8,7 @@ import Icon from '../icon';
 declare const document;
 
 export default class InputNumber extends Component<InputNumberProps, any> {
-  static defaultProps = {
+  static defaultProps: InputNumberProps = {
     prefixCls: 'za-input',
     disabled: false,
     clearable: true,
@@ -31,7 +31,6 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   componentDidMount() {
     const { autoFocus, focused } = this.props;
-    Events.on(document.body, 'touchstart', this.onMaskClick);
     Events.on(document.body, 'click', this.onMaskClick);
 
     if (autoFocus || focused) {
@@ -50,7 +49,6 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   }
 
   componentWillUnmount() {
-    Events.off(document.body, 'touchstart', this.onMaskClick);
     Events.off(document.body, 'click', this.onMaskClick);
   }
 

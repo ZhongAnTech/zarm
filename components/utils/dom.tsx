@@ -1,4 +1,4 @@
-import { ContainerType } from '../popup/PropsType';
+export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
 
 const domUtil = {
   // 获取元素的纵坐标（相对于窗口）
@@ -147,20 +147,23 @@ const domUtil = {
     return ele === document.body ? Math.max(document.documentElement.scrollLeft, document.body.scrollLeft) : ele.scrollLeft;
   },
 
-  getMountNode: (getContainer?: ContainerType): HTMLElement => {
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
+  getMountContainer: (mountContainer?: ContainerType): HTMLElement => {
+    if (mountContainer) {
+      if (typeof mountContainer === 'function') {
+        return mountContainer();
       }
       if (
-        typeof getContainer === 'object'
-        && getContainer instanceof HTMLElement
+        typeof mountContainer === 'object'
+        && mountContainer instanceof HTMLElement
       ) {
-        return getContainer;
+        return mountContainer;
       }
     }
     return document.body;
   },
+
+  canUseDOM: () => !!(typeof window !== 'undefined' && window.document && window.document.createElement),
+
 };
 
 export default domUtil;

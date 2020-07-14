@@ -24,7 +24,7 @@ export interface SwitchStates {
 export default class Switch extends PureComponent<SwitchProps, SwitchStates> {
   static displayName = 'Switch';
 
-  static defaultProps = {
+  static defaultProps: SwitchProps = {
     prefixCls: 'za-switch',
     disabled: false,
   };

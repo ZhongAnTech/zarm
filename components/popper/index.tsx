@@ -8,12 +8,11 @@ import ClickOutside from '../click-outside';
 import domUtil from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
-import canUseDom from '../utils/canUseDom';
 
-export interface PopperProps extends BasePopperProps {
+export interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 interface PopperStates {
@@ -93,7 +92,7 @@ const customArrowOffsetFn = (data: PopperJS.Data) => {
 
 const popperInstances: Set<PopperJS> = new Set();
 
-class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement>, PopperStates> {
+class Popper extends React.Component<PopperProps, PopperStates> {
   static update() {
     popperInstances.forEach((popperInstance) => popperInstance.scheduleUpdate());
   }
@@ -140,12 +139,12 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     onVisibleChange: PropTypes.func,
   };
 
-  static defaultProps = {
+  static defaultProps: PopperProps = {
     prefixCls: 'za-popper',
     hasArrow: false,
     destroy: true,
     arrowPointAtCenter: false,
-    trigger: (canUseDom && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover') || 'click',
+    trigger: (domUtil.canUseDOM && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover') || 'click',
     direction: 'top',
     mouseEnterDelay: 150,
     mouseLeaveDelay: 100,
@@ -198,19 +197,6 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
   getPopperDomNode() {
     return this.popperNode;
-  }
-
-  getContainer() {
-    const { getContainer } = this.props;
-    if (getContainer) {
-      if (typeof getContainer === 'function') {
-        return getContainer();
-      }
-      if (typeof getContainer === 'object' && getContainer instanceof HTMLElement) {
-        return getContainer;
-      }
-    }
-    return document.body;
   }
 
   getTransitionName(animationType, animationState) {
@@ -352,6 +338,19 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
     }, mouseLeaveDelay);
   };
 
+  mountContainer() {
+    const { mountContainer } = this.props;
+    if (mountContainer) {
+      if (typeof mountContainer === 'function') {
+        return mountContainer();
+      }
+      if (typeof mountContainer === 'object' && mountContainer instanceof HTMLElement) {
+        return mountContainer;
+      }
+    }
+    return document.body;
+  }
+
   enter() {
     this.setState({
       show: true,
@@ -454,7 +453,7 @@ class Popper extends React.Component<PopperProps & HTMLAttributes<HTMLDivElement
 
     return (
       <>
-        {mounted && createPortal(toolTip, this.getContainer())}
+        {mounted && createPortal(toolTip, this.mountContainer())}
         {React.cloneElement(child, {
           ref: (node) => {
             // eslint-disable-next-line react/no-find-dom-node

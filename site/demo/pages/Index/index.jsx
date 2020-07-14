@@ -1,38 +1,31 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { IntlProvider, FormattedMessage } from 'react-intl';
 import { Panel, Cell } from 'zarm';
 import { components } from '@site/site.config';
 import { pascalCase } from 'change-case';
 import Container from '@site/demo/components/Container';
 import Footer from '@site/demo/components/Footer';
+import Context from '@site/utils/context';
 import Events from '@site/utils/events';
+import Locale from '@site/locale';
 import './style.scss';
 
-class Page extends PureComponent {
-  componentDidMount() {
-    this.loadPageScroll();
-    Events.on(window, 'scroll', this.setPageScroll);
-  }
+const Child = () => {
+  const history = useHistory();
+  const { lang } = useContext(Context);
 
-  componentWillUnmount() {
-    Events.off(window, 'scroll', this.setPageScroll);
-  }
-
-  setPageScroll = () => {
-    window.sessionStorage.indexPageScroll = window.scrollY;
-  };
-
-  loadPageScroll = () => {
-    const scrollY = window.sessionStorage.indexPageScroll;
-    if (!scrollY) return;
-    window.scrollTo(0, scrollY);
-  };
-
-  getMenus = (groupName, key) => {
-    const { history } = this.props;
+  const getMenus = (key) => {
     const list = components[key] || [];
 
     return (
-      <Panel title={`${groupName}（${list.length}）`}>
+      <Panel title={(
+        <>
+          <FormattedMessage id={`app.components.type.${key}`} />
+          （{list.length}）
+        </>
+      )}
+      >
         {
           list
             .sort((a, b) => {
@@ -45,7 +38,7 @@ class Page extends PureComponent {
                 title={(
                   <div className="menu-item-content">
                     <span>{pascalCase(component.key)}</span>
-                    <span className="chinese">{component.name}</span>
+                    {lang !== 'enUS' && <span className="chinese">{component.name}</span>}
                   </div>
                 )}
                 onClick={() => history.push(`/${component.key}`)}
@@ -56,27 +49,52 @@ class Page extends PureComponent {
     );
   };
 
-  render() {
-    return (
-      <Container className="index-page">
-        <header>
-          <section className="brand">
-            <div className="brand-title">Zarm</div>
-            <div className="brand-description">众安科技移动端组件库</div>
-          </section>
-        </header>
-        <main>
-          {this.getMenus('通用', 'general')}
-          {this.getMenus('数据录入', 'form')}
-          {this.getMenus('操作反馈', 'feedback')}
-          {this.getMenus('数据展示', 'view')}
-          {this.getMenus('导航', 'navigation')}
-          {this.getMenus('其他', 'other')}
-        </main>
-        <Footer />
-      </Container>
-    );
-  }
-}
+  return (
+    <IntlProvider locale="zh-CN" messages={Locale[lang]}>
+      <header>
+        <section className="brand">
+          <div className="brand-title">Zarm</div>
+          <div className="brand-description"><FormattedMessage id="app.title" /></div>
+        </section>
+      </header>
+      <main>
+        {getMenus('general')}
+        {getMenus('form')}
+        {getMenus('feedback')}
+        {getMenus('view')}
+        {getMenus('navigation')}
+        {getMenus('other')}
+      </main>
+      <Footer />
+    </IntlProvider>
+  );
+};
+
+const Page = () => {
+  const setPageScroll = () => {
+    window.sessionStorage.indexPageScroll = window.scrollY;
+  };
+
+  const loadPageScroll = () => {
+    const scrollY = window.sessionStorage.indexPageScroll;
+    if (!scrollY) return;
+    window.scrollTo(0, scrollY);
+  };
+
+  useEffect(() => {
+    loadPageScroll();
+    Events.on(window, 'scroll', setPageScroll);
+
+    return () => {
+      Events.off(window, 'scroll', setPageScroll);
+    };
+  }, []);
+
+  return (
+    <Container className="index-page">
+      <Child />
+    </Container>
+  );
+};
 
 export default Page;

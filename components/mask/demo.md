@@ -4,28 +4,23 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Cell, Button, Mask } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    visible: false,
-  };
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
 
-  toggle = () => {
-    this.setState({ visible: !this.state.visible });
-  }
+  const toggle = () => setVisible(!visible);
 
-  render() {
-    return (
-      <>
-        <Cell
-          title="默认"
-          description={<Button size="sm" onClick={() => this.toggle()}>开启</Button>}
-        />
-        <Mask visible={this.state.visible} onClick={() => this.toggle()} />
-      </>
-    )
-  }
+  return (
+    <>
+      <Cell
+        title="默认"
+        description={<Button size="xs" onClick={toggle}>开启</Button>}
+      />
+      <Mask visible={visible} onClick={toggle} />
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

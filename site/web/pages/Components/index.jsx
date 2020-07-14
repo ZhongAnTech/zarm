@@ -1,12 +1,14 @@
-import React, { PureComponent } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import React, { useState, useContext, useRef, useEffect } from 'react';
+import { Route, Switch, Redirect, useParams } from 'react-router-dom';
 import classnames from 'classnames';
 import Loadable from 'react-loadable';
-import { Icon, BackToTop } from 'zarm';
+import { FormattedMessage } from 'react-intl';
+import { Icon } from 'zarm';
 import { documents, components } from '@site/site.config';
+import Context from '@site/utils/context';
 import Container from '@site/web/components/Container';
-import Header from '@site/web/components/Header';
 import SideBar from '@site/web/components/SideBar';
+import Footer from '@site/web/components/Footer';
 import Markdown from '@site/web/components/Markdown';
 import './style.scss';
 
@@ -16,57 +18,78 @@ const LoadableComponent = (component) => {
   return Loadable({
     loader: component.module,
     render: (loaded, props) => {
-      const C = loaded.default;
-      return <Markdown document={C} component={component} {...props} />;
+      return <Markdown document={loaded.default} component={component} {...props} />;
     },
     loading: () => null,
   });
 };
 
-class Page extends PureComponent {
-  render() {
-    const { match } = this.props;
-    const { general, form, feedback, view, navigation, other } = components;
+const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
 
-    const containerCls = classnames('main-container', {
-      'no-simulator': !isComponentPage(match.params.component),
-    });
+const Simulator = () => {
+  const params = useParams();
+  const simulatorRef = useRef();
+  const { lang } = useContext(Context);
+  const [affix, setAffix] = useState(false);
 
-    return (
-      <Container className="components-page">
-        <Header />
-        <main>
-          <SideBar />
-          {
-            isComponentPage(match.params.component) && (
-              <div className="simulator">
-                <iframe src={`${window.location.protocol}//${window.location.host}/demo.html#/${match.params.component}`} title="simulator" frameBorder="0" />
-              </div>
-            )
-          }
-          <div className={containerCls}>
-            <Switch>
-              {
-                documents.map((doc, i) => (
-                  <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
-                ))
-              }
-              {
-                [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
-                  <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
-                ))
-              }
-              <Redirect to="/" />
-            </Switch>
+  const simulatorCls = classnames('simulator', {
+    'simulator--affix': affix,
+  });
+
+  useEffect(() => {
+    !(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) && simulatorRef.current.contentWindow.postMessage({ lang });
+  }, [lang]);
+
+  return (
+    <div className={simulatorCls}>
+      <FormattedMessage id={`app.home.components.simulator.${affix ? 'unaffix' : 'affix'}`}>
+        {(txt) => (
+          <div className="simulator__control" onClick={() => setAffix(!affix)} title={txt}>
+            <Icons type="affix" size="sm" />
           </div>
-          <BackToTop className="scroll-to-top">
-            <Icon type="arrow-top" size="sm" />
-          </BackToTop>
-        </main>
-        {/* <Footer /> */}
-      </Container>
-    );
-  }
-}
+        )}
+      </FormattedMessage>
+      <iframe ref={simulatorRef} src={`${window.location.protocol}//${window.location.host}/demo.html#/${params.component}`} title="simulator" frameBorder="0" />
+    </div>
+  );
+};
 
-export default withRouter(Page);
+const Page = () => {
+  const { general, form, feedback, view, navigation, other } = components;
+  const params = useParams();
+
+  const containerCls = classnames('main-container', 'markdown', {
+    'no-simulator': !isComponentPage(params.component),
+  });
+
+  return (
+    <Container className="components-page">
+      <main>
+        <SideBar />
+        {
+          isComponentPage(params.component) && (
+            <Simulator />
+          )
+        }
+        <div className={containerCls}>
+          <Switch>
+            {
+              documents.map((doc, i) => (
+                <Route key={+i} path={`/components/${doc.key}`} component={LoadableComponent(doc)} />
+              ))
+            }
+            {
+              [...general, ...form, ...feedback, ...view, ...navigation, ...other].map((component, i) => (
+                <Route key={+i} path={`/components/${component.key}`} component={LoadableComponent(component)} />
+              ))
+            }
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </main>
+      <Footer />
+    </Container>
+  );
+};
+
+export default Page;

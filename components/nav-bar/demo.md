@@ -11,7 +11,7 @@ ReactDOM.render(
     left={
       <Icon
         type="arrow-left"
-        theme="success"
+        theme="primary"
         onClick={() => window.history.back()}
       />
     }
@@ -32,7 +32,7 @@ ReactDOM.render(
     right={
       <Icon
         type="question-round"
-        theme="success"
+        theme="primary"
         onClick={() => window.alert('click icon')}
       />
     }
@@ -51,17 +51,17 @@ ReactDOM.render(
     left={
       <Icon 
         type="arrow-left"
-        theme="success"
+        theme="primary"
         onClick={() => window.history.back()}
       />
     }
     title="这是标题"
     right={
       <>
-        <Icon type="add" theme="success" onClick={() => alert('click icon1')} style={{ marginRight: 16 }} />
+        <Icon type="add" theme="primary" onClick={() => alert('click icon1')} style={{ marginRight: 16 }} />
         <Icon
           type="question-round"
-          theme="success"
+          theme="primary"
           onClick={() => alert('click icon2')}
         />
       </>

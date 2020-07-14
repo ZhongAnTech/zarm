@@ -1,63 +1,72 @@
-import React, { PureComponent } from 'react';
-import { Dropdown } from 'dragon-ui';
+import React, { useEffect, useState, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import { Dropdown } from 'zarm-web';
 import QRious from 'qrious';
 import Container from '@site/web/components/Container';
-import Header from '@site/web/components/Header';
 import Meta from '@site/web/components/Meta';
 import './style.scss';
 
-class Page extends PureComponent {
-  state = {
-    dropdown: false,
-  };
+const Page = () => {
+  const qrcode = useRef();
+  const [dropdown, setDropdown] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const history = useHistory();
+  const demoURL = `${window.location.origin}/demo.html`;
 
-  componentDidMount() {
+  useEffect(() => {
+    if (!dropdown || mounted) return;
+
     const qr = new QRious({
-      element: this.qrcode,
-      value: `${window.location.origin}/demo.html`,
+      element: qrcode.current,
+      value: demoURL,
       size: 134,
     });
-  }
+    setMounted(true);
+  }, [demoURL, dropdown, mounted]);
 
-  render() {
-    const { history } = this.props;
-    const { dropdown } = this.state;
-
-    return (
-      <Container className="index-page">
-        <Meta title="Zarm Design - 众安科技移动端组件库" />
-        <Header />
-        <main>
-          <div className="banner">
-            <img src={require('./images/banner@2x.png')} alt="" />
+  return (
+    <Container className="index-page">
+      <FormattedMessage id="app.title">
+        {(txt) => (
+          <Meta title={`Zarm Design - ${txt}`} />
+        )}
+      </FormattedMessage>
+      <main>
+        <div className="banner">
+          <img src={require('./images/banner@2x.png')} alt="" />
+        </div>
+        <div className="introduce">
+          <div className="title">
+            <span>Zarm</span>
+            &nbsp;Design
           </div>
-          <div className="introduce">
-            <div className="title">
-              <span>Zarm</span>
-              &nbsp;Design
-            </div>
-            <div className="description">追求极致的用户体验，做有温度的组件库</div>
-            <div className="navigation">
-              <button type="button" onClick={() => history.push('/components/quick-start')}>开始使用</button>
-              <Dropdown
-                className="btn-try"
-                trigger="hover"
-                visible={dropdown}
-                onVisibleChange={(visible) => {
-                  this.setState({
-                    dropdown: visible,
-                  });
-                }}
-                overlay={<canvas ref={(ele) => { this.qrcode = ele; }} />}
-              >
-                <button type="button" className="ghost">扫码体验</button>
-              </Dropdown>
-            </div>
+          <div className="description"><FormattedMessage id="app.home.index.introduce" /></div>
+          <div className="navigation">
+            <button type="button" onClick={() => history.push('/components/quick-start')}>
+              <FormattedMessage id="app.home.index.getting-started" />
+            </button>
+            <Dropdown
+              className="btn-try"
+              visible={dropdown}
+              onVisibleChange={setDropdown}
+              direction="bottom"
+              content={(
+                <a href={demoURL}>
+                  <canvas ref={qrcode} />
+                </a>
+              )}
+              destroy={false}
+            >
+              <button type="button" className="ghost">
+                <FormattedMessage id="app.home.index.scanning-code" />
+              </button>
+            </Dropdown>
           </div>
-        </main>
-      </Container>
-    );
-  }
-}
+        </div>
+      </main>
+    </Container>
+  );
+};
 
 export default Page;

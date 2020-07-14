@@ -25,10 +25,11 @@
   --border-disabled: #e6e6e6;
 
   // 圆角
-  --radius-xs: 4px;
-  --radius-sm: 4px;
+  --radius-xs: 2px;
+  --radius-sm: 2px;
   --radius-md: 4px;
   --radius-lg: 8px;
+  --radius-xl: 8px;
   --radius-round: 1000px;
   --radius-circle: 50%;
 
@@ -37,12 +38,14 @@
   --padding-h-sm: 12px;
   --padding-h-md: 16px;
   --padding-h-lg: 20px;
+  --padding-h-xl: 24px;
 
   // 垂直间距
   --padding-v-xs: 6px;
   --padding-v-sm: 8px;
   --padding-v-md: 12px;
   --padding-v-lg: 16px;
+  --padding-v-xl: 18px;
 
   // 字体大小
   --font-size-xs: 10px;
@@ -55,12 +58,19 @@
   --zindex-mask: 1000;
   --zindex-popup: 1500;
   --zindex-tooltip: 1500;
+  --zindex-dropdown: 1101;
+  --zindex-notification: 1400;
+  --zindex-message: 1400;
 
   // 透明度
-  --opacity-disabled: .5;
-  --opacity-mask: .5;
-  --opacity-toast: .8;
-  --opacity-tooltip: .8;
+  --opacity-disabled: 0.5;
+  --opacity-mask: 0.5;
+  --opacity-toast: 0.8;
+  --opacity-tooltip: 0.8;
+
+  //阴影
+  --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
   // components
 

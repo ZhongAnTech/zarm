@@ -2,7 +2,7 @@
 export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
 
 export default interface BasePickerViewProps {
-  value: string | string[] | number[];
+  value?: string | string[] | number[];
   defaultValue?: string | string[] | number[] | object;
   valueMember?: string;
   dataSource: DataSource;

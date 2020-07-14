@@ -1,4 +1,4 @@
-.download-page {
+.design-page {
   .resource-cards {
     display: flex;
     margin-top: 28px;
@@ -54,10 +54,12 @@
   }
 }
 
-// @media screen and (max-width: 1200px) {
-//   .download-page {
-//     .resource-card {
-//       width: 100%;
-//     }
-//   }
-// }
+@media screen and (max-width: 768px) {
+  .design-page {
+    .resource-card {
+      width: 100%;
+      min-width: unset;
+      margin-right: 0;
+    }
+  }
+}

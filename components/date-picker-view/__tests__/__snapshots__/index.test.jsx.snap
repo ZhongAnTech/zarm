@@ -26,7 +26,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
           "year": "年",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       minuteStep={1}
       mode="datetime"
       placeholder="请选择时间"
@@ -34,7 +34,6 @@ exports[`DatePickerView DatePickerView time 1`] = `
       title="选择时间"
       value=""
       valueMember="value"
-      visible={true}
     >
       <PickerView
         cols={Infinity}
@@ -692,7 +691,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
             "year": "年",
           }
         }
-        localeCode="zh-cn"
+        localeCode="zh-CN"
         minuteStep={1}
         mode="datetime"
         onChange={[Function]}
@@ -710,7 +709,6 @@ exports[`DatePickerView DatePickerView time 1`] = `
           ]
         }
         valueMember="value"
-        visible={true}
       >
         <div
           className="za-date-picker-view"
@@ -2447,7 +2445,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
           "year": "年",
         }
       }
-      localeCode="zh-cn"
+      localeCode="zh-CN"
       max="2019-11-23 21:00"
       min="2007-01-03 11:00"
       minuteStep={1}
@@ -2457,7 +2455,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
       title="选择日期"
       value="2017-9-6 12:00"
       valueMember="value"
-      visible={true}
     >
       <PickerView
         cols={Infinity}
@@ -3043,7 +3040,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
             "year": "年",
           }
         }
-        localeCode="zh-cn"
+        localeCode="zh-CN"
         max="2019-11-23 21:00"
         min="2007-01-03 11:00"
         minuteStep={1}
@@ -3063,7 +3060,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
           ]
         }
         valueMember="value"
-        visible={true}
       >
         <div
           className="za-date-picker-view"
