@@ -1,4 +1,4 @@
-# stack-picker 层叠选择器
+# StackPicker 层叠选择器
 
 ## 基本用法
 
@@ -6,10 +6,9 @@
 import { useState } from 'react';
 import { StackPicker, Cell, Button } from 'zarm';
 
-
 const Demo = () => {
-  const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState([])
+  const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState([]);
 
   const District = [{
     "value": "340000",
@@ -57,17 +56,15 @@ const Demo = () => {
     }]
   }];
 
-  console.log(visible)
-
   return (
     <>
       <Cell
-        title="单列"
+        title="普通"
         description={
           <Button size="xs" onClick={() => setVisible(true)}>展开</Button>
         }
       >
-      {value.join(',')}
+        {value.join(',')}
       </Cell>
 
       <StackPicker
@@ -77,19 +74,20 @@ const Demo = () => {
         title="层叠选择器"
         dataSource={District}
         onOk={(v) => {
-          setValue(v)
-          setVisible(false)
+          console.log(v);
+          setValue(v);
+          setVisible(false);
         }}
         onCancel={() => setVisible(false)}
-      >
-
-      </StackPicker>
+      />
     </>
-  )
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
 ```
+
+
 
 ## API
 
