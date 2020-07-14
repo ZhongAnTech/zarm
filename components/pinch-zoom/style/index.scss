@@ -1,6 +1,5 @@
 @import "../../style/core/index";
 
-
 @include b(pinch-zoom) {
   overflow: hidden;
   touch-action: none;
