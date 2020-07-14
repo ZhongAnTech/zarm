@@ -70,7 +70,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     this.state = {
       ...this.props,
       images: formatImages(props.images),
-      swipeable: false,
     };
   }
 
@@ -157,12 +156,11 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return false;
   };
 
-  onWrapperTouchStart = (e) => {
+  onWrapperTouchStart = () => {
     this.touchStartTime = Date.now();
-    this.moving = false;
   };
 
-  onWrapperTouchEnd = (e) => {
+  onWrapperTouchEnd = () => {
     const deltaTime = Date.now() - this.touchStartTime;
     const { onClose } = this.props;
     // prevent long tap to close component
@@ -179,69 +177,22 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
         this.doubleClickTimer = null;
       }
     }
-    const { scale, x, y } = this.pinchData;
-    if (scale === 1 && x === 0 && y === 0) {
-      this.setState({
-        swipeable: true,
-      });
-    }
+    this.moving = false;
   };
 
-  onWrapperMouseUp = () => {
-    if (!('ontouchend' in document)) {
-      setTimeout(() => {
-        this.moving = false;
-      }, 200);
-    }
-  };
-
-  onWrapperTouchMove = (e) => {
-    const { scale = 1, x = 0, y = 0 } = this.pinchData;
-    if (scale !== 1 || x !== 0 || y !== 0) {
-      this.setState({
-        swipeable: false,
-      });
-    } else {
-      this.setState({
-        swipeable: true,
-      });
-    }
+  onWrapperTouchMove = () => {
     this.moving = true;
-  };
-
-  onWrapperMouseDown = () => {
-    if (!('ontouchend' in document)) {
-      this.moving = false;
-    }
-  };
-
-  pinchChange = ({ scale, x, y }) => {
-    // console.log(scale, x, y)
-    // let flag = false;
-    // const { swipeable } = this.state;
-    // if (scale === 1 || x === 0 || y === 0) {
-    //   flag = true;
-    // }
-    // if (swipeable === flag) return false;
-    // this.setState({
-    //   swipeable: flag,
-    // });
-    this.pinchData = {
-      scale,
-      x,
-      y,
-    };
   };
 
   renderImages = () => {
     const { prefixCls, minScale, maxScale } = this.props;
     const { images } = this.state;
+    // const width = document.body.offsetWidth;
     return images.map((item, i) => {
       return (
         <div className={`${prefixCls}__item`} key={+i}>
           <PinchZoom
             className={`${prefixCls}__item__img`}
-            onChange={this.pinchChange}
             minScale={minScale}
             maxScale={maxScale}
           >
@@ -254,7 +205,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   render() {
     const { prefixCls, title, locale, activeIndex } = this.props;
-    const { currentIndex = 0, visible, images, swipeable } = this.state;
+    const { currentIndex = 0, visible, images } = this.state;
     const { loaded } = images[currentIndex];
 
     return (
@@ -265,17 +216,12 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
           onTouchStart={this.onWrapperTouchStart}
           onTouchEnd={this.onWrapperTouchEnd}
           onTouchMove={this.onWrapperTouchMove}
-          onMouseMove={this.onWrapperTouchMove}
-          onMouseUp={this.onWrapperMouseUp}
-          onMouseDown={this.onWrapperMouseDown}
           onClick={this.close}
-          // ref={(el) => { this.bindEvent(el); }}
         >
           <Carousel
             showPagination={false}
             onChange={this.onChange}
             activeIndex={currentIndex}
-            swipeable={swipeable}
           >
             {this.renderImages()}
           </Carousel>
