@@ -116,7 +116,7 @@
     transition: transform .3s;
 
     @include m(hidden) {
-      ~ .za-stack-picker-stack-column {
+      ~ #{$ele} {
         transform: translate(100%, 0);
       }
 
