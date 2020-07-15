@@ -97,8 +97,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
 
   renderTabs = (tab: ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
     const { prefixCls, disabled } = this.props;
+    const { value } = this.state;
+
     const itemCls = classnames(`${prefixCls}__tab`, tab.props.className, {
       [`${prefixCls}__tab--disabled`]: disabled || tab.props.disabled,
+      [`${prefixCls}__tab--active`]: value === index,
     });
     const isScroll = this.isScroll();
     const itemSize = this.calculateItemWidth();
@@ -215,9 +218,8 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
     }
 
-    const headerCls = classnames({
+    const headerCls = classnames(`${prefixCls}__header`, {
       [`${prefixCls}__scroll`]: ChildCount > scrollThreshold!,
-      [`${prefixCls}__header`]: true,
     });
 
     return (
