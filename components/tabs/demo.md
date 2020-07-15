@@ -83,7 +83,7 @@ ReactDOM.render(
 ## 标签栏滚动
 
 ```jsx
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Tabs } from 'zarm';
 
 const { Panel } = Tabs;
