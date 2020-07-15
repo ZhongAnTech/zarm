@@ -51,6 +51,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   static defaultProps = {
     prefixCls: 'za-image-preview',
     activeIndex: 0,
+    showPagination: true,
   };
 
   doubleClickTimer;
@@ -58,12 +59,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   touchStartTime: number;
 
   moving: boolean;
-
-  pinchData: {
-    scale?: number;
-    x?: number;
-    y?: number;
-  } = {};
 
   constructor(props) {
     super(props);
@@ -204,7 +199,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   render() {
-    const { prefixCls, title, locale, activeIndex } = this.props;
+    const { prefixCls, title, locale, activeIndex, showPagination } = this.props;
     const { currentIndex = 0, visible, images } = this.state;
     const { loaded } = images[currentIndex];
 
@@ -234,7 +229,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
                 { locale![loaded]}
               </button>
             ) : ''}
-          {images && images.length && <div className={`${prefixCls}__index`}>{currentIndex + 1}/{images.length}</div>}
+          {showPagination && images && images.length && <div className={`${prefixCls}__index`}>{currentIndex + 1} / {images.length}</div>}
         </div>
       </Popup>
     );

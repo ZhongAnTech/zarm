@@ -163,8 +163,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     let stopPropagation = false;
     if (this.moving || this.zooming) {
       stopPropagation = true;
-
-      if (!this.moving) {
+      if (this.moving && this.startMoveX === this.moveX && this.startMoveY === this.moveY) {
         stopPropagation = false;
       }
 
