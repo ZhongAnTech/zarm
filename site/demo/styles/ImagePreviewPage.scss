@@ -1,4 +1,4 @@
-.za-image-preview {
+.image-preview-page {
   .carousel__item__pic {
     img {
       width: 100%;
@@ -10,7 +10,19 @@
     height: 100%;
   }
 
-  // img {
-  //   object-fit: contain;
-  // }
+  .picture-item {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 10px 0;
+    box-sizing: content-box;
+
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit: cover;
+    }
+  }
 }

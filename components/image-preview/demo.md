@@ -30,6 +30,7 @@ class Demo extends React.Component {
   state = {
       origin: false,
       common: false,
+      picture: false,
   };
 
   open = (key) => {
@@ -44,8 +45,15 @@ class Demo extends React.Component {
     });
   }
 
+  showPicture = (index) => {
+    this.setState({
+      pictureIndex: index,
+      picture: true
+    });
+  }
+
   render() {
-    const { origin, common } = this.state;
+    const { origin, common, picture, pictureIndex } = this.state;
     return (
       <>
         <NoticeBar>建议在手机下体验</NoticeBar>
@@ -63,8 +71,21 @@ class Demo extends React.Component {
           >
             有查看原始图片功能
         </Cell>
+        <Cell>
+          <div className="picture-item" onClick={() => this.showPicture(0)}>
+            <img src="https://static.zhongan.com/website/health/zarm/images/banners/1.png" />
+          </div>
+          <div className="picture-item" onClick={() => this.showPicture(1)}>
+            <img src="https://static.zhongan.com/website/health/zarm/images/banners/2.png" />
+          </div>
+          <div className="picture-item" onClick={() => this.showPicture(2)}>
+            <img src="https://static.zhongan.com/website/health/zarm/images/banners/3.png" />
+          </div>
+        </Cell>
+
         <ImagePreview visible={origin} title="图片预览" images={originImages} onClose={() => this.hide('origin')} /> 
         <ImagePreview visible={common} title="普通图片预览" images={commonImages} onClose={() => this.hide('common')} maxScale={10}/>
+         <ImagePreview visible={picture} title="图片预览" images={originImages} onClose={() => this.hide('picture')} activeIndex={pictureIndex} /> 
       </>
     );  
   }

@@ -85,7 +85,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return null;
   }
 
-
   // shouldComponentUpdate(_nextProps, nextState) {
   //   const { images } = this.state;
   //   return isEqual(images, nextState.images);
@@ -235,7 +234,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
             onChange={this.onChange}
             activeIndex={currentIndex}
           >
-            {this.renderImages()}
+            {visible ? this.renderImages() : ''}
           </Carousel>
         </div>
         <div className={`${prefixCls}__footer`}>
