@@ -76,6 +76,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
       return {
         visible: nextProps.visible,
         activeIndex: nextProps.activeIndex,
+        currentIndex: nextProps.activeIndex,
         images: formatImages(nextProps.images),
         prevVisible: nextProps.visible,
         prevActiveIndex: nextProps.activeIndex,
@@ -84,10 +85,11 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     return null;
   }
 
-  shouldComponentUpdate(_nextProps, nextState) {
-    const { images } = this.state;
-    return isEqual(images, nextState.images);
-  }
+
+  // shouldComponentUpdate(_nextProps, nextState) {
+  //   const { images } = this.state;
+  //   return isEqual(images, nextState.images);
+  // }
 
   onChange = (index) => {
     const { onChange } = this.props;
@@ -98,7 +100,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
         onChange(index);
       }
     });
-    this.moving = true;
   };
 
   close = () => {
@@ -176,7 +177,20 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   onWrapperTouchMove = () => {
-    this.moving = true;
+    if (this.touchStartTime) {
+      this.moving = true;
+    }
+  };
+
+  onWrapperMouseDown = () => {
+    this.touchStartTime = Date.now();
+  };
+
+  onWrapperMouseUp = () => {
+    setTimeout(() => {
+      this.moving = false;
+    }, 0);
+    this.touchStartTime = 0;
   };
 
   renderImages = () => {
@@ -202,7 +216,6 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
     const { prefixCls, title, locale, activeIndex, showPagination } = this.props;
     const { currentIndex = 0, visible, images } = this.state;
     const { loaded } = images[currentIndex];
-
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
         {title ? <div className={`${prefixCls}__title`}>{title}</div> : ''}
@@ -210,7 +223,11 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
           className={`${prefixCls}__content`}
           onTouchStart={this.onWrapperTouchStart}
           onTouchEnd={this.onWrapperTouchEnd}
+          onTouchCancel={this.onWrapperTouchEnd}
           onTouchMove={this.onWrapperTouchMove}
+          onMouseDown={this.onWrapperMouseDown}
+          onMouseMove={this.onWrapperTouchMove}
+          onMouseUp={this.onWrapperMouseUp}
           onClick={this.close}
         >
           <Carousel

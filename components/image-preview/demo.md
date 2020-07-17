@@ -4,7 +4,7 @@
 
 ## 基本用法
 ```jsx
-import { Cell, Button, ImagePreview } from 'zarm';
+import { Cell, Button, ImagePreview, NoticeBar } from 'zarm';
 
 const originImages = [
   {
@@ -48,6 +48,7 @@ class Demo extends React.Component {
     const { origin, common } = this.state;
     return (
       <>
+        <NoticeBar>建议在手机下体验</NoticeBar>
         <Cell
             description={
               <Button size="xs" onClick={() => this.open('common')}>开启</Button>
