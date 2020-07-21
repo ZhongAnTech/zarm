@@ -212,12 +212,11 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   };
 
   render() {
-    const { prefixCls, title, locale, activeIndex, showPagination } = this.props;
+    const { prefixCls, locale, activeIndex, showPagination } = this.props;
     const { currentIndex = 0, visible, images } = this.state;
     const { loaded } = images[currentIndex];
     return (
       <Popup direction="center" visible={visible} className={prefixCls}>
-        {title ? <div className={`${prefixCls}__title`}>{title}</div> : ''}
         <div
           className={`${prefixCls}__content`}
           onTouchStart={this.onWrapperTouchStart}

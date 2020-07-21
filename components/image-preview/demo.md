@@ -71,21 +71,8 @@ class Demo extends React.Component {
           >
             有查看原始图片功能
         </Cell>
-        <Cell>
-          <div className="picture-item" onClick={() => this.showPicture(0)}>
-            <img src="https://static.zhongan.com/website/health/zarm/images/banners/1.png" />
-          </div>
-          <div className="picture-item" onClick={() => this.showPicture(1)}>
-            <img src="https://static.zhongan.com/website/health/zarm/images/banners/2.png" />
-          </div>
-          <div className="picture-item" onClick={() => this.showPicture(2)}>
-            <img src="https://static.zhongan.com/website/health/zarm/images/banners/3.png" />
-          </div>
-        </Cell>
-
-        <ImagePreview visible={origin} title="图片预览" images={originImages} onClose={() => this.hide('origin')} /> 
-        <ImagePreview visible={common} title="普通图片预览" images={commonImages} onClose={() => this.hide('common')} maxScale={10}/>
-         <ImagePreview visible={picture} title="图片预览" images={originImages} onClose={() => this.hide('picture')} activeIndex={pictureIndex} /> 
+        <ImagePreview visible={origin} images={originImages} onClose={() => this.hide('origin')}  maxScale={5} /> 
+        <ImagePreview visible={common} images={commonImages} onClose={() => this.hide('common')} maxScale={10}/>
       </>
     );  
   }
@@ -93,9 +80,64 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+
+## 预览指定图片
+```jsx
+import { ImagePreview, Cell } from 'zarm';
+
+class Demo extends React.Component {
+  state = {
+    picture: false,
+  };
+
+  open = (key) => {
+    this.setState({
+      [key]: true
+    });
+  }
+
+  hide = (key) => {
+    this.setState({
+      [key]: false
+    });
+  }
+
+  showPicture = (index) => {
+    this.setState({
+      pictureIndex: index,
+      picture: true
+    });
+  }
+
+  render() {
+    const { picture, pictureIndex } = this.state;
+    const commonImages = [
+      'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+      'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
+      'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+    ];
+    return (
+      <>
+        <Cell>
+          {
+            commonImages.map((pic, index) => (
+              <div className="picture-item" onClick={() => this.showPicture(index)} key={+index}>
+               <img src={pic} />
+            </div>
+            ))
+          }
+        </Cell>
+         <ImagePreview visible={picture} images={commonImages} onClose={() => this.hide('picture')} activeIndex={pictureIndex} /> 
+      </>
+    );  
+  }
+} 
+ReactDOM.render(<Demo />, mountNode);
+
+```
+
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| title | string | - | 标题 |
 | visible | boolean | false | 是否显示 |
 | minScale | number | 1 | 图片最小缩放比例，1 为最小值 |
 | maxScale | number | 3 | 图片最大缩放比例 |

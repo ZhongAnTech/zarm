@@ -30,7 +30,7 @@ describe('ImagePreview', () => {
   });
 
   it('renders correctly with origin', () => {
-    const wrapper = render(<ImagePreview checked onChange={jest.fn()} images={originImages} title="图片预览" />);
+    const wrapper = render(<ImagePreview checked onChange={jest.fn()} images={originImages} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });

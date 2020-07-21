@@ -19,11 +19,6 @@ export interface PinchZoomProps {
   maxScale: number;
 }
 
-export interface Position {
-  x: number;
-  y: number;
-}
-
 export default class PinchZoom extends Component<PinchZoomProps, any> {
   static defaultProps = {
     prefixCls: 'za-pinch-zoom',
