@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
-import PropsType, { Iimage } from './PropsType';
+import PropsType, { ImageSrc } from './PropsType';
 import Popup from '../popup';
 import Carousel from '../carousel';
 import PinchZoom from '../pinch-zoom';
@@ -15,11 +14,6 @@ export interface ImagePreviewProps extends PropsType {
   locale?: Locale['ImagePreview'];
 }
 
-export interface Point {
-  x: number;
-  y: number;
-}
-
 enum LoadStatus {
   before = 'loadBefore',
   start = 'loadStart',
@@ -27,9 +21,9 @@ enum LoadStatus {
   after = 'loadAfter',
 }
 
-type Images = Array<Partial<Iimage> & { loaded?: LoadStatus }>;
+type Images = Array<Partial<ImageSrc> & { loaded?: LoadStatus }>;
 
-const formatImages = (images: Array<Iimage> | Array<string>): Images => {
+const formatImages = (images: Array<ImageSrc> | Array<string>): Images => {
   const previewImages: Images = [];
   images.forEach((image) => {
     if (isString(image)) {
@@ -244,7 +238,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
                 { locale![loaded]}
               </button>
             ) : ''}
-          {showPagination && images && images.length && <div className={`${prefixCls}__index`}>{currentIndex + 1} / {images.length}</div>}
+          {showPagination && images && images.length > 1 && <div className={`${prefixCls}__index`}>{currentIndex + 1} / {images.length}</div>}
         </div>
       </Popup>
     );

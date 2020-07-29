@@ -1,7 +1,7 @@
-export interface Iimage { url?: string; originUrl?: string }
+export interface ImageSrc { url?: string; originUrl?: string }
 
 export default interface PropsType {
-  images: Array<Iimage> | Array<string>;
+  images: Array<ImageSrc> | Array<string>;
   visible: boolean;
   activeIndex?: number;
   showPagination?: boolean;

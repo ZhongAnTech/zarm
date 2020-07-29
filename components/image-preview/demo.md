@@ -4,19 +4,20 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Cell, Button, ImagePreview, NoticeBar } from 'zarm';
 
 const originImages = [
   {
-    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/compress_1.png',
-    originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/1.png'
+    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
+    originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/1.jpg'
   },
   {
-    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/compress_2.png',
-    originUrl:'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
+    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
+    originUrl:'https://cdn-health.zhongan.com/zarm/imagePreview/2.jpg',
   }, {
-    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/compress_3.png',
-    originUrl: 'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+    url: 'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
+    originUrl: 'https://cdn-health.zhongan.com/zarm/imagePreview/3.jpg',
   }
 ];
 
@@ -26,56 +27,46 @@ const commonImages = [
    'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
 ];
 
-class Demo extends React.Component {
-  state = {
-      origin: false,
-      common: false,
-      picture: false,
-  };
+function Demo() {
+  const [visibleState, setVisibleState] = useState({
+    origin: false,
+    common: false,
+    picture: false,
+  });
 
-  open = (key) => {
-    this.setState({
+  const open = (key) => {
+    setVisibleState({
+      ...visibleState,
       [key]: true
     });
   }
 
-  hide = (key) => {
-    this.setState({
-      [key]: false
+  const hide = (key) => {
+    setVisibleState({
+      ...visibleState,
+      [key]: false,
     });
   }
 
-  showPicture = (index) => {
-    this.setState({
-      pictureIndex: index,
-      picture: true
-    });
-  }
-
-  render() {
-    const { origin, common, picture, pictureIndex } = this.state;
-    return (
-      <>
-        <NoticeBar>建议在手机下体验</NoticeBar>
-        <Cell
-            description={
-              <Button size="xs" onClick={() => this.open('common')}>开启</Button>
-            }
-          >
-            普通
-          </Cell>
-        <Cell
-            description={
-              <Button size="xs" onClick={() => this.open('origin')}>开启</Button>
-            }
-          >
-            有查看原始图片功能
+  return (
+    <>
+      <NoticeBar>建议在手机下体验</NoticeBar>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => open('common')}>开启</Button>
+        }>
+          普通
         </Cell>
-        <ImagePreview visible={origin} images={originImages} onClose={() => this.hide('origin')}  maxScale={5} /> 
-        <ImagePreview visible={common} images={commonImages} onClose={() => this.hide('common')} maxScale={10}/>
-      </>
-    );  
-  }
+      <Cell
+        description={
+          <Button size="xs" onClick={() => open('origin')}>开启</Button>
+        }>
+          有查看原始图片功能
+      </Cell>
+      <ImagePreview visible={visibleState.origin} images={originImages} onClose={() => hide('origin')}  maxScale={5} /> 
+      <ImagePreview visible={visibleState.common} images={commonImages} onClose={() => hide('common')} maxScale={10}/>
+    </>
+  );
 } 
 ReactDOM.render(<Demo />, mountNode);
 ```
@@ -83,54 +74,42 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 预览指定图片
 ```jsx
+import { useState } from 'react';
 import { ImagePreview, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    picture: false,
-  };
+const commonImages = [
+   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
+   'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
+   'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+];
 
-  open = (key) => {
-    this.setState({
-      [key]: true
-    });
+function Demo() {
+  const [visible, setVisible] = useState(false);
+  const [pictureIndex, setPictureIndex] = useState(0);
+
+  const hide = () => {
+    setVisible(false);
   }
 
-  hide = (key) => {
-    this.setState({
-      [key]: false
-    });
+  const show = (index) => {
+    setVisible(true);
+    setPictureIndex(index);
   }
-
-  showPicture = (index) => {
-    this.setState({
-      pictureIndex: index,
-      picture: true
-    });
-  }
-
-  render() {
-    const { picture, pictureIndex } = this.state;
-    const commonImages = [
-      'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-      'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
-      'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
-    ];
-    return (
-      <>
-        <Cell>
-          {
-            commonImages.map((pic, index) => (
-              <div className="picture-item" onClick={() => this.showPicture(index)} key={+index}>
-               <img src={pic} />
+ 
+  return (
+    <>
+      <Cell>
+        {
+          commonImages.map((pic, index) => (
+            <div className="picture-item" onClick={() => show(index)} key={+index}>
+              <img src={pic} />
             </div>
-            ))
-          }
-        </Cell>
-         <ImagePreview visible={picture} images={commonImages} onClose={() => this.hide('picture')} activeIndex={pictureIndex} /> 
-      </>
-    );  
-  }
+          ))
+        }
+      </Cell>
+      <ImagePreview visible={visible} images={commonImages} onClose={() => hide()} activeIndex={pictureIndex} /> 
+    </>
+  );  
 } 
 ReactDOM.render(<Demo />, mountNode);
 
