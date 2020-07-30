@@ -23,6 +23,15 @@ enum LoadStatus {
 
 type Images = Array<Partial<ImageSrc> & { loaded?: LoadStatus }>;
 
+export interface ImagePreviewState {
+  images: Images;
+  visible: boolean;
+  activeIndex?: number;
+  currentIndex?: number;
+  prevVisible?: number;
+  prevActiveIndex?: number;
+}
+
 const formatImages = (images: Array<ImageSrc> | Array<string>): Images => {
   const previewImages: Images = [];
   images.forEach((image) => {
@@ -41,7 +50,15 @@ const formatImages = (images: Array<ImageSrc> | Array<string>): Images => {
   return previewImages;
 };
 
-class ImagePreview extends Component<ImagePreviewProps, any> {
+const parseState = (props: ImagePreviewProps) => {
+  const { visible, images } = props;
+  return {
+    visible,
+    images: formatImages(images),
+  };
+};
+
+class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
   static defaultProps = {
     prefixCls: 'za-image-preview',
     activeIndex: 0,
@@ -54,13 +71,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
 
   moving: boolean;
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...this.props,
-      images: formatImages(props.images),
-    };
-  }
+  state: ImagePreviewState = parseState(this.props);
 
   static getDerivedStateFromProps(nextProps, state) {
     if (
@@ -108,7 +119,7 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
   loadOrigin = () => {
     const { currentIndex = 0, images } = this.state;
     const { originUrl, loaded } = images[currentIndex];
-    if (loaded !== LoadStatus.before) {
+    if (loaded !== LoadStatus.before || !originUrl) {
       return;
     }
     images[currentIndex].loaded = LoadStatus.start;
@@ -227,18 +238,18 @@ class ImagePreview extends Component<ImagePreviewProps, any> {
             onChange={this.onChange}
             activeIndex={currentIndex}
           >
-            {visible ? this.renderImages() : ''}
+            {visible ? this.renderImages() : []}
           </Carousel>
         </div>
         <div className={`${prefixCls}__footer`}>
-          {this.showOriginButton(images, activeIndex) && (loaded !== LoadStatus.after)
+          {loaded && this.showOriginButton(images, activeIndex) && (loaded !== LoadStatus.after)
             ? (
               <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
                 {loaded === LoadStatus.start ? <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" /> : ''}
                 { locale![loaded]}
               </button>
             ) : ''}
-          {showPagination && images && images.length > 1 && <div className={`${prefixCls}__index`}>{currentIndex + 1} / {images.length}</div>}
+          {visible && showPagination && images && images.length > 1 && <div className={`${prefixCls}__index`}>{currentIndex + 1} / {images.length}</div>}
         </div>
       </Popup>
     );
