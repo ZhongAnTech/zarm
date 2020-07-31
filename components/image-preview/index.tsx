@@ -123,22 +123,16 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
       return;
     }
     images[currentIndex].loaded = LoadStatus.start;
-    this.setState({
-      images,
-    });
+    this.setState({ images });
 
     const img = new Image();
     img.onload = () => {
       images[currentIndex].loaded = LoadStatus.end;
       images[currentIndex].url = originUrl;
-      this.setState({
-        images,
-      });
+      this.setState({ images });
       setTimeout(() => {
         images[currentIndex].loaded = LoadStatus.after;
-        this.setState({
-          images,
-        });
+        this.setState({ images });
       }, 1500);
     };
     img.src = originUrl;

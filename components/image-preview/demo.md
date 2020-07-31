@@ -7,6 +7,12 @@
 import { useState } from 'react';
 import { Cell, Button, ImagePreview, NoticeBar } from 'zarm';
 
+const commonImages = [
+  'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
+  'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
+  'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
+];
+
 const originImages = [
   {
     url: 'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
@@ -21,13 +27,7 @@ const originImages = [
   }
 ];
 
-const commonImages = [
-   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-   'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
-   'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
-];
-
-function Demo() {
+const Demo = () => {
   const [visibleState, setVisibleState] = useState({
     origin: false,
     common: false,
@@ -50,7 +50,7 @@ function Demo() {
 
   return (
     <>
-      <NoticeBar>建议在手机下体验</NoticeBar>
+      <NoticeBar>图片缩放只支持Touch事件，建议使用移动模式/设备浏览以获得最佳体验。</NoticeBar>
       <Cell
         description={
           <Button size="xs" onClick={() => open('common')}>开启</Button>
@@ -67,7 +67,8 @@ function Demo() {
       <ImagePreview visible={visibleState.common} images={commonImages} onClose={() => hide('common')} maxScale={10}/>
     </>
   );
-} 
+}
+
 ReactDOM.render(<Demo />, mountNode);
 ```
 
@@ -78,23 +79,21 @@ import { useState } from 'react';
 import { ImagePreview, Cell } from 'zarm';
 
 const commonImages = [
-   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
-   'https://static.zhongan.com/website/health/zarm/images/banners/2.png',
-   'https://static.zhongan.com/website/health/zarm/images/banners/3.png',
+  'https://cdn-health.zhongan.com/zarm/imagePreview/1-small.jpg',
+  'https://cdn-health.zhongan.com/zarm/imagePreview/2-small.jpg',
+  'https://cdn-health.zhongan.com/zarm/imagePreview/3-small.jpg',
 ];
 
-function Demo() {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [pictureIndex, setPictureIndex] = useState(0);
 
-  const hide = () => {
-    setVisible(false);
-  }
+  const hide = () => setVisible(false);
 
   const show = (index) => {
     setVisible(true);
     setPictureIndex(index);
-  }
+  };
  
   return (
     <>
@@ -107,13 +106,17 @@ function Demo() {
           ))
         }
       </Cell>
-      <ImagePreview visible={visible} images={commonImages} onClose={() => hide()} activeIndex={pictureIndex} /> 
+      <ImagePreview visible={visible} images={commonImages} onClose={hide} activeIndex={pictureIndex} /> 
     </>
   );  
-} 
-ReactDOM.render(<Demo />, mountNode);
+}
 
+ReactDOM.render(<Demo />, mountNode);
 ```
+
+
+
+## API
 
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
