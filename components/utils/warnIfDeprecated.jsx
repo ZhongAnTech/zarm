@@ -32,8 +32,12 @@ export default function (deprecations) {
       }
     }
 
-    return React.forwardRef((props, ref) => {
+    const forwardRef = (props, ref) => {
       return <WarnIfDeprecatedComp {...props} forwardedRef={ref} />;
-    });
+    };
+
+    forwardRef.displayName = 'ForwardedRefComp';
+
+    return React.forwardRef(forwardRef);
   };
 }

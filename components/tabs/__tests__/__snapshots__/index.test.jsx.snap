@@ -11,7 +11,7 @@ exports[`Tab canSwipe 1`] = `
       role="tablist"
     >
       <li
-        class="za-tabs__tab"
+        class="za-tabs__tab za-tabs__tab--active"
         role="tab"
       >
         选项卡1
@@ -68,7 +68,7 @@ exports[`Tab lineWidth is auto 1`] = `
       role="tablist"
     >
       <li
-        className="za-tabs__tab"
+        className="za-tabs__tab za-tabs__tab--active"
         key="0/.0"
         onClick={[Function]}
         role="tab"
@@ -146,7 +146,7 @@ exports[`Tab lineWidth is auto 2`] = `
       role="tablist"
     >
       <li
-        className="za-tabs__tab"
+        className="za-tabs__tab za-tabs__tab--active"
         key="0/.0"
         onClick={[Function]}
         role="tab"
@@ -224,7 +224,7 @@ exports[`Tab renders correctly 1`] = `
       role="tablist"
     >
       <li
-        class="za-tabs__tab"
+        class="za-tabs__tab za-tabs__tab--active"
         role="tab"
       >
         选项卡1
