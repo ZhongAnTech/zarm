@@ -6,6 +6,10 @@ export const isString = (val: any) => {
   return Object.prototype.toString.call(val) === '[object String]';
 };
 
+export const isObject = (val: any) => {
+  return Object.prototype.toString.call(val) === '[object Object]';
+};
+
 export const isCascader = ({ dataSource }) => {
   return dataSource && dataSource[0] && !isArray(dataSource[0]);
 };

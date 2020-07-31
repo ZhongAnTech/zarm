@@ -218,7 +218,7 @@ ReactDOM.render(<Demo />, mountNode);
 | :--- | :--- | :--- | :--- |
 | state | REFRESH_STATE &#124; LOAD_STATE | 0 | 状态枚举 |
 | startDistance | number | 30 | 下拉时的助跑距离，单位：px |
-| distance | number | 50 | 触发距离阀值，单位：px；RefreshAction默认为50px，LoadAction默认为0 |
+| distance | number | 30 | 触发距离阀值，单位：px；下拉刷新阀值默认为30px，上拉加载阀值默认为0 |
 | render | (refreshState: REFRESH_STATE &#124; LOAD_STATE, percent: number) => ReactNode | - | 各状态渲染的回调函数 |
 | handler | () => void | - | 达到阀值后释放触发的回调函数 |
 
