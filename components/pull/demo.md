@@ -102,7 +102,7 @@ const Demo = () => {
 
   const style = bodyScroll
     ? {}
-    : { position: 'relative', overflowY: 'auto', maxHeight: 400 };
+    : { overflowY: 'auto', maxHeight: 400 };
 
   return (
     <>
