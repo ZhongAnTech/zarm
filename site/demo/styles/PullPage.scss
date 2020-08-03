@@ -19,5 +19,9 @@
       width: r(40);
       height: r(40);
     }
+
+    * + span {
+      margin-left: r(8);
+    }
   }
 }

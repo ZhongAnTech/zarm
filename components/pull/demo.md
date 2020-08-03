@@ -4,7 +4,8 @@
 
 ## 基本用法
 ```jsx
-import { Pull, Cell, Message, Icon, Button } from 'zarm';
+import { useState, useEffect } from 'react';
+import { Pull, Cell, Message, Icon, Button, ActivityIndicator } from 'zarm';
 
 const REFRESH_STATE = {
   normal: 0,  // 普通
@@ -30,173 +31,160 @@ const getRandomNum = (min, max) => {
   return (min + Math.round(Rand * Range));
 }
 
-class Demo extends React.Component {
-  mounted = true;
+const fetchData = (length, dataSource = []) => {
+  let newData = [].concat(dataSource);
+  const startIndex = newData.length;
+  for (let i = startIndex; i < startIndex + length; i++) {
+    newData.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
+  }
+  return newData;
+}
+  
+const Demo = () => {
+  const [bodyScroll, setBodyScroll] = useState(false);
+  const [dataSource, setDataSource] = useState([]);
+  const [refreshing, setRefreshing] = useState(REFRESH_STATE.normal);
+  const [loading, setLoading] = useState(LOAD_STATE.normal);
 
-  state = {
-    useBodyScroll: false,
-    refreshing: REFRESH_STATE.normal,
-    loading: LOAD_STATE.normal,
-    dataSource: [],
-  };
+  let mounted = true;
 
-  componentDidUpdate() {
-    if (this.state.useBodyScroll) {
+  const toggleScrollContainer = () => {
+    const newBodyScroll = !bodyScroll;
+    setBodyScroll(newBodyScroll);
+
+    if (newBodyScroll) {
       document.body.style.overflow = 'auto';
     } else {
       document.body.style.overflow = 'hidden';
     }
-  }
-
-  componentDidMount() {
-    this.appendData(20);
-  }
-
-  componentWillUnmount() {
-    this.mounted = false;
-    document.body.style.overflow = 'auto';
-  }
+  };
 
   // 模拟请求数据
-  refreshData = () => {
-    this.setState({ refreshing: REFRESH_STATE.loading });
+  const refreshData = () => {
+    setRefreshing(REFRESH_STATE.loading);
     setTimeout(() => {
-      if (!this.mounted) return;
-
-      this.appendData(20, []);
-      this.setState({
-        refreshing: REFRESH_STATE.success,
-      });
+      if (!mounted) return;
+      setDataSource(fetchData(20));
+      setRefreshing(REFRESH_STATE.success);
     }, 2000);
   }
 
   // 模拟加载更多数据
-  loadData = () => {
-    this.setState({ loading: LOAD_STATE.loading });
+  const loadData = () => {
+    setLoading(LOAD_STATE.loading);
     setTimeout(() => {
-      if (!this.mounted) return;
+      if (!mounted) return;
 
       const randomNum = getRandomNum(0, 5);
-      const { dataSource } = this.state;
-      let loading = LOAD_STATE.success;
-
       console.log(`状态: ${randomNum === 0 ? '失败' : (randomNum === 1 ? '完成' : '成功')}`);
 
+      let loadingState = LOAD_STATE.success;
       if (randomNum === 0) {
-        loading = LOAD_STATE.failure;
+        loadingState = LOAD_STATE.failure;
       } else if (randomNum === 1) {
-        loading = LOAD_STATE.complete;
+        loadingState = LOAD_STATE.complete;
       } else {
-        this.appendData(20);
+        setDataSource(fetchData(20, dataSource));
       }
 
-      this.setState({ loading });
+      setLoading(loadingState);
     }, 2000);
   }
 
-  appendData(length, dataSource) {
-    dataSource = dataSource || this.state.dataSource;
-    const startIndex = dataSource.length;
-    for (let i = startIndex; i < startIndex + length; i++) {
-      dataSource.push(<Cell key={+i}>第 {i + 1} 行</Cell>);
-    }
-    this.setState({ dataSource });
-  }
+  useEffect(() => {
+    setDataSource(fetchData(20));
 
-  toggleScrollContainer = () => {
-    this.setState({
-      useBodyScroll: !this.state.useBodyScroll,
-    })
-  };
+    return () => {
+      mounted = false;
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
-  render() {
-    const { useBodyScroll, refreshing, loading, dataSource } = this.state;
-    const style = useBodyScroll
-      ? {}
-      : { position: 'relative', overflowY: 'auto', maxHeight: 400 };
+  const style = bodyScroll
+    ? {}
+    : { overflowY: 'auto', maxHeight: 400 };
 
-    return (
-      <>
-        <Message theme="warning" icon={<Icon type="warning-round" />}>
-          当前使用的是 `{useBodyScroll ? 'window' : 'div' }` 作为滚动容器。
-          <Button theme="primary" size="xs" onClick={this.toggleScrollContainer}>点击切换</Button>
-        </Message>
-        <Pull
-          style={style}
-          refresh={{
-            state: refreshing,
-            handler: this.refreshData,
-            // render: (refreshState, percent) => {
-            //   const cls = 'custom-control';
-            //   switch (refreshState) {
-            //     case REFRESH_STATE.pull:
-            //       return (
-            //         <div className={cls}>
-            //           <ActivityIndicator loading={false} percent={percent} />
-            //           <span>下拉刷新</span>
-            //         </div>
-            //       );
+  return (
+    <>
+      <Message theme="warning" icon={<Icon type="warning-round" />}>
+        当前使用的是 `{bodyScroll ? 'window' : 'div' }` 作为滚动容器。
+        <Button theme="primary" size="xs" onClick={toggleScrollContainer}>点击切换</Button>
+      </Message>
+      <Pull
+        style={style}
+        refresh={{
+          state: refreshing,
+          handler: refreshData,
+          // render: (refreshState, percent) => {
+          //   const cls = 'custom-control';
+          //   switch (refreshState) {
+          //     case REFRESH_STATE.pull:
+          //       return (
+          //         <div className={cls}>
+          //           <ActivityIndicator loading={false} percent={percent} />
+          //           <span>下拉刷新</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.drop:
-            //       return (
-            //         <div className={cls}>
-            //           <ActivityIndicator loading={false} percent={100} />
-            //           <span>释放立即刷新</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.drop:
+          //       return (
+          //         <div className={cls}>
+          //           <ActivityIndicator loading={false} percent={100} />
+          //           <span>释放立即刷新</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.loading:
-            //       return (
-            //         <div className={cls}>
-            //           <ActivityIndicator type="spinner" />
-            //           <span>加载中</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.loading:
+          //       return (
+          //         <div className={cls}>
+          //           <ActivityIndicator type="spinner" />
+          //           <span>加载中</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.success:
-            //       return (
-            //         <div className={cls}>
-            //           <Icon type="right-round" theme="success" />
-            //           <span>加载成功</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.success:
+          //       return (
+          //         <div className={cls}>
+          //           <Icon type="right-round" theme="success" />
+          //           <span>加载成功</span>
+          //         </div>
+          //       );
 
-            //     case REFRESH_STATE.failure:
-            //       return (
-            //         <div className={cls}>
-            //           <Icon type="wrong-round" theme="danger" />
-            //           <span>加载失败</span>
-            //         </div>
-            //       );
+          //     case REFRESH_STATE.failure:
+          //       return (
+          //         <div className={cls}>
+          //           <Icon type="wrong-round" theme="danger" />
+          //           <span>加载失败</span>
+          //         </div>
+          //       );
 
-            //     default:
-            //   }
-            // },
-          }}
-          load={{
-            state: loading,
-            distance: 200,
-            handler: this.loadData,
-            // render: (loadState) => {
-            //   const cls = 'custom-control';
-            //   switch (loadState) {
-            //     case LOAD_STATE.loading:
-            //       return <div className={cls}><ActivityIndicator type="spinner" /></div>;
+          //     default:
+          //   }
+          // },
+        }}
+        load={{
+          state: loading,
+          distance: 200,
+          handler: loadData,
+          // render: (loadState) => {
+          //   const cls = 'custom-control';
+          //   switch (loadState) {
+          //     case LOAD_STATE.loading:
+          //       return <div className={cls}><ActivityIndicator type="spinner" /></div>;
 
-            //     case LOAD_STATE.failure:
-            //       return <div className={cls}>加载失败</div>;
+          //     case LOAD_STATE.failure:
+          //       return <div className={cls}>加载失败</div>;
 
-            //     case LOAD_STATE.complete:
-            //       return <div className={cls}>我是有底线的</div>;
-            //   }
-            // },
-          }}
-        >
-          {dataSource}
-        </Pull>
-      </>
-    )
-  }
+          //     case LOAD_STATE.complete:
+          //       return <div className={cls}>我是有底线的</div>;
+          //   }
+          // },
+        }}
+      >
+        {dataSource}
+      </Pull>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
