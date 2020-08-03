@@ -169,7 +169,6 @@ class Demo extends React.Component {
           width="70%"
           afterClose={() => console.log('关闭')}
           mountContainer={() => {
-            console.log(this.popupRef);
             return this.popupRef.portalRef.popup
           }}
         >
