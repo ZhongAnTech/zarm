@@ -7,7 +7,7 @@
 - Perf
   - [Pull] 优化下拉刷新用户体验。[#0171d0d](https://github.com/ZhongAnTech/zarm/commit/dede711af890485b981de5ffc9b22d690ed23a25)
     - 下拉后放手回弹增加动画效果。
-    - 修改下拉阻力衰减比例，由 2倍 改为 3倍。
+    - 修改下拉距离衰减比例，由 2倍 改为 3倍。
     - 修改触发距离阀值属性 `distance` 默认值由 50 变为 30。
   - [Tabs] 选中项增加样式类名 `.za-tabs__tab--active`，方便外部样式复写。[#0445eeb](https://github.com/ZhongAnTech/zarm/commit/0d1ef242c1142a95a4211dd7ef59b69e538e5f82)
 
