@@ -23,7 +23,7 @@ export interface PullAction {
   state?: REFRESH_STATE | LOAD_STATE;
   startDistance?: number;
   distance?: number;
-  render?: (state: REFRESH_STATE | LOAD_STATE, percent?: number) => any;
+  render?: (state?: REFRESH_STATE | LOAD_STATE, percent?: number) => any;
   handler?: () => void;
 }
 

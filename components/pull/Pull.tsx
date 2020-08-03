@@ -26,7 +26,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     refresh: {
       state: REFRESH_STATE.normal,
       startDistance: 30,
-      distance: 50,
+      distance: 30,
     },
     load: {
       state: LOAD_STATE.normal,
@@ -110,6 +110,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   wrapTouchEnd = () => {
     this.wrapTouchstartY = 0;
+    this.setState({ animationDuration: this.props.animationDuration });
   };
 
   getWrapScrollTop = () => {
@@ -184,7 +185,9 @@ export default class Pull extends PureComponent<PullProps, any> {
 
     const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
     const { startDistance, distance } = refresh;
-    const offset = offsetY / 2; // 移动距离为拖动距离的一半
+
+    // 设置拖动距离衰减（实际下拉移动距离为拖动距离的1/3）
+    const offset = offsetY / 3;
 
     // 判断是否达到释放立即刷新的条件
     const action = ((offset - startDistance!) < distance!)
