@@ -26,6 +26,9 @@ class Demo extends React.Component {
             trigger={trigger}
             direction={direction}
             animationType={animationType}
+            onVisibleChange={(f)=> {
+              trigger === 'manual' && this.setState({visible: f});
+            }}
             className="custom-content"
           >
             <Button theme="primary" size="xs" onClick={() => trigger === 'manual' && this.setState({ visible: !visible })}>

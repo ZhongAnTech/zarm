@@ -5,6 +5,7 @@ import Popup from '../popup';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
+import Trigger from '../trigger';
 
 export interface ModalProps extends BaseModalProps {
   prefixCls?: string;
@@ -30,8 +31,13 @@ export default class Modal extends Component<ModalProps, any> {
     destroy: true,
   };
 
+  onClose = () => {
+    const { onCancel } = this.props;
+    onCancel && onCancel();
+  };
+
   render() {
-    const { prefixCls, className, shape, children, mountContainer, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
+    const { visible, prefixCls, className, shape, children, mountContainer, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
 
     const cls = {
       modal: classnames(prefixCls, className, {
@@ -41,22 +47,25 @@ export default class Modal extends Component<ModalProps, any> {
     };
 
     const showHeader = title || closable;
-    const noop = () => {};
+    const noop = () => { };
 
     return (
-      <Popup
-        className={cls.modal}
-        direction="center"
-        onMaskClick={maskClosable ? onCancel : noop}
-        mountContainer={mountContainer}
-        {...others}
-      >
-        <div className={cls.dialog}>
-          {showHeader && <ModalHeader title={title} closable={closable} onCancel={onCancel} />}
-          <ModalBody>{children}</ModalBody>
-          {footer && <ModalFooter>{footer}</ModalFooter>}
-        </div>
-      </Popup>
+      <Trigger visible={visible || false} onClose={this.onClose}>
+        <Popup
+          visible={visible}
+          className={cls.modal}
+          direction="center"
+          onMaskClick={maskClosable ? onCancel : noop}
+          mountContainer={mountContainer}
+          {...others}
+        >
+          <div className={cls.dialog}>
+            {showHeader && <ModalHeader title={title} closable={closable} onCancel={onCancel} />}
+            <ModalBody>{children}</ModalBody>
+            {footer && <ModalFooter>{footer}</ModalFooter>}
+          </div>
+        </Popup>
+      </Trigger>
     );
   }
 }

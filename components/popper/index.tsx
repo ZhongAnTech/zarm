@@ -9,6 +9,8 @@ import domUtil from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
 
+import Trigger from '../trigger';
+
 export interface PopperProps extends BasePopperProps, HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   className?: string;
@@ -152,7 +154,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     content: '',
     animationType: 'zoomFade',
     animationDuration: 300,
-    onVisibleChange: () => {},
+    onVisibleChange: () => { },
   };
 
   static getDerivedStateFromProps(props: PopperProps, state: PopperStates) {
@@ -319,6 +321,15 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     }, mouseEnterDelay);
   };
 
+  onClose = () => {
+    const { trigger, onVisibleChange } = this.props;
+    if (trigger === 'manual') {
+      onVisibleChange && onVisibleChange(false);
+    } else {
+      this.leave();
+    }
+  };
+
   handleLeave = (event) => {
     const { children, mouseLeaveDelay } = this.props;
     const childrenProps = (children as React.ReactElement<any>).props;
@@ -389,6 +400,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     } = this.props;
 
     const {
+      show,
       direction,
       mounted,
       animationState,
@@ -452,7 +464,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     );
 
     return (
-      <>
+      <Trigger visible={show} onClose={this.onClose}>
         {mounted && createPortal(toolTip, this.mountContainer())}
         {React.cloneElement(child, {
           ref: (node) => {
@@ -461,7 +473,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
           },
           ...childrenProps,
         })}
-      </>
+      </Trigger>
     );
   }
 }
