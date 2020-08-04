@@ -63,7 +63,7 @@ exports[`Calendar calendar render 1`] = `
       className="za-calendar__body"
     >
       <CalendarMonthView
-        dateMonth={2018-05-06T04:00:00.000Z}
+        dateMonth={2018-05-01T04:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-4"
@@ -428,7 +428,7 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-06-06T04:00:00.000Z}
+        dateMonth={2018-06-01T04:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-5"
@@ -782,7 +782,7 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-07-06T04:00:00.000Z}
+        dateMonth={2018-07-01T04:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-6"
@@ -1147,7 +1147,7 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-08-06T04:00:00.000Z}
+        dateMonth={2018-08-01T04:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-7"
@@ -1512,7 +1512,7 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-09-06T04:00:00.000Z}
+        dateMonth={2018-09-01T04:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-8"
@@ -1866,7 +1866,7 @@ exports[`Calendar calendar render 1`] = `
         </section>
       </CalendarMonthView>
       <CalendarMonthView
-        dateMonth={2018-10-06T04:00:00.000Z}
+        dateMonth={2018-10-01T04:00:00.000Z}
         dateRender={[Function]}
         disabledDate={[Function]}
         key="2018-9"
