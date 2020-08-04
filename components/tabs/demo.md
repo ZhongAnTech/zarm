@@ -35,6 +35,52 @@ class Demo extends React.Component {
 ReactDOM.render(<Demo />, mountNode);
 ```
 
+## 垂直用法
+```jsx
+import { Tabs } from 'zarm';
+
+const { Panel } = Tabs;
+
+class Demo extends React.Component {
+  state = {
+    value: 0,
+  }
+
+  onChange = (index) => {
+    this.setState({ value: index })
+  }
+
+  render() {
+    return (
+      <Tabs value={this.state.value} onChange={this.onChange} direction="vertical" canSwipe>
+        <Panel title="选项卡1">
+          <div className="content">选项卡1内容</div>
+        </Panel>
+        <Panel title="选项卡2">
+          <div className="content">选项卡2内容</div>
+        </Panel>
+        <Panel title="选项卡3">
+          <div className="content">选项卡3内容</div>
+        </Panel>
+        <Panel title="选项卡4">
+          <div className="content">选项卡4内容</div>
+        </Panel>
+        <Panel title="选项卡5">
+          <div className="content">选项卡5内容</div>
+        </Panel>
+        <Panel title="选项卡6">
+          <div className="content">选项卡6内容</div>
+        </Panel>
+        <Panel title="选项卡7">
+          <div className="content">选项卡7内容</div>
+        </Panel>
+      </Tabs>
+    );
+  }
+}
+
+ReactDOM.render(<Demo />, mountNode);
+```
 
 
 ## 可滑动

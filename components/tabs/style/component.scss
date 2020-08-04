@@ -1,60 +1,64 @@
 @include b(tabs) {
-  @include e(header) {
-    position: relative;
-    overflow: hidden;
-    @include onepx(bottom);
 
-    ul {
+  @include e(horizontal) {
+
+    @include e(header) {
       position: relative;
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      height: var(--tabs-height);
-      line-height: var(--tabs-height);
+      overflow: hidden;
+      @include onepx(bottom);
 
-      &::-webkit-scrollbar {
-        display: none;
+      ul {
+        position: relative;
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: var(--tabs-height);
+        line-height: var(--tabs-height);
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
-  }
 
-  @include e(scroll) {
-    ul {
-      overflow-x: auto;
+    @include e(scroll) {
+      ul {
+        overflow-x: auto;
+      }
     }
-  }
 
-  @include e(tab) {
-    flex: 1;
-    text-align: center;
-    color: var(--color-text);
-    font-size: var(--tabs-item-font-size);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
-
-    @include m(disabled) {
-      color: var(--color-text-disabled);
-      cursor: not-allowed;
-    }
-  }
-
-  @include e(line) {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: var(--tabs-line-height);
-    transition: transform .3s ease-out;
-    background-color: var(--theme-primary);
-
-    &__inner {
-      display: block;
-      margin: auto;
-      height: 100%;
+    @include e(line) {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: var(--tabs-line-height);
+      transition: transform .3s ease-out;
       background-color: var(--theme-primary);
+
+      &__inner {
+        display: block;
+        margin: auto;
+        height: 100%;
+        background-color: var(--theme-primary);
+      }
     }
+
+    @include e(tab) {
+      flex: 1;
+      text-align: center;
+      color: var(--color-text);
+      font-size: var(--tabs-item-font-size);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: pointer;
+  
+      @include m(disabled) {
+        color: var(--color-text-disabled);
+        cursor: not-allowed;
+      }
+    }    
   }
 
   @include e(panel) {
@@ -66,4 +70,88 @@
       display: block;
     }
   }
+
+  @include e(vertical) {
+    display: flex;
+    flex-direction: row;
+
+    @include e(body) {
+      flex: 1; 
+    }
+
+    @include e(scroll) {
+      ul {
+        overflow-y: auto;
+        position: relative;
+      }
+    }
+
+    @include e(line) {
+      position: absolute;
+      top: 0;
+      width: var(--tabs-line-height);
+      right: 0;
+      transition: transform .3s ease-out;
+      background-color: var(--theme-primary);
+
+      &__inner {
+        display: block;
+        margin: auto;
+        height: 100%;
+        background-color: var(--theme-primary);
+      }
+    }
+
+    @include e(header) {
+      position: relative;
+      @include onepx(right);
+      overflow: hidden;
+
+      ul {
+        height: 100%;
+        padding: 0 8px;
+        margin: 0;
+      }
+    }
+
+    @include e(tab) {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--color-text);
+      font-size: var(--tabs-item-font-size);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: pointer;
+
+      @include m(disabled) {
+        color: var(--color-text-disabled);
+        cursor: not-allowed;
+      }
+    }
+  }
 }
+
+
+// @include b('tabs__vertical') {
+//   display: flex;
+//   flex-direction: row;
+  
+//   @include b('tabs__body') { 
+//     flex: 1; 
+//   }
+
+//   @include b('tabs__header') {
+//     ul {
+//       flex-direction: column;
+//       height: 100%;
+//     }
+//   }
+
+//   @include b('tabs__line') {
+//     height: 100%;
+//     width: 2px;
+//     right: 0;
+//   }
+// }

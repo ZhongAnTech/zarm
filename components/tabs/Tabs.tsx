@@ -36,11 +36,14 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
 
   private layout?: HTMLUListElement;
 
+  private headerRef;
+
   static defaultProps = {
     prefixCls: 'za-tabs',
     disabled: false,
     canSwipe: false,
     scrollThreshold: defaultScrollThreshold,
+    direction: 'horizontal',
   };
 
   constructor(props: Tabs['props']) {
@@ -71,6 +74,15 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     this.layout = ref;
   };
 
+  setHeaderRef = (ref: HTMLUListElement) => {
+    this.headerRef = ref;
+  };
+
+  isVertical = () => {
+    const { direction } = this.props;
+    return direction === 'vertical';
+  };
+
   setCarouselRef = (ref: Carousel) => {
     this.carousel = ref;
   };
@@ -96,7 +108,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   renderTabs = (tab: ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
-    const { prefixCls, disabled } = this.props;
+    const { prefixCls, disabled, scrollThreshold } = this.props;
     const { value } = this.state;
 
     const itemCls = classnames(`${prefixCls}__tab`, tab.props.className, {
@@ -105,7 +117,14 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     });
     const isScroll = this.isScroll();
     const itemSize = this.calculateItemWidth();
-    const liStyle = isScroll ? { flex: `0 0 ${itemSize}%` } : {};
+
+    let liStyle: any = isScroll ? { flex: `0 0 ${itemSize}%` } : {};
+    if (this.isVertical()) {
+      const { children } = this.props;
+      const ChildCount = React.Children.count(children);
+      const size = isScroll ? 100 / scrollThreshold : 100 / ChildCount;
+      liStyle = { height: `${size}%` };
+    }
     return (
       <li
         role="tab"
@@ -145,10 +164,20 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const { children, scrollThreshold } = this.props;
     const ChildCount = React.Children.count(children);
     const isScroll = this.isScroll();
-    const size = isScroll ? scrollTabTotalWidth / scrollThreshold : 100 / ChildCount;
+    let size = isScroll ? scrollTabTotalWidth / scrollThreshold : 100 / ChildCount;
+    if (this.isVertical()) {
+      size = isScroll ? 100 / scrollThreshold : 100 / ChildCount;
+    }
     const pos = value * 100;
-    const transformValue = getPxStyle(pos, '%');
+    const transformValue = getPxStyle(pos, '%', this.isVertical());
     const styleUl = getTransformPropValue(transformValue);
+
+    if (this.isVertical()) {
+      return {
+        height: `${size}%`,
+        ...styleUl,
+      };
+    }
 
     return {
       width: `${size}%`,
@@ -171,6 +200,20 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const pos = Math.min(value, ChildCount - center - 0.5);
     const skipSize = Math.min(-(pos - center + 0.5) * size, 0);
     const scrollPos = (screenWidth * skipSize) / 100;
+
+    if (this.isVertical() && this.headerRef) {
+      const style = window.getComputedStyle(this.headerRef) || {};
+      const { height } = style;
+      if (isScroll && this.layout && height) {
+        const top = ((parseInt(height, 10) / scrollThreshold) * (value - scrollThreshold + 2));
+        this.layout.scrollTo({
+          top,
+          left: 0,
+          behavior: 'smooth',
+        });
+        return;
+      }
+    }
     // ---
     if (isScroll) {
       if (this.layout) {
@@ -180,9 +223,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   render() {
-    const { prefixCls, className, lineWidth, canSwipe, children, disabled, scrollThreshold } = this.props;
+    const { prefixCls, className, lineWidth, canSwipe, children, disabled, scrollThreshold, direction } = this.props;
     const { value } = this.state;
-    const classes = classnames(prefixCls, className);
+    const classes = classnames(prefixCls, className, {
+      [`${prefixCls}__${direction}`]: true,
+    });
     // 渲染选项
     const tabsRender = React.Children.map(children, this.renderTabs);
 
@@ -193,7 +238,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       contentRender = (
         <Carousel
           swipeable={!disabled}
-          direction="left"
+          direction={direction === 'vertical' ? 'up' : 'left'}
           showPagination={false}
           activeIndex={value}
           ref={this.setCarouselRef}
@@ -224,7 +269,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
 
     return (
       <div className={classes}>
-        <div className={headerCls}>
+        <div className={headerCls} ref={(ref) => { this.headerRef = ref; }}>
           <ul role="tablist" ref={this.setTablistRef}>
             {tabsRender}
             <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>

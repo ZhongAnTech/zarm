@@ -5,5 +5,6 @@ export default interface PropsType {
   lineWidth?: string | number;
   disabled?: boolean;
   canSwipe?: boolean;
+  direction?: 'horizontal' | 'vertical';
   onChange?: (index?: number) => void;
 }
