@@ -53,12 +53,12 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       cursor: pointer;
-  
+
       @include m(disabled) {
         color: var(--color-text-disabled);
         cursor: not-allowed;
       }
-    }    
+    }
   }
 
   @include e(panel) {
@@ -76,7 +76,7 @@
     flex-direction: row;
 
     @include e(body) {
-      flex: 1; 
+      flex: 1;
     }
 
     @include e(scroll) {
@@ -104,8 +104,8 @@
 
     @include e(header) {
       position: relative;
-      @include onepx(right);
       overflow: hidden;
+      @include onepx(right);
 
       ul {
         height: 100%;
@@ -132,26 +132,3 @@
     }
   }
 }
-
-
-// @include b('tabs__vertical') {
-//   display: flex;
-//   flex-direction: row;
-  
-//   @include b('tabs__body') { 
-//     flex: 1; 
-//   }
-
-//   @include b('tabs__header') {
-//     ul {
-//       flex-direction: column;
-//       height: 100%;
-//     }
-//   }
-
-//   @include b('tabs__line') {
-//     height: 100%;
-//     width: 2px;
-//     right: 0;
-//   }
-// }
