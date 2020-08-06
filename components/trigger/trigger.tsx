@@ -37,6 +37,8 @@ class Trigger extends Component<PropsType, {}> {
     }
   }
 
+  state = {};
+
   componentDidMount() {
     if (Trigger.count === 0) {
       document.body.addEventListener('keydown', Trigger.onKeydown);
