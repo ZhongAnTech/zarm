@@ -5,7 +5,7 @@ import PopperJS from 'popper.js';
 import classnames from 'classnames';
 
 import ClickOutside from '../click-outside';
-import domUtil from '../utils/dom';
+import { canUseDOM, getOuterSizes } from '../utils/dom';
 import BasePopperProps, { PopperPlacement, directionMap } from './PropsType';
 import Events from '../utils/events';
 
@@ -69,7 +69,7 @@ const customArrowOffsetFn = (data: PopperJS.Data) => {
   const side = isVertical ? 'top' : 'left';
   const altSide = isVertical ? 'left' : 'top';
   const opSide = isVertical ? 'bottom' : 'right';
-  const arrowSize = domUtil.getOuterSizes(arrow as HTMLElement)[len];
+  const arrowSize = getOuterSizes(arrow as HTMLElement)[len];
   const offsetSize = parseFloat(getComputedStyle(data.instance.popper, null).paddingLeft!);
   const hashMap = {
     start: (side === 'top' || side === 'left')
@@ -144,7 +144,7 @@ class Popper extends React.Component<PopperProps, PopperStates> {
     hasArrow: false,
     destroy: true,
     arrowPointAtCenter: false,
-    trigger: (domUtil.canUseDOM && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover') || 'click',
+    trigger: (canUseDOM && /(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent) ? 'click' : 'hover') || 'click',
     direction: 'top',
     mouseEnterDelay: 150,
     mouseLeaveDelay: 100,
