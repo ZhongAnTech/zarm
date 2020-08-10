@@ -71,7 +71,7 @@ ReactDOM.render(<Demo />, mountNode);
 ```
 
 
-### API
+## API
 | 属性 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
 | visible | boolean | false | 是否显示 |
