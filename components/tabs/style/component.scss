@@ -1,6 +1,6 @@
 @include b(tabs) {
 
-  @include e(horizontal) {
+  @include m(horizontal) {
 
     @include e(header) {
       position: relative;
@@ -71,7 +71,7 @@
     }
   }
 
-  @include e(vertical) {
+  @include m(vertical) {
     display: flex;
     flex-direction: row;
 
@@ -83,6 +83,10 @@
       ul {
         overflow-y: auto;
         position: relative;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
 

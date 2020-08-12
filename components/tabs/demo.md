@@ -5,31 +5,23 @@
 ## 基本用法
 ```jsx
 import { Tabs } from 'zarm';
+import { useState } from 'react';
 
 const { Panel } = Tabs;
 
-class Demo extends React.Component {
-  state = {
-    value: 0,
-  }
+function Demo() {
+  const [value, setValue] = useState(0);
 
-  onChange = (index) => {
-    console.log(index);
-    this.setState({ value: index })
-  }
-
-  render() {
-    return (
-      <Tabs value={this.state.value} onChange={this.onChange}>
-        <Panel title="选项卡1">
-          <div className="content">选项卡1内容</div>
-        </Panel>
-        <Panel title="选项卡2">
-          <div className="content">选项卡2内容</div>
-        </Panel>
-      </Tabs>
-    );
-  }
+  return (
+    <Tabs value={value} onChange={(value) => setValue(value)}>
+      <Panel title="选项卡1">
+        <div className="content">选项卡1内容</div>
+      </Panel>
+      <Panel title="选项卡2">
+        <div className="content">选项卡2内容</div>
+      </Panel>
+    </Tabs>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -38,45 +30,37 @@ ReactDOM.render(<Demo />, mountNode);
 ## 垂直用法
 ```jsx
 import { Tabs } from 'zarm';
+import { useState } from 'react';
 
 const { Panel } = Tabs;
 
-class Demo extends React.Component {
-  state = {
-    value: 0,
-  }
-
-  onChange = (index) => {
-    this.setState({ value: index })
-  }
-
-  render() {
-    return (
-      <Tabs value={this.state.value} onChange={this.onChange} direction="vertical" canSwipe>
-        <Panel title="选项卡1">
-          <div className="content">选项卡1内容</div>
-        </Panel>
-        <Panel title="选项卡2">
-          <div className="content">选项卡2内容</div>
-        </Panel>
-        <Panel title="选项卡3">
-          <div className="content">选项卡3内容</div>
-        </Panel>
-        <Panel title="选项卡4">
-          <div className="content">选项卡4内容</div>
-        </Panel>
-        <Panel title="选项卡5">
-          <div className="content">选项卡5内容</div>
-        </Panel>
-        <Panel title="选项卡6">
-          <div className="content">选项卡6内容</div>
-        </Panel>
-        <Panel title="选项卡7">
-          <div className="content">选项卡7内容</div>
-        </Panel>
-      </Tabs>
-    );
-  }
+function Demo() {
+  const [value, setValue] = useState(0);
+  return (
+    <Tabs value={value} onChange={(value) => setValue(value)} direction="vertical" canSwipe>
+      <Panel title="选项卡1">
+        <div className="content">选项卡1内容</div>
+      </Panel>
+      <Panel title="选项卡2">
+        <div className="content">选项卡2内容</div>
+      </Panel>
+      <Panel title="选项卡3">
+        <div className="content">选项卡3内容</div>
+      </Panel>
+      <Panel title="选项卡4">
+        <div className="content">选项卡4内容</div>
+      </Panel>
+      <Panel title="选项卡5">
+        <div className="content">选项卡5内容</div>
+      </Panel>
+      <Panel title="选项卡6">
+        <div className="content">选项卡6内容</div>
+      </Panel>
+      <Panel title="选项卡7">
+        <div className="content">选项卡7内容</div>
+      </Panel>
+    </Tabs>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -229,6 +213,7 @@ ReactDOM.render(
 | canSwipe | boolean | false | 是否支持滑动切换 |
 | lineWidth | number | string | - | 线条宽度 |
 | scrollThreshold | number | 3 | 滚动阈值 |
+| direction | `horizontal` \| `vertical` | 'horizontal' | 方向 |
 | onChange | (index?: number) => void | - | 值变化时触发的回调函数 |
 
 

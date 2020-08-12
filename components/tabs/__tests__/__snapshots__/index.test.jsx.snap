@@ -2,7 +2,7 @@
 
 exports[`Tab canSwipe 1`] = `
 <div
-  class="za-tabs za-tabs__horizontal"
+  class="za-tabs za-tabs--horizontal"
 >
   <div
     class="za-tabs__header"
@@ -59,7 +59,7 @@ exports[`Tab canSwipe 1`] = `
 
 exports[`Tab lineWidth is auto 1`] = `
 <div
-  className="za-tabs za-tabs__horizontal"
+  className="za-tabs za-tabs--horizontal"
 >
   <div
     className="za-tabs__header"
@@ -137,7 +137,7 @@ exports[`Tab lineWidth is auto 1`] = `
 
 exports[`Tab lineWidth is auto 2`] = `
 <div
-  className="za-tabs za-tabs__horizontal"
+  className="za-tabs za-tabs--horizontal"
 >
   <div
     className="za-tabs__header"
@@ -215,7 +215,7 @@ exports[`Tab lineWidth is auto 2`] = `
 
 exports[`Tab renders correctly 1`] = `
 <div
-  class="za-tabs za-tabs__horizontal"
+  class="za-tabs za-tabs--horizontal"
 >
   <div
     class="za-tabs__header"
@@ -238,6 +238,59 @@ exports[`Tab renders correctly 1`] = `
       <div
         class="za-tabs__line"
         style="width:50%;transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px)"
+      />
+    </ul>
+  </div>
+  <div
+    class="za-tabs__body"
+  >
+    <div
+      class="za-tabs__panel za-tabs__panel--active"
+      role="tabpanel"
+    >
+      <div>
+        试试点我左滑
+      </div>
+    </div>
+    <div
+      class="za-tabs__panel"
+      role="tabpanel"
+    >
+      <div>
+        试试点我右滑
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tab renders correctly vertical 1`] = `
+<div
+  class="za-tabs za-tabs--vertical"
+>
+  <div
+    class="za-tabs__header"
+  >
+    <ul
+      role="tablist"
+    >
+      <li
+        class="za-tabs__tab za-tabs__tab--active"
+        role="tab"
+        style="height:50%"
+      >
+        选项卡1
+      </li>
+      <li
+        class="za-tabs__tab"
+        role="tab"
+        style="height:50%"
+      >
+        选项卡2
+      </li>
+      <div
+        class="za-tabs__line"
+        style="height:50%;transform:translate3d(0px, 0%, 0px);-webkit-transform:translate3d(0px, 0%, 0px);-moz-transform:translate3d(0px, 0%, 0px)"
       />
     </ul>
   </div>

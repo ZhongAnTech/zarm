@@ -226,7 +226,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const { prefixCls, className, lineWidth, canSwipe, children, disabled, scrollThreshold, direction } = this.props;
     const { value } = this.state;
     const classes = classnames(prefixCls, className, {
-      [`${prefixCls}__${direction}`]: true,
+      [`${prefixCls}--${direction}`]: true,
     });
     // 渲染选项
     const tabsRender = React.Children.map(children, this.renderTabs);
