@@ -2,7 +2,7 @@ import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import domUtil from '../utils/dom';
+import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
 import PropsType from './PropsType';
 
@@ -229,7 +229,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   renderPortal = (): ReactPortal | null => {
-    if (!domUtil.canUseDOM) {
+    if (!canUseDOM) {
       return null;
     }
     if (!IS_REACT_16) {
@@ -248,7 +248,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += `${prefixCls}-container ${className}`;
-      this.mountNode = domUtil.getMountContainer(mountContainer);
+      this.mountNode = getMountContainer(mountContainer);
       this.mountNode.appendChild(this._container);
     }
     return this._container;

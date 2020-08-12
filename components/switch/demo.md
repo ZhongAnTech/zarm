@@ -4,41 +4,25 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Switch, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    value: false,
-  };
+const Demo = () => {
+  const [checked, setChecked] = useState(false);
 
-  toggle = (value) => {
-    this.setState({
-      value,
-    });
-    console.log(value);
-  }
-
-  render() {
-    return (
-      <>
-        <Cell
-          title="普通"
-          description={
-            <Switch
-              checked={this.state.value}
-              onChange={(value) => {
-                this.setState({ value });
-                console.log(value);
-              }}
-            />
-          }
-        />
-        <Cell title="默认开" description={<Switch defaultChecked />} />
-        <Cell title="禁用的开关（默认关）" description={<Switch disabled />} />
-        <Cell title="禁用的开关（默认开）" description={<Switch defaultChecked disabled />} />
-      </>
-    )
-  }
+  return (
+    <>
+      <Cell
+        title="普通"
+        description={
+          <Switch checked={checked} onChange={setChecked} />
+        }
+      />
+      <Cell title="默认开" description={<Switch defaultChecked />} />
+      <Cell title="禁用的开关（默认关）" description={<Switch disabled />} />
+      <Cell title="禁用的开关（默认开）" description={<Switch defaultChecked disabled />} />
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

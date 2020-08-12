@@ -1,5 +1,11 @@
 # 版本更新日志 
 
+## v2.5.1
+- Bug Fix
+  - [Popup] 修复因增加API过期警告导致无法自定义挂载节点的bug。[#482](https://github.com/ZhongAnTech/zarm/pull/482)
+  - [Calendar] 修复因日期计算问题导致出现重复月份的bug。[#483](https://github.com/ZhongAnTech/zarm/pull/483)
+
+
 ## v2.5.0
 - Feature
   - [ImagePreview] 新增图片预览组件。[#475](https://github.com/ZhongAnTech/zarm/pull/475)

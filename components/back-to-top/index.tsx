@@ -3,9 +3,7 @@ import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 're
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Scroller from '../scroller';
-import { scrollTo } from '../scroller/ScrollContainer';
-import domUtil, { ContainerType } from '../utils/dom';
-
+import { ContainerType, canUseDOM, scrollTo } from '../utils/dom';
 
 export interface BackToTopProps {
   prefixCls?: string;
@@ -56,11 +54,11 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
 
   componentWillUnmount() {
     clearInterval(this.timer);
-    this.parent.removeChild(this.portalContainer);
+    this.parent && this.parent.removeChild(this.portalContainer);
   }
 
   get parent(): HTMLElement {
-    if (!domUtil.canUseDOM || this.container === window) {
+    if (!canUseDOM || this.container === window) {
       return document.body;
     }
     return this.container as HTMLElement;
@@ -148,7 +146,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
   };
 
   render() {
-    if (!domUtil.canUseDOM) {
+    if (!canUseDOM) {
       return null;
     }
 

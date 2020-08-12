@@ -57,9 +57,7 @@ const Demo = () => {
   const myRef = useRef();
   const [state, dispatch] = useReducer(reducer, initState);
 
-  const toggle = (key) => {
-    dispatch({ type: 'visible', key });
-  };
+  const toggle = (key) => dispatch({ type: 'visible', key });
 
   return (
     <>

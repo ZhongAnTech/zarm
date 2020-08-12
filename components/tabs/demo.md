@@ -4,16 +4,17 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Tabs } from 'zarm';
 import { useState } from 'react';
 
 const { Panel } = Tabs;
 
-function Demo() {
+const Demo = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <Tabs value={value} onChange={(value) => setValue(value)}>
+    <Tabs value={value} onChange={setValue}>
       <Panel title="选项卡1">
         <div className="content">选项卡1内容</div>
       </Panel>
@@ -37,7 +38,7 @@ const { Panel } = Tabs;
 function Demo() {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={(value) => setValue(value)} direction="vertical" canSwipe>
+    <Tabs value={value} onChange={setValue} direction="vertical" canSwipe>
       <Panel title="选项卡1">
         <div className="content">选项卡1内容</div>
       </Panel>
@@ -122,32 +123,26 @@ const Demo = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <>
-      <Tabs
-        value={value}
-        onChange={setValue} 
-        scrollThreshold={4}
-      >
-        <Panel title="选项卡1">
-          <div className="content">选项卡1内容</div>
-        </Panel>
-        <Panel title="选项卡2">
-          <div className="content">选项卡2内容</div>
-        </Panel>
-        <Panel title="选项卡3">
-          <div className="content">选项卡3内容</div>
-        </Panel>
-        <Panel title="选项卡4">
-          <div className="content">选项卡4内容</div>
-        </Panel>
-        <Panel title="选项卡5">
-          <div className="content">选项卡5内容</div>
-        </Panel>
-        <Panel title="选项卡6">
-          <div className="content">选项卡6内容</div>
-        </Panel>
-      </Tabs>
-    </>
+    <Tabs scrollThreshold={4} value={value} onChange={setValue}>
+      <Panel title="选项卡1">
+        <div className="content">选项卡1内容</div>
+      </Panel>
+      <Panel title="选项卡2">
+        <div className="content">选项卡2内容</div>
+      </Panel>
+      <Panel title="选项卡3">
+        <div className="content">选项卡3内容</div>
+      </Panel>
+      <Panel title="选项卡4">
+        <div className="content">选项卡4内容</div>
+      </Panel>
+      <Panel title="选项卡5">
+        <div className="content">选项卡5内容</div>
+      </Panel>
+      <Panel title="选项卡6">
+        <div className="content">选项卡6内容</div>
+      </Panel>
+    </Tabs>
   );
 }
 

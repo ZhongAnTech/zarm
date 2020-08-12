@@ -22,10 +22,15 @@ const Demo = () => {
         当前 scrollTop：{scrollTop}
       </Message>
       <Scroller container={() => containerRef.current} onScroll={setScrollTop}>
-        <div ref={containerRef} style={{
-          overflowY: 'auto',
-          maxHeight: 400,
-        }}>{list}</div>
+        <div
+          ref={containerRef}
+          style={{
+            overflowY: 'auto',
+            maxHeight: 400,
+          }}
+        >
+          {list}
+        </div>
       </Scroller>
     </>
   )

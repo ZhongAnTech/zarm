@@ -2,8 +2,7 @@
 import { PureComponent } from 'react';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
-import { ContainerType } from '../utils/dom';
-import { getScrollContainer, getScrollTop } from './ScrollContainer';
+import { ContainerType, getScrollContainer, getScrollTop } from '../utils/dom';
 
 export interface ScrollerProps {
   prefixCls?: string;
@@ -20,10 +19,6 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
   };
 
   private mounted: boolean;
-
-  scrollContainer: HTMLElement | Window;
-
-  scrollTop: number;
 
   componentDidMount() {
     this.bindEvent();
@@ -42,17 +37,22 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
     this.mounted = false;
   }
 
+  get scrollContainer(): HTMLElement | Window {
+    const { container } = this.props;
+    return getScrollContainer(container);
+  }
+
+  get scrollTop(): number {
+    return getScrollTop(this.scrollContainer);
+  }
+
   onScroll = (): void => {
-    const { onScroll, container } = this.props;
+    const { onScroll } = this.props;
     if (!this.mounted) return;
-    this.scrollTop = getScrollTop(container);
     typeof onScroll === 'function' && Throttle(onScroll!(this.scrollTop), 250);
   };
 
   bindEvent = (): void => {
-    const { container } = this.props;
-    this.scrollContainer = getScrollContainer(container);
-    this.scrollTop = getScrollTop(container);
     this.scrollContainer && Events.on(this.scrollContainer, 'scroll', this.onScroll);
   };
 
