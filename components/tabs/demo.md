@@ -132,7 +132,7 @@ const Demo = () => {
       <Panel title="选项卡3">
         <div className="content">选项卡3内容</div>
       </Panel>
-      <Panel title="选项4">
+      <Panel title="选项卡4">
         <div className="content">选项卡4内容</div>
       </Panel>
       <Panel title="选项卡5">
@@ -141,8 +141,8 @@ const Demo = () => {
       <Panel title="选项卡6">
         <div className="content">选项卡6内容</div>
       </Panel>
-      <Panel title="选项选项7">
-        <div className="content">选项卡4内容</div>
+      <Panel title="选项卡7">
+        <div className="content">选项卡7内容</div>
       </Panel>
     </Tabs>
   );

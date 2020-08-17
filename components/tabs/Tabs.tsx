@@ -141,7 +141,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const { value, itemWidth } = this.state;
     const { children, scrollable } = this.props;
     const ChildCount = React.Children.count(children);
-    let pos = 0;
+    let pos = 100 * value;
     if (scrollable && this.layout) {
       const el = this.layout!.children[value];
       const { offsetLeft = 0, offsetTop = 0 } = el as HTMLElement;
@@ -213,6 +213,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
           showPagination={false}
           activeIndex={value}
           ref={this.setCarouselRef}
+          height={height}
           onChange={(v: number) => {
             this.onTabChange(v);
           }}
