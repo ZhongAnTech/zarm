@@ -5,8 +5,8 @@
     @include e(header) {
       position: relative;
       overflow: hidden;
-      @include onepx(bottom);
       width: 100%;
+      @include onepx(bottom);
 
       ul {
         position: relative;
@@ -24,7 +24,6 @@
     }
 
     @include e(scroll) {
-
       ul {
         overflow-x: scroll;
       }
@@ -85,8 +84,8 @@
 
     @include e(body) {
       flex: 1;
-      @include onepx(left);
       position: relative;
+      @include onepx(left);
     }
 
     @include e(tab) {
