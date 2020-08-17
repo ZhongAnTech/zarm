@@ -6,7 +6,6 @@
 ```jsx
 import { useState } from 'react';
 import { Tabs } from 'zarm';
-import { useState } from 'react';
 
 const { Panel } = Tabs;
 
@@ -38,7 +37,7 @@ const { Panel } = Tabs;
 function Demo() {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={setValue} direction="vertical" canSwipe>
+    <Tabs value={value} onChange={setValue} direction="vertical" swipeable scrollable height="200px">
       <Panel title="选项卡1">
         <div className="content">选项卡1内容</div>
       </Panel>
@@ -75,7 +74,7 @@ import { Tabs } from 'zarm';
 const { Panel } = Tabs;
 
 ReactDOM.render(
-  <Tabs canSwipe onChange={(i) => { console.log(i); }}>
+  <Tabs swipeable onChange={(i) => { console.log(i); }}>
     <Panel title="选项卡1">
       <div className="content">试试点我左滑</div>
     </Panel>
@@ -123,7 +122,7 @@ const Demo = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <Tabs scrollThreshold={4} value={value} onChange={setValue}>
+    <Tabs scrollable value={value} onChange={setValue}>
       <Panel title="选项卡1">
         <div className="content">选项卡1内容</div>
       </Panel>
@@ -133,7 +132,7 @@ const Demo = () => {
       <Panel title="选项卡3">
         <div className="content">选项卡3内容</div>
       </Panel>
-      <Panel title="选项卡4">
+      <Panel title="选项4">
         <div className="content">选项卡4内容</div>
       </Panel>
       <Panel title="选项卡5">
@@ -141,6 +140,9 @@ const Demo = () => {
       </Panel>
       <Panel title="选项卡6">
         <div className="content">选项卡6内容</div>
+      </Panel>
+      <Panel title="选项选项7">
+        <div className="content">选项卡4内容</div>
       </Panel>
     </Tabs>
   );
@@ -205,9 +207,9 @@ ReactDOM.render(
 | value | number | - | 值 |
 | defaultValue | number | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
-| canSwipe | boolean | false | 是否支持滑动切换 |
+| swipeable | boolean | false | 是否支持滑动切换 |
 | lineWidth | number | string | - | 线条宽度 |
-| scrollThreshold | number | 3 | 滚动阈值 |
+| scrollable | boolean | 3 | 是否支持滚动 |
 | direction | `horizontal` \| `vertical` | 'horizontal' | 方向 |
 | onChange | (index?: number) => void | - | 值变化时触发的回调函数 |
 

@@ -34,7 +34,7 @@ describe('Tab', () => {
 
   it('canSwipe', () => {
     const wrapper = render(
-      <Tabs canSwipe>
+      <Tabs swipeable>
         <Tabs.Panel title="选项卡1">
           <div>试试点我左滑</div>
         </Tabs.Panel>
@@ -101,7 +101,7 @@ describe('Tab', () => {
   it('scroll tabs', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Tabs canSwipe onChange={onChange} scrollThreshold={3}>
+      <Tabs swipeable onChange={onChange} scrollable>
         <Tabs.Panel title="选项卡1" disabled>
           <div>试试点我左滑</div>
         </Tabs.Panel>

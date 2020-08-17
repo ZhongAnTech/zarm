@@ -6,6 +6,7 @@
       position: relative;
       overflow: hidden;
       @include onepx(bottom);
+      width: 100%;
 
       ul {
         position: relative;
@@ -23,8 +24,15 @@
     }
 
     @include e(scroll) {
+
       ul {
-        overflow-x: auto;
+        overflow-x: scroll;
+      }
+
+      @include e(tab) {
+        display: inline-block;
+        overflow: visible;
+        padding: 0 var(--tabs-item-horizontal-padding);
       }
     }
 
@@ -77,6 +85,12 @@
 
     @include e(body) {
       flex: 1;
+      @include onepx(left);
+      position: relative;
+    }
+
+    @include e(tab) {
+      padding: var(--tabs-item-vertical-padding) 0;
     }
 
     @include e(scroll) {
@@ -109,11 +123,10 @@
     @include e(header) {
       position: relative;
       overflow: hidden;
-      @include onepx(right);
 
       ul {
         height: 100%;
-        padding: 0 8px;
+        padding: 0 10px;
         margin: 0;
       }
     }

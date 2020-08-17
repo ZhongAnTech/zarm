@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import Carousel from '../carousel';
-import { getTransformPropValue, getPxStyle, scrollLeftTo } from './util/index';
+import { getTransformPropValue, getPxStyle } from './util/index';
 
 export interface TabsProps extends PropsType {
   prefixCls?: string;
@@ -13,6 +13,7 @@ export interface TabsProps extends PropsType {
 interface TabsStates {
   value: number;
   prevValue?: number;
+  itemWidth: number;
 }
 
 const getSelectIndex = (children) => {
@@ -25,10 +26,6 @@ const getSelectIndex = (children) => {
   return selectIndex;
 };
 
-// 这里用 94 因为如果当前的 tab 需要滚动 能方便能让用户，看出来是可以滚动的
-const scrollTabTotalWidth = 94;
-const defaultScrollThreshold = 3;
-
 export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   static Panel: typeof TabPanel;
 
@@ -36,13 +33,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
 
   private layout?: HTMLUListElement;
 
-  private headerRef;
-
   static defaultProps = {
     prefixCls: 'za-tabs',
     disabled: false,
-    canSwipe: false,
-    scrollThreshold: defaultScrollThreshold,
+    swipeable: false,
+    scrollable: false,
     direction: 'horizontal',
   };
 
@@ -50,7 +45,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     super(props);
     this.state = {
       value: props.value || props.defaultValue || getSelectIndex(props.children) || 0,
-      // prevValue: null,
+      itemWidth: 0,
     };
   }
 
@@ -64,18 +59,21 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     return null;
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
+    this.calculateLineWidth();
+  }
+
+  componentDidUpdate(prevstate) {
+    const { value: prevValue } = prevstate;
+    const { value } = this.state;
+    if (prevValue !== value) {
+      this.calculateLineWidth();
+    }
     this.calculateScorllLeftLocation();
   }
 
-  getTabSize = (scrollThreshold: number, tabLength: number) => scrollTabTotalWidth / Math.min(scrollThreshold, tabLength);
-
   setTablistRef = (ref: HTMLUListElement) => {
     this.layout = ref;
-  };
-
-  setHeaderRef = (ref: HTMLUListElement) => {
-    this.headerRef = ref;
   };
 
   isVertical = () => {
@@ -96,11 +94,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   onTabClick = (tab: ReactElement<TabPanel['props'], typeof TabPanel>, index: number) => {
-    const { disabled, canSwipe } = this.props;
+    const { disabled, swipeable } = this.props;
     if (disabled || tab.props.disabled) {
       return;
     }
-    if (canSwipe) {
+    if (swipeable) {
       this.carousel && this.carousel.onSlideTo(index);
       return;
     }
@@ -108,29 +106,18 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   renderTabs = (tab: ReactElement<TabPanelProps, typeof TabPanel>, index: number) => {
-    const { prefixCls, disabled, scrollThreshold } = this.props;
+    const { prefixCls, disabled } = this.props;
     const { value } = this.state;
 
     const itemCls = classnames(`${prefixCls}__tab`, tab.props.className, {
       [`${prefixCls}__tab--disabled`]: disabled || tab.props.disabled,
       [`${prefixCls}__tab--active`]: value === index,
     });
-    const isScroll = this.isScroll();
-    const itemSize = this.calculateItemWidth();
-
-    let liStyle: any = isScroll ? { flex: `0 0 ${itemSize}%` } : {};
-    if (this.isVertical()) {
-      const { children } = this.props;
-      const ChildCount = React.Children.count(children);
-      const size = isScroll ? 100 / scrollThreshold : 100 / ChildCount;
-      liStyle = { height: `${size}%` };
-    }
     return (
       <li
         role="tab"
         key={+index}
         className={itemCls}
-        style={liStyle}
         onClick={() => this.onTabClick(tab, index)}
       >
         {tab.props.title}
@@ -139,20 +126,11 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   /**
-   * @description: 判断当前 child 是否大于 scrollThreshold
-   */
-  isScroll = () => {
-    const { children, scrollThreshold } = this.props;
-    const ChildCount = React.Children.count(children);
-    return ChildCount > scrollThreshold;
-  };
-
-  /**
    * @description: 计算每个item width
    */
   calculateItemWidth = () => {
     const { scrollThreshold } = this.props;
-    const itemSize = scrollTabTotalWidth / scrollThreshold;
+    const itemSize = 100 / scrollThreshold;
     return itemSize;
   };
 
@@ -160,28 +138,24 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
    * @description: 计算 line 大小和位置
    */
   caclLineSizePos = () => {
-    const { value } = this.state;
-    const { children, scrollThreshold } = this.props;
+    const { value, itemWidth } = this.state;
+    const { children, scrollable } = this.props;
     const ChildCount = React.Children.count(children);
-    const isScroll = this.isScroll();
-    let size = isScroll ? scrollTabTotalWidth / scrollThreshold : 100 / ChildCount;
-    if (this.isVertical()) {
-      size = isScroll ? 100 / scrollThreshold : 100 / ChildCount;
+    let pos = 0;
+    if (scrollable && this.layout) {
+      const el = this.layout!.children[value];
+      const { offsetLeft = 0, offsetTop = 0 } = el as HTMLElement;
+      pos = this.isVertical() ? offsetTop : offsetLeft;
     }
-    const pos = value * 100;
-    const transformValue = getPxStyle(pos, '%', this.isVertical());
-    const styleUl = getTransformPropValue(transformValue);
 
-    if (this.isVertical()) {
-      return {
-        height: `${size}%`,
-        ...styleUl,
-      };
-    }
+    const size = scrollable ? `${itemWidth}px` : `${100 / ChildCount}%`;
+    const transformValue = scrollable ? getPxStyle(pos, 'px', this.isVertical()) : getPxStyle(pos, '%', this.isVertical());
+    const styleUl = getTransformPropValue(transformValue);
+    const itemSize = this.isVertical() ? { height: `${size}` } : { width: `${size}` };
 
     return {
-      width: `${size}%`,
       ...styleUl,
+      ...itemSize,
     };
   };
 
@@ -189,41 +163,38 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
    * @description: 计算滚动条移动位置
    */
   calculateScorllLeftLocation = () => {
-    const screenWidth = document.body.clientWidth;
-    const { children, scrollThreshold } = this.props;
     const { value } = this.state;
-    const isScroll = this.isScroll();
-    const ChildCount = React.Children.count(children);
-    // --- https://github.com/react-component/m-tabs/blob/master/src/DefaultTabBar.tsx
-    const size = this.getTabSize(scrollThreshold!, ChildCount);
-    const center = scrollThreshold! / 2;
-    const pos = Math.min(value, ChildCount - center - 0.5);
-    const skipSize = Math.min(-(pos - center + 0.5) * size, 0);
-    const scrollPos = (screenWidth * skipSize) / 100;
-
-    if (this.isVertical() && this.headerRef) {
-      const style = window.getComputedStyle(this.headerRef) || {};
-      const { height } = style;
-      if (isScroll && this.layout && height) {
-        const top = ((parseInt(height, 10) / scrollThreshold) * (value - scrollThreshold + 2));
-        this.layout.scrollTo({
-          top,
-          left: 0,
-          behavior: 'smooth',
-        });
-        return;
-      }
-    }
-    // ---
-    if (isScroll) {
-      if (this.layout) {
-        scrollLeftTo(this.layout, Math.abs(scrollPos), 0.3);
-      }
+    const { scrollable } = this.props;
+    const prevTabItem = this.layout!.childNodes[value - 1];
+    if (scrollable && this.layout && prevTabItem) {
+      const { offsetTop: top = 0, offsetLeft: left = 0 } = prevTabItem as HTMLElement;
+      this.layout.scrollTo({
+        top,
+        left,
+        behavior: 'smooth',
+      });
     }
   };
 
+  calculateLineWidth = () => {
+    const { scrollable } = this.props;
+    const { value } = this.state;
+    const { width, height } = this.getComputedStyle(this.layout!.children[value]);
+    scrollable && this.setState({
+      itemWidth: parseInt(this.isVertical() ? height.toString() : width.toString(), 10),
+    });
+  };
+
+  getComputedStyle = (el) => {
+    const { width, height } = window.getComputedStyle(el);
+    return {
+      width: width || '0',
+      height: height || '0',
+    };
+  };
+
   render() {
-    const { prefixCls, className, lineWidth, canSwipe, children, disabled, scrollThreshold, direction } = this.props;
+    const { prefixCls, className, lineWidth, swipeable, children, disabled, scrollable, direction, height } = this.props;
     const { value } = this.state;
     const classes = classnames(prefixCls, className, {
       [`${prefixCls}--${direction}`]: true,
@@ -234,7 +205,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     // 渲染内容
     let contentRender;
 
-    if (canSwipe) {
+    if (swipeable) {
       contentRender = (
         <Carousel
           swipeable={!disabled}
@@ -246,7 +217,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
             this.onTabChange(v);
           }}
         >
-          {React.Children.map(children, (item: ReactElement<TabPanel['props'], typeof TabPanel>, index: number) => <div key={+index}>{item.props.children}</div>)}
+          {React.Children.map(children, (item: any, index: number) => <div key={+index}>{item.props.children}</div>)}
         </Carousel>
       );
     } else {
@@ -255,8 +226,8 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       });
     }
 
-    const ChildCount = React.Children.count(children);
     const lineStyle: CSSProperties = this.caclLineSizePos();
+
     let lineInnerRender;
     if (lineWidth) {
       lineStyle.backgroundColor = 'transparent';
@@ -264,12 +235,12 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     }
 
     const headerCls = classnames(`${prefixCls}__header`, {
-      [`${prefixCls}__scroll`]: ChildCount > scrollThreshold!,
+      [`${prefixCls}__scroll`]: scrollable,
     });
 
     return (
-      <div className={classes}>
-        <div className={headerCls} ref={(ref) => { this.headerRef = ref; }}>
+      <div className={classes} style={this.isVertical ? { height } : {}}>
+        <div className={headerCls}>
           <ul role="tablist" ref={this.setTablistRef}>
             {tabsRender}
             <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
