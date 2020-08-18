@@ -4,7 +4,7 @@ import { transform } from '@babel/standalone';
 import { Panel } from 'zarm';
 import '@/components/style/entry';
 
-export default ({ location, children }) => {
+export default ({ location, lang, children }) => {
   const containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
   const document = children.match(/([^]*)\n?(```[^]+```)/);
   const title = String(document[1]);
@@ -21,7 +21,7 @@ export default ({ location, children }) => {
         argv,
       };
     }).then(({ args, argv }) => {
-      const locale = window.localStorage.language === 'en_US'
+      const locale = lang === 'enUS'
         ? require('zarm/locale-provider/locale/en_US')
         : require('zarm/locale-provider/locale/zh_CN');
       value = value

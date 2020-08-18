@@ -28,7 +28,7 @@ describe('Popup', () => {
         direction="bottom"
         onMaskClick={onMaskClick}
         afterClose={afterClose}
-        getContainer={() => document.body}
+        mountContainer={() => document.body}
       >
         foo
       </Popup>,

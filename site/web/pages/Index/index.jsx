@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 import { Dropdown } from 'zarm-web';
 import QRious from 'qrious';
 import Container from '@site/web/components/Container';
-import Header from '@site/web/components/Header';
 import Meta from '@site/web/components/Meta';
 import './style.scss';
 
@@ -12,22 +12,26 @@ const Page = () => {
   const [dropdown, setDropdown] = useState(false);
   const [mounted, setMounted] = useState(false);
   const history = useHistory();
+  const demoURL = `${window.location.origin}/demo.html`;
 
   useEffect(() => {
     if (!dropdown || mounted) return;
 
     const qr = new QRious({
       element: qrcode.current,
-      value: `${window.location.origin}/demo.html`,
+      value: demoURL,
       size: 134,
     });
     setMounted(true);
-  }, [dropdown, mounted]);
+  }, [demoURL, dropdown, mounted]);
 
   return (
     <Container className="index-page">
-      <Meta title="Zarm Design - 众安科技移动端组件库" />
-      <Header />
+      <FormattedMessage id="app.title">
+        {(txt) => (
+          <Meta title={`Zarm Design - ${txt}`} />
+        )}
+      </FormattedMessage>
       <main>
         <div className="banner">
           <img src={require('./images/banner@2x.png')} alt="" />
@@ -37,19 +41,26 @@ const Page = () => {
             <span>Zarm</span>
             &nbsp;Design
           </div>
-          <div className="description">追求极致的用户体验，做有温度的组件库</div>
+          <div className="description"><FormattedMessage id="app.home.index.introduce" /></div>
           <div className="navigation">
-            <button type="button" onClick={() => history.push('/components/quick-start')}>开始使用</button>
+            <button type="button" onClick={() => history.push('/components/quick-start')}>
+              <FormattedMessage id="app.home.index.getting-started" />
+            </button>
             <Dropdown
               className="btn-try"
               visible={dropdown}
               onVisibleChange={setDropdown}
-              trigger="hover"
               direction="bottom"
-              content={<canvas ref={qrcode} />}
+              content={(
+                <a href={demoURL}>
+                  <canvas ref={qrcode} />
+                </a>
+              )}
               destroy={false}
             >
-              <button type="button" className="ghost">扫码体验</button>
+              <button type="button" className="ghost">
+                <FormattedMessage id="app.home.index.scanning-code" />
+              </button>
             </Dropdown>
           </div>
         </div>

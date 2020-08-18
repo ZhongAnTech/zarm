@@ -64,6 +64,7 @@ ReactDOM.render(
 
 ## 循环轮播
 ```jsx
+import { useRef } from 'react';
 import { Carousel, Button } from 'zarm';
 
 const ITEMS = [
@@ -82,44 +83,44 @@ const contentRender = () => {
   });
 }
 
-class Demo extends React.Component {
-  render() {
-    return (
-      <div>
-        <Carousel
-          ref={(ele) => { this.carousel = ele; }}
-          loop
-          direction="left"
-          onChange={(index) => {
-            console.log(`onChange: ${index}`);
+const Demo = () => {
+  const carouselRef = useRef();
+
+  return (
+    <>
+      <Carousel
+        ref={carouselRef}
+        loop
+        direction="left"
+        onChange={(index) => {
+          console.log(`onChange: ${index}`);
+        }}
+      >
+        {contentRender()}
+      </Carousel>
+      <div className="controls">
+        <Button
+          block
+          size="sm"
+          onClick={() => {
+            carouselRef.current.onJumpTo(0);
           }}
         >
-          {contentRender()}
-        </Carousel>
-        <div className="controls">
-          <Button
-            block
-            size="sm"
-            onClick={() => {
-              this.carousel.onJumpTo(0);
-            }}
-          >
-            无动画切换指定页
-          </Button>
+          无动画切换指定页
+        </Button>
 
-          <Button
-            block
-            size="sm"
-            onClick={() => {
-              this.carousel.onSlideTo(2);
-            }}
-          >
-            滑动到指定页
-          </Button>
-        </div>
+        <Button
+          block
+          size="sm"
+          onClick={() => {
+            carouselRef.current.onSlideTo(2);
+          }}
+        >
+          滑动到指定页
+        </Button>
       </div>
-    )
-  }
+    </>
+  )
 }
 
 ReactDOM.render(<Demo />, mountNode);

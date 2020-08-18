@@ -4,6 +4,7 @@
 
 ## 基本用法
 ```jsx
+import { useEffect, useRef, useReducer } from 'react';
 import { Cell, Button, Picker, Toast } from 'zarm';
 
 const SINGLE_DATA = [
@@ -62,194 +63,227 @@ const DIY_DATA = [
   },
 ];
 
-class Demo extends React.Component {
-  state = {
-    single: {
-      visible: false,
-      value: '',
-      dataSource: SINGLE_DATA,
-    },
-    multi: {
-      visible: false,
-      value: [],
-      dataSource: MULTI_DATA,
-    },
-    cascade: {
-      visible: false,
-      value: [],
-      dataSource: [],
-    },
-    diy: {
-      visible: false,
-      value: [],
-      dataSource: DIY_DATA,
-    },
-    specDOM: {
-      visible: false,
-      value: '',
-      dataSource: SINGLE_DATA,
-    },
-    count: 0,
+const initState = {
+  single: {
+    visible: false,
+    value: '',
+    dataSource: SINGLE_DATA,
+  },
+  multi: {
+    visible: false,
+    value: [],
+    dataSource: MULTI_DATA,
+  },
+  cascade: {
+    visible: false,
+    value: [],
+    dataSource: [],
+  },
+  diy: {
+    visible: false,
+    value: [],
+    dataSource: DIY_DATA,
+  },
+  specDOM: {
+    visible: false,
+    value: '',
+    dataSource: SINGLE_DATA,
+  },
+};
+
+const reducer = (state, action) => {
+  const { type, key, visible, value, valueMember, dataSource } = action;
+
+  switch (type) {
+    case 'visible':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          visible: !state[key].visible,
+        }
+      };
+    
+    case 'value':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          value,
+        }
+      };
+
+    case 'valueMember':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          valueMember,
+        }
+      };
+    
+    case 'dataSource':
+      return {
+        ...state,
+        [key]: {
+          ...state[key],
+          dataSource,
+        }
+      };
+  }
+};
+
+const Demo = () => {
+  const myRef = useRef();
+  const [state, dispatch] = useReducer(reducer, initState);
+
+  const setVisible = (key) => {
+    dispatch({ type: 'visible', key });
   };
 
-  myRef = React.createRef();
+  const setValue = (key, value) => {
+    dispatch({ type: 'value', key, value });
+  };
 
-  componentDidMount() {
-    // this.interval = setInterval(
-    //   () =>
-    //     this.setState(prevState => ({
-    //       count: prevState.count + 1
-    //     })),
-    //   1000
-    // );
+  const setValueMember = (key, value) => {
+    dispatch({ type: 'valueMember', key, valueMember: value });
+  };
+
+  const setDataSource = (key, value) => {
+    dispatch({ type: 'dataSource', key, dataSource: value });
+  };
+
+  useEffect(() => {
     // 异步加载数据源测试
     setTimeout(() => {
-      const { cascade } = this.state;
-      cascade.dataSource = CASCADE_DATA;
-      cascade.value = ['1', '12'];
-      cascade.valueMember = "code";
-      this.setState({ cascade });
+      setValue('cascade', ['1', '12']);
+      setValueMember('cascade', 'code');
+      setDataSource('cascade', CASCADE_DATA);
     }, 0);
-  }
+  }, []);
 
-  toggle = (key) => {
-    const state = this.state[key];
-    state.visible = !state.visible;
-    this.setState({ [`${key}`]: state });
-  }
+  return (
+    <>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible('single')}>选择</Button>
+        }
+      >
+        单列
+      </Cell>
 
-  render() {
-    const { single, multi, cascade, diy, specDOM } = this.state;
-    return (
-      <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('single')}>选择</Button>
-          }
-        >
-          单列
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible('multi')}>选择</Button>
+        }
+      >
+        多列
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('multi')}>选择</Button>
-          }
-        >
-          多列
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible('cascade')}>选择</Button>
+        }
+      >
+        级联
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('cascade')}>选择</Button>
-          }
-        >
-          级联
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible('diy')}>选择</Button>
+        }
+      >
+        自定义
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('diy')}>选择</Button>
-          }
-        >
-          自定义
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => setVisible('specDOM')}>选择</Button>
+        }
+      >
+        挂载到指定dom节点
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('specDOM')}>选择</Button>
-          }
-        >
-          挂载到指定dom节点
-        </Cell>
+      <Picker
+        visible={state.single.visible}
+        value={state.single.value}
+        dataSource={state.single.dataSource}
+        onOk={(selected) => {
+          console.log('Picker onOk: ', selected);
+          Toast.show(JSON.stringify(selected));
+          setValue('single', selected.map(item => item.value));
+          setVisible('single');
+        }}
+        onCancel={() => setVisible('single')}
+      />
 
-        <Picker
-          visible={single.visible}
-          value={single.value}
-          dataSource={single.dataSource}
-          onOk={(selected) => {
-            console.log('Picker onOk: ', selected);
-            single.value = selected.map(item => item.value);
-            this.setState({ single });
-            Toast.show(JSON.stringify(selected));
-            this.toggle('single');
-          }}
-          onCancel={() => this.toggle('single')}
-        />
+      <Picker
+        visible={state.multi.visible}
+        value={state.multi.value}
+        dataSource={state.multi.dataSource}
+        onOk={(selected) => {
+          console.log('Picker onOk: ', selected);
+          Toast.show(JSON.stringify(selected));
+          setValue('multi', selected.map(item => item.value));
+          setVisible('multi');
+        }}
+        onCancel={() => setVisible('multi')}
+      />
 
-        <Picker
-          visible={multi.visible}
-          value={multi.value}
-          dataSource={multi.dataSource}
-          onOk={(selected) => {
-            console.log('Picker onOk: ', selected);
-            multi.value = selected.map(item => item.value);
-            this.setState({ multi });
-            Toast.show(JSON.stringify(selected));
-            this.toggle('multi');
-          }}
-          onCancel={() => this.toggle('multi')}
-        />
+      <Picker
+        visible={state.cascade.visible}
+        value={state.cascade.value}
+        dataSource={state.cascade.dataSource}
+        valueMember={state.cascade.valueMember}
+        onOk={(selected) => {
+          console.log('Picker onOk: ', selected);
+          Toast.show(JSON.stringify(selected));
+          setValue('cascade', selected.map(item => item.code));
+          setVisible('cascade');
+        }}
+        onCancel={() => setVisible('cascade')}
+      />
 
-        <Picker
-          visible={cascade.visible}
-          value={cascade.value}
-          dataSource={cascade.dataSource}
-          valueMember={cascade.valueMember}
-          onOk={(selected) => {
-            console.log('Picker onOk: ', selected);
-            cascade.value = selected.map(item => item.code);
-            this.setState({ cascade });
-            Toast.show(JSON.stringify(selected));
-            this.toggle('cascade');
-          }}
-          onCancel={() => this.toggle('cascade')}
-        />
+      <Picker
+        visible={state.diy.visible}
+        title="custom title"
+        cancelText="Cancel"
+        okText="Ok"
+        dataSource={state.diy.dataSource}
+        value={state.diy.value}
+        valueMember="value"
+        itemRender={data => data.name}
+        onOk={(selected) => {
+          console.log('Picker onOk: ', selected);
+          Toast.show(JSON.stringify(selected));
+          setValue('diy', selected.map(item => item.value));
+          setVisible('diy');
+        }}
+        onCancel={() => setVisible('diy')}
+      />
 
-        <Picker
-          visible={diy.visible}
-          title="custom title"
-          cancelText="Cancel"
-          okText="Ok"
-          dataSource={diy.dataSource}
-          value={diy.value}
-          valueMember="value"
-          itemRender={data => data.name}
-          onOk={(selected) => {
-            console.log('Picker onOk: ', selected);
-            diy.value = selected.map(item => item.value);
-            this.setState({
-              diy,
-            });
-            Toast.show(JSON.stringify(selected));
-            this.toggle('diy');
-          }}
-          onCancel={() => this.toggle('diy')}
-        />
+      <Picker
+        visible={state.specDOM.visible}
+        value={state.specDOM.value}
+        dataSource={state.specDOM.dataSource}
+        onOk={(selected) => {
+          console.log('Picker onOk: ', selected);
+          Toast.show(JSON.stringify(selected));
+          setValue('specDOM', selected.map(item => item.value));
+          setVisible('specDOM');
+        }}
+        onCancel={() => setVisible('specDOM')}
+        mountContainer={() => myRef.current}
+      />
 
-        <Picker
-          visible={specDOM.visible}
-          value={specDOM.value}
-          dataSource={specDOM.dataSource}
-          onOk={(selected) => {
-            console.log('Picker onOk: ', selected);
-            specDOM.value = selected.map(item => item.value);
-            this.setState({ specDOM });
-            Toast.show(JSON.stringify(selected));
-            this.toggle('specDOM');
-          }}
-          onCancel={() => this.toggle('specDOM')}
-          getContainer={() => this.myRef.current}
-        />
-
-        <div
-          id="test-div"
-          style={{ position: 'relative', zIndex: 1 }}
-          ref={this.myRef} 
-          />
-      </>
-    )
-  }
-}
+      <div
+        id="test-div"
+        style={{ position: 'relative', zIndex: 1 }}
+        ref={myRef} 
+      />
+    </>
+  );
+};
 
 ReactDOM.render(<Demo />, mountNode);
 ```
@@ -405,7 +439,7 @@ ReactDOM.render(<Demo />, mountNode);
 | destroy | boolean | false | 弹层关闭后是否移除节点 |
 | onOk | (selected?: object) => void | - | 点击确定时触发的回调函数 |
 | onCancel | () => void | - | 点击取消时触发的回调函数 |
-| getContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Picker 挂载的 HTML 节点 |
+| mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Picker 挂载的 HTML 节点 |
 
 
 ### 仅 Picker 支持的属性

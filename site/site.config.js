@@ -2,7 +2,7 @@ module.exports = {
   documents: [
     {
       key: 'introduce',
-      name: '关于 Zarm',
+      name: '关于Zarm',
       module: () => import('@site/web/docs/introduce.md'),
       style: false,
     },
@@ -58,6 +58,12 @@ module.exports = {
         name: '选择器',
         module: () => import('@/components/picker/demo.md'),
         style: true,
+      },
+      {
+        key: 'stack-picker',
+        name: '层叠选择器',
+        module: () => import('@/components/stack-picker/demo.md'),
+        style: false,
       },
       {
         key: 'date-picker',
@@ -225,6 +231,12 @@ module.exports = {
         module: () => import('@/components/tooltip/demo.md'),
         style: true,
       },
+      {
+        key: 'image-preview',
+        name: '图片预览',
+        module: () => import('@/components/image-preview/demo.md'),
+        style: true,
+      },
     ],
     navigation: [
       {
@@ -247,6 +259,12 @@ module.exports = {
       },
     ],
     other: [
+      // {
+      //   key: 'mask',
+      //   name: '遮罩层',
+      //   module: () => import('@/components/mask/demo.md'),
+      //   style: false,
+      // },
       {
         key: 'locale-provider',
         name: '国际化',

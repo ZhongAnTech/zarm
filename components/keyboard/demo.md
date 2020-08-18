@@ -4,35 +4,32 @@
 
 ## Keyboard 平铺键盘
 ```jsx
-import { Cell, Select, Keyboard } from 'zarm';
+import { useState } from 'react';
+import { Cell, Radio, Keyboard } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    type: 'number',
-  };
+const Demo = () => {
+  const [type, setType] = useState('number');
 
-  render() {
-    return (
-      <>
-        <Cell title="键盘类型">
-          <Select
-            value={this.state.type}
-            dataSource={[
-              { value: 'number', label: '数字键盘' },
-              { value: 'price', label: '金额键盘' },
-              { value: 'idcard', label: '身份证键盘' },
-            ]}
-            onOk={(selected) => {
-              this.setState({
-                type: selected.map(item => item.value)[0],
-              });
-            }}
-          />
-        </Cell>
-        <Keyboard type={this.state.type} onKeyClick={(key) => console.log(key)} />
-      </>
-    )
-  }
+  return (
+    <>
+      <Cell
+        title="键盘类型"
+        description={
+          <Radio.Group
+            compact
+            type="button"
+            value={type}
+            onChange={setType}
+          >
+            <Radio value="number">数字键盘</Radio>
+            <Radio value="price">金额键盘</Radio>
+            <Radio value="idcard">身份证键盘</Radio>
+          </Radio.Group>
+        }
+      />
+      <Keyboard type={type} onKeyClick={(key) => console.log(key)} />
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);
@@ -42,54 +39,50 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## KeyboardPicker 键盘触发器
 ```jsx
+import { useState } from 'react';
 import { Cell, Button, KeyboardPicker, Input } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    visible: false,
-    value: '',
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState('');
+
+  const toggle = () => {
+    setVisible(!visible);
   };
 
-  toggle() {
-    this.setState({ visible: !this.state.visible });
-  }
-
-  onKeyClick(key) {
+  const onKeyClick = (key) => {
     console.log(key);
     if (['close', 'ok'].indexOf(key) > -1) {
-      this.toggle();
+      toggle();
       return;
     }
 
-    const value = this.state.value;
+    const value = [].concat(value);
     const newValue = (key === 'delete')
       ? value.slice(0, value.length - 1)
       : value + key;
 
     if (newValue !== value) {
-      this.setState({ value: newValue });
+      setValue(newValue);
     }
-  }
+  };
 
-  render() {
-    const { visible } = this.state;
-    return (
-      <>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle()}>{visible ? '关闭' : '开启'}</Button>
-          }
-        >
-          拾取器触发方式
-        </Cell>
+  return (
+    <>
+      <Cell
+        description={
+          <Button size="xs" onClick={toggle}>{visible ? '关闭' : '开启'}</Button>
+        }
+      >
+        拾取器触发方式
+      </Cell>
 
-        <KeyboardPicker
-          visible={visible}
-          onKeyClick={(key) => this.onKeyClick(key)}
-        />
-      </>
-    )
-  }
+      <KeyboardPicker
+        visible={visible}
+        onKeyClick={onKeyClick}
+      />
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

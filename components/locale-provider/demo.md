@@ -4,11 +4,12 @@
 
 ## 基本用法
 ```jsx
-import { Cell, LocaleProvider, Button, SearchBar, Modal, Select } from 'zarm';
+import { useState } from 'react';
+import { Cell, LocaleProvider, Button, SearchBar, Modal, Keyboard, Radio } from 'zarm';
 
 const locales = {
   'en_US': {
-    locale: 'en',
+    locale: 'en-US',
     SearchBar: {
       placeholder: 'Search',
       cancelText: 'Cancel',
@@ -27,10 +28,13 @@ const locales = {
       cancelText: 'Cancel',
       okText: 'OK',
       title: 'please select',
-    }
+    },
+    Keyboard: {
+      okText: 'OK',
+    },
   },
   'zh_CN': {
-    locale: 'zh_cn',
+    locale: 'zh-CN',
     SearchBar: {
       placeholder: '搜索',
       cancelText: '取消',
@@ -49,16 +53,17 @@ const locales = {
       cancelText: '取消',
       okText: '确定',
       title: '请选择',
-    }
+    },
+    Keyboard: {
+      okText: '确定',
+    },
   },
 };
 
-class Demo extends React.Component {
-  state = {
-    locale: 'zh_CN',
-  };
+const Demo = () => {
+  const [lang, setLang] = useState('zh_CN');
 
-  show = (key) => {
+  const show = (key) => {
     if (key === 'alert') {
       Modal.alert({
         title: '警告',
@@ -72,50 +77,47 @@ class Demo extends React.Component {
         shape: 'radius'
       })
     }
-  }
+  };
 
-  onOk = (selected) => {
-    this.setState({
-      locale: selected[0].value,
-    });
-  }
+  return (
+    <LocaleProvider locale={locales[lang]}>
+      <>
+        <Cell
+          title="切换语言包"
+          description={
+            <Radio.Group
+              compact
+              type="button"
+              value={lang}
+              onChange={setLang}
+            >
+              <Radio value="zh_CN">中文</Radio>
+              <Radio value="en_US">EN</Radio>
+            </Radio.Group>
+          }
+        />
 
-  render() {
-    return (
-      <LocaleProvider locale={locales[this.state.locale]}>
-        <div>
-          <Cell title="切换语言包">
-            <Select
-              value={this.state.locale}
-              dataSource={[
-                { value: 'zh_CN', label: '中文' },
-                { value: 'en_US', label: 'English' },
-              ]}
-              onOk={this.onOk}
-            />
-          </Cell>
+        <SearchBar />
+        <Keyboard />
 
-          <SearchBar />
+        <Cell
+          description={
+            <Button size="xs" onClick={() => show('alert')}>开启</Button>
+          }
+        >
+          警告框 Alert
+        </Cell>
 
-          <Cell
-            description={
-              <Button size="xs" onClick={() => this.show('alert')}>开启</Button>
-            }
-          >
-            警告框 Alert
-          </Cell>
-
-          <Cell
-            description={
-              <Button size="xs" onClick={() => this.show('confirm')}>开启</Button>
-            }
-          >
-            确认框 Confirm
-          </Cell>
-        </div>
-      </LocaleProvider>
-    )
-  }
+        <Cell
+          description={
+            <Button size="xs" onClick={() => show('confirm')}>开启</Button>
+          }
+        >
+          确认框 Confirm
+        </Cell>
+      </>
+    </LocaleProvider>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

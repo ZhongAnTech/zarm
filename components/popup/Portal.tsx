@@ -2,10 +2,9 @@ import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import Events from '../utils/events';
-import domUtil from '../utils/dom';
+import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
 import PropsType from './PropsType';
-import canUseDOM from '../utils/canUseDom';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
 
@@ -245,11 +244,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   createContainer = () => {
-    const { className = '', prefixCls, getContainer } = this.props;
+    const { className = '', prefixCls, mountContainer } = this.props;
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += `${prefixCls}-container ${className}`;
-      this.mountNode = domUtil.getMountNode(getContainer);
+      this.mountNode = getMountContainer(mountContainer);
       this.mountNode.appendChild(this._container);
     }
     return this._container;

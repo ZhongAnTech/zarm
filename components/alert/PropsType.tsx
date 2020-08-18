@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Locale } from '../locale-provider/PropsType';
-import { ContainerType } from '../popup/PropsType';
+import { ContainerType } from '../utils/dom';
 
 export default interface PropsType {
   shape?: 'rect';
@@ -18,5 +18,5 @@ export default interface PropsType {
   onCancel?: () => void;
   afterClose?: () => void;
   locale?: Locale['Alert'];
-  getContainer?: ContainerType;
+  mountContainer?: ContainerType;
 }

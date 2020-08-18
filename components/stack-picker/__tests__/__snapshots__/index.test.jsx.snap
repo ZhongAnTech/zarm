@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StackPicker renders correctly 1`] = `
+<Memo()
+  dataSource={
+    Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "label": "大观区",
+                "value": "340803",
+              },
+              Object {
+                "children": Array [],
+                "label": "怀宁县",
+                "value": "340822",
+              },
+              Object {
+                "children": Array [],
+                "label": "其它区",
+                "value": "340882",
+              },
+            ],
+            "label": "安庆市",
+            "value": "340800",
+          },
+        ],
+        "label": "安徽省",
+        "value": "340000",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "label": "宝山区",
+                "value": "310113",
+              },
+              Object {
+                "children": Array [],
+                "label": "长宁区",
+                "value": "310105",
+              },
+              Object {
+                "children": Array [],
+                "label": "崇明县",
+                "value": "310230",
+              },
+              Object {
+                "children": Array [],
+                "label": "川沙区",
+                "value": "310152",
+              },
+            ],
+            "label": "上海市",
+            "value": "310100",
+          },
+        ],
+        "label": "上海",
+        "value": "310000",
+      },
+    ]
+  }
+  displayRender={[Function]}
+  itemRender={[Function]}
+  onChange={[MockFunction]}
+  valueMember="value"
+  visible={true}
+>
+  <ForwardRef(ForwardedRefComp)
+    direction="bottom"
+    onMaskClick={[Function]}
+    visible={true}
+  >
+    <WarnIfDeprecatedComp
+      direction="bottom"
+      forwardedRef={null}
+      onMaskClick={[Function]}
+      visible={true}
+    >
+      <Popup
+        destroy={true}
+        direction="bottom"
+        onMaskClick={[Function]}
+        prefixCls="za-popup"
+        visible={true}
+      >
+        <Portal
+          animationDuration={200}
+          animationType="fade"
+          destroy={true}
+          direction="bottom"
+          handlePortalUnmount={[Function]}
+          mask={true}
+          maskType="normal"
+          onMaskClick={[Function]}
+          prefixCls="za-popup"
+          visible={true}
+        >
+          <Portal
+            containerInfo={
+              <div
+                class="za-popup-container"
+              >
+                <div
+                  class="za-mask za-fade-enter za-mask--normal"
+                  style="animation-duration: 200ms;"
+                />
+                <div
+                  class="za-popup__wrapper"
+                  role="dialog"
+                >
+                  <div
+                    class="za-popup za-popup--bottom za-popup--show"
+                    role="document"
+                    style="transition-duration: 200ms; transition-property: transform;"
+                  >
+                    <div
+                      class="za-stackpicker"
+                    >
+                      <div
+                        class="za-stackpicker__container"
+                      >
+                        <div
+                          class="za-stackpicker__wrapper"
+                        >
+                          <div
+                            class="za-stackpicker__header"
+                          >
+                            <div
+                              class="za-stackpicker__cancel"
+                            >
+                              取消
+                            </div>
+                            <div
+                              class="za-stackpicker__title"
+                            >
+                              请选择
+                            </div>
+                            <div
+                              class="za-stackpicker__submit"
+                            >
+                              确定
+                            </div>
+                          </div>
+                          <div
+                            class="za-stackpicker__crumbs"
+                          >
+                            <p>
+                              选择：
+                            </p>
+                            
+                          </div>
+                          <div
+                            class="za-stackpicker__group"
+                          >
+                            <div
+                              class="za-stackpicker__stack-column za-stack-picker-stack-column za-stackpicker__stack-column--hidden"
+                            >
+                              <div
+                                class="za-stackpicker__stack-column-wrapper"
+                              >
+                                <div
+                                  class="za-stackpicker__stack-column-item"
+                                >
+                                  安徽省
+                                </div>
+                                <div
+                                  class="za-stackpicker__stack-column-item"
+                                >
+                                  上海
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="za-stackpicker__stack-column za-stack-picker-stack-column za-stackpicker__stack-column--hidden"
+                            >
+                              <div
+                                class="za-stackpicker__stack-column-wrapper"
+                              >
+                                <div
+                                  class="za-stackpicker__stack-column-item"
+                                >
+                                  安庆市
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="za-stackpicker__stack-column za-stack-picker-stack-column za-stackpicker__stack-column--hidden"
+                            >
+                              <div
+                                class="za-stackpicker__stack-column-wrapper"
+                              >
+                                <div
+                                  class="za-stackpicker__stack-column-item"
+                                >
+                                  大观区
+                                </div>
+                                <div
+                                  class="za-stackpicker__stack-column-item"
+                                >
+                                  怀宁县
+                                </div>
+                                <div
+                                  class="za-stackpicker__stack-column-item"
+                                >
+                                  其它区
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          >
+            <Mask
+              className="za-fade-enter"
+              prefixCls="za-mask"
+              style={
+                Object {
+                  "WebkitAnimationDuration": "200ms",
+                  "animationDuration": "200ms",
+                }
+              }
+              type="normal"
+              visible={true}
+            >
+              <div
+                className="za-mask za-fade-enter za-mask--normal"
+                style={
+                  Object {
+                    "WebkitAnimationDuration": "200ms",
+                    "animationDuration": "200ms",
+                  }
+                }
+              />
+            </Mask>
+            <div
+              className="za-popup__wrapper"
+              onClick={[Function]}
+              role="dialog"
+              style={Object {}}
+            >
+              <div
+                className="za-popup za-popup--bottom"
+                role="document"
+                style={
+                  Object {
+                    "WebkitTransitionDuration": "200ms",
+                    "WebkitTransitionProperty": "transform",
+                    "transitionDuration": "200ms",
+                    "transitionProperty": "transform",
+                  }
+                }
+              >
+                <div
+                  className="za-stackpicker"
+                >
+                  <div
+                    className="za-stackpicker__container"
+                  >
+                    <div
+                      className="za-stackpicker__wrapper"
+                    >
+                      <Component
+                        cancelText="取消"
+                        handleCancel={[Function]}
+                        handleOk={[Function]}
+                        okText="确定"
+                        prefixCls="za-stackpicker"
+                        title="请选择"
+                      >
+                        <div
+                          className="za-stackpicker__header"
+                        >
+                          <div
+                            className="za-stackpicker__cancel"
+                            onClick={[Function]}
+                          >
+                            取消
+                          </div>
+                          <div
+                            className="za-stackpicker__title"
+                          >
+                            请选择
+                          </div>
+                          <div
+                            className="za-stackpicker__submit"
+                            onClick={[Function]}
+                          >
+                            确定
+                          </div>
+                        </div>
+                      </Component>
+                      <div
+                        className="za-stackpicker__crumbs"
+                      >
+                        <p>
+                          选择：
+                        </p>
+                      </div>
+                      <div
+                        className="za-stackpicker__group"
+                      >
+                        <div
+                          className="za-stackpicker__stack-column za-stack-picker-stack-column za-stackpicker__stack-column--hidden"
+                          key="0"
+                          onClick={[Function]}
+                        >
+                          <div
+                            className="za-stackpicker__stack-column-wrapper"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="za-stackpicker__stack-column-item"
+                              key="安徽省0"
+                              onClick={[Function]}
+                            >
+                              安徽省
+                            </div>
+                            <div
+                              className="za-stackpicker__stack-column-item"
+                              key="上海1"
+                              onClick={[Function]}
+                            >
+                              上海
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          className="za-stackpicker__stack-column za-stack-picker-stack-column za-stackpicker__stack-column--hidden"
+                          key="1"
+                          onClick={[Function]}
+                        >
+                          <div
+                            className="za-stackpicker__stack-column-wrapper"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="za-stackpicker__stack-column-item"
+                              key="安庆市0"
+                              onClick={[Function]}
+                            >
+                              安庆市
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          className="za-stackpicker__stack-column za-stack-picker-stack-column za-stackpicker__stack-column--hidden"
+                          key="2"
+                          onClick={[Function]}
+                        >
+                          <div
+                            className="za-stackpicker__stack-column-wrapper"
+                            onClick={[Function]}
+                          >
+                            <div
+                              className="za-stackpicker__stack-column-item"
+                              key="大观区0"
+                              onClick={[Function]}
+                            >
+                              大观区
+                            </div>
+                            <div
+                              className="za-stackpicker__stack-column-item"
+                              key="怀宁县1"
+                              onClick={[Function]}
+                            >
+                              怀宁县
+                            </div>
+                            <div
+                              className="za-stackpicker__stack-column-item"
+                              key="其它区2"
+                              onClick={[Function]}
+                            >
+                              其它区
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Portal>
+        </Portal>
+      </Popup>
+    </WarnIfDeprecatedComp>
+  </ForwardRef(ForwardedRefComp)>
+</Memo()>
+`;

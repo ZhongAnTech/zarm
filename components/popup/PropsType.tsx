@@ -1,4 +1,5 @@
-export type ContainerType = HTMLElement | (() => HTMLElement);
+import { ContainerType } from '../utils/dom';
+
 export default interface PropsType {
   visible?: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
@@ -14,5 +15,5 @@ export default interface PropsType {
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
-  getContainer?: ContainerType;
+  mountContainer?: ContainerType;
 }

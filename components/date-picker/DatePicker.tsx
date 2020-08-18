@@ -88,7 +88,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
   };
 
   render() {
-    const { prefixCls, className, title, okText, cancelText, locale, getContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
+    const { prefixCls, className, title, okText, cancelText, locale, mountContainer, maskClosable, onOk, onCancel, onInit, visible, ...others } = this.props;
     const { date } = this.state;
     const noop = () => {};
 
@@ -97,7 +97,7 @@ export default class DatePicker extends Component<DatePickerProps, any> {
         className={className}
         visible={visible}
         onMaskClick={maskClosable ? this.onCancel : noop}
-        getContainer={getContainer}
+        mountContainer={mountContainer}
         destroy
       >
         <div className={prefixCls} onClick={(e) => { e.stopPropagation(); }}>

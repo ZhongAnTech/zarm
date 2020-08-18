@@ -1,5 +1,16 @@
 .markdown {
+  line-height: 2;
+  font-size: 14px;
   color: #1f2d3d;
+
+  a {
+    transition: color 0.3s ease;
+    color: #00bc70;
+
+    &:hover {
+      color: #00d17d;
+    }
+  }
 
   .hljs {
     background-color: transparent;
@@ -10,14 +21,28 @@
     margin: 20px 0;
   }
 
+  ul {
+    margin-left: 0;
+    padding-left: 0;
+
+    > li {
+      margin-left: 20px;
+      padding-left: 4px;
+      list-style-type: circle;
+    }
+  }
+
   pre {
     margin: 0;
-    padding: 16px;
     overflow: auto;
     font-size: 14px;
     line-height: 1.5;
     background-color: #f6f8fa;
     border-radius: 3px;
+
+    code {
+      padding: 1em;
+    }
   }
 
   h1,
@@ -42,11 +67,6 @@
     margin: 1.6em 0 0.6em;
   }
 
-  h4,
-  p {
-    font-size: 14px;
-  }
-
   blockquote {
     margin: 0;
     padding: 0 20px;
@@ -56,8 +76,7 @@
 
   code {
     background-color: #f1f1f1;
-    padding: 2px 6px;
-    margin: 0 1px;
+    padding: 2px 5px;
     border-radius: 3px;
   }
 

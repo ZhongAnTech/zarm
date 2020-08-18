@@ -34,37 +34,22 @@ ReactDOM.render(
 
 ## 始终展示取消按钮
 ```jsx
+import { useState } from 'react';
 import { SearchBar } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    value: '',
-  };
+const Demo = () => {
+  const [value, setValue] = useState('');
 
-  render() {
-    return (
-      <>
-        <SearchBar
-          showCancel
-          value={this.state.value}
-          placeholder="搜索"
-          cancelText="取消"
-          onChange={(value) => {
-            console.log(value);
-            this.setState({
-              value,
-            });
-          }}
-          onClear={(value) => {
-            console.log('清除了 -> ', value);
-            this.setState({
-              value: '',
-            });
-          }}
-        />
-      </>
-    )
-  }
+  return (
+    <SearchBar
+      showCancel
+      placeholder="搜索"
+      cancelText="取消"
+      value={value}
+      onChange={setValue}
+      onClear={() => setValue('')}
+    />
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

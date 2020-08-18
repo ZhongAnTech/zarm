@@ -11,7 +11,7 @@ exports[`Tab canSwipe 1`] = `
       role="tablist"
     >
       <li
-        class="za-tabs__tab"
+        class="za-tabs__tab za-tabs__tab--active"
         role="tab"
       >
         选项卡1
@@ -22,11 +22,11 @@ exports[`Tab canSwipe 1`] = `
       >
         选项卡2
       </li>
+      <div
+        class="za-tabs__line"
+        style="width:50%;transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px)"
+      />
     </ul>
-    <div
-      class="za-tabs__line"
-      style="width:50%;left:0%"
-    />
   </div>
   <div
     class="za-tabs__body"
@@ -68,10 +68,11 @@ exports[`Tab lineWidth is auto 1`] = `
       role="tablist"
     >
       <li
-        className="za-tabs__tab"
+        className="za-tabs__tab za-tabs__tab--active"
         key="0/.0"
         onClick={[Function]}
         role="tab"
+        style={Object {}}
       >
         选项卡1
       </li>
@@ -80,29 +81,32 @@ exports[`Tab lineWidth is auto 1`] = `
         key="1/.1"
         onClick={[Function]}
         role="tab"
+        style={Object {}}
       >
         选项卡2
       </li>
-    </ul>
-    <div
-      className="za-tabs__line"
-      style={
-        Object {
-          "backgroundColor": "transparent",
-          "left": "0%",
-          "width": "50%",
-        }
-      }
-    >
-      <span
-        className="za-tabs__line__inner"
+      <div
+        className="za-tabs__line"
         style={
           Object {
-            "width": "auto",
+            "MozTransform": "translate3d(0%, 0px, 0px)",
+            "WebkitTransform": "translate3d(0%, 0px, 0px)",
+            "backgroundColor": "transparent",
+            "transform": "translate3d(0%, 0px, 0px)",
+            "width": "50%",
           }
         }
-      />
-    </div>
+      >
+        <span
+          className="za-tabs__line__inner"
+          style={
+            Object {
+              "width": "auto",
+            }
+          }
+        />
+      </div>
+    </ul>
   </div>
   <div
     className="za-tabs__body"
@@ -142,10 +146,11 @@ exports[`Tab lineWidth is auto 2`] = `
       role="tablist"
     >
       <li
-        className="za-tabs__tab"
+        className="za-tabs__tab za-tabs__tab--active"
         key="0/.0"
         onClick={[Function]}
         role="tab"
+        style={Object {}}
       >
         选项卡1
       </li>
@@ -154,29 +159,32 @@ exports[`Tab lineWidth is auto 2`] = `
         key="1/.1"
         onClick={[Function]}
         role="tab"
+        style={Object {}}
       >
         选项卡2
       </li>
-    </ul>
-    <div
-      className="za-tabs__line"
-      style={
-        Object {
-          "backgroundColor": "transparent",
-          "left": "0%",
-          "width": "50%",
-        }
-      }
-    >
-      <span
-        className="za-tabs__line__inner"
+      <div
+        className="za-tabs__line"
         style={
           Object {
-            "width": 30,
+            "MozTransform": "translate3d(0%, 0px, 0px)",
+            "WebkitTransform": "translate3d(0%, 0px, 0px)",
+            "backgroundColor": "transparent",
+            "transform": "translate3d(0%, 0px, 0px)",
+            "width": "50%",
           }
         }
-      />
-    </div>
+      >
+        <span
+          className="za-tabs__line__inner"
+          style={
+            Object {
+              "width": 30,
+            }
+          }
+        />
+      </div>
+    </ul>
   </div>
   <div
     className="za-tabs__body"
@@ -216,7 +224,7 @@ exports[`Tab renders correctly 1`] = `
       role="tablist"
     >
       <li
-        class="za-tabs__tab"
+        class="za-tabs__tab za-tabs__tab--active"
         role="tab"
       >
         选项卡1
@@ -227,11 +235,11 @@ exports[`Tab renders correctly 1`] = `
       >
         选项卡2
       </li>
+      <div
+        class="za-tabs__line"
+        style="width:50%;transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px)"
+      />
     </ul>
-    <div
-      class="za-tabs__line"
-      style="width:50%;left:0%"
-    />
   </div>
   <div
     class="za-tabs__body"

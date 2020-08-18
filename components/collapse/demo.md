@@ -4,42 +4,59 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Cell, Switch, Collapse, Checkbox } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    animated: false,
-    multiple: false,
-    activeKey: '1',
-  }
+const Demo = () => {
+  const [animated, setAnimated] = useState(false);
+  const [multiple, setMultiple] = useState(false);
+  const [activeKey, setActiveKey] = useState('1');
 
-  onChange = (activeKey) => {
-    console.log(activeKey);
-    this.setState({ activeKey })
-  }
-
-  render() {
-    const { animated, multiple, activeKey } = this.state;
-    return (
-      <>
-        <Checkbox.Group block style={{ padding: '8px 16px 8px 16px' }}>
-          <Checkbox value="animated" checked={animated} onChange={(e) => { this.setState({ animated: e.target.checked })}}>开启切换动画</Checkbox>
-          <Checkbox value="multiple" checked={multiple} onChange={(e) => { this.setState({ multiple: e.target.checked, activeKey: e.target.checked ? [] : undefined })}}>允许展开多项</Checkbox>
-        </Checkbox.Group>
-        <Collapse disabled activeKey={activeKey} animated={animated} multiple={multiple} onChange={this.onChange}>
-          <Collapse.Item key="1" title="Header of Item1">
-            This is content of item1. This is content of item1. This is content of item1.
-          </Collapse.Item>
-          <Collapse.Item key="2" title="Header of Item2">
-            This is content of item2. This is content of item2. This is content of item2.
-          </Collapse.Item>
-          <Collapse.Item key="3" title="Header of Item3">
-            This is content of item3. This is content of item3. This is content of item3.
-          </Collapse.Item>
-        </Collapse>
-      </>
-    );
-  }
+  return (
+    <>
+      <Checkbox.Group block style={{ padding: '8px 16px 8px 16px' }}>
+        <Checkbox
+          value="animated"
+          checked={animated}
+          onChange={(e) => {
+            setAnimated(e.target.checked);
+          }}
+        >
+          开启切换动画
+        </Checkbox>
+        <Checkbox
+          value="multiple"
+          checked={multiple}
+          onChange={(e) => {
+            setMultiple(e.target.checked);
+            setActiveKey(e.target.checked ? [] : undefined);
+          }}
+        >
+          允许展开多项
+        </Checkbox>
+      </Checkbox.Group>
+      <Collapse
+        disabled
+        activeKey={activeKey}
+        animated={animated}
+        multiple={multiple}
+        onChange={(activeKey) => {
+          console.log(activeKey);
+          setActiveKey(activeKey);
+        }}
+      >
+        <Collapse.Item key="1" title="Header of Item1">
+          This is content of item1. This is content of item1. This is content of item1.
+        </Collapse.Item>
+        <Collapse.Item key="2" title="Header of Item2">
+          This is content of item2. This is content of item2. This is content of item2.
+        </Collapse.Item>
+        <Collapse.Item key="3" title="Header of Item3">
+          This is content of item3. This is content of item3. This is content of item3.
+        </Collapse.Item>
+      </Collapse>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

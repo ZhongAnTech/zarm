@@ -1,8 +1,9 @@
-import React, { PureComponent, CSSProperties } from 'react';
+import React, { PureComponent, CSSProperties, ReactNode } from 'react';
 import classnames from 'classnames';
 import { REFRESH_STATE, LOAD_STATE, PullAction, PropsType } from './PropsType';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
+import { getScrollTop } from '../utils/dom';
 import Drag from '../drag';
 import ActivityIndicator from '../activity-indicator';
 import Icon from '../icon';
@@ -26,7 +27,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     refresh: {
       state: REFRESH_STATE.normal,
       startDistance: 30,
-      distance: 50,
+      distance: 30,
     },
     load: {
       state: LOAD_STATE.normal,
@@ -74,16 +75,16 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.wrap !== this.getScrollContainer()) {
+    if (this.wrap !== this.scrollContainer) {
       this.addScrollEvent();
     }
 
     const { load, refresh } = this.props;
     if (prevProps.load!.state !== load!.state) {
-      this.doLoadAction(load!.state);
+      this.doLoadAction(load!.state as LOAD_STATE);
     }
     if (prevProps.refresh!.state !== refresh!.state) {
-      this.doRefreshAction(refresh!.state);
+      this.doRefreshAction(refresh!.state as REFRESH_STATE);
     }
   }
 
@@ -95,25 +96,8 @@ export default class Pull extends PureComponent<PullProps, any> {
     Events.off(this.wrap, 'touchend', this.wrapTouchEnd);
   }
 
-  wrapTouchstart = (event) => {
-    const touch = event.touches[0];
-    this.wrapTouchstartY = touch.pageY;
-  };
-
-  wrapTouchmove = (event) => {
-    const touch = event.touches[0];
-    const currentY = touch.pageY;
-    if (currentY - this.wrapTouchstartY > 0 && event.cancelable && this.wrap.scrollTop === 0) {
-      event.preventDefault();
-    }
-  };
-
-  wrapTouchEnd = () => {
-    this.wrapTouchstartY = 0;
-  };
-
-  getScrollContainer = () => {
-    return ((node) => {
+  get scrollContainer(): HTMLElement | Window {
+    const container = ((node) => {
       while (node && node.parentNode && node.parentNode !== document.body) {
         const style = window.getComputedStyle(node);
         if (
@@ -127,17 +111,50 @@ export default class Pull extends PureComponent<PullProps, any> {
         node = node.parentNode;
       }
     })(this.pull) || document.documentElement;
+    return container;
+  }
+
+  get scrollTop(): number {
+    return getScrollTop(this.wrap);
+  }
+
+  // 该方法即将过期
+  getScrollContainer = (): HTMLElement | Window => {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(`Warning: getScrollContainer() has been renamed, and is not recommended for use.
+
+* Rename \`getScrollContainer()\` to \`scrollContainer\` to suppress this warning.`);
+    }
+    return this.scrollContainer;
   };
 
-  addScrollEvent = () => {
-    this.wrap = this.getScrollContainer();
+  wrapTouchstart = (event): void => {
+    const touch = event.touches[0];
+    this.wrapTouchstartY = touch.pageY;
+  };
+
+  wrapTouchmove = (event): void => {
+    const touch = event.touches[0];
+    const currentY = touch.pageY;
+    if (currentY - this.wrapTouchstartY > 0 && event.cancelable && this.scrollTop === 0) {
+      event.preventDefault();
+    }
+  };
+
+  wrapTouchEnd = (): void => {
+    this.wrapTouchstartY = 0;
+    this.setState({ animationDuration: this.props.animationDuration });
+  };
+
+  addScrollEvent = (): void => {
+    this.wrap = this.scrollContainer;
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
     Events.on(scroller, 'scroll', this.throttledScroll);
   };
 
-  onScroll = () => {
+  onScroll = (): void => {
     const { refreshState, loadState } = this.state;
-    const { scrollHeight, scrollTop, clientHeight } = this.wrap;
+    const { scrollHeight, clientHeight } = this.wrap;
     const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
     const { handler, distance } = load;
 
@@ -148,14 +165,14 @@ export default class Pull extends PureComponent<PullProps, any> {
       || scrollHeight <= clientHeight
 
       // 内容高度 - 偏移值 - 修正距离 <= 容器可见高度
-      || scrollHeight - (scrollTop + document.body.scrollTop) - distance! > clientHeight
+      || scrollHeight - this.scrollTop - distance! > clientHeight
     ) {
       return;
     }
     handler();
   };
 
-  onDragMove = (event, { offsetY }) => {
+  onDragMove = (event, { offsetY }): boolean => {
     const { handler } = this.props.refresh!;
     if (
       // 未设置刷新事件
@@ -165,7 +182,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       || offsetY <= 0
 
       // 未滚动到顶部
-      || (offsetY > 0 && (this.wrap.scrollTop + document.body.scrollTop) > 0)
+      || (offsetY > 0 && this.scrollTop > 0)
 
       // 已经触发过加载状态
       || this.state.refreshState >= REFRESH_STATE.loading
@@ -178,7 +195,9 @@ export default class Pull extends PureComponent<PullProps, any> {
 
     const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
     const { startDistance, distance } = refresh;
-    const offset = offsetY / 2; // 移动距离为拖动距离的一半
+
+    // 设置拖动距离衰减（实际下拉移动距离为拖动距离的1/3）
+    const offset = offsetY / 3;
 
     // 判断是否达到释放立即刷新的条件
     const action = ((offset - startDistance!) < distance!)
@@ -189,7 +208,7 @@ export default class Pull extends PureComponent<PullProps, any> {
     return true;
   };
 
-  onDragEnd = (_event, { offsetY }) => {
+  onDragEnd = (_event, { offsetY }): void => {
     // 没有产生位移
     if (!offsetY) {
       return;
@@ -214,7 +233,7 @@ export default class Pull extends PureComponent<PullProps, any> {
    * @param  {number} options.offsetY  偏移距离
    * @param  {number} options.animationDuration 动画执行时间
    */
-  doTransition = ({ offsetY, animationDuration }) => {
+  doTransition = ({ offsetY, animationDuration }): void => {
     this.setState({ offsetY, animationDuration });
   };
 
@@ -223,7 +242,7 @@ export default class Pull extends PureComponent<PullProps, any> {
    * @param  {REFRESH_STATE} refreshState 刷新状态
    * @param  {number}        offsetY      偏移距离
    */
-  doRefreshAction = (refreshState, offsetY?: number) => {
+  doRefreshAction = (refreshState: REFRESH_STATE, offsetY?: number): void => {
     const { animationDuration, stayTime } = this.props;
 
     this.setState({ refreshState });
@@ -255,7 +274,7 @@ export default class Pull extends PureComponent<PullProps, any> {
    * 执行加载动作
    * @param  {LOAD_STATE} loadState 加载状态
    */
-  doLoadAction = (loadState) => {
+  doLoadAction = (loadState: LOAD_STATE): void => {
     const { stayTime } = this.props;
     this.setState({ loadState });
 
@@ -277,7 +296,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   /**
    * 渲染刷新节点
    */
-  renderRefresh = () => {
+  renderRefresh = (): ReactNode => {
     const refresh: PullAction = { ...Pull.defaultProps.refresh, ...this.props.refresh };
     const { startDistance, distance, render } = refresh;
     const { refreshState, offsetY } = this.state;
@@ -348,7 +367,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   /**
    * 渲染加载节点
    */
-  renderLoad = () => {
+  renderLoad = (): ReactNode => {
     const load: PullAction = { ...Pull.defaultProps.load, ...this.props.load };
     const { render } = load;
     const { loadState } = this.state;

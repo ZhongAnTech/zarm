@@ -11,7 +11,7 @@
     overflow: hidden;
 
     .main-container {
-      min-height: 500px;
+      min-height: 700px;
       margin: 0 60px 60px 340px;
       overflow: hidden;
 
@@ -52,7 +52,6 @@
         width: 30px;
         height: 30px;
         background: #f6f6f6;
-        font-size: 14px;
         cursor: pointer;
 
         .za-icon {
@@ -110,5 +109,10 @@
       display: block;
       margin-left: 0;
     }
+  }
+
+  .za-back-to-top {
+    right: 30px !important;
+    bottom: 30px !important;
   }
 }
