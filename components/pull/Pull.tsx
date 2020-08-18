@@ -22,6 +22,8 @@ export default class Pull extends PureComponent<PullProps, any> {
 
   private wrapTouchstartY;
 
+  private mounted = true;
+
   static defaultProps: PullProps = {
     prefixCls: 'za-pull',
     refresh: {
@@ -49,6 +51,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentDidMount() {
+    this.mounted = true;
     this.addScrollEvent();
     Events.on(this.wrap, 'touchstart', this.wrapTouchstart);
     Events.on(this.wrap, 'touchmove', this.wrapTouchmove);
@@ -89,6 +92,7 @@ export default class Pull extends PureComponent<PullProps, any> {
   }
 
   componentWillUnmount() {
+    this.mounted = false;
     const scroller = (this.wrap === document.documentElement) ? window : this.wrap;
     Events.off(scroller, 'scroll', this.throttledScroll);
     Events.off(this.wrap, 'touchstart', this.wrapTouchstart);
@@ -260,6 +264,7 @@ export default class Pull extends PureComponent<PullProps, any> {
       case REFRESH_STATE.failure:
         this.doTransition({ offsetY: 'auto', animationDuration });
         setTimeout(() => {
+          if (!this.mounted) return;
           this.doRefreshAction(REFRESH_STATE.normal);
           this.doLoadAction(LOAD_STATE.normal);
         }, stayTime);
@@ -285,6 +290,7 @@ export default class Pull extends PureComponent<PullProps, any> {
 
       case LOAD_STATE.failure:
         setTimeout(() => {
+          if (!this.mounted) return;
           this.doLoadAction(LOAD_STATE.abort);
         }, stayTime);
         break;
