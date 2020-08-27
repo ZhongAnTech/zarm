@@ -2,7 +2,7 @@
 import { PureComponent } from 'react';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';
-import { ContainerType, getScrollContainer, getScrollTop } from '../utils/dom';
+import { canUseDOM, ContainerType, getScrollContainer, getScrollTop } from '../utils/dom';
 
 export interface ScrollerProps {
   prefixCls?: string;
@@ -15,7 +15,7 @@ export default class Scroller extends PureComponent<ScrollerProps, {}> {
 
   static defaultProps: Partial<ScrollerProps> = {
     prefixCls: 'za-scroller',
-    container: window,
+    container: canUseDOM ? window : undefined,
   };
 
   private mounted: boolean;

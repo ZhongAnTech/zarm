@@ -185,4 +185,4 @@ export const scrollTo = (scrollContainer: HTMLElement | Window, scrollTop: numbe
   }
 };
 
-export const canUseDOM = () => !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+export const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);

@@ -26,7 +26,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     prefixCls: 'za-back-to-top',
     speed: 100,
     visibleDistance: 400,
-    scrollContainer: window,
+    scrollContainer: canUseDOM ? window : undefined,
   };
 
   readonly state: BackToTopStates = {
