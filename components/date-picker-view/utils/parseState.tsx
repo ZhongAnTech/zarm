@@ -21,7 +21,6 @@ const parseState = (props) => {
   };
 };
 
-
 export {
   isExtendDate,
   parseState,

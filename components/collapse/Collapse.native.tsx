@@ -13,7 +13,6 @@ export interface CollapseProps extends BaseCollapseProps {
 
 const collapseStyles = StyleSheet.create<any>(collapaseStyle);
 
-
 const isPropEqual = (cur, next) => {
   if (isArray(next) && isArray(cur)) {
     return next.length === cur.length && next.every((key, i) => key === cur[i]);
@@ -99,7 +98,6 @@ export default class Collapse extends Component<CollapseProps, any> {
     });
     onChange(key);
   };
-
 
   renderItems() {
     const { animated, children } = this.props;

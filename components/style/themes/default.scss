@@ -56,11 +56,8 @@
 
   // 堆叠顺序
   --zindex-mask: 1000;
-  --zindex-popup: 1500;
-  --zindex-tooltip: 1500;
-  --zindex-dropdown: 1101;
-  --zindex-notification: 1400;
-  --zindex-message: 1400;
+  --zindex-popup: 1100;
+  --zindex-tooltip: 1700;
 
   // 透明度
   --opacity-disabled: 0.5;

@@ -14,7 +14,6 @@ export type IconProps = {
   prefixCls?: string;
 } & BasePropsType & HTMLAttributes<HTMLElement>;
 
-
 class Icon extends PureComponent<IconProps, {}> {
   static displayName = 'Icon';
 
@@ -47,10 +46,10 @@ class Icon extends PureComponent<IconProps, {}> {
     let iconNode: ReactNode;
     // svg component > children by iconfont > type
     if (SvgComponent) {
-      delete INNER_SVG_PROPS.viewBox;
+      INNER_SVG_PROPS.viewBox = viewBox!;
       iconNode = (
         <i {...newProps}>
-          <SvgComponent {...INNER_SVG_PROPS} viewBox={viewBox}>{children}</SvgComponent>
+          <SvgComponent {...INNER_SVG_PROPS}>{children}</SvgComponent>
         </i>
       );
     } else if (children) {

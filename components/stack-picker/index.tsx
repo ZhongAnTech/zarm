@@ -50,7 +50,7 @@ export default memo((
 
   const handleObtainItem = useCallback((list: typeof dataSource, _value: ReactNode) => {
     return list.find((item) => item[valueMember as 'value'] === _value);
-  }, [dataSource, valueMember]);
+  }, [valueMember]);
 
   useEffect(() => {
     setCurrentVisible(visible);

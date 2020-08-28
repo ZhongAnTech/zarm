@@ -1,4 +1,3 @@
-
 import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
@@ -26,7 +25,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     prefixCls: 'za-back-to-top',
     speed: 100,
     visibleDistance: 400,
-    scrollContainer: window,
+    scrollContainer: canUseDOM ? window : undefined,
   };
 
   readonly state: BackToTopStates = {

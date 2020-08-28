@@ -116,7 +116,6 @@ function modalType(props, type) {
   };
 }
 
-
 Modal.alert = function alert(props) {
   return modalType(props, 'alert');
 };
