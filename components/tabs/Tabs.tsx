@@ -72,13 +72,13 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     this.calculateScorllLeftLocation();
   }
 
-  setTablistRef = (ref: HTMLUListElement) => {
-    this.layout = ref;
-  };
-
-  isVertical = () => {
+  get isVertical() {
     const { direction } = this.props;
     return direction === 'vertical';
+  }
+
+  setTablistRef = (ref: HTMLUListElement) => {
+    this.layout = ref;
   };
 
   setCarouselRef = (ref: Carousel) => {
@@ -145,13 +145,13 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     if (scrollable && this.layout) {
       const el = this.layout!.children[value];
       const { offsetLeft = 0, offsetTop = 0 } = el as HTMLElement;
-      pos = this.isVertical() ? offsetTop : offsetLeft;
+      pos = this.isVertical ? offsetTop : offsetLeft;
     }
 
     const size = scrollable ? `${itemWidth}px` : `${100 / ChildCount}%`;
-    const transformValue = scrollable ? getPxStyle(pos, 'px', this.isVertical()) : getPxStyle(pos, '%', this.isVertical());
+    const transformValue = scrollable ? getPxStyle(pos, 'px', this.isVertical) : getPxStyle(pos, '%', this.isVertical);
     const styleUl = getTransformPropValue(transformValue);
-    const itemSize = this.isVertical() ? { height: `${size}` } : { width: `${size}` };
+    const itemSize = this.isVertical ? { height: `${size}` } : { width: `${size}` };
 
     return {
       ...styleUl,
@@ -181,7 +181,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     const { value } = this.state;
     const { width, height } = this.getComputedStyle(this.layout!.children[value]);
     scrollable && this.setState({
-      itemWidth: parseInt(this.isVertical() ? height.toString() : width.toString(), 10),
+      itemWidth: parseInt(this.isVertical ? height.toString() : width.toString(), 10),
     });
   };
 
@@ -236,7 +236,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     }
 
     const headerCls = classnames(`${prefixCls}__header`, {
-      [`${prefixCls}__scroll`]: scrollable,
+      [`${prefixCls}__header--scroll`]: scrollable,
     });
 
     return (

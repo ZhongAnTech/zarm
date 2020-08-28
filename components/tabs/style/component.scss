@@ -1,10 +1,52 @@
 @include b(tabs) {
 
+  @include e(header) {
+    position: relative;
+    overflow: hidden;
+  }
+
+  @include e(panel) {
+    position: relative;
+    transition: height .3s;
+    display: none;
+
+    @include m(active) {
+      display: block;
+    }
+  }
+
+  @include e(tab) {
+    flex: 1;
+    text-align: center;
+    color: var(--color-text);
+    font-size: var(--tabs-item-font-size);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    @include m(disabled) {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(line) {
+    position: absolute;
+    transition: transform .3s ease-out;
+    background-color: var(--theme-primary);
+
+    &__inner {
+      display: block;
+      margin: auto;
+      height: 100%;
+      background-color: var(--theme-primary);
+    }
+  }
+
   @include m(horizontal) {
 
     @include e(header) {
-      position: relative;
-      overflow: hidden;
       width: 100%;
       @include onepx(bottom);
 
@@ -23,7 +65,7 @@
       }
     }
 
-    @include e(scroll) {
+    @include e(header--scroll) {
       ul {
         overflow-x: scroll;
       }
@@ -36,45 +78,9 @@
     }
 
     @include e(line) {
-      position: absolute;
       left: 0;
       bottom: 0;
       height: var(--tabs-line-height);
-      transition: transform .3s ease-out;
-      background-color: var(--theme-primary);
-
-      &__inner {
-        display: block;
-        margin: auto;
-        height: 100%;
-        background-color: var(--theme-primary);
-      }
-    }
-
-    @include e(tab) {
-      flex: 1;
-      text-align: center;
-      color: var(--color-text);
-      font-size: var(--tabs-item-font-size);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      cursor: pointer;
-
-      @include m(disabled) {
-        color: var(--color-text-disabled);
-        cursor: not-allowed;
-      }
-    }
-  }
-
-  @include e(panel) {
-    position: relative;
-    transition: height .3s;
-    display: none;
-
-    @include m(active) {
-      display: block;
     }
   }
 
@@ -82,69 +88,38 @@
     display: flex;
     flex-direction: row;
 
-    @include e(body) {
-      flex: 1;
-      position: relative;
-      @include onepx(left);
+    @include e(header) {
+      @include onepx(right);
+
+      ul {
+        height: 100%;
+        padding: 0 var(--tabs-item-horizontal-padding);
+        margin: 0;
+      }
     }
 
-    @include e(tab) {
-      padding: var(--tabs-item-vertical-padding) 0;
-    }
-
-    @include e(scroll) {
+    @include e(header--scroll) {
       ul {
         overflow-y: auto;
         position: relative;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
-    }
-
-    @include e(line) {
-      position: absolute;
-      top: 0;
-      width: var(--tabs-line-height);
-      right: 0;
-      transition: transform .3s ease-out;
-      background-color: var(--theme-primary);
-
-      &__inner {
-        display: block;
-        margin: auto;
-        height: 100%;
-        background-color: var(--theme-primary);
-      }
-    }
-
-    @include e(header) {
-      position: relative;
-      overflow: hidden;
-
-      ul {
-        height: 100%;
-        padding: 0 10px;
-        margin: 0;
       }
     }
 
     @include e(tab) {
       display: flex;
       align-items: center;
-      text-align: center;
-      color: var(--color-text);
-      font-size: var(--tabs-item-font-size);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      cursor: pointer;
+      padding: var(--tabs-item-vertical-padding) 0;
+    }
 
-      @include m(disabled) {
-        color: var(--color-text-disabled);
-        cursor: not-allowed;
-      }
+    @include e(line) {
+      top: 0;
+      width: var(--tabs-line-height);
+      right: 0;
+    }
+
+    @include e(body) {
+      flex: 1;
+      position: relative;
     }
   }
 }
