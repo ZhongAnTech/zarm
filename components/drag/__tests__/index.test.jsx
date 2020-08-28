@@ -3,7 +3,6 @@ import { render, shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Drag from '../index';
 
-
 function createPageXY(x, y) {
   return { pageX: x, pageY: y };
 }

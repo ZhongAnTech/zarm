@@ -5,7 +5,6 @@ import PickerView from '../picker-view';
 import removeFnFromProps from '../picker-view/utils/removeFnFromProps';
 import { isExtendDate, parseState } from './utils/parseState';
 
-
 const DATETIME = 'datetime';
 const DATE = 'date';
 const TIME = 'time';

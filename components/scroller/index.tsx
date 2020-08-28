@@ -1,4 +1,3 @@
-
 import { PureComponent } from 'react';
 import Events from '../utils/events';
 import Throttle from '../utils/throttle';

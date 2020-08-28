@@ -1,4 +1,3 @@
-
 import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';

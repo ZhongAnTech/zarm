@@ -62,7 +62,6 @@ export default ({ location, lang, children }) => {
     };
   }, [renderSource]);
 
-
   // Panel的例子特殊处理
   return (location.pathname === '/panel')
     ? <div id={containerId} ref={containerRef} />

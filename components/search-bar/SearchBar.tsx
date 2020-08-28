@@ -47,7 +47,6 @@ export default class SearchBar extends PureComponent<SearchBarProps, any> {
     return null;
   }
 
-
   componentDidUpdate(prevProps) {
     const { cancelText, showCancel, locale } = this.props;
     // 若改变了取消文字的内容或者placeholder的内容需要重新计算位置

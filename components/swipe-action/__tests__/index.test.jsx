@@ -5,7 +5,6 @@ import SwipeAction from '../index';
 import Button from '../../button/index';
 import Cell from '../../cell/index';
 
-
 function createClientXYObject(x, y) {
   return { clientX: x, clientY: y };
 }

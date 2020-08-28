@@ -1,4 +1,3 @@
-
 export type DataSource = Array<{ [key: string]: any; children?: DataSource }>;
 
 export default interface BasePickerViewProps {

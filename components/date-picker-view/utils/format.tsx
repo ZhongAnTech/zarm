@@ -1,4 +1,3 @@
-
 function getFormatter(type) {
   let formatter;
   if (type === 'year') {

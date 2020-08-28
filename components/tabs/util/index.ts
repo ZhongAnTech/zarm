@@ -15,7 +15,6 @@ export function getPxStyle(value: number | string, unit = 'px', vertical = false
   return `translate3d(${value})`;
 }
 
-
 export function scrollLeftTo(
   scroller: HTMLElement,
   to: number,
