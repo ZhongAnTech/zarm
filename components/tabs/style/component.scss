@@ -6,9 +6,10 @@
   }
 
   @include e(panel) {
+    display: none;
     position: relative;
     transition: height .3s;
-    display: none;
+    height: 100%;
 
     @include m(active) {
       display: block;
@@ -45,12 +46,11 @@
   }
 
   @include m(horizontal) {
-
     @include e(header) {
       width: 100%;
       @include onepx(bottom);
 
-      ul {
+      @include e(tab__list) {
         position: relative;
         display: flex;
         list-style: none;
@@ -66,8 +66,8 @@
     }
 
     @include e(header--scroll) {
-      ul {
-        overflow-x: scroll;
+      @include e(tab__list) {
+        overflow-x: auto;
       }
 
       @include e(tab) {
@@ -78,9 +78,9 @@
     }
 
     @include e(line) {
+      height: var(--tabs-line-height);
       left: 0;
       bottom: 0;
-      height: var(--tabs-line-height);
     }
   }
 
@@ -91,29 +91,32 @@
     @include e(header) {
       @include onepx(right);
 
-      ul {
+      @include e(tab__list) {
         height: 100%;
-        padding: 0 var(--tabs-item-horizontal-padding);
+        padding: 0;
         margin: 0;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
 
     @include e(header--scroll) {
-      ul {
+      @include e(tablist) {
         overflow-y: auto;
         position: relative;
       }
     }
 
     @include e(tab) {
-      display: flex;
-      align-items: center;
-      padding: var(--tabs-item-vertical-padding) 0;
+      text-align: center;
+      padding: var(--tabs-item-vertical-padding) var(--tabs-item-horizontal-padding);
     }
 
     @include e(line) {
-      top: 0;
       width: var(--tabs-line-height);
+      top: 0;
       right: 0;
     }
 

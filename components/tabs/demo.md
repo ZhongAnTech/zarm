@@ -37,7 +37,7 @@ const { Panel } = Tabs;
 function Demo() {
   const [value, setValue] = useState(0);
   return (
-    <Tabs value={value} onChange={setValue} direction="vertical" swipeable scrollable height="200px">
+    <Tabs value={value} onChange={setValue} direction="vertical" scrollable height="200px">
       <Panel title="选项卡1">
         <div className="content">选项卡1内容</div>
       </Panel>

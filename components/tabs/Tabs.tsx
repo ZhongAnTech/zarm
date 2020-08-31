@@ -242,7 +242,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     return (
       <div className={classes} style={this.isVertical ? { height } : {}}>
         <div className={headerCls}>
-          <ul role="tablist" ref={this.setTablistRef}>
+          <ul className={`${prefixCls}__tab__list`} role="tablist" ref={this.setTablistRef}>
             {tabsRender}
             <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
           </ul>
