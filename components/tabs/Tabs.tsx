@@ -178,19 +178,24 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
 
   calculateLineWidth = () => {
     const { scrollable } = this.props;
+    if (!scrollable) {
+      return false;
+    }
     const { value } = this.state;
-    const { width, height } = this.getComputedStyle(this.layout!.children[value]);
-    scrollable && this.setState({
-      itemWidth: parseInt(this.isVertical ? height.toString() : width.toString(), 10),
+    const el = this.layout!.children[value];
+    const size = this.isVertical ? this.getComputedStyle(el, 'height') : this.getComputedStyle(el, 'width');
+
+    this.setState({
+      itemWidth: parseInt(size, 10),
     });
   };
 
-  getComputedStyle = (el) => {
-    const { width, height } = window.getComputedStyle(el);
-    return {
-      width: width || '0',
-      height: height || '0',
-    };
+  getComputedStyle = (el, prop) => {
+    let value = '0';
+    if (prop in el.style) {
+      value = el.style[prop] || getComputedStyle(el).getPropertyValue(prop) || '0';
+    }
+    return value;
   };
 
   render() {

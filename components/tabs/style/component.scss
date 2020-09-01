@@ -102,6 +102,10 @@
       ul {
         overflow-y: auto;
         position: relative;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
 
