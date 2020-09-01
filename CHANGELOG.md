@@ -1,5 +1,10 @@
 # 版本更新日志 
 
+## v2.5.3
+- Bug Fix
+  - 修复服务端渲染时出现的 `window is not defined` 的错误。[#6375267](https://github.com/ZhongAnTech/zarm/commit/6375267e3cb3fd4ea2c4c389a9332bea499442c5)
+
+
 ## v2.5.2
 - Bug Fix
   - [Pull] 修复下拉刷新状态为`加载成功` 或 上拉加载状态为`加载失败`时，Pull存在内存泄漏的bug。[#487](https://github.com/ZhongAnTech/zarm/pull/487)
