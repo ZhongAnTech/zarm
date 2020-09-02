@@ -179,7 +179,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   calculateLineWidth = () => {
     const { scrollable } = this.props;
     if (!scrollable) {
-      return false;
+      return;
     }
     const { value } = this.state;
     const el = this.layout!.children[value];
@@ -201,9 +201,10 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   render() {
     const { prefixCls, className, lineWidth, swipeable, children, disabled, scrollable, direction, height } = this.props;
     const { value } = this.state;
-    const classes = classnames(prefixCls, className, {
-      [`${prefixCls}--${direction}`]: true,
+    const classes = classnames(prefixCls, className, `${prefixCls}--${direction}`, {
+      [`${prefixCls}--scroll`]: scrollable,
     });
+
     // 渲染选项
     const tabsRender = React.Children.map(children, this.renderTabs);
 
@@ -240,14 +241,10 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       lineInnerRender = <span className={`${prefixCls}__line__inner`} style={{ width: lineWidth }} />;
     }
 
-    const headerCls = classnames(`${prefixCls}__header`, {
-      [`${prefixCls}__header--scroll`]: scrollable,
-    });
-
     return (
       <div className={classes} style={this.isVertical ? { height } : {}}>
-        <div className={headerCls}>
-          <ul className={`${prefixCls}__tab__list`} role="tablist" ref={this.setTablistRef}>
+        <div className={`${prefixCls}__header`}>
+          <ul className={`${prefixCls}__tablist`} role="tablist" ref={this.setTablistRef}>
             {tabsRender}
             <div className={`${prefixCls}__line`} style={lineStyle}>{lineInnerRender}</div>
           </ul>

@@ -1,8 +1,14 @@
 @include b(tabs) {
-
   @include e(header) {
     position: relative;
     overflow: hidden;
+  }
+
+  @include e(tablist) {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
 
   @include e(panel) {
@@ -45,42 +51,41 @@
     }
   }
 
+  @include m(scroll) {
+    @include e(tablist) {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
   @include m(horizontal) {
     @include e(header) {
       width: 100%;
       @include onepx(bottom);
-
-      @include e(tab__list) {
-        position: relative;
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        height: var(--tabs-height);
-        line-height: var(--tabs-height);
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
     }
 
-    @include e(header--scroll) {
-      @include e(tab__list) {
-        overflow-x: auto;
-      }
-
-      @include e(tab) {
-        display: inline-block;
-        overflow: visible;
-        padding: 0 var(--tabs-item-horizontal-padding);
-      }
+    @include e(tablist) {
+      display: flex;
+      height: var(--tabs-height);
+      line-height: var(--tabs-height);
     }
 
     @include e(line) {
       height: var(--tabs-line-height);
       left: 0;
       bottom: 0;
+    }
+
+    @include m(scroll) {
+      @include e(tablist) {
+        overflow-x: auto;
+      }
+
+      @include e(tab) {
+        overflow: visible;
+        padding: 0 var(--tabs-item-horizontal-padding);
+      }
     }
   }
 
@@ -90,27 +95,10 @@
 
     @include e(header) {
       @include onepx(right);
-
-      @include e(tab__list) {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
     }
 
-    @include e(header--scroll) {
-      @include e(tablist) {
-        overflow-y: auto;
-        position: relative;
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-      }
+    @include e(tablist) {
+      height: 100%;
     }
 
     @include e(tab) {
@@ -127,6 +115,12 @@
     @include e(body) {
       flex: 1;
       position: relative;
+    }
+
+    @include m(scroll) {
+      @include e(tablist) {
+        overflow-y: auto;
+      }
     }
   }
 }

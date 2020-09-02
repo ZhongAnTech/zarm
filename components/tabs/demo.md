@@ -207,10 +207,10 @@ ReactDOM.render(
 | value | number | - | 值 |
 | defaultValue | number | - | 初始值 |
 | disabled | boolean | false | 是否禁用 |
-| swipeable | boolean | false | 是否支持滑动切换 |
-| lineWidth | number | string | - | 线条宽度 |
-| scrollable | boolean | 3 | 是否支持滚动 |
 | direction | `horizontal` \| `vertical` | 'horizontal' | 方向 |
+| swipeable | boolean | false | 是否支持滑动切换 |
+| scrollable | boolean | false | 是否支持滚动 |
+| lineWidth | number | string | - | 线条宽度 |
 | onChange | (index?: number) => void | - | 值变化时触发的回调函数 |
 
 
