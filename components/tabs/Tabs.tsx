@@ -3,7 +3,8 @@ import classnames from 'classnames';
 import PropsType from './PropsType';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import Carousel from '../carousel';
-import { getTransformPropValue, getPxStyle, scrollTo } from './util/index';
+import { getTransformPropValue, getPxStyle } from './util/index';
+import { scrollTo } from '../utils/dom';
 
 export interface TabsProps extends PropsType {
   prefixCls?: string;
@@ -123,15 +124,6 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
         {tab.props.title}
       </li>
     );
-  };
-
-  /**
-   * @description: 计算每个item width
-   */
-  calculateItemWidth = () => {
-    const { scrollThreshold } = this.props;
-    const itemSize = 100 / scrollThreshold;
-    return itemSize;
   };
 
   /**
