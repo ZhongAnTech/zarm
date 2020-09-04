@@ -14,6 +14,7 @@ Then, you can runs Zarm Design website locally.
 $ yarn dev
 
 # develop for iOS
+$ cd rnkit && yarn install && cd ios && pod install && cd ../.. 
 $ yarn dev:ios
 
 # develop for Android
