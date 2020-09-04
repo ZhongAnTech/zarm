@@ -35,7 +35,7 @@
     "clean": "rimraf types lib es dist native assets coverage bundle rnkit/zarm rnkit/**/build rnkit/**/bundle",
     "dev": "zarm dev",
     "dev:ios": "concurrently \"zarm dev --mode native\" \"react-native run-ios --project-path rnkit/ios\"",
-    "dev:android": "concurrently \"react-native run-android --root rnkit\"",
+    "dev:android": "concurrently \"zarm dev --mode native\" \"react-native run-android --root rnkit\"",
     "build:es": "rimraf es && zarm build --mode es --path components --out-dir es --copy-files --build-css && tsc --outDir es -d --emitDeclarationOnly",
     "build:lib": "rimraf lib && zarm build --mode lib --path components --out-dir lib --copy-files --build-css && tsc --outDir lib -d --emitDeclarationOnly",
     "build:umd": "rimraf dist && zarm build --mode umd --path components/style/entry.tsx,components/index.tsx --out-dir dist && zarm build --mode umd-ugly --path components/style/entry.tsx,components/index.tsx --out-dir dist",
