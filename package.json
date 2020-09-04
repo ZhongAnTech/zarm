@@ -46,7 +46,7 @@
     "deploy:build": "rimraf assets && mkdir assets && touch assets/CNAME && echo 'zarm.design' > assets/CNAME && zarm deploy",
     "deploy": "npm run deploy:build -- -p && gh-pages -d assets",
     "lint:ts": "eslint --ext .ts,.tsx components",
-    "lint:js": "eslint --ext .js,.jsx components site rnkit",
+    "lint:js": "eslint --ext .js,.jsx components site rnkit/pages",
     "lint:style": "stylelint \"components/**/*.scss\" \"site/**/*.scss\" --syntax scss",
     "lint": "npm run lint:ts && npm run lint:js && npm run lint:style",
     "test:h5": "cross-env TZ=America/New_York zarm test -s scripts/jest/setup.js",
@@ -77,6 +77,7 @@
     "@babel/standalone": "^7.0.0",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
+    "@react-native-community/eslint-config": "^2.0.0",
     "@sentry/browser": "^5.6.1",
     "@types/classnames": "^2.2.3",
     "@types/lodash": "^4.14.151",
@@ -137,6 +138,7 @@
   "lint-staged": {
     "components/**/*.{ts,tsx}": "eslint",
     "{components,site,rnkit}/**/*.{js,jsx}": "eslint",
+    "rnkit/pages/**/*.{js,jsx}": "eslint",
     "{styles,site}/**/*.scss": "stylelint"
   },
   "browserslist": [
