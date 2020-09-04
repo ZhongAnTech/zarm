@@ -102,14 +102,9 @@ export default class Popup extends PureComponent<PopupProps, any> {
         toValue: newValue,
         duration: animationDuration,
         easing: Easing.linear,
+        useNativeDriver: true,
       },
     ).start();
-    // if (stayTime > 0 && autoClose) {
-    //   this.timer = setTimeout(() => {
-    //     onMaskClick();
-    //     clearTimeout(this.timer);
-    //   }, stayTime);
-    // }
   };
 
   leave = () => {
@@ -125,6 +120,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
         toValue: 0,
         duration: animationDuration,
         easing: Easing.linear,
+        useNativeDriver: true,
       },
     ).start();
   };
@@ -161,18 +157,13 @@ export default class Popup extends PureComponent<PopupProps, any> {
 
   onLayout = (e, direction, that) => {
     const directionStyle = {};
-    UIManager.measure(e.target, (_x, _y, width, height) => {
-      if (direction === 'bottom' || direction === 'top') {
-        directionStyle[direction] = -height;
-      } else {
-        directionStyle[direction] = -width;
-      }
-      that.setState({ directionStyle });
-      if (that.state.isShow) {
-        that.enter();
-        that.setState({ isShow: false });
-      }
-    });
+    const { height, width } = e.nativeEvent.layout;
+    if (direction === 'bottom' || direction === 'top') {
+      directionStyle[direction] = -height;
+    } else {
+      directionStyle[direction] = -width;
+    }
+    that.setState({ directionStyle });
   };
 
   render() {
@@ -191,13 +182,11 @@ export default class Popup extends PureComponent<PopupProps, any> {
     ] as ViewStyle;
 
     const popUpStyle = [popupCls, directionStyle, transfromStyle];
-
     return (
       <View style={invisibleStyle}>
         <Animated.View style={popUpStyle} onLayout={(e) => this.onLayout(e, direction, this)}>
           {children}
         </Animated.View>
-        {this.renderMask()}
       </View>
     );
   }
