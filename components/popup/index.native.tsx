@@ -3,9 +3,9 @@ import {
   StyleSheet,
   View,
   ViewStyle,
-  UIManager,
   Animated,
   Easing,
+  Dimensions,
 } from 'react-native';
 import PropsType from './PropsType';
 import popupStyle from './style/index.native';
@@ -17,6 +17,9 @@ export interface PopupProps extends PropsType {
 }
 
 const popupStyles = StyleSheet.create<any>(popupStyle);
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps = {
@@ -163,12 +166,12 @@ export default class Popup extends PureComponent<PopupProps, any> {
     } else {
       directionStyle[direction] = -width;
     }
-    that.setState({ directionStyle });
+    that.setState({ directionStyle, height, width });
   };
 
   render() {
-    const { direction, styles, children, style } = this.props;
-    const { directionStyle, transfromStyle } = this.state;
+    const { direction, styles, children, style, visible } = this.props;
+    const { directionStyle, transfromStyle, height, width } = this.state;
 
     const popupCls = [
       styles!.wrapperStyle,
@@ -176,12 +179,26 @@ export default class Popup extends PureComponent<PopupProps, any> {
       style,
     ] as ViewStyle;
 
+    let wrapStyle = {};
+    if (direction === 'bottom' || direction === 'top') {
+      wrapStyle = {
+        height,
+        width: screenWidth,
+      };
+    } else {
+      wrapStyle = {
+        width,
+        height: screenHeight,
+      };
+    }
     const invisibleStyle = [
       styles!.invisibleWrapper,
       styles![`${direction}Invisible`],
+      visible ? wrapStyle : {},
     ] as ViewStyle;
 
     const popUpStyle = [popupCls, directionStyle, transfromStyle];
+
     return (
       <View style={invisibleStyle}>
         <Animated.View style={popUpStyle} onLayout={(e) => this.onLayout(e, direction, this)}>
