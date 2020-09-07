@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 import domUtil from '../utils/dom';
 import Mask from '../mask';
+import Trigger from '../trigger';
 import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
@@ -79,11 +80,12 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
       this._container.classList.add(`${prefixCls}--hidden`);
-      if (typeof afterClose === 'function') {
-        afterClose();
-      }
       if (typeof handlePortalUnmount === 'function') {
         handlePortalUnmount();
+      }
+
+      if (typeof afterClose === 'function') {
+        afterClose();
       }
     } else if (typeof afterOpen === 'function') {
       afterOpen();
@@ -112,6 +114,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
         />
       )
     );
+  };
+
+  onClose = () => {
+    const { onClose } = this.props;
+    onClose && onClose();
   };
 
   handleMaskClick = (e) => {
@@ -255,6 +262,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   render() {
-    return this.renderPortal();
+    const { visible } = this.props;
+    return (
+      <Trigger visible={visible} onClose={this.onClose}>
+        { this.renderPortal() }
+      </Trigger>
+    );
   }
 }

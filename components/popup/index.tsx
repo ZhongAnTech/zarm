@@ -6,6 +6,7 @@ import warnIfDeprecated from '../utils/warnIfDeprecated';
 export interface PopupProps extends PropsType {
   prefixCls?: string;
   className?: string;
+  onClose?: () => void;
 }
 
 @warnIfDeprecated([
