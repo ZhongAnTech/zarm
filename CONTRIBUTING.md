@@ -13,6 +13,10 @@ Then, you can runs Zarm Design website locally.
 # develop for h5
 $ yarn dev
 
+If you want runs Zarm Design demo for react-native, Then
+# develop for react-native
+$ cd rnkit && yarn install && cd ios && pod install && cd ../.. 
+
 # develop for iOS
 $ yarn dev:ios
 
