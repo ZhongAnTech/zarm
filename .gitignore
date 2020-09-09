@@ -6,15 +6,16 @@ _book
 .prettierrc.yaml
 *.log
 *.iml
-node_modules
 package-lock.json
+/node_modules/
 
 # bundle files
-/assets
-/coverage
-/dist
-/es
-/lib
-/native
-/types
-/bundle
+/assets/
+/dist/
+/es/
+/lib/
+/native/
+/types/
+
+# test coverage
+/coverage/

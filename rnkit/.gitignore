@@ -59,4 +59,7 @@ buck-out/
 /ios/Pods/
 
 # zarm bundle
-/zarm
+/zarm/
+
+# assets bundle
+/bundle/
