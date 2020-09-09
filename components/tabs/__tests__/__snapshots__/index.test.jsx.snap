@@ -8,6 +8,7 @@ exports[`Tab canSwipe 1`] = `
     class="za-tabs__header"
   >
     <ul
+      class="za-tabs__tablist"
       role="tablist"
     >
       <li
@@ -60,12 +61,12 @@ exports[`Tab canSwipe 1`] = `
 exports[`Tab lineWidth is auto 1`] = `
 <div
   className="za-tabs za-tabs--horizontal"
-  style={Object {}}
 >
   <div
     className="za-tabs__header"
   >
     <ul
+      className="za-tabs__tablist"
       role="tablist"
     >
       <li
@@ -137,12 +138,12 @@ exports[`Tab lineWidth is auto 1`] = `
 exports[`Tab lineWidth is auto 2`] = `
 <div
   className="za-tabs za-tabs--horizontal"
-  style={Object {}}
 >
   <div
     className="za-tabs__header"
   >
     <ul
+      className="za-tabs__tablist"
       role="tablist"
     >
       <li
@@ -219,6 +220,7 @@ exports[`Tab renders correctly 1`] = `
     class="za-tabs__header"
   >
     <ul
+      class="za-tabs__tablist"
       role="tablist"
     >
       <li
@@ -270,6 +272,7 @@ exports[`Tab renders correctly vertical 1`] = `
     class="za-tabs__header"
   >
     <ul
+      class="za-tabs__tablist"
       role="tablist"
     >
       <li
