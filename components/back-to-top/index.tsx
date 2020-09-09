@@ -128,20 +128,12 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
 
     // 速度设置为0或者无穷大时，直接到顶
     if (speed === 0 || speed === Infinity) {
-      scrollTo(container, 0);
+      scrollTo(container, 0, 0, 0);
       return;
     }
 
-    this.timer = setInterval(() => {
-      let st = this.scrollTop;
-      st -= speed!;
-      if (st > 0) {
-        scrollTo(container, st);
-      } else {
-        scrollTo(container, 0);
-        clearInterval(this.timer);
-      }
-    }, 10);
+    const x: number = this.props.speed as number;
+    scrollTo(container, 0, 0, this.scrollTop / ((x / 10) * 1000));
   };
 
   render() {

@@ -4,6 +4,7 @@ import PropsType from './PropsType';
 import TabPanel, { TabPanelProps } from './TabPanel';
 import Carousel from '../carousel';
 import { getTransformPropValue, getPxStyle } from './util/index';
+import { scrollTo } from '../utils/dom';
 
 export interface TabsProps extends PropsType {
   prefixCls?: string;
@@ -126,15 +127,6 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   /**
-   * @description: 计算每个item width
-   */
-  calculateItemWidth = () => {
-    const { scrollThreshold } = this.props;
-    const itemSize = 100 / scrollThreshold;
-    return itemSize;
-  };
-
-  /**
    * @description: 计算 line 大小和位置
    */
   caclLineSizePos = () => {
@@ -163,16 +155,15 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
    * @description: 计算滚动条移动位置
    */
   calculateScorllLeftLocation = () => {
-    const { value } = this.state;
     const { scrollable } = this.props;
+    if (!scrollable) {
+      return false;
+    }
+    const { value } = this.state;
     const prevTabItem = this.layout!.childNodes[value - 1];
     if (scrollable && this.layout && prevTabItem) {
       const { offsetTop: top = 0, offsetLeft: left = 0 } = prevTabItem as HTMLElement;
-      this.layout.scrollTo({
-        top,
-        left,
-        behavior: 'smooth',
-      });
+      scrollTo(this.layout, top, left, 0.3);
     }
   };
 
