@@ -1,6 +1,6 @@
 import { raf, cancelRaf } from '../../utils/raf';
 
-let scrollLeftRafId: number;
+let scrollRafId: number;
 
 export function getTransformPropValue(v: any) {
   return {
@@ -15,21 +15,24 @@ export function getPxStyle(value: number | string, unit = 'px', vertical = false
   return `translate3d(${value})`;
 }
 
-export function scrollLeftTo(
+export function scrollTo(
   scroller: HTMLElement,
-  to: number,
+  top: number,
+  left: number,
   duration: number,
 ) {
-  cancelRaf(scrollLeftRafId);
+  cancelRaf(scrollRafId);
 
   let count = 0;
-  const from = scroller.scrollLeft;
+  const fromLeft = scroller.scrollLeft;
+  const fromTop = scroller.scrollTop;
   const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
   function animate() {
-    scroller.scrollLeft += (to - from) / frames;
+    scroller.scrollLeft += (left - fromLeft) / frames;
+    scroller.scrollTop += (top - fromTop) / frames;
     count += 1;
     if (count < frames) {
-      scrollLeftRafId = raf(animate);
+      scrollRafId = raf(animate);
     }
   }
 

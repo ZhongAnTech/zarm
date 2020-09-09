@@ -4,6 +4,8 @@ export default interface PropsType {
   scrollThreshold: number;
   lineWidth?: string | number;
   disabled?: boolean;
-  canSwipe?: boolean;
+  swipeable?: boolean;
+  scrollable?: boolean;
+  direction?: 'horizontal' | 'vertical';
   onChange?: (index?: number) => void;
 }

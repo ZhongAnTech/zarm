@@ -1,3 +1,7 @@
+import { raf, cancelRaf } from './raf';
+
+let scrollRafId: number;
+
 export type ContainerType = HTMLElement | (() => HTMLElement) | Window;
 
 // 获取元素的纵坐标（相对于窗口）
@@ -177,12 +181,51 @@ export const getScrollContainer = (mountContainer?: ContainerType): HTMLElement 
     : container;
 };
 
-export const scrollTo = (scrollContainer: HTMLElement | Window, scrollTop: number): void => {
+// export const scrollTo = (scrollContainer: HTMLElement | Window, scrollTop: number): void => {
+//   if (scrollContainer === window) {
+//     scrollContainer.scrollTo(0, scrollTop);
+//   } else {
+//     (scrollContainer as HTMLElement).scrollTop = scrollTop;
+//   }
+// };
+
+export function scrollTo(
+  scrollContainer: HTMLElement | Window,
+  top: number,
+  left: number,
+  duration: number,
+) {
+  cancelRaf(scrollRafId);
+
+  let count = 0;
+  let fromLeft = 0;
+  let fromTop = 0;
+
   if (scrollContainer === window) {
-    scrollContainer.scrollTo(0, scrollTop);
+    fromLeft = getScrollLeft(scrollContainer);
+    fromTop = getScrollTop(scrollContainer);
   } else {
-    (scrollContainer as HTMLElement).scrollTop = scrollTop;
+    fromLeft = (scrollContainer as HTMLElement).scrollLeft;
+    fromTop = (scrollContainer as HTMLElement).scrollTop;
   }
-};
+
+  const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16);
+  function animate() {
+    if (scrollContainer === window) {
+      const x = getScrollLeft(scrollContainer) + (left - fromLeft) / frames;
+      const y = getScrollTop(scrollContainer) + (top - fromTop) / frames;
+      scrollContainer.scrollTo(x, y);
+    } else {
+      (scrollContainer as HTMLElement).scrollLeft += (left - fromLeft) / frames;
+      (scrollContainer as HTMLElement).scrollTop += (top - fromTop) / frames;
+    }
+    count += 1;
+    if (count < frames) {
+      scrollRafId = raf(animate);
+    }
+  }
+
+  animate();
+}
 
 export const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
