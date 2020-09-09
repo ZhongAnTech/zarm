@@ -17,5 +17,9 @@
     .content {
       height: 100%;
     }
+
+    &.custom-height {
+      height: r(200);
+    }
   }
 }

@@ -1,6 +1,5 @@
 export default interface PropsType {
   value?: number;
-  height?: string;
   defaultValue?: number;
   scrollThreshold: number;
   lineWidth?: string | number;

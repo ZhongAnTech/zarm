@@ -199,7 +199,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   };
 
   render() {
-    const { prefixCls, className, lineWidth, swipeable, children, disabled, scrollable, direction, height } = this.props;
+    const { prefixCls, className, lineWidth, swipeable, children, disabled, scrollable, direction } = this.props;
     const { value } = this.state;
     const classes = classnames(prefixCls, className, `${prefixCls}--${direction}`, {
       [`${prefixCls}--scroll`]: scrollable,
@@ -219,7 +219,6 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
           showPagination={false}
           activeIndex={value}
           ref={this.setCarouselRef}
-          height={height}
           onChange={(v: number) => {
             this.onTabChange(v);
           }}
@@ -242,7 +241,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     }
 
     return (
-      <div className={classes} style={this.isVertical ? { height } : {}}>
+      <div className={classes}>
         <div className={`${prefixCls}__header`}>
           <ul className={`${prefixCls}__tablist`} role="tablist" ref={this.setTablistRef}>
             {tabsRender}
