@@ -1,8 +1,11 @@
 # 版本更新日志 
 
-## v2.5.3
+## v2.5.5
+- Feature
+  - [Tabs] 支持纵向显示。[#486](https://github.com/ZhongAnTech/zarm/pull/486)
+
 - Bug Fix
-  - 修复服务端渲染时出现的 `window is not defined` 的错误。[#6375267](https://github.com/ZhongAnTech/zarm/commit/6375267e3cb3fd4ea2c4c389a9332bea499442c5)
+  - 修复服务端渲染时出现的 `window is not defined` 的错误。[#6375267](https://github.com/ZhongAnTech/zarm/commit/6375267e3cb3fd4ea2c4c389a9332bea499442c5) [#495](https://github.com/ZhongAnTech/zarm/pull/495)
 
 
 ## v2.5.2
@@ -12,7 +15,6 @@
 - Perf
   - 重构DOM操作工具库。[#f098d4a](https://github.com/ZhongAnTech/zarm/commit/f098d4a18d43407d79823ad5e6c7f0211cbec080)。
   - 优化调整各组件 `z-index` 堆叠顺序的css变量。[#00e0202](https://github.com/ZhongAnTech/zarm/commit/00e0202ad8a4bd2250d2226293804c022f19c613)
-
 
   ```css
   --zindex-mask: 1000;
