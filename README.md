@@ -106,7 +106,7 @@ document.documentElement.style.setProperty('--theme-primary', '#108ee9');
 
 | issue | gitter | 微信群 |
 | :--- | :--- | :--- |
-| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://cdn-health.zhongan.com/zarm/qr.png" width="60" /> |
+| [github issue](https://github.com/ZhongAnTech/zarm/issues) | [ZhonganTech/zarm](https://gitter.im/ZhonganTech/zarm) | <img src="https://cdn-health.zhongan.com/zarm/qr.png" width="80" /> |
 
 ## 开源协议
 
