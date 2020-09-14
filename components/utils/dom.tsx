@@ -1,4 +1,4 @@
-import { raf, cancelRaf } from './raf';
+import raf from 'raf';
 
 let scrollRafId: number;
 
@@ -195,7 +195,7 @@ export function scrollTo(
   left: number,
   duration: number,
 ) {
-  cancelRaf(scrollRafId);
+  raf.cancel(scrollRafId);
 
   let count = 0;
   let fromLeft = 0;
