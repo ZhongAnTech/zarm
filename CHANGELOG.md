@@ -4,6 +4,9 @@
 - Feature
   - [Tabs] 支持纵向显示。[#486](https://github.com/ZhongAnTech/zarm/pull/486)
 
+- Break Change
+  - [Tabs] 删除 `scrollThreshold` 属性，改为由 `scrollable` 属性判断是否支持滚动。
+
 - Bug Fix
   - 修复服务端渲染时出现的 `window is not defined` 的错误。[#6375267](https://github.com/ZhongAnTech/zarm/commit/6375267e3cb3fd4ea2c4c389a9332bea499442c5) [#495](https://github.com/ZhongAnTech/zarm/pull/495)
 
