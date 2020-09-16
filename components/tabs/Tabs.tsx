@@ -160,7 +160,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
       return false;
     }
     const { value } = this.state;
-    const index = value - 1 > 0 ? value - 1 : 0;
+    const index = value - 1 >= 0 ? value - 1 : 0;
     const prevTabItem = this.layout!.childNodes[index];
     if (scrollable && this.layout && prevTabItem) {
       const { offsetTop: top = 0, offsetLeft: left = 0 } = prevTabItem as HTMLElement;
