@@ -20,7 +20,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   portalRef: Portal | null;
 
   static getDerivedStateFromProps(props, state) {
-    if (props.visible !== state.prevVisible) {
+    if (props.visible !== state.portalVisible) {
       if (props.visible) {
         return {
           renderPortal: true,
