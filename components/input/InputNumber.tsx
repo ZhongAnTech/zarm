@@ -48,6 +48,15 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     return null;
   }
 
+  componentDidUpdate() {
+    const { visible } = this.state;
+    if (visible) {
+      this.scrollToEnd();
+    } else {
+      this.scrollToStart();
+    }
+  }
+
   componentWillUnmount() {
     Events.off(document.body, 'click', this.onMaskClick);
   }
@@ -84,7 +93,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
       : value + key;
 
     if (!('value' in this.props)) {
-      this.setState({ value: newValue }, () => this.scrollToEnd());
+      this.setState({ value: newValue });
     }
 
     const { onChange } = this.props;
@@ -95,29 +104,32 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
   onFocus = () => {
     const { disabled, readOnly, onFocus } = this.props;
-    if (disabled || readOnly || this.state.visible) {
+    const { visible, value } = this.state;
+
+    if (disabled || readOnly || visible) {
       return;
     }
 
     // 定位到文本尾部
-    this.setState({ visible: true }, this.scrollToEnd);
+    this.setState({ visible: true });
 
     if (typeof onFocus === 'function') {
-      onFocus(this.state.value);
+      onFocus(value);
     }
   };
 
   onBlur = () => {
-    if (!this.state.visible) {
+    const { visible, value } = this.state;
+    if (!visible) {
       return;
     }
 
     // 定位到文本首部
-    this.setState({ visible: false }, this.scrollToStart);
+    this.setState({ visible: false });
 
     const { onBlur } = this.props;
     if (typeof onBlur === 'function') {
-      onBlur(this.state.value);
+      onBlur(value);
     }
   };
 
@@ -155,7 +167,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
     const { visible, value } = this.state;
     const showClearIcon = clearable && ('value' in this.props) && value.length > 0 && ('onChange' in this.props);
 
-    const cls = classnames(prefixCls, `${prefixCls}--number`, className, {
+    const cls = classnames(prefixCls, `${prefixCls}--${type}`, className, {
       [`${prefixCls}--disabled`]: disabled,
       [`${prefixCls}--focus`]: visible,
       [`${prefixCls}--clearable`]: showClearIcon,
