@@ -91,7 +91,6 @@ describe('Stepper', () => {
     expect(onChange).toBeCalledWith(10);
   });
 
-
   it('out of range', () => {
     const onChange = jest.fn();
     const onInputChange = jest.fn();

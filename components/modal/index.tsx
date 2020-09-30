@@ -4,13 +4,13 @@ import Modal from './Modal';
 import Alert from '../alert/Alert';
 import Confirm from '../confirm/Confirm';
 import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
-import domUtil from '../utils/dom';
+import { getMountContainer } from '../utils/dom';
 
 function modalType(props, type) {
   const { className = '', mountContainer } = props;
   const container = document.createElement('div');
   container.className += `za-${type}-container ${className}`;
-  const mountNode = domUtil.getMountContainer(mountContainer);
+  const mountNode = getMountContainer(mountContainer);
   mountNode.appendChild(container);
 
   let resolveFn = (result: boolean) => result;
@@ -115,7 +115,6 @@ function modalType(props, type) {
     },
   };
 }
-
 
 Modal.alert = function alert(props) {
   return modalType(props, 'alert');

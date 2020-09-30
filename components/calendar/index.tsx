@@ -202,9 +202,9 @@ export default class CalendarView extends PureComponent<CalendarProps, CalendarS
   // 生成日历内容
   renderMonths() {
     const { prefixCls } = this.props;
-    const { min, max } = this.state;
-    const arr = Array.from({ length: DateTool.getMonthCount(min, max) });
-    const content = arr.map((_item, i) => this.renderMonth(DateTool.cloneDate(min, 'm', i)));
+    const { startMonth, max } = this.state;
+    const arr = Array.from({ length: DateTool.getMonthCount(startMonth, max) });
+    const content = arr.map((_item, i) => this.renderMonth(DateTool.cloneDate(startMonth, 'm', i)));
     return <section className={`${prefixCls}__body`}>{content}</section>;
   }
 

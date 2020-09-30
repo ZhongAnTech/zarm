@@ -1,4 +1,3 @@
-
 import Color from 'color';
 
 export const darken = (color, percent) => {

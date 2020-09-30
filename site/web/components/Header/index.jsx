@@ -119,7 +119,7 @@ const Header = ({ children }) => {
             <div className="logo">
               <a href="#/">
                 <img alt="logo" src={require('./images/logo.svg')} />
-            Zarm
+                Zarm
                 <sup className="logo-version">v{version}</sup>
               </a>
             </div>

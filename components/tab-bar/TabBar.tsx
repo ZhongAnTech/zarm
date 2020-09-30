@@ -3,12 +3,10 @@ import classnames from 'classnames';
 import { BaseTabBarProps } from './PropsType';
 import TabBarItem from './TabBarItem';
 
-
 export interface TabBarProps extends BaseTabBarProps {
   prefixCls?: string;
   className?: string;
 }
-
 
 class TabBar extends PureComponent<TabBarProps, any> {
   static Item: typeof TabBarItem;

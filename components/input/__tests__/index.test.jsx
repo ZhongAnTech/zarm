@@ -5,7 +5,6 @@ import Input from '../index';
 import InputBase from '../InputBase';
 import InputTextarea from '../InputTextarea';
 
-
 describe('Input', () => {
   it('renders correctly', () => {
     const wrapper = render(<Input type="text" />);

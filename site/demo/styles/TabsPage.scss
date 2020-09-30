@@ -10,6 +10,16 @@
     align-items: center;
     justify-content: center;
     padding: r(10);
-    height: r(100);
+    height: r(150);
+  }
+
+  .za-tabs--vertical {
+    .content {
+      height: 100%;
+    }
+
+    &.custom-height {
+      height: r(200);
+    }
   }
 }

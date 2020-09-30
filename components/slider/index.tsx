@@ -50,7 +50,6 @@ function ensureValuePrecision(val: number, props: SliderProps) {
     : parseFloat(closestPoint.toFixed(getPrecision(step)));
 }
 
-
 export interface SliderProps extends PropsType {
   prefixCls?: string;
   className?: string;

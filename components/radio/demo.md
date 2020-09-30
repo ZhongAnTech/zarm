@@ -37,109 +37,106 @@ ReactDOM.render(
 
 ## 按钮样式
 ```jsx
+import { useState } from 'react';
 import { Radio, Cell } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    radio: '0',
-  };
+const Demo = () => {
+  const [value, setValue] = useState('0');
 
-  render() {
-    return (
-      <>
-        <Cell
-          description={
-            <Radio.Group
-              type="button"
-              value={this.state.radio}
-              onChange={value => {
-                this.setState({ radio: value });
-                console.log(`radio to ${value}`)
-              }}
-            >
-              <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2">选项三</Radio>
-            </Radio.Group>
-          }
-        >
-          普通
-        </Cell>
+  return (
+    <>
+      <Cell
+        description={
+          <Radio.Group
+            type="button"
+            value={value}
+            onChange={value => {
+              setValue(value);
+              console.log(`radio to ${value}`)
+            }}
+          >
+            <Radio value="0">选项一</Radio>
+            <Radio value="1">选项二</Radio>
+            <Radio value="2">选项三</Radio>
+          </Radio.Group>
+        }
+      >
+        普通
+      </Cell>
 
-        <Cell
-          description={
-            <Radio.Group type="button" defaultValue="1">
-              <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2">选项三</Radio>
-            </Radio.Group>
-          }
-        >
-          指定默认值
-        </Cell>
+      <Cell
+        description={
+          <Radio.Group type="button" defaultValue="1">
+            <Radio value="0">选项一</Radio>
+            <Radio value="1">选项二</Radio>
+            <Radio value="2">选项三</Radio>
+          </Radio.Group>
+        }
+      >
+        指定默认值
+      </Cell>
 
-        <Cell
-          description={
-            <Radio.Group type="button">
-              <Radio value="0">选项一</Radio>
-              <Radio value="1" disabled>选项二</Radio>
-              <Radio value="2" disabled checked>选项三</Radio>
-            </Radio.Group>
-          }
-        >
-          禁用指定项
-        </Cell>
+      <Cell
+        description={
+          <Radio.Group type="button">
+            <Radio value="0">选项一</Radio>
+            <Radio value="1" disabled>选项二</Radio>
+            <Radio value="2" disabled checked>选项三</Radio>
+          </Radio.Group>
+        }
+      >
+        禁用指定项
+      </Cell>
 
-        <Cell
-          description={
-            <Radio.Group type="button" shape="rect">
-              <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2">选项三</Radio>
-            </Radio.Group>
-          }
-        >
-          直角
-        </Cell>
+      <Cell
+        description={
+          <Radio.Group type="button" shape="rect">
+            <Radio value="0">选项一</Radio>
+            <Radio value="1">选项二</Radio>
+            <Radio value="2">选项三</Radio>
+          </Radio.Group>
+        }
+      >
+        直角
+      </Cell>
 
-        <Cell
-          description={
-            <Radio.Group type="button" shape="round">
-              <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2">选项三</Radio>
-            </Radio.Group>
-          }
-        >
-          椭圆角
-        </Cell>
+      <Cell
+        description={
+          <Radio.Group type="button" shape="round">
+            <Radio value="0">选项一</Radio>
+            <Radio value="1">选项二</Radio>
+            <Radio value="2">选项三</Radio>
+          </Radio.Group>
+        }
+      >
+        椭圆角
+      </Cell>
 
-        <Cell
-          description={
-            <Radio.Group compact type="button" defaultValue="0">
-              <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2">选项三</Radio>
-            </Radio.Group>
-          }
-        >
-          紧凑模式
-        </Cell>
+      <Cell
+        description={
+          <Radio.Group compact type="button" defaultValue="0">
+            <Radio value="0">选项一</Radio>
+            <Radio value="1">选项二</Radio>
+            <Radio value="2">选项三</Radio>
+          </Radio.Group>
+        }
+      >
+        紧凑模式
+      </Cell>
 
-        <Cell
-          description={
-            <Radio.Group compact ghost type="button" defaultValue="0">
-              <Radio value="0">选项一</Radio>
-              <Radio value="1">选项二</Radio>
-              <Radio value="2">选项三</Radio>
-            </Radio.Group>
-          }
-        >
-          幽灵按钮
-        </Cell>
-      </>
-    )
-  }
+      <Cell
+        description={
+          <Radio.Group compact ghost type="button" defaultValue="0">
+            <Radio value="0">选项一</Radio>
+            <Radio value="1">选项二</Radio>
+            <Radio value="2">选项三</Radio>
+          </Radio.Group>
+        }
+      >
+        幽灵按钮
+      </Cell>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

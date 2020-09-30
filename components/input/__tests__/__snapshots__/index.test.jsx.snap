@@ -213,7 +213,7 @@ exports[`Input.Idcard renders correctly 1`] = `
     type="idcard"
   >
     <div
-      className="za-input za-input--number"
+      className="za-input za-input--idcard"
       onClick={[Function]}
     >
       <div
@@ -237,19 +237,25 @@ exports[`Input.Idcard renders correctly 1`] = `
           type="idcard"
           visible={false}
         >
-          <WarnIfDeprecatedComp
+          <ForwardRef(ForwardedRefComp)
             destroy={true}
             mask={false}
-            prefixCls="za-popup"
             visible={false}
           >
-            <Popup
+            <WarnIfDeprecatedComp
               destroy={true}
+              forwardedRef={null}
               mask={false}
-              prefixCls="za-popup"
               visible={false}
-            />
-          </WarnIfDeprecatedComp>
+            >
+              <Popup
+                destroy={true}
+                mask={false}
+                prefixCls="za-popup"
+                visible={false}
+              />
+            </WarnIfDeprecatedComp>
+          </ForwardRef(ForwardedRefComp)>
         </KeyboardPicker>
       </div>
     </div>
@@ -292,19 +298,25 @@ exports[`Input.Number renders correctly 1`] = `
           type="number"
           visible={false}
         >
-          <WarnIfDeprecatedComp
+          <ForwardRef(ForwardedRefComp)
             destroy={true}
             mask={false}
-            prefixCls="za-popup"
             visible={false}
           >
-            <Popup
+            <WarnIfDeprecatedComp
               destroy={true}
+              forwardedRef={null}
               mask={false}
-              prefixCls="za-popup"
               visible={false}
-            />
-          </WarnIfDeprecatedComp>
+            >
+              <Popup
+                destroy={true}
+                mask={false}
+                prefixCls="za-popup"
+                visible={false}
+              />
+            </WarnIfDeprecatedComp>
+          </ForwardRef(ForwardedRefComp)>
         </KeyboardPicker>
       </div>
     </div>
@@ -323,7 +335,7 @@ exports[`Input.Price renders correctly 1`] = `
     type="price"
   >
     <div
-      className="za-input za-input--number"
+      className="za-input za-input--price"
       onClick={[Function]}
     >
       <div
@@ -347,19 +359,25 @@ exports[`Input.Price renders correctly 1`] = `
           type="price"
           visible={false}
         >
-          <WarnIfDeprecatedComp
+          <ForwardRef(ForwardedRefComp)
             destroy={true}
             mask={false}
-            prefixCls="za-popup"
             visible={false}
           >
-            <Popup
+            <WarnIfDeprecatedComp
               destroy={true}
+              forwardedRef={null}
               mask={false}
-              prefixCls="za-popup"
               visible={false}
-            />
-          </WarnIfDeprecatedComp>
+            >
+              <Popup
+                destroy={true}
+                mask={false}
+                prefixCls="za-popup"
+                visible={false}
+              />
+            </WarnIfDeprecatedComp>
+          </ForwardRef(ForwardedRefComp)>
         </KeyboardPicker>
       </div>
     </div>
@@ -383,7 +401,6 @@ exports[`Input.Textarea autoHeight 1`] = `
     prefixCls="za-input"
     rows={4}
     showLength={false}
-    type="text"
     value="foo"
   >
     <div

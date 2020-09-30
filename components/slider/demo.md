@@ -4,40 +4,31 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Cell, Slider } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    value: 0,
-  };
+const Demo = () => {
+  const [value, setValue] = useState(0);
 
-  render() {
-    return (
-      <>
-        <Cell title="普通">
-          <Slider
-            value={this.state.value}
-            onChange={(value) => {
-              this.setState({ value })
-              console.log(value);
-            }}
-          />
-        </Cell>
+  return (
+    <>
+      <Cell title="普通">
+        <Slider value={value} onChange={setValue} />
+      </Cell>
 
-        <Cell title="设置默认值">
-          <Slider defaultValue={20} />
-        </Cell>
+      <Cell title="设置默认值">
+        <Slider defaultValue={20} />
+      </Cell>
 
-        <Cell title="设置上下限">
-          <Slider min={-100} max={100} defaultValue={0} />
-        </Cell>
+      <Cell title="设置上下限">
+        <Slider min={-100} max={100} defaultValue={0} />
+      </Cell>
 
-        <Cell title="禁用状态">
-          <Slider disabled defaultValue={20} />
-        </Cell>
-      </>
-    )
-  }
+      <Cell title="禁用状态">
+        <Slider disabled defaultValue={20} />
+      </Cell>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

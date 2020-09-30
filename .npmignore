@@ -18,8 +18,7 @@ tslint.json
 components
 assets
 coverage
-examples
-examples-rn
 site
+rnkit
 scripts
 zarm.config.js

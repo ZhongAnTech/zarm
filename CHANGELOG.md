@@ -1,8 +1,59 @@
 # 版本更新日志 
 
+## v2.5.5
+- Feature
+  - [Tabs] 支持纵向显示。[#486](https://github.com/ZhongAnTech/zarm/pull/486)
+
+- Break Change
+  - [Tabs] 删除 `scrollThreshold` 属性，改为由 `scrollable` 属性判断是否支持滚动。
+
+- Bug Fix
+  - 修复服务端渲染时出现的 `window is not defined` 的错误。[#6375267](https://github.com/ZhongAnTech/zarm/commit/6375267e3cb3fd4ea2c4c389a9332bea499442c5) [#495](https://github.com/ZhongAnTech/zarm/pull/495)
+
+
+## v2.5.2
+- Bug Fix
+  - [Pull] 修复下拉刷新状态为`加载成功` 或 上拉加载状态为`加载失败`时，Pull存在内存泄漏的bug。[#487](https://github.com/ZhongAnTech/zarm/pull/487)
+
+- Perf
+  - 重构DOM操作工具库。[#f098d4a](https://github.com/ZhongAnTech/zarm/commit/f098d4a18d43407d79823ad5e6c7f0211cbec080)。
+  - 优化调整各组件 `z-index` 堆叠顺序的css变量。[#00e0202](https://github.com/ZhongAnTech/zarm/commit/00e0202ad8a4bd2250d2226293804c022f19c613)
+
+  ```css
+  --zindex-mask: 1000;
+  --zindex-popup: 1100;
+  --zindex-tooltip: 1700;
+  ```
+
+
+## v2.5.1
+- Bug Fix
+  - [Popup] 修复因增加API过期警告导致无法自定义挂载节点的bug。[#482](https://github.com/ZhongAnTech/zarm/pull/482)
+  - [Calendar] 修复因日期计算问题导致出现重复月份的bug。[#483](https://github.com/ZhongAnTech/zarm/pull/483)
+
+
+## v2.5.0
+- Feature
+  - [ImagePreview] 新增图片预览组件。[#475](https://github.com/ZhongAnTech/zarm/pull/475)
+
+- Perf
+  - [Pull] 优化下拉刷新用户体验。[#0171d0d](https://github.com/ZhongAnTech/zarm/commit/dede711af890485b981de5ffc9b22d690ed23a25)
+    - 下拉后放手回弹增加动画效果。
+    - 修改下拉距离衰减比例，由 2倍 改为 3倍。
+    - 修改触发距离阀值属性 `distance` 默认值由 50 变为 30。
+  - [Tabs] 选中项增加样式类名 `.za-tabs__tab--active`，方便外部样式复写。[#0445eeb](https://github.com/ZhongAnTech/zarm/commit/0d1ef242c1142a95a4211dd7ef59b69e538e5f82)
+
+
+## v2.4.0
+- Feature
+  - [Tabs] 新增 `scrollThreshold` 属性设置启用横向滚动的标签页数阀值，用于支持通过左右滚动展示超出屏幕宽度的标签页。[#470](https://github.com/ZhongAnTech/zarm/pull/470)
+  - [StackPicker] 新增层叠选择器组件。[#474](https://github.com/ZhongAnTech/zarm/pull/474)
+
+
 ## v2.3.4
 - Bug Fix
-  - [pull] 修复在 iOS 12 版本下出现无法上滑拖动滚动条的bug。[#472](https://github.com/ZhongAnTech/zarm/pull/472)
+  - [Pull] 修复在 iOS 12 版本下出现无法上滑拖动滚动条的bug。[#472](https://github.com/ZhongAnTech/zarm/pull/472)
+
 
 ## v2.3.3
 - Bug Fix
