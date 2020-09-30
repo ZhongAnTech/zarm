@@ -240,9 +240,10 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
             ? (
               <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
                 {loaded === LoadStatus.start ? <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" /> : ''}
-                { locale![loaded]}
+                {locale![loaded]}
               </button>
-            ) : ''}
+            )
+            : ''}
           {visible && showPagination && images && images.length > 1 && <div className={`${prefixCls}__index`}>{currentIndex + 1} / {images.length}</div>}
         </div>
       </Popup>

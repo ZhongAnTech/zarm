@@ -4,64 +4,56 @@
 
 ## 基本用法
 ```jsx
+import { useState } from 'react';
 import { Cell, Stepper } from 'zarm';
 
-class Demo extends React.Component {
-  state = {
-    value: 1,
-  };
+const Demo = () => {
+  const [value, setValue] = useState(1);
 
-  render() {
-    return (
-      <>
-        <Cell
-          title="普通"
-          description={
-            <Stepper
-              value={this.state.value}
-              onInputChange={(value) => {
-                console.log('onInputChange:', value);
-              }}
-              onChange={(value) => {
-                this.setState({
-                  value,
-                })
-                console.log('onChange:', value);
-              }}
-            />
-          }
-        />
+  return (
+    <>
+      <Cell
+        title="普通"
+        description={
+          <Stepper
+            value={value}
+            onChange={setValue}
+            onInputChange={(value) => {
+              console.log('onInputChange:', value);
+            }}
+          />
+        }
+      />
 
-        <Cell
-          title="设置默认值"
-          description={
-            <Stepper defaultValue={2} />
-          }
-        />
+      <Cell
+        title="设置默认值"
+        description={
+          <Stepper defaultValue={2} />
+        }
+      />
 
-        <Cell
-          title="设置上下限（-3 ~ 3）"
-          description={
-            <Stepper min={-3} max={3} />
-          }
-        />
+      <Cell
+        title="设置上下限（-3 ~ 3）"
+        description={
+          <Stepper min={-3} max={3} />
+        }
+      />
 
-        <Cell
-          title="设置步长"
-          description={
-            <Stepper step={5} />
-          }
-        />
+      <Cell
+        title="设置步长"
+        description={
+          <Stepper step={5} />
+        }
+      />
 
-        <Cell
-          title="禁用状态"
-          description={
-            <Stepper disabled />
-          }
-        />
-      </>
-    )
-  }
+      <Cell
+        title="禁用状态"
+        description={
+          <Stepper disabled />
+        }
+      />
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

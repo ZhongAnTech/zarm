@@ -5,15 +5,15 @@ function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
 
-interface PropsIF {
+interface WarnIfDeprecatedCompProps {
   forwardedRef: Ref<any>;
 }
 
-export default function (deprecations) {
+export default function warnIfDeprecated(deprecations) {
   return function Wrapper<
     T extends ComponentClass<InstanceType<T>['props'] & { ref?: Ref<any> }>
   >(WrappedComponent: T) {
-    class WarnIfDeprecatedComp extends Component<PropsIF> {
+    class WarnIfDeprecatedComp extends Component<WarnIfDeprecatedCompProps> {
       constructor(props: any) {
         super(props);
         if (process.env.NODE_ENV !== 'production' && deprecations.length) {

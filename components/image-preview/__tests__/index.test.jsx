@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, mount } from 'enzyme';
+import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import ImagePreview from '../index';
 

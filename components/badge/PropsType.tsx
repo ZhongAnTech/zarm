@@ -1,4 +1,3 @@
-
 export default interface PropsType {
   theme?: 'primary' | 'success' | 'warning' | 'danger';
   shape?: 'dot' | 'radius' | 'round' |'rect'| 'circle' | 'leaf';

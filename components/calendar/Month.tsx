@@ -79,7 +79,6 @@ export default class CalendarMonthView extends Component<CalendarMonthProps, Cal
     return this.isRefresh;
   }
 
-
   anchor = () => {
     if (this.node && this.node.scrollIntoViewIfNeeded) {
       this.node.scrollIntoViewIfNeeded();

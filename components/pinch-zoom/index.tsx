@@ -203,7 +203,7 @@ export default class PinchZoom extends Component<PinchZoomProps, any> {
     const { children, className, prefixCls } = this.props;
     const child = React.Children.map(children, (element: JSX.Element, index) => {
       return React.cloneElement(element, {
-        key: index,
+        key: +index,
         onLoad: this.onload,
       });
     });
