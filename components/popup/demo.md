@@ -169,6 +169,7 @@ class Demo extends React.Component {
           direction="center"
           width="70%"
           afterClose={() => console.log('关闭')}
+          onClose={() => this.toggle('popCenterSpec')}
           mountContainer={() => {
             return this.popupRef.portalRef.popup
           }}
@@ -182,6 +183,7 @@ class Demo extends React.Component {
           visible={visible.popSpec}
           onMaskClick={() => this.toggle('popSpec')}
           afterClose={() => console.log('关闭')}
+          onClose={() => { this.toggle('popSpec')}}
           ref={ref => this.popupRef = ref}
           destroy={false}
         >

@@ -12,16 +12,18 @@ class Trigger extends Component<PropsType, {}> {
 
   static getDerivedStateFromProps(nextProps: Trigger['props']) {
     const { visible, onClose, disabled } = nextProps;
-    onClose.disabled = disabled;
-    console.log(visible);
-    if (visible === true) {
-      Trigger.instanceList.push(onClose);
+    onClose && (onClose.disabled = disabled);
+    if (visible === true && typeof onClose === 'function') {
+      if (!Trigger.instanceList.includes(onClose)) {
+        Trigger.instanceList.push(onClose);
+      }
     } else {
       const index = Trigger.instanceList.findIndex((c) => c === onClose);
       if (index > -1) {
         Trigger.instanceList.splice(index, 1);
       }
     }
+
     return null;
   }
 
@@ -41,7 +43,6 @@ class Trigger extends Component<PropsType, {}> {
   state = {};
 
   componentDidMount() {
-    console.log(Trigger.count);
     if (Trigger.count === 0) {
       document.body.addEventListener('keydown', Trigger.onKeydown);
     }
@@ -49,6 +50,11 @@ class Trigger extends Component<PropsType, {}> {
   }
 
   componentWillUnmount() {
+    const { onClose } = this.props;
+    const index = Trigger.instanceList.findIndex((c) => c === onClose);
+    if (index > -1) {
+      Trigger.instanceList.splice(index, 1);
+    }
     Trigger.count -= 1;
     if (Trigger.count === 0) {
       document.body.removeEventListener('keydown', Trigger.onKeydown);
@@ -57,13 +63,8 @@ class Trigger extends Component<PropsType, {}> {
 
   render() {
     const { children } = this.props;
-    return (
-      <>
-        {children}
-      </>
-    );
+    return <>{children}</>;
   }
 }
-
 
 export default Trigger;

@@ -6,7 +6,6 @@ import warnIfDeprecated from '../utils/warnIfDeprecated';
 export interface PopupProps extends PropsType {
   prefixCls?: string;
   className?: string;
-  onClose?: () => void;
 }
 
 @warnIfDeprecated([
@@ -16,6 +15,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps: PopupProps = {
     prefixCls: 'za-popup',
     destroy: true,
+    visible: false,
   };
 
   portalRef: Portal | null;

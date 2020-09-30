@@ -6,5 +6,5 @@ export interface InstanceFn {
 export default interface PropsType {
   disabled: boolean;
   visible: boolean;
-  onClose: InstanceFn;
+  onClose?: InstanceFn;
 }
