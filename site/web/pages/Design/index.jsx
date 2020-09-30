@@ -17,7 +17,7 @@ const Page = () => {
   return (
     <Container className="design-page">
       <main>
-        <div className="main-container">
+        <div className="main-container markdown">
           <Switch>
             {
               design.map((doc, i) => (

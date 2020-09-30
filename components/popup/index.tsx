@@ -15,6 +15,7 @@ export default class Popup extends PureComponent<PopupProps, any> {
   static defaultProps: PopupProps = {
     prefixCls: 'za-popup',
     destroy: true,
+    visible: false,
   };
 
   portalRef: Portal | null;

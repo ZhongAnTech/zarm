@@ -110,6 +110,7 @@ class Demo extends React.Component {
           afterOpen={() => console.log('打开')}
           afterClose={() => console.log('关闭')}
           destroy={false}
+          onClose={() => { this.toggle('popBottom')}}
           mountContainer={() => document.body}
         >
           <div className="popup-box">
@@ -168,6 +169,7 @@ class Demo extends React.Component {
           direction="center"
           width="70%"
           afterClose={() => console.log('关闭')}
+          onClose={() => this.toggle('popCenterSpec')}
           mountContainer={() => {
             return this.popupRef.portalRef.popup
           }}
@@ -181,6 +183,7 @@ class Demo extends React.Component {
           visible={visible.popSpec}
           onMaskClick={() => this.toggle('popSpec')}
           afterClose={() => console.log('关闭')}
+          onClose={() => { this.toggle('popSpec')}}
           ref={ref => this.popupRef = ref}
           destroy={false}
         >
