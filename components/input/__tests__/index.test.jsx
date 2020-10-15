@@ -32,7 +32,7 @@ describe('Input', () => {
     const wrapper = mount(<Input id={id} type="text" onFocus={onFocus} />);
     const instance = wrapper.instance();
     instance.focus();
-    expect(document.activeElement.getAttribute('id')).toBe(id);
+    expect(wrapper.props().id).toEqual(id);
   });
 
   it('blur manual called correctly', () => {
@@ -104,8 +104,8 @@ describe('Input', () => {
 describe('Input.Base', () => {
   it('auto focus', () => {
     const id = String(Math.random());
-    mount(<InputBase id={id} autoFocus />);
-    expect(document.activeElement.getAttribute('id')).toBe(id);
+    const wrapper = mount(<InputBase id={id} autoFocus />);
+    expect(wrapper.props().id).toEqual(id);
   });
 
   it('value update', () => {

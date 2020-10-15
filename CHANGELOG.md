@@ -1,5 +1,15 @@
 # 版本更新日志 
 
+## v2.5.6
+- Bug Fix
+  - [Tabs] 修复滚动边界判断时的问题。[#498](https://github.com/ZhongAnTech/zarm/pull/498)
+  - [TabBar] 修复按需加载组件时，丢失Badge组件的样式的问题。[#501](https://github.com/ZhongAnTech/zarm/pull/501)
+
+- Perf
+  - [Input] 优化虚拟键盘的鼠标定位，获取焦点自动定位到内容的尾部。[#1dca23f](https://github.com/ZhongAnTech/zarm/commit/1dca23f0d8b1a8b74902d13977423406b06c2a14)
+  - [Input] 兼容原生input的类型，如`<input type="tel" />`等。[#a057caa](https://github.com/ZhongAnTech/zarm/commit/a057caa0f53234b95500c192fcb9f72a949e2402)
+
+
 ## v2.5.5
 - Feature
   - [Tabs] 支持纵向显示。[#486](https://github.com/ZhongAnTech/zarm/pull/486)
