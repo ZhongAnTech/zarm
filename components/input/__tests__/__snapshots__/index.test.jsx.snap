@@ -213,7 +213,7 @@ exports[`Input.Idcard renders correctly 1`] = `
     type="idcard"
   >
     <div
-      className="za-input za-input--number"
+      className="za-input za-input--idcard"
       onClick={[Function]}
     >
       <div
@@ -335,7 +335,7 @@ exports[`Input.Price renders correctly 1`] = `
     type="price"
   >
     <div
-      className="za-input za-input--number"
+      className="za-input za-input--price"
       onClick={[Function]}
     >
       <div
@@ -401,7 +401,6 @@ exports[`Input.Textarea autoHeight 1`] = `
     prefixCls="za-input"
     rows={4}
     showLength={false}
-    type="text"
     value="foo"
   >
     <div

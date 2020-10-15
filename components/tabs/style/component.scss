@@ -2,26 +2,23 @@
   @include e(header) {
     position: relative;
     overflow: hidden;
-    @include onepx(bottom);
-
-    ul {
-      position: relative;
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      height: var(--tabs-height);
-      line-height: var(--tabs-height);
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
   }
 
-  @include e(scroll) {
-    ul {
-      overflow-x: auto;
+  @include e(tablist) {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  @include e(panel) {
+    display: none;
+    position: relative;
+    transition: height .3s;
+    height: 100%;
+
+    @include m(active) {
+      display: block;
     }
   }
 
@@ -43,9 +40,6 @@
 
   @include e(line) {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    height: var(--tabs-line-height);
     transition: transform .3s ease-out;
     background-color: var(--theme-primary);
 
@@ -57,13 +51,76 @@
     }
   }
 
-  @include e(panel) {
-    position: relative;
-    transition: height .3s;
-    display: none;
+  @include m(scroll) {
+    @include e(tablist) {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
 
-    @include m(active) {
-      display: block;
+  @include m(horizontal) {
+    @include e(header) {
+      width: 100%;
+      @include onepx(bottom);
+    }
+
+    @include e(tablist) {
+      display: flex;
+      height: var(--tabs-height);
+      line-height: var(--tabs-height);
+    }
+
+    @include e(line) {
+      height: var(--tabs-line-height);
+      left: 0;
+      bottom: 0;
+    }
+
+    @include m(scroll) {
+      @include e(tablist) {
+        overflow-x: auto;
+      }
+
+      @include e(tab) {
+        overflow: visible;
+        padding: 0 var(--tabs-item-horizontal-padding);
+      }
+    }
+  }
+
+  @include m(vertical) {
+    display: flex;
+    flex-direction: row;
+
+    @include e(header) {
+      @include onepx(right);
+    }
+
+    @include e(tablist) {
+      height: 100%;
+    }
+
+    @include e(tab) {
+      text-align: center;
+      padding: var(--tabs-item-vertical-padding) var(--tabs-item-horizontal-padding);
+    }
+
+    @include e(line) {
+      width: var(--tabs-line-height);
+      top: 0;
+      right: 0;
+    }
+
+    @include e(body) {
+      flex: 1;
+      position: relative;
+    }
+
+    @include m(scroll) {
+      @include e(tablist) {
+        overflow-y: auto;
+      }
     }
   }
 }

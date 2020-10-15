@@ -18,16 +18,16 @@ export default {
     paddingVertical: variables.message_padding_v_lg,
   },
   primaryWrapper: {
-    backgroundColor: Color(variables.theme_primary).alpha(0.1),
+    backgroundColor: `${Color(variables.theme_primary).alpha(0.1)}`,
   },
   successWrapper: {
-    backgroundColor: Color(variables.theme_success).alpha(0.1),
+    backgroundColor: `${Color(variables.theme_success).alpha(0.1)}`,
   },
   warningWrapper: {
-    backgroundColor: Color(variables.theme_warning).alpha(0.1),
+    backgroundColor: `${Color(variables.theme_warning).alpha(0.1)}`,
   },
   dangerWrapper: {
-    backgroundColor: Color(variables.theme_danger).alpha(0.1),
+    backgroundColor: `${Color(variables.theme_danger).alpha(0.1)}`,
   },
 
   headerStyle: {},

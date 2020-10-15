@@ -1,4 +1,3 @@
-
 const toKeyframe = (name, content) => `
   @-webkit-keyframes ${name} {
     ${content}

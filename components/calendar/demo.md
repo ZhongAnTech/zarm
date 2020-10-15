@@ -9,9 +9,9 @@ import { Button, Select, DateSelect, Icon, Input, Cell, Calendar } from 'zarm';
 const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [multiple, setMultiple] = useState(true);
-  const [value, setValue] = useState(['2019-10-11', '2019-10-17']);
-  const [min, setMin] = useState('2019-09-12');
-  const [max, setMax] = useState('2019-11-11');
+  const [value, setValue] = useState(['2020-07-29', '2020-08-04']);
+  const [min, setMin] = useState('2017-12-29');
+  const [max, setMax] = useState('2020-08-04');
 
   return (
     <>

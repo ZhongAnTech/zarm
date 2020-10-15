@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { pascalCase } from 'change-case';
 import marked from 'marked';
 import hljs from 'highlight.js/lib/core';
@@ -44,6 +44,10 @@ export default (props) => {
 
     return renderer;
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (typeof document === 'string') {
     hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));

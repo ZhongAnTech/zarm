@@ -4,8 +4,8 @@
 
 ## 基本用法
 ```jsx
-import { useState, useEffect } from 'react';
-import { Pull, Cell, Message, Icon, Button, ActivityIndicator } from 'zarm';
+import { useState, useEffect, useRef } from 'react';
+import { Pull, Cell, Message, Icon, Button, ActivityIndicator, BackToTop } from 'zarm';
 
 const REFRESH_STATE = {
   normal: 0,  // 普通
@@ -39,14 +39,15 @@ const fetchData = (length, dataSource = []) => {
   }
   return newData;
 }
-  
+
+let mounted = true;
+
 const Demo = () => {
+  const pullRef = useRef();
   const [bodyScroll, setBodyScroll] = useState(false);
   const [dataSource, setDataSource] = useState([]);
   const [refreshing, setRefreshing] = useState(REFRESH_STATE.normal);
   const [loading, setLoading] = useState(LOAD_STATE.normal);
-
-  let mounted = true;
 
   const toggleScrollContainer = () => {
     const newBodyScroll = !bodyScroll;
@@ -104,6 +105,12 @@ const Demo = () => {
     ? {}
     : { overflowY: 'auto', maxHeight: 400 };
 
+  const scrollContainer = () => {
+    return bodyScroll
+      ? window
+      : pullRef.current && pullRef.current.scrollContainer;
+  }
+
   return (
     <>
       <Message theme="warning" icon={<Icon type="warning-round" />}>
@@ -111,6 +118,7 @@ const Demo = () => {
         <Button theme="primary" size="xs" onClick={toggleScrollContainer}>点击切换</Button>
       </Message>
       <Pull
+        ref={pullRef}
         style={style}
         refresh={{
           state: refreshing,
@@ -183,6 +191,27 @@ const Demo = () => {
       >
         {dataSource}
       </Pull>
+      <BackToTop
+        scrollContainer={scrollContainer}
+        onClick={() => console.log('click back to top')}
+      >
+        <div
+          style={{
+            width: 60,
+            height: 60,
+            lineHeight: '60px',
+            textAlign: 'center',
+            backgroundColor: '#fff',
+            color: '#999',
+            fontSize: 20,
+            borderRadius: 30,
+            boxShadow: '0 2px 10px 0 rgba(0, 0, 0, 0.2)',
+            cursor: 'pointer'
+          }}
+        >
+          Up
+        </div>
+      </BackToTop>
     </>
   );
 }

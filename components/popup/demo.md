@@ -4,6 +4,7 @@
 
 ## 基本用法
 ```jsx
+import { useState, useReducer, useRef } from 'react';
 import { Popup, Cell, Button, Picker, Toast, Modal, Loading } from 'zarm';
 
 const SINGLE_DATA = [
@@ -11,191 +12,186 @@ const SINGLE_DATA = [
   { value: '2', label: '选项二' },
 ];
 
-class Demo extends React.Component {
-  state = {
-    visible: {
-      popBottom: false,
-      popTop: false,
-      popLeft: false,
-      popRight: false,
-      picker: false,
-      popSpec: false,
-      popCenterSpec: false,
-    },
-    value: '',
-  };
+const initVisibleState = {
+  popBottom: false,
+  popTop: false,
+  popLeft: false,
+  popRight: false,
+  picker: false,
+  popSpec: false,
+  popCenterSpec: false,
+};
 
-  toggle = (key) => {
-    const visible = this.state.visible;
-    this.setState({ 
-      visible:{
-        ...visible,
-        [key]: !visible[key]
-      }
-    });
-  }
+const Demo = () => {
+  const popupRef = useRef();
+  const [value, setValue] = useState('');
+  const [visible, setVisible] = useReducer((state, action) => {
+    const { type } = action;
+    return {
+      ...state,
+      [type]: !state[type],
+    };
+  }, initVisibleState);
 
-  render() {
-    const { visible, value } = this.state;
-    return (
-      <div>
-        <Cell
-          description={
-            <Button size="xs" onClick={() => {
-              this.toggle('popTop');
-              setTimeout(() => {
-                this.toggle('popTop');
-              }, 3000);
-            }}>开启</Button>
-          }
-        >
-          从上方弹出
-        </Cell>
+  const toggle = (type) => setVisible({ type });
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => { this.toggle('popBottom'); }}>开启</Button>
-          }
-        >
-          从下方弹出
-        </Cell>
+  return (
+    <>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => {
+            toggle('popTop');
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('popLeft')}>开启</Button>
-          }
-        >
-          从左侧弹出
-        </Cell>
+            setTimeout(() => {
+              toggle('popTop');
+            }, 3000);
+          }}>开启</Button>
+        }
+      >
+        从上方弹出
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('popRight')}>开启</Button>
-          }
-        >
-          从右侧弹出
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('popBottom')}>开启</Button>
+        }
+      >
+        从下方弹出
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('popCenter')}>开启</Button>
-          }
-        >
-          从中间弹出
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('popLeft')}>开启</Button>
+        }
+      >
+        从左侧弹出
+      </Cell>
 
-        <Cell
-          description={
-            <Button size="xs" onClick={() => this.toggle('popSpec')}>开启</Button>
-          }
-        >
-          自定义挂载节点
-        </Cell>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('popRight')}>开启</Button>
+        }
+      >
+        从右侧弹出
+      </Cell>
 
-        <Popup
-          visible={visible.popTop}
-          direction="top"
-          mask={false}
-          afterClose={() => { console.log('关闭'); }}
-        >
-          <div className="popup-box-top">
-            更新成功
-          </div>
-        </Popup>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('popCenter')}>开启</Button>
+        }
+      >
+        从中间弹出
+      </Cell>
 
-        <Popup
-          visible={visible.popBottom}
-          direction="bottom"
-          onMaskClick={() => { this.toggle('popBottom')}}
-          afterOpen={() => console.log('打开')}
-          afterClose={() => console.log('关闭')}
-          destroy={false}
-          onClose={() => { this.toggle('popBottom')}}
-          mountContainer={() => document.body}
-        >
-          <div className="popup-box">
-            <Button size="xs" onClick={() => { this.toggle('picker'); }}>打开Picker</Button>
-          </div>
-        </Popup>
+      <Cell
+        description={
+          <Button size="xs" onClick={() => toggle('popSpec')}>开启</Button>
+        }
+      >
+        自定义挂载节点
+      </Cell>
 
-        <Picker
-          visible={visible.picker}
-          value={value}
-          dataSource={SINGLE_DATA}
-          onOk={(selected) => {
-            console.log('Picker onOk: ', selected);
-            this.setState({ value: selected.map(item => item.value) });
-            Toast.show(JSON.stringify(selected));
-            this.toggle('picker');
-          }}
-          onCancel={() => this.toggle('picker')}
-        />
+      <Popup
+        visible={visible.popTop}
+        direction="top"
+        mask={false}
+        afterClose={() => console.log('关闭')}
+      >
+        <div className="popup-box-top">
+          更新成功
+        </div>
+      </Popup>
 
-        <Popup
-          visible={visible.popLeft}
-          onMaskClick={() => this.toggle('popLeft')}
-          direction="left"
-          afterClose={() => console.log('关闭')}
-        >
-          <div className="popup-box-left">
-            <Button size="xs" onClick={() => this.toggle('popLeft')}>关闭弹层</Button>
-          </div>
-        </Popup>
+      <Popup
+        visible={visible.popBottom}
+        direction="bottom"
+        onMaskClick={() => toggle('popBottom')}
+        afterOpen={() => console.log('打开')}
+        afterClose={() => console.log('关闭')}
+        destroy={false}
+        mountContainer={() => document.body}
+      >
+        <div className="popup-box">
+          <Button size="xs" onClick={() => toggle('picker')}>打开Picker</Button>
+        </div>
+      </Popup>
 
-        <Popup
-          visible={visible.popRight}
-          onMaskClick={() => this.toggle('popRight')}
-          direction="right"
-          afterClose={() => console.log('关闭')}
-        >
-          <div className="popup-box">
-            <Button size="xs" onClick={() => this.toggle('popRight')}>关闭弹层</Button>
-          </div>
-        </Popup>
+      <Picker
+        visible={visible.picker}
+        value={value}
+        dataSource={SINGLE_DATA}
+        onOk={(selected) => {
+          console.log('Picker onOk: ', selected);
+          Toast.show(JSON.stringify(selected));
+          setValue(selected.map(item => item.value));
+          toggle('picker');
+        }}
+        onCancel={() => toggle('picker')}
+      />
 
-        <Popup
-          visible={visible.popCenter}
-          direction="center"
-          width="70%"
-          afterClose={() => console.log('关闭')}
-        >
-          <div className="popup-box">
-            <Button size="xs" onClick={() => this.toggle('popCenter')}>关闭弹层</Button>
-          </div>
-        </Popup>
+      <Popup
+        visible={visible.popLeft}
+        onMaskClick={() => toggle('popLeft')}
+        direction="left"
+        afterClose={() => console.log('关闭')}
+      >
+        <div className="popup-box-left">
+          <Button size="xs" onClick={() => toggle('popLeft')}>关闭弹层</Button>
+        </div>
+      </Popup>
 
-        <Popup
-          visible={visible.popCenterSpec}
-          direction="center"
-          width="70%"
-          afterClose={() => console.log('关闭')}
-          onClose={() => this.toggle('popCenterSpec')}
-          mountContainer={() => {
-            return this.popupRef.portalRef.popup
-          }}
-        >
-          <div className="popup-box">
-            <Button size="xs" onClick={() => this.toggle('popCenterSpec')}>关闭弹层</Button>
-          </div>
-        </Popup>
+      <Popup
+        visible={visible.popRight}
+        onMaskClick={() => toggle('popRight')}
+        direction="right"
+        afterClose={() => console.log('关闭')}
+      >
+        <div className="popup-box">
+          <Button size="xs" onClick={() => toggle('popRight')}>关闭弹层</Button>
+        </div>
+      </Popup>
 
-        <Popup
-          visible={visible.popSpec}
-          onMaskClick={() => this.toggle('popSpec')}
-          afterClose={() => console.log('关闭')}
-          onClose={() => { this.toggle('popSpec')}}
-          ref={ref => this.popupRef = ref}
-          destroy={false}
-        >
-          <div className="popup-box-bottom">
-            <Button size="xs" onClick={() => this.toggle('popCenterSpec')}>打开弹层</Button>
-            <p>打开的modal挂载此popup上</p>
-          </div>
-        </Popup>
+      <Popup
+        visible={visible.popCenter}
+        direction="center"
+        width="70%"
+        afterClose={() => console.log('关闭')}
+      >
+        <div className="popup-box">
+          <Button size="xs" onClick={() => toggle('popCenter')}>关闭弹层</Button>
+        </div>
+      </Popup>
 
-      </div>
-    )
-  }
+      <Popup
+        visible={visible.popCenterSpec}
+        direction="center"
+        width="70%"
+        afterClose={() => console.log('关闭')}
+        onClose={() => { toggle('popCenterSpec')}}
+        mountContainer={() => {
+          return popupRef.current.portalRef.popup
+        }}
+      >
+        <div className="popup-box">
+          <Button size="xs" onClick={() => toggle('popCenterSpec')}>关闭弹层</Button>
+        </div>
+      </Popup>
+
+      <Popup
+        visible={visible.popSpec}
+        onMaskClick={() => toggle('popSpec')}
+        afterClose={() => console.log('关闭')}
+        onClose={() => { toggle('popSpec')}}
+        ref={popupRef}
+        destroy={false}
+      >
+        <div className="popup-box-bottom">
+          <Button size="xs" onClick={() => toggle('popCenterSpec')}>打开弹层</Button>
+          <p>打开的modal挂载此popup上</p>
+        </div>
+      </Popup>
+    </>
+  );
 }
 
 ReactDOM.render(<Demo />, mountNode);

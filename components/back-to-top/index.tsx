@@ -1,11 +1,8 @@
-
 import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
 import Scroller from '../scroller';
-import { scrollTo } from '../scroller/ScrollContainer';
-import domUtil, { ContainerType } from '../utils/dom';
-
+import { ContainerType, canUseDOM, scrollTo } from '../utils/dom';
 
 export interface BackToTopProps {
   prefixCls?: string;
@@ -28,7 +25,7 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
     prefixCls: 'za-back-to-top',
     speed: 100,
     visibleDistance: 400,
-    scrollContainer: window,
+    scrollContainer: canUseDOM ? window : undefined,
   };
 
   readonly state: BackToTopStates = {
@@ -56,11 +53,11 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
 
   componentWillUnmount() {
     clearInterval(this.timer);
-    this.parent.removeChild(this.portalContainer);
+    this.parent && this.parent.removeChild(this.portalContainer);
   }
 
   get parent(): HTMLElement {
-    if (!domUtil.canUseDOM || this.container === window) {
+    if (!canUseDOM || this.container === window) {
       return document.body;
     }
     return this.container as HTMLElement;
@@ -131,24 +128,16 @@ export default class BackToTop extends PureComponent<BackToTopProps, BackToTopSt
 
     // 速度设置为0或者无穷大时，直接到顶
     if (speed === 0 || speed === Infinity) {
-      scrollTo(container, 0);
+      scrollTo(container, 0, 0, 0);
       return;
     }
 
-    this.timer = setInterval(() => {
-      let st = this.scrollTop;
-      st -= speed!;
-      if (st > 0) {
-        scrollTo(container, st);
-      } else {
-        scrollTo(container, 0);
-        clearInterval(this.timer);
-      }
-    }, 10);
+    const x: number = this.props.speed as number;
+    scrollTo(container, 0, 0, this.scrollTop / ((x / 10) * 1000));
   };
 
   render() {
-    if (!domUtil.canUseDOM) {
+    if (!canUseDOM) {
       return null;
     }
 
