@@ -116,9 +116,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
     );
   };
 
-  onClose = () => {
-    const { onClose } = this.props;
-    onClose && onClose();
+  onEsc = () => {
+    const { onEsc } = this.props;
+    onEsc && onEsc();
   };
 
   handleMaskClick = (e) => {
@@ -264,7 +264,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
   render() {
     const { visible } = this.props;
     return (
-      <Trigger visible={visible} onClose={this.onClose}>
+      <Trigger visible={visible} onClose={this.onEsc}>
         { this.renderPortal() }
       </Trigger>
     );
