@@ -2,7 +2,7 @@ import BasePickerViewProps from '../picker-view/PropsType';
 import { Locale } from '../locale-provider/PropsType';
 import { ContainerType } from '../utils/dom';
 
-export default interface BasePickerProps extends BasePickerViewProps {
+export default interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange'> {
   visible?: boolean;
   title?: string;
   okText?: string;
