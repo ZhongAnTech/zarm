@@ -1,6 +1,6 @@
 {
   "name": "zarm",
-  "version": "2.5.6",
+  "version": "2.6.0-alpha.1",
   "description": "基于 React 的移动端UI库",
   "tags": [
     "zarm",
@@ -36,12 +36,11 @@
     "dev": "zarm dev",
     "dev:ios": "concurrently \"zarm dev --mode native\" \"react-native run-ios --project-path rnkit/ios\"",
     "dev:android": "concurrently \"zarm dev --mode native\" \"react-native run-android --root rnkit\"",
-    "build:types": "tsc --outDir lib -d --emitDeclarationOnly",
-    "build:es": "rimraf es && zarm build --mode es --path components --out-dir es --copy-files --build-css",
-    "build:lib": "rimraf lib && zarm build --mode lib --path components --out-dir lib --copy-files --build-css",
+    "build:es": "rimraf es && tsc --outDir lib -d --emitDeclarationOnly && zarm build --mode es --path components --out-dir es --copy-files --build-css",
+    "build:lib": "rimraf lib && tsc --outDir lib -d --emitDeclarationOnly && zarm build --mode lib --path components --out-dir lib --copy-files --build-css",
     "build:umd": "rimraf dist && zarm build --mode umd --path components/style/entry.tsx,components/index.tsx --out-dir dist && zarm build --mode umd-ugly --path components/style/entry.tsx,components/index.tsx --out-dir dist",
     "build:rn": "rimraf native && zarm build --mode native --path components --out-dir native",
-    "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:rn && npm run build:types",
+    "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:rn",
     "bundle:ios": "cd rnkit && npm run bundle:ios",
     "bundle:android": "cd rnkit && npm run bundle:android",
     "bundle": "rimraf rnkit/zarm && zarm build --mode native --path components --out-dir rnkit/zarm && npm run bundle:ios && npm run bundle:android",
