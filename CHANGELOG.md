@@ -1,4 +1,9 @@
-# 版本更新日志 
+# 版本更新日志
+
+## v2.6.1
+- Perf
+  - 优化打包结果，减小打包体积。[#6c37b92](https://github.com/ZhongAnTech/zarm/commit/6c37b92d69895c03696e1aaebf1ee2661e679625)
+
 
 ## v2.6.0
 - Bug Fix
