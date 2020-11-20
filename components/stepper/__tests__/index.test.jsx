@@ -2,6 +2,7 @@ import React from 'react';
 import { render, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import Stepper from '../index';
+import Input from '../../input';
 
 describe('Stepper', () => {
   it('renders correctly', () => {
@@ -32,11 +33,11 @@ describe('Stepper', () => {
 
     wrapper.setProps({ value: 0 });
     wrapper.find('.za-stepper__sub').simulate('click');
-    expect(wrapper.find('input').props().value).toBe(0);
+    expect(wrapper.find('.za-input > input').props().value).toBe(0);
 
     wrapper.setProps({ value: 2 });
     wrapper.find('.za-stepper__plus').simulate('click');
-    expect(wrapper.find('input').props().value).toBe(2);
+    expect(wrapper.find(Input).dive().find('input').props().value).toBe(2);
   });
 
   it('receive new value', () => {

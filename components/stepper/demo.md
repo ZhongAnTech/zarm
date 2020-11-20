@@ -47,9 +47,22 @@ const Demo = () => {
       />
 
       <Cell
+        title="步长小数"
+        description={
+          <Stepper step={0.12} defaultValue={0.2} type="number" />
+        }
+      />
+
+      <Cell
         title="禁用状态"
         description={
           <Stepper disabled />
+        }
+      />
+      <Cell
+        title="禁用输入"
+        description={
+          <Stepper disableInput />
         }
       />
     </>

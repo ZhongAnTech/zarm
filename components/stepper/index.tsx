@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import { BigNumber } from 'bignumber.js';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Button from '../button';
 import Icon from '../icon';
+import Input from '../input';
 
 const getValue = (props: StepperProps, defaultValue: number) => {
   if (typeof props.value !== 'undefined') {
@@ -20,9 +22,9 @@ export interface StepperProps extends PropsType {
 }
 
 export interface StepperStates {
-  value: number;
-  prevPropsValue: number;
-  lastValue: number;
+  value: number | string;
+  prevPropsValue: number | string;
+  lastValue: number | string;
 }
 
 export default class Stepper extends PureComponent<StepperProps, StepperStates> {
@@ -33,6 +35,8 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     shape: 'radius',
     disabled: false,
     step: 1,
+    type: 'text',
+    disableInput: false,
   };
 
   state: StepperStates = {
@@ -59,11 +63,11 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
   }
 
   onInputChange = (value: string) => {
-    const _value = Number(value);
+    // const _value = Number(value);
     const { onInputChange } = this.props;
-    this.setState({ value: _value });
+    this.setState({ value });
     if (typeof onInputChange === 'function') {
-      onInputChange(_value);
+      onInputChange(value);
     }
   };
 
@@ -95,7 +99,8 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       return;
     }
 
-    const newValue = Number(value) - step!;
+    const prevValue = new BigNumber(value);
+    const newValue = prevValue.minus(step!).valueOf();
     this.onInputBlur(newValue);
   };
 
@@ -105,8 +110,8 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (this.isPlusDisabled()) {
       return;
     }
-
-    const newValue = Number(value) + step!;
+    const prevValue = new BigNumber(value);
+    const newValue = prevValue.plus(step!).valueOf();
     this.onInputBlur(newValue);
   };
 
@@ -131,13 +136,17 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
   };
 
   render() {
-    const { prefixCls, className, shape, disabled, size } = this.props;
+    const { prefixCls, className, shape, disabled, size, type, disableInput } = this.props;
     const { value } = this.state;
 
     const cls = classnames(prefixCls, className, {
       [`${prefixCls}--${shape}`]: !!shape,
       [`${prefixCls}--${size}`]: !!size,
       [`${prefixCls}--disabled`]: disabled,
+    });
+
+    const inputCls = classnames(`${prefixCls}__input `, {
+      [`${prefixCls}__input--disabled`]: disableInput,
     });
 
     const buttonSize = (size === 'lg') ? 'sm' : 'xs';
@@ -153,12 +162,12 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
         >
           <Icon type="minus" />
         </Button>
-        <input
-          className={`${prefixCls}__input`}
-          type="tel"
-          value={value}
-          disabled={disabled}
-          onChange={(e) => !disabled && this.onInputChange(e.target.value)}
+        <Input
+          className={inputCls}
+          type={type}
+          value={value.toString()}
+          disabled={disabled || disableInput}
+          onChange={(v) => !disabled && this.onInputChange(v!)}
           onBlur={() => !disabled && this.onInputBlur(value)}
         />
         <Button
