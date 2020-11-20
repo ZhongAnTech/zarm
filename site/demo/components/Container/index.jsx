@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { Icon, Radio, Popper } from 'zarm';
-import { darken } from '@site/utils/color';
+import Color from 'color';
 import Context from '@site/utils/context';
 import Events from '@site/utils/events';
 import './style.scss';
@@ -14,7 +14,8 @@ const Container = (props) => {
 
   const setCssVar = (color) => {
     document.documentElement.style.setProperty('--theme-primary', color);
-    document.documentElement.style.setProperty('--theme-primary-dark', darken(color, 0.04));
+    document.documentElement.style.setProperty('--theme-primary-dark', Color(color).darken(0.05));
+    document.documentElement.style.setProperty('--button-primary-shadow-color', Color(color).alpha(0.5).lighten(0.0));
   };
 
   useEffect(() => {
