@@ -1,3 +1,9 @@
+@mixin disaleInput {
+  color: var(--color-text);
+  -webkit-text-fill-color: var(--color-text);
+  cursor: auto;
+}
+
 @include b(stepper) {
   display: flex;
 
@@ -9,9 +15,11 @@
 
     @include m(disabled) {
       input {
-        color: var(--color-text);
-        -webkit-text-fill-color: var(--color-text);
-        cursor: auto;
+        @include disaleInput;
+      }
+
+      @include e(virtual-input) {
+        @include disaleInput;
       }
     }
 
