@@ -5,6 +5,7 @@ import PropsType from './PropsType';
 import Button from '../button';
 import Icon from '../icon';
 import Input from '../input';
+import { InputNumberProps } from '../input/PropsType';
 
 const getValue = (props: StepperProps, defaultValue: number) => {
   if (typeof props.value !== 'undefined') {
@@ -35,7 +36,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     shape: 'radius',
     disabled: false,
     step: 1,
-    type: 'text',
+    type: 'number',
     disableInput: false,
   };
 
@@ -151,6 +152,15 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
 
     const buttonSize = (size === 'lg') ? 'sm' : 'xs';
 
+    const inputProps = {
+      className: inputCls,
+      type,
+      value,
+      disabled: disabled || disableInput,
+      onChange: (v) => !disabled && this.onInputChange(v!),
+      onBlur: () => !disabled && this.onInputBlur(value),
+    };
+
     return (
       <span className={cls}>
         <Button
@@ -163,12 +173,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
           <Icon type="minus" />
         </Button>
         <Input
-          className={inputCls}
-          type={type}
-          value={value.toString()}
-          disabled={disabled || disableInput}
-          onChange={(v) => !disabled && this.onInputChange(v!)}
-          onBlur={() => !disabled && this.onInputBlur(value)}
+          {...inputProps as InputNumberProps}
         />
         <Button
           className={`${prefixCls}__plus`}

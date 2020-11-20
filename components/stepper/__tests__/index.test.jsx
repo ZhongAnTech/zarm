@@ -33,11 +33,11 @@ describe('Stepper', () => {
 
     wrapper.setProps({ value: 0 });
     wrapper.find('.za-stepper__sub').simulate('click');
-    expect(wrapper.find('.za-input > input').props().value).toBe(0);
+    expect(wrapper.find(Input).at(0).props().value).toBe(0);
 
     wrapper.setProps({ value: 2 });
     wrapper.find('.za-stepper__plus').simulate('click');
-    expect(wrapper.find(Input).dive().find('input').props().value).toBe(2);
+    expect(wrapper.find(Input).at(0).props().value).toBe(2);
   });
 
   it('receive new value', () => {
@@ -61,7 +61,7 @@ describe('Stepper', () => {
       />,
     );
 
-    wrapper.find('input').simulate('change', { target: { value: 10 } });
+    wrapper.find(Input).at(0).simulate('change', { target: { value: 10 } });
     expect(onInputChange).toBeCalled();
 
     wrapper.setProps({ value: 10 });
@@ -87,8 +87,8 @@ describe('Stepper', () => {
       />,
     );
 
-    wrapper.find('input').simulate('change', { target: { value: '你好' } });
-    wrapper.find('input').simulate('blur');
+    wrapper.find(Input).at(0).simulate('change', { target: { value: '你好' } });
+    wrapper.find(Input).at(0).simulate('blur');
     expect(onChange).toBeCalledWith(10);
   });
 
@@ -100,11 +100,11 @@ describe('Stepper', () => {
     );
 
     wrapper.setProps({ value: -2 });
-    wrapper.find('input').simulate('blur');
+    wrapper.find(Input).at(0).simulate('blur');
     expect(onChange).toBeCalledWith(0);
 
     wrapper.setProps({ value: 30 });
-    wrapper.find('input').simulate('blur');
+    wrapper.find(Input).at(0).simulate('blur');
     expect(onChange).toBeCalledWith(20);
   });
 });
