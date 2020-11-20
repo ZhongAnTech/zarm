@@ -36,7 +36,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     shape: 'radius',
     disabled: false,
     step: 1,
-    type: 'number',
+    type: 'text',
     disableInput: false,
   };
 
