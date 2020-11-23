@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { BigNumber } from 'bignumber.js';
 import classnames from 'classnames';
 import PropsType from './PropsType';
 import Button from '../button';
@@ -63,6 +62,32 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     return null;
   }
 
+  getPrecision = () => {
+    const { step } = this.props;
+    const stepStr = step?.toString();
+    if (stepStr && stepStr.indexOf('e-') >= 0) {
+      return parseInt(stepStr.slice(stepStr.indexOf('-e')), 10);
+    }
+    let precision = 0;
+    if (stepStr && stepStr.indexOf('.') >= 0) {
+      precision = stepStr.length - stepStr.indexOf('.') - 1;
+    }
+    return precision;
+  };
+
+  getPrecisionFactor = () => {
+    const precision = this.getPrecision();
+    return 10 ** precision;
+  };
+
+  fixedStep = (num) => {
+    if (Number.isNaN(num) || num === '') {
+      return num;
+    }
+    const precision = this.getPrecision();
+    return Number(Number(num).toFixed(precision));
+  };
+
   onInputChange = (value: string) => {
     // const _value = Number(value);
     const { onInputChange } = this.props;
@@ -99,10 +124,9 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (this.isSubDisabled()) {
       return;
     }
-
-    const prevValue = new BigNumber(value);
-    const newValue = prevValue.minus(step!).valueOf();
-    this.onInputBlur(newValue);
+    const precisionFactor = this.getPrecisionFactor();
+    const newValue = (precisionFactor * Number(value) - precisionFactor * step!) / precisionFactor;
+    this.onInputBlur(this.fixedStep(newValue));
   };
 
   onPlusClick = () => {
@@ -111,9 +135,9 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (this.isPlusDisabled()) {
       return;
     }
-    const prevValue = new BigNumber(value);
-    const newValue = prevValue.plus(step!).valueOf();
-    this.onInputBlur(newValue);
+    const precisionFactor = this.getPrecisionFactor();
+    const newValue = (precisionFactor * Number(value) + precisionFactor * step!) / precisionFactor;
+    this.onInputBlur(this.fixedStep(newValue));
   };
 
   isSubDisabled = () => {

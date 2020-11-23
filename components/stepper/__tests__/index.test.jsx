@@ -107,4 +107,21 @@ describe('Stepper', () => {
     wrapper.find(Input).at(0).simulate('blur');
     expect(onChange).toBeCalledWith(20);
   });
+
+  it('decimal step', () => {
+    const onChange = jest.fn();
+    const onInputChange = jest.fn();
+    const wrapper = shallow(
+      <Stepper onChange={onChange} onInputChange={onInputChange} />,
+    );
+
+    wrapper.setProps({ value: 1 });
+    wrapper.setProps({ step: 0.1 });
+    wrapper.find('.za-stepper__sub').simulate('click');
+    expect(wrapper.find(Input).at(0).props().value).toBe(0.9);
+
+    wrapper.setProps({ step: 0.2 });
+    wrapper.find('.za-stepper__plus').simulate('click');
+    expect(wrapper.find(Input).at(0).props().value).toBe(1.1);
+  });
 });
