@@ -80,12 +80,12 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     return 10 ** precision;
   };
 
-  fixedStep = (num) => {
+  fixedStepVal = (num) => {
     if (Number.isNaN(num) || num === '') {
       return num;
     }
     const precision = this.getPrecision();
-    return Number(Number(num).toFixed(precision));
+    return Number(num).toFixed(precision);
   };
 
   onInputChange = (value: string) => {
@@ -104,10 +104,10 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
       value = this.state.lastValue;
     }
     if (min !== null && value < min!) {
-      value = min!;
+      value = this.fixedStepVal(min!);
     }
     if (max !== null && value > max!) {
-      value = max!;
+      value = this.fixedStepVal(max!);
     }
     this.setState({
       value,
@@ -126,7 +126,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     }
     const precisionFactor = this.getPrecisionFactor();
     const newValue = (precisionFactor * Number(value) - precisionFactor * step!) / precisionFactor;
-    this.onInputBlur(this.fixedStep(newValue));
+    this.onInputBlur(this.fixedStepVal(newValue));
   };
 
   onPlusClick = () => {
@@ -137,7 +137,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     }
     const precisionFactor = this.getPrecisionFactor();
     const newValue = (precisionFactor * Number(value) + precisionFactor * step!) / precisionFactor;
-    this.onInputBlur(this.fixedStep(newValue));
+    this.onInputBlur(this.fixedStepVal(newValue));
   };
 
   isSubDisabled = () => {
@@ -179,7 +179,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     const inputProps = {
       className: inputCls,
       type,
-      value,
+      value: this.fixedStepVal(value),
       disabled: disabled || disableInput,
       onChange: (v) => !disabled && this.onInputChange(v!),
       onBlur: () => !disabled && this.onInputBlur(value),
