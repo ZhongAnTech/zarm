@@ -212,7 +212,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 警告框 Alert
 ```jsx
-import { Cell, Button, Alert, Confirm, Modal  } from 'zarm';
+import { Cell, Button, Confirm, Modal  } from 'zarm';
 
 const Demo = () => {
   return (
