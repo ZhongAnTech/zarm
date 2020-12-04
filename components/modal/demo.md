@@ -152,8 +152,6 @@ const Demo = () => {
       <Modal
         title="标题"
         visible={state.hasFooter.visible}
-        closable
-        onCancel={() => toggle('hasFooter')}
         footer={
           <Button
             block

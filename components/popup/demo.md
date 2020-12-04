@@ -146,7 +146,7 @@ const Demo = () => {
         direction="right"
         afterClose={() => console.log('关闭')}
       >
-        <div className="popup-box">
+        <div className="popup-box-right">
           <Button size="xs" onClick={() => toggle('popRight')}>关闭弹层</Button>
         </div>
       </Popup>

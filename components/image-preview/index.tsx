@@ -14,14 +14,14 @@ export interface ImagePreviewProps extends PropsType {
   locale?: Locale['ImagePreview'];
 }
 
-enum LoadStatus {
+enum LOAD_STATUS {
   before = 'loadBefore',
   start = 'loadStart',
   end = 'loadEnd',
   after = 'loadAfter',
 }
 
-type Images = Array<Partial<ImageSrc> & { loaded?: LoadStatus }>;
+type Images = Array<Partial<ImageSrc> & { loaded?: LOAD_STATUS }>;
 
 export interface ImagePreviewState {
   images: Images;
@@ -43,7 +43,7 @@ const formatImages = (images: Array<ImageSrc> | Array<string>): Images => {
       previewImages.push({
         url: image.url,
         originUrl: image.originUrl,
-        loaded: LoadStatus.before,
+        loaded: LOAD_STATUS.before,
       });
     }
   });
@@ -119,19 +119,19 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
   loadOrigin = () => {
     const { currentIndex = 0, images } = this.state;
     const { originUrl, loaded } = images[currentIndex];
-    if (loaded !== LoadStatus.before || !originUrl) {
+    if (loaded !== LOAD_STATUS.before || !originUrl) {
       return;
     }
-    images[currentIndex].loaded = LoadStatus.start;
+    images[currentIndex].loaded = LOAD_STATUS.start;
     this.setState({ images });
 
     const img = new Image();
     img.onload = () => {
-      images[currentIndex].loaded = LoadStatus.end;
+      images[currentIndex].loaded = LOAD_STATUS.end;
       images[currentIndex].url = originUrl;
       this.setState({ images });
       setTimeout(() => {
-        images[currentIndex].loaded = LoadStatus.after;
+        images[currentIndex].loaded = LOAD_STATUS.after;
         this.setState({ images });
       }, 1500);
     };
@@ -236,10 +236,10 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
           </Carousel>
         </div>
         <div className={`${prefixCls}__footer`}>
-          {loaded && this.showOriginButton(images, activeIndex) && (loaded !== LoadStatus.after)
+          {loaded && this.showOriginButton(images, activeIndex) && (loaded !== LOAD_STATUS.after)
             ? (
               <button className={`${prefixCls}__origin__button`} onClick={this.loadOrigin}>
-                {loaded === LoadStatus.start ? <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" /> : ''}
+                {loaded === LOAD_STATUS.start ? <ActivityIndicator className={`${prefixCls}__loading`} type="spinner" /> : ''}
                 {locale![loaded]}
               </button>
             )

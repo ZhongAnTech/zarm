@@ -1,3 +1,4 @@
+import React from 'react';
 import { ContainerType } from '../utils/dom';
 
 export type PopperPlacement =

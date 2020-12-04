@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default interface BaseNavbarProps {
   title?: React.ReactNode;
   left?: React.ReactNode;

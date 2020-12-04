@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default interface BasePropsType {
   type?: string;
   theme?: 'default' | 'primary' | 'success' | 'warning' | 'danger';
