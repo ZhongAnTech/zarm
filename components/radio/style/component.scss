@@ -41,14 +41,14 @@
     height: var(--radio-size);
     border: 1px solid var(--radio-border-color);
     border-radius: var(--radio-radius);
-    background: var(--color-text-inverse);
+    background: var(--checkbox-background-color);
     transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
 
     &:before {
       content: '';
       width: calc(var(--radio-size) / 3.5);
       height: calc(var(--radio-size) / 2);
-      border: calc(var(--radio-size) / 9) solid var(--color-text-inverse);
+      border: calc(var(--radio-size) / 9) solid var(--radio-arrow-color);
       border-top: 0;
       border-left: 0;
       margin-top: calc(var(--radio-size) / -12);
@@ -82,13 +82,13 @@
     }
 
     @include e(inner) {
-      background-color: var(--background-disabled);
+      background-color: var(--radio-background-color-disabled);
     }
 
     @include m(checked) {
       @include e(inner) {
         border-color: var(--radio-border-color);
-        background-color: var(--background-disabled);
+        background-color: var(--radio-background-color-disabled);
 
         &:before {
           border-color: var(--radio-disabled-color);

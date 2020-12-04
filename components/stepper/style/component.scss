@@ -17,6 +17,7 @@
     margin: 0 var(--stepper-input-margin-h-md);
     padding: 0 var(--stepper-input-padding-h-md);
     font-size: var(--stepper-input-font-size-md);
+    background: var(--stepper-input-background);
     color: var(--color-text);
     text-align: center;
     border: r(1) solid var(--border-color);
@@ -27,7 +28,6 @@
 
   @include m(disabled) {
     @include e(input) {
-      background: #fff;
       color: var(--stepper-input-disabled);
       opacity: var(--opacity-disabled);
     }

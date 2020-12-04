@@ -23,10 +23,10 @@
     );
     @include onepx(top);
 
-    background-color: var(--button-default-background);
+    background-color: var(--confirm-button-background);
 
     &:active {
-      background-color: var(--background-active);
+      background-color: var(--confirm-button-active-background);
     }
 
     &:not(:first-of-type) {

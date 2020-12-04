@@ -29,7 +29,7 @@
       height: var(--slider-line-dot-width);
       margin-top: calc((var(--slider-line-dot-width) + var(--slider-line-height)) / -2);
       margin-left: calc(var(--slider-line-dot-width) / -2);
-      background-color: #fff;
+      background-color: var(--slider-line-dot-color);
       border: 1px solid var(--slider-line-background);
       border-radius: 50%;
       cursor: pointer;
@@ -67,7 +67,7 @@
   @include e(marks) {
     position: absolute;
     font-size: var(--slider-mark-size);
-    top: 10px;
+    top: r(10);
     left: 0;
     right: 0;
     color: var(--slider-line-background);
@@ -90,6 +90,11 @@
       height: var(--slider-handle-size-small);
       margin-top: calc((var(--slider-handle-size-small) + var(--slider-line-height)) / -2);
       margin-left: calc(var(--slider-handle-size-small) / -2);
+
+      @include e(handle__shadow) {
+        width: var(--slider-handle-size-small);
+        height: var(--slider-handle-size-small);
+      }
     }
   }
 
@@ -140,8 +145,8 @@
 
       @include e(marks) {
         top: 0;
-        left: 15px;
-        width: 20px;
+        left: r(15);
+        width: r(20);
         height: 100%;
       }
 

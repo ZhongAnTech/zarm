@@ -24,10 +24,10 @@
     @include onepx(top);
 
     color: var(--theme-primary);
-    background-color: var(--button-default-background);
+    background-color: var(--alert-button-background);
 
     &:active {
-      background-color: var(--background-active);
+      background-color: var(--alert-button-active-background);
     }
   }
 }

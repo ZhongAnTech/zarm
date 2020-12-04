@@ -1,8 +1,4 @@
 @include b(loading) {
-  // display: none;
-  // position: fixed;
-  // left: 0;
-  // top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,7 +6,6 @@
   height: 100%;
   overflow: auto;
   user-select: none;
-  // z-index: var(--zindex-loading);
 
   @include m(open) {
     display: flex;
@@ -27,7 +22,7 @@
     height: r(80);
     padding: r(20) r(15);
     border-radius: var(--radius-md);
-    background: rgba(0, 0, 0, var(--opacity-toast));
-    color: #fff;
+    background: var(--loading-background);
+    color: var(--color-text);
   }
 }

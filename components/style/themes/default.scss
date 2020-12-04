@@ -1,4 +1,4 @@
-@import "../core/index.scss";
+@import '../core/index.scss';
 
 :root {
   @include defineColorHSL(--theme-default, 0, 0%, 90%);
@@ -69,9 +69,11 @@
   --box-shadow-light: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
   --box-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
 
-  // components
+  // Components
 
   // ActionSheet
+  --action-sheet-background: #fff;
+  --action-sheet-active-background: var(--background-active);
   --action-sheet-margin: 0;
   --action-sheet-item-height: 50px;
   --action-sheet-item-font-size: 16px;
@@ -80,10 +82,13 @@
   --activity-indicator-size-md: 20px;
   --activity-indicator-size-lg: 32px;
   --activity-indicator-path-color: #e6e6e6;
+  --activity-indicator-spinner-color: #989697;
 
   // Alert
   --alert-button-height: 50px;
   --alert-button-font-size: 18px;
+  --alert-button-background: var(--button-default-background);
+  --alert-button-active-background: var(--background-active);
 
   // Badge
   --badge-height: 14px;
@@ -157,8 +162,7 @@
   --calendar-section-padding: 15px; // 两边留白间距
   --calendar-day-fontsize: 16px; // 月份文字大小
   --calendar-day-title-fontsize: 17px; // 月份title文字大小
-  --calendar-day-background: #fff; // 月份文字背景颜色
-  --calendar-day-color: var(--color-text); // 月份文字颜色
+  --calendar-day-color: var(--color-text); // 月份日期文字颜色
   --calendar-day-today-background: var(--theme-primary-lighter); // 日期今天选中背景颜色
   --calendar-day-today-color: var(--theme-primary); // 日期今天选中颜色
   --calendar-day-selected-background: var(--theme-primary); // 日期文字选中背景颜色
@@ -180,6 +184,7 @@
   // Cell
   --cell-height: 52px;                                    // 最小高度
   --cell-background: #fff;                              // 背景色
+  --cell-background-active: var(--background-active);     // 激活背景色
   --cell-line-padding-left: 16px;                         // 分隔线左边距
   --cell-padding-h: 16px;                                 // 水平边内距
   --cell-padding-v: 15px;                                 // 纵向边内距
@@ -194,10 +199,13 @@
   --cell-arrow-border-width: 2px;                         // 箭头粗细
 
   // Checkbox
+  --checkbox-background-color: var(--color-text-inverse);
+  --checkbox-background-color-disabled: var(--background-disabled);
   --checkbox-size: 18px;
   --checkbox-radius: var(--radius-md);
   --checkbox-border-color: var(--border-color);
   --checkbox-disabled-color: #bcbcbc;
+  --checkbox-arrow-color: var(--color-text-inverse);
 
   // Collapse
   --collapse-height: 52px;
@@ -208,9 +216,12 @@
   // Confirm
   --confirm-button-height: 50px;
   --confirm-button-font-size: 18px;
+  --confirm-button-background: var(--button-default-background);
+  --confirm-button-active-background: var(--background-active);
 
   // Input
   --input-clear-icon-width: 16px;
+  --input-clear-icon-color: #bcbcbc;
   --input-padding-v: var(--cell-padding-v);
   --input-cursor-color: #597cf6;
   --input-cursor-width: 2px;
@@ -219,9 +230,16 @@
   --input-height: 28px;
   --input-line-height: var(--cell-title-line-height);
 
+  // ImagePreview
+  --image-preview-origin-button-background: #2d2d2d;
+
   // Keyboard
+  --keyboard-background: #fff;
   --keyboard-item-height: 52px;
   --keyboard-item-font-size: 30px;
+
+  // Loading
+  --loading-background: rgba(0, 0, 0, var(--opacity-toast));
 
   // Message
   --message-min-height-md: 29px;
@@ -238,6 +256,9 @@
   // Modal
   --modal-background: #fff;
   --modal-title-font-size: 18px;
+  --modal-title-color: #333;
+  --modal-close-color: #ccc;
+  --modal-close-active-color: #999;
 
   // NavBar
   --nav-bar-color: #fdfdfd;
@@ -252,28 +273,25 @@
   --panel-header-font-size: 14px;
   --panel-body-color: var(--color-text);
   --panel-body-font-size: 15px;
+  --panel-body-background: #fff;
 
   // Picker
+  --picker-background: #fff;
+  --picker-mask-background-start: rgba(255, 255, 255, 0.4);
+  --picker-mask-background-end: rgba(255, 255, 255, 0.8);
   --picker-header-height: 45px;
   --picker-header-font-size: 16px;
-  // --picker-stackitem-height: r(35);
+  --picker-header-background: #f1f1f1;
+  --picker-line: #ebebeb;
 
   // Progress
   --progress-background: #f2f2f2;
-  //--progress-circle-diameter: 150px;
-  // -height-#{size} 仅针对type: 'line'
   --progress-width-lg: 100%;
   --progress-width-md: 100%;
   --progress-width-sm: 140px;
-  // -size-#{size} 同时针对type: 'semi-circle' | 'circle'
   --progress-size-lg: 200px;
   --progress-size-md: 150px;
   --progress-size-sm: 80px;
-  // -width-#{size} 针对 weight: 'bold' | 'normal' | 'thin'
-  //--progress-weight-lg: 10px;
-  //--progress-weight-md: 8px;
-  //--progress-weight-sm: 4px;
-  // 同时针对type: 'circle' 和 'semi-circle'
   --progress-font-size-circle-lg: 30px;
   --progress-font-size-circle-md: 24px;
   --progress-font-size-circle-sm: 18px;
@@ -283,19 +301,25 @@
   --pull-control-font-size: 14px;
 
   // Radio
+  --radio-background-color: var(--color-text-inverse);
+  --radio-background-color-disabled: var(--background-disabled);
   --radio-size: 18px;
   --radio-radius: var(--radius-circle);
   --radio-border-color: var(--border-color);
   --radio-disabled-color: #bcbcbc;
+  --radio-arrow-color: var(--color-text-inverse);
 
   // SearchBar
   --search-bar-font-size: 14px;
   --search-bar-icon-size: 18px;
+  --search-bar-background: #fff;
+  --search-bar-inner-background: #f2f2f2;
 
   // Slider
   --slider-line-background: var(--border-color);
   --slider-line-height: 2px;
   --slider-line-dot-width: 6px;
+  --slider-line-dot-color: #fff;
   --slider-vertical-line-width: 2px;
   --slider-handle-size: 24px;
   --slider-handle-size-small: 16px;
@@ -305,6 +329,7 @@
   --slider-handle-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 
   // Stepper
+  --stepper-input-background: #fff;
   --stepper-height-md: 28px;
   --stepper-height-lg: 36px;
   --stepper-icon-font-size-md: 12px;
@@ -322,11 +347,12 @@
   // Switch
   --switch-width: 53px;
   --switch-height: 32px;
+  --switch-handle-size: 26px;
   // --switch-width-sm: 41px;
   // --switch-height-sm: 21px;
   --switch-border-color: var(--border-color);
-  --switch-background: #fff;
-
+  --switch-background: var(--border-color);
+  --switch-handle-background: #fff;
   // Tabs
   --tabs-height: 45px;
   --tabs-item-font-size: var(--font-size-lg);
@@ -336,6 +362,7 @@
 
   // Toast
   --toast-border-radius: 6px;
+  --toast-background: rgba(0, 0, 0, var(--opacity-toast));
   --toast-color: var(--color-text-inverse);
   --toast-font-size: 13px;
 
@@ -345,6 +372,7 @@
   --tooltip-arrow-size: 4px;
   --tooltip-padding-v: var(--padding-v-xs);
   --tooltip-padding-h: var(--padding-h-xs);
+  --tooltip-background: rgba(0, 0, 0, var(--opacity-tooltip));
 
   // Tabbar
   --tabbar-height: 50px;
@@ -357,6 +385,7 @@
   --wheel-item-height: 34px;
   --wheel-item-rows: 5;
   --wheel-item-font-size: 18px;
+  --wheel-color: var(--color-text);
 
   // Icon
   --icon-font-size-sm: 16px;
@@ -364,7 +393,9 @@
   --icon-font-size-lg: 32px;
   --icon-theme-default: var(--color-text);
 
-  //StackPicker
+  // StackPicker
+  --stack-picker-background: #fff;
+  --stack-picker-shadow: 0 0 10px rgba(0, 0, 0, .3);
   --stack-picker-error: #ff5050;
   --stack-picker-stack-item-font-size: 16px;
   --stack-picker-crumbs-line-height: 24px;

@@ -12,7 +12,7 @@
 
   @include e(body) {
     position: relative;
-    background: #fff;
+    background: var(--panel-body-background);
     font-size: var(--panel-body-font-size);
     color: var(--color-text);
     @include onepx(top bottom);
