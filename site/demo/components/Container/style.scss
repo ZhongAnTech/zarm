@@ -16,7 +16,7 @@
       margin-left: r(10);
     }
 
-    .color-pick {
+    .setting {
       width: r(20);
       height: r(20);
       border: 4px solid #fff;
@@ -33,19 +33,28 @@
   }
 }
 
-.color-pick-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  margin: 0;
+.setting-container {
   margin-top: r(8);
   padding: r(8);
   background: #fff;
   border-radius: r(4);
   box-shadow: 0 r(2) r(8) 0 rgba(0, 0, 0, 0.1);
+}
+
+.themes {
+  display: block;
+}
+
+.colors {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
   li {
+    display: inline-block;
     width: r(25);
     height: r(25);
     border-radius: r(2);
@@ -59,4 +68,16 @@
 
 .za-popper {
   z-index: 1500;
+}
+
+@at-root {
+  body[data-theme='dark'] {
+    .setting {
+      border-color: #2b2c2d;
+    }
+
+    .setting-container {
+      background: #2b2c2d;
+    }
+  }
 }

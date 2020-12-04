@@ -13,6 +13,11 @@ body {
   color: #343434;
   -webkit-font-smoothing: subpixel-antialiased;
   font-feature-settings: 'tnum';
+
+  &[data-theme='dark'] {
+    background-color: #000;
+    color: rgba(255, 255, 255, 0.85);
+  }
 }
 
 a {

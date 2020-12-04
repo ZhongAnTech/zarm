@@ -5,7 +5,6 @@
     display: flex;
     justify-content: flex-start;
     padding: r(25) 0 0 0;
-    background: #fff;
     width: 100%;
     flex-flow: wrap;
 
@@ -17,7 +16,6 @@
       &-item {
         width: r(24);
         height: r(24);
-        background: #ddd;
       }
     }
   }
