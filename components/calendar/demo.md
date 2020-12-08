@@ -4,38 +4,31 @@
 
 ```jsx
 import { useState } from 'react';
-import { Button, Select, DateSelect, Icon, Input, Cell, Calendar } from 'zarm';
+import { Radio, DateSelect, Cell, Calendar } from 'zarm';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
   const [multiple, setMultiple] = useState(true);
   const [value, setValue] = useState(['2020-07-29', '2020-08-04']);
   const [min, setMin] = useState('2017-12-29');
   const [max, setMax] = useState('2020-08-04');
+  const [custom, setCustom] = useState(false);
 
   return (
     <>
-      <Cell title="multiple">
-        <Select
-          visible={visible}
-          placeholder="multiple"
+      <Cell title="是否多选">
+        <Radio.Group
+          compact
+          type="button"
           value={multiple}
-          dataSource={[
-            {
-              value: false,
-              label: '单选'
-            },
-            {
-              value: true,
-              label: '双选'
-            }
-          ]}
-          onOk={(selected) => {
-            setMultiple(!!selected[0].value);
+          onChange={(value) => {
+            setMultiple(value);
           }}
-        />
+        >
+          <Radio value={false}>单选</Radio>
+          <Radio value={true}>双选</Radio>
+        </Radio.Group>
       </Cell>
-      <Cell title="min">
+      <Cell title="最小日期">
         <DateSelect
           placeholder="Please input start date"
           mode="date"
@@ -43,7 +36,7 @@ const Demo = () => {
           onOk={setMin}
         />
       </Cell>
-      <Cell title="max">
+      <Cell title="最大日期">
         <DateSelect
           placeholder="Please input end date"
           mode="date"
@@ -51,14 +44,26 @@ const Demo = () => {
           onOk={setMax}
         />
       </Cell>
+      <Cell title="自定义渲染">
+        <Radio.Group
+          compact
+          type="button"
+          value={custom}
+          onChange={(value) => {
+            setCustom(value);
+          }}
+        >
+          <Radio value={false}>否</Radio>
+          <Radio value={true}>是</Radio>
+        </Radio.Group>
+      </Cell>
       <Calendar
-        visible={visible}
         multiple={multiple}
         value={value}
         min={min}
         max={max}
         dateRender={(date) => {
-          if (/(0|6)/.test(date.getDay())) {
+          if (custom && /(0|6)/.test(date.getDay())) {
             return (
               <div className="custom">
                 <div className="custom__date">{date.getDate()}</div>
@@ -68,7 +73,10 @@ const Demo = () => {
           }
           return date.getDate();
         }}
-        disabledDate={(date) => /(0|6)/.test(date.getDay())}
+        disabledDate={(date) => {
+          if (custom) return /(0|6)/.test(date.getDay());
+          return false;
+        }}
         onChange={(value) => {
           setValue(value);
           console.log('onChange', value);
