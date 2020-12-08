@@ -24,10 +24,10 @@
         position: absolute;
         width: var(--cell-arrow-length);
         height: var(--cell-arrow-length);
-        top: calc(var(--collapse-padding) + 3px);
+        top: calc(var(--cell-padding-v) + 3px);
         right: r(2);
-        border-right: r(2) solid var(--collapse-arrow-color);
-        border-bottom: r(2) solid var(--collapse-arrow-color);
+        border-right: r(2) solid var(--cell-arrow-color);
+        border-bottom: r(2) solid var(--cell-arrow-color);
         transform: rotate(45deg);
         transform-origin: 50% 50%;
       }

@@ -8,9 +8,11 @@ exports[`Collapse renders correctly 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -31,9 +33,11 @@ exports[`Collapse renders correctly 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -54,9 +58,11 @@ exports[`Collapse renders correctly 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div
@@ -84,9 +90,11 @@ exports[`Collapse renders correctly with activeKey 1`] = `
     class="za-collapse-item za-collapse-item--active"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -107,9 +115,11 @@ exports[`Collapse renders correctly with activeKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -130,9 +140,11 @@ exports[`Collapse renders correctly with activeKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div
@@ -160,9 +172,11 @@ exports[`Collapse renders correctly with animated 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -183,9 +197,11 @@ exports[`Collapse renders correctly with animated 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -206,9 +222,11 @@ exports[`Collapse renders correctly with animated 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div
@@ -237,9 +255,11 @@ exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -260,9 +280,11 @@ exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
     class="za-collapse-item za-collapse-item--active"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -283,9 +305,11 @@ exports[`Collapse renders correctly with array defaultActiveKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div
@@ -314,9 +338,11 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -337,9 +363,11 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -360,9 +388,11 @@ exports[`Collapse renders correctly with collapse mode 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div
@@ -390,9 +420,11 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -413,9 +445,11 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
     class="za-collapse-item za-collapse-item--active"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -436,9 +470,11 @@ exports[`Collapse renders correctly with defaultActiveKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div
@@ -466,9 +502,11 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -489,9 +527,11 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -512,9 +552,11 @@ exports[`Collapse renders correctly with number activeKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div
@@ -542,9 +584,11 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item1
       </div>
       <div
@@ -565,9 +609,11 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item2
       </div>
       <div
@@ -588,9 +634,11 @@ exports[`Collapse renders correctly with number defaultActiveKey 1`] = `
     class="za-collapse-item"
   >
     <div
-      class="za-collapse-item__title"
+      class="za-collapse-item__header"
     >
-      <div>
+      <div
+        class="za-collapse-item__title"
+      >
         Header of Item3
       </div>
       <div

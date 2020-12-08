@@ -199,17 +199,19 @@
   --cell-arrow-border-width: 2px;                         // 箭头粗细
 
   // Checkbox
-  --checkbox-background-color: var(--color-text-inverse);
-  --checkbox-background-color-disabled: var(--background-disabled);
   --checkbox-size: 18px;
   --checkbox-radius: var(--radius-md);
+  --checkbox-background: var(--color-text-inverse);
   --checkbox-border-color: var(--border-color);
+  --checkbox-active-border-color: var(--theme-primary);
+  --checkbox-disabled-background: var(--background-disabled);
   --checkbox-disabled-color: #bcbcbc;
   --checkbox-arrow-color: var(--color-text-inverse);
 
   // Collapse
   --collapse-height: 52px;
-  --collapse-padding: 16px;
+  --collapse-padding-h: 16px;
+  --collapse-padding-v: 15px;
   --collapse-arrow-color: #bcbcbc;
   --collapse-arrow-disabled-color: #eee;
 
@@ -281,7 +283,7 @@
   --picker-mask-background-end: rgba(255, 255, 255, 0.8);
   --picker-header-height: 45px;
   --picker-header-font-size: 16px;
-  --picker-header-background: #f1f1f1;
+  --picker-header-background: #f7f7f7;
   --picker-line: #ebebeb;
 
   // Progress
@@ -301,11 +303,12 @@
   --pull-control-font-size: 14px;
 
   // Radio
-  --radio-background-color: var(--color-text-inverse);
-  --radio-background-color-disabled: var(--background-disabled);
   --radio-size: 18px;
   --radio-radius: var(--radius-circle);
+  --radio-background: var(--color-text-inverse);
   --radio-border-color: var(--border-color);
+  --radio-active-border-color: var(--theme-primary);
+  --radio-disabled-background: var(--background-disabled);
   --radio-disabled-color: #bcbcbc;
   --radio-arrow-color: var(--color-text-inverse);
 

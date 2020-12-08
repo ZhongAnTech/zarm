@@ -1,4 +1,7 @@
 @include b(collapse) {
+  position: relative;
+  @include onepx(top bottom);
+
   @include m(animated) {
     @include b(collapse-item) {
       &__content {
@@ -11,20 +14,20 @@
 @include b(collapse-item) {
   font-size: r(15);
 
-  &:first-child {
-    @include b(collapse-item) {
-      @include e(title) {
-        @include onepx(top bottom);
-      }
+  @include e(header) {
+    position: relative;
+    display: flex;
+    min-height: var(--collapse-height);
+    padding: var(--collapse-padding-v) var(--collapse-padding-h);
+    @include onepx(bottom);
+
+    &:after {
+      left: var(--cell-line-padding-left);
     }
   }
 
   @include e(title) {
-    position: relative;
-    height: var(--collapse-height);
-    line-height: var(--collapse-height);
-    padding: 0 var(--collapse-padding);
-    @include onepx(bottom);
+    flex: 1;
   }
 
   @include e(content) {
@@ -32,26 +35,46 @@
     height: 0;
     overflow: hidden;
     font-size: r(13);
+    color: var(--color-text-caption);
+    will-change: height;
     @include onepx(bottom);
+
+    &:after {
+      left: var(--cell-line-padding-left);
+    }
+  }
+
+  @include e(content__inner) {
+    padding: var(--padding-v-md) var(--padding-h-md);
   }
 
   @include e(arrow) {
-    position: absolute;
-    width: r(10);
-    height: r(10);
-    top: r(17);
-    right: calc(var(--collapse-padding) + 2px);
-    border-right: r(2) solid var(--collapse-arrow-color);
-    border-bottom: r(2) solid var(--collapse-arrow-color);
-    transform: rotate(45deg);
-    transform-origin: 50% 50%;
-    transition: transform 0.15s ease-out;
+    margin-top: r(-3);
+    margin-left: r(5);
+    margin-right: r(2);
+
+    &:after {
+      display: inline-block;
+      content: '';
+      border-right: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      border-top: var(--cell-arrow-border-width) solid var(--cell-arrow-color);
+      width: var(--cell-arrow-length);
+      height: var(--cell-arrow-length);
+      transform: rotate(135deg);
+      transition: all 0.15s ease-out;
+    }
   }
 
   @include m(disabled) {
+    @include e(title) {
+      color: var(--color-text-disabled);
+    }
+
     @include e(arrow) {
-      border-right: r(2) solid var(--collapse-arrow-disabled-color);
-      border-bottom: r(2) solid var(--collapse-arrow-disabled-color);
+      &:after {
+        border-right-color: var(--collapse-arrow-disabled-color);
+        border-top-color: var(--collapse-arrow-disabled-color);
+      }
     }
   }
 
@@ -61,17 +84,10 @@
     }
 
     @include e(arrow) {
-      transform: rotate(-135deg);
-      transform-origin: 60% 75%;
-    }
-  }
+      margin-top: 0;
 
-  @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 3dppx) {
-    @include e(title, content) {
       &:after {
-        width: 200%;
-        height: 200%;
-        transform: scale(0.5);
+        transform: rotate(-45deg);
       }
     }
   }

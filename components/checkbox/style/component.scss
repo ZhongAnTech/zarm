@@ -9,7 +9,7 @@
 
   &:not(&--disabled):hover {
     @include e(inner) {
-      border-color: var(--theme-primary);
+      border-color: var(--checkbox-active-border-color);
     }
   }
 
@@ -41,7 +41,7 @@
     height: var(--checkbox-size);
     border: 1px solid var(--checkbox-border-color);
     border-radius: var(--checkbox-radius);
-    background: var(--checkbox-background-color);
+    background: var(--checkbox-background);
     transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
 
     &:before {
@@ -106,13 +106,13 @@
     }
 
     @include e(inner) {
-      background-color: var(--checkbox-background-color-disabled);
+      background-color: var(--checkbox-disabled-background);
     }
 
     @include m(checked) {
       @include e(inner) {
         border-color: var(--checkbox-border-color);
-        background-color: var(--checkbox-background-color-disabled);
+        background-color: var(--checkbox-disabled-background);
 
         &:before {
           border-color: var(--checkbox-disabled-color);
