@@ -14,11 +14,9 @@
 
   @include b(popup) {
     position: relative;
-    // margin: r(60) auto;
     background-color: var(--modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
-    // z-index: calc(var(--zindex-modal) + 1);
   }
 
   @include m(radius) {

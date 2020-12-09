@@ -10,6 +10,13 @@
     }
   }
 
+  @include b(popup) {
+    position: relative;
+    background-color: var(--modal-background);
+    box-shadow: 0 r(7) r(21) var(--color-shadow);
+    overflow: hidden;
+  }
+
   @include e(button) {
     display: block;
     position: relative;
@@ -35,6 +42,12 @@
 
     @include m(ok) {
       color: var(--theme-primary);
+    }
+  }
+
+  @include m(radius) {
+    @include b(popup) {
+      border-radius: var(--radius-md);
     }
   }
 }

@@ -18,9 +18,9 @@ export interface PortalProps extends PropsType {
 export default class Portal extends PureComponent<PortalProps, any> {
   private enterTimer: number;
 
-  private mountNode: HTMLElement;
+  private mountNode?: HTMLElement;
 
-  private _container: HTMLDivElement;
+  private _container?: HTMLDivElement;
 
   private popup: HTMLDivElement | null;
 
@@ -39,7 +39,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
     this.state = {
       isPending: false,
     };
-    this.createContainer();
+    if (props.mountContainer !== false) {
+      this.createContainer();
+    }
   }
 
   componentDidMount() {
@@ -66,7 +68,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
 
     clearTimeout(this.enterTimer);
-    if (this._container) {
+    if (this._container && this.mountNode) {
       this.mountNode.removeChild(this._container);
     }
   }
@@ -79,7 +81,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { afterClose, afterOpen, handlePortalUnmount, visible, prefixCls } = this.props;
     const animationState = visible ? 'enter' : 'leave';
     if (animationState === 'leave') {
-      this._container.classList.add(`${prefixCls}--hidden`);
+      this._container && this._container.classList.add(`${prefixCls}--hidden`);
       if (typeof handlePortalUnmount === 'function') {
         handlePortalUnmount();
       }
@@ -220,7 +222,7 @@ export default class Portal extends PureComponent<PortalProps, any> {
     const { visible, prefixCls } = this.props;
     if (visible) {
       if (this.popup) {
-        this._container.classList.remove(`${prefixCls}--hidden`);
+        this._container && this._container.classList.remove(`${prefixCls}--hidden`);
         this.setState({
           isPending: true,
         });
@@ -235,23 +237,33 @@ export default class Portal extends PureComponent<PortalProps, any> {
     }
   };
 
-  renderPortal = (): ReactPortal | null => {
+  renderPortal = (): ReactPortal | JSX.Element | null => {
+    const { mountContainer } = this.props;
     if (!canUseDOM) {
       return null;
     }
-    if (!IS_REACT_16) {
-      ReactDOM.unstable_renderSubtreeIntoContainer(
-        this,
-        this.getComponent(),
-        this._container,
-      );
-      return null;
+    if (mountContainer === false) {
+      return this.getComponent();
     }
-    return ReactDOM.createPortal(this.getComponent(), this._container);
+    if (this._container) {
+      if (!IS_REACT_16) {
+        ReactDOM.unstable_renderSubtreeIntoContainer(
+          this,
+          this.getComponent(),
+          this._container,
+        );
+        return null;
+      }
+      return ReactDOM.createPortal(this.getComponent(), this._container);
+    }
+    return null;
   };
 
   createContainer = () => {
     const { className = '', prefixCls, mountContainer } = this.props;
+    if (mountContainer === false) {
+      return;
+    }
     if (!this._container) {
       this._container = document.createElement('div');
       this._container.className += `${prefixCls}-container ${className}`;
