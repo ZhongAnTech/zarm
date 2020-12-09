@@ -8,28 +8,8 @@ exports[`Tooltip renders correctly 1`] = `
   prefixCls="za-tooltip"
   title="hello"
 >
-  <Popper
-    animationDuration={300}
-    animationType="zoomFade"
-    arrowPointAtCenter={false}
-    content=""
-    destroy={true}
-    direction="top"
-    hasArrow={true}
-    mouseEnterDelay={150}
-    mouseLeaveDelay={100}
-    onVisibleChange={[Function]}
-    prefixCls="za-tooltip"
-    title="hello"
-    trigger="hover"
-    visible={false}
-  >
-    <span
-      onMouseLeave={[Function]}
-      onMouseOver={[Function]}
-    >
-      foo
-    </span>
-  </Popper>
+  <span>
+    foo
+  </span>
 </Tooltip>
 `;

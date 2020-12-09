@@ -152,8 +152,6 @@ const Demo = () => {
       <Modal
         title="标题"
         visible={state.hasFooter.visible}
-        closable
-        onCancel={() => toggle('hasFooter')}
         footer={
           <Button
             block
@@ -212,7 +210,7 @@ ReactDOM.render(<Demo />, mountNode);
 
 ## 警告框 Alert
 ```jsx
-import { Cell, Button, Alert, Confirm, Modal  } from 'zarm';
+import { Cell, Button, Confirm, Modal  } from 'zarm';
 
 const Demo = () => {
   return (

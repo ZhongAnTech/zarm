@@ -1,5 +1,5 @@
 @include b(search-bar) {
-  background: #fff;
+  background: var(--search-bar-background);
 
   @include e(form) {
     height: r(44);
@@ -16,7 +16,7 @@
     align-items: center;
     padding: 0 r(8);
     height: r(28);
-    background: #f2f2f2;
+    background: var(--search-bar-inner-background);
     overflow: hidden;
 
     @include e(icon) {

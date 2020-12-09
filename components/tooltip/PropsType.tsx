@@ -1,3 +1,4 @@
+import React from 'react';
 import { PopperPlacement, PopperTrigger } from '../popper/PropsType';
 
 export default interface PropsType {

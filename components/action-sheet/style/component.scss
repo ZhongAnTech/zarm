@@ -13,7 +13,7 @@
 
   @include e(actions, cancel) {
     overflow: hidden;
-    background-color: var(--color-text-inverse);
+    background-color: var(--action-sheet-background);
   }
 
   @include e(cancel) {
@@ -29,7 +29,7 @@
     @include button-base();
 
     &:active {
-      background-color: var(--background-active);
+      background-color: var(--action-sheet-active-background);
     }
 
     &:not(:first-of-type) {

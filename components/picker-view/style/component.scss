@@ -4,7 +4,7 @@
   width: 100%;
   height: r(210);
   padding: r(20) 0;
-  background: #fff;
+  background: var(--picker-background);
 
   @include e(mask) {
     width: 100%;
@@ -15,7 +15,7 @@
     @include m(top) {
       position: absolute;
       top: 0;
-      background: linear-gradient(to top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+      background: linear-gradient(to top, var(--picker-mask-background-start), var(--picker-mask-background-end));
 
       &:after {
         content: '';
@@ -24,7 +24,7 @@
         left: 0;
         bottom: 0;
         width: 100%;
-        border-bottom: 1px solid #ebebeb;
+        border-bottom: 1px solid var(--picker-line);
         transform-origin: 0 bottom;
       }
     }
@@ -32,13 +32,13 @@
     @include m(bottom) {
       position: absolute;
       bottom: 0;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8));
+      background: linear-gradient(to bottom, var(--picker-mask-background-start), var(--picker-mask-background-end));
 
       &:before {
         content: '';
         display: block;
         position: absolute;
-        border-top: 1px solid #ebebeb;
+        border-top: 1px solid var(--picker-line);
         left: 0;
         top: 0;
         width: 100%;

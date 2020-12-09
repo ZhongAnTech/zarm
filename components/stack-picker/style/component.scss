@@ -27,7 +27,7 @@
 @include b(stackpicker) {
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: var(--stack-picker-background);
 
   @include e(input) {
     width: 100%;
@@ -42,10 +42,6 @@
     color: var(--color-text-disabled);
   }
 
-  @include e(wrapper) {
-    background: #fff;
-  }
-
   @include e(header) {
     display: flex;
     align-items: center;
@@ -55,7 +51,8 @@
     height: var(--picker-header-height);
     line-height: var(--picker-header-height);
     font-size: var(--picker-header-font-size);
-    @include onepx(bottom);
+    background: var(--picker-header-background);
+    @include onepx(top);
   }
 
   @include e(cancel,submit) {
@@ -161,8 +158,7 @@
       bottom: 0;
       padding-right: var(--stack-picker-padding);
       overflow-y: scroll;
-      background: #fff;
-      box-shadow: 0 0 r(10) rgba(0, 0, 0, .3);
+      box-shadow: var(--stack-picker-shadow);
     }
 
     &-item {

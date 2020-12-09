@@ -11,8 +11,8 @@
     left: 50%;
     transform: translate(-50%, 0);
     color: var(--color-text-inverse);
-    height: 60px;
-    line-height: 60px;
+    height: r(60);
+    line-height: r(60);
     font-size: var(--font-size-lg);
   }
 
@@ -83,7 +83,7 @@
   }
 
   @include e(origin__button) {
-    background: #2d2d2d;
+    background: var(--image-preview-origin-button-background);
     border: none;
     border-radius: var(--radius-xs);
     font-size: var(--font-size-sm);

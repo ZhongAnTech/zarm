@@ -181,7 +181,7 @@ module.exports = {
         key: 'collapse',
         name: '折叠面板',
         module: () => import('@/components/collapse/demo.md'),
-        style: true,
+        style: false,
       },
       {
         key: 'badge',

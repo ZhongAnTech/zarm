@@ -122,7 +122,7 @@
 
     @include e(inner) {
       &:active {
-        background-color: var(--background-active);
+        background-color: var(--cell-background-active);
       }
     }
   }

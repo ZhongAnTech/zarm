@@ -9,7 +9,7 @@
 
   &:not(&--disabled):hover {
     @include e(inner) {
-      border-color: var(--theme-primary);
+      border-color: var(--checkbox-active-border-color);
     }
   }
 
@@ -41,14 +41,14 @@
     height: var(--checkbox-size);
     border: 1px solid var(--checkbox-border-color);
     border-radius: var(--checkbox-radius);
-    background: var(--color-text-inverse);
+    background: var(--checkbox-background);
     transition: all .2s cubic-bezier(.71, -0.46, .88, .6);
 
     &:before {
       content: '';
       width: calc(var(--checkbox-size) / 3.5);
       height: calc(var(--checkbox-size) / 2);
-      border: calc(var(--checkbox-size) / 9) solid var(--color-text-inverse);
+      border: calc(var(--checkbox-size) / 9) solid var(--checkbox-arrow-color);
       border-top: 0;
       border-left: 0;
       margin-top: calc(var(--checkbox-size) / -12);
@@ -106,13 +106,13 @@
     }
 
     @include e(inner) {
-      background-color: var(--background-disabled);
+      background-color: var(--checkbox-disabled-background);
     }
 
     @include m(checked) {
       @include e(inner) {
         border-color: var(--checkbox-border-color);
-        background-color: var(--background-disabled);
+        background-color: var(--checkbox-disabled-background);
 
         &:before {
           border-color: var(--checkbox-disabled-color);
