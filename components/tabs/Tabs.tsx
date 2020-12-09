@@ -61,14 +61,18 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   }
 
   componentDidMount() {
-    this.calculateLineWidth();
-    this.calculateScorllLeftLocation();
+    const { children } = this.props;
+    if (React.Children.count(children)) {
+      this.calculateLineWidth();
+      this.calculateScorllLeftLocation();
+    }
   }
 
   componentDidUpdate(prevstate) {
-    const { value: prevValue } = prevstate;
+    const { value: prevValue, children: prevChild } = prevstate;
     const { value } = this.state;
-    if (prevValue !== value) {
+    const { children } = this.props;
+    if (prevValue !== value || prevChild !== children) {
       this.calculateLineWidth();
     }
     this.calculateScorllLeftLocation();
