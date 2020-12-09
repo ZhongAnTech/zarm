@@ -5,7 +5,7 @@ export default interface PropsType {
   visible?: boolean;
   stayTime?: number;
   content?: ReactNode;
-  mountContainer?: ContainerType;
+  mountContainer?: ContainerType | false;
   afterClose?: () => void;
   mask?: boolean;
   onMaskClick?: () => void;

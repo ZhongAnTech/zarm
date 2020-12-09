@@ -15,5 +15,6 @@ export default interface PropsType {
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
-  mountContainer?: ContainerType;
+  onEsc?: () => void;
+  mountContainer?: ContainerType | false;
 }
