@@ -74,7 +74,7 @@ const Demo = () => {
       ref={containerRef}
       style={{
         height: 300,
-        backgroundColor: '#ddd',
+        backgroundColor: '#5b5c60',
         position: 'relative'
       }}
     >

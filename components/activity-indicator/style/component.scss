@@ -62,7 +62,7 @@ $activity-indicator-spinner-count : 12;
           width: 2px;
           height: 25%;
           margin: 0 auto;
-          background-color: #989697;
+          background-color: var(--activity-indicator-spinner-color);
           border-radius: 40%;
         }
       }

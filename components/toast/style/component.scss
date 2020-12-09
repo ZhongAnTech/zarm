@@ -12,7 +12,7 @@
     position: relative;
     padding: var(--padding-v-md) var(--padding-h-md);
     border-radius: var(--toast-border-radius);
-    background: rgba(0, 0, 0, var(--opacity-toast));
+    background: var(--toast-background);
     color: var(--toast-color);
     text-align: center;
     font-size: var(--toast-font-size);

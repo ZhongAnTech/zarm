@@ -76,10 +76,10 @@ export default class CollapseItem extends PureComponent<CollapseItemProps, Colla
     return (
       <div className={cls} {...rest}>
         <div
-          className={`${prefixCls}__title`}
+          className={`${prefixCls}__header`}
           onClick={this.onClickItem}
         >
-          <div>{title}</div>
+          <div className={`${prefixCls}__title`}>{title}</div>
           <div className={`${prefixCls}__arrow`} />
         </div>
         <div

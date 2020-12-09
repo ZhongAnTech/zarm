@@ -3,7 +3,7 @@
 @include b(keyboard) {
   display: flex;
   flex-wrap: wrap;
-  background-color: #fff;
+  background-color: var(--keyboard-background);
   color: var(--color-text);
   user-select: none;
 
@@ -44,10 +44,10 @@
     }
 
     @include m(disabled) {
-      background-color: #fff;
-
+      &,
+      &:hover,
       &:active {
-        background-color: #fff;
+        background-color: var(--keyboard-background);
       }
     }
   }
