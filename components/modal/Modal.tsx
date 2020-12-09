@@ -31,7 +31,7 @@ export default class Modal extends Component<ModalProps, any> {
   };
 
   render() {
-    const { prefixCls, className, shape, children, mountContainer, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
+    const { prefixCls, className, shape, children, maskClosable, title, closable, footer, onCancel, ...others } = this.props;
 
     const cls = {
       modal: classnames(prefixCls, className, {
@@ -48,7 +48,6 @@ export default class Modal extends Component<ModalProps, any> {
         className={cls.modal}
         direction="center"
         onMaskClick={maskClosable ? onCancel : noop}
-        mountContainer={mountContainer}
         {...others}
       >
         <div className={cls.dialog}>
