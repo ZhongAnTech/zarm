@@ -215,7 +215,7 @@ const Demo = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <Tabs value={value} onChange={setValue} direction="vertical" className="custom-height">
+    <Tabs scrollable value={value} onChange={setValue} direction="vertical" className="custom-height">
       <Panel title="选项卡1">
         <div className="content">选项卡1内容</div>
       </Panel>
