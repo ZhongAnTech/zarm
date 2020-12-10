@@ -36,7 +36,7 @@
 
     .article-tip {
       background-color: #fff;
-      width: 100vw;
+      width: calc(100vw - r(32));
       margin-bottom: r(10);
     }
 
