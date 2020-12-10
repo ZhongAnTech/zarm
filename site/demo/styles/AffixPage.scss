@@ -9,7 +9,7 @@
   }
 
   .article {
-    padding: r(16);
+    padding: 16px;
 
     .article-header {
       .article-title {
@@ -36,7 +36,7 @@
 
     .article-tip {
       background-color: #fff;
-      width: calc(100vw - r(32));
+      width: calc(100vw - 32px);
       margin-bottom: r(10);
     }
 
@@ -54,5 +54,16 @@
         margin: 0;
       }
     }
+  }
+
+  .scrollable-container {
+    height: r(100);
+    overflow-y: scroll;
+  }
+
+  .background {
+    padding-top: r(60);
+    height: r(300);
+    background-image: url(https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg);
   }
 }

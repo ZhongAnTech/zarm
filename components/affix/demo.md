@@ -73,19 +73,8 @@ const Demo = () => {
     <div
       className="scrollable-container"
       ref={setContainer}
-      style={{
-        height: 100,
-        overflowY: 'scroll',
-      }}
     >
-      <div
-        className="background"
-         style={{
-          paddingTop: 60,
-          height: 300,
-          backgroundImage: 'url(https://zos.alipayobjects.com/rmsportal/RmjwQiJorKyobvI.jpg)',
-        }}
-      >
+      <div className="background">
         <Affix target={() => container}>
           <Button type="primary">根据滚动容器顶部固定</Button>
         </Affix>
