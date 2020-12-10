@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { AffixProps } from './PropsType';
 
 export interface AffixStates {
-  top: number;
   affixed: boolean;
 }
 
@@ -20,8 +19,9 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   private saveFixedNode = createRef<HTMLDivElement>();
 
+  private saveFixedNodeTop = 10000;
+
   state = {
-    top: 10000,
     affixed: false,
   };
 
@@ -58,15 +58,14 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   }
 
   get affixed() {
-    const { containerRect } = this;
+    const { containerRect, saveFixedNodeTop } = this;
     const { offsetTop, offsetBottom } = this.props;
-    const { top } = this.state;
 
-    if (typeof offsetBottom !== 'undefined' && top + offsetBottom >= containerRect.bottom) {
+    if (typeof offsetBottom !== 'undefined' && saveFixedNodeTop + offsetBottom >= containerRect.bottom) {
       return true;
     }
 
-    if (typeof offsetBottom === 'undefined' && typeof offsetTop !== 'undefined' && top - offsetTop <= containerRect.top) {
+    if (typeof offsetBottom === 'undefined' && typeof offsetTop !== 'undefined' && saveFixedNodeTop - offsetTop <= containerRect.top) {
       return true;
     }
 
@@ -74,13 +73,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   }
 
   get affixStyle(): React.CSSProperties {
-    const { offsetTop, offsetBottom, onChange } = this.props;
-    const { affixed } = this.state;
-
-    if (this.affixed !== affixed) {
-      this.setState({ affixed: this.affixed });
-      onChange && onChange(this.affixed);
-    }
+    const { offsetTop, offsetBottom } = this.props;
 
     if (this.affixed && typeof offsetBottom !== 'undefined') {
       return {
@@ -100,10 +93,18 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   }
 
   onPositionUpdate = () => {
+    const { onChange } = this.props;
+    const { affixed } = this.state;
     const target = this.savePlaceholderNode.current!;
     const { top } = target.getBoundingClientRect()!;
 
-    this.setState({ top });
+    this.saveFixedNodeTop = top;
+
+    const currentAffixed = this.affixed;
+    if (currentAffixed !== affixed) {
+      this.setState({ affixed: currentAffixed });
+      onChange && onChange(currentAffixed);
+    }
   };
 
   render() {
