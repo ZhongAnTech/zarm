@@ -240,6 +240,12 @@ module.exports = {
     ],
     navigation: [
       {
+        key: 'affix',
+        name: '固钉',
+        module: () => import('@/components/affix/demo.md'),
+        style: true,
+      },
+      {
         key: 'tabs',
         name: '标签页',
         module: () => import('@/components/tabs/demo.md'),
