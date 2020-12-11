@@ -11,7 +11,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   static defaultProps = {
     prefixCls: 'za-affix',
-    target: () => window,
+    scrollContainer: () => window,
     offsetTop: 0,
   };
 
@@ -43,8 +43,8 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
   }
 
   get container() {
-    const { target } = this.props;
-    const container = target!();
+    const { scrollContainer } = this.props;
+    const container = scrollContainer!();
 
     return !container ? window : container;
   }
