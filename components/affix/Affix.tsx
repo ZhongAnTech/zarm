@@ -1,6 +1,7 @@
 import React, { PureComponent, createRef } from 'react';
 import classnames from 'classnames';
 import { AffixProps } from './PropsType';
+import Events from '../utils/events';
 
 export interface AffixStates {
   affixed: boolean;
@@ -30,7 +31,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     setTimeout(() => {
       const { container, onPositionUpdate } = this;
 
-      container.addEventListener('scroll', onPositionUpdate);
+      Events.on(container, 'scroll', onPositionUpdate);
     });
   }
 
@@ -38,7 +39,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
     setTimeout(() => {
       const { container, onPositionUpdate } = this;
 
-      container.removeEventListener('scroll', onPositionUpdate);
+      Events.off(container, 'scroll', onPositionUpdate);
     });
   }
 
