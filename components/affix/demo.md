@@ -3,8 +3,9 @@
 
 
 ## 基本用法
+
 ```jsx
-import { Affix, Message, NavBar, Icon, Carousel } from 'zarm';
+import { Affix, Message, NavBar, Icon, Carousel, Tabs } from 'zarm';
 
 const ITEMS = [
   'https://static.zhongan.com/website/health/zarm/images/banners/1.png',
@@ -26,20 +27,13 @@ ReactDOM.render(
   <div className="article">
     <header className="article-header">
       <div className="article-title">
-        React 入门儿
+        Zarm Affix 介绍文章
       </div>
       <div className="article-author">
-        <span className="article-author-name">风魔小次郎</span>
-        <span className="article-column-name">凹凸实验室</span>
+        <span className="article-author-name">ZARM 团队</span>
+        <span className="article-column-name">ZARM</span>
       </div>
     </header>
-    <Affix offsetTop={0}>
-      <div className="article-tip">
-        <Message>
-          了解更多，点击阅读原文。
-        </Message>
-      </div>
-    </Affix>
     <div className="article-body">
       <Carousel
         className="article-banner"
@@ -49,12 +43,22 @@ ReactDOM.render(
       >
         {contentRender()}
       </Carousel>
+      <Affix offsetTop={0}>
+        <div className="article-tip">
+          <Tabs>
+            <Tabs.Panel title="介绍" />
+            <Tabs.Panel title="详情" />
+          </Tabs>
+        </div>
+      </Affix>
       <div className="article-content">
-        在写文章之前，为了方便理解，我准备了一个懒人调试仓库 simple_react[1] ，这个仓库将 benchmark 用例（只有两个 ^ ^）和 React 源码共同放在 src 文件夹中，通过 snowpack 进行热更新，可以直接在源码中加入 log 和 debuger 进行调试。当然这里的“源码”并不是真的源码，因为 React 源码中充斥着巨量的 dev 代码和不明确的功能函数，所以我对源码进行了整理，用 typescript 对类型进行了规范，删除了大量和核心流程无关的代码（当然也误删了一些有关的 ^ ^）。
+        <p>Zarm 是众安科技基于 React、React-Native 研发的一款适用于企业级的移动端UI组件库。(官网|github|演示地址 推荐在手机上浏览)</p>
 
-        如果你只是希望了解 React 的运行流程而不是写一个可以用的框架的话，那么这个仓库完全可以满足你学习的需要。当然，这个仓库基于 React16.8 ，虽然这个版本并不包括当前的航道模型 Lane 等新特性，但是是我个人认为比较稳定且更适合阅读的一个版本。
+        <p>Zarm 的取名，灵感来源于众安保险秉承的理念：做有温度的保险。Zarm = za + warm，za代表众安，warm有“温暖的”意思，以重合的a字母为中心，各取左右两部分。追求极致的用户体验，致力于做有温度的组件库也是zarm项目发起的初衷。</p>
 
-        （如果希望调试完整的源码，也可以参考 拉取源码[2] 通过 yarn link 来进行 debug）
+        <p>Zarm的发展历程：起初，zarm的前身还只是一个个人项目，2018年后慢慢在众安健康险事业部推广使用。2019年初，众安宣布直营产品品牌化的战略方向 ，这意味着各大BU的产出页面都有可能投放到直营渠道；为了规范了众安系产品基础组件的视觉及交互，整体提升众安系产品的用户体验，保障产品体验的一致性，因此，在众安技术委员会的发起下，Zarm项目诞生了；经过各个BU团队优秀设计师们的努力下，数月后终于敲定了视觉和交互规范，Zarm的前端代码的实现采取自由认领的方式，全公司活跃的前端er们迅速推进，最终趋于稳定，用于生产环境；为了让业务同学和设计、前端的认知形成统一，Zarm形成Axure元件库、项目模板规范等 帮助业务同学快速完成高质量的产品原型；三者相辅相成，最终实现了降低整条工作链路上人力成本和沟通成本的目标。</p>
+
+        <p>Zarm经历了两年多的业务沉淀，服务过十个事业部中近百项目，这使得我们相信除了在众安内部，zarm一定也有它的用武之地。</p>
       </div>
     </div>
   </div>
@@ -75,7 +79,7 @@ const Demo = () => {
       ref={setContainer}
     >
       <div className="background">
-        <Affix target={() => container}>
+        <Affix scrollContainer={() => container}>
           <Button type="primary">根据滚动容器顶部固定</Button>
         </Affix>
       </div>
