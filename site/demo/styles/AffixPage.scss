@@ -46,12 +46,18 @@
       }
 
       .article-content {
-        color: black;
-        font-size: 16px;
-        line-height: 26px;
         padding-top: 8px;
         padding-bottom: 8px;
         margin: 0;
+
+        p {
+          color: black;
+          font-size: 16px;
+          line-height: 26px;
+          margin: 0;
+          padding: 0;
+          margin-bottom: r(10);
+        }
       }
     }
   }
