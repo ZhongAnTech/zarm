@@ -15,7 +15,7 @@ export interface AffixProps {
   /**
    * 设置 Affix 需要监听滚动事件的元素
    */
-  target?: () => Window | HTMLElement | null;
+  scrollContainer?: () => Window | HTMLElement | null;
 
   /**
    * 固定状态改变时出发的回调函数
