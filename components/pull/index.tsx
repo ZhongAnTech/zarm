@@ -1,4 +1,4 @@
 import Pull from './Pull';
-import LocaleReceiver from '../locale-receiver';
+import ConfigReceiver from '../config-receiver';
 
-export default LocaleReceiver('Pull')(Pull);
+export default ConfigReceiver('Pull')(Pull);

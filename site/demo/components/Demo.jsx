@@ -2,9 +2,12 @@ import React, { useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { transform } from '@babel/standalone';
 import { Panel } from 'zarm';
+import enUS from 'zarm/config-provider/locale/en_US';
+import zhCN from 'zarm/config-provider/locale/zh_CN';
+
 import '@/components/style/entry';
 
-export default ({ location, lang, children }) => {
+export default ({ location, globalContext, children }) => {
   const containerId = `${parseInt(Math.random() * 1e9, 10).toString(36)}`;
   const document = children.match(/([^]*)\n?(```[^]+```)/);
   const title = String(document[1]);
@@ -12,13 +15,15 @@ export default ({ location, lang, children }) => {
 
   const renderSource = useCallback(() => {
     const source = document[2].match(/```(.*)\n?([^]+)```/);
-    const locale = lang === 'enUS'
-      ? require('zarm/locale-provider/locale/en_US').default
-      : require('zarm/locale-provider/locale/zh_CN').default;
+    const { lang, theme, primary } = globalContext;
+    const locale = {
+      enUS,
+      zhCN,
+    };
 
     import('@/components').then((Element) => {
-      const args = ['context', 'React', 'ReactDOM', 'zarm'];
-      const argv = [this, React, ReactDOM, Element];
+      const args = ['context', 'React', 'ReactDOM', 'Zarm', 'GlobalContext', 'Locale'];
+      const argv = [this, React, ReactDOM, Element, globalContext, locale];
 
       return {
         args,
@@ -27,12 +32,14 @@ export default ({ location, lang, children }) => {
     }).then(({ args, argv }) => {
       const value = source[2]
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
-        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = zarm;')
+        .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
+        .replace(/import enUS from 'zarm\/config-provider\/locale\/en_US';/, 'const enUS = Locale[\'enUS\'];')
+        .replace(/import zhCN from 'zarm\/config-provider\/locale\/zh_CN';/, 'const zhCN = Locale[\'zhCN\'];')
         .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
           ReactDOM.render(
-            <zarm.LocaleProvider locale={${JSON.stringify(locale)}}>
+            <Zarm.ConfigProvider locale={'${locale[lang]}'} theme={'${theme}'} primary={'${primary}'}>
               $1
-            </zarm.LocaleProvider>,
+            </Zarm.ConfigProvider>,
             document.getElementById('${containerId}'),
           )
         `);
@@ -51,7 +58,7 @@ export default ({ location, lang, children }) => {
         throw err;
       }
     });
-  }, [containerId, document, lang]);
+  }, [containerId, document, globalContext]);
 
   useEffect(() => {
     const container = containerRef.current;

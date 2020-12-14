@@ -266,9 +266,9 @@ module.exports = {
       //   style: false,
       // },
       {
-        key: 'locale-provider',
-        name: '国际化',
-        module: () => import('@/components/locale-provider/demo.md'),
+        key: 'config-provider',
+        name: '全局配置',
+        module: () => import('@/components/config-provider/demo.md'),
         style: false,
       },
       {

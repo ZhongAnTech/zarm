@@ -20,6 +20,7 @@
       width: r(20);
       height: r(20);
       border: 4px solid #fff;
+      background: var(--theme-primary);
       box-shadow: 0 r(1) r(2) 0 rgba(56, 56, 56, 0.15);
       cursor: pointer;
     }
@@ -43,10 +44,11 @@
 
 .themes {
   display: block;
+  margin-top: r(8);
 }
 
 .colors {
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
@@ -78,6 +80,7 @@
 
     .setting-container {
       background: #2b2c2d;
+      box-shadow: 0 r(2) r(8) 0 rgba(0, 0, 0, 0.6);
     }
   }
 }

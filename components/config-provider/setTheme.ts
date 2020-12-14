@@ -1,3 +1,5 @@
+import { Theme } from './PropsType';
+
 const themes = {
   '--theme-primary-lighter': '#303030',
   '--color-text': 'rgba(255, 255, 255, 0.85)',
@@ -24,7 +26,6 @@ const themes = {
   '--cell-arrow-color': '#666',
   '--cell-arrow-disabled-color': '#333',
   '--checkbox-background': '#000',
-  '--checkbox-border-color': 'transparent',
   '--checkbox-disabled-background': '#555',
   '--checkbox-disabled-color': 'rgba(255, 255, 255, 0.3)',
   '--collapse-arrow-color': '#666',
@@ -34,7 +35,6 @@ const themes = {
   '--keyboard-background': '#000',
   '--loading-background': '#2b2c2d',
   '--modal-background': '#2b2c2d',
-  '--modal-title-color': 'var(--color-text)',
   '--modal-close-color': 'rgba(255, 255, 255, 0.3)',
   '--modal-close-active-color': 'rgba(255, 255, 255, 0.65)',
   '--nav-bar-color': '#1b1c1e',
@@ -46,7 +46,6 @@ const themes = {
   '--picker-line': '#303030',
   '--progress-background': 'var(--border-color)',
   '--radio-background': '#000',
-  '--radio-border-color': 'transparent',
   '--radio-disabled-background': '#555',
   '--radio-disabled-color': 'rgba(255, 255, 255, 0.3)',
   '--search-bar-background': '#1b1c1e',
@@ -61,7 +60,7 @@ const themes = {
   '--tooltip-background': '#5b5c60',
 };
 
-const setDarkTheme = (value) => {
+const setTheme = (value: Theme) => {
   document.body.setAttribute('data-theme', value);
   Object.keys(themes).forEach((key) => {
     value === 'dark'
@@ -70,4 +69,4 @@ const setDarkTheme = (value) => {
   });
 };
 
-export default setDarkTheme;
+export default setTheme;

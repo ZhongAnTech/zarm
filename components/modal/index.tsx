@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import Alert from '../alert/Alert';
 import Confirm from '../confirm/Confirm';
-import { getRunTimeLocale } from '../locale-provider/LocaleProvider';
+import { getRunTimeLocale } from '../config-provider/ConfigProvider';
 import { getMountContainer } from '../utils/dom';
 
 function modalType(props, type) {

@@ -1,4 +1,4 @@
 import ActionSheet from './ActionSheet';
-import LocaleReceiver from '../locale-receiver';
+import ConfigReceiver from '../config-receiver';
 
-export default LocaleReceiver('ActionSheet')(ActionSheet);
+export default ConfigReceiver('ActionSheet')(ActionSheet);

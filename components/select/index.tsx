@@ -1,4 +1,4 @@
 import Select from './Select';
-import LocaleReceiver from '../locale-receiver';
+import ConfigReceiver from '../config-receiver';
 
-export default LocaleReceiver('Select')(Select);
+export default ConfigReceiver('Select')(Select);

@@ -23,7 +23,7 @@ exports[`ActionSheet renders correctly 1`] = `
   onMaskClick={[MockFunction]}
   visible={true}
 >
-  <LocaleReceiver
+  <ConfigReceiver
     actions={
       Array [
         Object {
@@ -248,6 +248,6 @@ exports[`ActionSheet renders correctly 1`] = `
         </WarnIfDeprecatedComp>
       </ForwardRef(ForwardedRefComp)>
     </ActionSheet>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
