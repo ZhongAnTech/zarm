@@ -30,11 +30,20 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
       if (content && content.className) {
         Loading.zarmLoading.classList.add(content.className);
       }
-      Loading.loadingContainer = content ? getMountContainer(content.mountContainer) : getMountContainer();
+      Loading.loadingContainer = content && content.mountContainer ? getMountContainer(content.mountContainer) : getMountContainer();
       Loading.loadingContainer.appendChild(Loading.zarmLoading);
     }
+
     if (Loading.zarmLoading) {
-      const props = { ...Loading.defaultProps, ...content as LoadingProps, ...{ visible: true, mountContainer: Loading.zarmLoading } };
+      const props: LoadingProps = { ...Loading.defaultProps, ...content as LoadingProps, ...{ visible: true, mountContainer: false } };
+
+      Loading.hideHelper = () => {
+        ReactDOM.render(
+          <Loading {...props} visible={false} />,
+          Loading.zarmLoading,
+        );
+      };
+
       ReactDOM.render(
         <Loading {...props} />,
         Loading.zarmLoading,
@@ -44,10 +53,7 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
 
   static hide = () => {
     if (Loading.zarmLoading) {
-      ReactDOM.render(
-        <Loading visible={false} />,
-        Loading.zarmLoading,
-      );
+      Loading.hideHelper();
     }
   };
 
@@ -60,18 +66,17 @@ export default class Loading extends PureComponent<LoadingProps, {}> {
     }
   };
 
-  private timer;
+  private timer = 0;
 
   state = {
     visible: this.props.visible,
   };
 
   componentDidMount() {
-    Loading.hideHelper = this._hide;
     this.autoClose();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: LoadingProps) {
     const { visible } = this.props;
 
     if (prevProps.visible !== visible) {

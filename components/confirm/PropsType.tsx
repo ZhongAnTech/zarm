@@ -3,7 +3,7 @@ import { Locale } from '../locale-provider/PropsType';
 import { ContainerType } from '../utils/dom';
 
 export default interface PropsType {
-  shape?: 'rect';
+  shape?: 'radius' | 'rect';
   visible?: boolean;
   animationType?:
     'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
