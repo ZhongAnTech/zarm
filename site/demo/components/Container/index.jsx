@@ -5,17 +5,17 @@ import Context from '@site/utils/context';
 import Events from '@site/utils/events';
 import './style.scss';
 
-const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv.js');
+const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_uwg522sx17.js');
 
 const Container = (props) => {
-  const [lang, setLang] = useState(window.sessionStorage.language || 'zhCN');
-  const [primary, setPrimary] = useState(window.sessionStorage.primary || '#00bc70');
+  const [locale, setLocale] = useState(window.sessionStorage.locale || 'zhCN');
+  const [primaryColor, setPrimaryColor] = useState(window.sessionStorage.primaryColor);
   const [theme, setTheme] = useState(window.sessionStorage.theme || 'light');
 
   const { className, children } = props;
   const cls = classnames('app-container', className);
 
-  const locale = lang === 'enUS'
+  const currentLocale = locale === 'enUS'
     ? require('zarm/config-provider/locale/en_US')
     : require('zarm/config-provider/locale/zh_CN');
 
@@ -23,14 +23,14 @@ const Container = (props) => {
     window.scrollTo(0, 0);
 
     Events.on(window, 'message', ({ data }) => {
-      if (data.lang) {
-        setLang(data.lang);
+      if (data.locale) {
+        setLocale(data.locale);
       }
     });
-  }, [primary, theme]);
+  }, [primaryColor, theme]);
 
   return (
-    <ConfigProvider theme={theme} primary={primary} locale={locale}>
+    <ConfigProvider theme={theme} primaryColor={primaryColor} locale={currentLocale}>
       <div className={cls}>
         <nav>
           <Popper
@@ -45,8 +45,8 @@ const Container = (props) => {
                           key={+index}
                           style={{ backgroundColor: color }}
                           onClick={() => {
-                            setPrimary(color);
-                            window.sessionStorage.primary = color;
+                            setPrimaryColor(color);
+                            window.sessionStorage.primaryColor = color;
                           }}
                         />
                       );
@@ -79,10 +79,10 @@ const Container = (props) => {
                   <Radio.Group
                     compact
                     type="button"
-                    value={lang}
+                    value={locale}
                     onChange={(value) => {
-                      setLang(value);
-                      window.sessionStorage.language = value;
+                      setLocale(value);
+                      window.sessionStorage.locale = value;
                     }}
                   >
                     <Radio value="zhCN">中文</Radio>
@@ -96,7 +96,7 @@ const Container = (props) => {
             )
           }
         </nav>
-        <Context.Provider value={{ lang, primary, theme }}>
+        <Context.Provider value={{ locale, primaryColor, theme }}>
           {children}
         </Context.Provider>
       </div>

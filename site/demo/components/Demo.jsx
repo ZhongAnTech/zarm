@@ -15,13 +15,12 @@ export default ({ location, globalContext, children }) => {
 
   const renderSource = useCallback(() => {
     const source = document[2].match(/```(.*)\n?([^]+)```/);
-    const { lang, theme, primary } = globalContext;
-    const locale = {
-      enUS,
-      zhCN,
-    };
 
     import('@/components').then((Element) => {
+      const locale = {
+        en_US: enUS,
+        zh_CN: zhCN,
+      };
       const args = ['context', 'React', 'ReactDOM', 'Zarm', 'GlobalContext', 'Locale'];
       const argv = [this, React, ReactDOM, Element, globalContext, locale];
 
@@ -33,16 +32,8 @@ export default ({ location, globalContext, children }) => {
       const value = source[2]
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'react';/, 'const { $1 } = React;')
         .replace(/import\s+\{\s+(.*)\s+\}\s+from\s+'zarm';/, 'const { $1 } = Zarm;')
-        .replace(/import enUS from 'zarm\/config-provider\/locale\/en_US';/, 'const enUS = Locale[\'enUS\'];')
-        .replace(/import zhCN from 'zarm\/config-provider\/locale\/zh_CN';/, 'const zhCN = Locale[\'zhCN\'];')
-        .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `
-          ReactDOM.render(
-            <Zarm.ConfigProvider locale={'${locale[lang]}'} theme={'${theme}'} primary={'${primary}'}>
-              $1
-            </Zarm.ConfigProvider>,
-            document.getElementById('${containerId}'),
-          )
-        `);
+        .replace(/import\s+(.*)\s+from\s+'zarm\/config-provider\/locale\/(.*)';/g, 'const $1 = Locale[\'$2\'];')
+        .replace(/ReactDOM.render\(\s?([^]+?)(,\s?mountNode\s?\))/g, `ReactDOM.render($1, document.getElementById('${containerId}'))`);
 
       const { code } = transform(value, {
         presets: ['es2015', 'react'],

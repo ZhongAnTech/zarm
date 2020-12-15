@@ -6,7 +6,7 @@ import setPrimaryColor from './setPrimaryColor';
 const defaultConfig: ConfigProviderProps = {
   locale: {} as any as Locale,
   theme: 'light',
-  primary: '#00bc70',
+  primaryColor: '#00bc70',
 };
 
 export const LocaleContext: Context<Locale> = createContext(defaultConfig.locale);
@@ -23,13 +23,13 @@ export default class ConfigProvider extends PureComponent<ConfigProviderProps, {
   static defaultProps = defaultConfig;
 
   render() {
-    const { children, locale, theme, primary } = this.props;
+    const { children, locale, theme, primaryColor } = this.props;
     changeRunTimeLocale(locale);
     setTheme(theme);
-    setPrimaryColor(primary);
+    setPrimaryColor(primaryColor);
 
     return (
-      <ConfigContext.Provider value={{ locale, theme, primary }}>
+      <ConfigContext.Provider value={{ locale, theme, primaryColor }}>
         {React.Children.only(children)}
       </ConfigContext.Provider>
     );

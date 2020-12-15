@@ -16,6 +16,10 @@
       margin-left: r(10);
     }
 
+    .github {
+      color: #333;
+    }
+
     .setting {
       width: r(20);
       height: r(20);
@@ -74,12 +78,16 @@
 
 @at-root {
   body[data-theme='dark'] {
+    .github {
+      color: #f1f1f1;
+    }
+
     .setting {
-      border-color: #2b2c2d;
+      border-color: #393939;
     }
 
     .setting-container {
-      background: #2b2c2d;
+      background: #222;
       box-shadow: 0 r(2) r(8) 0 rgba(0, 0, 0, 0.6);
     }
   }

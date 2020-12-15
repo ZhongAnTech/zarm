@@ -8,7 +8,7 @@ import docsearch from 'docsearch.js';
 import MenuComponent from '@site/web/components/Menu';
 import Events from '@site/utils/events';
 import Context from '@site/utils/context';
-import Locale from '@site/locale';
+import Locales from '@site/locale';
 import { version } from '@/package.json';
 import 'docsearch.js/dist/cdn/docsearch.min.css';
 import './style.scss';
@@ -30,7 +30,7 @@ const Header = ({ children }) => {
   const location = useLocation();
   const [menu, toggleMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const [lang, setLang] = useState(window.sessionStorage.language || 'zhCN');
+  const [locale, setLocale] = useState(window.sessionStorage.locale);
   const currentPageKey = location.pathname.split('/')[1] || '/';
 
   const keyupEvent = (event) => {
@@ -51,7 +51,7 @@ const Header = ({ children }) => {
     { key: 'gitee', link: 'https://zarm.gitee.io', title: '国内镜像' },
   ];
 
-  if (document.location.host.indexOf('gitee') > -1 || lang === 'enUS') {
+  if (document.location.host.indexOf('gitee') > -1 || locale === 'enUS') {
     NAV_ITEMS.pop();
   }
 
@@ -111,8 +111,8 @@ const Header = ({ children }) => {
   );
 
   return (
-    <IntlProvider locale="zh-CN" messages={Locale[lang]}>
-      <Context.Provider value={{ lang }}>
+    <IntlProvider locale="zh-CN" messages={Locales[locale]}>
+      <Context.Provider value={{ locale }}>
         <header>
           <div className="header-container">
             {menuRender}
@@ -140,10 +140,10 @@ const Header = ({ children }) => {
                 <Radio.Group
                   compact
                   type="button"
-                  value={lang}
+                  value={locale}
                   onChange={(value) => {
-                    setLang(value);
-                    window.sessionStorage.language = value;
+                    setLocale(value);
+                    window.sessionStorage.locale = value;
                   }}
                 >
                   <Radio value="zhCN">中文</Radio>
