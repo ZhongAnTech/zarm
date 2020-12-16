@@ -30,7 +30,7 @@ const Header = ({ children }) => {
   const location = useLocation();
   const [menu, toggleMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const [locale, setLocale] = useState(window.sessionStorage.locale);
+  const [locale, setLocale] = useState(window.sessionStorage.locale || 'zhCN');
   const currentPageKey = location.pathname.split('/')[1] || '/';
 
   const keyupEvent = (event) => {
