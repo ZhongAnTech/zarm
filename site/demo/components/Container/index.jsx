@@ -8,9 +8,9 @@ import './style.scss';
 const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_uwg522sx17.js');
 
 const Container = (props) => {
-  const [locale, setLocale] = useState(window.sessionStorage.locale || 'zhCN');
-  const [primaryColor, setPrimaryColor] = useState(window.sessionStorage.primaryColor);
-  const [theme, setTheme] = useState(window.sessionStorage.theme || 'light');
+  const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');
+  const [primaryColor, setPrimaryColor] = useState(window.localStorage.primaryColor);
+  const [theme, setTheme] = useState(window.localStorage.theme || 'light');
 
   const { className, children } = props;
   const cls = classnames('app-container', className);
@@ -46,7 +46,7 @@ const Container = (props) => {
                           style={{ backgroundColor: color }}
                           onClick={() => {
                             setPrimaryColor(color);
-                            window.sessionStorage.primaryColor = color;
+                            window.localStorage.primaryColor = color;
                           }}
                         />
                       );
@@ -60,7 +60,7 @@ const Container = (props) => {
                     value={theme}
                     onChange={(value) => {
                       setTheme(value);
-                      window.sessionStorage.theme = value;
+                      window.localStorage.theme = value;
                     }}
                   >
                     <Radio value="light">默认主题</Radio>
@@ -82,7 +82,7 @@ const Container = (props) => {
                     value={locale}
                     onChange={(value) => {
                       setLocale(value);
-                      window.sessionStorage.locale = value;
+                      window.localStorage.locale = value;
                     }}
                   >
                     <Radio value="zhCN">中文</Radio>

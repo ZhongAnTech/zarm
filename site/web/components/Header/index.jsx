@@ -30,7 +30,7 @@ const Header = ({ children }) => {
   const location = useLocation();
   const [menu, toggleMenu] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-  const [locale, setLocale] = useState(window.sessionStorage.locale || 'zhCN');
+  const [locale, setLocale] = useState(window.localStorage.locale || 'zhCN');
   const currentPageKey = location.pathname.split('/')[1] || '/';
 
   const keyupEvent = (event) => {
@@ -143,7 +143,7 @@ const Header = ({ children }) => {
                   value={locale}
                   onChange={(value) => {
                     setLocale(value);
-                    window.sessionStorage.locale = value;
+                    window.localStorage.locale = value;
                   }}
                 >
                   <Radio value="zhCN">中文</Radio>
