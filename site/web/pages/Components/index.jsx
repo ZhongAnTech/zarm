@@ -30,7 +30,7 @@ const Simulator = () => {
   const params = useParams();
   const simulatorRef = useRef();
   const { locale } = useContext(Context);
-  const [affix, setAffix] = useState(false);
+  const [affix, setAffix] = useState(JSON.parse(window.localStorage['simulator-affix'] || false));
 
   const simulatorCls = classnames('simulator', {
     'simulator--affix': affix,
@@ -44,7 +44,14 @@ const Simulator = () => {
     <div className={simulatorCls}>
       <FormattedMessage id={`app.home.components.simulator.${affix ? 'unaffix' : 'affix'}`}>
         {(txt) => (
-          <div className="simulator__control" onClick={() => setAffix(!affix)} title={txt}>
+          <div
+            className="simulator__control"
+            onClick={() => {
+              setAffix(!affix);
+              window.localStorage['simulator-affix'] = !affix;
+            }}
+            title={txt}
+          >
             <Icons type="affix" size="sm" />
           </div>
         )}
