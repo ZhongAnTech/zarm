@@ -1,3 +1,5 @@
+import { Theme } from './PropsType';
+
 const themes = {
   '--theme-primary-lighter': '#303030',
   '--color-text': 'rgba(255, 255, 255, 0.85)',
@@ -11,7 +13,7 @@ const themes = {
   '--action-sheet-active-background': '#363738',
   '--alert-button-background': '#2b2c2d',
   '--alert-button-active-background': '#363738',
-  '--button-default-background': 'rgba(255, 255, 255, 0.1)',
+  '--button-default-background': '#393939',
   '--button-default-border': 'transparent',
   '--button-default-color': 'rgba(255, 255, 255, 0.85)',
   '--button-default-active-background': 'rgba(255, 255, 255, 0.2)',
@@ -23,8 +25,8 @@ const themes = {
   '--cell-background-active': '#363738',
   '--cell-arrow-color': '#666',
   '--cell-arrow-disabled-color': '#333',
-  '--checkbox-background': '#000',
-  '--checkbox-border-color': 'transparent',
+  '--checkbox-background': 'transparent',
+  '--checkbox-border-color': '#58595d',
   '--checkbox-disabled-background': '#555',
   '--checkbox-disabled-color': 'rgba(255, 255, 255, 0.3)',
   '--collapse-arrow-color': '#666',
@@ -32,9 +34,9 @@ const themes = {
   '--confirm-button-background': '#2b2c2d',
   '--confirm-button-active-background': '#363738',
   '--keyboard-background': '#000',
+  '--keyboard-item-background': 'rgba(255, 255, 255, 0.1)',
   '--loading-background': '#2b2c2d',
   '--modal-background': '#2b2c2d',
-  '--modal-title-color': 'var(--color-text)',
   '--modal-close-color': 'rgba(255, 255, 255, 0.3)',
   '--modal-close-active-color': 'rgba(255, 255, 255, 0.65)',
   '--nav-bar-color': '#1b1c1e',
@@ -45,8 +47,8 @@ const themes = {
   '--picker-mask-background-end': 'rgba(0, 0, 0, 0.8)',
   '--picker-line': '#303030',
   '--progress-background': 'var(--border-color)',
-  '--radio-background': '#000',
-  '--radio-border-color': 'transparent',
+  '--radio-background': 'transparent',
+  '--radio-border-color': '#58595d',
   '--radio-disabled-background': '#555',
   '--radio-disabled-color': 'rgba(255, 255, 255, 0.3)',
   '--search-bar-background': '#1b1c1e',
@@ -61,7 +63,7 @@ const themes = {
   '--tooltip-background': '#5b5c60',
 };
 
-const setDarkTheme = (value) => {
+const setTheme = (value: Theme) => {
   document.body.setAttribute('data-theme', value);
   Object.keys(themes).forEach((key) => {
     value === 'dark'
@@ -70,4 +72,4 @@ const setDarkTheme = (value) => {
   });
 };
 
-export default setDarkTheme;
+export default setTheme;

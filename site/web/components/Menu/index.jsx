@@ -7,17 +7,17 @@ import Context from '@site/utils/context';
 import { documents, components } from '@site/site.config';
 import './style.scss';
 
-const getDocs = (lang) => {
+const getDocs = (locale) => {
   return documents.map((doc) => (
     <Menu.Item
       key={doc.key}
     >
-      <a href={`#/components/${doc.key}`}>{lang === 'zhCN' ? doc.name : pascalCase(doc.key)}</a>
+      <a href={`#/components/${doc.key}`}>{locale === 'zhCN' ? doc.name : pascalCase(doc.key)}</a>
     </Menu.Item>
   ));
 };
 
-const getMenus = (lang, key) => {
+const getMenus = (locale, key) => {
   const list = components[key] || [];
   return (
     <Menu.ItemGroup title={<FormattedMessage id={`app.components.type.${key}`} />} key={key}>
@@ -30,7 +30,7 @@ const getMenus = (lang, key) => {
             <Menu.Item key={component.key}>
               <a href={`#/components/${component.key}`}>
                 <span>{pascalCase(component.key)}</span>
-                {lang === 'zhCN' && <span className="chinese">{component.name}</span>}
+                {locale === 'zhCN' && <span className="chinese">{component.name}</span>}
               </a>
             </Menu.Item>
           ))
@@ -41,7 +41,7 @@ const getMenus = (lang, key) => {
 
 const MenuComponent = () => {
   const params = useParams();
-  const { lang } = useContext(Context);
+  const { locale } = useContext(Context);
 
   return (
     <div className="menu">
@@ -49,14 +49,14 @@ const MenuComponent = () => {
         defaultOpenKeys={['components', 'general', 'form', 'feedback', 'view', 'navigation', 'other']}
         selectedKeys={[params.document, params.component]}
       >
-        {getDocs(lang)}
+        {getDocs(locale)}
         <Menu.SubMenu title={<FormattedMessage id="app.components" />} key="components">
-          {getMenus(lang, 'general')}
-          {getMenus(lang, 'form')}
-          {getMenus(lang, 'view')}
-          {getMenus(lang, 'feedback')}
-          {getMenus(lang, 'navigation')}
-          {getMenus(lang, 'other')}
+          {getMenus(locale, 'general')}
+          {getMenus(locale, 'form')}
+          {getMenus(locale, 'view')}
+          {getMenus(locale, 'feedback')}
+          {getMenus(locale, 'navigation')}
+          {getMenus(locale, 'other')}
         </Menu.SubMenu>
       </Menu>
     </div>

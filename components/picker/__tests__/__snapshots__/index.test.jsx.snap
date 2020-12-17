@@ -17,7 +17,7 @@ exports[`Picker Picker render visible 1`] = `
   prefixCls="za-picker"
   visible={true}
 >
-  <LocaleReceiver
+  <ConfigReceiver
     dataSource={
       Array [
         Object {
@@ -332,7 +332,7 @@ exports[`Picker Picker render visible 1`] = `
         </WarnIfDeprecatedComp>
       </ForwardRef(ForwardedRefComp)>
     </Picker>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -373,7 +373,7 @@ exports[`Picker render custom label 1`] = `
   itemRender={[Function]}
   valueMember="code"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     dataSource={
       Array [
         Object {
@@ -475,6 +475,6 @@ exports[`Picker render custom label 1`] = `
         </WarnIfDeprecatedComp>
       </ForwardRef(ForwardedRefComp)>
     </Picker>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;

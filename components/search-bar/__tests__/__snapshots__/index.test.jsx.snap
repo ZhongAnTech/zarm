@@ -74,7 +74,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
   placeholder="搜索"
   shape="round"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     cancelText="取消取消"
     defaultValue="搜索关键字"
     forwardedRef={null}
@@ -246,7 +246,7 @@ exports[`SearchBar renders defaultValue correctly 1`] = `
         </form>
       </div>
     </SearchBar>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -268,7 +268,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
   placeholder="搜索"
   shape="round"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     onCancel={
       [MockFunction] {
@@ -462,7 +462,7 @@ exports[`SearchBar renders onCancel called correctly 1`] = `
         </form>
       </div>
     </SearchBar>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -486,7 +486,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
   placeholder="搜索"
   shape="round"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     onChange={
       [MockFunction] {
@@ -684,7 +684,7 @@ exports[`SearchBar renders onChange called correctly 1`] = `
         </form>
       </div>
     </SearchBar>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -706,7 +706,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
     }
   }
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     onClear={
       [MockFunction] {
@@ -901,7 +901,7 @@ exports[`SearchBar renders onClear called correctly 1`] = `
         </form>
       </div>
     </SearchBar>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -923,7 +923,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
   placeholder="搜索"
   shape="round"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     onFocus={
       [MockFunction] {
@@ -1117,7 +1117,7 @@ exports[`SearchBar renders onFocus called correctly 1`] = `
         </form>
       </div>
     </SearchBar>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -1141,7 +1141,7 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
   placeholder="搜索"
   shape="round"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     onSubmit={
       [MockFunction] {
@@ -1339,6 +1339,6 @@ exports[`SearchBar renders onSubmit called correctly 1`] = `
         </form>
       </div>
     </SearchBar>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;

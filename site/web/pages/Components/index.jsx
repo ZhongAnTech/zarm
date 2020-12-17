@@ -29,7 +29,7 @@ const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv
 const Simulator = () => {
   const params = useParams();
   const simulatorRef = useRef();
-  const { lang } = useContext(Context);
+  const { locale } = useContext(Context);
   const [affix, setAffix] = useState(JSON.parse(window.localStorage['simulator-affix'] || false));
 
   const simulatorCls = classnames('simulator', {
@@ -37,8 +37,8 @@ const Simulator = () => {
   });
 
   useEffect(() => {
-    !(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) && simulatorRef.current.contentWindow.postMessage({ lang });
-  }, [lang]);
+    !(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) && simulatorRef.current.contentWindow.postMessage({ locale });
+  }, [locale]);
 
   return (
     <div className={simulatorCls}>
