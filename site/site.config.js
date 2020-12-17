@@ -272,6 +272,12 @@ module.exports = {
         style: false,
       },
       {
+        key: 'locale-provider',
+        name: '国际化（即将废弃）',
+        module: () => import('@/components/locale-provider/demo.md'),
+        style: false,
+      },
+      {
         key: 'drag',
         name: '拖拽',
         module: () => import('@/components/drag/demo.md'),
