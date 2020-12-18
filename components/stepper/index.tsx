@@ -6,14 +6,21 @@ import Icon from '../icon';
 import Input from '../input';
 import { InputNumberProps } from '../input/PropsType';
 
+const compareValue = (value, max, min) => {
+  if (typeof max === 'number') {
+    value = value > max ? max : value;
+  }
+  if (typeof min === 'number') {
+    value = value < min ? min : value;
+  }
+  return value;
+};
+
 const getValue = (props: StepperProps, defaultValue: number) => {
-  if (typeof props.value !== 'undefined') {
-    return props.value;
-  }
-  if (typeof props.defaultValue !== 'undefined') {
-    return props.defaultValue;
-  }
-  return defaultValue;
+  const { value, max, min } = props;
+  let tempValue = props.defaultValue === undefined ? defaultValue : props.defaultValue;
+  tempValue = value === undefined ? tempValue : value;
+  return compareValue(tempValue, max, min);
 };
 
 export interface StepperProps extends PropsType {
@@ -62,30 +69,36 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     return null;
   }
 
-  getPrecision = () => {
-    const { step } = this.props;
-    const stepStr = step?.toString();
-    if (stepStr && stepStr.indexOf('e-') >= 0) {
-      return parseInt(stepStr.slice(stepStr.indexOf('-e')), 10);
+  getInputValue = (value) => {
+    let currentValue = value;
+    const { max, min } = this.props;
+    currentValue = compareValue(value, max, min);
+    const precision = this.getMaxPrecision(value);
+    return Number(Number(currentValue).toFixed(precision));
+  };
+
+  getPrecision = (value) => {
+    const valueStr = value?.toString();
+    if (valueStr && valueStr.indexOf('e-') >= 0) {
+      return parseInt(valueStr.slice(valueStr.indexOf('-e')), 10);
     }
     let precision = 0;
-    if (stepStr && stepStr.indexOf('.') >= 0) {
-      precision = stepStr.length - stepStr.indexOf('.') - 1;
+    if (valueStr && valueStr.indexOf('.') >= 0) {
+      precision = valueStr.length - valueStr.indexOf('.') - 1;
     }
     return precision;
   };
 
-  getPrecisionFactor = () => {
-    const precision = this.getPrecision();
-    return 10 ** precision;
-  };
+  getMaxPrecision(currentValue) {
+    const { step } = this.props;
+    const stepPrecision = this.getPrecision(step);
+    const currentValuePrecision = this.getPrecision(currentValue);
+    return Math.max(currentValuePrecision, stepPrecision);
+  }
 
-  fixedStepVal = (num) => {
-    if (Number.isNaN(num) || num === '') {
-      return num;
-    }
-    const precision = this.getPrecision();
-    return Number(num).toFixed(precision);
+  getPrecisionFactor = (currentValue) => {
+    const precision = this.getMaxPrecision(currentValue);
+    return 10 ** precision;
   };
 
   onInputChange = (value: string) => {
@@ -99,16 +112,10 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
 
   onInputBlur = (value: number | string) => {
     const { min, max, onChange } = this.props;
-    value = Number(value);
     if (Number.isNaN(value)) {
       value = this.state.lastValue;
     }
-    if (min !== null && value < min!) {
-      value = this.fixedStepVal(min!);
-    }
-    if (max !== null && value > max!) {
-      value = this.fixedStepVal(max!);
-    }
+    value = compareValue(value, max, min);
     this.setState({
       value,
       lastValue: value,
@@ -124,9 +131,10 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (this.isSubDisabled()) {
       return;
     }
-    const precisionFactor = this.getPrecisionFactor();
+    const precisionFactor = this.getPrecisionFactor(value);
+    const precision = this.getMaxPrecision(value);
     const newValue = (precisionFactor * Number(value) - precisionFactor * step!) / precisionFactor;
-    this.onInputBlur(this.fixedStepVal(newValue));
+    this.onInputBlur(newValue.toFixed(precision));
   };
 
   onPlusClick = () => {
@@ -135,9 +143,10 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     if (this.isPlusDisabled()) {
       return;
     }
-    const precisionFactor = this.getPrecisionFactor();
+    const precisionFactor = this.getPrecisionFactor(value);
+    const precision = this.getMaxPrecision(value);
     const newValue = (precisionFactor * Number(value) + precisionFactor * step!) / precisionFactor;
-    this.onInputBlur(this.fixedStepVal(newValue));
+    this.onInputBlur(newValue.toFixed(precision));
   };
 
   isSubDisabled = () => {
@@ -179,7 +188,7 @@ export default class Stepper extends PureComponent<StepperProps, StepperStates> 
     const inputProps = {
       className: inputCls,
       type,
-      value: this.fixedStepVal(value),
+      value: this.getInputValue(value),
       disabled: disabled || disableInput,
       onChange: (v) => !disabled && this.onInputChange(v!),
       onBlur: () => !disabled && this.onInputBlur(value),
