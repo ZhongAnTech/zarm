@@ -29,22 +29,29 @@ const Icons = Icon.createFromIconfont('//at.alicdn.com/t/font_1340918_lpsswvb7yv
 const Simulator = () => {
   const params = useParams();
   const simulatorRef = useRef();
-  const { lang } = useContext(Context);
-  const [affix, setAffix] = useState(false);
+  const { locale } = useContext(Context);
+  const [affix, setAffix] = useState(JSON.parse(window.localStorage['simulator-affix'] || false));
 
   const simulatorCls = classnames('simulator', {
     'simulator--affix': affix,
   });
 
   useEffect(() => {
-    !(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) && simulatorRef.current.contentWindow.postMessage({ lang });
-  }, [lang]);
+    !(/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) && simulatorRef.current.contentWindow.postMessage({ locale });
+  }, [locale]);
 
   return (
     <div className={simulatorCls}>
       <FormattedMessage id={`app.home.components.simulator.${affix ? 'unaffix' : 'affix'}`}>
         {(txt) => (
-          <div className="simulator__control" onClick={() => setAffix(!affix)} title={txt}>
+          <div
+            className="simulator__control"
+            onClick={() => {
+              setAffix(!affix);
+              window.localStorage['simulator-affix'] = !affix;
+            }}
+            title={txt}
+          >
             <Icons type="affix" size="sm" />
           </div>
         )}

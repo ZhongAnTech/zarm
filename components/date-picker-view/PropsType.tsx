@@ -1,4 +1,4 @@
-import { Locale } from '../locale-provider/PropsType';
+import { Locale } from '../config-provider/PropsType';
 
 export default interface BaseDatePickerViewProps {
   mode?: 'year' | 'month' | 'date' | 'time' | 'datetime';

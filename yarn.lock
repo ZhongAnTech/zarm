@@ -7436,10 +7436,10 @@ eslint-config-airbnb@^18.2.0:
     object.assign "^4.1.0"
     object.entries "^1.1.2"
 
-eslint-config-za@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.2.1.tgz#3d814f70deb3e987493690876aa0ec3ffcf8ac6a"
-  integrity sha512-qSoxwow9ye+MJPiQLf6co7/8Fc+eXyL66c5n8QAPgv9Wehp4DRKK0YtHo+p+horrkfeURlJimrxnDk7Z0TMv0g==
+eslint-config-za@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-za/-/eslint-config-za-2.2.2.tgz#cecd0309c80777c0a7efc9a753e955623ddf844b"
+  integrity sha512-kF0MYBmNm9tiVisGYBdIlF28fRNMkI735d0AccxeTVnQ8hSGnL4D4v8IAqL1VDbmdPBDqeEobb23KXFyCyOyMw==
   dependencies:
     eslint-config-airbnb "^18.2.0"
 
@@ -9603,9 +9603,9 @@ inherits@2.0.3:
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.7.tgz#a09363e1911972ea16d7a8851005d84cf09a9a84"
+  integrity sha512-iKpRpXP+CrP2jyrxvg1kMUpXDyRUFDWurxbnVT1vQPx+Wz9uCYsMIqYuSBLV+PAaZG/d7kRLKRFc9oDMsH+mFQ==
 
 inquirer@^3.0.6:
   version "3.3.0"

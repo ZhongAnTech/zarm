@@ -7,7 +7,7 @@ import Context from '@site/utils/context';
 import Demo from './Demo';
 
 export default (props) => {
-  const { lang } = useContext(Context);
+  const globalContext = useContext(Context);
   const { content } = props;
   const components = new Map();
   const nodeList = [];
@@ -52,7 +52,7 @@ export default (props) => {
       .replace(/## API\s?([^]+)/g, '') // 排除API显示
       .replace(/##\s?([^]+?)((?=##)|$)/g, (match, p1) => {
         const id = parseInt(Math.random() * 1e9, 10).toString(36);
-        components.set(id, React.createElement(Demo, { ...props, lang, location: useLocation() }, p1));
+        components.set(id, React.createElement(Demo, { ...props, globalContext, location: useLocation() }, p1));
         return `<div id=${id}></div>`;
       }),
     {

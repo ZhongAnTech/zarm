@@ -7,7 +7,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
   placeholder="请选择时间"
   title="选择时间"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     defaultValue="2017-9-6 12:00"
     forwardedRef={null}
     mode="datetime"
@@ -2411,7 +2411,7 @@ exports[`DatePickerView DatePickerView time 1`] = `
         </div>
       </PickerView>
     </DatePickerView>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -2424,7 +2424,7 @@ exports[`DatePickerView DatePickerView time 2`] = `
   title="选择日期"
   value="2017-9-6 12:00"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     max="2019-11-23 21:00"
     min="2007-01-03 11:00"
@@ -4582,6 +4582,6 @@ exports[`DatePickerView DatePickerView time 2`] = `
         </div>
       </PickerView>
     </DatePickerView>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;

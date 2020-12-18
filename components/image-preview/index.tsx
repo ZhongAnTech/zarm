@@ -5,8 +5,8 @@ import Carousel from '../carousel';
 import PinchZoom from '../pinch-zoom';
 import ActivityIndicator from '../activity-indicator';
 import { isObject, isString } from '../utils/validate';
-import LocaleReceiver from '../locale-receiver';
-import { Locale } from '../locale-provider/PropsType';
+import ConfigReceiver from '../config-receiver';
+import { Locale } from '../config-provider/PropsType';
 
 export interface ImagePreviewProps extends PropsType {
   prefixCls?: string;
@@ -251,4 +251,4 @@ class ImagePreview extends Component<ImagePreviewProps, ImagePreviewState> {
   }
 }
 
-export default LocaleReceiver('ImagePreview')(ImagePreview);
+export default ConfigReceiver('ImagePreview')(ImagePreview);

@@ -16,6 +16,7 @@
 
   @include e(header) {
     position: relative;
+    overflow: hidden;
     display: flex;
     min-height: var(--collapse-height);
     padding: var(--collapse-padding-v) var(--collapse-padding-h);

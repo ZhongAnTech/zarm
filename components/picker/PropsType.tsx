@@ -1,5 +1,5 @@
 import BasePickerViewProps from '../picker-view/PropsType';
-import { Locale } from '../locale-provider/PropsType';
+import { Locale } from '../config-provider/PropsType';
 import { ContainerType } from '../utils/dom';
 
 export default interface BasePickerProps extends Omit<BasePickerViewProps, 'onChange'> {

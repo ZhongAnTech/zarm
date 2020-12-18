@@ -8,12 +8,12 @@ import Container from '@site/demo/components/Container';
 import Footer from '@site/demo/components/Footer';
 import Context from '@site/utils/context';
 import Events from '@site/utils/events';
-import Locale from '@site/locale';
+import Locales from '@site/locale';
 import './style.scss';
 
 const Child = () => {
   const history = useHistory();
-  const { lang } = useContext(Context);
+  const { locale } = useContext(Context);
 
   const getMenus = (key) => {
     const list = components[key] || [];
@@ -38,7 +38,7 @@ const Child = () => {
                 title={(
                   <div className="menu-item-content">
                     <span>{pascalCase(component.key)}</span>
-                    {lang !== 'enUS' && <span className="chinese">{component.name}</span>}
+                    {locale !== 'enUS' && <span className="chinese">{component.name}</span>}
                   </div>
                 )}
                 onClick={() => history.push(`/${component.key}`)}
@@ -50,7 +50,7 @@ const Child = () => {
   };
 
   return (
-    <IntlProvider locale="zh-CN" messages={Locale[lang]}>
+    <IntlProvider locale="zh-CN" messages={Locales[locale]}>
       <header>
         <section className="brand">
           <div className="brand-title">Zarm</div>

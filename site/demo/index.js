@@ -5,8 +5,12 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import App from './components/App';
 
-ReactDOM.render((
-  <HashRouter>
-    <App />
-  </HashRouter>
-), document.getElementById('app'));
+const Page = () => {
+  return (
+    <HashRouter>
+      <App />
+    </HashRouter>
+  );
+};
+
+ReactDOM.render(<Page />, document.getElementById('app'));

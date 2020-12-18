@@ -1,4 +1,4 @@
 import Alert from './Alert';
-import LocaleReceiver from '../locale-receiver';
+import ConfigReceiver from '../config-receiver';
 
-export default LocaleReceiver('Alert')(Alert);
+export default ConfigReceiver('Alert')(Alert);

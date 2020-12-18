@@ -1,4 +1,4 @@
 import DatePickerView from './DatePickerView';
-import LocaleReceiver from '../locale-receiver';
+import ConfigReceiver from '../config-receiver';
 
-export default LocaleReceiver('DatePickerView')(DatePickerView);
+export default ConfigReceiver('DatePickerView')(DatePickerView);
