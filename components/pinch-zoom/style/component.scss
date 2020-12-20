@@ -1,6 +1,8 @@
 @include b(pinch-zoom) {
   overflow: hidden;
-  touch-action: none;
+  position: relative;
+  touch-action: auto;
+  min-height: 100%;
 
   > * {
     transform: translate(var(--x), var(--y)) scale(var(--scale));
