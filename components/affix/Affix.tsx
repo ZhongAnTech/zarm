@@ -2,8 +2,7 @@ import React, { PureComponent, createRef } from 'react';
 import classnames from 'classnames';
 import { AffixProps as BaseAffixProps } from './PropsType';
 import Events from '../utils/events';
-
-export const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+import { canUseDOM } from '../utils/dom';
 
 export interface AffixStates {
   affixed: boolean;
