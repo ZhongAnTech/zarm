@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import { AffixProps as BaseAffixProps } from './PropsType';
 import Events from '../utils/events';
 
+export const canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
 export interface AffixStates {
   affixed: boolean;
 }
@@ -17,7 +19,7 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   static defaultProps = {
     prefixCls: 'za-affix',
-    scrollContainer: () => window,
+    scrollContainer: () => (canUseDOM ? window : undefined),
     offsetTop: 0,
   };
 
@@ -57,6 +59,10 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
   get containerRect(): DOMRect {
     const { container } = this;
+
+    if (!canUseDOM) {
+      return { top: 0, bottom: 0 } as any;
+    }
 
     return container !== window
       ? (container as HTMLElement).getBoundingClientRect()
