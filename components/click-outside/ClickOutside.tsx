@@ -1,14 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import ClickOutsideProps from './PropsType';
 import Events from '../utils/events';
 
 export default class ClickOutside extends React.Component<ClickOutsideProps> {
-  static propTypes = {
-    disabled: PropTypes.bool,
-  };
-
   static defaultProps: ClickOutsideProps = {
     disabled: false,
   };

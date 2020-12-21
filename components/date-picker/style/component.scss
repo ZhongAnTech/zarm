@@ -1,6 +1,4 @@
 @include b(date-picker) {
-  background: #fff;
-
   @include e(header) {
     display: flex;
     align-items: center;
@@ -10,7 +8,8 @@
     height: var(--picker-header-height);
     line-height: var(--picker-header-height);
     font-size: var(--picker-header-font-size);
-    @include onepx(bottom);
+    background: var(--picker-header-background);
+    @include onepx(top);
   }
 
   @include e(cancel, submit) {

@@ -61,13 +61,18 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   }
 
   componentDidMount() {
-    this.calculateLineWidth();
+    const { children } = this.props;
+    if (React.Children.count(children)) {
+      this.calculateLineWidth();
+      this.calculateScorllLeftLocation();
+    }
   }
 
   componentDidUpdate(prevstate) {
-    const { value: prevValue } = prevstate;
+    const { value: prevValue, children: prevChild } = prevstate;
     const { value } = this.state;
-    if (prevValue !== value) {
+    const { children } = this.props;
+    if (prevValue !== value || prevChild !== children) {
       this.calculateLineWidth();
     }
     this.calculateScorllLeftLocation();
@@ -76,6 +81,19 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
   get isVertical() {
     const { direction } = this.props;
     return direction === 'vertical';
+  }
+
+  get currentValue() {
+    const { value } = this.state;
+    const { children } = this.props;
+    const count = React.Children.count(children);
+    if (value < 0) {
+      return 0;
+    }
+    if (value > count - 1) {
+      return count - 1;
+    }
+    return value;
   }
 
   setTablistRef = (ref: HTMLUListElement) => {
@@ -130,7 +148,8 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
    * @description: 计算 line 大小和位置
    */
   caclLineSizePos = () => {
-    const { value, itemWidth } = this.state;
+    const { itemWidth } = this.state;
+    const value = this.currentValue;
     const { children, scrollable } = this.props;
     const ChildCount = React.Children.count(children);
     let pos = 100 * value;
@@ -159,7 +178,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     if (!scrollable) {
       return false;
     }
-    const { value } = this.state;
+    const value = this.currentValue;
     const index = value - 1 >= 0 ? value - 1 : 0;
     const prevTabItem = this.layout!.childNodes[index];
     if (scrollable && this.layout && prevTabItem) {
@@ -173,7 +192,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
     if (!scrollable) {
       return;
     }
-    const { value } = this.state;
+    const value = this.currentValue;
     const el = this.layout!.children[value];
     const size = this.isVertical ? this.getComputedStyle(el, 'height') : this.getComputedStyle(el, 'width');
 
@@ -192,7 +211,7 @@ export default class Tabs extends PureComponent<TabsProps, TabsStates> {
 
   render() {
     const { prefixCls, className, lineWidth, swipeable, children, disabled, scrollable, direction } = this.props;
-    const { value } = this.state;
+    const value = this.currentValue;
     const classes = classnames(prefixCls, className, `${prefixCls}--${direction}`, {
       [`${prefixCls}--scroll`]: scrollable,
     });

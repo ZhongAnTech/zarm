@@ -2,7 +2,7 @@
 
 @include b(tooltip) {
   padding: var(--tooltip-padding-v) var(--tooltip-padding-h);
-  background-color: rgba(0, 0, 0, var(--opacity-tooltip));
+  background-color: var(--tooltip-background);
   border-radius: r(4);
   font-size: var(--tooltip-font-size);
   color: var(--tooltip-color);
@@ -14,7 +14,7 @@
     @include arrow () {
       left: r(-4);
       border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-right-color: rgba(0, 0, 0, var(--opacity-tooltip));
+      border-right-color: var(--tooltip-background);
     }
   }
 
@@ -24,7 +24,7 @@
     @include arrow () {
       bottom: r(-4);
       border-width: var(--tooltip-arrow-size) var(--tooltip-arrow-size) 0;
-      border-top-color: rgba(0, 0, 0, var(--opacity-tooltip));
+      border-top-color: var(--tooltip-background);
     }
   }
 
@@ -34,7 +34,7 @@
     @include arrow () {
       top: r(-4);
       border-width: 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-bottom-color: rgba(0, 0, 0, var(--opacity-tooltip));
+      border-bottom-color: var(--tooltip-background);
     }
   }
 
@@ -44,7 +44,7 @@
     @include arrow () {
       right: r(-4);
       border-width: var(--tooltip-arrow-size) 0 var(--tooltip-arrow-size) var(--tooltip-arrow-size);
-      border-left-color: rgba(0, 0, 0, var(--opacity-tooltip));
+      border-left-color: var(--tooltip-background);
     }
   }
 

@@ -1,4 +1,4 @@
-# LocaleProvider 国际化
+# LocaleProvider 国际化<br />（即将废弃）
 
 
 

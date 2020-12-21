@@ -16,7 +16,9 @@ const LoadableComponent = (component) => {
   const compName = pascalCase(component.key);
 
   if (component.style) {
-    loader.style = () => import(`@site/demo/styles/${compName}Page`);
+    // todo: eslint字符串模版变量问题，暂时先屏蔽
+    // eslint-disable-next-line
+    loader.style = () => import('@site/demo/styles/'+compName+'Page');
   }
 
   return Loadable.Map({
@@ -51,7 +53,6 @@ const App = () => {
           }
           <Route component={lazy(() => import('@site/demo/pages/NotFoundPage'))} />
         </Switch>
-        <div />
       </Suspense>
     </SentryBoundary>
   );

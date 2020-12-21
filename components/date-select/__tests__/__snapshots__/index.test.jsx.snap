@@ -7,7 +7,7 @@ exports[`DateSelect DateSelect date 1`] = `
   title="选择日期"
   value="2017-09-06"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     mode="date"
     placeholder="请选择日期"
@@ -60,7 +60,7 @@ exports[`DateSelect DateSelect date 1`] = `
           valueMember="value"
           visible={false}
         >
-          <LocaleReceiver
+          <ConfigReceiver
             forwardedRef={null}
             localeCode="zh-CN"
             minuteStep={1}
@@ -113,11 +113,11 @@ exports[`DateSelect DateSelect date 1`] = `
                 </WarnIfDeprecatedComp>
               </ForwardRef(ForwardedRefComp)>
             </DatePicker>
-          </LocaleReceiver>
+          </ConfigReceiver>
         </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -130,7 +130,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
   placeholder="请选择时间"
   title="选择时间"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     defaultValue="2017-11-03 15:00"
     forwardedRef={null}
     max="2017-11-02 14:00"
@@ -189,7 +189,7 @@ exports[`DateSelect DateSelect datetime 1`] = `
           valueMember="value"
           visible={false}
         >
-          <LocaleReceiver
+          <ConfigReceiver
             defaultValue="2017-11-03 15:00"
             forwardedRef={null}
             localeCode="zh-CN"
@@ -246,11 +246,11 @@ exports[`DateSelect DateSelect datetime 1`] = `
                 </WarnIfDeprecatedComp>
               </ForwardRef(ForwardedRefComp)>
             </DatePicker>
-          </LocaleReceiver>
+          </ConfigReceiver>
         </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -271,7 +271,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
   disabeld={true}
   value="2019-04-23"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     dataSource={
       Array [
         Object {
@@ -357,7 +357,7 @@ exports[`DateSelect DateSelect disabled 1`] = `
           valueMember="value"
           visible={true}
         >
-          <LocaleReceiver
+          <ConfigReceiver
             dataSource={
               Array [
                 Object {
@@ -1038,7 +1038,31 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                     确定
                                   </div>
                                 </div>
-                                <ForwardRef(forwardRef)
+                              </div>
+                              <ForwardRef(forwardRef)
+                                dataSource={
+                                  Array [
+                                    Object {
+                                      "label": "选项一",
+                                      "value": "1",
+                                    },
+                                    Object {
+                                      "label": "选项二",
+                                      "value": "2",
+                                    },
+                                  ]
+                                }
+                                disabeld={true}
+                                localeCode="zh-CN"
+                                minuteStep={1}
+                                mode="date"
+                                onChange={[Function]}
+                                onInit={[Function]}
+                                onTransition={[Function]}
+                                value={2019-04-23T04:00:00.000Z}
+                                valueMember="value"
+                              >
+                                <ConfigReceiver
                                   dataSource={
                                     Array [
                                       Object {
@@ -2265,11 +2289,25 @@ exports[`DateSelect DateSelect disabled 1`] = `
                                             className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
                                           />
                                         </div>
+<<<<<<< HEAD
                                       </PickerView>
                                     </DatePickerView>
                                   </LocaleReceiver>
                                 </ForwardRef(forwardRef)>
                               </div>
+=======
+                                        <div
+                                          className="za-date-picker-view__mask za-date-picker-view__mask--top"
+                                        />
+                                        <div
+                                          className="za-date-picker-view__mask za-date-picker-view__mask--bottom"
+                                        />
+                                      </div>
+                                    </PickerView>
+                                  </DatePickerView>
+                                </ConfigReceiver>
+                              </ForwardRef(forwardRef)>
+>>>>>>> 70c0920fc077face677fa01c11e1b9f0288e0030
                             </div>
                           </div>
                         </Portal>
@@ -2279,11 +2317,11 @@ exports[`DateSelect DateSelect disabled 1`] = `
                 </WarnIfDeprecatedComp>
               </ForwardRef(ForwardedRefComp)>
             </DatePicker>
-          </LocaleReceiver>
+          </ConfigReceiver>
         </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -2295,7 +2333,7 @@ exports[`DateSelect DateSelect time 1`] = `
   placeholder="请选择时间"
   title="选择时间"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     defaultValue="2017-11-03 15:00"
     forwardedRef={null}
     minuteStep={15}
@@ -2349,7 +2387,7 @@ exports[`DateSelect DateSelect time 1`] = `
           valueMember="value"
           visible={false}
         >
-          <LocaleReceiver
+          <ConfigReceiver
             defaultValue="2017-11-03 15:00"
             forwardedRef={null}
             localeCode="zh-CN"
@@ -2402,11 +2440,11 @@ exports[`DateSelect DateSelect time 1`] = `
                 </WarnIfDeprecatedComp>
               </ForwardRef(ForwardedRefComp)>
             </DatePicker>
-          </LocaleReceiver>
+          </ConfigReceiver>
         </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -2415,7 +2453,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
   defaultValue="2017-11-03"
   mode="date"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     defaultValue="2017-11-03"
     forwardedRef={null}
     mode="date"
@@ -2463,7 +2501,7 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
           valueMember="value"
           visible={false}
         >
-          <LocaleReceiver
+          <ConfigReceiver
             defaultValue="2017-11-03"
             forwardedRef={null}
             localeCode="zh-CN"
@@ -2514,11 +2552,11 @@ exports[`DateSelect DateSelect trigger visible 1`] = `
                 </WarnIfDeprecatedComp>
               </ForwardRef(ForwardedRefComp)>
             </DatePicker>
-          </LocaleReceiver>
+          </ConfigReceiver>
         </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -2529,7 +2567,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
   title="选择日期"
   wheelDefaultValue="2017-11-03 15:00"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     mode="date"
     placeholder="请选择日期"
@@ -2582,7 +2620,7 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
           visible={false}
           wheelDefaultValue="2017-11-03 15:00"
         >
-          <LocaleReceiver
+          <ConfigReceiver
             forwardedRef={null}
             localeCode="zh-CN"
             minuteStep={1}
@@ -2635,11 +2673,11 @@ exports[`DateSelect DateSelect wheelDefaultValue 1`] = `
                 </WarnIfDeprecatedComp>
               </ForwardRef(ForwardedRefComp)>
             </DatePicker>
-          </LocaleReceiver>
+          </ConfigReceiver>
         </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;
 
@@ -2659,7 +2697,7 @@ exports[`DateSelect DateSelect year 1`] = `
   title="选择年份"
   value="2017"
 >
-  <LocaleReceiver
+  <ConfigReceiver
     forwardedRef={null}
     locale={
       Object {
@@ -2721,7 +2759,7 @@ exports[`DateSelect DateSelect year 1`] = `
           valueMember="value"
           visible={false}
         >
-          <LocaleReceiver
+          <ConfigReceiver
             forwardedRef={null}
             localeCode="zh-CN"
             minuteStep={1}
@@ -2774,10 +2812,10 @@ exports[`DateSelect DateSelect year 1`] = `
                 </WarnIfDeprecatedComp>
               </ForwardRef(ForwardedRefComp)>
             </DatePicker>
-          </LocaleReceiver>
+          </ConfigReceiver>
         </ForwardRef(forwardRef)>
       </div>
     </DateSelect>
-  </LocaleReceiver>
+  </ConfigReceiver>
 </ForwardRef(forwardRef)>
 `;

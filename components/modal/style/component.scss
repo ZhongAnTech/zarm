@@ -14,11 +14,9 @@
 
   @include b(popup) {
     position: relative;
-    // margin: r(60) auto;
     background-color: var(--modal-background);
     box-shadow: 0 r(7) r(21) var(--color-shadow);
     overflow: hidden;
-    // z-index: calc(var(--zindex-modal) + 1);
   }
 
   @include m(radius) {
@@ -35,7 +33,7 @@
     &__title {
       font-size: var(--modal-title-font-size);
       line-height: 1;
-      color: #333;
+      color: var(--modal-title-color);
     }
 
     &__close {
@@ -43,11 +41,12 @@
       top: r(20);
       right: r(15);
       line-height: r(15);
-      color: #ccc;
+      color: var(--modal-close-color);
+      font-size: r(20);
       cursor: pointer;
 
       &:hover {
-        color: #999;
+        color: var(--modal-close-active-color);
       }
     }
   }

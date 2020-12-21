@@ -181,7 +181,7 @@ module.exports = {
         key: 'collapse',
         name: '折叠面板',
         module: () => import('@/components/collapse/demo.md'),
-        style: true,
+        style: false,
       },
       {
         key: 'badge',
@@ -266,8 +266,14 @@ module.exports = {
       //   style: false,
       // },
       {
+        key: 'config-provider',
+        name: '全局配置',
+        module: () => import('@/components/config-provider/demo.md'),
+        style: false,
+      },
+      {
         key: 'locale-provider',
-        name: '国际化',
+        name: '国际化（即将废弃）',
         module: () => import('@/components/locale-provider/demo.md'),
         style: false,
       },

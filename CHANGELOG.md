@@ -1,4 +1,18 @@
-# 版本更新日志 
+# 版本更新日志
+
+## v2.6.1
+- Perf
+  - 优化打包结果，减小打包体积。[#6c37b92](https://github.com/ZhongAnTech/zarm/commit/6c37b92d69895c03696e1aaebf1ee2661e679625)
+
+
+## v2.6.0
+- Bug Fix
+  - 修复 ES modules 下出现类型引用错误。[#cde1469](https://github.com/ZhongAnTech/zarm/commit/cde14695132612d49bcf3bf165ea331cbf2c6a1a)
+
+- Perf
+  - [Tabs] `value`值的边界优化。[#503](https://github.com/ZhongAnTech/zarm/issues/503)
+  - 优化部分组件的 typescript 类型定义。
+
 
 ## v2.5.6
 - Bug Fix

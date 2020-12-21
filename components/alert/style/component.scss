@@ -10,6 +10,13 @@
     }
   }
 
+  @include b(popup) {
+    position: relative;
+    background-color: var(--modal-background);
+    box-shadow: 0 r(7) r(21) var(--color-shadow);
+    overflow: hidden;
+  }
+
   @include e(button) {
     display: block;
     position: relative;
@@ -24,10 +31,16 @@
     @include onepx(top);
 
     color: var(--theme-primary);
-    background-color: var(--button-default-background);
+    background-color: var(--alert-button-background);
 
     &:active {
-      background-color: var(--background-active);
+      background-color: var(--alert-button-active-background);
+    }
+  }
+
+  @include m(radius) {
+    @include b(popup) {
+      border-radius: var(--radius-md);
     }
   }
 }

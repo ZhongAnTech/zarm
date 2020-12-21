@@ -9,8 +9,8 @@ class Footer extends Component {
         <div className="group">
           <h2><FormattedMessage id="app.home.footer.resources" /></h2>
           <ul>
-            <li><a href="https://ZhongAnTech.github.io/zarm-vue/#/documents/quick-start" rel="noopener noreferrer" target="_blank">Zarm Vue</a> - Zarm of Vue</li>
-            <li><a href="https://jeromelin.github.io/zarm-web" rel="noopener noreferrer" target="_blank">Zarm Web</a></li>
+            <li><a href="https://vue.zarm.design" rel="noopener noreferrer" target="_blank">Zarm Vue</a> - Zarm of Vue</li>
+            <li><a href="https://web.zarm.design" rel="noopener noreferrer" target="_blank">Zarm Web</a></li>
             <li>
               <a href="/#/design/download">
                 <FormattedMessage id="app.home.resources" />

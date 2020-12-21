@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react';
 import ReactDOM, { createPortal } from 'react-dom';
-import PropTypes from 'prop-types';
 import PopperJS from 'popper.js';
 import classnames from 'classnames';
 
@@ -108,36 +107,6 @@ class Popper extends React.Component<PopperProps, PopperStates> {
   private enterTimer: number;
 
   private leaveTimer: number;
-
-  static propTypes = {
-    prefixCls: PropTypes.string,
-    children: PropTypes.node.isRequired,
-    visible: PropTypes.bool,
-    destroy: PropTypes.bool,
-    hasArrow: PropTypes.bool,
-    arrowPointAtCenter: PropTypes.bool,
-    trigger: PropTypes.oneOf(['click', 'hover', 'focus', 'manual', 'contextMenu']),
-    content: PropTypes.node,
-    animationType: PropTypes.string,
-    animationDuration: PropTypes.number,
-    direction: PropTypes.oneOf([
-      'top',
-      'topLeft',
-      'topRight',
-      'right',
-      'rightTop',
-      'rightBottom',
-      'bottom',
-      'bottomLeft',
-      'bottomRight',
-      'left',
-      'leftTop',
-      'leftBottom',
-    ]),
-    mouseEnterDelay: PropTypes.number,
-    mouseLeaveDelay: PropTypes.number,
-    onVisibleChange: PropTypes.func,
-  };
 
   static defaultProps: PopperProps = {
     prefixCls: 'za-popper',

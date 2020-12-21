@@ -59,6 +59,10 @@
     font-size: $icon-size;
   }
 
+  @include m(link) {
+    line-height: $height;
+  }
+
   * + span {
     margin-left: calc(#{$padding} / 2);
   }

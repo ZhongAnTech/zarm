@@ -14,7 +14,7 @@
     font-size: var(--wheel-item-font-size);
     line-height: var(--wheel-item-height);
     height: var(--wheel-item-height);
-    color: #000;
+    color: var(--wheel-color);
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

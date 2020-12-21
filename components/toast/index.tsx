@@ -4,7 +4,7 @@ import PropsType from './PropsType';
 import Popup from '../popup';
 import { getMountContainer } from '../utils/dom';
 
-const contentIsToastProps = (content): content is ToastProps => typeof content === 'object' && 'content' in content;
+const contentIsToastProps = (content: ReactNode | ToastProps): content is ToastProps => !!content && typeof content === 'object' && 'content' in content;
 
 export interface ToastProps extends PropsType {
   prefixCls?: string;
@@ -28,13 +28,21 @@ export default class Toast extends Component<ToastProps, any> {
       if (contentIsToastProps(content) && content.className) {
         Toast.zarmToast.classList.add(content.className);
       }
-      Toast.toastContainer = contentIsToastProps(content) ? getMountContainer(content.mountContainer) : getMountContainer();
+      Toast.toastContainer = contentIsToastProps(content) && content.mountContainer ? getMountContainer(content.mountContainer) : getMountContainer();
       Toast.toastContainer.appendChild(Toast.zarmToast);
     }
+
     if (Toast.zarmToast) {
-      const props = contentIsToastProps(content)
-        ? { ...Toast.defaultProps, ...content, ...{ visible: true, mountContainer: Toast.zarmToast } }
-        : { ...Toast.defaultProps, ...{ visible: true, mountContainer: Toast.zarmToast, content } };
+      const props: ToastProps = contentIsToastProps(content)
+        ? { ...Toast.defaultProps, ...content, mountContainer: false, visible: true }
+        : { ...Toast.defaultProps, visible: true, mountContainer: false, content };
+
+      Toast.hideHelper = () => {
+        ReactDOM.render(
+          <Toast {...props} visible={false} />,
+          Toast.zarmToast,
+        );
+      };
       ReactDOM.render(
         <Toast {...props} />,
         Toast.zarmToast,
@@ -44,10 +52,7 @@ export default class Toast extends Component<ToastProps, any> {
 
   static hide = () => {
     if (Toast.zarmToast) {
-      ReactDOM.render(
-        <Toast visible={false} />,
-        Toast.zarmToast,
-      );
+      Toast.hideHelper();
     }
   };
 
@@ -60,7 +65,7 @@ export default class Toast extends Component<ToastProps, any> {
     }
   };
 
-  private timer: number;
+  private timer = 0;
 
   static defaultProps: ToastProps = {
     prefixCls: 'za-toast',
@@ -74,11 +79,10 @@ export default class Toast extends Component<ToastProps, any> {
   };
 
   componentDidMount() {
-    Toast.hideHelper = this._hide;
     this.autoClose();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: ToastProps) {
     const { visible } = this.props;
 
     if (prevProps.visible !== visible) {
@@ -87,9 +91,9 @@ export default class Toast extends Component<ToastProps, any> {
         this.setState({
           visible: true,
         });
-        clearTimeout(this.timer);
         this.autoClose();
       } else {
+        clearTimeout(this.timer);
         this._hide();
       }
     }

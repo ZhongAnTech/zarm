@@ -16,10 +16,15 @@
       margin-left: r(10);
     }
 
-    .color-pick {
+    .github {
+      color: #333;
+    }
+
+    .setting {
       width: r(20);
       height: r(20);
       border: 4px solid #fff;
+      background: var(--theme-primary);
       box-shadow: 0 r(1) r(2) 0 rgba(56, 56, 56, 0.15);
       cursor: pointer;
     }
@@ -33,19 +38,29 @@
   }
 }
 
-.color-pick-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  margin: 0;
+.setting-container {
   margin-top: r(8);
   padding: r(8);
   background: #fff;
   border-radius: r(4);
   box-shadow: 0 r(2) r(8) 0 rgba(0, 0, 0, 0.1);
+}
+
+.themes {
+  display: block;
+  margin-top: r(8);
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
   li {
+    display: inline-block;
     width: r(25);
     height: r(25);
     border-radius: r(2);
@@ -59,4 +74,21 @@
 
 .za-popper {
   z-index: 1500;
+}
+
+@at-root {
+  body[data-theme='dark'] {
+    .github {
+      color: #f1f1f1;
+    }
+
+    .setting {
+      border-color: #393939;
+    }
+
+    .setting-container {
+      background: #222;
+      box-shadow: 0 r(2) r(8) 0 rgba(0, 0, 0, 0.6);
+    }
+  }
 }
