@@ -1,10 +1,15 @@
 import React, { PureComponent, createRef } from 'react';
 import classnames from 'classnames';
-import { AffixProps } from './PropsType';
+import { AffixProps as BaseAffixProps } from './PropsType';
 import Events from '../utils/events';
 
 export interface AffixStates {
   affixed: boolean;
+}
+
+export interface AffixProps extends BaseAffixProps {
+  prefixCls?: string;
+  className?: string;
 }
 
 export default class Affix extends PureComponent<AffixProps, AffixStates> {
