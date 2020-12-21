@@ -1,7 +1,4 @@
 export interface AffixProps {
-  prefixCls?: string;
-  className?: string;
-
   /**
    * 距离窗口顶部达到指定偏移量后触发
    */
