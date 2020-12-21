@@ -117,6 +117,14 @@ export default class Affix extends PureComponent<AffixProps, AffixStates> {
 
     const cls = classnames(prefixCls, className);
 
+    if (!this.affixed) {
+      return (
+        <div ref={this.savePlaceholderNode}>
+          {children}
+        </div>
+      );
+    }
+
     return (
       <div ref={this.savePlaceholderNode}>
         <div
