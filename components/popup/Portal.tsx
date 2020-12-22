@@ -223,8 +223,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
         this.setState({
           isPending: true,
         });
-        this.popup.focus();
-        this.popup.classList.add(`${prefixCls}--show`);
+        requestAnimationFrame(() => {
+          this.popup && this.popup.classList.add(`${prefixCls}--show`);
+        });
       }
     } else {
       this.setState({
