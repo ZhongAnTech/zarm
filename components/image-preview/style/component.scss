@@ -27,6 +27,7 @@
   @include e(item) {
     text-align: center;
     position: relative;
+    overflow: auto;
 
     img {
       width: 100%;
