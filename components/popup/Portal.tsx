@@ -223,9 +223,12 @@ export default class Portal extends PureComponent<PortalProps, any> {
         this.setState({
           isPending: true,
         });
-        requestAnimationFrame(() => {
-          this.popup && this.popup.classList.add(`${prefixCls}--show`);
-        });
+
+        console.log(this.popup.offsetTop);
+        this.popup.classList.add(`${prefixCls}--show`);
+        // requestAnimationFrame(() => {
+        //   this.popup && this.popup.classList.add(`${prefixCls}--show`);
+        // });
       }
     } else {
       this.setState({
