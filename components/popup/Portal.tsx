@@ -1,10 +1,10 @@
 import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
+import raf from 'raf';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
-import Trigger from '../trigger';
 import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
@@ -89,6 +89,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
       if (typeof afterClose === 'function') {
         afterClose();
       }
+      if (typeof handlePortalUnmount === 'function') {
+        handlePortalUnmount();
+      }
     } else if (typeof afterOpen === 'function') {
       afterOpen();
     }
@@ -116,11 +119,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
         />
       )
     );
-  };
-
-  onEsc = () => {
-    const { onEsc } = this.props;
-    onEsc && onEsc();
   };
 
   handleMaskClick = (e) => {
@@ -226,12 +224,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
         this.setState({
           isPending: true,
         });
-
-        console.log(this.popup.offsetTop);
-        this.popup.classList.add(`${prefixCls}--show`);
-        // requestAnimationFrame(() => {
-        //   this.popup && this.popup.classList.add(`${prefixCls}--show`);
-        // });
+        raf(() => {
+          this.popup && this.popup.classList.add(`${prefixCls}--show`);
+        });
       }
     } else {
       this.setState({
@@ -278,11 +273,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   render() {
-    const { visible } = this.props;
-    return (
-      <Trigger visible={visible} onClose={this.onEsc}>
-        { this.renderPortal() }
-      </Trigger>
-    );
+    return this.renderPortal();
   }
 }
