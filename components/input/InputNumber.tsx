@@ -7,6 +7,13 @@ import Icon from '../icon';
 
 declare const document;
 
+const getValue = (props) => {
+  const { value, defaultValue } = props;
+  let temp = defaultValue === undefined ? '' : defaultValue;
+  temp = (value === undefined) ? defaultValue : value;
+  return temp;
+};
+
 export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps: InputNumberProps = {
     prefixCls: 'za-input',
@@ -23,7 +30,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || '',
+      value: getValue(props),
       visible: props.focused || false,
       focused: false,
     };
@@ -41,8 +48,8 @@ export default class InputNumber extends Component<InputNumberProps, any> {
   static getDerivedStateFromProps(nextProps, state) {
     if ('value' in nextProps && nextProps.value !== state.prevValue) {
       return {
-        value: nextProps.value || nextProps.defaultValue || '',
-        prevValue: nextProps.value || nextProps.defaultValue || '',
+        value: getValue(nextProps),
+        prevValue: getValue(nextProps),
       };
     }
     return null;
