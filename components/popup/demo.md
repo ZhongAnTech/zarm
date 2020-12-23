@@ -167,6 +167,7 @@ const Demo = () => {
         direction="center"
         width="70%"
         afterClose={() => console.log('关闭')}
+        onEsc={() => { toggle('popCenterSpec')}}
         mountContainer={() => {
           return popupRef.current.portalRef.popup
         }}
@@ -178,10 +179,16 @@ const Demo = () => {
 
       <Popup
         visible={visible.popSpec}
-        onMaskClick={() => toggle('popSpec')}
+        onMaskClick={() => {
+          if(visible.popCenterSpec) {
+            toggle('popCenterSpec');
+          }
+          toggle('popSpec');
+        }}
         afterClose={() => console.log('关闭')}
+        onEsc={() => { toggle('popSpec')}}
         ref={popupRef}
-        destroy={false}
+        destroy={true}
       >
         <div className="popup-box-bottom">
           <Button size="xs" onClick={() => toggle('popCenterSpec')}>打开弹层</Button>
@@ -212,4 +219,5 @@ ReactDOM.render(<Demo />, mountNode);
 | afterOpen | () => void | - | 弹层展示后的回调 |
 | afterClose | () => void | - | 弹层关闭后的回调 |
 | onMaskClick | () => void | - | 点击遮罩层时触发的回调函数 |
+| onEsc | () => void | - | 点击Esc键时触发的回调函数 |
 | mountContainer | HTMLElement &#124; () => HTMLElement | document.body | 指定 Popup 挂载的 HTML 节点 |

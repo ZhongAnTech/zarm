@@ -1,7 +1,7 @@
 import { ContainerType } from '../utils/dom';
 
 export default interface PropsType {
-  visible?: boolean;
+  visible: boolean;
   direction?: 'top' | 'right' | 'bottom' | 'left' | 'center';
   animationType?:
     'fade' | 'door' | 'flip' | 'rotate' | 'zoom' |
@@ -15,5 +15,6 @@ export default interface PropsType {
   afterOpen?: () => void;
   afterClose?: () => void;
   onMaskClick?: () => void;
+  onEsc?: () => void;
   mountContainer?: ContainerType | false;
 }

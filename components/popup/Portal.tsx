@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
+import Trigger from '../trigger';
 import PropsType from './PropsType';
 
 const IS_REACT_16 = !!ReactDOM.createPortal;
@@ -88,9 +89,6 @@ export default class Portal extends PureComponent<PortalProps, any> {
       if (typeof afterClose === 'function') {
         afterClose();
       }
-      if (typeof handlePortalUnmount === 'function') {
-        handlePortalUnmount();
-      }
     } else if (typeof afterOpen === 'function') {
       afterOpen();
     }
@@ -118,6 +116,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
         />
       )
     );
+  };
+
+  onEsc = () => {
+    const { onEsc } = this.props;
+    onEsc && onEsc();
   };
 
   handleMaskClick = (e) => {
@@ -275,6 +278,11 @@ export default class Portal extends PureComponent<PortalProps, any> {
   };
 
   render() {
-    return this.renderPortal();
+    const { visible } = this.props;
+    return (
+      <Trigger visible={visible} onClose={this.onEsc}>
+        { this.renderPortal() }
+      </Trigger>
+    );
   }
 }
