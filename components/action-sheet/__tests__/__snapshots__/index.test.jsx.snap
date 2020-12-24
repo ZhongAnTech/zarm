@@ -106,149 +106,143 @@ exports[`ActionSheet renders correctly 1`] = `
               prefixCls="za-popup"
               visible={true}
             >
-              <Trigger
-                disabled={false}
-                onClose={[Function]}
-                visible={true}
-              >
-                <Portal
-                  containerInfo={
+              <Portal
+                containerInfo={
+                  <div
+                    class="za-popup-container"
+                  >
                     <div
-                      class="za-popup-container"
+                      class="za-mask za-fade-enter za-mask--normal"
+                      style="animation-duration: 200ms;"
+                    />
+                    <div
+                      class="za-popup__wrapper"
+                      role="dialog"
                     >
                       <div
-                        class="za-mask za-fade-enter za-mask--normal"
-                        style="animation-duration: 200ms;"
-                      />
-                      <div
-                        class="za-popup__wrapper"
-                        role="dialog"
+                        class="za-popup za-popup--bottom"
+                        role="document"
+                        style="transition-duration: 200ms; transition-property: transform;"
                       >
                         <div
-                          class="za-popup za-popup--bottom za-popup--show"
-                          role="document"
-                          style="transition-duration: 200ms; transition-property: transform;"
+                          class="za-action-sheet"
                         >
                           <div
-                            class="za-action-sheet"
+                            class="za-action-sheet__actions"
                           >
                             <div
-                              class="za-action-sheet__actions"
+                              class="za-action-sheet__item"
                             >
-                              <div
-                                class="za-action-sheet__item"
-                              >
-                                操作一
-                              </div>
-                              <div
-                                class="za-action-sheet__item"
-                              >
-                                操作二
-                              </div>
-                              <div
-                                class="za-action-sheet__item za-action-sheet__item--danger"
-                              >
-                                操作三
-                              </div>
+                              操作一
                             </div>
                             <div
-                              class="za-action-sheet__cancel"
+                              class="za-action-sheet__item"
                             >
-                              <div
-                                class="za-action-sheet__item"
-                              >
-                                取消
-                              </div>
+                              操作二
+                            </div>
+                            <div
+                              class="za-action-sheet__item za-action-sheet__item--danger"
+                            >
+                              操作三
+                            </div>
+                          </div>
+                          <div
+                            class="za-action-sheet__cancel"
+                          >
+                            <div
+                              class="za-action-sheet__item"
+                            >
+                              取消
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                }
+              >
+                <Mask
+                  className="za-fade-enter"
+                  prefixCls="za-mask"
+                  style={
+                    Object {
+                      "WebkitAnimationDuration": "200ms",
+                      "animationDuration": "200ms",
+                    }
                   }
+                  type="normal"
+                  visible={true}
                 >
-                  <Mask
-                    className="za-fade-enter"
-                    prefixCls="za-mask"
+                  <div
+                    className="za-mask za-fade-enter za-mask--normal"
                     style={
                       Object {
                         "WebkitAnimationDuration": "200ms",
                         "animationDuration": "200ms",
                       }
                     }
-                    type="normal"
-                    visible={true}
-                  >
-                    <div
-                      className="za-mask za-fade-enter za-mask--normal"
-                      style={
-                        Object {
-                          "WebkitAnimationDuration": "200ms",
-                          "animationDuration": "200ms",
-                        }
-                      }
-                    />
-                  </Mask>
+                  />
+                </Mask>
+                <div
+                  className="za-popup__wrapper"
+                  onClick={[Function]}
+                  role="dialog"
+                  style={Object {}}
+                >
                   <div
-                    className="za-popup__wrapper"
-                    onClick={[Function]}
-                    role="dialog"
-                    style={Object {}}
+                    className="za-popup za-popup--bottom"
+                    role="document"
+                    style={
+                      Object {
+                        "WebkitTransitionDuration": "200ms",
+                        "WebkitTransitionProperty": "transform",
+                        "transitionDuration": "200ms",
+                        "transitionProperty": "transform",
+                      }
+                    }
                   >
                     <div
-                      className="za-popup za-popup--bottom"
-                      role="document"
-                      style={
-                        Object {
-                          "WebkitTransitionDuration": "200ms",
-                          "WebkitTransitionProperty": "transform",
-                          "transitionDuration": "200ms",
-                          "transitionProperty": "transform",
-                        }
-                      }
+                      className="za-action-sheet"
                     >
                       <div
-                        className="za-action-sheet"
+                        className="za-action-sheet__actions"
                       >
                         <div
-                          className="za-action-sheet__actions"
+                          className="za-action-sheet__item"
+                          key="0"
+                          onClick={[MockFunction]}
                         >
-                          <div
-                            className="za-action-sheet__item"
-                            key="0"
-                            onClick={[MockFunction]}
-                          >
-                            操作一
-                          </div>
-                          <div
-                            className="za-action-sheet__item"
-                            key="1"
-                            onClick={[MockFunction]}
-                          >
-                            操作二
-                          </div>
-                          <div
-                            className="za-action-sheet__item za-action-sheet__item--danger"
-                            key="2"
-                            onClick={[MockFunction]}
-                          >
-                            操作三
-                          </div>
+                          操作一
                         </div>
                         <div
-                          className="za-action-sheet__cancel"
+                          className="za-action-sheet__item"
+                          key="1"
+                          onClick={[MockFunction]}
                         >
-                          <div
-                            className="za-action-sheet__item"
-                            onClick={[MockFunction]}
-                          >
-                            取消
-                          </div>
+                          操作二
+                        </div>
+                        <div
+                          className="za-action-sheet__item za-action-sheet__item--danger"
+                          key="2"
+                          onClick={[MockFunction]}
+                        >
+                          操作三
+                        </div>
+                      </div>
+                      <div
+                        className="za-action-sheet__cancel"
+                      >
+                        <div
+                          className="za-action-sheet__item"
+                          onClick={[MockFunction]}
+                        >
+                          取消
                         </div>
                       </div>
                     </div>
                   </div>
-                </Portal>
-              </Trigger>
+                </div>
+              </Portal>
             </Portal>
           </Popup>
         </WarnIfDeprecatedComp>
