@@ -1,16 +1,13 @@
 import React, { PureComponent, MouseEvent, CSSProperties, ReactPortal } from 'react';
 import { createPortal } from 'react-dom';
 import classnames from 'classnames';
+import BasePropsType from './PropsType';
 import Scroller from '../scroller';
-import { ContainerType, canUseDOM, scrollTo } from '../utils/dom';
+import { canUseDOM, scrollTo } from '../utils/dom';
 
-export interface BackToTopProps {
+export interface BackToTopProps extends BasePropsType {
   prefixCls?: string;
   className?: string;
-  style?: CSSProperties;
-  speed?: number;
-  visibleDistance?: number;
-  scrollContainer?: ContainerType;
   onClick?: (event?: MouseEvent<HTMLElement>) => void;
 }
 
