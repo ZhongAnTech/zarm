@@ -18,6 +18,7 @@ exports[`Popup renders correctly 1`] = `
       direction="bottom"
       onMaskClick={[MockFunction]}
       prefixCls="za-popup"
+      visible={false}
     />
   </WarnIfDeprecatedComp>
 </ForwardRef(ForwardedRefComp)>
@@ -76,7 +77,7 @@ exports[`Popup renders mount node correctly 1`] = `
                 role="dialog"
               >
                 <div
-                  class="za-popup za-popup--bottom za-popup--show"
+                  class="za-popup za-popup--bottom"
                   role="document"
                   style="transition-duration: 200ms; transition-property: transform;"
                 >

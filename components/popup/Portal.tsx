@@ -1,6 +1,7 @@
 import React, { PureComponent, CSSProperties, ReactPortal } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
+import raf from 'raf';
 import Events from '../utils/events';
 import { canUseDOM, getMountContainer } from '../utils/dom';
 import Mask from '../mask';
@@ -223,8 +224,9 @@ export default class Portal extends PureComponent<PortalProps, any> {
         this.setState({
           isPending: true,
         });
-        this.popup.focus();
-        this.popup.classList.add(`${prefixCls}--show`);
+        raf(() => {
+          this.popup && this.popup.classList.add(`${prefixCls}--show`);
+        });
       }
     } else {
       this.setState({
