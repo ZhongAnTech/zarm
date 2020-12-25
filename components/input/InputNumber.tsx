@@ -4,15 +4,7 @@ import { InputNumberProps } from './PropsType';
 import Events from '../utils/events';
 import KeyboardPicker from '../keyboard-picker';
 import Icon from '../icon';
-
-declare const document;
-
-const getValue = (props) => {
-  const { value, defaultValue } = props;
-  let temp = defaultValue === undefined ? '' : defaultValue;
-  temp = (value === undefined) ? defaultValue : value;
-  return temp;
-};
+import { getValue } from './util';
 
 export default class InputNumber extends Component<InputNumberProps, any> {
   static defaultProps: InputNumberProps = {
@@ -183,7 +175,7 @@ export default class InputNumber extends Component<InputNumberProps, any> {
 
     const renderInput = (
       <div className={`${prefixCls}__content`}>
-        {!value && !readOnly && <div className={`${prefixCls}__placeholder`}>{placeholder}</div>}
+        {(value === undefined || value === '') && !readOnly && <div className={`${prefixCls}__placeholder`}>{placeholder}</div>}
         <div className={`${prefixCls}__virtual-input`} ref={(ele) => { this.content = ele; }}>{value}</div>
         <input
           type="hidden"
