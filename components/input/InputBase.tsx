@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { InputBaseProps } from './PropsType';
 import Icon from '../icon';
+import { getValue } from './utils';
 
 export default class InputBase extends PureComponent<InputBaseProps, any> {
   static defaultProps: InputBaseProps = {
@@ -22,7 +23,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
     super(props);
     this.state = {
       focused: props.autoFocus || false,
-      value: props.value || props.defaultValue || '',
+      value: getValue(props),
     };
   }
 
@@ -37,7 +38,7 @@ export default class InputBase extends PureComponent<InputBaseProps, any> {
   static getDerivedStateFromProps(nextProps) {
     if ('value' in nextProps) {
       return {
-        value: nextProps.value || nextProps.defaultValue || '',
+        value: getValue(nextProps),
       };
     }
     return null;

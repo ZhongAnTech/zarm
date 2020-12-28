@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import classnames from 'classnames';
 import { InputTextareaProps } from './PropsType';
+import { getValue } from './utils';
 
 const regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]|\n/g;
 
@@ -22,7 +23,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   constructor(props) {
     super(props);
     this.state = {
-      value: props.value || props.defaultValue || '',
+      value: getValue(props),
       focused: props.focused || false,
     };
   }
@@ -38,7 +39,7 @@ export default class InputTextarea extends PureComponent<InputTextareaProps, any
   static getDerivedStateFromProps(nextProps) {
     if ('focused' in nextProps || 'value' in nextProps) {
       return {
-        value: nextProps.value || nextProps.defaultValue || '',
+        value: getValue(nextProps),
         focused: nextProps.focused || false,
       };
     }
