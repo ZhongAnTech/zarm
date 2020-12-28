@@ -118,10 +118,10 @@ describe('Stepper', () => {
     wrapper.setProps({ value: 1 });
     wrapper.setProps({ step: 0.1 });
     wrapper.find('.za-stepper__sub').simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe(0.9);
+    expect(wrapper.find(Input).at(0).props().value).toBe('0.9');
 
     wrapper.setProps({ step: 0.2 });
     wrapper.find('.za-stepper__plus').simulate('click');
-    expect(wrapper.find(Input).at(0).props().value).toBe(1.1);
+    expect(wrapper.find(Input).at(0).props().value).toBe('1.1');
   });
 });
